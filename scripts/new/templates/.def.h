@@ -1,6 +1,9 @@
 #ifndef {guard}
 #define {guard}
 
+// Created by the command line:
+// {commandline}
+
 {includes}
 #include "rec/util/Defaulter.h"
 

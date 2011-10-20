@@ -9,10 +9,11 @@ namespace command {
 class Access;
 
 const Commands& commands();
+const Commands& repeated();
 const Commands& descriptions(const Access&);
 const Commands& keyPresses(const Access&);
 
-o}  // namespace command
+}  // namespace command
 }  // namespace rec
 
 #endif  // __REC_COMMAND_COMMANDDATA__

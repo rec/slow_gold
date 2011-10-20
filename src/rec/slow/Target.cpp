@@ -1,7 +1,7 @@
 #include "rec/slow/Target.h"
 
 #include "rec/audio/Device.h"
-#include "rec/command/MidiCommandMapEditor.h"
+#include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Position.h"
 
@@ -30,28 +30,6 @@ void addCommand(TargetManager* manager, Callback* cb, const Command& c) {
   const String& desc = str(c.desc().full());
   const String& category = str(c.category());
   manager->addCallback(t, cb, menu, category, desc);
-
-#if 0
-  uint32 repeat = c.repeat_count();
-  const char* LOWER[] = {" the first", " the previous", " the current",
-                         " the next", " the last"};
-  const char* CAP[] = {" First", " Previous", " Current", " Next", " Last"};
-
-  int b = t * Command::BANK_SIZE;
-  for (int i = 0; i <= LAST - FIRST; ++i) {
-    String m2 = String::formatted(menu, CAP[i]);
-    String d2 = String::formatted(desc, LOWER[i]);
-    manager->addCallback(b + i, cb, m2, category, d2);
-  }
-
-  for (int i = 0; i < repeat; ++i) {
-    String n = " " + String(i + 1);
-    const char* ns = n.toUTF8();
-    String menu = String::formatted(menu, ns);
-    String desc = String::formatted(desc, ns);
-    manager->addCallback(b + i - FIRST, cb, menu, category, desc);
-  }
-#endif
 }
 
 }  // namespace
@@ -79,7 +57,6 @@ using rec::thread::functionCallback;
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
-#include "rec/slow/LoopCommands.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/TargetCommands.h"
 #include "rec/util/Math.h"

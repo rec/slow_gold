@@ -3,7 +3,6 @@
 
 #include <map>
 
-#include "rec/slow/LoopCommands.h"
 #include "rec/util/LoopPoint.h"
 
 namespace rec {

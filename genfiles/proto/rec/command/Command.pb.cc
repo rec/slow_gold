@@ -83,7 +83,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
   Command_descriptor_ = file->message_type(2);
   static const int Command_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, repeat_count_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, category_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, desc_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, keypress_),
@@ -200,37 +200,36 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\"U\n\010KeyPress\022\013\n\003key\030\001 \003(\t\022\017\n\007keycode\030\002 \003"
     "(\r\022\r\n\005shift\030\003 \001(\010\022\017\n\007command\030\004 \001(\010\022\013\n\003al"
     "t\030\005 \001(\010\"7\n\013Description\022\014\n\004menu\030\001 \001(\t\022\014\n\004"
-    "full\030\002 \001(\t\022\014\n\004help\030\003 \001(\t\"\213\010\n\007Command\022\'\n\004"
-    "type\030\001 \001(\0162\031.rec.command.Command.Type\022\024\n"
-    "\014repeat_count\030\002 \001(\021\022\020\n\010category\030\003 \001(\t\022&\n"
-    "\004desc\030\004 \001(\0132\030.rec.command.Description\022\'\n"
-    "\010keypress\030\005 \003(\0132\025.rec.command.KeyPress\"\335"
-    "\006\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n"
-    "\021AUDIO_PREFERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020"
-    "\003\022\017\n\013CLEAR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_D"
-    "ATA\020\005\022\016\n\nCLOSE_FILE\020\006\022\025\n\021DIM_VOLUME_TOGG"
-    "LE\020\007\022\r\n\tEJECT_CDS\020\010\022\031\n\025INVERT_LOOP_SELEC"
-    "TION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020\013\022\025\n\021K"
-    "EYBOARD_MAPPINGS\020\014\022\021\n\rMIDI_MAPPINGS\020\r\022\026\n"
-    "\022MUTE_VOLUME_TOGGLE\020\016\022\024\n\020NUDGE_BEGIN_LEF"
-    "T\020\017\022\025\n\021NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_END_"
-    "LEFT\020\021\022\023\n\017NUDGE_END_RIGHT\020\022\022\025\n\021NUDGE_VOL"
-    "UME_DOWN\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020"
-    "\025\022\021\n\014RECENT_FILES\020\336\001\022\010\n\004REDO\020\027\022\027\n\023RESET_"
-    "GAIN_TO_UNITY\020\030\022\n\n\006SELECT\020\031\022\017\n\013SELECT_ON"
-    "LY\020\032\022\n\n\006TOGGLE\020\033\022\025\n\021TOGGLE_START_STOP\020\034\022"
-    "\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHO"
-    "LE_SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_D"
-    "OWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nT"
-    "REE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UN"
-    "SELECT\020&\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\t\n\004Q"
-    "UIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n"
-    "\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_A"
-    "LL\020\207 \022\017\n\tBANK_SIZE\020\200\200\004\"1\n\010Commands\022%\n\007co"
-    "mmand\030\001 \003(\0132\024.rec.command.Command\"&\n\010Key"
-    "Value\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Map"
-    "ping\022(\n\tkey_value\030\001 \003(\0132\025.rec.command.Ke"
-    "yValue", 1366);
+    "full\030\002 \001(\t\022\014\n\004help\030\003 \001(\t\"\204\010\n\007Command\022\'\n\004"
+    "type\030\001 \001(\0162\031.rec.command.Command.Type\022\r\n"
+    "\005index\030\002 \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004desc\030\004"
+    " \001(\0132\030.rec.command.Description\022\'\n\010keypre"
+    "ss\030\005 \003(\0132\025.rec.command.KeyPress\"\335\006\n\004Type"
+    "\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_"
+    "PREFERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CL"
+    "EAR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016"
+    "\n\nCLOSE_FILE\020\006\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n"
+    "\tEJECT_CDS\020\010\022\031\n\025INVERT_LOOP_SELECTION\020\t\022"
+    "\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020\013\022\025\n\021KEYBOARD"
+    "_MAPPINGS\020\014\022\021\n\rMIDI_MAPPINGS\020\r\022\026\n\022MUTE_V"
+    "OLUME_TOGGLE\020\016\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021"
+    "NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022"
+    "\023\n\017NUDGE_END_RIGHT\020\022\022\025\n\021NUDGE_VOLUME_DOW"
+    "N\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\021\n\014RE"
+    "CENT_FILES\020\336\001\022\010\n\004REDO\020\027\022\027\n\023RESET_GAIN_TO"
+    "_UNITY\020\030\022\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\n\n"
+    "\006TOGGLE\020\033\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGG"
+    "LE_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHOLE_SONG"
+    "_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r"
+    "\n\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIG"
+    "HT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020"
+    "&\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\t\n\004QUIT\020\201 \022"
+    "\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020"
+    "\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017"
+    "\n\tBANK_SIZE\020\200\200\004\"1\n\010Commands\022%\n\007command\030\001"
+    " \003(\0132\024.rec.command.Command\"&\n\010KeyValue\022\013"
+    "\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Mapping\022(\n"
+    "\tkey_value\030\001 \003(\0132\025.rec.command.KeyValue", 1359);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   KeyPress::default_instance_ = new KeyPress();
@@ -1094,7 +1093,7 @@ const int Command::Type_ARRAYSIZE;
 const ::std::string Command::_default_category_;
 #ifndef _MSC_VER
 const int Command::kTypeFieldNumber;
-const int Command::kRepeatCountFieldNumber;
+const int Command::kIndexFieldNumber;
 const int Command::kCategoryFieldNumber;
 const int Command::kDescFieldNumber;
 const int Command::kKeypressFieldNumber;
@@ -1118,7 +1117,7 @@ Command::Command(const Command& from)
 void Command::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
-  repeat_count_ = 0;
+  index_ = 0;
   category_ = const_cast< ::std::string*>(&_default_category_);
   desc_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1160,7 +1159,7 @@ Command* Command::New() const {
 void Command::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0;
-    repeat_count_ = 0;
+    index_ = 0;
     if (_has_bit(2)) {
       if (category_ != &_default_category_) {
         category_->clear();
@@ -1197,18 +1196,18 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_repeat_count;
+        if (input->ExpectTag(16)) goto parse_index;
         break;
       }
       
-      // optional sint32 repeat_count = 2;
+      // optional sint32 index = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_repeat_count:
+         parse_index:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &repeat_count_)));
+                 input, &index_)));
           _set_bit(1);
         } else {
           goto handle_uninterpreted;
@@ -1287,9 +1286,9 @@ void Command::SerializeWithCachedSizes(
       1, this->type(), output);
   }
   
-  // optional sint32 repeat_count = 2;
+  // optional sint32 index = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->repeat_count(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->index(), output);
   }
   
   // optional string category = 3;
@@ -1327,9 +1326,9 @@ void Command::SerializeWithCachedSizes(
       1, this->type(), target);
   }
   
-  // optional sint32 repeat_count = 2;
+  // optional sint32 index = 2;
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->repeat_count(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->index(), target);
   }
   
   // optional string category = 3;
@@ -1373,11 +1372,11 @@ int Command::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
-    // optional sint32 repeat_count = 2;
-    if (has_repeat_count()) {
+    // optional sint32 index = 2;
+    if (has_index()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->repeat_count());
+          this->index());
     }
     
     // optional string category = 3;
@@ -1434,7 +1433,7 @@ void Command::MergeFrom(const Command& from) {
       set_type(from.type());
     }
     if (from._has_bit(1)) {
-      set_repeat_count(from.repeat_count());
+      set_index(from.index());
     }
     if (from._has_bit(2)) {
       set_category(from.category());
@@ -1466,7 +1465,7 @@ bool Command::IsInitialized() const {
 void Command::Swap(Command* other) {
   if (other != this) {
     std::swap(type_, other->type_);
-    std::swap(repeat_count_, other->repeat_count_);
+    std::swap(index_, other->index_);
     std::swap(category_, other->category_);
     std::swap(desc_, other->desc_);
     keypress_.Swap(&other->keypress_);

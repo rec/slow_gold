@@ -1,10 +1,10 @@
-#include "rec/command/TargetManager.h"
+#include "rec/command/map/TargetManager.h"
 
 #include "rec/app/Files.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.h"
-#include "rec/command/Keyboard.xml.h"
+#include "rec/command/map/Keyboard.xml.h"
 
 namespace rec {
 namespace command {

@@ -492,12 +492,12 @@ class Command : public ::google::protobuf::Message {
   inline ::rec::command::Command_Type type() const;
   inline void set_type(::rec::command::Command_Type value);
   
-  // optional sint32 repeat_count = 2;
-  inline bool has_repeat_count() const;
-  inline void clear_repeat_count();
-  static const int kRepeatCountFieldNumber = 2;
-  inline ::google::protobuf::int32 repeat_count() const;
-  inline void set_repeat_count(::google::protobuf::int32 value);
+  // optional sint32 index = 2;
+  inline bool has_index() const;
+  inline void clear_index();
+  static const int kIndexFieldNumber = 2;
+  inline ::google::protobuf::int32 index() const;
+  inline void set_index(::google::protobuf::int32 value);
   
   // optional string category = 3;
   inline bool has_category() const;
@@ -534,7 +534,7 @@ class Command : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int type_;
-  ::google::protobuf::int32 repeat_count_;
+  ::google::protobuf::int32 index_;
   ::std::string* category_;
   static const ::std::string _default_category_;
   ::rec::command::Description* desc_;
@@ -1127,20 +1127,20 @@ inline void Command::set_type(::rec::command::Command_Type value) {
   type_ = value;
 }
 
-// optional sint32 repeat_count = 2;
-inline bool Command::has_repeat_count() const {
+// optional sint32 index = 2;
+inline bool Command::has_index() const {
   return _has_bit(1);
 }
-inline void Command::clear_repeat_count() {
-  repeat_count_ = 0;
+inline void Command::clear_index() {
+  index_ = 0;
   _clear_bit(1);
 }
-inline ::google::protobuf::int32 Command::repeat_count() const {
-  return repeat_count_;
+inline ::google::protobuf::int32 Command::index() const {
+  return index_;
 }
-inline void Command::set_repeat_count(::google::protobuf::int32 value) {
+inline void Command::set_index(::google::protobuf::int32 value) {
   _set_bit(1);
-  repeat_count_ = value;
+  index_ = value;
 }
 
 // optional string category = 3;

@@ -2,7 +2,6 @@
 #define __REC_SLOW_MENUS__
 
 #include "rec/slow/HasInstance.h"
-#include "rec/slow/LoopCommands.h"
 
 namespace rec {
 namespace slow {

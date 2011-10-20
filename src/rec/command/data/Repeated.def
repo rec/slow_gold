@@ -1,0 +1,6 @@
+command { type: JUMP, category: "Transport" }
+command { type: JUMP_SELECTED, category: "Transport" }
+command { type: SELECT, category: "Selection" }
+command { type: SELECT_ONLY, category: "Selection" }
+command { type: TOGGLE, category: "Selection" }
+command { type: UNSELECT, category: "Selection" }

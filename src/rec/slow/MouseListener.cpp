@@ -4,7 +4,6 @@
 #include "rec/audio/Audio.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Model.h"
-#include "rec/slow/LoopCommands.h"
 #include "rec/slow/Target.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
@@ -42,6 +41,16 @@ void zoom(Model* model, const MouseEvent& e, RealTime time, double increment) {
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
   model->zoom(time, zoomFunction(s * increment));
+}
+
+void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
+  LoopPointList loops(data::get<LoopPointList>(file));
+
+  int i = 0, size = loops.loop_point_size();
+  for (; i < size && loops.loop_point(i).time() <= time; ++i);
+  LoopPoint* lp = loops.mutable_loop_point(i - 1);
+  lp->set_selected(!lp->selected());
+  data::set(loops, file);
 }
 
 }  // namespace

@@ -9,12 +9,12 @@ namespace slow {
 
 typedef command::Command Command;
 
-// int commandToIndex(const Command&, int index = 0);
+enum Position {
+  FIRST = -5, PREVIOUS = -4, CURRENT = -3, NEXT = -2, LAST = -1
+};
 
-enum Position { FIRST = -5, PREVIOUS = -4, CURRENT = -3, NEXT = -2, LAST = -1, ZERO = 0 };
 int positionToIndex(Position pos, int segment, int size);
 
-int getCommandBase(const Command& cmd);
 Position getPosition(int c);
 
 }  // namespace slow

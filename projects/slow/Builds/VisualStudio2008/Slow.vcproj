@@ -303,16 +303,6 @@
         <Filter Name="command">
           <File RelativePath="..\..\..\..\src\rec\command\Command.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\Command.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandEntryWindow.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMap.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMap.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMapCategoryItem.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMapEditButton.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMapEditor.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMapEditor.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMapEditorMappingItem.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMapItemComponent.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\CommandMapTopLevelItem.h"/>
           <Filter Name="data">
             <File RelativePath="..\..\..\..\src\rec\command\data\CommandData.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\command\data\CommandData.h"/>
@@ -322,18 +312,32 @@
             <File RelativePath="..\..\..\..\src\rec\command\data\Descriptions.def.h"/>
             <File RelativePath="..\..\..\..\src\rec\command\data\KeyPresses.def.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\command\data\KeyPresses.def.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\data\Repeated.def.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\data\Repeated.def.h"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\command\GenericCommandMapEditor.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\Keyboard.xml.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\command\Keyboard.xml.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\KeyCommandMapEditor.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\command\KeyCommandMapEditor.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\MidiCommandMap.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\command\MidiCommandMap.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\MidiCommandMapEditor.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\command\MidiCommandMapEditor.h"/>
-          <File RelativePath="..\..\..\..\src\rec\command\MidiName.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\command\MidiName.h"/>
+          <Filter Name="map">
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandEntryWindow.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMap.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMap.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMapCategoryItem.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMapEditButton.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMapEditor.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMapEditor.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMapEditorMappingItem.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMapItemComponent.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\CommandMapTopLevelItem.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\GenericCommandMapEditor.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\Keyboard.xml.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\Keyboard.xml.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\MidiCommandMap.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\MidiCommandMap.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\MidiName.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\map\MidiName.h"/>
+          </Filter>
           <File RelativePath="..\..\..\..\src\rec\command\TargetManager.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\TargetManager.h"/>
         </Filter>
@@ -572,14 +576,26 @@
           <File RelativePath="..\..\..\..\src\rec\music\Metadata.h"/>
         </Filter>
         <Filter Name="slow">
+          <Filter Name="callbacks">
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\Callbacks.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\LoopCallbacks.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\LoopCallbacks.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h"/>
+          </Filter>
           <File RelativePath="..\..\..\..\src\rec\slow\Components.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\HasInstance.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Instance.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Instance.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Listeners.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Listeners.h"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\LoopCommands.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\LoopCommands.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\MainPage.cpp"/>
@@ -599,8 +615,6 @@
           <File RelativePath="..\..\..\..\src\rec\slow\SlowWindow.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Target.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Target.h"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\TargetCommands.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\TargetCommands.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Threads.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Threads.h"/>
         </Filter>
@@ -685,6 +699,8 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\Callback0.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Callback1.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Callback2.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback3.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback4.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\FunctionCallback.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Looper.h"/>
@@ -759,8 +775,10 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\command\Access.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\command\Command.pb.h"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.cc"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.h"/>
+            <Filter Name="map">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\command\map\CommandMap.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\command\map\CommandMap.pb.h"/>
+            </Filter>
           </Filter>
           <Filter Name="data">
             <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc"/>

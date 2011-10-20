@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="PK6d4HvkO" name="Slow">
+  <MAINGROUP id="aMvIi9vmb" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -313,26 +313,6 @@
               name="Command.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/Command.h" id="HHk8YU1mC"
               name="Command.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandEntryWindow.h"
-              id="R357Cn278" name="CommandEntryWindow.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/CommandMap.cpp" id="fPtdgheJf"
-              name="CommandMap.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandMap.h" id="S7Xe9bukw"
-              name="CommandMap.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandMapCategoryItem.h"
-              id="qfpQoaVdx" name="CommandMapCategoryItem.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandMapEditButton.h"
-              id="SdyPxqJAw" name="CommandMapEditButton.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/CommandMapEditor.cpp"
-              id="eb6JiOItT" name="CommandMapEditor.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandMapEditor.h" id="FoWgaeebS"
-              name="CommandMapEditor.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandMapEditorMappingItem.h"
-              id="xgtmNyG3U" name="CommandMapEditorMappingItem.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandMapItemComponent.h"
-              id="Neghj6PTz" name="CommandMapItemComponent.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandMapTopLevelItem.h"
-              id="4SobnDju2" name="CommandMapTopLevelItem.h" resource="0"/>
         <GROUP id="5BY8wfPFd" name="data">
           <FILE compile="1" file="../../src/rec/command/data/CommandData.cpp"
                 id="axlSAzhcB" name="CommandData.cpp" resource="0"/>
@@ -350,29 +330,55 @@
                 id="evv4N3Bys" name="KeyPresses.def.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/data/KeyPresses.def.h"
                 id="9ay7Ae4w0" name="KeyPresses.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/data/Repeated.def.cpp"
+                id="PZnz4y33W" name="Repeated.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/data/Repeated.def.h"
+                id="MitEVSn1T" name="Repeated.def.h" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/command/GenericCommandMapEditor.h"
-              id="TUT3bp3xc" name="GenericCommandMapEditor.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/Keyboard.xml.cpp" id="QYsctokX9"
-              name="Keyboard.xml.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/Keyboard.xml.h" id="JN5pqzCIU"
-              name="Keyboard.xml.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/KeyCommandMapEditor.cpp"
-              id="QBgNiNtTD" name="KeyCommandMapEditor.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/KeyCommandMapEditor.h"
-              id="IOLbRayXZ" name="KeyCommandMapEditor.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/MidiCommandMap.cpp" id="V6OANLyTT"
-              name="MidiCommandMap.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/MidiCommandMap.h" id="WGW2O4Oxe"
-              name="MidiCommandMap.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/MidiCommandMapEditor.cpp"
-              id="225AG8jjM" name="MidiCommandMapEditor.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/MidiCommandMapEditor.h"
-              id="b3Vkgg5ef" name="MidiCommandMapEditor.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/MidiName.cpp" id="yQqwfd0jn"
-              name="MidiName.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/MidiName.h" id="dKSMQk7Rt"
-              name="MidiName.h" resource="0"/>
+        <GROUP id="4iVLvx65i" name="map">
+          <FILE compile="0" file="../../src/rec/command/map/CommandEntryWindow.h"
+                id="BFnY7LIqq" name="CommandEntryWindow.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/CommandMap.cpp" id="4DmdbO82m"
+                name="CommandMap.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/CommandMap.h" id="wyC3ldSQO"
+                name="CommandMap.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/CommandMapCategoryItem.h"
+                id="R8CaoQI7g" name="CommandMapCategoryItem.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/CommandMapEditButton.h"
+                id="7mXyUYuIC" name="CommandMapEditButton.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/CommandMapEditor.cpp"
+                id="agqFrwTDv" name="CommandMapEditor.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/CommandMapEditor.h"
+                id="AQVDnKJpO" name="CommandMapEditor.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/CommandMapEditorMappingItem.h"
+                id="90pUnBlVO" name="CommandMapEditorMappingItem.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/CommandMapItemComponent.h"
+                id="ciW546e6U" name="CommandMapItemComponent.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/CommandMapTopLevelItem.h"
+                id="0YsLmX3gA" name="CommandMapTopLevelItem.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/GenericCommandMapEditor.h"
+                id="81fHNOcbG" name="GenericCommandMapEditor.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/Keyboard.xml.cpp"
+                id="JjlJGtU6l" name="Keyboard.xml.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/Keyboard.xml.h" id="yHSBj1SAC"
+                name="Keyboard.xml.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/KeyCommandMapEditor.cpp"
+                id="7C1V1z6Sa" name="KeyCommandMapEditor.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/KeyCommandMapEditor.h"
+                id="XPUwgfDRz" name="KeyCommandMapEditor.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/MidiCommandMap.cpp"
+                id="8Vb2hFti6" name="MidiCommandMap.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/MidiCommandMap.h"
+                id="CiBtXNKIh" name="MidiCommandMap.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/MidiCommandMapEditor.cpp"
+                id="eMZUXwRJ2" name="MidiCommandMapEditor.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/MidiCommandMapEditor.h"
+                id="a3ZyTfHFu" name="MidiCommandMapEditor.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/MidiName.cpp" id="KDkdHO0oi"
+                name="MidiName.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/MidiName.h" id="0Gs8u0Baz"
+                name="MidiName.h" resource="0"/>
+        </GROUP>
         <FILE compile="1" file="../../src/rec/command/TargetManager.cpp" id="nfE1AINWI"
               name="TargetManager.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TargetManager.h" id="WW30iAqz4"
@@ -821,6 +827,32 @@
               name="Metadata.h" resource="0"/>
       </GROUP>
       <GROUP id="6pOQtRKmS" name="slow">
+        <GROUP id="5L1x2kENa" name="callbacks">
+          <FILE compile="1" file="../../src/rec/slow/callbacks/Callbacks.cpp"
+                id="E9d4ru4IG" name="Callbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/Callbacks.h" id="Dvw3OMb3z"
+                name="Callbacks.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/callbacks/GlobalCallbacks.cpp"
+                id="rLbT70A8V" name="GlobalCallbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/GlobalCallbacks.h"
+                id="Sf7iDprqL" name="GlobalCallbacks.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/callbacks/InstanceCallbacks.cpp"
+                id="IKtcR0mJ4" name="InstanceCallbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/InstanceCallbacks.h"
+                id="qMC0r5N1L" name="InstanceCallbacks.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/callbacks/LoopCallbacks.cpp"
+                id="23MUvdVkh" name="LoopCallbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/LoopCallbacks.h"
+                id="5wNOoIjS8" name="LoopCallbacks.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/callbacks/RepeatedCallbacks.cpp"
+                id="nR9jN53qY" name="RepeatedCallbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/RepeatedCallbacks.h"
+                id="qCOyP2M60" name="RepeatedCallbacks.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/callbacks/SelectionCallbacks.cpp"
+                id="d6LpyT0f8" name="SelectionCallbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/SelectionCallbacks.h"
+                id="K1m2augcs" name="SelectionCallbacks.h" resource="0"/>
+        </GROUP>
         <FILE compile="0" file="../../src/rec/slow/Components.h" id="3F03AcAjS"
               name="Components.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/HasInstance.h" id="uyZaim5aZ"
@@ -833,10 +865,6 @@
               name="Listeners.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Listeners.h" id="pXQhQUBxt"
               name="Listeners.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/LoopCommands.cpp" id="yMcnQfuAf"
-              name="LoopCommands.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/LoopCommands.h" id="npwAGdzqQ"
-              name="LoopCommands.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/LoopSnapshot.cpp" id="RDA6Tkbbu"
               name="LoopSnapshot.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/LoopSnapshot.h" id="JZtq8HIzN"
@@ -875,10 +903,6 @@
               name="Target.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Target.h" id="Aj4eo3Y1O"
               name="Target.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/TargetCommands.cpp" id="rayc32Yfa"
-              name="TargetCommands.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/TargetCommands.h" id="EglahaRhI"
-              name="TargetCommands.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Threads.cpp" id="ypoui9HF1"
               name="Threads.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Threads.h" id="0GpWTknsl"
@@ -1034,6 +1058,10 @@
                 name="Callback1.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Callback2.h" id="r4rgEOh0S"
                 name="Callback2.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Callback3.h" id="8eBD7ztEW"
+                name="Callback3.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Callback4.h" id="9DEh0htVm"
+                name="Callback4.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FileWriter.h" id="fL2Cxfyok"
                 name="FileWriter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FunctionCallback.h"
@@ -1160,10 +1188,12 @@
                 id="8lzt4S7QR" name="Command.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/command/Command.pb.h"
                 id="7rHNjvGKc" name="Command.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/command/CommandMap.pb.cc"
-                id="pFItjCZqb" name="CommandMap.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/command/CommandMap.pb.h"
-                id="mnLlbrtmA" name="CommandMap.pb.h" resource="0"/>
+          <GROUP id="Uc8cB5HNH" name="map">
+            <FILE compile="1" file="../../genfiles/proto/rec/command/map/CommandMap.pb.cc"
+                  id="icuBQ8Ir1" name="CommandMap.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/command/map/CommandMap.pb.h"
+                  id="kLYoWiKU7" name="CommandMap.pb.h" resource="0"/>
+          </GROUP>
         </GROUP>
         <GROUP id="w0cToJxUH" name="data">
           <FILE compile="1" file="../../genfiles/proto/rec/data/Action.pb.cc"
@@ -1291,7 +1321,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="DS21Plxfm" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="SmqHDuac9" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

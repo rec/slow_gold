@@ -50,6 +50,9 @@
     <Filter Include="Slow\rec\command\data">
       <UniqueIdentifier>{0BEE5513-4D54-55D6-9DA7-B9C3C769E00E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Slow\rec\command\map">
+      <UniqueIdentifier>{07490BBB-8F85-E72E-F936-B22F0A0FB613}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Slow\rec\data">
       <UniqueIdentifier>{30C6430A-9A1D-9F00-5E1C-045919BF6A3C}</UniqueIdentifier>
     </Filter>
@@ -91,6 +94,9 @@
     </Filter>
     <Filter Include="Slow\rec\slow">
       <UniqueIdentifier>{DBEAE055-F058-8BAB-5B19-64223DD23E22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\slow\callbacks">
+      <UniqueIdentifier>{1CB4BDC4-11CE-145C-2838-056CA03890B7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Slow\rec\util">
       <UniqueIdentifier>{FEECF880-CAB8-9B83-F745-508E1697E58E}</UniqueIdentifier>
@@ -145,6 +151,9 @@
     </Filter>
     <Filter Include="Slow\proto\rec\command">
       <UniqueIdentifier>{39ACD487-20AB-1561-1577-1457EA584733}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\command\map">
+      <UniqueIdentifier>{965C1CEF-1B29-89CF-2637-71FF39E3C78F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Slow\proto\rec\data">
       <UniqueIdentifier>{D7130B08-B624-D1D7-7EAC-704C96F798B1}</UniqueIdentifier>
@@ -331,12 +340,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp">
       <Filter>Slow\rec\command</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandMap.cpp">
-      <Filter>Slow\rec\command</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandMapEditor.cpp">
-      <Filter>Slow\rec\command</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\data\CommandData.cpp">
       <Filter>Slow\rec\command\data</Filter>
     </ClCompile>
@@ -349,20 +352,29 @@
     <ClCompile Include="..\..\..\..\src\rec\command\data\KeyPresses.def.cpp">
       <Filter>Slow\rec\command\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\Keyboard.xml.cpp">
-      <Filter>Slow\rec\command</Filter>
+    <ClCompile Include="..\..\..\..\src\rec\command\data\Repeated.def.cpp">
+      <Filter>Slow\rec\command\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\KeyCommandMapEditor.cpp">
-      <Filter>Slow\rec\command</Filter>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp">
+      <Filter>Slow\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMap.cpp">
-      <Filter>Slow\rec\command</Filter>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditor.cpp">
+      <Filter>Slow\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.cpp">
-      <Filter>Slow\rec\command</Filter>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\Keyboard.xml.cpp">
+      <Filter>Slow\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\MidiName.cpp">
-      <Filter>Slow\rec\command</Filter>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.cpp">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMap.cpp">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.cpp">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp">
+      <Filter>Slow\rec\command\map</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp">
       <Filter>Slow\rec\command</Filter>
@@ -619,13 +631,28 @@
     <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp">
       <Filter>Slow\rec\music</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\LoopCallbacks.cpp">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Listeners.cpp">
-      <Filter>Slow\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\LoopCommands.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp">
@@ -653,9 +680,6 @@
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp">
-      <Filter>Slow\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\TargetCommands.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
@@ -796,8 +820,8 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc">
       <Filter>Slow\proto\rec\command</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.cc">
-      <Filter>Slow\proto\rec\command</Filter>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\map\CommandMap.pb.cc">
+      <Filter>Slow\proto\rec\command\map</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc">
       <Filter>Slow\proto\rec\data</Filter>
@@ -1128,30 +1152,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandEntryWindow.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMap.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapCategoryItem.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditButton.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditor.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditorMappingItem.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapItemComponent.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapTopLevelItem.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\data\CommandData.h">
       <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
@@ -1164,23 +1164,50 @@
     <ClInclude Include="..\..\..\..\src\rec\command\data\KeyPresses.def.h">
       <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\GenericCommandMapEditor.h">
-      <Filter>Slow\rec\command</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\command\data\Repeated.def.h">
+      <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\Keyboard.xml.h">
-      <Filter>Slow\rec\command</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.h">
+      <Filter>Slow\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\KeyCommandMapEditor.h">
-      <Filter>Slow\rec\command</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h">
+      <Filter>Slow\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\MidiCommandMap.h">
-      <Filter>Slow\rec\command</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapCategoryItem.h">
+      <Filter>Slow\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.h">
-      <Filter>Slow\rec\command</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditButton.h">
+      <Filter>Slow\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\MidiName.h">
-      <Filter>Slow\rec\command</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditor.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditorMappingItem.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapItemComponent.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapTopLevelItem.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\GenericCommandMapEditor.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\Keyboard.xml.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMap.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.h">
+      <Filter>Slow\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\MidiName.h">
+      <Filter>Slow\rec\command\map</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h">
       <Filter>Slow\rec\command</Filter>
@@ -1557,6 +1584,24 @@
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h">
       <Filter>Slow\rec\music</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\LoopCallbacks.h">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
@@ -1567,9 +1612,6 @@
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Listeners.h">
-      <Filter>Slow\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\LoopCommands.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h">
@@ -1600,9 +1642,6 @@
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Target.h">
-      <Filter>Slow\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\TargetCommands.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
@@ -1743,6 +1782,12 @@
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback2.h">
       <Filter>Slow\rec\util\thread</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback3.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback4.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\FileWriter.h">
       <Filter>Slow\rec\util\thread</Filter>
     </ClInclude>
@@ -1836,8 +1881,8 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.h">
       <Filter>Slow\proto\rec\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.h">
-      <Filter>Slow\proto\rec\command</Filter>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\map\CommandMap.pb.h">
+      <Filter>Slow\proto\rec\command\map</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.h">
       <Filter>Slow\proto\rec\data</Filter>
