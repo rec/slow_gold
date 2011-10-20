@@ -1,4 +1,4 @@
-#include "rec/command/CommandMap.h"
+#include "rec/command/map/CommandMap.h"
 
 namespace rec {
 namespace command {

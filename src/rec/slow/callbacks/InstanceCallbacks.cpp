@@ -39,7 +39,7 @@ void nudgeVolumeUp(Instance* i) {
   }
 }
 
-void clearLoops(Instance *) {
+void clearLoops(Instance *i) {
   LoopPointList loops;
   loops.add_loop_point();
   data::set(loops, i->model_->file());
@@ -168,8 +168,6 @@ using namespace rec::command;
 
 void addInstanceCallbacks(CallbackTable* c, Instance* i) {
   using namespace rec::gui;
-  using thread::functionCallback;
-  using thread::methodCallback;
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;
 

@@ -15,7 +15,7 @@ class Menus : public MenuBarModel, public HasInstance {
   virtual const StringArray getMenuBarNames();
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& name);
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
-  void add(PopupMenu*, command::Command::Type, bool enable = true,
+  void add(PopupMenu*, CommandID, bool enable = true,
            const String& name = String::empty);
 
  private:

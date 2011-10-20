@@ -10,7 +10,7 @@ namespace command {
 const Commands& commands() { return *data::commands; }
 const Commands& descriptions(const Access&) { return *data::descriptions; }
 const Commands& keyPresses(const Access&) { return *data::keyPresses; }
-const Commands repeated(int repeatCount) { return *data::repeatedCommands; }
+const Commands repeated(int repeatCount) { return *data::repeated; }
 
 // Internationalization goes here!
 

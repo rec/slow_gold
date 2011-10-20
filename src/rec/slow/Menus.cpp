@@ -18,7 +18,7 @@ const StringArray Menus::getMenuBarNames() {
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void Menus::add(PopupMenu* menu, Command::Type command, bool enable,
+void Menus::add(PopupMenu* menu, CommandID command, bool enable,
                 const String& name) {
   target()->targetManager()->addCommandItem(menu, command, enable, name);
 }

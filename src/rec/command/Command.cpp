@@ -65,7 +65,7 @@ class CommandDatabase {
 
     merge(&map_, commands(), NEW);
     merge(&map_, descriptions(access), MERGE);
-    merge(&map_, keyPresses(access). MERGE);
+    merge(&map_, keyPresses(access), MERGE);
   }
 
  private:

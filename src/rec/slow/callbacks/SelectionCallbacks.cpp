@@ -1,5 +1,5 @@
-#include "rec/slow/SelectionCallbacks.h"
-#include "rec/slow/Callbacks.h"
+#include "rec/slow/callbacks/SelectionCallbacks.h"
+#include "rec/slow/callbacks/Callbacks.h"
 
 using namespace std;
 using namespace rec::command;

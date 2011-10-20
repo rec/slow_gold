@@ -1,4 +1,4 @@
-#include "rec/command/map/TargetManager.h"
+#include "rec/command/TargetManager.h"
 
 #include "rec/app/Files.h"
 #include "rec/util/STL.h"

@@ -26,7 +26,7 @@ struct LoopSnapshot {
   int segment_;
 
   typedef bool (*Function)(LoopSnapshot*);
-  typedef std::map<command::Command::Type, LoopSnapshot::Function> Map;
+  typedef std::map<int32, LoopSnapshot::Function> Map;
 };
 
 }  // namespace slow

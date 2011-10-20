@@ -64,7 +64,7 @@ void addLoopCallbacks(CallbackTable* t, Instance* i) {
   Position noPos;
 
   (*t)[Command::CLEAR_LOOPS] = functionCallback(loop, i, clearLoops, noPos);
-
+}
 }  // namespace
 
 bool executeLoopCommand(Instance*, const command::Command&);

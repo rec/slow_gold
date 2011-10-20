@@ -1,4 +1,4 @@
-#include "rec/slow/Callbacks.h"
+#include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/Model.h"
 
 namespace rec {
