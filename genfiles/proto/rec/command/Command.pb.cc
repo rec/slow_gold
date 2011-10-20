@@ -202,7 +202,7 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "t\030\005 \001(\010\"7\n\013Description\022\014\n\004menu\030\001 \001(\t\022\014\n\004"
     "full\030\002 \001(\t\022\014\n\004help\030\003 \001(\t\"\213\010\n\007Command\022\'\n\004"
     "type\030\001 \001(\0162\031.rec.command.Command.Type\022\024\n"
-    "\014repeat_count\030\002 \001(\r\022\020\n\010category\030\003 \001(\t\022&\n"
+    "\014repeat_count\030\002 \001(\021\022\020\n\010category\030\003 \001(\t\022&\n"
     "\004desc\030\004 \001(\0132\030.rec.command.Description\022\'\n"
     "\010keypress\030\005 \003(\0132\025.rec.command.KeyPress\"\335"
     "\006\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n"
@@ -1118,7 +1118,7 @@ Command::Command(const Command& from)
 void Command::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
-  repeat_count_ = 0u;
+  repeat_count_ = 0;
   category_ = const_cast< ::std::string*>(&_default_category_);
   desc_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1160,7 +1160,7 @@ Command* Command::New() const {
 void Command::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0;
-    repeat_count_ = 0u;
+    repeat_count_ = 0;
     if (_has_bit(2)) {
       if (category_ != &_default_category_) {
         category_->clear();
@@ -1201,13 +1201,13 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 repeat_count = 2;
+      // optional sint32 repeat_count = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_repeat_count:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
                  input, &repeat_count_)));
           _set_bit(1);
         } else {
@@ -1287,9 +1287,9 @@ void Command::SerializeWithCachedSizes(
       1, this->type(), output);
   }
   
-  // optional uint32 repeat_count = 2;
+  // optional sint32 repeat_count = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->repeat_count(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->repeat_count(), output);
   }
   
   // optional string category = 3;
@@ -1327,9 +1327,9 @@ void Command::SerializeWithCachedSizes(
       1, this->type(), target);
   }
   
-  // optional uint32 repeat_count = 2;
+  // optional sint32 repeat_count = 2;
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->repeat_count(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->repeat_count(), target);
   }
   
   // optional string category = 3;
@@ -1373,10 +1373,10 @@ int Command::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
-    // optional uint32 repeat_count = 2;
+    // optional sint32 repeat_count = 2;
     if (has_repeat_count()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
           this->repeat_count());
     }
     

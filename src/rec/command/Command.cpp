@@ -10,12 +10,41 @@ namespace command {
 
 namespace {
 
+enum MergeType { NEW, MERGE };
+
+void merge(CommandTable* map, const Commands& commands, MergeType mergeType) {
+  for (int i = 0; i < commands.command_size(); ++i) {
+    const Command& cmd = commands.command(i);
+    const Command::Type type = cmd.type();
+    CommandTable::iterator j = map->find(type);
+    if (j == map->end()) {
+      if (mergeType == NEW)
+        map->insert(j, std::make_pair(type, new Command(cmd)));
+      else
+        LOG(ERROR) << "No existing command " << type;
+    } else {
+      if (mergeType == MERGE)
+        j->second->MergeFrom(cmd);
+      else
+        LOG(ERROR) << "Can't replacing existing command " << type;
+    }
+  }
+}
+
 class CommandDatabase {
  public:
-  CommandDatabase() { recalculate(); }
-  ~CommandDatabase() { clear(); }
+  CommandDatabase() {
+    recalculate();
+  }
 
-  void clear() { stl::deleteMapPointers(&map_); map_.clear(); }
+  ~CommandDatabase() {
+    clear();
+  }
+
+  void clear() {
+    stl::deleteMapPointers(&map_);
+    map_.clear();
+  }
 
   const Command command(Command::Type t) const {
     Lock l(lock_);
@@ -54,7 +83,7 @@ CommandDatabase* commandDatabase() {
 }  // namespace
 
 
-const Command getCommand(Command::Type t) { return commandDatabase()->command(t); }
+// const Command getCommand(Command::Type t) { return commandDatabase()->command(t); }
 const CommandTable getCommands() { return commandDatabase()->commandTable(); }
 void recalculate() { commandDatabase()->recalculate(); }
 

@@ -69,7 +69,6 @@ void Target::addCommands(const CommandTable& cmds,
 }
 
 #if 0
-#include "rec/util/thread/FunctionCallback.h"
 
 using rec::thread::functionCallback;
 

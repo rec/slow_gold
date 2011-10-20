@@ -85,7 +85,7 @@ message Command {
   };
 
   optional Type type = 1;
-  optional uint32 repeat_count = 2;  // For repeating commands.
+  optional sint32 repeat_count = 2;  // For repeating commands.
 
   optional string category = 3;  // English language category.
   optional Description desc = 4;  // Localized descriptions.

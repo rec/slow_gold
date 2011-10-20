@@ -7,10 +7,9 @@
 namespace rec {
 namespace command {
 
-typedef std::map<Command::Type, Command*> CommandTable;
-typedef std::map<Command::Type, Callback*> CallbackTable;
+typedef std::map<CommandID, Command*> CommandTable;
+typedef std::map<CommandID, Callback*> CallbackTable;
 
-const Command getCommand(Command::Type type);
 const CommandTable getCommands();
 
 // Call to recalculate commands if Access changes for the user.

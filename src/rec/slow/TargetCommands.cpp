@@ -15,7 +15,6 @@
 #include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
 #include "rec/util/Math.h"
-#include "rec/util/Undo.h"
 #include "rec/util/cd/Eject.h"
 #include "rec/util/thread/FunctionCallback.h"
 
@@ -150,7 +149,7 @@ void zoomOut(Instance* i) {
 
 using namespace rec::command;
 
-void addToCommandTable(CallbackTable* t, Instance* i) {
+void addInstanceCommands(CallbackTable* t, Instance* i) {
   using namespace rec::gui;
   using thread::functionCallback;
   using thread::methodCallback;
@@ -181,10 +180,6 @@ void addToCommandTable(CallbackTable* t, Instance* i) {
   (*t)[Command::ZOOM_IN] = functionCallback(zoomIn, i);
   (*t)[Command::ZOOM_OUT] = functionCallback(zoomOut, i);
 
-  (*t)[Command::DEL] = functionCallback(cutNoClipboard);
-  (*t)[Command::CUT] = functionCallback(cutToClipboard);
-  (*t)[Command::COPY] = functionCallback(copyToClipboard);
-  (*t)[Command::PASTE] = functionCallback(pasteFromClipboard);
   (*t)[Command::AUDIO_PREFERENCES] = methodCallback(
       i->device_->setupPage_.get(), &SetupPage::show,
       &i->components_->mainPage_);
@@ -193,10 +188,12 @@ void addToCommandTable(CallbackTable* t, Instance* i) {
   (*t)[Command::EJECT_CDS] = functionCallback(&cd::ejectAll);
   (*t)[Command::OPEN] = functionCallback(&dialog::openOneFile,
                                          i->listeners_.get());
-  (*t)[Command::REDO] = functionCallback(&redo);
   (*t)[Command::TOGGLE_START_STOP] = methodCallback(i->player_.get(),
                                                     &Player::toggle);
-  (*t)[Command::UNDO] = functionCallback(&undo);
+}
+
+
+void addGlobalCommands(CallbackTable* t) {
 }
 
 }  // namespace slow
