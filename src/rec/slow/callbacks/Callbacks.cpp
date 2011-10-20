@@ -9,12 +9,12 @@ namespace slow {
 
 using command::CallbackTable;
 
-CallbackTable* createCallbackTable(Instance* i) {
+CallbackTable* createCallbackTable(Instance* i, int repeat) {
   ptr<CallbackTable> t;
   addGlobalCallbacks(t.get());
   addInstanceCallbacks(t.get(), i);
   addSelectionCallbacks(t.get(), i);
-  addRepeatedCallbacks(t.get(), i, REPEATED_COUNT);
+  addRepeatedCallbacks(t.get(), i, repeat);
 
   return t.transfer();
 }

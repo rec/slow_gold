@@ -4,6 +4,7 @@
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Position.h"
+#include "rec/slow/callbacks/Callbacks.h"
 
 using namespace rec::command;
 
@@ -32,23 +33,20 @@ void addCommand(TargetManager* manager, Callback* cb, const Command& c) {
   manager->addCallback(t, cb, menu, category, desc);
 }
 
-void addCommands(TargetManager* manager,
-                 const CommandTable& cmds,
-                 const CallbackTable& callbacks) {
-  for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
-    const Command& c = *i->second;
-    CallbackTable::const_iterator j = callbacks.find(c.type());
-    if (j != callbacks.end())
-      addCommand(manager, j->second, c);
-    else
-      LOG(ERROR) << "Couldn't add " << c.DebugString();
-  }
-}
-
 }  // namespace
 
 
 void Target::addCommands() {
+  ptr<CallbackTable> callbacks(createCallbackTable(instance_));
+  CommandTable cmds = command::getCommands();
+  for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
+    const Command& c = *i->second;
+    CallbackTable::const_iterator j = callbacks->find(c.type());
+    if (j != callbacks->end())
+      addCommand(&manager_, j->second, c);
+    else
+      LOG(ERROR) << "Couldn't add " << c.DebugString();
+  }
 
 }
 

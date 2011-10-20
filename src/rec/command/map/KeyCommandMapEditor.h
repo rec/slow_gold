@@ -6,7 +6,7 @@
 namespace rec {
 namespace command {
 
-typedef GenericCommandMapEditor<KeyPressMappingSet, KeyPress> KeyCommandMapEditor;
+typedef GenericCommandMapEditor<KeyPressMappingSet, juce::KeyPress> KeyCommandMapEditor;
 
 }  // namespace command
 }  // namespace rec
