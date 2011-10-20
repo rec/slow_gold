@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="mdG2aFFoh" name="Slow">
+  <MAINGROUP id="Q8jyt3fAE" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -313,6 +313,10 @@
               name="Command.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/Command.h" id="HHk8YU1mC"
               name="Command.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/CommandDatabase.cpp"
+              id="mvc7dDOU2" name="CommandDatabase.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandDatabase.h" id="Ktex21rit"
+              name="CommandDatabase.h" resource="0"/>
         <GROUP id="5BY8wfPFd" name="data">
           <FILE compile="1" file="../../src/rec/command/data/CommandData.cpp"
                 id="axlSAzhcB" name="CommandData.cpp" resource="0"/>
@@ -1317,7 +1321,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="YupijO3ym" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="U2h7rTSLG" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

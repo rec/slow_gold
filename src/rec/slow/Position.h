@@ -27,7 +27,6 @@ class Position {
 
  private:
   int32 position_;
-
 };
 
 }  // namespace slow

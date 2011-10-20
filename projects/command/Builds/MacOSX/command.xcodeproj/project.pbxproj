@@ -64,6 +64,7 @@
 		CB259A46E182713FBB706D99 = { isa = PBXBuildFile; fileRef = B61EAE1B79B3D4974D15F8A5; };
 		8A1F66E4A5CF1B4F78B542C7 = { isa = PBXBuildFile; fileRef = C4DFFC3D3A435681510DEF47; };
 		838F57D3C1DA4AACDAA36AEC = { isa = PBXBuildFile; fileRef = 6011F232AEB57506156913E1; };
+		E154D79A3B5B341C0579F359 = { isa = PBXBuildFile; fileRef = 76CBA5686D693965964628DD; };
 		E80D13946FBA8E74926B6796 = { isa = PBXBuildFile; fileRef = 83B69BCCA36045954FEE1439; };
 		FDD768D08BC67CDA96AA3CCB = { isa = PBXBuildFile; fileRef = DE09892044A3B35E9B1B63FC; };
 		6AF1160612F5D76648F9D291 = { isa = PBXBuildFile; fileRef = 191B1D542D5D18DF27664943; };
@@ -394,6 +395,8 @@
 		AAB32EA297812F1C88B42099 = { isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../src/rec/binary/logo.png; sourceTree = "SOURCE_ROOT"; };
 		6011F232AEB57506156913E1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Command.cpp; path = ../../../../src/rec/command/Command.cpp; sourceTree = "SOURCE_ROOT"; };
 		E0E53271295BAF9F59A71694 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Command.h; path = ../../../../src/rec/command/Command.h; sourceTree = "SOURCE_ROOT"; };
+		76CBA5686D693965964628DD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandDatabase.cpp; path = ../../../../src/rec/command/CommandDatabase.cpp; sourceTree = "SOURCE_ROOT"; };
+		BE1F86D155B69C3C394F544B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandDatabase.h; path = ../../../../src/rec/command/CommandDatabase.h; sourceTree = "SOURCE_ROOT"; };
 		83B69BCCA36045954FEE1439 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandData.cpp; path = ../../../../src/rec/command/data/CommandData.cpp; sourceTree = "SOURCE_ROOT"; };
 		C7C1517F1B5D5E5D8D6CDD9E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandData.h; path = ../../../../src/rec/command/data/CommandData.h; sourceTree = "SOURCE_ROOT"; };
 		DE09892044A3B35E9B1B63FC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Commands.def.cpp; path = ../../../../src/rec/command/data/Commands.def.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1036,6 +1039,8 @@
 		543C5B0340FB0EC80BA50D65 = { isa = PBXGroup; children = (
 				6011F232AEB57506156913E1,
 				E0E53271295BAF9F59A71694,
+				76CBA5686D693965964628DD,
+				BE1F86D155B69C3C394F544B,
 				B3892695345C290B90498D5D,
 				313F63B6B46C743E0C20FFF9,
 				D8B011CF05AE82F95C0D38EE,
@@ -1557,7 +1562,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		BC2B4B53E1995BC81988E4C4 = { isa = PBXGroup; children = (
+		B3587D760A091AAF8099C16D = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = command; sourceTree = "<group>"; };
@@ -1584,7 +1589,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				BC2B4B53E1995BC81988E4C4,
+				B3587D760A091AAF8099C16D,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1717,6 +1722,7 @@
 				CB259A46E182713FBB706D99,
 				8A1F66E4A5CF1B4F78B542C7,
 				838F57D3C1DA4AACDAA36AEC,
+				E154D79A3B5B341C0579F359,
 				E80D13946FBA8E74926B6796,
 				FDD768D08BC67CDA96AA3CCB,
 				6AF1160612F5D76648F9D291,

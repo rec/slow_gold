@@ -60,7 +60,7 @@ void add(CallbackTable* c, int32 type, Position position,
 
 void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
   for (int j = Position::FIRST; j < repeat; ++j) {
-  	Position pos = static_cast<Position>(j);
+  	Position pos(j);
     add(t, Command::SELECT, pos, selectAdd, i);
     add(t, Command::SELECT_ONLY, pos, selectOnly, i);
     add(t, Command::TOGGLE, pos, toggle, i);
@@ -71,5 +71,5 @@ void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
   }
 }
 
-}  // namespace slow
+}  // namespace slow2
 }  // namespace rec
