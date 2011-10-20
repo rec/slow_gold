@@ -17,7 +17,7 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
 
 void jump(LoopSnapshot* snap, Position pos) {
   int size = snap->loops_.loop_point_size() - 1;
-  int p = positionToIndex(pos, snap->segment_, size);
+  int p = pos.toIndex(snap->segment_, size);
   snap->loops_.mutable_loop_point(p)->set_selected(true);
   setTimeFromSegment(snap, p);
 }
@@ -38,7 +38,7 @@ void jumpSelected(LoopSnapshot* snap, Position pos) {
   }
 
   DCHECK(found);
-  setTimeFromSegment(snap, selected[positionToIndex(pos, s, selected.size())]);
+  setTimeFromSegment(snap, selected[pos.toIndex(s, selected.size())]);
 }
 
 bool selectAdd(int index, int pos, bool sel, bool) { return sel || index == pos; }
@@ -49,17 +49,17 @@ bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; 
 }  // namespace
 
 void add(CallbackTable* c, int32 type, Position position,
-            SelectorFunction f, Instance* i) {
-  add(c, type * Command::BANK_SIZE + position - FIRST, select, i, f, position);
+         SelectorFunction f, Instance* i) {
+  add(c, position.toCommandID(type), select, i, f, position);
 }
 
 void add(CallbackTable* c, int32 type, Position position,
-             LoopSnapshotFunction f, Instance* i) {
-  add(c, type * Command::BANK_SIZE + position - FIRST, loop, i, f, position);
+         LoopSnapshotFunction f, Instance* i) {
+  add(c, position.toCommandID(type), loop, i, f, position);
 }
 
 void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
-  for (int j = FIRST; j < repeat; ++j) {
+  for (int j = Position::FIRST; j < repeat; ++j) {
   	Position pos = static_cast<Position>(j);
     add(t, Command::SELECT, pos, selectAdd, i);
     add(t, Command::SELECT_ONLY, pos, selectOnly, i);

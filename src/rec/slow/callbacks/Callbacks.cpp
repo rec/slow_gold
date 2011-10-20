@@ -16,7 +16,7 @@ void select(Instance* instance, SelectorFunction selector, Position pos) {
   LoopSnapshot snap(instance);
   LoopPointList* loops = &snap.loops_;
   int size = loops->loop_point_size() - 1;
-  int p = positionToIndex(pos, snap.segment_, size);
+  int p = pos.toIndex(snap.segment_, size);
 
   bool allSelected = (snap.selectionCount_ == size);
 

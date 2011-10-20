@@ -6,22 +6,24 @@ namespace slow {
 
 static const int SIZE = Command::BANK_SIZE;
 
-int positionToIndex(Position pos, int segment, int size) {
-  return mod((pos == FIRST) ? 0 :
-             (pos == PREVIOUS) ? segment - 1 :
-             (pos == CURRENT) ? segment :
-             (pos == NEXT) ? segment + 1 :
-             (pos == LAST) ? size - 1 :
-             static_cast<int>(pos),
-             size);
+int Position::toIndex(int32 segment, int32 size) {
+  int pos = (position_ == FIRST) ? 0 :
+    (position_ == PREVIOUS) ? segment - 1 :
+    (position_ == CURRENT) ? segment :
+    (position_ == NEXT) ? segment + 1 :
+    (position_ == LAST) ? size - 1 :
+    position_;
+  return mod(pos, size);
 }
 
-Position getPosition(int c) {
+CommandID Position::toCommandID(int32 type) {
+  return (type * Command::BANK_SIZE) + (position_ - FIRST);
+}
+
+// static
+Position Position::fromCommandID(CommandID id) {
   static const int SIZE = Command::BANK_SIZE;
-  if (c < SIZE)
-    return CURRENT;
-  int base = SIZE * (c / SIZE);
-  return static_cast<Position>(c - base + FIRST);
+  return Position((id < SIZE) ? CURRENT : mod(id, SIZE) + FIRST);
 }
 
 }  // namespace slow

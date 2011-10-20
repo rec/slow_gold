@@ -13,10 +13,11 @@ bool invertLoopSelection(int, int, bool sel, bool) { return !sel; }
 bool toggleWholeSongLoop(int i, int p, bool, bool al) { return !al || i == p; }
 
 void addSelectionCallbacks(CallbackTable* t, Instance* i) {
-  add(t, Command::DESELECT_ALL, select, i, deselectAll, CURRENT);
-  add(t, Command::SELECT_ALL, select, i, selectAll, CURRENT);
-  add(t, Command::INVERT_LOOP_SELECTION, select, i, invertLoopSelection, CURRENT);
-  add(t, Command::TOGGLE_WHOLE_SONG_LOOP, select, i, toggleWholeSongLoop, CURRENT);
+	static const Position noPos(Position::CURRENT);
+  add(t, Command::DESELECT_ALL, select, i, deselectAll, noPos);
+  add(t, Command::SELECT_ALL, select, i, selectAll, noPos);
+  add(t, Command::INVERT_LOOP_SELECTION, select, i, invertLoopSelection, noPos);
+  add(t, Command::TOGGLE_WHOLE_SONG_LOOP, select, i, toggleWholeSongLoop, noPos);
 }
 
 }  // namespace slow

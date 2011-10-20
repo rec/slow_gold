@@ -9,13 +9,26 @@ namespace slow {
 
 typedef command::Command Command;
 
-enum Position {
-  FIRST = -5, PREVIOUS = -4, CURRENT = -3, NEXT = -2, LAST = -1
+class Position {
+ public:
+  enum Special {
+    FIRST = -5, PREVIOUS = -4, CURRENT = -3, NEXT = -2, LAST = -1
+  };
+
+  Position() {}
+  Position(int32 p) : position_(p) {}
+  Position(Special p) : position_(p) {}
+
+  int32 toIndex(int32 segment, int32 size);
+  CommandID toCommandID(int32 type);
+
+  static Position fromCommandID(CommandID id);
+  operator int32() const { return position_; }
+
+ private:
+  int32 position_;
+
 };
-
-int positionToIndex(Position pos, int segment, int size);
-
-Position getPosition(int c);
 
 }  // namespace slow
 }  // namespace rec

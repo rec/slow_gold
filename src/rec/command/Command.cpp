@@ -12,23 +12,25 @@ namespace {
 
 enum MergeType { NEW, MERGE };
 
-void merge(CommandTable* map, const Commands& commands, MergeType mergeType) {
-  for (int i = 0; i < commands.command_size(); ++i) {
-    const Command& cmd = commands.command(i);
-    const Command::Type type = cmd.type();
-    CommandTable::iterator j = map->find(type);
-    if (j == map->end()) {
-      if (mergeType == NEW)
-        map->insert(j, std::make_pair(type, new Command(cmd)));
-      else
-        LOG(ERROR) << "No existing command " << type;
-    } else {
-      if (mergeType == MERGE)
-        j->second->MergeFrom(cmd);
-      else
-        LOG(ERROR) << "Can't replacing existing command " << type;
-    }
+void merge(CommandTable* map, const Command& cmd, MergeType mergeType) {
+  const Command::Type type = cmd.type();
+  CommandTable::iterator j = map->find(type);
+  if (j == map->end()) {
+    if (mergeType == NEW)
+      map->insert(j, std::make_pair(type, new Command(cmd)));
+    else
+      LOG(ERROR) << "No existing command " << type;
+  } else {
+    if (mergeType == MERGE)
+      j->second->MergeFrom(cmd);
+    else
+      LOG(ERROR) << "Can't replacing existing command " << type;
   }
+}
+
+void merge(CommandTable* map, const Commands& commands, MergeType mergeType) {
+  for (int i = 0; i < commands.command_size(); ++i)
+    merge(map, commands.command(i), mergeType);
 }
 
 class CommandDatabase {
