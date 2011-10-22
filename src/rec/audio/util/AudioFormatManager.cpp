@@ -10,8 +10,8 @@ namespace {
 AudioFormatManager* getInstance() {
   format::mpg123::initializeOnce();
   ptr<AudioFormatManager> afm(new AudioFormatManager());
-  afm->registerBasicFormats();
   afm->registerFormat(new format::mpg123::Format(), false);
+  afm->registerBasicFormats();
 
   return afm.transfer();
 }
@@ -27,12 +27,7 @@ AudioFormatReader* createReader(const File& f) {
   return getAudioFormatManager()->createReaderFor(f);
 }
 
-AudioFormatReader* createReader(const VirtualFile& f) {
-  return createReader(getFile(f));
-}
-
 AudioFormatReader* createReader(const String& f) { return createReader(File(f)); }
-AudioFormatReader* createReader(const string& f) { return createReader(str(f)); }
 
 }  // namespace audio
 }  // namespace rec

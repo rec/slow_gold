@@ -19,6 +19,9 @@ class Listeners;
 // and all the file and stretch setting persistent data, too.
 struct Instance {
   explicit Instance(SlowWindow* window);
+
+  void startup();
+
   ~Instance();
 
   SlowWindow* window_;

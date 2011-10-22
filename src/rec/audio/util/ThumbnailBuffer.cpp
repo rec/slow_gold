@@ -43,7 +43,7 @@ void ThumbnailBuffer::writeThumbnail() {
 
 bool ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
   if (!reader) {
-    LOG(ERROR) << "Thumbnail buffer had not reader";
+    LOG(ERROR) << "Thumbnail buffer had no reader";
     return false;
   }
 

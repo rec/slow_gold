@@ -11,11 +11,11 @@ class Instance;
 class SlowWindow : public app::Window {
  public:
   SlowWindow();
-
   virtual ~SlowWindow();
+  virtual void startup();
 
  protected:
-  virtual void initialiseInstance();
+  virtual void constructInstance();
   virtual Component* getMainComponent();
   virtual MenuBarModel* getMenuBarModel();
   virtual void doComputeBounds();

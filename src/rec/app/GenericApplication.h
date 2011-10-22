@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "rec/base/base.h"
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace app {
@@ -13,7 +13,7 @@ class Window;
 class GenericApplication : public juce::JUCEApplication {
  public:
   static const int SAVE_PERIOD = 25;
-  static const int PRIORITY = 4;
+  static const int STARTUP_THREAD_PRIORITY = 4;
 
   virtual ~GenericApplication();
 
@@ -32,6 +32,7 @@ class GenericApplication : public juce::JUCEApplication {
   const String name_;
   const String version_;
   ptr<Window> window_;
+  thread_ptr<Thread> startupThread_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);

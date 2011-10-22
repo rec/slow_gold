@@ -25,7 +25,9 @@ Instance::Instance(SlowWindow* window)
       threads_(new Threads(this)) {
   target_->addCommands();
   threads_->startAll();
+}
 
+void Instance::startup() {
   model_->setFile(data::get<VirtualFile>());
 }
 

@@ -8,7 +8,7 @@
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/gui/Dialog.h"
-#include "rec/util/thread/Trash.h"
+#include "rec/util/thread/MakeThread.h"
 
 DECLARE_bool(logtostderr);
 
@@ -35,6 +35,10 @@ void GenericApplication::initialise(const String&) {
   window_.reset(createWindow());
   window_->initialise();
   LOG(INFO) << name_ << ": initialise finished.";
+  startupThread_.reset(thread::runInNewThread("startup thread",
+                                              STARTUP_THREAD_PRIORITY,
+                                              window_.get(),
+                                              &Window::startup));
 }
 
 void GenericApplication::shutdown() {

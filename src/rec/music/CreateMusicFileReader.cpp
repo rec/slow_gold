@@ -23,7 +23,7 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
 }
 
 AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata) {
-  ptr<AudioFormatReader> reader(audio::createReader(file));
+  ptr<AudioFormatReader> reader(audio::createReader(getFile(file)));
   if (metadata && reader)
     *metadata = music::getMetadata(reader->metadataValues);
 

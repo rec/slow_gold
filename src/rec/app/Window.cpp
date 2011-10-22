@@ -17,7 +17,7 @@ void Window::initialise() {
   if (running_)
     return;
 
-  initialiseInstance();
+  constructInstance();
   Component* mp = getMainComponent();
   mp->setBounds(0, 0, 1, 1);
 

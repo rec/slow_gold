@@ -9,9 +9,7 @@ namespace audio {
 AudioFormatManager* getAudioFormatManager();
 
 AudioFormatReader* createReader(const File&);
-AudioFormatReader* createReader(const VirtualFile&);
 AudioFormatReader* createReader(const String&);
-AudioFormatReader* createReader(const string&);
 
 }  // namespace audio
 }  // namespace rec

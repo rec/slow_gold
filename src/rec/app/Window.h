@@ -15,12 +15,13 @@ class Window : public gui::PersistentWindow {
          bool addToDesktop = true);
 
   virtual void initialise();
+  virtual void startup() = 0;
   virtual void shutdown();
 
   virtual ~Window();
 
  protected:
-  virtual void initialiseInstance() = 0;
+  virtual void constructInstance() = 0;
   virtual Component* getMainComponent() = 0;
   virtual MenuBarModel* getMenuBarModel() = 0;
   virtual void doComputeBounds() = 0;

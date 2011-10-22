@@ -16,8 +16,12 @@ SlowWindow::SlowWindow() : app::Window("SlowGold", juce::Colours::azure,
 
 SlowWindow::~SlowWindow() {}
 
-void SlowWindow::initialiseInstance() {
+void SlowWindow::constructInstance() {
   instance_.reset(new slow::Instance(this));
+}
+
+void SlowWindow::startup() {
+  instance_->startup();
 }
 
 Component* SlowWindow::getMainComponent() {
