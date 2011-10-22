@@ -8,11 +8,10 @@ namespace command {
 namespace data {
 
 Def<Commands> commands(
-"command { type: ADD_LOOP_POINT category: \"Selection\"}\n"
+  "command { type: ADD_LOOP_POINT category: \"Selection\"}\n"
   "command { type: AUDIO_PREFERENCES category: \"Audio\"}\n"
   "command { type: CLEAR_LOOPS category: \"Selection\" }\n"
   "command { type: CLEAR_NAVIGATOR category: \"File\"}\n"
-  "command { type: CLEAR_SAVED_FILE_DATA category: \"\"}\n"
   "command { type: CLOSE_FILE category: \"File\"}\n"
   "command { type: COPY category: \"Edit\"}\n"
   "command { type: CUT category: \"Edit\"}\n"
@@ -32,7 +31,6 @@ Def<Commands> commands(
   "command { type: NUDGE_VOLUME_UP category: \"Selection\"}\n"
   "command { type: OPEN category: \"File\"}\n"
   "command { type: PASTE category: \"Edit\"}\n"
-  "command { type: QUIT category: \"File\"}\n"
   "command { type: RECENT_FILES category: \"File\"}\n"
   "command { type: REDO category: \"Edit\"}\n"
   "command { type: RESET_GAIN_TO_UNITY category: \"Audio\"}\n"
