@@ -14,7 +14,7 @@ TEST(GetVolumes, get) {
   VirtualFileList list = getVolumes();
 #if 0
   for (int i = 0; i < list.size(); ++i)
-    LOG(INFO) << list[i].DebugString();
+    LOG(INFO) << list[i].ShortDebugString();
 #endif
 }
 

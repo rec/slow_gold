@@ -51,7 +51,7 @@ message Command {
 
     OPEN = 21;
 
-    RECENT_FILES = 222;
+    RECENT_FILES = 22;
     REDO = 23;
     RESET_GAIN_TO_UNITY = 24;
 
@@ -81,7 +81,11 @@ message Command {
     SELECT_ALL = 0x1006;
     DESELECT_ALL = 0x1007;
 
-    BANK_SIZE = 0x10000;
+    LAST_TYPE = 40;
+    JUCE_START = 0x1001;
+    JUCE_END = 0x1007;
+
+    BANK_SIZE = 100000;
   };
 
   optional Type type = 1;

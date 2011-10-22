@@ -63,7 +63,7 @@ enum Command_Type {
   Command_Type_NUDGE_VOLUME_DOWN = 19,
   Command_Type_NUDGE_VOLUME_UP = 20,
   Command_Type_OPEN = 21,
-  Command_Type_RECENT_FILES = 222,
+  Command_Type_RECENT_FILES = 22,
   Command_Type_REDO = 23,
   Command_Type_RESET_GAIN_TO_UNITY = 24,
   Command_Type_SELECT = 25,
@@ -89,7 +89,10 @@ enum Command_Type {
   Command_Type_PASTE = 4101,
   Command_Type_SELECT_ALL = 4102,
   Command_Type_DESELECT_ALL = 4103,
-  Command_Type_BANK_SIZE = 65536
+  Command_Type_LAST_TYPE = 40,
+  Command_Type_JUCE_START = 4097,
+  Command_Type_JUCE_END = 4103,
+  Command_Type_BANK_SIZE = 100000
 };
 bool Command_Type_IsValid(int value);
 const Command_Type Command_Type_Type_MIN = Command_Type_NONE;
@@ -461,6 +464,9 @@ class Command : public ::google::protobuf::Message {
   static const Type PASTE = Command_Type_PASTE;
   static const Type SELECT_ALL = Command_Type_SELECT_ALL;
   static const Type DESELECT_ALL = Command_Type_DESELECT_ALL;
+  static const Type LAST_TYPE = Command_Type_LAST_TYPE;
+  static const Type JUCE_START = Command_Type_JUCE_START;
+  static const Type JUCE_END = Command_Type_JUCE_END;
   static const Type BANK_SIZE = Command_Type_BANK_SIZE;
   static inline bool Type_IsValid(int value) {
     return Command_Type_IsValid(value);

@@ -10,7 +10,7 @@ namespace slow {
 using command::CallbackTable;
 
 CallbackTable* createCallbackTable(Instance* i, int repeat) {
-  ptr<CallbackTable> t;
+  ptr<CallbackTable> t(new CallbackTable);
   addGlobalCallbacks(t.get());
   addInstanceCallbacks(t.get(), i);
   addSelectionCallbacks(t.get(), i);

@@ -170,7 +170,7 @@ bool undo(MessageField* field, const Operation& operation, Operation* undo) {
   f.index_ = f.repeatCount_ - toRemove;
   for (; f.index_ < f.repeatCount_; ++f.index_) {
     if (!copyTo(f, undo->add_value())) {
-      LOG(ERROR) << "Couldn't copy value to " << undo->DebugString();
+      LOG(ERROR) << "Couldn't copy value to " << undo->ShortDebugString();
       return false;
     }
   }

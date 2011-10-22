@@ -26,12 +26,16 @@ class Position {
     return Position(position).toCommandID(type);
   }
 
-  static Position fromCommandID(CommandID id);
+  static Position fromCommandID(CommandID);
+  static string commandIDName(CommandID);
+  static int toCommandID(const Command&);
+
   operator int32() const { return position_; }
 
  private:
   int32 position_;
 };
+
 
 }  // namespace slow
 }  // namespace rec

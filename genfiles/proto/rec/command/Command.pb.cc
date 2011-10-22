@@ -200,11 +200,11 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\"U\n\010KeyPress\022\013\n\003key\030\001 \003(\t\022\017\n\007keycode\030\002 \003"
     "(\r\022\r\n\005shift\030\003 \001(\010\022\017\n\007command\030\004 \001(\010\022\013\n\003al"
     "t\030\005 \001(\010\"7\n\013Description\022\014\n\004menu\030\001 \001(\t\022\014\n\004"
-    "full\030\002 \001(\t\022\014\n\004help\030\003 \001(\t\"\204\010\n\007Command\022\'\n\004"
+    "full\030\002 \001(\t\022\014\n\004help\030\003 \001(\t\"\262\010\n\007Command\022\'\n\004"
     "type\030\001 \001(\0162\031.rec.command.Command.Type\022\r\n"
     "\005index\030\002 \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004desc\030\004"
     " \001(\0132\030.rec.command.Description\022\'\n\010keypre"
-    "ss\030\005 \003(\0132\025.rec.command.KeyPress\"\335\006\n\004Type"
+    "ss\030\005 \003(\0132\025.rec.command.KeyPress\"\213\007\n\004Type"
     "\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_"
     "PREFERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CL"
     "EAR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016"
@@ -215,21 +215,23 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "OLUME_TOGGLE\020\016\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021"
     "NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022"
     "\023\n\017NUDGE_END_RIGHT\020\022\022\025\n\021NUDGE_VOLUME_DOW"
-    "N\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\021\n\014RE"
-    "CENT_FILES\020\336\001\022\010\n\004REDO\020\027\022\027\n\023RESET_GAIN_TO"
-    "_UNITY\020\030\022\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\n\n"
-    "\006TOGGLE\020\033\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGG"
-    "LE_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHOLE_SONG"
-    "_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r"
-    "\n\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIG"
-    "HT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020"
-    "&\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\t\n\004QUIT\020\201 \022"
-    "\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020"
-    "\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017"
-    "\n\tBANK_SIZE\020\200\200\004\"1\n\010Commands\022%\n\007command\030\001"
-    " \003(\0132\024.rec.command.Command\"&\n\010KeyValue\022\013"
-    "\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Mapping\022(\n"
-    "\tkey_value\030\001 \003(\0132\025.rec.command.KeyValue", 1359);
+    "N\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\020\n\014RE"
+    "CENT_FILES\020\026\022\010\n\004REDO\020\027\022\027\n\023RESET_GAIN_TO_"
+    "UNITY\020\030\022\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\n\n\006"
+    "TOGGLE\020\033\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGL"
+    "E_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHOLE_SONG_"
+    "LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n"
+    "\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGH"
+    "T\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&"
+    "\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\t\n\004QUIT\020\201 \022\010"
+    "\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205"
+    " \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\r\n"
+    "\tLAST_TYPE\020(\022\017\n\nJUCE_START\020\201 \022\r\n\010JUCE_EN"
+    "D\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022%\n\007com"
+    "mand\030\001 \003(\0132\024.rec.command.Command\"&\n\010KeyV"
+    "alue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Mapp"
+    "ing\022(\n\tkey_value\030\001 \003(\0132\025.rec.command.Key"
+    "Value", 1405);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   KeyPress::default_instance_ = new KeyPress();
@@ -1003,6 +1005,7 @@ bool Command_Type_IsValid(int value) {
     case 19:
     case 20:
     case 21:
+    case 22:
     case 23:
     case 24:
     case 25:
@@ -1021,7 +1024,6 @@ bool Command_Type_IsValid(int value) {
     case 38:
     case 39:
     case 40:
-    case 222:
     case 4097:
     case 4098:
     case 4099:
@@ -1029,7 +1031,7 @@ bool Command_Type_IsValid(int value) {
     case 4101:
     case 4102:
     case 4103:
-    case 65536:
+    case 100000:
       return true;
     default:
       return false;
@@ -1085,6 +1087,9 @@ const Command_Type Command::COPY;
 const Command_Type Command::PASTE;
 const Command_Type Command::SELECT_ALL;
 const Command_Type Command::DESELECT_ALL;
+const Command_Type Command::LAST_TYPE;
+const Command_Type Command::JUCE_START;
+const Command_Type Command::JUCE_END;
 const Command_Type Command::BANK_SIZE;
 const Command_Type Command::Type_MIN;
 const Command_Type Command::Type_MAX;

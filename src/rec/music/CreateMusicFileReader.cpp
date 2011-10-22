@@ -34,7 +34,7 @@ AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata)
 
 AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   if (file::empty(file) || !file.path_size()) {
-    LOG(ERROR) << "Can't create track for " << file.DebugString();
+    LOG(ERROR) << "Can't create track for " << file.ShortDebugString();
     return NULL;
   }
 

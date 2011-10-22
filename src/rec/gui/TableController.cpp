@@ -81,7 +81,7 @@ void TableController::setDisplayValue(const Value& v) {
   if (message_.get()->ParseFromString(v.message_f())) {
     thread::callAsync(this, &TableController::updateAndRepaint);
   } else {
-    LOG(ERROR) << "Couldn't parse value: " << message_->DebugString();
+    LOG(ERROR) << "Couldn't parse: " << message_->ShortDebugString();
   }
 }
 

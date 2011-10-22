@@ -34,7 +34,7 @@ const Value UntypedEditable::getValue(const Address& address) const {
   MessageField f;
   ScopedLock l(lock_);
   if (!(fillMessageField(&f, address, *message_) && proto::copyTo(f, &value)))
-    LOG(ERROR) << "Couldn't read value for " << address.DebugString();
+    LOG(ERROR) << "Couldn't read value for " << address.ShortDebugString();
   return value;
 }
 
@@ -95,7 +95,7 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
     if (proto::undo(&f, op, &undo) && proto::apply(&f, op))
       result->add_operation()->CopyFrom(undo);
     else
-      LOG(ERROR) << "Couldn't perform operation " << op.DebugString();
+      LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
   }
   return result.transfer();
 }

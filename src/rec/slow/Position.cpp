@@ -26,5 +26,43 @@ Position Position::fromCommandID(CommandID id) {
   return Position((id < SIZE) ? CURRENT : mod(id, SIZE) + FIRST);
 }
 
+// static
+string Position::commandIDName(CommandID id) {
+  string res;
+
+  int body = id / Command::BANK_SIZE;
+  int remains = id % Command::BANK_SIZE;
+
+  Command::Type type = static_cast<Command::Type>(body ? body : remains);
+  int position = body ? remains : 0;
+
+  string name;
+  if (type <= Command::LAST_TYPE ||
+      (type >= Command::JUCE_START && type <= Command::JUCE_END)) {
+    name = Command::Type_Name(type);
+  } else {
+    name = "Bad id " + str(String(type));
+    DCHECK(false);
+  }
+
+  if (body) {
+    name += ": ";
+
+    switch (position + FIRST) {
+     case FIRST: name += "FIRST"; break;
+     case PREVIOUS: name += "PREVIOUS"; break;
+     case CURRENT: name += "CURRENT"; break;
+     case NEXT: name += "NEXT"; break;
+     case LAST: name += "LAST"; break;
+     default: name += str(String(position + FIRST)); break;
+    }
+  }
+  return name; //  + " " + str(String(id));
+}
+
+int Position::toCommandID(const Command& cmd) {
+  return cmd.has_index() ? toCommandID(cmd.index(), cmd.type()) : cmd.type();
+}
+
 }  // namespace slow
 }  // namespace rec

@@ -17,27 +17,27 @@ void insert(CommandTable* map, const Command& cmd, CommandID id = 0) {
   if (!id)
     id = cmd.type();
 
+  // DLOG(INFO) << "Inserting " << Position::commandIDName(id);
   CommandTable::iterator j = map->find(id);
   if (j == map->end())
     map->insert(j, std::make_pair(id, new Command(cmd)));
   else
-    LOG(ERROR) << "Can't replacing existing command " << id;
+    LOG(ERROR) << "Can't replace " << Position::commandIDName(id);
 }
 
-void merge(CommandTable* map, const Command& cmd, CommandID id) {
+void merge(CommandTable* map, const Command& cmd, CommandID id = 0) {
   if (!id)
     id = cmd.type();
 
+  // DLOG(INFO) << "Merging " << Position::commandIDName(id) << ", " << id;
   CommandTable::iterator j = map->find(id);
   if (j != map->end())
     j->second->MergeFrom(cmd);
   else
-    LOG(ERROR) << "No existing command " << id;
+    LOG(ERROR) << "No existing command " << Position::commandIDName(id);
 }
 
-
 }  // namespace
-
 
 CommandDatabase::CommandDatabase() {
   recalculate();
@@ -121,8 +121,10 @@ void CommandDatabase::recalculate() {
   }
 
   const Commands& kp = keyPresses(access);
-  for (int i = 0; i < kp.command_size(); ++i)
-    merge(&map_, kp.command(i), Position::toCommandID(i, kp.command(i).type()));
+  for (int i = 0; i < kp.command_size(); ++i) {
+    const Command& c = kp.command(i);
+    merge(&map_, c, Position::toCommandID(c));
+  }
 
   const Commands& desc = descriptions(access);
   for (int i = 0; i < desc.command_size(); ++i)

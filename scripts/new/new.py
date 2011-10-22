@@ -56,11 +56,13 @@ def usageError(success=False, error=None, usage=USAGE):
 
 def convertToCCode(data, convertNewLines=True):
   nl = convertNewLines and '\\n"\n  "' or ' "\n"'
-  end = convertNewLines and '\n' or ' '
+  # end = convertNewLines and '\n' or ' '
+  end = ' '
   data = '"%s%s"' % (data.replace(chr(13), '').
                       replace('"', '\\"').
                       replace('\n', nl), end)
   res = ''.join(split.splitLargeLines(data.split('\n')))
+
   if not (convertNewLines or res[-1].isspace()):
     res += ' '
 
@@ -103,7 +105,7 @@ def createCppFiles(file, groupname, protoname, namespace, includes):
 
     ft = group['filetype']
     datafile = '%s.%s' % (file, ft)
-    data = convertToCCode(open(datafile).read(), not isDef)
+    data = convertToCCode(open(datafile).read(), True or not isDef)
     context.update(data=data, datatype=datatype)
     headerfile = '%s.%s.h' % (classname, ft)
   else:

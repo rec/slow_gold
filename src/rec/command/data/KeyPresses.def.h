@@ -1,6 +1,9 @@
 #ifndef __REC_COMMAND_DATA_KEYPRESSES__
 #define __REC_COMMAND_DATA_KEYPRESSES__
 
+// Created by the command line:
+// new --include=command/Command --proto=Commands KeyPresses.def
+
 #include "rec/command/Command.h"
 #include "rec/util/Defaulter.h"
 

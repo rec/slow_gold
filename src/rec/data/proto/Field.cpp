@@ -93,8 +93,8 @@ bool fillMessageField(MessageField* field,
   for (int i = 0; i < address.part_size(); ++i) {
     if (!dereference(field, address.part(i))) {
       LOG(ERROR) << "Couldn't get field from address:\n"
-                 << address.DebugString()
-                 << "\nMessage:\n" << msg.DebugString();
+                 << address.ShortDebugString()
+                 << "\nMessage:\n" << msg.ShortDebugString();
       return false;
     }
   }

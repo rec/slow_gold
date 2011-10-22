@@ -45,7 +45,7 @@ void Target::addCommands() {
     if (j != callbacks->end())
       addCommand(&manager_, j->second, c);
     else
-      LOG(ERROR) << "Couldn't add " << c.DebugString();
+      LOG(ERROR) << "No callback for " << c.ShortDebugString();
   }
 
 }
