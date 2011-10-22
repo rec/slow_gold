@@ -55,9 +55,11 @@ bool isHidden(const File& file) {
   return nameSet.find(name) != nameSet.end();
 }
 
+// TODO: expand this and make it neater and dealing with lower-case.
 bool isAudio(const File& file) {
   return
     file.hasFileExtension("aiff") ||
+    file.hasFileExtension("aif") ||
     file.hasFileExtension("flac") ||
     //    file.hasFileExtension("m4a") ||  // TODO
     file.hasFileExtension("mp3") ||
@@ -67,7 +69,7 @@ bool isAudio(const File& file) {
 
 String audioFilePatterns() {
   //  return "*.aiff;*.flac;*.m4a;*.mp3;*.ogg;*.wav";
-  return "*.aiff;*.flac;*.mp3;*.ogg;*.wav";
+  return "*.aiff;*.aif;*.flac;*.mp3;*.ogg;*.wav";
 }
 
 bool isAudioOrDirectory(const File& file) {
