@@ -25,12 +25,11 @@ Target::~Target() {
 
 namespace {
 
-void addCommand(TargetManager* manager, Callback* cb, const Command& c) {
-  CommandID t = c.type();
+void addCommand(TargetManager* manager, CommandID id, Callback* cb, const Command& c) {
   const String& menu = str(c.desc().menu());
   const String& desc = str(c.desc().full());
   const String& category = str(c.category());
-  manager->addCallback(t, cb, menu, category, desc);
+  manager->addCallback(id, cb, menu, category, desc);
 }
 
 }  // namespace
@@ -41,13 +40,13 @@ void Target::addCommands() {
   CommandTable cmds = command::getCommands();
   for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
     const Command& c = *i->second;
-    CallbackTable::const_iterator j = callbacks->find(c.type());
+    CommandID id = Position::toCommandID(c);
+    CallbackTable::const_iterator j = callbacks->find(id);
     if (j != callbacks->end())
-      addCommand(&manager_, j->second, c);
+      addCommand(&manager_, id, j->second, c);
     else
       LOG(ERROR) << "No callback for " << c.ShortDebugString();
   }
-
 }
 
 }  // namespace slow

@@ -65,38 +65,44 @@ const CommandTable CommandDatabase::commandTable() const {
 }
 
 static void mergeDescription(CommandTable* map, const Command& command) {
-  CommandTable::const_iterator iter = map->find(command.type());
-  if (iter == map->end()) {
-    LOG(ERROR) << "Couldn't find type " << command.type();
-    return;
-  }
-
   static const char* LOWER[] = {" the first", " the previous", " the current",
                                 " the next", " the last"};
   static const char* CAP[] = {" First", " Previous", " Current", " Next",
                               " Last"};
-  Command cmd = *iter->second;
-  Description* desc = cmd.mutable_desc();
-  const String menu = str(desc->menu());
-  const String full = str(desc->full());
-  CommandID c = Command::BANK_SIZE * cmd.type();
 
-  for (int i = Position::LAST; i <= Position::FIRST; ++i, ++c) {
-    cmd.set_index(i);
-    desc->set_menu(str(String::formatted(menu, CAP[i], "")));
-    desc->set_full(str(String::formatted(full, LOWER[i], "")));
-    merge(map, cmd, c);
+  CommandTable::iterator it = map->find(command.type());
+  if (it != map->end()) {
+    it->second->MergeFrom(command);
+    return;
   }
 
-  int count = iter->second->index();
-  for (int i = 0; i < count; ++i, ++c) {
-    cmd.set_index(i);
+  const String menu = str(command.desc().menu());
+  const String full = str(command.desc().full());
+
+  CommandID c = Command::BANK_SIZE * command.type();
+  for (int i = Position::LAST; i <= Position::FIRST; ++i, ++c) {
+    it = map->find(c);
+    if (it == map->end()) {
+      LOG(ERROR) << "Couldn't create position" << i
+                 << " CommandID " << c
+                 << " cmd: " << command.ShortDebugString();
+      return;
+    }
+    Description* desc = it->second->mutable_desc();
+    desc->set_menu(str(String::formatted(menu, CAP[i], "")));
+    desc->set_full(str(String::formatted(full, LOWER[i], "")));
+  }
+
+  for (int i = 0; ; ++i, ++c) {
+    it = map->find(c);
+    if (it == map->end())
+      break;
+
     String n = " " + String(i + 1);
     const char* s = n.toUTF8();
+    Description* desc = it->second->mutable_desc();
     desc->set_menu(str(String::formatted(menu, "", s)));
     desc->set_full(str(String::formatted(full, "", s)));
-
-    merge(map, cmd, c);
   }
 }
 
@@ -110,7 +116,6 @@ void CommandDatabase::recalculate() {
 
   for (int i = 0; i < repeated().command_size(); ++i) {
     const Command& command = repeated().command(i);
-    insert(&map_, command);  // Insert the generic command.
     Command c = command;
 
     // Insert each specific subcommand.
