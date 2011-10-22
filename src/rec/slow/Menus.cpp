@@ -11,6 +11,10 @@ using namespace rec::command;
 namespace rec {
 namespace slow {
 
+static const int SLOT_COUNT = 10;
+
+// TODO: only place "10" items is hard-coded into the code - remove!
+
 Menus::Menus(Instance* i) : HasInstance(i) {}
 
 const StringArray Menus::getMenuBarNames() {
@@ -25,18 +29,15 @@ void Menus::add(PopupMenu* menu, CommandID command, bool enable,
 
 static void addBank(Menus* menus, PopupMenu* menu,
                     Command::Type command, const String& name) {
-#ifdef NEW_ORDER                    
   PopupMenu sub;
-  for (int i = 0; i <= LAST - FIRST; ++i)
-    menus->add(&sub, static_cast<Command::Type>(command + i));
+  for (int i = Position::FIRST; i < SLOT_COUNT; ++i) {
+    if (i == 0)
+      sub.addSeparator();
 
-  sub.addSeparator();
-
-  for (int i = 0; i != SLOT_COUNT; ++i)
-    menus->add(&sub, static_cast<Command::Type>(command + LAST - FIRST + i + 1));
+    menus->add(&sub, Position::toCommandID(i, command));
+  }
 
   menu->addSubMenu(name, sub);
-#endif
 }
 
 const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {

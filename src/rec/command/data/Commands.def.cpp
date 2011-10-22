@@ -8,7 +8,7 @@ namespace command {
 namespace data {
 
 Def<Commands> commands(
-  "command { type: ADD_LOOP_POINT category: \"Selection\"}\n"
+"command { type: ADD_LOOP_POINT category: \"Selection\"}\n"
   "command { type: AUDIO_PREFERENCES category: \"Audio\"}\n"
   "command { type: CLEAR_LOOPS category: \"Selection\" }\n"
   "command { type: CLEAR_NAVIGATOR category: \"File\"}\n"

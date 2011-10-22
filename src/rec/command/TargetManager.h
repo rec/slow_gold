@@ -51,16 +51,10 @@ class TargetManager : public ApplicationCommandTarget {
   void saveKeyboardBindings();
 
  private:
-  void addCommandItem(PopupMenu* menu, CommandID command) {
-    menu->addCommandItem(&commandManager_, command);
-  }
-
-  typedef std::map<CommandID, CommandCallback*> CommandMap;
-  void addCallback(Callback* callback, const ApplicationCommandInfo& info);
-
+  typedef std::map<CommandID, CommandCallback*> CommandCallbackMap;
   void loadKeyboardBindings();
 
-  CommandMap map_;
+  CommandCallbackMap map_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;

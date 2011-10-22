@@ -64,26 +64,56 @@ const CommandTable CommandDatabase::commandTable() const {
   return map_;
 }
 
-static void mergeDescription(CommandTable* map, const Command& command) {
+namespace {
+
+void insertSingle(CommandTable* map) {
+  for (int i = 0; i < commands().command_size(); ++i)
+    insert(map, commands().command(i));
+}
+
+void insertRepeated(CommandTable* map) {
+  for (int i = 0; i < repeated().command_size(); ++i) {
+    const Command& command = repeated().command(i);
+    Command c = command;
+
+    // Insert each specific subcommand.
+    for (int j = Position::FIRST; j < command.index(); ++j) {
+      c.set_index(j);
+      insert(map, c, Position::toCommandID(j, command.type()));
+    }
+  }
+}
+
+void mergeKeyPresses(CommandTable* map, const Access& access) {
+  const Commands& kp = keyPresses(access);
+  for (int i = 0; i < kp.command_size(); ++i) {
+    const Command& c = kp.command(i);
+    merge(map, c, Position::toCommandID(c));
+  }
+}
+
+void mergeDescription(CommandTable* map, const Command& command) {
+  CommandTable::iterator it = map->find(command.type());
+  if (it != map->end()) {
+    it->second->MergeFrom(command);
+    // DLOG(INFO) << "found single " << command.ShortDebugString();
+    return;
+  }
+
+  // DLOG(INFO) << "merging multiple " << command.ShortDebugString();
   static const char* LOWER[] = {" the first", " the previous", " the current",
                                 " the next", " the last"};
   static const char* CAP[] = {" First", " Previous", " Current", " Next",
                               " Last"};
 
-  CommandTable::iterator it = map->find(command.type());
-  if (it != map->end()) {
-    it->second->MergeFrom(command);
-    return;
-  }
-
   const String menu = str(command.desc().menu());
   const String full = str(command.desc().full());
 
   CommandID c = Command::BANK_SIZE * command.type();
-  for (int i = Position::LAST; i <= Position::FIRST; ++i, ++c) {
+  for (int i = 0; i <= Position::LAST - Position::FIRST; ++i, ++c) {
     it = map->find(c);
     if (it == map->end()) {
-      LOG(ERROR) << "Couldn't create position" << i
+      LOG(ERROR) << "Couldn't find position" << i
                  << " CommandID " << c
                  << " cmd: " << command.ShortDebugString();
       return;
@@ -106,34 +136,40 @@ static void mergeDescription(CommandTable* map, const Command& command) {
   }
 }
 
+void mergeDescriptions(CommandTable* map, const Access& access) {
+  const Commands& desc = descriptions(access);
+  for (int i = 0; i < desc.command_size(); ++i)
+    mergeDescription(map, desc.command(i));
+}
+
+void removeEmpties(CommandTable* map) {
+  std::vector<CommandID> empties;
+  for (CommandTable::const_iterator i = map->begin(); i != map->end(); ++i) {
+    const Description& desc = i->second->desc();
+    if (!(desc.menu().size() && desc.full().size())) {
+      empties.push_back(i->first);
+      // DLOG(INFO) << "Removing empty " << Position::commandIDName(i->first);
+    }
+  }
+
+  for (int i = 0; i < empties.size(); ++i)
+    map->erase(empties[i]);
+}
+
+}  // namespace
+
 void CommandDatabase::recalculate() {
   Lock l(lock_);
   Access access = data::get<Access>();
   clear();
 
-  for (int i = 0; i < commands().command_size(); ++i)
-    insert(&map_, commands().command(i));
+  insertSingle(&map_);
+  insertRepeated(&map_);
+  mergeKeyPresses(&map_, access);
+  mergeDescriptions(&map_, access);
+  removeEmpties(&map_);
 
-  for (int i = 0; i < repeated().command_size(); ++i) {
-    const Command& command = repeated().command(i);
-    Command c = command;
-
-    // Insert each specific subcommand.
-    for (int j = Position::FIRST; j < command.index(); ++j) {
-      c.set_index(j);
-      insert(&map_, c, Position::toCommandID(j, command.type()));
-    }
-  }
-
-  const Commands& kp = keyPresses(access);
-  for (int i = 0; i < kp.command_size(); ++i) {
-    const Command& c = kp.command(i);
-    merge(&map_, c, Position::toCommandID(c));
-  }
-
-  const Commands& desc = descriptions(access);
-  for (int i = 0; i < desc.command_size(); ++i)
-    mergeDescription(&map_, desc.command(i));
+  // DLOG(INFO) << fromCommandTable(map_).DebugString();
 }
 
 }  // namespace command

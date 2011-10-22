@@ -160,9 +160,58 @@ command {
   }
 }
 command {
+  type: REDO
+  desc {
+    menu: "Redo"
+    full: "Redoes a previously undone command."
+  }
+}
+command {
   type: UNDO
   desc {
     menu: "Undo"
     full: "Undoes a previous command."
+  }
+}
+command {
+  type: JUMP_SELECTED
+  desc {
+    menu: "Jump To%s Selected Segment%s"
+    full: "Jump to the start of%s selected segment%s"
+  }
+}
+command {
+  type: JUMP
+  desc {
+    menu: "Jump To%s Segment%s"
+    full: "Jump to the start of%s segment%s"
+  }
+}
+command {
+  type: SELECT_ONLY
+  desc {
+    menu: "Select%s Segment%s Only"
+    full: "Select%s segment%s only"
+  }
+}
+command {
+  type: SELECT
+  desc {
+    menu: "Select%s Segment%s"
+    full: "Select%s segment%s"
+  }
+}
+command {
+  type: TOGGLE
+  desc {
+    menu: "Toggle%s Segment%s Selection"
+    full: "Toggle%s segment%s between selected and unselected"
+  }
+}
+command {
+  type: UNSELECT
+  desc {
+    menu: "Unselect%s Segment%s"
+    full: "Unselect%s segment%s"
   }
 }

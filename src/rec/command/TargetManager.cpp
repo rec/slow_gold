@@ -5,6 +5,7 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.h"
 #include "rec/command/map/Keyboard.xml.h"
+#include "rec/slow/Position.h"
 
 namespace rec {
 namespace command {
@@ -65,28 +66,35 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID command,
   if (ApplicationCommandInfo* info = getInfo(command)) {
     if (name.length())
       info->shortName = name;
+    DCHECK(info->shortName.length()) << "No name for command "
+                                     << slow::Position::commandIDName(command);
     info->setActive(isActive);
-    addCommandItem(menu, command);
+    menu->addCommandItem(&commandManager_, command);
+  } else {
+    DLOG(ERROR) << "Unable to add menu item " << str(info->shortName)
+                << " for " << command;
   }
 }
 
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
   commands.clear();
-  for (CommandMap::const_iterator i = map_.begin(); i != map_.end(); ++i)
+  for (CommandCallbackMap::iterator i = map_.begin(); i != map_.end(); ++i) {
     commands.add(i->first);
+  }
 }
 
 void TargetManager::getCommandInfo(CommandID cmd, ApplicationCommandInfo& info) {
-  CommandMap::const_iterator i = map_.find(cmd);
+  CommandCallbackMap::const_iterator i = map_.find(cmd);
   if (i == map_.end())
-    LOG(ERROR) << "Couldn't find command info";
+    LOG(ERROR) << "No getCommandInfo" << slow::Position::commandIDName(cmd);
   else
     info = i->second->info_;
+  DCHECK(info.shortName.isNotEmpty()) << slow::Position::commandIDName(cmd);
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
   ScopedLock l(lock_);
-  CommandMap::const_iterator i = map_.find(invocation.commandID);
+  CommandCallbackMap::const_iterator i = map_.find(invocation.commandID);
   if (i == map_.end())
     return false;
 
@@ -100,10 +108,18 @@ InvocationInfo TargetManager::lastInvocation() const {
   return lastInvocation_;
 }
 
-void TargetManager::addCallback(Callback* cb,
-                                const ApplicationCommandInfo& info) {
-  CommandID id = info.commandID;
-  CommandMap::const_iterator i = map_.find(id);
+void TargetManager::addCallback(CommandID id, Callback* cb,
+                                const String& name,
+                                const String& category,
+                                const String& desc) {
+  if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
+    LOG(ERROR) << "Can't add " << slow::Position::commandIDName(id)
+               << ", " << name << ", " << desc;
+    return;
+  }
+
+  ApplicationCommandInfo info = makeInfo(id, name, category, desc);
+  CommandCallbackMap::const_iterator i = map_.find(id);
   if (i != map_.end()) {
     LOG(ERROR) << "Added command twice: " << id;
     delete i->second;
@@ -112,14 +128,8 @@ void TargetManager::addCallback(Callback* cb,
   map_[id] = new CommandCallback(info, cb);
 }
 
-void TargetManager::addCallback(CommandID id, Callback* cb,
-                                const String& name,
-                                const String& category, const String& desc) {
-	addCallback(cb, makeInfo(id, name, category, desc));
-}
-
 ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
-  CommandMap::iterator i = map_.find(command);
+  CommandCallbackMap::iterator i = map_.find(command);
   return i == map_.end() ? NULL : &i->second->info_;
 }
 
@@ -131,7 +141,7 @@ void TargetManager::saveKeyboardBindings() {
   ptr<juce::XmlElement> state(commandManager_.getKeyMappings()->createXml(false));
   if (state) {
     if (!state->writeToFile(getKeyboardFile(), ""))
-      LOG(ERROR) << "Couldn't write device statea file";
+      LOG(ERROR) << "Couldn't write device state file.";
   }
 }
 

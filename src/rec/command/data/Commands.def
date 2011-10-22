@@ -10,7 +10,6 @@ command { type: DESELECT_ALL category: "Select"}
 command { type: DIM_VOLUME_TOGGLE category: "Audio"}
 command { type: EJECT_CDS category: "File"}
 command { type: INVERT_LOOP_SELECTION category: "Selection" }
-command { type: JUMP_SELECTED category: "Transport"}
 command { type: KEYBOARD_MAPPINGS category: "File"}
 command { type: MIDI_MAPPINGS category: "File"}
 command { type: MUTE_VOLUME_TOGGLE category: "Audio"}

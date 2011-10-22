@@ -23,30 +23,26 @@ Target::~Target() {
   device()->manager_.removeMidiInputCallback("", midiCommandMap_.get());
 }
 
-namespace {
-
-void addCommand(TargetManager* manager, CommandID id, Callback* cb, const Command& c) {
-  const String& menu = str(c.desc().menu());
-  const String& desc = str(c.desc().full());
-  const String& category = str(c.category());
-  manager->addCallback(id, cb, menu, category, desc);
-}
-
-}  // namespace
-
-
 void Target::addCommands() {
   ptr<CallbackTable> callbacks(createCallbackTable(instance_));
+
   CommandTable cmds = command::getCommands();
   for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
     const Command& c = *i->second;
     CommandID id = Position::toCommandID(c);
     CallbackTable::const_iterator j = callbacks->find(id);
-    if (j != callbacks->end())
-      addCommand(&manager_, id, j->second, c);
-    else
+    if (j == callbacks->end()) {
       LOG(ERROR) << "No callback for " << c.ShortDebugString();
+    } else {
+      const String& menu = str(c.desc().menu());
+      const String& desc = str(c.desc().full());
+      const String& category = str(c.category());
+
+      manager_.addCallback(id, j->second, menu, category, desc);
+    }
   }
+
+  targetManager()->registerAllCommandsForTarget();
 }
 
 }  // namespace slow

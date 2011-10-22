@@ -11,6 +11,8 @@ typedef std::map<CommandID, Command*> CommandTable;
 typedef std::map<CommandID, Callback*> CallbackTable;
 
 const CommandTable getCommands();
+const CommandTable toCommandTable(const Commands&);
+const Commands fromCommandTable(const CommandTable&);
 
 // Call to recalculate commands if Access changes for the user.
 void recalculate();
