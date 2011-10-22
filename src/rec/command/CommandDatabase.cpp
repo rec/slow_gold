@@ -1,10 +1,11 @@
 #include "rec/command/CommandDatabase.h"
-#include "rec/slow/Position.h"
-#include "rec/command/data/CommandData.h"
 #include "rec/command/Access.pb.h"
+#include "rec/command/data/CommandData.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/slow/Position.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/STL.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace command {
@@ -85,7 +86,8 @@ void insertRepeated(CommandTable* map) {
 }
 
 void mergeKeyPresses(CommandTable* map, const Access& access) {
-  const Commands& kp = keyPresses(access);
+  Commands kp = data::get(file::toVirtualFile("KeyPresses"), keyPresses(access));
+
   for (int i = 0; i < kp.command_size(); ++i) {
     const Command& c = kp.command(i);
     merge(map, c, Position::toCommandID(c));

@@ -2,9 +2,10 @@
 {
 	061FBB036746790735D492AB /* SlowWindow.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 718}}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 741}}";
 			sepNavSelRange = "{588, 0}";
 			sepNavVisRange = "{0, 588}";
+			sepNavWindowFrame = "{{38, 298}, {856, 854}}";
 		};
 	};
 	08EC26B703176ED915C61158 /* TargetManager.h */ = {
@@ -40,7 +41,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 2093}}";
 			sepNavSelRange = "{2027, 0}";
-			sepNavVisRange = "{1107, 1834}";
+			sepNavVisRange = "{1107, 1908}";
 			sepNavWindowFrame = "{{360, 4}, {856, 854}}";
 		};
 	};
@@ -83,9 +84,9 @@
 	};
 	33301B7A93A933080C55E811 /* CreateMusicFileReader.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {666, 819}}";
-			sepNavSelRange = "{1891, 0}";
-			sepNavVisRange = "{307, 1410}";
+			sepNavIntBoundsRect = "{{0, 0}, {697, 987}}";
+			sepNavSelRange = "{830, 0}";
+			sepNavVisRange = "{0, 1891}";
 		};
 	};
 	49677820CA36070A40901889 /* Position.h */ = {
@@ -97,16 +98,16 @@
 	};
 	4B9B092D1B3B397FC42C5713 /* ptr.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {697, 987}}";
-			sepNavSelRange = "{540, 0}";
-			sepNavVisRange = "{0, 962}";
+			sepNavIntBoundsRect = "{{0, 0}, {666, 689}}";
+			sepNavSelRange = "{497, 0}";
+			sepNavVisRange = "{0, 899}";
 		};
 	};
 	4F00CD57CEBFF8DF24388554 /* VirtualFile.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {697, 2444}}";
-			sepNavSelRange = "{1402, 0}";
-			sepNavVisRange = "{0, 1752}";
+			sepNavIntBoundsRect = "{{0, 0}, {697, 2496}}";
+			sepNavSelRange = "{3756, 0}";
+			sepNavVisRange = "{2681, 1724}";
 		};
 	};
 	567D215C489B60F454D735CF /* Descriptions.def.cpp */ = {
@@ -120,7 +121,8 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 754}}";
 			sepNavSelRange = "{1183, 0}";
-			sepNavVisRange = "{0, 1511}";
+			sepNavVisRange = "{0, 1531}";
+			sepNavWindowFrame = "{{61, 277}, {856, 854}}";
 		};
 	};
 	57DD20E48EA52017153ECE04 /* RepeatedCallbacks.cpp */ = {
@@ -136,6 +138,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {701, 753}}";
 			sepNavSelRange = "{628, 0}";
 			sepNavVisRange = "{0, 628}";
+		};
+	};
+	6B783EE1E33F655A24E51C4C /* VirtualFile.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {697, 987}}";
+			sepNavSelRange = "{978, 0}";
+			sepNavVisRange = "{0, 1259}";
 		};
 	};
 	7C93CE71F832F0FEA546EF59 /* CallbackUtils.h */ = {
@@ -552,6 +561,42 @@
 			E28CD357145365FD0052581A /* PBXTextBookmark */ = E28CD357145365FD0052581A /* PBXTextBookmark */;
 			E28CD358145365FD0052581A /* PBXTextBookmark */ = E28CD358145365FD0052581A /* PBXTextBookmark */;
 			E28CD359145365FD0052581A /* PBXTextBookmark */ = E28CD359145365FD0052581A /* PBXTextBookmark */;
+			E28CD35B145368D70052581A /* PBXTextBookmark */ = E28CD35B145368D70052581A /* PBXTextBookmark */;
+			E28CD35C145368D70052581A /* PBXTextBookmark */ = E28CD35C145368D70052581A /* PBXTextBookmark */;
+			E28CD35D145368D70052581A /* PBXTextBookmark */ = E28CD35D145368D70052581A /* PBXTextBookmark */;
+			E28CD35E145368D70052581A /* PBXTextBookmark */ = E28CD35E145368D70052581A /* PBXTextBookmark */;
+			E28CD35F145368D70052581A /* PBXTextBookmark */ = E28CD35F145368D70052581A /* PBXTextBookmark */;
+			E28CD360145368D70052581A /* PBXTextBookmark */ = E28CD360145368D70052581A /* PBXTextBookmark */;
+			E28CD361145368D70052581A /* XCBuildMessageTextBookmark */ = E28CD361145368D70052581A /* XCBuildMessageTextBookmark */;
+			E28CD362145368D70052581A /* PBXTextBookmark */ = E28CD362145368D70052581A /* PBXTextBookmark */;
+			E28CD36614537A390052581A /* XCBuildMessageTextBookmark */ = E28CD36614537A390052581A /* XCBuildMessageTextBookmark */;
+			E28CD36714537A410052581A /* PBXTextBookmark */ = E28CD36714537A410052581A /* PBXTextBookmark */;
+			E28CD36A14537A410052581A /* PBXTextBookmark */ = E28CD36A14537A410052581A /* PBXTextBookmark */;
+			E28CD36B14537A410052581A /* PBXTextBookmark */ = E28CD36B14537A410052581A /* PBXTextBookmark */;
+			E28CD36C14537A410052581A /* PBXTextBookmark */ = E28CD36C14537A410052581A /* PBXTextBookmark */;
+			E28CD36D14537A410052581A /* PBXTextBookmark */ = E28CD36D14537A410052581A /* PBXTextBookmark */;
+			E28CD36E14537A410052581A /* PBXTextBookmark */ = E28CD36E14537A410052581A /* PBXTextBookmark */;
+			E28CD36F14537A410052581A /* PBXTextBookmark */ = E28CD36F14537A410052581A /* PBXTextBookmark */;
+			E28CD37214537A550052581A /* PBXTextBookmark */ = E28CD37214537A550052581A /* PBXTextBookmark */;
+			E28CD37314537A570052581A /* PBXTextBookmark */ = E28CD37314537A570052581A /* PBXTextBookmark */;
+			E28CD37614537A930052581A /* PBXTextBookmark */ = E28CD37614537A930052581A /* PBXTextBookmark */;
+			E28CD37714537A930052581A /* PBXTextBookmark */ = E28CD37714537A930052581A /* PBXTextBookmark */;
+			E28CD37814537A930052581A /* PBXTextBookmark */ = E28CD37814537A930052581A /* PBXTextBookmark */;
+			E28CD37914537A930052581A /* PBXTextBookmark */ = E28CD37914537A930052581A /* PBXTextBookmark */;
+			E28CD37C14537ABB0052581A /* PBXTextBookmark */ = E28CD37C14537ABB0052581A /* PBXTextBookmark */;
+			E28CD37D14537ABB0052581A /* PBXTextBookmark */ = E28CD37D14537ABB0052581A /* PBXTextBookmark */;
+			E28CD37E14537ABB0052581A /* PBXTextBookmark */ = E28CD37E14537ABB0052581A /* PBXTextBookmark */;
+			E28CD37F14537ABB0052581A /* PBXTextBookmark */ = E28CD37F14537ABB0052581A /* PBXTextBookmark */;
+			E28CD38414537B1C0052581A /* PBXTextBookmark */ = E28CD38414537B1C0052581A /* PBXTextBookmark */;
+			E28CD38514537B1C0052581A /* PBXTextBookmark */ = E28CD38514537B1C0052581A /* PBXTextBookmark */;
+			E28CD38614537B1C0052581A /* PBXTextBookmark */ = E28CD38614537B1C0052581A /* PBXTextBookmark */;
+			E28CD38714537B1C0052581A /* PBXTextBookmark */ = E28CD38714537B1C0052581A /* PBXTextBookmark */;
+			E28CD38814537B1C0052581A /* PBXTextBookmark */ = E28CD38814537B1C0052581A /* PBXTextBookmark */;
+			E28CD38914537B1C0052581A /* PBXTextBookmark */ = E28CD38914537B1C0052581A /* PBXTextBookmark */;
+			E28CD39214537BF00052581A /* PBXTextBookmark */ = E28CD39214537BF00052581A /* PBXTextBookmark */;
+			E28CD39314537BF00052581A /* PBXTextBookmark */ = E28CD39314537BF00052581A /* PBXTextBookmark */;
+			E28CD39414537BF00052581A /* PBXTextBookmark */ = E28CD39414537BF00052581A /* PBXTextBookmark */;
+			E28CD39514537BF00052581A /* PBXTextBookmark */ = E28CD39514537BF00052581A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E24E0325144CD19500A1039E /* Source Control */;
 		userBuildSettings = {
@@ -598,7 +643,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 897}}";
 			sepNavSelRange = "{1774, 0}";
-			sepNavVisRange = "{0, 1487}";
+			sepNavVisRange = "{0, 1547}";
 			sepNavWindowFrame = "{{541, 229}, {856, 854}}";
 		};
 	};
@@ -612,9 +657,9 @@
 	};
 	B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1088, 2145}}";
-			sepNavSelRange = "{3640, 0}";
-			sepNavVisRange = "{2325, 1762}";
+			sepNavIntBoundsRect = "{{0, 0}, {1216, 2301}}";
+			sepNavSelRange = "{4994, 0}";
+			sepNavVisRange = "{1647, 1978}";
 			sepNavWindowFrame = "{{591, 246}, {856, 854}}";
 		};
 	};
@@ -629,7 +674,7 @@
 	BFC76053247EE3C690919E29 /* SlowWindow.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {697, 987}}";
-			sepNavSelRange = "{808, 0}";
+			sepNavSelRange = "{537, 0}";
 			sepNavVisRange = "{0, 851}";
 		};
 	};
@@ -642,7 +687,7 @@
 	};
 	CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 718}}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 741}}";
 			sepNavSelRange = "{597, 0}";
 			sepNavVisRange = "{0, 597}";
 			sepNavWindowFrame = "{{373, 29}, {856, 854}}";
@@ -741,7 +786,7 @@
 		comments = "'map_' was not declared in this scope";
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		rLen = 1;
-		rLoc = 64;
+		rLoc = 65;
 		rType = 1;
 	};
 	E28CD0081450C3280052581A /* PBXTextBookmark */ = {
@@ -1153,7 +1198,7 @@
 		isa = PBXTextBookmark;
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		rLen = 1;
-		rLoc = 74;
+		rLoc = 75;
 		rType = 1;
 	};
 	E28CD15C14527ABF0052581A /* PBXTextBookmark */ = {
@@ -1171,7 +1216,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 65";
 		rLen = 2;
-		rLoc = 1550;
+		rLoc = 1589;
 		rType = 0;
 		vrLen = 337;
 		vrLoc = 1366;
@@ -1181,7 +1226,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1687;
 		vrLoc = 2062;
@@ -1191,7 +1236,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1221,7 +1266,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 65";
 		rLen = 2;
-		rLoc = 1550;
+		rLoc = 1589;
 		rType = 0;
 		vrLen = 337;
 		vrLoc = 1366;
@@ -1231,7 +1276,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1261,7 +1306,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 316;
 		vrLoc = 3163;
@@ -1271,7 +1316,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1301,7 +1346,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 398;
 		vrLoc = 3163;
@@ -1311,7 +1356,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1341,7 +1386,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 398;
 		vrLoc = 3163;
@@ -1351,7 +1396,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1381,7 +1426,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 398;
 		vrLoc = 3163;
@@ -1391,7 +1436,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1421,7 +1466,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 316;
 		vrLoc = 3163;
@@ -1431,7 +1476,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1461,7 +1506,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 316;
 		vrLoc = 3163;
@@ -1471,7 +1516,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1501,7 +1546,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 316;
 		vrLoc = 3163;
@@ -1511,7 +1556,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1541,7 +1586,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 398;
 		vrLoc = 3163;
@@ -1551,7 +1596,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 1718;
 		vrLoc = 2031;
@@ -1611,7 +1656,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 134";
 		rLen = 0;
-		rLoc = 2233;
+		rLoc = 2269;
 		rType = 0;
 		vrLen = 848;
 		vrLoc = 0;
@@ -1641,7 +1686,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 419;
 		vrLoc = 3206;
@@ -1651,7 +1696,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 20";
 		rLen = 0;
-		rLoc = 428;
+		rLoc = 467;
 		rType = 0;
 		vrLen = 1334;
 		vrLoc = 0;
@@ -1681,7 +1726,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 419;
 		vrLoc = 3206;
@@ -1691,7 +1736,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 20";
 		rLen = 0;
-		rLoc = 428;
+		rLoc = 467;
 		rType = 0;
 		vrLen = 1333;
 		vrLoc = 0;
@@ -1701,7 +1746,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 20";
 		rLen = 0;
-		rLoc = 428;
+		rLoc = 467;
 		rType = 0;
 		vrLen = 1334;
 		vrLoc = 0;
@@ -1731,7 +1776,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 119";
 		rLen = 66;
-		rLoc = 1797;
+		rLoc = 1836;
 		rType = 0;
 		vrLen = 371;
 		vrLoc = 3206;
@@ -1741,7 +1786,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 20";
 		rLen = 0;
-		rLoc = 428;
+		rLoc = 467;
 		rType = 0;
 		vrLen = 1333;
 		vrLoc = 0;
@@ -1771,7 +1816,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 136";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2279;
 		rType = 0;
 		vrLen = 342;
 		vrLoc = 3246;
@@ -1781,7 +1826,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 136";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2279;
 		rType = 0;
 		vrLen = 1334;
 		vrLoc = 0;
@@ -1811,7 +1856,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 136";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2279;
 		rType = 0;
 		vrLen = 337;
 		vrLoc = 3246;
@@ -1821,7 +1866,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 136";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2279;
 		rType = 0;
 		vrLen = 1333;
 		vrLoc = 0;
@@ -1851,7 +1896,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 136";
 		rLen = 0;
-		rLoc = 2246;
+		rLoc = 2282;
 		rType = 0;
 		vrLen = 337;
 		vrLoc = 3249;
@@ -1861,7 +1906,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 136";
 		rLen = 0;
-		rLoc = 2246;
+		rLoc = 2282;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 0;
@@ -1891,7 +1936,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 136";
 		rLen = 0;
-		rLoc = 2246;
+		rLoc = 2282;
 		rType = 0;
 		vrLen = 342;
 		vrLoc = 3249;
@@ -1901,7 +1946,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 136";
 		rLen = 0;
-		rLoc = 2246;
+		rLoc = 2282;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 0;
@@ -1931,7 +1976,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 143";
 		rLen = 0;
-		rLoc = 4001;
+		rLoc = 4037;
 		rType = 0;
 		vrLen = 398;
 		vrLoc = 3233;
@@ -1941,7 +1986,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 143";
 		rLen = 0;
-		rLoc = 4001;
+		rLoc = 4037;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 0;
@@ -1971,7 +2016,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 142";
 		rLen = 0;
-		rLoc = 4001;
+		rLoc = 4037;
 		rType = 0;
 		vrLen = 381;
 		vrLoc = 3290;
@@ -1981,7 +2026,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 142";
 		rLen = 0;
-		rLoc = 4001;
+		rLoc = 4037;
 		rType = 0;
 		vrLen = 1337;
 		vrLoc = 0;
@@ -2011,7 +2056,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 142";
 		rLen = 0;
-		rLoc = 4001;
+		rLoc = 4037;
 		rType = 0;
 		vrLen = 290;
 		vrLoc = 3290;
@@ -2021,7 +2066,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 142";
 		rLen = 0;
-		rLoc = 4001;
+		rLoc = 4037;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 0;
@@ -2051,7 +2096,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 141";
 		rLen = 0;
-		rLoc = 3938;
+		rLoc = 3974;
 		rType = 0;
 		vrLen = 279;
 		vrLoc = 3238;
@@ -2061,7 +2106,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 141";
 		rLen = 0;
-		rLoc = 3938;
+		rLoc = 3974;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 0;
@@ -2091,7 +2136,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 141";
 		rLen = 0;
-		rLoc = 3938;
+		rLoc = 3974;
 		rType = 0;
 		vrLen = 279;
 		vrLoc = 3238;
@@ -2101,7 +2146,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 141";
 		rLen = 0;
-		rLoc = 3938;
+		rLoc = 3974;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 0;
@@ -2131,7 +2176,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 141";
 		rLen = 0;
-		rLoc = 3938;
+		rLoc = 3974;
 		rType = 0;
 		vrLen = 279;
 		vrLoc = 3238;
@@ -2161,7 +2206,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 141";
 		rLen = 0;
-		rLoc = 3938;
+		rLoc = 3974;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 0;
@@ -2211,7 +2256,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 141";
 		rLen = 0;
-		rLoc = 3938;
+		rLoc = 3974;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 0;
@@ -2271,7 +2316,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 141";
 		rLen = 0;
-		rLoc = 3938;
+		rLoc = 3974;
 		rType = 0;
 		vrLen = 1336;
 		vrLoc = 0;
@@ -2311,7 +2356,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 96";
 		rLen = 0;
-		rLoc = 1569;
+		rLoc = 1608;
 		rType = 0;
 		vrLen = 1015;
 		vrLoc = 2069;
@@ -3059,7 +3104,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 154;
+		rLoc = 155;
 		rType = 1;
 	};
 	E28CD2B81453488B0052581A /* PBXTextBookmark */ = {
@@ -3067,7 +3112,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 176";
 		rLen = 0;
-		rLoc = 4890;
+		rLoc = 4926;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 3627;
@@ -3077,7 +3122,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 176";
 		rLen = 0;
-		rLoc = 4890;
+		rLoc = 4926;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 3627;
@@ -3087,7 +3132,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 176";
 		rLen = 0;
-		rLoc = 4890;
+		rLoc = 4926;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 3627;
@@ -3107,7 +3152,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 99";
 		rLen = 0;
-		rLoc = 2543;
+		rLoc = 2579;
 		rType = 0;
 		vrLen = 1618;
 		vrLoc = 2081;
@@ -3137,7 +3182,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4899;
+		rLoc = 4935;
 		rType = 0;
 		vrLen = 1635;
 		vrLoc = 2236;
@@ -3176,7 +3221,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4899;
+		rLoc = 4935;
 		rType = 0;
 		vrLen = 1635;
 		vrLoc = 2236;
@@ -3216,7 +3261,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4899;
+		rLoc = 4935;
 		rType = 0;
 		vrLen = 1161;
 		vrLoc = 2476;
@@ -3245,7 +3290,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4899;
+		rLoc = 4935;
 		rType = 0;
 		vrLen = 1639;
 		vrLoc = 2236;
@@ -3285,7 +3330,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4899;
+		rLoc = 4935;
 		rType = 0;
 		vrLen = 1639;
 		vrLoc = 2236;
@@ -3325,7 +3370,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4899;
+		rLoc = 4935;
 		rType = 0;
 		vrLen = 1639;
 		vrLoc = 2236;
@@ -3365,7 +3410,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4899;
+		rLoc = 4935;
 		rType = 0;
 		vrLen = 1635;
 		vrLoc = 2236;
@@ -3405,7 +3450,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4915;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1650;
 		vrLoc = 2393;
@@ -3445,7 +3490,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4915;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1650;
 		vrLoc = 2393;
@@ -3494,7 +3539,7 @@
 		ignoreCount = 0;
 		lineNumber = 26;
 		location = SlowBurn;
-		modificationTime = 341009915.138129;
+		modificationTime = 341015482.449407;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3503,7 +3548,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 177";
 		rLen = 0;
-		rLoc = 4915;
+		rLoc = 4951;
 		rType = 0;
 		vrLen = 1650;
 		vrLoc = 2393;
@@ -3922,6 +3967,374 @@
 		rLoc = 1774;
 		rType = 0;
 		vrLen = 1487;
+		vrLoc = 0;
+	};
+	E28CD35B145368D70052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 74";
+		rLen = 0;
+		rLoc = 2244;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 1388;
+	};
+	E28CD35C145368D70052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DF6D7FF3BEDFF97629DE1B4D /* Menus.cpp */;
+		name = "Menus.cpp: 123";
+		rLen = 0;
+		rLoc = 3273;
+		rType = 0;
+		vrLen = 918;
+		vrLoc = 668;
+	};
+	E28CD35D145368D70052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
+		name = "CommandDatabase.cpp: 130";
+		rLen = 0;
+		rLoc = 3676;
+		rType = 0;
+		vrLen = 1762;
+		vrLoc = 2325;
+	};
+	E28CD35E145368D70052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 576030227C6A7D5AFE20D0AF /* GenericApplication.cpp */;
+		name = "GenericApplication.cpp: 11";
+		rLen = 0;
+		rLoc = 315;
+		rType = 0;
+		vrLen = 1402;
+		vrLoc = 0;
+	};
+	E28CD35F145368D70052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		name = "SlowWindow.cpp: 12";
+		rLen = 0;
+		rLoc = 239;
+		rType = 0;
+		vrLen = 851;
+		vrLoc = 0;
+	};
+	E28CD360145368D70052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F9D5B5EE2CE56D8DCE8774C1 /* Window.cpp */;
+		name = "Window.cpp: 20";
+		rLen = 0;
+		rLoc = 375;
+		rType = 0;
+		vrLen = 912;
+		vrLoc = 0;
+	};
+	E28CD361145368D70052581A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'ovoid' does not name a type";
+		fRef = 1094736653D336F4F086F88A /* Instance.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 29;
+		rType = 1;
+	};
+	E28CD362145368D70052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1094736653D336F4F086F88A /* Instance.cpp */;
+		name = "Instance.cpp: 30";
+		rLen = 0;
+		rLoc = 764;
+		rType = 0;
+		vrLen = 975;
+		vrLoc = 0;
+	};
+	E28CD36514537A390052581A /* Command.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Command.h;
+		path = ../../../../../rec/src/rec/command/Command.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {797, 741}}";
+			sepNavSelRange = "{510, 0}";
+			sepNavVisRange = "{0, 590}";
+			sepNavWindowFrame = "{{84, 256}, {856, 854}}";
+		};
+	};
+	E28CD36614537A390052581A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Only constructors take base initializers";
+		fRef = E28CD36514537A390052581A /* Command.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 19;
+		rType = 1;
+	};
+	E28CD36714537A410052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 33301B7A93A933080C55E811 /* CreateMusicFileReader.cpp */;
+		name = "CreateMusicFileReader.cpp: 67";
+		rLen = 0;
+		rLoc = 1891;
+		rType = 0;
+		vrLen = 1415;
+		vrLoc = 307;
+	};
+	E28CD36A14537A410052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E28CD36514537A390052581A /* Command.h */;
+		name = "Command.h: 20";
+		rLen = 0;
+		rLoc = 510;
+		rType = 0;
+		vrLen = 590;
+		vrLoc = 0;
+	};
+	E28CD36B14537A410052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 576030227C6A7D5AFE20D0AF /* GenericApplication.cpp */;
+		name = "GenericApplication.cpp: 41";
+		rLen = 0;
+		rLoc = 1183;
+		rType = 0;
+		vrLen = 1531;
+		vrLoc = 0;
+	};
+	E28CD36C14537A410052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 061FBB036746790735D492AB /* SlowWindow.h */;
+		name = "SlowWindow.h: 33";
+		rLen = 0;
+		rLoc = 588;
+		rType = 0;
+		vrLen = 588;
+		vrLoc = 0;
+	};
+	E28CD36D14537A410052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 70";
+		rLen = 0;
+		rLoc = 2027;
+		rType = 0;
+		vrLen = 1908;
+		vrLoc = 1107;
+	};
+	E28CD36E14537A410052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */;
+		name = "CommandData.cpp: 19";
+		rLen = 0;
+		rLoc = 597;
+		rType = 0;
+		vrLen = 597;
+		vrLoc = 0;
+	};
+	E28CD36F14537A410052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = ACFED4DBD6A0A44AAC77A22D /* Position.cpp */;
+		name = "Position.cpp: 69";
+		rLen = 0;
+		rLoc = 1774;
+		rType = 0;
+		vrLen = 1547;
+		vrLoc = 0;
+	};
+	E28CD37214537A550052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1094736653D336F4F086F88A /* Instance.cpp */;
+		name = "Instance.cpp: 30";
+		rLen = 0;
+		rLoc = 764;
+		rType = 0;
+		vrLen = 975;
+		vrLoc = 0;
+	};
+	E28CD37314537A570052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1094736653D336F4F086F88A /* Instance.cpp */;
+		name = "Instance.cpp: 30";
+		rLen = 0;
+		rLoc = 764;
+		rType = 0;
+		vrLen = 975;
+		vrLoc = 0;
+	};
+	E28CD37614537A930052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 33301B7A93A933080C55E811 /* CreateMusicFileReader.cpp */;
+		name = "CreateMusicFileReader.cpp: 67";
+		rLen = 0;
+		rLoc = 1891;
+		rType = 0;
+		vrLen = 1415;
+		vrLoc = 307;
+	};
+	E28CD37714537A930052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 70";
+		rLen = 0;
+		rLoc = 2027;
+		rType = 0;
+		vrLen = 1908;
+		vrLoc = 1107;
+	};
+	E28CD37814537A930052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */;
+		name = "CommandData.cpp: 19";
+		rLen = 0;
+		rLoc = 597;
+		rType = 0;
+		vrLen = 597;
+		vrLoc = 0;
+	};
+	E28CD37914537A930052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = ACFED4DBD6A0A44AAC77A22D /* Position.cpp */;
+		name = "Position.cpp: 69";
+		rLen = 0;
+		rLoc = 1774;
+		rType = 0;
+		vrLen = 1547;
+		vrLoc = 0;
+	};
+	E28CD37C14537ABB0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 33301B7A93A933080C55E811 /* CreateMusicFileReader.cpp */;
+		name = "CreateMusicFileReader.cpp: 67";
+		rLen = 0;
+		rLoc = 1891;
+		rType = 0;
+		vrLen = 1410;
+		vrLoc = 307;
+	};
+	E28CD37D14537ABB0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 70";
+		rLen = 0;
+		rLoc = 2027;
+		rType = 0;
+		vrLen = 1834;
+		vrLoc = 1107;
+	};
+	E28CD37E14537ABB0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */;
+		name = "CommandData.cpp: 19";
+		rLen = 0;
+		rLoc = 597;
+		rType = 0;
+		vrLen = 597;
+		vrLoc = 0;
+	};
+	E28CD37F14537ABB0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = ACFED4DBD6A0A44AAC77A22D /* Position.cpp */;
+		name = "Position.cpp: 69";
+		rLen = 0;
+		rLoc = 1774;
+		rType = 0;
+		vrLen = 1487;
+		vrLoc = 0;
+	};
+	E28CD38414537B1C0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 33301B7A93A933080C55E811 /* CreateMusicFileReader.cpp */;
+		name = "CreateMusicFileReader.cpp: 67";
+		rLen = 0;
+		rLoc = 1891;
+		rType = 0;
+		vrLen = 1410;
+		vrLoc = 307;
+	};
+	E28CD38514537B1C0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4B9B092D1B3B397FC42C5713 /* ptr.h */;
+		rLen = 0;
+		rLoc = 24;
+		rType = 1;
+	};
+	E28CD38614537B1C0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4B9B092D1B3B397FC42C5713 /* ptr.h */;
+		name = "ptr.h: 25";
+		rLen = 0;
+		rLoc = 497;
+		rType = 0;
+		vrLen = 877;
+		vrLoc = 0;
+	};
+	E28CD38714537B1C0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 70";
+		rLen = 0;
+		rLoc = 2027;
+		rType = 0;
+		vrLen = 1834;
+		vrLoc = 1107;
+	};
+	E28CD38814537B1C0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */;
+		name = "CommandData.cpp: 19";
+		rLen = 0;
+		rLoc = 597;
+		rType = 0;
+		vrLen = 597;
+		vrLoc = 0;
+	};
+	E28CD38914537B1C0052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = ACFED4DBD6A0A44AAC77A22D /* Position.cpp */;
+		name = "Position.cpp: 69";
+		rLen = 0;
+		rLoc = 1774;
+		rType = 0;
+		vrLen = 1487;
+		vrLoc = 0;
+	};
+	E28CD39214537BF00052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4B9B092D1B3B397FC42C5713 /* ptr.h */;
+		name = "ptr.h: 25";
+		rLen = 0;
+		rLoc = 497;
+		rType = 0;
+		vrLen = 899;
+		vrLoc = 0;
+	};
+	E28CD39314537BF00052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 70";
+		rLen = 0;
+		rLoc = 2027;
+		rType = 0;
+		vrLen = 1908;
+		vrLoc = 1107;
+	};
+	E28CD39414537BF00052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */;
+		name = "CommandData.cpp: 19";
+		rLen = 0;
+		rLoc = 597;
+		rType = 0;
+		vrLen = 597;
+		vrLoc = 0;
+	};
+	E28CD39514537BF00052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = ACFED4DBD6A0A44AAC77A22D /* Position.cpp */;
+		name = "Position.cpp: 69";
+		rLen = 0;
+		rLoc = 1774;
+		rType = 0;
+		vrLen = 1547;
 		vrLoc = 0;
 	};
 	EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */ = {

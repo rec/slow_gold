@@ -1,14 +1,5 @@
 package rec.command;
 
-message KeyPress {
-  repeated string key = 1;
-  repeated uint32 keycode = 2;
-
-  optional bool shift = 3;
-  optional bool command = 4;
-  optional bool alt = 5;
-};
-
 message Description {
   optional string menu = 1;  // Shortest description, for menus.
   optional string full = 2;  // Longer description, when editing.
@@ -93,7 +84,7 @@ message Command {
 
   optional string category = 3;  // English language category.
   optional Description desc = 4;  // Localized descriptions.
-  repeated KeyPress keypress = 5;
+  repeated string keypress = 5;   // In Juce keyboard format.
 };
 
 message Commands {

@@ -11,8 +11,8 @@ namespace data { template <typename Type> class TypedEditable; }
 namespace util {
 namespace file {
 
-inline const VirtualFile& none() { 
-  return VirtualFile::default_instance(); 
+inline const VirtualFile& none() {
+  return VirtualFile::default_instance();
 }
 
 const File getFile(const VirtualFile& file);
@@ -32,7 +32,7 @@ bool empty(const VirtualFile& file);
 typedef data::TypedEditable<VirtualFile> VirtualFileData;
 
 VirtualFile toVirtualFile(const File& file);
-inline VirtualFile toVirtualFile(const String& s) { return toVirtualFile(File(s)); }
+VirtualFile toVirtualFile(const string& s);
 VirtualFileList toVirtualFileList(const StringArray& file);
 VirtualFileList toVirtualFileList(const juce::Array<File>& files);
 

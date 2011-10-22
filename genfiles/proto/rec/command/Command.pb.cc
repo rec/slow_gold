@@ -15,9 +15,6 @@ namespace command {
 
 namespace {
 
-const ::google::protobuf::Descriptor* KeyPress_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  KeyPress_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Description_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Description_reflection_ = NULL;
@@ -44,26 +41,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/command/Command.proto");
   GOOGLE_CHECK(file != NULL);
-  KeyPress_descriptor_ = file->message_type(0);
-  static const int KeyPress_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyPress, key_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyPress, keycode_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyPress, shift_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyPress, command_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyPress, alt_),
-  };
-  KeyPress_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      KeyPress_descriptor_,
-      KeyPress::default_instance_,
-      KeyPress_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyPress, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyPress, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(KeyPress));
-  Description_descriptor_ = file->message_type(1);
+  Description_descriptor_ = file->message_type(0);
   static const int Description_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, menu_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, full_),
@@ -80,7 +58,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Description));
-  Command_descriptor_ = file->message_type(2);
+  Command_descriptor_ = file->message_type(1);
   static const int Command_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, index_),
@@ -100,7 +78,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Command));
   Command_Type_descriptor_ = Command_descriptor_->enum_type(0);
-  Commands_descriptor_ = file->message_type(3);
+  Commands_descriptor_ = file->message_type(2);
   static const int Commands_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Commands, command_),
   };
@@ -115,7 +93,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Commands));
-  KeyValue_descriptor_ = file->message_type(4);
+  KeyValue_descriptor_ = file->message_type(3);
   static const int KeyValue_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyValue, key_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyValue, value_),
@@ -131,7 +109,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(KeyValue));
-  Mapping_descriptor_ = file->message_type(5);
+  Mapping_descriptor_ = file->message_type(4);
   static const int Mapping_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mapping, key_value_),
   };
@@ -159,8 +137,6 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    KeyPress_descriptor_, &KeyPress::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Description_descriptor_, &Description::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Command_descriptor_, &Command::default_instance());
@@ -175,8 +151,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto() {
-  delete KeyPress::default_instance_;
-  delete KeyPress_reflection_;
   delete Description::default_instance_;
   delete Description_reflection_;
   delete Command::default_instance_;
@@ -197,50 +171,45 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/command/Command.proto\022\013rec.command"
-    "\"U\n\010KeyPress\022\013\n\003key\030\001 \003(\t\022\017\n\007keycode\030\002 \003"
-    "(\r\022\r\n\005shift\030\003 \001(\010\022\017\n\007command\030\004 \001(\010\022\013\n\003al"
-    "t\030\005 \001(\010\"7\n\013Description\022\014\n\004menu\030\001 \001(\t\022\014\n\004"
-    "full\030\002 \001(\t\022\014\n\004help\030\003 \001(\t\"\262\010\n\007Command\022\'\n\004"
-    "type\030\001 \001(\0162\031.rec.command.Command.Type\022\r\n"
-    "\005index\030\002 \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004desc\030\004"
-    " \001(\0132\030.rec.command.Description\022\'\n\010keypre"
-    "ss\030\005 \003(\0132\025.rec.command.KeyPress\"\213\007\n\004Type"
-    "\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_"
-    "PREFERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CL"
-    "EAR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016"
-    "\n\nCLOSE_FILE\020\006\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n"
-    "\tEJECT_CDS\020\010\022\031\n\025INVERT_LOOP_SELECTION\020\t\022"
-    "\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020\013\022\025\n\021KEYBOARD"
-    "_MAPPINGS\020\014\022\021\n\rMIDI_MAPPINGS\020\r\022\026\n\022MUTE_V"
-    "OLUME_TOGGLE\020\016\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021"
-    "NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022"
-    "\023\n\017NUDGE_END_RIGHT\020\022\022\025\n\021NUDGE_VOLUME_DOW"
-    "N\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\020\n\014RE"
-    "CENT_FILES\020\026\022\010\n\004REDO\020\027\022\027\n\023RESET_GAIN_TO_"
-    "UNITY\020\030\022\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\n\n\006"
-    "TOGGLE\020\033\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGL"
-    "E_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHOLE_SONG_"
-    "LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n"
-    "\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGH"
-    "T\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&"
-    "\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\t\n\004QUIT\020\201 \022\010"
-    "\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205"
-    " \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\r\n"
-    "\tLAST_TYPE\020(\022\017\n\nJUCE_START\020\201 \022\r\n\010JUCE_EN"
-    "D\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022%\n\007com"
-    "mand\030\001 \003(\0132\024.rec.command.Command\"&\n\010KeyV"
-    "alue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Mapp"
-    "ing\022(\n\tkey_value\030\001 \003(\0132\025.rec.command.Key"
-    "Value", 1405);
+    "\"7\n\013Description\022\014\n\004menu\030\001 \001(\t\022\014\n\004full\030\002 "
+    "\001(\t\022\014\n\004help\030\003 \001(\t\"\233\010\n\007Command\022\'\n\004type\030\001 "
+    "\001(\0162\031.rec.command.Command.Type\022\r\n\005index\030"
+    "\002 \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004desc\030\004 \001(\0132\030."
+    "rec.command.Description\022\020\n\010keypress\030\005 \003("
+    "\t\"\213\007\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001"
+    "\022\025\n\021AUDIO_PREFERENCES\020\002\022\023\n\017CLEAR_NAVIGAT"
+    "OR\020\003\022\017\n\013CLEAR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FIL"
+    "E_DATA\020\005\022\016\n\nCLOSE_FILE\020\006\022\025\n\021DIM_VOLUME_T"
+    "OGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022\031\n\025INVERT_LOOP_SE"
+    "LECTION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020\013\022\025"
+    "\n\021KEYBOARD_MAPPINGS\020\014\022\021\n\rMIDI_MAPPINGS\020\r"
+    "\022\026\n\022MUTE_VOLUME_TOGGLE\020\016\022\024\n\020NUDGE_BEGIN_"
+    "LEFT\020\017\022\025\n\021NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_E"
+    "ND_LEFT\020\021\022\023\n\017NUDGE_END_RIGHT\020\022\022\025\n\021NUDGE_"
+    "VOLUME_DOWN\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OP"
+    "EN\020\025\022\020\n\014RECENT_FILES\020\026\022\010\n\004REDO\020\027\022\027\n\023RESE"
+    "T_GAIN_TO_UNITY\020\030\022\n\n\006SELECT\020\031\022\017\n\013SELECT_"
+    "ONLY\020\032\022\n\n\006TOGGLE\020\033\022\025\n\021TOGGLE_START_STOP\020"
+    "\034\022\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_W"
+    "HOLE_SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE"
+    "_DOWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n"
+    "\nTREE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010"
+    "UNSELECT\020&\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\t\n"
+    "\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022"
+    "\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT"
+    "_ALL\020\207 \022\r\n\tLAST_TYPE\020(\022\017\n\nJUCE_START\020\201 \022"
+    "\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Comma"
+    "nds\022%\n\007command\030\001 \003(\0132\024.rec.command.Comma"
+    "nd\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001"
+    "(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025.rec.c"
+    "ommand.KeyValue", 1295);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
-  KeyPress::default_instance_ = new KeyPress();
   Description::default_instance_ = new Description();
   Command::default_instance_ = new Command();
   Commands::default_instance_ = new Commands();
   KeyValue::default_instance_ = new KeyValue();
   Mapping::default_instance_ = new Mapping();
-  KeyPress::default_instance_->InitAsDefaultInstance();
   Description::default_instance_->InitAsDefaultInstance();
   Command::default_instance_->InitAsDefaultInstance();
   Commands::default_instance_->InitAsDefaultInstance();
@@ -255,383 +224,6 @@ struct StaticDescriptorInitializer_rec_2fcommand_2fCommand_2eproto {
     protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   }
 } static_descriptor_initializer_rec_2fcommand_2fCommand_2eproto_;
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int KeyPress::kKeyFieldNumber;
-const int KeyPress::kKeycodeFieldNumber;
-const int KeyPress::kShiftFieldNumber;
-const int KeyPress::kCommandFieldNumber;
-const int KeyPress::kAltFieldNumber;
-#endif  // !_MSC_VER
-
-KeyPress::KeyPress()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void KeyPress::InitAsDefaultInstance() {
-}
-
-KeyPress::KeyPress(const KeyPress& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void KeyPress::SharedCtor() {
-  _cached_size_ = 0;
-  shift_ = false;
-  command_ = false;
-  alt_ = false;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-KeyPress::~KeyPress() {
-  SharedDtor();
-}
-
-void KeyPress::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void KeyPress::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* KeyPress::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return KeyPress_descriptor_;
-}
-
-const KeyPress& KeyPress::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();  return *default_instance_;
-}
-
-KeyPress* KeyPress::default_instance_ = NULL;
-
-KeyPress* KeyPress::New() const {
-  return new KeyPress;
-}
-
-void KeyPress::Clear() {
-  if (_has_bits_[2 / 32] & (0xffu << (2 % 32))) {
-    shift_ = false;
-    command_ = false;
-    alt_ = false;
-  }
-  key_.Clear();
-  keycode_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool KeyPress::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated string key = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_key:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_key()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->key(0).data(), this->key(0).length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(10)) goto parse_key;
-        if (input->ExpectTag(16)) goto parse_keycode;
-        break;
-      }
-      
-      // repeated uint32 keycode = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_keycode:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 1, 16, input, this->mutable_keycode())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, this->mutable_keycode())));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_keycode;
-        if (input->ExpectTag(24)) goto parse_shift;
-        break;
-      }
-      
-      // optional bool shift = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_shift:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &shift_)));
-          _set_bit(2);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(32)) goto parse_command;
-        break;
-      }
-      
-      // optional bool command = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_command:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &command_)));
-          _set_bit(3);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(40)) goto parse_alt;
-        break;
-      }
-      
-      // optional bool alt = 5;
-      case 5: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_alt:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &alt_)));
-          _set_bit(4);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void KeyPress::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated string key = 1;
-  for (int i = 0; i < this->key_size(); i++) {
-  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-    this->key(i).data(), this->key(i).length(),
-    ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->key(i), output);
-  }
-  
-  // repeated uint32 keycode = 2;
-  for (int i = 0; i < this->keycode_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
-      2, this->keycode(i), output);
-  }
-  
-  // optional bool shift = 3;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->shift(), output);
-  }
-  
-  // optional bool command = 4;
-  if (_has_bit(3)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->command(), output);
-  }
-  
-  // optional bool alt = 5;
-  if (_has_bit(4)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->alt(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* KeyPress::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // repeated string key = 1;
-  for (int i = 0; i < this->key_size(); i++) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->key(i).data(), this->key(i).length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(1, this->key(i), target);
-  }
-  
-  // repeated uint32 keycode = 2;
-  for (int i = 0; i < this->keycode_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt32ToArray(2, this->keycode(i), target);
-  }
-  
-  // optional bool shift = 3;
-  if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->shift(), target);
-  }
-  
-  // optional bool command = 4;
-  if (_has_bit(3)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->command(), target);
-  }
-  
-  // optional bool alt = 5;
-  if (_has_bit(4)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->alt(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int KeyPress::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[2 / 32] & (0xffu << (2 % 32))) {
-    // optional bool shift = 3;
-    if (has_shift()) {
-      total_size += 1 + 1;
-    }
-    
-    // optional bool command = 4;
-    if (has_command()) {
-      total_size += 1 + 1;
-    }
-    
-    // optional bool alt = 5;
-    if (has_alt()) {
-      total_size += 1 + 1;
-    }
-    
-  }
-  // repeated string key = 1;
-  total_size += 1 * this->key_size();
-  for (int i = 0; i < this->key_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->key(i));
-  }
-  
-  // repeated uint32 keycode = 2;
-  {
-    int data_size = 0;
-    for (int i = 0; i < this->keycode_size(); i++) {
-      data_size += ::google::protobuf::internal::WireFormatLite::
-        UInt32Size(this->keycode(i));
-    }
-    total_size += 1 * this->keycode_size() + data_size;
-  }
-  
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void KeyPress::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const KeyPress* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const KeyPress*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void KeyPress::MergeFrom(const KeyPress& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  key_.MergeFrom(from.key_);
-  keycode_.MergeFrom(from.keycode_);
-  if (from._has_bits_[2 / 32] & (0xffu << (2 % 32))) {
-    if (from._has_bit(2)) {
-      set_shift(from.shift());
-    }
-    if (from._has_bit(3)) {
-      set_command(from.command());
-    }
-    if (from._has_bit(4)) {
-      set_alt(from.alt());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void KeyPress::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void KeyPress::CopyFrom(const KeyPress& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool KeyPress::IsInitialized() const {
-  
-  return true;
-}
-
-void KeyPress::Swap(KeyPress* other) {
-  if (other != this) {
-    key_.Swap(&other->key_);
-    keycode_.Swap(&other->keycode_);
-    std::swap(shift_, other->shift_);
-    std::swap(command_, other->command_);
-    std::swap(alt_, other->alt_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata KeyPress::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = KeyPress_descriptor_;
-  metadata.reflection = KeyPress_reflection_;
-  return metadata;
-}
 
 
 // ===================================================================
@@ -1252,13 +844,16 @@ bool Command::MergePartialFromCodedStream(
         break;
       }
       
-      // repeated .rec.command.KeyPress keypress = 5;
+      // repeated string keypress = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_keypress:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_keypress()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_keypress()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->keypress(0).data(), this->keypress(0).length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -1311,9 +906,12 @@ void Command::SerializeWithCachedSizes(
       4, this->desc(), output);
   }
   
-  // repeated .rec.command.KeyPress keypress = 5;
+  // repeated string keypress = 5;
   for (int i = 0; i < this->keypress_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->keypress(i).data(), this->keypress(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       5, this->keypress(i), output);
   }
   
@@ -1353,11 +951,13 @@ void Command::SerializeWithCachedSizes(
         4, this->desc(), target);
   }
   
-  // repeated .rec.command.KeyPress keypress = 5;
+  // repeated string keypress = 5;
   for (int i = 0; i < this->keypress_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->keypress(i).data(), this->keypress(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        5, this->keypress(i), target);
+      WriteStringToArray(5, this->keypress(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1399,12 +999,11 @@ int Command::ByteSize() const {
     }
     
   }
-  // repeated .rec.command.KeyPress keypress = 5;
+  // repeated string keypress = 5;
   total_size += 1 * this->keypress_size();
   for (int i = 0; i < this->keypress_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->keypress(i));
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->keypress(i));
   }
   
   if (!unknown_fields().empty()) {

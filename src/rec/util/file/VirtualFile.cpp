@@ -159,6 +159,13 @@ VirtualFile toVirtualFile(const File& file) {
   return vf;
 }
 
+VirtualFile toVirtualFile(const string& s) {
+  VirtualFile f;
+  *f.add_path() = s;
+  return f;
+};
+
+
 template <typename Collection>
 VirtualFileList toVirtualFileListHelper(const Collection& infiles) {
   VirtualFileList files;
