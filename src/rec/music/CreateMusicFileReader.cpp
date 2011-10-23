@@ -40,7 +40,7 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
 
   ptr<Metadata> metadata;
   data::TypedEditable<Metadata>* d = data::editable<music::Metadata>(file);
-  if (d->fileReadSuccess())
+  if (!d->fileReadSuccess())
     metadata.reset(new Metadata);
 
   ptr<AudioFormatReader> reader;
