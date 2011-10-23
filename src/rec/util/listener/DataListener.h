@@ -4,7 +4,7 @@
 #include "rec/util/listener/Listener.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {

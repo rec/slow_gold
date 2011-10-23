@@ -57,6 +57,7 @@ void UndoQueue::executeTop(bool isUndo) {
   Editable* editable = editables_[top];
   Action* action = actions_[top];
   const Operations& ops = isUndo ? action->undo() : action->operations();
+  DCHECK(false) << "Need to apply without adding an undo to the queue";
   ptr<Operations>(editable->applyOperations(ops));
 }
 

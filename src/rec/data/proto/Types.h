@@ -31,7 +31,7 @@ PROTO_MAKE_TYPE(sfixed64, uint64);
 PROTO_MAKE_TYPE(sint32,   uint32);
 PROTO_MAKE_TYPE(sint64,   uint64);
 PROTO_MAKE_TYPE(bytes,    string);
-PROTO_MAKE_TYPE(penum,    int);
+PROTO_MAKE_TYPE(penum,    int32);
 
 inline bool operator==(const bytes& b1, const bytes& b2) {
   return b1.value_ == b2.value_;

@@ -34,11 +34,12 @@ void GenericApplication::initialise(const String&) {
   data::start();
   window_.reset(createWindow());
   window_->initialise();
+
+  thread::runInNewThread("startup thread",
+                         STARTUP_THREAD_PRIORITY,
+                         window_.get(),
+                         &Window::startup);
   LOG(INFO) << name_ << ": initialise finished.";
-  startupThread_.reset(thread::runInNewThread("startup thread",
-                                              STARTUP_THREAD_PRIORITY,
-                                              window_.get(),
-                                              &Window::startup));
 }
 
 void GenericApplication::shutdown() {

@@ -68,10 +68,11 @@ PlayerController::PlayerController()
   strategyComboBox_.setTextWhenNoChoicesAvailable("Strategy");
   strategyComboBox_.addItem("Audio Magic", Stretch::AUDIO_MAGIC);
   strategyComboBox_.addItem("SoundTouch", Stretch::SOUNDTOUCH);
-  //strategyComboBox_.addListener(this);
+  strategyComboBox_.addListener(this);
 
   addToLayout(&modeSelector_, 24);
   addToLayout(&stereoComboBox_, 18);
+  addToLayout(&strategyComboBox_, 18);
 
   static const int SLIDER_HEIGHT = 18;
   addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
@@ -135,6 +136,13 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
         stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
       }
       DataListener<StereoProto>::data_->set(stereo);
+    }
+  }
+
+  if (box == &strategyComboBox_) {
+    if (DataListener<Stretch>::data_) {
+      Stretch::Strategy strategy = static_cast<Stretch::Strategy>(strategyComboBox_.getSelectedId());
+      DataListener<Stretch>::data_->set(data::penum(strategy), Address("strategy"));
     }
   }
 }

@@ -3,7 +3,7 @@
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/FieldOps.h"
-#include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/data/Value.h"
 #include "rec/util/STL.h"
 
@@ -86,7 +86,7 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);
     MessageField f;
-    ScopedLock l(lock_);
+    // ScopedLock l(lock_);
     if (!fillMessageField(&f, Address(op.address()), *message_)) {
       LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
       return NULL;
@@ -110,11 +110,10 @@ void UntypedEditable::update() {
     command.swap(queue_);
   }
 
+  // I don't need to lock here, because I'm the only person using this queue...?
   OperationList undo;
-  for (OperationList::iterator i = command.begin(); i != command.end(); ++i) {
-    ScopedLock l(lock_);
+  for (OperationList::iterator i = command.begin(); i != command.end(); ++i) 
     undo.push_back(applyOperations(**i));
-  }
 
   addToUndoQueue(this, command, undo);
   stl::deletePointers(&command);

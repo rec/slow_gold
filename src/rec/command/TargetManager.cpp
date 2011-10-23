@@ -1,14 +1,18 @@
 #include "rec/command/TargetManager.h"
 
 #include "rec/app/Files.h"
+#include "rec/data/Data.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.h"
 #include "rec/command/map/Keyboard.xml.h"
 #include "rec/slow/Position.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace command {
+
+using slow::Position;
 
 namespace {
 
@@ -133,28 +137,61 @@ ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
   return i == map_.end() ? NULL : &i->second->info_;
 }
 
-static File getKeyboardFile() {
-  return app::getAppFile("Keyboard.xml");
+static const VirtualFile getKeyboardFile() {
+  static VirtualFile vf = file::toVirtualFile("KeyPresses");
+  return vf;
+}
+
+static void writeKeyboardFile(juce::XmlElement* element) {
+  CommandTable t;
+  forEachXmlChildElement(*element, mapping) {
+    CommandID id = mapping->getStringAttribute("commandId").getHexValue32();
+    CommandTable::const_iterator i = t.find(id);
+    string key = str(mapping->getStringAttribute("key"));
+    Command* command;
+    if (i == t.end()) {
+      command = new Command;
+      Position::fillCommandFromId(id, command);
+      t[id] = command;
+    } else {
+      command = i->second;
+    }
+    command->add_keypress(key);
+  }
+
+  data::set(fromCommandTable(t), getKeyboardFile());
+  stl::deleteMapPointers(&t);
+}
+
+using juce::XmlElement;
+
+static XmlElement* readKeyboardFile() {
+  ptr<XmlElement> element(new XmlElement("KEYMAPPINGS"));
+  Commands commands = data::get<Commands>(getKeyboardFile());
+  for (int i = 0; i < commands.command_size(); ++i) {
+    const Command& cmd = commands.command(i);
+    for (int j = 0; j < cmd.keypress_size(); ++j) {
+      juce::XmlElement* mapping = element->createNewChildElement("MAPPING");
+      mapping->setAttribute("commandId",
+                            String::toHexString(Position::toCommandID(cmd)));
+      mapping->setAttribute("description", str(cmd.desc().full()));
+      mapping->setAttribute("key", str(cmd.keypress(j)).toLowerCase());
+    }
+  }
+  return element.transfer();
 }
 
 void TargetManager::saveKeyboardBindings() {
   ptr<juce::XmlElement> state(commandManager_.getKeyMappings()->createXml(false));
-  if (state) {
-    if (!state->writeToFile(getKeyboardFile(), ""))
-      LOG(ERROR) << "Couldn't write device state file.";
-  }
+  if (!state)
+    LOG(ERROR) << "Couldn't create keyboard binding XML";
+  else
+    writeKeyboardFile(state.get());
 }
 
 void TargetManager::loadKeyboardBindings() {
-  ptr<juce::XmlElement> state;
-  File f = getKeyboardFile();
-  if (f.exists())
-    state.reset(juce::XmlDocument::parse(f));
-  else
-    state.reset(Keyboard::create());
-
-  if (state)
-    commandManager_.getKeyMappings()->restoreFromXml(*state);
+  ptr<juce::XmlElement> state(readKeyboardFile());
+  commandManager_.getKeyMappings()->restoreFromXml(*state);
 }
 
 }  // namespace command

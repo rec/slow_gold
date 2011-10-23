@@ -3,7 +3,7 @@
 #include "rec/util/cd/Album.h"
 #include "rec/audio/util/AudioFormatManager.h"
 #include "rec/music/Metadata.h"
-#include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/Value.h"
 

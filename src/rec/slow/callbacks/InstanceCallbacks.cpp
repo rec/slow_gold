@@ -5,7 +5,7 @@
 #include "rec/audio/util/Gain.h"
 #include "rec/command/map/KeyCommandMapEditor.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
-#include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/slow/Components.h"

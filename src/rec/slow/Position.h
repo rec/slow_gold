@@ -26,6 +26,8 @@ class Position {
     return Position(position).toCommandID(type);
   }
 
+  static void fillCommandFromId(CommandID, Command*);
+
   static Position fromCommandID(CommandID);
   static string commandIDName(CommandID);
   static int toCommandID(const Command&);

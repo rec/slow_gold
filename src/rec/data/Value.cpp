@@ -40,6 +40,8 @@ template <> bool Value::get<bool>() const { return bool_f(); }
 template <> bool Value::has<string>() const { return has_string_f(); }
 template <> string Value::get<string>() const { return string_f(); }
 
+template <> bool Value::has<penum>() const { return has_enum_f(); }
+template <> penum Value::get<penum>() const { return enum_f(); }
 
 }  // namespace data
 }  // namespace rec

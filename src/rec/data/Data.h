@@ -1,6 +1,7 @@
-#ifndef __REC_DATA_PERSIST_PERSIST__
-#define __REC_DATA_PERSIST_PERSIST__
+#ifndef __REC_DATA_DATA__
+#define __REC_DATA_DATA__
 
+#include "rec/data/Value.h"
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/util/file/VirtualFile.h"
@@ -45,4 +46,4 @@ const Proto get(const VirtualFile& f = file::none(),
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PERSIST_PERSIST__
+#endif  // __REC_DATA_DATA__

@@ -1,7 +1,7 @@
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/Access.pb.h"
 #include "rec/command/data/CommandData.h"
-#include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/slow/Position.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/STL.h"
@@ -14,28 +14,33 @@ namespace {
 
 using slow::Position;
 
-void insert(CommandTable* map, const Command& cmd, CommandID id = 0) {
-  if (!id)
-    id = cmd.type();
+enum MergeType {INSERT, MERGE};
 
-  // DLOG(INFO) << "Inserting " << Position::commandIDName(id);
+void addTo(MergeType type, CommandTable* map, const Command& cmd,
+           CommandID id = 0) {
+  if (!id)
+    id = Position::toCommandID(cmd);
+
   CommandTable::iterator j = map->find(id);
-  if (j == map->end())
-    map->insert(j, std::make_pair(id, new Command(cmd)));
-  else
-    LOG(ERROR) << "Can't replace " << Position::commandIDName(id);
+  if (j == map->end()) {
+    if (type == INSERT)
+      map->insert(j, std::make_pair(id, new Command(cmd)));
+    else
+    LOG(ERROR) << "No existing command " << Position::commandIDName(id);
+  } else {
+    if (type == MERGE)
+      j->second->MergeFrom(cmd);
+    else
+      LOG(ERROR) << "Can't replace " << Position::commandIDName(id);
+  }
 }
 
 void merge(CommandTable* map, const Command& cmd, CommandID id = 0) {
-  if (!id)
-    id = cmd.type();
+  addTo(MERGE, map, cmd, id);
+}
 
-  // DLOG(INFO) << "Merging " << Position::commandIDName(id) << ", " << id;
-  CommandTable::iterator j = map->find(id);
-  if (j != map->end())
-    j->second->MergeFrom(cmd);
-  else
-    LOG(ERROR) << "No existing command " << Position::commandIDName(id);
+void insert(CommandTable* map, const Command& cmd, CommandID id = 0) {
+  addTo(INSERT, map, cmd, id);
 }
 
 }  // namespace
@@ -87,10 +92,9 @@ void insertRepeated(CommandTable* map) {
 
 void mergeKeyPresses(CommandTable* map, const Access& access) {
   Commands kp = data::get(file::toVirtualFile("KeyPresses"), keyPresses(access));
-
   for (int i = 0; i < kp.command_size(); ++i) {
     const Command& c = kp.command(i);
-    merge(map, c, Position::toCommandID(c));
+    merge(map, c);
   }
 }
 
@@ -98,11 +102,9 @@ void mergeDescription(CommandTable* map, const Command& command) {
   CommandTable::iterator it = map->find(command.type());
   if (it != map->end()) {
     it->second->MergeFrom(command);
-    // DLOG(INFO) << "found single " << command.ShortDebugString();
     return;
   }
 
-  // DLOG(INFO) << "merging multiple " << command.ShortDebugString();
   static const char* LOWER[] = {" the first", " the previous", " the current",
                                 " the next", " the last"};
   static const char* CAP[] = {" First", " Previous", " Current", " Next",
@@ -150,7 +152,8 @@ void removeEmpties(CommandTable* map) {
     const Description& desc = i->second->desc();
     if (!(desc.menu().size() && desc.full().size())) {
       empties.push_back(i->first);
-      // DLOG(INFO) << "Removing empty " << Position::commandIDName(i->first);
+      LOG(ERROR) << "Removing empty command "
+                 << Position::commandIDName(i->first);
     }
   }
 
@@ -170,9 +173,8 @@ void CommandDatabase::recalculate() {
   mergeKeyPresses(&map_, access);
   mergeDescriptions(&map_, access);
   removeEmpties(&map_);
-
-  // DLOG(INFO) << fromCommandTable(map_).DebugString();
 }
 
 }  // namespace command
 }  // namespace rec
+

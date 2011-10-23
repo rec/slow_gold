@@ -1,0 +1,168 @@
+command {
+  type: DEL
+  keypress {
+    keycode: 8
+    keycode: 127
+  }
+}
+command {
+  type: CUT
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: COPY
+  keypress {
+    key: "c"
+    command: true
+  }
+}
+command {
+  type: PASTE
+  keypress {
+    key: "v"
+    command: true
+  }
+}
+command {
+  type: SELECT_ALL
+  keypress {
+    key: "a"
+    command: true
+  }
+}
+command {
+  type: DESELECT_ALL
+  keypress {
+    key: "d"
+    command: true
+  }
+}
+command {
+  type: ADD_LOOP_POINT
+  keypress {
+    key: "+"
+    command: true
+  }
+}
+command {
+  type: AUDIO_PREFERENCES
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: CLEAR_NAVIGATOR
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: CLEAR_LOOPS
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: CLOSE_FILE
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: DIM_VOLUME_TOGGLE
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: EJECT_CDS
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: INVERT_LOOP_SELECTION
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: KEYBOARD_MAPPINGS
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: MIDI_MAPPINGS
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: MUTE_VOLUME_TOGGLE
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: NUDGE_VOLUME_DOWN
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: NUDGE_VOLUME_UP
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: OPEN
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: RESET_GAIN_TO_UNITY
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: TOGGLE_WHOLE_SONG_LOOP
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: TOGGLE_START_STOP
+  keypress {
+    key: "x"
+    command: true
+  }
+}
+command {
+  type: UNDO
+  keypress {
+    key: "x"
+    command: true
+  }
+}

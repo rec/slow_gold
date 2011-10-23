@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_PERSISTENTWINDOW
 #define __REC_GUI_PERSISTENTWINDOW
 
-#include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/gui/Geometry.h"
 
 namespace rec {

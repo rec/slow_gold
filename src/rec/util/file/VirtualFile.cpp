@@ -161,7 +161,8 @@ VirtualFile toVirtualFile(const File& file) {
 
 VirtualFile toVirtualFile(const string& s) {
   VirtualFile f;
-  *f.add_path() = s;
+  f.set_type(VirtualFile::VOLUME);
+  f.add_path(s);
   return f;
 };
 

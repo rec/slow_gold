@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_SONGDATA__
 #define __REC_GUI_SONGDATA__
 
-#include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/gui/SetterTextArea.h"
 #include "rec/gui/component/Focusable.h"

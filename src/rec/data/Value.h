@@ -8,7 +8,7 @@
 namespace rec {
 namespace data {
 
-String toString(const ValueProto& value);
+// String toString(const ValueProto& value);
 
 class Value : public ValueProto {
  public:

@@ -64,5 +64,13 @@ int Position::toCommandID(const Command& cmd) {
   return cmd.has_index() ? toCommandID(cmd.index(), cmd.type()) : cmd.type();
 }
 
+void Position::fillCommandFromId(CommandID id, Command* command) {
+  if (id >= Command::BANK_SIZE) {
+    command->set_index(fromCommandID(id));
+    id /= Command::BANK_SIZE;
+  }
+  command->set_type(static_cast<Command::Type>(id));
+}
+
 }  // namespace slow
 }  // namespace rec

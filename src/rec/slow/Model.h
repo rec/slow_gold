@@ -7,7 +7,7 @@
 #include "rec/audio/source/Stereo.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/audio/util/ThumbnailBuffer.h"
-#include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/music/Metadata.pb.h"
