@@ -10,16 +10,17 @@ Window::Window(const String& name,
                const Colour& bg,
                int requiredButtons,
                bool addToDesktop)
-    : PersistentWindow(name, bg, requiredButtons, addToDesktop) {
+    : PersistentWindow(name, bg, requiredButtons, addToDesktop),
+      running_(false) {
 }
 
 void Window::initialise() {
-  Lock l(lock_);
-  if (running_)
+  if (running_) {
+    LOG(ERROR) << "already running!";
     return;
+  }
 
   constructInstance();
-
   Component* mp = getMainComponent();
   mp->setBounds(0, 0, 1, 1);
 

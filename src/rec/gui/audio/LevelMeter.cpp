@@ -39,6 +39,7 @@ void LevelMeter::paint(Graphics& g) {
 
   float travel = static_cast<float>(horizontal_ ? getWidth() : getHeight());
   int width = (horizontal_ ? getHeight() : getWidth()) - (size - 1) * margin_;
+
   // TODO: I originally had int division on the next line, make sure the new code's right.
   float w = static_cast<float>(width) / size;
 

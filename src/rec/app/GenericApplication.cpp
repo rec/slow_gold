@@ -24,7 +24,6 @@ GenericApplication::~GenericApplication() {}
 void GenericApplication::initialise(const String&) {
   FLAGS_logtostderr = true;
   setName(name_);
-  LOG(INFO) << name_ << ": initialise starting...";
   if (downloadNewVersionIfNeeded(version_, name_)) {
     quit();
     return;

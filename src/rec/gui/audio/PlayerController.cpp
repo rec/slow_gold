@@ -88,7 +88,7 @@ PlayerController::PlayerController()
   addToLayout(&levelMeter_);
 }
 
-#define ALLOWING_TIME_CHANGES false
+#define ALLOWING_TIME_CHANGES !false
 
 void PlayerController::onDataChange(const Stretch& s) {
   MessageManagerLock l;
