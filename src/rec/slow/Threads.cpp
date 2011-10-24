@@ -51,22 +51,18 @@ namespace {
 
 struct Period {
   enum Enum {
-    BUFFER = 39,
     DIRECTORY = 1000,
     FILL = 40,
     NAVIGATOR = 1001,
-    PARAMETER = 41
   };
 };
 
 
 struct Priority {
   enum Enum {
-    BUFFER = 3,
     DIRECTORY = 3,
-    FILL = 5,
+    FILL = 4,
     NAVIGATOR = 2,
-    PARAMETER = 5
   };
 };
 

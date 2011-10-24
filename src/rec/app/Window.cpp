@@ -14,10 +14,12 @@ Window::Window(const String& name,
 }
 
 void Window::initialise() {
+  Lock l(lock_);
   if (running_)
     return;
 
   constructInstance();
+
   Component* mp = getMainComponent();
   mp->setBounds(0, 0, 1, 1);
 

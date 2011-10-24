@@ -17,13 +17,10 @@ SlowWindow::SlowWindow() : app::Window("SlowGold", juce::Colours::azure,
 SlowWindow::~SlowWindow() {}
 
 void SlowWindow::constructInstance() {
-  Lock l(lock_);
-  if (!instance_)
-    instance_.reset(new slow::Instance(this));
+  instance_.reset(new slow::Instance(this));
 }
 
 void SlowWindow::startup() {
-  constructInstance();    
   instance_->startup();
 }
 

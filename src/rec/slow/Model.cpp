@@ -96,7 +96,7 @@ void Model::setFile(const VirtualFile& f) {
 
 thread::Result Model::fillOnce() {
   {
-    ScopedLock l(lock_);
+    // ScopedLock l(lock_);
     FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
     if (buffer && buffer->isFull()) {
       thumbnailBuffer_.writeThumbnail();
