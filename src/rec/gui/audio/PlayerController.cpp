@@ -3,7 +3,7 @@
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 
-static const bool ENABLE_SHIFTS = false;
+static const bool ENABLE_SHIFTS = !false;
 
 namespace rec {
 
@@ -33,7 +33,7 @@ PlayerController::PlayerController()
       muteButton_("Mute", Address("mute")),
       dimButton_("Dim", Address("dim")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
-  pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
+  pitchScale_.slider()->setRange(-12.0, 12.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
   level_.slider()->setRange(-60.0, +18.0, 0.1);
 

@@ -29,7 +29,10 @@ class Listener {
   BroadcasterSet broadcasters_;
 
   friend class Broadcaster<Type>;
+
   DISALLOW_COPY_AND_ASSIGN(Listener);
+
+  JUCE_LEAK_DETECTOR(Listener<Type>);
 };
 
 //
@@ -41,7 +44,7 @@ class Broadcaster {
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;
 
-  Broadcaster() {}
+  Broadcaster() {  }
   virtual ~Broadcaster();
 
   virtual void broadcast(Type x);
@@ -56,6 +59,7 @@ class Broadcaster {
   ListenerSet listeners_;
 
   DISALLOW_COPY_AND_ASSIGN(Broadcaster);
+  JUCE_LEAK_DETECTOR(Broadcaster<Type>);
 };
 
 template <typename Type>

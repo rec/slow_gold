@@ -12,7 +12,6 @@ class Window;
 
 class GenericApplication : public juce::JUCEApplication {
  public:
-  static const int SAVE_PERIOD = 25;
   static const int STARTUP_THREAD_PRIORITY = 4;
 
   virtual ~GenericApplication();

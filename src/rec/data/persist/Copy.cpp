@@ -187,7 +187,6 @@ bool copy(const String &f,  const File &t, bool r) { return through(f, t, r); }
 bool copy(const Message &f, const File &t, bool r) { return through(f, t, r); }
 bool copy(const Memory &f,  const File &t, bool r) { return through(f, t, r); }
 
-
 }  // namespace data
 }  // namespace rec
 

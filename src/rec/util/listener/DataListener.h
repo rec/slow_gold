@@ -18,7 +18,7 @@ class DataListener : public Listener<const Proto&>,
                      public Listener<const VirtualFile&> {
  public:
   DataListener(bool filterDupes = false);
-  virtual ~DataListener() { setData(NULL); }
+  virtual ~DataListener() { } // setData(NULL); }
 
   virtual void operator()(const VirtualFile& f) { setFile(f); }
   virtual void setFile(const VirtualFile& file);

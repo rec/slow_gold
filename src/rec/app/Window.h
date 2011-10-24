@@ -25,6 +25,7 @@ class Window : public gui::PersistentWindow {
   virtual Component* getMainComponent() = 0;
   virtual MenuBarModel* getMenuBarModel() = 0;
   virtual void doComputeBounds() = 0;
+  CriticalSection lock_;
 
  private:
   bool running_;

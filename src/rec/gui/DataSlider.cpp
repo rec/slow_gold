@@ -6,28 +6,30 @@ namespace rec {
 namespace gui {
 
 template <typename Type>
-DataSlider<Type>::DataSlider(const String& name, 
+DataSlider<Type>::DataSlider(const String& name,
                              const data::Address& address,
                              const String& caption,
                              const String& tip)
     : Layout(name, HORIZONTAL, true),
       ProtoListener(address), slider_(name), caption_(caption) {
   slider_.setSliderStyle(Slider::LinearHorizontal);
-  slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 85, 16);
+
+  // TODO: constants
+  slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 70, 12);
 
   const String& cap = caption.length() ? caption : name;
   slider_.setTooltip(tip.length() ? tip : cap);
   slider_.addListener(this);
 
   caption_.setText(cap, false);
+  // TODO: constants
   addToLayout(&caption_, 45);
   addToLayout(&slider_, 0, -1.0, -1.0);
 }
 
 template <typename Type>
 void DataSlider<Type>::setDisplayValue(const data::Value& value) {
-  MessageManagerLock l;
-  setValue(value.get<Type>());
+  thread::callAsync(this, &DataSlider<Type>::setValue, value.get<Type>());
 }
 
 template class DataSlider<float>;

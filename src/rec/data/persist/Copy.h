@@ -10,7 +10,7 @@
 //
 // Example: read a protocol message from a file.
 //   MyProto proto;
-//   if (!rec::data::copy(File(myFileName), &proto)) {
+//   if (!data::copy(File(myFileName), &proto)) {
 //     // Handle error.
 //   }
 //

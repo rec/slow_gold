@@ -45,7 +45,7 @@ int UntypedEditable::getSize(const Address& address) const {
 }
 
 void UntypedEditable::copyTo(Message* message) const {
-  ScopedLock l(lock_);
+  ScopedLock l(lock_);	
   message->CopyFrom(*message_);
 }
 
@@ -112,7 +112,7 @@ void UntypedEditable::update() {
 
   // I don't need to lock here, because I'm the only person using this queue...?
   OperationList undo;
-  for (OperationList::iterator i = command.begin(); i != command.end(); ++i) 
+  for (OperationList::iterator i = command.begin(); i != command.end(); ++i)
     undo.push_back(applyOperations(**i));
 
   addToUndoQueue(this, command, undo);
@@ -133,8 +133,7 @@ bool UntypedEditable::writeToFile() const {
   }
 
 	VLOG(1) << "Writing " << str(file_);
-  data::copy(*msg, file_);
-  return true;
+  return data::copy(*msg, file_);
 }
 
 }  // namespace data
