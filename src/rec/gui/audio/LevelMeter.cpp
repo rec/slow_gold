@@ -42,6 +42,20 @@ void LevelMeter::paint(Graphics& g) {
   // TODO: I originally had int division on the next line, make sure the new code's right.
   float w = static_cast<float>(width) / size;
 
+  juce::ColourGradient fill;
+  fill.addColour(0.0, juce::Colours::green);
+  fill.addColour(0.80, juce::Colours::yellow);
+  fill.addColour(0.93, juce::Colours::red);
+
+  fill.point1.setX(0.0);
+  fill.point1.setY(0.0);
+  fill.point2 = fill.point1;
+  if (horizontal_)
+    fill.point2.setX(travel);
+  else
+    fill.point2.setY(travel);
+  g.setGradientFill(fill);
+
   for (int i = 0; i < size; ++i) {
     float w1 = ((width + margin_) * i) / size;
     if (rms_) {
