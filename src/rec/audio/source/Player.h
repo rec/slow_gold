@@ -31,6 +31,7 @@ class Stretchy;
 // where the stretchy component will be NULL if no stretch has been requested.
 class Player : public Broadcaster<transport::State>,
                public DataListener<Gain>,
+               public DataListener<stretch::Stretch>,
                public DataListener<LoopPointList>,
                public DataListener<StereoProto>,
                public juce::ChangeListener {
@@ -57,12 +58,12 @@ class Player : public Broadcaster<transport::State>,
   virtual void onDataChange(const Gain&);
   virtual void onDataChange(const StereoProto&);
   virtual void onDataChange(const LoopPointList&);
+  virtual void onDataChange(const stretch::Stretch&);
 
   void setGain(double);
 
   Samples<44100> length() const { return timer_->getTotalLength(); }
   void clear();
-  void setStretch(const stretch::Stretch&);
   void setSource(Source*);
   void setSelection(const block::BlockSet& s);
 

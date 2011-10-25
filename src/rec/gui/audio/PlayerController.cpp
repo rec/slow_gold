@@ -91,7 +91,6 @@ PlayerController::PlayerController()
 #define ALLOWING_TIME_CHANGES !false
 
 void PlayerController::onDataChange(const Stretch& s) {
-  DLOG(INFO) << "onDataChange";
   MessageManagerLock l;
   playbackSpeed_.setEnabled(ALLOWING_TIME_CHANGES && !s.time_disabled());
   strategyComboBox_.setSelectedId(static_cast<int>(s.strategy()), true);

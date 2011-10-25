@@ -27,12 +27,10 @@ class LoopPointDataListener : public DataListener<LoopPointList> {
   explicit LoopPointDataListener(Loops* loops) : loops_(loops) {}
 
   virtual void onDataChange(const LoopPointList& p) {
-    DLOG(INFO) << p.DebugString();
     loops_->setLoopPoints(p);
   }
 
   virtual void setData(data::TypedEditable<LoopPointList>* d) {
-    DLOG(INFO) << "setData";
     DataListener<LoopPointList>::setData(d);
     loops_->setUntypedEditable(d);
   }
@@ -94,7 +92,6 @@ void Loops::update() {
 
     selectionChanged = (sel != getSelectedRows());
   }
-  // print("update", sel);
   if (selectionChanged)
     setSelectedRows(sel, false);
 

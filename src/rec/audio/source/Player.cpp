@@ -57,7 +57,7 @@ void Player::setSource(Source* source) {
   timer_->setSource(source);
 }
 
-void Player::setStretch(const Stretch& stretch) {
+void Player::onDataChange(const stretch::Stretch& stretch) {
   stretchy_->setStretch(stretch);
 }
 

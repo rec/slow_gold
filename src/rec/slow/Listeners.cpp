@@ -55,10 +55,6 @@ void Listeners::operator()(command::Command::Type t) {
     LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
 }
 
-void Listeners::operator()(const Stretch& x) {
-  player()->setStretch(x);
-}
-
 void Listeners::operator()(None) {
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
 }
