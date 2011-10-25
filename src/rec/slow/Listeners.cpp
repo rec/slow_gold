@@ -28,7 +28,12 @@ using namespace rec::widget::waveform;
 
 Listeners::Listeners(Instance* i)
   	: HasInstance(i), mouseListener_(new slow::MouseListener(i)) {
-  player()->addListener(this);
+  player()->addListener(&components()->transportController_);
+
+#if 0
+  thread::callAsync(&components()->transportController_,
+                    &TransportController::setTransportState, state);
+#endif
 
   WaveformComp* waveform = &components()->waveform_;
   waveform->dropBroadcaster()->addListener(this);
@@ -69,13 +74,6 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
         data::editable<file::VirtualFileList>()->append(files.file(i), data::Address("file"));
     }
   }
-}
-
-void Listeners::operator()(audio::transport::State state) {
-  thread::callAsync(&components()->transportController_,
-                    &TransportController::setTransportState, state);
-  player()->setState(state);
-  player()->level()->clear();
 }
 
 #ifdef TODO

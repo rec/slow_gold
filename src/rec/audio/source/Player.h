@@ -29,8 +29,8 @@ class Stretchy;
 // Player has the following source chain:
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be NULL if no stretch has been requested.
-class Player : public Broadcaster<transport::State>,
-               public DataListener<Gain>,
+class Player : public DataListener<Gain>,
+               public Broadcaster<transport::State>,
                public DataListener<stretch::Stretch>,
                public DataListener<LoopPointList>,
                public DataListener<StereoProto>,
@@ -39,10 +39,10 @@ class Player : public Broadcaster<transport::State>,
   Player(Device* d);
   virtual ~Player();
 
-  void setState(transport::State state = transport::RUNNING);
+  void setState(transport::State state);
 
-  // Source must be pre-prepared.
-  void broadcastState() { broadcast(state()); }
+  // Source must be pre-prepared.  TODO:  what does this mean?
+  void broadcastState();
   void toggle() { setState(invert(state())); }
 
   void setNextReadPosition(const Samples<44100>&);

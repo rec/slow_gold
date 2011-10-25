@@ -42,6 +42,11 @@ void Player::setNextReadPosition(const Samples<44100>& time) {
   selection_->setNextReadPosition(time);
 }
 
+void Player::broadcastState() {
+  level_.clear();
+  broadcast(state());
+}
+
 void Player::setState(State s) {
   if (s != state()) {
     if (s == transport::RUNNING)

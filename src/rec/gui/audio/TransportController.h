@@ -16,10 +16,14 @@ namespace audio {
 // those buttons.
 class TransportController : public Layout,
                             public juce::ButtonListener,
+                            public Listener<rec::audio::transport::State>,
                             public Broadcaster<command::Command::Type> {
  public:
   TransportController();
+
   virtual void buttonClicked(juce::Button *button);
+  virtual void operator()(rec::audio::transport::State);
+
   void setTransportState(rec::audio::transport::State state);
   void setTime(Samples<44100> time) { time_ = time; recalc(); }
   void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }

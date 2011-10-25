@@ -41,6 +41,12 @@ TransportController::TransportController()
   addToLayout(&zoomOutButton_, 30, 30, 30);
 }
 
+using rec::audio::transport::State;
+
+void TransportController::operator()(State state) {
+  thread::callAsync(this, &TransportController::setTransportState, state);
+}
+
 void TransportController::buttonClicked(juce::Button *button) {
   if (button == &startStopButton_)
     broadcast(command::Command::TOGGLE_START_STOP);

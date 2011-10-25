@@ -16,15 +16,13 @@ namespace slow {
 class Instance;
 class MouseListener;
 
-class Listeners : public Listener<audio::transport::State>,
-                  public Listener<const gui::DropFiles&>,
+class Listeners : public Listener<const gui::DropFiles&>,
                   public juce::MouseListener,
                   public HasInstance {
  public:
   explicit Listeners(Instance* i);
   virtual ~Listeners();
 
-  virtual void operator()(audio::transport::State);
   virtual void operator()(const gui::DropFiles&);
 
  private:
