@@ -44,8 +44,6 @@ class Listeners : public Listener<None>,
   virtual void operator()(command::Command::Type);
   virtual void operator()(const gui::DropFiles&);
 
-  void operator()(Samples<44100>);
-
  private:
   ptr<slow::MouseListener> mouseListener_;
 

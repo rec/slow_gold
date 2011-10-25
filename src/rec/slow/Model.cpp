@@ -164,7 +164,7 @@ void Model::jumpToTime(Samples<44100> pos) {
     triggerPosition_ = -1;
   }
 
-  (*listeners())(pos);
+	player()->setNextReadPosition(pos);
 }
 
 void Model::setLoopPointList(const LoopPointList& loops) {

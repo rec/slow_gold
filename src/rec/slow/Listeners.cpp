@@ -46,10 +46,6 @@ Listeners::Listeners(Instance* i)
 
 Listeners::~Listeners() {}
 
-void Listeners::operator()(Samples<44100> time) {
-  (*player())(time);
-}
-
 void Listeners::operator()(command::Command::Type t) {
   if (!target()->targetManager()->invokeDirectly(t))
     LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);

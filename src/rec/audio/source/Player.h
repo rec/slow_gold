@@ -34,7 +34,6 @@ class Player : public Broadcaster<transport::State>,
                public DataListener<stretch::Stretch>,
                public DataListener<LoopPointList>,
                public DataListener<StereoProto>,
-               public Listener<const Samples<44100>&>,
                public juce::ChangeListener {
  public:
   Player(Device* d);
@@ -46,6 +45,7 @@ class Player : public Broadcaster<transport::State>,
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
 
+  void setNextReadPosition(const Samples<44100>&);
   Samples<44100> getNextReadPosition();
   RealTime getTime() { return getNextReadPosition(); }
 
@@ -59,7 +59,6 @@ class Player : public Broadcaster<transport::State>,
   virtual void onDataChange(const StereoProto&);
   virtual void onDataChange(const LoopPointList&);
   virtual void onDataChange(const stretch::Stretch&);
-  virtual void operator()(const Samples<44100>&);
 
   void setGain(double);
 
