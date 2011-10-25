@@ -13,13 +13,13 @@ namespace slow {
 class Instance;
 class MouseListener;
 
-class Listeners : public Listener<const gui::DropFiles&>,
+class Listeners : // public Listener<const gui::DropFiles&>,
                   public HasInstance {
  public:
   explicit Listeners(Instance* i);
   virtual ~Listeners();
 
-  virtual void operator()(const gui::DropFiles&);
+  void operator()(const gui::DropFiles&);
 
  private:
   ptr<slow::MouseListener> mouseListener_;

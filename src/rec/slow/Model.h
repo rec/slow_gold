@@ -22,6 +22,9 @@
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
+
+namespace gui { class DropFiles; }
+
 namespace slow {
 
 class Instance;
@@ -29,6 +32,7 @@ class Instance;
 class Model : public Listener< Samples<44100> >,
               public Listener<const VirtualFileList&>,
               public Listener<const VirtualFile&>,
+              public Listener<const gui::DropFiles&>,
               public HasInstance {
  public:
   typedef audio::Gain Gain;
@@ -44,10 +48,13 @@ class Model : public Listener< Samples<44100> >,
 
   virtual void setFile(const VirtualFile& vf);
 
-  // TODO: this is ugly.
-  virtual void operator()(const VirtualFileList& vf) { setFile(vf.file(0)); }
   virtual void operator()(const VirtualFile& vf) { setFile(vf); }
   virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
+  virtual void operator()(const gui::DropFiles&);
+
+  // TODO: this is ugly.
+  virtual void operator()(const VirtualFileList& vf) { setFile(vf.file(0)); }
+
   virtual void setLoopPointList(const LoopPointList&);
 
   void zoom(RealTime time, double k);

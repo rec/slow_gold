@@ -60,6 +60,31 @@ Model::Model(Instance* i) : HasInstance(i),
   updateInfo_.startSample = 0;
 }
 
+void Model::operator()(const gui::DropFiles& dropFiles) {
+  const file::VirtualFileList& files = dropFiles.files_;
+  if (dropFiles.target_ == &components()->waveform_) {
+    if (files.file_size() >= 1)
+      model()->setFile(files.file(0));
+
+    LOG_IF(ERROR, files.file_size() != 1);
+
+  } else if (dropFiles.target_ == components()->directoryTree_.treeView()) {
+    using file::getFile;
+
+    typedef std::set<string> FileSet;
+    FileSet existing;
+    VirtualFileList list(data::get<file::VirtualFileList>());
+    for (int i = 0; i < list.file_size(); ++i)
+      existing.insert(str(getFile(list.file(i)).getFullPathName()));
+
+    for (int i = 0; i < files.file_size(); ++i) {
+      if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
+        data::editable<file::VirtualFileList>()->append(files.file(i), data::Address("file"));
+    }
+  }
+}
+
+
 void Model::setFile(const VirtualFile& f) {
   player()->clear();
   components()->playerController_.clearLevels();

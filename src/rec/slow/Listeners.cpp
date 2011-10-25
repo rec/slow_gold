@@ -36,10 +36,10 @@ Listeners::Listeners(Instance* i)
 #endif
 
   WaveformComp* waveform = &components()->waveform_;
-  waveform->dropBroadcaster()->addListener(this);
+  waveform->dropBroadcaster()->addListener(model());
 
   Root* root = &components()->directoryTree_;
-  root->treeView()->dropBroadcaster()->addListener(this);
+  root->treeView()->dropBroadcaster()->addListener(model());
   root->addListener(model());
 
   components()->transportController_.addListener(target()->targetManager());
