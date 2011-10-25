@@ -61,6 +61,7 @@ void Stretchy::setStretch(const stretch::Stretch& s) {
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
+  Lock l(lock_);
   DCHECK_EQ(info.buffer->getNumChannels(), stretch_.channels());
   bool bypass;
   {
