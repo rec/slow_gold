@@ -51,10 +51,6 @@ void Listeners::operator()(command::Command::Type t) {
     LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
 }
 
-void Listeners::operator()(None) {
-  thread::callAsync(&components()->waveform_, &Waveform::repaint);
-}
-
 void Listeners::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &components()->waveform_) {
