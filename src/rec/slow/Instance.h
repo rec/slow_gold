@@ -20,10 +20,10 @@ class SlowWindow;
 // and all the file and stretch setting persistent data, too.
 struct Instance {
   explicit Instance(SlowWindow* window);
+  ~Instance();
 
   void startup();
-
-  ~Instance();
+  const VirtualFile file() const;
 
   SlowWindow* window_;
 

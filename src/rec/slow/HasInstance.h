@@ -2,6 +2,7 @@
 #define __REC_SLOW_HASINSTANCE__
 
 #include "rec/slow/Instance.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace slow {
@@ -17,6 +18,7 @@ class HasInstance {
   audio::source::Player* player() { return instance_->player_.get(); }
   audio::Device* device() { return instance_->device_.get(); }
   CurrentFile* currentFile() { return instance_->currentFile_.get(); }
+  const VirtualFile file() { return instance_->file(); }
 
  protected:
   Instance* instance_;

@@ -46,13 +46,17 @@ Instance::Instance(SlowWindow* window)
   threads_->startAll();
 }
 
+Instance::~Instance() {
+  player_->setState(audio::transport::STOPPED);
+  threads_->stop();
+}
+
 void Instance::startup() {
   model_->setFile(data::get<VirtualFile>());
 }
 
-Instance::~Instance() {
-  player_->setState(audio::transport::STOPPED);
-  threads_->stop();
+const VirtualFile Instance::file() const {
+  return currentFile_->file();
 }
 
 }  // namespace slow
