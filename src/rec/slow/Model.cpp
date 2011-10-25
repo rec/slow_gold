@@ -43,18 +43,18 @@ class LoopListenerImpl : public DataListener<LoopPointList> {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopListenerImpl);
 };
 
-void doSetCursorTime(Model* model, int index, RealTime time) {
+void doSetCursorTime(Model* model, int index, RealTime time,
+                     const VirtualFile& f) {
   if (index < 0) {
     model->jumpToTime(time);
   } else {
-  	VirtualFile f = model->file();
     LoopPointList loops(data::get<LoopPointList>(f));
     loops.mutable_loop_point(index)->set_time(time);
     data::set(loops, f);
   }
 }
 
-static void dropFiles(Instance* instance, const gui::DropFiles& dropFiles) {
+void dropFiles(Instance* instance, const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &instance->components_->waveform_) {
     if (files.file_size() >= 1)
@@ -78,13 +78,14 @@ static void dropFiles(Instance* instance, const gui::DropFiles& dropFiles) {
   }
 }
 
-static void setInstanceFile(Instance* instance, const VirtualFile& f) {
+void setInstanceFile(Instance* instance, const VirtualFile& f,
+                     const VirtualFile& oldFile) {
   instance->player_->clear();
   Components* components = instance->components_.get();
   ThumbnailBuffer* thumbnailBuffer = instance->model_->thumbnailBuffer();
 
   components->playerController_.clearLevels();
-  components->directoryTree_.refreshNode(instance->model_->file());
+  components->directoryTree_.refreshNode(oldFile);
 
   bool isEmpty = file::empty(f);
   components->waveform_.setEmpty(isEmpty);
@@ -112,6 +113,21 @@ static void setInstanceFile(Instance* instance, const VirtualFile& f) {
   instance->threads_->fillThread()->notify();
 }
 
+void jumpToTimeSelection(Model* model, const block::BlockSet& ts,
+                         Samples<44100> time) {
+  if (!ts.empty()) {
+    BlockSet::const_iterator i = ts.begin();
+    for (; i != ts.end(); ++i) {
+      if (time < i->second) {
+        if (time < i->first)
+          model->jumpToTime(i->first);
+        return;
+      }
+    }
+    model->jumpToTime(ts.begin()->first);
+  }
+}
+
 }
 
 Model::Model(Instance* i) : HasInstance(i),
@@ -134,7 +150,9 @@ void Model::operator()(const gui::DropFiles& df) {
 }
 
 void Model::setFile(const VirtualFile& f) {
-  setInstanceFile(instance_, f);
+  VirtualFile old = file_;
+  file_ = f;
+  setInstanceFile(instance_, file_, old);
 }
 
 thread::Result Model::fillOnce() {
@@ -207,28 +225,14 @@ void Model::jumpToTime(Samples<44100> pos) {
 }
 
 void Model::setLoopPointList(const LoopPointList& loops) {
-  if (empty())
-    return;
-
-  timeSelection_ = audio::getTimeSelection(loops);
-  if (timeSelection_.empty()) {
-    // TODO: fix this.
-    LOG(ERROR) << "Empty selection for loops: "  << loops.ShortDebugString();
-  } else {
-    BlockSet::const_iterator i = timeSelection_.begin();
-    for (; i != timeSelection_.end(); ++i) {
-      if (time_ < i->second) {
-        if (time_ < i->first)
-          jumpToTime(i->first);
-        return;
-      }
-    }
-    jumpToTime(timeSelection_.begin()->first);
+  if (!empty()) {
+    timeSelection_ = audio::getTimeSelection(loops);
+    jumpToTimeSelection(this, timeSelection_, time_);
   }
 }
 
 void Model::setCursorTime(int index, RealTime time) {
-  doSetCursorTime(this, index, time);
+  doSetCursorTime(this, index, time, file_);
 }
 
 }  // namespace slow
