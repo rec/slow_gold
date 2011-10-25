@@ -35,7 +35,7 @@ class LoopListenerImpl : public DataListener<LoopPointList> {
  public:
   explicit LoopListenerImpl(Model* model) : model_(model) {}
   virtual void onDataChange(const LoopPointList& p) {
-    (*model_)(p);
+    model_->setLoopPointList(p);
   }
 
  private:
@@ -83,14 +83,14 @@ void Model::setFile(const VirtualFile& f) {
     return;
   }
 
-  LoopPointList loop = data::get<LoopPointList>(f);
-  if (!loop.loop_point_size()) {
-    loop.add_loop_point()->set_selected(true);
+  LoopPointList loopPointList = data::get<LoopPointList>(f);
+  if (!loopPointList.loop_point_size()) {
+    loopPointList.add_loop_point()->set_selected(true);
     RealTime time = Samples<44100>(thumbnailBuffer_.buffer()->length());
-    loop.add_loop_point()->set_time(time);
+    loopPointList.add_loop_point()->set_time(time);
   }
+  data::set(loopPointList, f);
 
-  data::set(loop, f);
   threads()->fillThread()->notify();
 }
 
@@ -165,7 +165,7 @@ void Model::jumpToTime(Samples<44100> pos) {
   (*listeners())(pos);
 }
 
-void Model::operator()(const LoopPointList& loops) {
+void Model::setLoopPointList(const LoopPointList& loops) {
   if (empty())
     return;
 

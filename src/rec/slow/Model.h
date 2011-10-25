@@ -42,7 +42,7 @@ class Model : public Listener< Samples<44100> >,
 
   virtual void setFile(const VirtualFile& vf);
   virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
-  virtual void operator()(const LoopPointList&);
+  virtual void setLoopPointList(const LoopPointList&);
 
   void zoom(RealTime time, double k);
   void zoom(double k);
