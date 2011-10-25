@@ -20,13 +20,13 @@ void TimeMethods::jumpToTimeSelection(const block::BlockSet& ts,
   }
 }
 
-void TimeMethods::setCursorTime(int index, RealTime t, const VirtualFile& f) {
+void TimeMethods::setCursorTime(int index, RealTime t) {
   if (index < 0) {
     model()->jumpToTime(t);
   } else {
-    LoopPointList loops(data::get<LoopPointList>(f));
+    LoopPointList loops(data::get<LoopPointList>(file()));
     loops.mutable_loop_point(index)->set_time(t);
-    data::set(loops, f);
+    data::set(loops, file());
   }
 }
 

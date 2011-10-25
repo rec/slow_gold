@@ -37,6 +37,7 @@ class LoopListenerImpl : public DataListener<LoopPointList> {
  public:
   explicit LoopListenerImpl(Model* model) : model_(model) {}
   virtual void onDataChange(const LoopPointList& p) {
+    DLOG(INFO) << "LoopListenerImpl";
     model_->setLoopPointList(p);
   }
 
@@ -64,13 +65,12 @@ Model::Model(Instance* i) : HasInstance(i),
 Model::~Model() {}
 
 void Model::operator()(const gui::DropFiles& df) {
-  (CurrentFile(instance_))(df);
+  (*currentFile())(df);  // TODO: fix this
 }
 
 void Model::setFile(const VirtualFile& f) {
-  VirtualFile old = file_;
-  file_ = f;
-  CurrentFile(instance_).setFile(file_, old);
+  DLOG(INFO) << f.ShortDebugString();
+  currentFile()->setFile(f);
 }
 
 thread::Result Model::fillOnce() {
@@ -117,7 +117,7 @@ thread::Result Model::fillOnce() {
 }
 
 void Model::zoom(RealTime time, double k) {
-  widget::waveform::zoom(file_, player()->length(), time, k);
+  widget::waveform::zoom(file(), player()->length(), time, k);
 }
 
 void Model::jumpToTime(Samples<44100> pos) {
@@ -144,13 +144,16 @@ void Model::jumpToTime(Samples<44100> pos) {
 
 void Model::setLoopPointList(const LoopPointList& loops) {
   if (!empty()) {
+    DLOG(INFO) << "Setting LoopPointList";
     timeSelection_ = audio::getTimeSelection(loops);
     TimeMethods(instance_).jumpToTimeSelection(timeSelection_, time_);
+  } else {
+    LOG(ERROR) << "Setting empty loop point list";
   }
 }
 
 void Model::setCursorTime(int index, RealTime time) {
-  TimeMethods(instance_).setCursorTime(index, time, file_);
+  TimeMethods(instance_).setCursorTime(index, time);
 }
 
 }  // namespace slow

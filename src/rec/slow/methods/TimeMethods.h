@@ -14,7 +14,7 @@ class TimeMethods : public HasInstance {
   explicit TimeMethods(Instance* i) : HasInstance(i) {}
 
   void jumpToTimeSelection(const block::BlockSet& ts, Samples<44100> time);
-  void setCursorTime(int index, RealTime time, const VirtualFile& f);
+  void setCursorTime(int index, RealTime time);
 
  private:
   DISALLOW_COPY_AND_ASSIGN(TimeMethods);

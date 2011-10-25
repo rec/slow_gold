@@ -56,7 +56,7 @@ void Instance::startup() {
 }
 
 const VirtualFile Instance::file() const {
-  return currentFile_->file();
+  return currentFile_->virtualFile();
 }
 
 }  // namespace slow

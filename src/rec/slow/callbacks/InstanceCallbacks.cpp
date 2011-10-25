@@ -24,45 +24,45 @@ void addLoopPoint(Instance* i) {
 }
 
 void nudgeVolumeDown(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->file()));
   if (!(gain.dim() || gain.mute())) {
     gain.set_gain(gain.gain() - 1.0);
-    data::set(gain, i->model_->file());
+    data::set(gain, i->file());
   }
 }
 
 void nudgeVolumeUp(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->file()));
   if (!(gain.dim() || gain.mute())) {
     gain.set_gain(gain.gain() + 1.0);
-    data::set(gain, i->model_->file());
+    data::set(gain, i->file());
   }
 }
 
 void clearLoops(Instance *i) {
   LoopPointList loops;
   loops.add_loop_point();
-  data::set(loops, i->model_->file());
+  data::set(loops, i->file());
 }
 
 void clearNavigator(Instance *) { data::set(VirtualFileList()); }
 
 void dimVolumeToggle(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->file()));
   gain.set_dim(!gain.dim());
-  data::set(gain, i->model_->file());
+  data::set(gain, i->file());
 }
 
 void muteVolumeToggle(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->file()));
   gain.set_mute(!gain.mute());
-  data::set(gain, i->model_->file());
+  data::set(gain, i->file());
 }
 
 void resetGainToUnity(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->file()));
   gain.set_gain(0);
-  data::set(gain, i->model_->file());
+  data::set(gain, i->file());
 }
 
 void keyboardMappings(Instance* i) {

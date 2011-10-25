@@ -16,8 +16,11 @@ class CurrentFile : public HasInstance, public Listener<const gui::DropFiles&> {
   explicit CurrentFile(Instance* i) : HasInstance(i) {}
 
   virtual void operator()(const gui::DropFiles&);
-  void setFile(const VirtualFile& f, const VirtualFile& oldFile);
-  const VirtualFile& file() { Lock l(lock_); return file_; }
+  void setFile(const VirtualFile&);
+
+  const VirtualFile virtualFile() const { Lock l(lock_);
+    DLOG(INFO) << file_.ShortDebugString();
+    return file_; }
 
  private:
   CriticalSection lock_;

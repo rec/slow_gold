@@ -9,7 +9,7 @@ typedef void (*LoopSnapshotFunction)(LoopSnapshot*, Position);
 void loop(Instance* instance, LoopSnapshotFunction lsf, Position pos) {
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
-  data::set(snapshot.loops_, instance->model_->file());
+  data::set(snapshot.loops_, instance->file());
 }
 
 void select(Instance* instance, SelectorFunction selector, Position pos) {
@@ -24,7 +24,7 @@ void select(Instance* instance, SelectorFunction selector, Position pos) {
     LoopPoint* lp = loops->mutable_loop_point(i);
     lp->set_selected(selector(i, p, lp->selected(), allSelected));
   }
-  data::set(snap.loops_, instance->model_->file());
+  data::set(snap.loops_, instance->file());
 }
 
 }  // namespace slow

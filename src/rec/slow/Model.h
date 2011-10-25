@@ -66,18 +66,10 @@ class Model : public Listener< Samples<44100> >,
 
   bool empty() const { return file::empty(file()); }
 
-  void setFileVariable(const VirtualFile& f) {
-    ScopedLock l(lock_);
-    file_ = f;
-  }
-
   ThumbnailBuffer* thumbnailBuffer() { return &thumbnailBuffer_; }
 
-  const VirtualFile file() const { ScopedLock l(lock_); return file_; }
  private:
-
   CriticalSection lock_;
-  VirtualFile file_;
 
   Samples<44100> time_;
   Samples<44100> triggerPosition_;

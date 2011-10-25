@@ -33,9 +33,12 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   }
 }
 
-void CurrentFile::setFile(const VirtualFile& f, const VirtualFile& oldFile) {
+void CurrentFile::setFile(const VirtualFile& f) {
+  DLOG(INFO) << f.ShortDebugString();
+  VirtualFile oldFile;
   {
     Lock l(lock_);
+    oldFile = file_;
     file_ = f;
   }
   player()->clear();
@@ -46,8 +49,6 @@ void CurrentFile::setFile(const VirtualFile& f, const VirtualFile& oldFile) {
 
   bool isEmpty = file::empty(f);
   components()->waveform_.setEmpty(isEmpty);
-
-  model()->setFileVariable(f);
   components()->directoryTree_.refreshNode(f);
   data::set(f);
 
@@ -68,6 +69,7 @@ void CurrentFile::setFile(const VirtualFile& f, const VirtualFile& oldFile) {
   data::set(loopPointList, f);
 
   threads()->fillThread()->notify();
+  DLOG(INFO) << file_.ShortDebugString();
 }
 
 }  // namespace slow

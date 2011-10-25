@@ -78,7 +78,6 @@ void insertSingle(CommandTable* map) {
 }
 
 void insertRepeated(CommandTable* map) {
-  DLOG(INFO) << "insertRepeated";
   for (int i = 0; i < repeated().command_size(); ++i) {
     const Command& command = repeated().command(i);
     Command c = command;
