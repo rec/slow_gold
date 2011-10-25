@@ -19,8 +19,6 @@ class Listeners : // public Listener<const gui::DropFiles&>,
   explicit Listeners(Instance* i);
   virtual ~Listeners();
 
-  void operator()(const gui::DropFiles&);
-
  private:
   ptr<slow::MouseListener> mouseListener_;
 
