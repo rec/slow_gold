@@ -11,6 +11,7 @@ namespace waveform {
 // The factor of k indicates how much wider or narrower the displayed area will
 // be after the zoom.
 ZoomProto zoom(const ZoomProto& z, RealTime length, RealTime time, double k);
+void zoom(const VirtualFile& f, RealTime length, RealTime time, double k);
 
 }  // namespace waveform
 }  // namespace widget

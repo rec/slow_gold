@@ -1,4 +1,5 @@
 #include "rec/widget/waveform/Zoom.h"
+#include "rec/data/Data.h"
 
 namespace rec {
 namespace widget {
@@ -21,6 +22,10 @@ ZoomProto zoom(const ZoomProto& z, RealTime length, RealTime t, double k) {
   }
 
   return zoom;
+}
+
+void zoom(const VirtualFile& f, RealTime length, RealTime time, double k) {
+  data::set(zoom(data::get<ZoomProto>(f), length, time, k), f);
 }
 
 }  // namespace waveform
