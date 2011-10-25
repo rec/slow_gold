@@ -29,6 +29,9 @@ void LevelMeter::operator()(const LevelVector& levels) {
   thread::callAsync(this, &LevelMeter::repaint);
 }
 
+static const float GAP_WIDTH = 2.0f;
+static const int SEGMENT_COUNT = 24;
+
 void LevelMeter::paint(Graphics& g) {
   g.fillAll(juce::Colours::white);
 
@@ -38,10 +41,9 @@ void LevelMeter::paint(Graphics& g) {
     return;
 
   float travel = static_cast<float>(horizontal_ ? getWidth() : getHeight());
-  int width = (horizontal_ ? getHeight() : getWidth()) - (size - 1) * margin_;
-
-  // TODO: I originally had int division on the next line, make sure the new code's right.
-  float w = static_cast<float>(width) / size;
+  float base = horizontal_ ? getHeight() : getWidth();
+  float adjustedBase = base - (size - 1) * margin_;
+  float w = adjustedBase / size;
 
   juce::ColourGradient fill;
   fill.isRadial = false;
@@ -59,7 +61,7 @@ void LevelMeter::paint(Graphics& g) {
   g.setGradientFill(fill);
 
   for (int i = 0; i < size; ++i) {
-    float w1 = ((width + margin_) * i) / size;
+    float w1 = ((adjustedBase + margin_) * i) / size;
     if (rms_) {
       float t = travel * gain_ * levels_[i] * SCALE_UP_METER;
       if (horizontal_)
@@ -67,6 +69,17 @@ void LevelMeter::paint(Graphics& g) {
       else
         g.fillRect(w1, travel - t, w, t);
     }
+  }
+
+  g.setColour(juce::Colours::white);
+
+  float spacing = travel / SEGMENT_COUNT;
+  for (int i = 1; i < SEGMENT_COUNT; ++i) {
+    float pos = spacing * i - GAP_WIDTH / 2;
+    if (horizontal_)
+      g.fillRect(pos, 0.0, GAP_WIDTH, base);
+    else
+      g.fillRect(0.0, pos, base, GAP_WIDTH);
   }
 }
 
