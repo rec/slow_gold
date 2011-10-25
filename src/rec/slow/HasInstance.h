@@ -16,6 +16,7 @@ class HasInstance {
   Threads* threads() { return instance_->threads_.get(); }
   audio::source::Player* player() { return instance_->player_.get(); }
   audio::Device* device() { return instance_->device_.get(); }
+  CurrentFile* currentFile() { return instance_->currentFile_.get(); }
 
  protected:
   Instance* instance_;

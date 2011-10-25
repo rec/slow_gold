@@ -7,6 +7,7 @@ namespace rec {
 namespace slow {
 
 class Components;
+class CurrentFile;
 class Menus;
 class Model;
 class MouseListener;
@@ -29,6 +30,7 @@ struct Instance {
   ptr<Components> components_;
   ptr<Device> device_;
   ptr<Player> player_;
+  ptr<CurrentFile> currentFile_;
   ptr<Model> model_;
   ptr<Menus> menus_;  // TODO:  move into "Target"
   ptr<Target> target_;  // TODO: rename to "Commands".
