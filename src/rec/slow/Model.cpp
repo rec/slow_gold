@@ -15,6 +15,9 @@
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Zoom.h"
 
+#include "rec/slow/methods/TimeMethods.h"
+#include "rec/slow/methods/FileMethods.h"
+
 namespace rec {
 namespace slow {
 
@@ -25,7 +28,8 @@ using namespace rec::music;
 using namespace rec::util::block;
 using namespace rec::widget::waveform;
 
-namespace {
+using methods::FileMethods;
+using methods::TimeMethods;
 
 const int PARAMETER_WAIT = 1000;
 const int PRELOAD = 10000;
@@ -43,92 +47,6 @@ class LoopListenerImpl : public DataListener<LoopPointList> {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopListenerImpl);
 };
 
-void doSetCursorTime(Model* model, int index, RealTime time,
-                     const VirtualFile& f) {
-  if (index < 0) {
-    model->jumpToTime(time);
-  } else {
-    LoopPointList loops(data::get<LoopPointList>(f));
-    loops.mutable_loop_point(index)->set_time(time);
-    data::set(loops, f);
-  }
-}
-
-void dropFiles(Instance* instance, const gui::DropFiles& dropFiles) {
-  const file::VirtualFileList& files = dropFiles.files_;
-  if (dropFiles.target_ == &instance->components_->waveform_) {
-    if (files.file_size() >= 1)
-      instance->model_->setFile(files.file(0));
-
-    LOG_IF(ERROR, files.file_size() != 1);
-
-  } else if (dropFiles.target_ == instance->components_->directoryTree_.treeView()) {
-    using file::getFile;
-
-    typedef std::set<string> FileSet;
-    FileSet existing;
-    VirtualFileList list(data::get<file::VirtualFileList>());
-    for (int i = 0; i < list.file_size(); ++i)
-      existing.insert(str(getFile(list.file(i)).getFullPathName()));
-
-    for (int i = 0; i < files.file_size(); ++i) {
-      if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        data::editable<file::VirtualFileList>()->append(files.file(i), data::Address("file"));
-    }
-  }
-}
-
-void setInstanceFile(Instance* instance, const VirtualFile& f,
-                     const VirtualFile& oldFile) {
-  instance->player_->clear();
-  Components* components = instance->components_.get();
-  ThumbnailBuffer* thumbnailBuffer = instance->model_->thumbnailBuffer();
-
-  components->playerController_.clearLevels();
-  components->directoryTree_.refreshNode(oldFile);
-
-  bool isEmpty = file::empty(f);
-  components->waveform_.setEmpty(isEmpty);
-
-  instance->model_->setFileVariable(f);
-  components->directoryTree_.refreshNode(f);
-  data::set(f);
-
-  if (isEmpty)
-    return;
-
-  if (!thumbnailBuffer->setReader(f, music::createMusicFileReader(f))) {
-    LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
-    return;
-  }
-
-  LoopPointList loopPointList = data::get<LoopPointList>(f);
-  if (!loopPointList.loop_point_size()) {
-    loopPointList.add_loop_point()->set_selected(true);
-    RealTime time = Samples<44100>(thumbnailBuffer->buffer()->length());
-    loopPointList.add_loop_point()->set_time(time);
-  }
-  data::set(loopPointList, f);
-
-  instance->threads_->fillThread()->notify();
-}
-
-void jumpToTimeSelection(Model* model, const block::BlockSet& ts,
-                         Samples<44100> time) {
-  if (!ts.empty()) {
-    BlockSet::const_iterator i = ts.begin();
-    for (; i != ts.end(); ++i) {
-      if (time < i->second) {
-        if (time < i->first)
-          model->jumpToTime(i->first);
-        return;
-      }
-    }
-    model->jumpToTime(ts.begin()->first);
-  }
-}
-
-}
 
 Model::Model(Instance* i) : HasInstance(i),
                             time_(0),
@@ -144,15 +62,16 @@ Model::Model(Instance* i) : HasInstance(i),
   updateInfo_.startSample = 0;
 }
 
+Model::~Model() {}
 
 void Model::operator()(const gui::DropFiles& df) {
-  dropFiles(instance_, df);
+  FileMethods(instance_).dropFiles(df);
 }
 
 void Model::setFile(const VirtualFile& f) {
   VirtualFile old = file_;
   file_ = f;
-  setInstanceFile(instance_, file_, old);
+  FileMethods(instance_).setFile(file_, old);
 }
 
 thread::Result Model::fillOnce() {
@@ -227,12 +146,12 @@ void Model::jumpToTime(Samples<44100> pos) {
 void Model::setLoopPointList(const LoopPointList& loops) {
   if (!empty()) {
     timeSelection_ = audio::getTimeSelection(loops);
-    jumpToTimeSelection(this, timeSelection_, time_);
+    TimeMethods(instance_).jumpToTimeSelection(timeSelection_, time_);
   }
 }
 
 void Model::setCursorTime(int index, RealTime time) {
-  doSetCursorTime(this, index, time, file_);
+  TimeMethods(instance_).setCursorTime(index, time, file_);
 }
 
 }  // namespace slow

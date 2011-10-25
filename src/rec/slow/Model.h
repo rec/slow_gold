@@ -44,7 +44,7 @@ class Model : public Listener< Samples<44100> >,
   typedef audio::util::ThumbnailBuffer ThumbnailBuffer;
 
   explicit Model(Instance* i);
-  virtual ~Model() {}
+  virtual ~Model();
 
   virtual void setFile(const VirtualFile& vf);
 
