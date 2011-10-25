@@ -16,7 +16,7 @@
 #include "rec/widget/waveform/Zoom.h"
 
 #include "rec/slow/methods/TimeMethods.h"
-#include "rec/slow/methods/FileMethods.h"
+#include "rec/slow/CurrentFile.h"
 
 namespace rec {
 namespace slow {
@@ -28,7 +28,6 @@ using namespace rec::music;
 using namespace rec::util::block;
 using namespace rec::widget::waveform;
 
-using methods::FileMethods;
 using methods::TimeMethods;
 
 const int PARAMETER_WAIT = 1000;
@@ -65,13 +64,13 @@ Model::Model(Instance* i) : HasInstance(i),
 Model::~Model() {}
 
 void Model::operator()(const gui::DropFiles& df) {
-  FileMethods(instance_).dropFiles(df);
+  (CurrentFile(instance_))(df);
 }
 
 void Model::setFile(const VirtualFile& f) {
   VirtualFile old = file_;
   file_ = f;
-  FileMethods(instance_).setFile(file_, old);
+  CurrentFile(instance_).setFile(file_, old);
 }
 
 thread::Result Model::fillOnce() {

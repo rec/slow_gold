@@ -655,6 +655,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp">
       <Filter>Slow\rec\slow\callbacks</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
@@ -666,9 +669,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp">
       <Filter>Slow\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\methods\FileMethods.cpp">
-      <Filter>Slow\rec\slow\methods</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\methods\TimeMethods.cpp">
       <Filter>Slow\rec\slow\methods</Filter>
@@ -1617,6 +1617,9 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
@@ -1631,9 +1634,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h">
       <Filter>Slow\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\methods\FileMethods.h">
-      <Filter>Slow\rec\slow\methods</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\methods\TimeMethods.h">
       <Filter>Slow\rec\slow\methods</Filter>

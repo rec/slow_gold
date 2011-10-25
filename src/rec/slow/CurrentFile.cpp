@@ -1,4 +1,4 @@
-#include "rec/slow/methods/FileMethods.h"
+#include "rec/slow/CurrentFile.h"
 #include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/music/CreateMusicFileReader.h"
@@ -8,9 +8,8 @@
 
 namespace rec {
 namespace slow {
-namespace methods {
 
-void FileMethods::dropFiles(const gui::DropFiles& dropFiles) {
+void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &components()->waveform_) {
     if (files.file_size() >= 1)
@@ -34,7 +33,7 @@ void FileMethods::dropFiles(const gui::DropFiles& dropFiles) {
   }
 }
 
-void FileMethods::setFile(const VirtualFile& f, const VirtualFile& oldFile) {
+void CurrentFile::setFile(const VirtualFile& f, const VirtualFile& oldFile) {
   player()->clear();
   audio::util::ThumbnailBuffer* thumbnailBuffer = model()->thumbnailBuffer();
 
@@ -67,6 +66,6 @@ void FileMethods::setFile(const VirtualFile& f, const VirtualFile& oldFile) {
   threads()->fillThread()->notify();
 }
 
-}  // namespace methods
 }  // namespace slow
 }  // namespace rec
+

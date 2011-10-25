@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="ka6X68UFF" name="Slow">
+  <MAINGROUP id="2yzusmEtK" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -859,6 +859,10 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/slow/Components.h" id="3F03AcAjS"
               name="Components.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/CurrentFile.cpp" id="1h5zDq593"
+              name="CurrentFile.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/CurrentFile.h" id="jkVF2UTv3"
+              name="CurrentFile.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/HasInstance.h" id="uyZaim5aZ"
               name="HasInstance.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Instance.cpp" id="MFxDrO6di"
@@ -878,10 +882,6 @@
         <FILE compile="0" file="../../src/rec/slow/Menus.h" id="koFtD2Rkv"
               name="Menus.h" resource="0"/>
         <GROUP id="7oBOoHfZk" name="methods">
-          <FILE compile="1" file="../../src/rec/slow/methods/FileMethods.cpp"
-                id="vwP0ZOF2t" name="FileMethods.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/methods/FileMethods.h" id="vTJ0yco96"
-                name="FileMethods.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/methods/TimeMethods.cpp"
                 id="Zfp4iWD78" name="TimeMethods.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/methods/TimeMethods.h" id="pEvVodU7q"
@@ -1331,7 +1331,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="QNnplpigw" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="krMcli32H" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

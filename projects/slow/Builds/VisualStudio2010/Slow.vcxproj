@@ -272,11 +272,11 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\methods\FileMethods.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\methods\TimeMethods.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Model.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp"/>
@@ -594,12 +594,12 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\methods\FileMethods.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\methods\TimeMethods.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Model.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h"/>

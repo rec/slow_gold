@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="ohB2hBh4m" name="command">
+  <MAINGROUP id="1kM4t0Rcn" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -859,6 +859,10 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/slow/Components.h" id="4RqgJBHF5"
               name="Components.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/CurrentFile.cpp" id="o0sWdFtom"
+              name="CurrentFile.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/CurrentFile.h" id="22PvYs565"
+              name="CurrentFile.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/HasInstance.h" id="R64QCUozd"
               name="HasInstance.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Instance.cpp" id="fmMEqD3tX"
@@ -878,10 +882,6 @@
         <FILE compile="0" file="../../src/rec/slow/Menus.h" id="WYIhcVhjf"
               name="Menus.h" resource="0"/>
         <GROUP id="yPjouM1a6" name="methods">
-          <FILE compile="1" file="../../src/rec/slow/methods/FileMethods.cpp"
-                id="03kyx1zar" name="FileMethods.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/methods/FileMethods.h" id="tnPOGP6Y3"
-                name="FileMethods.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/methods/TimeMethods.cpp"
                 id="4c5EQBSM8" name="TimeMethods.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/methods/TimeMethods.h" id="Qg2sTsUnW"
@@ -1331,7 +1331,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="42fKU904R" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="96rLfaMdR" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -2,26 +2,25 @@
 #define __REC_SLOW_METHODS_FILEMETHODS__
 
 #include "rec/slow/HasInstance.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 
-namespace gui {class DropFiles; }
+namespace gui { class DropFiles; }
 
 namespace slow {
-namespace methods {
 
-class FileMethods : public HasInstance {
+class CurrentFile : public HasInstance, public Listener<const gui::DropFiles&> {
  public:
-  explicit FileMethods(Instance* i) : HasInstance(i) {}
+  explicit CurrentFile(Instance* i) : HasInstance(i) {}
 
-  void dropFiles(const gui::DropFiles&);
+  virtual void operator()(const gui::DropFiles&);
   void setFile(const VirtualFile& f, const VirtualFile& oldFile);
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(FileMethods);
+  DISALLOW_COPY_AND_ASSIGN(CurrentFile);
 };
 
-}  // namespace methods
 }  // namespace slow
 }  // namespace rec
 
