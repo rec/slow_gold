@@ -273,7 +273,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\Listeners.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp"/>
@@ -464,11 +463,11 @@
     <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Binary.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\Persist.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedEditable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
@@ -595,7 +594,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\Listeners.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h"/>

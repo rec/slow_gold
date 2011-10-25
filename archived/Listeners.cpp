@@ -13,7 +13,7 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeCallback.h"
-#include "rec/widget/waveform/Cursor.h"
+
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
@@ -26,23 +26,7 @@ using namespace rec::gui::audio;
 using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
 
-Listeners::Listeners(Instance* i)
-  	: HasInstance(i), mouseListener_(new slow::MouseListener(i)) {
-  player()->addListener(&components()->transportController_);
-
-  WaveformComp* waveform = &components()->waveform_;
-  waveform->dropBroadcaster()->addListener(model());
-
-  Root* root = &components()->directoryTree_;
-  root->treeView()->dropBroadcaster()->addListener(model());
-  root->addListener(model());
-
-  components()->transportController_.addListener(target()->targetManager());
-
-  player()->timeBroadcaster()->addListener(&components()->timeController_);
-  player()->timeBroadcaster()->addListener(waveform->timeCursor());
-
-  player()->level()->addListener(components()->playerController_.levelListener());
+Listeners::Listeners(Instance* i) : HasInstance(i) {
 }
 
 Listeners::~Listeners() {}

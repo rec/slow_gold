@@ -9,10 +9,10 @@ namespace slow {
 class Components;
 class Menus;
 class Model;
+class MouseListener;
 class Target;
 class Threads;
 class SlowWindow;
-class Listeners;
 
 // A single instance of Slow.  Right now there's only one per application but in
 // future there might be more than one.  This is where all the Broadcasters live
@@ -32,7 +32,7 @@ struct Instance {
   ptr<Model> model_;
   ptr<Menus> menus_;  // TODO:  move into "Target"
   ptr<Target> target_;  // TODO: rename to "Commands".
-  ptr<Listeners> listeners_;
+  ptr<MouseListener> mouseListener_;
   ptr<Threads> threads_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Instance);

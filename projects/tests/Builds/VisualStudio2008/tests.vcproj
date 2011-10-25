@@ -359,6 +359,7 @@
           <File RelativePath="..\..\..\..\src\rec\data\Address.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Binary.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Binary.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\Data.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.h"/>
           <Filter Name="persist">
@@ -367,7 +368,6 @@
             <File RelativePath="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\EditableUpdater.h"/>
-            <File RelativePath="..\..\..\..\src\rec\data\persist\Persist.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\TypedEditable.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedEditable.h"/>
@@ -610,8 +610,6 @@
           <File RelativePath="..\..\..\..\src\rec\slow\HasInstance.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Instance.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Instance.h"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\Listeners.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\Listeners.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\MainPage.cpp"/>

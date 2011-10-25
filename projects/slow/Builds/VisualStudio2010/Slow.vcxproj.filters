@@ -655,9 +655,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\Listeners.cpp">
-      <Filter>Slow\rec\slow</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
@@ -1224,6 +1221,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Binary.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
@@ -1234,9 +1234,6 @@
       <Filter>Slow\rec\data\persist</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\Persist.h">
       <Filter>Slow\rec\data\persist</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h">
@@ -1615,9 +1612,6 @@
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h">
-      <Filter>Slow\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\Listeners.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h">
