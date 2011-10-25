@@ -38,8 +38,8 @@ Samples<44100> Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
 }
 
-void Player::setNextReadPosition(int64 t) {
-  selection_->setNextReadPosition(t);
+void Player::operator()(const Samples<44100>& time) {
+  selection_->setNextReadPosition(time);
 }
 
 void Player::setState(State s) {

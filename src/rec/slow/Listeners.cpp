@@ -47,7 +47,7 @@ Listeners::Listeners(Instance* i)
 Listeners::~Listeners() {}
 
 void Listeners::operator()(Samples<44100> time) {
-  player()->setNextReadPosition(time);
+  (*player())(time);
 }
 
 void Listeners::operator()(command::Command::Type t) {
