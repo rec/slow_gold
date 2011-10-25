@@ -37,7 +37,8 @@ Listeners::Listeners(Instance* i)
   root->treeView()->dropBroadcaster()->addListener(this);
   root->addListener(model());
 
-  components()->transportController_.addListener(this);
+  components()->transportController_.addListener(target()->targetManager());
+
   player()->timeBroadcaster()->addListener(&components()->timeController_);
   player()->timeBroadcaster()->addListener(waveform->timeCursor());
 
@@ -45,11 +46,6 @@ Listeners::Listeners(Instance* i)
 }
 
 Listeners::~Listeners() {}
-
-void Listeners::operator()(command::Command::Type t) {
-  if (!target()->targetManager()->invokeDirectly(t))
-    LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
-}
 
 void Listeners::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;

@@ -26,7 +26,6 @@ class Instance;
 class MouseListener;
 
 class Listeners : public Listener<audio::transport::State>,
-                  public Listener<command::Command::Type>,
                   public Listener<const gui::DropFiles&>,
                   public juce::MouseListener,
                   public HasInstance {
@@ -35,7 +34,6 @@ class Listeners : public Listener<audio::transport::State>,
   virtual ~Listeners();
 
   virtual void operator()(audio::transport::State);
-  virtual void operator()(command::Command::Type);
   virtual void operator()(const gui::DropFiles&);
 
  private:

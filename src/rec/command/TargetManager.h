@@ -5,6 +5,7 @@
 
 #include "rec/command/Command.h"
 #include "rec/util/STL.h"
+#include "rec/util/listener/Listener.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
@@ -14,7 +15,8 @@ struct CommandCallback;
 
 // An implementation of ApplicationCommandTargetManager that lets you register commands
 // with a callback.
-class TargetManager : public ApplicationCommandTarget {
+class TargetManager : public ApplicationCommandTarget,
+                      public Listener<Command::Type> {
  public:
   explicit TargetManager(Component* comp);
   virtual ~TargetManager();
@@ -26,6 +28,11 @@ class TargetManager : public ApplicationCommandTarget {
 
   bool invokeDirectly(CommandID commandID, bool asynchronously = false) {
     return commandManager_.invokeDirectly(commandID, asynchronously);
+  }
+
+  virtual void operator()(Command::Type t) {
+    if (!invokeDirectly(t))
+      LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
   }
 
   // ApplicationCommandTarget virtual methods.
