@@ -13,7 +13,7 @@ namespace util {
 template <typename Sample, int CHANNELS>
 class FillableFrameBuffer : public block::Fillable {
  public:
-  const static int BLOCK_SIZE = 4096;
+  const static int BLOCK_SIZE = 40960;
 
   FillableFrameBuffer(int blockSize = BLOCK_SIZE);
   virtual ~FillableFrameBuffer() {}

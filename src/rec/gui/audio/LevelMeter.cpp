@@ -44,6 +44,7 @@ void LevelMeter::paint(Graphics& g) {
   float w = static_cast<float>(width) / size;
 
   juce::ColourGradient fill;
+  fill.isRadial = false;
   fill.addColour(0.0, juce::Colours::green);
   fill.addColour(0.80, juce::Colours::yellow);
   fill.addColour(0.93, juce::Colours::red);

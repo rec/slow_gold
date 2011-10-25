@@ -96,7 +96,6 @@ void Model::setFile(const VirtualFile& f) {
 
 thread::Result Model::fillOnce() {
   {
-    // ScopedLock l(lock_);
     FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
     if (buffer && buffer->isFull()) {
       thumbnailBuffer_.writeThumbnail();
@@ -119,8 +118,11 @@ thread::Result Model::fillOnce() {
       }
     }
 
-    if (triggerPosition_ != -1)
+    if (triggerPosition_ != -1 &&
+        buffer->hasFilled(block::Block(triggerPosition_,
+                                       triggerPosition_ + PRELOAD))) {
       jumpToTime(triggerPosition_);
+    }
 
     int64 pos = buffer->position();
     int filled = static_cast<int>(buffer->fillNextBlock());
