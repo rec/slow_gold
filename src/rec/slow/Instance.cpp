@@ -30,10 +30,10 @@ Instance::Instance(SlowWindow* window)
   player_->addListener(&components_->transportController_);
 
   WaveformComp* waveform = &components_->waveform_;
-  waveform->dropBroadcaster()->addListener(model_.get());
+  waveform->dropBroadcaster()->addListener(currentFile_.get());
 
   widget::tree::Root* root = &components_->directoryTree_;
-  root->treeView()->dropBroadcaster()->addListener(model_.get());
+  root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(model_.get());
 
   components_->transportController_.addListener(target_->targetManager());

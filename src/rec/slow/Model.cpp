@@ -37,7 +37,6 @@ class LoopListenerImpl : public DataListener<LoopPointList> {
  public:
   explicit LoopListenerImpl(Model* model) : model_(model) {}
   virtual void onDataChange(const LoopPointList& p) {
-    DLOG(INFO) << "LoopListenerImpl";
     model_->setLoopPointList(p);
   }
 
@@ -69,7 +68,6 @@ void Model::operator()(const gui::DropFiles& df) {
 }
 
 void Model::setFile(const VirtualFile& f) {
-  DLOG(INFO) << f.ShortDebugString();
   currentFile()->setFile(f);
 }
 
@@ -144,7 +142,6 @@ void Model::jumpToTime(Samples<44100> pos) {
 
 void Model::setLoopPointList(const LoopPointList& loops) {
   if (!empty()) {
-    DLOG(INFO) << "Setting LoopPointList";
     timeSelection_ = audio::getTimeSelection(loops);
     TimeMethods(instance_).jumpToTimeSelection(timeSelection_, time_);
   } else {

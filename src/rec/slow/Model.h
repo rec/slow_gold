@@ -32,7 +32,7 @@ class Instance;
 class Model : public Listener< Samples<44100> >,
               public Listener<const VirtualFileList&>,
               public Listener<const VirtualFile&>,
-              public Listener<const gui::DropFiles&>,
+              //              public Listener<const gui::DropFiles&>,
               public HasInstance {
  public:
   typedef audio::Gain Gain;
