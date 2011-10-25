@@ -35,7 +35,7 @@ Listeners::Listeners(Instance* i)
 
   Root* root = &components()->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(this);
-  root->addListener(this);
+  root->addListener(model());
 
   components()->transportController_.addListener(this);
   player()->timeBroadcaster()->addListener(&components()->timeController_);
@@ -73,17 +73,6 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
         data::editable<file::VirtualFileList>()->append(files.file(i), data::Address("file"));
     }
   }
-}
-
-void Listeners::operator()(const VirtualFileList& list) {
-  if (list.file_size() < 1)
-    LOG(ERROR) << "file size=" << list.file_size();
-  else
-    model()->setFile(list.file(0));
-}
-
-void Listeners::operator()(const VirtualFile& file) {
-  model()->setFile(file);
 }
 
 void Listeners::operator()(audio::transport::State state) {

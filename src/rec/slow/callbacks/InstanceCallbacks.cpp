@@ -156,7 +156,7 @@ void closeFile(Instance* i) {
 }
 
 void open(Instance* i) {
-  gui::dialog::openOneFile(i->listeners_.get());
+  gui::dialog::openOneFile(i->model_.get());
 }
 
 void toggleStartStop(Instance* i) {

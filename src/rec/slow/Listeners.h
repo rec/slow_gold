@@ -25,9 +25,7 @@ namespace slow {
 class Instance;
 class MouseListener;
 
-class Listeners : public Listener<const VirtualFile&>,
-                  public Listener<const VirtualFileList&>,
-                  public Listener<audio::transport::State>,
+class Listeners : public Listener<audio::transport::State>,
                   public Listener<command::Command::Type>,
                   public Listener<const gui::DropFiles&>,
                   public juce::MouseListener,
@@ -36,14 +34,11 @@ class Listeners : public Listener<const VirtualFile&>,
   explicit Listeners(Instance* i);
   virtual ~Listeners();
 
-  virtual void operator()(const VirtualFileList&);
-  virtual void operator()(const VirtualFile&);
   virtual void operator()(audio::transport::State);
   virtual void operator()(command::Command::Type);
   virtual void operator()(const gui::DropFiles&);
 
  private:
-  void operator()(None);
   ptr<slow::MouseListener> mouseListener_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Listeners);
