@@ -46,11 +46,11 @@ class Model : public Listener< Samples<44100> >,
   explicit Model(Instance* i);
   virtual ~Model();
 
+  void clear();
   virtual void setFile(const VirtualFile& vf);
 
   virtual void operator()(const VirtualFile& vf) { setFile(vf); }
   virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
-  virtual void operator()(const gui::DropFiles&);
 
   // TODO: this is ugly.
   virtual void operator()(const VirtualFileList& vf) { setFile(vf.file(0)); }

@@ -63,12 +63,13 @@ Model::Model(Instance* i) : HasInstance(i),
 
 Model::~Model() {}
 
-void Model::operator()(const gui::DropFiles& df) {
-  (*currentFile())(df);  // TODO: fix this
-}
-
 void Model::setFile(const VirtualFile& f) {
   currentFile()->setFile(f);
+}
+
+void Model::clear() {
+  time_ = triggerPosition_ = 0;
+  timeSelection_.clear();
 }
 
 thread::Result Model::fillOnce() {

@@ -63,9 +63,9 @@ class Player : public DataListener<Gain>,
   void setGain(double);
 
   Samples<44100> length() const { return timer_->getTotalLength(); }
-  void clear();
   void setSource(Source*);
   void setSelection(const block::BlockSet& s);
+  void clear();
 
  private:
   CriticalSection lock_;

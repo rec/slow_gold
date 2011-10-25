@@ -34,14 +34,17 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
-  DLOG(INFO) << f.ShortDebugString();
+  model()->clear();
+  // TODO: This is needed because of a race condition with the fill thread.
+
+  player()->clear();
+
   VirtualFile oldFile;
   {
     Lock l(lock_);
     oldFile = file_;
     file_ = f;
   }
-  player()->clear();
   audio::util::ThumbnailBuffer* thumbnailBuffer = model()->thumbnailBuffer();
 
   components()->playerController_.clearLevels();
@@ -69,7 +72,6 @@ void CurrentFile::setFile(const VirtualFile& f) {
   data::set(loopPointList, f);
 
   threads()->fillThread()->notify();
-  DLOG(INFO) << file_.ShortDebugString();
 }
 
 }  // namespace slow
