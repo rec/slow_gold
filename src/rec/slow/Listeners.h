@@ -9,16 +9,7 @@
 
 namespace rec {
 
-namespace audio { namespace stretch { class Stretch; }}
-namespace audio { namespace source { class StereoProto; }}
-
 namespace gui { class DropFiles; }
-
-namespace util { class LoopPointList; }
-namespace util { namespace file { class VirtualFile; }}
-namespace util { namespace file { class VirtualFileList; }}
-
-namespace widget { namespace waveform { class ZoomProto; }}
 
 namespace slow {
 
