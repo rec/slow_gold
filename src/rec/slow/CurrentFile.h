@@ -3,6 +3,7 @@
 
 #include "rec/slow/HasInstance.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 
@@ -16,8 +17,10 @@ class CurrentFile : public HasInstance, public Listener<const gui::DropFiles&> {
 
   virtual void operator()(const gui::DropFiles&);
   void setFile(const VirtualFile& f, const VirtualFile& oldFile);
+  const VirtualFile& file() { return file_; }
 
  private:
+  VirtualFile file_;
   DISALLOW_COPY_AND_ASSIGN(CurrentFile);
 };
 

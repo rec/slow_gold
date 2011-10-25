@@ -34,6 +34,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::setFile(const VirtualFile& f, const VirtualFile& oldFile) {
+  file_ = f;
   player()->clear();
   audio::util::ThumbnailBuffer* thumbnailBuffer = model()->thumbnailBuffer();
 
