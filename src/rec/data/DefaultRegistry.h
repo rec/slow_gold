@@ -6,7 +6,6 @@
 namespace rec {
 namespace data {
 
-class Address;
 class RegistryEntry;
 
 class DefaultRegistry {
@@ -15,9 +14,9 @@ class DefaultRegistry {
   ~DefaultRegistry();
 
   void registerDefault(const Message&);
-  void registerAddress(const Message&, const Address&);
-  const Message* getDefault(const string& typeName, const Address&);
-  template <typename Type> const Type& getDefault(const Address&);
+  void registerFile(const Message&, const VirtualFile&);
+  const Message* getDefault(const string& typeName, const VirtualFile&);
+  template <typename Type> const Type& getDefault(const VirtualFile&);
 
  private:
   typedef std::map<string, RegistryEntry*> Registry;
@@ -30,9 +29,9 @@ class DefaultRegistry {
 };
 
 template <typename Type>
-const Type& DefaultRegistry::getDefault(const Address& address) {
+const Type& DefaultRegistry::getDefault(const VirtualFile& vf) {
   const string& name = Type::default_instance()->GetTypeName();
-  if (const Message* message = getDefault(name, address)) {
+  if (const Message* message = getDefault(name, vf)) {
     if (const Type* t = dynamic_cast<Type*>(message))
       return t;
     DLOG(ERROR) << "wrong type stored in defaulter";

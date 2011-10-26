@@ -26,6 +26,10 @@ const String getFilename(const VirtualFile& file);
 const String getDisplayName(const VirtualFile& file);
 const String getFullDisplayName(const VirtualFile& file);
 
+inline const string toString(const VirtualFile& f) {
+  return str(getFullDisplayName(f));
+}
+
 bool compare(const VirtualFile& x, const VirtualFile& y);
 bool empty(const VirtualFile& file);
 

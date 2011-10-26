@@ -4,7 +4,7 @@
 
 #include "rec/data/DefaultRegistry.h"
 
-#include "rec/data/Address.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/STL.h"
 
 namespace rec {
@@ -21,6 +21,7 @@ class RegistryEntry {
     DefaultMap::iterator i = map_.find(name);
     if (i != map_.end())
       delete i->second;
+
     ptr<Message> copy(m.New());
     copy->CopyFrom(m);
     map_.insert(i, std::make_pair(name, copy.transfer()));
@@ -58,13 +59,14 @@ void DefaultRegistry::registerDefault(const Message& m) {
   getOrCreate(m)->add(m, DEFAULT_NAME);
 }
 
-void DefaultRegistry::registerAddress(const Message& m, const Address& addr) {
-  getOrCreate(m)->add(m, toString(addr));
+void DefaultRegistry::registerFile(const Message& m, const VirtualFile& vf) {
+  getOrCreate(m)->add(m, toString(vf));
 }
 
-const Message* DefaultRegistry::getDefault(const string& typeName, const Address& address) {
+const Message* DefaultRegistry::getDefault(const string& typeName,
+                                           const VirtualFile& vf) {
   if (RegistryEntry* entry = get(typeName)) {
-    if (const Message* m = entry->get(toString(address)))
+    if (const Message* m = entry->get(toString(vf)))
       return m;
     if (const Message* m = entry->get(DEFAULT_NAME))
       return m;
