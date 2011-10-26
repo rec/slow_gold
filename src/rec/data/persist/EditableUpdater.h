@@ -3,18 +3,18 @@
 
 #include "rec/data/Editable.h"
 #include "rec/data/UndoQueue.h"
-#include "rec/data/UndoQueue.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace data {
 
+class DefaultRegistry;
 class UndoQueue;
 class UntypedEditable;
 
 class EditableUpdater {
  private:
-  EditableUpdater();
+  explicit EditableUpdater(DefaultRegistry*);
   ~EditableUpdater();
 
  public:
@@ -26,9 +26,10 @@ class EditableUpdater {
   EditableMap* map() { return &map_; }
   CriticalSection* lock() { return &lock_; }
   UndoQueue* undoQueue() { return &undoQueue_; }
+  DefaultRegistry* defaultRegistry() { return defaultRegistry_.get(); }
 
   static EditableUpdater* instance() { return instance_; }
-  static void start();
+  static void start(DefaultRegistry*);
   static void stop();
 
  private:
@@ -36,11 +37,12 @@ class EditableUpdater {
 
   CriticalSection lock_;
 
+  EditableMap map_;
+  UndoQueue undoQueue_;
+  ptr<DefaultRegistry> defaultRegistry_;
+
   EditableSet updateData_;
   EditableSet writeData_;
-  EditableMap map_;
-
-  UndoQueue undoQueue_;
   thread_ptr<Thread> updateThread_;
   thread_ptr<Thread> writeThread_;
 

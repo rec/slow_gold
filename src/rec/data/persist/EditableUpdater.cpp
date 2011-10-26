@@ -5,6 +5,7 @@
 #include "rec/app/Files.h"
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
+#include "rec/data/DefaultRegistry.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/Trash.h"
@@ -35,8 +36,9 @@ Thread* makeLoop(const ThreadDesc& d, EditableUpdater* upd, Method method) {
 
 }  // namespace
 
-EditableUpdater::EditableUpdater()
+EditableUpdater::EditableUpdater(DefaultRegistry* registry)
     : undoQueue_(app::getAppFile("UndoQueue.Action")),
+      defaultRegistry_(registry),
       updateThread_(makeLoop(updateDesc, this, &EditableUpdater::update)),
       writeThread_(makeLoop(writeDesc, this, &EditableUpdater::write)) {
 }
@@ -88,10 +90,10 @@ bool EditableUpdater::write() {
   return !hasData;
 }
 
-void EditableUpdater::start() {
+void EditableUpdater::start(DefaultRegistry* r) {
   DLOG(INFO) << "Starting EditableUpdater";
   CHECK(!instance_);
-  instance_ = new EditableUpdater();
+  instance_ = new EditableUpdater(r);
 }
 
 void EditableUpdater::stop() {
@@ -117,8 +119,9 @@ void addToUndoQueue(UntypedEditable* u, const OperationList& command,
 void needsUpdate(UntypedEditable* e) { return instance()->needsUpdate(e); }
 EditableMap* editableMap()           { return instance()->map(); }
 CriticalSection* editableMapLock()   { return instance()->lock(); }
+DefaultRegistry* defaultRegistry() { return instance()->defaultRegistry(); }
 
-void start() { EditableUpdater::start(); }
+void start(DefaultRegistry* r) { EditableUpdater::start(r); }
 void stop() { EditableUpdater::stop(); }
 
 }  // namespace data

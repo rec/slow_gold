@@ -8,14 +8,17 @@
 namespace rec {
 namespace data {
 
+class DefaultRegistry;
+
 void needsUpdate(UntypedEditable*);
 void addToUndoQueue(UntypedEditable* u, const OperationList& undo,
                     const OperationList& command);
 
+DefaultRegistry* defaultRegistry();
 EditableMap* editableMap();
 CriticalSection* editableMapLock();
 
-void start();
+void start(DefaultRegistry* registry);
 void stop();
 
 }  // namespace data

@@ -13,6 +13,7 @@ class SlowWindow : public app::Window {
   SlowWindow();
   virtual ~SlowWindow();
   virtual void startup();
+  virtual data::DefaultRegistry* getDefaultRegistry();
 
  protected:
   virtual void constructInstance();

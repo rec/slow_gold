@@ -6,6 +6,9 @@
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
+
+namespace data { class DefaultRegistry; }
+
 namespace app {
 
 class Window;
@@ -28,6 +31,8 @@ class GenericApplication : public juce::JUCEApplication {
   virtual void anotherInstanceStarted(const String&) {}
 
  protected:
+  virtual void registerDefaults(data::DefaultRegistry*) {}
+
   const String name_;
   const String version_;
   ptr<Window> window_;

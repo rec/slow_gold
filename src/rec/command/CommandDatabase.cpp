@@ -91,7 +91,7 @@ void insertRepeated(CommandTable* map) {
 }
 
 void mergeKeyPresses(CommandTable* map, const Access& access) {
-  Commands kp = data::get(file::toVirtualFile("KeyPresses"), keyPresses(access));
+  Commands kp = keyPresses(access);
   for (int i = 0; i < kp.command_size(); ++i) {
     const Command& c = kp.command(i);
     merge(map, c);

@@ -4,6 +4,9 @@
 #include "rec/gui/PersistentWindow.h"
 
 namespace rec {
+
+namespace data { class DefaultRegistry; }
+
 namespace app {
 
 // TODO: move this into rec/app
@@ -13,12 +16,12 @@ class Window : public gui::PersistentWindow {
          const Colour& bg,
          int requiredButtons,
          bool addToDesktop = true);
+  virtual ~Window();
 
   virtual void initialise();
   virtual void startup() = 0;
   virtual void shutdown();
-
-  virtual ~Window();
+  virtual data::DefaultRegistry* getDefaultRegistry() = 0;
 
  protected:
   virtual void constructInstance() = 0;

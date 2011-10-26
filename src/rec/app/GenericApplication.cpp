@@ -30,8 +30,8 @@ void GenericApplication::initialise(const String&) {
   }
 
   audio::format::mpg123::initializeOnce();
-  data::start();
   window_.reset(createWindow());
+  data::start(window_->getDefaultRegistry());
   window_->initialise();
 
   thread::runInNewThread("startup thread",

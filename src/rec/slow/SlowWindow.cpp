@@ -38,6 +38,10 @@ void SlowWindow::doComputeBounds() {
   computeBounds<AppLayout>();
 }
 
+data::DefaultRegistry* SlowWindow::getDefaultRegistry() {
+  return new data::DefaultRegistry;
+}
+
 }  // namespace slow
 }  // namespace rec
 
