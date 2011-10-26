@@ -30,9 +30,10 @@ class Address : public AddressProto {
   Address(const AddressProto& a) : AddressProto(a) {}
 };
 
-const Address operator+(const Address& x, const Address& y);
-const Address operator+(const Address& x, int i);
-const Address operator+(const Address& x, const string& name);
+const Address operator+(const Address&, const Address&);
+const Address operator+(const Address&, int i);
+const Address operator+(const Address&, const string& name);
+const string toString(const Address&);
 
 }  // namespace data
 }  // namespace rec

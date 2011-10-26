@@ -21,5 +21,18 @@ const Address operator+(const Address& x, const string& name) {
   return result;
 }
 
+const string toString(const Address& x) {
+  string s;
+  for (int i = 0; i < x.part_size(); ++i) {
+    if (i)
+      s += ".";
+    if (x.part(i).has_name())
+      s += x.part(i).name();
+    else
+      s += str(String(x.part(i).index()));
+  }
+  return s;
+}
+
 }  // namespace data
 }  // namespace rec
