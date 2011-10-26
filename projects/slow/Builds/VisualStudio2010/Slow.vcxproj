@@ -184,6 +184,7 @@
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\DefaultRegistry.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp"/>
@@ -466,6 +467,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Binary.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\DefaultRegistry.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>

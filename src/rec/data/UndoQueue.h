@@ -26,6 +26,7 @@ class UndoQueue {
 
   void undo();
   void redo();
+  void enableUndo(bool enabled) { Lock l(lock_);  enabled_ = enabled; }
 
  private:
   void add(Action* event);
@@ -40,6 +41,7 @@ class UndoQueue {
 
   int writtenTo_;
   int undoes_;
+  bool enabled_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
 };

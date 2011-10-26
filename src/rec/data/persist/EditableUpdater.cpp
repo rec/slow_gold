@@ -26,8 +26,10 @@ ThreadDesc writeDesc = {5, 100, "Editable::Write"};
 template <typename Method>
 Thread* makeLoop(const ThreadDesc& d, EditableUpdater* upd, Method method) {
   thread_ptr<Thread> t(thread::makeLoop(d.period_, d.name_, upd, method));
+
   t->setPriority(d.priority_);
   t->startThread();
+
   return t.transfer();
 }
 

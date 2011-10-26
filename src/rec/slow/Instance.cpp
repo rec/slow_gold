@@ -10,6 +10,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
+#include "rec/util/Undo.h"
 #include "rec/widget/waveform/Cursor.h"
 
 namespace rec {
@@ -53,6 +54,7 @@ Instance::~Instance() {
 
 void Instance::startup() {
   model_->setFile(data::get<VirtualFile>());
+  enableUndo();
 }
 
 const VirtualFile Instance::file() const {

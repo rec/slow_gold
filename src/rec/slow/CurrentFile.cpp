@@ -35,7 +35,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 
 void CurrentFile::setFile(const VirtualFile& f) {
   model()->clear();
-  // TODO: This is needed because of a race condition with the fill thread.
+  // TODO: This is probably not needed.
 
   player()->clear();
 

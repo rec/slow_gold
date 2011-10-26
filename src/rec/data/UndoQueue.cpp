@@ -7,8 +7,10 @@
 namespace rec {
 namespace data {
 
+using file::Output;
+
 UndoQueue::UndoQueue(const File& file)
-    : logfile_(new file::Output(file)), writtenTo_(0), undoes_(0) {
+    : logfile_(new Output(file)), writtenTo_(0), undoes_(0), enabled_(false) {
 }
 
 UndoQueue::~UndoQueue() {
@@ -36,8 +38,12 @@ static Action* makeAction(Editable* e, const OperationList& command,
 
 void UndoQueue::add(Editable* editable, const OperationList& command,
                     const OperationList& undo) {
-  ptr<Action> action(makeAction(editable, command, undo));
   Lock l(lock_);
+  if (!enabled_)
+    return;
+
+  ptr<Action> action(makeAction(editable, command, undo));
+  DLOG(INFO) << action->ShortDebugString();
   if (undoes_) {
     if (undoes_ > 1) {
       actions_.resize(undoable() + 1);

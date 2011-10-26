@@ -391,6 +391,9 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DefaultRegistry.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
@@ -1231,6 +1234,9 @@
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DefaultRegistry.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">

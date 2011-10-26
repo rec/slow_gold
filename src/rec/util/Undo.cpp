@@ -7,24 +7,28 @@ namespace util {
 using data::UndoQueue;
 using data::EditableUpdater;
 
-static UndoQueue* uqueue() { return EditableUpdater::instance()->undoQueue(); }
+static UndoQueue* undoQueue() { return EditableUpdater::instance()->undoQueue(); }
 
 // How many commands have been undone?
 int undoes() {
-  return uqueue()->undoes();
+  return undoQueue()->undoes();
 }
 
 // How many commands can be undone?
 int undoable() {
-  return uqueue()->undoable();
+  return undoQueue()->undoable();
 }
 
 void undo() {
-  uqueue()->undo();
+  undoQueue()->undo();
 }
 
 void redo() {
-  uqueue()->redo();
+  undoQueue()->redo();
+}
+
+void enableUndo(bool enabled) {
+  undoQueue()->enableUndo(enabled);
 }
 
 }  // namespace util
