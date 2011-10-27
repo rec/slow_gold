@@ -108,13 +108,6 @@ void Model::jumpToTime(Samples<44100> pos) {
 	player()->setNextReadPosition(pos);
 }
 
-void Model::onDataChange(const LoopPointList& loops) {
-  if (!empty())
-    currentTime()->jumpToTimeSelection(loops);
-  else
-    LOG(ERROR) << "Setting empty loop point list";
-}
-
 void Model::setCursorTime(int index, RealTime time) {
   currentTime()->setCursorTime(index, time);
 }

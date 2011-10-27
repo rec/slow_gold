@@ -28,8 +28,7 @@ namespace slow {
 
 class Instance;
 
-class Model : public DataListener<LoopPointList>,
-              public HasInstance {
+class Model : public HasInstance {
  public:
   typedef audio::stretch::Stretch Stretch;
   typedef music::Metadata Metadata;
@@ -39,8 +38,6 @@ class Model : public DataListener<LoopPointList>,
 
   explicit Model(Instance* i);
   virtual ~Model();
-
-  virtual void onDataChange(const LoopPointList& p);
 
   thread::Result fillOnce();
   void jumpToTime(Samples<44100>);

@@ -51,10 +51,6 @@ DataListener<Proto>::DataListener(bool f) : data_(NULL), filterDupes_(f) {
 
 template <typename Proto>
 void DataListener<Proto>::setFile(const VirtualFile& file) {
-  string s = Proto::default_instance().GetTypeName();
-  // LOG(INFO) << "setFile " << s;
-  // if (s == "rec.util.LoopPointList")
-  //  LOG(INFO) << "LoopPointList: " << data::editable<Proto>(file)->get().ShortDebugString();
   setData(data::editable<Proto>(file));
 }
 

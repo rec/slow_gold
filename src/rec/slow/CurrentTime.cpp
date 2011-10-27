@@ -5,7 +5,7 @@
 namespace rec {
 namespace slow {
 
-void CurrentTime::jumpToTimeSelection(const LoopPointList& loops) {
+void CurrentTime::onDataChange(const LoopPointList& loops) {
   timeSelection_ = audio::getTimeSelection(loops, player()->length());
   if (!timeSelection_.empty()) {
     block::BlockSet::const_iterator i = timeSelection_.begin();
