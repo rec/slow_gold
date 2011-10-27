@@ -1,7 +1,7 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/CurrentTime.h"
-#include "rec/slow/Model.h"
+#include "rec/slow/BufferFiller.h"
 
 using namespace std;
 using namespace rec::command;

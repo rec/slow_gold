@@ -7,7 +7,7 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/Menus.h"
-#include "rec/slow/Model.h"
+#include "rec/slow/BufferFiller.h"
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
@@ -29,7 +29,7 @@ Instance::Instance(SlowWindow* window)
       player_(new audio::source::Player(device_.get())),
       currentFile_(new CurrentFile(this)),
       currentTime_(new CurrentTime(this)),
-      model_(new Model(this)),
+      bufferFiller_(new BufferFiller(this)),
       menus_(new Menus(this)),
       target_(new Target(this)),
       mouseListener_(new MouseListener(this)),
@@ -51,7 +51,7 @@ Instance::Instance(SlowWindow* window)
 
   player_->level()->addListener(components_->playerController_.levelListener());
 
-  ThumbnailBuffer* thumbnailBuffer = model_->thumbnailBuffer();
+  ThumbnailBuffer* thumbnailBuffer = bufferFiller_->thumbnailBuffer();
   Source *s = new FrameSource<short, 2>(thumbnailBuffer->buffer()->frames());
   player_->setSource(s);
   player_->timeBroadcaster()->addListener(currentTime_.get());

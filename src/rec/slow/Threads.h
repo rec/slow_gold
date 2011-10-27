@@ -8,7 +8,7 @@
 namespace rec {
 namespace slow {
 
-struct Model;
+struct BufferFiller;
 
 typedef void (*InstanceFunction)(Instance*);
 typedef thread::Result (*InstanceLoop)(Instance*);

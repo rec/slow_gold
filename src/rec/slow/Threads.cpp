@@ -2,7 +2,7 @@
 #include "rec/data/Data.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
-#include "rec/slow/Model.h"
+#include "rec/slow/BufferFiller.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
@@ -71,7 +71,7 @@ int navigator(Instance* i) {
 }
 
 thread::Result fill(Instance* i) {
-  return i->model_->fillOnce();
+  return i->bufferFiller_->fillOnce();
 }
 
 thread::Result directory(Instance* i) {

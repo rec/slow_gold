@@ -1,7 +1,7 @@
 #include "rec/slow/LoopSnapshot.h"
 
 #include "rec/audio/source/Player.h"
-#include "rec/slow/Model.h"
+#include "rec/slow/BufferFiller.h"
 
 namespace rec {
 namespace slow {

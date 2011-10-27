@@ -2,7 +2,7 @@
 #include "rec/audio/util/Frame.h"
 #include "rec/audio/util/FillableFrameBuffer.h"
 #include "rec/audio/source/FrameSource.h"
-#include "rec/slow/Model.h"
+#include "rec/slow/BufferFiller.h"
 #include "rec/util/LoopPoint.h"
 
 namespace rec {
@@ -44,7 +44,8 @@ void CurrentTime::jumpToTime(Samples<44100> pos) {
       return;
     }
 
-    FillableFrameBuffer<short, 2>* buf = model()->thumbnailBuffer()->buffer();
+    FillableFrameBuffer<short, 2>* buf =
+      bufferFiller()->thumbnailBuffer()->buffer();
     jumpTime_ = pos;
     if (buf && !buf->hasFilled(block::Block(pos, pos + PRELOAD))) {
       buf->setNextFillPosition(pos);

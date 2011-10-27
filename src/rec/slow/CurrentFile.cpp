@@ -3,7 +3,7 @@
 #include "rec/gui/DropFiles.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
-#include "rec/slow/Model.h"
+#include "rec/slow/BufferFiller.h"
 #include "rec/slow/Threads.h"
 
 namespace rec {
@@ -53,7 +53,9 @@ void CurrentFile::setFile(const VirtualFile& f) {
   if (isEmpty) {
     components()->waveform_.setLength(0);
   } else {
-    audio::util::ThumbnailBuffer* thumbnailBuffer = model()->thumbnailBuffer();
+    using audio::util::ThumbnailBuffer;
+
+    ThumbnailBuffer* thumbnailBuffer = bufferFiller()->thumbnailBuffer();
     if (!thumbnailBuffer->setReader(f, music::createMusicFileReader(f))) {
       LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
       return;

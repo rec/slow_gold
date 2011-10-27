@@ -1,4 +1,4 @@
-#include "rec/slow/Model.h"
+#include "rec/slow/BufferFiller.h"
 
 #include "rec/slow/CurrentTime.h"
 #include "rec/util/block/Difference.h"
@@ -16,16 +16,16 @@ using namespace rec::widget::waveform;
 const int PARAMETER_WAIT = 1000;
 const int PRELOAD = 10000;
 
-Model::Model(Instance* i) : HasInstance(i),
+BufferFiller::BufferFiller(Instance* i) : HasInstance(i),
                             updateBuffer_(2, 1024),
                             updateSource_(thumbnailBuffer_.buffer()->frames()) {
   updateInfo_.buffer = &updateBuffer_;
   updateInfo_.startSample = 0;
 }
 
-Model::~Model() {}
+BufferFiller::~BufferFiller() {}
 
-thread::Result Model::fillOnce() {
+thread::Result BufferFiller::fillOnce() {
   FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
   if (buffer && buffer->isFull()) {
     thumbnailBuffer_.writeThumbnail();
@@ -68,3 +68,4 @@ thread::Result Model::fillOnce() {
 
 }  // namespace slow
 }  // namespace rec
+

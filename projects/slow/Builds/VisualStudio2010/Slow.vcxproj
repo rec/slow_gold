@@ -267,6 +267,7 @@
     <ClCompile Include="..\..\..\..\src\rec\music\CleanName.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\music\CreateMusicFileReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\BufferFiller.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp"/>
@@ -279,7 +280,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\Model.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\PlaybackController.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Position.cpp"/>
@@ -589,6 +589,7 @@
     <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\BufferFiller.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h"/>
@@ -603,7 +604,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\Model.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\PlaybackController.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Position.h"/>

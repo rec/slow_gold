@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="2j4NuS9JE" name="command">
+  <MAINGROUP id="zcdBNosRm" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -835,6 +835,10 @@
               name="Metadata.h" resource="0"/>
       </GROUP>
       <GROUP id="vrHU7SxTi" name="slow">
+        <FILE compile="1" file="../../src/rec/slow/BufferFiller.cpp" id="VkCOVVSxu"
+              name="BufferFiller.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/BufferFiller.h" id="SnhDGQj7R"
+              name="BufferFiller.h" resource="0"/>
         <GROUP id="Xii6KBMtY" name="callbacks">
           <FILE compile="1" file="../../src/rec/slow/callbacks/Callbacks.cpp"
                 id="zJI4lo2d3" name="Callbacks.cpp" resource="0"/>
@@ -889,10 +893,6 @@
               name="Menus.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Menus.h" id="WYIhcVhjf"
               name="Menus.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/Model.cpp" id="clvmnntql"
-              name="Model.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/Model.h" id="UtZGtMWLA"
-              name="Model.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/MouseListener.cpp" id="WGZFKvjXv"
               name="MouseListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MouseListener.h" id="eyBoBpB0K"
@@ -1333,7 +1333,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ld6JFtlVV" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="HQhyjCtLR" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

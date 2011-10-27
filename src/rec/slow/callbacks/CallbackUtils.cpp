@@ -1,5 +1,5 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
-#include "rec/slow/Model.h"
+#include "rec/slow/BufferFiller.h"
 
 namespace rec {
 namespace slow {

@@ -11,7 +11,7 @@ class Components;
 class CurrentFile;
 class CurrentTime;
 class Menus;
-class Model;
+class BufferFiller;
 class MouseListener;
 class Target;
 class Threads;
@@ -36,7 +36,7 @@ struct Instance {
   ptr<Player> player_;
   ptr<CurrentFile> currentFile_;
   ptr<CurrentTime> currentTime_;
-  ptr<Model> model_;
+  ptr<BufferFiller> bufferFiller_;
   ptr<Menus> menus_;  // TODO:  move into "Target"
   ptr<Target> target_;  // TODO: rename to "Commands".
   ptr<MouseListener> mouseListener_;

@@ -637,6 +637,9 @@
     <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp">
       <Filter>Slow\rec\music</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\BufferFiller.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp">
       <Filter>Slow\rec\slow\callbacks</Filter>
     </ClCompile>
@@ -671,9 +674,6 @@
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp">
-      <Filter>Slow\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\Model.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
@@ -1599,6 +1599,9 @@
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h">
       <Filter>Slow\rec\music</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\BufferFiller.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h">
       <Filter>Slow\rec\slow\callbacks</Filter>
     </ClInclude>
@@ -1639,9 +1642,6 @@
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h">
-      <Filter>Slow\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\Model.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">

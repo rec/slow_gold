@@ -1,5 +1,5 @@
-#ifndef __REC_SLOW_MODEL__
-#define __REC_SLOW_MODEL__
+#ifndef __REC_SLOW_BUFFERFILLER__
+#define __REC_SLOW_BUFFERFILLER__
 
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Selection.h"
@@ -21,14 +21,11 @@
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
-
-namespace gui { class DropFiles; }
-
 namespace slow {
 
 class Instance;
 
-class Model : public HasInstance {
+class BufferFiller : public HasInstance {
  public:
   typedef audio::stretch::Stretch Stretch;
   typedef music::Metadata Metadata;
@@ -36,8 +33,8 @@ class Model : public HasInstance {
 
   typedef audio::util::ThumbnailBuffer ThumbnailBuffer;
 
-  explicit Model(Instance* i);
-  virtual ~Model();
+  explicit BufferFiller(Instance* i);
+  virtual ~BufferFiller();
 
   thread::Result fillOnce();
   ThumbnailBuffer* thumbnailBuffer() { return &thumbnailBuffer_; }
@@ -54,10 +51,10 @@ class Model : public HasInstance {
 
   typedef DataListener<LoopPointList> LoopListener;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferFiller);
 };
 
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_MODEL__
+#endif  // __REC_SLOW_BUFFERFILLER__
