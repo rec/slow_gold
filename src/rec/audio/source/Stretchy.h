@@ -28,6 +28,7 @@ class Stretchy : public Wrappy {
   virtual void setNextReadPosition(int64);
   virtual int64 getNextReadPosition() const;
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
+  const Stretch stretch() { Lock l(lock_); return stretch_; }
 
   static
   Stretchy* create(Source*, const Stretch& s = Stretch::default_instance());

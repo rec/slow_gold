@@ -4,11 +4,13 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/Slow.h"
+#include "rec/util/Defaulter.h"
+#include "rec/util/Defaulter.h"
 
 namespace rec {
 namespace slow {
 
-#define OLD_JUCE
+static Def<LoopPointList> LOOPS("loop_point { selected: true }");
 
 SlowWindow::SlowWindow() : app::Window("SlowGold", juce::Colours::azure,
                                        DocumentWindow::allButtons, true) {
@@ -38,8 +40,14 @@ void SlowWindow::doComputeBounds() {
   computeBounds<AppLayout>();
 }
 
-data::DefaultRegistry* SlowWindow::getDefaultRegistry() {
-  return new data::DefaultRegistry;
+using data::DefaultRegistry;
+
+
+
+DefaultRegistry* SlowWindow::getDefaultRegistry() {
+  DefaultRegistry* r = new data::DefaultRegistry;
+  r->registerDefault(*LOOPS);
+  return r;
 }
 
 }  // namespace slow

@@ -13,7 +13,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &components()->waveform_) {
     if (files.file_size() >= 1)
-      model()->setFile(files.file(0));
+      currentFile()->setFile(files.file(0));
 
     LOG_IF(ERROR, files.file_size() != 1);
 
@@ -34,9 +34,6 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
-  model()->clear();
-  // TODO: This is probably not needed.
-
   player()->clear();
 
   VirtualFile oldFile;
@@ -45,7 +42,6 @@ void CurrentFile::setFile(const VirtualFile& f) {
     oldFile = file_;
     file_ = f;
   }
-  audio::util::ThumbnailBuffer* thumbnailBuffer = model()->thumbnailBuffer();
 
   components()->playerController_.clearLevels();
   components()->directoryTree_.refreshNode(oldFile);
@@ -53,25 +49,19 @@ void CurrentFile::setFile(const VirtualFile& f) {
   bool isEmpty = file::empty(f);
   components()->waveform_.setEmpty(isEmpty);
   components()->directoryTree_.refreshNode(f);
+
+  if (isEmpty) {
+    components()->waveform_.setLength(0);
+  } else {
+    audio::util::ThumbnailBuffer* thumbnailBuffer = model()->thumbnailBuffer();
+    if (!thumbnailBuffer->setReader(f, music::createMusicFileReader(f))) {
+      LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
+      return;
+    }
+    components()->waveform_.setLength(thumbnailBuffer->buffer()->length());
+    threads()->fillThread()->notify();
+  }
   data::set(f);
-
-  if (isEmpty)
-    return;
-
-  if (!thumbnailBuffer->setReader(f, music::createMusicFileReader(f))) {
-    LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
-    return;
-  }
-
-  LoopPointList loopPointList = data::get<LoopPointList>(f);
-  if (!loopPointList.loop_point_size()) {
-    loopPointList.add_loop_point()->set_selected(true);
-    RealTime time = Samples<44100>(thumbnailBuffer->buffer()->length());
-    loopPointList.add_loop_point()->set_time(time);
-  }
-  data::set(loopPointList, f);
-
-  threads()->fillThread()->notify();
 }
 
 }  // namespace slow

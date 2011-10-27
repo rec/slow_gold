@@ -17,15 +17,9 @@ namespace source {
 using namespace rec::audio::transport;
 using namespace rec::audio::stretch;
 
-Player::Player(Device* d)
-  : device_(d),
-    timer_(new Timer()),
-    selection_(new Selection(timer_)),
-    stretchy_(Stretchy::create(selection_)),
-    stereo_(new Stereo(stretchy_)) {
-  level_.setSource(stereo_);
+Player::Player(Device* d) : device_(d) {
+  fillSources();
   device_->manager_.addAudioCallback(&player_);
-
   transportSource_.setSource(&level_);
   player_.setSource(&transportSource_);
 }
@@ -33,6 +27,15 @@ Player::Player(Device* d)
 Player::~Player() {
   transportSource_.setSource(NULL);
 }
+
+void Player::fillSources() {
+  timer_ = new Timer();
+  selection_ = new Selection(timer_);
+  stretchy_ = Stretchy::create(selection_);
+  stereo_ = new Stereo(stretchy_);
+  level_.setSource(stereo_);
+}
+
 
 Samples<44100> Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
@@ -63,6 +66,11 @@ void Player::setSource(Source* source) {
 }
 
 void Player::onDataChange(const stretch::Stretch& stretch) {
+  if (stretch.strategy() != stretchy_->stretch().strategy()) {
+    setState(transport::STOPPED);
+    Thread::sleep(100);  // TODO: hack!
+    fillSources();
+  }
   stretchy_->setStretch(stretch);
 }
 
@@ -78,14 +86,10 @@ void Player::onDataChange(const StereoProto& s) {
   stereo_->setStereo(s);
 }
 
-void Player::setSelection(const block::BlockSet& s) {
-  selection_->setSelection(s);
-}
-
 void Player::onDataChange(const LoopPointList& lpl) {
-  // TODO:  why do we get updates with no loops in them?
-  if (lpl.loop_point_size() >= 2)
-    setSelection(audio::getTimeSelection(lpl));
+  DCHECK(lpl.loop_point_size());
+  block::BlockSet s = audio::getTimeSelection(lpl, length());
+  selection_->setSelection(s);
 }
 
 void Player::clear() {

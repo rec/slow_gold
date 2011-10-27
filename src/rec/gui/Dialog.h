@@ -27,13 +27,14 @@ inline bool browseForFileToOpen(FileChooser* fc) {
   return fc->browseForFileToOpen();
 }
 
-bool openVirtualFile(Listener<const VirtualFileList&>* listener,
+template <typename FileList>
+bool openVirtualFile(Listener<const FileList&>* listener,
                      const String& title,
                      const String& patterns,
                      FileChooserFunction function = &browseForFileToOpen,
                      const File& initial = File::nonexistent);
 
-bool openOneFile(Listener<const VirtualFileList&>* listener);
+bool openOneFile(Listener<const VirtualFile&>* listener);
 
 void shutdownDialog();
 

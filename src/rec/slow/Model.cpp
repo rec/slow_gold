@@ -63,10 +63,6 @@ Model::Model(Instance* i) : HasInstance(i),
 
 Model::~Model() {}
 
-void Model::setFile(const VirtualFile& f) {
-  currentFile()->setFile(f);
-}
-
 void Model::clear() {
   time_ = triggerPosition_ = 0;
   timeSelection_.clear();
@@ -143,7 +139,7 @@ void Model::jumpToTime(Samples<44100> pos) {
 
 void Model::setLoopPointList(const LoopPointList& loops) {
   if (!empty()) {
-    timeSelection_ = audio::getTimeSelection(loops);
+    timeSelection_ = audio::getTimeSelection(loops, player()->length());
     TimeMethods(instance_).jumpToTimeSelection(timeSelection_, time_);
   } else {
     LOG(ERROR) << "Setting empty loop point list";

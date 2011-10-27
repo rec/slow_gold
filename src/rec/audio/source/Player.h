@@ -64,10 +64,11 @@ class Player : public DataListener<Gain>,
 
   Samples<44100> length() const { return timer_->getTotalLength(); }
   void setSource(Source*);
-  void setSelection(const block::BlockSet& s);
   void clear();
 
  private:
+  void fillSources();
+
   CriticalSection lock_;
 
   AudioTransportSource transportSource_;

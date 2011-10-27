@@ -29,6 +29,7 @@ Def<CursorProto> defaultDesc(
 
 Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
     : desc_(d),
+      length_(0),
       thumbnail_(NULL),
       empty_(true) {
   setName("Waveform");
@@ -124,7 +125,7 @@ double Waveform::pixelsPerSecond() const {
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
-  block::BlockSet selection = audio::getTimeSelection(loopPoints);
+  block::BlockSet selection = audio::getTimeSelection(loopPoints, length_);
   {
     ScopedLock l(lock_);
     selection_ = selection;

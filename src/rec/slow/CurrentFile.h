@@ -11,13 +11,16 @@ namespace gui { class DropFiles; }
 
 namespace slow {
 
-class CurrentFile : public HasInstance, public Listener<const gui::DropFiles&> {
+class CurrentFile : public HasInstance,
+                    public Listener<const VirtualFile&>,
+                    public Listener<const gui::DropFiles&> {
  public:
   explicit CurrentFile(Instance* i) : HasInstance(i) {}
 
   virtual void operator()(const gui::DropFiles&);
-  void setFile(const VirtualFile&);
+  virtual void operator()(const VirtualFile& vf) { setFile(vf); }
 
+  void setFile(const VirtualFile&);
   const VirtualFile virtualFile() const { Lock l(lock_); return file_; }
 
  private:

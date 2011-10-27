@@ -31,8 +31,7 @@ class Waveform : public gui::component::Focusable<Component>,
                  public DataListener<ZoomProto>,
                  public DataListener<Mode>,
                  public Broadcaster<const MouseWheelEvent&>,
-                 public Broadcaster<const TimeAndMouseEvent&>
-                 /*public Broadcaster<const TimeSelection&>*/ {
+                 public Broadcaster<const TimeAndMouseEvent&> {
  public:
   Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
            const CursorProto* cursor = &defaultTimeCursor());
@@ -43,6 +42,7 @@ class Waveform : public gui::component::Focusable<Component>,
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
   virtual void resized();
   void setEmpty(bool empty);
+  void setLength(Samples<44100> len) { Lock l(lock_); length_ = len; }
 
   virtual void paint(Graphics&);
   virtual void repaint() { Component::repaint(); }
@@ -71,6 +71,7 @@ class Waveform : public gui::component::Focusable<Component>,
 
   CriticalSection lock_;
   WaveformProto desc_;
+  Samples<44100> length_;
   juce::AudioThumbnail* thumbnail_;
   Cursor* timeCursor_;
   block::BlockSet selection_;

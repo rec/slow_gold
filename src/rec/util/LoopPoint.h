@@ -9,6 +9,7 @@ namespace rec {
 namespace audio {
 
 const block::BlockSet getTimeSelection(const LoopPointList&,
+                                       Samples<44100> length,
                                        double scale = 1.0,
                                        bool emptyMeansAll = true);
 

@@ -35,7 +35,7 @@ Instance::Instance(SlowWindow* window)
 
   widget::tree::Root* root = &components_->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
-  root->addListener(model_.get());
+  root->addListener(currentFile_.get());
 
   components_->transportController_.addListener(target_->targetManager());
 
@@ -53,7 +53,7 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  model_->setFile(data::get<VirtualFile>());
+  currentFile_->setFile(data::get<VirtualFile>());
   enableUndo();
 }
 

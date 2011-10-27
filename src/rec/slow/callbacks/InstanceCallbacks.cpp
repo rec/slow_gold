@@ -9,6 +9,7 @@
 #include "rec/gui/Dialog.h"
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/CurrentFile.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
@@ -151,11 +152,11 @@ void audioPreferences(Instance* i) {
 }
 
 void closeFile(Instance* i) {
-  i->model_->setFile(VirtualFile());
+  i->currentFile_->setFile(VirtualFile());
 }
 
 void open(Instance* i) {
-  gui::dialog::openOneFile(i->model_.get());
+  gui::dialog::openOneFile(i->currentFile_.get());
 }
 
 void toggleStartStop(Instance* i) {

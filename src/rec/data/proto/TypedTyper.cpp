@@ -154,13 +154,6 @@ penum TypedTyper<penum>::GetRepeated(uint32 i) const {
 
 template <>
 void TypedTyper<penum>::Set(penum t) {
-  // DCHECK(false) << "Doesn't work!";
-  DLOG(INFO) << "!" 
-             << msg_->ShortDebugString()
-             << "! "
-             << t.value_
-             << ", "
-             << field_->enum_type()->FindValueByNumber(t);
   ref().SetEnum(msg_, field_, field_->enum_type()->FindValueByNumber(t));
 }
 

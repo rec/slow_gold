@@ -51,7 +51,21 @@ void DialogLocker::setModalComponent(Component* c) {
 
 namespace dialog {
 
-bool openVirtualFile(Listener<const VirtualFileList&>* listener,
+template <typename FileList>
+const FileList toFileList(juce::FileChooser*);
+
+template <>
+const VirtualFileList toFileList(juce::FileChooser* chooser) {
+  return file::toVirtualFileList(chooser->getResults());
+}
+
+template <>
+const VirtualFile toFileList(juce::FileChooser* chooser) {
+  return file::toVirtualFile(chooser->getResult());
+}
+
+template <typename FileList>
+bool openVirtualFile(Listener<const FileList&>* listener,
                      const String& title,
                      const String& patterns,
                      FileChooserFunction function,
@@ -64,12 +78,21 @@ bool openVirtualFile(Listener<const VirtualFileList&>* listener,
   bool result = (*function)(&chooser);
 
   if (result)
-    (*listener)(file::toVirtualFileList(chooser.getResults()));
+    (*listener)(toFileList<FileList>(&chooser));
 
   return result;
 }
 
-bool openOneFile(Listener<const VirtualFileList&>* listener) {
+template
+bool openVirtualFile(Listener<const VirtualFileList&>*, const String&,
+                     const String&, FileChooserFunction, const File&);
+
+template
+bool openVirtualFile(Listener<const VirtualFile&>*, const String&,
+                     const String&, FileChooserFunction, const File&);
+
+
+bool openOneFile(Listener<const VirtualFile&>* listener) {
   return openVirtualFile(listener, "Please choose an audio file",
                          file::audioFilePatterns());
 }

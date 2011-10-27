@@ -32,7 +32,8 @@ PositionableAudioSource* Wrappy::source() const {
 
 void Wrappy::setSource(PositionableAudioSource* s) {
   ScopedLock l(lock_);
-  source_.reset(s);
+  if (s != source_.get())
+    source_.reset(s);
 }
 
 PositionableAudioSource* Wrappy::getSource() const {

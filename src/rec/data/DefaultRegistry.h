@@ -15,10 +15,11 @@ class DefaultRegistry {
 
   void registerDefault(const Message&);
   void registerFile(const Message&, const VirtualFile&);
-  const Message* getDefault(const string& typeName, const VirtualFile&);
   template <typename Type> const Type& getDefault(const VirtualFile&);
 
  private:
+  const Message* getDefault(const string& typeName, const VirtualFile&);
+
   typedef std::map<string, RegistryEntry*> Registry;
   RegistryEntry* get(const string&);
   RegistryEntry* getOrCreate(const Message&);
