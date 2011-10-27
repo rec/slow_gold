@@ -21,22 +21,6 @@ void CurrentTime::jumpToTimeSelection(const LoopPointList& loops,
   }
 }
 
-void CurrentTime::jumpToTimeSelection(const block::BlockSet& ts,
-                                      Samples<44100> time) {
-  timeSelection_ = ts;
-  if (!ts.empty()) {
-    block::BlockSet::const_iterator i = ts.begin();
-    for (; i != ts.end(); ++i) {
-      if (time < i->second) {
-        if (time < i->first)
-          model()->jumpToTime(i->first);
-        return;
-      }
-    }
-    model()->jumpToTime(ts.begin()->first);
-  }
-}
-
 void CurrentTime::setCursorTime(int index, RealTime t) {
   if (index < 0) {
     model()->jumpToTime(t);

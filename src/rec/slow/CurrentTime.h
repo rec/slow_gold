@@ -13,7 +13,6 @@ class CurrentTime : public HasInstance {
  public:
   explicit CurrentTime(Instance* i) : HasInstance(i) {}
 
-  void jumpToTimeSelection(const block::BlockSet& ts, Samples<44100> time);
   void jumpToTimeSelection(const LoopPointList&, Samples<44100> time);
 
   void setCursorTime(int index, RealTime time);
