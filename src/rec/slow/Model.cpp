@@ -1,19 +1,8 @@
 #include "rec/slow/Model.h"
 
-#include "rec/audio/Audio.h"
-#include "rec/audio/source/Selection.h"
-#include "rec/data/persist/TypedEditable.h"
-#include "rec/data/Data.h"
-#include "rec/music/CreateMusicFileReader.h"
-#include "rec/slow/Components.h"
-#include "rec/slow/Threads.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/FillSeries.h"
-#include "rec/widget/waveform/Cursor.h"
-#include "rec/widget/waveform/Zoom.h"
-
-#include "rec/slow/CurrentTime.h"
-#include "rec/slow/CurrentFile.h"
 
 namespace rec {
 namespace slow {
