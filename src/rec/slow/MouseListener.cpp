@@ -3,6 +3,7 @@
 #include "rec/slow/MouseListener.h"
 #include "rec/audio/Audio.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -154,7 +155,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     RealTime t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
     cursor->setListeningToClock(false);
     cursor->setTime(t);
-    model()->setCursorTime(cursor->index(), t);
+    currentTime()->setCursorTime(cursor->index(), t);
   }
 }
 

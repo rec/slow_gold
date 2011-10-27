@@ -41,7 +41,6 @@ class Model : public HasInstance {
 
   thread::Result fillOnce();
   void jumpToTime(Samples<44100>);
-  void setCursorTime(int index, RealTime time);
 
   bool empty() const { return file::empty(file()); }
 

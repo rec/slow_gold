@@ -108,9 +108,5 @@ void Model::jumpToTime(Samples<44100> pos) {
 	player()->setNextReadPosition(pos);
 }
 
-void Model::setCursorTime(int index, RealTime time) {
-  currentTime()->setCursorTime(index, time);
-}
-
 }  // namespace slow
 }  // namespace rec
