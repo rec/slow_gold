@@ -15,7 +15,7 @@
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Zoom.h"
 
-#include "rec/slow/methods/TimeMethods.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/slow/CurrentFile.h"
 
 namespace rec {
@@ -27,8 +27,6 @@ using namespace rec::gui::audio;
 using namespace rec::music;
 using namespace rec::util::block;
 using namespace rec::widget::waveform;
-
-using methods::TimeMethods;
 
 const int PARAMETER_WAIT = 1000;
 const int PRELOAD = 10000;
@@ -50,7 +48,6 @@ Model::~Model() {}
 
 void Model::clear() {
   time_ = triggerPosition_ = 0;
-  timeSelection_.clear();
 }
 
 thread::Result Model::fillOnce() {
@@ -96,10 +93,6 @@ thread::Result Model::fillOnce() {
   return thread::YIELD;
 }
 
-void Model::zoom(RealTime time, double k) {
-  widget::waveform::zoom(file(), player()->length(), time, k);
-}
-
 void Model::jumpToTime(Samples<44100> pos) {
   {
     ScopedLock l(lock_);
@@ -124,14 +117,14 @@ void Model::jumpToTime(Samples<44100> pos) {
 void Model::onDataChange(const LoopPointList& loops) {
   if (!empty()) {
     timeSelection_ = audio::getTimeSelection(loops, player()->length());
-    TimeMethods(instance_).jumpToTimeSelection(timeSelection_, time_);
+    currentTime()->jumpToTimeSelection(timeSelection_, time_);
   } else {
     LOG(ERROR) << "Setting empty loop point list";
   }
 }
 
 void Model::setCursorTime(int index, RealTime time) {
-  TimeMethods(instance_).setCursorTime(index, time);
+  currentTime()->setCursorTime(index, time);
 }
 
 }  // namespace slow

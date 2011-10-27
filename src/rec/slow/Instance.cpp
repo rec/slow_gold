@@ -4,6 +4,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/MouseListener.h"
@@ -22,6 +23,7 @@ Instance::Instance(SlowWindow* window)
       device_(new audio::Device),
       player_(new audio::source::Player(device_.get())),
       currentFile_(new CurrentFile(this)),
+      currentTime_(new CurrentTime(this)),
       model_(new Model(this)),
       menus_(new Menus(this)),
       target_(new Target(this)),
@@ -59,6 +61,10 @@ void Instance::startup() {
 
 const VirtualFile Instance::file() const {
   return currentFile_->virtualFile();
+}
+
+Samples<44100> Instance::length() const {
+  return player_->length();
 }
 
 }  // namespace slow

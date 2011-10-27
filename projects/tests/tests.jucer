@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="4PhMfWSlZ" name="tests">
+  <MAINGROUP id="7ODSyR9kf" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -895,6 +895,10 @@
               name="CurrentFile.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/CurrentFile.h" id="DpDhvWLa0"
               name="CurrentFile.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/CurrentTime.cpp" id="qDWDbLMm9"
+              name="CurrentTime.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/CurrentTime.h" id="pekppcPEv"
+              name="CurrentTime.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/HasInstance.h" id="R64QCUozd"
               name="HasInstance.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Instance.cpp" id="fmMEqD3tX"
@@ -913,12 +917,6 @@
               name="Menus.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Menus.h" id="WYIhcVhjf"
               name="Menus.h" resource="0"/>
-        <GROUP id="s1JPn0b9a" name="methods">
-          <FILE compile="1" file="../../src/rec/slow/methods/TimeMethods.cpp"
-                id="cdRVcftSf" name="TimeMethods.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/methods/TimeMethods.h" id="njXDhy1vq"
-                name="TimeMethods.h" resource="0"/>
-        </GROUP>
         <FILE compile="1" file="../../src/rec/slow/Model.cpp" id="clvmnntql"
               name="Model.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Model.h" id="UtZGtMWLA"
@@ -1395,7 +1393,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="T9nH3KQaZ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="bSEv7VBwE" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

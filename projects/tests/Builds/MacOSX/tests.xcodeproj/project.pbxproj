@@ -183,11 +183,11 @@
 		23D42FF1FA336124E910F75C = { isa = PBXBuildFile; fileRef = 1A7B1DFC6367D801E8CCC288; };
 		A21F325D2D212DD086F7B7C3 = { isa = PBXBuildFile; fileRef = E954B4280FE650B3F02AD9E8; };
 		88FEC3865589C532861840CB = { isa = PBXBuildFile; fileRef = 4C9D6ABE3288C3CE0EE2DE97; };
+		9F75B8CD2FECB2C5CA22D0D1 = { isa = PBXBuildFile; fileRef = AFDF309F136EE1A19AF25A53; };
 		5700EFC9FB23DC483986AFB5 = { isa = PBXBuildFile; fileRef = D3327F6F3894EEDEC3150C0E; };
 		5D399AF1AC1E68C7863AFCE0 = { isa = PBXBuildFile; fileRef = C211570621C5BD0FD495A33D; };
 		9170501552140154E4968517 = { isa = PBXBuildFile; fileRef = 92E745048C0393295B0D8953; };
 		153524F14713F301CE8BE6F3 = { isa = PBXBuildFile; fileRef = 920B6CFC9380A160FC6C10C0; };
-		8A0B25330E13F6463ADB848E = { isa = PBXBuildFile; fileRef = 1595EA057B8D46F711CB16BD; };
 		FB2254E66A1105C0B8D6144D = { isa = PBXBuildFile; fileRef = E69FB814467A298A97244B74; };
 		70FAA02F75C4740227D3D083 = { isa = PBXBuildFile; fileRef = 17D5E740289D4E8B3BA4B93F; };
 		39BA8698CEE21F2CD6AAD2D3 = { isa = PBXBuildFile; fileRef = D6081B32F779D971DC96EB48; };
@@ -701,6 +701,8 @@
 		B8C0CA2E8133D32BA8816D70 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Components.h; path = ../../../../src/rec/slow/Components.h; sourceTree = "SOURCE_ROOT"; };
 		4C9D6ABE3288C3CE0EE2DE97 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CurrentFile.cpp; path = ../../../../src/rec/slow/CurrentFile.cpp; sourceTree = "SOURCE_ROOT"; };
 		584547689F8D7A38D2D9349E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrentFile.h; path = ../../../../src/rec/slow/CurrentFile.h; sourceTree = "SOURCE_ROOT"; };
+		AFDF309F136EE1A19AF25A53 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CurrentTime.cpp; path = ../../../../src/rec/slow/CurrentTime.cpp; sourceTree = "SOURCE_ROOT"; };
+		40716207B98461E05DC46F14 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrentTime.h; path = ../../../../src/rec/slow/CurrentTime.h; sourceTree = "SOURCE_ROOT"; };
 		404854FCCC4DFB02F7010E32 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HasInstance.h; path = ../../../../src/rec/slow/HasInstance.h; sourceTree = "SOURCE_ROOT"; };
 		D3327F6F3894EEDEC3150C0E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Instance.cpp; path = ../../../../src/rec/slow/Instance.cpp; sourceTree = "SOURCE_ROOT"; };
 		5C781AE625D7C61E4D2A6183 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Instance.h; path = ../../../../src/rec/slow/Instance.h; sourceTree = "SOURCE_ROOT"; };
@@ -710,8 +712,6 @@
 		9CDF2050A8E5466019B61EC3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainPage.h; path = ../../../../src/rec/slow/MainPage.h; sourceTree = "SOURCE_ROOT"; };
 		920B6CFC9380A160FC6C10C0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Menus.cpp; path = ../../../../src/rec/slow/Menus.cpp; sourceTree = "SOURCE_ROOT"; };
 		0E383591888722EAD407EB12 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Menus.h; path = ../../../../src/rec/slow/Menus.h; sourceTree = "SOURCE_ROOT"; };
-		1595EA057B8D46F711CB16BD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeMethods.cpp; path = ../../../../src/rec/slow/methods/TimeMethods.cpp; sourceTree = "SOURCE_ROOT"; };
-		C075F3E86858E83D33209523 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeMethods.h; path = ../../../../src/rec/slow/methods/TimeMethods.h; sourceTree = "SOURCE_ROOT"; };
 		E69FB814467A298A97244B74 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = ../../../../src/rec/slow/Model.cpp; sourceTree = "SOURCE_ROOT"; };
 		7D745814B9180A06A754F5B6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Model.h; path = ../../../../src/rec/slow/Model.h; sourceTree = "SOURCE_ROOT"; };
 		17D5E740289D4E8B3BA4B93F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MouseListener.cpp; path = ../../../../src/rec/slow/MouseListener.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1373,14 +1373,13 @@
 				1D30A464F932DDB772CB1E33,
 				E954B4280FE650B3F02AD9E8,
 				38B33D3A34B1BA7294B7DB9B ); name = callbacks; sourceTree = "<group>"; };
-		5A301ABF157571F750C029D9 = { isa = PBXGroup; children = (
-				1595EA057B8D46F711CB16BD,
-				C075F3E86858E83D33209523 ); name = methods; sourceTree = "<group>"; };
 		E812E8C193A90FB1A45D026F = { isa = PBXGroup; children = (
 				9C30403703553F605B49E02D,
 				B8C0CA2E8133D32BA8816D70,
 				4C9D6ABE3288C3CE0EE2DE97,
 				584547689F8D7A38D2D9349E,
+				AFDF309F136EE1A19AF25A53,
+				40716207B98461E05DC46F14,
 				404854FCCC4DFB02F7010E32,
 				D3327F6F3894EEDEC3150C0E,
 				5C781AE625D7C61E4D2A6183,
@@ -1390,7 +1389,6 @@
 				9CDF2050A8E5466019B61EC3,
 				920B6CFC9380A160FC6C10C0,
 				0E383591888722EAD407EB12,
-				5A301ABF157571F750C029D9,
 				E69FB814467A298A97244B74,
 				7D745814B9180A06A754F5B6,
 				17D5E740289D4E8B3BA4B93F,
@@ -1668,7 +1666,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		973A9AA92E83E52FBFA26AF1 = { isa = PBXGroup; children = (
+		E361F570FB9D2EC06D3EBF31 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1695,7 +1693,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				973A9AA92E83E52FBFA26AF1,
+				E361F570FB9D2EC06D3EBF31,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1947,11 +1945,11 @@
 				23D42FF1FA336124E910F75C,
 				A21F325D2D212DD086F7B7C3,
 				88FEC3865589C532861840CB,
+				9F75B8CD2FECB2C5CA22D0D1,
 				5700EFC9FB23DC483986AFB5,
 				5D399AF1AC1E68C7863AFCE0,
 				9170501552140154E4968517,
 				153524F14713F301CE8BE6F3,
-				8A0B25330E13F6463ADB848E,
 				FB2254E66A1105C0B8D6144D,
 				70FAA02F75C4740227D3D083,
 				39BA8698CEE21F2CD6AAD2D3,

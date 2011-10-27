@@ -98,9 +98,6 @@
     <Filter Include="Slow\rec\slow\callbacks">
       <UniqueIdentifier>{1CB4BDC4-11CE-145C-2838-056CA03890B7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Slow\rec\slow\methods">
-      <UniqueIdentifier>{1EEF27FE-A6B9-2614-8A11-E14DEBCC1BB1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Slow\rec\util">
       <UniqueIdentifier>{FEECF880-CAB8-9B83-F745-508E1697E58E}</UniqueIdentifier>
     </Filter>
@@ -661,6 +658,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\CurrentTime.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
@@ -672,9 +672,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp">
       <Filter>Slow\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\methods\TimeMethods.cpp">
-      <Filter>Slow\rec\slow\methods</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Model.cpp">
       <Filter>Slow\rec\slow</Filter>
@@ -1626,6 +1623,9 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\CurrentTime.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
@@ -1640,9 +1640,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h">
       <Filter>Slow\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\methods\TimeMethods.h">
-      <Filter>Slow\rec\slow\methods</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Model.h">
       <Filter>Slow\rec\slow</Filter>

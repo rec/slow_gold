@@ -2,12 +2,14 @@
 #define __REC_SLOW_INSTANCE__
 
 #include "rec/slow/Slow.h"
+#include "rec/base/Samples.h"
 
 namespace rec {
 namespace slow {
 
 class Components;
 class CurrentFile;
+class CurrentTime;
 class Menus;
 class Model;
 class MouseListener;
@@ -24,6 +26,8 @@ struct Instance {
 
   void startup();
   const VirtualFile file() const;
+  Samples<44100> length() const;
+  Samples<44100> time() const;
 
   SlowWindow* window_;
 
@@ -31,6 +35,7 @@ struct Instance {
   ptr<Device> device_;
   ptr<Player> player_;
   ptr<CurrentFile> currentFile_;
+  ptr<CurrentTime> currentTime_;
   ptr<Model> model_;
   ptr<Menus> menus_;  // TODO:  move into "Target"
   ptr<Target> target_;  // TODO: rename to "Commands".

@@ -37,10 +37,12 @@ double zoomFunction(double increment) {
   return pow(POWER, -increment);
 }
 
-void zoom(Model* model, const MouseEvent& e, RealTime time, double increment) {
+void zoom(const Instance& instance, const MouseEvent& e,
+          RealTime time, double increment) {
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
-  model->zoom(time, zoomFunction(s * increment));
+  double z = zoomFunction(s * increment);
+  widget::waveform::zoom(instance.file(), instance.length(), time, z);
 }
 
 void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
@@ -60,7 +62,7 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
   if (e.event_->eventComponent == waveform) {
     double time = waveform->xToTime(e.event_->x);
     double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
-    zoom(model(), *e.event_, time, inc);
+    zoom(*instance_, *e.event_, time, inc);
   }
 }
 
@@ -105,10 +107,10 @@ void MouseListener::mouseDown(const MouseEvent& e) {
       model()->jumpToTime(time);
 
     else if (action == Mode::ZOOM_IN)
-      zoom(model(), e, time, ZOOM_INCREMENT);
+      zoom(*instance_, e, time, ZOOM_INCREMENT);
 
     else if (action == Mode::ZOOM_OUT)
-      zoom(model(), e, time, -ZOOM_INCREMENT);
+      zoom(*instance_, e, time, -ZOOM_INCREMENT);
 
     else
       DCHECK(false);

@@ -18,7 +18,10 @@ class HasInstance {
   audio::source::Player* player() { return instance_->player_.get(); }
   audio::Device* device() { return instance_->device_.get(); }
   CurrentFile* currentFile() { return instance_->currentFile_.get(); }
+  CurrentTime* currentTime() { return instance_->currentTime_.get(); }
+
   const VirtualFile file() const { return instance_->file(); }
+  Samples<44100> length() const { return instance_->length(); }
 
  protected:
   Instance* instance_;

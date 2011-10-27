@@ -46,9 +46,6 @@ class Model : public Listener< Samples<44100> >,
   virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
   virtual void onDataChange(const LoopPointList& p);
 
-  void zoom(RealTime time, double k);
-  void zoom(double k);
-
   thread::Result fillOnce();
   void jumpToTime(Samples<44100>);
   void setCursorTime(int index, RealTime time);

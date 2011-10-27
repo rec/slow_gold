@@ -1,11 +1,10 @@
-#include "rec/slow/methods/TimeMethods.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/slow/Model.h"
 
 namespace rec {
 namespace slow {
-namespace methods {
 
-void TimeMethods::jumpToTimeSelection(const block::BlockSet& ts,
+void CurrentTime::jumpToTimeSelection(const block::BlockSet& ts,
                                       Samples<44100> time) {
   if (!ts.empty()) {
     block::BlockSet::const_iterator i = ts.begin();
@@ -20,7 +19,7 @@ void TimeMethods::jumpToTimeSelection(const block::BlockSet& ts,
   }
 }
 
-void TimeMethods::setCursorTime(int index, RealTime t) {
+void CurrentTime::setCursorTime(int index, RealTime t) {
   if (index < 0) {
     model()->jumpToTime(t);
   } else {
@@ -30,6 +29,6 @@ void TimeMethods::setCursorTime(int index, RealTime t) {
   }
 }
 
-}  // namespace methods
 }  // namespace slow
 }  // namespace rec
+
