@@ -31,7 +31,6 @@ const int PARAMETER_WAIT = 1000;
 const int PRELOAD = 10000;
 
 Model::Model(Instance* i) : HasInstance(i),
-                            triggerPosition_(-1),
                             updateBuffer_(2, 1024),
                             updateSource_(thumbnailBuffer_.buffer()->frames()) {
   audio::Source *s = new FrameSource<short, 2>(thumbnailBuffer_.buffer()->frames());
@@ -52,7 +51,7 @@ thread::Result Model::fillOnce() {
   }
 
   bool empty = false;
-  if (triggerPosition_ == -1) {
+  if (currentTime()->jumpToTime() == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(currentTime()->timeSelection(), buffer->filled());
     if (!fill.empty()) {
@@ -67,10 +66,10 @@ thread::Result Model::fillOnce() {
     }
   }
 
-  if (triggerPosition_ != -1 &&
-      buffer->hasFilled(block::Block(triggerPosition_,
-                                     triggerPosition_ + PRELOAD))) {
-    jumpToTime(triggerPosition_);
+  if (currentTime()->jumpToTime() != -1 &&
+      buffer->hasFilled(block::Block(currentTime()->jumpToTime(),
+                                     currentTime()->jumpToTime() + PRELOAD))) {
+    jumpToTime(currentTime()->jumpToTime());
   }
 
   int64 pos = buffer->position();
@@ -96,13 +95,13 @@ void Model::jumpToTime(Samples<44100> pos) {
     }
 
     FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
-    triggerPosition_ = pos;
+    currentTime()->setJumpToTime(pos);
     if (buffer && !buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
       buffer->setNextFillPosition(pos);
       if (player()->state())
         return;
     }
-    triggerPosition_ = -1;
+    currentTime()->setJumpToTime(-1);
   }
 
 	player()->setNextReadPosition(pos);
