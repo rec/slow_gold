@@ -40,9 +40,6 @@ class Model : public HasInstance {
   virtual ~Model();
 
   thread::Result fillOnce();
-
-  bool empty() const { return file::empty(file()); }
-
   ThumbnailBuffer* thumbnailBuffer() { return &thumbnailBuffer_; }
 
  private:

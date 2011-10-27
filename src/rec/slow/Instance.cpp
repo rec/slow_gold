@@ -2,6 +2,7 @@
 
 #include "rec/audio/Device.h"
 #include "rec/audio/source/Player.h"
+#include "rec/audio/source/FrameSource.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
@@ -16,6 +17,10 @@
 
 namespace rec {
 namespace slow {
+
+using namespace rec::audio;
+using namespace rec::audio::util;
+using namespace rec::audio::source;
 
 Instance::Instance(SlowWindow* window)
     : window_(window),
@@ -45,6 +50,12 @@ Instance::Instance(SlowWindow* window)
   player_->timeBroadcaster()->addListener(waveform->timeCursor());
 
   player_->level()->addListener(components_->playerController_.levelListener());
+
+  ThumbnailBuffer* thumbnailBuffer = model_->thumbnailBuffer();
+  Source *s = new FrameSource<short, 2>(thumbnailBuffer->buffer()->frames());
+  player_->setSource(s);
+  player_->timeBroadcaster()->addListener(currentTime_.get());
+  components_->waveform_.setAudioThumbnail(thumbnailBuffer->thumbnail());
 
   threads_->startAll();
 }

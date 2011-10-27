@@ -1,6 +1,6 @@
 #include "rec/slow/Model.h"
+
 #include "rec/audio/Audio.h"
-#include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/data/Data.h"
@@ -19,7 +19,6 @@ namespace rec {
 namespace slow {
 
 using namespace rec::audio::util;
-using namespace rec::audio::source;
 using namespace rec::gui::audio;
 using namespace rec::music;
 using namespace rec::util::block;
@@ -31,10 +30,6 @@ const int PRELOAD = 10000;
 Model::Model(Instance* i) : HasInstance(i),
                             updateBuffer_(2, 1024),
                             updateSource_(thumbnailBuffer_.buffer()->frames()) {
-  audio::Source *s = new FrameSource<short, 2>(thumbnailBuffer_.buffer()->frames());
-  player()->setSource(s);
-  player()->timeBroadcaster()->addListener(currentTime());
-  components()->waveform_.setAudioThumbnail(thumbnailBuffer_.thumbnail());
   updateInfo_.buffer = &updateBuffer_;
   updateInfo_.startSample = 0;
 }

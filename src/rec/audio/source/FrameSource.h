@@ -12,7 +12,7 @@ class FrameSource : public PositionableAudioSource {
  public:
   typedef InterleavedFrame<Sample, CHANNELS> SourceFrame;
   typedef Frames<SourceFrame> SourceFrames;
-  
+
   explicit FrameSource(const SourceFrames& b) : buffer_(b) {}
   virtual ~FrameSource() {}
 
