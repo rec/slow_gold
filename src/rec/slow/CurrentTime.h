@@ -15,7 +15,7 @@ class CurrentTime : public HasInstance,
                     public DataListener<LoopPointList>,
                     public Listener< Samples<44100> > {
  public:
-  CurrentTime(Instance* i) : HasInstance(i), time_(0), jumpToTime_(-1) {}
+  explicit CurrentTime(Instance* i) : HasInstance(i), time_(0), jumpTime_(-1) {}
 
   virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
 
@@ -24,8 +24,8 @@ class CurrentTime : public HasInstance,
   void setCursorTime(int index, RealTime time);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
   Samples<44100> time() const { Lock l(lock_); return time_; }
-  Samples<44100> jumpToTime() const { Lock l(lock_); return jumpToTime_; }
-  void setJumpToTime(Samples<44100> t) { Lock l(lock_); jumpToTime_ = t; }
+  Samples<44100> jumpTime() const { Lock l(lock_); return jumpTime_; }
+  void jumpToTime(Samples<44100> pos);
 
   void clear() { Lock l(lock_); time_ = 0; }
 
@@ -34,7 +34,7 @@ class CurrentTime : public HasInstance,
 
   block::BlockSet timeSelection_;
   Samples<44100> time_;
-  Samples<44100> jumpToTime_;
+  Samples<44100> jumpTime_;
 
   DISALLOW_COPY_AND_ASSIGN(CurrentTime);
 };

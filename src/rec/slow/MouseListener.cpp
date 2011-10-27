@@ -105,7 +105,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
       toggleSelectionSegment(model()->file(), time);
 
     else if (action == Mode::SET_TIME)
-      model()->jumpToTime(time);
+      currentTime()->jumpToTime(time);
 
     else if (action == Mode::ZOOM_IN)
       zoom(*instance_, e, time, ZOOM_INCREMENT);

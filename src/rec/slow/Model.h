@@ -40,7 +40,6 @@ class Model : public HasInstance {
   virtual ~Model();
 
   thread::Result fillOnce();
-  void jumpToTime(Samples<44100>);
 
   bool empty() const { return file::empty(file()); }
 

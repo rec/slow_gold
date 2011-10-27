@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/slow/Model.h"
 
 using namespace std;
@@ -12,7 +13,7 @@ namespace {
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   RealTime time = snapshot->loops_.loop_point(segment).time();
-  snapshot->instance_->model_->jumpToTime(time);
+  snapshot->instance_->currentTime_->jumpToTime(time);
 }
 
 void jump(LoopSnapshot* snap, Position pos) {

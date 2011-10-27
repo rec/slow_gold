@@ -1,9 +1,7 @@
 #include "rec/slow/Model.h"
 #include "rec/audio/Audio.h"
-#include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Selection.h"
-#include "rec/audio/util/Frame.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/data/Data.h"
 #include "rec/music/CreateMusicFileReader.h"
@@ -51,7 +49,8 @@ thread::Result Model::fillOnce() {
   }
 
   bool empty = false;
-  if (currentTime()->jumpToTime() == -1) {
+  Samples<44100> jump = currentTime()->jumpTime();
+  if (jump == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(currentTime()->timeSelection(), buffer->filled());
     if (!fill.empty()) {
@@ -66,11 +65,8 @@ thread::Result Model::fillOnce() {
     }
   }
 
-  if (currentTime()->jumpToTime() != -1 &&
-      buffer->hasFilled(block::Block(currentTime()->jumpToTime(),
-                                     currentTime()->jumpToTime() + PRELOAD))) {
-    jumpToTime(currentTime()->jumpToTime());
-  }
+  if (jump != -1 && buffer->hasFilled(block::Block(jump, jump + PRELOAD)))
+    currentTime()->jumpToTime(jump);
 
   int64 pos = buffer->position();
   int filled = static_cast<int>(buffer->fillNextBlock());
@@ -84,27 +80,6 @@ thread::Result Model::fillOnce() {
 
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
   return thread::YIELD;
-}
-
-void Model::jumpToTime(Samples<44100> pos) {
-  {
-    ScopedLock l(lock_);
-    if (!block::contains(currentTime()->timeSelection(), pos)) {
-      DLOG(ERROR) << "Tried to jump to position outside selection " << pos;
-      return;
-    }
-
-    FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
-    currentTime()->setJumpToTime(pos);
-    if (buffer && !buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
-      buffer->setNextFillPosition(pos);
-      if (player()->state())
-        return;
-    }
-    currentTime()->setJumpToTime(-1);
-  }
-
-	player()->setNextReadPosition(pos);
 }
 
 }  // namespace slow
