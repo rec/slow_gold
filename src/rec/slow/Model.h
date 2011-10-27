@@ -29,6 +29,7 @@ namespace slow {
 class Instance;
 
 class Model : public Listener< Samples<44100> >,
+              public DataListener<LoopPointList>,
               public HasInstance {
  public:
   typedef audio::stretch::Stretch Stretch;
@@ -43,7 +44,7 @@ class Model : public Listener< Samples<44100> >,
   void clear();
 
   virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
-  virtual void setLoopPointList(const LoopPointList&);
+  virtual void onDataChange(const LoopPointList& p);
 
   void zoom(RealTime time, double k);
   void zoom(double k);
@@ -69,7 +70,6 @@ class Model : public Listener< Samples<44100> >,
   audio::source::FrameSource<short, 2> updateSource_;
 
   typedef DataListener<LoopPointList> LoopListener;
-  ptr<LoopListener> loopListener_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
 };

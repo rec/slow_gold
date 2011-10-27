@@ -33,26 +33,11 @@ using methods::TimeMethods;
 const int PARAMETER_WAIT = 1000;
 const int PRELOAD = 10000;
 
-class LoopListenerImpl : public DataListener<LoopPointList> {
- public:
-  explicit LoopListenerImpl(Model* model) : model_(model) {}
-  virtual void onDataChange(const LoopPointList& p) {
-    model_->setLoopPointList(p);
-  }
-
- private:
-  Model* const model_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopListenerImpl);
-};
-
-
 Model::Model(Instance* i) : HasInstance(i),
                             time_(0),
                             triggerPosition_(-1),
                             updateBuffer_(2, 1024),
-                            updateSource_(thumbnailBuffer_.buffer()->frames()),
-                            loopListener_(new LoopListenerImpl(this)) {
+                            updateSource_(thumbnailBuffer_.buffer()->frames()) {
   audio::Source *s = new FrameSource<short, 2>(thumbnailBuffer_.buffer()->frames());
   player()->setSource(s);
   player()->timeBroadcaster()->addListener(this);
@@ -119,8 +104,7 @@ void Model::jumpToTime(Samples<44100> pos) {
   {
     ScopedLock l(lock_);
     if (!block::contains(timeSelection_, pos)) {
-      // TODO: fix this.
-      LOG(ERROR) << "Tried to jump to position outside selection " << pos;
+      DLOG(ERROR) << "Tried to jump to position outside selection " << pos;
       return;
     }
 
@@ -137,7 +121,7 @@ void Model::jumpToTime(Samples<44100> pos) {
 	player()->setNextReadPosition(pos);
 }
 
-void Model::setLoopPointList(const LoopPointList& loops) {
+void Model::onDataChange(const LoopPointList& loops) {
   if (!empty()) {
     timeSelection_ = audio::getTimeSelection(loops, player()->length());
     TimeMethods(instance_).jumpToTimeSelection(timeSelection_, time_);
