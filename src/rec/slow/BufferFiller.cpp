@@ -26,8 +26,8 @@ BufferFiller::BufferFiller(Instance* i) : HasInstance(i),
 BufferFiller::~BufferFiller() {}
 
 thread::Result BufferFiller::fillOnce() {
-  FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
-  if (buffer && buffer->isFull()) {
+  FillableFrameBuffer<short, 2>* buf = thumbnailBuffer_.buffer();
+  if (buf && buf->isFull()) {
     thumbnailBuffer_.writeThumbnail();
     return static_cast<thread::Result>(PARAMETER_WAIT);
   }
@@ -36,11 +36,11 @@ thread::Result BufferFiller::fillOnce() {
   Samples<44100> jump = currentTime()->jumpTime();
   if (jump == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
-    BlockSet fill = difference(currentTime()->timeSelection(), buffer->filled());
+    BlockSet fill = difference(currentTime()->timeSelection(), buf->filled());
     if (!fill.empty()) {
       BlockList fillList = fillSeries(fill, time(), length());
       if (!fillList.empty())
-        buffer->setNextFillPosition(fillList.begin()->first);
+        buf->setNextFillPosition(fillList.begin()->first);
       else
         empty = true;
 
@@ -49,11 +49,11 @@ thread::Result BufferFiller::fillOnce() {
     }
   }
 
-  if (jump != -1 && buffer->hasFilled(block::Block(jump, jump + PRELOAD)))
+  if (jump != -1 && buf->hasFilled(block::Block(jump, jump + PRELOAD)))
     currentTime()->jumpToTime(jump);
 
-  int64 pos = buffer->position();
-  int filled = static_cast<int>(buffer->fillNextBlock());
+  int64 pos = buf->position();
+  int filled = static_cast<int>(buf->fillNextBlock());
   DCHECK(filled);
 
   updateInfo_.numSamples = filled;
