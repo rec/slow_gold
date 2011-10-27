@@ -3,8 +3,9 @@
 
 #include <set>
 
+#include "rec/data/DefaultRegistry.h"
+#include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/UntypedEditable.h"
-#include "rec/data/proto/GetProtoName.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
 
@@ -15,11 +16,10 @@ template <typename Proto>
 class TypedEditable : public data::UntypedEditable,
                       public Broadcaster<const Proto&> {
  public:
-  TypedEditable(const File& file, const VirtualFile& vf,
-                const Proto& dflt = Proto::default_instance())
+  TypedEditable(const File& file, const VirtualFile& vf)
       : UntypedEditable(file, vf, &proto_) {
     if (!readFromFile())
-      proto_ = dflt;
+      proto_ = defaultRegistry().getDefault<Proto>(vf);
   }
 
   // Get a consistent snapshot of the current value.

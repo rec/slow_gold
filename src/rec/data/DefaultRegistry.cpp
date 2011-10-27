@@ -41,8 +41,8 @@ DefaultRegistry::~DefaultRegistry() {
   stl::deleteMapPointers(&registry_);
 }
 
-RegistryEntry* DefaultRegistry::get(const string& name) {
-  Registry::iterator i = registry_.find(name);
+RegistryEntry* DefaultRegistry::get(const string& name) const {
+  Registry::const_iterator i = registry_.find(name);
   return (i == registry_.end()) ? NULL : i->second;
 }
 
@@ -64,7 +64,7 @@ void DefaultRegistry::registerFile(const Message& m, const VirtualFile& vf) {
 }
 
 const Message* DefaultRegistry::getDefault(const string& typeName,
-                                           const VirtualFile& vf) {
+                                           const VirtualFile& vf) const {
   if (RegistryEntry* entry = get(typeName)) {
     if (const Message* m = entry->get(toString(vf)))
       return m;

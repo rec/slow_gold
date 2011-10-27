@@ -14,7 +14,7 @@ void needsUpdate(UntypedEditable*);
 void addToUndoQueue(UntypedEditable* u, const OperationList& undo,
                     const OperationList& command);
 
-DefaultRegistry* defaultRegistry();
+const DefaultRegistry& defaultRegistry();
 EditableMap* editableMap();
 CriticalSection* editableMapLock();
 

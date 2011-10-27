@@ -26,7 +26,7 @@ class EditableUpdater {
   EditableMap* map() { return &map_; }
   CriticalSection* lock() { return &lock_; }
   UndoQueue* undoQueue() { return &undoQueue_; }
-  DefaultRegistry* defaultRegistry() { return defaultRegistry_.get(); }
+  const DefaultRegistry& defaultRegistry() { return *defaultRegistry_; }
 
   static EditableUpdater* instance() { return instance_; }
   static void start(DefaultRegistry*);

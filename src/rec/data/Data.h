@@ -13,15 +13,26 @@ namespace rec {
 namespace data {
 
 template <typename Proto>
-TypedEditable<Proto>* editable(const VirtualFile& vf = file::none()) {
-  const Proto& dflt = Proto::default_instance();
-  File file = getShadowFile(vf, str(dflt.GetTypeName()));
+TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
+
+template <typename Proto>
+void set(const Proto& p, const VirtualFile& f = file::none(),
+         const Address& a = Address::default_instance());
+
+template <typename Proto>
+const Proto get(const VirtualFile& f = file::none());
+
+// Implementations
+
+template <typename Proto>
+TypedEditable<Proto>* editable(const VirtualFile& vf) {
+  File file = getShadowFile(vf, str(Proto::default_instance().GetTypeName()));
   string key = str(file);
   ScopedLock l(*editableMapLock());
   EditableMap::const_iterator i = editableMap()->find(key);
   TypedEditable<Proto>* e;
   if (i == editableMap()->end()) {
-    e = new TypedEditable<Proto>(file, vf, dflt);
+    e = new TypedEditable<Proto>(file, vf);
     (*editableMap())[key] = e;
   } else {
     e = dynamic_cast<TypedEditable<Proto>*>(i->second);
@@ -31,8 +42,7 @@ TypedEditable<Proto>* editable(const VirtualFile& vf = file::none()) {
 }
 
 template <typename Proto>
-void set(const Proto& p, const VirtualFile& f = file::none(),
-         const Address& a = Address::default_instance()) {
+void set(const Proto& p, const VirtualFile& f, const Address& a) {
   editable<Proto>(f)->set(p, a);
 }
 
