@@ -5,14 +5,13 @@
 namespace rec {
 namespace slow {
 
-void CurrentTime::jumpToTimeSelection(const LoopPointList& loops,
-                                      Samples<44100> time) {
+void CurrentTime::jumpToTimeSelection(const LoopPointList& loops) {
   timeSelection_ = audio::getTimeSelection(loops, player()->length());
   if (!timeSelection_.empty()) {
     block::BlockSet::const_iterator i = timeSelection_.begin();
     for (; i != timeSelection_.end(); ++i) {
-      if (time < i->second) {
-        if (time < i->first)
+      if (time_ < i->second) {
+        if (time_ < i->first)
           model()->jumpToTime(i->first);
         return;
       }

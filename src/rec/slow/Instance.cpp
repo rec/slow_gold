@@ -67,5 +67,9 @@ Samples<44100> Instance::length() const {
   return player_->length();
 }
 
+Samples<44100> Instance::time() const {
+  return currentTime_->time();
+}
+
 }  // namespace slow
 }  // namespace rec

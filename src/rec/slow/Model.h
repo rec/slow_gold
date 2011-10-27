@@ -28,8 +28,7 @@ namespace slow {
 
 class Instance;
 
-class Model : public Listener< Samples<44100> >,
-              public DataListener<LoopPointList>,
+class Model : public DataListener<LoopPointList>,
               public HasInstance {
  public:
   typedef audio::stretch::Stretch Stretch;
@@ -41,9 +40,6 @@ class Model : public Listener< Samples<44100> >,
   explicit Model(Instance* i);
   virtual ~Model();
 
-  void clear();
-
-  virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
   virtual void onDataChange(const LoopPointList& p);
 
   thread::Result fillOnce();
@@ -57,7 +53,6 @@ class Model : public Listener< Samples<44100> >,
  private:
   CriticalSection lock_;
 
-  Samples<44100> time_;
   Samples<44100> triggerPosition_;
   ThumbnailBuffer thumbnailBuffer_;
 

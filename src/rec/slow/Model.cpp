@@ -31,23 +31,18 @@ const int PARAMETER_WAIT = 1000;
 const int PRELOAD = 10000;
 
 Model::Model(Instance* i) : HasInstance(i),
-                            time_(0),
                             triggerPosition_(-1),
                             updateBuffer_(2, 1024),
                             updateSource_(thumbnailBuffer_.buffer()->frames()) {
   audio::Source *s = new FrameSource<short, 2>(thumbnailBuffer_.buffer()->frames());
   player()->setSource(s);
-  player()->timeBroadcaster()->addListener(this);
+  player()->timeBroadcaster()->addListener(currentTime());
   components()->waveform_.setAudioThumbnail(thumbnailBuffer_.thumbnail());
   updateInfo_.buffer = &updateBuffer_;
   updateInfo_.startSample = 0;
 }
 
 Model::~Model() {}
-
-void Model::clear() {
-  time_ = triggerPosition_ = 0;
-}
 
 thread::Result Model::fillOnce() {
   FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
@@ -61,7 +56,7 @@ thread::Result Model::fillOnce() {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(currentTime()->timeSelection(), buffer->filled());
     if (!fill.empty()) {
-      BlockList fillList = fillSeries(fill, time_, player()->length());
+      BlockList fillList = fillSeries(fill, time(), length());
       if (!fillList.empty())
         buffer->setNextFillPosition(fillList.begin()->first);
       else
@@ -115,7 +110,7 @@ void Model::jumpToTime(Samples<44100> pos) {
 
 void Model::onDataChange(const LoopPointList& loops) {
   if (!empty())
-    currentTime()->jumpToTimeSelection(loops, time_);
+    currentTime()->jumpToTimeSelection(loops);
   else
     LOG(ERROR) << "Setting empty loop point list";
 }

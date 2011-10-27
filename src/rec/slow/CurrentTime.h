@@ -5,21 +5,29 @@
 #include "rec/slow/HasInstance.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace slow {
 
-class CurrentTime : public HasInstance {
+class CurrentTime : public HasInstance, public Listener< Samples<44100> > {
  public:
-  explicit CurrentTime(Instance* i) : HasInstance(i) {}
+  explicit CurrentTime(Instance* i) : HasInstance(i), time_(0) {}
 
-  void jumpToTimeSelection(const LoopPointList&, Samples<44100> time);
+  virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
+
+  void jumpToTimeSelection(const LoopPointList&);
 
   void setCursorTime(int index, RealTime time);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
+  Samples<44100> time() const { Lock l(lock_); return time_; }
+  void clear() { Lock l(lock_); time_ = 0; }
 
  private:
+  CriticalSection lock_;
+
   block::BlockSet timeSelection_;
+  Samples<44100> time_;
 
   DISALLOW_COPY_AND_ASSIGN(CurrentTime);
 };
