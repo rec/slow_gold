@@ -59,7 +59,6 @@ class Model : public Listener< Samples<44100> >,
 
   Samples<44100> time_;
   Samples<44100> triggerPosition_;
-  block::BlockSet timeSelection_;
   ThumbnailBuffer thumbnailBuffer_;
 
   AudioSampleBuffer updateBuffer_;

@@ -4,6 +4,7 @@
 #include "rec/base/Samples.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/block/Block.h"
+#include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace slow {
@@ -13,6 +14,8 @@ class CurrentTime : public HasInstance {
   explicit CurrentTime(Instance* i) : HasInstance(i) {}
 
   void jumpToTimeSelection(const block::BlockSet& ts, Samples<44100> time);
+  void jumpToTimeSelection(const LoopPointList&, Samples<44100> time);
+
   void setCursorTime(int index, RealTime time);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
 

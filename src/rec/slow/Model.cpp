@@ -7,7 +7,6 @@
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/data/Data.h"
 #include "rec/music/CreateMusicFileReader.h"
-#include "rec/util/LoopPoint.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/block/Difference.h"
@@ -60,7 +59,7 @@ thread::Result Model::fillOnce() {
   bool empty = false;
   if (triggerPosition_ == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
-    BlockSet fill = difference(timeSelection_, buffer->filled());
+    BlockSet fill = difference(currentTime()->timeSelection(), buffer->filled());
     if (!fill.empty()) {
       BlockList fillList = fillSeries(fill, time_, player()->length());
       if (!fillList.empty())
@@ -96,7 +95,7 @@ thread::Result Model::fillOnce() {
 void Model::jumpToTime(Samples<44100> pos) {
   {
     ScopedLock l(lock_);
-    if (!block::contains(timeSelection_, pos)) {
+    if (!block::contains(currentTime()->timeSelection(), pos)) {
       DLOG(ERROR) << "Tried to jump to position outside selection " << pos;
       return;
     }
@@ -115,12 +114,10 @@ void Model::jumpToTime(Samples<44100> pos) {
 }
 
 void Model::onDataChange(const LoopPointList& loops) {
-  if (!empty()) {
-    timeSelection_ = audio::getTimeSelection(loops, player()->length());
-    currentTime()->jumpToTimeSelection(timeSelection_, time_);
-  } else {
+  if (!empty())
+    currentTime()->jumpToTimeSelection(loops, time_);
+  else
     LOG(ERROR) << "Setting empty loop point list";
-  }
 }
 
 void Model::setCursorTime(int index, RealTime time) {
