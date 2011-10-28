@@ -66,14 +66,10 @@ void DefaultRegistry::registerFile(const Message& m, const VirtualFile& vf) {
 const Message* DefaultRegistry::getDefault(const string& typeName,
                                            const VirtualFile& vf) const {
   if (RegistryEntry* entry = get(typeName)) {
-    if (const Message* m = entry->get(toString(vf))) {
-    	DLOG(INFO) << "Got value";
+    if (const Message* m = entry->get(toString(vf)))
       return m;
-    }
-    if (const Message* m = entry->get(DEFAULT_NAME)) {
-    	DLOG(INFO) << "Got default value for " << typeName;
+    if (const Message* m = entry->get(DEFAULT_NAME))
       return m;
-    }
   }
 
   return NULL;

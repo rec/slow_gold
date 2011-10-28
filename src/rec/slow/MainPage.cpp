@@ -14,11 +14,11 @@
 
 using namespace juce;
 
-// using namespace rec::audio::source;
-using namespace rec::widget::waveform;
-
 namespace rec {
 namespace slow {
+
+using namespace rec::widget::waveform;
+using gui::SetterResizer;
 
 MainPage::MainPage(Components* comp) : Layout("MainPage") {
   doLayout(comp);
@@ -26,8 +26,8 @@ MainPage::MainPage(Components* comp) : Layout("MainPage") {
 
 MainPage::~MainPage() {}
 
-void MainPage::addResizer(ptr<gui::SetterResizer>* r, const char* addr, Layout* lo) {
-  r->reset(new gui::SetterResizer(data::Address(addr), lo, lo->size()));
+void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
+  r->reset(new SetterResizer(data::Address(addr), lo, lo->size()));
   (*r)->add();
 }
 
@@ -101,9 +101,12 @@ void MainPage::doLayout(Components* components) {
     }
   }
 
-  resizer_[0]->setSetter(data);
-  resizer_[1]->setSetter(data);
-  loopResizer_->setSetter(data);
+}
+
+void MainPage::setSetter(data::Editable* setter) {
+  resizer_[0]->setSetter(setter);
+  resizer_[1]->setSetter(setter);
+  loopResizer_->setSetter(setter);
 }
 
 }  // namespace slow

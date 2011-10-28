@@ -43,7 +43,6 @@ void UndoQueue::add(Editable* editable, const OperationList& command,
     return;
 
   ptr<Action> action(makeAction(editable, command, undo));
-  // DLOG(INFO) << action->ShortDebugString();
   if (undoes_) {
     if (undoes_ > 1) {
       actions_.resize(undoable() + 1);

@@ -30,8 +30,14 @@ struct Components {
       directoryTree_(manager_),
       playbackController_(this),
       mainPage_(this) {
-    playbackController_.setSetter(data::editable<AppLayout>());
     waveform_.setManager(manager_);
+  }
+
+  void makeActive() {
+    MessageManagerLock l;
+    data::Editable* setter = data::editable<AppLayout>();
+    playbackController_.setSetter(setter);
+    mainPage_.setSetter(setter);
   }
 
   ApplicationCommandManager* manager_;

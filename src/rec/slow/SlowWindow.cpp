@@ -45,17 +45,16 @@ static Def<LoopPointList> loops(
 );
 
 static Def<AppLayout> layout(
-"bounds { "
-"  top_left { x: 300 y: 100 }"
-"  dimensions { x: 800 y: 600 }"
-"} "
-"directory_y: 175 "
-"waveform_y: 350 "
-"stretchy_y: 175 "
-"clock_x: 250 "
-"songdata_x: 450 "
-"loops_x: 650 "
-"}"
+"bounds {\n"
+"  top_left { x: 300 y: 100 }\n"
+"  dimensions { x: 800 y: 600 }\n"
+"}\n"
+"directory_y: 175\n"
+"waveform_y: 350\n"
+"stretchy_y: 175\n"
+"clock_x: 250\n"
+"songdata_x: 450\n"
+"loops_x: 650\n"
 );
 
 DefaultRegistry* SlowWindow::getDefaultRegistry() {

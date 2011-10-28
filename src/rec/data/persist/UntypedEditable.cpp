@@ -74,12 +74,9 @@ bool UntypedEditable::readFromFile() const {
 }
 
 void UntypedEditable::applyLater(Operations* op) {
-  if (!op)
-    DLOG(INFO) << "the empty op";
   Lock l(lock_);
   queue_.push_back(op);
   data::needsUpdate(this);
-
 }
 
 Operations* UntypedEditable::applyOperations(const Operations& olist) {
@@ -124,9 +121,6 @@ void UntypedEditable::update() {
 
   stl::deletePointers(&command);
   stl::deletePointers(&undo);
-  if (empty)
-    DLOG(INFO) << "onDataChange " << empty;
-
   onDataChange();
 }
 

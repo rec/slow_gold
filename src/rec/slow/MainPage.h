@@ -22,6 +22,7 @@ class MainPage : public gui::Layout {
   virtual ~MainPage();
 
   void paint(Graphics&);
+  void setSetter(data::Editable* setter);
 
  private:
   void addResizer(ptr<gui::SetterResizer>* r, const char* addr, Layout* lo);

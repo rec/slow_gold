@@ -29,7 +29,7 @@ void PersistentWindow::setLimitedBounds(const Rect& b) {
   bounds.setY(juce::jmax(bounds.getY(), 10));
   setBounds(bounds);
   setResizable(true, false); // resizability is a property of ResizableWindow
-  setResizeLimits(1, 1, 8192, 8192);
+  setResizeLimits(500, 500, 8192, 8192);
 }
 
 void PersistentWindow::resized() {

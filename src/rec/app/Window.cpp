@@ -25,7 +25,7 @@ void Window::initialise() {
   doComputeBounds();
 
 #ifdef OLD_JUCE
-  setContentComponent(mp, true, true);
+  setContentComponent(mp, true, false);
 #else
   setContentOwned(mp, true);
 #endif

@@ -25,6 +25,8 @@ class SetterResizer : public StretchableLayoutResizerBar {
   virtual void paint(Graphics& g);
 
  private:
+  void doSet(int distance);
+
   Layout* layout_;
   juce::StretchableLayoutManager* layoutManager_;
   int index_;
