@@ -66,7 +66,7 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  currentFile_->setFile(data::get<VirtualFile>());
+  data::editable<VirtualFile>()->applyLater(NULL);
   enableUndo();
 }
 

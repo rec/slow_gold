@@ -1,5 +1,6 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/audio/util/ThumbnailBuffer.h"
+#include "rec/data/Data.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
@@ -13,7 +14,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &components()->waveform_) {
     if (files.file_size() >= 1)
-      currentFile()->setFile(files.file(0));
+      data::set(files.file(0));
 
     LOG_IF(ERROR, files.file_size() != 1);
 
@@ -33,7 +34,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   }
 }
 
-void CurrentFile::setFile(const VirtualFile& f) {
+void CurrentFile::operator()(const VirtualFile& f) {
   player()->clear();
 
   VirtualFile oldFile;
@@ -63,7 +64,6 @@ void CurrentFile::setFile(const VirtualFile& f) {
     components()->waveform_.setLength(thumbnailBuffer->buffer()->length());
     threads()->fillThread()->notify();
   }
-  data::set(f);
 }
 
 }  // namespace slow

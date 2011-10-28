@@ -12,10 +12,10 @@ class SlowWindow : public app::Window {
  public:
   SlowWindow();
   virtual ~SlowWindow();
-  virtual void startup();
   virtual data::DefaultRegistry* getDefaultRegistry();
 
  protected:
+  virtual void doStartup();
   virtual void constructInstance();
   virtual Component* getMainComponent();
   virtual MenuBarModel* getMenuBarModel();

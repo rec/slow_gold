@@ -28,6 +28,7 @@ void redo() {
 }
 
 void enableUndo(bool enabled) {
+  DLOG(INFO) << "Undo is " << enabled ? "enabled." : "disabled.";
   undoQueue()->enableUndo(enabled);
 }
 

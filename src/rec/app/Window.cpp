@@ -22,7 +22,7 @@ void Window::initialise() {
 
   constructInstance();
   Component* mp = getMainComponent();
-  mp->setBounds(0, 0, 1, 1);
+  doComputeBounds();
 
 #ifdef OLD_JUCE
   setContentComponent(mp, true, true);
@@ -30,7 +30,6 @@ void Window::initialise() {
   setContentOwned(mp, true);
 #endif
 
-  doComputeBounds();
   setMenuBar(getMenuBarModel());
   setUsingNativeTitleBar(true);
   setVisible(true);
@@ -48,10 +47,17 @@ Window::~Window() {
   shutdown();
 }
 
+void Window::startup() {
+  // Final startup, done later in another thread.
+  doStartup();
+  setOKToSaveLayout(true);
+}
+
 void Window::shutdown() {
   if (!running_)
     return;
 
+  setOKToSaveLayout(false);
   running_ = false;
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
   // Why isn't this in GenericApplication?

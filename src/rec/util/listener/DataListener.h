@@ -24,7 +24,7 @@ class DataListener : public Listener<const Proto&>,
   virtual void setFile(const VirtualFile& file);
   virtual void operator()(const Proto& p);
   virtual const Proto get() const;
-  static const bool UPDATE_ON_MESSAGE_THREAD = true;
+  static const bool UPDATE_ON_MESSAGE_THREAD = !true;  // TODO: fix!
 
  protected:
   virtual void setData(data::TypedEditable<Proto>* d);

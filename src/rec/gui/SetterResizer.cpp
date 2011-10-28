@@ -22,14 +22,19 @@ int SetterResizer::get() const {
 }
 
 void SetterResizer::set(int distance) {
-  layout_->layoutManager()->setItemPosition(index_, distance);
+  {
+    MessageManagerLock l;
+    layout_->layoutManager()->setItemPosition(index_, distance);
+  }
   hasBeenMoved();
 }
 
 void SetterResizer::setSetter(data::Editable* setter) {
   setter_ = setter;
   int size = setter_->getValue(address_).uint32_f();
-  thread::callAsync(this, &SetterResizer::set, size);
+  
+  // thread::callAsync(this, &SetterResizer::set, size);
+  set(size);
 }
 
 void SetterResizer::moved() {

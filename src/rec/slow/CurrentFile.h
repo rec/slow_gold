@@ -18,9 +18,8 @@ class CurrentFile : public HasInstance,
   explicit CurrentFile(Instance* i) : HasInstance(i) {}
 
   virtual void operator()(const gui::DropFiles&);
-  virtual void operator()(const VirtualFile& vf) { setFile(vf); }
+  virtual void operator()(const VirtualFile&);
 
-  void setFile(const VirtualFile&);
   const VirtualFile virtualFile() const { Lock l(lock_); return file_; }
 
  private:

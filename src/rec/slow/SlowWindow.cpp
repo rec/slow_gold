@@ -10,8 +10,6 @@
 namespace rec {
 namespace slow {
 
-static Def<LoopPointList> LOOPS("loop_point { selected: true }");
-
 SlowWindow::SlowWindow() : app::Window("SlowGold", juce::Colours::azure,
                                        DocumentWindow::allButtons, true) {
 }
@@ -23,7 +21,7 @@ void SlowWindow::constructInstance() {
   instance_.reset(new slow::Instance(this));
 }
 
-void SlowWindow::startup() {
+void SlowWindow::doStartup() {
   Lock l(lock_);
   instance_->startup();
 }
@@ -42,11 +40,30 @@ void SlowWindow::doComputeBounds() {
 
 using data::DefaultRegistry;
 
+static Def<LoopPointList> loops(
+"loop_point { selected: true }"
+);
 
+static Def<AppLayout> layout(
+"bounds { "
+"  top_left { x: 300 y: 100 }"
+"  dimensions { x: 800 y: 600 }"
+"} "
+"directory_y: 175 "
+"waveform_y: 350 "
+"stretchy_y: 175 "
+"clock_x: 250 "
+"songdata_x: 450 "
+"loops_x: 650 "
+"}"
+);
 
 DefaultRegistry* SlowWindow::getDefaultRegistry() {
   DefaultRegistry* r = new data::DefaultRegistry;
-  r->registerDefault(*LOOPS);
+
+  r->registerDefault(*loops);
+  r->registerDefault(*layout);
+
   return r;
 }
 

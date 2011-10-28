@@ -11,6 +11,13 @@ namespace gui {
 using namespace juce;
 using slow::AppLayout;
 
+PersistentWindow::PersistentWindow(const String& name,
+                                   const Colour& bg,
+                                   int requiredButtons,
+                                   bool addToDesktop)
+    : DocumentWindow(name, bg, requiredButtons, addToDesktop),
+      data_(NULL), okToSaveLayout_(false) {
+}
 
 PersistentWindow::~PersistentWindow() {}
 
@@ -23,7 +30,6 @@ void PersistentWindow::setLimitedBounds(const Rect& b) {
   setBounds(bounds);
   setResizable(true, false); // resizability is a property of ResizableWindow
   setResizeLimits(1, 1, 8192, 8192);
-  okToSaveLayout_ = true;
 }
 
 void PersistentWindow::resized() {

@@ -27,6 +27,7 @@ class UndoQueue {
   void undo();
   void redo();
   void enableUndo(bool enabled) { Lock l(lock_);  enabled_ = enabled; }
+  bool enabled() const { Lock l(lock_); return enabled_; }
 
  private:
   void add(Action* event);

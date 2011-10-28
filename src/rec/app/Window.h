@@ -19,7 +19,7 @@ class Window : public gui::PersistentWindow {
   virtual ~Window();
 
   virtual void initialise();
-  virtual void startup() = 0;
+  virtual void startup();
   virtual void shutdown();
   virtual data::DefaultRegistry* getDefaultRegistry() = 0;
 
@@ -28,6 +28,7 @@ class Window : public gui::PersistentWindow {
   virtual Component* getMainComponent() = 0;
   virtual MenuBarModel* getMenuBarModel() = 0;
   virtual void doComputeBounds() = 0;
+  virtual void doStartup() = 0;
   CriticalSection lock_;
 
  private:

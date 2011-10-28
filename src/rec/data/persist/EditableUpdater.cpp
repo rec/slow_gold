@@ -91,7 +91,6 @@ bool EditableUpdater::write() {
 }
 
 void EditableUpdater::start(DefaultRegistry* r) {
-  DLOG(INFO) << "Starting EditableUpdater";
   CHECK(!instance_);
   instance_ = new EditableUpdater(r);
 }
@@ -99,7 +98,6 @@ void EditableUpdater::start(DefaultRegistry* r) {
 void EditableUpdater::stop() {
   delete instance_;
   instance_ = NULL;
-  DLOG(INFO) << "Stopping EditableUpdater";
 }
 
 EditableUpdater* EditableUpdater::instance_ = NULL;

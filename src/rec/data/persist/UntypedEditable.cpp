@@ -25,14 +25,14 @@ UntypedEditable::~UntypedEditable() {
 
 bool UntypedEditable::hasValue(const Address& address) const {
   MessageField f;
-  ScopedLock l(lock_);
+  Lock l(lock_);
   return fillMessageField(&f, address, *message_) && data::hasValue(f);
 }
 
 const Value UntypedEditable::getValue(const Address& address) const {
   Value value;
   MessageField f;
-  ScopedLock l(lock_);
+  Lock l(lock_);
   if (!(fillMessageField(&f, address, *message_) && proto::copyTo(f, &value)))
     LOG(ERROR) << "Couldn't read value for " << address.ShortDebugString();
   return value;
@@ -40,17 +40,17 @@ const Value UntypedEditable::getValue(const Address& address) const {
 
 int UntypedEditable::getSize(const Address& address) const {
   MessageField f;
-  ScopedLock l(lock_);
+  Lock l(lock_);
   return fillMessageField(&f, address, *message_) ? 0 : data::getSize(f);
 }
 
 void UntypedEditable::copyTo(Message* message) const {
-  ScopedLock l(lock_);	
+  Lock l(lock_);
   message->CopyFrom(*message_);
 }
 
 Message* UntypedEditable::clone() const {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   if (message_) {
     ptr<Message> m(message_->New());
     copyTo(m.get());
@@ -60,7 +60,7 @@ Message* UntypedEditable::clone() const {
 }
 
 bool UntypedEditable::readFromFile() const {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   if (!alreadyReadFromFile_) {
     fileReadSuccess_ = data::copy(file_, message_);
     if (fileReadSuccess_)
@@ -74,11 +74,12 @@ bool UntypedEditable::readFromFile() const {
 }
 
 void UntypedEditable::applyLater(Operations* op) {
-  {
-    ScopedLock l(lock_);
-    queue_.push_back(op);
-  }
+  if (!op)
+    DLOG(INFO) << "the empty op";
+  Lock l(lock_);
+  queue_.push_back(op);
   data::needsUpdate(this);
+
 }
 
 Operations* UntypedEditable::applyOperations(const Operations& olist) {
@@ -86,7 +87,7 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);
     MessageField f;
-    // ScopedLock l(lock_);
+    // Lock l(lock_);
     if (!fillMessageField(&f, Address(op.address()), *message_)) {
       LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
       return NULL;
@@ -103,7 +104,7 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
 void UntypedEditable::update() {
   OperationList command;
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     if (queue_.empty())
       return;
 
@@ -112,19 +113,27 @@ void UntypedEditable::update() {
 
   // I don't need to lock here, because I'm the only person using this queue...?
   OperationList undo;
-  for (OperationList::iterator i = command.begin(); i != command.end(); ++i)
-    undo.push_back(applyOperations(**i));
+  for (OperationList::iterator i = command.begin(); i != command.end(); ++i) {
+    if (*i)
+      undo.push_back(applyOperations(**i));
+  }
 
-  addToUndoQueue(this, command, undo);
+  bool empty = undo.empty();
+  if (!empty)
+    addToUndoQueue(this, command, undo);
+
   stl::deletePointers(&command);
   stl::deletePointers(&undo);
+  if (empty)
+    DLOG(INFO) << "onDataChange " << empty;
+
   onDataChange();
 }
 
 bool UntypedEditable::writeToFile() const {
   ptr<Message> msg;
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     if (!alreadyReadFromFile_)
       return false;
 

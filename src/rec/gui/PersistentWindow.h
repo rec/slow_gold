@@ -12,20 +12,11 @@ class PersistentWindow : public DocumentWindow {
   PersistentWindow(const String& name,
                    const Colour& bg,
                    int requiredButtons,
-                   bool addToDesktop = true)
-      : DocumentWindow(name, bg, requiredButtons, addToDesktop),
-        data_(NULL), okToSaveLayout_(false) {
-  }
+                   bool addToDesktop = true);
   typedef juce::Rectangle<int> Rect;
 
-  template <typename Proto>
-  void computeBounds() {
-    data::TypedEditable<Proto>* data = data::editable<Proto>();
-    data_ = data;
-    setLimitedBounds(data->fileReadSuccess() ? copy(data->get().bounds()) :
-                     Rect(300, 100, 800, 600));  // TODO!
-    setFullScreen(data->get().full_screen());
-  }
+  template <typename Proto> void computeBounds();
+
   void setLimitedBounds(const Rect& rect);
   ~PersistentWindow();
 
@@ -35,6 +26,7 @@ class PersistentWindow : public DocumentWindow {
 
   virtual void resized();
   virtual void moved();
+  void setOKToSaveLayout(bool ok = true) { okToSaveLayout_ = ok; }
 
  private:
   void writeData();
@@ -44,6 +36,14 @@ class PersistentWindow : public DocumentWindow {
 
   DISALLOW_COPY_AND_ASSIGN(PersistentWindow);
 };
+
+template <typename Proto>
+void PersistentWindow::computeBounds() {
+  data::TypedEditable<Proto>* data = data::editable<Proto>();
+  data_ = data;
+  setLimitedBounds(copy(data->get().bounds()));
+  setFullScreen(data->get().full_screen());
+}
 
 
 }  // namespace gui
