@@ -34,6 +34,15 @@ Thread* makeLoop(const ThreadDesc& d, EditableUpdater* upd, Method method) {
   return t.transfer();
 }
 
+static bool lockedCopy(EditableSet* from, EditableSet* to, CriticalSection* lock) {
+  ScopedLock l(*lock);
+  bool hasData = !from->empty();
+  if (hasData)
+    stl::moveTo(from, to);
+
+  return hasData;
+}
+
 }  // namespace
 
 EditableUpdater::EditableUpdater(DefaultRegistry* registry)
@@ -58,36 +67,31 @@ void EditableUpdater::needsUpdate(UntypedEditable* data) {
   updateThread_->notify();
 }
 
-bool lockedCopy(EditableSet* from, EditableSet* to, CriticalSection* lock) {
-  ScopedLock l(*lock);
-  bool hasData = !from->empty();
-  if (hasData)
-    stl::moveTo(from, to);
-
-  return hasData;
-}
-
 bool EditableUpdater::update() {
-  EditableSet ds;
-  bool hasData = lockedCopy(&updateData_, &ds, &lock_);
-  if (hasData) {
-    for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i)
-      (*i)->update();
+  EditableSet ds, writeable;
+  if (!lockedCopy(&updateData_, &ds, &lock_))
+    return false;
 
-    lockedCopy(&ds, &writeData_, &lock_);
-    writeThread_->notify();
+  for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i) {
+    if ((*i)->update())
+      writeable.insert(*i);
   }
-  return !hasData;
+
+  lockedCopy(&writeable, &writeData_, &lock_);
+  writeThread_->notify();
+
+  return true;
 }
 
 bool EditableUpdater::write() {
   EditableSet ds;
-  bool hasData = lockedCopy(&writeData_, &ds, &lock_);
-  if (hasData) {
-    for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i)
-      (*i)->writeToFile();
-  }
-  return !hasData;
+  if (!lockedCopy(&writeData_, &ds, &lock_))
+    return false;
+
+  for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i)
+    (*i)->writeToFile();
+
+  return true;
 }
 
 void EditableUpdater::start(DefaultRegistry* r) {

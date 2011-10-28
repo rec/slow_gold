@@ -37,7 +37,8 @@ class UntypedEditable : public Editable {
   virtual bool writeToFile() const;
 
   // Update the clients in this thread.
-  void update();
+  // Return true if any clients were update.
+  bool update();
 
  protected:
   // Change the data with an Operations.  op will eventually be deleted.  The

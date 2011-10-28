@@ -98,12 +98,12 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
   return result.transfer();
 }
 
-void UntypedEditable::update() {
+bool UntypedEditable::update() {
   OperationList command;
   {
     Lock l(lock_);
     if (queue_.empty())
-      return;
+      return false;
 
     command.swap(queue_);
   }
@@ -122,6 +122,7 @@ void UntypedEditable::update() {
   stl::deletePointers(&command);
   stl::deletePointers(&undo);
   onDataChange();
+  return !empty;
 }
 
 bool UntypedEditable::writeToFile() const {

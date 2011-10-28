@@ -11,6 +11,7 @@ namespace rec {
 namespace slow {
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
+  DLOG(INFO) << "DropFiles";
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &components()->waveform_) {
     if (files.file_size() >= 1)
