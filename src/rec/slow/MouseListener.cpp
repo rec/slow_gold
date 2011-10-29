@@ -2,6 +2,7 @@
 
 #include "rec/slow/MouseListener.h"
 #include "rec/audio/Audio.h"
+#include "rec/audio/source/Player.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentTime.h"

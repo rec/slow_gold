@@ -4,6 +4,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/source/FrameSource.h"
 #include "rec/gui/audio/PlayerController.h"
+#include "rec/gui/audio/TransportController.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
@@ -36,7 +37,7 @@ Instance::Instance(SlowWindow* window)
       mouseListener_(new MouseListener(this)),
       threads_(new Threads(this)) {
   target_->addCommands();
-  player_->addListener(&components_->transportController_);
+  player_->addListener(components_->transportController_.get());
 
   WaveformComp* waveform = &components_->waveform_;
   waveform->dropBroadcaster()->addListener(currentFile_.get());
@@ -45,7 +46,7 @@ Instance::Instance(SlowWindow* window)
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(currentFile_.get());
 
-  components_->transportController_.addListener(target_->targetManager());
+  components_->transportController_->addListener(target_->targetManager());
 
   player_->timeBroadcaster()->addListener(components_->timeController_.get());
   player_->timeBroadcaster()->addListener(waveform->timeCursor());

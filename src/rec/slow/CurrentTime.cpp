@@ -1,4 +1,5 @@
 #include "rec/slow/CurrentTime.h"
+#include "rec/audio/source/Player.h"
 #include "rec/audio/util/Frame.h"
 #include "rec/audio/util/FillableFrameBuffer.h"
 #include "rec/audio/source/FrameSource.h"

@@ -1,4 +1,5 @@
 #include "rec/slow/CurrentFile.h"
+#include "rec/audio/source/Player.h"
 #include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/Data.h"
 #include "rec/gui/DropFiles.h"

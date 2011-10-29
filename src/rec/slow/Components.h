@@ -2,7 +2,6 @@
 #define __REC_SLOW_COMPONENTS__
 
 #include "rec/gui/DropTarget.h"
-#include "rec/gui/audio/TransportController.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
@@ -37,7 +36,7 @@ struct Components {
   ptr<gui::audio::Loops> loops_;
   ptr<gui::SongData> songData_;
   ptr<gui::audio::PlayerController> playerController_;
-  gui::audio::TransportController transportController_;
+  ptr<gui::audio::TransportController> transportController_;
 
   widget::tree::Root directoryTree_;
   WaveformComp waveform_;

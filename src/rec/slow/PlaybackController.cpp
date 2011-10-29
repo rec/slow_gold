@@ -2,6 +2,7 @@
 #include "rec/data/Data.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/PlayerController.h"
+#include "rec/gui/audio/TransportController.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Slow.h"
 
@@ -26,7 +27,7 @@ PlaybackController::PlaybackController(Components* comp, data::Editable* e)
   panel_.addToLayout(comp->playerController_.get(), 20, -1.0, 225);
   stretchyResizer_.add(5);
 
-  panel_.addToLayout(&comp->transportController_, 24);
+  panel_.addToLayout(comp->transportController_.get(), 24);
 }
 
 void PlaybackController::setActive(bool a) {
