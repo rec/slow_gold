@@ -7,7 +7,6 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
-#include "rec/slow/Slow.h"
 #include "rec/slow/PlaybackController.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/tree/Root.h"

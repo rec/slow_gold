@@ -4,7 +4,6 @@
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/Components.h"
-#include "rec/slow/Slow.h"
 
 namespace rec {
 namespace slow {

@@ -1,10 +1,16 @@
 #ifndef __REC_SLOW_INSTANCE__
 #define __REC_SLOW_INSTANCE__
 
-#include "rec/slow/Slow.h"
 #include "rec/base/Samples.h"
 
 namespace rec {
+
+namespace audio { class Device; }
+namespace audio { namespace source { class Player; }}
+namespace widget { namespace waveform { class Waveform; }}
+namespace widget { namespace waveform { class WaveformProto; }}
+namespace widget { namespace waveform { class ZoomProto; }}
+
 namespace slow {
 
 class Components;
@@ -16,6 +22,13 @@ class MouseListener;
 class Target;
 class Threads;
 class SlowWindow;
+
+typedef audio::Device Device;
+typedef audio::source::Player Player;
+
+typedef widget::waveform::Waveform Waveform;
+typedef widget::waveform::WaveformProto WaveformProto;
+typedef widget::waveform::ZoomProto ZoomProto;
 
 // A single instance of Slow.  Right now there's only one per application but in
 // future there might be more than one.  This is where all the Broadcasters live

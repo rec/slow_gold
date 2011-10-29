@@ -4,7 +4,6 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
-#include "rec/slow/Slow.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/LoopPoint.pb.h"
 
