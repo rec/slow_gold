@@ -2,6 +2,7 @@
 #include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/Data.h"
 #include "rec/gui/DropFiles.h"
+#include "rec/gui/audio/PlayerController.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/BufferFiller.h"
@@ -45,7 +46,7 @@ void CurrentFile::operator()(const VirtualFile& f) {
     file_ = f;
   }
 
-  components()->playerController_.clearLevels();
+  components()->playerController_->clearLevels();
   components()->directoryTree_.refreshNode(oldFile);
 
   bool isEmpty = file::empty(f);

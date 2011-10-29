@@ -3,6 +3,7 @@
 #include "rec/audio/Device.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/source/FrameSource.h"
+#include "rec/gui/audio/PlayerController.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
@@ -49,7 +50,7 @@ Instance::Instance(SlowWindow* window)
   player_->timeBroadcaster()->addListener(components_->timeController_.get());
   player_->timeBroadcaster()->addListener(waveform->timeCursor());
 
-  player_->level()->addListener(components_->playerController_.levelListener());
+  player_->level()->addListener(components_->playerController_->levelListener());
 
   ThumbnailBuffer* thumbnailBuffer = bufferFiller_->thumbnailBuffer();
   Source *s = new FrameSource<short, 2>(thumbnailBuffer->buffer()->frames());

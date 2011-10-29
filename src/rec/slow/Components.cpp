@@ -1,6 +1,7 @@
 #include "rec/slow/Components.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/Loops.h"
+#include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"
 
 namespace rec {
@@ -11,6 +12,7 @@ Components::Components(Instance* instance)
       timeController_(new gui::audio::TimeController),
       loops_(new gui::audio::Loops(manager_)),
       songData_(new gui::SongData(manager_)),
+      playerController_(new gui::audio::PlayerController),
       directoryTree_(manager_),
       playbackController_(this, data::editable<AppLayout>()),
       mainPage_(this, data::editable<AppLayout>()) {
