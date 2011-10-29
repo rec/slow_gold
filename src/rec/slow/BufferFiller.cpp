@@ -3,6 +3,7 @@
 #include "rec/slow/CurrentTime.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/FillSeries.h"
+#include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
 namespace slow {

@@ -9,6 +9,7 @@
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Threads.h"
 #include "rec/widget/tree/Root.h"
+#include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
 namespace slow {

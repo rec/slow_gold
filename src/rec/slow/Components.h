@@ -1,9 +1,7 @@
 #ifndef __REC_SLOW_COMPONENTS__
 #define __REC_SLOW_COMPONENTS__
 
-#include "rec/slow/AppLayout.pb.h"
-#include "rec/slow/Slow.h"
-#include "rec/widget/waveform/Waveform.h"
+#include "rec/base/base.h"
 
 namespace rec {
 

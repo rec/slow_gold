@@ -6,7 +6,7 @@
 #include "rec/slow/Menus.h"
 #include "rec/slow/Slow.h"
 #include "rec/util/Defaulter.h"
-#include "rec/util/Defaulter.h"
+#include "rec/util/LoopPoint.pb.h"
 
 namespace rec {
 namespace slow {

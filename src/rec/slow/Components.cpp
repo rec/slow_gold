@@ -1,15 +1,18 @@
 #include "rec/slow/Components.h"
+
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
 #include "rec/slow/Target.h"
 #include "rec/widget/tree/Root.h"
+#include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
 namespace slow {
