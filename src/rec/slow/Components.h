@@ -2,9 +2,7 @@
 #define __REC_SLOW_COMPONENTS__
 
 #include "rec/slow/AppLayout.pb.h"
-#include "rec/slow/Instance.h"
 #include "rec/slow/Slow.h"
-#include "rec/slow/Target.h"
 #include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
@@ -15,10 +13,13 @@ namespace gui { namespace audio { class Loops; }}
 namespace gui { namespace audio { class PlayerController; }}
 namespace gui { namespace audio { class TimeController; }}
 namespace gui { namespace audio { class TransportController; }}
+
 namespace widget { namespace tree { class Root; }}
+namespace widget { namespace waveform { class Waveform; }}
 
 namespace slow {
 
+class Instance;
 class MainPage;
 class PlaybackController;
 
@@ -36,7 +37,7 @@ struct Components {
   ptr<gui::audio::TransportController> transportController_;
 
   ptr<widget::tree::Root> directoryTree_;
-  ptr<Waveform> waveform_;
+  ptr<widget::waveform::Waveform> waveform_;
 
   ptr<PlaybackController> playbackController_;
   ptr<MainPage> mainPage_;

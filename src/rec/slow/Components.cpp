@@ -5,8 +5,10 @@
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
+#include "rec/slow/Target.h"
 #include "rec/widget/tree/Root.h"
 
 namespace rec {
