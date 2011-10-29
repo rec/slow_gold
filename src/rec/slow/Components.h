@@ -4,7 +4,6 @@
 #include "rec/gui/DropTarget.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/MainPage.h"
-#include "rec/slow/PlaybackController.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Slow.h"
 #include "rec/slow/Target.h"
@@ -22,6 +21,8 @@ namespace gui { namespace audio { class TimeController; }}
 namespace gui { namespace audio { class TransportController; }}
 
 namespace slow {
+
+class PlaybackController;
 
 typedef gui::DropTarget<Waveform> WaveformComp;
 
@@ -41,7 +42,7 @@ struct Components {
   widget::tree::Root directoryTree_;
   WaveformComp waveform_;
 
-  PlaybackController playbackController_;
+  ptr<PlaybackController> playbackController_;
   MainPage mainPage_;
 };
 

@@ -4,6 +4,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/source/FrameSource.h"
 #include "rec/gui/audio/PlayerController.h"
+#include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"

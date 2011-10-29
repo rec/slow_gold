@@ -1,13 +1,14 @@
 #include <google/protobuf/descriptor.h>
 
+#include "rec/slow/MainPage.h"
+
 #include "rec/base/ArraySize.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Slow.h"
-#include "rec/slow/MainPage.h"
-#include "rec/slow/MainPage.h"
+#include "rec/slow/PlaybackController.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Zoom.h"
@@ -41,7 +42,7 @@ void MainPage::doLayout(Components* components) {
   directoryResizer_.add();
   panel_.addToLayout(&components->waveform_);
   waveformResizer_.add();
-  panel_.addToLayout(&components->playbackController_);
+  panel_.addToLayout(components->playbackController_.get());
 
   addToLayout(&panel_);
   loopResizer_.add();
