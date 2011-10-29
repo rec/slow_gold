@@ -25,7 +25,7 @@ Components::Components(Instance* instance)
       playerController_(new gui::audio::PlayerController),
       transportController_(new gui::audio::TransportController),
       directoryTree_(new widget::tree::Root(manager_)),
-      waveform_(new gui::DropTarget<Waveform>()),
+      waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       playbackController_(new PlaybackController(this,
                                                  data::editable<AppLayout>())),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {

@@ -25,6 +25,7 @@ namespace slow {
 using namespace rec::audio;
 using namespace rec::audio::util;
 using namespace rec::audio::source;
+using namespace rec::widget::waveform;
 
 Instance::Instance(SlowWindow* window)
     : window_(window),

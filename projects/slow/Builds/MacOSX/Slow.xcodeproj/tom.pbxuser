@@ -208,8 +208,8 @@
 	362E2E7C8F32ECBEF4903444 /* Components.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {729, 789}}";
-			sepNavSelRange = "{1503, 0}";
-			sepNavVisRange = "{0, 1503}";
+			sepNavSelRange = "{1521, 0}";
+			sepNavVisRange = "{0, 1521}";
 		};
 	};
 	37DC5207DA013FE5BC18B4DA /* ProtoListener.h */ = {
@@ -1215,6 +1215,9 @@
 			E28B9264145CBE3D003CF4AC /* PBXTextBookmark */ = E28B9264145CBE3D003CF4AC /* PBXTextBookmark */;
 			E28B9265145CBE3D003CF4AC /* PBXTextBookmark */ = E28B9265145CBE3D003CF4AC /* PBXTextBookmark */;
 			E28B9266145CBE3D003CF4AC /* PBXTextBookmark */ = E28B9266145CBE3D003CF4AC /* PBXTextBookmark */;
+			E28B9269145CBE73003CF4AC /* PBXTextBookmark */ = E28B9269145CBE73003CF4AC /* PBXTextBookmark */;
+			E28B926A145CBE73003CF4AC /* PBXTextBookmark */ = E28B926A145CBE73003CF4AC /* PBXTextBookmark */;
+			E28B926B145CBE73003CF4AC /* PBXTextBookmark */ = E28B926B145CBE73003CF4AC /* PBXTextBookmark */;
 			E28CCE931450736D0052581A = E28CCE931450736D0052581A /* PBXTextBookmark */;
 			E28CCF87145088AA0052581A = E28CCF87145088AA0052581A /* PBXTextBookmark */;
 			E28CCF88145088AA0052581A = E28CCF88145088AA0052581A /* PBXTextBookmark */;
@@ -8198,6 +8201,36 @@
 		vrLoc = 0;
 	};
 	E28B9266145CBE3D003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 89FF7DA55DD71BE42B53CA13 /* CurrentFile.cpp */;
+		name = "CurrentFile.cpp: 77";
+		rLen = 0;
+		rLoc = 2285;
+		rType = 0;
+		vrLen = 1769;
+		vrLoc = 0;
+	};
+	E28B9269145CBE73003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 362E2E7C8F32ECBEF4903444 /* Components.cpp */;
+		name = "Components.cpp: 46";
+		rLen = 0;
+		rLoc = 1521;
+		rType = 0;
+		vrLen = 1521;
+		vrLoc = 0;
+	};
+	E28B926A145CBE73003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9DD243D16FA82607AB4696FD /* BufferFiller.cpp */;
+		name = "BufferFiller.cpp: 73";
+		rLen = 0;
+		rLoc = 2086;
+		rType = 0;
+		vrLen = 1697;
+		vrLoc = 0;
+	};
+	E28B926B145CBE73003CF4AC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 89FF7DA55DD71BE42B53CA13 /* CurrentFile.cpp */;
 		name = "CurrentFile.cpp: 77";
