@@ -40,8 +40,8 @@ Instance::Instance(SlowWindow* window)
       threads_(new Threads(this)) {
   target_->addCommands();
   player_->addListener(components_->transportController_.get());
-
-  WaveformComp* waveform = &components_->waveform_;
+	typedef gui::DropTarget<Waveform> DropWave;
+  DropWave* waveform = dynamic_cast<DropWave*>(components_->waveform_.get());
   waveform->dropBroadcaster()->addListener(currentFile_.get());
 
   widget::tree::Root* root = components_->directoryTree_.get();
@@ -59,7 +59,7 @@ Instance::Instance(SlowWindow* window)
   Source *s = new FrameSource<short, 2>(thumbnailBuffer->buffer()->frames());
   player_->setSource(s);
   player_->timeBroadcaster()->addListener(currentTime_.get());
-  components_->waveform_.setAudioThumbnail(thumbnailBuffer->thumbnail());
+  components_->waveform_->setAudioThumbnail(thumbnailBuffer->thumbnail());
 
   threads_->startAll();
 }

@@ -16,7 +16,7 @@ namespace slow {
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   DLOG(INFO) << "DropFiles";
   const file::VirtualFileList& files = dropFiles.files_;
-  if (dropFiles.target_ == &components()->waveform_) {
+  if (dropFiles.target_ == components()->waveform_.get()) {
     if (files.file_size() >= 1)
       data::set(files.file(0));
 
@@ -52,11 +52,11 @@ void CurrentFile::operator()(const VirtualFile& f) {
   components()->directoryTree_->refreshNode(oldFile);
 
   bool isEmpty = file::empty(f);
-  components()->waveform_.setEmpty(isEmpty);
+  components()->waveform_->setEmpty(isEmpty);
   components()->directoryTree_->refreshNode(f);
 
   if (isEmpty) {
-    components()->waveform_.setLength(0);
+    components()->waveform_->setLength(0);
   } else {
     using audio::util::ThumbnailBuffer;
 
@@ -65,7 +65,7 @@ void CurrentFile::operator()(const VirtualFile& f) {
       LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
       return;
     }
-    components()->waveform_.setLength(thumbnailBuffer->buffer()->length());
+    components()->waveform_->setLength(thumbnailBuffer->buffer()->length());
     threads()->fillThread()->notify();
   }
 }

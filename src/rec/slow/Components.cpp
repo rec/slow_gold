@@ -1,4 +1,5 @@
 #include "rec/slow/Components.h"
+#include "rec/gui/DropTarget.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/PlayerController.h"
@@ -19,10 +20,11 @@ Components::Components(Instance* instance)
       playerController_(new gui::audio::PlayerController),
       transportController_(new gui::audio::TransportController),
       directoryTree_(new widget::tree::Root(manager_)),
+      waveform_(new gui::DropTarget<Waveform>()),
       playbackController_(new PlaybackController(this,
                                                  data::editable<AppLayout>())),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {
-  waveform_.setManager(manager_);
+  waveform_->setManager(manager_);
 }
 
 Components::~Components() {}

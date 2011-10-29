@@ -23,8 +23,8 @@ using namespace rec::util::block;
 
 MouseListener::MouseListener(Instance* i)
     : HasInstance(i), waveformDragStart_(0.0) {
-  components()->waveform_.addMouseListener(this, true);
-  Broadcaster<const MouseWheelEvent&> *w = &components()->waveform_;
+  components()->waveform_->addMouseListener(this, true);
+  Broadcaster<const MouseWheelEvent&> *w = components()->waveform_.get();
   w->addListener(this);
 }
 
@@ -61,7 +61,7 @@ void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
 }  // namespace
 
 void MouseListener::operator()(const MouseWheelEvent& e) {
-  Waveform* waveform = &components()->waveform_;
+  Waveform* waveform = components()->waveform_.get();
   if (e.event_->eventComponent == waveform) {
     double time = waveform->xToTime(e.event_->x);
     double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
@@ -93,7 +93,7 @@ Mode::Action MouseListener::getClickAction(const MouseEvent& e) {
 }
 
 void MouseListener::mouseDown(const MouseEvent& e) {
-  Waveform* waveform = &components()->waveform_;
+  Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform) {
     RealTime time = waveform->xToTime(e.x);
     Mode::Action action = getClickAction(e);
@@ -134,7 +134,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
 }
 
 void MouseListener::mouseDrag(const MouseEvent& e) {
-  Waveform* waveform = &components()->waveform_;
+  Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform) {
     Mode::Action action = getClickAction(e);
     if (action == Mode::DRAG) {
@@ -162,7 +162,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 }
 
 void MouseListener::mouseUp(const MouseEvent& e) {
-  Cursor* timeCursor = components()->waveform_.timeCursor();
+  Cursor* timeCursor = components()->waveform_->timeCursor();
   if (timeCursor == e.eventComponent)
     timeCursor->setListeningToClock(true);
 

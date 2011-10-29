@@ -1,7 +1,6 @@
 #ifndef __REC_SLOW_COMPONENTS__
 #define __REC_SLOW_COMPONENTS__
 
-#include "rec/gui/DropTarget.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Slow.h"
@@ -24,8 +23,6 @@ namespace slow {
 class MainPage;
 class PlaybackController;
 
-typedef gui::DropTarget<Waveform> WaveformComp;
-
 struct Components {
   explicit Components(Instance*);
   ~Components();
@@ -40,7 +37,7 @@ struct Components {
   ptr<gui::audio::TransportController> transportController_;
 
   ptr<widget::tree::Root> directoryTree_;
-  WaveformComp waveform_;
+  ptr<Waveform> waveform_;
 
   ptr<PlaybackController> playbackController_;
   ptr<MainPage> mainPage_;

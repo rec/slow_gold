@@ -41,7 +41,7 @@ void MainPage::paint(Graphics& g) {
 void MainPage::doLayout(Components* components) {
   panel_.addToLayout(components->directoryTree_->treeView());
   directoryResizer_.add();
-  panel_.addToLayout(&components->waveform_);
+  panel_.addToLayout(components->waveform_.get());
   waveformResizer_.add();
   panel_.addToLayout(components->playbackController_.get());
 

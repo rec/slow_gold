@@ -62,7 +62,7 @@ thread::Result BufferFiller::fillOnce() {
   updateSource_.getNextAudioBlock(updateInfo_);
   thumbnailBuffer_.addBlock(pos, updateInfo_);
 
-  thread::callAsync(&components()->waveform_, &Waveform::repaint);
+  thread::callAsync(components()->waveform_.get(), &Waveform::repaint);
   return thread::YIELD;
 }
 
