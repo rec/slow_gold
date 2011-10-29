@@ -5,7 +5,6 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/Slow.h"
 #include "rec/slow/Target.h"
-#include "rec/util/thread/Trash.h"
 #include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
