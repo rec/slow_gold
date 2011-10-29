@@ -23,8 +23,6 @@ class Target;
 class Threads;
 class SlowWindow;
 
-typedef audio::source::Player Player;
-
 // A single instance of Slow.  Right now there's only one per application but in
 // future there might be more than one.  This is where all the Broadcasters live
 // and all the file and stretch setting persistent data, too.
@@ -41,7 +39,7 @@ struct Instance {
 
   ptr<Components> components_;
   ptr<audio::Device> device_;
-  ptr<Player> player_;
+  ptr<audio::source::Player> player_;
   ptr<CurrentFile> currentFile_;
   ptr<CurrentTime> currentTime_;
   ptr<BufferFiller> bufferFiller_;
