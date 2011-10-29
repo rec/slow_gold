@@ -35,13 +35,15 @@ class Editable {
   virtual Operations* applyOperations(const Operations&) = 0;
 
   virtual const Value getValue(const Address&) const = 0;
-  virtual bool hasValue(const Address&) const = 0;
-  virtual int getSize(const Address&) const = 0;
-  virtual void copyTo(Message*) const = 0;
   virtual const string getTypeName() const = 0;
   virtual const VirtualFile& virtualFile() const = 0;
   virtual bool readFromFile() const = 0;
   virtual bool writeToFile() const = 0;
+
+  virtual bool hasValue(const Address&) const = 0;
+  virtual void copyTo(Message*) const = 0;
+  virtual int getSize(const Address&) const = 0;
+  virtual Message* clone() const = 0;
 };
 
 // There are more setters in archived/OldEditable.h

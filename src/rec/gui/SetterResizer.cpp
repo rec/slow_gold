@@ -6,23 +6,26 @@ namespace gui {
 
 SetterResizer::SetterResizer(const data::Address& address,
                              Layout* layout,
-                             int itemIndexInLayout)
+                             int itemIndexInLayout,
+                             Editable* editable)
   : StretchableLayoutResizerBar(layout->layoutManager(),
                                 itemIndexInLayout,
                                 layout->orientation() == HORIZONTAL),
     layout_(layout),
     index_(itemIndexInLayout),
     address_(address),
-    orientation_(inverse(layout->orientation())),
-    setter_(NULL) {
+    editable_(editable),
+    active_(false) {
+  DCHECK(editable);
 }
 
 int SetterResizer::get() const {
-  return (orientation_ == HORIZONTAL) ? getY() : getX();
+  return (layout_->orientation() == VERTICAL) ? getY() : getX();
 }
 
 void SetterResizer::set(int distance) {
   doSet(distance);
+  DLOG(INFO) << "SetterResizer::set";
   hasBeenMoved();
 }
 
@@ -31,14 +34,20 @@ void SetterResizer::doSet(int distance) {
   layout_->layoutManager()->setItemPosition(index_, distance);
 }
 
-void SetterResizer::setSetter(data::Editable* setter) {
-  setter_ = setter;
-  doSet(setter_->getValue(address_).uint32_f());
-}
+//  doSet(setter->getValue(address_).uint32_f());
 
 void SetterResizer::moved() {
-  if (setter_)
-    setter_->set(static_cast<uint32>(get()), address_);
+  if (active_)
+    editable_->set(static_cast<uint32>(get()), address_);
+}
+
+void SetterResizer::add(int size) {
+  layout_->addToLayout(this, size, size, size);
+  data::Value value = editable_->getValue(address_);
+  if (value.has_uint32_f())
+    layout_->layoutManager()->setItemPosition(index_, value.uint32_f());
+  else
+    LOG(ERROR) << "No value ";
 }
 
 void SetterResizer::paint(Graphics& g) {

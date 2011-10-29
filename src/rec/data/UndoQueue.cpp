@@ -27,11 +27,14 @@ static Action* makeAction(Editable* e, const OperationList& command,
   typedef google::protobuf::RepeatedPtrField<Operation> RepeatedOperation;
   RepeatedOperation* op = action->mutable_undo()->mutable_operation();
   for (int i = undo.size() - 1; i >= 0; --i)
-    op->MergeFrom(undo[i]->operation());
+    if (undo[i])
+      op->MergeFrom(undo[i]->operation());
 
   op = action->mutable_operations()->mutable_operation();
-  for (int i = command.size() - 1; i >= 0; --i)
-    op->MergeFrom(command[i]->operation());
+  for (int i = command.size() - 1; i >= 0; --i) {
+    if (command[i])  // TODO: these should be filtered earlier.
+      op->MergeFrom(command[i]->operation());
+  }
 
   return action.transfer();
 }

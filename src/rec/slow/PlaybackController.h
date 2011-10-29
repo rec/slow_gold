@@ -13,9 +13,8 @@ class Components;
 
 class PlaybackController : public gui::Layout {
  public:
-  explicit PlaybackController(Components* i);
-
-  void setSetter(data::Editable* setter);
+  explicit PlaybackController(Components* i, data::Editable* setter);
+  void setActive(bool a);
 
  private:
   gui::Layout panel_;

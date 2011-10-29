@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		031D341649B4A296F511CA2F /* FullScreenRev.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */; };
+		0338ECF985E6BC4E51054694 /* Components.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362E2E7C8F32ECBEF4903444 /* Components.cpp */; };
 		03B8F30468738D6F83AF79B5 /* DefaultRegistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C06CCB7976D79CF57E4FCE80 /* DefaultRegistry.cpp */; };
 		066FBFA7B2040738E76F567C /* Undo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A93704276F2527D815042611 /* Undo.cpp */; };
 		08879D3DFDD1B955E8E15916 /* ThumbnailBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */; };
@@ -391,6 +392,7 @@
 		3537E0387F6245C8C67C18A5 /* Keyboard.xml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Keyboard.xml.cpp; path = ../../../../src/rec/command/map/Keyboard.xml.cpp; sourceTree = SOURCE_ROOT; };
 		35CC9BA48C736AC8B5EF19E3 /* Mode.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Mode.pb.cc; path = ../../../../genfiles/proto/rec/util/Mode.pb.cc; sourceTree = SOURCE_ROOT; };
 		35CD2DCF438AE8C4AD16953D /* TestData.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TestData.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/TestData.pb.cc; sourceTree = SOURCE_ROOT; };
+		362E2E7C8F32ECBEF4903444 /* Components.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Components.cpp; path = ../../../../src/rec/slow/Components.cpp; sourceTree = SOURCE_ROOT; };
 		3757F95B082CEAC4C1F96C41 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		37598646AA4BB20B0347C4FC /* Thread.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Thread.pb.h; path = ../../../../genfiles/proto/rec/util/thread/Thread.pb.h; sourceTree = SOURCE_ROOT; };
 		3788365111D9219CCA28070F /* CreateReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CreateReader.cpp; path = ../../../../src/rec/audio/format/mpg123/CreateReader.cpp; sourceTree = SOURCE_ROOT; };
@@ -926,6 +928,16 @@
 			name = widget;
 			sourceTree = "<group>";
 		};
+		138D77F8739D49D11E604831 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		13B7AF66DC71626F21BA5581 /* cd */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,16 +1052,6 @@
 				FB6945822B662C6B52D2824C /* ZeroCopy.h */,
 			);
 			name = file;
-			sourceTree = "<group>";
-		};
-		2AD269D1AA9748FA5F0A634D /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		2CA4CEC7799F5D0A577935BE /* base */ = {
@@ -1581,6 +1583,7 @@
 				9DD243D16FA82607AB4696FD /* BufferFiller.cpp */,
 				E935C78CD987833E3858687C /* BufferFiller.h */,
 				FD1BA25BD7D140D325596CED /* callbacks */,
+				362E2E7C8F32ECBEF4903444 /* Components.cpp */,
 				F521CD26AC822B41D5F369FC /* Components.h */,
 				89FF7DA55DD71BE42B53CA13 /* CurrentFile.cpp */,
 				95A75A6FAADBC25EFF4B201A /* CurrentFile.h */,
@@ -1684,7 +1687,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				2AD269D1AA9748FA5F0A634D /* Slow */,
+				138D77F8739D49D11E604831 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -2264,6 +2267,7 @@
 				D4CC4574D0628B07629DF777 /* InstanceCallbacks.cpp in Sources */,
 				603632F81582A94A1681F2D8 /* RepeatedCallbacks.cpp in Sources */,
 				EF713644487F65F5A368B34F /* SelectionCallbacks.cpp in Sources */,
+				0338ECF985E6BC4E51054694 /* Components.cpp in Sources */,
 				D550D68D70C71D48B3794C47 /* CurrentFile.cpp in Sources */,
 				DCD7BBC44A3A0ADBF793CC5E /* CurrentTime.cpp in Sources */,
 				9362E2C00662145E66F79A31 /* Instance.cpp in Sources */,

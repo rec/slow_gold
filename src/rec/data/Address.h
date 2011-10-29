@@ -28,6 +28,10 @@ class Address : public AddressProto {
   Address(P a, P b, P c, P d, P e, P f) { p(a); p(b); p(c); p(d); p(e); p(f); }
 
   Address(const AddressProto& a) : AddressProto(a) {}
+
+  Address(const string& s) { p(s); }
+  Address(const char* s) { p(s); }
+  Address(int i) { p(i); }
 };
 
 const Address operator+(const Address&, const Address&);

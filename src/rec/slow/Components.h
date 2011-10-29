@@ -23,22 +23,8 @@ namespace slow {
 typedef gui::DropTarget<Waveform> WaveformComp;
 
 struct Components {
-  Components(Instance* instance)
-    : manager_(instance->target_->targetManager()->commandManager()),
-      loops_(manager_),
-      songData_(manager_),
-      directoryTree_(manager_),
-      playbackController_(this),
-      mainPage_(this) {
-    waveform_.setManager(manager_);
-  }
-
-  void makeActive() {
-    MessageManagerLock l;
-    data::Editable* setter = data::editable<AppLayout>();
-    playbackController_.setSetter(setter);
-    mainPage_.setSetter(setter);
-  }
+  explicit Components(Instance*);
+  void setActive(bool);
 
   ApplicationCommandManager* manager_;
   gui::audio::TimeController timeController_;

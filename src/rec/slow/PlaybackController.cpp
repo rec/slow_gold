@@ -8,12 +8,12 @@ namespace slow {
 
 using data::Address;
 
-PlaybackController::PlaybackController(Components* comp)
+PlaybackController::PlaybackController(Components* comp, data::Editable* e)
     : Layout("Main controls"),
       panel_("Main panel", VERTICAL),
-      timeControllerResizer_(Address("clock_x"), this, 1),
-      songDataResizer_(Address("songdata_x"), this, 3),
-      stretchyResizer_(Address("stretchy_y"), &panel_, 1) {
+      timeControllerResizer_(Address("clock_x"), this, 1, e),
+      songDataResizer_(Address("songdata_x"), this, 3, e),
+      stretchyResizer_(Address("stretchy_y"), &panel_, 1, e) {
   addToLayout(&comp->timeController_);
   timeControllerResizer_.add(5);
 
@@ -27,10 +27,10 @@ PlaybackController::PlaybackController(Components* comp)
   panel_.addToLayout(&comp->transportController_, 24);
 }
 
-void PlaybackController::setSetter(data::Editable* setter) {
-  timeControllerResizer_.setSetter(setter);
-  songDataResizer_.setSetter(setter);
-  stretchyResizer_.setSetter(setter);
+void PlaybackController::setActive(bool a) {
+  timeControllerResizer_.setActive(a);
+  songDataResizer_.setActive(a);
+  stretchyResizer_.setActive(a);
 }
 
 }  // namespace slow

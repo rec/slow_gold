@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "rec/gui/layout/Layout.h"
+#include "rec/gui/SetterResizer.h"
 
 namespace rec {
 
@@ -18,21 +19,20 @@ class Components;
 
 class MainPage : public gui::Layout {
  public:
-  explicit MainPage(Components*);
+  MainPage(Components*, data::Editable*);
   virtual ~MainPage();
 
   void paint(Graphics&);
-  void setSetter(data::Editable* setter);
+  void setActive(bool a);
 
  private:
-  void addResizer(ptr<gui::SetterResizer>* r, const char* addr, Layout* lo);
   void doLayout(Components*);
 
-  ptr<gui::SetterResizer> resizer_[2];
-  ptr<gui::SetterResizer> loopResizer_;
-
   gui::Layout panel_;
-  gui::Layout subpanel_;
+
+  gui::SetterResizer directoryResizer_;
+  gui::SetterResizer waveformResizer_;
+  gui::SetterResizer loopResizer_;
 
   double length_;
 

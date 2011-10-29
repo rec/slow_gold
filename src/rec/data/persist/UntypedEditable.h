@@ -27,7 +27,7 @@ class UntypedEditable : public Editable {
   }
   template <typename Proto> bool fill(Proto* t) const;
 
-  Message* clone() const;
+  virtual Message* clone() const;
   const VirtualFile& virtualFile() const { return virtualFile_; }
 
   virtual Operations* applyOperations(const Operations& );
