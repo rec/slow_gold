@@ -23,7 +23,6 @@ class Target;
 class Threads;
 class SlowWindow;
 
-typedef audio::Device Device;
 typedef audio::source::Player Player;
 
 typedef widget::waveform::Waveform Waveform;
@@ -45,7 +44,7 @@ struct Instance {
   SlowWindow* window_;
 
   ptr<Components> components_;
-  ptr<Device> device_;
+  ptr<audio::Device> device_;
   ptr<Player> player_;
   ptr<CurrentFile> currentFile_;
   ptr<CurrentTime> currentTime_;
