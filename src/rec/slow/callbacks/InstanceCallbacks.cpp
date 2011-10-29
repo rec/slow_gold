@@ -14,6 +14,7 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Target.h"
+#include "rec/slow/MainPage.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -149,7 +150,7 @@ void zoomOut(Instance* i) {
 }
 
 void audioPreferences(Instance* i) {
-  i->device_->setupPage_->show(&i->components_->mainPage_);
+  i->device_->setupPage_->show(i->components_->mainPage_.get());
 }
 
 void closeFile(Instance* i) {

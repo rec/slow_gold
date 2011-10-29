@@ -2,6 +2,7 @@
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/Slow.h"
 #include "rec/util/Defaulter.h"
@@ -27,7 +28,7 @@ void SlowWindow::doStartup() {
 }
 
 Component* SlowWindow::getMainComponent() {
-  return &instance_->components_->mainPage_;
+  return instance_->components_->mainPage_.get();
 }
 
 MenuBarModel* SlowWindow::getMenuBarModel() {

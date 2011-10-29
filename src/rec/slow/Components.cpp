@@ -4,6 +4,7 @@
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
 
 namespace rec {
@@ -19,7 +20,7 @@ Components::Components(Instance* instance)
       directoryTree_(manager_),
       playbackController_(new PlaybackController(this,
                                                  data::editable<AppLayout>())),
-      mainPage_(this, data::editable<AppLayout>()) {
+      mainPage_(new MainPage(this, data::editable<AppLayout>())) {
   waveform_.setManager(manager_);
 }
 
@@ -27,7 +28,7 @@ Components::~Components() {}
 
 void Components::setActive(bool a) {
   playbackController_->setActive(a);
-  mainPage_.setActive(a);
+  mainPage_->setActive(a);
   // mainPage_.resized();
   // setter->applyLater(NULL);
 }
