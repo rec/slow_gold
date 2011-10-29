@@ -2,6 +2,7 @@
 #define __REC_AUDIO_SOURCE_FRAMESOURCE__
 
 #include "rec/audio/util/Frame.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace audio {

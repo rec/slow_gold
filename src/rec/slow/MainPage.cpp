@@ -2,6 +2,7 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/gui/audio/Loops.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Slow.h"

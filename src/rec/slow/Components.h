@@ -2,8 +2,6 @@
 #define __REC_SLOW_COMPONENTS__
 
 #include "rec/gui/DropTarget.h"
-#include "rec/gui/audio/Loops.h"
-#include "rec/gui/SongData.h"
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/AppLayout.pb.h"
@@ -38,7 +36,7 @@ struct Components {
   ptr<gui::audio::TimeController> timeController_;
 
   ptr<gui::audio::Loops> loops_;
-  gui::SongData songData_;
+  ptr<gui::SongData> songData_;
   gui::audio::PlayerController playerController_;
   gui::audio::TransportController transportController_;
 

@@ -125,9 +125,10 @@
 	};
 	237A2F2912C72197F907D7C4 /* PlaybackController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {844, 606}}";
-			sepNavSelRange = "{977, 0}";
-			sepNavVisRange = "{0, 1021}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 741}}";
+			sepNavSelRange = "{68, 0}";
+			sepNavVisRange = "{0, 1056}";
+			sepNavWindowFrame = "{{84, 256}, {856, 854}}";
 		};
 	};
 	24E9F944DA376C7B677F2FAF /* DataSlider.cpp */ = {
@@ -207,8 +208,8 @@
 	362E2E7C8F32ECBEF4903444 /* Components.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {729, 789}}";
-			sepNavSelRange = "{768, 0}";
-			sepNavVisRange = "{0, 768}";
+			sepNavSelRange = "{848, 0}";
+			sepNavVisRange = "{0, 848}";
 		};
 	};
 	37DC5207DA013FE5BC18B4DA /* ProtoListener.h */ = {
@@ -352,8 +353,8 @@
 	6437EA4743EB96A16805A5AB /* MouseListener.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 2288}}";
-			sepNavSelRange = "{3159, 0}";
-			sepNavVisRange = "{2405, 1878}";
+			sepNavSelRange = "{117, 0}";
+			sepNavVisRange = "{0, 1795}";
 			sepNavWindowFrame = "{{15, 319}, {856, 854}}";
 		};
 	};
@@ -1138,6 +1139,12 @@
 			E28B9196145CB2D5003CF4AC /* XCBuildMessageTextBookmark */ = E28B9196145CB2D5003CF4AC /* XCBuildMessageTextBookmark */;
 			E28B9197145CB2D5003CF4AC /* PBXTextBookmark */ = E28B9197145CB2D5003CF4AC /* PBXTextBookmark */;
 			E28B919A145CB2D9003CF4AC /* PBXTextBookmark */ = E28B919A145CB2D9003CF4AC /* PBXTextBookmark */;
+			E28B91A1145CB355003CF4AC /* XCBuildMessageTextBookmark */ = E28B91A1145CB355003CF4AC /* XCBuildMessageTextBookmark */;
+			E28B91A2145CB35B003CF4AC /* PBXTextBookmark */ = E28B91A2145CB35B003CF4AC /* PBXTextBookmark */;
+			E28B91A5145CB35B003CF4AC /* PBXTextBookmark */ = E28B91A5145CB35B003CF4AC /* PBXTextBookmark */;
+			E28B91B1145CB3DA003CF4AC /* XCBuildMessageTextBookmark */ = E28B91B1145CB3DA003CF4AC /* XCBuildMessageTextBookmark */;
+			E28B91B8145CB45E003CF4AC /* PBXTextBookmark */ = E28B91B8145CB45E003CF4AC /* PBXTextBookmark */;
+			E28B91BB145CB45E003CF4AC /* PBXTextBookmark */ = E28B91BB145CB45E003CF4AC /* PBXTextBookmark */;
 			E28CCE931450736D0052581A = E28CCE931450736D0052581A /* PBXTextBookmark */;
 			E28CCF87145088AA0052581A = E28CCF87145088AA0052581A /* PBXTextBookmark */;
 			E28CCF88145088AA0052581A = E28CCF88145088AA0052581A /* PBXTextBookmark */;
@@ -1184,9 +1191,10 @@
 	};
 	9DD243D16FA82607AB4696FD /* BufferFiller.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {844, 923}}";
-			sepNavSelRange = "{503, 0}";
-			sepNavVisRange = "{0, 1569}";
+			sepNavIntBoundsRect = "{{0, 0}, {844, 936}}";
+			sepNavSelRange = "{1765, 42}";
+			sepNavVisRange = "{676, 1363}";
+			sepNavWindowFrame = "{{38, 298}, {856, 854}}";
 		};
 	};
 	9E4F8F3EEA1CBD8ED9044943 /* Callback0.h */ = {
@@ -1418,9 +1426,9 @@
 	};
 	DF49580B9742DB4F887E85DF /* MainPage.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 754}}";
-			sepNavSelRange = "{1328, 0}";
-			sepNavVisRange = "{41, 1479}";
+			sepNavIntBoundsRect = "{{0, 0}, {844, 754}}";
+			sepNavSelRange = "{144, 0}";
+			sepNavVisRange = "{0, 1324}";
 			sepNavWindowFrame = "{{245, 109}, {856, 854}}";
 		};
 	};
@@ -1636,7 +1644,7 @@
 		comments = "Within this context";
 		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
 		rLen = 1;
-		rLoc = 154;
+		rLoc = 155;
 		rType = 1;
 	};
 	E28B8BE61459BFBA003CF4AC /* PBXTextBookmark */ = {
@@ -1653,7 +1661,7 @@
 		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
 		name = "InstanceCallbacks.cpp: 154";
 		rLen = 4;
-		rLoc = 3579;
+		rLoc = 3612;
 		rType = 0;
 		vrLen = 865;
 		vrLoc = 2739;
@@ -1805,7 +1813,7 @@
 		comments = "Cannot convert 'rec::slow::Model*' to 'rec::util::listener::Listener<const rec::util::file::VirtualFileList&>*' for argument '1' to 'bool rec::gui::dialog::openOneFile(rec::util::listener::Listener<const rec::util::file::VirtualFileList&>*)'";
 		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
 		rLen = 1;
-		rLoc = 158;
+		rLoc = 159;
 		rType = 1;
 	};
 	E28B8C0D1459C0F9003CF4AC /* PBXTextBookmark */ = {
@@ -1822,7 +1830,7 @@
 		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
 		name = "InstanceCallbacks.cpp: 159";
 		rLen = 0;
-		rLoc = 3672;
+		rLoc = 3705;
 		rType = 0;
 		vrLen = 764;
 		vrLoc = 2997;
@@ -1871,7 +1879,7 @@
 		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
 		name = "InstanceCallbacks.cpp: 159";
 		rLen = 0;
-		rLoc = 3672;
+		rLoc = 3705;
 		rType = 0;
 		vrLen = 764;
 		vrLoc = 2997;
@@ -1911,7 +1919,7 @@
 		comments = "Cannot convert 'rec::slow::CurrentFile*' to 'rec::util::listener::Listener<const rec::util::file::VirtualFileList&>*' for argument '1' to 'bool rec::gui::dialog::openOneFile(rec::util::listener::Listener<const rec::util::file::VirtualFileList&>*)'";
 		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
 		rLen = 1;
-		rLoc = 158;
+		rLoc = 159;
 		rType = 1;
 	};
 	E28B8C271459C48E003CF4AC /* PBXTextBookmark */ = {
@@ -1928,7 +1936,7 @@
 		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
 		name = "InstanceCallbacks.cpp: 159";
 		rLen = 51;
-		rLoc = 3630;
+		rLoc = 3663;
 		rType = 0;
 		vrLen = 764;
 		vrLoc = 2997;
@@ -4982,7 +4990,7 @@
 		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
 		name = "InstanceCallbacks.cpp: 155";
 		rLen = 0;
-		rLoc = 3593;
+		rLoc = 3626;
 		rType = 0;
 		vrLen = 744;
 		vrLoc = 3006;
@@ -5958,7 +5966,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 114";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 38;
 		vrLoc = 1477;
@@ -6433,7 +6441,7 @@
 		comments = "No matching function for call to 'rec::gui::SetterResizer::SetterResizer(const char [12], rec::gui::Layout*)'";
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		rLen = 1;
-		rLoc = 25;
+		rLoc = 26;
 		rType = 1;
 	};
 	E28B90AE145C895D003CF4AC /* PBXTextBookmark */ = {
@@ -6451,7 +6459,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 26";
 		rLen = 39;
-		rLoc = 688;
+		rLoc = 722;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -6471,7 +6479,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 63";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -6491,7 +6499,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 64";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -6511,7 +6519,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 64";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -6531,7 +6539,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 59";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1507;
 		vrLoc = 0;
@@ -6551,7 +6559,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 59";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -6571,7 +6579,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 59";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1506;
 		vrLoc = 0;
@@ -6591,7 +6599,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 59";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1510;
 		vrLoc = 0;
@@ -6611,7 +6619,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 59";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1488;
 		vrLoc = 0;
@@ -6631,7 +6639,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 59";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1488;
 		vrLoc = 0;
@@ -6651,7 +6659,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 59";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1488;
 		vrLoc = 0;
@@ -6671,7 +6679,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -6691,7 +6699,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 0;
@@ -6711,7 +6719,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 0;
@@ -6731,7 +6739,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 0;
@@ -6751,7 +6759,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 0;
@@ -6771,7 +6779,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 0;
@@ -6791,7 +6799,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -6831,7 +6839,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 0;
@@ -6879,7 +6887,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 0;
@@ -6927,7 +6935,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1497;
 		vrLoc = 0;
@@ -6967,7 +6975,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -6997,7 +7005,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -7052,7 +7060,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -7123,7 +7131,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 58";
 		rLen = 0;
-		rLoc = 1520;
+		rLoc = 1554;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 0;
@@ -7339,7 +7347,7 @@
 		fRef = 237A2F2912C72197F907D7C4 /* PlaybackController.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 16;
+		rLoc = 17;
 		rType = 1;
 	};
 	E28B9197145CB2D5003CF4AC /* PBXTextBookmark */ = {
@@ -7347,7 +7355,7 @@
 		fRef = 237A2F2912C72197F907D7C4 /* PlaybackController.cpp */;
 		name = "PlaybackController.cpp: 34";
 		rLen = 0;
-		rLoc = 977;
+		rLoc = 1012;
 		rType = 0;
 		vrLen = 1021;
 		vrLoc = 0;
@@ -7360,6 +7368,64 @@
 		rLoc = 768;
 		rType = 0;
 		vrLen = 768;
+		vrLoc = 0;
+	};
+	E28B91A1145CB355003CF4AC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /development/rec/projects/slow/Builds/MacOSX/../../../../src/rec/slow/callbacks/InstanceCallbacks.cpp";
+		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 8;
+		rType = 1;
+	};
+	E28B91A2145CB35B003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 362E2E7C8F32ECBEF4903444 /* Components.cpp */;
+		name = "Components.cpp: 31";
+		rLen = 0;
+		rLoc = 848;
+		rType = 0;
+		vrLen = 848;
+		vrLoc = 0;
+	};
+	E28B91A5145CB35B003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */;
+		name = "InstanceCallbacks.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1473;
+		vrLoc = 0;
+	};
+	E28B91B1145CB3DA003CF4AC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /development/rec/projects/slow/Builds/MacOSX/../../../../src/rec/slow/PlaybackController.cpp";
+		fRef = 237A2F2912C72197F907D7C4 /* PlaybackController.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E28B91B8145CB45E003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 362E2E7C8F32ECBEF4903444 /* Components.cpp */;
+		name = "Components.cpp: 31";
+		rLen = 0;
+		rLoc = 848;
+		rType = 0;
+		vrLen = 848;
+		vrLoc = 0;
+	};
+	E28B91BB145CB45E003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 237A2F2912C72197F907D7C4 /* PlaybackController.cpp */;
+		name = "PlaybackController.cpp: 3";
+		rLen = 0;
+		rLoc = 68;
+		rType = 0;
+		vrLen = 1056;
 		vrLoc = 0;
 	};
 	E28CCE931450736D0052581A /* PBXTextBookmark */ = {
@@ -7696,9 +7762,9 @@
 	};
 	EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 2717}}";
-			sepNavSelRange = "{652, 0}";
-			sepNavVisRange = "{0, 1473}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 2743}}";
+			sepNavSelRange = "{336, 0}";
+			sepNavVisRange = "{0, 1469}";
 			sepNavWindowFrame = "{{877, 157}, {856, 854}}";
 		};
 	};

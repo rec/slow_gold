@@ -7,6 +7,7 @@
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/data/Data.h"
 #include "rec/gui/Dialog.h"
+#include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"

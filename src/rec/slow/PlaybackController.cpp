@@ -1,5 +1,6 @@
 #include "rec/slow/PlaybackController.h"
 #include "rec/data/Data.h"
+#include "rec/gui/SongData.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Slow.h"
 
@@ -17,7 +18,7 @@ PlaybackController::PlaybackController(Components* comp, data::Editable* e)
   addToLayout(comp->timeController_.get());
   timeControllerResizer_.add(5);
 
-  addToLayout(&comp->songData_);
+  addToLayout(comp->songData_.get());
   songDataResizer_.add(5);
 
   addToLayout(&panel_);
