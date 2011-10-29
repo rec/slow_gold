@@ -7,7 +7,7 @@ namespace slow {
 Components::Components(Instance* instance)
     : manager_(instance->target_->targetManager()->commandManager()),
       timeController_(new gui::audio::TimeController),
-      loops_(manager_),
+      loops_(new gui::audio::Loops(manager_)),
       songData_(manager_),
       directoryTree_(manager_),
       playbackController_(this, data::editable<AppLayout>()),

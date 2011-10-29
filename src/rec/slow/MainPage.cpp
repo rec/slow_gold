@@ -44,7 +44,7 @@ void MainPage::doLayout(Components* components) {
 
   addToLayout(&panel_);
   loopResizer_.add();
-  addToLayout(&components->loops_);
+  addToLayout(components->loops_.get());
 }
 
 void MainPage::setActive(bool a) {

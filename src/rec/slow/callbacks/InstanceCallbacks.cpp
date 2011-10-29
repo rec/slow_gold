@@ -21,7 +21,7 @@ namespace slow {
 namespace {
 
 void addLoopPoint(Instance* i) {
-  i->components_->loops_.addLoopPoint(i->player_->getTime());
+  i->components_->loops_->addLoopPoint(i->player_->getTime());
 }
 
 void nudgeVolumeDown(Instance* i) {

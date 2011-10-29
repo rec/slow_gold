@@ -18,7 +18,12 @@
 
 namespace rec {
 
+namespace gui { class SongData; }
+
+namespace gui { namespace audio { class Loops; }}
+namespace gui { namespace audio { class PlayerController; }}
 namespace gui { namespace audio { class TimeController; }}
+namespace gui { namespace audio { class TransportController; }}
 
 namespace slow {
 
@@ -32,7 +37,7 @@ struct Components {
   ApplicationCommandManager* manager_;
   ptr<gui::audio::TimeController> timeController_;
 
-  gui::audio::Loops loops_;
+  ptr<gui::audio::Loops> loops_;
   gui::SongData songData_;
   gui::audio::PlayerController playerController_;
   gui::audio::TransportController transportController_;
