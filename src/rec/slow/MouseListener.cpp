@@ -139,7 +139,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     Mode::Action action = getClickAction(e);
     if (action == Mode::DRAG) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
-      ZoomProto zoom(DataListener<ZoomProto>::data_->get());
+      widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::data_->get());
       RealTime length = player()->length();
       RealTime end = zoom.has_end() ? RealTime(zoom.end()) : length;
       RealTime size = end - zoom.begin();
@@ -149,7 +149,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       zoom.set_end(end);
 
       zoom.set_end(zoom.begin() + size);
-      DataListener<ZoomProto>::data_->set(zoom);
+      DataListener<widget::waveform::ZoomProto>::data_->set(zoom);
     }
 
   } else if (e.eventComponent->getName() == "Cursor") {

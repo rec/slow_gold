@@ -26,8 +26,6 @@ class SlowWindow;
 typedef audio::source::Player Player;
 
 typedef widget::waveform::Waveform Waveform;
-typedef widget::waveform::WaveformProto WaveformProto;
-typedef widget::waveform::ZoomProto ZoomProto;
 
 // A single instance of Slow.  Right now there's only one per application but in
 // future there might be more than one.  This is where all the Broadcasters live
