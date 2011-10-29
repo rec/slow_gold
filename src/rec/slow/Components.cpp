@@ -6,6 +6,7 @@
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
+#include "rec/widget/tree/Root.h"
 
 namespace rec {
 namespace slow {
@@ -17,7 +18,7 @@ Components::Components(Instance* instance)
       songData_(new gui::SongData(manager_)),
       playerController_(new gui::audio::PlayerController),
       transportController_(new gui::audio::TransportController),
-      directoryTree_(manager_),
+      directoryTree_(new widget::tree::Root(manager_)),
       playbackController_(new PlaybackController(this,
                                                  data::editable<AppLayout>())),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {

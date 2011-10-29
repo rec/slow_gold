@@ -16,6 +16,7 @@
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/Undo.h"
+#include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
 
 namespace rec {
@@ -43,7 +44,7 @@ Instance::Instance(SlowWindow* window)
   WaveformComp* waveform = &components_->waveform_;
   waveform->dropBroadcaster()->addListener(currentFile_.get());
 
-  widget::tree::Root* root = &components_->directoryTree_;
+  widget::tree::Root* root = components_->directoryTree_.get();
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(currentFile_.get());
 

@@ -8,6 +8,7 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/Directory.h"
+#include "rec/widget/tree/Root.h"
 
 namespace rec {
 namespace slow {
@@ -66,7 +67,7 @@ struct Priority {
 };
 
 int navigator(Instance* i) {
-  i->components_->directoryTree_.checkVolumes();
+  i->components_->directoryTree_->checkVolumes();
   return Period::NAVIGATOR;
 }
 
@@ -75,7 +76,7 @@ thread::Result fill(Instance* i) {
 }
 
 thread::Result directory(Instance* i) {
-  return i->components_->directoryTree_.run() ?
+  return i->components_->directoryTree_->run() ?
     thread::YIELD : static_cast<thread::Result>(Period::DIRECTORY);
 }
 

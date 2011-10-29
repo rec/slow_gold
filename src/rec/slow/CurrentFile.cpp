@@ -8,6 +8,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Threads.h"
+#include "rec/widget/tree/Root.h"
 
 namespace rec {
 namespace slow {
@@ -21,7 +22,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 
     LOG_IF(ERROR, files.file_size() != 1);
 
-  } else if (dropFiles.target_ == components()->directoryTree_.treeView()) {
+  } else if (dropFiles.target_ == components()->directoryTree_->treeView()) {
     using file::getFile;
 
     typedef std::set<string> FileSet;
@@ -48,11 +49,11 @@ void CurrentFile::operator()(const VirtualFile& f) {
   }
 
   components()->playerController_->clearLevels();
-  components()->directoryTree_.refreshNode(oldFile);
+  components()->directoryTree_->refreshNode(oldFile);
 
   bool isEmpty = file::empty(f);
   components()->waveform_.setEmpty(isEmpty);
-  components()->directoryTree_.refreshNode(f);
+  components()->directoryTree_->refreshNode(f);
 
   if (isEmpty) {
     components()->waveform_.setLength(0);

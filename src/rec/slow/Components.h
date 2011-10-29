@@ -7,7 +7,6 @@
 #include "rec/slow/Slow.h"
 #include "rec/slow/Target.h"
 #include "rec/util/thread/Trash.h"
-#include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
@@ -18,6 +17,7 @@ namespace gui { namespace audio { class Loops; }}
 namespace gui { namespace audio { class PlayerController; }}
 namespace gui { namespace audio { class TimeController; }}
 namespace gui { namespace audio { class TransportController; }}
+namespace widget { namespace tree { class Root; }}
 
 namespace slow {
 
@@ -39,7 +39,7 @@ struct Components {
   ptr<gui::audio::PlayerController> playerController_;
   ptr<gui::audio::TransportController> transportController_;
 
-  widget::tree::Root directoryTree_;
+  ptr<widget::tree::Root> directoryTree_;
   WaveformComp waveform_;
 
   ptr<PlaybackController> playbackController_;

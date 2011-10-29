@@ -10,6 +10,7 @@
 #include "rec/slow/Slow.h"
 #include "rec/slow/PlaybackController.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Zoom.h"
 
@@ -38,7 +39,7 @@ void MainPage::paint(Graphics& g) {
 }
 
 void MainPage::doLayout(Components* components) {
-  panel_.addToLayout(components->directoryTree_.treeView());
+  panel_.addToLayout(components->directoryTree_->treeView());
   directoryResizer_.add();
   panel_.addToLayout(&components->waveform_);
   waveformResizer_.add();
