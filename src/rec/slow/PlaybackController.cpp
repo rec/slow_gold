@@ -14,7 +14,7 @@ PlaybackController::PlaybackController(Components* comp, data::Editable* e)
       timeControllerResizer_(Address("clock_x"), this, 1, e),
       songDataResizer_(Address("songdata_x"), this, 3, e),
       stretchyResizer_(Address("stretchy_y"), &panel_, 1, e) {
-  addToLayout(&comp->timeController_);
+  addToLayout(comp->timeController_.get());
   timeControllerResizer_.add(5);
 
   addToLayout(&comp->songData_);

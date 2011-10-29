@@ -46,7 +46,7 @@ Instance::Instance(SlowWindow* window)
 
   components_->transportController_.addListener(target_->targetManager());
 
-  player_->timeBroadcaster()->addListener(&components_->timeController_);
+  player_->timeBroadcaster()->addListener(components_->timeController_.get());
   player_->timeBroadcaster()->addListener(waveform->timeCursor());
 
   player_->level()->addListener(components_->playerController_.levelListener());

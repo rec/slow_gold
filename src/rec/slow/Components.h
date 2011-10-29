@@ -5,7 +5,6 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/PlayerController.h"
-#include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/MainPage.h"
@@ -18,16 +17,20 @@
 #include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
+
+namespace gui { namespace audio { class TimeController; }}
+
 namespace slow {
 
 typedef gui::DropTarget<Waveform> WaveformComp;
 
 struct Components {
   explicit Components(Instance*);
+  ~Components();
   void setActive(bool);
 
   ApplicationCommandManager* manager_;
-  gui::audio::TimeController timeController_;
+  ptr<gui::audio::TimeController> timeController_;
 
   gui::audio::Loops loops_;
   gui::SongData songData_;

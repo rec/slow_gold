@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E28B9179145CB03D003CF4AC</string>
+						<string>E28B918A145CB222003CF4AC</string>
 						<key>history</key>
 						<array>
 							<string>E28B9172145CB027003CF4AC</string>
@@ -365,7 +365,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E28B9178145CB03D003CF4AC</string>
+										<string>E28B9189145CB222003CF4AC</string>
 										<key>history</key>
 										<array>
 											<string>E2109582144F593300FD2AB6</string>
@@ -608,7 +608,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E28B917A145CB03D003CF4AC</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 		<string>E28B916E145CAFD1003CF4AC</string>
@@ -631,12 +630,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Components.cpp</string>
+								<string>PlaybackController.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -653,8 +654,6 @@
 							<string>623pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
