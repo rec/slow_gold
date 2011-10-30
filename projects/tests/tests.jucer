@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="ikRJrMQVX" name="tests">
+  <MAINGROUP id="nH08d4qab" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -927,10 +927,6 @@
               name="MouseListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MouseListener.h" id="eyBoBpB0K"
               name="MouseListener.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/PlaybackController.cpp"
-              id="5Cdg3CmFq" name="PlaybackController.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/PlaybackController.h" id="S5oFU8QHv"
-              name="PlaybackController.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Position.cpp" id="JDGMhudhi"
               name="Position.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Position.h" id="cXJkFO4YI"
@@ -1393,7 +1389,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="HDgSmCEep" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="YgQ5dK8B0" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

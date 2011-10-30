@@ -28,10 +28,15 @@ class MainPage {
  private:
   gui::Layout mainPanel_;
   gui::Layout nonLoopPanel_;
+  gui::Layout playbackPanel_;
+  gui::Layout controllerPanel_;
 
   gui::SetterResizer directoryResizer_;
   gui::SetterResizer waveformResizer_;
   gui::SetterResizer loopResizer_;
+  gui::SetterResizer timeControllerResizer_;
+  gui::SetterResizer songDataResizer_;
+  gui::SetterResizer stretchyResizer_;
 
   double length_;
 

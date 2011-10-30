@@ -19,7 +19,6 @@ namespace slow {
 
 class Instance;
 class MainPage;
-class PlaybackController;
 
 struct Components {
   explicit Components(Instance*);
@@ -37,7 +36,6 @@ struct Components {
   ptr<widget::tree::Root> directoryTree_;
   ptr<widget::waveform::Waveform> waveform_;
 
-  ptr<PlaybackController> playbackController_;
   ptr<MainPage> mainPage_;
 };
 

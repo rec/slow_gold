@@ -191,7 +191,6 @@
 		9170501552140154E4968517 = { isa = PBXBuildFile; fileRef = 92E745048C0393295B0D8953; };
 		153524F14713F301CE8BE6F3 = { isa = PBXBuildFile; fileRef = 920B6CFC9380A160FC6C10C0; };
 		70FAA02F75C4740227D3D083 = { isa = PBXBuildFile; fileRef = 17D5E740289D4E8B3BA4B93F; };
-		39BA8698CEE21F2CD6AAD2D3 = { isa = PBXBuildFile; fileRef = D6081B32F779D971DC96EB48; };
 		E2186D616D7CC77FB7E66F86 = { isa = PBXBuildFile; fileRef = 6F9CC0E4BB615C248F06B6A0; };
 		CF8A50B6E02503B8941A6E58 = { isa = PBXBuildFile; fileRef = 72656D5B09209BA0732F92AD; };
 		8F646B69B227AEF1414021F5 = { isa = PBXBuildFile; fileRef = 7BCF567F5AF4325C8088E562; };
@@ -718,8 +717,6 @@
 		0E383591888722EAD407EB12 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Menus.h; path = ../../../../src/rec/slow/Menus.h; sourceTree = "SOURCE_ROOT"; };
 		17D5E740289D4E8B3BA4B93F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MouseListener.cpp; path = ../../../../src/rec/slow/MouseListener.cpp; sourceTree = "SOURCE_ROOT"; };
 		C74F9DD166D2051F6D499291 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MouseListener.h; path = ../../../../src/rec/slow/MouseListener.h; sourceTree = "SOURCE_ROOT"; };
-		D6081B32F779D971DC96EB48 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackController.cpp; path = ../../../../src/rec/slow/PlaybackController.cpp; sourceTree = "SOURCE_ROOT"; };
-		A87D1B89D1B89392B60E8047 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaybackController.h; path = ../../../../src/rec/slow/PlaybackController.h; sourceTree = "SOURCE_ROOT"; };
 		6F9CC0E4BB615C248F06B6A0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Position.cpp; path = ../../../../src/rec/slow/Position.cpp; sourceTree = "SOURCE_ROOT"; };
 		0D056429BFE8BFF4132F1C0D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Position.h; path = ../../../../src/rec/slow/Position.h; sourceTree = "SOURCE_ROOT"; };
 		72656D5B09209BA0732F92AD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SlowWindow.cpp; path = ../../../../src/rec/slow/SlowWindow.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1395,8 +1392,6 @@
 				0E383591888722EAD407EB12,
 				17D5E740289D4E8B3BA4B93F,
 				C74F9DD166D2051F6D499291,
-				D6081B32F779D971DC96EB48,
-				A87D1B89D1B89392B60E8047,
 				6F9CC0E4BB615C248F06B6A0,
 				0D056429BFE8BFF4132F1C0D,
 				72656D5B09209BA0732F92AD,
@@ -1667,7 +1662,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		5A069702347B896B5AC6737F = { isa = PBXGroup; children = (
+		C3604B85EF7FCF5D911B62D9 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1694,7 +1689,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				5A069702347B896B5AC6737F,
+				C3604B85EF7FCF5D911B62D9,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1954,7 +1949,6 @@
 				9170501552140154E4968517,
 				153524F14713F301CE8BE6F3,
 				70FAA02F75C4740227D3D083,
-				39BA8698CEE21F2CD6AAD2D3,
 				E2186D616D7CC77FB7E66F86,
 				CF8A50B6E02503B8941A6E58,
 				8F646B69B227AEF1414021F5,

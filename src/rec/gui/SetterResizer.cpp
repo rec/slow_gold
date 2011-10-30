@@ -33,10 +33,6 @@ void SetterResizer::moved() {
     editable_->set(static_cast<uint32>(get()), address_);
 }
 
-void SetterResizer::add(int size) {
-  layout_->addToLayout(this, size, size, size);
-}
-
 void SetterResizer::paint(Graphics& g) {
   g.fillAll(juce::Colour(0xffDDDDF8));
   StretchableLayoutResizerBar::paint(g);

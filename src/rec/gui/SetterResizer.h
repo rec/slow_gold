@@ -19,7 +19,6 @@ class SetterResizer : public StretchableLayoutResizerBar {
                 Editable* editable);
 
   int get() const;
-  void add(int size = 7);
   virtual void moved();
   virtual void paint(Graphics& g);
   virtual void setActive(bool a);

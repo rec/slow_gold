@@ -155,27 +155,6 @@ class AppLayout : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 loops_x() const;
   inline void set_loops_x(::google::protobuf::uint32 value);
   
-  // optional bool full_directory = 8 [default = false];
-  inline bool has_full_directory() const;
-  inline void clear_full_directory();
-  static const int kFullDirectoryFieldNumber = 8;
-  inline bool full_directory() const;
-  inline void set_full_directory(bool value);
-  
-  // optional bool full_waveform = 9 [default = false];
-  inline bool has_full_waveform() const;
-  inline void clear_full_waveform();
-  static const int kFullWaveformFieldNumber = 9;
-  inline bool full_waveform() const;
-  inline void set_full_waveform(bool value);
-  
-  // optional bool full_controller = 10 [default = false];
-  inline bool has_full_controller() const;
-  inline void clear_full_controller();
-  static const int kFullControllerFieldNumber = 10;
-  inline bool full_controller() const;
-  inline void set_full_controller(bool value);
-  
   // @@protoc_insertion_point(class_scope:rec.slow.AppLayout)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -190,14 +169,11 @@ class AppLayout : public ::google::protobuf::Message {
   ::google::protobuf::uint32 clock_x_;
   ::google::protobuf::uint32 songdata_x_;
   ::google::protobuf::uint32 loops_x_;
-  bool full_directory_;
-  bool full_waveform_;
-  bool full_controller_;
   friend void  protobuf_AddDesc_rec_2fslow_2fAppLayout_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fAppLayout_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fAppLayout_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -363,54 +339,6 @@ inline ::google::protobuf::uint32 AppLayout::loops_x() const {
 inline void AppLayout::set_loops_x(::google::protobuf::uint32 value) {
   _set_bit(8);
   loops_x_ = value;
-}
-
-// optional bool full_directory = 8 [default = false];
-inline bool AppLayout::has_full_directory() const {
-  return _has_bit(9);
-}
-inline void AppLayout::clear_full_directory() {
-  full_directory_ = false;
-  _clear_bit(9);
-}
-inline bool AppLayout::full_directory() const {
-  return full_directory_;
-}
-inline void AppLayout::set_full_directory(bool value) {
-  _set_bit(9);
-  full_directory_ = value;
-}
-
-// optional bool full_waveform = 9 [default = false];
-inline bool AppLayout::has_full_waveform() const {
-  return _has_bit(10);
-}
-inline void AppLayout::clear_full_waveform() {
-  full_waveform_ = false;
-  _clear_bit(10);
-}
-inline bool AppLayout::full_waveform() const {
-  return full_waveform_;
-}
-inline void AppLayout::set_full_waveform(bool value) {
-  _set_bit(10);
-  full_waveform_ = value;
-}
-
-// optional bool full_controller = 10 [default = false];
-inline bool AppLayout::has_full_controller() const {
-  return _has_bit(11);
-}
-inline void AppLayout::clear_full_controller() {
-  full_controller_ = false;
-  _clear_bit(11);
-}
-inline bool AppLayout::full_controller() const {
-  return full_controller_;
-}
-inline void AppLayout::set_full_controller(bool value) {
-  _set_bit(11);
-  full_controller_ = value;
 }
 
 

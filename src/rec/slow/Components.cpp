@@ -9,7 +9,6 @@
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
-#include "rec/slow/PlaybackController.h"
 #include "rec/slow/Target.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -26,8 +25,6 @@ Components::Components(Instance* instance)
       transportController_(new gui::audio::TransportController),
       directoryTree_(new widget::tree::Root(manager_)),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
-      playbackController_(new PlaybackController(this,
-                                                 data::editable<AppLayout>())),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {
   waveform_->setManager(manager_);
 }
@@ -35,7 +32,6 @@ Components::Components(Instance* instance)
 Components::~Components() {}
 
 void Components::setActive(bool a) {
-  playbackController_->setActive(a);
   mainPage_->setActive(a);
   // mainPage_.resized();
   // setter->applyLater(NULL);
