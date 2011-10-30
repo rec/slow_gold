@@ -12,10 +12,4 @@
 */
 
 #include "AppConfig.h"
-#if defined (JUCER_VS2010_78A501D)
- #include "/Users/tom/Documents/development/juce/amalgamation/juce_amalgamated_template.cpp"
-#elif defined (JUCER_XCODE_MAC_F6D2F4CF)
- #include "../../juce/amalgamation/juce_amalgamated_template.cpp"
-#elif defined (JUCER_VS2008_78A5006)
- #include "../../juce/amalgamation/juce_amalgamated_template.cpp"
-#endif
+#include "../../juce/amalgamation/juce_amalgamated_template.cpp"

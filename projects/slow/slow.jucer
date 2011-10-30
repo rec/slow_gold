@@ -17,8 +17,8 @@
     <XCODE_MAC extraDefs="" extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf"
                juceFolder="../juce" objCExtraSuffix="s5d1u" rtasFolder="~/SDKs/PT_80_SDK"
                targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
-    <VS2010 juceFolder="/Users/tom/Documents/development/juce" libraryType="1"
-            targetFolder="Builds/VisualStudio2010"/>
+    <VS2010 juceFolder="../juce" libraryType="1" targetFolder="Builds/VisualStudio2010"
+            extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."

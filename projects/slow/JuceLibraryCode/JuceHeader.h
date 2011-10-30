@@ -14,13 +14,7 @@
 #define __APPHEADERFILE_SDTHDIBYR__
 
 #include "AppConfig.h"
-#if defined (JUCER_VS2010_78A501D)
- #include "/Users/tom/Documents/development/juce/juce_amalgamated.h"
-#elif defined (JUCER_XCODE_MAC_F6D2F4CF)
- #include "../../juce/juce_amalgamated.h"
-#elif defined (JUCER_VS2008_78A5006)
- #include "../../juce/juce_amalgamated.h"
-#endif
+#include "../../juce/juce_amalgamated.h"
 #include "BinaryData.h"
 
 namespace ProjectInfo
