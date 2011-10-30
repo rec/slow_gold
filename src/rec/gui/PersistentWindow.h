@@ -41,11 +41,9 @@ template <typename Proto>
 void PersistentWindow::computeBounds() {
   data::TypedEditable<Proto>* data = data::editable<Proto>();
   data_ = data;
-  DLOG(INFO) << data->get().ShortDebugString();
   setLimitedBounds(copy(data->get().bounds()));
   setFullScreen(data->get().full_screen());
 }
-
 
 }  // namespace gui
 }  // namespace rec

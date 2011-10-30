@@ -22,31 +22,27 @@ using namespace rec::widget::waveform;
 using data::Address;
 using gui::SetterResizer;
 
-MainPage::MainPage(Components* comp, data::Editable* e)
+MainPage::MainPage(Components* components, data::Editable* e)
     : Layout("MainPage", HORIZONTAL),
       panel_("MainPagePanel", VERTICAL),
       directoryResizer_("directory_y", &panel_, 1, e),
       waveformResizer_("waveform_y", &panel_, 3, e),
       loopResizer_("loops_x", this, 1, e) {
-  doLayout(comp);
+  panel_.addToLayout(components->directoryTree_->treeView(), 75, -1.0, -0.2);
+  directoryResizer_.add();
+  panel_.addToLayout(components->waveform_.get(), 50, -1.0, -0.4);
+  waveformResizer_.add();
+  panel_.addToLayout(components->playbackController_.get(), 250, -1.0, -0.4);
+
+  addToLayout(&panel_, 500, -1.0, -0.8);
+  loopResizer_.add();
+  addToLayout(components->loops_.get(), 50, -1.0, -0.2);
 }
 
 MainPage::~MainPage() {}
 
 void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
-}
-
-void MainPage::doLayout(Components* components) {
-  panel_.addToLayout(components->directoryTree_->treeView());
-  directoryResizer_.add();
-  panel_.addToLayout(components->waveform_.get());
-  waveformResizer_.add();
-  panel_.addToLayout(components->playbackController_.get());
-
-  addToLayout(&panel_);
-  loopResizer_.add();
-  addToLayout(components->loops_.get());
 }
 
 void MainPage::setActive(bool a) {

@@ -14,8 +14,8 @@ class Layout : public Component {
          Orientation o = HORIZONTAL,
          bool resizeOther = true)
       : Component(name),
-	    orientation_(o),
-	    resizeOtherDimension_(resizeOther) {
+        orientation_(o),
+        resizeOtherDimension_(resizeOther) {
   }
 
   void setOrientation(Orientation o) { orientation_ = o; }

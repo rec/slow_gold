@@ -19,14 +19,13 @@ class SetterResizer : public StretchableLayoutResizerBar {
                 Editable* editable);
 
   int get() const;
-  void set(int distance);
   void add(int size = 7);
   virtual void moved();
   virtual void paint(Graphics& g);
-  virtual void setActive(bool a) { active_ = a; }
+  virtual void setActive(bool a);
 
  private:
-  Orientation orientation();
+  void set(int distance);  // delete this?
   void doSet(int distance);
 
   Layout* layout_;

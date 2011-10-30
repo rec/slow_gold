@@ -43,8 +43,8 @@ struct Instance {
   ptr<CurrentFile> currentFile_;
   ptr<CurrentTime> currentTime_;
   ptr<BufferFiller> bufferFiller_;
-  ptr<Menus> menus_;  // TODO:  move into "Target"
-  ptr<Target> target_;  // TODO: rename to "Commands".
+  ptr<Menus> menus_;
+  ptr<Target> target_;
   ptr<MouseListener> mouseListener_;
   ptr<Threads> threads_;
 

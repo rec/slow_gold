@@ -16,16 +16,16 @@ PlaybackController::PlaybackController(Components* comp, data::Editable* e)
       timeControllerResizer_(Address("clock_x"), this, 1, e),
       songDataResizer_(Address("songdata_x"), this, 3, e),
       stretchyResizer_(Address("stretchy_y"), &panel_, 1, e) {
-  addToLayout(comp->timeController_.get());
+  addToLayout(comp->timeController_.get(), 75, -1.0, -0.20);
   timeControllerResizer_.add(5);
 
-  addToLayout(comp->songData_.get());
+  addToLayout(comp->songData_.get(), 200, -1.0, -0.40);
   songDataResizer_.add(5);
 
   addToLayout(&panel_);
-  panel_.addToLayout(comp->playerController_.get(), 20, -1.0, 225);
-  stretchyResizer_.add(5);
 
+  panel_.addToLayout(comp->playerController_.get(), 250, -1.0, -0.75);
+  stretchyResizer_.add(5);
   panel_.addToLayout(comp->transportController_.get(), 24);
 }
 

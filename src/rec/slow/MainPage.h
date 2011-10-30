@@ -26,8 +26,6 @@ class MainPage : public gui::Layout {
   void setActive(bool a);
 
  private:
-  void doLayout(Components*);
-
   gui::Layout panel_;
 
   gui::SetterResizer directoryResizer_;
