@@ -26,7 +26,7 @@ PlaybackController::PlaybackController(Components* comp, data::Editable* e)
 
   controllerPanel_.addToLayout(comp->playerController_.get(), 250, -1.0, -0.75);
   stretchyResizer_.add(5);
-  controllerPanel_ .addToLayout(comp->transportController_.get(), 24);
+  controllerPanel_.addToLayout(comp->transportController_.get(), 24);
 }
 
 void PlaybackController::setActive(bool a) {
