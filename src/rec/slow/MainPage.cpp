@@ -24,19 +24,20 @@ using gui::SetterResizer;
 
 MainPage::MainPage(Components* components, data::Editable* e)
     : Layout("MainPage", HORIZONTAL),
-      mainPanel_("MainPagePanel", VERTICAL),
-      directoryResizer_("directory_y", &mainPanel_, 1, e),
-      waveformResizer_("waveform_y", &mainPanel_, 3, e),
-      loopResizer_("loops_x", this, 1, e) {
-  mainPanel_.addToLayout(components->directoryTree_->treeView(), 75, -1.0, -0.2);
+      mainPanel_(*this),
+      nonLoopPanel_("MainPagePanel", VERTICAL),
+      directoryResizer_("directory_y", &nonLoopPanel_, 1, e),
+      waveformResizer_("waveform_y", &nonLoopPanel_, 3, e),
+      loopResizer_("loops_x", &mainPanel_, 1, e) {
+  nonLoopPanel_.addToLayout(components->directoryTree_->treeView(), 75, -1.0, -0.2);
   directoryResizer_.add();
-  mainPanel_.addToLayout(components->waveform_.get(), 50, -1.0, -0.4);
+  nonLoopPanel_.addToLayout(components->waveform_.get(), 50, -1.0, -0.4);
   waveformResizer_.add();
-  mainPanel_.addToLayout(components->playbackController_.get(), 250, -1.0, -0.4);
+  nonLoopPanel_.addToLayout(components->playbackController_.get(), 250, -1.0, -0.4);
 
-  addToLayout(&mainPanel_, 500, -1.0, -0.8);
+  mainPanel_.addToLayout(&nonLoopPanel_, 500, -1.0, -0.8);
   loopResizer_.add();
-  addToLayout(components->loops_.get(), 50, -1.0, -0.2);
+  mainPanel_.addToLayout(components->loops_.get(), 50, -1.0, -0.2);
 }
 
 MainPage::~MainPage() {}
