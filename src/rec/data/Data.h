@@ -47,7 +47,7 @@ void set(const Proto& p, const VirtualFile& f, const Address& a) {
 }
 
 template <typename Proto>
-const Proto get(const VirtualFile& f = file::none()) {
+const Proto get(const VirtualFile& f) {
   return editable<Proto>(f)->get();
 }
 
