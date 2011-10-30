@@ -22,14 +22,12 @@ PersistentWindow::PersistentWindow(const String& name,
 PersistentWindow::~PersistentWindow() {}
 
 void PersistentWindow::setLimitedBounds(const Rect& b) {
+  setResizeLimits(600, 440, 8192, 8192);
   Rect bounds(b);
-  bounds.setWidth(juce::jmax(bounds.getWidth(), 500));
-  bounds.setHeight(juce::jmax(bounds.getHeight(), 500));
   bounds.setX(juce::jmax(bounds.getX(), 10));
   bounds.setY(juce::jmax(bounds.getY(), 10));
   setBounds(bounds);
   setResizable(true, false); // resizability is a property of ResizableWindow
-  setResizeLimits(500, 500, 8192, 8192);
 }
 
 void PersistentWindow::resized() {
