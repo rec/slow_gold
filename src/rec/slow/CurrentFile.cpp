@@ -52,7 +52,7 @@ void CurrentFile::operator()(const VirtualFile& f) {
   components()->playerController_->clearLevels();
   components()->directoryTree_->refreshNode(oldFile);
 
-  bool isEmpty = file::empty(f);
+  bool isEmpty = file::empty(file_);
   components()->waveform_->setEmpty(isEmpty);
   components()->directoryTree_->refreshNode(f);
 
@@ -61,12 +61,12 @@ void CurrentFile::operator()(const VirtualFile& f) {
   } else {
     using audio::util::ThumbnailBuffer;
 
-    ThumbnailBuffer* thumbnailBuffer = bufferFiller()->thumbnailBuffer();
-    if (!thumbnailBuffer->setReader(f, music::createMusicFileReader(f))) {
-      LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
+    ThumbnailBuffer* thumbnail = bufferFiller()->thumbnailBuffer();
+    if (!thumbnail->setReader(file_, music::createMusicFileReader(file_))) {
+      LOG(ERROR) << "Unable to read file " << getFullDisplayName(file_);
       return;
     }
-    components()->waveform_->setLength(thumbnailBuffer->buffer()->length());
+    components()->waveform_->setLength(thumbnail->buffer()->length());
     threads()->fillThread()->notify();
   }
 }

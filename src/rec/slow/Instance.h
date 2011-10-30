@@ -13,19 +13,18 @@ namespace widget { namespace waveform { class ZoomProto; }}
 
 namespace slow {
 
+class BufferFiller;
 class Components;
 class CurrentFile;
 class CurrentTime;
 class Menus;
-class BufferFiller;
 class MouseListener;
+class SlowWindow;
 class Target;
 class Threads;
-class SlowWindow;
 
-// A single instance of Slow.  Right now there's only one per application but in
-// future there might be more than one.  This is where all the Broadcasters live
-// and all the file and stretch setting persistent data, too.
+// A single instance of the Slow program.  Right now there's only one per
+// application but in future there might be more than one.
 struct Instance {
   explicit Instance(SlowWindow* window);
   ~Instance();
@@ -40,9 +39,11 @@ struct Instance {
   ptr<Components> components_;
   ptr<audio::Device> device_;
   ptr<audio::source::Player> player_;
+
   ptr<CurrentFile> currentFile_;
   ptr<CurrentTime> currentTime_;
   ptr<BufferFiller> bufferFiller_;
+
   ptr<Menus> menus_;
   ptr<Target> target_;
   ptr<MouseListener> mouseListener_;
