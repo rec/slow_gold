@@ -69,6 +69,7 @@ void CurrentFile::operator()(const VirtualFile& f) {
     components()->waveform_->setLength(thumbnail->buffer()->length());
     threads()->fillThread()->notify();
   }
+  data::set(file_);
 }
 
 }  // namespace slow

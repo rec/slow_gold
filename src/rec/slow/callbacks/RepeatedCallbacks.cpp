@@ -72,5 +72,5 @@ void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
   }
 }
 
-}  // namespace slow2
+}  // namespace slow
 }  // namespace rec
