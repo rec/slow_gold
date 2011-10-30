@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="eJHjotM9J" name="command">
+  <MAINGROUP id="NWsORmLGa" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -907,8 +907,6 @@
               name="Position.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Position.h" id="Yuq7JMSqm"
               name="Position.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/Slow.h" id="BbsTdmCSv" name="Slow.h"
-              resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/SlowWindow.cpp" id="jXQ2IxVxV"
               name="SlowWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/SlowWindow.h" id="6YpdFBvwN"
@@ -1335,7 +1333,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="hJERyAhST" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="PZwxX5eTt" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -23,12 +23,6 @@ int SetterResizer::get() const {
   return (layout_->orientation() == VERTICAL) ? getY() : getX();
 }
 
-// void SetterResizer::set(int distance) {
-//   doSet(distance);
-//   DLOG(INFO) << "SetterResizer::set";
-//   hasBeenMoved();
-// }
-
 void SetterResizer::doSet(int distance) {
   MessageManagerLock l;
   layout_->layoutManager()->setItemPosition(index_, distance);
@@ -45,7 +39,6 @@ void SetterResizer::add(int size) {
 
 void SetterResizer::paint(Graphics& g) {
   g.fillAll(juce::Colour(0xffDDDDF8));
-  //g.fillAll(juce::Colour(0xffB0C0F0));
   StretchableLayoutResizerBar::paint(g);
 }
 

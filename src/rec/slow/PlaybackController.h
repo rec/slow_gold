@@ -17,7 +17,7 @@ class PlaybackController : public gui::Layout {
   void setActive(bool a);
 
  private:
-  gui::Layout panel_;
+  gui::Layout controllerPanel_;
 
   gui::SetterResizer timeControllerResizer_;
   gui::SetterResizer songDataResizer_;

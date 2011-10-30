@@ -463,7 +463,6 @@
 		50F9239D4CF920DDA2B1AAFE /* AAFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AAFilter.cpp; path = ../../../../src/rec/audio/soundtouch/AAFilter.cpp; sourceTree = SOURCE_ROOT; };
 		5138BD32CC0E495AFDB1A128 /* TableController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TableController.cpp; path = ../../../../src/rec/gui/TableController.cpp; sourceTree = SOURCE_ROOT; };
 		527348F89F703BC763FE674E /* AAFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AAFilter.h; path = ../../../../src/rec/audio/soundtouch/AAFilter.h; sourceTree = SOURCE_ROOT; };
-		532BBC72B904CBC019C97896 /* Slow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Slow.h; path = ../../../../src/rec/slow/Slow.h; sourceTree = SOURCE_ROOT; };
 		54E57399D7FC53F08FE3F2BE /* CleanName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CleanName.h; path = ../../../../src/rec/music/CleanName.h; sourceTree = SOURCE_ROOT; };
 		550152193EB8E4C95F11184F /* Stretch.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.pb.cc; path = ../../../../genfiles/proto/rec/audio/stretch/Stretch.pb.cc; sourceTree = SOURCE_ROOT; };
 		55295BC8F2C653BA4552E683 /* scalar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scalar.h; path = ../../../../src/rec/data/yaml/src/scalar.h; sourceTree = SOURCE_ROOT; };
@@ -928,16 +927,6 @@
 			name = widget;
 			sourceTree = "<group>";
 		};
-		138D77F8739D49D11E604831 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		13B7AF66DC71626F21BA5581 /* cd */ = {
 			isa = PBXGroup;
 			children = (
@@ -966,6 +955,16 @@
 				1D73B801BFF1E30FF578CB41 /* Metadata.pb.h */,
 			);
 			name = music;
+			sourceTree = "<group>";
+		};
+		17F4C91DB93FE088B1C9ED1D /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
 			sourceTree = "<group>";
 		};
 		183B6F7BF37E28157716B203 /* icon */ = {
@@ -1604,7 +1603,6 @@
 				E5DF2E80ED07DBB8E37F8CC3 /* PlaybackController.h */,
 				ACFED4DBD6A0A44AAC77A22D /* Position.cpp */,
 				49677820CA36070A40901889 /* Position.h */,
-				532BBC72B904CBC019C97896 /* Slow.h */,
 				BFC76053247EE3C690919E29 /* SlowWindow.cpp */,
 				061FBB036746790735D492AB /* SlowWindow.h */,
 				B821697666437A71BDF9E1EE /* Target.cpp */,
@@ -1687,7 +1685,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				138D77F8739D49D11E604831 /* Slow */,
+				17F4C91DB93FE088B1C9ED1D /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,

@@ -679,7 +679,6 @@
 		A87D1B89D1B89392B60E8047 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaybackController.h; path = ../../../../src/rec/slow/PlaybackController.h; sourceTree = "SOURCE_ROOT"; };
 		6F9CC0E4BB615C248F06B6A0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Position.cpp; path = ../../../../src/rec/slow/Position.cpp; sourceTree = "SOURCE_ROOT"; };
 		0D056429BFE8BFF4132F1C0D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Position.h; path = ../../../../src/rec/slow/Position.h; sourceTree = "SOURCE_ROOT"; };
-		16B9A87BAEB573AAFC588C19 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Slow.h; path = ../../../../src/rec/slow/Slow.h; sourceTree = "SOURCE_ROOT"; };
 		72656D5B09209BA0732F92AD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SlowWindow.cpp; path = ../../../../src/rec/slow/SlowWindow.cpp; sourceTree = "SOURCE_ROOT"; };
 		C9BDA80C5CF721F10863962F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SlowWindow.h; path = ../../../../src/rec/slow/SlowWindow.h; sourceTree = "SOURCE_ROOT"; };
 		7BCF567F5AF4325C8088E562 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Target.cpp; path = ../../../../src/rec/slow/Target.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1327,7 +1326,6 @@
 				A87D1B89D1B89392B60E8047,
 				6F9CC0E4BB615C248F06B6A0,
 				0D056429BFE8BFF4132F1C0D,
-				16B9A87BAEB573AAFC588C19,
 				72656D5B09209BA0732F92AD,
 				C9BDA80C5CF721F10863962F,
 				7BCF567F5AF4325C8088E562,
@@ -1580,7 +1578,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		1DB045673889F727F3EF37BC = { isa = PBXGroup; children = (
+		95B5555E4D79A15A9A30398F = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = command; sourceTree = "<group>"; };
@@ -1607,7 +1605,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				1DB045673889F727F3EF37BC,
+				95B5555E4D79A15A9A30398F,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
