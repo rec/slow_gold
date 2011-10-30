@@ -32,7 +32,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
   directoryResizer_.add();
   nonLoopPanel_.addToLayout(components->waveform_.get(), 50, -1.0, -0.4);
   waveformResizer_.add();
-  nonLoopPanel_.addToLayout(components->playbackController_.get(), 250, -1.0, -0.4);
+  nonLoopPanel_.addToLayout(components->playbackController_->panel(), 250, -1.0, -0.4);
 
   mainPanel_.addToLayout(&nonLoopPanel_, 500, -1.0, -0.8);
   loopResizer_.add();

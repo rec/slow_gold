@@ -11,8 +11,7 @@ namespace slow {
 using data::Address;
 
 PlaybackController::PlaybackController(Components* comp, data::Editable* e)
-    : Layout("Main controls"),
-      playbackPanel_(*this),
+    : playbackPanel_("Main controls"),
       controllerPanel_("Main panel", VERTICAL),
       timeControllerResizer_(Address("clock_x"), &playbackPanel_, 1, e),
       songDataResizer_(Address("songdata_x"), &playbackPanel_, 3, e),

@@ -11,13 +11,14 @@ namespace slow {
 
 class Components;
 
-class PlaybackController : public gui::Layout {
+class PlaybackController {
  public:
   explicit PlaybackController(Components* i, data::Editable* setter);
   void setActive(bool a);
+  gui::Layout* panel() { return &playbackPanel_; }
 
  private:
-  gui::Layout& playbackPanel_;
+  gui::Layout playbackPanel_;
   gui::Layout controllerPanel_;
 
   gui::SetterResizer timeControllerResizer_;
