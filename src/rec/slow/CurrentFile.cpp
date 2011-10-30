@@ -21,8 +21,6 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
     if (files.file_size() >= 1)
       data::set(files.file(0));
 
-    LOG_IF(ERROR, files.file_size() != 1);
-
   } else if (dropFiles.target_ == components()->directoryTree_->treeView()) {
     using file::getFile;
 

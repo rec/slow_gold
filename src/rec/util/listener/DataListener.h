@@ -21,27 +21,31 @@ class DataListener : public Listener<const Proto&>,
   virtual ~DataListener() { } // setData(NULL); }
 
   virtual void operator()(const VirtualFile& f) { setFile(f); }
-  virtual void setFile(const VirtualFile& file);
   virtual void operator()(const Proto& p);
   virtual const Proto get() const;
   static const bool UPDATE_ON_MESSAGE_THREAD = !true;  // TODO: fix!
 
  protected:
+  data::TypedEditable<Proto>* data() { return data_; }
   virtual void setData(data::TypedEditable<Proto>* d);
-
- protected:
   virtual void onDataChange(const Proto&) = 0;
+
+ private:
   void doOnDataChange(const Proto& p) { onDataChange(p); }
 
   CriticalSection lock_;
   data::TypedEditable<Proto>* data_;
   Proto proto_;
+
+  virtual void setFile(const VirtualFile& file);
+
   const bool filterDupes_;
 
- private:
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
 
+//
+// Implementations.
 //
 
 template <typename Proto>

@@ -128,21 +128,22 @@ void PlayerController::setData(data::TypedEditable<Gain>* d) {
 
 void PlayerController::comboBoxChanged(juce::ComboBox* box) {
   if (box == &stereoComboBox_) {
-    if (DataListener<StereoProto>::data_) {
+    if (DataListener<StereoProto>::data()) {
       Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
       StereoProto stereo;
       if (sides != STEREO) {
         stereo.set_type(StereoProto::SINGLE);
         stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
       }
-      DataListener<StereoProto>::data_->set(stereo);
+      DataListener<StereoProto>::data()->set(stereo);
     }
   }
 
   if (box == &strategyComboBox_) {
-    if (DataListener<Stretch>::data_) {
-      Stretch::Strategy strategy = static_cast<Stretch::Strategy>(strategyComboBox_.getSelectedId());
-      DataListener<Stretch>::data_->set(data::penum(strategy), Address("strategy"));
+    if (DataListener<Stretch>::data()) {
+      int id = strategyComboBox_.getSelectedId();
+      Stretch::Strategy strategy = static_cast<Stretch::Strategy>(id);
+      DataListener<Stretch>::data()->set(data::penum(strategy), Address("strategy"));
     }
   }
 }

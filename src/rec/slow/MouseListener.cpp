@@ -98,7 +98,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
     RealTime time = waveform->xToTime(e.x);
     Mode::Action action = getClickAction(e);
     if (action == Mode::DRAG)
-      waveformDragStart_ = DataListener<ZoomProto>::data_->get().begin();
+      waveformDragStart_ = DataListener<ZoomProto>::data()->get().begin();
 
     else if (action == Mode::DRAW_LOOP_POINTS)
       components()->loops_->addLoopPoint(time);
@@ -139,7 +139,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     Mode::Action action = getClickAction(e);
     if (action == Mode::DRAG) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
-      widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::data_->get());
+      widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::data()->get());
       RealTime length = player()->length();
       RealTime end = zoom.has_end() ? RealTime(zoom.end()) : length;
       RealTime size = end - zoom.begin();
@@ -149,7 +149,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       zoom.set_end(end);
 
       zoom.set_end(zoom.begin() + size);
-      DataListener<widget::waveform::ZoomProto>::data_->set(zoom);
+      DataListener<widget::waveform::ZoomProto>::data()->set(zoom);
     }
 
   } else if (e.eventComponent->getName() == "Cursor") {
