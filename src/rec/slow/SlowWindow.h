@@ -13,6 +13,9 @@ class SlowWindow : public app::Window {
   SlowWindow();
   virtual ~SlowWindow();
   virtual data::DefaultRegistry* getDefaultRegistry();
+  virtual void paint(Graphics& g) {
+    g.fillAll(juce::Colours::lightgrey);
+  }
 
  protected:
   virtual void doStartup();

@@ -17,16 +17,16 @@ namespace slow {
 
 class Components;
 
-class MainPage : public gui::Layout {
+class MainPage {
  public:
   MainPage(Components*, data::Editable*);
   virtual ~MainPage();
 
-  void paint(Graphics&);
+  gui::Layout* panel() { return &mainPanel_; }
   void setActive(bool a);
 
  private:
-  gui::Layout& mainPanel_;
+  gui::Layout mainPanel_;
   gui::Layout nonLoopPanel_;
 
   gui::SetterResizer directoryResizer_;

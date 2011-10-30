@@ -23,8 +23,7 @@ using data::Address;
 using gui::SetterResizer;
 
 MainPage::MainPage(Components* components, data::Editable* e)
-    : Layout("MainPage", HORIZONTAL),
-      mainPanel_(*this),
+    : mainPanel_("MainPage", HORIZONTAL),
       nonLoopPanel_("MainPagePanel", VERTICAL),
       directoryResizer_("directory_y", &nonLoopPanel_, 1, e),
       waveformResizer_("waveform_y", &nonLoopPanel_, 3, e),
@@ -41,10 +40,6 @@ MainPage::MainPage(Components* components, data::Editable* e)
 }
 
 MainPage::~MainPage() {}
-
-void MainPage::paint(Graphics& g) {
-  g.fillAll(Colours::lightgrey);
-}
 
 void MainPage::setActive(bool a) {
   directoryResizer_.setActive(a);

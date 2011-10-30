@@ -27,7 +27,7 @@ void SlowWindow::doStartup() {
 }
 
 Component* SlowWindow::getMainComponent() {
-  return instance_->components_->mainPage_.get();
+  return instance_->components_->mainPage_->panel();
 }
 
 MenuBarModel* SlowWindow::getMenuBarModel() {

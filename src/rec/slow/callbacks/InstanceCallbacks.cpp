@@ -150,7 +150,7 @@ void zoomOut(Instance* i) {
 }
 
 void audioPreferences(Instance* i) {
-  i->device_->setupPage_->show(i->components_->mainPage_.get());
+  i->device_->setupPage_->show(i->components_->mainPage_->panel());
 }
 
 void closeFile(Instance* i) {
