@@ -29,7 +29,7 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
 
   virtual int getNumRows() {
     ScopedLock l(lock_);
-    return std::max(0, loopPoints_->loop_point_size() - 1);
+    return loopPoints_->loop_point_size();
   }
 
   double near(double x, double y) const { return util::near(x, y, CLOSE); }
@@ -45,7 +45,11 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   bool isNewLoopPoint(RealTime t) const;
   void addLoopPoint(RealTime time);
   void addLoopPoints(const LoopPointList& loops);
-  void setLoopPoints(const LoopPointList& loops) { *loopPoints_ = loops; updateAndRepaint(); }
+  void setLoopPoints(const LoopPointList& loops) {
+    DLOG(INFO) << "setLoopPoints " << loops.ShortDebugString();
+    *loopPoints_ = loops;
+    updateAndRepaint();
+  }
   Range<RealTime> selectionRange() const;
 
   virtual void selectedRowsChanged(int lastRowSelected);

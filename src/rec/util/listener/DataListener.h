@@ -45,7 +45,7 @@ class DataListener : public Listener<const Proto&>,
 };
 
 //
-// Implementations.
+// Implementation.
 //
 
 template <typename Proto>

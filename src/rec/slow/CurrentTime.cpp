@@ -12,6 +12,7 @@ namespace slow {
 const int PRELOAD = 10000;
 
 void CurrentTime::onDataChange(const LoopPointList& loops) {
+  DLOG(INFO) << "CurrentTime::onDataChange";
   timeSelection_ = audio::getTimeSelection(loops, player()->length());
   if (!timeSelection_.empty()) {
     block::BlockSet::const_iterator i = timeSelection_.begin();

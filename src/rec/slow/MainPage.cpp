@@ -25,7 +25,7 @@ using namespace rec::widget::waveform;
 using data::Address;
 using gui::SetterResizer;
 
-MainPage::MainPage(Components* cmps, data::Editable* e)
+MainPage::MainPage(Components* components, data::Editable* e)
     : mainPanel_("MainPage", HORIZONTAL),
       nonLoopPanel_("MainPagePanel", VERTICAL),
       playbackPanel_("Main controls"),
@@ -38,25 +38,28 @@ MainPage::MainPage(Components* cmps, data::Editable* e)
       stretchyResizer_(Address("stretchy_y"), &controllerPanel_, 1, e) {
   mainPanel_.addToLayout(&nonLoopPanel_, 500, -1.0, -0.8);
   mainPanel_.addToLayout(&loopResizer_, 7.0);
-  mainPanel_.addToLayout(cmps->loops_.get(), 80, -1.0, -0.2);
+  mainPanel_.addToLayout(components->loops_.get(), 80, -1.0, -0.2);
 
-  nonLoopPanel_.addToLayout(cmps->directoryTree_->treeView(), 75, -1.0, -0.2);
+  nonLoopPanel_.addToLayout(components->directoryTree_->treeView(),
+                            75, -1.0, -0.2);
   nonLoopPanel_.addToLayout(&directoryResizer_, 7.0);
-  nonLoopPanel_.addToLayout(cmps->waveform_.get(), 50, -1.0, -0.4);
+  nonLoopPanel_.addToLayout(components->waveform_.get(), 50, -1.0, -0.5);
   nonLoopPanel_.addToLayout(&waveformResizer_, 7.0);
-  nonLoopPanel_.addToLayout(&playbackPanel_, 350, -1.0, -0.4);
+  nonLoopPanel_.addToLayout(&playbackPanel_, 300, -1.0, -0.3);
 
-  playbackPanel_.addToLayout(cmps->timeController_.get(), 75, -1.0, -0.20);
+  playbackPanel_.addToLayout(components->timeController_.get(),
+                             75, -1.0, -0.20);
   playbackPanel_.addToLayout(&timeControllerResizer_, 5.0);
 
-  playbackPanel_.addToLayout(cmps->songData_.get(), 150, -1.0, -0.30);
+  playbackPanel_.addToLayout(components->songData_.get(), 150, -1.0, -0.30);
   playbackPanel_.addToLayout(&songDataResizer_, 5.0);
 
   playbackPanel_.addToLayout(&controllerPanel_, 200, -1.0, -0.40);
 
-  controllerPanel_.addToLayout(cmps->transportController_.get(), 30);
+  controllerPanel_.addToLayout(components->transportController_.get(), 30);
   controllerPanel_.addToLayout(&stretchyResizer_, 5);
-  controllerPanel_.addToLayout(cmps->playerController_.get(), 250, -1.0, -0.75);
+  controllerPanel_.addToLayout(components->playerController_.get(),
+                               250, -1.0, -0.75);
 }
 
 MainPage::~MainPage() {}

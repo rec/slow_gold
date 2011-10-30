@@ -27,11 +27,13 @@ class LoopPointDataListener : public DataListener<LoopPointList> {
   explicit LoopPointDataListener(Loops* loops) : loops_(loops) {}
 
   virtual void onDataChange(const LoopPointList& p) {
+    DLOG(INFO) << "LoopPointDataListener::onDataChange " << p.ShortDebugString();
   	MessageManagerLock l;
     loops_->setLoopPoints(p);
   }
 
   virtual void setData(data::TypedEditable<LoopPointList>* d) {
+    DLOG(INFO) << "LoopPointDataListener::setData";
     DataListener<LoopPointList>::setData(d);
     loops_->setUntypedEditable(d);
   }
@@ -150,10 +152,10 @@ void Loops::cut() {
 }
 
 Range<RealTime> Loops::selectionRange() const {
-  int b = 0, size = loopPoints_->loop_point_size() - 1, e;
-  DCHECK_GT(size, 0);
-  for (; b < size && !loopPoints_->loop_point(b).selected(); ++b);
-  for (e = b; e < size && loopPoints_->loop_point(e).selected(); ++e);
+  int b = 0, last = loopPoints_->loop_point_size() - 1, e;
+  DCHECK_GE(last, 0);
+  for (; b < last && !loopPoints_->loop_point(b).selected(); ++b);
+  for (e = b; e < last && loopPoints_->loop_point(e).selected(); ++e);
   return Range<RealTime>(loopPoints_->loop_point(b).time(),
                          loopPoints_->loop_point(e).time());
 }
@@ -194,7 +196,6 @@ void Loops::addLoopPoint(RealTime time) {
   loops.add_loop_point()->set_time(time);
   addLoopPoints(loops);
 }
-
 
 #if 0
 static void print(const string& name, const juce::SparseSet<int>& ss) {
