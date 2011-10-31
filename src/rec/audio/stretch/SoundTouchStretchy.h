@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_STRETCH_SOUNDTOUCHSTRETCHY__
 #define __REC_AUDIO_STRETCH_SOUNDTOUCHSTRETCHY__
 
-#include "rec/audio/stretch/Stretchy.h"
+#include "rec/audio/stretch/Stretcher.h"
 #include "rec/audio/util/Frame.h"
 
 namespace soundtouch { class SoundTouch; }
@@ -10,7 +10,7 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-class SoundTouchStretchy : public Stretchy {
+class SoundTouchStretchy : public Stretcher {
  public:
   static const int INPUT_BUFFER_SAMPLES = 4096;
 
@@ -36,8 +36,6 @@ class SoundTouchStretchy : public Stretchy {
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SoundTouchStretchy);
 };
-
-Stretchy* createSoundTouchStretchy(Source* p, const Stretch& s);
 
 }  // namespace stretch
 }  // namespace audio

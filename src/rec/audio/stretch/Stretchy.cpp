@@ -14,12 +14,12 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-Stretchy::Stretchy(Source* s, const Stretch& stretch) : Wrappy(s) {
-  setStretch(stretch);
+Stretchy::Stretchy(Source* s) : Wrappy(s) {
 }
 
 Stretchy::~Stretchy() {}
 
+#if 0
 // static
 Stretchy* Stretchy::create(Source* p, const Stretch& s) {
   switch (s.strategy()) {
@@ -28,6 +28,7 @@ Stretchy* Stretchy::create(Source* p, const Stretch& s) {
    default: return NULL;
   }
 }
+#endif
 
 int64 Stretchy::getTotalLength() const {
   ScopedLock l(lock_);
@@ -44,6 +45,14 @@ void Stretchy::setNextReadPosition(int64 position) {
   source()->setNextReadPosition(static_cast<int64>(position / timeScale_));
 }
 
+static Stretcher* makeStretcher(Source* source, const Stretch& stretch) {
+  switch (stretch.strategy()) {
+   case Stretch::AUDIO_MAGIC: return new AudioMagicStretchy(source, stretch);
+   case Stretch::SOUNDTOUCH: return new SoundTouchStretchy(source, stretch);
+   default: return NULL;
+  }
+}
+
 void Stretchy::setStretch(const stretch::Stretch& stretch) {
   ScopedLock l(lock_);
   channels_ = stretch.channels();
@@ -58,7 +67,9 @@ void Stretchy::setStretch(const stretch::Stretch& stretch) {
     return;
   }
 
-  initializeStretcher(stretch);
+  stretcher_.reset(makeStretcher(source(), stretch));
+  if (!stretcher_)
+    bypass_ = true;
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -72,7 +83,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   if (bypass)
     Wrappy::getNextAudioBlock(info);
   else
-    nextStretchedAudioBlock(info);
+    stretcher_->nextStretchedAudioBlock(info);
 }
 
 }  // namespace stretch

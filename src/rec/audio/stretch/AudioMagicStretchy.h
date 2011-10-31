@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
 #define __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
 
-#include "rec/audio/stretch/Stretchy.h"
+#include "rec/audio/stretch/Stretcher.h"
 
 class AudioTimeScaler;
 
@@ -9,14 +9,13 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-class AudioMagicStretchy : public Stretchy {
+class AudioMagicStretchy : public Stretcher {
  public:
   static const int SAMPLE_BUFFER_SIZE = 1000;
 
-  AudioMagicStretchy(PositionableAudioSource* s, const Stretch& stretch);
+  AudioMagicStretchy(PositionableAudioSource* source, const Stretch& stretch);
 
  protected:
-  virtual void initializeStretcher(const Stretch& stretch);
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info);
 
  private:
@@ -28,9 +27,6 @@ class AudioMagicStretchy : public Stretchy {
   ptr<AudioTimeScaler> scaler_;
   ptr<AudioSampleBuffer> buffer_;
 };
-
-Stretchy* createAudioMagicStretchy(
-    Source* p, const Stretch& s = Stretch::default_instance());
 
 }  // namespace stretch
 }  // namespace audio

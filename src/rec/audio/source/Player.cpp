@@ -31,7 +31,7 @@ Player::~Player() {
 void Player::fillSources() {
   timer_ = new Timer();
   selection_ = new Selection(timer_);
-  stretchy_ = Stretchy::create(selection_);
+  stretchy_ = new Stretchy(selection_);
   stereo_ = new Stereo(stretchy_);
   level_.setSource(stereo_);
 }

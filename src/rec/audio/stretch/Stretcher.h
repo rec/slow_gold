@@ -11,12 +11,16 @@ class Stretch;
 
 class Stretcher {
  public:
-  Stretcher() {}
-  virtual void initializeStretcher(const Stretch&) = 0;
+  Stretcher(PositionableAudioSource* s) : source_(s) {}
+
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&) = 0;
   virtual ~Stretcher() {}
 
+ protected:
+  PositionableAudioSource* source() { return source_; }
+
  private:
+  PositionableAudioSource* source_;
   DISALLOW_COPY_AND_ASSIGN(Stretcher);
 };
 

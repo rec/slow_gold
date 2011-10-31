@@ -8,10 +8,7 @@ namespace audio {
 namespace stretch {
 
 AudioMagicStretchy::AudioMagicStretchy(PositionableAudioSource* s, const Stretch& stretch)
-    : Stretchy(s, stretch), scaler_(new AudioTimeScaler) {
-}
-
-void AudioMagicStretchy::initializeStretcher(const Stretch& stretch) {
+    : Stretcher(s), scaler_(new AudioTimeScaler) {
   channels_ = stretch.channels();
   outOffset_.resize(channels_);
   scaler_.reset(new AudioTimeScaler);
@@ -60,11 +57,6 @@ int64 AudioMagicStretchy::processOneChunk(const AudioSourceChannelInfo& info) {
 
   return scaler_->Process(buffer_->getArrayOfChannels(), &outOffset_.front(),
                           inSampleCount, info.numSamples);
-}
-
-Stretchy* createAudioMagicStretchy(PositionableAudioSource* p,
-                                           const Stretch& s) {
-  return new AudioMagicStretchy(p, s);
 }
 
 }  // namespace stretch

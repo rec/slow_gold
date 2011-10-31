@@ -9,7 +9,7 @@ namespace stretch {
 using soundtouch::SoundTouch;
 
 SoundTouchStretchy::SoundTouchStretchy(PositionableAudioSource* s, const Stretch& stretch)
-    : Stretchy(s, stretch), buffer_(2, INPUT_BUFFER_SAMPLES) {
+    : Stretcher(s), buffer_(2, INPUT_BUFFER_SAMPLES) {
   fetchInfo_.numSamples = INPUT_BUFFER_SAMPLES;
   fetchInfo_.startSample = 0;
   fetchInfo_.buffer = &buffer_;
@@ -47,7 +47,7 @@ bool SoundTouchStretchy::fillInput(int numSamples) {
 }
 
 void SoundTouchStretchy::putSamples(const AudioSourceChannelInfo& info) {
-  Stretchy::getNextAudioBlock(info);
+  source()->getNextAudioBlock(info);
   FloatFrame* frame = frames_.frames();
   for (int i = 0; i < info.numSamples; ++i, ++frame) {
     for (int c = 0; c < 2; ++c)
@@ -71,11 +71,6 @@ void SoundTouchStretchy::copyToOutput(const AudioSourceChannelInfo& info) {
     for (int c = 0; c < 2; ++c)
       *info.buffer->getSampleData(c, i) = frame->sample_[c];
   }
-}
-
-Stretchy* createSoundTouchStretchy(PositionableAudioSource* p,
-                                           const Stretch& s) {
-  return new SoundTouchStretchy(p, s);
 }
 
 }  // namespace stretch
