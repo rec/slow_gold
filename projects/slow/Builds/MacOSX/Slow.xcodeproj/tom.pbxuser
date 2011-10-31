@@ -221,9 +221,9 @@
 	};
 	3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {844, 1274}}";
-			sepNavSelRange = "{1572, 0}";
-			sepNavVisRange = "{1034, 1247}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 1105}}";
+			sepNavSelRange = "{605, 0}";
+			sepNavVisRange = "{0, 1799}";
 			sepNavWindowFrame = "{{107, 235}, {856, 854}}";
 		};
 	};
@@ -1355,6 +1355,10 @@
 			E28B94D4145E61C8003CF4AC /* PBXTextBookmark */ = E28B94D4145E61C8003CF4AC /* PBXTextBookmark */;
 			E28B94D7145E6271003CF4AC /* PBXTextBookmark */ = E28B94D7145E6271003CF4AC /* PBXTextBookmark */;
 			E28B94D8145E6271003CF4AC /* PBXTextBookmark */ = E28B94D8145E6271003CF4AC /* PBXTextBookmark */;
+			E28B94EB145E6859003CF4AC /* XCBuildMessageTextBookmark */ = E28B94EB145E6859003CF4AC /* XCBuildMessageTextBookmark */;
+			E28B94EE145E6864003CF4AC /* PBXTextBookmark */ = E28B94EE145E6864003CF4AC /* PBXTextBookmark */;
+			E28B94F6145E68B7003CF4AC /* PBXTextBookmark */ = E28B94F6145E68B7003CF4AC /* PBXTextBookmark */;
+			E28B94F9145E68E1003CF4AC /* PBXTextBookmark */ = E28B94F9145E68E1003CF4AC /* PBXTextBookmark */;
 			E28CCE931450736D0052581A = E28CCE931450736D0052581A /* PBXTextBookmark */;
 			E28CCF87145088AA0052581A = E28CCF87145088AA0052581A /* PBXTextBookmark */;
 			E28CCF88145088AA0052581A = E28CCF88145088AA0052581A /* PBXTextBookmark */;
@@ -1764,7 +1768,7 @@
 		fRef = 3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */;
 		name = "SoundTouchStretchy.cpp: 28";
 		rLen = 0;
-		rLoc = 843;
+		rLoc = 835;
 		rType = 0;
 		vrLen = 1785;
 		vrLoc = 0;
@@ -1794,7 +1798,7 @@
 		fRef = 3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */;
 		name = "SoundTouchStretchy.cpp: 28";
 		rLen = 0;
-		rLoc = 843;
+		rLoc = 835;
 		rType = 0;
 		vrLen = 1785;
 		vrLoc = 0;
@@ -2883,7 +2887,7 @@
 		fRef = 3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */;
 		name = "SoundTouchStretchy.cpp: 28";
 		rLen = 0;
-		rLoc = 843;
+		rLoc = 835;
 		rType = 0;
 		vrLen = 1956;
 		vrLoc = 413;
@@ -9632,7 +9636,7 @@
 		fRef = 3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */;
 		name = "SoundTouchStretchy.cpp: 56";
 		rLen = 0;
-		rLoc = 1572;
+		rLoc = 1564;
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 1034;
@@ -9834,6 +9838,57 @@
 		rLoc = 1295;
 		rType = 0;
 		vrLen = 1357;
+		vrLoc = 0;
+	};
+	E28B94EA145E6859003CF4AC /* SoundTouchStretchy.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = SoundTouchStretchy.h;
+		path = ../../../../../rec/src/rec/audio/stretch/SoundTouchStretchy.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {797, 741}}";
+			sepNavSelRange = "{1186, 0}";
+			sepNavVisRange = "{0, 1186}";
+		};
+	};
+	E28B94EB145E6859003CF4AC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "ISO C++ forbids declaration of 'Frames' with no type";
+		fRef = E28B94EA145E6859003CF4AC /* SoundTouchStretchy.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 29;
+		rType = 1;
+	};
+	E28B94EE145E6864003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E28B94EA145E6859003CF4AC /* SoundTouchStretchy.h */;
+		name = "SoundTouchStretchy.h: 29";
+		rLen = 0;
+		rLoc = 797;
+		rType = 0;
+		vrLen = 1096;
+		vrLoc = 0;
+	};
+	E28B94F6145E68B7003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E28B94EA145E6859003CF4AC /* SoundTouchStretchy.h */;
+		name = "SoundTouchStretchy.h: 49";
+		rLen = 0;
+		rLoc = 1187;
+		rType = 0;
+		vrLen = 1187;
+		vrLoc = 0;
+	};
+	E28B94F9145E68E1003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E28B94EA145E6859003CF4AC /* SoundTouchStretchy.h */;
+		name = "SoundTouchStretchy.h: 48";
+		rLen = 0;
+		rLoc = 1186;
+		rType = 0;
+		vrLen = 1186;
 		vrLoc = 0;
 	};
 	E28CCE931450736D0052581A /* PBXTextBookmark */ = {
