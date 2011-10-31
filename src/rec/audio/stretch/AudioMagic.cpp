@@ -1,4 +1,4 @@
-#include "rec/audio/stretch/AudioMagicStretchy.h"
+#include "rec/audio/stretch/AudioMagic.h"
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretchy.h"
@@ -7,15 +7,15 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-AudioMagicStretchy::AudioMagicStretchy(PositionableAudioSource* s,
+AudioMagic::AudioMagic(PositionableAudioSource* s,
                                        const Stretch& stretch)
     : Implementation(s) {
   setStretch(stretch);
 }
 
-AudioMagicStretchy::~AudioMagicStretchy() {}
+AudioMagic::~AudioMagic() {}
 
-void AudioMagicStretchy::setStretch(const Stretch& stretch) {
+void AudioMagic::setStretch(const Stretch& stretch) {
   channels_ = stretch.channels();
   outOffset_.resize(channels_);
   scaler_.reset(new AudioTimeScaler);
@@ -32,7 +32,7 @@ void AudioMagicStretchy::setStretch(const Stretch& stretch) {
     LOG(ERROR) << err;
 }
 
-void AudioMagicStretchy::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
+void AudioMagic::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = static_cast<int>(processOneChunk(i))) {
@@ -49,7 +49,7 @@ void AudioMagicStretchy::nextStretchedAudioBlock(const AudioSourceChannelInfo& i
   }
 }
 
-int64 AudioMagicStretchy::processOneChunk(const AudioSourceChannelInfo& info) {
+int64 AudioMagic::processOneChunk(const AudioSourceChannelInfo& info) {
   int inSampleCount = scaler_->GetInputBufferSize(info.numSamples) / 2;
   buffer_->setSize(channels_, inSampleCount, false, false, true);
 

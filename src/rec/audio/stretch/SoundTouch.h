@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_STRETCH_SOUNDTOUCHSTRETCHY__
-#define __REC_AUDIO_STRETCH_SOUNDTOUCHSTRETCHY__
+#ifndef __REC_AUDIO_STRETCH_SOUNDTOUCH__
+#define __REC_AUDIO_STRETCH_SOUNDTOUCH__
 
 #include "rec/audio/stretch/Implementation.h"
 #include "rec/audio/util/Frame.h"
@@ -10,12 +10,12 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-class SoundTouchStretchy : public Implementation {
+class SoundTouch : public Implementation {
  public:
   static const int INPUT_BUFFER_SAMPLES = 4096;
 
-  SoundTouchStretchy(PositionableAudioSource* s, const Stretch& stretch);
-  virtual ~SoundTouchStretchy();
+  SoundTouch(PositionableAudioSource* s, const Stretch& stretch);
+  virtual ~SoundTouch();
 
   virtual void setStretch(const Stretch&);
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info);
@@ -33,11 +33,11 @@ class SoundTouchStretchy : public Implementation {
 
   AudioSourceChannelInfo fetchInfo_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(SoundTouchStretchy);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(SoundTouch);
 };
 
 }  // namespace stretch
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_STRETCH_SOUNDTOUCHSTRETCHY__
+#endif  // __REC_AUDIO_STRETCH_SOUNDTOUCH__

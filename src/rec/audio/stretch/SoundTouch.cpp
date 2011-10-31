@@ -1,4 +1,4 @@
-#include "rec/audio/stretch/SoundTouchStretchy.h"
+#include "rec/audio/stretch/SoundTouch.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/soundtouch/SoundTouch.h"
 
@@ -6,9 +6,7 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-using soundtouch::SoundTouch;
-
-SoundTouchStretchy::SoundTouchStretchy(PositionableAudioSource* s,
+SoundTouch::SoundTouch(PositionableAudioSource* s,
                                        const Stretch& stretch)
     : Implementation(s), buffer_(2, INPUT_BUFFER_SAMPLES) {
   fetchInfo_.numSamples = INPUT_BUFFER_SAMPLES;
@@ -18,22 +16,22 @@ SoundTouchStretchy::SoundTouchStretchy(PositionableAudioSource* s,
   setStretch(stretch);
 }
 
-SoundTouchStretchy::~SoundTouchStretchy() {}
+SoundTouch::~SoundTouch() {}
 
-void SoundTouchStretchy::setStretch(const Stretch& stretch) {
+void SoundTouch::setStretch(const Stretch& stretch) {
   if (!soundTouch_)
-    soundTouch_.reset(new SoundTouch);
+    soundTouch_.reset(new soundtouch::SoundTouch);
   soundTouch_->setRate(static_cast<float>(timeScale(stretch)));
   soundTouch_->setChannels(stretch.channels());
   soundTouch_->setPitch(pitchScale(stretch));
 }
 
-void SoundTouchStretchy::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
+void SoundTouch::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
   fillInput(info.numSamples);
   copyToOutput(info);
 }
 
-bool SoundTouchStretchy::fillInput(int numSamples) {
+bool SoundTouch::fillInput(int numSamples) {
   static const int MAXIMUM_FAILURE_COUNT = 10;
   for (int fail = 0, s; (s = soundTouch_->numSamples()) && s < numSamples; ) {
     putSamples(fetchInfo_);
@@ -49,7 +47,7 @@ bool SoundTouchStretchy::fillInput(int numSamples) {
   return true;
 }
 
-void SoundTouchStretchy::putSamples(const AudioSourceChannelInfo& info) {
+void SoundTouch::putSamples(const AudioSourceChannelInfo& info) {
   source()->getNextAudioBlock(info);
   FloatFrame* frame = frames_.frames();
   for (int i = 0; i < info.numSamples; ++i, ++frame) {
@@ -60,7 +58,7 @@ void SoundTouchStretchy::putSamples(const AudioSourceChannelInfo& info) {
   soundTouch_->putSamples(frames_.frames()->sample_, info.numSamples);
 }
 
-void SoundTouchStretchy::copyToOutput(const AudioSourceChannelInfo& info) {
+void SoundTouch::copyToOutput(const AudioSourceChannelInfo& info) {
   int n = info.numSamples;
   if (frames_.length() < n)
     frames_.setLength(n);

@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
-#define __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
+#ifndef __REC_AUDIO_STRETCH_AUDIOMAGIC__
+#define __REC_AUDIO_STRETCH_AUDIOMAGIC__
 
 #include "rec/audio/stretch/Implementation.h"
 
@@ -9,12 +9,12 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-class AudioMagicStretchy : public Implementation {
+class AudioMagic : public Implementation {
  public:
   static const int SAMPLE_BUFFER_SIZE = 1000;
 
-  AudioMagicStretchy(PositionableAudioSource*, const Stretch&);
-  virtual ~AudioMagicStretchy();
+  AudioMagic(PositionableAudioSource*, const Stretch&);
+  virtual ~AudioMagic();
 
   virtual void setStretch(const Stretch&);
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&);
@@ -33,4 +33,4 @@ class AudioMagicStretchy : public Implementation {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
+#endif  // __REC_AUDIO_STRETCH_AUDIOMAGIC__

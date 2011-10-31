@@ -15,8 +15,7 @@ static RubberBandStretcher* makeStretcher(const Stretch& stretch) {
                                  pitchScale(stretch));
 }
 
-RubberBand::RubberBand(PositionableAudioSource* source,
-                                       const Stretch& stretch)
+RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
     : Implementation(source) {
   setStretch(stretch);
 }
@@ -25,6 +24,7 @@ RubberBand::~RubberBand() {}
 
 void RubberBand::nextStretchedAudioBlock(
     const AudioSourceChannelInfo& info) {
+
 }
 
 void RubberBand::setStretch(const Stretch& stretch) {

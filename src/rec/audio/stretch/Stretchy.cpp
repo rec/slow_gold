@@ -1,7 +1,7 @@
 #include "rec/audio/stretch/Stretchy.h"
-#include "rec/audio/stretch/AudioMagicStretchy.h"
+#include "rec/audio/stretch/AudioMagic.h"
 #include "rec/audio/stretch/RubberBand.h"
-#include "rec/audio/stretch/SoundTouchStretchy.h"
+#include "rec/audio/stretch/SoundTouch.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Implementation.h"
 #include "rec/util/Math.h"
@@ -37,8 +37,8 @@ void Stretchy::setNextReadPosition(int64 position) {
 
 static Implementation* makeImplementation(Source* source, const Stretch& stretch) {
   switch (stretch.strategy()) {
-   case Stretch::AUDIO_MAGIC: return new AudioMagicStretchy(source, stretch);
-   case Stretch::SOUNDTOUCH: return new SoundTouchStretchy(source, stretch);
+   case Stretch::AUDIO_MAGIC: return new AudioMagic(source, stretch);
+   case Stretch::SOUNDTOUCH: return new SoundTouch(source, stretch);
    case Stretch::RUBBERBAND: return new RubberBand(source, stretch);
    default: return NULL;
   }

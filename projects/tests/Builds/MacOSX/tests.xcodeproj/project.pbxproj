@@ -57,9 +57,9 @@
 		6743DEC4655789A24DCE5DD6 = { isa = PBXBuildFile; fileRef = 869B5A77595B2654324AA3E2; };
 		71CEE4DAAA096CE38F5F5998 = { isa = PBXBuildFile; fileRef = AB9D04AEA1CE5852DAF463B6; };
 		D11FD4E915642040D3E49910 = { isa = PBXBuildFile; fileRef = DEA6FC8EECFABB82E8D9C715; };
-		ACDFDD0377A463014F87D286 = { isa = PBXBuildFile; fileRef = CBE78A99AE398121B0E93DC8; };
+		39F87F82702282B18FC7EF92 = { isa = PBXBuildFile; fileRef = 68F17FEE812FF8314B37C3BE; };
 		D53E1CC370700C7CDDCEECCE = { isa = PBXBuildFile; fileRef = 1468EC45FF6B8D41C25FB708; };
-		A682499E74D134BBCC3E2B2D = { isa = PBXBuildFile; fileRef = FE411DAA57DD250A2ABB9B20; };
+		5D4303932AC6269AFA895DFA = { isa = PBXBuildFile; fileRef = DAB0F58CCDFD85FE5CDEB50C; };
 		CD7530A54FA2C9D4D1C11EDB = { isa = PBXBuildFile; fileRef = 8EA89FF00267CDD0F6DE562D; };
 		F2DD382C0665F2A374FF0F85 = { isa = PBXBuildFile; fileRef = D2B0C121BA62BA796DA4EB3C; };
 		92A79EF0B00D0C8855369045 = { isa = PBXBuildFile; fileRef = E74130693EE120D905818ACB; };
@@ -387,13 +387,13 @@
 		B8135E88D3A59B7522F3D87A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = ../../../../src/rec/audio/source/Timer.h; sourceTree = "SOURCE_ROOT"; };
 		DEA6FC8EECFABB82E8D9C715 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Wrappy.cpp; path = ../../../../src/rec/audio/source/Wrappy.cpp; sourceTree = "SOURCE_ROOT"; };
 		1B79815371777CE7111956DA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrappy.h; path = ../../../../src/rec/audio/source/Wrappy.h; sourceTree = "SOURCE_ROOT"; };
-		CBE78A99AE398121B0E93DC8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioMagicStretchy.cpp; path = ../../../../src/rec/audio/stretch/AudioMagicStretchy.cpp; sourceTree = "SOURCE_ROOT"; };
-		96A08BF1F4937B68E3666A17 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioMagicStretchy.h; path = ../../../../src/rec/audio/stretch/AudioMagicStretchy.h; sourceTree = "SOURCE_ROOT"; };
+		68F17FEE812FF8314B37C3BE = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioMagic.cpp; path = ../../../../src/rec/audio/stretch/AudioMagic.cpp; sourceTree = "SOURCE_ROOT"; };
+		EF5B3B808612D62974F63E7F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioMagic.h; path = ../../../../src/rec/audio/stretch/AudioMagic.h; sourceTree = "SOURCE_ROOT"; };
 		F1679F56EE1D486324292B7C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Implementation.h; path = ../../../../src/rec/audio/stretch/Implementation.h; sourceTree = "SOURCE_ROOT"; };
 		1468EC45FF6B8D41C25FB708 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RubberBand.cpp; path = ../../../../src/rec/audio/stretch/RubberBand.cpp; sourceTree = "SOURCE_ROOT"; };
 		CAA5232C67BF865E5604D4E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RubberBand.h; path = ../../../../src/rec/audio/stretch/RubberBand.h; sourceTree = "SOURCE_ROOT"; };
-		FE411DAA57DD250A2ABB9B20 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SoundTouchStretchy.cpp; path = ../../../../src/rec/audio/stretch/SoundTouchStretchy.cpp; sourceTree = "SOURCE_ROOT"; };
-		19F3077CAA50C79D5A619D51 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SoundTouchStretchy.h; path = ../../../../src/rec/audio/stretch/SoundTouchStretchy.h; sourceTree = "SOURCE_ROOT"; };
+		DAB0F58CCDFD85FE5CDEB50C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SoundTouch.cpp; path = ../../../../src/rec/audio/stretch/SoundTouch.cpp; sourceTree = "SOURCE_ROOT"; };
+		B374532E418FC66EC794F5C5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SoundTouch.h; path = ../../../../src/rec/audio/stretch/SoundTouch.h; sourceTree = "SOURCE_ROOT"; };
 		8EA89FF00267CDD0F6DE562D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.cpp; path = ../../../../src/rec/audio/stretch/Stretch.cpp; sourceTree = "SOURCE_ROOT"; };
 		6E5255F8826F744D3CAB7894 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretch.h; path = ../../../../src/rec/audio/stretch/Stretch.h; sourceTree = "SOURCE_ROOT"; };
 		D2B0C121BA62BA796DA4EB3C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretchy.cpp; path = ../../../../src/rec/audio/stretch/Stretchy.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1020,13 +1020,13 @@
 				DEA6FC8EECFABB82E8D9C715,
 				1B79815371777CE7111956DA ); name = source; sourceTree = "<group>"; };
 		1E76CD59C8E60146B04575CD = { isa = PBXGroup; children = (
-				CBE78A99AE398121B0E93DC8,
-				96A08BF1F4937B68E3666A17,
+				68F17FEE812FF8314B37C3BE,
+				EF5B3B808612D62974F63E7F,
 				F1679F56EE1D486324292B7C,
 				1468EC45FF6B8D41C25FB708,
 				CAA5232C67BF865E5604D4E0,
-				FE411DAA57DD250A2ABB9B20,
-				19F3077CAA50C79D5A619D51,
+				DAB0F58CCDFD85FE5CDEB50C,
+				B374532E418FC66EC794F5C5,
 				8EA89FF00267CDD0F6DE562D,
 				6E5255F8826F744D3CAB7894,
 				D2B0C121BA62BA796DA4EB3C,
@@ -1669,7 +1669,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		7E5E8FD01F91143BFCE8D088 = { isa = PBXGroup; children = (
+		C5ACA61F5DAD98375A59E298 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1696,7 +1696,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				7E5E8FD01F91143BFCE8D088,
+				C5ACA61F5DAD98375A59E298,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1822,9 +1822,9 @@
 				6743DEC4655789A24DCE5DD6,
 				71CEE4DAAA096CE38F5F5998,
 				D11FD4E915642040D3E49910,
-				ACDFDD0377A463014F87D286,
+				39F87F82702282B18FC7EF92,
 				D53E1CC370700C7CDDCEECCE,
-				A682499E74D134BBCC3E2B2D,
+				5D4303932AC6269AFA895DFA,
 				CD7530A54FA2C9D4D1C11EDB,
 				F2DD382C0665F2A374FF0F85,
 				92A79EF0B00D0C8855369045,

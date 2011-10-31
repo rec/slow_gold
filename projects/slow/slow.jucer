@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Ke1134cGm" name="Slow">
+  <MAINGROUP id="o84gTxhRO" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -206,20 +206,20 @@
                 name="Wrappy.h" resource="0"/>
         </GROUP>
         <GROUP id="QHdS2Mfsg" name="stretch">
-          <FILE compile="1" file="../../src/rec/audio/stretch/AudioMagicStretchy.cpp"
-                id="1mbS9RY0o" name="AudioMagicStretchy.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/stretch/AudioMagicStretchy.h"
-                id="vVq3efqyN" name="AudioMagicStretchy.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/AudioMagic.cpp"
+                id="HlK1L2bcx" name="AudioMagic.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/AudioMagic.h" id="LTTpi58sb"
+                name="AudioMagic.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Implementation.h"
                 id="58FXpgLrL" name="Implementation.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/RubberBand.cpp"
                 id="564jsQYPF" name="RubberBand.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/RubberBand.h" id="9bmpba51j"
                 name="RubberBand.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/stretch/SoundTouchStretchy.cpp"
-                id="eWwE3Ajsp" name="SoundTouchStretchy.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/stretch/SoundTouchStretchy.h"
-                id="UdHXfD4tU" name="SoundTouchStretchy.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/SoundTouch.cpp"
+                id="KZpLys1Wh" name="SoundTouch.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/SoundTouch.h" id="kEyCg2Al1"
+                name="SoundTouch.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/Stretch.cpp" id="TJ53D27kC"
                 name="Stretch.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Stretch.h" id="HozJYxup7"
@@ -1335,7 +1335,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="bh57eII5d" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ougyBirtz" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
