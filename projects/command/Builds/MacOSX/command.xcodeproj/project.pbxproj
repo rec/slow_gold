@@ -49,11 +49,11 @@
 		A0E733722FD2CC64BE8D9BFF = { isa = PBXBuildFile; fileRef = 67C1CD8C11B5CA8FB5D5D89E; };
 		2372C0CE14F9CB17C488416D = { isa = PBXBuildFile; fileRef = 2E9A17EF75BB26E1945926D2; };
 		BE8779808D25ADED9AED510A = { isa = PBXBuildFile; fileRef = 814A6CF4BA6D13BBB915CDBD; };
-		F4E46E9F6F2E99F4FF75A3C7 = { isa = PBXBuildFile; fileRef = 06F33F6B9FE7F92A71438212; };
 		D11FD4E915642040D3E49910 = { isa = PBXBuildFile; fileRef = DEA6FC8EECFABB82E8D9C715; };
 		ACDFDD0377A463014F87D286 = { isa = PBXBuildFile; fileRef = CBE78A99AE398121B0E93DC8; };
 		A682499E74D134BBCC3E2B2D = { isa = PBXBuildFile; fileRef = FE411DAA57DD250A2ABB9B20; };
 		CD7530A54FA2C9D4D1C11EDB = { isa = PBXBuildFile; fileRef = 8EA89FF00267CDD0F6DE562D; };
+		F2DD382C0665F2A374FF0F85 = { isa = PBXBuildFile; fileRef = D2B0C121BA62BA796DA4EB3C; };
 		8847416333D1F36BB0BEE780 = { isa = PBXBuildFile; fileRef = 0C4665D00CF1123246BA1B9C; };
 		A9B7D8CFCBF22D21B041A5FD = { isa = PBXBuildFile; fileRef = BC31EEA4D6A09C2CF25DAEDB; };
 		8E828698792BC5DB5C73738E = { isa = PBXBuildFile; fileRef = 6D0C47387BFADE3830B2E8F6; };
@@ -344,8 +344,6 @@
 		EDDBFDE2F1DECB93E68D0677 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Snoopy.h; path = ../../../../src/rec/audio/source/Snoopy.h; sourceTree = "SOURCE_ROOT"; };
 		814A6CF4BA6D13BBB915CDBD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stereo.cpp; path = ../../../../src/rec/audio/source/Stereo.cpp; sourceTree = "SOURCE_ROOT"; };
 		D038FC21D2B53D8B805B0280 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stereo.h; path = ../../../../src/rec/audio/source/Stereo.h; sourceTree = "SOURCE_ROOT"; };
-		06F33F6B9FE7F92A71438212 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretchy.cpp; path = ../../../../src/rec/audio/source/Stretchy.cpp; sourceTree = "SOURCE_ROOT"; };
-		5D33A85A0C5EAA827BA071F1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretchy.h; path = ../../../../src/rec/audio/source/Stretchy.h; sourceTree = "SOURCE_ROOT"; };
 		8928B81AB5D0CEAA99AF0C2C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Testy.h; path = ../../../../src/rec/audio/source/Testy.h; sourceTree = "SOURCE_ROOT"; };
 		BD0D25402E59F2EDFF89DDB6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThreadedSource.h; path = ../../../../src/rec/audio/source/ThreadedSource.h; sourceTree = "SOURCE_ROOT"; };
 		B8135E88D3A59B7522F3D87A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = ../../../../src/rec/audio/source/Timer.h; sourceTree = "SOURCE_ROOT"; };
@@ -357,6 +355,8 @@
 		19F3077CAA50C79D5A619D51 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SoundTouchStretchy.h; path = ../../../../src/rec/audio/stretch/SoundTouchStretchy.h; sourceTree = "SOURCE_ROOT"; };
 		8EA89FF00267CDD0F6DE562D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.cpp; path = ../../../../src/rec/audio/stretch/Stretch.cpp; sourceTree = "SOURCE_ROOT"; };
 		6E5255F8826F744D3CAB7894 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretch.h; path = ../../../../src/rec/audio/stretch/Stretch.h; sourceTree = "SOURCE_ROOT"; };
+		D2B0C121BA62BA796DA4EB3C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretchy.cpp; path = ../../../../src/rec/audio/stretch/Stretchy.cpp; sourceTree = "SOURCE_ROOT"; };
+		93AE14C26C505C351BEBBAA3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretchy.h; path = ../../../../src/rec/audio/stretch/Stretchy.h; sourceTree = "SOURCE_ROOT"; };
 		543FB32AAC2BA01A3BEBC5EF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestHarness.h; path = ../../../../src/rec/audio/stretch/TestHarness.h; sourceTree = "SOURCE_ROOT"; };
 		0C4665D00CF1123246BA1B9C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeScaler.cpp; path = ../../../../src/rec/audio/stretch/TimeScaler.cpp; sourceTree = "SOURCE_ROOT"; };
 		8B233B1B711F488706E03080 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeScaler.h; path = ../../../../src/rec/audio/stretch/TimeScaler.h; sourceTree = "SOURCE_ROOT"; };
@@ -944,8 +944,6 @@
 				EDDBFDE2F1DECB93E68D0677,
 				814A6CF4BA6D13BBB915CDBD,
 				D038FC21D2B53D8B805B0280,
-				06F33F6B9FE7F92A71438212,
-				5D33A85A0C5EAA827BA071F1,
 				8928B81AB5D0CEAA99AF0C2C,
 				BD0D25402E59F2EDFF89DDB6,
 				B8135E88D3A59B7522F3D87A,
@@ -958,6 +956,8 @@
 				19F3077CAA50C79D5A619D51,
 				8EA89FF00267CDD0F6DE562D,
 				6E5255F8826F744D3CAB7894,
+				D2B0C121BA62BA796DA4EB3C,
+				93AE14C26C505C351BEBBAA3,
 				543FB32AAC2BA01A3BEBC5EF,
 				0C4665D00CF1123246BA1B9C,
 				8B233B1B711F488706E03080 ); name = stretch; sourceTree = "<group>"; };
@@ -1573,7 +1573,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		C10C1C2D62A21D09A43360FD = { isa = PBXGroup; children = (
+		D1B97F5B5E05BA95B01BC19F = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = command; sourceTree = "<group>"; };
@@ -1600,7 +1600,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				C10C1C2D62A21D09A43360FD,
+				D1B97F5B5E05BA95B01BC19F,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1718,11 +1718,11 @@
 				A0E733722FD2CC64BE8D9BFF,
 				2372C0CE14F9CB17C488416D,
 				BE8779808D25ADED9AED510A,
-				F4E46E9F6F2E99F4FF75A3C7,
 				D11FD4E915642040D3E49910,
 				ACDFDD0377A463014F87D286,
 				A682499E74D134BBCC3E2B2D,
 				CD7530A54FA2C9D4D1C11EDB,
+				F2DD382C0665F2A374FF0F85,
 				8847416333D1F36BB0BEE780,
 				A9B7D8CFCBF22D21B041A5FD,
 				8E828698792BC5DB5C73738E,

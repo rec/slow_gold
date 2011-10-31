@@ -14,9 +14,9 @@ class AudioTimeScaler;
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
-class Stretchy : public Wrappy {
+class Stretchy : public source::Wrappy {
  public:
   typedef stretch::Stretch Stretch;
 
@@ -54,7 +54,7 @@ class Stretchy : public Wrappy {
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec
 

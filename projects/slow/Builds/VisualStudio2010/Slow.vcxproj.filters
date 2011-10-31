@@ -289,9 +289,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp">
       <Filter>Slow\rec\audio\source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\Stretchy.cpp">
-      <Filter>Slow\rec\audio\source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp">
       <Filter>Slow\rec\audio\source</Filter>
     </ClCompile>
@@ -302,6 +299,9 @@
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp">
@@ -1050,9 +1050,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Stereo.h">
       <Filter>Slow\rec\audio\source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Stretchy.h">
-      <Filter>Slow\rec\audio\source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Testy.h">
       <Filter>Slow\rec\audio\source</Filter>
     </ClInclude>
@@ -1072,6 +1069,9 @@
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TestHarness.h">

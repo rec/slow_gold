@@ -6,7 +6,7 @@
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Timer.h"
-#include "rec/audio/source/Stretchy.h"
+#include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/util/Math.h"
 

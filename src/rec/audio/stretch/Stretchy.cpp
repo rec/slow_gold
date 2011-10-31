@@ -1,4 +1,4 @@
-#include "rec/audio/source/Stretchy.h"
+#include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/stretch/AudioMagicStretchy.h"
 #include "rec/audio/stretch/SoundTouchStretchy.h"
 #include "rec/audio/stretch/Stretch.h"
@@ -11,7 +11,7 @@ using rec::audio::stretch::Stretch;
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
 Stretchy::Stretchy(Source* s, const Stretch& stretch) : Wrappy(s) {
   setStretch(stretch);
@@ -74,6 +74,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     nextStretchedAudioBlock(info);
 }
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec
+

@@ -15,6 +15,7 @@ namespace rec {
 
 namespace audio { class Device; }
 namespace audio { namespace stretch { class Stretch; }}
+namespace audio { namespace stretch { class Stretchy; }}
 namespace audio { class Gain; }
 
 namespace audio {
@@ -23,7 +24,6 @@ namespace source {
 class Selection;
 class Stereo;
 class StereoProto;
-class Stretchy;
 
 // Plays an original master source!
 // Player has the following source chain:
@@ -77,7 +77,7 @@ class Player : public DataListener<Gain>,
 
   Timer* timer_;
   Selection* selection_;
-  Stretchy* stretchy_;
+  stretch::Stretchy* stretchy_;
   Stereo* stereo_;
   Level level_;
 

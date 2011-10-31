@@ -7,7 +7,7 @@ namespace stretch {
 
 namespace {
 
-class AudioMagicStretchy : public source::Stretchy {
+class AudioMagicStretchy : public Stretchy {
  public:
   static const int SAMPLE_BUFFER_SIZE = 1000;
 
@@ -72,7 +72,7 @@ class AudioMagicStretchy : public source::Stretchy {
 
 }  // namespace
 
-source::Stretchy* createAudioMagicStretchy(PositionableAudioSource* p,
+Stretchy* createAudioMagicStretchy(PositionableAudioSource* p,
                                            const Stretch& s) {
   return new AudioMagicStretchy(p, s);
 }

@@ -1,13 +1,13 @@
 #ifndef __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
 #define __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
 
-#include "rec/audio/source/Stretchy.h"
+#include "rec/audio/stretch/Stretchy.h"
 
 namespace rec {
 namespace audio {
 namespace stretch {
 
-source::Stretchy* createAudioMagicStretchy(
+Stretchy* createAudioMagicStretchy(
     Source* p, const Stretch& s = Stretch::default_instance());
 
 }  // namespace stretch

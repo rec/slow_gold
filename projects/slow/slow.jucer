@@ -17,8 +17,8 @@
     <XCODE_MAC extraDefs="" extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf"
                juceFolder="../juce" objCExtraSuffix="s5d1u" rtasFolder="~/SDKs/PT_80_SDK"
                targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
-    <VS2010 juceFolder="../juce" libraryType="1" targetFolder="Builds/VisualStudio2010"
-            extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
+    <VS2010 extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
+            juceFolder="../juce" libraryType="1" targetFolder="Builds/VisualStudio2010"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="PceQff8hB" name="Slow">
+  <MAINGROUP id="bMZ1hvY7T" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -194,10 +194,6 @@
                 name="Stereo.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Stereo.h" id="eEIm8wTTY"
                 name="Stereo.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Stretchy.cpp" id="IBzF70rwp"
-                name="Stretchy.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Stretchy.h" id="DaXZYkHwH"
-                name="Stretchy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="8p2gEgkqs"
                 name="Testy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/ThreadedSource.h"
@@ -222,6 +218,10 @@
                 name="Stretch.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Stretch.h" id="HozJYxup7"
                 name="Stretch.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/Stretchy.cpp" id="ltgUef3y3"
+                name="Stretchy.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/Stretchy.h" id="Lh9OqEUX3"
+                name="Stretchy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/TestHarness.h"
                 id="FH5NyO48J" name="TestHarness.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/TimeScaler.cpp"
@@ -1329,7 +1329,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="C4Nsv5t1H" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="8LkqRtsP7" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

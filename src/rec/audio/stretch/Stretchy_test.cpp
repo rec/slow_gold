@@ -6,13 +6,14 @@
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
 TEST(RecAudioSource, Stretchy) {
   ptr<Stretchy> stretchy(Stretchy::create(new Testy()));
   Testy::expectNear(stretchy.get(), 0.0086, 2);
 }
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec
+
