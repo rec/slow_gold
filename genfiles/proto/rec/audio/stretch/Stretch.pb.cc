@@ -96,7 +96,7 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\330\004\n\007Stretch\022B\n\010strategy\030\022 \001(\0162#.rec."
+    "oto\"\362\004\n\007Stretch\022B\n\010strategy\030\022 \001(\0162#.rec."
     "audio.stretch.Stretch.Strategy:\013AUDIO_MA"
     "GIC\022\034\n\rtime_disabled\030\001 \001(\010:\005false\022\035\n\016pit"
     "ch_disabled\030\002 \001(\010:\005false\022\'\n\031passthrough_"
@@ -110,8 +110,8 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     "efill_size\030\016 \001(\r:\00515000\022$\n\025next_buffer_f"
     "ill_size\030\017 \001(\r:\00515000\022\036\n\022inactive_wait_t"
     "ime\030\020 \001(\005:\002-1\022\032\n\017thread_priority\030\021 \001(\r:\001"
-    "4\"+\n\010Strategy\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nSOUNDT"
-    "OUCH\020\002", 686);
+    "4\"E\n\010Strategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001"
+    "\022\016\n\nRUBBERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003", 712);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -135,8 +135,10 @@ const ::google::protobuf::EnumDescriptor* Stretch_Strategy_descriptor() {
 }
 bool Stretch_Strategy_IsValid(int value) {
   switch(value) {
+    case 0:
     case 1:
     case 2:
+    case 3:
       return true;
     default:
       return false;
@@ -144,7 +146,9 @@ bool Stretch_Strategy_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
+const Stretch_Strategy Stretch::NONE;
 const Stretch_Strategy Stretch::AUDIO_MAGIC;
+const Stretch_Strategy Stretch::RUBBERBAND;
 const Stretch_Strategy Stretch::SOUNDTOUCH;
 const Stretch_Strategy Stretch::Strategy_MIN;
 const Stretch_Strategy Stretch::Strategy_MAX;

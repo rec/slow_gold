@@ -8,18 +8,21 @@ namespace stretch {
 
 using soundtouch::SoundTouch;
 
-SoundTouchStretchy::SoundTouchStretchy(PositionableAudioSource* s, const Stretch& stretch)
+SoundTouchStretchy::SoundTouchStretchy(PositionableAudioSource* s,
+                                       const Stretch& stretch)
     : Stretcher(s), buffer_(2, INPUT_BUFFER_SAMPLES) {
   fetchInfo_.numSamples = INPUT_BUFFER_SAMPLES;
   fetchInfo_.startSample = 0;
   fetchInfo_.buffer = &buffer_;
   frames_.setLength(INPUT_BUFFER_SAMPLES);
+  setStretch(stretch);
 }
 
 SoundTouchStretchy::~SoundTouchStretchy() {}
 
-void SoundTouchStretchy::initializeStretcher(const Stretch& stretch) {
-  soundTouch_.reset(new SoundTouch);
+void SoundTouchStretchy::setStretch(const Stretch& stretch) {
+  if (!soundTouch_)
+    soundTouch_.reset(new SoundTouch);
   soundTouch_->setRate(static_cast<float>(timeScale(stretch)));
   soundTouch_->setChannels(stretch.channels());
   soundTouch_->setPitch(pitchScale(stretch));

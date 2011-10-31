@@ -12,9 +12,10 @@ class Stretch;
 class Stretcher {
  public:
   Stretcher(PositionableAudioSource* s) : source_(s) {}
+  virtual ~Stretcher() {}
 
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&) = 0;
-  virtual ~Stretcher() {}
+  virtual void setStretch(const Stretch&) = 0;
 
  protected:
   PositionableAudioSource* source() { return source_; }

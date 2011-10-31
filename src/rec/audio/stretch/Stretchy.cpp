@@ -1,5 +1,6 @@
 #include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/stretch/AudioMagicStretchy.h"
+#include "rec/audio/stretch/RubberbandStretchy.h"
 #include "rec/audio/stretch/SoundTouchStretchy.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretcher.h"
@@ -14,21 +15,10 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-Stretchy::Stretchy(Source* s) : Wrappy(s) {
+Stretchy::Stretchy(Source* s) : Wrappy(s), strategy_(Stretch::NONE) {
 }
 
 Stretchy::~Stretchy() {}
-
-#if 0
-// static
-Stretchy* Stretchy::create(Source* p, const Stretch& s) {
-  switch (s.strategy()) {
-   case Stretch::AUDIO_MAGIC: return stretch::createAudioMagicStretchy(p, s);
-   case Stretch::SOUNDTOUCH: return stretch::createSoundTouchStretchy(p, s);
-   default: return NULL;
-  }
-}
-#endif
 
 int64 Stretchy::getTotalLength() const {
   ScopedLock l(lock_);
@@ -49,6 +39,7 @@ static Stretcher* makeStretcher(Source* source, const Stretch& stretch) {
   switch (stretch.strategy()) {
    case Stretch::AUDIO_MAGIC: return new AudioMagicStretchy(source, stretch);
    case Stretch::SOUNDTOUCH: return new SoundTouchStretchy(source, stretch);
+   case Stretch::RUBBERBAND: return new RubberbandStretchy(source, stretch);
    default: return NULL;
   }
 }
@@ -62,14 +53,18 @@ void Stretchy::setStretch(const stretch::Stretch& stretch) {
   bypass_ = stretch.passthrough_when_disabled() &&
     near(timeScale_, 1.0, DELTA) &&
     near(stretch::pitchScale(stretch), 1.0, DELTA);
-  if (bypass_) {
-    timeScale_ = 1.0;
-    return;
+
+  if (!bypass_) {
+    if (!stretcher_ || strategy_ != stretch.strategy())
+      stretcher_.reset(makeStretcher(source(), stretch));
+    else if (stretcher_)
+      stretcher_->setStretch(stretch);
+
+    bypass_ = !stretcher_;
   }
 
-  stretcher_.reset(makeStretcher(source(), stretch));
-  if (!stretcher_)
-    bypass_ = true;
+  if (bypass_)
+    timeScale_ = 1.0;
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {

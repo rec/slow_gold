@@ -13,10 +13,11 @@ class AudioMagicStretchy : public Stretcher {
  public:
   static const int SAMPLE_BUFFER_SIZE = 1000;
 
-  AudioMagicStretchy(PositionableAudioSource* source, const Stretch& stretch);
+  AudioMagicStretchy(PositionableAudioSource*, const Stretch&);
+  virtual ~AudioMagicStretchy();
 
- protected:
-  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info);
+  virtual void setStretch(const Stretch&);
+  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&);
 
  private:
   int64 processOneChunk(const AudioSourceChannelInfo& info);

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="DBDRSw7aJ" name="tests">
+  <MAINGROUP id="ftnp9dcTy" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -226,6 +226,10 @@
                 id="muLe7V8U7" name="AudioMagicStretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/AudioMagicStretchy.h"
                 id="La7LMTyer" name="AudioMagicStretchy.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/RubberbandStretchy.cpp"
+                id="rthEugrjv" name="RubberbandStretchy.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/RubberbandStretchy.h"
+                id="wS7qYUI3n" name="RubberbandStretchy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/SoundTouchStretchy.cpp"
                 id="r5o8TBd2G" name="SoundTouchStretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/SoundTouchStretchy.h"
@@ -234,6 +238,8 @@
                 name="Stretch.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Stretch.h" id="UNcszMkiw"
                 name="Stretch.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/Stretcher.h" id="S0f1c428B"
+                name="Stretcher.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/Stretchy.cpp" id="QkVGWRkxo"
                 name="Stretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Stretchy.h" id="mfqdO9NRf"
@@ -1389,7 +1395,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Zf3YNCJHY" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="wnrSejxAY" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

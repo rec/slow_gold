@@ -2,7 +2,8 @@
 
 #include "rec/audio/stretch/TimeScaler.h"
 
-#include "rec/audio/source/Stretchy.h"
+#include "rec/audio/stretch/Stretchy.h"
+#include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {

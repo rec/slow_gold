@@ -295,6 +295,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.cpp">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\RubberbandStretchy.cpp">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.cpp">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClCompile>
@@ -1065,10 +1068,16 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.h">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\RubberbandStretchy.h">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.h">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretcher.h">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h">

@@ -60,6 +60,7 @@
 		3B1DEC38592EDE755611AD49 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9D5B5EE2CE56D8DCE8774C1 /* Window.cpp */; };
 		3B29A2A06C3F52661DDE989D /* TreeViewDropAll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1B4BFFDC9B8D47CBBDA8F3D /* TreeViewDropAll.cpp */; };
 		3C23BA3C14C50003309E80E7 /* Keyboard.xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3537E0387F6245C8C67C18A5 /* Keyboard.xml.cpp */; };
+		3C87E9F8338574CAEB08A828 /* RubberbandStretchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A0A423FAE699BFB6558FCE9 /* RubberbandStretchy.cpp */; };
 		3E13697240B5F47813DF320E /* RateTransposer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF50C6BFF1EEE3F0C50D42A6 /* RateTransposer.cpp */; };
 		3E1585E18CA841ABDEA615E1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A53E782643CFF470BDFD07 /* Cocoa.framework */; };
 		3EA87DB1ABDC51AF61DC4B34 /* TimeController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */; };
@@ -520,6 +521,7 @@
 		68101CE7EAD44439CE55486C /* MakeThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MakeThread.h; path = ../../../../src/rec/util/thread/MakeThread.h; sourceTree = SOURCE_ROOT; };
 		68EC3A21D6C0154A1C1ACBFA /* BinaryData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
 		69AAA86FB1A1350002574001 /* NodeComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NodeComponent.h; path = ../../../../src/rec/widget/tree/NodeComponent.h; sourceTree = SOURCE_ROOT; };
+		6A0A423FAE699BFB6558FCE9 /* RubberbandStretchy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RubberbandStretchy.cpp; path = ../../../../src/rec/audio/stretch/RubberbandStretchy.cpp; sourceTree = SOURCE_ROOT; };
 		6B783EE1E33F655A24E51C4C /* VirtualFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualFile.h; path = ../../../../src/rec/util/file/VirtualFile.h; sourceTree = SOURCE_ROOT; };
 		6CEDC50620E5F86319AD56FA /* emitterutils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = emitterutils.cpp; path = ../../../../src/rec/data/yaml/src/emitterutils.cpp; sourceTree = SOURCE_ROOT; };
 		6CF116BB2F62451986C75586 /* FIFOSampleBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FIFOSampleBuffer.h; path = ../../../../src/rec/audio/soundtouch/FIFOSampleBuffer.h; sourceTree = SOURCE_ROOT; };
@@ -565,6 +567,7 @@
 		7EAC704C96F798B1C69A0DD2 /* CopySamples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CopySamples.h; path = ../../../../src/rec/audio/util/CopySamples.h; sourceTree = SOURCE_ROOT; };
 		7FD45249C8FCAA197972C812 /* TestData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestData.h; path = ../../../../src/rec/util/TestData.h; sourceTree = SOURCE_ROOT; };
 		80A92E416408D8FA697D83E8 /* ThickFolder.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ThickFolder.svg.cpp; path = ../../../../src/rec/gui/icon/ThickFolder.svg.cpp; sourceTree = SOURCE_ROOT; };
+		80EC152E2511810396269FD5 /* Stretcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretcher.h; path = ../../../../src/rec/audio/stretch/Stretcher.h; sourceTree = SOURCE_ROOT; };
 		81920ACF526B1320CA42D59F /* Operation.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Operation.pb.cc; path = ../../../../genfiles/proto/rec/data/Operation.pb.cc; sourceTree = SOURCE_ROOT; };
 		823901851FE10CDF4628EB70 /* emittermanip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = emittermanip.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/emittermanip.h"; sourceTree = SOURCE_ROOT; };
 		834FC43D6C7FB51EB8944CEF /* RawFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RawFormat.h; path = ../../../../src/rec/audio/format/raw/RawFormat.h; sourceTree = SOURCE_ROOT; };
@@ -711,6 +714,7 @@
 		BF6A3CCB38CBE7983E8528FA /* Directory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Directory.cpp; path = ../../../../src/rec/widget/tree/Directory.cpp; sourceTree = SOURCE_ROOT; };
 		BFC76053247EE3C690919E29 /* SlowWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SlowWindow.cpp; path = ../../../../src/rec/slow/SlowWindow.cpp; sourceTree = SOURCE_ROOT; };
 		BFF718C20886014E3A7E0968 /* Root.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Root.cpp; path = ../../../../src/rec/widget/tree/Root.cpp; sourceTree = SOURCE_ROOT; };
+		C036428B961922FBE4897A38 /* RubberbandStretchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RubberbandStretchy.h; path = ../../../../src/rec/audio/stretch/RubberbandStretchy.h; sourceTree = SOURCE_ROOT; };
 		C06CCB7976D79CF57E4FCE80 /* DefaultRegistry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DefaultRegistry.cpp; path = ../../../../src/rec/data/DefaultRegistry.cpp; sourceTree = SOURCE_ROOT; };
 		C0B7C353612B33D8A9AD4D5B /* nodereadimpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nodereadimpl.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/nodereadimpl.h"; sourceTree = SOURCE_ROOT; };
 		C2000FCFB9C477494BF630DC /* TextComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TextComponent.cpp; path = ../../../../src/rec/widget/status/TextComponent.cpp; sourceTree = SOURCE_ROOT; };
@@ -908,16 +912,6 @@
 				08EC26B703176ED915C61158 /* TargetManager.h */,
 			);
 			name = command;
-			sourceTree = "<group>";
-		};
-		0517D1C0941322340FCD254E /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		0E5561BA8F7A19892CFB3AED /* widget */ = {
@@ -1348,10 +1342,13 @@
 			children = (
 				17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */,
 				D3029FF80FE1C37E1FC75683 /* AudioMagicStretchy.h */,
+				6A0A423FAE699BFB6558FCE9 /* RubberbandStretchy.cpp */,
+				C036428B961922FBE4897A38 /* RubberbandStretchy.h */,
 				3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */,
 				66551B73C6AF1FB387D289CD /* SoundTouchStretchy.h */,
 				CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */,
 				BBB468FF9DBECC53691C7410 /* Stretch.h */,
+				80EC152E2511810396269FD5 /* Stretcher.h */,
 				1F12D428C5B0028F9A15E7B8 /* Stretchy.cpp */,
 				E00027B9779F945B485DA61F /* Stretchy.h */,
 				A191B621C77AE820685CB16B /* TestHarness.h */,
@@ -1530,6 +1527,16 @@
 			name = ammf_scaler;
 			sourceTree = "<group>";
 		};
+		90CCC83883D72771EB6F49C4 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		93591C531C1114ADD63E7EBA /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1682,7 +1689,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0517D1C0941322340FCD254E /* Slow */,
+				90CCC83883D72771EB6F49C4 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -2141,6 +2148,7 @@
 				FBE97C77A873F503C75E4D86 /* Stereo.cpp in Sources */,
 				1E71E8E130A37866F055849D /* Wrappy.cpp in Sources */,
 				E931D10A82E3BB277CF8CE02 /* AudioMagicStretchy.cpp in Sources */,
+				3C87E9F8338574CAEB08A828 /* RubberbandStretchy.cpp in Sources */,
 				E3E44D959F208CD1F9AF17A9 /* SoundTouchStretchy.cpp in Sources */,
 				0AD643AC5AF111EA0E320A57 /* Stretch.cpp in Sources */,
 				3F3F3C2412A44AB9A160FB01 /* Stretchy.cpp in Sources */,
@@ -2406,6 +2414,16 @@
 					"-lmpg123",
 					"-L../../../../../build/Release/protobuf/lib",
 					"-lprotobuf",
+					"-L../../../../externals/rubberband/osx/ipp/Release/i386",
+					"-lrubberband",
+					"-L../../../../externals/rubberband/osx/ipp/common",
+					"-lippacemerged",
+					"-lippcore",
+					"-lippsrmerged",
+					"-lippsmerged",
+					"-lippacmerged",
+					"-lippsemerged",
+					"-lippsremerged",
 				);
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
@@ -2477,6 +2495,16 @@
 					"-lmpg123",
 					"-L../../../../../build/Debug/protobuf/lib",
 					"-lprotobuf",
+					"-L../../../../externals/rubberband/osx/ipp/Debug/i386",
+					"-lrubberband",
+					"-L../../../../externals/rubberband/osx/ipp/common",
+					"-lippacemerged",
+					"-lippcore",
+					"-lippsrmerged",
+					"-lippsmerged",
+					"-lippacmerged",
+					"-lippsemerged",
+					"-lippsremerged",
 				);
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;

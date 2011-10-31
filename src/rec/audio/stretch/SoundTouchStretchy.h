@@ -17,9 +17,8 @@ class SoundTouchStretchy : public Stretcher {
   SoundTouchStretchy(PositionableAudioSource* s, const Stretch& stretch);
   virtual ~SoundTouchStretchy();
 
- protected:
+  virtual void setStretch(const Stretch&);
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info);
-  virtual void initializeStretcher(const Stretch& stretch);
 
  private:
   bool fillInput(int numSamples);

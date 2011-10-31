@@ -7,8 +7,15 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-AudioMagicStretchy::AudioMagicStretchy(PositionableAudioSource* s, const Stretch& stretch)
-    : Stretcher(s), scaler_(new AudioTimeScaler) {
+AudioMagicStretchy::AudioMagicStretchy(PositionableAudioSource* s,
+                                       const Stretch& stretch)
+    : Stretcher(s) {
+  setStretch(stretch);
+}
+
+AudioMagicStretchy::~AudioMagicStretchy() {}
+
+void AudioMagicStretchy::setStretch(const Stretch& stretch) {
   channels_ = stretch.channels();
   outOffset_.resize(channels_);
   scaler_.reset(new AudioTimeScaler);

@@ -38,11 +38,13 @@ void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto();
 class Stretch;
 
 enum Stretch_Strategy {
+  Stretch_Strategy_NONE = 0,
   Stretch_Strategy_AUDIO_MAGIC = 1,
-  Stretch_Strategy_SOUNDTOUCH = 2
+  Stretch_Strategy_RUBBERBAND = 2,
+  Stretch_Strategy_SOUNDTOUCH = 3
 };
 bool Stretch_Strategy_IsValid(int value);
-const Stretch_Strategy Stretch_Strategy_Strategy_MIN = Stretch_Strategy_AUDIO_MAGIC;
+const Stretch_Strategy Stretch_Strategy_Strategy_MIN = Stretch_Strategy_NONE;
 const Stretch_Strategy Stretch_Strategy_Strategy_MAX = Stretch_Strategy_SOUNDTOUCH;
 const int Stretch_Strategy_Strategy_ARRAYSIZE = Stretch_Strategy_Strategy_MAX + 1;
 
@@ -111,7 +113,9 @@ class Stretch : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
   
   typedef Stretch_Strategy Strategy;
+  static const Strategy NONE = Stretch_Strategy_NONE;
   static const Strategy AUDIO_MAGIC = Stretch_Strategy_AUDIO_MAGIC;
+  static const Strategy RUBBERBAND = Stretch_Strategy_RUBBERBAND;
   static const Strategy SOUNDTOUCH = Stretch_Strategy_SOUNDTOUCH;
   static inline bool Strategy_IsValid(int value) {
     return Stretch_Strategy_IsValid(value);

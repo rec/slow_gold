@@ -34,6 +34,7 @@ class Stretchy : public source::Wrappy {
   CriticalSection lock_;
 
   ptr<Stretcher> stretcher_;
+  Stretch::Strategy strategy_;
   int channels_;
   double timeScale_;
   bool bypass_;
