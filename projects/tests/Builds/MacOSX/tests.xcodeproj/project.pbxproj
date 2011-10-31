@@ -58,7 +58,7 @@
 		71CEE4DAAA096CE38F5F5998 = { isa = PBXBuildFile; fileRef = AB9D04AEA1CE5852DAF463B6; };
 		D11FD4E915642040D3E49910 = { isa = PBXBuildFile; fileRef = DEA6FC8EECFABB82E8D9C715; };
 		ACDFDD0377A463014F87D286 = { isa = PBXBuildFile; fileRef = CBE78A99AE398121B0E93DC8; };
-		FF25D6F118363CB4BE97BCAB = { isa = PBXBuildFile; fileRef = 2D984F38931B43E538E7006C; };
+		D53E1CC370700C7CDDCEECCE = { isa = PBXBuildFile; fileRef = 1468EC45FF6B8D41C25FB708; };
 		A682499E74D134BBCC3E2B2D = { isa = PBXBuildFile; fileRef = FE411DAA57DD250A2ABB9B20; };
 		CD7530A54FA2C9D4D1C11EDB = { isa = PBXBuildFile; fileRef = 8EA89FF00267CDD0F6DE562D; };
 		F2DD382C0665F2A374FF0F85 = { isa = PBXBuildFile; fileRef = D2B0C121BA62BA796DA4EB3C; };
@@ -389,13 +389,13 @@
 		1B79815371777CE7111956DA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrappy.h; path = ../../../../src/rec/audio/source/Wrappy.h; sourceTree = "SOURCE_ROOT"; };
 		CBE78A99AE398121B0E93DC8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioMagicStretchy.cpp; path = ../../../../src/rec/audio/stretch/AudioMagicStretchy.cpp; sourceTree = "SOURCE_ROOT"; };
 		96A08BF1F4937B68E3666A17 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioMagicStretchy.h; path = ../../../../src/rec/audio/stretch/AudioMagicStretchy.h; sourceTree = "SOURCE_ROOT"; };
-		2D984F38931B43E538E7006C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RubberbandStretchy.cpp; path = ../../../../src/rec/audio/stretch/RubberbandStretchy.cpp; sourceTree = "SOURCE_ROOT"; };
-		84D44F847BCADAE5B7178EBC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RubberbandStretchy.h; path = ../../../../src/rec/audio/stretch/RubberbandStretchy.h; sourceTree = "SOURCE_ROOT"; };
+		F1679F56EE1D486324292B7C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Implementation.h; path = ../../../../src/rec/audio/stretch/Implementation.h; sourceTree = "SOURCE_ROOT"; };
+		1468EC45FF6B8D41C25FB708 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RubberBand.cpp; path = ../../../../src/rec/audio/stretch/RubberBand.cpp; sourceTree = "SOURCE_ROOT"; };
+		CAA5232C67BF865E5604D4E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RubberBand.h; path = ../../../../src/rec/audio/stretch/RubberBand.h; sourceTree = "SOURCE_ROOT"; };
 		FE411DAA57DD250A2ABB9B20 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SoundTouchStretchy.cpp; path = ../../../../src/rec/audio/stretch/SoundTouchStretchy.cpp; sourceTree = "SOURCE_ROOT"; };
 		19F3077CAA50C79D5A619D51 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SoundTouchStretchy.h; path = ../../../../src/rec/audio/stretch/SoundTouchStretchy.h; sourceTree = "SOURCE_ROOT"; };
 		8EA89FF00267CDD0F6DE562D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.cpp; path = ../../../../src/rec/audio/stretch/Stretch.cpp; sourceTree = "SOURCE_ROOT"; };
 		6E5255F8826F744D3CAB7894 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretch.h; path = ../../../../src/rec/audio/stretch/Stretch.h; sourceTree = "SOURCE_ROOT"; };
-		438A012719C339ED69C4A359 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretcher.h; path = ../../../../src/rec/audio/stretch/Stretcher.h; sourceTree = "SOURCE_ROOT"; };
 		D2B0C121BA62BA796DA4EB3C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretchy.cpp; path = ../../../../src/rec/audio/stretch/Stretchy.cpp; sourceTree = "SOURCE_ROOT"; };
 		93AE14C26C505C351BEBBAA3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretchy.h; path = ../../../../src/rec/audio/stretch/Stretchy.h; sourceTree = "SOURCE_ROOT"; };
 		E74130693EE120D905818ACB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Stretchy_test.cpp"; path = "../../../../src/rec/audio/stretch/Stretchy_test.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -1022,13 +1022,13 @@
 		1E76CD59C8E60146B04575CD = { isa = PBXGroup; children = (
 				CBE78A99AE398121B0E93DC8,
 				96A08BF1F4937B68E3666A17,
-				2D984F38931B43E538E7006C,
-				84D44F847BCADAE5B7178EBC,
+				F1679F56EE1D486324292B7C,
+				1468EC45FF6B8D41C25FB708,
+				CAA5232C67BF865E5604D4E0,
 				FE411DAA57DD250A2ABB9B20,
 				19F3077CAA50C79D5A619D51,
 				8EA89FF00267CDD0F6DE562D,
 				6E5255F8826F744D3CAB7894,
-				438A012719C339ED69C4A359,
 				D2B0C121BA62BA796DA4EB3C,
 				93AE14C26C505C351BEBBAA3,
 				E74130693EE120D905818ACB,
@@ -1669,7 +1669,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		B96CE6A751C6F2C7C85C3825 = { isa = PBXGroup; children = (
+		7E5E8FD01F91143BFCE8D088 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1696,7 +1696,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				B96CE6A751C6F2C7C85C3825,
+				7E5E8FD01F91143BFCE8D088,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1823,7 +1823,7 @@
 				71CEE4DAAA096CE38F5F5998,
 				D11FD4E915642040D3E49910,
 				ACDFDD0377A463014F87D286,
-				FF25D6F118363CB4BE97BCAB,
+				D53E1CC370700C7CDDCEECCE,
 				A682499E74D134BBCC3E2B2D,
 				CD7530A54FA2C9D4D1C11EDB,
 				F2DD382C0665F2A374FF0F85,

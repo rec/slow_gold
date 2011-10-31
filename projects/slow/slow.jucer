@@ -14,7 +14,7 @@
     <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/" extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
             juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
             targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
-    <XCODE_MAC extraDefs="" extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf  -L../../../../externals/rubberband/osx/ipp/${__JUCE_CONFIG}/i386 -lrubberband  -L../../../../externals/rubberband/osx/ipp/common -lippacemerged -lippcore -lippsmerged -lippacmerged -lippsemerged -lippsremerged"
+    <XCODE_MAC extraDefs="" extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf  -L../../../../externals/rubberband/osx/ipp/${__JUCE_CONFIG}/i386 -lrubberband  -L../../../../externals/rubberband/osx/ipp/common -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
                juceFolder="../juce" objCExtraSuffix="s5d1u" rtasFolder="~/SDKs/PT_80_SDK"
                targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
     <VS2010 extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="VbDQXZySA" name="Slow">
+  <MAINGROUP id="Ke1134cGm" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -210,10 +210,12 @@
                 id="1mbS9RY0o" name="AudioMagicStretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/AudioMagicStretchy.h"
                 id="vVq3efqyN" name="AudioMagicStretchy.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/stretch/RubberbandStretchy.cpp"
-                id="ilUQUeehf" name="RubberbandStretchy.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/stretch/RubberbandStretchy.h"
-                id="a9oSUPD1x" name="RubberbandStretchy.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/Implementation.h"
+                id="58FXpgLrL" name="Implementation.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/RubberBand.cpp"
+                id="564jsQYPF" name="RubberBand.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/RubberBand.h" id="9bmpba51j"
+                name="RubberBand.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/SoundTouchStretchy.cpp"
                 id="eWwE3Ajsp" name="SoundTouchStretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/SoundTouchStretchy.h"
@@ -222,8 +224,6 @@
                 name="Stretch.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Stretch.h" id="HozJYxup7"
                 name="Stretch.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/stretch/Stretcher.h" id="mEKRKJm2d"
-                name="Stretcher.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/Stretchy.cpp" id="ltgUef3y3"
                 name="Stretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Stretchy.h" id="Lh9OqEUX3"
@@ -1335,7 +1335,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="T3M9b559S" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="bh57eII5d" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

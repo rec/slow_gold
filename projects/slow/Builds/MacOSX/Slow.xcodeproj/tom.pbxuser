@@ -390,13 +390,6 @@
 			sepNavVisRange = "{0, 2124}";
 		};
 	};
-	6A0A423FAE699BFB6558FCE9 /* RubberbandStretchy.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {844, 531}}";
-			sepNavSelRange = "{726, 0}";
-			sepNavVisRange = "{0, 996}";
-		};
-	};
 	6B783EE1E33F655A24E51C4C /* VirtualFile.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {579, 765}}";
@@ -565,8 +558,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 341781963;
-			PBXWorkspaceStateSaveDate = 341781963;
+			PBXPerProjectTemplateStateSaveDate = 341789965;
+			PBXWorkspaceStateSaveDate = 341789965;
 		};
 		perUserProjectItems = {
 			E2109582144F593300FD2AB6 = E2109582144F593300FD2AB6 /* PBXTextBookmark */;
@@ -578,18 +571,18 @@
 			E239E369145F048100ED2C52 = E239E369145F048100ED2C52 /* PBXTextBookmark */;
 			E239E3AB145F08AB00ED2C52 = E239E3AB145F08AB00ED2C52 /* PBXTextBookmark */;
 			E239E3AC145F08AB00ED2C52 = E239E3AC145F08AB00ED2C52 /* PBXTextBookmark */;
-			E239E438145F2DD800ED2C52 /* XCBuildMessageTextBookmark */ = E239E438145F2DD800ED2C52 /* XCBuildMessageTextBookmark */;
-			E239E43B145F2DDC00ED2C52 /* PBXTextBookmark */ = E239E43B145F2DDC00ED2C52 /* PBXTextBookmark */;
-			E239E43D145F311F00ED2C52 /* XCBuildMessageTextBookmark */ = E239E43D145F311F00ED2C52 /* XCBuildMessageTextBookmark */;
-			E239E440145F315000ED2C52 /* XCBuildMessageTextBookmark */ = E239E440145F315000ED2C52 /* XCBuildMessageTextBookmark */;
-			E239E445145F318100ED2C52 /* PBXTextBookmark */ = E239E445145F318100ED2C52 /* PBXTextBookmark */;
-			E239E448145F318100ED2C52 /* PBXTextBookmark */ = E239E448145F318100ED2C52 /* PBXTextBookmark */;
-			E239E451145F328000ED2C52 /* PBXTextBookmark */ = E239E451145F328000ED2C52 /* PBXTextBookmark */;
-			E239E452145F328000ED2C52 /* PBXTextBookmark */ = E239E452145F328000ED2C52 /* PBXTextBookmark */;
-			E239E453145F328000ED2C52 /* XCBuildMessageTextBookmark */ = E239E453145F328000ED2C52 /* XCBuildMessageTextBookmark */;
-			E239E454145F328000ED2C52 /* PBXTextBookmark */ = E239E454145F328000ED2C52 /* PBXTextBookmark */;
-			E239E455145F328100ED2C52 /* PBXTextBookmark */ = E239E455145F328100ED2C52 /* PBXTextBookmark */;
-			E239E456145F328100ED2C52 /* PBXTextBookmark */ = E239E456145F328100ED2C52 /* PBXTextBookmark */;
+			E239E438145F2DD800ED2C52 = E239E438145F2DD800ED2C52 /* PBXTextBookmark */;
+			E239E43B145F2DDC00ED2C52 = E239E43B145F2DDC00ED2C52 /* PBXTextBookmark */;
+			E239E43D145F311F00ED2C52 = E239E43D145F311F00ED2C52 /* PBXTextBookmark */;
+			E239E440145F315000ED2C52 = E239E440145F315000ED2C52 /* PBXTextBookmark */;
+			E239E445145F318100ED2C52 = E239E445145F318100ED2C52 /* PBXTextBookmark */;
+			E239E448145F318100ED2C52 = E239E448145F318100ED2C52 /* PBXTextBookmark */;
+			E239E451145F328000ED2C52 = E239E451145F328000ED2C52 /* PBXTextBookmark */;
+			E239E452145F328000ED2C52 = E239E452145F328000ED2C52 /* PBXTextBookmark */;
+			E239E453145F328000ED2C52 = E239E453145F328000ED2C52 /* PBXTextBookmark */;
+			E239E454145F328000ED2C52 = E239E454145F328000ED2C52 /* PBXTextBookmark */;
+			E239E455145F328100ED2C52 = E239E455145F328100ED2C52 /* PBXTextBookmark */;
+			E239E456145F328100ED2C52 = E239E456145F328100ED2C52 /* PBXTextBookmark */;
 			E28B8CCE1459D1EA003CF4AC = E28B8CCE1459D1EA003CF4AC /* PBXTextBookmark */;
 			E28B8E82145A14F7003CF4AC = E28B8E82145A14F7003CF4AC /* PBXTextBookmark */;
 			E28B8EA4145A1878003CF4AC = E28B8EA4145A1878003CF4AC /* PBXTextBookmark */;
@@ -1023,18 +1016,11 @@
 		name = Stretcher.h;
 		path = ../../../../../rec/src/rec/audio/stretch/Stretcher.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 741}}";
-			sepNavSelRange = "{271, 42}";
-			sepNavVisRange = "{0, 735}";
-			sepNavWindowFrame = "{{61, 277}, {856, 854}}";
-		};
 	};
-	E239E438145F2DD800ED2C52 /* XCBuildMessageTextBookmark */ = {
+	E239E438145F2DD800ED2C52 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Class 'rec::audio::stretch::Stretcher' does not have any field named 'setStretch'";
 		fRef = E239E437145F2DD800ED2C52 /* Stretcher.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 15;
 		rType = 1;
@@ -1055,27 +1041,19 @@
 		name = Stretcher.h;
 		path = ../../../../../rec/src/rec/audio/stretch/Stretcher.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 741}}";
-			sepNavSelRange = "{681, 0}";
-			sepNavVisRange = "{0, 681}";
-			sepNavWindowFrame = "{{863, 238}, {856, 854}}";
-		};
 	};
-	E239E43D145F311F00ED2C52 /* XCBuildMessageTextBookmark */ = {
+	E239E43D145F311F00ED2C52 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Class 'rec::audio::stretch::Stretcher' does not have any field named 'setStretch'";
 		fRef = E239E43C145F311F00ED2C52 /* Stretcher.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 15;
 		rType = 1;
 	};
-	E239E440145F315000ED2C52 /* XCBuildMessageTextBookmark */ = {
+	E239E440145F315000ED2C52 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "No matching function for call to 'rec::audio::stretch::Stretcher::Stretcher(rec::PositionableAudioSource*&)'";
 		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 10;
 		rType = 1;
@@ -1112,7 +1090,6 @@
 	};
 	E239E452145F328000ED2C52 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 6A0A423FAE699BFB6558FCE9 /* RubberbandStretchy.cpp */;
 		name = "RubberbandStretchy.cpp: 21";
 		rLen = 0;
 		rLoc = 726;
@@ -1120,11 +1097,10 @@
 		vrLen = 996;
 		vrLoc = 0;
 	};
-	E239E453145F328000ED2C52 /* XCBuildMessageTextBookmark */ = {
+	E239E453145F328000ED2C52 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected type-specifier before 'RubberbandStretchy'";
 		fRef = 1F12D428C5B0028F9A15E7B8 /* Stretchy.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 41;
 		rType = 1;

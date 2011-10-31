@@ -157,7 +157,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\RubberbandStretchy.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\RubberBand.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
@@ -414,10 +414,10 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Timer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\RubberbandStretchy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Implementation.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\RubberBand.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretcher.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TestHarness.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.h"/>

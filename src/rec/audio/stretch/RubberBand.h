@@ -11,17 +11,17 @@ namespace stretch {
 
 class Stretch;
 
-class RubberbandStretchy : public Implementation {
+class RubberBand : public Implementation {
  public:
-  RubberbandStretchy(PositionableAudioSource* source, const Stretch& stretch);
-  virtual ~RubberbandStretchy();
+  RubberBand(PositionableAudioSource* source, const Stretch& stretch);
+  virtual ~RubberBand();
 
   virtual void setStretch(const Stretch&);
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info);
 
  private:
-  ptr<RubberBand::RubberBandStretcher> stretcher_;
-  DISALLOW_COPY_AND_ASSIGN(RubberbandStretchy);
+  ptr< ::RubberBand::RubberBandStretcher > stretcher_;
+  DISALLOW_COPY_AND_ASSIGN(RubberBand);
 };
 
 }  // namespace stretch
