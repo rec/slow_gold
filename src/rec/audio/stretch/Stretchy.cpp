@@ -43,26 +43,26 @@ void Stretchy::setNextReadPosition(int64 position) {
   source()->setNextReadPosition(static_cast<int64>(position / timeScale_));
 }
 
-void Stretchy::setStretch(const stretch::Stretch& s) {
+void Stretchy::setStretch(const stretch::Stretch& stretch) {
   ScopedLock l(lock_);
-  stretch_ = s;
+  channels_ = stretch.channels();
 
   static const double DELTA = 0.00001;
-  timeScale_ = stretch::timeScale(stretch_);
-  bypass_ = stretch_.passthrough_when_disabled() &&
+  timeScale_ = stretch::timeScale(stretch);
+  bypass_ = stretch.passthrough_when_disabled() &&
     near(timeScale_, 1.0, DELTA) &&
-    near(stretch::pitchScale(stretch_), 1.0, DELTA);
+    near(stretch::pitchScale(stretch), 1.0, DELTA);
   if (bypass_) {
     timeScale_ = 1.0;
     return;
   }
 
-  initializeStretcher();
+  initializeStretcher(stretch);
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   Lock l(lock_);
-  DCHECK_EQ(info.buffer->getNumChannels(), stretch_.channels());
+  DCHECK_EQ(info.buffer->getNumChannels(), channels_);
   bool bypass;
   {
     ScopedLock l(lock_);

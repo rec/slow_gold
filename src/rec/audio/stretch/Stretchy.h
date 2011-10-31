@@ -24,7 +24,6 @@ class Stretchy : public source::Wrappy {
   virtual void setNextReadPosition(int64);
   virtual int64 getNextReadPosition() const;
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
-  const Stretch stretch() { Lock l(lock_); return stretch_; }
 
   static
   Stretchy* create(Source*, const Stretch& s = Stretch::default_instance());
@@ -32,11 +31,8 @@ class Stretchy : public source::Wrappy {
  protected:
   Stretchy(Source* s, const Stretch& stretch = Stretch::default_instance());
 
-  virtual void initializeStretcher() = 0;
+  virtual void initializeStretcher(const Stretch&) = 0;
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&) = 0;
-
-  Stretch stretch_;
-  std::vector<float*> outOffset_;
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
@@ -44,6 +40,7 @@ class Stretchy : public source::Wrappy {
 
   CriticalSection lock_;
 
+  int channels_;
   double timeScale_;
   bool bypass_;
 

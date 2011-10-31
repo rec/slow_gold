@@ -25,11 +25,11 @@ class SoundTouchStretchy : public Stretchy {
   }
   virtual ~SoundTouchStretchy() {}
 
-  void initializeStretcher() {
+  void initializeStretcher(const Stretch& stretch) {
     soundTouch_.reset(new SoundTouch);
-    soundTouch_->setRate(static_cast<float>(timeScale(stretch_)));
-    soundTouch_->setChannels(stretch_.channels());
-    soundTouch_->setPitch(pitchScale(stretch_));
+    soundTouch_->setRate(static_cast<float>(timeScale(stretch)));
+    soundTouch_->setChannels(stretch.channels());
+    soundTouch_->setPitch(pitchScale(stretch));
   }
 
  protected:

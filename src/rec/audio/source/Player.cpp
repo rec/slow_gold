@@ -66,11 +66,6 @@ void Player::setSource(Source* source) {
 }
 
 void Player::onDataChange(const stretch::Stretch& stretch) {
-  if (stretch.strategy() != stretchy_->stretch().strategy()) {
-    setState(transport::STOPPED);
-    Thread::sleep(100);  // TODO: hack!
-    fillSources();
-  }
   stretchy_->setStretch(stretch);
 }
 

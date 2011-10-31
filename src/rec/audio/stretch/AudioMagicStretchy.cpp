@@ -17,19 +17,20 @@ class AudioMagicStretchy : public Stretchy {
       : Stretchy(s, stretch), scaler_(new AudioTimeScaler) {
   }
 
-  void initializeStretcher() {
-    outOffset_.resize(stretch_.channels());
+  void initializeStretcher(const Stretch& stretch) {
+    channels_ = stretch.channels();
+    outOffset_.resize(channels_);
     scaler_.reset(new AudioTimeScaler);
 
-    if (!buffer_ || buffer_->getNumChannels() != stretch_.channels())
-      buffer_.reset(new Buffer(stretch_.channels(), SAMPLE_BUFFER_SIZE));
+    if (!buffer_ || buffer_->getNumChannels() != channels_)
+      buffer_.reset(new Buffer(channels_, SAMPLE_BUFFER_SIZE));
 
-    if (const char* err = scaler_->Init(timeScale(stretch_),
-                                        stretch_.sample_rate(),
-                                        stretch_.channels(),
-                                        pitchScale(stretch_),
-                                        stretch_.bands(),
-                                        stretch_.filter_overlap()))
+    if (const char* err = scaler_->Init(timeScale(stretch),
+                                        stretch.sample_rate(),
+                                        channels_,
+                                        pitchScale(stretch),
+                                        stretch.bands(),
+                                        stretch.filter_overlap()))
       LOG(ERROR) << err;
   }
 
@@ -52,7 +53,7 @@ class AudioMagicStretchy : public Stretchy {
 
   int64 processOneChunk(const AudioSourceChannelInfo& info) {
     int inSampleCount = scaler_->GetInputBufferSize(info.numSamples) / 2;
-    buffer_->setSize(stretch_.channels(), inSampleCount, false, false, true);
+    buffer_->setSize(channels_, inSampleCount, false, false, true);
 
     AudioSourceChannelInfo i;
     i.startSample = 0;
@@ -60,7 +61,7 @@ class AudioMagicStretchy : public Stretchy {
     i.buffer = buffer_.get();
     source()->getNextAudioBlock(i);
 
-    for (int c = 0; c < stretch_.channels(); ++c)
+    for (int c = 0; c < channels_; ++c)
       outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
 
     return scaler_->Process(buffer_->getArrayOfChannels(), &outOffset_.front(),
@@ -68,6 +69,9 @@ class AudioMagicStretchy : public Stretchy {
   }
 
  private:
+  std::vector<float*> outOffset_;
+  int channels_;
+
   ptr<AudioTimeScaler> scaler_;
   ptr<AudioSampleBuffer> buffer_;
 };
