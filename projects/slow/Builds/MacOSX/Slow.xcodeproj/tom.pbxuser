@@ -75,9 +75,9 @@
 	};
 	17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {844, 1079}}";
-			sepNavSelRange = "{2659, 0}";
-			sepNavVisRange = "{0, 1410}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 936}}";
+			sepNavSelRange = "{493, 0}";
+			sepNavVisRange = "{0, 1902}";
 			sepNavWindowFrame = "{{222, 212}, {856, 854}}";
 		};
 	};
@@ -1359,6 +1359,9 @@
 			E28B94EE145E6864003CF4AC /* PBXTextBookmark */ = E28B94EE145E6864003CF4AC /* PBXTextBookmark */;
 			E28B94F6145E68B7003CF4AC /* PBXTextBookmark */ = E28B94F6145E68B7003CF4AC /* PBXTextBookmark */;
 			E28B94F9145E68E1003CF4AC /* PBXTextBookmark */ = E28B94F9145E68E1003CF4AC /* PBXTextBookmark */;
+			E28B94FC145E697B003CF4AC /* XCBuildMessageTextBookmark */ = E28B94FC145E697B003CF4AC /* XCBuildMessageTextBookmark */;
+			E28B94FF145E698D003CF4AC /* PBXTextBookmark */ = E28B94FF145E698D003CF4AC /* PBXTextBookmark */;
+			E28B9500145E698D003CF4AC /* PBXTextBookmark */ = E28B9500145E698D003CF4AC /* PBXTextBookmark */;
 			E28CCE931450736D0052581A = E28CCE931450736D0052581A /* PBXTextBookmark */;
 			E28CCF87145088AA0052581A = E28CCF87145088AA0052581A /* PBXTextBookmark */;
 			E28CCF88145088AA0052581A = E28CCF88145088AA0052581A /* PBXTextBookmark */;
@@ -9882,6 +9885,35 @@
 		vrLoc = 0;
 	};
 	E28B94F9145E68E1003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E28B94EA145E6859003CF4AC /* SoundTouchStretchy.h */;
+		name = "SoundTouchStretchy.h: 48";
+		rLen = 0;
+		rLoc = 1186;
+		rType = 0;
+		vrLen = 1186;
+		vrLoc = 0;
+	};
+	E28B94FC145E697B003CF4AC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /development/rec/projects/slow/Builds/MacOSX/../../../../src/rec/audio/stretch/AudioMagicStretchy.cpp";
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E28B94FF145E698D003CF4AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		name = "AudioMagicStretchy.cpp: 15";
+		rLen = 0;
+		rLoc = 493;
+		rType = 0;
+		vrLen = 1902;
+		vrLoc = 0;
+	};
+	E28B9500145E698D003CF4AC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E28B94EA145E6859003CF4AC /* SoundTouchStretchy.h */;
 		name = "SoundTouchStretchy.h: 48";
