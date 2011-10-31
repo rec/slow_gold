@@ -1,4 +1,6 @@
 #include "rec/audio/stretch/SoundTouchStretchy.h"
+#include "rec/audio/stretch/Stretch.h"
+#include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/util/Frame.h"
 #include "rec/audio/soundtouch/SoundTouch.h"
 

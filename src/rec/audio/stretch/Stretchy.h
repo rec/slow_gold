@@ -6,20 +6,16 @@
 #include <vector>
 
 #include "rec/audio/source/Wrappy.h"
-#include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretch.pb.h"
-#include "rec/audio/stretch/TimeScaler.h"
-
-class AudioTimeScaler;
 
 namespace rec {
 namespace audio {
 namespace stretch {
 
+class Stretch;
+
 class Stretchy : public source::Wrappy {
  public:
-  typedef stretch::Stretch Stretch;
-
   void setStretch(const Stretch&);
 
   ~Stretchy();

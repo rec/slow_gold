@@ -202,6 +202,46 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
+				<string>E28B94BA145E416C003CF4AC</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>AudioMagicStretchy.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E28B94BB145E416C003CF4AC</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>AudioMagicStretchy.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E28B94C4145E4219003CF4AC</string>
+						<key>history</key>
+						<array>
+							<string>E28B94B9145E4167003CF4AC</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {856, 757}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>360 60 856 798 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
 				<string>E28B94B1145E402D003CF4AC</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>Stretchy.h</string>
@@ -216,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E28B94B3145E402D003CF4AC</string>
+						<string>E28B94C5145E4219003CF4AC</string>
 						<key>history</key>
 						<array>
 							<string>E28B948E145E3F9B003CF4AC</string>
@@ -608,10 +648,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E290FED3120A432900532309</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 		<string>E28B94B1145E402D003CF4AC</string>
+		<string>E28B94BA145E416C003CF4AC</string>
+		<string>E290FED3120A432900532309</string>
 	</array>
 	<key>WindowString</key>
 	<string>540 179 1184 990 0 0 1920 1178 </string>
@@ -630,14 +671,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SoundTouchStretchy.cpp</string>
+								<string>AudioMagicStretchy.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -654,6 +693,8 @@
 							<string>548pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -706,7 +747,7 @@
 			<key>WindowToolGUID</key>
 			<string>E290FED3120A432900532309</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
