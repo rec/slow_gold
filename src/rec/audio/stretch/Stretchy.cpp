@@ -2,6 +2,7 @@
 #include "rec/audio/stretch/AudioMagicStretchy.h"
 #include "rec/audio/stretch/SoundTouchStretchy.h"
 #include "rec/audio/stretch/Stretch.h"
+#include "rec/audio/stretch/Stretcher.h"
 #include "rec/util/Math.h"
 
 using namespace juce;
