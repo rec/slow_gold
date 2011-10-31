@@ -26,7 +26,6 @@ class TransportController : public Layout,
 
   void setTransportState(rec::audio::transport::State state);
   void setTime(Samples<44100> time) { time_ = time; recalc(); }
-  void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }
 
  private:
   void recalc();

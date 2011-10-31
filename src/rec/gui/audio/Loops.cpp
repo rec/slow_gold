@@ -27,13 +27,11 @@ class LoopPointDataListener : public DataListener<LoopPointList> {
   explicit LoopPointDataListener(Loops* loops) : loops_(loops) {}
 
   virtual void onDataChange(const LoopPointList& p) {
-    DLOG(INFO) << "LoopPointDataListener::onDataChange " << p.ShortDebugString();
   	MessageManagerLock l;
     loops_->setLoopPoints(p);
   }
 
   virtual void setData(data::TypedEditable<LoopPointList>* d) {
-    DLOG(INFO) << "LoopPointDataListener::setData";
     DataListener<LoopPointList>::setData(d);
     loops_->setUntypedEditable(d);
   }
@@ -49,7 +47,6 @@ const double Loops::CLOSE = 0.5;
 Loops::Loops(ApplicationCommandManager* manager,
              const TableColumnList* desc)
     : component::Focusable<TableController>(manager),
-      length_(0),
       dataListener_(new LoopPointDataListener(this)) {
   initialize(dflt.get(desc), data::Address("loop_point"), "Loops");
   fillHeader(&getHeader());
@@ -59,11 +56,6 @@ Loops::Loops(ApplicationCommandManager* manager,
 }
 
 Loops::~Loops() {}
-
-void Loops::setLength(int len) {
-  ScopedLock l(lock_);
-  length_ = len;
-}
 
 void Loops::selectedRowsChanged(int lastRowSelected) {
   bool changed = false;
@@ -151,32 +143,22 @@ void Loops::cut() {
  	getUntypedEditable()->set(*loopPoints_);
 }
 
-Range<RealTime> Loops::selectionRange() const {
-  int b = 0, last = loopPoints_->loop_point_size() - 1, e;
-  DCHECK_GE(last, 0);
-  for (; b < last && !loopPoints_->loop_point(b).selected(); ++b);
-  for (e = b; e < last && loopPoints_->loop_point(e).selected(); ++e);
-  return Range<RealTime>(loopPoints_->loop_point(b).time(),
-                         loopPoints_->loop_point(e).time());
-}
-
 void Loops::addLoopPoints(const LoopPointList& loops) {
   ScopedLock l(lock_);
-  Range<RealTime> selection = selectionRange();
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
-    if (isNewLoopPoint(loops.loop_point(i).time()))
-      loopPoints_->add_loop_point()->CopyFrom(loops.loop_point(i));
+  const LoopPointList lpl = *loopPoints_;
+  for (int i = 0, j = 0; i < loops.loop_point_size(); ++i) {
+    double t = loops.loop_point(i).time();
+    if (isNewLoopPoint(t)) {
+      LoopPoint* lp = loopPoints_->add_loop_point();
+      lp->CopyFrom(loops.loop_point(i));
+      for (; j < lpl.loop_point_size() && lpl.loop_point(j).time() <= t; ++j);
+      lp->set_selected(j && lpl.loop_point(j - 1).selected());
+    }
   }
 
   std::sort(loopPoints_->mutable_loop_point()->begin(),
             loopPoints_->mutable_loop_point()->end(),
             CompareLoopPoints());
-
-  for (int i = 0; i < loopPoints_->loop_point_size() - 1; ++i) {
-    double time = loopPoints_->loop_point(i).time();
-    loopPoints_->mutable_loop_point(i)->set_selected(time >= selection.begin_ &&
-                                                     time < selection.end_);
-  }
 
  	getUntypedEditable()->set(*loopPoints_, data::Address());
   updateAndRepaint();

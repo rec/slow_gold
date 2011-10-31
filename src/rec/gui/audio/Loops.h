@@ -41,16 +41,13 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   virtual bool paste(const string&);
   virtual void cut();
 
-  void setLength(int len);
   bool isNewLoopPoint(RealTime t) const;
   void addLoopPoint(RealTime time);
   void addLoopPoints(const LoopPointList& loops);
   void setLoopPoints(const LoopPointList& loops) {
-    DLOG(INFO) << "setLoopPoints " << loops.ShortDebugString();
     *loopPoints_ = loops;
     updateAndRepaint();
   }
-  Range<RealTime> selectionRange() const;
 
   virtual void selectedRowsChanged(int lastRowSelected);
 
@@ -60,7 +57,6 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   virtual void update();
 
  private:
-  double length_;
   LoopPointList* loopPoints_;
   ptr<LoopPointDataListener> dataListener_;
 

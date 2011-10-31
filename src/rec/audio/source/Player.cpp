@@ -87,7 +87,6 @@ void Player::onDataChange(const StereoProto& s) {
 }
 
 void Player::onDataChange(const LoopPointList& lpl) {
-  DLOG(INFO) << "Player::onDataChange";
   DCHECK(lpl.loop_point_size());
   block::BlockSet s = audio::getTimeSelection(lpl, length());
   selection_->setSelection(s);
