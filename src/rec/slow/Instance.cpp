@@ -63,6 +63,7 @@ Instance::Instance(SlowWindow* window)
   components_->waveform_->setAudioThumbnail(thumbnailBuffer->thumbnail());
 
   threads_->startAll();
+  currentFile_->setFile(data::get<VirtualFile>());
 }
 
 Instance::~Instance() {

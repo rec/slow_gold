@@ -15,7 +15,6 @@ namespace rec {
 namespace slow {
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
-  DLOG(INFO) << "DropFiles";
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == components()->waveform_.get()) {
     if (files.file_size() >= 1)
@@ -38,6 +37,11 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
+  setFile(f);
+  data::set(file_);
+}
+
+void CurrentFile::setFile(const VirtualFile& f) {
   player()->clear();
 
   VirtualFile oldFile;
@@ -67,7 +71,6 @@ void CurrentFile::operator()(const VirtualFile& f) {
     components()->waveform_->setLength(thumbnail->buffer()->length());
     threads()->fillThread()->notify();
   }
-  data::set(file_);
 }
 
 }  // namespace slow
