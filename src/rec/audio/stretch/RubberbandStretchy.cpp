@@ -27,7 +27,13 @@ void RubberbandStretchy::nextStretchedAudioBlock(
     const AudioSourceChannelInfo& info) {
 }
 
-void RubberbandStretchy::setStretch(const Stretch&) {
+void RubberbandStretchy::setStretch(const Stretch& stretch) {
+  if (stretcher_) {
+    stretcher_.reset(makeStretcher(stretch));
+  } else {
+    stretcher_->setTimeRatio(timeScale(stretch));
+    stretcher_->setPitchScale(pitchScale(stretch));
+  }
 }
 
 }  // namespace stretch
