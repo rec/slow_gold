@@ -13,7 +13,7 @@ namespace audio {
 namespace stretch {
 
 class Stretch;
-class Stretcher;
+class Implementation;
 
 class Stretchy : public source::Wrappy {
  public:
@@ -33,7 +33,7 @@ class Stretchy : public source::Wrappy {
 
   CriticalSection lock_;
 
-  ptr<Stretcher> stretcher_;
+  ptr<Implementation> implementation_;
   Stretch::Strategy strategy_;
   int channels_;
   double timeScale_;

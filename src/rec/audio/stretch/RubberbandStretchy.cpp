@@ -17,7 +17,7 @@ static RubberBandStretcher* makeStretcher(const Stretch& stretch) {
 
 RubberbandStretchy::RubberbandStretchy(PositionableAudioSource* source,
                                        const Stretch& stretch)
-    : Stretcher(source) {
+    : Implementation(source) {
   setStretch(stretch);
 }
 

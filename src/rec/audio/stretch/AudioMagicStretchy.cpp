@@ -9,7 +9,7 @@ namespace stretch {
 
 AudioMagicStretchy::AudioMagicStretchy(PositionableAudioSource* s,
                                        const Stretch& stretch)
-    : Stretcher(s) {
+    : Implementation(s) {
   setStretch(stretch);
 }
 

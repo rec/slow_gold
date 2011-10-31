@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
 #define __REC_AUDIO_STRETCH_AUDIOMAGICSTRETCHY__
 
-#include "rec/audio/stretch/Stretcher.h"
+#include "rec/audio/stretch/Implementation.h"
 
 class AudioTimeScaler;
 
@@ -9,7 +9,7 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-class AudioMagicStretchy : public Stretcher {
+class AudioMagicStretchy : public Implementation {
  public:
   static const int SAMPLE_BUFFER_SIZE = 1000;
 

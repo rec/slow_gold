@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__
 #define __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__
 
-#include "rec/audio/stretch/Stretcher.h"
+#include "rec/audio/stretch/Implementation.h"
 
 namespace RubberBand { class RubberBandStretcher; }
 
@@ -11,7 +11,7 @@ namespace stretch {
 
 class Stretch;
 
-class RubberbandStretchy : public Stretcher {
+class RubberbandStretchy : public Implementation {
  public:
   RubberbandStretchy(PositionableAudioSource* source, const Stretch& stretch);
   virtual ~RubberbandStretchy();

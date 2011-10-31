@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_STRETCH_STRETCHER__
-#define __REC_AUDIO_STRETCH_STRETCHER__
+#ifndef __REC_AUDIO_STRETCH_IMPLEMENTATION__
+#define __REC_AUDIO_STRETCH_IMPLEMENTATION__
 
 #include "rec/base/base.h"
 
@@ -9,10 +9,10 @@ namespace stretch {
 
 class Stretch;
 
-class Stretcher {
+class Implementation {
  public:
-  Stretcher(PositionableAudioSource* s) : source_(s) {}
-  virtual ~Stretcher() {}
+  Implementation(PositionableAudioSource* s) : source_(s) {}
+  virtual ~Implementation() {}
 
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&) = 0;
   virtual void setStretch(const Stretch&) = 0;
@@ -22,11 +22,11 @@ class Stretcher {
 
  private:
   PositionableAudioSource* source_;
-  DISALLOW_COPY_AND_ASSIGN(Stretcher);
+  DISALLOW_COPY_AND_ASSIGN(Implementation);
 };
 
 }  // namespace stretch
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_STRETCH_STRETCHER__
+#endif  // __REC_AUDIO_STRETCH_IMPLEMENTATION__

@@ -10,7 +10,7 @@ using soundtouch::SoundTouch;
 
 SoundTouchStretchy::SoundTouchStretchy(PositionableAudioSource* s,
                                        const Stretch& stretch)
-    : Stretcher(s), buffer_(2, INPUT_BUFFER_SAMPLES) {
+    : Implementation(s), buffer_(2, INPUT_BUFFER_SAMPLES) {
   fetchInfo_.numSamples = INPUT_BUFFER_SAMPLES;
   fetchInfo_.startSample = 0;
   fetchInfo_.buffer = &buffer_;
