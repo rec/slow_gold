@@ -34,11 +34,11 @@ struct Math {
 template <typename Number>
 Number abs(Number x) { return Math<Number>::abs(x); }
 
-template <typename Number>
-Number mod(Number p, Number q) { return Math<Number>::mod(p, q); }
+template <typename Number, typename N1>
+Number mod(Number p, N1 q) { return Math<Number>::mod(p, q); }
 
-template <typename Number>
-Number near(Number x, Number y, Number diff) {
+template <typename Number, typename N2, typename N3>
+Number near(Number x, N2 y, N3 diff) {
   return Math<Number>::near(x, y, diff);
 }
 

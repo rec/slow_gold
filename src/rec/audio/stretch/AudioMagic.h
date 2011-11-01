@@ -17,7 +17,7 @@ class AudioMagic : public Implementation {
   virtual ~AudioMagic();
 
   virtual void setStretch(const Stretch&);
-  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&);
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo&);
 
  private:
   int64 processOneChunk(const AudioSourceChannelInfo& info);

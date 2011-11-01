@@ -18,7 +18,7 @@ class SoundTouch : public Implementation {
   virtual ~SoundTouch();
 
   virtual void setStretch(const Stretch&);
-  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
  private:
   bool fillInput(int numSamples);

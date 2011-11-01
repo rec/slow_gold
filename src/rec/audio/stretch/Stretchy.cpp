@@ -35,12 +35,14 @@ void Stretchy::setNextReadPosition(int64 position) {
   source()->setNextReadPosition(static_cast<int64>(position / timeScale_));
 }
 
-static Implementation* makeImplementation(Source* source, const Stretch& stretch) {
+static Implementation* makeImplementation(Source* src, const Stretch& stretch) {
   switch (stretch.strategy()) {
-   case Stretch::AUDIO_MAGIC: return new AudioMagic(source, stretch);
-   case Stretch::SOUNDTOUCH: return new SoundTouch(source, stretch);
-   case Stretch::RUBBERBAND: return new RubberBand(source, stretch);
-   default: return NULL;
+   case Stretch::AUDIO_MAGIC: return new AudioMagic(src, stretch);
+   case Stretch::SOUNDTOUCH: return new SoundTouch(src, stretch);
+   case Stretch::RUBBERBAND: return new RubberBand(src, stretch);
+   default:
+    LOG(ERROR) << "Didn't understand strategy " << stretch.strategy();
+    return NULL;
   }
 }
 
@@ -50,7 +52,7 @@ void Stretchy::setStretch(const stretch::Stretch& stretch) {
 
   static const double DELTA = 0.00001;
   timeScale_ = stretch::timeScale(stretch);
-  bypass_ = stretch.passthrough_when_disabled() &&
+  bypass_ = false && stretch.passthrough_when_disabled() &&
     near(timeScale_, 1.0, DELTA) &&
     near(stretch::pitchScale(stretch), 1.0, DELTA);
 
@@ -65,20 +67,25 @@ void Stretchy::setStretch(const stretch::Stretch& stretch) {
 
   if (bypass_)
     timeScale_ = 1.0;
+
+  DCHECK(implementation_ || bypass_);
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  Lock l(lock_);
-  DCHECK_EQ(info.buffer->getNumChannels(), channels_);
-  bool bypass;
   {
-    ScopedLock l(lock_);
-    bypass = bypass_;
+    Lock l(lock_);
+    DCHECK_EQ(info.buffer->getNumChannels(), channels_);
+    if (!bypass_) {
+      if (implementation_) {
+        implementation_->getNextAudioBlock(info);
+      } else {
+        LOG_FIRST_N(ERROR, 1) << "No implementation of stretchy found";
+      }
+    }
+    return;
   }
-  if (bypass)
-    Wrappy::getNextAudioBlock(info);
-  else
-    implementation_->nextStretchedAudioBlock(info);
+
+  Wrappy::getNextAudioBlock(info);
 }
 
 }  // namespace stretch

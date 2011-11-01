@@ -28,7 +28,7 @@ void AudioMagic::setStretch(const Stretch& stretch) {
     LOG(ERROR) << err;
 }
 
-void AudioMagic::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
+void AudioMagic::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = static_cast<int>(processOneChunk(i))) {

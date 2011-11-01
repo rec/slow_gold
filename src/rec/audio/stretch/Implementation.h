@@ -16,7 +16,7 @@ class Implementation {
   Implementation(PositionableAudioSource* s, int channels = 2);
   virtual ~Implementation() {}
 
-  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&) = 0;
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo&) = 0;
   virtual void setStretch(const Stretch&) = 0;
 
  protected:

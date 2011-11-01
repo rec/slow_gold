@@ -17,11 +17,14 @@ class RubberBand : public Implementation {
   virtual ~RubberBand();
 
   virtual void setStretch(const Stretch&);
-  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
  private:
+  CriticalSection lock_;
   ptr< ::RubberBand::RubberBandStretcher> stretcher_;
  	int channels_;
+  double timeRatio_;
+  double pitchScale_;
 
   DISALLOW_COPY_AND_ASSIGN(RubberBand);
 };

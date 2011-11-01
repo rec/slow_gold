@@ -26,7 +26,7 @@ void SoundTouch::setStretch(const Stretch& stretch) {
   soundTouch_->setPitch(pitchScale(stretch));
 }
 
-void SoundTouch::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
+void SoundTouch::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   fillInput(info.numSamples);
   copyToOutput(info);
 }
