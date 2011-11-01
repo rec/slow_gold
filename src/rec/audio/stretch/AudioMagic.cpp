@@ -7,8 +7,7 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-AudioMagic::AudioMagic(PositionableAudioSource* s,
-                                       const Stretch& stretch)
+AudioMagic::AudioMagic(PositionableAudioSource* s, const Stretch& stretch)
     : Implementation(s) {
   setStretch(stretch);
 }
@@ -19,9 +18,6 @@ void AudioMagic::setStretch(const Stretch& stretch) {
   channels_ = stretch.channels();
   outOffset_.resize(channels_);
   scaler_.reset(new AudioTimeScaler);
-
-  if (!buffer_ || buffer_->getNumChannels() != channels_)
-    buffer_.reset(new Buffer(channels_, SAMPLE_BUFFER_SIZE));
 
   if (const char* err = scaler_->Init(timeScale(stretch),
                                       stretch.sample_rate(),
@@ -51,18 +47,11 @@ void AudioMagic::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
 
 int64 AudioMagic::processOneChunk(const AudioSourceChannelInfo& info) {
   int inSampleCount = scaler_->GetInputBufferSize(info.numSamples) / 2;
-  buffer_->setSize(channels_, inSampleCount, false, false, true);
-
-  AudioSourceChannelInfo i;
-  i.startSample = 0;
-  i.numSamples = inSampleCount;
-  i.buffer = buffer_.get();
-  source()->getNextAudioBlock(i);
-
+	float** samples = getSourceSamples(inSampleCount);
   for (int c = 0; c < channels_; ++c)
     outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
 
-  return scaler_->Process(buffer_->getArrayOfChannels(), &outOffset_.front(),
+  return scaler_->Process(samples, &outOffset_.front(),
                           inSampleCount, info.numSamples);
 }
 

@@ -26,7 +26,6 @@ class AudioMagic : public Implementation {
   int channels_;
 
   ptr<AudioTimeScaler> scaler_;
-  ptr<AudioSampleBuffer> buffer_;
 };
 
 }  // namespace stretch

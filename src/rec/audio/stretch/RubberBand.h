@@ -20,7 +20,9 @@ class RubberBand : public Implementation {
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info);
 
  private:
-  ptr< ::RubberBand::RubberBandStretcher > stretcher_;
+  ptr< ::RubberBand::RubberBandStretcher> stretcher_;
+ 	int channels_;
+
   DISALLOW_COPY_AND_ASSIGN(RubberBand);
 };
 

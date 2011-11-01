@@ -11,17 +11,22 @@ class Stretch;
 
 class Implementation {
  public:
-  Implementation(PositionableAudioSource* s) : source_(s) {}
+  static const int INITIAL_BUFFER_SIZE = (1 << 14);
+
+  Implementation(PositionableAudioSource* s, int channels = 2);
   virtual ~Implementation() {}
 
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&) = 0;
   virtual void setStretch(const Stretch&) = 0;
 
  protected:
-  PositionableAudioSource* source() { return source_; }
+  float** getSourceSamples(int);
 
  private:
   PositionableAudioSource* source_;
+  AudioSampleBuffer buffer_;
+  AudioSourceChannelInfo info_;
+
   DISALLOW_COPY_AND_ASSIGN(Implementation);
 };
 

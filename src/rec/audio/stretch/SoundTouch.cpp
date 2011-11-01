@@ -48,7 +48,7 @@ bool SoundTouch::fillInput(int numSamples) {
 }
 
 void SoundTouch::putSamples(const AudioSourceChannelInfo& info) {
-  source()->getNextAudioBlock(info);
+  // source()->getNextAudioBlock(info);
   FloatFrame* frame = frames_.frames();
   for (int i = 0; i < info.numSamples; ++i, ++frame) {
     for (int c = 0; c < 2; ++c)

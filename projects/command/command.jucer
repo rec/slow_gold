@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="s3sR3U1WL" name="command">
+  <MAINGROUP id="pGAsI2dqA" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -210,6 +210,8 @@
                 id="bepr6eyOm" name="AudioMagic.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/AudioMagic.h" id="YFev9AtIa"
                 name="AudioMagic.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/Implementation.cpp"
+                id="w2gBP71M0" name="Implementation.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Implementation.h"
                 id="q6uzpIAlx" name="Implementation.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/RubberBand.cpp"
@@ -1335,7 +1337,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="yLHl4Z4XV" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="bQB9930JJ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

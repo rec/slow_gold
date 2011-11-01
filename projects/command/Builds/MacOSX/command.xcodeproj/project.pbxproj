@@ -51,6 +51,7 @@
 		BE8779808D25ADED9AED510A = { isa = PBXBuildFile; fileRef = 814A6CF4BA6D13BBB915CDBD; };
 		D11FD4E915642040D3E49910 = { isa = PBXBuildFile; fileRef = DEA6FC8EECFABB82E8D9C715; };
 		39F87F82702282B18FC7EF92 = { isa = PBXBuildFile; fileRef = 68F17FEE812FF8314B37C3BE; };
+		FB244600C96D8C8CC2C0E610 = { isa = PBXBuildFile; fileRef = 31C433C51D09032D6A08FF34; };
 		D53E1CC370700C7CDDCEECCE = { isa = PBXBuildFile; fileRef = 1468EC45FF6B8D41C25FB708; };
 		5D4303932AC6269AFA895DFA = { isa = PBXBuildFile; fileRef = DAB0F58CCDFD85FE5CDEB50C; };
 		CD7530A54FA2C9D4D1C11EDB = { isa = PBXBuildFile; fileRef = 8EA89FF00267CDD0F6DE562D; };
@@ -352,6 +353,7 @@
 		1B79815371777CE7111956DA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrappy.h; path = ../../../../src/rec/audio/source/Wrappy.h; sourceTree = "SOURCE_ROOT"; };
 		68F17FEE812FF8314B37C3BE = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioMagic.cpp; path = ../../../../src/rec/audio/stretch/AudioMagic.cpp; sourceTree = "SOURCE_ROOT"; };
 		EF5B3B808612D62974F63E7F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioMagic.h; path = ../../../../src/rec/audio/stretch/AudioMagic.h; sourceTree = "SOURCE_ROOT"; };
+		31C433C51D09032D6A08FF34 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Implementation.cpp; path = ../../../../src/rec/audio/stretch/Implementation.cpp; sourceTree = "SOURCE_ROOT"; };
 		F1679F56EE1D486324292B7C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Implementation.h; path = ../../../../src/rec/audio/stretch/Implementation.h; sourceTree = "SOURCE_ROOT"; };
 		1468EC45FF6B8D41C25FB708 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RubberBand.cpp; path = ../../../../src/rec/audio/stretch/RubberBand.cpp; sourceTree = "SOURCE_ROOT"; };
 		CAA5232C67BF865E5604D4E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RubberBand.h; path = ../../../../src/rec/audio/stretch/RubberBand.h; sourceTree = "SOURCE_ROOT"; };
@@ -956,6 +958,7 @@
 		1E76CD59C8E60146B04575CD = { isa = PBXGroup; children = (
 				68F17FEE812FF8314B37C3BE,
 				EF5B3B808612D62974F63E7F,
+				31C433C51D09032D6A08FF34,
 				F1679F56EE1D486324292B7C,
 				1468EC45FF6B8D41C25FB708,
 				CAA5232C67BF865E5604D4E0,
@@ -1580,7 +1583,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		E8AF373F2BF7A8C106BF631A = { isa = PBXGroup; children = (
+		5EF99CA577169C51E8C49E82 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = command; sourceTree = "<group>"; };
@@ -1607,7 +1610,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				E8AF373F2BF7A8C106BF631A,
+				5EF99CA577169C51E8C49E82,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1727,6 +1730,7 @@
 				BE8779808D25ADED9AED510A,
 				D11FD4E915642040D3E49910,
 				39F87F82702282B18FC7EF92,
+				FB244600C96D8C8CC2C0E610,
 				D53E1CC370700C7CDDCEECCE,
 				5D4303932AC6269AFA895DFA,
 				CD7530A54FA2C9D4D1C11EDB,
