@@ -25,6 +25,25 @@ using namespace rec::widget::waveform;
 using data::Address;
 using gui::SetterResizer;
 
+namespace {
+
+template <typename Type>
+void add(gui::Layout* layout, Type* t, double min, double max, double pref) {
+  layout->addToLayout(t, min, max, pref);
+}
+
+template <typename Type>
+void add(gui::Layout* layout, ptr<Type> &t, double min, double max, double p) {
+  layout->addToLayout(t.get(), min, max, p);
+}
+
+template <typename Type>
+void add(gui::Layout* layout, Type t, double size) {
+  add(layout, t, size, size, size);
+}
+
+}  // namespace
+
 MainPage::MainPage(Components* components, data::Editable* e)
     : mainPanel_("MainPage", HORIZONTAL),
       nonLoopPanel_("MainPagePanel", VERTICAL),
@@ -36,30 +55,25 @@ MainPage::MainPage(Components* components, data::Editable* e)
       timeControllerResizer_(Address("clock_x"), &playbackPanel_, 1, e),
       songDataResizer_(Address("songdata_x"), &playbackPanel_, 3, e),
       stretchyResizer_(Address("stretchy_y"), &controllerPanel_, 1, e) {
-  mainPanel_.addToLayout(&nonLoopPanel_, 500, -1.0, -0.8);
-  mainPanel_.addToLayout(&loopResizer_, 7.0);
-  mainPanel_.addToLayout(components->loops_.get(), 80, -1.0, -0.2);
+  add(&mainPanel_, &nonLoopPanel_, 500, -1.0, -0.8);
+  add(&mainPanel_, &loopResizer_, 7.0);
+  add(&mainPanel_, components->loops_, 80, -1.0, -0.2);
 
-  nonLoopPanel_.addToLayout(components->directoryTree_->treeView(),
-                            75, -1.0, -0.2);
-  nonLoopPanel_.addToLayout(&directoryResizer_, 7.0);
-  nonLoopPanel_.addToLayout(components->waveform_.get(), 50, -1.0, -0.5);
-  nonLoopPanel_.addToLayout(&waveformResizer_, 7.0);
-  nonLoopPanel_.addToLayout(&playbackPanel_, 300, -1.0, -0.3);
+  add(&nonLoopPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);
+  add(&nonLoopPanel_, &directoryResizer_, 7.0);
+  add(&nonLoopPanel_, components->waveform_, 50, -1.0, -0.5);
+  add(&nonLoopPanel_, &waveformResizer_, 7.0);
+  add(&nonLoopPanel_, &playbackPanel_, 250, -1.0, -0.3);
 
-  playbackPanel_.addToLayout(components->timeController_.get(),
-                             75, -1.0, -0.20);
-  playbackPanel_.addToLayout(&timeControllerResizer_, 5.0);
+  add(&playbackPanel_, components->timeController_, 75, -1.0, -0.20);
+  add(&playbackPanel_, &timeControllerResizer_, 5.0);
+  add(&playbackPanel_, components->songData_, 150, -1.0, -0.30);
+  add(&playbackPanel_, &songDataResizer_, 5.0);
+  add(&playbackPanel_, &controllerPanel_, 180, -1.0, -0.40);
 
-  playbackPanel_.addToLayout(components->songData_.get(), 150, -1.0, -0.30);
-  playbackPanel_.addToLayout(&songDataResizer_, 5.0);
-
-  playbackPanel_.addToLayout(&controllerPanel_, 200, -1.0, -0.40);
-
-  controllerPanel_.addToLayout(components->transportController_.get(), 30);
-  controllerPanel_.addToLayout(&stretchyResizer_, 5);
-  controllerPanel_.addToLayout(components->playerController_.get(),
-                               250, -1.0, -0.75);
+  add(&controllerPanel_, components->transportController_.get(), 30);
+  add(&controllerPanel_, &stretchyResizer_, 5);
+  add(&controllerPanel_, components->playerController_, 180, -1.0, -0.75);
 }
 
 MainPage::~MainPage() {}
