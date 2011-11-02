@@ -50,6 +50,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
 
   gui::SetterToggle disableButton_;
   gui::SetterToggle zoomToSelectionButton_;
+  gui::SetterToggle preFaderLevels_;
 
   gui::SetterToggle muteButton_;
   gui::SetterToggle dimButton_;

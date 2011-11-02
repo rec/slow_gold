@@ -41,4 +41,7 @@ message Stretch {
   optional int32 inactive_wait_time = 16  [default = -1];
 
   optional uint32 thread_priority = 17   [default = 4];
+
+  // Do we display levels before or after the gain fader?
+  optional bool prefader_levels = 19;
 };

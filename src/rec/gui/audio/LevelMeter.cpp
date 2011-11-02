@@ -11,12 +11,16 @@ namespace audio {
 const float LevelMeter::SCALE_UP_METER = 2.0f;
 
 LevelMeter::LevelMeter(bool horiz, bool rms, int margin)
-    : horizontal_(horiz), rms_(rms), gain_(1.0f), margin_(margin) {
+    : horizontal_(horiz),
+      rms_(rms),
+      gain_(1.0f),
+      margin_(margin),
+      preFaderLevels_(false) {
 }
 
 void LevelMeter::operator()(const LevelVector& levels) {
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     levels_ = levels;
     for (uint i = 0; i < levels_.size(); ++i) {
       // DCHECK(!std::isinf(levels_[i]));
@@ -35,7 +39,7 @@ static const int SEGMENT_COUNT = 24;
 void LevelMeter::paint(Graphics& g) {
   g.fillAll(juce::Colours::white);
 
-  ScopedLock l(lock_);
+  Lock l(lock_);
   int size = levels_.size();
   if (!size)
     return;
@@ -63,7 +67,8 @@ void LevelMeter::paint(Graphics& g) {
   for (int i = 0; i < size; ++i) {
     float w1 = ((adjustedBase + margin_) * i) / size;
     if (rms_) {
-      float t = travel * gain_ * levels_[i] * SCALE_UP_METER;
+      float gain = preFaderLevels_ ? 1.0f : gain_;
+      float t = travel * gain * levels_[i] * SCALE_UP_METER;
       if (horizontal_)
         g.fillRect(0.0f, w1, t, w);
       else

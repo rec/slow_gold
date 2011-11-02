@@ -67,8 +67,6 @@ class Player : public DataListener<Gain>,
   void clear();
 
  private:
-  void fillSources();
-
   CriticalSection lock_;
 
   AudioTransportSource transportSource_;

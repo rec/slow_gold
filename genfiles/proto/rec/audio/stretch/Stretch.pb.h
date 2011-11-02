@@ -266,6 +266,13 @@ class Stretch : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 thread_priority() const;
   inline void set_thread_priority(::google::protobuf::uint32 value);
   
+  // optional bool prefader_levels = 19;
+  inline bool has_prefader_levels() const;
+  inline void clear_prefader_levels();
+  static const int kPrefaderLevelsFieldNumber = 19;
+  inline bool prefader_levels() const;
+  inline void set_prefader_levels(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.audio.stretch.Stretch)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -289,11 +296,12 @@ class Stretch : public ::google::protobuf::Message {
   ::google::protobuf::uint32 next_buffer_fill_size_;
   ::google::protobuf::int32 inactive_wait_time_;
   ::google::protobuf::uint32 thread_priority_;
+  bool prefader_levels_;
   friend void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(18 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(19 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -603,6 +611,22 @@ inline ::google::protobuf::uint32 Stretch::thread_priority() const {
 inline void Stretch::set_thread_priority(::google::protobuf::uint32 value) {
   _set_bit(17);
   thread_priority_ = value;
+}
+
+// optional bool prefader_levels = 19;
+inline bool Stretch::has_prefader_levels() const {
+  return _has_bit(18);
+}
+inline void Stretch::clear_prefader_levels() {
+  prefader_levels_ = false;
+  _clear_bit(18);
+}
+inline bool Stretch::prefader_levels() const {
+  return prefader_levels_;
+}
+inline void Stretch::set_prefader_levels(bool value) {
+  _set_bit(18);
+  prefader_levels_ = value;
 }
 
 

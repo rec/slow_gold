@@ -30,6 +30,7 @@ PlayerController::PlayerController()
       level_("Gain", Address("gain")),
       disableButton_("Disable speed", Address("time_disabled")),
       zoomToSelectionButton_("Zoom to selection", Address("zoom_to_selection")),
+      preFaderLevels_("Pre-fader levels", Address("prefader_levels")),
       muteButton_("Mute", Address("mute")),
       dimButton_("Dim", Address("dim")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
@@ -84,6 +85,7 @@ PlayerController::PlayerController()
   addToLayout(&dimButton_, 14);
   addToLayout(&disableButton_, 14);
   addToLayout(&zoomToSelectionButton_, 14);
+  addToLayout(&preFaderLevels_, 14);
 
   addToLayout(&level_, SLIDER_HEIGHT);
   addToLayout(&levelMeter_);
@@ -95,6 +97,7 @@ void PlayerController::onDataChange(const Stretch& s) {
   MessageManagerLock l;
   playbackSpeed_.setEnabled(ALLOWING_TIME_CHANGES && !s.time_disabled());
   strategyComboBox_.setSelectedId(static_cast<int>(s.strategy()), true);
+  levelMeter_.setPreFaderLevels(s.prefader_levels());
 }
 
 void PlayerController::onDataChange(const StereoProto& stereo) {
@@ -113,6 +116,7 @@ void PlayerController::onDataChange(const rec::audio::Gain& gain) {
   level_.slider()->setEnabled(!(mute || dim));
   muteButton_.setEnabled(mute || !dim);
   dimButton_.setEnabled(!mute || dim);
+  levelMeter_.setGain(getGain(gain));
 }
 
 void PlayerController::setData(data::TypedEditable<Stretch>* d) {
@@ -120,6 +124,7 @@ void PlayerController::setData(data::TypedEditable<Stretch>* d) {
   playbackSpeed_.setUntypedEditable(d);
   pitchScale_.setUntypedEditable(d);
   fineScale_.setUntypedEditable(d);
+  preFaderLevels_.setUntypedEditable(d);
 }
 
 void PlayerController::setData(data::TypedEditable<Gain>* d) {

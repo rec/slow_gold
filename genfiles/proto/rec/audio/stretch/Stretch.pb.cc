@@ -31,7 +31,7 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
       "rec/audio/stretch/Stretch.proto");
   GOOGLE_CHECK(file != NULL);
   Stretch_descriptor_ = file->message_type(0);
-  static const int Stretch_offsets_[18] = {
+  static const int Stretch_offsets_[19] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, strategy_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_disabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, pitch_disabled_),
@@ -50,6 +50,7 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, next_buffer_fill_size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, inactive_wait_time_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, thread_priority_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, prefader_levels_),
   };
   Stretch_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -96,7 +97,7 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\362\004\n\007Stretch\022B\n\010strategy\030\022 \001(\0162#.rec."
+    "oto\"\213\005\n\007Stretch\022B\n\010strategy\030\022 \001(\0162#.rec."
     "audio.stretch.Stretch.Strategy:\013AUDIO_MA"
     "GIC\022\034\n\rtime_disabled\030\001 \001(\010:\005false\022\035\n\016pit"
     "ch_disabled\030\002 \001(\010:\005false\022\'\n\031passthrough_"
@@ -110,8 +111,9 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     "efill_size\030\016 \001(\r:\00515000\022$\n\025next_buffer_f"
     "ill_size\030\017 \001(\r:\00515000\022\036\n\022inactive_wait_t"
     "ime\030\020 \001(\005:\002-1\022\032\n\017thread_priority\030\021 \001(\r:\001"
-    "4\"E\n\010Strategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001"
-    "\022\016\n\nRUBBERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003", 712);
+    "4\022\027\n\017prefader_levels\030\023 \001(\010\"E\n\010Strategy\022\010"
+    "\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nRUBBERBAND\020"
+    "\002\022\016\n\nSOUNDTOUCH\020\003", 737);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -173,6 +175,7 @@ const int Stretch::kPrefillSizeFieldNumber;
 const int Stretch::kNextBufferFillSizeFieldNumber;
 const int Stretch::kInactiveWaitTimeFieldNumber;
 const int Stretch::kThreadPriorityFieldNumber;
+const int Stretch::kPrefaderLevelsFieldNumber;
 #endif  // !_MSC_VER
 
 Stretch::Stretch()
@@ -209,6 +212,7 @@ void Stretch::SharedCtor() {
   next_buffer_fill_size_ = 15000u;
   inactive_wait_time_ = -1;
   thread_priority_ = 4u;
+  prefader_levels_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -265,6 +269,7 @@ void Stretch::Clear() {
   if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     inactive_wait_time_ = -1;
     thread_priority_ = 4u;
+    prefader_levels_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -564,6 +569,22 @@ bool Stretch::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(152)) goto parse_prefader_levels;
+        break;
+      }
+      
+      // optional bool prefader_levels = 19;
+      case 19: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_prefader_levels:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &prefader_levels_)));
+          _set_bit(18);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -677,6 +698,11 @@ void Stretch::SerializeWithCachedSizes(
       18, this->strategy(), output);
   }
   
+  // optional bool prefader_levels = 19;
+  if (_has_bit(18)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(19, this->prefader_levels(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -774,6 +800,11 @@ void Stretch::SerializeWithCachedSizes(
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       18, this->strategy(), target);
+  }
+  
+  // optional bool prefader_levels = 19;
+  if (_has_bit(18)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(19, this->prefader_levels(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -898,6 +929,11 @@ int Stretch::ByteSize() const {
           this->thread_priority());
     }
     
+    // optional bool prefader_levels = 19;
+    if (has_prefader_levels()) {
+      total_size += 2 + 1;
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -983,6 +1019,9 @@ void Stretch::MergeFrom(const Stretch& from) {
     if (from._has_bit(17)) {
       set_thread_priority(from.thread_priority());
     }
+    if (from._has_bit(18)) {
+      set_prefader_levels(from.prefader_levels());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1024,6 +1063,7 @@ void Stretch::Swap(Stretch* other) {
     std::swap(next_buffer_fill_size_, other->next_buffer_fill_size_);
     std::swap(inactive_wait_time_, other->inactive_wait_time_);
     std::swap(thread_priority_, other->thread_priority_);
+    std::swap(prefader_levels_, other->prefader_levels_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

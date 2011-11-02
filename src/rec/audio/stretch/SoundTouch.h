@@ -26,6 +26,7 @@ class SoundTouch : public Implementation {
   void copyToOutput(const AudioSourceChannelInfo& info);
 
  private:
+  CriticalSection lock_;
   Frames<FloatFrame> frames_;
 
   ptr<soundtouch::SoundTouch> soundTouch_;

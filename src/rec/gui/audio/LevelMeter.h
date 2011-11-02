@@ -19,6 +19,7 @@ class LevelMeter : public Component,
 
   virtual void paint(Graphics& g);
   void setGain(float g) { ScopedLock l(lock_); gain_ = g; }
+  void setPreFaderLevels(bool p) { Lock l(lock_); preFaderLevels_ = p; }
 
  private:
   CriticalSection lock_;
@@ -27,6 +28,7 @@ class LevelMeter : public Component,
   bool rms_;
   float gain_;
   int margin_;
+  bool preFaderLevels_;
 
   DISALLOW_COPY_AND_ASSIGN(LevelMeter);
 };

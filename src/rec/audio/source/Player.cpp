@@ -17,8 +17,12 @@ namespace source {
 using namespace rec::audio::transport;
 using namespace rec::audio::stretch;
 
-Player::Player(Device* d) : device_(d) {
-  fillSources();
+Player::Player(Device* d) : device_(d),
+                            timer_(new Timer()),
+                            selection_(new Selection(timer_)),
+                            stretchy_(new Stretchy(selection_)),
+                            stereo_(new Stereo(stretchy_)) {
+  level_.setSource(stereo_);
   device_->manager_.addAudioCallback(&player_);
   transportSource_.setSource(&level_);
   player_.setSource(&transportSource_);
@@ -27,15 +31,6 @@ Player::Player(Device* d) : device_(d) {
 Player::~Player() {
   transportSource_.setSource(NULL);
 }
-
-void Player::fillSources() {
-  timer_ = new Timer();
-  selection_ = new Selection(timer_);
-  stretchy_ = new Stretchy(selection_);
-  stereo_ = new Stereo(stretchy_);
-  level_.setSource(stereo_);
-}
-
 
 Samples<44100> Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
