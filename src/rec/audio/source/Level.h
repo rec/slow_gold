@@ -22,7 +22,7 @@ class Level : public Wrappy,
     for (int c = 0; c < channels_; ++c)
       result[c] = getLevel(i, c);
 
-    broadcast(result);
+    broadcast(result);  // TODO: this should be done in a new thread.
   }
 
   virtual float getLevel(const AudioSourceChannelInfo& info, int channel) {

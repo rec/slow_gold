@@ -19,8 +19,8 @@ class Selection : public Wrappy {
 
   void setSelection(const block::BlockSet& s);
 
-  const block::BlockSet& selection() const {
-    // DCHECK(!selection_.empty());
+  const block::BlockSet selection() const {
+    Lock l(lock_);
     return selection_;
   }
 
@@ -28,7 +28,6 @@ class Selection : public Wrappy {
   void moveBackward(Samples<44100> dt);
 
  private:
-  CriticalSection lock_;
   block::BlockSet selection_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Selection);

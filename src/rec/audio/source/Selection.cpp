@@ -22,12 +22,12 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
 }
 
 void Selection::setSelection(const BlockSet& s) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   selection_ = s;
 }
 
 void Selection::moveBackward(Samples<44100> dt) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   BlockSet sel = selection();
   BlockSet::const_iterator i = sel.begin();
   for (; i != sel.end() && i->second <= position_; ++i);
