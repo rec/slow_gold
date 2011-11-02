@@ -2,6 +2,7 @@
 #include "rec/util/Math.h"
 
 #include "rec/gui/audio/LevelMeter.h"
+#include "rec/audio/util/Gain.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -86,6 +87,12 @@ void LevelMeter::paint(Graphics& g) {
     else
       g.fillRect(0.0, pos, base, GAP_WIDTH);
   }
+}
+
+void LevelMeter::operator()(const rec::audio::Gain& gain) {
+  Lock l(lock_);
+  gain_ = getGain(gain);
+  preFaderLevels_ = gain.prefader_levels();
 }
 
 }  // namespace audio

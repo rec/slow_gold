@@ -6,4 +6,7 @@ message Gain {
   optional bool mute = 2;
   optional bool dim = 3;
   optional double dim_level = 4 [default = 0.2];  // Amplitude ratio.
+
+  // Do we display levels before or after the gain fader?
+  optional bool prefader_levels = 6;
 };

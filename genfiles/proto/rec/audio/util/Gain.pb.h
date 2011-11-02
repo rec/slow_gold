@@ -126,6 +126,13 @@ class Gain : public ::google::protobuf::Message {
   inline double dim_level() const;
   inline void set_dim_level(double value);
   
+  // optional bool prefader_levels = 6;
+  inline bool has_prefader_levels() const;
+  inline void clear_prefader_levels();
+  static const int kPrefaderLevelsFieldNumber = 6;
+  inline bool prefader_levels() const;
+  inline void set_prefader_levels(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.audio.Gain)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -136,11 +143,12 @@ class Gain : public ::google::protobuf::Message {
   bool mute_;
   bool dim_;
   double dim_level_;
+  bool prefader_levels_;
   friend void  protobuf_AddDesc_rec_2faudio_2futil_2fGain_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2futil_2fGain_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2futil_2fGain_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -241,6 +249,22 @@ inline double Gain::dim_level() const {
 inline void Gain::set_dim_level(double value) {
   _set_bit(4);
   dim_level_ = value;
+}
+
+// optional bool prefader_levels = 6;
+inline bool Gain::has_prefader_levels() const {
+  return _has_bit(5);
+}
+inline void Gain::clear_prefader_levels() {
+  prefader_levels_ = false;
+  _clear_bit(5);
+}
+inline bool Gain::prefader_levels() const {
+  return prefader_levels_;
+}
+inline void Gain::set_prefader_levels(bool value) {
+  _set_bit(5);
+  prefader_levels_ = value;
 }
 
 
