@@ -38,8 +38,6 @@ void SlowWindow::doComputeBounds() {
   computeBounds<AppLayout>();
 }
 
-using data::DefaultRegistry;
-
 static Def<LoopPointList> loops(
 "loop_point { selected: true }"
 );
@@ -58,7 +56,7 @@ static Def<AppLayout> layout(
 );
 
 DefaultRegistry* SlowWindow::getDefaultRegistry() {
-  DefaultRegistry* r = new data::DefaultRegistry;
+  DefaultRegistry* r = new DefaultRegistry;
 
   r->registerDefault(*loops);
   r->registerDefault(*layout);

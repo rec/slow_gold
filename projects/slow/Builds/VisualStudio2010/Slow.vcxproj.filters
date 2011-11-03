@@ -391,9 +391,6 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\DefaultRegistry.cpp">
-      <Filter>Slow\rec\data</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
@@ -740,6 +737,9 @@
       <Filter>Slow\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\DefaultRegistry.cpp">
       <Filter>Slow\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp">
@@ -1245,9 +1245,6 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\DefaultRegistry.h">
-      <Filter>Slow\rec\data</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
@@ -1720,6 +1717,9 @@
       <Filter>Slow\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\DefaultRegistry.h">
       <Filter>Slow\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\DelegateToList.h">

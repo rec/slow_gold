@@ -6,9 +6,11 @@
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
+
+namespace util { class DefaultRegistry; }
+
 namespace data {
 
-class DefaultRegistry;
 class UndoQueue;
 class UntypedEditable;
 

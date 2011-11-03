@@ -7,7 +7,7 @@
 
 namespace rec {
 
-namespace data { class DefaultRegistry; }
+namespace util { class DefaultRegistry; }
 
 namespace app {
 
@@ -31,7 +31,7 @@ class GenericApplication : public juce::JUCEApplication {
   virtual void anotherInstanceStarted(const String&) {}
 
  protected:
-  virtual void registerDefaults(data::DefaultRegistry*) {}
+  virtual void registerDefaults(DefaultRegistry*) {}
 
   const String name_;
   const String version_;

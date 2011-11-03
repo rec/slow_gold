@@ -81,7 +81,6 @@
 		94A70805F97421B648634960 = { isa = PBXBuildFile; fileRef = 7878C28A1A8AF5FFC61D8824; };
 		A71D485B066F0168FD40E827 = { isa = PBXBuildFile; fileRef = D8B011CF05AE82F95C0D38EE; };
 		2C1769081A0C558D3DEB815F = { isa = PBXBuildFile; fileRef = E19158321F260DBCC2420226; };
-		C656FF0D4D244549673E8D39 = { isa = PBXBuildFile; fileRef = 830AB8825B9854DF41DED203; };
 		2D49BDB155BE4173860D57B9 = { isa = PBXBuildFile; fileRef = 13D1D052624F6A0B246F6335; };
 		15546065C1A9AA5AA0C640B5 = { isa = PBXBuildFile; fileRef = 1748B196C7CF584702E6C34F; };
 		60FFD6E289D1AAFFCBC79558 = { isa = PBXBuildFile; fileRef = 6E0B07DDF020413B5CCE0551; };
@@ -198,6 +197,7 @@
 		D62FF085927D5276526525FC = { isa = PBXBuildFile; fileRef = 9922D141ABED4BFCD0C2DEBB; };
 		52C01DA6800974B5FA02471A = { isa = PBXBuildFile; fileRef = 4FBD6178F89CF0B68DB220E6; };
 		413CA29A5541E23ABCA19258 = { isa = PBXBuildFile; fileRef = B4D14C0ADDB1A6D60F8CAD3A; };
+		A52FA8319A3359AE12A382FC = { isa = PBXBuildFile; fileRef = CBE2728270BDE0DDBD543200; };
 		1FF269AF82E34E989BFFB28B = { isa = PBXBuildFile; fileRef = 6216BBEA314290A78F6562E0; };
 		CCCD4F61EFD005C12816C1E9 = { isa = PBXBuildFile; fileRef = 640D5A61A403DBC58B581093; };
 		1F7C33EAA747E56B54268DA3 = { isa = PBXBuildFile; fileRef = 22FD5CEB49ADEAE8E8F073DE; };
@@ -443,8 +443,6 @@
 		E19158321F260DBCC2420226 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Address.cpp; path = ../../../../src/rec/data/Address.cpp; sourceTree = "SOURCE_ROOT"; };
 		306996540D2F52FAD0685FD9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Address.h; path = ../../../../src/rec/data/Address.h; sourceTree = "SOURCE_ROOT"; };
 		F0AA4D42B00AEBFD15907403 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Data.h; path = ../../../../src/rec/data/Data.h; sourceTree = "SOURCE_ROOT"; };
-		830AB8825B9854DF41DED203 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DefaultRegistry.cpp; path = ../../../../src/rec/data/DefaultRegistry.cpp; sourceTree = "SOURCE_ROOT"; };
-		38E7BA95E3070187A8EE29BB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultRegistry.h; path = ../../../../src/rec/data/DefaultRegistry.h; sourceTree = "SOURCE_ROOT"; };
 		13D1D052624F6A0B246F6335 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Editable.cpp; path = ../../../../src/rec/data/Editable.cpp; sourceTree = "SOURCE_ROOT"; };
 		B96847524BE56BD50BD7A593 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Editable.h; path = ../../../../src/rec/data/Editable.h; sourceTree = "SOURCE_ROOT"; };
 		1748B196C7CF584702E6C34F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copy.cpp; path = ../../../../src/rec/data/persist/Copy.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -719,6 +717,8 @@
 		9187B5F1250878B53AA91A19 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cuttable.h; path = ../../../../src/rec/util/Cuttable.h; sourceTree = "SOURCE_ROOT"; };
 		B4D14C0ADDB1A6D60F8CAD3A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Defaulter.cpp; path = ../../../../src/rec/util/Defaulter.cpp; sourceTree = "SOURCE_ROOT"; };
 		9968E59EA8D84239C842CC8B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Defaulter.h; path = ../../../../src/rec/util/Defaulter.h; sourceTree = "SOURCE_ROOT"; };
+		CBE2728270BDE0DDBD543200 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DefaultRegistry.cpp; path = ../../../../src/rec/util/DefaultRegistry.cpp; sourceTree = "SOURCE_ROOT"; };
+		EA0C0DD394BDB6147458ADA2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultRegistry.h; path = ../../../../src/rec/util/DefaultRegistry.h; sourceTree = "SOURCE_ROOT"; };
 		C9EB4291DC1B5A6E52639D6A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DelegateToList.h; path = ../../../../src/rec/util/DelegateToList.h; sourceTree = "SOURCE_ROOT"; };
 		E32168006936976727C38508 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Exception.h; path = ../../../../src/rec/util/Exception.h; sourceTree = "SOURCE_ROOT"; };
 		6216BBEA314290A78F6562E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GetVolumes.cpp; path = ../../../../src/rec/util/file/GetVolumes.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1187,8 +1187,6 @@
 				E19158321F260DBCC2420226,
 				306996540D2F52FAD0685FD9,
 				F0AA4D42B00AEBFD15907403,
-				830AB8825B9854DF41DED203,
-				38E7BA95E3070187A8EE29BB,
 				13D1D052624F6A0B246F6335,
 				B96847524BE56BD50BD7A593,
 				98CF4FA3667E193E9E715CA3,
@@ -1412,6 +1410,8 @@
 				9187B5F1250878B53AA91A19,
 				B4D14C0ADDB1A6D60F8CAD3A,
 				9968E59EA8D84239C842CC8B,
+				CBE2728270BDE0DDBD543200,
+				EA0C0DD394BDB6147458ADA2,
 				C9EB4291DC1B5A6E52639D6A,
 				E32168006936976727C38508,
 				08079E40C46FEC958CB6B928,
@@ -1585,7 +1585,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		AE22CEB61C0BBBFF1BC63D9E = { isa = PBXGroup; children = (
+		F0A8D229AF731369FF0F53E1 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = command; sourceTree = "<group>"; };
@@ -1612,7 +1612,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				AE22CEB61C0BBBFF1BC63D9E,
+				F0A8D229AF731369FF0F53E1,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1762,7 +1762,6 @@
 				94A70805F97421B648634960,
 				A71D485B066F0168FD40E827,
 				2C1769081A0C558D3DEB815F,
-				C656FF0D4D244549673E8D39,
 				2D49BDB155BE4173860D57B9,
 				15546065C1A9AA5AA0C640B5,
 				60FFD6E289D1AAFFCBC79558,
@@ -1879,6 +1878,7 @@
 				D62FF085927D5276526525FC,
 				52C01DA6800974B5FA02471A,
 				413CA29A5541E23ABCA19258,
+				A52FA8319A3359AE12A382FC,
 				1FF269AF82E34E989BFFB28B,
 				CCCD4F61EFD005C12816C1E9,
 				1F7C33EAA747E56B54268DA3,

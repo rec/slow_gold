@@ -5,7 +5,7 @@
 #include "rec/app/Files.h"
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
-#include "rec/data/DefaultRegistry.h"
+#include "rec/util/DefaultRegistry.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/Trash.h"

@@ -5,7 +5,7 @@
 
 namespace rec {
 
-namespace data { class DefaultRegistry; }
+namespace util { class DefaultRegistry; }
 
 namespace app {
 
@@ -21,7 +21,7 @@ class Window : public gui::PersistentWindow {
   virtual void initialise();
   virtual void startup();
   virtual void shutdown();
-  virtual data::DefaultRegistry* getDefaultRegistry() = 0;
+  virtual DefaultRegistry* getDefaultRegistry() = 0;
 
  protected:
   virtual void constructInstance() = 0;

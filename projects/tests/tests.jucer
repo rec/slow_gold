@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="X7vhDry3H" name="tests">
+  <MAINGROUP id="c8ejUftZq" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -427,10 +427,6 @@
               name="Address.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Data.h" id="myDKKHyWg" name="Data.h"
               resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/DefaultRegistry.cpp" id="FauFxiPKw"
-              name="DefaultRegistry.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/DefaultRegistry.h" id="6FAIyzCrM"
-              name="DefaultRegistry.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/Editable.cpp" id="KApo1Sygl"
               name="Editable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Editable.h" id="CLOwHwcIL"
@@ -1033,6 +1029,10 @@
               name="Defaulter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="Wnzv6qRmH"
               name="Defaulter.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/DefaultRegistry.cpp" id="1bqWfpWSW"
+              name="DefaultRegistry.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/DefaultRegistry.h" id="Ha3ba53KS"
+              name="DefaultRegistry.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/DelegateToList.h" id="SLwfq1Ca5"
               name="DelegateToList.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/DelegateToList_test.cpp"
@@ -1399,7 +1399,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="SVWj34C08" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="hDefNlpbE" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

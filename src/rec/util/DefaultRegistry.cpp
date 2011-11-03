@@ -2,13 +2,13 @@
 
 #include "google/protobuf/message.h"
 
-#include "rec/data/DefaultRegistry.h"
+#include "rec/util/DefaultRegistry.h"
 
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/STL.h"
 
 namespace rec {
-namespace data {
+namespace util {
 
 static const char* DEFAULT_NAME = "(default)";
 
@@ -75,5 +75,6 @@ const Message* DefaultRegistry::getDefault(const string& typeName,
   return NULL;
 }
 
-}  // namespace data
+}  // namespace util
 }  // namespace rec
+

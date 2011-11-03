@@ -2,7 +2,7 @@
 #define __REC_DATA_DATA__
 
 #include "rec/data/Value.h"
-#include "rec/data/DefaultRegistry.h"
+#include "rec/util/DefaultRegistry.h"
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/util/file/VirtualFile.h"

@@ -187,7 +187,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\DefaultRegistry.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp"/>
@@ -304,6 +303,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\DefaultRegistry.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp"/>
@@ -473,7 +473,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\DefaultRegistry.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>
@@ -632,6 +631,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Compare.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\DefaultRegistry.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\DelegateToList.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h"/>

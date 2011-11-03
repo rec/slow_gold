@@ -1,10 +1,10 @@
-#ifndef __REC_DATA_DEFAULTREGISTRY__
-#define __REC_DATA_DEFAULTREGISTRY__
+#ifndef __REC_UTIL_DEFAULTREGISTRY__
+#define __REC_UTIL_DEFAULTREGISTRY__
 
 #include "rec/base/base.h"
 
 namespace rec {
-namespace data {
+namespace util {
 
 class RegistryEntry;
 
@@ -40,7 +40,7 @@ const Type& DefaultRegistry::getDefault(const VirtualFile& vf) const {
   return Type::default_instance();
 }
 
-}  // namespace data
+}  // namespace util
 }  // namespace rec
 
-#endif  // __REC_DATA_DEFAULTREGISTRY__
+#endif  // __REC_UTIL_DEFAULTREGISTRY__
