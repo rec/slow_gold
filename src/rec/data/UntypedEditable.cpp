@@ -1,4 +1,4 @@
-#include "rec/data/persist/UntypedEditable.h"
+#include "rec/data/UntypedEditable.h"
 
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/FieldOps.h"

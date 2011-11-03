@@ -188,8 +188,7 @@
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\EditableUpdater.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp"/>
@@ -198,6 +197,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedOperations.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedTyper.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\UndoQueue.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\UntypedEditable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Value.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\ReadYaml.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.cpp"/>
@@ -474,10 +474,8 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedEditable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\EditableFactory.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\EditableUpdater.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h"/>
@@ -489,7 +487,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedTyper.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Typer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\TypedEditable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\UntypedEditable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Value.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\aliasmanager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\anchor.h"/>

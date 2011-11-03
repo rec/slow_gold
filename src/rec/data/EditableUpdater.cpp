@@ -1,6 +1,6 @@
 #include <set>
 
-#include "rec/data/persist/EditableUpdater.h"
+#include "rec/data/EditableUpdater.h"
 
 #include "rec/app/Files.h"
 #include "rec/data/EditableFactory.h"

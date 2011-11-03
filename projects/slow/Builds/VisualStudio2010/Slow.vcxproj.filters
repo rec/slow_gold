@@ -56,9 +56,6 @@
     <Filter Include="Slow\rec\data">
       <UniqueIdentifier>{30C6430A-9A1D-9F00-5E1C-045919BF6A3C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Slow\rec\data\persist">
-      <UniqueIdentifier>{7ADF2A8A-8116-C7D7-4581-4B9180A06A75}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Slow\rec\data\proto">
       <UniqueIdentifier>{00F7F4DE-FCBE-6B60-EC05-C6B2454BB52D}</UniqueIdentifier>
     </Filter>
@@ -394,11 +391,8 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp">
-      <Filter>Slow\rec\data\persist</Filter>
+    <ClCompile Include="..\..\..\..\src\rec\data\EditableUpdater.cpp">
+      <Filter>Slow\rec\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
       <Filter>Slow\rec\data\proto</Filter>
@@ -422,6 +416,9 @@
       <Filter>Slow\rec\data\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\UndoQueue.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\UntypedEditable.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\Value.cpp">
@@ -1248,17 +1245,11 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h">
-      <Filter>Slow\rec\data\persist</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\data\EditableFactory.h">
+      <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedEditable.h">
-      <Filter>Slow\rec\data\persist</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\data\EditableUpdater.h">
+      <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h">
       <Filter>Slow\rec\data\proto</Filter>
@@ -1293,7 +1284,13 @@
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h">
       <Filter>Slow\rec\data\proto</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\TypedEditable.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\UntypedEditable.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Value.h">

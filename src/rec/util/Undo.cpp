@@ -1,5 +1,5 @@
 #include "rec/util/Undo.h"
-#include "rec/data/persist/EditableUpdater.h"
+#include "rec/data/EditableUpdater.h"
 
 namespace rec {
 namespace util {

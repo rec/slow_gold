@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="RnLmf1wWv" name="command">
+  <MAINGROUP id="1xbqefyIy" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -409,20 +409,12 @@
               name="Editable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Editable.h" id="KVN2zCxtw"
               name="Editable.h" resource="0"/>
-        <GROUP id="yRjyeuJbc" name="persist">
-          <FILE compile="0" file="../../src/rec/data/persist/EditableFactory.h"
-                id="MkgLf8cz7" name="EditableFactory.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/persist/EditableUpdater.cpp"
-                id="yE7NYB5Z2" name="EditableUpdater.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/persist/EditableUpdater.h"
-                id="oCwXUmIa0" name="EditableUpdater.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/persist/TypedEditable.h"
-                id="t8jjuXdAr" name="TypedEditable.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/persist/UntypedEditable.cpp"
-                id="CF7VypEqJ" name="UntypedEditable.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/persist/UntypedEditable.h"
-                id="izNB9MXd5" name="UntypedEditable.h" resource="0"/>
-        </GROUP>
+        <FILE compile="0" file="../../src/rec/data/EditableFactory.h" id="jLM84M6hu"
+              name="EditableFactory.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/EditableUpdater.cpp" id="3jyZx7Jf5"
+              name="EditableUpdater.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/EditableUpdater.h" id="1rqzYpE7K"
+              name="EditableUpdater.h" resource="0"/>
         <GROUP id="2PaHmfyN0" name="proto">
           <FILE compile="0" file="../../src/rec/data/proto/Comparer.h" id="8PlkqlMk8"
                 name="Comparer.h" resource="0"/>
@@ -461,10 +453,16 @@
           <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="1DRxgqAD5"
                 name="Types.h" resource="0"/>
         </GROUP>
+        <FILE compile="0" file="../../src/rec/data/TypedEditable.h" id="c27zZsVv9"
+              name="TypedEditable.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/UndoQueue.cpp" id="RuK378WTZ"
               name="UndoQueue.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/UndoQueue.h" id="wHhffexGc"
               name="UndoQueue.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/UntypedEditable.cpp" id="9UvgHU9Z6"
+              name="UntypedEditable.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/UntypedEditable.h" id="KSUOR2aLo"
+              name="UntypedEditable.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/Value.cpp" id="SJ76b6rCO"
               name="Value.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Value.h" id="mHtPpmQBC"
@@ -1339,7 +1337,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="A1ocJ99hi" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="AUmVK6P0R" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

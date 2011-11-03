@@ -2,7 +2,7 @@
 #define __REC_UTIL_LISTENER_UNTYPEDDATALISTENER__
 
 #include "rec/util/listener/Listener.h"
-#include "rec/data/persist/UntypedEditable.h"
+#include "rec/data/UntypedEditable.h"
 #include "rec/data/Address.h"
 
 namespace rec {
