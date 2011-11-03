@@ -12,7 +12,7 @@ class OutputImpl;
 
 class Input {
  public:
-  explicit Input(const File& file);
+  explicit Input(const File& file, bool compressed = true);
   ~Input();
 
   bool read(Message* message);
@@ -24,10 +24,11 @@ class Input {
 
 class Output {
  public:
-  explicit Output(const File& file);
+  explicit Output(const File& file, bool compressed = true);
   ~Output();
 
   void write(const Message& message);
+  void flush();
 
  private:
   ptr<OutputImpl> impl_;

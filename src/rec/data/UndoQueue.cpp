@@ -10,7 +10,10 @@ namespace data {
 using file::Output;
 
 UndoQueue::UndoQueue(const File& file)
-    : logfile_(new Output(file)), writtenTo_(0), undoes_(0), enabled_(false) {
+    : logfile_(new Output(file, false)),
+      writtenTo_(0),
+      undoes_(0),
+      enabled_(false) {
 }
 
 UndoQueue::~UndoQueue() {
@@ -95,8 +98,10 @@ bool UndoQueue::write() {
     writtenTo_ = size;
   }
 
-  for (ActionList::iterator i = events->begin(); i != events->end(); ++i)
+  for (ActionList::iterator i = events->begin(); i != events->end(); ++i) {
     logfile_->write(**i);
+    logfile_->flush();
+  }
 
   return true;
 }

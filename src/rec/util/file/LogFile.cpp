@@ -1,3 +1,5 @@
+#include <google/protobuf/text_format.h>
+
 #include "rec/util/file/LogFile.h"
 
 #include "google/protobuf/message.h"
@@ -9,8 +11,8 @@ namespace rec {
 namespace util {
 namespace file {
 
-typedef google::protobuf::io::CodedOutputStream CodedOutputStream;
-typedef google::protobuf::io::CodedInputStream CodedInputStream;
+using google::protobuf::TextFormat;
+using namespace google::protobuf::io;
 
 template <typename Zero, typename Coded>
 class Base {
@@ -24,12 +26,13 @@ class Base {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Base);
 };
 
-
 typedef Base<zerocopy::Input, CodedInputStream> InputBase;
 
 class InputImpl : public InputBase {
  public:
-  explicit InputImpl(const File& file) : InputBase(file) {}
+  explicit InputImpl(const File& file, bool compressed)
+      : InputBase(file), compressed_(compressed) {
+  }
 
   bool read(Message* message) {
     uint64 size;
@@ -38,36 +41,70 @@ class InputImpl : public InputBase {
     // TODO: deal with very long strings.
     return coded_.ReadVarint64(&size) &&
       coded_.ReadString(&s, static_cast<int>(size)) &&
-      message->ParseFromString(s);
+      (compressed_ ? message->ParseFromString(s) :
+       TextFormat::ParseFromString(s, message));
   }
+
+ private:
+  const bool compressed_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(InputImpl);
 };
 
 typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;
 
 class OutputImpl : public OutputBase {
  public:
-  explicit OutputImpl(const File& file) : OutputBase(file) {}
+  explicit OutputImpl(const File& file, bool compressed)
+      : OutputBase(file), compressed_(compressed) {
+  }
 
   void write(const Message& message) {
     string s;
-    message.SerializeToString(&s);
+
+    if (compressed_)
+      message.SerializeToString(&s);
+    else
+      TextFormat::PrintToString(message, &s);
     coded_.WriteVarint64(s.size());
     coded_.WriteString(s);
   }
 
+  void flush() {
+    zero_.flush();
+  }
+
  private:
+  const bool compressed_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(OutputImpl);
 };
 
-Input::Input(const File& f) : impl_(new InputImpl(f)) {}
-Input::~Input() {}
+Input::Input(const File& f, bool compressed)
+    : impl_(new InputImpl(f, compressed)) {
+}
 
-bool Input::read(Message* m) { return impl_->read(m); }
+Input::~Input() {
+}
 
-Output::Output(const File& f) : impl_(new OutputImpl(f)) {}
-Output::~Output() {}
+bool Input::read(Message* m) {
+  return impl_->read(m);
+}
 
-void Output::write(const Message& m) { impl_->write(m); }
+Output::Output(const File& f, bool compressed)
+  : impl_(new OutputImpl(f, compressed)) {
+}
+
+Output::~Output() {
+}
+
+void Output::write(const Message& m) {
+  impl_->write(m);
+}
+
+void Output::flush() {
+  impl_->flush();
+}
 
 }  // namespace file
 }  // namespace util

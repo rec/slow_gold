@@ -1,7 +1,7 @@
 #include "rec/gui/icon/ZoomIn.svg.h"
 
 #include "rec/base/ArraySize.h"
-#include "rec/data/Binary.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace gui {
@@ -447,7 +447,7 @@ juce::Drawable* ZoomIn::create() {
   "</svg>\n"
   "\n"
 ;
-  return data::create<juce::Drawable>(data, arraysize(data));
+  return createBinary<juce::Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon

@@ -33,7 +33,7 @@ void AudioMagic::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = static_cast<int>(processOneChunk(i))) {
       if (zeroCount) {
-        LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
+        LOG_FIRST_N(ERROR, 2) << "Got it on try " << (zeroCount + 1);
       }
 
       i.numSamples -= processed;

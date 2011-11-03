@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="8t4NTLYjZ" name="Slow">
+  <MAINGROUP id="PxJAVxAhq" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -264,6 +264,8 @@
                 name="Gain.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Gain.h" id="9GQlCpYkG"
                 name="Gain.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/OwnedFrames.h" id="hVD2sePGR"
+                name="OwnedFrames.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ThumbnailBuffer.cpp"
                 id="jpvDj8OoZ" name="ThumbnailBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/ThumbnailBuffer.h"
@@ -401,10 +403,6 @@
               name="Address.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Address.h" id="NJIaplMw8"
               name="Address.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/Binary.cpp" id="YheSBGMyU"
-              name="Binary.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/Binary.h" id="N1M8MpfFU"
-              name="Binary.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Data.h" id="0USqVpFec" name="Data.h"
               resource="0"/>
         <FILE compile="1" file="../../src/rec/data/DefaultRegistry.cpp" id="aBh3peGVU"
@@ -925,6 +923,10 @@
               name="Threads.h" resource="0"/>
       </GROUP>
       <GROUP id="DEDkN5VGv" name="util">
+        <FILE compile="1" file="../../src/rec/util/Binary.cpp" id="odu8D91hv"
+              name="Binary.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Binary.h" id="FJEuehDq1"
+              name="Binary.h" resource="0"/>
         <GROUP id="DvbpRbdDI" name="block">
           <FILE compile="0" file="../../src/rec/util/block/Block.h" id="IdQpMEfDY"
                 name="Block.h" resource="0"/>
@@ -1337,7 +1339,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="QeQF2cEQJ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="NLfKbMedK" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

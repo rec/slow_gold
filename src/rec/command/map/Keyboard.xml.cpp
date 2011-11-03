@@ -1,7 +1,7 @@
 #include "rec/command/map/Keyboard.xml.h"
 
 #include "rec/base/ArraySize.h"
-#include "rec/data/Binary.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace command {
@@ -115,7 +115,7 @@ juce::XmlElement* Keyboard::create() {
   "</KEYMAPPINGS>\n"
   "\n"
 ;
-  return data::create<juce::XmlElement>(data, arraysize(data));
+  return createBinary<juce::XmlElement>(data, arraysize(data));
 };
 
 }  // namespace command

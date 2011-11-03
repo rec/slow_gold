@@ -11,34 +11,35 @@ message Stretch {
     SOUNDTOUCH = 3;
   };
 
-  optional Strategy strategy = 18       [default = AUDIO_MAGIC];
-  optional bool time_disabled = 1       [default = false];
-  optional bool pitch_disabled = 2      [default = false];
-  optional bool passthrough_when_disabled = 3 [default = true];
-  optional double time_scale = 4        [default = 1.0];
-  optional double time_percent = 5      [default = 100.0];
-  optional double sample_rate = 6       [default = 44100.0];
-  optional uint32 channels = 7          [default = 2];
-  optional double pitch_scale = 8       [default = 1.0];
-  optional double semitone_shift = 9    [default = 0.0];
-  optional double detune_cents = 10     [default = 0.0];
-  optional uint32 bands = 11            [default = 2048];
-  optional uint32 filter_overlap = 12   [default = 1];
-  optional uint32 chunk_size = 13       [default = 1024];
+  optional Strategy strategy = 1        [default = AUDIO_MAGIC];
+  optional bool time_disabled = 2       [default = false];
+  optional bool pitch_disabled = 3      [default = false];
+  optional bool passthrough_when_disabled = 4 [default = true];
+  optional double time_scale = 5        [default = 1.0];
+  optional double time_percent = 6      [default = 100.0];
+  optional double sample_rate = 7       [default = 44100.0];
+  optional uint32 channels = 8          [default = 2];
+  optional double pitch_scale = 9       [default = 1.0];
+  optional double semitone_shift = 10    [default = 0.0];
+  optional double detune_cents = 11     [default = 0.0];
+  optional uint32 bands = 12            [default = 2048];
+  optional uint32 filter_overlap = 13   [default = 1];
+  optional uint32 chunk_size = 14       [default = 1024];
 
   // How many samples must we prefill before we consider a buffer ready to go?
-  optional uint32 prefill_size = 14     [default = 15000];
+  optional uint32 prefill_size = 15     [default = 15000];
 
   // How many samples must we have before we're willing to switch to filling the
   // next buffer?
-  optional uint32 next_buffer_fill_size = 15 [default = 15000];
+  optional uint32 next_buffer_fill_size = 16 [default = 15000];
 
   // How long does our thread wait when it believes it has nothing to do?  -1
   // means "wait forever".  That *should* work but if our threading is a little
   // wonky, might occasionally deadlock.  The only cost of setting this to a
   // positive number is a tiny threading overhead - we'll do that for the
   // release but right now set it to -1 to reveal any issues.
-  optional int32 inactive_wait_time = 16  [default = -1];
+  optional int32 inactive_wait_time = 17  [default = -1];
 
-  optional uint32 thread_priority = 17   [default = 4];
+  optional uint32 thread_priority = 18   [default = 4];
+  optional uint32 max_process_size = 19 [default = 16364];
 };

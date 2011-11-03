@@ -1,7 +1,7 @@
 #include "rec/gui/icon/AudioCard.svg.h"
 
 #include "rec/base/ArraySize.h"
-#include "rec/data/Binary.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace gui {
@@ -556,7 +556,7 @@ juce::Drawable* AudioCard::create() {
   "</svg>\n"
   "\n"
 ;
-  return data::create<juce::Drawable>(data, arraysize(data));
+  return createBinary<juce::Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon

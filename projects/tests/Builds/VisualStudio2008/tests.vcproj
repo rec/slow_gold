@@ -267,6 +267,7 @@
             <File RelativePath="..\..\..\..\src\rec\audio\util\Frame.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\Gain.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\OwnedFrames.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.h"/>
           </Filter>
@@ -361,8 +362,6 @@
         <Filter Name="data">
           <File RelativePath="..\..\..\..\src\rec\data\Address.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Address.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\Binary.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\data\Binary.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Data.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\DefaultRegistry.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\DefaultRegistry.h"/>
@@ -641,6 +640,8 @@
           <File RelativePath="..\..\..\..\src\rec\slow\Threads.h"/>
         </Filter>
         <Filter Name="util">
+          <File RelativePath="..\..\..\..\src\rec\util\Binary.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Binary.h"/>
           <Filter Name="block">
             <File RelativePath="..\..\..\..\src\rec\util\block\Block.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\Difference.cpp"/>

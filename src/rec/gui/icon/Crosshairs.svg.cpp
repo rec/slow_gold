@@ -1,7 +1,7 @@
 #include "rec/gui/icon/Crosshairs.svg.h"
 
 #include "rec/base/ArraySize.h"
-#include "rec/data/Binary.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace gui {
@@ -21,7 +21,7 @@ juce::Drawable* Crosshairs::create() {
   "  </g>\n"
   "</svg>\n"
 ;
-  return data::create<juce::Drawable>(data, arraysize(data));
+  return createBinary<juce::Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon

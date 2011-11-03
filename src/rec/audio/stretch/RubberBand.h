@@ -25,6 +25,8 @@ class RubberBand : public Implementation {
  	int channels_;
   double timeRatio_;
   double pitchScale_;
+  int chunkSize_;
+  int maxProcessSize_;
 
   DISALLOW_COPY_AND_ASSIGN(RubberBand);
 };

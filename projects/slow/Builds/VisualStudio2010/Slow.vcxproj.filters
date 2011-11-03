@@ -391,9 +391,6 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp">
-      <Filter>Slow\rec\data</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\DefaultRegistry.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
@@ -699,6 +696,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
       <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp">
+      <Filter>Slow\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp">
       <Filter>Slow\rec\util\block</Filter>
@@ -1113,6 +1113,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h">
       <Filter>Slow\rec\audio\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\OwnedFrames.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.h">
       <Filter>Slow\rec\audio\util</Filter>
     </ClInclude>
@@ -1237,9 +1240,6 @@
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h">
-      <Filter>Slow\rec\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\Binary.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
@@ -1670,6 +1670,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
       <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">
+      <Filter>Slow\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h">
       <Filter>Slow\rec\util\block</Filter>

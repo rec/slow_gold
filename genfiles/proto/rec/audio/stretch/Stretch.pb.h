@@ -140,131 +140,138 @@ class Stretch : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.audio.stretch.Stretch.Strategy strategy = 18 [default = AUDIO_MAGIC];
+  // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = AUDIO_MAGIC];
   inline bool has_strategy() const;
   inline void clear_strategy();
-  static const int kStrategyFieldNumber = 18;
+  static const int kStrategyFieldNumber = 1;
   inline ::rec::audio::stretch::Stretch_Strategy strategy() const;
   inline void set_strategy(::rec::audio::stretch::Stretch_Strategy value);
   
-  // optional bool time_disabled = 1 [default = false];
+  // optional bool time_disabled = 2 [default = false];
   inline bool has_time_disabled() const;
   inline void clear_time_disabled();
-  static const int kTimeDisabledFieldNumber = 1;
+  static const int kTimeDisabledFieldNumber = 2;
   inline bool time_disabled() const;
   inline void set_time_disabled(bool value);
   
-  // optional bool pitch_disabled = 2 [default = false];
+  // optional bool pitch_disabled = 3 [default = false];
   inline bool has_pitch_disabled() const;
   inline void clear_pitch_disabled();
-  static const int kPitchDisabledFieldNumber = 2;
+  static const int kPitchDisabledFieldNumber = 3;
   inline bool pitch_disabled() const;
   inline void set_pitch_disabled(bool value);
   
-  // optional bool passthrough_when_disabled = 3 [default = true];
+  // optional bool passthrough_when_disabled = 4 [default = true];
   inline bool has_passthrough_when_disabled() const;
   inline void clear_passthrough_when_disabled();
-  static const int kPassthroughWhenDisabledFieldNumber = 3;
+  static const int kPassthroughWhenDisabledFieldNumber = 4;
   inline bool passthrough_when_disabled() const;
   inline void set_passthrough_when_disabled(bool value);
   
-  // optional double time_scale = 4 [default = 1];
+  // optional double time_scale = 5 [default = 1];
   inline bool has_time_scale() const;
   inline void clear_time_scale();
-  static const int kTimeScaleFieldNumber = 4;
+  static const int kTimeScaleFieldNumber = 5;
   inline double time_scale() const;
   inline void set_time_scale(double value);
   
-  // optional double time_percent = 5 [default = 100];
+  // optional double time_percent = 6 [default = 100];
   inline bool has_time_percent() const;
   inline void clear_time_percent();
-  static const int kTimePercentFieldNumber = 5;
+  static const int kTimePercentFieldNumber = 6;
   inline double time_percent() const;
   inline void set_time_percent(double value);
   
-  // optional double sample_rate = 6 [default = 44100];
+  // optional double sample_rate = 7 [default = 44100];
   inline bool has_sample_rate() const;
   inline void clear_sample_rate();
-  static const int kSampleRateFieldNumber = 6;
+  static const int kSampleRateFieldNumber = 7;
   inline double sample_rate() const;
   inline void set_sample_rate(double value);
   
-  // optional uint32 channels = 7 [default = 2];
+  // optional uint32 channels = 8 [default = 2];
   inline bool has_channels() const;
   inline void clear_channels();
-  static const int kChannelsFieldNumber = 7;
+  static const int kChannelsFieldNumber = 8;
   inline ::google::protobuf::uint32 channels() const;
   inline void set_channels(::google::protobuf::uint32 value);
   
-  // optional double pitch_scale = 8 [default = 1];
+  // optional double pitch_scale = 9 [default = 1];
   inline bool has_pitch_scale() const;
   inline void clear_pitch_scale();
-  static const int kPitchScaleFieldNumber = 8;
+  static const int kPitchScaleFieldNumber = 9;
   inline double pitch_scale() const;
   inline void set_pitch_scale(double value);
   
-  // optional double semitone_shift = 9 [default = 0];
+  // optional double semitone_shift = 10 [default = 0];
   inline bool has_semitone_shift() const;
   inline void clear_semitone_shift();
-  static const int kSemitoneShiftFieldNumber = 9;
+  static const int kSemitoneShiftFieldNumber = 10;
   inline double semitone_shift() const;
   inline void set_semitone_shift(double value);
   
-  // optional double detune_cents = 10 [default = 0];
+  // optional double detune_cents = 11 [default = 0];
   inline bool has_detune_cents() const;
   inline void clear_detune_cents();
-  static const int kDetuneCentsFieldNumber = 10;
+  static const int kDetuneCentsFieldNumber = 11;
   inline double detune_cents() const;
   inline void set_detune_cents(double value);
   
-  // optional uint32 bands = 11 [default = 2048];
+  // optional uint32 bands = 12 [default = 2048];
   inline bool has_bands() const;
   inline void clear_bands();
-  static const int kBandsFieldNumber = 11;
+  static const int kBandsFieldNumber = 12;
   inline ::google::protobuf::uint32 bands() const;
   inline void set_bands(::google::protobuf::uint32 value);
   
-  // optional uint32 filter_overlap = 12 [default = 1];
+  // optional uint32 filter_overlap = 13 [default = 1];
   inline bool has_filter_overlap() const;
   inline void clear_filter_overlap();
-  static const int kFilterOverlapFieldNumber = 12;
+  static const int kFilterOverlapFieldNumber = 13;
   inline ::google::protobuf::uint32 filter_overlap() const;
   inline void set_filter_overlap(::google::protobuf::uint32 value);
   
-  // optional uint32 chunk_size = 13 [default = 1024];
+  // optional uint32 chunk_size = 14 [default = 1024];
   inline bool has_chunk_size() const;
   inline void clear_chunk_size();
-  static const int kChunkSizeFieldNumber = 13;
+  static const int kChunkSizeFieldNumber = 14;
   inline ::google::protobuf::uint32 chunk_size() const;
   inline void set_chunk_size(::google::protobuf::uint32 value);
   
-  // optional uint32 prefill_size = 14 [default = 15000];
+  // optional uint32 prefill_size = 15 [default = 15000];
   inline bool has_prefill_size() const;
   inline void clear_prefill_size();
-  static const int kPrefillSizeFieldNumber = 14;
+  static const int kPrefillSizeFieldNumber = 15;
   inline ::google::protobuf::uint32 prefill_size() const;
   inline void set_prefill_size(::google::protobuf::uint32 value);
   
-  // optional uint32 next_buffer_fill_size = 15 [default = 15000];
+  // optional uint32 next_buffer_fill_size = 16 [default = 15000];
   inline bool has_next_buffer_fill_size() const;
   inline void clear_next_buffer_fill_size();
-  static const int kNextBufferFillSizeFieldNumber = 15;
+  static const int kNextBufferFillSizeFieldNumber = 16;
   inline ::google::protobuf::uint32 next_buffer_fill_size() const;
   inline void set_next_buffer_fill_size(::google::protobuf::uint32 value);
   
-  // optional int32 inactive_wait_time = 16 [default = -1];
+  // optional int32 inactive_wait_time = 17 [default = -1];
   inline bool has_inactive_wait_time() const;
   inline void clear_inactive_wait_time();
-  static const int kInactiveWaitTimeFieldNumber = 16;
+  static const int kInactiveWaitTimeFieldNumber = 17;
   inline ::google::protobuf::int32 inactive_wait_time() const;
   inline void set_inactive_wait_time(::google::protobuf::int32 value);
   
-  // optional uint32 thread_priority = 17 [default = 4];
+  // optional uint32 thread_priority = 18 [default = 4];
   inline bool has_thread_priority() const;
   inline void clear_thread_priority();
-  static const int kThreadPriorityFieldNumber = 17;
+  static const int kThreadPriorityFieldNumber = 18;
   inline ::google::protobuf::uint32 thread_priority() const;
   inline void set_thread_priority(::google::protobuf::uint32 value);
+  
+  // optional uint32 max_process_size = 19 [default = 16364];
+  inline bool has_max_process_size() const;
+  inline void clear_max_process_size();
+  static const int kMaxProcessSizeFieldNumber = 19;
+  inline ::google::protobuf::uint32 max_process_size() const;
+  inline void set_max_process_size(::google::protobuf::uint32 value);
   
   // @@protoc_insertion_point(class_scope:rec.audio.stretch.Stretch)
  private:
@@ -289,11 +296,12 @@ class Stretch : public ::google::protobuf::Message {
   ::google::protobuf::uint32 next_buffer_fill_size_;
   ::google::protobuf::int32 inactive_wait_time_;
   ::google::protobuf::uint32 thread_priority_;
+  ::google::protobuf::uint32 max_process_size_;
   friend void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(18 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(19 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -316,7 +324,7 @@ class Stretch : public ::google::protobuf::Message {
 
 // Stretch
 
-// optional .rec.audio.stretch.Stretch.Strategy strategy = 18 [default = AUDIO_MAGIC];
+// optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = AUDIO_MAGIC];
 inline bool Stretch::has_strategy() const {
   return _has_bit(0);
 }
@@ -333,7 +341,7 @@ inline void Stretch::set_strategy(::rec::audio::stretch::Stretch_Strategy value)
   strategy_ = value;
 }
 
-// optional bool time_disabled = 1 [default = false];
+// optional bool time_disabled = 2 [default = false];
 inline bool Stretch::has_time_disabled() const {
   return _has_bit(1);
 }
@@ -349,7 +357,7 @@ inline void Stretch::set_time_disabled(bool value) {
   time_disabled_ = value;
 }
 
-// optional bool pitch_disabled = 2 [default = false];
+// optional bool pitch_disabled = 3 [default = false];
 inline bool Stretch::has_pitch_disabled() const {
   return _has_bit(2);
 }
@@ -365,7 +373,7 @@ inline void Stretch::set_pitch_disabled(bool value) {
   pitch_disabled_ = value;
 }
 
-// optional bool passthrough_when_disabled = 3 [default = true];
+// optional bool passthrough_when_disabled = 4 [default = true];
 inline bool Stretch::has_passthrough_when_disabled() const {
   return _has_bit(3);
 }
@@ -381,7 +389,7 @@ inline void Stretch::set_passthrough_when_disabled(bool value) {
   passthrough_when_disabled_ = value;
 }
 
-// optional double time_scale = 4 [default = 1];
+// optional double time_scale = 5 [default = 1];
 inline bool Stretch::has_time_scale() const {
   return _has_bit(4);
 }
@@ -397,7 +405,7 @@ inline void Stretch::set_time_scale(double value) {
   time_scale_ = value;
 }
 
-// optional double time_percent = 5 [default = 100];
+// optional double time_percent = 6 [default = 100];
 inline bool Stretch::has_time_percent() const {
   return _has_bit(5);
 }
@@ -413,7 +421,7 @@ inline void Stretch::set_time_percent(double value) {
   time_percent_ = value;
 }
 
-// optional double sample_rate = 6 [default = 44100];
+// optional double sample_rate = 7 [default = 44100];
 inline bool Stretch::has_sample_rate() const {
   return _has_bit(6);
 }
@@ -429,7 +437,7 @@ inline void Stretch::set_sample_rate(double value) {
   sample_rate_ = value;
 }
 
-// optional uint32 channels = 7 [default = 2];
+// optional uint32 channels = 8 [default = 2];
 inline bool Stretch::has_channels() const {
   return _has_bit(7);
 }
@@ -445,7 +453,7 @@ inline void Stretch::set_channels(::google::protobuf::uint32 value) {
   channels_ = value;
 }
 
-// optional double pitch_scale = 8 [default = 1];
+// optional double pitch_scale = 9 [default = 1];
 inline bool Stretch::has_pitch_scale() const {
   return _has_bit(8);
 }
@@ -461,7 +469,7 @@ inline void Stretch::set_pitch_scale(double value) {
   pitch_scale_ = value;
 }
 
-// optional double semitone_shift = 9 [default = 0];
+// optional double semitone_shift = 10 [default = 0];
 inline bool Stretch::has_semitone_shift() const {
   return _has_bit(9);
 }
@@ -477,7 +485,7 @@ inline void Stretch::set_semitone_shift(double value) {
   semitone_shift_ = value;
 }
 
-// optional double detune_cents = 10 [default = 0];
+// optional double detune_cents = 11 [default = 0];
 inline bool Stretch::has_detune_cents() const {
   return _has_bit(10);
 }
@@ -493,7 +501,7 @@ inline void Stretch::set_detune_cents(double value) {
   detune_cents_ = value;
 }
 
-// optional uint32 bands = 11 [default = 2048];
+// optional uint32 bands = 12 [default = 2048];
 inline bool Stretch::has_bands() const {
   return _has_bit(11);
 }
@@ -509,7 +517,7 @@ inline void Stretch::set_bands(::google::protobuf::uint32 value) {
   bands_ = value;
 }
 
-// optional uint32 filter_overlap = 12 [default = 1];
+// optional uint32 filter_overlap = 13 [default = 1];
 inline bool Stretch::has_filter_overlap() const {
   return _has_bit(12);
 }
@@ -525,7 +533,7 @@ inline void Stretch::set_filter_overlap(::google::protobuf::uint32 value) {
   filter_overlap_ = value;
 }
 
-// optional uint32 chunk_size = 13 [default = 1024];
+// optional uint32 chunk_size = 14 [default = 1024];
 inline bool Stretch::has_chunk_size() const {
   return _has_bit(13);
 }
@@ -541,7 +549,7 @@ inline void Stretch::set_chunk_size(::google::protobuf::uint32 value) {
   chunk_size_ = value;
 }
 
-// optional uint32 prefill_size = 14 [default = 15000];
+// optional uint32 prefill_size = 15 [default = 15000];
 inline bool Stretch::has_prefill_size() const {
   return _has_bit(14);
 }
@@ -557,7 +565,7 @@ inline void Stretch::set_prefill_size(::google::protobuf::uint32 value) {
   prefill_size_ = value;
 }
 
-// optional uint32 next_buffer_fill_size = 15 [default = 15000];
+// optional uint32 next_buffer_fill_size = 16 [default = 15000];
 inline bool Stretch::has_next_buffer_fill_size() const {
   return _has_bit(15);
 }
@@ -573,7 +581,7 @@ inline void Stretch::set_next_buffer_fill_size(::google::protobuf::uint32 value)
   next_buffer_fill_size_ = value;
 }
 
-// optional int32 inactive_wait_time = 16 [default = -1];
+// optional int32 inactive_wait_time = 17 [default = -1];
 inline bool Stretch::has_inactive_wait_time() const {
   return _has_bit(16);
 }
@@ -589,7 +597,7 @@ inline void Stretch::set_inactive_wait_time(::google::protobuf::int32 value) {
   inactive_wait_time_ = value;
 }
 
-// optional uint32 thread_priority = 17 [default = 4];
+// optional uint32 thread_priority = 18 [default = 4];
 inline bool Stretch::has_thread_priority() const {
   return _has_bit(17);
 }
@@ -603,6 +611,22 @@ inline ::google::protobuf::uint32 Stretch::thread_priority() const {
 inline void Stretch::set_thread_priority(::google::protobuf::uint32 value) {
   _set_bit(17);
   thread_priority_ = value;
+}
+
+// optional uint32 max_process_size = 19 [default = 16364];
+inline bool Stretch::has_max_process_size() const {
+  return _has_bit(18);
+}
+inline void Stretch::clear_max_process_size() {
+  max_process_size_ = 16364u;
+  _clear_bit(18);
+}
+inline ::google::protobuf::uint32 Stretch::max_process_size() const {
+  return max_process_size_;
+}
+inline void Stretch::set_max_process_size(::google::protobuf::uint32 value) {
+  _set_bit(18);
+  max_process_size_ = value;
 }
 
 

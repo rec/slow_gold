@@ -17,6 +17,7 @@ PersistentWindow::PersistentWindow(const String& name,
                                    bool addToDesktop)
     : DocumentWindow(name, bg, requiredButtons, addToDesktop),
       data_(NULL), okToSaveLayout_(false) {
+  setBroughtToFrontOnMouseClick(true);
 }
 
 PersistentWindow::~PersistentWindow() {}

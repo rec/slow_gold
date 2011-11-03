@@ -187,7 +187,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DefaultRegistry.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
@@ -290,6 +289,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\Fillable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp"/>
@@ -429,6 +429,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\OwnedFrames.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\base.h"/>
@@ -471,7 +472,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiName.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\Binary.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DefaultRegistry.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
@@ -615,6 +615,7 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Target.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Binary.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h"/>

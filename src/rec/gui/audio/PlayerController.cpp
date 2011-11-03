@@ -69,7 +69,7 @@ PlayerController::PlayerController()
   strategyComboBox_.setTextWhenNoChoicesAvailable("Strategy");
   strategyComboBox_.addItem("Audio Magic", Stretch::AUDIO_MAGIC);
   strategyComboBox_.addItem("RubberBand", Stretch::RUBBERBAND);
-  strategyComboBox_.addItem("SoundTouch", Stretch::SOUNDTOUCH);
+  // strategyComboBox_.addItem("SoundTouch", Stretch::SOUNDTOUCH);
   strategyComboBox_.addListener(this);
 
   addToLayout(&modeSelector_, 24);

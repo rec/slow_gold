@@ -28,6 +28,8 @@ class Base : public Stream {
 
   void* buffer() { return (void*) &buffer_[0]; }
   int size() const { return buffer_.size(); }
+  JuceStream* stream() { return stream_.get(); }
+  void flush() { stream_->flush(); }
 
  protected:
   ptr<JuceStream> stream_;
