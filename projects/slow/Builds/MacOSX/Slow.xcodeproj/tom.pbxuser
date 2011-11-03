@@ -816,6 +816,9 @@
 			E2527D3914621F020014DE61 = E2527D3914621F020014DE61 /* PBXTextBookmark */;
 			E2527D3A14621F020014DE61 = E2527D3A14621F020014DE61 /* PBXTextBookmark */;
 			E2527D3B14621F020014DE61 = E2527D3B14621F020014DE61 /* PBXTextBookmark */;
+			E2527D7C1462236D0014DE61 /* XCBuildMessageTextBookmark */ = E2527D7C1462236D0014DE61 /* XCBuildMessageTextBookmark */;
+			E2527D801462238A0014DE61 /* PBXTextBookmark */ = E2527D801462238A0014DE61 /* PBXTextBookmark */;
+			E2527D8B146224020014DE61 /* PBXTextBookmark */ = E2527D8B146224020014DE61 /* PBXTextBookmark */;
 			E28B8CCE1459D1EA003CF4AC = E28B8CCE1459D1EA003CF4AC /* PBXTextBookmark */;
 			E28B8E82145A14F7003CF4AC = E28B8E82145A14F7003CF4AC /* PBXTextBookmark */;
 			E28B8EA4145A1878003CF4AC = E28B8EA4145A1878003CF4AC /* PBXTextBookmark */;
@@ -1129,6 +1132,14 @@
 			sepNavSelRange = "{3273, 0}";
 			sepNavVisRange = "{668, 918}";
 			sepNavWindowFrame = "{{199, 151}, {856, 854}}";
+		};
+	};
+	E130A37866F055849D468F2C /* Equals.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {797, 741}}";
+			sepNavSelRange = "{301, 0}";
+			sepNavVisRange = "{0, 301}";
+			sepNavWindowFrame = "{{15, 319}, {856, 854}}";
 		};
 	};
 	E2109582144F593300FD2AB6 /* PBXTextBookmark */ = {
@@ -3533,6 +3544,47 @@
 		rLoc = 1148;
 		rType = 0;
 		vrLen = 1148;
+		vrLoc = 0;
+	};
+	E2527D7B1462236D0014DE61 /* Copy.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Copy.h;
+		path = ../../../../../rec/src/rec/util/Copy.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {797, 871}}";
+			sepNavSelRange = "{645, 61}";
+			sepNavVisRange = "{0, 2328}";
+		};
+	};
+	E2527D7C1462236D0014DE61 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected ',' or '...' before '&' token";
+		fRef = E2527D7B1462236D0014DE61 /* Copy.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 28;
+		rType = 1;
+	};
+	E2527D801462238A0014DE61 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2527D7B1462236D0014DE61 /* Copy.h */;
+		name = "Copy.h: 29";
+		rLen = 61;
+		rLoc = 645;
+		rType = 0;
+		vrLen = 2328;
+		vrLoc = 0;
+	};
+	E2527D8B146224020014DE61 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2527D7B1462236D0014DE61 /* Copy.h */;
+		name = "Copy.h: 29";
+		rLen = 61;
+		rLoc = 645;
+		rType = 0;
+		vrLen = 2328;
 		vrLoc = 0;
 	};
 	E28B8C581459C79E003CF4AC /* TypedEditable.h */ = {

@@ -2,8 +2,8 @@
 #define __REC_YAML_INTERNAL__
 
 #include "rec/data/yaml/Yaml.h"
-#include "rec/base/BaseNoJuce.h"
 #include "rec/data/yaml/include/yaml-cpp/yaml.h"
+#include "rec/base/base.h"
 
 namespace google {
 namespace protobuf {
