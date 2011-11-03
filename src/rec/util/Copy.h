@@ -24,7 +24,7 @@
 // and deserialization.
 
 namespace rec {
-namespace data {
+namespace copy {
 
 bool copy(const File& from, File* to, bool readable = true);
 bool copy(const File& from, const File& to, bool readable = true);
@@ -61,7 +61,7 @@ bool copy(const string& from, Message* to, bool readable = true);
 bool copy(const string& from, String* to, bool readable = true);
 bool copy(const string& from, string* to, bool readable = true);
 
-}  // namespace data
+}  // namespace copy
 }  // namespace rec
 
 #endif  // __REC_PERSIST_COPY__

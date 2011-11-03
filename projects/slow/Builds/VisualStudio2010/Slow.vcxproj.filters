@@ -394,9 +394,6 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp">
       <Filter>Slow\rec\data\persist</Filter>
     </ClCompile>
@@ -731,6 +728,9 @@
       <Filter>Slow\rec\util\cd</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp">
       <Filter>Slow\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp">
@@ -1248,9 +1248,6 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h">
       <Filter>Slow\rec\data\persist</Filter>
     </ClInclude>
@@ -1711,6 +1708,9 @@
       <Filter>Slow\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Compare.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Copy.h">
       <Filter>Slow\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h">

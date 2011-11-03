@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="rfLaYapSX" name="Slow">
+  <MAINGROUP id="WtdUlcE0V" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -410,10 +410,6 @@
         <FILE compile="0" file="../../src/rec/data/Editable.h" id="st7rIAFY7"
               name="Editable.h" resource="0"/>
         <GROUP id="p9GHA3VGt" name="persist">
-          <FILE compile="1" file="../../src/rec/data/persist/Copy.cpp" id="JcH1WQvBK"
-                name="Copy.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/persist/Copy.h" id="8WYqpgh3R"
-                name="Copy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/EditableFactory.h"
                 id="FopCixQh6" name="EditableFactory.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/EditableUpdater.cpp"
@@ -979,6 +975,10 @@
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="Xx1K96mJm"
               name="Compare.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/Copy.cpp" id="HCY4SS7yX"
+              name="Copy.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Copy.h" id="ecnekrbsa" name="Copy.h"
+              resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Cuttable.cpp" id="WdDJ8Ksdp"
               name="Cuttable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="VwgCDr4Ep"
@@ -1339,7 +1339,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Ucfl0tmbg" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="XNq9PRIPK" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -1,8 +1,8 @@
 #include "rec/data/persist/UntypedEditable.h"
 
-#include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/FieldOps.h"
+#include "rec/util/Copy.h"
 #include "rec/data/Data.h"
 #include "rec/data/Value.h"
 #include "rec/util/STL.h"
@@ -62,7 +62,7 @@ Message* UntypedEditable::clone() const {
 bool UntypedEditable::readFromFile() const {
   Lock l(lock_);
   if (!alreadyReadFromFile_) {
-    fileReadSuccess_ = data::copy(file_, message_);
+    fileReadSuccess_ = copy::copy(file_, message_);
     if (fileReadSuccess_)
       VLOG(1) << "Opening data " << str(file_);
     else
@@ -137,7 +137,7 @@ bool UntypedEditable::writeToFile() const {
   }
 
 	VLOG(1) << "Writing " << str(file_);
-  return data::copy(*msg, file_);
+  return copy::copy(*msg, file_);
 }
 
 }  // namespace data

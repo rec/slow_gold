@@ -92,7 +92,6 @@
 		A71D485B066F0168FD40E827 = { isa = PBXBuildFile; fileRef = D8B011CF05AE82F95C0D38EE; };
 		2C1769081A0C558D3DEB815F = { isa = PBXBuildFile; fileRef = E19158321F260DBCC2420226; };
 		2D49BDB155BE4173860D57B9 = { isa = PBXBuildFile; fileRef = 13D1D052624F6A0B246F6335; };
-		15546065C1A9AA5AA0C640B5 = { isa = PBXBuildFile; fileRef = 1748B196C7CF584702E6C34F; };
 		60FFD6E289D1AAFFCBC79558 = { isa = PBXBuildFile; fileRef = 6E0B07DDF020413B5CCE0551; };
 		DD0C2363EE94A8DB90D75147 = { isa = PBXBuildFile; fileRef = 9886484AFA5001EA6B170DC3; };
 		B7C20D85DC432ABBA9C5788B = { isa = PBXBuildFile; fileRef = A4DEAF714BB10D7F60D583A0; };
@@ -215,6 +214,7 @@
 		E2B363FBB7B42859CABFB838 = { isa = PBXBuildFile; fileRef = 008AD80E3040443C031D32BB; };
 		B94CECCDBC6733A66786D64D = { isa = PBXBuildFile; fileRef = 2187E86C895D175A456E11A7; };
 		D62FF085927D5276526525FC = { isa = PBXBuildFile; fileRef = 9922D141ABED4BFCD0C2DEBB; };
+		8C36C4A4EC17EECF5907E241 = { isa = PBXBuildFile; fileRef = 0B2C7B7202A7B26DDB96FCA7; };
 		52C01DA6800974B5FA02471A = { isa = PBXBuildFile; fileRef = 4FBD6178F89CF0B68DB220E6; };
 		413CA29A5541E23ABCA19258 = { isa = PBXBuildFile; fileRef = B4D14C0ADDB1A6D60F8CAD3A; };
 		A52FA8319A3359AE12A382FC = { isa = PBXBuildFile; fileRef = CBE2728270BDE0DDBD543200; };
@@ -485,8 +485,6 @@
 		F0AA4D42B00AEBFD15907403 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Data.h; path = ../../../../src/rec/data/Data.h; sourceTree = "SOURCE_ROOT"; };
 		13D1D052624F6A0B246F6335 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Editable.cpp; path = ../../../../src/rec/data/Editable.cpp; sourceTree = "SOURCE_ROOT"; };
 		B96847524BE56BD50BD7A593 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Editable.h; path = ../../../../src/rec/data/Editable.h; sourceTree = "SOURCE_ROOT"; };
-		1748B196C7CF584702E6C34F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copy.cpp; path = ../../../../src/rec/data/persist/Copy.cpp; sourceTree = "SOURCE_ROOT"; };
-		73F81818D005D0CCFDB05239 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Copy.h; path = ../../../../src/rec/data/persist/Copy.h; sourceTree = "SOURCE_ROOT"; };
 		E66EB5BC1DBF9E05097AA38A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EditableFactory.h; path = ../../../../src/rec/data/persist/EditableFactory.h; sourceTree = "SOURCE_ROOT"; };
 		6E0B07DDF020413B5CCE0551 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EditableUpdater.cpp; path = ../../../../src/rec/data/persist/EditableUpdater.cpp; sourceTree = "SOURCE_ROOT"; };
 		7145DF968C9382F5D77CFA8A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EditableUpdater.h; path = ../../../../src/rec/data/persist/EditableUpdater.h; sourceTree = "SOURCE_ROOT"; };
@@ -763,6 +761,8 @@
 		2187E86C895D175A456E11A7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Circular_test.cpp"; path = "../../../../src/rec/util/Circular_test.cpp"; sourceTree = "SOURCE_ROOT"; };
 		9922D141ABED4BFCD0C2DEBB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Compare.cpp; path = ../../../../src/rec/util/Compare.cpp; sourceTree = "SOURCE_ROOT"; };
 		470084230130B7FCDD8069E1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Compare.h; path = ../../../../src/rec/util/Compare.h; sourceTree = "SOURCE_ROOT"; };
+		0B2C7B7202A7B26DDB96FCA7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copy.cpp; path = ../../../../src/rec/util/Copy.cpp; sourceTree = "SOURCE_ROOT"; };
+		35867AEC67E93B8B5EE4648D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Copy.h; path = ../../../../src/rec/util/Copy.h; sourceTree = "SOURCE_ROOT"; };
 		4FBD6178F89CF0B68DB220E6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Cuttable.cpp; path = ../../../../src/rec/util/Cuttable.cpp; sourceTree = "SOURCE_ROOT"; };
 		9187B5F1250878B53AA91A19 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cuttable.h; path = ../../../../src/rec/util/Cuttable.h; sourceTree = "SOURCE_ROOT"; };
 		B4D14C0ADDB1A6D60F8CAD3A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Defaulter.cpp; path = ../../../../src/rec/util/Defaulter.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1135,8 +1135,6 @@
 				D8B011CF05AE82F95C0D38EE,
 				CB8B23C0F8C826C3E85425DC ); name = command; sourceTree = "<group>"; };
 		98CF4FA3667E193E9E715CA3 = { isa = PBXGroup; children = (
-				1748B196C7CF584702E6C34F,
-				73F81818D005D0CCFDB05239,
 				E66EB5BC1DBF9E05097AA38A,
 				6E0B07DDF020413B5CCE0551,
 				7145DF968C9382F5D77CFA8A,
@@ -1489,6 +1487,8 @@
 				2187E86C895D175A456E11A7,
 				9922D141ABED4BFCD0C2DEBB,
 				470084230130B7FCDD8069E1,
+				0B2C7B7202A7B26DDB96FCA7,
+				35867AEC67E93B8B5EE4648D,
 				4FBD6178F89CF0B68DB220E6,
 				9187B5F1250878B53AA91A19,
 				B4D14C0ADDB1A6D60F8CAD3A,
@@ -1674,7 +1674,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		FE33297E4658B387D12EA4CF = { isa = PBXGroup; children = (
+		BB8F9F60F124D1DC9AB0330A = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1701,7 +1701,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				FE33297E4658B387D12EA4CF,
+				BB8F9F60F124D1DC9AB0330A,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1862,7 +1862,6 @@
 				A71D485B066F0168FD40E827,
 				2C1769081A0C558D3DEB815F,
 				2D49BDB155BE4173860D57B9,
-				15546065C1A9AA5AA0C640B5,
 				60FFD6E289D1AAFFCBC79558,
 				DD0C2363EE94A8DB90D75147,
 				B7C20D85DC432ABBA9C5788B,
@@ -1985,6 +1984,7 @@
 				E2B363FBB7B42859CABFB838,
 				B94CECCDBC6733A66786D64D,
 				D62FF085927D5276526525FC,
+				8C36C4A4EC17EECF5907E241,
 				52C01DA6800974B5FA02471A,
 				413CA29A5541E23ABCA19258,
 				A52FA8319A3359AE12A382FC,

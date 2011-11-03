@@ -1,15 +1,14 @@
 #include <google/protobuf/text_format.h>
 
 #include "rec/base/base.h"
-#include "rec/data/persist/Copy.h"
+#include "rec/util/Copy.h"
 #include "glog/logging.h"
-
 
 using google::protobuf::TextFormat;
 using namespace juce;
 
 namespace rec {
-namespace data {
+namespace copy {
 
 namespace {
 
@@ -187,6 +186,6 @@ bool copy(const String &f,  const File &t, bool r) { return through(f, t, r); }
 bool copy(const Message &f, const File &t, bool r) { return through(f, t, r); }
 bool copy(const Memory &f,  const File &t, bool r) { return through(f, t, r); }
 
-}  // namespace data
+}  // namespace copy
 }  // namespace rec
 

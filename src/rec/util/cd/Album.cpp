@@ -1,6 +1,6 @@
 #include "rec/util/cd/Album.h"
 #include "rec/base/ArraySize.h"
-#include "rec/data/persist/Copy.h"
+#include "rec/util/Copy.h"
 #include "rec/util/Exception.h"
 #include "rec/util/cd/CDDBResponse.h"
 #include "rec/util/cd/DedupeCDDB.h"
@@ -126,7 +126,7 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
 Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
   Album album;
   File shadow = getShadowFile(file, "album");
-  if (!data::copy(shadow, &album)) {
+  if (!copy::copy(shadow, &album)) {
     AlbumList albums;
     String error = fillAlbums(off, &albums);
     if (error.length()) {
@@ -135,7 +135,7 @@ Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
       LOG(ERROR) << "CDDB gave us no information";
     } else {
       album = albums.album(0);
-      if (!data::copy(album, &shadow))
+      if (!copy::copy(album, &shadow))
         LOG(ERROR) << "Couldn't save CDDB information";
     }
   }

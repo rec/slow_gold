@@ -188,7 +188,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
@@ -301,6 +300,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Socket.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\DefaultRegistry.cpp"/>
@@ -474,7 +474,6 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h"/>
@@ -629,6 +628,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\cd\StripLines.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Circular.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Compare.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\DefaultRegistry.h"/>

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="c8ejUftZq" name="tests">
+  <MAINGROUP id="ObzoLpZOJ" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -432,10 +432,6 @@
         <FILE compile="0" file="../../src/rec/data/Editable.h" id="CLOwHwcIL"
               name="Editable.h" resource="0"/>
         <GROUP id="yRjyeuJbc" name="persist">
-          <FILE compile="1" file="../../src/rec/data/persist/Copy.cpp" id="UmfEvGkAB"
-                name="Copy.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/persist/Copy.h" id="PNey4aH2q"
-                name="Copy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/EditableFactory.h"
                 id="GX42RcHkb" name="EditableFactory.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/EditableUpdater.cpp"
@@ -1021,6 +1017,10 @@
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="YN1Cfu2jM"
               name="Compare.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/Copy.cpp" id="wNBq7Pzsb"
+              name="Copy.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Copy.h" id="lMhX5ypWv" name="Copy.h"
+              resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Cuttable.cpp" id="9xYK1aL2B"
               name="Cuttable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="PMk9dholr"
@@ -1399,7 +1399,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="hDefNlpbE" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="VTwPNpgZ6" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
