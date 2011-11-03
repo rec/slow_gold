@@ -3,9 +3,9 @@
 
 #include <set>
 
-#include "rec/util/DefaultRegistry.h"
-#include "rec/data/persist/EditableFactory.h"
+#include "rec/data/EditableFactory.h"
 #include "rec/data/persist/UntypedEditable.h"
+#include "rec/util/DefaultRegistry.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
 

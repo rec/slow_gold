@@ -3,7 +3,7 @@
 #include "rec/data/persist/EditableUpdater.h"
 
 #include "rec/app/Files.h"
-#include "rec/data/persist/EditableFactory.h"
+#include "rec/data/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/util/DefaultRegistry.h"
 #include "rec/util/STL.h"

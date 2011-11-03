@@ -3,7 +3,7 @@
 
 #include "rec/data/Value.h"
 #include "rec/util/DefaultRegistry.h"
-#include "rec/data/persist/EditableFactory.h"
+#include "rec/data/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/util/file/VirtualFile.h"
 
