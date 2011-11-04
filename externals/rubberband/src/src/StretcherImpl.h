@@ -25,6 +25,7 @@
 #include "dsp/CompoundAudioCurve.h"
 
 #include "base/RingBuffer.h"
+#include "base/Scavenger.h"
 #include "system/Thread.h"
 #include "system/sysutils.h"
 
@@ -98,8 +99,10 @@ protected:
     size_t m_sampleRate;
     size_t m_channels;
 
-    size_t consumeChannel(size_t channel, const float *input,
-                          size_t samples, bool final);
+    void prepareChannelMS(size_t channel, const float *const *inputs,
+                          size_t offset, size_t samples, float *prepared);
+    size_t consumeChannel(size_t channel, const float *const *inputs,
+                          size_t offset, size_t samples, bool final);
     void processChunks(size_t channel, bool &any, bool &last);
     bool processOneChunk(); // across all channels, for real time use
     bool processChunkForChannel(size_t channel, size_t phaseIncrement,

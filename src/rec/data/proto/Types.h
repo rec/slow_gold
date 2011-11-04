@@ -42,11 +42,11 @@ inline bool operator==(const bytes& b1, const bytes& b2) {
 
 struct pmessage {
   pmessage() {}
-  pmessage(const Message& m) { copy::copy(m, &value_); }
+  pmessage(const Message& m) { m.SerializeToString(&value_); }
   pmessage(const string& s) : value_(s) {}
   operator string() const { return value_; }
 
-  bool Parse(Message* m) { return copy::copy(value_, m); }
+  bool Parse(Message* m) { return m->ParseFromString(value_); }
 
   bool operator==(const pmessage& that) const {
     return value_ == that.value_;  // Hack but works.

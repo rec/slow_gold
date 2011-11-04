@@ -139,9 +139,10 @@ inline void v_copy_channels(T *const R__ *const R__ dst,
     }
 }
 
+// src and dst alias by definition, so not restricted
 template<typename T>
-inline void v_move(T *const R__ dst,
-                   const T *const R__ src,
+inline void v_move(T *const dst,
+                   const T *const src,
                    const int count)
 {
     memmove(dst, src, count * sizeof(T));
@@ -149,15 +150,15 @@ inline void v_move(T *const R__ dst,
 
 #if defined HAVE_IPP
 template<>
-inline void v_move(float *const R__ dst,
-                   const float *const R__ src,
+inline void v_move(float *const dst,
+                   const float *const src,
                    const int count)
 {
     ippsMove_32f(src, dst, count);
 }
 template<>
-inline void v_move(double *const R__ dst,
-                   const double *const R__ src,
+inline void v_move(double *const dst,
+                   const double *const src,
                    const int count)
 {
     ippsMove_64f(src, dst, count);
@@ -239,6 +240,16 @@ inline void v_add(T *const R__ dst,
 {
     for (int i = 0; i < count; ++i) {
         dst[i] += src[i];
+    }
+}
+
+template<typename T>
+inline void v_add(T *const R__ dst,
+                  const T value,
+                  const int count)
+{
+    for (int i = 0; i < count; ++i) {
+        dst[i] += value;
     }
 }
 
@@ -457,6 +468,17 @@ inline void v_multiply_and_add(double *const R__ dst,
     ippsAddProduct_64f(src1, src2, dst, count);
 }
 #endif
+
+template<typename T>
+inline T v_sum(const T *const R__ src,
+               const int count)
+{
+    T result = T();
+    for (int i = 0; i < count; ++i) {
+        result += src[i];
+    }
+    return result;
+}
 
 template<typename T>
 inline void v_log(T *const R__ dst,

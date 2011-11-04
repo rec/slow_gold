@@ -81,7 +81,7 @@
 // Simple allocators with a fixed minimum, to avoid reallocation if
 // the size changes but remains smaller than that.  The system alloc
 // functions no doubt do exactly the same thing for some value
-// probably not tooq distant from ours, but we want the certainty.
+// probably not too distant from ours, but we want the certainty.
 
 #define ALLOC_MINIMUM 4096
 

@@ -155,6 +155,27 @@ void gettimeofday(struct timeval *tv, void *tz)
     tv->tv_sec = (long)((now.ns100 - 116444736000000000LL) / 10000000LL); 
 }
 
+void clock_gettime(int, struct timespec *ts)
+{
+    static LARGE_INTEGER cps;
+    static bool haveCps = false;
+    
+    if (!haveCps) {
+        QueryPerformanceFrequency(&cps);
+        haveCps = true;
+    }
+
+    LARGE_INTEGER counter;
+    QueryPerformanceCounter(&counter);
+
+    //!!! check this
+    ts->tv_sec = counter.QuadPart / cps.QuadPart;
+    double sub = counter.QuadPart % cps.QuadPart;
+    sub = sub / cps.QuadPart;
+    sub = sub * 1000000000.;
+    ts->tv_nsec = long(sub) ;
+}
+
 void usleep(unsigned long usec)
 {
     ::Sleep(usec == 0 ? 0 : usec < 1000 ? 1 : usec / 1000);
@@ -183,7 +204,7 @@ void system_specific_application_initialise()
 
 
 ProcessStatus
-GetProcessStatus(int pid)
+system_get_process_status(int pid)
 {
 #ifdef _WIN32
     HANDLE handle = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, pid);
@@ -206,6 +227,17 @@ GetProcessStatus(int pid)
 #endif
 }
 
+#ifndef _WIN32
+#ifndef __GNUC__
+#include <pthread.h>
+void system_memorybarrier()
+{
+    pthread_mutex_t dummy = PTHREAD_MUTEX_INITIALIZER;
+    pthread_mutex_lock(&dummy);
+    pthread_mutex_unlock(&dummy);
+}
+#endif
+#endif
 
 }
 

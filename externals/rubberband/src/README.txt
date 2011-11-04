@@ -32,7 +32,7 @@ In particular,
      See section 3a below for details of the library options
      supported by Rubber Band.
 
-This is version 1.6.0-commercial of Rubber Band, baselined 2011-01-07.
+This is version 1.7.0-pre-commercial of Rubber Band, baselined 2011-04-09.
 
 
 Contents of this README
@@ -98,7 +98,7 @@ The contents of these directories are as follows:
    To link an application with these libraries, add librubberband.a
    and libipp*.a to your project location and use the linker flags
    -lrubberband -lippsremerged -lippsrmerged -lippsemerged
-   -lippsmerged -lippcore (in that order).
+   -lippsmerged -lippacemerged -lippacmerged -lippcore (in that order).
 
    The file "rubberband" is the command-line tool (which was linked
    statically against the libraries as just described).
@@ -127,8 +127,8 @@ The contents of these directories are as follows:
 
    To link an application with these libraries, add
    rubberband-library.lib, ippsremerged.lib, ippsrmerged.lib,
-   ippsemerged.lib, ippsmerged.lib and ippcorel.lib (in that order) to
-   your project build.
+   ippsemerged.lib, ippsmerged.lib, ippacemerged.lib, ippacmerged.lib,
+   and ippcorel.lib (in that order) to your project build.
 
 
 3. Compiling Rubber Band

@@ -21,7 +21,7 @@
 #include "system/VectorOps.h"
 #include "system/VectorOpsComplex.h"
 
-#define FFT_MEASUREMENT 1
+//#define FFT_MEASUREMENT 1
 
 #ifdef HAVE_IPP
 #include <ipps.h>

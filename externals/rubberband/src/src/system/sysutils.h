@@ -40,6 +40,7 @@
 
 #ifdef __MSVC__
 #include <malloc.h>
+#include <process.h>
 #define alloca _alloca
 #define getpid _getpid
 #endif
@@ -62,10 +63,18 @@ extern bool system_is_multiprocessor();
 extern void system_specific_initialise();
 extern void system_specific_application_initialise();
 
+enum ProcessStatus { ProcessRunning, ProcessNotRunning, UnknownProcessStatus };
+extern ProcessStatus system_get_process_status(int pid);
+
 #ifdef _WIN32
 
 struct timeval { long tv_sec; long tv_usec; };
 void gettimeofday(struct timeval *p, void *tz);
+
+struct timespec { long tv_sec; long tv_nsec; };
+// always uses GetPerformanceCounter, does not check whether it's valid or not:
+void clock_gettime(int clk_id, struct timespec *p);
+#define CLOCK_MONOTONIC 1
 
 #endif
 
@@ -74,9 +83,6 @@ void gettimeofday(struct timeval *p, void *tz);
 void usleep(unsigned long);
 
 #endif
-
-enum ProcessStatus { ProcessRunning, ProcessNotRunning, UnknownProcessStatus };
-extern ProcessStatus GetProcessStatus(int pid);
 
 inline double mod(double x, double y) { return x - (y * floor(x / y)); }
 inline float modf(float x, float y) { return x - (y * float(floor(x / y))); }
@@ -98,6 +104,8 @@ inline float princargf(float a) { return modf(a + (float)M_PI, -2.f * (float)M_P
 #define MUNLOCK(a,b) 1
 #define MUNLOCK_SAMPLEBLOCK(a) 1
 
+#define MBARRIER()   MemoryBarrier() 
+
 #define DLOPEN(a,b)  LoadLibrary((a).toStdWString().c_str())
 #define DLSYM(a,b)   GetProcAddress((HINSTANCE)(a),(b))
 #define DLCLOSE(a)   FreeLibrary((HINSTANCE)(a))
@@ -112,6 +120,18 @@ inline float princargf(float a) { return modf(a + (float)M_PI, -2.f * (float)M_P
 #define MLOCK(a,b)   ::mlock((char *)(a),(b))
 #define MUNLOCK(a,b) (::munlock((char *)(a),(b)) ? (::perror("munlock failed"), 0) : 0)
 #define MUNLOCK_SAMPLEBLOCK(a) do { if (!(a).empty()) { const float &b = *(a).begin(); MUNLOCK(&b, (a).capacity() * sizeof(float)); } } while(0);
+
+#ifdef __APPLE__
+#include <libkern/OSAtomic.h>
+#define MBARRIER() OSMemoryBarrier()
+#else
+#if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 1)
+#define MBARRIER() __sync_synchronize()
+#else
+extern void system_memorybarrier();
+#define MBARRIER() system_memorybarrier()
+#endif
+#endif
 
 #define DLOPEN(a,b)  dlopen((a).toStdString().c_str(),(b))
 #define DLSYM(a,b)   dlsym((a),(b))

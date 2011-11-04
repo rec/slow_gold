@@ -701,6 +701,9 @@ RubberBandStretcher::Impl::configure()
     // want gaps when the ratio changes.
 
     if (!m_realtime) {
+        if (m_debugLevel > 1) {
+            cerr << "Not real time mode: prefilling" << endl;
+        }
         for (size_t c = 0; c < m_channels; ++c) {
             m_channelData[c]->reset();
             m_channelData[c]->inbuf->zero(m_aWindowSize/2);
@@ -955,8 +958,9 @@ RubberBandStretcher::Impl::study(const float *const *input, size_t samples, bool
             // cd.accumulator is not otherwise used during studying,
             // so we can use it as a temporary buffer here
 
-            size_t got = inbuf.peek(cd.accumulator, m_aWindowSize);
-            assert(final || got == m_aWindowSize);
+            size_t ready = inbuf.getReadSpace();
+            assert(final || ready >= m_aWindowSize);
+            inbuf.peek(cd.accumulator, std::min(ready, m_aWindowSize));
 
             if (m_aWindowSize == m_fftSize) {
 
@@ -1151,8 +1155,22 @@ RubberBandStretcher::Impl::getSamplesRequired() const
 
         ChannelData &cd = *m_channelData[c];
         RingBuffer<float> &inbuf = *cd.inbuf;
+        RingBuffer<float> &outbuf = *cd.outbuf;
 
         size_t rs = inbuf.getReadSpace();
+        size_t ws = outbuf.getReadSpace();
+
+        if (m_debugLevel > 2) {
+            cerr << "getSamplesRequired: ws = " << ws << ", rs = " << rs << ", m_aWindowSize = " << m_aWindowSize << endl;
+        }
+
+        // We should never return zero in non-threaded modes if
+        // available() would also return zero, i.e. if ws == 0.  If we
+        // do that, nothing will ever happen again!  We need to demand
+        // at least one increment (i.e. a nominal amount) to feed the
+        // engine.
+
+        if (ws == 0 && reqd == 0) reqd = m_increment;
 
         // See notes in testInbufReadSpace 
 
@@ -1188,13 +1206,22 @@ RubberBandStretcher::Impl::process(const float *const *input, size_t samples, bo
     if (m_mode == JustCreated || m_mode == Studying) {
 
         if (m_mode == Studying) {
+
             calculateStretch();
+
+            if (!m_realtime) {
+                // See note in configure() above. Of course, we should
+                // never enter Studying unless we are non-RT anyway
+                if (m_debugLevel > 1) {
+                    cerr << "Not real time mode: prefilling" << endl;
+                }
+                for (size_t c = 0; c < m_channels; ++c) {
+                    m_channelData[c]->reset();
+                    m_channelData[c]->inbuf->zero(m_aWindowSize/2);
+                }
+            }
         }
 
-        for (size_t c = 0; c < m_channels; ++c) {
-            m_channelData[c]->reset();
-            m_channelData[c]->inbuf->zero(m_aWindowSize/2);
-        }
 
         if (m_threaded) {
             MutexLocker locker(&m_threadSetMutex);
@@ -1238,7 +1265,8 @@ RubberBandStretcher::Impl::process(const float *const *input, size_t samples, bo
 
         for (size_t c = 0; c < m_channels; ++c) {
             consumed[c] += consumeChannel(c,
-                                          input[c] + consumed[c],
+                                          input,
+                                          consumed[c],
                                           samples - consumed[c],
                                           final);
             if (consumed[c] < samples) {
@@ -1286,11 +1314,14 @@ RubberBandStretcher::Impl::process(const float *const *input, size_t samples, bo
 */
         }
 
-//        if (!allConsumed) cerr << "process looping" << endl;
-
+        if (m_debugLevel > 2) {
+            if (!allConsumed) cerr << "process looping" << endl;
+        }
     }
-    
-//    cerr << "process returning" << endl;
+
+    if (m_debugLevel > 2) {
+        cerr << "process returning" << endl;
+    }
 
     if (final) m_mode = Finished;
 }

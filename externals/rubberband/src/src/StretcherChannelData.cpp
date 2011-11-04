@@ -58,7 +58,7 @@ RubberBandStretcher::Impl::ChannelData::construct(const std::set<size_t> &sizes,
     // max possible size of the real "half" of freq data
     size_t realSize = maxSize / 2 + 1;
 
-//    std::cerr << "ChannelData::construct([" << windowSizes.size() << "], " << maxSize << ", " << outbufSize << ")" << std::endl;
+//    std::cerr << "ChannelData::construct([" << sizes.size() << "], " << maxSize << ", " << outbufSize << ")" << std::endl;
     
     if (outbufSize < maxSize) outbufSize = maxSize;
 

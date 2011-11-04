@@ -16,22 +16,23 @@
 
 #ifndef _RUBBERBANDSTRETCHER_H_
 #define _RUBBERBANDSTRETCHER_H_
-    
-#define RUBBERBAND_VERSION "1.6"
+
+#define RUBBERBAND_VERSION "1.7"
 #define RUBBERBAND_API_MAJOR_VERSION 2
-#define RUBBERBAND_API_MINOR_VERSION 4
+#define RUBBERBAND_API_MINOR_VERSION 5
 
 #include <vector>
 #include <map>
+#include <cstddef>
 
 /**
  * @mainpage RubberBand
- * 
+ *
  * The Rubber Band API is contained in the single class
  * RubberBand::RubberBandStretcher.
- * 
+ *
  * Threading notes for real-time applications:
- * 
+ *
  * Multiple instances of RubberBandStretcher may be created and used
  * in separate threads concurrently.  However, for any single instance
  * of RubberBandStretcher, you may not call process() more than once
@@ -39,7 +40,7 @@
  * a process() call is being executed (if the stretcher was created in
  * "real-time mode"; in "offline mode" you can't change the ratios
  * during use anyway).
- * 
+ *
  * So you can run process() in its own thread if you like, but if you
  * want to change ratios dynamically from a different thread, you will
  * need some form of mutex in your code.  Changing the time or pitch
@@ -64,7 +65,7 @@ public:
      * 1. Flags prefixed \c OptionProcess determine how the timestretcher
      * will be invoked.  These options may not be changed after
      * construction.
-     * 
+     *
      *   \li \c OptionProcessOffline - Run the stretcher in offline
      *   mode.  In this mode the input data needs to be provided
      *   twice, once to study(), which calculates a stretch profile
@@ -73,7 +74,7 @@ public:
      *   \li \c OptionProcessRealTime - Run the stretcher in real-time
      *   mode.  In this mode only process() should be called, and the
      *   stretcher adjusts dynamically in response to the input audio.
-     * 
+     *
      * The Process setting is likely to depend on your architecture:
      * non-real-time operation on seekable files: Offline; real-time
      * or streaming operation: RealTime.
@@ -91,7 +92,7 @@ public:
      *   of transient sounds as much as possible.  The timings of low
      *   activity regions between transients may be less exact than
      *   when the precise flag is set.
-     * 
+     *
      *   \li \c OptionStretchPrecise - Although still using a variable
      *   stretch rate, the audio will be stretched so as to maintain
      *   as close as possible to a linear stretch ratio throughout.
@@ -105,13 +106,15 @@ public:
      * significant transient sounds.  These options may be changed
      * after construction when running in real-time mode, but not when
      * running in offline mode.
-     * 
+     *
      *   \li \c OptionTransientsCrisp - Reset component phases at the
      *   peak of each transient (the start of a significant note or
      *   percussive event).  This, the default setting, usually
      *   results in a clear-sounding output; but it is not always
      *   consistent, and may cause interruptions in stable sounds
-     *   present at the same time as transient events.
+     *   present at the same time as transient events.  The
+     *   OptionDetector flags (below) can be used to tune this to some
+     *   extent.
      *
      *   \li \c OptionTransientsMixed - Reset component phases at the
      *   peak of each transient, outside a frequency range typical of
@@ -133,7 +136,7 @@ public:
      *
      *   \li \c OptionDetectorCompound - Use a general-purpose
      *   transient detector which is likely to be good for most
-     *   situations.
+     *   situations.  This is the default.
      *
      *   \li \c OptionDetectorPercussive - Detect percussive
      *   transients.  Note that this was the default and only option
@@ -167,10 +170,11 @@ public:
      *   determine its own threading model.  Usually this means using
      *   one processing thread per audio channel in offline mode if
      *   the stretcher is able to determine that more than one CPU is
-     *   available, and one thread only in realtime mode.
+     *   available, and one thread only in realtime mode.  This is the
+     *   defafult.
      *
      *   \li \c OptionThreadingNever - Never use more than one thread.
-     *  
+     *
      *   \li \c OptionThreadingAlways - Use multiple threads in any
      *   situation where \c OptionThreadingAuto would do so, except omit
      *   the check for multiple CPUs and instead assume it to be true.
@@ -198,11 +202,13 @@ public:
      * not be changed after construction.
      *
      *   \li \c OptionSmoothingOff - Do not use time-domain smoothing.
+     *   This is the default.
      *
-     *   \li \c OptionSmoothingOn - Use time-domain smoothing.
-     *   This will result in a softer sound, but it may be
-     *   appropriate for longer stretches of some instruments and
-     *   can mix well with OptionWindowShort.
+     *   \li \c OptionSmoothingOn - Use time-domain smoothing.  This
+     *   will result in a softer sound with some audible artifacts
+     *   around sharp transients, but it may be appropriate for longer
+     *   stretches of some instruments and can mix well with
+     *   OptionWindowShort.
      *
      * 9. Flags prefixed \c OptionFormant control the handling of
      * formant shape (spectral envelope) when pitch-shifting.  These
@@ -210,7 +216,7 @@ public:
      *
      *   \li \c OptionFormantShifted - Apply no special formant
      *   processing.  The spectral envelope will be pitch shifted as
-     *   normal.
+     *   normal.  This is the default.
      *
      *   \li \c OptionFormantPreserved - Preserve the spectral
      *   envelope of the unshifted signal.  This permits shifting the
@@ -225,7 +231,7 @@ public:
      *   \li \c OptionPitchHighSpeed - Use a method with a CPU cost
      *   that is relatively moderate and predictable.  This may
      *   sound less clear than OptionPitchHighQuality, especially
-     *   for large pitch shifts. 
+     *   for large pitch shifts.  This is the default.
 
      *   \li \c OptionPitchHighQuality - Use the highest quality
      *   method for pitch shifting.  This method has a CPU cost
@@ -237,8 +243,28 @@ public:
      *   options, this avoids discontinuities when moving across the
      *   1.0 pitch scale in real-time; it also consumes more CPU than
      *   the others in the case where the pitch scale is exactly 1.0.
+     *
+     * 11. Flags prefixed \c OptionChannels control the method used for
+     * processing two-channel audio.  These options may not be changed
+     * after construction.
+     *
+     *   \li \c OptionChannelsApart - Each channel is processed
+     *   individually, though timing is synchronised and phases are
+     *   synchronised at transients (depending on the OptionTransients
+     *   setting).  This gives the highest quality for the individual
+     *   channels but a relative lack of stereo focus and unrealistic
+     *   increase in "width".  This is the default.
+     *
+     *   \li \c OptionChannelsTogether - The first two channels (where
+     *   two or more are present) are considered to be a stereo pair
+     *   and are processed in mid-side format; mid and side are
+     *   processed individually, with timing synchronised and phases
+     *   synchronised at transients (depending on the OptionTransients
+     *   setting).  This usually leads to better focus in the centre
+     *   but a loss of stereo space and width.  Any channels beyond
+     *   the first two are processed individually.
      */
-    
+
     enum Option {
 
         OptionProcessOffline       = 0x00000000,
@@ -246,7 +272,7 @@ public:
 
         OptionStretchElastic       = 0x00000000,
         OptionStretchPrecise       = 0x00000010,
-    
+
         OptionTransientsCrisp      = 0x00000000,
         OptionTransientsMixed      = 0x00000100,
         OptionTransientsSmooth     = 0x00000200,
@@ -257,7 +283,7 @@ public:
 
         OptionPhaseLaminar         = 0x00000000,
         OptionPhaseIndependent     = 0x00002000,
-    
+
         OptionThreadingAuto        = 0x00000000,
         OptionThreadingNever       = 0x00010000,
         OptionThreadingAlways      = 0x00020000,
@@ -274,7 +300,12 @@ public:
 
         OptionPitchHighSpeed       = 0x00000000,
         OptionPitchHighQuality     = 0x02000000,
-        OptionPitchHighConsistency = 0x04000000
+        OptionPitchHighConsistency = 0x04000000,
+
+        OptionChannelsApart        = 0x00000000,
+        OptionChannelsTogether     = 0x10000000,
+
+        // n.b. Options is int, so we must stop before 0x80000000
     };
 
     typedef int Options;
@@ -433,26 +464,20 @@ public:
     void setExpectedInputDuration(size_t samples);
 
     /**
-     * Ask the stretcher how many audio sample frames should be
-     * provided as input in order to ensure that some more output
-     * becomes available.  Normal usage consists of querying this
-     * function, providing that number of samples to process(),
-     * reading the output using available() and retrieve(), and then
-     * repeating.
-     *
-     * Note that this value is only relevant to process(), not to
-     * study() (to which you may pass any number of samples at a time,
-     * and from which there is no output).
-     */
-     size_t getSamplesRequired() const;
-
-    /**
      * Tell the stretcher the maximum number of sample frames that you
-     * will ever be passing in to a single process() call. If you
-     * don't call this function, the stretcher will assume that you
-     * never pass in more samples than getSamplesRequired() suggested
-     * you should.  You should not pass in more samples than that
-     * unless you have called setMaxProcessSize first.
+     * will ever be passing in to a single process() call.  If you
+     * don't call this, the stretcher will assume that you are calling
+     * getSamplesRequired() at each cycle and are never passing more
+     * samples than are suggested by that function.
+     *
+     * If your application has some external constraint that means you
+     * prefer a fixed block size, then your normal mode of operation
+     * would be to provide that block size to this function; to loop
+     * calling process() with that size of block; after each call to
+     * process(), test whether output has been generated by calling
+     * available(); and, if so, call retrieve() to obtain it.  See
+     * getSamplesRequired() for a more suitable operating mode for
+     * applications without such external constraints.
      *
      * This function may not be called after the first call to study()
      * or process().
@@ -462,6 +487,26 @@ public:
      * and from which there is no output).
      */
     void setMaxProcessSize(size_t samples);
+
+    /**
+     * Ask the stretcher how many audio sample frames should be
+     * provided as input in order to ensure that some more output
+     * becomes available.
+     *
+     * If your application has no particular constraint on processing
+     * block size and you are able to provide any block size as input
+     * for each cycle, then your normal mode of operation would be to
+     * loop querying this function; providing that number of samples
+     * to process(); and reading the output using available() and
+     * retrieve().  See setMaxProcessSize() for a more suitable
+     * operating mode for applications that do have external block
+     * size constraints.
+     *
+     * Note that this value is only relevant to process(), not to
+     * study() (to which you may pass any number of samples at a time,
+     * and from which there is no output).
+     */
+     size_t getSamplesRequired() const;
 
     /**
      * Provide a set of mappings from "before" to "after" sample
@@ -488,7 +533,7 @@ public:
      * extent of the frame numbers found in the key frame map.
      */
     void setKeyFrameMap(const std::map<size_t, size_t> &);
-    
+
     /**
      * Provide a block of "samples" sample frames for the stretcher to
      * study and calculate a stretch profile from.
@@ -502,7 +547,7 @@ public:
      * float array per channel.  "samples" supplies the number of
      * audio sample frames available in "input".  If "samples" is
      * zero, "input" may be NULL.
-     * 
+     *
      * Set "final" to true if this is the last block of data that will
      * be provided to study() before the first process() call.
      */
@@ -519,7 +564,7 @@ public:
     /**
      * Ask the stretcher how many audio sample frames of output data
      * are available for reading (via retrieve()).
-     * 
+     *
      * This function returns 0 if no frames are available: this
      * usually means more input data needs to be provided, but if the
      * stretcher is running in threaded mode it may just mean that not
@@ -547,13 +592,13 @@ public:
      */
     float getFrequencyCutoff(int n) const;
 
-    /** 
+    /**
      * Set the value of internal frequency cutoff n to f Hz.
      *
      * This function is not for general use.
      */
     void setFrequencyCutoff(int n, float f);
-    
+
     /**
      * Retrieve the value of the internal input block increment value.
      *
