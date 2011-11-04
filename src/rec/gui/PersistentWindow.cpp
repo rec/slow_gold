@@ -27,7 +27,15 @@ void PersistentWindow::setLimitedBounds(const Rect& b) {
   Rect bounds(b);
   bounds.setX(juce::jmax(bounds.getX(), 10));
   bounds.setY(juce::jmax(bounds.getY(), 10));
-  setBounds(bounds);
+
+  // Workaround for
+  // http://rawmaterialsoftware.com/viewtopic.php?f=2&t=8060&p=45561#p45561
+  bounds.setWidth(juce::jmax(600, bounds.getWidth()));
+  bounds.setWidth(juce::jmin(8192, bounds.getWidth()));
+  bounds.setHeight(juce::jmax(440, bounds.getWidth()));
+  bounds.setHeight(juce::jmin(8192, bounds.getWidth()));
+
+  setBoundsConstrained(bounds);
   setResizable(true, false); // resizability is a property of ResizableWindow
 }
 
