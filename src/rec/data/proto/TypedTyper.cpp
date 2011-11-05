@@ -3,6 +3,7 @@
 #include "rec/data/Value.h"
 #include "rec/data/proto/TypedTyper.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/util/Copy.h"
 
 namespace rec {
 namespace data {
@@ -106,15 +107,14 @@ pmessage TypedTyper<pmessage>::GetRepeated(uint32 i) const {
 
 template <>
 void TypedTyper<pmessage>::Set(pmessage t) {
-  (field_ ? ref().MutableMessage(msg_, field_) : msg_)->
-    ParseFromString(t);
+  copy::copy(t, field_ ? ref().MutableMessage(msg_, field_) : msg_, false);
 }
 
 template <>
 void TypedTyper<pmessage>::SetRepeated(uint32 i, pmessage t) {
   if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
-    (field_ ? ref().MutableRepeatedMessage(msg_, field_, i) : msg_)->
-      ParseFromString(t);
+    copy::copy(t, field_ ? ref().MutableRepeatedMessage(msg_, field_, i) :
+               msg_, false);
   } else {
     LOG(ERROR) << "Index " << i << " out of bounds for type pmessage";
   }
@@ -122,7 +122,7 @@ void TypedTyper<pmessage>::SetRepeated(uint32 i, pmessage t) {
 
 template <>
 void TypedTyper<pmessage>::Add(pmessage t) {
-  ref().AddMessage(msg_, field_)->ParseFromString(t);
+  copy::copy(t, ref().AddMessage(msg_, field_), false);
 }
 
 template <>
