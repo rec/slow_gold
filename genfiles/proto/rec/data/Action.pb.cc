@@ -51,7 +51,7 @@ void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto() {
       sizeof(Source));
   Source_Type_descriptor_ = Source_descriptor_->enum_type(0);
   Action_descriptor_ = file->message_type(1);
-  static const int Action_offsets_[7] = {
+  static const int Action_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, timestamp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, source_),
@@ -59,6 +59,7 @@ void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, type_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, operations_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, undo_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, undo_index_),
   };
   Action_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -112,13 +113,13 @@ void protobuf_AddDesc_rec_2fdata_2fAction_2eproto() {
     "alFile.proto\"\217\001\n\006Source\022#\n\004type\030\001 \001(\0162\025."
     "rec.data.Source.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rm"
     "odifier_keys\030\003 \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010"
-    "KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\327"
+    "KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\353"
     "\001\n\006Action\022\021\n\ttimestamp\030\001 \001(\004\022\r\n\005index\030\002 "
     "\001(\004\022 \n\006source\030\003 \003(\0132\020.rec.data.Source\022(\n"
     "\004file\030\004 \001(\0132\032.rec.util.file.VirtualFile\022"
     "\021\n\ttype_name\030\005 \001(\t\022(\n\noperations\030\006 \001(\0132\024"
     ".rec.data.Operations\022\"\n\004undo\030\007 \001(\0132\024.rec"
-    ".data.Operations", 456);
+    ".data.Operations\022\022\n\nundo_index\030\010 \001(\r", 476);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/Action.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
@@ -473,6 +474,7 @@ const int Action::kFileFieldNumber;
 const int Action::kTypeNameFieldNumber;
 const int Action::kOperationsFieldNumber;
 const int Action::kUndoFieldNumber;
+const int Action::kUndoIndexFieldNumber;
 #endif  // !_MSC_VER
 
 Action::Action()
@@ -500,6 +502,7 @@ void Action::SharedCtor() {
   type_name_ = const_cast< ::std::string*>(&_default_type_name_);
   operations_ = NULL;
   undo_ = NULL;
+  undo_index_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -556,6 +559,7 @@ void Action::Clear() {
     if (_has_bit(6)) {
       if (undo_ != NULL) undo_->::rec::data::Operations::Clear();
     }
+    undo_index_ = 0u;
   }
   source_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -669,6 +673,22 @@ bool Action::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(64)) goto parse_undo_index;
+        break;
+      }
+      
+      // optional uint32 undo_index = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_undo_index:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &undo_index_)));
+          _set_bit(7);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -734,6 +754,11 @@ void Action::SerializeWithCachedSizes(
       7, this->undo(), output);
   }
   
+  // optional uint32 undo_index = 8;
+  if (_has_bit(7)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->undo_index(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -790,6 +815,11 @@ void Action::SerializeWithCachedSizes(
         7, this->undo(), target);
   }
   
+  // optional uint32 undo_index = 8;
+  if (_has_bit(7)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->undo_index(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -841,6 +871,13 @@ int Action::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->undo());
+    }
+    
+    // optional uint32 undo_index = 8;
+    if (has_undo_index()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->undo_index());
     }
     
   }
@@ -897,6 +934,9 @@ void Action::MergeFrom(const Action& from) {
     if (from._has_bit(6)) {
       mutable_undo()->::rec::data::Operations::MergeFrom(from.undo());
     }
+    if (from._has_bit(7)) {
+      set_undo_index(from.undo_index());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -927,6 +967,7 @@ void Action::Swap(Action* other) {
     std::swap(type_name_, other->type_name_);
     std::swap(operations_, other->operations_);
     std::swap(undo_, other->undo_);
+    std::swap(undo_index_, other->undo_index_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

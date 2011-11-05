@@ -8,7 +8,7 @@
 namespace rec {
 namespace slow {
 
-class Instance;
+struct Instance;
 
 struct LoopSnapshot {
   LoopSnapshot() {}

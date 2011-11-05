@@ -10,6 +10,7 @@
 #include "rec/gui/Dialog.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/Undo.h"
+#include "rec/data/EditableUpdater.h"
 
 DECLARE_bool(logtostderr);
 
@@ -32,7 +33,7 @@ void GenericApplication::initialise(const String&) {
 
   audio::format::mpg123::initializeOnce();
   window_.reset(createWindow());
-  data::start(window_->getDefaultRegistry());
+  data::EditableUpdater::instance()->start(window_->getDefaultRegistry());
   window_->initialise();
 
   thread::runInNewThread("startup thread",
@@ -49,7 +50,7 @@ void GenericApplication::shutdown() {
   gui::dialog::shutdownDialog();
   window_->shutdown();
   util::thread::trash::waitForAllThreadsToExit(1000);
-  data::stop();
+  data::EditableUpdater::instance()->stop();
 
   LOG(INFO) << name_ << ": shutdown finished.";
 }

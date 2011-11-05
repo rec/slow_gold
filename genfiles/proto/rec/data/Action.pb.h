@@ -308,6 +308,13 @@ class Action : public ::google::protobuf::Message {
   inline const ::rec::data::Operations& undo() const;
   inline ::rec::data::Operations* mutable_undo();
   
+  // optional uint32 undo_index = 8;
+  inline bool has_undo_index() const;
+  inline void clear_undo_index();
+  static const int kUndoIndexFieldNumber = 8;
+  inline ::google::protobuf::uint32 undo_index() const;
+  inline void set_undo_index(::google::protobuf::uint32 value);
+  
   // @@protoc_insertion_point(class_scope:rec.data.Action)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -321,11 +328,12 @@ class Action : public ::google::protobuf::Message {
   static const ::std::string _default_type_name_;
   ::rec::data::Operations* operations_;
   ::rec::data::Operations* undo_;
+  ::google::protobuf::uint32 undo_index_;
   friend void  protobuf_AddDesc_rec_2fdata_2fAction_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fAction_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -558,6 +566,22 @@ inline ::rec::data::Operations* Action::mutable_undo() {
   _set_bit(6);
   if (undo_ == NULL) undo_ = new ::rec::data::Operations;
   return undo_;
+}
+
+// optional uint32 undo_index = 8;
+inline bool Action::has_undo_index() const {
+  return _has_bit(7);
+}
+inline void Action::clear_undo_index() {
+  undo_index_ = 0u;
+  _clear_bit(7);
+}
+inline ::google::protobuf::uint32 Action::undo_index() const {
+  return undo_index_;
+}
+inline void Action::set_undo_index(::google::protobuf::uint32 value) {
+  _set_bit(7);
+  undo_index_ = value;
 }
 
 

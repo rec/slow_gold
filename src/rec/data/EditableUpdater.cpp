@@ -105,27 +105,12 @@ void EditableUpdater::stop() {
 
 EditableUpdater* EditableUpdater::instance_ = NULL;
 
-namespace {
-
-EditableUpdater* instance() { return EditableUpdater::instance(); }
-UndoQueue* undoQueue() { return instance()->undoQueue(); }
-
-}  // namespace
-
-void addToUndoQueue(UntypedEditable* u, const OperationList& command,
-                    const OperationList& undo) {
-  return undoQueue()->add(u, command, undo);
-}
-
-EditableMap* editableMap()           { return instance()->map(); }
-CriticalSection* editableMapLock()   { return instance()->lock(); }
-
 const DefaultRegistry& defaultRegistry() {
-  return instance()->defaultRegistry();
+  return EditableUpdater::instance()->defaultRegistry();
 }
 
-void start(DefaultRegistry* r) { EditableUpdater::start(r); }
-void stop() { EditableUpdater::stop(); }
+EditableMap* editableMap() { return EditableUpdater::instance()->map(); }
+CriticalSection* editableMapLock() { return EditableUpdater::instance()->lock(); }
 
 }  // namespace data
 }  // namespace rec

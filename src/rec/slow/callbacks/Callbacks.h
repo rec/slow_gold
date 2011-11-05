@@ -6,7 +6,7 @@
 namespace rec {
 namespace slow {
 
-class Instance;
+struct Instance;
 
 static const int REPEATED_COUNT = 10;
 

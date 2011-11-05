@@ -2,7 +2,6 @@
 
 #include "rec/data/proto/MessageField.h"
 #include "rec/data/proto/Field.h"
-#include "rec/data/proto/FieldOps.h"
 #include "rec/data/Address.h"
 #include "rec/data/Operation.pb.h"
 #include "rec/data/Value.h"

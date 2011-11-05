@@ -30,4 +30,6 @@ message Action {
   optional string type_name = 5;
   optional Operations operations = 6;
   optional Operations undo = 7;
+  optional uint32 undo_index = 8;
+  // If this is non-empty, this action undoes all the way to that index.
 };

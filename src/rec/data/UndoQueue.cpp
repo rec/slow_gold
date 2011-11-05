@@ -19,47 +19,38 @@ UndoQueue::UndoQueue(const File& file)
 UndoQueue::~UndoQueue() {
   Lock l(lock_);
   write();
-  stl::deletePointers(&actions_);
+  stl::deletePointers(&queue_);
 }
 
-static Action* makeAction(Editable* e, const OperationList& command,
-                          const OperationList& undo) {
+static Action* makeAction(Editable* e, const Operations& operations,
+                          const Operations& undo) {
   ptr<Action> action(new Action);
   action->mutable_file()->CopyFrom(e->virtualFile());
   action->set_type_name(e->getTypeName());
 
-  typedef google::protobuf::RepeatedPtrField<Operation> RepeatedOperation;
-  RepeatedOperation* op = action->mutable_undo()->mutable_operation();
-  for (int i = undo.size() - 1; i >= 0; --i)
-    if (undo[i])
-      op->MergeFrom(undo[i]->operation());
-
-  op = action->mutable_operations()->mutable_operation();
-  for (int i = command.size() - 1; i >= 0; --i) {
-    if (command[i])  // TODO: these should be filtered earlier.
-      op->MergeFrom(command[i]->operation());
-  }
+  action->mutable_undo()->MergeFrom(undo);
+  action->mutable_operations()->MergeFrom(operations);
 
   return action.transfer();
 }
 
-void UndoQueue::add(Editable* editable, const OperationList& command,
-                    const OperationList& undo) {
+void UndoQueue::add(Editable* editable, const Operations& operations,
+                    const Operations& undo) {
   Lock l(lock_);
   if (!enabled_)
     return;
 
-  ptr<Action> action(makeAction(editable, command, undo));
+  ptr<Action> action(makeAction(editable, operations, undo));
   if (undoes_) {
     if (undoes_ > 1) {
-      actions_.resize(undoable() + 1);
-      editables_.resize(actions_.size());
+      queue_.resize(undoable() + 1);
+      editables_.resize(queue_.size());
     }
-    actions_.back() = action.transfer();
+    queue_.back() = action.transfer();
     editables_.back() = editable;
     undoes_ = 0;
   } else {
-    actions_.push_back(action.transfer());
+    queue_.push_back(action.transfer());
     editables_.push_back(editable);
   }
 }
@@ -67,7 +58,7 @@ void UndoQueue::add(Editable* editable, const OperationList& command,
 void UndoQueue::executeTop(bool isUndo) {
   int top = undoable();
   Editable* editable = editables_[top];
-  Action* action = actions_[top];
+  Action* action = queue_[top];
   const Operations& ops = isUndo ? action->undo() : action->operations();
   DCHECK(false) << "Need to apply without adding an undo to the queue";
   ptr<Operations>(editable->applyOperations(ops));
@@ -88,19 +79,21 @@ void UndoQueue::redo() {
 }
 
 bool UndoQueue::write() {
-  ptr<ActionList> events;
+  ptr<ActionQueue> events;
   {
     Lock l(lock_);
-    int size = actions_.size();
+    int size = queue_.size();
     if (writtenTo_ == size)
       return false;
 
-    events.reset(new ActionList(actions_.begin() + writtenTo_, actions_.end()));
+    events.reset(new ActionQueue(queue_.begin() + writtenTo_, queue_.end()));
     writtenTo_ = size;
   }
 
-  for (ActionList::iterator i = events->begin(); i != events->end(); ++i) {
-    logfile_->write(**i);
+  for (ActionQueue::iterator i = events->begin(); i != events->end(); ++i) {
+    Action action(**i);
+    action.mutable_operations()->Clear();
+    logfile_->write(action);
     logfile_->flush();
   }
 

@@ -17,7 +17,7 @@ namespace widget { namespace waveform { class Waveform; }}
 
 namespace slow {
 
-class Instance;
+struct Instance;
 class MainPage;
 
 struct Components {

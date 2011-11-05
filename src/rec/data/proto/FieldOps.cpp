@@ -1,11 +1,9 @@
-#include "rec/data/proto/FieldOps.h"
-#include "rec/data/proto/MessageField.h"
 #include "rec/data/Value.h"
+#include "rec/data/proto/MessageField.h"
 #include "rec/data/proto/TypedOperations.h"
 
 namespace rec {
 namespace data {
-namespace proto {
 
 bool copyTo(const MessageField& f, ValueProto* value) {
   if (!f.field_) {
@@ -220,6 +218,5 @@ bool undo(MessageField* field, const Operation& op, Operation* undo) {
   return valid(c, t) && undoers[c][t](field, op, undo);
 }
 
-}  // namespace proto
 }  // namespace data
 }  // namespace rec

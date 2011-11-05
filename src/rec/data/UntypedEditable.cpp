@@ -2,7 +2,7 @@
 
 #include "rec/data/EditableUpdater.h"
 #include "rec/data/proto/Field.h"
-#include "rec/data/proto/FieldOps.h"
+#include "rec/data/proto/MessageField.h"
 #include "rec/util/Copy.h"
 #include "rec/data/Data.h"
 #include "rec/data/Value.h"
@@ -26,6 +26,7 @@ UntypedEditable::~UntypedEditable() {
 
 bool UntypedEditable::hasValue(const Address& address) const {
   MessageField f;
+
   Lock l(lock_);
   return fillMessageField(&f, address, *message_) && data::hasValue(f);
 }
@@ -35,14 +36,13 @@ const Value UntypedEditable::getValue(const Address& address) const {
   MessageField f;
 
   Lock l(lock_);
-  if (!(fillMessageField(&f, address, *message_) && proto::copyTo(f, &value)))
+  if (!(fillMessageField(&f, address, *message_) && data::copyTo(f, &value)))
     LOG(ERROR) << "Couldn't read value for " << address.ShortDebugString();
   return value;
 }
 
 int UntypedEditable::getSize(const Address& address) const {
   MessageField f;
-
   Lock l(lock_);
   return fillMessageField(&f, address, *message_) ? 0 : data::getSize(f);
 }
@@ -83,17 +83,17 @@ void UntypedEditable::applyLater(Operations* op) {
 }
 
 Operations* UntypedEditable::applyOperations(const Operations& olist) {
-  ptr<Operations> result (new Operations());
+  ptr<Operations> result(new Operations());
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);
     MessageField f;
-    // Lock l(lock_);
+    Lock l(lock_);
     if (!fillMessageField(&f, Address(op.address()), *message_)) {
       LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
       return NULL;
     }
     Operation undo;
-    if (proto::undo(&f, op, &undo) && proto::apply(&f, op))
+    if (data::undo(&f, op, &undo) && data::apply(&f, op))
       result->add_operation()->CopyFrom(undo);
     else
       LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
@@ -111,21 +111,14 @@ bool UntypedEditable::update() {
     command.swap(queue_);
   }
 
-  // I don't need to lock here, because I'm the only person using this queue...?
-  OperationList undo;
   for (OperationList::iterator i = command.begin(); i != command.end(); ++i) {
-    if (*i)
-      undo.push_back(applyOperations(**i));
+    ptr<Operations> ops(*i);
+    ptr<Operations> undo(applyOperations(*ops));
+    EditableUpdater::instance()->undoQueue()->add(this, *ops, *undo);
   }
 
-  bool empty = undo.empty();
-  if (!empty)
-    EditableUpdater::instance()->undoQueue()->add(this, command, undo);
-
-  stl::deletePointers(&command);
-  stl::deletePointers(&undo);
   onDataChange();
-  return !empty;
+  return true;
 }
 
 bool UntypedEditable::writeToFile() const {
