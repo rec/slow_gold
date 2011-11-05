@@ -2,9 +2,9 @@
 {
 	107F029BEE50E0870F8E5A13 /* Main.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {780, 923}}";
-			sepNavSelRange = "{884, 0}";
-			sepNavVisRange = "{0, 1741}";
+			sepNavIntBoundsRect = "{{0, 0}, {1154, 884}}";
+			sepNavSelRange = "{1868, 0}";
+			sepNavVisRange = "{157, 1373}";
 		};
 	};
 	1F12D428C5B0028F9A15E7B8 /* Stretchy.cpp */ = {
@@ -16,9 +16,9 @@
 	};
 	51CAF04C0ABAD566FFC0A384 /* RubberBand.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {776, 1274}}";
-			sepNavSelRange = "{736, 0}";
-			sepNavVisRange = "{373, 1727}";
+			sepNavIntBoundsRect = "{{0, 0}, {780, 1365}}";
+			sepNavSelRange = "{2973, 0}";
+			sepNavVisRange = "{735, 2033}";
 		};
 	};
 	998399C0F86735CBC8189E96 /* Project object */ = {
@@ -26,6 +26,7 @@
 		activeExecutable = E204BB1E1464B21C001544FC /* Command */;
 		activeTarget = 9ED9F777074117C95C13794F /* Command */;
 		breakpoints = (
+			E204BC351464F3F9001544FC /* RubberBand.cpp:39 */,
 		);
 		codeSenseManager = E204BB2B1464B230001544FC /* Code sense */;
 		executables = (
@@ -131,6 +132,13 @@
 			E204BBEE1464D24B001544FC /* PBXTextBookmark */ = E204BBEE1464D24B001544FC /* PBXTextBookmark */;
 			E204BBF31464EB95001544FC /* PBXTextBookmark */ = E204BBF31464EB95001544FC /* PBXTextBookmark */;
 			E204BBF91464EBE8001544FC /* PBXTextBookmark */ = E204BBF91464EBE8001544FC /* PBXTextBookmark */;
+			E204BBFC1464EF03001544FC /* PBXTextBookmark */ = E204BBFC1464EF03001544FC /* PBXTextBookmark */;
+			E204BC391464F404001544FC /* PBXTextBookmark */ = E204BC391464F404001544FC /* PBXTextBookmark */;
+			E204BC3A1464F404001544FC /* PBXTextBookmark */ = E204BC3A1464F404001544FC /* PBXTextBookmark */;
+			E204BC3B1464F404001544FC /* PBXTextBookmark */ = E204BC3B1464F404001544FC /* PBXTextBookmark */;
+			E204BC401464F5A5001544FC /* PBXTextBookmark */ = E204BC401464F5A5001544FC /* PBXTextBookmark */;
+			E204BC411464F5AC001544FC /* PBXTextBookmark */ = E204BC411464F5AC001544FC /* PBXTextBookmark */;
+			E204BC421464F5AD001544FC /* PBXTextBookmark */ = E204BC421464F5AD001544FC /* PBXTextBookmark */;
 		};
 		sourceControlManager = E204BB2A1464B230001544FC /* Source Control */;
 		userBuildSettings = {
@@ -568,5 +576,93 @@
 		rType = 0;
 		vrLen = 1741;
 		vrLoc = 0;
+	};
+	E204BBFC1464EF03001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 107F029BEE50E0870F8E5A13 /* Main.cpp */;
+		name = "Main.cpp: 71";
+		rLen = 0;
+		rLoc = 1868;
+		rType = 0;
+		vrLen = 1742;
+		vrLoc = 0;
+	};
+	E204BC351464F3F9001544FC /* RubberBand.cpp:39 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 51CAF04C0ABAD566FFC0A384 /* RubberBand.cpp */;
+		functionName = "RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info)";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 39;
+		location = Command;
+		modificationTime = 342160805.281715;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E204BC391464F404001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 107F029BEE50E0870F8E5A13 /* Main.cpp */;
+		name = "Main.cpp: 28";
+		rLen = 0;
+		rLoc = 872;
+		rType = 0;
+		vrLen = 1670;
+		vrLoc = 198;
+	};
+	E204BC3A1464F404001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 51CAF04C0ABAD566FFC0A384 /* RubberBand.cpp */;
+		name = "RubberBand.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1974;
+		vrLoc = 250;
+	};
+	E204BC3B1464F404001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 51CAF04C0ABAD566FFC0A384 /* RubberBand.cpp */;
+		name = "RubberBand.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1974;
+		vrLoc = 250;
+	};
+	E204BC401464F5A5001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 107F029BEE50E0870F8E5A13 /* Main.cpp */;
+		name = "Main.cpp: 71";
+		rLen = 0;
+		rLoc = 1868;
+		rType = 0;
+		vrLen = 1356;
+		vrLoc = 157;
+	};
+	E204BC411464F5AC001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 107F029BEE50E0870F8E5A13 /* Main.cpp */;
+		name = "Main.cpp: 71";
+		rLen = 0;
+		rLoc = 1868;
+		rType = 0;
+		vrLen = 1373;
+		vrLoc = 157;
+	};
+	E204BC421464F5AD001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 51CAF04C0ABAD566FFC0A384 /* RubberBand.cpp */;
+		name = "RubberBand.cpp: 109";
+		rLen = 0;
+		rLoc = 2973;
+		rType = 0;
+		vrLen = 2033;
+		vrLoc = 735;
 	};
 }

@@ -10,7 +10,7 @@ DEFINE_string(stereo, "stereo", "Select from: stereo, mono, left, right, flip, "
 
 DEFINE_double(time_percent, 100.0, "Percent to speed up or slow down time");
 DEFINE_int32(semitone, 0, "Semitones to shift the result");
-DEFINE_int32(cents, 0, "cents to shift the result");
+DEFINE_int32(cents, -1, "cents to shift the result");
 
 static const juce::File ROOT("/development/sound-tests/results/TakeFive.wav");
 

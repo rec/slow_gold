@@ -13,9 +13,19 @@ using ::RubberBand::RubberBandStretcher;
 static const int OPTIONS =
   RubberBandStretcher::OptionPitchHighQuality +
   RubberBandStretcher::OptionProcessRealTime +
-  RubberBandStretcher::OptionSmoothingOn +
-  RubberBandStretcher::OptionTransientsSmooth
+  // RubberBandStretcher::OptionSmoothingOn +
+  RubberBandStretcher::OptionTransientsSmooth +
+  0
 ;
+
+static const int DEATH_OPTIONS =
+  RubberBandStretcher::OptionPitchHighQuality |
+  RubberBandStretcher::OptionProcessRealTime |
+  RubberBandStretcher::OptionSmoothingOn |
+  // RubberBandStretcher::OptionTransientsSmooth +
+  0
+;
+
 static const int RATE = 44100;
 
 RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
