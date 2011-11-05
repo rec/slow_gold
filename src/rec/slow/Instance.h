@@ -25,7 +25,8 @@ class Threads;
 
 // A single instance of the Slow program.  Right now there's only one per
 // application but in future there might be more than one.
-struct Instance {
+class Instance {
+public:
   explicit Instance(SlowWindow* window);
   ~Instance();
 

@@ -20,7 +20,8 @@ namespace slow {
 class Instance;
 class MainPage;
 
-struct Components {
+class Components {
+public:
   explicit Components(Instance*);
   ~Components();
   void setActive(bool);

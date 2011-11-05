@@ -7,7 +7,7 @@
 namespace rec {
 namespace data {
 
-class MessageField;
+struct MessageField;
 
 namespace proto {
 

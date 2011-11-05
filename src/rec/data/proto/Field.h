@@ -7,7 +7,7 @@ namespace rec {
 namespace data {
 
 class Address;
-class MessageField;
+struct MessageField;
 
 bool fillMessageField(MessageField*, const Address&, const Message&);
 
