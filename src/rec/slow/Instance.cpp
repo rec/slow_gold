@@ -72,7 +72,7 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  data::editable<VirtualFile>()->applyLater(NULL);
+  data::editable<VirtualFile>()->onDataChange();
   components_->setActive(true);
   enableUndo();
 }

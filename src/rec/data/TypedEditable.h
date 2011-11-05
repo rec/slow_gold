@@ -32,7 +32,6 @@ class TypedEditable : public data::UntypedEditable,
   virtual const string getTypeName() const { return proto_.GetTypeName(); }
   virtual ~TypedEditable() {}
 
- protected:
   virtual void onDataChange() {
     Proto p = get();
     messageBroadcaster_.broadcast(p);

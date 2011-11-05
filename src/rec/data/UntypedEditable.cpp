@@ -33,6 +33,7 @@ bool UntypedEditable::hasValue(const Address& address) const {
 const Value UntypedEditable::getValue(const Address& address) const {
   Value value;
   MessageField f;
+
   Lock l(lock_);
   if (!(fillMessageField(&f, address, *message_) && proto::copyTo(f, &value)))
     LOG(ERROR) << "Couldn't read value for " << address.ShortDebugString();
@@ -41,6 +42,7 @@ const Value UntypedEditable::getValue(const Address& address) const {
 
 int UntypedEditable::getSize(const Address& address) const {
   MessageField f;
+
   Lock l(lock_);
   return fillMessageField(&f, address, *message_) ? 0 : data::getSize(f);
 }
@@ -77,7 +79,7 @@ bool UntypedEditable::readFromFile() const {
 void UntypedEditable::applyLater(Operations* op) {
   Lock l(lock_);
   queue_.push_back(op);
-  updateClients();
+    EditableUpdater::instance()->needsUpdate(this);
 }
 
 Operations* UntypedEditable::applyOperations(const Operations& olist) {
@@ -139,10 +141,6 @@ bool UntypedEditable::writeToFile() const {
 
 	VLOG(1) << "Writing " << str(file_);
   return copy::copy(*msg, file_, copy::READABLE);
-}
-
-void UntypedEditable::updateClients() {
-  EditableUpdater::instance()->needsUpdate(this);
 }
 
 }  // namespace data
