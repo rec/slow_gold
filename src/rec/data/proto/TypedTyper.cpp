@@ -87,8 +87,7 @@ METHODS_COMMON_TO_ALL(penum, enum, ENUM)
 template <>
 pmessage TypedTyper<pmessage>::Get() const {
   pmessage p;
-  (field_ ? ref().GetMessage(*msg_, field_) : *msg_).
-    SerializeToString(&p.value_);
+  copy::copy(field_ ? ref().GetMessage(*msg_, field_) : *msg_, &p.value_, true);
   return p;
 }
 
@@ -96,8 +95,8 @@ template <>
 pmessage TypedTyper<pmessage>::GetRepeated(uint32 i) const {
   pmessage p;
   if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
-    (field_ ? ref().GetRepeatedMessage(*msg_, field_, i) : *msg_).
-      SerializeToString(&p.value_);
+    copy::copy(field_ ? ref().GetRepeatedMessage(*msg_, field_, i) : *msg_,
+               &p.value_, false);
   } else {
     LOG(ERROR) << "Index " << i << " out of bounds for type pmessage: "
                << msg_->ShortDebugString();
