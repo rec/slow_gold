@@ -9,7 +9,7 @@
               pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
               pluginName="Juce Project" pluginProducesMidiOut="0" pluginRTASCategory=""
               pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0"
-              projectType="guiapp" version="0.9.0">
+              projectType="consoleapp" version="0.9.0">
   <EXPORTFORMATS>
     <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/" extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
             juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
@@ -23,10 +23,10 @@
   <CONFIGURATIONS>
     <CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                    isDebug="1" name="Debug" optimisation="0" osxArchitecture="32BitUniversal"
-                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
+                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
     <CONFIGURATION defines="__JUCE_CONFIG=Release" headerPath="${__JUCE_INCLUDES_RELEASE}"
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
-                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
+                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
   <MAINGROUP id="Prp5uJPGI" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
