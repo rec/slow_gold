@@ -10,8 +10,8 @@
 
 */
 
-#ifndef __APPHEADERFILE_TVOT2OBQ__
-#define __APPHEADERFILE_TVOT2OBQ__
+#ifndef __APPHEADERFILE_SDTHDIBYR__
+#define __APPHEADERFILE_SDTHDIBYR__
 
 #include "AppConfig.h"
 #include "../../juce/juce_amalgamated.h"
@@ -19,9 +19,9 @@
 
 namespace ProjectInfo
 {
-    const char* const  projectName    = "command";
-    const char* const  versionString  = "1.0.0";
-    const int          versionNumber  = 0x10000;
+    const char* const  projectName    = "Command";
+    const char* const  versionString  = "0.9.0";
+    const int          versionNumber  = 0x900;
 }
 
-#endif   // __APPHEADERFILE_TVOT2OBQ__
+#endif   // __APPHEADERFILE_SDTHDIBYR__

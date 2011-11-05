@@ -140,7 +140,7 @@ class Stretch : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = AUDIO_MAGIC];
+  // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = RUBBERBAND];
   inline bool has_strategy() const;
   inline void clear_strategy();
   static const int kStrategyFieldNumber = 1;
@@ -324,12 +324,12 @@ class Stretch : public ::google::protobuf::Message {
 
 // Stretch
 
-// optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = AUDIO_MAGIC];
+// optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = RUBBERBAND];
 inline bool Stretch::has_strategy() const {
   return _has_bit(0);
 }
 inline void Stretch::clear_strategy() {
-  strategy_ = 1;
+  strategy_ = 2;
   _clear_bit(0);
 }
 inline ::rec::audio::stretch::Stretch_Strategy Stretch::strategy() const {

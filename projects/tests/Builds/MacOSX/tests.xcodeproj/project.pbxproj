@@ -72,6 +72,7 @@
 		44543472E0B355CC71A98294 = { isa = PBXBuildFile; fileRef = DDE92C556187932B314953E2; };
 		65346D4D67C963833A1D951F = { isa = PBXBuildFile; fileRef = 2A89E47D9F69C5EB900A00ED; };
 		3CF04C17E38334C1207A48FC = { isa = PBXBuildFile; fileRef = 0379091AB5331ADBDA826BF6; };
+		17E2F2290A1A0C5C045BA0E6 = { isa = PBXBuildFile; fileRef = 73BDF9D865C9CF1B94E9EC21; };
 		CB259A46E182713FBB706D99 = { isa = PBXBuildFile; fileRef = B61EAE1B79B3D4974D15F8A5; };
 		8A1F66E4A5CF1B4F78B542C7 = { isa = PBXBuildFile; fileRef = C4DFFC3D3A435681510DEF47; };
 		838F57D3C1DA4AACDAA36AEC = { isa = PBXBuildFile; fileRef = 6011F232AEB57506156913E1; };
@@ -419,6 +420,8 @@
 		0379091AB5331ADBDA826BF6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Gain.cpp; path = ../../../../src/rec/audio/util/Gain.cpp; sourceTree = "SOURCE_ROOT"; };
 		80CF8B1B2424E714632AC9A6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Gain.h; path = ../../../../src/rec/audio/util/Gain.h; sourceTree = "SOURCE_ROOT"; };
 		B9E071EDC2542B8461FD8682 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OwnedFrames.h; path = ../../../../src/rec/audio/util/OwnedFrames.h; sourceTree = "SOURCE_ROOT"; };
+		73BDF9D865C9CF1B94E9EC21 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ProcessAudioFile.cpp; path = ../../../../src/rec/audio/util/ProcessAudioFile.cpp; sourceTree = "SOURCE_ROOT"; };
+		078FB56553BF084A57F07DD9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProcessAudioFile.h; path = ../../../../src/rec/audio/util/ProcessAudioFile.h; sourceTree = "SOURCE_ROOT"; };
 		B61EAE1B79B3D4974D15F8A5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ThumbnailBuffer.cpp; path = ../../../../src/rec/audio/util/ThumbnailBuffer.cpp; sourceTree = "SOURCE_ROOT"; };
 		3C06D23F1ACDB3D5338B2455 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThumbnailBuffer.h; path = ../../../../src/rec/audio/util/ThumbnailBuffer.h; sourceTree = "SOURCE_ROOT"; };
 		5C9E5CE25F359AB1053A59B4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ArraySize.h; path = ../../../../src/rec/base/ArraySize.h; sourceTree = "SOURCE_ROOT"; };
@@ -1055,6 +1058,8 @@
 				0379091AB5331ADBDA826BF6,
 				80CF8B1B2424E714632AC9A6,
 				B9E071EDC2542B8461FD8682,
+				73BDF9D865C9CF1B94E9EC21,
+				078FB56553BF084A57F07DD9,
 				B61EAE1B79B3D4974D15F8A5,
 				3C06D23F1ACDB3D5338B2455 ); name = util; sourceTree = "<group>"; };
 		6D93E2AE92DA8779562AB8F1 = { isa = PBXGroup; children = (
@@ -1672,7 +1677,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		E9D679CB7482DA3CC27C3793 = { isa = PBXGroup; children = (
+		17002BED990D8C6E8A78604E = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1699,7 +1704,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				E9D679CB7482DA3CC27C3793,
+				17002BED990D8C6E8A78604E,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1840,6 +1845,7 @@
 				44543472E0B355CC71A98294,
 				65346D4D67C963833A1D951F,
 				3CF04C17E38334C1207A48FC,
+				17E2F2290A1A0C5C045BA0E6,
 				CB259A46E182713FBB706D99,
 				8A1F66E4A5CF1B4F78B542C7,
 				838F57D3C1DA4AACDAA36AEC,

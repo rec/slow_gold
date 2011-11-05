@@ -97,23 +97,23 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\223\005\n\007Stretch\022B\n\010strategy\030\001 \001(\0162#.rec."
-    "audio.stretch.Stretch.Strategy:\013AUDIO_MA"
-    "GIC\022\034\n\rtime_disabled\030\002 \001(\010:\005false\022\035\n\016pit"
-    "ch_disabled\030\003 \001(\010:\005false\022\'\n\031passthrough_"
-    "when_disabled\030\004 \001(\010:\004true\022\025\n\ntime_scale\030"
-    "\005 \001(\001:\0011\022\031\n\014time_percent\030\006 \001(\001:\003100\022\032\n\013s"
-    "ample_rate\030\007 \001(\001:\00544100\022\023\n\010channels\030\010 \001("
-    "\r:\0012\022\026\n\013pitch_scale\030\t \001(\001:\0011\022\031\n\016semitone"
-    "_shift\030\n \001(\001:\0010\022\027\n\014detune_cents\030\013 \001(\001:\0010"
-    "\022\023\n\005bands\030\014 \001(\r:\0042048\022\031\n\016filter_overlap\030"
-    "\r \001(\r:\0011\022\030\n\nchunk_size\030\016 \001(\r:\0041024\022\033\n\014pr"
-    "efill_size\030\017 \001(\r:\00515000\022$\n\025next_buffer_f"
-    "ill_size\030\020 \001(\r:\00515000\022\036\n\022inactive_wait_t"
-    "ime\030\021 \001(\005:\002-1\022\032\n\017thread_priority\030\022 \001(\r:\001"
-    "4\022\037\n\020max_process_size\030\023 \001(\r:\00516364\"E\n\010St"
-    "rategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nRUB"
-    "BERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003", 745);
+    "oto\"\222\005\n\007Stretch\022A\n\010strategy\030\001 \001(\0162#.rec."
+    "audio.stretch.Stretch.Strategy:\nRUBBERBA"
+    "ND\022\034\n\rtime_disabled\030\002 \001(\010:\005false\022\035\n\016pitc"
+    "h_disabled\030\003 \001(\010:\005false\022\'\n\031passthrough_w"
+    "hen_disabled\030\004 \001(\010:\004true\022\025\n\ntime_scale\030\005"
+    " \001(\001:\0011\022\031\n\014time_percent\030\006 \001(\001:\003100\022\032\n\013sa"
+    "mple_rate\030\007 \001(\001:\00544100\022\023\n\010channels\030\010 \001(\r"
+    ":\0012\022\026\n\013pitch_scale\030\t \001(\001:\0011\022\031\n\016semitone_"
+    "shift\030\n \001(\001:\0010\022\027\n\014detune_cents\030\013 \001(\001:\0010\022"
+    "\023\n\005bands\030\014 \001(\r:\0042048\022\031\n\016filter_overlap\030\r"
+    " \001(\r:\0011\022\030\n\nchunk_size\030\016 \001(\r:\0041024\022\033\n\014pre"
+    "fill_size\030\017 \001(\r:\00515000\022$\n\025next_buffer_fi"
+    "ll_size\030\020 \001(\r:\00515000\022\036\n\022inactive_wait_ti"
+    "me\030\021 \001(\005:\002-1\022\032\n\017thread_priority\030\022 \001(\r:\0014"
+    "\022\037\n\020max_process_size\030\023 \001(\r:\00516364\"E\n\010Str"
+    "ategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nRUBB"
+    "ERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003", 744);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -194,7 +194,7 @@ Stretch::Stretch(const Stretch& from)
 
 void Stretch::SharedCtor() {
   _cached_size_ = 0;
-  strategy_ = 1;
+  strategy_ = 2;
   time_disabled_ = false;
   pitch_disabled_ = false;
   passthrough_when_disabled_ = true;
@@ -247,7 +247,7 @@ Stretch* Stretch::New() const {
 
 void Stretch::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    strategy_ = 1;
+    strategy_ = 2;
     time_disabled_ = false;
     pitch_disabled_ = false;
     passthrough_when_disabled_ = true;
@@ -281,7 +281,7 @@ bool Stretch::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = AUDIO_MAGIC];
+      // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = RUBBERBAND];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -607,7 +607,7 @@ bool Stretch::MergePartialFromCodedStream(
 
 void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = AUDIO_MAGIC];
+  // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = RUBBERBAND];
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->strategy(), output);
@@ -711,7 +711,7 @@ void Stretch::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Stretch::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = AUDIO_MAGIC];
+  // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = RUBBERBAND];
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->strategy(), target);
@@ -818,7 +818,7 @@ int Stretch::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = AUDIO_MAGIC];
+    // optional .rec.audio.stretch.Stretch.Strategy strategy = 1 [default = RUBBERBAND];
     if (has_strategy()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->strategy());

@@ -53,8 +53,11 @@ void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     } else {
       float** input;
       int chunkSize = chunkSize_;
-      // if (size_t required = stretcher_->getSamplesRequired())
-      //   chunkSize = required;
+      static bool USE_PUSH = true;
+      if (USE_PUSH) {
+        if (size_t required = stretcher_->getSamplesRequired())
+          chunkSize = required;
+      }
       {
         ScopedUnlock m(lock_);
         input = getSourceSamples(chunkSize);

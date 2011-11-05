@@ -11,7 +11,7 @@ message Stretch {
     SOUNDTOUCH = 3;
   };
 
-  optional Strategy strategy = 1        [default = AUDIO_MAGIC];
+  optional Strategy strategy = 1        [default = RUBBERBAND];
   optional bool time_disabled = 2       [default = false];
   optional bool pitch_disabled = 3      [default = false];
   optional bool passthrough_when_disabled = 4 [default = true];

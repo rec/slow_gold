@@ -12,4 +12,4 @@
 */
 
 #include "AppConfig.h"
-#include "../../juce/juce_amalgamated.cpp"
+#include "../../juce/amalgamation/juce_amalgamated_template.cpp"
