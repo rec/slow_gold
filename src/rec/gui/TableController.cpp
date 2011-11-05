@@ -73,7 +73,7 @@ String TableController::displayText(const TableColumn& col, const Value& value) 
 const Value TableController::getDisplayValue() const {
   ScopedLock l(lock_);
   Value value;
-  copy::copy(*message_, value.mutable_message_f());
+  copy::copy(*message_, value.mutable_message_f(), true);
   return value;
 }
 

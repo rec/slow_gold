@@ -26,40 +26,40 @@
 namespace rec {
 namespace copy {
 
-bool copy(const File& from, File* to, bool readable = true);
-bool copy(const File& from, const File& to, bool readable = true);
-bool copy(const File& from, MemoryBlock* to, bool readable = true);
-bool copy(const File& from, Message* to, bool readable = true);
-bool copy(const File& from, String* to, bool readable = true);
-bool copy(const File& from, string* to, bool readable = true);
+bool copy(const File& from, File* to, bool readable);
+bool copy(const File& from, const File& to, bool readable);
+bool copy(const File& from, MemoryBlock* to, bool readable);
+bool copy(const File& from, Message* to, bool readable);
+bool copy(const File& from, String* to, bool readable);
+bool copy(const File& from, string* to, bool readable);
 
-bool copy(const Message& from, File* to, bool readable = true);
-bool copy(const Message& from, const File& to, bool readable = true);
-bool copy(const Message& from, MemoryBlock* to, bool readable = true);
-bool copy(const Message& from, Message* to, bool readable = true);
-bool copy(const Message& from, String* to, bool readable = true);
-bool copy(const Message& from, string* to, bool readable = true);
+bool copy(const Message& from, File* to, bool readable);
+bool copy(const Message& from, const File& to, bool readable);
+bool copy(const Message& from, MemoryBlock* to, bool readable);
+bool copy(const Message& from, Message* to, bool readable);
+bool copy(const Message& from, String* to, bool readable);
+bool copy(const Message& from, string* to, bool readable);
 
-bool copy(const MemoryBlock& from, File* to, bool readable = true);
-bool copy(const MemoryBlock& from, const File& to, bool readable = true);
-bool copy(const MemoryBlock& from, MemoryBlock* to, bool readable = true);
-bool copy(const MemoryBlock& from, Message* to, bool readable = true);
-bool copy(const MemoryBlock& from, String* to, bool readable = true);
-bool copy(const MemoryBlock& from, string* to, bool readable = true);
+bool copy(const MemoryBlock& from, File* to, bool readable);
+bool copy(const MemoryBlock& from, const File& to, bool readable);
+bool copy(const MemoryBlock& from, MemoryBlock* to, bool readable);
+bool copy(const MemoryBlock& from, Message* to, bool readable);
+bool copy(const MemoryBlock& from, String* to, bool readable);
+bool copy(const MemoryBlock& from, string* to, bool readable);
 
-bool copy(const String& from, File* to, bool readable = true);
-bool copy(const String& from, const File& to, bool readable = true);
-bool copy(const String& from, MemoryBlock* to, bool readable = true);
-bool copy(const String& from, Message* to, bool readable = true);
-bool copy(const String& from, String* to, bool readable = true);
-bool copy(const String& from, string* to, bool readable = true);
+bool copy(const String& from, File* to, bool readable);
+bool copy(const String& from, const File& to, bool readable);
+bool copy(const String& from, MemoryBlock* to, bool readable);
+bool copy(const String& from, Message* to, bool readable);
+bool copy(const String& from, String* to, bool readable);
+bool copy(const String& from, string* to, bool readable);
 
-bool copy(const string& from, File* to, bool readable = true);
-bool copy(const string& from, const File& to, bool readable = true);
-bool copy(const string& from, MemoryBlock* to, bool readable = true);
-bool copy(const string& from, Message* to, bool readable = true);
-bool copy(const string& from, String* to, bool readable = true);
-bool copy(const string& from, string* to, bool readable = true);
+bool copy(const string& from, File* to, bool readable);
+bool copy(const string& from, const File& to, bool readable);
+bool copy(const string& from, MemoryBlock* to, bool readable);
+bool copy(const string& from, Message* to, bool readable);
+bool copy(const string& from, String* to, bool readable);
+bool copy(const string& from, string* to, bool readable);
 
 }  // namespace copy
 }  // namespace rec

@@ -126,7 +126,7 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
 Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
   Album album;
   File shadow = getShadowFile(file, "album");
-  if (!copy::copy(shadow, &album)) {
+  if (!copy::copy(shadow, &album, true)) {
     AlbumList albums;
     String error = fillAlbums(off, &albums);
     if (error.length()) {
@@ -135,7 +135,7 @@ Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
       LOG(ERROR) << "CDDB gave us no information";
     } else {
       album = albums.album(0);
-      if (!copy::copy(album, &shadow))
+      if (!copy::copy(album, &shadow, true))
         LOG(ERROR) << "Couldn't save CDDB information";
     }
   }
