@@ -6,7 +6,7 @@
 namespace rec {
 namespace slow {
 
-struct Instance;
+class Instance;
 
 class Menus : public MenuBarModel, public HasInstance {
  public:

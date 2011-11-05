@@ -488,7 +488,6 @@
 		F0AA4D42B00AEBFD15907403 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Data.h; path = ../../../../src/rec/data/Data.h; sourceTree = "SOURCE_ROOT"; };
 		13D1D052624F6A0B246F6335 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Editable.cpp; path = ../../../../src/rec/data/Editable.cpp; sourceTree = "SOURCE_ROOT"; };
 		B96847524BE56BD50BD7A593 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Editable.h; path = ../../../../src/rec/data/Editable.h; sourceTree = "SOURCE_ROOT"; };
-		786E6B5D6B347BFF720EFB2A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EditableFactory.h; path = ../../../../src/rec/data/EditableFactory.h; sourceTree = "SOURCE_ROOT"; };
 		5F13B8FFB1584BFF6C05AD39 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EditableUpdater.cpp; path = ../../../../src/rec/data/EditableUpdater.cpp; sourceTree = "SOURCE_ROOT"; };
 		7B330C83414F96A26BC6905E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EditableUpdater.h; path = ../../../../src/rec/data/EditableUpdater.h; sourceTree = "SOURCE_ROOT"; };
 		DB04452DC50DD31177FB6398 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Comparer.h; path = ../../../../src/rec/data/proto/Comparer.h; sourceTree = "SOURCE_ROOT"; };
@@ -498,7 +497,6 @@
 		D8E3EC7207D969A2B202662D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Field.cpp; path = ../../../../src/rec/data/proto/Field.cpp; sourceTree = "SOURCE_ROOT"; };
 		02BB89308CDB2C5FD0E1FC9A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Field.h; path = ../../../../src/rec/data/proto/Field.h; sourceTree = "SOURCE_ROOT"; };
 		88E265C2896FE65BBEAEF825 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FieldOps.cpp; path = ../../../../src/rec/data/proto/FieldOps.cpp; sourceTree = "SOURCE_ROOT"; };
-		6BA0E9E6D2A97AE9BF6DBD3F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FieldOps.h; path = ../../../../src/rec/data/proto/FieldOps.h; sourceTree = "SOURCE_ROOT"; };
 		C2975072819FE84412C5F7FF = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GetProtoName.cpp; path = ../../../../src/rec/data/proto/GetProtoName.cpp; sourceTree = "SOURCE_ROOT"; };
 		0EAAAAEA1AE6320075FC1F8A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GetProtoName.h; path = ../../../../src/rec/data/proto/GetProtoName.h; sourceTree = "SOURCE_ROOT"; };
 		345E160AEAE2470BB7D82317 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MessageField.cpp; path = ../../../../src/rec/data/proto/MessageField.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -511,6 +509,7 @@
 		260490D9CBF4AB3AD2E0EDA7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedTyper.h; path = ../../../../src/rec/data/proto/TypedTyper.h; sourceTree = "SOURCE_ROOT"; };
 		9DF47A2A41F9534AC7E2EBC9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typer.h; path = ../../../../src/rec/data/proto/Typer.h; sourceTree = "SOURCE_ROOT"; };
 		E0CE3F2FD4A1456EFC505BB4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Types.h; path = ../../../../src/rec/data/proto/Types.h; sourceTree = "SOURCE_ROOT"; };
+		49AB7244BECB823947A89144 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StartStop.h; path = ../../../../src/rec/data/StartStop.h; sourceTree = "SOURCE_ROOT"; };
 		683BA8FD9138247AE7AB8744 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedEditable.h; path = ../../../../src/rec/data/TypedEditable.h; sourceTree = "SOURCE_ROOT"; };
 		A63AD86C7C0A9A2C33D74D75 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UndoQueue.cpp; path = ../../../../src/rec/data/UndoQueue.cpp; sourceTree = "SOURCE_ROOT"; };
 		44BB7725671A8DAD6C446953 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UndoQueue.h; path = ../../../../src/rec/data/UndoQueue.h; sourceTree = "SOURCE_ROOT"; };
@@ -1147,7 +1146,6 @@
 				D8E3EC7207D969A2B202662D,
 				02BB89308CDB2C5FD0E1FC9A,
 				88E265C2896FE65BBEAEF825,
-				6BA0E9E6D2A97AE9BF6DBD3F,
 				C2975072819FE84412C5F7FF,
 				0EAAAAEA1AE6320075FC1F8A,
 				345E160AEAE2470BB7D82317,
@@ -1258,10 +1256,10 @@
 				F0AA4D42B00AEBFD15907403,
 				13D1D052624F6A0B246F6335,
 				B96847524BE56BD50BD7A593,
-				786E6B5D6B347BFF720EFB2A,
 				5F13B8FFB1584BFF6C05AD39,
 				7B330C83414F96A26BC6905E,
 				8544BE6615D289B0A6A6EA8E,
+				49AB7244BECB823947A89144,
 				683BA8FD9138247AE7AB8744,
 				A63AD86C7C0A9A2C33D74D75,
 				44BB7725671A8DAD6C446953,
@@ -1677,7 +1675,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		8E2A34150693D59A3B65BDFF = { isa = PBXGroup; children = (
+		0CA9B36C66E508D4190DE903 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1704,7 +1702,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				8E2A34150693D59A3B65BDFF,
+				0CA9B36C66E508D4190DE903,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
