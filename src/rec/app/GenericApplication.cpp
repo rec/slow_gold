@@ -6,7 +6,7 @@
 #include "rec/app/Files.h"
 #include "rec/app/Window.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
-#include "rec/data/Data.h"
+#include "rec/data/StartStop.h"
 #include "rec/gui/Dialog.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/Undo.h"

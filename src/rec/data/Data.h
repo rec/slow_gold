@@ -1,20 +1,17 @@
 #ifndef __REC_DATA_DATA__
 #define __REC_DATA_DATA__
 
+#include "rec/app/Files.h"
+#include "rec/data/TypedEditable.h"
 #include "rec/data/Value.h"
 #include "rec/util/DefaultRegistry.h"
-#include "rec/data/EditableFactory.h"
-#include "rec/data/TypedEditable.h"
 #include "rec/util/file/VirtualFile.h"
-
-#include "rec/app/Files.h"
 
 namespace rec {
 namespace data {
 
-void start(DefaultRegistry* registry);
-void stop();
-// start and stop are defined in EditableUpdater.
+EditableMap* editableMap();
+CriticalSection* editableMapLock();
 
 template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
