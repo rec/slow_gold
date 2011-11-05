@@ -7,7 +7,7 @@
 
 namespace rec {
 
-namespace util { class DefaultRegistry; }
+//namespace util { class DefaultRegistry; }
 
 namespace data {
 
@@ -17,9 +17,6 @@ void addToUndoQueue(UntypedEditable* u, const OperationList& undo,
 
 EditableMap* editableMap();
 CriticalSection* editableMapLock();
-
-void start(DefaultRegistry* registry);
-void stop();
 
 }  // namespace data
 }  // namespace rec

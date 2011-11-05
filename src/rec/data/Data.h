@@ -12,6 +12,10 @@
 namespace rec {
 namespace data {
 
+void start(DefaultRegistry* registry);
+void stop();
+// start and stop are defined in EditableUpdater.
+
 template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
 
