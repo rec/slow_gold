@@ -4,6 +4,7 @@
 
 #include "google/protobuf/message.h"
 #include "rec/util/file/ZeroCopy.h"
+#include "rec/util/Copy.h"
 
 using namespace juce;
 
@@ -30,8 +31,8 @@ typedef Base<zerocopy::Input, CodedInputStream> InputBase;
 
 class InputImpl : public InputBase {
  public:
-  explicit InputImpl(const File& file, bool compressed)
-      : InputBase(file), compressed_(compressed) {
+  explicit InputImpl(const File& file, bool readable)
+      : InputBase(file), readable_(readable) {
   }
 
   bool read(Message* message) {
@@ -41,12 +42,11 @@ class InputImpl : public InputBase {
     // TODO: deal with very long strings.
     return coded_.ReadVarint64(&size) &&
       coded_.ReadString(&s, static_cast<int>(size)) &&
-      (compressed_ ? message->ParseFromString(s) :
-       TextFormat::ParseFromString(s, message));
+      copy::copy(s, message, readable_);
   }
 
  private:
-  const bool compressed_;
+  const bool readable_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(InputImpl);
 };
@@ -55,17 +55,14 @@ typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;
 
 class OutputImpl : public OutputBase {
  public:
-  explicit OutputImpl(const File& file, bool compressed)
-      : OutputBase(file), compressed_(compressed) {
+  explicit OutputImpl(const File& file, bool readable)
+      : OutputBase(file), readable_(readable) {
   }
 
   void write(const Message& message) {
     string s;
 
-    if (compressed_)
-      message.SerializeToString(&s);
-    else
-      TextFormat::PrintToString(message, &s);
+    copy::copy(message, &s, readable_);
     coded_.WriteVarint64(s.size());
     coded_.WriteString(s);
   }
@@ -75,13 +72,13 @@ class OutputImpl : public OutputBase {
   }
 
  private:
-  const bool compressed_;
+  const bool readable_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(OutputImpl);
 };
 
-Input::Input(const File& f, bool compressed)
-    : impl_(new InputImpl(f, compressed)) {
+Input::Input(const File& f, bool readable)
+    : impl_(new InputImpl(f, readable)) {
 }
 
 Input::~Input() {
@@ -91,8 +88,8 @@ bool Input::read(Message* m) {
   return impl_->read(m);
 }
 
-Output::Output(const File& f, bool compressed)
-  : impl_(new OutputImpl(f, compressed)) {
+Output::Output(const File& f, bool readable)
+  : impl_(new OutputImpl(f, readable)) {
 }
 
 Output::~Output() {

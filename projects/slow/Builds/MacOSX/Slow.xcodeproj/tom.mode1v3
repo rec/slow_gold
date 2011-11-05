@@ -297,7 +297,7 @@
 							<real>372</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>207 188 1184 990 0 0 1920 1178 </string>
+						<string>138 99 1184 990 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -313,7 +313,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Window.cpp</string>
+								<string>TypedTyper.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -321,7 +321,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Window.cpp</string>
+										<string>TypedTyper.cpp</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>E204BC931465C5F7001544FC</string>
 										<key>history</key>
 										<array>
 											<string>E2109582144F593300FD2AB6</string>
@@ -337,7 +341,6 @@
 											<string>E28CD40A1453ABA00052581A</string>
 											<string>E28CD4861454ACE30052581A</string>
 											<string>E28CD4DE1454B45D0052581A</string>
-											<string>E28CD4DF1454B45D0052581A</string>
 											<string>E293663D14563B7E001DDE6F</string>
 											<string>E293663E14563B7E001DDE6F</string>
 											<string>E2936AC71458728C001DDE6F</string>
@@ -366,6 +369,7 @@
 											<string>E28B944D145E2D7C003CF4AC</string>
 											<string>E28B944E145E2D7C003CF4AC</string>
 											<string>E204BB091464B105001544FC</string>
+											<string>E204BC7E1465C5B1001544FC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -379,7 +383,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {790, 620}}</string>
 								<key>RubberWindowFrame</key>
-								<string>207 188 1184 990 0 0 1920 1178 </string>
+								<string>138 99 1184 990 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -399,7 +403,7 @@
 								<key>Frame</key>
 								<string>{{0, 625}, {790, 324}}</string>
 								<key>RubberWindowFrame</key>
-								<string>207 188 1184 990 0 0 1920 1178 </string>
+								<string>138 99 1184 990 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -563,11 +567,17 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E290FED3120A432900532309</string>
+		<string>E204BC941465C5F7001544FC</string>
+		<string>E204BC801465C5B1001544FC</string>
+		<string>E204BC8A1465C5B1001544FC</string>
+		<string>E204BC8B1465C5B1001544FC</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>E290FED3120A432900532309</string>
 	</array>
 	<key>WindowString</key>
-	<string>207 188 1184 990 0 0 1920 1178 </string>
+	<string>138 99 1184 990 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -588,23 +598,25 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>TypedTyper.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {905, 566}}</string>
+								<string>{{0, 0}, {905, 362}}</string>
 								<key>RubberWindowFrame</key>
 								<string>964 125 905 1035 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>566pt</string>
+							<string>362pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -619,14 +631,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 571}, {905, 423}}</string>
+								<string>{{0, 367}, {905, 627}}</string>
 								<key>RubberWindowFrame</key>
 								<string>964 125 905 1035 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
 							<key>Proportion</key>
-							<string>423pt</string>
+							<string>627pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -657,7 +669,7 @@
 			<key>WindowToolGUID</key>
 			<string>E290FED3120A432900532309</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -766,13 +778,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>E204BA2E14646ADD001544FC</string>
+				<string>E204BC831465C5B1001544FC</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>E204BA2F14646ADD001544FC</string>
-				<string>E204BA3014646ADD001544FC</string>
-				<string>E204BA3114646ADD001544FC</string>
-				<string>E204BA3214646ADD001544FC</string>
-				<string>E204BA3314646ADD001544FC</string>
+				<string>E204BC841465C5B1001544FC</string>
+				<string>E204BC851465C5B1001544FC</string>
+				<string>E204BC861465C5B1001544FC</string>
+				<string>E204BC871465C5B1001544FC</string>
+				<string>E204BC881465C5B1001544FC</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -928,7 +940,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E204BA3414646ADD001544FC</string>
+				<string>E204BC891465C5B1001544FC</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -938,7 +950,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

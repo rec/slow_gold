@@ -163,9 +163,9 @@
 	};
 	26D1DC812760DFF9CE61461D /* TypedTyper.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 2366}}";
-			sepNavSelRange = "{7483, 0}";
-			sepNavVisRange = "{5180, 1573}";
+			sepNavIntBoundsRect = "{{0, 0}, {729, 2145}}";
+			sepNavSelRange = "{7288, 0}";
+			sepNavVisRange = "{3127, 1839}";
 			sepNavWindowFrame = "{{245, 109}, {856, 854}}";
 		};
 	};
@@ -294,9 +294,9 @@
 	};
 	5138BD32CC0E495AFDB1A128 /* TableController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {844, 1352}}";
-			sepNavSelRange = "{3207, 25}";
-			sepNavVisRange = "{2638, 670}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 1365}}";
+			sepNavSelRange = "{2837, 0}";
+			sepNavVisRange = "{1545, 1751}";
 			sepNavWindowFrame = "{{825, 104}, {856, 854}}";
 		};
 	};
@@ -587,6 +587,11 @@
 		};
 		perUserProjectItems = {
 			E204BB091464B105001544FC = E204BB091464B105001544FC /* PBXTextBookmark */;
+			E204BC7D1465C59B001544FC /* XCBuildMessageTextBookmark */ = E204BC7D1465C59B001544FC /* XCBuildMessageTextBookmark */;
+			E204BC7E1465C5B1001544FC /* XCBuildMessageTextBookmark */ = E204BC7E1465C5B1001544FC /* XCBuildMessageTextBookmark */;
+			E204BC7F1465C5B1001544FC /* PBXTextBookmark */ = E204BC7F1465C5B1001544FC /* PBXTextBookmark */;
+			E204BC821465C5B1001544FC /* PBXTextBookmark */ = E204BC821465C5B1001544FC /* PBXTextBookmark */;
+			E204BC931465C5F7001544FC /* PBXTextBookmark */ = E204BC931465C5F7001544FC /* PBXTextBookmark */;
 			E2109582144F593300FD2AB6 = E2109582144F593300FD2AB6 /* PBXTextBookmark */;
 			E28B8CCE1459D1EA003CF4AC = E28B8CCE1459D1EA003CF4AC /* PBXTextBookmark */;
 			E28B8E82145A14F7003CF4AC = E28B8E82145A14F7003CF4AC /* PBXTextBookmark */;
@@ -925,7 +930,7 @@
 		ignoreCount = 0;
 		lineNumber = 31;
 		location = SlowBurn;
-		modificationTime = 342137166.188593;
+		modificationTime = 342214133.395631;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -943,7 +948,7 @@
 		ignoreCount = 0;
 		lineNumber = 166;
 		location = SlowBurn;
-		modificationTime = 342137166.19017;
+		modificationTime = 342214133.395679;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -961,6 +966,54 @@
 		rLen = 1;
 		rLoc = 27;
 		rType = 1;
+	};
+	E204BC7D1465C59B001544FC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected unqualified-id before 'else'";
+		fRef = 5138BD32CC0E495AFDB1A128 /* TableController.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 83;
+		rType = 1;
+	};
+	E204BC7E1465C5B1001544FC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected `)' before ';' token";
+		fRef = 26D1DC812760DFF9CE61461D /* TypedTyper.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 109;
+		rType = 1;
+	};
+	E204BC7F1465C5B1001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 26D1DC812760DFF9CE61461D /* TypedTyper.cpp */;
+		name = "TypedTyper.cpp: 177";
+		rLen = 0;
+		rLoc = 7288;
+		rType = 0;
+		vrLen = 1949;
+		vrLoc = 3127;
+	};
+	E204BC821465C5B1001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5138BD32CC0E495AFDB1A128 /* TableController.cpp */;
+		name = "TableController.cpp: 82";
+		rLen = 0;
+		rLoc = 2834;
+		rType = 0;
+		vrLen = 1935;
+		vrLoc = 0;
+	};
+	E204BC931465C5F7001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 26D1DC812760DFF9CE61461D /* TypedTyper.cpp */;
+		name = "TypedTyper.cpp: 177";
+		rLen = 0;
+		rLoc = 7288;
+		rType = 0;
+		vrLen = 1839;
+		vrLoc = 3127;
 	};
 	E2109582144F593300FD2AB6 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

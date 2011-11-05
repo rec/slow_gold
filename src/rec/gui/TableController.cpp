@@ -2,6 +2,7 @@
 #include "rec/data/Editable.h"
 #include "rec/data/Value.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/Copy.h"
 #include "rec/util/FormatTime.h"
 
 namespace rec {
@@ -10,8 +11,8 @@ namespace gui {
 using data::Address;
 using data::Value;
 
-TableController::TableController() : TableListBox("", this),
-                                     ProtoListener(Address()) {
+TableController::TableController()
+  : TableListBox("", this), ProtoListener(Address()) {
 }
 
 void TableController::initialize(const TableColumnList& c, const Address& address,
@@ -72,13 +73,13 @@ String TableController::displayText(const TableColumn& col, const Value& value) 
 const Value TableController::getDisplayValue() const {
   ScopedLock l(lock_);
   Value value;
-  message_->SerializeToString(value.mutable_message_f());
+  copy::copy(*message_, value.mutable_message_f());
   return value;
 }
 
 void TableController::setDisplayValue(const Value& v) {
   ScopedLock l(lock_);
-  if (message_.get()->ParseFromString(v.message_f())) {
+  if (copy::copy(v.message_f(), message_.get(), false)) {
     thread::callAsync(this, &TableController::updateAndRepaint);
   } else {
     LOG(ERROR) << "Couldn't parse: " << message_->ShortDebugString();

@@ -4,6 +4,7 @@
 #include "rec/base/base.h"
 #include "rec/data/proto/Value.pb.h"
 #include "rec/data/proto/Types.h"
+#include "rec/util/Copy.h"
 
 namespace rec {
 namespace data {
@@ -32,7 +33,7 @@ class Value : public ValueProto {
   Value(penum x) { set_enum_f(x); }
   Value(const Message& x) {
     string s;
-    x.SerializeToString(&s);
+    copy::copy(x, &s, false);
     set_message_f(s);
   }
   Value(const ValueProto& x) : ValueProto(x) {}
