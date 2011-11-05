@@ -121,7 +121,10 @@ void addToUndoQueue(UntypedEditable* u, const OperationList& command,
 void needsUpdate(UntypedEditable* e) { return instance()->needsUpdate(e); }
 EditableMap* editableMap()           { return instance()->map(); }
 CriticalSection* editableMapLock()   { return instance()->lock(); }
-const DefaultRegistry& defaultRegistry() { return instance()->defaultRegistry(); }
+
+const DefaultRegistry& defaultRegistry() {
+  return instance()->defaultRegistry();
+}
 
 void start(DefaultRegistry* r) { EditableUpdater::start(r); }
 void stop() { EditableUpdater::stop(); }

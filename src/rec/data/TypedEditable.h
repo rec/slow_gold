@@ -12,6 +12,8 @@
 namespace rec {
 namespace data {
 
+const DefaultRegistry& defaultRegistry();
+
 template <typename Proto>
 class TypedEditable : public data::UntypedEditable,
                       public Broadcaster<const Proto&> {

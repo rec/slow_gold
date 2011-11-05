@@ -1,5 +1,5 @@
-#ifndef __REC_PERSIST_APPBASE__
-#define __REC_PERSIST_APPBASE__
+#ifndef __REC_DATA_EDITABLE_FACTORY__
+#define __REC_DATA_EDITABLE_FACTORY__
 
 #include <map>
 
@@ -15,7 +15,6 @@ void needsUpdate(UntypedEditable*);
 void addToUndoQueue(UntypedEditable* u, const OperationList& undo,
                     const OperationList& command);
 
-const DefaultRegistry& defaultRegistry();
 EditableMap* editableMap();
 CriticalSection* editableMapLock();
 
@@ -25,4 +24,4 @@ void stop();
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_PERSIST_APPBASE__
+#endif  // __REC_DATA_EDITABLE_FACTORY__
