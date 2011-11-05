@@ -1,10 +1,10 @@
 #include "rec/data/UntypedEditable.h"
 
+#include "rec/data/EditableUpdater.h"
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/FieldOps.h"
 #include "rec/util/Copy.h"
 #include "rec/data/Data.h"
-#include "rec/data/Internal.h"
 #include "rec/data/Value.h"
 #include "rec/util/STL.h"
 
@@ -77,7 +77,7 @@ bool UntypedEditable::readFromFile() const {
 void UntypedEditable::applyLater(Operations* op) {
   Lock l(lock_);
   queue_.push_back(op);
-  needsUpdate(this);
+  updateClients();
 }
 
 Operations* UntypedEditable::applyOperations(const Operations& olist) {
@@ -118,7 +118,7 @@ bool UntypedEditable::update() {
 
   bool empty = undo.empty();
   if (!empty)
-    addToUndoQueue(this, command, undo);
+    EditableUpdater::instance()->undoQueue()->add(this, command, undo);
 
   stl::deletePointers(&command);
   stl::deletePointers(&undo);
@@ -139,6 +139,10 @@ bool UntypedEditable::writeToFile() const {
 
 	VLOG(1) << "Writing " << str(file_);
   return copy::copy(*msg, file_, copy::READABLE);
+}
+
+void UntypedEditable::updateClients() {
+  EditableUpdater::instance()->needsUpdate(this);
 }
 
 }  // namespace data

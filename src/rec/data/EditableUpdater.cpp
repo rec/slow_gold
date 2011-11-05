@@ -3,7 +3,6 @@
 #include "rec/data/EditableUpdater.h"
 
 #include "rec/app/Files.h"
-#include "rec/data/Internal.h"
 #include "rec/data/TypedEditable.h"
 #include "rec/util/DefaultRegistry.h"
 #include "rec/util/STL.h"
@@ -118,7 +117,6 @@ void addToUndoQueue(UntypedEditable* u, const OperationList& command,
   return undoQueue()->add(u, command, undo);
 }
 
-void needsUpdate(UntypedEditable* e) { return instance()->needsUpdate(e); }
 EditableMap* editableMap()           { return instance()->map(); }
 CriticalSection* editableMapLock()   { return instance()->lock(); }
 

@@ -35,6 +35,7 @@ class UntypedEditable : public Editable {
 
   virtual bool readFromFile() const;
   virtual bool writeToFile() const;
+  virtual void updateClients();
 
   // Update the clients in this thread.
   // Return true if any clients were update.

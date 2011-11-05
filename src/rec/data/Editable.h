@@ -44,6 +44,7 @@ class Editable {
   virtual void copyTo(Message*) const = 0;
   virtual int getSize(const Address&) const = 0;
   virtual Message* clone() const = 0;
+  virtual void updateClients() = 0;
 };
 
 // There are more setters in archived/OldEditable.h

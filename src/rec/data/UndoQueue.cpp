@@ -27,6 +27,7 @@ static Action* makeAction(Editable* e, const OperationList& command,
   ptr<Action> action(new Action);
   action->mutable_file()->CopyFrom(e->virtualFile());
   action->set_type_name(e->getTypeName());
+
   typedef google::protobuf::RepeatedPtrField<Operation> RepeatedOperation;
   RepeatedOperation* op = action->mutable_undo()->mutable_operation();
   for (int i = undo.size() - 1; i >= 0; --i)
