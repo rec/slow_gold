@@ -4,7 +4,6 @@
 
 #include "google/protobuf/message.h"
 #include "rec/util/file/ZeroCopy.h"
-#include "rec/util/Copy.h"
 
 using namespace juce;
 
@@ -14,6 +13,7 @@ namespace file {
 
 using google::protobuf::TextFormat;
 using namespace google::protobuf::io;
+using copy::Style;
 
 template <typename Zero, typename Coded>
 class Base {
@@ -31,7 +31,7 @@ typedef Base<zerocopy::Input, CodedInputStream> InputBase;
 
 class InputImpl : public InputBase {
  public:
-  explicit InputImpl(const File& file, bool readable)
+  explicit InputImpl(const File& file, Style readable)
       : InputBase(file), readable_(readable) {
   }
 
@@ -46,7 +46,7 @@ class InputImpl : public InputBase {
   }
 
  private:
-  const bool readable_;
+  const Style readable_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(InputImpl);
 };
@@ -55,7 +55,7 @@ typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;
 
 class OutputImpl : public OutputBase {
  public:
-  explicit OutputImpl(const File& file, bool readable)
+  explicit OutputImpl(const File& file, Style readable)
       : OutputBase(file), readable_(readable) {
   }
 
@@ -72,12 +72,12 @@ class OutputImpl : public OutputBase {
   }
 
  private:
-  const bool readable_;
+  const Style readable_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(OutputImpl);
 };
 
-Input::Input(const File& f, bool readable)
+Input::Input(const File& f, Style readable)
     : impl_(new InputImpl(f, readable)) {
 }
 
@@ -88,7 +88,7 @@ bool Input::read(Message* m) {
   return impl_->read(m);
 }
 
-Output::Output(const File& f, bool readable)
+Output::Output(const File& f, Style readable)
   : impl_(new OutputImpl(f, readable)) {
 }
 

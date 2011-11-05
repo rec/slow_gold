@@ -73,13 +73,13 @@ String TableController::displayText(const TableColumn& col, const Value& value) 
 const Value TableController::getDisplayValue() const {
   ScopedLock l(lock_);
   Value value;
-  copy::copy(*message_, value.mutable_message_f(), true);
+  copy::copy(*message_, value.mutable_message_f(), copy::COMPRESSED);
   return value;
 }
 
 void TableController::setDisplayValue(const Value& v) {
   ScopedLock l(lock_);
-  if (copy::copy(v.message_f(), message_.get(), false)) {
+  if (copy::copy(v.message_f(), message_.get(), copy::COMPRESSED)) {
     thread::callAsync(this, &TableController::updateAndRepaint);
   } else {
     LOG(ERROR) << "Couldn't parse: " << message_->ShortDebugString();

@@ -33,7 +33,7 @@ class Value : public ValueProto {
   Value(penum x) { set_enum_f(x); }
   Value(const Message& x) {
     string s;
-    copy::copy(x, &s, false);
+    copy::copy(x, &s, copy::COMPRESSED);
     set_message_f(s);
   }
   Value(const ValueProto& x) : ValueProto(x) {}

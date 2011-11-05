@@ -87,7 +87,8 @@ METHODS_COMMON_TO_ALL(penum, enum, ENUM)
 template <>
 pmessage TypedTyper<pmessage>::Get() const {
   pmessage p;
-  copy::copy(field_ ? ref().GetMessage(*msg_, field_) : *msg_, &p.value_, true);
+  copy::copy(field_ ? ref().GetMessage(*msg_, field_) : *msg_, &p.value_,
+             copy::COMPRESSED);
   return p;
 }
 
@@ -96,7 +97,7 @@ pmessage TypedTyper<pmessage>::GetRepeated(uint32 i) const {
   pmessage p;
   if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
     copy::copy(field_ ? ref().GetRepeatedMessage(*msg_, field_, i) : *msg_,
-               &p.value_, false);
+               &p.value_, copy::COMPRESSED);
   } else {
     LOG(ERROR) << "Index " << i << " out of bounds for type pmessage: "
                << msg_->ShortDebugString();
@@ -106,14 +107,15 @@ pmessage TypedTyper<pmessage>::GetRepeated(uint32 i) const {
 
 template <>
 void TypedTyper<pmessage>::Set(pmessage t) {
-  copy::copy(t, field_ ? ref().MutableMessage(msg_, field_) : msg_, false);
+  copy::copy(t, field_ ? ref().MutableMessage(msg_, field_) : msg_,
+             copy::COMPRESSED);
 }
 
 template <>
 void TypedTyper<pmessage>::SetRepeated(uint32 i, pmessage t) {
   if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_))) {
     copy::copy(t, field_ ? ref().MutableRepeatedMessage(msg_, field_, i) :
-               msg_, false);
+               msg_, copy::COMPRESSED);
   } else {
     LOG(ERROR) << "Index " << i << " out of bounds for type pmessage";
   }
@@ -121,7 +123,7 @@ void TypedTyper<pmessage>::SetRepeated(uint32 i, pmessage t) {
 
 template <>
 void TypedTyper<pmessage>::Add(pmessage t) {
-  copy::copy(t, ref().AddMessage(msg_, field_), false);
+  copy::copy(t, ref().AddMessage(msg_, field_), copy::COMPRESSED);
 }
 
 template <>

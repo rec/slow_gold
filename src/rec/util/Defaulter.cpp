@@ -7,7 +7,7 @@ namespace rec {
 namespace util {
 
 bool fillFromDefault(const string& dflt, Message* msg) {
-  return copy::copy(dflt, msg, true);
+  return copy::copy(dflt, msg, copy::READABLE);
 }
 
 }  // namespace util

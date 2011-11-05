@@ -62,7 +62,7 @@ Message* UntypedEditable::clone() const {
 bool UntypedEditable::readFromFile() const {
   Lock l(lock_);
   if (!alreadyReadFromFile_) {
-    fileReadSuccess_ = copy::copy(file_, message_, true);
+    fileReadSuccess_ = copy::copy(file_, message_, copy::READABLE);
     if (fileReadSuccess_)
       VLOG(1) << "Opening data " << str(file_);
     else
@@ -137,7 +137,7 @@ bool UntypedEditable::writeToFile() const {
   }
 
 	VLOG(1) << "Writing " << str(file_);
-  return copy::copy(*msg, file_, true);
+  return copy::copy(*msg, file_, copy::READABLE);
 }
 
 }  // namespace data

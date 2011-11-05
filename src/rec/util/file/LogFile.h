@@ -1,7 +1,7 @@
 #ifndef __REC_PROTO_LOGFILE__
 #define __REC_PROTO_LOGFILE__
 
-#include "rec/base/base.h"
+#include "rec/util/Copy.h"
 
 namespace rec {
 namespace util {
@@ -12,7 +12,8 @@ class OutputImpl;
 
 class Input {
  public:
-  explicit Input(const File& file, bool readable = true);
+  explicit Input(const File& file, 
+                 copy::Style readable = copy::READABLE);
   ~Input();
 
   bool read(Message* message);
@@ -24,7 +25,8 @@ class Input {
 
 class Output {
  public:
-  explicit Output(const File& file, bool readable = true);
+  explicit Output(const File& file, 
+                  copy::Style readable = copy::READABLE);
   ~Output();
 
   void write(const Message& message);

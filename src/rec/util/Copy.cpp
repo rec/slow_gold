@@ -14,39 +14,39 @@ namespace {
 
 // Copy using assignment.
 template <typename Type>
-bool assign(const Type& from, Type* to, bool /* readable */) {
+bool assign(const Type& from, Type* to, Style /* readable */) {
   *to = from;
   return true;
 }
 
 // Copy using the one-argument copy() function.
-bool strcopy(const String& from, string* to, bool /* readable */) {
+bool strcopy(const String& from, string* to, Style /* readable */) {
   *to = str(from);
   return true;
 }
 
 // Copy using the one-argument copy() function.
-bool strcopy(const string& from, String* to, bool /* readable */) {
+bool strcopy(const string& from, String* to, Style /* readable */) {
   *to = str(from);
   return true;
 }
 
 // Copy through an string.
 template <typename From, typename To>
-bool through(const From& from, const To& to, bool readable) {
+bool through(const From& from, const To& to, Style readable) {
   string thr;
   return copy(from, &thr, readable) && copy(thr, to, readable);
 }
 
 // Copy through an string.
 template <typename From, typename To>
-bool through(const From& from, To* to, bool readable) {
+bool through(const From& from, To* to, Style readable) {
   string thr;
   return copy(from, &thr, readable) && copy(thr, to, readable);
 }
 
 // Copy using googlebase::proto functions.
-bool proto(const Message& f, string* t, bool readable) {
+bool proto(const Message& f, string* t, Style readable) {
   try {
     return readable ? TextFormat::PrintToString(f, t) : f.SerializeToString(t);
   } catch (...) {
@@ -54,7 +54,7 @@ bool proto(const Message& f, string* t, bool readable) {
   }
 }
 
-bool proto(const string& f, Message* t, bool readable) {
+bool proto(const string& f, Message* t, Style readable) {
   try {
     return readable ? TextFormat::ParseFromString(f, t) : t->ParseFromString(f);
   } catch (...) {
@@ -62,7 +62,7 @@ bool proto(const string& f, Message* t, bool readable) {
   }
 }
 
-bool proto(const Message& f, Message* t, bool /* readable */) {
+bool proto(const Message& f, Message* t, Style /* readable */) {
   try {
     t->CopyFrom(f);
     return true;
@@ -71,15 +71,15 @@ bool proto(const Message& f, Message* t, bool /* readable */) {
   }
 }
 
-bool file(const File &f, File *t, bool /* readable */) {
+bool file(const File &f, File *t, Style /* readable */) {
   return f.copyFileTo(*t);
 }
 
-bool file(const File &f, const File& t, bool /* readable */) {
+bool file(const File &f, const File& t, Style /* readable */) {
   return f.copyFileTo(t);
 }
 
-bool file(const File &file, string *s, bool /* readable */) {
+bool file(const File &file, string *s, Style /* readable */) {
   try {
     ptr<FileInputStream> in(file.createInputStream());
     if (!in)
@@ -97,7 +97,7 @@ bool file(const File &file, string *s, bool /* readable */) {
   }
 }
 
-bool file(const string &from, const File &to, bool /* readable */) {
+bool file(const string &from, const File &to, Style /* readable */) {
   try {
     if (!to.getParentDirectory().createDirectory()) {
       LOG(ERROR) << "Couldn't create directory for " << str(to);
@@ -134,14 +134,14 @@ bool file(const string &from, const File &to, bool /* readable */) {
 
 typedef MemoryBlock Memory;
 
-bool memory(const string& in, Memory* out, bool /* readable */) {
+bool memory(const string& in, Memory* out, Style /* readable */) {
   int size = in.size();
   out->ensureSize(size);
   out->copyFrom(in.data(), 0, size);
   return true;
 }
 
-bool memory(const Memory& in, string* out, bool /* readable */) {
+bool memory(const Memory& in, string* out, Style /* readable */) {
   int size = in.getSize();
   out->resize(size);
   in.copyTo(&((*out)[0]), 0, size);
@@ -150,41 +150,41 @@ bool memory(const Memory& in, string* out, bool /* readable */) {
 
 }  // namespace
 
-bool copy(const File &f,    File *t,    bool r) { return file(f, *t, r); }
-bool copy(const File &f,    Memory *t,  bool r) { return through(f, t, r); }
-bool copy(const File &f,    Message *t, bool r) { return through(f, t, r); }
-bool copy(const File &f,    String *t,  bool r) { return through(f, t, r); }
-bool copy(const File &f,    string *t,  bool r) { return file(f, t, r); }
+bool copy(const File &f,    File *t,    Style s) { return file(f, *t, s); }
+bool copy(const File &f,    Memory *t,  Style s) { return through(f, t, s); }
+bool copy(const File &f,    Message *t, Style s) { return through(f, t, s); }
+bool copy(const File &f,    String *t,  Style s) { return through(f, t, s); }
+bool copy(const File &f,    string *t,  Style s) { return file(f, t, s); }
 
-bool copy(const Memory &f,  File *t,    bool r) { return through(f, t, r); }
-bool copy(const Memory &f,  Memory *t,  bool r) { return assign(f, t, r); }
-bool copy(const Memory &f,  Message *t, bool r) { return through(f, t, r); }
-bool copy(const Memory &f,  String *t,  bool r) { return through(f, t, r); }
-bool copy(const Memory &f,  string *t,  bool r) { return memory(f, t, r); }
+bool copy(const Memory &f,  File *t,    Style s) { return through(f, t, s); }
+bool copy(const Memory &f,  Memory *t,  Style s) { return assign(f, t, s); }
+bool copy(const Memory &f,  Message *t, Style s) { return through(f, t, s); }
+bool copy(const Memory &f,  String *t,  Style s) { return through(f, t, s); }
+bool copy(const Memory &f,  string *t,  Style s) { return memory(f, t, s); }
 
-bool copy(const Message &f, File *t,    bool r) { return through(f, t, r); }
-bool copy(const Message &f, Memory *t,  bool r) { return through(f, t, r); }
-bool copy(const Message &f, Message *t, bool r) { return proto(f, t, r); }
-bool copy(const Message &f, String *t,  bool r) { return through(f, t, r); }
-bool copy(const Message &f, string *t,  bool r) { return proto(f, t, r); }
+bool copy(const Message &f, File *t,    Style s) { return through(f, t, s); }
+bool copy(const Message &f, Memory *t,  Style s) { return through(f, t, s); }
+bool copy(const Message &f, Message *t, Style s) { return proto(f, t, s); }
+bool copy(const Message &f, String *t,  Style s) { return through(f, t, s); }
+bool copy(const Message &f, string *t,  Style s) { return proto(f, t, s); }
 
-bool copy(const String &f,  File *t,    bool r) { return through(f, t, r); }
-bool copy(const String &f,  Memory *t,  bool r) { return through(f, t, r); }
-bool copy(const String &f,  Message *t, bool r) { return through(f, t, r); }
-bool copy(const String &f,  String *t,  bool r) { return assign(f, t, r); }
-bool copy(const String &f,  string *t,  bool r) { return strcopy(f, t, r); }
+bool copy(const String &f,  File *t,    Style s) { return through(f, t, s); }
+bool copy(const String &f,  Memory *t,  Style s) { return through(f, t, s); }
+bool copy(const String &f,  Message *t, Style s) { return through(f, t, s); }
+bool copy(const String &f,  String *t,  Style s) { return assign(f, t, s); }
+bool copy(const String &f,  string *t,  Style s) { return strcopy(f, t, s); }
 
-bool copy(const string &f,  File *t,    bool r) { return file(f, *t, r); }
-bool copy(const string &f,  Memory *t,  bool r) { return memory(f, t, r); }
-bool copy(const string &f,  Message *t, bool r) { return proto(f, t, r); }
-bool copy(const string &f,  String *t,  bool r) { return strcopy(f, t, r); }
-bool copy(const string &f,  string *t,  bool r) { return assign(f, t, r); }
+bool copy(const string &f,  File *t,    Style s) { return file(f, *t, s); }
+bool copy(const string &f,  Memory *t,  Style s) { return memory(f, t, s); }
+bool copy(const string &f,  Message *t, Style s) { return proto(f, t, s); }
+bool copy(const string &f,  String *t,  Style s) { return strcopy(f, t, s); }
+bool copy(const string &f,  string *t,  Style s) { return assign(f, t, s); }
 
-bool copy(const File &f,    const File &t, bool r) { return file(f, t, r); }
-bool copy(const string &f,  const File &t, bool r) { return file(f, t, r); }
-bool copy(const String &f,  const File &t, bool r) { return through(f, t, r); }
-bool copy(const Message &f, const File &t, bool r) { return through(f, t, r); }
-bool copy(const Memory &f,  const File &t, bool r) { return through(f, t, r); }
+bool copy(const File &f,    const File &t, Style s) { return file(f, t, s); }
+bool copy(const string &f,  const File &t, Style s) { return file(f, t, s); }
+bool copy(const String &f,  const File &t, Style s) { return through(f, t, s); }
+bool copy(const Message &f, const File &t, Style s) { return through(f, t, s); }
+bool copy(const Memory &f,  const File &t, Style s) { return through(f, t, s); }
 
 }  // namespace copy
 }  // namespace rec
