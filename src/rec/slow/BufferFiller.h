@@ -23,7 +23,7 @@
 namespace rec {
 namespace slow {
 
-struct Instance;
+class Instance;
 
 class BufferFiller : public HasInstance {
  public:
