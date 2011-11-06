@@ -1,4 +1,4 @@
-VERSION=1.3
+VERSION=1.6
 URL_PATH="http://google-gflags.googlecode.com/files"
 CONFIGURE_SCRIPT=google
 SUFFIX="tar.gz"

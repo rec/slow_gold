@@ -63,7 +63,7 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalOptions>/D GOOGLE_GLOG_DLL_DECL= %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG= %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -76,7 +76,7 @@
       <ProgramDatabaseFile>.\Debug\SlowBurn.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\build\\Debug\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -103,7 +103,7 @@
       <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalOptions>/D GOOGLE_GLOG_DLL_DECL= %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG= %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -118,7 +118,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\build\\Release\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
