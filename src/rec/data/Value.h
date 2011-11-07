@@ -36,6 +36,7 @@ class Value : public ValueProto {
   }
   Value(const ValueProto& x) : ValueProto(x) {}
 
+#if 0
   template <typename T>
   T cast() const {
     if (has_uint32_f()) return static_cast<T>(uint32_f());
@@ -65,6 +66,7 @@ class Value : public ValueProto {
   operator bool() const { return bool_f(); }
   operator penum() const { return enum_f(); }
   operator pmessage() const { return message_f(); }
+#endif
 
   template <typename T> bool has() const;
   template <typename T> T get() const;
