@@ -10,7 +10,7 @@
 namespace rec {
 namespace slow {
 
-struct Instance;
+class Instance;
 typedef command::CallbackTable CallbackTable;
 
 template <typename Function>

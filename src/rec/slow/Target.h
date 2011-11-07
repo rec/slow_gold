@@ -11,7 +11,7 @@ namespace command { class MidiCommandMap; }
 
 namespace slow {
 
-struct Instance;
+class Instance;
 
 class Target : public HasInstance {
  public:

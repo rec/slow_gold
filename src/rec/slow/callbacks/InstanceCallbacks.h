@@ -6,7 +6,7 @@
 namespace rec {
 namespace slow {
 
-struct Instance;
+class Instance;
 
 void addInstanceCallbacks(command::CallbackTable*, Instance*);
 

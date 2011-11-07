@@ -6,7 +6,7 @@
 namespace rec {
 namespace slow {
 
-struct Instance;
+class Instance;
 
 class SlowWindow : public app::Window {
  public:
