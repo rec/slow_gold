@@ -18,7 +18,8 @@ inline bool canUndo() { return undoable(); }
 void undo();
 void redo();
 
-void enableUndo(bool enabled = true);
+void startUndo();
+void stopUndo();
 
 }  // namespace util
 }  // namespace rec

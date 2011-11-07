@@ -23,13 +23,21 @@ message Source {
 };
 
 message Action {
-  optional uint64 timestamp = 1;
-  optional uint64 index = 2;
-  repeated Source source = 3;
-  optional util.file.VirtualFile file = 4;
-  optional string type_name = 5;
-  optional Operations operations = 6;
-  optional Operations undo = 7;
-  optional uint32 undo_index = 8;
-  // If this is non-empty, this action undoes all the way to that index.
+  enum Type {
+    OPERATION = 0;
+    UNDO = 1;
+    REDO = 2;
+    START_OF_SESSION = 3;
+    END_OF_SESSION = 4;
+  };
+
+  optional Type type = 1;
+  optional uint64 timestamp = 2;
+  optional uint64 index = 3;
+  repeated Source source = 4;
+  optional util.file.VirtualFile file = 5;
+  optional string type_name = 6;
+  optional Operations operations = 7;
+  optional Operations undo = 8;
+  optional uint32 undo_index = 9;
 };

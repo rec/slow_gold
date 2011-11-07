@@ -4,13 +4,12 @@
 #include <vector>
 
 #include "rec/data/Editable.h"
+#include "rec/data/Action.pb.h"
 
 namespace rec { namespace util { namespace file { class Output; }}}
 
 namespace rec {
 namespace data {
-
-class Action;
 
 class UndoQueue {
  public:
@@ -26,12 +25,11 @@ class UndoQueue {
 
   void undo();
   void redo();
-  void enableUndo(bool enabled) { Lock l(lock_);  enabled_ = enabled; }
-  bool enabled() const { Lock l(lock_); return enabled_; }
+  void start();
+  void stop();
 
  private:
-  void add(Action* event);
-  void executeTop(bool isUndo);
+  void doOrRedo(Action::Type);
 
   typedef std::vector<Action*> ActionQueue;
 
@@ -42,7 +40,8 @@ class UndoQueue {
 
   int writtenTo_;
   int undoes_;
-  bool enabled_;
+  int executedSize_;
+  bool running_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
 };

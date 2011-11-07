@@ -27,8 +27,12 @@ void redo() {
   undoQueue()->redo();
 }
 
-void enableUndo(bool enabled) {
-  undoQueue()->enableUndo(enabled);
+void startUndo() {
+  undoQueue()->start();
+}
+
+void stopUndo() {
+  undoQueue()->stop();
 }
 
 }  // namespace util

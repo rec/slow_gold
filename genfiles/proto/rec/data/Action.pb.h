@@ -59,6 +59,28 @@ inline bool Source_Type_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<Source_Type>(
     Source_Type_descriptor(), name, value);
 }
+enum Action_Type {
+  Action_Type_OPERATION = 0,
+  Action_Type_UNDO = 1,
+  Action_Type_REDO = 2,
+  Action_Type_START_OF_SESSION = 3,
+  Action_Type_END_OF_SESSION = 4
+};
+bool Action_Type_IsValid(int value);
+const Action_Type Action_Type_Type_MIN = Action_Type_OPERATION;
+const Action_Type Action_Type_Type_MAX = Action_Type_END_OF_SESSION;
+const int Action_Type_Type_ARRAYSIZE = Action_Type_Type_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Action_Type_descriptor();
+inline const ::std::string& Action_Type_Name(Action_Type value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Action_Type_descriptor(), value);
+}
+inline bool Action_Type_Parse(
+    const ::std::string& name, Action_Type* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Action_Type>(
+    Action_Type_descriptor(), name, value);
+}
 // ===================================================================
 
 class Source : public ::google::protobuf::Message {
@@ -249,26 +271,60 @@ class Action : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
+  typedef Action_Type Type;
+  static const Type OPERATION = Action_Type_OPERATION;
+  static const Type UNDO = Action_Type_UNDO;
+  static const Type REDO = Action_Type_REDO;
+  static const Type START_OF_SESSION = Action_Type_START_OF_SESSION;
+  static const Type END_OF_SESSION = Action_Type_END_OF_SESSION;
+  static inline bool Type_IsValid(int value) {
+    return Action_Type_IsValid(value);
+  }
+  static const Type Type_MIN =
+    Action_Type_Type_MIN;
+  static const Type Type_MAX =
+    Action_Type_Type_MAX;
+  static const int Type_ARRAYSIZE =
+    Action_Type_Type_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Type_descriptor() {
+    return Action_Type_descriptor();
+  }
+  static inline const ::std::string& Type_Name(Type value) {
+    return Action_Type_Name(value);
+  }
+  static inline bool Type_Parse(const ::std::string& name,
+      Type* value) {
+    return Action_Type_Parse(name, value);
+  }
+  
   // accessors -------------------------------------------------------
   
-  // optional uint64 timestamp = 1;
+  // optional .rec.data.Action.Type type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::rec::data::Action_Type type() const;
+  inline void set_type(::rec::data::Action_Type value);
+  
+  // optional uint64 timestamp = 2;
   inline bool has_timestamp() const;
   inline void clear_timestamp();
-  static const int kTimestampFieldNumber = 1;
+  static const int kTimestampFieldNumber = 2;
   inline ::google::protobuf::uint64 timestamp() const;
   inline void set_timestamp(::google::protobuf::uint64 value);
   
-  // optional uint64 index = 2;
+  // optional uint64 index = 3;
   inline bool has_index() const;
   inline void clear_index();
-  static const int kIndexFieldNumber = 2;
+  static const int kIndexFieldNumber = 3;
   inline ::google::protobuf::uint64 index() const;
   inline void set_index(::google::protobuf::uint64 value);
   
-  // repeated .rec.data.Source source = 3;
+  // repeated .rec.data.Source source = 4;
   inline int source_size() const;
   inline void clear_source();
-  static const int kSourceFieldNumber = 3;
+  static const int kSourceFieldNumber = 4;
   inline const ::rec::data::Source& source(int index) const;
   inline ::rec::data::Source* mutable_source(int index);
   inline ::rec::data::Source* add_source();
@@ -277,41 +333,41 @@ class Action : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::data::Source >*
       mutable_source();
   
-  // optional .rec.util.file.VirtualFile file = 4;
+  // optional .rec.util.file.VirtualFile file = 5;
   inline bool has_file() const;
   inline void clear_file();
-  static const int kFileFieldNumber = 4;
+  static const int kFileFieldNumber = 5;
   inline const ::rec::util::file::VirtualFile& file() const;
   inline ::rec::util::file::VirtualFile* mutable_file();
   
-  // optional string type_name = 5;
+  // optional string type_name = 6;
   inline bool has_type_name() const;
   inline void clear_type_name();
-  static const int kTypeNameFieldNumber = 5;
+  static const int kTypeNameFieldNumber = 6;
   inline const ::std::string& type_name() const;
   inline void set_type_name(const ::std::string& value);
   inline void set_type_name(const char* value);
   inline void set_type_name(const char* value, size_t size);
   inline ::std::string* mutable_type_name();
   
-  // optional .rec.data.Operations operations = 6;
+  // optional .rec.data.Operations operations = 7;
   inline bool has_operations() const;
   inline void clear_operations();
-  static const int kOperationsFieldNumber = 6;
+  static const int kOperationsFieldNumber = 7;
   inline const ::rec::data::Operations& operations() const;
   inline ::rec::data::Operations* mutable_operations();
   
-  // optional .rec.data.Operations undo = 7;
+  // optional .rec.data.Operations undo = 8;
   inline bool has_undo() const;
   inline void clear_undo();
-  static const int kUndoFieldNumber = 7;
+  static const int kUndoFieldNumber = 8;
   inline const ::rec::data::Operations& undo() const;
   inline ::rec::data::Operations* mutable_undo();
   
-  // optional uint32 undo_index = 8;
+  // optional uint32 undo_index = 9;
   inline bool has_undo_index() const;
   inline void clear_undo_index();
-  static const int kUndoIndexFieldNumber = 8;
+  static const int kUndoIndexFieldNumber = 9;
   inline ::google::protobuf::uint32 undo_index() const;
   inline void set_undo_index(::google::protobuf::uint32 value);
   
@@ -320,6 +376,7 @@ class Action : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
+  int type_;
   ::google::protobuf::uint64 timestamp_;
   ::google::protobuf::uint64 index_;
   ::google::protobuf::RepeatedPtrField< ::rec::data::Source > source_;
@@ -333,7 +390,7 @@ class Action : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fAction_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -418,39 +475,56 @@ inline void Source::set_modifier_keys(::google::protobuf::uint32 value) {
 
 // Action
 
-// optional uint64 timestamp = 1;
-inline bool Action::has_timestamp() const {
+// optional .rec.data.Action.Type type = 1;
+inline bool Action::has_type() const {
   return _has_bit(0);
+}
+inline void Action::clear_type() {
+  type_ = 0;
+  _clear_bit(0);
+}
+inline ::rec::data::Action_Type Action::type() const {
+  return static_cast< ::rec::data::Action_Type >(type_);
+}
+inline void Action::set_type(::rec::data::Action_Type value) {
+  GOOGLE_DCHECK(::rec::data::Action_Type_IsValid(value));
+  _set_bit(0);
+  type_ = value;
+}
+
+// optional uint64 timestamp = 2;
+inline bool Action::has_timestamp() const {
+  return _has_bit(1);
 }
 inline void Action::clear_timestamp() {
   timestamp_ = GOOGLE_ULONGLONG(0);
-  _clear_bit(0);
+  _clear_bit(1);
 }
 inline ::google::protobuf::uint64 Action::timestamp() const {
   return timestamp_;
 }
 inline void Action::set_timestamp(::google::protobuf::uint64 value) {
-  _set_bit(0);
+  _set_bit(1);
   timestamp_ = value;
 }
 
-// optional uint64 index = 2;
+// optional uint64 index = 3;
 inline bool Action::has_index() const {
-  return _has_bit(1);
+  return _has_bit(2);
 }
 inline void Action::clear_index() {
   index_ = GOOGLE_ULONGLONG(0);
-  _clear_bit(1);
+  _clear_bit(2);
 }
 inline ::google::protobuf::uint64 Action::index() const {
   return index_;
 }
 inline void Action::set_index(::google::protobuf::uint64 value) {
-  _set_bit(1);
+  _set_bit(2);
   index_ = value;
 }
 
-// repeated .rec.data.Source source = 3;
+// repeated .rec.data.Source source = 4;
 inline int Action::source_size() const {
   return source_.size();
 }
@@ -475,112 +549,112 @@ Action::mutable_source() {
   return &source_;
 }
 
-// optional .rec.util.file.VirtualFile file = 4;
+// optional .rec.util.file.VirtualFile file = 5;
 inline bool Action::has_file() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void Action::clear_file() {
   if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline const ::rec::util::file::VirtualFile& Action::file() const {
   return file_ != NULL ? *file_ : *default_instance_->file_;
 }
 inline ::rec::util::file::VirtualFile* Action::mutable_file() {
-  _set_bit(3);
+  _set_bit(4);
   if (file_ == NULL) file_ = new ::rec::util::file::VirtualFile;
   return file_;
 }
 
-// optional string type_name = 5;
+// optional string type_name = 6;
 inline bool Action::has_type_name() const {
-  return _has_bit(4);
+  return _has_bit(5);
 }
 inline void Action::clear_type_name() {
   if (type_name_ != &_default_type_name_) {
     type_name_->clear();
   }
-  _clear_bit(4);
+  _clear_bit(5);
 }
 inline const ::std::string& Action::type_name() const {
   return *type_name_;
 }
 inline void Action::set_type_name(const ::std::string& value) {
-  _set_bit(4);
+  _set_bit(5);
   if (type_name_ == &_default_type_name_) {
     type_name_ = new ::std::string;
   }
   type_name_->assign(value);
 }
 inline void Action::set_type_name(const char* value) {
-  _set_bit(4);
+  _set_bit(5);
   if (type_name_ == &_default_type_name_) {
     type_name_ = new ::std::string;
   }
   type_name_->assign(value);
 }
 inline void Action::set_type_name(const char* value, size_t size) {
-  _set_bit(4);
+  _set_bit(5);
   if (type_name_ == &_default_type_name_) {
     type_name_ = new ::std::string;
   }
   type_name_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* Action::mutable_type_name() {
-  _set_bit(4);
+  _set_bit(5);
   if (type_name_ == &_default_type_name_) {
     type_name_ = new ::std::string;
   }
   return type_name_;
 }
 
-// optional .rec.data.Operations operations = 6;
+// optional .rec.data.Operations operations = 7;
 inline bool Action::has_operations() const {
-  return _has_bit(5);
+  return _has_bit(6);
 }
 inline void Action::clear_operations() {
   if (operations_ != NULL) operations_->::rec::data::Operations::Clear();
-  _clear_bit(5);
+  _clear_bit(6);
 }
 inline const ::rec::data::Operations& Action::operations() const {
   return operations_ != NULL ? *operations_ : *default_instance_->operations_;
 }
 inline ::rec::data::Operations* Action::mutable_operations() {
-  _set_bit(5);
+  _set_bit(6);
   if (operations_ == NULL) operations_ = new ::rec::data::Operations;
   return operations_;
 }
 
-// optional .rec.data.Operations undo = 7;
+// optional .rec.data.Operations undo = 8;
 inline bool Action::has_undo() const {
-  return _has_bit(6);
+  return _has_bit(7);
 }
 inline void Action::clear_undo() {
   if (undo_ != NULL) undo_->::rec::data::Operations::Clear();
-  _clear_bit(6);
+  _clear_bit(7);
 }
 inline const ::rec::data::Operations& Action::undo() const {
   return undo_ != NULL ? *undo_ : *default_instance_->undo_;
 }
 inline ::rec::data::Operations* Action::mutable_undo() {
-  _set_bit(6);
+  _set_bit(7);
   if (undo_ == NULL) undo_ = new ::rec::data::Operations;
   return undo_;
 }
 
-// optional uint32 undo_index = 8;
+// optional uint32 undo_index = 9;
 inline bool Action::has_undo_index() const {
-  return _has_bit(7);
+  return _has_bit(8);
 }
 inline void Action::clear_undo_index() {
   undo_index_ = 0u;
-  _clear_bit(7);
+  _clear_bit(8);
 }
 inline ::google::protobuf::uint32 Action::undo_index() const {
   return undo_index_;
 }
 inline void Action::set_undo_index(::google::protobuf::uint32 value) {
-  _set_bit(7);
+  _set_bit(8);
   undo_index_ = value;
 }
 
@@ -597,6 +671,10 @@ namespace protobuf {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::rec::data::Source_Type>() {
   return ::rec::data::Source_Type_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::data::Action_Type>() {
+  return ::rec::data::Action_Type_descriptor();
 }
 
 }  // namespace google

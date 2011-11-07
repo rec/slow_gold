@@ -32,7 +32,8 @@ class Editable {
   void append(const Value& value, const Address&);
 
   virtual void applyLater(Operations*) = 0;
-  virtual Operations* applyOperations(const Operations&) = 0;
+  virtual void applyOperations(const Operations& olist,
+                               Operations* undoes = NULL) = 0;
 
   virtual const Value getValue(const Address&) const = 0;
   virtual const string getTypeName() const = 0;

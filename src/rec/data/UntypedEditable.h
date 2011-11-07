@@ -30,7 +30,8 @@ class UntypedEditable : public Editable {
   virtual Message* clone() const;
   const VirtualFile& virtualFile() const { return virtualFile_; }
 
-  virtual Operations* applyOperations(const Operations& );
+  virtual void applyOperations(const Operations& olist,
+                               Operations* undoes = NULL);
   virtual void applyLater(Operations* op);
 
   virtual bool readFromFile() const;

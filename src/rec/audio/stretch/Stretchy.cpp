@@ -81,8 +81,8 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       } else {
         LOG_FIRST_N(ERROR, 1) << "No implementation of stretchy found";
       }
+      return;
     }
-    return;
   }
 
   Wrappy::getNextAudioBlock(info);

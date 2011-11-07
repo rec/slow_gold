@@ -82,23 +82,32 @@ void UntypedEditable::applyLater(Operations* op) {
     EditableUpdater::instance()->needsUpdate(this);
 }
 
-Operations* UntypedEditable::applyOperations(const Operations& olist) {
-  ptr<Operations> result(new Operations());
+void UntypedEditable::applyOperations(const Operations& olist,
+                                      Operations* undoes) {
+  if (undoes)
+    undoes->Clear();
+  Operation undo;
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);
     MessageField f;
     Lock l(lock_);
     if (!fillMessageField(&f, Address(op.address()), *message_)) {
       LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
-      return NULL;
+      return;
     }
-    Operation undo;
-    if (data::undo(&f, op, &undo) && data::apply(&f, op))
-      result->add_operation()->CopyFrom(undo);
-    else
-      LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
+    if (undoes) {
+      undo.Clear();
+      if (!data::undo(&f, op, &undo)) {
+        LOG(ERROR) << "Couldn't undo the operation " << olist.DebugString();
+        return;
+      }
+    }
+
+    if (!data::apply(&f, op))
+      LOG(ERROR) << "Couldn't perform operation " << op.DebugString();
+    else if (undoes)
+      undoes->add_operation()->CopyFrom(undo);
   }
-  return result.transfer();
 }
 
 bool UntypedEditable::update() {
@@ -112,11 +121,12 @@ bool UntypedEditable::update() {
   }
 
   for (OperationList::iterator i = command.begin(); i != command.end(); ++i) {
-    ptr<Operations> ops(*i);
-    ptr<Operations> undo(applyOperations(*ops));
-    EditableUpdater::instance()->undoQueue()->add(this, *ops, *undo);
+    Operations undo;
+    applyOperations(**i, &undo);
+    EditableUpdater::instance()->undoQueue()->add(this, **i, undo);
   }
 
+  stl::deletePointers(&command);
   onDataChange();
   return true;
 }

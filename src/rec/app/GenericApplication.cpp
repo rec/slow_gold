@@ -45,7 +45,7 @@ void GenericApplication::initialise(const String&) {
 
 void GenericApplication::shutdown() {
   LOG(INFO) << name_ << ": shutdown starting...";
-  enableUndo(false);
+  stopUndo();
 
   gui::dialog::shutdownDialog();
   window_->shutdown();

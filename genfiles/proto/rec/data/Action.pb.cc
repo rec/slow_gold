@@ -22,6 +22,7 @@ const ::google::protobuf::EnumDescriptor* Source_Type_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* Action_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Action_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* Action_Type_descriptor_ = NULL;
 
 }  // namespace
 
@@ -51,7 +52,8 @@ void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto() {
       sizeof(Source));
   Source_Type_descriptor_ = Source_descriptor_->enum_type(0);
   Action_descriptor_ = file->message_type(1);
-  static const int Action_offsets_[8] = {
+  static const int Action_offsets_[9] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, timestamp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Action, source_),
@@ -72,6 +74,7 @@ void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Action));
+  Action_Type_descriptor_ = Action_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -113,13 +116,16 @@ void protobuf_AddDesc_rec_2fdata_2fAction_2eproto() {
     "alFile.proto\"\217\001\n\006Source\022#\n\004type\030\001 \001(\0162\025."
     "rec.data.Source.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rm"
     "odifier_keys\030\003 \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010"
-    "KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\353"
-    "\001\n\006Action\022\021\n\ttimestamp\030\001 \001(\004\022\r\n\005index\030\002 "
-    "\001(\004\022 \n\006source\030\003 \003(\0132\020.rec.data.Source\022(\n"
-    "\004file\030\004 \001(\0132\032.rec.util.file.VirtualFile\022"
-    "\021\n\ttype_name\030\005 \001(\t\022(\n\noperations\030\006 \001(\0132\024"
-    ".rec.data.Operations\022\"\n\004undo\030\007 \001(\0132\024.rec"
-    ".data.Operations\022\022\n\nundo_index\030\010 \001(\r", 476);
+    "KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\345"
+    "\002\n\006Action\022#\n\004type\030\001 \001(\0162\025.rec.data.Actio"
+    "n.Type\022\021\n\ttimestamp\030\002 \001(\004\022\r\n\005index\030\003 \001(\004"
+    "\022 \n\006source\030\004 \003(\0132\020.rec.data.Source\022(\n\004fi"
+    "le\030\005 \001(\0132\032.rec.util.file.VirtualFile\022\021\n\t"
+    "type_name\030\006 \001(\t\022(\n\noperations\030\007 \001(\0132\024.re"
+    "c.data.Operations\022\"\n\004undo\030\010 \001(\0132\024.rec.da"
+    "ta.Operations\022\022\n\nundo_index\030\t \001(\r\"S\n\004Typ"
+    "e\022\r\n\tOPERATION\020\000\022\010\n\004UNDO\020\001\022\010\n\004REDO\020\002\022\024\n\020"
+    "START_OF_SESSION\020\003\022\022\n\016END_OF_SESSION\020\004", 598);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/Action.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
@@ -465,8 +471,36 @@ void Source::Swap(Source* other) {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* Action_Type_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Action_Type_descriptor_;
+}
+bool Action_Type_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const Action_Type Action::OPERATION;
+const Action_Type Action::UNDO;
+const Action_Type Action::REDO;
+const Action_Type Action::START_OF_SESSION;
+const Action_Type Action::END_OF_SESSION;
+const Action_Type Action::Type_MIN;
+const Action_Type Action::Type_MAX;
+const int Action::Type_ARRAYSIZE;
+#endif  // _MSC_VER
 const ::std::string Action::_default_type_name_;
 #ifndef _MSC_VER
+const int Action::kTypeFieldNumber;
 const int Action::kTimestampFieldNumber;
 const int Action::kIndexFieldNumber;
 const int Action::kSourceFieldNumber;
@@ -496,6 +530,7 @@ Action::Action(const Action& from)
 
 void Action::SharedCtor() {
   _cached_size_ = 0;
+  type_ = 0;
   timestamp_ = GOOGLE_ULONGLONG(0);
   index_ = GOOGLE_ULONGLONG(0);
   file_ = NULL;
@@ -543,22 +578,25 @@ Action* Action::New() const {
 
 void Action::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    type_ = 0;
     timestamp_ = GOOGLE_ULONGLONG(0);
     index_ = GOOGLE_ULONGLONG(0);
-    if (_has_bit(3)) {
+    if (_has_bit(4)) {
       if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
     }
-    if (_has_bit(4)) {
+    if (_has_bit(5)) {
       if (type_name_ != &_default_type_name_) {
         type_name_->clear();
       }
     }
-    if (_has_bit(5)) {
+    if (_has_bit(6)) {
       if (operations_ != NULL) operations_->::rec::data::Operations::Clear();
     }
-    if (_has_bit(6)) {
+    if (_has_bit(7)) {
       if (undo_ != NULL) undo_->::rec::data::Operations::Clear();
     }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     undo_index_ = 0u;
   }
   source_.Clear();
@@ -572,39 +610,60 @@ bool Action::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint64 timestamp = 1;
+      // optional .rec.data.Action.Type type = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &timestamp_)));
-          _set_bit(0);
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::data::Action_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::data::Action_Type >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_index;
+        if (input->ExpectTag(16)) goto parse_timestamp;
         break;
       }
       
-      // optional uint64 index = 2;
+      // optional uint64 timestamp = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_timestamp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &timestamp_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_index;
+        break;
+      }
+      
+      // optional uint64 index = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_index:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &index_)));
-          _set_bit(1);
+          _set_bit(2);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_source;
+        if (input->ExpectTag(34)) goto parse_source;
         break;
       }
       
-      // repeated .rec.data.Source source = 3;
-      case 3: {
+      // repeated .rec.data.Source source = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_source:
@@ -613,13 +672,13 @@ bool Action::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_source;
-        if (input->ExpectTag(34)) goto parse_file;
+        if (input->ExpectTag(34)) goto parse_source;
+        if (input->ExpectTag(42)) goto parse_file;
         break;
       }
       
-      // optional .rec.util.file.VirtualFile file = 4;
-      case 4: {
+      // optional .rec.util.file.VirtualFile file = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_file:
@@ -628,12 +687,12 @@ bool Action::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_type_name;
+        if (input->ExpectTag(50)) goto parse_type_name;
         break;
       }
       
-      // optional string type_name = 5;
-      case 5: {
+      // optional string type_name = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_type_name:
@@ -645,12 +704,12 @@ bool Action::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_operations;
+        if (input->ExpectTag(58)) goto parse_operations;
         break;
       }
       
-      // optional .rec.data.Operations operations = 6;
-      case 6: {
+      // optional .rec.data.Operations operations = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_operations:
@@ -659,12 +718,12 @@ bool Action::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(58)) goto parse_undo;
+        if (input->ExpectTag(66)) goto parse_undo;
         break;
       }
       
-      // optional .rec.data.Operations undo = 7;
-      case 7: {
+      // optional .rec.data.Operations undo = 8;
+      case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_undo:
@@ -673,19 +732,19 @@ bool Action::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(64)) goto parse_undo_index;
+        if (input->ExpectTag(72)) goto parse_undo_index;
         break;
       }
       
-      // optional uint32 undo_index = 8;
-      case 8: {
+      // optional uint32 undo_index = 9;
+      case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_undo_index:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &undo_index_)));
-          _set_bit(7);
+          _set_bit(8);
         } else {
           goto handle_uninterpreted;
         }
@@ -711,52 +770,58 @@ bool Action::MergePartialFromCodedStream(
 
 void Action::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint64 timestamp = 1;
+  // optional .rec.data.Action.Type type = 1;
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->timestamp(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->type(), output);
   }
   
-  // optional uint64 index = 2;
+  // optional uint64 timestamp = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->index(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->timestamp(), output);
   }
   
-  // repeated .rec.data.Source source = 3;
+  // optional uint64 index = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->index(), output);
+  }
+  
+  // repeated .rec.data.Source source = 4;
   for (int i = 0; i < this->source_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->source(i), output);
+      4, this->source(i), output);
   }
   
-  // optional .rec.util.file.VirtualFile file = 4;
-  if (_has_bit(3)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->file(), output);
-  }
-  
-  // optional string type_name = 5;
+  // optional .rec.util.file.VirtualFile file = 5;
   if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->file(), output);
+  }
+  
+  // optional string type_name = 6;
+  if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->type_name().data(), this->type_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      5, this->type_name(), output);
+      6, this->type_name(), output);
   }
   
-  // optional .rec.data.Operations operations = 6;
-  if (_has_bit(5)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->operations(), output);
-  }
-  
-  // optional .rec.data.Operations undo = 7;
+  // optional .rec.data.Operations operations = 7;
   if (_has_bit(6)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->undo(), output);
+      7, this->operations(), output);
   }
   
-  // optional uint32 undo_index = 8;
+  // optional .rec.data.Operations undo = 8;
   if (_has_bit(7)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->undo_index(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8, this->undo(), output);
+  }
+  
+  // optional uint32 undo_index = 9;
+  if (_has_bit(8)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->undo_index(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -767,57 +832,63 @@ void Action::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Action::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint64 timestamp = 1;
+  // optional .rec.data.Action.Type type = 1;
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->timestamp(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->type(), target);
   }
   
-  // optional uint64 index = 2;
+  // optional uint64 timestamp = 2;
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->index(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->timestamp(), target);
   }
   
-  // repeated .rec.data.Source source = 3;
+  // optional uint64 index = 3;
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->index(), target);
+  }
+  
+  // repeated .rec.data.Source source = 4;
   for (int i = 0; i < this->source_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->source(i), target);
+        4, this->source(i), target);
   }
   
-  // optional .rec.util.file.VirtualFile file = 4;
-  if (_has_bit(3)) {
+  // optional .rec.util.file.VirtualFile file = 5;
+  if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->file(), target);
+        5, this->file(), target);
   }
   
-  // optional string type_name = 5;
-  if (_has_bit(4)) {
+  // optional string type_name = 6;
+  if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->type_name().data(), this->type_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->type_name(), target);
+        6, this->type_name(), target);
   }
   
-  // optional .rec.data.Operations operations = 6;
-  if (_has_bit(5)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        6, this->operations(), target);
-  }
-  
-  // optional .rec.data.Operations undo = 7;
+  // optional .rec.data.Operations operations = 7;
   if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        7, this->undo(), target);
+        7, this->operations(), target);
   }
   
-  // optional uint32 undo_index = 8;
+  // optional .rec.data.Operations undo = 8;
   if (_has_bit(7)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->undo_index(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        8, this->undo(), target);
+  }
+  
+  // optional uint32 undo_index = 9;
+  if (_has_bit(8)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->undo_index(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -831,49 +902,57 @@ int Action::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint64 timestamp = 1;
+    // optional .rec.data.Action.Type type = 1;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+    }
+    
+    // optional uint64 timestamp = 2;
     if (has_timestamp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt64Size(
           this->timestamp());
     }
     
-    // optional uint64 index = 2;
+    // optional uint64 index = 3;
     if (has_index()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt64Size(
           this->index());
     }
     
-    // optional .rec.util.file.VirtualFile file = 4;
+    // optional .rec.util.file.VirtualFile file = 5;
     if (has_file()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->file());
     }
     
-    // optional string type_name = 5;
+    // optional string type_name = 6;
     if (has_type_name()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->type_name());
     }
     
-    // optional .rec.data.Operations operations = 6;
+    // optional .rec.data.Operations operations = 7;
     if (has_operations()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->operations());
     }
     
-    // optional .rec.data.Operations undo = 7;
+    // optional .rec.data.Operations undo = 8;
     if (has_undo()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->undo());
     }
     
-    // optional uint32 undo_index = 8;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional uint32 undo_index = 9;
     if (has_undo_index()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -881,7 +960,7 @@ int Action::ByteSize() const {
     }
     
   }
-  // repeated .rec.data.Source source = 3;
+  // repeated .rec.data.Source source = 4;
   total_size += 1 * this->source_size();
   for (int i = 0; i < this->source_size(); i++) {
     total_size +=
@@ -917,24 +996,29 @@ void Action::MergeFrom(const Action& from) {
   source_.MergeFrom(from.source_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      set_timestamp(from.timestamp());
+      set_type(from.type());
     }
     if (from._has_bit(1)) {
+      set_timestamp(from.timestamp());
+    }
+    if (from._has_bit(2)) {
       set_index(from.index());
     }
-    if (from._has_bit(3)) {
+    if (from._has_bit(4)) {
       mutable_file()->::rec::util::file::VirtualFile::MergeFrom(from.file());
     }
-    if (from._has_bit(4)) {
+    if (from._has_bit(5)) {
       set_type_name(from.type_name());
     }
-    if (from._has_bit(5)) {
+    if (from._has_bit(6)) {
       mutable_operations()->::rec::data::Operations::MergeFrom(from.operations());
     }
-    if (from._has_bit(6)) {
+    if (from._has_bit(7)) {
       mutable_undo()->::rec::data::Operations::MergeFrom(from.undo());
     }
-    if (from._has_bit(7)) {
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from._has_bit(8)) {
       set_undo_index(from.undo_index());
     }
   }
@@ -960,6 +1044,7 @@ bool Action::IsInitialized() const {
 
 void Action::Swap(Action* other) {
   if (other != this) {
+    std::swap(type_, other->type_);
     std::swap(timestamp_, other->timestamp_);
     std::swap(index_, other->index_);
     source_.Swap(&other->source_);

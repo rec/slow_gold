@@ -74,7 +74,7 @@ Instance::~Instance() {
 void Instance::startup() {
   data::editable<VirtualFile>()->onDataChange();
   components_->setActive(true);
-  enableUndo();
+  startUndo();
 }
 
 const VirtualFile Instance::file() const {
