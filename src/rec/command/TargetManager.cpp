@@ -75,7 +75,8 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID command,
     info->setActive(isActive);
     menu->addCommandItem(&commandManager_, command);
   } else {
-    DLOG(ERROR) << "Unable to add menu item " << str(info->shortName)
+    DLOG(ERROR) << "Unable to add menu item " 
+                << static_cast<string>(info == NULL ? " unknown " : str(info->shortName))
                 << " for " << command;
   }
 }
