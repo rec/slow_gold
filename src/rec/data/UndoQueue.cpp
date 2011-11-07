@@ -29,8 +29,7 @@ static Action* makeAction(Action::Type type) {
   return action.transfer();
 }
 
-void UndoQueue::add(Editable* e, const Operations& operations,
-                    const Operations& undo) {
+void UndoQueue::add(Editable* e, const Operations& operations, const Operations& undo) {
   {
     Lock l(lock_);
     if (!running_)

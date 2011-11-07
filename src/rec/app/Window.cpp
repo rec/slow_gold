@@ -3,9 +3,6 @@
 namespace rec {
 namespace app {
 
-// TODO: fix this bug!
-#define OLD_JUCE
-
 Window::Window(const String& name,
                const Colour& bg,
                int requiredButtons,
@@ -24,11 +21,7 @@ void Window::initialise() {
   Component* mp = getMainComponent();
   doComputeBounds();
 
-#ifdef OLD_JUCE
-  setContentComponent(mp, true, false);
-#else
-  setContentOwned(mp, true);
-#endif
+  setContentOwned(mp, false);
 
   setMenuBar(getMenuBarModel());
   setUsingNativeTitleBar(true);
@@ -64,12 +57,6 @@ void Window::shutdown() {
   MenuBarModel::setMacMainMenu(NULL);
 #endif
   setMenuBar(NULL);
-
-#ifdef OLD_JUCE
-  setContentComponent(NULL, false, true);
-#else
-  setContentOwned(NULL, false);
-#endif
 }
 
 
