@@ -26,7 +26,7 @@ class UndoQueue {
   ~UndoQueue();
 
   void add(Editable*, const Operations& command, const Operations& undo);
-  bool write();
+  bool write(bool finish = false);
 
   int undoable() const { Lock l(lock_); return queue_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
@@ -51,6 +51,7 @@ class UndoQueue {
   int executedSize_;
   bool running_;
   ActionGrouper grouper_;
+  bool canGroup_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
 };

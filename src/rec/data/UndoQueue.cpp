@@ -16,7 +16,8 @@ UndoQueue::UndoQueue(const File& file, ActionGrouper grouper)
       undoes_(0),
       executedSize_(0),
       running_(false),
-      grouper_(grouper) {
+      grouper_(grouper),
+      canGroup_(false) {
   if (DELETE_UNDO_QUEUE)
     file.deleteFile();
   logfile_.reset(new Output(file));
@@ -24,7 +25,8 @@ UndoQueue::UndoQueue(const File& file, ActionGrouper grouper)
 
 UndoQueue::~UndoQueue() {
   Lock l(lock_);
-  write();
+
+  write(true);
   stl::deletePointers(&queue_);
 }
 
@@ -45,13 +47,22 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
   action->set_type_name(e->getTypeName());
   action->set_timestamp(juce::Time::currentTimeMillis());
 
-  action->mutable_undo()->MergeFrom(undo);
   action->mutable_operations()->MergeFrom(operations);
 
-  queue_.push_back(action.transfer());
-  editables_.push_back(e);
-  undoes_ = 0;
-  executedSize_ = queue_.size();
+  if (canGroup_ && !queue_.empty() && grouper_(queue_.back(), action.get())) {
+    queue_.back()->mutable_operations()->MergeFrom(operations);
+
+    // We have to add the undos in the reverse order!
+    action->mutable_undo()->MergeFrom(undo);
+    queue_.back()->mutable_undo()->Clear();
+    queue_.back()->mutable_undo()->MergeFrom(action->undo());
+  } else {
+    canGroup_ = grouper_(action.get(), NULL);
+    queue_.push_back(action.transfer());
+    editables_.push_back(e);
+    undoes_ = 0;
+    executedSize_ = queue_.size();
+  }
 }
 
 void UndoQueue::undo() {
@@ -69,6 +80,7 @@ void UndoQueue::doOrRedo(Action::Type type) {
   int td = (type == Action::REDO) ? 1 : -1;
   undoes_ -= td;
   executedSize_ += td;
+  canGroup_ = false;
 
   int position = executedSize_;
   if (type == Action::REDO) {
@@ -116,24 +128,27 @@ void UndoQueue::doOrRedo(Action::Type type) {
   editables_.push_back(NULL);
 }
 
-bool UndoQueue::write() {
+bool UndoQueue::write(bool finish) {
   ptr<ActionQueue> events;
   {
     Lock l(lock_);
-    int size = queue_.size();
-    if (writtenTo_ == size)
+    int size = queue_.size() + canGroup_ ? -1 : 0;
+    if (writtenTo_ >= size)
       return false;
 
-    events.reset(new ActionQueue(queue_.begin() + writtenTo_, queue_.end()));
-    writtenTo_ = size;
+    events.reset(new ActionQueue(queue_.begin() + writtenTo_,
+                                 queue_.begin() + size));
   }
+
+  static const bool CLEAR_OPERATIONS = false;
 
   for (ActionQueue::iterator i = events->begin(); i != events->end(); ++i) {
     Action action(**i);
-    action.mutable_operations()->Clear();
+    if (CLEAR_OPERATIONS)
+      action.mutable_operations()->Clear();  // These are redundant.
     logfile_->write(action);
-    logfile_->flush();
   }
+  logfile_->flush();
 
   return true;
 }
