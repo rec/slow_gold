@@ -210,7 +210,11 @@ bool apply(MessageField* field, const Operation& op) {
 bool undo(MessageField* field, const Operation& op, Operation* undo) {
   const Operation::Command c = op.command();
   const MessageField::Type t = field->type_;
-  return valid(c, t) && undoers[c][t](field, op, undo);
+  bool success = valid(c, t) && undoers[c][t](field, op, undo);
+  if (success)
+    undo->mutable_address()->CopyFrom(op);
+
+  return success;
 }
 
 }  // namespace data

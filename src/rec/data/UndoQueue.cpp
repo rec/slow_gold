@@ -7,14 +7,19 @@
 namespace rec {
 namespace data {
 
+static const bool DELETE_UNDO_QUEUE = true;
+
 using file::Output;
 
-UndoQueue::UndoQueue(const File& file)
-    : logfile_(new Output(file)),
-      writtenTo_(0),
+UndoQueue::UndoQueue(const File& file, ActionGrouper grouper)
+    : writtenTo_(0),
       undoes_(0),
       executedSize_(0),
-      running_(false) {
+      running_(false),
+      grouper_(grouper) {
+  if (DELETE_UNDO_QUEUE)
+    file.deleteFile();
+  logfile_.reset(new Output(file));
 }
 
 UndoQueue::~UndoQueue() {

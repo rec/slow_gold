@@ -11,9 +11,10 @@ namespace rec {
 namespace util {
 namespace file {
 
-using google::protobuf::TextFormat;
 using namespace google::protobuf::io;
+
 using copy::Style;
+using google::protobuf::TextFormat;
 
 template <typename Zero, typename Coded>
 class Base {

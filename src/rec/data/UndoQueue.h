@@ -11,9 +11,17 @@ namespace rec { namespace util { namespace file { class Output; }}}
 namespace rec {
 namespace data {
 
+// A function that identifies whether the current action can be grouped with a
+// previous action.  If the second action is NULL, it returns true if there is
+// any possibility that this item will be grouped with other items.
+typedef bool (*ActionGrouper)(const Action*, const Action*);
+
+inline bool noGrouper(const Action* x, const Action* y) { return false; }
+
 class UndoQueue {
  public:
-  explicit UndoQueue(const juce::File& file);
+  explicit UndoQueue(const juce::File& file,
+                     ActionGrouper grouper = noGrouper);
 
   ~UndoQueue();
 
@@ -42,6 +50,7 @@ class UndoQueue {
   int undoes_;
   int executedSize_;
   bool running_;
+  ActionGrouper grouper_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
 };
