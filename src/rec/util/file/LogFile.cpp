@@ -31,8 +31,8 @@ typedef Base<zerocopy::Input, CodedInputStream> InputBase;
 
 class InputImpl : public InputBase {
  public:
-  explicit InputImpl(const File& file, Style readable)
-      : InputBase(file), readable_(readable) {
+  explicit InputImpl(const File& file, Style style)
+      : InputBase(file), style_(style) {
   }
 
   bool read(Message* message) {
@@ -42,11 +42,11 @@ class InputImpl : public InputBase {
     // TODO: deal with very long strings.
     return coded_.ReadVarint64(&size) &&
       coded_.ReadString(&s, static_cast<int>(size)) &&
-      copy::copy(s, message, readable_);
+      copy::copy(s, message, style_);
   }
 
  private:
-  const Style readable_;
+  const Style style_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(InputImpl);
 };
@@ -55,14 +55,14 @@ typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;
 
 class OutputImpl : public OutputBase {
  public:
-  explicit OutputImpl(const File& file, Style readable)
-      : OutputBase(file), readable_(readable) {
+  explicit OutputImpl(const File& file, Style style)
+      : OutputBase(file), style_(style) {
   }
 
   void write(const Message& message) {
     string s;
 
-    copy::copy(message, &s, readable_);
+    copy::copy(message, &s, style_);
     coded_.WriteVarint64(s.size());
     coded_.WriteString(s);
   }
@@ -72,13 +72,13 @@ class OutputImpl : public OutputBase {
   }
 
  private:
-  const Style readable_;
+  const Style style_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(OutputImpl);
 };
 
-Input::Input(const File& f, Style readable)
-    : impl_(new InputImpl(f, readable)) {
+Input::Input(const File& f, Style style)
+    : impl_(new InputImpl(f, style)) {
 }
 
 Input::~Input() {
@@ -88,8 +88,8 @@ bool Input::read(Message* m) {
   return impl_->read(m);
 }
 
-Output::Output(const File& f, Style readable)
-  : impl_(new OutputImpl(f, readable)) {
+Output::Output(const File& f, Style style)
+  : impl_(new OutputImpl(f, style)) {
 }
 
 Output::~Output() {

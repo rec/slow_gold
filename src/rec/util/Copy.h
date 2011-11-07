@@ -26,42 +26,42 @@
 namespace rec {
 namespace copy {
 
-enum Style {COMPRESSED, READABLE};
+enum Style {COMPRESSED, READABLE, DEFAULT_STYLE = READABLE};
 
-bool copy(const File& from, File* to, Style readable);
-bool copy(const File& from, const File& to, Style readable);
-bool copy(const File& from, MemoryBlock* to, Style readable);
-bool copy(const File& from, Message* to, Style readable);
-bool copy(const File& from, String* to, Style readable);
-bool copy(const File& from, string* to, Style readable);
+bool copy(const File& from, File* to, Style r = DEFAULT_STYLE);
+bool copy(const File& from, const File& to, Style r = DEFAULT_STYLE);
+bool copy(const File& from, MemoryBlock* to, Style r = DEFAULT_STYLE);
+bool copy(const File& from, Message* to, Style r = DEFAULT_STYLE);
+bool copy(const File& from, String* to, Style r = DEFAULT_STYLE);
+bool copy(const File& from, string* to, Style r = DEFAULT_STYLE);
 
-bool copy(const Message& from, File* to, Style readable);
-bool copy(const Message& from, const File& to, Style readable);
-bool copy(const Message& from, MemoryBlock* to, Style readable);
-bool copy(const Message& from, Message* to, Style readable);
-bool copy(const Message& from, String* to, Style readable);
-bool copy(const Message& from, string* to, Style readable);
+bool copy(const Message& from, File* to, Style r = DEFAULT_STYLE);
+bool copy(const Message& from, const File& to, Style r = DEFAULT_STYLE);
+bool copy(const Message& from, MemoryBlock* to, Style r = DEFAULT_STYLE);
+bool copy(const Message& from, Message* to, Style r = DEFAULT_STYLE);
+bool copy(const Message& from, String* to, Style r = DEFAULT_STYLE);
+bool copy(const Message& from, string* to, Style r = DEFAULT_STYLE);
 
-bool copy(const MemoryBlock& from, File* to, Style readable);
-bool copy(const MemoryBlock& from, const File& to, Style readable);
-bool copy(const MemoryBlock& from, MemoryBlock* to, Style readable);
-bool copy(const MemoryBlock& from, Message* to, Style readable);
-bool copy(const MemoryBlock& from, String* to, Style readable);
-bool copy(const MemoryBlock& from, string* to, Style readable);
+bool copy(const MemoryBlock& from, File* to, Style r = DEFAULT_STYLE);
+bool copy(const MemoryBlock& from, const File& to, Style r = DEFAULT_STYLE);
+bool copy(const MemoryBlock& from, MemoryBlock* to, Style r = DEFAULT_STYLE);
+bool copy(const MemoryBlock& from, Message* to, Style r = DEFAULT_STYLE);
+bool copy(const MemoryBlock& from, String* to, Style r = DEFAULT_STYLE);
+bool copy(const MemoryBlock& from, string* to, Style r = DEFAULT_STYLE);
 
-bool copy(const String& from, File* to, Style readable);
-bool copy(const String& from, const File& to, Style readable);
-bool copy(const String& from, MemoryBlock* to, Style readable);
-bool copy(const String& from, Message* to, Style readable);
-bool copy(const String& from, String* to, Style readable);
-bool copy(const String& from, string* to, Style readable);
+bool copy(const String& from, File* to, Style r = DEFAULT_STYLE);
+bool copy(const String& from, const File& to, Style r = DEFAULT_STYLE);
+bool copy(const String& from, MemoryBlock* to, Style r = DEFAULT_STYLE);
+bool copy(const String& from, Message* to, Style r = DEFAULT_STYLE);
+bool copy(const String& from, String* to, Style r = DEFAULT_STYLE);
+bool copy(const String& from, string* to, Style r = DEFAULT_STYLE);
 
-bool copy(const string& from, File* to, Style readable);
-bool copy(const string& from, const File& to, Style readable);
-bool copy(const string& from, MemoryBlock* to, Style readable);
-bool copy(const string& from, Message* to, Style readable);
-bool copy(const string& from, String* to, Style readable);
-bool copy(const string& from, string* to, Style readable);
+bool copy(const string& from, File* to, Style r = DEFAULT_STYLE);
+bool copy(const string& from, const File& to, Style r = DEFAULT_STYLE);
+bool copy(const string& from, MemoryBlock* to, Style r = DEFAULT_STYLE);
+bool copy(const string& from, Message* to, Style r = DEFAULT_STYLE);
+bool copy(const string& from, String* to, Style r = DEFAULT_STYLE);
+bool copy(const string& from, string* to, Style r = DEFAULT_STYLE);
 
 // Unfortunately, we can't replace these by one template declaration, because
 // templates won't downcast for you (for example, to Message if you're trying

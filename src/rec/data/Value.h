@@ -31,42 +31,10 @@ class Value : public ValueProto {
   Value(penum x) { set_enum_f(x); }
   Value(const Message& x) {
     string s;
-    copy::copy(x, &s, STORAGE_STYLE);
+    copy::copy(x, &s);
     set_message_f(s);
   }
   Value(const ValueProto& x) : ValueProto(x) {}
-
-#if 0
-  template <typename T>
-  T cast() const {
-    if (has_uint32_f()) return static_cast<T>(uint32_f());
-    if (has_double_f()) return static_cast<T>(double_f());
-    if (has_float_f()) return static_cast<T>(float_f());
-    if (has_int64_f()) return static_cast<T>(int64_f());
-    if (has_uint64_f()) return static_cast<T>(uint64_f());
-    if (has_int32_f()) return static_cast<T>(int32_f());
-    if (has_bool_f()) return static_cast<T>(bool_f());
-    if (has_fixed32_f()) return static_cast<T>(fixed32_f());
-    if (has_fixed64_f()) return static_cast<T>(fixed64_f());
-    if (has_sfixed32_f()) return static_cast<T>(sfixed32_f());
-    if (has_sfixed64_f()) return static_cast<T>(sfixed64_f());
-    if (has_sint32_f()) return static_cast<T>(sint32_f());
-    if (has_sint64_f()) return static_cast<T>(sint64_f());
-    if (has_enum_f()) return static_cast<T>(enum_f());
-    return 0;
-  }
-
-  operator int() const { return cast<int>(); }
-  operator double() const { return cast<double>(); }
-  operator float() const { return cast<float>(); }
-  operator int64() const { return cast<int64>(); }
-  operator uint64() const { return cast<uint64>(); }
-  // operator int32() const { return cast<int32>(); }
-  operator uint32() const { return cast<uint32>(); }
-  operator bool() const { return bool_f(); }
-  operator penum() const { return enum_f(); }
-  operator pmessage() const { return message_f(); }
-#endif
 
   template <typename T> bool has() const;
   template <typename T> T get() const;

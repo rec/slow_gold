@@ -37,8 +37,14 @@ void Stretchy::setNextReadPosition(int64 position) {
 
 static Implementation* makeImplementation(Source* src, const Stretch& stretch) {
   switch (stretch.strategy()) {
+#ifdef USE_AUDIO_MAGIC
    case Stretch::AUDIO_MAGIC: return new AudioMagic(src, stretch);
+#endif
+
+#ifdef USE_SOUNDTOUCH
    case Stretch::SOUNDTOUCH: return new SoundTouch(src, stretch);
+#endif
+
    case Stretch::RUBBERBAND: return new RubberBand(src, stretch);
    default:
     LOG(ERROR) << "Didn't understand strategy " << stretch.strategy();
@@ -52,7 +58,7 @@ void Stretchy::setStretch(const stretch::Stretch& stretch) {
 
   static const double DELTA = 0.00001;
   timeScale_ = stretch::timeScale(stretch);
-  bypass_ = false && stretch.passthrough_when_disabled() &&
+  bypass_ = stretch.passthrough_when_disabled() &&
     near(timeScale_, 1.0, DELTA) &&
     near(stretch::pitchScale(stretch), 1.0, DELTA);
 

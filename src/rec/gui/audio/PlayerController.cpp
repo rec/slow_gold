@@ -63,18 +63,8 @@ PlayerController::PlayerController()
   stereoComboBox_.addItem("Mono (Right)", RIGHT);
   stereoComboBox_.addListener(this);
 
-  strategyComboBox_.setEditableText(false);
-  strategyComboBox_.setJustificationType(Justification::centredLeft);
-  strategyComboBox_.setTextWhenNothingSelected("Strategy");
-  strategyComboBox_.setTextWhenNoChoicesAvailable("Strategy");
-  strategyComboBox_.addItem("Audio Magic", Stretch::AUDIO_MAGIC);
-  strategyComboBox_.addItem("RubberBand", Stretch::RUBBERBAND);
-  // strategyComboBox_.addItem("SoundTouch", Stretch::SOUNDTOUCH);
-  strategyComboBox_.addListener(this);
-
   addToLayout(&modeSelector_, 24);
   addToLayout(&stereoComboBox_, 18);
-  addToLayout(&strategyComboBox_, 18);
 
   static const int SLIDER_HEIGHT = 18;
   addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
@@ -96,7 +86,6 @@ PlayerController::PlayerController()
 void PlayerController::onDataChange(const Stretch& s) {
   MessageManagerLock l;
   playbackSpeed_.setEnabled(ALLOWING_TIME_CHANGES && !s.time_disabled());
-  strategyComboBox_.setSelectedId(static_cast<int>(s.strategy()), true);
 }
 
 void PlayerController::onDataChange(const StereoProto& stereo) {
@@ -143,14 +132,6 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
         stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
       }
       DataListener<StereoProto>::data()->set(stereo);
-    }
-  }
-
-  if (box == &strategyComboBox_) {
-    if (DataListener<Stretch>::data()) {
-      int id = strategyComboBox_.getSelectedId();
-      Stretch::Strategy strategy = static_cast<Stretch::Strategy>(id);
-      DataListener<Stretch>::data()->set(data::penum(strategy), Address("strategy"));
     }
   }
 }

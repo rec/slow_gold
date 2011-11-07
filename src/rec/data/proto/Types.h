@@ -12,8 +12,6 @@ namespace data {
 typedef Operation::Command Command;
 typedef uint32 Tag;
 
-const copy::Style STORAGE_STYLE = copy::COMPRESSED;
-
 // Make fictitious types to correspond to the Google proto types that aren't
 // primitive C++ types.
 #define PROTO_MAKE_TYPE(OUT, IN)                       \
@@ -42,11 +40,11 @@ inline bool operator==(const bytes& b1, const bytes& b2) {
 
 struct pmessage {
   pmessage() {}
-  pmessage(const Message& m) { copy::copy(m, &value_, STORAGE_STYLE); }
+  pmessage(const Message& m) { copy::copy(m, &value_); }
   pmessage(const string& s) : value_(s) {}
   operator string() const { return value_; }
 
-  bool Parse(Message* m) { return copy::copy(value_, m, STORAGE_STYLE); }
+  bool Parse(Message* m) { return copy::copy(value_, m); }
 
   bool operator==(const pmessage& that) const {
     return value_ == that.value_;  // Hack but works.

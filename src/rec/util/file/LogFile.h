@@ -12,11 +12,10 @@ class OutputImpl;
 
 class Input {
  public:
-  explicit Input(const File& file, 
-                 copy::Style readable = copy::READABLE);
+  explicit Input(const File&, copy::Style s = copy::DEFAULT_STYLE);
   ~Input();
 
-  bool read(Message* message);
+  bool read(Message*);
 
  private:
   ptr<InputImpl> impl_;
@@ -25,11 +24,10 @@ class Input {
 
 class Output {
  public:
-  explicit Output(const File& file, 
-                  copy::Style readable = copy::READABLE);
+  explicit Output(const File&, copy::Style s = copy::DEFAULT_STYLE);
   ~Output();
 
-  void write(const Message& message);
+  void write(const Message&);
   void flush();
 
  private:

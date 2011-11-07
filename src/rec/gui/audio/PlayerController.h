@@ -56,7 +56,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   gui::SetterToggle dimButton_;
 
   juce::ComboBox stereoComboBox_;
-  juce::ComboBox strategyComboBox_;
   ModeSelector modeSelector_;
 
   DISALLOW_COPY_AND_ASSIGN(PlayerController);

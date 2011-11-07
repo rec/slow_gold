@@ -10,7 +10,7 @@ namespace data {
 using file::Output;
 
 UndoQueue::UndoQueue(const File& file)
-    : logfile_(new Output(file, copy::READABLE)),
+    : logfile_(new Output(file)),
       writtenTo_(0),
       undoes_(0),
       executedSize_(0),
