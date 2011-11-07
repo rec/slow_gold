@@ -17,9 +17,9 @@
     <XCODE_MAC extraDefs="" extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf  -L../../../../externals/rubberband/osx/ipp/${__JUCE_CONFIG}/i386 -lrubberband  -L../../../../externals/rubberband/osx/ipp/common -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
                juceFolder="../juce" objCExtraSuffix="s5d1u" rtasFolder="~/SDKs/PT_80_SDK"
                targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
-    <VS2010 extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\build\\${__JUCE_CONFIG}\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
-            juceFolder="../juce" libraryType="1" targetFolder="Builds/VisualStudio2010"
-            extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="/>
+    <VS2010 extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="
+            extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\build\\${__JUCE_CONFIG}\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
+            juceFolder="../juce" libraryType="1" targetFolder="Builds/VisualStudio2010"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="tDBK0czVN" name="Slow">
+  <MAINGROUP id="PPMWxX317" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -466,7 +466,7 @@
               name="UntypedEditable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/UntypedEditable.h" id="8um7TOfOC"
               name="UntypedEditable.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/Value.cpp" id="wsbKo3sDY"
+        <FILE compile="1" file="../../src/rec/data/Value.cpp" id="ZpunnLPud"
               name="Value.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Value.h" id="OYk91aaAT"
               name="Value.h" resource="0"/>
@@ -1340,7 +1340,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="mLwIj99sA" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="piRK0WN8J" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

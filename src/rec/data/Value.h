@@ -9,8 +9,6 @@
 namespace rec {
 namespace data {
 
-// String toString(const ValueProto& value);
-
 class Value : public ValueProto {
  public:
   Value() {}
@@ -33,7 +31,7 @@ class Value : public ValueProto {
   Value(penum x) { set_enum_f(x); }
   Value(const Message& x) {
     string s;
-    copy::copy(x, &s, copy::COMPRESSED);
+    copy::copy(x, &s, STORAGE_STYLE);
     set_message_f(s);
   }
   Value(const ValueProto& x) : ValueProto(x) {}

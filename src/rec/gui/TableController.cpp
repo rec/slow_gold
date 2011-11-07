@@ -70,16 +70,17 @@ String TableController::displayText(const TableColumn& col, const Value& value) 
   }
 }
 
+// TODO: this needs to be integrated with the persistence stuff better!
 const Value TableController::getDisplayValue() const {
   ScopedLock l(lock_);
   Value value;
-  copy::copy(*message_, value.mutable_message_f(), copy::COMPRESSED);
+  copy::copy(*message_, value.mutable_message_f(), data::STORAGE_STYLE);
   return value;
 }
 
 void TableController::setDisplayValue(const Value& v) {
   ScopedLock l(lock_);
-  if (copy::copy(v.message_f(), message_.get(), copy::COMPRESSED)) {
+  if (copy::copy(v.message_f(), message_.get(), data::STORAGE_STYLE)) {
     thread::callAsync(this, &TableController::updateAndRepaint);
   } else {
     LOG(ERROR) << "Couldn't parse: " << message_->ShortDebugString();

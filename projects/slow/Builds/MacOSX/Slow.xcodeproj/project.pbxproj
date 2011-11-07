@@ -1431,16 +1431,6 @@
 			name = src;
 			sourceTree = "<group>";
 		};
-		821698D28D484EF363B4AF1A /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		86DEBA63CCCE2F368B9B0D2F /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1704,7 +1694,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				821698D28D484EF363B4AF1A /* Slow */,
+				D69139D53ACA1E61F3BFC570 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1870,6 +1860,16 @@
 				FCD1A29357D7EC9C93B982F2 /* raw */,
 			);
 			name = format;
+			sourceTree = "<group>";
+		};
+		D69139D53ACA1E61F3BFC570 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
 			sourceTree = "<group>";
 		};
 		DB617A20D9C265267D2D5AE8 /* file */ = {
