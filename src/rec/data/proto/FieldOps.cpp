@@ -69,15 +69,10 @@ bool apply(MessageField* field, const Operation& op) {
 }
 
 bool undo(MessageField* f, const Operation& op, Operation* undo) {
-  bool success = true;
-  if (f->field_ && f->type_ != MessageField::INDEXED && !hasValue(*f))
-    undo->set_command(Operation::CLEAR);
-  else
-    success = copyTo(*f, undo->add_value());
-  if (!success)
-    LOG(ERROR) << "Couldn't copy undo value, continuing";
+  bool isSet = !f->field_ || f->type_ == MessageField::INDEXED || hasValue(*f);
+  undo->set_command(isSet ? Operation::SET : Operation::CLEAR);
 
-  return success;
+  return !isSet || copyTo(*f, undo->add_value());
 }
 
 }  // namespace set
