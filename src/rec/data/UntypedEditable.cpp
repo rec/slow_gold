@@ -18,7 +18,8 @@ UntypedEditable::UntypedEditable(const File& file, const VirtualFile& vf,
       virtualFile_(vf),
       message_(message),
       alreadyReadFromFile_(false),
-      fileReadSuccess_(false) {
+      fileReadSuccess_(false),
+      needsUpdate_(false) {
 }
 
 UntypedEditable::~UntypedEditable() {
@@ -78,14 +79,21 @@ bool UntypedEditable::readFromFile() const {
 }
 
 void UntypedEditable::applyLater(Operations* op) {
+  {
+    Lock l(lock_);
+    queue_.push_back(op);
+  }
+  needsUpdate();
+}
+
+void UntypedEditable::needsUpdate() {
+  EditableUpdater::instance()->needsUpdate(this);
   Lock l(lock_);
-  queue_.push_back(op);
-    EditableUpdater::instance()->needsUpdate(this);
+  needsUpdate_ = true;
 }
 
 void UntypedEditable::applyOperations(const Operations& olist,
                                       Operations* undoes) {
-  DLOG(INFO) << getTypeName() << ", " << olist.ShortDebugString();
   if (undoes)
     undoes->Clear();
 
@@ -115,14 +123,16 @@ bool UntypedEditable::update() {
   OperationList command;
   {
     Lock l(lock_);
-    if (queue_.empty())
+    if (!needsUpdate_ && queue_.empty())
       return false;
 
     command.swap(queue_);
+    needsUpdate_ = false;
   }
 
+  Operations undo;
   for (OperationList::iterator i = command.begin(); i != command.end(); ++i) {
-    Operations undo;
+    Lock l(lock_);
     applyOperations(**i, &undo);
     EditableUpdater::instance()->undoQueue()->add(this, **i, undo);
   }

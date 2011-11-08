@@ -19,12 +19,16 @@ class PersistentWindow : public DocumentWindow {
   void computeBounds() {
     data::TypedEditable<Proto>* data = data::editable<Proto>();
     data_ = data;
-    setProtoBounds(data->get());
+    setProtoBounds(data->get(), true);
   }
 
   template <typename Proto>
-  void setProtoBounds(const Proto& proto) {
-    setLimitedBounds(copy(proto.bounds()));
+  void setProtoBounds(const Proto& proto, bool firstTime) {
+    juce::Rectangle<int> b = copy(proto.bounds());
+    if (firstTime)
+      setLimitedBounds(b);
+    else
+      setBoundsConstrained(b);
     setFullScreen(proto.full_screen());
   }
 

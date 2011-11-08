@@ -38,7 +38,7 @@ void SlowWindow::operator()(const AppLayout& layout) {
     *layout_ = layout;
   }
   MessageManagerLock l;
-  setProtoBounds(layout);
+  setProtoBounds(layout, false);
 }
 
 Component* SlowWindow::getMainComponent() {

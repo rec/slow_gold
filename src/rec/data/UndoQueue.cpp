@@ -117,7 +117,6 @@ void UndoQueue::doOrRedo(Action::Type type) {
     return;
   }
 
-  DLOG(INFO) << t;
   editable->applyOperations((t == Action::UNDO) ? action->undo() :
                             action->operations());
 
@@ -126,6 +125,8 @@ void UndoQueue::doOrRedo(Action::Type type) {
   queue_.push_back(newAction.transfer());
   editables_.push_back(NULL);
   executedSize_ = queue_.size();
+
+  editable->needsUpdate();
 }
 
 bool UndoQueue::write(bool finish) {

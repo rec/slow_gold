@@ -40,6 +40,7 @@ class UntypedEditable : public Editable {
   // Update the clients in this thread.
   // Return true if any clients were update.
   bool update();
+  virtual void needsUpdate();
   virtual void onDataChange() = 0;
 
  protected:
@@ -61,6 +62,7 @@ class UntypedEditable : public Editable {
  private:
   mutable bool alreadyReadFromFile_;
   mutable bool fileReadSuccess_;
+  bool needsUpdate_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedEditable);
 };
