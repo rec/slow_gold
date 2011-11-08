@@ -9,7 +9,7 @@ namespace gui {
 class DetentSlider : public juce::Slider {
  public:
   explicit DetentSlider(const String& name = String::empty) :
-      Slider(name), detentRadius_(1.0f), detentSet_(false) {
+      Slider(name), detentRadius_(0.05f), detentSet_(false) {
   }
 
   void setDetent(float d) { detent_ = d; detentSet_ = true; }
@@ -21,7 +21,8 @@ class DetentSlider : public juce::Slider {
       return value;
 
     float d = fabsf(getPositionOfValue(value) - getPositionOfValue(detent_));
-    return (d < detentRadius_) ? detent_ : value;
+    float width = static_cast<float>(getMaximum() - getMinimum());
+    return (d < (detentRadius_ * width)) ? detent_ : value;
   }
 
   void resetToDetent() {

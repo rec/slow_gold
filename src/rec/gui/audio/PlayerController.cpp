@@ -33,12 +33,13 @@ PlayerController::PlayerController()
       preFaderLevels_("Pre-fader levels", Address("prefader_levels")),
       muteButton_("Mute", Address("mute")),
       dimButton_("Dim", Address("dim")) {
-  playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
-  pitchScale_.slider()->setRange(-12.0, 12.0, 1.0);
+  playbackSpeed_.slider()->setRange(0.5, 200.0, 1.0);
+  pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
-  level_.slider()->setRange(-60.0, +18.0, 0.1);
+  level_.slider()->setRange(-36.0, +12.0, 0.1);
 
   playbackSpeed_.slider()->setDetent(100.0f);
+  playbackSpeed_.slider()->setDetentRadius(0.008f);  // TODO: Why so small?
   pitchScale_.slider()->setDetent(0.0f);
   fineScale_.slider()->setDetent(0.0f);
   level_.slider()->setDetent(0.0f);
