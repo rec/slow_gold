@@ -8,13 +8,21 @@
 namespace rec {
 namespace data {
 
-bool groupCloseActions(Action* to, const Action* from, const Editable* e) {
-  if (!to)
-    return true;
+static const uint64 MAX_GROUP_TIME = 1000;
 
-  static const uint64 MAX_GROUP_TIME = 1000;
-  bool isGroup = near(to->timestamp(), from->timestamp(), MAX_GROUP_TIME) &&
-    equals(to->file(), from->file()) &&
+
+bool groupCloseActions(Action* to, const Action* from, const Editable* e) {
+  uint64 ts = from ? from->timestamp() : juce::Time::currentTimeMillis();
+
+  if (!near(to->timestamp(), ts, MAX_GROUP_TIME))
+    return false;
+
+  if (!from) {
+    DLOG(INFO) << "isGroup true!!";
+    return true;
+  }
+
+  bool isGroup = equals(to->file(), from->file()) &&
     to->type_name() == from->type_name();
 
   if (isGroup) {
@@ -26,6 +34,7 @@ bool groupCloseActions(Action* to, const Action* from, const Editable* e) {
     op->add_value()->CopyFrom(Value(*m));
   }
 
+  DLOG(INFO) << "isGroup " << isGroup;
   return isGroup;
 }
 

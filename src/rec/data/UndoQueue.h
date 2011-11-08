@@ -19,12 +19,10 @@ namespace data {
 // not be changed.
 typedef bool (*ActionGrouper)(Action* to, const Action* from, const Editable*);
 
-inline bool noGrouper(Action*, const Action*, const Editable*) { return false; }
-
 class UndoQueue {
  public:
   explicit UndoQueue(const juce::File& file,
-                     ActionGrouper grouper = noGrouper);
+                     ActionGrouper grouper = NULL);
 
   ~UndoQueue();
 

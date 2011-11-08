@@ -1,6 +1,7 @@
 #include "rec/data/UndoQueue.h"
 #include "rec/data/Action.pb.h"
 #include "rec/data/Editable.h"
+#include "rec/data/Grouper.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/LogFile.h"
 
@@ -16,11 +17,12 @@ UndoQueue::UndoQueue(const File& file, ActionGrouper grouper)
       undoes_(0),
       executedSize_(0),
       running_(false),
-      grouper_(grouper),
-      canGroup_(false) {
+      grouper_(grouper) {
   if (DELETE_UNDO_QUEUE)
     file.deleteFile();
   logfile_.reset(new Output(file));
+  if (!grouper_)
+    grouper_ = groupCloseActions;
 }
 
 UndoQueue::~UndoQueue() {
@@ -50,8 +52,7 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
   action->mutable_operations()->MergeFrom(operations);
   action->mutable_undo()->MergeFrom(undo);
 
-  if (!canGroup_ || queue_.empty() || !grouper_(queue_.back(), action.get(), e)) {
-    canGroup_ = grouper_(action.get(), NULL, e);
+  if (queue_.empty() || !grouper_(queue_.back(), action.get(), e)) {
     queue_.push_back(action.transfer());
     editables_.push_back(e);
     undoes_ = 0;
@@ -74,7 +75,11 @@ void UndoQueue::doOrRedo(Action::Type type) {
   int td = (type == Action::REDO) ? 1 : -1;
   undoes_ -= td;
   executedSize_ += td;
-  canGroup_ = false;
+  DCHECK_GE(undoes_, 0);
+  DCHECK_GE(executedSize_, 0);
+
+  DCHECK_LT(undoes_, queue_.size());
+  DCHECK_LT(executedSize_, queue_.size());
 
   int position = executedSize_;
   if (type == Action::REDO) {
@@ -127,24 +132,27 @@ bool UndoQueue::write(bool finish) {
   ptr<ActionQueue> events;
   {
     Lock l(lock_);
-    int size = queue_.size() + (canGroup_ ? -1 : 0);
+    int size = queue_.size();
     if (writtenTo_ >= size)
       return false;
 
+    if (!finish && grouper_(queue_.back(), NULL, NULL)) {
+      if (writtenTo_ >= --size) {
+        DLOG(INFO) << writtenTo_ << ", " << size;
+        return false;
+      }
+    }
+
     events.reset(new ActionQueue(queue_.begin() + writtenTo_,
                                  queue_.begin() + size));
+    writtenTo_ = size;
   }
 
-  static const bool CLEAR_OPERATIONS = false;
 
-  for (ActionQueue::iterator i = events->begin(); i != events->end(); ++i) {
-    Action action(**i);
-    if (CLEAR_OPERATIONS)
-      action.mutable_operations()->Clear();  // These are redundant.
-    logfile_->write(action);
-  }
+  for (ActionQueue::iterator i = events->begin(); i != events->end(); ++i)
+    logfile_->write(**i);
+
   logfile_->flush();
-
   return true;
 }
 

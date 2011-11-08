@@ -21,7 +21,6 @@ bool copyTo(const MessageField& f, ValueProto* value) {
   return false;
 }
 
-
 namespace {
 
 bool copyFrom(MessageField* f, const Value& value) {
@@ -56,11 +55,7 @@ bool removeLast(MessageField* f) {
   return false;
 }
 
-namespace single {
-
-namespace set {
-
-bool apply(MessageField* field, const Operation& op) {
+bool setSingle(MessageField* field, const Operation& op) {
   if (op.value_size() != 1) {
     LOG(ERROR) << "Can only set one value at a time";
     return false;
@@ -68,37 +63,12 @@ bool apply(MessageField* field, const Operation& op) {
   return copyFrom(field, op.value(0));
 }
 
-bool undo(MessageField* f, const Operation& op, Operation* undo) {
-  bool isSet = !f->field_ || f->type_ == MessageField::INDEXED || hasValue(*f);
-  undo->set_command(isSet ? Operation::SET : Operation::CLEAR);
-
-  return !isSet || copyTo(*f, undo->add_value());
-}
-
-}  // namespace set
-
-namespace clear {
-
-bool apply(MessageField* field, const Operation&) {
+bool clearSingle(MessageField* field, const Operation&) {
   field->message_->Clear();
   return true;
 }
 
-bool undo(MessageField* field, const Operation& operation, Operation* undo) {
-  undo->set_command(Operation::SET);
-  undo->clear_value();
-  return copyTo(*field, undo->add_value());
-}
-
-}  // namespace clear
-
-}  // namespace single
-
-namespace repeated {
-
-namespace add {
-
-bool apply(MessageField* field, const Operation& op) {
+bool addRepeated(MessageField* field, const Operation& op) {
   for (int i = 0; i < op.value_size(); ++i) {
     if (!addFrom(field, op.value(i)))
       return false;
@@ -106,17 +76,7 @@ bool apply(MessageField* field, const Operation& op) {
   return true;
 }
 
-bool undo(MessageField* f, const Operation& op, Operation* undo) {
-  undo->set_command(Operation::REMOVE);
-  undo->set_remove(op.value_size());
-  return true;
-}
-
-}  // namespace add
-
-namespace swap {
-
-bool apply(MessageField* field, const Operation& op) {
+bool swapRepeated(MessageField* field, const Operation& op) {
   if (!field) {
     LOG(ERROR) << "Can't swap repeated on self";
     return false;
@@ -134,65 +94,24 @@ bool apply(MessageField* field, const Operation& op) {
   }
 }
 
-bool undo(MessageField* field, const Operation& op, Operation* undo) {
-  *undo = op;
-  return true;
-}
-
-} // namespace swap
-
-namespace remove {
-
-int removeCount(MessageField* field, const Operation& op) {
-  return (op.command() == Operation::CLEAR) ? field->repeatCount_ : op.remove();
-}
-
-bool apply(MessageField* field, const Operation& operation) {
-  int toRemove = removeCount(field, operation);
+bool removeRepeated(MessageField* field, const Operation& op) {
+  int toRemove = (op.command() == Operation::CLEAR) ? field->repeatCount_ :
+    op.remove();
   Message* msg = field->message_;
   for (int i = 0; i < toRemove; ++i)
     msg->GetReflection()->RemoveLast(msg, field->field_);
   return true;
 }
 
-bool undo(MessageField* field, const Operation& operation, Operation* undo) {
-  int toRemove = removeCount(field, operation);
-  undo->set_command(Operation::APPEND);
-
-  MessageField f = *field;
-  f.index_ = f.repeatCount_ - toRemove;
-  for (; f.index_ < f.repeatCount_; ++f.index_) {
-    if (!copyTo(f, undo->add_value())) {
-      LOG(ERROR) << "Couldn't copy value to " << undo->ShortDebugString();
-      return false;
-    }
-  }
-  return true;
-}
-
-}  // namespace remove
-
-}  // namespace repeated
-
 typedef bool (*Applier)(MessageField*, const Operation&);
-typedef bool (*Undoer)(MessageField*, const Operation&, Operation*);
 
 static Applier appliers[Operation::COMMAND_COUNT][MessageField::TYPE_COUNT] = {
-  {NULL,       &repeated::add::apply,     NULL},
-  {NULL,       &repeated::remove::apply,   &single::clear::apply},
-  {NULL,       &repeated::remove::apply,  NULL},
-  {&single::set::apply,  NULL,            &single::set::apply},
-  {NULL,       &repeated::swap::apply,    NULL},
+  {NULL,       &addRepeated,     NULL},
+  {NULL,       &removeRepeated,   &clearSingle},
+  {NULL,       &removeRepeated,  NULL},
+  {&setSingle,  NULL,            &setSingle},
+  {NULL,       &swapRepeated,    NULL},
 };
-
-static Undoer undoers[Operation::COMMAND_COUNT][MessageField::TYPE_COUNT] = {
-  {NULL,       &repeated::add::undo,     NULL},
-  {NULL,       &repeated::remove::undo,   &single::clear::undo},
-  {NULL,       &repeated::remove::undo,  NULL},
-  {&single::set::undo,  NULL,            &single::set::undo},
-  {NULL,       &repeated::swap::undo,    NULL},
-};
-
 
 bool valid(const Operation::Command c, const MessageField::Type t) {
   return c >= Operation::APPEND && c <= Operation::SWAP
@@ -205,16 +124,6 @@ bool apply(MessageField* field, const Operation& op) {
   const Operation::Command c = op.command();
   const MessageField::Type t = field->type_;
   return valid(c, t) && appliers[c][t](field, op);
-}
-
-bool undo(MessageField* field, const Operation& op, Operation* undo) {
-  const Operation::Command c = op.command();
-  const MessageField::Type t = field->type_;
-  bool success = valid(c, t) && undoers[c][t](field, op, undo);
-  if (success)
-    undo->mutable_address()->CopyFrom(op);
-
-  return success;
 }
 
 }  // namespace data
