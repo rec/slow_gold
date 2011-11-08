@@ -41,7 +41,7 @@ void CD::computeChildren() {
   for (uint32 i = 0; i < tracks.size(); ++i) {
     *path = str(String(i));
     ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));  // TODO
-    listenTo(node.get());
+    node->addListener(this);
     thread::callAsync(this, &TreeViewItem::addSubItem, node.transfer(), -1);
   }
   setProcessing(false);

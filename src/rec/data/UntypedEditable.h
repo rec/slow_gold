@@ -40,13 +40,12 @@ class UntypedEditable : public Editable {
   // Update the clients in this thread.
   // Return true if any clients were update.
   bool update();
+  virtual void onDataChange() = 0;
 
  protected:
   // Change the data with an Operations.  op will eventually be deleted.  The
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
-
-  virtual void onDataChange() = 0;
 
   UntypedEditable(const File& file, const VirtualFile& vf, Message* message);
 

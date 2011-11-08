@@ -1,4 +1,5 @@
 #include "rec/slow/SlowWindow.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
@@ -11,7 +12,8 @@ namespace rec {
 namespace slow {
 
 SlowWindow::SlowWindow() : app::Window("SlowGold", juce::Colours::azure,
-                                       DocumentWindow::allButtons, true) {
+                                       DocumentWindow::allButtons, true),
+                           layout_(new AppLayout) {
 }
 
 SlowWindow::~SlowWindow() {}
@@ -24,6 +26,19 @@ void SlowWindow::constructInstance() {
 void SlowWindow::doStartup() {
   Lock l(lock_);
   instance_->startup();
+  data::editable<AppLayout>()->addListener(this);
+}
+
+void SlowWindow::operator()(const AppLayout& layout) {
+  {
+    Lock l(lock_);
+    if (data::equals(*layout_, layout))
+      return;
+
+    *layout_ = layout;
+  }
+  MessageManagerLock l;
+  setProtoBounds(layout);
 }
 
 Component* SlowWindow::getMainComponent() {

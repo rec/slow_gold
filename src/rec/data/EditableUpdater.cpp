@@ -23,6 +23,8 @@ struct ThreadDesc {
 ThreadDesc updateDesc = {5, 40, "Editable::Update"};
 ThreadDesc writeDesc = {5, 100, "Editable::Write"};
 
+
+// TODO:  move to slow::Threads
 template <typename Method>
 Thread* makeLoop(const ThreadDesc& d, EditableUpdater* upd, Method method) {
   thread_ptr<Thread> t(thread::makeLoop(d.period_, d.name_, upd, method));
@@ -83,6 +85,8 @@ bool EditableUpdater::update() {
 }
 
 bool EditableUpdater::write() {
+  undoQueue_.write(false);
+
   EditableSet ds;
   if (!lockedCopy(&writeData_, &ds, &lock_))
     return false;
@@ -90,7 +94,6 @@ bool EditableUpdater::write() {
   for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i)
     (*i)->writeToFile();
 
-  undoQueue_.write(false);
   return true;
 }
 

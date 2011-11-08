@@ -22,8 +22,6 @@ class Listener {
 
   virtual void operator()(Type x) = 0;
 
-  void listenTo(Broadcaster<Type>* b) { b->addListener(this); }
-
  private:
   CriticalSection listenerLock_;
   BroadcasterSet broadcasters_;

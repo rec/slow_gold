@@ -78,8 +78,8 @@ void UndoQueue::doOrRedo(Action::Type type) {
   DCHECK_GE(undoes_, 0);
   DCHECK_GE(executedSize_, 0);
 
-  DCHECK_LT(undoes_, queue_.size());
-  DCHECK_LT(executedSize_, queue_.size());
+  DCHECK_LE(undoes_, queue_.size());
+  DCHECK_LE(executedSize_, queue_.size());
 
   int position = executedSize_;
   if (type == Action::REDO) {
@@ -116,10 +116,10 @@ void UndoQueue::doOrRedo(Action::Type type) {
     LOG(ERROR) << "No editable for " << type;
     return;
   }
-  if (t == Action::UNDO)
-    editable->applyOperations(action->undo(), action->mutable_operations());
-  else
-    editable->applyOperations(action->operations());
+
+  DLOG(INFO) << t;
+  editable->applyOperations((t == Action::UNDO) ? action->undo() :
+                            action->operations());
 
   ptr<Action> newAction(makeAction(type));
   newAction->set_undo_index(position);
@@ -137,10 +137,8 @@ bool UndoQueue::write(bool finish) {
       return false;
 
     if (!finish && grouper_(queue_.back(), NULL, NULL)) {
-      if (writtenTo_ >= --size) {
-        DLOG(INFO) << writtenTo_ << ", " << size;
+      if (writtenTo_ >= --size)
         return false;
-      }
     }
 
     events.reset(new ActionQueue(queue_.begin() + writtenTo_,

@@ -85,8 +85,10 @@ void UntypedEditable::applyLater(Operations* op) {
 
 void UntypedEditable::applyOperations(const Operations& olist,
                                       Operations* undoes) {
+  DLOG(INFO) << getTypeName() << ", " << olist.ShortDebugString();
   if (undoes)
     undoes->Clear();
+
   Operation undo;
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);

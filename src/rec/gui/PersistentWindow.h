@@ -15,7 +15,18 @@ class PersistentWindow : public DocumentWindow {
                    bool addToDesktop = true);
   typedef juce::Rectangle<int> Rect;
 
-  template <typename Proto> void computeBounds();
+  template <typename Proto>
+  void computeBounds() {
+    data::TypedEditable<Proto>* data = data::editable<Proto>();
+    data_ = data;
+    setProtoBounds(data->get());
+  }
+
+  template <typename Proto>
+  void setProtoBounds(const Proto& proto) {
+    setLimitedBounds(copy(proto.bounds()));
+    setFullScreen(proto.full_screen());
+  }
 
   void setLimitedBounds(const Rect& rect);
   ~PersistentWindow();
@@ -36,14 +47,6 @@ class PersistentWindow : public DocumentWindow {
 
   DISALLOW_COPY_AND_ASSIGN(PersistentWindow);
 };
-
-template <typename Proto>
-void PersistentWindow::computeBounds() {
-  data::TypedEditable<Proto>* data = data::editable<Proto>();
-  data_ = data;
-  setLimitedBounds(copy(data->get().bounds()));
-  setFullScreen(data->get().full_screen());
-}
 
 }  // namespace gui
 }  // namespace rec

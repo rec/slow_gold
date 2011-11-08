@@ -66,7 +66,7 @@ void Directory::partition() {
 
   for (int i = 0; i < shards.size(); ++i) {
     ptr<Node> node(createChildFile(shards[i]));
-    listenTo(node.get());
+    node->addListener(this);
     if (isOpen_)
       node->requestChildren();
 

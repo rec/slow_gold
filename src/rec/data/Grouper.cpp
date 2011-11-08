@@ -10,32 +10,26 @@ namespace data {
 
 static const uint64 MAX_GROUP_TIME = 1000;
 
+bool groupCloseActions(Action* t, const Action* f, const Editable* e) {
+  uint64 ts = f ? f->timestamp() : juce::Time::currentTimeMillis();
 
-bool groupCloseActions(Action* to, const Action* from, const Editable* e) {
-  uint64 ts = from ? from->timestamp() : juce::Time::currentTimeMillis();
-
-  if (!near(to->timestamp(), ts, MAX_GROUP_TIME))
+  if (!near(t->timestamp(), ts, MAX_GROUP_TIME))
     return false;
 
-  if (!from) {
-    DLOG(INFO) << "isGroup true!!";
+  if (!f)
     return true;
-  }
 
-  bool isGroup = equals(to->file(), from->file()) &&
-    to->type_name() == from->type_name();
+  if (!equals(t->file(), f->file()) || t->type_name() != f->type_name())
+    return false;
 
-  if (isGroup) {
-    to->set_timestamp(from->timestamp());
-    to->mutable_operations()->Clear();
-    Operation* op = to->mutable_operations()->add_operation();
-    op->set_command(Operation::SET);
-    ptr<Message> m(e->clone());
-    op->add_value()->CopyFrom(Value(*m));
-  }
+  t->set_timestamp(f->timestamp());
+  t->mutable_operations()->Clear();
+  Operation* op = t->mutable_operations()->add_operation();
+  op->set_command(Operation::SET);
+  ptr<Message> m(e->clone());
+  op->add_value()->CopyFrom(Value(*m));
 
-  DLOG(INFO) << "isGroup " << isGroup;
-  return isGroup;
+  return true;
 }
 
 }  // namespace data

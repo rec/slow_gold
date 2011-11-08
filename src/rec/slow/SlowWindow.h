@@ -2,13 +2,16 @@
 #define __REC_SLOW_SLOWWINDOW__
 
 #include "rec/app/Window.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace slow {
 
+class AppLayout;
 class Instance;
 
-class SlowWindow : public app::Window {
+class SlowWindow : public app::Window,
+                   public Listener<const AppLayout&> {
  public:
   SlowWindow();
   virtual ~SlowWindow();
@@ -16,6 +19,8 @@ class SlowWindow : public app::Window {
   virtual void paint(Graphics& g) {
     g.fillAll(juce::Colours::lightgrey);
   }
+
+  virtual void operator()(const AppLayout&);
 
  protected:
   virtual void doStartup();
@@ -26,6 +31,7 @@ class SlowWindow : public app::Window {
 
  private:
   ptr<Instance> instance_;
+  ptr<AppLayout> layout_;
 
   DISALLOW_COPY_AND_ASSIGN(SlowWindow);
 };
