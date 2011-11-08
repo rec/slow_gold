@@ -53,7 +53,6 @@ class UndoQueue {
   int executedSize_;
   bool running_;
   ActionGrouper grouper_;
-  bool canGroup_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
 };
