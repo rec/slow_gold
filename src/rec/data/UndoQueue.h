@@ -13,10 +13,13 @@ namespace data {
 
 // A function that identifies whether the current action can be grouped with a
 // previous action.  If the second action is NULL, it returns true if there is
-// any possibility that this item will be grouped with other items.
-typedef bool (*ActionGrouper)(const Action*, const Action*);
+// any possibility that this item will be grouped with other items.  If it is
+// not NULL, then the two Actions will be grouped together into the first one if
+// possible, and true returned, else false will be returned and the Action will
+// not be changed.
+typedef bool (*ActionGrouper)(Action* to, const Action* from, const Editable*);
 
-inline bool noGrouper(const Action* x, const Action* y) { return false; }
+inline bool noGrouper(Action*, const Action*, const Editable*) { return false; }
 
 class UndoQueue {
  public:
@@ -26,7 +29,6 @@ class UndoQueue {
   ~UndoQueue();
 
   void add(Editable*, const Operations& command, const Operations& undo);
-  bool write(bool finish = false);
 
   int undoable() const { Lock l(lock_); return queue_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
@@ -35,6 +37,8 @@ class UndoQueue {
   void redo();
   void start();
   void stop();
+
+  bool write(bool finish = false);
 
  private:
   void doOrRedo(Action::Type);

@@ -192,6 +192,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\EditableUpdater.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\Grouper.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp"/>
@@ -479,9 +480,11 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\EditableUpdater.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Grouper.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\FieldOps.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\GetProtoName.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\MessageField.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\NameToProto.h"/>

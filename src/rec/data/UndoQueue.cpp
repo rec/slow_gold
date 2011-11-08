@@ -48,16 +48,10 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
   action->set_timestamp(juce::Time::currentTimeMillis());
 
   action->mutable_operations()->MergeFrom(operations);
+  action->mutable_undo()->MergeFrom(undo);
 
-  if (canGroup_ && !queue_.empty() && grouper_(queue_.back(), action.get())) {
-    queue_.back()->mutable_operations()->MergeFrom(operations);
-
-    // We have to add the undos in the reverse order!
-    action->mutable_undo()->MergeFrom(undo);
-    queue_.back()->mutable_undo()->Clear();
-    queue_.back()->mutable_undo()->MergeFrom(action->undo());
-  } else {
-    canGroup_ = grouper_(action.get(), NULL);
+  if (!canGroup_ || queue_.empty() || !grouper_(queue_.back(), action.get(), e)) {
+    canGroup_ = grouper_(action.get(), NULL, e);
     queue_.push_back(action.transfer());
     editables_.push_back(e);
     undoes_ = 0;
@@ -126,13 +120,14 @@ void UndoQueue::doOrRedo(Action::Type type) {
   newAction->set_undo_index(position);
   queue_.push_back(newAction.transfer());
   editables_.push_back(NULL);
+  executedSize_ = queue_.size();
 }
 
 bool UndoQueue::write(bool finish) {
   ptr<ActionQueue> events;
   {
     Lock l(lock_);
-    int size = queue_.size() + canGroup_ ? -1 : 0;
+    int size = queue_.size() + (canGroup_ ? -1 : 0);
     if (writtenTo_ >= size)
       return false;
 

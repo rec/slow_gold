@@ -90,6 +90,7 @@ bool EditableUpdater::write() {
   for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i)
     (*i)->writeToFile();
 
+  undoQueue_.write(false);
   return true;
 }
 

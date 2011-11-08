@@ -38,10 +38,6 @@ struct MessageField {
 bool hasValue(const MessageField& mf);
 int getSize(const MessageField& mf);
 
-bool apply(MessageField*, const Operation&);
-bool undo(MessageField*, const Operation&, Operation*);
-bool copyTo(const MessageField& f, ValueProto* value);
-
 }  // namespace data
 }  // namespace rec
 

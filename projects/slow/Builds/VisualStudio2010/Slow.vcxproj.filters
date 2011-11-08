@@ -397,6 +397,9 @@
     <ClCompile Include="..\..\..\..\src\rec\data\EditableUpdater.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Grouper.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
       <Filter>Slow\rec\data\proto</Filter>
     </ClCompile>
@@ -1254,6 +1257,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\EditableUpdater.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Grouper.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h">
       <Filter>Slow\rec\data\proto</Filter>
     </ClInclude>
@@ -1261,6 +1267,9 @@
       <Filter>Slow\rec\data\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\FieldOps.h">
       <Filter>Slow\rec\data\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\GetProtoName.h">

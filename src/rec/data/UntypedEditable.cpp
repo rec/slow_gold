@@ -2,6 +2,7 @@
 
 #include "rec/data/EditableUpdater.h"
 #include "rec/data/proto/Field.h"
+#include "rec/data/proto/FieldOps.h"
 #include "rec/data/proto/MessageField.h"
 #include "rec/util/Copy.h"
 #include "rec/data/Data.h"
@@ -97,10 +98,8 @@ void UntypedEditable::applyOperations(const Operations& olist,
     }
     if (undoes) {
       undo.Clear();
-      if (!data::undo(&f, op, &undo)) {
-        LOG(ERROR) << "Couldn't undo the operation " << olist.DebugString();
-        return;
-      }
+      undo.set_command(Operation::SET);
+      undo.add_value()->CopyFrom(Value(*message_));
     }
 
     if (!data::apply(&f, op))
