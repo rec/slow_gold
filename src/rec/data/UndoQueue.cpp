@@ -58,6 +58,7 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
     undoes_ = 0;
     executedSize_ = queue_.size();
   }
+  broadcast(None());
 }
 
 void UndoQueue::undo() {
@@ -73,15 +74,8 @@ void UndoQueue::redo() {
 void UndoQueue::doOrRedo(Action::Type type) {
   DCHECK(type == Action::UNDO || type == Action::REDO);
   int td = (type == Action::REDO) ? 1 : -1;
-  undoes_ -= td;
-  executedSize_ += td;
-  DCHECK_GE(undoes_, 0);
-  DCHECK_GE(executedSize_, 0);
 
-  DCHECK_LE(undoes_, queue_.size());
-  DCHECK_LE(executedSize_, queue_.size());
-
-  int position = executedSize_;
+  int position = executedSize_ + td;
   if (type == Action::REDO) {
     position++;
   }
@@ -126,7 +120,16 @@ void UndoQueue::doOrRedo(Action::Type type) {
   editables_.push_back(NULL);
   executedSize_ = queue_.size();
 
+  undoes_ -= td;
+  executedSize_ += td;
+  DCHECK_GE(undoes_, 0);
+  DCHECK_GE(executedSize_, 0);
+
+  DCHECK_LE(undoes_, queue_.size());
+  DCHECK_LE(executedSize_, queue_.size());
+
   editable->needsUpdate();
+  broadcast(None());
 }
 
 bool UndoQueue::write(bool finish) {

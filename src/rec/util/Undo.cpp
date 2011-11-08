@@ -35,5 +35,9 @@ void stopUndo() {
   undoQueue()->stop();
 }
 
+void addUndoListener(Listener<None>* lst) {
+  undoQueue()->addListener(lst);
+}
+
 }  // namespace util
 }  // namespace rec

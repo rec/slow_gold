@@ -5,6 +5,7 @@
 
 #include "rec/data/Editable.h"
 #include "rec/data/Action.pb.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec { namespace util { namespace file { class Output; }}}
 
@@ -19,7 +20,7 @@ namespace data {
 // not be changed.
 typedef bool (*ActionGrouper)(Action* to, const Action* from, const Editable*);
 
-class UndoQueue {
+class UndoQueue : public Broadcaster<None> {
  public:
   explicit UndoQueue(const juce::File& file,
                      ActionGrouper grouper = NULL);

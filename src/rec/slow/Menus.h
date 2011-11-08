@@ -2,13 +2,16 @@
 #define __REC_SLOW_MENUS__
 
 #include "rec/slow/HasInstance.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace slow {
 
 class Instance;
 
-class Menus : public MenuBarModel, public HasInstance {
+class Menus : public MenuBarModel,
+              public HasInstance,
+              public Listener<None> {
  public:
   Menus(Instance* i);
 
@@ -17,6 +20,7 @@ class Menus : public MenuBarModel, public HasInstance {
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
   void add(PopupMenu*, CommandID, bool enable = true,
            const String& name = String::empty);
+  virtual void operator()(None) { menuItemsChanged(); }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Menus);

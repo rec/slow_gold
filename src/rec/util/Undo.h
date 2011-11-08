@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_UNDO__
 #define __REC_UTIL_UNDO__
 
-#include "rec/base/base.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace util {
@@ -20,6 +20,8 @@ void redo();
 
 void startUndo();
 void stopUndo();
+
+void addUndoListener(Listener<None>*);
 
 }  // namespace util
 }  // namespace rec

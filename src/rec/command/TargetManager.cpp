@@ -14,30 +14,6 @@ namespace command {
 
 using slow::Position;
 
-namespace {
-
-ApplicationCommandInfo makeInfo(
-    CommandID id, const String& name,
-    const String& category, const String& desc,
-    int flags = 0, int keyCode = 0,
-    const ModifierKeys& mod = ModifierKeys());
-
-juce::ApplicationCommandInfo makeInfo(CommandID id, const String& name,
-                                      const String& category, const String& desc,
-                                      int flags, int key, const ModifierKeys& mod) {
-  ApplicationCommandInfo i(id);
-  i.setInfo(name, desc, category, flags);
-  if (key)
-    i.addDefaultKeypress(key, mod);
-
-  if (category == "(None)")
-    i.flags |= ApplicationCommandInfo::hiddenFromKeyEditor;
-
-  return i;
-}
-
-}  // namespace
-
 struct CommandCallback {
   CommandCallback(const ApplicationCommandInfo& info, Callback* cb)
       : info_(info), callback_(cb) {
@@ -122,7 +98,10 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
     return;
   }
 
-  ApplicationCommandInfo info = makeInfo(id, name, category, desc);
+  ApplicationCommandInfo info(id);
+  int flags = (category == "(None)") ? 0 : ApplicationCommandInfo::hiddenFromKeyEditor;
+  info.setInfo(name, desc, category, flags);
+
   CommandCallbackMap::const_iterator i = map_.find(id);
   if (i != map_.end()) {
     LOG(ERROR) << "Added command twice: " << id;
