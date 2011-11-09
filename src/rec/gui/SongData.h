@@ -18,8 +18,8 @@ class SongData : public component::Focusable<SetterTextArea>,
  public:
   typedef data::Address Address;
 
-  explicit SongData(ApplicationCommandManager* manager)
-      : component::Focusable<SetterTextArea>(manager) {
+  explicit SongData(MenuBarModel* model)
+      : component::Focusable<SetterTextArea>(model) {
     setName("SongData");
     add("Track", Address("track_title"), "The name of the individual track.");
     add("Album", Address("album_title"),

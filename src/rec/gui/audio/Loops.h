@@ -21,8 +21,7 @@ class LoopPointDataListener;
 
 class Loops : public component::Focusable<TableController>, public Cuttable {
  public:
-  explicit Loops(ApplicationCommandManager* manager,
-                 const TableColumnList* desc = NULL);
+  explicit Loops(MenuBarModel* menus, const TableColumnList* desc = NULL);
   virtual ~Loops();
 
   static const double CLOSE;

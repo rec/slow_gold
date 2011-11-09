@@ -7,23 +7,20 @@ namespace rec {
 namespace gui {
 namespace component {
 
-//#define FOCUS_BUG_FIXED false
-
 template <typename Type = Component>
 class Focusable : public Type {
  public:
-  explicit Focusable(ApplicationCommandManager* m = NULL) : manager_(m) {
+  explicit Focusable(MenuBarModel* m) : menus_(m) {
     this->setWantsKeyboardFocus(true);
   }
-  /*
-  void setManager(ApplicationCommandManager* m) {
-  	manager_ = m;
-    }*/
+
+  void setMenuBarModel(MenuBarModel* m) { menus_ = m; }
 
   virtual ~Focusable() {}
 
   virtual void focusGained(Component::FocusChangeType) {
     DLOG(INFO) << "Here!";
+    menus_->menuItemsChanged();
 #ifdef FOCUS_BUG_FIXED
     if (manager_)
       manager_->commandStatusChanged();
@@ -43,7 +40,7 @@ class Focusable : public Type {
   virtual void paintOverChildren(Graphics& g) { paintFocus(g); }
 
  private:
-  ApplicationCommandManager* manager_;
+  MenuBarModel* menus_;
 
   DISALLOW_COPY_AND_ASSIGN(Focusable);
 };

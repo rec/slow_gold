@@ -99,7 +99,9 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
   }
 
   ApplicationCommandInfo info(id);
-  int flags = (category == "(None)") ? 0 : ApplicationCommandInfo::hiddenFromKeyEditor;
+  int flags = 0;
+  if (category == "" || category == "(None)")
+    flags = ApplicationCommandInfo::hiddenFromKeyEditor;
   info.setInfo(name, desc, category, flags);
 
   CommandCallbackMap::const_iterator i = map_.find(id);

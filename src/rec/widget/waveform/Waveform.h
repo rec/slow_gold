@@ -33,7 +33,8 @@ class Waveform : public gui::component::Focusable<Component>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&> {
  public:
-  Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
+  Waveform(MenuBarModel* model = NULL,
+           const WaveformProto& desc = WaveformProto::default_instance(),
            const CursorProto* cursor = &defaultTimeCursor());
   virtual ~Waveform();
 

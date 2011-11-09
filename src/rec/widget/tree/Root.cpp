@@ -25,9 +25,8 @@ static File getOpennessFile() {
   return app::getAppFile("TreeOpenness.xml");
 }
 
-Root::Root(ApplicationCommandManager* manager,
-           const NodeDesc& desc) : desc_(desc),
-                                   tree_(manager),
+Root::Root(MenuBarModel* model, const NodeDesc& desc) : desc_(desc),
+                                   tree_(model),
                                    addDialogOpen_(false),
                                    opennessRead_(false),
                                    opennessStarted_(false) {

@@ -1,24 +1,24 @@
-command { type: ADD_LOOP_POINT category: "Selection"}
+command { type: ADD_LOOP_POINT category: "Loops"}
 command { type: AUDIO_PREFERENCES category: "Audio"}
-command { type: CLEAR_LOOPS category: "Selection" }
+command { type: CLEAR_LOOPS category: "Loops" }
 command { type: CLEAR_NAVIGATOR category: "File"}
 command { type: CLOSE_FILE category: "File"}
 command { type: COPY category: "Edit"}
 command { type: CUT category: "Edit"}
 command { type: DEL category: "Edit"}
-command { type: DESELECT_ALL category: "Select"}
+command { type: DESELECT_ALL category: "Selection"}
 command { type: DIM_VOLUME_TOGGLE category: "Audio"}
 command { type: EJECT_CDS category: "File"}
 command { type: INVERT_LOOP_SELECTION category: "Selection" }
 command { type: KEYBOARD_MAPPINGS category: "File"}
 command { type: MIDI_MAPPINGS category: "File"}
 command { type: MUTE_VOLUME_TOGGLE category: "Audio"}
-command { type: NUDGE_BEGIN_LEFT category: "Selection"}
-command { type: NUDGE_BEGIN_RIGHT category: "Selection"}
-command { type: NUDGE_END_LEFT category: "Selection"}
-command { type: NUDGE_END_RIGHT category: "Selection"}
-command { type: NUDGE_VOLUME_DOWN category: "Selection"}
-command { type: NUDGE_VOLUME_UP category: "Selection"}
+command { type: NUDGE_BEGIN_LEFT category: "Loops"}
+command { type: NUDGE_BEGIN_RIGHT category: "Loops"}
+command { type: NUDGE_END_LEFT category: "Loops"}
+command { type: NUDGE_END_RIGHT category: "Loops"}
+command { type: NUDGE_VOLUME_DOWN category: "Audio"}
+command { type: NUDGE_VOLUME_UP category: "Audio"}
 command { type: OPEN category: "File"}
 command { type: PASTE category: "Edit"}
 command { type: RECENT_FILES category: "File"}

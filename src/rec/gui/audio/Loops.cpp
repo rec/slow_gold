@@ -44,9 +44,8 @@ class LoopPointDataListener : public DataListener<LoopPointList> {
 
 const double Loops::CLOSE = 0.5;
 
-Loops::Loops(ApplicationCommandManager* manager,
-             const TableColumnList* desc)
-    : component::Focusable<TableController>(manager),
+Loops::Loops(MenuBarModel* menus, const TableColumnList* desc)
+    : component::Focusable<TableController>(menus),
       dataListener_(new LoopPointDataListener(this)) {
   initialize(dflt.get(desc), data::Address("loop_point"), "Loops");
   fillHeader(&getHeader());

@@ -27,8 +27,9 @@ Def<CursorProto> defaultDesc(
 
 }  // namespace
 
-Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
-    : desc_(d),
+Waveform::Waveform(MenuBarModel* m, const WaveformProto& d, const CursorProto* timeCursor)
+    : gui::component::Focusable<Component>(m),
+      desc_(d),
       length_(0),
       thumbnail_(NULL),
       empty_(true) {

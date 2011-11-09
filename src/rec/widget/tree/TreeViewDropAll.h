@@ -16,7 +16,7 @@ typedef gui::component::Focusable<TreeViewDropTarget> FocusableTarget;
 
 class TreeViewDropAll : public FocusableTarget, public Cuttable {
  public:
-  explicit TreeViewDropAll(ApplicationCommandManager* manager);
+  explicit TreeViewDropAll(MenuBarModel*);
   virtual void paint(Graphics& g);
 
   bool isInterestedInFileDrag(const StringArray& files);

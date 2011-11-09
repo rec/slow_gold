@@ -16,14 +16,6 @@ class CommandEntryWindow;
 class JUCE_API  CommandMapEditor  : public Component
 {
 public:
-    //==============================================================================
-    /** Creates a CommandMapEditor.
-
-        @param mappingSet   this is the set of mappings to display and edit. Make sure the
-                            mappings object is not deleted before this component!
-        @param showResetToDefaultButton     if true, then at the bottom of the list, the
-                                            component will include a 'reset to defaults' button.
-    */
   CommandMapEditor(ApplicationCommandManager& commandManager,
                    ChangeBroadcaster& broadcaster);
 
@@ -32,33 +24,16 @@ public:
     virtual void addButton(CommandMapEditButton* button) = 0;
     virtual void removeButton(CommandMapEditButton* button) = 0;
     virtual void addChildren(CommandMapItemComponent* comp) = 0;
+
     virtual CommandEntryWindow* newWindow() = 0;
 
     /** Destructor. */
     virtual ~CommandMapEditor();
 
-    //==============================================================================
-    /** Sets up the colours to use for parts of the component.
-
-        @param mainBackground       colour to use for most of the background
-        @param textColour           colour to use for the text
-    */
     void setColours (const Colour& mainBackground,
                      const Colour& textColour);
 
-    //==============================================================================
-    /** Can be overridden if some commands need to be excluded from the list.
-
-        By default this will use the KeyPressMappingSet's shouldCommandBeVisibleInEditor()
-        method to decide what to return, but you can override it to handle special cases.
-    */
     virtual bool shouldCommandBeIncluded (CommandID commandID);
-
-    /** Can be overridden to indicate that some commands are shown as read-only.
-
-        By default this will use the KeyPressMappingSet's shouldCommandBeReadOnlyInEditor()
-        method to decide what to return, but you can override it to handle special cases.
-    */
     virtual bool isCommandReadOnly (CommandID commandID);
 
     ApplicationCommandManager& getCommandManager() { return commandManager; }

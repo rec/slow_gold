@@ -9,6 +9,7 @@
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
+#include "rec/slow/Menus.h"
 #include "rec/slow/Target.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -19,14 +20,14 @@ namespace slow {
 Components::Components(Instance* instance)
     : manager_(instance->target_->targetManager()->commandManager()),
       timeController_(new gui::audio::TimeController),
-      loops_(new gui::audio::Loops(manager_)),
-      songData_(new gui::SongData(manager_)),
+      loops_(new gui::audio::Loops(instance->menus_.get())),
+      songData_(new gui::SongData(instance->menus_.get())),
       playerController_(new gui::audio::PlayerController),
       transportController_(new gui::audio::TransportController),
-      directoryTree_(new widget::tree::Root(manager_)),
+      directoryTree_(new widget::tree::Root(instance->menus_.get())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {
-  // waveform_->setManager(manager_);
+  waveform_->setMenuBarModel(instance->menus_.get());
 }
 
 Components::~Components() {}

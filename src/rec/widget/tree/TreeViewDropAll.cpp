@@ -8,7 +8,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-TreeViewDropAll::TreeViewDropAll(ApplicationCommandManager* m)
+TreeViewDropAll::TreeViewDropAll(MenuBarModel* m)
     : FocusableTarget(m) {
   setName("Tree");
 }
