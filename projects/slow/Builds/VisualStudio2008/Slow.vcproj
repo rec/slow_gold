@@ -26,7 +26,7 @@
             MkTypLibCompatible="true"
             SuppressStartupBanner="true"
             TargetEnvironment="1"
-            TypeLibraryName=".\Debug\SlowBurn.tlb"
+            TypeLibraryName=".\Debug\SlowGold.tlb"
             HeaderFileName=""/>
       <Tool Name="VCCLCompilerTool"
             Optimization="0"
@@ -37,7 +37,7 @@
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
-            PrecompiledHeaderFile=".\Debug\SlowBurn.pch"
+            PrecompiledHeaderFile=".\Debug\SlowGold.pch"
             AssemblerListingLocation=".\Debug\"
             ObjectFile=".\Debug\"
             ProgramDataBaseFileName=".\Debug\"
@@ -48,11 +48,11 @@
             PreprocessorDefinitions="_DEBUG"/>
       <Tool Name="VCPreLinkEventTool"/>
       <Tool Name="VCLinkerTool"
-            OutputFile=".\Debug\SlowBurn.exe"
+            OutputFile=".\Debug\SlowGold.exe"
             SuppressStartupBanner="true"
             IgnoreDefaultLibraryNames="libcmt.lib, msvcrt.lib"
             GenerateDebugInformation="true"
-            ProgramDatabaseFile=".\Debug\SlowBurn.pdb"
+            ProgramDatabaseFile=".\Debug\SlowGold.pdb"
             SubSystem="2"
             TargetMachine="1"
             AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
@@ -61,7 +61,7 @@
       <Tool Name="VCXDCMakeTool"/>
       <Tool Name="VCBscMakeTool"
             SuppressStartupBanner="true"
-            OutputFile=".\Debug\SlowBurn.bsc"/>
+            OutputFile=".\Debug\SlowGold.bsc"/>
       <Tool Name="VCFxCopTool"/>
       <Tool Name="VCAppVerifierTool"/>
       <Tool Name="VCPostBuildEventTool"/>
@@ -83,7 +83,7 @@
             MkTypLibCompatible="true"
             SuppressStartupBanner="true"
             TargetEnvironment="1"
-            TypeLibraryName=".\Release\SlowBurn.tlb"
+            TypeLibraryName=".\Release\SlowGold.tlb"
             HeaderFileName=""/>
       <Tool Name="VCCLCompilerTool"
             Optimization="3"
@@ -94,7 +94,7 @@
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
-            PrecompiledHeaderFile=".\Release\SlowBurn.pch"
+            PrecompiledHeaderFile=".\Release\SlowGold.pch"
             AssemblerListingLocation=".\Release\"
             ObjectFile=".\Release\"
             ProgramDataBaseFileName=".\Release\"
@@ -105,11 +105,11 @@
             PreprocessorDefinitions="NDEBUG"/>
       <Tool Name="VCPreLinkEventTool"/>
       <Tool Name="VCLinkerTool"
-            OutputFile=".\Release\SlowBurn.exe"
+            OutputFile=".\Release\SlowGold.exe"
             SuppressStartupBanner="true"
             IgnoreDefaultLibraryNames=""
             GenerateDebugInformation="false"
-            ProgramDatabaseFile=".\Release\SlowBurn.pdb"
+            ProgramDatabaseFile=".\Release\SlowGold.pdb"
             SubSystem="2"
             GenerateManifest="false"
             OptimizeReferences="2"
@@ -121,7 +121,7 @@
       <Tool Name="VCXDCMakeTool"/>
       <Tool Name="VCBscMakeTool"
             SuppressStartupBanner="true"
-            OutputFile=".\Release\SlowBurn.bsc"/>
+            OutputFile=".\Release\SlowGold.bsc"/>
       <Tool Name="VCFxCopTool"/>
       <Tool Name="VCAppVerifierTool"/>
       <Tool Name="VCPostBuildEventTool"/>
@@ -286,6 +286,16 @@
           <File RelativePath="..\..\..\..\src\rec\base\types.h"/>
         </Filter>
         <Filter Name="binary">
+          <File RelativePath="..\..\..\..\src\rec\binary\big-logo.png">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
           <File RelativePath="..\..\..\..\src\rec\binary\logo.png">
             <FileConfiguration Name="Debug|Win32"
                                ExcludedFromBuild="true">

@@ -7,6 +7,9 @@
 
 namespace BinaryData
 {
+    extern const char*   biglogo_png;
+    const int            biglogo_pngSize = 4703;
+
     extern const char*   logo_png;
     const int            logo_pngSize = 4703;
 
