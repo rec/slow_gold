@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT bigIcon="6z55O3ghB" buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="ax.to.rec"
+<JUCERPROJECT bigIcon="72fj5AiQf" buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="ax.to.rec"
               defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
               icon="72fj5AiQf" id="sDthDibyr" juceLinkage="amalg_template"
               jucerVersion="3.0.0" name="Slow" pluginAUExportPrefix="JuceProjectAU"
@@ -9,7 +9,7 @@
               pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
               pluginName="Juce Project" pluginProducesMidiOut="0" pluginRTASCategory=""
               pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0"
-              projectType="guiapp" version="0.9.0">
+              projectType="guiapp" version="0.9.0" smallIcon="72fj5AiQf">
   <EXPORTFORMATS>
     <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/" extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
             juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
@@ -318,8 +318,6 @@
               name="types.h" resource="0"/>
       </GROUP>
       <GROUP id="ZmnIppxrM" name="binary">
-        <FILE compile="0" file="../../src/rec/binary/big-logo.png" id="6z55O3ghB"
-              name="big-logo.png" resource="1"/>
         <FILE compile="0" file="../../src/rec/binary/logo.png" id="72fj5AiQf"
               name="logo.png" resource="1"/>
       </GROUP>

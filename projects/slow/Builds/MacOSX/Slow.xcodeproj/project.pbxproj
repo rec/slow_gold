@@ -712,7 +712,6 @@
 		B91A34AF9114254A57D61B6C /* DownloadVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DownloadVersion.h; path = ../../../../src/rec/app/DownloadVersion.h; sourceTree = SOURCE_ROOT; };
 		B91BE2F316F9649516C17464 /* Block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../../../../src/rec/util/block/Block.h; sourceTree = SOURCE_ROOT; };
 		B93BB1CF0134C040B5AC31AA /* Time.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Time.pb.h; path = ../../../../genfiles/proto/rec/widget/status/Time.pb.h; sourceTree = SOURCE_ROOT; };
-		B975C95882C800725743D89F /* big-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "big-logo.png"; path = "../../../../src/rec/binary/big-logo.png"; sourceTree = SOURCE_ROOT; };
 		BA9058D896BB8B07D8A4ABAC /* Color.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Color.pb.cc; path = ../../../../genfiles/proto/rec/gui/Color.pb.cc; sourceTree = SOURCE_ROOT; };
 		BB7FA1B5B4B6614B52A85C44 /* DriveHardDisk.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DriveHardDisk.svg.h; path = ../../../../src/rec/gui/icon/DriveHardDisk.svg.h; sourceTree = SOURCE_ROOT; };
 		BBB468FF9DBECC53691C7410 /* Stretch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretch.h; path = ../../../../src/rec/audio/stretch/Stretch.h; sourceTree = SOURCE_ROOT; };
@@ -1592,7 +1591,6 @@
 		94453BE8092FD96A48D41D0F /* binary */ = {
 			isa = PBXGroup;
 			children = (
-				B975C95882C800725743D89F /* big-logo.png */,
 				E71522A9A2DF7722B5252C16 /* logo.png */,
 			);
 			name = binary;
