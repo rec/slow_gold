@@ -64,6 +64,7 @@ Instance::Instance(SlowWindow* window)
 
   threads_->startAll();
   currentFile_->setFile(data::get<VirtualFile>());
+  window->addListener(menus_.get());
 }
 
 Instance::~Instance() {

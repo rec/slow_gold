@@ -31,8 +31,15 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 342490779;
-			PBXWorkspaceStateSaveDate = 342490779;
+			PBXPerProjectTemplateStateSaveDate = 342493742;
+			PBXWorkspaceStateSaveDate = 342493742;
+		};
+		perUserProjectItems = {
+			E204C1AB146A0A06001544FC = E204C1AB146A0A06001544FC /* PBXBookmark */;
+			E204C1BD146A0A28001544FC = E204C1BD146A0A28001544FC /* PlistBookmark */;
+			E204C1BE146A0A28001544FC = E204C1BE146A0A28001544FC /* PlistBookmark */;
+			E204C1E4146A0A3A001544FC /* PlistBookmark */ = E204C1E4146A0A3A001544FC /* PlistBookmark */;
+			E204C1E5146A0A3A001544FC /* PlistBookmark */ = E204C1E5146A0A3A001544FC /* PlistBookmark */;
 		};
 		sourceControlManager = E204C17F1469FA8B001544FC /* Source Control */;
 		userBuildSettings = {
@@ -51,7 +58,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
+		breakpointsEnabled = 1;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -60,6 +67,7 @@
 		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -67,6 +75,8 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = Slow;
+		savedGlobals = {
+		};
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);
@@ -84,5 +94,53 @@
 	E204C1801469FA8B001544FC /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	E204C1AB146A0A06001544FC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = F65C4CB259A46E182713FBB7 /* Icon.icns */;
+	};
+	E204C1BD146A0A28001544FC /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B60B5B0B4126E0194BD469E9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /development/rec/projects/slow/Builds/MacOSX/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	E204C1BE146A0A28001544FC /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B60B5B0B4126E0194BD469E9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /development/rec/projects/slow/Builds/MacOSX/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	E204C1E4146A0A3A001544FC /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B60B5B0B4126E0194BD469E9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /development/rec/projects/slow/Builds/MacOSX/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	E204C1E5146A0A3A001544FC /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B60B5B0B4126E0194BD469E9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /development/rec/projects/slow/Builds/MacOSX/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
 	};
 }

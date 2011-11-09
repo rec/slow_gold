@@ -2,6 +2,7 @@
 #define __REC_APP_WINDOW__
 
 #include "rec/gui/PersistentWindow.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 
@@ -10,7 +11,7 @@ namespace util { class DefaultRegistry; }
 namespace app {
 
 // TODO: move this into rec/app
-class Window : public gui::PersistentWindow {
+class Window : public gui::PersistentWindow, public Broadcaster<None> {
  public:
   Window(const String& name,
          const Colour& bg,
@@ -22,6 +23,9 @@ class Window : public gui::PersistentWindow {
   virtual void startup();
   virtual void shutdown();
   virtual DefaultRegistry* getDefaultRegistry() = 0;
+  virtual void focusOfChildComponentChanged(juce::Component::FocusChangeType) {
+    broadcast(None());
+  }
 
  protected:
   virtual void constructInstance() = 0;

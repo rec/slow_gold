@@ -2,7 +2,6 @@
 #define __REC_SLOW_SLOWWINDOW__
 
 #include "rec/app/Window.h"
-#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace slow {
@@ -10,8 +9,7 @@ namespace slow {
 class AppLayout;
 class Instance;
 
-class SlowWindow : public app::Window,
-                   public Listener<const AppLayout&> {
+class SlowWindow : public app::Window, public Listener<const AppLayout&> {
  public:
   SlowWindow();
   virtual ~SlowWindow();
