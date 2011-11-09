@@ -27,7 +27,7 @@ void CommandMapEditor::initialize(const bool showResetToDefaultButton) {
     addAndMakeVisible (&tree);
     tree.setColour (TreeView::backgroundColourId, findColour (backgroundColourId));
     tree.setRootItemVisible (false);
-    tree.setDefaultOpenness (true);
+    tree.setDefaultOpenness (false);
     tree.setRootItem (treeItem);
 }
 
