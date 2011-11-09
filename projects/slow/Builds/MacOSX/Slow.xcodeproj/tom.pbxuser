@@ -1,5 +1,12 @@
 // !$*UTF8*$!
 {
+	061FBB036746790735D492AB /* SlowWindow.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 858}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 844}";
+		};
+	};
 	998399C0F86735CBC8189E96 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = E204C1741469FA81001544FC /* Slow */;
@@ -14,7 +21,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					544,
 					20,
 					48,
 					43,
@@ -40,6 +47,9 @@
 			E204C1BE146A0A28001544FC = E204C1BE146A0A28001544FC /* PlistBookmark */;
 			E204C1E4146A0A3A001544FC /* PlistBookmark */ = E204C1E4146A0A3A001544FC /* PlistBookmark */;
 			E204C1E5146A0A3A001544FC /* PlistBookmark */ = E204C1E5146A0A3A001544FC /* PlistBookmark */;
+			E204C1FE146AF521001544FC /* PlistBookmark */ = E204C1FE146AF521001544FC /* PlistBookmark */;
+			E204C1FF146AF521001544FC /* XCBuildMessageTextBookmark */ = E204C1FF146AF521001544FC /* XCBuildMessageTextBookmark */;
+			E204C200146AF521001544FC /* PBXTextBookmark */ = E204C200146AF521001544FC /* PBXTextBookmark */;
 		};
 		sourceControlManager = E204C17F1469FA8B001544FC /* Source Control */;
 		userBuildSettings = {
@@ -50,6 +60,14 @@
 		executables = (
 			E204C1741469FA81001544FC /* Slow */,
 		);
+	};
+	BFC76053247EE3C690919E29 /* SlowWindow.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {722, 1105}}";
+			sepNavSelRange = "{1261, 0}";
+			sepNavVisRange = "{789, 905}";
+			sepNavWindowFrame = "{{199, 34}, {911, 971}}";
+		};
 	};
 	E204C1741469FA81001544FC /* Slow */ = {
 		isa = PBXExecutable;
@@ -142,5 +160,35 @@
 		name = /development/rec/projects/slow/Builds/MacOSX/Info.plist;
 		rLen = 0;
 		rLoc = 9223372036854775807;
+	};
+	E204C1FE146AF521001544FC /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B60B5B0B4126E0194BD469E9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /development/rec/projects/slow/Builds/MacOSX/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	E204C1FF146AF521001544FC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Variable or field 'focusOfChildComponentChanged' declared void";
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 54;
+		rType = 1;
+	};
+	E204C200146AF521001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		name = "SlowWindow.cpp: 55";
+		rLen = 0;
+		rLoc = 1261;
+		rType = 0;
+		vrLen = 905;
+		vrLoc = 789;
 	};
 }

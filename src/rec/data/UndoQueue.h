@@ -29,7 +29,7 @@ class UndoQueue : public Broadcaster<None> {
 
   void add(Editable*, const Operations& command, const Operations& undo);
 
-  int undoable() const { Lock l(lock_); return queue_.size() - undoes_; }
+  int undoable() const { Lock l(lock_); return preUndoSize_ - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
   void undo();
@@ -52,6 +52,7 @@ class UndoQueue : public Broadcaster<None> {
   int writtenTo_;
   int undoes_;
   int executedSize_;
+  int preUndoSize_;
   bool running_;
   ActionGrouper grouper_;
 

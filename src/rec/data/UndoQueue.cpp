@@ -16,6 +16,7 @@ UndoQueue::UndoQueue(const File& file, ActionGrouper grouper)
     : writtenTo_(0),
       undoes_(0),
       executedSize_(0),
+      preUndoSize_(0),
       running_(false),
       grouper_(grouper) {
   if (DELETE_UNDO_QUEUE)
@@ -56,7 +57,7 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
     queue_.push_back(action.transfer());
     editables_.push_back(e);
     undoes_ = 0;
-    executedSize_ = queue_.size();
+    preUndoSize_ = executedSize_ = queue_.size();
   }
   broadcast(None());
 }
