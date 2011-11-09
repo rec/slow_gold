@@ -26,7 +26,7 @@ Components::Components(Instance* instance)
       directoryTree_(new widget::tree::Root(manager_)),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {
-  waveform_->setManager(manager_);
+  // waveform_->setManager(manager_);
 }
 
 Components::~Components() {}

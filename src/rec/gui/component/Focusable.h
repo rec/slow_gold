@@ -15,15 +15,15 @@ class Focusable : public Type {
   explicit Focusable(ApplicationCommandManager* m = NULL) : manager_(m) {
     this->setWantsKeyboardFocus(true);
   }
-
+  /*
   void setManager(ApplicationCommandManager* m) {
   	manager_ = m;
-  }
+    }*/
 
   virtual ~Focusable() {}
 
   virtual void focusGained(Component::FocusChangeType) {
-
+    DLOG(INFO) << "Here!";
 #ifdef FOCUS_BUG_FIXED
     if (manager_)
       manager_->commandStatusChanged();

@@ -37,6 +37,7 @@ public:
 
   SlowWindow* window_;
 
+  ptr<Menus> menus_;
   ptr<Components> components_;
   ptr<audio::Device> device_;
   ptr<audio::source::Player> player_;
@@ -45,7 +46,6 @@ public:
   ptr<CurrentTime> currentTime_;
   ptr<BufferFiller> bufferFiller_;
 
-  ptr<Menus> menus_;
   ptr<Target> target_;
   ptr<MouseListener> mouseListener_;
   ptr<Threads> threads_;

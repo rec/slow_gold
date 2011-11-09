@@ -7,6 +7,13 @@
 			sepNavVisRange = "{0, 844}";
 		};
 	};
+	362E2E7C8F32ECBEF4903444 /* Components.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 858}}";
+			sepNavSelRange = "{1080, 0}";
+			sepNavVisRange = "{0, 1311}";
+		};
+	};
 	998399C0F86735CBC8189E96 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = E204C1741469FA81001544FC /* Slow */;
@@ -50,6 +57,14 @@
 			E204C1FE146AF521001544FC /* PlistBookmark */ = E204C1FE146AF521001544FC /* PlistBookmark */;
 			E204C1FF146AF521001544FC /* XCBuildMessageTextBookmark */ = E204C1FF146AF521001544FC /* XCBuildMessageTextBookmark */;
 			E204C200146AF521001544FC /* PBXTextBookmark */ = E204C200146AF521001544FC /* PBXTextBookmark */;
+			E204C206146AF6D8001544FC /* XCBuildMessageTextBookmark */ = E204C206146AF6D8001544FC /* XCBuildMessageTextBookmark */;
+			E204C207146AF6DA001544FC /* PBXTextBookmark */ = E204C207146AF6DA001544FC /* PBXTextBookmark */;
+			E204C20A146AF6DA001544FC /* PBXTextBookmark */ = E204C20A146AF6DA001544FC /* PBXTextBookmark */;
+			E204C216146AF849001544FC /* PBXTextBookmark */ = E204C216146AF849001544FC /* PBXTextBookmark */;
+			E204C219146AF849001544FC /* PBXTextBookmark */ = E204C219146AF849001544FC /* PBXTextBookmark */;
+			E204C21A146AF849001544FC /* PBXTextBookmark */ = E204C21A146AF849001544FC /* PBXTextBookmark */;
+			E204C21B146AF849001544FC /* PBXTextBookmark */ = E204C21B146AF849001544FC /* PBXTextBookmark */;
+			E204C21C146AF849001544FC /* PBXTextBookmark */ = E204C21C146AF849001544FC /* PBXTextBookmark */;
 		};
 		sourceControlManager = E204C17F1469FA8B001544FC /* Source Control */;
 		userBuildSettings = {
@@ -63,9 +78,9 @@
 	};
 	BFC76053247EE3C690919E29 /* SlowWindow.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {722, 1105}}";
-			sepNavSelRange = "{1261, 0}";
-			sepNavVisRange = "{789, 905}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1092}}";
+			sepNavSelRange = "{1783, 0}";
+			sepNavVisRange = "{401, 1340}";
 			sepNavWindowFrame = "{{199, 34}, {911, 971}}";
 		};
 	};
@@ -190,5 +205,91 @@
 		rType = 0;
 		vrLen = 905;
 		vrLoc = 789;
+	};
+	E204C206146AF6D8001544FC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No 'void rec::slow::SlowWindow::focusOfChildComponentChanged(juce::Component::FocusChangeType)' member function declared in class 'rec::slow::SlowWindow'";
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 55;
+		rType = 1;
+	};
+	E204C207146AF6DA001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		name = "SlowWindow.cpp: 90";
+		rLen = 0;
+		rLoc = 1928;
+		rType = 0;
+		vrLen = 990;
+		vrLoc = 664;
+	};
+	E204C20A146AF6DA001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		name = "SlowWindow.cpp: 56";
+		rLen = 76;
+		rLoc = 1262;
+		rType = 0;
+		vrLen = 1347;
+		vrLoc = 560;
+	};
+	E204C216146AF849001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		name = "SlowWindow.cpp: 85";
+		rLen = 0;
+		rLoc = 1783;
+		rType = 0;
+		vrLen = 939;
+		vrLoc = 530;
+	};
+	E204C219146AF849001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F521CD26AC822B41D5F369FC /* Components.h */;
+		name = "Components.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1114;
+		vrLoc = 0;
+	};
+	E204C21A146AF849001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 362E2E7C8F32ECBEF4903444 /* Components.cpp */;
+		name = "Components.cpp: 29";
+		rLen = 0;
+		rLoc = 1112;
+		rType = 0;
+		vrLen = 1308;
+		vrLoc = 0;
+	};
+	E204C21B146AF849001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 362E2E7C8F32ECBEF4903444 /* Components.cpp */;
+		name = "Components.cpp: 29";
+		rLen = 0;
+		rLoc = 1080;
+		rType = 0;
+		vrLen = 1311;
+		vrLoc = 0;
+	};
+	E204C21C146AF849001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		name = "SlowWindow.cpp: 85";
+		rLen = 0;
+		rLoc = 1783;
+		rType = 0;
+		vrLen = 1340;
+		vrLoc = 401;
+	};
+	F521CD26AC822B41D5F369FC /* Components.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 835}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1114}";
+		};
 	};
 }

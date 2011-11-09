@@ -29,13 +29,13 @@ using namespace rec::widget::waveform;
 
 Instance::Instance(SlowWindow* window)
     : window_(window),
+      menus_(new Menus(this)),
       components_(new Components(this)),
       device_(new audio::Device),
       player_(new audio::source::Player(device_.get())),
       currentFile_(new CurrentFile(this)),
       currentTime_(new CurrentTime(this)),
       bufferFiller_(new BufferFiller(this)),
-      menus_(new Menus(this)),
       target_(new Target(this)),
       mouseListener_(new MouseListener(this)),
       threads_(new Threads(this)) {
