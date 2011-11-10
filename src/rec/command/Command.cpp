@@ -10,7 +10,7 @@ static CommandDatabase* commandDatabase() {
   return &d;
 }
 
-const CommandTable getCommands() {
+const CommandTable getCommandTable() {
   return commandDatabase()->commandTable();
 }
 

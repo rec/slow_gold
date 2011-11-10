@@ -10,9 +10,11 @@ namespace command {
 typedef std::map<CommandID, Command*> CommandTable;
 typedef std::map<CommandID, Callback*> CallbackTable;
 
-const CommandTable getCommands();
+const CommandTable getCommandTable();
 const CommandTable toCommandTable(const Commands&);
 const Commands fromCommandTable(const CommandTable&);
+
+inline const Commands getCommands() { return fromCommandTable(getCommandTable()); }
 
 // Call to recalculate commands if Access changes for the user.
 void recalculate();

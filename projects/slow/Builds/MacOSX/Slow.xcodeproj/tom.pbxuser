@@ -30,9 +30,9 @@
 	};
 	151215C620EDDA1F897E346B /* TargetManager.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {628, 2340}}";
-			sepNavSelRange = "{1015, 26}";
-			sepNavVisRange = "{812, 1592}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 2366}}";
+			sepNavSelRange = "{5351, 0}";
+			sepNavVisRange = "{3593, 2166}";
 		};
 	};
 	20F428DEA148977B8CCBA4AC /* Waveform.cpp */ = {
@@ -211,6 +211,13 @@
 			E204C390146C6262001544FC /* PBXTextBookmark */ = E204C390146C6262001544FC /* PBXTextBookmark */;
 			E204C396146C6350001544FC /* PBXTextBookmark */ = E204C396146C6350001544FC /* PBXTextBookmark */;
 			E204C397146C6350001544FC /* PBXTextBookmark */ = E204C397146C6350001544FC /* PBXTextBookmark */;
+			E204C3B0146C6D72001544FC /* XCBuildMessageTextBookmark */ = E204C3B0146C6D72001544FC /* XCBuildMessageTextBookmark */;
+			E204C3BB146C6E0C001544FC /* PBXTextBookmark */ = E204C3BB146C6E0C001544FC /* PBXTextBookmark */;
+			E204C3BE146C6E0C001544FC /* PBXTextBookmark */ = E204C3BE146C6E0C001544FC /* PBXTextBookmark */;
+			E204C3BF146C6E0C001544FC /* PBXTextBookmark */ = E204C3BF146C6E0C001544FC /* PBXTextBookmark */;
+			E204C3C8146C7B6F001544FC /* PBXTextBookmark */ = E204C3C8146C7B6F001544FC /* PBXTextBookmark */;
+			E204C3C9146C7B6F001544FC /* PBXTextBookmark */ = E204C3C9146C7B6F001544FC /* PBXTextBookmark */;
+			E204C3CA146C7B6F001544FC /* PBXTextBookmark */ = E204C3CA146C7B6F001544FC /* PBXTextBookmark */;
 		};
 		sourceControlManager = E204C17F1469FA8B001544FC /* Source Control */;
 		userBuildSettings = {
@@ -238,6 +245,13 @@
 			sepNavWindowFrame = "{{107, 118}, {911, 971}}";
 		};
 	};
+	AD730539B904BD2C42DA1F6E /* Command.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1034, 481}}";
+			sepNavSelRange = "{265, 0}";
+			sepNavVisRange = "{0, 853}";
+		};
+	};
 	AF74D760F5FD00B6F076C3F3 /* CommandMapEditor.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {664, 1144}}";
@@ -247,9 +261,9 @@
 	};
 	B821697666437A71BDF9E1EE /* Target.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {741, 902}}";
-			sepNavSelRange = "{1363, 0}";
-			sepNavVisRange = "{0, 1459}";
+			sepNavIntBoundsRect = "{{0, 0}, {1034, 663}}";
+			sepNavSelRange = "{810, 0}";
+			sepNavVisRange = "{440, 1022}";
 		};
 	};
 	BFC76053247EE3C690919E29 /* SlowWindow.cpp */ = {
@@ -998,7 +1012,7 @@
 		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
 		name = "TargetManager.cpp: 175";
 		rLen = 60;
-		rLoc = 5450;
+		rLoc = 5465;
 		rType = 0;
 		vrLen = 1333;
 		vrLoc = 4224;
@@ -1222,9 +1236,9 @@
 		path = /development/juce.tip/src/gui/components/keyboard/juce_KeyPress.cpp;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 3744}}";
-			sepNavSelRange = "{11319, 0}";
-			sepNavVisRange = "{8228, 3173}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 3783}}";
+			sepNavSelRange = "{11401, 0}";
+			sepNavVisRange = "{8161, 3240}";
 		};
 	};
 	E204C390146C6262001544FC /* PBXTextBookmark */ = {
@@ -1262,6 +1276,75 @@
 		rType = 0;
 		vrLen = 3173;
 		vrLoc = 8228;
+	};
+	E204C3B0146C6D72001544FC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No match for ternary 'operator?:' in 'e->rec::data::TypedEditable<rec::command::Commands>::<anonymous>.rec::data::UntypedEditable::fileReadSuccess() ? rec::data::TypedEditable<Type>::get() const [with Proto = rec::command::Commands]() : rec::command::getCommandTable()()'";
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 168;
+		rType = 1;
+	};
+	E204C3BB146C6E0C001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C38D146C6262001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 226";
+		rLen = 82;
+		rLoc = 7809;
+		rType = 0;
+		vrLen = 1329;
+		vrLoc = 6899;
+	};
+	E204C3BE146C6E0C001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 169";
+		rLen = 0;
+		rLoc = 5351;
+		rType = 0;
+		vrLen = 2166;
+		vrLoc = 3593;
+	};
+	E204C3BF146C6E0C001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C38D146C6262001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 297";
+		rLen = 0;
+		rLoc = 11319;
+		rType = 0;
+		vrLen = 3240;
+		vrLoc = 8161;
+	};
+	E204C3C8146C7B6F001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C38D146C6262001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 304";
+		rLen = 0;
+		rLoc = 11401;
+		rType = 0;
+		vrLen = 1329;
+		vrLoc = 6899;
+	};
+	E204C3C9146C7B6F001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 169";
+		rLen = 0;
+		rLoc = 5351;
+		rType = 0;
+		vrLen = 2166;
+		vrLoc = 3593;
+	};
+	E204C3CA146C7B6F001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C38D146C6262001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 304";
+		rLen = 0;
+		rLoc = 11401;
+		rType = 0;
+		vrLen = 3240;
+		vrLoc = 8161;
 	};
 	E2B550FA014DE206D4635080 /* CommandMapEditor.cpp */ = {
 		uiCtxt = {

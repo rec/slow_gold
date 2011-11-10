@@ -146,11 +146,12 @@ static void writeKeyboardFile(juce::XmlElement* element) {
 
 using juce::XmlElement;
 
-static XmlElement* readKeyboardFile() {
+
+static XmlElement* readKeyboardCommands(const Commands& commands) {
   ptr<XmlElement> element(new XmlElement("KEYMAPPINGS"));
-  Commands commands = data::get<Commands>(getKeyboardFile());
   for (int i = 0; i < commands.command_size(); ++i) {
     const Command& cmd = commands.command(i);
+    // TODO:  is this correct for multiple key assignments?
     for (int j = 0; j < cmd.keypress_size(); ++j) {
       juce::XmlElement* mapping = element->createNewChildElement("MAPPING");
       mapping->setAttribute("commandId",
@@ -160,6 +161,11 @@ static XmlElement* readKeyboardFile() {
     }
   }
   return element.transfer();
+}
+
+static XmlElement* readKeyboardFile() {
+  data::TypedEditable<Commands>* e = data::editable<Commands>(getKeyboardFile());
+  return readKeyboardCommands(e->fileReadSuccess() ? e->get() : getCommands());
 }
 
 void TargetManager::saveKeyboardBindings() {

@@ -31,6 +31,7 @@ class Editable {
   void set(const Value&, const Address& a = Address::default_instance());
   void append(const Value& value, const Address&);
 
+  virtual bool fileReadSuccess() const = 0;
   virtual void applyLater(Operations*) = 0;
   virtual void applyOperations(const Operations& olist,
                                Operations* undoes = NULL) = 0;

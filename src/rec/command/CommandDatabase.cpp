@@ -177,4 +177,3 @@ void CommandDatabase::recalculate() {
 
 }  // namespace command
 }  // namespace rec
-
