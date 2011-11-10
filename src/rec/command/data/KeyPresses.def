@@ -1,68 +1,24 @@
-command {
-  type: CUT
-  keypress: "command + x"
-}
-command {
-  type: COPY
-  keypress: "command + c"
-}
-command {
-  type: PASTE
-  keypress: "command + v"
-}
-command {
-  type: SELECT_ALL
-  keypress: "command + a"
-}
-command {
-  type: DESELECT_ALL
-  keypress: "command + d"
-}
-command {
-  type: ADD_LOOP_POINT
-  keypress: "command + +"
-}
-command {
-  type: AUDIO_PREFERENCES
-  keypress: "command + ;"
-}
-command {
-  type: CLEAR_LOOPS
-  keypress: "command + b"
-}
-command {
-  type: CLOSE_FILE
-  keypress: "command + w"
-}
-command {
-  type: EJECT_CDS
-  keypress: "command + e"
-}
-command {
-  type: INVERT_LOOP_SELECTION
-  keypress: "command + i"
-}
-command {
-  type: KEYBOARD_MAPPINGS
-  keypress: "command + k"
-}
-command {
-  type: MIDI_MAPPINGS
-  keypress: "command + m"
-}
-command {
-  type: OPEN
-  keypress: "command + o"
-}
-command {
-  type: TOGGLE_START_STOP
-  keypress: "space"
-}
-command {
-  type: UNDO
-  keypress: "command + z"
-}
-command {
-  type: REDO
-  keypress: "command + shift + z"
-}
+command { type: ADD_LOOP_POINT  keypress: "command + +" }
+command { type: AUDIO_PREFERENCES  keypress: "command + ;" }
+command { type: CLEAR_LOOPS  keypress: "command + b" }
+command { type: CLOSE_FILE  keypress: "command + w" }
+command { type: COPY  keypress: "command + c" }
+command { type: CUT  keypress: "command + x" }
+command { type: DEL  keypress: "backspace"  keypress: "delete" }
+command { type: DESELECT_ALL  keypress: "command + d" }
+command { type: EJECT_CDS  keypress: "command + e" }
+command { type: INVERT_LOOP_SELECTION  keypress: "command + i" }
+command { type: KEYBOARD_MAPPINGS  keypress: "command + k" }
+command { type: MIDI_MAPPINGS  keypress: "command + m" }
+command { type: NUDGE_VOLUME_DOWN  keypress: "cursor down" }
+command { type: NUDGE_VOLUME_UP  keypress: "cursor up" }
+command { type: OPEN  keypress: "command + o" }
+command { type: PASTE  keypress: "command + v" }
+command { type: QUIT  keypress: "command + q" }
+command { type: REDO  keypress: "shift + command + z" }
+command { type: RESET_GAIN_TO_UNITY  keypress: "." }
+command { type: SELECT_ALL  keypress: "command + a" }
+command { type: TOGGLE_START_STOP  keypress: "space" }
+command { type: TOGGLE_START_STOP  keypress: "spacebar" }
+command { type: TOGGLE_WHOLE_SONG_LOOP  keypress: "command + t" }
+command { type: UNDO  keypress: "command + z" }

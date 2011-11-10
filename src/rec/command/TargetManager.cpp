@@ -128,7 +128,7 @@ static void writeKeyboardFile(juce::XmlElement* element) {
   forEachXmlChildElement(*element, mapping) {
     CommandID id = mapping->getStringAttribute("commandId").getHexValue32();
     CommandTable::const_iterator i = t.find(id);
-    string key = str(mapping->getStringAttribute("key"));
+    string key = str(mapping->getStringAttribute("key").toLowerCase());
     Command* command;
     if (i == t.end()) {
       command = new Command;
