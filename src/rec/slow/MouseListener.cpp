@@ -30,6 +30,16 @@ MouseListener::MouseListener(Instance* i)
 
 namespace {
 
+void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
+  LoopPointList loops(data::get<LoopPointList>(file));
+
+  int i = 0, size = loops.loop_point_size();
+  for (; i < size && loops.loop_point(i).time() <= time; ++i);
+  LoopPoint* lp = loops.mutable_loop_point(i - 1);
+  lp->set_selected(!lp->selected());
+  data::set(loops, file);
+}
+
 static const double WHEEL_RATIO = 1.0;
 static const double POWER = 4.0;
 static const double SMALL_RATIO = 0.1;
@@ -48,27 +58,7 @@ void zoom(const Instance& instance, const MouseEvent& e,
   widget::waveform::zoom(instance.file(), instance.length(), time, z);
 }
 
-void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
-  LoopPointList loops(data::get<LoopPointList>(file));
-
-  int i = 0, size = loops.loop_point_size();
-  for (; i < size && loops.loop_point(i).time() <= time; ++i);
-  LoopPoint* lp = loops.mutable_loop_point(i - 1);
-  lp->set_selected(!lp->selected());
-  data::set(loops, file);
-}
-
 }  // namespace
-
-void MouseListener::operator()(const MouseWheelEvent& e) {
-  Waveform* waveform = components()->waveform_.get();
-  if (e.event_->eventComponent == waveform) {
-    double time = waveform->xToTime(e.event_->x);
-    double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
-    zoom(*instance_, *e.event_, time, inc);
-  }
-}
-
 
 Mode::Action MouseListener::getClickAction(const MouseEvent& e) {
   juce::ModifierKeys k = e.mods;
@@ -90,6 +80,15 @@ Mode::Action MouseListener::getClickAction(const MouseEvent& e) {
     return shift ? Mode::ZOOM_OUT : Mode::ZOOM_IN;
 
   return right ? Mode::DRAW_LOOP_POINTS : (shift ? Mode::DRAG : Mode::SET_TIME);
+}
+
+void MouseListener::operator()(const MouseWheelEvent& e) {
+  Waveform* waveform = components()->waveform_.get();
+  if (e.event_->eventComponent == waveform) {
+    double time = waveform->xToTime(e.event_->x);
+    double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
+    zoom(*instance_, *e.event_, time, inc);
+  }
 }
 
 void MouseListener::mouseDown(const MouseEvent& e) {

@@ -19,15 +19,10 @@ class Focusable : public Type {
   virtual ~Focusable() {}
 
   virtual void focusGained(Component::FocusChangeType) {
-    DLOG(INFO) << "Here!";
     menus_->menuItemsChanged();
-#ifdef FOCUS_BUG_FIXED
-    if (manager_)
-      manager_->commandStatusChanged();
-#endif
-
     this->repaint();
   }
+
   virtual void focusLost(Component::FocusChangeType t) { focusGained(t); }
 
   virtual void paintFocus(Graphics& g) {

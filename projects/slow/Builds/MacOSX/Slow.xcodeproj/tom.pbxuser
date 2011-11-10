@@ -23,9 +23,9 @@
 	};
 	151215C620EDDA1F897E346B /* TargetManager.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {552, 2392}}";
+			sepNavIntBoundsRect = "{{0, 0}, {628, 2340}}";
 			sepNavSelRange = "{2478, 0}";
-			sepNavVisRange = "{1677, 1714}";
+			sepNavVisRange = "{4237, 1320}";
 		};
 	};
 	20F428DEA148977B8CCBA4AC /* Waveform.cpp */ = {
@@ -45,8 +45,8 @@
 	};
 	4B9B092D1B3B397FC42C5713 /* ptr.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {552, 723}}";
-			sepNavSelRange = "{497, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {741, 902}}";
+			sepNavSelRange = "{455, 0}";
 			sepNavVisRange = "{0, 962}";
 		};
 	};
@@ -66,6 +66,10 @@
 			E204C260146B2D74001544FC /* CommandMapTopLevelItem.h:35 */,
 			E204C26D146B2E0F001544FC /* juce_ApplicationCommandManager.cpp:164 */,
 			E204C270146B2E6E001544FC /* CommandMapTopLevelItem.h:46 */,
+			E204C309146B4670001544FC /* TargetManager.cpp:175 */,
+			E204C316146B4738001544FC /* juce_KeyPressMappingSet.cpp:60 */,
+			E204C319146B4761001544FC /* juce_PopupMenu.cpp:79 */,
+			E204C32D146B4A72001544FC /* juce_KeyPress.cpp:234 */,
 		);
 		codeSenseManager = E204C1801469FA8B001544FC /* Code sense */;
 		executables = (
@@ -74,7 +78,7 @@
 		perUserDictionary = {
 			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
-				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_UseID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					20,
@@ -164,6 +168,22 @@
 			E204C274146B2E8B001544FC = E204C274146B2E8B001544FC /* PBXTextBookmark */;
 			E204C275146B2E8B001544FC = E204C275146B2E8B001544FC /* PBXTextBookmark */;
 			E204C279146B2EEB001544FC = E204C279146B2EEB001544FC /* PBXTextBookmark */;
+			E204C30C146B467E001544FC /* PBXTextBookmark */ = E204C30C146B467E001544FC /* PBXTextBookmark */;
+			E204C30D146B467E001544FC /* PBXTextBookmark */ = E204C30D146B467E001544FC /* PBXTextBookmark */;
+			E204C314146B4683001544FC /* PBXTextBookmark */ = E204C314146B4683001544FC /* PBXTextBookmark */;
+			E204C323146B48D3001544FC /* PBXTextBookmark */ = E204C323146B48D3001544FC /* PBXTextBookmark */;
+			E204C32E146B4A72001544FC /* PBXTextBookmark */ = E204C32E146B4A72001544FC /* PBXTextBookmark */;
+			E204C333146B4A8A001544FC /* PBXTextBookmark */ = E204C333146B4A8A001544FC /* PBXTextBookmark */;
+			E204C334146B4A8A001544FC /* PBXTextBookmark */ = E204C334146B4A8A001544FC /* PBXTextBookmark */;
+			E204C338146B4A8A001544FC /* PBXTextBookmark */ = E204C338146B4A8A001544FC /* PBXTextBookmark */;
+			E204C33A146B4A8A001544FC /* PBXTextBookmark */ = E204C33A146B4A8A001544FC /* PBXTextBookmark */;
+			E204C33D146B4A97001544FC /* PBXTextBookmark */ = E204C33D146B4A97001544FC /* PBXTextBookmark */;
+			E204C342146B4AA1001544FC /* PBXTextBookmark */ = E204C342146B4AA1001544FC /* PBXTextBookmark */;
+			E204C343146B4AA1001544FC /* PBXTextBookmark */ = E204C343146B4AA1001544FC /* PBXTextBookmark */;
+			E204C349146B98B4001544FC /* PBXTextBookmark */ = E204C349146B98B4001544FC /* PBXTextBookmark */;
+			E204C34A146B98B4001544FC /* PBXTextBookmark */ = E204C34A146B98B4001544FC /* PBXTextBookmark */;
+			E204C34C146B98BD001544FC /* PBXTextBookmark */ = E204C34C146B98BD001544FC /* PBXTextBookmark */;
+			E204C34D146B98BD001544FC /* PBXTextBookmark */ = E204C34D146B98BD001544FC /* PBXTextBookmark */;
 		};
 		sourceControlManager = E204C17F1469FA8B001544FC /* Source Control */;
 		userBuildSettings = {
@@ -561,7 +581,7 @@
 		ignoreCount = 0;
 		lineNumber = 78;
 		location = SlowBurn;
-		modificationTime = 342572296.376747;
+		modificationTime = 342595744.277939;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -618,10 +638,10 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 35;
-		location = SlowBurn;
-		modificationTime = 342572296.377069;
+		location = SlowGold;
+		modificationTime = 342595746.315416;
 		originalNumberOfMultipleMatches = 1;
-		state = 2;
+		state = 1;
 	};
 	E204C265146B2D8D001544FC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -639,6 +659,11 @@
 		name = juce_amalgamated.h;
 		path = /development/juce.tip/juce_amalgamated.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {741, 914095}}";
+			sepNavSelRange = "{233277, 0}";
+			sepNavVisRange = "{232138, 2271}";
+		};
 	};
 	E204C267146B2D8D001544FC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -694,7 +719,7 @@
 		ignoreCount = 0;
 		lineNumber = 164;
 		location = SlowBurn;
-		modificationTime = 342572296.3772489;
+		modificationTime = 342595744.279957;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -719,7 +744,7 @@
 		ignoreCount = 0;
 		lineNumber = 46;
 		location = SlowBurn;
-		modificationTime = 342572296.377309;
+		modificationTime = 342595744.280761;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -759,6 +784,284 @@
 		rType = 0;
 		vrLen = 1377;
 		vrLoc = 1655;
+	};
+	E204C309146B4670001544FC /* TargetManager.cpp:175 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		functionName = "TargetManager::loadKeyboardBindings()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 175;
+		location = SlowGold;
+		modificationTime = 342595744.281704;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E204C30C146B467E001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 82";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1293;
+		vrLoc = 4264;
+	};
+	E204C30D146B467E001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 82";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1320;
+		vrLoc = 4237;
+	};
+	E204C314146B4683001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 82";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1320;
+		vrLoc = 4237;
+	};
+	E204C316146B4738001544FC /* juce_KeyPressMappingSet.cpp:60 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = E204C317146B4738001544FC /* juce_KeyPressMappingSet.cpp */;
+		functionName = "KeyPressMappingSet::getKeyPressesAssignedToCommand (const CommandID commandID)";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 60;
+		location = SlowGold;
+		modificationTime = 342595744.282583;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E204C317146B4738001544FC /* juce_KeyPressMappingSet.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = juce_KeyPressMappingSet.cpp;
+		path = /development/juce.tip/src/gui/components/keyboard/juce_KeyPressMappingSet.cpp;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {741, 5421}}";
+			sepNavSelRange = "{2319, 0}";
+			sepNavVisRange = "{1199, 2505}";
+		};
+	};
+	E204C319146B4761001544FC /* juce_PopupMenu.cpp:79 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = E204C31A146B4761001544FC /* juce_PopupMenu.cpp */;
+		functionName = "commandManager (commandManager_)";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 79;
+		location = SlowGold;
+		modificationTime = 342595744.283508;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E204C31A146B4761001544FC /* juce_PopupMenu.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = juce_PopupMenu.cpp;
+		path = /development/juce.tip/src/gui/components/menus/juce_PopupMenu.cpp;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {741, 22854}}";
+			sepNavSelRange = "{3025, 0}";
+			sepNavVisRange = "{1597, 2441}";
+		};
+	};
+	E204C31D146B480C001544FC /* juce_KeyPress.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = juce_KeyPress.cpp;
+		path = /development/juce.tip/src/gui/components/keyboard/juce_KeyPress.cpp;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 3926}}";
+			sepNavSelRange = "{11175, 0}";
+			sepNavVisRange = "{6956, 2258}";
+		};
+	};
+	E204C323146B48D3001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 82";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1320;
+		vrLoc = 4237;
+	};
+	E204C32D146B4A72001544FC /* juce_KeyPress.cpp:234 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		functionName = "KeyPress::getTextDescription()";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 234;
+		location = SlowGold;
+		modificationTime = 342595770.281534;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E204C32E146B4A72001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		rLen = 1;
+		rLoc = 232;
+		rType = 1;
+	};
+	E204C333146B4A8A001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 82";
+		rLen = 0;
+		rLoc = 2478;
+		rType = 0;
+		vrLen = 1320;
+		vrLoc = 4237;
+	};
+	E204C334146B4A8A001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C335146B4A8A001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 233";
+		rLen = 2;
+		rLoc = 7979;
+		rType = 0;
+		vrLen = 1257;
+		vrLoc = 7323;
+	};
+	E204C335146B4A8A001544FC /* juce_KeyPress.cpp */ = {
+		isa = PBXFileReference;
+		name = juce_KeyPress.cpp;
+		path = /development/juce.tip/src/gui/components/keyboard/juce_KeyPress.cpp;
+		sourceTree = "<absolute>";
+	};
+	E204C338146B4A8A001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C339146B4A8A001544FC /* juce_KeyPress.cpp */;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+		rType = 0;
+	};
+	E204C339146B4A8A001544FC /* juce_KeyPress.cpp */ = {
+		isa = PBXFileReference;
+		name = juce_KeyPress.cpp;
+		path = /development/juce.tip/src/gui/components/keyboard/juce_KeyPress.cpp;
+		sourceTree = "<absolute>";
+	};
+	E204C33A146B4A8A001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C33B146B4A8A001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 293";
+		rLen = 0;
+		rLoc = 11175;
+		rType = 0;
+		vrLen = 1840;
+		vrLoc = 1651;
+	};
+	E204C33B146B4A8A001544FC /* juce_KeyPress.cpp */ = {
+		isa = PBXFileReference;
+		name = juce_KeyPress.cpp;
+		path = /development/juce.tip/src/gui/components/keyboard/juce_KeyPress.cpp;
+		sourceTree = "<absolute>";
+	};
+	E204C33D146B4A97001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		name = "Line:234";
+		rLen = 1;
+		rLoc = 233;
+		rType = 1;
+	};
+	E204C342146B4AA1001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 233";
+		rLen = 2;
+		rLoc = 7979;
+		rType = 0;
+		vrLen = 1292;
+		vrLoc = 7323;
+	};
+	E204C343146B4AA1001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 293";
+		rLen = 0;
+		rLoc = 11175;
+		rType = 0;
+		vrLen = 1892;
+		vrLoc = 1651;
+	};
+	E204C349146B98B4001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 234";
+		rLen = 22;
+		rLoc = 7981;
+		rType = 0;
+		vrLen = 1257;
+		vrLoc = 7323;
+	};
+	E204C34A146B98B4001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 293";
+		rLen = 0;
+		rLoc = 11175;
+		rType = 0;
+		vrLen = 1840;
+		vrLoc = 1651;
+	};
+	E204C34C146B98BD001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 234";
+		rLen = 22;
+		rLoc = 7981;
+		rType = 0;
+		vrLen = 1257;
+		vrLoc = 7323;
+	};
+	E204C34D146B98BD001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C31D146B480C001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 293";
+		rLen = 0;
+		rLoc = 11175;
+		rType = 0;
+		vrLen = 2258;
+		vrLoc = 6956;
 	};
 	E2B550FA014DE206D4635080 /* CommandMapEditor.cpp */ = {
 		uiCtxt = {
