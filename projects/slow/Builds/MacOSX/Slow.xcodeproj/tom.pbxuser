@@ -67,9 +67,9 @@
 	};
 	8C1F657F03DB48DCBA241C62 /* Cuttable.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 1274}}";
-			sepNavSelRange = "{1822, 0}";
-			sepNavVisRange = "{770, 1095}";
+			sepNavIntBoundsRect = "{{0, 0}, {1034, 1196}}";
+			sepNavSelRange = "{519, 0}";
+			sepNavVisRange = "{0, 770}";
 			sepNavWindowFrame = "{{38, 181}, {911, 971}}";
 		};
 	};
@@ -239,6 +239,10 @@
 			E204C3DC146CA547001544FC /* PBXTextBookmark */ = E204C3DC146CA547001544FC /* PBXTextBookmark */;
 			E204C3F4146CB24D001544FC /* PBXTextBookmark */ = E204C3F4146CB24D001544FC /* PBXTextBookmark */;
 			E204C3FD146CB286001544FC /* PBXTextBookmark */ = E204C3FD146CB286001544FC /* PBXTextBookmark */;
+			E204C401146CB325001544FC /* PBXTextBookmark */ = E204C401146CB325001544FC /* PBXTextBookmark */;
+			E204C402146CB325001544FC /* XCBuildMessageTextBookmark */ = E204C402146CB325001544FC /* XCBuildMessageTextBookmark */;
+			E204C403146CB325001544FC /* PBXTextBookmark */ = E204C403146CB325001544FC /* PBXTextBookmark */;
+			E204C404146CB326001544FC /* PBXTextBookmark */ = E204C404146CB326001544FC /* PBXTextBookmark */;
 		};
 		sourceControlManager = E204C17F1469FA8B001544FC /* Source Control */;
 		userBuildSettings = {
@@ -1259,7 +1263,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {628, 4043}}";
 			sepNavSelRange = "{11341, 0}";
-			sepNavVisRange = "{6956, 1338}";
+			sepNavVisRange = "{6956, 1340}";
 			sepNavWindowFrame = "{{894, 100}, {911, 971}}";
 		};
 	};
@@ -1485,6 +1489,45 @@
 		rLoc = 11341;
 		rType = 0;
 		vrLen = 1338;
+		vrLoc = 6956;
+	};
+	E204C401146CB325001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 169";
+		rLen = 0;
+		rLoc = 5351;
+		rType = 0;
+		vrLen = 1144;
+		vrLoc = 4659;
+	};
+	E204C402146CB325001544FC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Invalid conversion from 'const rec::util::Cuttable*' to 'rec::util::Cuttable*'";
+		fRef = 8C1F657F03DB48DCBA241C62 /* Cuttable.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 28;
+		rType = 1;
+	};
+	E204C403146CB325001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C1F657F03DB48DCBA241C62 /* Cuttable.cpp */;
+		name = "Cuttable.cpp: 21";
+		rLen = 0;
+		rLoc = 519;
+		rType = 0;
+		vrLen = 770;
+		vrLoc = 0;
+	};
+	E204C404146CB326001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C38D146C6262001544FC /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 301";
+		rLen = 0;
+		rLoc = 11341;
+		rType = 0;
+		vrLen = 1340;
 		vrLoc = 6956;
 	};
 	E2B550FA014DE206D4635080 /* CommandMapEditor.cpp */ = {

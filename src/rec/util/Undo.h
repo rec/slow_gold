@@ -13,6 +13,7 @@ int undoes();
 int undoable();
 
 inline bool canRedo() { return undoes(); }
+
 inline bool canUndo() { return undoable(); }
 
 void undo();

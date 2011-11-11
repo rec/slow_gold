@@ -77,12 +77,18 @@ void UndoQueue::doOrRedo(Action::Type type) {
   int td = (type == Action::REDO) ? 1 : -1;
 
   int position = executedSize_ + td;
-  if (type == Action::REDO) {
-    position++;
-  }
+  if (type == Action::REDO)
+    position--;
 
-  if (position < 0 || position >= queue_.size()) {
-    LOG(ERROR) << "Position is out of range at " << position;
+#if 0
+  DLOG(INFO) << position << ", " << td << ", "
+             << executedSize_ << ", "
+             << preUndoSize_;
+#endif
+
+  if (position < 0 || position >= preUndoSize_) {
+    LOG(ERROR) << "Position is out of range at " << position
+               << ", " << preUndoSize_;
     return;
   }
 
@@ -119,18 +125,23 @@ void UndoQueue::doOrRedo(Action::Type type) {
   newAction->set_undo_index(position);
   queue_.push_back(newAction.transfer());
   editables_.push_back(NULL);
-  executedSize_ = queue_.size();
 
   undoes_ -= td;
   executedSize_ += td;
   DCHECK_GE(undoes_, 0);
   DCHECK_GE(executedSize_, 0);
 
-  DCHECK_LE(undoes_, queue_.size());
-  DCHECK_LE(executedSize_, queue_.size());
+  DCHECK_LE(undoes_, preUndoSize_);
+  DCHECK_LE(executedSize_, preUndoSize_);
 
   editable->needsUpdate();
   broadcast(None());
+
+#if 0
+  DLOG(INFO) << position << ", " << td << ", "
+             << executedSize_ << ", "
+             << preUndoSize_;
+#endif
 }
 
 bool UndoQueue::write(bool finish) {
