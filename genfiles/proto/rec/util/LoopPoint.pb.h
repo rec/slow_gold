@@ -225,17 +225,25 @@ class LoopPointList : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >*
       mutable_loop_point();
   
+  // optional double length = 2;
+  inline bool has_length() const;
+  inline void clear_length();
+  static const int kLengthFieldNumber = 2;
+  inline double length() const;
+  inline void set_length(double value);
+  
   // @@protoc_insertion_point(class_scope:rec.util.LoopPointList)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint > loop_point_;
+  double length_;
   friend void  protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fLoopPoint_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -401,6 +409,22 @@ LoopPointList::loop_point() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >*
 LoopPointList::mutable_loop_point() {
   return &loop_point_;
+}
+
+// optional double length = 2;
+inline bool LoopPointList::has_length() const {
+  return _has_bit(1);
+}
+inline void LoopPointList::clear_length() {
+  length_ = 0;
+  _clear_bit(1);
+}
+inline double LoopPointList::length() const {
+  return length_;
+}
+inline void LoopPointList::set_length(double value) {
+  _set_bit(1);
+  length_ = value;
 }
 
 

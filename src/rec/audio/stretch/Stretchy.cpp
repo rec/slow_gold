@@ -1,7 +1,6 @@
 #include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/stretch/AudioMagic.h"
 #include "rec/audio/stretch/RubberBand.h"
-#include "rec/audio/stretch/SoundTouch.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Implementation.h"
 #include "rec/util/Math.h"
@@ -39,10 +38,6 @@ static Implementation* makeImplementation(Source* src, const Stretch& stretch) {
   switch (stretch.strategy()) {
 #ifdef USE_AUDIO_MAGIC
    case Stretch::AUDIO_MAGIC: return new AudioMagic(src, stretch);
-#endif
-
-#ifdef USE_SOUNDTOUCH
-   case Stretch::SOUNDTOUCH: return new SoundTouch(src, stretch);
 #endif
 
    case Stretch::RUBBERBAND: return new RubberBand(src, stretch);

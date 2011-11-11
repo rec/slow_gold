@@ -9,4 +9,5 @@ message LoopPoint {
 
 message LoopPointList {
   repeated LoopPoint loop_point = 1;
+  optional double length = 2;
 };

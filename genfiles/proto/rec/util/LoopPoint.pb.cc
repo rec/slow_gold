@@ -50,8 +50,9 @@ void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoopPoint));
   LoopPointList_descriptor_ = file->message_type(1);
-  static const int LoopPointList_offsets_[1] = {
+  static const int LoopPointList_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPointList, loop_point_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPointList, length_),
   };
   LoopPointList_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -100,9 +101,9 @@ void protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\030rec/util/LoopPoint.proto\022\010rec.util\"K\n\t"
     "LoopPoint\022\017\n\004time\030\001 \001(\001:\0010\022\020\n\010selected\030\002"
-    " \001(\010\022\014\n\004name\030\003 \001(\t\022\r\n\005notes\030\004 \001(\t\"8\n\rLoo"
+    " \001(\010\022\014\n\004name\030\003 \001(\t\022\r\n\005notes\030\004 \001(\t\"H\n\rLoo"
     "pPointList\022\'\n\nloop_point\030\001 \003(\0132\023.rec.uti"
-    "l.LoopPoint", 171);
+    "l.LoopPoint\022\016\n\006length\030\002 \001(\001", 187);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/LoopPoint.proto", &protobuf_RegisterTypes);
   LoopPoint::default_instance_ = new LoopPoint();
@@ -483,6 +484,7 @@ void LoopPoint::Swap(LoopPoint* other) {
 
 #ifndef _MSC_VER
 const int LoopPointList::kLoopPointFieldNumber;
+const int LoopPointList::kLengthFieldNumber;
 #endif  // !_MSC_VER
 
 LoopPointList::LoopPointList()
@@ -501,6 +503,7 @@ LoopPointList::LoopPointList(const LoopPointList& from)
 
 void LoopPointList::SharedCtor() {
   _cached_size_ = 0;
+  length_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -534,6 +537,9 @@ LoopPointList* LoopPointList::New() const {
 }
 
 void LoopPointList::Clear() {
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    length_ = 0;
+  }
   loop_point_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -556,6 +562,22 @@ bool LoopPointList::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_loop_point;
+        if (input->ExpectTag(17)) goto parse_length;
+        break;
+      }
+      
+      // optional double length = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_length:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &length_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -584,6 +606,11 @@ void LoopPointList::SerializeWithCachedSizes(
       1, this->loop_point(i), output);
   }
   
+  // optional double length = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->length(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -599,6 +626,11 @@ void LoopPointList::SerializeWithCachedSizes(
         1, this->loop_point(i), target);
   }
   
+  // optional double length = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->length(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -609,6 +641,13 @@ void LoopPointList::SerializeWithCachedSizes(
 int LoopPointList::ByteSize() const {
   int total_size = 0;
   
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    // optional double length = 2;
+    if (has_length()) {
+      total_size += 1 + 8;
+    }
+    
+  }
   // repeated .rec.util.LoopPoint loop_point = 1;
   total_size += 1 * this->loop_point_size();
   for (int i = 0; i < this->loop_point_size(); i++) {
@@ -643,6 +682,11 @@ void LoopPointList::MergeFrom(const ::google::protobuf::Message& from) {
 void LoopPointList::MergeFrom(const LoopPointList& from) {
   GOOGLE_CHECK_NE(&from, this);
   loop_point_.MergeFrom(from.loop_point_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from._has_bit(1)) {
+      set_length(from.length());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -666,6 +710,7 @@ bool LoopPointList::IsInitialized() const {
 void LoopPointList::Swap(LoopPointList* other) {
   if (other != this) {
     loop_point_.Swap(&other->loop_point_);
+    std::swap(length_, other->length_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

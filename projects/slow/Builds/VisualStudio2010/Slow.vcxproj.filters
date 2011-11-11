@@ -26,9 +26,6 @@
     <Filter Include="Slow\rec\audio\format\raw">
       <UniqueIdentifier>{E8AC3F17-580D-214F-F83B-F11986873F88}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Slow\rec\audio\soundtouch">
-      <UniqueIdentifier>{33CC8C19-2D67-3D4C-7370-40383E63F993}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Slow\rec\audio\source">
       <UniqueIdentifier>{49686575-4732-23C8-5948-2A3F71ABF07D}</UniqueIdentifier>
     </Filter>
@@ -244,39 +241,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp">
       <Filter>Slow\rec\audio\format\raw</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_gcc.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_win.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\sse_optimized.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.cpp">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp">
       <Filter>Slow\rec\audio\source</Filter>
     </ClCompile>
@@ -296,9 +260,6 @@
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\RubberBand.cpp">
-      <Filter>Slow\rec\audio\stretch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\SoundTouch.cpp">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp">
@@ -999,42 +960,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h">
       <Filter>Slow\rec\audio\format\raw</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSamplePipe.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\soundtouch_config.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\STTypes.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.h">
-      <Filter>Slow\rec\audio\soundtouch</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h">
       <Filter>Slow\rec\audio\source</Filter>
     </ClInclude>
@@ -1078,9 +1003,6 @@
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\RubberBand.h">
-      <Filter>Slow\rec\audio\stretch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\SoundTouch.h">
       <Filter>Slow\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h">

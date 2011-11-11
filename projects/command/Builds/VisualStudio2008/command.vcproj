@@ -183,31 +183,6 @@
               <File RelativePath="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h"/>
             </Filter>
           </Filter>
-          <Filter Name="soundtouch">
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\AAFilter.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\AAFilter.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\cpu_detect.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_gcc.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_win.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\FIFOSamplePipe.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\soundtouch_config.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\sse_optimized.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\STTypes.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\TDStretch.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\soundtouch\TDStretch.h"/>
-          </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\Empty.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\FrameSource.h"/>
@@ -233,8 +208,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Implementation.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\RubberBand.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\RubberBand.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\stretch\SoundTouch.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\stretch\SoundTouch.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
