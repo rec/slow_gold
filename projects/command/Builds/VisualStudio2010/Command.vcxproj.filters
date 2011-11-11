@@ -14,9 +14,6 @@
     <Filter Include="Command\rec\audio">
       <UniqueIdentifier>{968702D2-B7E5-5E31-2940-EBBE63D879B3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Command\rec\audio\ammf_scaler">
-      <UniqueIdentifier>{682D4AB2-CD59-721F-7277-319234838063}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Command\rec\audio\format">
       <UniqueIdentifier>{F1D9D38A-72A7-4750-D52F-816554427F3A}</UniqueIdentifier>
     </Filter>
@@ -202,18 +199,6 @@
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp">
       <Filter>Command\rec\app</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.cpp">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.cpp">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.c">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.c">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp">
       <Filter>Command\rec\audio</Filter>
     </ClCompile>
@@ -253,9 +238,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp">
       <Filter>Command\rec\audio\source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\AudioMagic.cpp">
-      <Filter>Command\rec\audio\stretch</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Implementation.cpp">
       <Filter>Command\rec\audio\stretch</Filter>
     </ClCompile>
@@ -266,9 +248,6 @@
       <Filter>Command\rec\audio\stretch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp">
-      <Filter>Command\rec\audio\stretch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp">
       <Filter>Command\rec\audio\stretch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp">
@@ -903,24 +882,6 @@
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h">
       <Filter>Command\rec\app</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.h">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.h">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.h">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.h">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfGlobals.h">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h">
-      <Filter>Command\rec\audio\ammf_scaler</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h">
       <Filter>Command\rec\audio</Filter>
     </ClInclude>
@@ -996,9 +957,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h">
       <Filter>Command\rec\audio\source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\AudioMagic.h">
-      <Filter>Command\rec\audio\stretch</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Implementation.h">
       <Filter>Command\rec\audio\stretch</Filter>
     </ClInclude>
@@ -1009,12 +967,6 @@
       <Filter>Command\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h">
-      <Filter>Command\rec\audio\stretch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TestHarness.h">
-      <Filter>Command\rec\audio\stretch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.h">
       <Filter>Command\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.h">

@@ -143,18 +143,6 @@
           <File RelativePath="..\..\..\..\src\rec\app\Window.h"/>
         </Filter>
         <Filter Name="audio">
-          <Filter Name="ammf_scaler">
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\hfft.c"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\hfft.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.c"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfGlobals.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h"/>
-          </Filter>
           <File RelativePath="..\..\..\..\src\rec\audio\Audio.h"/>
           <File RelativePath="..\..\..\..\src\rec\audio\Audio_test.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\audio\Device.cpp"/>
@@ -210,8 +198,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
           </Filter>
           <Filter Name="stretch">
-            <File RelativePath="..\..\..\..\src\rec\audio\stretch\AudioMagic.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\stretch\AudioMagic.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Implementation.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Implementation.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\RubberBand.cpp"/>
@@ -221,10 +207,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretchy_test.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\stretch\TestHarness.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\stretch\TimeScaler.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\stretch\TimeScaler_test.cpp"/>
           </Filter>
           <Filter Name="util">
             <File RelativePath="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp"/>

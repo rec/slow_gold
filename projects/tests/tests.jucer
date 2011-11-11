@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="fAcxnNQ86" name="tests">
+  <MAINGROUP id="mTy3WMvzE" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -51,28 +51,6 @@
               name="Window.h" resource="0"/>
       </GROUP>
       <GROUP id="GKbTArUaD" name="audio">
-        <GROUP id="UWeCsPaqW" name="ammf_scaler">
-          <FILE compile="1" file="../../src/rec/audio/ammf_scaler/AudioResampler.cpp"
-                id="84btyqWaf" name="AudioResampler.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/AudioResampler.h"
-                id="vwmh75xwO" name="AudioResampler.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/ammf_scaler/AudioTimeScaler.cpp"
-                id="1sV8BVP2c" name="AudioTimeScaler.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/AudioTimeScaler.h"
-                id="1YN4U8wDw" name="AudioTimeScaler.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/ammf_scaler/hfft.c" id="bYW8YmS6t"
-                name="hfft.c" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/hfft.h" id="A865VDLmH"
-                name="hfft.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/ammf_scaler/mfAlloc.c"
-                id="GnlVelMEe" name="mfAlloc.c" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfAlloc.h"
-                id="wRSJwoqWo" name="mfAlloc.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfGlobals.h"
-                id="bnsSnffmP" name="mfGlobals.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMacros.h"
-                id="Gnoly3u4I" name="mfMacros.h" resource="0"/>
-        </GROUP>
         <FILE compile="0" file="../../src/rec/audio/Audio.h" id="r2zFxs9Dx"
               name="Audio.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/audio/Audio_test.cpp" id="XUuBhN6VA"
@@ -174,10 +152,6 @@
                 name="Wrappy.h" resource="0"/>
         </GROUP>
         <GROUP id="cEgX2guQg" name="stretch">
-          <FILE compile="1" file="../../src/rec/audio/stretch/AudioMagic.cpp"
-                id="FhmJfRjZh" name="AudioMagic.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/stretch/AudioMagic.h" id="P0fYucNI9"
-                name="AudioMagic.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/Implementation.cpp"
                 id="MNJOXf4p8" name="Implementation.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Implementation.h"
@@ -196,14 +170,6 @@
                 name="Stretchy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/Stretchy_test.cpp"
                 id="YxVo5h0cY" name="Stretchy_test.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/stretch/TestHarness.h"
-                id="JCQy8qWeM" name="TestHarness.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/stretch/TimeScaler.cpp"
-                id="10a3c27pv" name="TimeScaler.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/stretch/TimeScaler.h" id="kgHubmmi6"
-                name="TimeScaler.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/stretch/TimeScaler_test.cpp"
-                id="feQAjMOjR" name="TimeScaler_test.cpp" resource="0"/>
         </GROUP>
         <GROUP id="fumtZB0fL" name="util">
           <FILE compile="1" file="../../src/rec/audio/util/AudioFormatManager.cpp"
@@ -1353,7 +1319,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2B6Q4nkwa" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="9mOx2Nikt" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
