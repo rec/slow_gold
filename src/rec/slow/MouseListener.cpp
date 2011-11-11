@@ -8,6 +8,7 @@
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Target.h"
+#include "rec/util/Math.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -60,13 +61,11 @@ void zoom(const Instance& instance, const MouseEvent& e,
 
 }  // namespace
 
-Mode::Action MouseListener::getClickAction(const MouseEvent& e) {
-  juce::ModifierKeys k = e.mods;
-
-  bool alt = k.isAltDown();
-  bool cmd = k.isCommandDown();
-  bool right = k.isPopupMenu();  // Right click or ctrl click.
-  bool shift = k.isShiftDown();
+Mode::Action MouseListener::getClickAction() {
+  bool alt = dragMods_.isAltDown();
+  bool cmd = dragMods_.isCommandDown();
+  bool right = dragMods_.isPopupMenu();  // Right click or ctrl click.
+  bool shift = dragMods_.isShiftDown();
   bool none = !(alt || cmd || right || shift);
 
   Mode::Action modeAction = mode_.click();
@@ -95,7 +94,8 @@ void MouseListener::mouseDown(const MouseEvent& e) {
   Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform) {
     RealTime time = waveform->xToTime(e.x);
-    Mode::Action action = getClickAction(e);
+    dragMods_ = e.mods;
+    Mode::Action action = getClickAction();
     if (action == Mode::DRAG)
       waveformDragStart_ = DataListener<ZoomProto>::data()->get().begin();
 
@@ -135,7 +135,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
 void MouseListener::mouseDrag(const MouseEvent& e) {
   Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform) {
-    Mode::Action action = getClickAction(e);
+    Mode::Action action = getClickAction();
     if (action == Mode::DRAG) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
       widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::data()->get());
@@ -153,10 +153,12 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 
   } else if (e.eventComponent->getName() == "Cursor") {
     Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
-    RealTime t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
-    cursor->setListeningToClock(false);
-    cursor->setTime(t);
-    currentTime()->setCursorTime(cursor->index(), t);
+    if (!near(cursor->getTime(), 0.0, 0.001)) {
+      RealTime t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
+      cursor->setListeningToClock(false);
+      cursor->setTime(t);
+      currentTime()->setCursorTime(cursor->index(), t);
+    }
   }
 }
 

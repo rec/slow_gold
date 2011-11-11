@@ -63,7 +63,7 @@ String TableController::displayText(const TableColumn& col, const Value& value) 
   switch (col.type()) {
    case TableColumn::STRING: return str(value.string_f());
    case TableColumn::UINT32: return String(value.uint32_f());
-   case TableColumn::TIME: return formatTime(RealTime(value.double_f()), length_, false, false, 0);
+   case TableColumn::TIME: return formatTime(RealTime(value.double_f()), length_);
    case TableColumn::DOUBLE: return String(value.double_f());
 
    default: return "<unknown>";

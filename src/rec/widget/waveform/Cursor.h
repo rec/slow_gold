@@ -40,7 +40,6 @@ class Cursor : public Component, public Listener< Samples<44100> > {
   RealTime time_;
   const int index_;
   juce::Rectangle<int> bounds_;
-  bool dragging_;
   int dragX_;
   int mouseDragX_;
   bool listeningToClock_;

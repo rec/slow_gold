@@ -57,7 +57,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
       stretchyResizer_(Address("stretchy_y"), &controllerPanel_, 1, e) {
   add(&mainPanel_, &nonLoopPanel_, 500, -1.0, -0.8);
   add(&mainPanel_, &loopResizer_, 7.0);
-  add(&mainPanel_, components->loops_, 80, -1.0, -0.2);
+  add(&mainPanel_, components->loops_, 250, -1.0, -0.2);
 
   add(&nonLoopPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);
   add(&nonLoopPanel_, &directoryResizer_, 7.0);

@@ -3,6 +3,8 @@ package rec.util;
 message LoopPoint {
   optional double time = 1 [default = 0.0];
   optional bool selected = 2;
+  optional string name = 3;
+  optional string notes = 4;
 };
 
 message LoopPointList {

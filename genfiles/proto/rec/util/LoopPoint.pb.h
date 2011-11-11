@@ -106,6 +106,26 @@ class LoopPoint : public ::google::protobuf::Message {
   inline bool selected() const;
   inline void set_selected(bool value);
   
+  // optional string name = 3;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 3;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  
+  // optional string notes = 4;
+  inline bool has_notes() const;
+  inline void clear_notes();
+  static const int kNotesFieldNumber = 4;
+  inline const ::std::string& notes() const;
+  inline void set_notes(const ::std::string& value);
+  inline void set_notes(const char* value);
+  inline void set_notes(const char* value, size_t size);
+  inline ::std::string* mutable_notes();
+  
   // @@protoc_insertion_point(class_scope:rec.util.LoopPoint)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -113,11 +133,15 @@ class LoopPoint : public ::google::protobuf::Message {
   
   double time_;
   bool selected_;
+  ::std::string* name_;
+  static const ::std::string _default_name_;
+  ::std::string* notes_;
+  static const ::std::string _default_notes_;
   friend void  protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fLoopPoint_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -264,6 +288,90 @@ inline bool LoopPoint::selected() const {
 inline void LoopPoint::set_selected(bool value) {
   _set_bit(1);
   selected_ = value;
+}
+
+// optional string name = 3;
+inline bool LoopPoint::has_name() const {
+  return _has_bit(2);
+}
+inline void LoopPoint::clear_name() {
+  if (name_ != &_default_name_) {
+    name_->clear();
+  }
+  _clear_bit(2);
+}
+inline const ::std::string& LoopPoint::name() const {
+  return *name_;
+}
+inline void LoopPoint::set_name(const ::std::string& value) {
+  _set_bit(2);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void LoopPoint::set_name(const char* value) {
+  _set_bit(2);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void LoopPoint::set_name(const char* value, size_t size) {
+  _set_bit(2);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* LoopPoint::mutable_name() {
+  _set_bit(2);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+
+// optional string notes = 4;
+inline bool LoopPoint::has_notes() const {
+  return _has_bit(3);
+}
+inline void LoopPoint::clear_notes() {
+  if (notes_ != &_default_notes_) {
+    notes_->clear();
+  }
+  _clear_bit(3);
+}
+inline const ::std::string& LoopPoint::notes() const {
+  return *notes_;
+}
+inline void LoopPoint::set_notes(const ::std::string& value) {
+  _set_bit(3);
+  if (notes_ == &_default_notes_) {
+    notes_ = new ::std::string;
+  }
+  notes_->assign(value);
+}
+inline void LoopPoint::set_notes(const char* value) {
+  _set_bit(3);
+  if (notes_ == &_default_notes_) {
+    notes_ = new ::std::string;
+  }
+  notes_->assign(value);
+}
+inline void LoopPoint::set_notes(const char* value, size_t size) {
+  _set_bit(3);
+  if (notes_ == &_default_notes_) {
+    notes_ = new ::std::string;
+  }
+  notes_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* LoopPoint::mutable_notes() {
+  _set_bit(3);
+  if (notes_ == &_default_notes_) {
+    notes_ = new ::std::string;
+  }
+  return notes_;
 }
 
 // -------------------------------------------------------------------

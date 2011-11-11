@@ -278,6 +278,8 @@
 			E204C447146CE380001544FC /* PBXTextBookmark */ = E204C447146CE380001544FC /* PBXTextBookmark */;
 			E204C44A146CE39A001544FC /* PBXTextBookmark */ = E204C44A146CE39A001544FC /* PBXTextBookmark */;
 			E204C44B146CE39A001544FC /* PBXTextBookmark */ = E204C44B146CE39A001544FC /* PBXTextBookmark */;
+			E204C459146CE74A001544FC /* PBXTextBookmark */ = E204C459146CE74A001544FC /* PBXTextBookmark */;
+			E204C45A146CE74A001544FC /* PBXTextBookmark */ = E204C45A146CE74A001544FC /* PBXTextBookmark */;
 		};
 		sourceControlManager = E204C17F1469FA8B001544FC /* Source Control */;
 		userBuildSettings = {
@@ -299,7 +301,7 @@
 	};
 	A9BA8343576382C2BBC6AAC5 /* FormatTime.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {881, 746}}";
+			sepNavIntBoundsRect = "{{0, 0}, {881, 769}}";
 			sepNavSelRange = "{277, 0}";
 			sepNavVisRange = "{0, 1081}";
 		};
@@ -1593,7 +1595,7 @@
 		path = ../../../../../rec/src/rec/gui/TableController.h;
 		sourceTree = "<group>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 835}}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 858}}";
 			sepNavSelRange = "{1399, 20}";
 			sepNavVisRange = "{0, 1558}";
 			sepNavWindowFrame = "{{84, 139}, {911, 971}}";
@@ -1785,6 +1787,26 @@
 		vrLoc = 0;
 	};
 	E204C44B146CE39A001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E204C423146CE198001544FC /* TableController.h */;
+		name = "TableController.h: 48";
+		rLen = 20;
+		rLoc = 1399;
+		rType = 0;
+		vrLen = 1558;
+		vrLoc = 0;
+	};
+	E204C459146CE74A001544FC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A9BA8343576382C2BBC6AAC5 /* FormatTime.cpp */;
+		name = "FormatTime.cpp: 14";
+		rLen = 0;
+		rLoc = 277;
+		rType = 0;
+		vrLen = 1081;
+		vrLoc = 0;
+	};
+	E204C45A146CE74A001544FC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E204C423146CE198001544FC /* TableController.h */;
 		name = "TableController.h: 48";

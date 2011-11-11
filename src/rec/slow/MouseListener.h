@@ -33,9 +33,10 @@ class MouseListener : public HasInstance,
   virtual void onDataChange(const Mode& m) { setMode(m); }
 
  private:
-  Mode::Action getClickAction(const MouseEvent&);
+  Mode::Action getClickAction();
 
   RealTime waveformDragStart_;
+  ModifierKeys dragMods_;
   Range<RealTime> cursorDrag_;
   Mode mode_;
 

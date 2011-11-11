@@ -17,7 +17,13 @@ namespace audio {
 static Def<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
 #if 0
-"column { type: STRING name: \"Name\" address { part { name: \"name\" } } } "
+"column { "
+"type: STRING "
+"name: \"Name\" "
+"address { part { name: \"name\" } } "
+"width: 170 "
+"maximum_width: 300 "
+"} "
 "column { type: STRING name: \"Notes\" address { part { name: \"notes\" } } } "
 #endif
 );
