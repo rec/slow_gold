@@ -33,7 +33,7 @@ void Window::initialise() {
   setMenuBar(NULL);
 #endif
 
-  ModifierKeys keys = ModifierKeys::getCurrentModifiers();
+  ModifierKeys keys = ModifierKeys::getCurrentModifiersRealtime();
   if (keys.isCommandDown()) {
     LOG(ERROR) << "Trashing your preferences files.";
     trashPreferences();
