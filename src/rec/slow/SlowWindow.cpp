@@ -41,6 +41,11 @@ void SlowWindow::operator()(const AppLayout& layout) {
   setProtoBounds(layout, false);
 }
 
+void SlowWindow::trashPreferences() {
+  data::editableFile<AppLayout>().deleteFile();
+  data::editableFile<VirtualFile>().deleteFile();
+}
+
 Component* SlowWindow::getMainComponent() {
   return instance_->components_->mainPage_->panel();
 }

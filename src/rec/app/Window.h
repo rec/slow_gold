@@ -26,6 +26,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual void focusOfChildComponentChanged(juce::Component::FocusChangeType) {
     broadcast(None());
   }
+  virtual void trashPreferences() {}
 
  protected:
   virtual void constructInstance() = 0;

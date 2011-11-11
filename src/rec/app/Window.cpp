@@ -19,7 +19,7 @@ void Window::initialise() {
 
   constructInstance();
   Component* mp = getMainComponent();
-  doComputeBounds();
+
 
   setContentOwned(mp, false);
 
@@ -32,6 +32,16 @@ void Window::initialise() {
   juce::MenuBarModel::setMacMainMenu(getMenuBarModel());
   setMenuBar(NULL);
 #endif
+
+  ModifierKeys keys = ModifierKeys::getCurrentModifiers();
+  if (keys.isCommandDown()) {
+    LOG(ERROR) << "Trashing your preferences files.";
+    trashPreferences();
+  } else {
+    LOG(ERROR) << keys.getRawFlags();
+  }
+
+  doComputeBounds();
 
   running_ = true;
 }

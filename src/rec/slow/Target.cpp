@@ -38,7 +38,7 @@ void Target::addCommands() {
       const String& desc = str(c.desc().full());
       const String& category = str(c.category());
 
-       manager_.addCallback(id, j->second, menu, category, desc);
+      manager_.addCallback(id, j->second, menu, category, desc);
     }
   }
 

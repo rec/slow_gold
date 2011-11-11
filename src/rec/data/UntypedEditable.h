@@ -13,7 +13,7 @@ class UntypedEditable : public Editable {
   virtual ~UntypedEditable();
 
   // Request an update to this data in a different thread.
-  bool fileReadSuccess() const { return fileReadSuccess_; }
+  virtual bool fileReadSuccess() const { return fileReadSuccess_; }
 
   virtual const Value getValue(const Address& address) const;
   virtual bool hasValue(const Address& address) const;
@@ -44,10 +44,6 @@ class UntypedEditable : public Editable {
   virtual void onDataChange() = 0;
 
  protected:
-  // Change the data with an Operations.  op will eventually be deleted.  The
-  // change is performed on a different thread so it is likely that the value of
-  // get() won't immediately be updated.
-
   UntypedEditable(const File& file, const VirtualFile& vf, Message* message);
 
   CriticalSection lock_;

@@ -19,6 +19,7 @@ class SlowWindow : public app::Window, public Listener<const AppLayout&> {
   }
 
   virtual void operator()(const AppLayout&);
+  virtual void trashPreferences();
 
  protected:
   virtual void doStartup();

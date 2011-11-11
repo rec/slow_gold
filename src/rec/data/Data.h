@@ -14,6 +14,9 @@ EditableMap* editableMap();
 CriticalSection* editableMapLock();
 
 template <typename Proto>
+File editableFile(const VirtualFile& vf = file::none());
+
+template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
 
 template <typename Proto>
@@ -23,11 +26,18 @@ void set(const Proto& p, const VirtualFile& f = file::none(),
 template <typename Proto>
 const Proto get(const VirtualFile& f = file::none());
 
+
+
 // Implementations
 
 template <typename Proto>
+File editableFile(const VirtualFile& vf = file::none()) {
+  return getShadowFile(vf, str(Proto::default_instance().GetTypeName()));
+}
+
+template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile& vf) {
-  File file = getShadowFile(vf, str(Proto::default_instance().GetTypeName()));
+  File file = editableFile<Proto>(vf);
   string key = str(file);
   ScopedLock l(*editableMapLock());
   EditableMap::const_iterator i = editableMap()->find(key);
