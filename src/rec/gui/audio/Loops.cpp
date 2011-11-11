@@ -151,7 +151,6 @@ void Loops::addLoopPoints(const LoopPointList& loops) {
       LoopPoint* lp = loopPoints_->add_loop_point();
       lp->CopyFrom(loops.loop_point(i));
       for (; j < lpl.loop_point_size() && lpl.loop_point(j).time() <= t; ++j);
-      lp->set_selected(j && lpl.loop_point(j - 1).selected());
     }
   }
 
