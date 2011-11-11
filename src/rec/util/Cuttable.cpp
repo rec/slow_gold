@@ -18,13 +18,15 @@ class EmptyCuttable : public Cuttable {
   virtual void cut() {}
 };
 
+static EmptyCuttable EMPTY;
+static Cuttable* DEFAULT_CUTTABLE = &EMPTY;
+
+
 Cuttable* current() {
   Component* c = Component::getCurrentlyFocusedComponent();
   if (Cuttable* cuttable = dynamic_cast<Cuttable*>(c))
     return cuttable;
-
-  static EmptyCuttable empty;
-  return &empty;
+  return DEFAULT_CUTTABLE;
 }
 
 }  // namespace
@@ -86,6 +88,10 @@ bool canCut() { return current()->canCut(); }
 bool canPaste() { return current()->canPaste(); }
 
 const string cuttableName() { return current()->cuttableName(); }
+
+void setDefaultCuttable(Cuttable* c) {
+  DEFAULT_CUTTABLE = c;
+}
 
 }  // namespace util
 }  // namespace rec

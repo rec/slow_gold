@@ -29,6 +29,9 @@ class Cuttable  {
   virtual void cut() = 0;
 };
 
+void setDefaultCuttable(Cuttable*);
+
+
 }  // namespace util
 }  // namespace rec
 

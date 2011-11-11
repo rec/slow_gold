@@ -11,6 +11,7 @@
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/Target.h"
+#include "rec/util/Cuttable.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
 
@@ -28,6 +29,7 @@ Components::Components(Instance* instance)
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {
   waveform_->setMenuBarModel(instance->menus_.get());
+  setDefaultCuttable(loops_.get());
 }
 
 Components::~Components() {}
