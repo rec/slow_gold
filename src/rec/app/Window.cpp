@@ -37,8 +37,6 @@ void Window::initialise() {
   if (keys.isCommandDown()) {
     LOG(ERROR) << "Trashing your preferences files.";
     trashPreferences();
-  } else {
-    LOG(ERROR) << keys.getRawFlags();
   }
 
   doComputeBounds();

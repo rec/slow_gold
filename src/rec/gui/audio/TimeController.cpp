@@ -46,15 +46,17 @@ void TimeController::operator()(const Stretch& stretch) {
   timeScale_ = timeScale(stretch);
 }
 
-void TimeController::operator()(const Range<RealTime>& r) {
-  songDial_(r);
-  songTime_.setLength(r.end_);
-}
-
 void TimeController::operator()(Samples<44100> time) {
-  RealTime scaledTime = RealTime(time) / timeScale_;
+  RealTime scaledTime = time;
+  if (DISPLAY_SCALED_TIME)
+    scaledTime /= timeScale_;
   songTime_(scaledTime);
   songDial_(scaledTime);
+}
+
+void TimeController::setLength(Samples<44100> len) {
+  songTime_.setLength(len);
+  songDial_.setLength(len);
 }
 
 }  // namespace audio

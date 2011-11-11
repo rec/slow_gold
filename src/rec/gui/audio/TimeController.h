@@ -18,13 +18,15 @@ class TimeController : public Layout, public Listener< Samples<44100> > {
   virtual ~TimeController() {}
 
   virtual void operator()(const rec::audio::stretch::Stretch&);
-  virtual void operator()(const Range<RealTime>&);
   virtual void operator()(Samples<44100>);
+  void setLength(Samples<44100>);
 
  private:
   CriticalSection lock_;
   widget::status::time::DialComponent songDial_;
   widget::status::time::TextComponent songTime_;
+
+  static const bool DISPLAY_SCALED_TIME = false;
 
   double timeScale_;
   gui::Layout timesLayout_;

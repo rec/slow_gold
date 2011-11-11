@@ -5,6 +5,7 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/PlayerController.h"
+#include "rec/gui/audio/TimeController.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/BufferFiller.h"
@@ -74,6 +75,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
     Samples<44100> length = thumbnail->buffer()->length();
     components()->waveform_->setLength(length);
     components()->loops_->setLength(length);
+    components()->timeController_->setLength(length);
     threads()->fillThread()->notify();
   }
 }

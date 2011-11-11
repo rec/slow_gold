@@ -2,7 +2,9 @@
 #define __REC_WIDGET_STATUS_DIALCOMPONENT__
 
 #include "rec/base/RealTime.h"
+#include "rec/util/listener/DataListener.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/Range.h"
 #include "rec/widget/status/Time.pb.h"
 
@@ -13,29 +15,35 @@ namespace time {
 
 class DialComponent : public Component,
                       public Listener<RealTime>,
-                      public Listener<const Range<RealTime>&> {
+                      public DataListener<LoopPointList> {
  public:
   explicit DialComponent(const Dial& desc);
 
-  virtual void operator()(const Range<RealTime>&);
   virtual void operator()(RealTime);
 
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
+  virtual void setLength(RealTime len) { length_ = len; }
 
   static const double PI;
   static const double REDRAW_ANGLE;
+
+ protected:
+  void onDataChange(const LoopPointList&);
 
  private:
   void recomputeAngle();
 
   CriticalSection lock_;
   Dial description_;
-  double time_;
-  Range<RealTime> range_;
+
+  RealTime time_;
+  RealTime length_;
   double zeroAngle_;
   double timeAngle_;
   double timeRatio_;
+
+  LoopPointList loops_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
 };

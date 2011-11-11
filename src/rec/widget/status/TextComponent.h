@@ -13,7 +13,8 @@ namespace widget {
 namespace status {
 namespace time {
 
-class TextComponent : public gui::SimpleLabel, public Listener<RealTime> {
+class TextComponent : public gui::SimpleLabel,
+                      public Listener<RealTime> {
  public:
   explicit TextComponent(const Text& desc = Text::default_instance());
   virtual void operator()(RealTime time) { setTime(time); }

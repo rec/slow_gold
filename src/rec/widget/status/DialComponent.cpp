@@ -22,50 +22,70 @@ static const double ALMOST_ZERO = 0.5 / 360.0;
 
 const double DialComponent::PI = 3.14159265358979323846264;
 const double DialComponent::REDRAW_ANGLE = 2.0 * DialComponent::PI * 0.001;
-const double SMALLEST_REAL_LENGTH = 0.01;
+const double SMALLEST_REAL_LENGTH = 0.1;
+const RealTime SMALLEST_TIME_CHANGE = 0.1;
 
 DialComponent::DialComponent(const Dial& desc)
     : Component(str(desc.widget().name())),
       description_(desc),
-      time_(0),
-      range_(0.0, 0.0),
+      time_(0.0),
+      length_(0.0),
       zeroAngle_(0.0),
       timeAngle_(0.0),
       timeRatio_(0.0) {
 }
 
 void DialComponent::operator()(RealTime time) {
-  ScopedLock l(lock_);
-  time_ = time;
-  recomputeAngle();
-}
+  {
+    ScopedLock l(lock_);
+    if (false && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
+      return;
 
-void DialComponent::operator()(const Range<RealTime>& r) {
-  ScopedLock l(lock_);
-  range_ = r;
-  recomputeAngle();
-}
+    time_ = time;
+    Range<RealTime> range;
 
-void DialComponent::recomputeAngle() {
-#ifdef TODO
-  double length = range_.size();
-  #if 0
-  // TODO: take care of this.
-  if (length <= SMALLEST_REAL_LENGTH)
-    length = length_;
-  #endif
+    for (int i = 1; i <= loops_.loop_point_size(); ++i) {
+      bool isLast = (i == loops_.loop_point_size());
+      if (isLast || time < loops_.loop_point(i).time()) {
+        if (loops_.loop_point(i - 1).selected()) {
+          range.begin_ = loops_.loop_point(i - 1).time();
+          range.end_ = isLast ? length_ : RealTime(loops_.loop_point(i).time());
+          break;
+        } else {
+          LOG(ERROR) << "Couldn't find time " << time
+                     << " in " << loops_.ShortDebugString();
+          return;
+        }
+      }
+    }
 
-  double zeroAngle = description_.zero_point() * 2.0 * PI;
+    if (range.size() < 1.0)
+      range.end_ = range.begin_ + 1.0;
 
-  timeRatio_ = (time_ - range_.begin_) / length;
-  double timeAngle = zeroAngle + timeRatio_ * 2.0 * PI;
-  if (fabs(timeAngle - timeAngle_) >= REDRAW_ANGLE ||
-      fabs(zeroAngle - zeroAngle_) >= REDRAW_ANGLE) {
+    double length = range.size();
+    double zeroAngle = description_.zero_point() * 2.0 * PI;
+
+    timeRatio_ = (time_ - range.begin_) / length;
+    double timeAngle = zeroAngle + timeRatio_ * 2.0 * PI;
+    if (fabs(timeAngle - timeAngle_) < REDRAW_ANGLE &&
+        fabs(zeroAngle - zeroAngle_) < REDRAW_ANGLE) {
+      return;
+    }
     zeroAngle_ = zeroAngle;
     timeAngle_ = timeAngle;
+  }
+
+  if (false) {
+    MessageManagerLock l;
+    repaint();
+  } else {
     thread::callAsync(this, &DialComponent::repaint);
   }
-#endif
+}
+
+void DialComponent::onDataChange(const LoopPointList& lpl) {
+  ScopedLock l(lock_);
+  loops_ = lpl;
 }
 
 void DialComponent::paint(Graphics& g) {

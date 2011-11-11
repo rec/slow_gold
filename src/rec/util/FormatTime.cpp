@@ -12,6 +12,7 @@ const String formatTime(RealTime time,
                         bool flash,
                         bool leadingZeros,
                         int decimals) {
+  maxTime = std::max(time, maxTime);
   bool displayHours = (maxTime >= 3600.0);
   int sec = static_cast<int>(time.time_);
   double fraction = time - sec * 1.0;
