@@ -7,7 +7,12 @@ namespace util {
 #define snprintf _snprintf
 #endif
 
-const String formatTime(RealTime time, bool flash, bool displayHours, bool leadingZeros, int decimals) {
+const String formatTime(RealTime time,
+                        RealTime maxTime,
+                        bool flash,
+                        bool leadingZeros,
+                        int decimals) {
+  bool displayHours = (maxTime >= 3600.0);
   int sec = static_cast<int>(time.time_);
   double fraction = time - sec * 1.0;
 
@@ -27,7 +32,7 @@ const String formatTime(RealTime time, bool flash, bool displayHours, bool leadi
     minutes += 60 * hours;
     const char* zero = (sec < 10 && decimals)  ? "0" : "";
     if (leadingZeros) {
-      snprintf(buffer, 64, "%03d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+      snprintf(buffer, 64, "%02d%c%s%02.*f", minutes, ch, zero, decimals, sf);
     } else {
       snprintf(buffer, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals, sf);
     }

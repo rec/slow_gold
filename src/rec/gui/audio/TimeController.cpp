@@ -48,6 +48,7 @@ void TimeController::operator()(const Stretch& stretch) {
 
 void TimeController::operator()(const Range<RealTime>& r) {
   songDial_(r);
+  songTime_.setLength(r.end_);
 }
 
 void TimeController::operator()(Samples<44100> time) {

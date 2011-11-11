@@ -15,7 +15,8 @@ namespace time {
 
 TextComponent::TextComponent(const Text& desc)
     : gui::SimpleLabel(str(desc.widget().name())),
-      description_(desc) {
+      description_(desc),
+      length_(0.0) {
   setJustificationType(juce::Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
 }
@@ -25,11 +26,10 @@ double TextComponent::getTime() const {
   return time_;
 }
 
-void TextComponent::setTime(double time) {
+void TextComponent::setTime(RealTime time) {
   ScopedLock l(lock_);
   time_ = time;
-
-  String timeDisplay = formatTime(time_, description_.separator().flash());
+  String timeDisplay = formatTime(time_, length_, description_.separator().flash());
   if (timeDisplay != timeDisplay_) {
     timeDisplay_ = timeDisplay;
     thread::callAsync(this, &TextComponent::redisplay);

@@ -2,6 +2,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/Data.h"
+#include "rec/gui/audio/Loops.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/music/CreateMusicFileReader.h"
@@ -60,6 +61,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
 
   if (isEmpty) {
     components()->waveform_->setLength(0);
+    components()->loops_->setLength(0.0);
   } else {
     using audio::util::ThumbnailBuffer;
 
@@ -68,7 +70,10 @@ void CurrentFile::setFile(const VirtualFile& f) {
       LOG(ERROR) << "Unable to read file " << getFullDisplayName(file_);
       return;
     }
-    components()->waveform_->setLength(thumbnail->buffer()->length());
+
+    Samples<44100> length = thumbnail->buffer()->length();
+    components()->waveform_->setLength(length);
+    components()->loops_->setLength(length);
     threads()->fillThread()->notify();
   }
 }

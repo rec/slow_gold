@@ -39,7 +39,7 @@ struct Samples {
   }
 
   template <typename Type>
-  int64 toSampleCount(Type t) const {
+  static int64 toSampleCount(Type t) {
     return static_cast<int64>(SAMPLES_PER_SEC * t);
   }
 

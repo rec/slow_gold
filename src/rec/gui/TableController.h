@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_TABLEMODELBASE__
 #define __REC_GUI_TABLEMODELBASE__
 
-#include "rec/base/Base.h"
+#include "rec/base/RealTime.h"
 #include "rec/gui/TableColumn.pb.h"
 #include "rec/util/listener/ProtoListener.h"
 #include "rec/data/Address.h"
@@ -32,17 +32,20 @@ class TableController : public TableListBoxModel,
   virtual void selectedRowsChanged(int lastRowSelected) = 0;
 
   void updateAndRepaint() { update(); repaint(); }
+  void setLength(RealTime len) { length_ = len; }
+
 
  protected:
   virtual void update() { updateContent(); }
 
-  static String displayText(const TableColumn& col, const data::Value& value);
+  String displayText(const TableColumn& col, const data::Value& value);
 
   ptr<Message> message_;
   TableColumnList columns_;
   CriticalSection lock_;
 
   data::Address address_;
+  RealTime length_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(TableController);

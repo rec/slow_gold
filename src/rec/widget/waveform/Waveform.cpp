@@ -274,7 +274,7 @@ void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
     int x = timeToX(time);
     g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
     g.drawVerticalLine(x, 0, h);
-    String s = formatTime(time, false, false, false, decimals);
+    String s = formatTime(time, length_, false, false, decimals);
     static const int WIDTH = 50;
     static const int HEIGHT = 10;
     static const int PAD = 4;

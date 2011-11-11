@@ -19,14 +19,16 @@ class TextComponent : public gui::SimpleLabel, public Listener<RealTime> {
   virtual void operator()(RealTime time) { setTime(time); }
 
   double getTime() const;
-  void setTime(double time);
+  void setTime(RealTime time);
+  void setLength(RealTime len) { length_ = len; }
   void redisplay();
 
  private:
   CriticalSection lock_;
   Text description_;
-  double time_;
+  RealTime time_;
   String timeDisplay_;
+  RealTime length_;
 
   DISALLOW_COPY_AND_ASSIGN(TextComponent);
 };
