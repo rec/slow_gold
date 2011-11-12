@@ -27,6 +27,7 @@ void SlowWindow::doStartup() {
   Lock l(lock_);
   instance_->startup();
   data::editable<AppLayout>()->addListener(this);
+  data::editable<AppLayout>()->onDataChange();
 }
 
 void SlowWindow::operator()(const AppLayout& layout) {
