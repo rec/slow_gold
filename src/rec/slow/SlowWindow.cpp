@@ -37,6 +37,14 @@ void SlowWindow::operator()(const AppLayout& layout) {
 
     *layout_ = layout;
   }
+#if 0
+  DLOG(INFO) << "("
+             << layout.bounds().top_left().x() << ", "
+             << layout.bounds().top_left().y() << ") - "
+             << layout.bounds().dimensions().x() << " x "
+             << layout.bounds().dimensions().y() << "";
+#endif
+
   MessageManagerLock l;
   setProtoBounds(layout, false);
 }

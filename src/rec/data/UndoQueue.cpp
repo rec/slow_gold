@@ -80,12 +80,6 @@ void UndoQueue::doOrRedo(Action::Type type) {
   if (type == Action::REDO)
     position--;
 
-#if 0
-  DLOG(INFO) << position << ", " << td << ", "
-             << executedSize_ << ", "
-             << preUndoSize_;
-#endif
-
   if (position < 0 || position >= preUndoSize_) {
     LOG(ERROR) << "Position is out of range at " << position
                << ", " << preUndoSize_;
@@ -136,12 +130,6 @@ void UndoQueue::doOrRedo(Action::Type type) {
 
   editable->needsUpdate();
   broadcast(None());
-
-#if 0
-  DLOG(INFO) << position << ", " << td << ", "
-             << executedSize_ << ", "
-             << preUndoSize_;
-#endif
 }
 
 bool UndoQueue::write(bool finish) {

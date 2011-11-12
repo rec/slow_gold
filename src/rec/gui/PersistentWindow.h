@@ -29,7 +29,7 @@ class PersistentWindow : public DocumentWindow {
       setLimitedBounds(b);
     else
       setBoundsConstrained(b);
-    setFullScreen(proto.full_screen());
+    // setFullScreen(proto.full_screen());  TODO: get this right or scrap it.
   }
 
   void setLimitedBounds(const Rect& rect);
