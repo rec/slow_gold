@@ -65,6 +65,13 @@
 			sepNavVisRange = "{1161, 2136}";
 		};
 	};
+	60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {881, 910}}";
+			sepNavSelRange = "{2043, 0}";
+			sepNavVisRange = "{0, 1808}";
+		};
+	};
 	6437EA4743EB96A16805A5AB /* MouseListener.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1034, 2145}}";
@@ -168,6 +175,10 @@
 			E204C440146CE368001544FC = E204C440146CE368001544FC /* PBXTextBookmark */;
 			E204C441146CE368001544FC = E204C441146CE368001544FC /* PBXTextBookmark */;
 			E204C442146CE368001544FC = E204C442146CE368001544FC /* PBXTextBookmark */;
+			E29F6E23146EF48600FBAD0B /* XCBuildMessageTextBookmark */ = E29F6E23146EF48600FBAD0B /* XCBuildMessageTextBookmark */;
+			E29F6E26146EF49300FBAD0B /* XCBuildMessageTextBookmark */ = E29F6E26146EF49300FBAD0B /* XCBuildMessageTextBookmark */;
+			E29F6E27146EF49300FBAD0B /* PBXTextBookmark */ = E29F6E27146EF49300FBAD0B /* PBXTextBookmark */;
+			E29F6E2A146EF49300FBAD0B /* PBXTextBookmark */ = E29F6E2A146EF49300FBAD0B /* PBXTextBookmark */;
 		};
 		sourceControlManager = E204C17F1469FA8B001544FC /* Source Control */;
 		userBuildSettings = {
@@ -232,9 +243,9 @@
 	};
 	BFC76053247EE3C690919E29 /* SlowWindow.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {741, 1105}}";
-			sepNavSelRange = "{616, 0}";
-			sepNavVisRange = "{475, 1308}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1222}}";
+			sepNavSelRange = "{914, 0}";
+			sepNavVisRange = "{327, 1579}";
 			sepNavWindowFrame = "{{199, 34}, {911, 971}}";
 		};
 	};
@@ -349,7 +360,7 @@
 		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
 		name = "SlowWindow.cpp: 85";
 		rLen = 0;
-		rLoc = 1783;
+		rLoc = 1782;
 		rType = 0;
 		vrLen = 912;
 		vrLoc = 530;
@@ -451,6 +462,44 @@
 		rLen = 0;
 		rLoc = 13;
 		rType = 1;
+	};
+	E29F6E23146EF48600FBAD0B /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Base operand of '->' has non-pointer type 'const rec::slow::AppLayout'";
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 34;
+		rType = 1;
+	};
+	E29F6E26146EF49300FBAD0B /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'setresizelimits' was not declared in this scope";
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 26;
+		rType = 1;
+	};
+	E29F6E27146EF49300FBAD0B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 73";
+		rLen = 0;
+		rLoc = 2043;
+		rType = 0;
+		vrLen = 1808;
+		vrLoc = 0;
+	};
+	E29F6E2A146EF49300FBAD0B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFC76053247EE3C690919E29 /* SlowWindow.cpp */;
+		name = "SlowWindow.cpp: 35";
+		rLen = 0;
+		rLoc = 914;
+		rType = 0;
+		vrLen = 1579;
+		vrLoc = 327;
 	};
 	E2B550FA014DE206D4635080 /* CommandMapEditor.cpp */ = {
 		uiCtxt = {

@@ -32,12 +32,12 @@ void SlowWindow::doStartup() {
 void SlowWindow::operator()(const AppLayout& layout) {
   {
     Lock l(lock_);
-    if (data::equals(*layout_, layout))
+    if (data::equals(layout_->bounds(), layout.bounds()))
       return;
 
     *layout_ = layout;
   }
-#if 0
+#if 1
   DLOG(INFO) << "("
              << layout.bounds().top_left().x() << ", "
              << layout.bounds().top_left().y() << ") - "
