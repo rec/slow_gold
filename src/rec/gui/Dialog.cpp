@@ -29,7 +29,9 @@ ModalKiller* modalKiller = NULL;
 }  // namespace
 
 DialogLocker::DialogLocker() {
+  getDisableBroadcaster()->broadcast(true);
   ScopedLock l(lock);
+
   locked_ = !openDialogOpen;
   openDialogOpen = true;
   if (!modalKiller)
@@ -37,11 +39,19 @@ DialogLocker::DialogLocker() {
 }
 
 DialogLocker::~DialogLocker() {
-  ScopedLock l(lock);
-  if (locked_) {
-    openDialogOpen = false;
-    modal = NULL;
+  {
+    ScopedLock l(lock);
+    if (locked_) {
+      openDialogOpen = false;
+      modal = NULL;
+    }
   }
+  getDisableBroadcaster()->broadcast(false);
+}
+
+Broadcaster<bool>* DialogLocker::getDisableBroadcaster() {
+  static Broadcaster<bool> disabler;
+  return &disabler;
 }
 
 void DialogLocker::setModalComponent(Component* c) {
@@ -82,14 +92,6 @@ bool openVirtualFile(Listener<const FileList&>* listener,
 
   return result;
 }
-
-template
-bool openVirtualFile(Listener<const VirtualFileList&>*, const String&,
-                     const String&, FileChooserFunction, const File&);
-
-template
-bool openVirtualFile(Listener<const VirtualFile&>*, const String&,
-                     const String&, FileChooserFunction, const File&);
 
 
 bool openOneFile(Listener<const VirtualFile&>* listener) {

@@ -12,7 +12,7 @@ class Application : public GenericApplication {
   Application(const String& n, const String& v) : GenericApplication(n, v) {
     google::InitGoogleLogging(str(n).c_str());
   }
-  virtual Window* createWindow() const { return new WindowImpl; }
+  virtual Window* createWindow() { return new WindowImpl(this); }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Application);

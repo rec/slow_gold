@@ -23,7 +23,9 @@ struct CommandCallback {
   ptr<Callback> callback_;
 };
 
-TargetManager::TargetManager(Component* c) : lastInvocation_(0) {
+TargetManager::TargetManager(Component* c)
+    : lastInvocation_(0), disabled_(false)
+{
   if (c)
     c->addKeyListener(commandManager_.getKeyMappings());
   commandManager_.setFirstCommandTarget(this);
@@ -35,8 +37,6 @@ TargetManager:: ~TargetManager() {
 
 void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(this);
-  commandManager_.registerAllCommandsForTarget(
-      juce::JUCEApplication::getInstance());
   loadKeyboardBindings();
 }
 
@@ -74,6 +74,8 @@ void TargetManager::getCommandInfo(CommandID cmd, ApplicationCommandInfo& info) 
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
   ScopedLock l(lock_);
+  if (disabled_)
+    return true;
   CommandCallbackMap::const_iterator i = map_.find(invocation.commandID);
   if (i == map_.end())
     return false;

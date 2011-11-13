@@ -25,8 +25,8 @@ void SetupPage::show(Component* comp) {
     return;
 
   locker.setModalComponent(comp);
-  juce::DialogWindow::showModalDialog("Set Audio Preferences", this, comp,
-                                      juce::Colours::white, true);
+  juce::DialogWindow::showModalDialog("Set Audio Preferences", this,
+                                      comp, juce::Colours::white, true);
 
   device_->saveState();
 }

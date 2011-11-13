@@ -13,6 +13,8 @@ class DialogLocker {
   bool isLocked() const { return locked_; }
   void setModalComponent(Component* c);
 
+  static Broadcaster<bool>* getDisableBroadcaster();
+
  private:
   bool locked_;
 

@@ -3,12 +3,14 @@
 namespace rec {
 namespace app {
 
-Window::Window(const String& name,
+Window::Window(GenericApplication* application,
+               const String& name,
                const Colour& bg,
                int requiredButtons,
                bool addToDesktop)
     : PersistentWindow(name, bg, requiredButtons, addToDesktop),
-      running_(false) {
+      running_(false),
+      application_(application) {
 }
 
 void Window::initialise() {

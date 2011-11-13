@@ -7,12 +7,14 @@
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/data/Data.h"
 #include "rec/gui/Dialog.h"
+#include "rec/app/GenericApplication.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/BufferFiller.h"
+#include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/MainPage.h"
 #include "rec/util/Math.h"
@@ -161,6 +163,11 @@ void open(Instance* i) {
   gui::dialog::openOneFile(i->currentFile_.get());
 }
 
+void quit(Instance* i) {
+  DLOG(INFO) << "QUIT!!!";
+  i->window_->application()->systemRequestedQuit();
+}
+
 void toggleStartStop(Instance* i) {
   i->player_->toggle();
 }
@@ -190,6 +197,7 @@ void addInstanceCallbacks(CallbackTable* c, Instance* i) {
   add(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
   add(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
   add(c, Command::OPEN, open, i);
+  add(c, Command::QUIT, quit, i);
   add(c, Command::RECENT_FILES, recentFiles, i);
   add(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   add(c, Command::TOGGLE_START_STOP, toggleStartStop, i);

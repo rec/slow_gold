@@ -195,6 +195,13 @@ command {
   }
 }
 command {
+  type: QUIT
+  desc {
+    menu: "Quit"
+    full: "Quit SlowGold"
+  }
+}
+command {
   type: SELECT
   desc {
     menu: "Select%s Segment%s"

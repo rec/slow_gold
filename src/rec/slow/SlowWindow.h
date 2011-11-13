@@ -4,15 +4,17 @@
 #include "rec/app/Window.h"
 
 namespace rec {
-namespace slow {
 
+namespace app { class GenericApplication; }
+
+namespace slow {
 
 class AppLayout;
 class Instance;
 
 class SlowWindow : public app::Window {
  public:
-  SlowWindow();
+  explicit SlowWindow(app::GenericApplication*);
   virtual ~SlowWindow();
   virtual DefaultRegistry* getDefaultRegistry();
   virtual void paint(Graphics& g) {

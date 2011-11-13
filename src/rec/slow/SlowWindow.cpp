@@ -14,8 +14,9 @@ namespace slow {
 
 static const Colour BACKGROUND_COLOR = juce::Colours::azure;
 
-SlowWindow::SlowWindow() : app::Window("SlowGold", BACKGROUND_COLOR,
-                                       DocumentWindow::allButtons, true) {
+SlowWindow::SlowWindow(app::GenericApplication* application)
+    : app::Window(application, "SlowGold", BACKGROUND_COLOR,
+                  DocumentWindow::allButtons, true) {
 }
 
 SlowWindow::~SlowWindow() {}

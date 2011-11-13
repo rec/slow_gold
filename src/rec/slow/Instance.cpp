@@ -1,8 +1,10 @@
 #include "rec/slow/Instance.h"
 
+#include "rec/app/GenericApplication.h"
 #include "rec/audio/Device.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/source/FrameSource.h"
+#include "rec/gui/Dialog.h"
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
@@ -26,6 +28,7 @@ using namespace rec::audio;
 using namespace rec::audio::util;
 using namespace rec::audio::source;
 using namespace rec::widget::waveform;
+using gui::DialogLocker;
 
 Instance::Instance(SlowWindow* window)
     : window_(window),
@@ -65,6 +68,9 @@ Instance::Instance(SlowWindow* window)
   threads_->startAll();
   currentFile_->setFile(data::get<VirtualFile>());
   window->addListener(menus_.get());
+
+  DialogLocker::getDisableBroadcaster()->addListener(target_->targetManager());
+  DialogLocker::getDisableBroadcaster()->addListener(window->application());
 }
 
 Instance::~Instance() {

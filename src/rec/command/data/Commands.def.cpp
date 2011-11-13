@@ -38,6 +38,7 @@ Def<Commands> commands(
   "command { type: TOGGLE_START_STOP category: \"Transport\"}\n"
   "command { type: TOGGLE_STRETCH_ENABLE category: \"Audio\"}\n"
   "command { type: TOGGLE_WHOLE_SONG_LOOP category: \"Selection\" }\n"
+  "command { type: QUIT category: \"Application\"}\n"
   "command { type: TREE_CLOSE category: \"\"}\n"
   "command { type: TREE_DOWN category: \"\"}\n"
   "command { type: TREE_LEFT category: \"\"}\n"

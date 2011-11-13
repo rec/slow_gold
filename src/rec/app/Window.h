@@ -10,10 +10,13 @@ namespace util { class DefaultRegistry; }
 
 namespace app {
 
+class GenericApplication;
+
 // TODO: move this into rec/app
 class Window : public gui::PersistentWindow, public Broadcaster<None> {
  public:
-  Window(const String& name,
+  Window(GenericApplication* application,
+         const String& name,
          const Colour& bg,
          int requiredButtons,
          bool addToDesktop = true);
@@ -27,6 +30,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
     broadcast(None());
   }
   virtual void trashPreferences() {}
+  GenericApplication* application() { return application_; }
 
  protected:
   virtual void constructInstance() = 0;
@@ -36,6 +40,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
 
  private:
   bool running_;
+  GenericApplication* application_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Window);
 };

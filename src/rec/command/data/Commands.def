@@ -28,6 +28,7 @@ command { type: SELECT_ALL category: "Transport"}
 command { type: TOGGLE_START_STOP category: "Transport"}
 command { type: TOGGLE_STRETCH_ENABLE category: "Audio"}
 command { type: TOGGLE_WHOLE_SONG_LOOP category: "Selection" }
+command { type: QUIT category: "Application"}
 command { type: TREE_CLOSE category: ""}
 command { type: TREE_DOWN category: ""}
 command { type: TREE_LEFT category: ""}

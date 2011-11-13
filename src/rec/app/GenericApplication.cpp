@@ -18,7 +18,7 @@ namespace rec {
 namespace app {
 
 GenericApplication::GenericApplication(const String& name, const String& v)
-    : name_(name), version_(v) {
+    : name_(name), version_(v), disabled_(false) {
 }
 
 GenericApplication::~GenericApplication() {}
@@ -53,6 +53,11 @@ void GenericApplication::shutdown() {
   data::EditableUpdater::instance()->stop();
 
   LOG(INFO) << name_ << ": shutdown finished.";
+}
+
+void GenericApplication::systemRequestedQuit() {
+  if (!disabled_)
+    JUCEApplication::systemRequestedQuit();
 }
 
 }  // namespace app
