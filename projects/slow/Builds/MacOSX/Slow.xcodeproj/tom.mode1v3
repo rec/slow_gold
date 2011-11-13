@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E29F702614703FE200FBAD0B</string>
+						<string>E29F70661470473200FBAD0B</string>
 						<key>history</key>
 						<array>
 							<string>E29F6FA1146F56C500FBAD0B</string>
@@ -256,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E29F702814703FE200FBAD0B</string>
+						<string>E29F70671470473200FBAD0B</string>
 						<key>history</key>
 						<array>
 							<string>E29F6FFF14703EBF00FBAD0B</string>
@@ -296,7 +296,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E29F702914703FE200FBAD0B</string>
+						<string>E29F70681470473200FBAD0B</string>
 						<key>history</key>
 						<array>
 							<string>E29F6FDB14703D4800FBAD0B</string>
@@ -452,7 +452,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E29F702414703FE200FBAD0B</string>
+										<string>E29F70651470473200FBAD0B</string>
 										<key>history</key>
 										<array>
 											<string>E204C1AB146A0A06001544FC</string>
@@ -668,16 +668,16 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E29F702314703FB000FBAD0B</string>
+		<string>E29F70641470471E00FBAD0B</string>
 		<string>E29F6ED8146F431D00FBAD0B</string>
 		<string>E29F6ED9146F431D00FBAD0B</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E29F6FDD14703D4E00FBAD0B</string>
 		<string>E29F6FED14703E4D00FBAD0B</string>
-		<string>E204C17D1469FA8B001544FC</string>
 		<string>E29F6F9F146F56C500FBAD0B</string>
+		<string>E204C17D1469FA8B001544FC</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E29F6F3B146F520400FBAD0B</string>
 	</array>
 	<key>WindowString</key>
@@ -697,12 +697,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>InstanceCallbacks.cpp</string>
+								<string>DialComponent.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -719,8 +721,6 @@
 							<string>411pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -856,10 +856,10 @@
 									<key>Frame</key>
 									<string>{{0, 459}, {802, 460}}</string>
 									<key>RubberWindowFrame</key>
-									<string>51 218 1604 960 0 0 1920 1178 </string>
+									<string>303 218 1604 960 0 0 1920 1178 </string>
 								</dict>
 								<key>RubberWindowFrame</key>
-								<string>51 218 1604 960 0 0 1920 1178 </string>
+								<string>303 218 1604 960 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugSessionModule</string>
@@ -893,7 +893,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
 			<key>WindowString</key>
-			<string>51 218 1604 960 0 0 1920 1178 </string>
+			<string>303 218 1604 960 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
@@ -1029,7 +1029,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {904, 814}}</string>
 								<key>RubberWindowFrame</key>
-								<string>141 274 904 855 0 0 1920 1178 </string>
+								<string>1004 323 904 855 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -1058,7 +1058,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>141 274 904 855 0 0 1920 1178 </string>
+			<string>1004 323 904 855 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>

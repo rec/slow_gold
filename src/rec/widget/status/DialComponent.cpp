@@ -44,23 +44,25 @@ void DialComponent::operator()(RealTime time) {
     time_ = time;
     Range<RealTime> range;
 
-    for (int i = 1; i <= loops_.loop_point_size(); ++i) {
+    bool found = false;
+    for (int i = 1; !found && i <= loops_.loop_point_size(); ++i) {
       bool isLast = (i == loops_.loop_point_size());
       if (isLast || time < loops_.loop_point(i).time()) {
         if (loops_.loop_point(i - 1).selected()) {
           range.begin_ = loops_.loop_point(i - 1).time();
           range.end_ = isLast ? length_ : RealTime(loops_.loop_point(i).time());
-          break;
+          found = true;
         } else {
-          LOG(ERROR) << "Couldn't find time " << time
-                     << " in " << loops_.ShortDebugString();
-          return;
+          break;
         }
       }
     }
 
-    if (range.size() < 1.0)
-      range.end_ = range.begin_ + 1.0;
+    if (!found) {
+      timeAngle_ = zeroAngle_ = 0.0;
+      timeRatio_ = 1.0;
+      return;
+    }
 
     double length = range.size();
     double zeroAngle = description_.zero_point() * 2.0 * PI;
@@ -75,12 +77,7 @@ void DialComponent::operator()(RealTime time) {
     timeAngle_ = timeAngle;
   }
 
-  if (false) {
-    MessageManagerLock l;
-    repaint();
-  } else {
-    thread::callAsync(this, &DialComponent::repaint);
-  }
+  thread::callAsync(this, &DialComponent::repaint);
 }
 
 void DialComponent::onDataChange(const LoopPointList& lpl) {
@@ -90,8 +87,11 @@ void DialComponent::onDataChange(const LoopPointList& lpl) {
 
 void DialComponent::paint(Graphics& g) {
   ScopedLock l(lock_);
+
   Painter p(description_.widget(), &g);
   juce::Rectangle<int> bounds = gui::centerSquare(p.getBounds(this));
+
+  Path path;
 
   if (p.colors().color_size() > 2) {
     g.setColour(p.colour(FOREGROUND).
@@ -99,7 +99,6 @@ void DialComponent::paint(Graphics& g) {
                                  static_cast<float>(timeRatio_)));
   }
 
-  Path path;
   path.addPieSegment(bounds.getX(), bounds.getY(),
                      bounds.getWidth(), bounds.getHeight(),
                      static_cast<float>(zeroAngle_),

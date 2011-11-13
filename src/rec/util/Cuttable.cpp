@@ -32,8 +32,10 @@ Cuttable* current() {
 }  // namespace
 
 bool cutToClipboard() {
+  DLOG(INFO) << "cutToClipboard";
   Cuttable* c = current();
   if (!c->canCut()) {
+    DLOG(INFO) << "Can't cut";
     beep();
     return false;
   }
