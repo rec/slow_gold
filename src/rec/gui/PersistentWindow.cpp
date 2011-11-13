@@ -1,47 +1,72 @@
 #include "rec/gui/PersistentWindow.h"
 #include "rec/data/Address.h"
-#include "rec/data/Value.h"
 #include "rec/data/Data.h"
-#include "rec/slow/AppLayout.pb.h"
+#include "rec/data/Value.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/gui/Geometry.h"
 
 namespace rec {
 namespace gui {
 
 using namespace juce;
-using slow::AppLayout;
+
+static const int MIN_WIDTH = 600;
+static const int MIN_HEIGHT = 440;
+static const int MIN_X = 10;
+static const int MIN_Y = 100;
+typedef juce::Rectangle<int> Rect;
 
 PersistentWindow::PersistentWindow(const String& name,
                                    const Colour& bg,
                                    int requiredButtons,
                                    bool addToDesktop)
     : DocumentWindow(name, bg, requiredButtons, addToDesktop),
-      data_(NULL), okToSaveLayout_(false) {
+      okToSavePosition_(false) {
   setBroughtToFrontOnMouseClick(true);
+  setResizable(true, false); // resizability is a property of ResizableWindow
+
+  Rect r = getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea());
+  setResizeLimits(MIN_WIDTH, MIN_HEIGHT, r.getWidth(), r.getHeight());
 }
 
 PersistentWindow::~PersistentWindow() {}
 
-void PersistentWindow::setLimitedBounds(const Rect& b) {
-  setResizeLimits(600, 440, 8192, 8192);
-  Rect bounds(b);
-  bounds.setX(juce::jmax(bounds.getX(), 10));
-  bounds.setY(juce::jmax(bounds.getY(), 10));
+void PersistentWindow::getPositionFromData() {
+  data::TypedEditable<WindowPosition>* e = data::editable<WindowPosition>();
+  e->addListener(this);
+  (*this)(e->get());
+}
 
-  // Workaround for
-  // http://rawmaterialsoftware.com/viewtopic.php?f=2&t=8060&p=45561#p45561
-  bounds.setWidth(juce::jmax(600, bounds.getWidth()));
-  bounds.setWidth(juce::jmin(8192, bounds.getWidth()));
-  bounds.setHeight(juce::jmax(440, bounds.getWidth()));
-  bounds.setHeight(juce::jmin(8192, bounds.getWidth()));
+void PersistentWindow::operator()(const WindowPosition& position) {
+  {
+    Lock l(lock_);
+    if (data::equals(position_, position))
+      return;  // Filter duplicate messages.
 
-  setBoundsConstrained(bounds);
-  setResizable(true, false); // resizability is a property of ResizableWindow
+    position_ = position;
+  }
+#if 1
+  DLOG(INFO) << "("
+             << position.bounds().top_left().x() << ", "
+             << position.bounds().top_left().y() << ") - "
+             << position.bounds().dimensions().x() << " x "
+             << position.bounds().dimensions().y() << "";
+#endif
+
+  MessageManagerLock l;
+  setBoundsConstrained(copy(position.bounds()));
 }
 
 void PersistentWindow::resized() {
-  writeData();
   DocumentWindow::resized();
+
+  const Rect& b = getBounds();
+  DLOG(INFO)
+             << b.getX() << ", "
+             << b.getY() << ") - "
+             << b.getWidth() << " x "
+             << b.getHeight() << "";
+  writeData();
 }
 
 bool PersistentWindow::isFullScreenSize() const {
@@ -50,18 +75,18 @@ bool PersistentWindow::isFullScreenSize() const {
 }
 
 void PersistentWindow::writeData() {
-  if (okToSaveLayout_) {
-    AppLayout layout(data::editable<AppLayout>()->get());
+  if (okToSavePosition_) {
+    WindowPosition position(data::editable<WindowPosition>()->get());
     juce::Rectangle<int> bounds = getBounds();
 
-    *layout.mutable_bounds() = gui::copy(getBounds());
-    data::set(layout);
+    *position.mutable_bounds() = copy(getBounds());
+    data::set(position);
   }
 }
 
 void PersistentWindow::moved() {
-  writeData();
   DocumentWindow::moved();
+  writeData();
 }
 
 void PersistentWindow::closeButtonPressed() {

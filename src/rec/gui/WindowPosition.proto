@@ -1,0 +1,8 @@
+package rec.gui;
+
+import "rec/gui/Geometry.proto";
+
+message WindowPosition {
+  optional Rectangle bounds = 1;
+  optional bool full_screen = 2;
+};

@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="qfRkz9I2q" name="Slow">
+  <MAINGROUP id="um9jQcFIA" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -1181,6 +1181,10 @@
                 id="DY82vGplb" name="TableColumn.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/TableColumn.pb.h"
                 id="IV0B3K5vi" name="TableColumn.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/gui/WindowPosition.pb.cc"
+                id="kba9aSoiK" name="WindowPosition.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/gui/WindowPosition.pb.h"
+                id="vAwtrTJ7D" name="WindowPosition.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="mopfsCD0V" name="music">
           <FILE compile="1" file="../../genfiles/proto/rec/music/Metadata.pb.cc"
@@ -1262,7 +1266,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="nu07iWEmQ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="rrd0Efzzq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

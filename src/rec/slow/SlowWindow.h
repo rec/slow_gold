@@ -6,10 +6,11 @@
 namespace rec {
 namespace slow {
 
+
 class AppLayout;
 class Instance;
 
-class SlowWindow : public app::Window, public Listener<const AppLayout&> {
+class SlowWindow : public app::Window {
  public:
   SlowWindow();
   virtual ~SlowWindow();
@@ -18,7 +19,6 @@ class SlowWindow : public app::Window, public Listener<const AppLayout&> {
     g.fillAll(juce::Colours::lightgrey);
   }
 
-  virtual void operator()(const AppLayout&);
   virtual void trashPreferences();
 
  protected:
@@ -26,11 +26,9 @@ class SlowWindow : public app::Window, public Listener<const AppLayout&> {
   virtual void constructInstance();
   virtual Component* getMainComponent();
   virtual MenuBarModel* getMenuBarModel();
-  virtual void doComputeBounds();
 
  private:
   ptr<Instance> instance_;
-  ptr<AppLayout> layout_;
 
   DISALLOW_COPY_AND_ASSIGN(SlowWindow);
 };

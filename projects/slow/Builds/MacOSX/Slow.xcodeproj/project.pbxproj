@@ -236,6 +236,7 @@
 		EF713644487F65F5A368B34F /* SelectionCallbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26B6C82F1A35A8C92D9CD564 /* SelectionCallbacks.cpp */; };
 		F324108CE78272D1D6366407 /* Equals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E130A37866F055849D468F2C /* Equals.cpp */; };
 		F4CF5FB501CB800D4485B08D /* simplekey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B741A1046929FF8F92F3264A /* simplekey.cpp */; };
+		F665EEF3985DD85E05F84F95 /* WindowPosition.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = A49693BB101C270FC2194BF7 /* WindowPosition.pb.cc */; };
 		F712467922036A5FE69DB0FC /* DraggingHand.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13E636FAB72F458A856FF303 /* DraggingHand.svg.cpp */; };
 		FA117A5CE9187E9ED64FFB79 /* DriveHardDisk.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E909FE0D5FEEA9CFC90002C /* DriveHardDisk.svg.cpp */; };
 		FBE97C77A873F503C75E4D86 /* Stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAC70FBD5AC5BD1D686C92A /* Stereo.cpp */; };
@@ -459,6 +460,7 @@
 		5AE63502C4D9709ED74572A6 /* Convertors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Convertors.h; path = ../../../../src/rec/util/partition/Convertors.h; sourceTree = SOURCE_ROOT; };
 		5B336F1C1C2090670B7DA2C4 /* conversion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = conversion.cpp; path = ../../../../src/rec/data/yaml/src/conversion.cpp; sourceTree = SOURCE_ROOT; };
 		5BAB9CAEA2A4EA4EDCB4A87D /* Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = ../../../../src/rec/audio/util/Frame.h; sourceTree = SOURCE_ROOT; };
+		5BD6FF1F1E69CA3715AF178F /* WindowPosition.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowPosition.pb.h; path = ../../../../genfiles/proto/rec/gui/WindowPosition.pb.h; sourceTree = SOURCE_ROOT; };
 		5BED0EFFD46A27023555D6DA /* Cursor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Cursor.cpp; path = ../../../../src/rec/widget/waveform/Cursor.cpp; sourceTree = SOURCE_ROOT; };
 		5C25F39EEC13CD85D325D62B /* Runny.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Runny.pb.cc; path = ../../../../genfiles/proto/rec/audio/source/Runny.pb.cc; sourceTree = SOURCE_ROOT; };
 		5CCCE8E2085A5AF6E451E10F /* sequence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sequence.h; path = ../../../../src/rec/data/yaml/src/sequence.h; sourceTree = SOURCE_ROOT; };
@@ -606,6 +608,7 @@
 		A408AA7B92724CFAEF5D8BEB /* MessageField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageField.h; path = ../../../../src/rec/data/proto/MessageField.h; sourceTree = SOURCE_ROOT; };
 		A4242A568A095ADA31E0EC03 /* Focusable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Focusable.h; path = ../../../../src/rec/gui/component/Focusable.h; sourceTree = SOURCE_ROOT; };
 		A433D0832C0312A5D246D41A /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../../../../src/rec/audio/source/Player.cpp; sourceTree = SOURCE_ROOT; };
+		A49693BB101C270FC2194BF7 /* WindowPosition.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WindowPosition.pb.cc; path = ../../../../genfiles/proto/rec/gui/WindowPosition.pb.cc; sourceTree = SOURCE_ROOT; };
 		A49DBCF4AC777C80041D72C0 /* TypedEditable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedEditable.h; path = ../../../../src/rec/data/TypedEditable.h; sourceTree = SOURCE_ROOT; };
 		A56BBAF2332E25EEA5C3AFE6 /* InstanceCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InstanceCallbacks.h; path = ../../../../src/rec/slow/callbacks/InstanceCallbacks.h; sourceTree = SOURCE_ROOT; };
 		A66F07870DC3DCE06E0489D3 /* FileWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileWriter.h; path = ../../../../src/rec/util/thread/FileWriter.h; sourceTree = SOURCE_ROOT; };
@@ -1055,6 +1058,8 @@
 				A87501D62D3CA849DFE5C75E /* RecentFiles.pb.h */,
 				E97C78039C069A9FE363170B /* TableColumn.pb.cc */,
 				101CB66AAD7D91CCD0421DDD /* TableColumn.pb.h */,
+				A49693BB101C270FC2194BF7 /* WindowPosition.pb.cc */,
+				5BD6FF1F1E69CA3715AF178F /* WindowPosition.pb.h */,
 			);
 			name = gui;
 			sourceTree = "<group>";
@@ -1474,6 +1479,16 @@
 			name = binary;
 			sourceTree = "<group>";
 		};
+		95B3CF2772AF6650B2C572BA /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		95CAB6E99E96CEDA0BFB8ED1 /* slow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1575,16 +1590,6 @@
 			name = mpg123;
 			sourceTree = "<group>";
 		};
-		A13E8463F3433D16D7972083 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1597,7 +1602,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A13E8463F3433D16D7972083 /* Slow */,
+				95B3CF2772AF6650B2C572BA /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -2214,6 +2219,7 @@
 				096F0DFCE5D4AF2684975D66 /* Geometry.pb.cc in Sources */,
 				E5406149587043DD0F6E509B /* RecentFiles.pb.cc in Sources */,
 				E641768CA04431D8080CE959 /* TableColumn.pb.cc in Sources */,
+				F665EEF3985DD85E05F84F95 /* WindowPosition.pb.cc in Sources */,
 				28313C23AD0356F73EA369DB /* Metadata.pb.cc in Sources */,
 				621DF87924B6CAD97FBB1BAB /* AppLayout.pb.cc in Sources */,
 				3A99510C7063E152D6EBF52F /* VirtualFile.pb.cc in Sources */,

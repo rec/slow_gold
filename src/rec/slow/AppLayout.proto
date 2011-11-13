@@ -3,15 +3,11 @@ package rec.slow;
 import "rec/gui/Geometry.proto";
 
 message AppLayout {
-  optional gui.Rectangle bounds = 1;
-  optional bool full_screen = 11;
-  optional bool compact = 12;
+  optional uint32 directory_y = 1;
+  optional uint32 waveform_y = 2;
+  optional uint32 stretchy_y = 3;
 
-  optional uint32 directory_y = 2;
-  optional uint32 waveform_y = 3;
-  optional uint32 stretchy_y = 4;
-
-  optional uint32 clock_x = 5;
-  optional uint32 songdata_x = 6;
-  optional uint32 loops_x = 7;
+  optional uint32 clock_x = 4;
+  optional uint32 songdata_x = 5;
+  optional uint32 loops_x = 6;
 };

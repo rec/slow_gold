@@ -811,6 +811,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc">
       <Filter>Slow\proto\rec\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc">
       <Filter>Slow\proto\rec\music</Filter>
     </ClCompile>
@@ -1822,6 +1825,9 @@
       <Filter>Slow\proto\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h">
       <Filter>Slow\proto\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h">

@@ -32,9 +32,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual void constructInstance() = 0;
   virtual Component* getMainComponent() = 0;
   virtual MenuBarModel* getMenuBarModel() = 0;
-  virtual void doComputeBounds() = 0;
   virtual void doStartup() = 0;
-  CriticalSection lock_;
 
  private:
   bool running_;

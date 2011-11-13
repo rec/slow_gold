@@ -17,29 +17,28 @@ void Window::initialise() {
     return;
   }
 
-  constructInstance();
-  Component* mp = getMainComponent();
-
-
-  setContentOwned(mp, false);
-
-  setMenuBar(getMenuBarModel());
-  setUsingNativeTitleBar(true);
-  setVisible(true);
-
-#if JUCE_MAC
-  // TODO: make sure this is in the right place.
-  juce::MenuBarModel::setMacMainMenu(getMenuBarModel());
-  setMenuBar(NULL);
-#endif
-
   ModifierKeys keys = ModifierKeys::getCurrentModifiersRealtime();
   if (keys.isCommandDown()) {
     LOG(ERROR) << "Trashing your preferences files.";
     trashPreferences();
   }
+  getPositionFromData();
+  constructInstance();
 
-  doComputeBounds();
+#if JUCE_MAC
+  // TODO: make sure this is in the right place.
+  juce::MenuBarModel::setMacMainMenu(getMenuBarModel());
+  setMenuBar(NULL);
+#else
+  setMenuBar(getMenuBarModel());
+#endif
+
+  setUsingNativeTitleBar(true);
+
+  Component* mp = getMainComponent();
+
+  setContentOwned(mp, false);
+  setVisible(true);
 
   running_ = true;
 }
@@ -51,14 +50,14 @@ Window::~Window() {
 void Window::startup() {
   // Final startup, done later in another thread.
   doStartup();
-  setOKToSaveLayout(true);
+  setOKToSavePosition(true);
 }
 
 void Window::shutdown() {
   if (!running_)
     return;
 
-  setOKToSaveLayout(false);
+  setOKToSavePosition(false);
   running_ = false;
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
   // Why isn't this in GenericApplication?

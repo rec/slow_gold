@@ -252,6 +252,7 @@
 		CCFEF9F5DA866711672661EA = { isa = PBXBuildFile; fileRef = 19E1FE047D8303A2FAABCF26; };
 		A8EE5D424D31FBB7D2FD541F = { isa = PBXBuildFile; fileRef = 9F6B278BDF653D58B6B7F045; };
 		AAEF73858505E9C2DB9BFDDD = { isa = PBXBuildFile; fileRef = AC1A650C71C85289B6F21B8F; };
+		B903EBFB8D0E8038D8875319 = { isa = PBXBuildFile; fileRef = 673490B405CDDFEAA5A85F8B; };
 		ECDF382B92B41ED101317D5E = { isa = PBXBuildFile; fileRef = A20082A7A8FBBAEC6AEB9A67; };
 		25ABE572196882C352491F2F = { isa = PBXBuildFile; fileRef = BB8AA4C2A6DD3BC6EE1C5E16; };
 		ED374D055524994CBA7909A3 = { isa = PBXBuildFile; fileRef = B1F258A7607803640F56F4E5; };
@@ -839,6 +840,8 @@
 		6B130DDF02ED5024B273DBD1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecentFiles.pb.h; path = ../../../../genfiles/proto/rec/gui/RecentFiles.pb.h; sourceTree = "SOURCE_ROOT"; };
 		AC1A650C71C85289B6F21B8F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TableColumn.pb.cc; path = ../../../../genfiles/proto/rec/gui/TableColumn.pb.cc; sourceTree = "SOURCE_ROOT"; };
 		D3BAA263922E49A7A3D01151 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableColumn.pb.h; path = ../../../../genfiles/proto/rec/gui/TableColumn.pb.h; sourceTree = "SOURCE_ROOT"; };
+		673490B405CDDFEAA5A85F8B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WindowPosition.pb.cc; path = ../../../../genfiles/proto/rec/gui/WindowPosition.pb.cc; sourceTree = "SOURCE_ROOT"; };
+		1E74FC18031A8211E83D2B03 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowPosition.pb.h; path = ../../../../genfiles/proto/rec/gui/WindowPosition.pb.h; sourceTree = "SOURCE_ROOT"; };
 		A20082A7A8FBBAEC6AEB9A67 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Metadata.pb.cc; path = ../../../../genfiles/proto/rec/music/Metadata.pb.cc; sourceTree = "SOURCE_ROOT"; };
 		D011B40AA4A3ABE9D807DFD5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Metadata.pb.h; path = ../../../../genfiles/proto/rec/music/Metadata.pb.h; sourceTree = "SOURCE_ROOT"; };
 		BB8AA4C2A6DD3BC6EE1C5E16 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppLayout.pb.cc; path = ../../../../genfiles/proto/rec/slow/AppLayout.pb.cc; sourceTree = "SOURCE_ROOT"; };
@@ -1521,7 +1524,9 @@
 				9F6B278BDF653D58B6B7F045,
 				6B130DDF02ED5024B273DBD1,
 				AC1A650C71C85289B6F21B8F,
-				D3BAA263922E49A7A3D01151 ); name = gui; sourceTree = "<group>"; };
+				D3BAA263922E49A7A3D01151,
+				673490B405CDDFEAA5A85F8B,
+				1E74FC18031A8211E83D2B03 ); name = gui; sourceTree = "<group>"; };
 		77F53B6A3682C5DB372C0B86 = { isa = PBXGroup; children = (
 				A20082A7A8FBBAEC6AEB9A67,
 				D011B40AA4A3ABE9D807DFD5 ); name = music; sourceTree = "<group>"; };
@@ -1577,7 +1582,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		CF2EE6211F23825E2396BFCF = { isa = PBXGroup; children = (
+		A9702748087216BF0635F66E = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1604,7 +1609,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				CF2EE6211F23825E2396BFCF,
+				A9702748087216BF0635F66E,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1925,6 +1930,7 @@
 				CCFEF9F5DA866711672661EA,
 				A8EE5D424D31FBB7D2FD541F,
 				AAEF73858505E9C2DB9BFDDD,
+				B903EBFB8D0E8038D8875319,
 				ECDF382B92B41ED101317D5E,
 				25ABE572196882C352491F2F,
 				ED374D055524994CBA7909A3,
