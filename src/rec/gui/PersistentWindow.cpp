@@ -45,13 +45,6 @@ void PersistentWindow::operator()(const WindowPosition& position) {
 
     position_ = position;
   }
-#if 1
-  DLOG(INFO) << "("
-             << position.bounds().top_left().x() << ", "
-             << position.bounds().top_left().y() << ") - "
-             << position.bounds().dimensions().x() << " x "
-             << position.bounds().dimensions().y() << "";
-#endif
 
   MessageManagerLock l;
   setBoundsConstrained(copy(position.bounds()));
@@ -59,13 +52,6 @@ void PersistentWindow::operator()(const WindowPosition& position) {
 
 void PersistentWindow::resized() {
   DocumentWindow::resized();
-
-  const Rect& b = getBounds();
-  DLOG(INFO)
-             << b.getX() << ", "
-             << b.getY() << ") - "
-             << b.getWidth() << " x "
-             << b.getHeight() << "";
   writeData();
 }
 
