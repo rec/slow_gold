@@ -164,7 +164,6 @@ void open(Instance* i) {
 }
 
 void quit(Instance* i) {
-  DLOG(INFO) << "QUIT!!!";
   i->window_->application()->systemRequestedQuit();
 }
 

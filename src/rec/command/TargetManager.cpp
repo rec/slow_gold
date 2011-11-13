@@ -76,6 +76,7 @@ bool TargetManager::perform(const InvocationInfo& invocation) {
   ScopedLock l(lock_);
   if (disabled_)
     return true;
+
   CommandCallbackMap::const_iterator i = map_.find(invocation.commandID);
   if (i == map_.end())
     return false;

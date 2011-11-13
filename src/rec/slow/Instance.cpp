@@ -83,6 +83,7 @@ void Instance::startup() {
   components_->setActive(true);
   startUndo();
   addUndoListener(menus_.get());
+  menus_->menuItemsChanged();
 }
 
 const VirtualFile Instance::file() const {
