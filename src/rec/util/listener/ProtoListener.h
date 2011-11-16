@@ -9,22 +9,20 @@ namespace rec {
 namespace util {
 namespace listener {
 
-// A ProtoListener has a view, a local copy of a persistent protocol buffer.
+// A ProtoListener has a view and a local copy of a persistent protocol buffer.
 //
-class ProtoListener : public Listener<const Message&>,
-                      public Listener<data::UntypedEditable*> {
+class ProtoListener : public Listener<const Message&> {
  public:
   ProtoListener(const data::Address& a) : address_(a), untypedData_(NULL) {}
 
   virtual ~ProtoListener() {}
   virtual void operator()(const Message&);
-  virtual const data::Address& address() const { return address_; }
 
   void setUntypedEditable(data::UntypedEditable* data);
-  data::UntypedEditable* getUntypedEditable() { return untypedData_; }
-  virtual void operator()(data::UntypedEditable* data) { setUntypedEditable(data); }
 
  protected:
+  data::UntypedEditable* getUntypedEditable() { return untypedData_; }
+
   // updatePersistentData is called when the local view of the data is changed
   // by the GUI, to update the persistent data.
   virtual void updatePersistentData();
