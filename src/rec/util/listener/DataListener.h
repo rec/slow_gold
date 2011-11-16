@@ -39,6 +39,43 @@ class DataListenerBase : public Listener<const Proto&> {
   DISALLOW_COPY_AND_ASSIGN(DataListenerBase);
 };
 
+// DataListener listens to changes in persistent data.
+
+template <typename Proto>
+class DataListener : public DataListenerBase<Proto>,
+                     public Listener<const VirtualFile&> {
+ public:
+  DataListener(bool filterDupes = false) : DataListenerBase<Proto>(filterDupes) {
+    data::editable<VirtualFile>()->addListener(this);
+  }
+
+  virtual ~DataListener() {}
+
+  virtual void operator()(const VirtualFile& f) {
+    setData(data::editable<Proto>(f));
+  }
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(DataListener);
+};
+
+template <typename Proto>
+class GlobalDataListener : public DataListenerBase<Proto> {
+ public:
+  GlobalDataListener(bool filterDupes = false) : DataListenerBase<Proto>(filterDupes) {
+    setData(data::editable<Proto>());
+  }
+
+  virtual ~GlobalDataListener() {}
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(GlobalDataListener);
+};
+
+//
+// Implementations
+//
+
 template <typename Proto>
 void DataListenerBase<Proto>::operator()(const Proto& p) {
   {
@@ -67,28 +104,6 @@ void DataListenerBase<Proto>::setData(data::TypedEditable<Proto>* d) {
     }
   }
 }
-
-
-// DataListener listens to changes in persistent data.
-
-template <typename Proto>
-class DataListener : public DataListenerBase<Proto>,
-                     public Listener<const VirtualFile&> {
- public:
-  DataListener(bool filterDupes = false) : DataListenerBase<Proto>(filterDupes) {
-    data::editable<VirtualFile>()->addListener(this);
-  }
-
-  virtual ~DataListener() {}
-
-  virtual void operator()(const VirtualFile& f) {
-    this->setData(data::editable<Proto>(f));
-  }
-
- private:
-  DISALLOW_COPY_AND_ASSIGN(DataListener);
-};
-
 
 }  // namespace listener
 }  // namespace util
