@@ -38,6 +38,7 @@
 		25C0048D33BDE7413EFE05D0 /* PointingHand.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B0B52E98BF728FA6655818A /* PointingHand.svg.cpp */; };
 		26F7CB8653E0334EBB357E5E /* ModeSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B718B3389157B2AFAD6D1E8C /* ModeSelector.cpp */; };
 		2763C9DE251CBC17CCF86649 /* Threads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DB281D6B07E576E7AD90BBB /* Threads.cpp */; };
+		2797DE7179083AE0976FE37D /* GuiSettings.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = BF392C2A41318BB3C928A151 /* GuiSettings.pb.cc */; };
 		28313C23AD0356F73EA369DB /* Metadata.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EE6286AFB3490202975C86E4 /* Metadata.pb.cc */; };
 		28A0CDF6B7F4478930892A40 /* stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88C80D4AC91778AF36BD5055 /* stream.cpp */; };
 		2AA4AAE5B28A49DC57D7FB21 /* JuceLibraryCode.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0112EC2338A88B1E5ACA3C7 /* JuceLibraryCode.mm */; };
@@ -345,6 +346,7 @@
 		274AD029F850EA4162D0DCE5 /* ptr_stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ptr_stack.h; path = ../../../../src/rec/data/yaml/src/ptr_stack.h; sourceTree = SOURCE_ROOT; };
 		276E10CBAFFC0E3A91CA992E /* DefaultRegistry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultRegistry.h; path = ../../../../src/rec/util/DefaultRegistry.h; sourceTree = SOURCE_ROOT; };
 		29135420595CB6C4BBD95128 /* eventhandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = eventhandler.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/eventhandler.h"; sourceTree = SOURCE_ROOT; };
+		293DDD44FFA837E0F9C58D80 /* GuiSettings.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GuiSettings.pb.h; path = ../../../../genfiles/proto/rec/slow/GuiSettings.pb.h; sourceTree = SOURCE_ROOT; };
 		297C915C54EBD1543FA595D5 /* indentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = indentation.h; path = ../../../../src/rec/data/yaml/src/indentation.h; sourceTree = SOURCE_ROOT; };
 		2A2AB2E5F943EE3901E2ADB2 /* streamcharsource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = streamcharsource.h; path = ../../../../src/rec/data/yaml/src/streamcharsource.h; sourceTree = SOURCE_ROOT; };
 		2B07D02FD43FAF495097104F /* PlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayerController.h; path = ../../../../src/rec/gui/audio/PlayerController.h; sourceTree = SOURCE_ROOT; };
@@ -672,6 +674,7 @@
 		BBCA7FFD1DE92D807F41C69E /* sequence.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = sequence.cpp; path = ../../../../src/rec/data/yaml/src/sequence.cpp; sourceTree = SOURCE_ROOT; };
 		BD8C10E13EA1C8B0DB22E914 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		BE654237ACD381A97E400C4E /* MediaRecord.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaRecord.svg.cpp; path = ../../../../src/rec/gui/icon/MediaRecord.svg.cpp; sourceTree = SOURCE_ROOT; };
+		BF392C2A41318BB3C928A151 /* GuiSettings.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GuiSettings.pb.cc; path = ../../../../genfiles/proto/rec/slow/GuiSettings.pb.cc; sourceTree = SOURCE_ROOT; };
 		BF6A3CCB38CBE7983E8528FA /* Directory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Directory.cpp; path = ../../../../src/rec/widget/tree/Directory.cpp; sourceTree = SOURCE_ROOT; };
 		BFC76053247EE3C690919E29 /* SlowWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SlowWindow.cpp; path = ../../../../src/rec/slow/SlowWindow.cpp; sourceTree = SOURCE_ROOT; };
 		BFF718C20886014E3A7E0968 /* Root.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Root.cpp; path = ../../../../src/rec/widget/tree/Root.cpp; sourceTree = SOURCE_ROOT; };
@@ -853,6 +856,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02411361F03A35213F52B36C /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		038EBD0127900AAA157CFD86 /* command */ = {
 			isa = PBXGroup;
 			children = (
@@ -1592,7 +1605,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BA2474DA73EB66C7780AC6E5 /* Slow */,
+				02411361F03A35213F52B36C /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1635,16 +1648,6 @@
 				2D7F8C76B45B4920420D8C83 /* TableController.h */,
 			);
 			name = gui;
-			sourceTree = "<group>";
-		};
-		BA2474DA73EB66C7780AC6E5 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		BAAC9AA41EA8EF3F7202FD8A /* command */ = {
@@ -1861,6 +1864,8 @@
 			children = (
 				F8ECB7C9B12C73DC0B8E5A92 /* AppLayout.pb.cc */,
 				5FF7BDF011D9B98F78C7E9EE /* AppLayout.pb.h */,
+				BF392C2A41318BB3C928A151 /* GuiSettings.pb.cc */,
+				293DDD44FFA837E0F9C58D80 /* GuiSettings.pb.h */,
 			);
 			name = slow;
 			sourceTree = "<group>";
@@ -2222,6 +2227,7 @@
 				F665EEF3985DD85E05F84F95 /* WindowPosition.pb.cc in Sources */,
 				28313C23AD0356F73EA369DB /* Metadata.pb.cc in Sources */,
 				621DF87924B6CAD97FBB1BAB /* AppLayout.pb.cc in Sources */,
+				2797DE7179083AE0976FE37D /* GuiSettings.pb.cc in Sources */,
 				3A99510C7063E152D6EBF52F /* VirtualFile.pb.cc in Sources */,
 				9532238011D029FABB1252F9 /* LoopPoint.pb.cc in Sources */,
 				B1327427FAAF4E450FA873F2 /* Mode.pb.cc in Sources */,

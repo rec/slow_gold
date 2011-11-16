@@ -820,6 +820,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc">
       <Filter>Command\proto\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc">
+      <Filter>Command\proto\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc">
       <Filter>Command\proto\rec\util\file</Filter>
     </ClCompile>
@@ -1834,6 +1837,9 @@
       <Filter>Command\proto\rec\music</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h">
+      <Filter>Command\proto\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h">
       <Filter>Command\proto\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h">
