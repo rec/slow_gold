@@ -24,6 +24,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/util/file/VirtualFile.pb.h"
+#include "rec/music/Metadata.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -107,6 +108,13 @@ class RecentFile : public ::google::protobuf::Message {
   inline const ::rec::util::file::VirtualFile& file() const;
   inline ::rec::util::file::VirtualFile* mutable_file();
   
+  // optional .rec.music.Metadata metadata = 3;
+  inline bool has_metadata() const;
+  inline void clear_metadata();
+  static const int kMetadataFieldNumber = 3;
+  inline const ::rec::music::Metadata& metadata() const;
+  inline ::rec::music::Metadata* mutable_metadata();
+  
   // @@protoc_insertion_point(class_scope:rec.gui.RecentFile)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -114,11 +122,12 @@ class RecentFile : public ::google::protobuf::Message {
   
   ::google::protobuf::int64 timestamp_;
   ::rec::util::file::VirtualFile* file_;
+  ::rec::music::Metadata* metadata_;
   friend void  protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fRecentFiles_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fRecentFiles_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -282,6 +291,23 @@ inline ::rec::util::file::VirtualFile* RecentFile::mutable_file() {
   _set_bit(1);
   if (file_ == NULL) file_ = new ::rec::util::file::VirtualFile;
   return file_;
+}
+
+// optional .rec.music.Metadata metadata = 3;
+inline bool RecentFile::has_metadata() const {
+  return _has_bit(2);
+}
+inline void RecentFile::clear_metadata() {
+  if (metadata_ != NULL) metadata_->::rec::music::Metadata::Clear();
+  _clear_bit(2);
+}
+inline const ::rec::music::Metadata& RecentFile::metadata() const {
+  return metadata_ != NULL ? *metadata_ : *default_instance_->metadata_;
+}
+inline ::rec::music::Metadata* RecentFile::mutable_metadata() {
+  _set_bit(2);
+  if (metadata_ == NULL) metadata_ = new ::rec::music::Metadata;
+  return metadata_;
 }
 
 // -------------------------------------------------------------------

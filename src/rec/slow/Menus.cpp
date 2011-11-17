@@ -55,7 +55,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::MIDI_MAPPINGS);
 
 #ifdef RECENT_FILES_ENABLED
-    gui::RecentFiles recent = gui::getSortedRecentFiles();
+    gui::RecentFiles recent = data::get<gui::RecentFiles>();
     PopupMenu submenu;
     for (int i = 0; i < recent.file_size(); ++i) {
       submenu.addCommandItem(Command::RECENT_FILES_OFFSET + i,

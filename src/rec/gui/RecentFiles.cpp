@@ -1,11 +1,12 @@
 #include <algorithm>
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/util/file/VirtualFile.h"
 #include "rec/data/Address.h"
 #include "rec/data/Value.h"
 #include "rec/data/Data.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/music/Metadata.pb.h"
+#include "rec/util/file/VirtualFile.h"
 
 using namespace google::protobuf;
 
@@ -22,7 +23,7 @@ struct CompareRecentFiles {
 
 }  // namespace
 
-void addRecentFile(const VirtualFile& f) {
+void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
   if (empty(f))
     return;
 
@@ -43,6 +44,7 @@ void addRecentFile(const VirtualFile& f) {
   }
   r->set_timestamp(timestamp);
   r->mutable_file()->CopyFrom(f);
+  r->mutable_metadata()->CopyFrom(metadata);
 
   std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
             CompareRecentFiles());

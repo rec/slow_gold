@@ -39,7 +39,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
-  gui::addRecentFile(file_);
+  gui::addRecentFile(file_, data::get<music::Metadata>(file_));
   data::set(f);
   setFile(f);
 }

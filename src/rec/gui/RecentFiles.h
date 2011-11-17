@@ -5,9 +5,12 @@
 #include "rec/gui/RecentFiles.pb.h"
 
 namespace rec {
+
+namespace music { class Metadata; }
+
 namespace gui {
 
-void addRecentFile(const VirtualFile& filename);
+void addRecentFile(const VirtualFile&, const music::Metadata&);
 
 }  // namespace gui
 }  // namespace rec
