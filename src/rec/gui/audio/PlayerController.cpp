@@ -110,7 +110,6 @@ void PlayerController::onDataChange(const rec::audio::Gain& gain) {
 
 void PlayerController::setData(data::TypedEditable<Stretch>* d) {
   DataListener<Stretch>::setData(d);
-  playbackSpeed_.setUntypedEditable(d);
   pitchScale_.setUntypedEditable(d);
   fineScale_.setUntypedEditable(d);
 }

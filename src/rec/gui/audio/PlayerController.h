@@ -41,7 +41,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   ModeSelector* modeSelector() { return &modeSelector_; }
 
  private:
-  DataSlider<double> playbackSpeed_;
+  NewDataSlider<rec::audio::stretch::Stretch, double> playbackSpeed_;
   DataSlider<double> pitchScale_;
   DataSlider<double> fineScale_;
   DataSlider<double> level_;
