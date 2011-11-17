@@ -3,7 +3,6 @@
 #include "rec/data/Value.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/Copy.h"
-#include "rec/util/FormatTime.h"
 
 namespace rec {
 namespace gui {
@@ -11,14 +10,10 @@ namespace gui {
 using data::Address;
 using data::Value;
 
-TableController::TableController()
-  : TableListBox("", this), ProtoListener(Address()) {
-}
+TableController::TableController() : TableListBox("", this) {}
 
-void TableController::initialize(const TableColumnList& c, const Address& address,
-                                 const char* name) {
+void TableController::initialize(const TableColumnList& c, const Address& address, const char* name) {
   columns_ = c;
-  address_ = address;
   setName(name);
 }
 
@@ -52,53 +47,8 @@ void TableController::paintCell(Graphics& g,
     return;
   }
   const TableColumn& column = columns_.column(columnId - 1);
-  Address row = (address_ + rowNumber) + column.address();
-  String t = "-";
-  if (data::UntypedEditable* data = getUntypedEditable())
-    t = displayText(column, data->getValue(row));
+  String t = displayText(column, rowNumber);
   g.drawText(t, 2, 2, width - 4, height - 4, Justification::centred, true);
-}
-
-String TableController::displayText(const TableColumn& col, const Value& value) {
-  switch (col.type()) {
-   case TableColumn::STRING: return str(value.string_f());
-   case TableColumn::UINT32: return String(value.uint32_f());
-   case TableColumn::TIME: return formatTime(RealTime(value.double_f()), length_);
-   case TableColumn::DOUBLE: return String(value.double_f());
-
-   default: return "<unknown>";
-  }
-}
-
-// TODO: this needs to be integrated with the persistence stuff better!
-const Value TableController::getDisplayValue() const {
-  ScopedLock l(lock_);
-  Value value;
-  copy::copy(*message_, value.mutable_message_f());
-  return value;
-}
-
-void TableController::setDisplayValue(const Value& v) {
-  ScopedLock l(lock_);
-  if (copy::copy(v.message_f(), message_.get())) {
-    thread::callAsync(this, &TableController::updateAndRepaint);
-  } else {
-    LOG(ERROR) << "Couldn't parse: " << message_->ShortDebugString();
-  }
-}
-
-void TableController::setUntypedEditable(data::UntypedEditable* data) {
-  {
-    ScopedLock l(lock_);
-    ProtoListener::setUntypedEditable(data);
-  }
-
-  if (Message* msg = message_.get()) {
-    if (data)
-      data->copyTo(msg);
-    else
-      msg->Clear();
-  }
 }
 
 }  // namespace gui

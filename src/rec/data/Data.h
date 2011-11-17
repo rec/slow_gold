@@ -19,16 +19,25 @@ File editableFile(const VirtualFile& vf = file::none());
 template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
 
+// TODO: get rid of this, it makes no sense - the first operation should be
+// a Message, not a Proto.
 template <typename Proto>
-void set(const Proto& p, const VirtualFile& f = file::none(),
-         const Address& a = Address::default_instance());
+void setValue(const Proto& p, const VirtualFile& f, const Address& a);
+
+template <typename Proto>
+void set(const Proto& p, const VirtualFile& f = file::none()) {
+  setValue<Proto>(p, f, Address::default_instance());
+}
 
 template <typename Proto>
 const Proto get(const VirtualFile& f = file::none());
 
+template <typename Proto>
+const Value getValue(const Address&, const VirtualFile& f = file::none());
 
-
+//
 // Implementations
+//
 
 template <typename Proto>
 File editableFile(const VirtualFile& vf = file::none()) {
@@ -53,7 +62,7 @@ TypedEditable<Proto>* editable(const VirtualFile& vf) {
 }
 
 template <typename Proto>
-void set(const Proto& p, const VirtualFile& f, const Address& a) {
+void setValue(const Proto& p, const VirtualFile& f, const Address& a) {
   editable<Proto>(f)->set(p, a);
 }
 
@@ -61,6 +70,12 @@ template <typename Proto>
 const Proto get(const VirtualFile& f) {
   return editable<Proto>(f)->get();
 }
+
+template <typename Proto>
+const Value getValue(const Address& address, const VirtualFile& f) {
+  return editable<Proto>(f)->getValue(address);
+}
+
 
 }  // namespace data
 }  // namespace rec

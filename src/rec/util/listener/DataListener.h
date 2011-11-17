@@ -14,7 +14,7 @@ namespace listener {
 template <typename Proto>
 class DataListenerBase : public Listener<const Proto&> {
  public:
-  DataListenerBase(bool fd = false) : filterDupes_(fd) {}
+  DataListenerBase(bool fd = false) : filterDupes_(fd), data_(NULL) {}
   virtual ~DataListenerBase() {}
 
   virtual void operator()(const Proto& p);
@@ -23,8 +23,8 @@ class DataListenerBase : public Listener<const Proto&> {
   static const bool UPDATE_ON_MESSAGE_THREAD = !true;  // TODO: fix!
 
  protected:
-  data::TypedEditable<Proto>* data() { return data_; }
-  virtual void setData(data::TypedEditable<Proto>* d);
+  data::TypedEditable<Proto>* data() const { return data_; }
+  virtual void setData(data::TypedEditable<Proto>* d);  // TODO: change to setEditable.
   virtual void onDataChange(const Proto&) = 0;
 
  private:
@@ -33,7 +33,6 @@ class DataListenerBase : public Listener<const Proto&> {
   CriticalSection lock_;
   data::TypedEditable<Proto>* data_;
   Proto proto_;
-
   const bool filterDupes_;
 
   DISALLOW_COPY_AND_ASSIGN(DataListenerBase);

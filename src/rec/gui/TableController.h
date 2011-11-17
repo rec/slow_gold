@@ -9,36 +9,27 @@
 namespace rec {
 namespace gui {
 
-class TableController : public TableListBoxModel,
-                        public TableListBox,
-                        public ProtoListener {
+class TableController : public TableListBoxModel, public TableListBox {
  public:
   TableController();
 
   void initialize(const TableColumnList& columns,
                   const data::Address& address,
-                  const char* name = "TableController");
+                  const char* name);
 
   virtual void fillHeader(TableHeaderComponent* headers);
   virtual int getNumRows() = 0;
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
 
-  virtual void setUntypedEditable(data::UntypedEditable* data);
-
-  virtual const data::Value getDisplayValue() const;
-  virtual void setDisplayValue(const data::Value& v);
-
   virtual void selectedRowsChanged(int lastRowSelected) = 0;
 
   void updateAndRepaint() { update(); repaint(); }
   void setLength(RealTime len) { length_ = len; }
 
-
  protected:
   virtual void update() { updateContent(); }
-
-  String displayText(const TableColumn& col, const data::Value& value);
+  virtual String displayText(const TableColumn& col, int row) = 0;
 
   ptr<Message> message_;
   TableColumnList columns_;

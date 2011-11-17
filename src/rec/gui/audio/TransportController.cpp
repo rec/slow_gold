@@ -47,6 +47,11 @@ void TransportController::operator()(State state) {
   thread::callAsync(this, &TransportController::setTransportState, state);
 }
 
+void TransportController::recalc() {
+  // TODO
+  // addLoopPointButton_.setEnabled(isNewLoopPointTime(loopPointList_, time_));
+}
+
 void TransportController::buttonClicked(juce::Button *button) {
   if (button == &startStopButton_)
     broadcast(command::Command::TOGGLE_START_STOP);
@@ -64,10 +69,6 @@ void TransportController::buttonClicked(juce::Button *button) {
 void TransportController::setTransportState(rec::audio::transport::State state) {
   startStopButton_.setToggleState(state == rec::audio::transport::RUNNING, false);
   startStopButton_.repaint();
-}
-
-void TransportController::recalc() {
-  addLoopPointButton_.setEnabled(isNewLoopPointTime(loopPointList_, time_));
 }
 
 }  // namespace rec

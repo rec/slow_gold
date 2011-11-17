@@ -3,9 +3,9 @@
 #include "rec/base/RealTime.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/data/Value.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/util/Defaulter.h"
+#include "rec/util/FormatTime.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/thread/CallAsync.h"
@@ -13,6 +13,10 @@
 namespace rec {
 namespace gui {
 namespace audio {
+
+using data::Address;
+using data::Value;
+using gui::TableColumn;
 
 static Def<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
@@ -28,88 +32,97 @@ static Def<TableColumnList> dflt(
 #endif
 );
 
-class LoopPointDataListener : public DataListener<LoopPointList> {
- public:
-  explicit LoopPointDataListener(Loops* loops) : loops_(loops) {}
+const RealTime Loops::CLOSE = 0.5;
 
-  virtual void onDataChange(const LoopPointList& p) {
-  	MessageManagerLock l;
-    loops_->setLoopPoints(p);
-  }
-
-  virtual void setData(data::TypedEditable<LoopPointList>* d) {
-    DataListener<LoopPointList>::setData(d);
-    loops_->setUntypedEditable(d);
-  }
-
- private:
-  Loops* loops_;
-
-  DISALLOW_COPY_AND_ASSIGN(LoopPointDataListener);
-};
-
-const double Loops::CLOSE = 0.5;
-
-Loops::Loops(MenuBarModel* menus, const TableColumnList* desc)
-    : component::Focusable<TableController>(menus),
-      dataListener_(new LoopPointDataListener(this)) {
-  initialize(dflt.get(desc), data::Address("loop_point"), "Loops");
+Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
+    : component::Focusable<TableController>(menus), address_(a)  {
+  initialize(dflt.get(desc), a, "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
-  loopPoints_ = new LoopPointList;
-  message_.reset(loopPoints_);
 }
 
 Loops::~Loops() {}
 
+void Loops::onDataChange(const LoopPointList&) {
+  MessageManagerLock l;
+  update();
+}
+
+static String getDisplayText(const Value& v, const TableColumn& col, RealTime length) {
+  switch (col.type()) {
+   case TableColumn::STRING: return str(v.string_f());
+   case TableColumn::UINT32: return String(v.uint32_f());
+   case TableColumn::TIME: return formatTime(RealTime(v.double_f()), length);
+   case TableColumn::DOUBLE: return String(v.double_f());
+
+   default: return "<unknown>";
+  }
+}
+
+String Loops::displayText(const TableColumn& col, int rowIndex) {
+  String t = "-";
+  if (data()) {
+    Address row = (address_ + rowIndex) + col.address();
+    t = getDisplayText(data()->getValue(row), col, length_);
+  }
+  return t;
+}
+
 void Loops::selectedRowsChanged(int lastRowSelected) {
   bool changed = false;
-  {
-    ScopedLock l(lock_);
-    juce::SparseSet<int> selected(getSelectedRows());
-    for (int i = 0; i < loopPoints_->loop_point_size(); ++i) {
-      LoopPoint* lp = loopPoints_->mutable_loop_point(i);
-      bool contains = selected.contains(i);
-      if (lp->selected() != contains) {
-          lp->set_selected(contains);
-          changed = true;
-      }
+  LoopPointList loops = get();
+  juce::SparseSet<int> selected(getSelectedRows());
+
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
+    LoopPoint* lp = loops.mutable_loop_point(i);
+    bool contains = selected.contains(i);
+    if (lp->selected() != contains) {
+      lp->set_selected(contains);
+      changed = true;
     }
   }
-  if (changed)
-    updatePersistentData();
+  if (changed && data())
+    data()->set(loops);
 }
 
 void Loops::update() {
-  bool selectionChanged;
-  juce::SparseSet<int> sel;
-  {
-    ScopedLock l(lock_);
-    for (int i = 0; i < loopPoints_->loop_point_size(); ++i) {
-      if (loopPoints_->loop_point(i).selected())
-        sel.addRange(juce::Range<int>(i, i + 1));
-    }
+  bool changed;
+  LoopPointList loops = get();
 
-    selectionChanged = (sel != getSelectedRows());
+  juce::SparseSet<int> sel;
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
+    if (loops.loop_point(i).selected())
+      sel.addRange(juce::Range<int>(i, i + 1));
+
+    changed = (sel != getSelectedRows());
   }
-  if (selectionChanged)
+  if (changed)
     setSelectedRows(sel, false);
 
   TableController::update();
 }
 
-bool isNewLoopPointTime(const LoopPointList& lp, RealTime t) {
-  for (int i = 0; i < lp.loop_point_size(); ++i) {
-    RealTime t2 = lp.loop_point(i).time();
-    if (near<double>(t, t2, Loops::CLOSE))
+bool Loops::isNewLoopPoint(RealTime t) const {
+  if (!data())
+    return false;
+
+  const LoopPointList loops = get();
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
+    RealTime t2 = loops.loop_point(i).time();
+    RealTime x = t;
+    RealTime y = t2;
+    RealTime z = Loops::CLOSE;
+    //if (util::near<RealTime>(t, t2, Loops::CLOSE))
+    if (Math<RealTime>::near(x, y, z))
       return false;
   }
   return true;
 }
 
-bool Loops::isNewLoopPoint(RealTime t) const {
-  ScopedLock l(lock_);
-  return isNewLoopPointTime(*loopPoints_, t);
+void Loops::setLoopPoints(const LoopPointList& loops) {
+  if (data())
+    data()->set(loops);
+  updateAndRepaint();  // TODO: is this needed?
 }
 
 namespace {
@@ -120,7 +133,10 @@ struct CompareLoopPoints {
   }
 };
 
-LoopPointList getSelected(const LoopPointList& loops, bool selected) {
+}  // namespace
+
+LoopPointList Loops::getSelected(bool selected) const {
+  LoopPointList loops = get();
   LoopPointList result;
 
   for (int i = 0, size = loops.loop_point_size(); i < size; ++i) {
@@ -130,42 +146,39 @@ LoopPointList getSelected(const LoopPointList& loops, bool selected) {
   return result;
 }
 
-}
-
 string Loops::copy() const {
-  ScopedLock l(lock_);
-  return yaml::write(getSelected(*loopPoints_, true));
+  return yaml::write(getSelected(true));
 }
 
 bool Loops::canCopy() const {
-  ScopedLock l(lock_);
-  return getSelected(*loopPoints_, true).loop_point_size();
+  return getSelected(true).loop_point_size();
 }
 
 void Loops::cut() {
-  ScopedLock l(lock_);
-  *loopPoints_ = getSelected(*loopPoints_, false);
- 	getUntypedEditable()->set(*loopPoints_);
+  if (data())
+    data()->set(getSelected(false));
 }
 
-void Loops::addLoopPoints(const LoopPointList& loops) {
-  ScopedLock l(lock_);
-  const LoopPointList lpl = *loopPoints_;
-  for (int i = 0, j = 0; i < loops.loop_point_size(); ++i) {
-    double t = loops.loop_point(i).time();
+void Loops::addLoopPoints(const LoopPointList& lpl) {
+  if (!data())
+    return;
+
+  LoopPointList loops = get();
+  for (int i = 0, j = 0; i < lpl.loop_point_size(); ++i) {
+    double t = lpl.loop_point(i).time();
     if (isNewLoopPoint(t)) {
-      LoopPoint* lp = loopPoints_->add_loop_point();
+      LoopPoint* lp = loops.add_loop_point();
       lp->CopyFrom(loops.loop_point(i));
-      for (; j < lpl.loop_point_size() && lpl.loop_point(j).time() <= t; ++j);
+      for (; j < loops.loop_point_size() && loops.loop_point(j).time() <= t; ++j);
     }
   }
 
-  std::sort(loopPoints_->mutable_loop_point()->begin(),
-            loopPoints_->mutable_loop_point()->end(),
+  std::sort(loops.mutable_loop_point()->begin(),
+            loops.mutable_loop_point()->end(),
             CompareLoopPoints());
 
- 	getUntypedEditable()->set(*loopPoints_, data::Address());
-  updateAndRepaint();
+  data()->set(loops);
+  updateAndRepaint();  // TODO
 }
 
 bool Loops::paste(const string& s) {
