@@ -108,11 +108,6 @@ void PlayerController::onDataChange(const rec::audio::Gain& gain) {
   levelMeter_(gain);
 }
 
-void PlayerController::setData(data::TypedEditable<Gain>* d) {
-  DataListener<Gain>::setData(d);
-  level_.setUntypedEditable(d);
-}
-
 void PlayerController::comboBoxChanged(juce::ComboBox* box) {
   if (box == &stereoComboBox_) {
     if (DataListener<StereoProto>::data()) {
