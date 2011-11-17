@@ -48,7 +48,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
 
   LevelMeter levelMeter_;
 
-  gui::SetterToggle disableButton_;
+  // gui::NewSetterToggle disableButton_;
   gui::SetterToggle zoomToSelectionButton_;
   gui::SetterToggle preFaderLevels_;
 

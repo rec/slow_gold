@@ -28,7 +28,7 @@ PlayerController::PlayerController()
       pitchScale_("Pitch", Address("semitone_shift")),
       fineScale_("Tune", Address("detune_cents")),
       level_("Gain", Address("gain")),
-      disableButton_("Disable speed", Address("time_disabled")),
+      // disableButton_("Disable speed", Address("time_disabled")),
       zoomToSelectionButton_("Zoom to selection", Address("zoom_to_selection")),
       preFaderLevels_("Pre-fader levels", Address("prefader_levels")),
       muteButton_("Mute", Address("mute")),
@@ -51,7 +51,7 @@ PlayerController::PlayerController()
 
   pitchScale_.setEnabled(ENABLE_SHIFTS);
   fineScale_.setEnabled(ENABLE_SHIFTS);
-  disableButton_.setEnabled(ENABLE_SHIFTS);
+  // disableButton_.setEnabled(ENABLE_SHIFTS);
   zoomToSelectionButton_.setEnabled(false);
 
   stereoComboBox_.setEditableText(false);
@@ -74,7 +74,7 @@ PlayerController::PlayerController()
 
   addToLayout(&muteButton_, 14);
   addToLayout(&dimButton_, 14);
-  addToLayout(&disableButton_, 14);
+  // addToLayout(&disableButton_, 14);
   addToLayout(&zoomToSelectionButton_, 14);
   addToLayout(&preFaderLevels_, 14);
 
