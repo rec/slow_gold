@@ -1,7 +1,6 @@
 #ifndef __REC_GUI_SETTERTOGGLE__
 #define __REC_GUI_SETTERTOGGLE__
 
-#include "rec/util/listener/ProtoListener.h"
 #include "rec/util/listener/DataListener.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -10,7 +9,7 @@ namespace gui {
 
 template <typename Proto>
 class SetterToggle : public juce::ToggleButton,
-                        public DataListener<Proto> {
+                     public DataListener<Proto> {
  public:
   SetterToggle(const String& name, const data::Address& address)
       : juce::ToggleButton(name), DataListener<Proto>(address) {}
@@ -32,7 +31,6 @@ class SetterToggle : public juce::ToggleButton,
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterToggle);
 };
-
 
 }  // namespace gui
 }  // namespace rec
