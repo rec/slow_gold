@@ -36,7 +36,7 @@ void Editable::append(const Value& value, const Address& address) {
   setOp(this, valueOp(Operation::APPEND, address, value));
 }
 
-void Editable::set(const Value& value, const Address& address) {
+void Editable::setValue(const Value& value, const Address& address) {
   setOp(this, valueOp(Operation::SET, address, value));
 }
 

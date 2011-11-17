@@ -26,7 +26,7 @@ void ProtoListener::operator()(const Message& m) {
 
 void ProtoListener::updatePersistentData() {
   if (data::Editable* d = getUntypedEditable())
-    d->set(getDisplayValue(), address_);
+    d->setValue(getDisplayValue(), address_);
 }
 
 }  // namespace listener

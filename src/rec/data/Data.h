@@ -63,7 +63,7 @@ TypedEditable<Proto>* editable(const VirtualFile& vf) {
 
 template <typename Proto>
 void setValue(const Proto& p, const VirtualFile& f, const Address& a) {
-  editable<Proto>(f)->set(p, a);
+  editable<Proto>(f)->setValue(p, a);
 }
 
 template <typename Proto>

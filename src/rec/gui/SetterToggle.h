@@ -34,12 +34,13 @@ class SetterToggle : public juce::ToggleButton,
 #if 0
 template <typename Proto>
 class NewSetterToggle : public juce::ToggleButton,
-                        public ProtoListener {
+                        public DataListener<Proto> {
  public:
   NewSetterToggle(const String& name, const data::Address& address)
-      : juce::ToggleButton(name), ProtoListener(address) {}
+      : juce::ToggleButton(name), DataListener(address) {}
 
   virtual void clicked() {
+    getToggleState();
 
  protected:
   virtual const data::Value getDisplayValue() const { return getToggleState(); }

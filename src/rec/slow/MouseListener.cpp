@@ -148,7 +148,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       zoom.set_end(end);
 
       zoom.set_end(zoom.begin() + size);
-      DataListener<widget::waveform::ZoomProto>::data()->set(zoom);
+      DataListener<widget::waveform::ZoomProto>::data()->setValue(zoom);
     }
 
   } else if (e.eventComponent->getName() == "Cursor") {

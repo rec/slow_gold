@@ -22,6 +22,15 @@ class DataListenerBase : public Listener<const Proto&> {
 
   virtual void operator()(const Proto& p);
   virtual const Proto get() const { Lock l(lock_); return proto_; }
+  virtual void setValue(const data::Value& value) {
+    if (data())
+      data()->setValue(value, address_);
+  }
+
+  virtual void set(const Proto& proto) {
+    if (data())
+      data()->setValue(proto);
+  }
 
   static const bool UPDATE_ON_MESSAGE_THREAD = !true;  // TODO: fix!
 

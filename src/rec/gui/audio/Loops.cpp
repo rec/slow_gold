@@ -82,8 +82,8 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
       changed = true;
     }
   }
-  if (changed && data())
-    data()->set(loops);
+  if (changed)
+    set(loops);
 }
 
 void Loops::update() {
@@ -121,8 +121,7 @@ bool Loops::isNewLoopPoint(RealTime t) const {
 }
 
 void Loops::setLoopPoints(const LoopPointList& loops) {
-  if (data())
-    data()->set(loops);
+  set(loops);
   updateAndRepaint();  // TODO: is this needed?
 }
 
@@ -156,8 +155,7 @@ bool Loops::canCopy() const {
 }
 
 void Loops::cut() {
-  if (data())
-    data()->set(getSelected(false));
+  set(getSelected(false));
 }
 
 void Loops::addLoopPoints(const LoopPointList& lpl) {
@@ -178,7 +176,7 @@ void Loops::addLoopPoints(const LoopPointList& lpl) {
             loops.mutable_loop_point()->end(),
             CompareLoopPoints());
 
-  data()->set(loops);
+  set(loops);
   updateAndRepaint();  // TODO
 }
 

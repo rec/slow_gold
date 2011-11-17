@@ -56,7 +56,7 @@ void ModeSelector::buttonClicked(Button* button) {
     if (i->second == button) {
       Mode mode;
       mode.set_click(i->first);
-      data()->set(mode);
+      data()->setValue(mode);
       return;
     }
   }

@@ -30,7 +30,7 @@ void SetterResizer::doSet(int distance) {
 
 void SetterResizer::moved() {
   if (active_)
-    editable_->set(static_cast<uint32>(get()), address_);
+    editable_->setValue(static_cast<uint32>(get()), address_);
 }
 
 void SetterResizer::paint(Graphics& g) {

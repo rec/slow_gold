@@ -62,7 +62,7 @@ void addRecentFile(const VirtualFile& f) {
   if (!found && recent.file_size() < recent.max_files())
     data::editable<RecentFiles>()->append(msg, Address("file"));
   else
-    data::editable<RecentFiles>()->set(msg, Address("file", slot));
+    data::editable<RecentFiles>()->setValue(msg, Address("file", slot));
 }
 
 }  // namespace gui
