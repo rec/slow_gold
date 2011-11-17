@@ -30,7 +30,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   virtual void onDataChange(const rec::audio::source::StereoProto&);
   virtual void onDataChange(const rec::audio::Gain&);
 
-  virtual void setData(data::TypedEditable<rec::audio::stretch::Stretch>*);
   virtual void setData(data::TypedEditable<rec::audio::Gain>*);
 
   virtual void comboBoxChanged(juce::ComboBox*);
@@ -42,8 +41,8 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
 
  private:
   NewDataSlider<rec::audio::stretch::Stretch, double> playbackSpeed_;
-  DataSlider<double> pitchScale_;
-  DataSlider<double> fineScale_;
+  NewDataSlider<rec::audio::stretch::Stretch, double> pitchScale_;
+  NewDataSlider<rec::audio::stretch::Stretch, double> fineScale_;
   DataSlider<double> level_;
 
   LevelMeter levelMeter_;
