@@ -146,7 +146,6 @@
 		9572BD2A620573A2C8416BE1 /* conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B336F1C1C2090670B7DA2C4 /* conversion.cpp */; };
 		965D9EBABDDADEDD8E21A424 /* regex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4132813AF6EC06285C2AF89 /* regex.cpp */; };
 		97FB7094BC6C411643657C15 /* Metadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490604E738E7F7E49FABE411 /* Metadata.cpp */; };
-		987A192F5E06D3F82CD76550 /* DataSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24E9F944DA376C7B677F2FAF /* DataSlider.cpp */; };
 		9A907178688A42A189BF293E /* null.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7073B7FF6A3F516F96A1D338 /* null.cpp */; };
 		9A9BAEF8C76DA0DDA39BF86C /* LoopSnapshot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E735A0D3C040525F106AFB9 /* LoopSnapshot.cpp */; };
 		9B4381F268519380859267AF /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEC80387A9D590E88437C3BD /* Tags.cpp */; };
@@ -332,7 +331,6 @@
 		23D3BCBB3F82854EECFF3305 /* MPStart.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MPStart.svg.h; path = ../../../../src/rec/gui/icon/MPStart.svg.h; sourceTree = SOURCE_ROOT; };
 		24A0BEC00ACCEC6FABBB97FA /* Panes.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Panes.pb.cc; path = ../../../../genfiles/proto/rec/widget/Panes.pb.cc; sourceTree = SOURCE_ROOT; };
 		24CBB9DFAA3B6EE0AFF95C35 /* Undo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Undo.h; path = ../../../../src/rec/util/Undo.h; sourceTree = SOURCE_ROOT; };
-		24E9F944DA376C7B677F2FAF /* DataSlider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DataSlider.cpp; path = ../../../../src/rec/gui/DataSlider.cpp; sourceTree = SOURCE_ROOT; };
 		2501DE5143C9726EFD4CFEE5 /* Status.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Status.cpp; path = ../../../../src/rec/widget/status/Status.cpp; sourceTree = SOURCE_ROOT; };
 		25087F3D677E7FF0B7C1D3ED /* null.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = null.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/null.h"; sourceTree = SOURCE_ROOT; };
 		2555FF7A2228B1C8DF7362A9 /* Field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Field.cpp; path = ../../../../src/rec/data/proto/Field.cpp; sourceTree = SOURCE_ROOT; };
@@ -856,16 +854,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02411361F03A35213F52B36C /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		038EBD0127900AAA157CFD86 /* command */ = {
 			isa = PBXGroup;
 			children = (
@@ -1088,6 +1076,16 @@
 				0A5354FA92A4F142C87E6CA7 /* Zoom.pb.h */,
 			);
 			name = waveform;
+			sourceTree = "<group>";
+		};
+		38B56BFF3335A7042685E7B8 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
 			sourceTree = "<group>";
 		};
 		3C135DAD33CBF49BFAAD8AA4 /* audio */ = {
@@ -1605,7 +1603,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				02411361F03A35213F52B36C /* Slow */,
+				38B56BFF3335A7042685E7B8 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1621,7 +1619,6 @@
 				FD48E942DCF34E501D534EE3 /* Color.cpp */,
 				1A5A7B859A4E6759DDA42B68 /* Color.h */,
 				89C09BD854C1ACA158B55F88 /* component */,
-				24E9F944DA376C7B677F2FAF /* DataSlider.cpp */,
 				D1548CF342681FC1A973BD75 /* DataSlider.h */,
 				9A875A96341E65BD199381D9 /* DetentSlider.h */,
 				A6E64E9C0DD47EFB250B07DF /* Dialog.cpp */,
@@ -2116,7 +2113,6 @@
 				3EA87DB1ABDC51AF61DC4B34 /* TimeController.cpp in Sources */,
 				DD6985CA056B15D42BDB7DAD /* TransportController.cpp in Sources */,
 				B5994044A31BC17761B16591 /* Color.cpp in Sources */,
-				987A192F5E06D3F82CD76550 /* DataSlider.cpp in Sources */,
 				46FFDC19A70EC9CB800FAFBE /* Dialog.cpp in Sources */,
 				FD55EC648F3B38175CF75372 /* Geometry.cpp in Sources */,
 				895DC5EF8406600F0CD43F41 /* AudioCard.svg.cpp in Sources */,

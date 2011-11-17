@@ -117,7 +117,6 @@
 		3EA87DB1ABDC51AF61DC4B34 = { isa = PBXBuildFile; fileRef = 6E823053B76ED19FFFA5E393; };
 		DD6985CA056B15D42BDB7DAD = { isa = PBXBuildFile; fileRef = AA72AD4FBEC619DC6F63742F; };
 		B5994044A31BC17761B16591 = { isa = PBXBuildFile; fileRef = FD48E942DCF34E501D534EE3; };
-		987A192F5E06D3F82CD76550 = { isa = PBXBuildFile; fileRef = 24E9F944DA376C7B677F2FAF; };
 		46FFDC19A70EC9CB800FAFBE = { isa = PBXBuildFile; fileRef = A6E64E9C0DD47EFB250B07DF; };
 		FD55EC648F3B38175CF75372 = { isa = PBXBuildFile; fileRef = 9316F0EECFA95C056CF5A9C7; };
 		895DC5EF8406600F0CD43F41 = { isa = PBXBuildFile; fileRef = 3D2574908A37D188C9ED1F65; };
@@ -526,7 +525,6 @@
 		FD48E942DCF34E501D534EE3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cpp; path = ../../../../src/rec/gui/Color.cpp; sourceTree = "SOURCE_ROOT"; };
 		1A5A7B859A4E6759DDA42B68 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Color.h; path = ../../../../src/rec/gui/Color.h; sourceTree = "SOURCE_ROOT"; };
 		A4242A568A095ADA31E0EC03 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Focusable.h; path = ../../../../src/rec/gui/component/Focusable.h; sourceTree = "SOURCE_ROOT"; };
-		24E9F944DA376C7B677F2FAF = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DataSlider.cpp; path = ../../../../src/rec/gui/DataSlider.cpp; sourceTree = "SOURCE_ROOT"; };
 		D1548CF342681FC1A973BD75 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DataSlider.h; path = ../../../../src/rec/gui/DataSlider.h; sourceTree = "SOURCE_ROOT"; };
 		9A875A96341E65BD199381D9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DetentSlider.h; path = ../../../../src/rec/gui/DetentSlider.h; sourceTree = "SOURCE_ROOT"; };
 		A6E64E9C0DD47EFB250B07DF = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Dialog.cpp; path = ../../../../src/rec/gui/Dialog.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1173,7 +1171,6 @@
 				FD48E942DCF34E501D534EE3,
 				1A5A7B859A4E6759DDA42B68,
 				89C09BD854C1ACA158B55F88,
-				24E9F944DA376C7B677F2FAF,
 				D1548CF342681FC1A973BD75,
 				9A875A96341E65BD199381D9,
 				A6E64E9C0DD47EFB250B07DF,
@@ -1503,7 +1500,7 @@
 				0E5561BA8F7A19892CFB3AED ); name = rec; sourceTree = "<group>"; };
 		F5495BB1B8B716831989C22D = { isa = PBXGroup; children = (
 				C168A6E2670AB63095F469AB ); name = proto; sourceTree = "<group>"; };
-		0B6C0A386790C924D8F93F0A = { isa = PBXGroup; children = (
+		8EEE3E22026533D2EAE2ED82 = { isa = PBXGroup; children = (
 				75467D3DB26B8C553F2D3FE5,
 				F5495BB1B8B716831989C22D,
 				107F029BEE50E0870F8E5A13 ); name = Command; sourceTree = "<group>"; };
@@ -1531,7 +1528,7 @@
 		DBBED81D920B27CB9107C128 = { isa = PBXGroup; children = (
 				D427FD0910FEA6098B36B56B ); name = Products; sourceTree = "<group>"; };
 		B2772D76DA45DD25AC30B180 = { isa = PBXGroup; children = (
-				0B6C0A386790C924D8F93F0A,
+				8EEE3E22026533D2EAE2ED82,
 				E89CD5E8F8F5E56D76A0DE49,
 				AC0A55CC5C6219AB36B5C26B,
 				C0B90B9133DBCC84A6028DCC,
@@ -1717,7 +1714,6 @@
 				3EA87DB1ABDC51AF61DC4B34,
 				DD6985CA056B15D42BDB7DAD,
 				B5994044A31BC17761B16591,
-				987A192F5E06D3F82CD76550,
 				46FFDC19A70EC9CB800FAFBE,
 				FD55EC648F3B38175CF75372,
 				895DC5EF8406600F0CD43F41,

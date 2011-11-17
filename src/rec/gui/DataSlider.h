@@ -11,38 +11,12 @@
 namespace rec {
 namespace gui {
 
-template <typename Type>
-class DataSlider : public Layout,
-                   public ProtoListener,
-                   public juce::Slider::Listener {
- public:
-  DataSlider(const String& name,
-             const data::Address& address,
-             const String& caption = String::empty,
-             const String& tip = String::empty);
-
-  DetentSlider* slider() { return &slider_; }
-
-  virtual void sliderValueChanged(Slider*) { updatePersistentData(); }
-
- protected:
-  virtual const data::Value getDisplayValue() const { return slider_.getValue(); }
-  void setValue(Type value) { slider_.setValue(value, false); }
-  virtual void setDisplayValue(const data::Value& value);
-
-  DetentSlider slider_;
-  SimpleLabel caption_;
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(DataSlider);
-};
-
 template <typename Proto, typename Type>
-class NewDataSlider : public Layout,
+class DataSlider : public Layout,
                       public DataListener<Proto>,
                       public juce::Slider::Listener {
  public:
-  NewDataSlider(const String& name,
+  DataSlider(const String& name,
                 const data::Address& address,
                 const String& caption = String::empty,
                 const String& tip = String::empty)
@@ -73,7 +47,7 @@ class NewDataSlider : public Layout,
 
   virtual void onDataChange(const Proto&) {
     const data::Value value = this->getValue();
-    thread::callAsync(this, &NewDataSlider<Proto, Type>::setSliderValue,
+    thread::callAsync(this, &DataSlider<Proto, Type>::setSliderValue,
                       value.get<Type>());
   }
 
@@ -84,7 +58,7 @@ class NewDataSlider : public Layout,
   SimpleLabel caption_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(NewDataSlider);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(DataSlider);
 };
 
 }  // namespace gui
