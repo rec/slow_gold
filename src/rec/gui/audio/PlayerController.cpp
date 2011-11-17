@@ -120,7 +120,6 @@ void PlayerController::setData(data::TypedEditable<Gain>* d) {
   level_.setUntypedEditable(d);
   muteButton_.setUntypedEditable(d);
   dimButton_.setUntypedEditable(d);
-  preFaderLevels_.setUntypedEditable(d);
 }
 
 void PlayerController::comboBoxChanged(juce::ComboBox* box) {
