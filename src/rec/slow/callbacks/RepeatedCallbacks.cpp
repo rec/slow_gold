@@ -1,4 +1,5 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
+#include "rec/gui/RecentFiles.pb.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/BufferFiller.h"
@@ -47,8 +48,6 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-}  // namespace
-
 void add(CallbackTable* c, int32 type, Position position,
          SelectorFunction f, Instance* i) {
   add(c, position.toCommandID(type), select, i, f, position);
@@ -58,6 +57,22 @@ void add(CallbackTable* c, int32 type, Position position,
          LoopSnapshotFunction f, Instance* i) {
   add(c, position.toCommandID(type), loop, i, f, position);
 }
+
+static const int RECENT_MENU_REPEATS = 32;
+
+void loadRecentFile(Instance* instance, int i) {
+  gui::RecentFiles rf = data::get<gui::RecentFiles>();
+  if (i < 0 || i >= rf.file_size()) {
+    LOG(ERROR) << "Can't load recent, i=" << i << ", size=" << rf.file_size();
+    return;
+  }
+
+  (*instance->currentFile_)(rf.file(i).file());
+}
+
+
+}  // namespace
+
 
 void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
   for (int j = Position::FIRST; j < repeat; ++j) {
@@ -69,6 +84,11 @@ void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
 
     add(t, Command::JUMP_SELECTED, pos, jumpSelected, i);
     add(t, Command::JUMP, pos, jump, i);
+  }
+
+  for (int j = 0; j < RECENT_MENU_REPEATS; ++j) {
+    CommandID id = Position::toCommandID(j, Command::RECENT_FILES);
+    add(t, id, loadRecentFile, i, j);
   }
 }
 

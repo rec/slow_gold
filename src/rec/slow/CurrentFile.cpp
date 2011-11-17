@@ -39,9 +39,9 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
+  gui::addRecentFile(file_);
+  data::set(f);
   setFile(f);
-  data::set(file_);
-  gui::addRecentFile(f);
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {

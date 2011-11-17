@@ -16,13 +16,16 @@ namespace {
 
 struct CompareRecentFiles {
   bool operator()(const RecentFile& x, const RecentFile& y) {
-    return x.timestamp() < y.timestamp();
+    return x.timestamp() > y.timestamp();  // Most recent first.
   }
 };
 
 }  // namespace
 
 void addRecentFile(const VirtualFile& f) {
+  if (empty(f))
+    return;
+
   int64 timestamp = juce::Time::currentTimeMillis();
   RecentFiles rf = data::get<RecentFiles>();
   RecentFile* r = NULL;
@@ -36,7 +39,7 @@ void addRecentFile(const VirtualFile& f) {
 
   if (!r) {
     r = (rf.file_size() < rf.max_files()) ? rf.add_file() :
-      rf.mutable_file(0);
+      rf.mutable_file(rf.file_size() - 1);
   }
   r->set_timestamp(timestamp);
   r->mutable_file()->CopyFrom(f);
