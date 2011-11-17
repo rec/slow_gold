@@ -2,7 +2,7 @@
 #define __REC_AUDIO_SOURCE_SNOOPY__
 
 #include "rec/audio/source/Wrappy.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace audio {

@@ -3,7 +3,7 @@
 
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/Audio.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace audio {

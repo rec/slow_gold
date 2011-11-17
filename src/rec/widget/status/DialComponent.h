@@ -2,8 +2,8 @@
 #define __REC_WIDGET_STATUS_DIALCOMPONENT__
 
 #include "rec/base/RealTime.h"
-#include "rec/util/listener/DataListener.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/DataListener.h"
+#include "rec/util/Listener.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Range.h"
 #include "rec/widget/status/Time.pb.h"

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "rec/util/DelegateToList.h"
+#include "rec/util/unused/DelegateToList.h"
 
 #include "rec/base/ArraySize.h"
 #include "rec/widget/Widget.pb.h"

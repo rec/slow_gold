@@ -2,7 +2,7 @@
 #define __REC_SLOW_MENUS__
 
 #include "rec/slow/HasInstance.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace slow {

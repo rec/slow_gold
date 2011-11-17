@@ -9,8 +9,8 @@
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
-#include "rec/util/listener/DataListener.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/DataListener.h"
+#include "rec/util/Listener.h"
 #include "rec/widget/waveform/Waveform.h"
 
 namespace rec {

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="nXK8uJDdt" name="tests">
+  <MAINGROUP id="vQEefoG63" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -927,10 +927,6 @@
           <FILE compile="1" file="../../src/rec/util/cd/StripLines_test.cpp"
                 id="ylAaJUlV2" name="StripLines_test.cpp" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/util/Circular.h" id="vDoVwhEbc"
-              name="Circular.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/Circular_test.cpp" id="FkMClwrzR"
-              name="Circular_test.cpp" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Compare.cpp" id="ZqeNWyuPb"
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="YN1Cfu2jM"
@@ -943,6 +939,8 @@
               name="Cuttable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="PMk9dholr"
               name="Cuttable.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/DataListener.h" id="b6og5tebU"
+              name="DataListener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Defaulter.cpp" id="Ahv6iYw38"
               name="Defaulter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="Wnzv6qRmH"
@@ -951,10 +949,6 @@
               name="DefaultRegistry.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/DefaultRegistry.h" id="Ha3ba53KS"
               name="DefaultRegistry.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/DelegateToList.h" id="SLwfq1Ca5"
-              name="DelegateToList.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/DelegateToList_test.cpp"
-              id="xi8jc91Fm" name="DelegateToList_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="GwXdj5T2H"
               name="Exception.h" resource="0"/>
         <GROUP id="vdeBh9S9U" name="file">
@@ -985,12 +979,8 @@
               name="FormatTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="vLQ0cyews"
               name="FormatTime.h" resource="0"/>
-        <GROUP id="sU4e5LjIk" name="listener">
-          <FILE compile="0" file="../../src/rec/util/listener/DataListener.h"
-                id="hH0HuXnyU" name="DataListener.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/listener/Listener.h" id="NropoomA8"
-                name="Listener.h" resource="0"/>
-        </GROUP>
+        <FILE compile="0" file="../../src/rec/util/Listener.h" id="wJVB1DhiA"
+              name="Listener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/LoopPoint.cpp" id="4o8CKvV5R"
               name="LoopPoint.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/LoopPoint.h" id="HZL1e8R2x"
@@ -1015,24 +1005,12 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Platform.h" id="A78Zgmk4m"
               name="Platform.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/PointerList.h" id="mAw0zFgKm"
-              name="PointerList.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/RandomSelfInverseFunction.cpp"
-              id="Yp4dJp6J8" name="RandomSelfInverseFunction.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/RandomSelfInverseFunction.h"
-              id="Ioq7Pxbpg" name="RandomSelfInverseFunction.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/RandomSelfInverseFunction_test.cpp"
-              id="s9u2Oy5KL" name="RandomSelfInverseFunction_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="AvppXo9nU"
               name="Range.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Range_test.cpp" id="V4d5qBnXr"
               name="Range_test.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/ShouldExit.h" id="CWUnE0wxb"
-              name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="Km8Ts3LYZ" name="STL.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Switcher.h" id="K7Uka2wMX"
-              name="Switcher.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/TestData.h" id="pd5MFhku4"
               name="TestData.h" resource="0"/>
         <GROUP id="cr9ZIWdF6" name="thread">
@@ -1073,6 +1051,28 @@
               name="Undo.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Undo.h" id="fJUSncY0o" name="Undo.h"
               resource="0"/>
+        <GROUP id="EbvDmWf6U" name="unused">
+          <FILE compile="0" file="../../src/rec/util/unused/Circular.h" id="eqg2NsTJM"
+                name="Circular.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/unused/Circular_test.cpp"
+                id="HXqkcFDx6" name="Circular_test.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/DelegateToList.h"
+                id="2KHtTn36O" name="DelegateToList.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/unused/DelegateToList_test.cpp"
+                id="ScHbPmgdP" name="DelegateToList_test.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/PointerList.h" id="dnuAhrWUH"
+                name="PointerList.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/unused/RandomSelfInverseFunction.cpp"
+                id="vKRYm6Ykg" name="RandomSelfInverseFunction.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/RandomSelfInverseFunction.h"
+                id="YimdVt4e6" name="RandomSelfInverseFunction.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/unused/RandomSelfInverseFunction_test.cpp"
+                id="uqt7qzNUL" name="RandomSelfInverseFunction_test.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/ShouldExit.h" id="Vpw906tQ8"
+                name="ShouldExit.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/Switcher.h" id="9LyYQdEro"
+                name="Switcher.h" resource="0"/>
+        </GROUP>
       </GROUP>
       <GROUP id="hFkrretDQ" name="widget">
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="zCSrsHYWM"
@@ -1319,7 +1319,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="j6tVBh0Be" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="F694FDenc" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -5,7 +5,7 @@
 #include "rec/gui/DetentSlider.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/gui/SimpleLabel.h"
-#include "rec/util/listener/DataListener.h"
+#include "rec/util/DataListener.h"
 
 namespace rec {
 namespace gui {

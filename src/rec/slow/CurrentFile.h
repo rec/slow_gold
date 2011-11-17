@@ -2,7 +2,7 @@
 #define __REC_SLOW_METHODS_FILEMETHODS__
 
 #include "rec/slow/HasInstance.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {

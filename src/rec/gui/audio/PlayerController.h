@@ -8,7 +8,7 @@
 #include "rec/gui/audio/LevelMeter.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/layout/Layout.h"
-#include "rec/util/listener/DataListener.h"
+#include "rec/util/DataListener.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 

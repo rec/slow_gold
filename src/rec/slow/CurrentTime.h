@@ -5,8 +5,8 @@
 #include "rec/slow/HasInstance.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/listener/DataListener.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/DataListener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace slow {

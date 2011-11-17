@@ -2,7 +2,7 @@
 #define __REC_PERSIST_UNTYPEDDATA__
 
 #include "rec/data/Editable.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {

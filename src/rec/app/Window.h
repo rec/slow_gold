@@ -2,7 +2,7 @@
 #define __REC_APP_WINDOW__
 
 #include "rec/gui/PersistentWindow.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 

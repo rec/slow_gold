@@ -5,7 +5,7 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/gui/Geometry.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.h"

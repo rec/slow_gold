@@ -3,7 +3,6 @@
 
 #include "rec/util/file/Util.h"
 #include "rec/base/ArraySize.h"
-#include "rec/util/ShouldExit.h"
 #include "rec/util/Compare.h"
 
 using namespace juce;
@@ -12,6 +11,14 @@ namespace rec {
 namespace util {
 namespace file {
 
+namespace {
+
+template <typename Thread>
+bool shouldExit(Thread* thread) {
+  return thread && thread->threadShouldExit();
+}
+
+}  // namespace
 
 bool isHidden(const File& file) {
   if (file.getFileName()[0] == '.')

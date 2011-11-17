@@ -7,7 +7,7 @@
 #include "rec/gui/component/Focusable.h"
 #include "rec/music/Metadata.h"
 #include "rec/util/Cuttable.h"
-#include "rec/util/listener/DataListener.h"
+#include "rec/util/DataListener.h"
 
 namespace rec {
 namespace gui {

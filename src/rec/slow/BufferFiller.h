@@ -15,8 +15,8 @@
 #include "rec/util/Mode.pb.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/util/listener/DataListener.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/DataListener.h"
+#include "rec/util/Listener.h"
 #include "rec/util/thread/Result.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 

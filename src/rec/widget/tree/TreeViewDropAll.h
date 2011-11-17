@@ -5,7 +5,7 @@
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/util/Cuttable.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace widget {

@@ -6,7 +6,7 @@
 #include "rec/command/Command.pb.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/LoopPoint.pb.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace gui {

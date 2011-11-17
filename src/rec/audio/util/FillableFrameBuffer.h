@@ -4,7 +4,7 @@
 #include "rec/base/Samples.h"
 #include "rec/audio/util/Frame.h"
 #include "rec/util/block/Fillable.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace audio {

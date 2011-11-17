@@ -6,7 +6,7 @@
 #include "rec/data/UntypedEditable.h"
 #include "rec/util/DefaultRegistry.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace data {

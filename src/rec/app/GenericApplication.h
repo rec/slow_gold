@@ -4,7 +4,7 @@
 #include <string>
 
 #include "rec/util/thread/Trash.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 

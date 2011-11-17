@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/util/RandomSelfInverseFunction.h"
+#include "rec/util/unused/RandomSelfInverseFunction.h"
 
 namespace rec {
 namespace util {

@@ -2,7 +2,7 @@
 
 #include "rec/audio/Device.h"
 #include "rec/command/map/MidiName.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace command {

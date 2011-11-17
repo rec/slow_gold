@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Ht2Af716B" name="Command">
+  <MAINGROUP id="l672v7yqH" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -889,8 +889,6 @@
           <FILE compile="0" file="../../src/rec/util/cd/StripLines.h" id="rzrP059c2"
                 name="StripLines.h" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/util/Circular.h" id="TnDZ4aOPt"
-              name="Circular.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Compare.cpp" id="UHMybPoCG"
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="Xx1K96mJm"
@@ -903,6 +901,8 @@
               name="Cuttable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="VwgCDr4Ep"
               name="Cuttable.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/DataListener.h" id="5HyK96q4K"
+              name="DataListener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Defaulter.cpp" id="r1laIsTFq"
               name="Defaulter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="KPc16cdSD"
@@ -911,8 +911,6 @@
               name="DefaultRegistry.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/DefaultRegistry.h" id="SlIFCglXI"
               name="DefaultRegistry.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/DelegateToList.h" id="b6Gw6C5iN"
-              name="DelegateToList.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="UvEXJklIm"
               name="Exception.h" resource="0"/>
         <GROUP id="eEhvc9Q3H" name="file">
@@ -939,12 +937,8 @@
               name="FormatTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="rW8AR5ac7"
               name="FormatTime.h" resource="0"/>
-        <GROUP id="7NAzl46CT" name="listener">
-          <FILE compile="0" file="../../src/rec/util/listener/DataListener.h"
-                id="rVYaUoZFY" name="DataListener.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/listener/Listener.h" id="I8Hf7ACje"
-                name="Listener.h" resource="0"/>
-        </GROUP>
+        <FILE compile="0" file="../../src/rec/util/Listener.h" id="U47ht1vDh"
+              name="Listener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/LoopPoint.cpp" id="zXm5DBC5f"
               name="LoopPoint.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/LoopPoint.h" id="NVGpA3DAi"
@@ -963,20 +957,10 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Platform.h" id="umChgFIaH"
               name="Platform.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/PointerList.h" id="qSpbRp5vh"
-              name="PointerList.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/RandomSelfInverseFunction.cpp"
-              id="CF7SnDCv9" name="RandomSelfInverseFunction.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/RandomSelfInverseFunction.h"
-              id="CvzURvOBy" name="RandomSelfInverseFunction.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="Z58jWDkgr"
               name="Range.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/ShouldExit.h" id="zW6PdHEBr"
-              name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="OrwebqVEp" name="STL.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Switcher.h" id="W10h4RGo8"
-              name="Switcher.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/TestData.h" id="DgQ1cDJB0"
               name="TestData.h" resource="0"/>
         <GROUP id="gonimSYKx" name="thread">
@@ -1017,6 +1001,22 @@
               name="Undo.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Undo.h" id="GUZaNwQse" name="Undo.h"
               resource="0"/>
+        <GROUP id="ck4JLMRUI" name="unused">
+          <FILE compile="0" file="../../src/rec/util/unused/Circular.h" id="KNwVbr3yz"
+                name="Circular.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/DelegateToList.h"
+                id="aJxLwqP69" name="DelegateToList.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/PointerList.h" id="fEvTQXy12"
+                name="PointerList.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/unused/RandomSelfInverseFunction.cpp"
+                id="3aknpfTrx" name="RandomSelfInverseFunction.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/RandomSelfInverseFunction.h"
+                id="DDzwlHpjA" name="RandomSelfInverseFunction.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/ShouldExit.h" id="p3Ka48JyZ"
+                name="ShouldExit.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/unused/Switcher.h" id="uP0d1ECDe"
+                name="Switcher.h" resource="0"/>
+        </GROUP>
       </GROUP>
       <GROUP id="SUnByOVEB" name="widget">
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="pywYbaxoY"
@@ -1261,7 +1261,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="rYynfRdw2" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="2P8FDqzrq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

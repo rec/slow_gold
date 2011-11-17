@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_SETTERTOGGLE__
 #define __REC_GUI_SETTERTOGGLE__
 
-#include "rec/util/listener/DataListener.h"
+#include "rec/util/DataListener.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {

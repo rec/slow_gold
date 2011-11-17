@@ -9,7 +9,7 @@
 #include "rec/audio/util/Gain.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/block/Block.h"
-#include "rec/util/listener/DataListener.h"
+#include "rec/util/DataListener.h"
 
 namespace rec {
 

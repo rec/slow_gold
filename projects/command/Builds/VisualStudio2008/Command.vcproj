@@ -608,18 +608,17 @@
             <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.h"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\util\Circular.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Compare.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Compare.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Copy.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Copy.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Cuttable.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Cuttable.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\DataListener.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\DefaultRegistry.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\DefaultRegistry.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\DelegateToList.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Exception.h"/>
           <Filter Name="file">
             <File RelativePath="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
@@ -634,10 +633,7 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\FormatTime.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\FormatTime.h"/>
-          <Filter Name="listener">
-            <File RelativePath="..\..\..\..\src\rec\util\listener\DataListener.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
-          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\util\Listener.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
@@ -648,13 +644,8 @@
             <File RelativePath="..\..\..\..\src\rec\util\partition\Partition.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Platform.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\PointerList.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\util\RandomSelfInverseFunction.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Range.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\ShouldExit.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\STL.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\Switcher.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\TestData.h"/>
           <Filter Name="thread">
             <File RelativePath="..\..\..\..\src\rec\util\thread\CallAsync.h"/>
@@ -676,6 +667,15 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Undo.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Undo.h"/>
+          <Filter Name="unused">
+            <File RelativePath="..\..\..\..\src\rec\util\unused\Circular.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\unused\DelegateToList.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\unused\PointerList.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\unused\ShouldExit.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\unused\Switcher.h"/>
+          </Filter>
         </Filter>
         <Filter Name="widget">
           <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>

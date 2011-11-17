@@ -5,7 +5,7 @@
 
 #include "rec/command/Command.h"
 #include "rec/util/STL.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {

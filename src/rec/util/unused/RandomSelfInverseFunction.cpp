@@ -2,7 +2,7 @@
 
 #include <set>
 
-#include "rec/util/RandomSelfInverseFunction.h"
+#include "rec/util/unused/RandomSelfInverseFunction.h"
 
 namespace rec {
 namespace util {

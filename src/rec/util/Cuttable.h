@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_CUTTABLECOMPONENT__
 #define __REC_UTIL_CUTTABLECOMPONENT__
 
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace util {

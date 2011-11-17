@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_LISTENER_DATALISTENER__
 #define __REC_UTIL_LISTENER_DATALISTENER__
 
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 #include "rec/data/TypedEditable.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/Address.h"

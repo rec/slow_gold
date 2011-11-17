@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_AUDIO_LEVELMETER__
 #define __REC_GUI_AUDIO_LEVELMETER__
 
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 #include "rec/audio/util/Gain.h"
 
 namespace rec {

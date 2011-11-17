@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #include "rec/base/RealTime.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/widget/status/Time.pb.h"
 

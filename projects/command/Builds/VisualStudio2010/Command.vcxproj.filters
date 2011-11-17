@@ -101,14 +101,14 @@
     <Filter Include="Command\rec\util\file">
       <UniqueIdentifier>{1198EBB4-6A96-C489-869F-63E4EFD64E45}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Command\rec\util\listener">
-      <UniqueIdentifier>{58284095-01A2-6A4B-2718-66B5B3B15536}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Command\rec\util\partition">
       <UniqueIdentifier>{4B9B66BC-FC35-45E6-0A0D-4C56C5603DD6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Command\rec\util\thread">
       <UniqueIdentifier>{6365AF69-FE0C-A305-4DEB-108CE8FD9BE2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Command\rec\util\unused">
+      <UniqueIdentifier>{0EAF4BE9-943D-2BC3-C60A-F1AB241B489F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Command\rec\widget">
       <UniqueIdentifier>{51E0BAFB-CD41-53FA-3F52-59E420CACBE3}</UniqueIdentifier>
@@ -706,14 +706,14 @@
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp">
       <Filter>Command\rec\util\partition</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp">
-      <Filter>Command\rec\util</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
       <Filter>Command\rec\util\thread</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp">
       <Filter>Command\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp">
+      <Filter>Command\rec\util\unused</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp">
       <Filter>Command\rec\widget\status</Filter>
@@ -1587,9 +1587,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\cd\StripLines.h">
       <Filter>Command\rec\util\cd</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\Circular.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Compare.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
@@ -1599,13 +1596,13 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\DataListener.h">
+      <Filter>Command\rec\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\DefaultRegistry.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\DelegateToList.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
@@ -1629,11 +1626,8 @@
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\listener\DataListener.h">
-      <Filter>Command\rec\util\listener</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\listener\Listener.h">
-      <Filter>Command\rec\util\listener</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\util\Listener.h">
+      <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\LoopPoint.h">
       <Filter>Command\rec\util</Filter>
@@ -1650,22 +1644,10 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Platform.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\PointerList.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\ShouldExit.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\Switcher.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\TestData.h">
@@ -1718,6 +1700,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Undo.h">
       <Filter>Command\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\Circular.h">
+      <Filter>Command\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\DelegateToList.h">
+      <Filter>Command\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\PointerList.h">
+      <Filter>Command\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.h">
+      <Filter>Command\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\ShouldExit.h">
+      <Filter>Command\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\Switcher.h">
+      <Filter>Command\rec\util\unused</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\Painter.h">
       <Filter>Command\rec\widget</Filter>

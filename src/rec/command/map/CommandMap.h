@@ -5,7 +5,7 @@
 
 #include "rec/command/Command.h"
 #include "rec/command/map/CommandMap.pb.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace command {

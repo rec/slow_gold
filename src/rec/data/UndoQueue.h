@@ -5,7 +5,7 @@
 
 #include "rec/data/Editable.h"
 #include "rec/data/Action.pb.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/Listener.h"
 
 namespace rec { namespace util { namespace file { class Output; }}}
 

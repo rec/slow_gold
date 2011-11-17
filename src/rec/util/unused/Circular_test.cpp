@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "rec/util/Circular.h"
+#include "rec/util/unused/Circular.h"
 
 namespace rec {
 namespace util {
