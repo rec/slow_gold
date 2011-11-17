@@ -5,6 +5,7 @@
 #include "rec/data/TypedEditable.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/Data.h"
+#include "rec/data/Address.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -14,7 +15,9 @@ namespace listener {
 template <typename Proto>
 class DataListenerBase : public Listener<const Proto&> {
  public:
-  DataListenerBase(bool fd = false) : filterDupes_(fd), data_(NULL) {}
+  DataListenerBase(const data::Address& address = data::Address::default_instance())
+      : filterDupes_(true), data_(NULL), address_(address) {
+  }
   virtual ~DataListenerBase() {}
 
   virtual void operator()(const Proto& p);
@@ -26,14 +29,16 @@ class DataListenerBase : public Listener<const Proto&> {
   data::TypedEditable<Proto>* data() const { return data_; }
   virtual void setData(data::TypedEditable<Proto>* d);  // TODO: change to setEditable.
   virtual void onDataChange(const Proto&) = 0;
+  const data::Address& address() const { return address_; }
 
  private:
   void doOnDataChange(const Proto& p) { onDataChange(p); }
 
   CriticalSection lock_;
+  const bool filterDupes_;
   data::TypedEditable<Proto>* data_;
   Proto proto_;
-  const bool filterDupes_;
+  const data::Address address_;
 
   DISALLOW_COPY_AND_ASSIGN(DataListenerBase);
 };
@@ -44,7 +49,8 @@ template <typename Proto>
 class DataListener : public DataListenerBase<Proto>,
                      public Listener<const VirtualFile&> {
  public:
-  DataListener(bool filterDupes = false) : DataListenerBase<Proto>(filterDupes) {
+  DataListener(const data::Address& address = data::Address::default_instance())
+      : DataListenerBase<Proto>(address) {
     data::editable<VirtualFile>()->addListener(this);
   }
 
@@ -61,7 +67,8 @@ class DataListener : public DataListenerBase<Proto>,
 template <typename Proto>
 class GlobalDataListener : public DataListenerBase<Proto> {
  public:
-  GlobalDataListener(bool filterDupes = false) : DataListenerBase<Proto>(filterDupes) {
+  GlobalDataListener(const data::Address& address = data::Address::default_instance())
+      : DataListenerBase<Proto>(address) {
     setData(data::editable<Proto>());
   }
 

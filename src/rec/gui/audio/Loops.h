@@ -24,7 +24,7 @@ class Loops : public component::Focusable<TableController>,
               public Cuttable {
  public:
   explicit Loops(MenuBarModel* menus, const TableColumnList* desc = NULL,
-                 const data::Address& address_ = data::Address("loop_point"));
+                const data::Address& address = data::Address("loop_point"));
   virtual ~Loops();
 
   static const RealTime CLOSE;
@@ -59,8 +59,6 @@ class Loops : public component::Focusable<TableController>,
 
  private:
   LoopPointList getSelected(bool selected) const;
-
-  data::Address address_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };

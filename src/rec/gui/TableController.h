@@ -3,7 +3,6 @@
 
 #include "rec/base/RealTime.h"
 #include "rec/gui/TableColumn.pb.h"
-#include "rec/util/listener/ProtoListener.h"
 #include "rec/data/Address.h"
 
 namespace rec {

@@ -35,7 +35,8 @@ static Def<TableColumnList> dflt(
 const RealTime Loops::CLOSE = 0.5;
 
 Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
-    : component::Focusable<TableController>(menus), address_(a)  {
+    : component::Focusable<TableController>(menus),
+      DataListener<LoopPointList>(a) {
   initialize(dflt.get(desc), a, "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
@@ -62,7 +63,7 @@ static String getDisplayText(const Value& v, const TableColumn& col, RealTime le
 String Loops::displayText(const TableColumn& col, int rowIndex) {
   String t = "-";
   if (data()) {
-    Address row = (address_ + rowIndex) + col.address();
+    Address row = (address() + rowIndex) + col.address();
     t = getDisplayText(data()->getValue(row), col, length_);
   }
   return t;
