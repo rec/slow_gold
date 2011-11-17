@@ -4,6 +4,7 @@
 #include "rec/data/Data.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/DropFiles.h"
+#include "rec/gui/RecentFiles.h"
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/music/CreateMusicFileReader.h"
@@ -40,6 +41,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 void CurrentFile::operator()(const VirtualFile& f) {
   setFile(f);
   data::set(file_);
+  gui::addRecentFile(f);
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {

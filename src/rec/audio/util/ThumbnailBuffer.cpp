@@ -24,10 +24,12 @@ ThumbnailBuffer::ThumbnailBuffer()
 ThumbnailBuffer::~ThumbnailBuffer() {}
 
 void ThumbnailBuffer::addBlock(Samples<44100> pos, const Info& i) {
+  Lock l(lock_);
   thumbnail_.addBlock(pos, *i.buffer, i.startSample, i.numSamples);
 }
 
 void ThumbnailBuffer::writeThumbnail() {
+  Lock l(lock_);
   if (cacheWritten_)
     return;
 
@@ -45,6 +47,7 @@ void ThumbnailBuffer::writeThumbnail() {
 }
 
 bool ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
+  Lock l(lock_);
   if (!reader) {
     LOG(ERROR) << "Thumbnail buffer had no reader";
     return false;

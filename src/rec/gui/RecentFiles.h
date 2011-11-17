@@ -7,8 +7,6 @@
 namespace rec {
 namespace gui {
 
-RecentFiles getSortedRecentFiles();
-
 void addRecentFile(const VirtualFile& filename);
 
 }  // namespace gui

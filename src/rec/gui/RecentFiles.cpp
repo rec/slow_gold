@@ -7,9 +7,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/proto/Equals.h"
 
-using namespace std;
 using namespace google::protobuf;
-using namespace rec::data;
 
 namespace rec {
 namespace gui {
@@ -18,51 +16,35 @@ namespace {
 
 struct CompareRecentFiles {
   bool operator()(const RecentFile& x, const RecentFile& y) {
-    // Sort in descending timestamp!
-    return x.timestamp() > y.timestamp();
+    return x.timestamp() < y.timestamp();
   }
 };
 
 }  // namespace
 
-RecentFiles getSortedRecentFiles() {
-  RecentFiles rf = data::get<RecentFiles>();
-  google::protobuf::RepeatedPtrField<RecentFile>* recent = rf.mutable_file();
-  sort(recent->begin(), recent->end(), CompareRecentFiles());
-
-  return rf;
-}
-
 void addRecentFile(const VirtualFile& f) {
   int64 timestamp = juce::Time::currentTimeMillis();
-  RecentFiles recent = data::get<RecentFiles>();
-
-  int64 least = timestamp;
-  int slot = 0;
-  bool found = false;
-
-  for (int i = 0; !found && i < recent.file_size(); ++i) {
-    const RecentFile& file = recent.file(i);
-    if (file.file() != f) {
-      slot = i;
-      found = true;
-
-    } else if (file.timestamp() < least) {
-      least = file.timestamp();
-      slot = i;
+  RecentFiles rf = data::get<RecentFiles>();
+  RecentFile* r = NULL;
+  for (int i = 0; i < rf.file_size(); ++i) {
+    const RecentFile& file = rf.file(i);
+    if (file.file() == f) {
+      r = rf.mutable_file(i);
+      break;
     }
   }
 
-  RecentFile r;
-  r.set_timestamp(timestamp);
-  r.mutable_file()->CopyFrom(f);
+  if (!r) {
+    r = (rf.file_size() < rf.max_files()) ? rf.add_file() :
+      rf.mutable_file(0);
+  }
+  r->set_timestamp(timestamp);
+  r->mutable_file()->CopyFrom(f);
 
-  pmessage msg(r);
+  std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
+            CompareRecentFiles());
 
-  if (!found && recent.file_size() < recent.max_files())
-    data::editable<RecentFiles>()->append(msg, Address("file"));
-  else
-    data::editable<RecentFiles>()->setValue(msg, Address("file", slot));
+  data::set(rf);
 }
 
 }  // namespace gui

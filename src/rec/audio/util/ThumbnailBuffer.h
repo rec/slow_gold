@@ -27,6 +27,8 @@ class ThumbnailBuffer {
   juce::AudioThumbnail* thumbnail() { return &thumbnail_; }
 
  private:
+  CriticalSection lock_;
+
   File file_;
   juce::AudioThumbnailCache cache_;
   bool cacheWritten_;
