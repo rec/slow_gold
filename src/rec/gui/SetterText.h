@@ -4,22 +4,23 @@
 #include "rec/data/Value.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/gui/SimpleLabel.h"
-#include "rec/util/listener/ProtoListener.h"
+#include "rec/util/listener/DataListener.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
 
+template <typename Proto>
 class SetterText : public Layout,
-                   public ProtoListener,
+                   public DataListener<Proto>,
                    public TextEditor::Listener {
  public:
-  SetterText(const String& name, 
+  SetterText(const String& name,
              const data::Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty)
       : Layout(name, HORIZONTAL),
-        ProtoListener(address),
+        DataListener<Proto>(address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {
     const String& cap = caption.length() ? caption : name;
@@ -43,17 +44,16 @@ class SetterText : public Layout,
 
   TextEditor* editor() { return &editor_; }
 
-  virtual void textEditorTextChanged(TextEditor&) { updatePersistentData(); }
+  virtual void textEditorTextChanged(TextEditor&) {
+    this->setValue(str(editor_.getText()));
+  }
   virtual void textEditorReturnKeyPressed(TextEditor& editor) {}
   virtual void textEditorEscapeKeyPressed(TextEditor& editor) {}
   virtual void textEditorFocusLost(TextEditor& editor) {}
 
  protected:
-  virtual const data::Value getDisplayValue() const {
-    return str(editor_.getText());
-  }
-
-  virtual void setDisplayValue(const data::Value& value) {
+  virtual void onDataChange(const Proto&) {
+    const data::Value value = this->getValue();
     if (value.has_string_f()) {
       thread::callAsync(&editor_, &TextEditor::setText,
                         str(value.string_f()), false);

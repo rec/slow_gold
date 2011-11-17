@@ -9,38 +9,29 @@
 namespace rec {
 namespace gui {
 
+template <typename Proto>
 class SetterTextArea : public Layout {
  public:
-  SetterTextArea(const String& name = String::empty)
-      : Layout(name, VERTICAL), untypedData_(NULL) {
-  }
+  SetterTextArea(const String& name = String::empty) : Layout(name, VERTICAL) {}
 
   ~SetterTextArea() { stl::deletePointers(&components_); }
 
-  SetterText* text(int i) { return static_cast<SetterText*>(components_[i]); }
-
-  SetterText* add(const String& name,
-  								const data::Address& address,
-                  const String& tip = String::empty,
-                  const String& caption = String::empty) {
-    SetterText* text = new SetterText(name, address, tip, caption);
-    addToLayout(text, 12, 20, 20);
-    return text;
+  SetterText<Proto>* text(int i) {
+    return static_cast<SetterText<Proto>*>(components_[i]);
   }
 
-  virtual void setUntypedEditable(data::UntypedEditable* data) {
-    untypedData_ = data;
-    int size = static_cast<int>(components_.size());
-    for (int i = 0; i < size; ++i)
-      text(i)->setUntypedEditable(data);
+  SetterText<Proto>* add(const String& name,
+                         const data::Address& addr,
+                         const String& tip = String::empty,
+                         const String& caption = String::empty) {
+    SetterText<Proto>* text = new SetterText<Proto>(name, addr, tip, caption);
+    addToLayout(text, 12, 20, 20);
+    return text;
   }
 
   virtual void repaint() {  // TODO: remove this?
     Layout::repaint();
   }
-
- protected:
-  data::UntypedEditable* untypedData_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(SetterTextArea);

@@ -12,14 +12,14 @@
 namespace rec {
 namespace gui {
 
-class SongData : public component::Focusable<SetterTextArea>,
+class SongData : public component::Focusable<SetterTextArea <music::Metadata> >,
                  public Cuttable,
                  public DataListener<music::Metadata> {
  public:
   typedef data::Address Address;
 
   explicit SongData(MenuBarModel* model)
-      : component::Focusable<SetterTextArea>(model) {
+      : component::Focusable<SetterTextArea<music::Metadata> >(model) {
     setName("SongData");
     add("Track", Address("track_title"), "The name of the individual track.");
     add("Album", Address("album_title"),
@@ -39,15 +39,9 @@ class SongData : public component::Focusable<SetterTextArea>,
   virtual bool paste(const string&) { return false; }
   virtual const string cuttableName() const { return "SongData"; }
   virtual string copy() const {
-    return yaml::write(*ptr<Message>(untypedData_->clone()));
+    return yaml::write(this->get());
   }
   virtual void cut() {}
-
-  virtual void onDataChange(const music::Metadata&) {}
-  virtual void setData(data::TypedEditable< music::Metadata>* d) {
-    DataListener<music::Metadata>::setData(d);
-    setUntypedEditable(d);
-  }
 
  private:
   DISALLOW_COPY_AND_ASSIGN(SongData);

@@ -260,8 +260,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 343194313;
-			PBXWorkspaceStateSaveDate = 343194313;
+			PBXPerProjectTemplateStateSaveDate = 343196358;
+			PBXWorkspaceStateSaveDate = 343196358;
 		};
 		perUserProjectItems = {
 			E204C1AB146A0A06001544FC = E204C1AB146A0A06001544FC /* PBXBookmark */;
@@ -528,6 +528,9 @@
 			E20E0C2D1474BABC0064EA5C = E20E0C2D1474BABC0064EA5C /* PBXTextBookmark */;
 			E20E0C2E1474BABC0064EA5C = E20E0C2E1474BABC0064EA5C /* PBXTextBookmark */;
 			E20E0C2F1474BABC0064EA5C = E20E0C2F1474BABC0064EA5C /* PBXTextBookmark */;
+			E20E0C601474C1C70064EA5C = E20E0C601474C1C70064EA5C /* PBXTextBookmark */;
+			E20E0C631474C1D00064EA5C = E20E0C631474C1D00064EA5C /* PBXTextBookmark */;
+			E20E0C641474C2090064EA5C = E20E0C641474C2090064EA5C /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F84146F55ED00FBAD0B = E29F6F84146F55ED00FBAD0B /* PBXTextBookmark */;
@@ -3441,6 +3444,41 @@
 		vrLen = 1464;
 		vrLoc = 0;
 	};
+	E20E0C5F1474C1C70064EA5C /* SongData.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = SongData.h;
+		path = ../../../../../rec/src/rec/gui/SongData.h;
+		sourceTree = "<group>";
+	};
+	E20E0C601474C1C70064EA5C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'const class rec::gui::SongData' has no member named 'get'";
+		fRef = E20E0C5F1474C1C70064EA5C /* SongData.h */;
+		rLen = 1;
+		rLoc = 41;
+		rType = 1;
+	};
+	E20E0C631474C1D00064EA5C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20E0C5F1474C1C70064EA5C /* SongData.h */;
+		name = "SongData.h: 30";
+		rLen = 0;
+		rLoc = 1122;
+		rType = 0;
+		vrLen = 1739;
+		vrLoc = 0;
+	};
+	E20E0C641474C2090064EA5C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20E0C5F1474C1C70064EA5C /* SongData.h */;
+		name = "SongData.h: 42";
+		rLen = 0;
+		rLoc = 1633;
+		rType = 0;
+		vrLen = 1794;
+		vrLoc = 0;
+	};
 	E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
@@ -3589,14 +3627,6 @@
 			sepNavSelRange = "{1527, 0}";
 			sepNavVisRange = "{0, 1374}";
 			sepNavWindowFrame = "{{757, 89}, {911, 971}}";
-		};
-	};
-	FDEBE5CFEE05645C9B37A633 /* ProtoListener.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 858}}";
-			sepNavSelRange = "{713, 0}";
-			sepNavVisRange = "{0, 813}";
-			sepNavWindowFrame = "{{153, 76}, {911, 971}}";
 		};
 	};
 }

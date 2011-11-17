@@ -208,7 +208,6 @@
 		1F7C33EAA747E56B54268DA3 = { isa = PBXBuildFile; fileRef = 22FD5CEB49ADEAE8E8F073DE; };
 		228EA83CEFC4CA7DCDEEC1A8 = { isa = PBXBuildFile; fileRef = 02AEB950A360B0C907C699D8; };
 		32739D015383FCA06A0A1C93 = { isa = PBXBuildFile; fileRef = 6C48804C3C144AAC8E64BE49; };
-		14F39655B08B1B71CD874CC9 = { isa = PBXBuildFile; fileRef = B089E2D8D3C71C366EC6BAB7; };
 		9AC922F484B8ACF8A89195DD = { isa = PBXBuildFile; fileRef = EFA6E571785CBCBDD44D37E7; };
 		7AB686DE195DC6D9D2855692 = { isa = PBXBuildFile; fileRef = 33FCC91E371373136CAFEBF6; };
 		89459B0CBB244CD9B67D2E34 = { isa = PBXBuildFile; fileRef = F11AE31B693093253A9C071D; };
@@ -733,9 +732,6 @@
 		9A255EB07F05A3F0BE5B1727 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FormatTime.h; path = ../../../../src/rec/util/FormatTime.h; sourceTree = "SOURCE_ROOT"; };
 		CDD8BC16A4EB518C9F4AA345 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DataListener.h; path = ../../../../src/rec/util/listener/DataListener.h; sourceTree = "SOURCE_ROOT"; };
 		4D68739BF46B9EE2DD16BD85 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../../../src/rec/util/listener/Listener.h; sourceTree = "SOURCE_ROOT"; };
-		B089E2D8D3C71C366EC6BAB7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ProtoListener.cpp; path = ../../../../src/rec/util/listener/ProtoListener.cpp; sourceTree = "SOURCE_ROOT"; };
-		FB7A4F00BEB2E7C09FA7C85E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProtoListener.h; path = ../../../../src/rec/util/listener/ProtoListener.h; sourceTree = "SOURCE_ROOT"; };
-		6FA4419F13120E1D17A69831 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterListener.h; path = ../../../../src/rec/util/listener/SetterListener.h; sourceTree = "SOURCE_ROOT"; };
 		EFA6E571785CBCBDD44D37E7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopPoint.cpp; path = ../../../../src/rec/util/LoopPoint.cpp; sourceTree = "SOURCE_ROOT"; };
 		3948DE2D6FA7444A1884A884 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopPoint.h; path = ../../../../src/rec/util/LoopPoint.h; sourceTree = "SOURCE_ROOT"; };
 		33FCC91E371373136CAFEBF6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "LoopPoint_test.cpp"; path = "../../../../src/rec/util/LoopPoint_test.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -1357,10 +1353,7 @@
 				BE07428B0017D445356186C0 ); name = file; sourceTree = "<group>"; };
 		477492534AEC3954B100FD89 = { isa = PBXGroup; children = (
 				CDD8BC16A4EB518C9F4AA345,
-				4D68739BF46B9EE2DD16BD85,
-				B089E2D8D3C71C366EC6BAB7,
-				FB7A4F00BEB2E7C09FA7C85E,
-				6FA4419F13120E1D17A69831 ); name = listener; sourceTree = "<group>"; };
+				4D68739BF46B9EE2DD16BD85 ); name = listener; sourceTree = "<group>"; };
 		6C23D6DD357F18A070A70B50 = { isa = PBXGroup; children = (
 				96A7564A2D45C9A4E59B406B,
 				1E84221BB98A2878AAD4862A,
@@ -1584,7 +1577,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		701B010627164EA8AEF52813 = { isa = PBXGroup; children = (
+		A113F6E324DDB60D2A3A608B = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1611,7 +1604,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				701B010627164EA8AEF52813,
+				A113F6E324DDB60D2A3A608B,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1888,7 +1881,6 @@
 				1F7C33EAA747E56B54268DA3,
 				228EA83CEFC4CA7DCDEEC1A8,
 				32739D015383FCA06A0A1C93,
-				14F39655B08B1B71CD874CC9,
 				9AC922F484B8ACF8A89195DD,
 				7AB686DE195DC6D9D2855692,
 				89459B0CBB244CD9B67D2E34,

@@ -45,7 +45,7 @@ class DataListenerBase : public Listener<const Proto&> {
  protected:
   data::TypedEditable<Proto>* data() const { return data_; }
   virtual void setData(data::TypedEditable<Proto>* d);  // TODO: change to setEditable.
-  virtual void onDataChange(const Proto&) = 0;
+  virtual void onDataChange(const Proto&) {}
   const data::Address& address() const { return address_; }
 
  private:

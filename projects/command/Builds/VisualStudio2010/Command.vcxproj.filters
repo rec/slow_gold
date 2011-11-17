@@ -697,9 +697,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp">
       <Filter>Command\rec\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\listener\ProtoListener.cpp">
-      <Filter>Command\rec\util\listener</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp">
       <Filter>Command\rec\util</Filter>
     </ClCompile>
@@ -1636,12 +1633,6 @@
       <Filter>Command\rec\util\listener</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\listener\Listener.h">
-      <Filter>Command\rec\util\listener</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\listener\ProtoListener.h">
-      <Filter>Command\rec\util\listener</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\listener\SetterListener.h">
       <Filter>Command\rec\util\listener</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\LoopPoint.h">
