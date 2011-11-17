@@ -52,8 +52,8 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   gui::NewSetterToggle<widget::waveform::ZoomProto> zoomToSelectionButton_;
   gui::NewSetterToggle<rec::audio::Gain> preFaderLevels_;
 
-  gui::SetterToggle muteButton_;
-  gui::SetterToggle dimButton_;
+  gui::NewSetterToggle<rec::audio::Gain> muteButton_;
+  gui::NewSetterToggle<rec::audio::Gain> dimButton_;
 
   juce::ComboBox stereoComboBox_;
   ModeSelector modeSelector_;

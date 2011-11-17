@@ -118,8 +118,6 @@ void PlayerController::setData(data::TypedEditable<Stretch>* d) {
 void PlayerController::setData(data::TypedEditable<Gain>* d) {
   DataListener<Gain>::setData(d);
   level_.setUntypedEditable(d);
-  muteButton_.setUntypedEditable(d);
-  dimButton_.setUntypedEditable(d);
 }
 
 void PlayerController::comboBoxChanged(juce::ComboBox* box) {
