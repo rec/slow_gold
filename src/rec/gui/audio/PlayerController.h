@@ -10,6 +10,7 @@
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/listener/DataListener.h"
 #include "rec/util/Mode.pb.h"
+#include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
 namespace gui {
@@ -32,7 +33,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   virtual void setData(data::TypedEditable<rec::audio::stretch::Stretch>*);
   virtual void setData(data::TypedEditable<rec::audio::Gain>*);
 
-  void setZoom(data::UntypedEditable* zoom);
   virtual void comboBoxChanged(juce::ComboBox*);
 
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
@@ -49,7 +49,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   LevelMeter levelMeter_;
 
   // gui::NewSetterToggle disableButton_;
-  gui::SetterToggle zoomToSelectionButton_;
+  gui::NewSetterToggle<widget::waveform::ZoomProto> zoomToSelectionButton_;
   gui::NewSetterToggle<rec::audio::Gain> preFaderLevels_;
 
   gui::SetterToggle muteButton_;

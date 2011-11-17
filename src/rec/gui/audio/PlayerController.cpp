@@ -136,10 +136,6 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
   }
 }
 
-void PlayerController::setZoom(data::UntypedEditable* data) {
-  zoomToSelectionButton_.setUntypedEditable(data);
-}
-
 void PlayerController::clearLevels() {
   levelMeter_(LevelVector());
 }
