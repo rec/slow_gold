@@ -11,6 +11,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
+#include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/MouseListener.h"
@@ -51,6 +52,7 @@ Instance::Instance(SlowWindow* window)
   widget::tree::Root* root = components_->directoryTree_.get();
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(currentFile_.get());
+  components_->mainPage_->dropBroadcaster()->addListener(currentFile_.get());
 
   components_->transportController_->addListener(target_->targetManager());
 

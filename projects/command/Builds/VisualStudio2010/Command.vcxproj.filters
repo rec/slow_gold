@@ -838,6 +838,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.cc">
       <Filter>Command\proto\rec\widget\status</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\NavigatorConfig.pb.cc">
+      <Filter>Command\proto\rec\widget\tree</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.cc">
       <Filter>Command\proto\rec\widget\tree</Filter>
     </ClCompile>
@@ -1850,6 +1853,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.h">
       <Filter>Command\proto\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\NavigatorConfig.pb.h">
+      <Filter>Command\proto\rec\widget\tree</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h">
       <Filter>Command\proto\rec\widget\tree</Filter>

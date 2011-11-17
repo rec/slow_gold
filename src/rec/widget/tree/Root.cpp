@@ -8,6 +8,7 @@
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/CD.h"
 #include "rec/widget/tree/Directory.h"
+#include "rec/widget/tree/NavigatorConfig.pb.h"
 
 using namespace juce;
 using namespace rec::thread;
@@ -25,11 +26,12 @@ static File getOpennessFile() {
   return app::getAppFile("TreeOpenness.xml");
 }
 
-Root::Root(MenuBarModel* model, const NodeDesc& desc) : desc_(desc),
-                                   tree_(model),
-                                   addDialogOpen_(false),
-                                   opennessRead_(false),
-                                   opennessStarted_(false) {
+Root::Root(MenuBarModel* model, const NodeDesc& desc)
+  : desc_(desc),
+    tree_(model),
+    addDialogOpen_(false),
+    opennessRead_(false),
+    opennessStarted_(false) {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   tree_.addMouseListener(this, false);
@@ -107,7 +109,7 @@ void Root::mouseDoubleClick(const juce::MouseEvent&) {
 }
 
 void Root::doAdd() {
-  if (addDialogOpen_)
+  if (addDialogOpen_ || !data::get<NavigatorConfig>().allow_file_drop())
     return;
 
   addDialogOpen_ = true;

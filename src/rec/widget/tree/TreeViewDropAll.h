@@ -14,13 +14,20 @@ namespace tree {
 typedef gui::DropTarget<TreeView, gui::NullInterface> TreeViewDropTarget;
 typedef gui::component::Focusable<TreeViewDropTarget> FocusableTarget;
 
-class TreeViewDropAll : public FocusableTarget, public Cuttable {
+
+class TreeViewDropAll : public FocusableTarget
+#ifdef TREE_VIEW_IS_CUTTABLE
+, public Cuttable
+#endif
+{
  public:
   explicit TreeViewDropAll(MenuBarModel*);
   virtual void paint(Graphics& g);
 
   bool isInterestedInFileDrag(const StringArray& files);
+  bool isTreeDrop(const Component* c) const;
 
+#ifdef TREE_VIEW_IS_CUTTABLE
   virtual bool canCopy() const;
   virtual bool canCut() const { return canCopy(); }
   virtual bool canPaste() const { return true; }
@@ -28,6 +35,7 @@ class TreeViewDropAll : public FocusableTarget, public Cuttable {
   virtual void cut();
   virtual bool paste(const string&);
   const string cuttableName() const { return "Navigator"; }
+#endif
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TreeViewDropAll);

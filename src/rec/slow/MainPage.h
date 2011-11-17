@@ -6,6 +6,7 @@
 
 #include "rec/gui/layout/Layout.h"
 #include "rec/gui/SetterResizer.h"
+#include "rec/gui/DropTarget.h"
 
 namespace rec {
 
@@ -25,8 +26,13 @@ class MainPage {
   gui::Layout* panel() { return &mainPanel_; }
   void setActive(bool a);
 
+  Broadcaster<const gui::DropFiles&>* dropBroadcaster() {
+    return mainPanel_.dropBroadcaster();
+  }
+
+
  private:
-  gui::Layout mainPanel_;
+  gui::DropTarget<gui::Layout> mainPanel_;
   gui::Layout nonLoopPanel_;
   gui::Layout playbackPanel_;
   gui::Layout controllerPanel_;

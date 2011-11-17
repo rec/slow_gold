@@ -1,16 +1,20 @@
 #include "rec/widget/tree/TreeViewDropAll.h"
-#include "rec/widget/tree/NodeItem.h"
-#include "rec/gui/component/Focusable.h"
-#include "rec/data/yaml/Yaml.h"
 #include "rec/data/Value.h"
+#include "rec/data/yaml/Yaml.h"
+#include "rec/gui/component/Focusable.h"
+#include "rec/widget/tree/NavigatorConfig.pb.h"
+#include "rec/widget/tree/NodeItem.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
 
-TreeViewDropAll::TreeViewDropAll(MenuBarModel* m)
-    : FocusableTarget(m) {
+TreeViewDropAll::TreeViewDropAll(MenuBarModel* m) : FocusableTarget(m) {
   setName("Tree");
+}
+
+bool TreeViewDropAll::isTreeDrop(const Component* c) const {
+  return (c == this) && data::get<NavigatorConfig>().allow_file_drop();
 }
 
 void TreeViewDropAll::paint(Graphics& g) {
@@ -18,24 +22,30 @@ void TreeViewDropAll::paint(Graphics& g) {
 
   g.setFont(14.0f);
 
-  static const int HEIGHT = 10;
-  g.drawFittedText("This is your bookmarks area!  Drop directories and ",
-                   0, 0, getWidth(), getHeight() - HEIGHT,
-                   juce::Justification::centred, 0);
+  if (isTreeDrop(this)) {
+    static const int HEIGHT = 10;
+    g.drawFittedText("This is your bookmarks area!  Drop directories and ",
+                     0, 0, getWidth(), getHeight() - HEIGHT,
+                     juce::Justification::centred, 0);
 
-  g.drawFittedText("files here or double-click for a dialog.",
-                   0, HEIGHT, getWidth(), getHeight(),
-                   juce::Justification::centred, 0);
+    g.drawFittedText("files here or double-click for a dialog.",
+                     0, HEIGHT, getWidth(), getHeight(),
+                     juce::Justification::centred, 0);
+  }
   paintFocus(g);
 }
 
 bool TreeViewDropAll::isInterestedInFileDrag(const StringArray& files) {
+  if (!isTreeDrop(this))
+    return FocusableTarget::isInterestedInFileDrag(files);
+
   for (int i = 0; i < files.size(); ++i) {
-    if (file::isAudio(files[i]) || File(files[i]).isDirectory())
-      return true;
+    if (!file::isAudio(files[i]) || File(files[i]).isDirectory())
+      return false;
   }
-  return false;
+  return true;
 }
+#ifdef TREE_VIEW_IS_CUTTABLE
 
 bool TreeViewDropAll::canCopy() const {
   juce::TreeViewItem* root = getRootItem();
@@ -78,6 +88,8 @@ bool TreeViewDropAll::paste(const string& s) {
   }
   return read;
 }
+
+#endif
 
 }  // namespace tree
 }  // namespace widget

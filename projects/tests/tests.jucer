@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="vQEefoG63" name="tests">
+  <MAINGROUP id="L3Up9EWlL" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -1289,6 +1289,10 @@
                   id="nF2l3l4t5" name="Time.pb.h" resource="0"/>
           </GROUP>
           <GROUP id="8ZLJCst9D" name="tree">
+            <FILE compile="1" file="../../genfiles/proto/rec/widget/tree/NavigatorConfig.pb.cc"
+                  id="c7ir2dxJ6" name="NavigatorConfig.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/widget/tree/NavigatorConfig.pb.h"
+                  id="n30o1TpXS" name="NavigatorConfig.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/widget/tree/Node.pb.cc"
                   id="EADhFkPkB" name="Node.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/widget/tree/Node.pb.h"
@@ -1319,7 +1323,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="F694FDenc" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="CmDwobKXg" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

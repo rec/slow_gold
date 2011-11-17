@@ -45,8 +45,7 @@ void add(gui::Layout* layout, Type t, double size) {
 }  // namespace
 
 MainPage::MainPage(Components* components, data::Editable* e)
-    : mainPanel_("MainPage", HORIZONTAL),
-      nonLoopPanel_("MainPagePanel", VERTICAL),
+    : nonLoopPanel_("MainPagePanel", VERTICAL),
       playbackPanel_("Main controls"),
       controllerPanel_("Main panel", VERTICAL),
       directoryResizer_("directory_y", &nonLoopPanel_, 1, e),

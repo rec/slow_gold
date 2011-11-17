@@ -18,11 +18,7 @@ namespace slow {
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
-  if (dropFiles.target_ == components()->waveform_.get()) {
-    if (files.file_size() >= 1)
-      data::set(files.file(0));
-
-  } else if (dropFiles.target_ == components()->directoryTree_->treeView()) {
+  if (components()->directoryTree_->treeView()->isTreeDrop(dropFiles.target_)) {
     using file::getFile;
 
     typedef std::set<string> FileSet;
@@ -35,6 +31,9 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
       if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
         data::editable<VirtualFileList>()->append(files.file(i), data::Address("file"));
     }
+  } else {
+    if (files.file_size() >= 1)
+      (*this)(files.file(0));
   }
 }
 
