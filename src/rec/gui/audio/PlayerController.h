@@ -48,12 +48,12 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
 
   LevelMeter levelMeter_;
 
-  // gui::NewSetterToggle disableButton_;
-  gui::NewSetterToggle<widget::waveform::ZoomProto> zoomToSelectionButton_;
-  gui::NewSetterToggle<rec::audio::Gain> preFaderLevels_;
+  // gui::SetterToggle disableButton_;
+  gui::SetterToggle<widget::waveform::ZoomProto> zoomToSelectionButton_;
+  gui::SetterToggle<rec::audio::Gain> preFaderLevels_;
 
-  gui::NewSetterToggle<rec::audio::Gain> muteButton_;
-  gui::NewSetterToggle<rec::audio::Gain> dimButton_;
+  gui::SetterToggle<rec::audio::Gain> muteButton_;
+  gui::SetterToggle<rec::audio::Gain> dimButton_;
 
   juce::ComboBox stereoComboBox_;
   ModeSelector modeSelector_;
