@@ -4,8 +4,9 @@
 #include "rec/util/listener/Listener.h"
 #include "rec/data/TypedEditable.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/data/Data.h"
 #include "rec/data/Address.h"
+#include "rec/data/Data.h"
+#include "rec/data/Value.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -21,7 +22,14 @@ class DataListenerBase : public Listener<const Proto&> {
   virtual ~DataListenerBase() {}
 
   virtual void operator()(const Proto& p);
-  virtual const Proto get() const { Lock l(lock_); return proto_; }
+
+  virtual const Proto get() const {
+    return data() ? data()->get() : Proto::default_instance();
+  }
+  virtual const data::Value getValue() const {
+    return data() ? data()->getValue(address_) : data::Value::default_instance();
+  }
+
   virtual void setValue(const data::Value& value) {
     if (data())
       data()->setValue(value, address_);
