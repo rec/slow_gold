@@ -21,8 +21,8 @@ static int findUnselected(int loc, const LoopSnapshot* ls, int delta) {
 #endif
 
 int getSelectionCount(const LoopPointList& loops) {
-  int count;
-  for (int i = 0; i < loops.loop_point_size() - 1; ++i) {
+  int count = 0;
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
     if (loops.loop_point(i).selected())
       ++count;
   }
@@ -30,7 +30,7 @@ int getSelectionCount(const LoopPointList& loops) {
 }
 
 int getSegment(const LoopPointList& loops, RealTime time) {
-  for (int i = 1; i < loops.loop_point_size() - 1; ++i) {
+  for (int i = 1; i < loops.loop_point_size(); ++i) {
     if (time < loops.loop_point(i).time())
       return i - 1;
   }

@@ -10,7 +10,9 @@ namespace slow {
 bool selectAll(int, int, bool, bool) { return true; }
 bool deselectAll(int, int, bool, bool) { return false; }
 bool invertLoopSelection(int, int, bool sel, bool) { return !sel; }
-bool toggleWholeSongLoop(int i, int p, bool, bool al) { return !al || i == p; }
+bool toggleWholeSongLoop(int i, int p, bool, bool al) {
+  return !al || i == p;
+}
 
 void addSelectionCallbacks(CallbackTable* t, Instance* i) {
 	static const Position noPos(Position::CURRENT);
