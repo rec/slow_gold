@@ -160,8 +160,6 @@ void Waveform::onDataChange(const ZoomProto& zp) {
   {
     ScopedLock l(lock_);
     zoom_ = zp;
-    if (!zoom_.has_end())  // TODO:  get length properly.
-      zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
   }
 
   resized();
@@ -205,6 +203,12 @@ void Waveform::resized() {
   layoutCursors();
 }
 
+RealTime Waveform::zoomEnd() const {
+  Lock l(lock_);
+  return zoom_.has_end() ? RealTime(zoom_.end()) : RealTime(length_);
+}
+
+
 Range<RealTime> Waveform::getTimeRange() const {
   ScopedLock l(lock_);
   Range<RealTime> r;
@@ -212,16 +216,16 @@ Range<RealTime> Waveform::getTimeRange() const {
     r.begin_ = Samples<44100>(selection_.begin()->first);
     r.end_ = Samples<44100>(selection_.rbegin()->second);
     if (r.end_ == 0.0)
-      r.end_ = zoom_.end();
+      r.end_ = zoomEnd();
 
     r.begin_ -= desc_.selection_frame_in_seconds();
     r.end_ += desc_.selection_frame_in_seconds();
 
     r.begin_ = std::max<RealTime>(r.begin_, 0.0);
-    r.end_ = std::min<RealTime>(r.end_, zoom_.end());
+    r.end_ = std::min<RealTime>(r.end_, zoomEnd());
   } else {
     r.begin_ = zoom_.begin();
-    r.end_= zoom_.end();
+    r.end_= zoomEnd();
   }
 
   if (r.size() < SMALLEST_TIME)

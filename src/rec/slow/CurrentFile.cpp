@@ -42,8 +42,8 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 void CurrentFile::operator()(const VirtualFile& f) {
   gui::addRecentFile(file_, data::get<music::Metadata>(file_));
   menus()->menuItemsChanged();
-  data::set(f);
   setFile(f);
+  data::set(f);
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {

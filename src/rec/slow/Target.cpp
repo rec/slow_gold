@@ -32,7 +32,8 @@ void Target::addCommands() {
     CommandID id = Position::toCommandID(c);
     CallbackTable::const_iterator j = callbacks->find(id);
     if (j == callbacks->end()) {
-      LOG(ERROR) << "No callback for " << c.ShortDebugString();
+      if (c.type() != Command::RECENT_FILES || c.index() >= 0)
+        LOG(ERROR) << "No callback for " << c.ShortDebugString();
     } else {
       const String& menu = str(c.desc().menu());
       const String& desc = str(c.desc().full());

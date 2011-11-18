@@ -43,7 +43,14 @@ class Waveform : public gui::component::Focusable<Component>,
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
   virtual void resized();
   void setEmpty(bool empty);
-  void setLength(Samples<44100> len) { Lock l(lock_); length_ = len; }
+  void setLength(Samples<44100> len) {
+    {
+      Lock l(lock_);
+      length_ = len;
+    }
+    MessageManagerLock l;
+    repaint();
+  }
 
   virtual void paint(Graphics&);
   virtual void repaint() { Component::repaint(); }
@@ -62,6 +69,8 @@ class Waveform : public gui::component::Focusable<Component>,
   CriticalSection* lock() { return &lock_; }
 
  private:
+  RealTime zoomEnd() const;
+
   void drawGrid(Graphics& g, const Range<RealTime>&);
   void adjustCursors(const LoopPointList&);
 
