@@ -1,5 +1,6 @@
 #include "rec/slow/Menus.h"
 #include "rec/base/ArraySize.h"
+#include "rec/gui/RecentFiles.h"
 #include "rec/util/Undo.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Position.h"
@@ -54,15 +55,15 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::KEYBOARD_MAPPINGS);
     add(&m, Command::MIDI_MAPPINGS);
 
-#ifdef RECENT_FILES_ENABLED
-    gui::RecentFiles recent = data::get<gui::RecentFiles>();
+#ifndef RECENT_FILES_ENABLED
+    std::vector<string> recent = rec::gui::getRecentFileNames();
     PopupMenu submenu;
-    for (int i = 0; i < recent.file_size(); ++i) {
-      submenu.addCommandItem(Command::RECENT_FILES_OFFSET + i,
-                             getFilename(recent.file(i).file()));
+    for (int i = 0; i < recent.size(); ++i) {
+      CommandID id = Position::toCommandID(i, Command::RECENT_FILES);
+      add(&submenu, id, true, str(recent[i]));
     }
 
-    menu.addSubMenu("Open recent", submenu);
+    m.addSubMenu("Open recent", submenu);
 #endif
 
 #if !JUCE_MAC

@@ -11,14 +11,15 @@ class HasInstance {
  public:
   explicit HasInstance(Instance* i = NULL) : instance_(i) {}
 
-  Components* components() { return instance_->components_.get(); }
   BufferFiller* bufferFiller() { return instance_->bufferFiller_.get(); }
+  Components* components() { return instance_->components_.get(); }
   Target* target() { return instance_->target_.get(); }
   Threads* threads() { return instance_->threads_.get(); }
   audio::source::Player* player() { return instance_->player_.get(); }
   audio::Device* device() { return instance_->device_.get(); }
   CurrentFile* currentFile() { return instance_->currentFile_.get(); }
   CurrentTime* currentTime() { return instance_->currentTime_.get(); }
+  Menus* menus() { return instance_->menus_.get(); }
 
   const VirtualFile file() const { return instance_->file(); }
   Samples<44100> length() const { return instance_->length(); }

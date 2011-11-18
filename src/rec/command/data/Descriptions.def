@@ -222,3 +222,10 @@ command {
     full: "Unselect%s segment%s"
   }
 }
+command {
+  type: RECENT_FILES
+  desc {
+    full: "Recent file %s%s"
+    menu: "Recent file %s%s"
+  }
+}

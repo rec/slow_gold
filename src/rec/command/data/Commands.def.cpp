@@ -31,7 +31,6 @@ Def<Commands> commands(
   "command { type: NUDGE_VOLUME_UP category: \"Audio\"}\n"
   "command { type: OPEN category: \"File\"}\n"
   "command { type: PASTE category: \"Edit\"}\n"
-  "command { type: RECENT_FILES category: \"File\"}\n"
   "command { type: REDO category: \"Edit\"}\n"
   "command { type: RESET_GAIN_TO_UNITY category: \"Audio\"}\n"
   "command { type: SELECT_ALL category: \"Transport\"}\n"

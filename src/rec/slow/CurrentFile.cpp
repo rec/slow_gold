@@ -10,6 +10,7 @@
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/BufferFiller.h"
+#include "rec/slow/Menus.h"
 #include "rec/slow/Threads.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -40,6 +41,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 
 void CurrentFile::operator()(const VirtualFile& f) {
   gui::addRecentFile(file_, data::get<music::Metadata>(file_));
+  menus()->menuItemsChanged();
   data::set(f);
   setFile(f);
 }

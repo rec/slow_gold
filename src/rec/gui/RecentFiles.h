@@ -11,6 +11,7 @@ namespace music { class Metadata; }
 namespace gui {
 
 void addRecentFile(const VirtualFile&, const music::Metadata&);
+std::vector<string> getRecentFileNames();
 
 }  // namespace gui
 }  // namespace rec

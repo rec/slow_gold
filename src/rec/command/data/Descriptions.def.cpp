@@ -232,6 +232,13 @@ Def<Commands> descriptions(
   "    full: \"Unselect%s segment%s\"\n"
   "  }\n"
   "}\n"
+  "command {\n"
+  "  type: RECENT_FILES\n"
+  "  desc {\n"
+  "    full: \"Recent file %s%s\"\n"
+  "    menu: \"Recent file %s%s\"\n"
+  "  }\n"
+  "}\n"
   " "
 );
 

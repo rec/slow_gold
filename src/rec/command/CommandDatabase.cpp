@@ -152,8 +152,8 @@ void removeEmpties(CommandTable* map) {
     const Description& desc = i->second->desc();
     if (!(desc.menu().size() && desc.full().size())) {
       empties.push_back(i->first);
-      // LOG(ERROR) << "Removing empty command "
-      //            << Position::commandIDName(i->first);
+      LOG(ERROR) << "Removing empty command "
+                 << Position::commandIDName(i->first);
     }
   }
 

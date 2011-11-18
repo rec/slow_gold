@@ -58,7 +58,7 @@ void add(CallbackTable* c, int32 type, Position position,
   add(c, position.toCommandID(type), loop, i, f, position);
 }
 
-static const int RECENT_MENU_REPEATS = 32;
+static const int RECENT_MENU_REPEATS = 65;
 
 void loadRecentFile(Instance* instance, int i) {
   gui::RecentFiles rf = data::get<gui::RecentFiles>();
@@ -72,7 +72,6 @@ void loadRecentFile(Instance* instance, int i) {
 
 
 }  // namespace
-
 
 void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
   for (int j = Position::FIRST; j < repeat; ++j) {
