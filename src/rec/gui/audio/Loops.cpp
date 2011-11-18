@@ -6,6 +6,7 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/FormatTime.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/thread/CallAsync.h"
@@ -17,6 +18,7 @@ namespace audio {
 using data::Address;
 using data::Value;
 using gui::TableColumn;
+using rec::audio::getSelected;
 
 static Def<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
@@ -71,7 +73,7 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
 
 void Loops::selectedRowsChanged(int lastRowSelected) {
   bool changed = false;
-  LoopPointList loops = get();
+  LoopPointList loops = data()->get();
   juce::SparseSet<int> selected(getSelectedRows());
 
   for (int i = 0; i < loops.loop_point_size(); ++i) {
@@ -83,12 +85,12 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
     }
   }
   if (changed)
-    set(loops);
+    data()->setValue(loops);
 }
 
 void Loops::update() {
   bool changed;
-  LoopPointList loops = get();
+  LoopPointList loops = data()->get();
 
   juce::SparseSet<int> sel;
   for (int i = 0; i < loops.loop_point_size(); ++i) {
@@ -103,80 +105,20 @@ void Loops::update() {
   TableController::update();
 }
 
-bool Loops::isNewLoopPoint(RealTime t) const {
-  if (!data())
-    return false;
-
-  const LoopPointList loops = get();
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
-    RealTime t2 = loops.loop_point(i).time();
-    RealTime x = t;
-    RealTime y = t2;
-    RealTime z = Loops::CLOSE;
-    //if (util::near<RealTime>(t, t2, Loops::CLOSE))
-    if (Math<RealTime>::near(x, y, z))
-      return false;
-  }
-  return true;
-}
-
-void Loops::setLoopPoints(const LoopPointList& loops) {
-  set(loops);
-  updateAndRepaint();  // TODO: is this needed?
-}
-
-namespace {
-
-struct CompareLoopPoints {
-  bool operator()(const LoopPoint& x, const LoopPoint& y) const {
-    return x.time() < y.time();
-  }
-};
-
-}  // namespace
-
-LoopPointList Loops::getSelected(bool selected) const {
-  LoopPointList loops = get();
-  LoopPointList result;
-
-  for (int i = 0, size = loops.loop_point_size(); i < size; ++i) {
-    if (loops.loop_point(i).selected() == selected || i == size - 1)
-      result.add_loop_point()->CopyFrom(loops.loop_point(i));
-  }
-  return result;
-}
-
 string Loops::copy() const {
-  return yaml::write(getSelected(true));
+  return yaml::write(getSelected(data()->get(), true));
 }
 
 bool Loops::canCopy() const {
-  return getSelected(true).loop_point_size();
+  return getSelected(data()->get(), true).loop_point_size();
 }
 
 void Loops::cut() {
-  set(getSelected(false));
+  data()->setValue(getSelected(data()->get(), false));
 }
 
 void Loops::addLoopPoints(const LoopPointList& lpl) {
-  if (!data())
-    return;
-
-  LoopPointList loops = get();
-  for (int i = 0, j = 0; i < lpl.loop_point_size(); ++i) {
-    double t = lpl.loop_point(i).time();
-    if (isNewLoopPoint(t)) {
-      LoopPoint* lp = loops.add_loop_point();
-      lp->CopyFrom(lpl.loop_point(i));
-      for (; j < loops.loop_point_size() && loops.loop_point(j).time() <= t; ++j);
-    }
-  }
-
-  std::sort(loops.mutable_loop_point()->begin(),
-            loops.mutable_loop_point()->end(),
-            CompareLoopPoints());
-
-  set(loops);
+  data()->setValue(rec::audio::addLoopPoints(data()->get(), lpl));
   updateAndRepaint();  // TODO
 }
 
@@ -195,18 +137,6 @@ void Loops::addLoopPoint(RealTime time) {
   addLoopPoints(loops);
 }
 
-#if 0
-static void print(const string& name, const juce::SparseSet<int>& ss) {
-  std::cout << name;
-  for (int i = 0; i < ss.size(); ++i)
-    std::cout << ", " << ss[i];
-  std::cout << std::endl;
-}
-#endif
-
 }  // namespace audio
 }  // namespace gui
 }  // namespace rec
-
-
-

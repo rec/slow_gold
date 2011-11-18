@@ -39,7 +39,7 @@ class SongData : public component::Focusable<SetterTextArea <music::Metadata> >,
   virtual bool paste(const string&) { return false; }
   virtual const string cuttableName() const { return "SongData"; }
   virtual string copy() const {
-    return yaml::write(this->get());
+    return yaml::write(data()->get());
   }
   virtual void cut() {}
 

@@ -13,6 +13,14 @@ const block::BlockSet getTimeSelection(const LoopPointList&,
                                        double scale = 1.0,
                                        bool emptyMeansAll = true);
 
+bool isCloseTo(const LoopPointList&, RealTime);
+
+LoopPointList getSelected(const LoopPointList& loops, bool selected);
+
+LoopPointList addLoopPoints(const LoopPointList&, const LoopPointList&);
+
+void sort(LoopPointList*);
+
 }  // namespace audio
 }  // namespace rec
 

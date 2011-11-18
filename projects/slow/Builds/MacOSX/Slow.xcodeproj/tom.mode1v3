@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E22990291476E407001821AD</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>Loops.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E229902A1476E407001821AD</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>Loops.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E229902B1476E407001821AD</string>
+						<key>history</key>
+						<array>
+							<string>E22990211476E32E001821AD</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {911, 874}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>638 198 911 915 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -332,7 +373,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E2298FCF1476DB3B001821AD</string>
+										<string>E22990281476E407001821AD</string>
 										<key>history</key>
 										<array>
 											<string>E204C1AB146A0A06001544FC</string>
@@ -572,8 +613,9 @@
 		<string>E2298F811476C986001821AD</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>E204C17D1469FA8B001544FC</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>E22990291476E407001821AD</string>
+		<string>E204C17D1469FA8B001544FC</string>
 	</array>
 	<key>WindowString</key>
 	<string>203 111 1244 1067 0 0 1920 1178 </string>
@@ -592,8 +634,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -616,6 +656,8 @@
 							<string>549pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

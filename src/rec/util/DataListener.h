@@ -23,14 +23,12 @@ class DataListenerBase : public Listener<const Proto&> {
 
   virtual void operator()(const Proto& p) { updateValue(p, true); }
 
-  virtual const Proto get() const { return data()->get(); }
-  virtual void set(const Proto& proto) { data()->setValue(proto); }
+  data::TypedEditable<Proto>* data() const { Lock l(lock_); return data_; }
 
   virtual const data::Value getValue() const { return data()->getValue(address_); }
   virtual void setValue(const data::Value& v) { data()->setValue(v, address_); }
 
  protected:
-  data::TypedEditable<Proto>* data() const { Lock l(lock_); return data_; }
   virtual void setData(data::TypedEditable<Proto>* d);
   virtual void onDataChange(const Proto&) {}
   const data::Address& address() const { return address_; }

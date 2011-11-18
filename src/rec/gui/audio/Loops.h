@@ -31,9 +31,7 @@ class Loops : public component::Focusable<TableController>,
 
   virtual void onDataChange(const LoopPointList&);
 
-  virtual int getNumRows() {
-    return get().loop_point_size();
- }
+  virtual int getNumRows() { return data()->get().loop_point_size(); }
 
   double near(double x, double y) const { return util::near(x, y, CLOSE); }
 
@@ -44,10 +42,8 @@ class Loops : public component::Focusable<TableController>,
   virtual bool paste(const string&);
   virtual void cut();
 
-  bool isNewLoopPoint(RealTime t) const;
   void addLoopPoint(RealTime time);
   void addLoopPoints(const LoopPointList& loops);
-  void setLoopPoints(const LoopPointList& loops);
 
   virtual void selectedRowsChanged(int lastRowSelected);
 
@@ -58,8 +54,6 @@ class Loops : public component::Focusable<TableController>,
   virtual String displayText(const TableColumn& col, int row);
 
  private:
-  LoopPointList getSelected(bool selected) const;
-
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };
 
