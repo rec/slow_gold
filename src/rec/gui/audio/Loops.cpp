@@ -167,7 +167,7 @@ void Loops::addLoopPoints(const LoopPointList& lpl) {
     double t = lpl.loop_point(i).time();
     if (isNewLoopPoint(t)) {
       LoopPoint* lp = loops.add_loop_point();
-      lp->CopyFrom(loops.loop_point(i));
+      lp->CopyFrom(lpl.loop_point(i));
       for (; j < loops.loop_point_size() && loops.loop_point(j).time() <= t; ++j);
     }
   }
