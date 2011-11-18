@@ -42,6 +42,7 @@ class UntypedEditable : public Editable {
   virtual bool update();
   virtual void needsUpdate();
   virtual void onDataChange() = 0;
+  virtual bool isEmpty() const { return false; }
 
  protected:
   UntypedEditable(const File& file, const VirtualFile& vf, Message* message);

@@ -17,39 +17,27 @@ template <typename Proto>
 class DataListenerBase : public Listener<const Proto&> {
  public:
   DataListenerBase(const data::Address& address = data::Address::default_instance())
-      : filterDupes_(true), data_(NULL), address_(address) {
+      : filterDupes_(true), data_(data::emptyEditable<Proto>()), address_(address) {
   }
   virtual ~DataListenerBase() {}
 
-  virtual void operator()(const Proto& p);
+  virtual void operator()(const Proto& p) { updateValue(p, true); }
 
-  virtual const Proto get() const {
-    return data() ? data()->get() : Proto::default_instance();
-  }
-  virtual const data::Value getValue() const {
-    return data() ? data()->getValue(address_) : data::Value::default_instance();
-  }
+  virtual const Proto get() const { return data()->get(); }
+  virtual void set(const Proto& proto) { data()->setValue(proto); }
 
-  virtual void setValue(const data::Value& value) {
-    if (data())
-      data()->setValue(value, address_);
-  }
-
-  virtual void set(const Proto& proto) {
-    if (data())
-      data()->setValue(proto);
-  }
-
-  static const bool UPDATE_ON_MESSAGE_THREAD = !true;  // TODO: fix!
+  virtual const data::Value getValue() const { return data()->getValue(address_); }
+  virtual void setValue(const data::Value& v) { data()->setValue(v, address_); }
 
  protected:
-  data::TypedEditable<Proto>* data() const { return data_; }
-  virtual void setData(data::TypedEditable<Proto>* d);  // TODO: change to setEditable.
+  data::TypedEditable<Proto>* data() const { Lock l(lock_); return data_; }
+  virtual void setData(data::TypedEditable<Proto>* d);
   virtual void onDataChange(const Proto&) {}
   const data::Address& address() const { return address_; }
 
  private:
   void doOnDataChange(const Proto& p) { onDataChange(p); }
+  void updateValue(const Proto& p, bool perhapsFilter);
 
   CriticalSection lock_;
   const bool filterDupes_;
@@ -100,32 +88,29 @@ class GlobalDataListener : public DataListenerBase<Proto> {
 //
 
 template <typename Proto>
-void DataListenerBase<Proto>::operator()(const Proto& p) {
+void DataListenerBase<Proto>::updateValue(const Proto& p, bool perhapsFilter) {
   {
     Lock l(lock_);
-    if (filterDupes_ && data::equals(proto_, p))
+    if (perhapsFilter && filterDupes_ && data::equals(proto_, p))
       return;
     proto_ = p;
   }
-  if (UPDATE_ON_MESSAGE_THREAD)
-    thread::callAsync(this, &DataListenerBase<Proto>::doOnDataChange, p);
-  else
-    onDataChange(p);
+  onDataChange(p);
 }
 
 template <typename Proto>
 void DataListenerBase<Proto>::setData(data::TypedEditable<Proto>* d) {
-  if (data_ != d) {
-    if (data_)
-      data_->removeListener(this);
+  Proto p;
+  {
+    Lock l(lock_);
+    if (data_ == d)
+      return;
 
+    data_->removeListener(this);
     data_ = d;
-
-    if (data_) {
-      data_->addListener(this);
-      (*this)(data_->get());
-    }
+    data_->addListener(this);
   }
+  updateValue(d->get(), false);
 }
 
 }  // namespace listener

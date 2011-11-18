@@ -19,6 +19,9 @@ File editableFile(const VirtualFile& vf = file::none());
 template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
 
+template <typename Proto>
+TypedEditable<Proto>* emptyEditable();
+
 // TODO: get rid of this, it makes no sense - the first operation should be
 // a Message, not a Proto.
 template <typename Proto>
@@ -45,20 +48,38 @@ File editableFile(const VirtualFile& vf = file::none()) {
 }
 
 template <typename Proto>
-TypedEditable<Proto>* editable(const VirtualFile& vf) {
-  File file = editableFile<Proto>(vf);
-  string key = str(file);
+TypedEditable<Proto>* makeEditable(const VirtualFile* vf) {
+  File file;
+  string key;
+  if (vf) {
+    file = editableFile<Proto>(*vf);
+    key = str(file);
+  } else {
+    key = ":empty:" + Proto::default_instance().GetTypeName();
+  }
   ScopedLock l(*editableMapLock());
   EditableMap::const_iterator i = editableMap()->find(key);
   TypedEditable<Proto>* e;
   if (i == editableMap()->end()) {
-    e = new TypedEditable<Proto>(file, vf);
+    e = vf ? new TypedEditable<Proto>(file, *vf) :
+      new EmptyTypedEditable<Proto>();
     (*editableMap())[key] = e;
   } else {
     e = dynamic_cast<TypedEditable<Proto>*>(i->second);
+    DCHECK(e);
   }
 
   return e;
+}
+
+template <typename Proto>
+TypedEditable<Proto>* editable(const VirtualFile& vf) {
+  return makeEditable<Proto>(&vf);
+}
+
+template <typename Proto>
+TypedEditable<Proto>* emptyEditable() {
+  return makeEditable<Proto>(NULL);
 }
 
 template <typename Proto>

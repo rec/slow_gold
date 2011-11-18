@@ -47,6 +47,9 @@ class Editable {
   virtual int getSize(const Address&) const = 0;
   virtual Message* clone() const = 0;
   virtual void needsUpdate() = 0;
+
+  // Returns true if there is no actual value behind changed behind this item.
+  virtual bool isEmpty() const = 0;
 };
 
 // There are more setters in archived/OldEditable.h
