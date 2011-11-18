@@ -20,7 +20,6 @@ using gui::TableColumn;
 
 static Def<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
-#if 0
 "column { "
 "type: STRING "
 "name: \"Name\" "
@@ -28,6 +27,7 @@ static Def<TableColumnList> dflt(
 "width: 170 "
 "maximum_width: 300 "
 "} "
+#if 0
 "column { type: STRING name: \"Notes\" address { part { name: \"notes\" } } } "
 #endif
 );
