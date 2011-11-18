@@ -49,15 +49,6 @@ void Root::checkVolumes() {
   VirtualFileList volumes(volumes_);
   fillVolumes(&volumes);
   thread::callAsync(this, &Root::mergeNewIntoOld, volumes);
-
-  if (opennessRead_) {
-    // TODO: only do this when the openness is actually changed!
-    ptr<XmlElement> openness(tree_.getOpennessState(true));
-    if (!(openness && openness->writeToFile(getOpennessFile(), "")))
-      LOG(ERROR) << "Couldn't write openness file";
-  } else {
-    thread::callAsync(this, &Root::readOpenness);
-  }
 }
 
 void restoreOpenness(Node* node, const XmlElement& xml) {
@@ -88,6 +79,18 @@ void Root::readOpenness() {
     LOG(ERROR) << "Couldn't find openness file " << str(getOpennessFile());
   }
   opennessRead_ = true;
+}
+
+void Root::writeOpenness() {
+  if (opennessRead_) {
+    // TODO: only do this when the openness is actually changed!
+    ptr<XmlElement> openness(tree_.getOpennessState(true));
+    if (!(openness && openness->writeToFile(getOpennessFile(), "")))
+      LOG(ERROR) << "Couldn't write openness file";
+  } else {
+    readOpenness();
+    //thread::callAsync(this, &Root::readOpenness);
+  }
 }
 
 void Root::operator()(const VirtualFile& file) {
@@ -141,6 +144,7 @@ void Root::mergeNewIntoOld(const file::VirtualFileList& volumes) {
     else  // They're the same!
       j++;
   }
+  writeOpenness();
 }
 
 void Root::addVolume(const VirtualFile& volume, int insertAt) {

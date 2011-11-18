@@ -38,6 +38,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   void addVolume(const VirtualFile& volume, int insertAt);
   Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
   int getNumNodes() const { return root_.getNumSubItems(); }
+  void writeOpenness();
 
   class RootNode : public Node {
    public:
