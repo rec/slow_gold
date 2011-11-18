@@ -61,7 +61,6 @@ void Player::setSource(Source* source) {
 }
 
 void Player::onDataChange(const stretch::Stretch& stretch) {
-  DLOG(INFO) << "Player::onDataChange";
   stretchy_->setStretch(stretch);
 }
 
@@ -79,8 +78,7 @@ void Player::onDataChange(const StereoProto& s) {
 
 void Player::onDataChange(const LoopPointList& lpl) {
   DCHECK(lpl.loop_point_size());
-  block::BlockSet s = audio::getTimeSelection(lpl, length());
-  selection_->setSelection(s);
+  selection_->setSelection(audio::getTimeSelection(lpl));
 }
 
 void Player::clear() {

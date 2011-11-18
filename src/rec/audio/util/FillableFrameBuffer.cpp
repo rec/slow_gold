@@ -15,12 +15,12 @@ FillableFrameBuffer<Sample, CHANNELS>::FillableFrameBuffer(int blockSize)
 }
 
 template <typename Sample, int CHANNELS>
-bool FillableFrameBuffer<Sample, CHANNELS>::setReader(
+int64 FillableFrameBuffer<Sample, CHANNELS>::setReader(
     AudioFormatReader* reader) {
   ScopedLock l(lock_);
   if (!reader) {
     reader_.reset();
-    return true;
+    return 0;
   }
 
   Samples<44100> size = reader->lengthInSamples;
@@ -32,7 +32,7 @@ bool FillableFrameBuffer<Sample, CHANNELS>::setReader(
   setLength(size);
   reader_.reset(reader);
   filled_.clear();
-  return true;
+  return size;
 }
 
 template <typename Sample, int CHANNELS>

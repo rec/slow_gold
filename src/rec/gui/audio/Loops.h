@@ -17,8 +17,6 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-bool isNewLoopPointTime(const LoopPointList& lp, RealTime t);
-
 class Loops : public component::Focusable<TableController>,
               public DataListener<LoopPointList>,
               public Cuttable {
@@ -51,6 +49,8 @@ class Loops : public component::Focusable<TableController>,
   virtual String displayText(const TableColumn& col, int row);
 
  private:
+  RealTime length_;
+
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };
 

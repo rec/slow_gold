@@ -22,11 +22,11 @@ class HasInstance {
   Menus* menus() { return instance_->menus_.get(); }
 
   const VirtualFile file() const { return instance_->file(); }
-  Samples<44100> length() const { return instance_->length(); }
   Samples<44100> time() const { return instance_->time(); }
+  Samples<44100> length() const { return instance_->length(); }
 
  protected:
-  Instance* instance_;
+  Instance* instance_;  
 
   DISALLOW_COPY_AND_ASSIGN(HasInstance);
 };

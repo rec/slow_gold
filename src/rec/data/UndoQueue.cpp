@@ -40,6 +40,8 @@ static Action* makeAction(Action::Type type) {
 }
 
 void UndoQueue::add(Editable* e, const Operations& operations, const Operations& undo) {
+  if (!operations.undoable())
+    return;
   {
     Lock l(lock_);
     if (!running_)

@@ -26,14 +26,14 @@ class Threads;
 // A single instance of the Slow program.  Right now there's only one per
 // application but in future there might be more than one.
 class Instance {
-public:
+ public:
   explicit Instance(SlowWindow* window);
   ~Instance();
 
   void startup();
   const VirtualFile file() const;
-  Samples<44100> length() const;
   Samples<44100> time() const;
+  Samples<44100> length() const;
 
   SlowWindow* window_;
 
@@ -50,6 +50,7 @@ public:
   ptr<MouseListener> mouseListener_;
   ptr<Threads> threads_;
 
+ private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Instance);
 };
 

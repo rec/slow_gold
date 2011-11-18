@@ -54,8 +54,9 @@ void protobuf_AssignDesc_rec_2fdata_2fOperation_2eproto() {
       sizeof(Operation));
   Operation_Command_descriptor_ = Operation_descriptor_->enum_type(0);
   Operations_descriptor_ = file->message_type(1);
-  static const int Operations_offsets_[1] = {
+  static const int Operations_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Operations, operation_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Operations, undoable_),
   };
   Operations_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -113,8 +114,9 @@ void protobuf_AddDesc_rec_2fdata_2fOperation_2eproto() {
     "ve\030\004 \001(\r:\0011\022\r\n\005swap1\030\005 \001(\r\022\r\n\005swap2\030\006 \001("
     "\r\"R\n\007Command\022\n\n\006APPEND\020\000\022\t\n\005CLEAR\020\001\022\n\n\006R"
     "EMOVE\020\002\022\007\n\003SET\020\003\022\010\n\004SWAP\020\004\022\021\n\rCOMMAND_CO"
-    "UNT\020\005\"4\n\nOperations\022&\n\toperation\030\001 \003(\0132\023"
-    ".rec.data.Operation", 419);
+    "UNT\020\005\"L\n\nOperations\022&\n\toperation\030\001 \003(\0132\023"
+    ".rec.data.Operation\022\026\n\010undoable\030\002 \001(\010:\004t"
+    "rue", 443);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/Operation.proto", &protobuf_RegisterTypes);
   Operation::default_instance_ = new Operation();
@@ -583,6 +585,7 @@ void Operation::Swap(Operation* other) {
 
 #ifndef _MSC_VER
 const int Operations::kOperationFieldNumber;
+const int Operations::kUndoableFieldNumber;
 #endif  // !_MSC_VER
 
 Operations::Operations()
@@ -601,6 +604,7 @@ Operations::Operations(const Operations& from)
 
 void Operations::SharedCtor() {
   _cached_size_ = 0;
+  undoable_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -634,6 +638,9 @@ Operations* Operations::New() const {
 }
 
 void Operations::Clear() {
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    undoable_ = true;
+  }
   operation_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -656,6 +663,22 @@ bool Operations::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_operation;
+        if (input->ExpectTag(16)) goto parse_undoable;
+        break;
+      }
+      
+      // optional bool undoable = 2 [default = true];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_undoable:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &undoable_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -684,6 +707,11 @@ void Operations::SerializeWithCachedSizes(
       1, this->operation(i), output);
   }
   
+  // optional bool undoable = 2 [default = true];
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->undoable(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -699,6 +727,11 @@ void Operations::SerializeWithCachedSizes(
         1, this->operation(i), target);
   }
   
+  // optional bool undoable = 2 [default = true];
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->undoable(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -709,6 +742,13 @@ void Operations::SerializeWithCachedSizes(
 int Operations::ByteSize() const {
   int total_size = 0;
   
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    // optional bool undoable = 2 [default = true];
+    if (has_undoable()) {
+      total_size += 1 + 1;
+    }
+    
+  }
   // repeated .rec.data.Operation operation = 1;
   total_size += 1 * this->operation_size();
   for (int i = 0; i < this->operation_size(); i++) {
@@ -743,6 +783,11 @@ void Operations::MergeFrom(const ::google::protobuf::Message& from) {
 void Operations::MergeFrom(const Operations& from) {
   GOOGLE_CHECK_NE(&from, this);
   operation_.MergeFrom(from.operation_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from._has_bit(1)) {
+      set_undoable(from.undoable());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -766,6 +811,7 @@ bool Operations::IsInitialized() const {
 void Operations::Swap(Operations* other) {
   if (other != this) {
     operation_.Swap(&other->operation_);
+    std::swap(undoable_, other->undoable_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

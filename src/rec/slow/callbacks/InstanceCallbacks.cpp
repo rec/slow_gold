@@ -35,7 +35,7 @@ void nudgeVolumeDownOp(audio::Gain* gain) {
 }
 
 void nudgeVolumeDown(Instance* i) {
-  data::apply(nudgeVolumeDownOp, i->file());
+  data::apply(i->file(), nudgeVolumeDownOp);
 }
 
 void nudgeVolumeUp(Instance* i) {

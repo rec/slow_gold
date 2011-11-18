@@ -291,17 +291,25 @@ class Operations : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >*
       mutable_operation();
   
+  // optional bool undoable = 2 [default = true];
+  inline bool has_undoable() const;
+  inline void clear_undoable();
+  static const int kUndoableFieldNumber = 2;
+  inline bool undoable() const;
+  inline void set_undoable(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.data.Operations)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::data::Operation > operation_;
+  bool undoable_;
   friend void  protobuf_AddDesc_rec_2fdata_2fOperation_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fOperation_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fOperation_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -458,6 +466,22 @@ Operations::operation() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >*
 Operations::mutable_operation() {
   return &operation_;
+}
+
+// optional bool undoable = 2 [default = true];
+inline bool Operations::has_undoable() const {
+  return _has_bit(1);
+}
+inline void Operations::clear_undoable() {
+  undoable_ = true;
+  _clear_bit(1);
+}
+inline bool Operations::undoable() const {
+  return undoable_;
+}
+inline void Operations::set_undoable(bool value) {
+  _set_bit(1);
+  undoable_ = value;
 }
 
 

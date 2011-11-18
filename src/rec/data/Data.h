@@ -22,14 +22,9 @@ TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
 template <typename Proto>
 TypedEditable<Proto>* emptyEditable();
 
-// TODO: get rid of this, it makes no sense - the first operation should be
-// a Message, not a Proto.
 template <typename Proto>
-void setValue(const Proto& p, const VirtualFile& f, const Address& a);
-
-template <typename Proto>
-void set(const Proto& p, const VirtualFile& f = file::none()) {
-  setValue<Proto>(p, f, Address::default_instance());
+void set(const Proto& p, const VirtualFile& f = file::none(), bool undoable = true) {
+  editable<Proto>(f)->setValue(p, Address::default_instance(), undoable);
 }
 
 template <typename Proto>
@@ -38,9 +33,17 @@ const Proto get(const VirtualFile& f = file::none());
 template <typename Proto>
 const Value getValue(const Address&, const VirtualFile& f = file::none());
 
-template <typename Proto>
-void apply(void (*op)(Proto*), const VirtualFile& f = file::none());
+template <typename Proto, typename Operator>
+void apply(Operator);
 
+template <typename Proto, typename Operator>
+void apply(const VirtualFile&, Operator);
+
+template <typename Proto, typename Operator, typename Value>
+void apply(const VirtualFile&, Operator, Value);
+
+template <typename Proto, typename Operator, typename V1, typename V2>
+void apply(const VirtualFile&, Operator, V1, V2);
 
 //
 // Implementations
@@ -87,8 +90,8 @@ TypedEditable<Proto>* emptyEditable() {
 }
 
 template <typename Proto>
-void setValue(const Proto& p, const VirtualFile& f, const Address& a) {
-  editable<Proto>(f)->setValue(p, a);
+void setValue(const Proto& p, const VirtualFile& f, const Address& a, bool undoable) {
+  editable<Proto>(f)->setValue(p, a, undoable);
 }
 
 template <typename Proto>
@@ -102,13 +105,46 @@ const Value getValue(const Address& address, const VirtualFile& f) {
 }
 
 template <typename Proto>
-void apply(void (*op)(Proto*), const VirtualFile& f) {
+void apply(const VirtualFile& vf, void (*op)(Proto*)) {
   Proto p(get<Proto>());
   op(&p);
-  data::set(p);
+  set(p);
 }
 
+template <typename Proto, typename Value>
+void apply(const VirtualFile& vf, void (*op)(Proto*, Value), Value v) {
+  Proto p(get<Proto>());
+  op(&p, v);
+  set(p);
+}
 
+template <typename Proto, typename V1, typename V2>
+void apply(const VirtualFile& vf, void (*op)(Proto*, V1, V2), V1 v1, V2 v2) {
+  Proto p(get<Proto>());
+  op(&p, v1, v2);
+  set(p);
+}
+
+template <typename Proto, typename Operator>
+void apply(const VirtualFile& vf, Operator op) {
+  Proto p(get<Proto>());
+  op(&p);
+  set(p);
+}
+
+template <typename Proto, typename Operator, typename Value>
+void apply(const VirtualFile& vf, Operator op, Value v) {
+  Proto p(get<Proto>());
+  op(&p, v);
+  set(p);
+}
+
+template <typename Proto, typename Operator, typename V1, typename V2>
+void apply(const VirtualFile& vf, Operator op, V1 v1, V2 v2) {
+  Proto p(get<Proto>());
+  op(&p, v1, v2);
+  set(p);
+}
 
 }  // namespace data
 }  // namespace rec

@@ -62,7 +62,6 @@ class Player : public DataListener<Gain>,
 
   void setGain(double);
 
-  Samples<44100> length() const { return timer_->getTotalLength(); }
   void setSource(Source*);
   void clear();
 

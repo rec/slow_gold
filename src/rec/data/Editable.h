@@ -28,7 +28,8 @@ class Editable {
   Editable() {}
   virtual ~Editable() {}
 
-  void setValue(const Value&, const Address& a = Address::default_instance());
+  void setValue(const Value&, const Address& a = Address::default_instance(),
+                bool undoable = true);
   void append(const Value& value, const Address&);
 
   virtual bool fileReadSuccess() const = 0;

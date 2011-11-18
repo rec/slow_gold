@@ -24,7 +24,6 @@ class TableController : public TableListBoxModel, public TableListBox {
   virtual void selectedRowsChanged(int lastRowSelected) = 0;
 
   void updateAndRepaint() { update(); repaint(); }
-  void setLength(RealTime len) { length_ = len; }
 
  protected:
   virtual void update() { updateContent(); }
@@ -35,7 +34,6 @@ class TableController : public TableListBoxModel, public TableListBox {
   CriticalSection lock_;
 
   data::Address address_;
-  RealTime length_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(TableController);

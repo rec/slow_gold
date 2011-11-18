@@ -63,24 +63,32 @@ void CurrentFile::setFile(const VirtualFile& f) {
   components()->waveform_->setEmpty(isEmpty);
   components()->directoryTree_->refreshNode(f);
 
+  RealTime length;
   if (isEmpty) {
-    components()->waveform_->setLength(0);
-    components()->loops_->setLength(0.0);
+    length = 0.0;
   } else {
     using audio::util::ThumbnailBuffer;
 
     ThumbnailBuffer* thumbnail = bufferFiller()->thumbnailBuffer();
-    if (!thumbnail->setReader(file_, music::createMusicFileReader(file_))) {
+    int64 s = thumbnail->setReader(file_, music::createMusicFileReader(file_));
+    length = Samples<44100>(s);
+
+    if (!length) {
       LOG(ERROR) << "Unable to read file " << getFullDisplayName(file_);
       return;
     }
-
-    Samples<44100> length = thumbnail->buffer()->length();
-    components()->waveform_->setLength(length);
-    components()->loops_->setLength(length);
-    components()->timeController_->setLength(length);
-    threads()->fillThread()->notify();
+    LoopPointList lpl = data::get<LoopPointList>(file_);
+    lpl.set_length(length);
+    data::set<LoopPointList>(lpl, file_, false);
   }
+
+  {
+    Lock l(lock_);
+    length_ = length;
+  }
+
+  components()->timeController_->setLength(length);
+  threads()->fillThread()->notify();
 }
 
 }  // namespace slow

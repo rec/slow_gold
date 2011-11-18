@@ -23,21 +23,23 @@ Operation* valueOp(Command c, const Address& a, const Value& value) {
   return op;
 }
 
-void setOp(Editable* setter, Operation* oper) {
+void setOp(Editable* setter, Operation* oper, bool undoable) {
   ptr<Operation> op(oper);
   ptr<Operations> list(new Operations);
   list->add_operation()->CopyFrom(*op);
+  list->set_undoable(undoable);
   setter->applyLater(list.transfer());
 }
 
 }  // namespace
 
 void Editable::append(const Value& value, const Address& address) {
-  setOp(this, valueOp(Operation::APPEND, address, value));
+  setOp(this, valueOp(Operation::APPEND, address, value), true);
 }
 
-void Editable::setValue(const Value& value, const Address& address) {
-  setOp(this, valueOp(Operation::SET, address, value));
+void Editable::setValue(const Value& value, const Address& address,
+                        bool undoable) {
+  setOp(this, valueOp(Operation::SET, address, value), undoable);
 }
 
 }  // namespace data

@@ -17,7 +17,6 @@ struct LoopSnapshot {
   Instance* instance_;
   LoopPointList loops_;
   Samples<44100> time_;
-  Samples<44100> length_;
 
   block::BlockSet selection_;
 

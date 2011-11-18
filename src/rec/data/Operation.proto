@@ -27,4 +27,5 @@ message Operation {
 
 message Operations {
   repeated Operation operation = 1;
+  optional bool undoable = 2 [default = true];
 };

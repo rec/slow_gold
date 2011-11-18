@@ -22,10 +22,13 @@ class CurrentFile : public HasInstance,
   void setFile(const VirtualFile&);
 
   const VirtualFile virtualFile() const { Lock l(lock_); return file_; }
+  const RealTime length() const { Lock l(lock_); return length_; }
 
  private:
   CriticalSection lock_;
+
   VirtualFile file_;
+  RealTime length_;
   DISALLOW_COPY_AND_ASSIGN(CurrentFile);
 };
 

@@ -3,6 +3,7 @@
 #include "rec/slow/MouseListener.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
+#include "rec/data/Data.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentTime.h"
@@ -32,13 +33,7 @@ MouseListener::MouseListener(Instance* i)
 namespace {
 
 void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
-  LoopPointList loops(data::get<LoopPointList>(file));
-
-  int i = 0, size = loops.loop_point_size();
-  for (; i < size && loops.loop_point(i).time() <= time; ++i);
-  LoopPoint* lp = loops.mutable_loop_point(i - 1);
-  lp->set_selected(!lp->selected());
-  data::set(loops, file);
+  data::apply(file, &audio::toggleSelectionSegment, time);
 }
 
 static const double WHEEL_RATIO = 1.0;
@@ -139,11 +134,11 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     if (action == Mode::DRAG) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
       widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::data()->get());
-      RealTime length = player()->length();
-      RealTime end = zoom.has_end() ? RealTime(zoom.end()) : length;
+      RealTime len = length();
+      RealTime end = zoom.has_end() ? RealTime(zoom.end()) : len;
       RealTime size = end - zoom.begin();
       RealTime begin = std::max<double>(waveformDragStart_ - dt, 0.0);
-      RealTime e2 = std::min(length, begin + size);
+      RealTime e2 = std::min(len, begin + size);
       zoom.set_begin(e2 - size);
       zoom.set_end(end);
 

@@ -9,7 +9,6 @@ namespace rec {
 namespace audio {
 
 const block::BlockSet getTimeSelection(const LoopPointList&,
-                                       Samples<44100> length,
                                        double scale = 1.0,
                                        bool emptyMeansAll = true);
 
@@ -22,6 +21,12 @@ LoopPointList addLoopPoint(const LoopPointList&, RealTime);
 void sort(LoopPointList*);
 
 void addLoopPointToEditable(const VirtualFile&, RealTime time);
+
+int getSelectionCount(const LoopPointList&);
+
+int getSegment(const LoopPointList&, RealTime);
+
+void toggleSelectionSegment(LoopPointList*, RealTime);
 
 }  // namespace audio
 }  // namespace rec

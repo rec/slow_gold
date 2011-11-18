@@ -33,11 +33,6 @@ void add(CallbackTable* c, int32 type, Function f, Instance* i, V1 v1, V2 v2) {
   (*c)[type] = thread::functionCallback(f, i, v1, v2);
 }
 
-template <typename Function, typename V1, typename V2>
-void add(CallbackTable* c, int32 type, Function f, Instance* i, V1 v1, V2 v2) {
-  (*c)[type] = thread::functionCallback(f, i, v1, v2);
-}
-
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, Position);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 

@@ -93,7 +93,7 @@ const VirtualFile Instance::file() const {
 }
 
 Samples<44100> Instance::length() const {
-  return player_->length();
+  return currentFile_->length();
 }
 
 Samples<44100> Instance::time() const {

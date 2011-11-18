@@ -12,8 +12,7 @@ namespace rec {
 namespace data {
 
 template <typename Proto>
-class TypedEditable : public UntypedEditable,
-                      public Broadcaster<const Proto&> {
+class TypedEditable : public UntypedEditable, public Broadcaster<const Proto&> {
  public:
   TypedEditable(const File& file, const VirtualFile& vf);
   virtual ~TypedEditable() {}
@@ -23,7 +22,15 @@ class TypedEditable : public UntypedEditable,
   virtual const string getTypeName() const { return proto_.GetTypeName(); }
   virtual void onDataChange();
 
+#if 0
+  // Add a new listener and update them later in the update thread.
+  void addToUpdateQueue(Listener<const Proto&>* listener);
+  virtual bool update();
+
  private:
+  typedef std::vector< typename Listener<const Proto&>* > UpdateQueue;
+  UpdateQueue updateQueue_;
+#endif
   Proto proto_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedEditable);
@@ -70,10 +77,32 @@ const Proto TypedEditable<Proto>::get() const {
 template <typename Proto>
 void TypedEditable<Proto>::onDataChange() {
   Proto p = get();
-  messageBroadcaster_.broadcast(p);
   broadcast(p);
 }
 
+#if 0
+template <typename Proto>
+void TypedEditable<Proto>::addListenerAndUpdate(Listener<const Proto&>* listener) {
+  addListener(listener);
+
+  Lock l(UntypedEditable::lock_);
+  updateQueue_.push_back(listener);
+}
+
+template <typename Proto>
+bool TypedEditable<Proto>::update() {
+  UpdateQueue toUpdate;
+  {
+    Lock l(UntypedEditable::lock_);
+    toUpdate.swap(updateQueue_);
+  }
+  if (!UntypedEditable::update()) {
+    Proto p = get();
+    for (int i = 0; i < toUpdate.size(); ++i)
+      (*toUpdate[i])(p);
+  }
+}
+#endif
 }  // namespace data
 }  // namespace rec
 

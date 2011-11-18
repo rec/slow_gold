@@ -38,7 +38,8 @@ const RealTime Loops::CLOSE = 0.5;
 
 Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
     : component::Focusable<TableController>(menus),
-      DataListener<LoopPointList>(a) {
+      DataListener<LoopPointList>(a),
+      length_(0.0) {
   initialize(dflt.get(desc), a, "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
@@ -46,7 +47,8 @@ Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
 
 Loops::~Loops() {}
 
-void Loops::onDataChange(const LoopPointList&) {
+void Loops::onDataChange(const LoopPointList& loops) {
+  length_ = loops.length();
   MessageManagerLock l;
   update();
 }

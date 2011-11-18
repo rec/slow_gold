@@ -18,7 +18,8 @@ class FillableFrameBuffer : public block::Fillable {
   FillableFrameBuffer(int blockSize = BLOCK_SIZE);
   virtual ~FillableFrameBuffer() {}
 
-  bool setReader(AudioFormatReader* reader);
+  // Returns the length in samples, or 0 if there's an error.
+  int64 setReader(AudioFormatReader* reader);
   virtual block::Size doFillNextBlock(const block::Block& b);
 
   typedef Frames<InterleavedFrame<Sample, CHANNELS> > FillableFrame;

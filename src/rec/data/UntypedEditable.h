@@ -20,11 +20,6 @@ class UntypedEditable : public Editable {
   virtual int getSize(const Address& address) const;
   virtual void copyTo(Message* message) const;
 
-  typedef Listener<const Message&> Listener;
-
-  Broadcaster<const Message&>* messageBroadcaster() {
-    return &messageBroadcaster_;
-  }
   template <typename Proto> bool fill(Proto* t) const;
 
   virtual Message* clone() const;
@@ -50,7 +45,6 @@ class UntypedEditable : public Editable {
   CriticalSection lock_;
 
   OperationList queue_;
-  Broadcaster<const Message&> messageBroadcaster_;
   const File file_;
   const VirtualFile virtualFile_;
 
