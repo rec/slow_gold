@@ -64,7 +64,7 @@ LoopPointList addLoopPoints(const LoopPointList& xx, const LoopPointList& y) {
 
   for (int i = 0, j = 0; i < y.loop_point_size(); ++i) {
     double t = y.loop_point(i).time();
-    if (isCloseTo(x, t)) {
+    if (!isCloseTo(x, t)) {
       LoopPoint* lp = x.add_loop_point();
       lp->CopyFrom(y.loop_point(i));
       for (; j < x.loop_point_size() && x.loop_point(j).time() <= t; ++j);

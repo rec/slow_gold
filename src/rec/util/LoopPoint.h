@@ -16,9 +16,7 @@ const block::BlockSet getTimeSelection(const LoopPointList&,
 bool isCloseTo(const LoopPointList&, RealTime);
 
 LoopPointList getSelected(const LoopPointList& loops, bool selected);
-
 LoopPointList addLoopPoints(const LoopPointList&, const LoopPointList&);
-
 LoopPointList addLoopPoint(const LoopPointList&, RealTime);
 
 void sort(LoopPointList*);
