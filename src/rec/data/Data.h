@@ -38,6 +38,10 @@ const Proto get(const VirtualFile& f = file::none());
 template <typename Proto>
 const Value getValue(const Address&, const VirtualFile& f = file::none());
 
+template <typename Proto>
+void apply(void (*op)(Proto*), const VirtualFile& f = file::none());
+
+
 //
 // Implementations
 //
@@ -96,6 +100,14 @@ template <typename Proto>
 const Value getValue(const Address& address, const VirtualFile& f) {
   return editable<Proto>(f)->getValue(address);
 }
+
+template <typename Proto>
+void apply(void (*op)(Proto*), const VirtualFile& f) {
+  Proto p(get<Proto>());
+  op(&p);
+  data::set(p);
+}
+
 
 
 }  // namespace data

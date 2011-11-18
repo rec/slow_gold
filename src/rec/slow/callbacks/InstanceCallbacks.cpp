@@ -29,12 +29,13 @@ void addLoopPoint(Instance* i) {
   return audio::addLoopPointToEditable(i->file(), i->player_->getTime());
 }
 
+void nudgeVolumeDownOp(audio::Gain* gain) {
+  if (!(gain->dim() || gain->mute()))
+    gain->set_gain(gain->gain() - 1.0);
+}
+
 void nudgeVolumeDown(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(i->file()));
-  if (!(gain.dim() || gain.mute())) {
-    gain.set_gain(gain.gain() - 1.0);
-    data::set(gain, i->file());
-  }
+  data::apply(nudgeVolumeDownOp, i->file());
 }
 
 void nudgeVolumeUp(Instance* i) {

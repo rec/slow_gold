@@ -117,24 +117,13 @@ void Loops::cut() {
   data()->setValue(getSelected(data()->get(), false));
 }
 
-void Loops::addLoopPoints(const LoopPointList& lpl) {
-  data()->setValue(rec::audio::addLoopPoints(data()->get(), lpl));
-  updateAndRepaint();  // TODO
-}
-
 bool Loops::paste(const string& s) {
   LoopPointList loops;
   if (yaml::read(s, &loops)) {
-    addLoopPoints(loops);
+    data()->setValue(rec::audio::addLoopPoints(data()->get(), loops));
     return true;
   }
   return false;
-}
-
-void Loops::addLoopPoint(RealTime time) {
-  LoopPointList loops;
-  loops.add_loop_point()->set_time(time);
-  addLoopPoints(loops);
 }
 
 }  // namespace audio

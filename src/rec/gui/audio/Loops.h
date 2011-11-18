@@ -50,9 +50,6 @@ class Loops : public component::Focusable<TableController>,
   virtual void update();
   virtual String displayText(const TableColumn& col, int row);
 
-  void addLoopPoint(RealTime time);
-  void addLoopPoints(const LoopPointList& loops);
-
  private:
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };
