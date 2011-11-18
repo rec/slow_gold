@@ -18,6 +18,7 @@
 #include "rec/slow/Target.h"
 #include "rec/slow/MainPage.h"
 #include "rec/util/Math.h"
+#include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace slow {
@@ -25,7 +26,7 @@ namespace slow {
 namespace {
 
 void addLoopPoint(Instance* i) {
-  i->components_->loops_->addLoopPoint(i->player_->getTime());
+  return audio::addLoopPointToEditable(i->file(), i->player_->getTime());
 }
 
 void nudgeVolumeDown(Instance* i) {

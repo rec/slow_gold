@@ -100,7 +100,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
       waveformDragStart_ = DataListener<ZoomProto>::data()->get().begin();
 
     else if (action == Mode::DRAW_LOOP_POINTS)
-      components()->loops_->addLoopPoint(time);
+      audio::addLoopPointToEditable(file(), time);
 
     else if (action == Mode::TOGGLE_SELECTION)
       toggleSelectionSegment(file(), time);

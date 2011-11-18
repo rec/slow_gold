@@ -42,9 +42,6 @@ class Loops : public component::Focusable<TableController>,
   virtual bool paste(const string&);
   virtual void cut();
 
-  void addLoopPoint(RealTime time);
-  void addLoopPoints(const LoopPointList& loops);
-
   virtual void selectedRowsChanged(int lastRowSelected);
 
   const string cuttableName() const { return "Loops"; }
@@ -52,6 +49,9 @@ class Loops : public component::Focusable<TableController>,
  protected:
   virtual void update();
   virtual String displayText(const TableColumn& col, int row);
+
+  void addLoopPoint(RealTime time);
+  void addLoopPoints(const LoopPointList& loops);
 
  private:
   DISALLOW_COPY_AND_ASSIGN(Loops);

@@ -19,7 +19,11 @@ LoopPointList getSelected(const LoopPointList& loops, bool selected);
 
 LoopPointList addLoopPoints(const LoopPointList&, const LoopPointList&);
 
+LoopPointList addLoopPoint(const LoopPointList&, RealTime);
+
 void sort(LoopPointList*);
+
+void addLoopPointToEditable(const VirtualFile&, RealTime time);
 
 }  // namespace audio
 }  // namespace rec

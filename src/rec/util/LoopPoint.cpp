@@ -1,4 +1,5 @@
 #include "rec/audio/Audio.h"
+#include "rec/data/Data.h"
 #include "rec/util/Math.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/LoopPoint.pb.h"
@@ -88,6 +89,17 @@ void sort(LoopPointList* loops) {
   std::sort(loops->mutable_loop_point()->begin(),
             loops->mutable_loop_point()->end(),
             CompareLoopPoints());
+}
+
+LoopPointList addLoopPoint(const LoopPointList& lp, RealTime t) {
+  LoopPointList oneSegment;
+  oneSegment.add_loop_point()->set_time(t);
+  return audio::addLoopPoints(lp, oneSegment);
+}
+
+void addLoopPointToEditable(const VirtualFile& file, RealTime time) {
+  LoopPointList loops = data::get<LoopPointList>(file);
+  data::set(audio::addLoopPoint(loops, time), file);
 }
 
 }  // namespace audio
