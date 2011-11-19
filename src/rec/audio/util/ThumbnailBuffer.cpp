@@ -46,7 +46,7 @@ void ThumbnailBuffer::writeThumbnail() {
   }
 }
 
-bool ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
+Samples<44100> ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
   Lock l(lock_);
   if (!reader) {
     LOG(ERROR) << "Thumbnail buffer had no reader";

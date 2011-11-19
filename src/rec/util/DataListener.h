@@ -16,8 +16,10 @@ namespace listener {
 template <typename Proto>
 class DataListenerBase : public Listener<const Proto&> {
  public:
+  static const bool FILTER = false;
+
   DataListenerBase(const data::Address& address = data::Address::default_instance())
-      : filterDupes_(true), data_(data::emptyEditable<Proto>()), address_(address) {
+      : filterDupes_(false), data_(data::emptyEditable<Proto>()), address_(address) {
   }
   virtual ~DataListenerBase() {}
 
@@ -94,6 +96,10 @@ void DataListenerBase<Proto>::updateValue(const Proto& p, bool perhapsFilter) {
       return;
     proto_ = p;
   }
+  DLOG(INFO) << "onDataChange "
+             << p.GetTypeName() << ", "
+             << p.ShortDebugString();
+
   onDataChange(p);
 }
 
@@ -102,9 +108,6 @@ void DataListenerBase<Proto>::setData(data::TypedEditable<Proto>* d) {
   Proto p;
   {
     Lock l(lock_);
-    if (data_ == d)
-      return;
-
     data_->removeListener(this);
     data_ = d;
     data_->addListenerAndUpdate(this);

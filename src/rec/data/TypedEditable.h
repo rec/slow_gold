@@ -48,7 +48,6 @@ class EmptyTypedEditable : public TypedEditable<Proto> {
   virtual bool fileReadSuccess() const { return false; }
   virtual void applyLater(Operations*) {}
   virtual void applyOperations(const Operations&, Operations*) {}
-  virtual void needsUpdate() {}
   virtual bool isEmpty() const { return true; }
 
  private:
@@ -81,6 +80,9 @@ void TypedEditable<Proto>::onDataChange() {
 
 template <typename Proto>
 void TypedEditable<Proto>::addListenerAndUpdate(ProtoListener* listener) {
+  DLOG(INFO) << "adding listener for "
+             << Proto::default_instance().GetTypeName();
+
   addListener(listener);
 
   Lock l(UntypedEditable::lock_);
@@ -95,8 +97,10 @@ bool TypedEditable<Proto>::update() {
     Lock l(UntypedEditable::lock_);
     toUpdate.swap(updateQueue_);
   }
-  if (UntypedEditable::update())
+  if (UntypedEditable::update()) {
+    DLOG(INFO) << "Update was true!";
     return true;
+  }
 
   if (toUpdate.empty())
     return false;

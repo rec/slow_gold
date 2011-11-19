@@ -23,7 +23,6 @@ class DialComponent : public Component,
 
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
-  virtual void setLength(RealTime len) { length_ = len; }
 
   static const double PI;
   static const double REDRAW_ANGLE;

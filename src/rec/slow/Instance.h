@@ -38,13 +38,13 @@ class Instance {
   SlowWindow* window_;
 
   ptr<Menus> menus_;
-  ptr<Components> components_;
   ptr<audio::Device> device_;
-  ptr<audio::source::Player> player_;
-
-  ptr<CurrentFile> currentFile_;
-  ptr<CurrentTime> currentTime_;
   ptr<BufferFiller> bufferFiller_;
+  ptr<CurrentFile> currentFile_;
+
+  ptr<audio::source::Player> player_;
+  ptr<Components> components_;
+  ptr<CurrentTime> currentTime_;
 
   ptr<Target> target_;
   ptr<MouseListener> mouseListener_;

@@ -56,7 +56,6 @@ void TimeController::operator()(Samples<44100> time) {
 
 void TimeController::setLength(Samples<44100> len) {
   songTime_.setLength(len);
-  songDial_.setLength(len);
 }
 
 }  // namespace audio

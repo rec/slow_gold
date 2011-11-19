@@ -15,7 +15,7 @@ FillableFrameBuffer<Sample, CHANNELS>::FillableFrameBuffer(int blockSize)
 }
 
 template <typename Sample, int CHANNELS>
-int64 FillableFrameBuffer<Sample, CHANNELS>::setReader(
+Samples<44100> FillableFrameBuffer<Sample, CHANNELS>::setReader(
     AudioFormatReader* reader) {
   ScopedLock l(lock_);
   if (!reader) {
@@ -26,7 +26,7 @@ int64 FillableFrameBuffer<Sample, CHANNELS>::setReader(
   Samples<44100> size = reader->lengthInSamples;
   if (!frames_.setLength(size)) {
     LOG(ERROR) << "Unable to set frame length";
-    return false;
+    return 0;
   }
 
   setLength(size);

@@ -29,7 +29,6 @@ DialComponent::DialComponent(const Dial& desc)
     : Component(str(desc.widget().name())),
       description_(desc),
       time_(0.0),
-      length_(0.0),
       zeroAngle_(0.0),
       timeAngle_(0.0),
       timeRatio_(0.0) {
@@ -41,6 +40,9 @@ void DialComponent::operator()(RealTime time) {
     if (false && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
       return;
 
+    if (!loops_.has_length())
+      return;
+
     time_ = time;
     Range<RealTime> range;
 
@@ -50,7 +52,7 @@ void DialComponent::operator()(RealTime time) {
       if (isLast || time < loops_.loop_point(i).time()) {
         if (loops_.loop_point(i - 1).selected()) {
           range.begin_ = loops_.loop_point(i - 1).time();
-          range.end_ = isLast ? length_ : RealTime(loops_.loop_point(i).time());
+          range.end_ = isLast ? loops_.length() : loops_.loop_point(i).time();
           found = true;
         } else {
           break;
@@ -83,7 +85,9 @@ void DialComponent::operator()(RealTime time) {
 void DialComponent::onDataChange(const LoopPointList& lpl) {
   ScopedLock l(lock_);
   loops_ = lpl;
+  timeAngle_ = zeroAngle_ = 0.0;
 }
+
 
 void DialComponent::paint(Graphics& g) {
   ScopedLock l(lock_);

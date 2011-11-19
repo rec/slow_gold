@@ -31,18 +31,18 @@ using namespace rec::audio::source;
 using namespace rec::widget::waveform;
 using gui::DialogLocker;
 
-Instance::Instance(SlowWindow* window)
-    : window_(window),
-      menus_(new Menus(this)),
-      components_(new Components(this)),
-      device_(new audio::Device),
-      player_(new audio::source::Player(device_.get())),
-      currentFile_(new CurrentFile(this)),
-      currentTime_(new CurrentTime(this)),
-      bufferFiller_(new BufferFiller(this)),
-      target_(new Target(this)),
-      mouseListener_(new MouseListener(this)),
-      threads_(new Threads(this)) {
+Instance::Instance(SlowWindow* window) : window_(window) {
+  menus_.reset(new Menus(this));
+  device_.reset(new audio::Device);
+  bufferFiller_.reset(new BufferFiller(this));
+  currentFile_.reset(new CurrentFile(this));
+  player_.reset(new audio::source::Player(device_.get()));
+  components_.reset(new Components(this));
+  currentTime_.reset(new CurrentTime(this));
+  target_.reset(new Target(this));
+  mouseListener_.reset(new MouseListener(this));
+  threads_.reset(new Threads(this));
+
   target_->addCommands();
   player_->addListener(components_->transportController_.get());
 	typedef gui::DropTarget<Waveform> DropWave;
@@ -68,7 +68,6 @@ Instance::Instance(SlowWindow* window)
   components_->waveform_->setAudioThumbnail(thumbnailBuffer->thumbnail());
 
   threads_->startAll();
-  // currentFile_->setFileNoSideEffects(data::get<VirtualFile>());
   window->addListener(menus_.get());
 
   DialogLocker::getDisableBroadcaster()->addListener(target_->targetManager());

@@ -15,17 +15,19 @@ class CurrentFile : public HasInstance,
                     public Listener<const VirtualFile&>,
                     public Listener<const gui::DropFiles&> {
  public:
-  explicit CurrentFile(Instance* i) : HasInstance(i) {}
+  explicit CurrentFile(Instance* i);
 
+  // Set the file and change the persistent data.
   virtual void operator()(const gui::DropFiles&);
   virtual void operator()(const VirtualFile&);
-  void setFileWithSideEffects(const VirtualFile&);
 
   const VirtualFile virtualFile() const { Lock l(lock_); return file_; }
   const RealTime length() const { Lock l(lock_); return length_; }
 
  private:
-  void setFileNoSideEffects(const VirtualFile&);
+  // Sets the current file but does not change the persistent data.
+  void setFile(const VirtualFile&);
+
   CriticalSection lock_;
 
   VirtualFile file_;

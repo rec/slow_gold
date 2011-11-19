@@ -18,6 +18,10 @@
 namespace rec {
 namespace slow {
 
+CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {
+  setFile(data::get<VirtualFile>());
+}
+
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (components()->directoryTree_->treeView()->isTreeDrop(dropFiles.target_)) {
@@ -40,13 +44,14 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
-  setFileNoSideEffects(f);
+  gui::addRecentFile(file_, data::get<music::Metadata>(file_));
+  setFile(f);
   data::set(f);
 }
 
-void CurrentFile::setFileNoSideEffects(const VirtualFile& f) {
-  gui::addRecentFile(file_, data::get<music::Metadata>(file_));
-  player()->clear();
+void CurrentFile::setFile(const VirtualFile& f) {
+  if (player())
+    player()->clear();
 
   VirtualFile oldFile;
   {
@@ -55,11 +60,11 @@ void CurrentFile::setFileNoSideEffects(const VirtualFile& f) {
     file_ = f;
   }
 
-  components()->playerController_->clearLevels();
-  components()->directoryTree_->refreshNode(oldFile);
-
   bool isEmpty = file::empty(file_);
-  components()->directoryTree_->refreshNode(f);
+  if (components()) {
+    components()->directoryTree_->refreshNode(oldFile);
+    components()->directoryTree_->refreshNode(f);
+  }
 
   RealTime length;
   if (isEmpty) {
@@ -74,9 +79,14 @@ void CurrentFile::setFileNoSideEffects(const VirtualFile& f) {
     if (!length) {
       LOG(ERROR) << "Unable to read file " << getFullDisplayName(file_);
       return;
+    } else {
+      DLOG(INFO) << "length: " << RealTime(length);
     }
+
     LoopPointList lpl = data::get<LoopPointList>(file_);
     lpl.set_length(length);
+    if (!lpl.loop_point_size())
+      lpl.add_loop_point()->set_selected(true);
     data::set<LoopPointList>(lpl, file_, false);
   }
 
@@ -85,9 +95,11 @@ void CurrentFile::setFileNoSideEffects(const VirtualFile& f) {
     length_ = length;
   }
 
-  components()->timeController_->setLength(length);
-  threads()->fillThread()->notify();
-  menus()->menuItemsChanged();
+  if (threads())
+    threads()->fillThread()->notify();
+
+  if (menus())
+    menus()->menuItemsChanged();
 }
 
 }  // namespace slow
