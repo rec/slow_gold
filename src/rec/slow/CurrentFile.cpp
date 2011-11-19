@@ -79,8 +79,6 @@ void CurrentFile::setFile(const VirtualFile& f) {
     if (!length) {
       LOG(ERROR) << "Unable to read file " << getFullDisplayName(file_);
       return;
-    } else {
-      DLOG(INFO) << "length: " << RealTime(length);
     }
 
     LoopPointList lpl = data::get<LoopPointList>(file_);

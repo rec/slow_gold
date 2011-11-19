@@ -123,7 +123,8 @@ double Waveform::pixelsPerSecond() const {
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
   block::BlockSet selection;
 
-  if (loopPoints.has_length())
+  empty_ = !loopPoints.has_length();
+  if (!empty_)
     selection = audio::getTimeSelection(loopPoints);
   {
     ScopedLock l(lock_);
@@ -242,9 +243,12 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
 }
 
 void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
+  LOG_FIRST_N(INFO, 4) << "drawGrid";
   RealTime width = r.size();
-  if (width < SMALLEST_TIME)
+  if (width < SMALLEST_TIME) {
+    LOG_FIRST_N(INFO, 4) << "Nothing on screen!";
     return;
+  }
   RealTime units = pow(10.0, floor(log10(width)));
 
   int b = static_cast<int>(ceil(r.begin_ / units));

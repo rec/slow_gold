@@ -61,7 +61,6 @@ void Player::setSource(Source* source) {
 }
 
 void Player::onDataChange(const stretch::Stretch& stretch) {
-  DLOG(INFO) << "new stretchy";
   level_.clear();
   stretchy_->setStretch(stretch);
 }
