@@ -230,15 +230,15 @@
 	6E823053B76ED19FFFA5E393 /* TimeController.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {881, 832}}";
-			sepNavSelRange = "{1492, 0}";
-			sepNavVisRange = "{322, 1215}";
+			sepNavSelRange = "{1378, 0}";
+			sepNavVisRange = "{322, 1235}";
 		};
 	};
 	7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 1560}}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1534}}";
 			sepNavSelRange = "{1495, 0}";
-			sepNavVisRange = "{0, 1659}";
+			sepNavVisRange = "{1360, 1633}";
 			sepNavWindowFrame = "{{107, 118}, {911, 971}}";
 		};
 	};
@@ -608,6 +608,11 @@
 			E229931D147755B5001821AD /* XCBuildMessageTextBookmark */ = E229931D147755B5001821AD /* XCBuildMessageTextBookmark */;
 			E229931E147755B5001821AD /* PBXTextBookmark */ = E229931E147755B5001821AD /* PBXTextBookmark */;
 			E2299321147755B5001821AD /* PBXTextBookmark */ = E2299321147755B5001821AD /* PBXTextBookmark */;
+			E229932F147843EA001821AD /* PBXTextBookmark */ = E229932F147843EA001821AD /* PBXTextBookmark */;
+			E2299330147843EA001821AD /* PBXTextBookmark */ = E2299330147843EA001821AD /* PBXTextBookmark */;
+			E2299331147843EA001821AD /* XCBuildMessageTextBookmark */ = E2299331147843EA001821AD /* XCBuildMessageTextBookmark */;
+			E2299332147843EA001821AD /* PBXTextBookmark */ = E2299332147843EA001821AD /* PBXTextBookmark */;
+			E229933714784405001821AD /* PBXTextBookmark */ = E229933714784405001821AD /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -3182,7 +3187,7 @@
 		ignoreCount = 0;
 		lineNumber = 53;
 		location = SlowGold;
-		modificationTime = 343365043.431458;
+		modificationTime = 343425890.386053;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3293,6 +3298,55 @@
 		rType = 0;
 		vrLen = 1659;
 		vrLoc = 0;
+	};
+	E229932F147843EA001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A433D0832C0312A5D246D41A /* Player.cpp */;
+		name = "Player.cpp: 102";
+		rLen = 0;
+		rLoc = 2411;
+		rType = 0;
+		vrLen = 868;
+		vrLoc = 791;
+	};
+	E2299330147843EA001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1014;
+		vrLoc = 0;
+	};
+	E2299331147843EA001821AD /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /development/rec/projects/slow/Builds/MacOSX/../../../../src/rec/gui/audio/TimeController.cpp";
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E2299332147843EA001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 59";
+		rLen = 0;
+		rLoc = 1492;
+		rType = 0;
+		vrLen = 973;
+		vrLoc = 438;
+	};
+	E229933714784405001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 322;
 	};
 	E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

@@ -80,9 +80,6 @@ void TypedEditable<Proto>::onDataChange() {
 
 template <typename Proto>
 void TypedEditable<Proto>::addListenerAndUpdate(ProtoListener* listener) {
-  DLOG(INFO) << "adding listener for "
-             << Proto::default_instance().GetTypeName();
-
   addListener(listener);
 
   Lock l(UntypedEditable::lock_);
@@ -97,22 +94,13 @@ bool TypedEditable<Proto>::update() {
     Lock l(UntypedEditable::lock_);
     toUpdate.swap(updateQueue_);
   }
-  if (UntypedEditable::update()) {
-    DLOG(INFO) << "Update was true!";
+  if (UntypedEditable::update())
     return true;
-  }
 
   if (toUpdate.empty())
     return false;
 
   Proto p = get();
-
-  string d = p.ShortDebugString();
-  if (!d.empty()) {
-    DLOG(INFO) << toUpdate.size() << ", "
-               << Proto::default_instance().GetTypeName();
-    DLOG(INFO) << p.DebugString();
-  }
   for (int i = 0; i < toUpdate.size(); ++i)
     (*toUpdate[i])(p);
 

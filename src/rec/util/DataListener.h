@@ -96,9 +96,6 @@ void DataListenerBase<Proto>::updateValue(const Proto& p, bool perhapsFilter) {
       return;
     proto_ = p;
   }
-  DLOG(INFO) << "onDataChange "
-             << p.GetTypeName() << ", "
-             << p.ShortDebugString();
 
   onDataChange(p);
 }
