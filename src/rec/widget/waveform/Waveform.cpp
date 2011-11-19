@@ -56,11 +56,6 @@ const CursorProto& Waveform::defaultTimeCursor() {
   return timeDesc.get();
 }
 
-void Waveform::setEmpty(bool empty) {
-  ScopedLock l(lock_);
-  empty_ = empty;
-}
-
 void Waveform::paint(Graphics& g) {
   {
     Painter p(desc_.widget(), &g);
@@ -126,7 +121,10 @@ double Waveform::pixelsPerSecond() const {
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
-  block::BlockSet selection = audio::getTimeSelection(loopPoints);
+  block::BlockSet selection;
+
+  if (loopPoints.has_length())
+    selection = audio::getTimeSelection(loopPoints);
   {
     ScopedLock l(lock_);
     selection_ = selection;

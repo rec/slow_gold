@@ -52,15 +52,16 @@ template <typename Proto>
 class DataListener : public DataListenerBase<Proto>,
                      public Listener<const VirtualFile&> {
  public:
-  DataListener(const data::Address& address = data::Address::default_instance())
-      : DataListenerBase<Proto>(address) {
-    data::editable<VirtualFile>()->addListener(this);
+  DataListener(const data::Address& addr = data::Address::default_instance())
+      : DataListenerBase<Proto>(addr) {
+    data::editable<VirtualFile>()->addListenerAndUpdate(this);
   }
 
   virtual ~DataListener() {}
 
   virtual void operator()(const VirtualFile& f) {
-    setData(data::editable<Proto>(f));
+    setData(file::empty(f) ? data::emptyEditable<Proto>() :
+            data::editable<Proto>(f));
   }
 
  private:
@@ -106,9 +107,8 @@ void DataListenerBase<Proto>::setData(data::TypedEditable<Proto>* d) {
 
     data_->removeListener(this);
     data_ = d;
-    data_->addListener(this);
+    data_->addListenerAndUpdate(this);
   }
-  updateValue(d->get(), false);
 }
 
 }  // namespace listener

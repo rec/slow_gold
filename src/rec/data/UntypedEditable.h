@@ -53,7 +53,6 @@ class UntypedEditable : public Editable {
  private:
   mutable bool alreadyReadFromFile_;
   mutable bool fileReadSuccess_;
-  bool needsUpdate_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedEditable);
 };

@@ -68,7 +68,7 @@ Instance::Instance(SlowWindow* window)
   components_->waveform_->setAudioThumbnail(thumbnailBuffer->thumbnail());
 
   threads_->startAll();
-  currentFile_->setFile(data::get<VirtualFile>());
+  // currentFile_->setFileNoSideEffects(data::get<VirtualFile>());
   window->addListener(menus_.get());
 
   DialogLocker::getDisableBroadcaster()->addListener(target_->targetManager());

@@ -42,7 +42,6 @@ class Waveform : public gui::component::Focusable<Component>,
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
   virtual void resized();
-  void setEmpty(bool empty);
 
   virtual void paint(Graphics&);
   virtual void repaint() { Component::repaint(); }

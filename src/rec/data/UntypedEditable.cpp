@@ -18,8 +18,7 @@ UntypedEditable::UntypedEditable(const File& file, const VirtualFile& vf,
       virtualFile_(vf),
       message_(message),
       alreadyReadFromFile_(false),
-      fileReadSuccess_(false),
-      needsUpdate_(false) {
+      fileReadSuccess_(false) {
 }
 
 UntypedEditable::~UntypedEditable() {
@@ -88,8 +87,6 @@ void UntypedEditable::applyLater(Operations* op) {
 
 void UntypedEditable::needsUpdate() {
   EditableUpdater::instance()->needsUpdate(this);
-  Lock l(lock_);
-  needsUpdate_ = true;
 }
 
 void UntypedEditable::applyOperations(const Operations& olist,
@@ -123,11 +120,10 @@ bool UntypedEditable::update() {
   OperationList command;
   {
     Lock l(lock_);
-    if (!needsUpdate_ && queue_.empty())
+    if (queue_.empty())
       return false;
 
     command.swap(queue_);
-    needsUpdate_ = false;
   }
 
   Operations undo;

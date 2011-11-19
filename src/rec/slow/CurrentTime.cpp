@@ -12,17 +12,22 @@ namespace slow {
 const int PRELOAD = 10000;
 
 void CurrentTime::onDataChange(const LoopPointList& loops) {
-  timeSelection_ = audio::getTimeSelection(loops);
-  if (!timeSelection_.empty()) {
-    block::BlockSet::const_iterator i = timeSelection_.begin();
-    for (; i != timeSelection_.end(); ++i) {
-      if (time_ < i->second) {
-        if (time_ < i->first)
-          jumpToTime(i->first);
-        return;
+  if (loops.has_length()) {
+    timeSelection_ = audio::getTimeSelection(loops);
+    if (!timeSelection_.empty()) {
+      block::BlockSet::const_iterator i = timeSelection_.begin();
+      for (; i != timeSelection_.end(); ++i) {
+        if (time_ < i->second) {
+          if (time_ < i->first)
+            jumpToTime(i->first);
+          return;
+        }
       }
+      jumpToTime(timeSelection_.begin()->first);
     }
-    jumpToTime(timeSelection_.begin()->first);
+  } else {
+    timeSelection_.clear();
+    jumpToTime(0);
   }
 }
 

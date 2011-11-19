@@ -69,7 +69,7 @@ static Def<gui::WindowPosition> windowPosition(
 DefaultRegistry* SlowWindow::getDefaultRegistry() {
   DefaultRegistry* r = new DefaultRegistry;
 
-  r->registerDefault(*loops);
+  // r->registerDefault(*loops);
   r->registerDefault(*layout);
   r->registerDefault(*windowPosition);
 

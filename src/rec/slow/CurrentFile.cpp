@@ -40,13 +40,12 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
-  gui::addRecentFile(file_, data::get<music::Metadata>(file_));
-  menus()->menuItemsChanged();
-  setFile(f);
+  setFileNoSideEffects(f);
   data::set(f);
 }
 
-void CurrentFile::setFile(const VirtualFile& f) {
+void CurrentFile::setFileNoSideEffects(const VirtualFile& f) {
+  gui::addRecentFile(file_, data::get<music::Metadata>(file_));
   player()->clear();
 
   VirtualFile oldFile;
@@ -60,7 +59,6 @@ void CurrentFile::setFile(const VirtualFile& f) {
   components()->directoryTree_->refreshNode(oldFile);
 
   bool isEmpty = file::empty(file_);
-  components()->waveform_->setEmpty(isEmpty);
   components()->directoryTree_->refreshNode(f);
 
   RealTime length;
@@ -89,6 +87,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
 
   components()->timeController_->setLength(length);
   threads()->fillThread()->notify();
+  menus()->menuItemsChanged();
 }
 
 }  // namespace slow

@@ -70,8 +70,8 @@ void Stretchy::setStretch(const stretch::Stretch& stretch) {
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   {
     Lock l(lock_);
-    DCHECK_EQ(info.buffer->getNumChannels(), channels_);
     if (!bypass_) {
+      DCHECK_EQ(info.buffer->getNumChannels(), channels_);
       if (implementation_) {
         implementation_->getNextAudioBlock(info);
       } else {

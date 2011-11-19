@@ -22,15 +22,15 @@ class TypedEditable : public UntypedEditable, public Broadcaster<const Proto&> {
   virtual const string getTypeName() const { return proto_.GetTypeName(); }
   virtual void onDataChange();
 
-#if 0
+  typedef Listener<const Proto&> ProtoListener;
+
   // Add a new listener and update them later in the update thread.
-  void addToUpdateQueue(Listener<const Proto&>* listener);
+  void addListenerAndUpdate(ProtoListener* listener);
   virtual bool update();
 
  private:
-  typedef std::vector< typename Listener<const Proto&>* > UpdateQueue;
+  typedef std::vector<ProtoListener* > UpdateQueue;
   UpdateQueue updateQueue_;
-#endif
   Proto proto_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedEditable);
@@ -76,17 +76,16 @@ const Proto TypedEditable<Proto>::get() const {
 
 template <typename Proto>
 void TypedEditable<Proto>::onDataChange() {
-  Proto p = get();
-  broadcast(p);
+  broadcast(get());
 }
 
-#if 0
 template <typename Proto>
-void TypedEditable<Proto>::addListenerAndUpdate(Listener<const Proto&>* listener) {
+void TypedEditable<Proto>::addListenerAndUpdate(ProtoListener* listener) {
   addListener(listener);
 
   Lock l(UntypedEditable::lock_);
   updateQueue_.push_back(listener);
+  needsUpdate();
 }
 
 template <typename Proto>
@@ -96,13 +95,26 @@ bool TypedEditable<Proto>::update() {
     Lock l(UntypedEditable::lock_);
     toUpdate.swap(updateQueue_);
   }
-  if (!UntypedEditable::update()) {
-    Proto p = get();
-    for (int i = 0; i < toUpdate.size(); ++i)
-      (*toUpdate[i])(p);
+  if (UntypedEditable::update())
+    return true;
+
+  if (toUpdate.empty())
+    return false;
+
+  Proto p = get();
+
+  string d = p.ShortDebugString();
+  if (!d.empty()) {
+    DLOG(INFO) << toUpdate.size() << ", "
+               << Proto::default_instance().GetTypeName();
+    DLOG(INFO) << p.DebugString();
   }
+  for (int i = 0; i < toUpdate.size(); ++i)
+    (*toUpdate[i])(p);
+
+  return true;
 }
-#endif
+
 }  // namespace data
 }  // namespace rec
 

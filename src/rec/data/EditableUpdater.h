@@ -26,13 +26,13 @@ class EditableUpdater {
   bool write();
 
   EditableMap* map() { return &map_; }
-  CriticalSection* lock() { return &lock_; }
   UndoQueue* undoQueue() { return &undoQueue_; }
   const DefaultRegistry& defaultRegistry() { return *defaultRegistry_; }
 
   static EditableUpdater* instance() { return instance_; }
   static void start(DefaultRegistry*);
   static void stop();
+  CriticalSection* lock() { return &lock_; }
 
  private:
   static EditableUpdater* instance_;
