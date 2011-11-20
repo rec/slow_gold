@@ -130,7 +130,7 @@ void UndoQueue::doOrRedo(Action::Type type) {
   DCHECK_LE(undoes_, preUndoSize_);
   DCHECK_LE(executedSize_, preUndoSize_);
 
-  editable->needsUpdate();
+  editable->onDataChange();
   broadcast(None());
 }
 

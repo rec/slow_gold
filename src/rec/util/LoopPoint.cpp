@@ -73,8 +73,9 @@ LoopPointList addLoopPoints(const LoopPointList& x, const LoopPointList& y) {
 
     bool isNear = Math<RealTime>::near(tx, ty, CLOSE);
 
-    result.add_loop_point()->CopyFrom((isNear || tx < ty) ?
-                                      x.loop_point(i++) : y.loop_point(j++));
+    bool useX = (!hasY || isNear || tx < ty);
+    const LoopPoint& lp = useX ? x.loop_point(i++) : y.loop_point(j++);
+    result.add_loop_point()->CopyFrom(lp);
     if (isNear)  // Remove dupes.
       j++;
   }
@@ -136,7 +137,7 @@ void toggleSelectionSegment(LoopPointList* loops, RealTime time) {
 Range<RealTime> contiguousSelectionContaining(const LoopPointList& lpl,
                                               RealTime time) {
   int i = 1;
-  for (; i <= lpl.loop_point_size() && time >= lpl.loop_point(i).time(); ++i);
+  for (; i < lpl.loop_point_size() && time >= lpl.loop_point(i).time(); ++i);
   Range<RealTime> range;
   if (lpl.loop_point(i - 1).selected()) {
     range.begin_ = lpl.loop_point(i - 1).time();

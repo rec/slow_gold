@@ -50,7 +50,7 @@ Loops::~Loops() {}
 void Loops::onDataChange(const LoopPointList& loops) {
   length_ = loops.length();
   MessageManagerLock l;
-  update();
+  updateAndRepaint();
 }
 
 static String getDisplayText(const Value& v, const TableColumn& col, RealTime length) {
