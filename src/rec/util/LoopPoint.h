@@ -4,6 +4,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/block/Block.h"
+#include "rec/util/Range.h"
 
 namespace rec {
 namespace audio {
@@ -27,6 +28,8 @@ int getSelectionCount(const LoopPointList&);
 int getSegment(const LoopPointList&, RealTime);
 
 void toggleSelectionSegment(LoopPointList*, RealTime);
+
+Range<RealTime> contiguousSelectionContaining(const LoopPointList&, RealTime);
 
 }  // namespace audio
 }  // namespace rec

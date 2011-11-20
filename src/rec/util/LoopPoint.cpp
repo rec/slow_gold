@@ -133,5 +133,19 @@ void toggleSelectionSegment(LoopPointList* loops, RealTime time) {
   lp->set_selected(!lp->selected());
 }
 
+Range<RealTime> contiguousSelectionContaining(const LoopPointList& lpl,
+                                              RealTime time) {
+  int i = 1;
+  for (; i <= lpl.loop_point_size() && time >= lpl.loop_point(i).time(); ++i);
+  Range<RealTime> range;
+  if (lpl.loop_point(i - 1).selected()) {
+    range.begin_ = lpl.loop_point(i - 1).time();
+    bool isLast = (i == lpl.loop_point_size());
+    range.end_ = isLast ? lpl.length() : lpl.loop_point(i).time();
+  }
+  return range;
+}
+
+
 }  // namespace audio
 }  // namespace rec

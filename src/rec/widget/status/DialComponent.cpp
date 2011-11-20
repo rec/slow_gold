@@ -5,6 +5,7 @@
 #include "rec/gui/Color.h"
 #include "rec/gui/Geometry.h"
 #include "rec/widget/Painter.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/thread/CallAsync.h"
 
 using rec::gui::Colors;
@@ -23,7 +24,7 @@ static const double ALMOST_ZERO = 0.5 / 360.0;
 const double DialComponent::PI = 3.14159265358979323846264;
 const double DialComponent::REDRAW_ANGLE = 2.0 * DialComponent::PI * 0.001;
 const double SMALLEST_REAL_LENGTH = 0.1;
-const RealTime SMALLEST_TIME_CHANGE = 0.1;
+const RealTime SMALLEST_TIME_CHANGE = 0.001;
 
 DialComponent::DialComponent(const Dial& desc)
     : Component(str(desc.widget().name())),
@@ -33,6 +34,8 @@ DialComponent::DialComponent(const Dial& desc)
       timeAngle_(0.0),
       timeRatio_(0.0) {
 }
+
+static const bool USE_CONTIGUOUS_SEGMENTS = true;
 
 void DialComponent::operator()(RealTime time) {
   {
@@ -46,21 +49,17 @@ void DialComponent::operator()(RealTime time) {
     time_ = time;
     Range<RealTime> range;
 
-    bool found = false;
-    for (int i = 1; !found && i <= loops_.loop_point_size(); ++i) {
-      bool isLast = (i == loops_.loop_point_size());
-      if (isLast || time < loops_.loop_point(i).time()) {
-        if (loops_.loop_point(i - 1).selected()) {
-          range.begin_ = loops_.loop_point(i - 1).time();
-          range.end_ = isLast ? loops_.length() : loops_.loop_point(i).time();
-          found = true;
-        } else {
-          break;
-        }
-      }
+    if (USE_CONTIGUOUS_SEGMENTS)
+      range = audio::contiguousSelectionContaining(loops_, time);
+
+    if (range.size() < SMALLEST_TIME_CHANGE) {
+      int seg = audio::getSegment(loops_, time);
+      bool atEnd = (seg == loops_.loop_point_size() - 1);
+      range.begin_ = loops_.loop_point(seg).time();
+      range.end_ = atEnd ? loops_.length() : loops_.loop_point(seg + 1).time();
     }
 
-    if (!found) {
+    if (range.size() < SMALLEST_TIME_CHANGE) {
       timeAngle_ = zeroAngle_ = 0.0;
       timeRatio_ = 1.0;
       return;
@@ -83,9 +82,6 @@ void DialComponent::operator()(RealTime time) {
 }
 
 void DialComponent::onDataChange(const LoopPointList& lpl) {
-  DLOG(INFO) << "skipping DialComponent::onDataChange";
-  if (true)
-    return;
   ScopedLock l(lock_);
   loops_ = lpl;
   timeAngle_ = zeroAngle_ = 0.0;

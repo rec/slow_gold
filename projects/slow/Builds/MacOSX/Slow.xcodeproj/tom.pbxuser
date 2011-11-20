@@ -107,9 +107,9 @@
 	};
 	2C08F978939B04D301BF2363 /* LoopPoint.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1094, 1781}}";
-			sepNavSelRange = "{3949, 0}";
-			sepNavVisRange = "{1281, 1261}";
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 2028}}";
+			sepNavSelRange = "{3923, 29}";
+			sepNavVisRange = "{3283, 1148}";
 			sepNavWindowFrame = "{{38, 181}, {911, 971}}";
 		};
 	};
@@ -238,14 +238,14 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {881, 832}}";
 			sepNavSelRange = "{1378, 0}";
-			sepNavVisRange = "{322, 1215}";
+			sepNavVisRange = "{322, 1235}";
 		};
 	};
 	7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {754, 1534}}";
-			sepNavSelRange = "{2214, 0}";
-			sepNavVisRange = "{1014, 1979}";
+			sepNavIntBoundsRect = "{{0, 0}, {754, 1547}}";
+			sepNavSelRange = "{3026, 0}";
+			sepNavVisRange = "{638, 2052}";
 			sepNavWindowFrame = "{{107, 118}, {911, 971}}";
 		};
 	};
@@ -254,6 +254,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {881, 675}}";
 			sepNavSelRange = "{931, 0}";
 			sepNavVisRange = "{0, 1323}";
+		};
+	};
+	86AAE2258AE68C6045F5A400 /* LoopPoint.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 532}}";
+			sepNavSelRange = "{965, 0}";
+			sepNavVisRange = "{0, 1082}";
 		};
 	};
 	88D38EE9E418866F383499BC /* GenericCommandMapEditor.h */ = {
@@ -635,6 +642,21 @@
 			E2299371147862BA001821AD /* PBXTextBookmark */ = E2299371147862BA001821AD /* PBXTextBookmark */;
 			E22993861479A8C0001821AD /* PBXTextBookmark */ = E22993861479A8C0001821AD /* PBXTextBookmark */;
 			E229938B1479A9E5001821AD /* PBXTextBookmark */ = E229938B1479A9E5001821AD /* PBXTextBookmark */;
+			E229938D1479AD80001821AD /* PBXTextBookmark */ = E229938D1479AD80001821AD /* PBXTextBookmark */;
+			E22993961479AE67001821AD /* PBXTextBookmark */ = E22993961479AE67001821AD /* PBXTextBookmark */;
+			E22993991479AE76001821AD /* PBXTextBookmark */ = E22993991479AE76001821AD /* PBXTextBookmark */;
+			E229939C1479AEE7001821AD /* PBXTextBookmark */ = E229939C1479AEE7001821AD /* PBXTextBookmark */;
+			E22993A01479AF3F001821AD /* PBXTextBookmark */ = E22993A01479AF3F001821AD /* PBXTextBookmark */;
+			E22993A81479B1CF001821AD /* PBXTextBookmark */ = E22993A81479B1CF001821AD /* PBXTextBookmark */;
+			E22993AB1479B1EE001821AD /* PBXTextBookmark */ = E22993AB1479B1EE001821AD /* PBXTextBookmark */;
+			E22993AF1479B4FA001821AD /* PBXTextBookmark */ = E22993AF1479B4FA001821AD /* PBXTextBookmark */;
+			E22993B01479B4FA001821AD /* XCBuildMessageTextBookmark */ = E22993B01479B4FA001821AD /* XCBuildMessageTextBookmark */;
+			E22993B21479B4FA001821AD /* PBXTextBookmark */ = E22993B21479B4FA001821AD /* PBXTextBookmark */;
+			E22993B31479B4FA001821AD /* PBXTextBookmark */ = E22993B31479B4FA001821AD /* PBXTextBookmark */;
+			E22993B41479B4FA001821AD /* PBXTextBookmark */ = E22993B41479B4FA001821AD /* PBXTextBookmark */;
+			E22993B51479B4FA001821AD /* XCBuildMessageTextBookmark */ = E22993B51479B4FA001821AD /* XCBuildMessageTextBookmark */;
+			E22993B61479B4FA001821AD /* PBXTextBookmark */ = E22993B61479B4FA001821AD /* PBXTextBookmark */;
+			E22993B71479B500001821AD /* PBXTextBookmark */ = E22993B71479B500001821AD /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -3217,7 +3239,7 @@
 		ignoreCount = 0;
 		lineNumber = 53;
 		location = SlowGold;
-		modificationTime = 343517667.226923;
+		modificationTime = 343519723.813175;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3324,7 +3346,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 55";
 		rLen = 0;
-		rLoc = 1495;
+		rLoc = 1504;
 		rType = 0;
 		vrLen = 1659;
 		vrLoc = 0;
@@ -3507,6 +3529,19 @@
 		vrLen = 1235;
 		vrLoc = 322;
 	};
+	E22993761479A415001821AD /* TypedEditable.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TypedEditable.h;
+		path = ../../../../../rec/src/rec/data/TypedEditable.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 1638}}";
+			sepNavSelRange = "{896, 0}";
+			sepNavVisRange = "{0, 1108}";
+			sepNavWindowFrame = "{{130, 97}, {911, 971}}";
+		};
+	};
 	E22993861479A8C0001821AD /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
@@ -3525,6 +3560,160 @@
 		rLoc = 1378;
 		rType = 0;
 		vrLen = 1215;
+		vrLoc = 322;
+	};
+	E229938D1479AD80001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 322;
+	};
+	E22993961479AE67001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 322;
+	};
+	E22993991479AE76001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 322;
+	};
+	E229939C1479AEE7001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1215;
+		vrLoc = 322;
+	};
+	E22993A01479AF3F001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1215;
+		vrLoc = 322;
+	};
+	E22993A81479B1CF001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 322;
+	};
+	E22993AB1479B1EE001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1215;
+		vrLoc = 322;
+	};
+	E22993AF1479B4FA001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F67837B1F913F0981A51B001 /* Loops.cpp */;
+		name = "Loops.cpp: 127";
+		rLen = 0;
+		rLoc = 3277;
+		rType = 0;
+		vrLen = 1011;
+		vrLoc = 2408;
+	};
+	E22993B01479B4FA001821AD /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected nested-name-specifier";
+		fRef = E22993B11479B4FA001821AD /* TypedEditable.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 28;
+		rType = 1;
+	};
+	E22993B11479B4FA001821AD /* TypedEditable.h */ = {
+		isa = PBXFileReference;
+		name = TypedEditable.h;
+		path = ../../../../../rec/src/rec/data/TypedEditable.h;
+		sourceTree = "<group>";
+	};
+	E22993B21479B4FA001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22993761479A415001821AD /* TypedEditable.h */;
+		name = "TypedEditable.h: 31";
+		rLen = 0;
+		rLoc = 896;
+		rType = 0;
+		vrLen = 1108;
+		vrLoc = 0;
+	};
+	E22993B31479B4FA001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C08F978939B04D301BF2363 /* LoopPoint.cpp */;
+		name = "LoopPoint.cpp: 136";
+		rLen = 29;
+		rLoc = 3923;
+		rType = 0;
+		vrLen = 1148;
+		vrLoc = 3283;
+	};
+	E22993B41479B4FA001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 86AAE2258AE68C6045F5A400 /* LoopPoint.h */;
+		name = "LoopPoint.h: 32";
+		rLen = 0;
+		rLoc = 965;
+		rType = 0;
+		vrLen = 1082;
+		vrLoc = 0;
+	};
+	E22993B51479B4FA001821AD /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'range_' was not declared in this scope";
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 58;
+		rType = 1;
+	};
+	E22993B61479B4FA001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 53";
+		rLen = 0;
+		rLoc = 1274;
+		rType = 0;
+		vrLen = 1165;
+		vrLoc = 942;
+	};
+	E22993B71479B500001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1235;
 		vrLoc = 322;
 	};
 	E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */ = {

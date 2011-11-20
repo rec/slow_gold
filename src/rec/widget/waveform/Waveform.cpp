@@ -243,7 +243,6 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
 }
 
 void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
-  LOG_FIRST_N(INFO, 4) << "drawGrid";
   RealTime width = r.size();
   if (width < SMALLEST_TIME) {
     LOG_FIRST_N(INFO, 4) << "Nothing on screen!";
