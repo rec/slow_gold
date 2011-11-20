@@ -83,6 +83,9 @@ void DialComponent::operator()(RealTime time) {
 }
 
 void DialComponent::onDataChange(const LoopPointList& lpl) {
+  DLOG(INFO) << "skipping DialComponent::onDataChange";
+  if (true)
+    return;
   ScopedLock l(lock_);
   loops_ = lpl;
   timeAngle_ = zeroAngle_ = 0.0;

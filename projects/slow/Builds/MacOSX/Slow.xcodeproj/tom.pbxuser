@@ -238,14 +238,14 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {881, 832}}";
 			sepNavSelRange = "{1378, 0}";
-			sepNavVisRange = "{322, 1235}";
+			sepNavVisRange = "{322, 1215}";
 		};
 	};
 	7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {754, 1534}}";
 			sepNavSelRange = "{2214, 0}";
-			sepNavVisRange = "{381, 2061}";
+			sepNavVisRange = "{1014, 1979}";
 			sepNavWindowFrame = "{{107, 118}, {911, 971}}";
 		};
 	};
@@ -633,6 +633,8 @@
 			E229936214785FE2001821AD /* PBXTextBookmark */ = E229936214785FE2001821AD /* PBXTextBookmark */;
 			E229936C14786166001821AD /* PBXTextBookmark */ = E229936C14786166001821AD /* PBXTextBookmark */;
 			E2299371147862BA001821AD /* PBXTextBookmark */ = E2299371147862BA001821AD /* PBXTextBookmark */;
+			E22993861479A8C0001821AD /* PBXTextBookmark */ = E22993861479A8C0001821AD /* PBXTextBookmark */;
+			E229938B1479A9E5001821AD /* PBXTextBookmark */ = E229938B1479A9E5001821AD /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -654,7 +656,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {754, 1573}}";
 			sepNavSelRange = "{1829, 0}";
-			sepNavVisRange = "{982, 1788}";
+			sepNavVisRange = "{980, 1790}";
 			sepNavWindowFrame = "{{84, 139}, {911, 971}}";
 		};
 	};
@@ -743,6 +745,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {664, 1144}}";
 			sepNavSelRange = "{1041, 0}";
 			sepNavVisRange = "{0, 2336}";
+		};
+	};
+	B02582F7B7419635D36CB407 /* DialComponent.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {754, 981}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1208}";
 		};
 	};
 	B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */ = {
@@ -3208,7 +3217,7 @@
 		ignoreCount = 0;
 		lineNumber = 53;
 		location = SlowGold;
-		modificationTime = 343433416.142308;
+		modificationTime = 343517667.226923;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3496,6 +3505,26 @@
 		rLoc = 1378;
 		rType = 0;
 		vrLen = 1235;
+		vrLoc = 322;
+	};
+	E22993861479A8C0001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 322;
+	};
+	E229938B1479A9E5001821AD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */;
+		name = "TimeController.cpp: 53";
+		rLen = 0;
+		rLoc = 1378;
+		rType = 0;
+		vrLen = 1215;
 		vrLoc = 322;
 	};
 	E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */ = {
