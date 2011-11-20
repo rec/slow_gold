@@ -1,6 +1,7 @@
 #ifndef __REC_PERSIST_DATA__
 #define __REC_PERSIST_DATA__
 
+#include <algorithm>
 #include <set>
 
 #include "rec/data/UntypedEditable.h"
@@ -25,7 +26,8 @@ class TypedEditable : public UntypedEditable, public Broadcaster<const Proto&> {
   typedef Listener<const Proto&> ProtoListener;
 
   // Add a new listener and update them later in the update thread.
-  void addListenerAndUpdate(ProtoListener* listener);
+  virtual void addListener(ProtoListener* listener);
+  virtual void removeListener(ProtoListener* listener);
   virtual bool update();
 
  private:
@@ -79,12 +81,25 @@ void TypedEditable<Proto>::onDataChange() {
 }
 
 template <typename Proto>
-void TypedEditable<Proto>::addListenerAndUpdate(ProtoListener* listener) {
-  addListener(listener);
+void TypedEditable<Proto>::addListener(ProtoListener* listener) {
+  Broadcaster<const Proto&>::addListener(listener);
 
   Lock l(UntypedEditable::lock_);
   updateQueue_.push_back(listener);
   needsUpdate();
+}
+
+template <typename Proto>
+void TypedEditable<Proto>::removeListener(ProtoListener* listener) {
+  Broadcaster<const Proto&>::removeListener(listener);
+
+  Lock l(UntypedEditable::lock_);
+  for (int i = 0; i < updateQueue_.size(); ++i) {
+    if (updateQueue_[i] == listener) {
+      updateQueue_[i] = updateQueue_.back();
+      updateQueue_.pop_back();
+    }
+  }
 }
 
 template <typename Proto>

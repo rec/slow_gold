@@ -56,7 +56,7 @@ class DataListener : public DataListenerBase<Proto>,
  public:
   DataListener(const data::Address& addr = data::Address::default_instance())
       : DataListenerBase<Proto>(addr) {
-    data::editable<VirtualFile>()->addListenerAndUpdate(this);
+    data::editable<VirtualFile>()->addListener(this);
   }
 
   virtual ~DataListener() {}
@@ -107,7 +107,7 @@ void DataListenerBase<Proto>::setData(data::TypedEditable<Proto>* d) {
     Lock l(lock_);
     data_->removeListener(this);
     data_ = d;
-    data_->addListenerAndUpdate(this);
+    data_->addListener(this);
   }
 }
 

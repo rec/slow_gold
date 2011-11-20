@@ -34,8 +34,8 @@ class Loops : public component::Focusable<TableController>,
   double near(double x, double y) const { return util::near(x, y, CLOSE); }
 
   virtual bool canCopy() const;
-  virtual bool canPaste() const { return true; }
-  virtual bool canCut() const { return canCopy(); }
+  virtual bool canPaste() const { return true; }  // TODO
+  virtual bool canCut() const;
   virtual string copy() const;
   virtual bool paste(const string&);
   virtual void cut();

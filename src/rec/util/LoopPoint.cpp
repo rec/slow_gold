@@ -57,21 +57,29 @@ LoopPointList getSelected(const LoopPointList& loops, bool selected) {
   return result;
 }
 
-LoopPointList addLoopPoints(const LoopPointList& xx, const LoopPointList& y) {
-  DCHECK(xx.has_length());
-  LoopPointList x = xx;
+LoopPointList addLoopPoints(const LoopPointList& x, const LoopPointList& y) {
+  LoopPointList result;
+  double length = std::max(x.length(), y.length());
+  result.set_length(length);
 
-  for (int i = 0, j = 0; i < y.loop_point_size(); ++i) {
-    double t = y.loop_point(i).time();
-    if (!isCloseTo(x, t)) {
-      LoopPoint* lp = x.add_loop_point();
-      lp->CopyFrom(y.loop_point(i));
-      for (; j < x.loop_point_size() && x.loop_point(j).time() <= t; ++j);
-    }
+  for (int i = 0, j = 0; ; ) {
+    bool hasX = i < x.loop_point_size();
+    bool hasY = j < y.loop_point_size();
+    if (!(hasX || hasY))
+      break;
+
+    RealTime tx = hasX ? x.loop_point(i).time() : length;
+    RealTime ty = hasY ? y.loop_point(j).time() : length;
+
+    bool isNear = Math<RealTime>::near(tx, ty, CLOSE);
+
+    result.add_loop_point()->CopyFrom((isNear || tx < ty) ?
+                                      x.loop_point(i++) : y.loop_point(j++));
+    if (isNear)  // Remove dupes.
+      j++;
   }
 
-  sort(&x);
-  return x;
+  return result;
 }
 
 namespace {
@@ -90,10 +98,13 @@ void sort(LoopPointList* loops) {
             CompareLoopPoints());
 }
 
-LoopPointList addLoopPoint(const LoopPointList& lp, RealTime t) {
+LoopPointList addLoopPoint(const LoopPointList& lpl, RealTime t) {
   LoopPointList oneSegment;
-  oneSegment.add_loop_point()->set_time(t);
-  return audio::addLoopPoints(lp, oneSegment);
+  LoopPoint* lp = oneSegment.add_loop_point();
+  lp->set_time(t);
+  lp->set_selected(lpl.loop_point(getSegment(lpl, t)).selected());
+
+  return audio::addLoopPoints(lpl, oneSegment);
 }
 
 void addLoopPointToEditable(const VirtualFile& file, RealTime time) {
@@ -111,18 +122,16 @@ int getSelectionCount(const LoopPointList& loops) {
 }
 
 int getSegment(const LoopPointList& loops, RealTime time) {
-  for (int i = 1; i < loops.loop_point_size(); ++i) {
-    if (time < loops.loop_point(i).time())
+  for (int i = 1; ; ++i) {
+    if (i == loops.loop_point_size() || time < loops.loop_point(i).time())
       return i - 1;
   }
-  return 0;
 }
 
 void toggleSelectionSegment(LoopPointList* loops, RealTime time) {
   LoopPoint* lp = loops->mutable_loop_point(getSegment(*loops, time));
   lp->set_selected(!lp->selected());
 }
-
 
 }  // namespace audio
 }  // namespace rec

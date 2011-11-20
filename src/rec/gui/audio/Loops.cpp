@@ -115,8 +115,17 @@ bool Loops::canCopy() const {
   return getSelected(data()->get(), true).loop_point_size();
 }
 
+bool Loops::canCut() const {
+  LoopPointList lpl = getSelected(data()->get(), true);
+  int size = lpl.loop_point_size();
+  return (size > 1) || (size == 1 && !lpl.loop_point(0).selected());
+}
+
 void Loops::cut() {
-  data()->setValue(getSelected(data()->get(), false));
+  LoopPointList lpl = data()->get();
+  if (lpl.loop_point_size())
+    lpl.mutable_loop_point(0)->set_selected(false);
+  data()->setValue(getSelected(lpl, false));
 }
 
 bool Loops::paste(const string& s) {
