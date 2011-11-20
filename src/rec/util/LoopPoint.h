@@ -9,9 +9,7 @@
 namespace rec {
 namespace audio {
 
-const block::BlockSet getTimeSelection(const LoopPointList&,
-                                       double scale = 1.0,
-                                       bool emptyMeansAll = true);
+const block::BlockSet getTimeSelection(const LoopPointList&);
 
 bool isCloseTo(const LoopPointList&, RealTime);
 
