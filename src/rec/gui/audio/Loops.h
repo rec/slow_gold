@@ -28,7 +28,6 @@ class Loops : public component::Focusable<TableController>,
   virtual Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected,
                                              Component* existingComponentToUpdate);
 
-
   static const RealTime CLOSE;
 
   virtual void onDataChange(const LoopPointList&);
