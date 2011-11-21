@@ -49,18 +49,18 @@ Loops::~Loops() {}
 
 void Loops::onDataChange(const LoopPointList& loops) {
   length_ = loops.length();
+
   MessageManagerLock l;
   updateAndRepaint();
 }
 
 static String getDisplayText(const Value& v, const TableColumn& col, RealTime length) {
   switch (col.type()) {
-   case TableColumn::STRING: return str(v.string_f());
-   case TableColumn::UINT32: return String(v.uint32_f());
-   case TableColumn::TIME: return formatTime(RealTime(v.double_f()), length);
-   case TableColumn::DOUBLE: return String(v.double_f());
-
-   default: return "<unknown>";
+   case TableColumn::STRING:  return str(v.string_f());
+   case TableColumn::UINT32:  return String(v.uint32_f());
+   case TableColumn::TIME:    return formatTime(RealTime(v.double_f()), length);
+   case TableColumn::DOUBLE:  return String(v.double_f());
+   default:                   return "<unknown>";
   }
 }
 
@@ -118,7 +118,7 @@ bool Loops::canCopy() const {
 bool Loops::canCut() const {
   LoopPointList lpl = getSelected(data()->get(), true);
   int size = lpl.loop_point_size();
-  return (size > 1) || (size == 1 && !lpl.loop_point(0).selected());
+  return (size > 1) || (size == 1 && lpl.loop_point(0).has_time());
 }
 
 void Loops::cut() {
