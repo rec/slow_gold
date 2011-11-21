@@ -16,13 +16,6 @@ struct LoopSnapshot {
 
   Instance* instance_;
   LoopPointList loops_;
-  Samples<44100> time_;
-
-  block::BlockSet selection_;
-
-  int selectionCount_;
-
-  int segment_;
 
   typedef bool (*Function)(LoopSnapshot*);
   typedef std::map<int32, LoopSnapshot::Function> Map;

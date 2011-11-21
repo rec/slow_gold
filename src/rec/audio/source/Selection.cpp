@@ -10,8 +10,13 @@ using namespace rec::util::block;
 
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
   BlockSet sel = selection();
+  Samples<44100> pos = getNextReadPosition();
+  if (!sel.begin()->second) {
+    clear(audioInfo);
+    return;
+  }
   AudioSourceChannelInfo info = audioInfo;
-  BlockList blocks = wrapSeries(sel, position_, info.numSamples);
+  BlockList blocks = wrapSeries(sel, pos, info.numSamples);
 
   for (BlockList::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
     setNextReadPosition(i->first);
@@ -21,14 +26,19 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
   }
 }
 
-void Selection::setSelection(const BlockSet& s) {
-  Lock l(lock_);
-  selection_ = s;
+void Selection::onDataChange(const LoopPointList& loops) {
+  Lock l(Wrappy::lock_);
+  selection_ = getTimeSelection(loops);
+  if (selection_.empty())
+    selection_.insert(block::makeBlock(0, loops.length()));
 }
 
 void Selection::moveBackward(Samples<44100> dt) {
-  Lock l(lock_);
+  Lock l(Wrappy::lock_);
   BlockSet sel = selection();
+  if (!sel.begin()->second) {
+    return;
+  }
   BlockSet::const_iterator i = sel.begin();
   for (; i != sel.end() && i->second <= position_; ++i);
   if (i == sel.end())

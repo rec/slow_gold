@@ -22,8 +22,10 @@ class Listener {
 
   virtual void operator()(Type x) = 0;
 
+ protected:
+  CriticalSection lock_;
+
  private:
-  CriticalSection listenerLock_;
   BroadcasterSet broadcasters_;
 
   friend class Broadcaster<Type>;
@@ -65,7 +67,7 @@ Listener<Type>::~Listener() {
   for (bool finished = false; !finished; ) {
     BroadcasterSet toDelete;
     {
-      ScopedLock l(listenerLock_);
+      ScopedLock l(lock_);
       if (broadcasters_.empty()) {
         finished = true;
         continue;
@@ -99,7 +101,7 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
 
   {
     ScopedUnlock u(lock_);
-    ScopedLock l(listener->listenerLock_);
+    ScopedLock l(listener->lock_);
     listener->broadcasters_.insert(this);
   }
 }
@@ -111,7 +113,7 @@ void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
     listeners_.erase(listener);
   }
 
-  ScopedLock l(listener->listenerLock_);
+  ScopedLock l(listener->lock_);
   listener->broadcasters_.erase(this);
 }
 

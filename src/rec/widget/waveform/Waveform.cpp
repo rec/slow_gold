@@ -121,14 +121,9 @@ double Waveform::pixelsPerSecond() const {
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
-  block::BlockSet selection;
-
-  empty_ = !loopPoints.has_length();
-  if (!empty_)
-    selection = audio::getTimeSelection(loopPoints);
   {
     ScopedLock l(lock_);
-    selection_ = selection;
+    selection_ = audio::getTimeSelection(loopPoints);
     length_ = RealTime(loopPoints.length());
   }
 

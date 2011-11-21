@@ -9,7 +9,7 @@ namespace rec {
 namespace audio {
 
 const block::BlockSet getTimeSelection(const LoopPointList& list) {
-  const static bool emptyMeansAll = true;
+  const static bool emptyMeansAll = !true;
 
   block::BlockSet sel;
   DCHECK(list.has_length());

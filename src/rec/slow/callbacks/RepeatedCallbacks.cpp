@@ -12,6 +12,10 @@ namespace slow {
 
 namespace {
 
+int getSegment(const LoopSnapshot& snap) {
+  return audio::getSegment(snap.loops_, snap.instance_->time());
+}
+
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   RealTime time = snapshot->loops_.loop_point(segment).time();
   snapshot->instance_->currentTime_->jumpToTime(time);
@@ -19,7 +23,7 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
 
 void jump(LoopSnapshot* snap, Position pos) {
   int size = snap->loops_.loop_point_size() - 1;
-  int p = pos.toIndex(snap->segment_, size);
+  int p = pos.toIndex(getSegment(*snap), size);
   snap->loops_.mutable_loop_point(p)->set_selected(true);
   setTimeFromSegment(snap, p);
 }
@@ -28,9 +32,10 @@ void jumpSelected(LoopSnapshot* snap, Position pos) {
   vector<int> selected;
   size_t s;
   bool found = false;
-  for (int i = 0; i < snap->loops_.loop_point_size() - 1; ++i) {
-    if (!snap->selectionCount_ || snap->loops_.loop_point(i).selected()) {
-      if (i == snap->segment_) {
+  const LoopPointList& loops = snap->loops_;
+  for (int i = 0; i < loops.loop_point_size() - 1; ++i) {
+    if (!audio::getSelectionCount(loops) || loops.loop_point(i).selected()) {
+      if (i == getSegment(*snap)) {
         DCHECK(!found);
         s = selected.size();
         found = true;

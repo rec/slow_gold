@@ -32,7 +32,6 @@ class StereoProto;
 class Player : public DataListener<Gain>,
                public Broadcaster<transport::State>,
                public DataListener<stretch::Stretch>,
-               public DataListener<LoopPointList>,
                public DataListener<StereoProto>,
                public juce::ChangeListener {
  public:
@@ -57,7 +56,6 @@ class Player : public DataListener<Gain>,
 
   virtual void onDataChange(const Gain&);
   virtual void onDataChange(const StereoProto&);
-  virtual void onDataChange(const LoopPointList&);
   virtual void onDataChange(const stretch::Stretch&);
 
   void setGain(double);

@@ -25,7 +25,7 @@ class DataListenerBase : public Listener<const Proto&> {
 
   virtual void operator()(const Proto& p) { updateValue(p, true); }
 
-  data::TypedEditable<Proto>* data() const { Lock l(lock_); return data_; }
+  data::TypedEditable<Proto>* data() const { Lock l(this->lock_); return data_; }
 
   virtual const data::Value getValue() const { return data()->getValue(address_); }
   virtual void setValue(const data::Value& v) { data()->setValue(v, address_); }
@@ -39,7 +39,6 @@ class DataListenerBase : public Listener<const Proto&> {
   void doOnDataChange(const Proto& p) { onDataChange(p); }
   void updateValue(const Proto& p, bool perhapsFilter);
 
-  CriticalSection lock_;
   const bool filterDupes_;
   data::TypedEditable<Proto>* data_;
   Proto proto_;
@@ -91,7 +90,7 @@ class GlobalDataListener : public DataListenerBase<Proto> {
 template <typename Proto>
 void DataListenerBase<Proto>::updateValue(const Proto& p, bool perhapsFilter) {
   {
-    Lock l(lock_);
+    Lock l(this->lock_);
     if (perhapsFilter && filterDupes_ && data::equals(proto_, p))
       return;
     proto_ = p;
@@ -104,7 +103,7 @@ template <typename Proto>
 void DataListenerBase<Proto>::setData(data::TypedEditable<Proto>* d) {
   Proto p;
   {
-    Lock l(lock_);
+    Lock l(this->lock_);
     data_->removeListener(this);
     data_ = d;
     data_->addListener(this);

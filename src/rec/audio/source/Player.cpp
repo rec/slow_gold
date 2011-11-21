@@ -77,11 +77,6 @@ void Player::onDataChange(const StereoProto& s) {
   stereo_->setStereo(s);
 }
 
-void Player::onDataChange(const LoopPointList& lpl) {
-  if (lpl.has_length())
-    selection_->setSelection(audio::getTimeSelection(lpl));
-}
-
 void Player::clear() {
   setState(audio::transport::STOPPED);
   timer_->setNextReadPosition(0);

@@ -1,14 +1,17 @@
 #ifndef __REC_AUDIO_SOURCE_SELECTION__
 #define __REC_AUDIO_SOURCE_SELECTION__
 
+#include "rec/base/RealTime.h"
 #include "rec/audio/source/Wrappy.h"
+#include "rec/util/LoopPoint.h"
+#include "rec/util/DataListener.h"
 #include "rec/util/block/Block.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class Selection : public Wrappy {
+class Selection : public Wrappy, public DataListener<LoopPointList> {
  public:
   Selection(PositionableAudioSource* source) : Wrappy(source) {}
 
@@ -17,10 +20,10 @@ class Selection : public Wrappy {
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
-  void setSelection(const block::BlockSet& s);
+  virtual void onDataChange(const LoopPointList&);
 
   const block::BlockSet selection() const {
-    Lock l(lock_);
+    Lock l(Wrappy::lock_);
     return selection_;
   }
 
