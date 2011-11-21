@@ -715,6 +715,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp">
       <Filter>Command\rec\util\unused</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\UpdateRequester.cpp">
+      <Filter>Command\rec\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp">
       <Filter>Command\rec\widget\status</Filter>
     </ClCompile>
@@ -1721,6 +1724,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\unused\Switcher.h">
       <Filter>Command\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\UpdateRequester.h">
+      <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\Painter.h">
       <Filter>Command\rec\widget</Filter>

@@ -77,6 +77,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
 
 MainPage::~MainPage() {}
 
+// TODO: remove.
 void MainPage::setActive(bool a) {
   directoryResizer_.setActive(a);
   waveformResizer_.setActive(a);

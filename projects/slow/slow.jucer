@@ -26,7 +26,7 @@
                    isDebug="1" name="Debug" optimisation="0" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="cBFjhvbXJ" name="Slow">
+  <MAINGROUP id="TJm9yU9ii" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -1015,6 +1015,10 @@
           <FILE compile="0" file="../../src/rec/util/unused/Switcher.h" id="LciLFSsnc"
                 name="Switcher.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/util/UpdateRequester.cpp" id="zyAqK6g24"
+              name="UpdateRequester.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/UpdateRequester.h" id="GcIiXaxsl"
+              name="UpdateRequester.h" resource="0"/>
       </GROUP>
       <GROUP id="SUnByOVEB" name="widget">
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="pywYbaxoY"
@@ -1263,7 +1267,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Azfjq0Mcn" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="sJyAqG72H" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

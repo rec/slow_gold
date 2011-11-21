@@ -7,9 +7,9 @@
 #include "rec/audio/source/Timer.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.h"
+#include "rec/util/DataListener.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/block/Block.h"
-#include "rec/util/DataListener.h"
 
 namespace rec {
 
@@ -76,7 +76,7 @@ class Player : public DataListener<Gain>,
   Stereo* stereo_;
   Level level_;
 
-  DISALLOW_COPY_AND_ASSIGN(Player);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Player);
 };
 
 }  // namespace source

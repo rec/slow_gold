@@ -24,6 +24,7 @@ class Components {
 public:
   explicit Components(Instance*);
   ~Components();
+
   void setActive(bool);
 
   ApplicationCommandManager* manager_;

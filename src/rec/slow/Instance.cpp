@@ -29,6 +29,7 @@ using namespace rec::audio;
 using namespace rec::audio::util;
 using namespace rec::audio::source;
 using namespace rec::widget::waveform;
+
 using gui::DialogLocker;
 
 Instance::Instance(SlowWindow* window) : window_(window) {
@@ -81,7 +82,8 @@ Instance::~Instance() {
 
 void Instance::startup() {
   data::editable<VirtualFile>()->onDataChange();
-  components_->setActive(true);
+  components_->setActive(true);  // TODO: remove
+  UpdateRequester::requestAllUpdates();
   startUndo();
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();

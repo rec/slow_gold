@@ -9,29 +9,23 @@ namespace rec {
 namespace audio {
 
 const block::BlockSet getTimeSelection(const LoopPointList& list) {
-  const static bool emptyMeansAll = !true;
-
   block::BlockSet sel;
-  DCHECK(list.has_length());
   RealTime length(list.length());
   int size = list.loop_point_size();
-  if (size > 0) {
-    for (int i = 0, j; i < size; ++i) {
-      for (; i < size && !list.loop_point(i).selected(); ++i);
-      for (j = i; j < size && list.loop_point(j).selected(); ++j);
-      if (j != i) {
-        RealTime begin = list.loop_point(i).time();
-        RealTime endTime = length;
-        if (j < size)
-        	endTime = list.loop_point(j).time();
-        RealTime end = endTime;
-        sel.insert(block::makeBlock(Samples<44100>(begin), Samples<44100>(end)));
-      }
-      i = j;
+  for (int i = 0, j; i < size; ++i) {
+    for (; i < size && !list.loop_point(i).selected(); ++i);
+    for (j = i; j < size && list.loop_point(j).selected(); ++j);
+    if (j != i) {
+      RealTime begin = list.loop_point(i).time();
+      RealTime endTime = length;
+      if (j < size)
+        endTime = list.loop_point(j).time();
+      RealTime end = endTime;
+      sel.insert(block::makeBlock(Samples<44100>(begin), Samples<44100>(end)));
     }
+    i = j;
   }
-  if (emptyMeansAll && sel.empty())
-    sel.insert(block::makeBlock(0, Samples<44100>(length)));
+
   return sel;
 }
 
