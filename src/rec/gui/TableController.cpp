@@ -7,11 +7,17 @@
 namespace rec {
 namespace gui {
 
+static const int CELL_MARGIN_VERTICAL = 2;
+static const int CELL_MARGIN_HORIZONTAL = 2;
+static const juce::Colour SELECTED_COLOR(0xffefef80);
+static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
+
 using data::Address;
 using data::Value;
 
 TableController::TableController() : TableListBox("", this) {}
 
+// TODO: can we put this back into the constructor now?
 void TableController::initialize(const TableColumnList& c, const Address& address, const char* name) {
   columns_ = c;
   setName(name);
@@ -31,7 +37,7 @@ void TableController::paintRowBackground(Graphics& g,
                                         int width, int height,
                                         bool rowIsSelected) {
   ScopedLock l(lock_);
-  g.setColour(rowIsSelected ? juce::Colour(0xffefef80) : juce::Colours::white);
+  g.setColour(rowIsSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
   g.fillRect(0, 0, width, height);
 }
 
@@ -46,9 +52,12 @@ void TableController::paintCell(Graphics& g,
     LOG(ERROR) << "columnId " << columnId << " size " << columns_.column_size();
     return;
   }
+
   const TableColumn& column = columns_.column(columnId - 1);
   String t = displayText(column, rowNumber);
-  g.drawText(t, 2, 2, width - 4, height - 4, Justification::centred, true);
+  g.drawText(t, CELL_MARGIN_HORIZONTAL, CELL_MARGIN_VERTICAL,
+             width - 2 * CELL_MARGIN_HORIZONTAL,
+             height - 2 * CELL_MARGIN_VERTICAL, Justification::centred, true);
 }
 
 }  // namespace gui

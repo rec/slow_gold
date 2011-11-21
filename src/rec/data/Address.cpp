@@ -15,6 +15,12 @@ const Address operator+(const Address& x, int i) {
   return result;
 }
 
+const Address operator+(int i, const Address& x) {
+  Address result(i);
+  result.MergeFrom(x);
+  return result;
+}
+
 const Address operator+(const Address& x, const string& name) {
   Address result = x;
   result.add_part()->set_name(name);

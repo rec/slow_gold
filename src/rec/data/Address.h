@@ -34,9 +34,12 @@ class Address : public AddressProto {
   Address(int i) { p(i); }
 };
 
+// Isn't perhaps only the first one necessary?
 const Address operator+(const Address&, const Address&);
 const Address operator+(const Address&, int i);
+const Address operator+(int i, const Address&);
 const Address operator+(const Address&, const string& name);
+
 const string toString(const Address&);
 
 }  // namespace data

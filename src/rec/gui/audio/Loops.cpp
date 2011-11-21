@@ -3,6 +3,7 @@
 #include "rec/base/RealTime.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/gui/SetterText.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/FormatTime.h"
@@ -146,6 +147,38 @@ bool Loops::paste(const string& s) {
   }
   return false;
 }
+
+using data::Address;
+
+class LoopsSetterText : public SetterText<LoopPointList> {
+ public:
+  explicit LoopsSetterText(int row, const TableColumn& col)
+      : SetterText<LoopPointList>("",
+                                  "loop_point" + Address(row) + col.address(), 
+                                  "", "", false) {
+    UpdateRequester::requestAllUpdates();
+  }
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopsSetterText);
+};
+
+Component* Loops::refreshComponentForCell(int row, int column,
+                                          bool isRowSelected,
+                                          Component* existing) {
+  if (!existing) {
+    if (column > columns().column_size()) {
+      LOG(ERROR) << "Unexpected column: " << column
+                 << ", " << columns().column_size();
+    } else {
+      const TableColumn& col = columns().column(column - 1);
+      if (col.type() == TableColumn::STRING)
+        existing = new LoopsSetterText(row, col);
+    }
+  }
+  return existing;
+}
+
 
 }  // namespace audio
 }  // namespace gui

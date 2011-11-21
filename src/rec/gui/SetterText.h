@@ -10,6 +10,8 @@
 namespace rec {
 namespace gui {
 
+static const int CAPTION_SIZE = 70;
+
 template <typename Proto>
 class SetterText : public Layout,
                    public DataListener<Proto>,
@@ -18,16 +20,19 @@ class SetterText : public Layout,
   SetterText(const String& name,
              const data::Address& address,
              const String& tip = String::empty,
-             const String& caption = String::empty)
+             const String& caption = String::empty,
+             bool useCaption = true)
       : Layout(name, HORIZONTAL),
         DataListener<Proto>(address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {
-    const String& cap = caption.length() ? caption : name;
-    caption_.setText(cap, false);
-    editor_.setTooltip(tip.length() ? tip : cap);
+    if (useCaption) {
+      const String& cap = caption.length() ? caption : name;
+      caption_.setText(cap, false);
+      editor_.setTooltip(tip.length() ? tip : cap);
 
-    addToLayout(&caption_, 70);
+      addToLayout(&caption_, CAPTION_SIZE);
+    }
     addToLayout(&editor_);
 
     editor_.addListener(this);

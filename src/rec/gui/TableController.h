@@ -24,6 +24,7 @@ class TableController : public TableListBoxModel, public TableListBox {
   virtual void selectedRowsChanged(int lastRowSelected) = 0;
 
   void updateAndRepaint() { update(); repaint(); }
+  const TableColumnList& columns() { return columns_; }
 
  protected:
   virtual void update() { updateContent(); }
