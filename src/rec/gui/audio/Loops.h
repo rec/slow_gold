@@ -49,7 +49,7 @@ class Loops : public component::Focusable<TableController>,
   virtual String displayText(const TableColumn& col, int row);
 
  private:
-  RealTime length_;
+  LoopPointList loops_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };

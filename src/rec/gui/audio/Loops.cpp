@@ -38,8 +38,7 @@ const RealTime Loops::CLOSE = 0.5;
 
 Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
     : component::Focusable<TableController>(menus),
-      DataListener<LoopPointList>(a),
-      length_(0.0) {
+      DataListener<LoopPointList>(a) {
   initialize(dflt.get(desc), a, "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
@@ -48,9 +47,12 @@ Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
 Loops::~Loops() {}
 
 void Loops::onDataChange(const LoopPointList& loops) {
-  length_ = loops.length();
+  {
+    Lock l(TableController::lock_);
+    loops_ = loops;
+  }
 
-  MessageManagerLock l;
+  MessageManagerLock mml;
   updateAndRepaint();
 }
 
@@ -68,18 +70,19 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
   String t = "-";
   if (data()) {
     Address row = (address() + rowIndex) + col.address();
-    t = getDisplayText(data()->getValue(row), col, length_);
+    t = getDisplayText(data()->getValue(row), col, loops_.length());
   }
   return t;
 }
 
 void Loops::selectedRowsChanged(int lastRowSelected) {
+  Lock l(TableController::lock_);
   bool changed = false;
-  LoopPointList loops = data()->get();
+
   juce::SparseSet<int> selected(getSelectedRows());
 
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
-    LoopPoint* lp = loops.mutable_loop_point(i);
+  for (int i = 0; i < loops_.loop_point_size(); ++i) {
+    LoopPoint* lp = loops_.mutable_loop_point(i);
     bool contains = selected.contains(i);
     if (lp->selected() != contains) {
       lp->set_selected(contains);
@@ -87,57 +90,58 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
     }
   }
   if (changed)
-    data()->setValue(loops);
+    data()->setValue(loops_);
 }
 
 void Loops::update() {
-  bool changed;
-  LoopPointList loops = data()->get();
+  TableController::update();
+
+  Lock l(TableController::lock_);
 
   juce::SparseSet<int> sel;
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
-    if (loops.loop_point(i).selected())
+  for (int i = 0; i < loops_.loop_point_size(); ++i) {
+    if (loops_.loop_point(i).selected())
       sel.addRange(juce::Range<int>(i, i + 1));
-
-    changed = (sel != getSelectedRows());
   }
-  if (changed)
-    setSelectedRows(sel, false);
 
-  TableController::update();
+  if (sel != getSelectedRows())
+    setSelectedRows(sel, false);
 }
 
 string Loops::copy() const {
-  return yaml::write(getSelected(data()->get(), true));
+  Lock l(TableController::lock_);
+  return yaml::write(getSelected(loops_, true));
 }
 
 bool Loops::canCopy() const {
-  return getSelected(data()->get(), true).loop_point_size();
+  Lock l(TableController::lock_);
+  return getSelected(loops_, true).loop_point_size();
 }
 
 bool Loops::canCut() const {
-  LoopPointList lpl = getSelected(data()->get(), true);
+  Lock l(TableController::lock_);
+  LoopPointList lpl = getSelected(loops_, true);
   int size = lpl.loop_point_size();
   return (size > 1) || (size == 1 && lpl.loop_point(0).has_time());
 }
 
 void Loops::cut() {
-  LoopPointList lpl = data()->get();
-  bool firstWasSelected = lpl.loop_point(0).selected();
-  if (lpl.loop_point_size())
-    lpl.mutable_loop_point(0)->set_selected(false);
-  LoopPointList loops = getSelected(lpl, false);
-  DLOG(INFO) << loops.ShortDebugString();
+  bool firstWasSelected = loops_.loop_point(0).selected();
+  if (loops_.loop_point_size())
+    loops_.mutable_loop_point(0)->set_selected(false);
+  LoopPointList loops = getSelected(loops_, false);
   if (loops.loop_point_size())
     loops.mutable_loop_point(0)->set_selected(firstWasSelected);
 
-  data()->setValue(loops);
+  loops_ = loops;
+  data()->setValue(loops_);
 }
 
 bool Loops::paste(const string& s) {
   LoopPointList loops;
   if (yaml::read(s, &loops)) {
-    data()->setValue(rec::audio::addLoopPoints(data()->get(), loops));
+    loops_ = rec::audio::addLoopPoints(loops_, loops);
+    data()->setValue(loops_);
     return true;
   }
   return false;
