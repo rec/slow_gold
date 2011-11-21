@@ -21,7 +21,6 @@ class SetterResizer : public StretchableLayoutResizerBar {
   int get() const;
   virtual void moved();
   virtual void paint(Graphics& g);
-  virtual void setActive(bool a);
 
  private:
   void set(int distance);  // delete this?

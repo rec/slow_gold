@@ -25,9 +25,6 @@ class MainPage {
 
   gui::Layout* panel() { return &mainPanel_; }
 
-  // TODO: remove this.
-  void setActive(bool a);
-
   Broadcaster<const gui::DropFiles&>* dropBroadcaster() {
     return mainPanel_.dropBroadcaster();
   }

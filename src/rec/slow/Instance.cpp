@@ -82,7 +82,6 @@ Instance::~Instance() {
 
 void Instance::startup() {
   data::editable<VirtualFile>()->onDataChange();
-  components_->setActive(true);  // TODO: remove
   UpdateRequester::requestAllUpdates();
   startUndo();
   addUndoListener(menus_.get());

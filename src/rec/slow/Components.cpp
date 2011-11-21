@@ -34,12 +34,5 @@ Components::Components(Instance* instance)
 
 Components::~Components() {}
 
-void Components::setActive(bool a) {
-  // TODO: remove!
-  mainPage_->setActive(a);
-  // mainPage_.resized();
-  // setter->applyLater(NULL);
-}
-
 }  // namespace slow
 }  // namespace rec
