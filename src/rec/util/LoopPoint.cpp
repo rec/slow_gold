@@ -43,9 +43,10 @@ bool isCloseTo(const LoopPointList& loops, RealTime t) {
 
 LoopPointList getSelected(const LoopPointList& loops, bool selected) {
   LoopPointList result;
+  result.set_length(loops.length());
 
   for (int i = 0, size = loops.loop_point_size(); i < size; ++i) {
-    if (loops.loop_point(i).selected() == selected || i == size - 1)
+    if (loops.loop_point(i).selected() == selected)
       result.add_loop_point()->CopyFrom(loops.loop_point(i));
   }
   return result;

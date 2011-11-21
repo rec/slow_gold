@@ -123,9 +123,15 @@ bool Loops::canCut() const {
 
 void Loops::cut() {
   LoopPointList lpl = data()->get();
+  bool firstWasSelected = lpl.loop_point(0).selected();
   if (lpl.loop_point_size())
     lpl.mutable_loop_point(0)->set_selected(false);
-  data()->setValue(getSelected(lpl, false));
+  LoopPointList loops = getSelected(lpl, false);
+  DLOG(INFO) << loops.ShortDebugString();
+  if (loops.loop_point_size())
+    loops.mutable_loop_point(0)->set_selected(firstWasSelected);
+
+  data()->setValue(loops);
 }
 
 bool Loops::paste(const string& s) {
