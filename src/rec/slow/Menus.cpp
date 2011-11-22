@@ -14,8 +14,6 @@ namespace slow {
 
 static const int SLOT_COUNT = 10;
 
-// TODO: only place "10" items is hard-coded into the code - remove!
-
 Menus::Menus(Instance* i) : HasInstance(i) {}
 
 const StringArray Menus::getMenuBarNames() {
@@ -33,13 +31,14 @@ void Menus::addCommandItem(PopupMenu* menu, CommandID command, bool enable,
     info->setActive(enable);
     menu->addCommandItem(target()->targetManager()->commandManager(), command, name);
   } else {
-    LOG(ERROR) << "Unable to add menu item for "
-               << slow::Position::commandIDName(command);
+    LOG(ERROR) << "Can't add item " << Position::commandIDName(command);
   }
 }
 
-static void addBank(Menus* menus, PopupMenu* menu,
-                    Command::Type command, const String& name) {
+namespace {
+
+void addBank(Menus* menus, PopupMenu* menu, Command::Type command,
+             const String& name) {
   PopupMenu sub;
   for (int i = Position::FIRST; i < SLOT_COUNT; ++i) {
     if (i == 0)
@@ -51,34 +50,40 @@ static void addBank(Menus* menus, PopupMenu* menu,
   menu->addSubMenu(name, sub);
 }
 
-const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
-  using command::Command;
-  PopupMenu m;
-  if (menuName == "File") {
-    addCommandItem(&m, Command::OPEN);
-    addCommandItem(&m, Command::CLOSE_FILE);
-    addCommandItem(&m, Command::EJECT_CDS);
+void addFileMenu(Menus* m, PopupMenu* popup) {
+  m->addCommandItem(popup, Command::OPEN);
+  m->addCommandItem(popup, Command::CLOSE_FILE);
+  m->addCommandItem(popup, Command::EJECT_CDS);
 
-    m.addSeparator();
+  popup->addSeparator();
 
-    // addCommandItem(&m, Command::CLEAR_NAVIGATOR);
-    addCommandItem(&m, Command::KEYBOARD_MAPPINGS);
-    addCommandItem(&m, Command::MIDI_MAPPINGS);
+  // m->addCommandItem(popup, Command::CLEAR_NAVIGATOR);
+  m->addCommandItem(popup, Command::KEYBOARD_MAPPINGS);
+  m->addCommandItem(popup, Command::MIDI_MAPPINGS);
 
-#ifndef RECENT_FILES_ENABLED
-    std::vector<string> recent = rec::gui::getRecentFileNames();
-    PopupMenu submenu;
-    for (int i = 0; i < recent.size(); ++i) {
-      CommandID id = Position::toCommandID(i, Command::RECENT_FILES);
-      addCommandItem(&submenu, id, true, str(recent[i]));
-    }
+  std::vector<string> recent = rec::gui::getRecentFileNames();
+  PopupMenu submenu;
+  for (int i = 0; i < recent.size(); ++i) {
+    CommandID id = Position::toCommandID(i, Command::RECENT_FILES);
+    m->addCommandItem(&submenu, id, true, str(recent[i]));
+  }
 
-    m.addSubMenu("Open recent", submenu);
-#endif
+  popup->addSubMenu("Open recent", submenu);
 
 #if !JUCE_MAC
-    addCommandItem(&m, Command::QUIT);
+    m->addCommandItem(&m, Command::QUIT);
 #endif
+}
+
+}  // namespace
+
+
+const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
+  using command::Command;
+
+  PopupMenu m;
+  if (menuName == "File") {
+    addFileMenu(this, &m);
 
   } else if (menuName == "Edit") {
     addCommandItem(&m, Command::UNDO, canUndo());
