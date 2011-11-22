@@ -23,9 +23,19 @@ const StringArray Menus::getMenuBarNames() {
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void Menus::addCommand(PopupMenu* menu, CommandID command, bool enable,
-                       const String& name) {
-  target()->targetManager()->addCommandItem(menu, command, enable, name);
+void Menus::addCommandItem(PopupMenu* menu, CommandID command, bool enable,
+                           const String& name) {
+  if (ApplicationCommandInfo* info = target()->targetManager()->getInfo(command)) {
+    if (name.length())
+      info->shortName = name;
+    DCHECK(info->shortName.length()) << "No name for command "
+                                     << slow::Position::commandIDName(command);
+    info->setActive(enable);
+    menu->addCommandItem(target()->targetManager()->commandManager(), command, name);
+  } else {
+    LOG(ERROR) << "Unable to add menu item for "
+               << slow::Position::commandIDName(command);
+  }
 }
 
 static void addBank(Menus* menus, PopupMenu* menu,
@@ -35,7 +45,7 @@ static void addBank(Menus* menus, PopupMenu* menu,
     if (i == 0)
       sub.addSeparator();
 
-    menus->addCommand(&sub, Position::toCommandID(i, command));
+    menus->addCommandItem(&sub, Position::toCommandID(i, command));
   }
 
   menu->addSubMenu(name, sub);
@@ -45,57 +55,57 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
   using command::Command;
   PopupMenu m;
   if (menuName == "File") {
-    addCommand(&m, Command::OPEN);
-    addCommand(&m, Command::CLOSE_FILE);
-    addCommand(&m, Command::EJECT_CDS);
+    addCommandItem(&m, Command::OPEN);
+    addCommandItem(&m, Command::CLOSE_FILE);
+    addCommandItem(&m, Command::EJECT_CDS);
 
     m.addSeparator();
 
-    // addCommand(&m, Command::CLEAR_NAVIGATOR);
-    addCommand(&m, Command::KEYBOARD_MAPPINGS);
-    addCommand(&m, Command::MIDI_MAPPINGS);
+    // addCommandItem(&m, Command::CLEAR_NAVIGATOR);
+    addCommandItem(&m, Command::KEYBOARD_MAPPINGS);
+    addCommandItem(&m, Command::MIDI_MAPPINGS);
 
 #ifndef RECENT_FILES_ENABLED
     std::vector<string> recent = rec::gui::getRecentFileNames();
     PopupMenu submenu;
     for (int i = 0; i < recent.size(); ++i) {
       CommandID id = Position::toCommandID(i, Command::RECENT_FILES);
-      addCommand(&submenu, id, true, str(recent[i]));
+      addCommandItem(&submenu, id, true, str(recent[i]));
     }
 
     m.addSubMenu("Open recent", submenu);
 #endif
 
 #if !JUCE_MAC
-    addCommand(&m, Command::QUIT);
+    addCommandItem(&m, Command::QUIT);
 #endif
 
   } else if (menuName == "Edit") {
-    addCommand(&m, Command::UNDO, canUndo());
-    addCommand(&m, Command::REDO, canRedo());
+    addCommandItem(&m, Command::UNDO, canUndo());
+    addCommandItem(&m, Command::REDO, canRedo());
 
     m.addSeparator();
 
-    addCommand(&m, Command::CUT, canCut());
-    addCommand(&m, Command::COPY, canCopy());
-    addCommand(&m, Command::PASTE, canPaste());
+    addCommandItem(&m, Command::CUT, canCut());
+    addCommandItem(&m, Command::COPY, canCopy());
+    addCommandItem(&m, Command::PASTE, canPaste());
 
   } else if (menuName == "Audio") {
-    addCommand(&m, Command::MUTE_VOLUME_TOGGLE);
-    addCommand(&m, Command::DIM_VOLUME_TOGGLE);
-    addCommand(&m, Command::NUDGE_VOLUME_UP);
-    addCommand(&m, Command::NUDGE_VOLUME_DOWN);
-    addCommand(&m, Command::RESET_GAIN_TO_UNITY);
+    addCommandItem(&m, Command::MUTE_VOLUME_TOGGLE);
+    addCommandItem(&m, Command::DIM_VOLUME_TOGGLE);
+    addCommandItem(&m, Command::NUDGE_VOLUME_UP);
+    addCommandItem(&m, Command::NUDGE_VOLUME_DOWN);
+    addCommandItem(&m, Command::RESET_GAIN_TO_UNITY);
 
     m.addSeparator();
 
-    addCommand(&m, Command::AUDIO_PREFERENCES);
+    addCommandItem(&m, Command::AUDIO_PREFERENCES);
 
   } else if (menuName == "Select") {
-    addCommand(&m, Command::SELECT_ALL);
-    addCommand(&m, Command::DESELECT_ALL);
-    addCommand(&m, Command::INVERT_LOOP_SELECTION);
-    addCommand(&m, Command::TOGGLE_WHOLE_SONG_LOOP);
+    addCommandItem(&m, Command::SELECT_ALL);
+    addCommandItem(&m, Command::DESELECT_ALL);
+    addCommandItem(&m, Command::INVERT_LOOP_SELECTION);
+    addCommandItem(&m, Command::TOGGLE_WHOLE_SONG_LOOP);
 
     m.addSeparator();
 
@@ -105,9 +115,9 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     addBank(this, &m, Command::UNSELECT, "Unselect...");
 
   } else if (menuName == "Transport") {
-    addCommand(&m, Command::TOGGLE_START_STOP);
-    addCommand(&m, Command::ADD_LOOP_POINT);
-    addCommand(&m, Command::CLEAR_LOOPS);
+    addCommandItem(&m, Command::TOGGLE_START_STOP);
+    addCommandItem(&m, Command::ADD_LOOP_POINT);
+    addCommandItem(&m, Command::CLEAR_LOOPS);
 
     m.addSeparator();
 
