@@ -116,6 +116,19 @@ void TargetManager::addCommandItemSetter(CommandID id, CommandItemSetter* s) {
   setterMap_[id] = s;
 }
 
+void TargetManager::addCommandItem(PopupMenu* menu, CommandID command, bool enable,
+                                   const String& name) {
+  if (ApplicationCommandInfo* info = getInfo(command)) {
+    if (name.length())
+      info->shortName = name;
+    DCHECK(info->shortName.length()) << "No name for command "
+                                     << slow::Position::commandIDName(command);
+    info->setActive(enable);
+    menu->addCommandItem(commandManager(), command, name);
+  } else {
+    LOG(ERROR) << "Can't add item " << Position::commandIDName(command);
+  }
+}
 
 }  // namespace command
 }  // namespace rec

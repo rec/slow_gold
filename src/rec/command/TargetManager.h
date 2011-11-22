@@ -54,6 +54,8 @@ class TargetManager : public ApplicationCommandTarget,
   ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
   void addCommandItemSetter(CommandID, CommandItemSetter*);
+  void addCommandItem(PopupMenu*, CommandID, bool enable = true,
+                      const String& name = String::empty);
 
  private:
   typedef std::map<CommandID, CommandCallback*> CommandCallbackMap;

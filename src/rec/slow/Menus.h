@@ -18,8 +18,6 @@ class Menus : public MenuBarModel, public HasInstance, public Listener<None> {
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
   virtual void operator()(None) { menuItemsChanged(); }
 
-  void addCommandItem(PopupMenu*, CommandID, bool enable = true,
-                      const String& name = String::empty);
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Menus);
 };
