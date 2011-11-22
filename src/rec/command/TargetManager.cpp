@@ -106,9 +106,14 @@ ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
   return i == map_.end() ? NULL : &i->second->info_;
 }
 
-void TargetManager::addCommandItemSetter(CommandID id,
-                                         CommandItemSetter* setter) {
+void TargetManager::addCommandItemSetter(CommandID id, CommandItemSetter* s) {
+  SetterMap::const_iterator i = setterMap_.find(id);
+  if (i != setterMap_.end()) {
+    LOG(ERROR) << "Added command twice: " << id;
+    delete i->second;
+  }
 
+  setterMap_[id] = s;
 }
 
 
