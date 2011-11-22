@@ -40,6 +40,7 @@ class GlobalDataListener : public Listener<const Proto&>,
   virtual void setData(data::TypedEditable<Proto>* d);
   virtual void onDataChange(const Proto&) {}
   const data::Address& address() const { return address_; }
+  CriticalSection* lock() const { return &Listener<Proto>::lock_; }
 
  private:
   void doOnDataChange(const Proto& p) { onDataChange(p); }
