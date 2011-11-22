@@ -32,6 +32,7 @@ TargetManager::TargetManager(Component* c)
 
 TargetManager:: ~TargetManager() {
   stl::deleteMapPointers(&map_);
+  stl::deleteMapPointers(&setterMap_);
 }
 
 void TargetManager::registerAllCommandsForTarget() {
@@ -104,6 +105,12 @@ ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
   CommandCallbackMap::iterator i = map_.find(command);
   return i == map_.end() ? NULL : &i->second->info_;
 }
+
+void TargetManager::addCommandItemSetter(CommandID id,
+                                         CommandItemSetter* setter) {
+
+}
+
 
 }  // namespace command
 }  // namespace rec

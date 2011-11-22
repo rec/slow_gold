@@ -4,6 +4,7 @@
 #include <map>
 
 #include "rec/command/Command.h"
+#include "rec/command/CommandItemSetter.h"
 #include "rec/util/STL.h"
 #include "rec/util/Listener.h"
 #include "rec/util/thread/Callback.h"
@@ -36,7 +37,7 @@ class TargetManager : public ApplicationCommandTarget,
       LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
   }
 
-  virtual void operator()(bool disabled) { setDisabled(disabled); }
+  virtual void operator()(bool d) { Lock l(lock_); disabled_ = d; }
 
   // ApplicationCommandTarget virtual methods.
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
@@ -46,19 +47,20 @@ class TargetManager : public ApplicationCommandTarget,
   virtual bool perform(const InvocationInfo&); // { return false; }
 
   InvocationInfo lastInvocation() const;
-
   void addCallback(CommandID id, Callback* cb,
                    const String& name,
                    const String& category, const String& desc);
 
   ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
-  void setDisabled(bool d) { Lock l(lock_); disabled_ = d; }
+  void addCommandItemSetter(CommandID, CommandItemSetter*);
 
  private:
   typedef std::map<CommandID, CommandCallback*> CommandCallbackMap;
+  typedef std::map<CommandID, CommandItemSetter*> SetterMap;
 
   CommandCallbackMap map_;
+  SetterMap setterMap_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;
