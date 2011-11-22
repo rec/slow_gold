@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="9OWpTJcWi" name="tests">
+  <MAINGROUP id="PIIuPJOLD" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -265,6 +265,8 @@
               id="WqJzAg6ez" name="CommandDatabase.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDatabase.h" id="jpHh5Mj9d"
               name="CommandDatabase.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
+              id="mlyilZbte" name="CommandItemSetter.h" resource="0"/>
         <GROUP id="hPUNTkCGT" name="data">
           <FILE compile="1" file="../../src/rec/command/data/CommandData.cpp"
                 id="QtJ64u1Jr" name="CommandData.cpp" resource="0"/>
@@ -812,6 +814,10 @@
                 id="RuAObnEzx" name="SelectionCallbacks.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/SelectionCallbacks.h"
                 id="ww6KT0eNQ" name="SelectionCallbacks.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/callbacks/SetterCallbacks.cpp"
+                id="zTORzEZq8" name="SetterCallbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/SetterCallbacks.h"
+                id="8hs8gUNVQ" name="SetterCallbacks.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/slow/Components.cpp" id="Y9b907W6v"
               name="Components.cpp" resource="0"/>
@@ -1331,7 +1337,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Tgp1VHjKG" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="r5IWpns4C" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

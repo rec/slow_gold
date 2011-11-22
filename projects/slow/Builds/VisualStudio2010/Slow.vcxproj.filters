@@ -598,6 +598,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp">
       <Filter>Slow\rec\slow\callbacks</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SetterCallbacks.cpp">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
@@ -1068,6 +1071,9 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\data\CommandData.h">
       <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
@@ -1519,6 +1525,9 @@
       <Filter>Slow\rec\slow\callbacks</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h">
+      <Filter>Slow\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SetterCallbacks.h">
       <Filter>Slow\rec\slow\callbacks</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h">

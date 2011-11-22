@@ -3,6 +3,7 @@
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/SelectionCallbacks.h"
+#include "rec/slow/callbacks/SetterCallbacks.h"
 
 namespace rec {
 namespace slow {
@@ -11,10 +12,12 @@ using command::CallbackTable;
 
 CallbackTable* createCallbackTable(Instance* i, int repeat) {
   ptr<CallbackTable> t(new CallbackTable);
+
   addGlobalCallbacks(t.get());
   addInstanceCallbacks(t.get(), i);
   addSelectionCallbacks(t.get(), i);
   addRepeatedCallbacks(t.get(), i, repeat);
+  addSetterCallbacks(t.get(), i);
 
   return t.transfer();
 }
