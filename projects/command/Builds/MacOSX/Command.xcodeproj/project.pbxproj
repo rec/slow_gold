@@ -55,6 +55,7 @@
 		A7531A0D2D342F7C656ACE1E = { isa = PBXBuildFile; fileRef = 567D215C489B60F454D735CF; };
 		EC63385FE827AE096FFA4C0A = { isa = PBXBuildFile; fileRef = A68A7DA4A509C3C441DE9083; };
 		C4B461B37AE379C00FB144F8 = { isa = PBXBuildFile; fileRef = C559C955E5EA5BF04CDA49F4; };
+		F072C1519AE9E32C9805AF7A = { isa = PBXBuildFile; fileRef = B11B48DE515BE72C89F19DD5; };
 		CF2958FC3FDF0FF93A063F32 = { isa = PBXBuildFile; fileRef = C93A351922A898683955F12A; };
 		DE21954E89A302C554C403B3 = { isa = PBXBuildFile; fileRef = E2B550FA014DE206D4635080; };
 		3C23BA3C14C50003309E80E7 = { isa = PBXBuildFile; fileRef = 3537E0387F6245C8C67C18A5; };
@@ -365,6 +366,8 @@
 		210FF884A40023490D0C352A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeyPresses.def.h; path = ../../../../src/rec/command/data/KeyPresses.def.h; sourceTree = "SOURCE_ROOT"; };
 		C559C955E5EA5BF04CDA49F4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Repeated.def.cpp; path = ../../../../src/rec/command/data/Repeated.def.cpp; sourceTree = "SOURCE_ROOT"; };
 		E94D2AE4C40A1390FDD5C304 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Repeated.def.h; path = ../../../../src/rec/command/data/Repeated.def.h; sourceTree = "SOURCE_ROOT"; };
+		B11B48DE515BE72C89F19DD5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardBindings.cpp; path = ../../../../src/rec/command/KeyboardBindings.cpp; sourceTree = "SOURCE_ROOT"; };
+		605B0D91706BE3E8E14DDC27 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeyboardBindings.h; path = ../../../../src/rec/command/KeyboardBindings.h; sourceTree = "SOURCE_ROOT"; };
 		FECC6745F6D17A13B6C6186E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandEntryWindow.h; path = ../../../../src/rec/command/map/CommandEntryWindow.h; sourceTree = "SOURCE_ROOT"; };
 		C93A351922A898683955F12A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandMap.cpp; path = ../../../../src/rec/command/map/CommandMap.cpp; sourceTree = "SOURCE_ROOT"; };
 		1924911B5434744BDC666349 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMap.h; path = ../../../../src/rec/command/map/CommandMap.h; sourceTree = "SOURCE_ROOT"; };
@@ -974,6 +977,8 @@
 				B22DA96F78B8817BC3B82459,
 				FB7199D861F4E45256B040C7,
 				86DEBA63CCCE2F368B9B0D2F,
+				B11B48DE515BE72C89F19DD5,
+				605B0D91706BE3E8E14DDC27,
 				63FE5B70CB026EE1FC8D86ED,
 				151215C620EDDA1F897E346B,
 				08EC26B703176ED915C61158 ); name = command; sourceTree = "<group>"; };
@@ -1503,7 +1508,7 @@
 				0E5561BA8F7A19892CFB3AED ); name = rec; sourceTree = "<group>"; };
 		F5495BB1B8B716831989C22D = { isa = PBXGroup; children = (
 				C168A6E2670AB63095F469AB ); name = proto; sourceTree = "<group>"; };
-		0E2B614F1173B9FEBE4C8CC9 = { isa = PBXGroup; children = (
+		C769CA5B6C071055226F94CF = { isa = PBXGroup; children = (
 				75467D3DB26B8C553F2D3FE5,
 				F5495BB1B8B716831989C22D,
 				107F029BEE50E0870F8E5A13 ); name = Command; sourceTree = "<group>"; };
@@ -1530,7 +1535,7 @@
 		DBBED81D920B27CB9107C128 = { isa = PBXGroup; children = (
 				D427FD0910FEA6098B36B56B ); name = Products; sourceTree = "<group>"; };
 		B2772D76DA45DD25AC30B180 = { isa = PBXGroup; children = (
-				0E2B614F1173B9FEBE4C8CC9,
+				C769CA5B6C071055226F94CF,
 				E89CD5E8F8F5E56D76A0DE49,
 				AC0A55CC5C6219AB36B5C26B,
 				C0B90B9133DBCC84A6028DCC,
@@ -1654,6 +1659,7 @@
 				A7531A0D2D342F7C656ACE1E,
 				EC63385FE827AE096FFA4C0A,
 				C4B461B37AE379C00FB144F8,
+				F072C1519AE9E32C9805AF7A,
 				CF2958FC3FDF0FF93A063F32,
 				DE21954E89A302C554C403B3,
 				3C23BA3C14C50003309E80E7,

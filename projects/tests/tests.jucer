@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="8e8cToAQY" name="tests">
+  <MAINGROUP id="9OWpTJcWi" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -287,6 +287,10 @@
           <FILE compile="0" file="../../src/rec/command/data/Repeated.def.h"
                 id="lKtqc5A7M" name="Repeated.def.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
+              id="kEiWrJA2b" name="KeyboardBindings.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="FzLNb5zyY"
+              name="KeyboardBindings.h" resource="0"/>
         <GROUP id="gBtuIO6J5" name="map">
           <FILE compile="0" file="../../src/rec/command/map/CommandEntryWindow.h"
                 id="qFGz0R0I6" name="CommandEntryWindow.h" resource="0"/>
@@ -1327,7 +1331,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="MzgYTvudL" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Tgp1VHjKG" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

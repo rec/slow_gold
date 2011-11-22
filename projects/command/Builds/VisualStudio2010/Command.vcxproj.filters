@@ -304,6 +304,9 @@
     <ClCompile Include="..\..\..\..\src\rec\command\data\Repeated.def.cpp">
       <Filter>Command\rec\command\data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
+      <Filter>Command\rec\command</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp">
       <Filter>Command\rec\command\map</Filter>
     </ClCompile>
@@ -1079,6 +1082,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\data\Repeated.def.h">
       <Filter>Command\rec\command\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
+      <Filter>Command\rec\command</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.h">
       <Filter>Command\rec\command\map</Filter>

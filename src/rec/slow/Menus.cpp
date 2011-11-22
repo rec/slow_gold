@@ -75,6 +75,54 @@ void addFileMenu(Menus* m, PopupMenu* popup) {
 #endif
 }
 
+void addEditMenu(Menus* m, PopupMenu* popup) {
+  m->addCommandItem(popup, Command::UNDO, canUndo());
+  m->addCommandItem(popup, Command::REDO, canRedo());
+
+  popup->addSeparator();
+
+  m->addCommandItem(popup, Command::CUT, canCut());
+  m->addCommandItem(popup, Command::COPY, canCopy());
+  m->addCommandItem(popup, Command::PASTE, canPaste());
+}
+
+void addAudioMenu(Menus* m, PopupMenu* popup) {
+  m->addCommandItem(popup, Command::MUTE_VOLUME_TOGGLE);
+  m->addCommandItem(popup, Command::DIM_VOLUME_TOGGLE);
+  m->addCommandItem(popup, Command::NUDGE_VOLUME_UP);
+  m->addCommandItem(popup, Command::NUDGE_VOLUME_DOWN);
+  m->addCommandItem(popup, Command::RESET_GAIN_TO_UNITY);
+
+  popup->addSeparator();
+
+  m->addCommandItem(popup, Command::AUDIO_PREFERENCES);
+}
+
+void addSelectMenu(Menus* m, PopupMenu* popup) {
+  m->addCommandItem(popup, Command::SELECT_ALL);
+  m->addCommandItem(popup, Command::DESELECT_ALL);
+  m->addCommandItem(popup, Command::INVERT_LOOP_SELECTION);
+  m->addCommandItem(popup, Command::TOGGLE_WHOLE_SONG_LOOP);
+
+  popup->addSeparator();
+
+  addBank(m, popup, Command::SELECT, "Select...");
+  addBank(m, popup, Command::SELECT_ONLY, "Select Only...");
+  addBank(m, popup, Command::TOGGLE, "Toggle...");
+  addBank(m, popup, Command::UNSELECT, "Unselect...");
+}
+
+void addTransportMenu(Menus* m, PopupMenu* popup) {
+  m->addCommandItem(popup, Command::TOGGLE_START_STOP);
+  m->addCommandItem(popup, Command::ADD_LOOP_POINT);
+  m->addCommandItem(popup, Command::CLEAR_LOOPS);
+
+  popup->addSeparator();
+
+  addBank(m, popup, Command::JUMP, "Jump To...");
+  addBank(m, popup, Command::JUMP_SELECTED, "Jump To Selected...");
+}
+
 }  // namespace
 
 
@@ -82,53 +130,20 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
   using command::Command;
 
   PopupMenu m;
-  if (menuName == "File") {
+  if (menuName == "File")
     addFileMenu(this, &m);
 
-  } else if (menuName == "Edit") {
-    addCommandItem(&m, Command::UNDO, canUndo());
-    addCommandItem(&m, Command::REDO, canRedo());
+  else if (menuName == "Edit")
+    addEditMenu(this, &m);
 
-    m.addSeparator();
+  else if (menuName == "Audio")
+    addAudioMenu(this, &m);
 
-    addCommandItem(&m, Command::CUT, canCut());
-    addCommandItem(&m, Command::COPY, canCopy());
-    addCommandItem(&m, Command::PASTE, canPaste());
+  else if (menuName == "Select")
+    addSelectMenu(this, &m);
 
-  } else if (menuName == "Audio") {
-    addCommandItem(&m, Command::MUTE_VOLUME_TOGGLE);
-    addCommandItem(&m, Command::DIM_VOLUME_TOGGLE);
-    addCommandItem(&m, Command::NUDGE_VOLUME_UP);
-    addCommandItem(&m, Command::NUDGE_VOLUME_DOWN);
-    addCommandItem(&m, Command::RESET_GAIN_TO_UNITY);
-
-    m.addSeparator();
-
-    addCommandItem(&m, Command::AUDIO_PREFERENCES);
-
-  } else if (menuName == "Select") {
-    addCommandItem(&m, Command::SELECT_ALL);
-    addCommandItem(&m, Command::DESELECT_ALL);
-    addCommandItem(&m, Command::INVERT_LOOP_SELECTION);
-    addCommandItem(&m, Command::TOGGLE_WHOLE_SONG_LOOP);
-
-    m.addSeparator();
-
-    addBank(this, &m, Command::SELECT, "Select...");
-    addBank(this, &m, Command::SELECT_ONLY, "Select Only...");
-    addBank(this, &m, Command::TOGGLE, "Toggle...");
-    addBank(this, &m, Command::UNSELECT, "Unselect...");
-
-  } else if (menuName == "Transport") {
-    addCommandItem(&m, Command::TOGGLE_START_STOP);
-    addCommandItem(&m, Command::ADD_LOOP_POINT);
-    addCommandItem(&m, Command::CLEAR_LOOPS);
-
-    m.addSeparator();
-
-    addBank(this, &m, Command::JUMP, "Jump To...");
-    addBank(this, &m, Command::JUMP_SELECTED, "Jump To Selected...");
-  }
+  else if (menuName == "Transport")
+    addTransportMenu(this, &m);
 
   return m;
 }

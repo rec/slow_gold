@@ -40,7 +40,6 @@ class TargetManager : public ApplicationCommandTarget,
 
   // ApplicationCommandTarget virtual methods.
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
-  //  return findFirstTargetParentComponent();  // TODO
 
   virtual void getAllCommands(juce::Array<CommandID>&);
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
@@ -51,10 +50,6 @@ class TargetManager : public ApplicationCommandTarget,
   void addCallback(CommandID id, Callback* cb,
                    const String& name,
                    const String& category, const String& desc);
-
-  void addCommandItem(PopupMenu* menu, CommandID command,
-                      bool isActive,
-                      const String& name = String::empty);
 
   ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
