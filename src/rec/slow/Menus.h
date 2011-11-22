@@ -9,17 +9,15 @@ namespace slow {
 
 class Instance;
 
-class Menus : public MenuBarModel,
-              public HasInstance,
-              public Listener<None> {
+class Menus : public MenuBarModel, public HasInstance, public Listener<None> {
  public:
   Menus(Instance* i);
 
   virtual const StringArray getMenuBarNames();
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& name);
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
-  void add(PopupMenu*, CommandID, bool enable = true,
-           const String& name = String::empty);
+  void addCommand(PopupMenu*, CommandID, bool enable = true,
+                  const String& name = String::empty);
   virtual void operator()(None) { menuItemsChanged(); }
 
  private:
