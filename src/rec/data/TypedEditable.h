@@ -116,9 +116,15 @@ bool TypedEditable<Proto>::update() {
     return false;
 
   Proto p = get();
-  for (int i = 0; i < toUpdate.size(); ++i)
-    (*toUpdate[i])(p);
-
+  for (int i = 0; i < toUpdate.size(); ++i) {
+    ProtoListener* listener = toUpdate[i];
+    {
+      Lock l(lock_);
+      if (this->listeners_.find(listener) == this->listeners_.end())
+        continue;
+    }
+    (*listener)(p);
+  }
   return true;
 }
 

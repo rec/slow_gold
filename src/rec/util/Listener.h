@@ -17,7 +17,7 @@ class Listener {
   typedef std::set<Broadcaster<Type>*> BroadcasterSet;
   typedef typename BroadcasterSet::iterator iterator;
 
-  Listener() {}
+  Listener() : state_(LISTENING) {}
   virtual ~Listener();
 
   virtual void operator()(Type x) = 0;
@@ -26,13 +26,19 @@ class Listener {
   CriticalSection lock_;
 
  private:
+  enum ListenerState { LISTENING, UPDATING, DELETING };
+  CriticalSection stateLock_;
+
+  bool setState(ListenerState);
+
+  ListenerState state_;
+
   BroadcasterSet broadcasters_;
 
-  friend class Broadcaster<Type>;
-
   DISALLOW_COPY_AND_ASSIGN(Listener);
-
   JUCE_LEAK_DETECTOR(Listener<Type>);
+
+  friend class Broadcaster<Type>;
 };
 
 //
@@ -44,7 +50,7 @@ class Broadcaster {
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;
 
-  Broadcaster() {  }
+  Broadcaster() {}
   virtual ~Broadcaster();
 
   virtual void broadcast(Type x);
@@ -58,34 +64,55 @@ class Broadcaster {
   CriticalSection lock_;
   ListenerSet listeners_;
 
+ private:
   DISALLOW_COPY_AND_ASSIGN(Broadcaster);
   JUCE_LEAK_DETECTOR(Broadcaster<Type>);
 };
 
 template <typename Type>
-Listener<Type>::~Listener() {
-  for (bool finished = false; !finished; ) {
-    BroadcasterSet toDelete;
-    {
-      ScopedLock l(lock_);
-      if (broadcasters_.empty()) {
-        finished = true;
-        continue;
-      }
-
-      broadcasters_.swap(toDelete);
+bool Listener<Type>::setState(ListenerState state) {
+  while (true) {
+    Lock l(stateLock_);
+    if (state_ == DELETING) {
+      return false;
+    } else if (state == LISTENING) {
+      state_ = state;
+      return true;
+    } else if (state_ == LISTENING) {
+      state_ = state;
+      return true;
     }
-
-    for (iterator i = toDelete.begin(); i != toDelete.end(); ++i)
-      (*i)->removeListener(this);
+    Thread::sleep(1);
   }
+};
+
+template <typename Type>
+Listener<Type>::~Listener() {
+  setState(DELETING);
+
+  BroadcasterSet toDelete;
+  {
+    Lock l(lock_);
+    if (broadcasters_.empty())
+      return;
+
+    broadcasters_.swap(toDelete);
+  }
+
+  for (iterator i = toDelete.begin(); i != toDelete.end(); ++i)
+    (*i)->removeListener(this);
 }
 
 template <typename Type>
 void Broadcaster<Type>::broadcast(Type x) {
   ScopedLock l(lock_);
-  for (iterator i = listeners_.begin(); i != listeners_.end(); ++i)
-    (**i)(x);
+  for (iterator i = listeners_.begin(); i != listeners_.end(); ++i) {
+    Listener<Type>* listener = *i;
+    if (listener->setState(Listener<Type>::UPDATING)) {
+      (*listener)(x);
+      listener->setState(Listener<Type>::LISTENING);
+    }
+  }
 }
 
 template <typename Type>

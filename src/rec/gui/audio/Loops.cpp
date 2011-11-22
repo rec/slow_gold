@@ -154,9 +154,8 @@ class LoopsSetterText : public SetterText<LoopPointList> {
  public:
   explicit LoopsSetterText(int row, const TableColumn& col)
       : SetterText<LoopPointList>("",
-                                  "loop_point" + Address(row) + col.address(), 
+                                  "loop_point" + Address(row) + col.address(),
                                   "", "", false) {
-    UpdateRequester::requestAllUpdates();
   }
 
  private:
@@ -172,8 +171,10 @@ Component* Loops::refreshComponentForCell(int row, int column,
                  << ", " << columns().column_size();
     } else {
       const TableColumn& col = columns().column(column - 1);
-      if (col.type() == TableColumn::STRING)
+      if (col.type() == TableColumn::STRING) {
         existing = new LoopsSetterText(row, col);
+        UpdateRequester::requestAllUpdates();
+      }
     }
   }
   return existing;
