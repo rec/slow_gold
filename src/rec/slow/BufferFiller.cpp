@@ -35,6 +35,7 @@ thread::Result BufferFiller::fillOnce() {
 
   bool empty = false;
   Samples<44100> jump = currentTime()->jumpTime();
+
   if (jump == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(currentTime()->timeSelection(), buf->filled());

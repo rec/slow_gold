@@ -53,6 +53,7 @@ void CurrentTime::jumpToTime(Samples<44100> pos) {
     FillableFrameBuffer<short, 2>* buf =
       bufferFiller()->thumbnailBuffer()->buffer();
     jumpTime_ = pos;
+    DLOG(INFO) << jumpTime_;
     if (buf && !buf->hasFilled(block::Block(pos, pos + PRELOAD))) {
       buf->setNextFillPosition(pos);
       if (player()->state())
