@@ -20,13 +20,23 @@ class GlobalDataListener : public Listener<const Proto&>,
  public:
   static const bool FILTER = false;
 
-  GlobalDataListener(const data::Address& address = data::Address::default_instance())
-      : filterDupes_(false), data_(data::emptyEditable<Proto>()), address_(address) {
+  GlobalDataListener(const data::Address& address =
+                     data::Address::default_instance(),
+                     bool isGlobal = false)
+      : filterDupes_(false),
+        data_(data::emptyEditable<Proto>()),
+        address_(address),
+        isGlobal_(isGlobal) {
   }
   virtual ~GlobalDataListener() {}
 
   virtual void requestUpdates() {
-    setData(data::editable<Proto>());
+    if (isGlobal_)
+      setData(data::editable<Proto>());
+#if 0
+    else
+      data::editable<VirtualFile>()->addListener(this);
+#endif
   }
 
   virtual void operator()(const Proto& p) { updateValue(p, true); }
@@ -50,6 +60,7 @@ class GlobalDataListener : public Listener<const Proto&>,
   data::TypedEditable<Proto>* data_;
   Proto proto_;
   const data::Address address_;
+  const bool isGlobal_;
 
   DISALLOW_COPY_AND_ASSIGN(GlobalDataListener);
 };
