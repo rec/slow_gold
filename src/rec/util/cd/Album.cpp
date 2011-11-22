@@ -103,7 +103,7 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
 #define DEFAULT_HOST        "localhost"
 #define DEFAULT_TIMEOUT     10
 
-#ifdef USE_CDDB
+#ifdef USE_FREEDB
 
 #define DEFAULT_SERVER      "ecddb.gracenote.com"
 #define DEFAULT_PORT        8080
