@@ -53,13 +53,10 @@ class TargetManager : public ApplicationCommandTarget,
 
   ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
-  void saveKeyboardBindings();
-
   void setDisabled(bool d) { Lock l(lock_); disabled_ = d; }
 
  private:
   typedef std::map<CommandID, CommandCallback*> CommandCallbackMap;
-  void loadKeyboardBindings();
 
   CommandCallbackMap map_;
 

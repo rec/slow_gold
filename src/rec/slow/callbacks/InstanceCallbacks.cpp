@@ -1,24 +1,25 @@
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 
+#include "rec/app/GenericApplication.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/Gain.h"
+#include "rec/command/KeyboardBindings.h"
 #include "rec/command/map/KeyCommandMapEditor.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/data/Data.h"
 #include "rec/gui/Dialog.h"
-#include "rec/app/GenericApplication.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/SetupPage.h"
+#include "rec/slow/BufferFiller.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
-#include "rec/slow/callbacks/CallbackUtils.h"
-#include "rec/slow/BufferFiller.h"
+#include "rec/slow/MainPage.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
-#include "rec/slow/MainPage.h"
-#include "rec/util/Math.h"
+#include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace slow {
@@ -88,7 +89,7 @@ void keyboardMappings(Instance* i) {
   juce::DialogWindow::showModalDialog("Select keyboard mappings",
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
-  i->target_->targetManager()->saveKeyboardBindings();
+  command::saveKeyboardBindings(manager);
 }
 
 void midiMappings(Instance* i) {

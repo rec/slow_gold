@@ -36,8 +36,6 @@ XmlElement* readKeyboardCommands(const Commands& commands) {
   return element.transfer();
 }
 
-}  // namespace
-
 void writeKeyboardBindingFile(XmlElement* element) {
   CommandTable t;
   forEachXmlChildElement(*element, mapping) {
@@ -62,6 +60,21 @@ void writeKeyboardBindingFile(XmlElement* element) {
 XmlElement* readKeyboardBindingFile() {
   data::TypedEditable<Commands>* e = data::editable<Commands>(getBindingFile());
   return readKeyboardCommands(e->fileReadSuccess() ? e->get() : getCommands());
+}
+
+}  // namespace
+
+void saveKeyboardBindings(ApplicationCommandManager* commandManager) {
+  ptr<juce::XmlElement> state(commandManager->getKeyMappings()->createXml(false));
+  if (!state)
+    LOG(ERROR) << "Couldn't create keyboard binding XML";
+  else
+    writeKeyboardBindingFile(state.get());
+}
+
+void loadKeyboardBindings(ApplicationCommandManager* commandManager) {
+  ptr<juce::XmlElement> state(readKeyboardBindingFile());
+  commandManager->getKeyMappings()->restoreFromXml(*state);
 }
 
 }  // namespace command

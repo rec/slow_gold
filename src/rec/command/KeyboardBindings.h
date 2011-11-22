@@ -6,8 +6,8 @@
 namespace rec {
 namespace command {
 
-void writeKeyboardBindingFile(juce::XmlElement*);
-juce::XmlElement* readKeyboardBindingFile();
+void saveKeyboardBindings(ApplicationCommandManager*);
+void loadKeyboardBindings(ApplicationCommandManager*);
 
 }  // namespace command
 }  // namespace rec

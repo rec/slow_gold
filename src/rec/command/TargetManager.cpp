@@ -25,10 +25,8 @@ struct CommandCallback {
 };
 
 TargetManager::TargetManager(Component* c)
-    : lastInvocation_(0), disabled_(false)
-{
-  if (c)
-    c->addKeyListener(commandManager_.getKeyMappings());
+    : lastInvocation_(0), disabled_(false) {
+  c->addKeyListener(commandManager_.getKeyMappings());
   commandManager_.setFirstCommandTarget(this);
 }
 
@@ -38,7 +36,7 @@ TargetManager:: ~TargetManager() {
 
 void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(this);
-  loadKeyboardBindings();
+  loadKeyboardBindings(&commandManager_);
 }
 
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
@@ -48,6 +46,7 @@ void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
 }
 
 void TargetManager::getCommandInfo(CommandID cmd, ApplicationCommandInfo& info) {
+  Lock l(lock_);
   CommandCallbackMap::const_iterator i = map_.find(cmd);
   if (i == map_.end())
     LOG(ERROR) << "No getCommandInfo" << slow::Position::commandIDName(cmd);
@@ -58,7 +57,7 @@ void TargetManager::getCommandInfo(CommandID cmd, ApplicationCommandInfo& info) 
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   if (disabled_)
     return true;
 
@@ -72,7 +71,7 @@ bool TargetManager::perform(const InvocationInfo& invocation) {
 }
 
 InvocationInfo TargetManager::lastInvocation() const {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   return lastInvocation_;
 }
 
@@ -104,19 +103,6 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
 ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
   CommandCallbackMap::iterator i = map_.find(command);
   return i == map_.end() ? NULL : &i->second->info_;
-}
-
-void TargetManager::saveKeyboardBindings() {
-  ptr<juce::XmlElement> state(commandManager_.getKeyMappings()->createXml(false));
-  if (!state)
-    LOG(ERROR) << "Couldn't create keyboard binding XML";
-  else
-    writeKeyboardBindingFile(state.get());
-}
-
-void TargetManager::loadKeyboardBindings() {
-  ptr<juce::XmlElement> state(readKeyboardBindingFile());
-  commandManager_.getKeyMappings()->restoreFromXml(*state);
 }
 
 }  // namespace command
