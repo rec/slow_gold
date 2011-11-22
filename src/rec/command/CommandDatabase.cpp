@@ -103,14 +103,15 @@ void mergeDescription(CommandTable* map, const Command& command) {
   if (it != map->end()) {
     it->second->MergeFrom(command);
     return;
-  }
+  } 
 
   static const char* LOWER[] = {" the first", " the previous", " the current",
                                 " the next", " the last"};
   static const char* CAP[] = {" First", " Previous", " Current", " Next",
                               " Last"};
 
-  const String menu = str(command.desc().menu());
+  const String menu = command.desc().menu_size() ? 
+      str(command.desc().menu(0)) : String();
   const String full = str(command.desc().full());
 
   CommandID c = Command::BANK_SIZE * command.type();
@@ -123,7 +124,7 @@ void mergeDescription(CommandTable* map, const Command& command) {
       return;
     }
     Description* desc = it->second->mutable_desc();
-    desc->set_menu(str(String::formatted(menu, CAP[i], "")));
+    desc->add_menu(str(String::formatted(menu, CAP[i], "")));
     desc->set_full(str(String::formatted(full, LOWER[i], "")));
   }
 
@@ -135,7 +136,7 @@ void mergeDescription(CommandTable* map, const Command& command) {
     String n = " " + String(i + 1);
     const char* s = n.toUTF8();
     Description* desc = it->second->mutable_desc();
-    desc->set_menu(str(String::formatted(menu, "", s)));
+    desc->add_menu(str(String::formatted(menu, "", s)));
     desc->set_full(str(String::formatted(full, "", s)));
   }
 }

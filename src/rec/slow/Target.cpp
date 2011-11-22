@@ -35,7 +35,8 @@ void Target::addCommands() {
       if (c.type() != Command::RECENT_FILES || c.index() >= 0)
         LOG(ERROR) << "No callback for " << c.ShortDebugString();
     } else {
-      const String& menu = str(c.desc().menu());
+      const String& menu = c.desc().menu_size() ? 
+          str(c.desc().menu(0)) : String();
       const String& desc = str(c.desc().full());
       const String& category = str(c.category());
 

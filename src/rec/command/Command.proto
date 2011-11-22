@@ -1,7 +1,7 @@
 package rec.command;
 
 message Description {
-  optional string menu = 1;  // Shortest description, for menus.
+  repeated string menu = 1;  // Menu descriptions, which might cycle.
   optional string full = 2;  // Longer description, when editing.
   optional string help = 3;  // Full help text for the command.
 };

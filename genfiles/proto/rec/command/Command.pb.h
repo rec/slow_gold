@@ -164,15 +164,21 @@ class Description : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional string menu = 1;
-  inline bool has_menu() const;
+  // repeated string menu = 1;
+  inline int menu_size() const;
   inline void clear_menu();
   static const int kMenuFieldNumber = 1;
-  inline const ::std::string& menu() const;
-  inline void set_menu(const ::std::string& value);
-  inline void set_menu(const char* value);
-  inline void set_menu(const char* value, size_t size);
-  inline ::std::string* mutable_menu();
+  inline const ::std::string& menu(int index) const;
+  inline ::std::string* mutable_menu(int index);
+  inline void set_menu(int index, const ::std::string& value);
+  inline void set_menu(int index, const char* value);
+  inline void set_menu(int index, const char* value, size_t size);
+  inline ::std::string* add_menu();
+  inline void add_menu(const ::std::string& value);
+  inline void add_menu(const char* value);
+  inline void add_menu(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& menu() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_menu();
   
   // optional string full = 2;
   inline bool has_full() const;
@@ -199,8 +205,7 @@ class Description : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::std::string* menu_;
-  static const ::std::string _default_menu_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> menu_;
   ::std::string* full_;
   static const ::std::string _default_full_;
   ::std::string* help_;
@@ -733,46 +738,48 @@ class Mapping : public ::google::protobuf::Message {
 
 // Description
 
-// optional string menu = 1;
-inline bool Description::has_menu() const {
-  return _has_bit(0);
+// repeated string menu = 1;
+inline int Description::menu_size() const {
+  return menu_.size();
 }
 inline void Description::clear_menu() {
-  if (menu_ != &_default_menu_) {
-    menu_->clear();
-  }
-  _clear_bit(0);
+  menu_.Clear();
 }
-inline const ::std::string& Description::menu() const {
-  return *menu_;
+inline const ::std::string& Description::menu(int index) const {
+  return menu_.Get(index);
 }
-inline void Description::set_menu(const ::std::string& value) {
-  _set_bit(0);
-  if (menu_ == &_default_menu_) {
-    menu_ = new ::std::string;
-  }
-  menu_->assign(value);
+inline ::std::string* Description::mutable_menu(int index) {
+  return menu_.Mutable(index);
 }
-inline void Description::set_menu(const char* value) {
-  _set_bit(0);
-  if (menu_ == &_default_menu_) {
-    menu_ = new ::std::string;
-  }
-  menu_->assign(value);
+inline void Description::set_menu(int index, const ::std::string& value) {
+  menu_.Mutable(index)->assign(value);
 }
-inline void Description::set_menu(const char* value, size_t size) {
-  _set_bit(0);
-  if (menu_ == &_default_menu_) {
-    menu_ = new ::std::string;
-  }
-  menu_->assign(reinterpret_cast<const char*>(value), size);
+inline void Description::set_menu(int index, const char* value) {
+  menu_.Mutable(index)->assign(value);
 }
-inline ::std::string* Description::mutable_menu() {
-  _set_bit(0);
-  if (menu_ == &_default_menu_) {
-    menu_ = new ::std::string;
-  }
+inline void Description::set_menu(int index, const char* value, size_t size) {
+  menu_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Description::add_menu() {
+  return menu_.Add();
+}
+inline void Description::add_menu(const ::std::string& value) {
+  menu_.Add()->assign(value);
+}
+inline void Description::add_menu(const char* value) {
+  menu_.Add()->assign(value);
+}
+inline void Description::add_menu(const char* value, size_t size) {
+  menu_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+Description::menu() const {
   return menu_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+Description::mutable_menu() {
+  return &menu_;
 }
 
 // optional string full = 2;

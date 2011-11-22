@@ -171,7 +171,7 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/command/Command.proto\022\013rec.command"
-    "\"7\n\013Description\022\014\n\004menu\030\001 \001(\t\022\014\n\004full\030\002 "
+    "\"7\n\013Description\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 "
     "\001(\t\022\014\n\004help\030\003 \001(\t\"\233\010\n\007Command\022\'\n\004type\030\001 "
     "\001(\0162\031.rec.command.Command.Type\022\r\n\005index\030"
     "\002 \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004desc\030\004 \001(\0132\030."
@@ -228,7 +228,6 @@ struct StaticDescriptorInitializer_rec_2fcommand_2fCommand_2eproto {
 
 // ===================================================================
 
-const ::std::string Description::_default_menu_;
 const ::std::string Description::_default_full_;
 const ::std::string Description::_default_help_;
 #ifndef _MSC_VER
@@ -253,7 +252,6 @@ Description::Description(const Description& from)
 
 void Description::SharedCtor() {
   _cached_size_ = 0;
-  menu_ = const_cast< ::std::string*>(&_default_menu_);
   full_ = const_cast< ::std::string*>(&_default_full_);
   help_ = const_cast< ::std::string*>(&_default_help_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -264,9 +262,6 @@ Description::~Description() {
 }
 
 void Description::SharedDtor() {
-  if (menu_ != &_default_menu_) {
-    delete menu_;
-  }
   if (full_ != &_default_full_) {
     delete full_;
   }
@@ -298,12 +293,7 @@ Description* Description::New() const {
 }
 
 void Description::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (_has_bit(0)) {
-      if (menu_ != &_default_menu_) {
-        menu_->clear();
-      }
-    }
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     if (_has_bit(1)) {
       if (full_ != &_default_full_) {
         full_->clear();
@@ -315,6 +305,7 @@ void Description::Clear() {
       }
     }
   }
+  menu_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -325,18 +316,20 @@ bool Description::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string menu = 1;
+      // repeated string menu = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_menu:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_menu()));
+                input, this->add_menu()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->menu().data(), this->menu().length(),
+            this->menu(0).data(), this->menu(0).length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(10)) goto parse_menu;
         if (input->ExpectTag(18)) goto parse_full;
         break;
       }
@@ -393,13 +386,13 @@ bool Description::MergePartialFromCodedStream(
 
 void Description::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string menu = 1;
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->menu().data(), this->menu().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
+  // repeated string menu = 1;
+  for (int i = 0; i < this->menu_size(); i++) {
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->menu(i).data(), this->menu(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->menu(), output);
+      1, this->menu(i), output);
   }
   
   // optional string full = 2;
@@ -428,14 +421,13 @@ void Description::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Description::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional string menu = 1;
-  if (_has_bit(0)) {
+  // repeated string menu = 1;
+  for (int i = 0; i < this->menu_size(); i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->menu().data(), this->menu().length(),
+      this->menu(i).data(), this->menu(i).length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->menu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(1, this->menu(i), target);
   }
   
   // optional string full = 2;
@@ -468,14 +460,7 @@ void Description::SerializeWithCachedSizes(
 int Description::ByteSize() const {
   int total_size = 0;
   
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string menu = 1;
-    if (has_menu()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->menu());
-    }
-    
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     // optional string full = 2;
     if (has_full()) {
       total_size += 1 +
@@ -491,6 +476,13 @@ int Description::ByteSize() const {
     }
     
   }
+  // repeated string menu = 1;
+  total_size += 1 * this->menu_size();
+  for (int i = 0; i < this->menu_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->menu(i));
+  }
+  
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -516,10 +508,8 @@ void Description::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Description::MergeFrom(const Description& from) {
   GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
-      set_menu(from.menu());
-    }
+  menu_.MergeFrom(from.menu_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     if (from._has_bit(1)) {
       set_full(from.full());
     }
@@ -549,7 +539,7 @@ bool Description::IsInitialized() const {
 
 void Description::Swap(Description* other) {
   if (other != this) {
-    std::swap(menu_, other->menu_);
+    menu_.Swap(&other->menu_);
     std::swap(full_, other->full_);
     std::swap(help_, other->help_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

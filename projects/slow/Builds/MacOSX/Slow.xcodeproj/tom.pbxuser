@@ -198,7 +198,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {881, 1131}}";
 			sepNavSelRange = "{2724, 0}";
-			sepNavVisRange = "{1108, 1596}";
+			sepNavVisRange = "{1108, 1576}";
 			sepNavWindowFrame = "{{84, 139}, {911, 971}}";
 		};
 	};
@@ -595,6 +595,7 @@
 			E29BCB91147B81E700B58B3A /* PBXTextBookmark */ = E29BCB91147B81E700B58B3A /* PBXTextBookmark */;
 			E29BCB92147B81E700B58B3A /* PBXTextBookmark */ = E29BCB92147B81E700B58B3A /* PBXTextBookmark */;
 			E29BCB94147B81F800B58B3A /* PBXTextBookmark */ = E29BCB94147B81F800B58B3A /* PBXTextBookmark */;
+			E29BCBA5147C1B8400B58B3A /* PBXTextBookmark */ = E29BCBA5147C1B8400B58B3A /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -730,9 +731,10 @@
 	};
 	B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {881, 2210}}";
-			sepNavSelRange = "{4780, 0}";
-			sepNavVisRange = "{2515, 1813}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 2301}}";
+			sepNavSelRange = "{2910, 0}";
+			sepNavVisRange = "{2339, 2177}";
+			sepNavWindowFrame = "{{61, 160}, {911, 971}}";
 		};
 	};
 	B718B3389157B2AFAD6D1E8C /* ModeSelector.cpp */ = {
@@ -745,9 +747,10 @@
 	};
 	B821697666437A71BDF9E1EE /* Target.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {881, 669}}";
-			sepNavSelRange = "{699, 0}";
-			sepNavVisRange = "{0, 1462}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 858}}";
+			sepNavSelRange = "{1257, 0}";
+			sepNavVisRange = "{0, 1573}";
+			sepNavWindowFrame = "{{84, 139}, {911, 971}}";
 		};
 	};
 	B93BB1CF0134C040B5AC31AA /* Time.pb.h */ = {
@@ -1126,7 +1129,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 180";
 		rLen = 0;
-		rLoc = 4780;
+		rLoc = 4829;
 		rType = 0;
 		vrLen = 1813;
 		vrLoc = 2515;
@@ -2196,7 +2199,7 @@
 		ignoreCount = 0;
 		lineNumber = 64;
 		location = SlowGold;
-		modificationTime = 343638500.954189;
+		modificationTime = 343677825.747012;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2634,6 +2637,16 @@
 		rLoc = 2724;
 		rType = 0;
 		vrLen = 1596;
+		vrLoc = 1108;
+	};
+	E29BCBA5147C1B8400B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5138BD32CC0E495AFDB1A128 /* TableController.cpp */;
+		name = "TableController.cpp: 87";
+		rLen = 0;
+		rLoc = 2724;
+		rType = 0;
+		vrLen = 1576;
 		vrLoc = 1108;
 	};
 	E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */ = {
