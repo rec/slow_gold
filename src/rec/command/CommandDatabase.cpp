@@ -103,14 +103,14 @@ void mergeDescription(CommandTable* map, const Command& command) {
   if (it != map->end()) {
     it->second->MergeFrom(command);
     return;
-  } 
+  }
 
   static const char* LOWER[] = {" the first", " the previous", " the current",
                                 " the next", " the last"};
   static const char* CAP[] = {" First", " Previous", " Current", " Next",
                               " Last"};
 
-  const String menu = command.desc().menu_size() ? 
+  const String menu = command.desc().menu_size() ?
       str(command.desc().menu(0)) : String();
   const String full = str(command.desc().full());
 
@@ -118,7 +118,7 @@ void mergeDescription(CommandTable* map, const Command& command) {
   for (int i = 0; i <= Position::LAST - Position::FIRST; ++i, ++c) {
     it = map->find(c);
     if (it == map->end()) {
-      LOG(ERROR) << "Couldn't find position" << i
+      LOG(ERROR) << "Couldn't find position " << i
                  << " CommandID " << c
                  << " cmd: " << command.ShortDebugString();
       return;

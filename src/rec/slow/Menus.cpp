@@ -94,7 +94,7 @@ void addSelectMenu(TargetManager* t, PopupMenu* popup) {
 
   addBank(t, popup, Command::SELECT, "Select...");
   addBank(t, popup, Command::SELECT_ONLY, "Select Only...");
-  addBank(t, popup, Command::TOGGLE, "Toggle...");
+  addBank(t, popup, Command::TOGGLE_SELECTION, "Toggle...");
   addBank(t, popup, Command::UNSELECT, "Unselect...");
 }
 
@@ -102,6 +102,7 @@ void addTransportMenu(TargetManager* t, PopupMenu* popup) {
   t->addCommandItem(popup, Command::TOGGLE_START_STOP);
   t->addCommandItem(popup, Command::ADD_LOOP_POINT);
   t->addCommandItem(popup, Command::CLEAR_LOOPS);
+  t->addCommandItem(popup, Command::TOGGLE_GRID_DISPLAY);
 
   popup->addSeparator();
 

@@ -25,7 +25,6 @@ command { type: REDO category: "Edit"}
 command { type: RESET_GAIN_TO_UNITY category: "Audio"}
 command { type: SELECT_ALL category: "Transport"}
 command { type: TOGGLE_START_STOP category: "Transport"}
-command { type: TOGGLE_STRETCH_ENABLE category: "Audio"}
 command { type: TOGGLE_WHOLE_SONG_LOOP category: "Selection" }
 command { type: QUIT category: "Application"}
 command { type: TREE_CLOSE category: ""}
@@ -37,3 +36,17 @@ command { type: TREE_UP category: ""}
 command { type: UNDO category: "Edit"}
 command { type: ZOOM_IN category: "Audio"}
 command { type: ZOOM_OUT category: "Audio"}
+command {
+  type: TOGGLE_GRID_DISPLAY
+  category: "Transport"
+  is_global_setter: true
+  address { part: { name: "show_grid" } }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
+  type: TOGGLE_STRETCH_ENABLE
+  category: "Audio"
+  is_setter: true
+  address { part: { name: "disabled" } }
+  setter_type_name: "rec.audio.stretch.Stretch"
+}

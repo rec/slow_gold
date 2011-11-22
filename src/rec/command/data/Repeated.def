@@ -2,6 +2,6 @@ command { type: JUMP index: 10 category: "Transport" }
 command { type: JUMP_SELECTED index: 10 category: "Transport" }
 command { type: SELECT index: 10 category: "Selection" }
 command { type: SELECT_ONLY index: 10 category: "Selection" }
-command { type: TOGGLE index: 10 category: "Selection" }
+command { type: TOGGLE_SELECTION index: 10 category: "Selection" }
 command { type: UNSELECT index: 10 category: "Selection" }
 command { type: RECENT_FILES index: 64 category: "File" }

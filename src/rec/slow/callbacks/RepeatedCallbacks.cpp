@@ -83,7 +83,7 @@ void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
   	Position pos(j);
     add(t, Command::SELECT, pos, selectAdd, i);
     add(t, Command::SELECT_ONLY, pos, selectOnly, i);
-    add(t, Command::TOGGLE, pos, toggle, i);
+    add(t, Command::TOGGLE_SELECTION, pos, toggle, i);
     add(t, Command::UNSELECT, pos, unselect, i);
 
     add(t, Command::JUMP_SELECTED, pos, jumpSelected, i);

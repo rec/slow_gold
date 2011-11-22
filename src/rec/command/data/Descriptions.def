@@ -48,6 +48,22 @@ command {
   }
 }
 command {
+  type: TOGGLE_GRID_DISPLAY
+  desc {
+    menu: "Display Time Grid"
+    menu: "Hide Time Grid"
+    full: "Toggle display of the time grid."
+  }
+}
+command {
+  type: TOGGLE_STRETCH_ENABLE
+  desc {
+    menu: "Enabled transformations"
+    menu: "Disable transformations"
+    full: "Toggle pitch, time and stereo modification of the sound."
+  }
+}
+command {
   type: AUDIO_PREFERENCES
   desc {
     menu: "Audio Preferences..."
@@ -209,7 +225,7 @@ command {
   }
 }
 command {
-  type: TOGGLE
+  type: TOGGLE_SELECTION
   desc {
     menu: "Toggle%s Segment%s Selection"
     full: "Toggle%s segment%s between selected and unselected"

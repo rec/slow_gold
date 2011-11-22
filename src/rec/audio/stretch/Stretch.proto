@@ -12,16 +12,17 @@ message Stretch {
   };
 
   optional Strategy strategy = 1        [default = RUBBERBAND];
-  optional bool time_disabled = 2       [default = false];
-  optional bool pitch_disabled = 3      [default = false];
+  optional bool time_disabled = 2;
+  optional bool pitch_disabled = 3;
+  optional bool disabled = 20;
   optional bool passthrough_when_disabled = 4 [default = true];
   optional double time_scale = 5        [default = 1.0];
   optional double time_percent = 6      [default = 100.0];
   optional double sample_rate = 7       [default = 44100.0];
   optional uint32 channels = 8          [default = 2];
   optional double pitch_scale = 9       [default = 1.0];
-  optional double semitone_shift = 10    [default = 0.0];
-  optional double detune_cents = 11     [default = 0.0];
+  optional double semitone_shift = 10;
+  optional double detune_cents = 11;
   optional uint32 bands = 12            [default = 2048];
   optional uint32 filter_overlap = 13   [default = 1];
   optional uint32 chunk_size = 14       [default = 1024];

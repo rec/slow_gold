@@ -23,6 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
+#include "rec/data/proto/Address.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -67,7 +68,8 @@ enum Command_Type {
   Command_Type_RESET_GAIN_TO_UNITY = 24,
   Command_Type_SELECT = 25,
   Command_Type_SELECT_ONLY = 26,
-  Command_Type_TOGGLE = 27,
+  Command_Type_TOGGLE_GRID_DISPLAY = 27,
+  Command_Type_TOGGLE_SELECTION = 41,
   Command_Type_TOGGLE_START_STOP = 28,
   Command_Type_TOGGLE_STRETCH_ENABLE = 29,
   Command_Type_TOGGLE_WHOLE_SONG_LOOP = 30,
@@ -81,6 +83,7 @@ enum Command_Type {
   Command_Type_UNSELECT = 38,
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
+  Command_Type_LAST_COMMAND = 41,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -312,7 +315,8 @@ class Command : public ::google::protobuf::Message {
   static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;
   static const Type SELECT = Command_Type_SELECT;
   static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
-  static const Type TOGGLE = Command_Type_TOGGLE;
+  static const Type TOGGLE_GRID_DISPLAY = Command_Type_TOGGLE_GRID_DISPLAY;
+  static const Type TOGGLE_SELECTION = Command_Type_TOGGLE_SELECTION;
   static const Type TOGGLE_START_STOP = Command_Type_TOGGLE_START_STOP;
   static const Type TOGGLE_STRETCH_ENABLE = Command_Type_TOGGLE_STRETCH_ENABLE;
   static const Type TOGGLE_WHOLE_SONG_LOOP = Command_Type_TOGGLE_WHOLE_SONG_LOOP;
@@ -326,6 +330,7 @@ class Command : public ::google::protobuf::Message {
   static const Type UNSELECT = Command_Type_UNSELECT;
   static const Type ZOOM_IN = Command_Type_ZOOM_IN;
   static const Type ZOOM_OUT = Command_Type_ZOOM_OUT;
+  static const Type LAST_COMMAND = Command_Type_LAST_COMMAND;
   static const Type QUIT = Command_Type_QUIT;
   static const Type DEL = Command_Type_DEL;
   static const Type CUT = Command_Type_CUT;
@@ -407,6 +412,37 @@ class Command : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& keypress() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_keypress();
   
+  // optional bool is_setter = 6;
+  inline bool has_is_setter() const;
+  inline void clear_is_setter();
+  static const int kIsSetterFieldNumber = 6;
+  inline bool is_setter() const;
+  inline void set_is_setter(bool value);
+  
+  // optional bool is_global_setter = 7;
+  inline bool has_is_global_setter() const;
+  inline void clear_is_global_setter();
+  static const int kIsGlobalSetterFieldNumber = 7;
+  inline bool is_global_setter() const;
+  inline void set_is_global_setter(bool value);
+  
+  // optional .rec.data.AddressProto address = 8;
+  inline bool has_address() const;
+  inline void clear_address();
+  static const int kAddressFieldNumber = 8;
+  inline const ::rec::data::AddressProto& address() const;
+  inline ::rec::data::AddressProto* mutable_address();
+  
+  // optional string setter_type_name = 9;
+  inline bool has_setter_type_name() const;
+  inline void clear_setter_type_name();
+  static const int kSetterTypeNameFieldNumber = 9;
+  inline const ::std::string& setter_type_name() const;
+  inline void set_setter_type_name(const ::std::string& value);
+  inline void set_setter_type_name(const char* value);
+  inline void set_setter_type_name(const char* value, size_t size);
+  inline ::std::string* mutable_setter_type_name();
+  
   // @@protoc_insertion_point(class_scope:rec.command.Command)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -418,11 +454,16 @@ class Command : public ::google::protobuf::Message {
   static const ::std::string _default_category_;
   ::rec::command::Description* desc_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
+  bool is_setter_;
+  bool is_global_setter_;
+  ::rec::data::AddressProto* address_;
+  ::std::string* setter_type_name_;
+  static const ::std::string _default_setter_type_name_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -1004,6 +1045,97 @@ Command::keypress() const {
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 Command::mutable_keypress() {
   return &keypress_;
+}
+
+// optional bool is_setter = 6;
+inline bool Command::has_is_setter() const {
+  return _has_bit(5);
+}
+inline void Command::clear_is_setter() {
+  is_setter_ = false;
+  _clear_bit(5);
+}
+inline bool Command::is_setter() const {
+  return is_setter_;
+}
+inline void Command::set_is_setter(bool value) {
+  _set_bit(5);
+  is_setter_ = value;
+}
+
+// optional bool is_global_setter = 7;
+inline bool Command::has_is_global_setter() const {
+  return _has_bit(6);
+}
+inline void Command::clear_is_global_setter() {
+  is_global_setter_ = false;
+  _clear_bit(6);
+}
+inline bool Command::is_global_setter() const {
+  return is_global_setter_;
+}
+inline void Command::set_is_global_setter(bool value) {
+  _set_bit(6);
+  is_global_setter_ = value;
+}
+
+// optional .rec.data.AddressProto address = 8;
+inline bool Command::has_address() const {
+  return _has_bit(7);
+}
+inline void Command::clear_address() {
+  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+  _clear_bit(7);
+}
+inline const ::rec::data::AddressProto& Command::address() const {
+  return address_ != NULL ? *address_ : *default_instance_->address_;
+}
+inline ::rec::data::AddressProto* Command::mutable_address() {
+  _set_bit(7);
+  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
+  return address_;
+}
+
+// optional string setter_type_name = 9;
+inline bool Command::has_setter_type_name() const {
+  return _has_bit(8);
+}
+inline void Command::clear_setter_type_name() {
+  if (setter_type_name_ != &_default_setter_type_name_) {
+    setter_type_name_->clear();
+  }
+  _clear_bit(8);
+}
+inline const ::std::string& Command::setter_type_name() const {
+  return *setter_type_name_;
+}
+inline void Command::set_setter_type_name(const ::std::string& value) {
+  _set_bit(8);
+  if (setter_type_name_ == &_default_setter_type_name_) {
+    setter_type_name_ = new ::std::string;
+  }
+  setter_type_name_->assign(value);
+}
+inline void Command::set_setter_type_name(const char* value) {
+  _set_bit(8);
+  if (setter_type_name_ == &_default_setter_type_name_) {
+    setter_type_name_ = new ::std::string;
+  }
+  setter_type_name_->assign(value);
+}
+inline void Command::set_setter_type_name(const char* value, size_t size) {
+  _set_bit(8);
+  if (setter_type_name_ == &_default_setter_type_name_) {
+    setter_type_name_ = new ::std::string;
+  }
+  setter_type_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::mutable_setter_type_name() {
+  _set_bit(8);
+  if (setter_type_name_ == &_default_setter_type_name_) {
+    setter_type_name_ = new ::std::string;
+  }
+  return setter_type_name_;
 }
 
 // -------------------------------------------------------------------

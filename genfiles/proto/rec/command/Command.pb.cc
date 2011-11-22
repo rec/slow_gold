@@ -59,12 +59,16 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Description));
   Command_descriptor_ = file->message_type(1);
-  static const int Command_offsets_[5] = {
+  static const int Command_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, category_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, desc_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, keypress_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, is_setter_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, is_global_setter_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, address_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, setter_type_name_),
   };
   Command_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -169,40 +173,46 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/command/Command.proto\022\013rec.command"
-    "\"7\n\013Description\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 "
-    "\001(\t\022\014\n\004help\030\003 \001(\t\"\233\010\n\007Command\022\'\n\004type\030\001 "
-    "\001(\0162\031.rec.command.Command.Type\022\r\n\005index\030"
-    "\002 \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004desc\030\004 \001(\0132\030."
-    "rec.command.Description\022\020\n\010keypress\030\005 \003("
-    "\t\"\213\007\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001"
-    "\022\025\n\021AUDIO_PREFERENCES\020\002\022\023\n\017CLEAR_NAVIGAT"
-    "OR\020\003\022\017\n\013CLEAR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FIL"
-    "E_DATA\020\005\022\016\n\nCLOSE_FILE\020\006\022\025\n\021DIM_VOLUME_T"
-    "OGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022\031\n\025INVERT_LOOP_SE"
-    "LECTION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020\013\022\025"
-    "\n\021KEYBOARD_MAPPINGS\020\014\022\021\n\rMIDI_MAPPINGS\020\r"
-    "\022\026\n\022MUTE_VOLUME_TOGGLE\020\016\022\024\n\020NUDGE_BEGIN_"
-    "LEFT\020\017\022\025\n\021NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_E"
-    "ND_LEFT\020\021\022\023\n\017NUDGE_END_RIGHT\020\022\022\025\n\021NUDGE_"
-    "VOLUME_DOWN\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OP"
-    "EN\020\025\022\020\n\014RECENT_FILES\020\026\022\010\n\004REDO\020\027\022\027\n\023RESE"
-    "T_GAIN_TO_UNITY\020\030\022\n\n\006SELECT\020\031\022\017\n\013SELECT_"
-    "ONLY\020\032\022\n\n\006TOGGLE\020\033\022\025\n\021TOGGLE_START_STOP\020"
-    "\034\022\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_W"
-    "HOLE_SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE"
-    "_DOWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n"
-    "\nTREE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010"
-    "UNSELECT\020&\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\t\n"
-    "\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022"
-    "\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT"
-    "_ALL\020\207 \022\r\n\tLAST_TYPE\020(\022\017\n\nJUCE_START\020\201 \022"
-    "\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Comma"
-    "nds\022%\n\007command\030\001 \003(\0132\024.rec.command.Comma"
-    "nd\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001"
-    "(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025.rec.c"
-    "ommand.KeyValue", 1295);
+    "\032\034rec/data/proto/Address.proto\"7\n\013Descri"
+    "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \001(\t\022\014\n\004hel"
+    "p\030\003 \001(\t\"\300\t\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
+    "command.Command.Type\022\r\n\005index\030\002 \001(\021\022\020\n\010c"
+    "ategory\030\003 \001(\t\022&\n\004desc\030\004 \001(\0132\030.rec.comman"
+    "d.Description\022\020\n\010keypress\030\005 \003(\t\022\021\n\tis_se"
+    "tter\030\006 \001(\010\022\030\n\020is_global_setter\030\007 \001(\010\022\'\n\007"
+    "address\030\010 \001(\0132\026.rec.data.AddressProto\022\030\n"
+    "\020setter_type_name\030\t \001(\t\"\300\007\n\004Type\022\010\n\004NONE"
+    "\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFEREN"
+    "CES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR_LOOP"
+    "S\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLOSE_"
+    "FILE\020\006\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n\tEJECT_C"
+    "DS\020\010\022\031\n\025INVERT_LOOP_SELECTION\020\t\022\010\n\004JUMP\020"
+    "\n\022\021\n\rJUMP_SELECTED\020\013\022\025\n\021KEYBOARD_MAPPING"
+    "S\020\014\022\021\n\rMIDI_MAPPINGS\020\r\022\026\n\022MUTE_VOLUME_TO"
+    "GGLE\020\016\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021NUDGE_BE"
+    "GIN_RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022\023\n\017NUDGE"
+    "_END_RIGHT\020\022\022\025\n\021NUDGE_VOLUME_DOWN\020\023\022\023\n\017N"
+    "UDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\020\n\014RECENT_FIL"
+    "ES\020\026\022\010\n\004REDO\020\027\022\027\n\023RESET_GAIN_TO_UNITY\020\030\022"
+    "\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\027\n\023TOGGLE_G"
+    "RID_DISPLAY\020\033\022\024\n\020TOGGLE_SELECTION\020)\022\025\n\021T"
+    "OGGLE_START_STOP\020\034\022\031\n\025TOGGLE_STRETCH_ENA"
+    "BLE\020\035\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\036\022\016\n\nTRE"
+    "E_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_LEFT\020!\022"
+    "\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007TREE_U"
+    "P\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\013\n\007ZOOM_IN\020\'"
+    "\022\014\n\010ZOOM_OUT\020(\022\020\n\014LAST_COMMAND\020)\022\t\n\004QUIT"
+    "\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PA"
+    "STE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020"
+    "\207 \022\r\n\tLAST_TYPE\020(\022\017\n\nJUCE_START\020\201 \022\r\n\010JU"
+    "CE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022%"
+    "\n\007command\030\001 \003(\0132\024.rec.command.Command\"&\n"
+    "\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n"
+    "\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025.rec.comman"
+    "d.KeyValue", 1490);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -606,6 +616,7 @@ bool Command_Type_IsValid(int value) {
     case 38:
     case 39:
     case 40:
+    case 41:
     case 4097:
     case 4098:
     case 4099:
@@ -648,7 +659,8 @@ const Command_Type Command::REDO;
 const Command_Type Command::RESET_GAIN_TO_UNITY;
 const Command_Type Command::SELECT;
 const Command_Type Command::SELECT_ONLY;
-const Command_Type Command::TOGGLE;
+const Command_Type Command::TOGGLE_GRID_DISPLAY;
+const Command_Type Command::TOGGLE_SELECTION;
 const Command_Type Command::TOGGLE_START_STOP;
 const Command_Type Command::TOGGLE_STRETCH_ENABLE;
 const Command_Type Command::TOGGLE_WHOLE_SONG_LOOP;
@@ -662,6 +674,7 @@ const Command_Type Command::UNDO;
 const Command_Type Command::UNSELECT;
 const Command_Type Command::ZOOM_IN;
 const Command_Type Command::ZOOM_OUT;
+const Command_Type Command::LAST_COMMAND;
 const Command_Type Command::QUIT;
 const Command_Type Command::DEL;
 const Command_Type Command::CUT;
@@ -678,12 +691,17 @@ const Command_Type Command::Type_MAX;
 const int Command::Type_ARRAYSIZE;
 #endif  // _MSC_VER
 const ::std::string Command::_default_category_;
+const ::std::string Command::_default_setter_type_name_;
 #ifndef _MSC_VER
 const int Command::kTypeFieldNumber;
 const int Command::kIndexFieldNumber;
 const int Command::kCategoryFieldNumber;
 const int Command::kDescFieldNumber;
 const int Command::kKeypressFieldNumber;
+const int Command::kIsSetterFieldNumber;
+const int Command::kIsGlobalSetterFieldNumber;
+const int Command::kAddressFieldNumber;
+const int Command::kSetterTypeNameFieldNumber;
 #endif  // !_MSC_VER
 
 Command::Command()
@@ -693,6 +711,7 @@ Command::Command()
 
 void Command::InitAsDefaultInstance() {
   desc_ = const_cast< ::rec::command::Description*>(&::rec::command::Description::default_instance());
+  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
 }
 
 Command::Command(const Command& from)
@@ -707,6 +726,10 @@ void Command::SharedCtor() {
   index_ = 0;
   category_ = const_cast< ::std::string*>(&_default_category_);
   desc_ = NULL;
+  is_setter_ = false;
+  is_global_setter_ = false;
+  address_ = NULL;
+  setter_type_name_ = const_cast< ::std::string*>(&_default_setter_type_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -718,8 +741,12 @@ void Command::SharedDtor() {
   if (category_ != &_default_category_) {
     delete category_;
   }
+  if (setter_type_name_ != &_default_setter_type_name_) {
+    delete setter_type_name_;
+  }
   if (this != default_instance_) {
     delete desc_;
+    delete address_;
   }
 }
 
@@ -754,6 +781,18 @@ void Command::Clear() {
     }
     if (_has_bit(3)) {
       if (desc_ != NULL) desc_->::rec::command::Description::Clear();
+    }
+    is_setter_ = false;
+    is_global_setter_ = false;
+    if (_has_bit(7)) {
+      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+    }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (_has_bit(8)) {
+      if (setter_type_name_ != &_default_setter_type_name_) {
+        setter_type_name_->clear();
+      }
     }
   }
   keypress_.Clear();
@@ -848,6 +887,69 @@ bool Command::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(42)) goto parse_keypress;
+        if (input->ExpectTag(48)) goto parse_is_setter;
+        break;
+      }
+      
+      // optional bool is_setter = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_is_setter:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_setter_)));
+          _set_bit(5);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(56)) goto parse_is_global_setter;
+        break;
+      }
+      
+      // optional bool is_global_setter = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_is_global_setter:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_global_setter_)));
+          _set_bit(6);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(66)) goto parse_address;
+        break;
+      }
+      
+      // optional .rec.data.AddressProto address = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_address:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_address()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_setter_type_name;
+        break;
+      }
+      
+      // optional string setter_type_name = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_setter_type_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_setter_type_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->setter_type_name().data(), this->setter_type_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -905,6 +1007,31 @@ void Command::SerializeWithCachedSizes(
       5, this->keypress(i), output);
   }
   
+  // optional bool is_setter = 6;
+  if (_has_bit(5)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->is_setter(), output);
+  }
+  
+  // optional bool is_global_setter = 7;
+  if (_has_bit(6)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->is_global_setter(), output);
+  }
+  
+  // optional .rec.data.AddressProto address = 8;
+  if (_has_bit(7)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8, this->address(), output);
+  }
+  
+  // optional string setter_type_name = 9;
+  if (_has_bit(8)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->setter_type_name().data(), this->setter_type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      9, this->setter_type_name(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -950,6 +1077,33 @@ void Command::SerializeWithCachedSizes(
       WriteStringToArray(5, this->keypress(i), target);
   }
   
+  // optional bool is_setter = 6;
+  if (_has_bit(5)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->is_setter(), target);
+  }
+  
+  // optional bool is_global_setter = 7;
+  if (_has_bit(6)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->is_global_setter(), target);
+  }
+  
+  // optional .rec.data.AddressProto address = 8;
+  if (_has_bit(7)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        8, this->address(), target);
+  }
+  
+  // optional string setter_type_name = 9;
+  if (_has_bit(8)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->setter_type_name().data(), this->setter_type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        9, this->setter_type_name(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -986,6 +1140,32 @@ int Command::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->desc());
+    }
+    
+    // optional bool is_setter = 6;
+    if (has_is_setter()) {
+      total_size += 1 + 1;
+    }
+    
+    // optional bool is_global_setter = 7;
+    if (has_is_global_setter()) {
+      total_size += 1 + 1;
+    }
+    
+    // optional .rec.data.AddressProto address = 8;
+    if (has_address()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->address());
+    }
+    
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional string setter_type_name = 9;
+    if (has_setter_type_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->setter_type_name());
     }
     
   }
@@ -1035,6 +1215,20 @@ void Command::MergeFrom(const Command& from) {
     if (from._has_bit(3)) {
       mutable_desc()->::rec::command::Description::MergeFrom(from.desc());
     }
+    if (from._has_bit(5)) {
+      set_is_setter(from.is_setter());
+    }
+    if (from._has_bit(6)) {
+      set_is_global_setter(from.is_global_setter());
+    }
+    if (from._has_bit(7)) {
+      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from._has_bit(8)) {
+      set_setter_type_name(from.setter_type_name());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1063,6 +1257,10 @@ void Command::Swap(Command* other) {
     std::swap(category_, other->category_);
     std::swap(desc_, other->desc_);
     keypress_.Swap(&other->keypress_);
+    std::swap(is_setter_, other->is_setter_);
+    std::swap(is_global_setter_, other->is_global_setter_);
+    std::swap(address_, other->address_);
+    std::swap(setter_type_name_, other->setter_type_name_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

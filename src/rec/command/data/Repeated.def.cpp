@@ -12,7 +12,7 @@ Def<Commands> repeated(
   "command { type: JUMP_SELECTED index: 10 category: \"Transport\" }\n"
   "command { type: SELECT index: 10 category: \"Selection\" }\n"
   "command { type: SELECT_ONLY index: 10 category: \"Selection\" }\n"
-  "command { type: TOGGLE index: 10 category: \"Selection\" }\n"
+  "command { type: TOGGLE_SELECTION index: 10 category: \"Selection\" }\n"
   "command { type: UNSELECT index: 10 category: \"Selection\" }\n"
   "command { type: RECENT_FILES index: 64 category: \"File\" }\n"
   " "
