@@ -28,13 +28,9 @@ class Loops : public component::Focusable<TableController>,
   virtual Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected,
                                              Component* existingComponentToUpdate);
 
-  static const RealTime CLOSE;
-
   virtual void onDataChange(const LoopPointList&);
 
   virtual int getNumRows() { return data()->get().loop_point_size(); }
-
-  double near(double x, double y) const { return util::near(x, y, CLOSE); }
 
   virtual bool canCopy() const;
   virtual bool canPaste() const { return true; }  // TODO

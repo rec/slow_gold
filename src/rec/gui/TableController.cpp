@@ -60,5 +60,26 @@ void TableController::paintCell(Graphics& g,
              height - 2 * CELL_MARGIN_VERTICAL, Justification::centred, true);
 }
 
+void TableController::resized() {
+  TableHeaderComponent& header = getHeader();
+  int columns = header.getNumColumns(false);
+  int width = 0;
+  int lastC = 0;
+  int lastWidth;
+  for (int i = 1; i <= columns; ++i) {
+    if (header.isColumnVisible(i)) {
+      lastC = i;
+      lastWidth = header.getColumnWidth(i);
+      width += lastWidth;
+    }
+  }
+  if (lastC)
+    header.setColumnWidth(lastC, std::max(10, lastWidth + getWidth() - width));
+
+
+  juce::TableListBox::resized();
+  TableController::update();
+}
+
 }  // namespace gui
 }  // namespace rec

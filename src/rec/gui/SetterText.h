@@ -55,6 +55,9 @@ class SetterText : public Layout,
   virtual void textEditorReturnKeyPressed(TextEditor& editor) {}
   virtual void textEditorEscapeKeyPressed(TextEditor& editor) {}
   virtual void textEditorFocusLost(TextEditor& editor) {}
+  void setEditorBackground(const juce::Colour& c) {
+    editor_.setColour(juce::TextEditor::backgroundColourId, c);
+  }
 
  protected:
   virtual void onDataChange(const Proto&) {

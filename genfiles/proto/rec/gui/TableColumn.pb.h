@@ -221,12 +221,12 @@ class TableColumn : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 minimum_width() const;
   inline void set_minimum_width(::google::protobuf::uint32 value);
   
-  // optional uint32 maximum_width = 3 [default = 80];
+  // optional int32 maximum_width = 3 [default = -1];
   inline bool has_maximum_width() const;
   inline void clear_maximum_width();
   static const int kMaximumWidthFieldNumber = 3;
-  inline ::google::protobuf::uint32 maximum_width() const;
-  inline void set_maximum_width(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 maximum_width() const;
+  inline void set_maximum_width(::google::protobuf::int32 value);
   
   // optional .rec.gui.TableColumn.Properties property_flags = 4 [default = DEFAULT];
   inline bool has_property_flags() const;
@@ -258,7 +258,7 @@ class TableColumn : public ::google::protobuf::Message {
   static const ::std::string _default_name_;
   ::google::protobuf::uint32 width_;
   ::google::protobuf::uint32 minimum_width_;
-  ::google::protobuf::uint32 maximum_width_;
+  ::google::protobuf::int32 maximum_width_;
   int property_flags_;
   ::rec::data::AddressProto* address_;
   int type_;
@@ -457,18 +457,18 @@ inline void TableColumn::set_minimum_width(::google::protobuf::uint32 value) {
   minimum_width_ = value;
 }
 
-// optional uint32 maximum_width = 3 [default = 80];
+// optional int32 maximum_width = 3 [default = -1];
 inline bool TableColumn::has_maximum_width() const {
   return _has_bit(3);
 }
 inline void TableColumn::clear_maximum_width() {
-  maximum_width_ = 80u;
+  maximum_width_ = -1;
   _clear_bit(3);
 }
-inline ::google::protobuf::uint32 TableColumn::maximum_width() const {
+inline ::google::protobuf::int32 TableColumn::maximum_width() const {
   return maximum_width_;
 }
-inline void TableColumn::set_maximum_width(::google::protobuf::uint32 value) {
+inline void TableColumn::set_maximum_width(::google::protobuf::int32 value) {
   _set_bit(3);
   maximum_width_ = value;
 }

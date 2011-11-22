@@ -16,6 +16,9 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
+static const juce::Colour SELECTED_COLOR(0xffefef80);
+
 using data::Address;
 using data::Value;
 using gui::TableColumn;
@@ -28,14 +31,11 @@ static Def<TableColumnList> dflt(
 "name: \"Name\" "
 "address { part { name: \"name\" } } "
 "width: 170 "
-"maximum_width: 300 "
 "} "
 #if 0
 "column { type: STRING name: \"Notes\" address { part { name: \"notes\" } } } "
 #endif
 );
-
-const RealTime Loops::CLOSE = 0.5;
 
 Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
     : component::Focusable<TableController>(menus),
@@ -176,6 +176,13 @@ Component* Loops::refreshComponentForCell(int row, int column,
         UpdateRequester::requestAllUpdates();
       }
     }
+  }
+  if (existing) {
+    LoopsSetterText* text = dynamic_cast<LoopsSetterText*>(existing);
+    if (text)
+      text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
+    else
+      LOG(ERROR) << "Wrong component type!";
   }
   return existing;
 }

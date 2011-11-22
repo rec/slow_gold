@@ -25,6 +25,7 @@ class TableController : public TableListBoxModel, public TableListBox {
 
   void updateAndRepaint() { update(); repaint(); }
   const TableColumnList& columns() { return columns_; }
+  virtual void resized();
 
  protected:
   virtual void update() { updateContent(); }

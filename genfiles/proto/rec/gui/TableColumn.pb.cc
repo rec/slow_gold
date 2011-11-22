@@ -110,7 +110,7 @@ void protobuf_AddDesc_rec_2fgui_2fTableColumn_2eproto() {
     "c/data/proto/Address.proto\"\332\003\n\013TableColu"
     "mn\022\014\n\004name\030\007 \001(\t\022\021\n\005width\030\001 \001(\r:\00280\022\031\n\rm"
     "inimum_width\030\002 \001(\r:\00280\022\031\n\rmaximum_width\030"
-    "\003 \001(\r:\00280\022@\n\016property_flags\030\004 \001(\0162\037.rec."
+    "\003 \001(\005:\002-1\022@\n\016property_flags\030\004 \001(\0162\037.rec."
     "gui.TableColumn.Properties:\007DEFAULT\022\'\n\007a"
     "ddress\030\005 \001(\0132\026.rec.data.AddressProto\022\'\n\004"
     "type\030\006 \001(\0162\031.rec.gui.TableColumn.Type\"\251\001"
@@ -231,7 +231,7 @@ void TableColumn::SharedCtor() {
   name_ = const_cast< ::std::string*>(&_default_name_);
   width_ = 80u;
   minimum_width_ = 80u;
-  maximum_width_ = 80u;
+  maximum_width_ = -1;
   property_flags_ = 159;
   address_ = NULL;
   type_ = 1;
@@ -280,7 +280,7 @@ void TableColumn::Clear() {
     }
     width_ = 80u;
     minimum_width_ = 80u;
-    maximum_width_ = 80u;
+    maximum_width_ = -1;
     property_flags_ = 159;
     if (_has_bit(5)) {
       if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
@@ -328,13 +328,13 @@ bool TableColumn::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 maximum_width = 3 [default = 80];
+      // optional int32 maximum_width = 3 [default = -1];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_maximum_width:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &maximum_width_)));
           _set_bit(3);
         } else {
@@ -445,9 +445,9 @@ void TableColumn::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->minimum_width(), output);
   }
   
-  // optional uint32 maximum_width = 3 [default = 80];
+  // optional int32 maximum_width = 3 [default = -1];
   if (_has_bit(3)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->maximum_width(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->maximum_width(), output);
   }
   
   // optional .rec.gui.TableColumn.Properties property_flags = 4 [default = DEFAULT];
@@ -495,9 +495,9 @@ void TableColumn::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->minimum_width(), target);
   }
   
-  // optional uint32 maximum_width = 3 [default = 80];
+  // optional int32 maximum_width = 3 [default = -1];
   if (_has_bit(3)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->maximum_width(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->maximum_width(), target);
   }
   
   // optional .rec.gui.TableColumn.Properties property_flags = 4 [default = DEFAULT];
@@ -561,10 +561,10 @@ int TableColumn::ByteSize() const {
           this->minimum_width());
     }
     
-    // optional uint32 maximum_width = 3 [default = 80];
+    // optional int32 maximum_width = 3 [default = -1];
     if (has_maximum_width()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->maximum_width());
     }
     
