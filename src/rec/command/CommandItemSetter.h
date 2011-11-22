@@ -10,6 +10,7 @@ class CommandItemSetter {
  public:
   CommandItemSetter() {}
   virtual ~CommandItemSetter() {}
+  virtual string menuName() = 0;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(CommandItemSetter);

@@ -116,17 +116,22 @@ void TargetManager::addCommandItemSetter(CommandID id, CommandItemSetter* s) {
   setterMap_[id] = s;
 }
 
-void TargetManager::addCommandItem(PopupMenu* menu, CommandID command, bool enable,
+void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name) {
-  if (ApplicationCommandInfo* info = getInfo(command)) {
-    if (name.length())
+  if (ApplicationCommandInfo* info = getInfo(id)) {
+    if (name.length()) {
       info->shortName = name;
+    } else {
+      SetterMap::const_iterator i = setterMap_.find(id);
+      if (i != setterMap_.end())
+        info->shortName = str(i->second->menuName());
+    }
     DCHECK(info->shortName.length()) << "No name for command "
-                                     << slow::Position::commandIDName(command);
+                                     << slow::Position::commandIDName(id);
     info->setActive(enable);
-    menu->addCommandItem(commandManager(), command, name);
+    menu->addCommandItem(commandManager(), id, name);
   } else {
-    LOG(ERROR) << "Can't add item " << Position::commandIDName(command);
+    LOG(ERROR) << "Can't add item " << Position::commandIDName(id);
   }
 }
 
