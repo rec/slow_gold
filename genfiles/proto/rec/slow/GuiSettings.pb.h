@@ -112,6 +112,13 @@ class GuiSettings : public ::google::protobuf::Message {
   inline bool parallel_waveforms() const;
   inline void set_parallel_waveforms(bool value);
   
+  // optional bool show_names_in_waveform = 4 [default = true];
+  inline bool has_show_names_in_waveform() const;
+  inline void clear_show_names_in_waveform();
+  static const int kShowNamesInWaveformFieldNumber = 4;
+  inline bool show_names_in_waveform() const;
+  inline void set_show_names_in_waveform(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.slow.GuiSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -120,11 +127,12 @@ class GuiSettings : public ::google::protobuf::Message {
   bool show_grid_;
   bool drop_adds_to_browser_;
   bool parallel_waveforms_;
+  bool show_names_in_waveform_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -193,6 +201,22 @@ inline bool GuiSettings::parallel_waveforms() const {
 inline void GuiSettings::set_parallel_waveforms(bool value) {
   _set_bit(2);
   parallel_waveforms_ = value;
+}
+
+// optional bool show_names_in_waveform = 4 [default = true];
+inline bool GuiSettings::has_show_names_in_waveform() const {
+  return _has_bit(3);
+}
+inline void GuiSettings::clear_show_names_in_waveform() {
+  show_names_in_waveform_ = true;
+  _clear_bit(3);
+}
+inline bool GuiSettings::show_names_in_waveform() const {
+  return show_names_in_waveform_;
+}
+inline void GuiSettings::set_show_names_in_waveform(bool value) {
+  _set_bit(3);
+  show_names_in_waveform_ = value;
 }
 
 

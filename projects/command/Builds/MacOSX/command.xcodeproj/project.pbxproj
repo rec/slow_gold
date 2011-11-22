@@ -18,7 +18,6 @@
 		9D285A853CECFA72E407E81B = { isa = PBXBuildFile; fileRef = E504F6A5707F3F672DB52BA8; };
 		E0AED36426123AC665734EBF = { isa = PBXBuildFile; fileRef = 9C31B634103849F680A6D6D4; };
 		A87CE1D64096B70499497BC5 = { isa = PBXBuildFile; fileRef = 3757F95B082CEAC4C1F96C41; };
-		6C1035DC3DC9EADB94DF3840 = { isa = PBXBuildFile; fileRef = F65C4CB259A46E182713FBB7; };
 		73030EB6E1EB65E7A36E0BFD = { isa = PBXBuildFile; fileRef = F2ECE0E4F6D7892339BAD1D1; };
 		5FF3D0E79D808B91370D83D8 = { isa = PBXBuildFile; fileRef = 0E2D74357A3A7C070D7D3B58; };
 		3F231E8534507C1CB8E771DC = { isa = PBXBuildFile; fileRef = 576030227C6A7D5AFE20D0AF; };
@@ -258,7 +257,6 @@
 		9C31B634103849F680A6D6D4 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		3757F95B082CEAC4C1F96C41 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		D427FD0910FEA6098B36B56B = { isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Command; sourceTree = "BUILT_PRODUCTS_DIR"; };
-		F65C4CB259A46E182713FBB7 = { isa = PBXFileReference; lastKnownFileType = file.icns; name = Icon.icns; path = Icon.icns; sourceTree = "SOURCE_ROOT"; };
 		E3E0E3D2E6892BDAA5F575EA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../../../../src/rec/app/Application.h; sourceTree = "SOURCE_ROOT"; };
 		F2ECE0E4F6D7892339BAD1D1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DownloadVersion.cpp; path = ../../../../src/rec/app/DownloadVersion.cpp; sourceTree = "SOURCE_ROOT"; };
 		B91A34AF9114254A57D61B6C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DownloadVersion.h; path = ../../../../src/rec/app/DownloadVersion.h; sourceTree = "SOURCE_ROOT"; };
@@ -351,8 +349,8 @@
 		7B2EF485D114357565803EDF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Standard.h; path = ../../../../src/rec/base/Standard.h; sourceTree = "SOURCE_ROOT"; };
 		41ECEA2B08C7F76CC55BC17D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "string_piece.h"; path = "../../../../src/rec/base/string_piece.h"; sourceTree = "SOURCE_ROOT"; };
 		B6A650969B6E41F35EADB29A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = types.h; path = ../../../../src/rec/base/types.h; sourceTree = "SOURCE_ROOT"; };
-		B975C95882C800725743D89F = { isa = PBXFileReference; lastKnownFileType = image.png; name = "big-logo.png"; path = "../../../../src/rec/binary/big-logo.png"; sourceTree = "SOURCE_ROOT"; };
-		E71522A9A2DF7722B5252C16 = { isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../src/rec/binary/logo.png; sourceTree = "SOURCE_ROOT"; };
+		B2436985691463F597A49655 = { isa = PBXFileReference; lastKnownFileType = image.png; name = "big-icon.png"; path = "../../../../src/rec/binary/big-icon.png"; sourceTree = "SOURCE_ROOT"; };
+		630C70C1DA5CF19D45FA4BBE = { isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../../../src/rec/binary/icon.png; sourceTree = "SOURCE_ROOT"; };
 		AD730539B904BD2C42DA1F6E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Command.cpp; path = ../../../../src/rec/command/Command.cpp; sourceTree = "SOURCE_ROOT"; };
 		2C47467844A9E7B586180211 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Command.h; path = ../../../../src/rec/command/Command.h; sourceTree = "SOURCE_ROOT"; };
 		B22DA96F78B8817BC3B82459 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandDatabase.cpp; path = ../../../../src/rec/command/CommandDatabase.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -703,6 +701,7 @@
 		0709F9B4C899476664896767 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback4.h; path = ../../../../src/rec/util/thread/Callback4.h; sourceTree = "SOURCE_ROOT"; };
 		A66F07870DC3DCE06E0489D3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileWriter.h; path = ../../../../src/rec/util/thread/FileWriter.h; sourceTree = "SOURCE_ROOT"; };
 		795F04204180CDE5E4695AAC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FunctionCallback.h; path = ../../../../src/rec/util/thread/FunctionCallback.h; sourceTree = "SOURCE_ROOT"; };
+		B489E3C5D211B5F02BD06F4E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedFlag.h; path = ../../../../src/rec/util/thread/LockedFlag.h; sourceTree = "SOURCE_ROOT"; };
 		FF2B8060B668826A7EEB1AE7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Looper.h; path = ../../../../src/rec/util/thread/Looper.h; sourceTree = "SOURCE_ROOT"; };
 		4F68A512926E0B4848A177E2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MakeCallback.h; path = ../../../../src/rec/util/thread/MakeCallback.h; sourceTree = "SOURCE_ROOT"; };
 		68101CE7EAD44439CE55486C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MakeThread.h; path = ../../../../src/rec/util/thread/MakeThread.h; sourceTree = "SOURCE_ROOT"; };
@@ -933,9 +932,9 @@
 				7B2EF485D114357565803EDF,
 				41ECEA2B08C7F76CC55BC17D,
 				B6A650969B6E41F35EADB29A ); name = base; sourceTree = "<group>"; };
-		94453BE8092FD96A48D41D0F = { isa = PBXGroup; children = (
-				B975C95882C800725743D89F,
-				E71522A9A2DF7722B5252C16 ); name = binary; sourceTree = "<group>"; };
+		B9107C1280C4816D56D8898B = { isa = PBXGroup; children = (
+				B2436985691463F597A49655,
+				630C70C1DA5CF19D45FA4BBE ); name = binary; sourceTree = "<group>"; };
 		86DEBA63CCCE2F368B9B0D2F = { isa = PBXGroup; children = (
 				CF18AFC3BEAE8DBB7C4F00B5,
 				1423657626ACA672A9DED90B,
@@ -1296,6 +1295,7 @@
 				0709F9B4C899476664896767,
 				A66F07870DC3DCE06E0489D3,
 				795F04204180CDE5E4695AAC,
+				B489E3C5D211B5F02BD06F4E,
 				FF2B8060B668826A7EEB1AE7,
 				4F68A512926E0B4848A177E2,
 				68101CE7EAD44439CE55486C,
@@ -1386,7 +1386,7 @@
 				F626F6631E2EFC91E0F1C2F7,
 				3C135DAD33CBF49BFAAD8AA4,
 				2CA4CEC7799F5D0A577935BE,
-				94453BE8092FD96A48D41D0F,
+				B9107C1280C4816D56D8898B,
 				038EBD0127900AAA157CFD86,
 				93591C531C1114ADD63E7EBA,
 				B83A607E0F3D6EDFFA33023A,
@@ -1503,7 +1503,7 @@
 				0E5561BA8F7A19892CFB3AED ); name = rec; sourceTree = "<group>"; };
 		F5495BB1B8B716831989C22D = { isa = PBXGroup; children = (
 				C168A6E2670AB63095F469AB ); name = proto; sourceTree = "<group>"; };
-		B3FC2D54A6C34DF5BD9CCE30 = { isa = PBXGroup; children = (
+		0E2B614F1173B9FEBE4C8CC9 = { isa = PBXGroup; children = (
 				75467D3DB26B8C553F2D3FE5,
 				F5495BB1B8B716831989C22D,
 				107F029BEE50E0870F8E5A13 ); name = Command; sourceTree = "<group>"; };
@@ -1513,8 +1513,7 @@
 				68EC3A21D6C0154A1C1ACBFA,
 				4121F83242BFF073C048DC89,
 				D0112EC2338A88B1E5ACA3C7 ); name = "Juce Library Code"; sourceTree = "<group>"; };
-		AC0A55CC5C6219AB36B5C26B = { isa = PBXGroup; children = (
-				F65C4CB259A46E182713FBB7 ); name = Resources; sourceTree = "<group>"; };
+		AC0A55CC5C6219AB36B5C26B = { isa = PBXGroup; children = (  ); name = Resources; sourceTree = "<group>"; };
 		C0B90B9133DBCC84A6028DCC = { isa = PBXGroup; children = (
 				17EBC33FEE954B4280FE650B,
 				05EBBE6ECD75008F41ECB8AB,
@@ -1531,7 +1530,7 @@
 		DBBED81D920B27CB9107C128 = { isa = PBXGroup; children = (
 				D427FD0910FEA6098B36B56B ); name = Products; sourceTree = "<group>"; };
 		B2772D76DA45DD25AC30B180 = { isa = PBXGroup; children = (
-				B3FC2D54A6C34DF5BD9CCE30,
+				0E2B614F1173B9FEBE4C8CC9,
 				E89CD5E8F8F5E56D76A0DE49,
 				AC0A55CC5C6219AB36B5C26B,
 				C0B90B9133DBCC84A6028DCC,
@@ -1616,8 +1615,7 @@
 		6ED27FC4419E8B85DA63651F = { isa = XCConfigurationList; buildConfigurations = (
 				90D8BF36167D9768AA0950BA,
 				297538A930D53C52B065DE81 ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
-		490180BCBAE6AE3739A4CAD4 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
-				6C1035DC3DC9EADB94DF3840 ); runOnlyForDeploymentPostprocessing = 0; };
+		490180BCBAE6AE3739A4CAD4 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (  ); runOnlyForDeploymentPostprocessing = 0; };
 		16A87D1B89D1B89392B60E80 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
 				73030EB6E1EB65E7A36E0BFD,
 				5FF3D0E79D808B91370D83D8,

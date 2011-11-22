@@ -10,10 +10,3 @@
  $ROOT/rec/scripts/runJucer.sh slow &&\
  $ROOT/rec/scripts/runJucer.sh command \
 )
-
-#  cp -p "$ICON_SOURCE/SampleIconMac.icns" "$ICON_MAC/Icon.icns" &&\
-#  cp -p "$ICON_SOURCE/SampleIconWindows.ico" "$ICON_WINDOWS/icon.ico" &&\
-# \
-# \
-#  cp -p "$ICON_SOURCE/SampleIconMac.icns" "$ICON_MAC/Icon.icns" &&\
-#  cp -p "$ICON_SOURCE/SampleIconWindows.ico" "$ICON_WINDOWS/icon.ico"\

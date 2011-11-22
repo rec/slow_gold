@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="aeI9ly0XK" name="tests">
+  <MAINGROUP id="8e8cToAQY" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -250,11 +250,11 @@
         <FILE compile="0" file="../../src/rec/base/types.h" id="yFDfi4dtp"
               name="types.h" resource="0"/>
       </GROUP>
-      <GROUP id="HfT6b1AK5" name="binary">
-        <FILE compile="0" file="../../src/rec/binary/big-logo.png" id="Q3RuCi8Kz"
-              name="big-logo.png" resource="1"/>
-        <FILE compile="0" file="../../src/rec/binary/logo.png" id="KlCD6kzgL"
-              name="logo.png" resource="1"/>
+      <GROUP id="MUtQEx8L7" name="binary">
+        <FILE compile="0" file="../../src/rec/binary/big-icon.png" id="ET4JPfFH9"
+              name="big-icon.png" resource="1"/>
+        <FILE compile="0" file="../../src/rec/binary/icon.png" id="mTYl49q9P"
+              name="icon.png" resource="1"/>
       </GROUP>
       <GROUP id="2lqdIysPZ" name="command">
         <FILE compile="1" file="../../src/rec/command/Command.cpp" id="uw1Iqt2c7"
@@ -1030,6 +1030,8 @@
                 name="FileWriter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FunctionCallback.h"
                 id="k5X7P2bFZ" name="FunctionCallback.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/LockedFlag.h" id="5IzLuOS0x"
+                name="LockedFlag.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Looper.h" id="UmXSFpV8c"
                 name="Looper.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/MakeCallback.h" id="7LJRF8aMZ"
@@ -1325,7 +1327,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="dccaCoila" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="MzgYTvudL" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

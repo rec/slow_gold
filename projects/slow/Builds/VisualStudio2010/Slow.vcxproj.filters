@@ -277,10 +277,10 @@
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
       <Filter>Slow\rec\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\binary\big-logo.png">
+    <ClCompile Include="..\..\..\..\src\rec\binary\big-icon.png">
       <Filter>Slow\rec\binary</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\binary\logo.png">
+    <ClCompile Include="..\..\..\..\src\rec\binary\icon.png">
       <Filter>Slow\rec\binary</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp">
@@ -1684,6 +1684,9 @@
       <Filter>Slow\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\FunctionCallback.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\LockedFlag.h">
       <Filter>Slow\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Looper.h">

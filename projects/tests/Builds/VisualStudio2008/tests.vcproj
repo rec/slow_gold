@@ -251,7 +251,7 @@
           <File RelativePath="..\..\..\..\src\rec\base\types.h"/>
         </Filter>
         <Filter Name="binary">
-          <File RelativePath="..\..\..\..\src\rec\binary\big-logo.png">
+          <File RelativePath="..\..\..\..\src\rec\binary\big-icon.png">
             <FileConfiguration Name="Debug|Win32"
                                ExcludedFromBuild="true">
               <Tool Name="VCCLCompilerTool"/>
@@ -261,7 +261,7 @@
               <Tool Name="VCCLCompilerTool"/>
             </FileConfiguration>
           </File>
-          <File RelativePath="..\..\..\..\src\rec\binary\logo.png">
+          <File RelativePath="..\..\..\..\src\rec\binary\icon.png">
             <FileConfiguration Name="Debug|Win32"
                                ExcludedFromBuild="true">
               <Tool Name="VCCLCompilerTool"/>
@@ -681,6 +681,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\Callback4.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\FunctionCallback.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\LockedFlag.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Looper.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeCallback.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeThread.h"/>

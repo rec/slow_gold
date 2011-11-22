@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT bigIcon="CstO06Kqj" buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="ax.to.rec"
+<JUCERPROJECT bigIcon="4LOym0Akj" buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="ax.to.rec"
               defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
               icon="72fj5AiQf" id="sDthDibyr" juceLinkage="amalg_template"
               jucerVersion="3.0.0" name="Slow" pluginAUExportPrefix="JuceProjectAU"
@@ -9,7 +9,7 @@
               pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
               pluginName="Juce Project" pluginProducesMidiOut="0" pluginRTASCategory=""
               pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0"
-              projectType="guiapp" smallIcon="72fj5AiQf" version="0.9.0">
+              projectType="guiapp" smallIcon="5wsQ8C7vE" version="0.9.0">
   <EXPORTFORMATS>
     <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/" extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
             juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
@@ -26,7 +26,7 @@
                    isDebug="1" name="Debug" optimisation="0" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="TJm9yU9ii" name="Slow">
+  <MAINGROUP id="wqQTHDIzp" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -230,11 +230,11 @@
         <FILE compile="0" file="../../src/rec/base/types.h" id="VuufMi8oc"
               name="types.h" resource="0"/>
       </GROUP>
-      <GROUP id="ZmnIppxrM" name="binary">
-        <FILE compile="0" file="../../src/rec/binary/big-logo.png" id="CstO06Kqj"
-              name="big-logo.png" resource="1"/>
-        <FILE compile="0" file="../../src/rec/binary/logo.png" id="72fj5AiQf"
-              name="logo.png" resource="1"/>
+      <GROUP id="ng2vfRJ4V" name="binary">
+        <FILE compile="0" file="../../src/rec/binary/big-icon.png" id="4LOym0Akj"
+              name="big-icon.png" resource="1"/>
+        <FILE compile="0" file="../../src/rec/binary/icon.png" id="5wsQ8C7vE"
+              name="icon.png" resource="1"/>
       </GROUP>
       <GROUP id="6PrPlpw8R" name="command">
         <FILE compile="1" file="../../src/rec/command/Command.cpp" id="oiOjWjzTA"
@@ -980,6 +980,8 @@
                 name="FileWriter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FunctionCallback.h"
                 id="4i6c62fSv" name="FunctionCallback.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/LockedFlag.h" id="hbvolP4F8"
+                name="LockedFlag.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Looper.h" id="OLGMgDsxS"
                 name="Looper.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/MakeCallback.h" id="UOmTBV9ag"
@@ -1267,7 +1269,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="sJyAqG72H" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="8qkBr13YM" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

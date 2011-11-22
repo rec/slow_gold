@@ -277,10 +277,10 @@
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
       <Filter>Command\rec\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\binary\big-logo.png">
+    <ClCompile Include="..\..\..\..\src\rec\binary\big-icon.png">
       <Filter>Command\rec\binary</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\binary\logo.png">
+    <ClCompile Include="..\..\..\..\src\rec\binary\icon.png">
       <Filter>Command\rec\binary</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp">
@@ -1686,6 +1686,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\thread\FunctionCallback.h">
       <Filter>Command\rec\util\thread</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\LockedFlag.h">
+      <Filter>Command\rec\util\thread</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Looper.h">
       <Filter>Command\rec\util\thread</Filter>
     </ClInclude>
@@ -1890,15 +1893,5 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".\icon.ico">
-      <Filter>Juce Library Code</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include=".\resources.rc">
-      <Filter>Juce Library Code</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>
