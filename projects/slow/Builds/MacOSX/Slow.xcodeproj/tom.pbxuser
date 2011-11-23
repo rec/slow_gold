@@ -668,6 +668,9 @@
 			E29BCCB6147C6EAF00B58B3A /* PBXTextBookmark */ = E29BCCB6147C6EAF00B58B3A /* PBXTextBookmark */;
 			E29BCCBA147C6F3500B58B3A /* XCBuildMessageTextBookmark */ = E29BCCBA147C6F3500B58B3A /* XCBuildMessageTextBookmark */;
 			E29BCCBB147C6F3C00B58B3A /* PBXTextBookmark */ = E29BCCBB147C6F3C00B58B3A /* PBXTextBookmark */;
+			E29BCCC2147C6FAE00B58B3A /* PBXTextBookmark */ = E29BCCC2147C6FAE00B58B3A /* PBXTextBookmark */;
+			E29BCCC5147C6FD200B58B3A /* PBXTextBookmark */ = E29BCCC5147C6FD200B58B3A /* PBXTextBookmark */;
+			E29BCCC8147C6FF400B58B3A /* PBXTextBookmark */ = E29BCCC8147C6FF400B58B3A /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -3361,9 +3364,9 @@
 		path = ../../../../../rec/src/rec/util/DataListener.h;
 		sourceTree = "<group>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 1508}}";
-			sepNavSelRange = "{1209, 0}";
-			sepNavVisRange = "{0, 1969}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1209}}";
+			sepNavSelRange = "{2721, 0}";
+			sepNavVisRange = "{0, 2073}";
 		};
 	};
 	E29BCCBA147C6F3500B58B3A /* XCBuildMessageTextBookmark */ = {
@@ -3383,6 +3386,36 @@
 		rLoc = 1209;
 		rType = 0;
 		vrLen = 1969;
+		vrLoc = 0;
+	};
+	E29BCCC2147C6FAE00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BCCB9147C6F3500B58B3A /* DataListener.h */;
+		name = "DataListener.h: 129";
+		rLen = 0;
+		rLoc = 3462;
+		rType = 0;
+		vrLen = 2078;
+		vrLoc = 0;
+	};
+	E29BCCC5147C6FD200B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BCCB9147C6F3500B58B3A /* DataListener.h */;
+		name = "DataListener.h: 126";
+		rLen = 0;
+		rLoc = 3391;
+		rType = 0;
+		vrLen = 2121;
+		vrLoc = 0;
+	};
+	E29BCCC8147C6FF400B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BCCB9147C6F3500B58B3A /* DataListener.h */;
+		name = "DataListener.h: 103";
+		rLen = 0;
+		rLoc = 2721;
+		rType = 0;
+		vrLen = 2073;
 		vrLoc = 0;
 	};
 	E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */ = {
