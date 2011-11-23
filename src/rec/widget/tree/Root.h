@@ -58,7 +58,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   bool opennessRead_;
   bool opennessStarted_;
 
-  DISALLOW_COPY_AND_ASSIGN(Root);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Root);
 };
 
 }  // namespace tree

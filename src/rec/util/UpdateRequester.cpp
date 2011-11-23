@@ -33,7 +33,7 @@ class UpdateRequests {
   RequesterSet requesters_;
   CriticalSection lock_;
 
-  DISALLOW_COPY_AND_ASSIGN(UpdateRequests);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(UpdateRequests);
 };
 
 UpdateRequests* requests() {

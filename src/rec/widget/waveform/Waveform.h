@@ -80,7 +80,7 @@ class Waveform : public gui::component::Focusable<Component>,
   ZoomProto zoom_;
   bool empty_;
 
-  DISALLOW_COPY_AND_ASSIGN(Waveform);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 
   friend class Cursor;
 };

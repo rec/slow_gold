@@ -31,7 +31,7 @@ class TextComponent : public gui::SimpleLabel,
   String timeDisplay_;
   RealTime length_;
 
-  DISALLOW_COPY_AND_ASSIGN(TextComponent);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(TextComponent);
 };
 
 }  // namespace time

@@ -738,6 +738,9 @@
 			E29BCFB8147DA05100B58B3A /* PBXTextBookmark */ = E29BCFB8147DA05100B58B3A /* PBXTextBookmark */;
 			E29BCFB9147DA05100B58B3A /* PBXTextBookmark */ = E29BCFB9147DA05100B58B3A /* PBXTextBookmark */;
 			E29BCFBA147DA05100B58B3A /* PBXTextBookmark */ = E29BCFBA147DA05100B58B3A /* PBXTextBookmark */;
+			E29BCFC5147DA1E400B58B3A /* PBXTextBookmark */ = E29BCFC5147DA1E400B58B3A /* PBXTextBookmark */;
+			E29BCFC6147DA1E400B58B3A /* PBXTextBookmark */ = E29BCFC6147DA1E400B58B3A /* PBXTextBookmark */;
+			E29BCFC7147DA1E400B58B3A /* PBXTextBookmark */ = E29BCFC7147DA1E400B58B3A /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -852,9 +855,9 @@
 	};
 	AD730539B904BD2C42DA1F6E /* Command.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1094, 611}}";
+			sepNavIntBoundsRect = "{{0, 0}, {881, 611}}";
 			sepNavSelRange = "{1269, 0}";
-			sepNavVisRange = "{195, 634}";
+			sepNavVisRange = "{0, 1225}";
 		};
 	};
 	AF74D760F5FD00B6F076C3F3 /* CommandMapEditor.h */ = {
@@ -3868,6 +3871,36 @@
 		vrLoc = 0;
 	};
 	E29BCFBA147DA05100B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BCF81147D9C9600B58B3A /* CommandDatabase.h */;
+		name = "CommandDatabase.h: 9";
+		rLen = 0;
+		rLoc = 165;
+		rType = 0;
+		vrLen = 575;
+		vrLoc = 0;
+	};
+	E29BCFC5147DA1E400B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
+		name = "Command.cpp: 47";
+		rLen = 0;
+		rLoc = 1269;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 0;
+	};
+	E29BCFC6147DA1E400B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BCFA5147D9FBC00B58B3A /* Pointer.h */;
+		name = "Pointer.h: 16";
+		rLen = 42;
+		rLoc = 339;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 0;
+	};
+	E29BCFC7147DA1E400B58B3A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E29BCF81147D9C9600B58B3A /* CommandDatabase.h */;
 		name = "CommandDatabase.h: 9";
