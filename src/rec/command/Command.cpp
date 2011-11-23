@@ -1,13 +1,10 @@
-#include "rec/audio/stretch/Stretch.h"
+#include "rec/command/Command.h"
+
 #include "rec/command/Access.pb.h"
-#include "rec/command/CommandDataSetter.h"
-#include "rec/command/data/CommandData.h"
+#include "rec/command/CommandDatabase.h"
 #include "rec/data/Data.h"
 #include "rec/slow/Position.h"
-#include "rec/slow/GuiSettings.pb.h"
-#include "rec/util/Defaulter.h"
 #include "rec/util/STL.h"
-#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace command {

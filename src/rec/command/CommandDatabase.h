@@ -1,10 +1,12 @@
 #ifndef __REC_COMMAND_COMMANDDATABASE__
 #define __REC_COMMAND_COMMANDDATABASE__
 
-#include "rec/base/base.h"
+#include "rec/command/Command.h"
 
 namespace rec {
 namespace command {
+
+class Access;
 
 void insertSingle(CommandTable*);
 void insertRepeated(CommandTable*);
