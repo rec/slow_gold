@@ -13,12 +13,13 @@ class CommandDatabase {
   void clear();
 
   const Command command(CommandID id) const;
-  const CommandTable commandTable() const;
+  const CommandContext context() const { Lock l(lock_); return context_; }
+
   void recalculate();
 
  private:
   CriticalSection lock_;
-  CommandTable map_;
+  CommandContext context_;
 
   DISALLOW_COPY_AND_ASSIGN(CommandDatabase);
 };

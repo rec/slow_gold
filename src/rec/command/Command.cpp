@@ -10,8 +10,8 @@ static CommandDatabase* commandDatabase() {
   return &d;
 }
 
-const CommandTable getCommandTable() {
-  return commandDatabase()->commandTable();
+const CommandContext getCommandContext() {
+  return commandDatabase()->context();
 }
 
 void recalculate() {

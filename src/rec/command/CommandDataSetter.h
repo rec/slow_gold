@@ -8,7 +8,7 @@ namespace rec {
 namespace command {
 
 template <typename Proto>
-class CommandDataSetter : public DataListener<Proto>, public Callback {
+class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
  public:
   explicit CommandDataSetter(const Command& command,
                              const data::Address& addr =

@@ -16,15 +16,15 @@ using slow::Position;
 
 enum MergeType {INSERT, MERGE};
 
-void addTo(MergeType type, CommandTable* map, const Command& cmd,
+void addTo(MergeType type, CommandContext* context, const Command& cmd,
            CommandID id = 0) {
   if (!id)
     id = Position::toCommandID(cmd);
 
-  CommandTable::iterator j = map->find(id);
-  if (j == map->end()) {
+  CommandTable::iterator j = context->commands_.find(id);
+  if (j == context->commands_.end()) {
     if (type == INSERT)
-      map->insert(j, std::make_pair(id, new Command(cmd)));
+      context->commands_.insert(j, std::make_pair(id, new Command(cmd)));
     else
     LOG(ERROR) << "No existing command " << Position::commandIDName(id);
   } else {
@@ -35,12 +35,12 @@ void addTo(MergeType type, CommandTable* map, const Command& cmd,
   }
 }
 
-void merge(CommandTable* map, const Command& cmd, CommandID id = 0) {
-  addTo(MERGE, map, cmd, id);
+void merge(CommandContext* context, const Command& cmd, CommandID id = 0) {
+  addTo(MERGE, context, cmd, id);
 }
 
-void insert(CommandTable* map, const Command& cmd, CommandID id = 0) {
-  addTo(INSERT, map, cmd, id);
+void insert(CommandContext* context, const Command& cmd, CommandID id = 0) {
+  addTo(INSERT, context, cmd, id);
 }
 
 }  // namespace
@@ -54,30 +54,25 @@ CommandDatabase::~CommandDatabase() {
 }
 
 void CommandDatabase::clear() {
-  stl::deleteMapPointers(&map_);
-  map_.clear();
+  stl::deleteMapPointers(&context_.commands_);
+  stl::deleteMapPointers(&context_.setters_);
 }
 
 const Command CommandDatabase::command(CommandID t) const {
   Lock l(lock_);
 
-  CommandTable::const_iterator i = map_.find(t);
-  return (i == map_.end()) ? Command::default_instance() : *(i->second);
-}
-
-const CommandTable CommandDatabase::commandTable() const {
-  Lock l(lock_);
-  return map_;
+  CommandTable::const_iterator i = context_.commands_.find(t);
+  return (i == context_.commands_.end()) ? Command::default_instance() : *(i->second);
 }
 
 namespace {
 
-void insertSingle(CommandTable* map) {
+void insertSingle(CommandContext* context) {
   for (int i = 0; i < commands().command_size(); ++i)
-    insert(map, commands().command(i));
+    insert(context, commands().command(i));
 }
 
-void insertRepeated(CommandTable* map) {
+void insertRepeated(CommandContext* context) {
   for (int i = 0; i < repeated().command_size(); ++i) {
     const Command& command = repeated().command(i);
     Command c = command;
@@ -85,22 +80,22 @@ void insertRepeated(CommandTable* map) {
     // Insert each specific subcommand.
     for (int j = Position::FIRST; j < command.index(); ++j) {
       c.set_index(j);
-      insert(map, c, Position::toCommandID(j, command.type()));
+      insert(context, c, Position::toCommandID(j, command.type()));
     }
   }
 }
 
-void mergeKeyPresses(CommandTable* map, const Access& access) {
+void mergeKeyPresses(CommandContext* context, const Access& access) {
   Commands kp = keyPresses(access);
   for (int i = 0; i < kp.command_size(); ++i) {
     const Command& c = kp.command(i);
-    merge(map, c);
+    merge(context, c);
   }
 }
 
-void mergeDescription(CommandTable* map, const Command& command) {
-  CommandTable::iterator it = map->find(command.type());
-  if (it != map->end()) {
+void mergeDescription(CommandContext* context, const Command& command) {
+  CommandTable::iterator it = context->commands_.find(command.type());
+  if (it != context->commands_.end()) {
     it->second->MergeFrom(command);
     return;
   }
@@ -116,8 +111,8 @@ void mergeDescription(CommandTable* map, const Command& command) {
 
   CommandID c = Command::BANK_SIZE * command.type();
   for (int i = 0; i <= Position::LAST - Position::FIRST; ++i, ++c) {
-    it = map->find(c);
-    if (it == map->end()) {
+    it = context->commands_.find(c);
+    if (it == context->commands_.end()) {
       LOG(ERROR) << "Couldn't find position " << i
                  << " CommandID " << c
                  << " cmd: " << command.ShortDebugString();
@@ -129,8 +124,8 @@ void mergeDescription(CommandTable* map, const Command& command) {
   }
 
   for (int i = 0; ; ++i, ++c) {
-    it = map->find(c);
-    if (it == map->end())
+    it = context->commands_.find(c);
+    if (it == context->commands_.end())
       break;
 
     String n = " " + String(i + 1);
@@ -141,15 +136,16 @@ void mergeDescription(CommandTable* map, const Command& command) {
   }
 }
 
-void mergeDescriptions(CommandTable* map, const Access& access) {
+void mergeDescriptions(CommandContext* context, const Access& access) {
   const Commands& desc = descriptions(access);
   for (int i = 0; i < desc.command_size(); ++i)
-    mergeDescription(map, desc.command(i));
+    mergeDescription(context, desc.command(i));
 }
 
-void removeEmpties(CommandTable* map) {
+void removeEmpties(CommandContext* context) {
   std::vector<CommandID> empties;
-  for (CommandTable::const_iterator i = map->begin(); i != map->end(); ++i) {
+  for (CommandTable::const_iterator i = context->commands_.begin();
+       i != context->commands_.end(); ++i) {
     const Description& desc = i->second->desc();
     if (!(desc.menu().size() && desc.full().size())) {
       empties.push_back(i->first);
@@ -159,7 +155,7 @@ void removeEmpties(CommandTable* map) {
   }
 
   for (int i = 0; i < empties.size(); ++i)
-    map->erase(empties[i]);
+    context->commands_.erase(empties[i]);
 }
 
 }  // namespace
@@ -169,11 +165,11 @@ void CommandDatabase::recalculate() {
   Access access = data::get<Access>();
   clear();
 
-  insertSingle(&map_);
-  insertRepeated(&map_);
-  mergeKeyPresses(&map_, access);
-  mergeDescriptions(&map_, access);
-  removeEmpties(&map_);
+  insertSingle(&context_);
+  insertRepeated(&context_);
+  mergeKeyPresses(&context_, access);
+  mergeDescriptions(&context_, access);
+  removeEmpties(&context_);
 }
 
 }  // namespace command

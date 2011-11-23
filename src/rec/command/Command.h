@@ -3,18 +3,28 @@
 
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.pb.h"
+#include "rec/command/CommandItemSetter.h"
 
 namespace rec {
 namespace command {
 
 typedef std::map<CommandID, Command*> CommandTable;
 typedef std::map<CommandID, Callback*> CallbackTable;
+typedef std::map<CommandID, CommandItemSetter*> SetterTable;
 
-const CommandTable getCommandTable();
 const CommandTable toCommandTable(const Commands&);
 const Commands fromCommandTable(const CommandTable&);
 
-inline const Commands getCommands() { return fromCommandTable(getCommandTable()); }
+struct CommandContext {
+  CommandTable commands_;
+  SetterTable setters_;
+};
+
+const CommandContext getCommandContext();
+
+inline const Commands getCommands() {
+  return fromCommandTable(getCommandContext().commands_);
+}
 
 // Call to recalculate commands if Access changes for the user.
 void recalculate();
