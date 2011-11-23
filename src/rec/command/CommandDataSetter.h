@@ -3,6 +3,7 @@
 
 #include "rec/command/Command.h"
 #include "rec/util/thread/Callback.h"
+#include "rec/util/DataListener.h"
 
 namespace rec {
 namespace command {
@@ -18,7 +19,7 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
   }
 
   virtual void onDataChange(const Proto& p) {
-    data::Value value = getValue();
+    data::Value value = this->getValue();
     int index = value.get<bool>() ? 1 : 0;
     if (index < command_.desc().menu_size())
       menuName_ = command_.desc().menu(index);
@@ -26,10 +27,11 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
       LOG(ERROR) << "No " << index << " in " << command_.ShortDebugString();
   }
 
-  virtual void operator()() {
-    data::Value value = getValue();
+  virtual bool operator()() {
+    data::Value value = this->getValue();
     value.set_bool_f(value.bool_f());
-    setValue(value);
+    this->setValue(value);
+    return true;
   }
 
   virtual string menuName() const { Lock l(lock_); return menuName_; }
@@ -37,7 +39,7 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
  private:
   CriticalSection lock_;
 
-  const Command& command_;
+  const Command command_;
   string menuName_;
 
   DISALLOW_COPY_AND_ASSIGN(CommandDataSetter);

@@ -1,8 +1,11 @@
+#include "rec/audio/stretch/Stretch.h"
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/Access.pb.h"
+#include "rec/command/CommandDataSetter.h"
 #include "rec/command/data/CommandData.h"
 #include "rec/data/Data.h"
 #include "rec/slow/Position.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
@@ -65,7 +68,8 @@ const Command CommandDatabase::command(CommandID t) const {
   Lock l(lock_);
 
   CommandTable::const_iterator i = context_.commands_.find(t);
-  return (i == context_.commands_.end()) ? Command::default_instance() : *(i->second);
+  return (i == context_.commands_.end()) ?
+    Command::default_instance() : *(i->second);
 }
 
 namespace {
@@ -89,16 +93,41 @@ void insertRepeated(CommandContext* context) {
 }
 
 void insertSetters(CommandContext* context) {
-  for (int i = 0; i < setters().command_size(); ++i)
-    insert(context, setters().command(i));
+  SetterTable* table = &context->setters_;
+  for (int i = 0; i < setters().command_size(); ++i) {
+    Command cmd = setters().command(i);
+    insert(context, cmd);
+    int id = cmd.type();
+    ptr<CommandItemSetter> setter;
+    const data::Address& addr = cmd.address();
+
+    using slow::GuiSettings;
+    using audio::stretch::Stretch;
+
+    if (id == Command::TOGGLE_GRID_DISPLAY)
+      setter.reset(new CommandDataSetter<GuiSettings>(cmd, addr, true));
+
+    else if (id == Command::TOGGLE_STRETCH_ENABLE)
+      setter.reset(new CommandDataSetter<Stretch>(cmd, addr, false));
+
+    else
+      LOG(ERROR) << "Didn't understand " << Position::commandIDName(id);
+
+    if (setter) {
+      SetterTable::iterator i = table->find(id);
+      if (i != table->end()) {
+        LOG(ERROR) << "Found a duplicate setter " << Position::commandIDName(id);
+        delete i->second;
+      }
+      table->insert(i, std::make_pair(id, setter.transfer()));
+    }
+  }
 }
 
 void mergeKeyPresses(CommandContext* context, const Access& access) {
   Commands kp = keyPresses(access);
-  for (int i = 0; i < kp.command_size(); ++i) {
-    const Command& c = kp.command(i);
-    merge(context, c);
-  }
+  for (int i = 0; i < kp.command_size(); ++i)
+    merge(context, kp.command(i));
 }
 
 void mergeDescription(CommandContext* context, const Command& command) {
