@@ -13,7 +13,7 @@ class CommandDatabase {
   void clear();
 
   const Command command(CommandID id) const;
-  const CommandContext context() const { Lock l(lock_); return context_; }
+  const CommandContext& context() const { return context_; }
 
   void recalculate();
 

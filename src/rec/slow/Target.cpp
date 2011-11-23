@@ -26,8 +26,9 @@ Target::~Target() {
 void Target::addCommands() {
   ptr<CallbackTable> callbacks(createCallbackTable(instance_));
 
-  CommandContext context = command::getCommandContext();
-  CommandTable& cmds = context.commands_;
+  const CommandContext& context = command::getCommandContext();
+  callbacks->insert(context.callbacks_.begin(), context.callbacks_.end());
+  const CommandTable& cmds = context.commands_;
   for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
     const Command& c = *i->second;
     CommandID id = Position::toCommandID(c);

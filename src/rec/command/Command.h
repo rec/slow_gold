@@ -18,9 +18,10 @@ const Commands fromCommandTable(const CommandTable&);
 struct CommandContext {
   CommandTable commands_;
   SetterTable setters_;
+  CallbackTable callbacks_;
 };
 
-const CommandContext getCommandContext();
+const CommandContext& getCommandContext();
 
 inline const Commands getCommands() {
   return fromCommandTable(getCommandContext().commands_);

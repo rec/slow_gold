@@ -119,6 +119,7 @@ void insertSetters(CommandContext* context) {
         LOG(ERROR) << "Found a duplicate setter " << Position::commandIDName(id);
         delete i->second;
       }
+      context->callbacks_[id] = setter.get();
       table->insert(i, std::make_pair(id, setter.transfer()));
     }
   }

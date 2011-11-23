@@ -10,7 +10,7 @@ static CommandDatabase* commandDatabase() {
   return &d;
 }
 
-const CommandContext getCommandContext() {
+const CommandContext& getCommandContext() {
   return commandDatabase()->context();
 }
 
