@@ -12,6 +12,9 @@ struct BufferTime {
 
   BufferTime(Buffer* b, Samples<44100> t) : buffer_(b), time_(t) {}
   BufferTime() {}
+
+ private:
+  JUCE_LEAK_DETECTOR(BufferTime);
 };
 
 // Returns the number of samples actually copied.

@@ -39,7 +39,7 @@ CommandContext::CommandContext(Listener<None>* listener) {
 CommandContext::~CommandContext() {
   stl::deleteMapPointers(&commands_);
   stl::deleteMapPointers(&setters_);
-  stl::deleteMapPointers(&callbacks_);  // TODO: this causes a crash on exit.
+  stl::deleteMapPointers(&callbacks_);
 }
 
 }  // namespace command

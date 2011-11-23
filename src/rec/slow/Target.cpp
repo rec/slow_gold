@@ -25,10 +25,11 @@ Target::~Target() {
 }
 
 void Target::addCommands() {
-  ptr<CallbackTable> callbacks(createCallbackTable(instance_));
-
 	CommandContext* context = targetManager()->context();
-  callbacks->insert(context->callbacks_.begin(), context->callbacks_.end());
+
+  ptr<CallbackTable> callbacks(createCallbackTable(instance_));
+  context->callbacks_.insert(callbacks->begin(), callbacks->end());
+
   const CommandTable& cmds = context->commands_;
   for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
     const Command& c = *i->second;

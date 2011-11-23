@@ -48,6 +48,9 @@ struct ParallelFrame {
 
   const int channels_;
   Sample** sample_;
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(ParallelFrame);
 };
 
 }  // namespace data
