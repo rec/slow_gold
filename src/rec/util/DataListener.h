@@ -16,33 +16,20 @@ namespace listener {
 
 template <typename Proto>
 class DataListener : public Listener<const Proto&>,
-                           public Listener<const VirtualFile&>,
-                           public UpdateRequester {
+                     public Listener<const VirtualFile&>,
+                     public UpdateRequester {
  public:
   static const bool FILTER = false;
 
   DataListener(const data::Address& address =
-                     data::Address::default_instance(),
-                     bool is = false)
-      : filterDupes_(false),
-        data_(data::emptyEditable<Proto>()),
-        address_(address),
-        is_(is) {
-  }
+               data::Address::default_instance(),
+               bool isGlobal = false);
   virtual ~DataListener() {}
 
-  virtual void requestUpdates() {
-    if (is_)
-      setData(data::editable<Proto>());
-    else
-      data::editable<VirtualFile>()->addListener(this);
-  }
+  virtual void requestUpdates();
 
   virtual void operator()(const Proto& p) { updateValue(p, true); }
-  virtual void operator()(const VirtualFile& f) {
-    setData(file::empty(f) ? data::emptyEditable<Proto>() :
-            data::editable<Proto>(f));
-  }
+  virtual void operator()(const VirtualFile& f);
 
   data::TypedEditable<Proto>* data() const { Lock l(lock()); return data_; }
 
@@ -63,7 +50,7 @@ class DataListener : public Listener<const Proto&>,
   data::TypedEditable<Proto>* data_;
   Proto proto_;
   const data::Address address_;
-  const bool is_;
+  const bool isGlobal_;
 
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
@@ -71,6 +58,30 @@ class DataListener : public Listener<const Proto&>,
 //
 // Implementations
 //
+
+template <typename Proto>
+DataListener<Proto>::DataListener(const data::Address& address,
+                                  bool isGlobal)
+    : filterDupes_(false),
+      data_(data::emptyEditable<Proto>()),
+      address_(address),
+      isGlobal_(isGlobal) {
+}
+
+template <typename Proto>
+void DataListener<Proto>::requestUpdates() {
+  if (isGlobal_)
+    setData(data::editable<Proto>());
+  else
+    data::editable<VirtualFile>()->addListener(this);
+}
+
+template <typename Proto>
+void DataListener<Proto>::operator()(const VirtualFile& f) {
+  setData(file::empty(f) ? data::emptyEditable<Proto>() :
+          data::editable<Proto>(f));
+}
+
 
 template <typename Proto>
 void DataListener<Proto>::updateValue(const Proto& p, bool perhapsFilter) {
