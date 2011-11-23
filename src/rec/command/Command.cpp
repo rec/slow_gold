@@ -37,9 +37,11 @@ CommandContext::CommandContext(Listener<None>* listener) {
 }
 
 CommandContext::~CommandContext() {
+  DLOG(INFO) << commands_.size() << ", " << setters_.size() << ", "
+             << callbacks_.size() << ", ";
   stl::deleteMapPointers(&commands_);
   stl::deleteMapPointers(&setters_);
-  stl::deleteMapPointers(&callbacks_);
+  // stl::deleteMapPointers(&callbacks_);
 }
 
 }  // namespace command

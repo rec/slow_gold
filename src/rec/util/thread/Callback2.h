@@ -22,6 +22,8 @@ class Callback2 : public Callback {
   Method method_;
   V1 v1_;
   V2 v2_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Callback2);
 };
 
 template <typename Functor, typename V1, typename V2>
@@ -36,6 +38,8 @@ class CallbackFunc2 : public Callback {
   Functor functor_;
   V1 v1_;
   V2 v2_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CallbackFunc2);
 };
 
 }  // namespace callback

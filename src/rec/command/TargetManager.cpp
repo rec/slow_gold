@@ -35,7 +35,9 @@ TargetManager::TargetManager(Component* c, Listener<None>* listener)
   commandManager_.setFirstCommandTarget(this);
 }
 
-TargetManager:: ~TargetManager() {}
+TargetManager:: ~TargetManager() {
+  stl::deleteMapPointers(&callbacks_);
+}
 
 void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(this);
@@ -44,14 +46,15 @@ void TargetManager::registerAllCommandsForTarget() {
 
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
   commands.clear();
-  for (CommandCallbackMap::iterator i = map_.begin(); i != map_.end(); ++i)
+  CommandCallbackMap::const_iterator i;
+  for (i = callbacks_.begin(); i != callbacks_.end(); ++i)
     commands.add(i->first);
 }
 
 void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   Lock l(lock_);
-  CommandCallbackMap::const_iterator i = map_.find(id);
-  if (i == map_.end())
+  CommandCallbackMap::const_iterator i = callbacks_.find(id);
+  if (i == callbacks_.end())
     LOG(ERROR) << "No getCommandInfo" << slow::Position::commandIDName(id);
   else
     info = i->second->info_;
@@ -66,8 +69,8 @@ bool TargetManager::perform(const InvocationInfo& invocation) {
     return true;
 
   CommandID id = invocation.commandID;
-  CommandCallbackMap::const_iterator i = map_.find(id);
-  if (i == map_.end())
+  CommandCallbackMap::const_iterator i = callbacks_.find(id);
+  if (i == callbacks_.end())
     return false;
 
   lastInvocation_ = invocation;
@@ -96,18 +99,18 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
     flags = ApplicationCommandInfo::hiddenFromKeyEditor;
   info.setInfo(name, desc, category, flags);
 
-  CommandCallbackMap::const_iterator i = map_.find(id);
-  if (i != map_.end()) {
+  CommandCallbackMap::const_iterator i = callbacks_.find(id);
+  if (i != callbacks_.end()) {
     LOG(ERROR) << "Added command twice: " << id;
     delete i->second;
   }
 
-  map_[id] = new CommandCallback(info, cb);
+  callbacks_[id] = new CommandCallback(info, cb);
 }
 
 ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
-  CommandCallbackMap::iterator i = map_.find(command);
-  return i == map_.end() ? NULL : &i->second->info_;
+  CommandCallbackMap::iterator i = callbacks_.find(command);
+  return i == callbacks_.end() ? NULL : &i->second->info_;
 }
 
 void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,

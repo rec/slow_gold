@@ -21,6 +21,8 @@ class Callback1 : public Callback {
   Type* object_;
   Method method_;
   Value value_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Callback1);
 };
 
 template <typename Type, typename Method, typename Value>
@@ -34,6 +36,8 @@ class CallbackBool1 : public Callback {
   Type* object_;
   Method method_;
   Value value_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CallbackBool1);
 };
 
 template <typename Functor, typename Value>
@@ -47,6 +51,8 @@ class CallbackFunc1 : public Callback {
  private:
   Functor functor_;
   Value value_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CallbackFunc1);
 };
 
 }  // namespace callback

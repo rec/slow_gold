@@ -20,6 +20,8 @@ class Callback0 : public Callback {
  private:
   Type* object_;
   Method method_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Callback0);
 };
 
 }  // namespace callback

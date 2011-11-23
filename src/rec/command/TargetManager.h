@@ -62,7 +62,7 @@ class TargetManager : public ApplicationCommandTarget,
 
   ptr<command::CommandContext> context_;
 
-  CommandCallbackMap map_;
+  CommandCallbackMap callbacks_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;

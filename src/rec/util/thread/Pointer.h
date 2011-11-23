@@ -30,6 +30,8 @@ class OwnedPointer : public Pointer<Operator*> {
   explicit OwnedPointer(Operator* r) : Pointer<Operator*>(r) {
   }
   virtual ~OwnedPointer() { delete this->operator_; }
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(OwnedPointer);
 };
 
 }  // namespace callback

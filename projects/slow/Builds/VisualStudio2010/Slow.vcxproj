@@ -207,7 +207,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SetterCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentTime.cpp"/>
@@ -355,7 +354,6 @@
     <ClInclude Include="..\..\..\..\src\rec\base\CompileAssert.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\disallow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\Juce.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\base\Leaks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\port.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ptr.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h"/>
@@ -520,7 +518,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SetterCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentTime.h"/>

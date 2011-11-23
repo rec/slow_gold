@@ -23,6 +23,8 @@ class Callback3: public Callback {
   V1 v1_;
   V2 v2_;
   V3 v3_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Callback3);
 };
 
 template <typename Functor, typename V1, typename V2, typename V3>
@@ -38,6 +40,8 @@ class CallbackFunc3 : public Callback {
   V1 v1_;
   V2 v2_;
   V3 v3_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CallbackFunc3);
 };
 
 }  // namespace callback
