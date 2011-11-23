@@ -41,7 +41,7 @@ class GlobalDataListener : public Listener<const Proto&>,
 
   virtual void operator()(const Proto& p) { updateValue(p, true); }
 
-  data::TypedEditable<Proto>* data() const { Lock l(this->lock_); return data_; }
+  data::TypedEditable<Proto>* data() const { Lock l(lock()); return data_; }
 
   virtual const data::Value getValue() const { return data()->getValue(address_); }
   virtual void setValue(const data::Value& v) { data()->setValue(v, address_); }
@@ -50,7 +50,7 @@ class GlobalDataListener : public Listener<const Proto&>,
   virtual void setData(data::TypedEditable<Proto>* d);
   virtual void onDataChange(const Proto&) {}
   const data::Address& address() const { return address_; }
-  CriticalSection* lock() const { return &Listener<Proto>::lock_; }
+  const CriticalSection& lock() const { return Listener<const Proto&>::lock(); }
 
  private:
   void doOnDataChange(const Proto& p) { onDataChange(p); }
@@ -96,7 +96,7 @@ class DataListener : public GlobalDataListener<Proto>,
 template <typename Proto>
 void GlobalDataListener<Proto>::updateValue(const Proto& p, bool perhapsFilter) {
   {
-    Lock l(this->lock_);
+    Lock l(lock());
     if (perhapsFilter && filterDupes_ && data::equals(proto_, p))
       return;
     proto_ = p;
@@ -109,7 +109,7 @@ template <typename Proto>
 void GlobalDataListener<Proto>::setData(data::TypedEditable<Proto>* d) {
   Proto p;
   {
-    Lock l(this->lock_);
+    Lock l(lock());
     data_->removeListener(this);
     data_ = d;
     data_->addListener(this);

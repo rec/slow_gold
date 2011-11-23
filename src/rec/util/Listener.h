@@ -22,6 +22,8 @@ class Listener {
 
   virtual void operator()(Type x) = 0;
 
+  const CriticalSection& lock() const { return lock_; }
+
  protected:
   CriticalSection lock_;
 
