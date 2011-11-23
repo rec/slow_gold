@@ -22,6 +22,9 @@ struct CommandCallback {
 
   ApplicationCommandInfo info_;
   ptr<Callback> callback_;
+
+ private:
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandCallback);
 };
 
 TargetManager::TargetManager(Component* c, Listener<None>* listener)

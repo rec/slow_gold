@@ -33,6 +33,8 @@ struct MessageField {
   int32 index_;
   Type type_;
   int32 repeatCount_;
+
+  JUCE_LEAK_DETECTOR(MessageField);
 };
 
 bool hasValue(const MessageField& mf);

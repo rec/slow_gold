@@ -14,6 +14,9 @@ class Address : public AddressProto {
     Part(const char* s) { set_name(s); }
     Part(int i) { set_index(i); }
     Part(const AddressProto::Part& field) { CopyFrom(field); }
+
+   private:
+    JUCE_LEAK_DETECTOR(Part)
   };
 
   typedef const Part& P;

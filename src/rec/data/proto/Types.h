@@ -21,6 +21,7 @@ typedef uint32 Tag;
     operator IN() const { return value_; }             \
                                                        \
     IN value_;                                         \
+    JUCE_LEAK_DETECTOR(OUT);                           \
   };
 
 PROTO_MAKE_TYPE(fixed32,  uint32);
