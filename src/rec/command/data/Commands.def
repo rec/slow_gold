@@ -36,17 +36,3 @@ command { type: TREE_UP category: ""}
 command { type: UNDO category: "Edit"}
 command { type: ZOOM_IN category: "Audio"}
 command { type: ZOOM_OUT category: "Audio"}
-command {
-  type: TOGGLE_GRID_DISPLAY
-  category: "Transport"
-  is_global_setter: true
-  address { part: { name: "show_grid" } }
-  setter_type_name: "rec.slow.GuiSettings"
-}
-command {
-  type: TOGGLE_STRETCH_ENABLE
-  category: "Audio"
-  is_setter: true
-  address { part: { name: "disabled" } }
-  setter_type_name: "rec.audio.stretch.Stretch"
-}

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="PIIuPJOLD" name="tests">
+  <MAINGROUP id="BQ0J5iFGx" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -265,6 +265,8 @@
               id="WqJzAg6ez" name="CommandDatabase.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDatabase.h" id="jpHh5Mj9d"
               name="CommandDatabase.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandDataSetter.h"
+              id="332JrcbQn" name="CommandDataSetter.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
               id="mlyilZbte" name="CommandItemSetter.h" resource="0"/>
         <GROUP id="hPUNTkCGT" name="data">
@@ -288,6 +290,10 @@
                 id="JsE1JheHH" name="Repeated.def.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/data/Repeated.def.h"
                 id="lKtqc5A7M" name="Repeated.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/data/Setters.def.cpp"
+                id="WAifVqfHD" name="Setters.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/data/Setters.def.h" id="YH0TRF78s"
+                name="Setters.def.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
               id="kEiWrJA2b" name="KeyboardBindings.cpp" resource="0"/>
@@ -1337,7 +1343,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="r5IWpns4C" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="lizyLzLB5" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

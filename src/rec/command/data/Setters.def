@@ -1,0 +1,14 @@
+command {
+  type: TOGGLE_GRID_DISPLAY
+  category: "Transport"
+  is_global_setter: true
+  address { part: { name: "show_grid" } }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
+  type: TOGGLE_STRETCH_ENABLE
+  category: "Audio"
+  is_setter: true
+  address { part: { name: "disabled" } }
+  setter_type_name: "rec.audio.stretch.Stretch"
+}

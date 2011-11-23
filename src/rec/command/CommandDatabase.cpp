@@ -56,6 +56,9 @@ CommandDatabase::~CommandDatabase() {
 void CommandDatabase::clear() {
   stl::deleteMapPointers(&context_.commands_);
   stl::deleteMapPointers(&context_.setters_);
+
+  context_.commands_.clear();
+  context_.setters_.clear();
 }
 
 const Command CommandDatabase::command(CommandID t) const {
@@ -83,6 +86,11 @@ void insertRepeated(CommandContext* context) {
       insert(context, c, Position::toCommandID(j, command.type()));
     }
   }
+}
+
+void insertSetters(CommandContext* context) {
+  for (int i = 0; i < setters().command_size(); ++i)
+    insert(context, setters().command(i));
 }
 
 void mergeKeyPresses(CommandContext* context, const Access& access) {
@@ -167,6 +175,7 @@ void CommandDatabase::recalculate() {
 
   insertSingle(&context_);
   insertRepeated(&context_);
+  insertSetters(&context_);
   mergeKeyPresses(&context_, access);
   mergeDescriptions(&context_, access);
   removeEmpties(&context_);

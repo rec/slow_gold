@@ -304,6 +304,9 @@
     <ClCompile Include="..\..\..\..\src\rec\command\data\Repeated.def.cpp">
       <Filter>Slow\rec\command\data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\data\Setters.def.cpp">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
       <Filter>Slow\rec\command</Filter>
     </ClCompile>
@@ -1071,6 +1074,9 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
@@ -1087,6 +1093,9 @@
       <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\data\Repeated.def.h">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\data\Setters.def.h">
       <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">

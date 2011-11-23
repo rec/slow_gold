@@ -10,6 +10,7 @@ class Access;
 
 const Commands& commands();
 const Commands& repeated();
+const Commands& setters();
 const Commands& descriptions(const Access&);
 const Commands& keyPresses(const Access&);
 

@@ -161,6 +161,7 @@
     <ClCompile Include="..\..\..\..\src\rec\command\data\Descriptions.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\data\KeyPresses.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\data\Repeated.def.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\data\Setters.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditor.cpp"/>
@@ -418,12 +419,14 @@
     <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\data\CommandData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\data\Commands.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\data\Descriptions.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\data\KeyPresses.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\data\Repeated.def.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\data\Setters.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h"/>
