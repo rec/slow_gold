@@ -2,6 +2,7 @@
 #define __REC_COMMAND_COMMANDDATASETTER__
 
 #include "rec/command/Command.h"
+#include "rec/util/thread/Callback.h"
 
 namespace rec {
 namespace command {
@@ -11,8 +12,9 @@ class CommandDataSetter : public DataListener<Proto>, public Callback {
  public:
   explicit CommandDataSetter(const Command& command,
                              const data::Address& addr =
-                             data::Address::default_instance())
-      : DataListener<Proto>(addr), command_(command) {
+                             data::Address::default_instance(),
+                             bool isGlobal = false)
+      : DataListener<Proto>(addr, isGlobal), command_(command) {
   }
 
   virtual void onDataChange(const Proto& p) {

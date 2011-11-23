@@ -23,6 +23,7 @@ class Listener {
   virtual void operator()(Type x) = 0;
 
   const CriticalSection& lock() const { return lock_; }
+  virtual void wasRemovedFrom(Broadcaster<Type>*);
 
  protected:
   CriticalSection lock_;
@@ -72,23 +73,6 @@ class Broadcaster {
 };
 
 template <typename Type>
-bool Listener<Type>::setState(ListenerState state) {
-  while (true) {
-    Lock l(stateLock_);
-    if (state_ == DELETING) {
-      return false;
-    } else if (state == LISTENING) {
-      state_ = state;
-      return true;
-    } else if (state_ == LISTENING) {
-      state_ = state;
-      return true;
-    }
-    Thread::sleep(1);
-  }
-};
-
-template <typename Type>
 Listener<Type>::~Listener() {
   setState(DELETING);
 
@@ -106,8 +90,32 @@ Listener<Type>::~Listener() {
 }
 
 template <typename Type>
+void Listener<Type>::wasRemovedFrom(Broadcaster<Type>* broadcaster) {
+  Lock l(lock_);
+  broadcasters_.erase(broadcaster);
+}
+
+
+template <typename Type>
+bool Listener<Type>::setState(ListenerState state) {
+  while (true) {
+    Lock l(stateLock_);
+    if (state_ == DELETING) {
+      return false;
+    } else if (state == LISTENING) {
+      state_ = state;
+      return true;
+    } else if (state_ == LISTENING) {
+      state_ = state;
+      return true;
+    }
+    Thread::sleep(1);
+  }
+};
+
+template <typename Type>
 void Broadcaster<Type>::broadcast(Type x) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   for (iterator i = listeners_.begin(); i != listeners_.end(); ++i) {
     Listener<Type>* listener = *i;
     if (listener->setState(Listener<Type>::UPDATING)) {
@@ -125,12 +133,13 @@ Broadcaster<Type>::~Broadcaster() {
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
-  ScopedLock l(lock_);
-  listeners_.insert(listener);
+  {
+    Lock l(lock_);
+    listeners_.insert(listener);
+  }
 
   {
-    ScopedUnlock u(lock_);
-    ScopedLock l(listener->lock_);
+    Lock l(listener->lock_);
     listener->broadcasters_.insert(this);
   }
 }
@@ -138,12 +147,11 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
 template <typename Type>
 void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     listeners_.erase(listener);
   }
 
-  ScopedLock l(listener->lock_);
-  listener->broadcasters_.erase(this);
+  listener->wasRemovedFrom(this);
 }
 
 template <typename Type>
