@@ -15,7 +15,7 @@ class Application : public GenericApplication {
   virtual Window* createWindow() { return new WindowImpl(this); }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Application);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Application);
 };
 
 // START_REC_APPLICATION(CLASS, NAME, VERSION) wraps START_JUCE_APPLICATION.

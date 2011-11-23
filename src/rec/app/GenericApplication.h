@@ -44,7 +44,7 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   bool disabled_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GenericApplication);
 };
 
 }  // namespace app
