@@ -39,7 +39,7 @@ class Stretchy : public source::Wrappy {
   double timeScale_;
   bool bypass_;
 
-  DISALLOW_COPY_AND_ASSIGN(Stretchy);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
 };
 
 }  // namespace stretch

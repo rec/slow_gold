@@ -34,7 +34,7 @@ class SetterTextArea : public Layout {
   }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(SetterTextArea);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(SetterTextArea);
 };
 
 }  // namespace gui

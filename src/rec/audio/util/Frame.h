@@ -26,7 +26,7 @@ class Frames {
   Samples<44100> length_, allocatedLength_;
   Frame* frames_;
 
-  DISALLOW_COPY_AND_ASSIGN(Frames);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Frames);
 };
 
 template <typename Sample, int CHANNELS>

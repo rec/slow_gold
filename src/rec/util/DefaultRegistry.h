@@ -26,7 +26,7 @@ class DefaultRegistry {
 
   Registry registry_;
 
-  DISALLOW_COPY_AND_ASSIGN(DefaultRegistry);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(DefaultRegistry);
 };
 
 template <typename Type>

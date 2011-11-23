@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_PTR
 #define __REC_UTIL_PTR
 
-#include "rec/base/base.h"
+#include "rec/base/disallow.h"
 
 // scoped_ptr mimics a built-in pointer except that it guarantees deletion
 // of the object pointed to, either on destruction of the scoped_ptr or via
@@ -46,7 +46,7 @@ class ptr {
  private:
   Type* p_;
 
-  DISALLOW_COPY_AND_ASSIGN(ptr);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(ptr);
 };
 
 #endif // __REC_UTIL_PTR

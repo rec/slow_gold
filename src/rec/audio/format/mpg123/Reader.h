@@ -35,7 +35,7 @@ class Reader : public juce::AudioFormatReader {
   int64 size_, allocated_;
   Copier copier_;
 
-  DISALLOW_COPY_AND_ASSIGN(Reader);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Reader);
 };
 
 }  // namespace mpg123

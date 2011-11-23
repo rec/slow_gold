@@ -49,7 +49,7 @@ class TypedTyper : public Typer {
   }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(TypedTyper);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(TypedTyper);
 };
 
 template <typename Type>

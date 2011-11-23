@@ -50,7 +50,7 @@ class Loops : public component::Focusable<TableController>,
  private:
   LoopPointList loops_;
 
-  DISALLOW_COPY_AND_ASSIGN(Loops);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Loops);
 };
 
 }  // namespace rec

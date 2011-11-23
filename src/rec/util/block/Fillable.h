@@ -39,7 +39,7 @@ class Fillable {
  private:
   int64 position_;
 
-  DISALLOW_COPY_AND_ASSIGN(Fillable);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Fillable);
 };
 
 }  // namespace block

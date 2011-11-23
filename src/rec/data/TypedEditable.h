@@ -53,7 +53,7 @@ class EmptyTypedEditable : public TypedEditable<Proto> {
   virtual bool isEmpty() const { return true; }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(EmptyTypedEditable);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(EmptyTypedEditable);
 };
 
 //

@@ -38,7 +38,7 @@ class TransportController : public Layout,
   Samples<44100> time_;
   LoopPointList loopPointList_;
 
-  DISALLOW_COPY_AND_ASSIGN(TransportController);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(TransportController);
 };
 
 }  // namespace rec

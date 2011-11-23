@@ -38,7 +38,7 @@ class FillableFrameBuffer : public block::Fillable {
   vector<int> buffer_[CHANNELS];
   int* bufferPointers_[CHANNELS];
 
-  DISALLOW_COPY_AND_ASSIGN(FillableFrameBuffer);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(FillableFrameBuffer);
 };
 
 }  // namespace util

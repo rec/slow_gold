@@ -20,7 +20,7 @@ class Device {
  private:
   void loadState();
 
-  DISALLOW_COPY_AND_ASSIGN(Device);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Device);
 };
 
 }  // namespace audio

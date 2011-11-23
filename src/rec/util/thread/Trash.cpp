@@ -68,7 +68,7 @@ class Trash {
   typedef std::set<Thread*> ThreadSet;
   ThreadSet threads_;
 
-  DISALLOW_COPY_AND_ASSIGN(Trash);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Trash);
 };
 
 Trash* instance() {

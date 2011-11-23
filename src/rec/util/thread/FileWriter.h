@@ -36,7 +36,7 @@ class FileWriter : public Thread {
  private:
   MemoryBlock memory_;
   const File file_;
-  DISALLOW_COPY_AND_ASSIGN(FileWriter);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(FileWriter);
 };
 
 

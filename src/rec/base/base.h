@@ -4,5 +4,6 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/Juce.h"
+#include "rec/base/ptr.h"
 
 #endif

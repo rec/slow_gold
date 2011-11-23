@@ -7,7 +7,6 @@
 #include <glog/logging.h>
 
 #include "rec/base/disallow.h"
-#include "rec/base/ptr.h"
 #include "rec/base/types.h"
 
 namespace google { namespace protobuf { class Message; }}

@@ -62,7 +62,7 @@ class PointerList {
   List list_;
   CriticalSection lock_;
 
-  DISALLOW_COPY_AND_ASSIGN(PointerList);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(PointerList);
 };
 
 }  // namespace util

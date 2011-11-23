@@ -36,7 +36,7 @@ class CurrentTime : public HasInstance,
   Samples<44100> time_;
   Samples<44100> jumpTime_;
 
-  DISALLOW_COPY_AND_ASSIGN(CurrentTime);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentTime);
 };
 
 }  // namespace slow

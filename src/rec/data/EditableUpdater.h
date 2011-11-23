@@ -48,7 +48,7 @@ class EditableUpdater {
   thread_ptr<Thread> updateThread_;
   thread_ptr<Thread> writeThread_;
 
-  DISALLOW_COPY_AND_ASSIGN(EditableUpdater);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(EditableUpdater);
 };
 
 }  // namespace data

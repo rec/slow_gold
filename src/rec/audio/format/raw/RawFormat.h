@@ -31,7 +31,7 @@ class RawFormat : public juce::AudioFormat {
   virtual bool isCompressed() { return false; }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(RawFormat);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(RawFormat);
 };
 
 }  // namespace raw

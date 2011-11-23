@@ -23,7 +23,7 @@ class Timer : public Wrappy, public Broadcaster<Samples<44100> > {
   }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(Timer);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Timer);
 };
 
 }  // namespace source

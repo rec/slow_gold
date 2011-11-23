@@ -47,7 +47,7 @@ class Format : public AudioFormat {
   virtual bool isCompressed() { return true; }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(Format);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Format);
 };
 
 }  // namespace mpg123

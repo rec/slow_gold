@@ -33,7 +33,7 @@ class Switcher {
  private:
   ptr<Type> current_, next_;
 
-  DISALLOW_COPY_AND_ASSIGN(Switcher);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Switcher);
 };
 
 }  // namespace util

@@ -43,7 +43,7 @@ class NameToProto {
   CriticalSection lock_;
   NameToProtoMap map_;
 
-  DISALLOW_COPY_AND_ASSIGN(NameToProto);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(NameToProto);
 };
 
 }  // namespace proto

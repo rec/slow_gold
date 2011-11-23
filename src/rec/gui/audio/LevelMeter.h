@@ -31,7 +31,7 @@ class LevelMeter : public Component,
   int margin_;
   bool preFaderLevels_;
 
-  DISALLOW_COPY_AND_ASSIGN(LevelMeter);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(LevelMeter);
 };
 
 }  // namespace audio

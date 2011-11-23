@@ -53,7 +53,7 @@ class Layout : public Component {
   const bool resizeOtherDimension_;
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(Layout);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Layout);
 };
 
 }  // namespace gui

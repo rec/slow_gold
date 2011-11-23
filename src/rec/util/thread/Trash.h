@@ -45,7 +45,7 @@ public:
   operator bool() const { return this->get(); }
   bool operator!() const { return !this->get(); }
 
-  DISALLOW_COPY_AND_ASSIGN(thread_ptr);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(thread_ptr);
 };
 
 }  // namespace util

@@ -32,7 +32,7 @@ class CurrentFile : public HasInstance,
 
   VirtualFile file_;
   RealTime length_;
-  DISALLOW_COPY_AND_ASSIGN(CurrentFile);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 };
 
 }  // namespace slow

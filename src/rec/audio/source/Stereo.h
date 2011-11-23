@@ -22,7 +22,7 @@ class Stereo : public Wrappy {
   StereoProto desc_;
   CriticalSection lock_;
 
-  DISALLOW_COPY_AND_ASSIGN(Stereo);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Stereo);
 };
 
 }  // namespace source

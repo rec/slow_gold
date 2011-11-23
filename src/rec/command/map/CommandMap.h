@@ -38,7 +38,7 @@ class CommandMap : public Listener<const CommandMapProto&> {
   KeyToCommand toCommand_;
   CommandToKeys toKeys_;
 
-  DISALLOW_COPY_AND_ASSIGN(CommandMap);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandMap);
 };
 
 }  // namespace command

@@ -60,7 +60,7 @@ class DropTarget : public Interface, public Parent {
   bool draggingOver_;
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(DropTarget);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(DropTarget);
 };
 
 }  // namespace gui

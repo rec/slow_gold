@@ -45,7 +45,7 @@ class MainPage {
 
   double length_;
 
-  DISALLOW_COPY_AND_ASSIGN(MainPage);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(MainPage);
 };
 
 }  // namespace slow

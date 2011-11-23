@@ -31,7 +31,7 @@ class TimeController : public Layout, public Listener< Samples<44100> > {
   double timeScale_;
   gui::Layout timesLayout_;
 
-  DISALLOW_COPY_AND_ASSIGN(TimeController);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(TimeController);
 };
 
 }  // namespace rec

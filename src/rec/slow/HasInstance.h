@@ -26,9 +26,9 @@ class HasInstance {
   Samples<44100> length() const { return instance_->length(); }
 
  protected:
-  Instance* instance_;  
+  Instance* instance_;
 
-  DISALLOW_COPY_AND_ASSIGN(HasInstance);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(HasInstance);
 };
 
 }  // namespace slow

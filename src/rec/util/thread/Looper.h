@@ -28,7 +28,7 @@ class Looper : public Thread {
   Operator const op_;
   Instance const instance_;
 
-  DISALLOW_COPY_AND_ASSIGN(Looper);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Looper);
 };
 
 template <typename Operator, typename Instance>

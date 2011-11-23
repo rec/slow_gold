@@ -32,7 +32,7 @@ class SlowWindow : public app::Window {
  private:
   ptr<Instance> instance_;
 
-  DISALLOW_COPY_AND_ASSIGN(SlowWindow);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowWindow);
 };
 
 }  // namespace slow

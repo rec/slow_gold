@@ -44,7 +44,7 @@ class Level : public Wrappy,
  private:
   int channels_;
 
-  DISALLOW_COPY_AND_ASSIGN(Level);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Level);
 };
 
 }  // namespace source

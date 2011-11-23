@@ -40,7 +40,7 @@ class Wrappy : public PositionableAudioSource {
   bool prepared_;
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(Wrappy);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Wrappy);
 };
 
 }  // namespace source

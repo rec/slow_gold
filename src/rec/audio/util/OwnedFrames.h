@@ -41,7 +41,7 @@ class OwnedFrames {
   FramesBase<Frame> frames_;
   bool mustReallocate_;
 
-  DISALLOW_COPY_AND_ASSIGN(Frames);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Frames);
 };
 
 }  // namespace audio

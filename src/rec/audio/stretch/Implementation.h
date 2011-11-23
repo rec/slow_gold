@@ -27,7 +27,7 @@ class Implementation {
   AudioSampleBuffer buffer_;
   AudioSourceChannelInfo info_;
 
-  DISALLOW_COPY_AND_ASSIGN(Implementation);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Implementation);
 };
 
 }  // namespace stretch

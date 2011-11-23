@@ -14,7 +14,7 @@ class CommandItemSetter {
   virtual void execute() = 0;
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(CommandItemSetter);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandItemSetter);
 };
 
 }  // namespace command

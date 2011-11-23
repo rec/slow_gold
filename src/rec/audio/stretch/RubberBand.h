@@ -28,7 +28,7 @@ class RubberBand : public Implementation {
   int chunkSize_;
   int maxProcessSize_;
 
-  DISALLOW_COPY_AND_ASSIGN(RubberBand);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(RubberBand);
 };
 
 }  // namespace stretch

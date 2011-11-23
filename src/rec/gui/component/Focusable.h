@@ -38,7 +38,7 @@ class Focusable : public Type {
  private:
   MenuBarModel* menuBarModel_;
 
-  DISALLOW_COPY_AND_ASSIGN(Focusable);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Focusable);
 };
 
 }  // namespace component

@@ -52,7 +52,7 @@ class DataListener : public Listener<const Proto&>,
   const data::Address address_;
   const bool isGlobal_;
 
-  DISALLOW_COPY_AND_ASSIGN(DataListener);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(DataListener);
 };
 
 //

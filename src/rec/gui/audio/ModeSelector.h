@@ -43,7 +43,7 @@ class ModeSelector : public Layout,
   typedef std::map<Mode::Action, DrawableButton*> ButtonMap;
   ButtonMap buttons_;
 
-  DISALLOW_COPY_AND_ASSIGN(ModeSelector);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(ModeSelector);
 };
 
 }  // namespace audio

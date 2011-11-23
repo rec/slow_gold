@@ -38,7 +38,7 @@ class TableController : public TableListBoxModel, public TableListBox {
   data::Address address_;
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(TableController);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(TableController);
 };
 
 }  // namespace gui

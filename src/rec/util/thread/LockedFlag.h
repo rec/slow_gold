@@ -40,7 +40,7 @@ class LockedFlag {
   CriticalSection lock_;
   Type flag_;
 
-  DISALLOW_COPY_AND_ASSIGN(LockedFlag);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(LockedFlag);
 };
 
 }  // namespace thread

@@ -50,7 +50,7 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
   const Command command_;
   string menuName_;
 
-  DISALLOW_COPY_AND_ASSIGN(CommandDataSetter);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandDataSetter);
 };
 
 }  // namespace command

@@ -10,7 +10,7 @@ class {classname} {{
   {classname}();
 
  private:
-  DISALLOW_COPY_AND_ASSIGN({classname});
+  DISALLOW_COPY_ASSIGN_AND_LEAKS({classname});
 }};
 
 {namespace_end}

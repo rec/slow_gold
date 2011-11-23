@@ -55,7 +55,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   juce::ComboBox stereoComboBox_;
   ModeSelector modeSelector_;
 
-  DISALLOW_COPY_AND_ASSIGN(PlayerController);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(PlayerController);
 };
 
 }  // namespace audio

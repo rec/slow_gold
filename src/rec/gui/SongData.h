@@ -44,7 +44,7 @@ class SongData : public component::Focusable<SetterTextArea <music::Metadata> >,
   virtual void cut() {}
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(SongData);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(SongData);
 };
 
 }  // namespace gui

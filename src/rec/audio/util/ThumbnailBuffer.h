@@ -36,7 +36,7 @@ class ThumbnailBuffer {
 
   FillableFrameBuffer<short, 2> buffer_;
 
-  DISALLOW_COPY_AND_ASSIGN(ThumbnailBuffer);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(ThumbnailBuffer);
 };
 
 }  // namespace util

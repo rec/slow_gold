@@ -35,7 +35,7 @@ class PersistentWindow : public DocumentWindow,
   bool okToSavePosition_;
   WindowPosition position_;
 
-  DISALLOW_COPY_AND_ASSIGN(PersistentWindow);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(PersistentWindow);
 };
 
 }  // namespace gui

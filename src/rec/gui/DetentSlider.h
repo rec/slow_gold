@@ -35,7 +35,7 @@ class DetentSlider : public juce::Slider {
   float detentRadius_;
   bool detentSet_;
 
-  DISALLOW_COPY_AND_ASSIGN(DetentSlider);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(DetentSlider);
 };
 
 }  // namespace gui

@@ -18,7 +18,7 @@ class DialogLocker {
  private:
   bool locked_;
 
-  DISALLOW_COPY_AND_ASSIGN(DialogLocker);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(DialogLocker);
 };
 
 namespace dialog {
