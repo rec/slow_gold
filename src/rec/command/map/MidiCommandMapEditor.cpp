@@ -40,7 +40,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
   MidiCommandMapEditor* owner_;
   MidiCommandMap* mappings_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(MidiCommandEntryWindow);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandEntryWindow);
 };
 
 }  // namespace

@@ -35,7 +35,7 @@ class TypedEditable : public UntypedEditable, public Broadcaster<const Proto&> {
   UpdateQueue updateQueue_;
   Proto proto_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedEditable);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TypedEditable);
 };
 
 template <typename Proto>

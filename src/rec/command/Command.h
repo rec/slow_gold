@@ -25,7 +25,7 @@ struct CommandContext {
   CallbackTable callbacks_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(CommandContext);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandContext);
 };
 
 }  // namespace command

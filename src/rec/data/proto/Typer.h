@@ -36,7 +36,7 @@ class Typer {
   const google::protobuf::FieldDescriptor* field_;
   Message* msg_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Typer);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Typer);
 };
 
 }  // namespace typer

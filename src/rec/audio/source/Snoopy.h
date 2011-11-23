@@ -27,7 +27,7 @@ class Snoopy : public Wrappy,
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Snoopy);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Snoopy);
 };
 
 }  // namespace source

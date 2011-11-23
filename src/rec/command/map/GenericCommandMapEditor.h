@@ -101,7 +101,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
  private:
   MappingSet& mappings;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericCommandMapEditor);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GenericCommandMapEditor);
 };
 
 }  // namespace command

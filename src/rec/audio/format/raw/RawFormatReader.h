@@ -58,7 +58,7 @@ class RawFormatReader : public AudioFormatReader {
   int frameSize_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(RawFormatReader);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(RawFormatReader);
 };
 
 }  // namespace raw

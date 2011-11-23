@@ -14,7 +14,7 @@ class ThreadedSource : public Wrappy, public Thread {
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(ThreadedSource);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(ThreadedSource);
 };
 
 }  // namespace source

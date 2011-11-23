@@ -61,7 +61,7 @@ struct Copier {
   const BufferTime to_;
   const Samples<44100> count_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Copier);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Copier);
 };
 
 Samples<44100> restrictCount(const BufferTime& bt, Samples<44100> count) {

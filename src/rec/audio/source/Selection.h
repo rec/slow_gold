@@ -33,7 +33,7 @@ class Selection : public Wrappy, public DataListener<LoopPointList> {
  private:
   block::BlockSet selection_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Selection);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Selection);
 };
 
 }  // namespace source

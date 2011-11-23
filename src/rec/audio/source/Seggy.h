@@ -33,7 +33,7 @@ class Seggy : public Wrappy {
  private:
   Range<Samples<44100>> range_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Seggy);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Seggy);
 };
 
 }  // namespace source

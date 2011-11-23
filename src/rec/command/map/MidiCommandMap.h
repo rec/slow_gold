@@ -23,7 +23,7 @@ class MidiCommandMap : public CommandMap,
   Listener<const juce::MidiMessage&>* listener_;
   bool enable_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(MidiCommandMap);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandMap);
 };
 
 }  // namespace command

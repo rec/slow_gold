@@ -54,7 +54,7 @@ class UntypedEditable : public Editable {
   mutable bool alreadyReadFromFile_;
   mutable bool fileReadSuccess_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedEditable);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedEditable);
 };
 
 template <typename Proto>

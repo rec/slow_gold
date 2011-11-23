@@ -69,7 +69,7 @@ class TargetManager : public ApplicationCommandTarget,
   InvocationInfo lastInvocation_;
   bool disabled_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TargetManager);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TargetManager);
 };
 
 }  // namespace rec

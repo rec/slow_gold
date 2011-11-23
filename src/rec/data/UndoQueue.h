@@ -56,7 +56,7 @@ class UndoQueue : public Broadcaster<None> {
   bool running_;
   ActionGrouper grouper_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UndoQueue);
 };
 
 }  // namespace data

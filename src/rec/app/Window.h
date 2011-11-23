@@ -42,7 +42,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   bool running_;
   GenericApplication* application_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Window);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Window);
 };
 
 }  // namespace app

@@ -43,7 +43,7 @@ class STyper : public ptr<Typer> {
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(STyper);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(STyper);
 };
 
 } // namespace

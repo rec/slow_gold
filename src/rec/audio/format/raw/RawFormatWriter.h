@@ -45,7 +45,7 @@ class RawFormatWriter : public AudioFormatWriter {
 
  private:
   Endianness endian_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(RawFormatWriter);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(RawFormatWriter);
 };
 
 }  // namespace raw

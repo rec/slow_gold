@@ -76,7 +76,7 @@ class Player : public DataListener<Gain>,
   Stereo* stereo_;
   Level level_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Player);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Player);
 };
 
 }  // namespace source
