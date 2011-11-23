@@ -13,6 +13,9 @@ class Callback {
  public:
   virtual bool operator()() = 0;
   virtual ~Callback() {}
+
+ private:
+  JUCE_LEAK_DETECTOR(Callback);
 };
 
 }  // namespace callback

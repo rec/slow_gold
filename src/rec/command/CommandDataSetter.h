@@ -21,6 +21,10 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
         command_(command) {
   }
 
+  virtual ~CommandDataSetter() {
+    DLOG(INFO) << "Deleting " << this;
+  }
+
   virtual void onDataChange(const Proto& p) {
     data::Value value = this->getValue();
     int index = value.get<bool>() ? 1 : 0;
@@ -31,11 +35,10 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
     (*changeListener_)(None());
   }
 
-  virtual bool operator()() {
+  virtual void execute() {
     data::Value value = this->getValue();
     value.set_bool_f(value.bool_f());
     this->setValue(value);
-    return true;
   }
 
   virtual string menuName() const { Lock l(lock_); return menuName_; }

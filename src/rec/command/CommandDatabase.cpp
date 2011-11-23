@@ -1,4 +1,4 @@
-#include "rec/audio/stretch/Stretch.h"
+ #include "rec/audio/stretch/Stretch.h"
 #include "rec/command/Access.pb.h"
 #include "rec/command/CommandDataSetter.h"
 #include "rec/command/data/CommandData.h"
@@ -18,15 +18,15 @@ using slow::Position;
 
 enum MergeType {INSERT, MERGE};
 
-void addTo(MergeType type, CommandContext* context, const Command& cmd,
+void addTo(MergeType type, CommandTable* commands, const Command& cmd,
            CommandID id = 0) {
   if (!id)
     id = Position::toCommandID(cmd);
 
-  CommandTable::iterator j = context->commands_.find(id);
-  if (j == context->commands_.end()) {
+  CommandTable::iterator j = commands->find(id);
+  if (j == commands->end()) {
     if (type == INSERT)
-      context->commands_.insert(j, std::make_pair(id, new Command(cmd)));
+      commands->insert(j, std::make_pair(id, new Command(cmd)));
     else
     LOG(ERROR) << "No existing command " << Position::commandIDName(id);
   } else {
@@ -37,20 +37,20 @@ void addTo(MergeType type, CommandContext* context, const Command& cmd,
   }
 }
 
-void merge(CommandContext* context, const Command& cmd, CommandID id = 0) {
-  addTo(MERGE, context, cmd, id);
+void merge(CommandTable* commands, const Command& cmd, CommandID id = 0) {
+  addTo(MERGE, commands, cmd, id);
 }
 
-void insert(CommandContext* context, const Command& cmd, CommandID id = 0) {
-  addTo(INSERT, context, cmd, id);
+void insert(CommandTable* commands, const Command& cmd, CommandID id = 0) {
+  addTo(INSERT, commands, cmd, id);
 }
 
-void insertSingle(CommandContext* context) {
+void insertSingle(CommandTable* cmds) {
   for (int i = 0; i < commands().command_size(); ++i)
-    insert(context, commands().command(i));
+    insert(cmds, commands().command(i));
 }
 
-void insertRepeated(CommandContext* context) {
+void insertRepeated(CommandTable* commands) {
   for (int i = 0; i < repeated().command_size(); ++i) {
     const Command& command = repeated().command(i);
     Command c = command;
@@ -58,7 +58,7 @@ void insertRepeated(CommandContext* context) {
     // Insert each specific subcommand.
     for (int j = Position::FIRST; j < command.index(); ++j) {
       c.set_index(j);
-      insert(context, c, Position::toCommandID(j, command.type()));
+      insert(commands, c, Position::toCommandID(j, command.type()));
     }
   }
 }
@@ -67,7 +67,7 @@ void insertSetters(CommandContext* context, Listener<None>* listener) {
   SetterTable* table = &context->setters_;
   for (int i = 0; i < setters().command_size(); ++i) {
     Command cmd = setters().command(i);
-    insert(context, cmd);
+    insert(&context->commands_, cmd);
     int id = cmd.type();
     ptr<CommandItemSetter> setter;
     const data::Address& addr = cmd.address();
@@ -90,22 +90,23 @@ void insertSetters(CommandContext* context, Listener<None>* listener) {
         LOG(ERROR) << "Found a duplicate setter " << Position::commandIDName(id);
         delete i->second;
       }
-      context->callbacks_[id] = setter.get();
+      context->callbacks_[id] = thread::methodCallback(
+          setter.get(), &CommandItemSetter::execute);
       table->insert(i, std::make_pair(id, setter.transfer()));
       LOG(ERROR) << "Inserted setter " << Position::commandIDName(id);
     }
   }
 }
 
-void mergeKeyPresses(CommandContext* context, const Access& access) {
+void mergeKeyPresses(CommandTable* commands, const Access& access) {
   Commands kp = keyPresses(access);
   for (int i = 0; i < kp.command_size(); ++i)
-    merge(context, kp.command(i));
+    merge(commands, kp.command(i));
 }
 
-void mergeDescription(CommandContext* context, const Command& command) {
-  CommandTable::iterator it = context->commands_.find(command.type());
-  if (it != context->commands_.end()) {
+void mergeDescription(CommandTable* commands, const Command& command) {
+  CommandTable::iterator it = commands->find(command.type());
+  if (it != commands->end()) {
     it->second->MergeFrom(command);
     return;
   }
@@ -121,8 +122,8 @@ void mergeDescription(CommandContext* context, const Command& command) {
 
   CommandID c = Command::BANK_SIZE * command.type();
   for (int i = 0; i <= Position::LAST - Position::FIRST; ++i, ++c) {
-    it = context->commands_.find(c);
-    if (it == context->commands_.end()) {
+    it = commands->find(c);
+    if (it == commands->end()) {
       LOG(ERROR) << "Couldn't find position " << i
                  << " CommandID " << c
                  << " cmd: " << command.ShortDebugString();
@@ -134,8 +135,8 @@ void mergeDescription(CommandContext* context, const Command& command) {
   }
 
   for (int i = 0; ; ++i, ++c) {
-    it = context->commands_.find(c);
-    if (it == context->commands_.end())
+    it = commands->find(c);
+    if (it == commands->end())
       break;
 
     String n = " " + String(i + 1);
@@ -146,16 +147,16 @@ void mergeDescription(CommandContext* context, const Command& command) {
   }
 }
 
-void mergeDescriptions(CommandContext* context, const Access& access) {
+void mergeDescriptions(CommandTable* commands, const Access& access) {
   const Commands& desc = descriptions(access);
   for (int i = 0; i < desc.command_size(); ++i)
-    mergeDescription(context, desc.command(i));
+    mergeDescription(commands, desc.command(i));
 }
 
-void removeEmpties(CommandContext* context) {
+void removeEmpties(CommandTable* commands) {
   std::vector<CommandID> empties;
-  for (CommandTable::const_iterator i = context->commands_.begin();
-       i != context->commands_.end(); ++i) {
+  for (CommandTable::const_iterator i = commands->begin();
+       i != commands->end(); ++i) {
     const Description& desc = i->second->desc();
     if (!(desc.menu().size() && desc.full().size())) {
       empties.push_back(i->first);
@@ -165,7 +166,7 @@ void removeEmpties(CommandContext* context) {
   }
 
   for (int i = 0; i < empties.size(); ++i)
-    context->commands_.erase(empties[i]);
+    commands->erase(empties[i]);
 }
 
 }  // namespace
@@ -173,18 +174,18 @@ void removeEmpties(CommandContext* context) {
 CommandContext::CommandContext(Listener<None>* listener) {
   Access access = data::get<Access>();
 
-  insertSingle(this);
-  insertRepeated(this);
+  insertSingle(&commands_);
+  insertRepeated(&commands_);
   insertSetters(this, listener);
-  mergeKeyPresses(this, access);
-  mergeDescriptions(this, access);
-  removeEmpties(this);
+  mergeKeyPresses(&commands_, access);
+  mergeDescriptions(&commands_, access);
+  removeEmpties(&commands_);
 }
 
 CommandContext::~CommandContext() {
   stl::deleteMapPointers(&commands_);
   stl::deleteMapPointers(&setters_);
-  stl::deleteMapPointers(&callbacks_);
+  stl::deleteMapPointers(&callbacks_);  // TODO: this causes a crash on exit.
 }
 
 }  // namespace command
