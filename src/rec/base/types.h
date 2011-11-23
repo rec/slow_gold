@@ -24,11 +24,6 @@ typedef unsigned short uint16;
 typedef unsigned int uint32;
 typedef unsigned long long uint64;
 
-template <typename Type>
-struct Time {
-  Type time_;
-};
-
 }  // namespace rec
 
 #endif  // BASE_BASICTYPES_H_

@@ -53,6 +53,8 @@ struct Samples {
   // Disallow these two constructors.
   Samples(float time);
   Samples(double time);
+
+  JUCE_LEAK_DETECTOR(Samples);
 };
 
 }  // namespace rec

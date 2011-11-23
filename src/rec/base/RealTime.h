@@ -40,6 +40,7 @@ struct RealTime {
   RealTime(int64 time);
   RealTime(short time);
 
+  JUCE_LEAK_DETECTOR(RealTime);
 };
 
 }  // namespace rec
