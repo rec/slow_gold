@@ -26,7 +26,6 @@ struct CommandContext {
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CommandContext);
-  JUCE_LEAK_DETECTOR(CommandItemSetter);
 };
 
 }  // namespace command

@@ -55,7 +55,7 @@ class FrameSource : public PositionableAudioSource {
   int64 position_;
   bool looping_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(FrameSource);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(FrameSource);
 };
 
 }  // namespace source

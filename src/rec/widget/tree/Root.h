@@ -59,7 +59,6 @@ class Root : public Broadcaster<const VirtualFile&>,
   bool opennessStarted_;
 
   DISALLOW_COPY_AND_ASSIGN(Root);
-  JUCE_LEAK_DETECTOR(Root);
 };
 
 }  // namespace tree

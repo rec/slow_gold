@@ -53,8 +53,7 @@ class Directory : public Node, public Listener<const VirtualFile&> {
   static CriticalSection processingLock_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);
-  JUCE_LEAK_DETECTOR(Directory);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Directory);
 };
 
 }  // namespace tree

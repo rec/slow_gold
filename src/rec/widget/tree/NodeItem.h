@@ -74,8 +74,7 @@ class Node : public juce::TreeViewItem,
 
   ColorName getColor() const;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
-  JUCE_LEAK_DETECTOR(Node);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Node);
 };
 
 }  // namespace tree

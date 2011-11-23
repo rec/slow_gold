@@ -15,7 +15,6 @@ class CommandItemSetter {
 
  private:
   DISALLOW_COPY_AND_ASSIGN(CommandItemSetter);
-  JUCE_LEAK_DETECTOR(CommandItemSetter);
 };
 
 }  // namespace command

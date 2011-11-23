@@ -11,11 +11,13 @@ namespace callback {
 // A generic callback.
 class Callback {
  public:
-  virtual bool operator()() = 0;
+  Callback() {}
   virtual ~Callback() {}
 
+  virtual bool operator()() = 0;
+
  private:
-  JUCE_LEAK_DETECTOR(Callback);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Callback);
 };
 
 }  // namespace callback
