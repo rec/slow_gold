@@ -32,7 +32,6 @@ TargetManager::TargetManager(Component* c)
 
 TargetManager:: ~TargetManager() {
   stl::deleteMapPointers(&map_);
-  stl::deleteMapPointers(&setterMap_);
 }
 
 void TargetManager::registerAllCommandsForTarget() {
@@ -106,24 +105,14 @@ ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
   return i == map_.end() ? NULL : &i->second->info_;
 }
 
-void TargetManager::addCommandItemSetter(CommandID id, CommandItemSetter* s) {
-  SetterMap::const_iterator i = setterMap_.find(id);
-  if (i != setterMap_.end()) {
-    LOG(ERROR) << "Added command twice: " << id;
-    delete i->second;
-  }
-
-  setterMap_[id] = s;
-}
-
 void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name) {
   if (ApplicationCommandInfo* info = getInfo(id)) {
     if (name.length()) {
       info->shortName = name;
     } else {
-      SetterMap::const_iterator i = setterMap_.find(id);
-      if (i != setterMap_.end())
+      SetterTable::const_iterator i = setterTable_.find(id);
+      if (i != setterTable_.end())
         info->shortName = str(i->second->menuName());
     }
     DCHECK(info->shortName.length()) << "No name for command "

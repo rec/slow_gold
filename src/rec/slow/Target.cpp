@@ -26,7 +26,8 @@ Target::~Target() {
 void Target::addCommands() {
   ptr<CallbackTable> callbacks(createCallbackTable(instance_));
 
-  CommandTable cmds = command::getCommandContext().commands_;
+  CommandContext context = command::getCommandContext();
+  CommandTable& cmds = context.commands_;
   for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
     const Command& c = *i->second;
     CommandID id = Position::toCommandID(c);
@@ -35,7 +36,7 @@ void Target::addCommands() {
       if (c.type() != Command::RECENT_FILES || c.index() >= 0)
         LOG(ERROR) << "No callback for " << c.ShortDebugString();
     } else {
-      const String& menu = c.desc().menu_size() ? 
+      const String& menu = c.desc().menu_size() ?
           str(c.desc().menu(0)) : String();
       const String& desc = str(c.desc().full());
       const String& category = str(c.category());
@@ -45,6 +46,7 @@ void Target::addCommands() {
   }
 
   targetManager()->registerAllCommandsForTarget();
+  targetManager()->setSetterTable(context.setters_);
 }
 
 }  // namespace slow

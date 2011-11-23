@@ -53,16 +53,15 @@ class TargetManager : public ApplicationCommandTarget,
 
   ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
-  void addCommandItemSetter(CommandID, CommandItemSetter*);
   void addCommandItem(PopupMenu*, CommandID, bool enable = true,
                       const String& name = String::empty);
+  void setSetterTable(const SetterTable& st) { setterTable_ = st; }
 
  private:
   typedef std::map<CommandID, CommandCallback*> CommandCallbackMap;
-  typedef std::map<CommandID, CommandItemSetter*> SetterMap;
 
   CommandCallbackMap map_;
-  SetterMap setterMap_;
+  SetterTable setterTable_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;
