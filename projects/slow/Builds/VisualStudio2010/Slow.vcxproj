@@ -102,7 +102,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\data\CommandData.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\data\Commands.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\data\Descriptions.def.cpp"/>
@@ -365,7 +364,6 @@
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\data\CommandData.h"/>

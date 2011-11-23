@@ -286,9 +286,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp">
       <Filter>Command\rec\command</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp">
-      <Filter>Command\rec\command</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\data\CommandData.cpp">
       <Filter>Command\rec\command\data</Filter>
     </ClCompile>
@@ -1069,9 +1066,6 @@
       <Filter>Command\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
-      <Filter>Command\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h">
       <Filter>Command\rec\command</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h">
