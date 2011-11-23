@@ -44,7 +44,7 @@ class Cursor : public Component, public Listener< Samples<44100> > {
   int mouseDragX_;
   bool listeningToClock_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Cursor);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);
 };
 
 struct CompareCursors {

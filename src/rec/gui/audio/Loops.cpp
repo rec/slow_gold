@@ -159,7 +159,7 @@ class LoopsSetterText : public SetterText<LoopPointList> {
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopsSetterText);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LoopsSetterText);
 };
 
 Component* Loops::refreshComponentForCell(int row, int column,

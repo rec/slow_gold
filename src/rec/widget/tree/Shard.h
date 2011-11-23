@@ -26,7 +26,7 @@ class Shard : public Directory {
  private:
   const partition::Shard shard_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Shard);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Shard);
 };
 
 }  // namespace tree

@@ -22,7 +22,7 @@ class SetupPage  : public Component {
   juce::AudioDeviceSelectorComponent deviceSelector_;
   rec::audio::Device* device_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(SetupPage);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetupPage);
 };
 
 

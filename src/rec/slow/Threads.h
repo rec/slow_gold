@@ -46,7 +46,7 @@ class Threads : public HasInstance {
   Thread* bufferThread_;
   CriticalSection lock_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Threads);
 };
 
 }  // namespace slow

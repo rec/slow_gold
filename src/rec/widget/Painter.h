@@ -62,7 +62,7 @@ class Painter {
   int margin_;
   const Colors& colors_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Painter);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Painter);
 };
 
 }  // namespace widget

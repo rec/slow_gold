@@ -32,7 +32,7 @@ class Thread : public juce::Thread, public OwnedPointer<Callback> {
 
  private:
   int waitTime_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Thread);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Thread);
 };
 
 }  // namespace callback

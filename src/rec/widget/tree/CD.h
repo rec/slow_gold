@@ -18,7 +18,7 @@ class CD : public Directory {
   virtual void computeChildren();
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(CD);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CD);
 };
 
 }  // namespace tree

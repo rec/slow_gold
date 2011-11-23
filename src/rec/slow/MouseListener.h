@@ -40,7 +40,7 @@ class MouseListener : public HasInstance,
   Range<RealTime> cursorDrag_;
   Mode mode_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(MouseListener);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MouseListener);
 };
 
 }  // namespace slow

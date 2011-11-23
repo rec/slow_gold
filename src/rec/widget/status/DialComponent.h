@@ -44,7 +44,7 @@ class DialComponent : public Component,
 
   LoopPointList loops_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(DialComponent);
 };
 
 }  // namespace time

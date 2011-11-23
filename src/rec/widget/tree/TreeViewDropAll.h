@@ -38,7 +38,7 @@ class TreeViewDropAll : public FocusableTarget
 #endif
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TreeViewDropAll);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TreeViewDropAll);
 };
 
 }  // namespace tree

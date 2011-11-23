@@ -27,7 +27,7 @@ class Target : public HasInstance {
   command::TargetManager manager_;
   ptr<command::MidiCommandMap> midiCommandMap_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Target);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Target);
 };
 
 }  // namespace rec

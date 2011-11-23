@@ -37,7 +37,7 @@ class Base : public Stream {
  private:
   std::vector<uint8> buffer_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Base);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Base);
 };
 
 typedef Base<FileOutputStream, google::protobuf::io::ZeroCopyOutputStream> OutputBase;
@@ -75,7 +75,7 @@ class Output : public OutputBase {
 
  private:
   bool full_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Output);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Output);
 };
 
 typedef Base<FileInputStream, google::protobuf::io::ZeroCopyInputStream> InputBase;
@@ -103,7 +103,7 @@ class Input : public InputBase {
 
  private:
   bool full_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Input);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Input);
 };
 
 }  // namespace zerocopy

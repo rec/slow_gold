@@ -25,7 +25,7 @@ class Base {
   Zero zero_;
   Coded coded_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Base);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Base);
 };
 
 typedef Base<zerocopy::Input, CodedInputStream> InputBase;
@@ -49,7 +49,7 @@ class InputImpl : public InputBase {
  private:
   const Style style_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(InputImpl);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(InputImpl);
 };
 
 typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;
@@ -75,7 +75,7 @@ class OutputImpl : public OutputBase {
  private:
   const Style style_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(OutputImpl);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(OutputImpl);
 };
 
 Input::Input(const File& f, Style style)

@@ -28,7 +28,7 @@ class NodeComponent : public juce::Component {
 
  private:
   Node* node_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(NodeComponent);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(NodeComponent);
 };
 
 }  // namespace tree

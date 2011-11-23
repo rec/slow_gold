@@ -19,7 +19,7 @@ class Menus : public MenuBarModel, public HasInstance, public Listener<None> {
   virtual void operator()(None) { menuItemsChanged(); }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Menus);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Menus);
 };
 
 }  // namespace rec

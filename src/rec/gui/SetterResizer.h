@@ -33,7 +33,7 @@ class SetterResizer : public StretchableLayoutResizerBar {
   Editable* editable_;
   bool active_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterResizer);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterResizer);
 };
 
 }  // namespace gui

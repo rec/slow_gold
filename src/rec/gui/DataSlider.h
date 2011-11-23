@@ -57,7 +57,7 @@ class DataSlider : public Layout,
   SimpleLabel caption_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(DataSlider);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(DataSlider);
 };
 
 }  // namespace gui

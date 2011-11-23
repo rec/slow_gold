@@ -741,6 +741,9 @@
 			E29BCFC5147DA1E400B58B3A /* PBXTextBookmark */ = E29BCFC5147DA1E400B58B3A /* PBXTextBookmark */;
 			E29BCFC6147DA1E400B58B3A /* PBXTextBookmark */ = E29BCFC6147DA1E400B58B3A /* PBXTextBookmark */;
 			E29BCFC7147DA1E400B58B3A /* PBXTextBookmark */ = E29BCFC7147DA1E400B58B3A /* PBXTextBookmark */;
+			E29BCFD8147DA9A100B58B3A /* PBXTextBookmark */ = E29BCFD8147DA9A100B58B3A /* PBXTextBookmark */;
+			E29BCFD9147DA9A100B58B3A /* PBXTextBookmark */ = E29BCFD9147DA9A100B58B3A /* PBXTextBookmark */;
+			E29BCFDA147DA9A100B58B3A /* PBXTextBookmark */ = E29BCFDA147DA9A100B58B3A /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -3775,8 +3778,8 @@
 		sourceTree = "<group>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {852, 858}}";
-			sepNavSelRange = "{339, 42}";
-			sepNavVisRange = "{0, 1225}";
+			sepNavSelRange = "{1231, 0}";
+			sepNavVisRange = "{0, 1231}";
 		};
 	};
 	E29BCFA6147D9FBC00B58B3A /* XCBuildMessageTextBookmark */ = {
@@ -3901,6 +3904,36 @@
 		vrLoc = 0;
 	};
 	E29BCFC7147DA1E400B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BCF81147D9C9600B58B3A /* CommandDatabase.h */;
+		name = "CommandDatabase.h: 9";
+		rLen = 0;
+		rLoc = 165;
+		rType = 0;
+		vrLen = 575;
+		vrLoc = 0;
+	};
+	E29BCFD8147DA9A100B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
+		name = "Command.cpp: 47";
+		rLen = 0;
+		rLoc = 1269;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 0;
+	};
+	E29BCFD9147DA9A100B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BCFA5147D9FBC00B58B3A /* Pointer.h */;
+		name = "Pointer.h: 52";
+		rLen = 0;
+		rLoc = 1231;
+		rType = 0;
+		vrLen = 1231;
+		vrLoc = 0;
+	};
+	E29BCFDA147DA9A100B58B3A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E29BCF81147D9C9600B58B3A /* CommandDatabase.h */;
 		name = "CommandDatabase.h: 9";

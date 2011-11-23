@@ -29,7 +29,7 @@ class Status : public juce::Component {
   // loop_indicator
   // transport
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Status);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Status);
 };
 
 }  // namespace status

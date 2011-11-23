@@ -29,7 +29,7 @@ class SetterToggle : public juce::ToggleButton,
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterToggle);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterToggle);
 };
 
 }  // namespace gui

@@ -75,7 +75,7 @@ class SetterText : public Layout,
   TextEditor editor_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterText);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterText);
 };
 
 }  // namespace gui

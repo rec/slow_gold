@@ -51,7 +51,7 @@ class BufferFiller : public HasInstance {
 
   typedef DataListener<LoopPointList> LoopListener;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferFiller);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(BufferFiller);
 };
 
 }  // namespace slow

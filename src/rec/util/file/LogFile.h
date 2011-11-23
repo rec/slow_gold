@@ -19,7 +19,7 @@ class Input {
 
  private:
   ptr<InputImpl> impl_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Input);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Input);
 };
 
 class Output {
@@ -32,7 +32,7 @@ class Output {
 
  private:
   ptr<OutputImpl> impl_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Output);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Output);
 };
 
 }  // namespace file

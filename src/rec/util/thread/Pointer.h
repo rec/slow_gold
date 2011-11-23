@@ -20,7 +20,7 @@ class Pointer : public Callback {
  protected:
   Operator operator_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Pointer);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Pointer);
 };
 
 // A Pointer that owns its underlying callable.

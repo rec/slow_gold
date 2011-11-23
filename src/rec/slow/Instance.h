@@ -51,7 +51,7 @@ class Instance {
   ptr<Threads> threads_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Instance);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Instance);
 };
 
 }  // namespace slow
