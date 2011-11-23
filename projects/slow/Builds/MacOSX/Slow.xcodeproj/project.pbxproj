@@ -57,6 +57,7 @@
 		3C23BA3C14C50003309E80E7 /* Keyboard.xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3537E0387F6245C8C67C18A5 /* Keyboard.xml.cpp */; };
 		3E1585E18CA841ABDEA615E1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A53E782643CFF470BDFD07 /* Cocoa.framework */; };
 		3EA87DB1ABDC51AF61DC4B34 /* TimeController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E823053B76ED19FFFA5E393 /* TimeController.cpp */; };
+		3EB6EA9146AA7C3222EAFFC5 /* CommandDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */; };
 		3F231E8534507C1CB8E771DC /* GenericApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 576030227C6A7D5AFE20D0AF /* GenericApplication.cpp */; };
 		3F3F3C2412A44AB9A160FB01 /* Stretchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F12D428C5B0028F9A15E7B8 /* Stretchy.cpp */; };
 		415FFE14380CDEB6B862E01F /* DedupeCDDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88FDDC0F38B4605B01BD752F /* DedupeCDDB.cpp */; };
@@ -651,6 +652,7 @@
 		B11B48DE515BE72C89F19DD5 /* KeyboardBindings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardBindings.cpp; path = ../../../../src/rec/command/KeyboardBindings.cpp; sourceTree = SOURCE_ROOT; };
 		B19480FDBFA900F35AF1FDA3 /* Access.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Access.pb.cc; path = ../../../../genfiles/proto/rec/command/Access.pb.cc; sourceTree = SOURCE_ROOT; };
 		B2026788496970489E208E9C /* CD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CD.h; path = ../../../../src/rec/widget/tree/CD.h; sourceTree = SOURCE_ROOT; };
+		B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandDatabase.cpp; path = ../../../../src/rec/command/CommandDatabase.cpp; sourceTree = SOURCE_ROOT; };
 		B2436985691463F597A49655 /* big-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "big-icon.png"; path = "../../../../src/rec/binary/big-icon.png"; sourceTree = SOURCE_ROOT; };
 		B2E51E9A4631E7935B0587CD /* parserstate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = parserstate.h; path = ../../../../src/rec/data/yaml/src/parserstate.h; sourceTree = SOURCE_ROOT; };
 		B2E681D011F3B47957155B23 /* token.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = token.h; path = ../../../../src/rec/data/yaml/src/token.h; sourceTree = SOURCE_ROOT; };
@@ -830,6 +832,7 @@
 		FA6F394749974A022CFAC932 /* ThreadedSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThreadedSource.h; path = ../../../../src/rec/audio/source/ThreadedSource.h; sourceTree = SOURCE_ROOT; };
 		FB1B005E5ABE3ECE29CB8885 /* CallAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CallAsync.h; path = ../../../../src/rec/util/thread/CallAsync.h; sourceTree = SOURCE_ROOT; };
 		FB6945822B662C6B52D2824C /* ZeroCopy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZeroCopy.h; path = ../../../../src/rec/util/file/ZeroCopy.h; sourceTree = SOURCE_ROOT; };
+		FB7199D861F4E45256B040C7 /* CommandDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandDatabase.h; path = ../../../../src/rec/command/CommandDatabase.h; sourceTree = SOURCE_ROOT; };
 		FBF00CC6D7140024CAD8AFE6 /* MergeBlockSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet.cpp; path = ../../../../src/rec/util/block/MergeBlockSet.cpp; sourceTree = SOURCE_ROOT; };
 		FC5BF215ED5495983F4B9A29 /* Status.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.pb.h; path = ../../../../genfiles/proto/rec/widget/status/Status.pb.h; sourceTree = SOURCE_ROOT; };
 		FD227E4F5EFA6DD53CE22B76 /* Range.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Range.h; path = ../../../../src/rec/util/Range.h; sourceTree = SOURCE_ROOT; };
@@ -870,6 +873,8 @@
 			children = (
 				AD730539B904BD2C42DA1F6E /* Command.cpp */,
 				2C47467844A9E7B586180211 /* Command.h */,
+				B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */,
+				FB7199D861F4E45256B040C7 /* CommandDatabase.h */,
 				BFD390D9F9D9A78F73F6C8CE /* CommandDataSetter.h */,
 				0991CFD307B9919A9E3B96BF /* CommandItemSetter.h */,
 				86DEBA63CCCE2F368B9B0D2F /* data */,
@@ -1236,16 +1241,6 @@
 				62DA0813916276A7D65CDB59 /* MidiName.h */,
 			);
 			name = map;
-			sourceTree = "<group>";
-		};
-		6792EBAF189F6B4BD2476E03 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		6C6D775F12CEA14261B879BE /* proto */ = {
@@ -1618,7 +1613,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6792EBAF189F6B4BD2476E03 /* Slow */,
+				D0A6B7EED6B8725881ED57EB /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1776,6 +1771,16 @@
 				C734E9AE0653218D7D73C086 /* Yaml.h */,
 			);
 			name = yaml;
+			sourceTree = "<group>";
+		};
+		D0A6B7EED6B8725881ED57EB /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
 			sourceTree = "<group>";
 		};
 		D133675B074C152815010E0F /* format */ = {
@@ -2065,6 +2070,7 @@
 				08879D3DFDD1B955E8E15916 /* ThumbnailBuffer.cpp in Sources */,
 				C77169EBC01D5355A5264E33 /* RealTime.cpp in Sources */,
 				DFE15ADADC2892B207145668 /* Command.cpp in Sources */,
+				3EB6EA9146AA7C3222EAFFC5 /* CommandDatabase.cpp in Sources */,
 				256F269B7A09D69ACEDD5313 /* CommandData.cpp in Sources */,
 				3A397BD7A715B4E0C31C2847 /* Commands.def.cpp in Sources */,
 				A7531A0D2D342F7C656ACE1E /* Descriptions.def.cpp in Sources */,
