@@ -16,6 +16,8 @@ struct Shard {
 
   Shard(String n, Range<int> r) : name_(n), range_(r) {}
   Shard() {}
+
+  JUCE_LEAK_DETECTOR(Shard);
 };
 
 typedef juce::Array<Shard> ShardArray;

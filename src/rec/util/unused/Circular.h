@@ -42,6 +42,8 @@ struct Circular : public Range<Type> {
     Type e = std::min(b + fillable(), capacity_);
     return Range<Type>(b, e);
   }
+
+  JUCE_LEAK_DETECTOR(Circular);
 };
 
 }  // namespace util

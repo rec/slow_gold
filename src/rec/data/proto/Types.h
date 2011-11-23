@@ -52,6 +52,9 @@ struct pmessage {
   }
 
   string value_;
+
+ private:
+  JUCE_LEAK_DETECTOR(pmessage);
 };
 
 }  // namespace data

@@ -79,6 +79,9 @@ struct Range {
   const String toString() const {
     return String(begin_) + "-" + String(end_);
   }
+
+ private:
+  JUCE_LEAK_DETECTOR(Range);
 };
 
 }  // namespace util

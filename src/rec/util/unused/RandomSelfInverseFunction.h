@@ -11,6 +11,9 @@ struct ByteFunction {
   static const int COUNT = 256;
   byte function[COUNT];
   byte operator()(byte b) const { return function[b]; }
+
+ private:
+  JUCE_LEAK_DETECTOR(ByteFunction);
 };
 
 ByteFunction randomSelfInverseFunction(unsigned seed);

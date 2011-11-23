@@ -19,6 +19,9 @@ struct LoopSnapshot {
 
   typedef bool (*Function)(LoopSnapshot*);
   typedef std::map<int32, LoopSnapshot::Function> Map;
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(LoopSnapshot);
 };
 
 }  // namespace slow
