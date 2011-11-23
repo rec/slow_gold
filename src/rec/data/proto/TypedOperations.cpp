@@ -2,9 +2,11 @@
 
 #include <google/protobuf/descriptor.h>
 
+#include "rec/base/arraysize.h"
 #include "rec/data/proto/Types.h"
 #include "rec/data/proto/TypedOperations.h"
 #include "rec/data/proto/TypedTyper.h"
+#include "rec/util/STL.h"
 
 namespace rec {
 namespace data {
@@ -34,6 +36,14 @@ const Typer* const TYPE_LIST[FieldDescriptor::MAX_TYPE] = {
   new TypedTyper<sfixed64>(NULL, NULL),
   new TypedTyper<sint32>(NULL, NULL),
 };
+
+struct TypeListDeleter {
+  ~TypeListDeleter() {
+    stl::deletePointers(TYPE_LIST, TYPE_LIST + arraysize(TYPE_LIST));
+  }
+};
+
+static TypeListDeleter deleter;
 
 class STyper : public ptr<Typer> {
  public:

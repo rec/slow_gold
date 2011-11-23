@@ -116,8 +116,6 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
       SetterTable::const_iterator i = context_->setters_.find(id);
       if (i != context_->setters_.end())
         info->shortName = str(i->second->menuName());
-      else
-        DLOG(INFO) << "Didn't find " << slow::Position::commandIDName(id);
     }
     if (!info->shortName.length())
       LOG(ERROR) << "No name for command " << slow::Position::commandIDName(id);
