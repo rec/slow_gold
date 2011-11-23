@@ -11,11 +11,14 @@ namespace command {
 template <typename Proto>
 class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
  public:
-  explicit CommandDataSetter(const Command& command,
+  explicit CommandDataSetter(Listener<None>* changeListener,
+                             const Command& command,
                              const data::Address& addr =
                              data::Address::default_instance(),
                              bool isGlobal = false)
-      : DataListener<Proto>(addr, isGlobal), command_(command) {
+      : DataListener<Proto>(addr, isGlobal),
+        changeListener_(changeListener),
+        command_(command) {
   }
 
   virtual void onDataChange(const Proto& p) {
@@ -25,6 +28,7 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
       menuName_ = command_.desc().menu(index);
     else
       LOG(ERROR) << "No " << index << " in " << command_.ShortDebugString();
+    (*changeListener_)(None());
   }
 
   virtual bool operator()() {
@@ -38,6 +42,7 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
 
  private:
   CriticalSection lock_;
+  Listener<None>* changeListener_;
 
   const Command command_;
   string menuName_;

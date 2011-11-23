@@ -83,7 +83,6 @@ enum Command_Type {
   Command_Type_UNSELECT = 38,
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
-  Command_Type_LAST_COMMAND = 41,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -91,7 +90,7 @@ enum Command_Type {
   Command_Type_PASTE = 4101,
   Command_Type_SELECT_ALL = 4102,
   Command_Type_DESELECT_ALL = 4103,
-  Command_Type_LAST_TYPE = 40,
+  Command_Type_LAST_TYPE = 41,
   Command_Type_JUCE_START = 4097,
   Command_Type_JUCE_END = 4103,
   Command_Type_BANK_SIZE = 100000
@@ -330,7 +329,6 @@ class Command : public ::google::protobuf::Message {
   static const Type UNSELECT = Command_Type_UNSELECT;
   static const Type ZOOM_IN = Command_Type_ZOOM_IN;
   static const Type ZOOM_OUT = Command_Type_ZOOM_OUT;
-  static const Type LAST_COMMAND = Command_Type_LAST_COMMAND;
   static const Type QUIT = Command_Type_QUIT;
   static const Type DEL = Command_Type_DEL;
   static const Type CUT = Command_Type_CUT;

@@ -1,5 +1,4 @@
 #include "rec/audio/stretch/Stretch.h"
-#include "rec/command/CommandDatabase.h"
 #include "rec/command/Access.pb.h"
 #include "rec/command/CommandDataSetter.h"
 #include "rec/command/data/CommandData.h"
@@ -46,34 +45,6 @@ void insert(CommandContext* context, const Command& cmd, CommandID id = 0) {
   addTo(INSERT, context, cmd, id);
 }
 
-}  // namespace
-
-CommandDatabase::CommandDatabase() {
-  recalculate();
-}
-
-CommandDatabase::~CommandDatabase() {
-  clear();
-}
-
-void CommandDatabase::clear() {
-  stl::deleteMapPointers(&context_.commands_);
-  stl::deleteMapPointers(&context_.setters_);
-
-  context_.commands_.clear();
-  context_.setters_.clear();
-}
-
-const Command CommandDatabase::command(CommandID t) const {
-  Lock l(lock_);
-
-  CommandTable::const_iterator i = context_.commands_.find(t);
-  return (i == context_.commands_.end()) ?
-    Command::default_instance() : *(i->second);
-}
-
-namespace {
-
 void insertSingle(CommandContext* context) {
   for (int i = 0; i < commands().command_size(); ++i)
     insert(context, commands().command(i));
@@ -92,7 +63,7 @@ void insertRepeated(CommandContext* context) {
   }
 }
 
-void insertSetters(CommandContext* context) {
+void insertSetters(CommandContext* context, Listener<None>* listener) {
   SetterTable* table = &context->setters_;
   for (int i = 0; i < setters().command_size(); ++i) {
     Command cmd = setters().command(i);
@@ -105,10 +76,10 @@ void insertSetters(CommandContext* context) {
     using audio::stretch::Stretch;
 
     if (id == Command::TOGGLE_GRID_DISPLAY)
-      setter.reset(new CommandDataSetter<GuiSettings>(cmd, addr, true));
+      setter.reset(new CommandDataSetter<GuiSettings>(listener, cmd, addr, true));
 
     else if (id == Command::TOGGLE_STRETCH_ENABLE)
-      setter.reset(new CommandDataSetter<Stretch>(cmd, addr, false));
+      setter.reset(new CommandDataSetter<Stretch>(listener, cmd, addr, false));
 
     else
       LOG(ERROR) << "Didn't understand " << Position::commandIDName(id);
@@ -121,6 +92,7 @@ void insertSetters(CommandContext* context) {
       }
       context->callbacks_[id] = setter.get();
       table->insert(i, std::make_pair(id, setter.transfer()));
+      LOG(ERROR) << "Inserted setter " << Position::commandIDName(id);
     }
   }
 }
@@ -198,17 +170,21 @@ void removeEmpties(CommandContext* context) {
 
 }  // namespace
 
-void CommandDatabase::recalculate() {
-  Lock l(lock_);
+CommandContext::CommandContext(Listener<None>* listener) {
   Access access = data::get<Access>();
-  clear();
 
-  insertSingle(&context_);
-  insertRepeated(&context_);
-  insertSetters(&context_);
-  mergeKeyPresses(&context_, access);
-  mergeDescriptions(&context_, access);
-  removeEmpties(&context_);
+  insertSingle(this);
+  insertRepeated(this);
+  insertSetters(this, listener);
+  mergeKeyPresses(this, access);
+  mergeDescriptions(this, access);
+  removeEmpties(this);
+}
+
+CommandContext::~CommandContext() {
+  stl::deleteMapPointers(&commands_);
+  stl::deleteMapPointers(&setters_);
+  stl::deleteMapPointers(&callbacks_);
 }
 
 }  // namespace command

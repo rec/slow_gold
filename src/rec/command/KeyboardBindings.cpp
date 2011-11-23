@@ -2,6 +2,7 @@
 
 #include "rec/command/KeyboardBindings.h"
 #include "rec/command/Command.h"
+#include "rec/command/TargetManager.h"
 #include "rec/data/Data.h"
 #include "rec/slow/Position.h"
 #include "rec/util/STL.h"
@@ -57,9 +58,9 @@ void writeKeyboardBindingFile(XmlElement* element) {
   stl::deleteMapPointers(&t);
 }
 
-XmlElement* readKeyboardBindingFile() {
+XmlElement* readKeyboardBindingFile(const Commands& commands) {
   data::TypedEditable<Commands>* e = data::editable<Commands>(getBindingFile());
-  return readKeyboardCommands(e->fileReadSuccess() ? e->get() : getCommands());
+  return readKeyboardCommands(e->fileReadSuccess() ? e->get() : commands);
 }
 
 }  // namespace
@@ -72,9 +73,10 @@ void saveKeyboardBindings(ApplicationCommandManager* commandManager) {
     writeKeyboardBindingFile(state.get());
 }
 
-void loadKeyboardBindings(ApplicationCommandManager* commandManager) {
-  ptr<juce::XmlElement> state(readKeyboardBindingFile());
-  commandManager->getKeyMappings()->restoreFromXml(*state);
+void loadKeyboardBindings(TargetManager* target) {
+  const CommandTable& ct = target->context()->commands_;
+  ptr<juce::XmlElement> state(readKeyboardBindingFile(fromCommandTable(ct)));
+  target->commandManager()->getKeyMappings()->restoreFromXml(*state);
 }
 
 }  // namespace command

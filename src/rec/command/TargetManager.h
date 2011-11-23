@@ -20,7 +20,7 @@ class TargetManager : public ApplicationCommandTarget,
                       public Listener<Command::Type>,
                       public Listener<bool> {
  public:
-  explicit TargetManager(Component* comp);
+  TargetManager(Component* comp, Listener<None>*);
   virtual ~TargetManager();
 
   void registerAllCommandsForTarget();
@@ -55,13 +55,14 @@ class TargetManager : public ApplicationCommandTarget,
   ApplicationCommandManager* commandManager() { return &commandManager_; }
   void addCommandItem(PopupMenu*, CommandID, bool enable = true,
                       const String& name = String::empty);
-  void setSetterTable(const SetterTable& st) { setterTable_ = st; }
+  CommandContext* context() { return context_.get(); }
 
  private:
   typedef std::map<CommandID, CommandCallback*> CommandCallbackMap;
 
+  ptr<command::CommandContext> context_;
+
   CommandCallbackMap map_;
-  SetterTable setterTable_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;

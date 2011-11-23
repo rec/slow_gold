@@ -69,8 +69,6 @@ message Command {
     ZOOM_IN = 39;
     ZOOM_OUT = 40;
 
-    LAST_COMMAND = 41;
-
     // Pre-defined by Juce.
     QUIT = 0x1001;
     DEL = 0x1002;
@@ -80,7 +78,7 @@ message Command {
     SELECT_ALL = 0x1006;
     DESELECT_ALL = 0x1007;
 
-    LAST_TYPE = 40;
+    LAST_TYPE = 41;
     JUCE_START = 0x1001;
     JUCE_END = 0x1007;
 

@@ -24,19 +24,19 @@ struct CommandCallback {
   ptr<Callback> callback_;
 };
 
-TargetManager::TargetManager(Component* c)
-    : lastInvocation_(0), disabled_(false) {
+TargetManager::TargetManager(Component* c, Listener<None>* listener)
+    : context_(new CommandContext(listener)),
+      lastInvocation_(0),
+      disabled_(false) {
   c->addKeyListener(commandManager_.getKeyMappings());
   commandManager_.setFirstCommandTarget(this);
 }
 
-TargetManager:: ~TargetManager() {
-  stl::deleteMapPointers(&map_);
-}
+TargetManager:: ~TargetManager() {}
 
 void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(this);
-  loadKeyboardBindings(&commandManager_);
+  loadKeyboardBindings(this);
 }
 
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
@@ -45,15 +45,16 @@ void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
     commands.add(i->first);
 }
 
-void TargetManager::getCommandInfo(CommandID cmd, ApplicationCommandInfo& info) {
+void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   Lock l(lock_);
-  CommandCallbackMap::const_iterator i = map_.find(cmd);
+  CommandCallbackMap::const_iterator i = map_.find(id);
   if (i == map_.end())
-    LOG(ERROR) << "No getCommandInfo" << slow::Position::commandIDName(cmd);
+    LOG(ERROR) << "No getCommandInfo" << slow::Position::commandIDName(id);
   else
     info = i->second->info_;
 
-  DCHECK(info.shortName.isNotEmpty()) << slow::Position::commandIDName(cmd);
+  if (!info.shortName.isNotEmpty())
+    LOG(ERROR) << "No name for " << slow::Position::commandIDName(id);
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
@@ -61,7 +62,8 @@ bool TargetManager::perform(const InvocationInfo& invocation) {
   if (disabled_)
     return true;
 
-  CommandCallbackMap::const_iterator i = map_.find(invocation.commandID);
+  CommandID id = invocation.commandID;
+  CommandCallbackMap::const_iterator i = map_.find(id);
   if (i == map_.end())
     return false;
 
@@ -111,12 +113,14 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     if (name.length()) {
       info->shortName = name;
     } else {
-      SetterTable::const_iterator i = setterTable_.find(id);
-      if (i != setterTable_.end())
+      SetterTable::const_iterator i = context_->setters_.find(id);
+      if (i != context_->setters_.end())
         info->shortName = str(i->second->menuName());
+      else
+        DLOG(INFO) << "Didn't find " << slow::Position::commandIDName(id);
     }
-    DCHECK(info->shortName.length()) << "No name for command "
-                                     << slow::Position::commandIDName(id);
+    if (!info->shortName.length())
+      LOG(ERROR) << "No name for command " << slow::Position::commandIDName(id);
     info->setActive(enable);
     menu->addCommandItem(commandManager(), id, name);
   } else {

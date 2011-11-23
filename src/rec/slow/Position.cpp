@@ -42,7 +42,7 @@ string Position::commandIDName(CommandID id) {
     name = Command::Type_Name(type);
   } else {
     name = "Bad id " + str(String(type));
-    DCHECK(false);
+    DCHECK(false) << name;
   }
 
   if (body) {

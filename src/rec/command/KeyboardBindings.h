@@ -6,8 +6,10 @@
 namespace rec {
 namespace command {
 
+class TargetManager;
+
 void saveKeyboardBindings(ApplicationCommandManager*);
-void loadKeyboardBindings(ApplicationCommandManager*);
+void loadKeyboardBindings(TargetManager*);
 
 }  // namespace command
 }  // namespace rec

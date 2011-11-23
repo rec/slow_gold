@@ -178,13 +178,13 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"7\n\013Descri"
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \001(\t\022\014\n\004hel"
-    "p\030\003 \001(\t\"\300\t\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
+    "p\030\003 \001(\t\"\256\t\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
     "command.Command.Type\022\r\n\005index\030\002 \001(\021\022\020\n\010c"
     "ategory\030\003 \001(\t\022&\n\004desc\030\004 \001(\0132\030.rec.comman"
     "d.Description\022\020\n\010keypress\030\005 \003(\t\022\021\n\tis_se"
     "tter\030\006 \001(\010\022\030\n\020is_global_setter\030\007 \001(\010\022\'\n\007"
     "address\030\010 \001(\0132\026.rec.data.AddressProto\022\030\n"
-    "\020setter_type_name\030\t \001(\t\"\300\007\n\004Type\022\010\n\004NONE"
+    "\020setter_type_name\030\t \001(\t\"\256\007\n\004Type\022\010\n\004NONE"
     "\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFEREN"
     "CES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR_LOOP"
     "S\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLOSE_"
@@ -204,15 +204,14 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "E_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_LEFT\020!\022"
     "\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007TREE_U"
     "P\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\013\n\007ZOOM_IN\020\'"
-    "\022\014\n\010ZOOM_OUT\020(\022\020\n\014LAST_COMMAND\020)\022\t\n\004QUIT"
-    "\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PA"
-    "STE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020"
-    "\207 \022\r\n\tLAST_TYPE\020(\022\017\n\nJUCE_START\020\201 \022\r\n\010JU"
-    "CE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022%"
-    "\n\007command\030\001 \003(\0132\024.rec.command.Command\"&\n"
-    "\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n"
-    "\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025.rec.comman"
-    "d.KeyValue", 1490);
+    "\022\014\n\010ZOOM_OUT\020(\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003C"
+    "UT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_A"
+    "LL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\r\n\tLAST_TYPE\020)\022"
+    "\017\n\nJUCE_START\020\201 \022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_"
+    "SIZE\020\240\215\006\"1\n\010Commands\022%\n\007command\030\001 \003(\0132\024."
+    "rec.command.Command\"&\n\010KeyValue\022\013\n\003key\030\001"
+    " \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_va"
+    "lue\030\001 \003(\0132\025.rec.command.KeyValue", 1472);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -674,7 +673,6 @@ const Command_Type Command::UNDO;
 const Command_Type Command::UNSELECT;
 const Command_Type Command::ZOOM_IN;
 const Command_Type Command::ZOOM_OUT;
-const Command_Type Command::LAST_COMMAND;
 const Command_Type Command::QUIT;
 const Command_Type Command::DEL;
 const Command_Type Command::CUT;

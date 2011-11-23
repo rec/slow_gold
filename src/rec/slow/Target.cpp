@@ -2,8 +2,9 @@
 
 #include "rec/audio/Device.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
-#include "rec/slow/SlowWindow.h"
+#include "rec/slow/Menus.h"
 #include "rec/slow/Position.h"
+#include "rec/slow/SlowWindow.h"
 #include "rec/slow/callbacks/Callbacks.h"
 
 using namespace rec::command;
@@ -13,7 +14,7 @@ namespace slow {
 
 Target::Target(Instance* i)
     : HasInstance(i),
-      manager_(i->window_),
+      manager_(i->window_, menus()),
       midiCommandMap_(new command::MidiCommandMap(manager_.commandManager())) {
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   (*midiCommandMap_)(data::get<command::CommandMapProto>());
@@ -26,9 +27,9 @@ Target::~Target() {
 void Target::addCommands() {
   ptr<CallbackTable> callbacks(createCallbackTable(instance_));
 
-  const CommandContext& context = command::getCommandContext();
-  callbacks->insert(context.callbacks_.begin(), context.callbacks_.end());
-  const CommandTable& cmds = context.commands_;
+	CommandContext* context = targetManager()->context();
+  callbacks->insert(context->callbacks_.begin(), context->callbacks_.end());
+  const CommandTable& cmds = context->commands_;
   for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
     const Command& c = *i->second;
     CommandID id = Position::toCommandID(c);
@@ -47,7 +48,6 @@ void Target::addCommands() {
   }
 
   targetManager()->registerAllCommandsForTarget();
-  targetManager()->setSetterTable(context.setters_);
 }
 
 }  // namespace slow

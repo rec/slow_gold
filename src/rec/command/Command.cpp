@@ -1,22 +1,9 @@
 #include "rec/command/Command.h"
-#include "rec/command/CommandDatabase.h"
 #include "rec/slow/Position.h"
+#include "rec/util/STL.h"
 
 namespace rec {
 namespace command {
-
-static CommandDatabase* commandDatabase() {
-  static CommandDatabase d;
-  return &d;
-}
-
-const CommandContext& getCommandContext() {
-  return commandDatabase()->context();
-}
-
-void recalculate() {
-  commandDatabase()->recalculate();
-}
 
 const Commands fromCommandTable(const CommandTable& table) {
   Commands commands;

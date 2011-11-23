@@ -4,6 +4,7 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/CommandItemSetter.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace command {
@@ -16,19 +17,16 @@ const CommandTable toCommandTable(const Commands&);
 const Commands fromCommandTable(const CommandTable&);
 
 struct CommandContext {
+  explicit CommandContext(Listener<None>*);
+  ~CommandContext();
+
   CommandTable commands_;
   SetterTable setters_;
   CallbackTable callbacks_;
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(CommandContext);
 };
-
-const CommandContext& getCommandContext();
-
-inline const Commands getCommands() {
-  return fromCommandTable(getCommandContext().commands_);
-}
-
-// Call to recalculate commands if Access changes for the user.
-void recalculate();
 
 }  // namespace command
 }  // namespace rec
