@@ -15,11 +15,9 @@ namespace command {
 
 using slow::Position;
 
-TargetManager::TargetManager(Component* c, CommandRecordTable* table)
-    : table_(table),
-      lastInvocation_(0),
+TargetManager::TargetManager()
+    : lastInvocation_(0),
       disabled_(false) {
-  c->addKeyListener(commandManager_.getKeyMappings());
   commandManager_.setFirstCommandTarget(this);
 }
 
@@ -33,7 +31,7 @@ void TargetManager::registerAllCommandsForTarget() {
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
   commands.clear();
   CommandRecordTable::const_iterator i;
-  for (i = table_->begin(); i != table_->end(); ++i) {
+  for (i = table_.begin(); i != table_.end(); ++i) {
     if (i->second->callback_)
       commands.add(i->first);
   }
@@ -120,7 +118,28 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
 }
 
 CommandRecord* TargetManager::find(CommandID id) {
-  return command::find(table_.get(), id);
+  return command::find(&table_, id);
+}
+
+void TargetManager::addCallbacks() {
+  CommandRecordTable::iterator i;
+  for (i = table_.begin(); i != table_.end(); ++i) {
+    CommandRecord* cr = i->second;
+    const Command* command = cr->command_.get();
+    if (!command) {
+      LOG(ERROR) << "No command for ID " << i->first;
+    } else if (!cr->callback_) {
+      LOG(ERROR) << "No callback for ID " << i->first;
+    } else {
+      const String& menu = command->desc().menu_size() ?
+          str(command->desc().menu(0)) : String();
+      const String& desc = str(command->desc().full());
+      const String& category = str(command->category());
+
+      addCallback(i->first, cr->callback_.get(), menu, category, desc);
+    }
+  }
+
 }
 
 }  // namespace command

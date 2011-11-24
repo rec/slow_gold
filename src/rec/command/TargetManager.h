@@ -18,7 +18,7 @@ class TargetManager : public ApplicationCommandTarget,
                       public Listener<Command::Type>,
                       public Listener<bool> {
  public:
-  TargetManager(Component* comp, command::CommandRecordTable*);
+  TargetManager();
   virtual ~TargetManager();
 
   void registerAllCommandsForTarget();
@@ -53,19 +53,19 @@ class TargetManager : public ApplicationCommandTarget,
   ApplicationCommandManager* commandManager() { return &commandManager_; }
   void addCommandItem(PopupMenu*, CommandID, bool enable = true,
                       const String& name = String::empty);
-  CommandRecordTable* commandRecordTable() { return table_.get(); }
+  CommandRecordTable* commandRecordTable() { return &table_; }
+  void addCallbacks();
 
  private:
   CommandRecord* find(CommandID);
-
-  ptr<CommandRecordTable> table_;
+  CommandRecordTable table_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;
   InvocationInfo lastInvocation_;
   bool disabled_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TargetManager);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(TargetManager);
 };
 
 }  // namespace rec
