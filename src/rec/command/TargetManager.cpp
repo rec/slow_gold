@@ -15,18 +15,6 @@ namespace command {
 
 using slow::Position;
 
-struct CommandCallback {
-  CommandCallback(const ApplicationCommandInfo& info, Callback* cb)
-      : info_(info), callback_(cb) {
-  }
-
-  ApplicationCommandInfo info_;
-  ptr<Callback> callback_;
-
- private:
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandCallback);
-};
-
 TargetManager::TargetManager(Component* c, CommandRecordTable* table)
     : table_(table),
       lastInvocation_(0),
@@ -44,18 +32,20 @@ void TargetManager::registerAllCommandsForTarget() {
 
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
   commands.clear();
-  CommandCallbackMap::const_iterator i;
-  for (i = callbacks_.begin(); i != callbacks_.end(); ++i)
-    commands.add(i->first);
+  CommandRecordTable::const_iterator i;
+  for (i = table_->begin(); i != table_->end(); ++i) {
+    if (i->second->callback_)
+      commands.add(i->first);
+  }
 }
 
 void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   Lock l(lock_);
-  CommandCallbackMap::const_iterator i = callbacks_.find(id);
-  if (i == callbacks_.end())
-    LOG(ERROR) << "No getCommandInfo" << slow::Position::commandIDName(id);
+  CommandRecord* cr = find(id);
+  if (cr->info_)
+    info = *(cr->info_);
   else
-    info = i->second->info_;
+    LOG(ERROR) << "No getCommandInfo" << slow::Position::commandIDName(id);
 
   if (!info.shortName.isNotEmpty())
     LOG(ERROR) << "No name for " << slow::Position::commandIDName(id);
@@ -66,13 +56,12 @@ bool TargetManager::perform(const InvocationInfo& invocation) {
   if (disabled_)
     return true;
 
-  CommandID id = invocation.commandID;
-  CommandCallbackMap::const_iterator i = callbacks_.find(id);
-  if (i == callbacks_.end())
+  CommandRecord* cr = find(invocation.commandID);
+  if (!cr->callback_)
     return false;
 
   lastInvocation_ = invocation;
-  (*(i->second->callback_))();
+  (*(cr->callback_))();
   return true;
 }
 
@@ -85,6 +74,7 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
                                 const String& name,
                                 const String& category,
                                 const String& desc) {
+  ptr<Callback> callback(cb);
   if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
     LOG(ERROR) << "Can't add " << slow::Position::commandIDName(id)
                << ", " << name << ", " << desc;
@@ -97,37 +87,40 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
     flags = ApplicationCommandInfo::hiddenFromKeyEditor;
   info.setInfo(name, desc, category, flags);
 
-  CommandCallbackMap::const_iterator i = callbacks_.find(id);
-  if (i != callbacks_.end()) {
+  CommandRecord* cr = find(id);
+  if (cr->callback_)
     LOG(ERROR) << "Added command twice: " << id;
-    delete i->second;
-  }
 
-  callbacks_[id] = new CommandCallback(info, cb);
+  cr->callback_.reset(callback.transfer());
 }
 
-ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
-  CommandCallbackMap::iterator i = callbacks_.find(command);
-  return i == callbacks_.end() ? NULL : &i->second->info_;
+ApplicationCommandInfo* TargetManager::getInfo(CommandID id) {
+  return find(id)->info_.get();
 }
 
 void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name) {
-  if (ApplicationCommandInfo* info = getInfo(id)) {
-    if (name.length()) {
-      info->shortName = name;
-    } else {
-      SetterTable::const_iterator i = table_->setters_.find(id);
-      if (i != table_->setters_.end())
-        info->shortName = str(i->second->menuName());
-    }
-    if (!info->shortName.length())
-      LOG(ERROR) << "No name for command " << slow::Position::commandIDName(id);
-    info->setActive(enable);
-    menu->addCommandItem(commandManager(), id, name);
-  } else {
+  CommandRecord* cr = find(id);
+  if (!cr->info_) {
     LOG(ERROR) << "Can't add item " << Position::commandIDName(id);
+    return;
   }
+
+  ApplicationCommandInfo* info = cr->info_.get();
+
+  if (name.length())
+    info->shortName = name;
+  else if (cr->setter_)
+    info->shortName = str(cr->setter_->menuName());
+
+  if (!info->shortName.length())
+    LOG(ERROR) << "No name for command " << slow::Position::commandIDName(id);
+  info->setActive(enable);
+  menu->addCommandItem(commandManager(), id, name);
+}
+
+CommandRecord* TargetManager::find(CommandID id) {
+  return command::find(table_.get(), id);
 }
 
 }  // namespace command

@@ -12,8 +12,6 @@
 namespace rec {
 namespace command {
 
-struct CommandCallback;
-
 // An implementation of ApplicationCommandTargetManager that lets you register commands
 // with a callback.
 class TargetManager : public ApplicationCommandTarget,
@@ -58,9 +56,9 @@ class TargetManager : public ApplicationCommandTarget,
   CommandRecordTable* commandRecordTable() { return table_.get(); }
 
  private:
-  typedef std::map<CommandID, CommandCallback*> CommandCallbackMap;
+  CommandRecord* find(CommandID);
 
-  ptr<command::CommandRecordTable> table_;
+  ptr<CommandRecordTable> table_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;
