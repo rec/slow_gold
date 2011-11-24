@@ -9,19 +9,15 @@
 namespace rec {
 namespace command {
 
-const CommandRecordTable makeCommandRecordTable(Listener<None>* listener) {
-  CommandRecordTable commands;
-
+void addCommandDatabase(CommandRecordTable* table, Listener<None>* listener) {
   Access access = data::get<Access>();
 
-  insertSingle(&commands);
-  insertRepeated(&commands);
-  insertSetters(&commands, listener);
-  mergeKeyPresses(&commands, access);
-  mergeDescriptions(&commands, access);
-  removeEmpties(&commands);
-
-  return commands;
+  insertSingle(table);
+  insertRepeated(table);
+  insertSetters(table, listener);
+  mergeKeyPresses(table, access);
+  mergeDescriptions(table, access);
+  removeEmpties(table);
 }
 
 CommandRecord* find(CommandRecordTable* table, CommandID id) {

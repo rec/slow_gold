@@ -53,12 +53,12 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-void add(CallbackTable* c, int32 type, Position position,
+void add(CommandRecordTable* c, int32 type, Position position,
          SelectorFunction f, Instance* i) {
   add(c, position.toCommandID(type), select, i, f, position);
 }
 
-void add(CallbackTable* c, int32 type, Position position,
+void add(CommandRecordTable* c, int32 type, Position position,
          LoopSnapshotFunction f, Instance* i) {
   add(c, position.toCommandID(type), loop, i, f, position);
 }
@@ -75,10 +75,9 @@ void loadRecentFile(Instance* instance, int i) {
   (*instance->currentFile_)(rf.file(i).file());
 }
 
-
 }  // namespace
 
-void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
+void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
   for (int j = Position::FIRST; j < repeat; ++j) {
   	Position pos(j);
     add(t, Command::SELECT, pos, selectAdd, i);
