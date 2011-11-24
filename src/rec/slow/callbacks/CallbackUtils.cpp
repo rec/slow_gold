@@ -4,15 +4,15 @@
 namespace rec {
 namespace slow {
 
-typedef void (*LoopSnapshotFunction)(LoopSnapshot*, Position);
+typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 
-void loop(Instance* instance, LoopSnapshotFunction lsf, Position pos) {
+void loop(Instance* instance, LoopSnapshotFunction lsf, CommandIDEncoder pos) {
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
   data::set(snapshot.loops_, instance->file());
 }
 
-void select(Instance* instance, SelectorFunction selector, Position pos) {
+void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos) {
   LoopSnapshot snap(instance);
   LoopPointList* loops = &snap.loops_;
   int segment = audio::getSegment(*loops, snap.instance_->time());

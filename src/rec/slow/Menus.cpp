@@ -3,7 +3,7 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/Undo.h"
 #include "rec/slow/Instance.h"
-#include "rec/slow/Position.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/slow/Target.h"
 #include "rec/util/Cuttable.h"
 
@@ -26,11 +26,11 @@ namespace {
 void addBank(TargetManager* t, PopupMenu* menu, Command::Type command,
              const String& name) {
   PopupMenu sub;
-  for (int i = Position::FIRST; i < SLOT_COUNT; ++i) {
+  for (int i = CommandIDEncoder::FIRST; i < SLOT_COUNT; ++i) {
     if (i == 0)
       sub.addSeparator();
 
-    t->addCommandItem(&sub, Position::toCommandID(i, command));
+    t->addCommandItem(&sub, CommandIDEncoder::toCommandID(i, command));
   }
 
   menu->addSubMenu(name, sub);
@@ -50,7 +50,7 @@ void addFileMenu(TargetManager* t, PopupMenu* popup) {
   std::vector<string> recent = rec::gui::getRecentFileNames();
   PopupMenu submenu;
   for (int i = 0; i < recent.size(); ++i) {
-    CommandID id = Position::toCommandID(i, Command::RECENT_FILES);
+    CommandID id = CommandIDEncoder::toCommandID(i, Command::RECENT_FILES);
     t->addCommandItem(&submenu, id, true, str(recent[i]));
   }
 

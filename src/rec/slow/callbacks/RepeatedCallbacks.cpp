@@ -21,14 +21,14 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   snapshot->instance_->currentTime_->jumpToTime(time);
 }
 
-void jump(LoopSnapshot* snap, Position pos) {
+void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
   int size = snap->loops_.loop_point_size() - 1;
   int p = pos.toIndex(getSegment(*snap), size);
   snap->loops_.mutable_loop_point(p)->set_selected(true);
   setTimeFromSegment(snap, p);
 }
 
-void jumpSelected(LoopSnapshot* snap, Position pos) {
+void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
   vector<int> selected;
   size_t s;
   bool found = false;
@@ -53,12 +53,12 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-void add(CommandRecordTable* c, int32 type, Position position,
+void add(CommandRecordTable* c, int32 type, CommandIDEncoder position,
          SelectorFunction f, Instance* i) {
   add(c, position.toCommandID(type), select, i, f, position);
 }
 
-void add(CommandRecordTable* c, int32 type, Position position,
+void add(CommandRecordTable* c, int32 type, CommandIDEncoder position,
          LoopSnapshotFunction f, Instance* i) {
   add(c, position.toCommandID(type), loop, i, f, position);
 }
@@ -78,8 +78,8 @@ void loadRecentFile(Instance* instance, int i) {
 }  // namespace
 
 void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
-  for (int j = Position::FIRST; j < repeat; ++j) {
-  	Position pos(j);
+  for (int j = CommandIDEncoder::FIRST; j < repeat; ++j) {
+  	CommandIDEncoder pos(j);
     add(t, Command::SELECT, pos, selectAdd, i);
     add(t, Command::SELECT_ONLY, pos, selectOnly, i);
     add(t, Command::TOGGLE_SELECTION, pos, toggle, i);
@@ -90,7 +90,7 @@ void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
   }
 
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j) {
-    CommandID id = Position::toCommandID(j, Command::RECENT_FILES);
+    CommandID id = CommandIDEncoder::toCommandID(j, Command::RECENT_FILES);
     add(t, id, loadRecentFile, i, j);
   }
 }

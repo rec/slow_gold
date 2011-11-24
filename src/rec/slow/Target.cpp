@@ -3,7 +3,7 @@
 #include "rec/audio/Device.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/slow/Menus.h"
-#include "rec/slow/Position.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/callbacks/Callbacks.h"
 

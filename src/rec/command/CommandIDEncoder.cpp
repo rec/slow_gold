@@ -1,12 +1,12 @@
-#include "rec/slow/Position.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/util/Math.h"
 
 namespace rec {
-namespace slow {
+namespace command {
 
 static const int SIZE = Command::BANK_SIZE;
 
-int Position::toIndex(int32 segment, int32 size) {
+int CommandIDEncoder::toIndex(int32 segment, int32 size) {
   int pos = (position_ == FIRST) ? 0 :
     (position_ == PREVIOUS) ? segment - 1 :
     (position_ == CURRENT) ? segment :
@@ -16,18 +16,18 @@ int Position::toIndex(int32 segment, int32 size) {
   return mod(pos, size);
 }
 
-CommandID Position::toCommandID(int32 type) {
+CommandID CommandIDEncoder::toCommandID(int32 type) {
   return (type * Command::BANK_SIZE) + (position_ - FIRST);
 }
 
 // static
-Position Position::fromCommandID(CommandID id) {
+CommandIDEncoder CommandIDEncoder::fromCommandID(CommandID id) {
   static const int SIZE = Command::BANK_SIZE;
-  return Position((id < SIZE) ? CURRENT : mod(id, SIZE) + FIRST);
+  return CommandIDEncoder((id < SIZE) ? CURRENT : mod(id, SIZE) + FIRST);
 }
 
 // static
-string Position::commandIDName(CommandID id) {
+string CommandIDEncoder::commandIDName(CommandID id) {
   string res;
 
   int body = id / Command::BANK_SIZE;
@@ -60,11 +60,11 @@ string Position::commandIDName(CommandID id) {
   return name; //  + " " + str(String(id));
 }
 
-int Position::toCommandID(const Command& cmd) {
+int CommandIDEncoder::toCommandID(const Command& cmd) {
   return cmd.has_index() ? toCommandID(cmd.index(), cmd.type()) : cmd.type();
 }
 
-void Position::fillCommandFromId(CommandID id, Command* command) {
+void CommandIDEncoder::fillCommandFromId(CommandID id, Command* command) {
   if (id >= Command::BANK_SIZE) {
     command->set_index(fromCommandID(id));
     id /= Command::BANK_SIZE;
@@ -72,5 +72,6 @@ void Position::fillCommandFromId(CommandID id, Command* command) {
   command->set_type(static_cast<Command::Type>(id));
 }
 
-}  // namespace slow
+}  // namespace command
 }  // namespace rec
+

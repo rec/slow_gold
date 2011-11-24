@@ -1,66 +1,8 @@
 command {
-  type: DEL
-  desc {
-    menu: "Delete"
-    full: "Delete the current selection without changing the clipboard."
-  }
-}
-command {
-  type: CUT
-  desc {
-    menu: "Cut"
-    full: "Copy the current selection to the clipboard and clear the selection."
-  }
-}
-command {
-  type: COPY
-  desc {
-    menu: "Copy"
-    full: "Copy the current selection to the clipboard."
-  }
-}
-command {
-  type: PASTE
-  desc {
-    menu: "Paste"
-    full: "Replace the current selection with a copy of the clipboard."
-  }
-}
-command {
-  type: SELECT_ALL
-  desc {
-    menu: "Select All"
-    full: "Select all of the file"
-  }
-}
-command {
-  type: DESELECT_ALL
-  desc {
-    menu: "Select None"
-    full: "Select none of the file"
-  }
-}
-command {
   type: ADD_LOOP_POINT
   desc {
     menu: "Add Loop Point"
     full: "Add a loop point at the current time."
-  }
-}
-command {
-  type: TOGGLE_GRID_DISPLAY
-  desc {
-    menu: "Display Time Grid"
-    menu: "Hide Time Grid"
-    full: "Toggle display of the time grid."
-  }
-}
-command {
-  type: TOGGLE_STRETCH_ENABLE
-  desc {
-    menu: "Enabled transformations"
-    menu: "Disable transformations"
-    full: "Toggle pitch, time and stereo modification of the sound."
   }
 }
 command {
@@ -89,6 +31,34 @@ command {
   desc {
     menu: "Close"
     full: "Close the current file"
+  }
+}
+command {
+  type: COPY
+  desc {
+    menu: "Copy"
+    full: "Copy the current selection to the clipboard."
+  }
+}
+command {
+  type: CUT
+  desc {
+    menu: "Cut"
+    full: "Copy the current selection to the clipboard and clear the selection."
+  }
+}
+command {
+  type: DEL
+  desc {
+    menu: "Delete"
+    full: "Delete the current selection without changing the clipboard."
+  }
+}
+command {
+  type: DESELECT_ALL
+  desc {
+    menu: "Select None"
+    full: "Select none of the file"
   }
 }
 command {
@@ -155,6 +125,36 @@ command {
   }
 }
 command {
+  type: PASTE
+  desc {
+    menu: "Paste"
+    full: "Replace the current selection with a copy of the clipboard."
+  }
+}
+command {
+  type: SELECT_ALL
+  desc {
+    menu: "Select All"
+    full: "Select all of the file"
+  }
+}
+command {
+  type: TOGGLE_GRID_DISPLAY
+  desc {
+    menu: "Display Time Grid"
+    menu: "Hide Time Grid"
+    full: "Toggle display of the time grid."
+  }
+}
+command {
+  type: TOGGLE_STRETCH_ENABLE
+  desc {
+    menu: "Enabled transformations"
+    menu: "Disable transformations"
+    full: "Toggle pitch, time and stereo modification of the sound."
+  }
+}
+command {
   type: RESET_GAIN_TO_UNITY
   desc {
     menu: "Reset level"
@@ -218,6 +218,13 @@ command {
   }
 }
 command {
+  type: RECENT_FILES
+  desc {
+    full: "Recent file %s%s"
+    menu: "Recent file %s%s"
+  }
+}
+command {
   type: SELECT
   desc {
     menu: "Select%s Segment%s"
@@ -236,12 +243,5 @@ command {
   desc {
     menu: "Unselect%s Segment%s"
     full: "Unselect%s segment%s"
-  }
-}
-command {
-  type: RECENT_FILES
-  desc {
-    full: "Recent file %s%s"
-    menu: "Recent file %s%s"
   }
 }

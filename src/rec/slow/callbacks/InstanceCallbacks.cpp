@@ -192,10 +192,6 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   add(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
   add(c, Command::MIDI_MAPPINGS, midiMappings, i);
   add(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
-  add(c, Command::NUDGE_BEGIN_LEFT, nudgeBeginLeft, i);
-  add(c, Command::NUDGE_BEGIN_RIGHT, nudgeBeginRight, i);
-  add(c, Command::NUDGE_END_LEFT, nudgeEndLeft, i);
-  add(c, Command::NUDGE_END_RIGHT, nudgeEndRight, i);
   add(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
   add(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
   add(c, Command::OPEN, open, i);
@@ -204,12 +200,6 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   add(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   add(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
   add(c, Command::TOGGLE_STRETCH_ENABLE, toggleStretchEnable, i);
-  add(c, Command::TREE_CLOSE, treeClose, i);
-  add(c, Command::TREE_DOWN, treeDown, i);
-  add(c, Command::TREE_LEFT, treeLeft, i);
-  add(c, Command::TREE_OPEN, treeOpen, i);
-  add(c, Command::TREE_RIGHT, treeRight, i);
-  add(c, Command::TREE_UP, treeUp, i);
   add(c, Command::ZOOM_IN, zoomIn, i);
   add(c, Command::ZOOM_OUT, zoomOut, i);
 }

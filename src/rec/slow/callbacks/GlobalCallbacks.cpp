@@ -8,6 +8,8 @@
 namespace rec {
 namespace slow {
 
+using command::Command;
+
 void addGlobalCallbacks(CommandRecordTable* t) {
   add(t, Command::DEL, cutNoClipboard);
   add(t, Command::CUT, cutToClipboard);

@@ -83,7 +83,7 @@ void UndoQueue::doOrRedo(Action::Type type) {
     position--;
 
   if (position < 0 || position >= preUndoSize_) {
-    LOG(ERROR) << "Position is out of range at " << position
+    LOG(ERROR) << "CommandIDEncoder is out of range at " << position
                << ", " << preUndoSize_;
     return;
   }

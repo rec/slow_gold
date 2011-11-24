@@ -5,13 +5,14 @@
 #include "rec/util/thread/FunctionCallback.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/LoopSnapshot.h"
-#include "rec/slow/Position.h"
+#include "rec/command/CommandIDEncoder.h"
 
 namespace rec {
 namespace slow {
 
 class Instance;
 typedef command::CommandRecordTable CommandRecordTable;
+typedef command::CommandIDEncoder CommandIDEncoder;
 
 template <typename Function>
 void add(CommandRecordTable* c, int32 type, Function f) {
@@ -33,11 +34,11 @@ void add(CommandRecordTable* c, int32 type, Function f, Instance* i, X x, Y y) {
   command::find(c, type)->callback_.reset(thread::functionCallback(f, i, x, y));
 }
 
-typedef void (*LoopSnapshotFunction)(LoopSnapshot*, Position);
+typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
-void loop(Instance*, LoopSnapshotFunction, Position);
-void select(Instance*, SelectorFunction, Position);
+void loop(Instance*, LoopSnapshotFunction, CommandIDEncoder);
+void select(Instance*, SelectorFunction, CommandIDEncoder);
 
 }  // namespace slow
 }  // namespace rec

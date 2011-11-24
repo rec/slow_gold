@@ -6,12 +6,10 @@
 #include "rec/command/data/CommandData.h"
 #include "rec/data/Data.h"
 #include "rec/slow/GuiSettings.pb.h"
-#include "rec/slow/Position.h"
+#include "rec/command/CommandIDEncoder.h"
 
 namespace rec {
 namespace command {
-
-using slow::Position;
 
 namespace {
 
@@ -20,17 +18,23 @@ enum MergeType {INSERT, MERGE};
 void addTo(MergeType type, CommandRecordTable* table, const Command& cmd,
            CommandID id = 0) {
   if (!id)
-    id = Position::toCommandID(cmd);
+    id = CommandIDEncoder::toCommandID(cmd);
 
   CommandRecord* cr(find(table, id));
   if (type == INSERT) {
     if (cr->command_)
-      LOG(ERROR) << "Can't replace " << Position::commandIDName(id);
-    else
+      LOG(ERROR) << "Can't insert " << commandName(id);
+    else {
+      DLOG(INFO) << "Inserting " << commandName(id);
       cr->command_.reset(new Command(cmd));
+    }
   } else {
-    if (cr->command_)
+    if (cr->command_) {
+      DLOG(INFO) << "Merging " << commandName(id);
       cr->command_->MergeFrom(cmd);
+    } else {
+      LOG(ERROR) << "Can't merge " << commandName(id);
+    }
   }
 }
 
@@ -48,9 +52,11 @@ void insert(CommandRecordTable* table, const Commands& commands) {
 }
 
 void mergeDescription(CommandRecordTable* table, const Command& command) {
-  CommandRecord* cr = find(table, command.type());
-  if (cr->command_) {
-    cr->command_->MergeFrom(command);
+  CommandRecord* cr = find(table, command.type(), false);
+  if (cr) {
+    DCHECK(cr->command_);
+    if (cr->command_)
+      cr->command_->MergeFrom(command);
     return;
   }
 
@@ -64,7 +70,7 @@ void mergeDescription(CommandRecordTable* table, const Command& command) {
   const String full = str(command.desc().full());
 
   CommandID c = Command::BANK_SIZE * command.type();
-  for (int i = 0; i <= Position::LAST - Position::FIRST; ++i, ++c) {
+  for (int i = 0; i <= CommandIDEncoder::LAST - CommandIDEncoder::FIRST; ++i, ++c) {
     CommandRecord* cr = find(table, c);
     if (!cr->command_) {
       LOG(ERROR) << "Couldn't find position " << i
@@ -79,8 +85,11 @@ void mergeDescription(CommandRecordTable* table, const Command& command) {
 
   for (int i = 0; ; ++i, ++c) {
     CommandRecord* cr = find(table, c);
-    if (!cr->command_)
+    if (!cr->command_) {
+      // DLOG(INFO) << "Can't merge desc: " << commandName(c);
+      // DCHECK(false);
       break;
+    }
 
     String n = " " + String(i + 1);
     const char* s = n.toUTF8();
@@ -102,9 +111,9 @@ void insertRepeated(CommandRecordTable* commands) {
     Command c = command;
 
     // Insert each specific subcommand.
-    for (int j = Position::FIRST; j < command.index(); ++j) {
+    for (int j = CommandIDEncoder::FIRST; j < command.index(); ++j) {
       c.set_index(j);
-      insert(commands, c, Position::toCommandID(j, command.type()));
+      insert(commands, c, CommandIDEncoder::toCommandID(j, command.type()));
     }
   }
 }
@@ -118,7 +127,7 @@ void insertSetters(CommandRecordTable* table, Listener<None>* ln) {
     CommandRecord* cr = find(table, id);
 
     if (cr->setter_)
-      LOG(ERROR) << "Duplicate setter " << Position::commandIDName(id);
+      LOG(ERROR) << "Duplicate setter " << commandName(id);
 
     using slow::GuiSettings;
     using audio::stretch::Stretch;
@@ -131,12 +140,12 @@ void insertSetters(CommandRecordTable* table, Listener<None>* ln) {
       cr->setter_.reset(new CommandDataSetter<Stretch>(ln, cmd, a, false));
 
     } else {
-      LOG(ERROR) << "Didn't understand " << Position::commandIDName(id);
+      LOG(ERROR) << "Didn't understand " << commandName(id);
       continue;
     }
 
     if (cr->callback_)
-      LOG(ERROR) << "Duplicate callback " << Position::commandIDName(id);
+      LOG(ERROR) << "Duplicate callback " << commandName(id);
 
     cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                &CommandItemSetter::execute));
@@ -159,15 +168,20 @@ void removeEmpties(CommandRecordTable* table) {
   std::vector<CommandID> empties;
   CommandRecordTable::iterator i;
   for (i = table->begin(); i != table->end(); ++i) {
+    string error;
     if (!i->second->command_) {
-      LOG(ERROR) << "No command for " << Position::commandIDName(i->first);
+      error = "No command";
     } else {
       const Description& desc = i->second->command_->desc();
-      if (desc.menu().size() && desc.full().size()) 
-        continue;
+      if (!(desc.menu().size() && desc.full().size()))
+        error = "missing description for " + i->second->command_->ShortDebugString();
     }
-    empties.push_back(i->first);
-    LOG(ERROR) << "Removing empty " << Position::commandIDName(i->first);
+    if (!error.empty()) {
+      empties.push_back(i->first);
+      LOG(ERROR) << "Removing " << commandName(i->first)
+                 << " because " << error;
+      CHECK(false);
+    }
   }
 
   for (int i = 0; i < empties.size(); ++i)

@@ -4,7 +4,7 @@
 #include "rec/command/Command.h"
 #include "rec/command/TargetManager.h"
 #include "rec/data/Data.h"
-#include "rec/slow/Position.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 
@@ -12,7 +12,6 @@ namespace rec {
 namespace command {
 
 using juce::XmlElement;
-using slow::Position;
 
 namespace {
 
@@ -29,7 +28,7 @@ XmlElement* readKeyboardCommands(const Commands& commands) {
     for (int j = 0; j < cmd.keypress_size(); ++j) {
       juce::XmlElement* mapping = element->createNewChildElement("MAPPING");
       mapping->setAttribute("commandId",
-                            String::toHexString(Position::toCommandID(cmd)));
+                            String::toHexString(CommandIDEncoder::toCommandID(cmd)));
       mapping->setAttribute("description", str(cmd.desc().full()));
       mapping->setAttribute("key", str(cmd.keypress(j)).toLowerCase());
     }
@@ -45,7 +44,7 @@ void writeKeyboardBindingFile(XmlElement* element) {
     string key = str(mapping->getStringAttribute("key").toLowerCase());
     if (!cr->command_) {
       cr->command_.reset(new Command);
-      Position::fillCommandFromId(id, cr->command_.get());
+      CommandIDEncoder::fillCommandFromId(id, cr->command_.get());
     }
     cr->command_->add_keypress(key);
   }

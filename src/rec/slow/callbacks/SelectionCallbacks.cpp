@@ -15,7 +15,7 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 }
 
 void addSelectionCallbacks(command::CommandRecordTable* t, Instance* i) {
-	static const Position noPos(Position::CURRENT);
+	static const CommandIDEncoder noPos(CommandIDEncoder::CURRENT);
   add(t, Command::DESELECT_ALL, select, i, deselectAll, noPos);
   add(t, Command::SELECT_ALL, select, i, selectAll, noPos);
   add(t, Command::INVERT_LOOP_SELECTION, select, i, invertLoopSelection, noPos);

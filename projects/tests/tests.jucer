@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="W5dxF8t2t" name="tests">
+  <MAINGROUP id="r3UaY1OGV" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -265,6 +265,10 @@
               name="CommandDatabase.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDataSetter.h"
               id="332JrcbQn" name="CommandDataSetter.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/CommandIDEncoder.cpp"
+              id="NVv6kiKH6" name="CommandIDEncoder.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandIDEncoder.h" id="S4Be6Sxia"
+              name="CommandIDEncoder.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
               id="mlyilZbte" name="CommandItemSetter.h" resource="0"/>
         <GROUP id="hPUNTkCGT" name="data">
@@ -853,10 +857,6 @@
               name="MouseListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MouseListener.h" id="eyBoBpB0K"
               name="MouseListener.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/Position.cpp" id="JDGMhudhi"
-              name="Position.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/Position.h" id="cXJkFO4YI"
-              name="Position.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/SlowWindow.cpp" id="tNqofdKZ3"
               name="SlowWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/SlowWindow.h" id="IqE2toosO"
@@ -1337,7 +1337,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="e78LbTJZC" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="5XoVb1Yni" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

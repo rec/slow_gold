@@ -13,10 +13,6 @@ command { type: INVERT_LOOP_SELECTION category: "Selection" }
 command { type: KEYBOARD_MAPPINGS category: "File"}
 command { type: MIDI_MAPPINGS category: "File"}
 command { type: MUTE_VOLUME_TOGGLE category: "Audio"}
-command { type: NUDGE_BEGIN_LEFT category: "Loops"}
-command { type: NUDGE_BEGIN_RIGHT category: "Loops"}
-command { type: NUDGE_END_LEFT category: "Loops"}
-command { type: NUDGE_END_RIGHT category: "Loops"}
 command { type: NUDGE_VOLUME_DOWN category: "Audio"}
 command { type: NUDGE_VOLUME_UP category: "Audio"}
 command { type: OPEN category: "File"}
@@ -27,12 +23,4 @@ command { type: SELECT_ALL category: "Transport"}
 command { type: TOGGLE_START_STOP category: "Transport"}
 command { type: TOGGLE_WHOLE_SONG_LOOP category: "Selection" }
 command { type: QUIT category: "Application"}
-command { type: TREE_CLOSE category: ""}
-command { type: TREE_DOWN category: ""}
-command { type: TREE_LEFT category: ""}
-command { type: TREE_OPEN category: ""}
-command { type: TREE_RIGHT category: ""}
-command { type: TREE_UP category: ""}
 command { type: UNDO category: "Edit"}
-command { type: ZOOM_IN category: "Audio"}
-command { type: ZOOM_OUT category: "Audio"}

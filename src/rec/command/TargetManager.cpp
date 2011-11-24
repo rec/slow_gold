@@ -5,15 +5,13 @@
 #include "rec/command/map/Keyboard.xml.h"
 #include "rec/command/KeyboardBindings.h"
 #include "rec/data/Data.h"
-#include "rec/slow/Position.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
 namespace command {
-
-using slow::Position;
 
 TargetManager::TargetManager()
     : lastInvocation_(0),
@@ -43,10 +41,10 @@ void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   if (cr->info_)
     info = *(cr->info_);
   else
-    LOG(ERROR) << "No getCommandInfo" << slow::Position::commandIDName(id);
+    LOG(ERROR) << "No getCommandInfo" << commandName(id);
 
   if (!info.shortName.isNotEmpty())
-    LOG(ERROR) << "No name for " << slow::Position::commandIDName(id);
+    LOG(ERROR) << "No name for " << commandName(id);
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
@@ -74,7 +72,7 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
                                 const String& desc) {
   ptr<Callback> callback(cb);
   if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
-    LOG(ERROR) << "Can't add " << slow::Position::commandIDName(id)
+    LOG(ERROR) << "Can't add " << commandName(id)
                << ", " << name << ", " << desc;
     return;
   }
@@ -87,7 +85,7 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
 
   CommandRecord* cr = find(id);
   if (cr->callback_)
-    LOG(ERROR) << "Added command twice: " << id;
+    LOG(ERROR) << "Added command twice: " << commandName(id);
 
   cr->callback_.reset(callback.transfer());
 }
@@ -100,7 +98,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name) {
   CommandRecord* cr = find(id);
   if (!cr->info_) {
-    LOG(ERROR) << "Can't add item " << Position::commandIDName(id);
+    LOG(ERROR) << "Can't add item " << CommandIDEncoder::commandIDName(id);
     return;
   }
 
@@ -112,7 +110,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     info->shortName = str(cr->setter_->menuName());
 
   if (!info->shortName.length())
-    LOG(ERROR) << "No name for command " << slow::Position::commandIDName(id);
+    LOG(ERROR) << "No name for command " << commandName(id);
   info->setActive(enable);
   menu->addCommandItem(commandManager(), id, name);
 }
