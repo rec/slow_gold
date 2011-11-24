@@ -38,24 +38,19 @@ XmlElement* readKeyboardCommands(const Commands& commands) {
 }
 
 void writeKeyboardBindingFile(XmlElement* element) {
-  CommandTable t;
+  CommandRecordTable table;
   forEachXmlChildElement(*element, mapping) {
     CommandID id = mapping->getStringAttribute("commandId").getHexValue32();
-    CommandTable::const_iterator i = t.find(id);
+    CommandRecord* cr = find(&table, id);
     string key = str(mapping->getStringAttribute("key").toLowerCase());
-    Command* command;
-    if (i == t.end()) {
-      command = new Command;
-      Position::fillCommandFromId(id, command);
-      t[id] = command;
-    } else {
-      command = i->second;
+    if (!cr->command_) {
+      cr->command_.reset(new Command);
+      Position::fillCommandFromId(id, cr->command_.get());
     }
-    command->add_keypress(key);
+    cr->command_->add_keypress(key);
   }
 
-  data::set(fromCommandTable(t), getBindingFile());
-  stl::deleteMapPointers(&t);
+  data::set(fromCommandTable(table), getBindingFile());
 }
 
 XmlElement* readKeyboardBindingFile(const Commands& commands) {
@@ -74,7 +69,7 @@ void saveKeyboardBindings(ApplicationCommandManager* commandManager) {
 }
 
 void loadKeyboardBindings(TargetManager* target) {
-  const CommandTable& ct = target->context()->commands_;
+  const CommandRecordTable& ct = *target->commandRecordTable();
   ptr<juce::XmlElement> state(readKeyboardBindingFile(fromCommandTable(ct)));
   target->commandManager()->getKeyMappings()->restoreFromXml(*state);
 }

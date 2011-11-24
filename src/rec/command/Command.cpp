@@ -29,29 +29,15 @@ CommandRecord* find(CommandRecordTable* table, CommandID id) {
   return rec.transfer();
 }
 
-#if 0
-
-const Commands fromCommandTable(const CommandTable&);
-
-const Commands fromCommandTable(const CommandTable& table) {
+const Commands fromCommandTable(const CommandRecordTable& table) {
   Commands commands;
-  for (CommandTable::const_iterator i = table.begin(); i != table.end(); ++i)
-    commands.add_command()->CopyFrom(*(i->second));
+  CommandRecordTable::const_iterator i;
+  for (i = table.begin(); i != table.end(); ++i) {
+    if (i->second->command_)
+      commands.add_command()->CopyFrom(*(i->second->command_));
+  }
   return commands;
 }
-
-const CommandTable toCommandTable(const Commands&);
-
-const CommandTable toCommandTable(const Commands& commands) {
-  CommandTable table;
-  for (int i = 0; i < commands.command_size(); ++i) {
-    const Command& c = commands.command(i);
-    table[slow::Position::toCommandID(c)] = new Command(c);
-  }
-  return table;
-}
-
-#endif
 
 }  // namespace command
 }  // namespace rec

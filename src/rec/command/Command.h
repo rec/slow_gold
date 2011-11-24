@@ -23,9 +23,9 @@ struct CommandRecord {
 
 typedef std::map<CommandID, CommandRecord*> CommandRecordTable;
 
+CommandRecord* find(CommandRecordTable*, CommandID);
 void addCommandDatabase(CommandRecordTable*, Listener<None>*);
-
-CommandRecord* find(CommandRecordTable* table, CommandID id);
+const Commands fromCommandTable(const CommandRecordTable&);
 
 }  // namespace command
 }  // namespace rec
