@@ -23,7 +23,7 @@ void addTo(MergeType type, CommandRecordTable* table, const Command& cmd,
   CommandRecord* cr(find(table, id));
   if (type == INSERT) {
     if (cr->command_)
-      LOG(ERROR) << "Can't insert " << commandName(id);
+      LOG(DFATAL) << "Can't insert " << commandName(id);
     else {
       DLOG(INFO) << "Inserting " << commandName(id);
       cr->command_.reset(new Command(cmd));
@@ -33,7 +33,7 @@ void addTo(MergeType type, CommandRecordTable* table, const Command& cmd,
       DLOG(INFO) << "Merging " << commandName(id);
       cr->command_->MergeFrom(cmd);
     } else {
-      LOG(ERROR) << "Can't merge " << commandName(id);
+      LOG(DFATAL) << "Can't merge " << commandName(id);
     }
   }
 }
@@ -73,7 +73,7 @@ void mergeDescription(CommandRecordTable* table, const Command& command) {
   for (int i = 0; i <= CommandIDEncoder::LAST - CommandIDEncoder::FIRST; ++i, ++c) {
     CommandRecord* cr = find(table, c);
     if (!cr->command_) {
-      LOG(ERROR) << "Couldn't find position " << i
+      LOG(DFATAL) << "Couldn't find position " << i
                  << " CommandID " << c
                  << " cmd: " << command.ShortDebugString();
       return;
@@ -84,11 +84,14 @@ void mergeDescription(CommandRecordTable* table, const Command& command) {
   }
 
   for (int i = 0; ; ++i, ++c) {
-    CommandRecord* cr = find(table, c);
+    CommandRecord* cr = find(table, c, false);
+    if (!cr)
+      return;
+
+    DCHECK(cr->command_);
     if (!cr->command_) {
-      // DLOG(INFO) << "Can't merge desc: " << commandName(c);
-      // DCHECK(false);
-      break;
+      LOG(DFATAL) << "Can't merge desc: " << commandName(c);
+      continue;
     }
 
     String n = " " + String(i + 1);
@@ -127,7 +130,7 @@ void insertSetters(CommandRecordTable* table, Listener<None>* ln) {
     CommandRecord* cr = find(table, id);
 
     if (cr->setter_)
-      LOG(ERROR) << "Duplicate setter " << commandName(id);
+      LOG(DFATAL) << "Duplicate setter " << commandName(id);
 
     using slow::GuiSettings;
     using audio::stretch::Stretch;
@@ -140,12 +143,12 @@ void insertSetters(CommandRecordTable* table, Listener<None>* ln) {
       cr->setter_.reset(new CommandDataSetter<Stretch>(ln, cmd, a, false));
 
     } else {
-      LOG(ERROR) << "Didn't understand " << commandName(id);
+      LOG(DFATAL) << "Didn't understand " << commandName(id);
       continue;
     }
 
     if (cr->callback_)
-      LOG(ERROR) << "Duplicate callback " << commandName(id);
+      LOG(DFATAL) << "Duplicate callback " << commandName(id);
 
     cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                &CommandItemSetter::execute));
@@ -178,7 +181,7 @@ void removeEmpties(CommandRecordTable* table) {
     }
     if (!error.empty()) {
       empties.push_back(i->first);
-      LOG(ERROR) << "Removing " << commandName(i->first)
+      LOG(DFATAL) << "Removing " << commandName(i->first)
                  << " because " << error;
       CHECK(false);
     }

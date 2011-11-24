@@ -39,7 +39,7 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const MessageFieldIndex& mfi) {
    case FD::TYPE_MESSAGE:  return out << r.GetRepeatedMessage(m, f, i);
    case FD::TYPE_BYTES:    return out << r.GetRepeatedString(m, f, i);
    case FD::TYPE_ENUM:     return out << r.GetRepeatedEnum(m, f, i);
-   default: LOG(ERROR) << "Didn't understand type " << f->type(); return out;
+   default: LOG(DFATAL) << "Didn't understand type " << f->type(); return out;
   }
 }
 
@@ -75,7 +75,7 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const MessageField& mf) {
    case FD::TYPE_MESSAGE:  return out << r.GetMessage(m, f);
    case FD::TYPE_BYTES:    return out << r.GetString(m, f);
    case FD::TYPE_ENUM:     return out << r.GetEnum(m, f);
-   default: LOG(ERROR) << "Didn't understand type " << f->type(); return out;
+   default: LOG(DFATAL) << "Didn't understand type " << f->type(); return out;
   }
 }
 

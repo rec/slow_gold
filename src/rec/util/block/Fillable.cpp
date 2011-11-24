@@ -53,7 +53,7 @@ int64 Fillable::fillNextBlock() {
   Block block = firstEmptyBlockAfter(filled_, position_, length_);
 
   if (getSize(block) <= 0) {
-    LOG(ERROR) << "Getting an empty block";
+    LOG(DFATAL) << "Getting an empty block";
     return 0;
   }
 
@@ -68,7 +68,7 @@ int64 Fillable::fillNextBlock() {
     return size;
   }
 
-  LOG(ERROR) << "Couldn't fill block";
+  LOG(DFATAL) << "Couldn't fill block";
   return 0;
 }
 

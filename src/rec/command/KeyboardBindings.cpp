@@ -62,7 +62,7 @@ XmlElement* readKeyboardBindingFile(const Commands& commands) {
 void saveKeyboardBindings(ApplicationCommandManager* commandManager) {
   ptr<juce::XmlElement> state(commandManager->getKeyMappings()->createXml(false));
   if (!state)
-    LOG(ERROR) << "Couldn't create keyboard binding XML";
+    LOG(DFATAL) << "Couldn't create keyboard binding XML";
   else
     writeKeyboardBindingFile(state.get());
 }

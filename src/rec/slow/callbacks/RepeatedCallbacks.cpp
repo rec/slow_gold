@@ -68,7 +68,7 @@ static const int RECENT_MENU_REPEATS = 65;
 void loadRecentFile(Instance* instance, int i) {
   gui::RecentFiles rf = data::get<gui::RecentFiles>();
   if (i < 0 || i >= rf.file_size()) {
-    LOG(ERROR) << "Can't load recent, i=" << i << ", size=" << rf.file_size();
+    LOG(DFATAL) << "Can't load recent, i=" << i << ", size=" << rf.file_size();
     return;
   }
 

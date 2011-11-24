@@ -14,7 +14,7 @@ bool Frames<Frame>::setLength(Samples<44100> length, bool mustReallocate) {
   }
   bool success = !length || frames_;
   if (!success)
-    LOG(ERROR) << "Couldn't setLength: " << length << ", " << frames_;
+    LOG(DFATAL) << "Couldn't setLength: " << length << ", " << frames_;
   length_ = length;
 
   return success;

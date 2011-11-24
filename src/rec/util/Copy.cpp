@@ -100,7 +100,7 @@ bool file(const File &file, string *s, Style /* readable */) {
 bool file(const string &from, const File &to, Style /* readable */) {
   try {
     if (!to.getParentDirectory().createDirectory()) {
-      LOG(ERROR) << "Couldn't create directory for " << str(to);
+      LOG(DFATAL) << "Couldn't create directory for " << str(to);
       return false;
     }
 
@@ -109,24 +109,24 @@ bool file(const string &from, const File &to, Style /* readable */) {
     if (rename) {
       backupFile = File(to.getFullPathName() + ".bak");
       if (!to.moveFileTo(backupFile))
-        LOG(ERROR) << "Couldn't rename to backup file: " << str(backupFile);
+        LOG(DFATAL) << "Couldn't rename to backup file: " << str(backupFile);
     }
 
     ptr<FileOutputStream> out(to.createOutputStream());
     if (!out)
-      LOG(ERROR) << "Couldn't make OutputStream for " << str(to);
+      LOG(DFATAL) << "Couldn't make OutputStream for " << str(to);
 
     else if (!out->write(from.data(), from.size()))
-      LOG(ERROR) << "Couldn't write file " << str(to);
+      LOG(DFATAL) << "Couldn't write file " << str(to);
 
     else if (rename && !backupFile.deleteFile())
-      LOG(ERROR) << "Couldn't delete backup " << str(to);
+      LOG(DFATAL) << "Couldn't delete backup " << str(to);
 
     else
       return true;
 
   } catch (...) {
-    LOG(ERROR) << "We got an exception";
+    LOG(DFATAL) << "We got an exception";
     // TODO: log this exception here.
   }
   return false;

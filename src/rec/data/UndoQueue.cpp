@@ -83,7 +83,7 @@ void UndoQueue::doOrRedo(Action::Type type) {
     position--;
 
   if (position < 0 || position >= preUndoSize_) {
-    LOG(ERROR) << "CommandIDEncoder is out of range at " << position
+    LOG(DFATAL) << "CommandIDEncoder is out of range at " << position
                << ", " << preUndoSize_;
     return;
   }
@@ -103,14 +103,14 @@ void UndoQueue::doOrRedo(Action::Type type) {
      case Action::START_OF_SESSION:
      case Action::END_OF_SESSION:
      default:
-      LOG(ERROR) << "Tried to " << type << " a " << action->type();
+      LOG(DFATAL) << "Tried to " << type << " a " << action->type();
       return;
     }
   }
 
   Editable* editable = editables_[pos];
   if (!editable) {
-    LOG(ERROR) << "No editable for " << type;
+    LOG(DFATAL) << "No editable for " << type;
     return;
   }
 

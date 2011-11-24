@@ -60,7 +60,7 @@ class UntypedEditable : public Editable {
 template <typename Proto>
 bool UntypedEditable::fill(Proto* t) const {
   if (t->GetTypeName() != getTypeName()) {
-    LOG(ERROR) << "Couldn't fill " << t->GetTypeName()
+    LOG(DFATAL) << "Couldn't fill " << t->GetTypeName()
                << " from " << getTypeName();
     return false;
   }

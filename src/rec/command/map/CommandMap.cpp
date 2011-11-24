@@ -92,9 +92,9 @@ void CommandMap::removeCommand(Command c, uint keyIndex) {
   typedef CommandToKeys::iterator iterator;
   iterator i = toKeys_.find(c);
   if (i == toKeys_.end()) {
-    LOG(ERROR) << "Couldn't remove message";
+    LOG(DFATAL) << "Couldn't remove message";
   } else if (i->second.size() <= keyIndex) {
-    LOG(ERROR) << "Couldn't find index " << keyIndex;
+    LOG(DFATAL) << "Couldn't find index " << keyIndex;
   } else {
     toCommand_.erase(i->second[keyIndex]);
     i->second.erase(i->second.begin() + keyIndex);
@@ -107,7 +107,7 @@ void CommandMap::removeKey(const Key& key) {
     toCommand_.erase(key);
     iterator i = toKeys_.find(c);
     if (i == toKeys_.end()) {
-      LOG(ERROR) << "Couldn't remove message";
+      LOG(DFATAL) << "Couldn't remove message";
     } else {
       for (uint j = 0; j < i->second.size(); ++j) {
         if (i->second[j] == key) {
@@ -116,9 +116,9 @@ void CommandMap::removeKey(const Key& key) {
         }
       }
     }
-    LOG(ERROR) << "Couldn't erase key " << key;
+    LOG(DFATAL) << "Couldn't erase key " << key;
   } else {
-    LOG(ERROR) << "Couldn't find key " << key;
+    LOG(DFATAL) << "Couldn't find key " << key;
   }
 }
 

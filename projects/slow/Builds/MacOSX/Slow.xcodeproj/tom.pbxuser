@@ -384,6 +384,7 @@
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
 		breakpoints = (
 			E29BCAFB147B4C1400B58B3A /* TableController.cpp:64 */,
+			E29BD29B147ED2E300B58B3A /* juce_ApplicationCommandManager.cpp:103 */,
 		);
 		codeSenseManager = E204C1801469FA8B001544FC /* Code sense */;
 		executables = (
@@ -994,6 +995,17 @@
 			E29BD24B147ECEB700B58B3A = E29BD24B147ECEB700B58B3A /* PBXTextBookmark */;
 			E29BD26D147ED04000B58B3A /* XCBuildMessageTextBookmark */ = E29BD26D147ED04000B58B3A /* XCBuildMessageTextBookmark */;
 			E29BD277147ED08C00B58B3A /* PBXTextBookmark */ = E29BD277147ED08C00B58B3A /* PBXTextBookmark */;
+			E29BD286147ED20600B58B3A /* PBXTextBookmark */ = E29BD286147ED20600B58B3A /* PBXTextBookmark */;
+			E29BD287147ED20600B58B3A /* PBXTextBookmark */ = E29BD287147ED20600B58B3A /* PBXTextBookmark */;
+			E29BD288147ED20600B58B3A /* PBXTextBookmark */ = E29BD288147ED20600B58B3A /* PBXTextBookmark */;
+			E29BD28D147ED29200B58B3A /* XCBuildMessageTextBookmark */ = E29BD28D147ED29200B58B3A /* XCBuildMessageTextBookmark */;
+			E29BD28E147ED29200B58B3A /* PBXTextBookmark */ = E29BD28E147ED29200B58B3A /* PBXTextBookmark */;
+			E29BD291147ED29C00B58B3A /* PBXTextBookmark */ = E29BD291147ED29C00B58B3A /* PBXTextBookmark */;
+			E29BD292147ED29C00B58B3A /* PBXTextBookmark */ = E29BD292147ED29C00B58B3A /* PBXTextBookmark */;
+			E29BD298147ED2B500B58B3A /* PBXTextBookmark */ = E29BD298147ED2B500B58B3A /* PBXTextBookmark */;
+			E29BD29E147ED2E600B58B3A /* PBXTextBookmark */ = E29BD29E147ED2E600B58B3A /* PBXTextBookmark */;
+			E29BD2A3147EDA2B00B58B3A /* PBXTextBookmark */ = E29BD2A3147EDA2B00B58B3A /* PBXTextBookmark */;
+			E29BD2A8147EDA4700B58B3A /* PBXTextBookmark */ = E29BD2A8147EDA4700B58B3A /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -1109,9 +1121,9 @@
 	};
 	AD730539B904BD2C42DA1F6E /* Command.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1094, 650}}";
-			sepNavSelRange = "{1287, 0}";
-			sepNavVisRange = "{467, 693}";
+			sepNavIntBoundsRect = "{{0, 0}, {631, 835}}";
+			sepNavSelRange = "{1376, 0}";
+			sepNavVisRange = "{0, 1376}";
 			sepNavWindowFrame = "{{130, 97}, {911, 971}}";
 		};
 	};
@@ -1139,10 +1151,10 @@
 	};
 	B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1094, 2574}}";
-			sepNavSelRange = "{344, 0}";
-			sepNavVisRange = "{0, 704}";
-			sepNavWindowFrame = "{{153, 76}, {911, 971}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1094, 2509}}";
+			sepNavSelRange = "{2850, 36}";
+			sepNavVisRange = "{2478, 708}";
+			sepNavWindowFrame = "{{487, 203}, {911, 971}}";
 		};
 	};
 	B718B3389157B2AFAD6D1E8C /* ModeSelector.cpp */ = {
@@ -1155,9 +1167,9 @@
 	};
 	B821697666437A71BDF9E1EE /* Target.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 858}}";
-			sepNavSelRange = "{918, 0}";
-			sepNavVisRange = "{0, 1030}";
+			sepNavIntBoundsRect = "{{0, 0}, {631, 835}}";
+			sepNavSelRange = "{945, 0}";
+			sepNavVisRange = "{0, 1041}";
 			sepNavWindowFrame = "{{84, 139}, {911, 971}}";
 		};
 	};
@@ -1528,7 +1540,7 @@
 		rLen = 0;
 		rLoc = 700;
 		rType = 0;
-		vrLen = 1462;
+		vrLen = 1041;
 		vrLoc = 0;
 	};
 	E20E0E621475F14F0064EA5C /* PBXTextBookmark */ = {
@@ -2599,7 +2611,7 @@
 		ignoreCount = 0;
 		lineNumber = 64;
 		location = SlowGold;
-		modificationTime = 343853768.111189;
+		modificationTime = 343855797.036562;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3859,7 +3871,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 51";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1260;
 		vrLoc = 0;
@@ -3894,7 +3906,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 51";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1260;
 		vrLoc = 0;
@@ -3914,7 +3926,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 42";
 		rLen = 0;
-		rLoc = 1144;
+		rLoc = 1147;
 		rType = 0;
 		vrLen = 1151;
 		vrLoc = 0;
@@ -3934,7 +3946,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 45";
 		rLen = 0;
-		rLoc = 1252;
+		rLoc = 1255;
 		rType = 0;
 		vrLen = 1252;
 		vrLoc = 0;
@@ -3954,7 +3966,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 45";
 		rLen = 0;
-		rLoc = 1250;
+		rLoc = 1253;
 		rType = 0;
 		vrLen = 1250;
 		vrLoc = 0;
@@ -3974,7 +3986,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 46";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1257;
 		vrLoc = 0;
@@ -3994,7 +4006,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 0;
@@ -4029,7 +4041,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 0;
@@ -4074,7 +4086,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 0;
@@ -4114,7 +4126,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 0;
@@ -4144,7 +4156,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 0;
@@ -4182,7 +4194,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1225;
 		vrLoc = 0;
@@ -4222,7 +4234,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1222;
 		vrLoc = 0;
@@ -4262,7 +4274,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1230;
+		rLoc = 1233;
 		rType = 0;
 		vrLen = 1186;
 		vrLoc = 0;
@@ -4302,7 +4314,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1230;
+		rLoc = 1233;
 		rType = 0;
 		vrLen = 1186;
 		vrLoc = 0;
@@ -4342,7 +4354,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1230;
+		rLoc = 1233;
 		rType = 0;
 		vrLen = 1186;
 		vrLoc = 0;
@@ -4382,7 +4394,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 47";
 		rLen = 0;
-		rLoc = 1230;
+		rLoc = 1233;
 		rType = 0;
 		vrLen = 1186;
 		vrLoc = 0;
@@ -4422,7 +4434,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 48";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1186;
 		vrLoc = 0;
@@ -4462,7 +4474,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 49";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1260;
 		vrLoc = 0;
@@ -4502,7 +4514,7 @@
 		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
 		name = "Command.cpp: 49";
 		rLen = 0;
-		rLoc = 1256;
+		rLoc = 1259;
 		rType = 0;
 		vrLen = 1218;
 		vrLoc = 0;
@@ -5061,7 +5073,7 @@
 		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
 		name = "CommandDatabase.cpp: 178";
 		rLen = 0;
-		rLoc = 5384;
+		rLoc = 5393;
 		rType = 0;
 		vrLen = 564;
 		vrLoc = 4694;
@@ -5736,7 +5748,7 @@
 		rLen = 81;
 		rLoc = 397;
 		rType = 0;
-		vrLen = 1878;
+		vrLen = 1041;
 		vrLoc = 0;
 	};
 	E29BD1A7147E074800B58B3A /* PBXTextBookmark */ = {
@@ -6587,6 +6599,145 @@
 		rType = 1;
 	};
 	E29BD277147ED08C00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BD26C147ED04000B58B3A /* CallbackUtils.h */;
+		name = "CallbackUtils.h: 16";
+		rLen = 0;
+		rLoc = 425;
+		rType = 0;
+		vrLen = 1540;
+		vrLoc = 0;
+	};
+	E29BD286147ED20600B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
+		name = "CommandDatabase.cpp: 87";
+		rLen = 0;
+		rLoc = 2641;
+		rType = 0;
+		vrLen = 2032;
+		vrLoc = 1120;
+	};
+	E29BD287147ED20600B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
+		name = "CommandDatabase.cpp: 87";
+		rLen = 0;
+		rLoc = 2641;
+		rType = 0;
+		vrLen = 2123;
+		vrLoc = 1088;
+	};
+	E29BD288147ED20600B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BD26C147ED04000B58B3A /* CallbackUtils.h */;
+		name = "CallbackUtils.h: 16";
+		rLen = 0;
+		rLoc = 425;
+		rType = 0;
+		vrLen = 1540;
+		vrLoc = 0;
+	};
+	E29BD28D147ED29200B58B3A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected nested-name-specifier before 'CommandIDEncoder'";
+		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 12;
+		rType = 1;
+	};
+	E29BD28E147ED29200B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
+		name = "CommandDatabase.cpp: 196";
+		rLen = 0;
+		rLoc = 5833;
+		rType = 0;
+		vrLen = 704;
+		vrLoc = 0;
+	};
+	E29BD291147ED29C00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */;
+		name = "CommandDatabase.cpp: 196";
+		rLen = 0;
+		rLoc = 5833;
+		rType = 0;
+		vrLen = 2093;
+		vrLoc = 1202;
+	};
+	E29BD292147ED29C00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BD26C147ED04000B58B3A /* CallbackUtils.h */;
+		name = "CallbackUtils.h: 16";
+		rLen = 0;
+		rLoc = 425;
+		rType = 0;
+		vrLen = 1540;
+		vrLoc = 0;
+	};
+	E29BD298147ED2B500B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BD26C147ED04000B58B3A /* CallbackUtils.h */;
+		name = "CallbackUtils.h: 16";
+		rLen = 0;
+		rLoc = 425;
+		rType = 0;
+		vrLen = 1540;
+		vrLoc = 0;
+	};
+	E29BD29B147ED2E300B58B3A /* juce_ApplicationCommandManager.cpp:103 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = E29BD29C147ED2E300B58B3A /* juce_ApplicationCommandManager.cpp */;
+		functionName = "ApplicationCommandManager::registerAllCommandsForTarget (ApplicationCommandTarget* target)";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 103;
+		location = SlowGold;
+		modificationTime = 343855848.22554;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	E29BD29C147ED2E300B58B3A /* juce_ApplicationCommandManager.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = juce_ApplicationCommandManager.cpp;
+		path = "/development/juce.2011-11-13/src/application/juce_ApplicationCommandManager.cpp";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {631, 4381}}";
+			sepNavSelRange = "{2492, 0}";
+			sepNavVisRange = "{3225, 2104}";
+		};
+	};
+	E29BD29E147ED2E600B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BD26C147ED04000B58B3A /* CallbackUtils.h */;
+		name = "CallbackUtils.h: 16";
+		rLen = 0;
+		rLoc = 425;
+		rType = 0;
+		vrLen = 1540;
+		vrLoc = 0;
+	};
+	E29BD2A3147EDA2B00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BD26C147ED04000B58B3A /* CallbackUtils.h */;
+		name = "CallbackUtils.h: 16";
+		rLen = 0;
+		rLoc = 425;
+		rType = 0;
+		vrLen = 1540;
+		vrLoc = 0;
+	};
+	E29BD2A8147EDA4700B58B3A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E29BD26C147ED04000B58B3A /* CallbackUtils.h */;
 		name = "CallbackUtils.h: 16";

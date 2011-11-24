@@ -88,7 +88,7 @@ void Node::refreshNode(const VirtualFile& f) {
       if (Node* node = dynamic_cast<Node*>(getSubItem(i)))
         node->refreshNode(f);
       else
-        LOG(ERROR) << "Found a non-Node node!";
+        LOG(DFATAL) << "Found a non-Node node!";
     }
   }
 }

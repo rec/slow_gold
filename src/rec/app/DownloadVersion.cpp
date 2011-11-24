@@ -42,7 +42,7 @@ bool isReadyForUpdate() {
     } else {
       lastUpdateFile.create();
       if (!lastUpdateFile.exists())
-        LOG(ERROR) << "Couldn't create lastUpdate file!!";
+        LOG(DFATAL) << "Couldn't create lastUpdate file!!";
     }
   }
 
@@ -98,7 +98,7 @@ bool checkForNewMajorVersion(const String& current, const String&,
 
   (*version) = getVersion();
   if (!version->length()) {
-    LOG(ERROR) << "No version file!";
+    LOG(DFATAL) << "No version file!";
     return false;
   }
 
@@ -107,7 +107,7 @@ bool checkForNewMajorVersion(const String& current, const String&,
   // so let's not do that.
 
   if (cmp < 0)
-    LOG(ERROR) << "Future Version number! " << current << ", " << *version;
+    LOG(DFATAL) << "Future Version number! " << current << ", " << *version;
 
   return (cmp > 0);
 }

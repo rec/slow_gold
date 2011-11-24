@@ -63,7 +63,7 @@ void addAlbumValue(const String& key, const string& v, Album* a) {
     *a->mutable_track(key.getTrailingIntValue())->mutable_track_title() += v;
 
   else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
-    LOG(ERROR) << "Unknown key " << key << " '" << v << "'";
+    LOG(DFATAL) << "Unknown key " << key << " '" << v << "'";
 }
 
 void fillAlbum(const StringArray& cds, int tracks, Album* album) {
@@ -75,7 +75,7 @@ void fillAlbum(const StringArray& cds, int tracks, Album* album) {
     if (line.length() && line[0] != '#') {
       int loc = line.indexOfChar('=');
       if (loc == -1) {
-        LOG(ERROR) << "Couldn't find = in line " << line;
+        LOG(DFATAL) << "Couldn't find = in line " << line;
       } else {
         String value = line.substring(loc + 1);
         if (value.length() || !value.startsWith("EXT"))
@@ -138,13 +138,13 @@ Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
     AlbumList albums;
     String error = fillAlbums(off, &albums);
     if (error.length()) {
-      LOG(ERROR) << "CDDB gave us an error: " << error;
+      LOG(DFATAL) << "CDDB gave us an error: " << error;
     } else if (!albums.album_size()) {
-      LOG(ERROR) << "CDDB gave us no information";
+      LOG(DFATAL) << "CDDB gave us no information";
     } else {
       album = albums.album(0);
       if (!copy::copy(album, &shadow))
-        LOG(ERROR) << "Couldn't save CDDB information";
+        LOG(DFATAL) << "Couldn't save CDDB information";
     }
   }
 

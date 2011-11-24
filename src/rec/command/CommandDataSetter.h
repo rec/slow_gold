@@ -31,7 +31,7 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
     if (index < command_.desc().menu_size())
       menuName_ = command_.desc().menu(index);
     else
-      LOG(ERROR) << "No " << index << " in " << command_.ShortDebugString();
+      LOG(DFATAL) << "No " << index << " in " << command_.ShortDebugString();
     (*changeListener_)(None());
   }
 

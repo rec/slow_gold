@@ -20,7 +20,7 @@ class NameToProto {
     if (i == map_.end())
       map_.insert(i, make_pair(name, message));
     else if (i->second != message)
-      LOG(ERROR) << "re-registering " << name;
+      LOG(DFATAL) << "re-registering " << name;
   }
 
   template <typename Proto>
@@ -31,7 +31,7 @@ class NameToProto {
   const Message* getProto(const string& name) {
     NameToProtoMap::iterator i = map_.find(name);
     if (i == map_.end()) {
-      LOG(ERROR) << "Couldn't get proto for " << name;
+      LOG(DFATAL) << "Couldn't get proto for " << name;
       return NULL;
     }
     return i->second;

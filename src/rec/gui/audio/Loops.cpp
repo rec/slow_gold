@@ -167,7 +167,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
                                           Component* existing) {
   if (!existing) {
     if (column > columns().column_size()) {
-      LOG(ERROR) << "Unexpected column: " << column
+      LOG(DFATAL) << "Unexpected column: " << column
                  << ", " << columns().column_size();
     } else {
       const TableColumn& col = columns().column(column - 1);
@@ -182,7 +182,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
     if (text)
       text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
     else
-      LOG(ERROR) << "Wrong component type!";
+      LOG(DFATAL) << "Wrong component type!";
   }
   return existing;
 }

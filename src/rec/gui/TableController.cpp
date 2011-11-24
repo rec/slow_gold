@@ -50,7 +50,7 @@ void TableController::paintCell(Graphics& g,
   ScopedLock l(lock_);
   g.setColour(juce::Colours::black);
   if (columnId > columns_.column_size() || columnId <= 0) {
-    LOG(ERROR) << "columnId " << columnId << " size " << columns_.column_size();
+    LOG(DFATAL) << "columnId " << columnId << " size " << columns_.column_size();
     return;
   }
 

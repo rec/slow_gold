@@ -27,14 +27,14 @@ template <typename Coll>
 void complexPartition(const Coll& col, const Range<int>& r, ShardArray* shards) {
   Range<int> range = r;
   if (r.size() < 2) {
-    LOG(ERROR) << "Can't partition very small ranges";
+    LOG(DFATAL) << "Can't partition very small ranges";
     return;
   }
 
   Range<String> name(getName(col, range.begin_), getName(col, range.end_ - 1));
   int diff = indexOfDifference(name.begin_, name.end_);
   if (diff < 0) {
-    LOG(ERROR) << "Identical range";
+    LOG(DFATAL) << "Identical range";
     return;
   }
 

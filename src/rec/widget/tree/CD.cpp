@@ -31,7 +31,7 @@ void CD::computeChildren() {
       }
     }
   } else {
-    LOG(ERROR) << "Tried to computeCDChildren but no reader";
+    LOG(DFATAL) << "Tried to computeCDChildren but no reader";
   }
 
   resetChildren();

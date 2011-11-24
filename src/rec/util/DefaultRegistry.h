@@ -35,7 +35,7 @@ const Type& DefaultRegistry::getDefault(const VirtualFile& vf) const {
   if (const Message* message = getDefault(name, vf)) {
     if (const Type* t = dynamic_cast<const Type*>(message))
       return *t;
-    LOG(ERROR) << "wrong type stored in defaulter";
+    LOG(DFATAL) << "wrong type stored in defaulter";
   }
   return Type::default_instance();
 }

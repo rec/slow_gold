@@ -77,7 +77,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
     length = Samples<44100>(s);
 
     if (!length) {
-      LOG(ERROR) << "Unable to read file " << getFullDisplayName(file_);
+      LOG(DFATAL) << "Unable to read file " << getFullDisplayName(file_);
       return;
     }
 

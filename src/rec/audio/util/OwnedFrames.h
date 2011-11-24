@@ -27,7 +27,7 @@ class OwnedFrames {
     }
     bool success = !length || frames_;
     if (!success)
-      LOG(ERROR) << "Couldn't setLength: " << length << ", " << frames_;
+      LOG(DFATAL) << "Couldn't setLength: " << length << ", " << frames_;
     length_ = length;
 
     return success;

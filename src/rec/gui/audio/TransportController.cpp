@@ -62,7 +62,7 @@ void TransportController::buttonClicked(juce::Button *button) {
     broadcast(command::Command::ZOOM_OUT);
 
   else
-    LOG(ERROR) << "Unknown button " << button;
+    LOG(DFATAL) << "Unknown button " << button;
 }
 
 void TransportController::setTransportState(rec::audio::transport::State state) {

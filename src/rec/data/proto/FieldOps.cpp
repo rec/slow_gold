@@ -17,7 +17,7 @@ bool copyTo(const MessageField& f, ValueProto* value) {
   if (f.index_ >= 0)
     return typer::copyTo(*f.message_, f.field_, f.index_, value);
 
-  LOG(ERROR) << "copyTo failed with no index " << f.message_->GetTypeName();
+  LOG(DFATAL) << "copyTo failed with no index " << f.message_->GetTypeName();
   return false;
 }
 
@@ -28,7 +28,7 @@ bool copyFrom(MessageField* f, const Value& value) {
     if (value.has_message_f())
       return pmessage(value.message_f()).Parse(f->message_);
 
-    LOG(ERROR) << "The Value contained no message field.";
+    LOG(DFATAL) << "The Value contained no message field.";
     return false;
   }
 
@@ -41,7 +41,7 @@ bool addFrom(MessageField* f, const Value& value) {
   if (f->field_)
     return typer::add(f->message_, f->field_, value);
 
-  LOG(ERROR) << "Can't add to self";
+  LOG(DFATAL) << "Can't add to self";
   return false;
 }
 
@@ -51,13 +51,13 @@ bool removeLast(MessageField* f) {
     return true;
   }
 
-  LOG(ERROR) << "Can't remove last of self";
+  LOG(DFATAL) << "Can't remove last of self";
   return false;
 }
 
 bool setSingle(MessageField* field, const Operation& op) {
   if (op.value_size() != 1) {
-    LOG(ERROR) << "Can only set one value at a time";
+    LOG(DFATAL) << "Can only set one value at a time";
     return false;
   }
   return copyFrom(field, op.value(0));
@@ -78,14 +78,14 @@ bool addRepeated(MessageField* field, const Operation& op) {
 
 bool swapRepeated(MessageField* field, const Operation& op) {
   if (!field) {
-    LOG(ERROR) << "Can't swap repeated on self";
+    LOG(DFATAL) << "Can't swap repeated on self";
     return false;
   }
   int s1 = op.swap1(), s2 = op.swap2();
   int size = getSize(*field);
 
   if (s1 < 0 || s2 < 0 || s1 >= size || s2 >= size) {
-    LOG(ERROR) << "Can't swap positions " << s1 << "," << s2 << ": " << size;
+    LOG(DFATAL) << "Can't swap positions " << s1 << "," << s2 << ": " << size;
     return false;
   } else {
     Message* m = field->message_;

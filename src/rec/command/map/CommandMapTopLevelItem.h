@@ -46,7 +46,7 @@ public:
             if (count > 0)
                 addSubItem (new CommandMapCategoryItem(owner, categories[i]));
             else {
-              LOG(ERROR) << "Nothing in category " << str(categories[i])
+              LOG(DFATAL) << "Nothing in category " << str(categories[i])
                          << ", " << commands.size();
             }
 

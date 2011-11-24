@@ -22,7 +22,7 @@ class FrameSource : public PositionableAudioSource {
     while (i.numSamples > 0) {
       int copied = static_cast<int>(buffer_.getAudioBlock(i, position_));
       if (!copied) {
-        LOG(ERROR) << "No samples copied!";
+        LOG(DFATAL) << "No samples copied!";
         DCHECK(copied);
         return;
       }

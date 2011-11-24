@@ -62,7 +62,7 @@ void restoreOpenness(Node* node, const XmlElement& xml) {
       if (i < n)
         restoreOpenness(dynamic_cast<Node*>(node->getSubItem(i)), *child);
       else
-        LOG(ERROR) << "Didn't find id " << id;
+        LOG(DFATAL) << "Didn't find id " << id;
     }
   }
 }
@@ -76,7 +76,7 @@ void Root::readOpenness() {
     restoreOpenness(&root_, *openness);
     tree_.restoreOpennessState(*openness, true);
   } else {
-    LOG(ERROR) << "Couldn't find openness file " << str(getOpennessFile());
+    LOG(DFATAL) << "Couldn't find openness file " << str(getOpennessFile());
   }
   opennessRead_ = true;
 }
@@ -86,7 +86,7 @@ void Root::writeOpenness() {
     // TODO: only do this when the openness is actually changed!
     ptr<XmlElement> openness(tree_.getOpennessState(true));
     if (!(openness && openness->writeToFile(getOpennessFile(), "")))
-      LOG(ERROR) << "Couldn't write openness file";
+      LOG(DFATAL) << "Couldn't write openness file";
   } else {
     readOpenness();
     //thread::callAsync(this, &Root::readOpenness);

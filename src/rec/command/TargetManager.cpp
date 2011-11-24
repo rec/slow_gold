@@ -41,10 +41,10 @@ void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   if (cr->info_)
     info = *(cr->info_);
   else
-    LOG(ERROR) << "No getCommandInfo" << commandName(id);
+    LOG(DFATAL) << "No getCommandInfo" << commandName(id);
 
   if (!info.shortName.isNotEmpty())
-    LOG(ERROR) << "No name for " << commandName(id);
+    LOG(DFATAL) << "No name for " << commandName(id);
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
@@ -70,9 +70,10 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
                                 const String& name,
                                 const String& category,
                                 const String& desc) {
+  DLOG(INFO) << "addCallback " << commandName(id);
   ptr<Callback> callback(cb);
   if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
-    LOG(ERROR) << "Can't add " << commandName(id)
+    LOG(DFATAL) << "Can't add " << commandName(id)
                << ", " << name << ", " << desc;
     return;
   }
@@ -85,7 +86,7 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
 
   CommandRecord* cr = find(id);
   if (cr->callback_)
-    LOG(ERROR) << "Added command twice: " << commandName(id);
+    LOG(DFATAL) << "Added command twice: " << commandName(id);
 
   cr->callback_.reset(callback.transfer());
 }
@@ -98,7 +99,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name) {
   CommandRecord* cr = find(id);
   if (!cr->info_) {
-    LOG(ERROR) << "Can't add item " << CommandIDEncoder::commandIDName(id);
+    LOG(DFATAL) << "Can't add item " << CommandIDEncoder::commandIDName(id);
     return;
   }
 
@@ -110,7 +111,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     info->shortName = str(cr->setter_->menuName());
 
   if (!info->shortName.length())
-    LOG(ERROR) << "No name for command " << commandName(id);
+    LOG(DFATAL) << "No name for command " << commandName(id);
   info->setActive(enable);
   menu->addCommandItem(commandManager(), id, name);
 }
@@ -125,9 +126,9 @@ void TargetManager::addCallbacks() {
     CommandRecord* cr = i->second;
     const Command* command = cr->command_.get();
     if (!command) {
-      LOG(ERROR) << "No command for ID " << i->first;
+      LOG(DFATAL) << "No command for ID " << i->first;
     } else if (!cr->callback_) {
-      LOG(ERROR) << "No callback for ID " << i->first;
+      LOG(DFATAL) << "No callback for ID " << i->first;
     } else {
       const String& menu = command->desc().menu_size() ?
           str(command->desc().menu(0)) : String();

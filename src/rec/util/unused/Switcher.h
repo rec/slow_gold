@@ -16,7 +16,7 @@ class Switcher {
 
   void setNext(Type* n) {
     if (next_) {
-      LOG(ERROR) << "Tried to set next before switch";
+      LOG(DFATAL) << "Tried to set next before switch";
       delete n;
     } else {
       next_.reset(n);

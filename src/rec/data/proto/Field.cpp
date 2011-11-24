@@ -20,24 +20,24 @@ bool dereference(MessageField* f, const Address::Part& afield) {
     if (f->type_ == MessageField::INDEXED) {
       if (f->field_->type() == FieldDescriptor::TYPE_MESSAGE) {
         if (f->index_ < 0 || f->index_ >= getSize(*f)) {
-          LOG(ERROR) << " Index " << f->index_ << " not in range " << getSize(*f);
+          LOG(DFATAL) << " Index " << f->index_ << " not in range " << getSize(*f);
           return false;
         }
         f->message_ = r.MutableRepeatedMessage(f->message_, f->field_, f->index_);
       } else {
-        LOG(ERROR) << "Non-terminal field had type " << f->field_->type();
+        LOG(DFATAL) << "Non-terminal field had type " << f->field_->type();
         return false;
       }
 
     } else if (f->type_ == MessageField::REPEATED) {
       if (!afield.has_index()) {
-        LOG(ERROR) << "Repeated has no index ";
+        LOG(DFATAL) << "Repeated has no index ";
         return false;
       }
 
       int32 index = static_cast<int32>(afield.index());
       if (index >= f->repeatCount_) {
-        LOG(ERROR) << "Index " << index << " out of bounds " << f->repeatCount_;
+        LOG(DFATAL) << "Index " << index << " out of bounds " << f->repeatCount_;
         return false;
       }
 
@@ -52,18 +52,18 @@ bool dereference(MessageField* f, const Address::Part& afield) {
   }
 
   if (!afield.has_name()) {
-    LOG(ERROR) << "Expected a name at this point";
+    LOG(DFATAL) << "Expected a name at this point";
     return false;
   }
 
   if (!f->message_) {
-    LOG(ERROR) << "Empty message";
+    LOG(DFATAL) << "Empty message";
     return false;
   }
 
   f->field_ = f->message_->GetDescriptor()->FindFieldByName(afield.name());
   if (!f->field_) {
-    LOG(ERROR) << "Could not find field named " << afield.name()
+    LOG(DFATAL) << "Could not find field named " << afield.name()
                << " in class named " << f->message_->GetTypeName();
     return false;
   }
@@ -91,7 +91,7 @@ bool fillMessageField(MessageField* field,
 
   for (int i = 0; i < address.part_size(); ++i) {
     if (!dereference(field, address.part(i))) {
-      LOG(ERROR) << "Couldn't get field from address:\n"
+      LOG(DFATAL) << "Couldn't get field from address:\n"
                  << address.ShortDebugString()
                  << "\nMessage:\n" << msg.ShortDebugString();
       return false;

@@ -32,7 +32,7 @@ class TargetManager : public ApplicationCommandTarget,
 
   virtual void operator()(Command::Type t) {
     if (!invokeDirectly(t))
-      LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
+      LOG(DFATAL) << "Failed to invoke " << command::Command::Type_Name(t);
   }
 
   virtual void operator()(bool d) { Lock l(lock_); disabled_ = d; }

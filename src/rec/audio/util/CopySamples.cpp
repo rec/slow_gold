@@ -69,7 +69,6 @@ Samples<44100> restrictCount(const BufferTime& bt, Samples<44100> count) {
   if (count <= remains)
     return count;
 
-  LOG(ERROR) << "count=" << count << " > remains=" << remains;
   return remains;
 }
 
@@ -107,7 +106,6 @@ Samples<44100> copyCircular(const BufferTime& circ, Samples<44100> size,
     copied += copy(toReg, reset(circ), add(reg, n), count - n);
 
   if (copied < count) {
-    LOG(ERROR) << "copied=" << copied << " < count=" << count;
     if (toReg || ) {
       clear(reg.add(copied), count - copied);
     } else {

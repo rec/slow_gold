@@ -25,7 +25,7 @@ Samples<44100> FillableFrameBuffer<Sample, CHANNELS>::setReader(
 
   Samples<44100> size = reader->lengthInSamples;
   if (!frames_.setLength(size)) {
-    LOG(ERROR) << "Unable to set frame length";
+    LOG(DFATAL) << "Unable to set frame length";
     return 0;
   }
 
@@ -41,13 +41,13 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
   ScopedLock l(lock_);
 
   if (!reader_) {
-    LOG(ERROR) << "No reader!";
+    LOG(DFATAL) << "No reader!";
     return 0;
   }
 
   Samples<44100> size = std::min(block::getSize(b), blockSize_);
   if (!reader_->read(bufferPointers_, CHANNELS, b.first, size.toInt(), false)) {
-    LOG(ERROR) << "Reader failed to read!";
+    LOG(DFATAL) << "Reader failed to read!";
     return 0;
   }
 

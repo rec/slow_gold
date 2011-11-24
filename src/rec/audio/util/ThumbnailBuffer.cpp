@@ -36,11 +36,11 @@ void ThumbnailBuffer::writeThumbnail() {
   cacheWritten_ = true;
   if (!thumbnail_.getTotalLength()) {
     // TODO: fix this.
-    LOG(ERROR) << "writing empty cache";
+    LOG(DFATAL) << "writing empty cache";
   } else {
     ptr<juce::FileOutputStream> out(file_.createOutputStream());
     if (!out)
-    	LOG(ERROR) << "Unable to write file " << str(file_);
+    	LOG(DFATAL) << "Unable to write file " << str(file_);
     else
       thumbnail_.saveTo(*out);
   }
@@ -49,7 +49,7 @@ void ThumbnailBuffer::writeThumbnail() {
 Samples<44100> ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
   Lock l(lock_);
   if (!reader) {
-    LOG(ERROR) << "Thumbnail buffer had no reader";
+    LOG(DFATAL) << "Thumbnail buffer had no reader";
     return false;
   }
 
@@ -63,7 +63,7 @@ Samples<44100> ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReade
       thumbnail_.loadFrom(*out);
       cacheWritten_ = thumbnail_.isFullyLoaded();
     } else {
-      LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
+      LOG(DFATAL) << "Couldn't load from " << file_.getFullPathName();
     }
   } else {
     cacheWritten_ = false;

@@ -62,7 +62,7 @@ static VirtualFileList getSelected(juce::TreeViewItem* root, bool selected) {
   for (int i = 0; i < root->getNumSubItems(); ++i) {
     Node* node = dynamic_cast<Node*>(root->getSubItem(i));
     if (!node) {
-      LOG(ERROR) << "Non Node in TreeViewDropAll";
+      LOG(DFATAL) << "Non Node in TreeViewDropAll";
       continue;
     }
     if (node->isSelected() == selected)

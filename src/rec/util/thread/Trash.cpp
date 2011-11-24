@@ -49,7 +49,7 @@ class Trash {
     }
 
     for (ThreadSet::iterator i = stopped.begin(); i != stopped.end(); ++i) {
-      // LOG(ERROR) << "Not deleting " << *i;
+      // LOG(DFATAL) << "Not deleting " << *i;
       doDelete(*i);
     }
   }

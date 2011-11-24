@@ -21,7 +21,7 @@ void addCommandDatabase(CommandRecordTable* table, Listener<None>* listener) {
 }
 
 CommandRecord* find(CommandRecordTable* table, CommandID id, bool create) {
-  DCHECK_NE(id, CommandIDEncoder::toCommandID(Command::JUMP, 10));
+  CHECK(id != CommandIDEncoder::toCommandID(Command::JUMP, 10) || !create);
   CommandRecordTable::iterator i = table->find(id);
   if (i != table->end())
     return i->second;

@@ -38,7 +38,7 @@ const Value UntypedEditable::getValue(const Address& address) const {
 
   Lock l(lock_);
   if (!(fillMessageField(&f, address, *message_) && data::copyTo(f, &value)))
-    LOG(ERROR) << "Couldn't read value for " << address.ShortDebugString();
+    LOG(DFATAL) << "Couldn't read value for " << address.ShortDebugString();
   return value;
 }
 
@@ -100,7 +100,7 @@ void UntypedEditable::applyOperations(const Operations& olist,
     MessageField f;
     Lock l(lock_);
     if (!fillMessageField(&f, Address(op.address()), *message_)) {
-      LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
+      LOG(DFATAL) << "Couldn't perform operation " << op.ShortDebugString();
       return;
     }
     if (undoes) {
@@ -110,7 +110,7 @@ void UntypedEditable::applyOperations(const Operations& olist,
     }
 
     if (!data::apply(&f, op))
-      LOG(ERROR) << "Couldn't perform operation " << op.DebugString();
+      LOG(DFATAL) << "Couldn't perform operation " << op.DebugString();
     else if (undoes)
       undoes->add_operation()->CopyFrom(undo);
   }

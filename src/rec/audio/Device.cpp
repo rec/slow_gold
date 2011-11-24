@@ -22,14 +22,14 @@ void Device::loadState() {
 
   String err = manager_.initialise(0, 2, state.get(), true);
   if (err.length())
-    LOG(ERROR) << "Couldn't initialize audio::Device, error " << str(err);
+    LOG(DFATAL) << "Couldn't initialize audio::Device, error " << str(err);
 }
 
 void Device::saveState() {
   ptr<juce::XmlElement> state(manager_.createStateXml());
   if (state) {
     if (!state->writeToFile(getDeviceFile(), ""))
-      LOG(ERROR) << "Couldn't write device statea file";
+      LOG(DFATAL) << "Couldn't write device state file";
   }
 }
 

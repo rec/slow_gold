@@ -37,7 +37,7 @@ static Implementation* makeImplementation(Source* src, const Stretch& stretch) {
   switch (stretch.strategy()) {
    case Stretch::RUBBERBAND: return new RubberBand(src, stretch);
    default:
-    LOG(ERROR) << "Didn't understand strategy " << stretch.strategy();
+    LOG(DFATAL) << "Didn't understand strategy " << stretch.strategy();
     return NULL;
   }
 }

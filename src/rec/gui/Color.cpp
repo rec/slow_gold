@@ -53,7 +53,7 @@ Colour get(int i) {
   if (i < colours.second - colours.first)
     return colours.first[i];
 
-  LOG(ERROR) << "Couldn't get color " << i;
+  LOG(DFATAL) << "Couldn't get color " << i;
   return colours.second[-1];
 };
 

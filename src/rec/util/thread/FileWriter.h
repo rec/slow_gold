@@ -15,10 +15,10 @@ class FileWriter : public Thread {
   virtual void run() {
     string file = str(file_.getFullPathName());
     if (!file_.getParentDirectory().createDirectory()) {
-      LOG(ERROR) << "Can't make dir " << file;
+      LOG(DFATAL) << "Can't make dir " << file;
 
     } else if (!file_.deleteFile()) {
-      LOG(ERROR) << "Can't delete file " << file;
+      LOG(DFATAL) << "Can't delete file " << file;
 
     } else {
       ::ptr<OutputStream> out(file_.createOutputStream());
@@ -26,7 +26,7 @@ class FileWriter : public Thread {
         (*out) << memory_;
         VLOG(1) << "Saved to file " << file;
       } else {
-        LOG(ERROR) << "Can't create file " << file;
+        LOG(DFATAL) << "Can't create file " << file;
       }
     }
 

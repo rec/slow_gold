@@ -15,7 +15,7 @@ Window::Window(GenericApplication* application,
 
 void Window::initialise() {
   if (running_) {
-    LOG(ERROR) << "already running!";
+    LOG(DFATAL) << "already running!";
     return;
   }
 
