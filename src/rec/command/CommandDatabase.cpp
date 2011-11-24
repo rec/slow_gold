@@ -159,12 +159,15 @@ void removeEmpties(CommandRecordTable* table) {
   std::vector<CommandID> empties;
   CommandRecordTable::iterator i;
   for (i = table->begin(); i != table->end(); ++i) {
-    const Description& desc = i->second->command_->desc();
-    if (!(desc.menu().size() && desc.full().size())) {
-      empties.push_back(i->first);
-      LOG(ERROR) << "Removing empty command "
-                 << Position::commandIDName(i->first);
+    if (!i->second->command_) {
+      LOG(ERROR) << "No command for " << Position::commandIDName(i->first);
+    } else {
+      const Description& desc = i->second->command_->desc();
+      if (desc.menu().size() && desc.full().size()) 
+        continue;
     }
+    empties.push_back(i->first);
+    LOG(ERROR) << "Removing empty " << Position::commandIDName(i->first);
   }
 
   for (int i = 0; i < empties.size(); ++i)
