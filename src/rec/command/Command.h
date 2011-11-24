@@ -9,24 +9,23 @@
 namespace rec {
 namespace command {
 
-typedef std::map<CommandID, Command*> CommandTable;
-typedef std::map<CommandID, Callback*> CallbackTable;
-typedef std::map<CommandID, CommandItemSetter*> SetterTable;
+struct CommandRecord {
+  CommandRecord() {}
 
-const CommandTable toCommandTable(const Commands&);
-const Commands fromCommandTable(const CommandTable&);
-
-struct CommandContext {
-  explicit CommandContext(Listener<None>*);
-  ~CommandContext();
-
-  CommandTable commands_;
-  SetterTable setters_;
-  CallbackTable callbacks_;
+  ptr<Command> command_;
+  ptr<Callback> callback_;
+  ptr<CommandItemSetter> setter_;
+  ptr<ApplicationCommandInfo> info_;
 
  private:
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandContext);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecord);
 };
+
+typedef std::map<CommandID, CommandRecord*> CommandRecordTable;
+
+const CommandRecordTable makeCommandRecordTable(Listener<None>*);
+
+CommandRecord* find(CommandRecordTable* table, CommandID id);
 
 }  // namespace command
 }  // namespace rec

@@ -11,26 +11,26 @@ namespace rec {
 namespace slow {
 
 class Instance;
-typedef command::CallbackTable CallbackTable;
+typedef command::CommandRecordTable CommandRecordTable;
 
 template <typename Function>
-void add(CallbackTable* c, int32 type, Function f) {
-  (*c)[type] = thread::functionCallback(f);
+void add(CommandRecordTable* c, int32 type, Function f) {
+  command::find(c, type)->callback_.reset(thread::functionCallback(f));
 }
 
 template <typename Function>
-void add(CallbackTable* c, int32 type, Function f, Instance* i) {
-  (*c)[type] = thread::functionCallback(f, i);
+void add(CommandRecordTable* c, int32 type, Function f, Instance* i) {
+  command::find(c, type)->callback_.reset(thread::functionCallback(f, i));
 }
 
-template <typename Function, typename V1>
-void add(CallbackTable* c, int32 type, Function f, Instance* i, V1 v1) {
-  (*c)[type] = thread::functionCallback(f, i, v1);
+template <typename Function, typename X>
+void add(CommandRecordTable* c, int32 type, Function f, Instance* i, X x) {
+  command::find(c, type)->callback_.reset(thread::functionCallback(f, i, x));
 }
 
-template <typename Function, typename V1, typename V2>
-void add(CallbackTable* c, int32 type, Function f, Instance* i, V1 v1, V2 v2) {
-  (*c)[type] = thread::functionCallback(f, i, v1, v2);
+template <typename Function, typename X, typename Y>
+void add(CommandRecordTable* c, int32 type, Function f, Instance* i, X x, Y y) {
+  command::find(c, type)->callback_.reset(thread::functionCallback(f, i, x, y));
 }
 
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, Position);

@@ -178,7 +178,7 @@ void toggleStartStop(Instance* i) {
 
 using namespace rec::command;
 
-void addInstanceCallbacks(CallbackTable* c, Instance* i) {
+void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   using namespace rec::gui;
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;

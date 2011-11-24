@@ -7,17 +7,13 @@
 namespace rec {
 namespace slow {
 
-using command::CallbackTable;
+using command::CommandRecordTable;
 
-CallbackTable* createCallbackTable(Instance* i, int repeat) {
-  ptr<CallbackTable> t(new CallbackTable);
-
-  addGlobalCallbacks(t.get());
-  addInstanceCallbacks(t.get(), i);
-  addSelectionCallbacks(t.get(), i);
-  addRepeatedCallbacks(t.get(), i, repeat);
-
-  return t.transfer();
+void addCallbacks(Instance* i, CommandRecordTable* table, int repeat) {
+  addGlobalCallbacks(table);
+  addInstanceCallbacks(table, i);
+  addSelectionCallbacks(table, i);
+  addRepeatedCallbacks(table, i, repeat);
 }
 
 }  // namespace slow

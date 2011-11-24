@@ -6,7 +6,7 @@
 namespace rec {
 namespace slow {
 
-void addGlobalCallbacks(command::CallbackTable* t);
+void addGlobalCallbacks(command::CommandRecordTable* t);
 
 }  // namespace slow
 }  // namespace rec

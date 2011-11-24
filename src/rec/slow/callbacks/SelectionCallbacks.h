@@ -8,7 +8,7 @@ namespace slow {
 
 class Instance;
 
-void addSelectionCallbacks(command::CallbackTable*, Instance*);
+void addSelectionCallbacks(command::CommandRecordTable*, Instance*);
 
 }  // namespace slow
 }  // namespace rec

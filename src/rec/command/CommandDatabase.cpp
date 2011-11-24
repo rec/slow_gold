@@ -11,104 +11,46 @@
 namespace rec {
 namespace command {
 
-namespace {
-
 using slow::Position;
+
+namespace {
 
 enum MergeType {INSERT, MERGE};
 
-void addTo(MergeType type, CommandTable* commands, const Command& cmd,
+void addTo(MergeType type, CommandRecordTable* table, const Command& cmd,
            CommandID id = 0) {
   if (!id)
     id = Position::toCommandID(cmd);
 
-  CommandTable::iterator j = commands->find(id);
-  if (j == commands->end()) {
-    if (type == INSERT)
-      commands->insert(j, std::make_pair(id, new Command(cmd)));
-    else
-    LOG(ERROR) << "No existing command " << Position::commandIDName(id);
-  } else {
-    if (type == MERGE)
-      j->second->MergeFrom(cmd);
-    else
+  CommandRecord* cr(find(table, id));
+  if (type == INSERT) {
+    if (cr->command_)
       LOG(ERROR) << "Can't replace " << Position::commandIDName(id);
-  }
-}
-
-void merge(CommandTable* commands, const Command& cmd, CommandID id = 0) {
-  addTo(MERGE, commands, cmd, id);
-}
-
-void insert(CommandTable* commands, const Command& cmd, CommandID id = 0) {
-  addTo(INSERT, commands, cmd, id);
-}
-
-}  // namespace
-
-void insertSingle(CommandTable* cmds) {
-  for (int i = 0; i < commands().command_size(); ++i)
-    insert(cmds, commands().command(i));
-}
-
-void insertRepeated(CommandTable* commands) {
-  for (int i = 0; i < repeated().command_size(); ++i) {
-    const Command& command = repeated().command(i);
-    Command c = command;
-
-    // Insert each specific subcommand.
-    for (int j = Position::FIRST; j < command.index(); ++j) {
-      c.set_index(j);
-      insert(commands, c, Position::toCommandID(j, command.type()));
-    }
-  }
-}
-
-void insertSetters(CommandContext* context, Listener<None>* listener) {
-  SetterTable* table = &context->setters_;
-  for (int i = 0; i < setters().command_size(); ++i) {
-    Command cmd = setters().command(i);
-    insert(&context->commands_, cmd);
-    int id = cmd.type();
-    ptr<CommandItemSetter> setter;
-    const data::Address& addr = cmd.address();
-
-    using slow::GuiSettings;
-    using audio::stretch::Stretch;
-
-    if (id == Command::TOGGLE_GRID_DISPLAY)
-      setter.reset(new CommandDataSetter<GuiSettings>(listener, cmd, addr, true));
-
-    else if (id == Command::TOGGLE_STRETCH_ENABLE)
-      setter.reset(new CommandDataSetter<Stretch>(listener, cmd, addr, false));
-
     else
-      LOG(ERROR) << "Didn't understand " << Position::commandIDName(id);
-
-    if (setter) {
-      SetterTable::iterator i = table->find(id);
-      if (i != table->end()) {
-        LOG(ERROR) << "Found a duplicate setter " << Position::commandIDName(id);
-        delete i->second;
-      }
-      context->callbacks_[id] = thread::methodCallback(
-          setter.get(), &CommandItemSetter::execute);
-      table->insert(i, std::make_pair(id, setter.transfer()));
-      LOG(ERROR) << "Inserted setter " << Position::commandIDName(id);
-    }
+      cr->command_.reset(new Command(cmd));
+  } else {
+    if (cr->command_)
+      cr->command_->MergeFrom(cmd);
   }
 }
 
-void mergeKeyPresses(CommandTable* commands, const Access& access) {
-  Commands kp = keyPresses(access);
-  for (int i = 0; i < kp.command_size(); ++i)
-    merge(commands, kp.command(i));
+void merge(CommandRecordTable* table, const Command& cmd, CommandID id = 0) {
+  addTo(MERGE, table, cmd, id);
 }
 
-void mergeDescription(CommandTable* commands, const Command& command) {
-  CommandTable::iterator it = commands->find(command.type());
-  if (it != commands->end()) {
-    it->second->MergeFrom(command);
+void insert(CommandRecordTable* table, const Command& cmd, CommandID id = 0) {
+  addTo(INSERT, table, cmd, id);
+}
+
+void insert(CommandRecordTable* table, const Commands& commands) {
+  for (int i = 0; i < commands.command_size(); ++i)
+    insert(table, commands.command(i));
+}
+
+void mergeDescription(CommandRecordTable* table, const Command& command) {
+  CommandRecord* cr = find(table, command.type());
+  if (cr->command_) {
+    cr->command_->MergeFrom(command);
     return;
   }
 
@@ -123,42 +65,101 @@ void mergeDescription(CommandTable* commands, const Command& command) {
 
   CommandID c = Command::BANK_SIZE * command.type();
   for (int i = 0; i <= Position::LAST - Position::FIRST; ++i, ++c) {
-    it = commands->find(c);
-    if (it == commands->end()) {
+    CommandRecord* cr = find(table, c);
+    if (!cr->command_) {
       LOG(ERROR) << "Couldn't find position " << i
                  << " CommandID " << c
                  << " cmd: " << command.ShortDebugString();
       return;
     }
-    Description* desc = it->second->mutable_desc();
+    Description* desc = cr->command_->mutable_desc();
     desc->add_menu(str(String::formatted(menu, CAP[i], "")));
     desc->set_full(str(String::formatted(full, LOWER[i], "")));
   }
 
   for (int i = 0; ; ++i, ++c) {
-    it = commands->find(c);
-    if (it == commands->end())
+    CommandRecord* cr = find(table, c);
+    if (!cr->command_)
       break;
 
     String n = " " + String(i + 1);
     const char* s = n.toUTF8();
-    Description* desc = it->second->mutable_desc();
+    Description* desc = cr->command_->mutable_desc();
     desc->add_menu(str(String::formatted(menu, "", s)));
     desc->set_full(str(String::formatted(full, "", s)));
   }
 }
 
-void mergeDescriptions(CommandTable* commands, const Access& access) {
-  const Commands& desc = descriptions(access);
-  for (int i = 0; i < desc.command_size(); ++i)
-    mergeDescription(commands, desc.command(i));
+}  // namespace
+
+void insertSingle(CommandRecordTable* table) {
+  insert(table, commands());
 }
 
-void removeEmpties(CommandTable* commands) {
+void insertRepeated(CommandRecordTable* commands) {
+  for (int i = 0; i < repeated().command_size(); ++i) {
+    const Command& command = repeated().command(i);
+    Command c = command;
+
+    // Insert each specific subcommand.
+    for (int j = Position::FIRST; j < command.index(); ++j) {
+      c.set_index(j);
+      insert(commands, c, Position::toCommandID(j, command.type()));
+    }
+  }
+}
+
+void insertSetters(CommandRecordTable* table, Listener<None>* ln) {
+  insert(table, setters());
+
+  for (int i = 0; i < setters().command_size(); ++i) {
+    const Command& cmd = setters().command(i);
+    int id = cmd.type();
+    CommandRecord* cr = find(table, id);
+
+    if (cr->setter_)
+      LOG(ERROR) << "Duplicate setter " << Position::commandIDName(id);
+
+    using slow::GuiSettings;
+    using audio::stretch::Stretch;
+
+    const data::Address& a = cmd.address();
+    if (id == Command::TOGGLE_GRID_DISPLAY) {
+      cr->setter_.reset(new CommandDataSetter<GuiSettings>(ln, cmd, a, true));
+
+    } else if (id == Command::TOGGLE_STRETCH_ENABLE) {
+      cr->setter_.reset(new CommandDataSetter<Stretch>(ln, cmd, a, false));
+
+    } else {
+      LOG(ERROR) << "Didn't understand " << Position::commandIDName(id);
+      continue;
+    }
+
+    if (cr->callback_)
+      LOG(ERROR) << "Duplicate callback " << Position::commandIDName(id);
+
+    cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
+                                               &CommandItemSetter::execute));
+  }
+}
+
+void mergeKeyPresses(CommandRecordTable* table, const Access& access) {
+  Commands kp = keyPresses(access);
+  for (int i = 0; i < kp.command_size(); ++i)
+    merge(table, kp.command(i));
+}
+
+void mergeDescriptions(CommandRecordTable* table, const Access& access) {
+  const Commands& desc = descriptions(access);
+  for (int i = 0; i < desc.command_size(); ++i)
+    mergeDescription(table, desc.command(i));
+}
+
+void removeEmpties(CommandRecordTable* table) {
   std::vector<CommandID> empties;
-  for (CommandTable::const_iterator i = commands->begin();
-       i != commands->end(); ++i) {
-    const Description& desc = i->second->desc();
+  CommandRecordTable::iterator i;
+  for (i = table->begin(); i != table->end(); ++i) {
+    const Description& desc = i->second->command_->desc();
     if (!(desc.menu().size() && desc.full().size())) {
       empties.push_back(i->first);
       LOG(ERROR) << "Removing empty command "
@@ -167,7 +168,7 @@ void removeEmpties(CommandTable* commands) {
   }
 
   for (int i = 0; i < empties.size(); ++i)
-    commands->erase(empties[i]);
+    table->erase(empties[i]);
 }
 
 }  // namespace command

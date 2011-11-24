@@ -9,12 +9,42 @@
 namespace rec {
 namespace command {
 
+const CommandRecordTable makeCommandRecordTable(Listener<None>* listener) {
+  CommandRecordTable commands;
+
+  Access access = data::get<Access>();
+
+  insertSingle(&commands);
+  insertRepeated(&commands);
+  insertSetters(&commands, listener);
+  mergeKeyPresses(&commands, access);
+  mergeDescriptions(&commands, access);
+  removeEmpties(&commands);
+
+  return commands;
+}
+
+CommandRecord* find(CommandRecordTable* table, CommandID id) {
+  CommandRecordTable::iterator i = table->find(id);
+  if (i != table->end())
+    return i->second;
+  ptr<CommandRecord> rec(new CommandRecord);
+  table->insert(i, std::make_pair(id, rec.get()));
+  return rec.transfer();
+}
+
+#if 0
+
+const Commands fromCommandTable(const CommandTable&);
+
 const Commands fromCommandTable(const CommandTable& table) {
   Commands commands;
   for (CommandTable::const_iterator i = table.begin(); i != table.end(); ++i)
     commands.add_command()->CopyFrom(*(i->second));
   return commands;
 }
+
+const CommandTable toCommandTable(const Commands&);
 
 const CommandTable toCommandTable(const Commands& commands) {
   CommandTable table;
@@ -25,24 +55,7 @@ const CommandTable toCommandTable(const Commands& commands) {
   return table;
 }
 
-CommandContext::CommandContext(Listener<None>* listener) {
-  Access access = data::get<Access>();
-
-  insertSingle(&commands_);
-  insertRepeated(&commands_);
-  insertSetters(this, listener);
-  mergeKeyPresses(&commands_, access);
-  mergeDescriptions(&commands_, access);
-  removeEmpties(&commands_);
-}
-
-CommandContext::~CommandContext() {
-  DLOG(INFO) << commands_.size() << ", " << setters_.size() << ", "
-             << callbacks_.size() << ", ";
-  stl::deleteMapPointers(&commands_);
-  stl::deleteMapPointers(&setters_);
-  // stl::deleteMapPointers(&callbacks_);
-}
+#endif
 
 }  // namespace command
 }  // namespace rec

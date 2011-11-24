@@ -27,17 +27,15 @@ struct CommandCallback {
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandCallback);
 };
 
-TargetManager::TargetManager(Component* c, Listener<None>* listener)
-    : context_(new CommandContext(listener)),
+TargetManager::TargetManager(Component* c, CommandRecordTable* table)
+    : table_(table),
       lastInvocation_(0),
       disabled_(false) {
   c->addKeyListener(commandManager_.getKeyMappings());
   commandManager_.setFirstCommandTarget(this);
 }
 
-TargetManager:: ~TargetManager() {
-  stl::deleteMapPointers(&callbacks_);
-}
+TargetManager:: ~TargetManager() {}
 
 void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(this);
@@ -119,8 +117,8 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     if (name.length()) {
       info->shortName = name;
     } else {
-      SetterTable::const_iterator i = context_->setters_.find(id);
-      if (i != context_->setters_.end())
+      SetterTable::const_iterator i = table_->setters_.find(id);
+      if (i != table_->setters_.end())
         info->shortName = str(i->second->menuName());
     }
     if (!info->shortName.length())

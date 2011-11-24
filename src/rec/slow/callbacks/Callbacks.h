@@ -10,8 +10,8 @@ class Instance;
 
 static const int REPEATED_COUNT = 10;
 
-command::CallbackTable* createCallbackTable(Instance*,
-                                            int repeat = REPEATED_COUNT);
+void addCallbacks(Instance*, command::CommandRecordTable*, 
+                  int repeat = REPEATED_COUNT);
 
 }  // namespace slow
 }  // namespace rec

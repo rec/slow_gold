@@ -8,13 +8,12 @@ namespace command {
 
 class Access;
 
-void insertSingle(CommandTable*);
-void insertRepeated(CommandTable*);
-void insertSetters(CommandContext*, Listener<None>*);
-void mergeKeyPresses(CommandTable*, const Access&);
-void mergeDescription(CommandTable*, const Command&);
-void mergeDescriptions(CommandTable*, const Access&);
-void removeEmpties(CommandTable*);
+void insertSingle(CommandRecordTable*);
+void insertRepeated(CommandRecordTable*);
+void insertSetters(CommandRecordTable*, Listener<None>*);
+void mergeKeyPresses(CommandRecordTable*, const Access&);
+void mergeDescriptions(CommandRecordTable*, const Access&);
+void removeEmpties(CommandRecordTable*);
 
 }  // namespace command
 }  // namespace rec
