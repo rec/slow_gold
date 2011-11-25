@@ -34,7 +34,6 @@
 		1E71E8E130A37866F055849D /* Wrappy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B080F750738F398054AB382 /* Wrappy.cpp */; };
 		1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2501DE5143C9726EFD4CFEE5 /* Status.cpp */; };
 		218748B1BC795061B48B383C /* ReadYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C24187D27D942187F6F0613C /* ReadYaml.cpp */; };
-		256F269B7A09D69ACEDD5313 /* CommandData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */; };
 		25C0048D33BDE7413EFE05D0 /* PointingHand.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B0B52E98BF728FA6655818A /* PointingHand.svg.cpp */; };
 		26F7CB8653E0334EBB357E5E /* ModeSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B718B3389157B2AFAD6D1E8C /* ModeSelector.cpp */; };
 		2763C9DE251CBC17CCF86649 /* Threads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DB281D6B07E576E7AD90BBB /* Threads.cpp */; };
@@ -163,6 +162,7 @@
 		A7531A0D2D342F7C656ACE1E /* Descriptions.def.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 567D215C489B60F454D735CF /* Descriptions.def.cpp */; };
 		A87CE1D64096B70499497BC5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3757F95B082CEAC4C1F96C41 /* WebKit.framework */; };
 		AC3E0E20F4B9B4EB4A899380 /* SetupPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0794123A52B9E82A9F7EA1DA /* SetupPage.cpp */; };
+		AD0436BCDA6E5128E53A10A9 /* SlowCommandData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED333D10A2D41C754093A3C /* SlowCommandData.cpp */; };
 		AE27C4083FBF5C660DA8A6E7 /* Path.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6895F2524AA5105A313A9 /* Path.pb.cc */; };
 		AFCDF97159BDEB010EB39F4B /* RawFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF897E1EB88C2E3554AD77D4 /* RawFormat.cpp */; };
 		B1327427FAAF4E450FA873F2 /* Mode.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 35CC9BA48C736AC8B5EF19E3 /* Mode.pb.cc */; };
@@ -296,7 +296,6 @@
 		13BDD945E532565AC5D254D1 /* RecentFiles.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RecentFiles.cpp; path = ../../../../src/rec/gui/RecentFiles.cpp; sourceTree = SOURCE_ROOT; };
 		13E636FAB72F458A856FF303 /* DraggingHand.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DraggingHand.svg.cpp; path = ../../../../src/rec/gui/icon/DraggingHand.svg.cpp; sourceTree = SOURCE_ROOT; };
 		1418DE18D16254F6952FBFF3 /* CreateReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateReader.h; path = ../../../../src/rec/audio/format/mpg123/CreateReader.h; sourceTree = SOURCE_ROOT; };
-		1423657626ACA672A9DED90B /* CommandData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandData.h; path = ../../../../src/rec/command/data/CommandData.h; sourceTree = SOURCE_ROOT; };
 		14805A543C9B284EB010F2FB /* MidiCommandMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiCommandMap.cpp; path = ../../../../src/rec/command/map/MidiCommandMap.cpp; sourceTree = SOURCE_ROOT; };
 		151215C620EDDA1F897E346B /* TargetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TargetManager.cpp; path = ../../../../src/rec/command/TargetManager.cpp; sourceTree = SOURCE_ROOT; };
 		170B2EFA8B2446EA16DC731F /* Panes.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Panes.pb.h; path = ../../../../genfiles/proto/rec/widget/Panes.pb.h; sourceTree = SOURCE_ROOT; };
@@ -386,6 +385,7 @@
 		3A427D43E3165CC0C65694C4 /* Samples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Samples.h; path = ../../../../src/rec/base/Samples.h; sourceTree = SOURCE_ROOT; };
 		3A4C8425168239B436624D29 /* Device.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Device.cpp; path = ../../../../src/rec/audio/Device.cpp; sourceTree = SOURCE_ROOT; };
 		3AA6895F2524AA5105A313A9 /* Path.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Path.pb.cc; path = ../../../../genfiles/proto/rec/widget/tree/Path.pb.cc; sourceTree = SOURCE_ROOT; };
+		3B8F084E339DC8102197601E /* SlowCommandData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SlowCommandData.h; path = ../../../../src/rec/command/data/SlowCommandData.h; sourceTree = SOURCE_ROOT; };
 		3BC01A4B5338CCCD2B2A77D7 /* Listener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../../../src/rec/util/Listener.h; sourceTree = SOURCE_ROOT; };
 		3BDE9AD571FACA82E27019B2 /* content.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = content.h; path = ../../../../src/rec/data/yaml/src/content.h; sourceTree = SOURCE_ROOT; };
 		3D0B4149DC5933133201708F /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Data.h; path = ../../../../src/rec/data/Data.h; sourceTree = SOURCE_ROOT; };
@@ -503,6 +503,7 @@
 		6B783EE1E33F655A24E51C4C /* VirtualFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualFile.h; path = ../../../../src/rec/util/file/VirtualFile.h; sourceTree = SOURCE_ROOT; };
 		6CEDC50620E5F86319AD56FA /* emitterutils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = emitterutils.cpp; path = ../../../../src/rec/data/yaml/src/emitterutils.cpp; sourceTree = SOURCE_ROOT; };
 		6E823053B76ED19FFFA5E393 /* TimeController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeController.cpp; path = ../../../../src/rec/gui/audio/TimeController.cpp; sourceTree = SOURCE_ROOT; };
+		6EA12F1D5C4F1E7675161006 /* CommandData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandData.h; path = ../../../../src/rec/command/CommandData.h; sourceTree = SOURCE_ROOT; };
 		6F4409A5A6A7B80EC152E251 /* Mpg123.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Mpg123.cpp; path = ../../../../src/rec/audio/format/mpg123/Mpg123.cpp; sourceTree = SOURCE_ROOT; };
 		6F5F60E255EC320E15627F4B /* Util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Util.cpp; path = ../../../../src/rec/util/file/Util.cpp; sourceTree = SOURCE_ROOT; };
 		7073B7FF6A3F516F96A1D338 /* null.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = null.cpp; path = ../../../../src/rec/data/yaml/src/null.cpp; sourceTree = SOURCE_ROOT; };
@@ -720,7 +721,6 @@
 		CEA9E1E1B40C2427E5AAA688 /* DriveOptical.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DriveOptical.svg.h; path = ../../../../src/rec/gui/icon/DriveOptical.svg.h; sourceTree = SOURCE_ROOT; };
 		CEAC70FBD5AC5BD1D686C92A /* Stereo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stereo.cpp; path = ../../../../src/rec/audio/source/Stereo.cpp; sourceTree = SOURCE_ROOT; };
 		CEC80387A9D590E88437C3BD /* Tags.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Tags.cpp; path = ../../../../src/rec/audio/format/mpg123/Tags.cpp; sourceTree = SOURCE_ROOT; };
-		CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandData.cpp; path = ../../../../src/rec/command/data/CommandData.cpp; sourceTree = SOURCE_ROOT; };
 		CF4EBB22CD72FB3ECF246FC9 /* FullScreen.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FullScreen.svg.h; path = ../../../../src/rec/gui/icon/FullScreen.svg.h; sourceTree = SOURCE_ROOT; };
 		CFBB3BB05A5051FDDDF71A0A /* Zoom.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Zoom.cpp; path = ../../../../src/rec/widget/waveform/Zoom.cpp; sourceTree = SOURCE_ROOT; };
 		CFC39A2BB09083C350DEF61E /* Address.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Address.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/Address.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -800,6 +800,7 @@
 		EE4960DCA7DDB83A987643D8 /* Loops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Loops.h; path = ../../../../src/rec/gui/audio/Loops.h; sourceTree = SOURCE_ROOT; };
 		EE6286AFB3490202975C86E4 /* Metadata.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Metadata.pb.cc; path = ../../../../genfiles/proto/rec/music/Metadata.pb.cc; sourceTree = SOURCE_ROOT; };
 		EE9B2F0E255D6807D0BF5F50 /* Album.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Album.h; path = ../../../../src/rec/util/cd/Album.h; sourceTree = SOURCE_ROOT; };
+		EED333D10A2D41C754093A3C /* SlowCommandData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SlowCommandData.cpp; path = ../../../../src/rec/command/data/SlowCommandData.cpp; sourceTree = SOURCE_ROOT; };
 		EF031A748C014EB2DB702E47 /* NodeItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NodeItem.cpp; path = ../../../../src/rec/widget/tree/NodeItem.cpp; sourceTree = SOURCE_ROOT; };
 		F0F634962FF9D366FEDA2C67 /* SetterResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterResizer.h; path = ../../../../src/rec/gui/SetterResizer.h; sourceTree = SOURCE_ROOT; };
 		F1335001F80FFEFC3CFE99B6 /* Defaulter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Defaulter.cpp; path = ../../../../src/rec/util/Defaulter.cpp; sourceTree = SOURCE_ROOT; };
@@ -869,6 +870,7 @@
 			children = (
 				AD730539B904BD2C42DA1F6E /* Command.cpp */,
 				2C47467844A9E7B586180211 /* Command.h */,
+				6EA12F1D5C4F1E7675161006 /* CommandData.h */,
 				B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */,
 				FB7199D861F4E45256B040C7 /* CommandDatabase.h */,
 				BFD390D9F9D9A78F73F6C8CE /* CommandDataSetter.h */,
@@ -1240,16 +1242,6 @@
 			name = map;
 			sourceTree = "<group>";
 		};
-		6421A5440B7828D645E497C2 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		6C6D775F12CEA14261B879BE /* proto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1384,8 +1376,6 @@
 		86DEBA63CCCE2F368B9B0D2F /* data */ = {
 			isa = PBXGroup;
 			children = (
-				CF18AFC3BEAE8DBB7C4F00B5 /* CommandData.cpp */,
-				1423657626ACA672A9DED90B /* CommandData.h */,
 				1B6B9D276FE2FB64C88D6F78 /* Commands.def.cpp */,
 				33B9E70B10FD3168976432AD /* Commands.def.h */,
 				567D215C489B60F454D735CF /* Descriptions.def.cpp */,
@@ -1396,6 +1386,8 @@
 				E94D2AE4C40A1390FDD5C304 /* Repeated.def.h */,
 				457F275F15E7B3BFCC3991FE /* Setters.def.cpp */,
 				53B1D51D4E442FE3E737146B /* Setters.def.h */,
+				EED333D10A2D41C754093A3C /* SlowCommandData.cpp */,
+				3B8F084E339DC8102197601E /* SlowCommandData.h */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -1618,7 +1610,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6421A5440B7828D645E497C2 /* Slow */,
+				EFAAF4FA028C91ACA90EFCAD /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1873,6 +1865,16 @@
 			name = source;
 			sourceTree = "<group>";
 		};
+		EFAAF4FA028C91ACA90EFCAD /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		F17BE98067F4F775DDA91D09 /* slow */ = {
 			isa = PBXGroup;
 			children = (
@@ -2065,12 +2067,12 @@
 				DFE15ADADC2892B207145668 /* Command.cpp in Sources */,
 				3EB6EA9146AA7C3222EAFFC5 /* CommandDatabase.cpp in Sources */,
 				F25EBCA5BD1B3AB794228C02 /* CommandIDEncoder.cpp in Sources */,
-				256F269B7A09D69ACEDD5313 /* CommandData.cpp in Sources */,
 				3A397BD7A715B4E0C31C2847 /* Commands.def.cpp in Sources */,
 				A7531A0D2D342F7C656ACE1E /* Descriptions.def.cpp in Sources */,
 				EC63385FE827AE096FFA4C0A /* KeyPresses.def.cpp in Sources */,
 				C4B461B37AE379C00FB144F8 /* Repeated.def.cpp in Sources */,
 				E92E0766E82AA1B4646CE661 /* Setters.def.cpp in Sources */,
+				AD0436BCDA6E5128E53A10A9 /* SlowCommandData.cpp in Sources */,
 				F072C1519AE9E32C9805AF7A /* KeyboardBindings.cpp in Sources */,
 				CF2958FC3FDF0FF93A063F32 /* CommandMap.cpp in Sources */,
 				DE21954E89A302C554C403B3 /* CommandMapEditor.cpp in Sources */,

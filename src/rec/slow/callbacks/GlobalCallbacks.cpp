@@ -11,13 +11,13 @@ namespace slow {
 using command::Command;
 
 void addGlobalCallbacks(CommandRecordTable* t) {
-  add(t, Command::DEL, cutNoClipboard);
-  add(t, Command::CUT, cutToClipboard);
-  add(t, Command::COPY, copyToClipboard);
-  add(t, Command::PASTE, pasteFromClipboard);
-  add(t, Command::REDO, redo);
-  add(t, Command::UNDO, undo);
-  add(t, Command::EJECT_CDS, &cd::ejectAll);
+  addCallback(t, Command::DEL, cutNoClipboard);
+  addCallback(t, Command::CUT, cutToClipboard);
+  addCallback(t, Command::COPY, copyToClipboard);
+  addCallback(t, Command::PASTE, pasteFromClipboard);
+  addCallback(t, Command::REDO, redo);
+  addCallback(t, Command::UNDO, undo);
+  addCallback(t, Command::EJECT_CDS, &cd::ejectAll);
 }
 
 }  // namespace slow

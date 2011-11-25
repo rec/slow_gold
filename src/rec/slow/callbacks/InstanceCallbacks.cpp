@@ -183,25 +183,25 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;
 
-  add(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
-  add(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
-  add(c, Command::CLEAR_LOOPS, clearLoops, i);
-  add(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
-  add(c, Command::CLOSE_FILE, closeFile, i);
-  add(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
-  add(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
-  add(c, Command::MIDI_MAPPINGS, midiMappings, i);
-  add(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
-  add(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
-  add(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
-  add(c, Command::OPEN, open, i);
-  add(c, Command::QUIT, quit, i);
-  add(c, Command::RECENT_FILES, recentFiles, i);
-  add(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
-  add(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
-  add(c, Command::TOGGLE_STRETCH_ENABLE, toggleStretchEnable, i);
-  add(c, Command::ZOOM_IN, zoomIn, i);
-  add(c, Command::ZOOM_OUT, zoomOut, i);
+  addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
+  addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
+  addCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
+  addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
+  addCallback(c, Command::CLOSE_FILE, closeFile, i);
+  addCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
+  addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
+  addCallback(c, Command::MIDI_MAPPINGS, midiMappings, i);
+  addCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
+  addCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
+  addCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
+  addCallback(c, Command::OPEN, open, i);
+  addCallback(c, Command::QUIT, quit, i);
+  addCallback(c, Command::RECENT_FILES, recentFiles, i);
+  addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
+  addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
+  addCallback(c, Command::TOGGLE_STRETCH_ENABLE, toggleStretchEnable, i);
+  addCallback(c, Command::ZOOM_IN, zoomIn, i);
+  addCallback(c, Command::ZOOM_OUT, zoomOut, i);
 }
 
 }  // namespace slow

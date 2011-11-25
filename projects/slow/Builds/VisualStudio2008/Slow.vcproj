@@ -32,7 +32,7 @@
             Optimization="0"
             BufferSecurityCheck=""
             DebugInformationFormat="4"
-            AdditionalIncludeDirectories="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
+            AdditionalIncludeDirectories="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
             PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;__JUCE_CONFIG=Debug;GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
@@ -55,7 +55,7 @@
             ProgramDatabaseFile=".\Debug\SlowGold.pdb"
             SubSystem="2"
             TargetMachine="1"
-            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
+            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
       <Tool Name="VCXDCMakeTool"/>
@@ -197,6 +197,7 @@
         <Filter Name="command">
           <File RelativePath="..\..\..\..\src\rec\command\Command.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\Command.h"/>
+          <File RelativePath="..\..\..\..\src\rec\command\CommandData.h"/>
           <File RelativePath="..\..\..\..\src\rec\command\CommandDatabase.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\CommandDatabase.h"/>
           <File RelativePath="..\..\..\..\src\rec\command\CommandDataSetter.h"/>
@@ -204,8 +205,6 @@
           <File RelativePath="..\..\..\..\src\rec\command\CommandIDEncoder.h"/>
           <File RelativePath="..\..\..\..\src\rec\command\CommandItemSetter.h"/>
           <Filter Name="data">
-            <File RelativePath="..\..\..\..\src\rec\command\data\CommandData.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\CommandData.h"/>
             <File RelativePath="..\..\..\..\src\rec\command\data\Commands.def.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\command\data\Commands.def.h"/>
             <File RelativePath="..\..\..\..\src\rec\command\data\Descriptions.def.cpp"/>
@@ -216,6 +215,8 @@
             <File RelativePath="..\..\..\..\src\rec\command\data\Repeated.def.h"/>
             <File RelativePath="..\..\..\..\src\rec\command\data\Setters.def.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\command\data\Setters.def.h"/>
+            <File RelativePath="..\..\..\..\src\rec\command\data\SlowCommandData.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\command\data\SlowCommandData.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\KeyboardBindings.h"/>

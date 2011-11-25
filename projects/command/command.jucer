@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="fvN4a7dk7" name="Command">
+  <MAINGROUP id="oj80mNby5" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -241,6 +241,8 @@
               name="Command.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/Command.h" id="HHk8YU1mC"
               name="Command.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandData.h" id="zLFgFkSvY"
+              name="CommandData.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandDatabase.cpp"
               id="DZZzzKcQc" name="CommandDatabase.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDatabase.h" id="cuGzpTVoU"
@@ -254,10 +256,6 @@
         <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
               id="6sCi8YAy8" name="CommandItemSetter.h" resource="0"/>
         <GROUP id="5BY8wfPFd" name="data">
-          <FILE compile="1" file="../../src/rec/command/data/CommandData.cpp"
-                id="axlSAzhcB" name="CommandData.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/data/CommandData.h" id="m7OiDibQ0"
-                name="CommandData.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/command/data/Commands.def.cpp"
                 id="9S38ozCjo" name="Commands.def.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/data/Commands.def.h"
@@ -278,6 +276,10 @@
                 id="vbbw8wZa9" name="Setters.def.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/data/Setters.def.h" id="1qsASCe9y"
                 name="Setters.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/data/SlowCommandData.cpp"
+                id="4MIXxWVW6" name="SlowCommandData.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/data/SlowCommandData.h"
+                id="CnnbJLeed" name="SlowCommandData.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
               id="HckoAlqBY" name="KeyboardBindings.cpp" resource="0"/>
@@ -1281,7 +1283,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2vXmoqIbH" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="wKovji9vq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

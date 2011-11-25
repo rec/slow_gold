@@ -59,12 +59,12 @@
 		838F57D3C1DA4AACDAA36AEC = { isa = PBXBuildFile; fileRef = 6011F232AEB57506156913E1; };
 		E154D79A3B5B341C0579F359 = { isa = PBXBuildFile; fileRef = 76CBA5686D693965964628DD; };
 		B5FDB9AE92CCE29277B18096 = { isa = PBXBuildFile; fileRef = A48576423DD81DC27B181435; };
-		E80D13946FBA8E74926B6796 = { isa = PBXBuildFile; fileRef = 83B69BCCA36045954FEE1439; };
 		FDD768D08BC67CDA96AA3CCB = { isa = PBXBuildFile; fileRef = DE09892044A3B35E9B1B63FC; };
 		6AF1160612F5D76648F9D291 = { isa = PBXBuildFile; fileRef = 191B1D542D5D18DF27664943; };
 		AFF12558DDD866E33288408D = { isa = PBXBuildFile; fileRef = 6A286AAD8ACB7BAE146DA407; };
 		87525DBC5E9421AAD240587B = { isa = PBXBuildFile; fileRef = 89F7C66ECA9B03EB2F694D77; };
 		ACCCF36FDDDC59AE37FAFAF4 = { isa = PBXBuildFile; fileRef = 080D1467FA986B99AFC79572; };
+		60A223B5BE1F0912B8C9242D = { isa = PBXBuildFile; fileRef = 917130DAFEDFF9B127984EB0; };
 		B310BE5A7F9A9B066B93A3FE = { isa = PBXBuildFile; fileRef = 74B935D7360C9F166C80A158; };
 		82C745F41491C7E31D9434B6 = { isa = PBXBuildFile; fileRef = 7CD82212075940421CE4F5BD; };
 		09D98EEF92280033B420B52E = { isa = PBXBuildFile; fileRef = 244600C96D8C8CC2C0E61007; };
@@ -390,14 +390,13 @@
 		26AA7DCABF0DA98718894F32 = { isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../../../src/rec/binary/icon.png; sourceTree = "SOURCE_ROOT"; };
 		6011F232AEB57506156913E1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Command.cpp; path = ../../../../src/rec/command/Command.cpp; sourceTree = "SOURCE_ROOT"; };
 		E0E53271295BAF9F59A71694 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Command.h; path = ../../../../src/rec/command/Command.h; sourceTree = "SOURCE_ROOT"; };
+		214F1B164100C66058A5248A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandData.h; path = ../../../../src/rec/command/CommandData.h; sourceTree = "SOURCE_ROOT"; };
 		76CBA5686D693965964628DD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandDatabase.cpp; path = ../../../../src/rec/command/CommandDatabase.cpp; sourceTree = "SOURCE_ROOT"; };
 		BE1F86D155B69C3C394F544B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandDatabase.h; path = ../../../../src/rec/command/CommandDatabase.h; sourceTree = "SOURCE_ROOT"; };
 		72719CE2DE8A6F694685DC42 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandDataSetter.h; path = ../../../../src/rec/command/CommandDataSetter.h; sourceTree = "SOURCE_ROOT"; };
 		A48576423DD81DC27B181435 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandIDEncoder.cpp; path = ../../../../src/rec/command/CommandIDEncoder.cpp; sourceTree = "SOURCE_ROOT"; };
 		C3ACBE36809AD8245A442AF0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandIDEncoder.h; path = ../../../../src/rec/command/CommandIDEncoder.h; sourceTree = "SOURCE_ROOT"; };
 		CC3FCBDCEC6A498461C9AA43 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandItemSetter.h; path = ../../../../src/rec/command/CommandItemSetter.h; sourceTree = "SOURCE_ROOT"; };
-		83B69BCCA36045954FEE1439 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandData.cpp; path = ../../../../src/rec/command/data/CommandData.cpp; sourceTree = "SOURCE_ROOT"; };
-		C7C1517F1B5D5E5D8D6CDD9E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandData.h; path = ../../../../src/rec/command/data/CommandData.h; sourceTree = "SOURCE_ROOT"; };
 		DE09892044A3B35E9B1B63FC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Commands.def.cpp; path = ../../../../src/rec/command/data/Commands.def.cpp; sourceTree = "SOURCE_ROOT"; };
 		F657E304F5BEF9526A034620 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Commands.def.h; path = ../../../../src/rec/command/data/Commands.def.h; sourceTree = "SOURCE_ROOT"; };
 		191B1D542D5D18DF27664943 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Descriptions.def.cpp; path = ../../../../src/rec/command/data/Descriptions.def.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -408,6 +407,8 @@
 		9DEB27FDB9BBDB8AC064C788 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Repeated.def.h; path = ../../../../src/rec/command/data/Repeated.def.h; sourceTree = "SOURCE_ROOT"; };
 		080D1467FA986B99AFC79572 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Setters.def.cpp; path = ../../../../src/rec/command/data/Setters.def.cpp; sourceTree = "SOURCE_ROOT"; };
 		165FC21623F5E7CEBAC618EF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Setters.def.h; path = ../../../../src/rec/command/data/Setters.def.h; sourceTree = "SOURCE_ROOT"; };
+		917130DAFEDFF9B127984EB0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SlowCommandData.cpp; path = ../../../../src/rec/command/data/SlowCommandData.cpp; sourceTree = "SOURCE_ROOT"; };
+		EE2D0547274F800A04257492 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SlowCommandData.h; path = ../../../../src/rec/command/data/SlowCommandData.h; sourceTree = "SOURCE_ROOT"; };
 		74B935D7360C9F166C80A158 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KeyboardBindings.cpp; path = ../../../../src/rec/command/KeyboardBindings.cpp; sourceTree = "SOURCE_ROOT"; };
 		23F9F99A552D9BC2B4DBE0AB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeyboardBindings.h; path = ../../../../src/rec/command/KeyboardBindings.h; sourceTree = "SOURCE_ROOT"; };
 		B16A645EEB82220D89542CE1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandEntryWindow.h; path = ../../../../src/rec/command/map/CommandEntryWindow.h; sourceTree = "SOURCE_ROOT"; };
@@ -1006,8 +1007,6 @@
 				75E1668E4EC51BDF6B32AAD8,
 				26AA7DCABF0DA98718894F32 ); name = binary; sourceTree = "<group>"; };
 		125ECC0D20E780F50D7828CD = { isa = PBXGroup; children = (
-				83B69BCCA36045954FEE1439,
-				C7C1517F1B5D5E5D8D6CDD9E,
 				DE09892044A3B35E9B1B63FC,
 				F657E304F5BEF9526A034620,
 				191B1D542D5D18DF27664943,
@@ -1017,7 +1016,9 @@
 				89F7C66ECA9B03EB2F694D77,
 				9DEB27FDB9BBDB8AC064C788,
 				080D1467FA986B99AFC79572,
-				165FC21623F5E7CEBAC618EF ); name = data; sourceTree = "<group>"; };
+				165FC21623F5E7CEBAC618EF,
+				917130DAFEDFF9B127984EB0,
+				EE2D0547274F800A04257492 ); name = data; sourceTree = "<group>"; };
 		EE329D60F4EF3651FD82B8A3 = { isa = PBXGroup; children = (
 				B16A645EEB82220D89542CE1,
 				7CD82212075940421CE4F5BD,
@@ -1044,6 +1045,7 @@
 		543C5B0340FB0EC80BA50D65 = { isa = PBXGroup; children = (
 				6011F232AEB57506156913E1,
 				E0E53271295BAF9F59A71694,
+				214F1B164100C66058A5248A,
 				76CBA5686D693965964628DD,
 				BE1F86D155B69C3C394F544B,
 				72719CE2DE8A6F694685DC42,
@@ -1598,7 +1600,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		FDE12927D9020271AAF5DAD7 = { isa = PBXGroup; children = (
+		C66BB54A7113C58769202802 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1625,7 +1627,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				FDE12927D9020271AAF5DAD7,
+				C66BB54A7113C58769202802,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1688,7 +1690,40 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				ZERO_LINK = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf";
-				PRODUCT_NAME = "SlowBurn"; }; name = Debug; };
+				PRODUCT_NAME = "SlowBurn";
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_FAST_MATH = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static; }; name = Debug; };
 		C14BA6D7B3D866B1B16179E5 = { isa = XCBuildConfiguration; buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1703,7 +1738,40 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				ZERO_LINK = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf";
-				PRODUCT_NAME = "SlowBurn"; }; name = Release; };
+				PRODUCT_NAME = "SlowBurn";
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_FAST_MATH = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static; }; name = Release; };
 		893E5F8246FC8A270EE244AF = { isa = XCConfigurationList; buildConfigurations = (
 				DEB5F46BDA21543C8C8367D1,
 				C14BA6D7B3D866B1B16179E5 ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
@@ -1753,12 +1821,12 @@
 				838F57D3C1DA4AACDAA36AEC,
 				E154D79A3B5B341C0579F359,
 				B5FDB9AE92CCE29277B18096,
-				E80D13946FBA8E74926B6796,
 				FDD768D08BC67CDA96AA3CCB,
 				6AF1160612F5D76648F9D291,
 				AFF12558DDD866E33288408D,
 				87525DBC5E9421AAD240587B,
 				ACCCF36FDDDC59AE37FAFAF4,
+				60A223B5BE1F0912B8C9242D,
 				B310BE5A7F9A9B066B93A3FE,
 				82C745F41491C7E31D9434B6,
 				09D98EEF92280033B420B52E,

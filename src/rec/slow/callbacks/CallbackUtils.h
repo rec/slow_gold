@@ -14,24 +14,29 @@ class Instance;
 typedef command::CommandRecordTable CommandRecordTable;
 typedef command::CommandIDEncoder CommandIDEncoder;
 
-template <typename Function>
-void add(CommandRecordTable* c, int32 type, Function f) {
-  command::find(c, type)->callback_.reset(thread::functionCallback(f));
+inline void addCallback(CommandRecordTable* c, CommandID id, Callback* cb) {
+  DLOG(INFO) << "Adding callback " << command::commandName(id);
+  command::find(c, id)->callback_.reset(cb);
 }
 
 template <typename Function>
-void add(CommandRecordTable* c, int32 type, Function f, Instance* i) {
-  command::find(c, type)->callback_.reset(thread::functionCallback(f, i));
+void addCallback(CommandRecordTable* c, CommandID id, Function f) {
+  addCallback(c, id, thread::functionCallback(f));
+}
+
+template <typename Function>
+void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i) {
+  addCallback(c, id, thread::functionCallback(f, i));
 }
 
 template <typename Function, typename X>
-void add(CommandRecordTable* c, int32 type, Function f, Instance* i, X x) {
-  command::find(c, type)->callback_.reset(thread::functionCallback(f, i, x));
+void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i, X x) {
+  addCallback(c, id, thread::functionCallback(f, i, x));
 }
 
 template <typename Function, typename X, typename Y>
-void add(CommandRecordTable* c, int32 type, Function f, Instance* i, X x, Y y) {
-  command::find(c, type)->callback_.reset(thread::functionCallback(f, i, x, y));
+void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i, X x, Y y) {
+  addCallback(c, id, thread::functionCallback(f, i, x, y));
 }
 
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);

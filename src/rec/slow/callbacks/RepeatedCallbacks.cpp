@@ -53,17 +53,18 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-void add(CommandRecordTable* c, int32 type, CommandIDEncoder position,
+void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
          SelectorFunction f, Instance* i) {
-  add(c, position.toCommandID(type), select, i, f, position);
+  addCallback(c, position.toCommandID(type), select, i, f, position);
 }
 
-void add(CommandRecordTable* c, int32 type, CommandIDEncoder position,
+void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
          LoopSnapshotFunction f, Instance* i) {
-  add(c, position.toCommandID(type), loop, i, f, position);
+  addCallback(c, position.toCommandID(type), loop, i, f, position);
 }
 
-static const int RECENT_MENU_REPEATS = 65;
+// TODO: this duplicates a value in the Repeated.def data file.
+static const int RECENT_MENU_REPEATS = 10;
 
 void loadRecentFile(Instance* instance, int i) {
   gui::RecentFiles rf = data::get<gui::RecentFiles>();
@@ -80,18 +81,18 @@ void loadRecentFile(Instance* instance, int i) {
 void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
   for (int j = CommandIDEncoder::FIRST; j < repeat; ++j) {
   	CommandIDEncoder pos(j);
-    add(t, Command::SELECT, pos, selectAdd, i);
-    add(t, Command::SELECT_ONLY, pos, selectOnly, i);
-    add(t, Command::TOGGLE_SELECTION, pos, toggle, i);
-    add(t, Command::UNSELECT, pos, unselect, i);
+    addCallback(t, Command::SELECT, pos, selectAdd, i);
+    addCallback(t, Command::SELECT_ONLY, pos, selectOnly, i);
+    addCallback(t, Command::TOGGLE_SELECTION, pos, toggle, i);
+    addCallback(t, Command::UNSELECT, pos, unselect, i);
 
-    add(t, Command::JUMP_SELECTED, pos, jumpSelected, i);
-    add(t, Command::JUMP, pos, jump, i);
+    addCallback(t, Command::JUMP_SELECTED, pos, jumpSelected, i);
+    addCallback(t, Command::JUMP, pos, jump, i);
   }
 
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::RECENT_FILES);
-    add(t, id, loadRecentFile, i, j);
+    addCallback(t, id, loadRecentFile, i, j);
   }
 }
 

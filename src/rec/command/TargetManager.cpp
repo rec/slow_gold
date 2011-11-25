@@ -70,7 +70,7 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
                                 const String& name,
                                 const String& category,
                                 const String& desc) {
-  DLOG(INFO) << "addCallback " << commandName(id);
+  DLOG(INFO) << "addCallback: " << commandName(id);
   ptr<Callback> callback(cb);
   if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
     LOG(DFATAL) << "Can't add " << commandName(id)
@@ -127,8 +127,10 @@ void TargetManager::addCallbacks() {
     const Command* command = cr->command_.get();
     if (!command) {
       LOG(DFATAL) << "No command for ID " << i->first;
+
     } else if (!cr->callback_) {
       LOG(DFATAL) << "No callback for ID " << i->first;
+
     } else {
       const String& menu = command->desc().menu_size() ?
           str(command->desc().menu(0)) : String();

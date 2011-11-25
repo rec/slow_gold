@@ -2,18 +2,15 @@
 #define __REC_COMMAND_COMMANDDATABASE__
 
 #include "rec/command/Command.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace command {
 
-class Access;
+class CommandData;
 
-void insertSingle(CommandRecordTable*);
-void insertRepeated(CommandRecordTable*);
-void insertSetters(CommandRecordTable*, Listener<None>*);
-void mergeKeyPresses(CommandRecordTable*, const Access&);
-void mergeDescriptions(CommandRecordTable*, const Access&);
-void removeEmpties(CommandRecordTable*);
+void fillCommandRecordTable(CommandRecordTable*, const CommandData&,
+                            Listener<None>*);
 
 }  // namespace command
 }  // namespace rec

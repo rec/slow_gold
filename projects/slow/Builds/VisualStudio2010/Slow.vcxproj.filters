@@ -292,9 +292,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp">
       <Filter>Slow\rec\command</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\data\CommandData.cpp">
-      <Filter>Slow\rec\command\data</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\data\Commands.def.cpp">
       <Filter>Slow\rec\command\data</Filter>
     </ClCompile>
@@ -308,6 +305,9 @@
       <Filter>Slow\rec\command\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\data\Setters.def.cpp">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\data\SlowCommandData.cpp">
       <Filter>Slow\rec\command\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
@@ -1065,6 +1065,9 @@
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
@@ -1076,9 +1079,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h">
       <Filter>Slow\rec\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\data\CommandData.h">
-      <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\data\Commands.def.h">
       <Filter>Slow\rec\command\data</Filter>
@@ -1093,6 +1093,9 @@
       <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\data\Setters.def.h">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\data\SlowCommandData.h">
       <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">

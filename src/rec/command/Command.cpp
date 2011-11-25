@@ -9,17 +9,6 @@
 namespace rec {
 namespace command {
 
-void addCommandDatabase(CommandRecordTable* table, Listener<None>* listener) {
-  Access access = data::get<Access>();
-
-  insertSingle(table);
-  insertRepeated(table);
-  insertSetters(table, listener);
-  mergeKeyPresses(table, access);
-  mergeDescriptions(table, access);
-  removeEmpties(table);
-}
-
 CommandRecord* find(CommandRecordTable* table, CommandID id, bool create) {
   CHECK(id != CommandIDEncoder::toCommandID(Command::JUMP, 10) || !create);
   CommandRecordTable::iterator i = table->find(id);

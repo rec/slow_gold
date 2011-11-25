@@ -24,7 +24,6 @@ struct CommandRecord {
 typedef std::map<CommandID, CommandRecord*> CommandRecordTable;
 
 CommandRecord* find(CommandRecordTable*, CommandID, bool create = true);
-void addCommandDatabase(CommandRecordTable*, Listener<None>*);
 const Commands fromCommandTable(const CommandRecordTable&);
 string commandName(CommandID);
 
