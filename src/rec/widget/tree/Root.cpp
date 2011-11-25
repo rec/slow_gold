@@ -51,7 +51,7 @@ void Root::checkVolumes() {
   thread::callAsync(this, &Root::mergeNewIntoOld, volumes);
 }
 
-void restoreOpenness(Node* node, const XmlElement& xml) {
+static void restoreOpenness(Node* node, const XmlElement& xml) {
   node->computeChildren();
   node->setOpen(true);
   forEachXmlChildElement(xml, child) {

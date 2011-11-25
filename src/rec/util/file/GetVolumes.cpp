@@ -53,6 +53,8 @@ void addAudioCDs(VirtualFileList* volumes) {
 
 }  // namespace
 
+#if 0
+
 VirtualFileList getVolumes() {
   VirtualFileList volumes;
 
@@ -64,6 +66,8 @@ VirtualFileList getVolumes() {
   sort(&volumes);
   return volumes;
 }
+
+#endif
 
 void fillVolumes(VirtualFileList* volumes) {
   addAudioCDs(volumes);

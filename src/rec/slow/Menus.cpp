@@ -49,7 +49,7 @@ void addFileMenu(TargetManager* t, PopupMenu* popup) {
 
   std::vector<string> recent = rec::gui::getRecentFileNames();
   PopupMenu submenu;
-  for (int i = 0; i < recent.size(); ++i) {
+  for (uint i = 0; i < recent.size(); ++i) {
     CommandID id = CommandIDEncoder::toCommandID(i, Command::RECENT_FILES);
     t->addCommandItem(&submenu, id, true, str(recent[i]));
   }

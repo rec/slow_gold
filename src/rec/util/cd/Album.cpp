@@ -115,7 +115,7 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
 
 #endif
 
-String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
+static String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   try {
     Socket sock;
     connect(&sock, DEFAULT_SERVER, DEFAULT_PORT, DEFAULT_TIMEOUT * 1000);

@@ -162,7 +162,7 @@ void Waveform::onDataChange(const ZoomProto& zp) {
   resized();
 }
 
-const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
+static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
   using juce::MouseCursor;
   switch (mode.click()) {
     case Mode::DRAG:              return MouseCursor::DraggingHandCursor;

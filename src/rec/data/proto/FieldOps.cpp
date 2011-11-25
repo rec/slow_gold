@@ -1,25 +1,11 @@
+#include "rec/data/proto/FieldOps.h"
+
 #include "rec/data/Value.h"
 #include "rec/data/proto/MessageField.h"
 #include "rec/data/proto/TypedOperations.h"
 
 namespace rec {
 namespace data {
-
-bool copyTo(const MessageField& f, ValueProto* value) {
-  if (!f.field_) {
-    value->set_message_f(pmessage(*f.message_));
-    return true;
-  }
-
-  if (f.type_ == MessageField::SINGLE)
-    return typer::copyTo(*f.message_, f.field_, value);
-
-  if (f.index_ >= 0)
-    return typer::copyTo(*f.message_, f.field_, f.index_, value);
-
-  LOG(DFATAL) << "copyTo failed with no index " << f.message_->GetTypeName();
-  return false;
-}
 
 namespace {
 
@@ -119,6 +105,23 @@ bool valid(const Operation::Command c, const MessageField::Type t) {
 }
 
 }  // namespace
+
+bool copyTo(const MessageField& f, ValueProto* value) {
+  if (!f.field_) {
+    value->set_message_f(pmessage(*f.message_));
+    return true;
+  }
+
+  if (f.type_ == MessageField::SINGLE)
+    return typer::copyTo(*f.message_, f.field_, value);
+
+  if (f.index_ >= 0)
+    return typer::copyTo(*f.message_, f.field_, f.index_, value);
+
+  LOG(DFATAL) << "copyTo failed with no index " << f.message_->GetTypeName();
+  return false;
+}
+
 
 bool apply(MessageField* field, const Operation& op) {
   const Operation::Command c = op.command();

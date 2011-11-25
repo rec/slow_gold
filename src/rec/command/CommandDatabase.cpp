@@ -187,7 +187,7 @@ void removeEmpties(CommandRecordTable* table) {
     }
   }
 
-  for (int i = 0; i < empties.size(); ++i)
+  for (uint i = 0; i < empties.size(); ++i)
     table->erase(empties[i]);
 }
 

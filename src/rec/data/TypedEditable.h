@@ -94,7 +94,7 @@ void TypedEditable<Proto>::removeListener(ProtoListener* listener) {
   Broadcaster<const Proto&>::removeListener(listener);
 
   Lock l(UntypedEditable::lock_);
-  for (int i = 0; i < updateQueue_.size(); ++i) {
+  for (uint i = 0; i < updateQueue_.size(); ++i) {
     if (updateQueue_[i] == listener) {
       updateQueue_[i] = updateQueue_.back();
       updateQueue_.pop_back();
@@ -116,7 +116,7 @@ bool TypedEditable<Proto>::update() {
     return false;
 
   Proto p = get();
-  for (int i = 0; i < toUpdate.size(); ++i) {
+  for (uint i = 0; i < toUpdate.size(); ++i) {
     ProtoListener* listener = toUpdate[i];
     {
       Lock l(lock_);

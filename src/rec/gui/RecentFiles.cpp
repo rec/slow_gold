@@ -79,7 +79,7 @@ std::vector<string> getRecentFileNames() {
     names.clear();
     dupes.clear();
 
-    for (int j = 0; j < results.size(); ++j) {
+    for (uint j = 0; j < results.size(); ++j) {
       StrMap::iterator f = names.find(results[j]);
       if (f == names.end()) {
         names.insert(f, std::make_pair(results[j], j));

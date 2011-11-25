@@ -27,8 +27,6 @@ const File getFile(File f, const Path& path) {
   return f;
 }
 
-}  // namespace
-
 const File getVirtual(const VirtualFile& v) {
   if (v.type() == VirtualFile::CD) {
     CHECK(v.type() != VirtualFile::CD);
@@ -50,6 +48,8 @@ const File getVirtual(const VirtualFile& v) {
   CHECK(false) << v.type();
   return File();
 }
+
+}  // namespace
 
 const File getShadowDirectory(const VirtualFile& vf) {
   const File appDir = app::getAppDirectory();

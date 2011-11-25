@@ -56,8 +56,8 @@ void LevelMeter::paint(Graphics& g) {
   fill.addColour(0.80, juce::Colours::yellow);
   fill.addColour(0.93, juce::Colours::red);
 
-  fill.point1.setX(0.0);
-  fill.point1.setY(0.0);
+  fill.point1.setX(0.0f);
+  fill.point1.setY(0.0f);
   fill.point2 = fill.point1;
   if (horizontal_)
     fill.point2.setX(travel);
@@ -83,15 +83,15 @@ void LevelMeter::paint(Graphics& g) {
   for (int i = 1; i < SEGMENT_COUNT; ++i) {
     float pos = spacing * i - GAP_WIDTH / 2;
     if (horizontal_)
-      g.fillRect(pos, 0.0, GAP_WIDTH, base);
+      g.fillRect(pos, 0.0f, GAP_WIDTH, base);
     else
-      g.fillRect(0.0, pos, base, GAP_WIDTH);
+      g.fillRect(0.0f, pos, base, GAP_WIDTH);
   }
 }
 
 void LevelMeter::operator()(const rec::audio::Gain& gain) {
   Lock l(lock_);
-  gain_ = getGain(gain);
+  gain_ = static_cast<float>(getGain(gain));
   preFaderLevels_ = gain.prefader_levels();
 }
 

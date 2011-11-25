@@ -31,7 +31,7 @@ void processAudioFile(const File& in, const File& out,
   CHECK(writer) << "Couldn't create writer for " << str(out);
 
   src.reset(filter(src.transfer()));
-  writer->writeFromAudioSource(*src, src->getTotalLength(), 4096);
+  writer->writeFromAudioSource(*src, static_cast<int>(src->getTotalLength()), 4096);
 }
 
 typedef std::pair<Source*, AudioFormatWriter*> SourceAndWriter;

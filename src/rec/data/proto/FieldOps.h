@@ -6,6 +6,10 @@
 namespace rec {
 namespace data {
 
+class MessageField;
+class Operation;
+class ValueProto;
+
 bool apply(MessageField*, const Operation&);
 bool copyTo(const MessageField& f, ValueProto* value);
 

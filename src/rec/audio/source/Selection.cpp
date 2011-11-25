@@ -30,7 +30,7 @@ void Selection::onDataChange(const LoopPointList& loops) {
   Lock l(Wrappy::lock_);
   selection_ = getTimeSelection(loops);
   if (selection_.empty())
-    selection_.insert(block::makeBlock(0, loops.length()));
+    selection_.insert(block::makeBlock(0, Samples<44100>(RealTime(loops.length()))));
 }
 
 void Selection::moveBackward(Samples<44100> dt) {

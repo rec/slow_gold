@@ -1,5 +1,3 @@
-#include <gflags/gflags.h>
-
 #include "rec/app/GenericApplication.h"
 
 #include "rec/app/DownloadVersion.h"
@@ -11,8 +9,6 @@
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/Undo.h"
 #include "rec/data/EditableUpdater.h"
-
-DECLARE_bool(logtostderr);
 
 namespace rec {
 namespace app {

@@ -4,8 +4,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 
-
-#include "rec/audio/format/mpg123/mpg123.h"
+#include "rec/audio/format/mpg123/NewHandle.h"
 
 using namespace juce;
 

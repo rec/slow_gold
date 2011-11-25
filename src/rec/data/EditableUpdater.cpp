@@ -3,6 +3,7 @@
 #include "rec/data/EditableUpdater.h"
 
 #include "rec/app/Files.h"
+#include "rec/data/Data.h"
 #include "rec/data/TypedEditable.h"
 #include "rec/util/DefaultRegistry.h"
 #include "rec/util/STL.h"
