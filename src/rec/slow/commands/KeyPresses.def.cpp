@@ -1,14 +1,14 @@
-#include "rec/command/data/KeyPresses.def.h"
+#include "rec/slow/commands/KeyPresses.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=Commands KeyPresses.def
+// new --include=command/Command --proto=command::Commands KeyPresses.def
 
 namespace rec {
-namespace command {
-namespace data {
+namespace slow {
+namespace commands {
 
-Def<Commands> keyPresses(
-  "command { type: ADD_LOOP_POINT  keypress: \"command + +\" }\n"
+Def<command::Commands> keyPresses(
+"command { type: ADD_LOOP_POINT  keypress: \"command + +\" }\n"
   "command { type: AUDIO_PREFERENCES  keypress: \"command + ;\" }\n"
   "command { type: CLEAR_LOOPS  keypress: \"command + b\" }\n"
   "command { type: CLOSE_FILE  keypress: \"command + w\" }\n"
@@ -35,6 +35,6 @@ Def<Commands> keyPresses(
   " "
 );
 
-}  // namespace data
-}  // namespace command
+}  // namespace commands
+}  // namespace slow
 }  // namespace rec

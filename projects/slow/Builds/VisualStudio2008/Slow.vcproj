@@ -204,20 +204,6 @@
           <File RelativePath="..\..\..\..\src\rec\command\CommandIDEncoder.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\CommandIDEncoder.h"/>
           <File RelativePath="..\..\..\..\src\rec\command\CommandItemSetter.h"/>
-          <Filter Name="data">
-            <File RelativePath="..\..\..\..\src\rec\command\data\Commands.def.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\Commands.def.h"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\Descriptions.def.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\Descriptions.def.h"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\KeyPresses.def.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\KeyPresses.def.h"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\Repeated.def.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\Repeated.def.h"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\Setters.def.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\Setters.def.h"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\SlowCommandData.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\command\data\SlowCommandData.h"/>
-          </Filter>
           <File RelativePath="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\KeyboardBindings.h"/>
           <Filter Name="map">
@@ -491,6 +477,20 @@
             <File RelativePath="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h"/>
+          </Filter>
+          <Filter Name="commands">
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Commands.def.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Commands.def.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Descriptions.def.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Descriptions.def.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\KeyPresses.def.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\KeyPresses.def.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Repeated.def.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Repeated.def.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Setters.def.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Setters.def.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\SlowCommandData.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\slow\Components.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Components.h"/>

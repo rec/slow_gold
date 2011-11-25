@@ -1,13 +1,13 @@
-#include "rec/command/data/Commands.def.h"
+#include "rec/slow/commands/Commands.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=Commands Commands.def
+// new --include=command/Command --proto=command::Commands Commands.def
 
 namespace rec {
-namespace command {
-namespace data {
+namespace slow {
+namespace commands {
 
-Def<Commands> commands(
+Def<command::Commands> commands(
 "command { type: ADD_LOOP_POINT category: \"Loops\"}\n"
   "command { type: AUDIO_PREFERENCES category: \"Audio\"}\n"
   "command { type: CLEAR_LOOPS category: \"Loops\" }\n"
@@ -37,6 +37,6 @@ Def<Commands> commands(
   " "
 );
 
-}  // namespace data
-}  // namespace command
+}  // namespace commands
+}  // namespace slow
 }  // namespace rec

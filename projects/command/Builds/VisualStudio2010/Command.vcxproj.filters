@@ -41,9 +41,6 @@
     <Filter Include="Command\rec\command">
       <UniqueIdentifier>{8CD953A8-FE41-188E-5329-670B3A7660A5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Command\rec\command\data">
-      <UniqueIdentifier>{2C0EE6AD-0B35-91F8-1D01-F889B68C04DB}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Command\rec\command\map">
       <UniqueIdentifier>{617B009E-6E20-1EDB-605B-A15852F367DF}</UniqueIdentifier>
     </Filter>
@@ -88,6 +85,9 @@
     </Filter>
     <Filter Include="Command\rec\slow\callbacks">
       <UniqueIdentifier>{42DA6FC3-D2CA-E7FA-2F8D-5836D051EB58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Command\rec\slow\commands">
+      <UniqueIdentifier>{42263722-3564-3E4D-2DAF-489684059EDF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Command\rec\util">
       <UniqueIdentifier>{4F7EA287-3F6E-C15C-D341-961C60FF0862}</UniqueIdentifier>
@@ -291,24 +291,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp">
       <Filter>Command\rec\command</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\data\Commands.def.cpp">
-      <Filter>Command\rec\command\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\data\Descriptions.def.cpp">
-      <Filter>Command\rec\command\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\data\KeyPresses.def.cpp">
-      <Filter>Command\rec\command\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\data\Repeated.def.cpp">
-      <Filter>Command\rec\command\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\data\Setters.def.cpp">
-      <Filter>Command\rec\command\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\data\SlowCommandData.cpp">
-      <Filter>Command\rec\command\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
       <Filter>Command\rec\command</Filter>
@@ -603,6 +585,24 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp">
       <Filter>Command\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Commands.def.cpp">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Descriptions.def.cpp">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\KeyPresses.def.cpp">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Repeated.def.cpp">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Setters.def.cpp">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp">
+      <Filter>Command\rec\slow\commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp">
       <Filter>Command\rec\slow</Filter>
@@ -1080,24 +1080,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h">
       <Filter>Command\rec\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\data\Commands.def.h">
-      <Filter>Command\rec\command\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\data\Descriptions.def.h">
-      <Filter>Command\rec\command\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\data\KeyPresses.def.h">
-      <Filter>Command\rec\command\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\data\Repeated.def.h">
-      <Filter>Command\rec\command\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\data\Setters.def.h">
-      <Filter>Command\rec\command\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\data\SlowCommandData.h">
-      <Filter>Command\rec\command\data</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
       <Filter>Command\rec\command</Filter>
     </ClInclude>
@@ -1535,6 +1517,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h">
       <Filter>Command\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Commands.def.h">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Descriptions.def.h">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\KeyPresses.def.h">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Repeated.def.h">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Setters.def.h">
+      <Filter>Command\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h">
+      <Filter>Command\rec\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h">
       <Filter>Command\rec\slow</Filter>

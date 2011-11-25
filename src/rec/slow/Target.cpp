@@ -7,7 +7,7 @@
 #include "rec/command/CommandDatabase.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/callbacks/Callbacks.h"
-#include "rec/command/data/SlowCommandData.h"
+#include "rec/slow/commands/SlowCommandData.h"
 
 using namespace rec::command;
 
@@ -17,7 +17,7 @@ namespace slow {
 Target::Target(Instance* i)
     : HasInstance(i),
       midiCommandMap_(new command::MidiCommandMap(manager_.commandManager())),
-      commandData_(command::createSlowCommandData()) {
+      commandData_(slow::createSlowCommandData()) {
   i->window_->addKeyListener(manager_.commandManager()->getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   (*midiCommandMap_)(data::get<command::CommandMapProto>());

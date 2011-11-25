@@ -1,13 +1,13 @@
-#include "rec/command/data/Descriptions.def.h"
+#include "rec/slow/commands/Descriptions.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=Commands Descriptions.def
+// new --include=command/Command --proto=command::Commands Descriptions.def
 
 namespace rec {
-namespace command {
-namespace data {
+namespace slow {
+namespace commands {
 
-Def<Commands> descriptions(
+Def<command::Commands> descriptions(
 "command {\n"
   "  type: ADD_LOOP_POINT\n"
   "  desc {\n"
@@ -258,6 +258,6 @@ Def<Commands> descriptions(
   " "
 );
 
-}  // namespace data
-}  // namespace command
+}  // namespace commands
+}  // namespace slow
 }  // namespace rec

@@ -1,13 +1,13 @@
-#include "rec/command/data/Repeated.def.h"
+#include "rec/slow/commands/Repeated.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=Commands Repeated.def
+// new --include=command/Command --proto=command::Commands Repeated.def
 
 namespace rec {
-namespace command {
-namespace data {
+namespace slow {
+namespace commands {
 
-Def<Commands> repeated(
+Def<command::Commands> repeated(
 "command { type: JUMP index: 10 category: \"Transport\" }\n"
   "command { type: JUMP_SELECTED index: 10 category: \"Transport\" }\n"
   "command { type: SELECT index: 10 category: \"Selection\" }\n"
@@ -18,6 +18,6 @@ Def<Commands> repeated(
   " "
 );
 
-}  // namespace data
-}  // namespace command
+}  // namespace commands
+}  // namespace slow
 }  // namespace rec

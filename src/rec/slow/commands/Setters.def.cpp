@@ -1,13 +1,13 @@
-#include "rec/command/data/Setters.def.h"
+#include "rec/slow/commands/Setters.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=Commands Setters.def
+// new --include=command/Command --proto=command::Commands Setters.def
 
 namespace rec {
-namespace command {
-namespace data {
+namespace slow {
+namespace commands {
 
-Def<Commands> setters(
+Def<command::Commands> setters(
 "command {\n"
   "  type: TOGGLE_GRID_DISPLAY\n"
   "  category: \"Transport\"\n"
@@ -25,6 +25,6 @@ Def<Commands> setters(
   " "
 );
 
-}  // namespace data
-}  // namespace command
+}  // namespace commands
+}  // namespace slow
 }  // namespace rec

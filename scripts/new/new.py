@@ -77,13 +77,15 @@ def createCppFiles(file, groupname, protoname, namespace, includes):
   usageError(group, 'No group ' + groupname)
 
   name = os.path.abspath(file)
-  path = name.split('/src/')[1].split('/')
-  classname = path.pop()
+  originalPath = name.split('/src/')[1].split('/')
+  classname = originalPath.pop()
 
   if namespace:
     path = namespace.split('.')
+  else:
+    path = originalPath
 
-  if not path or path[0] != 'rec':
+  if not path:
     path.insert(0, 'rec')
 
   context = dict(
@@ -107,12 +109,12 @@ def createCppFiles(file, groupname, protoname, namespace, includes):
     datafile = '%s.%s' % (file, ft)
     data = convertToCCode(open(datafile).read(), True or not isDef)
     context.update(data=data, datatype=datatype)
-    headerfile = '%s.%s.h' % (classname, ft)
+    header_file = '%s.%s.h' % (classname, ft)
   else:
-    headerfile = classname + '.h'
+    header_file = classname + '.h'
     ft = ''
 
-  context.update(header_file = '/'.join(path + [headerfile]))
+  context.update(header_file = '/'.join(originalPath + [header_file]))
   for suffix in group['files']:
     wsuffix = suffix.replace('.data.', '.%s.' % ft)
     fullFile = file + wsuffix

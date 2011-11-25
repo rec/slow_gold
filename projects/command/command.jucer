@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="oj80mNby5" name="Command">
+  <MAINGROUP id="fZFPNDHbl" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -255,32 +255,6 @@
               name="CommandIDEncoder.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
               id="6sCi8YAy8" name="CommandItemSetter.h" resource="0"/>
-        <GROUP id="5BY8wfPFd" name="data">
-          <FILE compile="1" file="../../src/rec/command/data/Commands.def.cpp"
-                id="9S38ozCjo" name="Commands.def.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/data/Commands.def.h"
-                id="WPZOZ5Tqd" name="Commands.def.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/data/Descriptions.def.cpp"
-                id="RAAkaTTx1" name="Descriptions.def.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/data/Descriptions.def.h"
-                id="U811DWHKj" name="Descriptions.def.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/data/KeyPresses.def.cpp"
-                id="evv4N3Bys" name="KeyPresses.def.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/data/KeyPresses.def.h"
-                id="9ay7Ae4w0" name="KeyPresses.def.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/data/Repeated.def.cpp"
-                id="PZnz4y33W" name="Repeated.def.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/data/Repeated.def.h"
-                id="MitEVSn1T" name="Repeated.def.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/data/Setters.def.cpp"
-                id="vbbw8wZa9" name="Setters.def.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/data/Setters.def.h" id="1qsASCe9y"
-                name="Setters.def.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/data/SlowCommandData.cpp"
-                id="4MIXxWVW6" name="SlowCommandData.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/data/SlowCommandData.h"
-                id="CnnbJLeed" name="SlowCommandData.h" resource="0"/>
-        </GROUP>
         <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
               id="HckoAlqBY" name="KeyboardBindings.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="MNEZclY2L"
@@ -799,6 +773,32 @@
           <FILE compile="0" file="../../src/rec/slow/callbacks/SelectionCallbacks.h"
                 id="K1m2augcs" name="SelectionCallbacks.h" resource="0"/>
         </GROUP>
+        <GROUP id="kfhMowZiv" name="commands">
+          <FILE compile="1" file="../../src/rec/slow/commands/Commands.def.cpp"
+                id="RmeeYj5EI" name="Commands.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/commands/Commands.def.h"
+                id="BbMgx3Rux" name="Commands.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/commands/Descriptions.def.cpp"
+                id="p3e8vYqsC" name="Descriptions.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/commands/Descriptions.def.h"
+                id="FfEVBphMq" name="Descriptions.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/commands/KeyPresses.def.cpp"
+                id="a3WlNjov7" name="KeyPresses.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/commands/KeyPresses.def.h"
+                id="VqN6tHcLG" name="KeyPresses.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/commands/Repeated.def.cpp"
+                id="H7QHo1z9J" name="Repeated.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/commands/Repeated.def.h"
+                id="2aHrILQHe" name="Repeated.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/commands/Setters.def.cpp"
+                id="VuEs0wUYk" name="Setters.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/commands/Setters.def.h"
+                id="sFEUExyMY" name="Setters.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/commands/SlowCommandData.cpp"
+                id="fD9Z3AE3W" name="SlowCommandData.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/commands/SlowCommandData.h"
+                id="IXmec7g3H" name="SlowCommandData.h" resource="0"/>
+        </GROUP>
         <FILE compile="1" file="../../src/rec/slow/Components.cpp" id="AgxZMCtMm"
               name="Components.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Components.h" id="3F03AcAjS"
@@ -1283,7 +1283,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="wKovji9vq" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="a7M2f2th1" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -4,13 +4,14 @@
 #include "rec/base/base.h"
 
 namespace rec {
-namespace command {
 
-class CommandData;
+namespace command { class CommandData; }
 
-CommandData* createSlowCommandData();
+namespace slow {
 
-}  // namespace command
+command::CommandData* createSlowCommandData();
+
+}  // namespace slow
 }  // namespace rec
 
 #endif  // __REC_COMMAND_DATA_SLOWCOMMANDDATA__
