@@ -16,10 +16,13 @@ message WaveformProto {
   optional bool use_captions = 10                         [default = true];
   optional bool tics_at_bottom = 11                       [default = true];
   optional double selection_frame_in_seconds = 12         [default = 5];
+  optional bool show_grid = 13                            [default = true];
+  optional bool parallel_waveforms = 14                   [default = false];
+  optional bool show_names_in_waveform = 15               [default = true];
 
   enum Layout {
     STACKED = 1;
     PARALLEL = 2;
   };
-  optional Layout layout = 13;
+  optional Layout layout = 16;
 };

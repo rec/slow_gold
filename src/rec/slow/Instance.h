@@ -7,9 +7,6 @@ namespace rec {
 
 namespace audio { class Device; }
 namespace audio { namespace source { class Player; }}
-namespace widget { namespace waveform { class Waveform; }}
-namespace widget { namespace waveform { class WaveformProto; }}
-namespace widget { namespace waveform { class ZoomProto; }}
 
 namespace slow {
 

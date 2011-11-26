@@ -91,13 +91,6 @@ class GuiSettings : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional bool show_grid = 1 [default = true];
-  inline bool has_show_grid() const;
-  inline void clear_show_grid();
-  static const int kShowGridFieldNumber = 1;
-  inline bool show_grid() const;
-  inline void set_show_grid(bool value);
-  
   // optional bool drop_adds_to_browser = 2 [default = true];
   inline bool has_drop_adds_to_browser() const;
   inline void clear_drop_adds_to_browser();
@@ -105,34 +98,17 @@ class GuiSettings : public ::google::protobuf::Message {
   inline bool drop_adds_to_browser() const;
   inline void set_drop_adds_to_browser(bool value);
   
-  // optional bool parallel_waveforms = 3 [default = false];
-  inline bool has_parallel_waveforms() const;
-  inline void clear_parallel_waveforms();
-  static const int kParallelWaveformsFieldNumber = 3;
-  inline bool parallel_waveforms() const;
-  inline void set_parallel_waveforms(bool value);
-  
-  // optional bool show_names_in_waveform = 4 [default = true];
-  inline bool has_show_names_in_waveform() const;
-  inline void clear_show_names_in_waveform();
-  static const int kShowNamesInWaveformFieldNumber = 4;
-  inline bool show_names_in_waveform() const;
-  inline void set_show_names_in_waveform(bool value);
-  
   // @@protoc_insertion_point(class_scope:rec.slow.GuiSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  bool show_grid_;
   bool drop_adds_to_browser_;
-  bool parallel_waveforms_;
-  bool show_names_in_waveform_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -155,68 +131,20 @@ class GuiSettings : public ::google::protobuf::Message {
 
 // GuiSettings
 
-// optional bool show_grid = 1 [default = true];
-inline bool GuiSettings::has_show_grid() const {
-  return _has_bit(0);
-}
-inline void GuiSettings::clear_show_grid() {
-  show_grid_ = true;
-  _clear_bit(0);
-}
-inline bool GuiSettings::show_grid() const {
-  return show_grid_;
-}
-inline void GuiSettings::set_show_grid(bool value) {
-  _set_bit(0);
-  show_grid_ = value;
-}
-
 // optional bool drop_adds_to_browser = 2 [default = true];
 inline bool GuiSettings::has_drop_adds_to_browser() const {
-  return _has_bit(1);
+  return _has_bit(0);
 }
 inline void GuiSettings::clear_drop_adds_to_browser() {
   drop_adds_to_browser_ = true;
-  _clear_bit(1);
+  _clear_bit(0);
 }
 inline bool GuiSettings::drop_adds_to_browser() const {
   return drop_adds_to_browser_;
 }
 inline void GuiSettings::set_drop_adds_to_browser(bool value) {
-  _set_bit(1);
+  _set_bit(0);
   drop_adds_to_browser_ = value;
-}
-
-// optional bool parallel_waveforms = 3 [default = false];
-inline bool GuiSettings::has_parallel_waveforms() const {
-  return _has_bit(2);
-}
-inline void GuiSettings::clear_parallel_waveforms() {
-  parallel_waveforms_ = false;
-  _clear_bit(2);
-}
-inline bool GuiSettings::parallel_waveforms() const {
-  return parallel_waveforms_;
-}
-inline void GuiSettings::set_parallel_waveforms(bool value) {
-  _set_bit(2);
-  parallel_waveforms_ = value;
-}
-
-// optional bool show_names_in_waveform = 4 [default = true];
-inline bool GuiSettings::has_show_names_in_waveform() const {
-  return _has_bit(3);
-}
-inline void GuiSettings::clear_show_names_in_waveform() {
-  show_names_in_waveform_ = true;
-  _clear_bit(3);
-}
-inline bool GuiSettings::show_names_in_waveform() const {
-  return show_names_in_waveform_;
-}
-inline void GuiSettings::set_show_names_in_waveform(bool value) {
-  _set_bit(3);
-  show_names_in_waveform_ = value;
 }
 
 

@@ -29,11 +29,8 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
       "rec/slow/GuiSettings.proto");
   GOOGLE_CHECK(file != NULL);
   GuiSettings_descriptor_ = file->message_type(0);
-  static const int GuiSettings_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_grid_),
+  static const int GuiSettings_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, drop_adds_to_browser_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, parallel_waveforms_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_names_in_waveform_),
   };
   GuiSettings_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -76,11 +73,9 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\223"
-    "\001\n\013GuiSettings\022\027\n\tshow_grid\030\001 \001(\010:\004true\022"
-    "\"\n\024drop_adds_to_browser\030\002 \001(\010:\004true\022!\n\022p"
-    "arallel_waveforms\030\003 \001(\010:\005false\022$\n\026show_n"
-    "ames_in_waveform\030\004 \001(\010:\004true", 188);
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"1"
+    "\n\013GuiSettings\022\"\n\024drop_adds_to_browser\030\002 "
+    "\001(\010:\004true", 89);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -99,10 +94,7 @@ struct StaticDescriptorInitializer_rec_2fslow_2fGuiSettings_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int GuiSettings::kShowGridFieldNumber;
 const int GuiSettings::kDropAddsToBrowserFieldNumber;
-const int GuiSettings::kParallelWaveformsFieldNumber;
-const int GuiSettings::kShowNamesInWaveformFieldNumber;
 #endif  // !_MSC_VER
 
 GuiSettings::GuiSettings()
@@ -121,10 +113,7 @@ GuiSettings::GuiSettings(const GuiSettings& from)
 
 void GuiSettings::SharedCtor() {
   _cached_size_ = 0;
-  show_grid_ = true;
   drop_adds_to_browser_ = true;
-  parallel_waveforms_ = false;
-  show_names_in_waveform_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -159,10 +148,7 @@ GuiSettings* GuiSettings::New() const {
 
 void GuiSettings::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    show_grid_ = true;
     drop_adds_to_browser_ = true;
-    parallel_waveforms_ = false;
-    show_names_in_waveform_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -174,62 +160,14 @@ bool GuiSettings::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bool show_grid = 1 [default = true];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &show_grid_)));
-          _set_bit(0);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_drop_adds_to_browser;
-        break;
-      }
-      
       // optional bool drop_adds_to_browser = 2 [default = true];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_drop_adds_to_browser:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &drop_adds_to_browser_)));
-          _set_bit(1);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(24)) goto parse_parallel_waveforms;
-        break;
-      }
-      
-      // optional bool parallel_waveforms = 3 [default = false];
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_parallel_waveforms:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &parallel_waveforms_)));
-          _set_bit(2);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(32)) goto parse_show_names_in_waveform;
-        break;
-      }
-      
-      // optional bool show_names_in_waveform = 4 [default = true];
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_show_names_in_waveform:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &show_names_in_waveform_)));
-          _set_bit(3);
+          _set_bit(0);
         } else {
           goto handle_uninterpreted;
         }
@@ -255,24 +193,9 @@ bool GuiSettings::MergePartialFromCodedStream(
 
 void GuiSettings::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional bool show_grid = 1 [default = true];
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->show_grid(), output);
-  }
-  
   // optional bool drop_adds_to_browser = 2 [default = true];
-  if (_has_bit(1)) {
+  if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->drop_adds_to_browser(), output);
-  }
-  
-  // optional bool parallel_waveforms = 3 [default = false];
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->parallel_waveforms(), output);
-  }
-  
-  // optional bool show_names_in_waveform = 4 [default = true];
-  if (_has_bit(3)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->show_names_in_waveform(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -283,24 +206,9 @@ void GuiSettings::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* GuiSettings::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional bool show_grid = 1 [default = true];
-  if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->show_grid(), target);
-  }
-  
   // optional bool drop_adds_to_browser = 2 [default = true];
-  if (_has_bit(1)) {
+  if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->drop_adds_to_browser(), target);
-  }
-  
-  // optional bool parallel_waveforms = 3 [default = false];
-  if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->parallel_waveforms(), target);
-  }
-  
-  // optional bool show_names_in_waveform = 4 [default = true];
-  if (_has_bit(3)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->show_names_in_waveform(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -314,23 +222,8 @@ int GuiSettings::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional bool show_grid = 1 [default = true];
-    if (has_show_grid()) {
-      total_size += 1 + 1;
-    }
-    
     // optional bool drop_adds_to_browser = 2 [default = true];
     if (has_drop_adds_to_browser()) {
-      total_size += 1 + 1;
-    }
-    
-    // optional bool parallel_waveforms = 3 [default = false];
-    if (has_parallel_waveforms()) {
-      total_size += 1 + 1;
-    }
-    
-    // optional bool show_names_in_waveform = 4 [default = true];
-    if (has_show_names_in_waveform()) {
       total_size += 1 + 1;
     }
     
@@ -362,16 +255,7 @@ void GuiSettings::MergeFrom(const GuiSettings& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      set_show_grid(from.show_grid());
-    }
-    if (from._has_bit(1)) {
       set_drop_adds_to_browser(from.drop_adds_to_browser());
-    }
-    if (from._has_bit(2)) {
-      set_parallel_waveforms(from.parallel_waveforms());
-    }
-    if (from._has_bit(3)) {
-      set_show_names_in_waveform(from.show_names_in_waveform());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -396,10 +280,7 @@ bool GuiSettings::IsInitialized() const {
 
 void GuiSettings::Swap(GuiSettings* other) {
   if (other != this) {
-    std::swap(show_grid_, other->show_grid_);
     std::swap(drop_adds_to_browser_, other->drop_adds_to_browser_);
-    std::swap(parallel_waveforms_, other->parallel_waveforms_);
-    std::swap(show_names_in_waveform_, other->show_names_in_waveform_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

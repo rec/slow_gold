@@ -209,10 +209,31 @@ class WaveformProto : public ::google::protobuf::Message {
   inline double selection_frame_in_seconds() const;
   inline void set_selection_frame_in_seconds(double value);
   
-  // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
+  // optional bool show_grid = 13 [default = true];
+  inline bool has_show_grid() const;
+  inline void clear_show_grid();
+  static const int kShowGridFieldNumber = 13;
+  inline bool show_grid() const;
+  inline void set_show_grid(bool value);
+  
+  // optional bool parallel_waveforms = 14 [default = false];
+  inline bool has_parallel_waveforms() const;
+  inline void clear_parallel_waveforms();
+  static const int kParallelWaveformsFieldNumber = 14;
+  inline bool parallel_waveforms() const;
+  inline void set_parallel_waveforms(bool value);
+  
+  // optional bool show_names_in_waveform = 15 [default = true];
+  inline bool has_show_names_in_waveform() const;
+  inline void clear_show_names_in_waveform();
+  static const int kShowNamesInWaveformFieldNumber = 15;
+  inline bool show_names_in_waveform() const;
+  inline void set_show_names_in_waveform(bool value);
+  
+  // optional .rec.widget.waveform.WaveformProto.Layout layout = 16;
   inline bool has_layout() const;
   inline void clear_layout();
-  static const int kLayoutFieldNumber = 13;
+  static const int kLayoutFieldNumber = 16;
   inline ::rec::widget::waveform::WaveformProto_Layout layout() const;
   inline void set_layout(::rec::widget::waveform::WaveformProto_Layout value);
   
@@ -231,12 +252,15 @@ class WaveformProto : public ::google::protobuf::Message {
   bool use_captions_;
   bool tics_at_bottom_;
   double selection_frame_in_seconds_;
+  bool show_grid_;
+  bool parallel_waveforms_;
+  bool show_names_in_waveform_;
   int layout_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -421,20 +445,68 @@ inline void WaveformProto::set_selection_frame_in_seconds(double value) {
   selection_frame_in_seconds_ = value;
 }
 
-// optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
-inline bool WaveformProto::has_layout() const {
+// optional bool show_grid = 13 [default = true];
+inline bool WaveformProto::has_show_grid() const {
   return _has_bit(10);
+}
+inline void WaveformProto::clear_show_grid() {
+  show_grid_ = true;
+  _clear_bit(10);
+}
+inline bool WaveformProto::show_grid() const {
+  return show_grid_;
+}
+inline void WaveformProto::set_show_grid(bool value) {
+  _set_bit(10);
+  show_grid_ = value;
+}
+
+// optional bool parallel_waveforms = 14 [default = false];
+inline bool WaveformProto::has_parallel_waveforms() const {
+  return _has_bit(11);
+}
+inline void WaveformProto::clear_parallel_waveforms() {
+  parallel_waveforms_ = false;
+  _clear_bit(11);
+}
+inline bool WaveformProto::parallel_waveforms() const {
+  return parallel_waveforms_;
+}
+inline void WaveformProto::set_parallel_waveforms(bool value) {
+  _set_bit(11);
+  parallel_waveforms_ = value;
+}
+
+// optional bool show_names_in_waveform = 15 [default = true];
+inline bool WaveformProto::has_show_names_in_waveform() const {
+  return _has_bit(12);
+}
+inline void WaveformProto::clear_show_names_in_waveform() {
+  show_names_in_waveform_ = true;
+  _clear_bit(12);
+}
+inline bool WaveformProto::show_names_in_waveform() const {
+  return show_names_in_waveform_;
+}
+inline void WaveformProto::set_show_names_in_waveform(bool value) {
+  _set_bit(12);
+  show_names_in_waveform_ = value;
+}
+
+// optional .rec.widget.waveform.WaveformProto.Layout layout = 16;
+inline bool WaveformProto::has_layout() const {
+  return _has_bit(13);
 }
 inline void WaveformProto::clear_layout() {
   layout_ = 1;
-  _clear_bit(10);
+  _clear_bit(13);
 }
 inline ::rec::widget::waveform::WaveformProto_Layout WaveformProto::layout() const {
   return static_cast< ::rec::widget::waveform::WaveformProto_Layout >(layout_);
 }
 inline void WaveformProto::set_layout(::rec::widget::waveform::WaveformProto_Layout value) {
   GOOGLE_DCHECK(::rec::widget::waveform::WaveformProto_Layout_IsValid(value));
-  _set_bit(10);
+  _set_bit(13);
   layout_ = value;
 }
 
