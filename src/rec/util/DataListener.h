@@ -55,6 +55,20 @@ class DataListener : public Listener<const Proto&>,
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataListener);
 };
 
+
+template <typename Proto>
+class GlobalDataListener : public DataListener<Proto> {
+ public:
+  GlobalDataListener(const data::Address& address =
+               data::Address::default_instance())
+      : DataListener<Proto>(address, true) {
+  }
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(GlobalDataListener);
+};
+
+
 //
 // Implementations
 //

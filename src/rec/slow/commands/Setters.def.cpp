@@ -13,7 +13,7 @@ Def<command::Commands> setters(
   "  category: \"Transport\"\n"
   "  is_global_setter: true\n"
   "  address { part: { name: \"show_grid\" } }\n"
-  "  setter_type_name: \"rec.slow.GuiSettings\"\n"
+  "  setter_type_name: \"rec.widget.Waveform\"\n"
   "}\n"
   "command {\n"
   "  type: TOGGLE_STRETCH_ENABLE\n"

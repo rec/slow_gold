@@ -4,9 +4,9 @@
 #include "rec/command/Access.pb.h"
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandDataSetter.h"
-#include "rec/data/Data.h"
-#include "rec/slow/GuiSettings.pb.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/data/Data.h"
+#include "rec/widget/waveform/Waveform.pb.h"
 
 namespace rec {
 namespace command {
@@ -146,7 +146,7 @@ class CommandDatabase {
   }
 
   void insertSetters() {
-    using slow::GuiSettings;
+    using widget::waveform::WaveformProto;
     using audio::stretch::Stretch;
 
     for (int i = 0; i < data_.setters().command_size(); ++i) {
@@ -174,7 +174,7 @@ class CommandDatabase {
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
       if (id == Command::TOGGLE_GRID_DISPLAY)
-        cr->setter_.reset(new CommandDataSetter<GuiSettings>(ls, c, a, true));
+        cr->setter_.reset(new CommandDataSetter<WaveformProto>(ls, c, a, true));
       else if (id == Command::TOGGLE_STRETCH_ENABLE)
         cr->setter_.reset(new CommandDataSetter<Stretch>(ls, c, a, false));
 

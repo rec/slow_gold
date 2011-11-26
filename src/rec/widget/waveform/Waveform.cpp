@@ -27,9 +27,8 @@ Def<CursorProto> defaultDesc(
 
 }  // namespace
 
-Waveform::Waveform(MenuBarModel* m, const WaveformProto& d, const CursorProto* timeCursor)
+Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : gui::component::Focusable<Component>(m),
-      desc_(d),
       length_(0),
       thumbnail_(NULL),
       empty_(true) {
@@ -59,7 +58,7 @@ const CursorProto& Waveform::defaultTimeCursor() {
 void Waveform::paint(Graphics& g) {
   {
     Painter p(desc_.widget(), &g);
-    ScopedLock l(lock_);
+    Lock l(lock_);
 
     if (empty_) {
       g.setFont(14.0f);
@@ -91,7 +90,8 @@ void Waveform::paint(Graphics& g) {
 
         RealTime first = Samples<44100>(draw.first);
         RealTime second = Samples<44100>(draw.second);
-        if (desc_.layout() == WaveformProto::PARALLEL) {
+        if (desc_.parallel_waveforms() ||
+            desc_.layout() == WaveformProto::PARALLEL) {
           p.setColor(1 + 2 * selected);
           thumbnail_->drawChannels(g, b, first, second, 1.0f);
         } else {
@@ -102,6 +102,7 @@ void Waveform::paint(Graphics& g) {
         }
         r.first = draw.second;
       }
+
       drawGrid(g, range);
     }
   }
@@ -120,9 +121,17 @@ double Waveform::pixelsPerSecond() const {
   return getWidth() / getTimeRange().size();
 }
 
+void Waveform::onDataChange(const WaveformProto& proto) {
+  {
+    Lock l(lock_);
+    desc_ = proto;
+  }
+  resized();
+}
+
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
 
     selection_ = audio::getTimeSelection(loopPoints);
     length_ = RealTime(loopPoints.length());
@@ -155,7 +164,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
 
 void Waveform::onDataChange(const ZoomProto& zp) {
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     zoom_ = zp;
   }
 
@@ -176,13 +185,13 @@ static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
 }
 
 void Waveform::onDataChange(const Mode& mode) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   setMouseCursor(getCursor(mode));
 }
 
 void Waveform::layoutCursors() {
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     for (int i = getNumChildComponents(); i > 0; --i) {
       Component* comp = getChildComponent(i - 1);
       if (comp->getName() == "Cursor") {
@@ -196,7 +205,6 @@ void Waveform::layoutCursors() {
 
 void Waveform::resized() {
   MessageManagerLock l;
-  repaint();
   layoutCursors();
 }
 
@@ -207,7 +215,7 @@ RealTime Waveform::zoomEnd() const {
 
 
 Range<RealTime> Waveform::getTimeRange() const {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   Range<RealTime> r;
   if (zoom_.zoom_to_selection() && !selection_.empty()) {
     r.begin_ = Samples<44100>(selection_.begin()->first);
@@ -275,8 +283,12 @@ void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
   for (int i = b - 1; i <= e + 1; ++i) {
     RealTime time = i * units;
     int x = timeToX(time);
-    g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
-    g.drawVerticalLine(x, 0, h);
+
+    if (desc_.show_grid()) {
+      g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
+      g.drawVerticalLine(x, 0, h);
+    }
+
     String s = formatTime(time, length_, false, false, decimals);
     static const int WIDTH = 50;
     static const int HEIGHT = 10;
