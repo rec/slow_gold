@@ -65,48 +65,51 @@ void Waveform::paint(Graphics& g) {
       g.drawFittedText("Drop a file here or double-click to open a new file",
                        0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
     } else {
-      block::BlockSet::iterator i = selection_.begin();
       Range<RealTime> range = getTimeRange();
-      block::Block r;
-      r.first = Samples<44100>(range.begin_);
-      r.second = Samples<44100>(range.end_);
-      const juce::Rectangle<int>& bounds = getLocalBounds();
-      int channels = thumbnail_->getNumChannels();
-
-      while (block::getSize(r) > 0) {
-        for (; i != selection_.end() && i->second <= r.first; ++i);
-        bool selected = (i != selection_.end() && r.first >= i->first);
-        block::Block draw = r;
-        if (selected)
-          draw.second = i->second;
-
-        else if (i != selection_.end())
-          draw.second = i->first;
-
-        int x1 = timeToX(Samples<44100>(draw.first));
-        int x2 = timeToX(Samples<44100>(draw.second));
-
-        juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
-
-        RealTime first = Samples<44100>(draw.first);
-        RealTime second = Samples<44100>(draw.second);
-        if (desc_.parallel_waveforms() ||
-            desc_.layout() == WaveformProto::PARALLEL) {
-          p.setColor(1 + 2 * selected);
-          thumbnail_->drawChannels(g, b, first, second, 1.0f);
-        } else {
-          for (int i = 0; i < channels; ++i) {
-            p.setColor(selected ? i + 1 : i + 1 + channels);
-            thumbnail_->drawChannel(g, b, first, second, i, 1.0f);
-          }
-        }
-        r.first = draw.second;
-      }
-
+      drawWaveform(p, range);
       drawGrid(g, range);
     }
   }
   paintFocus(g);
+}
+
+void Waveform::drawWaveform(Painter& p, const Range<RealTime>& range) {
+  block::BlockSet::iterator i = selection_.begin();
+  block::Block r;
+  r.first = Samples<44100>(range.begin_);
+  r.second = Samples<44100>(range.end_);
+  const juce::Rectangle<int>& bounds = getLocalBounds();
+  int channels = thumbnail_->getNumChannels();
+
+  while (block::getSize(r) > 0) {
+    for (; i != selection_.end() && i->second <= r.first; ++i);
+    bool selected = (i != selection_.end() && r.first >= i->first);
+    block::Block draw = r;
+    if (selected)
+      draw.second = i->second;
+
+    else if (i != selection_.end())
+      draw.second = i->first;
+
+    int x1 = timeToX(Samples<44100>(draw.first));
+    int x2 = timeToX(Samples<44100>(draw.second));
+
+    juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
+
+    RealTime first = Samples<44100>(draw.first);
+    RealTime second = Samples<44100>(draw.second);
+    if (desc_.parallel_waveforms() ||
+        desc_.layout() == WaveformProto::PARALLEL) {
+      for (int i = 0; i < channels; ++i) {
+        p.setColor(selected ? i + 1 : i + 1 + channels);
+        thumbnail_->drawChannel(*p.graphics(), b, first, second, i, 1.0f);
+      }
+    } else {
+      p.setColor(2 * selected);
+      thumbnail_->drawChannels(*p.graphics(), b, first, second, 1.0f);
+    }
+    r.first = draw.second;
+  }
 }
 
 int Waveform::timeToX(RealTime t) const {

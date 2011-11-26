@@ -40,7 +40,7 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
   }
 
   virtual void execute() {
-    DLOG(INFO) << "execute " << command_.ShortDebugString();
+    // DLOG(INFO) << "execute " << command_.ShortDebugString();
 
     data::Value value = this->getValue();
     value.set_bool_f(!value.bool_f());

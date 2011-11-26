@@ -62,9 +62,11 @@ class Waveform : public gui::component::Focusable<Component>,
   CriticalSection* lock() { return &lock_; }
 
  private:
+  void drawWaveform(Painter& g, const Range<RealTime>&);
+  void drawGrid(Graphics& g, const Range<RealTime>&);
+
   RealTime zoomEnd() const;
 
-  void drawGrid(Graphics& g, const Range<RealTime>&);
   void adjustCursors(const LoopPointList&);
 
   Cursor* newCursor(const CursorProto& d, double time, int index);

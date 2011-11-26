@@ -38,7 +38,8 @@ bool dereference(MessageField* f, const Address::Part& afield) {
 
       int32 index = static_cast<int32>(afield.index());
       if (index >= f->repeatCount_) {
-        LOG(DFATAL) << "Index " << index << " out of bounds " << f->repeatCount_;
+        LOG(DFATAL) << "Index " << index << " out of bounds " << f->repeatCount_
+                    << ": " << f->message_->ShortDebugString();
         return false;
       }
 
