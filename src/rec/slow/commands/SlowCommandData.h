@@ -9,7 +9,9 @@ namespace command { class CommandData; }
 
 namespace slow {
 
-command::CommandData* createSlowCommandData();
+class Instance;
+
+command::CommandData* createSlowCommandData(Instance*);
 
 }  // namespace slow
 }  // namespace rec

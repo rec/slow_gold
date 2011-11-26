@@ -1,8 +1,6 @@
 #ifndef __REC_SLOW_SLOWTARGET__
 #define __REC_SLOW_SLOWTARGET__
 
-#include "rec/command/Command.pb.h"
-#include "rec/command/CommandData.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/command/TargetManager.h"
 
@@ -19,15 +17,13 @@ class Target : public HasInstance {
   explicit Target(Instance* instance);
   virtual ~Target();
 
-  void addCommands();
-
   command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
   command::TargetManager* targetManager() { return &manager_; }
+  void addCommands();
 
  private:
   command::TargetManager manager_;
   ptr<command::MidiCommandMap> midiCommandMap_;
-  ptr<command::CommandData> commandData_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Target);
 };

@@ -4,6 +4,7 @@
 #include <map>
 
 #include "rec/command/Command.h"
+#include "rec/command/CommandData.h"
 #include "rec/command/CommandItemSetter.h"
 #include "rec/util/STL.h"
 #include "rec/util/Listener.h"
@@ -18,8 +19,10 @@ class TargetManager : public ApplicationCommandTarget,
                       public Listener<Command::Type>,
                       public Listener<bool> {
  public:
-  TargetManager();
+  explicit TargetManager(CommandData*);
   virtual ~TargetManager();
+
+  void addCommands();
 
   void registerAllCommandsForTarget();
   void setApplicationCommandManagerToWatch(MenuBarModel* model) {
@@ -54,9 +57,10 @@ class TargetManager : public ApplicationCommandTarget,
   void addCommandItem(PopupMenu*, CommandID, bool enable = true,
                       const String& name = String::empty);
   CommandRecordTable* commandRecordTable() { return &table_; }
-  void addCallbacks();
 
  private:
+  ptr<CommandData> commandData_;
+
   CommandRecord* find(CommandID);
   CommandRecordTable table_;
 

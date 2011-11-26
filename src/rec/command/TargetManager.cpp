@@ -2,10 +2,11 @@
 
 #include "rec/app/Files.h"
 #include "rec/command/Command.h"
-#include "rec/command/map/Keyboard.xml.h"
-#include "rec/command/KeyboardBindings.h"
-#include "rec/data/Data.h"
+#include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/KeyboardBindings.h"
+#include "rec/command/map/Keyboard.xml.h"
+#include "rec/data/Data.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/Callback.h"
@@ -13,8 +14,9 @@
 namespace rec {
 namespace command {
 
-TargetManager::TargetManager()
-    : lastInvocation_(0),
+TargetManager::TargetManager(CommandData* commandData)
+    : commandData_(commandData),
+      lastInvocation_(0),
       disabled_(false) {
   commandManager_.setFirstCommandTarget(this);
 }
@@ -120,27 +122,9 @@ CommandRecord* TargetManager::find(CommandID id) {
   return command::find(&table_, id);
 }
 
-void TargetManager::addCallbacks() {
-  CommandRecordTable::iterator i;
-  for (i = table_.begin(); i != table_.end(); ++i) {
-    CommandRecord* cr = i->second;
-    const Command* command = cr->command_.get();
-    if (!command) {
-      LOG(DFATAL) << "No command for ID " << i->first;
-
-    } else if (!cr->callback_) {
-      LOG(DFATAL) << "No callback for ID " << i->first;
-
-    } else {
-      const String& menu = command->desc().menu_size() ?
-          str(command->desc().menu(0)) : String();
-      const String& desc = str(command->desc().full());
-      const String& category = str(command->category());
-
-      addCallback(i->first, cr->callback_.get(), menu, category, desc);
-    }
-  }
-
+void TargetManager::addCommands() {
+  fillCommandRecordTable(&table_, *commandData_);
+  registerAllCommandsForTarget();
 }
 
 }  // namespace command

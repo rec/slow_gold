@@ -9,7 +9,7 @@ namespace slow {
 
 using command::CommandRecordTable;
 
-void addCallbacks(Instance* i, CommandRecordTable* table, int repeat) {
+void addSlowCallbacks(Instance* i, CommandRecordTable* table, int repeat) {
   addGlobalCallbacks(table);
   addInstanceCallbacks(table, i);
   addSelectionCallbacks(table, i);

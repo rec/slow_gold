@@ -16,8 +16,8 @@ namespace slow {
 
 Target::Target(Instance* i)
     : HasInstance(i),
-      midiCommandMap_(new command::MidiCommandMap(manager_.commandManager())),
-      commandData_(slow::createSlowCommandData()) {
+      manager_(slow::createSlowCommandData(i)),
+      midiCommandMap_(new command::MidiCommandMap(manager_.commandManager())) {
   i->window_->addKeyListener(manager_.commandManager()->getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   (*midiCommandMap_)(data::get<command::CommandMapProto>());
@@ -28,11 +28,7 @@ Target::~Target() {
 }
 
 void Target::addCommands() {
-  CommandRecordTable* table = manager_.commandRecordTable();
-  command::fillCommandRecordTable(table, *commandData_, menus());
-  addCallbacks(instance_, table);
-  manager_.addCallbacks();
-  manager_.registerAllCommandsForTarget();
+  manager_.addCommands();
 }
 
 }  // namespace slow
