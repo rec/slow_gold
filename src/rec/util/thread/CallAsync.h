@@ -23,13 +23,6 @@ inline void callAsync(Callback* cb) {
   (new thread::callback::CallbackMessage(cb))->post();
 }
 
-inline void runOnMessageThread(Callback* cb) {
-  if (juce::MessageManager::getInstance()->isThisTheMessageThread())
-    (*cb)();
-  else
-    callAsync(cb);
-}
-
 template <typename Type>
 void callAsync(Type o) {
   callAsync(makeCallback<Type>(o));
@@ -48,26 +41,6 @@ void callAsync(Type* o, Method m, Value v) {
 template <typename Type, typename Method, typename V1, typename V2>
 void callAsync(Type* o, Method m, V1 v1, V2 v2) {
   callAsync(methodCallback<Type, Method, V1, V2>(o, m, v1, v2));
-}
-
-template <typename Type>
-void runOnMessageThread(Type o) {
-  runOnMessageThread(makeCallback<Type>(o));
-}
-
-template <typename Type, typename Method>
-void runOnMessageThread(Type* o, Method m) {
-  runOnMessageThread(methodCallback<Type, Method>(o, m));
-}
-
-template <typename Type, typename Method, typename Value>
-void runOnMessageThread(Type* o, Method m, Value v) {
-  runOnMessageThread(methodCallback<Type, Method, Value>(o, m, v));
-}
-
-template <typename Type, typename Method, typename V1, typename V2>
-void runOnMessageThread(Type* o, Method m, V1 v1, V2 v2) {
-  runOnMessageThread(methodCallback<Type, Method, V1, V2>(o, m, v1, v2));
 }
 
 }  // namespace thread

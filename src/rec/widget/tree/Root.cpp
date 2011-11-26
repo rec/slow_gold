@@ -76,7 +76,7 @@ void Root::readOpenness() {
     restoreOpenness(&root_, *openness);
     tree_.restoreOpennessState(*openness, true);
   } else {
-    LOG(DFATAL) << "Couldn't find openness file " << str(getOpennessFile());
+    LOG(WARNING) << "Couldn't find openness file " << str(getOpennessFile());
   }
   opennessRead_ = true;
 }

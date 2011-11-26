@@ -20,7 +20,8 @@ bool dereference(MessageField* f, const Address::Part& afield) {
     if (f->type_ == MessageField::INDEXED) {
       if (f->field_->type() == FieldDescriptor::TYPE_MESSAGE) {
         if (f->index_ < 0 || f->index_ >= getSize(*f)) {
-          LOG(DFATAL) << " Index " << f->index_ << " not in range " << getSize(*f);
+          LOG(DFATAL) << " Index " << f->index_ << " not in range " << getSize(*f)
+                      << ": " << f->message_->ShortDebugString();
           return false;
         }
         f->message_ = r.MutableRepeatedMessage(f->message_, f->field_, f->index_);

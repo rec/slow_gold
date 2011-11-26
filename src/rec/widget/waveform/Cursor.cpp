@@ -25,8 +25,8 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, RealTime t, int index)
 }
 
 void Cursor::setTime(RealTime time) {
-  thread::runOnMessageThread(this, &Cursor::setCursorBounds, time,
-                             waveform_->getLocalBounds());
+  thread::callAsync(this, &Cursor::setCursorBounds, time,
+                    waveform_->getLocalBounds());
 }
 
 double Cursor::getTime() const {
