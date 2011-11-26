@@ -61,15 +61,15 @@ class SetterText : public Layout,
 
  protected:
   virtual void onDataChange(const Proto&) {
-    const data::Value value = this->getValue();
-    if (value.has_string_f()) {
-      thread::callAsync(&editor_, &TextEditor::setText,
-                        str(value.string_f()), false);
-      util::thread::callAsync(this, &SetterText::repaint);
-    }
+    const data::Value v = this->getValue();
+    if (v.has_string_f()) 
+      thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
   }
 
-  void repaint() { Layout::repaint(); }
+  void setEditorText(const String& text) { 
+  	editor_.setText(text);
+    repaint(); 
+  }
 
   SimpleLabel caption_;
   TextEditor editor_;

@@ -264,6 +264,13 @@
 			sepNavWindowFrame = "{{565, 7}, {911, 971}}";
 		};
 	};
+	5BED0EFFD46A27023555D6DA /* Cursor.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1274}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1586}";
+		};
+	};
 	60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1094, 1092}}";
@@ -632,6 +639,10 @@
 			E29BD5C3148170DB00B58B3A /* PBXTextBookmark */ = E29BD5C3148170DB00B58B3A /* PBXTextBookmark */;
 			E29BD5CF1481733400B58B3A /* PBXTextBookmark */ = E29BD5CF1481733400B58B3A /* PBXTextBookmark */;
 			E29BD5D01481733400B58B3A /* PBXTextBookmark */ = E29BD5D01481733400B58B3A /* PBXTextBookmark */;
+			E29BD5E21481747600B58B3A /* XCBuildMessageTextBookmark */ = E29BD5E21481747600B58B3A /* XCBuildMessageTextBookmark */;
+			E29BD5E31481747D00B58B3A /* PBXTextBookmark */ = E29BD5E31481747D00B58B3A /* PBXTextBookmark */;
+			E29BD5E61481747D00B58B3A /* PBXTextBookmark */ = E29BD5E61481747D00B58B3A /* PBXTextBookmark */;
+			E29BD5E71481747D00B58B3A /* PBXTextBookmark */ = E29BD5E71481747D00B58B3A /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -808,9 +819,9 @@
 	};
 	B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {631, 3432}}";
+			sepNavIntBoundsRect = "{{0, 0}, {631, 3419}}";
 			sepNavSelRange = "{7883, 0}";
-			sepNavVisRange = "{2702, 2068}";
+			sepNavVisRange = "{2665, 2104}";
 			sepNavWindowFrame = "{{802, 102}, {911, 971}}";
 		};
 	};
@@ -2150,6 +2161,45 @@
 		vrLoc = 325;
 	};
 	E29BD5D01481733400B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B11B48DE515BE72C89F19DD5 /* KeyboardBindings.cpp */;
+		name = "KeyboardBindings.cpp: 78";
+		rLen = 0;
+		rLoc = 2553;
+		rType = 0;
+		vrLen = 2252;
+		vrLoc = 301;
+	};
+	E29BD5E21481747600B58B3A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /development/rec/projects/slow/Builds/MacOSX/../../../../src/rec/widget/waveform/Cursor.cpp";
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E29BD5E31481747D00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AD730539B904BD2C42DA1F6E /* Command.cpp */;
+		name = "Command.cpp: 30";
+		rLen = 0;
+		rLoc = 760;
+		rType = 0;
+		vrLen = 800;
+		vrLoc = 325;
+	};
+	E29BD5E61481747D00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		name = "Cursor.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1586;
+		vrLoc = 0;
+	};
+	E29BD5E71481747D00B58B3A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = B11B48DE515BE72C89F19DD5 /* KeyboardBindings.cpp */;
 		name = "KeyboardBindings.cpp: 78";
