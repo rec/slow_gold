@@ -14,13 +14,36 @@ namespace rec {
 namespace util {
 namespace listener {
 
+class UntypedDataListener : public Listener<const Message&>,
+                            public Listener<const VirtualFile&>,
+                            public UpdateRequester {
+ public:
+  UntypedDataListener(const string& typeName,
+                      const data::Address& address =
+                      data::Address::default_instance(),
+                      bool isGlobal = false);
+
+  virtual void requestUpdates();
+
+  virtual void operator()(const Message&);
+  virtual void operator()(const VirtualFile&);
+
+ protected:
+  virtual void setData(data::UntypedEditable* d);
+  virtual void onDataChange();
+
+ private:
+  const data::Address address_;
+  const bool isGlobal_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
+};
+
 template <typename Proto>
 class DataListener : public Listener<const Proto&>,
                      public Listener<const VirtualFile&>,
                      public UpdateRequester {
  public:
-  static const bool FILTER = false;
-
   DataListener(const data::Address& address =
                data::Address::default_instance(),
                bool isGlobal = false);
@@ -28,8 +51,8 @@ class DataListener : public Listener<const Proto&>,
 
   virtual void requestUpdates();
 
-  virtual void operator()(const Proto& p) { updateValue(p, true); }
-  virtual void operator()(const VirtualFile& f);
+  virtual void operator()(const Proto&);
+  virtual void operator()(const VirtualFile&);
 
   data::TypedEditable<Proto>* data() const { Lock l(lock()); return data_; }
 
@@ -43,12 +66,7 @@ class DataListener : public Listener<const Proto&>,
   const CriticalSection& lock() const { return Listener<const Proto&>::lock(); }
 
  private:
-  void doOnDataChange(const Proto& p) { onDataChange(p); }
-  void updateValue(const Proto& p, bool perhapsFilter);
-
-  const bool filterDupes_;
   data::TypedEditable<Proto>* data_;
-  Proto proto_;
   const data::Address address_;
   const bool isGlobal_;
 
@@ -76,8 +94,7 @@ class GlobalDataListener : public DataListener<Proto> {
 template <typename Proto>
 DataListener<Proto>::DataListener(const data::Address& address,
                                   bool isGlobal)
-    : filterDupes_(false),
-      data_(data::emptyEditable<Proto>()),
+    : data_(data::emptyEditable<Proto>()),
       address_(address),
       isGlobal_(isGlobal) {
 }
@@ -98,14 +115,7 @@ void DataListener<Proto>::operator()(const VirtualFile& f) {
 
 
 template <typename Proto>
-void DataListener<Proto>::updateValue(const Proto& p, bool perhapsFilter) {
-  {
-    Lock l(lock());
-    if (perhapsFilter && filterDupes_ && data::equals(proto_, p))
-      return;
-    proto_ = p;
-  }
-
+void DataListener<Proto>::operator()(const Proto& p) {
   onDataChange(p);
 }
 
