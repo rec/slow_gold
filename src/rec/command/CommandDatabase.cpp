@@ -173,7 +173,8 @@ class CommandDatabase {
 
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
-      if (id == Command::TOGGLE_GRID_DISPLAY)
+      if (id == Command::TOGGLE_GRID_DISPLAY ||
+          id == Command::TOGGLE_PARALLEL_WAVEFORMS)
         cr->setter_.reset(new CommandDataSetter<WaveformProto>(ls, c, a, true));
       else if (id == Command::TOGGLE_STRETCH_ENABLE)
         cr->setter_.reset(new CommandDataSetter<Stretch>(ls, c, a, false));

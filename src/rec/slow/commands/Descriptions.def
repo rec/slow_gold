@@ -141,9 +141,17 @@ command {
 command {
   type: TOGGLE_GRID_DISPLAY
   desc {
-    menu: "Display Time Grid"
-    menu: "Hide Time Grid"
+    menu: "Show Time Gridlines"
+    menu: "Hide Time Gridlines"
     full: "Toggle display of the time grid."
+  }
+}
+command {
+  type: TOGGLE_PARALLEL_WAVEFORMS
+  desc {
+    menu: "Show Parallel Waveforms"
+    menu: "Show Stacked Waveform"
+    full: "Toggle parallel/stacked waveform display."
   }
 }
 command {

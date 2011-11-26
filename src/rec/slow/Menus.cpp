@@ -78,6 +78,7 @@ void addAudioMenu(TargetManager* t, PopupMenu* popup) {
   t->addCommandItem(popup, Command::NUDGE_VOLUME_UP);
   t->addCommandItem(popup, Command::NUDGE_VOLUME_DOWN);
   t->addCommandItem(popup, Command::RESET_GAIN_TO_UNITY);
+  t->addCommandItem(popup, Command::TOGGLE_STRETCH_ENABLE);
 
   popup->addSeparator();
 
@@ -103,7 +104,7 @@ void addTransportMenu(TargetManager* t, PopupMenu* popup) {
   t->addCommandItem(popup, Command::ADD_LOOP_POINT);
   t->addCommandItem(popup, Command::CLEAR_LOOPS);
   t->addCommandItem(popup, Command::TOGGLE_GRID_DISPLAY);
-  t->addCommandItem(popup, Command::TOGGLE_STRETCH_ENABLE);
+  t->addCommandItem(popup, Command::TOGGLE_PARALLEL_WAVEFORMS);
 
   popup->addSeparator();
 

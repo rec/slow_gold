@@ -179,14 +179,14 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"7\n\013Descri"
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \001(\t\022\014\n\004hel"
-    "p\030\003 \001(\t\"\303\t\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
+    "p\030\003 \001(\t\"\342\t\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
     "command.Command.Type\022\r\n\005index\030\002 \001(\021\022\023\n\013s"
     "tart_index\030\n \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004de"
     "sc\030\004 \001(\0132\030.rec.command.Description\022\020\n\010ke"
     "ypress\030\005 \003(\t\022\021\n\tis_setter\030\006 \001(\010\022\030\n\020is_gl"
     "obal_setter\030\007 \001(\010\022\'\n\007address\030\010 \001(\0132\026.rec"
     ".data.AddressProto\022\030\n\020setter_type_name\030\t"
-    " \001(\t\"\256\007\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POIN"
+    " \001(\t\"\315\007\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POIN"
     "T\020\001\022\025\n\021AUDIO_PREFERENCES\020\002\022\023\n\017CLEAR_NAVI"
     "GATOR\020\003\022\017\n\013CLEAR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_"
     "FILE_DATA\020\005\022\016\n\nCLOSE_FILE\020\006\022\025\n\021DIM_VOLUM"
@@ -199,21 +199,22 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "GE_VOLUME_DOWN\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n"
     "\004OPEN\020\025\022\020\n\014RECENT_FILES\020\026\022\010\n\004REDO\020\027\022\027\n\023R"
     "ESET_GAIN_TO_UNITY\020\030\022\n\n\006SELECT\020\031\022\017\n\013SELE"
-    "CT_ONLY\020\032\022\027\n\023TOGGLE_GRID_DISPLAY\020\033\022\024\n\020TO"
-    "GGLE_SELECTION\020)\022\025\n\021TOGGLE_START_STOP\020\034\022"
-    "\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHO"
-    "LE_SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_D"
-    "OWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nT"
-    "REE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UN"
-    "SELECT\020&\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\t\n\004Q"
-    "UIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n"
-    "\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_A"
-    "LL\020\207 \022\r\n\tLAST_TYPE\020)\022\017\n\nJUCE_START\020\201 \022\r\n"
-    "\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Command"
-    "s\022%\n\007command\030\001 \003(\0132\024.rec.command.Command"
-    "\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t"
-    "\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025.rec.com"
-    "mand.KeyValue", 1493);
+    "CT_ONLY\020\032\022\027\n\023TOGGLE_GRID_DISPLAY\020\033\022\035\n\031TO"
+    "GGLE_PARALLEL_WAVEFORMS\020*\022\024\n\020TOGGLE_SELE"
+    "CTION\020)\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGLE"
+    "_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHOLE_SONG_L"
+    "OOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\t"
+    "TREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT"
+    "\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022"
+    "\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\r\n\tLAST_TYPE\020"
+    "*\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY"
+    "\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESE"
+    "LECT_ALL\020\207 \022\017\n\nJUCE_START\020\201 \022\r\n\010JUCE_END"
+    "\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022%\n\007comm"
+    "and\030\001 \003(\0132\024.rec.command.Command\"&\n\010KeyVa"
+    "lue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Mappi"
+    "ng\022(\n\tkey_value\030\001 \003(\0132\025.rec.command.KeyV"
+    "alue", 1524);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -618,6 +619,7 @@ bool Command_Type_IsValid(int value) {
     case 39:
     case 40:
     case 41:
+    case 42:
     case 4097:
     case 4098:
     case 4099:
@@ -661,6 +663,7 @@ const Command_Type Command::RESET_GAIN_TO_UNITY;
 const Command_Type Command::SELECT;
 const Command_Type Command::SELECT_ONLY;
 const Command_Type Command::TOGGLE_GRID_DISPLAY;
+const Command_Type Command::TOGGLE_PARALLEL_WAVEFORMS;
 const Command_Type Command::TOGGLE_SELECTION;
 const Command_Type Command::TOGGLE_START_STOP;
 const Command_Type Command::TOGGLE_STRETCH_ENABLE;
@@ -675,6 +678,7 @@ const Command_Type Command::UNDO;
 const Command_Type Command::UNSELECT;
 const Command_Type Command::ZOOM_IN;
 const Command_Type Command::ZOOM_OUT;
+const Command_Type Command::LAST_TYPE;
 const Command_Type Command::QUIT;
 const Command_Type Command::DEL;
 const Command_Type Command::CUT;
@@ -682,7 +686,6 @@ const Command_Type Command::COPY;
 const Command_Type Command::PASTE;
 const Command_Type Command::SELECT_ALL;
 const Command_Type Command::DESELECT_ALL;
-const Command_Type Command::LAST_TYPE;
 const Command_Type Command::JUCE_START;
 const Command_Type Command::JUCE_END;
 const Command_Type Command::BANK_SIZE;

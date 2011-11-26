@@ -6,6 +6,13 @@ command {
   setter_type_name: "rec.widget.Waveform"
 }
 command {
+  type: TOGGLE_PARALLEL_WAVEFORMS
+  category: "Transport"
+  is_global_setter: true
+  address { part: { name: "parallel_waveforms" } }
+  setter_type_name: "rec.widget.Waveform"
+}
+command {
   type: TOGGLE_STRETCH_ENABLE
   category: "Audio"
   is_setter: true
