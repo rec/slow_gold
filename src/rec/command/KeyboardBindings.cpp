@@ -40,7 +40,7 @@ void writeKeyboardBindingFile(XmlElement* element) {
   CommandRecordTable table;
   forEachXmlChildElement(*element, mapping) {
     CommandID id = mapping->getStringAttribute("commandId").getHexValue32();
-    CommandRecord* cr = find(&table, id);
+    CommandRecord* cr = table.find(id);
     string key = str(mapping->getStringAttribute("key").toLowerCase());
     if (!cr->command_) {
       cr->command_.reset(new Command);
@@ -49,7 +49,7 @@ void writeKeyboardBindingFile(XmlElement* element) {
     cr->command_->add_keypress(key);
   }
 
-  data::set(fromCommandTable(table), getBindingFile());
+  data::set(table.getCommands(), getBindingFile());
 }
 
 XmlElement* readKeyboardBindingFile(const Commands& commands) {
@@ -68,8 +68,8 @@ void saveKeyboardBindings(ApplicationCommandManager* commandManager) {
 }
 
 void loadKeyboardBindings(TargetManager* target) {
-  const CommandRecordTable& ct = *target->commandRecordTable();
-  ptr<juce::XmlElement> state(readKeyboardBindingFile(fromCommandTable(ct)));
+  const CommandRecordTable& table = *target->commandRecordTable();
+  ptr<juce::XmlElement> state(readKeyboardBindingFile(table.getCommands()));
   target->commandManager()->getKeyMappings()->restoreFromXml(*state);
 }
 

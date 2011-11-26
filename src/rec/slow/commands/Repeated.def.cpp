@@ -14,7 +14,7 @@ Def<command::Commands> repeated(
   "command { type: SELECT_ONLY index: 10 category: \"Selection\" }\n"
   "command { type: TOGGLE_SELECTION index: 10 category: \"Selection\" }\n"
   "command { type: UNSELECT index: 10 category: \"Selection\" }\n"
-  "command { type: RECENT_FILES index: 10 category: \"File\" }\n"
+  "command { type: RECENT_FILES start_index: 0 index: 10 category: \"File\" }\n"
   " "
 );
 

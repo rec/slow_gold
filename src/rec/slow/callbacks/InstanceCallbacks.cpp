@@ -124,8 +124,6 @@ void nudgeEndLeft(Instance* i) {
 void nudgeEndRight(Instance* i) {
 }
 
-void recentFiles(Instance* i) {
-}
 
 void toggleStretchEnable(Instance* i) {
 }
@@ -196,12 +194,10 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
   addCallback(c, Command::OPEN, open, i);
   addCallback(c, Command::QUIT, quit, i);
-  addCallback(c, Command::RECENT_FILES, recentFiles, i);
   addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
-  addCallback(c, Command::TOGGLE_STRETCH_ENABLE, toggleStretchEnable, i);
-  addCallback(c, Command::ZOOM_IN, zoomIn, i);
-  addCallback(c, Command::ZOOM_OUT, zoomOut, i);
+  // addCallback(c, Command::ZOOM_IN, zoomIn, i);
+  // addCallback(c, Command::ZOOM_OUT, zoomOut, i);
 }
 
 }  // namespace slow

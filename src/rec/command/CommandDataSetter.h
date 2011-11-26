@@ -18,20 +18,27 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
                              bool isGlobal = false)
       : DataListener<Proto>(addr, isGlobal),
         changeListener_(changeListener),
-        command_(command) {
+        command_(command),
+        menuName_("none") {
+    // DLOG(INFO) << "Creating CommandDataSetter " << &command_ << ", "
+    //        << command_.ShortDebugString();
   }
 
   virtual ~CommandDataSetter() {
-    DLOG(INFO) << "Deleting " << this;
+    // DLOG(INFO) << "Deleting " << this;
   }
 
   virtual void onDataChange(const Proto& p) {
+    DLOG(INFO) << "onDataChange " << &command_ << ", "
+               << command_.ShortDebugString();
+
     data::Value value = this->getValue();
     int index = value.get<bool>() ? 1 : 0;
     if (index < command_.desc().menu_size())
       menuName_ = command_.desc().menu(index);
     else
       LOG(DFATAL) << "No " << index << " in " << command_.ShortDebugString();
+
     (*changeListener_)(None());
   }
 
@@ -47,7 +54,7 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
   CriticalSection lock_;
   Listener<None>* changeListener_;
 
-  const Command command_;
+  const Command& command_;
   string menuName_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandDataSetter);

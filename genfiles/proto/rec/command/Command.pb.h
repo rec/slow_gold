@@ -377,6 +377,13 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 index() const;
   inline void set_index(::google::protobuf::int32 value);
   
+  // optional sint32 start_index = 10;
+  inline bool has_start_index() const;
+  inline void clear_start_index();
+  static const int kStartIndexFieldNumber = 10;
+  inline ::google::protobuf::int32 start_index() const;
+  inline void set_start_index(::google::protobuf::int32 value);
+  
   // optional string category = 3;
   inline bool has_category() const;
   inline void clear_category();
@@ -448,6 +455,7 @@ class Command : public ::google::protobuf::Message {
   
   int type_;
   ::google::protobuf::int32 index_;
+  ::google::protobuf::int32 start_index_;
   ::std::string* category_;
   static const ::std::string _default_category_;
   ::rec::command::Description* desc_;
@@ -461,7 +469,7 @@ class Command : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -942,42 +950,58 @@ inline void Command::set_index(::google::protobuf::int32 value) {
   index_ = value;
 }
 
+// optional sint32 start_index = 10;
+inline bool Command::has_start_index() const {
+  return _has_bit(2);
+}
+inline void Command::clear_start_index() {
+  start_index_ = 0;
+  _clear_bit(2);
+}
+inline ::google::protobuf::int32 Command::start_index() const {
+  return start_index_;
+}
+inline void Command::set_start_index(::google::protobuf::int32 value) {
+  _set_bit(2);
+  start_index_ = value;
+}
+
 // optional string category = 3;
 inline bool Command::has_category() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void Command::clear_category() {
   if (category_ != &_default_category_) {
     category_->clear();
   }
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline const ::std::string& Command::category() const {
   return *category_;
 }
 inline void Command::set_category(const ::std::string& value) {
-  _set_bit(2);
+  _set_bit(3);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(value);
 }
 inline void Command::set_category(const char* value) {
-  _set_bit(2);
+  _set_bit(3);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(value);
 }
 inline void Command::set_category(const char* value, size_t size) {
-  _set_bit(2);
+  _set_bit(3);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* Command::mutable_category() {
-  _set_bit(2);
+  _set_bit(3);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
@@ -986,17 +1010,17 @@ inline ::std::string* Command::mutable_category() {
 
 // optional .rec.command.Description desc = 4;
 inline bool Command::has_desc() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void Command::clear_desc() {
   if (desc_ != NULL) desc_->::rec::command::Description::Clear();
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline const ::rec::command::Description& Command::desc() const {
   return desc_ != NULL ? *desc_ : *default_instance_->desc_;
 }
 inline ::rec::command::Description* Command::mutable_desc() {
-  _set_bit(3);
+  _set_bit(4);
   if (desc_ == NULL) desc_ = new ::rec::command::Description;
   return desc_;
 }
@@ -1047,89 +1071,89 @@ Command::mutable_keypress() {
 
 // optional bool is_setter = 6;
 inline bool Command::has_is_setter() const {
-  return _has_bit(5);
+  return _has_bit(6);
 }
 inline void Command::clear_is_setter() {
   is_setter_ = false;
-  _clear_bit(5);
+  _clear_bit(6);
 }
 inline bool Command::is_setter() const {
   return is_setter_;
 }
 inline void Command::set_is_setter(bool value) {
-  _set_bit(5);
+  _set_bit(6);
   is_setter_ = value;
 }
 
 // optional bool is_global_setter = 7;
 inline bool Command::has_is_global_setter() const {
-  return _has_bit(6);
+  return _has_bit(7);
 }
 inline void Command::clear_is_global_setter() {
   is_global_setter_ = false;
-  _clear_bit(6);
+  _clear_bit(7);
 }
 inline bool Command::is_global_setter() const {
   return is_global_setter_;
 }
 inline void Command::set_is_global_setter(bool value) {
-  _set_bit(6);
+  _set_bit(7);
   is_global_setter_ = value;
 }
 
 // optional .rec.data.AddressProto address = 8;
 inline bool Command::has_address() const {
-  return _has_bit(7);
+  return _has_bit(8);
 }
 inline void Command::clear_address() {
   if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-  _clear_bit(7);
+  _clear_bit(8);
 }
 inline const ::rec::data::AddressProto& Command::address() const {
   return address_ != NULL ? *address_ : *default_instance_->address_;
 }
 inline ::rec::data::AddressProto* Command::mutable_address() {
-  _set_bit(7);
+  _set_bit(8);
   if (address_ == NULL) address_ = new ::rec::data::AddressProto;
   return address_;
 }
 
 // optional string setter_type_name = 9;
 inline bool Command::has_setter_type_name() const {
-  return _has_bit(8);
+  return _has_bit(9);
 }
 inline void Command::clear_setter_type_name() {
   if (setter_type_name_ != &_default_setter_type_name_) {
     setter_type_name_->clear();
   }
-  _clear_bit(8);
+  _clear_bit(9);
 }
 inline const ::std::string& Command::setter_type_name() const {
   return *setter_type_name_;
 }
 inline void Command::set_setter_type_name(const ::std::string& value) {
-  _set_bit(8);
+  _set_bit(9);
   if (setter_type_name_ == &_default_setter_type_name_) {
     setter_type_name_ = new ::std::string;
   }
   setter_type_name_->assign(value);
 }
 inline void Command::set_setter_type_name(const char* value) {
-  _set_bit(8);
+  _set_bit(9);
   if (setter_type_name_ == &_default_setter_type_name_) {
     setter_type_name_ = new ::std::string;
   }
   setter_type_name_->assign(value);
 }
 inline void Command::set_setter_type_name(const char* value, size_t size) {
-  _set_bit(8);
+  _set_bit(9);
   if (setter_type_name_ == &_default_setter_type_name_) {
     setter_type_name_ = new ::std::string;
   }
   setter_type_name_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* Command::mutable_setter_type_name() {
-  _set_bit(8);
+  _set_bit(9);
   if (setter_type_name_ == &_default_setter_type_name_) {
     setter_type_name_ = new ::std::string;
   }

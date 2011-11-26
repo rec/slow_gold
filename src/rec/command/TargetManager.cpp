@@ -72,7 +72,7 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
                                 const String& name,
                                 const String& category,
                                 const String& desc) {
-  DLOG(INFO) << "addCallback: " << commandName(id);
+  // DLOG(INFO) << "addCallback: " << commandName(id);
   ptr<Callback> callback(cb);
   if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
     LOG(DFATAL) << "Can't add " << commandName(id)
@@ -113,13 +113,13 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     info->shortName = str(cr->setter_->menuName());
 
   if (!info->shortName.length())
-    LOG(DFATAL) << "No name for command " << commandName(id);
+    LOG(DFATAL) << "No name for " << commandName(id);
   info->setActive(enable);
   menu->addCommandItem(commandManager(), id, name);
 }
 
 CommandRecord* TargetManager::find(CommandID id) {
-  return command::find(&table_, id);
+  return table_.find(id);
 }
 
 void TargetManager::addCommands() {

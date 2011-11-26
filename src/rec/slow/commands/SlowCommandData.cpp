@@ -35,7 +35,7 @@ class SlowCommandData : public CommandData, HasInstance {
 
  private:
  	Listener<None>* update_;
-  
+
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SlowCommandData);
 };
 

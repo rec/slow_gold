@@ -9,24 +9,28 @@
 namespace rec {
 namespace command {
 
-CommandRecord* find(CommandRecordTable* table, CommandID id, bool create) {
+CommandRecordTable::~CommandRecordTable() {
+  stl::deleteMapPointers(&table_);
+}
+
+CommandRecord* CommandRecordTable::find(CommandID id, bool create) {
   CHECK(id != CommandIDEncoder::toCommandID(Command::JUMP, 10) || !create);
-  CommandRecordTable::iterator i = table->find(id);
-  if (i != table->end())
+  CommandRecordTable::iterator i = table_.find(id);
+  if (i != table_.end())
     return i->second;
 
   if (!create)
     return NULL;
 
   ptr<CommandRecord> rec(new CommandRecord);
-  table->insert(i, std::make_pair(id, rec.get()));
+  table_.insert(i, std::make_pair(id, rec.get()));
   return rec.transfer();
 }
 
-const Commands fromCommandTable(const CommandRecordTable& table) {
+const Commands CommandRecordTable::getCommands() const {
   Commands commands;
   CommandRecordTable::const_iterator i;
-  for (i = table.begin(); i != table.end(); ++i) {
+  for (i = table_.begin(); i != table_.end(); ++i) {
     if (i->second->command_)
       commands.add_command()->CopyFrom(*(i->second->command_));
   }

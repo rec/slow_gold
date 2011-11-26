@@ -87,6 +87,7 @@ message Command {
 
   optional Type type = 1;
   optional sint32 index = 2;  // For repeating commands.
+  optional sint32 start_index = 10;  // For repeating commands.
 
   optional string category = 3;  // English language category.
   optional Description desc = 4;  // Localized descriptions.

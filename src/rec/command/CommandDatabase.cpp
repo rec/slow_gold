@@ -35,18 +35,18 @@ class CommandDatabase {
     if (!id)
       id = CommandIDEncoder::toCommandID(cmd);
 
-    CommandRecord* cr(find(table_, id));
+    CommandRecord* cr(table_->find(id));
     if (type == INSERT) {
       if (cr->command_) {
         LOG(DFATAL) << "Can't insert " << commandName(id);
       } else {
-        DLOG(INFO) << "Inserting " << commandName(id);
+        // DLOG(INFO) << "Inserting " << commandName(id);
         cr->command_.reset(new Command(cmd));
 
       }
     } else {
       if (cr->command_) {
-        DLOG(INFO) << "Merging " << commandName(id);
+        // DLOG(INFO) << "Merging " << commandName(id);
         cr->command_->MergeFrom(cmd);
       } else {
         LOG(DFATAL) << "Can't merge " << commandName(id);
@@ -68,11 +68,17 @@ class CommandDatabase {
   }
 
   void mergeDescription(const Command& command) {
-    CommandRecord* cr = find(table_, command.type(), false);
+    // DLOG(INFO) << "Starting to merge " << commandName(command.type());
+    CommandRecord* cr = table_->find(command.type(), false);
     if (cr) {
-      DCHECK(cr->command_);
-      if (cr->command_)
+      DCHECK(cr->command_) << commandName(command.type());
+      if (cr->command_) {
+        Command before(*cr->command_);
         cr->command_->MergeFrom(command);
+        // DLOG(INFO) << "Merge!! " << before.ShortDebugString()
+        //           << "  |||  " << command.ShortDebugString()
+        //         << "  |||  " << cr->command_->ShortDebugString() ;
+      }
       return;
     }
 
@@ -85,22 +91,25 @@ class CommandDatabase {
         str(command.desc().menu(0)) : String();
     const String full = str(command.desc().full());
 
-    CommandID c = Command::BANK_SIZE * command.type();
+    CommandID type = command.type();
+    CommandID c = Command::BANK_SIZE * type;
     for (int i = 0; i <= CommandIDEncoder::LAST - CommandIDEncoder::FIRST; ++i, ++c) {
-      CommandRecord* cr = find(table_, c);
-      if (!cr->command_) {
-        LOG(DFATAL) << "Couldn't find position " << i
-                   << " CommandID " << c
-                   << " cmd: " << command.ShortDebugString();
-        return;
+      if (type != Command::RECENT_FILES) {
+        CommandRecord* cr = table_->find(c);
+        if (!cr->command_) {
+          LOG(DFATAL) << "Couldn't find position " << i
+                     << " Command " << commandName(c)
+                     << " cmd: " << command.ShortDebugString();
+          return;
+        }
+        Description* desc = cr->command_->mutable_desc();
+        desc->add_menu(str(String::formatted(menu, CAP[i], "")));
+        desc->set_full(str(String::formatted(full, LOWER[i], "")));
       }
-      Description* desc = cr->command_->mutable_desc();
-      desc->add_menu(str(String::formatted(menu, CAP[i], "")));
-      desc->set_full(str(String::formatted(full, LOWER[i], "")));
     }
 
     for (int i = 0; ; ++i, ++c) {
-      CommandRecord* cr = find(table_, c, false);
+      CommandRecord* cr = table_->find(c, false);
       if (!cr)
         return;
 
@@ -126,9 +135,10 @@ class CommandDatabase {
     for (int i = 0; i < data_.repeated().command_size(); ++i) {
       const Command& command = data_.repeated().command(i);
       Command c = command;
-
+      int j = command.has_start_index() ? command.start_index() :
+        CommandIDEncoder::FIRST;
       // Insert each specific subcommand.
-      for (int j = CommandIDEncoder::FIRST; j < command.index(); ++j) {
+      for (; j < command.index(); ++j) {
         c.set_index(j);
         insert(c, CommandIDEncoder::toCommandID(j, command.type()));
       }
@@ -139,18 +149,27 @@ class CommandDatabase {
     using slow::GuiSettings;
     using audio::stretch::Stretch;
 
-    insert(data_.setters());
-
     for (int i = 0; i < data_.setters().command_size(); ++i) {
-      const Command& c = data_.setters().command(i);
-      int id = c.type();
-      CommandRecord* cr = find(table_, id);
-
-      if (cr->setter_)
+      int id = data_.setters().command(i).type();
+      CommandRecord* cr = table_->find(id);
+      if (cr->setter_) {
         LOG(DFATAL) << "Duplicate setter " << commandName(id);
+        continue;
+      }
 
-      if (cr->callback_)
+      if (cr->callback_) {
         LOG(DFATAL) << "Duplicate callback " << commandName(id);
+        continue;
+      }
+
+      if (cr->command_) {
+        LOG(DFATAL) << "Duplicate command " << commandName(id)
+                    << ", " << cr->command_->ShortDebugString();
+        continue;
+      }
+
+      cr->command_.reset(new Command(data_.setters().command(i)));
+      const Command& c = *cr->command_;
 
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
@@ -166,14 +185,16 @@ class CommandDatabase {
 
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                  &CommandItemSetter::execute));
-      DLOG(INFO) << "Adding callback for " << commandName(id);
+      // DLOG(INFO) << "Adding callback for " << commandName(id);
     }
   }
 
   void mergeKeyPresses() {
     Commands kp = data_.keyPresses(access_);
-    for (int i = 0; i < kp.command_size(); ++i)
+    for (int i = 0; i < kp.command_size(); ++i) {
+      // DLOG(INFO) << "Merging keypresses " << commandName(kp.command(i).type());
       merge(kp.command(i));
+    }
   }
 
   void mergeDescriptions() {
@@ -207,7 +228,7 @@ class CommandDatabase {
       if (!cr->command_)
         LOG(DFATAL) << "No command " << commandName(id);
       else if (!cr->callback_)
-        LOG(DFATAL) << "No callback" << commandName(id);
+        LOG(DFATAL) << "No callback " << commandName(id);
       else
         fillOneCommandInfo(id, cr);
 
@@ -231,8 +252,8 @@ class CommandDatabase {
 }  // namespace
 
 void fillCommandRecordTable(CommandRecordTable* table, const CommandData& data) {
-  CommandDatabase(table, data).fill();
   data.addCallbacks(table);
+  CommandDatabase(table, data).fill();
 }
 
 }  // namespace command

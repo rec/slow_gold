@@ -10,6 +10,7 @@ namespace slow {
 using command::CommandRecordTable;
 
 void addSlowCallbacks(Instance* i, CommandRecordTable* table, int repeat) {
+  // DLOG(INFO) << "Adding slow callbacks";
   addGlobalCallbacks(table);
   addInstanceCallbacks(table, i);
   addSelectionCallbacks(table, i);
