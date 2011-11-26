@@ -29,9 +29,6 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
   }
 
   virtual void onDataChange(const Proto& p) {
-    DLOG(INFO) << "onDataChange " << &command_ << ", "
-               << command_.ShortDebugString();
-
     data::Value value = this->getValue();
     int index = value.get<bool>() ? 1 : 0;
     if (index < command_.desc().menu_size())
@@ -43,6 +40,9 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
   }
 
   virtual void execute() {
+    // DLOG(INFO) << "onDataChange " << &command_ << ", "
+    //            << command_.ShortDebugString();
+
     data::Value value = this->getValue();
     value.set_bool_f(value.bool_f());
     this->setValue(value);

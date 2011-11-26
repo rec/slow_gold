@@ -215,7 +215,7 @@ class CommandDatabase {
       int flags = 0;
       if (category == "" || category == "(None)")
         flags = ApplicationCommandInfo::hiddenFromKeyEditor;
-      cr->info_->setInfo(name, str(desc.menu(0)), category, flags);
+      cr->info_->setInfo(str(desc.menu(0)), name, category, flags);
     }
   }
 

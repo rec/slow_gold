@@ -115,7 +115,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
   if (!info->shortName.length())
     LOG(DFATAL) << "No name for " << commandName(id);
   info->setActive(enable);
-  menu->addCommandItem(commandManager(), id, name);
+  menu->addCommandItem(commandManager(), id);
 }
 
 CommandRecord* TargetManager::find(CommandID id) {
