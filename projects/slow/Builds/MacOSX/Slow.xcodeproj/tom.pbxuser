@@ -703,6 +703,9 @@
 			E29BD67D1481882600B58B3A /* PBXTextBookmark */ = E29BD67D1481882600B58B3A /* PBXTextBookmark */;
 			E29BD67E1481882600B58B3A /* PBXTextBookmark */ = E29BD67E1481882600B58B3A /* PBXTextBookmark */;
 			E29BD67F1481882600B58B3A /* PBXTextBookmark */ = E29BD67F1481882600B58B3A /* PBXTextBookmark */;
+			E29BD6851481895A00B58B3A /* PBXTextBookmark */ = E29BD6851481895A00B58B3A /* PBXTextBookmark */;
+			E29BD6861481895A00B58B3A /* PBXTextBookmark */ = E29BD6861481895A00B58B3A /* PBXTextBookmark */;
+			E29BD6871481895A00B58B3A /* PBXTextBookmark */ = E29BD6871481895A00B58B3A /* PBXTextBookmark */;
 			E29F6E4D146EF6F500FBAD0B = E29F6E4D146EF6F500FBAD0B /* PBXTextBookmark */;
 			E29F6F2B146F50F500FBAD0B = E29F6F2B146F50F500FBAD0B /* PBXTextBookmark */;
 			E29F6F9D146F56C500FBAD0B = E29F6F9D146F56C500FBAD0B /* PBXTextBookmark */;
@@ -926,9 +929,9 @@
 	};
 	BFD390D9F9D9A78F73F6C8CE /* CommandDataSetter.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {881, 819}}";
-			sepNavSelRange = "{1477, 0}";
-			sepNavVisRange = "{896, 773}";
+			sepNavIntBoundsRect = "{{0, 0}, {881, 858}}";
+			sepNavSelRange = "{1864, 0}";
+			sepNavVisRange = "{896, 737}";
 		};
 	};
 	BFF718C20886014E3A7E0968 /* Root.cpp */ = {
@@ -2749,6 +2752,36 @@
 		vrLoc = 301;
 	};
 	E29BD67F1481882600B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		name = "Cursor.cpp: 93";
+		rLen = 0;
+		rLoc = 2379;
+		rType = 0;
+		vrLen = 1714;
+		vrLoc = 665;
+	};
+	E29BD6851481895A00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFD390D9F9D9A78F73F6C8CE /* CommandDataSetter.h */;
+		name = "CommandDataSetter.h: 66";
+		rLen = 0;
+		rLoc = 1864;
+		rType = 0;
+		vrLen = 737;
+		vrLoc = 896;
+	};
+	E29BD6861481895A00B58B3A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B11B48DE515BE72C89F19DD5 /* KeyboardBindings.cpp */;
+		name = "KeyboardBindings.cpp: 78";
+		rLen = 0;
+		rLoc = 2553;
+		rType = 0;
+		vrLen = 2252;
+		vrLoc = 301;
+	};
+	E29BD6871481895A00B58B3A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
 		name = "Cursor.cpp: 93";
