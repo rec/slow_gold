@@ -25,23 +25,37 @@ class MainPage {
 
   gui::Layout* panel() { return &mainPanel_; }
 
+#if 0
   Broadcaster<const gui::DropFiles&>* dropBroadcaster() {
     return mainPanel_.dropBroadcaster();
   }
-
+#endif
 
  private:
-  gui::DropTarget<gui::Layout> mainPanel_;
-  gui::Layout nonLoopPanel_;
-  gui::Layout playbackPanel_;
-  gui::Layout controllerPanel_;
+  // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
+  gui::Layout mainPanel_;
 
-  gui::SetterResizer directoryResizer_;
+  // navigationPanel_ contains the navigator, song metadata and loops.
+  gui::Layout navigationPanel_;
+
+  // playbackPanel_ contains help, transform and the controls.
+  gui::Layout playbackPanel_;
+  gui::Layout helpPanel_;
+  gui::Layout transformPanel_;
+  gui::Layout controlPanel_;
+
+  // Resizers for mainPanel_;
+  gui::SetterResizer navigationResizer_;
   gui::SetterResizer waveformResizer_;
-  gui::SetterResizer loopResizer_;
-  gui::SetterResizer timeControllerResizer_;
-  gui::SetterResizer songDataResizer_;
-  gui::SetterResizer stretchyResizer_;
+
+  // Resizers for navigationPanel_.
+  gui::SetterResizer directoryResizer_;
+  gui::SetterResizer metadataResizer_;
+
+  // Resizers for playbackPanel_.
+  gui::SetterResizer helpResizer_;
+  gui::SetterResizer transformResizer_;
+  gui::SetterResizer controlResizer_;
 
   double length_;
 

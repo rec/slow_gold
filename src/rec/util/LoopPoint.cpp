@@ -119,7 +119,7 @@ int getSelectionCount(const LoopPointList& loops) {
 
 int getSegment(const LoopPointList& loops, RealTime time) {
   for (int i = 1; ; ++i) {
-    if (i == loops.loop_point_size() || time < loops.loop_point(i).time())
+    if (i >= loops.loop_point_size() || time < loops.loop_point(i).time())
       return i - 1;
   }
 }

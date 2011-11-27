@@ -53,7 +53,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   widget::tree::Root* root = components_->directoryTree_.get();
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(currentFile_.get());
-  components_->mainPage_->dropBroadcaster()->addListener(currentFile_.get());
+  // components_->mainPage_->dropBroadcaster()->addListener(currentFile_.get());
 
   components_->transportController_->addListener(target_->targetManager());
 

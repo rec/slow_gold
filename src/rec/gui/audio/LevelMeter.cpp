@@ -10,6 +10,8 @@ namespace gui {
 namespace audio {
 
 const float LevelMeter::SCALE_UP_METER = 2.0f;
+static const float GAP_WIDTH = 2.0f;
+static const int SEGMENT_COUNT = 32;
 
 LevelMeter::LevelMeter(bool horiz, bool rms, int margin)
     : horizontal_(horiz),
@@ -34,8 +36,6 @@ void LevelMeter::operator()(const LevelVector& levels) {
   thread::callAsync(this, &LevelMeter::repaint);
 }
 
-static const float GAP_WIDTH = 2.0f;
-static const int SEGMENT_COUNT = 24;
 
 void LevelMeter::paint(Graphics& g) {
   g.fillAll(juce::Colours::white);

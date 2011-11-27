@@ -92,12 +92,12 @@ class AppLayout : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional uint32 directory_y = 1;
-  inline bool has_directory_y() const;
-  inline void clear_directory_y();
-  static const int kDirectoryYFieldNumber = 1;
-  inline ::google::protobuf::uint32 directory_y() const;
-  inline void set_directory_y(::google::protobuf::uint32 value);
+  // optional uint32 navigation_y = 1;
+  inline bool has_navigation_y() const;
+  inline void clear_navigation_y();
+  static const int kNavigationYFieldNumber = 1;
+  inline ::google::protobuf::uint32 navigation_y() const;
+  inline void set_navigation_y(::google::protobuf::uint32 value);
   
   // optional uint32 waveform_y = 2;
   inline bool has_waveform_y() const;
@@ -106,50 +106,58 @@ class AppLayout : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 waveform_y() const;
   inline void set_waveform_y(::google::protobuf::uint32 value);
   
-  // optional uint32 stretchy_y = 3;
-  inline bool has_stretchy_y() const;
-  inline void clear_stretchy_y();
-  static const int kStretchyYFieldNumber = 3;
-  inline ::google::protobuf::uint32 stretchy_y() const;
-  inline void set_stretchy_y(::google::protobuf::uint32 value);
+  // optional uint32 directory_x = 3;
+  inline bool has_directory_x() const;
+  inline void clear_directory_x();
+  static const int kDirectoryXFieldNumber = 3;
+  inline ::google::protobuf::uint32 directory_x() const;
+  inline void set_directory_x(::google::protobuf::uint32 value);
   
-  // optional uint32 clock_x = 4;
-  inline bool has_clock_x() const;
-  inline void clear_clock_x();
-  static const int kClockXFieldNumber = 4;
-  inline ::google::protobuf::uint32 clock_x() const;
-  inline void set_clock_x(::google::protobuf::uint32 value);
+  // optional uint32 metadata_x = 4;
+  inline bool has_metadata_x() const;
+  inline void clear_metadata_x();
+  static const int kMetadataXFieldNumber = 4;
+  inline ::google::protobuf::uint32 metadata_x() const;
+  inline void set_metadata_x(::google::protobuf::uint32 value);
   
-  // optional uint32 songdata_x = 5;
-  inline bool has_songdata_x() const;
-  inline void clear_songdata_x();
-  static const int kSongdataXFieldNumber = 5;
-  inline ::google::protobuf::uint32 songdata_x() const;
-  inline void set_songdata_x(::google::protobuf::uint32 value);
+  // optional uint32 help_x = 5;
+  inline bool has_help_x() const;
+  inline void clear_help_x();
+  static const int kHelpXFieldNumber = 5;
+  inline ::google::protobuf::uint32 help_x() const;
+  inline void set_help_x(::google::protobuf::uint32 value);
   
-  // optional uint32 loops_x = 6;
-  inline bool has_loops_x() const;
-  inline void clear_loops_x();
-  static const int kLoopsXFieldNumber = 6;
-  inline ::google::protobuf::uint32 loops_x() const;
-  inline void set_loops_x(::google::protobuf::uint32 value);
+  // optional uint32 transform_x = 6;
+  inline bool has_transform_x() const;
+  inline void clear_transform_x();
+  static const int kTransformXFieldNumber = 6;
+  inline ::google::protobuf::uint32 transform_x() const;
+  inline void set_transform_x(::google::protobuf::uint32 value);
+  
+  // optional uint32 control_x = 7;
+  inline bool has_control_x() const;
+  inline void clear_control_x();
+  static const int kControlXFieldNumber = 7;
+  inline ::google::protobuf::uint32 control_x() const;
+  inline void set_control_x(::google::protobuf::uint32 value);
   
   // @@protoc_insertion_point(class_scope:rec.slow.AppLayout)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::uint32 directory_y_;
+  ::google::protobuf::uint32 navigation_y_;
   ::google::protobuf::uint32 waveform_y_;
-  ::google::protobuf::uint32 stretchy_y_;
-  ::google::protobuf::uint32 clock_x_;
-  ::google::protobuf::uint32 songdata_x_;
-  ::google::protobuf::uint32 loops_x_;
+  ::google::protobuf::uint32 directory_x_;
+  ::google::protobuf::uint32 metadata_x_;
+  ::google::protobuf::uint32 help_x_;
+  ::google::protobuf::uint32 transform_x_;
+  ::google::protobuf::uint32 control_x_;
   friend void  protobuf_AddDesc_rec_2fslow_2fAppLayout_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fAppLayout_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fAppLayout_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -172,20 +180,20 @@ class AppLayout : public ::google::protobuf::Message {
 
 // AppLayout
 
-// optional uint32 directory_y = 1;
-inline bool AppLayout::has_directory_y() const {
+// optional uint32 navigation_y = 1;
+inline bool AppLayout::has_navigation_y() const {
   return _has_bit(0);
 }
-inline void AppLayout::clear_directory_y() {
-  directory_y_ = 0u;
+inline void AppLayout::clear_navigation_y() {
+  navigation_y_ = 0u;
   _clear_bit(0);
 }
-inline ::google::protobuf::uint32 AppLayout::directory_y() const {
-  return directory_y_;
+inline ::google::protobuf::uint32 AppLayout::navigation_y() const {
+  return navigation_y_;
 }
-inline void AppLayout::set_directory_y(::google::protobuf::uint32 value) {
+inline void AppLayout::set_navigation_y(::google::protobuf::uint32 value) {
   _set_bit(0);
-  directory_y_ = value;
+  navigation_y_ = value;
 }
 
 // optional uint32 waveform_y = 2;
@@ -204,68 +212,84 @@ inline void AppLayout::set_waveform_y(::google::protobuf::uint32 value) {
   waveform_y_ = value;
 }
 
-// optional uint32 stretchy_y = 3;
-inline bool AppLayout::has_stretchy_y() const {
+// optional uint32 directory_x = 3;
+inline bool AppLayout::has_directory_x() const {
   return _has_bit(2);
 }
-inline void AppLayout::clear_stretchy_y() {
-  stretchy_y_ = 0u;
+inline void AppLayout::clear_directory_x() {
+  directory_x_ = 0u;
   _clear_bit(2);
 }
-inline ::google::protobuf::uint32 AppLayout::stretchy_y() const {
-  return stretchy_y_;
+inline ::google::protobuf::uint32 AppLayout::directory_x() const {
+  return directory_x_;
 }
-inline void AppLayout::set_stretchy_y(::google::protobuf::uint32 value) {
+inline void AppLayout::set_directory_x(::google::protobuf::uint32 value) {
   _set_bit(2);
-  stretchy_y_ = value;
+  directory_x_ = value;
 }
 
-// optional uint32 clock_x = 4;
-inline bool AppLayout::has_clock_x() const {
+// optional uint32 metadata_x = 4;
+inline bool AppLayout::has_metadata_x() const {
   return _has_bit(3);
 }
-inline void AppLayout::clear_clock_x() {
-  clock_x_ = 0u;
+inline void AppLayout::clear_metadata_x() {
+  metadata_x_ = 0u;
   _clear_bit(3);
 }
-inline ::google::protobuf::uint32 AppLayout::clock_x() const {
-  return clock_x_;
+inline ::google::protobuf::uint32 AppLayout::metadata_x() const {
+  return metadata_x_;
 }
-inline void AppLayout::set_clock_x(::google::protobuf::uint32 value) {
+inline void AppLayout::set_metadata_x(::google::protobuf::uint32 value) {
   _set_bit(3);
-  clock_x_ = value;
+  metadata_x_ = value;
 }
 
-// optional uint32 songdata_x = 5;
-inline bool AppLayout::has_songdata_x() const {
+// optional uint32 help_x = 5;
+inline bool AppLayout::has_help_x() const {
   return _has_bit(4);
 }
-inline void AppLayout::clear_songdata_x() {
-  songdata_x_ = 0u;
+inline void AppLayout::clear_help_x() {
+  help_x_ = 0u;
   _clear_bit(4);
 }
-inline ::google::protobuf::uint32 AppLayout::songdata_x() const {
-  return songdata_x_;
+inline ::google::protobuf::uint32 AppLayout::help_x() const {
+  return help_x_;
 }
-inline void AppLayout::set_songdata_x(::google::protobuf::uint32 value) {
+inline void AppLayout::set_help_x(::google::protobuf::uint32 value) {
   _set_bit(4);
-  songdata_x_ = value;
+  help_x_ = value;
 }
 
-// optional uint32 loops_x = 6;
-inline bool AppLayout::has_loops_x() const {
+// optional uint32 transform_x = 6;
+inline bool AppLayout::has_transform_x() const {
   return _has_bit(5);
 }
-inline void AppLayout::clear_loops_x() {
-  loops_x_ = 0u;
+inline void AppLayout::clear_transform_x() {
+  transform_x_ = 0u;
   _clear_bit(5);
 }
-inline ::google::protobuf::uint32 AppLayout::loops_x() const {
-  return loops_x_;
+inline ::google::protobuf::uint32 AppLayout::transform_x() const {
+  return transform_x_;
 }
-inline void AppLayout::set_loops_x(::google::protobuf::uint32 value) {
+inline void AppLayout::set_transform_x(::google::protobuf::uint32 value) {
   _set_bit(5);
-  loops_x_ = value;
+  transform_x_ = value;
+}
+
+// optional uint32 control_x = 7;
+inline bool AppLayout::has_control_x() const {
+  return _has_bit(6);
+}
+inline void AppLayout::clear_control_x() {
+  control_x_ = 0u;
+  _clear_bit(6);
+}
+inline ::google::protobuf::uint32 AppLayout::control_x() const {
+  return control_x_;
+}
+inline void AppLayout::set_control_x(::google::protobuf::uint32 value) {
+  _set_bit(6);
+  control_x_ = value;
 }
 
 

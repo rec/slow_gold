@@ -51,12 +51,15 @@ static Def<LoopPointList> loops(
 );
 
 static Def<AppLayout> layout(
-"directory_y: 175\n"
-"waveform_y: 350\n"
-"stretchy_y: 175\n"
-"clock_x: 250\n"
-"songdata_x: 450\n"
+"waveform_y: 200\n"
+"controls_y: 550\n"
+
+"songdata_x: 350\n"
 "loops_x: 650\n"
+
+"transform_x: 350\n"
+"controls_x: 650\n"
+""
 );
 
 static Def<gui::WindowPosition> windowPosition(

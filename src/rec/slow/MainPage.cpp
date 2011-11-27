@@ -45,37 +45,47 @@ void add(gui::Layout* layout, Type t, double size) {
 }  // namespace
 
 MainPage::MainPage(Components* components, data::Editable* e)
-    : nonLoopPanel_("MainPagePanel", VERTICAL),
-      playbackPanel_("Main controls"),
-      controllerPanel_("Main panel", VERTICAL),
-      directoryResizer_("directory_y", &nonLoopPanel_, 1, e),
-      waveformResizer_("waveform_y", &nonLoopPanel_, 3, e),
-      loopResizer_("loops_x", &mainPanel_, 1, e),
-      timeControllerResizer_(Address("clock_x"), &playbackPanel_, 1, e),
-      songDataResizer_(Address("songdata_x"), &playbackPanel_, 3, e),
-      stretchyResizer_(Address("stretchy_y"), &controllerPanel_, 1, e) {
-  add(&mainPanel_, &nonLoopPanel_, 500, -1.0, -0.8);
-  add(&mainPanel_, &loopResizer_, 7.0);
-  add(&mainPanel_, components->loops_, 250, -1.0, -0.2);
+    : mainPanel_("Main", VERTICAL),
+      navigationPanel_("Navigation"),
+      playbackPanel_("Playback"),
+      helpPanel_("Help"),
+      transformPanel_("Transform"),
+      controlPanel_("Control"),
 
-  add(&nonLoopPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);
-  add(&nonLoopPanel_, &directoryResizer_, 7.0);
-  add(&nonLoopPanel_, components->waveform_, 50, -1.0, -0.5);
-  add(&nonLoopPanel_, &waveformResizer_, 7.0);
-  add(&nonLoopPanel_, &playbackPanel_, 250, -1.0, -0.3);
+      navigationResizer_("navigation_y", &mainPanel_, 1, e),
+      waveformResizer_("waveform_y", &mainPanel_, 3, e),
 
-  add(&playbackPanel_, components->timeController_, 75, -1.0, -0.20);
-  add(&playbackPanel_, &timeControllerResizer_, 5.0);
-  add(&playbackPanel_, components->songData_, 150, -1.0, -0.30);
-  add(&playbackPanel_, &songDataResizer_, 5.0);
-  add(&playbackPanel_, &controllerPanel_, 180, -1.0, -0.40);
+      directoryResizer_("directory_x", &navigationPanel_, 1, e),
+      metadataResizer_("metadata_x", &navigationPanel_, 3, e),
 
-  add(&controllerPanel_, components->transportController_.get(), 30);
-  add(&controllerPanel_, &stretchyResizer_, 5);
-  add(&controllerPanel_, components->playerController_, 180, -1.0, -0.75);
+      helpResizer_("help_x", &playbackPanel_, 1, e),
+      transformResizer_("transform_x", &playbackPanel_, 3, e),
+      controlResizer_("control_x", &playbackPanel_, 5, e) {
+  // Main panel.
+  add(&mainPanel_, &navigationPanel_, 500, -1.0, -0.8);
+  add(&mainPanel_, &navigationResizer_, 7.0);
+
+  add(&mainPanel_, components->waveform_.get(), 50, -1.0, -0.5);
+  add(&mainPanel_, &waveformResizer_, 7.0);
+
+  add(&mainPanel_, &playbackPanel_, 250, -1.0, -0.2);
+
+  // Navigation panel.
+  add(&navigationPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);
+  add(&navigationPanel_, &directoryResizer_, 7.0);
+  add(&navigationPanel_, components->songData_, 150, -1.0, -0.30);
+  add(&navigationPanel_, &metadataResizer_, 7.0);
+  add(&navigationPanel_, components->loops_.get(), 250, -1.0, -0.3);
+
+  // Playback panel.
+  add(&playbackPanel_, &helpPanel_, 75, -1.0, -0.20);
+  add(&playbackPanel_, &helpResizer_, 5.0);
+  add(&playbackPanel_, components->playerController_, 180, -1.0, -0.75);
+  add(&playbackPanel_, &transformResizer_, 180, -1.0, -0.40);
+  add(&playbackPanel_, components->transportController_.get(), 30);
 }
 
 MainPage::~MainPage() {}
 
 }  // namespace slow
-}  // namespace rec
+}  // Namespace rec

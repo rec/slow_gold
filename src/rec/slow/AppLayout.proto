@@ -3,11 +3,13 @@ package rec.slow;
 import "rec/gui/Geometry.proto";
 
 message AppLayout {
-  optional uint32 directory_y = 1;
+  optional uint32 navigation_y = 1;
   optional uint32 waveform_y = 2;
-  optional uint32 stretchy_y = 3;
 
-  optional uint32 clock_x = 4;
-  optional uint32 songdata_x = 5;
-  optional uint32 loops_x = 6;
+  optional uint32 directory_x = 3;
+  optional uint32 metadata_x = 4;
+
+  optional uint32 help_x = 5;
+  optional uint32 transform_x = 6;
+  optional uint32 control_x = 7;
 };
