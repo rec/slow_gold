@@ -19,9 +19,9 @@ class TickedDataSetter : public CommandDataSetter<Proto> {
   }
 
   virtual void onDataChange(const Proto& p) {
-    info_->setTicked(this->getValue().get<bool>());
+    info_->setTicked(this->getValue().data::get<bool>());
 
-    (*changeListener_)(None());
+    (*this->changeListener_)(None());
   }
 
   virtual void execute() {
@@ -30,7 +30,7 @@ class TickedDataSetter : public CommandDataSetter<Proto> {
     this->setValue(value);
   }
 
-  virtual string menuName() const { Lock l(lock_); return command_.desc().menu(0); }
+  virtual string menuName() const { Lock l(this->lock_); return this->command_.desc().menu(0); }
 
  private:
   ApplicationCommandInfo* info_;

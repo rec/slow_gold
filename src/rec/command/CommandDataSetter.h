@@ -49,13 +49,14 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
 
   virtual string menuName() const { Lock l(lock_); return menuName_; }
 
- private:
+ protected:
   CriticalSection lock_;
   Listener<None>* changeListener_;
 
   const Command& command_;
   string menuName_;
 
+ private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandDataSetter);
 };
 

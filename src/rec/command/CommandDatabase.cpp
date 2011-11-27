@@ -5,6 +5,7 @@
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandDataSetter.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
