@@ -1,24 +1,40 @@
 #ifndef __REC_COMMAND_TICKEDDATASETTER__
 #define __REC_COMMAND_TICKEDDATASETTER__
 
-#include "rec/command/Command.h"
-#include "rec/command/CommandItemSetter.h"
-#include "rec/util/thread/Callback.h"
-#include "rec/util/DataListener.h"
+#include "rec/command/CommandDataSetter.h"
 
 namespace rec {
 namespace command {
 
-class TickedDataSetter : public UntypedDataListener, public CommandItemSetter {
+template <typename Proto>
+class TickedDataSetter : public CommandDataSetter<Proto> {
  public:
-  TickedDataSetter(Listener<None>* changeListener,
+  TickedDataSetter(ApplicationCommandInfo* info,
+                   Listener<None>* changeListener,
                    const Command& command,
                    const data::Address& a = data::Address::default_instance(),
                    bool isGlobal = false)
-      : UntypedDataListener(a, isGlobal), changeListener_(changeListener_)
+      : CommandDataSetter<Proto>(changeListener, command, a, isGlobal),
+        info_(info) {
+  }
 
+  virtual void onDataChange(const Proto& p) {
+    info_->setTicked(this->getValue().get<bool>());
+
+    (*changeListener_)(None());
+  }
+
+  virtual void execute() {
+    data::Value value = this->getValue();
+    value.set_bool_f(!value.bool_f());
+    this->setValue(value);
+  }
+
+  virtual string menuName() const { Lock l(lock_); return command_.desc().menu(0); }
 
  private:
+  ApplicationCommandInfo* info_;
+
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TickedDataSetter);
 };
 

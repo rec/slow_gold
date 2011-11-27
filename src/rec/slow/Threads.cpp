@@ -18,7 +18,7 @@ using namespace rec::audio::stretch;
 using namespace rec::audio::util;
 using namespace rec::util::thread;
 
-static const int THREAD_STOP_PERIOD = 5000;
+static const int THREAD_STOP_PERIOD = 2000;
 static const int BUFFER_FILL_CHUNK = 256;
 
 Threads::Threads(Instance* i) : HasInstance(i),

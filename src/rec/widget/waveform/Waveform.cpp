@@ -105,7 +105,7 @@ void Waveform::drawWaveform(Painter& p, const Range<RealTime>& range) {
         thumbnail_->drawChannel(*p.graphics(), b, first, second, i, 1.0f);
       }
     } else {
-      p.setColor(2 * selected);
+      p.setColor(2 + (!selected) * 2);
       thumbnail_->drawChannels(*p.graphics(), b, first, second, 1.0f);
     }
     r.first = draw.second;
