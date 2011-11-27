@@ -19,7 +19,8 @@ class TickedDataSetter : public CommandDataSetter<Proto> {
   }
 
   virtual void onDataChange(const Proto& p) {
-    info_->setTicked(this->getValue().data::get<bool>());
+    data::Value v = this->getValue(); 
+    info_->setTicked(v.get<bool>());
 
     (*this->changeListener_)(None());
   }

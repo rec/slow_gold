@@ -39,11 +39,7 @@ void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
 
 void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   Lock l(lock_);
-  CommandRecord* cr = find(id);
-  if (cr->info_)
-    info = *(cr->info_);
-  else
-    LOG(DFATAL) << "No getCommandInfo" << commandName(id);
+  info = find(id)->info_;
 
   if (!info.shortName.isNotEmpty())
     LOG(DFATAL) << "No name for " << commandName(id);
@@ -94,18 +90,13 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
 }
 
 ApplicationCommandInfo* TargetManager::getInfo(CommandID id) {
-  return find(id)->info_.get();
+  return &find(id)->info_;
 }
 
 void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name) {
   CommandRecord* cr = find(id);
-  if (!cr->info_) {
-    LOG(DFATAL) << "Can't add item " << CommandIDEncoder::commandIDName(id);
-    return;
-  }
-
-  ApplicationCommandInfo* info = cr->info_.get();
+  ApplicationCommandInfo* info = &cr->info_;
 
   if (name.length())
     info->shortName = name;

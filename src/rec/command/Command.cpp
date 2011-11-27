@@ -22,7 +22,7 @@ CommandRecord* CommandRecordTable::find(CommandID id, bool create) {
   if (!create)
     return NULL;
 
-  ptr<CommandRecord> rec(new CommandRecord);
+  ptr<CommandRecord> rec(new CommandRecord(id));
   table_.insert(i, std::make_pair(id, rec.get()));
   return rec.transfer();
 }

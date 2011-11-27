@@ -10,12 +10,12 @@ namespace rec {
 namespace command {
 
 struct CommandRecord {
-  CommandRecord() {}
+  explicit CommandRecord(CommandID id) : info_(id) {}
 
   ptr<Command> command_;
   ptr<Callback> callback_;
   ptr<CommandItemSetter> setter_;
-  ptr<ApplicationCommandInfo> info_;
+  ApplicationCommandInfo info_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecord);

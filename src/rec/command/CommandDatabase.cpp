@@ -176,9 +176,9 @@ class CommandDatabase {
       Listener<None>* ls = data_.getMenuUpdateListener();
       if (id == Command::TOGGLE_GRID_DISPLAY ||
           id == Command::TOGGLE_PARALLEL_WAVEFORMS)
-        cr->setter_.reset(new CommandDataSetter<WaveformProto>(ls, c, a, true));
+        cr->setter_.reset(new TickedDataSetter<WaveformProto>(&cr->info_, ls, c, a, true));
       else if (id == Command::TOGGLE_STRETCH_ENABLE)
-        cr->setter_.reset(new CommandDataSetter<Stretch>(ls, c, a, false));
+        cr->setter_.reset(new TickedDataSetter<Stretch>(&cr->info_, ls, c, a, false));
 
       if (!cr->setter_) {
         LOG(DFATAL) << "Didn't understand " << commandName(id);
@@ -213,11 +213,10 @@ class CommandDatabase {
 
     DCHECK(hasInfo) << "no command " << desc.menu_size() << ", " << name.length();
     if (hasInfo) {
-      cr->info_.reset(new ApplicationCommandInfo(id));
       int flags = 0;
       if (category == "" || category == "(None)")
         flags = ApplicationCommandInfo::hiddenFromKeyEditor;
-      cr->info_->setInfo(str(desc.menu(0)), name, category, flags);
+      cr->info_.setInfo(str(desc.menu(0)), name, category, flags);
     }
   }
 
@@ -231,11 +230,12 @@ class CommandDatabase {
         LOG(DFATAL) << "No command " << commandName(id);
       else if (!cr->callback_)
         LOG(DFATAL) << "No callback " << commandName(id);
-      else
+      else {
         fillOneCommandInfo(id, cr);
+        continue;
+      }
 
-      if (!cr->info_)
-        empties.push_back(id);
+      empties.push_back(id);
     }
 
     for (uint i = 0; i < empties.size(); ++i)
