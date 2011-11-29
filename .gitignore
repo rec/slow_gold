@@ -4,9 +4,15 @@ TAGS
 *.pyc
 *.pyo
 *~
-*.mode1v3
-*.pbxuser
 .#*
 
+# Why doesn't this work?!
+*.mode1v3
+*.pbxuser
+
+tom.mode1v3
+tom.pbxuser
+
+projects/slow/Builds/MacOSX/Slow.xcodeproj/tom.*
 projects/*/Builds/MacOSX/build
 !projects/*/Builds/VisualStudio2008/Slow.*
