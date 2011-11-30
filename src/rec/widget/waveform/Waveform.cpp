@@ -296,7 +296,7 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
     int x = timeToX(time);
     DLOG(INFO) << "grid: " << time << ", " << x;
 
-    if (desc_.show_grid()) {
+    if (true || desc_.show_grid()) {
       g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
       g.drawVerticalLine(x, 0, h);
     }

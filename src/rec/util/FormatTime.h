@@ -16,8 +16,9 @@ const String formatTime(Samples<RATE> time,
   Samples<RATE> maxTime = std::max(time, mTime);
   bool displayHours = (maxTime >= 3600 * RATE);
 
-  int sec = static_cast<int>(mod(time.get(), RATE));
-  double fraction = (time - sec * RATE) / (1.0 * RATE);
+  int frac = static_cast<int>(mod(time.get(), RATE));
+  int sec = static_cast<int>((time - frac).toRealTime());
+  double fraction = frac / (1.0 * RATE);
 
   int minutes = sec / 60;
   int hours = minutes / 60;
