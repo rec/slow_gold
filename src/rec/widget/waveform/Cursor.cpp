@@ -24,40 +24,38 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, RealTime t, int index)
   setRepaintsOnMouseActivity(true);
 }
 
+void Cursor::setTime(RealTime time) {
+  thread::callAsync(this, &Cursor::setCursorBounds, time,
+                    waveform_->getLocalBounds());
+}
+
 double Cursor::getTime() const {
   ScopedLock l(lock_);
   return time_;
 }
 
 void Cursor::operator()(Samples<44100> t) {
-  Lock l(lock_);
+  ScopedLock l(lock_);
   if (listeningToClock_)
     setTime(t);
 }
 
-void Cursor::setTime(RealTime time) {
-  {
-    Lock l(lock_);
-    time_ = time;
-  }
-  thread::callAsync(this, &Cursor::layout);
-}
-
-
-void Cursor::layout() {
-  Lock l(lock_);
-
-  juce::Rectangle<int> bounds = waveform_->getLocalBounds();
+void Cursor::setCursorBounds(double time,
+                             const juce::Rectangle<int>& waveformBounds) {
+  juce::Rectangle<int> bounds = waveformBounds;
   int componentWidth = desc().component_width();
   int x = 0;
 
   if (waveform_->getTimeRange().size() > SMALLEST_TIME)
-    x = waveform_->timeToX(time_);
+    x = waveform_->timeToX(time);
 
 
   bounds.setWidth(componentWidth);
   bounds.setX(x - (componentWidth - desc().width()) / 2);
+
+  ScopedLock l(lock_);
   setBounds(bounds);
+  time_ = time;
 }
 
 void Cursor::paint(Graphics& g) {

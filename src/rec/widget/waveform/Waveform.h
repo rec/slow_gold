@@ -51,7 +51,7 @@ class Waveform : public gui::component::Focusable<Component>,
   virtual void onDataChange(const WaveformProto&);
   virtual void onDataChange(const ZoomProto&);
 
-  Cursor* timeCursor() { return timeCursor_.get(); }
+  Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();
 
   Range<RealTime> getTimeRange() const;
@@ -78,14 +78,11 @@ class Waveform : public gui::component::Focusable<Component>,
   WaveformProto desc_;
   Samples<44100> length_;
   juce::AudioThumbnail* thumbnail_;
+  Cursor* timeCursor_;
   block::BlockSet selection_;
 
   ZoomProto zoom_;
   bool empty_;
-
-  typedef vector<Cursor*> CursorList;
-  CursorList cursors_;
-  ptr<Cursor> timeCursor_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 

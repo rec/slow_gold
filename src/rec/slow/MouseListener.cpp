@@ -122,7 +122,8 @@ void MouseListener::mouseDown(const MouseEvent& e) {
     if (i >= 0) {
       LoopPointList loops = data::get<LoopPointList>(file());
       cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0.0;
-      cursorDrag_.end_ = RealTime(loops.loop_point(i + 1).time());
+      cursorDrag_.end_ = (i == loops.loop_point_size()) ?
+        RealTime(loops.loop_point(i + 1).time()) : RealTime(loops.length());
     }
   }
 }
