@@ -95,8 +95,8 @@ void Waveform::drawWaveform(Painter& p, const Range<Samples<44100> >& range) {
 
     juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
-    double first = static_cast<double>(draw.first);
-    double second = static_cast<double>(draw.second);
+    double first = static_cast<double>(draw.first) / 44100.0;
+    double second = static_cast<double>(draw.second) / 44100.0;
     if (desc_.parallel_waveforms() ||
         desc_.layout() == WaveformProto::PARALLEL) {
       for (int i = 0; i < channels; ++i) {
@@ -265,11 +265,6 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
   int e = static_cast<int>(r.end_ / units);
   int diff = e - b;
 
-  DLOG(INFO) << "range: " << str(r.toString())
-             << ", units: " << units
-             << ", b: " << b
-             << ", e: " << e;
-
   if (diff <= 2)
     units /= 2.0;
   else if (diff > 15)
@@ -294,9 +289,8 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
   for (int i = b - 1; i <= e + 1; ++i) {
     Samples<44100> time = static_cast<int64>(i * units);
     int x = timeToX(time);
-    DLOG(INFO) << "grid: " << time << ", " << x;
 
-    if (true || desc_.show_grid()) {
+    if (desc_.show_grid()) {
       g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
       g.drawVerticalLine(x, 0, h);
     }

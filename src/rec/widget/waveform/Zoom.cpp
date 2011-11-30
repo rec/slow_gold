@@ -13,10 +13,10 @@ ZoomProto zoom(const ZoomProto& z, Samples<44100> length, Samples<44100> t, doub
     e = length;  // TODO:  delete these?
 
   if (k >= 1.0 || k * (e - b) >= SMALLEST_TIME_SAMPLES) {
-    uint64 begin = static_cast<uint64>(k * b + (1.0 - k) * t);
-    uint64 end = static_cast<uint64>(k * e + (1.0 - k) * t);
-    zoom.set_begin(std::max(0ULL, begin));
-    zoom.set_end(std::min(static_cast<uint64>(length), end));
+    int64 begin = static_cast<int64>(k * b + (1.0 - k) * t);
+    int64 end = static_cast<int64>(k * e + (1.0 - k) * t);
+    zoom.set_begin(std::max(0LL, begin));
+    zoom.set_end(std::min(static_cast<int64>(length), end));
     if (zoom.end() < 0) {
       LOG(DFATAL) << "Bad zoom: " << zoom.end();
       zoom.set_end(length);

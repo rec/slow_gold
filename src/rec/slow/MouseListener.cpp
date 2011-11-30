@@ -80,8 +80,7 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
   Waveform* waveform = components()->waveform_.get();
   if (e.event_->eventComponent == waveform) {
     Samples<44100> time = waveform->xToTime(e.event_->x);
-    Samples<44100> inc = static_cast<int64>((e.xIncrement_ + e.yIncrement_)
-                                            * WHEEL_RATIO);
+    double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
     zoom(*instance_, *e.event_, time, inc);
   }
 }

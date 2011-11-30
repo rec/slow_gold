@@ -38,20 +38,16 @@ class CommandDatabase {
 
     CommandRecord* cr(table_->find(id));
     if (type == INSERT) {
-      if (cr->command_) {
+      if (cr->command_)
         LOG(DFATAL) << "Can't insert " << commandName(id);
-      } else {
-        // DLOG(INFO) << "Inserting " << commandName(id);
+      else
         cr->command_.reset(new Command(cmd));
 
-      }
     } else {
-      if (cr->command_) {
-        // DLOG(INFO) << "Merging " << commandName(id);
+      if (cr->command_)
         cr->command_->MergeFrom(cmd);
-      } else {
+      else
         LOG(DFATAL) << "Can't merge " << commandName(id);
-      }
     }
   }
 
@@ -69,17 +65,11 @@ class CommandDatabase {
   }
 
   void mergeDescription(const Command& command) {
-    // DLOG(INFO) << "Starting to merge " << commandName(command.type());
     CommandRecord* cr = table_->find(command.type(), false);
     if (cr) {
       DCHECK(cr->command_) << commandName(command.type());
-      if (cr->command_) {
-        Command before(*cr->command_);
-        cr->command_->MergeFrom(command);
-        // DLOG(INFO) << "Merge!! " << before.ShortDebugString()
-        //           << "  |||  " << command.ShortDebugString()
-        //         << "  |||  " << cr->command_->ShortDebugString() ;
-      }
+      if (cr->command_)
+        cr->command_->MergeFrom(Command(*cr->command_));
       return;
     }
 
@@ -187,16 +177,13 @@ class CommandDatabase {
 
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                  &CommandItemSetter::execute));
-      // DLOG(INFO) << "Adding callback for " << commandName(id);
     }
   }
 
   void mergeKeyPresses() {
     Commands kp = data_.keyPresses(access_);
-    for (int i = 0; i < kp.command_size(); ++i) {
-      // DLOG(INFO) << "Merging keypresses " << commandName(kp.command(i).type());
+    for (int i = 0; i < kp.command_size(); ++i)
       merge(kp.command(i));
-    }
   }
 
   void mergeDescriptions() {

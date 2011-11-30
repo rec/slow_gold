@@ -20,12 +20,9 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
         changeListener_(changeListener),
         command_(command),
         menuName_("none") {
-    // DLOG(INFO) << "Creating CommandDataSetter " << &command_ << ", "
-    //        << command_.ShortDebugString();
   }
 
   virtual ~CommandDataSetter() {
-    // DLOG(INFO) << "Deleting " << this;
   }
 
   virtual void onDataChange(const Proto& p) {
@@ -40,8 +37,6 @@ class CommandDataSetter : public DataListener<Proto>, public CommandItemSetter {
   }
 
   virtual void execute() {
-    // DLOG(INFO) << "execute " << command_.ShortDebugString();
-
     data::Value value = this->getValue();
     value.set_bool_f(!value.bool_f());
     this->setValue(value);
