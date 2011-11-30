@@ -37,7 +37,7 @@ Thread* makeLoop(const ThreadDesc& d, EditableUpdater* upd, Method method) {
 }
 
 static bool lockedCopy(EditableSet* from, EditableSet* to, CriticalSection* lock) {
-  ScopedLock l(*lock);
+  Lock l(*lock);
   bool hasData = !from->empty();
   if (hasData)
     stl::moveTo(from, to);
@@ -63,7 +63,7 @@ EditableUpdater::~EditableUpdater() {
 // A piece of data got new information!
 void EditableUpdater::needsUpdate(UntypedEditable* data) {
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     updateData_.insert(data);
   }
   updateThread_->notify();

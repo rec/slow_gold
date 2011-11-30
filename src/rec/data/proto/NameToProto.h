@@ -14,7 +14,7 @@ class NameToProto {
   NameToProto();
 
   void add(const Message* message) {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     const string& name = getName(*message);
     NameToProtoMap::iterator i = map_.find(name);
     if (i == map_.end())

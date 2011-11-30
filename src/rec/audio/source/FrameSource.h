@@ -33,7 +33,7 @@ class FrameSource : public PositionableAudioSource {
   }
 
   virtual int64 getTotalLength() const {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     return buffer_.length();
   }
 

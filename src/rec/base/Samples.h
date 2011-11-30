@@ -11,6 +11,7 @@ struct Samples {
 
   // Conversion from integer types means "a sample count".
   Samples(int64 p) : position_(p) {}
+  Samples(uint64 p) : position_(static_cast<int32>(p)) {}
   Samples(int p) : position_(p) {}
   Samples(short p) : position_(p) {}
 
@@ -29,10 +30,15 @@ struct Samples {
   const Samples operator-(Samples p) { return position_ - p; }
   const Samples operator+(int p) { return position_ + p; }
   const Samples operator-(int p) { return position_ - p; }
+  const Samples operator+(uint p) { return position_ + p; }
+  const Samples operator-(uint p) { return position_ - p; }
   const Samples operator+(int64 p) { return position_ + p; }
   const Samples operator-(int64 p) { return position_ - p; }
+  const Samples operator+(uint64 p) { return position_ + p; }
+  const Samples operator-(uint64 p) { return position_ - p; }
 
   operator int64() const { return position_; }
+  int64 get() { return position_; }
 
   double toRealTime() const {
     return static_cast<double>(position_) / static_cast<double>(SAMPLES_PER_SEC);

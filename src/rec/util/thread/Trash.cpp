@@ -12,12 +12,12 @@ class Trash {
   Trash() {}
 
   ~Trash() {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     empty();
   }
 
   void add(Thread* thread) {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     threads_.insert(thread);
   }
 
@@ -39,7 +39,7 @@ class Trash {
   void empty() {
     ThreadSet stopped;
     {
-      ScopedLock l(lock_);
+      Lock l(lock_);
       for (ThreadSet::iterator i = threads_.begin(); i != threads_.end(); ++i) {
         if (!(*i)->isThreadRunning())
           stopped.insert(*i);
@@ -55,7 +55,7 @@ class Trash {
   }
 
   void waitForAllThreadsToExit(int timeout) {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     empty();
     for (ThreadSet::iterator i = threads_.begin(); i != threads_.end(); ++i)
       (*i)->waitForThreadToExit(timeout);

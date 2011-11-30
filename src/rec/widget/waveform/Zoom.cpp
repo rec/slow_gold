@@ -5,16 +5,18 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-ZoomProto zoom(const ZoomProto& z, RealTime length, RealTime t, double k) {
+ZoomProto zoom(const ZoomProto& z, Samples<44100> length, Samples<44100> t, double k) {
   ZoomProto zoom(z);
-  RealTime b = zoom.begin();
-  RealTime e = zoom.end();
+  Samples<44100> b = zoom.begin();
+  Samples<44100> e = zoom.end();
   if (!e)
     e = length;  // TODO:  delete these?
 
-  if (k >= 1.0 || k * (e - b) >= SMALLEST_TIME) {
-    zoom.set_begin(std::max(0.0, k * b + (1.0 - k) * t));
-    zoom.set_end(std::min<double>(length, k * e + (1.0 - k) * t));
+  if (k >= 1.0 || k * (e - b) >= SMALLEST_TIME_SAMPLES) {
+    uint64 begin = static_cast<uint64>(k * b + (1.0 - k) * t);
+    uint64 end = static_cast<uint64>(k * e + (1.0 - k) * t);
+    zoom.set_begin(std::max(0ULL, begin));
+    zoom.set_end(std::min(static_cast<uint64>(length), end));
     if (zoom.end() < 0) {
       LOG(DFATAL) << "Bad zoom: " << zoom.end();
       zoom.set_end(length);
@@ -24,7 +26,7 @@ ZoomProto zoom(const ZoomProto& z, RealTime length, RealTime t, double k) {
   return zoom;
 }
 
-void zoom(const VirtualFile& f, RealTime length, RealTime time, double k) {
+void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k) {
   data::set(zoom(data::get<ZoomProto>(f), length, time, k), f);
 }
 

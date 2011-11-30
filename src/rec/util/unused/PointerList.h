@@ -46,7 +46,7 @@ class PointerList {
 
   template <typename Operation>
   bool forEachOp(Operation op, bool forward) {
-    ScopedLock l(lock_);
+    Lock l(lock_);
 
     Type** begin = &*list_.begin();
     Type** end = &*list_.end();

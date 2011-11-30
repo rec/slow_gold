@@ -65,7 +65,7 @@ bool UntypedEditable::fill(Proto* t) const {
     return false;
   }
 
-  ScopedLock l(lock_);
+  Lock l(lock_);
   copyTo(t);
   return true;
 }

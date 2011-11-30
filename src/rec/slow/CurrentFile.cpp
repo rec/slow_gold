@@ -66,15 +66,14 @@ void CurrentFile::setFile(const VirtualFile& f) {
     components()->directoryTree_->refreshNode(f);
   }
 
-  RealTime length;
+  Samples<44100> length;
   if (isEmpty) {
-    length = 0.0;
+    length = 0;
   } else {
     using audio::util::ThumbnailBuffer;
 
     ThumbnailBuffer* thumbnail = bufferFiller()->thumbnailBuffer();
-    int64 s = thumbnail->setReader(file_, music::createMusicFileReader(file_));
-    length = Samples<44100>(s);
+    length = thumbnail->setReader(file_, music::createMusicFileReader(file_));
 
     if (!length) {
       LOG(DFATAL) << "Unable to read file " << getFullDisplayName(file_);

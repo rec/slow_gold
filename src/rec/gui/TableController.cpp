@@ -25,7 +25,7 @@ void TableController::initialize(const TableColumnList& c, const Address& addres
 }
 
 void TableController::fillHeader(TableHeaderComponent* headers) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   for (int i = 0; i < columns_.column_size(); ++i)  {
     const TableColumn& col = columns_.column(i);
     headers->addColumn(str(col.name()), i + 1, col.width(), col.minimum_width(),
@@ -37,7 +37,7 @@ void TableController::paintRowBackground(Graphics& g,
                                         int rowNumber,
                                         int width, int height,
                                         bool rowIsSelected) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   g.setColour(rowIsSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
   g.fillRect(0, 0, width, height);
 }
@@ -47,7 +47,7 @@ void TableController::paintCell(Graphics& g,
                                int columnId,
                                int width, int height,
                                bool rowIsSelected) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   g.setColour(juce::Colours::black);
   if (columnId > columns_.column_size() || columnId <= 0) {
     LOG(DFATAL) << "columnId " << columnId << " size " << columns_.column_size();

@@ -45,7 +45,7 @@ Root::Root(MenuBarModel* model, const NodeDesc& desc)
 }
 
 void Root::checkVolumes() {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   VirtualFileList volumes(volumes_);
   fillVolumes(&volumes);
   thread::callAsync(this, &Root::mergeNewIntoOld, volumes);
@@ -98,7 +98,7 @@ void Root::operator()(const VirtualFile& file) {
 }
 
 void Root::operator()(const VirtualFileList& volumes) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   volumes_ = volumes;
   // notify();  // TODO!
 }

@@ -46,7 +46,7 @@ class Player : public DataListener<Gain>,
 
   void setNextReadPosition(const Samples<44100>&);
   Samples<44100> getNextReadPosition();
-  RealTime getTime() { return getNextReadPosition(); }
+  Samples<44100> getTime() { return getNextReadPosition(); }
 
   transport::State state() const;
   Device* device() { return device_; }

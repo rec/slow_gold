@@ -17,7 +17,7 @@ int getSegment(const LoopSnapshot& snap) {
 }
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
-  RealTime time = snapshot->loops_.loop_point(segment).time();
+  Samples<44100> time = snapshot->loops_.loop_point(segment).time();
   snapshot->instance_->currentTime_->jumpToTime(time);
 }
 

@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_TABLEMODELBASE__
 #define __REC_GUI_TABLEMODELBASE__
 
-#include "rec/base/RealTime.h"
+#include "rec/base/Samples.h"
 #include "rec/gui/TableColumn.pb.h"
 #include "rec/data/Address.h"
 

@@ -42,14 +42,14 @@ TimeController::TimeController()
 }
 
 void TimeController::operator()(const Stretch& stretch) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   timeScale_ = timeScale(stretch);
 }
 
 void TimeController::operator()(Samples<44100> time) {
-  RealTime scaledTime = time;
+  Samples<44100> scaledTime = time;
   if (DISPLAY_SCALED_TIME)
-    scaledTime /= timeScale_;
+    scaledTime = static_cast<uint64>(scaledTime / timeScale_);
   songTime_(scaledTime);
   songDial_(scaledTime);
 }

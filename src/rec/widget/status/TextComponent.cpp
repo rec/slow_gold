@@ -16,18 +16,18 @@ namespace time {
 TextComponent::TextComponent(const Text& desc)
     : gui::SimpleLabel(str(desc.widget().name())),
       description_(desc),
-      length_(0.0) {
+      length_(0) {
   setJustificationType(juce::Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
 }
 
-double TextComponent::getTime() const {
-  ScopedLock l(lock_);
+Samples<44100> TextComponent::getTime() const {
+  Lock l(lock_);
   return time_;
 }
 
-void TextComponent::setTime(RealTime time) {
-  ScopedLock l(lock_);
+void TextComponent::setTime(Samples<44100> time) {
+  Lock l(lock_);
   time_ = time;
   String timeDisplay = formatTime(time_, length_, description_.separator().flash());
   if (timeDisplay != timeDisplay_) {
@@ -37,7 +37,7 @@ void TextComponent::setTime(RealTime time) {
 }
 
 void TextComponent::redisplay() {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   setText(timeDisplay_, false);
 }
 

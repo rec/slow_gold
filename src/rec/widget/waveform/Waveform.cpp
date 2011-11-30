@@ -34,13 +34,12 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       empty_(true) {
   setName("Waveform");
 
-  timeCursor_ = newCursor(*timeCursor, 0.0f, -1);
-  desc_.set_selection_frame_in_seconds(0);  // TODO: what's this?
+  timeCursor_ = newCursor(*timeCursor, 0, -1);
 
   setWantsKeyboardFocus(true);
 }
 
-Cursor* Waveform::newCursor(const CursorProto& d, double time, int index) {
+Cursor* Waveform::newCursor(const CursorProto& d, Samples<44100> time, int index) {
 	Cursor* cursor = new Cursor(d, this, time, index);
   addAndMakeVisible(cursor);
   return cursor;
@@ -65,7 +64,7 @@ void Waveform::paint(Graphics& g) {
       g.drawFittedText("Drop a file here or double-click to open a new file",
                        0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
     } else {
-      Range<RealTime> range = getTimeRange();
+      Range<Samples<44100> > range = getTimeRange();
       drawWaveform(p, range);
       drawGrid(g, range);
     }
@@ -73,7 +72,7 @@ void Waveform::paint(Graphics& g) {
   paintFocus(g);
 }
 
-void Waveform::drawWaveform(Painter& p, const Range<RealTime>& range) {
+void Waveform::drawWaveform(Painter& p, const Range<Samples<44100> >& range) {
   block::BlockSet::iterator i = selection_.begin();
   block::Block r;
   r.first = Samples<44100>(range.begin_);
@@ -96,8 +95,8 @@ void Waveform::drawWaveform(Painter& p, const Range<RealTime>& range) {
 
     juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
-    RealTime first = Samples<44100>(draw.first);
-    RealTime second = Samples<44100>(draw.second);
+    Samples<44100> first = Samples<44100>(draw.first);
+    Samples<44100> second = Samples<44100>(draw.second);
     if (desc_.parallel_waveforms() ||
         desc_.layout() == WaveformProto::PARALLEL) {
       for (int i = 0; i < channels; ++i) {
@@ -112,15 +111,15 @@ void Waveform::drawWaveform(Painter& p, const Range<RealTime>& range) {
   }
 }
 
-int Waveform::timeToX(RealTime t) const {
-  return static_cast<int>((t - getTimeRange().begin_) * pixelsPerSecond());
+int Waveform::timeToX(Samples<44100> t) const {
+  return static_cast<int>((t - getTimeRange().begin_) * pixelsPerSample());
 }
 
-double Waveform::xToTime(int x) const {
-  return getTimeRange().begin_ + x / pixelsPerSecond();
+Samples<44100> Waveform::xToTime(int x) const {
+  return static_cast<int64>(getTimeRange().begin_.get() + x / pixelsPerSample());
 }
 
-double Waveform::pixelsPerSecond() const {
+double Waveform::pixelsPerSample() const {
   return getWidth() / getTimeRange().size();
 }
 
@@ -137,7 +136,7 @@ void Waveform::onDataChange(const LoopPointList& loopPoints) {
     Lock l(lock_);
 
     selection_ = audio::getTimeSelection(loopPoints);
-    length_ = RealTime(loopPoints.length());
+    length_ = Samples<44100>(loopPoints.length());
     empty_ = !loopPoints.has_length();
   }
 
@@ -149,7 +148,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
   MessageManagerLock l;
   int size = loopPoints.loop_point_size();
   for (int i = 0; i < size; ++i) {
-    double time = loopPoints.loop_point(i).time();
+    Samples<44100> time = loopPoints.loop_point(i).time();
     bool needsNew = (i >= getNumChildComponents() - 1);
     Cursor* c;
     if (needsNew) {
@@ -211,33 +210,37 @@ void Waveform::resized() {
   layoutCursors();
 }
 
-RealTime Waveform::zoomEnd() const {
+Samples<44100> Waveform::zoomEnd() const {
   Lock l(lock_);
-  return zoom_.has_end() ? RealTime(zoom_.end()) : RealTime(length_);
+  return zoom_.has_end() ? Samples<44100>(zoom_.end()) : Samples<44100>(length_);
 }
 
 
-Range<RealTime> Waveform::getTimeRange() const {
+Range<Samples<44100> > Waveform::getTimeRange() const {
   Lock l(lock_);
-  Range<RealTime> r;
+  Range<Samples<44100> > r;
   if (zoom_.zoom_to_selection() && !selection_.empty()) {
     r.begin_ = Samples<44100>(selection_.begin()->first);
     r.end_ = Samples<44100>(selection_.rbegin()->second);
-    if (r.end_ == 0.0)
+    if (r.end_ == 0)
       r.end_ = zoomEnd();
 
-    r.begin_ -= desc_.selection_frame_in_seconds();
-    r.end_ += desc_.selection_frame_in_seconds();
+    // r.begin_ -= desc_.selection_frame_in_seconds();
+    // r.end_ += desc_.selection_frame_in_seconds();
 
-    r.begin_ = std::max<RealTime>(r.begin_, 0.0);
-    r.end_ = std::min<RealTime>(r.end_, zoomEnd());
+    r.begin_ = std::max<Samples<44100> >(r.begin_, 0);
+    r.end_ = std::min<Samples<44100> >(r.end_, zoomEnd());
   } else {
     r.begin_ = zoom_.begin();
     r.end_= zoomEnd();
   }
 
-  if (r.size() < SMALLEST_TIME)
-    r = Range<RealTime>(0.0, thumbnail_ ? thumbnail_->getTotalLength() : SMALLEST_TIME);
+  if (r.size() < SMALLEST_TIME_SAMPLES) {
+  	Samples<44100> len = SMALLEST_TIME_SAMPLES;
+    if (thumbnail_) 
+     len = static_cast<int64>(thumbnail_->getTotalLength() * 44100);
+    r = Range<Samples<44100> >(0, len);
+  }
 
   return r;
 }
@@ -250,13 +253,13 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
   Broadcaster<const MouseWheelEvent&>::broadcast(we);
 }
 
-void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
-  RealTime width = r.size();
-  if (width < SMALLEST_TIME) {
+void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
+  Samples<44100> width = r.size();
+  if (width < SMALLEST_TIME_SAMPLES) {
     LOG_FIRST_N(INFO, 4) << "Nothing on screen!";
     return;
   }
-  RealTime units = pow(10.0, floor(log10(width)));
+  double units = pow(10.0, floor(log10(width)));
 
   int b = static_cast<int>(ceil(r.begin_ / units));
   int e = static_cast<int>(r.end_ / units);
@@ -284,7 +287,7 @@ void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
   g.setFont(10);
 
   for (int i = b - 1; i <= e + 1; ++i) {
-    RealTime time = i * units;
+    Samples<44100> time = static_cast<int64>(i * units);
     int x = timeToX(time);
 
     if (desc_.show_grid()) {

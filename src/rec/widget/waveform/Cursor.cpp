@@ -11,7 +11,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-Cursor::Cursor(const CursorProto& d, Waveform* waveform, RealTime t, int index)
+Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t, int index)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
@@ -24,29 +24,29 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, RealTime t, int index)
   setRepaintsOnMouseActivity(true);
 }
 
-void Cursor::setTime(RealTime time) {
+void Cursor::setTime(Samples<44100> time) {
   thread::callAsync(this, &Cursor::setCursorBounds, time,
                     waveform_->getLocalBounds());
 }
 
-double Cursor::getTime() const {
-  ScopedLock l(lock_);
+Samples<44100> Cursor::getTime() const {
+  Lock l(lock_);
   return time_;
 }
 
 void Cursor::operator()(Samples<44100> t) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   if (listeningToClock_)
     setTime(t);
 }
 
-void Cursor::setCursorBounds(double time,
+void Cursor::setCursorBounds(Samples<44100> time,
                              const juce::Rectangle<int>& waveformBounds) {
   juce::Rectangle<int> bounds = waveformBounds;
   int componentWidth = desc().component_width();
   int x = 0;
 
-  if (waveform_->getTimeRange().size() > SMALLEST_TIME)
+  if (waveform_->getTimeRange().size() > SMALLEST_TIME_SAMPLES)
     x = waveform_->timeToX(time);
 
 
@@ -61,7 +61,7 @@ void Cursor::setCursorBounds(double time,
 void Cursor::paint(Graphics& g) {
   juce::Rectangle<int> bounds;
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     bounds = getLocalBounds();
   }
 
@@ -78,7 +78,7 @@ void Cursor::paint(Graphics& g) {
   float offset = (componentWidth - displayWidth) / 2.0f;
   bool highlight = !isTimeCursor() && isMouseOverOrDragging();
 
-  ScopedLock l(lock_);
+  Lock l(lock_);
 
   p.setColor(highlight ? HIGHLIGHT : BACKGROUND);
   g.fillRect(offset, top, displayWidth, height);

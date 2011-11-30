@@ -24,7 +24,7 @@ using namespace rec::widget::waveform;
 using namespace rec::util::block;
 
 MouseListener::MouseListener(Instance* i)
-    : HasInstance(i), waveformDragStart_(0.0) {
+    : HasInstance(i), waveformDragStart_(0) {
   components()->waveform_->addMouseListener(this, true);
   Broadcaster<const MouseWheelEvent&> *w = components()->waveform_.get();
   w->addListener(this);
@@ -32,7 +32,7 @@ MouseListener::MouseListener(Instance* i)
 
 namespace {
 
-void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
+void toggleSelectionSegment(const VirtualFile& file, Samples<44100> time) {
   data::apply(file, &audio::toggleSelectionSegment, time);
 }
 
@@ -47,7 +47,7 @@ double zoomFunction(double increment) {
 }
 
 void zoom(const Instance& instance, const MouseEvent& e,
-          RealTime time, double increment) {
+          Samples<44100> time, double increment) {
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
   double z = zoomFunction(s * increment);
@@ -79,8 +79,9 @@ Mode::Action MouseListener::getClickAction() {
 void MouseListener::operator()(const MouseWheelEvent& e) {
   Waveform* waveform = components()->waveform_.get();
   if (e.event_->eventComponent == waveform) {
-    double time = waveform->xToTime(e.event_->x);
-    double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
+    Samples<44100> time = waveform->xToTime(e.event_->x);
+    Samples<44100> inc = static_cast<int64>((e.xIncrement_ + e.yIncrement_)
+                                            * WHEEL_RATIO);
     zoom(*instance_, *e.event_, time, inc);
   }
 }
@@ -88,7 +89,7 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
 void MouseListener::mouseDown(const MouseEvent& e) {
   Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform) {
-    RealTime time = waveform->xToTime(e.x);
+    Samples<44100> time = waveform->xToTime(e.x);
     dragMods_ = e.mods;
     Mode::Action action = getClickAction();
     if (action == Mode::DRAG)
@@ -121,9 +122,9 @@ void MouseListener::mouseDown(const MouseEvent& e) {
     int i = cursor->index();
     if (i >= 0) {
       LoopPointList loops = data::get<LoopPointList>(file());
-      cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0.0;
+      cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0;
       cursorDrag_.end_ = (i == loops.loop_point_size()) ?
-        RealTime(loops.loop_point(i + 1).time()) : RealTime(loops.length());
+        Samples<44100>(loops.loop_point(i + 1).time()) : Samples<44100>(loops.length());
     }
   }
 }
@@ -133,13 +134,14 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
   if (e.eventComponent == waveform) {
     Mode::Action action = getClickAction();
     if (action == Mode::DRAG) {
-      RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
+      Samples<44100> dt = static_cast<int64>(e.getDistanceFromDragStartX() /
+                                             waveform->pixelsPerSample());
       widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::data()->get());
-      RealTime len = length();
-      RealTime end = zoom.has_end() ? RealTime(zoom.end()) : len;
-      RealTime size = end - zoom.begin();
-      RealTime begin = std::max<double>(waveformDragStart_ - dt, 0.0);
-      RealTime e2 = std::min(len, begin + size);
+      Samples<44100> len = length();
+      Samples<44100> end = zoom.has_end() ? Samples<44100>(zoom.end()) : len;
+      Samples<44100> size = end - zoom.begin();
+      Samples<44100> begin = std::max(waveformDragStart_ - dt, Samples<44100>(0));
+      Samples<44100> e2 = std::min(len, begin + size);
       zoom.set_begin(e2 - size);
       zoom.set_end(end);
 
@@ -149,8 +151,8 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 
   } else if (e.eventComponent->getName() == "Cursor") {
     Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
-    if (!near(cursor->getTime(), 0.0, 0.001)) {
-      RealTime t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
+    if (!near(cursor->getTime(), 0, 44)) {
+      Samples<44100> t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
       cursor->setListeningToClock(false);
       cursor->setTime(t);
       currentTime()->setCursorTime(cursor->index(), t);

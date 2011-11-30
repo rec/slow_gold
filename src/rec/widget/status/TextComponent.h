@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#include "rec/base/RealTime.h"
+#include "rec/base/Samples.h"
 #include "rec/util/Listener.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/widget/status/Time.pb.h"
@@ -14,22 +14,22 @@ namespace status {
 namespace time {
 
 class TextComponent : public gui::SimpleLabel,
-                      public Listener<RealTime> {
+                      public Listener< Samples<44100> > {
  public:
   explicit TextComponent(const Text& desc = Text::default_instance());
-  virtual void operator()(RealTime time) { setTime(time); }
+  virtual void operator()(Samples<44100> time) { setTime(time); }
 
-  double getTime() const;
-  void setTime(RealTime time);
-  void setLength(RealTime len) { length_ = len; }
+  Samples<44100> getTime() const;
+  void setTime(Samples<44100> time);
+  void setLength(Samples<44100> len) { length_ = len; }
   void redisplay();
 
  private:
   CriticalSection lock_;
   Text description_;
-  RealTime time_;
+  Samples<44100> time_;
   String timeDisplay_;
-  RealTime length_;
+  Samples<44100> length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TextComponent);
 };

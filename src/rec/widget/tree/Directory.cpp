@@ -24,7 +24,7 @@ Directory::Directory(const NodeDesc& d, const VirtualFile& vf)
 }
 
 void Directory::requestChildren() {
-  ScopedLock l(processingLock_);
+  Lock l(processingLock_);
   if (!childrenRequested_) {
     processingChildren_.insert(this);
     childrenRequested_ = true;
@@ -85,7 +85,7 @@ void Directory::resetChildren() {
 }
 
 void Directory::itemOpennessChanged(bool isOpen) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   isOpen_ = isOpen;
   if (!isOpen)
     return;
@@ -102,7 +102,7 @@ bool Directory::computeChildrenInBackground() {
   Node* node;
   bool result;
   {
-    ScopedLock l(processingLock_);
+    Lock l(processingLock_);
     NodeSet::const_iterator i = processingChildren_.begin();
     if (i == processingChildren_.end())
       return false;

@@ -12,7 +12,7 @@ namespace source {
 
 class Seggy : public Wrappy {
  public:
-  Seggy(const Range<Samples<44100>>& r, PositionableAudioSource* s)
+  Seggy(const Range<Samples<44100> >& r, PositionableAudioSource* s)
       : Wrappy(s), range_(r) {
     DCHECK(range_.size());
     position_ = -1;
@@ -22,7 +22,7 @@ class Seggy : public Wrappy {
   virtual int64 getTotalLength() const { return range_.size(); }
 
   virtual void setNextReadPosition(int64 p) {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     int64 newPosition = mod(juce::jmax(p, 0LL));
     if (newPosition != position_) {
       position_ = newPosition;
@@ -31,7 +31,7 @@ class Seggy : public Wrappy {
   }
 
  private:
-  Range<Samples<44100>> range_;
+  Range<Samples<44100> > range_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Seggy);
 };

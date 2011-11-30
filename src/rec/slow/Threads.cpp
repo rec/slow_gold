@@ -37,7 +37,7 @@ void Threads::stop() {
 }
 
 void Threads::clean() {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   for (uint i = 0; i < threads_.size(); ++i) {
     if (!threads_[i]->isThreadRunning()) {
       delete threads_[i];

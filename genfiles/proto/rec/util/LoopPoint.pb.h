@@ -92,12 +92,12 @@ class LoopPoint : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional double time = 1 [default = 0];
+  // optional uint64 time = 1;
   inline bool has_time() const;
   inline void clear_time();
   static const int kTimeFieldNumber = 1;
-  inline double time() const;
-  inline void set_time(double value);
+  inline ::google::protobuf::uint64 time() const;
+  inline void set_time(::google::protobuf::uint64 value);
   
   // optional bool selected = 2;
   inline bool has_selected() const;
@@ -131,7 +131,7 @@ class LoopPoint : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  double time_;
+  ::google::protobuf::uint64 time_;
   bool selected_;
   ::std::string* name_;
   static const ::std::string _default_name_;
@@ -225,12 +225,12 @@ class LoopPointList : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >*
       mutable_loop_point();
   
-  // optional double length = 2;
+  // optional uint64 length = 2;
   inline bool has_length() const;
   inline void clear_length();
   static const int kLengthFieldNumber = 2;
-  inline double length() const;
-  inline void set_length(double value);
+  inline ::google::protobuf::uint64 length() const;
+  inline void set_length(::google::protobuf::uint64 value);
   
   // @@protoc_insertion_point(class_scope:rec.util.LoopPointList)
  private:
@@ -238,7 +238,7 @@ class LoopPointList : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint > loop_point_;
-  double length_;
+  ::google::protobuf::uint64 length_;
   friend void  protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fLoopPoint_2eproto();
@@ -266,18 +266,18 @@ class LoopPointList : public ::google::protobuf::Message {
 
 // LoopPoint
 
-// optional double time = 1 [default = 0];
+// optional uint64 time = 1;
 inline bool LoopPoint::has_time() const {
   return _has_bit(0);
 }
 inline void LoopPoint::clear_time() {
-  time_ = 0;
+  time_ = GOOGLE_ULONGLONG(0);
   _clear_bit(0);
 }
-inline double LoopPoint::time() const {
+inline ::google::protobuf::uint64 LoopPoint::time() const {
   return time_;
 }
-inline void LoopPoint::set_time(double value) {
+inline void LoopPoint::set_time(::google::protobuf::uint64 value) {
   _set_bit(0);
   time_ = value;
 }
@@ -411,18 +411,18 @@ LoopPointList::mutable_loop_point() {
   return &loop_point_;
 }
 
-// optional double length = 2;
+// optional uint64 length = 2;
 inline bool LoopPointList::has_length() const {
   return _has_bit(1);
 }
 inline void LoopPointList::clear_length() {
-  length_ = 0;
+  length_ = GOOGLE_ULONGLONG(0);
   _clear_bit(1);
 }
-inline double LoopPointList::length() const {
+inline ::google::protobuf::uint64 LoopPointList::length() const {
   return length_;
 }
-inline void LoopPointList::set_length(double value) {
+inline void LoopPointList::set_length(::google::protobuf::uint64 value) {
   _set_bit(1);
   length_ = value;
 }

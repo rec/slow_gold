@@ -1,6 +1,6 @@
 #include <algorithm>
 
-#include "rec/base/RealTime.h"
+#include "rec/base/Samples.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/SetterText.h"
@@ -57,11 +57,11 @@ void Loops::onDataChange(const LoopPointList& loops) {
   updateAndRepaint();
 }
 
-static String getDisplayText(const Value& v, const TableColumn& col, RealTime length) {
+static String getDisplayText(const Value& v, const TableColumn& col, Samples<44100> length) {
   switch (col.type()) {
    case TableColumn::STRING:  return str(v.string_f());
    case TableColumn::UINT32:  return String(v.uint32_f());
-   case TableColumn::TIME:    return formatTime(RealTime(v.double_f()), length);
+   case TableColumn::TIME:    return formatTime(Samples<44100>(v.uint64_f()), length);
    case TableColumn::DOUBLE:  return String(v.double_f());
    default:                   return "<unknown>";
   }
@@ -71,7 +71,7 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
   String t = "-";
   if (data()) {
     Address row = (address() + rowIndex) + col.address();
-    t = getDisplayText(data()->getValue(row), col, loops_.length());
+    t = getDisplayText(data()->getValue(row), col, Samples<44100>(loops_.length()));
   }
   return t;
 }

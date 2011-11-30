@@ -11,23 +11,24 @@ namespace audio {
 
 const block::BlockSet getTimeSelection(const LoopPointList&);
 
-bool isCloseTo(const LoopPointList&, RealTime);
+bool isCloseTo(const LoopPointList&, Samples<44100>);
 
 LoopPointList getSelected(const LoopPointList& loops, bool selected);
 LoopPointList addLoopPoints(const LoopPointList&, const LoopPointList&);
-LoopPointList addLoopPoint(const LoopPointList&, RealTime);
+LoopPointList addLoopPoint(const LoopPointList&, Samples<44100>);
 
 void sort(LoopPointList*);
 
-void addLoopPointToEditable(const VirtualFile&, RealTime time);
+void addLoopPointToEditable(const VirtualFile&, Samples<44100> time);
 
 int getSelectionCount(const LoopPointList&);
 
-int getSegment(const LoopPointList&, RealTime);
+int getSegment(const LoopPointList&, Samples<44100>);
 
-void toggleSelectionSegment(LoopPointList*, RealTime);
+void toggleSelectionSegment(LoopPointList*, Samples<44100>);
 
-Range<RealTime> contiguousSelectionContaining(const LoopPointList&, RealTime);
+Range<Samples<44100> > contiguousSelectionContaining(const LoopPointList&,
+                                                     Samples<44100>);
 
 }  // namespace audio
 }  // namespace rec

@@ -92,19 +92,19 @@ class ZoomProto : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional double begin = 1;
+  // optional uint64 begin = 1;
   inline bool has_begin() const;
   inline void clear_begin();
   static const int kBeginFieldNumber = 1;
-  inline double begin() const;
-  inline void set_begin(double value);
+  inline ::google::protobuf::uint64 begin() const;
+  inline void set_begin(::google::protobuf::uint64 value);
   
-  // optional double end = 2;
+  // optional uint64 end = 2;
   inline bool has_end() const;
   inline void clear_end();
   static const int kEndFieldNumber = 2;
-  inline double end() const;
-  inline void set_end(double value);
+  inline ::google::protobuf::uint64 end() const;
+  inline void set_end(::google::protobuf::uint64 value);
   
   // optional bool zoom_to_selection = 3;
   inline bool has_zoom_to_selection() const;
@@ -132,8 +132,8 @@ class ZoomProto : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  double begin_;
-  double end_;
+  ::google::protobuf::uint64 begin_;
+  ::google::protobuf::uint64 end_;
   bool zoom_to_selection_;
   bool follow_cursor_;
   bool click_to_zoom_;
@@ -164,34 +164,34 @@ class ZoomProto : public ::google::protobuf::Message {
 
 // ZoomProto
 
-// optional double begin = 1;
+// optional uint64 begin = 1;
 inline bool ZoomProto::has_begin() const {
   return _has_bit(0);
 }
 inline void ZoomProto::clear_begin() {
-  begin_ = 0;
+  begin_ = GOOGLE_ULONGLONG(0);
   _clear_bit(0);
 }
-inline double ZoomProto::begin() const {
+inline ::google::protobuf::uint64 ZoomProto::begin() const {
   return begin_;
 }
-inline void ZoomProto::set_begin(double value) {
+inline void ZoomProto::set_begin(::google::protobuf::uint64 value) {
   _set_bit(0);
   begin_ = value;
 }
 
-// optional double end = 2;
+// optional uint64 end = 2;
 inline bool ZoomProto::has_end() const {
   return _has_bit(1);
 }
 inline void ZoomProto::clear_end() {
-  end_ = 0;
+  end_ = GOOGLE_ULONGLONG(0);
   _clear_bit(1);
 }
-inline double ZoomProto::end() const {
+inline ::google::protobuf::uint64 ZoomProto::end() const {
   return end_;
 }
-inline void ZoomProto::set_end(double value) {
+inline void ZoomProto::set_end(::google::protobuf::uint64 value) {
   _set_bit(1);
   end_ = value;
 }

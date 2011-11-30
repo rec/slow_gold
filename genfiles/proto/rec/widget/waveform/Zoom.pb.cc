@@ -80,7 +80,7 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\036rec/widget/waveform/Zoom.proto\022\023rec.wi"
     "dget.waveform\"p\n\tZoomProto\022\r\n\005begin\030\001 \001("
-    "\001\022\013\n\003end\030\002 \001(\001\022\031\n\021zoom_to_selection\030\003 \001("
+    "\004\022\013\n\003end\030\002 \001(\004\022\031\n\021zoom_to_selection\030\003 \001("
     "\010\022\025\n\rfollow_cursor\030\004 \001(\010\022\025\n\rclick_to_zoo"
     "m\030\005 \001(\010", 167);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -124,8 +124,8 @@ ZoomProto::ZoomProto(const ZoomProto& from)
 
 void ZoomProto::SharedCtor() {
   _cached_size_ = 0;
-  begin_ = 0;
-  end_ = 0;
+  begin_ = GOOGLE_ULONGLONG(0);
+  end_ = GOOGLE_ULONGLONG(0);
   zoom_to_selection_ = false;
   follow_cursor_ = false;
   click_to_zoom_ = false;
@@ -163,8 +163,8 @@ ZoomProto* ZoomProto::New() const {
 
 void ZoomProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    begin_ = 0;
-    end_ = 0;
+    begin_ = GOOGLE_ULONGLONG(0);
+    end_ = GOOGLE_ULONGLONG(0);
     zoom_to_selection_ = false;
     follow_cursor_ = false;
     click_to_zoom_ = false;
@@ -179,28 +179,28 @@ bool ZoomProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional double begin = 1;
+      // optional uint64 begin = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &begin_)));
           _set_bit(0);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(17)) goto parse_end;
+        if (input->ExpectTag(16)) goto parse_end;
         break;
       }
       
-      // optional double end = 2;
+      // optional uint64 end = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_end:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &end_)));
           _set_bit(1);
         } else {
@@ -276,14 +276,14 @@ bool ZoomProto::MergePartialFromCodedStream(
 
 void ZoomProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional double begin = 1;
+  // optional uint64 begin = 1;
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->begin(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->begin(), output);
   }
   
-  // optional double end = 2;
+  // optional uint64 end = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->end(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->end(), output);
   }
   
   // optional bool zoom_to_selection = 3;
@@ -309,14 +309,14 @@ void ZoomProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* ZoomProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional double begin = 1;
+  // optional uint64 begin = 1;
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->begin(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->begin(), target);
   }
   
-  // optional double end = 2;
+  // optional uint64 end = 2;
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->end(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->end(), target);
   }
   
   // optional bool zoom_to_selection = 3;
@@ -345,14 +345,18 @@ int ZoomProto::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional double begin = 1;
+    // optional uint64 begin = 1;
     if (has_begin()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->begin());
     }
     
-    // optional double end = 2;
+    // optional uint64 end = 2;
     if (has_end()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->end());
     }
     
     // optional bool zoom_to_selection = 3;

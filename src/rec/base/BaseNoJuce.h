@@ -43,7 +43,7 @@ enum Endianness { LITTLE_END, BIG_END };
 
 class None {};
 
-static const double SMALLEST_TIME = 0.005;
+static const int64 SMALLEST_TIME_SAMPLES = 220;
 
 typedef vector<float> LevelVector;
 

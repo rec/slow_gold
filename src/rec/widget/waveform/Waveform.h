@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/base/RealTime.h"
+#include "rec/base/Samples.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/util/Mode.pb.h"
@@ -54,24 +54,24 @@ class Waveform : public gui::component::Focusable<Component>,
   Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();
 
-  Range<RealTime> getTimeRange() const;
-  double xToTime(int x) const;
-  double pixelsPerSecond() const;
+  Range<Samples<44100> > getTimeRange() const;
+  Samples<44100> xToTime(int x) const;
+  double pixelsPerSample() const;
 
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
   CriticalSection* lock() { return &lock_; }
 
  private:
-  void drawWaveform(Painter& g, const Range<RealTime>&);
-  void drawGrid(Graphics& g, const Range<RealTime>&);
+  void drawWaveform(Painter& g, const Range<Samples<44100> >&);
+  void drawGrid(Graphics& g, const Range<Samples<44100> >&);
 
-  RealTime zoomEnd() const;
+  Samples<44100> zoomEnd() const;
 
   void adjustCursors(const LoopPointList&);
 
-  Cursor* newCursor(const CursorProto& d, double time, int index);
+  Cursor* newCursor(const CursorProto& d, Samples<44100> time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);
-  int timeToX(RealTime t) const;
+  int timeToX(Samples<44100> t) const;
   void cursorDragged(int index, int x);
 
   CriticalSection lock_;

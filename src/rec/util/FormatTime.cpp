@@ -3,44 +3,5 @@
 namespace rec {
 namespace util {
 
-#ifdef _WIN32
-#define snprintf _snprintf
-#endif
-
-const String formatTime(RealTime time,
-                        RealTime maxTime,
-                        bool flash,
-                        bool leadingZeros,
-                        int decimals) {
-  maxTime = std::max(time, maxTime);
-  bool displayHours = (maxTime >= 3600.0);
-  int sec = static_cast<int>(time.time_);
-  double fraction = time - sec * 1.0;
-
-  int minutes = sec / 60;
-  int hours = minutes / 60;
-  sec %= 60;
-  double sf = sec + fraction;
-
-  char buffer[64];
-  char ch = ':';
-  if (flash && (sec & 1))
-    ch = ' ';
-
-  if (displayHours) {
-    snprintf(buffer, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
-  } else {
-    minutes += 60 * hours;
-    const char* zero = (sec < 10 && decimals)  ? "0" : "";
-    if (leadingZeros) {
-      snprintf(buffer, 64, "%02d%c%s%02.*f", minutes, ch, zero, decimals, sf);
-    } else {
-      snprintf(buffer, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals, sf);
-    }
-  }
-
-  return buffer;
-}
-
 }  // namespace util
 }  // namespace rec

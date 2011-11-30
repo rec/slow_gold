@@ -17,7 +17,7 @@ FillableFrameBuffer<Sample, CHANNELS>::FillableFrameBuffer(int blockSize)
 template <typename Sample, int CHANNELS>
 Samples<44100> FillableFrameBuffer<Sample, CHANNELS>::setReader(
     AudioFormatReader* reader) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   if (!reader) {
     reader_.reset();
     return 0;
@@ -38,7 +38,7 @@ Samples<44100> FillableFrameBuffer<Sample, CHANNELS>::setReader(
 template <typename Sample, int CHANNELS>
 block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
     const block::Block& b) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
 
   if (!reader_) {
     LOG(DFATAL) << "No reader!";

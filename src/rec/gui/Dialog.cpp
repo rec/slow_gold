@@ -30,7 +30,7 @@ ModalKiller* modalKiller = NULL;
 
 DialogLocker::DialogLocker() {
   getDisableBroadcaster()->broadcast(true);
-  ScopedLock l(lock);
+  Lock l(lock);
 
   locked_ = !openDialogOpen;
   openDialogOpen = true;
@@ -40,7 +40,7 @@ DialogLocker::DialogLocker() {
 
 DialogLocker::~DialogLocker() {
   {
-    ScopedLock l(lock);
+    Lock l(lock);
     if (locked_) {
       openDialogOpen = false;
       modal = NULL;

@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_SELECTION__
 #define __REC_AUDIO_SOURCE_SELECTION__
 
-#include "rec/base/RealTime.h"
+#include "rec/base/Samples.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/DataListener.h"

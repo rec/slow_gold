@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_MOUSELISTENER__
 #define __REC_SLOW_MOUSELISTENER__
 
-#include "rec/base/RealTime.h"
+#include "rec/base/Samples.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/Listener.h"
@@ -35,9 +35,9 @@ class MouseListener : public HasInstance,
  private:
   Mode::Action getClickAction();
 
-  RealTime waveformDragStart_;
+  Samples<44100> waveformDragStart_;
   ModifierKeys dragMods_;
-  Range<RealTime> cursorDrag_;
+  Range<Samples<44100> > cursorDrag_;
   Mode mode_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MouseListener);

@@ -64,7 +64,7 @@ TypedEditable<Proto>* makeEditable(const VirtualFile* vf) {
   } else {
     key = ":empty:" + Proto::default_instance().GetTypeName();
   }
-  ScopedLock l(*editableMapLock());
+  Lock l(*editableMapLock());
   EditableMap::const_iterator i = editableMap()->find(key);
   TypedEditable<Proto>* e;
   if (i == editableMap()->end()) {

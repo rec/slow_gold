@@ -24,12 +24,12 @@ static const double ALMOST_ZERO = 0.5 / 360.0;
 const double DialComponent::PI = 3.14159265358979323846264;
 const double DialComponent::REDRAW_ANGLE = 2.0 * DialComponent::PI * 0.001;
 const double SMALLEST_REAL_LENGTH = 0.1;
-const RealTime SMALLEST_TIME_CHANGE = 0.001;
+const Samples<44100> SMALLEST_TIME_CHANGE = 44;
 
 DialComponent::DialComponent(const Dial& desc)
     : Component(str(desc.widget().name())),
       description_(desc),
-      time_(0.0),
+      time_(0),
       zeroAngle_(0.0),
       timeAngle_(0.0),
       timeRatio_(0.0) {
@@ -37,9 +37,9 @@ DialComponent::DialComponent(const Dial& desc)
 
 static const bool USE_CONTIGUOUS_SEGMENTS = true;
 
-void DialComponent::operator()(RealTime time) {
+void DialComponent::operator()(Samples<44100> time) {
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     if (false && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
       return;
 
@@ -47,7 +47,7 @@ void DialComponent::operator()(RealTime time) {
       return;
 
     time_ = time;
-    Range<RealTime> range;
+    Range<Samples<44100> > range;
 
     if (USE_CONTIGUOUS_SEGMENTS)
       range = audio::contiguousSelectionContaining(loops_, time);
@@ -82,14 +82,14 @@ void DialComponent::operator()(RealTime time) {
 }
 
 void DialComponent::onDataChange(const LoopPointList& lpl) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   loops_ = lpl;
   timeAngle_ = zeroAngle_ = 0.0;
 }
 
 
 void DialComponent::paint(Graphics& g) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
 
   Painter p(description_.widget(), &g);
   juce::Rectangle<int> bounds = gui::centerSquare(p.getBounds(this));

@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_STATUS_DIALCOMPONENT__
 #define __REC_WIDGET_STATUS_DIALCOMPONENT__
 
-#include "rec/base/RealTime.h"
+#include "rec/base/Samples.h"
 #include "rec/util/DataListener.h"
 #include "rec/util/Listener.h"
 #include "rec/util/LoopPoint.h"
@@ -14,12 +14,12 @@ namespace status {
 namespace time {
 
 class DialComponent : public Component,
-                      public Listener<RealTime>,
+                      public Listener<Samples<44100> >,
                       public DataListener<LoopPointList> {
  public:
   explicit DialComponent(const Dial& desc);
 
-  virtual void operator()(RealTime);
+  virtual void operator()(Samples<44100>);
 
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
@@ -36,8 +36,8 @@ class DialComponent : public Component,
   CriticalSection lock_;
   Dial description_;
 
-  RealTime time_;
-  RealTime length_;
+  Samples<44100> time_;
+  Samples<44100> length_;
   double zeroAngle_;
   double timeAngle_;
   double timeRatio_;

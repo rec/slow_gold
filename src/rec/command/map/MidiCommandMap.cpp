@@ -11,7 +11,7 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
                                                const juce::MidiMessage& msg) {
   Listener<const juce::MidiMessage&>* listener;
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     listener = listener_;
     listener_ = NULL;
 
@@ -26,12 +26,12 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
 }
 
 void MidiCommandMap::requestOneMessage(Listener<const juce::MidiMessage&>* lt) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   listener_ = lt;
 }
 
 void MidiCommandMap::setEnable(bool e) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   enable_ = e;
 }
 

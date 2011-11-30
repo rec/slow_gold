@@ -7,14 +7,14 @@ namespace audio {
 namespace source {
 
 void Stereo::setStereo(const StereoProto& desc) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   desc_ = desc;
 }
 
 void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   StereoProto desc;
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     desc = desc_;
   }
   StereoProto::Type type = desc.type();

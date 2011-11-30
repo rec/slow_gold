@@ -22,7 +22,7 @@ class CurrentFile : public HasInstance,
   virtual void operator()(const VirtualFile&);
 
   const VirtualFile virtualFile() const { Lock l(lock_); return file_; }
-  const RealTime length() const { Lock l(lock_); return length_; }
+  const Samples<44100> length() const { Lock l(lock_); return length_; }
 
  private:
   // Sets the current file but does not change the persistent data.
@@ -31,7 +31,7 @@ class CurrentFile : public HasInstance,
   CriticalSection lock_;
 
   VirtualFile file_;
-  RealTime length_;
+  Samples<44100> length_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 };
 

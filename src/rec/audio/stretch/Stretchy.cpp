@@ -19,17 +19,17 @@ Stretchy::Stretchy(Source* s) : Wrappy(s), strategy_(Stretch::NONE) {
 Stretchy::~Stretchy() {}
 
 int64 Stretchy::getTotalLength() const {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   return scale(source()->getTotalLength());
 }
 
 int64 Stretchy::getNextReadPosition() const {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   return scale(source()->getNextReadPosition());
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   source()->setNextReadPosition(static_cast<int64>(position / timeScale_));
 }
 
@@ -43,7 +43,7 @@ static Implementation* makeImplementation(Source* src, const Stretch& stretch) {
 }
 
 void Stretchy::setStretch(const stretch::Stretch& stretch) {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   channels_ = stretch.channels();
 
   static const double DELTA = 0.00001;

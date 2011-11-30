@@ -99,11 +99,11 @@ void protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\030rec/util/LoopPoint.proto\022\010rec.util\"K\n\t"
-    "LoopPoint\022\017\n\004time\030\001 \001(\001:\0010\022\020\n\010selected\030\002"
-    " \001(\010\022\014\n\004name\030\003 \001(\t\022\r\n\005notes\030\004 \001(\t\"H\n\rLoo"
-    "pPointList\022\'\n\nloop_point\030\001 \003(\0132\023.rec.uti"
-    "l.LoopPoint\022\016\n\006length\030\002 \001(\001", 187);
+    "\n\030rec/util/LoopPoint.proto\022\010rec.util\"H\n\t"
+    "LoopPoint\022\014\n\004time\030\001 \001(\004\022\020\n\010selected\030\002 \001("
+    "\010\022\014\n\004name\030\003 \001(\t\022\r\n\005notes\030\004 \001(\t\"H\n\rLoopPo"
+    "intList\022\'\n\nloop_point\030\001 \003(\0132\023.rec.util.L"
+    "oopPoint\022\016\n\006length\030\002 \001(\004", 184);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/LoopPoint.proto", &protobuf_RegisterTypes);
   LoopPoint::default_instance_ = new LoopPoint();
@@ -148,7 +148,7 @@ LoopPoint::LoopPoint(const LoopPoint& from)
 
 void LoopPoint::SharedCtor() {
   _cached_size_ = 0;
-  time_ = 0;
+  time_ = GOOGLE_ULONGLONG(0);
   selected_ = false;
   name_ = const_cast< ::std::string*>(&_default_name_);
   notes_ = const_cast< ::std::string*>(&_default_notes_);
@@ -192,7 +192,7 @@ LoopPoint* LoopPoint::New() const {
 
 void LoopPoint::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    time_ = 0;
+    time_ = GOOGLE_ULONGLONG(0);
     selected_ = false;
     if (_has_bit(2)) {
       if (name_ != &_default_name_) {
@@ -215,12 +215,12 @@ bool LoopPoint::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional double time = 1 [default = 0];
+      // optional uint64 time = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &time_)));
           _set_bit(0);
         } else {
@@ -298,9 +298,9 @@ bool LoopPoint::MergePartialFromCodedStream(
 
 void LoopPoint::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional double time = 1 [default = 0];
+  // optional uint64 time = 1;
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->time(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->time(), output);
   }
   
   // optional bool selected = 2;
@@ -334,9 +334,9 @@ void LoopPoint::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoopPoint::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional double time = 1 [default = 0];
+  // optional uint64 time = 1;
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->time(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->time(), target);
   }
   
   // optional bool selected = 2;
@@ -375,9 +375,11 @@ int LoopPoint::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional double time = 1 [default = 0];
+    // optional uint64 time = 1;
     if (has_time()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->time());
     }
     
     // optional bool selected = 2;
@@ -503,7 +505,7 @@ LoopPointList::LoopPointList(const LoopPointList& from)
 
 void LoopPointList::SharedCtor() {
   _cached_size_ = 0;
-  length_ = 0;
+  length_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -538,7 +540,7 @@ LoopPointList* LoopPointList::New() const {
 
 void LoopPointList::Clear() {
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    length_ = 0;
+    length_ = GOOGLE_ULONGLONG(0);
   }
   loop_point_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -562,17 +564,17 @@ bool LoopPointList::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_loop_point;
-        if (input->ExpectTag(17)) goto parse_length;
+        if (input->ExpectTag(16)) goto parse_length;
         break;
       }
       
-      // optional double length = 2;
+      // optional uint64 length = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_length:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &length_)));
           _set_bit(1);
         } else {
@@ -606,9 +608,9 @@ void LoopPointList::SerializeWithCachedSizes(
       1, this->loop_point(i), output);
   }
   
-  // optional double length = 2;
+  // optional uint64 length = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->length(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->length(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -626,9 +628,9 @@ void LoopPointList::SerializeWithCachedSizes(
         1, this->loop_point(i), target);
   }
   
-  // optional double length = 2;
+  // optional uint64 length = 2;
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->length(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->length(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -642,9 +644,11 @@ int LoopPointList::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // optional double length = 2;
+    // optional uint64 length = 2;
     if (has_length()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->length());
     }
     
   }

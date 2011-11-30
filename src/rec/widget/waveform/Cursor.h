@@ -16,28 +16,29 @@ namespace waveform {
 
 class Cursor : public Component, public Listener< Samples<44100> > {
  public:
-  Cursor(const CursorProto& d, Waveform* waveform, RealTime time, int index);
+  Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time, int index);
   virtual ~Cursor() {}
 
-  void setTime(RealTime time);
+  void setTime(Samples<44100> time);
   void paint(Graphics& g);
-  double getTime() const;
+  Samples<44100> getTime() const;
 
   bool isTimeCursor() const { return this == waveform_->timeCursor(); }
 
   const CursorProto& desc() const { return desc_; }
-  void setCursorBounds(double time, const juce::Rectangle<int>& waveformBounds);
+  void setCursorBounds(Samples<44100> time, const juce::Rectangle<int>& waveformBounds);
 
   virtual void operator()(Samples<44100> t);
 
   void setListeningToClock(bool b) { listeningToClock_ = b; }
   int index() { return index_; }
+  void layout();
 
  private:
   Waveform* const waveform_;
   CriticalSection lock_;
   CursorProto desc_;
-  RealTime time_;
+  Samples<44100> time_;
   const int index_;
   juce::Rectangle<int> bounds_;
   int dragX_;

@@ -17,11 +17,11 @@ class CurrentTime : public HasInstance,
  public:
   explicit CurrentTime(Instance* i) : HasInstance(i), time_(0), jumpTime_(-1) {}
 
-  virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
+  virtual void operator()(Samples<44100> t) { Lock l(lock_); time_ = t; }
 
   virtual void onDataChange(const LoopPointList&);
 
-  void setCursorTime(int index, RealTime time);
+  void setCursorTime(int index, Samples<44100> time);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
   Samples<44100> time() const { Lock l(lock_); return time_; }
   Samples<44100> jumpTime() const { Lock l(lock_); return jumpTime_; }

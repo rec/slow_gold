@@ -31,7 +31,7 @@ void CurrentTime::onDataChange(const LoopPointList& loops) {
   }
 }
 
-void CurrentTime::setCursorTime(int index, RealTime t) {
+void CurrentTime::setCursorTime(int index, Samples<44100> t) {
   if (index < 0) {
     jumpToTime(t);
   } else {
