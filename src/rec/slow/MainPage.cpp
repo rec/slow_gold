@@ -6,6 +6,7 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/Loops.h"
+#include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
@@ -66,6 +67,9 @@ MainPage::MainPage(Components* components, data::Editable* e)
   add(&mainPanel_, &navigationResizer_, 7.0);
 
   add(&mainPanel_, components->waveform_.get(), 50, -1.0, -0.5);
+  components->waveform_.get()->addAndMakeVisible(
+      components->modeSelector_.get());
+
   add(&mainPanel_, &waveformResizer_, 7.0);
 
   add(&mainPanel_, &playbackPanel_, 250, -1.0, -0.2);

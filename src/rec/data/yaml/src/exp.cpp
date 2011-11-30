@@ -6,7 +6,7 @@ namespace YAML
 {
 	namespace Exp
 	{
-		unsigned ParseHex(const std::string& str, const Mark& mark)
+		static unsigned ParseHex(const std::string& str, const Mark& mark)
 		{
 			unsigned value = 0;
 			for(std::size_t i=0;i<str.size();i++) {
@@ -27,7 +27,7 @@ namespace YAML
 			return value;
 		}
 
-		std::string Str(unsigned ch)
+		static std::string Str(unsigned ch)
 		{
 			return std::string(1, static_cast<char>(ch));
 		}
@@ -35,7 +35,7 @@ namespace YAML
 		// Escape
 		// . Translates the next 'codeLength' characters into a hex number and returns the result.
 		// . Throws if it's not actually hex.
-		std::string Escape(Stream& in, int codeLength)
+		static std::string Escape(Stream& in, int codeLength)
 		{
 			// grab string
 			std::string str;

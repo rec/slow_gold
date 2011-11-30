@@ -10,6 +10,8 @@
 using namespace juce;
 
 static const bool ENABLE_SHIFTS = false;
+static const int BUTTON_SIZE = 16;
+static const int PADDING = 4;
 
 namespace rec {
 namespace gui {
@@ -45,6 +47,8 @@ ModeSelector::ModeSelector()
   setImage<Crosshairs>(this, &setTime_, Mode::SET_TIME);
   setImage<PointingHand>(this, &toggleSelection_, Mode::TOGGLE_SELECTION);
   setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN);
+
+  setBounds(0, 0, 4 * BUTTON_SIZE + 5 * PADDING, BUTTON_SIZE + 2 * PADDING);
 }
 
 DrawableButton* ModeSelector::getButton(const Mode::Action& action) {

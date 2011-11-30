@@ -118,8 +118,9 @@ int getSelectionCount(const LoopPointList& loops) {
 }
 
 int getSegment(const LoopPointList& loops, Samples<44100> time) {
-  for (uint i = 1; ; ++i) {
-    if (i >= loops.loop_point_size() || time < loops.loop_point(i).time())
+  int size = loops.loop_point_size();
+  for (int i = 1; ; ++i) {
+    if (i >= size || time < static_cast<int64>(loops.loop_point(i).time()))
       return i - 1;
   }
 }
@@ -131,8 +132,10 @@ void toggleSelectionSegment(LoopPointList* loops, Samples<44100> time) {
 
 Range<Samples<44100> > contiguousSelectionContaining(const LoopPointList& lpl,
                                               Samples<44100> time) {
-  uint i = 1;
-  for (; i < lpl.loop_point_size() && time >= lpl.loop_point(i).time(); ++i);
+  int i = 1;
+  int size = lpl.loop_point_size();
+
+  for (; i < size && time >= static_cast<int64>(lpl.loop_point(i).time()); ++i);
   Range<Samples<44100> > range;
   if (lpl.loop_point(i - 1).selected()) {
     range.begin_ = lpl.loop_point(i - 1).time();
