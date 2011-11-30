@@ -6,7 +6,6 @@
 #include "rec/gui/SetterToggle.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/gui/audio/LevelMeter.h"
-#include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/DataListener.h"
 #include "rec/util/Mode.pb.h"
@@ -35,7 +34,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
   void clearLevels();
   LevelMeter* levelMeter() { return &levelMeter_; }
-  ModeSelector* modeSelector() { return &modeSelector_; }
 
  private:
   DataSlider<rec::audio::stretch::Stretch, double> playbackSpeed_;
@@ -53,7 +51,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   gui::SetterToggle<rec::audio::Gain> dimButton_;
 
   juce::ComboBox stereoComboBox_;
-  ModeSelector modeSelector_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(PlayerController);
 };

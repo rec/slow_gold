@@ -17,6 +17,15 @@ namespace audio {
 
 namespace {
 
+template <typename T>
+void setImage(ModeSelector* selector, DrawableButton* b, Mode::Action action) {
+  b->setImages(ptr<Drawable>(T::create()).get());
+  b->addListener(selector);
+  selector->addToLayout(b);
+  (*selector->buttonMap())[action] = b;
+}
+
+
 enum Sides {
   STEREO = 1, LEFT, RIGHT, LEFT_PLUS_RIGHT
 };
@@ -26,17 +35,16 @@ enum Sides {
 ModeSelector::ModeSelector()
     : Layout("ModeSelector", HORIZONTAL),
       drag_("Drag", DrawableButton::ImageFitted),
-      drawLoopPoints_("drawLoopPoints", DrawableButton::ImageFitted),
       setTime_("setTime", DrawableButton::ImageFitted),
       toggleSelection_("toggleSelection", DrawableButton::ImageFitted),
       zoomIn_("zoomIn", DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
 
-  setImage<DraggingHand>(&drag_, Mode::DRAG);
-  setImage<Pencil>(&drawLoopPoints_, Mode::DRAW_LOOP_POINTS);
-  setImage<Crosshairs>(&setTime_, Mode::SET_TIME);
-  setImage<PointingHand>(&toggleSelection_, Mode::TOGGLE_SELECTION);
-  setImage<ZoomIn>(&zoomIn_, Mode::ZOOM_IN);
+  setImage<DraggingHand>(this, &drag_, Mode::DRAG);
+  // setImage<Pencil>(this, &drawLoopPoints_, Mode::DRAW_LOOP_POINTS);
+  setImage<Crosshairs>(this, &setTime_, Mode::SET_TIME);
+  setImage<PointingHand>(this, &toggleSelection_, Mode::TOGGLE_SELECTION);
+  setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN);
 }
 
 DrawableButton* ModeSelector::getButton(const Mode::Action& action) {

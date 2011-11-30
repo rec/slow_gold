@@ -14,6 +14,7 @@
 #include "rec/util/Cuttable.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
+#include "rec/gui/audio/ModeSelector.h"
 
 namespace rec {
 namespace slow {
@@ -27,6 +28,7 @@ Components::Components(Instance* instance)
       transportController_(new gui::audio::TransportController),
       directoryTree_(new widget::tree::Root(instance->menus_.get())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
+      modeSelector_(new gui::audio::ModeSelector()),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {
   waveform_->setMenuBarModel(instance->menus_.get());
   setDefaultCuttable(loops_.get());

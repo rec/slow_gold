@@ -7,13 +7,14 @@ namespace rec {
 
 namespace gui { class SongData; }
 
-namespace gui { namespace audio { class Loops; }}
-namespace gui { namespace audio { class PlayerController; }}
-namespace gui { namespace audio { class TimeController; }}
-namespace gui { namespace audio { class TransportController; }}
+namespace gui { namespace audio { class Loops; } }
+namespace gui { namespace audio { class ModeSelector; } }
+namespace gui { namespace audio { class PlayerController; } }
+namespace gui { namespace audio { class TimeController; } }
+namespace gui { namespace audio { class TransportController; } }
 
-namespace widget { namespace tree { class Root; }}
-namespace widget { namespace waveform { class Waveform; }}
+namespace widget { namespace tree { class Root; } }
+namespace widget { namespace waveform { class Waveform; } }
 
 namespace slow {
 
@@ -36,6 +37,7 @@ public:
   ptr<widget::tree::Root> directoryTree_;
   ptr<widget::waveform::Waveform> waveform_;
 
+  ptr<gui::audio::ModeSelector> modeSelector_;
   ptr<MainPage> mainPage_;
 };
 

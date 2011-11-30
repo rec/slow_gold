@@ -19,26 +19,27 @@ class Cursor : public Component, public Listener< Samples<44100> > {
   Cursor(const CursorProto& d, Waveform* waveform, RealTime time, int index);
   virtual ~Cursor() {}
 
-  void setTime(RealTime time);
   void paint(Graphics& g);
   double getTime() const;
 
   bool isTimeCursor() const { return this == waveform_->timeCursor(); }
 
   const CursorProto& desc() const { return desc_; }
-  void setCursorBounds(double time, const juce::Rectangle<int>& waveformBounds);
+  void layout();
 
+  void setTime(RealTime);
   virtual void operator()(Samples<44100> t);
 
   void setListeningToClock(bool b) { listeningToClock_ = b; }
-  int index() { return index_; }
+
+  int index() const { return index_; }
 
  private:
   Waveform* const waveform_;
   CriticalSection lock_;
   CursorProto desc_;
+  int index_;
   RealTime time_;
-  const int index_;
   juce::Rectangle<int> bounds_;
   int dragX_;
   int mouseDragX_;

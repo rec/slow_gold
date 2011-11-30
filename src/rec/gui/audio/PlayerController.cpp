@@ -64,7 +64,6 @@ PlayerController::PlayerController()
   stereoComboBox_.addItem("Mono (Right)", RIGHT);
   stereoComboBox_.addListener(this);
 
-  addToLayout(&modeSelector_, 24);
   addToLayout(&stereoComboBox_, 18);
 
   static const int SLIDER_HEIGHT = 18;

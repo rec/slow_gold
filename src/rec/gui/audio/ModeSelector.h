@@ -24,23 +24,15 @@ class ModeSelector : public Layout,
   virtual void onDataChange(const Mode&);
   DrawableButton* getButton(const Mode::Action&);
 
+  typedef std::map<Mode::Action, DrawableButton*> ButtonMap;
+  ButtonMap* buttonMap() { return &buttons_; }
+
  private:
-  template <typename T>
-  void setImage(DrawableButton* b, Mode::Action action) {
-    b->setImages(ptr<Drawable>(T::create()).get());
-  	b->addListener(this);
-  	addToLayout(b);
-  	buttons_[action] = b;
-	}
-
-
   DrawableButton drag_;
-  DrawableButton drawLoopPoints_;
   DrawableButton setTime_;
   DrawableButton toggleSelection_;
   DrawableButton zoomIn_;
 
-  typedef std::map<Mode::Action, DrawableButton*> ButtonMap;
   ButtonMap buttons_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(ModeSelector);

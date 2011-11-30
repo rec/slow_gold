@@ -44,9 +44,9 @@ void CurrentTime::setCursorTime(int index, RealTime t) {
 void CurrentTime::jumpToTime(Samples<44100> pos) {
   using audio::util::FillableFrameBuffer;
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     if (!block::contains(timeSelection(), pos)) {
-      LOG(DFATAL) << "Tried to jump to position outside selection " << pos;
+      LOG(ERROR) << "Tried to jump to position outside selection " << pos;
       return;
     }
 

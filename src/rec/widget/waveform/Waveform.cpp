@@ -33,8 +33,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       thumbnail_(NULL),
       empty_(true) {
   setName("Waveform");
-
-  timeCursor_ = newCursor(*timeCursor, 0.0f, -1);
+  timeCursor_.reset(newCursor(*timeCursor, 0.0f, -1));
   desc_.set_selection_frame_in_seconds(0);  // TODO: what's this?
 
   setWantsKeyboardFocus(true);
@@ -42,13 +41,13 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 
 Cursor* Waveform::newCursor(const CursorProto& d, double time, int index) {
 	Cursor* cursor = new Cursor(d, this, time, index);
+  cursors_.push_back(cursor);
   addAndMakeVisible(cursor);
   return cursor;
 }
 
 Waveform::~Waveform() {
-  for (int i = getNumChildComponents() - 1; i >= 0; --i)
-    delete getChildComponent(i);
+  stl::deletePointers(&cursors_);
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {
@@ -147,22 +146,21 @@ void Waveform::onDataChange(const LoopPointList& loopPoints) {
 
 void Waveform::adjustCursors(const LoopPointList& loopPoints) {
   MessageManagerLock l;
-  int size = loopPoints.loop_point_size();
-  for (int i = 0; i < size; ++i) {
-    double time = loopPoints.loop_point(i).time();
-    bool needsNew = (i >= getNumChildComponents() - 1);
-    Cursor* c;
-    if (needsNew) {
-      c = newCursor(*defaultDesc, time, i);
-    } else {
-      Component* comp = getChildComponent(i + 1);
-      c = dynamic_cast<Cursor*>(comp);
-    }
-    c->setCursorBounds(time, getLocalBounds());
+  uint size = loopPoints.loop_point_size();
+
+  uint i = 0;
+  for (; i < size; ++i) {
+    RealTime t(loopPoints.loop_point(i).time());
+    if (i < cursors_.size())
+      cursors_[i]->setTime(t);
+    else
+      cursors_.push_back(newCursor(*defaultDesc, t, i));
   }
 
-  while (getNumChildComponents() > size + 1)
-    delete removeChildComponent(size + 1);
+  while (cursors_.size() > size) {
+    delete cursors_.back();
+    cursors_.pop_back();
+  }
 }
 
 void Waveform::onDataChange(const ZoomProto& zp) {
@@ -192,30 +190,18 @@ void Waveform::onDataChange(const Mode& mode) {
   setMouseCursor(getCursor(mode));
 }
 
-void Waveform::layoutCursors() {
-  {
-    Lock l(lock_);
-    for (int i = getNumChildComponents(); i > 0; --i) {
-      Component* comp = getChildComponent(i - 1);
-      if (comp->getName() == "Cursor") {
-        Cursor* c = dynamic_cast<Cursor*>(comp);
-        c->setCursorBounds(c->getTime(), getLocalBounds());
-      }
-    }
-  }
-  repaint();
-}
-
 void Waveform::resized() {
   MessageManagerLock l;
-  layoutCursors();
+  for (uint i = 0; i < cursors_.size(); ++i)
+    cursors_[i]->layout();
+
+  repaint();
 }
 
 RealTime Waveform::zoomEnd() const {
   Lock l(lock_);
   return zoom_.has_end() ? RealTime(zoom_.end()) : RealTime(length_);
 }
-
 
 Range<RealTime> Waveform::getTimeRange() const {
   Lock l(lock_);
