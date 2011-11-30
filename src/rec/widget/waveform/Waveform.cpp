@@ -41,8 +41,8 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 
 Cursor* Waveform::newCursor(const CursorProto& d, Samples<44100> time, int index) {
 	Cursor* cursor = new Cursor(d, this, time, index);
-  addAndMakeVisible(cursor);
   cursors_.push_back(cursor);
+  addAndMakeVisible(cursor);
   return cursor;
 }
 
@@ -146,22 +146,19 @@ void Waveform::onDataChange(const LoopPointList& loopPoints) {
 
 void Waveform::adjustCursors(const LoopPointList& loopPoints) {
   MessageManagerLock l;
-  int size = loopPoints.loop_point_size();
-  for (int i = 0; i < size; ++i) {
+  uint size = loopPoints.loop_point_size();
+  for (uint i = 0; i < size; ++i) {
     Samples<44100> time = loopPoints.loop_point(i).time();
-    bool needsNew = (i >= getNumChildComponents() - 1);
-    Cursor* c;
-    if (needsNew) {
-      c = newCursor(*defaultDesc, time, i);
-    } else {
-      Component* comp = getChildComponent(i + 1);
-      c = dynamic_cast<Cursor*>(comp);
-    }
+    Cursor* c = (i < cursors_.size()) ?
+      cursors_[i] : newCursor(*defaultDesc, time, i);
     c->setCursorBounds(time, getLocalBounds());
   }
 
-  while (getNumChildComponents() > size + 1)
-    delete removeChildComponent(size + 1);
+  while (cursors_.size() > size) {
+    removeChildComponent(cursors_.back());
+    delete cursors_.back();
+    cursors_.pop_back();
+  }
 }
 
 void Waveform::onDataChange(const ZoomProto& zp) {
@@ -192,21 +189,16 @@ void Waveform::onDataChange(const Mode& mode) {
 }
 
 void Waveform::layoutCursors() {
+  MessageManagerLock l;
   {
     Lock l(lock_);
-    for (int i = getNumChildComponents(); i > 0; --i) {
-      Component* comp = getChildComponent(i - 1);
-      if (comp->getName() == "Cursor") {
-        Cursor* c = dynamic_cast<Cursor*>(comp);
-        c->setCursorBounds(c->getTime(), getLocalBounds());
-      }
-    }
+    for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
+      (*i)->setCursorBounds((*i)->getTime(), getLocalBounds());
   }
   repaint();
 }
 
 void Waveform::resized() {
-  MessageManagerLock l;
   layoutCursors();
 }
 
