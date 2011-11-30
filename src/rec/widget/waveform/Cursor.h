@@ -19,14 +19,13 @@ class Cursor : public Component, public Listener< Samples<44100> > {
   Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time, int index);
   virtual ~Cursor() {}
 
-  void setTime(Samples<44100> time);
   void paint(Graphics& g);
   Samples<44100> getTime() const;
+  void setTime(Samples<44100> time);
 
-  bool isTimeCursor() const { return this == waveform_->timeCursor(); }
+  bool isTimeCursor() const { return (this == waveform_->timeCursor()); }
 
   const CursorProto& desc() const { return desc_; }
-  void setCursorBounds(Samples<44100> time);
 
   virtual void operator()(Samples<44100> t);
 

@@ -52,7 +52,6 @@ class Waveform : public gui::component::Focusable<Component>,
   virtual void onDataChange(const ZoomProto&);
 
   Cursor* timeCursor() { return timeCursor_; }
-  void layoutCursors();
 
   Range<Samples<44100> > getTimeRange() const;
   Samples<44100> xToTime(int x) const;

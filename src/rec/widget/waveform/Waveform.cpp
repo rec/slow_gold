@@ -151,7 +151,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
     Samples<44100> time = loopPoints.loop_point(i).time();
     Cursor* c = (i < cursors_.size()) ?
       cursors_[i] : newCursor(*defaultDesc, time, i);
-    c->setCursorBounds(time);
+    c->setTime(time);
   }
 
   while (cursors_.size() > size) {
@@ -188,18 +188,14 @@ void Waveform::onDataChange(const Mode& mode) {
   setMouseCursor(getCursor(mode));
 }
 
-void Waveform::layoutCursors() {
+void Waveform::resized() {
   MessageManagerLock l;
   {
     Lock l(lock_);
     for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
-      (*i)->setCursorBounds((*i)->getTime());
+      (*i)->layout();
   }
   repaint();
-}
-
-void Waveform::resized() {
-  layoutCursors();
 }
 
 Samples<44100> Waveform::zoomEnd() const {
