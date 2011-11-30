@@ -108,42 +108,42 @@ template <typename Proto>
 void apply(const VirtualFile& vf, void (*op)(Proto*)) {
   Proto p(get<Proto>(vf));
   op(&p);
-  set(p);
+  set(p, vf);
 }
 
 template <typename Proto, typename Value>
 void apply(const VirtualFile& vf, void (*op)(Proto*, Value), Value v) {
   Proto p(get<Proto>(vf));
   op(&p, v);
-  set(p);
+  set(p, vf);
 }
 
 template <typename Proto, typename V1, typename V2>
 void apply(const VirtualFile& vf, void (*op)(Proto*, V1, V2), V1 v1, V2 v2) {
   Proto p(get<Proto>(vf));
   op(&p, v1, v2);
-  set(p);
+  set(p, vf);
 }
 
 template <typename Proto, typename Operator>
 void apply(const VirtualFile& vf, Operator op) {
   Proto p(get<Proto>(vf));
   op(&p);
-  set(p);
+  set(p, vf);
 }
 
 template <typename Proto, typename Operator, typename Value>
 void apply(const VirtualFile& vf, Operator op, Value v) {
   Proto p(get<Proto>(vf));
   op(&p, v);
-  set(p);
+  set(p, vf);
 }
 
 template <typename Proto, typename Operator, typename V1, typename V2>
 void apply(const VirtualFile& vf, Operator op, V1 v1, V2 v2) {
   Proto p(get<Proto>(vf));
   op(&p, v1, v2);
-  set(p);
+  set(p, vf);
 }
 
 }  // namespace data

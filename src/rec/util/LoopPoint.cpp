@@ -126,6 +126,10 @@ int getSegment(const LoopPointList& loops, Samples<44100> time) {
 }
 
 void toggleSelectionSegment(LoopPointList* loops, Samples<44100> time) {
+  if (!(loops && loops->loop_point_size())) {
+    LOG(DFATAL) << "no loops";
+    return;
+  }
   LoopPoint* lp = loops->mutable_loop_point(getSegment(*loops, time));
   lp->set_selected(!lp->selected());
 }
