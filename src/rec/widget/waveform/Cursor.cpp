@@ -25,8 +25,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t, int i
 }
 
 void Cursor::setTime(Samples<44100> time) {
-  thread::callAsync(this, &Cursor::setCursorBounds, time,
-                    waveform_->getLocalBounds());
+  thread::callAsync(this, &Cursor::setCursorBounds, time);
 }
 
 Samples<44100> Cursor::getTime() const {
@@ -40,9 +39,8 @@ void Cursor::operator()(Samples<44100> t) {
     setTime(t);
 }
 
-void Cursor::setCursorBounds(Samples<44100> time,
-                             const juce::Rectangle<int>& waveformBounds) {
-  juce::Rectangle<int> bounds = waveformBounds;
+void Cursor::setCursorBounds(Samples<44100> time) {
+  juce::Rectangle<int> bounds = waveform_->getLocalBounds();
   int componentWidth = desc().component_width();
   int x = 0;
 

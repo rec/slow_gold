@@ -151,7 +151,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
     Samples<44100> time = loopPoints.loop_point(i).time();
     Cursor* c = (i < cursors_.size()) ?
       cursors_[i] : newCursor(*defaultDesc, time, i);
-    c->setCursorBounds(time, getLocalBounds());
+    c->setCursorBounds(time);
   }
 
   while (cursors_.size() > size) {
@@ -193,7 +193,7 @@ void Waveform::layoutCursors() {
   {
     Lock l(lock_);
     for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
-      (*i)->setCursorBounds((*i)->getTime(), getLocalBounds());
+      (*i)->setCursorBounds((*i)->getTime());
   }
   repaint();
 }
