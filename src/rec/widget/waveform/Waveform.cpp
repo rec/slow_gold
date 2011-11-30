@@ -34,7 +34,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       empty_(true) {
   setName("Waveform");
 
-  timeCursor_.reset(newCursor(*timeCursor, 0, -1));
+  timeCursor_ = newCursor(*timeCursor, 0, -1);
 
   setWantsKeyboardFocus(true);
 }
