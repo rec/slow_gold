@@ -69,7 +69,7 @@ class CommandDatabase {
     if (cr) {
       DCHECK(cr->command_) << commandName(command.type());
       if (cr->command_)
-        cr->command_->MergeFrom(Command(*cr->command_));
+        cr->command_->MergeFrom(command);
       return;
     }
 
@@ -198,12 +198,16 @@ class CommandDatabase {
     String category = str(cr->command_->category());
     bool hasInfo = desc.menu_size() && name.length();
 
-    DCHECK(hasInfo) << "no command " << desc.menu_size() << ", " << name.length();
     if (hasInfo) {
       int flags = 0;
       if (category == "" || category == "(None)")
         flags = ApplicationCommandInfo::hiddenFromKeyEditor;
       cr->info_.setInfo(str(desc.menu(0)), name, category, flags);
+    } else {
+      LOG(ERROR) << "no command " << commandName(id)
+                 << ", " << desc.menu_size()
+                 << ", " << name.length()
+                 << cr->command_->ShortDebugString();
     }
   }
 

@@ -34,7 +34,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       empty_(true) {
   setName("Waveform");
 
-  timeCursor_ = newCursor(*timeCursor, 0, -1);
+  timeCursor_.reset(newCursor(*timeCursor, 0, -1));
 
   setWantsKeyboardFocus(true);
 }
@@ -42,12 +42,12 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 Cursor* Waveform::newCursor(const CursorProto& d, Samples<44100> time, int index) {
 	Cursor* cursor = new Cursor(d, this, time, index);
   addAndMakeVisible(cursor);
+  cursors_.push_back(cursor);
   return cursor;
 }
 
 Waveform::~Waveform() {
-  for (int i = getNumChildComponents() - 1; i >= 0; --i)
-    delete getChildComponent(i);
+  stl::deletePointers(&cursors_);
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {
