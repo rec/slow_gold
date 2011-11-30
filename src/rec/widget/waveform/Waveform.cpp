@@ -95,8 +95,8 @@ void Waveform::drawWaveform(Painter& p, const Range<Samples<44100> >& range) {
 
     juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
-    Samples<44100> first = Samples<44100>(draw.first);
-    Samples<44100> second = Samples<44100>(draw.second);
+    double first = static_cast<double>(draw.first);
+    double second = static_cast<double>(draw.second);
     if (desc_.parallel_waveforms() ||
         desc_.layout() == WaveformProto::PARALLEL) {
       for (int i = 0; i < channels; ++i) {
@@ -120,7 +120,7 @@ Samples<44100> Waveform::xToTime(int x) const {
 }
 
 double Waveform::pixelsPerSample() const {
-  return getWidth() / getTimeRange().size();
+  return getWidth() / (1.0 * getTimeRange().size());
 }
 
 void Waveform::onDataChange(const WaveformProto& proto) {
@@ -237,7 +237,7 @@ Range<Samples<44100> > Waveform::getTimeRange() const {
 
   if (r.size() < SMALLEST_TIME_SAMPLES) {
   	Samples<44100> len = SMALLEST_TIME_SAMPLES;
-    if (thumbnail_) 
+    if (thumbnail_)
      len = static_cast<int64>(thumbnail_->getTotalLength() * 44100);
     r = Range<Samples<44100> >(0, len);
   }
@@ -259,11 +259,16 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
     LOG_FIRST_N(INFO, 4) << "Nothing on screen!";
     return;
   }
-  double units = pow(10.0, floor(log10(width)));
+  double units = 44100.0 * pow(10.0, floor(log10(width / 44100.0)));
 
   int b = static_cast<int>(ceil(r.begin_ / units));
   int e = static_cast<int>(r.end_ / units);
   int diff = e - b;
+
+  DLOG(INFO) << "range: " << str(r.toString())
+             << ", units: " << units
+             << ", b: " << b
+             << ", e: " << e;
 
   if (diff <= 2)
     units /= 2.0;
@@ -289,6 +294,7 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
   for (int i = b - 1; i <= e + 1; ++i) {
     Samples<44100> time = static_cast<int64>(i * units);
     int x = timeToX(time);
+    DLOG(INFO) << "grid: " << time << ", " << x;
 
     if (desc_.show_grid()) {
       g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
