@@ -14,7 +14,7 @@ using widget::waveform::ZoomProto;
 const int PRELOAD = 10000;
 
 static const double IDEAL_CURSOR_POSITION_RATIO = 0.10;
-static const double MAX_CURSOR_POSITION_RATIO_CHANGE = 0.005;
+static const double MIN_CURSOR_RATIO_CHANGE = 0.33;
 
 CurrentTime::CurrentTime(Instance* i)
     : HasInstance(i), time_(0), jumpTime_(-1), length_(0),
@@ -27,12 +27,12 @@ void CurrentTime::operator()(Samples<44100> t) {
 
   // Now compute an ideal zoom for this time.
   ZoomProto z = zoom_;
-  Samples<44100> w = z.end() - z.begin();
-  Samples<44100> off = static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * w);
+  Samples<44100> width = z.end() - z.begin();
+  Samples<44100> off = static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width);
   z.set_begin(t - off);
-  z.set_end(t + w - off);
+  z.set_end(t + width - off);
 
-  if (static_cast<int64>(z.end()) >= length_) {
+  if (z.end() >= length_) {
     z.set_begin(z.begin() - (z.end() - length_));
     z.set_end(length_);
   }
@@ -42,7 +42,8 @@ void CurrentTime::operator()(Samples<44100> t) {
     z.set_begin(0);
   }
 
-  DataListener<ZoomProto>::setProto(z);
+  if (abs(zoom_.begin() - z.begin()) > (width * MIN_CURSOR_RATIO_CHANGE))
+    DataListener<ZoomProto>::setProto(z);
 }
 
 void CurrentTime::onDataChange(const ZoomProto& zoom) {
