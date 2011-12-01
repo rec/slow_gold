@@ -9,6 +9,7 @@ namespace commands {
 
 Def<command::Commands> commands(
 "command { type: ADD_LOOP_POINT category: \"Loops\"}\n"
+  "command { type: ADD_LOOP_POINT_CLICK category: \"Loops\"}\n"
   "command { type: AUDIO_PREFERENCES category: \"Audio\"}\n"
   "command { type: CLEAR_LOOPS category: \"Loops\" }\n"
   "command { type: CLEAR_NAVIGATOR category: \"File\"}\n"
@@ -34,6 +35,8 @@ Def<command::Commands> commands(
   "command { type: TOGGLE_WHOLE_SONG_LOOP category: \"Selection\" }\n"
   "command { type: QUIT category: \"Application\"}\n"
   "command { type: UNDO category: \"Edit\"}\n"
+  "command { type: ZOOM_OUT category: \"Audio\"}\n"
+  "command { type: ZOOM_TO_SELECTION category: \"Audio\"}\n"
   " "
 );
 

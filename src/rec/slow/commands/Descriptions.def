@@ -6,6 +6,13 @@ command {
   }
 }
 command {
+  type: ADD_LOOP_POINT_CLICK
+  desc {
+    menu: "Add Loop Point By Clicking"
+    full: "Add a loop point by clicking on the waveform display."
+  }
+}
+command {
   type: AUDIO_PREFERENCES
   desc {
     menu: "Audio Preferences..."
@@ -258,5 +265,19 @@ command {
   desc {
     menu: "Unselect%s Segment%s"
     full: "Unselect%s segment%s"
+  }
+}
+command {
+  type: ZOOM_OUT
+  desc {
+    menu: "Zoom Out"
+    full: "Zoom out."
+  }
+}
+command {
+  type: ZOOM_TO_SELECTION
+  desc {
+    menu: "Zoom To Selection"
+    full: "Zoom to selection."
   }
 }

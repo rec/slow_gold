@@ -210,7 +210,7 @@ class CommandDatabase {
         flags = ApplicationCommandInfo::hiddenFromKeyEditor;
       cr->info_.setInfo(str(desc.menu(0)), name, category, flags);
     } else {
-      LOG(ERROR) << "no command " << commandName(id)
+      LOG(ERROR) << "No command " << commandName(id)
                  << ", " << desc.menu_size()
                  << ", " << name.length()
                  << cr->command_->ShortDebugString();
@@ -224,9 +224,9 @@ class CommandDatabase {
       CommandID id = i->first;
       CommandRecord* cr = i->second;
       if (!cr->command_)
-        LOG(DFATAL) << "No command " << commandName(id);
+        LOG(DFATAL) << "Empty command " << commandName(id);
       else if (!cr->callback_)
-        LOG(DFATAL) << "No callback " << commandName(id);
+        LOG(DFATAL) << "Empty callback " << commandName(id);
       else {
         fillOneCommandInfo(id, cr);
         continue;

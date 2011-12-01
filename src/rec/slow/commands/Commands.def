@@ -1,4 +1,5 @@
 command { type: ADD_LOOP_POINT category: "Loops"}
+command { type: ADD_LOOP_POINT_CLICK category: "Loops"}
 command { type: AUDIO_PREFERENCES category: "Audio"}
 command { type: CLEAR_LOOPS category: "Loops" }
 command { type: CLEAR_NAVIGATOR category: "File"}
@@ -24,3 +25,5 @@ command { type: TOGGLE_START_STOP category: "Transport"}
 command { type: TOGGLE_WHOLE_SONG_LOOP category: "Selection" }
 command { type: QUIT category: "Application"}
 command { type: UNDO category: "Edit"}
+command { type: ZOOM_OUT category: "Audio"}
+command { type: ZOOM_TO_SELECTION category: "Audio"}

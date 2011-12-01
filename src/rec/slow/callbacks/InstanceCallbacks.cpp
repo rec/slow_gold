@@ -27,7 +27,11 @@ namespace slow {
 namespace {
 
 void addLoopPoint(Instance* i) {
-  return audio::addLoopPointToEditable(i->file(), i->player_->getTime());
+  audio::addLoopPointToEditable(i->file(), i->player_->getTime());
+}
+
+void addLoopPointClick(Instance* i) {
+  // TODO
 }
 
 void nudgeVolumeDownOp(audio::Gain* gain) {
@@ -150,6 +154,11 @@ void zoomIn(Instance* i) {
 }
 
 void zoomOut(Instance* i) {
+  // TODO
+}
+
+void zoomToSelection(Instance* i) {
+  // TODO
 }
 
 void audioPreferences(Instance* i) {
@@ -182,6 +191,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   using rec::audio::source::Player;
 
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
+  addCallback(c, Command::ADD_LOOP_POINT_CLICK, addLoopPoint, i);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
   addCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
   addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
@@ -196,8 +206,8 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::QUIT, quit, i);
   addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
-  // addCallback(c, Command::ZOOM_IN, zoomIn, i);
-  // addCallback(c, Command::ZOOM_OUT, zoomOut, i);
+  addCallback(c, Command::ZOOM_OUT, zoomOut, i);
+  addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection, i);
 }
 
 }  // namespace slow

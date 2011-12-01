@@ -46,7 +46,8 @@ CommandBar::CommandBar()
   addToLayout(&zoomOut_, ICON_SIZE);
   addToLayout(&zoomToSelection_, ICON_SIZE);
 
-  setBounds(0, 0, 4 * BUTTON_SIZE + 5 * PADDING, BUTTON_SIZE + 2 * PADDING);
+  setBounds(0, BUTTON_SIZE + 4 * PADDING,
+            4 * BUTTON_SIZE + 5 * PADDING, BUTTON_SIZE + 2 * PADDING);
 
   // setImage<Pencil>(this, &drawLoopPoints_, Mode::DRAW_LOOP_POINTS);
 }

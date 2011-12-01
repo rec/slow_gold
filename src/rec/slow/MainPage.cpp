@@ -5,6 +5,7 @@
 #include "rec/base/ArraySize.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/gui/SongData.h"
+#include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/audio/PlayerController.h"
@@ -66,9 +67,10 @@ MainPage::MainPage(Components* components, data::Editable* e)
   add(&mainPanel_, &navigationPanel_, 500, -1.0, -0.8);
   add(&mainPanel_, &navigationResizer_, 7.0);
 
-  add(&mainPanel_, components->waveform_.get(), 50, -1.0, -0.5);
-  components->waveform_.get()->addAndMakeVisible(
-      components->modeSelector_.get());
+  Component* waveform = components->waveform_.get();
+  add(&mainPanel_, waveform, 50, -1.0, -0.5);
+  waveform->addAndMakeVisible(components->modeSelector_.get());
+  waveform->addAndMakeVisible(components->commandBar_.get());
 
   add(&mainPanel_, &waveformResizer_, 7.0);
 

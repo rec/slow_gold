@@ -30,6 +30,7 @@ Components::Components(Instance* instance)
       directoryTree_(new widget::tree::Root(instance->menus_.get())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
+      commandBar_(new gui::audio::CommandBar),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {
   waveform_->setMenuBarModel(instance->menus_.get());
   setDefaultCuttable(loops_.get());
