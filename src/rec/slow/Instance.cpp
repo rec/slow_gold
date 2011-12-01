@@ -6,6 +6,7 @@
 #include "rec/audio/source/FrameSource.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/audio/PlayerController.h"
+#include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/Components.h"
@@ -56,6 +57,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   // components_->mainPage_->dropBroadcaster()->addListener(currentFile_.get());
 
   components_->transportController_->addListener(target_->targetManager());
+  components_->commandBar_->addListener(target_->targetManager());
 
   player_->timeBroadcaster()->addListener(components_->timeController_.get());
   player_->timeBroadcaster()->addListener(waveform->timeCursor());

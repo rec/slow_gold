@@ -31,8 +31,6 @@ class TransportController : public Layout,
   void recalc();
 
   DrawableButton startStopButton_;
-  DrawableButton addLoopPointButton_;
-  DrawableButton zoomOutButton_;
 
   juce::Label filler_;
   Samples<44100> time_;

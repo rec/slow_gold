@@ -454,6 +454,9 @@
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp">
       <Filter>Slow\rec\data\yaml</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\CommandBar.cpp">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp">
       <Filter>Slow\rec\gui\audio</Filter>
     </ClCompile>
@@ -1128,6 +1131,9 @@
     <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\TickedDataSetter.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
@@ -1349,6 +1355,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h">
       <Filter>Slow\rec\data\yaml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\CommandBar.h">
+      <Filter>Slow\rec\gui\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h">
       <Filter>Slow\rec\gui\audio</Filter>

@@ -117,6 +117,7 @@
 		D3A5A8AFD0D1BADA746FAC82 = { isa = PBXBuildFile; fileRef = 942E7B2E41D48EB8180E2C24; };
 		096D9DB8C08A19837DC2F2B8 = { isa = PBXBuildFile; fileRef = 7555AAA03CF0439E105899A8; };
 		03FE0637A61E54758FC0CF3C = { isa = PBXBuildFile; fileRef = 78F73F6C8CE543B33B019CC7; };
+		AB0980DFCF4798615FDCFC94 = { isa = PBXBuildFile; fileRef = 774846DA2B2944B67224AF26; };
 		16D05B0CB822FCFC556A8E45 = { isa = PBXBuildFile; fileRef = 559D8FABCC9B428B7B4B8C3E; };
 		698CE9CFCBA6399D2E05E4CB = { isa = PBXBuildFile; fileRef = A91634BADED4A882FDE0B485; };
 		E995B88F48A2EB288EC482D2 = { isa = PBXBuildFile; fileRef = 7AB7A04185196A89700C120F; };
@@ -423,6 +424,7 @@
 		2578F41C76133E91A9EBDFDD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiName.h; path = ../../../../src/rec/command/map/MidiName.h; sourceTree = "SOURCE_ROOT"; };
 		D8B011CF05AE82F95C0D38EE = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TargetManager.cpp; path = ../../../../src/rec/command/TargetManager.cpp; sourceTree = "SOURCE_ROOT"; };
 		CB8B23C0F8C826C3E85425DC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TargetManager.h; path = ../../../../src/rec/command/TargetManager.h; sourceTree = "SOURCE_ROOT"; };
+		EA6098B36B56BF8BC08D3AF4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TickedDataSetter.h; path = ../../../../src/rec/command/TickedDataSetter.h; sourceTree = "SOURCE_ROOT"; };
 		E19158321F260DBCC2420226 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Address.cpp; path = ../../../../src/rec/data/Address.cpp; sourceTree = "SOURCE_ROOT"; };
 		306996540D2F52FAD0685FD9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Address.h; path = ../../../../src/rec/data/Address.h; sourceTree = "SOURCE_ROOT"; };
 		F0AA4D42B00AEBFD15907403 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Data.h; path = ../../../../src/rec/data/Data.h; sourceTree = "SOURCE_ROOT"; };
@@ -545,6 +547,8 @@
 		7555AAA03CF0439E105899A8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WriteYaml.cpp; path = ../../../../src/rec/data/yaml/WriteYaml.cpp; sourceTree = "SOURCE_ROOT"; };
 		8AC3E5A7FB15D9774012C40A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Yaml.h; path = ../../../../src/rec/data/yaml/Yaml.h; sourceTree = "SOURCE_ROOT"; };
 		78F73F6C8CE543B33B019CC7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Yaml_test.cpp"; path = "../../../../src/rec/data/yaml/Yaml_test.cpp"; sourceTree = "SOURCE_ROOT"; };
+		774846DA2B2944B67224AF26 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandBar.cpp; path = ../../../../src/rec/gui/audio/CommandBar.cpp; sourceTree = "SOURCE_ROOT"; };
+		F1ADA1892CB80F79104A6103 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandBar.h; path = ../../../../src/rec/gui/audio/CommandBar.h; sourceTree = "SOURCE_ROOT"; };
 		559D8FABCC9B428B7B4B8C3E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LevelMeter.cpp; path = ../../../../src/rec/gui/audio/LevelMeter.cpp; sourceTree = "SOURCE_ROOT"; };
 		01872B2F8BCE38C37572ADC2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LevelMeter.h; path = ../../../../src/rec/gui/audio/LevelMeter.h; sourceTree = "SOURCE_ROOT"; };
 		A91634BADED4A882FDE0B485 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Loops.cpp; path = ../../../../src/rec/gui/audio/Loops.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1043,7 +1047,8 @@
 				23F9F99A552D9BC2B4DBE0AB,
 				EE329D60F4EF3651FD82B8A3,
 				D8B011CF05AE82F95C0D38EE,
-				CB8B23C0F8C826C3E85425DC ); name = command; sourceTree = "<group>"; };
+				CB8B23C0F8C826C3E85425DC,
+				EA6098B36B56BF8BC08D3AF4 ); name = command; sourceTree = "<group>"; };
 		8544BE6615D289B0A6A6EA8E = { isa = PBXGroup; children = (
 				DB04452DC50DD31177FB6398,
 				A4DEAF714BB10D7F60D583A0,
@@ -1178,6 +1183,8 @@
 				1914D64C56BD4383BC8A6C44,
 				9D13522C94A0F37D4ABBF46C ); name = data; sourceTree = "<group>"; };
 		4332FB3F2F642B664F47A1BA = { isa = PBXGroup; children = (
+				774846DA2B2944B67224AF26,
+				F1ADA1892CB80F79104A6103,
 				559D8FABCC9B428B7B4B8C3E,
 				01872B2F8BCE38C37572ADC2,
 				A91634BADED4A882FDE0B485,
@@ -1600,7 +1607,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		48601ABC95F03736824F93C6 = { isa = PBXGroup; children = (
+		AEC9C6BB14E570988810F2EC = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1627,7 +1634,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				48601ABC95F03736824F93C6,
+				AEC9C6BB14E570988810F2EC,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1879,6 +1886,7 @@
 				D3A5A8AFD0D1BADA746FAC82,
 				096D9DB8C08A19837DC2F2B8,
 				03FE0637A61E54758FC0CF3C,
+				AB0980DFCF4798615FDCFC94,
 				16D05B0CB822FCFC556A8E45,
 				698CE9CFCBA6399D2E05E4CB,
 				E995B88F48A2EB288EC482D2,

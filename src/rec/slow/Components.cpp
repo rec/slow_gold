@@ -2,6 +2,7 @@
 
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/SongData.h"
+#include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"

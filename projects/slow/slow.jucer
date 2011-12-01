@@ -26,7 +26,7 @@
                    isDebug="1" name="Debug" optimisation="0" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="XdcKZttKo" name="Slow">
+  <MAINGROUP id="u7NCaM2GH" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -305,6 +305,8 @@
               name="TargetManager.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TargetManager.h" id="WW30iAqz4"
               name="TargetManager.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/TickedDataSetter.h" id="foru9xyEs"
+              name="TickedDataSetter.h" resource="0"/>
       </GROUP>
       <GROUP id="ZP5k1CoN4" name="data">
         <FILE compile="1" file="../../src/rec/data/Address.cpp" id="JC80G5YbX"
@@ -558,6 +560,10 @@
       </GROUP>
       <GROUP id="qetBKuVaN" name="gui">
         <GROUP id="lKLxI6b8U" name="audio">
+          <FILE compile="1" file="../../src/rec/gui/audio/CommandBar.cpp" id="lEcQbfcQJ"
+                name="CommandBar.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/audio/CommandBar.h" id="mM1NZEaNw"
+                name="CommandBar.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/LevelMeter.cpp" id="C0HxR90M5"
                 name="LevelMeter.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/LevelMeter.h" id="PtkpTBopw"
@@ -1281,7 +1287,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="bycA14mEZ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Bft6DY3l7" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

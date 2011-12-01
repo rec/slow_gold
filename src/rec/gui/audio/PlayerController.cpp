@@ -81,11 +81,9 @@ PlayerController::PlayerController()
   addToLayout(&levelMeter_);
 }
 
-#define ALLOWING_TIME_CHANGES !false
-
 void PlayerController::onDataChange(const Stretch& s) {
   MessageManagerLock l;
-  playbackSpeed_.setEnabled(ALLOWING_TIME_CHANGES && !s.time_disabled());
+  playbackSpeed_.setEnabled(!s.time_disabled());
 }
 
 void PlayerController::onDataChange(const StereoProto& stereo) {

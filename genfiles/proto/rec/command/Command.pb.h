@@ -43,6 +43,7 @@ class Mapping;
 enum Command_Type {
   Command_Type_NONE = 0,
   Command_Type_ADD_LOOP_POINT = 1,
+  Command_Type_ADD_LOOP_POINT_CLICK = 44,
   Command_Type_AUDIO_PREFERENCES = 2,
   Command_Type_CLEAR_NAVIGATOR = 3,
   Command_Type_CLEAR_LOOPS = 4,
@@ -85,7 +86,8 @@ enum Command_Type {
   Command_Type_UNSELECT = 38,
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
-  Command_Type_LAST_TYPE = 43,
+  Command_Type_ZOOM_TO_SELECTION = 45,
+  Command_Type_LAST_TYPE = 45,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -291,6 +293,7 @@ class Command : public ::google::protobuf::Message {
   typedef Command_Type Type;
   static const Type NONE = Command_Type_NONE;
   static const Type ADD_LOOP_POINT = Command_Type_ADD_LOOP_POINT;
+  static const Type ADD_LOOP_POINT_CLICK = Command_Type_ADD_LOOP_POINT_CLICK;
   static const Type AUDIO_PREFERENCES = Command_Type_AUDIO_PREFERENCES;
   static const Type CLEAR_NAVIGATOR = Command_Type_CLEAR_NAVIGATOR;
   static const Type CLEAR_LOOPS = Command_Type_CLEAR_LOOPS;
@@ -333,6 +336,7 @@ class Command : public ::google::protobuf::Message {
   static const Type UNSELECT = Command_Type_UNSELECT;
   static const Type ZOOM_IN = Command_Type_ZOOM_IN;
   static const Type ZOOM_OUT = Command_Type_ZOOM_OUT;
+  static const Type ZOOM_TO_SELECTION = Command_Type_ZOOM_TO_SELECTION;
   static const Type LAST_TYPE = Command_Type_LAST_TYPE;
   static const Type QUIT = Command_Type_QUIT;
   static const Type DEL = Command_Type_DEL;

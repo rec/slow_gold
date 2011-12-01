@@ -299,6 +299,7 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\command\TargetManager.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\TargetManager.h"/>
+          <File RelativePath="..\..\..\..\src\rec\command\TickedDataSetter.h"/>
         </Filter>
         <Filter Name="data">
           <File RelativePath="..\..\..\..\src\rec\data\Address.cpp"/>
@@ -433,6 +434,8 @@
         </Filter>
         <Filter Name="gui">
           <Filter Name="audio">
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\CommandBar.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\CommandBar.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>

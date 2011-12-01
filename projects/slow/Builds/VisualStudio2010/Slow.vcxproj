@@ -158,6 +158,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\stream.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\tag.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\CommandBar.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\ModeSelector.cpp"/>
@@ -384,6 +385,7 @@
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiName.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\TickedDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
@@ -458,6 +460,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\tag.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\token.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\CommandBar.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\Loops.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\ModeSelector.h"/>

@@ -14,6 +14,7 @@ message Command {
     NONE = 0;
 
     ADD_LOOP_POINT = 1;
+    ADD_LOOP_POINT_CLICK = 44;
     AUDIO_PREFERENCES = 2;
 
     CLEAR_NAVIGATOR = 3;
@@ -70,8 +71,9 @@ message Command {
 
     ZOOM_IN = 39;
     ZOOM_OUT = 40;
+    ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 43;
+    LAST_TYPE = 45;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

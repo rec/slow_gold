@@ -7,6 +7,7 @@ namespace rec {
 
 namespace gui { class SongData; }
 
+namespace gui { namespace audio { class CommandBar; } }
 namespace gui { namespace audio { class Loops; } }
 namespace gui { namespace audio { class ModeSelector; } }
 namespace gui { namespace audio { class PlayerController; } }
@@ -38,6 +39,7 @@ public:
   ptr<widget::waveform::Waveform> waveform_;
 
   ptr<gui::audio::ModeSelector> modeSelector_;
+  ptr<gui::audio::CommandBar> commandBar_;
   ptr<MainPage> mainPage_;
 };
 
