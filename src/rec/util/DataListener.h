@@ -58,6 +58,7 @@ class DataListener : public Listener<const Proto&>,
 
   virtual const data::Value getValue() const { return data()->getValue(address_); }
   virtual void setValue(const data::Value& v) { data()->setValue(v, address_); }
+  void setProto(const Proto& p) { data()->setValue(p, address_); }
 
  protected:
   virtual void setData(data::TypedEditable<Proto>* d);

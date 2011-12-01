@@ -8,12 +8,14 @@
 #include "rec/util/LoopPoint.h"
 #include "rec/util/DataListener.h"
 #include "rec/util/Listener.h"
+#include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
 namespace slow {
 
 class CurrentTime : public HasInstance,
                     public DataListener<LoopPointList>,
+                    public DataListener<widget::waveform::ZoomProto>,
                     public GlobalDataListener<GuiSettings>,
                     public Listener< Samples<44100> > {
  public:
@@ -23,6 +25,7 @@ class CurrentTime : public HasInstance,
   virtual void operator()(Samples<44100> t);
   virtual void onDataChange(const LoopPointList&);
   virtual void onDataChange(const GuiSettings&);
+  virtual void onDataChange(const widget::waveform::ZoomProto&);
 
   void setCursorTime(int index, Samples<44100> time);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
@@ -38,7 +41,9 @@ class CurrentTime : public HasInstance,
   block::BlockSet timeSelection_;
   Samples<44100> time_;
   Samples<44100> jumpTime_;
+  Samples<44100> length_;
   bool followCursor_;
+  widget::waveform::ZoomProto zoom_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentTime);
 };

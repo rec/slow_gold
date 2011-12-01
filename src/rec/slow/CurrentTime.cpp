@@ -9,18 +9,50 @@
 namespace rec {
 namespace slow {
 
+using widget::waveform::ZoomProto;
+
 const int PRELOAD = 10000;
 
+static const double IDEAL_CURSOR_POSITION_RATIO = 0.10;
+static const double MAX_CURSOR_POSITION_RATIO_CHANGE = 0.005;
+
 CurrentTime::CurrentTime(Instance* i)
-    : HasInstance(i), time_(0), jumpTime_(-1), followCursor_(false) {
+    : HasInstance(i), time_(0), jumpTime_(-1), length_(0),
+      followCursor_(false) {
 }
 
 void CurrentTime::operator()(Samples<44100> t) {
   Lock l(lock_);
   time_ = t;
+
+  // Now compute an ideal zoom for this time.
+  ZoomProto z = zoom_;
+  Samples<44100> w = z.end() - z.begin();
+  Samples<44100> off = static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * w);
+  z.set_begin(t - off);
+  z.set_end(t + w - off);
+
+  if (static_cast<int64>(z.end()) >= length_) {
+    z.set_begin(z.begin() - (z.end() - length_));
+    z.set_end(length_);
+  }
+
+  if (z.begin() < 0) {
+    z.set_end(z.end() - z.begin());
+    z.set_begin(0);
+  }
+
+  DataListener<ZoomProto>::setProto(z);
+}
+
+void CurrentTime::onDataChange(const ZoomProto& zoom) {
+  Lock l(lock_);
+  zoom_ = zoom;
 }
 
 void CurrentTime::onDataChange(const LoopPointList& loops) {
+  Lock l(lock_);
+  length_ = loops.length();
   if (loops.has_length()) {
     timeSelection_ = audio::getTimeSelection(loops);
     if (!timeSelection_.empty()) {

@@ -15,6 +15,8 @@ namespace data {
 
 namespace {
 
+static const int THREAD_SHUTDOWN_TIME = 10000;
+
 struct ThreadDesc {
   int priority_;
   int period_;
@@ -55,8 +57,8 @@ EditableUpdater::EditableUpdater(DefaultRegistry* registry)
 }
 
 EditableUpdater::~EditableUpdater() {
-  writeThread_->stopThread(1000);
-  updateThread_->stopThread(1000);
+  writeThread_->stopThread(THREAD_SHUTDOWN_TIME);
+  updateThread_->stopThread(THREAD_SHUTDOWN_TIME);
   stl::deleteMapPointers(&map_);
 }
 
