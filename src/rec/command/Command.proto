@@ -24,6 +24,7 @@ message Command {
     DIM_VOLUME_TOGGLE = 7;
 
     EJECT_CDS = 8;
+    FOLLOW_CURSOR = 43;
 
     INVERT_LOOP_SELECTION = 9;
 
@@ -70,7 +71,7 @@ message Command {
     ZOOM_IN = 39;
     ZOOM_OUT = 40;
 
-    LAST_TYPE = 42;
+    LAST_TYPE = 43;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

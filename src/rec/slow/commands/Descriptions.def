@@ -76,6 +76,13 @@ command {
   }
 }
 command {
+  type: FOLLOW_CURSOR
+  desc {
+    menu: "Follow Cursor"
+    full: "Always keep the time cursor in the window."
+  }
+}
+command {
   type: INVERT_LOOP_SELECTION
   desc {
     menu: "Invert Selection"

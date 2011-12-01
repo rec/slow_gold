@@ -3,6 +3,7 @@
 
 #include "rec/base/Samples.h"
 #include "rec/slow/HasInstance.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/DataListener.h"
@@ -13,13 +14,15 @@ namespace slow {
 
 class CurrentTime : public HasInstance,
                     public DataListener<LoopPointList>,
+                    public GlobalDataListener<GuiSettings>,
                     public Listener< Samples<44100> > {
  public:
-  explicit CurrentTime(Instance* i) : HasInstance(i), time_(0), jumpTime_(-1) {}
+  explicit CurrentTime(Instance* i);
+  virtual ~CurrentTime() {}
 
-  virtual void operator()(Samples<44100> t) { Lock l(lock_); time_ = t; }
-
+  virtual void operator()(Samples<44100> t);
   virtual void onDataChange(const LoopPointList&);
+  virtual void onDataChange(const GuiSettings&);
 
   void setCursorTime(int index, Samples<44100> time);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
@@ -35,6 +38,7 @@ class CurrentTime : public HasInstance,
   block::BlockSet timeSelection_;
   Samples<44100> time_;
   Samples<44100> jumpTime_;
+  bool followCursor_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentTime);
 };

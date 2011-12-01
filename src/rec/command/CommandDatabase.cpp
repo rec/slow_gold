@@ -7,6 +7,7 @@
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
 namespace rec {
@@ -139,6 +140,8 @@ class CommandDatabase {
   void insertSetters() {
     using widget::waveform::WaveformProto;
     using audio::stretch::Stretch;
+    using audio::stretch::Stretch;
+    using slow::GuiSettings;
 
     for (int i = 0; i < data_.setters().command_size(); ++i) {
       int id = data_.setters().command(i).type();
@@ -164,18 +167,21 @@ class CommandDatabase {
 
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
+      ptr<CommandItemSetter>& s = cr->setter_;
       if (id == Command::TOGGLE_GRID_DISPLAY ||
           id == Command::TOGGLE_PARALLEL_WAVEFORMS)
-        cr->setter_.reset(new TickedDataSetter<WaveformProto>(&cr->info_, ls, c, a, true));
+        s.reset(new TickedDataSetter<WaveformProto>(&cr->info_, ls, c, a, true));
       else if (id == Command::TOGGLE_STRETCH_ENABLE)
-        cr->setter_.reset(new TickedDataSetter<Stretch>(&cr->info_, ls, c, a, false));
+        s.reset(new TickedDataSetter<Stretch>(&cr->info_, ls, c, a, false));
+      else if (id == Command::FOLLOW_CURSOR)
+        s.reset(new TickedDataSetter<GuiSettings>(&cr->info_, ls, c, a, true));
 
-      if (!cr->setter_) {
+      if (!s) {
         LOG(DFATAL) << "Didn't understand " << commandName(id);
         continue;
       }
 
-      cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
+      cr->callback_.reset(thread::methodCallback(s.get(),
                                                  &CommandItemSetter::execute));
     }
   }

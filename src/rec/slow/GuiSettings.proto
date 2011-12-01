@@ -1,5 +1,6 @@
 package rec.slow;
 
 message GuiSettings {
+  optional bool follow_cursor = 1 [default = true];
   optional bool drop_adds_to_browser = 2 [default = true];
 };

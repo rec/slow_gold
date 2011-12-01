@@ -29,7 +29,8 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
       "rec/slow/GuiSettings.proto");
   GOOGLE_CHECK(file != NULL);
   GuiSettings_descriptor_ = file->message_type(0);
-  static const int GuiSettings_offsets_[1] = {
+  static const int GuiSettings_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, follow_cursor_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, drop_adds_to_browser_),
   };
   GuiSettings_reflection_ =
@@ -73,9 +74,9 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"1"
-    "\n\013GuiSettings\022\"\n\024drop_adds_to_browser\030\002 "
-    "\001(\010:\004true", 89);
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"N"
+    "\n\013GuiSettings\022\033\n\rfollow_cursor\030\001 \001(\010:\004tr"
+    "ue\022\"\n\024drop_adds_to_browser\030\002 \001(\010:\004true", 118);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -94,6 +95,7 @@ struct StaticDescriptorInitializer_rec_2fslow_2fGuiSettings_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int GuiSettings::kFollowCursorFieldNumber;
 const int GuiSettings::kDropAddsToBrowserFieldNumber;
 #endif  // !_MSC_VER
 
@@ -113,6 +115,7 @@ GuiSettings::GuiSettings(const GuiSettings& from)
 
 void GuiSettings::SharedCtor() {
   _cached_size_ = 0;
+  follow_cursor_ = true;
   drop_adds_to_browser_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -148,6 +151,7 @@ GuiSettings* GuiSettings::New() const {
 
 void GuiSettings::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    follow_cursor_ = true;
     drop_adds_to_browser_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -160,14 +164,30 @@ bool GuiSettings::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bool drop_adds_to_browser = 2 [default = true];
-      case 2: {
+      // optional bool follow_cursor = 1 [default = true];
+      case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &drop_adds_to_browser_)));
+                 input, &follow_cursor_)));
           _set_bit(0);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_drop_adds_to_browser;
+        break;
+      }
+      
+      // optional bool drop_adds_to_browser = 2 [default = true];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_drop_adds_to_browser:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &drop_adds_to_browser_)));
+          _set_bit(1);
         } else {
           goto handle_uninterpreted;
         }
@@ -193,8 +213,13 @@ bool GuiSettings::MergePartialFromCodedStream(
 
 void GuiSettings::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional bool drop_adds_to_browser = 2 [default = true];
+  // optional bool follow_cursor = 1 [default = true];
   if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->follow_cursor(), output);
+  }
+  
+  // optional bool drop_adds_to_browser = 2 [default = true];
+  if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->drop_adds_to_browser(), output);
   }
   
@@ -206,8 +231,13 @@ void GuiSettings::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* GuiSettings::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional bool drop_adds_to_browser = 2 [default = true];
+  // optional bool follow_cursor = 1 [default = true];
   if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->follow_cursor(), target);
+  }
+  
+  // optional bool drop_adds_to_browser = 2 [default = true];
+  if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->drop_adds_to_browser(), target);
   }
   
@@ -222,6 +252,11 @@ int GuiSettings::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional bool follow_cursor = 1 [default = true];
+    if (has_follow_cursor()) {
+      total_size += 1 + 1;
+    }
+    
     // optional bool drop_adds_to_browser = 2 [default = true];
     if (has_drop_adds_to_browser()) {
       total_size += 1 + 1;
@@ -255,6 +290,9 @@ void GuiSettings::MergeFrom(const GuiSettings& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
+      set_follow_cursor(from.follow_cursor());
+    }
+    if (from._has_bit(1)) {
       set_drop_adds_to_browser(from.drop_adds_to_browser());
     }
   }
@@ -280,6 +318,7 @@ bool GuiSettings::IsInitialized() const {
 
 void GuiSettings::Swap(GuiSettings* other) {
   if (other != this) {
+    std::swap(follow_cursor_, other->follow_cursor_);
     std::swap(drop_adds_to_browser_, other->drop_adds_to_browser_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

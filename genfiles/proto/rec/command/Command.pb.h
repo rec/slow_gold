@@ -50,6 +50,7 @@ enum Command_Type {
   Command_Type_CLOSE_FILE = 6,
   Command_Type_DIM_VOLUME_TOGGLE = 7,
   Command_Type_EJECT_CDS = 8,
+  Command_Type_FOLLOW_CURSOR = 43,
   Command_Type_INVERT_LOOP_SELECTION = 9,
   Command_Type_JUMP = 10,
   Command_Type_JUMP_SELECTED = 11,
@@ -84,7 +85,7 @@ enum Command_Type {
   Command_Type_UNSELECT = 38,
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
-  Command_Type_LAST_TYPE = 42,
+  Command_Type_LAST_TYPE = 43,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -297,6 +298,7 @@ class Command : public ::google::protobuf::Message {
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
   static const Type DIM_VOLUME_TOGGLE = Command_Type_DIM_VOLUME_TOGGLE;
   static const Type EJECT_CDS = Command_Type_EJECT_CDS;
+  static const Type FOLLOW_CURSOR = Command_Type_FOLLOW_CURSOR;
   static const Type INVERT_LOOP_SELECTION = Command_Type_INVERT_LOOP_SELECTION;
   static const Type JUMP = Command_Type_JUMP;
   static const Type JUMP_SELECTED = Command_Type_JUMP_SELECTED;

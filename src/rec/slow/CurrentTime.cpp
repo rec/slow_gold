@@ -11,6 +11,15 @@ namespace slow {
 
 const int PRELOAD = 10000;
 
+CurrentTime::CurrentTime(Instance* i)
+    : HasInstance(i), time_(0), jumpTime_(-1), followCursor_(false) {
+}
+
+void CurrentTime::operator()(Samples<44100> t) {
+  Lock l(lock_);
+  time_ = t;
+}
+
 void CurrentTime::onDataChange(const LoopPointList& loops) {
   if (loops.has_length()) {
     timeSelection_ = audio::getTimeSelection(loops);
@@ -29,6 +38,11 @@ void CurrentTime::onDataChange(const LoopPointList& loops) {
     timeSelection_.clear();
     jumpToTime(0);
   }
+}
+
+void CurrentTime::onDataChange(const GuiSettings& settings) {
+  Lock l(lock_);
+  followCursor_ = settings.follow_cursor();
 }
 
 void CurrentTime::setCursorTime(int index, Samples<44100> t) {

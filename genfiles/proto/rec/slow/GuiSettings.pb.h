@@ -91,6 +91,13 @@ class GuiSettings : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
+  // optional bool follow_cursor = 1 [default = true];
+  inline bool has_follow_cursor() const;
+  inline void clear_follow_cursor();
+  static const int kFollowCursorFieldNumber = 1;
+  inline bool follow_cursor() const;
+  inline void set_follow_cursor(bool value);
+  
   // optional bool drop_adds_to_browser = 2 [default = true];
   inline bool has_drop_adds_to_browser() const;
   inline void clear_drop_adds_to_browser();
@@ -103,12 +110,13 @@ class GuiSettings : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
+  bool follow_cursor_;
   bool drop_adds_to_browser_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -131,19 +139,35 @@ class GuiSettings : public ::google::protobuf::Message {
 
 // GuiSettings
 
+// optional bool follow_cursor = 1 [default = true];
+inline bool GuiSettings::has_follow_cursor() const {
+  return _has_bit(0);
+}
+inline void GuiSettings::clear_follow_cursor() {
+  follow_cursor_ = true;
+  _clear_bit(0);
+}
+inline bool GuiSettings::follow_cursor() const {
+  return follow_cursor_;
+}
+inline void GuiSettings::set_follow_cursor(bool value) {
+  _set_bit(0);
+  follow_cursor_ = value;
+}
+
 // optional bool drop_adds_to_browser = 2 [default = true];
 inline bool GuiSettings::has_drop_adds_to_browser() const {
-  return _has_bit(0);
+  return _has_bit(1);
 }
 inline void GuiSettings::clear_drop_adds_to_browser() {
   drop_adds_to_browser_ = true;
-  _clear_bit(0);
+  _clear_bit(1);
 }
 inline bool GuiSettings::drop_adds_to_browser() const {
   return drop_adds_to_browser_;
 }
 inline void GuiSettings::set_drop_adds_to_browser(bool value) {
-  _set_bit(0);
+  _set_bit(1);
   drop_adds_to_browser_ = value;
 }
 

@@ -1,20 +1,23 @@
 command {
+  type: FOLLOW_CURSOR
+  is_global_setter: true
+  address { part: { name: "follow_cursor" } }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
   type: TOGGLE_GRID_DISPLAY
-  category: "Transport"
   is_global_setter: true
   address { part: { name: "show_grid" } }
   setter_type_name: "rec.widget.Waveform"
 }
 command {
   type: TOGGLE_PARALLEL_WAVEFORMS
-  category: "Transport"
   is_global_setter: true
   address { part: { name: "parallel_waveforms" } }
   setter_type_name: "rec.widget.Waveform"
 }
 command {
   type: TOGGLE_STRETCH_ENABLE
-  category: "Audio"
   is_setter: true
   address { part: { name: "disabled" } }
   setter_type_name: "rec.audio.stretch.Stretch"
