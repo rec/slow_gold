@@ -17,7 +17,7 @@ namespace waveform {
 class Cursor : public Component, public Listener< Samples<44100> > {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time, int index);
-  virtual ~Cursor() {}
+  virtual ~Cursor();
 
   void paint(Graphics& g);
   Samples<44100> getTime() const;

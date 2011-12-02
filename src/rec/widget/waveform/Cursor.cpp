@@ -22,10 +22,14 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t, int i
       index_(index),
       listeningToClock_(true) {
   desc_.mutable_widget()->set_transparent(true);
-  waveform_->addChildComponent(this);
+  waveform_->addChildComponent(this, 0);
 
   setTime(t);
   setRepaintsOnMouseActivity(true);
+}
+
+Cursor::~Cursor() {
+  waveform_->removeChildComponent(this);
 }
 
 Samples<44100> Cursor::getTime() const {

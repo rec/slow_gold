@@ -7,7 +7,7 @@ namespace waveform {
 
 namespace {
 
-static const int64 SMALLEST_TIME_SAMPLES = 4 * 44100;
+static const int64 SMALLEST_TIME_SAMPLES = 100 * 441;
 static const double POWER = 4.0;
 static const double ZOOM_INCREMENT = 0.3;
 

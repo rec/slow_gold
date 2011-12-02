@@ -35,7 +35,6 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       thumbnail_(NULL),
       empty_(true) {
   setName("Waveform");
-
   timeCursor_ = newCursor(*timeCursor, 0, -1);
 
   setWantsKeyboardFocus(true);
@@ -157,7 +156,6 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
   }
 
   while (cursors_.size() > size) {
-    removeChildComponent(cursors_.back());
     delete cursors_.back();
     cursors_.pop_back();
   }
@@ -246,38 +244,40 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
 void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
   Samples<44100> width = r.size();
   if (width < SMALLEST_TIME_SAMPLES) {
-    LOG_FIRST_N(INFO, 4) << "Nothing on screen!";
+    LOG_FIRST_N(ERROR, 4) << "Nothing on screen!";
     return;
   }
-  double units = 44100.0 * pow(10.0, floor(log10(width / 44100.0)));
+  double seconds = pow(10.0, floor(log10(width / 44100.0)));
+  double samples = seconds * 44100.0;
 
-  int b = static_cast<int>(ceil(r.begin_ / units));
-  int e = static_cast<int>(r.end_ / units);
+  int b = static_cast<int>(ceil(r.begin_ / samples));
+  int e = static_cast<int>(r.end_ / samples);
   int diff = e - b;
 
   if (diff <= 2)
-    units /= 2.0;
+    samples /= 2.0;
   else if (diff > 15)
-    units *= 5.0;
+    samples *= 5.0;
 
-  if (units > 10.0)
-    units *= 1.2;
+  if (samples > 10.0 * 44100)
+    samples *= 1.2;
 
-  b = static_cast<int>(ceil(r.begin_ / units));
-  e = static_cast<int>(floor(r.end_ / units));
+  b = static_cast<int>(ceil(r.begin_ / samples));
+  e = static_cast<int>(floor(r.end_ / samples));
+
   int h = getHeight();
   int decimals = 0;
-  if (units < 0.01)
+  if (samples < 0.01 * 44100.0)
     decimals = 3;
-  else if (units < 0.1)
+  else if (samples < 0.1 * 44100.0)
     decimals = 2;
-  else if (units < 1)
+  else if (samples < 1 * 44100.0)
     decimals = 1;
 
   g.setFont(10);
 
   for (int i = b - 1; i <= e + 1; ++i) {
-    Samples<44100> time = static_cast<int64>(i * units);
+    Samples<44100> time = static_cast<int64>(i * samples);
     int x = timeToX(time);
 
     if (desc_.show_grid()) {

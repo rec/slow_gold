@@ -36,7 +36,7 @@ void toggleSelectionSegment(const VirtualFile& file, Samples<44100> time) {
   data::apply(file, &audio::toggleSelectionSegment, time);
 }
 
-static const double WHEEL_RATIO = 1.0;
+static const double WHEEL_RATIO = 2.0;
 static const double SMALL_RATIO = 0.1;
 static const double BIG_RATIO = 2.0;
 

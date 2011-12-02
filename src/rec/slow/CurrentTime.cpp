@@ -81,7 +81,7 @@ void CurrentTime::onDataChange(const LoopPointList& loops) {
 
 void CurrentTime::onDataChange(const GuiSettings& settings) {
   Lock l(lock_);
-  followCursor_ = false && settings.follow_cursor();
+  followCursor_ = settings.follow_cursor();
 }
 
 void CurrentTime::setCursorTime(int index, Samples<44100> t) {
