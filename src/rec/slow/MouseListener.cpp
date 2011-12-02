@@ -12,6 +12,7 @@
 #include "rec/util/Math.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
+#include "rec/widget/waveform/OutlinedCursorLabel.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Zoom.h"
 
@@ -31,6 +32,8 @@ MouseListener::MouseListener(Instance* i)
 }
 
 namespace {
+
+typedef widget::waveform::OutlinedCursorLabel Label;
 
 void toggleSelectionSegment(const VirtualFile& file, Samples<44100> time) {
   data::apply(file, &audio::toggleSelectionSegment, time);
@@ -78,81 +81,102 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
   }
 }
 
+void MouseListener::addLoopPoint(Samples<44100> time) {
+  audio::addLoopPointToEditable(file(), time);
+  toggleAddLoopPointMode();
+}
+
+void MouseListener::clickWaveform(const MouseEvent& e, Waveform* waveform) {
+  Samples<44100> time = waveform->xToTime(e.x);
+  dragMods_ = e.mods;
+  Mode::Action action = getClickAction();
+  if (action == Mode::DRAG)
+    waveformDragStart_ = DataListener<ZoomProto>::data()->get().begin();
+
+  else if (action == Mode::DRAW_LOOP_POINTS)
+    addLoopPoint(time);
+
+  else if (action == Mode::TOGGLE_SELECTION)
+    toggleSelectionSegment(file(), time);
+
+  else if (action == Mode::SET_TIME)
+    currentTime()->jumpToTime(time);
+
+  else if (action == Mode::ZOOM_IN)
+    zoom(*instance_, e, time, 1);
+
+  else if (action == Mode::ZOOM_OUT)
+    zoom(*instance_, e, time, -1);
+
+  else
+    DCHECK(false);
+
+  waveform->grabKeyboardFocus();
+  // TODO: check to make sure they don't change shift during the drag...
+}
+
 void MouseListener::mouseDown(const MouseEvent& e) {
   Waveform* waveform = components()->waveform_.get();
-  if (e.eventComponent == waveform) {
-    Samples<44100> time = waveform->xToTime(e.x);
-    dragMods_ = e.mods;
-    Mode::Action action = getClickAction();
-    if (action == Mode::DRAG) {
-      waveformDragStart_ = DataListener<ZoomProto>::data()->get().begin();
+  if (e.eventComponent == waveform)
+    clickWaveform(e, waveform);
 
-    } else if (action == Mode::DRAW_LOOP_POINTS) {
-      audio::addLoopPointToEditable(file(), time);
-      toggleAddLoopPointMode();
+  else if (Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent))
+    clickCursor(cursor);
 
-    } else if (action == Mode::TOGGLE_SELECTION) {
-      toggleSelectionSegment(file(), time);
+  else if (Label* label = dynamic_cast<Label*>(e.eventComponent))
+    clickCursor(label->getCursor());
+}
 
-    } else if (action == Mode::SET_TIME) {
-      currentTime()->jumpToTime(time);
+void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
+  int i = cursor->index();
+  if (i >= 0) {
+    LoopPointList loops = data::get<LoopPointList>(file());
+    cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0;
+    cursorDrag_.end_ = (i == loops.loop_point_size()) ?
+      Samples<44100>(loops.loop_point(i + 1).time()) : Samples<44100>(loops.length());
+  }
+}
 
-    } else if (action == Mode::ZOOM_IN) {
-      zoom(*instance_, e, time, 1);
+void MouseListener::dragCursor(const MouseEvent& e,
+                               widget::waveform::Cursor* cursor) {
+  Waveform* waveform = cursor->waveform();
+  components()->waveform_->setIsDraggingCursor(true);
+  if (!near(cursor->getTime(), 0, 44)) {
+    Samples<44100> t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
+    cursor->setTime(t);
+    currentTime()->setCursorTime(cursor->index(), t);
+  }
+}
 
-    } else if (action == Mode::ZOOM_OUT) {
-      zoom(*instance_, e, time, -1);
+void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
+  Mode::Action action = getClickAction();
+  if (action == Mode::DRAG) {
+    Samples<44100> dt = static_cast<int64>(e.getDistanceFromDragStartX() /
+                                           waveform->pixelsPerSample());
+    widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::data()->get());
+    Samples<44100> len = length();
+    Samples<44100> end = zoom.has_end() ? Samples<44100>(zoom.end()) : len;
+    Samples<44100> size = end - zoom.begin();
+    Samples<44100> begin = std::max(waveformDragStart_ - dt, Samples<44100>(0));
+    Samples<44100> e2 = std::min(len, begin + size);
+    zoom.set_begin(e2 - size);
+    zoom.set_end(end);
 
-    } else {
-      DCHECK(false);
-    }
-
-    waveform->grabKeyboardFocus();
-    waveform->repaint();  // TODO: can remove now?
-    // TODO: check to make sure they don't change shift during the drag...
-
-  } else if (e.eventComponent->getName() == "Cursor") {
-    Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
-    int i = cursor->index();
-    if (i >= 0) {
-      LoopPointList loops = data::get<LoopPointList>(file());
-      cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0;
-      cursorDrag_.end_ = (i == loops.loop_point_size()) ?
-        Samples<44100>(loops.loop_point(i + 1).time()) : Samples<44100>(loops.length());
-    }
+    zoom.set_end(zoom.begin() + size);
+    DataListener<widget::waveform::ZoomProto>::data()->setValue(zoom);
   }
 }
 
 void MouseListener::mouseDrag(const MouseEvent& e) {
   Waveform* waveform = components()->waveform_.get();
-  if (e.eventComponent == waveform) {
-    Mode::Action action = getClickAction();
-    if (action == Mode::DRAG) {
-      Samples<44100> dt = static_cast<int64>(e.getDistanceFromDragStartX() /
-                                             waveform->pixelsPerSample());
-      widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::data()->get());
-      Samples<44100> len = length();
-      Samples<44100> end = zoom.has_end() ? Samples<44100>(zoom.end()) : len;
-      Samples<44100> size = end - zoom.begin();
-      Samples<44100> begin = std::max(waveformDragStart_ - dt, Samples<44100>(0));
-      Samples<44100> e2 = std::min(len, begin + size);
-      zoom.set_begin(e2 - size);
-      zoom.set_end(end);
+  if (e.eventComponent == waveform)
+    dragWaveform(e, waveform);
 
-      zoom.set_end(zoom.begin() + size);
-      DataListener<widget::waveform::ZoomProto>::data()->setValue(zoom);
-    }
+  else if (Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent))
+    dragCursor(e, cursor);
 
-  } else if (e.eventComponent->getName() == "Cursor") {
-    components()->waveform_->setIsDraggingCursor(true);
-
-    Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
-    if (!near(cursor->getTime(), 0, 44)) {
-      Samples<44100> t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
-      cursor->setTime(t);
-      currentTime()->setCursorTime(cursor->index(), t);
-    }
-  }
+  else if (Label* label = dynamic_cast<Label*>(e.eventComponent))
+    dragCursor(e, label->getCursor());
 }
 
 void MouseListener::mouseUp(const MouseEvent& e) {

@@ -32,7 +32,6 @@ Components::Components(Instance* instance)
       modeSelector_(new gui::audio::ModeSelector()),
       commandBar_(new gui::audio::CommandBar),
       mainPage_(new MainPage(this, data::editable<AppLayout>())) {
-  waveform_->setMenuBarModel(instance->menus_.get());
   setDefaultCuttable(loops_.get());
 }
 

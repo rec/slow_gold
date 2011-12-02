@@ -8,7 +8,7 @@ static const float INSET = 1.0f;
 static const float CORNER = 3.0f;
 static const float LINE_WIDTH = 0.6f;
 
-void OutlinedCursorLabel::paintOverChildren(Graphics& g) {
+void OutlinedCursorLabel::paint(Graphics& g) {
   juce::Rectangle<int> bounds = getLocalBounds();
   juce::Rectangle<float> b;
   b.setX(INSET);

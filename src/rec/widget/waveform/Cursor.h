@@ -5,7 +5,6 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/gui/Geometry.h"
-#include "rec/gui/SimpleLabel.h"
 #include "rec/util/Listener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
@@ -14,6 +13,8 @@
 namespace rec {
 namespace widget {
 namespace waveform {
+
+class OutlinedCursorLabel;
 
 class Cursor : public Component,
                public Listener< Samples<44100> >,
@@ -37,6 +38,7 @@ class Cursor : public Component,
   int index() { return index_; }
   void layout();
   void setCaption(const String&);
+  Waveform* waveform() const { return waveform_; }
 
  private:
   Waveform* const waveform_;
@@ -47,7 +49,7 @@ class Cursor : public Component,
   juce::Rectangle<int> bounds_;
   int dragX_;
   int mouseDragX_;
-  ptr<gui::SimpleLabel> caption_;
+  ptr<OutlinedCursorLabel> caption_;
   int captionWidth_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);

@@ -12,7 +12,9 @@
 namespace rec {
 
 namespace util { class Mode; }
-namespace widget { namespace waveform { struct MouseWheelEvent; }}
+namespace widget { namespace waveform { struct Cursor; } }
+namespace widget { namespace waveform { struct MouseWheelEvent; } }
+namespace widget { namespace waveform { struct Waveform; } }
 
 namespace slow {
 
@@ -34,6 +36,12 @@ class MouseListener : public HasInstance,
   void toggleAddLoopPointMode();
 
  private:
+  void clickWaveform(const MouseEvent&, widget::waveform::Waveform*);
+  void dragWaveform(const MouseEvent&, widget::waveform::Waveform*);
+  void addLoopPoint(Samples<44100>);
+  void clickCursor(widget::waveform::Cursor*);
+  void dragCursor(const MouseEvent&, widget::waveform::Cursor*);
+
   Mode::Action getClickAction();
 
   Samples<44100> waveformDragStart_;

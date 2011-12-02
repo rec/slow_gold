@@ -14,8 +14,7 @@ class OutlinedCursorLabel : public gui::SimpleLabel {
   explicit OutlinedCursorLabel(Cursor *cursor) : cursor_(cursor) {}
   virtual ~OutlinedCursorLabel() {}
 
-  virtual void paint(Graphics& g) {}
-  virtual void paintOverChildren(Graphics& g);
+  virtual void paint(Graphics&);
 
   Cursor* getCursor() const { return cursor_; }
 

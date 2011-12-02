@@ -5,7 +5,6 @@
 
 #include "rec/base/Samples.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/gui/component/Focusable.h"
 #include "rec/util/DataListener.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
@@ -27,7 +26,7 @@ struct MouseWheelEvent;
 struct TimeAndMouseEvent;
 
 // This handles waveform display of a juce::AudioThumbnail.
-class Waveform : public gui::component::Focusable<Component>,
+class Waveform : public Component,
                  public DataListener<LoopPointList>,
                  public DataListener<Mode>,
                  public GlobalDataListener<WaveformProto>,

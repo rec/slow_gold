@@ -33,15 +33,12 @@ Def<CursorProto> defaultDesc(
 }  // namespace
 
 Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
-    : gui::component::Focusable<Component>(m),
-      length_(0),
+    : length_(0),
       thumbnail_(NULL),
       empty_(true),
       isDraggingCursor_(false) {
   setName("Waveform");
   timeCursor_.reset(new Cursor(*timeCursor, this, 0, -1, true));
-
-  setWantsKeyboardFocus(true);
 }
 
 Waveform::~Waveform() {
@@ -67,7 +64,6 @@ void Waveform::paint(Graphics& g) {
       drawGrid(g, range);
     }
   }
-  paintFocus(g);
 }
 
 void Waveform::drawWaveform(Painter& p, const Range<Samples<44100> >& range) {
