@@ -37,21 +37,15 @@ void toggleSelectionSegment(const VirtualFile& file, Samples<44100> time) {
 }
 
 static const double WHEEL_RATIO = 1.0;
-static const double POWER = 4.0;
 static const double SMALL_RATIO = 0.1;
 static const double BIG_RATIO = 2.0;
 static const double ZOOM_INCREMENT = 0.3;
-
-double zoomFunction(double increment) {
-  return pow(POWER, -increment);
-}
 
 void zoom(const Instance& instance, const MouseEvent& e,
           Samples<44100> time, double increment) {
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
-  double z = zoomFunction(s * increment);
-  widget::waveform::zoom(instance.file(), instance.length(), time, z);
+  widget::waveform::zoom(instance.file(), instance.length(), time, s);
 }
 
 }  // namespace

@@ -20,11 +20,14 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
+#include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
 namespace slow {
 
 namespace {
+
+static const double ZOOM_INCREMENT = 0.3;
 
 void addLoopPoint(Instance* i) {
   audio::addLoopPointToEditable(i->file(), i->player_->getTime());
@@ -150,11 +153,8 @@ void treeRight(Instance* i) {
 void treeUp(Instance* i) {
 }
 
-void zoomIn(Instance* i) {
-}
-
 void zoomOut(Instance* i) {
-  // TODO
+  widget::waveform::zoom(i->file(), i->length(), -ZOOM_INCREMENT);
 }
 
 void zoomToSelection(Instance* i) {
