@@ -24,24 +24,19 @@ TransformController::TransformController()
     : Layout("TransformController", VERTICAL),
       playbackSpeed_("Speed", Address("time_percent")),
       pitchScale_("Pitch", Address("semitone_shift")),
-      fineScale_("Tune", Address("detune_cents")),
-      level_("Gain", Address("gain")),
-      muteButton_("Mute", Address("mute")) {
+      fineScale_("Tune", Address("detune_cents")) {
   playbackSpeed_.slider()->setRange(0.5, 200.0, 1.0);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
-  level_.slider()->setRange(-36.0, +12.0, 0.1);
 
   playbackSpeed_.slider()->setDetent(100.0f);
   playbackSpeed_.slider()->setDetentRadius(0.008f);  // TODO: Why so small?
   pitchScale_.slider()->setDetent(0.0f);
   fineScale_.slider()->setDetent(0.0f);
-  level_.slider()->setDetent(0.0f);
 
   playbackSpeed_.slider()->setTextValueSuffix("%");
   pitchScale_.slider()->setTextValueSuffix(" semitones");
   fineScale_.slider()->setTextValueSuffix(" cents");
-  level_.slider()->setTextValueSuffix(" dB");
 
   pitchScale_.setEnabled(ENABLE_SHIFTS);
   fineScale_.setEnabled(ENABLE_SHIFTS);
@@ -62,11 +57,6 @@ TransformController::TransformController()
   addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
   addToLayout(&pitchScale_, SLIDER_HEIGHT);
   addToLayout(&fineScale_, SLIDER_HEIGHT);
-
-  addToLayout(&muteButton_, 14);
-
-  addToLayout(&level_, SLIDER_HEIGHT);
-  addToLayout(&levelMeter_);
 }
 
 void TransformController::onDataChange(const Stretch& s) {
@@ -83,12 +73,6 @@ void TransformController::onDataChange(const StereoProto& stereo) {
   stereoComboBox_.setSelectedId(sides, true);
 }
 
-void TransformController::onDataChange(const rec::audio::Gain& gain) {
-  MessageManagerLock mml;
-  level_.slider()->setEnabled(!gain.mute());
-  levelMeter_(gain);
-}
-
 void TransformController::comboBoxChanged(juce::ComboBox* box) {
   if (box == &stereoComboBox_) {
     if (DataListener<StereoProto>::data()) {
@@ -103,9 +87,42 @@ void TransformController::comboBoxChanged(juce::ComboBox* box) {
   }
 }
 
+
+#if 0
+                            public DataListener<rec::audio::Gain>,
+  virtual void onDataChange(const rec::audio::Gain&);
+  LevelMeter levelMeter_;
+  DataSlider<rec::audio::Gain, double> level_;
+  gui::SetterToggle<rec::audio::Gain> muteButton_;
+
+  listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
+  void clearLevels();
+  LevelMeter* levelMeter() { return &levelMeter_; }
+
+
+,
+      level_("Gain", Address("gain")),
+      muteButton_("Mute", Address("mute"))
+  level_.slider()->setRange(-36.0, +12.0, 0.1);
+  level_.slider()->setDetent(0.0f);
+  level_.slider()->setTextValueSuffix(" dB");
+
+  addToLayout(&muteButton_, 14);
+
+  addToLayout(&level_, SLIDER_HEIGHT);
+  addToLayout(&levelMeter_);
+
+void TransformController::onDataChange(const rec::audio::Gain& gain) {
+  MessageManagerLock mml;
+  level_.slider()->setEnabled(!gain.mute());
+  levelMeter_(gain);
+}
+
 void TransformController::clearLevels() {
   levelMeter_(LevelVector());
 }
+
+#endif
 
 }  // namespace audio
 }  // namespace gui

@@ -62,7 +62,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   player_->timeBroadcaster()->addListener(components_->timeController_.get());
   player_->timeBroadcaster()->addListener(waveform->timeCursor());
 
-  player_->level()->addListener(components_->transformController_->levelListener());
+  // player_->level()->addListener(components_->transformController_->levelListener());
 
   ThumbnailBuffer* thumbnailBuffer = bufferFiller_->thumbnailBuffer();
   Source *s = new FrameSource<short, 2>(thumbnailBuffer->buffer()->frames());
