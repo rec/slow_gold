@@ -5,9 +5,12 @@
 #include "rec/util/Math.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/STL.h"
+#include "rec/util/block/Difference.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
+
+using namespace rec::util::block;
 
 namespace rec {
 namespace widget {
@@ -68,17 +71,17 @@ void Waveform::paint(Graphics& g) {
 }
 
 void Waveform::drawWaveform(Painter& p, const Range<Samples<44100> >& range) {
-  block::BlockSet::iterator i = selection_.begin();
-  block::Block r;
+  BlockSet::iterator i = selection_.begin();
+  Block r;
   r.first = Samples<44100>(range.begin_);
   r.second = Samples<44100>(range.end_);
   const juce::Rectangle<int>& bounds = getLocalBounds();
   int channels = thumbnail_->getNumChannels();
 
-  while (block::getSize(r) > 0) {
+  while (getSize(r) > 0) {
     for (; i != selection_.end() && i->second <= r.first; ++i);
     bool selected = (i != selection_.end() && r.first >= i->first);
-    block::Block draw = r;
+    Block draw = r;
     if (selected)
       draw.second = i->second;
 
@@ -127,22 +130,26 @@ void Waveform::onDataChange(const WaveformProto& proto) {
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
-  bool repaint;
+  BlockSet newSelection = audio::getTimeSelection(loopPoints);
+  bool isDraggingCursor;
+  BlockSet oldSelection;
   {
     Lock l(lock_);
-    block::BlockSet oldSelection = selection_;
-    selection_ = audio::getTimeSelection(loopPoints);
-    repaint = (block::compare(selection_, oldSelection) != 0);
+    oldSelection = selection_;
+    selection_ = newSelection;
     length_ = Samples<44100>(loopPoints.length());
     empty_ = !loopPoints.has_length();
-    if (isDraggingCursor_)
-      return;
+    isDraggingCursor = isDraggingCursor_;
   }
 
-  thread::callAsync(this, &Waveform::adjustCursors, loopPoints, repaint);
+  BlockSet dirty = symmetricDifference(oldSelection, newSelection);
+  if (!isDraggingCursor_)
+    thread::callAsync(this, &Waveform::adjustCursors, loopPoints, dirty);
+  else if (!dirty.empty())
+    thread::callAsync(this, &Waveform::repaintBlocks, dirty);
 }
 
-void Waveform::adjustCursors(const LoopPointList& loopPoints, bool mustRepaint) {
+void Waveform::adjustCursors(const LoopPointList& loopPoints, const BlockSet& dirty) {
   MessageManagerLock l;
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
@@ -163,8 +170,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints, bool mustRepaint) 
     cursors_.pop_back();
   }
 
-  if (mustRepaint)
-    repaint();
+  repaintBlocks(dirty);
 }
 
 void Waveform::onDataChange(const ZoomProto& zp) {
@@ -208,7 +214,6 @@ Samples<44100> Waveform::zoomEnd() const {
   Lock l(lock_);
   return zoom_.has_end() ? Samples<44100>(zoom_.end()) : Samples<44100>(length_);
 }
-
 
 Range<Samples<44100> > Waveform::getTimeRange() const {
   Lock l(lock_);
@@ -315,8 +320,13 @@ void Waveform::setCursorText(int index, const String& text) {
   DataListener<LoopPointList>::setProto(lpl);
 }
 
-void Waveform::repaintBlock(Samples<44100> begin, Samples<44100> end) {
-  repaint(timeToX(begin), 0, timeToX(end), getHeight());
+void Waveform::repaintBlock(const Block& b) {
+  repaint(timeToX(b.first), 0, timeToX(b.second), getHeight());
+}
+
+void Waveform::repaintBlocks(const BlockSet& b) {
+  for (BlockSet::const_iterator i = b.begin(); i != b.end(); ++i)
+    repaintBlock(*i);
 }
 
 }  // namespace waveform

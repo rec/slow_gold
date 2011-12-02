@@ -6,11 +6,12 @@
 #include "rec/base/Samples.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/gui/component/Focusable.h"
+#include "rec/util/DataListener.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
-#include "rec/util/file/VirtualFile.h"
 #include "rec/util/Listener.h"
-#include "rec/util/DataListener.h"
+#include "rec/util/file/VirtualFile.h"
+#include "rec/util/block/Block.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
@@ -61,7 +62,8 @@ class Waveform : public gui::component::Focusable<Component>,
   void setCursorText(int index, const String& text);
   void setIsDraggingCursor(bool d) { Lock l(lock_); isDraggingCursor_ = d; }
   bool isDraggingCursor() const { Lock l(lock_); return isDraggingCursor_; }
-  void repaintBlock(Samples<44100> begin, Samples<44100> end);
+  void repaintBlock(const block::Block&);
+  void repaintBlocks(const block::BlockSet&);
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);
@@ -69,7 +71,7 @@ class Waveform : public gui::component::Focusable<Component>,
 
   Samples<44100> zoomEnd() const;
 
-  void adjustCursors(const LoopPointList&, bool repaint);
+  void adjustCursors(const LoopPointList& loopPoints, const block::BlockSet& dirty);
 
   void doClick(const juce::MouseEvent& e, int clickCount);
   int timeToX(Samples<44100> t) const;

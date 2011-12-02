@@ -65,7 +65,7 @@ thread::Result BufferFiller::fillOnce() {
   thumbnailBuffer_.addBlock(pos, updateInfo_);
 
 	MessageManagerLock l;
-  components()->waveform_->repaintBlock(pos, pos + filled);
+  components()->waveform_->repaintBlock(block::makeBlock(pos, pos + filled));
   return thread::YIELD;
 }
 
