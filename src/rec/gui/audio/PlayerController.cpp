@@ -27,8 +27,7 @@ PlayerController::PlayerController()
       pitchScale_("Pitch", Address("semitone_shift")),
       fineScale_("Tune", Address("detune_cents")),
       level_("Gain", Address("gain")),
-      muteButton_("Mute", Address("mute")),
-      dimButton_("Dim", Address("dim")) {
+      muteButton_("Mute", Address("mute")) {
   playbackSpeed_.slider()->setRange(0.5, 200.0, 1.0);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -66,7 +65,6 @@ PlayerController::PlayerController()
   addToLayout(&fineScale_, SLIDER_HEIGHT);
 
   addToLayout(&muteButton_, 14);
-  addToLayout(&dimButton_, 14);
 
   addToLayout(&level_, SLIDER_HEIGHT);
   addToLayout(&levelMeter_);
@@ -88,11 +86,7 @@ void PlayerController::onDataChange(const StereoProto& stereo) {
 
 void PlayerController::onDataChange(const rec::audio::Gain& gain) {
   MessageManagerLock mml;
-  bool mute = gain.mute();
-  bool dim = gain.dim();
-  level_.slider()->setEnabled(!(mute || dim));
-  muteButton_.setEnabled(mute || !dim);
-  dimButton_.setEnabled(!mute || dim);
+  level_.slider()->setEnabled(!gain.mute());
   levelMeter_(gain);
 }
 

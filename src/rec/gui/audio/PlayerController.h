@@ -44,7 +44,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   LevelMeter levelMeter_;
 
   gui::SetterToggle<rec::audio::Gain> muteButton_;
-  gui::SetterToggle<rec::audio::Gain> dimButton_;
 
   juce::ComboBox stereoComboBox_;
 
