@@ -127,20 +127,22 @@ void Waveform::onDataChange(const WaveformProto& proto) {
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
+  bool repaint;
   {
     Lock l(lock_);
-
+    block::BlockSet oldSelection = selection_;
     selection_ = audio::getTimeSelection(loopPoints);
+    repaint = (block::compare(selection_, oldSelection) != 0);
     length_ = Samples<44100>(loopPoints.length());
     empty_ = !loopPoints.has_length();
     if (isDraggingCursor_)
       return;
   }
 
-  thread::callAsync(this, &Waveform::adjustCursors, loopPoints);
+  thread::callAsync(this, &Waveform::adjustCursors, loopPoints, repaint);
 }
 
-void Waveform::adjustCursors(const LoopPointList& loopPoints) {
+void Waveform::adjustCursors(const LoopPointList& loopPoints, bool mustRepaint) {
   MessageManagerLock l;
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
@@ -160,6 +162,9 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
     delete cursors_.back();
     cursors_.pop_back();
   }
+
+  if (mustRepaint)
+    repaint();
 }
 
 void Waveform::onDataChange(const ZoomProto& zp) {
@@ -308,6 +313,10 @@ void Waveform::setCursorText(int index, const String& text) {
     return;
   lpl.mutable_loop_point(index)->set_name(str(text));
   DataListener<LoopPointList>::setProto(lpl);
+}
+
+void Waveform::repaintBlock(Samples<44100> begin, Samples<44100> end) {
+  repaint(timeToX(begin), 0, timeToX(end), getHeight());
 }
 
 }  // namespace waveform

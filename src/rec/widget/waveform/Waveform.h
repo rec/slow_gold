@@ -44,8 +44,6 @@ class Waveform : public gui::component::Focusable<Component>,
   virtual void resized();
 
   virtual void paint(Graphics&);
-  virtual void repaint() { Component::repaint(); }
-
   virtual void onDataChange(const LoopPointList&);
   virtual void onDataChange(const Mode&);
   virtual void onDataChange(const WaveformProto&);
@@ -63,6 +61,7 @@ class Waveform : public gui::component::Focusable<Component>,
   void setCursorText(int index, const String& text);
   void setIsDraggingCursor(bool d) { Lock l(lock_); isDraggingCursor_ = d; }
   bool isDraggingCursor() const { Lock l(lock_); return isDraggingCursor_; }
+  void repaintBlock(Samples<44100> begin, Samples<44100> end);
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);
@@ -70,7 +69,7 @@ class Waveform : public gui::component::Focusable<Component>,
 
   Samples<44100> zoomEnd() const;
 
-  void adjustCursors(const LoopPointList&);
+  void adjustCursors(const LoopPointList&, bool repaint);
 
   void doClick(const juce::MouseEvent& e, int clickCount);
   int timeToX(Samples<44100> t) const;

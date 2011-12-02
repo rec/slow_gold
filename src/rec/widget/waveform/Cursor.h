@@ -47,7 +47,7 @@ class Cursor : public Component,
   juce::Rectangle<int> bounds_;
   int dragX_;
   int mouseDragX_;
-  gui::SimpleLabel caption_;
+  ptr<gui::SimpleLabel> caption_;
   int captionWidth_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);

@@ -40,6 +40,29 @@ bool contains(const Container& c, Size x) {
   return false;
 }
 
+inline Size compare(const Block& x, const Block& y) {
+  if (Size d = x.first - y.first)
+    return d;
+  else
+    return x.second - y.second;
+}
+
+inline Size compare(const BlockSet& x, const BlockSet& y) {
+  BlockSet::const_iterator i = x.begin();
+  BlockSet::const_iterator j = y.begin();
+
+  while (true) {
+    if (i == x.end())
+      return (j == y.end()) ? 0 : -1;
+
+    if (j == y.end())
+      return 1;
+
+    if (Size c = compare(*i++, *j++))
+      return c;
+  }
+}
+
 inline bool intersects(const Block& x, const Block& y) {
   return contains(x, y.first) || contains(y, x.first);
 }
