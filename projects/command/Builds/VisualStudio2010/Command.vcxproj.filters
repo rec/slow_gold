@@ -466,13 +466,13 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\ModeSelector.cpp">
       <Filter>Command\rec\gui\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\audio\PlayerController.cpp">
-      <Filter>Command\rec\gui\audio</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\SetupPage.cpp">
       <Filter>Command\rec\gui\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\TimeController.cpp">
+      <Filter>Command\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TransformController.cpp">
       <Filter>Command\rec\gui\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\TransportController.cpp">
@@ -1368,13 +1368,13 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\ModeSelector.h">
       <Filter>Command\rec\gui\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\audio\PlayerController.h">
-      <Filter>Command\rec\gui\audio</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\SetupPage.h">
       <Filter>Command\rec\gui\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\TimeController.h">
+      <Filter>Command\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TransformController.h">
       <Filter>Command\rec\gui\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\TransportController.h">

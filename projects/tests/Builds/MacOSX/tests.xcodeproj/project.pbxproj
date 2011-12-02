@@ -121,9 +121,9 @@
 		16D05B0CB822FCFC556A8E45 = { isa = PBXBuildFile; fileRef = 559D8FABCC9B428B7B4B8C3E; };
 		698CE9CFCBA6399D2E05E4CB = { isa = PBXBuildFile; fileRef = A91634BADED4A882FDE0B485; };
 		E995B88F48A2EB288EC482D2 = { isa = PBXBuildFile; fileRef = 7AB7A04185196A89700C120F; };
-		DDF7E71E066071FDDC5F8DD7 = { isa = PBXBuildFile; fileRef = 0C54FB12147BE176B4307B9A; };
 		6FDC0A29E96B6CC51D17A804 = { isa = PBXBuildFile; fileRef = BA321F33367B9014620DB55E; };
 		F2466ACA909D0999346A4FC8 = { isa = PBXBuildFile; fileRef = 11202D5C9B1F8979C234E717; };
+		67BEE6AEB81EFDCCC585235E = { isa = PBXBuildFile; fileRef = EF2C87690BE19989CDD1C0E1; };
 		910771C3EA2CDDBEFE6A7131 = { isa = PBXBuildFile; fileRef = 6D109A489387D1C632F278A2; };
 		78374D4D98DC795234406915 = { isa = PBXBuildFile; fileRef = B0E7E54BB1A5063AE0E24277; };
 		0A9DC8129CCF81A5539EB331 = { isa = PBXBuildFile; fileRef = 69844A95F28526E508990B53; };
@@ -555,12 +555,12 @@
 		A1E76CD59C8E60146B04575C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Loops.h; path = ../../../../src/rec/gui/audio/Loops.h; sourceTree = "SOURCE_ROOT"; };
 		7AB7A04185196A89700C120F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ModeSelector.cpp; path = ../../../../src/rec/gui/audio/ModeSelector.cpp; sourceTree = "SOURCE_ROOT"; };
 		E6FE44146702B515B4A3297C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ModeSelector.h; path = ../../../../src/rec/gui/audio/ModeSelector.h; sourceTree = "SOURCE_ROOT"; };
-		0C54FB12147BE176B4307B9A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerController.cpp; path = ../../../../src/rec/gui/audio/PlayerController.cpp; sourceTree = "SOURCE_ROOT"; };
-		EEA5CD27C9F15723232624C3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayerController.h; path = ../../../../src/rec/gui/audio/PlayerController.h; sourceTree = "SOURCE_ROOT"; };
 		BA321F33367B9014620DB55E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SetupPage.cpp; path = ../../../../src/rec/gui/audio/SetupPage.cpp; sourceTree = "SOURCE_ROOT"; };
 		0E074D07D599D3FD88FB9FB6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetupPage.h; path = ../../../../src/rec/gui/audio/SetupPage.h; sourceTree = "SOURCE_ROOT"; };
 		11202D5C9B1F8979C234E717 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeController.cpp; path = ../../../../src/rec/gui/audio/TimeController.cpp; sourceTree = "SOURCE_ROOT"; };
 		8C6769122BB8C6F40DA9F4D7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeController.h; path = ../../../../src/rec/gui/audio/TimeController.h; sourceTree = "SOURCE_ROOT"; };
+		EF2C87690BE19989CDD1C0E1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TransformController.cpp; path = ../../../../src/rec/gui/audio/TransformController.cpp; sourceTree = "SOURCE_ROOT"; };
+		9C09BD854C1ACA158B55F881 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransformController.h; path = ../../../../src/rec/gui/audio/TransformController.h; sourceTree = "SOURCE_ROOT"; };
 		6D109A489387D1C632F278A2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TransportController.cpp; path = ../../../../src/rec/gui/audio/TransportController.cpp; sourceTree = "SOURCE_ROOT"; };
 		3D6ACAEA6B0FF019AB298B14 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportController.h; path = ../../../../src/rec/gui/audio/TransportController.h; sourceTree = "SOURCE_ROOT"; };
 		B0E7E54BB1A5063AE0E24277 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cpp; path = ../../../../src/rec/gui/Color.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1191,12 +1191,12 @@
 				A1E76CD59C8E60146B04575C,
 				7AB7A04185196A89700C120F,
 				E6FE44146702B515B4A3297C,
-				0C54FB12147BE176B4307B9A,
-				EEA5CD27C9F15723232624C3,
 				BA321F33367B9014620DB55E,
 				0E074D07D599D3FD88FB9FB6,
 				11202D5C9B1F8979C234E717,
 				8C6769122BB8C6F40DA9F4D7,
+				EF2C87690BE19989CDD1C0E1,
+				9C09BD854C1ACA158B55F881,
 				6D109A489387D1C632F278A2,
 				3D6ACAEA6B0FF019AB298B14 ); name = audio; sourceTree = "<group>"; };
 		D5D9734EB2E8A9DD26BFE19C = { isa = PBXGroup; children = (
@@ -1607,7 +1607,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		AEC9C6BB14E570988810F2EC = { isa = PBXGroup; children = (
+		BEFB0F435F1AD955F6EDA3D1 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1634,7 +1634,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				AEC9C6BB14E570988810F2EC,
+				BEFB0F435F1AD955F6EDA3D1,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1890,9 +1890,9 @@
 				16D05B0CB822FCFC556A8E45,
 				698CE9CFCBA6399D2E05E4CB,
 				E995B88F48A2EB288EC482D2,
-				DDF7E71E066071FDDC5F8DD7,
 				6FDC0A29E96B6CC51D17A804,
 				F2466ACA909D0999346A4FC8,
+				67BEE6AEB81EFDCCC585235E,
 				910771C3EA2CDDBEFE6A7131,
 				78374D4D98DC795234406915,
 				0A9DC8129CCF81A5539EB331,

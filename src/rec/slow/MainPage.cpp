@@ -8,7 +8,7 @@
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/ModeSelector.h"
-#include "rec/gui/audio/PlayerController.h"
+#include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/AppLayout.pb.h"
@@ -86,7 +86,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
   // Playback panel.
   add(&playbackPanel_, &helpPanel_, 75, -1.0, -0.20);
   add(&playbackPanel_, &helpResizer_, 5.0);
-  add(&playbackPanel_, components->playerController_, 180, -1.0, -0.75);
+  add(&playbackPanel_, components->transformController_, 180, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 180, -1.0, -0.40);
   add(&playbackPanel_, components->transportController_.get(), 30);
 }

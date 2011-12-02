@@ -10,7 +10,7 @@ namespace gui { class SongData; }
 namespace gui { namespace audio { class CommandBar; } }
 namespace gui { namespace audio { class Loops; } }
 namespace gui { namespace audio { class ModeSelector; } }
-namespace gui { namespace audio { class PlayerController; } }
+namespace gui { namespace audio { class TransformController; } }
 namespace gui { namespace audio { class TimeController; } }
 namespace gui { namespace audio { class TransportController; } }
 
@@ -32,7 +32,7 @@ public:
 
   ptr<gui::audio::Loops> loops_;
   ptr<gui::SongData> songData_;
-  ptr<gui::audio::PlayerController> playerController_;
+  ptr<gui::audio::TransformController> transformController_;
   ptr<gui::audio::TransportController> transportController_;
 
   ptr<widget::tree::Root> directoryTree_;

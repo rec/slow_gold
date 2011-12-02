@@ -1,4 +1,4 @@
-#include "rec/gui/audio/PlayerController.h"
+#include "rec/gui/audio/TransformController.h"
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
@@ -6,12 +6,11 @@ using namespace rec::audio::stretch;
 static const bool ENABLE_SHIFTS = !false;
 
 namespace rec {
-
-using audio::Gain;
-using data::Address;
-
 namespace gui {
 namespace audio {
+
+using rec::audio::Gain;
+using data::Address;
 
 namespace {
 
@@ -21,8 +20,8 @@ enum Sides {
 
 }  // namespace
 
-PlayerController::PlayerController()
-    : Layout("PlayerController", VERTICAL),
+TransformController::TransformController()
+    : Layout("TransformController", VERTICAL),
       playbackSpeed_("Speed", Address("time_percent")),
       pitchScale_("Pitch", Address("semitone_shift")),
       fineScale_("Tune", Address("detune_cents")),
@@ -70,12 +69,12 @@ PlayerController::PlayerController()
   addToLayout(&levelMeter_);
 }
 
-void PlayerController::onDataChange(const Stretch& s) {
+void TransformController::onDataChange(const Stretch& s) {
   MessageManagerLock l;
   playbackSpeed_.setEnabled(!s.time_disabled());
 }
 
-void PlayerController::onDataChange(const StereoProto& stereo) {
+void TransformController::onDataChange(const StereoProto& stereo) {
   Sides sides = STEREO;
   if (stereo.type())
     sides = static_cast<Sides>(2 + stereo.side());
@@ -84,13 +83,13 @@ void PlayerController::onDataChange(const StereoProto& stereo) {
   stereoComboBox_.setSelectedId(sides, true);
 }
 
-void PlayerController::onDataChange(const rec::audio::Gain& gain) {
+void TransformController::onDataChange(const rec::audio::Gain& gain) {
   MessageManagerLock mml;
   level_.slider()->setEnabled(!gain.mute());
   levelMeter_(gain);
 }
 
-void PlayerController::comboBoxChanged(juce::ComboBox* box) {
+void TransformController::comboBoxChanged(juce::ComboBox* box) {
   if (box == &stereoComboBox_) {
     if (DataListener<StereoProto>::data()) {
       Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
@@ -104,7 +103,7 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
   }
 }
 
-void PlayerController::clearLevels() {
+void TransformController::clearLevels() {
   levelMeter_(LevelVector());
 }
 

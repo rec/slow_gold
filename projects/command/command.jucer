@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="wnVrlHGUg" name="Command">
+  <MAINGROUP id="D9HotHu0n" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -578,10 +578,6 @@
                 name="ModeSelector.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/ModeSelector.h" id="xLiIxEcwG"
                 name="ModeSelector.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/audio/PlayerController.cpp"
-                id="AAHVlDUI6" name="PlayerController.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/audio/PlayerController.h"
-                id="iCWIomOhO" name="PlayerController.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/SetupPage.cpp" id="cHg9d2z0U"
                 name="SetupPage.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/SetupPage.h" id="Zez8YPXCt"
@@ -590,6 +586,10 @@
                 id="b0AS2sWQM" name="TimeController.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/TimeController.h" id="gtXzseALo"
                 name="TimeController.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/audio/TransformController.cpp"
+                id="P9fOh9uC2" name="TransformController.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/audio/TransformController.h"
+                id="DieJMXwR0" name="TransformController.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/TransportController.cpp"
                 id="eUyM6aOUw" name="TransportController.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/TransportController.h"
@@ -1289,7 +1289,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="igcdcC6Xz" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="01GU9kyIZ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
