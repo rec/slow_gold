@@ -14,16 +14,16 @@ namespace rec {
 static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
 static const int CAPTION_OFFSET = 10000;
 static const int CAPTION_PADDING = 2;
-static const int CAPTION_X_OFFSET = 0;
-static const int CAPTION_Y_OFFSET = 5;
-static const int REMAINS_FUDGE = 10;
+static const int CAPTION_X_OFFSET = -3;
+static const int CAPTION_Y_OFFSET = 6;
+static const int REMAINS_FUDGE = 8;
 
 namespace widget {
 namespace waveform {
 
 
 Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
-               int index, bool isTimeCursor)
+               int index, bool hasCaption)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
@@ -33,7 +33,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
   waveform_->addAndMakeVisible(this, 0);
   waveform_->addAndMakeVisible(caption_.get(), 0);
 
-  if (!isTimeCursor) {
+  if (hasCaption) {
     caption_->setEditable(true, false, false);
     caption_->addListener(this);
   }
@@ -69,11 +69,12 @@ void Cursor::setTime(Samples<44100> time) {
     time_ = time;
   }
   layout();
+  if (index_ > 1)
+    waveform_->getCursors()[index_ - 1]->adjustCaption();
 }
 
 void Cursor::layout() {
-  juce::Rectangle<int> b1 = getBounds();
-  juce::Rectangle<int> b2 = caption_->getBounds();
+  juce::Rectangle<int> before = getBounds();
 
   juce::Rectangle<int> bounds = waveform_->getLocalBounds();
   int componentWidth = desc().component_width();
@@ -86,16 +87,29 @@ void Cursor::layout() {
   bounds.setX(x - (componentWidth - desc().width()) / 2);
 
   setBounds(bounds);
+  adjustCaption();
+
+  juce::Rectangle<int> after = getBounds();
+  if (before != after) {
+    waveform_->repaint(before);
+    waveform_->repaint(after);
+  }
+}
+
+void Cursor::adjustCaption() {
+  juce::Rectangle<int> before = caption_->getBounds();
+
   int remains = waveform_->getCursorX(index_ + 1) - getX() - CAPTION_X_OFFSET - REMAINS_FUDGE;
 
-  caption_->setBounds(bounds.getX() + componentWidth + CAPTION_X_OFFSET,
+  caption_->setBounds(getX() + desc().component_width() + CAPTION_X_OFFSET,
                       CAPTION_Y_OFFSET,
                       std::min(captionWidth_, remains), caption_->getHeight());
 
-  waveform_->repaint(b1);
-  waveform_->repaint(b2);
-  waveform_->repaint(getBounds());
-  waveform_->repaint(caption_->getBounds());
+  juce::Rectangle<int> after = caption_->getBounds();
+  if (before != after) {
+    waveform_->repaint(before);
+    waveform_->repaint(after);
+  }
 }
 
 void Cursor::paint(Graphics& g) {
@@ -138,7 +152,6 @@ void Cursor::setCaption(const String& cap) {
   bounds.setWidth(captionWidth_);
   caption_->setBounds(bounds);
 }
-
 
 }  // namespace waveform
 }  // namespace widget

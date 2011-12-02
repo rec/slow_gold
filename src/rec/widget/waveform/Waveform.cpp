@@ -38,7 +38,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       empty_(true),
       isDraggingCursor_(false) {
   setName("Waveform");
-  timeCursor_.reset(new Cursor(*timeCursor, this, 0, -1, true));
+  timeCursor_.reset(new Cursor(*timeCursor, this, 0, -1, false));
 }
 
 Waveform::~Waveform() {
@@ -154,7 +154,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints, const BlockSet& di
     if (i < cursors_.size()) {
       c = cursors_[i];
     } else {
-      c = new Cursor(*defaultDesc, this, time, i, false);
+      c = new Cursor(*defaultDesc, this, time, i, i != 0);
       cursors_.push_back(c);
     }
     c->setTime(time);

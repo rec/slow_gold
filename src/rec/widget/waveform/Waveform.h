@@ -55,6 +55,9 @@ class Waveform : public Component,
   Samples<44100> xToTime(int x) const;
   double pixelsPerSample() const;
 
+  typedef vector<Cursor*> CursorList;
+  const CursorList& getCursors() const { return cursors_; }
+
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
   CriticalSection* lock() { return &lock_; }
   int getCursorX(uint index) const;
@@ -82,7 +85,6 @@ class Waveform : public Component,
   juce::AudioThumbnail* thumbnail_;
   block::BlockSet selection_;
 
-  typedef vector<Cursor*> CursorList;
   CursorList cursors_;
   ptr<Cursor> timeCursor_;
 

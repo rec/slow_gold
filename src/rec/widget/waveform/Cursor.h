@@ -21,7 +21,7 @@ class Cursor : public Component,
                public juce::Label::Listener {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time,
-         int index, bool isTimeCursor);
+         int index, bool hasCaption);
   virtual ~Cursor();
   virtual void labelTextChanged(juce::Label*);
 
@@ -41,6 +41,8 @@ class Cursor : public Component,
   Waveform* waveform() const { return waveform_; }
 
  private:
+  void adjustCaption();
+
   Waveform* const waveform_;
   CriticalSection lock_;
   CursorProto desc_;
