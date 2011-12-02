@@ -5,6 +5,7 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/gui/Geometry.h"
+#include "rec/gui/SimpleLabel.h"
 #include "rec/util/Listener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
@@ -16,7 +17,8 @@ namespace waveform {
 
 class Cursor : public Component, public Listener< Samples<44100> > {
  public:
-  Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time, int index);
+  Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time,
+         int index);
   virtual ~Cursor();
 
   void paint(Graphics& g);
@@ -32,6 +34,7 @@ class Cursor : public Component, public Listener< Samples<44100> > {
   void setListeningToClock(bool b) { listeningToClock_ = b; }
   int index() { return index_; }
   void layout();
+  void setCaption(const String& c) { caption_.setText(c, false); }
 
  private:
   Waveform* const waveform_;
@@ -43,6 +46,7 @@ class Cursor : public Component, public Listener< Samples<44100> > {
   int dragX_;
   int mouseDragX_;
   bool listeningToClock_;
+  gui::SimpleLabel caption_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);
 };

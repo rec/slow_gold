@@ -153,6 +153,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
     Cursor* c = (i < cursors_.size()) ?
       cursors_[i] : newCursor(*defaultDesc, time, i);
     c->setTime(time);
+    c->setCaption(str(loopPoints.loop_point(i).name()));
   }
 
   while (cursors_.size() > size) {

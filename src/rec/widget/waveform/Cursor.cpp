@@ -11,11 +11,13 @@ using namespace rec::gui::color;
 namespace rec {
 
 static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
+static const int CAPTION_OFFSET = 10000;
 
 namespace widget {
 namespace waveform {
 
-Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t, int index)
+Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
+               int index)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
@@ -23,6 +25,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t, int i
       listeningToClock_(true) {
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addChildComponent(this, 0);
+  waveform_->addChildComponent(&caption_, 0);
 
   setTime(t);
   setRepaintsOnMouseActivity(true);
@@ -30,6 +33,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t, int i
 
 Cursor::~Cursor() {
   waveform_->removeChildComponent(this);
+  waveform_->removeChildComponent(&caption_);
 }
 
 Samples<44100> Cursor::getTime() const {
@@ -64,6 +68,10 @@ void Cursor::layout() {
   bounds.setX(x - (componentWidth - desc().width()) / 2);
 
   setBounds(bounds);
+  bounds = caption_.getBounds();
+  bounds.setX(bounds.getX() + CAPTION_OFFSET);
+  caption_.setBounds(bounds);
+
   repaint();
 }
 
