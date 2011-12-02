@@ -35,7 +35,7 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, strategy_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_disabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, pitch_disabled_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, disabled_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, enabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, passthrough_when_disabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_scale_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_percent_),
@@ -98,23 +98,23 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\220\005\n\007Stretch\022A\n\010strategy\030\001 \001(\0162#.rec."
+    "oto\"\225\005\n\007Stretch\022A\n\010strategy\030\001 \001(\0162#.rec."
     "audio.stretch.Stretch.Strategy:\nRUBBERBA"
     "ND\022\025\n\rtime_disabled\030\002 \001(\010\022\026\n\016pitch_disab"
-    "led\030\003 \001(\010\022\020\n\010disabled\030\024 \001(\010\022\'\n\031passthrou"
-    "gh_when_disabled\030\004 \001(\010:\004true\022\025\n\ntime_sca"
-    "le\030\005 \001(\001:\0011\022\031\n\014time_percent\030\006 \001(\001:\003100\022\032"
-    "\n\013sample_rate\030\007 \001(\001:\00544100\022\023\n\010channels\030\010"
-    " \001(\r:\0012\022\026\n\013pitch_scale\030\t \001(\001:\0011\022\026\n\016semit"
-    "one_shift\030\n \001(\001\022\024\n\014detune_cents\030\013 \001(\001\022\023\n"
-    "\005bands\030\014 \001(\r:\0042048\022\031\n\016filter_overlap\030\r \001"
-    "(\r:\0011\022\030\n\nchunk_size\030\016 \001(\r:\0041024\022\033\n\014prefi"
-    "ll_size\030\017 \001(\r:\00515000\022$\n\025next_buffer_fill"
-    "_size\030\020 \001(\r:\00515000\022\036\n\022inactive_wait_time"
-    "\030\021 \001(\005:\002-1\022\032\n\017thread_priority\030\022 \001(\r:\0014\022\037"
-    "\n\020max_process_size\030\023 \001(\r:\00516364\"E\n\010Strat"
-    "egy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nRUBBER"
-    "BAND\020\002\022\016\n\nSOUNDTOUCH\020\003", 742);
+    "led\030\003 \001(\010\022\025\n\007enabled\030\024 \001(\010:\004true\022\'\n\031pass"
+    "through_when_disabled\030\004 \001(\010:\004true\022\025\n\ntim"
+    "e_scale\030\005 \001(\001:\0011\022\031\n\014time_percent\030\006 \001(\001:\003"
+    "100\022\032\n\013sample_rate\030\007 \001(\001:\00544100\022\023\n\010chann"
+    "els\030\010 \001(\r:\0012\022\026\n\013pitch_scale\030\t \001(\001:\0011\022\026\n\016"
+    "semitone_shift\030\n \001(\001\022\024\n\014detune_cents\030\013 \001"
+    "(\001\022\023\n\005bands\030\014 \001(\r:\0042048\022\031\n\016filter_overla"
+    "p\030\r \001(\r:\0011\022\030\n\nchunk_size\030\016 \001(\r:\0041024\022\033\n\014"
+    "prefill_size\030\017 \001(\r:\00515000\022$\n\025next_buffer"
+    "_fill_size\030\020 \001(\r:\00515000\022\036\n\022inactive_wait"
+    "_time\030\021 \001(\005:\002-1\022\032\n\017thread_priority\030\022 \001(\r"
+    ":\0014\022\037\n\020max_process_size\030\023 \001(\r:\00516364\"E\n\010"
+    "Strategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nR"
+    "UBBERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003", 747);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -161,7 +161,7 @@ const int Stretch::Strategy_ARRAYSIZE;
 const int Stretch::kStrategyFieldNumber;
 const int Stretch::kTimeDisabledFieldNumber;
 const int Stretch::kPitchDisabledFieldNumber;
-const int Stretch::kDisabledFieldNumber;
+const int Stretch::kEnabledFieldNumber;
 const int Stretch::kPassthroughWhenDisabledFieldNumber;
 const int Stretch::kTimeScaleFieldNumber;
 const int Stretch::kTimePercentFieldNumber;
@@ -199,7 +199,7 @@ void Stretch::SharedCtor() {
   strategy_ = 2;
   time_disabled_ = false;
   pitch_disabled_ = false;
-  disabled_ = false;
+  enabled_ = true;
   passthrough_when_disabled_ = true;
   time_scale_ = 1;
   time_percent_ = 100;
@@ -253,7 +253,7 @@ void Stretch::Clear() {
     strategy_ = 2;
     time_disabled_ = false;
     pitch_disabled_ = false;
-    disabled_ = false;
+    enabled_ = true;
     passthrough_when_disabled_ = true;
     time_scale_ = 1;
     time_percent_ = 100;
@@ -589,18 +589,18 @@ bool Stretch::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(160)) goto parse_disabled;
+        if (input->ExpectTag(160)) goto parse_enabled;
         break;
       }
       
-      // optional bool disabled = 20;
+      // optional bool enabled = 20 [default = true];
       case 20: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_disabled:
+         parse_enabled:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &disabled_)));
+                 input, &enabled_)));
           _set_bit(3);
         } else {
           goto handle_uninterpreted;
@@ -723,9 +723,9 @@ void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(19, this->max_process_size(), output);
   }
   
-  // optional bool disabled = 20;
+  // optional bool enabled = 20 [default = true];
   if (_has_bit(3)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(20, this->disabled(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(20, this->enabled(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -832,9 +832,9 @@ void Stretch::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(19, this->max_process_size(), target);
   }
   
-  // optional bool disabled = 20;
+  // optional bool enabled = 20 [default = true];
   if (_has_bit(3)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(20, this->disabled(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(20, this->enabled(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -864,8 +864,8 @@ int Stretch::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // optional bool disabled = 20;
-    if (has_disabled()) {
+    // optional bool enabled = 20 [default = true];
+    if (has_enabled()) {
       total_size += 2 + 1;
     }
     
@@ -1008,7 +1008,7 @@ void Stretch::MergeFrom(const Stretch& from) {
       set_pitch_disabled(from.pitch_disabled());
     }
     if (from._has_bit(3)) {
-      set_disabled(from.disabled());
+      set_enabled(from.enabled());
     }
     if (from._has_bit(4)) {
       set_passthrough_when_disabled(from.passthrough_when_disabled());
@@ -1088,7 +1088,7 @@ void Stretch::Swap(Stretch* other) {
     std::swap(strategy_, other->strategy_);
     std::swap(time_disabled_, other->time_disabled_);
     std::swap(pitch_disabled_, other->pitch_disabled_);
-    std::swap(disabled_, other->disabled_);
+    std::swap(enabled_, other->enabled_);
     std::swap(passthrough_when_disabled_, other->passthrough_when_disabled_);
     std::swap(time_scale_, other->time_scale_);
     std::swap(time_percent_, other->time_percent_);

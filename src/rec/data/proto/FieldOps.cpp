@@ -14,7 +14,7 @@ bool copyFrom(MessageField* f, const Value& value) {
     if (value.has_message_f())
       return pmessage(value.message_f()).Parse(f->message_);
 
-    LOG(DFATAL) << "The Value contained no message field.";
+    LOG(ERROR) << "The Value contained no message field.";
     return false;
   }
 

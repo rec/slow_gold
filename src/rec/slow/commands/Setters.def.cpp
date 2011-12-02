@@ -35,7 +35,7 @@ Def<command::Commands> setters(
   "command {\n"
   "  type: TOGGLE_STRETCH_ENABLE\n"
   "  is_setter: true\n"
-  "  address { part: { name: \"disabled\" } }\n"
+  "  address { part: { name: \"enabled\" } }\n"
   "  setter_type_name: \"rec.audio.stretch.Stretch\"\n"
   "}\n"
   " "

@@ -2,9 +2,9 @@
 #define __REC_GUI_AUDIO_TRANSFORMCONTROLLER__
 
 #include "rec/audio/stretch/Stretch.pb.h"
+#include "rec/audio/util/Gain.h"
 #include "rec/gui/DataSlider.h"
 #include "rec/gui/SetterToggle.h"
-#include "rec/audio/util/Gain.h"
 #include "rec/gui/audio/LevelMeter.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/DataListener.h"
@@ -34,6 +34,8 @@ class TransformController : public Layout,
   DataSlider<rec::audio::stretch::Stretch, double> playbackSpeed_;
   DataSlider<rec::audio::stretch::Stretch, double> pitchScale_;
   DataSlider<rec::audio::stretch::Stretch, double> fineScale_;
+
+  gui::SetterToggle<rec::audio::stretch::Stretch> enableButton_;
 
   juce::ComboBox stereoComboBox_;
 

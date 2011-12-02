@@ -100,7 +100,8 @@ void UntypedEditable::applyOperations(const Operations& olist,
     MessageField f;
     Lock l(lock_);
     if (!fillMessageField(&f, Address(op.address()), *message_)) {
-      LOG(DFATAL) << "Couldn't perform operation " << op.ShortDebugString();
+      LOG(DFATAL) << "Couldn't perform operation " << op.ShortDebugString()
+                  << "\n --> " << message_->ShortDebugString();
       return;
     }
     if (undoes) {
@@ -109,10 +110,12 @@ void UntypedEditable::applyOperations(const Operations& olist,
       undo.add_value()->CopyFrom(Value(*message_));
     }
 
-    if (!data::apply(&f, op))
-      LOG(DFATAL) << "Couldn't perform operation " << op.DebugString();
-    else if (undoes)
+    if (!data::apply(&f, op)) {
+      LOG(DFATAL) << "Couldn't perform operation " << op.DebugString()
+                  << "\n --> " << message_->ShortDebugString();
+    } else if (undoes) {
       undoes->add_operation()->CopyFrom(undo);
+    }
   }
 }
 

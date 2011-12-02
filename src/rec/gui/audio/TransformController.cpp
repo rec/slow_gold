@@ -4,6 +4,7 @@ using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 
 static const bool ENABLE_SHIFTS = !false;
+static const int SLIDER_HEIGHT = 18;
 
 namespace rec {
 namespace gui {
@@ -24,7 +25,8 @@ TransformController::TransformController()
     : Layout("TransformController", VERTICAL),
       playbackSpeed_("Speed", Address("time_percent")),
       pitchScale_("Pitch", Address("semitone_shift")),
-      fineScale_("Tune", Address("detune_cents")) {
+      fineScale_("Tune", Address("detune_cents")),
+      enableButton_("Transform", Address("enabled")) {
   playbackSpeed_.slider()->setRange(0.5, 200.0, 1.0);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -51,9 +53,8 @@ TransformController::TransformController()
   stereoComboBox_.addItem("L + R", LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
-  addToLayout(&stereoComboBox_, 18);
-
-  static const int SLIDER_HEIGHT = 18;
+  addToLayout(&enableButton_, SLIDER_HEIGHT);
+  addToLayout(&stereoComboBox_, SLIDER_HEIGHT);
   addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
   addToLayout(&pitchScale_, SLIDER_HEIGHT);
   addToLayout(&fineScale_, SLIDER_HEIGHT);
@@ -61,7 +62,10 @@ TransformController::TransformController()
 
 void TransformController::onDataChange(const Stretch& s) {
   MessageManagerLock l;
-  playbackSpeed_.setEnabled(!s.time_disabled());
+  playbackSpeed_.setEnabled(s.enabled());
+  pitchScale_.setEnabled(s.enabled());
+  fineScale_.setEnabled(s.enabled());
+  stereoComboBox_.setEnabled(s.enabled());
 }
 
 void TransformController::onDataChange(const StereoProto& stereo) {
@@ -86,7 +90,6 @@ void TransformController::comboBoxChanged(juce::ComboBox* box) {
     }
   }
 }
-
 
 #if 0
                             public DataListener<rec::audio::Gain>,

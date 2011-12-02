@@ -15,7 +15,7 @@ class SetterToggle : public juce::ToggleButton,
       : juce::ToggleButton(name), DataListener<Proto>(address) {}
 
   virtual void clicked() {
-    this->data()->setValue(getToggleState());
+    this->setValue(getToggleState());
   }
 
  protected:

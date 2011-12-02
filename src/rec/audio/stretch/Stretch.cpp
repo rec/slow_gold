@@ -7,12 +7,12 @@ namespace audio {
 namespace stretch {
 
 double timeScale(const Stretch& d) {
-  return (d.disabled() || d.time_disabled()) ? 1.0 :
+  return (!d.enabled() || d.time_disabled()) ? 1.0 :
     (d.time_scale() * (100.0 / d.time_percent()));
 }
 
 double pitchScale(const Stretch& d) {
-  if (d.disabled() || d.pitch_disabled())
+  if (!d.enabled() || d.pitch_disabled())
     return 1.0;
 
   double detune = d.detune_cents() / 100.0 + d.semitone_shift() / 12.0;

@@ -161,12 +161,12 @@ class Stretch : public ::google::protobuf::Message {
   inline bool pitch_disabled() const;
   inline void set_pitch_disabled(bool value);
   
-  // optional bool disabled = 20;
-  inline bool has_disabled() const;
-  inline void clear_disabled();
-  static const int kDisabledFieldNumber = 20;
-  inline bool disabled() const;
-  inline void set_disabled(bool value);
+  // optional bool enabled = 20 [default = true];
+  inline bool has_enabled() const;
+  inline void clear_enabled();
+  static const int kEnabledFieldNumber = 20;
+  inline bool enabled() const;
+  inline void set_enabled(bool value);
   
   // optional bool passthrough_when_disabled = 4 [default = true];
   inline bool has_passthrough_when_disabled() const;
@@ -288,7 +288,7 @@ class Stretch : public ::google::protobuf::Message {
   int strategy_;
   bool time_disabled_;
   bool pitch_disabled_;
-  bool disabled_;
+  bool enabled_;
   bool passthrough_when_disabled_;
   double time_scale_;
   double time_percent_;
@@ -381,20 +381,20 @@ inline void Stretch::set_pitch_disabled(bool value) {
   pitch_disabled_ = value;
 }
 
-// optional bool disabled = 20;
-inline bool Stretch::has_disabled() const {
+// optional bool enabled = 20 [default = true];
+inline bool Stretch::has_enabled() const {
   return _has_bit(3);
 }
-inline void Stretch::clear_disabled() {
-  disabled_ = false;
+inline void Stretch::clear_enabled() {
+  enabled_ = true;
   _clear_bit(3);
 }
-inline bool Stretch::disabled() const {
-  return disabled_;
+inline bool Stretch::enabled() const {
+  return enabled_;
 }
-inline void Stretch::set_disabled(bool value) {
+inline void Stretch::set_enabled(bool value) {
   _set_bit(3);
-  disabled_ = value;
+  enabled_ = value;
 }
 
 // optional bool passthrough_when_disabled = 4 [default = true];

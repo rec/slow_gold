@@ -25,6 +25,6 @@ command {
 command {
   type: TOGGLE_STRETCH_ENABLE
   is_setter: true
-  address { part: { name: "disabled" } }
+  address { part: { name: "enabled" } }
   setter_type_name: "rec.audio.stretch.Stretch"
 }

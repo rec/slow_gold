@@ -14,7 +14,7 @@ message Stretch {
   optional Strategy strategy = 1        [default = RUBBERBAND];
   optional bool time_disabled = 2;
   optional bool pitch_disabled = 3;
-  optional bool disabled = 20;
+  optional bool enabled = 20            [default = true];
   optional bool passthrough_when_disabled = 4 [default = true];
   optional double time_scale = 5        [default = 1.0];
   optional double time_percent = 6      [default = 100.0];
