@@ -152,6 +152,7 @@
 		9CF1B94E9EC21CEFAA39819F /* Time.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = D0F62BA5E9E1F2EF1ADE5A48 /* Time.pb.cc */; };
 		9D285A853CECFA72E407E81B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E504F6A5707F3F672DB52BA8 /* QuartzCore.framework */; };
 		9DB004903ABC0DDB765926F5 /* Zoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBB3BB05A5051FDDDF71A0A /* Zoom.cpp */; };
+		9E995A2DDB7987DAF4C6B70D /* OutlinedCursorLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B530DFED2D30AC04E45772B5 /* OutlinedCursorLabel.cpp */; };
 		9E9EA59170802A50D9138ED4 /* Defaulter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1335001F80FFEFC3CFE99B6 /* Defaulter.cpp */; };
 		9EC64CF5036DD6D204352FDB /* MediaOptical.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BB612C1E8140A577AA1D70E /* MediaOptical.svg.cpp */; };
 		9F22219D9B58CCDB27743396 /* Cuttable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1F657F03DB48DCBA241C62 /* Cuttable.cpp */; };
@@ -660,6 +661,7 @@
 		B489E3C5D211B5F02BD06F4E /* LockedFlag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedFlag.h; path = ../../../../src/rec/util/thread/LockedFlag.h; sourceTree = SOURCE_ROOT; };
 		B4AA49D246678CDC9F95AB93 /* CommandBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandBar.cpp; path = ../../../../src/rec/gui/audio/CommandBar.cpp; sourceTree = SOURCE_ROOT; };
 		B4B5D54B9F55AC57A478F045 /* AudioInputMicrophone.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioInputMicrophone.svg.h; path = ../../../../src/rec/gui/icon/AudioInputMicrophone.svg.h; sourceTree = SOURCE_ROOT; };
+		B530DFED2D30AC04E45772B5 /* OutlinedCursorLabel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OutlinedCursorLabel.cpp; path = ../../../../src/rec/widget/waveform/OutlinedCursorLabel.cpp; sourceTree = SOURCE_ROOT; };
 		B54F45E4D165529595DDAB5C /* SetterToggle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterToggle.h; path = ../../../../src/rec/gui/SetterToggle.h; sourceTree = SOURCE_ROOT; };
 		B55F220338DFC0C708EAFE8A /* Command.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Command.pb.cc; path = ../../../../genfiles/proto/rec/command/Command.pb.cc; sourceTree = SOURCE_ROOT; };
 		B5AE3FEEEB1792709D630FB7 /* content.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = content.cpp; path = ../../../../src/rec/data/yaml/src/content.cpp; sourceTree = SOURCE_ROOT; };
@@ -824,6 +826,7 @@
 		F67837B1F913F0981A51B001 /* Loops.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Loops.cpp; path = ../../../../src/rec/gui/audio/Loops.cpp; sourceTree = SOURCE_ROOT; };
 		F760410F12BAAC9AA41EA8EF /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = node.cpp; path = ../../../../src/rec/data/yaml/src/node.cpp; sourceTree = SOURCE_ROOT; };
 		F7F540A7941849524CECE203 /* LoopPoint.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopPoint.pb.cc; path = ../../../../genfiles/proto/rec/util/LoopPoint.pb.cc; sourceTree = SOURCE_ROOT; };
+		F838BCA2070AD57D509171C5 /* OutlinedCursorLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OutlinedCursorLabel.h; path = ../../../../src/rec/widget/waveform/OutlinedCursorLabel.h; sourceTree = SOURCE_ROOT; };
 		F85774759DCD19F8A09586F0 /* UpdateRequester.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UpdateRequester.h; path = ../../../../src/rec/util/UpdateRequester.h; sourceTree = SOURCE_ROOT; };
 		F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FullScreenRev.svg.cpp; path = ../../../../src/rec/gui/icon/FullScreenRev.svg.cpp; sourceTree = SOURCE_ROOT; };
 		F8ECB7C9B12C73DC0B8E5A92 /* AppLayout.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppLayout.pb.cc; path = ../../../../genfiles/proto/rec/slow/AppLayout.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -1018,6 +1021,16 @@
 				58C262946D0DA527CEB3E37C /* Trash.h */,
 			);
 			name = thread;
+			sourceTree = "<group>";
+		};
+		20733264E26312EF37707CF3 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
 			sourceTree = "<group>";
 		};
 		23BA494E83EED5906543C5B0 /* file */ = {
@@ -1617,7 +1630,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D1C8CA946C7D35AE3F059EA9 /* Slow */,
+				20733264E26312EF37707CF3 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1756,6 +1769,8 @@
 				57BAD6CA05CE71056CAFCC77 /* Cursor.h */,
 				4C7AAF4A55B324F3272AF97D /* CursorStates.cpp */,
 				9579FABA5679ADD5B887049B /* MouseWheelEvent.h */,
+				B530DFED2D30AC04E45772B5 /* OutlinedCursorLabel.cpp */,
+				F838BCA2070AD57D509171C5 /* OutlinedCursorLabel.h */,
 				20F428DEA148977B8CCBA4AC /* Waveform.cpp */,
 				9AFC9EAE8CE8E061239F3CA8 /* Waveform.h */,
 				CFBB3BB05A5051FDDDF71A0A /* Zoom.cpp */,
@@ -1784,16 +1799,6 @@
 				FCD1A29357D7EC9C93B982F2 /* raw */,
 			);
 			name = format;
-			sourceTree = "<group>";
-		};
-		D1C8CA946C7D35AE3F059EA9 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		DB617A20D9C265267D2D5AE8 /* file */ = {
@@ -2229,6 +2234,7 @@
 				3B29A2A06C3F52661DDE989D /* TreeViewDropAll.cpp in Sources */,
 				7C33CFD9B22820CCE3E06613 /* Cursor.cpp in Sources */,
 				E553DDF4F83DABF13DF4A2B9 /* CursorStates.cpp in Sources */,
+				9E995A2DDB7987DAF4C6B70D /* OutlinedCursorLabel.cpp in Sources */,
 				BE652DE043DBBAF8C10E8B5C /* Waveform.cpp in Sources */,
 				9DB004903ABC0DDB765926F5 /* Zoom.cpp in Sources */,
 				8288C37D4E9792C7A924D0BF /* Widget.cpp in Sources */,

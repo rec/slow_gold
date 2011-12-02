@@ -232,6 +232,7 @@
 		EEC79FB951F00A40E06DAC11 = { isa = PBXBuildFile; fileRef = B552AC06AE698C668E6993B1; };
 		3FD1BBE296D9E8B6B67F6A97 = { isa = PBXBuildFile; fileRef = 1E8BFBF8C92BDFFC08E3DA5E; };
 		98F1D9FCEDEF53EB0082B64D = { isa = PBXBuildFile; fileRef = FF18AC434964DCEDFBB90E01; };
+		51375625C02A4FC4C755CB80 = { isa = PBXBuildFile; fileRef = 78DECBE612E154EFB7E57638; };
 		72032AE9289C62D2949C8FD0 = { isa = PBXBuildFile; fileRef = D39324D786F94F655F5AA820; };
 		505EF0991F7DB5B549E82A79 = { isa = PBXBuildFile; fileRef = 834928B93F1109D7A0862E8E; };
 		4526B075235859A17CB2E433 = { isa = PBXBuildFile; fileRef = 914EE70C26960421C5C688A6; };
@@ -809,6 +810,8 @@
 		1A58D3C2EA8029EF3F3DD0FB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cursor.h; path = ../../../../src/rec/widget/waveform/Cursor.h; sourceTree = "SOURCE_ROOT"; };
 		FF18AC434964DCEDFBB90E01 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CursorStates.cpp; path = ../../../../src/rec/widget/waveform/CursorStates.cpp; sourceTree = "SOURCE_ROOT"; };
 		5817E7B34A2A55CF8B16181F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MouseWheelEvent.h; path = ../../../../src/rec/widget/waveform/MouseWheelEvent.h; sourceTree = "SOURCE_ROOT"; };
+		78DECBE612E154EFB7E57638 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OutlinedCursorLabel.cpp; path = ../../../../src/rec/widget/waveform/OutlinedCursorLabel.cpp; sourceTree = "SOURCE_ROOT"; };
+		ABD6A9ABEBBB8D5733207549 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OutlinedCursorLabel.h; path = ../../../../src/rec/widget/waveform/OutlinedCursorLabel.h; sourceTree = "SOURCE_ROOT"; };
 		D39324D786F94F655F5AA820 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Waveform.cpp; path = ../../../../src/rec/widget/waveform/Waveform.cpp; sourceTree = "SOURCE_ROOT"; };
 		5D9A9BA77199984B062E402C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Waveform.h; path = ../../../../src/rec/widget/waveform/Waveform.h; sourceTree = "SOURCE_ROOT"; };
 		834928B93F1109D7A0862E8E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Zoom.cpp; path = ../../../../src/rec/widget/waveform/Zoom.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1474,6 +1477,8 @@
 				1A58D3C2EA8029EF3F3DD0FB,
 				FF18AC434964DCEDFBB90E01,
 				5817E7B34A2A55CF8B16181F,
+				78DECBE612E154EFB7E57638,
+				ABD6A9ABEBBB8D5733207549,
 				D39324D786F94F655F5AA820,
 				5D9A9BA77199984B062E402C,
 				834928B93F1109D7A0862E8E,
@@ -1607,7 +1612,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		BEFB0F435F1AD955F6EDA3D1 = { isa = PBXGroup; children = (
+		D647125668862D665D77D7B5 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1634,7 +1639,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				BEFB0F435F1AD955F6EDA3D1,
+				D647125668862D665D77D7B5,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -2001,6 +2006,7 @@
 				EEC79FB951F00A40E06DAC11,
 				3FD1BBE296D9E8B6B67F6A97,
 				98F1D9FCEDEF53EB0082B64D,
+				51375625C02A4FC4C755CB80,
 				72032AE9289C62D2949C8FD0,
 				505EF0991F7DB5B549E82A79,
 				4526B075235859A17CB2E433,

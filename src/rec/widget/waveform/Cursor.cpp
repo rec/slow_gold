@@ -4,6 +4,7 @@
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/widget/waveform/OutlinedCursorLabel.h"
 
 using namespace rec::gui;
 using namespace rec::gui::color;
@@ -20,52 +21,14 @@ static const int REMAINS_FUDGE = 10;
 namespace widget {
 namespace waveform {
 
-namespace {
-
-class OutlinedLabel : public gui::SimpleLabel {
- public:
-  OutlinedLabel() {}
-  virtual ~OutlinedLabel() {}
-
-  static const float INSET = 1.0f;
-  static const float CORNER = 3.0f;
-  static const float LINE_WIDTH = 0.6f;
-
-  virtual void paint(Graphics& g) {
-  }
-
-  virtual void paintOverChildren(Graphics& g) {
-
-    juce::Rectangle<int> bounds = getLocalBounds();
-    juce::Rectangle<float> b;
-    b.setX(INSET);
-    b.setY(INSET);
-    b.setWidth(bounds.getWidth() - 2 * INSET);
-    b.setHeight(bounds.getHeight() - 2 * INSET);
-
-    g.setColour(juce::Colours::white);
-    g.fillRoundedRectangle(b, CORNER);
-
-    g.setColour(juce::Colours::black);
-
-    g.drawRoundedRectangle(b, CORNER, LINE_WIDTH);
-    gui::SimpleLabel::paint(g);
-  }
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(OutlinedLabel);
-};
-
-}  // namespace
-
 
 Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
                int index, bool isTimeCursor)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
-      index_(index),
-      caption_(new OutlinedLabel) {
+      index_(index) {
+  caption_.reset(new OutlinedCursorLabel(this));
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addAndMakeVisible(this, 0);
   waveform_->addAndMakeVisible(caption_.get(), 0);

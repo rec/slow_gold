@@ -757,6 +757,9 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp">
       <Filter>Command\rec\widget\waveform</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.cpp">
+      <Filter>Command\rec\widget\waveform</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp">
       <Filter>Command\rec\widget\waveform</Filter>
     </ClCompile>
@@ -1795,6 +1798,9 @@
       <Filter>Command\rec\widget\waveform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\MouseWheelEvent.h">
+      <Filter>Command\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.h">
       <Filter>Command\rec\widget\waveform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h">
