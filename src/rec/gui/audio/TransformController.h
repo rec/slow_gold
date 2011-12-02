@@ -38,6 +38,11 @@ class TransformController : public Layout,
   gui::SetterToggle<rec::audio::stretch::Stretch> enableButton_;
 
   juce::ComboBox stereoComboBox_;
+  Layout leftPanel_;
+  Layout rightPanel_;
+
+  Layout leftPadding_;
+  Layout rightPadding_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransformController);
 };

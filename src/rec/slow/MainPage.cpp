@@ -64,17 +64,17 @@ MainPage::MainPage(Components* components, data::Editable* e)
       transformResizer_("transform_x", &playbackPanel_, 3, e),
       controlResizer_("control_x", &playbackPanel_, 5, e) {
   // Main panel.
-  add(&mainPanel_, &navigationPanel_, 500, -1.0, -0.8);
+  add(&mainPanel_, &navigationPanel_, 150, -1.0, -0.4);
   add(&mainPanel_, &navigationResizer_, 7.0);
 
   Component* waveform = components->waveform_.get();
-  add(&mainPanel_, waveform, 50, -1.0, -0.5);
+  add(&mainPanel_, waveform, 150, -1.0, -0.5);
   waveform->addAndMakeVisible(components->modeSelector_.get());
   waveform->addAndMakeVisible(components->commandBar_.get());
 
   add(&mainPanel_, &waveformResizer_, 7.0);
 
-  add(&mainPanel_, &playbackPanel_, 250, -1.0, -0.2);
+  add(&mainPanel_, &playbackPanel_, 150, -1.0, -0.2);
 
   // Navigation panel.
   add(&navigationPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);

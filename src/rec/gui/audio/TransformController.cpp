@@ -5,6 +5,7 @@ using namespace rec::audio::stretch;
 
 static const bool ENABLE_SHIFTS = !false;
 static const int SLIDER_HEIGHT = 18;
+static const int LEFT_PANEL_WIDTH = 100;
 
 namespace rec {
 namespace gui {
@@ -22,11 +23,13 @@ enum Sides {
 }  // namespace
 
 TransformController::TransformController()
-    : Layout("TransformController", VERTICAL),
+    : Layout("TransformController", HORIZONTAL),
       playbackSpeed_("Speed", Address("time_percent")),
       pitchScale_("Pitch", Address("semitone_shift")),
       fineScale_("Tune", Address("detune_cents")),
-      enableButton_("Transform", Address("enabled")) {
+      enableButton_("Transform", Address("enabled")),
+      leftPanel_("Left", VERTICAL),
+      rightPanel_("Right", VERTICAL) {
   playbackSpeed_.slider()->setRange(0.5, 200.0, 1.0);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -53,11 +56,18 @@ TransformController::TransformController()
   stereoComboBox_.addItem("L + R", LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
-  addToLayout(&enableButton_, SLIDER_HEIGHT);
-  addToLayout(&stereoComboBox_, SLIDER_HEIGHT);
-  addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
-  addToLayout(&pitchScale_, SLIDER_HEIGHT);
-  addToLayout(&fineScale_, SLIDER_HEIGHT);
+  leftPanel_.addToLayout(&enableButton_, SLIDER_HEIGHT);
+  leftPanel_.addToLayout(&stereoComboBox_, SLIDER_HEIGHT);
+  leftPanel_.addToLayout(&leftPadding_);
+
+  addToLayout(&leftPanel_, LEFT_PANEL_WIDTH);
+
+  rightPanel_.addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
+  rightPanel_.addToLayout(&pitchScale_, SLIDER_HEIGHT);
+  rightPanel_.addToLayout(&fineScale_, SLIDER_HEIGHT);
+  rightPanel_.addToLayout(&rightPadding_);
+
+  addToLayout(&rightPanel_, 150, -1.0, 250);
 }
 
 void TransformController::onDataChange(const Stretch& s) {
