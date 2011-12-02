@@ -13,8 +13,9 @@ namespace rec {
 static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
 static const int CAPTION_OFFSET = 10000;
 static const int CAPTION_PADDING = 2;
-static const int CAPTION_X_OFFSET = 2;
+static const int CAPTION_X_OFFSET = 0;
 static const int CAPTION_Y_OFFSET = 5;
+static const int REMAINS_FUDGE = 10;
 
 namespace widget {
 namespace waveform {
@@ -43,11 +44,9 @@ class OutlinedLabel : public gui::SimpleLabel {
     b.setHeight(bounds.getHeight() - 2 * INSET);
 
     g.setColour(juce::Colours::white);
-    // g.setOpacity(0.5f);
     g.fillRoundedRectangle(b, CORNER);
 
     g.setColour(juce::Colours::black);
-    g.setOpacity(1.0f);
 
     g.drawRoundedRectangle(b, CORNER, LINE_WIDTH);
     gui::SimpleLabel::paint(g);
@@ -124,7 +123,7 @@ void Cursor::layout() {
   bounds.setX(x - (componentWidth - desc().width()) / 2);
 
   setBounds(bounds);
-  int remains = waveform_->getCursorX(index_ + 1) - getX() - CAPTION_X_OFFSET;
+  int remains = waveform_->getCursorX(index_ + 1) - getX() - CAPTION_X_OFFSET - REMAINS_FUDGE;
 
   caption_->setBounds(bounds.getX() + componentWidth + CAPTION_X_OFFSET,
                       CAPTION_Y_OFFSET,
