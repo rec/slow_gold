@@ -35,7 +35,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       thumbnail_(NULL),
       empty_(true) {
   setName("Waveform");
-  timeCursor_.reset(new Cursor(*timeCursor, this, 0, -1));
+  timeCursor_.reset(new Cursor(*timeCursor, this, 0, -1, true));
 
   setWantsKeyboardFocus(true);
 }
@@ -147,7 +147,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
     if (i < cursors_.size()) {
       c = cursors_[i];
     } else {
-      c = new Cursor(*defaultDesc, this, time, i);
+      c = new Cursor(*defaultDesc, this, time, i, false);
       cursors_.push_back(c);
     }
     c->setTime(time);
@@ -296,6 +296,16 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
 
 int Waveform::getCursorX(uint index) const {
   return (index < cursors_.size()) ? cursors_[index]->getX() : getWidth();
+}
+
+void Waveform::setCursorText(int index, const String& text) {
+  LoopPointList lpl = DataListener<LoopPointList>::data()->get();
+  DCHECK_GE(index,  0);
+  DCHECK_LT(index,  lpl.loop_point_size());
+  if (index < 0 || index >= lpl.loop_point_size())
+    return;
+  lpl.mutable_loop_point(index)->set_name(str(text));
+  DataListener<LoopPointList>::setProto(lpl);
 }
 
 }  // namespace waveform

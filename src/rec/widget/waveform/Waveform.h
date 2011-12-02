@@ -60,6 +60,7 @@ class Waveform : public gui::component::Focusable<Component>,
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
   CriticalSection* lock() { return &lock_; }
   int getCursorX(uint index) const;
+  void setCursorText(int index, const String& text);
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);

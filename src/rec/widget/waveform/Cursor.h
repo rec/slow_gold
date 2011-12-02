@@ -15,11 +15,14 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component, public Listener< Samples<44100> > {
+class Cursor : public Component,
+               public Listener< Samples<44100> >,
+               public juce::Label::Listener {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time,
-         int index);
+         int index, bool isTimeCursor);
   virtual ~Cursor();
+  virtual void labelTextChanged(juce::Label*);
 
   void paint(Graphics& g);
   Samples<44100> getTime() const;

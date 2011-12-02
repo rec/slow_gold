@@ -20,7 +20,7 @@ namespace widget {
 namespace waveform {
 
 Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
-               int index)
+               int index, bool isTimeCursor)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
@@ -30,6 +30,11 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
   waveform_->addAndMakeVisible(this, 0);
   waveform_->addAndMakeVisible(&caption_, 0);
 
+  if (!isTimeCursor) {
+    caption_.setEditable(true, false, false);
+    caption_.addListener(this);
+  }
+
   setTime(t);
   setRepaintsOnMouseActivity(true);
 }
@@ -37,6 +42,10 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
 Cursor::~Cursor() {
   waveform_->removeChildComponent(this);
   waveform_->removeChildComponent(&caption_);
+}
+
+void Cursor::labelTextChanged(juce::Label*) {
+  waveform_->setCursorText(index_, caption_.getText());
 }
 
 Samples<44100> Cursor::getTime() const {
@@ -111,7 +120,8 @@ void Cursor::paint(Graphics& g) {
   gui::drawLine(g, desc_.line(), middle, top, middle, height);
 }
 
-void Cursor::setCaption(const String& c) {
+void Cursor::setCaption(const String& cap) {
+  String c = cap.length() ? cap : String("---");
   caption_.setText(c, false);
   juce::Rectangle<int> bounds = caption_.getBounds();
 
