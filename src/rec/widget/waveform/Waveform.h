@@ -51,7 +51,7 @@ class Waveform : public gui::component::Focusable<Component>,
   virtual void onDataChange(const WaveformProto&);
   virtual void onDataChange(const ZoomProto&);
 
-  Cursor* timeCursor() { return timeCursor_; }
+  Cursor* timeCursor() { return timeCursor_.get(); }
 
   Range<Samples<44100> > getTimeRange() const;
   Samples<44100> xToTime(int x) const;
@@ -59,6 +59,7 @@ class Waveform : public gui::component::Focusable<Component>,
 
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
   CriticalSection* lock() { return &lock_; }
+  int getCursorX(uint index) const;
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);
@@ -68,7 +69,6 @@ class Waveform : public gui::component::Focusable<Component>,
 
   void adjustCursors(const LoopPointList&);
 
-  Cursor* newCursor(const CursorProto& d, Samples<44100> time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);
   int timeToX(Samples<44100> t) const;
   void cursorDragged(int index, int x);
@@ -81,7 +81,7 @@ class Waveform : public gui::component::Focusable<Component>,
 
   typedef vector<Cursor*> CursorList;
   CursorList cursors_;
-  Cursor* timeCursor_;
+  ptr<Cursor> timeCursor_;
 
   ZoomProto zoom_;
   bool empty_;

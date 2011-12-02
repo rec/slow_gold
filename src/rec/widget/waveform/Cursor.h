@@ -34,7 +34,7 @@ class Cursor : public Component, public Listener< Samples<44100> > {
   void setListeningToClock(bool b) { listeningToClock_ = b; }
   int index() { return index_; }
   void layout();
-  void setCaption(const String& c) { caption_.setText(c, false); }
+  void setCaption(const String&);
 
  private:
   Waveform* const waveform_;
@@ -47,6 +47,7 @@ class Cursor : public Component, public Listener< Samples<44100> > {
   int mouseDragX_;
   bool listeningToClock_;
   gui::SimpleLabel caption_;
+  int captionWidth_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);
 };

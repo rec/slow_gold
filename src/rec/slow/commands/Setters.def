@@ -17,6 +17,12 @@ command {
   setter_type_name: "rec.widget.Waveform"
 }
 command {
+  type: TOGGLE_PREFADER_LEVELS
+  is_setter: true
+  address { part: { name: "prefader_levels" } }
+  setter_type_name: "rec.audio.Gain"
+}
+command {
   type: TOGGLE_STRETCH_ENABLE
   is_setter: true
   address { part: { name: "disabled" } }

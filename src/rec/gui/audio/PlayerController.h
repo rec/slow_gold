@@ -43,10 +43,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
 
   LevelMeter levelMeter_;
 
-  // gui::SetterToggle disableButton_;
-  gui::SetterToggle<widget::waveform::ZoomProto> zoomToSelectionButton_;
-  gui::SetterToggle<rec::audio::Gain> preFaderLevels_;
-
   gui::SetterToggle<rec::audio::Gain> muteButton_;
   gui::SetterToggle<rec::audio::Gain> dimButton_;
 

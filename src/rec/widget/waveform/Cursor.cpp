@@ -12,6 +12,9 @@ namespace rec {
 
 static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
 static const int CAPTION_OFFSET = 10000;
+static const int CAPTION_PADDING = 2;
+static const int CAPTION_X_OFFSET = 10;
+static const int CAPTION_Y_OFFSET = 5;
 
 namespace widget {
 namespace waveform {
@@ -24,8 +27,8 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
       index_(index),
       listeningToClock_(true) {
   desc_.mutable_widget()->set_transparent(true);
-  waveform_->addChildComponent(this, 0);
-  waveform_->addChildComponent(&caption_, 0);
+  waveform_->addAndMakeVisible(this, 0);
+  waveform_->addAndMakeVisible(&caption_, 0);
 
   setTime(t);
   setRepaintsOnMouseActivity(true);
@@ -68,11 +71,15 @@ void Cursor::layout() {
   bounds.setX(x - (componentWidth - desc().width()) / 2);
 
   setBounds(bounds);
-  bounds = caption_.getBounds();
-  bounds.setX(bounds.getX() + CAPTION_OFFSET);
-  caption_.setBounds(bounds);
+#if 1
+  caption_.setTopLeftPosition(bounds.getX(), CAPTION_Y_OFFSET);
+#else
+  int remains = waveform_->getCursorX(index_) - getX() - CAPTION_X_OFFSET;
 
-  repaint();
+  caption_.setBounds(bounds.getX(), CAPTION_Y_OFFSET,
+                     std::min(captionWidth_, remains), caption_.getHeight());
+#endif
+  // repaint();
 }
 
 void Cursor::paint(Graphics& g) {
@@ -102,6 +109,16 @@ void Cursor::paint(Graphics& g) {
 
   p.setColor(highlight ? BACKGROUND : FOREGROUND);
   gui::drawLine(g, desc_.line(), middle, top, middle, height);
+}
+
+void Cursor::setCaption(const String& c) {
+  caption_.setText(c, false);
+  juce::Rectangle<int> bounds = caption_.getBounds();
+
+  bounds.setHeight(static_cast<int>(caption_.getFont().getHeight() + CAPTION_PADDING * 2));
+  captionWidth_ = caption_.getFont().getStringWidth(caption_.getText());
+  bounds.setWidth(captionWidth_);
+  caption_.setBounds(bounds);
 }
 
 }  // namespace waveform

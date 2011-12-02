@@ -169,6 +169,14 @@ command {
   }
 }
 command {
+  type: TOGGLE_PREFADER_LEVELS
+  desc {
+    menu: "Show prefader levels"
+    menu: "Show post-fader levels"
+    full: "Toggle level display between pre- and post-fader."
+  }
+}
+command {
   type: TOGGLE_STRETCH_ENABLE
   desc {
     menu: "Enabled transformations"

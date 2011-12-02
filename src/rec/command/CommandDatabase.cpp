@@ -1,6 +1,7 @@
 #include "rec/command/CommandDatabase.h"
 
 #include "rec/audio/stretch/Stretch.h"
+#include "rec/audio/util/Gain.pb.h"
 #include "rec/command/Access.pb.h"
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandDataSetter.h"
@@ -140,7 +141,7 @@ class CommandDatabase {
   void insertSetters() {
     using widget::waveform::WaveformProto;
     using audio::stretch::Stretch;
-    using audio::stretch::Stretch;
+    using audio::Gain;
     using slow::GuiSettings;
 
     for (int i = 0; i < data_.setters().command_size(); ++i) {
@@ -171,10 +172,18 @@ class CommandDatabase {
       if (id == Command::TOGGLE_GRID_DISPLAY ||
           id == Command::TOGGLE_PARALLEL_WAVEFORMS)
         s.reset(new TickedDataSetter<WaveformProto>(&cr->info_, ls, c, a, true));
+
       else if (id == Command::TOGGLE_STRETCH_ENABLE)
         s.reset(new TickedDataSetter<Stretch>(&cr->info_, ls, c, a, false));
+
       else if (id == Command::FOLLOW_CURSOR)
         s.reset(new TickedDataSetter<GuiSettings>(&cr->info_, ls, c, a, true));
+
+      else if (id == Command::FOLLOW_CURSOR)
+        s.reset(new TickedDataSetter<GuiSettings>(&cr->info_, ls, c, a, true));
+
+      else if (id == Command::TOGGLE_PREFADER_LEVELS)
+        s.reset(new TickedDataSetter<Gain>(&cr->info_, ls, c, a, false));
 
       if (!s) {
         LOG(DFATAL) << "Didn't understand " << commandName(id);

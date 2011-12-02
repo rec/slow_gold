@@ -55,6 +55,7 @@ message Command {
 
     TOGGLE_GRID_DISPLAY = 27;
     TOGGLE_PARALLEL_WAVEFORMS = 42;
+    TOGGLE_PREFADER_LEVELS = 46;
     TOGGLE_SELECTION = 41;
     TOGGLE_START_STOP = 28;
     TOGGLE_STRETCH_ENABLE = 29;
@@ -73,7 +74,7 @@ message Command {
     ZOOM_OUT = 40;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 45;
+    LAST_TYPE = 46;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

@@ -105,6 +105,7 @@ void addTransportMenu(TargetManager* t, PopupMenu* popup) {
   t->addCommandItem(popup, Command::CLEAR_LOOPS);
   t->addCommandItem(popup, Command::TOGGLE_GRID_DISPLAY);
   t->addCommandItem(popup, Command::TOGGLE_PARALLEL_WAVEFORMS);
+  t->addCommandItem(popup, Command::TOGGLE_PREFADER_LEVELS);
   t->addCommandItem(popup, Command::FOLLOW_CURSOR);
 
   popup->addSeparator();

@@ -113,20 +113,6 @@ class ZoomProto : public ::google::protobuf::Message {
   inline bool zoom_to_selection() const;
   inline void set_zoom_to_selection(bool value);
   
-  // optional bool follow_cursor = 4;
-  inline bool has_follow_cursor() const;
-  inline void clear_follow_cursor();
-  static const int kFollowCursorFieldNumber = 4;
-  inline bool follow_cursor() const;
-  inline void set_follow_cursor(bool value);
-  
-  // optional bool click_to_zoom = 5;
-  inline bool has_click_to_zoom() const;
-  inline void clear_click_to_zoom();
-  static const int kClickToZoomFieldNumber = 5;
-  inline bool click_to_zoom() const;
-  inline void set_click_to_zoom(bool value);
-  
   // @@protoc_insertion_point(class_scope:rec.widget.waveform.ZoomProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -135,13 +121,11 @@ class ZoomProto : public ::google::protobuf::Message {
   ::google::protobuf::int64 begin_;
   ::google::protobuf::int64 end_;
   bool zoom_to_selection_;
-  bool follow_cursor_;
-  bool click_to_zoom_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fZoom_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -210,38 +194,6 @@ inline bool ZoomProto::zoom_to_selection() const {
 inline void ZoomProto::set_zoom_to_selection(bool value) {
   _set_bit(2);
   zoom_to_selection_ = value;
-}
-
-// optional bool follow_cursor = 4;
-inline bool ZoomProto::has_follow_cursor() const {
-  return _has_bit(3);
-}
-inline void ZoomProto::clear_follow_cursor() {
-  follow_cursor_ = false;
-  _clear_bit(3);
-}
-inline bool ZoomProto::follow_cursor() const {
-  return follow_cursor_;
-}
-inline void ZoomProto::set_follow_cursor(bool value) {
-  _set_bit(3);
-  follow_cursor_ = value;
-}
-
-// optional bool click_to_zoom = 5;
-inline bool ZoomProto::has_click_to_zoom() const {
-  return _has_bit(4);
-}
-inline void ZoomProto::clear_click_to_zoom() {
-  click_to_zoom_ = false;
-  _clear_bit(4);
-}
-inline bool ZoomProto::click_to_zoom() const {
-  return click_to_zoom_;
-}
-inline void ZoomProto::set_click_to_zoom(bool value) {
-  _set_bit(4);
-  click_to_zoom_ = value;
 }
 
 

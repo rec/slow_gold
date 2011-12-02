@@ -21,16 +21,12 @@ enum Sides {
 
 }  // namespace
 
-
 PlayerController::PlayerController()
     : Layout("PlayerController", VERTICAL),
       playbackSpeed_("Speed", Address("time_percent")),
       pitchScale_("Pitch", Address("semitone_shift")),
       fineScale_("Tune", Address("detune_cents")),
       level_("Gain", Address("gain")),
-      // disableButton_("Disable speed", Address("time_disabled")),
-      zoomToSelectionButton_("Zoom to selection", Address("zoom_to_selection")),
-      preFaderLevels_("Pre-fader levels", Address("prefader_levels")),
       muteButton_("Mute", Address("mute")),
       dimButton_("Dim", Address("dim")) {
   playbackSpeed_.slider()->setRange(0.5, 200.0, 1.0);
@@ -51,17 +47,15 @@ PlayerController::PlayerController()
 
   pitchScale_.setEnabled(ENABLE_SHIFTS);
   fineScale_.setEnabled(ENABLE_SHIFTS);
-  // disableButton_.setEnabled(ENABLE_SHIFTS);
-  zoomToSelectionButton_.setEnabled(false);
 
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
   stereoComboBox_.setTextWhenNothingSelected("Stereo");
   stereoComboBox_.setTextWhenNoChoicesAvailable("Stereo");
   stereoComboBox_.addItem("Stereo", STEREO);
-  stereoComboBox_.addItem("Mono (Left + Right)", LEFT_PLUS_RIGHT);
-  stereoComboBox_.addItem("Mono (Left)", LEFT);
-  stereoComboBox_.addItem("Mono (Right)", RIGHT);
+  stereoComboBox_.addItem("Left", LEFT);
+  stereoComboBox_.addItem("Right", RIGHT);
+  stereoComboBox_.addItem("L + R", LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
   addToLayout(&stereoComboBox_, 18);
@@ -73,9 +67,6 @@ PlayerController::PlayerController()
 
   addToLayout(&muteButton_, 14);
   addToLayout(&dimButton_, 14);
-  // addToLayout(&disableButton_, 14);
-  addToLayout(&zoomToSelectionButton_, 14);
-  addToLayout(&preFaderLevels_, 14);
 
   addToLayout(&level_, SLIDER_HEIGHT);
   addToLayout(&levelMeter_);
