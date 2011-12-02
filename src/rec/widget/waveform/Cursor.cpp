@@ -26,8 +26,8 @@ class OutlinedLabel : public gui::SimpleLabel {
   OutlinedLabel() {}
   virtual ~OutlinedLabel() {}
 
-  static const float INSET = 2.0f;
-  static const float CORNER = 4.0f;
+  static const float INSET = 1.0f;
+  static const float CORNER = 2.0f;
   static const float LINE_WIDTH = 5.0f;
 
   virtual void paint(Graphics& g) {
@@ -111,7 +111,9 @@ void Cursor::setTime(Samples<44100> time) {
 }
 
 void Cursor::layout() {
-  waveform_->repaint(getBounds());
+  juce::Rectangle<int> b1 = getBounds();
+  juce::Rectangle<int> b2 = caption_->getBounds();
+
   juce::Rectangle<int> bounds = waveform_->getLocalBounds();
   int componentWidth = desc().component_width();
   int x = 0;
@@ -128,6 +130,9 @@ void Cursor::layout() {
   caption_->setBounds(bounds.getX() + componentWidth + CAPTION_X_OFFSET,
                       CAPTION_Y_OFFSET,
                       std::min(captionWidth_, remains), caption_->getHeight());
+
+  waveform_->repaint(b1);
+  waveform_->repaint(b2);
   waveform_->repaint(getBounds());
   waveform_->repaint(caption_->getBounds());
 }

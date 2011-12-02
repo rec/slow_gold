@@ -9,6 +9,7 @@ namespace block {
 
 BlockSet difference(const Block&, const BlockSet&);
 BlockSet difference(const BlockSet&, const BlockSet&);
+BlockSet symmetricDifference(const BlockSet&, const BlockSet&);
 
 Block firstEmptyBlockAfter(const BlockSet& s, int64 pos, int64 length);
 

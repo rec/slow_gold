@@ -1,5 +1,6 @@
 #include "rec/util/block/Block.h"
 #include "rec/util/block/Difference.h"
+#include "rec/util/block/MergeBlockSet.h"
 
 namespace rec {
 namespace util {
@@ -58,6 +59,11 @@ Block firstEmptyBlockAfter(const BlockSet& s, int64 pos, int64 length) {
 
   return diff.empty() ? Block(pos, pos) : *diff.begin();
 }
+
+BlockSet symmetricDifference(const BlockSet& x, const BlockSet& y) {
+  return merge(difference(x, y), difference(y, x));
+}
+
 
 }  // namespace block
 }  // namespace util

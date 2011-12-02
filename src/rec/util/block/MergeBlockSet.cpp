@@ -5,6 +5,25 @@ namespace rec {
 namespace util {
 namespace block {
 
+BlockSet merge(const BlockSet& x, const BlockSet& y) {
+  Block* prev = NULL;
+  BlockSet result;
+  BlockSet::const_iterator i = x.begin(), j = y.begin();
+
+  while (i != x.end() || j != y.end()) {
+    bool useX = (j == y.end()) || (i != x.end() && *i < *j);
+    const Block &next = *((useX ? i : j)++);
+    if (prev && intersects(*prev, next)) {
+      prev->second = next.second;
+    } else {
+      result.insert(next);
+      prev = const_cast<Block*>(&*result.rbegin());
+    }
+  }
+
+  return result;
+}
+
 void merge(const Block& block, BlockSet* set) {
   // "begin" is the first block that isn't entirely below the new block.
   BlockSet::const_iterator begin = set->begin();
@@ -32,7 +51,6 @@ void merge(const BlockSet& b, BlockSet* set) {
   for (BlockSet::const_iterator i = b.begin(); i != b.end(); ++i)
     merge(*i, set);
 }
-
 
 }  // namespace block
 }  // namespace util
