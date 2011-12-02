@@ -149,16 +149,18 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints, const BlockSet& di
   MessageManagerLock l;
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
+    bool hasCaption = (i != 0);
     Samples<44100> time = loopPoints.loop_point(i).time();
     Cursor* c;
     if (i < cursors_.size()) {
       c = cursors_[i];
     } else {
-      c = new Cursor(*defaultDesc, this, time, i, i != 0);
+      c = new Cursor(*defaultDesc, this, time, i, hasCaption);
       cursors_.push_back(c);
     }
     c->setTime(time);
-    c->setCaption(str(loopPoints.loop_point(i).name()));
+    if (hasCaption)
+      c->setCaption(str(loopPoints.loop_point(i).name()));
   }
 
   while (cursors_.size() > size) {

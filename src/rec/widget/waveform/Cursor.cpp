@@ -31,9 +31,9 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
   caption_.reset(new OutlinedCursorLabel(this));
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addAndMakeVisible(this, 0);
-  waveform_->addAndMakeVisible(caption_.get(), 0);
 
   if (hasCaption) {
+    waveform_->addAndMakeVisible(caption_.get(), 0);
     caption_->setEditable(true, false, false);
     caption_->addListener(this);
   }
