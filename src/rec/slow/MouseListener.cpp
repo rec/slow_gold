@@ -84,26 +84,28 @@ void MouseListener::mouseDown(const MouseEvent& e) {
     Samples<44100> time = waveform->xToTime(e.x);
     dragMods_ = e.mods;
     Mode::Action action = getClickAction();
-    if (action == Mode::DRAG)
+    if (action == Mode::DRAG) {
       waveformDragStart_ = DataListener<ZoomProto>::data()->get().begin();
 
-    else if (action == Mode::DRAW_LOOP_POINTS)
+    } else if (action == Mode::DRAW_LOOP_POINTS) {
       audio::addLoopPointToEditable(file(), time);
+      toggleAddLoopPointMode();
 
-    else if (action == Mode::TOGGLE_SELECTION)
+    } else if (action == Mode::TOGGLE_SELECTION) {
       toggleSelectionSegment(file(), time);
 
-    else if (action == Mode::SET_TIME)
+    } else if (action == Mode::SET_TIME) {
       currentTime()->jumpToTime(time);
 
-    else if (action == Mode::ZOOM_IN)
+    } else if (action == Mode::ZOOM_IN) {
       zoom(*instance_, e, time, 1);
 
-    else if (action == Mode::ZOOM_OUT)
+    } else if (action == Mode::ZOOM_OUT) {
       zoom(*instance_, e, time, -1);
 
-    else
+    } else {
       DCHECK(false);
+    }
 
     waveform->grabKeyboardFocus();
     waveform->repaint();  // TODO: can remove now?
@@ -158,6 +160,16 @@ void MouseListener::mouseUp(const MouseEvent& e) {
     timeCursor->setListeningToClock(true);
 
   // mouseDrag(e);
+}
+
+void MouseListener::toggleAddLoopPointMode() {
+  if (mode_.click() == Mode::DRAW_LOOP_POINTS) {
+    mode_ = previousMode_;
+  } else {
+    previousMode_ = mode_;
+    mode_.set_click(Mode::DRAW_LOOP_POINTS);
+  }
+  DataListener<Mode>::setProto(mode_);
 }
 
 }  // namespace slow

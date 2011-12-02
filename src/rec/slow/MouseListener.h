@@ -31,6 +31,7 @@ class MouseListener : public HasInstance,
   virtual void setMode(const Mode& m) { mode_ = m; }
   virtual void onDataChange(const widget::waveform::ZoomProto&) {}
   virtual void onDataChange(const Mode& m) { setMode(m); }
+  void toggleAddLoopPointMode();
 
  private:
   Mode::Action getClickAction();
@@ -39,6 +40,7 @@ class MouseListener : public HasInstance,
   ModifierKeys dragMods_;
   Range<Samples<44100> > cursorDrag_;
   Mode mode_;
+  Mode previousMode_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MouseListener);
 };

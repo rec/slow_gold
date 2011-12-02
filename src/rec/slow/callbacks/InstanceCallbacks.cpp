@@ -16,6 +16,7 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/MainPage.h"
+#include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
@@ -37,7 +38,7 @@ void addLoopPoint(Instance* i) {
 }
 
 void addLoopPointClick(Instance* i) {
-  // TODO
+  i->mouseListener_->toggleAddLoopPointMode();
 }
 
 void nudgeVolumeDownOp(audio::Gain* gain) {
@@ -134,10 +135,6 @@ void nudgeEndLeft(Instance* i) {
 void nudgeEndRight(Instance* i) {
 }
 
-
-void toggleStretchEnable(Instance* i) {
-}
-
 void treeClose(Instance* i) {
 }
 
@@ -200,7 +197,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   using rec::audio::source::Player;
 
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
-  addCallback(c, Command::ADD_LOOP_POINT_CLICK, addLoopPoint, i);
+  addCallback(c, Command::ADD_LOOP_POINT_CLICK, addLoopPointClick, i);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
   addCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
   addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
