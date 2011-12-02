@@ -46,6 +46,7 @@ Cursor::~Cursor() {
 
 void Cursor::labelTextChanged(juce::Label*) {
   waveform_->setCursorText(index_, caption_.getText());
+  layout();
 }
 
 Samples<44100> Cursor::getTime() const {

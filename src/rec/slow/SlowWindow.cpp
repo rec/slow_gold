@@ -50,16 +50,16 @@ static Def<LoopPointList> loops(
 "loop_point { selected: true }"
 );
 
-static Def<AppLayout> layout(
+static Def<AppLayout> layout(/*
 "waveform_y: 200\n"
-"controls_y: 550\n"
+"control_y: 550\n"
 
 "songdata_x: 350\n"
 "loops_x: 650\n"
 
 "transform_x: 350\n"
 "controls_x: 650\n"
-""
+""*/
 );
 
 static Def<gui::WindowPosition> windowPosition(
@@ -73,7 +73,7 @@ DefaultRegistry* SlowWindow::getDefaultRegistry() {
   DefaultRegistry* r = new DefaultRegistry;
 
   // r->registerDefault(*loops);
-  r->registerDefault(*layout);
+  // r->registerDefault(*layout);
   r->registerDefault(*windowPosition);
 
   return r;
