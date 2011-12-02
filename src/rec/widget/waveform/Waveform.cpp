@@ -44,7 +44,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 Cursor* Waveform::newCursor(const CursorProto& d, Samples<44100> time, int index) {
 	Cursor* cursor = new Cursor(d, this, time, index);
   cursors_.push_back(cursor);
-  addAndMakeVisible(cursor);
+  addAndMakeVisible(cursor, 0);
   return cursor;
 }
 
