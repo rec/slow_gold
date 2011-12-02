@@ -27,8 +27,8 @@ class OutlinedLabel : public gui::SimpleLabel {
   virtual ~OutlinedLabel() {}
 
   static const float INSET = 1.0f;
-  static const float CORNER = 2.0f;
-  static const float LINE_WIDTH = 5.0f;
+  static const float CORNER = 3.0f;
+  static const float LINE_WIDTH = 0.6f;
 
   virtual void paint(Graphics& g) {
   }
@@ -49,9 +49,8 @@ class OutlinedLabel : public gui::SimpleLabel {
     g.setColour(juce::Colours::black);
     g.setOpacity(1.0f);
 
+    g.drawRoundedRectangle(b, CORNER, LINE_WIDTH);
     gui::SimpleLabel::paint(g);
-
-    g.drawRoundedRectangle(b, INSET, LINE_WIDTH);
   }
 
  private:
