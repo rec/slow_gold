@@ -33,7 +33,8 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : gui::component::Focusable<Component>(m),
       length_(0),
       thumbnail_(NULL),
-      empty_(true) {
+      empty_(true),
+      isDraggingCursor_(false) {
   setName("Waveform");
   timeCursor_.reset(new Cursor(*timeCursor, this, 0, -1, true));
 
@@ -132,9 +133,10 @@ void Waveform::onDataChange(const LoopPointList& loopPoints) {
     selection_ = audio::getTimeSelection(loopPoints);
     length_ = Samples<44100>(loopPoints.length());
     empty_ = !loopPoints.has_length();
+    if (isDraggingCursor_)
+      return;
   }
 
-  resized();
   thread::callAsync(this, &Waveform::adjustCursors, loopPoints);
 }
 

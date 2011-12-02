@@ -144,10 +144,11 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     }
 
   } else if (e.eventComponent->getName() == "Cursor") {
+    components()->waveform_->setIsDraggingCursor(true);
+
     Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
     if (!near(cursor->getTime(), 0, 44)) {
       Samples<44100> t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
-      cursor->setListeningToClock(false);
       cursor->setTime(t);
       currentTime()->setCursorTime(cursor->index(), t);
     }
@@ -155,11 +156,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 }
 
 void MouseListener::mouseUp(const MouseEvent& e) {
-  Cursor* timeCursor = components()->waveform_->timeCursor();
-  if (timeCursor == e.eventComponent)
-    timeCursor->setListeningToClock(true);
-
-  // mouseDrag(e);
+  components()->waveform_->setIsDraggingCursor(false);
 }
 
 void MouseListener::toggleAddLoopPointMode() {

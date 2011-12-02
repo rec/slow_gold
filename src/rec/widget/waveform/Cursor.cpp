@@ -24,8 +24,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
-      index_(index),
-      listeningToClock_(true) {
+      index_(index) {
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addAndMakeVisible(this, 0);
   waveform_->addAndMakeVisible(&caption_, 0);
@@ -56,7 +55,7 @@ Samples<44100> Cursor::getTime() const {
 
 void Cursor::operator()(Samples<44100> time) {
   Lock l(lock_);
-  if (listeningToClock_)
+  if (!waveform_->isDraggingCursor())
     thread::callAsync(this, &Cursor::setTime, time);
 }
 
@@ -89,7 +88,6 @@ void Cursor::layout() {
   caption_.setBounds(bounds.getX(), CAPTION_Y_OFFSET,
                      std::min(captionWidth_, remains), caption_.getHeight());
 #endif
-  // repaint();
 }
 
 void Cursor::paint(Graphics& g) {

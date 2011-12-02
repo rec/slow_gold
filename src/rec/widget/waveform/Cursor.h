@@ -34,7 +34,6 @@ class Cursor : public Component,
 
   virtual void operator()(Samples<44100> t);
 
-  void setListeningToClock(bool b) { listeningToClock_ = b; }
   int index() { return index_; }
   void layout();
   void setCaption(const String&);
@@ -48,7 +47,6 @@ class Cursor : public Component,
   juce::Rectangle<int> bounds_;
   int dragX_;
   int mouseDragX_;
-  bool listeningToClock_;
   gui::SimpleLabel caption_;
   int captionWidth_;
 

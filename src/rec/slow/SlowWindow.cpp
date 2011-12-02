@@ -50,7 +50,8 @@ static Def<LoopPointList> loops(
 "loop_point { selected: true }"
 );
 
-static Def<AppLayout> layout(/*
+#if 0
+static Def<AppLayout> layout(
 "waveform_y: 200\n"
 "control_y: 550\n"
 
@@ -59,8 +60,9 @@ static Def<AppLayout> layout(/*
 
 "transform_x: 350\n"
 "controls_x: 650\n"
-""*/
+""
 );
+#endif
 
 static Def<gui::WindowPosition> windowPosition(
 "bounds {\n"

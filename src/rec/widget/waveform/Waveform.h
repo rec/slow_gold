@@ -61,6 +61,8 @@ class Waveform : public gui::component::Focusable<Component>,
   CriticalSection* lock() { return &lock_; }
   int getCursorX(uint index) const;
   void setCursorText(int index, const String& text);
+  void setIsDraggingCursor(bool d) { Lock l(lock_); isDraggingCursor_ = d; }
+  bool isDraggingCursor() const { Lock l(lock_); return isDraggingCursor_; }
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);
@@ -86,6 +88,7 @@ class Waveform : public gui::component::Focusable<Component>,
 
   ZoomProto zoom_;
   bool empty_;
+  bool isDraggingCursor_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 
