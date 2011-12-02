@@ -9,19 +9,18 @@ namespace {
 
 static const int64 SMALLEST_TIME_SAMPLES = 4 * 44100;
 static const double POWER = 4.0;
+static const double ZOOM_INCREMENT = 0.3;
 
 double zoomFunction(double increment) {
   return pow(POWER, -increment);
 }
 
 ZoomProto zoom(const ZoomProto& z, Samples<44100> length, Samples<44100> t, double k) {
-  k = zoomFunction(k);
+  k = zoomFunction(k * ZOOM_INCREMENT);
   DCHECK_LE(z.begin(), z.end());
   ZoomProto zoom(z);
   Samples<44100> b = zoom.begin();
-  Samples<44100> e = zoom.end();
-  if (!e)
-    e = length;  // TODO:  delete these?
+  Samples<44100> e = zoom.has_end() ? zoom.end() : length.get();
 
   if (k >= 1.0 || k * (e - b) >= SMALLEST_TIME_SAMPLES) {
     int64 begin = static_cast<int64>(k * b + (1.0 - k) * t);

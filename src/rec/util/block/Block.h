@@ -48,6 +48,15 @@ inline bool isBlock(const BlockSet& set, const Block& block) {
   return (set.size() == 1) && (*set.begin() == block);
 }
 
+inline Block toBlock(const BlockSet& set) {
+  Block b = makeBlock(0, 0);
+  if (set.begin() != set.end()) {
+    b.first = set.begin()->first;
+    b.second = set.rbegin()->second;
+  }
+  return b;
+}
+
 inline Size fullTo(const BlockSet& set) {
   return (set.empty() || set.begin()->first) ? 0 : set.begin()->second;
 }

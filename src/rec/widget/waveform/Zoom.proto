@@ -3,7 +3,4 @@ package rec.widget.waveform;
 message ZoomProto {
   optional int64 begin = 1;
   optional int64 end = 2;
-  optional bool zoom_to_selection = 3;
-  optional bool follow_cursor = 4;
-  optional bool click_to_zoom = 5;
 };

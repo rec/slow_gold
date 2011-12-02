@@ -14,6 +14,7 @@
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
@@ -25,9 +26,11 @@
 namespace rec {
 namespace slow {
 
+using namespace rec::widget::waveform;
+
 namespace {
 
-static const double ZOOM_INCREMENT = 0.3;
+static const int SELECTION_WIDTH_PORTION = 20;
 
 void addLoopPoint(Instance* i) {
   audio::addLoopPointToEditable(i->file(), i->player_->getTime());
@@ -154,11 +157,17 @@ void treeUp(Instance* i) {
 }
 
 void zoomOut(Instance* i) {
-  widget::waveform::zoom(i->file(), i->length(), -ZOOM_INCREMENT);
+  widget::waveform::zoom(i->file(), i->length(), -1.0);
 }
 
 void zoomToSelection(Instance* i) {
-  // TODO
+  block::Block range = block::toBlock(i->currentTime_->timeSelection());
+  int64 pad = block::getSize(range) / SELECTION_WIDTH_PORTION;
+
+  ZoomProto zoom;
+  zoom.set_begin(std::max(0LL, range.first - pad));
+  zoom.set_end(std::min(i->length().get(), range.second + pad));
+  data::set(zoom, i->file());
 }
 
 void audioPreferences(Instance* i) {

@@ -7,8 +7,8 @@ namespace rec {
 namespace util {
 namespace block {
 
-BlockSet difference(const Block& block, const BlockSet& set);
-BlockSet difference(const BlockSet& set, const BlockSet& set2);
+BlockSet difference(const Block&, const BlockSet&);
+BlockSet difference(const BlockSet&, const BlockSet&);
 
 Block firstEmptyBlockAfter(const BlockSet& s, int64 pos, int64 length);
 
