@@ -80,14 +80,10 @@ void Cursor::layout() {
   bounds.setX(x - (componentWidth - desc().width()) / 2);
 
   setBounds(bounds);
-#if 1
-  caption_.setTopLeftPosition(bounds.getX(), CAPTION_Y_OFFSET);
-#else
-  int remains = waveform_->getCursorX(index_) - getX() - CAPTION_X_OFFSET;
+  int remains = waveform_->getCursorX(index_ + 1) - getX() - CAPTION_X_OFFSET;
 
   caption_.setBounds(bounds.getX(), CAPTION_Y_OFFSET,
                      std::min(captionWidth_, remains), caption_.getHeight());
-#endif
 }
 
 void Cursor::paint(Graphics& g) {
