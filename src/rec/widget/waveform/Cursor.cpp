@@ -1,5 +1,6 @@
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/audio/Audio.h"
+#include "rec/base/Samples.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
@@ -8,6 +9,9 @@ using namespace rec::gui;
 using namespace rec::gui::color;
 
 namespace rec {
+
+static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
+
 namespace widget {
 namespace waveform {
 

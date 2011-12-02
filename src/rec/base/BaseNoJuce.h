@@ -43,8 +43,6 @@ enum Endianness { LITTLE_END, BIG_END };
 
 class None {};
 
-static const int64 SMALLEST_TIME_SAMPLES = 220;
-
 typedef vector<float> LevelVector;
 
 }  // namespace rec

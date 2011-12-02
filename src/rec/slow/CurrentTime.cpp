@@ -11,10 +11,11 @@ namespace slow {
 
 using widget::waveform::ZoomProto;
 
-const int PRELOAD = 10000;
+static const int PRELOAD = 10000;
 
-static const double IDEAL_CURSOR_POSITION_RATIO = 0.10;
-static const double MIN_CURSOR_RATIO_CHANGE = 0.33;
+static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
+static const double MIN_CURSOR_RATIO_CHANGE = 0.85;
+static const Samples<44100> MIN_ZOOM_TIME = 44100 / 2;
 
 CurrentTime::CurrentTime(Instance* i)
     : HasInstance(i), time_(0), jumpTime_(-1), length_(0),
@@ -25,25 +26,30 @@ void CurrentTime::operator()(Samples<44100> t) {
   Lock l(lock_);
   time_ = t;
 
+  if (!followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
+    return;
+
+  zoomTime_ = t;
+
   // Now compute an ideal zoom for this time.
   ZoomProto z = zoom_;
   Samples<44100> width = z.end() - z.begin();
   Samples<44100> off = static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width);
   z.set_begin(t - off);
-  z.set_end(t + width - off);
 
-  if (z.end() >= length_) {
-    z.set_begin(z.begin() - (z.end() - length_));
-    z.set_end(length_);
-  }
+  if (z.begin() + width > length_)
+    z.set_begin(length_ - width);
 
-  if (z.begin() < 0) {
-    z.set_end(z.end() - z.begin());
+  if (z.begin() < 0)
     z.set_begin(0);
-  }
 
-  if (abs(zoom_.begin() - z.begin()) > (width * MIN_CURSOR_RATIO_CHANGE))
+  z.set_end(z.begin() + width);
+
+  // TODO:  why do I need all of this condition?
+  if (t < zoom_.begin() || t > zoom_.end() ||
+      abs(zoom_.begin() - z.begin()) > (width * MIN_CURSOR_RATIO_CHANGE)) {
     DataListener<ZoomProto>::setProto(z);
+  }
 }
 
 void CurrentTime::onDataChange(const ZoomProto& zoom) {
@@ -75,7 +81,7 @@ void CurrentTime::onDataChange(const LoopPointList& loops) {
 
 void CurrentTime::onDataChange(const GuiSettings& settings) {
   Lock l(lock_);
-  followCursor_ = settings.follow_cursor();
+  followCursor_ = false && settings.follow_cursor();
 }
 
 void CurrentTime::setCursorTime(int index, Samples<44100> t) {

@@ -4,8 +4,7 @@
 #include "rec/gui/icon/MediaPlay.svg.h"
 #include "rec/gui/icon/MediaRecord.svg.h"
 
-static const int ICON_SIZE = 30;
-static const int BUTTON_SIZE = 16;
+static const int BUTTON_SIZE = 30;
 static const int PADDING = 4;
 
 namespace rec {
@@ -41,10 +40,10 @@ CommandBar::CommandBar()
                              NULL,
                              ptr<Drawable>(icon::FullScreenRev::create()).get());
 
-  addToLayout(&addLoopPoint_, ICON_SIZE);
-  addToLayout(&addLoopPointClick_, ICON_SIZE);
-  addToLayout(&zoomOut_, ICON_SIZE);
-  addToLayout(&zoomToSelection_, ICON_SIZE);
+  addToLayout(&addLoopPoint_, BUTTON_SIZE);
+  addToLayout(&addLoopPointClick_, BUTTON_SIZE);
+  addToLayout(&zoomOut_, BUTTON_SIZE);
+  addToLayout(&zoomToSelection_, BUTTON_SIZE);
 
   setBounds(0, BUTTON_SIZE + 4 * PADDING,
             4 * BUTTON_SIZE + 5 * PADDING, BUTTON_SIZE + 2 * PADDING);

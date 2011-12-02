@@ -102,5 +102,9 @@ Samples<44100> Instance::time() const {
   return currentTime_->time();
 }
 
+bool Instance::isPlaying() const {
+  return player_ && player_->state();
+}
+
 }  // namespace slow
 }  // namespace rec

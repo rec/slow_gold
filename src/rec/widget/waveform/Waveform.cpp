@@ -15,6 +15,8 @@ namespace waveform {
 
 namespace {
 
+static const int64 SMALLEST_TIME_SAMPLES = 10000;
+
 Def<CursorProto> timeDesc(
 "widget {colors {color: {name: \"red\"}}}\n"
 "line {thickness: 2.0}"

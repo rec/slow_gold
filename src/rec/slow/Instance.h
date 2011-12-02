@@ -31,6 +31,7 @@ class Instance {
   const VirtualFile file() const;
   Samples<44100> time() const;
   Samples<44100> length() const;
+  bool isPlaying() const;
 
   SlowWindow* window_;
 

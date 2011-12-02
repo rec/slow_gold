@@ -1,7 +1,7 @@
 package rec.util;
 
 message LoopPoint {
-  optional uint64 time = 1;
+  optional int64 time = 1;
   optional bool selected = 2;
   optional string name = 3;
   optional string notes = 4;
@@ -9,5 +9,5 @@ message LoopPoint {
 
 message LoopPointList {
   repeated LoopPoint loop_point = 1;
-  optional uint64 length = 2;
+  optional int64 length = 2;
 };

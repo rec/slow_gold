@@ -1,8 +1,8 @@
 #ifndef __REC_GUI_AUDIO_COMMANDBAR__
 #define __REC_GUI_AUDIO_COMMANDBAR__
 
+#include "rec/command/Command.h"
 #include "rec/gui/layout/Layout.h"
-#include "rec/command/Command.pb.h"
 #include "rec/util/DataListener.h"
 
 namespace rec {

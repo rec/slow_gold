@@ -2,7 +2,6 @@
 #define __REC_UTIL_RANDOMSELFINVERSEFUNCTION__
 
 #include "rec/base/base.h"
-#include "rec/base/types.h"
 
 namespace rec {
 namespace util {

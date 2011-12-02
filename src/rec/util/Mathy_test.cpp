@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include "rec/base/types.h"
 #include "rec/util/Math.h"
 
 namespace rec {

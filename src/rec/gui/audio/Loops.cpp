@@ -61,7 +61,7 @@ static String getDisplayText(const Value& v, const TableColumn& col, Samples<441
   switch (col.type()) {
    case TableColumn::STRING:  return str(v.string_f());
    case TableColumn::UINT32:  return String(v.uint32_f());
-   case TableColumn::TIME:    return formatTime(Samples<44100>(v.uint64_f()), length);
+   case TableColumn::TIME:    return formatTime(Samples<44100>(v.int64_f()), length);
    case TableColumn::DOUBLE:  return String(v.double_f());
    default:                   return "<unknown>";
   }

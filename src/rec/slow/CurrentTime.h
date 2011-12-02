@@ -41,6 +41,7 @@ class CurrentTime : public HasInstance,
   block::BlockSet timeSelection_;
   Samples<44100> time_;
   Samples<44100> jumpTime_;
+  Samples<44100> zoomTime_;
   Samples<44100> length_;
   bool followCursor_;
   widget::waveform::ZoomProto zoom_;

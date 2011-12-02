@@ -24,6 +24,8 @@ class HasInstance {
   const VirtualFile file() const { return instance_->file(); }
   Samples<44100> time() const { return instance_->time(); }
   Samples<44100> length() const { return instance_->length(); }
+  bool isPlaying() const { return instance_->isPlaying(); }
+
 
  protected:
   Instance* instance_;
