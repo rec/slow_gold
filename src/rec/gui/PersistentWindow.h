@@ -31,9 +31,11 @@ class PersistentWindow : public DocumentWindow,
   CriticalSection lock_;
 
  private:
+  void fixPosition(WindowPosition*);
   void writeData();
   bool okToSavePosition_;
   WindowPosition position_;
+  juce::Rectangle<int> resizeLimits_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(PersistentWindow);
 };

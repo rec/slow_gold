@@ -15,6 +15,7 @@ static const int MIN_WIDTH = 600;
 static const int MIN_HEIGHT = 440;
 static const int MIN_X = 10;
 static const int MIN_Y = 100;
+
 typedef juce::Rectangle<int> Rect;
 
 PersistentWindow::PersistentWindow(const String& name,
@@ -26,8 +27,9 @@ PersistentWindow::PersistentWindow(const String& name,
   setBroughtToFrontOnMouseClick(true);
   setResizable(true, false); // resizability is a property of ResizableWindow
 
-  Rect r = getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea());
-  setResizeLimits(MIN_WIDTH, MIN_HEIGHT, r.getWidth(), r.getHeight());
+  resizeLimits_ = getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea());
+  setResizeLimits(MIN_WIDTH, MIN_HEIGHT,
+                  resizeLimits_.getWidth(), resizeLimits_.getHeight());
 }
 
 PersistentWindow::~PersistentWindow() {}
@@ -39,8 +41,19 @@ void PersistentWindow::getPositionFromData() {
   (*this)(e->get());
 }
 
-void PersistentWindow::operator()(const WindowPosition& position) {
-  // DLOG(INFO) << position.ShortDebugString();
+void PersistentWindow::fixPosition(WindowPosition* position) {
+  gui::Point* dim = position->mutable_bounds()->mutable_dimensions();
+  int w = std::min(resizeLimits_.getWidth(), std::max(MIN_WIDTH, dim->x()));
+  int h = std::min(resizeLimits_.getHeight(), std::max(MIN_HEIGHT, dim->y()));
+  dim->set_x(w);
+  dim->set_y(h);
+}
+
+void PersistentWindow::operator()(const WindowPosition& p) {
+  // DLOG(INFO) << "data! " << position.ShortDebugString();
+  WindowPosition position = p;
+  fixPosition(&position);
+
   {
     Lock l(lock_);
     if (data::equals(position_, position))
@@ -49,12 +62,14 @@ void PersistentWindow::operator()(const WindowPosition& position) {
     position_ = position;
   }
 
-  if (true)
-    thread::callAsync(this, &PersistentWindow::setBoundsConstrained,
+  if (!true) {
+#if 0
+    thread::callAsync(this, &PersistentWindow::setBounds,
                       copy(position.bounds()));
-  else {
+#endif
+  } else {
     MessageManagerLock l;
-    setBoundsConstrained(copy(position.bounds()));
+    setBounds(copy(position.bounds()));
   }
 }
 
@@ -75,12 +90,14 @@ void PersistentWindow::writeData() {
     juce::Rectangle<int> bounds = getBounds();
 
     *position.mutable_bounds() = copy(getBounds());
+    fixPosition(&position);
+    // DLOG(INFO) << "write data! " << position.ShortDebugString();
     data::set(position);
   }
 }
 
 void PersistentWindow::moved() {
-  // DLOG(INFO) << "resized!";
+  // DLOG(INFO) << "moved!";
   DocumentWindow::moved();
   writeData();
 }
