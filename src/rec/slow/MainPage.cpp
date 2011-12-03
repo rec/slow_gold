@@ -88,7 +88,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
   add(&playbackPanel_, &helpResizer_, 5.0);
   add(&playbackPanel_, components->transformController_, 180, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
-  add(&playbackPanel_, components->transportController_.get(), 30);
+  add(&playbackPanel_, components->transportController_.get(), 180, -1.0, -0.40);
 }
 
 MainPage::~MainPage() {}
