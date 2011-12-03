@@ -10,7 +10,7 @@ namespace gui {
 namespace audio {
 
 class CommandBar : public Layout,
-                   public Broadcaster<command::Command::Type>,
+                   public Broadcaster<CommandID>,
                    public juce::Button::Listener {
  public:
   CommandBar();

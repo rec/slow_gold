@@ -15,15 +15,18 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+class TimeController;
+
 // A GUI component with three drawable buttons that broadcasts commands from
 // those buttons.
 class TransportController : public Layout,
                             public juce::ButtonListener,
                             public DataListener<rec::audio::Gain>,
                             public Listener<rec::audio::transport::State>,
-                            public Broadcaster<command::Command::Type> {
+                            public Broadcaster<CommandID> {
  public:
-  TransportController();
+  TransportController(TimeController*);
+  virtual ~TransportController();
 
   virtual void buttonClicked(juce::Button *button);
   virtual void operator()(rec::audio::transport::State);
@@ -37,9 +40,15 @@ class TransportController : public Layout,
   LevelMeter* levelMeter() { return &levelMeter_; }
 
  private:
+  TimeController* timeController_;
+
   void recalc();
 
+  Layout buttonsLayout_;
+  Layout gainLayout_;
+
   DrawableButton startStopButton_;
+  DrawableButton jumpToStartButton_;
   LevelMeter levelMeter_;
   DataSlider<rec::audio::Gain, double> level_;
   gui::SetterToggle<rec::audio::Gain> muteButton_;

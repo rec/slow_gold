@@ -16,7 +16,7 @@ namespace command {
 // An implementation of ApplicationCommandTargetManager that lets you register commands
 // with a callback.
 class TargetManager : public ApplicationCommandTarget,
-                      public Listener<Command::Type>,
+                      public Listener<CommandID>,
                       public Listener<bool> {
  public:
   explicit TargetManager(CommandData*);
@@ -33,9 +33,9 @@ class TargetManager : public ApplicationCommandTarget,
     return commandManager_.invokeDirectly(commandID, asynchronously);
   }
 
-  virtual void operator()(Command::Type t) {
-    if (!invokeDirectly(t))
-      LOG(DFATAL) << "Failed to invoke " << command::Command::Type_Name(t);
+  virtual void operator()(CommandID id) {
+    if (!invokeDirectly(id))
+      LOG(DFATAL) << "Failed to invoke " << command::commandName(id);
   }
 
   virtual void operator()(bool d) { Lock l(lock_); disabled_ = d; }

@@ -26,7 +26,7 @@ Components::Components(Instance* instance)
       loops_(new gui::audio::Loops(instance->menus_.get())),
       songData_(new gui::SongData(instance->menus_.get())),
       transformController_(new gui::audio::TransformController),
-      transportController_(new gui::audio::TransportController),
+      transportController_(new gui::audio::TransportController(timeController_.get())),
       directoryTree_(new widget::tree::Root(instance->menus_.get())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
