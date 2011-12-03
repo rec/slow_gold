@@ -22,11 +22,6 @@ int SetterResizer::get() const {
   return (layout_->orientation() == VERTICAL) ? getY() : getX();
 }
 
-void SetterResizer::doSet(int distance) {
-  MessageManagerLock l;
-  layout_->layoutManager()->setItemPosition(index_, distance);
-}
-
 void SetterResizer::moved() {
   editable_->setValue(static_cast<uint32>(get()), address_);
 }

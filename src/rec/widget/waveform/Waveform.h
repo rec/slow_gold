@@ -43,7 +43,7 @@ class Waveform : public Component,
   static const CursorProto& defaultTimeCursor();
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
-  virtual void resized();
+  virtual void resized() { layout(); }
 
   virtual void paint(Graphics&);
   virtual void onDataChange(const LoopPointList&);
@@ -74,6 +74,7 @@ class Waveform : public Component,
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);
   void drawGrid(Graphics& g, const Range<Samples<44100> >&);
+  void layout();
 
   Samples<44100> zoomEnd() const;
 

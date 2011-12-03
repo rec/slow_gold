@@ -122,7 +122,7 @@ void Waveform::onDataChange(const WaveformProto& proto) {
     Lock l(lock_);
     desc_ = proto;
   }
-  resized();
+  thread::callAsync(this, &Waveform::layout);
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
@@ -176,7 +176,7 @@ void Waveform::onDataChange(const ZoomProto& zp) {
     zoom_ = zp;
   }
 
-  resized();
+  thread::callAsync(this, &Waveform::layout);
 }
 
 static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
@@ -197,7 +197,7 @@ void Waveform::onDataChange(const Mode& mode) {
   setMouseCursor(getCursor(mode));
 }
 
-void Waveform::resized() {
+void Waveform::layout() {
   {
     Lock l(lock_);
     for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
