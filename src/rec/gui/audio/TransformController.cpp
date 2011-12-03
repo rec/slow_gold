@@ -3,9 +3,10 @@
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 
-static const bool ENABLE_SHIFTS = !false;
-static const int SLIDER_HEIGHT = 18;
-static const int LEFT_PANEL_WIDTH = 100;
+static const int SLIDER_HEIGHT = 30;
+static const int LEFT_PANEL_WIDTH = 90;
+static const int ENABLE_BUTTON_HEIGHT = 40;
+static const int COMBO_BOX_HEIGHT = 30;
 
 namespace rec {
 namespace gui {
@@ -43,9 +44,6 @@ TransformController::TransformController()
   pitchScale_.slider()->setTextValueSuffix(" semitones");
   fineScale_.slider()->setTextValueSuffix(" cents");
 
-  pitchScale_.setEnabled(ENABLE_SHIFTS);
-  fineScale_.setEnabled(ENABLE_SHIFTS);
-
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
   stereoComboBox_.setTextWhenNothingSelected("Stereo");
@@ -56,8 +54,8 @@ TransformController::TransformController()
   stereoComboBox_.addItem("L + R", LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
-  leftPanel_.addToLayout(&enableButton_, SLIDER_HEIGHT);
-  leftPanel_.addToLayout(&stereoComboBox_, SLIDER_HEIGHT);
+  leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
+  leftPanel_.addToLayout(&stereoComboBox_, COMBO_BOX_HEIGHT);
   leftPanel_.addToLayout(&leftPadding_);
 
   addToLayout(&leftPanel_, LEFT_PANEL_WIDTH);
