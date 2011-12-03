@@ -49,7 +49,7 @@ void PersistentWindow::operator()(const WindowPosition& position) {
     position_ = position;
   }
 
-  if (false)
+  if (true)
     thread::callAsync(this, &PersistentWindow::setBoundsConstrained,
                       copy(position.bounds()));
   else {
