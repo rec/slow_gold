@@ -3,6 +3,7 @@
 
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Listener.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace audio {
@@ -14,12 +15,12 @@ class Timer : public Wrappy, public Broadcaster<Samples<44100> > {
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     Wrappy::getNextAudioBlock(i);
-    broadcast(position_);
+    thread::callAsync(this, &Timer::broadcast, position_);
   }
 
   virtual void setNextReadPosition(int64 time) {
     Wrappy::setNextReadPosition(time);
-    broadcast(time);
+    thread::callAsync(this, &Timer::broadcast, time);
   }
 
  private:

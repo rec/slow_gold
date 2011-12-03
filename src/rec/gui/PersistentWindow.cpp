@@ -33,7 +33,7 @@ PersistentWindow::PersistentWindow(const String& name,
 PersistentWindow::~PersistentWindow() {}
 
 void PersistentWindow::getPositionFromData() {
-  DLOG(INFO) << "getPositionFromData";
+  // DLOG(INFO) << "getPositionFromData";
   data::TypedEditable<WindowPosition>* e = data::editable<WindowPosition>();
   e->addListener(this);
   (*this)(e->get());
@@ -80,7 +80,7 @@ void PersistentWindow::writeData() {
 }
 
 void PersistentWindow::moved() {
-  DLOG(INFO) << "resized!";
+  // DLOG(INFO) << "resized!";
   DocumentWindow::moved();
   writeData();
 }
