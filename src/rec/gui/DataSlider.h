@@ -2,9 +2,10 @@
 #define __REC_GUI_DATASLIDER__
 
 #include "rec/data/Value.h"
+#include "rec/gui/DataSlider.h"
 #include "rec/gui/DetentSlider.h"
-#include "rec/gui/layout/Layout.h"
 #include "rec/gui/SimpleLabel.h"
+#include "rec/gui/layout/Layout.h"
 #include "rec/util/DataListener.h"
 
 namespace rec {

@@ -101,42 +101,6 @@ void TransformController::comboBoxChanged(juce::ComboBox* box) {
   }
 }
 
-#if 0
-                            public DataListener<rec::audio::Gain>,
-  virtual void onDataChange(const rec::audio::Gain&);
-  LevelMeter levelMeter_;
-  DataSlider<rec::audio::Gain, double> level_;
-  gui::SetterToggle<rec::audio::Gain> muteButton_;
-
-  listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
-  void clearLevels();
-  LevelMeter* levelMeter() { return &levelMeter_; }
-
-
-,
-      level_("Gain", Address("gain")),
-      muteButton_("Mute", Address("mute"))
-  level_.slider()->setRange(-36.0, +12.0, 0.1);
-  level_.slider()->setDetent(0.0f);
-  level_.slider()->setTextValueSuffix(" dB");
-
-  addToLayout(&muteButton_, 14);
-
-  addToLayout(&level_, SLIDER_HEIGHT);
-  addToLayout(&levelMeter_);
-
-void TransformController::onDataChange(const rec::audio::Gain& gain) {
-  MessageManagerLock mml;
-  level_.slider()->setEnabled(!gain.mute());
-  levelMeter_(gain);
-}
-
-void TransformController::clearLevels() {
-  levelMeter_(LevelVector());
-}
-
-#endif
-
 }  // namespace audio
 }  // namespace gui
 }  // namespace rec
