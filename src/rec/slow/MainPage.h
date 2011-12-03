@@ -46,7 +46,6 @@ class MainPage {
 
   // Resizers for mainPanel_;
   gui::SetterResizer navigationResizer_;
-  gui::SetterResizer waveformResizer_;
 
   // Resizers for navigationPanel_.
   gui::SetterResizer directoryResizer_;

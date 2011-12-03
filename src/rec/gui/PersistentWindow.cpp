@@ -33,12 +33,14 @@ PersistentWindow::PersistentWindow(const String& name,
 PersistentWindow::~PersistentWindow() {}
 
 void PersistentWindow::getPositionFromData() {
+  DLOG(INFO) << "getPositionFromData";
   data::TypedEditable<WindowPosition>* e = data::editable<WindowPosition>();
   e->addListener(this);
   (*this)(e->get());
 }
 
 void PersistentWindow::operator()(const WindowPosition& position) {
+  // DLOG(INFO) << position.ShortDebugString();
   {
     Lock l(lock_);
     if (data::equals(position_, position))
@@ -47,11 +49,17 @@ void PersistentWindow::operator()(const WindowPosition& position) {
     position_ = position;
   }
 
-  thread::callAsync(this, &PersistentWindow::setBoundsConstrained,
-                    copy(position.bounds()));
+  if (false)
+    thread::callAsync(this, &PersistentWindow::setBoundsConstrained,
+                      copy(position.bounds()));
+  else {
+    MessageManagerLock l;
+    setBoundsConstrained(copy(position.bounds()));
+  }
 }
 
 void PersistentWindow::resized() {
+  // DLOG(INFO) << "resized!";
   DocumentWindow::resized();
   writeData();
 }
@@ -72,6 +80,7 @@ void PersistentWindow::writeData() {
 }
 
 void PersistentWindow::moved() {
+  DLOG(INFO) << "resized!";
   DocumentWindow::moved();
   writeData();
 }

@@ -55,7 +55,6 @@ MainPage::MainPage(Components* components, data::Editable* e)
       controlPanel_("Control"),
 
       navigationResizer_("navigation_y", &mainPanel_, 1, e),
-      waveformResizer_("waveform_y", &mainPanel_, 3, e),
 
       directoryResizer_("directory_x", &navigationPanel_, 1, e),
       metadataResizer_("metadata_x", &navigationPanel_, 3, e),
@@ -72,7 +71,6 @@ MainPage::MainPage(Components* components, data::Editable* e)
   waveform->addAndMakeVisible(components->modeSelector_.get());
   waveform->addAndMakeVisible(components->commandBar_.get());
 
-  add(&mainPanel_, &waveformResizer_, 7.0);
   add(&mainPanel_, &playbackPanel_, 100, 100, 100);
 
   // Navigation panel.
