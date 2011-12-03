@@ -64,8 +64,9 @@ thread::Result BufferFiller::fillOnce() {
   updateSource_.getNextAudioBlock(updateInfo_);
   thumbnailBuffer_.addBlock(pos, updateInfo_);
 
-	MessageManagerLock l;
-  components()->waveform_->repaintBlock(block::makeBlock(pos, pos + filled));
+  thread::callAsync(components()->waveform_.get(), 
+                    &Waveform::repaintBlock, 
+                    block::makeBlock(pos, pos + filled));
   return thread::YIELD;
 }
 

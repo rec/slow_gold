@@ -63,6 +63,37 @@ void Cursor::operator()(Samples<44100> time) {
     thread::callAsync(this, &Cursor::setTime, time);
 }
 
+bool Cursor::setDragTime(Samples<44100> t) {
+  Lock l(lock_);
+  if (index_ == 0 || t < SMALLEST_TIME_SAMPLES)
+    return false;
+
+  CursorList& cursors = *waveform_->getCursorsMutable();
+
+  int next = -1;
+  int size = static_cast<int>(cursors.size());
+  if (index_ > 1 && cursors[index_ - 1]->getTime() > t)
+    next = index_ - 1;
+
+  else if (index_ < size - 1 && cursors[index_ + 1]->getTime() < t)
+    next = index_ + 1;
+
+  if (next >= 0) {
+  	DLOG(INFO) << "needs sorting!";
+    cursors[index_] = cursors[next];
+    cursors[next] = this;
+    LoopPointList lpl = waveform_->DataListener<LoopPointList>::data()->get();
+    lpl.mutable_loop_point(index_)->set_time(t);
+    lpl.mutable_loop_point()->SwapElements(index_, next);
+    DLOG(INFO) << lpl.ShortDebugString();
+    waveform_->DataListener<LoopPointList>::setProto(lpl);
+    waveform_->adjustCursors(lpl, block::BlockSet());
+  }
+
+  setTime(t);
+  return true;
+}
+
 void Cursor::setTime(Samples<44100> time) {
   {
     Lock l(lock_);
@@ -76,7 +107,8 @@ void Cursor::setTime(Samples<44100> time) {
 void Cursor::layout() {
   juce::Rectangle<int> before = getBounds();
 
-  juce::Rectangle<int> bounds = waveform_->getLocalBounds();
+  juce::Rectangle<int> boundsBefore = waveform_->getLocalBounds();
+  juce::Rectangle<int> bounds = boundsBefore;
   int componentWidth = desc().component_width();
   int x = 0;
 
@@ -85,6 +117,9 @@ void Cursor::layout() {
 
   bounds.setWidth(componentWidth);
   bounds.setX(x - (componentWidth - desc().width()) / 2);
+
+  if (bounds == boundsBefore)
+    return;
 
   setBounds(bounds);
   adjustCaption();

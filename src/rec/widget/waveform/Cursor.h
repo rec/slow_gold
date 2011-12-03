@@ -27,6 +27,7 @@ class Cursor : public Component,
 
   void paint(Graphics& g);
   Samples<44100> getTime() const;
+  bool setDragTime(Samples<44100> time);
   void setTime(Samples<44100> time);
 
   bool isTimeCursor() const { return (this == waveform_->timeCursor()); }
@@ -47,7 +48,7 @@ class Cursor : public Component,
   CriticalSection lock_;
   CursorProto desc_;
   Samples<44100> time_;
-  const int index_;
+  int index_;
   juce::Rectangle<int> bounds_;
   int dragX_;
   int mouseDragX_;

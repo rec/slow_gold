@@ -19,6 +19,8 @@
 namespace rec {
 namespace slow {
 
+static const int DRAG_PAD = 22050;
+
 using namespace rec::audio;
 using namespace rec::gui::audio;
 using namespace rec::widget::waveform;
@@ -131,9 +133,9 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
   int i = cursor->index();
   if (i >= 0) {
     LoopPointList loops = data::get<LoopPointList>(file());
-    cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0;
-    cursorDrag_.end_ = (i == loops.loop_point_size()) ?
-      Samples<44100>(loops.loop_point(i + 1).time()) : Samples<44100>(loops.length());
+    cursorDrag_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) + DRAG_PAD;
+    cursorDrag_.end_ = -DRAG_PAD + ((i == loops.loop_point_size() - 1) ?
+                                    loops.length() : loops.loop_point(i + 1).time());
   }
 }
 
@@ -143,8 +145,8 @@ void MouseListener::dragCursor(const MouseEvent& e,
   components()->waveform_->setIsDraggingCursor(true);
   if (!near(cursor->getTime(), 0, 44)) {
     Samples<44100> t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
-    cursor->setTime(t);
-    currentTime()->setCursorTime(cursor->index(), t);
+    if (cursor->setDragTime(t))
+      currentTime()->setCursorTime(cursor->index(), t);
   }
 }
 

@@ -25,6 +25,8 @@ class CursorProto;
 struct MouseWheelEvent;
 struct TimeAndMouseEvent;
 
+typedef vector<Cursor*> CursorList;
+
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
                  public DataListener<LoopPointList>,
@@ -55,25 +57,25 @@ class Waveform : public Component,
   Samples<44100> xToTime(int x) const;
   double pixelsPerSample() const;
 
-  typedef vector<Cursor*> CursorList;
   const CursorList& getCursors() const { return cursors_; }
+  CursorList* getCursorsMutable() { return &cursors_; }
 
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
   CriticalSection* lock() { return &lock_; }
   int getCursorX(uint index) const;
   void setCursorText(int index, const String& text);
-  void setIsDraggingCursor(bool d) { Lock l(lock_); isDraggingCursor_ = d; }
+  void setIsDraggingCursor(bool d);
   bool isDraggingCursor() const { Lock l(lock_); return isDraggingCursor_; }
   void repaintBlock(const block::Block&);
   void repaintBlocks(const block::BlockSet&);
+
+  void adjustCursors(const LoopPointList& loopPoints, const block::BlockSet& dirty);
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);
   void drawGrid(Graphics& g, const Range<Samples<44100> >&);
 
   Samples<44100> zoomEnd() const;
-
-  void adjustCursors(const LoopPointList& loopPoints, const block::BlockSet& dirty);
 
   void doClick(const juce::MouseEvent& e, int clickCount);
   int timeToX(Samples<44100> t) const;

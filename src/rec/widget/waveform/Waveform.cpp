@@ -38,7 +38,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       empty_(true),
       isDraggingCursor_(false) {
   setName("Waveform");
-  timeCursor_.reset(new Cursor(*timeCursor, this, 0, -1, false));
+  timeCursor_.reset(new Cursor(*timeCursor, this, 0, 0, false));
 }
 
 Waveform::~Waveform() {
@@ -325,6 +325,11 @@ void Waveform::repaintBlock(const Block& b) {
 void Waveform::repaintBlocks(const BlockSet& b) {
   for (BlockSet::const_iterator i = b.begin(); i != b.end(); ++i)
     repaintBlock(*i);
+}
+
+void Waveform::setIsDraggingCursor(bool d) {
+  Lock l(lock_);
+  isDraggingCursor_ = d;
 }
 
 }  // namespace waveform
