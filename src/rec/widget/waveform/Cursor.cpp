@@ -65,29 +65,32 @@ void Cursor::operator()(Samples<44100> time) {
 
 bool Cursor::setDragTime(Samples<44100> t) {
   Lock l(lock_);
-  if (index_ == 0 || t < SMALLEST_TIME_SAMPLES)
-    return false;
 
-  CursorList& cursors = *waveform_->getCursorsMutable();
+  if (!isTimeCursor()) {
+    if (index_ == 0 || t < SMALLEST_TIME_SAMPLES)
+      return false;
 
-  int next = -1;
-  int size = static_cast<int>(cursors.size());
-  if (index_ > 1 && cursors[index_ - 1]->getTime() > t)
-    next = index_ - 1;
+    CursorList& cursors = *waveform_->getCursorsMutable();
 
-  else if (index_ < size - 1 && cursors[index_ + 1]->getTime() < t)
-    next = index_ + 1;
+    int next = -1;
+    int size = static_cast<int>(cursors.size());
+    if (index_ > 1 && cursors[index_ - 1]->getTime() > t)
+      next = index_ - 1;
 
-  if (next >= 0) {
-  	DLOG(INFO) << "needs sorting!";
-    cursors[index_] = cursors[next];
-    cursors[next] = this;
-    LoopPointList lpl = waveform_->DataListener<LoopPointList>::data()->get();
-    lpl.mutable_loop_point(index_)->set_time(t);
-    lpl.mutable_loop_point()->SwapElements(index_, next);
-    DLOG(INFO) << lpl.ShortDebugString();
-    waveform_->DataListener<LoopPointList>::setProto(lpl);
-    waveform_->adjustCursors(lpl, block::BlockSet());
+    else if (index_ < size - 1 && cursors[index_ + 1]->getTime() < t)
+      next = index_ + 1;
+
+    if (next >= 0) {
+      DLOG(INFO) << "needs sorting!";
+      cursors[index_] = cursors[next];
+      cursors[next] = this;
+      LoopPointList lpl = waveform_->DataListener<LoopPointList>::data()->get();
+      lpl.mutable_loop_point(index_)->set_time(t);
+      lpl.mutable_loop_point()->SwapElements(index_, next);
+      DLOG(INFO) << lpl.ShortDebugString();
+      waveform_->DataListener<LoopPointList>::setProto(lpl);
+      waveform_->adjustCursors(lpl, block::BlockSet());
+    }
   }
 
   setTime(t);

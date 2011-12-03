@@ -130,8 +130,11 @@ void MouseListener::mouseDown(const MouseEvent& e) {
 }
 
 void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
-  int i = cursor->index();
-  if (i >= 0) {
+  if (cursor->isTimeCursor()) {
+    cursorDrag_.begin_ = 0;
+    cursorDrag_.end_ = length();
+  } else {
+    int i = cursor->index();
     LoopPointList loops = data::get<LoopPointList>(file());
     cursorDrag_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) + DRAG_PAD;
     cursorDrag_.end_ = -DRAG_PAD + ((i == loops.loop_point_size() - 1) ?
@@ -146,7 +149,7 @@ void MouseListener::dragCursor(const MouseEvent& e,
   if (!near(cursor->getTime(), 0, 44)) {
     Samples<44100> t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
     if (cursor->setDragTime(t))
-      currentTime()->setCursorTime(cursor->index(), t);
+      currentTime()->setCursorTime(t, cursor->index(), cursor->isTimeCursor());
   }
 }
 

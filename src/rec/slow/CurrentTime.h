@@ -27,7 +27,7 @@ class CurrentTime : public HasInstance,
   virtual void onDataChange(const GuiSettings&);
   virtual void onDataChange(const widget::waveform::ZoomProto&);
 
-  void setCursorTime(int index, Samples<44100> time);
+  void setCursorTime(Samples<44100> time, int index, bool isTimeCursor);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
   Samples<44100> time() const { Lock l(lock_); return time_; }
   Samples<44100> jumpTime() const { Lock l(lock_); return jumpTime_; }

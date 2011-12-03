@@ -84,8 +84,8 @@ void CurrentTime::onDataChange(const GuiSettings& settings) {
   followCursor_ = settings.follow_cursor();
 }
 
-void CurrentTime::setCursorTime(int index, Samples<44100> t) {
-  if (index < 0) {
+void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) {
+  if (isTimeCursor) {
     jumpToTime(t);
   } else {
     LoopPointList loops(data::get<LoopPointList>(file()));
