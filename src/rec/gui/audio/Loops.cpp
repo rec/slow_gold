@@ -53,8 +53,7 @@ void Loops::onDataChange(const LoopPointList& loops) {
     loops_ = loops;
   }
 
-  MessageManagerLock mml;
-  updateAndRepaint();
+  thread::callAsync(this, &Loops::updateAndRepaint);
 }
 
 static String getDisplayText(const Value& v, const TableColumn& col, Samples<44100> length) {

@@ -3,6 +3,7 @@
 #include "rec/audio/Device.h"
 #include "rec/command/map/MidiName.h"
 #include "rec/util/Listener.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace command {
@@ -26,8 +27,8 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
   virtual void operator()(const MidiMessage& msg) {
     if (msg.isNoteOn() || msg.isProgramChange() || msg.isController()) {
       lastKey_ = msg;
-      MessageManagerLock l;
-      setMessage(owner_->getKeyMessage(msg));
+      thread::callAsync(this, &CommandEntryWindow::setMessage,
+                        owner_->getKeyMessage(msg));
     }
 
     mappings_->requestOneMessage(this);

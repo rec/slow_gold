@@ -146,7 +146,6 @@ void Waveform::onDataChange(const LoopPointList& loopPoints) {
 }
 
 void Waveform::adjustCursors(const LoopPointList& loopPoints, const BlockSet& dirty) {
-  MessageManagerLock l;
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
     bool hasCaption = (i != 0);
@@ -199,7 +198,6 @@ void Waveform::onDataChange(const Mode& mode) {
 }
 
 void Waveform::resized() {
-  MessageManagerLock l;
   {
     Lock l(lock_);
     for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)

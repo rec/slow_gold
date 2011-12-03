@@ -87,7 +87,10 @@ void TransportController::setTransportState(rec::audio::transport::State state) 
 }
 
 void TransportController::onDataChange(const rec::audio::Gain& gain) {
-  MessageManagerLock mml;
+  thread::callAsync(this, &TransportController::setGain, gain);
+}
+
+void TransportController::setGain(const rec::audio::Gain& gain) {
   level_.slider()->setEnabled(!gain.mute());
   levelMeter_(gain);
 }

@@ -40,6 +40,8 @@ class TransportController : public Layout,
   LevelMeter* levelMeter() { return &levelMeter_; }
 
  private:
+  void setGain(const rec::audio::Gain&);
+
   TimeController* timeController_;
 
   void recalc();

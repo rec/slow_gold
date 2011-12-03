@@ -4,6 +4,7 @@
 #include "rec/data/Value.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/Geometry.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
@@ -46,8 +47,8 @@ void PersistentWindow::operator()(const WindowPosition& position) {
     position_ = position;
   }
 
-  MessageManagerLock l;
-  setBoundsConstrained(copy(position.bounds()));
+  thread::callAsync(this, &PersistentWindow::setBoundsConstrained,
+                    copy(position.bounds()));
 }
 
 void PersistentWindow::resized() {
