@@ -73,8 +73,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
   waveform->addAndMakeVisible(components->commandBar_.get());
 
   add(&mainPanel_, &waveformResizer_, 7.0);
-
-  add(&mainPanel_, &playbackPanel_, 150, -1.0, -0.2);
+  add(&mainPanel_, &playbackPanel_, 100, 100, 100);
 
   // Navigation panel.
   add(&navigationPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);

@@ -10,7 +10,7 @@
 namespace rec {
 namespace gui {
 
-static const int CAPTION_SIZE = 70;
+static const int CAPTION_SIZE = 50;
 
 template <typename Proto>
 class SetterText : public Layout,
@@ -62,13 +62,13 @@ class SetterText : public Layout,
  protected:
   virtual void onDataChange(const Proto&) {
     const data::Value v = this->getValue();
-    if (v.has_string_f()) 
+    if (v.has_string_f())
       thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
   }
 
-  void setEditorText(const String& text) { 
+  void setEditorText(const String& text) {
   	editor_.setText(text);
-    repaint(); 
+    repaint();
   }
 
   SimpleLabel caption_;

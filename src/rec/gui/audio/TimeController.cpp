@@ -12,6 +12,9 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+static const int TEXT_WIDTH = 100;
+static const int DIAL_WIDTH = 100;
+
 using namespace juce;
 using namespace rec::widget::status::time;
 using namespace rec::audio::stretch;
@@ -31,14 +34,13 @@ Dial realTimeDial() {
 }  // namespace
 
 TimeController::TimeController()
-    : Layout("Time controls", VERTICAL),
+    : Layout("Time controls", HORIZONTAL),
       songDial_(realTimeDial()),
       songTime_(Text()),
-      timeScale_(1.0),
-      timesLayout_("Times", HORIZONTAL) {
-  addToLayout(&timesLayout_);
-  addToLayout(&songDial_);
-  timesLayout_.addToLayout(&songTime_);
+      timeScale_(1.0) {
+  addToLayout(&songTime_, TEXT_WIDTH);
+  addToLayout(&songDial_, DIAL_WIDTH);
+  addToLayout(&filler_);
 }
 
 void TimeController::operator()(const Stretch& stretch) {

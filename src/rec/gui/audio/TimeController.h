@@ -29,7 +29,7 @@ class TimeController : public Layout, public Listener< Samples<44100> > {
   static const bool DISPLAY_SCALED_TIME = false;
 
   double timeScale_;
-  gui::Layout timesLayout_;
+  gui::Layout filler_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TimeController);
 };

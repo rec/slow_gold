@@ -11,8 +11,9 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-static const int ICON_SIZE = 30;
+static const int ICON_SIZE = 40;
 static const int SLIDER_HEIGHT = 18;
+static const int MUTE_BUTTON_SIZE = 50;
 
 TransportController::TransportController(TimeController* timeController)
     : Layout("TransportController", VERTICAL),
@@ -42,7 +43,7 @@ TransportController::TransportController(TimeController* timeController)
   level_.slider()->setDetent(0.0f);
   level_.slider()->setTextValueSuffix(" dB");
 
-  gainLayout_.addToLayout(&muteButton_, 14);
+  gainLayout_.addToLayout(&muteButton_, MUTE_BUTTON_SIZE);
   gainLayout_.addToLayout(&level_);
 
   addToLayout(&buttonsLayout_, 40);

@@ -33,6 +33,7 @@ DialComponent::DialComponent(const Dial& desc)
       zeroAngle_(0.0),
       timeAngle_(0.0),
       timeRatio_(0.0) {
+  description_.mutable_widget()->set_transparent(true);
 }
 
 static const bool USE_CONTIGUOUS_SEGMENTS = true;
