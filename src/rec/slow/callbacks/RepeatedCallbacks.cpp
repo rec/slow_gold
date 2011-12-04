@@ -30,10 +30,10 @@ void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
 
 void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
   vector<int> selected;
+  const LoopPointList& loops = snap->loops_;
   size_t s;
   bool found = false;
-  const LoopPointList& loops = snap->loops_;
-  for (int i = 0; i < loops.loop_point_size() - 1; ++i) {
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
     if (!audio::getSelectionCount(loops) || loops.loop_point(i).selected()) {
       if (i == getSegment(*snap)) {
         DCHECK(!found);
@@ -43,9 +43,13 @@ void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
       selected.push_back(i);
     }
   }
+  int segment = 0;
+  if (found)
+    segment = selected[pos.toIndex(s, selected.size())];
+  else if (!selected.empty())
+    segment = selected[0];
 
-  DCHECK(found);
-  setTimeFromSegment(snap, selected[pos.toIndex(s, selected.size())]);
+  setTimeFromSegment(snap, segment);
 }
 
 bool selectAdd(int index, int pos, bool sel, bool) { return sel || index == pos; }

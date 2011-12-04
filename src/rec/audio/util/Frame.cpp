@@ -38,6 +38,7 @@ Samples<44100> Frames<Frame>::getAudioBlock(const Info& info,
                                             Samples<44100> offset) const {
   int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
   float** out = info.buffer->getArrayOfChannels();
+  DCHECK_GE(numSamples, 0) << info.numSamples << ", " << length_ << ", "  << offset;
   fillArrayOfChannels(frames_, offset, out, info.startSample, numSamples);
   return numSamples;
 }

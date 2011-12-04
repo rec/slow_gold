@@ -11,7 +11,7 @@ const char COMPANY_NAME[] = "World Wide Woodshed";
 }  // namespace
 
 void setName(const String& name) {
-  CHECK(!applicationName.length());
+  DCHECK(!applicationName.length());
   applicationName = name;
 }
 

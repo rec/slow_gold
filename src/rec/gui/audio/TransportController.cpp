@@ -43,8 +43,8 @@ TransportController::TransportController(TimeController* timeController)
   level_.slider()->setDetent(0.0f);
   level_.slider()->setTextValueSuffix(" dB");
 
-  gainLayout_.addToLayout(&muteButton_, MUTE_BUTTON_SIZE);
   gainLayout_.addToLayout(&level_);
+  gainLayout_.addToLayout(&muteButton_, MUTE_BUTTON_SIZE);
 
   addToLayout(&buttonsLayout_, 40);
   addToLayout(&gainLayout_, 40);

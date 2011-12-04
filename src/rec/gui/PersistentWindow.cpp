@@ -23,7 +23,8 @@ PersistentWindow::PersistentWindow(const String& name,
                                    int requiredButtons,
                                    bool addToDesktop)
     : DocumentWindow(name, bg, requiredButtons, addToDesktop),
-      okToSavePosition_(false) {
+      okToSavePosition_(false),
+      ignoreNextResize_(false) {
   setBroughtToFrontOnMouseClick(true);
   setResizable(true, false); // resizability is a property of ResizableWindow
 
@@ -35,14 +36,14 @@ PersistentWindow::PersistentWindow(const String& name,
 PersistentWindow::~PersistentWindow() {}
 
 void PersistentWindow::getPositionFromData() {
-  // DLOG(INFO) << "getPositionFromData";
+  DLOG(INFO) << "getPositionFromData";
   data::TypedEditable<WindowPosition>* e = data::editable<WindowPosition>();
   e->addListener(this);
   (*this)(e->get());
 }
 
-void PersistentWindow::fixPosition(WindowPosition* position) {
-  gui::Point* dim = position->mutable_bounds()->mutable_dimensions();
+void PersistentWindow::fixPosition(WindowPosition* pos) {
+  gui::Point* dim = pos->mutable_bounds()->mutable_dimensions();
   int w = std::min(resizeLimits_.getWidth(), std::max(MIN_WIDTH, dim->x()));
   int h = std::min(resizeLimits_.getHeight(), std::max(MIN_HEIGHT, dim->y()));
   dim->set_x(w);
@@ -50,7 +51,7 @@ void PersistentWindow::fixPosition(WindowPosition* position) {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-  // DLOG(INFO) << "data! " << position.ShortDebugString();
+  DLOG(INFO) << "data! " << p.ShortDebugString();
   WindowPosition position = p;
   fixPosition(&position);
 
@@ -60,44 +61,61 @@ void PersistentWindow::operator()(const WindowPosition& p) {
       return;  // Filter duplicate messages.
 
     position_ = position;
+#ifdef FILTER_RESIZES
+    ignoreNextResize_ = true;
+#endif
   }
 
-  if (!true) {
-#if 0
-    thread::callAsync(this, &PersistentWindow::setBounds,
-                      copy(position.bounds()));
+  juce::Rectangle<int> bounds = copy(position.bounds());
+#ifdef ASYNC_UPDATES
+  thread::callAsync(this, &PersistentWindow::doSetBounds, bounds));
+#else
+  MessageManagerLock l;
+  doSetBounds(bounds);
 #endif
-  } else {
-    MessageManagerLock l;
-    setBounds(copy(position.bounds()));
-  }
+}
+
+void PersistentWindow::doSetBounds(juce::Rectangle<int> bounds) {
+#ifdef SET_BOUNDS_CONSTRAINED
+  setBoundsConstrained(bounds);
+#else
+  setBounds(bounds);
+#endif
 }
 
 void PersistentWindow::resized() {
-  // DLOG(INFO) << "resized!";
+  DLOG(INFO) << "resized!";
   DocumentWindow::resized();
   writeData();
 }
 
 bool PersistentWindow::isFullScreenSize() const {
-  return (getScreenBounds() == getPeer()->getFrameSize().subtractedFrom(
-        getParentMonitorArea()));
+  return (getScreenBounds() == getPeer()->getFrameSize().
+          subtractedFrom(getParentMonitorArea()));
 }
 
 void PersistentWindow::writeData() {
   if (okToSavePosition_) {
+    {
+      Lock l(lock_);
+      if (ignoreNextResize_) {
+        DLOG(INFO) << "resize ignored! ";
+        ignoreNextResize_ = false;
+        return;
+      }
+    }
     WindowPosition position(data::editable<WindowPosition>()->get());
     juce::Rectangle<int> bounds = getBounds();
 
     *position.mutable_bounds() = copy(getBounds());
     fixPosition(&position);
-    // DLOG(INFO) << "write data! " << position.ShortDebugString();
+    DLOG(INFO) << "write data! " << position.ShortDebugString();
     data::set(position);
   }
 }
 
 void PersistentWindow::moved() {
-  // DLOG(INFO) << "moved!";
+  DLOG(INFO) << "moved!";
   DocumentWindow::moved();
   writeData();
 }

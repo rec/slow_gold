@@ -14,7 +14,7 @@ class FrameSource : public PositionableAudioSource {
   typedef InterleavedFrame<Sample, CHANNELS> SourceFrame;
   typedef Frames<SourceFrame> SourceFrames;
 
-  explicit FrameSource(const SourceFrames& b) : buffer_(b) {}
+  explicit FrameSource(const SourceFrames& b) : buffer_(b), position_(0) {}
   virtual ~FrameSource() {}
 
   virtual void getNextAudioBlock(const Info& info) {
@@ -28,6 +28,7 @@ class FrameSource : public PositionableAudioSource {
       }
       i.numSamples -= copied;
       i.startSample += copied;
+
       setNextReadPosition(position_ + copied);
     }
   }
