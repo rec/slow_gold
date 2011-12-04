@@ -21,7 +21,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   virtual ~Root() {}
 
   void checkVolumes();
-  void mergeNewIntoOld(const util::file::VirtualFileList& volumes);
+  void mergeNewIntoOld(util::file::VirtualFileList volumes);
   TreeViewDropAll* treeView() { return &tree_; }
 
   virtual void operator()(const VirtualFile&);

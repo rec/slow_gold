@@ -66,7 +66,7 @@ class SetterText : public Layout,
       thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
   }
 
-  void setEditorText(const String& text) {
+  void setEditorText(String text) {
   	editor_.setText(text);
     repaint();
   }

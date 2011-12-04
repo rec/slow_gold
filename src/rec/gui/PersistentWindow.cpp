@@ -6,6 +6,8 @@
 #include "rec/gui/Geometry.h"
 #include "rec/util/thread/CallAsync.h"
 
+#define LOGGING 1
+
 namespace rec {
 namespace gui {
 
@@ -17,6 +19,10 @@ static const int MIN_X = 10;
 static const int MIN_Y = 100;
 
 typedef juce::Rectangle<int> Rect;
+
+static string toString(const WindowPosition& pos) {
+  return str(toString(pos.bounds()));
+}
 
 PersistentWindow::PersistentWindow(const String& name,
                                    const Colour& bg,
@@ -50,7 +56,7 @@ void PersistentWindow::fixPosition(WindowPosition* pos) {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-  // DLOG(INFO) << "data! " << p.ShortDebugString();
+  LOG(INFO) << toString(p);
 
   WindowPosition position = p;
   fixPosition(&position);
@@ -66,17 +72,21 @@ void PersistentWindow::operator()(const WindowPosition& p) {
 #endif
   }
 
-  juce::Rectangle<int> bounds = copy(position.bounds());
-#ifndef ASYNC_UPDATES
-  thread::callAsync(this, &PersistentWindow::doSetBounds, bounds);
+#ifdef ASYNC_UPDATES
+  thread::callAsync(this, &PersistentWindow::doSetBounds);
 #else
   MessageManagerLock l;
-  doSetBounds(bounds);
+  doSetBounds();
 #endif
 }
 
-void PersistentWindow::doSetBounds(juce::Rectangle<int> bounds) {
-#ifdef SET_BOUNDS_CONSTRAINED
+void PersistentWindow::doSetBounds() {
+  juce::Rectangle<int> bounds;
+  {
+    Lock l(lock_);
+    bounds = copy(position_.bounds());
+  }
+#ifndef DONT_SET_BOUNDS_CONSTRAINED
   setBoundsConstrained(bounds);
 #else
   setBounds(bounds);
@@ -84,7 +94,7 @@ void PersistentWindow::doSetBounds(juce::Rectangle<int> bounds) {
 }
 
 void PersistentWindow::resized() {
-  // DLOG(INFO) << "resized!";
+  LOG(INFO) << "resized!";
   DocumentWindow::resized();
   writeData();
 }
@@ -99,23 +109,23 @@ void PersistentWindow::writeData() {
     {
       Lock l(lock_);
       if (ignoreNextResize_) {
-        DLOG(INFO) << "resize ignored! ";
+        LOG(INFO) << "resize ignored! ";
         ignoreNextResize_ = false;
         return;
       }
     }
     WindowPosition position(data::editable<WindowPosition>()->get());
     juce::Rectangle<int> bounds = getBounds();
+    LOG(INFO) << toString(position);
+    LOG(INFO) << str(toString(bounds));
 
-    *position.mutable_bounds() = copy(getBounds());
-    fixPosition(&position);
-    // DLOG(INFO) << "write data! " << position.ShortDebugString();
+    *position.mutable_bounds() = copy(bounds);
     data::set(position);
   }
 }
 
 void PersistentWindow::moved() {
-  // DLOG(INFO) << "moved!";
+  LOG(INFO) << "moved!";
   DocumentWindow::moved();
   writeData();
 }

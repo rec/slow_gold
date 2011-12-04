@@ -20,6 +20,11 @@ Rectangle copy(const juce::Rectangle<int>& rect);
 
 juce::Rectangle<int> centerSquare(const juce::Rectangle<int>& rect);
 
+String toString(const Rectangle&);
+String toString(const juce::Rectangle<int>&);
+
+String toString(int x, int y, bool isDimensions = false);
+String toString(const Point& p, bool isDimensions = false);
 
 }  // namespace gui
 }  // namespace rec

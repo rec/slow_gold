@@ -66,10 +66,10 @@ class Waveform : public Component,
   void setCursorText(int index, const String& text);
   void setIsDraggingCursor(bool d);
   bool isDraggingCursor() const { Lock l(lock_); return isDraggingCursor_; }
-  void repaintBlock(const block::Block&);
+  void repaintBlock(block::Block);
   void repaintBlocks(const block::BlockSet&);
 
-  void adjustCursors(const LoopPointList& loopPoints, const block::BlockSet& dirty);
+  void adjustCursors(LoopPointList loopPoints, block::BlockSet dirty);
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);

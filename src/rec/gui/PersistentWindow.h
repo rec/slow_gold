@@ -31,7 +31,7 @@ class PersistentWindow : public DocumentWindow,
   CriticalSection lock_;
 
  private:
-  void doSetBounds(juce::Rectangle<int>);
+  void doSetBounds();
   void fixPosition(WindowPosition*);
   void writeData();
   bool okToSavePosition_;

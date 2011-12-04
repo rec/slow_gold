@@ -55,5 +55,22 @@ juce::Rectangle<int> centerSquare(const juce::Rectangle<int>& r) {
   return juce::Rectangle<int>(c.getX() - s / 2, c.getY() - s / 2, s, s);
 }
 
+String toString(int x, int y, bool isDimensions) {
+  return String::formatted(isDimensions ? "%dx%d" : "(%d, %d)", x, y);
+}
+
+String toString(const Point& p, bool isDimensions) {
+  return toString(p.x(), p.y(), isDimensions);
+}
+
+String toString(const Rectangle& r) {
+  return toString(r.top_left()) + " " + toString(r.dimensions(), true);
+}
+
+String toString(const juce::Rectangle<int>& r) {
+  return toString(r.getX(), r.getY()) + " " +
+    toString(r.getWidth(), r.getHeight(), true);
+}
+
 }  // namespace gui
 }  // namespace rec

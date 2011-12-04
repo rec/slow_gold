@@ -145,7 +145,7 @@ void Waveform::onDataChange(const LoopPointList& loopPoints) {
     thread::callAsync(this, &Waveform::repaintBlocks, dirty);
 }
 
-void Waveform::adjustCursors(const LoopPointList& loopPoints, const BlockSet& dirty) {
+void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
     bool hasCaption = (i != 0);
@@ -316,7 +316,7 @@ void Waveform::setCursorText(int index, const String& text) {
   DataListener<LoopPointList>::setProto(lpl);
 }
 
-void Waveform::repaintBlock(const Block& b) {
+void Waveform::repaintBlock(Block b) {
   repaint(timeToX(b.first), 0, timeToX(b.second), getHeight());
 }
 

@@ -4,6 +4,7 @@
 #include <map>
 
 #include "rec/gui/layout/Layout.h"
+#include "rec/gui/HasMinSize.h"
 #include "rec/util/DataListener.h"
 #include "rec/util/Mode.pb.h"
 
@@ -13,7 +14,8 @@ namespace audio {
 
 class ModeSelector : public Layout,
                      public juce::Button::Listener,
-                     public DataListener<Mode> {
+                     public DataListener<Mode>,
+                     public HasMinSize {
  public:
   ModeSelector();
   virtual ~ModeSelector() {}
@@ -27,11 +29,15 @@ class ModeSelector : public Layout,
   typedef std::map<Mode::Action, DrawableButton*> ButtonMap;
   ButtonMap* buttonMap() { return &buttons_; }
 
+  virtual juce::Point<int> getMinSize() const { return minSize_; }
+
  private:
   DrawableButton drag_;
   DrawableButton setTime_;
   DrawableButton toggleSelection_;
   DrawableButton zoomIn_;
+
+  juce::Point<int> minSize_;
 
   ButtonMap buttons_;
 

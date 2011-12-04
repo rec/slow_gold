@@ -89,7 +89,6 @@ void Root::writeOpenness() {
       LOG(DFATAL) << "Couldn't write openness file";
   } else {
     readOpenness();
-    //thread::callAsync(this, &Root::readOpenness);
   }
 }
 
@@ -129,7 +128,7 @@ void Root::doAdd() {
   addDialogOpen_ = false;
 }
 
-void Root::mergeNewIntoOld(const file::VirtualFileList& volumes) {
+void Root::mergeNewIntoOld(file::VirtualFileList volumes) {
   for (int i = 0, j = 0; i < volumes.file_size() || j < getNumNodes(); ++i) {
     const VirtualFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : NULL;
     const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;

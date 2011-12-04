@@ -48,7 +48,9 @@ ModeSelector::ModeSelector()
   setImage<PointingHand>(this, &toggleSelection_, Mode::TOGGLE_SELECTION);
   setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN);
 
-  setBounds(0, 0, 4 * BUTTON_SIZE + 5 * PADDING, BUTTON_SIZE + 2 * PADDING);
+  minSize_ = juce::Point<int>(4 * BUTTON_SIZE + 5 * PADDING,
+                              BUTTON_SIZE + 2 * PADDING);
+  setBounds(0, 0, minSize_.getX(), minSize_.getY());
 }
 
 DrawableButton* ModeSelector::getButton(const Mode::Action& action) {

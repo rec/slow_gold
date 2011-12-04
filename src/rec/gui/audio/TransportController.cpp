@@ -90,7 +90,7 @@ void TransportController::onDataChange(const rec::audio::Gain& gain) {
   thread::callAsync(this, &TransportController::setGain, gain);
 }
 
-void TransportController::setGain(const rec::audio::Gain& gain) {
+void TransportController::setGain(rec::audio::Gain gain) {
   level_.setEnabled(!gain.mute());
   levelMeter_(gain);
 }

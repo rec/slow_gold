@@ -15,7 +15,7 @@ class Timer : public Wrappy, public Broadcaster<Samples<44100> > {
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     Wrappy::getNextAudioBlock(i);
-    thread::callAsync(this, &Timer::broadcast, position_);
+    thread::callAsync(this, &Timer::broadcast, getNextReadPosition());
   }
 
   virtual void setNextReadPosition(int64 time) {

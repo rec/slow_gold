@@ -63,11 +63,15 @@ MainPage::MainPage(Components* components, data::Editable* e)
       transformResizer_("transform_x", &playbackPanel_, 3, e),
       controlResizer_("control_x", &playbackPanel_, 5, e) {
   // Main panel.
-  add(&mainPanel_, &navigationPanel_, 150, -1.0, -0.4);
-  add(&mainPanel_, &navigationResizer_, 7.0);
+
+  static const int MIN_NAV_PANEL = 150;
+  add(&mainPanel_, &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
+  add(&mainPanel_, &navigationResizer_, 7.0);  // !
 
   Component* waveform = components->waveform_.get();
-  add(&mainPanel_, waveform, 150, -1.0, -0.5);
+
+  static const int MIN_WAVEFORM = 150;
+  add(&mainPanel_, waveform, MIN_WAVEFORM, -1.0, -0.5);
   waveform->addAndMakeVisible(components->modeSelector_.get());
   waveform->addAndMakeVisible(components->commandBar_.get());
 
