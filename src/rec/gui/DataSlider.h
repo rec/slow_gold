@@ -13,8 +13,8 @@ namespace gui {
 
 template <typename Proto, typename Type>
 class DataSlider : public Layout,
-                      public DataListener<Proto>,
-                      public juce::Slider::Listener {
+                   public DataListener<Proto>,
+                   public juce::Slider::Listener {
  public:
   DataSlider(const String& name,
                 const data::Address& address,
@@ -39,8 +39,6 @@ class DataSlider : public Layout,
     addToLayout(&slider_, 0, -1.0, -1.0);
   }
 
-  DetentSlider* slider() { return &slider_; }
-
   virtual void sliderValueChanged(Slider*) {
     this->setValue(static_cast<Type>(slider_.getValue()));
   }
@@ -50,6 +48,8 @@ class DataSlider : public Layout,
     thread::callAsync(this, &DataSlider<Proto, Type>::setSliderValue,
                       value.get<Type>());
   }
+
+  DetentSlider* slider() { return &slider_; }
 
  protected:
   void setSliderValue(Type value) { slider_.setValue(value, false); }

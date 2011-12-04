@@ -91,7 +91,7 @@ void TransportController::onDataChange(const rec::audio::Gain& gain) {
 }
 
 void TransportController::setGain(const rec::audio::Gain& gain) {
-  level_.slider()->setEnabled(!gain.mute());
+  level_.setEnabled(!gain.mute());
   levelMeter_(gain);
 }
 
