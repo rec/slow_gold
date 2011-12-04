@@ -36,7 +36,6 @@ PersistentWindow::PersistentWindow(const String& name,
 PersistentWindow::~PersistentWindow() {}
 
 void PersistentWindow::getPositionFromData() {
-  DLOG(INFO) << "getPositionFromData";
   data::TypedEditable<WindowPosition>* e = data::editable<WindowPosition>();
   e->addListener(this);
   (*this)(e->get());
@@ -51,7 +50,8 @@ void PersistentWindow::fixPosition(WindowPosition* pos) {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-  DLOG(INFO) << "data! " << p.ShortDebugString();
+  // DLOG(INFO) << "data! " << p.ShortDebugString();
+
   WindowPosition position = p;
   fixPosition(&position);
 
@@ -67,8 +67,8 @@ void PersistentWindow::operator()(const WindowPosition& p) {
   }
 
   juce::Rectangle<int> bounds = copy(position.bounds());
-#ifdef ASYNC_UPDATES
-  thread::callAsync(this, &PersistentWindow::doSetBounds, bounds));
+#ifndef ASYNC_UPDATES
+  thread::callAsync(this, &PersistentWindow::doSetBounds, bounds);
 #else
   MessageManagerLock l;
   doSetBounds(bounds);
@@ -84,7 +84,7 @@ void PersistentWindow::doSetBounds(juce::Rectangle<int> bounds) {
 }
 
 void PersistentWindow::resized() {
-  DLOG(INFO) << "resized!";
+  // DLOG(INFO) << "resized!";
   DocumentWindow::resized();
   writeData();
 }
@@ -109,13 +109,13 @@ void PersistentWindow::writeData() {
 
     *position.mutable_bounds() = copy(getBounds());
     fixPosition(&position);
-    DLOG(INFO) << "write data! " << position.ShortDebugString();
+    // DLOG(INFO) << "write data! " << position.ShortDebugString();
     data::set(position);
   }
 }
 
 void PersistentWindow::moved() {
-  DLOG(INFO) << "moved!";
+  // DLOG(INFO) << "moved!";
   DocumentWindow::moved();
   writeData();
 }
