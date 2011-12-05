@@ -65,8 +65,9 @@ MainPage::MainPage(Components* components, data::Editable* e)
   // Main panel.
 
   static const int MIN_NAV_PANEL = 150;
+  static const double MIN_RESIZER = MIN_RESIZER;
   add(&mainPanel_, &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
-  add(&mainPanel_, &navigationResizer_, 7.0);  // !
+  add(&mainPanel_, &navigationResizer_, MIN_RESIZER);
 
   Component* waveform = components->waveform_.get();
 
@@ -75,13 +76,14 @@ MainPage::MainPage(Components* components, data::Editable* e)
   waveform->addAndMakeVisible(components->modeSelector_.get());
   waveform->addAndMakeVisible(components->commandBar_.get());
 
-  add(&mainPanel_, &playbackPanel_, 100, 100, 100);
+  static const int MIN_MAIN_PANEL = 100;
+  add(&mainPanel_, &playbackPanel_, MIN_MAIN_PANEL);
 
   // Navigation panel.
   add(&navigationPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);
-  add(&navigationPanel_, &directoryResizer_, 7.0);
+  add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->songData_, 150, -1.0, -0.30);
-  add(&navigationPanel_, &metadataResizer_, 7.0);
+  add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->loops_.get(), 250, -1.0, -0.3);
 
   // Playback panel.
