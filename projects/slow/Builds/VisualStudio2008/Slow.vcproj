@@ -26,7 +26,7 @@
             MkTypLibCompatible="true"
             SuppressStartupBanner="true"
             TargetEnvironment="1"
-            TypeLibraryName=".\Debug\SlowGold.tlb"
+            TypeLibraryName=".\Debug\SlowGold (debug build).tlb"
             HeaderFileName=""/>
       <Tool Name="VCCLCompilerTool"
             Optimization="0"
@@ -37,7 +37,7 @@
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
-            PrecompiledHeaderFile=".\Debug\SlowGold.pch"
+            PrecompiledHeaderFile=".\Debug\SlowGold (debug build).pch"
             AssemblerListingLocation=".\Debug\"
             ObjectFile=".\Debug\"
             ProgramDataBaseFileName=".\Debug\"
@@ -48,11 +48,11 @@
             PreprocessorDefinitions="_DEBUG"/>
       <Tool Name="VCPreLinkEventTool"/>
       <Tool Name="VCLinkerTool"
-            OutputFile=".\Debug\SlowGold.exe"
+            OutputFile=".\Debug\SlowGold (debug build).exe"
             SuppressStartupBanner="true"
             IgnoreDefaultLibraryNames="libcmt.lib, msvcrt.lib"
             GenerateDebugInformation="true"
-            ProgramDatabaseFile=".\Debug\SlowGold.pdb"
+            ProgramDatabaseFile=".\Debug\SlowGold (debug build).pdb"
             SubSystem="2"
             TargetMachine="1"
             AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
@@ -61,7 +61,7 @@
       <Tool Name="VCXDCMakeTool"/>
       <Tool Name="VCBscMakeTool"
             SuppressStartupBanner="true"
-            OutputFile=".\Debug\SlowGold.bsc"/>
+            OutputFile=".\Debug\SlowGold (debug build).bsc"/>
       <Tool Name="VCFxCopTool"/>
       <Tool Name="VCAppVerifierTool"/>
       <Tool Name="VCPostBuildEventTool"/>
@@ -465,6 +465,7 @@
           <File RelativePath="..\..\..\..\src\rec\gui\Font.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Geometry.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Geometry.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\HasSizeHints.h"/>
           <Filter Name="icon">
             <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioCard.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h"/>
@@ -520,6 +521,8 @@
           <File RelativePath="..\..\..\..\src\rec\gui\SetterTextArea.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterToggle.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SimpleLabel.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SizeAccumulator.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SizeHintAccumulator.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SongData.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\TableController.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\TableController.h"/>

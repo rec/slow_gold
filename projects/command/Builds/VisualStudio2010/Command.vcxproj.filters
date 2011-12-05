@@ -1410,6 +1410,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h">
       <Filter>Command\rec\gui</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h">
+      <Filter>Command\rec\gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h">
       <Filter>Command\rec\gui\icon</Filter>
     </ClInclude>
@@ -1492,6 +1495,12 @@
       <Filter>Command\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\SimpleLabel.h">
+      <Filter>Command\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SizeAccumulator.h">
+      <Filter>Command\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SizeHintAccumulator.h">
       <Filter>Command\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\SongData.h">

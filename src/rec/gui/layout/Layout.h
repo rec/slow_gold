@@ -34,7 +34,9 @@ class Layout : public Component, public SizeHintAccumulator {
       addToLayout(c, DEFAULT_MIN, DEFAULT_MAX, DEFAULT_PREF);
   }
 
-  void addToLayout(Component* c, double m) { addToLayout(c, m, m, m); }
+   void addToLayout(Component* c, double m) {
+     addToLayout(c, m, m, m);
+   }
 
   void addToLayout(Component* c, double min, double max, double pref) {
     accumulate(min, max, pref);

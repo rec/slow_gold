@@ -531,6 +531,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\Font.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.h"/>
@@ -559,6 +560,8 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterTextArea.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterToggle.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SimpleLabel.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SizeAccumulator.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SizeHintAccumulator.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SongData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\TableController.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h"/>

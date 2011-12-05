@@ -37,7 +37,7 @@
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SlowGold</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SlowGold (debug build)</TargetName>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SlowGold</TargetName>
@@ -69,18 +69,18 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\Debug\SlowGold.exe</OutputFile>
+      <OutputFile>.\Debug\SlowGold (debug build).exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\Debug\SlowGold.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>.\Debug\SlowGold (debug build).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\build\\Debug\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Debug\SlowGold.bsc</OutputFile>
+      <OutputFile>.\Debug\SlowGold (debug build).bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -533,6 +533,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\Font.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.h"/>
@@ -561,6 +562,8 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterTextArea.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterToggle.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SimpleLabel.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SizeAccumulator.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SizeHintAccumulator.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SongData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\TableController.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h"/>

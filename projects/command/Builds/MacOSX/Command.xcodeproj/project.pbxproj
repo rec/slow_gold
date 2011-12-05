@@ -536,6 +536,7 @@
 		C7F6DEB00B43664A84156175 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Font.h; path = ../../../../src/rec/gui/Font.h; sourceTree = "SOURCE_ROOT"; };
 		9316F0EECFA95C056CF5A9C7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Geometry.cpp; path = ../../../../src/rec/gui/Geometry.cpp; sourceTree = "SOURCE_ROOT"; };
 		D4CEB6544324F0509CC63C69 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.h; path = ../../../../src/rec/gui/Geometry.h; sourceTree = "SOURCE_ROOT"; };
+		B83B32AEC409ED04C24B5DF4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HasSizeHints.h; path = ../../../../src/rec/gui/HasSizeHints.h; sourceTree = "SOURCE_ROOT"; };
 		3D2574908A37D188C9ED1F65 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioCard.svg.cpp; path = ../../../../src/rec/gui/icon/AudioCard.svg.cpp; sourceTree = "SOURCE_ROOT"; };
 		4A95E3E15EF69F71AF7957C0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioCard.svg.h; path = ../../../../src/rec/gui/icon/AudioCard.svg.h; sourceTree = "SOURCE_ROOT"; };
 		26133345915C4CCE17392B53 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioInputMicrophone.svg.cpp; path = ../../../../src/rec/gui/icon/AudioInputMicrophone.svg.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -587,6 +588,8 @@
 		E3AE05DBC426A63DC00E081B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterTextArea.h; path = ../../../../src/rec/gui/SetterTextArea.h; sourceTree = "SOURCE_ROOT"; };
 		B54F45E4D165529595DDAB5C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterToggle.h; path = ../../../../src/rec/gui/SetterToggle.h; sourceTree = "SOURCE_ROOT"; };
 		7D108DC8B2379D556C4B2F96 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SimpleLabel.h; path = ../../../../src/rec/gui/SimpleLabel.h; sourceTree = "SOURCE_ROOT"; };
+		F92A8E8D31E0244BEA4CFA73 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SizeAccumulator.h; path = ../../../../src/rec/gui/SizeAccumulator.h; sourceTree = "SOURCE_ROOT"; };
+		F3E696272361A4FBBE1B6044 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SizeHintAccumulator.h; path = ../../../../src/rec/gui/SizeHintAccumulator.h; sourceTree = "SOURCE_ROOT"; };
 		F51A3D3B106A417ACE152E58 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SongData.h; path = ../../../../src/rec/gui/SongData.h; sourceTree = "SOURCE_ROOT"; };
 		5138BD32CC0E495AFDB1A128 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TableController.cpp; path = ../../../../src/rec/gui/TableController.cpp; sourceTree = "SOURCE_ROOT"; };
 		2D7F8C76B45B4920420D8C83 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableController.h; path = ../../../../src/rec/gui/TableController.h; sourceTree = "SOURCE_ROOT"; };
@@ -1193,6 +1196,7 @@
 				C7F6DEB00B43664A84156175,
 				9316F0EECFA95C056CF5A9C7,
 				D4CEB6544324F0509CC63C69,
+				B83B32AEC409ED04C24B5DF4,
 				183B6F7BF37E28157716B203,
 				3150AB96220340FC7AE11C3C,
 				60CFAF9F013EE1A014011CAD,
@@ -1205,6 +1209,8 @@
 				E3AE05DBC426A63DC00E081B,
 				B54F45E4D165529595DDAB5C,
 				7D108DC8B2379D556C4B2F96,
+				F92A8E8D31E0244BEA4CFA73,
+				F3E696272361A4FBBE1B6044,
 				F51A3D3B106A417ACE152E58,
 				5138BD32CC0E495AFDB1A128,
 				2D7F8C76B45B4920420D8C83 ); name = gui; sourceTree = "<group>"; };
@@ -1529,7 +1535,7 @@
 				0E5561BA8F7A19892CFB3AED ); name = rec; sourceTree = "<group>"; };
 		F5495BB1B8B716831989C22D = { isa = PBXGroup; children = (
 				C168A6E2670AB63095F469AB ); name = proto; sourceTree = "<group>"; };
-		D4308EF9F6B4D3D607FAAD1F = { isa = PBXGroup; children = (
+		16895DD0BD1AD3AB974F728C = { isa = PBXGroup; children = (
 				75467D3DB26B8C553F2D3FE5,
 				F5495BB1B8B716831989C22D,
 				107F029BEE50E0870F8E5A13 ); name = Command; sourceTree = "<group>"; };
@@ -1556,7 +1562,7 @@
 		DBBED81D920B27CB9107C128 = { isa = PBXGroup; children = (
 				D427FD0910FEA6098B36B56B ); name = Products; sourceTree = "<group>"; };
 		B2772D76DA45DD25AC30B180 = { isa = PBXGroup; children = (
-				D4308EF9F6B4D3D607FAAD1F,
+				16895DD0BD1AD3AB974F728C,
 				E89CD5E8F8F5E56D76A0DE49,
 				AC0A55CC5C6219AB36B5C26B,
 				C0B90B9133DBCC84A6028DCC,

@@ -15,13 +15,13 @@ class SizeAccumulator {
       totalAbsolute_ += static_cast<int>(size);
     } else {
       totalRatio_ -= size;
-      DCHECK_LT(totalRatio_, 1.0);
+      // DCHECK_LT(totalRatio_, 1.0);
     }
   }
 
   int size() const {
     if (totalRatio_ >= 1) {
-      LOG(DFATAL) << "Impossible size!";
+      // LOG(DFATAL) << "Impossible size!";
       return totalAbsolute_;
     }
 

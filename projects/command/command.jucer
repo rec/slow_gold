@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="raQB2fdn9" name="Command">
+  <MAINGROUP id="OLnLrzMuj" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -621,6 +621,8 @@
               name="Geometry.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Geometry.h" id="gCy03Vu4i"
               name="Geometry.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/HasSizeHints.h" id="nFrKAQpPD"
+              name="HasSizeHints.h" resource="0"/>
         <GROUP id="73PQUOJzU" name="icon">
           <FILE compile="1" file="../../src/rec/gui/icon/AudioCard.svg.cpp" id="ylJuYsVWr"
                 name="AudioCard.svg.cpp" resource="0"/>
@@ -727,6 +729,10 @@
               name="SetterToggle.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SimpleLabel.h" id="3Vn7xtSlf"
               name="SimpleLabel.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/SizeAccumulator.h" id="KMugDYEc3"
+              name="SizeAccumulator.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/SizeHintAccumulator.h" id="0itAZ5Bri"
+              name="SizeHintAccumulator.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SongData.h" id="FKTRaKVOc"
               name="SongData.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/TableController.cpp" id="LgvsQZdO8"
@@ -1293,7 +1299,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="tgul3udAw" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="BrqmMBRcH" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -29,6 +29,11 @@ using gui::SetterResizer;
 
 namespace {
 
+const int MIN_NAV_PANEL = 100;
+const double MIN_RESIZER = 7.0;
+const int MIN_WAVEFORM = 150;
+const int MIN_MAIN_PANEL = 100;
+
 template <typename Type>
 void add(gui::Layout* layout, Type* t, double min, double max, double pref) {
   layout->addToLayout(t, min, max, pref);
@@ -62,21 +67,15 @@ MainPage::MainPage(Components* components, data::Editable* e)
       helpResizer_("help_x", &playbackPanel_, 1, e),
       transformResizer_("transform_x", &playbackPanel_, 3, e),
       controlResizer_("control_x", &playbackPanel_, 5, e) {
-  // Main panel.
-
-  static const int MIN_NAV_PANEL = 150;
-  static const double MIN_RESIZER = MIN_RESIZER;
   add(&mainPanel_, &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
   add(&mainPanel_, &navigationResizer_, MIN_RESIZER);
 
   Component* waveform = components->waveform_.get();
 
-  static const int MIN_WAVEFORM = 150;
   add(&mainPanel_, waveform, MIN_WAVEFORM, -1.0, -0.5);
   waveform->addAndMakeVisible(components->modeSelector_.get());
   waveform->addAndMakeVisible(components->commandBar_.get());
 
-  static const int MIN_MAIN_PANEL = 100;
   add(&mainPanel_, &playbackPanel_, MIN_MAIN_PANEL);
 
   // Navigation panel.

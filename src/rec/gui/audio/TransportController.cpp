@@ -11,9 +11,15 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-static const int ICON_SIZE = 40;
-static const int SLIDER_HEIGHT = 18;
-static const int MUTE_BUTTON_SIZE = 50;
+namespace {
+
+const int ICON_SIZE = 40;
+const int SLIDER_HEIGHT = 18;
+const int MUTE_BUTTON_SIZE = 50;
+
+const char* const MUTE_BUTTON_TEXT = "Mute";
+
+}  // namespace
 
 TransportController::TransportController(TimeController* timeController)
     : Layout("TransportController", VERTICAL),
@@ -23,7 +29,7 @@ TransportController::TransportController(TimeController* timeController)
       startStopButton_("Start/stop", juce::DrawableButton::ImageFitted),
       jumpToStartButton_("Jump to start", juce::DrawableButton::ImageFitted),
       level_("Gain", data::Address("gain")),
-      muteButton_("Mute", data::Address("mute")) {
+      muteButton_(MUTE_BUTTON_TEXT, data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
   jumpToStartButton_.setImages(ptr<Drawable>(icon::ZoomIn::create()).get());
@@ -58,12 +64,6 @@ using rec::audio::transport::State;
 void TransportController::operator()(State state) {
   thread::callAsync(this, &TransportController::setTransportState, state);
 }
-
-void TransportController::recalc() {
-  // TODO
-  // addLoopPointButton_.setEnabled(isNewLoopPointTime(loopPointList_, time_));
-}
-
 
 void TransportController::buttonClicked(juce::Button *button) {
   using namespace rec::command;

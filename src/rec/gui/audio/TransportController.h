@@ -33,7 +33,7 @@ class TransportController : public Layout,
   virtual void onDataChange(const rec::audio::Gain&);
 
   void setTransportState(rec::audio::transport::State state);
-  void setTime(Samples<44100> time) { time_ = time; recalc(); }
+  void setTime(Samples<44100> time) { time_ = time; }
 
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
   void clearLevels();
@@ -43,8 +43,6 @@ class TransportController : public Layout,
   void setGain(rec::audio::Gain);
 
   TimeController* timeController_;
-
-  void recalc();
 
   Layout buttonsLayout_;
   Layout gainLayout_;

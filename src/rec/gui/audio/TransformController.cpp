@@ -3,11 +3,6 @@
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 
-static const int SLIDER_HEIGHT = 30;
-static const int LEFT_PANEL_WIDTH = 90;
-static const int ENABLE_BUTTON_HEIGHT = 40;
-static const int COMBO_BOX_HEIGHT = 30;
-
 namespace rec {
 namespace gui {
 namespace audio {
@@ -21,14 +16,32 @@ enum Sides {
   STEREO = 1, LEFT, RIGHT, LEFT_PLUS_RIGHT
 };
 
+const int SLIDER_HEIGHT = 30;
+const int LEFT_PANEL_WIDTH = 90;
+const int ENABLE_BUTTON_HEIGHT = 40;
+const int COMBO_BOX_HEIGHT = 30;
+
+const char* const PITCH_BUTTON_TEXT = "Pitch";
+const char* const SPEED_BUTTON_TEXT = "Speed";
+const char* const TRANSFORM_BUTTON_TEXT = "Transform";
+const char* const TUNE_BUTTON_TEXT = "Tune";
+
+const char* const STEREO_TEXT = "Stereo";
+const char* const LEFT_TEXT = "Left";
+const char* const RIGHT_TEXT = "Right";
+const char* const LEFT_PLUS_RIGHT_TEXT = "L + R";
+
+const char* const SEMITONES_TEXT = " semitones";
+const char* const CENTS_TEXT = " cents";
+
 }  // namespace
 
 TransformController::TransformController()
     : Layout("TransformController", HORIZONTAL),
-      playbackSpeed_("Speed", Address("time_percent")),
-      pitchScale_("Pitch", Address("semitone_shift")),
-      fineScale_("Tune", Address("detune_cents")),
-      enableButton_("Transform", Address("enabled")),
+      playbackSpeed_(SPEED_BUTTON_TEXT, Address("time_percent")),
+      pitchScale_(PITCH_BUTTON_TEXT, Address("semitone_shift")),
+      fineScale_(TUNE_BUTTON_TEXT, Address("detune_cents")),
+      enableButton_(TRANSFORM_BUTTON_TEXT, Address("enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL) {
   playbackSpeed_.slider()->setRange(0.5, 200.0, 1.0);
@@ -41,17 +54,17 @@ TransformController::TransformController()
   fineScale_.slider()->setDetent(0.0f);
 
   playbackSpeed_.slider()->setTextValueSuffix("%");
-  pitchScale_.slider()->setTextValueSuffix(" semitones");
-  fineScale_.slider()->setTextValueSuffix(" cents");
+  pitchScale_.slider()->setTextValueSuffix(SEMITONES_TEXT);
+  fineScale_.slider()->setTextValueSuffix(CENTS_TEXT);
 
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
-  stereoComboBox_.setTextWhenNothingSelected("Stereo");
-  stereoComboBox_.setTextWhenNoChoicesAvailable("Stereo");
-  stereoComboBox_.addItem("Stereo", STEREO);
-  stereoComboBox_.addItem("Left", LEFT);
-  stereoComboBox_.addItem("Right", RIGHT);
-  stereoComboBox_.addItem("L + R", LEFT_PLUS_RIGHT);
+  stereoComboBox_.setTextWhenNothingSelected(STEREO_TEXT);
+  stereoComboBox_.setTextWhenNoChoicesAvailable(STEREO_TEXT);
+  stereoComboBox_.addItem(STEREO_TEXT, STEREO);
+  stereoComboBox_.addItem(LEFT_TEXT, LEFT);
+  stereoComboBox_.addItem(RIGHT_TEXT, RIGHT);
+  stereoComboBox_.addItem(LEFT_PLUS_RIGHT_TEXT, LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
   leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);

@@ -6,15 +6,15 @@
 #include "rec/gui/Geometry.h"
 #include "rec/util/thread/CallAsync.h"
 
-#define LOGGING 1
+// #define LOGGING 1
 
 namespace rec {
 namespace gui {
 
 using namespace juce;
 
-static const int MIN_WIDTH = 600;
-static const int MIN_HEIGHT = 440;
+static const int MIN_WIDTH = 700;
+static const int MIN_HEIGHT = 450;
 static const int MIN_X = 10;
 static const int MIN_Y = 100;
 
@@ -56,7 +56,9 @@ void PersistentWindow::fixPosition(WindowPosition* pos) {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
+#ifdef LOGGING
   LOG(INFO) << toString(p);
+#endif
 
   WindowPosition position = p;
   fixPosition(&position);
@@ -94,7 +96,9 @@ void PersistentWindow::doSetBounds() {
 }
 
 void PersistentWindow::resized() {
+#ifdef LOGGING
   LOG(INFO) << "resized!";
+#endif
   DocumentWindow::resized();
   writeData();
 }
@@ -109,23 +113,35 @@ void PersistentWindow::writeData() {
     {
       Lock l(lock_);
       if (ignoreNextResize_) {
+#ifdef LOGGING
         LOG(INFO) << "resize ignored! ";
+#endif
         ignoreNextResize_ = false;
         return;
       }
     }
     WindowPosition position(data::editable<WindowPosition>()->get());
     juce::Rectangle<int> bounds = getBounds();
+
+#ifdef LOGGING
     LOG(INFO) << toString(position);
-    LOG(INFO) << str(toString(bounds));
+#endif
 
     *position.mutable_bounds() = copy(bounds);
+    fixPosition(&position);
+
+#ifdef LOGGING
+    LOG(INFO) << toString(position);
+#endif
+
     data::set(position);
   }
 }
 
 void PersistentWindow::moved() {
+#ifdef LOGGING
   LOG(INFO) << "moved!";
+#endif
   DocumentWindow::moved();
   writeData();
 }
