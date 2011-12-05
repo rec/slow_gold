@@ -4,7 +4,7 @@
 #include <map>
 
 #include "rec/gui/layout/Layout.h"
-#include "rec/gui/HasMinSize.h"
+#include "rec/gui/HasSizeHints.h"
 #include "rec/util/DataListener.h"
 #include "rec/util/Mode.pb.h"
 
@@ -14,8 +14,7 @@ namespace audio {
 
 class ModeSelector : public Layout,
                      public juce::Button::Listener,
-                     public DataListener<Mode>,
-                     public HasMinSize {
+                     public DataListener<Mode> {
  public:
   ModeSelector();
   virtual ~ModeSelector() {}

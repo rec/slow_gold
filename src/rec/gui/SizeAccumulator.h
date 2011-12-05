@@ -19,7 +19,7 @@ class SizeAccumulator {
     }
   }
 
-  int getSize() const {
+  int size() const {
     if (totalRatio_ >= 1) {
       LOG(DFATAL) << "Impossible size!";
       return totalAbsolute_;
