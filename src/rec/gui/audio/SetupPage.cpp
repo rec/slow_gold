@@ -6,6 +6,10 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+// TODO: i18n
+
+static const char* AUDIO_PREFERENCES_CAPTION = "Set Audio Preferences";
+
 SetupPage::SetupPage(rec::audio::Device* dev)
     : deviceSelector_(dev->manager_, 0, 0, 2, 2, true, false, true, true),
       device_(dev) {
@@ -25,7 +29,7 @@ void SetupPage::show(Component* comp) {
     return;
 
   locker.setModalComponent(comp);
-  juce::DialogWindow::showModalDialog("Set Audio Preferences", this,
+  juce::DialogWindow::showModalDialog(AUDIO_PREFERENCES_CAPTION, this,
                                       comp, juce::Colours::white, true);
 
   device_->saveState();

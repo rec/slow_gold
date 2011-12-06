@@ -1,8 +1,10 @@
 #include "rec/slow/Threads.h"
+
 #include "rec/data/Data.h"
+#include "rec/slow/BufferFiller.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
-#include "rec/slow/BufferFiller.h"
+#include "rec/slow/SlowWindow.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
@@ -54,6 +56,7 @@ struct Period {
     DIRECTORY = 1000,
     FILL = 40,
     NAVIGATOR = 1001,
+    WRITE_GUI = 250,
   };
 };
 
@@ -63,12 +66,19 @@ struct Priority {
     DIRECTORY = 3,
     FILL = 4,
     NAVIGATOR = 2,
+    WRITE_GUI = 4
   };
 };
 
 int navigator(Instance* i) {
   i->components_->directoryTree_->checkVolumes();
   return Period::NAVIGATOR;
+}
+
+int writeGui(Instance* i) {
+  i->window_->writeGui();
+
+  return Period::WRITE_GUI;
 }
 
 thread::Result fill(Instance* i) {
@@ -86,6 +96,7 @@ void Threads::startAll() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
   fillThread_ = start(&fill, "Fill", Priority::FILL);
   start(&directory, "Directory", Priority::DIRECTORY);
+  start(&writeGui, "writeGUI", Priority::WRITE_GUI);
 }
 
 }  // namespace slow

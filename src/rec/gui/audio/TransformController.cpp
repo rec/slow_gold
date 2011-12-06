@@ -7,6 +7,8 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+// TODO: i18n
+
 using rec::audio::Gain;
 using data::Address;
 

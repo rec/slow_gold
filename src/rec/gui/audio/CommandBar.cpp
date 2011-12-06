@@ -4,12 +4,18 @@
 #include "rec/gui/icon/MediaPlay.svg.h"
 #include "rec/gui/icon/MediaRecord.svg.h"
 
-static const int BUTTON_SIZE = 30;
-static const int PADDING = 4;
-
 namespace rec {
 namespace gui {
 namespace audio {
+
+namespace {
+
+// TODO: i18n
+
+const int BUTTON_SIZE = 30;
+const int PADDING = 4;
+
+}  // namespace
 
 CommandBar::CommandBar()
     : Layout("CommandBar", HORIZONTAL),

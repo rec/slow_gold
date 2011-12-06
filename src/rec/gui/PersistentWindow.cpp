@@ -17,12 +17,15 @@ static const int MIN_WIDTH = 700;
 static const int MIN_HEIGHT = 450;
 static const int MIN_X = 10;
 static const int MIN_Y = 100;
+static const int MIN_UPDATE_GAP = 500;
 
 typedef juce::Rectangle<int> Rect;
 
+#ifdef LOGGING
 static string toString(const WindowPosition& pos) {
   return str(toString(pos.bounds()));
 }
+#endif
 
 PersistentWindow::PersistentWindow(const String& name,
                                    const Colour& bg,
@@ -30,7 +33,8 @@ PersistentWindow::PersistentWindow(const String& name,
                                    bool addToDesktop)
     : DocumentWindow(name, bg, requiredButtons, addToDesktop),
       okToSavePosition_(false),
-      ignoreNextResize_(false) {
+      ignoreNextResize_(false),
+      needsWrite_(false) {
   setBroughtToFrontOnMouseClick(true);
   setResizable(true, false); // resizability is a property of ResizableWindow
 
@@ -65,10 +69,13 @@ void PersistentWindow::operator()(const WindowPosition& p) {
 
   {
     Lock l(lock_);
+#ifndef DONT_FILTER_DUPLICATES
     if (data::equals(position_, position))
       return;  // Filter duplicate messages.
+#endif
 
     position_ = position;
+
 #ifdef FILTER_RESIZES
     ignoreNextResize_ = true;
 #endif
@@ -108,6 +115,8 @@ bool PersistentWindow::isFullScreenSize() const {
           subtractedFrom(getParentMonitorArea()));
 }
 
+static int64 time() { return juce::Time::currentTimeMillis(); }
+
 void PersistentWindow::writeData() {
   if (okToSavePosition_) {
     {
@@ -134,7 +143,14 @@ void PersistentWindow::writeData() {
     LOG(INFO) << toString(position);
 #endif
 
+#ifdef PERSISTENCE
     data::set(position);
+#else
+    Lock l(lock_);
+    needsWrite_ = true;
+    lastUpdateTime_ = time();
+    position_ = position;
+#endif
   }
 }
 
@@ -148,6 +164,12 @@ void PersistentWindow::moved() {
 
 void PersistentWindow::closeButtonPressed() {
   JUCEApplication::getInstance()->systemRequestedQuit();
+}
+
+void PersistentWindow::writeGui() {
+  Lock l(lock_);
+  if (needsWrite_ && (time() - lastUpdateTime_) > MIN_UPDATE_GAP)
+    data::set(position_);
 }
 
 }  // namespace gui {

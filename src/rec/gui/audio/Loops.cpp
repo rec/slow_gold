@@ -16,6 +16,8 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+// TODO: i18n
+
 static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
 static const juce::Colour SELECTED_COLOR(0xffefef80);
 
@@ -32,9 +34,6 @@ static Def<TableColumnList> dflt(
 "address { part { name: \"name\" } } "
 "width: 170 "
 "} "
-#if 0
-"column { type: STRING name: \"Notes\" address { part { name: \"notes\" } } } "
-#endif
 );
 
 Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)

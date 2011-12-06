@@ -1,0 +1,23 @@
+glog
+
+before:
+  $ ./configure --enable-static --enable-shared=no --with-cpu=x86 CXXFLAGS=-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -I../build/debug/gflags/include/ --prefix=/Users/tom/Documents/development/build/debug/glog
+
+after:
+  $ ./configure --enable-static --enable-shared=no --with-cpu=x86 CXXFLAGS=-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -I../build/release/gflags/include/ --prefix=/Users/tom/Documents/development/build/release/glog
+
+
+mpg123
+
+before:
+
+  $ ./configure --enable-static --enable-shared=no CXXFLAGS=-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -O2 -UDEBUG -U_DEBUG --prefix=/Users/tom/Documents/development/build/release/mpg123 CPPFLAGS=-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -O2 -UDEBUG -U_DEBUG
+
+after:
+
+  $ ./configure --with-cpu=i386 --enable-static --enable-shared=no CXXFLAGS=-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -O2 -UDEBUG -U_DEBUG --prefix=/Users/tom/Documents/development/build/release/mpg123 CPPFLAGS=-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -O2 -UDEBUG -U_DEBUG LDFLAGS=-arch i386
+
+
+protobuf
+
+  $ ./configure --enable-static --enable-shared=no --with-cpu=x86 CXXFLAGS=-arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -O2 --prefix=/Users/tom/Documents/development/build/release/protobuf

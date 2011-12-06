@@ -9,6 +9,8 @@
 
 using namespace juce;
 
+// TODO: i18n
+
 static const bool ENABLE_SHIFTS = false;
 static const int BUTTON_SIZE = 16;
 static const int PADDING = 4;

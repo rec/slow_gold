@@ -11,6 +11,8 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+// TODO: i18n
+
 namespace {
 
 const int ICON_SIZE = 40;
