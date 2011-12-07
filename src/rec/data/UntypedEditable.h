@@ -76,7 +76,8 @@ bool UntypedEditable::fill(Proto* t) const {
 
 class EmptyEditable : public UntypedEditable {
  public:
-  EmptyEditable() : UntypedEditable(File(), VirtualFile(), NULL) {}
+  EmptyEditable(const string& name) : UntypedEditable(File(), VirtualFile(), NULL),
+                                      typeName_(name) {}
   virtual ~EmptyEditable() {}
   virtual void onDataChange() {}
 
@@ -86,7 +87,7 @@ class EmptyEditable : public UntypedEditable {
   virtual const VirtualFile& virtualFile() const {
     return VirtualFile::default_instance();
   }
-  virtual const string getTypeName() const { return ""; }
+  virtual const string getTypeName() const { return typeName_; }
   virtual int getSize(const Address&) const { return 0; }
   virtual void copyTo(Message*) const {}
   virtual void needsUpdate()  {}
@@ -100,6 +101,7 @@ class EmptyEditable : public UntypedEditable {
   virtual bool isEmpty() const { return true; }
 
  private:
+  const string typeName_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(EmptyEditable);
 };
 

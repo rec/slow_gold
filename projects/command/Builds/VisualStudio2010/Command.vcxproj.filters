@@ -322,6 +322,9 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp">
       <Filter>Command\rec\data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp">
+      <Filter>Command\rec\data</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp">
       <Filter>Command\rec\data</Filter>
     </ClCompile>
@@ -719,6 +722,9 @@
       <Filter>Command\rec\util\thread</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp">
+      <Filter>Command\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\UntypedDataListener.cpp">
       <Filter>Command\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp">
@@ -1141,6 +1147,9 @@
       <Filter>Command\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataRegistry.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">
@@ -1747,6 +1756,9 @@
       <Filter>Command\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Undo.h">
+      <Filter>Command\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\UntypedDataListener.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\unused\Circular.h">

@@ -11,22 +11,29 @@
 namespace rec {
 namespace data {
 
-EditableMap* editableMap();
-CriticalSection* editableMapLock();
+UntypedEditable* editable(const string& typeName,
+                          const VirtualFile* vf);
 
-Editable* emptyEditable();
-DataRegistry* dataRegistry();
+File editableFile(const string& typeName, const VirtualFile* vf);
 
-File editableFile(const string& typeName, const VirtualFile& vf = file::none());
+const string emptyTypeName();
+
+// TODO: get rid of this.
+template <typename Proto>
+File editableFile(const VirtualFile& vf = file::none()) {
+  return editableFile(Proto::default_instance().GetTypeName(), &vf);
+}
 
 template <typename Proto>
-File editableFile(const VirtualFile& vf = file::none());
+TypedEditable<Proto>* editable(const VirtualFile* vf) {
+  const string& typeName = Proto::default_instance().GetTypeName();
+  return dynamic_cast<TypedEditable<Proto>*>(editable(typeName, vf));
+}
 
 template <typename Proto>
-TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
-
-template <typename Proto>
-TypedEditable<Proto>* emptyTypedEditable();
+TypedEditable<Proto>* editable(const VirtualFile& vf = file::none()) {
+  return editable<Proto>(&vf);
+}
 
 template <typename Proto>
 void set(const Proto& p, const VirtualFile& f = file::none(),
@@ -35,89 +42,12 @@ void set(const Proto& p, const VirtualFile& f = file::none(),
 }
 
 template <typename Proto>
-const Proto get(const VirtualFile& f = file::none());
-
-template <typename Proto>
-const Value getValue(const Address&, const VirtualFile& f = file::none());
-
-template <typename Proto, typename Operator>
-void apply(Operator);
-
-template <typename Proto, typename Operator>
-void apply(const VirtualFile&, Operator);
-
-template <typename Proto, typename Operator, typename Value>
-void apply(const VirtualFile&, Operator, Value);
-
-template <typename Proto, typename Operator, typename V1, typename V2>
-void apply(const VirtualFile&, Operator, V1, V2);
-
-//
-// Implementations
-//
-
-inline Editable* emptyEditable() {
-  Lock l(*editableMapLock());
-  static const string key = ":empty:empty:";
-
-  EditableMap::const_iterator i = editableMap()->find(key);
-  return (i != editableMap()->end()) ? i->second :
-          ((*editableMap())[key] = new EmptyEditable);
-}
-
-template <typename Proto>
-File editableFile(const VirtualFile& vf) {
-  return editableFile(Proto::default_instance().GetTypeName(), vf);
-}
-
-inline File editableFile(const string& typeName, const VirtualFile& vf) {
-  return getShadowFile(vf, str(typeName));
-}
-
-template <typename Proto>
-TypedEditable<Proto>* makeEditable(const VirtualFile* vf) {
-  File file;
-  string key;
-  if (vf) {
-    file = editableFile<Proto>(*vf);
-    key = str(file);
-  } else {
-    key = ":empty:" + Proto::default_instance().GetTypeName();
-  }
-  Lock l(*editableMapLock());
-  EditableMap::const_iterator i = editableMap()->find(key);
-  TypedEditable<Proto>* e;
-  if (i == editableMap()->end()) {
-    e = vf ? new TypedEditable<Proto>(file, *vf) :
-      new EmptyTypedEditable<Proto>();
-    (*editableMap())[key] = e;
-
-    dataRegistry()->registerMaker<Proto>();
-  } else {
-    e = dynamic_cast<TypedEditable<Proto>*>(i->second);
-    DCHECK(e);
-  }
-
-  return e;
-}
-
-template <typename Proto>
-TypedEditable<Proto>* editable(const VirtualFile& vf) {
-  return makeEditable<Proto>(&vf);
-}
-
-template <typename Proto>
-TypedEditable<Proto>* emptyTypedEditable() {
-  return makeEditable<Proto>(NULL);
-}
-
-template <typename Proto>
 void setValue(const Proto& p, const VirtualFile& f, const Address& a, bool undoable) {
   editable<Proto>(f)->setValue(p, a, undoable);
 }
 
 template <typename Proto>
-const Proto get(const VirtualFile& f) {
+const Proto get(const VirtualFile& f = file::none()) {
   return editable<Proto>(f)->get();
 }
 

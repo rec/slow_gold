@@ -1,10 +1,17 @@
 #ifndef __REC_UTIL_UNTYPEDDATALISTENER__
 #define __REC_UTIL_UNTYPEDDATALISTENER__
 
-#include "rec/base/base.h"
+#include "rec/data/Address.h"
+#include "rec/util/Listener.h"
+#include "rec/util/UpdateRequester.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
+
+namespace data { class UntypedEditable; }
+
 namespace util {
+
 
 class UntypedDataListener : public Listener<const Message&>,
                             public Listener<const VirtualFile&>,
@@ -28,6 +35,7 @@ class UntypedDataListener : public Listener<const Message&>,
 
  private:
   CriticalSection lock_;
+  data::UntypedEditable* data_;
   const string typeName_;
   const data::Address address_;
   const bool isGlobal_;
@@ -40,7 +48,7 @@ class UntypedGlobalDataListener : public UntypedDataListener {
   explicit UntypedGlobalDataListener(const string& typeName,
                                      const data::Address& address =
                                      data::Address::default_instance())
-      : UntypedDataListener(typeName, address, true); {
+      : UntypedDataListener(typeName, address, true) {
   }
 
  private:

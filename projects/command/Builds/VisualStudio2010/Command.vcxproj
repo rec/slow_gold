@@ -167,6 +167,7 @@
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\EditableUpdater.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Grouper.cpp"/>
@@ -300,6 +301,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\UntypedDataListener.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\UpdateRequester.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp"/>
@@ -442,6 +444,7 @@
     <ClInclude Include="..\..\..\..\src\rec\command\TickedDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataRegistry.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\EditableUpdater.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Grouper.h"/>
@@ -644,6 +647,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Undo.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\UntypedDataListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\unused\Circular.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\unused\DelegateToList.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\unused\PointerList.h"/>

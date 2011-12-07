@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="OLnLrzMuj" name="Command">
+  <MAINGROUP id="XaD1pttoy" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -315,8 +315,12 @@
               name="Address.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Address.h" id="NJIaplMw8"
               name="Address.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/Data.cpp" id="Sa84zrUY5"
+              name="Data.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Data.h" id="0USqVpFec" name="Data.h"
               resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataRegistry.h" id="OJR7SAjx3"
+              name="DataRegistry.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/Editable.cpp" id="JpMjNWYsy"
               name="Editable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Editable.h" id="st7rIAFY7"
@@ -1027,6 +1031,10 @@
               name="Undo.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Undo.h" id="GUZaNwQse" name="Undo.h"
               resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/UntypedDataListener.cpp"
+              id="5Gja1Xhy9" name="UntypedDataListener.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/UntypedDataListener.h" id="VJ5wpMEu0"
+              name="UntypedDataListener.h" resource="0"/>
         <GROUP id="ck4JLMRUI" name="unused">
           <FILE compile="0" file="../../src/rec/util/unused/Circular.h" id="KNwVbr3yz"
                 name="Circular.h" resource="0"/>
@@ -1299,7 +1307,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="BrqmMBRcH" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="B6CoAYvJB" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -10,9 +10,6 @@ namespace data {
 
 class UntypedEditable;
 
-UntypedEditable* getUntypedData(const string& typeName, const Address&,
-                                const VirtualFile& f = file::none());
-
 class Maker {
  public:
   Maker() {}
@@ -41,15 +38,15 @@ class DataRegistry {
 
   template <typename Proto>
   void registerMaker() {
-    const string& name = Proto::default_instance().GetTypeName();
-    Registry::iterator i = registry_.find(name);
+    const string& typeName = Proto::default_instance().GetTypeName();
+    Registry::iterator i = registry_.find(typeName);
     if (i == registry_.end())
-      registry_.insert(i, std::make_pair(name, new TypedMaker<Proto>()));
+      registry_.insert(i, std::make_pair(typeName, new TypedMaker<Proto>()));
   }
 
-  UntypedEditable* make(const string& name, const File& file,
+  UntypedEditable* make(const string& typeName, const File& file,
                         const VirtualFile& vf) {
-    Registry::iterator i = registry_.find(name);
+    Registry::iterator i = registry_.find(typeName);
     return (i == registry_.end()) ? NULL : i->second->make(file, vf);
   }
 

@@ -121,14 +121,5 @@ void EditableUpdater::stop() {
 
 EditableUpdater* EditableUpdater::instance_ = NULL;
 
-const DefaultRegistry& defaultRegistry() {
-  return EditableUpdater::instance()->defaultRegistry();
-}
-
-EditableMap* editableMap() { return EditableUpdater::instance()->map(); }
-CriticalSection* editableMapLock() { return EditableUpdater::instance()->lock(); }
-
-DataRegistry* dataRegistry() { return EditableUpdater::instance()->dataRegistry(); }
-
 }  // namespace data
 }  // namespace rec

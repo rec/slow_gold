@@ -314,7 +314,9 @@
         <Filter Name="data">
           <File RelativePath="..\..\..\..\src\rec\data\Address.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Address.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\Data.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Data.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataRegistry.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\EditableUpdater.cpp"/>
@@ -704,6 +706,8 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Undo.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Undo.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\UntypedDataListener.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\UntypedDataListener.h"/>
           <Filter Name="unused">
             <File RelativePath="..\..\..\..\src\rec\util\unused\Circular.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\unused\Circular_test.cpp"/>

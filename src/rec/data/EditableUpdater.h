@@ -38,7 +38,7 @@ class EditableUpdater {
   static EditableUpdater* instance() { return instance_; }
   static void start(DefaultRegistry*);
   static void stop();
-  CriticalSection* lock() { return &lock_; }
+  const CriticalSection& lock() { return lock_; }
 
  private:
   static EditableUpdater* instance_;
