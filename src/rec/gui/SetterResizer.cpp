@@ -7,7 +7,7 @@ namespace gui {
 SetterResizer::SetterResizer(const data::Address& address,
                              Layout* layout,
                              int itemIndexInLayout,
-                             Editable* editable)
+                             data::Editable* editable)
   : StretchableLayoutResizerBar(layout->layoutManager(),
                                 itemIndexInLayout,
                                 layout->orientation() == HORIZONTAL),

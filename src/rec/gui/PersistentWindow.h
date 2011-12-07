@@ -30,6 +30,7 @@ class PersistentWindow : public DocumentWindow,
 
  protected:
   CriticalSection lock_;
+  bool running_;
 
  private:
   void doSetBounds();

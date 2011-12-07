@@ -4,6 +4,7 @@
 
 #include "rec/app/Files.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataRegistry.h"
 #include "rec/data/TypedEditable.h"
 #include "rec/util/DefaultRegistry.h"
 #include "rec/util/STL.h"
@@ -49,9 +50,15 @@ static bool lockedCopy(EditableSet* from, EditableSet* to, CriticalSection* lock
 
 }  // namespace
 
+
+void EditableUpdater::registerMessage(const Message& m) {
+  dataRegistry_->registerMessage(m);
+}
+
 EditableUpdater::EditableUpdater(DefaultRegistry* registry)
     : undoQueue_(app::getAppFile("UndoQueue.Action")),
       defaultRegistry_(registry),
+      dataRegistry_(new DataRegistry),
       updateThread_(makeLoop(updateDesc, this, &EditableUpdater::update)),
       writeThread_(makeLoop(writeDesc, this, &EditableUpdater::write)) {
 }

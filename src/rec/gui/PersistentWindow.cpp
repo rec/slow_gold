@@ -32,6 +32,7 @@ PersistentWindow::PersistentWindow(const String& name,
                                    int requiredButtons,
                                    bool addToDesktop)
     : DocumentWindow(name, bg, requiredButtons, addToDesktop),
+      running_(false),
       okToSavePosition_(false),
       ignoreNextResize_(false),
       needsWrite_(false) {
@@ -168,8 +169,10 @@ void PersistentWindow::closeButtonPressed() {
 
 void PersistentWindow::writeGui() {
   Lock l(lock_);
-  if (needsWrite_ && (time() - lastUpdateTime_) > MIN_UPDATE_GAP)
+  if (running_ && needsWrite_ && (time() - lastUpdateTime_) > MIN_UPDATE_GAP) {
     data::set(position_);
+    needsWrite_ = false;
+  }
 }
 
 }  // namespace gui {

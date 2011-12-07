@@ -31,7 +31,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   }
   virtual void trashPreferences() {}
   GenericApplication* application() { return application_; }
-
+  
  protected:
   virtual void constructInstance() = 0;
   virtual Component* getMainComponent() = 0;
@@ -39,7 +39,6 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual void doStartup() = 0;
 
  private:
-  bool running_;
   GenericApplication* application_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Window);

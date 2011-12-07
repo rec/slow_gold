@@ -11,12 +11,10 @@ namespace gui {
 
 class SetterResizer : public StretchableLayoutResizerBar {
  public:
-  typedef data::Editable Editable;
-
   SetterResizer(const data::Address& address,
                 Layout* layout,
                 int itemIndexInLayout,
-                Editable* editable);
+                data::Editable* editable);
 
   int get() const;
   virtual void moved();
@@ -27,7 +25,7 @@ class SetterResizer : public StretchableLayoutResizerBar {
   juce::StretchableLayoutManager* layoutManager_;
   int index_;
   data::Address address_;
-  Editable* editable_;
+  data::Editable* editable_;
   bool active_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterResizer);

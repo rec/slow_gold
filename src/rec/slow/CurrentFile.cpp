@@ -84,6 +84,8 @@ void CurrentFile::setFile(const VirtualFile& f) {
     lpl.set_length(length);
     if (!lpl.loop_point_size())
       lpl.add_loop_point()->set_selected(true);
+
+    // TODO:  no need to change data unless something has really changed.
     data::set<LoopPointList>(lpl, file_, false);
   }
 

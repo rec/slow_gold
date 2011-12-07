@@ -11,6 +11,7 @@ namespace util { class DefaultRegistry; }
 
 namespace data {
 
+class DataRegistry;
 class UndoQueue;
 class UntypedEditable;
 
@@ -27,6 +28,8 @@ class EditableUpdater {
 
   EditableMap* map() { return &map_; }
   UndoQueue* undoQueue() { return &undoQueue_; }
+  void registerMessage(const Message&);
+
   const DefaultRegistry& defaultRegistry() { return *defaultRegistry_; }
 
   static EditableUpdater* instance() { return instance_; }
@@ -42,6 +45,7 @@ class EditableUpdater {
   EditableMap map_;
   UndoQueue undoQueue_;
   ptr<DefaultRegistry> defaultRegistry_;
+  ptr<data::DataRegistry> dataRegistry_;
 
   EditableSet updateData_;
   EditableSet writeData_;

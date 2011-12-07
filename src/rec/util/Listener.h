@@ -22,11 +22,11 @@ class Listener {
 
   virtual void operator()(Type x) = 0;
 
-  const CriticalSection& lock() const { return lock_; }
+  const CriticalSection& lock() const { return listenerLock_; }
   virtual void wasRemovedFrom(Broadcaster<Type>*);
 
  protected:
-  CriticalSection lock_;
+  CriticalSection listenerLock_;
 
  private:
   enum ListenerState { LISTENING, UPDATING, DELETING };
@@ -64,7 +64,7 @@ class Broadcaster {
   int listenerSize() const { return listeners_.size(); }
 
  protected:
-  CriticalSection lock_;
+  CriticalSection broadcasterLock_;
   ListenerSet listeners_;
 
  private:
@@ -78,7 +78,7 @@ Listener<Type>::~Listener() {
 
   BroadcasterSet toDelete;
   {
-    Lock l(lock_);
+    Lock l(listenerLock_);
     if (broadcasters_.empty())
       return;
 
@@ -91,7 +91,7 @@ Listener<Type>::~Listener() {
 
 template <typename Type>
 void Listener<Type>::wasRemovedFrom(Broadcaster<Type>* broadcaster) {
-  Lock l(lock_);
+  Lock l(listenerLock_);
   broadcasters_.erase(broadcaster);
 }
 
@@ -115,7 +115,7 @@ bool Listener<Type>::setState(ListenerState state) {
 
 template <typename Type>
 void Broadcaster<Type>::broadcast(Type x) {
-  Lock l(lock_);
+  Lock l(broadcasterLock_);
   for (iterator i = listeners_.begin(); i != listeners_.end(); ++i) {
     Listener<Type>* listener = *i;
     if (listener->setState(Listener<Type>::UPDATING)) {
@@ -134,12 +134,12 @@ Broadcaster<Type>::~Broadcaster() {
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
   {
-    Lock l(lock_);
+    Lock l(broadcasterLock_);
     listeners_.insert(listener);
   }
 
   {
-    Lock l(listener->lock_);
+    Lock l(listener->listenerLock_);
     listener->broadcasters_.insert(this);
   }
 }
@@ -147,7 +147,7 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
 template <typename Type>
 void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
   {
-    Lock l(lock_);
+    Lock l(broadcasterLock_);
     listeners_.erase(listener);
   }
 

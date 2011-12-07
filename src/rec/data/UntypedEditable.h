@@ -40,7 +40,8 @@ class UntypedEditable : public Editable {
   virtual bool isEmpty() const { return false; }
 
  protected:
-  UntypedEditable(const File& file, const VirtualFile& vf, Message* message);
+  UntypedEditable(const File& file, const VirtualFile& vf, Message* message,
+                  const Message& defaultMessage);
 
   CriticalSection lock_;
 

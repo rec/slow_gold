@@ -41,7 +41,7 @@ ColorName Node::getColor() const {
 }
 
 void Node::paint(juce::Graphics& g) const {
-  Lock l(lock_);
+  Lock l(broadcasterLock_);
   Painter p(desc_.widget(), &g);
   if (icon_)
     icon_->draw(g, 1.0f);

@@ -9,11 +9,11 @@ Window::Window(GenericApplication* application,
                int requiredButtons,
                bool addToDesktop)
     : PersistentWindow(name, bg, requiredButtons, addToDesktop),
-      running_(false),
       application_(application) {
 }
 
 void Window::initialise() {
+  Lock l(lock_);
   if (running_) {
     LOG(DFATAL) << "already running!";
     return;
@@ -51,16 +51,22 @@ Window::~Window() {
 
 void Window::startup() {
   // Final startup, done later in another thread.
-  doStartup();
-  setOKToSavePosition(true);
+  Lock l(lock_);
+
+  if (running_) {
+    doStartup();
+    setOKToSavePosition(true);
+  }
 }
 
 void Window::shutdown() {
+  Lock l(lock_);
   if (!running_)
     return;
 
-  setOKToSavePosition(false);
   running_ = false;
+
+  setOKToSavePosition(false);
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
   // Why isn't this in GenericApplication?
   MenuBarModel::setMacMainMenu(NULL);
