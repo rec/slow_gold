@@ -15,6 +15,8 @@ class UntypedDataListener : public Listener<const Message&>,
                       data::Address::default_instance(),
                       bool isGlobal = false);
 
+  virtual ~UntypedDataListener() {}
+
   virtual void requestUpdates();
 
   virtual void operator()(const Message&);

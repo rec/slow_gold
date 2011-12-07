@@ -70,7 +70,7 @@ class GlobalDataListener : public DataListener<Proto> {
 template <typename Proto>
 DataListener<Proto>::DataListener(const data::Address& address,
                                   bool isGlobal)
-    : data_(data::emptyEditable<Proto>()),
+    : data_(data::emptyTypedEditable<Proto>()),
       address_(address),
       isGlobal_(isGlobal) {
 }
@@ -85,7 +85,7 @@ void DataListener<Proto>::requestUpdates() {
 
 template <typename Proto>
 void DataListener<Proto>::operator()(const VirtualFile& f) {
-  setData(file::empty(f) ? data::emptyEditable<Proto>() :
+  setData(file::empty(f) ? data::emptyTypedEditable<Proto>() :
           data::editable<Proto>(f));
 }
 

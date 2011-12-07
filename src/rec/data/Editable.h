@@ -5,6 +5,8 @@
 #include <set>
 
 #include "rec/data/Address.h"
+#include "rec/data/Value.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace data {

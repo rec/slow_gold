@@ -13,6 +13,9 @@ namespace data {
 EditableMap* editableMap();
 CriticalSection* editableMapLock();
 
+Editable* emptyEditable();
+
+
 template <typename Proto>
 File editableFile(const VirtualFile& vf = file::none());
 
@@ -20,7 +23,7 @@ template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile& vf = file::none());
 
 template <typename Proto>
-TypedEditable<Proto>* emptyEditable();
+TypedEditable<Proto>* emptyTypedEditable();
 
 template <typename Proto>
 void set(const Proto& p, const VirtualFile& f = file::none(), bool undoable = true) {
@@ -48,6 +51,15 @@ void apply(const VirtualFile&, Operator, V1, V2);
 //
 // Implementations
 //
+
+inline Editable* emptyEditable() {
+  Lock l(*editableMapLock());
+  static const string key = ":empty:empty:";
+
+  EditableMap::const_iterator i = editableMap()->find(key);
+  return (i != editableMap()->end()) ? i->second :
+          ((*editableMap())[key] = new EmptyEditable);
+}
 
 template <typename Proto>
 File editableFile(const VirtualFile& vf = file::none()) {
@@ -85,7 +97,7 @@ TypedEditable<Proto>* editable(const VirtualFile& vf) {
 }
 
 template <typename Proto>
-TypedEditable<Proto>* emptyEditable() {
+TypedEditable<Proto>* emptyTypedEditable() {
   return makeEditable<Proto>(NULL);
 }
 

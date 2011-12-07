@@ -63,7 +63,7 @@ extern const DefaultRegistry& defaultRegistry();
 
 template <typename Proto>
 TypedEditable<Proto>::TypedEditable(const File& file, const VirtualFile& vf)
-    : UntypedEditable(file, vf, &proto_, Proto::default_instance()) {
+    : UntypedEditable(file, vf, &proto_, &Proto::default_instance()) {
   if (!readFromFile())
     proto_ = defaultRegistry().getDefault<Proto>(vf);
 }

@@ -13,13 +13,14 @@ namespace rec {
 namespace data {
 
 UntypedEditable::UntypedEditable(const File& file, const VirtualFile& vf,
-                                 Message* message, const Message& defaultInstance)
+                                 Message* message, const Message* defaultInstance)
     : file_(file),
       virtualFile_(vf),
       message_(message),
       alreadyReadFromFile_(false),
       fileReadSuccess_(false) {
-  EditableUpdater::instance()->registerMessage(defaultInstance);
+  if (defaultInstance)
+    EditableUpdater::instance()->registerMessage(*defaultInstance);
 }
 
 UntypedEditable::~UntypedEditable() {

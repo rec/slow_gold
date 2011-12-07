@@ -41,7 +41,7 @@ class UntypedEditable : public Editable {
 
  protected:
   UntypedEditable(const File& file, const VirtualFile& vf, Message* message,
-                  const Message& defaultMessage);
+                  const Message* defaultMessage);
 
   CriticalSection lock_;
 
@@ -70,6 +70,37 @@ bool UntypedEditable::fill(Proto* t) const {
   copyTo(t);
   return true;
 }
+
+class EmptyEditable : public UntypedEditable {
+ public:
+  EmptyEditable() : UntypedEditable(File(), VirtualFile(), NULL, NULL) {}
+  virtual ~EmptyEditable() {}
+  virtual void onDataChange() {}
+
+  virtual Message* clone() const { return NULL; }
+  virtual bool hasValue(const Address&) const { return false; }
+  virtual const Value getValue(const Address&) const { return Value(); }
+  virtual const VirtualFile& virtualFile() const {
+    return VirtualFile::default_instance();
+  }
+  virtual const string getTypeName() const { return ""; }
+  virtual int getSize(const Address&) const { return 0; }
+  virtual void copyTo(Message*) const {}
+  virtual void needsUpdate()  {}
+
+  virtual bool fileReadSuccess() const { return false; }
+  virtual bool readFromFile() const { return false; }
+  virtual bool writeToFile() const { return true; }
+  virtual void applyLater(Operations*) {}
+  virtual void applyOperations(const Operations&, Operations*) {}
+
+  virtual bool isEmpty() const { return true; }
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(EmptyEditable);
+};
+
+
 
 }  // namespace data
 }  // namespace rec
