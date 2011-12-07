@@ -13,14 +13,12 @@ namespace rec {
 namespace data {
 
 UntypedEditable::UntypedEditable(const File& file, const VirtualFile& vf,
-                                 Message* message, const Message* defaultInstance)
+                                 Message* message)
     : file_(file),
       virtualFile_(vf),
       message_(message),
       alreadyReadFromFile_(false),
       fileReadSuccess_(false) {
-  if (defaultInstance)
-    EditableUpdater::instance()->registerMessage(*defaultInstance);
 }
 
 UntypedEditable::~UntypedEditable() {
@@ -139,6 +137,11 @@ bool UntypedEditable::update() {
   }
 
   stl::deletePointers(&command);
+
+  {
+    ptr<Message> msg(clone());
+    broadcaster_.broadcast(*msg);
+  }
   onDataChange();
   return true;
 }

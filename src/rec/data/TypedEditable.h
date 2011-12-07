@@ -5,6 +5,7 @@
 #include <set>
 
 #include "rec/data/UntypedEditable.h"
+#include "rec/data/DataRegistry.h"
 #include "rec/util/DefaultRegistry.h"
 #include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.h"
@@ -63,7 +64,7 @@ extern const DefaultRegistry& defaultRegistry();
 
 template <typename Proto>
 TypedEditable<Proto>::TypedEditable(const File& file, const VirtualFile& vf)
-    : UntypedEditable(file, vf, &proto_, &Proto::default_instance()) {
+    : UntypedEditable(file, vf, &proto_) {
   if (!readFromFile())
     proto_ = defaultRegistry().getDefault<Proto>(vf);
 }

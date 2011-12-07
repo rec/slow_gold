@@ -39,9 +39,10 @@ class UntypedEditable : public Editable {
   virtual void onDataChange() = 0;
   virtual bool isEmpty() const { return false; }
 
+  Broadcaster<const Message&>* broadcaster() { return &broadcaster_; }
+
  protected:
-  UntypedEditable(const File& file, const VirtualFile& vf, Message* message,
-                  const Message* defaultMessage);
+  UntypedEditable(const File& file, const VirtualFile& vf, Message* message);
 
   CriticalSection lock_;
 
@@ -54,6 +55,8 @@ class UntypedEditable : public Editable {
  private:
   mutable bool alreadyReadFromFile_;
   mutable bool fileReadSuccess_;
+
+  Broadcaster<const Message&> broadcaster_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedEditable);
 };
@@ -73,7 +76,7 @@ bool UntypedEditable::fill(Proto* t) const {
 
 class EmptyEditable : public UntypedEditable {
  public:
-  EmptyEditable() : UntypedEditable(File(), VirtualFile(), NULL, NULL) {}
+  EmptyEditable() : UntypedEditable(File(), VirtualFile(), NULL) {}
   virtual ~EmptyEditable() {}
   virtual void onDataChange() {}
 

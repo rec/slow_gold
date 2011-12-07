@@ -28,9 +28,12 @@ class EditableUpdater {
 
   EditableMap* map() { return &map_; }
   UndoQueue* undoQueue() { return &undoQueue_; }
-  void registerMessage(const Message&);
+  UntypedEditable* make(const string& name,
+                        const File& file,
+                        const VirtualFile& vf);
 
   const DefaultRegistry& defaultRegistry() { return *defaultRegistry_; }
+  DataRegistry* dataRegistry() const { return dataRegistry_.get(); }
 
   static EditableUpdater* instance() { return instance_; }
   static void start(DefaultRegistry*);

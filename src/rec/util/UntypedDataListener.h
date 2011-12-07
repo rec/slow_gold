@@ -19,18 +19,32 @@ class UntypedDataListener : public Listener<const Message&>,
 
   virtual void requestUpdates();
 
-  virtual void operator()(const Message&);
+  virtual void operator()(const Message& m) { onDataChange(m); }
   virtual void operator()(const VirtualFile&);
 
  protected:
   virtual void setData(data::UntypedEditable* d);
-  virtual void onDataChange();
+  virtual void onDataChange(const Message&m);
 
  private:
+  CriticalSection lock_;
+  const string typeName_;
   const data::Address address_;
   const bool isGlobal_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
+};
+
+class UntypedGlobalDataListener : public UntypedDataListener {
+ public:
+  explicit UntypedGlobalDataListener(const string& typeName,
+                                     const data::Address& address =
+                                     data::Address::default_instance())
+      : UntypedDataListener(typeName, address, true); {
+  }
+
+ private:
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedGlobalDataListener);
 };
 
 

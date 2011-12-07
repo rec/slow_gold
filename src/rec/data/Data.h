@@ -5,6 +5,7 @@
 #include "rec/data/TypedEditable.h"
 #include "rec/data/Value.h"
 #include "rec/util/DefaultRegistry.h"
+#include "rec/data/DataRegistry.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {
@@ -14,7 +15,9 @@ EditableMap* editableMap();
 CriticalSection* editableMapLock();
 
 Editable* emptyEditable();
+DataRegistry* dataRegistry();
 
+File editableFile(const string& typeName, const VirtualFile& vf = file::none());
 
 template <typename Proto>
 File editableFile(const VirtualFile& vf = file::none());
@@ -26,7 +29,8 @@ template <typename Proto>
 TypedEditable<Proto>* emptyTypedEditable();
 
 template <typename Proto>
-void set(const Proto& p, const VirtualFile& f = file::none(), bool undoable = true) {
+void set(const Proto& p, const VirtualFile& f = file::none(),
+         bool undoable = true) {
   editable<Proto>(f)->setValue(p, Address::default_instance(), undoable);
 }
 
@@ -62,8 +66,12 @@ inline Editable* emptyEditable() {
 }
 
 template <typename Proto>
-File editableFile(const VirtualFile& vf = file::none()) {
-  return getShadowFile(vf, str(Proto::default_instance().GetTypeName()));
+File editableFile(const VirtualFile& vf) {
+  return editableFile(Proto::default_instance().GetTypeName(), vf);
+}
+
+inline File editableFile(const string& typeName, const VirtualFile& vf) {
+  return getShadowFile(vf, str(typeName));
 }
 
 template <typename Proto>
@@ -83,6 +91,8 @@ TypedEditable<Proto>* makeEditable(const VirtualFile* vf) {
     e = vf ? new TypedEditable<Proto>(file, *vf) :
       new EmptyTypedEditable<Proto>();
     (*editableMap())[key] = e;
+
+    dataRegistry()->registerMaker<Proto>();
   } else {
     e = dynamic_cast<TypedEditable<Proto>*>(i->second);
     DCHECK(e);

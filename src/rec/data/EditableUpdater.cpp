@@ -51,8 +51,10 @@ static bool lockedCopy(EditableSet* from, EditableSet* to, CriticalSection* lock
 }  // namespace
 
 
-void EditableUpdater::registerMessage(const Message& m) {
-  dataRegistry_->registerMessage(m);
+UntypedEditable* EditableUpdater::make(const string& name,
+                                       const File& file,
+                                       const VirtualFile& vf) {
+  return dataRegistry_->make(name, file, vf);
 }
 
 EditableUpdater::EditableUpdater(DefaultRegistry* registry)
@@ -125,6 +127,8 @@ const DefaultRegistry& defaultRegistry() {
 
 EditableMap* editableMap() { return EditableUpdater::instance()->map(); }
 CriticalSection* editableMapLock() { return EditableUpdater::instance()->lock(); }
+
+DataRegistry* dataRegistry() { return EditableUpdater::instance()->dataRegistry(); }
 
 }  // namespace data
 }  // namespace rec
