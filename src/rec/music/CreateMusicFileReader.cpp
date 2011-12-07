@@ -55,7 +55,7 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   }
 
   if (metadata && (*metadata != music::Metadata::default_instance()))
-    d->setValue(*metadata);
+    d->setValue(*metadata, data::Address::default_instance(), false);
 
   return reader.transfer();
 }
