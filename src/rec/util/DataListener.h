@@ -29,11 +29,14 @@ class DataListener : public Listener<const Proto&>,
   virtual void operator()(const Proto&);
   virtual void operator()(const VirtualFile&);
 
-  data::TypedEditable<Proto>* data() const { Lock l(lock()); return data_; }
+  virtual const data::Value getValue() const { return data_->getValue(address_); }
+  virtual const data::Value getValue(const data::Address& addr) const {
+    return data_->getValue(address_ + addr);
+  }
 
-  virtual const data::Value getValue() const { return data()->getValue(address_); }
-  virtual void setValue(const data::Value& v) { data()->setValue(v, address_); }
-  void setProto(const Proto& p) { data()->setValue(p, address_); }
+  virtual void setValue(const data::Value& v) { data_->setValue(v, address_); }
+  void setProto(const Proto& p) { data_->setValue(p, address_); }
+  const Proto getProto() const { return data_->get(); }
 
  protected:
   virtual void setData(data::TypedEditable<Proto>* d);

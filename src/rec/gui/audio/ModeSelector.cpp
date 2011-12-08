@@ -72,7 +72,7 @@ void ModeSelector::buttonClicked(Button* button) {
     if (i->second == button) {
       Mode mode;
       mode.set_click(i->first);
-      data()->setValue(mode);
+      setValue(mode);
       return;
     }
   }

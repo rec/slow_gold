@@ -102,15 +102,13 @@ void TransformController::onDataChange(const StereoProto& stereo) {
 
 void TransformController::comboBoxChanged(juce::ComboBox* box) {
   if (box == &stereoComboBox_) {
-    if (DataListener<StereoProto>::data()) {
-      Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
-      StereoProto stereo;
-      if (sides != STEREO) {
-        stereo.set_type(StereoProto::SINGLE);
-        stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
-      }
-      DataListener<StereoProto>::data()->setValue(stereo);
+    Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
+    StereoProto stereo;
+    if (sides != STEREO) {
+      stereo.set_type(StereoProto::SINGLE);
+      stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
     }
+    DataListener<StereoProto>::setValue(stereo);
   }
 }
 

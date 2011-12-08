@@ -31,7 +31,7 @@ class Loops : public component::Focusable<TableController>,
   virtual void onDataChange(const LoopPointList&);
 
   virtual int getNumRows() {
-    return data()->get().loop_point_size(); 
+    return getProto().loop_point_size(); 
   }
 
   virtual bool canCopy() const;

@@ -67,10 +67,8 @@ static String getDisplayText(const Value& v, const TableColumn& col, Samples<441
 
 String Loops::displayText(const TableColumn& col, int rowIndex) {
   String t = "-";
-  if (data()) {
-    Address row = (address() + rowIndex) + col.address();
-    t = getDisplayText(data()->getValue(row), col, Samples<44100>(loops_.length()));
-  }
+  Address row = Address(rowIndex) + col.address();
+  t = getDisplayText(getValue(row), col, Samples<44100>(loops_.length()));
   return t;
 }
 
@@ -89,7 +87,7 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
     }
   }
   if (changed)
-    data()->setValue(loops_);
+    setValue(loops_);
 }
 
 void Loops::update() {
@@ -133,14 +131,14 @@ void Loops::cut() {
     loops.mutable_loop_point(0)->set_selected(firstWasSelected);
 
   loops_ = loops;
-  data()->setValue(loops_);
+  setValue(loops_);
 }
 
 bool Loops::paste(const string& s) {
   LoopPointList loops;
   if (yaml::read(s, &loops)) {
     loops_ = rec::audio::addLoopPoints(loops_, loops);
-    data()->setValue(loops_);
+    setValue(loops_);
     return true;
   }
   return false;

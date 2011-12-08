@@ -307,7 +307,7 @@ int Waveform::getCursorX(uint index) const {
 }
 
 void Waveform::setCursorText(int index, const String& text) {
-  LoopPointList lpl = DataListener<LoopPointList>::data()->get();
+  LoopPointList lpl = DataListener<LoopPointList>::getProto();
   DCHECK_GE(index,  0);
   DCHECK_LT(index,  lpl.loop_point_size());
   if (index < 0 || index >= lpl.loop_point_size())
