@@ -29,7 +29,8 @@ void GenericApplication::initialise(const String&) {
 
   audio::format::mpg123::initializeOnce();
   window_.reset(createWindow());
-  data::EditableUpdater::instance()->start(window_->getDefaultRegistry());
+  data::EditableUpdater::instance()->start(window_->getDefaultRegistry(),
+                                           window_->getDataRegistry());
   window_->initialise();
 
   thread::runInNewThread("startup thread",

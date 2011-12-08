@@ -57,10 +57,11 @@ UntypedEditable* EditableUpdater::make(const string& name,
   return dataRegistry_->make(name, file, vf);
 }
 
-EditableUpdater::EditableUpdater(DefaultRegistry* registry)
+EditableUpdater::EditableUpdater(DefaultRegistry* registry,
+                                 DataRegistry* dataRegistry)
     : undoQueue_(app::getAppFile("UndoQueue.Action")),
       defaultRegistry_(registry),
-      dataRegistry_(new DataRegistry),
+      dataRegistry_(dataRegistry),
       updateThread_(makeLoop(updateDesc, this, &EditableUpdater::update)),
       writeThread_(makeLoop(writeDesc, this, &EditableUpdater::write)) {
 }
@@ -109,9 +110,9 @@ bool EditableUpdater::write() {
   return true;
 }
 
-void EditableUpdater::start(DefaultRegistry* r) {
+void EditableUpdater::start(DefaultRegistry* r, DataRegistry* dr) {
   CHECK(!instance_);
-  instance_ = new EditableUpdater(r);
+  instance_ = new EditableUpdater(r, dr);
 }
 
 void EditableUpdater::stop() {

@@ -17,7 +17,7 @@ class UntypedEditable;
 
 class EditableUpdater {
  private:
-  explicit EditableUpdater(DefaultRegistry*);
+  EditableUpdater(DefaultRegistry*, DataRegistry*);
   ~EditableUpdater();
 
  public:
@@ -36,7 +36,7 @@ class EditableUpdater {
   DataRegistry* dataRegistry() const { return dataRegistry_.get(); }
 
   static EditableUpdater* instance() { return instance_; }
-  static void start(DefaultRegistry*);
+  static void start(DefaultRegistry*, DataRegistry*);
   static void stop();
   const CriticalSection& lock() { return lock_; }
 
