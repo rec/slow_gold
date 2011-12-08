@@ -1,4 +1,5 @@
 #include "rec/slow/SlowWindow.h"
+#include "rec/data/DataRegistry.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/WindowPosition.pb.h"
 #include "rec/slow/AppLayout.pb.h"
@@ -72,14 +73,26 @@ static Def<gui::WindowPosition> windowPosition(
 
 
 DefaultRegistry* SlowWindow::getDefaultRegistry() {
-  DefaultRegistry* r = new DefaultRegistry;
+  ptr<DefaultRegistry> r(new DefaultRegistry);
 
   // r->registerDefault(*loops);
   // r->registerDefault(*layout);
   r->registerDefault(*windowPosition);
 
-  return r;
+  return r.transfer();
 }
+
+using data::DataRegistry;
+
+DataRegistry* SlowWindow::getDataRegistry() {
+  ptr<DataRegistry> r(new DataRegistry);
+
+  r->registerMaker<gui::WindowPosition>();
+  r->registerMaker<LoopPointList>();
+
+  return r.transfer();
+}
+
 
 }  // namespace slow
 }  // namespace rec

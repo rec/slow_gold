@@ -47,6 +47,7 @@ class DataRegistry {
   UntypedEditable* make(const string& typeName, const File& file,
                         const VirtualFile& vf) {
     Registry::iterator i = registry_.find(typeName);
+    CHECK(i != registry_.end()) << "Couldn't find data type " << typeName;
     return (i == registry_.end()) ? NULL : i->second->make(file, vf);
   }
 

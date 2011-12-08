@@ -121,5 +121,9 @@ void EditableUpdater::stop() {
 
 EditableUpdater* EditableUpdater::instance_ = NULL;
 
+const DefaultRegistry& defaultRegistry() {
+  return EditableUpdater::instance()->defaultRegistry();
+}
+
 }  // namespace data
 }  // namespace rec

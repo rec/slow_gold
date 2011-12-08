@@ -7,6 +7,7 @@
 namespace rec {
 
 namespace util { class DefaultRegistry; }
+namespace data { class DataRegistry; }
 
 namespace app {
 
@@ -26,12 +27,13 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual void startup();
   virtual void shutdown();
   virtual DefaultRegistry* getDefaultRegistry() = 0;
+  virtual data::DataRegistry* getDataRegistry() = 0;
   virtual void focusOfChildComponentChanged(juce::Component::FocusChangeType) {
     broadcast(None());
   }
   virtual void trashPreferences() {}
   GenericApplication* application() { return application_; }
-  
+
  protected:
   virtual void constructInstance() = 0;
   virtual Component* getMainComponent() = 0;
