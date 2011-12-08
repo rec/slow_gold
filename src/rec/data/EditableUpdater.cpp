@@ -53,7 +53,7 @@ static bool lockedCopy(EditableSet* from, EditableSet* to, CriticalSection* lock
 
 UntypedEditable* EditableUpdater::make(const string& name,
                                        const File& file,
-                                       const VirtualFile& vf) {
+                                       const VirtualFile* vf) {
   return dataRegistry_->make(name, file, vf);
 }
 

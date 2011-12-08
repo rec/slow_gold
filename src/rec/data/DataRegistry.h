@@ -3,31 +3,11 @@
 
 #include <map>
 
+#include "rec/data/TypedEditable.h"
 #include "rec/util/STL.h"
 
 namespace rec {
 namespace data {
-
-class UntypedEditable;
-
-class Maker {
- public:
-  Maker() {}
-  virtual ~Maker() {}
-
-  virtual UntypedEditable* make(const File&, const VirtualFile&) = 0;
-};
-
-template <typename Proto>
-class TypedMaker : public Maker {
- public:
-  TypedMaker() {}
-  virtual ~TypedMaker() {}
-
-  virtual UntypedEditable* make(const File& f, const VirtualFile& vf) {
-    return new TypedEditable<Proto>(f, vf);
-  }
-};
 
 class DataRegistry {
  public:
@@ -45,7 +25,7 @@ class DataRegistry {
   }
 
   UntypedEditable* make(const string& typeName, const File& file,
-                        const VirtualFile& vf) {
+                        const VirtualFile* vf) {
     Registry::iterator i = registry_.find(typeName);
     CHECK(i != registry_.end()) << "Couldn't find data type " << typeName;
     return (i == registry_.end()) ? NULL : i->second->make(file, vf);

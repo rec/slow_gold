@@ -27,7 +27,11 @@ File editableFile(const VirtualFile& vf = file::none()) {
 template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile* vf) {
   const string& typeName = Proto::default_instance().GetTypeName();
-  return dynamic_cast<TypedEditable<Proto>*>(editable(typeName, vf));
+  UntypedEditable* e = editable(typeName, vf);
+  DCHECK(e);
+  TypedEditable<Proto>* te =dynamic_cast<TypedEditable<Proto>*>(e);
+  DCHECK(te);
+  return te;
 }
 
 template <typename Proto>

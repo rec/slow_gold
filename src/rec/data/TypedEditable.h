@@ -5,7 +5,6 @@
 #include <set>
 
 #include "rec/data/UntypedEditable.h"
-#include "rec/data/DataRegistry.h"
 #include "rec/util/DefaultRegistry.h"
 #include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.h"
@@ -39,6 +38,7 @@ class TypedEditable : public UntypedEditable, public Broadcaster<const Proto&> {
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TypedEditable);
 };
 
+
 template <typename Proto>
 class EmptyTypedEditable : public TypedEditable<Proto> {
  public:
@@ -55,6 +55,28 @@ class EmptyTypedEditable : public TypedEditable<Proto> {
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(EmptyTypedEditable);
+};
+
+class Maker {
+ public:
+  Maker() {}
+  virtual ~Maker() {}
+
+  virtual UntypedEditable* make(const File&, const VirtualFile*) = 0;
+};
+
+template <typename Proto>
+class TypedMaker : public Maker {
+ public:
+  TypedMaker() {}
+  virtual ~TypedMaker() {}
+
+  virtual UntypedEditable* make(const File& f, const VirtualFile* vf) {
+    if (vf)
+      return new TypedEditable<Proto>(f, *vf);
+    else
+      return new EmptyTypedEditable<Proto>();
+  }
 };
 
 //

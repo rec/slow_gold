@@ -20,8 +20,7 @@ UntypedEditable* editable(const string& typeName, const VirtualFile* vf) {
   if (i != updater->map()->end())
     return i->second;
 
-  ptr<UntypedEditable> e(vf ? updater->dataRegistry()->make(typeName, file, *vf) :
-                         new EmptyEditable(typeName));
+  ptr<UntypedEditable> e(updater->dataRegistry()->make(typeName, file, vf));
   if (e)
     (*updater->map())[typeName] = e.get();
 

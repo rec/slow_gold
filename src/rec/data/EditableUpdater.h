@@ -30,7 +30,7 @@ class EditableUpdater {
   UndoQueue* undoQueue() { return &undoQueue_; }
   UntypedEditable* make(const string& name,
                         const File& file,
-                        const VirtualFile& vf);
+                        const VirtualFile* vf);
 
   const DefaultRegistry& defaultRegistry() { return *defaultRegistry_; }
   DataRegistry* dataRegistry() const { return dataRegistry_.get(); }
