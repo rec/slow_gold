@@ -69,7 +69,7 @@ void DialComponent::operator()(Samples<44100> time) {
     double length = range.size();
     double zeroAngle = description_.zero_point() * 2.0 * PI;
 
-    timeRatio_ = (time_ - range.begin_) / length;
+    timeRatio_ = std::max(0.0, std::min(1.0, (time_ - range.begin_) / length));
     double timeAngle = zeroAngle + timeRatio_ * 2.0 * PI;
     if (fabs(timeAngle - timeAngle_) < REDRAW_ANGLE &&
         fabs(zeroAngle - zeroAngle_) < REDRAW_ANGLE) {

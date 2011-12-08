@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="067MX0Jkr" name="tests">
+  <MAINGROUP id="FRzciaotF" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -265,6 +265,8 @@
               id="IIEH6xK52" name="CommandDatabase.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDatabase.h" id="7BdpO775R"
               name="CommandDatabase.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/CommandDataSetter.cpp"
+              id="TRfHzQSzK" name="CommandDataSetter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDataSetter.h"
               id="332JrcbQn" name="CommandDataSetter.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandIDEncoder.cpp"
@@ -327,6 +329,8 @@
               name="TargetManager.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TargetManager.h" id="wkipqIlwq"
               name="TargetManager.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/TickedDataSetter.cpp"
+              id="j4PCKCp9e" name="TickedDataSetter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TickedDataSetter.h" id="hVRkXynkk"
               name="TickedDataSetter.h" resource="0"/>
       </GROUP>
@@ -1363,7 +1367,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="mXkrlPDjO" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="z69jXMPaX" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

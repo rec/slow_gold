@@ -138,13 +138,13 @@ Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
     AlbumList albums;
     String error = fillAlbums(off, &albums);
     if (error.length()) {
-      LOG(DFATAL) << "CDDB gave us an error: " << error;
+      LOG(ERROR) << "CDDB gave us an error: " << error;
     } else if (!albums.album_size()) {
-      LOG(DFATAL) << "CDDB gave us no information";
+      LOG(ERROR) << "CDDB gave us no information";
     } else {
       album = albums.album(0);
       if (!copy::copy(album, &shadow))
-        LOG(DFATAL) << "Couldn't save CDDB information";
+        LOG(ERROR) << "Couldn't save CDDB information";
     }
   }
 

@@ -116,6 +116,7 @@
 		70E5409425A76782B6188B31 /* RandomSelfInverseFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6CBDE9ABFCE69B115693EBF /* RandomSelfInverseFunction.cpp */; };
 		73030EB6E1EB65E7A36E0BFD /* DownloadVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2ECE0E4F6D7892339BAD1D1 /* DownloadVersion.cpp */; };
 		74F76BE951CFC537D4E80EF3 /* Access.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B19480FDBFA900F35AF1FDA3 /* Access.pb.cc */; };
+		75150D460019B3AFA80BE755 /* TickedDataSetter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2A5D49B4BAA3AF3CCE701D /* TickedDataSetter.cpp */; };
 		752CA61E22F468FA163B7D19 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95A353F3CAC7E1B0000A0E98 /* scanner.cpp */; };
 		75BD85D0F7112C06B557C6AF /* emitterutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDC50620E5F86319AD56FA /* emitterutils.cpp */; };
 		75DE7532CA4540FE9B76F423 /* Gain.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = D137F184286AEF0AE1515725 /* Gain.pb.cc */; };
@@ -215,6 +216,7 @@
 		D997C7AB075636D47668DECD /* Copy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 488E7F792DF5FA7308F8E813 /* Copy.cpp */; };
 		DBBD0581A42E01CD25D9E63E /* Binary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C68AEE0D10064599EF4DF8 /* Binary.cpp */; };
 		DC557F7E3B65D752ADC0B174 /* CleanName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D8721E5B8F23744B274AF6D /* CleanName.cpp */; };
+		DCBC226F7F7851D14A6B47D1 /* CommandDataSetter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82540F8BCD7528879587C5 /* CommandDataSetter.cpp */; };
 		DCD7BBC44A3A0ADBF793CC5E /* CurrentTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3143972EBC39C6C76456DF /* CurrentTime.cpp */; };
 		DD6985CA056B15D42BDB7DAD /* TransportController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA72AD4FBEC619DC6F63742F /* TransportController.cpp */; };
 		DE21954E89A302C554C403B3 /* CommandMapEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B550FA014DE206D4635080 /* CommandMapEditor.cpp */; };
@@ -468,6 +470,7 @@
 		5A996F08CA2F90D8BB1A11B9 /* Callbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Callbacks.cpp; path = ../../../../src/rec/slow/callbacks/Callbacks.cpp; sourceTree = SOURCE_ROOT; };
 		5AE63502C4D9709ED74572A6 /* Convertors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Convertors.h; path = ../../../../src/rec/util/partition/Convertors.h; sourceTree = SOURCE_ROOT; };
 		5B336F1C1C2090670B7DA2C4 /* conversion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = conversion.cpp; path = ../../../../src/rec/data/yaml/src/conversion.cpp; sourceTree = SOURCE_ROOT; };
+		5B82540F8BCD7528879587C5 /* CommandDataSetter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandDataSetter.cpp; path = ../../../../src/rec/command/CommandDataSetter.cpp; sourceTree = SOURCE_ROOT; };
 		5BAB9CAEA2A4EA4EDCB4A87D /* Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = ../../../../src/rec/audio/util/Frame.h; sourceTree = SOURCE_ROOT; };
 		5BD6FF1F1E69CA3715AF178F /* WindowPosition.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowPosition.pb.h; path = ../../../../genfiles/proto/rec/gui/WindowPosition.pb.h; sourceTree = SOURCE_ROOT; };
 		5BED0EFFD46A27023555D6DA /* Cursor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Cursor.cpp; path = ../../../../src/rec/widget/waveform/Cursor.cpp; sourceTree = SOURCE_ROOT; };
@@ -799,6 +802,7 @@
 		E97C78039C069A9FE363170B /* TableColumn.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TableColumn.pb.cc; path = ../../../../genfiles/proto/rec/gui/TableColumn.pb.cc; sourceTree = SOURCE_ROOT; };
 		E9AC7EC13DB29BA143F43E68 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		E9ED030EBF6F174FD5C24D77 /* OpenFolder.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenFolder.svg.h; path = ../../../../src/rec/gui/icon/OpenFolder.svg.h; sourceTree = SOURCE_ROOT; };
+		EA2A5D49B4BAA3AF3CCE701D /* TickedDataSetter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TickedDataSetter.cpp; path = ../../../../src/rec/command/TickedDataSetter.cpp; sourceTree = SOURCE_ROOT; };
 		EB6A9FA7D42CBB324923722C /* AudioXGeneric.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioXGeneric.svg.cpp; path = ../../../../src/rec/gui/icon/AudioXGeneric.svg.cpp; sourceTree = SOURCE_ROOT; };
 		EBED27E176842B8DC5639804 /* Callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback.h; path = ../../../../src/rec/util/thread/Callback.h; sourceTree = SOURCE_ROOT; };
 		EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = InstanceCallbacks.cpp; path = ../../../../src/rec/slow/callbacks/InstanceCallbacks.cpp; sourceTree = SOURCE_ROOT; };
@@ -889,6 +893,7 @@
 				6EA12F1D5C4F1E7675161006 /* CommandData.h */,
 				B22DA96F78B8817BC3B82459 /* CommandDatabase.cpp */,
 				FB7199D861F4E45256B040C7 /* CommandDatabase.h */,
+				5B82540F8BCD7528879587C5 /* CommandDataSetter.cpp */,
 				BFD390D9F9D9A78F73F6C8CE /* CommandDataSetter.h */,
 				E1E77A49581665E7A88A10A1 /* CommandIDEncoder.cpp */,
 				100EC13DABE9104A87B5167C /* CommandIDEncoder.h */,
@@ -898,6 +903,7 @@
 				63FE5B70CB026EE1FC8D86ED /* map */,
 				151215C620EDDA1F897E346B /* TargetManager.cpp */,
 				08EC26B703176ED915C61158 /* TargetManager.h */,
+				EA2A5D49B4BAA3AF3CCE701D /* TickedDataSetter.cpp */,
 				27C2ABBA86A4F7A1FDFF2671 /* TickedDataSetter.h */,
 			);
 			name = command;
@@ -915,6 +921,16 @@
 				C492F238E0B137F11CB59D99 /* Widget.pb.h */,
 			);
 			name = widget;
+			sourceTree = "<group>";
+		};
+		114A3B6DE1F5514CACDD050A /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
 			sourceTree = "<group>";
 		};
 		13B7AF66DC71626F21BA5581 /* cd */ = {
@@ -1228,16 +1244,6 @@
 				44D9DAD841CF00B3E5AE0467 /* TextComponent.h */,
 			);
 			name = status;
-			sourceTree = "<group>";
-		};
-		5FA98E7FD14A375B91190039 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		63FE5B70CB026EE1FC8D86ED /* map */ = {
@@ -1643,7 +1649,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5FA98E7FD14A375B91190039 /* Slow */,
+				114A3B6DE1F5514CACDD050A /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -2094,6 +2100,7 @@
 				C77169EBC01D5355A5264E33 /* RealTime.cpp in Sources */,
 				DFE15ADADC2892B207145668 /* Command.cpp in Sources */,
 				3EB6EA9146AA7C3222EAFFC5 /* CommandDatabase.cpp in Sources */,
+				DCBC226F7F7851D14A6B47D1 /* CommandDataSetter.cpp in Sources */,
 				F25EBCA5BD1B3AB794228C02 /* CommandIDEncoder.cpp in Sources */,
 				F072C1519AE9E32C9805AF7A /* KeyboardBindings.cpp in Sources */,
 				CF2958FC3FDF0FF93A063F32 /* CommandMap.cpp in Sources */,
@@ -2104,6 +2111,7 @@
 				5458BE2F33DBBF5AF834BB6C /* MidiCommandMapEditor.cpp in Sources */,
 				D0090CFC05C369DC75D434ED /* MidiName.cpp in Sources */,
 				E47F4C5221BE498D2AB1D4A4 /* TargetManager.cpp in Sources */,
+				75150D460019B3AFA80BE755 /* TickedDataSetter.cpp in Sources */,
 				69797CFF254AADA35A5C7DDB /* Address.cpp in Sources */,
 				3029200114F2DFE3817CC8C3 /* Data.cpp in Sources */,
 				6AABC0A8600D9999A37E5335 /* Editable.cpp in Sources */,

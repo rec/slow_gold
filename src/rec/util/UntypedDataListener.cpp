@@ -8,12 +8,6 @@ namespace util {
 
 using namespace rec::data;
 
-#if 0
-static UntypedEditable* getData(const string& typeName, const Address& address) {
-  return EditableUpdater::instance()->dataRegistry()->
-}
-#endif
-
 UntypedDataListener::UntypedDataListener(const string& typeName,
                                          const data::Address& address,
                                          bool isGlobal)
@@ -35,7 +29,7 @@ void UntypedDataListener::operator()(const VirtualFile& f) {
 }
 
 void UntypedDataListener::setData(data::UntypedEditable* d) {
-  // Lock l(lock());  // TODO!
+  Lock l(lock_);
   data_->broadcaster()->removeListener(this);
   data_ = d;
   data_->broadcaster()->addListener(this);

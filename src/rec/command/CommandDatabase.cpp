@@ -168,29 +168,8 @@ class CommandDatabase {
 
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
-      ptr<CommandItemSetter>& s = cr->setter_;
-      if (id == Command::TOGGLE_GRID_DISPLAY ||
-          id == Command::TOGGLE_PARALLEL_WAVEFORMS)
-        s.reset(new TickedDataSetter<WaveformProto>(&cr->info_, ls, c, a, true));
-
-      else if (id == Command::TOGGLE_STRETCH_ENABLE)
-        s.reset(new TickedDataSetter<Stretch>(&cr->info_, ls, c, a, false));
-
-      else if (id == Command::FOLLOW_CURSOR)
-        s.reset(new TickedDataSetter<GuiSettings>(&cr->info_, ls, c, a, true));
-
-      else if (id == Command::FOLLOW_CURSOR)
-        s.reset(new TickedDataSetter<GuiSettings>(&cr->info_, ls, c, a, true));
-
-      else if (id == Command::TOGGLE_PREFADER_LEVELS)
-        s.reset(new TickedDataSetter<Gain>(&cr->info_, ls, c, a, false));
-
-      if (!s) {
-        LOG(DFATAL) << "Didn't understand " << commandName(id);
-        continue;
-      }
-
-      cr->callback_.reset(thread::methodCallback(s.get(),
+      cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, c, a, true));
+      cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                  &CommandItemSetter::execute));
     }
   }

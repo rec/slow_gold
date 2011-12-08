@@ -24,7 +24,7 @@ Player::Player(Device* d) : device_(d),
                             stereo_(new Stereo(stretchy_)) {
   level_.setSource(stereo_);
   device_->manager_.addAudioCallback(&player_);
-  transportSource_.setSource(timer_);
+  transportSource_.setSource(stereo_);
   player_.setSource(&transportSource_);
 }
 

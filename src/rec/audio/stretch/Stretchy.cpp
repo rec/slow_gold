@@ -13,7 +13,8 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-Stretchy::Stretchy(Source* s) : Wrappy(s), strategy_(Stretch::NONE) {
+Stretchy::Stretchy(Source* s) : Wrappy(s), strategy_(Stretch::NONE),
+                                channels_(2), timeScale_(1.0), bypass_(false) {
 }
 
 Stretchy::~Stretchy() {}

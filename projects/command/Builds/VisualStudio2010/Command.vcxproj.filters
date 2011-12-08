@@ -289,6 +289,9 @@
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp">
       <Filter>Command\rec\command</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandDataSetter.cpp">
+      <Filter>Command\rec\command</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp">
       <Filter>Command\rec\command</Filter>
     </ClCompile>
@@ -317,6 +320,9 @@
       <Filter>Command\rec\command\map</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp">
+      <Filter>Command\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\TickedDataSetter.cpp">
       <Filter>Command\rec\command</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp">

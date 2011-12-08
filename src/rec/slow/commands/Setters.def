@@ -8,13 +8,13 @@ command {
   type: TOGGLE_GRID_DISPLAY
   is_global_setter: true
   address { part: { name: "show_grid" } }
-  setter_type_name: "rec.widget.Waveform"
+  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_PARALLEL_WAVEFORMS
   is_global_setter: true
   address { part: { name: "parallel_waveforms" } }
-  setter_type_name: "rec.widget.Waveform"
+  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_PREFADER_LEVELS

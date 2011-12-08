@@ -40,7 +40,7 @@ static Action* makeAction(Action::Type type) {
 }
 
 void UndoQueue::add(Editable* e, const Operations& operations, const Operations& undo) {
-  DLOG(INFO) << "adding " << operations.ShortDebugString();
+  // DLOG(INFO) << "adding " << operations.ShortDebugString();
   if (!operations.undoable())
     return;
   {

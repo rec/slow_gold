@@ -158,6 +158,7 @@
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandDataSetter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp"/>
@@ -168,6 +169,7 @@
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\TickedDataSetter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>

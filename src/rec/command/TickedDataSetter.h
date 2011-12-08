@@ -6,32 +6,19 @@
 namespace rec {
 namespace command {
 
-template <typename Proto>
-class TickedDataSetter : public CommandDataSetter<Proto> {
+class TickedDataSetter : public CommandDataSetter {
  public:
   TickedDataSetter(ApplicationCommandInfo* info,
                    Listener<None>* changeListener,
                    const Command& command,
                    const data::Address& a = data::Address::default_instance(),
-                   bool isGlobal = false)
-      : CommandDataSetter<Proto>(changeListener, command, a, isGlobal),
-        info_(info) {
-  }
+                   bool isGlobal = false);
 
-  virtual void onDataChange(const Proto& p) {
-    data::Value v = this->getValue(); 
-    info_->setTicked(v.get<bool>());
+  virtual ~TickedDataSetter() {}
 
-    (*this->changeListener_)(None());
-  }
-
-  virtual void execute() {
-    data::Value value = this->getValue();
-    value.set_bool_f(!value.bool_f());
-    this->setValue(value);
-  }
-
-  virtual string menuName() const { Lock l(this->lock_); return this->command_.desc().menu(0); }
+  virtual void onDataChange(const Message&);
+  virtual void execute();
+  virtual string menuName() const;
 
  private:
   ApplicationCommandInfo* info_;

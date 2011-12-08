@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="ScMB0rdlT" name="Slow">
+  <MAINGROUP id="dYLXLZGTZ" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -248,6 +248,8 @@
               id="PSuoskoVQ" name="CommandDatabase.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDatabase.h" id="q4EdCtIKM"
               name="CommandDatabase.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/CommandDataSetter.cpp"
+              id="FI5RBkFy6" name="CommandDataSetter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDataSetter.h"
               id="bpevxX0QU" name="CommandDataSetter.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandIDEncoder.cpp"
@@ -308,6 +310,8 @@
               name="TargetManager.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TargetManager.h" id="WW30iAqz4"
               name="TargetManager.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/TickedDataSetter.cpp"
+              id="2tYZuIpmV" name="TickedDataSetter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TickedDataSetter.h" id="foru9xyEs"
               name="TickedDataSetter.h" resource="0"/>
       </GROUP>
@@ -1308,7 +1312,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ENX4Pw58X" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="VDpXGt0wN" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

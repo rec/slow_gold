@@ -19,6 +19,8 @@ class Timer : public Wrappy, public Broadcaster<Samples<44100> > {
   }
 
   virtual void setNextReadPosition(int64 time) {
+    DCHECK_GE(time, 0);
+    DCHECK_LE(time, 60 * 60 * 10 * 44100);
     Wrappy::setNextReadPosition(time);
     thread::callAsync(this, &Timer::broadcast, time);
   }
