@@ -29,7 +29,7 @@ TypedEditable<Proto>* editable(const VirtualFile* vf) {
   const string& typeName = Proto::default_instance().GetTypeName();
   UntypedEditable* e = editable(typeName, vf);
   DCHECK(e);
-  TypedEditable<Proto>* te =dynamic_cast<TypedEditable<Proto>*>(e);
+  TypedEditable<Proto>* te = dynamic_cast<TypedEditable<Proto>*>(e);
   DCHECK(te);
   return te;
 }

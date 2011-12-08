@@ -22,7 +22,7 @@ UntypedEditable* editable(const string& typeName, const VirtualFile* vf) {
 
   ptr<UntypedEditable> e(updater->dataRegistry()->make(typeName, file, vf));
   if (e)
-    (*updater->map())[typeName] = e.get();
+    (*updater->map())[key] = e.get();
 
   return e.transfer();
 }
