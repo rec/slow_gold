@@ -69,6 +69,19 @@ TransformController::TransformController()
   stereoComboBox_.addItem(LEFT_PLUS_RIGHT_TEXT, LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
+  playbackSpeed_.setTooltip("Control how fast the loop plays back: "
+                            "higher numbers mean the loop plays back faster.");
+  pitchScale_.setTooltip("Tune loop playback up and down in pitch, "
+                         "measured in semitones.");
+  fineScale_.setTooltip("Fine-tune loop up or down in pitch, measured in "
+                        "cents or 1/100 semitones.");
+  stereoComboBox_.setTooltip("Stereo processing:  choose between the "
+                             "original stereo, just the left channel, "
+                             "just the right channel, "
+                             "or a mono mix of both channels.");
+  enableButton_.setTooltip("Disable or enable Transforms, the pitch, time and "
+                           "stereo processing.");
+
   leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
   leftPanel_.addToLayout(&stereoComboBox_, COMBO_BOX_HEIGHT);
   leftPanel_.addToLayout(&leftPadding_);
@@ -82,6 +95,8 @@ TransformController::TransformController()
 
   addToLayout(&rightPanel_, 150, -1.0, 250);
 }
+
+TransformController::~TransformController() {}
 
 void TransformController::onDataChange(const Stretch& s) {
   MessageManagerLock l;

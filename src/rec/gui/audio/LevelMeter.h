@@ -10,7 +10,8 @@ namespace audio {
 
 class LevelMeter : public Component,
                    public Listener<const rec::audio::Gain&>,
-                   public Listener<const LevelVector&> {
+                   public Listener<const LevelVector&>,
+                   public juce::SettableTooltipClient {
  public:
   LevelMeter(bool horizontal = true, bool rms = true, int margin = 2);
 

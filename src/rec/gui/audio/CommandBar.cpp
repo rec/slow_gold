@@ -42,9 +42,16 @@ CommandBar::CommandBar()
   zoomOut_.setImages(ptr<Drawable>(icon::FullScreen::create()).get(),
                      NULL,
                      ptr<Drawable>(icon::FullScreenRev::create()).get());
+
   zoomToSelection_.setImages(ptr<Drawable>(icon::FullScreen::create()).get(),
                              NULL,
                              ptr<Drawable>(icon::FullScreenRev::create()).get());
+
+  addLoopPoint_.setTooltip("Add a loop point at the current time.");
+  addLoopPointClick_.setTooltip("Add a loop point by clicking on the waveform.");
+  zoomOut_.setTooltip("Zoom the waveform out one step.");
+  zoomToSelection_.setTooltip("Zoom in or out so the whole selection "
+                              "fits the waveform");
 
   addToLayout(&addLoopPoint_, BUTTON_SIZE);
   addToLayout(&addLoopPointClick_, BUTTON_SIZE);

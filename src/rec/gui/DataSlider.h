@@ -39,6 +39,10 @@ class DataSlider : public Layout,
     addToLayout(&slider_, 0, -1.0, -1.0);
   }
 
+  void setTooltip(const String& s) {
+    slider_.setTooltip(s);
+  }
+
   virtual void sliderValueChanged(Slider*) {
     this->setValue(static_cast<Type>(slider_.getValue()));
   }

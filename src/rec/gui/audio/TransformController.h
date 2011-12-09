@@ -20,7 +20,7 @@ class TransformController : public Layout,
                             public DataListener<rec::audio::stretch::Stretch> {
  public:
   TransformController();
-  virtual ~TransformController() {}
+  virtual ~TransformController();
 
   virtual bool isOpaque() const { return true; }
 

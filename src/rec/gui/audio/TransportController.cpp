@@ -51,12 +51,17 @@ TransportController::TransportController(TimeController* timeController)
   level_.slider()->setDetent(0.0f);
   level_.slider()->setTextValueSuffix(" dB");
 
-  gainLayout_.addToLayout(&level_);
   gainLayout_.addToLayout(&muteButton_, MUTE_BUTTON_SIZE);
+  gainLayout_.addToLayout(&level_);
 
   addToLayout(&buttonsLayout_, 40);
   addToLayout(&gainLayout_, 40);
-  addToLayout(&levelMeter_);
+
+  startStopButton_.setTooltip("Toggle between pause and play.");
+  jumpToStartButton_.setTooltip("Jump to the start of the selection.");
+  levelMeter_.setTooltip("Display the sound intensity, in RMS dB.");
+  level_.setTooltip("Raise or lower the sound intensity, in dB.");
+  muteButton_.setTooltip("Mute or unmute the sound.");
 }
 
 TransportController::~TransportController() {}
