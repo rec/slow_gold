@@ -3,7 +3,6 @@
 #include "rec/data/EditableUpdater.h"
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/FieldOps.h"
-#include "rec/data/proto/MessageField.h"
 #include "rec/util/Copy.h"
 #include "rec/data/Data.h"
 #include "rec/data/Value.h"
@@ -25,27 +24,28 @@ UntypedEditable::~UntypedEditable() {
   stl::deletePointers(&queue_);
 }
 
-bool UntypedEditable::hasValue(const Address& address) const {
-  MessageField f;
-
-  Lock l(lock_);
-  return fillMessageField(&f, address, *message_) && data::hasValue(f);
+MessageField UntypedEditable::createMessageField(const Address& a) const {
+  return data::createMessageField(a, *message_);
 }
 
-const Value UntypedEditable::getValue(const Address& address) const {
-  Value value;
-  MessageField f;
-
+bool UntypedEditable::hasValue(const Address& a) const {
   Lock l(lock_);
-  if (!(fillMessageField(&f, address, *message_) && data::copyTo(f, &value)))
-    LOG(DFATAL) << "Couldn't read value for " << address.ShortDebugString();
+  return data::hasValue(createMessageField(a));
+}
+
+const Value UntypedEditable::getValue(const Address& a) const {
+  Value value;
+  Lock l(lock_);
+  if (!data::copyTo(createMessageField(a), &value)) {
+    LOG(DFATAL) << "Couldn't read value for " << a.ShortDebugString()
+                << ", " << message_->ShortDebugString();
+  }
   return value;
 }
 
 int UntypedEditable::getSize(const Address& address) const {
-  MessageField f;
   Lock l(lock_);
-  return fillMessageField(&f, address, *message_) ? 0 : data::getSize(f);
+  return data::getSize(createMessageField(address));
 }
 
 void UntypedEditable::copyTo(Message* message) const {
@@ -67,11 +67,6 @@ bool UntypedEditable::readFromFile() const {
   Lock l(lock_);
   if (!alreadyReadFromFile_) {
     fileReadSuccess_ = copy::copy(file_, message_);
-    if (fileReadSuccess_)
-      VLOG(1) << "Opening data " << str(file_);
-    else
-      VLOG(1) << "New data " << str(file_);
-
     alreadyReadFromFile_ = true;
   }
   return fileReadSuccess_;
@@ -97,20 +92,14 @@ void UntypedEditable::applyOperations(const Operations& olist,
   Operation undo;
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);
-    MessageField f;
     Lock l(lock_);
-    if (!fillMessageField(&f, Address(op.address()), *message_)) {
-      LOG(DFATAL) << "Couldn't perform operation " << op.ShortDebugString()
-                  << "\n --> " << message_->ShortDebugString();
-      return;
-    }
     if (undoes) {
       undo.Clear();
       undo.set_command(Operation::SET);
       undo.add_value()->CopyFrom(Value(*message_));
     }
 
-    if (!data::apply(&f, op)) {
+    if (!data::apply(createMessageField(op.address()), op)) {
       LOG(DFATAL) << "Couldn't perform operation " << op.DebugString()
                   << "\n --> " << message_->ShortDebugString();
     } else if (undoes) {

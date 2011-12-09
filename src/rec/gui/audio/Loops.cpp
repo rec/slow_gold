@@ -66,10 +66,8 @@ static String getDisplayText(const Value& v, const TableColumn& col, Samples<441
 }
 
 String Loops::displayText(const TableColumn& col, int rowIndex) {
-  String t = "-";
   Address row = Address(rowIndex) + col.address();
-  t = getDisplayText(getValue(row), col, Samples<44100>(loops_.length()));
-  return t;
+  return getDisplayText(getValue(row), col, Samples<44100>(loops_.length()));
 }
 
 void Loops::selectedRowsChanged(int lastRowSelected) {

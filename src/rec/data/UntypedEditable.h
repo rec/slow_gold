@@ -2,6 +2,7 @@
 #define __REC_PERSIST_UNTYPEDDATA__
 
 #include "rec/data/Editable.h"
+#include "rec/data/proto/MessageField.h"
 #include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.h"
 
@@ -19,6 +20,7 @@ class UntypedEditable : public Editable {
   virtual bool hasValue(const Address& address) const;
   virtual int getSize(const Address& address) const;
   virtual void copyTo(Message* message) const;
+  MessageField createMessageField(const Address&) const;
 
   template <typename Proto> bool fill(Proto* t) const;
 
@@ -74,6 +76,7 @@ bool UntypedEditable::fill(Proto* t) const {
   return true;
 }
 
+#if 0
 class EmptyEditable : public UntypedEditable {
  public:
   EmptyEditable(const string& name) : UntypedEditable(File(), VirtualFile(), NULL),
@@ -105,7 +108,7 @@ class EmptyEditable : public UntypedEditable {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(EmptyEditable);
 };
 
-
+#endif
 
 }  // namespace data
 }  // namespace rec

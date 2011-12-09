@@ -22,11 +22,13 @@ namespace audio {
 namespace {
 
 template <typename T>
-void setImage(ModeSelector* selector, DrawableButton* b, Mode::Action action) {
+void setImage(ModeSelector* selector, DrawableButton* b, Mode::Action action,
+              const String& tooltip) {
   b->setImages(ptr<Drawable>(T::create()).get());
   b->addListener(selector);
   selector->addToLayout(b);
   (*selector->buttonMap())[action] = b;
+  b->setTooltip(tooltip);
 }
 
 
@@ -44,11 +46,15 @@ ModeSelector::ModeSelector()
       zoomIn_("zoomIn", DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
 
-  setImage<DraggingHand>(this, &drag_, Mode::DRAG);
+  setImage<DraggingHand>(this, &drag_, Mode::DRAG,
+                         "Drag mode: use the mouse to drag the waveform back and forth");
   // setImage<Pencil>(this, &drawLoopPoints_, Mode::DRAW_LOOP_POINTS);
-  setImage<Crosshairs>(this, &setTime_, Mode::SET_TIME);
-  setImage<PointingHand>(this, &toggleSelection_, Mode::TOGGLE_SELECTION);
-  setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN);
+  setImage<Crosshairs>(this, &setTime_, Mode::SET_TIME,
+                       "Set current time mode: clicking in the waveform sets the current time.");
+  setImage<PointingHand>(this, &toggleSelection_, Mode::TOGGLE_SELECTION,
+                         "Toggle selection mode: clicking toggle segments in the waveform on and off.");
+  setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN,
+                   "Zoom mode: clicking on the waveform zooms in on that point.");
 
   minSize_ = juce::Point<int>(4 * BUTTON_SIZE + 5 * PADDING,
                               BUTTON_SIZE + 2 * PADDING);

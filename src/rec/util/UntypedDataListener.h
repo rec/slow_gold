@@ -27,21 +27,31 @@ class UntypedDataListener : public Listener<const Message&>,
   virtual void operator()(const Message& m) { onDataChange(m); }
   virtual void operator()(const VirtualFile&);
 
-  const data::Value getValue() const {
-    return data_->getValue(address_);
-  }
-
   template <typename Type>
   void setValue(Type t, bool undoable = true) const {
-    return data_->setValue(t, address_, undoable);
+    if (!isEmpty())
+      data_->setValue(t, address_, undoable);
+  }
+
+  const data::Value getValue(const data::Address& addr =
+                             data::Address::default_instance()) const {
+    data::Value value;
+    if (!isEmpty())
+      value = data_->getValue(address_ + addr);
+    return value;
   }
 
  protected:
   virtual void setData(data::UntypedEditable*);
   virtual void onDataChange(const Message&) {}
+  const data::Address& address() const { return address_; }
+  const string& typeName() const { return typeName_; }
+  data::UntypedEditable* data() const { return data_; }
+  bool isEmpty() const { return data_->isEmpty(); }
+
+  CriticalSection lock_;
 
  private:
-  CriticalSection lock_;
   data::UntypedEditable* data_;
   const string typeName_;
   const data::Address address_;

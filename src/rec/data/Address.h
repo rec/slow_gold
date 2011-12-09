@@ -31,17 +31,29 @@ class Address : public AddressProto {
   Address(P a, P b, P c, P d, P e, P f) { p(a); p(b); p(c); p(d); p(e); p(f); }
 
   Address(const AddressProto& a) : AddressProto(a) {}
-
   Address(const string& s) { p(s); }
   Address(const char* s) { p(s); }
   Address(int i) { p(i); }
 };
 
 // Isn't perhaps only the first one necessary?
-const Address operator+(const Address&, const Address&);
-const Address operator+(const Address&, int i);
-const Address operator+(int i, const Address&);
-const Address operator+(const Address&, const string& name);
+inline const Address operator+(const Address& x, const Address& y) {
+  Address result = x;
+  result.MergeFrom(y);
+  return result;
+}
+
+inline const Address operator+(int x, const Address& y) {
+  return Address(x) + y;
+}
+
+inline const Address operator+(const string& x, const Address& y) {
+  return Address(x) + y;
+}
+
+inline const Address operator+(const char* x, const Address& y) {
+  return Address(x) + y;
+}
 
 const string toString(const Address&);
 

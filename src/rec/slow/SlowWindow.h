@@ -32,6 +32,7 @@ class SlowWindow : public app::Window {
 
  private:
   ptr<Instance> instance_;
+  ptr<juce::TooltipWindow> tooltipWindow_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowWindow);
 };

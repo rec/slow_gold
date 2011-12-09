@@ -10,8 +10,8 @@ class MessageField;
 class Operation;
 class ValueProto;
 
-bool apply(MessageField*, const Operation&);
-bool copyTo(const MessageField& f, ValueProto* value);
+bool apply(const MessageField&, const Operation&);
+bool copyTo(const MessageField&, ValueProto*);
 
 }  // namespace data
 }  // namespace rec

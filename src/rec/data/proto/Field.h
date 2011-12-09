@@ -9,7 +9,7 @@ namespace data {
 class Address;
 struct MessageField;
 
-bool fillMessageField(MessageField*, const Address&, const Message&);
+MessageField createMessageField(const Address&, const Message&);
 
 }  // namespace data
 }  // namespace rec

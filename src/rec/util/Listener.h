@@ -44,6 +44,18 @@ class Listener {
   friend class Broadcaster<Type>;
 };
 
+template <typename Type, typename ListenTo>
+void listenTo(Listener<Type>* listener, ListenTo* newValue, ListenTo** target) {
+  Lock l(listener->lock());
+  if (*target)
+    (*target)->removeListener(listener);
+
+  *target = newValue;
+
+  if (*target)
+    (*target)->addListener(listener);
+}
+
 //
 // Broadcast updates of type Type to a set of Listener<Type>.
 //

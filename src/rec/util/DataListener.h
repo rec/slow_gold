@@ -7,6 +7,7 @@
 #include "rec/data/Value.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/util/Listener.h"
+#include "rec/util/UntypedDataListener.h"
 #include "rec/util/UpdateRequester.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -16,38 +17,26 @@ namespace listener {
 
 template <typename Proto>
 class DataListener : public Listener<const Proto&>,
-                     public Listener<const VirtualFile&>,
-                     public UpdateRequester {
+                     public UntypedDataListener {
  public:
   DataListener(const data::Address& address =
                data::Address::default_instance(),
                bool isGlobal = false);
   virtual ~DataListener() {}
 
-  virtual void requestUpdates();
-
   virtual void operator()(const Proto&);
-  virtual void operator()(const VirtualFile&);
 
-  virtual const data::Value getValue() const { return data_->getValue(address_); }
-  virtual const data::Value getValue(const data::Address& addr) const {
-    return data_->getValue(address_ + addr);
-  }
-
-  virtual void setValue(const data::Value& v) { data_->setValue(v, address_); }
-  void setProto(const Proto& p) { data_->setValue(p, address_); }
-  const Proto getProto() const { return data_->get(); }
+  void setProto(const Proto& p) { this->setValue(p); }
+  const Proto getProto() const { return typedData_->get(); }
+  virtual void setData(data::UntypedEditable* e);
 
  protected:
-  virtual void setData(data::TypedEditable<Proto>* d);
   virtual void onDataChange(const Proto&) {}
-  const data::Address& address() const { return address_; }
-  const CriticalSection& lock() const { return Listener<const Proto&>::lock(); }
 
  private:
-  data::TypedEditable<Proto>* data_;
-  const data::Address address_;
-  const bool isGlobal_;
+ 	typedef data::TypedEditable<Proto> TypedEditable;
+
+  data::TypedEditable<Proto>* typedData_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataListener);
 };
@@ -65,33 +54,16 @@ class GlobalDataListener : public DataListener<Proto> {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(GlobalDataListener);
 };
 
-
 //
 // Implementations
 //
 
 template <typename Proto>
-DataListener<Proto>::DataListener(const data::Address& address,
-                                  bool isGlobal)
-    : data_(data::editable<Proto>(NULL)),
-      address_(address),
-      isGlobal_(isGlobal) {
+DataListener<Proto>::DataListener(const data::Address& a, bool global)
+    : UntypedDataListener(Proto::default_instance().GetTypeName(), a, global),
+      typedData_(dynamic_cast<TypedEditable*>(this->data())) {
+  DCHECK(typedData_) << "No typed data for " << typeName();
 }
-
-template <typename Proto>
-void DataListener<Proto>::requestUpdates() {
-  if (isGlobal_)
-    setData(data::editable<Proto>());
-  else
-    data::editable<VirtualFile>()->addListener(this);
-}
-
-template <typename Proto>
-void DataListener<Proto>::operator()(const VirtualFile& f) {
-  setData(file::empty(f) ? data::editable<Proto>(NULL) :
-          data::editable<Proto>(f));
-}
-
 
 template <typename Proto>
 void DataListener<Proto>::operator()(const Proto& p) {
@@ -99,14 +71,19 @@ void DataListener<Proto>::operator()(const Proto& p) {
 }
 
 template <typename Proto>
-void DataListener<Proto>::setData(data::TypedEditable<Proto>* d) {
-  Proto p;
-  {
-    Lock l(lock());
-    data_->removeListener(this);
-    data_ = d;
-    data_->addListener(this);
+void DataListener<Proto>::setData(data::UntypedEditable* e) {
+  UntypedDataListener::setData(e);
+  TypedEditable* typedData = dynamic_cast<TypedEditable*>(e);
+  if (!typedData) {
+    LOG(DFATAL) << "Bad data listener for " << this->typeName();
+    return;
   }
+
+  Lock l(UntypedDataListener::lock_);
+
+  typedData_->removeListener(this);
+  typedData_ = typedData;
+  typedData_->addListener(this);
 }
 
 }  // namespace listener
