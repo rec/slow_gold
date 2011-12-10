@@ -60,8 +60,6 @@ class TransportController : public Layout,
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransportController);
 };
 
-
-
 }  // namespace rec
 }  // namespace gui
 }  // namespace audio

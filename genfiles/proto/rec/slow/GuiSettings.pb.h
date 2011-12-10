@@ -105,7 +105,7 @@ class GuiSettings : public ::google::protobuf::Message {
   inline bool drop_adds_to_browser() const;
   inline void set_drop_adds_to_browser(bool value);
   
-  // optional bool show_tooltips = 3 [default = true];
+  // optional bool show_tooltips = 3 [default = false];
   inline bool has_show_tooltips() const;
   inline void clear_show_tooltips();
   static const int kShowTooltipsFieldNumber = 3;
@@ -187,12 +187,12 @@ inline void GuiSettings::set_drop_adds_to_browser(bool value) {
   drop_adds_to_browser_ = value;
 }
 
-// optional bool show_tooltips = 3 [default = true];
+// optional bool show_tooltips = 3 [default = false];
 inline bool GuiSettings::has_show_tooltips() const {
   return _has_bit(2);
 }
 inline void GuiSettings::clear_show_tooltips() {
-  show_tooltips_ = true;
+  show_tooltips_ = false;
   _clear_bit(2);
 }
 inline bool GuiSettings::show_tooltips() const {

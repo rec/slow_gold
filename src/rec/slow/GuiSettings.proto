@@ -3,6 +3,6 @@ package rec.slow;
 message GuiSettings {
   optional bool follow_cursor = 1 [default = true];
   optional bool drop_adds_to_browser = 2 [default = true];
-  optional bool show_tooltips = 3 [default = true];
+  optional bool show_tooltips = 3 [default = false];
   optional bool show_help_pane = 4 [default = true];
 };

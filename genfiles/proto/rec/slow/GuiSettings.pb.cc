@@ -76,11 +76,11 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\211"
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\212"
     "\001\n\013GuiSettings\022\033\n\rfollow_cursor\030\001 \001(\010:\004t"
     "rue\022\"\n\024drop_adds_to_browser\030\002 \001(\010:\004true\022"
-    "\033\n\rshow_tooltips\030\003 \001(\010:\004true\022\034\n\016show_hel"
-    "p_pane\030\004 \001(\010:\004true", 178);
+    "\034\n\rshow_tooltips\030\003 \001(\010:\005false\022\034\n\016show_he"
+    "lp_pane\030\004 \001(\010:\004true", 179);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -123,7 +123,7 @@ void GuiSettings::SharedCtor() {
   _cached_size_ = 0;
   follow_cursor_ = true;
   drop_adds_to_browser_ = true;
-  show_tooltips_ = true;
+  show_tooltips_ = false;
   show_help_pane_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -161,7 +161,7 @@ void GuiSettings::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     follow_cursor_ = true;
     drop_adds_to_browser_ = true;
-    show_tooltips_ = true;
+    show_tooltips_ = false;
     show_help_pane_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -205,7 +205,7 @@ bool GuiSettings::MergePartialFromCodedStream(
         break;
       }
       
-      // optional bool show_tooltips = 3 [default = true];
+      // optional bool show_tooltips = 3 [default = false];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -265,7 +265,7 @@ void GuiSettings::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->drop_adds_to_browser(), output);
   }
   
-  // optional bool show_tooltips = 3 [default = true];
+  // optional bool show_tooltips = 3 [default = false];
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->show_tooltips(), output);
   }
@@ -293,7 +293,7 @@ void GuiSettings::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->drop_adds_to_browser(), target);
   }
   
-  // optional bool show_tooltips = 3 [default = true];
+  // optional bool show_tooltips = 3 [default = false];
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->show_tooltips(), target);
   }
@@ -324,7 +324,7 @@ int GuiSettings::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // optional bool show_tooltips = 3 [default = true];
+    // optional bool show_tooltips = 3 [default = false];
     if (has_show_tooltips()) {
       total_size += 1 + 1;
     }

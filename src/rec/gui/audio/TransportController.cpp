@@ -17,7 +17,7 @@ namespace {
 
 const int ICON_SIZE = 40;
 const int SLIDER_HEIGHT = 18;
-const int MUTE_BUTTON_SIZE = 50;
+const int MUTE_BUTTON_SIZE = 45;
 
 const char* const MUTE_BUTTON_TEXT = "Mute";
 

@@ -40,13 +40,15 @@ static Action* makeAction(Action::Type type) {
 }
 
 void UndoQueue::add(Editable* e, const Operations& operations, const Operations& undo) {
-  if (!operations.undoable())
-    return;
   {
     Lock l(lock_);
-    if (!running_)
+    if (!running_ && operations.undoable())
       return;
   }
+  DLOG(INFO) << "add: " << e->toString() << "\n"
+             << operations.ShortDebugString() << "\n"
+             << undo.ShortDebugString();
+
   ptr<Action> action(makeAction(Action::OPERATION));
   action->mutable_file()->CopyFrom(e->virtualFile());
   action->set_type_name(e->getTypeName());

@@ -34,7 +34,7 @@ namespace {
 const int MIN_NAV_PANEL = 100;
 const double MIN_RESIZER = 7.0;
 const int MIN_WAVEFORM = 150;
-const int MIN_MAIN_PANEL = 100;
+const int MIN_PLAYBACK_PANEL = 90;
 
 template <typename Type>
 void add(gui::Layout* layout, Type* t, double min, double max, double pref) {
@@ -78,7 +78,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
   waveform->addAndMakeVisible(components->modeSelector_.get());
   waveform->addAndMakeVisible(components->commandBar_.get());
 
-  add(&mainPanel_, &playbackPanel_, MIN_MAIN_PANEL);
+  add(&mainPanel_, &playbackPanel_, MIN_PLAYBACK_PANEL);
 
   // Navigation panel.
   add(&navigationPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);
@@ -88,14 +88,14 @@ MainPage::MainPage(Components* components, data::Editable* e)
   add(&navigationPanel_, components->loops_.get(), 250, -1.0, -0.3);
 
   // Playback panel.
+  helpPanel_->setTooltip("The help panel shows help about whatever the mouse "
+                         "is over.");
+  helpPanel_->setJustificationType(juce::Justification::centredLeft);
   add(&playbackPanel_, helpPanel_.get(), 75, -1.0, -0.20);
   add(&playbackPanel_, &helpResizer_, 5.0);
   add(&playbackPanel_, components->transformController_, 180, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
   add(&playbackPanel_, components->transportController_.get(), 180, -1.0, -0.40);
-
-  helpPanel_->setTooltip("This is the help panel, where "
-                         "context-sensitive help will appear.");
 }
 
 MainPage::~MainPage() {}

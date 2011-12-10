@@ -33,6 +33,7 @@ class Editable {
   void setValue(const Value&, const Address& a = Address::default_instance(),
                 bool undoable = true);
   void append(const Value& value, const Address&);
+  string toString() const { return ptr<Message>(clone())->ShortDebugString(); }
 
   virtual bool fileReadSuccess() const = 0;
   virtual void applyLater(Operations*) = 0;
