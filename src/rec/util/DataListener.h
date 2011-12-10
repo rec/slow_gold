@@ -68,6 +68,7 @@ DataListener<Proto>::DataListener(const data::Address& a, bool global)
 template <typename Proto>
 void DataListener<Proto>::operator()(const Proto& p) {
   onDataChange(p);
+  UntypedDataListener::onDataChange(p);
 }
 
 template <typename Proto>
