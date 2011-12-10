@@ -81,12 +81,12 @@ void CurrentFile::setFile(const VirtualFile& f) {
     }
 
     LoopPointList lpl = data::get<LoopPointList>(file_);
-    lpl.set_length(length);
-    if (!lpl.loop_point_size())
-      lpl.add_loop_point()->set_selected(true);
-
-    // TODO:  no need to change data unless something has really changed.
-    data::set<LoopPointList>(lpl, file_, false);
+    if (lpl.length() != length || !lpl.loop_point_size()) {
+      lpl.set_length(length);
+      if (!lpl.loop_point_size())
+        lpl.add_loop_point()->set_selected(true);
+      data::set<LoopPointList>(lpl, file_, false);
+    }
   }
 
   {

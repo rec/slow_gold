@@ -42,10 +42,11 @@ static Action* makeAction(Action::Type type) {
 void UndoQueue::add(Editable* e, const Operations& operations, const Operations& undo) {
   {
     Lock l(lock_);
-    if (!running_ && operations.undoable())
+    if (!(running_ && operations.undoable()))
       return;
   }
-#if 0
+
+#if 1
   DLOG(INFO) << "add: " << e->toString() << "\n"
              << operations.ShortDebugString() << "\n"
              << undo.ShortDebugString();
