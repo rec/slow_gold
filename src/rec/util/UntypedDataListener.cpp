@@ -29,10 +29,13 @@ void UntypedDataListener::operator()(const VirtualFile& f) {
 }
 
 void UntypedDataListener::setData(data::UntypedEditable* d) {
-  Lock l(lock_);
-  data_->broadcaster()->removeListener(this);
-  data_ = d;
-  data_->broadcaster()->addListener(this);
+  {
+    Lock l(lock_);
+    data_->broadcaster()->removeListener(this);
+    data_ = d;
+    data_->broadcaster()->addListener(this);
+  }
+  (*this)(*ptr<Message>(d->clone()));
 }
 
 }  // namespace util

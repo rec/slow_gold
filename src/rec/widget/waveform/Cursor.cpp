@@ -81,13 +81,11 @@ bool Cursor::setDragTime(Samples<44100> t) {
       next = index_ + 1;
 
     if (next >= 0) {
-      DLOG(INFO) << "needs sorting!";
       cursors[index_] = cursors[next];
       cursors[next] = this;
       LoopPointList lpl = waveform_->DataListener<LoopPointList>::getProto();
       lpl.mutable_loop_point(index_)->set_time(t);
       lpl.mutable_loop_point()->SwapElements(index_, next);
-      DLOG(INFO) << lpl.ShortDebugString();
       waveform_->DataListener<LoopPointList>::setProto(lpl);
       waveform_->adjustCursors(lpl, block::BlockSet());
     }

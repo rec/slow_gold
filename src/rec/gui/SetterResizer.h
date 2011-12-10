@@ -9,7 +9,8 @@
 namespace rec {
 namespace gui {
 
-class SetterResizer : public StretchableLayoutResizerBar {
+class SetterResizer : public StretchableLayoutResizerBar,
+                      public juce::SettableTooltipClient {
  public:
   SetterResizer(const data::Address& address,
                 Layout* layout,

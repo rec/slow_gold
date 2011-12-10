@@ -168,7 +168,8 @@ class CommandDatabase {
 
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
-      cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, c, a, true));
+      cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, c, a,
+                                             c.is_global_setter()));
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                  &CommandItemSetter::execute));
     }
@@ -234,7 +235,6 @@ class CommandDatabase {
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandDatabase);
 };
-
 
 }  // namespace
 

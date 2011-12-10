@@ -11,8 +11,8 @@ class TickedDataSetter : public CommandDataSetter {
   TickedDataSetter(ApplicationCommandInfo* info,
                    Listener<None>* changeListener,
                    const Command& command,
-                   const data::Address& a = data::Address::default_instance(),
-                   bool isGlobal = false);
+                   const data::Address& a,
+                   bool isGlobal);
 
   virtual ~TickedDataSetter() {}
 

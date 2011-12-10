@@ -58,7 +58,6 @@ struct Period {
     FILL = 40,
     NAVIGATOR = 1001,
     WRITE_GUI = 103,
-    FIX_MENUS = 5000,
   };
 };
 
@@ -69,7 +68,6 @@ struct Priority {
     FILL = 4,
     NAVIGATOR = 2,
     WRITE_GUI = 4,
-    FIX_MENUS = 4,
   };
 };
 
@@ -83,19 +81,6 @@ int writeGui(Instance* i) {
 
   return Period::WRITE_GUI;
 }
-
-int fixMenus(Instance* i) {
-  static bool firstTime = true;
-  if (firstTime) {
-    firstTime = false;
-    return Period::FIX_MENUS;
-  }
-  i->menus_->menuItemsChanged();
-  DLOG(INFO) << "Fixing menus";
-
-  return thread::DONE;
-}
-
 
 thread::Result fill(Instance* i) {
   return i->bufferFiller_->fillOnce();
@@ -113,7 +98,6 @@ void Threads::startAll() {
   fillThread_ = start(&fill, "Fill", Priority::FILL);
   start(&directory, "Directory", Priority::DIRECTORY);
   start(&writeGui, "writeGUI", Priority::WRITE_GUI);
-  // start(&fixMenus, "fix menus", Priority::WRITE_GUI);
 }
 
 }  // namespace slow

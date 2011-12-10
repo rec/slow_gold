@@ -16,6 +16,7 @@ SetterResizer::SetterResizer(const data::Address& address,
     address_(address),
     editable_(editable) {
   DCHECK(editable);
+  setTooltip("You can drag this resizer around to change the screen layout.");
 }
 
 int SetterResizer::get() const {
