@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="FRzciaotF" name="tests">
+  <MAINGROUP id="vXBSyHr8M" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -857,6 +857,10 @@
               name="CurrentTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/CurrentTime.h" id="pekppcPEv"
               name="CurrentTime.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/GuiListener.cpp" id="DcIdZAjJR"
+              name="GuiListener.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/GuiListener.h" id="FRog3WAtF"
+              name="GuiListener.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/HasInstance.h" id="R64QCUozd"
               name="HasInstance.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Instance.cpp" id="fmMEqD3tX"
@@ -1039,6 +1043,8 @@
               name="Range.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Range_test.cpp" id="V4d5qBnXr"
               name="Range_test.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/SingleListener.h" id="E1xdHnlVg"
+              name="SingleListener.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="Km8Ts3LYZ" name="STL.h"
               resource="0"/>
         <FILE compile="0" file="../../src/rec/util/TestData.h" id="pd5MFhku4"
@@ -1367,7 +1373,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="z69jXMPaX" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="hYq9s0fcx" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

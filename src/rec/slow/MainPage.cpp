@@ -57,7 +57,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
     : mainPanel_("Main", VERTICAL),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
-      helpPanel_(new gui::SimpleLabel("help panel", "")),
+      helpPanel_(new gui::SimpleLabel("", "")),
       transformPanel_("Transform"),
       controlPanel_("Control"),
 
@@ -93,6 +93,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
   // Playback panel.
   helpPanel_->setTooltip("The help panel shows help about whatever the mouse "
                          "is over.");
+  helpPanel_->setColour(juce::Label::textColourId, juce::Colours::darkgreen);
   helpPanel_->setJustificationType(juce::Justification::centredLeft);
   add(&playbackPanel_, helpPanel_.get(), 75, -1.0, -0.20);
   add(&playbackPanel_, &helpResizer_, 5.0);

@@ -270,6 +270,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentTime.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\GuiListener.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp"/>
@@ -590,6 +591,7 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentTime.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\GuiListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
@@ -632,6 +634,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\partition\Partition.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Platform.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\SingleListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\TestData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\CallAsync.h"/>

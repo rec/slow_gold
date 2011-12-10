@@ -45,9 +45,11 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
     if (!running_ && operations.undoable())
       return;
   }
+#if 0
   DLOG(INFO) << "add: " << e->toString() << "\n"
              << operations.ShortDebugString() << "\n"
              << undo.ShortDebugString();
+#endif
 
   ptr<Action> action(makeAction(Action::OPERATION));
   action->mutable_file()->CopyFrom(e->virtualFile());

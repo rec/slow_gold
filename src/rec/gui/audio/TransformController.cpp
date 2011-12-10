@@ -79,8 +79,8 @@ TransformController::TransformController()
                              "original stereo, just the left channel, "
                              "just the right channel, "
                              "or a mono mix of both channels.");
-  enableButton_.setTooltip("Disable or enable Transforms, the pitch, time and "
-                           "stereo processing.");
+  enableButton_.setTooltip("Disable or enable all sound transformations: "
+                           "pitch, time and stereo processing.");
 
   leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
   leftPanel_.addToLayout(&stereoComboBox_, COMBO_BOX_HEIGHT);

@@ -625,6 +625,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentTime.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\GuiListener.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
@@ -1581,6 +1584,9 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentTime.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\GuiListener.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
@@ -1705,6 +1711,9 @@
       <Filter>Slow\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\SingleListener.h">
       <Filter>Slow\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h">
