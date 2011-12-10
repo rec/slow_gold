@@ -63,15 +63,16 @@ typedef juce::OutputStream OutputStream;
 typedef juce::PopupMenu PopupMenu;
 typedef juce::PositionableAudioSource PositionableAudioSource;
 
-typedef juce::String String;
 typedef juce::ScopedLock ScopedLock;
 typedef juce::ScopedUnlock ScopedUnlock;
+typedef juce::SettableTooltipClient SettableTooltipClient;
 typedef juce::Slider Slider;
 typedef juce::StreamingSocket Socket;
+typedef juce::StretchableLayoutManager StretchableLayoutManager;
+typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
+typedef juce::String String;
 typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
-typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
-typedef juce::StretchableLayoutManager StretchableLayoutManager;
 
 typedef juce::TableHeaderComponent TableHeaderComponent;
 typedef juce::TableListBox TableListBox;

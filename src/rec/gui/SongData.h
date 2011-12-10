@@ -21,15 +21,18 @@ class SongData : public component::Focusable<SetterTextArea <music::Metadata> >,
   explicit SongData(MenuBarModel* model)
       : component::Focusable<SetterTextArea<music::Metadata> >(model) {
     setName("SongData");
-    add("Track", Address("track_title"), "The name of the individual track.");
+    add("Track", Address("track_title"), "The name of this track.");
     add("Album", Address("album_title"),
-        "The name of the album this track is from, if any.");
-    add("Artist", Address("artist"), "The creator of this specific track");
+        "The name of the album this track is from.");
+    add("Artist", Address("artist"),
+        "The artist or musician who made this specific track");
     add("Number", Address("track_number"),
-        "If this was from a CD, which track was it?");
-    add("Year", Address("year"), "What year was this track recorded?");
-    add("Genre", Address("genre"), "Tags that categorize this track.");
-    add("Notes", Address("notes"), "Put whatever you like here")->
+        "The album track number for this track");
+    add("Year", Address("year"),
+        "The year that that this track was recorded.");
+    add("Genre", Address("genre"),
+        "Tags that categorize this track.");
+    add("Notes", Address("notes"), "Your notes here.")->
         editor()->setMultiLine(true, true);
   }
 

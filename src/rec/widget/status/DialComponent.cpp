@@ -34,6 +34,7 @@ DialComponent::DialComponent(const Dial& desc)
       timeAngle_(0.0),
       timeRatio_(0.0) {
   description_.mutable_widget()->set_transparent(true);
+  setTooltip("The time dial shows graphically how much of the loop remains.");
 }
 
 static const bool USE_CONTIGUOUS_SEGMENTS = true;

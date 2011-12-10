@@ -14,7 +14,6 @@ namespace tree {
 typedef gui::DropTarget<TreeView, gui::NullInterface> TreeViewDropTarget;
 typedef gui::component::Focusable<TreeViewDropTarget> FocusableTarget;
 
-
 class TreeViewDropAll : public FocusableTarget
 #ifdef TREE_VIEW_IS_CUTTABLE
 , public Cuttable

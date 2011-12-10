@@ -14,8 +14,7 @@ namespace gui {
 template <typename Proto, typename Type>
 class DataSlider : public Layout,
                    public DataListener<Proto>,
-                   public juce::Slider::Listener,
-                   public juce::SettableTooltipClient {
+                   public juce::Slider::Listener {
  public:
   DataSlider(const String& name,
                 const data::Address& address,
@@ -43,7 +42,7 @@ class DataSlider : public Layout,
   void setTooltip(const String& s) {
     slider_.setTooltip(s);
     caption_.setTooltip(s);
-    juce::SettableTooltipClient::setTooltip(s);
+    SettableTooltipClient::setTooltip(s);
     slider_.sendLookAndFeelChange();
   }
 

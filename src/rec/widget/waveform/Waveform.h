@@ -29,6 +29,7 @@ typedef vector<Cursor*> CursorList;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
+                 public SettableTooltipClient,
                  public DataListener<LoopPointList>,
                  public DataListener<Mode>,
                  public GlobalDataListener<WaveformProto>,

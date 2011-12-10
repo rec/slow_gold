@@ -17,6 +17,7 @@ namespace waveform {
 class OutlinedCursorLabel;
 
 class Cursor : public Component,
+               public SettableTooltipClient,
                public Listener< Samples<44100> >,
                public juce::Label::Listener {
  public:

@@ -9,7 +9,8 @@
 namespace rec {
 namespace gui {
 
-class Layout : public Component, public SizeHintAccumulator {
+class Layout : public Component, public SizeHintAccumulator,
+               public SettableTooltipClient {
  public:
   static const int DEFAULT_MIN = 12;
   static const int DEFAULT_MAX = -1;

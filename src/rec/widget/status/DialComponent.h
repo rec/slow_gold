@@ -15,7 +15,8 @@ namespace time {
 
 class DialComponent : public Component,
                       public Listener<Samples<44100> >,
-                      public DataListener<LoopPointList> {
+                      public DataListener<LoopPointList>,
+                      public SettableTooltipClient {
  public:
   explicit DialComponent(const Dial& desc);
 

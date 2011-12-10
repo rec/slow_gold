@@ -26,10 +26,13 @@ class SetterText : public Layout,
         DataListener<Proto>(address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {
+    const String& tooltip = tip.length() ? tip : 
+      (caption.length() ? caption : name);
+    editor_.setTooltip(tooltip);
     if (useCaption) {
       const String& cap = caption.length() ? caption : name;
       caption_.setText(cap, false);
-      editor_.setTooltip(tip.length() ? tip : cap);
+      caption_.setTooltip(tooltip);
 
       addToLayout(&caption_, CAPTION_SIZE);
     }

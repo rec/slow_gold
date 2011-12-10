@@ -81,6 +81,9 @@ MainPage::MainPage(Components* components, data::Editable* e)
   add(&mainPanel_, &playbackPanel_, MIN_PLAYBACK_PANEL);
 
   // Navigation panel.
+  components->directoryTree_->treeView()->setTooltip("The CD window shows any "
+                                                     "CDs that you have in "
+                                                     "your computer's CD drives");
   add(&navigationPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->songData_, 150, -1.0, -0.30);

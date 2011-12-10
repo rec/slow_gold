@@ -150,6 +150,7 @@ class LoopsSetterText : public SetterText<LoopPointList> {
       : SetterText<LoopPointList>("",
                                   "loop_point" + Address(row) + col.address(),
                                   "", "", false) {
+
   }
 
  private:
@@ -166,7 +167,10 @@ Component* Loops::refreshComponentForCell(int row, int column,
     } else {
       const TableColumn& col = columns().column(column - 1);
       if (col.type() == TableColumn::STRING) {
-        existing = new LoopsSetterText(row, col);
+        ptr<LoopsSetterText> lst(new LoopsSetterText(row, col));
+        lst->setTooltip("This is the name of the loop, and you can edit "
+                             "it by clicking here.");
+        existing = lst.transfer();
         UpdateRequester::requestAllUpdates();
       }
     }
