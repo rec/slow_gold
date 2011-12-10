@@ -13,9 +13,9 @@ message TableColumn {
     SORTED_BACKWARDS = 0x40;
     EDITABLE = 0x80;
 
-    DEFAULT = 0x9F;
+    DEFAULT = 0x8F;
     // DEFAULT = VISIBLE + RESIZABLE + DRAGGABLE + APPEARS_ON_COLUMN_MENU
-    //   + SORTABLE + EDITABLE
+    //   + EDITABLE
   };
 
   enum Type {

@@ -46,7 +46,7 @@ enum TableColumn_Properties {
   TableColumn_Properties_SORTED_FORWARDS = 32,
   TableColumn_Properties_SORTED_BACKWARDS = 64,
   TableColumn_Properties_EDITABLE = 128,
-  TableColumn_Properties_DEFAULT = 159
+  TableColumn_Properties_DEFAULT = 143
 };
 bool TableColumn_Properties_IsValid(int value);
 const TableColumn_Properties TableColumn_Properties_Properties_MIN = TableColumn_Properties_VISIBLE;
@@ -478,7 +478,7 @@ inline bool TableColumn::has_property_flags() const {
   return _has_bit(4);
 }
 inline void TableColumn::clear_property_flags() {
-  property_flags_ = 159;
+  property_flags_ = 143;
   _clear_bit(4);
 }
 inline ::rec::gui::TableColumn_Properties TableColumn::property_flags() const {

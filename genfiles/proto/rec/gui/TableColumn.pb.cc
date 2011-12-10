@@ -118,7 +118,7 @@ void protobuf_AddDesc_rec_2fgui_2fTableColumn_2eproto() {
     "\022\r\n\tDRAGGABLE\020\004\022\032\n\026APPEARS_ON_COLUMN_MEN"
     "U\020\010\022\014\n\010SORTABLE\020\020\022\023\n\017SORTED_FORWARDS\020 \022\024"
     "\n\020SORTED_BACKWARDS\020@\022\r\n\010EDITABLE\020\200\001\022\014\n\007D"
-    "EFAULT\020\237\001\"4\n\004Type\022\n\n\006STRING\020\001\022\010\n\004TIME\020\002\022"
+    "EFAULT\020\217\001\"4\n\004Type\022\n\n\006STRING\020\001\022\010\n\004TIME\020\002\022"
     "\n\n\006UINT32\020\003\022\n\n\006DOUBLE\020\004\"7\n\017TableColumnLi"
     "st\022$\n\006column\030\001 \003(\0132\024.rec.gui.TableColumn", 600);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -154,7 +154,7 @@ bool TableColumn_Properties_IsValid(int value) {
     case 32:
     case 64:
     case 128:
-    case 159:
+    case 143:
       return true;
     default:
       return false;
@@ -232,7 +232,7 @@ void TableColumn::SharedCtor() {
   width_ = 80u;
   minimum_width_ = 80u;
   maximum_width_ = -1;
-  property_flags_ = 159;
+  property_flags_ = 143;
   address_ = NULL;
   type_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -281,7 +281,7 @@ void TableColumn::Clear() {
     width_ = 80u;
     minimum_width_ = 80u;
     maximum_width_ = -1;
-    property_flags_ = 159;
+    property_flags_ = 143;
     if (_has_bit(5)) {
       if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
     }
