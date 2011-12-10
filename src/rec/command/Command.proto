@@ -25,7 +25,6 @@ message Command {
     DIM_VOLUME_TOGGLE = 7;
 
     EJECT_CDS = 8;
-    FOLLOW_CURSOR = 43;
 
     INVERT_LOOP_SELECTION = 9;
 
@@ -53,13 +52,17 @@ message Command {
     SELECT = 25;
     SELECT_ONLY = 26;
 
+    TOGGLE_FOLLOW_CURSOR = 43;
     TOGGLE_GRID_DISPLAY = 27;
     TOGGLE_PARALLEL_WAVEFORMS = 42;
     TOGGLE_PREFADER_LEVELS = 46;
     TOGGLE_SELECTION = 41;
+    TOGGLE_SHOW_TOOLTIPS = 48;
+    TOGGLE_SHOW_HELP_PANE = 49;
     TOGGLE_START_STOP = 28;
     TOGGLE_STRETCH_ENABLE = 29;
     TOGGLE_WHOLE_SONG_LOOP = 30;
+
     TREE_CLOSE = 31;
     TREE_DOWN = 32;
     TREE_LEFT = 33;
@@ -74,7 +77,7 @@ message Command {
     ZOOM_OUT = 40;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 47;
+    LAST_TYPE = 49;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

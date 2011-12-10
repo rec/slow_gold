@@ -13,6 +13,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
+#include "rec/slow/GuiListener.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/MouseListener.h"
@@ -33,6 +34,11 @@ using namespace rec::widget::waveform;
 
 using gui::DialogLocker;
 
+static const int MS_TILL_TOOLTIP = 700;
+
+using juce::TooltipWindow;
+
+
 Instance::Instance(SlowWindow* window) : window_(window) {
   menus_.reset(new Menus(this));
   device_.reset(new audio::Device);
@@ -43,6 +49,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   currentTime_.reset(new CurrentTime(this));
   target_.reset(new Target(this));
   mouseListener_.reset(new MouseListener(this));
+  guiListener_.reset(new GuiListener(this));
   threads_.reset(new Threads(this));
 
   target_->addCommands();
@@ -92,6 +99,11 @@ void Instance::startup() {
 
 const VirtualFile Instance::file() const {
   return currentFile_->virtualFile();
+}
+
+void Instance::updateGui() {
+  window_->writeGui();
+  guiListener_->update();
 }
 
 Samples<44100> Instance::length() const {

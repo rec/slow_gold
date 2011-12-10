@@ -17,7 +17,8 @@ static const int SLOT_COUNT = 10;
 Menus::Menus(Instance* i) : HasInstance(i) {}
 
 const StringArray Menus::getMenuBarNames() {
-  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select"};
+  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select",
+                                "Display"};
   return StringArray(NAMES, arraysize(NAMES));
 }
 
@@ -103,15 +104,20 @@ void addTransportMenu(TargetManager* t, PopupMenu* popup) {
   t->addCommandItem(popup, Command::TOGGLE_START_STOP);
   t->addCommandItem(popup, Command::ADD_LOOP_POINT);
   t->addCommandItem(popup, Command::CLEAR_LOOPS);
-  t->addCommandItem(popup, Command::TOGGLE_GRID_DISPLAY);
-  t->addCommandItem(popup, Command::TOGGLE_PARALLEL_WAVEFORMS);
   t->addCommandItem(popup, Command::TOGGLE_PREFADER_LEVELS);
-  t->addCommandItem(popup, Command::FOLLOW_CURSOR);
 
   popup->addSeparator();
 
   addBank(t, popup, Command::JUMP, "Jump To...");
   addBank(t, popup, Command::JUMP_SELECTED, "Jump To Selected...");
+}
+
+void addDisplayMenu(TargetManager* t, PopupMenu* popup) {
+  t->addCommandItem(popup, Command::TOGGLE_GRID_DISPLAY);
+  t->addCommandItem(popup, Command::TOGGLE_PARALLEL_WAVEFORMS);
+  t->addCommandItem(popup, Command::TOGGLE_FOLLOW_CURSOR);
+  t->addCommandItem(popup, Command::TOGGLE_SHOW_TOOLTIPS);
+  t->addCommandItem(popup, Command::TOGGLE_SHOW_HELP_PANE);
 }
 
 }  // namespace
@@ -135,6 +141,9 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 
   else if (menuName == "Transport")
     addTransportMenu(t, &m);
+
+  else if (menuName == "Display")
+    addDisplayMenu(t, &m);
 
   return m;
 }

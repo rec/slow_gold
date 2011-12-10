@@ -51,7 +51,6 @@ enum Command_Type {
   Command_Type_CLOSE_FILE = 6,
   Command_Type_DIM_VOLUME_TOGGLE = 7,
   Command_Type_EJECT_CDS = 8,
-  Command_Type_FOLLOW_CURSOR = 43,
   Command_Type_INVERT_LOOP_SELECTION = 9,
   Command_Type_JUMP = 10,
   Command_Type_JUMP_SELECTED = 11,
@@ -70,10 +69,13 @@ enum Command_Type {
   Command_Type_RESET_GAIN_TO_UNITY = 24,
   Command_Type_SELECT = 25,
   Command_Type_SELECT_ONLY = 26,
+  Command_Type_TOGGLE_FOLLOW_CURSOR = 43,
   Command_Type_TOGGLE_GRID_DISPLAY = 27,
   Command_Type_TOGGLE_PARALLEL_WAVEFORMS = 42,
   Command_Type_TOGGLE_PREFADER_LEVELS = 46,
   Command_Type_TOGGLE_SELECTION = 41,
+  Command_Type_TOGGLE_SHOW_TOOLTIPS = 48,
+  Command_Type_TOGGLE_SHOW_HELP_PANE = 49,
   Command_Type_TOGGLE_START_STOP = 28,
   Command_Type_TOGGLE_STRETCH_ENABLE = 29,
   Command_Type_TOGGLE_WHOLE_SONG_LOOP = 30,
@@ -88,7 +90,7 @@ enum Command_Type {
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 47,
+  Command_Type_LAST_TYPE = 49,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -302,7 +304,6 @@ class Command : public ::google::protobuf::Message {
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
   static const Type DIM_VOLUME_TOGGLE = Command_Type_DIM_VOLUME_TOGGLE;
   static const Type EJECT_CDS = Command_Type_EJECT_CDS;
-  static const Type FOLLOW_CURSOR = Command_Type_FOLLOW_CURSOR;
   static const Type INVERT_LOOP_SELECTION = Command_Type_INVERT_LOOP_SELECTION;
   static const Type JUMP = Command_Type_JUMP;
   static const Type JUMP_SELECTED = Command_Type_JUMP_SELECTED;
@@ -321,10 +322,13 @@ class Command : public ::google::protobuf::Message {
   static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;
   static const Type SELECT = Command_Type_SELECT;
   static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
+  static const Type TOGGLE_FOLLOW_CURSOR = Command_Type_TOGGLE_FOLLOW_CURSOR;
   static const Type TOGGLE_GRID_DISPLAY = Command_Type_TOGGLE_GRID_DISPLAY;
   static const Type TOGGLE_PARALLEL_WAVEFORMS = Command_Type_TOGGLE_PARALLEL_WAVEFORMS;
   static const Type TOGGLE_PREFADER_LEVELS = Command_Type_TOGGLE_PREFADER_LEVELS;
   static const Type TOGGLE_SELECTION = Command_Type_TOGGLE_SELECTION;
+  static const Type TOGGLE_SHOW_TOOLTIPS = Command_Type_TOGGLE_SHOW_TOOLTIPS;
+  static const Type TOGGLE_SHOW_HELP_PANE = Command_Type_TOGGLE_SHOW_HELP_PANE;
   static const Type TOGGLE_START_STOP = Command_Type_TOGGLE_START_STOP;
   static const Type TOGGLE_STRETCH_ENABLE = Command_Type_TOGGLE_STRETCH_ENABLE;
   static const Type TOGGLE_WHOLE_SONG_LOOP = Command_Type_TOGGLE_WHOLE_SONG_LOOP;

@@ -56,7 +56,7 @@ struct Period {
     DIRECTORY = 1000,
     FILL = 40,
     NAVIGATOR = 1001,
-    WRITE_GUI = 250,
+    WRITE_GUI = 103,
   };
 };
 
@@ -76,7 +76,7 @@ int navigator(Instance* i) {
 }
 
 int writeGui(Instance* i) {
-  i->window_->writeGui();
+  i->updateGui();
 
   return Period::WRITE_GUI;
 }

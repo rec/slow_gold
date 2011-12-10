@@ -5,6 +5,7 @@
 #include "rec/base/ArraySize.h"
 #include "rec/data/Address.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/gui/SimpleLabel.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
@@ -56,7 +57,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
     : mainPanel_("Main", VERTICAL),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
-      helpPanel_("Help"),
+      helpPanel_(new gui::SimpleLabel("help panel", "")),
       transformPanel_("Transform"),
       controlPanel_("Control"),
 
@@ -87,14 +88,21 @@ MainPage::MainPage(Components* components, data::Editable* e)
   add(&navigationPanel_, components->loops_.get(), 250, -1.0, -0.3);
 
   // Playback panel.
-  add(&playbackPanel_, &helpPanel_, 75, -1.0, -0.20);
+  add(&playbackPanel_, helpPanel_.get(), 75, -1.0, -0.20);
   add(&playbackPanel_, &helpResizer_, 5.0);
   add(&playbackPanel_, components->transformController_, 180, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
   add(&playbackPanel_, components->transportController_.get(), 180, -1.0, -0.40);
+
+  helpPanel_->setTooltip("This is the help panel, where "
+                         "context-sensitive help will appear.");
 }
 
 MainPage::~MainPage() {}
+
+void MainPage::setTooltip(const String& tt) {
+  helpPanel_->setText(tt, false);
+}
 
 }  // namespace slow
 }  // Namespace rec

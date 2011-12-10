@@ -11,7 +11,10 @@
 namespace rec {
 
 namespace gui {
+
 class SetterResizer;
+class SimpleLabel;
+
 }
 
 namespace slow {
@@ -24,12 +27,8 @@ class MainPage {
   virtual ~MainPage();
 
   gui::Layout* panel() { return &mainPanel_; }
+  void setTooltip(const String&);
 
-#if 0
-  Broadcaster<const gui::DropFiles&>* dropBroadcaster() {
-    return mainPanel_.dropBroadcaster();
-  }
-#endif
 
  private:
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
@@ -40,7 +39,7 @@ class MainPage {
 
   // playbackPanel_ contains help, transform and the controls.
   gui::Layout playbackPanel_;
-  gui::Layout helpPanel_;
+  ptr<gui::SimpleLabel> helpPanel_;
   gui::Layout transformPanel_;
   gui::Layout controlPanel_;
 

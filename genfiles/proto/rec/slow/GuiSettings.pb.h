@@ -105,6 +105,20 @@ class GuiSettings : public ::google::protobuf::Message {
   inline bool drop_adds_to_browser() const;
   inline void set_drop_adds_to_browser(bool value);
   
+  // optional bool show_tooltips = 3 [default = true];
+  inline bool has_show_tooltips() const;
+  inline void clear_show_tooltips();
+  static const int kShowTooltipsFieldNumber = 3;
+  inline bool show_tooltips() const;
+  inline void set_show_tooltips(bool value);
+  
+  // optional bool show_help_pane = 4 [default = true];
+  inline bool has_show_help_pane() const;
+  inline void clear_show_help_pane();
+  static const int kShowHelpPaneFieldNumber = 4;
+  inline bool show_help_pane() const;
+  inline void set_show_help_pane(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.slow.GuiSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -112,11 +126,13 @@ class GuiSettings : public ::google::protobuf::Message {
   
   bool follow_cursor_;
   bool drop_adds_to_browser_;
+  bool show_tooltips_;
+  bool show_help_pane_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -169,6 +185,38 @@ inline bool GuiSettings::drop_adds_to_browser() const {
 inline void GuiSettings::set_drop_adds_to_browser(bool value) {
   _set_bit(1);
   drop_adds_to_browser_ = value;
+}
+
+// optional bool show_tooltips = 3 [default = true];
+inline bool GuiSettings::has_show_tooltips() const {
+  return _has_bit(2);
+}
+inline void GuiSettings::clear_show_tooltips() {
+  show_tooltips_ = true;
+  _clear_bit(2);
+}
+inline bool GuiSettings::show_tooltips() const {
+  return show_tooltips_;
+}
+inline void GuiSettings::set_show_tooltips(bool value) {
+  _set_bit(2);
+  show_tooltips_ = value;
+}
+
+// optional bool show_help_pane = 4 [default = true];
+inline bool GuiSettings::has_show_help_pane() const {
+  return _has_bit(3);
+}
+inline void GuiSettings::clear_show_help_pane() {
+  show_help_pane_ = true;
+  _clear_bit(3);
+}
+inline bool GuiSettings::show_help_pane() const {
+  return show_help_pane_;
+}
+inline void GuiSettings::set_show_help_pane(bool value) {
+  _set_bit(3);
+  show_help_pane_ = value;
 }
 
 

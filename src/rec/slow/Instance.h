@@ -14,6 +14,7 @@ class BufferFiller;
 class Components;
 class CurrentFile;
 class CurrentTime;
+class GuiListener;
 class Menus;
 class MouseListener;
 class SlowWindow;
@@ -32,6 +33,7 @@ class Instance {
   Samples<44100> time() const;
   Samples<44100> length() const;
   bool isPlaying() const;
+  void updateGui();
 
   SlowWindow* window_;
 
@@ -46,6 +48,7 @@ class Instance {
 
   ptr<Target> target_;
   ptr<MouseListener> mouseListener_;
+  ptr<GuiListener> guiListener_;
   ptr<Threads> threads_;
 
  private:

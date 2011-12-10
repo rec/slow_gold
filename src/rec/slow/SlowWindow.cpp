@@ -27,12 +27,10 @@ namespace rec {
 namespace slow {
 
 static const Colour BACKGROUND_COLOR = juce::Colours::azure;
-static const int MILLISECONDS_TILL_TOOLTIP = 700;
 
 SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", BACKGROUND_COLOR,
                   DocumentWindow::allButtons, true) {
-  tooltipWindow_.reset(new juce::TooltipWindow(this, MILLISECONDS_TILL_TOOLTIP));
 }
 
 SlowWindow::~SlowWindow() {}

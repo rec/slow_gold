@@ -20,6 +20,7 @@ class HasInstance {
   CurrentFile* currentFile() { return instance_->currentFile_.get(); }
   CurrentTime* currentTime() { return instance_->currentTime_.get(); }
   Menus* menus() { return instance_->menus_.get(); }
+  SlowWindow* window() { return instance_->window_; }
 
   const VirtualFile file() const { return instance_->file(); }
   Samples<44100> time() const { return instance_->time(); }

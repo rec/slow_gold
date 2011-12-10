@@ -29,9 +29,11 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
       "rec/slow/GuiSettings.proto");
   GOOGLE_CHECK(file != NULL);
   GuiSettings_descriptor_ = file->message_type(0);
-  static const int GuiSettings_offsets_[2] = {
+  static const int GuiSettings_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, follow_cursor_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, drop_adds_to_browser_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_tooltips_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_help_pane_),
   };
   GuiSettings_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -74,9 +76,11 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"N"
-    "\n\013GuiSettings\022\033\n\rfollow_cursor\030\001 \001(\010:\004tr"
-    "ue\022\"\n\024drop_adds_to_browser\030\002 \001(\010:\004true", 118);
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\211"
+    "\001\n\013GuiSettings\022\033\n\rfollow_cursor\030\001 \001(\010:\004t"
+    "rue\022\"\n\024drop_adds_to_browser\030\002 \001(\010:\004true\022"
+    "\033\n\rshow_tooltips\030\003 \001(\010:\004true\022\034\n\016show_hel"
+    "p_pane\030\004 \001(\010:\004true", 178);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -97,6 +101,8 @@ struct StaticDescriptorInitializer_rec_2fslow_2fGuiSettings_2eproto {
 #ifndef _MSC_VER
 const int GuiSettings::kFollowCursorFieldNumber;
 const int GuiSettings::kDropAddsToBrowserFieldNumber;
+const int GuiSettings::kShowTooltipsFieldNumber;
+const int GuiSettings::kShowHelpPaneFieldNumber;
 #endif  // !_MSC_VER
 
 GuiSettings::GuiSettings()
@@ -117,6 +123,8 @@ void GuiSettings::SharedCtor() {
   _cached_size_ = 0;
   follow_cursor_ = true;
   drop_adds_to_browser_ = true;
+  show_tooltips_ = true;
+  show_help_pane_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -153,6 +161,8 @@ void GuiSettings::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     follow_cursor_ = true;
     drop_adds_to_browser_ = true;
+    show_tooltips_ = true;
+    show_help_pane_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -191,6 +201,38 @@ bool GuiSettings::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(24)) goto parse_show_tooltips;
+        break;
+      }
+      
+      // optional bool show_tooltips = 3 [default = true];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_show_tooltips:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &show_tooltips_)));
+          _set_bit(2);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_show_help_pane;
+        break;
+      }
+      
+      // optional bool show_help_pane = 4 [default = true];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_show_help_pane:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &show_help_pane_)));
+          _set_bit(3);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -223,6 +265,16 @@ void GuiSettings::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->drop_adds_to_browser(), output);
   }
   
+  // optional bool show_tooltips = 3 [default = true];
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->show_tooltips(), output);
+  }
+  
+  // optional bool show_help_pane = 4 [default = true];
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->show_help_pane(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -239,6 +291,16 @@ void GuiSettings::SerializeWithCachedSizes(
   // optional bool drop_adds_to_browser = 2 [default = true];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->drop_adds_to_browser(), target);
+  }
+  
+  // optional bool show_tooltips = 3 [default = true];
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->show_tooltips(), target);
+  }
+  
+  // optional bool show_help_pane = 4 [default = true];
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->show_help_pane(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -259,6 +321,16 @@ int GuiSettings::ByteSize() const {
     
     // optional bool drop_adds_to_browser = 2 [default = true];
     if (has_drop_adds_to_browser()) {
+      total_size += 1 + 1;
+    }
+    
+    // optional bool show_tooltips = 3 [default = true];
+    if (has_show_tooltips()) {
+      total_size += 1 + 1;
+    }
+    
+    // optional bool show_help_pane = 4 [default = true];
+    if (has_show_help_pane()) {
       total_size += 1 + 1;
     }
     
@@ -295,6 +367,12 @@ void GuiSettings::MergeFrom(const GuiSettings& from) {
     if (from._has_bit(1)) {
       set_drop_adds_to_browser(from.drop_adds_to_browser());
     }
+    if (from._has_bit(2)) {
+      set_show_tooltips(from.show_tooltips());
+    }
+    if (from._has_bit(3)) {
+      set_show_help_pane(from.show_help_pane());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -320,6 +398,8 @@ void GuiSettings::Swap(GuiSettings* other) {
   if (other != this) {
     std::swap(follow_cursor_, other->follow_cursor_);
     std::swap(drop_adds_to_browser_, other->drop_adds_to_browser_);
+    std::swap(show_tooltips_, other->show_tooltips_);
+    std::swap(show_help_pane_, other->show_help_pane_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
