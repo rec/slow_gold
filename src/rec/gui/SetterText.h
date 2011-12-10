@@ -26,19 +26,22 @@ class SetterText : public Layout,
         DataListener<Proto>(address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {
-    const String& tooltip = tip.length() ? tip : 
-      (caption.length() ? caption : name);
-    editor_.setTooltip(tooltip);
+    setTooltip(tip.length() ? tip : (caption.length() ? caption : name));
     if (useCaption) {
       const String& cap = caption.length() ? caption : name;
       caption_.setText(cap, false);
-      caption_.setTooltip(tooltip);
 
       addToLayout(&caption_, CAPTION_SIZE);
     }
     addToLayout(&editor_);
 
     editor_.addListener(this);
+  }
+
+  virtual void setTooltip(const String& newTooltip) {
+    Layout::setTooltip(newTooltip);
+    editor_.setTooltip(newTooltip);
+    caption_.setTooltip(newTooltip);
   }
 
   void setReadOnly(bool readOnly) {

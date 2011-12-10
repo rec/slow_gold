@@ -28,14 +28,16 @@ void GuiListener::onDataChange(const GuiSettings& settings) {
   displayHelpPane_ = settings.show_help_pane();
 }
 
-static TooltipClient* getTooltipParent(Component* c) {
+static String getTooltip(Component* c) {
   while (c) {
-    if (TooltipClient* ttc = dynamic_cast<TooltipClient*>(c))
-      return ttc;
-    else
-      c = c->getParentComponent();
+    if (TooltipClient* ttc = dynamic_cast<TooltipClient*>(c)) {
+      const String& s = ttc->getTooltip();
+      if (s.length())
+       return s;
+    }
+    c = c->getParentComponent();
   }
-  return NULL;
+  return "";
 }
 
 void GuiListener::update() {
@@ -51,9 +53,9 @@ void GuiListener::update() {
 
   if (comp != lastComponent_) {
     lastComponent_ = comp;
-    TooltipClient* ttc = getTooltipParent(comp);
+    String s = getTooltip(comp);
     MessageManagerLock l;
-    components()->mainPage_->setTooltip(ttc ? ttc->getTooltip() : String::empty);
+    components()->mainPage_->setTooltip(s);
   }
 }
 

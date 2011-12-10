@@ -42,6 +42,7 @@ Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
   initialize(dflt.get(desc), a, "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
+  setTooltip("This is the loop point list.  You can select and edit loop points here.");
 }
 
 Loops::~Loops() {}
@@ -169,7 +170,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
       if (col.type() == TableColumn::STRING) {
         ptr<LoopsSetterText> lst(new LoopsSetterText(row, col));
         lst->setTooltip("This is the name of the loop, and you can edit "
-                             "it by clicking here.");
+                        "it by clicking here.");
         existing = lst.transfer();
         UpdateRequester::requestAllUpdates();
       }
