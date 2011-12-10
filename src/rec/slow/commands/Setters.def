@@ -3,40 +3,47 @@ command {
   is_global_setter: true
   address { part: { name: "follow_cursor" } }
   setter_type_name: "rec.slow.GuiSettings"
+  category: "Display"
 }
 command {
   type: TOGGLE_GRID_DISPLAY
   is_global_setter: true
   address { part: { name: "show_grid" } }
   setter_type_name: "rec.widget.waveform.WaveformProto"
+  category: "Display"
 }
 command {
   type: TOGGLE_PARALLEL_WAVEFORMS
   is_global_setter: true
   address { part: { name: "parallel_waveforms" } }
   setter_type_name: "rec.widget.waveform.WaveformProto"
+  category: "Display"
 }
 command {
   type: TOGGLE_PREFADER_LEVELS
   is_setter: true
   address { part: { name: "prefader_levels" } }
   setter_type_name: "rec.audio.Gain"
+  category: "Audio"
 }
 command {
   type: TOGGLE_SHOW_TOOLTIPS
   is_global_setter: true
   address { part: { name: "show_tooltips" } }
   setter_type_name: "rec.slow.GuiSettings"
+  category: "Display"
 }
 command {
   type: TOGGLE_SHOW_HELP_PANE
   is_global_setter: true
   address { part: { name: "show_help_pane" } }
   setter_type_name: "rec.slow.GuiSettings"
+  category: "Display"
 }
 command {
   type: TOGGLE_STRETCH_ENABLE
   is_setter: true
   address { part: { name: "enabled" } }
   setter_type_name: "rec.audio.stretch.Stretch"
+  category: "Audio"
 }

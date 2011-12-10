@@ -195,8 +195,10 @@ class CommandDatabase {
 
     if (hasInfo) {
       int flags = 0;
-      if (category == "" || category == "(None)")
+      if (category == "" || category == "(None)") {
         flags = ApplicationCommandInfo::hiddenFromKeyEditor;
+        DCHECK(false) << commandName(id);
+      }
       cr->info_.setInfo(str(desc.menu(0)), name, category, flags);
     } else {
       LOG(ERROR) << "No command " << commandName(id)

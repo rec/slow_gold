@@ -171,24 +171,24 @@ command {
 command {
   type: TOGGLE_PREFADER_LEVELS
   desc {
-    menu: "Show prefader levels"
-    menu: "Show post-fader levels"
+    menu: "Show Pre-Fader Levels"
+    menu: "Show Post-Fader levels"
     full: "Toggle level display between pre- and post-fader."
   }
 }
 command {
   type: TOGGLE_SHOW_TOOLTIPS
   desc {
-    menu: "Show tooltips"
-    menu: "Disable tooltips"
+    menu: "Show Tooltips"
+    menu: "Disable Tooltips"
     full: "Show tooltips hovering over components."
   }
 }
 command {
   type: TOGGLE_SHOW_HELP_PANE
   desc {
-    menu: "Show help pane"
-    menu: "Hide helppane"
+    menu: "Show Help Pane"
+    menu: "Hide Help Pane"
     full: "Show help in help pane."
   }
 }
@@ -203,7 +203,7 @@ command {
 command {
   type: RESET_GAIN_TO_UNITY
   desc {
-    menu: "Reset level"
+    menu: "Reset Level"
     full: "Reset audio level to 0 dB"
   }
 }
