@@ -12,9 +12,7 @@ class TableController : public TableListBoxModel, public TableListBox {
  public:
   TableController();
 
-  void initialize(const TableColumnList& columns,
-                  const data::Address& address,
-                  const char* name);
+  void initialize(const TableColumnList& columns, const char* name);
 
   virtual void fillHeader(TableHeaderComponent* headers);
   virtual int getNumRows() = 0;

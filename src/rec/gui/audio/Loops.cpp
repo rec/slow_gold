@@ -39,7 +39,7 @@ static Def<TableColumnList> dflt(
 Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
     : component::Focusable<TableController>(menus),
       DataListener<LoopPointList>(a) {
-  initialize(dflt.get(desc), a, "Loops");
+  initialize(dflt.get(desc), "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
   setTooltip("This is the loop point list.  You can select and edit loop points here.");
@@ -149,7 +149,8 @@ class LoopsSetterText : public SetterText<LoopPointList> {
  public:
   explicit LoopsSetterText(int row, const TableColumn& col)
       : SetterText<LoopPointList>("",
-                                  "loop_point" + Address(row) + col.address(),
+                                  "loop_point" +
+                                  Address(row) + col.address(),
                                   "", "", false) {
 
   }

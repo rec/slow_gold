@@ -19,8 +19,7 @@ using data::Value;
 TableController::TableController() : TableListBox("TableController", this) {}
 
 // TODO: can we put this back into the constructor now?
-void TableController::initialize(const TableColumnList& c,
-                                 const Address& address, const char* name) {
+void TableController::initialize(const TableColumnList& c, const char* name) {
   columns_ = c;
   setName(name);
 }

@@ -21,6 +21,7 @@ class SongData : public component::Focusable<SetterTextArea <music::Metadata> >,
   explicit SongData(MenuBarModel* model)
       : component::Focusable<SetterTextArea<music::Metadata> >(model) {
     setName("SongData");
+#if 1
     add("Track", Address("track_title"), "The name of this track.");
     add("Album", Address("album_title"),
         "The name of the album this track is from.");
@@ -34,6 +35,7 @@ class SongData : public component::Focusable<SetterTextArea <music::Metadata> >,
         "Tags that categorize this track.");
     add("Notes", Address("notes"), "Your notes here.")->
         editor()->setMultiLine(true, true);
+#endif
   }
 
   virtual bool canCopy() const { return true; }

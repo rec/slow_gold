@@ -61,6 +61,7 @@ class SetterText : public Layout,
   virtual void textEditorReturnKeyPressed(TextEditor& editor) {}
   virtual void textEditorEscapeKeyPressed(TextEditor& editor) {}
   virtual void textEditorFocusLost(TextEditor& editor) {}
+
   void setEditorBackground(const juce::Colour& c) {
     editor_.setColour(juce::TextEditor::backgroundColourId, c);
   }
@@ -68,12 +69,12 @@ class SetterText : public Layout,
  protected:
   virtual void onDataChange(const Proto&) {
     const data::Value v = this->getValue();
-    if (v.has_string_f())
+    if (v.has_string_f() && str(v.string_f()) != editor_.getText())
       thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
   }
 
   void setEditorText(String text) {
-  	editor_.setText(text);
+  	editor_.setText(text, false);
     repaint();
   }
 

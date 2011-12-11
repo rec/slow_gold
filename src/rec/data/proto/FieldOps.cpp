@@ -121,7 +121,16 @@ bool copyTo(const MessageField& f, ValueProto* value) {
 bool apply(const MessageField& field, const Operation& op) {
   const Operation::Command c = op.command();
   const MessageField::Type t = field.type_;
-  return valid(c, t) && appliers[c][t](field, op);
+  if (!valid(c, t)) {
+    LOG(DFATAL) << "Not valid: " << op.ShortDebugString();
+    return false;
+  }
+
+  if (Applier applier = appliers[c][t])
+    return (*applier)(field, op);
+
+  LOG(DFATAL) << "Couldn't apply " << op.ShortDebugString();
+  return false;
 }
 
 }  // namespace data
