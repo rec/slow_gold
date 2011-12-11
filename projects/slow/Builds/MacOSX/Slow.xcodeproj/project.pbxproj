@@ -84,6 +84,7 @@
 		56E0CA21B0F7D2AF9623F04F /* UndoQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39CEC649749E231504839F1 /* UndoQueue.cpp */; };
 		5735C6AC14EBD846DB1576B3 /* GlobalCallbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A96AA3CCB74D9A1BBA1FBEAD /* GlobalCallbacks.cpp */; };
 		576423DD81DC27B1814358D7 /* StripLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BAED3C1B5F333D2DDB93FA4 /* StripLines.cpp */; };
+		58BD2A17C6FC9CE93377315D /* LoopsCuttable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 212BCB2575FF798A9A8E0E2D /* LoopsCuttable.cpp */; };
 		59AA35AA1E931C53CFD26709 /* Difference.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09581CBCAE04688E5BF551DA /* Difference.cpp */; };
 		5A8B62BF0E7F1A048B0E7724 /* MergeBlockSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBF00CC6D7140024CAD8AFE6 /* MergeBlockSet.cpp */; };
 		5C547DA6AD3196BEC860AE07 /* GetVolumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF78CEE14C91E8CDBCD65D6D /* GetVolumes.cpp */; };
@@ -332,6 +333,7 @@
 		20837C077485EF8D54348074 /* Exception.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Exception.h; path = ../../../../src/rec/util/Exception.h; sourceTree = SOURCE_ROOT; };
 		20DF56122496059666AA5A1A /* Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Layout.h; path = ../../../../src/rec/gui/layout/Layout.h; sourceTree = SOURCE_ROOT; };
 		20F428DEA148977B8CCBA4AC /* Waveform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Waveform.cpp; path = ../../../../src/rec/widget/waveform/Waveform.cpp; sourceTree = SOURCE_ROOT; };
+		212BCB2575FF798A9A8E0E2D /* LoopsCuttable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopsCuttable.cpp; path = ../../../../src/rec/gui/audio/LoopsCuttable.cpp; sourceTree = SOURCE_ROOT; };
 		2156D158361076E91DD5D101 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		22934661D0184DD2B68F4124 /* Stereo.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stereo.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Stereo.pb.h; sourceTree = SOURCE_ROOT; };
 		22E6A127E8EA05C450A50D59 /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tags.h; path = ../../../../src/rec/audio/format/mpg123/Tags.h; sourceTree = SOURCE_ROOT; };
@@ -340,6 +342,7 @@
 		23D3BCBB3F82854EECFF3305 /* MPStart.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MPStart.svg.h; path = ../../../../src/rec/gui/icon/MPStart.svg.h; sourceTree = SOURCE_ROOT; };
 		24A0BEC00ACCEC6FABBB97FA /* Panes.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Panes.pb.cc; path = ../../../../genfiles/proto/rec/widget/Panes.pb.cc; sourceTree = SOURCE_ROOT; };
 		24CBB9DFAA3B6EE0AFF95C35 /* Undo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Undo.h; path = ../../../../src/rec/util/Undo.h; sourceTree = SOURCE_ROOT; };
+		24E778646876F6224C46DABD /* LoopsCuttable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopsCuttable.h; path = ../../../../src/rec/gui/audio/LoopsCuttable.h; sourceTree = SOURCE_ROOT; };
 		2501DE5143C9726EFD4CFEE5 /* Status.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Status.cpp; path = ../../../../src/rec/widget/status/Status.cpp; sourceTree = SOURCE_ROOT; };
 		25087F3D677E7FF0B7C1D3ED /* null.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = null.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/null.h"; sourceTree = SOURCE_ROOT; };
 		2555FF7A2228B1C8DF7362A9 /* Field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Field.cpp; path = ../../../../src/rec/data/proto/Field.cpp; sourceTree = SOURCE_ROOT; };
@@ -1172,6 +1175,16 @@
 			name = widget;
 			sourceTree = "<group>";
 		};
+		44B6638FC837D9AFA6406922 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		5080298D4E35A1BF89D85979 /* yaml-cpp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1460,6 +1473,8 @@
 				4EE93F16961D80D9A2E3A93F /* LevelMeter.h */,
 				F67837B1F913F0981A51B001 /* Loops.cpp */,
 				EE4960DCA7DDB83A987643D8 /* Loops.h */,
+				212BCB2575FF798A9A8E0E2D /* LoopsCuttable.cpp */,
+				24E778646876F6224C46DABD /* LoopsCuttable.h */,
 				B718B3389157B2AFAD6D1E8C /* ModeSelector.cpp */,
 				2350571B72510D3BE11415F8 /* ModeSelector.h */,
 				0794123A52B9E82A9F7EA1DA /* SetupPage.cpp */,
@@ -1646,7 +1661,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				E7AC7DCBB684D64C7D60D49D /* Slow */,
+				44B6638FC837D9AFA6406922 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1844,16 +1859,6 @@
 				37598646AA4BB20B0347C4FC /* Thread.pb.h */,
 			);
 			name = thread;
-			sourceTree = "<group>";
-		};
-		E7AC7DCBB684D64C7D60D49D /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */ = {
@@ -2168,6 +2173,7 @@
 				E86B93D6EA85E0878C4DF800 /* CommandBar.cpp in Sources */,
 				52326EF3C371440282DB8AC2 /* LevelMeter.cpp in Sources */,
 				B6FEEDC6E6F581A35B76E048 /* Loops.cpp in Sources */,
+				58BD2A17C6FC9CE93377315D /* LoopsCuttable.cpp in Sources */,
 				26F7CB8653E0334EBB357E5E /* ModeSelector.cpp in Sources */,
 				AC3E0E20F4B9B4EB4A899380 /* SetupPage.cpp in Sources */,
 				3EA87DB1ABDC51AF61DC4B34 /* TimeController.cpp in Sources */,

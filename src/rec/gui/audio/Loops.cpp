@@ -1,13 +1,16 @@
 #include <algorithm>
 
-#include "rec/base/Samples.h"
-#include "rec/data/yaml/Yaml.h"
-#include "rec/data/proto/Equals.h"
-#include "rec/gui/SetterText.h"
 #include "rec/gui/audio/Loops.h"
+
+#include "rec/base/Samples.h"
+#include "rec/data/proto/Equals.h"
+#include "rec/data/yaml/Yaml.h"
+#include "rec/gui/SetterText.h"
+#include "rec/gui/audio/LoopsCuttable.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/Math.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/thread/CallAsync.h"
@@ -16,7 +19,9 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-// TODO: i18n
+namespace {
+
+}  // namespace
 
 static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
 static const juce::Colour SELECTED_COLOR(0xffefef80);
@@ -40,7 +45,8 @@ Loops::Loops(MenuBarModel* menus, const TableColumnList* desc,
              const Address& partAddress, const Address& baseAddress)
     : component::Focusable<TableController>(menus),
       DataListener<LoopPointList>(baseAddress),
-      partAddress_(partAddress) {
+      partAddress_(partAddress),
+      cuttable_(new LoopsCuttable(this)) {
   initialize(dflt.get(desc), "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
@@ -104,49 +110,6 @@ void Loops::update() {
 
   if (sel != getSelectedRows())
     setSelectedRows(sel, false);
-}
-
-string Loops::copy() const {
-  Lock l(TableController::lock_);
-  return yaml::write(getSelected(loops_, true));
-}
-
-bool Loops::canCopy() const {
-  Lock l(TableController::lock_);
-  return getSelected(loops_, true).loop_point_size();
-}
-
-bool Loops::canCut() const {
-  Lock l(TableController::lock_);
-  LoopPointList lpl = getSelected(loops_, true);
-  int size = lpl.loop_point_size();
-  bool can = (size > 1) || (size == 1 && lpl.loop_point(0).has_time());
-  DLOG(INFO) << "Can: " << (can ? "true" : "false");
-  return can;
-}
-
-void Loops::cut() {
-  DLOG(INFO) << "cut: ";
-  bool firstWasSelected = loops_.loop_point(0).selected();
-  if (loops_.loop_point_size())
-    loops_.mutable_loop_point(0)->set_selected(false);
-  LoopPointList loops = getSelected(loops_, false);
-  if (loops.loop_point_size())
-    loops.mutable_loop_point(0)->set_selected(firstWasSelected);
-
-  loops_ = loops;
-  DLOG(INFO) << loops.ShortDebugString();
-  setValue(loops_);
-}
-
-bool Loops::paste(const string& s) {
-  LoopPointList loops;
-  if (yaml::read(s, &loops)) {
-    loops_ = rec::audio::addLoopPoints(loops_, loops);
-    setValue(loops_);
-    return true;
-  }
-  return false;
 }
 
 using data::Address;

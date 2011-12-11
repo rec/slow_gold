@@ -123,6 +123,7 @@
 		AB0980DFCF4798615FDCFC94 = { isa = PBXBuildFile; fileRef = 774846DA2B2944B67224AF26; };
 		16D05B0CB822FCFC556A8E45 = { isa = PBXBuildFile; fileRef = 559D8FABCC9B428B7B4B8C3E; };
 		698CE9CFCBA6399D2E05E4CB = { isa = PBXBuildFile; fileRef = A91634BADED4A882FDE0B485; };
+		1B5B261FBBBD44D3160636D1 = { isa = PBXBuildFile; fileRef = E5C9B73E5AA031746D1C12A0; };
 		E995B88F48A2EB288EC482D2 = { isa = PBXBuildFile; fileRef = 7AB7A04185196A89700C120F; };
 		6FDC0A29E96B6CC51D17A804 = { isa = PBXBuildFile; fileRef = BA321F33367B9014620DB55E; };
 		F2466ACA909D0999346A4FC8 = { isa = PBXBuildFile; fileRef = 11202D5C9B1F8979C234E717; };
@@ -563,6 +564,8 @@
 		01872B2F8BCE38C37572ADC2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LevelMeter.h; path = ../../../../src/rec/gui/audio/LevelMeter.h; sourceTree = "SOURCE_ROOT"; };
 		A91634BADED4A882FDE0B485 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Loops.cpp; path = ../../../../src/rec/gui/audio/Loops.cpp; sourceTree = "SOURCE_ROOT"; };
 		A1E76CD59C8E60146B04575C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Loops.h; path = ../../../../src/rec/gui/audio/Loops.h; sourceTree = "SOURCE_ROOT"; };
+		E5C9B73E5AA031746D1C12A0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopsCuttable.cpp; path = ../../../../src/rec/gui/audio/LoopsCuttable.cpp; sourceTree = "SOURCE_ROOT"; };
+		E785746D5C27AE0C1FD5EE30 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopsCuttable.h; path = ../../../../src/rec/gui/audio/LoopsCuttable.h; sourceTree = "SOURCE_ROOT"; };
 		7AB7A04185196A89700C120F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ModeSelector.cpp; path = ../../../../src/rec/gui/audio/ModeSelector.cpp; sourceTree = "SOURCE_ROOT"; };
 		E6FE44146702B515B4A3297C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ModeSelector.h; path = ../../../../src/rec/gui/audio/ModeSelector.h; sourceTree = "SOURCE_ROOT"; };
 		BA321F33367B9014620DB55E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SetupPage.cpp; path = ../../../../src/rec/gui/audio/SetupPage.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1213,6 +1216,8 @@
 				01872B2F8BCE38C37572ADC2,
 				A91634BADED4A882FDE0B485,
 				A1E76CD59C8E60146B04575C,
+				E5C9B73E5AA031746D1C12A0,
+				E785746D5C27AE0C1FD5EE30,
 				7AB7A04185196A89700C120F,
 				E6FE44146702B515B4A3297C,
 				BA321F33367B9014620DB55E,
@@ -1641,7 +1646,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		58AF3AF6C92BE875EB1F7677 = { isa = PBXGroup; children = (
+		593AD3A74FD6AC9BF6D45CDA = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1668,7 +1673,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				58AF3AF6C92BE875EB1F7677,
+				593AD3A74FD6AC9BF6D45CDA,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1926,6 +1931,7 @@
 				AB0980DFCF4798615FDCFC94,
 				16D05B0CB822FCFC556A8E45,
 				698CE9CFCBA6399D2E05E4CB,
+				1B5B261FBBBD44D3160636D1,
 				E995B88F48A2EB288EC482D2,
 				6FDC0A29E96B6CC51D17A804,
 				F2466ACA909D0999346A4FC8,
