@@ -12,6 +12,7 @@ using namespace rec::gui::color;
 namespace rec {
 
 static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
+static const int CAPTION_INTERNAL_PADDING = 10;
 static const int CAPTION_OFFSET = 10000;
 static const int CAPTION_PADDING = 2;
 static const int CAPTION_X_OFFSET = -3;
@@ -135,7 +136,8 @@ void Cursor::layout() {
 void Cursor::adjustCaption() {
   juce::Rectangle<int> before = caption_->getBounds();
 
-  int remains = waveform_->getCursorX(index_ + 1) - getX() - CAPTION_X_OFFSET - REMAINS_FUDGE;
+  int remains = waveform_->getCursorX(index_ + 1) - getX() -
+    CAPTION_X_OFFSET - REMAINS_FUDGE;
 
   caption_->setBounds(getX() + desc().component_width() + CAPTION_X_OFFSET,
                       CAPTION_Y_OFFSET,
@@ -149,7 +151,7 @@ void Cursor::adjustCaption() {
 }
 
 void Cursor::paint(Graphics& g) {
- juce::Rectangle<int> bounds;
+  juce::Rectangle<int> bounds;
   {
     Lock l(lock_);
     bounds = getLocalBounds();
@@ -184,7 +186,8 @@ void Cursor::setCaption(const String& cap) {
 
   float height = caption_->getFont().getHeight() + CAPTION_PADDING * 2;
   bounds.setHeight(static_cast<int>(height));
-  captionWidth_ = caption_->getFont().getStringWidth(caption_->getText());
+  captionWidth_ = caption_->getFont().getStringWidth(caption_->getText()) +
+    CAPTION_INTERNAL_PADDING;
   bounds.setWidth(captionWidth_);
   caption_->setBounds(bounds);
 }
