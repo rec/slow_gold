@@ -4,6 +4,7 @@
 #include <map>
 
 #include "rec/data/TypedEditable.h"
+#include "rec/util/Proto.h"
 #include "rec/util/STL.h"
 
 namespace rec {
@@ -18,7 +19,7 @@ class DataRegistry {
 
   template <typename Proto>
   void registerMaker() {
-    const string& typeName = Proto::default_instance().GetTypeName();
+    const string& typeName = getTypeName<Proto>();
     Registry::iterator i = registry_.find(typeName);
     if (i == registry_.end())
       registry_.insert(i, std::make_pair(typeName, new TypedMaker<Proto>()));

@@ -7,13 +7,6 @@ namespace rec {
 namespace data {
 namespace proto {
 
-const string& getName(const Message& m);
-
-template <typename Proto>
-const string& getName() {
-  return getName(Proto::default_instance());
-}
-
 }  // namespace proto
 }  // namespace data
 }  // namespace rec

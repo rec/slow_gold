@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="FlMQLfL9i" name="Command">
+  <MAINGROUP id="jb4A702qt" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -352,8 +352,6 @@
                 name="FieldOps.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/FieldOps.h" id="IkENm3XZp"
                 name="FieldOps.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/GetProtoName.cpp"
-                id="8YJ1j1HN6" name="GetProtoName.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/GetProtoName.h" id="VlGhza2sZ"
                 name="GetProtoName.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/MessageField.cpp"
@@ -997,6 +995,10 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Platform.h" id="umChgFIaH"
               name="Platform.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/Proto.cpp" id="O0cJVXkKM"
+              name="Proto.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Proto.h" id="q17Xo6y1X"
+              name="Proto.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="Z58jWDkgr"
               name="Range.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/SingleListener.h" id="D884PvN5L"
@@ -1321,7 +1323,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="yKBXgGVlN" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="86DlMrOVv" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

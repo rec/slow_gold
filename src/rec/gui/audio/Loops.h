@@ -30,7 +30,6 @@ class Loops : public component::Focusable<TableController>,
   virtual Cuttable* cuttable() { return cuttable_.get(); }
   virtual void selectedRowsChanged(int lastRowSelected);
 
-
  protected:
   virtual void update();
   virtual String displayText(const TableColumn& col, int row);

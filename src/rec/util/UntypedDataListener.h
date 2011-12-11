@@ -47,6 +47,8 @@ class UntypedDataListener : public Listener<const Message&>,
   const data::Address& address() const { return address_; }
   const string& typeName() const { return typeName_; }
   data::UntypedEditable* data() const { return data_; }
+  Message* clone() const { return data_->clone(); }
+
   bool isEmpty() const { return data_->isEmpty(); }
 
   CriticalSection lock_;

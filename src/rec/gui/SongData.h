@@ -12,30 +12,36 @@
 namespace rec {
 namespace gui {
 
-class SongData : public component::Focusable<SetterTextArea <music::Metadata> >,
+class SongData : public component::Focusable<SetterTextArea>,
                  public Cuttable,
-                 public DataListener<music::Metadata> {
+                 public UntypedDataListener {
  public:
   typedef data::Address Address;
 
   explicit SongData(MenuBarModel* model)
-      : component::Focusable<SetterTextArea<music::Metadata> >(model) {
+    : component::Focusable<SetterTextArea>(model),
+      UntypedDataListener(getTypeName<music::Metadata>()) {
     setName("SongData");
-#if 1
-    add("Track", Address("track_title"), "The name of this track.");
-    add("Album", Address("album_title"),
+    add("Track", typeName(),
+        Address("track_title"), "The name of this track.");
+    add("Album", typeName(),
+        Address("album_title"),
         "The name of the album this track is from.");
-    add("Artist", Address("artist"),
+    add("Artist", typeName(),
+        Address("artist"),
         "The artist or musician who made this specific track");
-    add("Number", Address("track_number"),
+    add("Number", typeName(),
+        Address("track_number"),
         "The album track number for this track");
-    add("Year", Address("year"),
+    add("Year", typeName(),
+        Address("year"),
         "The year that that this track was recorded.");
-    add("Genre", Address("genre"),
+    add("Genre", typeName(),
+        Address("genre"),
         "Tags that categorize this track.");
-    add("Notes", Address("notes"), "Your notes here.")->
+    add("Notes", typeName(),
+        Address("notes"), "Your notes here.")->
         editor()->setMultiLine(true, true);
-#endif
   }
 
   virtual bool canCopy() const { return true; }
@@ -44,7 +50,7 @@ class SongData : public component::Focusable<SetterTextArea <music::Metadata> >,
   virtual bool paste(const string&) { return false; }
   virtual const string cuttableName() const { return "SongData"; }
   virtual string copy() const {
-    return yaml::write(getProto());
+    return yaml::write(*ptr<Message>(clone()));
   }
   virtual void cut() {}
 

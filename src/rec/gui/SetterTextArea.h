@@ -9,22 +9,22 @@
 namespace rec {
 namespace gui {
 
-template <typename Proto>
 class SetterTextArea : public Layout {
  public:
   SetterTextArea(const String& name = String::empty) : Layout(name, VERTICAL) {}
 
   ~SetterTextArea() { stl::deletePointers(&components_); }
 
-  SetterText<Proto>* text(int i) {
-    return static_cast<SetterText<Proto>*>(components_[i]);
+  SetterText* text(int i) {
+    return static_cast<SetterText*>(components_[i]);
   }
 
-  SetterText<Proto>* add(const String& name,
-                         const data::Address& addr,
-                         const String& tip = String::empty,
-                         const String& caption = String::empty) {
-    SetterText<Proto>* text = new SetterText<Proto>(name, addr, tip, caption);
+  SetterText* add(const String& name,
+                  const string& typeName,
+                  const data::Address& addr,
+                  const String& tip = String::empty,
+                  const String& caption = String::empty) {
+    SetterText* text = new SetterText(name, str(typeName), addr, tip, caption);
     addToLayout(text, 12, 20, 20);
     return text;
   }

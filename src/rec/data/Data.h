@@ -21,12 +21,12 @@ const string emptyTypeName();
 // TODO: get rid of this.
 template <typename Proto>
 File editableFile(const VirtualFile& vf = file::none()) {
-  return editableFile(Proto::default_instance().GetTypeName(), &vf);
+  return editableFile(getTypeName<Proto>(), &vf);
 }
 
 template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile* vf) {
-  const string& typeName = Proto::default_instance().GetTypeName();
+  const string& typeName = getTypeName<Proto>();
   UntypedEditable* e = editable(typeName, vf);
   DCHECK(e);
   TypedEditable<Proto>* te = dynamic_cast<TypedEditable<Proto>*>(e);

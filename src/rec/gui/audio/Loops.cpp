@@ -113,13 +113,13 @@ void Loops::update() {
 
 using data::Address;
 
-class LoopsSetterText : public SetterText<LoopPointList> {
+class LoopsSetterText : public SetterText {
  public:
   explicit LoopsSetterText(int row, const TableColumn& col)
-      : SetterText<LoopPointList>("LoopsSetterText",
-                                  "loop_point" +
-                                  Address(row) + col.address(),
-                                  "", "", false) {
+      : SetterText("LoopsSetterText",
+                   str(getTypeName<LoopPointList>()),
+                   "loop_point" + Address(row) + col.address(),
+                   "", "", false) {
 
   }
 

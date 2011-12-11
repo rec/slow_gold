@@ -12,18 +12,18 @@ namespace gui {
 
 static const int CAPTION_SIZE = 50;
 
-template <typename Proto>
 class SetterText : public Layout,
-                   public DataListener<Proto>,
+                   public UntypedDataListener,
                    public TextEditor::Listener {
  public:
   SetterText(const String& name,
+             const String& typeName,
              const data::Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty,
              bool useCaption = true)
       : Layout(name, HORIZONTAL),
-        DataListener<Proto>(address),
+        UntypedDataListener(str(typeName), address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {
     DCHECK(name.length());
@@ -68,7 +68,7 @@ class SetterText : public Layout,
   }
 
  protected:
-  virtual void onDataChange(const Proto&) {
+  virtual void onDataChange(const Message&) {
     const data::Value v = this->getValue();
     if (v.has_string_f() && str(v.string_f()) != editor_.getText())
       thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));

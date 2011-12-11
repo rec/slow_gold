@@ -349,9 +349,6 @@
     <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp">
       <Filter>Command\rec\data\proto</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\GetProtoName.cpp">
-      <Filter>Command\rec\data\proto</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\MessageField.cpp">
       <Filter>Command\rec\data\proto</Filter>
     </ClCompile>
@@ -729,6 +726,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp">
       <Filter>Command\rec\util\partition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Proto.cpp">
+      <Filter>Command\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
       <Filter>Command\rec\util\thread</Filter>
@@ -1714,6 +1714,9 @@
       <Filter>Command\rec\util\partition</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Platform.h">
+      <Filter>Command\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Proto.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h">
