@@ -19,17 +19,17 @@ class EmptyCuttable : public Cuttable {
 };
 
 static EmptyCuttable EMPTY;
-static Cuttable* DEFAULT_CUTTABLE = &EMPTY;
+static HasCuttable* DEFAULT_CUTTABLE = &EMPTY;
 
 Cuttable* current() {
   Component* c = Component::getCurrentlyFocusedComponent();
-  if (Cuttable* cuttable = dynamic_cast<Cuttable*>(c)) {
+  if (HasCuttable* cuttable = dynamic_cast<Cuttable*>(c)) {
     DLOG(INFO) << "Cuttable component " << str(c->getName());
-    return cuttable;
+    return cuttable->cuttable();
   }
 
   DLOG(INFO) << "Not cuttable " << (c ? c->getName() : "NONE");
-  return DEFAULT_CUTTABLE;
+  return DEFAULT_CUTTABLE->cuttable();
 }
 
 }  // namespace
@@ -101,7 +101,7 @@ const string cuttableName() {
   return current()->cuttableName();
 }
 
-void setDefaultCuttable(Cuttable* c) {
+void setDefaultCuttable(HasCuttable* c) {
   DEFAULT_CUTTABLE = c;
 }
 

@@ -15,10 +15,21 @@ bool canCut();
 bool canPaste();
 const string cuttableName();
 
-class Cuttable  {
+class Cuttable;
+
+class HasCuttable {
+ public:
+  HasCuttable() {}
+  virtual ~HasCuttable() {}
+  virtual Cuttable* cuttable() = 0;
+};
+
+class Cuttable : public HasCuttable {
  public:
   Cuttable() {}
   virtual ~Cuttable() {}
+
+  virtual Cuttable* cuttable() { return this; }
 
   virtual bool canCopy() const = 0;
   virtual bool canCut() const = 0;
@@ -29,7 +40,7 @@ class Cuttable  {
   virtual void cut() = 0;
 };
 
-void setDefaultCuttable(Cuttable*);
+void setDefaultCuttable(HasCuttable*);
 
 
 }  // namespace util
