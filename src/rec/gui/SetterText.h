@@ -26,6 +26,7 @@ class SetterText : public Layout,
         DataListener<Proto>(address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {
+    DCHECK(name.length());
     setTooltip(tip.length() ? tip : (caption.length() ? caption : name));
     if (useCaption) {
       const String& cap = caption.length() ? caption : name;

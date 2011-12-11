@@ -21,17 +21,21 @@ class EmptyCuttable : public Cuttable {
 static EmptyCuttable EMPTY;
 static Cuttable* DEFAULT_CUTTABLE = &EMPTY;
 
-
 Cuttable* current() {
   Component* c = Component::getCurrentlyFocusedComponent();
-  if (Cuttable* cuttable = dynamic_cast<Cuttable*>(c))
+  if (Cuttable* cuttable = dynamic_cast<Cuttable*>(c)) {
+    DLOG(INFO) << "Cuttable component " << str(c->getName());
     return cuttable;
+  }
+
+  DLOG(INFO) << "Not cuttable " << (c ? c->getName() : "NONE");
   return DEFAULT_CUTTABLE;
 }
 
 }  // namespace
 
 bool cutToClipboard() {
+  DLOG(INFO) << "cutToClipboard";
   Cuttable* c = current();
   if (!c->canCut()) {
     beep();
@@ -84,10 +88,18 @@ bool cutNoClipboard() {
 bool canCopy() {
   return current()->canCopy();
 }
-bool canCut() { return current()->canCut(); }
-bool canPaste() { return current()->canPaste(); }
 
-const string cuttableName() { return current()->cuttableName(); }
+bool canCut() {
+  return current()->canCut();
+}
+
+bool canPaste() {
+  return current()->canPaste();
+}
+
+const string cuttableName() {
+  return current()->cuttableName();
+}
 
 void setDefaultCuttable(Cuttable* c) {
   DEFAULT_CUTTABLE = c;

@@ -121,11 +121,12 @@ bool Loops::canCut() const {
   LoopPointList lpl = getSelected(loops_, true);
   int size = lpl.loop_point_size();
   bool can = (size > 1) || (size == 1 && lpl.loop_point(0).has_time());
-  // DLOG(INFO) << "Can: " << (can ? "true" : "false");
+  DLOG(INFO) << "Can: " << (can ? "true" : "false");
   return can;
 }
 
 void Loops::cut() {
+  DLOG(INFO) << "cut: ";
   bool firstWasSelected = loops_.loop_point(0).selected();
   if (loops_.loop_point_size())
     loops_.mutable_loop_point(0)->set_selected(false);
@@ -153,7 +154,7 @@ using data::Address;
 class LoopsSetterText : public SetterText<LoopPointList> {
  public:
   explicit LoopsSetterText(int row, const TableColumn& col)
-      : SetterText<LoopPointList>("",
+      : SetterText<LoopPointList>("LoopsSetterText",
                                   "loop_point" +
                                   Address(row) + col.address(),
                                   "", "", false) {

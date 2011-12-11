@@ -18,16 +18,13 @@ class Focusable : public Type {
 
   virtual ~Focusable() {}
 
-  virtual void focusGained(Component::FocusChangeType) {
-    menuBarModel_->menuItemsChanged();
-    this->repaint();
-  }
-
-  virtual void focusLost(Component::FocusChangeType t) { focusGained(t); }
+  virtual void focusGained(Component::FocusChangeType) { doFocus(); }
+  virtual void focusLost(Component::FocusChangeType t) { doFocus(); }
 
   virtual void paintFocus(Graphics& g) {
     if (this->hasKeyboardFocus(true) ||
         Component::getCurrentlyFocusedComponent() == this) {
+      DLOG(INFO) << "hasFocus: " << str(this->getName());
       g.setColour(juce::Colours::red.withAlpha(0.8f));
       g.drawRect(this->getLocalBounds());
     }
@@ -36,6 +33,12 @@ class Focusable : public Type {
   virtual void paintOverChildren(Graphics& g) { paintFocus(g); }
 
  private:
+  void doFocus() {
+    DLOG(INFO) << "Focus: " << str(this->getName());
+    menuBarModel_->menuItemsChanged();
+    this->repaint();
+  }
+
   MenuBarModel* menuBarModel_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Focusable);
