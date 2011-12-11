@@ -48,7 +48,8 @@ TransformController::TransformController()
                   Address("semitone_shift")),
       fineScale_(TUNE_BUTTON_TEXT, getTypeName<Stretch>(),
                  Address("detune_cents")),
-      enableButton_(TRANSFORM_BUTTON_TEXT, Address("enabled")),
+      enableButton_(TRANSFORM_BUTTON_TEXT, getTypeName<Stretch>(),
+                    Address("enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL) {
   playbackSpeed_.slider()->setRange(0.5, 200.0, 1.0);

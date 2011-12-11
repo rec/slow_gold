@@ -33,7 +33,7 @@ TransportController::TransportController(TimeController* timeController)
       startStopButton_("Start/stop", juce::DrawableButton::ImageFitted),
       jumpToStartButton_("Jump to start", juce::DrawableButton::ImageFitted),
       level_("Gain", getTypeName<Gain>(), data::Address("gain")),
-      muteButton_(MUTE_BUTTON_TEXT, data::Address("mute")) {
+      muteButton_(MUTE_BUTTON_TEXT, getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
   jumpToStartButton_.setImages(ptr<Drawable>(icon::ZoomIn::create()).get());

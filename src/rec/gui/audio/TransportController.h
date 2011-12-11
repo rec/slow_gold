@@ -51,7 +51,7 @@ class TransportController : public Layout,
   DrawableButton jumpToStartButton_;
   LevelMeter levelMeter_;
   DataSlider level_;
-  gui::SetterToggle<rec::audio::Gain> muteButton_;
+  gui::SetterToggle muteButton_;
 
   juce::Label filler_;
   Samples<44100> time_;

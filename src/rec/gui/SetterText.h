@@ -4,7 +4,7 @@
 #include "rec/data/Value.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/gui/SimpleLabel.h"
-#include "rec/util/DataListener.h"
+#include "rec/util/UntypedDataListener.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {

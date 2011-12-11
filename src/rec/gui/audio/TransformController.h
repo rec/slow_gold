@@ -34,7 +34,7 @@ class TransformController : public Layout,
   DataSlider pitchScale_;
   DataSlider fineScale_;
 
-  gui::SetterToggle<rec::audio::stretch::Stretch> enableButton_;
+  gui::SetterToggle enableButton_;
 
   juce::ComboBox stereoComboBox_;
   Layout leftPanel_;
