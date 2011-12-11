@@ -22,7 +22,9 @@ class Loops : public component::Focusable<TableController>,
               public Cuttable {
  public:
   explicit Loops(MenuBarModel* menus, const TableColumnList* desc = NULL,
-                const data::Address& address = data::Address("loop_point"));
+                 const data::Address& partAddress = data::Address("loop_point"),
+                 const data::Address& baseAddress =
+                 data::Address::default_instance());
   virtual ~Loops();
 
   virtual Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected,
@@ -51,6 +53,7 @@ class Loops : public component::Focusable<TableController>,
 
  private:
   LoopPointList loops_;
+  data::Address partAddress_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Loops);
 };

@@ -29,16 +29,18 @@ using rec::audio::getSelected;
 static Def<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
 "column { "
-"type: STRING "
-"name: \"Name\" "
-"address { part { name: \"name\" } } "
-"width: 170 "
+"  type: STRING "
+"  name: \"Name\" "
+"  address { part { name: \"name\" } } "
+"  width: 170 "
 "} "
 );
 
-Loops::Loops(MenuBarModel* menus, const TableColumnList* desc, const Address& a)
+Loops::Loops(MenuBarModel* menus, const TableColumnList* desc,
+             const Address& partAddress, const Address& baseAddress)
     : component::Focusable<TableController>(menus),
-      DataListener<LoopPointList>(a) {
+      DataListener<LoopPointList>(baseAddress),
+      partAddress_(partAddress) {
   initialize(dflt.get(desc), "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
@@ -67,7 +69,7 @@ static String getDisplayText(const Value& v, const TableColumn& col, Samples<441
 }
 
 String Loops::displayText(const TableColumn& col, int rowIndex) {
-  Address row = Address(rowIndex) + col.address();
+  Address row = partAddress_ + Address(rowIndex) + col.address();
   return getDisplayText(getValue(row), col, Samples<44100>(loops_.length()));
 }
 
