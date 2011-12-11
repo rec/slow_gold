@@ -38,11 +38,16 @@ const char* const CENTS_TEXT = " cents";
 
 }  // namespace
 
+using rec::audio::stretch::Stretch;
+
 TransformController::TransformController()
     : Layout("TransformController", HORIZONTAL),
-      playbackSpeed_(SPEED_BUTTON_TEXT, Address("time_percent")),
-      pitchScale_(PITCH_BUTTON_TEXT, Address("semitone_shift")),
-      fineScale_(TUNE_BUTTON_TEXT, Address("detune_cents")),
+      playbackSpeed_(SPEED_BUTTON_TEXT, getTypeName<Stretch>(),
+                     Address("time_percent")),
+      pitchScale_(PITCH_BUTTON_TEXT, getTypeName<Stretch>(),
+                  Address("semitone_shift")),
+      fineScale_(TUNE_BUTTON_TEXT, getTypeName<Stretch>(),
+                 Address("detune_cents")),
       enableButton_(TRANSFORM_BUTTON_TEXT, Address("enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL) {

@@ -11,17 +11,17 @@
 namespace rec {
 namespace gui {
 
-template <typename Proto, typename Type>
 class DataSlider : public Layout,
-                   public DataListener<Proto>,
+                   public UntypedDataListener,
                    public juce::Slider::Listener {
  public:
   DataSlider(const String& name,
-                const data::Address& address,
-                const String& caption = String::empty,
-                const String& tip = String::empty)
+             const string& typeName,
+             const data::Address& address,
+             const String& caption = String::empty,
+             const String& tip = String::empty)
     : Layout(name, HORIZONTAL, true),
-      DataListener<Proto>(address),
+      UntypedDataListener(typeName, address),
       slider_(name),
       caption_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
@@ -47,19 +47,18 @@ class DataSlider : public Layout,
   }
 
   virtual void sliderValueChanged(Slider*) {
-    this->setValue(static_cast<Type>(slider_.getValue()));
+    this->setValue(static_cast<double>(slider_.getValue()));
   }
 
-  virtual void onDataChange(const Proto&) {
-    const data::Value value = this->getValue();
-    thread::callAsync(this, &DataSlider<Proto, Type>::setSliderValue,
-                      value.get<Type>());
+  virtual void onDataChange(const Message&) {
+    thread::callAsync(this, &DataSlider::setSliderValue, 
+                      getValue().get<double>());
   }
 
   DetentSlider* slider() { return &slider_; }
 
  protected:
-  void setSliderValue(Type value) { slider_.setValue(value, false); }
+  void setSliderValue(double value) { slider_.setValue(value, false); }
 
   DetentSlider slider_;
   SimpleLabel caption_;

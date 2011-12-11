@@ -23,6 +23,8 @@ const char* const MUTE_BUTTON_TEXT = "Mute";
 
 }  // namespace
 
+using rec::audio::Gain;
+
 TransportController::TransportController(TimeController* timeController)
     : Layout("TransportController", VERTICAL),
       timeController_(timeController),
@@ -30,7 +32,7 @@ TransportController::TransportController(TimeController* timeController)
       gainLayout_("Gain", HORIZONTAL),
       startStopButton_("Start/stop", juce::DrawableButton::ImageFitted),
       jumpToStartButton_("Jump to start", juce::DrawableButton::ImageFitted),
-      level_("Gain", data::Address("gain")),
+      level_("Gain", getTypeName<Gain>(), data::Address("gain")),
       muteButton_(MUTE_BUTTON_TEXT, data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
