@@ -4,7 +4,6 @@
 
 #include "rec/base/Samples.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/data/yaml/Yaml.h"
 #include "rec/gui/SetterText.h"
 #include "rec/gui/audio/LoopsCuttable.h"
 #include "rec/util/Defaulter.h"
