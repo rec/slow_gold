@@ -46,7 +46,7 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
       return;
   }
 
-#if 1
+#if 0
   DLOG(INFO) << "add: " << e->toString() << "\n"
              << operations.ShortDebugString() << "\n"
              << undo.ShortDebugString();
@@ -67,19 +67,12 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
     preUndoSize_ = executedSize_ = queue_.size();
   }
   broadcast(None());
+
+  // DLOG(INFO) << "undoable:" << undoable() << ", undoes:" << undoes();
 }
 
-void UndoQueue::undo() {
-  if (undoable())
-    doOrRedo(Action::UNDO);
-}
-
-void UndoQueue::redo() {
-  if (undoes_)
-    doOrRedo(Action::REDO);
-}
-
-void UndoQueue::doOrRedo(Action::Type type) {
+void UndoQueue::redoOrUndo(Action::Type type) {
+  DLOG(INFO) << "undoable:" << undoable() << ", undoes:" << undoes();
   DCHECK(type == Action::UNDO || type == Action::REDO);
   int td = (type == Action::REDO) ? 1 : -1;
 
@@ -137,6 +130,7 @@ void UndoQueue::doOrRedo(Action::Type type) {
 
   editable->onDataChange();
   broadcast(None());
+  DLOG(INFO) << "undoable:" << undoable() << ", undoes:" << undoes();
 }
 
 bool UndoQueue::write(bool finish) {

@@ -8,12 +8,13 @@
 namespace rec {
 namespace data {
 
-static const uint64 MAX_GROUP_TIME = 1000;
+static const uint64 MAX_GROUP_TIME = 10000;
+static const bool BREAK_GROUPS_BY_TIME = true;
 
 bool groupCloseActions(Action* t, const Action* f, const Editable* e) {
   uint64 ts = f ? f->timestamp() : juce::Time::currentTimeMillis();
 
-  if (!near(t->timestamp(), ts, MAX_GROUP_TIME))
+  if (BREAK_GROUPS_BY_TIME && !near(t->timestamp(), ts, MAX_GROUP_TIME))
     return false;
 
   if (!f)

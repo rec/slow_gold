@@ -35,6 +35,7 @@ const int MIN_NAV_PANEL = 100;
 const double MIN_RESIZER = 7.0;
 const int MIN_WAVEFORM = 150;
 const int MIN_PLAYBACK_PANEL = 90;
+const int MIN_HELP_PANEL = 125;
 
 template <typename Type>
 void add(gui::Layout* layout, Type* t, double min, double max, double pref) {
@@ -95,7 +96,7 @@ MainPage::MainPage(Components* components, data::Editable* e)
                          "is over.");
   helpPanel_->setColour(juce::Label::textColourId, juce::Colours::darkgreen);
   helpPanel_->setJustificationType(juce::Justification::centredLeft);
-  add(&playbackPanel_, helpPanel_.get(), 75, -1.0, -0.20);
+  add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
   add(&playbackPanel_, &helpResizer_, 5.0);
   add(&playbackPanel_, components->transformController_, 180, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);

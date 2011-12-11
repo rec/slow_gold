@@ -120,7 +120,9 @@ bool Loops::canCut() const {
   Lock l(TableController::lock_);
   LoopPointList lpl = getSelected(loops_, true);
   int size = lpl.loop_point_size();
-  return (size > 1) || (size == 1 && lpl.loop_point(0).has_time());
+  bool can = (size > 1) || (size == 1 && lpl.loop_point(0).has_time());
+  // DLOG(INFO) << "Can: " << (can ? "true" : "false");
+  return can;
 }
 
 void Loops::cut() {
@@ -132,6 +134,7 @@ void Loops::cut() {
     loops.mutable_loop_point(0)->set_selected(firstWasSelected);
 
   loops_ = loops;
+  DLOG(INFO) << loops.ShortDebugString();
   setValue(loops_);
 }
 

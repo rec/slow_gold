@@ -32,15 +32,16 @@ class UndoQueue : public Broadcaster<None> {
   int undoable() const { Lock l(lock_); return preUndoSize_ - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
-  void undo();
-  void redo();
+  void undo() { if (undoable()) redoOrUndo(Action::UNDO); }
+  void redo() { if (undoes_) redoOrUndo(Action::REDO); }
+
   void start();
   void stop();
 
   bool write(bool finish = false);
 
  private:
-  void doOrRedo(Action::Type);
+  void redoOrUndo(Action::Type);
 
   typedef std::vector<Action*> ActionQueue;
 
