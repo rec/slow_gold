@@ -131,14 +131,14 @@ void MouseListener::mouseDown(const MouseEvent& e) {
 
 void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
   if (cursor->isTimeCursor()) {
-    cursorDrag_.begin_ = 0;
-    cursorDrag_.end_ = length();
+    cursorRestrict_.begin_ = 0;
+    cursorRestrict_.end_ = length();
   } else {
     int i = cursor->index();
     LoopPointList loops = data::get<LoopPointList>(file());
-    cursorDrag_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) + DRAG_PAD;
-    cursorDrag_.end_ = -DRAG_PAD + ((i == loops.loop_point_size() - 1) ?
-                                    loops.length() : loops.loop_point(i + 1).time());
+    cursorRestrict_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) + DRAG_PAD;
+    cursorRestrict_.end_ = -DRAG_PAD + ((i == loops.loop_point_size() - 1) ?
+                                        loops.length() : loops.loop_point(i + 1).time());
   }
 }
 
@@ -147,7 +147,9 @@ void MouseListener::dragCursor(const MouseEvent& e,
   Waveform* waveform = cursor->waveform();
   components()->waveform_->setIsDraggingCursor(true);
   if (!near(cursor->getTime(), 0, 44)) {
-    Samples<44100> t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
+    DLOG(INFO) << e.x << ", " << e.getDistanceFromDragStartX() << ", " << e.getMouseDownX()
+               << ", " << cursor->getX();
+    Samples<44100> t = cursorRestrict_.restrict(waveform->xToTime(e.getDistanceFromDragStartX() + cursor->getX()));
     if (cursor->setDragTime(t))
       currentTime()->setCursorTime(t, cursor->index(), cursor->isTimeCursor());
   }

@@ -46,7 +46,7 @@ class MouseListener : public HasInstance,
 
   Samples<44100> waveformDragStart_;
   ModifierKeys dragMods_;
-  Range<Samples<44100> > cursorDrag_;
+  Range<Samples<44100> > cursorRestrict_;
   Mode mode_;
   Mode previousMode_;
 
