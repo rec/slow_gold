@@ -20,24 +20,17 @@ const int PADDING = 4;
 CommandBar::CommandBar()
     : Layout("CommandBar", HORIZONTAL),
       addLoopPoint_("CreateNow", DrawableButton::ImageFitted),
-      addLoopPointClick_("CreateClick", DrawableButton::ImageFitted),
       zoomOut_("Zoom out", DrawableButton::ImageFitted),
       zoomToSelection_("Zoom To Selection", DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
 
   addLoopPoint_.addListener(this);
-  addLoopPointClick_.addListener(this);
   zoomOut_.addListener(this);
   zoomToSelection_.addListener(this);
 
   addLoopPoint_.setImages(
       ptr<Drawable>(icon::MediaPlay::create()).get(), NULL,
       ptr<Drawable>(icon::MediaRecord::create()).get());
-
-  addLoopPointClick_.setImages(
-      ptr<Drawable>(icon::MediaPlay::create()).get(), NULL,
-      ptr<Drawable>(icon::MediaRecord::create()).get());
-
 
   zoomOut_.setImages(ptr<Drawable>(icon::FullScreen::create()).get(),
                      NULL,
@@ -48,13 +41,11 @@ CommandBar::CommandBar()
                              ptr<Drawable>(icon::FullScreenRev::create()).get());
 
   addLoopPoint_.setTooltip("Add a loop point at the current time.");
-  addLoopPointClick_.setTooltip("Add a loop point by clicking on the waveform.");
   zoomOut_.setTooltip("Zoom the waveform out one step.");
   zoomToSelection_.setTooltip("Zoom in or out so the whole selection "
                               "fits the waveform");
 
   addToLayout(&addLoopPoint_, BUTTON_SIZE);
-  addToLayout(&addLoopPointClick_, BUTTON_SIZE);
   addToLayout(&zoomOut_, BUTTON_SIZE);
   addToLayout(&zoomToSelection_, BUTTON_SIZE);
 
@@ -67,9 +58,6 @@ CommandBar::CommandBar()
 void CommandBar::buttonClicked(juce::Button *button) {
   if (button == &addLoopPoint_)
     broadcast(command::Command::ADD_LOOP_POINT);
-
-  else if (button == &addLoopPointClick_)
-    broadcast(command::Command::ADD_LOOP_POINT_CLICK);
 
   else if (button == &zoomOut_)
     broadcast(command::Command::ZOOM_OUT);

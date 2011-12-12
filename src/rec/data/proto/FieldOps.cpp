@@ -114,8 +114,8 @@ bool copyTo(const MessageField& f, ValueProto* value) {
   if (f.index_ >= 0)
     return typer::copyTo(*f.message_, f.field_, f.index_, value);
 
-  // TODO:  should be DFATAL
-  LOG(ERROR) << "copyTo failed with no index " << (f.message_ ? f.message_->GetTypeName() : "NO MESSAGE");
+  LOG(DFATAL) << "copyTo failed with no index: "
+              << (f.message_ ? f.message_->GetTypeName() : "NO MESSAGE");
   return false;
 }
 

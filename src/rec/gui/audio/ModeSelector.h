@@ -31,14 +31,18 @@ class ModeSelector : public Layout,
   virtual juce::Point<int> getMinSize() const { return minSize_; }
 
  private:
+  CriticalSection lock_;
+
   DrawableButton drag_;
   DrawableButton setTime_;
   DrawableButton toggleSelection_;
   DrawableButton zoomIn_;
+  DrawableButton addLoopPointClick_;
 
   juce::Point<int> minSize_;
 
   ButtonMap buttons_;
+  Mode mode_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(ModeSelector);
 };

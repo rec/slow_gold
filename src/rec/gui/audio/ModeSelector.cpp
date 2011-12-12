@@ -3,6 +3,7 @@
 #include "rec/data/Value.h"
 #include "rec/gui/icon/Crosshairs.svg.h"
 #include "rec/gui/icon/DraggingHand.svg.h"
+#include "rec/gui/icon/MediaRecord.svg.h"
 #include "rec/gui/icon/Pencil.svg.h"
 #include "rec/gui/icon/PointingHand.svg.h"
 #include "rec/gui/icon/ZoomIn.svg.h"
@@ -14,6 +15,7 @@ using namespace juce;
 static const bool ENABLE_SHIFTS = false;
 static const int BUTTON_SIZE = 16;
 static const int PADDING = 4;
+static const int BUTTON_COUNT = 5;
 
 namespace rec {
 namespace gui {
@@ -43,7 +45,8 @@ ModeSelector::ModeSelector()
       drag_("Drag", DrawableButton::ImageFitted),
       setTime_("setTime", DrawableButton::ImageFitted),
       toggleSelection_("toggleSelection", DrawableButton::ImageFitted),
-      zoomIn_("zoomIn", DrawableButton::ImageFitted) {
+      zoomIn_("zoomIn", DrawableButton::ImageFitted),
+      addLoopPointClick_("CreateClick", DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
 
   setImage<DraggingHand>(this, &drag_, Mode::DRAG,
@@ -56,7 +59,11 @@ ModeSelector::ModeSelector()
   setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN,
                    "Zoom mode: clicking on the waveform zooms in on that point.");
 
-  minSize_ = juce::Point<int>(4 * BUTTON_SIZE + 5 * PADDING,
+  setImage<MediaRecord>(this, &addLoopPointClick_, Mode::DRAW_LOOP_POINTS,
+                        "Add loop point mode: clicking on the waveform creates a loop point.");
+
+  minSize_ = juce::Point<int>(BUTTON_COUNT * BUTTON_SIZE +
+                              (BUTTON_COUNT + 1) * PADDING,
                               BUTTON_SIZE + 2 * PADDING);
   setBounds(0, 0, minSize_.getX(), minSize_.getY());
 }
@@ -67,7 +74,10 @@ DrawableButton* ModeSelector::getButton(const Mode::Action& action) {
 }
 
 void ModeSelector::onDataChange(const Mode& mode) {
-  DLOG(INFO) << "onDataChange: " << mode.ShortDebugString();
+  {
+    Lock l(lock_);
+    mode_ = mode;
+  }
   const Mode::Action action = mode.click();
   MessageManagerLock l;
   for (ButtonMap::iterator i = buttons_.begin(); i != buttons_.end(); ++i)
