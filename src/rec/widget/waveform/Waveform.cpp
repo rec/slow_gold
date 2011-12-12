@@ -20,6 +20,13 @@ namespace waveform {
 
 namespace {
 
+static const int GRID_TEXT_WIDTH = 50;
+static const int GRID_TEXT_HEIGHT = 9;
+static const int GRID_TEXT_PAD = 4;
+static const int CURSOR_LABEL_HEIGHT = 20;
+static const int MODE_SELECTOR_OFFSET = 5;
+static const int COMMAND_BAR_OFFSET = 3;
+
 static const int64 SMALLEST_TIME_SAMPLES = 10000;
 
 Def<CursorProto> timeDesc(
@@ -231,16 +238,31 @@ void Waveform::layout() {
     }
 
     if (ms) {
+      int dy = MODE_SELECTOR_OFFSET;
+      if (desc_.show_times_at_top() == desc_.modes_at_top())
+        dy += GRID_TEXT_HEIGHT;
+      if (desc_.show_labels_at_top() == desc_.modes_at_top())
+        dy += CURSOR_LABEL_HEIGHT;
       int x = desc_.modes_at_left() ? 0 : (getWidth() - ms->getWidth());
-      int y = desc_.modes_at_top() ? 0 : (getHeight() - ms->getHeight());
+      int y = desc_.modes_at_top() ? dy : (getHeight() - ms->getHeight() - dy);
       ms->setTopLeftPosition(x, y);
     } else {
       LOG(DFATAL) << "No mode selector";
     }
 
     if (cb) {
+      int dy = COMMAND_BAR_OFFSET;
+      if (desc_.show_times_at_top() == desc_.command_bar_at_top())
+        dy += GRID_TEXT_HEIGHT;
+      if (desc_.show_labels_at_top() == desc_.command_bar_at_top())
+        dy += CURSOR_LABEL_HEIGHT;
+      if (ms && desc_.modes_at_top() == desc_.command_bar_at_top() &&
+          desc_.modes_at_left() == desc_.command_bar_at_left()) {
+        dy += (ms->getHeight() + MODE_SELECTOR_OFFSET);
+      }
+
       int x = desc_.command_bar_at_left() ? 0 : (getWidth() - cb->getWidth());
-      int y = desc_.command_bar_at_top() ? 0 : (getHeight() - cb->getHeight());
+      int y = desc_.command_bar_at_top() ? dy : (getHeight() - cb->getHeight()) - dy;
       cb->setTopLeftPosition(x, y);
     } else {
       LOG(DFATAL) << "No command bar";
@@ -336,14 +358,12 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
     }
 
     String s = formatTime(time, length_, false, false, decimals);
-    static const int WIDTH = 50;
-    static const int HEIGHT = 10;
-    static const int PAD = 4;
     g.setColour(juce::Colours::black);
-    g.drawText(s, i ? x - WIDTH / 2 : x - WIDTH / 4,
-               desc_.show_times_at_top() ? PAD : (h - PAD - HEIGHT),
-               WIDTH,
-               HEIGHT,
+    g.drawText(s, i ? x - GRID_TEXT_WIDTH / 2 : x - GRID_TEXT_WIDTH / 4,
+               desc_.show_times_at_top() ? GRID_TEXT_PAD :
+               (h - GRID_TEXT_PAD - GRID_TEXT_HEIGHT),
+               GRID_TEXT_WIDTH,
+               GRID_TEXT_HEIGHT,
                Justification::centred, true);
   }
 }

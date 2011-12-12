@@ -63,7 +63,7 @@ class Cursor : public Component,
   ptr<OutlinedCursorLabel> caption_;
   int captionWidth_;
   bool showSelection_;
-  WaveformProto waveformDesc_;
+  WaveformProto waveDesc_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);
 };

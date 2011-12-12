@@ -21,6 +21,8 @@ static const int CAPTION_Y_OFFSET = 6;
 static const int REMAINS_FUDGE = 8;
 static const int SELECTION_BUTTON_PADDING = -2;
 
+static const int GRID_TEXT_HEIGHT = 9;  // from Waveform.cpp
+
 namespace widget {
 namespace waveform {
 
@@ -141,8 +143,11 @@ void Cursor::adjustCaption() {
   int remains = waveform_->getCursorX(index_ + 1) - getX() -
     CAPTION_X_OFFSET - REMAINS_FUDGE;
   int captionHeight = caption_->getHeight();
-  int y = waveformDesc_.show_labels_at_top() ? CAPTION_Y_OFFSET :
-    getHeight() - CAPTION_Y_OFFSET - captionHeight;
+  int dy = ((waveDesc_.show_times_at_top() == waveDesc_.show_labels_at_top()) ?
+            GRID_TEXT_HEIGHT : 0) + CAPTION_Y_OFFSET;
+
+  int y = waveDesc_.show_labels_at_top() ? dy :
+    (getHeight() - dy - captionHeight);
   int x = getX() + desc().component_width() + CAPTION_X_OFFSET;
   caption_->setBounds(x, y, std::min(captionWidth_, remains), captionHeight);
 
@@ -213,7 +218,7 @@ void Cursor::selectButtonPressed(bool select) {
 
 void Cursor::onDataChange(const WaveformProto& wp) {
   Lock l(lock_);
-  waveformDesc_ = wp;
+  waveDesc_ = wp;
   thread::callAsync(this, &Cursor::layout);
 }
 
