@@ -98,7 +98,7 @@ void CurrentTime::jumpToTime(Samples<44100> pos) {
   using audio::util::FillableFrameBuffer;
   {
     Lock l(lock_);
-    if (!block::contains(timeSelection(), pos)) {
+    if (!(timeSelection_.empty() || block::contains(timeSelection(), pos))) {
       LOG(ERROR) << "Tried to jump to position outside selection " << pos;
       return;
     }
