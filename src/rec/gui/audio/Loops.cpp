@@ -159,7 +159,11 @@ Component* Loops::refreshComponentForCell(int row, int column,
         lst->setTooltip("This is the name of the loop, and you can edit "
                         "it by clicking here.");
         existing = lst.transfer();
+#ifdef REQUEST_UPDATES_IN_THREAD
         UpdateRequester::requestAllUpdates();
+#else
+        thread::callAsync(UpdateRequester::requestAllUpdates);
+#endif
       }
     }
   }

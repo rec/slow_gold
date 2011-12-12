@@ -20,6 +20,7 @@ namespace rec {
 namespace slow {
 
 static const int DRAG_PAD = 22050;
+static const int DRAG_TWEAK = 5;
 
 using namespace rec::audio;
 using namespace rec::gui::audio;
@@ -148,7 +149,7 @@ void MouseListener::dragCursor(const MouseEvent& e,
   Waveform* waveform = cursor->waveform();
   components()->waveform_->setIsDraggingCursor(true);
   if (!near(cursor->getTime(), 0, 44)) {
-    int cursorX = e.getDistanceFromDragStartX() + cursorDragStart_;
+    int cursorX = e.getDistanceFromDragStartX() + cursorDragStart_ + DRAG_TWEAK;
     Samples<44100> t = cursorRestrict_.restrict(waveform->xToTime(cursorX));
     if (cursor->setDragTime(t))
       currentTime()->setCursorTime(t, cursor->index(), cursor->isTimeCursor());

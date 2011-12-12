@@ -27,6 +27,7 @@ class Cursor : public Component,
   virtual ~Cursor();
   virtual void labelTextChanged(juce::Label*);
 
+  void setText(const String&);
   void setSelected(bool);
 
   void paint(Graphics& g);

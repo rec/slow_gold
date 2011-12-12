@@ -38,13 +38,12 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
 
   if (hasCaption) {
     waveform_->addAndMakeVisible(caption_.get(), 0);
-    caption_->setEditable(true, false, false);
     caption_->addListener(this);
   }
 
   setTime(t);
   setRepaintsOnMouseActivity(true);
-  requestUpdates();
+  UpdateRequester::requestAllUpdates();
 }
 
 Cursor::~Cursor() {
@@ -53,7 +52,11 @@ Cursor::~Cursor() {
 }
 
 void Cursor::labelTextChanged(juce::Label*) {
-  waveform_->setCursorText(index_, caption_->getText());
+  setText(caption_->getText());
+}
+
+void Cursor::setText(const String& s) {
+  waveform_->setCursorText(index_, s);
   layout();
 }
 
@@ -188,8 +191,10 @@ void Cursor::paint(Graphics& g) {
 }
 
 void Cursor::setCaption(const String& cap) {
-  String c = cap.length() ? cap : String("---");
-  caption_->setText(c, false);
+  if (!caption_->isBeingEdited()) {
+    String c = cap.length() ? cap : String("---");
+    caption_->setText(c, false);
+  }
   resizeCaption();
 }
 

@@ -12,8 +12,9 @@ static const float LINE_WIDTH = 0.6f;
 
 OutlinedCursorLabel::OutlinedCursorLabel(Cursor *cursor)
     : cursor_(cursor) {
-  requestUpdates();
   selectButton_.addListener(this);
+  UpdateRequester::requestAllUpdates();
+  setEditable(true, false, false);
 }
 
 OutlinedCursorLabel::~OutlinedCursorLabel() {
@@ -63,6 +64,11 @@ void OutlinedCursorLabel::setSelected(bool selected) {
 
 void OutlinedCursorLabel::buttonClicked(juce::Button* b) {
   cursor_->selectButtonPressed(b->getToggleState());
+}
+
+void OutlinedCursorLabel::textEditorTextChanged(TextEditor& e) {
+  gui::SimpleLabel::textEditorTextChanged(e);
+  cursor_->setText(e.getText());
 }
 
 }  // namespace waveform
