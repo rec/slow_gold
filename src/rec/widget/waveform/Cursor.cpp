@@ -139,10 +139,11 @@ void Cursor::adjustCaption() {
 
   int remains = waveform_->getCursorX(index_ + 1) - getX() -
     CAPTION_X_OFFSET - REMAINS_FUDGE;
-
-  caption_->setBounds(getX() + desc().component_width() + CAPTION_X_OFFSET,
-                      CAPTION_Y_OFFSET,
-                      std::min(captionWidth_, remains), caption_->getHeight());
+  int captionHeight = caption_->getHeight();
+  int y = waveformDesc_.show_labels_at_top() ? CAPTION_Y_OFFSET :
+    getHeight() - CAPTION_Y_OFFSET - captionHeight;
+  int x = getX() + desc().component_width() + CAPTION_X_OFFSET;
+  caption_->setBounds(x, y, std::min(captionWidth_, remains), captionHeight);
 
   juce::Rectangle<int> after = caption_->getBounds();
   if (before != after) {
@@ -207,6 +208,12 @@ void Cursor::setSelected(bool sel) {
 
 void Cursor::selectButtonPressed(bool select) {
   waveform_->setSelected(index_, select);
+}
+
+void Cursor::onDataChange(const WaveformProto& wp) {
+  Lock l(lock_);
+  waveformDesc_ = wp;
+  thread::callAsync(this, &Cursor::layout);
 }
 
 }  // namespace waveform

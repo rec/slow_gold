@@ -193,6 +193,14 @@ command {
   }
 }
 command {
+  type: TOGGLE_SHOW_LABELS_AT_TOP
+  desc {
+    menu: "Show Loop Point Labels At Top"
+    menu: "Hide Help Pane"
+    full: "Show the loop point labels at the top of the waveform display."
+  }
+}
+command {
   type: TOGGLE_SHOW_TOOLTIPS
   desc {
     menu: "Show Tooltips"
@@ -206,6 +214,14 @@ command {
     menu: "Show Loop Point Selection Buttons"
     menu: "Hide Help Pane"
     full: "Show help in help pane."
+  }
+}
+command {
+  type: TOGGLE_SHOW_TIMES_AT_TOP
+  desc {
+    menu: "Show Grid Times At Top"
+    menu: "Hide Help Pane"
+    full: "Show the grid times for the grid at the top of the waveform display."
   }
 }
 command {

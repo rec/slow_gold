@@ -251,6 +251,20 @@ class WaveformProto : public ::google::protobuf::Message {
   inline bool show_cursor_labels() const;
   inline void set_show_cursor_labels(bool value);
   
+  // optional bool show_times_at_top = 19 [default = false];
+  inline bool has_show_times_at_top() const;
+  inline void clear_show_times_at_top();
+  static const int kShowTimesAtTopFieldNumber = 19;
+  inline bool show_times_at_top() const;
+  inline void set_show_times_at_top(bool value);
+  
+  // optional bool show_labels_at_top = 20 [default = true];
+  inline bool has_show_labels_at_top() const;
+  inline void clear_show_labels_at_top();
+  static const int kShowLabelsAtTopFieldNumber = 20;
+  inline bool show_labels_at_top() const;
+  inline void set_show_labels_at_top(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.widget.waveform.WaveformProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -272,11 +286,13 @@ class WaveformProto : public ::google::protobuf::Message {
   int layout_;
   bool show_selection_buttons_;
   bool show_cursor_labels_;
+  bool show_times_at_top_;
+  bool show_labels_at_top_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(16 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(18 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -556,6 +572,38 @@ inline bool WaveformProto::show_cursor_labels() const {
 inline void WaveformProto::set_show_cursor_labels(bool value) {
   _set_bit(15);
   show_cursor_labels_ = value;
+}
+
+// optional bool show_times_at_top = 19 [default = false];
+inline bool WaveformProto::has_show_times_at_top() const {
+  return _has_bit(16);
+}
+inline void WaveformProto::clear_show_times_at_top() {
+  show_times_at_top_ = false;
+  _clear_bit(16);
+}
+inline bool WaveformProto::show_times_at_top() const {
+  return show_times_at_top_;
+}
+inline void WaveformProto::set_show_times_at_top(bool value) {
+  _set_bit(16);
+  show_times_at_top_ = value;
+}
+
+// optional bool show_labels_at_top = 20 [default = true];
+inline bool WaveformProto::has_show_labels_at_top() const {
+  return _has_bit(17);
+}
+inline void WaveformProto::clear_show_labels_at_top() {
+  show_labels_at_top_ = true;
+  _clear_bit(17);
+}
+inline bool WaveformProto::show_labels_at_top() const {
+  return show_labels_at_top_;
+}
+inline void WaveformProto::set_show_labels_at_top(bool value) {
+  _set_bit(17);
+  show_labels_at_top_ = value;
 }
 
 

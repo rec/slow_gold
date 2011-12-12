@@ -120,6 +120,8 @@ void addDisplayMenu(TargetManager* t, PopupMenu* popup) {
   t->addCommandItem(popup, Command::TOGGLE_SHOW_TOOLTIPS);
   t->addCommandItem(popup, Command::TOGGLE_SHOW_SELECTION_BUTTONS);
   t->addCommandItem(popup, Command::TOGGLE_SHOW_CURSOR_LABELS);
+  t->addCommandItem(popup, Command::TOGGLE_SHOW_TIMES_AT_TOP);
+  t->addCommandItem(popup, Command::TOGGLE_SHOW_LABELS_AT_TOP);
 }
 
 }  // namespace

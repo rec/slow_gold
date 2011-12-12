@@ -22,6 +22,8 @@ message WaveformProto {
   optional Layout layout = 16;
   optional bool show_selection_buttons = 17               [default = true];
   optional bool show_cursor_labels = 18                   [default = true];
+  optional bool show_times_at_top = 19                    [default = false];
+  optional bool show_labels_at_top = 20                   [default = true];
 
   enum Layout {
     STACKED = 1;

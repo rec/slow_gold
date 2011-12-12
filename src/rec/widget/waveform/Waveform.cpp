@@ -311,7 +311,10 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
     static const int HEIGHT = 10;
     static const int PAD = 4;
     g.setColour(juce::Colours::black);
-    g.drawText(s, i ? x - WIDTH / 2 : x - WIDTH / 4, h - PAD - HEIGHT, WIDTH, HEIGHT,
+    g.drawText(s, i ? x - WIDTH / 2 : x - WIDTH / 4,
+               desc_.show_times_at_top() ? PAD : (h - PAD - HEIGHT),
+               WIDTH,
+               HEIGHT,
                Justification::centred, true);
   }
 }

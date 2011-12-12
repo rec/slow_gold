@@ -17,6 +17,7 @@ namespace waveform {
 class OutlinedCursorLabel;
 
 class Cursor : public Component,
+               public GlobalDataListener<WaveformProto>,
                public SettableTooltipClient,
                public Listener< Samples<44100> >,
                public juce::Label::Listener {
@@ -32,6 +33,7 @@ class Cursor : public Component,
   Samples<44100> getTime() const;
   bool setDragTime(Samples<44100> time);
   void setTime(Samples<44100> time);
+  virtual void onDataChange(const WaveformProto&);
 
   bool isTimeCursor() const { return (this == waveform_->timeCursor()); }
 
@@ -60,6 +62,7 @@ class Cursor : public Component,
   ptr<OutlinedCursorLabel> caption_;
   int captionWidth_;
   bool showSelection_;
+  WaveformProto waveformDesc_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);
 };

@@ -179,14 +179,14 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"7\n\013Descri"
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \001(\t\022\014\n\004hel"
-    "p\030\003 \001(\t\"\300\013\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
+    "p\030\003 \001(\t\"\375\013\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
     "command.Command.Type\022\r\n\005index\030\002 \001(\021\022\023\n\013s"
     "tart_index\030\n \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004de"
     "sc\030\004 \001(\0132\030.rec.command.Description\022\020\n\010ke"
     "ypress\030\005 \003(\t\022\021\n\tis_setter\030\006 \001(\010\022\030\n\020is_gl"
     "obal_setter\030\007 \001(\010\022\'\n\007address\030\010 \001(\0132\026.rec"
     ".data.AddressProto\022\030\n\020setter_type_name\030\t"
-    " \001(\t\"\253\t\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POIN"
+    " \001(\t\"\350\t\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POIN"
     "T\020\001\022\030\n\024ADD_LOOP_POINT_CLICK\020,\022\025\n\021AUDIO_P"
     "REFERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLE"
     "AR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n"
@@ -204,22 +204,24 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "PLAY\020\033\022\035\n\031TOGGLE_PARALLEL_WAVEFORMS\020*\022\032\n"
     "\026TOGGLE_PREFADER_LEVELS\020.\022\024\n\020TOGGLE_SELE"
     "CTION\020)\022\035\n\031TOGGLE_SHOW_CURSOR_LABELS\0203\022\031"
-    "\n\025TOGGLE_SHOW_HELP_PANE\0201\022!\n\035TOGGLE_SHOW"
-    "_SELECTION_BUTTONS\0202\022\030\n\024TOGGLE_SHOW_TOOL"
-    "TIPS\0200\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGLE_"
-    "STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHOLE_SONG_LO"
-    "OP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tT"
-    "REE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020"
-    "#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\013"
-    "\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\025\n\021ZOOM_TO_SEL"
-    "ECTION\020-\022\r\n\tLAST_TYPE\0203\022\t\n\004QUIT\020\201 \022\010\n\003DE"
-    "L\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n"
-    "\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUC"
-    "E_START\020\201 \022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240"
-    "\215\006\"1\n\010Commands\022%\n\007command\030\001 \003(\0132\024.rec.co"
-    "mmand.Command\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r"
-    "\n\005value\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 "
-    "\003(\0132\025.rec.command.KeyValue", 1746);
+    "\n\025TOGGLE_SHOW_HELP_PANE\0201\022\035\n\031TOGGLE_SHOW"
+    "_LABELS_AT_TOP\0204\022!\n\035TOGGLE_SHOW_SELECTIO"
+    "N_BUTTONS\0202\022\034\n\030TOGGLE_SHOW_TIMES_AT_TOP\020"
+    "5\022\030\n\024TOGGLE_SHOW_TOOLTIPS\0200\022\025\n\021TOGGLE_ST"
+    "ART_STOP\020\034\022\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\032\n"
+    "\026TOGGLE_WHOLE_SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020"
+    "\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_"
+    "OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004U"
+    "NDO\020%\022\014\n\010UNSELECT\020&\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM"
+    "_OUT\020(\022\025\n\021ZOOM_TO_SELECTION\020-\022\r\n\tLAST_TY"
+    "PE\0205\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004C"
+    "OPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014D"
+    "ESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\201 \022\r\n\010JUCE_"
+    "END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022%\n\007c"
+    "ommand\030\001 \003(\0132\024.rec.command.Command\"&\n\010Ke"
+    "yValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Ma"
+    "pping\022(\n\tkey_value\030\001 \003(\0132\025.rec.command.K"
+    "eyValue", 1807);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -633,6 +635,8 @@ bool Command_Type_IsValid(int value) {
     case 49:
     case 50:
     case 51:
+    case 52:
+    case 53:
     case 4097:
     case 4098:
     case 4099:
@@ -683,7 +687,9 @@ const Command_Type Command::TOGGLE_PREFADER_LEVELS;
 const Command_Type Command::TOGGLE_SELECTION;
 const Command_Type Command::TOGGLE_SHOW_CURSOR_LABELS;
 const Command_Type Command::TOGGLE_SHOW_HELP_PANE;
+const Command_Type Command::TOGGLE_SHOW_LABELS_AT_TOP;
 const Command_Type Command::TOGGLE_SHOW_SELECTION_BUTTONS;
+const Command_Type Command::TOGGLE_SHOW_TIMES_AT_TOP;
 const Command_Type Command::TOGGLE_SHOW_TOOLTIPS;
 const Command_Type Command::TOGGLE_START_STOP;
 const Command_Type Command::TOGGLE_STRETCH_ENABLE;
