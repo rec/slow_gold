@@ -45,6 +45,7 @@ class MouseListener : public HasInstance,
   Mode::Action getClickAction();
 
   Samples<44100> waveformDragStart_;
+  int cursorDragStart_;
   ModifierKeys dragMods_;
   Range<Samples<44100> > cursorRestrict_;
   Mode mode_;

@@ -146,6 +146,34 @@ command {
   }
 }
 command {
+  type: TOGGLE_COMMAND_BAR_AT_LEFT
+  desc {
+    menu: "Command Bar At Left Side"
+    full: "Lay the Command Bar out on the left side of the Waveform Display."
+  }
+}
+command {
+  type: TOGGLE_COMMAND_BAR_AT_TOP
+  desc {
+    menu: "Command Bar At Top"
+    full: "Lay the Command Bar out on the top of the Waveform Display."
+  }
+}
+command {
+  type: TOGGLE_MODES_AT_LEFT
+  desc {
+    menu: "Modes At Left Side"
+    full: "Lay the Modes display out on the left side of the Waveform Display."
+  }
+}
+command {
+  type: TOGGLE_MODES_AT_TOP
+  desc {
+    menu: "Modes At Top"
+    full: "Lay the Modes display out on the top of the Waveform Display."
+  }
+}
+command {
   type: TOGGLE_FOLLOW_CURSOR
   desc {
     menu: "Follow Cursor"

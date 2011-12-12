@@ -265,6 +265,34 @@ class WaveformProto : public ::google::protobuf::Message {
   inline bool show_labels_at_top() const;
   inline void set_show_labels_at_top(bool value);
   
+  // optional bool modes_at_left = 21 [default = true];
+  inline bool has_modes_at_left() const;
+  inline void clear_modes_at_left();
+  static const int kModesAtLeftFieldNumber = 21;
+  inline bool modes_at_left() const;
+  inline void set_modes_at_left(bool value);
+  
+  // optional bool modes_at_top = 22 [default = true];
+  inline bool has_modes_at_top() const;
+  inline void clear_modes_at_top();
+  static const int kModesAtTopFieldNumber = 22;
+  inline bool modes_at_top() const;
+  inline void set_modes_at_top(bool value);
+  
+  // optional bool command_bar_at_left = 23 [default = true];
+  inline bool has_command_bar_at_left() const;
+  inline void clear_command_bar_at_left();
+  static const int kCommandBarAtLeftFieldNumber = 23;
+  inline bool command_bar_at_left() const;
+  inline void set_command_bar_at_left(bool value);
+  
+  // optional bool command_bar_at_top = 24 [default = true];
+  inline bool has_command_bar_at_top() const;
+  inline void clear_command_bar_at_top();
+  static const int kCommandBarAtTopFieldNumber = 24;
+  inline bool command_bar_at_top() const;
+  inline void set_command_bar_at_top(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.widget.waveform.WaveformProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -288,11 +316,15 @@ class WaveformProto : public ::google::protobuf::Message {
   bool show_cursor_labels_;
   bool show_times_at_top_;
   bool show_labels_at_top_;
+  bool modes_at_left_;
+  bool modes_at_top_;
+  bool command_bar_at_left_;
+  bool command_bar_at_top_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(18 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(22 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -604,6 +636,70 @@ inline bool WaveformProto::show_labels_at_top() const {
 inline void WaveformProto::set_show_labels_at_top(bool value) {
   _set_bit(17);
   show_labels_at_top_ = value;
+}
+
+// optional bool modes_at_left = 21 [default = true];
+inline bool WaveformProto::has_modes_at_left() const {
+  return _has_bit(18);
+}
+inline void WaveformProto::clear_modes_at_left() {
+  modes_at_left_ = true;
+  _clear_bit(18);
+}
+inline bool WaveformProto::modes_at_left() const {
+  return modes_at_left_;
+}
+inline void WaveformProto::set_modes_at_left(bool value) {
+  _set_bit(18);
+  modes_at_left_ = value;
+}
+
+// optional bool modes_at_top = 22 [default = true];
+inline bool WaveformProto::has_modes_at_top() const {
+  return _has_bit(19);
+}
+inline void WaveformProto::clear_modes_at_top() {
+  modes_at_top_ = true;
+  _clear_bit(19);
+}
+inline bool WaveformProto::modes_at_top() const {
+  return modes_at_top_;
+}
+inline void WaveformProto::set_modes_at_top(bool value) {
+  _set_bit(19);
+  modes_at_top_ = value;
+}
+
+// optional bool command_bar_at_left = 23 [default = true];
+inline bool WaveformProto::has_command_bar_at_left() const {
+  return _has_bit(20);
+}
+inline void WaveformProto::clear_command_bar_at_left() {
+  command_bar_at_left_ = true;
+  _clear_bit(20);
+}
+inline bool WaveformProto::command_bar_at_left() const {
+  return command_bar_at_left_;
+}
+inline void WaveformProto::set_command_bar_at_left(bool value) {
+  _set_bit(20);
+  command_bar_at_left_ = value;
+}
+
+// optional bool command_bar_at_top = 24 [default = true];
+inline bool WaveformProto::has_command_bar_at_top() const {
+  return _has_bit(21);
+}
+inline void WaveformProto::clear_command_bar_at_top() {
+  command_bar_at_top_ = true;
+  _clear_bit(21);
+}
+inline bool WaveformProto::command_bar_at_top() const {
+  return command_bar_at_top_;
+}
+inline void WaveformProto::set_command_bar_at_top(bool value) {
+  _set_bit(21);
+  command_bar_at_top_ = value;
 }
 
 

@@ -1,4 +1,32 @@
 command {
+  type: TOGGLE_COMMAND_BAR_AT_LEFT
+  is_global_setter: true
+  address { part: { name: "command_bar_at_left" } }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+  category: "Display"
+}
+command {
+  type: TOGGLE_COMMAND_BAR_AT_TOP
+  is_global_setter: true
+  address { part: { name: "command_bar_at_top" } }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+  category: "Display"
+}
+command {
+  type: TOGGLE_MODES_AT_LEFT
+  is_global_setter: true
+  address { part: { name: "modes_at_left" } }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+  category: "Display"
+}
+command {
+  type: TOGGLE_MODES_AT_TOP
+  is_global_setter: true
+  address { part: { name: "modes_at_top" } }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+  category: "Display"
+}
+command {
   type: TOGGLE_FOLLOW_CURSOR
   is_global_setter: true
   address { part: { name: "follow_cursor" } }

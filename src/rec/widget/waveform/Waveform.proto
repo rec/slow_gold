@@ -24,6 +24,10 @@ message WaveformProto {
   optional bool show_cursor_labels = 18                   [default = true];
   optional bool show_times_at_top = 19                    [default = false];
   optional bool show_labels_at_top = 20                   [default = true];
+  optional bool modes_at_left = 21                        [default = true];
+  optional bool modes_at_top = 22                         [default = true];
+  optional bool command_bar_at_left = 23                  [default = true];
+  optional bool command_bar_at_top = 24                   [default = true];
 
   enum Layout {
     STACKED = 1;

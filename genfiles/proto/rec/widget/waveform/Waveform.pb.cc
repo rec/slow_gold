@@ -31,7 +31,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
       "rec/widget/waveform/Waveform.proto");
   GOOGLE_CHECK(file != NULL);
   WaveformProto_descriptor_ = file->message_type(0);
-  static const int WaveformProto_offsets_[18] = {
+  static const int WaveformProto_offsets_[22] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, cursor_thickness_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, source_samples_per_thumbnail_sample_),
@@ -50,6 +50,10 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, show_cursor_labels_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, show_times_at_top_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, show_labels_at_top_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, modes_at_left_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, modes_at_top_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, command_bar_at_left_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, command_bar_at_top_),
   };
   WaveformProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -100,7 +104,7 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "\n\"rec/widget/waveform/Waveform.proto\022\023re"
     "c.widget.waveform\032\023rec/gui/Color.proto\032\022"
     "rec/gui/Font.proto\032\027rec/widget/Widget.pr"
-    "oto\032\034rec/util/thread/Thread.proto\"\271\005\n\rWa"
+    "oto\032\034rec/util/thread/Thread.proto\"\267\006\n\rWa"
     "veformProto\022\"\n\006widget\030\001 \001(\0132\022.rec.widget"
     ".Widget\022\033\n\020cursor_thickness\030\002 \001(\r:\0011\0220\n#"
     "source_samples_per_thumbnail_sample\030\004 \001("
@@ -117,8 +121,11 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "show_selection_buttons\030\021 \001(\010:\004true\022 \n\022sh"
     "ow_cursor_labels\030\022 \001(\010:\004true\022 \n\021show_tim"
     "es_at_top\030\023 \001(\010:\005false\022 \n\022show_labels_at"
-    "_top\030\024 \001(\010:\004true\"#\n\006Layout\022\013\n\007STACKED\020\001\022"
-    "\014\n\010PARALLEL\020\002", 853);
+    "_top\030\024 \001(\010:\004true\022\033\n\rmodes_at_left\030\025 \001(\010:"
+    "\004true\022\032\n\014modes_at_top\030\026 \001(\010:\004true\022!\n\023com"
+    "mand_bar_at_left\030\027 \001(\010:\004true\022 \n\022command_"
+    "bar_at_top\030\030 \001(\010:\004true\"#\n\006Layout\022\013\n\007STAC"
+    "KED\020\001\022\014\n\010PARALLEL\020\002", 979);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Waveform.proto", &protobuf_RegisterTypes);
   WaveformProto::default_instance_ = new WaveformProto();
@@ -176,6 +183,10 @@ const int WaveformProto::kShowSelectionButtonsFieldNumber;
 const int WaveformProto::kShowCursorLabelsFieldNumber;
 const int WaveformProto::kShowTimesAtTopFieldNumber;
 const int WaveformProto::kShowLabelsAtTopFieldNumber;
+const int WaveformProto::kModesAtLeftFieldNumber;
+const int WaveformProto::kModesAtTopFieldNumber;
+const int WaveformProto::kCommandBarAtLeftFieldNumber;
+const int WaveformProto::kCommandBarAtTopFieldNumber;
 #endif  // !_MSC_VER
 
 WaveformProto::WaveformProto()
@@ -214,6 +225,10 @@ void WaveformProto::SharedCtor() {
   show_cursor_labels_ = true;
   show_times_at_top_ = false;
   show_labels_at_top_ = true;
+  modes_at_left_ = true;
+  modes_at_top_ = true;
+  command_bar_at_left_ = true;
+  command_bar_at_top_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -276,6 +291,10 @@ void WaveformProto::Clear() {
   if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     show_times_at_top_ = false;
     show_labels_at_top_ = true;
+    modes_at_left_ = true;
+    modes_at_top_ = true;
+    command_bar_at_left_ = true;
+    command_bar_at_top_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -571,6 +590,70 @@ bool WaveformProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(168)) goto parse_modes_at_left;
+        break;
+      }
+      
+      // optional bool modes_at_left = 21 [default = true];
+      case 21: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_modes_at_left:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &modes_at_left_)));
+          _set_bit(18);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(176)) goto parse_modes_at_top;
+        break;
+      }
+      
+      // optional bool modes_at_top = 22 [default = true];
+      case 22: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_modes_at_top:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &modes_at_top_)));
+          _set_bit(19);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(184)) goto parse_command_bar_at_left;
+        break;
+      }
+      
+      // optional bool command_bar_at_left = 23 [default = true];
+      case 23: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_command_bar_at_left:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &command_bar_at_left_)));
+          _set_bit(20);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(192)) goto parse_command_bar_at_top;
+        break;
+      }
+      
+      // optional bool command_bar_at_top = 24 [default = true];
+      case 24: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_command_bar_at_top:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &command_bar_at_top_)));
+          _set_bit(21);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -686,6 +769,26 @@ void WaveformProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(20, this->show_labels_at_top(), output);
   }
   
+  // optional bool modes_at_left = 21 [default = true];
+  if (_has_bit(18)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(21, this->modes_at_left(), output);
+  }
+  
+  // optional bool modes_at_top = 22 [default = true];
+  if (_has_bit(19)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(22, this->modes_at_top(), output);
+  }
+  
+  // optional bool command_bar_at_left = 23 [default = true];
+  if (_has_bit(20)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(23, this->command_bar_at_left(), output);
+  }
+  
+  // optional bool command_bar_at_top = 24 [default = true];
+  if (_has_bit(21)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(24, this->command_bar_at_top(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -787,6 +890,26 @@ void WaveformProto::SerializeWithCachedSizes(
   // optional bool show_labels_at_top = 20 [default = true];
   if (_has_bit(17)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(20, this->show_labels_at_top(), target);
+  }
+  
+  // optional bool modes_at_left = 21 [default = true];
+  if (_has_bit(18)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(21, this->modes_at_left(), target);
+  }
+  
+  // optional bool modes_at_top = 22 [default = true];
+  if (_has_bit(19)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(22, this->modes_at_top(), target);
+  }
+  
+  // optional bool command_bar_at_left = 23 [default = true];
+  if (_has_bit(20)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(23, this->command_bar_at_left(), target);
+  }
+  
+  // optional bool command_bar_at_top = 24 [default = true];
+  if (_has_bit(21)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(24, this->command_bar_at_top(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -909,6 +1032,26 @@ int WaveformProto::ByteSize() const {
       total_size += 2 + 1;
     }
     
+    // optional bool modes_at_left = 21 [default = true];
+    if (has_modes_at_left()) {
+      total_size += 2 + 1;
+    }
+    
+    // optional bool modes_at_top = 22 [default = true];
+    if (has_modes_at_top()) {
+      total_size += 2 + 1;
+    }
+    
+    // optional bool command_bar_at_left = 23 [default = true];
+    if (has_command_bar_at_left()) {
+      total_size += 2 + 1;
+    }
+    
+    // optional bool command_bar_at_top = 24 [default = true];
+    if (has_command_bar_at_top()) {
+      total_size += 2 + 1;
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -994,6 +1137,18 @@ void WaveformProto::MergeFrom(const WaveformProto& from) {
     if (from._has_bit(17)) {
       set_show_labels_at_top(from.show_labels_at_top());
     }
+    if (from._has_bit(18)) {
+      set_modes_at_left(from.modes_at_left());
+    }
+    if (from._has_bit(19)) {
+      set_modes_at_top(from.modes_at_top());
+    }
+    if (from._has_bit(20)) {
+      set_command_bar_at_left(from.command_bar_at_left());
+    }
+    if (from._has_bit(21)) {
+      set_command_bar_at_top(from.command_bar_at_top());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1035,6 +1190,10 @@ void WaveformProto::Swap(WaveformProto* other) {
     std::swap(show_cursor_labels_, other->show_cursor_labels_);
     std::swap(show_times_at_top_, other->show_times_at_top_);
     std::swap(show_labels_at_top_, other->show_labels_at_top_);
+    std::swap(modes_at_left_, other->modes_at_left_);
+    std::swap(modes_at_top_, other->modes_at_top_);
+    std::swap(command_bar_at_left_, other->command_bar_at_left_);
+    std::swap(command_bar_at_top_, other->command_bar_at_top_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
