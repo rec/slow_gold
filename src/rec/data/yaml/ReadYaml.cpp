@@ -12,7 +12,7 @@ namespace yaml {
 
 namespace {
 
-void operator>>(const YAML::Node& node, Message* to);
+void read(const YAML::Node& node, Message* to);
 
 string str(const YAML::Node& node) {
   return node.Read<string>();
@@ -20,7 +20,7 @@ string str(const YAML::Node& node) {
 
 typedef google::protobuf::FieldDescriptor FD;
 
-void doRead(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
+void read(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
   const Reflection& r = *m->GetReflection();
 
   switch (f->type()) {
@@ -38,8 +38,8 @@ void doRead(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
   case FD::TYPE_SFIXED64: r.SetInt64(m, f, int64(n));   break;
   case FD::TYPE_SINT32:   r.SetInt32(m, f, int32(n));   break;
   case FD::TYPE_SINT64:   r.SetInt64(m, f, int64(n));   break;
-  case FD::TYPE_GROUP:    n >> r.MutableMessage(m, f);  break;
-  case FD::TYPE_MESSAGE:  n >> r.MutableMessage(m, f);  break;
+  case FD::TYPE_GROUP:    read(n, r.MutableMessage(m, f));  break;
+  case FD::TYPE_MESSAGE:  read(n, r.MutableMessage(m, f));  break;
   case FD::TYPE_BYTES:    r.SetString(m, f, str(n));    break;
   case FD::TYPE_ENUM:
     r.SetEnum(m, f, f->enum_type()->FindValueByName(str(n)));
@@ -68,8 +68,8 @@ void doReadRepeated(const YAML::Node& node, Message* m, const FieldDescriptor* f
     case FD::TYPE_SFIXED64: r.AddInt64(m, f, int64(n));  break;
     case FD::TYPE_SINT32: r.AddInt32(m, f, int32(n));    break;
     case FD::TYPE_SINT64: r.AddInt64(m, f, int64(n));    break;
-    case FD::TYPE_GROUP: n >> r.AddMessage(m, f);        break;
-    case FD::TYPE_MESSAGE: n >> r.AddMessage(m, f);      break;
+    case FD::TYPE_GROUP: read(n, r.AddMessage(m, f));    break;
+    case FD::TYPE_MESSAGE: read(n, r.AddMessage(m, f));  break;
     case FD::TYPE_BYTES: r.AddString(m, f, str(n));      break;
     case FD::TYPE_ENUM:
       r.AddEnum(m, f, f->enum_type()->FindValueByName(str(n)));
@@ -81,14 +81,14 @@ void doReadRepeated(const YAML::Node& node, Message* m, const FieldDescriptor* f
   }
 }
 
-void operator>>(const YAML::Node& node, Message* to) {
+void read(const YAML::Node& node, Message* to) {
   for (YAML::Iterator i = node.begin(); i != node.end(); ++i) {
     string name = str(i.first());
     if (const FieldDescriptor* f = to->GetDescriptor()->FindFieldByName(name)) {
       if (f->label() == FieldDescriptor::LABEL_REPEATED)
         doReadRepeated(i.second(), to, f);
       else
-        doRead(i.second(), to, f);
+        read(i.second(), to, f);
     } else {
       LOG(ERROR) << "Couldn't understand field named " << name;
     }
@@ -119,7 +119,7 @@ bool read(const string& from, Message* to) {
       }
 
     } else if (name == "value") {
-      i.second() >> to;
+      read(i.second(), to);
 
     } else {
       LOG(ERROR) << "Unexpected field " << name;

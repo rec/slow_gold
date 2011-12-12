@@ -26,9 +26,11 @@ class Loops : public component::Focusable<TableController>,
                                              Component* existingComponentToUpdate);
 
   virtual void onDataChange(const LoopPointList&);
-  virtual int getNumRows() { return getProto().loop_point_size(); }
+  virtual int getNumRows();
   virtual Cuttable* cuttable() { return cuttable_.get(); }
   virtual void selectedRowsChanged(int lastRowSelected);
+
+  void editLoopPoints(const LoopPointList&);
 
  protected:
   virtual void update();

@@ -93,7 +93,7 @@ MessageField createMessageField(const Address& address, const Message& msg) {
 
   for (int i = 0; field.message_ && i < address.part_size(); ++i) {
     if (!dereference(&field, address.part(i))) {
-      LOG(ERROR) << "Couldn't get field from address:\n"
+      LOG(DFATAL) << "Couldn't get field from address:\n"
                  << address.ShortDebugString()
                  << "\nMessage:\n" << msg.ShortDebugString();
       field.message_ = NULL;

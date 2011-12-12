@@ -201,7 +201,7 @@ class CommandDatabase {
       }
       cr->info_.setInfo(str(desc.menu(0)), name, category, flags);
     } else {
-      LOG(ERROR) << "No command " << commandName(id)
+      LOG(DFATAL) << "No command " << commandName(id)
                  << ", " << desc.menu_size()
                  << ", " << name.length()
                  << cr->command_->ShortDebugString();

@@ -52,6 +52,17 @@ LoopPointList getSelected(const LoopPointList& loops, bool selected) {
   return result;
 }
 
+LoopPointList cutSelected(const LoopPointList& loops, bool selected) {
+  LoopPointList lpl = loops;
+  if (lpl.loop_point_size()) {
+    bool firstWasSelected = lpl.loop_point(0).selected();
+    lpl.mutable_loop_point(0)->set_selected(!selected);
+    lpl = getSelected(lpl, !selected);
+    lpl.mutable_loop_point(0)->set_selected(firstWasSelected);
+  }
+  return lpl;
+}
+
 LoopPointList addLoopPoints(const LoopPointList& x, const LoopPointList& y) {
   LoopPointList result;
   uint64 length = std::max(x.length(), y.length());

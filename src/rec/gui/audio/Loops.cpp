@@ -54,6 +54,11 @@ Loops::Loops(MenuBarModel* menus, const TableColumnList* desc,
 
 Loops::~Loops() {}
 
+int Loops::getNumRows() {
+  Lock l(TableController::lock_);
+  return loops_.loop_point_size();
+}
+
 void Loops::onDataChange(const LoopPointList& loops) {
   {
     Lock l(TableController::lock_);
@@ -119,11 +124,24 @@ class LoopsSetterText : public SetterText {
       : SetterText("LoopsSetterText",
                    str(getTypeName<LoopPointList>()),
                    "loop_point" + Address(row) + col.address(),
-                   "", "", false) {
+                   "", "", false),
+        row_(row) {
+  }
 
+ protected:
+  virtual void onDataChange(const Message& m) {
+    // Juce takes some time to delete this item, and it might get an update
+    // at a point when it no longer points to a valid item in the LoopPointList.
+    if (const LoopPointList* lpl = dynamic_cast<const LoopPointList*>(&m)) {
+      if (row_ < lpl->loop_point_size())
+        SetterText::onDataChange(m);
+    }
   }
 
  private:
+  CriticalSection lock_;
+  int row_;
+
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LoopsSetterText);
 };
 
@@ -155,6 +173,11 @@ Component* Loops::refreshComponentForCell(int row, int column,
   return existing;
 }
 
+void Loops::editLoopPoints(const LoopPointList& lpl) {
+  onDataChange(lpl);
+  updateContent();
+  setValue(lpl);
+}
 
 }  // namespace audio
 }  // namespace gui

@@ -38,7 +38,7 @@ const Value UntypedEditable::getValue(const Address& a) const {
   Lock l(lock_);
   if (!data::copyTo(createMessageField(a), &value)) {
     // TODO: should be DFATAL.
-    LOG(ERROR) << "Couldn't read value for " << a.ShortDebugString()
+    LOG(DFATAL) << "Couldn't read value for " << a.ShortDebugString()
                 << ", " << message_->ShortDebugString();
   }
   return value;
