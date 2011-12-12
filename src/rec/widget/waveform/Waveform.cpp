@@ -153,10 +153,12 @@ void Waveform::onDataChange(const LoopPointList& loopPoints) {
     thread::callAsync(this, &Waveform::repaintBlocks, dirty);
 }
 
+static const bool CAPTION_ON_FIRST_CURSOR = true;
+
 void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
-    bool hasCaption = (i != 0);
+    bool hasCaption = CAPTION_ON_FIRST_CURSOR || (i != 0);
     Samples<44100> time = loopPoints.loop_point(i).time();
     Cursor* c;
     if (i < cursors_.size()) {
