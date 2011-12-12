@@ -195,7 +195,7 @@ void MouseListener::toggleAddLoopPointMode() {
     previousMode_ = mode_;
     mode_.set_click(Mode::DRAW_LOOP_POINTS);
   }
-  DataListener<Mode>::setProto(mode_);
+  GlobalDataListener<Mode>::setProto(mode_);
 }
 
 }  // namespace slow

@@ -14,7 +14,7 @@ namespace audio {
 
 class ModeSelector : public Layout,
                      public juce::Button::Listener,
-                     public DataListener<Mode> {
+                     public GlobalDataListener<Mode> {
  public:
   ModeSelector();
   virtual ~ModeSelector() {}

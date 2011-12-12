@@ -67,6 +67,7 @@ DrawableButton* ModeSelector::getButton(const Mode::Action& action) {
 }
 
 void ModeSelector::onDataChange(const Mode& mode) {
+  DLOG(INFO) << "onDataChange: " << mode.ShortDebugString();
   const Mode::Action action = mode.click();
   MessageManagerLock l;
   for (ButtonMap::iterator i = buttons_.begin(); i != buttons_.end(); ++i)
