@@ -205,6 +205,10 @@ void Cursor::setSelected(bool sel) {
   caption_->setSelected(sel);
 }
 
+void Cursor::selectButtonPressed(bool select) {
+  waveform_->setSelected(index_, select);
+}
+
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec

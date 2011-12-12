@@ -13,7 +13,7 @@ static const float LINE_WIDTH = 0.6f;
 OutlinedCursorLabel::OutlinedCursorLabel(Cursor *cursor)
     : cursor_(cursor) {
   requestUpdates();
-  selectButton_.addButtonListener(this);
+  selectButton_.addListener(this);
 }
 
 OutlinedCursorLabel::~OutlinedCursorLabel() {
@@ -60,7 +60,8 @@ void OutlinedCursorLabel::setSelected(bool selected) {
   selectButton_.setToggleState(selected, false);
 }
 
-void OutlinedCursorLabel::buttonClicked(juce::Button*) {
+void OutlinedCursorLabel::buttonClicked(juce::Button* b) {
+  cursor_->selectButtonPressed(b->getToggleState());
 }
 
 }  // namespace waveform

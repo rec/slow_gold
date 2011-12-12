@@ -342,6 +342,16 @@ void Waveform::setIsDraggingCursor(bool d) {
   isDraggingCursor_ = d;
 }
 
+void Waveform::setSelected(int index, bool selected) {
+  LoopPointList lpl = DataListener<LoopPointList>::getProto();
+  if (index < 0 || index >= lpl.loop_point_size()) {
+    LOG(DFATAL) << "Bad index " << index << ", " << lpl.loop_point_size();
+    return;
+  }
+  lpl.mutable_loop_point(index)->set_selected(selected);
+  DataListener<LoopPointList>::setProto(lpl);
+}
+
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec

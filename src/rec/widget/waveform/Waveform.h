@@ -71,6 +71,7 @@ class Waveform : public Component,
   void repaintBlocks(const block::BlockSet&);
 
   void adjustCursors(LoopPointList loopPoints, block::BlockSet dirty);
+  void setSelected(int index, bool selected);
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);

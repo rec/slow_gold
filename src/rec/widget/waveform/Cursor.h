@@ -44,6 +44,7 @@ class Cursor : public Component,
   void setCaption(const String&);
   Waveform* waveform() const { return waveform_; }
   void resizeCaption();
+  void selectButtonPressed(bool);
 
  private:
   void adjustCaption();
