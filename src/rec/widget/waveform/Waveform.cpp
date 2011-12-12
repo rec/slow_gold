@@ -1,9 +1,11 @@
 #include "rec/widget/waveform/Waveform.h"
 
+#include "rec/gui/audio/CommandBar.h"
+#include "rec/gui/audio/ModeSelector.h"
 #include "rec/util/Defaulter.h"
-#include "rec/util/Range.h"
-#include "rec/util/Math.h"
 #include "rec/util/FormatTime.h"
+#include "rec/util/Math.h"
+#include "rec/util/Range.h"
 #include "rec/util/STL.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/thread/CallAsync.h"
@@ -134,7 +136,7 @@ void Waveform::onDataChange(const WaveformProto& proto) {
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
-  BlockSet newSelection = audio::getTimeSelection(loopPoints);
+  BlockSet newSelection = rec::audio::getTimeSelection(loopPoints);
   bool isDraggingCursor;
   BlockSet oldSelection;
   {
@@ -216,6 +218,33 @@ void Waveform::layout() {
     Lock l(lock_);
     for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
       (*i)->layout();
+
+    using namespace rec::gui::audio;
+    CommandBar* cb = NULL;
+    ModeSelector* ms = NULL;
+    for (int i = 0; i < getNumChildComponents(); ++i) {
+      Component* c = getChildComponent(i);
+      if (!cb)
+        cb = dynamic_cast<CommandBar*>(c);
+      if (!ms)
+        ms = dynamic_cast<ModeSelector*>(c);
+    }
+
+    if (ms) {
+      int x = desc_.modes_at_left() ? 0 : (getWidth() - ms->getWidth());
+      int y = desc_.modes_at_top() ? 0 : (getHeight() - ms->getHeight());
+      ms->setTopLeftPosition(x, y);
+    } else {
+      LOG(DFATAL) << "No mode selector";
+    }
+
+    if (cb) {
+      int x = desc_.command_bar_at_left() ? 0 : (getWidth() - cb->getWidth());
+      int y = desc_.command_bar_at_top() ? 0 : (getHeight() - cb->getHeight());
+      cb->setTopLeftPosition(x, y);
+    } else {
+      LOG(DFATAL) << "No command bar";
+    }
   }
   repaint();
 }

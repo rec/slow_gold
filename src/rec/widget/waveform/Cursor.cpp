@@ -217,6 +217,11 @@ void Cursor::onDataChange(const WaveformProto& wp) {
   thread::callAsync(this, &Cursor::layout);
 }
 
+void Cursor::setTooltip(const String& t) {
+  SettableTooltipClient::setTooltip(t);
+  caption_->setTooltip(t);
+}
+
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec

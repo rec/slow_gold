@@ -34,6 +34,7 @@ class Cursor : public Component,
   bool setDragTime(Samples<44100> time);
   void setTime(Samples<44100> time);
   virtual void onDataChange(const WaveformProto&);
+  virtual void setTooltip(const String&);
 
   bool isTimeCursor() const { return (this == waveform_->timeCursor()); }
 
