@@ -45,7 +45,7 @@ void doRead(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
     r.SetEnum(m, f, f->enum_type()->FindValueByName(str(n)));
     break;
 
-  default: LOG(DFATAL) << "Didn't understand type " << f->type(); break; }
+  default: LOG(ERROR) << "Didn't understand type " << f->type(); break; }
 }
 
 void doReadRepeated(const YAML::Node& node, Message* m, const FieldDescriptor* f) {
@@ -76,7 +76,7 @@ void doReadRepeated(const YAML::Node& node, Message* m, const FieldDescriptor* f
       break;
 
     default:
-      LOG(DFATAL) << "Didn't understand type " << f->type(); break;
+      LOG(ERROR) << "Didn't understand type " << f->type(); break;
     }
   }
 }
@@ -90,7 +90,7 @@ void operator>>(const YAML::Node& node, Message* to) {
       else
         doRead(i.second(), to, f);
     } else {
-      LOG(DFATAL) << "Couldn't understand field named " << name;
+      LOG(ERROR) << "Couldn't understand field named " << name;
     }
   }
 }
@@ -103,7 +103,7 @@ bool read(const string& from, Message* to) {
 
   YAML::Node node;
   if (!parser.GetNextDocument(node)) {
-    LOG(DFATAL) << "Didn't get any data";
+    LOG(ERROR) << "Didn't get any data";
     return false;
   }
 
@@ -113,7 +113,7 @@ bool read(const string& from, Message* to) {
       string type;
       i.second() >> type;
       if (type != to->GetTypeName()) {
-        LOG(DFATAL) << "Tried to unserialize " << to->GetTypeName()
+        LOG(ERROR) << "Tried to unserialize " << to->GetTypeName()
                    << " but found " << type;
         return false;
       }
@@ -122,13 +122,13 @@ bool read(const string& from, Message* to) {
       i.second() >> to;
 
     } else {
-      LOG(DFATAL) << "Unexpected field " << name;
+      LOG(ERROR) << "Unexpected field " << name;
       return false;
     }
   }
 
   if (parser.GetNextDocument(node)) {
-    LOG(DFATAL) << "More than one document in file";
+    LOG(ERROR) << "More than one document in file";
     return false;
   }
 

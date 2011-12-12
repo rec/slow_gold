@@ -20,8 +20,9 @@ bool LoopsCuttable::canCopy() const {
   return getSelected(loops_, true).loop_point_size();
 }
 
-bool LoopsCuttable::canPaste(const string& clipboard) const {
- return true;  // TODO
+bool LoopsCuttable::canPaste(const string& s) const {
+  LoopPointList lpl;
+  return yaml::read(s, &lpl);
 }
 
 bool LoopsCuttable::canCut() const {

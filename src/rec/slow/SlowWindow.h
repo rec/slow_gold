@@ -2,6 +2,7 @@
 #define __REC_SLOW_SLOWWINDOW__
 
 #include "rec/app/Window.h"
+#include "rec/slow/HasInstance.h"
 
 namespace rec {
 
@@ -12,7 +13,7 @@ namespace slow {
 class AppLayout;
 class Instance;
 
-class SlowWindow : public app::Window {
+class SlowWindow : public app::Window, public HasInstance {
  public:
   explicit SlowWindow(app::GenericApplication*);
   virtual ~SlowWindow();
@@ -29,9 +30,10 @@ class SlowWindow : public app::Window {
   virtual void constructInstance();
   virtual Component* getMainComponent();
   virtual MenuBarModel* getMenuBarModel();
+  virtual void activeWindowStatusChanged();
 
  private:
-  ptr<Instance> instance_;
+  ptr<Instance> instanceDeleter_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowWindow);
 };

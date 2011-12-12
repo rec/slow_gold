@@ -30,21 +30,21 @@ static const Colour BACKGROUND_COLOR = juce::Colours::azure;
 
 SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", BACKGROUND_COLOR,
-                  DocumentWindow::allButtons, true) {
+                  DocumentWindow::allButtons, true),
+      HasInstance(NULL) {
 }
 
 SlowWindow::~SlowWindow() {}
 
 void SlowWindow::constructInstance() {
   Lock l(gui::PersistentWindow::lock_);
-  instance_.reset(new slow::Instance(this));
+  instanceDeleter_.reset(new slow::Instance(this));
+  instance_ = instanceDeleter_.get();
 }
 
 void SlowWindow::doStartup() {
-  {
-    Lock l(gui::PersistentWindow::lock_);
-    instance_->startup();
-  }
+  Lock l(gui::PersistentWindow::lock_);
+  instance_->startup();
 }
 
 void SlowWindow::trashPreferences() {
@@ -53,11 +53,11 @@ void SlowWindow::trashPreferences() {
 }
 
 Component* SlowWindow::getMainComponent() {
-  return instance_->components_->mainPage_->panel();
+  return components()->mainPage_->panel();
 }
 
 MenuBarModel* SlowWindow::getMenuBarModel() {
-  return instance_->menus_.get();
+  return menus();
 }
 
 static Def<LoopPointList> loops(
@@ -121,6 +121,9 @@ DataRegistry* SlowWindow::getDataRegistry() {
   return r.transfer();
 }
 
+void SlowWindow::activeWindowStatusChanged() {
+  menus()->menuItemsChanged();
+}
 
 }  // namespace slow
 }  // namespace rec
