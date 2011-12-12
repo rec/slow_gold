@@ -244,6 +244,13 @@ class WaveformProto : public ::google::protobuf::Message {
   inline bool show_selection_buttons() const;
   inline void set_show_selection_buttons(bool value);
   
+  // optional bool show_cursor_labels = 18 [default = true];
+  inline bool has_show_cursor_labels() const;
+  inline void clear_show_cursor_labels();
+  static const int kShowCursorLabelsFieldNumber = 18;
+  inline bool show_cursor_labels() const;
+  inline void set_show_cursor_labels(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.widget.waveform.WaveformProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -264,11 +271,12 @@ class WaveformProto : public ::google::protobuf::Message {
   bool show_names_in_waveform_;
   int layout_;
   bool show_selection_buttons_;
+  bool show_cursor_labels_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(15 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(16 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -532,6 +540,22 @@ inline bool WaveformProto::show_selection_buttons() const {
 inline void WaveformProto::set_show_selection_buttons(bool value) {
   _set_bit(14);
   show_selection_buttons_ = value;
+}
+
+// optional bool show_cursor_labels = 18 [default = true];
+inline bool WaveformProto::has_show_cursor_labels() const {
+  return _has_bit(15);
+}
+inline void WaveformProto::clear_show_cursor_labels() {
+  show_cursor_labels_ = true;
+  _clear_bit(15);
+}
+inline bool WaveformProto::show_cursor_labels() const {
+  return show_cursor_labels_;
+}
+inline void WaveformProto::set_show_cursor_labels(bool value) {
+  _set_bit(15);
+  show_cursor_labels_ = value;
 }
 
 

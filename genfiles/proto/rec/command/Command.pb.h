@@ -74,6 +74,7 @@ enum Command_Type {
   Command_Type_TOGGLE_PARALLEL_WAVEFORMS = 42,
   Command_Type_TOGGLE_PREFADER_LEVELS = 46,
   Command_Type_TOGGLE_SELECTION = 41,
+  Command_Type_TOGGLE_SHOW_CURSOR_LABELS = 51,
   Command_Type_TOGGLE_SHOW_HELP_PANE = 49,
   Command_Type_TOGGLE_SHOW_SELECTION_BUTTONS = 50,
   Command_Type_TOGGLE_SHOW_TOOLTIPS = 48,
@@ -91,7 +92,7 @@ enum Command_Type {
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 50,
+  Command_Type_LAST_TYPE = 51,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -328,6 +329,7 @@ class Command : public ::google::protobuf::Message {
   static const Type TOGGLE_PARALLEL_WAVEFORMS = Command_Type_TOGGLE_PARALLEL_WAVEFORMS;
   static const Type TOGGLE_PREFADER_LEVELS = Command_Type_TOGGLE_PREFADER_LEVELS;
   static const Type TOGGLE_SELECTION = Command_Type_TOGGLE_SELECTION;
+  static const Type TOGGLE_SHOW_CURSOR_LABELS = Command_Type_TOGGLE_SHOW_CURSOR_LABELS;
   static const Type TOGGLE_SHOW_HELP_PANE = Command_Type_TOGGLE_SHOW_HELP_PANE;
   static const Type TOGGLE_SHOW_SELECTION_BUTTONS = Command_Type_TOGGLE_SHOW_SELECTION_BUTTONS;
   static const Type TOGGLE_SHOW_TOOLTIPS = Command_Type_TOGGLE_SHOW_TOOLTIPS;

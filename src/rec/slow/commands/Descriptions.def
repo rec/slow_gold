@@ -177,6 +177,14 @@ command {
   }
 }
 command {
+  type: TOGGLE_SHOW_CURSOR_LABELS
+  desc {
+    menu: "Show Loop Point Labels"
+    menu: "Hide Help Pane"
+    full: "Show draggable labels for the loop points on the waveform display."
+  }
+}
+command {
   type: TOGGLE_SHOW_HELP_PANE
   desc {
     menu: "Show Help Pane"

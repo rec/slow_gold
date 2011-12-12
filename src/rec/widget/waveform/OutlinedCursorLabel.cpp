@@ -20,15 +20,16 @@ OutlinedCursorLabel::~OutlinedCursorLabel() {
 }
 
 void OutlinedCursorLabel::onDataChange(const WaveformProto& waveform) {
-  thread::callAsync(this, &OutlinedCursorLabel::showSelectButton,
-                    waveform.show_selection_buttons());
+  thread::callAsync(this, &OutlinedCursorLabel::showButtons, waveform);
 }
 
-void OutlinedCursorLabel::showSelectButton(bool sel) {
-  if (sel)
+void OutlinedCursorLabel::showButtons(WaveformProto waveform) {
+  if (waveform.show_selection_buttons())
     addAndMakeVisible(&selectButton_);
   else
     removeChildComponent(&selectButton_);
+
+  setVisible(waveform.show_cursor_labels());
 
   cursor_->resizeCaption();
   cursor_->repaint();

@@ -31,7 +31,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
       "rec/widget/waveform/Waveform.proto");
   GOOGLE_CHECK(file != NULL);
   WaveformProto_descriptor_ = file->message_type(0);
-  static const int WaveformProto_offsets_[15] = {
+  static const int WaveformProto_offsets_[16] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, cursor_thickness_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, source_samples_per_thumbnail_sample_),
@@ -47,6 +47,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, show_names_in_waveform_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, layout_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, show_selection_buttons_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, show_cursor_labels_),
   };
   WaveformProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -97,7 +98,7 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "\n\"rec/widget/waveform/Waveform.proto\022\023re"
     "c.widget.waveform\032\023rec/gui/Color.proto\032\022"
     "rec/gui/Font.proto\032\027rec/widget/Widget.pr"
-    "oto\032\034rec/util/thread/Thread.proto\"\323\004\n\rWa"
+    "oto\032\034rec/util/thread/Thread.proto\"\365\004\n\rWa"
     "veformProto\022\"\n\006widget\030\001 \001(\0132\022.rec.widget"
     ".Widget\022\033\n\020cursor_thickness\030\002 \001(\r:\0011\0220\n#"
     "source_samples_per_thumbnail_sample\030\004 \001("
@@ -111,8 +112,9 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "eforms\030\016 \001(\010:\005false\022$\n\026show_names_in_wav"
     "eform\030\017 \001(\010:\004true\0229\n\006layout\030\020 \001(\0162).rec."
     "widget.waveform.WaveformProto.Layout\022$\n\026"
-    "show_selection_buttons\030\021 \001(\010:\004true\"#\n\006La"
-    "yout\022\013\n\007STACKED\020\001\022\014\n\010PARALLEL\020\002", 751);
+    "show_selection_buttons\030\021 \001(\010:\004true\022 \n\022sh"
+    "ow_cursor_labels\030\022 \001(\010:\004true\"#\n\006Layout\022\013"
+    "\n\007STACKED\020\001\022\014\n\010PARALLEL\020\002", 785);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Waveform.proto", &protobuf_RegisterTypes);
   WaveformProto::default_instance_ = new WaveformProto();
@@ -167,6 +169,7 @@ const int WaveformProto::kParallelWaveformsFieldNumber;
 const int WaveformProto::kShowNamesInWaveformFieldNumber;
 const int WaveformProto::kLayoutFieldNumber;
 const int WaveformProto::kShowSelectionButtonsFieldNumber;
+const int WaveformProto::kShowCursorLabelsFieldNumber;
 #endif  // !_MSC_VER
 
 WaveformProto::WaveformProto()
@@ -202,6 +205,7 @@ void WaveformProto::SharedCtor() {
   show_names_in_waveform_ = true;
   layout_ = 1;
   show_selection_buttons_ = true;
+  show_cursor_labels_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -259,6 +263,7 @@ void WaveformProto::Clear() {
     show_names_in_waveform_ = true;
     layout_ = 1;
     show_selection_buttons_ = true;
+    show_cursor_labels_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -506,6 +511,22 @@ bool WaveformProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(144)) goto parse_show_cursor_labels;
+        break;
+      }
+      
+      // optional bool show_cursor_labels = 18 [default = true];
+      case 18: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_show_cursor_labels:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &show_cursor_labels_)));
+          _set_bit(15);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -606,6 +627,11 @@ void WaveformProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(17, this->show_selection_buttons(), output);
   }
   
+  // optional bool show_cursor_labels = 18 [default = true];
+  if (_has_bit(15)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(18, this->show_cursor_labels(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -692,6 +718,11 @@ void WaveformProto::SerializeWithCachedSizes(
   // optional bool show_selection_buttons = 17 [default = true];
   if (_has_bit(14)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(17, this->show_selection_buttons(), target);
+  }
+  
+  // optional bool show_cursor_labels = 18 [default = true];
+  if (_has_bit(15)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(18, this->show_cursor_labels(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -797,6 +828,11 @@ int WaveformProto::ByteSize() const {
       total_size += 2 + 1;
     }
     
+    // optional bool show_cursor_labels = 18 [default = true];
+    if (has_show_cursor_labels()) {
+      total_size += 2 + 1;
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -871,6 +907,9 @@ void WaveformProto::MergeFrom(const WaveformProto& from) {
     if (from._has_bit(14)) {
       set_show_selection_buttons(from.show_selection_buttons());
     }
+    if (from._has_bit(15)) {
+      set_show_cursor_labels(from.show_cursor_labels());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -909,6 +948,7 @@ void WaveformProto::Swap(WaveformProto* other) {
     std::swap(show_names_in_waveform_, other->show_names_in_waveform_);
     std::swap(layout_, other->layout_);
     std::swap(show_selection_buttons_, other->show_selection_buttons_);
+    std::swap(show_cursor_labels_, other->show_cursor_labels_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

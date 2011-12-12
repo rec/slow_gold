@@ -27,7 +27,7 @@ class OutlinedCursorLabel : public gui::SimpleLabel,
   Cursor* getCursor() const { return cursor_; }
   virtual void resized();
 
-  void showSelectButton(bool);
+  void showButtons(WaveformProto);
 
  private:
   Cursor* cursor_;
