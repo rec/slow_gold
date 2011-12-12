@@ -4,6 +4,7 @@
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/Proto.h"
 #include "rec/widget/waveform/OutlinedCursorLabel.h"
 
 using namespace rec::gui;
@@ -12,16 +13,16 @@ using namespace rec::gui::color;
 namespace rec {
 
 static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
-static const int CAPTION_INTERNAL_PADDING = 10;
+static const int CAPTION_PADDING_INTERNAL = 10;
 static const int CAPTION_OFFSET = 10000;
 static const int CAPTION_PADDING = 2;
 static const int CAPTION_X_OFFSET = -3;
 static const int CAPTION_Y_OFFSET = 6;
 static const int REMAINS_FUDGE = 8;
+static const int SELECTION_BUTTON_PADDING = -2;
 
 namespace widget {
 namespace waveform {
-
 
 Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
                int index, bool hasCaption)
@@ -182,12 +183,20 @@ void Cursor::paint(Graphics& g) {
 void Cursor::setCaption(const String& cap) {
   String c = cap.length() ? cap : String("---");
   caption_->setText(c, false);
+  resizeCaption();
+}
+
+void Cursor::resizeCaption() {
   juce::Rectangle<int> bounds = caption_->getBounds();
 
-  float height = caption_->getFont().getHeight() + CAPTION_PADDING * 2;
-  bounds.setHeight(static_cast<int>(height));
+  int height = static_cast<int>(caption_->getFont().getHeight() + CAPTION_PADDING * 2);
+  bounds.setHeight(height);
   captionWidth_ = caption_->getFont().getStringWidth(caption_->getText()) +
-    CAPTION_INTERNAL_PADDING;
+    CAPTION_PADDING_INTERNAL;
+
+  if (caption_->getNumChildComponents())
+    captionWidth_ += (height + SELECTION_BUTTON_PADDING);
+
   bounds.setWidth(captionWidth_);
   caption_->setBounds(bounds);
 }

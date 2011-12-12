@@ -169,6 +169,7 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
       cursors_.push_back(c);
     }
     c->setTime(time);
+    c->setSelected(loopPoints.loop_point(i).selected());
     if (hasCaption)
       c->setCaption(str(loopPoints.loop_point(i).name()));
   }

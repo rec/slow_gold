@@ -102,10 +102,8 @@ bool read(const string& from, Message* to) {
   YAML::Parser parser(s);
 
   YAML::Node node;
-  if (!parser.GetNextDocument(node)) {
-    LOG(ERROR) << "Didn't get any data";
+  if (!parser.GetNextDocument(node))
     return false;
-  }
 
   for (YAML::Iterator i = node.begin(); i != node.end(); ++i) {
     string name = str(i.first());

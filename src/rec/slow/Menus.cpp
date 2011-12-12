@@ -116,8 +116,9 @@ void addDisplayMenu(TargetManager* t, PopupMenu* popup) {
   t->addCommandItem(popup, Command::TOGGLE_GRID_DISPLAY);
   t->addCommandItem(popup, Command::TOGGLE_PARALLEL_WAVEFORMS);
   t->addCommandItem(popup, Command::TOGGLE_FOLLOW_CURSOR);
-  t->addCommandItem(popup, Command::TOGGLE_SHOW_TOOLTIPS);
   t->addCommandItem(popup, Command::TOGGLE_SHOW_HELP_PANE);
+  t->addCommandItem(popup, Command::TOGGLE_SHOW_TOOLTIPS);
+  t->addCommandItem(popup, Command::TOGGLE_SHOW_SELECTION_BUTTONS);
 }
 
 }  // namespace

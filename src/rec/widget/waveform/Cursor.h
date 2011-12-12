@@ -43,6 +43,7 @@ class Cursor : public Component,
   void layout();
   void setCaption(const String&);
   Waveform* waveform() const { return waveform_; }
+  void resizeCaption();
 
  private:
   void adjustCaption();
@@ -57,6 +58,7 @@ class Cursor : public Component,
   int mouseDragX_;
   ptr<OutlinedCursorLabel> caption_;
   int captionWidth_;
+  bool showSelection_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);
 };

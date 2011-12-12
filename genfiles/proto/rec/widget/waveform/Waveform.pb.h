@@ -237,6 +237,13 @@ class WaveformProto : public ::google::protobuf::Message {
   inline ::rec::widget::waveform::WaveformProto_Layout layout() const;
   inline void set_layout(::rec::widget::waveform::WaveformProto_Layout value);
   
+  // optional bool show_selection_buttons = 17 [default = true];
+  inline bool has_show_selection_buttons() const;
+  inline void clear_show_selection_buttons();
+  static const int kShowSelectionButtonsFieldNumber = 17;
+  inline bool show_selection_buttons() const;
+  inline void set_show_selection_buttons(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.widget.waveform.WaveformProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -256,11 +263,12 @@ class WaveformProto : public ::google::protobuf::Message {
   bool parallel_waveforms_;
   bool show_names_in_waveform_;
   int layout_;
+  bool show_selection_buttons_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(15 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -508,6 +516,22 @@ inline void WaveformProto::set_layout(::rec::widget::waveform::WaveformProto_Lay
   GOOGLE_DCHECK(::rec::widget::waveform::WaveformProto_Layout_IsValid(value));
   _set_bit(13);
   layout_ = value;
+}
+
+// optional bool show_selection_buttons = 17 [default = true];
+inline bool WaveformProto::has_show_selection_buttons() const {
+  return _has_bit(14);
+}
+inline void WaveformProto::clear_show_selection_buttons() {
+  show_selection_buttons_ = true;
+  _clear_bit(14);
+}
+inline bool WaveformProto::show_selection_buttons() const {
+  return show_selection_buttons_;
+}
+inline void WaveformProto::set_show_selection_buttons(bool value) {
+  _set_bit(14);
+  show_selection_buttons_ = value;
 }
 
 

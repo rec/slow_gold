@@ -177,6 +177,14 @@ command {
   }
 }
 command {
+  type: TOGGLE_SHOW_HELP_PANE
+  desc {
+    menu: "Show Help Pane"
+    menu: "Hide Help Pane"
+    full: "Show help in help pane."
+  }
+}
+command {
   type: TOGGLE_SHOW_TOOLTIPS
   desc {
     menu: "Show Tooltips"
@@ -185,9 +193,9 @@ command {
   }
 }
 command {
-  type: TOGGLE_SHOW_HELP_PANE
+  type: TOGGLE_SHOW_SELECTION_BUTTONS
   desc {
-    menu: "Show Help Pane"
+    menu: "Show Loop Point Selection Buttons"
     menu: "Hide Help Pane"
     full: "Show help in help pane."
   }

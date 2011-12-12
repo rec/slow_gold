@@ -27,6 +27,13 @@ command {
   category: "Audio"
 }
 command {
+  type: TOGGLE_SHOW_HELP_PANE
+  is_global_setter: true
+  address { part: { name: "show_help_pane" } }
+  setter_type_name: "rec.slow.GuiSettings"
+  category: "Display"
+}
+command {
   type: TOGGLE_SHOW_TOOLTIPS
   is_global_setter: true
   address { part: { name: "show_tooltips" } }
@@ -34,10 +41,10 @@ command {
   category: "Display"
 }
 command {
-  type: TOGGLE_SHOW_HELP_PANE
+  type: TOGGLE_SHOW_SELECTION_BUTTONS
   is_global_setter: true
-  address { part: { name: "show_help_pane" } }
-  setter_type_name: "rec.slow.GuiSettings"
+  address { part: { name: "show_selection_buttons" } }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
   category: "Display"
 }
 command {
