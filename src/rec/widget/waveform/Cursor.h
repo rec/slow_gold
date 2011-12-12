@@ -26,6 +26,8 @@ class Cursor : public Component,
   virtual ~Cursor();
   virtual void labelTextChanged(juce::Label*);
 
+  void setSelected(bool);
+
   void paint(Graphics& g);
   Samples<44100> getTime() const;
   bool setDragTime(Samples<44100> time);

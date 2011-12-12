@@ -25,6 +25,9 @@ void OutlinedCursorLabel::paint(Graphics& g) {
   gui::SimpleLabel::paint(g);
 }
 
+void OutlinedCursorLabel::setSelected(bool selected) {
+}
+
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec

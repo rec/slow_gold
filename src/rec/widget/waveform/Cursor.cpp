@@ -192,6 +192,10 @@ void Cursor::setCaption(const String& cap) {
   caption_->setBounds(bounds);
 }
 
+void Cursor::setSelected(bool sel) {
+  caption_->setSelected(sel);
+}
+
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
