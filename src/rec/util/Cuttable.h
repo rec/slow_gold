@@ -33,7 +33,7 @@ class Cuttable : public HasCuttable {
 
   virtual bool canCopy() const = 0;
   virtual bool canCut() const = 0;
-  virtual bool canPaste() const = 0;
+  virtual bool canPaste(const string&) const = 0;
   virtual bool paste(const string&) = 0;
   virtual const string cuttableName() const = 0;
   virtual string copy() const = 0;

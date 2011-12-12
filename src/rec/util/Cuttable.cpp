@@ -11,7 +11,7 @@ class EmptyCuttable : public Cuttable {
  public:
   virtual bool canCopy() const { return false; }
   virtual bool canCut() const { return false; }
-  virtual bool canPaste() const { return false; }
+  virtual bool canPaste(const string&) const { return false; }
   virtual bool paste(const string&) { return false;  }
   virtual const string cuttableName() const { return ""; }
   virtual string copy() const { return ""; }
@@ -23,19 +23,15 @@ static HasCuttable* DEFAULT_CUTTABLE = &EMPTY;
 
 Cuttable* current() {
   Component* c = Component::getCurrentlyFocusedComponent();
-  if (HasCuttable* cuttable = dynamic_cast<Cuttable*>(c)) {
-    DLOG(INFO) << "Cuttable component " << str(c->getName());
+  if (HasCuttable* cuttable = dynamic_cast<Cuttable*>(c))
     return cuttable->cuttable();
-  }
 
-  DLOG(INFO) << "Not cuttable " << (c ? c->getName() : "NONE");
   return DEFAULT_CUTTABLE->cuttable();
 }
 
 }  // namespace
 
 bool cutToClipboard() {
-  DLOG(INFO) << "cutToClipboard";
   Cuttable* c = current();
   if (!c->canCut()) {
     beep();
@@ -59,13 +55,8 @@ bool copyToClipboard() {
 
 bool pasteFromClipboard() {
   Cuttable* c = current();
-  if (!c->canPaste()) {
-    beep();
-    return false;
-  }
-
   string s(str(SystemClipboard::getTextFromClipboard()));
-  if (s.empty()) {
+  if (!c->canPaste(s)) {
     beep();
     return false;
   }
@@ -94,7 +85,7 @@ bool canCut() {
 }
 
 bool canPaste() {
-  return current()->canPaste();
+  return current()->canPaste(str(SystemClipboard::getTextFromClipboard()));
 }
 
 const string cuttableName() {

@@ -15,7 +15,7 @@ class LoopsCuttable : public Cuttable {
   virtual ~LoopsCuttable() {}
 
   virtual bool canCopy() const;
-  virtual bool canPaste() const;
+  virtual bool canPaste(const string&) const;
   virtual bool canCut() const;
   virtual string copy() const;
   virtual bool paste(const string&);

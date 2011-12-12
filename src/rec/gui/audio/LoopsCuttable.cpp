@@ -20,7 +20,7 @@ bool LoopsCuttable::canCopy() const {
   return getSelected(loops_, true).loop_point_size();
 }
 
-bool LoopsCuttable::canPaste() const {
+bool LoopsCuttable::canPaste(const string& clipboard) const {
  return true;  // TODO
 }
 
@@ -46,9 +46,9 @@ void LoopsCuttable::cut() {
 
 bool LoopsCuttable::paste(const string& s) {
   LoopPointList lpl;
-  if (!yaml::read(s, &lpl)) 
+  if (!yaml::read(s, &lpl))
     return false;
-    
+
   lpl = rec::audio::addLoopPoints(loops_->getProto(), lpl);
   loops_->setValue(lpl);
   return true;

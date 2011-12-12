@@ -46,7 +46,7 @@ class SongData : public component::Focusable<SetterTextArea>,
 
   virtual bool canCopy() const { return true; }
   virtual bool canCut() const { return false; }
-  virtual bool canPaste() const { return false; }
+  virtual bool canPaste(const string&) const { return false; }
   virtual bool paste(const string&) { return false; }
   virtual const string cuttableName() const { return "SongData"; }
   virtual string copy() const {
