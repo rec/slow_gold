@@ -1,6 +1,7 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
+#include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/BufferFiller.h"
 

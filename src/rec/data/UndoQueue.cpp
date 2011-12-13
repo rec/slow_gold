@@ -12,18 +12,21 @@ static const bool DELETE_UNDO_QUEUE = true;
 
 using file::Output;
 
-UndoQueue::UndoQueue(const File& file, ActionGrouper grouper)
+UndoQueue::UndoQueue(const File& file, ActionGrouper grouper, CanGroup can)
     : writtenTo_(0),
       undoes_(0),
       executedSize_(0),
       preUndoSize_(0),
       running_(false),
-      grouper_(grouper) {
+      grouper_(grouper),
+      canGroup_(can) {
   if (DELETE_UNDO_QUEUE)
     file.deleteFile();
   logfile_.reset(new Output(file));
   if (!grouper_)
-    grouper_ = groupCloseActions;
+    grouper_ = &actionGrouper;
+  if (canGroup_)
+    canGroup_ = canGroup;
 }
 
 UndoQueue::~UndoQueue() {
@@ -46,7 +49,7 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
       return;
   }
 
-#if 0
+#if 1
   DLOG(INFO) << "add: " << e->toString() << "\n"
              << operations.ShortDebugString() << "\n"
              << undo.ShortDebugString();
@@ -60,7 +63,7 @@ void UndoQueue::add(Editable* e, const Operations& operations, const Operations&
   action->mutable_operations()->MergeFrom(operations);
   action->mutable_undo()->MergeFrom(undo);
 
-  if (queue_.empty() || !grouper_(queue_.back(), action.get(), e)) {
+  if (queue_.empty() || !grouper_(*action, queue_.back(), e)) {
     queue_.push_back(action.transfer());
     editables_.push_back(e);
     undoes_ = 0;
@@ -141,10 +144,8 @@ bool UndoQueue::write(bool finish) {
     if (writtenTo_ >= size)
       return false;
 
-    if (!finish && grouper_(queue_.back(), NULL, NULL)) {
-      if (writtenTo_ >= --size)
-        return false;
-    }
+    if (!finish && canGroup_(queue_.back()) && writtenTo_ >= --size)
+      return false;
 
     events.reset(new ActionQueue(queue_.begin() + writtenTo_,
                                  queue_.begin() + size));

@@ -9,21 +9,16 @@ namespace rec {
 namespace data {
 
 static const uint64 MAX_GROUP_TIME = 10000;
-static const bool BREAK_GROUPS_BY_TIME = true;
+static const bool GROUP_BY_TIME = true;
 
-bool groupCloseActions(Action* t, const Action* f, const Editable* e) {
-  uint64 ts = f ? f->timestamp() : juce::Time::currentTimeMillis();
-
-  if (BREAK_GROUPS_BY_TIME && !near(t->timestamp(), ts, MAX_GROUP_TIME))
+bool actionGrouper(const Action& f, Action* t, const Editable* e) {
+  if (GROUP_BY_TIME && !near(t->timestamp(), f.timestamp(), MAX_GROUP_TIME))
     return false;
 
-  if (!f)
-    return true;
-
-  if (!equals(t->file(), f->file()) || t->type_name() != f->type_name())
+  if (!equals(t->file(), f.file()) || t->type_name() != f.type_name())
     return false;
 
-  t->set_timestamp(f->timestamp());
+  t->set_timestamp(f.timestamp());
   t->mutable_operations()->Clear();
   Operation* op = t->mutable_operations()->add_operation();
   op->set_command(Operation::SET);

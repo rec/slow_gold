@@ -3,8 +3,9 @@
 
 #include <vector>
 
-#include "rec/data/Editable.h"
 #include "rec/data/Action.pb.h"
+#include "rec/data/Editable.h"
+#include "rec/data/Grouper.h"
 #include "rec/util/Listener.h"
 
 namespace rec { namespace util { namespace file { class Output; }}}
@@ -12,18 +13,11 @@ namespace rec { namespace util { namespace file { class Output; }}}
 namespace rec {
 namespace data {
 
-// A function that identifies whether the current action can be grouped with a
-// previous action.  If the second action is NULL, it returns true if there is
-// any possibility that this item will be grouped with other items.  If it is
-// not NULL, then the two Actions will be grouped together into the first one if
-// possible, and true returned, else false will be returned and the Action will
-// not be changed.
-typedef bool (*ActionGrouper)(Action* to, const Action* from, const Editable*);
-
 class UndoQueue : public Broadcaster<None> {
  public:
   explicit UndoQueue(const juce::File& file,
-                     ActionGrouper grouper = NULL);
+                     ActionGrouper grouper = NULL,
+                     CanGroup can = NULL);
 
   ~UndoQueue();
 
@@ -56,6 +50,7 @@ class UndoQueue : public Broadcaster<None> {
   int preUndoSize_;
   bool running_;
   ActionGrouper grouper_;
+  CanGroup canGroup_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UndoQueue);
 };
