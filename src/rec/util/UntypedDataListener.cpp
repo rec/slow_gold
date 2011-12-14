@@ -1,7 +1,7 @@
 #include "rec/util/UntypedDataListener.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataRegistry.h"
-#include "rec/data/EditableUpdater.h"
+#include "rec/data/DataUpdater.h"
 
 namespace rec {
 namespace util {

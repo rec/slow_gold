@@ -1,6 +1,6 @@
 #include "rec/data/UntypedEditable.h"
 
-#include "rec/data/EditableUpdater.h"
+#include "rec/data/DataUpdater.h"
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/FieldOps.h"
 #include "rec/util/Copy.h"
@@ -37,7 +37,6 @@ const Value UntypedEditable::getValue(const Address& a) const {
   Value value;
   Lock l(lock_);
   if (!data::copyTo(createMessageField(a), &value)) {
-    // TODO: should be DFATAL.
     LOG(DFATAL) << "Couldn't read value for " << a.ShortDebugString()
                 << ", " << message_->ShortDebugString();
   }
@@ -82,7 +81,7 @@ void UntypedEditable::applyLater(Operations* op) {
 }
 
 void UntypedEditable::needsUpdate() {
-  EditableUpdater::instance()->needsUpdate(this);
+  DataUpdater::instance()->needsUpdate(this);
 }
 
 void UntypedEditable::applyOperations(const Operations& olist,
@@ -91,6 +90,7 @@ void UntypedEditable::applyOperations(const Operations& olist,
     undoes->Clear();
 
   Operation undo;
+  DLOG(INFO) << "Applying " << olist.operation_size();
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);
     Lock l(lock_);
@@ -100,6 +100,7 @@ void UntypedEditable::applyOperations(const Operations& olist,
       undo.add_value()->CopyFrom(Value(*message_));
     }
 
+    DLOG(INFO) << "Applying " << op.ShortDebugString();
     if (!data::apply(createMessageField(op.address()), op)) {
       LOG(DFATAL) << "Couldn't perform operation " << op.DebugString()
                   << "\n --> " << message_->ShortDebugString();
@@ -123,17 +124,18 @@ bool UntypedEditable::update() {
   for (OperationList::iterator i = command.begin(); i != command.end(); ++i) {
     Lock l(lock_);
     applyOperations(**i, &undo);
-    EditableUpdater::instance()->undoQueue()->add(this, **i, undo);
+    DataUpdater::instance()->undoQueue()->addToQueue(this, **i, undo);
   }
 
   stl::deletePointers(&command);
+  updateClients();
 
-  {
-    ptr<Message> msg(clone());
-    broadcaster_.broadcast(*msg);
-  }
-  onDataChange();
   return true;
+}
+
+void UntypedEditable::updateClients() {
+  broadcaster_.broadcast(*ptr<Message>(clone()));
+  onDataChange();
 }
 
 bool UntypedEditable::writeToFile() const {

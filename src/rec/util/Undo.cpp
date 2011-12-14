@@ -1,13 +1,13 @@
 #include "rec/util/Undo.h"
-#include "rec/data/EditableUpdater.h"
+#include "rec/data/DataUpdater.h"
 
 namespace rec {
 namespace util {
 
 using data::UndoQueue;
-using data::EditableUpdater;
+using data::DataUpdater;
 
-static UndoQueue* undoQueue() { return EditableUpdater::instance()->undoQueue(); }
+static UndoQueue* undoQueue() { return DataUpdater::instance()->undoQueue(); }
 
 // How many commands have been undone?
 int undoes() {

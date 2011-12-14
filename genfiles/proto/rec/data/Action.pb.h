@@ -37,6 +37,7 @@ void protobuf_ShutdownFile_rec_2fdata_2fAction_2eproto();
 
 class Source;
 class Action;
+class UndoRecord;
 
 enum Source_Type {
   Source_Type_MENU = 0,
@@ -406,6 +407,139 @@ class Action : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static Action* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class UndoRecord : public ::google::protobuf::Message {
+ public:
+  UndoRecord();
+  virtual ~UndoRecord();
+  
+  UndoRecord(const UndoRecord& from);
+  
+  inline UndoRecord& operator=(const UndoRecord& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UndoRecord& default_instance();
+  
+  void Swap(UndoRecord* other);
+  
+  // implements Message ----------------------------------------------
+  
+  UndoRecord* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UndoRecord& from);
+  void MergeFrom(const UndoRecord& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional string type_name = 1;
+  inline bool has_type_name() const;
+  inline void clear_type_name();
+  static const int kTypeNameFieldNumber = 1;
+  inline const ::std::string& type_name() const;
+  inline void set_type_name(const ::std::string& value);
+  inline void set_type_name(const char* value);
+  inline void set_type_name(const char* value, size_t size);
+  inline ::std::string* mutable_type_name();
+  
+  // optional .rec.util.file.VirtualFile file = 2;
+  inline bool has_file() const;
+  inline void clear_file();
+  static const int kFileFieldNumber = 2;
+  inline const ::rec::util::file::VirtualFile& file() const;
+  inline ::rec::util::file::VirtualFile* mutable_file();
+  
+  // optional string before = 3;
+  inline bool has_before() const;
+  inline void clear_before();
+  static const int kBeforeFieldNumber = 3;
+  inline const ::std::string& before() const;
+  inline void set_before(const ::std::string& value);
+  inline void set_before(const char* value);
+  inline void set_before(const char* value, size_t size);
+  inline ::std::string* mutable_before();
+  
+  // optional string after = 4;
+  inline bool has_after() const;
+  inline void clear_after();
+  static const int kAfterFieldNumber = 4;
+  inline const ::std::string& after() const;
+  inline void set_after(const ::std::string& value);
+  inline void set_after(const char* value);
+  inline void set_after(const char* value, size_t size);
+  inline ::std::string* mutable_after();
+  
+  // optional uint64 timestamp = 5;
+  inline bool has_timestamp() const;
+  inline void clear_timestamp();
+  static const int kTimestampFieldNumber = 5;
+  inline ::google::protobuf::uint64 timestamp() const;
+  inline void set_timestamp(::google::protobuf::uint64 value);
+  
+  // @@protoc_insertion_point(class_scope:rec.data.UndoRecord)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::std::string* type_name_;
+  static const ::std::string _default_type_name_;
+  ::rec::util::file::VirtualFile* file_;
+  ::std::string* before_;
+  static const ::std::string _default_before_;
+  ::std::string* after_;
+  static const ::std::string _default_after_;
+  ::google::protobuf::uint64 timestamp_;
+  friend void  protobuf_AddDesc_rec_2fdata_2fAction_2eproto();
+  friend void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fdata_2fAction_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static UndoRecord* default_instance_;
+};
 // ===================================================================
 
 
@@ -656,6 +790,169 @@ inline ::google::protobuf::uint32 Action::undo_index() const {
 inline void Action::set_undo_index(::google::protobuf::uint32 value) {
   _set_bit(8);
   undo_index_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// UndoRecord
+
+// optional string type_name = 1;
+inline bool UndoRecord::has_type_name() const {
+  return _has_bit(0);
+}
+inline void UndoRecord::clear_type_name() {
+  if (type_name_ != &_default_type_name_) {
+    type_name_->clear();
+  }
+  _clear_bit(0);
+}
+inline const ::std::string& UndoRecord::type_name() const {
+  return *type_name_;
+}
+inline void UndoRecord::set_type_name(const ::std::string& value) {
+  _set_bit(0);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void UndoRecord::set_type_name(const char* value) {
+  _set_bit(0);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void UndoRecord::set_type_name(const char* value, size_t size) {
+  _set_bit(0);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UndoRecord::mutable_type_name() {
+  _set_bit(0);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  return type_name_;
+}
+
+// optional .rec.util.file.VirtualFile file = 2;
+inline bool UndoRecord::has_file() const {
+  return _has_bit(1);
+}
+inline void UndoRecord::clear_file() {
+  if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
+  _clear_bit(1);
+}
+inline const ::rec::util::file::VirtualFile& UndoRecord::file() const {
+  return file_ != NULL ? *file_ : *default_instance_->file_;
+}
+inline ::rec::util::file::VirtualFile* UndoRecord::mutable_file() {
+  _set_bit(1);
+  if (file_ == NULL) file_ = new ::rec::util::file::VirtualFile;
+  return file_;
+}
+
+// optional string before = 3;
+inline bool UndoRecord::has_before() const {
+  return _has_bit(2);
+}
+inline void UndoRecord::clear_before() {
+  if (before_ != &_default_before_) {
+    before_->clear();
+  }
+  _clear_bit(2);
+}
+inline const ::std::string& UndoRecord::before() const {
+  return *before_;
+}
+inline void UndoRecord::set_before(const ::std::string& value) {
+  _set_bit(2);
+  if (before_ == &_default_before_) {
+    before_ = new ::std::string;
+  }
+  before_->assign(value);
+}
+inline void UndoRecord::set_before(const char* value) {
+  _set_bit(2);
+  if (before_ == &_default_before_) {
+    before_ = new ::std::string;
+  }
+  before_->assign(value);
+}
+inline void UndoRecord::set_before(const char* value, size_t size) {
+  _set_bit(2);
+  if (before_ == &_default_before_) {
+    before_ = new ::std::string;
+  }
+  before_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UndoRecord::mutable_before() {
+  _set_bit(2);
+  if (before_ == &_default_before_) {
+    before_ = new ::std::string;
+  }
+  return before_;
+}
+
+// optional string after = 4;
+inline bool UndoRecord::has_after() const {
+  return _has_bit(3);
+}
+inline void UndoRecord::clear_after() {
+  if (after_ != &_default_after_) {
+    after_->clear();
+  }
+  _clear_bit(3);
+}
+inline const ::std::string& UndoRecord::after() const {
+  return *after_;
+}
+inline void UndoRecord::set_after(const ::std::string& value) {
+  _set_bit(3);
+  if (after_ == &_default_after_) {
+    after_ = new ::std::string;
+  }
+  after_->assign(value);
+}
+inline void UndoRecord::set_after(const char* value) {
+  _set_bit(3);
+  if (after_ == &_default_after_) {
+    after_ = new ::std::string;
+  }
+  after_->assign(value);
+}
+inline void UndoRecord::set_after(const char* value, size_t size) {
+  _set_bit(3);
+  if (after_ == &_default_after_) {
+    after_ = new ::std::string;
+  }
+  after_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UndoRecord::mutable_after() {
+  _set_bit(3);
+  if (after_ == &_default_after_) {
+    after_ = new ::std::string;
+  }
+  return after_;
+}
+
+// optional uint64 timestamp = 5;
+inline bool UndoRecord::has_timestamp() const {
+  return _has_bit(4);
+}
+inline void UndoRecord::clear_timestamp() {
+  timestamp_ = GOOGLE_ULONGLONG(0);
+  _clear_bit(4);
+}
+inline ::google::protobuf::uint64 UndoRecord::timestamp() const {
+  return timestamp_;
+}
+inline void UndoRecord::set_timestamp(::google::protobuf::uint64 value) {
+  _set_bit(4);
+  timestamp_ = value;
 }
 
 

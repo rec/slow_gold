@@ -50,7 +50,9 @@ class EmptyTypedEditable : public TypedEditable<Proto> {
   virtual bool writeToFile() const { return true; }
   virtual bool fileReadSuccess() const { return false; }
   virtual void applyLater(Operations*) {}
-  virtual void applyOperations(const Operations&, Operations*) {}
+  virtual void applyOperations(const Operations&, Operations*) {
+    LOG(ERROR) << "Applying an empty operation";
+  }
   virtual bool isEmpty() const { return true; }
 
  private:

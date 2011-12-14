@@ -319,12 +319,12 @@
           <File RelativePath="..\..\..\..\src\rec\data\Data.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Data.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\DataRegistry.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataUpdater.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataUpdater.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\EditableUpdater.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\data\EditableUpdater.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\Grouper.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\data\Grouper.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\MessageListener.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\NewData.h"/>
           <Filter Name="proto">
             <File RelativePath="..\..\..\..\src\rec\data\proto\Comparer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
@@ -348,6 +348,7 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\data\StartStop.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\TypedEditable.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\TypedListener.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\UndoQueue.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\UndoQueue.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\UntypedEditable.cpp"/>

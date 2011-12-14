@@ -37,9 +37,9 @@ void Editable::append(const Value& value, const Address& address) {
   setOp(this, valueOp(Operation::APPEND, address, value), true);
 }
 
-void Editable::setValue(const Value& value, const Address& address,
-                        bool undoable) {
-  setOp(this, valueOp(Operation::SET, address, value), undoable);
+void setValue(Editable* e, const Value& value, const Address& address,
+              bool undoable) {
+  setOp(e, valueOp(Operation::SET, address, value), undoable);
 }
 
 }  // namespace data

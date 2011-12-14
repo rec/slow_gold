@@ -331,13 +331,10 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp">
-      <Filter>Slow\rec\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\EditableUpdater.cpp">
-      <Filter>Slow\rec\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\Grouper.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
@@ -1164,13 +1161,16 @@
     <ClInclude Include="..\..\..\..\src\rec\data\DataRegistry.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\EditableUpdater.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageListener.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\Grouper.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\NewData.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h">
@@ -1210,6 +1210,9 @@
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\TypedEditable.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\TypedListener.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h">

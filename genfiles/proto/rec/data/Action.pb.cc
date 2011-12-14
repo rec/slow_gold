@@ -23,6 +23,9 @@ const ::google::protobuf::Descriptor* Action_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Action_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* Action_Type_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* UndoRecord_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  UndoRecord_reflection_ = NULL;
 
 }  // namespace
 
@@ -75,6 +78,25 @@ void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Action));
   Action_Type_descriptor_ = Action_descriptor_->enum_type(0);
+  UndoRecord_descriptor_ = file->message_type(2);
+  static const int UndoRecord_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UndoRecord, type_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UndoRecord, file_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UndoRecord, before_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UndoRecord, after_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UndoRecord, timestamp_),
+  };
+  UndoRecord_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      UndoRecord_descriptor_,
+      UndoRecord::default_instance_,
+      UndoRecord_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UndoRecord, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UndoRecord, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(UndoRecord));
 }
 
 namespace {
@@ -91,6 +113,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     Source_descriptor_, &Source::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Action_descriptor_, &Action::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    UndoRecord_descriptor_, &UndoRecord::default_instance());
 }
 
 }  // namespace
@@ -100,6 +124,8 @@ void protobuf_ShutdownFile_rec_2fdata_2fAction_2eproto() {
   delete Source_reflection_;
   delete Action::default_instance_;
   delete Action_reflection_;
+  delete UndoRecord::default_instance_;
+  delete UndoRecord_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fdata_2fAction_2eproto() {
@@ -125,13 +151,19 @@ void protobuf_AddDesc_rec_2fdata_2fAction_2eproto() {
     "c.data.Operations\022\"\n\004undo\030\010 \001(\0132\024.rec.da"
     "ta.Operations\022\022\n\nundo_index\030\t \001(\r\"S\n\004Typ"
     "e\022\r\n\tOPERATION\020\000\022\010\n\004UNDO\020\001\022\010\n\004REDO\020\002\022\024\n\020"
-    "START_OF_SESSION\020\003\022\022\n\016END_OF_SESSION\020\004", 598);
+    "START_OF_SESSION\020\003\022\022\n\016END_OF_SESSION\020\004\"{"
+    "\n\nUndoRecord\022\021\n\ttype_name\030\001 \001(\t\022(\n\004file\030"
+    "\002 \001(\0132\032.rec.util.file.VirtualFile\022\016\n\006bef"
+    "ore\030\003 \001(\t\022\r\n\005after\030\004 \001(\t\022\021\n\ttimestamp\030\005 "
+    "\001(\004", 723);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/Action.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
   Action::default_instance_ = new Action();
+  UndoRecord::default_instance_ = new UndoRecord();
   Source::default_instance_->InitAsDefaultInstance();
   Action::default_instance_->InitAsDefaultInstance();
+  UndoRecord::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fdata_2fAction_2eproto);
 }
 
@@ -1064,6 +1096,432 @@ void Action::Swap(Action* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = Action_descriptor_;
   metadata.reflection = Action_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+const ::std::string UndoRecord::_default_type_name_;
+const ::std::string UndoRecord::_default_before_;
+const ::std::string UndoRecord::_default_after_;
+#ifndef _MSC_VER
+const int UndoRecord::kTypeNameFieldNumber;
+const int UndoRecord::kFileFieldNumber;
+const int UndoRecord::kBeforeFieldNumber;
+const int UndoRecord::kAfterFieldNumber;
+const int UndoRecord::kTimestampFieldNumber;
+#endif  // !_MSC_VER
+
+UndoRecord::UndoRecord()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void UndoRecord::InitAsDefaultInstance() {
+  file_ = const_cast< ::rec::util::file::VirtualFile*>(&::rec::util::file::VirtualFile::default_instance());
+}
+
+UndoRecord::UndoRecord(const UndoRecord& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void UndoRecord::SharedCtor() {
+  _cached_size_ = 0;
+  type_name_ = const_cast< ::std::string*>(&_default_type_name_);
+  file_ = NULL;
+  before_ = const_cast< ::std::string*>(&_default_before_);
+  after_ = const_cast< ::std::string*>(&_default_after_);
+  timestamp_ = GOOGLE_ULONGLONG(0);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+UndoRecord::~UndoRecord() {
+  SharedDtor();
+}
+
+void UndoRecord::SharedDtor() {
+  if (type_name_ != &_default_type_name_) {
+    delete type_name_;
+  }
+  if (before_ != &_default_before_) {
+    delete before_;
+  }
+  if (after_ != &_default_after_) {
+    delete after_;
+  }
+  if (this != default_instance_) {
+    delete file_;
+  }
+}
+
+void UndoRecord::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* UndoRecord::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return UndoRecord_descriptor_;
+}
+
+const UndoRecord& UndoRecord::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fdata_2fAction_2eproto();  return *default_instance_;
+}
+
+UndoRecord* UndoRecord::default_instance_ = NULL;
+
+UndoRecord* UndoRecord::New() const {
+  return new UndoRecord;
+}
+
+void UndoRecord::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (_has_bit(0)) {
+      if (type_name_ != &_default_type_name_) {
+        type_name_->clear();
+      }
+    }
+    if (_has_bit(1)) {
+      if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
+    }
+    if (_has_bit(2)) {
+      if (before_ != &_default_before_) {
+        before_->clear();
+      }
+    }
+    if (_has_bit(3)) {
+      if (after_ != &_default_after_) {
+        after_->clear();
+      }
+    }
+    timestamp_ = GOOGLE_ULONGLONG(0);
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool UndoRecord::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string type_name = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_type_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->type_name().data(), this->type_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_file;
+        break;
+      }
+      
+      // optional .rec.util.file.VirtualFile file = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_file:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_file()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_before;
+        break;
+      }
+      
+      // optional string before = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_before:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_before()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->before().data(), this->before().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_after;
+        break;
+      }
+      
+      // optional string after = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_after:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_after()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->after().data(), this->after().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_timestamp;
+        break;
+      }
+      
+      // optional uint64 timestamp = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_timestamp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &timestamp_)));
+          _set_bit(4);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void UndoRecord::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional string type_name = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->type_name().data(), this->type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->type_name(), output);
+  }
+  
+  // optional .rec.util.file.VirtualFile file = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->file(), output);
+  }
+  
+  // optional string before = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->before().data(), this->before().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->before(), output);
+  }
+  
+  // optional string after = 4;
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->after().data(), this->after().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->after(), output);
+  }
+  
+  // optional uint64 timestamp = 5;
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(5, this->timestamp(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* UndoRecord::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional string type_name = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->type_name().data(), this->type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->type_name(), target);
+  }
+  
+  // optional .rec.util.file.VirtualFile file = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->file(), target);
+  }
+  
+  // optional string before = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->before().data(), this->before().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->before(), target);
+  }
+  
+  // optional string after = 4;
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->after().data(), this->after().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->after(), target);
+  }
+  
+  // optional uint64 timestamp = 5;
+  if (_has_bit(4)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(5, this->timestamp(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int UndoRecord::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string type_name = 1;
+    if (has_type_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->type_name());
+    }
+    
+    // optional .rec.util.file.VirtualFile file = 2;
+    if (has_file()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->file());
+    }
+    
+    // optional string before = 3;
+    if (has_before()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->before());
+    }
+    
+    // optional string after = 4;
+    if (has_after()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->after());
+    }
+    
+    // optional uint64 timestamp = 5;
+    if (has_timestamp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->timestamp());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void UndoRecord::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const UndoRecord* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const UndoRecord*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void UndoRecord::MergeFrom(const UndoRecord& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      set_type_name(from.type_name());
+    }
+    if (from._has_bit(1)) {
+      mutable_file()->::rec::util::file::VirtualFile::MergeFrom(from.file());
+    }
+    if (from._has_bit(2)) {
+      set_before(from.before());
+    }
+    if (from._has_bit(3)) {
+      set_after(from.after());
+    }
+    if (from._has_bit(4)) {
+      set_timestamp(from.timestamp());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void UndoRecord::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UndoRecord::CopyFrom(const UndoRecord& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UndoRecord::IsInitialized() const {
+  
+  return true;
+}
+
+void UndoRecord::Swap(UndoRecord* other) {
+  if (other != this) {
+    std::swap(type_name_, other->type_name_);
+    std::swap(file_, other->file_);
+    std::swap(before_, other->before_);
+    std::swap(after_, other->after_);
+    std::swap(timestamp_, other->timestamp_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata UndoRecord::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = UndoRecord_descriptor_;
+  metadata.reflection = UndoRecord_reflection_;
   return metadata;
 }
 

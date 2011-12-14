@@ -167,14 +167,19 @@ void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
 }
 
 template <typename Type>
-void add(Broadcaster<Type>* broadcaster, Listener<Type>* listener) {
-  broadcaster->addListener(listener);
-}
+bool move(Broadcaster<Type>* from, Broadcaster<Type>* to, Listener<Type>* li) {
+  DCHECK(li);
+  if (from == to)
+    return false;
 
-template <typename Type>
-void remove(Broadcaster<Type>* broadcaster, Listener<Type>* listener) {
-  broadcaster->removeListener(listener);
-}
+  Lock l(li->lock());
+
+  if (from)
+    from->removeListener(li);
+  if (to)
+    to->addListener(li);
+
+  return true;
 
 }  // namespace listener
 }  // namespace util

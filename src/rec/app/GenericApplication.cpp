@@ -8,7 +8,7 @@
 #include "rec/gui/Dialog.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/Undo.h"
-#include "rec/data/EditableUpdater.h"
+#include "rec/data/DataUpdater.h"
 
 namespace rec {
 namespace app {
@@ -29,7 +29,7 @@ void GenericApplication::initialise(const String&) {
 
   audio::format::mpg123::initializeOnce();
   window_.reset(createWindow());
-  data::EditableUpdater::instance()->start(window_->getDefaultRegistry(),
+  data::DataUpdater::instance()->start(window_->getDefaultRegistry(),
                                            window_->getDataRegistry());
   window_->initialise();
 
@@ -47,7 +47,7 @@ void GenericApplication::shutdown() {
   gui::dialog::shutdownDialog();
   window_->shutdown();
   util::thread::trash::waitForAllThreadsToExit(1000);
-  data::EditableUpdater::instance()->stop();
+  data::DataUpdater::instance()->stop();
 
   LOG(INFO) << name_ << ": shutdown finished.";
 }

@@ -1,6 +1,6 @@
 #include <set>
 
-#include "rec/data/EditableUpdater.h"
+#include "rec/data/DataUpdater.h"
 
 #include "rec/app/Files.h"
 #include "rec/data/Data.h"
@@ -30,7 +30,7 @@ ThreadDesc writeDesc = {5, 100, "Editable::Write"};
 
 // TODO:  move to slow::Threads
 template <typename Method>
-Thread* makeLoop(const ThreadDesc& d, EditableUpdater* upd, Method method) {
+Thread* makeLoop(const ThreadDesc& d, DataUpdater* upd, Method method) {
   thread_ptr<Thread> t(thread::makeLoop(d.period_, d.name_, upd, method));
 
   t->setPriority(d.priority_);
@@ -51,29 +51,29 @@ static bool lockedCopy(EditableSet* from, EditableSet* to, CriticalSection* lock
 }  // namespace
 
 
-UntypedEditable* EditableUpdater::make(const string& name,
+UntypedEditable* DataUpdater::make(const string& name,
                                        const File& file,
                                        const VirtualFile* vf) {
   return dataRegistry_->make(name, file, vf);
 }
 
-EditableUpdater::EditableUpdater(DefaultRegistry* registry,
+DataUpdater::DataUpdater(DefaultRegistry* registry,
                                  DataRegistry* dataRegistry)
     : undoQueue_(app::getAppFile("UndoQueue.Action")),
       defaultRegistry_(registry),
       dataRegistry_(dataRegistry),
-      updateThread_(makeLoop(updateDesc, this, &EditableUpdater::update)),
-      writeThread_(makeLoop(writeDesc, this, &EditableUpdater::write)) {
+      updateThread_(makeLoop(updateDesc, this, &DataUpdater::update)),
+      writeThread_(makeLoop(writeDesc, this, &DataUpdater::write)) {
 }
 
-EditableUpdater::~EditableUpdater() {
+DataUpdater::~DataUpdater() {
   writeThread_->stopThread(THREAD_SHUTDOWN_TIME);
   updateThread_->stopThread(THREAD_SHUTDOWN_TIME);
   stl::deleteMapPointers(&map_);
 }
 
 // A piece of data got new information!
-void EditableUpdater::needsUpdate(UntypedEditable* data) {
+void DataUpdater::needsUpdate(UntypedEditable* data) {
   {
     Lock l(lock_);
     updateData_.insert(data);
@@ -81,7 +81,7 @@ void EditableUpdater::needsUpdate(UntypedEditable* data) {
   updateThread_->notify();
 }
 
-bool EditableUpdater::update() {
+bool DataUpdater::update() {
   EditableSet ds, writeable;
   if (!lockedCopy(&updateData_, &ds, &lock_))
     return false;
@@ -97,9 +97,7 @@ bool EditableUpdater::update() {
   return true;
 }
 
-bool EditableUpdater::write() {
-  undoQueue_.write(false);
-
+bool DataUpdater::write() {
   EditableSet ds;
   if (!lockedCopy(&writeData_, &ds, &lock_))
     return false;
@@ -110,21 +108,22 @@ bool EditableUpdater::write() {
   return true;
 }
 
-void EditableUpdater::start(DefaultRegistry* r, DataRegistry* dr) {
+void DataUpdater::start(DefaultRegistry* r, DataRegistry* dr) {
   CHECK(!instance_);
-  instance_ = new EditableUpdater(r, dr);
+  instance_ = new DataUpdater(r, dr);
 }
 
-void EditableUpdater::stop() {
+void DataUpdater::stop() {
   delete instance_;
   instance_ = NULL;
 }
 
-EditableUpdater* EditableUpdater::instance_ = NULL;
+DataUpdater* DataUpdater::instance_ = NULL;
 
 const DefaultRegistry& defaultRegistry() {
-  return EditableUpdater::instance()->defaultRegistry();
+  return DataUpdater::instance()->defaultRegistry();
 }
 
 }  // namespace data
 }  // namespace rec
+

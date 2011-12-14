@@ -34,7 +34,7 @@ class ptr {
 
   Type* xfer() { return transfer(); }
 
-  void swap(ptr & that) {
+  void swap(ptr& that) {
     Type* tmp = that.p_;
     that.p_ = this->p_;
     this->p_ = tmp;

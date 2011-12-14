@@ -14,6 +14,12 @@ string getTypeName() {
 // A little slower because it uses reflection.
 const string& getTypeName(const Message&);
 
+inline Message* clone(const Message& m) {
+  ptr<Message> p(m.New());
+  p->CopyFrom(m);
+  return p.transfer();
+}
+
 }  // namespace util
 }  // namespace rec
 

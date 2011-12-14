@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="52gMWfmul" name="tests">
+  <MAINGROUP id="HjVSGrLGH" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -345,18 +345,18 @@
               resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataRegistry.h" id="MaxY2FG3x"
               name="DataRegistry.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/DataUpdater.cpp" id="OXhX9YlLe"
+              name="DataUpdater.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataUpdater.h" id="Us4zit44f"
+              name="DataUpdater.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/Editable.cpp" id="KApo1Sygl"
               name="Editable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Editable.h" id="CLOwHwcIL"
               name="Editable.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/EditableUpdater.cpp" id="8ahrmF6El"
-              name="EditableUpdater.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/EditableUpdater.h" id="rgFOB4OCQ"
-              name="EditableUpdater.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/Grouper.cpp" id="WplI430y8"
-              name="Grouper.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/Grouper.h" id="rmN4JawnQ"
-              name="Grouper.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/MessageListener.h" id="1LpFC8Ukz"
+              name="MessageListener.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/NewData.h" id="azMEFOHSZ"
+              name="NewData.h" resource="0"/>
         <GROUP id="2PaHmfyN0" name="proto">
           <FILE compile="0" file="../../src/rec/data/proto/Comparer.h" id="8PlkqlMk8"
                 name="Comparer.h" resource="0"/>
@@ -401,6 +401,8 @@
               name="StartStop.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/TypedEditable.h" id="LT3fwQHkp"
               name="TypedEditable.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/TypedListener.h" id="jNF4gx6xe"
+              name="TypedListener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/UndoQueue.cpp" id="BTYTIdGXw"
               name="UndoQueue.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/UndoQueue.h" id="D3SUiAT0e"
@@ -1379,7 +1381,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="SXHXr4fmK" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Tfc5FAflN" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

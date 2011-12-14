@@ -8,51 +8,41 @@
 #include "rec/data/Grouper.h"
 #include "rec/util/Listener.h"
 
-namespace rec { namespace util { namespace file { class Output; }}}
-
 namespace rec {
 namespace data {
 
 class UndoQueue : public Broadcaster<None> {
  public:
-  explicit UndoQueue(const juce::File& file,
-                     ActionGrouper grouper = NULL,
-                     CanGroup can = NULL);
-
+  UndoQueue() : undoes_(0), running_(false) {}
   ~UndoQueue();
 
-  void add(Editable*, const Operations& command, const Operations& undo);
+  void addToQueue(Editable*, const Message& before, const Message& after);
 
-  int undoable() const { Lock l(lock_); return preUndoSize_ - undoes_; }
+  int undoable() const { Lock l(lock_); return queue_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
-  void undo() { if (undoable()) redoOrUndo(Action::UNDO); }
-  void redo() { if (undoes_) redoOrUndo(Action::REDO); }
+  void undo();
+  void redo();
 
   void start();
   void stop();
 
-  bool write(bool finish = false);
+  void dump(const string&) const;
 
  private:
-  void redoOrUndo(Action::Type);
+  void redoOrUndo(bool isUndo);
+  bool discardRedos();
 
-  typedef std::vector<Action*> ActionQueue;
+  class Entry;
+  typedef std::vector<Entry*> Queue;
 
-  ActionQueue queue_;
-  ptr<file::Output> logfile_;
+  Queue queue_;
   juce::CriticalSection lock_;
-  EditableList editables_;
 
-  int writtenTo_;
   int undoes_;
-  int executedSize_;
-  int preUndoSize_;
-  bool running_;
-  ActionGrouper grouper_;
-  CanGroup canGroup_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UndoQueue);
+  bool running_;
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(UndoQueue);
 };
 
 }  // namespace data

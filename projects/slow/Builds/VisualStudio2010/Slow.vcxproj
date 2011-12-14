@@ -172,9 +172,8 @@
     <ClCompile Include="..\..\..\..\src\rec\command\TickedDataSetter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\EditableUpdater.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\Grouper.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp"/>
@@ -451,9 +450,10 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataRegistry.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\EditableUpdater.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\Grouper.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageListener.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\NewData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h"/>
@@ -467,6 +467,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\StartStop.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\TypedEditable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\TypedListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\UntypedEditable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Value.h"/>
