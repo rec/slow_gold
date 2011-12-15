@@ -2,19 +2,69 @@
 
 #include "rec/data/DataUpdater.h"
 
-#include "rec/app/Files.h"
-#include "rec/data/Data.h"
-#include "rec/data/DataRegistry.h"
-#include "rec/data/TypedEditable.h"
-#include "rec/util/DefaultRegistry.h"
-#include "rec/util/STL.h"
-#include "rec/util/thread/MakeThread.h"
-#include "rec/util/thread/Trash.h"
-
 namespace rec {
 namespace data {
 
+// A piece of data got new information!
+void DataUpdater::needsUpdate(Data* data) {
+  {
+    Lock l(lock_);
+    updateData_.insert(data);
+    if (updateThread_)
+      updateThread_->notify();
+  }
+}
+
+bool DataUpdater::update() {
+  Lock l(lock_);
+
+  if (!updateThread_)
+    updateThread_ = Thread::getCurrentThread();
+
+  DataSet toUpdate, toWrite;
+  updateData_.swap(toUpdate);
+
+  {
+    ScopedUnlock u(lock_);
+    for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {
+      if ((**i)->updateClients())
+        toWrite.insert(*i);
+    }
+
+    if (toWrite.empty())
+      return false;
+  }
+
+  stl::moveTo(&toWrite, writeData_);
+  if (writeThread_)
+    writeThread_->notify();
+
+  return true;
+}
+
+bool DataUpdater::write() {
+  DataSet toWrite;
+  {
+    Lock l(lock_);
+    if (!writeThread_)
+      writeThread_ = Thread::getCurrentThread();
+
+    if (writeData_.empty())
+      return false;
+
+    writeData_.swap(toWrite);
+  }
+
+  for (DataSet::iterator i = ds.begin(); i != ds.end(); ++i)
+    (*i)->writeToFile();
+
+  return true;
+}
+
+#if 0
 namespace {
+
+// TODO: move these to the main thread area.
 
 static const int THREAD_SHUTDOWN_TIME = 10000;
 
@@ -24,11 +74,9 @@ struct ThreadDesc {
   const char* name_;
 };
 
-ThreadDesc updateDesc = {5, 40, "Editable::Update"};
-ThreadDesc writeDesc = {5, 100, "Editable::Write"};
+ThreadDesc updateDesc = {5, 40, "Data::Update"};
+ThreadDesc writeDesc = {5, 100, "Data::Write"};
 
-
-// TODO:  move to slow::Threads
 template <typename Method>
 Thread* makeLoop(const ThreadDesc& d, DataUpdater* upd, Method method) {
   thread_ptr<Thread> t(thread::makeLoop(d.period_, d.name_, upd, method));
@@ -39,73 +87,12 @@ Thread* makeLoop(const ThreadDesc& d, DataUpdater* upd, Method method) {
   return t.transfer();
 }
 
-static bool lockedCopy(EditableSet* from, EditableSet* to, CriticalSection* lock) {
-  Lock l(*lock);
-  bool hasData = !from->empty();
-  if (hasData)
-    stl::moveTo(from, to);
-
-  return hasData;
-}
-
 }  // namespace
-
-
-UntypedEditable* DataUpdater::make(const string& name,
-                                       const File& file,
-                                       const VirtualFile* vf) {
-  return dataRegistry_->make(name, file, vf);
-}
-
-DataUpdater::DataUpdater(DefaultRegistry* registry,
-                                 DataRegistry* dataRegistry)
-    : undoQueue_(app::getAppFile("UndoQueue.Action")),
-      defaultRegistry_(registry),
-      dataRegistry_(dataRegistry),
-      updateThread_(makeLoop(updateDesc, this, &DataUpdater::update)),
-      writeThread_(makeLoop(writeDesc, this, &DataUpdater::write)) {
-}
 
 DataUpdater::~DataUpdater() {
   writeThread_->stopThread(THREAD_SHUTDOWN_TIME);
   updateThread_->stopThread(THREAD_SHUTDOWN_TIME);
   stl::deleteMapPointers(&map_);
-}
-
-// A piece of data got new information!
-void DataUpdater::needsUpdate(UntypedEditable* data) {
-  {
-    Lock l(lock_);
-    updateData_.insert(data);
-  }
-  updateThread_->notify();
-}
-
-bool DataUpdater::update() {
-  EditableSet ds, writeable;
-  if (!lockedCopy(&updateData_, &ds, &lock_))
-    return false;
-
-  for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i) {
-    if ((*i)->update())
-      writeable.insert(*i);
-  }
-
-  lockedCopy(&writeable, &writeData_, &lock_);
-  writeThread_->notify();
-
-  return true;
-}
-
-bool DataUpdater::write() {
-  EditableSet ds;
-  if (!lockedCopy(&writeData_, &ds, &lock_))
-    return false;
-
-  for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i)
-    (*i)->writeToFile();
-
-  return true;
 }
 
 void DataUpdater::start(DefaultRegistry* r, DataRegistry* dr) {
@@ -124,6 +111,7 @@ const DefaultRegistry& defaultRegistry() {
   return DataUpdater::instance()->defaultRegistry();
 }
 
+#endif
+
 }  // namespace data
 }  // namespace rec
-

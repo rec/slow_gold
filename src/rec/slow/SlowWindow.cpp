@@ -90,7 +90,7 @@ DefaultRegistry* SlowWindow::getDefaultRegistry() {
 
   // r->registerDefault(*loops);
   // r->registerDefault(*layout);
-  r->registerDefault(*windowPosition);
+  // r->registerDefault(*windowPosition);
 
   return r.transfer();
 }

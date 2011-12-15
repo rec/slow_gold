@@ -5,10 +5,6 @@ namespace data {
 
 const char* const EMPTY_DIRECTORY_NAME = "empty-empty-empty";
 
-File editableFile(const string& typeName, const VirtualFile* vf) {
-  return getShadowFile(vf ? *vf : file::none(), str(typeName));
-}
-
 File dataFile(const VirtualFile* vf, const string& typeName) {
   File directory = vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
   return directory.getChildFile(typeName);

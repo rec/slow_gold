@@ -12,49 +12,29 @@ class DataRegistry;
 class UndoQueue;
 class Data;
 
+// DataUpdater sends out updates to data clients and writes copies of the data
+// to the file system.
 class DataUpdater {
  private:
-  DataUpdater(DefaultRegistry*, DataRegistry*);
-  ~DataUpdater();
+  DataUpdater() : updateThread_(NULL), writeThread_(NULL) {}
+  ~DataUpdater() {}
 
- public:
-  // A piece of data got new information!
   void needsUpdate(Data*);
   bool update();
   bool write();
 
-  UndoQueue* undoQueue() { return &undoQueue_; }
-  Data* getData(const string& typeName, const VirtualFile* vf);
-
-  const DefaultRegistry& defaultRegistry() { return *defaultRegistry_; }
-  DataRegistry* dataRegistry() const { return dataRegistry_.get(); }
-
  private:
   CriticalSection lock_;
 
-  typedef std::map<string, Data*> DataMap;
-  typedef std::set<string, Data*> DataSet;
+  Thread* updateThread_;
+  Thread* writeThread_;
 
-  DataMap map_;
-  UndoQueue undoQueue_;
-  ptr<DefaultRegistry> defaultRegistry_;
-  ptr<data::DataRegistry> dataRegistry_;
+  typedef std::set<string, Data*> DataSet;
 
   DataSet updateData_;
   DataSet writeData_;
-  thread_ptr<Thread> updateThread_;
-  thread_ptr<Thread> writeThread_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataUpdater);
-
-
-  static DataUpdater* instance() { return instance_; }
-  static void start(DefaultRegistry*, DataRegistry*);
-  static void stop();
-  const CriticalSection& lock() { return lock_; }
-
- private:
-  static DataUpdater* instance_;
 };
 
 }  // namespace data
