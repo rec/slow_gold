@@ -18,9 +18,12 @@ struct Opener {
   }
 
   ~Opener() {
-    if (changed_)
-      data_->reportChange(before_, undoable_);
-   }
+    if (changed_) {
+      if (undoable_)
+        data_->reportUndo(before_);
+      data_->reportChange();
+    }
+  }
 
   const Proto& operator*() const { return get(); }
   Proto& operator*() { return *mutable_get(); }
@@ -64,6 +67,8 @@ bool applyToData(Functor functor, Data* data) {
 inline void updateClients(Data* data) {
   data->broadcast(ptr<Message>(Opener<Message>(data).get()));
 }
+
+typedef Opener<Message> UntypedOpener;
 
 }  // namespace data
 }  // namespace rec

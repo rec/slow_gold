@@ -4,39 +4,39 @@
 namespace rec {
 namespace util {
 
-using data::UndoQueue;
+using data::UndoStack;
 using data::DataUpdater;
 
-static UndoQueue* undoQueue() { return DataUpdater::instance()->undoQueue(); }
+static UndoStack* undoStack() { return DataUpdater::instance()->undoStack(); }
 
 // How many commands have been undone?
 int undoes() {
-  return undoQueue()->undoes();
+  return undoStack()->undoes();
 }
 
 // How many commands can be undone?
 int undoable() {
-  return undoQueue()->undoable();
+  return undoStack()->undoable();
 }
 
 void undo() {
-  undoQueue()->undo();
+  undoStack()->undo();
 }
 
 void redo() {
-  undoQueue()->redo();
+  undoStack()->redo();
 }
 
 void startUndo() {
-  undoQueue()->start();
+  undoStack()->start();
 }
 
 void stopUndo() {
-  undoQueue()->stop();
+  undoStack()->stop();
 }
 
 void addUndoListener(Listener<None>* lst) {
-  undoQueue()->addListener(lst);
+  undoStack()->addListener(lst);
 }
 
 }  // namespace util

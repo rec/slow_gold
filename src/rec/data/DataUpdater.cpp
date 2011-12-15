@@ -61,57 +61,5 @@ bool DataUpdater::write() {
   return true;
 }
 
-#if 0
-namespace {
-
-// TODO: move these to the main thread area.
-
-static const int THREAD_SHUTDOWN_TIME = 10000;
-
-struct ThreadDesc {
-  int priority_;
-  int period_;
-  const char* name_;
-};
-
-ThreadDesc updateDesc = {5, 40, "Data::Update"};
-ThreadDesc writeDesc = {5, 100, "Data::Write"};
-
-template <typename Method>
-Thread* makeLoop(const ThreadDesc& d, DataUpdater* upd, Method method) {
-  thread_ptr<Thread> t(thread::makeLoop(d.period_, d.name_, upd, method));
-
-  t->setPriority(d.priority_);
-  t->startThread();
-
-  return t.transfer();
-}
-
-}  // namespace
-
-DataUpdater::~DataUpdater() {
-  writeThread_->stopThread(THREAD_SHUTDOWN_TIME);
-  updateThread_->stopThread(THREAD_SHUTDOWN_TIME);
-  stl::deleteMapPointers(&map_);
-}
-
-void DataUpdater::start(DefaultRegistry* r, DataRegistry* dr) {
-  CHECK(!instance_);
-  instance_ = new DataUpdater(r, dr);
-}
-
-void DataUpdater::stop() {
-  delete instance_;
-  instance_ = NULL;
-}
-
-DataUpdater* DataUpdater::instance_ = NULL;
-
-const DefaultRegistry& defaultRegistry() {
-  return DataUpdater::instance()->defaultRegistry();
-}
-
-#endif
-
 }  // namespace data
 }  // namespace rec

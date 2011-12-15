@@ -124,7 +124,7 @@ bool UntypedEditable::update() {
   for (OperationList::iterator i = command.begin(); i != command.end(); ++i) {
     Lock l(lock_);
     applyOperations(**i, &undo);
-    DataUpdater::instance()->undoQueue()->addToQueue(this, **i, undo);
+    DataUpdater::instance()->undoStack()->addToQueue(this, **i, undo);
   }
 
   stl::deletePointers(&command);

@@ -1,5 +1,5 @@
-#ifndef __REC_DATA_PROTOREGISTRY__
-#define __REC_DATA_PROTOREGISTRY__
+#ifndef __REC_DATA_MESSAGEMAKER__
+#define __REC_DATA_MESSAGEMAKER__
 
 #include <map>
 
@@ -10,29 +10,29 @@
 namespace rec {
 namespace data {
 
-class ProtoRegistry {
+class MessageMaker {
  public:
-  ProtoRegistry() {}
+  MessageMaker() {}
+  ~MessageMaker();
 
-  ~ProtoRegistry();
+  Message* makeData(const string& typeName);
 
   template <typename Proto>
-  void registerProto() {
-    doRegister(Proto::default_instance(), false);
+  void registerClass() {
+    registerInstance(Proto::default_instance(), false);
   }
 
   void registerInstance(const Message& m, bool copy = true);
-  Message* make(const string& typeName);
 
  private:
   typedef std::pair<Message*, bool> RegistryEntry;
   typedef std::map<string, RegistryEntry> Registry;
   Registry registry_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(ProtoRegistry);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(MessageMaker);
 };
 
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_PROTOREGISTRY__
+#endif  // __REC_DATA_MESSAGEMAKER__

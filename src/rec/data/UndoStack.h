@@ -3,31 +3,25 @@
 
 #include <vector>
 
-#include "rec/data/Action.pb.h"
-#include "rec/data/Editable.h"
-#include "rec/data/Grouper.h"
 #include "rec/util/Listener.h"
 
 namespace rec {
 namespace data {
 
-class UndoQueue : public Broadcaster<None> {
- public:
-  UndoQueue() : undoes_(0), running_(false) {}
-  ~UndoQueue();
+class Data;
 
-  void addToQueue(Editable*, const Message& before, const Message& after);
+class UndoStack : public Broadcaster<None> {
+ public:
+  UndoStack() : undoes_(0), running_(false) {}
+  ~UndoStack();
+
+  void addToQueue(Data*, const Message& before, const Message& after);
 
   int undoable() const { Lock l(lock_); return queue_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
   void undo();
   void redo();
-
-  void start();
-  void stop();
-
-  void dump(const string&) const;
 
  private:
   void redoOrUndo(bool isUndo);
@@ -38,11 +32,9 @@ class UndoQueue : public Broadcaster<None> {
 
   Queue queue_;
   juce::CriticalSection lock_;
-
   int undoes_;
 
-  bool running_;
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(UndoQueue);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(UndoStack);
 };
 
 }  // namespace data

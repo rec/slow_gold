@@ -7,43 +7,20 @@ namespace rec {
 namespace data {
 
 class Data;
-
-class MessageMaker {
- public:
-  virtual Message* makeMessage(const string& typeName) const = 0;
-};
-
-class DataMaker {
- public:
-  virtual Data* makeData(Message*) const = 0;
-};
+class MessageMaker;
 
 class DataMap {
  public:
-  DataMap(const MessageMaker& mm, const DataMaker& dm)
-      : messageMaker_(mm), dataMaker_(dm) {
-  }
+  DataMap() {}
+  virtual ~DataMap() {}
 
-  ~DataMap();
-
-  struct DataFile {
-    DataFile(Data* d, const File& f) : data_(d), file_(f) {}
-
-    ptr<Data> data_
-    File file_;
-  };
-
-  const DataFile* getData(const string& typeName, const VirtualFile* vf);
-  typedef std::map<string, DataFile*> Map;
-
- private:
-  CriticalSection lock_;
-  Map map_;
-  const MessageMaker& messageMaker_;
-  const DataMaker& dataMaker_;
-
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(DataMap);
+  // If the VirtualFile is file::none(), then this represents global Data, but
+  // if it's NULL then it represents empty data that is not stored to disk.
+  virtual const Data* getData(const string& typeName, const VirtualFile*) = 0;
 };
+
+DataMap* getDataMap();
+MessageMaker* getMessageMaker();
 
 }  // namespace data
 }  // namespace rec

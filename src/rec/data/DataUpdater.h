@@ -2,14 +2,14 @@
 #define __REC_DATA_PERSIST_EDITABLEUPDATER__
 
 #include "rec/data/NewData.h"
-#include "rec/data/UndoQueue.h"
+#include "rec/data/UndoStack.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace data {
 
 class DataRegistry;
-class UndoQueue;
+class UndoStack;
 class Data;
 
 // DataUpdater sends out updates to data clients and writes copies of the data
