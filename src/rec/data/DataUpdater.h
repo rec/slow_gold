@@ -19,7 +19,7 @@ class DataUpdater {
   DataUpdater() : updateThread_(NULL), writeThread_(NULL) {}
   ~DataUpdater() {}
 
-  void needsUpdate(Data*);
+  void reportChange(Data*);
   bool update();
   bool write();
 

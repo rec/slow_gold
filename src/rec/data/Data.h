@@ -14,11 +14,11 @@ template <typename Proto> class Opener;
 
 class Data : public Broadcaster<const Message&> {
  private:
-  Data(Message* m) : message_(m) { DCHECK(m); }
+  Data(Message* m) : message_(m) {}
   virtual ~Data() {}
 
   // Report a change to the protocol buffer.
-  virtual void addToUndoStack(const Message& before) = 0;
+  virtual void pushOnUndoStack(const Message& before) = 0;
   virtual void reportChange() const = 0;
 
   CriticalSection lock_;

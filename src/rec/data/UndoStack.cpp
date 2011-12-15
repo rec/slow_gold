@@ -46,38 +46,40 @@ class UndoStack::Entry {
 
 UndoStack::~UndoStack() {
   Lock l(lock_);
-  stl::deletePointers(&queue_);
+  stl::deletePointers(&stack_);
 }
 
-bool UndoStack::discardRedos() {
+int UndoStack::popRedoes() {
   if (!undoes_)
-    return false;
+    return 0;
 
-  uint newSize = queue_.size() - undoes_;
-  for (uint i = newSize; i < queue_.size(); ++i)
-    delete queue_[i];
+  uint newSize = stack_.size() - undoes_;
+  for (uint i = newSize; i < stack_.size(); ++i)
+    delete stack_[i];
 
-  queue_.resize(newSize);
+  stack_.resize(newSize);
+
+  int undoes = undoes_;
   undoes_ = 0;
+  return undoes;
 }
 
-void UndoStack::addToQueue(Data* e, const Message& before,
-                           const Message& after) {
+void UndoStack::push(Data* e, const Message& before, const Message& after) {
   {
     Lock l(lock_);
     if (!(running_ && operations.undoable()))
       return;
 
     ptr<Entry> ue(new Entry(e, before, after), canMerge);
-    if (discardRedos() || !queue_.size() || !queue.back()->mergeInto(ue.get()))
+    if (discardRedos() || !stack_.size() || !stack_.back()->mergeInto(ue.get()))
       q->push_back(ue.transfer());
   }
   broadcast(None());
 }
 
 void UndoStack::redoOrUndo(bool isUndo) {
-  int pos = queue_.size() - (isUndo ? undoes_-- : ++undoes_);
-  queue_[pos]->setDataValue(isUndo);
+  int pos = stack_.size() - (isUndo ? undoes_-- : ++undoes_);
+  stack_[pos]->setDataValue(isUndo);
 
   broadcast(None());
 }

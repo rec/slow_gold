@@ -7,7 +7,6 @@ namespace rec {
 namespace data {
 
 class Data;
-class MessageMaker;
 
 class DataMap {
  public:
@@ -18,9 +17,6 @@ class DataMap {
   // if it's NULL then it represents empty data that is not stored to disk.
   virtual const Data* getData(const string& typeName, const VirtualFile*) = 0;
 };
-
-DataMap* getDataMap();
-MessageMaker* getMessageMaker();
 
 }  // namespace data
 }  // namespace rec

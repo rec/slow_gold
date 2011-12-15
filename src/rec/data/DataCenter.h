@@ -1,0 +1,31 @@
+#ifndef __REC_DATA_DATACENTER__
+#define __REC_DATA_DATACENTER__
+
+#include "rec/base/base.h"
+
+namespace rec {
+namespace data {
+
+class DataMaker;
+class DataMap;
+class DataUpdater;
+class MessageRegistryAndMaker;
+class UndoStack;
+
+struct DataCenter {
+  DataCenter();
+  ~DataCenter();
+
+  ptr<MessageRegistryAndMaker> registry_;
+  ptr<DataUpdater> updater_;
+  ptr<UndoStack> undo_;
+  ptr<DataMaker> maker_;
+  ptr<DataMap> map_;
+};
+
+const DataCenter& getDataCenter();
+
+}  // namespace data
+}  // namespace rec
+
+#endif  // __REC_DATA_DATACENTER__

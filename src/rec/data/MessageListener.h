@@ -6,6 +6,7 @@
 namespace rec {
 namespace data {
 
+#if 0
 
 template <typename Proto>
 bool apply(Function f, Data* data) {
@@ -24,7 +25,7 @@ bool apply(Function f, Data* data) {
   LOG(DFATAL) << getTypeName<Proto> << "!= " << getTypeName(*message);
   return false;
 }
-
+#endif
 
 
 typedef Listener<const Message&> DataListener;

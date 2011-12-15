@@ -6,7 +6,7 @@ namespace rec {
 namespace data {
 
 // A piece of data got new information!
-void DataUpdater::needsUpdate(Data* data) {
+void DataUpdater::reportChange(Data* data) {
   {
     Lock l(lock_);
     updateData_.insert(data);

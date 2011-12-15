@@ -1,5 +1,5 @@
-#ifndef __REC_EVENT_EVENTQUEUE__
-#define __REC_EVENT_EVENTQUEUE__
+#ifndef __REC_EVENT_EVENTSTACK__
+#define __REC_EVENT_EVENTSTACK__
 
 #include <vector>
 
@@ -15,9 +15,9 @@ class UndoStack : public Broadcaster<None> {
   UndoStack() : undoes_(0), running_(false) {}
   ~UndoStack();
 
-  void addToQueue(Data*, const Message& before, const Message& after);
+  void push(Data*, const Message& before, const Message& after);
 
-  int undoable() const { Lock l(lock_); return queue_.size() - undoes_; }
+  int undoable() const { Lock l(lock_); return stack_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
   void undo();
@@ -25,12 +25,12 @@ class UndoStack : public Broadcaster<None> {
 
  private:
   void redoOrUndo(bool isUndo);
-  bool discardRedos();
+  int popRedos();
 
   class Entry;
-  typedef std::vector<Entry*> Queue;
+  typedef std::vector<Entry*> Stack;
 
-  Queue queue_;
+  Stack stack_;
   juce::CriticalSection lock_;
   int undoes_;
 
@@ -40,4 +40,4 @@ class UndoStack : public Broadcaster<None> {
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_EVENT_EVENTQUEUE__
+#endif  // __REC_EVENT_EVENTSTACK__
