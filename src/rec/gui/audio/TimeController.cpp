@@ -3,7 +3,7 @@
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/data/Data.h"
 #include "rec/gui/Color.h"
-#include "rec/gui/icon/MPStart.svg.h"
+#include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/music/Metadata.h"
 #include "rec/util/thread/CallAsync.h"

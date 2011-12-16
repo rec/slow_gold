@@ -6,7 +6,8 @@
 
 using juce::Drawable;
 
-// Original command line: {cmd} {args}
+// Created by the command line:
+// {commandline}
 
 Drawable* {classname}::get() {{
   static const char data[] = {svg};

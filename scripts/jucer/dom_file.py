@@ -12,6 +12,10 @@
 import random
 import xml.dom.minidom
 
+def randomId():
+  return ''.join(random.choice(DomFile.CHARS) for i in xrange(DomFile.ID_SIZE))
+
+
 class DomFile:
   """Creates XML DOM elements that have Jucer-style 9-character random IDs."""
 
@@ -30,9 +34,7 @@ class DomFile:
 
     element = self.dom.createElement(xmlName)
 
-    id = ''.join(random.choice(DomFile.CHARS) for i in xrange(DomFile.ID_SIZE))
-    element.setAttribute('id', id)
-
+    element.setAttribute('id', randomId())
     for k, v in attributes.iteritems():
       element.setAttribute(k, v)
 

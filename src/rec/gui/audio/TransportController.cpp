@@ -2,7 +2,7 @@
 
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/gui/audio/TimeController.h"
-#include "rec/gui/icon/MPStart.svg.h"
+#include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/icon/ZoomIn.svg.h"
 #include "rec/util/thread/CallAsync.h"

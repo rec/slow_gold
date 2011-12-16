@@ -12,6 +12,8 @@
 import dom_file
 import filetree
 
+RANDOMIZE_IDS = not True
+
 class JucerDomFile(dom_file.DomFile):
   def __init__(self, filename, is_test, root):
     dom_file.DomFile.__init__(self, filename)
@@ -34,7 +36,10 @@ class JucerDomFile(dom_file.DomFile):
         self.setFileIdDict(g, path, depth + 1)
 
   def createFromDict(self, xmlName, path, **attributes):
-    id = self.file_id_dict.get(path + '/' + attributes['name'], None)
+    if RANDOMIZE_IDS:
+      id = dom_file.randomId()
+    else:
+      id = self.file_id_dict.get(path + '/' + attributes['name'], None)
     if id:
       attributes.update(id=id)
     return self.create(xmlName, **attributes)
