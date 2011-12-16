@@ -29,7 +29,7 @@ class DialComponent : public Component,
   static const double REDRAW_ANGLE;
 
  protected:
-  void onDataChange(const LoopPointList&);
+  void operator()(const LoopPointList&);
 
  private:
   void recomputeAngle();

@@ -1,11 +1,13 @@
 #ifndef __REC_DATA_DATAOPS__
 #define __REC_DATA_DATAOPS__
 
-#include "rec/base/base.h"
+#include "rec/util/Proto.h"
 
 namespace rec {
 namespace data {
 namespace file {
+
+Data* getData(const string& typeName, const VirtualFile* vf);
 
 void set(const Message& m, const VirtualFile* vf, bool undoable = true);
 
@@ -22,6 +24,8 @@ void apply(Functor functor, VirtualFile*);
 
 namespace global {
 
+Data* getData(const string& typeName);
+
 void set(const Message& m, bool undoable = true);
 
 template <typename Proto>
@@ -36,6 +40,8 @@ void apply(Functor functor);
 }  // namespace global
 
 namespace empty {
+
+Data* getData(const string& typeName);
 
 void set(const Message& m, bool undoable = true);
 
@@ -59,8 +65,6 @@ void apply(Functor functor);
 //
 
 namespace file {
-
-Data* getData(const string& typeName, const VirtualFile* vf);
 
 inline Data* getData(const Message& m, const VirtualFile* vf) {
   return getData(getTypeName(m), vf);
@@ -89,6 +93,10 @@ void apply(Functor functor, VirtualFile*);
 
 namespace global {
 
+inline Data* getData(const string& typeName) {
+  return file:;getData(typeName, &file::none());
+}
+
 inline void set(const Message& m, bool u = true) {
   file::set(m, &file::none(), u);
 }
@@ -111,6 +119,10 @@ void apply(Functor functor, VirtualFile*);
 }  // namespace global
 
 namespace empty {
+
+inline Data* getData(const string& typeName) {
+  return file:;getData(typeName, NULL);
+}
 
 inline void set(const Message& m, bool u = true) {
   file::set(m, NULL, u);

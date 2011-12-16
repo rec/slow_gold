@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Dky9zDEBE" name="Command">
+  <MAINGROUP id="hwWf1iVLB" name="Command">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -319,24 +319,52 @@
               name="Address.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Address.h" id="NJIaplMw8"
               name="Address.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/AddressListener.h" id="yZ1vZx551"
+              name="AddressListener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/Data.cpp" id="Sa84zrUY5"
               name="Data.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Data.h" id="0USqVpFec" name="Data.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/DataRegistry.h" id="OJR7SAjx3"
-              name="DataRegistry.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/DataCenter.cpp" id="GMVbdTaSO"
+              name="DataCenter.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataCenter.h" id="r610RgwcD"
+              name="DataCenter.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/DataImpl.cpp" id="5aQ4c5avA"
+              name="DataImpl.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataImpl.h" id="LTbJ9scsv"
+              name="DataImpl.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataListener.h" id="g4A52KTNe"
+              name="DataListener.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataMaker.h" id="VjQIGQHjJ"
+              name="DataMaker.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataMakerImpl.h" id="jqSRA6VDy"
+              name="DataMakerImpl.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/DataMap.cpp" id="NZ5KS590h"
+              name="DataMap.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataMap.h" id="FtSakJfNy"
+              name="DataMap.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/DataMapImpl.cpp" id="lqwaAXyju"
+              name="DataMapImpl.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataMapImpl.h" id="UsTbZFjk6"
+              name="DataMapImpl.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/DataOps.cpp" id="iYdZz04AO"
+              name="DataOps.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataOps.h" id="2b3MiHRXC"
+              name="DataOps.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/DataUpdater.cpp" id="7qaTAfwHB"
               name="DataUpdater.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataUpdater.h" id="G0dzos0Gs"
               name="DataUpdater.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/Editable.cpp" id="JpMjNWYsy"
-              name="Editable.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/Editable.h" id="st7rIAFY7"
-              name="Editable.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/MessageListener.h" id="3UxUahuLP"
-              name="MessageListener.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/NewData.h" id="uwFkdaxfl"
-              name="NewData.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/MessageMaker.h" id="cDRSjihSa"
+              name="MessageMaker.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/MessageRegistry.h" id="Tx97NYOk6"
+              name="MessageRegistry.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/MessageRegistryAndMaker.cpp"
+              id="hGAPEgWiv" name="MessageRegistryAndMaker.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/MessageRegistryAndMaker.h"
+              id="MnY2VAYAG" name="MessageRegistryAndMaker.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/Opener.h" id="fs9k0iZW4"
+              name="Opener.h" resource="0"/>
         <GROUP id="PN3hOtUWb" name="proto">
           <FILE compile="0" file="../../src/rec/data/proto/Comparer.h" id="gwnHCpawk"
                 name="Comparer.h" resource="0"/>
@@ -373,20 +401,14 @@
           <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="c3l9MHuGe"
                 name="Types.h" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/data/StartStop.h" id="oKcP95sjU"
-              name="StartStop.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/TypedEditable.h" id="A9fvOS6JD"
-              name="TypedEditable.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/TypedListener.h" id="vVlsKf6rI"
-              name="TypedListener.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/UndoQueue.cpp" id="kMw1ISdMo"
-              name="UndoQueue.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/UndoQueue.h" id="Nkc9Tkja0"
-              name="UndoQueue.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/UntypedEditable.cpp" id="FNkohyfap"
-              name="UntypedEditable.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/UntypedEditable.h" id="8um7TOfOC"
-              name="UntypedEditable.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/UndoStack.cpp" id="qSwkMOEnC"
+              name="UndoStack.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/UndoStack.h" id="oPhhUDLyp"
+              name="UndoStack.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/UntypedDataListener.cpp"
+              id="0DtEkm9BT" name="UntypedDataListener.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/UntypedDataListener.h" id="5khtRJUVx"
+              name="UntypedDataListener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/Value.cpp" id="EkgPWwZ7E"
               name="Value.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Value.h" id="OYk91aaAT"
@@ -941,8 +963,6 @@
               name="Cuttable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="VwgCDr4Ep"
               name="Cuttable.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/DataListener.h" id="5HyK96q4K"
-              name="DataListener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Defaulter.cpp" id="r1laIsTFq"
               name="Defaulter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="KPc16cdSD"
@@ -979,6 +999,8 @@
               name="FormatTime.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Listener.h" id="U47ht1vDh"
               name="Listener.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/ListenerAdaptor.h" id="C6B2UV3Rh"
+              name="ListenerAdaptor.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/LoopPoint.cpp" id="zXm5DBC5f"
               name="LoopPoint.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/LoopPoint.h" id="NVGpA3DAi"
@@ -1003,8 +1025,6 @@
               name="Proto.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="Z58jWDkgr"
               name="Range.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/SingleListener.h" id="D884PvN5L"
-              name="SingleListener.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="OrwebqVEp" name="STL.h"
               resource="0"/>
         <FILE compile="0" file="../../src/rec/util/TestData.h" id="DgQ1cDJB0"
@@ -1049,10 +1069,6 @@
               name="Undo.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Undo.h" id="GUZaNwQse" name="Undo.h"
               resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/UntypedDataListener.cpp"
-              id="5Gja1Xhy9" name="UntypedDataListener.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/UntypedDataListener.h" id="VJ5wpMEu0"
-              name="UntypedDataListener.h" resource="0"/>
         <GROUP id="ck4JLMRUI" name="unused">
           <FILE compile="0" file="../../src/rec/util/unused/Circular.h" id="KNwVbr3yz"
                 name="Circular.h" resource="0"/>
@@ -1069,10 +1085,6 @@
           <FILE compile="0" file="../../src/rec/util/unused/Switcher.h" id="uP0d1ECDe"
                 name="Switcher.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/util/UpdateRequester.cpp" id="Sns9Rdf1I"
-              name="UpdateRequester.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/UpdateRequester.h" id="Mlb4f1TTS"
-              name="UpdateRequester.h" resource="0"/>
       </GROUP>
       <GROUP id="SUnByOVEB" name="widget">
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="pywYbaxoY"
@@ -1188,10 +1200,6 @@
           </GROUP>
         </GROUP>
         <GROUP id="w0cToJxUH" name="data">
-          <FILE compile="1" file="../../genfiles/proto/rec/data/Action.pb.cc"
-                id="nzZgjtaz1" name="Action.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/data/Action.pb.h"
-                id="kvQwbakf0" name="Action.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/data/Operation.pb.cc"
                 id="lCIPg60Gg" name="Operation.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/data/Operation.pb.h"
@@ -1325,7 +1333,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="P6w8IxYTH" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ixEEwoNri" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

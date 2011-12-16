@@ -104,7 +104,7 @@ TransformController::TransformController()
 
 TransformController::~TransformController() {}
 
-void TransformController::onDataChange(const Stretch& s) {
+void TransformController::operator()(const Stretch& s) {
   MessageManagerLock l;
   playbackSpeed_.setEnabled(s.enabled());
   pitchScale_.setEnabled(s.enabled());
@@ -112,7 +112,7 @@ void TransformController::onDataChange(const Stretch& s) {
   stereoComboBox_.setEnabled(s.enabled());
 }
 
-void TransformController::onDataChange(const StereoProto& stereo) {
+void TransformController::operator()(const StereoProto& stereo) {
   Sides sides = STEREO;
   if (stereo.type())
     sides = static_cast<Sides>(2 + stereo.side());

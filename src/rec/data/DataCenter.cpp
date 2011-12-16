@@ -1,3 +1,4 @@
+#include "rec/data/DataMakerImpl.h"
 #include "rec/data/DataMapImpl.h"
 #include "rec/data/DataUpdater.h"
 #include "rec/data/MessageRegistryAndMaker.h"
@@ -9,12 +10,11 @@ namespace data {
 DataCenter() : registry_(new MessageRegistryAndMaker),
                updater_(new DataUpdater),
                undo_(new UndoStack),
-               maker_(new DataImpl(NULL, updater_.get(), &undo_.get())),
+               maker_(new DataMakerImpl(updater_.get(), &undo_.get())),
                map_(new DataMapImpl(registry_.get(), maker_.get())) {
 }
 
-DataCenter::~DataCenter() {
-}
+DataCenter::~DataCenter() {}
 
 const DataCenter& getDataCenter() {
   static DataCenter dataCenter;

@@ -24,7 +24,7 @@ class SetterToggle : public juce::ToggleButton,
     setToggleState(state, false);
   }
 
-  virtual void onDataChange(const Message&) {
+  virtual void operator()(const Message&) {
     thread::callAsync(this, &SetterToggle::setToggle, getValue().bool_f());
   }
 

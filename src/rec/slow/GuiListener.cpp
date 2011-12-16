@@ -17,7 +17,7 @@ GuiListener::GuiListener(Instance* i) : HasInstance(i),
                                         lastComponent_(NULL) {
 }
 
-void GuiListener::onDataChange(const GuiSettings& settings) {
+void GuiListener::operator()(const GuiSettings& settings) {
   if (!settings.show_tooltips())
     tooltipWindow_.reset();
 

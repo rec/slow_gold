@@ -19,7 +19,7 @@ class OutlinedCursorLabel : public gui::SimpleLabel,
   virtual ~OutlinedCursorLabel();
 
   void setSelected(bool);
-  virtual void onDataChange(const WaveformProto&);
+  virtual void operator()(const WaveformProto&);
 
   virtual void paint(Graphics&);
   virtual void buttonClicked(juce::Button*);

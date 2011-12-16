@@ -52,12 +52,12 @@ void CurrentTime::operator()(Samples<44100> t) {
   }
 }
 
-void CurrentTime::onDataChange(const ZoomProto& zoom) {
+void CurrentTime::operator()(const ZoomProto& zoom) {
   Lock l(lock_);
   zoom_ = zoom;
 }
 
-void CurrentTime::onDataChange(const LoopPointList& loops) {
+void CurrentTime::operator()(const LoopPointList& loops) {
   Lock l(lock_);
   length_ = loops.length();
   if (loops.has_length()) {
@@ -79,7 +79,7 @@ void CurrentTime::onDataChange(const LoopPointList& loops) {
   }
 }
 
-void CurrentTime::onDataChange(const GuiSettings& settings) {
+void CurrentTime::operator()(const GuiSettings& settings) {
   Lock l(lock_);
   followCursor_ = settings.follow_cursor();
 }

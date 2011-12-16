@@ -25,7 +25,7 @@ class Loops : public component::Focusable<TableController>,
   virtual Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected,
                                              Component* existingComponentToUpdate);
 
-  virtual void onDataChange(const LoopPointList&);
+  virtual void operator()(const LoopPointList&);
   virtual int getNumRows();
   virtual Cuttable* cuttable() { return cuttable_.get(); }
   virtual void selectedRowsChanged(int lastRowSelected);

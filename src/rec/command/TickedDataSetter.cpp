@@ -12,7 +12,7 @@ TickedDataSetter::TickedDataSetter(ApplicationCommandInfo* info,
       info_(info) {
 }
 
-void TickedDataSetter::onDataChange(const Message&) {
+void TickedDataSetter::operator()(const Message&) {
   data::Value v = getValue();
   info_->setTicked(v.get<bool>());
 

@@ -53,9 +53,9 @@ class Player : public DataListener<Gain>,
   Level* level() { return &level_; }
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
-  virtual void onDataChange(const Gain&);
-  virtual void onDataChange(const StereoProto&);
-  virtual void onDataChange(const stretch::Stretch&);
+  virtual void operator()(const Gain&);
+  virtual void operator()(const StereoProto&);
+  virtual void operator()(const stretch::Stretch&);
 
   void setGain(double);
 

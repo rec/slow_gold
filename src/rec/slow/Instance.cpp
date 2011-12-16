@@ -97,7 +97,7 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  data::editable<VirtualFile>()->onDataChange();
+  data::editable<VirtualFile>()->operator()();
   UpdateRequester::requestAllUpdates();
   startUndo();
   addUndoListener(menus_.get());

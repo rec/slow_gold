@@ -331,10 +331,25 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp">
       <Filter>Command\rec\data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataCenter.cpp">
+      <Filter>Command\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataImpl.cpp">
+      <Filter>Command\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataMap.cpp">
+      <Filter>Command\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataMapImpl.cpp">
+      <Filter>Command\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataOps.cpp">
+      <Filter>Command\rec\data</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp">
       <Filter>Command\rec\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\data\MessageRegistryAndMaker.cpp">
       <Filter>Command\rec\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
@@ -355,10 +370,10 @@
     <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedTyper.cpp">
       <Filter>Command\rec\data\proto</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\UndoQueue.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\data\UndoStack.cpp">
       <Filter>Command\rec\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\UntypedEditable.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\data\UntypedDataListener.cpp">
       <Filter>Command\rec\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\Value.cpp">
@@ -733,14 +748,8 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp">
       <Filter>Command\rec\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\UntypedDataListener.cpp">
-      <Filter>Command\rec\util</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp">
       <Filter>Command\rec\util\unused</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\UpdateRequester.cpp">
-      <Filter>Command\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp">
       <Filter>Command\rec\widget\status</Filter>
@@ -804,9 +813,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\map\CommandMap.pb.cc">
       <Filter>Command\proto\rec\command\map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc">
-      <Filter>Command\proto\rec\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc">
       <Filter>Command\proto\rec\data</Filter>
@@ -1155,22 +1161,49 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\AddressListener.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\DataRegistry.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataImpl.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataListener.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataMaker.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataMakerImpl.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataMap.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataMapImpl.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataOps.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageMaker.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\MessageListener.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistry.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\NewData.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistryAndMaker.h">
+      <Filter>Command\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Opener.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h">
@@ -1206,19 +1239,10 @@
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h">
       <Filter>Command\rec\data\proto</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\StartStop.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\UndoStack.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\TypedEditable.h">
-      <Filter>Command\rec\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\TypedListener.h">
-      <Filter>Command\rec\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h">
-      <Filter>Command\rec\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\UntypedEditable.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\UntypedDataListener.h">
       <Filter>Command\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Value.h">
@@ -1671,9 +1695,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\DataListener.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
@@ -1704,6 +1725,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Listener.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\ListenerAdaptor.h">
+      <Filter>Command\rec\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\LoopPoint.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
@@ -1723,9 +1747,6 @@
       <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\SingleListener.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h">
@@ -1785,9 +1806,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Undo.h">
       <Filter>Command\rec\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\UntypedDataListener.h">
-      <Filter>Command\rec\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\unused\Circular.h">
       <Filter>Command\rec\util\unused</Filter>
     </ClInclude>
@@ -1805,9 +1823,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\unused\Switcher.h">
       <Filter>Command\rec\util\unused</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\UpdateRequester.h">
-      <Filter>Command\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\Painter.h">
       <Filter>Command\rec\widget</Filter>
@@ -1880,9 +1895,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\map\CommandMap.pb.h">
       <Filter>Command\proto\rec\command\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.h">
-      <Filter>Command\proto\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h">
       <Filter>Command\proto\rec\data</Filter>

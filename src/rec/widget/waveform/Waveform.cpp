@@ -134,7 +134,7 @@ double Waveform::pixelsPerSample() const {
   return getWidth() / (1.0 * getTimeRange().size());
 }
 
-void Waveform::onDataChange(const WaveformProto& proto) {
+void Waveform::operator()(const WaveformProto& proto) {
   {
     Lock l(lock_);
     desc_ = proto;
@@ -142,7 +142,7 @@ void Waveform::onDataChange(const WaveformProto& proto) {
   thread::callAsync(this, &Waveform::layout);
 }
 
-void Waveform::onDataChange(const LoopPointList& loopPoints) {
+void Waveform::operator()(const LoopPointList& loopPoints) {
   BlockSet newSelection = rec::audio::getTimeSelection(loopPoints);
   bool isDraggingCursor;
   BlockSet oldSelection;
@@ -193,7 +193,7 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
   repaintBlocks(dirty);
 }
 
-void Waveform::onDataChange(const ZoomProto& zp) {
+void Waveform::operator()(const ZoomProto& zp) {
   {
     Lock l(lock_);
     zoom_ = zp;
@@ -215,7 +215,7 @@ static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
   }
 }
 
-void Waveform::onDataChange(const Mode& mode) {
+void Waveform::operator()(const Mode& mode) {
   Lock l(lock_);
   setMouseCursor(getCursor(mode));
 }

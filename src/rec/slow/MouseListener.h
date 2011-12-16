@@ -31,8 +31,8 @@ class MouseListener : public HasInstance,
   virtual void mouseUp(const MouseEvent&);
   virtual void operator()(const widget::waveform::MouseWheelEvent&);
   virtual void setMode(const Mode& m) { mode_ = m; }
-  virtual void onDataChange(const widget::waveform::ZoomProto&) {}
-  virtual void onDataChange(const Mode& m) { setMode(m); }
+  virtual void operator()(const widget::waveform::ZoomProto&) {}
+  virtual void operator()(const Mode& m) { setMode(m); }
   void toggleAddLoopPointMode();
 
  private:

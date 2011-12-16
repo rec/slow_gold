@@ -59,7 +59,7 @@ int Loops::getNumRows() {
   return loops_.loop_point_size();
 }
 
-void Loops::onDataChange(const LoopPointList& loops) {
+void Loops::operator()(const LoopPointList& loops) {
   {
     Lock l(TableController::lock_);
     loops_ = loops;
@@ -129,12 +129,12 @@ class LoopsSetterText : public SetterText {
   }
 
  protected:
-  virtual void onDataChange(const Message& m) {
+  virtual void operator()(const Message& m) {
     // Juce takes some time to delete this item, and it might get an update
     // at a point when it no longer points to a valid item in the LoopPointList.
     if (const LoopPointList* lpl = dynamic_cast<const LoopPointList*>(&m)) {
       if (row_ < lpl->loop_point_size())
-        SetterText::onDataChange(m);
+        SetterText::operator()(m);
     }
   }
 
@@ -178,7 +178,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
 }
 
 void Loops::editLoopPoints(const LoopPointList& lpl) {
-  onDataChange(lpl);
+  operator()(lpl);
   updateContent();
   setValue(lpl);
 }

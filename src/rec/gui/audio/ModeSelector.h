@@ -22,7 +22,7 @@ class ModeSelector : public Layout,
   virtual void buttonClicked(juce::Button* button);
   virtual bool isOpaque() const { return true; }
 
-  virtual void onDataChange(const Mode&);
+  virtual void operator()(const Mode&);
   DrawableButton* getButton(const Mode::Action&);
 
   typedef std::map<Mode::Action, DrawableButton*> ButtonMap;

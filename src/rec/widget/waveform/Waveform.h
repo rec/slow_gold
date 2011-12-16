@@ -47,10 +47,10 @@ class Waveform : public Component,
   virtual void resized() { layout(); }
 
   virtual void paint(Graphics&);
-  virtual void onDataChange(const LoopPointList&);
-  virtual void onDataChange(const Mode&);
-  virtual void onDataChange(const WaveformProto&);
-  virtual void onDataChange(const ZoomProto&);
+  virtual void operator()(const LoopPointList&);
+  virtual void operator()(const Mode&);
+  virtual void operator()(const WaveformProto&);
+  virtual void operator()(const ZoomProto&);
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 

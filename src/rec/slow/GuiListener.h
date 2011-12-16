@@ -13,7 +13,7 @@ class GuiListener : public GlobalDataListener<GuiSettings>, public HasInstance {
  public:
   explicit GuiListener(Instance* i);
 
-  virtual void onDataChange(const GuiSettings&);
+  virtual void operator()(const GuiSettings&);
   virtual void update();
 
  private:

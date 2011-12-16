@@ -114,7 +114,7 @@ bool copyTo(const MessageField& f, ValueProto* value) {
   if (f.index_ >= 0)
     return typer::copyTo(*f.message_, f.field_, f.index_, value);
 
-  LOG(DFATAL) << "copyTo failed with no index: "
+  LOG(ERROR) << "copyTo failed with no index: "
               << (f.message_ ? f.message_->GetTypeName() : "NO MESSAGE");
   return false;
 }
@@ -123,15 +123,23 @@ bool apply(const MessageField& field, const Operation& op) {
   const Operation::Command c = op.command();
   const MessageField::Type t = field.type_;
   if (!valid(c, t)) {
-    LOG(DFATAL) << "Not valid: " << op.ShortDebugString();
+    LOG(ERROR) << "Not valid: " << op.ShortDebugString();
     return false;
   }
 
   if (Applier applier = appliers[c][t])
     return (*applier)(field, op);
 
-  LOG(DFATAL) << "Couldn't apply " << op.ShortDebugString();
+  LOG(ERROR) << "Couldn't apply " << op.ShortDebugString();
   return false;
+}
+
+bool getValueWithAddress(const Address& a, const Message& m, ValueProto* v) {
+  return copyTo(createMessageField(a, m), v);
+}
+
+bool setValueWithAddress(const Address& a, Message* m, const ValueProto& v) {
+  return copyFrom(MessageField(createMessageField(a, opener.mutable_get())), v);
 }
 
 }  // namespace data

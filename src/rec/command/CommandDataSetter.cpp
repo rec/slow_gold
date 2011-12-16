@@ -13,7 +13,7 @@ CommandDataSetter::CommandDataSetter(Listener<None>* changeListener,
       menuName_("none") {
 }
 
-void CommandDataSetter::onDataChange(const Message& m) {
+void CommandDataSetter::operator()(const Message& m) {
   data::Value value = getValue();
   int index = value.get<bool>() ? 1 : 0;
   if (index < command_.desc().menu_size())

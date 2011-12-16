@@ -73,7 +73,7 @@ DrawableButton* ModeSelector::getButton(const Mode::Action& action) {
   return (i == buttons_.end()) ? NULL : i->second;
 }
 
-void ModeSelector::onDataChange(const Mode& mode) {
+void ModeSelector::operator()(const Mode& mode) {
   {
     Lock l(lock_);
     mode_ = mode;

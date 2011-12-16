@@ -306,15 +306,29 @@
         <Filter Name="data">
           <File RelativePath="..\..\..\..\src\rec\data\Address.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Address.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\AddressListener.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Data.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Data.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\DataRegistry.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataCenter.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataCenter.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataImpl.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataImpl.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataListener.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataMaker.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataMakerImpl.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataMap.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataMap.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataMapImpl.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataMapImpl.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataOps.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\DataOps.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\DataUpdater.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\DataUpdater.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\Editable.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\data\Editable.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\MessageListener.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\NewData.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\MessageMaker.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\MessageRegistry.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\MessageRegistryAndMaker.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\MessageRegistryAndMaker.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\Opener.h"/>
           <Filter Name="proto">
             <File RelativePath="..\..\..\..\src\rec\data\proto\Comparer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
@@ -334,13 +348,10 @@
             <File RelativePath="..\..\..\..\src\rec\data\proto\Typer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Types.h"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\data\StartStop.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\TypedEditable.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\TypedListener.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\UndoQueue.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\data\UndoQueue.h"/>
-          <File RelativePath="..\..\..\..\src\rec\data\UntypedEditable.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\data\UntypedEditable.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\UndoStack.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\UndoStack.h"/>
+          <File RelativePath="..\..\..\..\src\rec\data\UntypedDataListener.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\UntypedDataListener.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Value.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Value.h"/>
           <Filter Name="yaml">
@@ -634,7 +645,6 @@
           <File RelativePath="..\..\..\..\src\rec\util\Copy.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Cuttable.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Cuttable.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\DataListener.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\DefaultRegistry.cpp"/>
@@ -654,6 +664,7 @@
           <File RelativePath="..\..\..\..\src\rec\util\FormatTime.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\FormatTime.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Listener.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\ListenerAdaptor.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
@@ -667,7 +678,6 @@
           <File RelativePath="..\..\..\..\src\rec\util\Proto.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Proto.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Range.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\SingleListener.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\STL.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\TestData.h"/>
           <Filter Name="thread">
@@ -691,8 +701,6 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Undo.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Undo.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\UntypedDataListener.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\util\UntypedDataListener.h"/>
           <Filter Name="unused">
             <File RelativePath="..\..\..\..\src\rec\util\unused\Circular.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\unused\DelegateToList.h"/>
@@ -702,8 +710,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\unused\ShouldExit.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\unused\Switcher.h"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\util\UpdateRequester.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\util\UpdateRequester.h"/>
         </Filter>
         <Filter Name="widget">
           <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>
@@ -774,8 +780,6 @@
             </Filter>
           </Filter>
           <Filter Name="data">
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Action.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h"/>
             <Filter Name="proto">

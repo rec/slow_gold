@@ -50,8 +50,8 @@ class DataSlider : public Layout,
     this->setValue(static_cast<double>(slider_.getValue()));
   }
 
-  virtual void onDataChange(const Message&) {
-    thread::callAsync(this, &DataSlider::setSliderValue, 
+  virtual void operator()(const Message&) {
+    thread::callAsync(this, &DataSlider::setSliderValue,
                       getValue().get<double>());
   }
 

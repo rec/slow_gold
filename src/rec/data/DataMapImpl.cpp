@@ -33,7 +33,7 @@ virtual DataMapImpl::~DataMapImpl() {
   stl::deleteMapPointers(&map_);
 }
 
-const Data* DataMap::getData(const string& typeName, const VirtualFile* vf) {
+Data* DataMap::getData(const string& typeName, const VirtualFile* vf) {
   File file = dataFile(vf, typeName);
   string key = str(file);
 

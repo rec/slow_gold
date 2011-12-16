@@ -15,7 +15,7 @@ class DataMap {
 
   // If the VirtualFile is file::none(), then this represents global Data, but
   // if it's NULL then it represents empty data that is not stored to disk.
-  virtual const Data* getData(const string& typeName, const VirtualFile*) = 0;
+  virtual Data* getData(const string& typeName, const VirtualFile*) = 0;
 };
 
 }  // namespace data

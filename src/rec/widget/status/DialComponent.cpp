@@ -83,7 +83,7 @@ void DialComponent::operator()(Samples<44100> time) {
   thread::callAsync(this, &DialComponent::repaint);
 }
 
-void DialComponent::onDataChange(const LoopPointList& lpl) {
+void DialComponent::operator()(const LoopPointList& lpl) {
   Lock l(lock_);
   loops_ = lpl;
   timeAngle_ = zeroAngle_ = 0.0;

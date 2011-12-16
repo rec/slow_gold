@@ -20,9 +20,12 @@ class Data : public Broadcaster<const Message&> {
   // Report a change to the protocol buffer.
   virtual void pushOnUndoStack(const Message& before) = 0;
   virtual void reportChange() const = 0;
+  virtual bool update() = 0;
+  virtual bool clearRecentListeners() = 0;
 
   CriticalSection lock_;
   ptr<Message> message_;
+  bool clientsNeedUpdate_;
 
   friend class DataImpl;
   friend class DataUpdater;

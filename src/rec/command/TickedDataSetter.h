@@ -16,7 +16,7 @@ class TickedDataSetter : public CommandDataSetter {
 
   virtual ~TickedDataSetter() {}
 
-  virtual void onDataChange(const Message&);
+  virtual void operator()(const Message&);
   virtual void execute();
   virtual string menuName() const;
 

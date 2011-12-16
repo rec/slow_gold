@@ -11,23 +11,23 @@ namespace data {
 
 class DataImpl : public Data, public DataMaker {
  public:
-  DataImpl(Message *m, DataUpdater* u, UndoStack* s)
-      : Data(m), dataUpdater_(u), undoStack_(s) {
-  }
+  DataImpl(Message*, DataUpdater*, UndoStack*);
+  virtual ~DataImpl() {}
 
-  virtual void pushOnUndoStack(const Message& before) {
-    undoStack_->push(this, before, *message_);
-  }
+  virtual void pushOnUndoStack(const Message& before);
+  virtual void reportChange() const;
+  virtual bool update();
+  virtual void clearRecentListeners();
 
-  virtual void reportChange() const {
-    dataUpdater_->reportChange(this);
-  }
+  virtual void addListener(const Listener<const Message&>*);
+  virtual void removeListener(const Listener<const Message&>*);
 
-  virtual Data* makeData(Message* m) const {
-    return new DataImpl(m, undoStack_, dataUpdater_);
-  }
+  virtual Data* makeData(Message*) const;
 
  private:
+  typedef std::set<Listener<const Message&> > ListenerSet;
+
+  ListenerSet recentListeners_;
   UndoStack* undoStack_;
   DataUpdater* dataUpdater_;
 

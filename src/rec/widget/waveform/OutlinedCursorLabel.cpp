@@ -20,7 +20,7 @@ OutlinedCursorLabel::OutlinedCursorLabel(Cursor *cursor)
 OutlinedCursorLabel::~OutlinedCursorLabel() {
 }
 
-void OutlinedCursorLabel::onDataChange(const WaveformProto& waveform) {
+void OutlinedCursorLabel::operator()(const WaveformProto& waveform) {
   thread::callAsync(this, &OutlinedCursorLabel::showButtons, waveform);
 }
 

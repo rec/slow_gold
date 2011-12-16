@@ -4,7 +4,7 @@
 #include "rec/data/Value.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/gui/SimpleLabel.h"
-#include "rec/util/UntypedDataListener.h"
+#include "rec/data/AddressListener.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -13,31 +13,39 @@ namespace gui {
 static const int CAPTION_SIZE = 50;
 
 class SetterText : public Layout,
-                   public UntypedDataListener,
+                   public AddressListener,
                    public TextEditor::Listener {
  public:
   SetterText(const String& name,
-             const String& typeName,
+             const string& typeName,
              const data::Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty,
-             bool useCaption = true)
+             bool useCaption = true,
+             bool isGlobal = true)
       : Layout(name, HORIZONTAL),
-        UntypedDataListener(str(typeName), address),
-        caption_(caption + ".caption"),
-        editor_(name + ".editor") {
+        AddressListener(typeName, address, isGlobal) {
     DCHECK(name.length());
-    setTooltip(tip.length() ? tip : (caption.length() ? caption : name));
-    if (useCaption) {
-      const String& cap = caption.length() ? caption : name;
-      caption_.setText(cap, false);
+    const String& cap = caption.length() ? caption : name;
+    caption_.setName(name + ".caption");
+    editor_.setName(name + ".editor") {
 
+    setTooltip(tip.length() ? tip : cap);
+
+    if (useCaption) {
+      caption_.setText(cap, false);
       addToLayout(&caption_, CAPTION_SIZE);
     }
     addToLayout(&editor_);
 
     editor_.addListener(this);
   }
+
+  virtual void operator(const Value& v) {
+    if (v.has_string_f() && str(v.string_f()) != editor_.getText())
+      thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
+  }
+
 
   virtual void setTooltip(const String& newTooltip) {
     Layout::setTooltip(newTooltip);
@@ -57,8 +65,9 @@ class SetterText : public Layout,
   TextEditor* editor() { return &editor_; }
 
   virtual void textEditorTextChanged(TextEditor&) {
-    this->setValue(str(editor_.getText()));
+    setValue(str(editor_.getText()));
   }
+
   virtual void textEditorReturnKeyPressed(TextEditor& editor) {}
   virtual void textEditorEscapeKeyPressed(TextEditor& editor) {}
   virtual void textEditorFocusLost(TextEditor& editor) {}
@@ -68,12 +77,6 @@ class SetterText : public Layout,
   }
 
  protected:
-  virtual void onDataChange(const Message&) {
-    const data::Value v = this->getValue();
-    if (v.has_string_f() && str(v.string_f()) != editor_.getText())
-      thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
-  }
-
   void setEditorText(String text) {
   	editor_.setText(text, false);
     repaint();

@@ -26,7 +26,7 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
   }
 }
 
-void Selection::onDataChange(const LoopPointList& loops) {
+void Selection::operator()(const LoopPointList& loops) {
   Lock l(Wrappy::lock_);
   selection_ = getTimeSelection(loops);
   if (selection_.empty())

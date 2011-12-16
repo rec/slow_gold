@@ -30,7 +30,7 @@ class TransportController : public Layout,
 
   virtual void buttonClicked(juce::Button *button);
   virtual void operator()(rec::audio::transport::State);
-  virtual void onDataChange(const rec::audio::Gain&);
+  virtual void operator()(const rec::audio::Gain&);
 
   void setTransportState(rec::audio::transport::State state);
   void setTime(Samples<44100> time) { time_ = time; }

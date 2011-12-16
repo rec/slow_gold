@@ -221,7 +221,7 @@ void Cursor::selectButtonPressed(bool select) {
   waveform_->setSelected(index_, select);
 }
 
-void Cursor::onDataChange(const WaveformProto& wp) {
+void Cursor::operator()(const WaveformProto& wp) {
   Lock l(lock_);
   waveDesc_ = wp;
   thread::callAsync(this, &Cursor::layout);

@@ -20,7 +20,7 @@ class Selection : public Wrappy, public DataListener<LoopPointList> {
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
-  virtual void onDataChange(const LoopPointList&);
+  virtual void operator()(const LoopPointList&);
 
   const block::BlockSet selection() const {
     Lock l(Wrappy::lock_);

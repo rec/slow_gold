@@ -19,7 +19,7 @@ class CommandDataSetter : public UntypedDataListener,
                              bool isGlobal = false);
   virtual ~CommandDataSetter() {}
 
-  virtual void onDataChange(const Message&);
+  virtual void operator()(const Message&);
   virtual void execute();
   virtual string menuName() const;
 

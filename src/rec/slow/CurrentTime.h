@@ -23,9 +23,9 @@ class CurrentTime : public HasInstance,
   virtual ~CurrentTime() {}
 
   virtual void operator()(Samples<44100> t);
-  virtual void onDataChange(const LoopPointList&);
-  virtual void onDataChange(const GuiSettings&);
-  virtual void onDataChange(const widget::waveform::ZoomProto&);
+  virtual void operator()(const LoopPointList&);
+  virtual void operator()(const GuiSettings&);
+  virtual void operator()(const widget::waveform::ZoomProto&);
 
   void setCursorTime(Samples<44100> time, int index, bool isTimeCursor);
   const block::BlockSet& timeSelection() const { return timeSelection_; }

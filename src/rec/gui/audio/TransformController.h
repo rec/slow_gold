@@ -24,8 +24,8 @@ class TransformController : public Layout,
 
   virtual bool isOpaque() const { return true; }
 
-  virtual void onDataChange(const rec::audio::stretch::Stretch&);
-  virtual void onDataChange(const rec::audio::source::StereoProto&);
+  virtual void operator()(const rec::audio::stretch::Stretch&);
+  virtual void operator()(const rec::audio::source::StereoProto&);
 
   virtual void comboBoxChanged(juce::ComboBox*);
 

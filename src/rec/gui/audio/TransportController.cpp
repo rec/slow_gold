@@ -95,7 +95,7 @@ void TransportController::setTransportState(rec::audio::transport::State state) 
   startStopButton_.repaint();
 }
 
-void TransportController::onDataChange(const rec::audio::Gain& gain) {
+void TransportController::operator()(const rec::audio::Gain& gain) {
   thread::callAsync(this, &TransportController::setGain, gain);
 }
 

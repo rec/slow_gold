@@ -60,7 +60,7 @@ void Player::setSource(Source* source) {
   timer_->setSource(source);
 }
 
-void Player::onDataChange(const stretch::Stretch& stretch) {
+void Player::operator()(const stretch::Stretch& stretch) {
   level_.clear();
   stretchy_->setStretch(stretch);
 }
@@ -73,7 +73,7 @@ void Player::changeListenerCallback(ChangeBroadcaster*) {
   broadcastState();
 }
 
-void Player::onDataChange(const StereoProto& s) {
+void Player::operator()(const StereoProto& s) {
   stereo_->setStereo(s);
 }
 
@@ -82,7 +82,7 @@ void Player::clear() {
   timer_->setNextReadPosition(0);
 }
 
-void Player::onDataChange(const Gain& gain) {
+void Player::operator()(const Gain& gain) {
   setGain(getGain(gain));
 }
 
