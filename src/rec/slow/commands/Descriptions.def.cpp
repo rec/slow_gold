@@ -1,7 +1,7 @@
 #include "rec/slow/commands/Descriptions.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=command::Commands Descriptions.def
+// new --include=command/Command --proto=command::Commands src/rec/slow/commands/Descriptions.def
 
 namespace rec {
 namespace slow {

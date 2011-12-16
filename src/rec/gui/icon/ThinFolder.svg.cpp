@@ -1,13 +1,17 @@
 #include "rec/gui/icon/ThinFolder.svg.h"
-
 #include "rec/base/ArraySize.h"
-#include "rec/util/Binary.h"
+#include "rec/gui/icon/Icon.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
-juce::Drawable* ThinFolder::create() {
+using juce::Drawable;
+
+// Created by the command line:
+// new src/rec/gui/icon/ThinFolder.svg
+
+Drawable* ThinFolder::get() {
   static const char data[] = "<?xml version=\"1.0\" standalone=\"no\"?>\n"
   "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n"
   "\"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\"\n"
@@ -387,9 +391,11 @@ juce::Drawable* ThinFolder::create() {
   "     transform=\"matrix(-0.348059,0.000292235,-0.000274415,-0.334562,129.335,151.803)\"\n"
   "     sodipodi:nodetypes=\"ccccc\" />\n"
   "</svg>\n"
-  "\n"
+  " "
 ;
-  return createBinary<juce::Drawable>(data, arraysize(data));
+
+  static Drawable* d = createFromImageData(data, arraysize(data));
+  return d;
 };
 
 }  // namespace icon

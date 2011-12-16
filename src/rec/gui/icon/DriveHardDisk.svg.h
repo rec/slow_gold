@@ -1,14 +1,14 @@
 #ifndef __REC_GUI_ICON_DRIVEHARDDISK__
 #define __REC_GUI_ICON_DRIVEHARDDISK__
 
-#include "rec/base/base.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
 struct DriveHardDisk {
-  static juce::Drawable* create();
+  static juce::Drawable* get();
 };
 
 }  // namespace icon

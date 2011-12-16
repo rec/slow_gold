@@ -1,13 +1,17 @@
 #include "rec/gui/icon/DraggingHand.svg.h"
-
 #include "rec/base/ArraySize.h"
-#include "rec/util/Binary.h"
+#include "rec/gui/icon/Icon.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
-juce::Drawable* DraggingHand::create() {
+using juce::Drawable;
+
+// Created by the command line:
+// new src/rec/gui/icon/DraggingHand.svg
+
+Drawable* DraggingHand::get() {
   static const char data[] = "<?xml version=\"1.0\" standalone=\"no\"?>\n"
   "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n"
   "\"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\"\n"
@@ -104,9 +108,11 @@ juce::Drawable* DraggingHand::create() {
   "     style=\"font-size:12;fill:#ffffff;fill-opacity:0.99;stroke:#1c6772;stroke-opacity:0.988235;\"\n"
   "     transform=\"matrix(3.49265,0,0,3.23106,-121.269,-81.8574)\" />\n"
   "</svg>\n"
-  "\n"
+  " "
 ;
-  return createBinary<juce::Drawable>(data, arraysize(data));
+
+  static Drawable* d = createFromImageData(data, arraysize(data));
+  return d;
 };
 
 }  // namespace icon

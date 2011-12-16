@@ -1,14 +1,14 @@
 #ifndef __REC_GUI_ICON_OPENFOLDER__
 #define __REC_GUI_ICON_OPENFOLDER__
 
-#include "rec/base/base.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
 struct OpenFolder {
-  static juce::Drawable* create();
+  static juce::Drawable* get();
 };
 
 }  // namespace icon

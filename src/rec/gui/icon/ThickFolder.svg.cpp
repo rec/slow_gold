@@ -1,13 +1,17 @@
 #include "rec/gui/icon/ThickFolder.svg.h"
-
 #include "rec/base/ArraySize.h"
-#include "rec/util/Binary.h"
+#include "rec/gui/icon/Icon.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
-juce::Drawable* ThickFolder::create() {
+using juce::Drawable;
+
+// Created by the command line:
+// new src/rec/gui/icon/ThickFolder.svg
+
+Drawable* ThickFolder::get() {
   static const char data[] = "<?xml version=\"1.0\" standalone=\"no\"?>\n"
   "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n"
   "\"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\"\n"
@@ -301,9 +305,11 @@ juce::Drawable* ThickFolder::create() {
   "     transform=\"matrix(0.11315,0,0,0.243073,146.389,-15.8096)\"\n"
   "     sodipodi:nodetypes=\"ccccc\" />\n"
   "</svg>\n"
-  "\n"
+  " "
 ;
-  return createBinary<juce::Drawable>(data, arraysize(data));
+
+  static Drawable* d = createFromImageData(data, arraysize(data));
+  return d;
 };
 
 }  // namespace icon

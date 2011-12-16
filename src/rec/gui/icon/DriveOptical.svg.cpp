@@ -1,13 +1,17 @@
 #include "rec/gui/icon/DriveOptical.svg.h"
-
 #include "rec/base/ArraySize.h"
-#include "rec/util/Binary.h"
+#include "rec/gui/icon/Icon.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
-juce::Drawable* DriveOptical::create() {
+using juce::Drawable;
+
+// Created by the command line:
+// new src/rec/gui/icon/DriveOptical.svg
+
+Drawable* DriveOptical::get() {
   static const char data[] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
   "<!-- Created with Inkscape (http://www.inkscape.org/) -->\n"
   "<svg\n"
@@ -595,9 +599,11 @@ juce::Drawable* DriveOptical::create() {
   "stroke-width:1.0000000px;stroke:none;fill-rule:evenodd;fill-opacity:1.0;fill:url(#linearGradient2337)\" />\n"
   "  </g>\n"
   "</svg>\n"
-  "\n"
+  " "
 ;
-  return createBinary<juce::Drawable>(data, arraysize(data));
+
+  static Drawable* d = createFromImageData(data, arraysize(data));
+  return d;
 };
 
 }  // namespace icon

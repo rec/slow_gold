@@ -1,7 +1,7 @@
 #include "rec/slow/commands/KeyPresses.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=command::Commands KeyPresses.def
+// new --include=command/Command --proto=command::Commands src/rec/slow/commands/KeyPresses.def
 
 namespace rec {
 namespace slow {

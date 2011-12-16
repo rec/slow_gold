@@ -1,7 +1,7 @@
 #include "rec/slow/commands/Repeated.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=command::Commands Repeated.def
+// new --include=command/Command --proto=command::Commands src/rec/slow/commands/Repeated.def
 
 namespace rec {
 namespace slow {

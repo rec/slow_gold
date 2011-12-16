@@ -6,24 +6,22 @@ icon_code := $(patsubst %.svg, %.svg.cpp, $(icons))
 binaries := $(wildcard src/rec/command/*.xml)
 binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
 
-commands := $(wildcard src/rec/command/*.def)
-commands_code := $(patsubst %.def, %.def.cpp, $(commands))
+commands := $(wildcard src/rec/slow/commands/*.def)
+command_code := $(patsubst %.def, %.def.cpp, $(commands))
 
-%.svg.cpp: %.svg
-	$(new) svg $<
+%\.svg.cpp: %.svg
+	$(new) $<
 
-%.xml.cpp: %.xml
-	$(new) xml $<
+%\.xml.cpp: %.xml
+	$(new) $<
 
-%.def.cpp: %.def
+%\.def.cpp: %.def
 	$(new)\
     --include=command/Command\
     --proto=command::Commands\
     $<
 
-all: $(icon_code) $(binary_code) $(commands_code)
+all: $(icon_code) $(binary_code) $(command_code)
 
 clean:
-	rm $(icon_code)
-	rm $(binary_code)
-	rm $(commands_code)
+	rm $(icon_code) $(binary_code) $(command_code)

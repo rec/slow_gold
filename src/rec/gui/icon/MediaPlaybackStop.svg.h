@@ -1,14 +1,14 @@
 #ifndef __REC_GUI_ICON_MEDIAPLAYBACKSTOP__
 #define __REC_GUI_ICON_MEDIAPLAYBACKSTOP__
 
-#include "rec/base/base.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
 struct MediaPlaybackStop {
-  static juce::Drawable* create();
+  static juce::Drawable* get();
 };
 
 }  // namespace icon

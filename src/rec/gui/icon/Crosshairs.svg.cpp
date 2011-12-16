@@ -1,13 +1,17 @@
 #include "rec/gui/icon/Crosshairs.svg.h"
-
 #include "rec/base/ArraySize.h"
-#include "rec/util/Binary.h"
+#include "rec/gui/icon/Icon.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
-juce::Drawable* Crosshairs::create() {
+using juce::Drawable;
+
+// Created by the command line:
+// new src/rec/gui/icon/Crosshairs.svg
+
+Drawable* Crosshairs::get() {
   static const char data[] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
   "<svg xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:cc=\"http://web.resource.org/cc/\" xmlns:rdf=\"http://"
   "www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" "
@@ -19,9 +23,11 @@ juce::Drawable* Crosshairs::create() {
   "    <path style=\"stroke: #ff0000; stroke-width:10;\" d=\"M 100,50 L 65,50 z \" id=\"right\"/>\n"
   "	<circle style=\"stroke:#ff0000; stroke-width:10;\" cx=\"50\" cy=\"50\" r=\"33\" fill=\"none\"/>\n"
   "  </g>\n"
-  "</svg>\n"
+  "</svg> "
 ;
-  return createBinary<juce::Drawable>(data, arraysize(data));
+
+  static Drawable* d = createFromImageData(data, arraysize(data));
+  return d;
 };
 
 }  // namespace icon

@@ -10,7 +10,7 @@ using juce::Drawable;
 // {commandline}
 
 Drawable* {classname}::get() {{
-  static const char data[] = {svg};
+  static const char data[] = {data};
 
   static Drawable* d = createFromImageData(data, arraysize(data));
   return d;

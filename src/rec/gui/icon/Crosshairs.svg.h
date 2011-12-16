@@ -1,14 +1,14 @@
 #ifndef __REC_GUI_ICON_CROSSHAIRS__
 #define __REC_GUI_ICON_CROSSHAIRS__
 
-#include "rec/base/base.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
 struct Crosshairs {
-  static juce::Drawable* create();
+  static juce::Drawable* get();
 };
 
 }  // namespace icon
