@@ -62,8 +62,12 @@ class JucerDomFile(dom_file.DomFile):
     return joiner.join(filter(self.accept, files))
 
   def createCPPFileGroup(self, parent, prefix, name, root, path):
-    tree = filetree.filetree('%s/%s/%s' % (root, prefix, name), self.acceptCpp)
-    parent.appendChild(self.createFileOrGroup(prefix, name, tree, path))
+    treeName = '%s/%s/%s' % (root, prefix, name)
+    tree = filetree.filetree(treeName, self.acceptCpp)
+    if tree:
+      parent.appendChild(self.createFileOrGroup(prefix, name, tree, path))
+    else:
+      print 'ERROR: no file for %s' % treeName
 
   def createFile(self, name, file, path):
     isPNG = file.endswith('.png')

@@ -242,9 +242,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MPStart.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\Pencil.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\PointingHand.svg.cpp"/>
@@ -271,6 +271,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\Repeated.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\Setters.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Unused.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentTime.cpp"/>
@@ -562,9 +563,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MPStart.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\Pencil.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\PointingHand.svg.h"/>
@@ -599,6 +600,7 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\Repeated.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\Setters.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Unused.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentTime.h"/>
@@ -725,12 +727,6 @@
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".\icon.ico"/>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include=".\resources.rc"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <ImportGroup Label="ExtensionTargets"/>

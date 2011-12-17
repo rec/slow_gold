@@ -9,6 +9,8 @@ binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
 commands := $(wildcard src/rec/slow/commands/*.def)
 command_code := $(patsubst %.def, %.def.cpp, $(commands))
 
+ROOT := ~/Documents/development/rec
+
 %\.svg.cpp: %.svg
 	$(new) $<
 

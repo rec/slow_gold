@@ -506,12 +506,12 @@
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\icon\MPStart.svg.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\icon\MPStart.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\Pencil.svg.cpp"/>
@@ -582,6 +582,8 @@
             <File RelativePath="..\..\..\..\src\rec\slow\commands\Setters.def.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\commands\SlowCommandData.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Unused.def.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\commands\Unused.def.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\slow\Components.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Components.h"/>
@@ -867,8 +869,6 @@
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode.cpp"/>
-      <File RelativePath="icon.ico"/>
-      <File RelativePath="resources.rc"/>
     </Filter>
   </Files>
   <Globals/>

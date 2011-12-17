@@ -15,7 +15,6 @@
 
 #include "AppConfig.h"
 #include "../../juce/juce_amalgamated.h"
-#include "BinaryData.h"
 
 namespace ProjectInfo
 {

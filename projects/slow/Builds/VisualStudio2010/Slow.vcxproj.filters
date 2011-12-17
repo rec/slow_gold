@@ -541,13 +541,13 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp">
-      <Filter>Slow\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MPStart.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp">
@@ -626,6 +626,9 @@
       <Filter>Slow\rec\slow\commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp">
+      <Filter>Slow\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Unused.def.cpp">
       <Filter>Slow\rec\slow\commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp">
@@ -1497,13 +1500,13 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h">
-      <Filter>Slow\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MPStart.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h">
@@ -1606,6 +1609,9 @@
       <Filter>Slow\rec\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h">
+      <Filter>Slow\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Unused.def.h">
       <Filter>Slow\rec\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h">
@@ -1986,15 +1992,5 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".\icon.ico">
-      <Filter>Juce Library Code</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include=".\resources.rc">
-      <Filter>Juce Library Code</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>
