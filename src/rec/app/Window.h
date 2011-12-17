@@ -5,6 +5,7 @@
 #include "rec/util/Listener.h"
 
 namespace rec {
+namespace data { class MessageRegistrar; }
 
 namespace app {
 
@@ -23,7 +24,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual void initialise();
   virtual void startup();
   virtual void shutdown();
-  virtual data::DataRegistry* getDataRegistry() = 0;
+  virtual void registerData(data::MessageRegistrar*) = 0;
   virtual void focusOfChildComponentChanged(juce::Component::FocusChangeType) {
     broadcast(None());
   }

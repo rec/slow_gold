@@ -5,7 +5,6 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
-#include "rec/data/DataRegistry.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/gui/WindowPosition.pb.h"
@@ -85,28 +84,26 @@ static Def<gui::WindowPosition> windowPosition(
 
 #endif
 
-DataRegistry* SlowWindow::getDataRegistry() {
-  ptr<DataRegistry> r(new DataRegistry);
+using namespace rec::data;
 
-  r->registerMaker<audio::Gain>();
-  r->registerMaker<audio::source::StereoProto>();
-  r->registerMaker<audio::stretch::Stretch>();
-  r->registerMaker<command::CommandMapProto>();
-  r->registerMaker<command::Commands>();
-  r->registerMaker<gui::RecentFiles>();
-  r->registerMaker<gui::WindowPosition>();
-  r->registerMaker<music::Metadata>();
-  r->registerMaker<util::LoopPointList>();
-  r->registerMaker<util::Mode>();
-  r->registerMaker<util::file::VirtualFile>();
-  r->registerMaker<util::file::VirtualFileList>();
-  r->registerMaker<widget::tree::NavigatorConfig>();
-  r->registerMaker<widget::waveform::WaveformProto>();
-  r->registerMaker<widget::waveform::ZoomProto>();
-  r->registerMaker<slow::AppLayout>();
-  r->registerMaker<slow::GuiSettings>();
-
-  return r.transfer();
+void SlowWindow::registerData(MessageRegistrar* r) {
+  registerClass<audio::Gain>(r);
+  registerClass<audio::source::StereoProto>(r);
+  registerClass<audio::stretch::Stretch>(r);
+  registerClass<command::CommandMapProto>(r);
+  registerClass<command::Commands>(r);
+  registerClass<gui::RecentFiles>(r);
+  registerClass<gui::WindowPosition>(r);
+  registerClass<music::Metadata>(r);
+  registerClass<util::LoopPointList>(r);
+  registerClass<util::Mode>(r);
+  registerClass<util::file::VirtualFile>(r);
+  registerClass<util::file::VirtualFileList>(r);
+  registerClass<widget::tree::NavigatorConfig>(r);
+  registerClass<widget::waveform::WaveformProto>(r);
+  registerClass<widget::waveform::ZoomProto>(r);
+  registerClass<slow::AppLayout>(r);
+  registerClass<slow::GuiSettings>(r);
 }
 
 void SlowWindow::activeWindowStatusChanged() {

@@ -6,8 +6,6 @@
 #include "rec/gui/Geometry.h"
 #include "rec/util/thread/CallAsync.h"
 
-// #define LOGGING 1
-
 namespace rec {
 namespace gui {
 
@@ -20,12 +18,6 @@ static const int MIN_Y = 100;
 static const int MIN_UPDATE_GAP = 500;
 
 typedef juce::Rectangle<int> Rect;
-
-#ifdef LOGGING
-static string toString(const WindowPosition& pos) {
-  return str(toString(pos.bounds()));
-}
-#endif
 
 PersistentWindow::PersistentWindow(const String& name,
                                    const Colour& bg,
@@ -61,33 +53,15 @@ void PersistentWindow::fixPosition(WindowPosition* pos) {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-#ifdef LOGGING
-  LOG(INFO) << toString(p);
-#endif
-
   WindowPosition position = p;
   fixPosition(&position);
 
   {
     Lock l(lock_);
-#ifndef DONT_FILTER_DUPLICATES
-    if (data::equals(position_, position))
-      return;  // Filter duplicate messages.
-#endif
-
     position_ = position;
-
-#ifdef FILTER_RESIZES
-    ignoreNextResize_ = true;
-#endif
   }
-
-#ifdef ASYNC_UPDATES
-  thread::callAsync(this, &PersistentWindow::doSetBounds);
-#else
   MessageManagerLock l;
   doSetBounds();
-#endif
 }
 
 void PersistentWindow::doSetBounds() {
@@ -96,17 +70,11 @@ void PersistentWindow::doSetBounds() {
     Lock l(lock_);
     bounds = copy(position_.bounds());
   }
-#ifndef DONT_SET_BOUNDS_CONSTRAINED
+
   setBoundsConstrained(bounds);
-#else
-  setBounds(bounds);
-#endif
 }
 
 void PersistentWindow::resized() {
-#ifdef LOGGING
-  LOG(INFO) << "resized!";
-#endif
   DocumentWindow::resized();
   writeData();
 }
@@ -123,9 +91,6 @@ void PersistentWindow::writeData() {
     {
       Lock l(lock_);
       if (ignoreNextResize_) {
-#ifdef LOGGING
-        LOG(INFO) << "resize ignored! ";
-#endif
         ignoreNextResize_ = false;
         return;
       }
@@ -133,32 +98,17 @@ void PersistentWindow::writeData() {
     WindowPosition position(data::editable<WindowPosition>()->get());
     juce::Rectangle<int> bounds = getBounds();
 
-#ifdef LOGGING
-    LOG(INFO) << toString(position);
-#endif
-
     *position.mutable_bounds() = copy(bounds);
     fixPosition(&position);
 
-#ifdef LOGGING
-    LOG(INFO) << toString(position);
-#endif
-
-#ifdef PERSISTENCE
-    data::set(position);
-#else
     Lock l(lock_);
     needsWrite_ = true;
     lastUpdateTime_ = time();
     position_ = position;
-#endif
   }
 }
 
 void PersistentWindow::moved() {
-#ifdef LOGGING
-  LOG(INFO) << "moved!";
-#endif
   DocumentWindow::moved();
   writeData();
 }

@@ -23,6 +23,7 @@ class SlowWindow : public app::Window, public HasInstance {
   }
 
   virtual void trashPreferences();
+  virtual void registerData(data::MessageRegistrar*);
 
  protected:
   virtual void doStartup();
