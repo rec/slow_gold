@@ -349,7 +349,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\MessageRegistryAndMaker.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
@@ -1200,10 +1200,10 @@
     <ClInclude Include="..\..\..\..\src\rec\data\MessageMaker.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistry.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrar.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistryAndMaker.h">
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Opener.h">

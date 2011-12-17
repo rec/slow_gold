@@ -178,7 +178,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\DataMapImpl.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataOps.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\MessageRegistryAndMaker.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp"/>
@@ -463,8 +463,8 @@
     <ClInclude Include="..\..\..\..\src\rec\data\DataOps.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\MessageMaker.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistry.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistryAndMaker.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrar.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Opener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h"/>

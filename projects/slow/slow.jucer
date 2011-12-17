@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="tr6OhqyS9" name="Slow">
+  <MAINGROUP id="E5q94TZzJ" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -358,12 +358,12 @@
               name="DataUpdater.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/MessageMaker.h" id="IwJiimk0o"
               name="MessageMaker.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/MessageRegistry.h" id="qNVfASEJW"
-              name="MessageRegistry.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/MessageRegistryAndMaker.cpp"
-              id="IwPrGl1Mt" name="MessageRegistryAndMaker.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/MessageRegistryAndMaker.h"
-              id="o80BSGKBB" name="MessageRegistryAndMaker.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/MessageRegistrar.h" id="hNlHMZ0hp"
+              name="MessageRegistrar.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/MessageRegistrarAndMaker.cpp"
+              id="4qN2BHA1v" name="MessageRegistrarAndMaker.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/MessageRegistrarAndMaker.h"
+              id="bfWHcTGHp" name="MessageRegistrarAndMaker.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Opener.h" id="YegBGStSy"
               name="Opener.h" resource="0"/>
         <GROUP id="ee0jIgWWI" name="proto">
@@ -1338,7 +1338,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="sUnQ18LN9" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="4ndMf6JdC" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

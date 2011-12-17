@@ -1,5 +1,5 @@
-#ifndef __REC_DATA_MESSAGEREGISTRYANDMAKER__
-#define __REC_DATA_MESSAGEREGISTRYANDMAKER__
+#ifndef __REC_DATA_MESSAGEREGISTRARANDMAKER__
+#define __REC_DATA_MESSAGEREGISTRARANDMAKER__
 
 #include <map>
 
@@ -9,10 +9,10 @@
 namespace rec {
 namespace data {
 
-class MessageRegistryAndMaker : public MessageRegistry, public MessageMaker {
+class MessageRegistrarAndMaker : public MessageRegistry, public MessageMaker {
  public:
-  MessageRegistryAndMaker() {}
-  virtual ~MessageRegistryAndMaker();
+  MessageRegistrarAndMaker() {}
+  virtual ~MessageRegistrarAndMaker();
 
   virtual Message* makeMessage(const string& typeName);
 
@@ -24,10 +24,10 @@ class MessageRegistryAndMaker : public MessageRegistry, public MessageMaker {
 
   Registry registry_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(MessageRegistryAndMaker);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(MessageRegistrarAndMaker);
 };
 
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_MESSAGEREGISTRYANDMAKER__
+#endif  // __REC_DATA_MESSAGEREGISTRARANDMAKER__

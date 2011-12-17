@@ -1,4 +1,4 @@
-#include "rec/data/MessageRegistryAndMaker.h"
+#include "rec/data/MessageRegistrarAndMaker.h"
 
 namespace rec {
 namespace data {
@@ -8,7 +8,7 @@ namespace {
 Message* makeFrom(const Message& m, bool copy) {
 }
 
-class MessageRegistryAndMaker::Entry {
+class MessageRegistrarAndMaker::Entry {
  public:
   Entry(Message* m, bool c) { initialize(m, c); }
   Entry(const Entry& e) { initialize(e.message_.get(), e.copyFrom_); }
@@ -30,11 +30,11 @@ class MessageRegistryAndMaker::Entry {
 
 }  // namespace
 
-MessageRegistryAndMaker::~MessageRegistryAndMaker() {
+MessageRegistrarAndMaker::~MessageRegistrarAndMaker() {
   stl::deleteMapPointers(&registry_);
 }
 
-void MessageRegistryAndMaker::registerInstance(const Message& m,
+void MessageRegistrarAndMaker::registerInstance(const Message& m,
                                                bool copyFrom = true) {
   const string& typeName = getTypeName(m);
   Registry::iterator i = registry_.find(typeName);
@@ -46,7 +46,7 @@ void MessageRegistryAndMaker::registerInstance(const Message& m,
   registry_.insert(i, std::make_pair(typeName, new Entry(m, copyFrom)));
 }
 
-Message* MessageRegistryAndMaker::makeMessage(const string& typeName) {
+Message* MessageRegistrarAndMaker::makeMessage(const string& typeName) {
   Registry::iterator i = registry_.find(typeName);
   if (i != registry_.end())
     return *i->second->makeMessage();
