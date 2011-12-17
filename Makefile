@@ -21,7 +21,15 @@ command_code := $(patsubst %.def, %.def.cpp, $(commands))
     --proto=command::Commands\
     $<
 
-all: $(icon_code) $(binary_code) $(command_code)
+
+all: code build
+
+code: $(icon_code) $(binary_code) $(command_code)
+
+.PHONY: build code all
+
+build:
+	xcodebuild -project projects/slow/Builds/MacOSX/Slow.xcodeproj -configuration Debug
 
 clean:
 	rm $(icon_code) $(binary_code) $(command_code)
