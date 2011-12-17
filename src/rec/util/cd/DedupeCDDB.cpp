@@ -8,7 +8,7 @@ namespace util {
 namespace cd {
 
 string normalize(const string& s) {
-  static const char delimiters[] = "[(";
+  static const char delimiters[] = "[(";  // )]
 
   int length = s.size();
   for (const char* i = delimiters; *i; ++i) {

@@ -28,7 +28,7 @@ class SetterText : public Layout,
     DCHECK(name.length());
     const String& cap = caption.length() ? caption : name;
     caption_.setName(name + ".caption");
-    editor_.setName(name + ".editor") {
+    editor_.setName(name + ".editor");
 
     setTooltip(tip.length() ? tip : cap);
 
@@ -53,7 +53,7 @@ class SetterText : public Layout,
     caption_.setTooltip(newTooltip);
   }
 
-  void setReadOnly(bool readOnly) {
+    void setReadOnly(bool readOnly) {
     if (readOnly != isReadOnly()) {
       editor_.setReadOnly(readOnly);
       editor_.setCaretVisible(!readOnly);

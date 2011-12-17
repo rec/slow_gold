@@ -38,7 +38,8 @@ void merge(const Block& block, BlockSet* set) {
     set->insert(end, block);
 
   } else {
-    // This block intersects or touches every block in [begin, end).
+    // This block intersects or touches every block between between and end,
+    // including begin but not end.
     Size first = juce::jmin(block.first, begin->first);
     Size second = juce::jmax(block.second, (--end)->second);
 

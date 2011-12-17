@@ -175,5 +175,5 @@ void PersistentWindow::writeGui() {
   }
 }
 
-}  // namespace gui {
-}  // namespace rec {
+}  // namespace gui
+}  // namespace rec

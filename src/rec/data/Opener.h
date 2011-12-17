@@ -50,11 +50,6 @@ struct Opener {
 };
 
 template <typename Proto>
-struct Opener : public UntypedOpener {
-  Opener(Data* d, bool undoable = true)
-      : UntypedOpener(d, undoable),
-
-template <typename Proto>
 bool applyToData(bool (*function)(Proto*), Data* data) {
   return function(Opener<Proto>(data).mutable_get());
 }

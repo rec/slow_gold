@@ -6,10 +6,11 @@ namespace audio {
 namespace {
 
 #ifdef JUCE_MAC
-long long enum {
+long long enum
 #else
-enum : long long {
+enum : long long
 #endif
+{
   bit8 = 0x100LL,
   bit16 = bit8 * bit8,
   bit24 = bit8 * bit16,
@@ -152,8 +153,6 @@ template <> void convertSample<double, float>(double f, float *t) {
 template <> void convertSample<float, double>(float f, double *t) {
   *t = f;
 }
-
-
 
 }  // namespace audio
 }  // namespace rec

@@ -20,6 +20,10 @@ def matchBrackets(f):
           print '%s:%d found %s but stack had %s.' % (f, number, ch, stack[-1])
           return False
         stack = stack[:-1]
+
+  if stack:
+    print '%s:(end) stack had %s.' % (f, stack)
+
   return not stack
 
 for f in sys.argv[1:]:

@@ -109,6 +109,7 @@ Samples<44100> copyCircular(const BufferTime& circ, Samples<44100> size,
     if (toReg || ) {
       clear(reg.add(copied), count - copied);
     } else {
+    }
   }
   return copied;
 }

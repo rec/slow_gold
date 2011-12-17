@@ -166,21 +166,6 @@ void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
   listener->wasRemovedFrom(this);
 }
 
-template <typename Type>
-bool move(Broadcaster<Type>* from, Broadcaster<Type>* to, Listener<Type>* li) {
-  DCHECK(li);
-  if (from == to)
-    return false;
-
-  Lock l(li->lock());
-
-  if (from)
-    from->removeListener(li);
-  if (to)
-    to->addListener(li);
-
-  return true;
-
 }  // namespace listener
 }  // namespace util
 }  // namespace rec
