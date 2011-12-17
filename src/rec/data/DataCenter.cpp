@@ -1,13 +1,13 @@
 #include "rec/data/DataMakerImpl.h"
 #include "rec/data/DataMapImpl.h"
 #include "rec/data/DataUpdater.h"
-#include "rec/data/MessageRegistryAndMaker.h"
+#include "rec/data/MessageRegistrarAndMaker.h"
 #include "rec/data/UndoStack.h"
 
 namespace rec {
 namespace data {
 
-DataCenter() : registry_(new MessageRegistryAndMaker),
+DataCenter() : registry_(new MessageRegistrarAndMaker),
                updater_(new DataUpdater),
                undo_(new UndoStack),
                maker_(new DataMakerImpl(updater_.get(), &undo_.get())),

@@ -3,8 +3,8 @@
 
 #include "rec/command/Command.h"
 #include "rec/util/thread/Callback.h"
-#include "rec/util/DataListener.h"
-#include "rec/util/UntypedDataListener.h"
+#include "rec/data/DataListener.h"
+#include "rec/data/UntypedDataListener.h"
 
 namespace rec {
 namespace command {

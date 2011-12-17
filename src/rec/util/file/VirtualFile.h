@@ -5,9 +5,6 @@
 #include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
-
-namespace data { template <typename Type> class TypedEditable; }
-
 namespace util {
 namespace file {
 
@@ -32,8 +29,6 @@ inline const string toString(const VirtualFile& f) {
 
 bool compare(const VirtualFile& x, const VirtualFile& y);
 bool empty(const VirtualFile& file);
-
-typedef data::TypedEditable<VirtualFile> VirtualFileData;
 
 VirtualFile toVirtualFile(const File& file);
 VirtualFile toVirtualFile(const string& s);

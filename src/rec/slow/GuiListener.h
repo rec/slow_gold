@@ -2,7 +2,7 @@
 #define __REC_SLOW_GUILISTENER__
 
 #include "rec/slow/HasInstance.h"
-#include "rec/util/DataListener.h"
+#include "rec/data/DataListener.h"
 
 namespace rec {
 namespace slow {

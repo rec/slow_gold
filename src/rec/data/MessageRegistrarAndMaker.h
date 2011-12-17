@@ -4,12 +4,12 @@
 #include <map>
 
 #include "rec/data/MessageMaker.h"
-#include "rec/data/MessageRegistry.h"
+#include "rec/data/MessageRegistrar.h"
 
 namespace rec {
 namespace data {
 
-class MessageRegistrarAndMaker : public MessageRegistry, public MessageMaker {
+class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
  public:
   MessageRegistrarAndMaker() {}
   virtual ~MessageRegistrarAndMaker();

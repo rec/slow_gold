@@ -1,8 +1,8 @@
 #ifndef __REC_AUDIO_UTIL_FILLABLE_FRAME_BUFFER__
 #define __REC_AUDIO_UTIL_FILLABLE_FRAME_BUFFER__
 
-#include "rec/base/Samples.h"
 #include "rec/audio/util/Frame.h"
+#include "rec/base/Samples.h"
 #include "rec/util/block/Fillable.h"
 #include "rec/util/Listener.h"
 

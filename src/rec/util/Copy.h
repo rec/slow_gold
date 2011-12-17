@@ -65,7 +65,7 @@ bool copy(const string& from, string* to, Style r = DEFAULT_STYLE);
 
 // Unfortunately, we can't replace these by one template declaration, because
 // templates won't downcast for you (for example, to Message if you're trying
-// to copy a protocol buffer.
+// to copy a protocol buffer).
 
 }  // namespace copy
 }  // namespace rec

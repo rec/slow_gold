@@ -5,6 +5,7 @@
 
 namespace rec {
 namespace data {
+
 namespace file {
 
 Data* getData(const string& typeName, const VirtualFile* vf);
@@ -85,7 +86,7 @@ void apply(void (*function)(Proto*), const VirtualFile* vf) {
 }
 
 template <typename Proto, typename Functor>
-void apply(Functor functor, VirtualFile*);
+void apply(Functor functor, VirtualFile*) {
   functor(Opener<Proto>(getData(getTypeName<Proto>(), vf)).get());
 }
 
@@ -112,7 +113,7 @@ void apply(void (*function)(Proto*)) {
 }
 
 template <typename Proto, typename Functor>
-void apply(Functor functor, VirtualFile*);
+void apply(Functor functor, VirtualFile*) {
   file::apply(functor, &file::none());
 }
 
@@ -139,10 +140,9 @@ void apply(void (*function)(Proto*)) {
 }
 
 template <typename Proto, typename Functor>
-void apply(Functor functor, VirtualFile*);
+void apply(Functor functor, VirtualFile*) {
   file::apply(functor, NULL);
 }
-
 
 }  // namespace empty
 }  // namespace data

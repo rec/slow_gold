@@ -2,7 +2,6 @@
 #define __REC_GUI_SETTERRESIZER__
 
 #include "rec/data/Address.h"
-#include "rec/data/Editable.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/thread/CallAsync.h"
 

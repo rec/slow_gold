@@ -7,7 +7,7 @@
 #include "rec/audio/source/Timer.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.h"
-#include "rec/util/DataListener.h"
+#include "rec/data/DataListener.h"
 #include "rec/util/LoopPoint.h"
 
 namespace rec {

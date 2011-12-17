@@ -171,7 +171,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\TickedDataSetter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataCenter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataImpl.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataMap.cpp"/>
@@ -300,7 +299,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\DefaultRegistry.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp"/>
@@ -631,7 +629,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\DefaultRegistry.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h"/>

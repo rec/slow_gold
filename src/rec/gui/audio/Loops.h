@@ -5,7 +5,7 @@
 #include "rec/gui/TableController.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/util/Cuttable.h"
-#include "rec/util/DataListener.h"
+#include "rec/data/DataListener.h"
 #include "rec/util/LoopPoint.pb.h"
 
 namespace rec {

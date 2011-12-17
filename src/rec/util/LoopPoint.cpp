@@ -114,7 +114,7 @@ LoopPointList addLoopPoint(const LoopPointList& lpl, Samples<44100> t) {
   return audio::addLoopPoints(lpl, oneSegment);
 }
 
-void addLoopPointToEditable(const VirtualFile& file, Samples<44100> time) {
+void addLoopPointToData(const VirtualFile& file, Samples<44100> time) {
   LoopPointList loops = data::get<LoopPointList>(file);
   data::set(audio::addLoopPoint(loops, time), file);
 }

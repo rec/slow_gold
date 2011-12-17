@@ -7,9 +7,6 @@
 #include "rec/util/Listener.h"
 
 namespace rec {
-
-namespace util { class DefaultRegistry; }
-
 namespace app {
 
 class Window;
@@ -34,8 +31,6 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   virtual void operator()(bool disabled) { Lock l(lock_); disabled_ = disabled; }
 
  protected:
-  virtual void registerDefaults(DefaultRegistry*) {}
-
   CriticalSection lock_;
   const String name_;
   const String version_;

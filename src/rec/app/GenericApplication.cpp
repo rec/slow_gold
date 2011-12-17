@@ -4,11 +4,10 @@
 #include "rec/app/Files.h"
 #include "rec/app/Window.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
-#include "rec/data/StartStop.h"
-#include "rec/gui/Dialog.h"
-#include "rec/util/thread/MakeThread.h"
-#include "rec/util/Undo.h"
 #include "rec/data/DataUpdater.h"
+#include "rec/gui/Dialog.h"
+#include "rec/util/Undo.h"
+#include "rec/util/thread/MakeThread.h"
 
 namespace rec {
 namespace app {
@@ -29,8 +28,6 @@ void GenericApplication::initialise(const String&) {
 
   audio::format::mpg123::initializeOnce();
   window_.reset(createWindow());
-  data::DataUpdater::instance()->start(window_->getDefaultRegistry(),
-                                           window_->getDataRegistry());
   window_->initialise();
 
   thread::runInNewThread("startup thread",

@@ -32,11 +32,11 @@ const String formatTime(Samples<RATE> time,
 
   if (displayHours) {
 #ifdef _WIN32
-    _snprintf(
+    _snprintf
 #else
-    snprintf(
+    snprintf
 #endif
-      buffer, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
+      (buffer, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
   } else {
     minutes += 60 * hours;
     const char* zero = (sec < 10 && decimals)  ? "0" : "";

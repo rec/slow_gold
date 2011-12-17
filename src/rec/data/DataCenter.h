@@ -9,14 +9,14 @@ namespace data {
 class DataMaker;
 class DataMap;
 class DataUpdater;
-class MessageRegistryAndMaker;
+class MessageRegistrarAndMaker;
 class UndoStack;
 
 struct DataCenter {
   DataCenter();
   ~DataCenter();
 
-  ptr<MessageRegistryAndMaker> registry_;
+  ptr<MessageRegistrarAndMaker> registry_;
   ptr<DataUpdater> updater_;
   ptr<UndoStack> undo_;
   ptr<DataMaker> maker_;

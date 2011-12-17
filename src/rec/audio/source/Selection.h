@@ -4,7 +4,7 @@
 #include "rec/base/Samples.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/DataListener.h"
+#include "rec/data/DataListener.h"
 #include "rec/util/block/Block.h"
 
 namespace rec {

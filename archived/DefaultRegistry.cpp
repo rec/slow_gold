@@ -2,8 +2,6 @@
 
 #include "google/protobuf/message.h"
 
-#include "rec/util/DefaultRegistry.h"
-
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/STL.h"
 

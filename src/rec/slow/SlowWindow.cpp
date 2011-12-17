@@ -76,7 +76,6 @@ static Def<AppLayout> layout(
 "controls_x: 650\n"
 ""
 );
-#endif
 
 static Def<gui::WindowPosition> windowPosition(
 "bounds {\n"
@@ -84,18 +83,7 @@ static Def<gui::WindowPosition> windowPosition(
 "  dimensions { x: 800 y: 600 }\n"
 "}\n");
 
-
-DefaultRegistry* SlowWindow::getDefaultRegistry() {
-  ptr<DefaultRegistry> r(new DefaultRegistry);
-
-  // r->registerDefault(*loops);
-  // r->registerDefault(*layout);
-  // r->registerDefault(*windowPosition);
-
-  return r.transfer();
-}
-
-using data::DataRegistry;
+#endif
 
 DataRegistry* SlowWindow::getDataRegistry() {
   ptr<DataRegistry> r(new DataRegistry);

@@ -3,7 +3,7 @@
 
 #include "rec/command/Command.h"
 #include "rec/gui/layout/Layout.h"
-#include "rec/util/DataListener.h"
+#include "rec/data/DataListener.h"
 
 namespace rec {
 namespace gui {

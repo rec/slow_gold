@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="E5q94TZzJ" name="Slow">
+  <MAINGROUP id="yFBFnD6hC" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -322,8 +322,6 @@
               name="Address.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/AddressListener.h" id="myOhIPtd2"
               name="AddressListener.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/Data.cpp" id="NIH2eMqIp"
-              name="Data.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Data.h" id="hxzP7fNYW" name="Data.h"
               resource="0"/>
         <FILE compile="1" file="../../src/rec/data/DataCenter.cpp" id="WN29jGW0Q"
@@ -972,10 +970,6 @@
               name="Defaulter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="U5P4ATabn"
               name="Defaulter.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/DefaultRegistry.cpp" id="Vcinpq5yE"
-              name="DefaultRegistry.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/DefaultRegistry.h" id="tE53Sf2v1"
-              name="DefaultRegistry.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="sKLqNcPzv"
               name="Exception.h" resource="0"/>
         <GROUP id="XVsVMuC99" name="file">
@@ -1338,7 +1332,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="4ndMf6JdC" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="PdYZpybJm" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

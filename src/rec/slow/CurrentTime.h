@@ -6,7 +6,7 @@
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/DataListener.h"
+#include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 

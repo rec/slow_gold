@@ -14,6 +14,7 @@ class NodeComponent : public juce::Component {
   virtual void mouseDown(const juce::MouseEvent& e) { node_->itemClicked(e); }
   virtual void mouseUp(const juce::MouseEvent& e)   { node_->itemClicked(e); }
 #if 0
+  {
     if (!node_->isDirectory())
       node_->setSelected(true, true);
 

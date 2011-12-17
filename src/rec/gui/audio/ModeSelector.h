@@ -5,7 +5,7 @@
 
 #include "rec/gui/layout/Layout.h"
 #include "rec/gui/HasSizeHints.h"
-#include "rec/util/DataListener.h"
+#include "rec/data/DataListener.h"
 #include "rec/util/Mode.pb.h"
 
 namespace rec {

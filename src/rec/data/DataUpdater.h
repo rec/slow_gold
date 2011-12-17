@@ -1,7 +1,7 @@
 #ifndef __REC_DATA_PERSIST_EDITABLEUPDATER__
 #define __REC_DATA_PERSIST_EDITABLEUPDATER__
 
-#include "rec/data/NewData.h"
+#include "rec/data/Data.h"
 #include "rec/data/UndoStack.h"
 #include "rec/util/thread/Trash.h"
 

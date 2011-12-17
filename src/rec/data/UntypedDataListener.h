@@ -40,6 +40,8 @@ class UntypedGlobalDataListener : public UntypedDataListener {
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
 };
 
+using UntypedDataListener;
+
 }  // namespace data
 }  // namespace rec
 

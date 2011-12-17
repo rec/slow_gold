@@ -1,5 +1,4 @@
 #include "rec/gui/TableController.h"
-#include "rec/data/Editable.h"
 #include "rec/data/Value.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/Copy.h"

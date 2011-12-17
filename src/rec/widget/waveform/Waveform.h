@@ -5,7 +5,7 @@
 
 #include "rec/base/Samples.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/DataListener.h"
+#include "rec/data/DataListener.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/Listener.h"

@@ -23,7 +23,7 @@ LoopPointList addLoopPoint(const LoopPointList&, Samples<44100>);
 
 void sort(LoopPointList*);
 
-void addLoopPointToEditable(const VirtualFile&, Samples<44100> time);
+void addLoopPointToData(const VirtualFile&, Samples<44100> time);
 
 int getSelectionCount(const LoopPointList&);
 

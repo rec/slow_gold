@@ -1,5 +1,5 @@
 #include "rec/data/Data.h"
-#include "rec/data/DataUpdater.h"
+// #include "rec/data/DataUpdater.h"
 
 namespace rec {
 namespace data {
@@ -32,8 +32,6 @@ Data* getData(const string& typeName, const VirtualFile* vf) {
 
   return data.transfer();
 }
-
-
 
 }  // namespace data
 }  // namespace rec
