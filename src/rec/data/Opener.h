@@ -1,7 +1,7 @@
 #ifndef __REC_DATA_OPENER__
 #define __REC_DATA_OPENER__
 
-#include "rec/Data/NewData.h"
+#include "rec/Data/Data.h"
 
 namespace rec {
 namespace data {

@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="yFBFnD6hC" name="Slow">
+  <MAINGROUP id="2ipI6dkxG" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -224,8 +224,6 @@
               name="Samples.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/scoped_array.h" id="nA1lhFCrs"
               name="scoped_array.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/Standard.h" id="bQIhVMPZh"
-              name="Standard.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/string_piece.h" id="xKUcaoCrk"
               name="string_piece.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/types.h" id="Da6Tw5Vd2"
@@ -1332,7 +1330,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="PdYZpybJm" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="FJ81Q2ZAW" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

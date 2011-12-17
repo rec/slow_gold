@@ -1,6 +1,8 @@
 #ifndef __REC_DATA_DATALISTENER__
 #define __REC_DATA_DATALISTENER__
 
+#include "rec/data/UntypedDataListener.h"
+#include "rec/util/Listener.h"
 #include "rec/util/Proto.h"
 
 namespace rec {

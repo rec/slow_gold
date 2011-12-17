@@ -545,7 +545,6 @@
 		7ACCDDE1865D383FC89B7790 /* TransportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportController.h; path = ../../../../src/rec/gui/audio/TransportController.h; sourceTree = SOURCE_ROOT; };
 		7B0B52E98BF728FA6655818A /* PointingHand.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PointingHand.svg.cpp; path = ../../../../src/rec/gui/icon/PointingHand.svg.cpp; sourceTree = SOURCE_ROOT; };
 		7B14E17E48ABCFEE5DF2E80E /* UntypedDataListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UntypedDataListener.h; path = ../../../../src/rec/data/UntypedDataListener.h; sourceTree = SOURCE_ROOT; };
-		7B2EF485D114357565803EDF /* Standard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Standard.h; path = ../../../../src/rec/base/Standard.h; sourceTree = SOURCE_ROOT; };
 		7B9F375E4D9D9D9A827002A8 /* Value.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.cpp; path = ../../../../src/rec/data/Value.cpp; sourceTree = SOURCE_ROOT; };
 		7BD8F20D19933F181D04273D /* KeyPresses.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeyPresses.def.h; path = ../../../../src/rec/slow/commands/KeyPresses.def.h; sourceTree = SOURCE_ROOT; };
 		7BD93D3C80AA0E1600B3C057 /* Geometry.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.pb.h; path = ../../../../genfiles/proto/rec/gui/Geometry.pb.h; sourceTree = SOURCE_ROOT; };
@@ -1060,16 +1059,6 @@
 			name = icon;
 			sourceTree = "<group>";
 		};
-		3FAC91E319C464F07C9669B4 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
-				1AB486317E06D9E7CC790074 /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		421A4C330D68791277CAD9F8 /* widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1393,6 +1382,16 @@
 			name = waveform;
 			sourceTree = "<group>";
 		};
+		7FC2FC28FBF7704881E7D0BD /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
+				1AB486317E06D9E7CC790074 /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		803DCB289A2AA5D2EDF62556 /* audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -1582,7 +1581,6 @@
 				77071E2C8A75D3902638854B /* RealTime.h */,
 				3A427D43E3165CC0C65694C4 /* Samples.h */,
 				9EC1B06A708112332FF88983 /* scoped_array.h */,
-				7B2EF485D114357565803EDF /* Standard.h */,
 				41ECEA2B08C7F76CC55BC17D /* string_piece.h */,
 				B6A650969B6E41F35EADB29A /* types.h */,
 			);
@@ -1635,7 +1633,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				3FAC91E319C464F07C9669B4 /* Slow */,
+				7FC2FC28FBF7704881E7D0BD /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
