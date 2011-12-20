@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="44YdTHNmc" name="Slow">
+  <MAINGROUP id="LOO9hUz9H" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -847,10 +847,6 @@
                 id="tr0yjzdTl" name="SlowCommandData.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/commands/SlowCommandData.h"
                 id="6UA4RD20W" name="SlowCommandData.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/commands/Unused.def.cpp"
-                id="Hzpgu91IP" name="Unused.def.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/commands/Unused.def.h" id="ZFbB46M4F"
-                name="Unused.def.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/slow/Components.cpp" id="4OqPb9FiH"
               name="Components.cpp" resource="0"/>
@@ -1336,7 +1332,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Aikg54D9O" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="I8KMVDJRi" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
