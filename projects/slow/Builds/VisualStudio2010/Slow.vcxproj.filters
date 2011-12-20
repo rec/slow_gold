@@ -202,6 +202,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp">
       <Filter>Slow\rec\audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp">
       <Filter>Slow\rec\audio\format\mpg123</Filter>
     </ClCompile>
@@ -924,6 +927,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h">
       <Filter>Slow\rec\audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h">
       <Filter>Slow\rec\audio\format\mpg123</Filter>
     </ClInclude>
@@ -1232,6 +1238,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h">
       <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Reader.h">
+      <Filter>Slow\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\UndoStack.h">
       <Filter>Slow\rec\data</Filter>

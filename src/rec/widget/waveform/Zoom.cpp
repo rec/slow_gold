@@ -46,11 +46,11 @@ ZoomProto zoom(const ZoomProto& z, Samples<44100> length, double k) {
 }  // namespace
 
 void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k) {
-  data::set(zoom(data::get<ZoomProto>(f), length, time, k), f);
+  data::setProto(zoom(data::getProto<ZoomProto>(&f), length, time, k), &f);
 }
 
 void zoom(const VirtualFile& f, Samples<44100> length, double k) {
-  data::set(zoom(data::get<ZoomProto>(f), length, k), f);
+  data::setProto(zoom(data::getProto<ZoomProto>(&f), length, k), &f);
 }
 
 

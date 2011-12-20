@@ -1,5 +1,7 @@
 #include "rec/audio/format/mpg123/Tags.h"
 
+#include "rec/audio/format/mpg123/CleanGenre.h"
+
 using juce::StringPairArray;
 
 namespace rec {
@@ -41,7 +43,7 @@ Error getMp3Tags(mpg123_handle* mh, StringPairArray* data) {
     data->set("album", String(v1->album, 30));
     data->set("year", String(v1->year, 4));
     data->set("comment", String(v1->comment, 30));
-    data->set("genre", String((const char*) &v1->genre, 1));
+    data->set("genre", str(cleanGenre(v1->genre)));
 
     return MPG123_OK;
   }

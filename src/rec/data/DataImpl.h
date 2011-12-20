@@ -11,25 +11,31 @@ namespace data {
 
 class DataImpl : public Data, public DataMaker {
  public:
-  DataImpl(Message*, DataUpdater*, UndoStack*);
+  DataImpl(Message*, const File&, DataUpdater*, UndoStack*);
   virtual ~DataImpl() {}
 
   virtual void pushOnUndoStack(const Message& before);
-  virtual void reportChange() const;
+  virtual void reportChange();
   virtual bool update();
   virtual void clearRecentListeners();
+  virtual bool writeToFile();
+  virtual bool fileReadSuccess() const { return fileReadSuccess_; }
 
-  virtual void addListener(const Listener<const Message&>*);
-  virtual void removeListener(const Listener<const Message&>*);
+  virtual void addListener(Listener<const Message&>*);
+  virtual void removeListener(Listener<const Message&>*);
 
-  virtual Data* makeData(Message*) const;
+  virtual Data* makeData(Message*, const File&) const;
 
  private:
-  typedef std::set<Listener<const Message&> > ListenerSet;
+  typedef std::set<Listener<const Message&>*> ListenerSet;
 
   ListenerSet recentListeners_;
-  UndoStack* undoStack_;
+  File file_;
   DataUpdater* dataUpdater_;
+  UndoStack* undoStack_;
+
+  bool alreadyReadFromFile_;
+  bool fileReadSuccess_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(DataImpl);
 };

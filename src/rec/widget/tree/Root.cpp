@@ -111,7 +111,7 @@ void Root::mouseDoubleClick(const juce::MouseEvent&) {
 }
 
 void Root::doAdd() {
-  if (addDialogOpen_ || !data::get<NavigatorConfig>().allow_file_drop())
+  if (addDialogOpen_ || !data::getGlobal<NavigatorConfig>().allow_file_drop())
     return;
 
   addDialogOpen_ = true;

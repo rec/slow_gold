@@ -16,8 +16,8 @@ namespace audio {
 
 class TransformController : public Layout,
                             public juce::ComboBox::Listener,
-                            public DataListener<rec::audio::source::StereoProto>,
-                            public DataListener<rec::audio::stretch::Stretch> {
+                            public data::DataListener<rec::audio::source::StereoProto>,
+                            public data::DataListener<rec::audio::stretch::Stretch> {
  public:
   TransformController();
   virtual ~TransformController();

@@ -1,27 +1,31 @@
 #ifndef __REC_GUI_DATASLIDER__
 #define __REC_GUI_DATASLIDER__
 
+#include "rec/data/Address.h"
+#include "rec/data/AddressListener.h"
+#include "rec/data/DataListener.h"
 #include "rec/data/Value.h"
 #include "rec/gui/DataSlider.h"
 #include "rec/gui/DetentSlider.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/gui/layout/Layout.h"
-#include "rec/data/DataListener.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
 
 class DataSlider : public Layout,
-                   public UntypedDataListener,
+                   public data::AddressListener,
                    public juce::Slider::Listener {
  public:
   DataSlider(const String& name,
              const string& typeName,
              const data::Address& address,
              const String& caption = String::empty,
-             const String& tip = String::empty)
+             const String& tip = String::empty,
+             Scope scope = FILE_SCOPE)
     : Layout(name, HORIZONTAL, true),
-      UntypedDataListener(typeName, address),
+      data::AddressListener(address, typeName, scope),
       slider_(name),
       caption_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
@@ -47,7 +51,7 @@ class DataSlider : public Layout,
   }
 
   virtual void sliderValueChanged(Slider*) {
-    this->setValue(static_cast<double>(slider_.getValue()));
+    setValue(data::Value(slider_.getValue()));
   }
 
   virtual void operator()(const Message&) {

@@ -1,6 +1,6 @@
 #include "{header_file}"
 #include "rec/base/ArraySize.h"
-#include "rec/gui/icon/Icon.h"
+#include "rec/util/Binary.h"
 
 {namespace}
 
@@ -12,7 +12,7 @@ using juce::Drawable;
 Drawable* {classname}::get() {{
   static const char data[] = {data};
 
-  static Drawable* d = createFromImageData(data, arraysize(data));
+  static Drawable* d = createBinary<Drawable>(data, arraysize(data));
   return d;
 }};
 

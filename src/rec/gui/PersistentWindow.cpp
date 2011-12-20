@@ -38,12 +38,6 @@ PersistentWindow::PersistentWindow(const String& name,
 
 PersistentWindow::~PersistentWindow() {}
 
-void PersistentWindow::getPositionFromData() {
-  data::TypedEditable<WindowPosition>* e = data::editable<WindowPosition>();
-  e->addListener(this);
-  (*this)(e->get());
-}
-
 void PersistentWindow::fixPosition(WindowPosition* pos) {
   gui::Point* dim = pos->mutable_bounds()->mutable_dimensions();
   int w = std::min(resizeLimits_.getWidth(), std::max(MIN_WIDTH, dim->x()));
@@ -95,7 +89,7 @@ void PersistentWindow::writeData() {
         return;
       }
     }
-    WindowPosition position(data::editable<WindowPosition>()->get());
+    WindowPosition position(getProto());
     juce::Rectangle<int> bounds = getBounds();
 
     *position.mutable_bounds() = copy(bounds);
@@ -120,7 +114,7 @@ void PersistentWindow::closeButtonPressed() {
 void PersistentWindow::writeGui() {
   Lock l(lock_);
   if (running_ && needsWrite_ && (time() - lastUpdateTime_) > MIN_UPDATE_GAP) {
-    data::set(position_);
+    setProto(position_);
     needsWrite_ = false;
   }
 }

@@ -84,7 +84,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   DialogLocker::getDisableBroadcaster()->addListener(window->application());
 
   // TODO: move this elsewhere.
-  Mode mode = data::get<Mode>();
+  Mode mode = data::getGlobal<Mode>();
   if (mode.click() == Mode::DRAW_LOOP_POINTS) {
     mode.clear_click();
     data::set(mode);
@@ -123,6 +123,11 @@ Samples<44100> Instance::time() const {
 
 bool Instance::isPlaying() const {
   return player_ && player_->state();
+}
+
+void Instance::setProto(const Message& m, Undoable ) {
+  VirtualFile vf = file();
+  return data::
 }
 
 }  // namespace slow

@@ -1,8 +1,8 @@
 #include "rec/audio/Audio.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/util/Math.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/LoopPoint.pb.h"
 #include "rec/base/Samples.h"
 
 namespace rec {
@@ -115,8 +115,8 @@ LoopPointList addLoopPoint(const LoopPointList& lpl, Samples<44100> t) {
 }
 
 void addLoopPointToData(const VirtualFile& file, Samples<44100> time) {
-  LoopPointList loops = data::get<LoopPointList>(file);
-  data::set(audio::addLoopPoint(loops, time), file);
+  LoopPointList loops = data::getProto<LoopPointList>(&file);
+  data::setProto(audio::addLoopPoint(loops, time), &file);
 }
 
 int getSelectionCount(const LoopPointList& loops) {

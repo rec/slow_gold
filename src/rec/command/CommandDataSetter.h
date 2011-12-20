@@ -3,23 +3,23 @@
 
 #include "rec/command/Command.h"
 #include "rec/util/thread/Callback.h"
-#include "rec/data/DataListener.h"
-#include "rec/data/UntypedDataListener.h"
+#include "rec/data/Address.h"
+#include "rec/data/AddressListener.h"
+#include "rec/data/Value.h"
 
 namespace rec {
 namespace command {
 
-class CommandDataSetter : public UntypedDataListener,
-                                 public CommandItemSetter {
+class CommandDataSetter : public data::AddressListener,
+                          public CommandItemSetter {
  public:
   explicit CommandDataSetter(Listener<None>* changeListener,
                              const Command& command,
-                             const data::Address& addr =
-                             data::Address::default_instance(),
-                             bool isGlobal = false);
+                             const data::Address& addr,
+                             Scope scope = FILE_SCOPE);
   virtual ~CommandDataSetter() {}
 
-  virtual void operator()(const Message&);
+  virtual void operator()(const data::Value&);
   virtual void execute();
   virtual string menuName() const;
 

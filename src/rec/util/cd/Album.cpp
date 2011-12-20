@@ -1,4 +1,6 @@
 #include "rec/util/cd/Album.h"
+
+#include "rec/audio/format/mpg123/CleanGenre.h"
 #include "rec/base/ArraySize.h"
 #include "rec/util/Copy.h"
 #include "rec/util/Exception.h"
@@ -54,7 +56,7 @@ void addAlbumValue(const String& key, const string& v, Album* a) {
     data->set_year(v);
 
   else if (key == "DGENRE")
-    data->set_genre(v);
+    data->set_genre(audio::format::mp3::cleanGenre(v));
 
   else if (key == "DTITLE")
     *data->mutable_album_title() += v;

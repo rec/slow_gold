@@ -12,14 +12,15 @@ namespace data {
 class UntypedDataListener : public Listener<const Message&>,
                             public Listener<const VirtualFile&> {
  public:
-  explicit UntypedDataListener(const string& typeName, bool isGlobal = false);
+  explicit UntypedDataListener(const string& typeName,
+                               Scope scope = FILE_SCOPE);
   virtual ~UntypedDataListener() {}
 
   virtual void operator()(const VirtualFile& vf);
   virtual void operator()(const Message& m) = 0;
 
-  virtual void setData(Data*);
-  virtual Data* getData();
+  virtual void setData(const VirtualFile*);
+  Data* getData() const;
 
  private:
   const string typeName_;
@@ -32,17 +33,19 @@ class UntypedDataListener : public Listener<const Message&>,
 class UntypedGlobalDataListener : public UntypedDataListener {
  public:
   explicit UntypedGlobalDataListener(const string& typeName)
-      :  UntypedDataListener(typeName, true) {
+      :  UntypedDataListener(typeName, GLOBAL_SCOPE) {
   }
   virtual ~UntypedGlobalDataListener() {}
 
  private:
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedGlobalDataListener);
 };
 
-using UntypedDataListener;
-
 }  // namespace data
+
+using data::UntypedDataListener;
+using data::UntypedGlobalDataListener;
+
 }  // namespace rec
 
 #endif  // __REC_UTIL_UNTYPEDDATALISTENER__

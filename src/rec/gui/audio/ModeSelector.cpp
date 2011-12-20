@@ -26,7 +26,7 @@ namespace {
 template <typename T>
 void setImage(ModeSelector* selector, DrawableButton* b, Mode::Action action,
               const String& tooltip) {
-  b->setImages(ptr<Drawable>(T::create()).get());
+  b->setImages(T::get());
   b->addListener(selector);
   selector->addToLayout(b);
   (*selector->buttonMap())[action] = b;
@@ -89,7 +89,7 @@ void ModeSelector::buttonClicked(Button* button) {
     if (i->second == button) {
       Mode mode;
       mode.set_click(i->first);
-      setValue(mode);
+      setProto(mode);
       return;
     }
   }

@@ -2,19 +2,24 @@
 #define __REC_GUI_SETTERRESIZER__
 
 #include "rec/data/Address.h"
+#include "rec/data/AddressListener.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
+
+namespace data { class Data; }
+
 namespace gui {
 
 class SetterResizer : public StretchableLayoutResizerBar,
-                      public SettableTooltipClient {
+                      public SettableTooltipClient,
+                      public data::AddressListener {
  public:
   SetterResizer(const data::Address& address,
+                const string& typeName,
                 Layout* layout,
-                int itemIndexInLayout,
-                data::Editable* editable);
+                int itemIndexInLayout);
 
   int get() const;
   virtual void moved();
@@ -25,7 +30,6 @@ class SetterResizer : public StretchableLayoutResizerBar,
   juce::StretchableLayoutManager* layoutManager_;
   int index_;
   data::Address address_;
-  data::Editable* editable_;
   bool active_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterResizer);

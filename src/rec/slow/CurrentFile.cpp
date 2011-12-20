@@ -19,7 +19,7 @@ namespace rec {
 namespace slow {
 
 CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {
-  setFile(data::get<VirtualFile>());
+  setFile(data::getGlobal<VirtualFile>());
 }
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
@@ -29,7 +29,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 
     typedef std::set<string> FileSet;
     FileSet existing;
-    VirtualFileList list(data::get<file::VirtualFileList>());
+    VirtualFileList list(data::getGlobal<file::VirtualFileList>());
     for (int i = 0; i < list.file_size(); ++i)
       existing.insert(str(getFile(list.file(i)).getFullPathName()));
 
@@ -44,7 +44,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
-  gui::addRecentFile(file_, data::get<music::Metadata>(file_));
+  gui::addRecentFile(file_, data::get<music::Metadata>(&file_));
   setFile(f);
   data::set(f);
 }
@@ -80,7 +80,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
       return;
     }
 
-    LoopPointList lpl = data::get<LoopPointList>(file_);
+    LoopPointList lpl = data::get<LoopPointList>(&file_);
     if (lpl.length() != length || !lpl.loop_point_size()) {
       lpl.set_length(length);
       if (!lpl.loop_point_size())

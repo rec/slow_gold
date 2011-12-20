@@ -4,6 +4,7 @@
 #include "rec/data/Address.h"
 #include "rec/data/Value.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/music/Metadata.pb.h"
 #include "rec/util/file/VirtualFile.h"
@@ -28,7 +29,7 @@ void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
     return;
 
   int64 timestamp = juce::Time::currentTimeMillis();
-  RecentFiles rf = data::get<RecentFiles>();
+  RecentFiles rf = data::getGlobal<RecentFiles>();
   RecentFile* r = NULL;
   for (int i = 0; i < rf.file_size(); ++i) {
     const RecentFile& file = rf.file(i);
@@ -49,7 +50,7 @@ void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
   std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
             CompareRecentFiles());
 
-  data::set(rf);
+  data::setProto(rf, data::global());
 }
 
 static const int MAX_DEDUPE_COUNT = 2;
@@ -57,7 +58,7 @@ static const int MAX_DEDUPE_COUNT = 2;
 std::vector<string> getRecentFileNames() {
   typedef std::vector<string> StrList;
 
-  RecentFiles recent = data::get<RecentFiles>();
+  RecentFiles recent = data::getGlobal<RecentFiles>();
   StrList results(recent.file_size());
   for (int i = 0; i < recent.file_size(); ++i) {
     music::Metadata md = recent.file(i).metadata();

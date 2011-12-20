@@ -13,7 +13,7 @@ namespace gui {
 static const int CAPTION_SIZE = 50;
 
 class SetterText : public Layout,
-                   public AddressListener,
+                   public data::AddressListener,
                    public TextEditor::Listener {
  public:
   SetterText(const String& name,
@@ -22,9 +22,9 @@ class SetterText : public Layout,
              const String& tip = String::empty,
              const String& caption = String::empty,
              bool useCaption = true,
-             bool isGlobal = true)
+             Scope scope = FILE_SCOPE)
       : Layout(name, HORIZONTAL),
-        AddressListener(typeName, address, isGlobal) {
+        data::AddressListener(address, typeName, scope) {
     DCHECK(name.length());
     const String& cap = caption.length() ? caption : name;
     caption_.setName(name + ".caption");
@@ -41,7 +41,7 @@ class SetterText : public Layout,
     editor_.addListener(this);
   }
 
-  virtual void operator(const Value& v) {
+  virtual void operator()(const data::Value& v) {
     if (v.has_string_f() && str(v.string_f()) != editor_.getText())
       thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
   }
@@ -65,7 +65,7 @@ class SetterText : public Layout,
   TextEditor* editor() { return &editor_; }
 
   virtual void textEditorTextChanged(TextEditor&) {
-    setValue(str(editor_.getText()));
+    setValue(data::Value(str(editor_.getText())));
   }
 
   virtual void textEditorReturnKeyPressed(TextEditor& editor) {}

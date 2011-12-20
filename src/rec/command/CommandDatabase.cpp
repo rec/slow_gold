@@ -9,6 +9,7 @@
 #include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
 namespace rec {
@@ -169,7 +170,7 @@ class CommandDatabase {
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
       cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, c, a,
-                                             c.is_global_setter()));
+                                             scope(c.is_global_setter())));
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                  &CommandItemSetter::execute));
     }

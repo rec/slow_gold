@@ -7,7 +7,6 @@
 
 namespace rec {
 namespace util {
-namespace listener {
 
 template <typename Type> class Broadcaster;
 
@@ -166,7 +165,6 @@ void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
   listener->wasRemovedFrom(this);
 }
 
-}  // namespace listener
 }  // namespace util
 }  // namespace rec
 

@@ -12,7 +12,7 @@ class Data;
 
 class UndoStack : public Broadcaster<None> {
  public:
-  UndoStack() : undoes_(0), running_(false) {}
+  UndoStack() : undoes_(0) {}
   ~UndoStack();
 
   void push(Data*, const Message& before, const Message& after);

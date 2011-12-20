@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="2ipI6dkxG" name="Slow">
+  <MAINGROUP id="44YdTHNmc" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -60,6 +60,10 @@
               name="Device.h" resource="0"/>
         <GROUP id="oQ9QbFgiB" name="format">
           <GROUP id="kjoc9Chnp" name="mpg123">
+            <FILE compile="1" file="../../src/rec/audio/format/mpg123/CleanGenre.cpp"
+                  id="SjjNg5sly" name="CleanGenre.cpp" resource="0"/>
+            <FILE compile="0" file="../../src/rec/audio/format/mpg123/CleanGenre.h"
+                  id="ukbhEmqwz" name="CleanGenre.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Copier.cpp"
                   id="p5luUj6zz" name="Copier.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Copier.h"
@@ -398,6 +402,8 @@
           <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="anaFVAxUj"
                 name="Types.h" resource="0"/>
         </GROUP>
+        <FILE compile="0" file="../../src/rec/data/Reader.h" id="PwHRICmLU"
+              name="Reader.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/UndoStack.cpp" id="yOs81wrLG"
               name="UndoStack.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/UndoStack.h" id="JHzUUNhbi"
@@ -1330,7 +1336,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="FJ81Q2ZAW" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Aikg54D9O" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

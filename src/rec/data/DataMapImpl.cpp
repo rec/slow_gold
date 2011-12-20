@@ -1,8 +1,10 @@
 #include "rec/data/DataMapImpl.h"
 
+#include "rec/data/Data.h"
 #include "rec/data/DataMaker.h"
 #include "rec/data/MessageMaker.h"
 #include "rec/util/STL.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace data {
@@ -13,34 +15,37 @@ const char* const EMPTY_DIRECTORY_NAME = "empty-empty-empty";
 
 File dataFile(const VirtualFile* vf, const string& typeName) {
   File directory = vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
-  return directory.getChildFile(typeName);
+  return directory.getChildFile(str(typeName));
 }
 
-struct DataMap::DataFile {
+}  // namespace
+
+struct DataMapImpl::DataFile {
   DataFile(Data* d, const File& f) : data_(d), file_(f) {}
 
-  ptr<Data> data_
+  Data* data_;
   File file_;
 };
-
-}  // namespace
 
 DataMapImpl::DataMapImpl(MessageMaker* m, DataMaker* d)
     : messageMaker_(m), dataMaker_(d) {
 }
 
-virtual DataMapImpl::~DataMapImpl() {
-  stl::deleteMapPointers(&map_);
+DataMapImpl::~DataMapImpl() {
+  for (Map::iterator i = map_.begin(); i != map_.end(); ++i) {
+    delete i->second->data_;
+    delete i->second;
+  }
 }
 
-Data* DataMap::getData(const string& typeName, const VirtualFile* vf) {
+Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
   File file = dataFile(vf, typeName);
   string key = str(file);
 
   Lock l(lock_);
   Map::iterator i = map_.find(key);
   if (i != map_.end())
-    return i->second->first;
+    return i->second->data_;
 
   ptr<Message> msg(messageMaker_->makeMessage(typeName));
   if (!msg) {
@@ -48,15 +53,15 @@ Data* DataMap::getData(const string& typeName, const VirtualFile* vf) {
     return NULL;
   }
 
-  ptr<Data> data(dataMaker_->makeData(msg.transfer()));
+  Data* data = dataMaker_->makeData(msg.transfer(), file);
   if (!data) {
     LOG(DFATAL) << "Unable to make data for " << typeName;
     return NULL;
   }
 
-  ptr<DataFile> df(new DataFile(data.get(), file));
-  map_.insert(i, make_pair(key, df.transfer()));
-  return data.transfer();
+  DataFile* df = new DataFile(data, file);
+  map_.insert(i, make_pair(key, df));
+  return data;
 }
 
 }  // namespace data

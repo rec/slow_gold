@@ -21,7 +21,7 @@ LevelMeter::LevelMeter(bool horiz, bool rms, int margin)
       preFaderLevels_(false) {
 }
 
-void LevelMeter::operator()(const LevelVector& levels) {
+void LevelMeter::operator()(const rec::audio::LevelVector& levels) {
   {
     Lock l(lock_);
     levels_ = levels;

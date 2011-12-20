@@ -1,10 +1,11 @@
 #include "rec/slow/Target.h"
 
 #include "rec/audio/Device.h"
-#include "rec/command/map/MidiCommandMapEditor.h"
-#include "rec/slow/Menus.h"
-#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandDatabase.h"
+#include "rec/command/CommandIDEncoder.h"
+#include "rec/command/map/MidiCommandMapEditor.h"
+#include "rec/data/DataOps.h"
+#include "rec/slow/Menus.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/SlowCommandData.h"
@@ -20,7 +21,7 @@ Target::Target(Instance* i)
       midiCommandMap_(new command::MidiCommandMap(manager_.commandManager())) {
   i->window_->addKeyListener(manager_.commandManager()->getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
-  (*midiCommandMap_)(data::get<command::CommandMapProto>());
+  (*midiCommandMap_)(data::getGlobal<command::CommandMapProto>());
 }
 
 Target::~Target() {

@@ -13,7 +13,7 @@ class Data;
 // DataUpdater sends out updates to data clients and writes copies of the data
 // to the file system.
 class DataUpdater {
- private:
+ public:
   DataUpdater() : updateThread_(NULL), writeThread_(NULL) {}
   ~DataUpdater() {}
 
@@ -27,7 +27,7 @@ class DataUpdater {
   Thread* updateThread_;
   Thread* writeThread_;
 
-  typedef std::set<string, Data*> DataSet;
+  typedef std::set<Data*> DataSet;
 
   DataSet updateData_;
   DataSet writeData_;

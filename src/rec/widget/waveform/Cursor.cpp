@@ -43,7 +43,6 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
 
   setTime(t);
   setRepaintsOnMouseActivity(true);
-  UpdateRequester::requestAllUpdates();
 }
 
 Cursor::~Cursor() {

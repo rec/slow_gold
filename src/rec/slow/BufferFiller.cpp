@@ -3,6 +3,7 @@
 #include "rec/slow/CurrentTime.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/FillSeries.h"
+#include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
@@ -64,8 +65,8 @@ thread::Result BufferFiller::fillOnce() {
   updateSource_.getNextAudioBlock(updateInfo_);
   thumbnailBuffer_.addBlock(pos, updateInfo_);
 
-  thread::callAsync(components()->waveform_.get(), 
-                    &Waveform::repaintBlock, 
+  thread::callAsync(components()->waveform_.get(),
+                    &Waveform::repaintBlock,
                     block::makeBlock(pos, pos + filled));
   return thread::YIELD;
 }

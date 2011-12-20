@@ -2,6 +2,9 @@
 
 #include "rec/data/DataUpdater.h"
 
+#include "rec/data/Data.h"
+#include "rec/util/STL.h"
+
 namespace rec {
 namespace data {
 
@@ -27,7 +30,7 @@ bool DataUpdater::update() {
   {
     ScopedUnlock u(lock_);
     for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {
-      if ((**i)->updateClients())
+      if ((*i)->update())
         toWrite.insert(*i);
     }
 
@@ -35,7 +38,7 @@ bool DataUpdater::update() {
       return false;
   }
 
-  stl::moveTo(&toWrite, writeData_);
+  stl::moveTo(&toWrite, &writeData_);
   if (writeThread_)
     writeThread_->notify();
 
@@ -55,7 +58,7 @@ bool DataUpdater::write() {
     writeData_.swap(toWrite);
   }
 
-  for (DataSet::iterator i = ds.begin(); i != ds.end(); ++i)
+  for (DataSet::iterator i = toWrite.begin(); i != toWrite.end(); ++i)
     (*i)->writeToFile();
 
   return true;

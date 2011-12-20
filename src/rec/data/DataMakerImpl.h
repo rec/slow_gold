@@ -15,13 +15,13 @@ class DataMakerImpl : public DataMaker {
 
   virtual ~DataMakerImpl() {}
 
-  virtual Data* makeData(Message* m) const {
-    return new DataImpl(m, undoStack_, dataUpdater_);
+  virtual Data* makeData(Message* m, const File& file) const {
+    return new DataImpl(m, file, dataUpdater_, undoStack_);
   }
 
  private:
-  UndoStack* undoStack_;
   DataUpdater* dataUpdater_;
+  UndoStack* undoStack_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataMakerImpl);
 };

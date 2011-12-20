@@ -1,6 +1,8 @@
 #ifndef __REC_UTIL_PROTO__
 #define __REC_UTIL_PROTO__
 
+#include <google/protobuf/message.h>
+
 #include "rec/base/base.h"
 
 namespace rec {

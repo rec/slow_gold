@@ -1,69 +1,42 @@
 #ifndef __REC_DATA_OPENER__
 #define __REC_DATA_OPENER__
 
-#include "rec/Data/Data.h"
+#include "rec/data/Reader.h"
 
 namespace rec {
 namespace data {
 
 template <typename Proto>
-struct Opener {
-  Opener(Data* d, bool undoable = true)
-      : data_(d),
-        locker_(new Lock(d->lock_)),
-        proto_(dynamic_cast<Proto*>(d->message_.get())),
+struct Opener : public Reader<Proto> {
+  Opener(Data* d, Undoable undoable = CAN_UNDO)
+      : Reader<Proto>(d),
         changed_(false),
-        undoable_(undoable),
-        before_(*proto_) {
+        undoable_(undoable) {
+    before_.reset(this->newMessage());
+    before_->CopyFrom(*this->proto_);
   }
 
   ~Opener() {
     if (changed_) {
-      if (undoable_)
-        data_->reportUndo(before_);
-      data_->reportChange();
+      if (undoable_ == CAN_UNDO)
+        this->data_->pushOnUndoStack(*before_);
+      this->data_->reportChange();
     }
   }
 
-  const Proto& operator*() const { return get(); }
   Proto& operator*() { return *mutable_get(); }
-
-  const Proto* operator->() const { return &get(); }
   Proto* operator->() { return mutable_get(); }
 
   Proto* mutable_get() {
     changed_ = true;
-    return proto_;
+    return this->proto_;
   }
 
-  const Proto& get() const {
-    return *proto_;
-  }
-
- private_:
-  Data* const data_;
-  ptr<Lock> locker_;
-  Proto* const proto_;
+ private:
   bool changed_;
-  bool undoable_;
-  Message before_;
+  Undoable undoable_;
+  ptr<Message> before_;
 };
-
-template <typename Proto>
-bool applyToData(bool (*function)(Proto*), Data* data) {
-  return function(Opener<Proto>(data).mutable_get());
-}
-
-template <typename Proto, typename Functor>
-bool applyToData(Functor functor, Data* data) {
-  return functor(Opener<Proto>(data).mutable_get());
-}
-
-inline void updateClients(Data* data) {
-  data->broadcast(ptr<Message>(Opener<Message>(data).get()));
-}
-
-typedef Opener<Message> UntypedOpener;
 
 }  // namespace data
 }  // namespace rec

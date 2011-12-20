@@ -6,15 +6,14 @@ namespace command {
 CommandDataSetter::CommandDataSetter(Listener<None>* changeListener,
                                      const Command& command,
                                      const data::Address& addr,
-                                     bool isGlobal)
-    : UntypedDataListener(command.setter_type_name(), addr, isGlobal),
+                                     Scope scope)
+    : AddressListener(addr, command.setter_type_name(), scope),
       changeListener_(changeListener),
       command_(command),
       menuName_("none") {
 }
 
-void CommandDataSetter::operator()(const Message& m) {
-  data::Value value = getValue();
+void CommandDataSetter::operator()(const data::Value& value) {
   int index = value.get<bool>() ? 1 : 0;
   if (index < command_.desc().menu_size())
     menuName_ = command_.desc().menu(index);
@@ -25,9 +24,9 @@ void CommandDataSetter::operator()(const Message& m) {
 }
 
 void CommandDataSetter::execute() {
-  data::Value value = this->getValue();
+  data::Value value = getValue();
   value.set_bool_f(!value.bool_f());
-  setValue(value);
+  setValue(value, CAN_UNDO);
 }
 
 string CommandDataSetter::menuName() const {

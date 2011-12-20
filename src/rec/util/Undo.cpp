@@ -1,5 +1,6 @@
 #include "rec/util/Undo.h"
-#include "rec/data/DataUpdater.h"
+#include "rec/data/DataCenter.h"
+#include "rec/data/UndoStack.h"
 
 namespace rec {
 namespace util {
@@ -7,7 +8,7 @@ namespace util {
 using data::UndoStack;
 using data::DataUpdater;
 
-static UndoStack* undoStack() { return DataUpdater::instance()->undoStack(); }
+static UndoStack* undoStack() { return data::getDataCenter()->undo_.get(); }
 
 // How many commands have been undone?
 int undoes() {
@@ -25,14 +26,6 @@ void undo() {
 
 void redo() {
   undoStack()->redo();
-}
-
-void startUndo() {
-  undoStack()->start();
-}
-
-void stopUndo() {
-  undoStack()->stop();
 }
 
 void addUndoListener(Listener<None>* lst) {

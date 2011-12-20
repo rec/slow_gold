@@ -1,3 +1,5 @@
+#include "rec/data/DataCenter.h"
+
 #include "rec/data/DataMakerImpl.h"
 #include "rec/data/DataMapImpl.h"
 #include "rec/data/DataUpdater.h"
@@ -7,11 +9,11 @@
 namespace rec {
 namespace data {
 
-DataCenter() : registry_(new MessageRegistrarAndMaker),
-               updater_(new DataUpdater),
-               undo_(new UndoStack),
-               maker_(new DataMakerImpl(updater_.get(), &undo_.get())),
-               map_(new DataMapImpl(registry_.get(), maker_.get())) {
+DataCenter::DataCenter() : registry_(new MessageRegistrarAndMaker),
+                           updater_(new DataUpdater),
+                           undo_(new UndoStack),
+                           maker_(new DataMakerImpl(updater_.get(), undo_.get())),
+                           map_(new DataMapImpl(registry_.get(), maker_.get())) {
 }
 
 DataCenter::~DataCenter() {}

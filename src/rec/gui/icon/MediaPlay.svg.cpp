@@ -1,6 +1,6 @@
 #include "rec/gui/icon/MediaPlay.svg.h"
 #include "rec/base/ArraySize.h"
-#include "rec/gui/icon/Icon.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace gui {
@@ -368,7 +368,7 @@ Drawable* MediaPlay::get() {
   " "
 ;
 
-  static Drawable* d = createFromImageData(data, arraysize(data));
+  static Drawable* d = createBinary<Drawable>(data, arraysize(data));
   return d;
 };
 

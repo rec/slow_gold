@@ -1,4 +1,5 @@
 #include "rec/widget/tree/TreeViewDropAll.h"
+#include "rec/data/DataOps.h"
 #include "rec/data/Value.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/gui/component/Focusable.h"
@@ -14,7 +15,7 @@ TreeViewDropAll::TreeViewDropAll(MenuBarModel* m) : FocusableTarget(m) {
 }
 
 bool TreeViewDropAll::isTreeDrop(const Component* c) const {
-  return (c == this) && data::get<NavigatorConfig>().allow_file_drop();
+  return (c == this) && data::getGlobal<NavigatorConfig>().allow_file_drop();
 }
 
 void TreeViewDropAll::paint(Graphics& g) {
@@ -83,7 +84,7 @@ bool TreeViewDropAll::paste(const string& s) {
   VirtualFileList files;
   bool read = yaml::read(s, &files);
   if (read) {
-    files.MergeFrom(data::get<VirtualFileList>());
+    files.MergeFrom(data::getGlobal<VirtualFileList>());
     data::set(files);
   }
   return read;

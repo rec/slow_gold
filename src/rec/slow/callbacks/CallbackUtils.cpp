@@ -1,4 +1,6 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
+
+#include "rec/data/DataOps.h"
 #include "rec/slow/BufferFiller.h"
 
 namespace rec {
@@ -9,7 +11,7 @@ typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 void loop(Instance* instance, LoopSnapshotFunction lsf, CommandIDEncoder pos) {
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
-  data::set(snapshot.loops_, instance->file());
+  instance->setProto(snapshot.loops_;
 }
 
 void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos) {
@@ -26,7 +28,7 @@ void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos)
     LoopPoint* lp = loops->mutable_loop_point(i);
     lp->set_selected(selector(i, p, lp->selected(), allSelected));
   }
-  data::set(snap.loops_, instance->file());
+  instance->setProto(snap.loops_);
 }
 
 }  // namespace slow

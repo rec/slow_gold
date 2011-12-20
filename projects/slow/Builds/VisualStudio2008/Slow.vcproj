@@ -148,6 +148,8 @@
           <File RelativePath="..\..\..\..\src\rec\audio\Device.h"/>
           <Filter Name="format">
             <Filter Name="mpg123">
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h"/>
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Copier.h"/>
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp"/>
@@ -346,6 +348,7 @@
             <File RelativePath="..\..\..\..\src\rec\data\proto\Typer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Types.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\data\Reader.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\UndoStack.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\UndoStack.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\UntypedDataListener.cpp"/>

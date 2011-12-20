@@ -1,24 +1,23 @@
+#include <google/protobuf/message.h>
+
 #include "rec/data/MessageRegistrarAndMaker.h"
+#include "rec/util/Proto.h"
+#include "rec/util/STL.h"
 
 namespace rec {
 namespace data {
 
-namespace {
-
-Message* makeFrom(const Message& m, bool copy) {
-}
-
 class MessageRegistrarAndMaker::Entry {
  public:
-  Entry(Message* m, bool c) { initialize(m, c); }
-  Entry(const Entry& e) { initialize(e.message_.get(), e.copyFrom_); }
+  Entry(const Message& m, bool c) { initialize(m, c); }
+  Entry(const Entry& e) { initialize(*e.message_, e.copyFrom_); }
 
   Message* makeMessage() { return Entry(*this).message_.transfer(); }
 
  private:
-  void initialize(Message* m, bool c) {
+  void initialize(const Message& m, bool c) {
     copyFrom_ = c;
-    message_(m->New()),
+    message_.reset(m.New());
     if (copyFrom_)
       message_->CopyFrom(m);
   }
@@ -28,14 +27,11 @@ class MessageRegistrarAndMaker::Entry {
 
 };
 
-}  // namespace
-
 MessageRegistrarAndMaker::~MessageRegistrarAndMaker() {
   stl::deleteMapPointers(&registry_);
 }
 
-void MessageRegistrarAndMaker::registerInstance(const Message& m,
-                                               bool copyFrom = true) {
+void MessageRegistrarAndMaker::registerInstance(const Message& m, bool copy) {
   const string& typeName = getTypeName(m);
   Registry::iterator i = registry_.find(typeName);
   if (i != registry_.end()) {
@@ -43,18 +39,17 @@ void MessageRegistrarAndMaker::registerInstance(const Message& m,
     return;
   }
 
-  registry_.insert(i, std::make_pair(typeName, new Entry(m, copyFrom)));
+  registry_.insert(i, std::make_pair(typeName, new Entry(m, copy)));
 }
 
 Message* MessageRegistrarAndMaker::makeMessage(const string& typeName) {
   Registry::iterator i = registry_.find(typeName);
   if (i != registry_.end())
-    return *i->second->makeMessage();
+    return i->second->makeMessage();
 
   LOG(DFATAL) << "Couldn't find data type " << typeName;
   return NULL;
 }
-
 
 }  // namespace data
 }  // namespace rec

@@ -12,6 +12,8 @@ typedef AudioSampleBuffer Buffer;
 typedef AudioSourceChannelInfo Info;
 typedef PositionableAudioSource Source;
 
+typedef vector<float> LevelVector;
+
 namespace transport {
 
 enum State {STOPPED, RUNNING};

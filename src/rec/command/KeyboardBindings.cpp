@@ -4,6 +4,7 @@
 #include "rec/command/Command.h"
 #include "rec/command/TargetManager.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
@@ -15,9 +16,9 @@ using juce::XmlElement;
 
 namespace {
 
-const VirtualFile getBindingFile() {
+const VirtualFile* getBindingFile() {
   static VirtualFile vf = file::toVirtualFile("KeyPresses");
-  return vf;
+  return &vf;
 }
 
 XmlElement* readKeyboardCommands(const Commands& commands) {
@@ -49,12 +50,13 @@ void writeKeyboardBindingFile(XmlElement* element) {
     cr->command_->add_keypress(key);
   }
 
-  data::set(table.getCommands(), getBindingFile());
+  data::setProto(table.getCommands(), getBindingFile());
 }
 
 XmlElement* readKeyboardBindingFile(const Commands& commands) {
-  data::TypedEditable<Commands>* e = data::editable<Commands>(getBindingFile());
-  return readKeyboardCommands(e->fileReadSuccess() ? e->get() : commands);
+  data::Data* d = data::getData<Commands>(getBindingFile());
+  return readKeyboardCommands(d->fileReadSuccess() ?
+  	                          data::getFromData<Commands>(d) : commands);
 }
 
 }  // namespace

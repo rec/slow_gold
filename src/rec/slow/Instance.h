@@ -34,6 +34,7 @@ class Instance {
   Samples<44100> length() const;
   bool isPlaying() const;
   void updateGui();
+  void setProto(const Message&);
 
   SlowWindow* window_;
 

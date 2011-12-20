@@ -24,7 +24,6 @@ void Window::initialise() {
     LOG(ERROR) << "Trashing your preferences files.";
     trashPreferences();
   }
-  getPositionFromData();
   constructInstance();
 
 #if JUCE_MAC

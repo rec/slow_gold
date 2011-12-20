@@ -11,13 +11,13 @@ command_code := $(patsubst %.def, %.def.cpp, $(commands))
 
 ROOT := ~/Documents/development/rec
 
-%\.svg.cpp: %.svg
+%.svg.cpp: %.svg
 	$(new) $<
 
-%\.xml.cpp: %.xml
+%.xml.cpp: %.xml
 	$(new) $<
 
-%\.def.cpp: %.def
+%.def.cpp: %.def
 	$(new)\
     --include=command/Command\
     --proto=command::Commands\

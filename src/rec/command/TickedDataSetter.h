@@ -4,6 +4,10 @@
 #include "rec/command/CommandDataSetter.h"
 
 namespace rec {
+
+namespace data { class Address; }
+namespace data { class Value; }
+
 namespace command {
 
 class TickedDataSetter : public CommandDataSetter {
@@ -12,11 +16,11 @@ class TickedDataSetter : public CommandDataSetter {
                    Listener<None>* changeListener,
                    const Command& command,
                    const data::Address& a,
-                   bool isGlobal);
+                   Scope);
 
   virtual ~TickedDataSetter() {}
 
-  virtual void operator()(const Message&);
+  virtual void operator()(const data::Value&);
   virtual void execute();
   virtual string menuName() const;
 

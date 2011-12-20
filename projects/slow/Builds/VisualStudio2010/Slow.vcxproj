@@ -131,6 +131,7 @@
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Format.cpp"/>
@@ -371,6 +372,7 @@
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Format.h"/>
@@ -474,6 +476,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedTyper.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Typer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Reader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\UndoStack.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\UntypedDataListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Value.h"/>

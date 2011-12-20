@@ -72,7 +72,7 @@ void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
 static const int RECENT_MENU_REPEATS = 10;
 
 void loadRecentFile(Instance* instance, int i) {
-  gui::RecentFiles rf = data::get<gui::RecentFiles>();
+  gui::RecentFiles rf = data::getGlobal<gui::RecentFiles>();
   if (i < 0 || i >= rf.file_size()) {
     LOG(DFATAL) << "Can't load recent, i=" << i << ", size=" << rf.file_size();
     return;

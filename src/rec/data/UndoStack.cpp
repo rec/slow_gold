@@ -26,7 +26,7 @@ class UndoStack::Entry {
   // If this method returns false then neither entry was changed.
   bool mergeInto(UndoStack::Entry* ue) {
     if (ue->data_ != data_ ||
-        GROUP_BY_TIME && !near(ue->timestamp(), timestamp(), MAX_GROUP_TIME))
+        GROUP_BY_TIME && !near(ue->timestamp_, timestamp_, MAX_GROUP_TIME))
       return false;
 
     after_.swap(ue->after_);
@@ -34,7 +34,7 @@ class UndoStack::Entry {
   }
 
   void setDataValue(bool isBefore) {
-    UntypedOpener(data_)->mutable_get()->CopyFrom(*before_ : *after_);
+    Opener<Message>(data_)->CopyFrom(isBefore ? *before_ : *after_);
   }
 
   Data* data_;
@@ -49,7 +49,7 @@ UndoStack::~UndoStack() {
   stl::deletePointers(&stack_);
 }
 
-int UndoStack::popRedoes() {
+int UndoStack::popRedos() {
   if (!undoes_)
     return 0;
 
@@ -67,12 +67,9 @@ int UndoStack::popRedoes() {
 void UndoStack::push(Data* e, const Message& before, const Message& after) {
   {
     Lock l(lock_);
-    if (!(running_ && operations.undoable()))
-      return;
-
-    ptr<Entry> ue(new Entry(e, before, after), canMerge);
-    if (discardRedos() || !stack_.size() || !stack_.back()->mergeInto(ue.get()))
-      q->push_back(ue.transfer());
+    ptr<Entry> ue(new Entry(e, before, after));
+    if (popRedos() || !stack_.size() || !stack_.back()->mergeInto(ue.get()))
+      stack_.push_back(ue.transfer());
   }
   broadcast(None());
 }

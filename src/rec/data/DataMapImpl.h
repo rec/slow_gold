@@ -1,6 +1,8 @@
 #ifndef __REC_DATA_DATAMAPIMPL__
 #define __REC_DATA_DATAMAPIMPL__
 
+#include <map>
+
 #include "rec/data/DataMap.h"
 
 namespace rec {

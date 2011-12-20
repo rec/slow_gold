@@ -1,6 +1,8 @@
 #include "rec/data/proto/FieldOps.h"
 
+#include "rec/data/Address.h"
 #include "rec/data/Value.h"
+#include "rec/data/proto/Field.h"
 #include "rec/data/proto/MessageField.h"
 #include "rec/data/proto/TypedOperations.h"
 
@@ -134,12 +136,16 @@ bool apply(const MessageField& field, const Operation& op) {
   return false;
 }
 
-bool getValueWithAddress(const Address& a, const Message& m, ValueProto* v) {
-  return copyTo(createMessageField(a, m), v);
+Value getValueWithAddress(const Address& a, const Message& m) {
+  Value v;
+  if (!copyTo(createMessageField(a, m), &v))
+    LOG(DFATAL) << a.ShortDebugString() << "," << m.ShortDebugString();
+  return v;
 }
 
-bool setValueWithAddress(const Address& a, Message* m, const ValueProto& v) {
-  return copyFrom(MessageField(createMessageField(a, opener.mutable_get())), v);
+void setValueWithAddress(const Address& a, Message* m, const ValueProto& v) {
+  if (!copyFrom(createMessageField(a, *m), v))
+    LOG(DFATAL) << a.ShortDebugString() << "," << v.ShortDebugString();
 }
 
 }  // namespace data

@@ -1,5 +1,6 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/music/CleanName.h"
 #include "rec/widget/tree/NodeComponent.h"
@@ -41,7 +42,6 @@ ColorName Node::getColor() const {
 }
 
 void Node::paint(juce::Graphics& g) const {
-  Lock l(broadcasterLock_);
   Painter p(desc_.widget(), &g);
   if (icon_)
     icon_->draw(g, 1.0f);
@@ -123,7 +123,7 @@ File Node::getVisitedFile() const {
 }
 
 bool Node::isCurrent() const {
-  return (virtualFile_ == data::get<VirtualFile>());
+  return (virtualFile_ == data::getGlobal<VirtualFile>());
 }
 
 }  // namespace tree

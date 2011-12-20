@@ -1,40 +1,40 @@
 #include "rec/data/UntypedDataListener.h"
 
+#include "rec/data/DataOps.h"
+#include "rec/util/file/VirtualFile.h"
+
 namespace rec {
 namespace data {
 
-UntypedDataListener::UntypedDataListener(const string& tn, bool isGlobal)
-    : typeName_(tn), isGlobal_(isGlobal) {
-  if (isGlobal_)
-    setData(file::getData(tn, &file::none()));
-  else
-    (*this)(file::none());
+UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
+    : typeName_(tn) {
+  if (scope == GLOBAL_SCOPE) {
+    setData(global());
+  } else {
+    setData(empty());
+    data::getData<VirtualFile>(global())->addListener(this);
+  }
 }
-
-UntypedDataListener::~UntypedDataListener() {}
 
 void UntypedDataListener::operator()(const VirtualFile& vf) {
   Lock l(lock_);
-
-  if (isGlobal_)
-    LOG(DFATAL) << "Shouldn't get file updates for global data!";
-  else
-    setData(file::getData(typeName_, vf.file_size() ? &vf : NULL));
+  setData(file::empty(vf) ? &vf : empty());
 }
 
-void UntypedDataListener::setData(Data* b) {
+void UntypedDataListener::setData(const VirtualFile* vf) {
+  Data* newData = data::getData(typeName_, vf);
+
   Lock l(lock_);
 
   if (data_)
     data_->removeListener(this);
 
-  if ((data_ = b))
+  if ((data_ = newData))
     data_->addListener(this);
 }
 
-Data* UntypedDataListener::getData() {
+Data* UntypedDataListener::getData() const {
   Lock l(lock_);
-
   return data_;
 }
 

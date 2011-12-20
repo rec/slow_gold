@@ -2,6 +2,7 @@
 #define __REC_GUI_PERSISTENTWINDOW
 
 #include "rec/data/Data.h"
+#include "rec/data/DataListener.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/WindowPosition.pb.h"
 
@@ -9,7 +10,7 @@ namespace rec {
 namespace gui {
 
 class PersistentWindow : public DocumentWindow,
-                         public Listener<const WindowPosition&> {
+                         public data::GlobalDataListener<WindowPosition> {
  public:
   PersistentWindow(const String& name,
                    const Colour& bg,
@@ -18,7 +19,6 @@ class PersistentWindow : public DocumentWindow,
   ~PersistentWindow();
 
   virtual void operator()(const WindowPosition&);
-  void getPositionFromData();
 
   bool isFullScreenSize() const;
   void closeButtonPressed();

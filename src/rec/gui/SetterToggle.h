@@ -1,22 +1,22 @@
 #ifndef __REC_GUI_SETTERTOGGLE__
 #define __REC_GUI_SETTERTOGGLE__
 
-#include "rec/data/UntypedDataListener.h"
+#include "rec/data/Address.h"
+#include "rec/data/AddressListener.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
 
-class SetterToggle : public juce::ToggleButton,
-                     public UntypedDataListener {
+class SetterToggle : public juce::ToggleButton, public data::AddressListener {
  public:
   SetterToggle(const String& name, const string& typeName,
-               const data::Address& address)
-      : juce::ToggleButton(name), UntypedDataListener(typeName, address) {
+               const data::Address& a)
+      : juce::ToggleButton(name), AddressListener(a, typeName) {
   }
 
   virtual void clicked() {
-    this->setValue(getToggleState());
+    setValue(getToggleState());
   }
 
  protected:
@@ -25,7 +25,7 @@ class SetterToggle : public juce::ToggleButton,
   }
 
   virtual void operator()(const Message&) {
-    thread::callAsync(this, &SetterToggle::setToggle, getValue().bool_f());
+    thread::callAsync(this, &SetterToggle::setToggle, data::getValue().bool_f());
   }
 
  private:

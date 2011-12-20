@@ -13,37 +13,36 @@ namespace google { namespace protobuf { class Message; }}
 
 namespace rec {
 
-namespace util { namespace listener {}}
 namespace util { namespace file { class VirtualFile; }}
 namespace util { namespace file { class VirtualFileList; }}
 
-typedef std::string string;
 typedef unsigned int uint;
 
 typedef google::protobuf::Message Message;
+typedef std::string string;
 
-using namespace util::listener;
 using namespace util;
 
+using std::pair;
+using std::vector;
 using util::file::VirtualFile;
 using util::file::VirtualFileList;
 
-using std::vector;
-using std::pair;
-
-// Useful all over.
-
+enum Endianness { LITTLE_END, BIG_END };
 enum Orientation {HORIZONTAL, VERTICAL};
+enum Undoable { CANT_UNDO, CAN_UNDO };
+enum Scope { FILE_SCOPE, GLOBAL_SCOPE };
+
+inline Scope scope(bool global) { return global ? GLOBAL_SCOPE : FILE_SCOPE; }
 
 inline Orientation inverse(Orientation o) {
   return (o == HORIZONTAL) ? VERTICAL : HORIZONTAL;
 }
 
-enum Endianness { LITTLE_END, BIG_END };
 
 class None {};
 
-typedef vector<float> LevelVector;
+#define DISABLE_UNDOES true
 
 }  // namespace rec
 
