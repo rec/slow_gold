@@ -11,7 +11,7 @@ typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 void loop(Instance* instance, LoopSnapshotFunction lsf, CommandIDEncoder pos) {
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
-  instance->setProto(snapshot.loops_;
+  instance->setProto(snapshot.loops_);
 }
 
 void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos) {

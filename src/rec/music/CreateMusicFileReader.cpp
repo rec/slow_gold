@@ -4,6 +4,7 @@
 #include "rec/audio/util/AudioFormatManager.h"
 #include "rec/music/Metadata.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/Value.h"
 
@@ -39,7 +40,7 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   }
 
   ptr<Metadata> metadata;
-  data::TypedEditable<Metadata>* d = data::editable<music::Metadata>(file);
+  data::Data* d = data::getData<music::Metadata>(&file);
   if (!d->fileReadSuccess())
     metadata.reset(new Metadata);
 
@@ -55,7 +56,7 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   }
 
   if (metadata && (*metadata != music::Metadata::default_instance()))
-    d->setValue(*metadata, data::Address::default_instance(), false);
+    data::setWithData(d, *metadata, CANT_UNDO);
 
   return reader.transfer();
 }

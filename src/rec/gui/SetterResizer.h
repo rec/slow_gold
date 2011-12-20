@@ -19,8 +19,10 @@ class SetterResizer : public StretchableLayoutResizerBar,
   SetterResizer(const data::Address& address,
                 const string& typeName,
                 Layout* layout,
-                int itemIndexInLayout);
+                int itemIndexInLayout,
+                Scope scope = FILE_SCOPE);
 
+  virtual void operator()(const data::Value&);
   int get() const;
   virtual void moved();
   virtual void paint(Graphics& g);

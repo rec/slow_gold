@@ -79,7 +79,8 @@ static String getDisplayText(const Value& v, const TableColumn& col, Samples<441
 
 String Loops::displayText(const TableColumn& col, int rowIndex) {
   Address row = partAddress_ + Address(rowIndex) + col.address();
-  return getDisplayText(getValue(row), col, Samples<44100>(loops_.length()));
+  data::Value value(getValueWithAddress(row, getProto()));
+  return getDisplayText(value, col, Samples<44100>(loops_.length()));
 }
 
 void Loops::selectedRowsChanged(int lastRowSelected) {
@@ -97,7 +98,7 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
     }
   }
   if (changed)
-    setValue(loops_);
+    setProto(loops_);
 }
 
 void Loops::update() {
@@ -121,9 +122,9 @@ class LoopsSetterText : public SetterText {
  public:
   explicit LoopsSetterText(int row, const TableColumn& col)
       : SetterText("LoopsSetterText",
-                   str(getTypeName<LoopPointList>()),
+                   getTypeName<LoopPointList>(),
                    "loop_point" + Address(row) + col.address(),
-                   "", "", false),
+                   "", ""),
         row_(row) {
   }
 
@@ -158,11 +159,6 @@ Component* Loops::refreshComponentForCell(int row, int column,
         lst->setTooltip("This is the name of the loop, and you can edit "
                         "it by clicking here.");
         existing = lst.transfer();
-#ifdef REQUEST_UPDATES_IN_THREAD
-        UpdateRequester::requestAllUpdates();
-#else
-        thread::callAsync(UpdateRequester::requestAllUpdates);
-#endif
       }
     }
   }
@@ -179,7 +175,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
 void Loops::editLoopPoints(const LoopPointList& lpl) {
   operator()(lpl);
   updateContent();
-  setValue(lpl);
+  setProto(lpl);
 }
 
 }  // namespace audio

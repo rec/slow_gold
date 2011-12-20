@@ -12,7 +12,7 @@ struct Opener : public Reader<Proto> {
       : Reader<Proto>(d),
         changed_(false),
         undoable_(undoable) {
-    before_.reset(this->newMessage());
+    before_.reset(this->cloneMessage());
     before_->CopyFrom(*this->proto_);
   }
 

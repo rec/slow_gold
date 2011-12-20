@@ -12,6 +12,7 @@ template <typename Type, typename Method, typename Value>
 class Callback1 : public Callback {
  public:
   Callback1(Type* o, Method m, Value v) : object_(o), method_(m), value_(v) {}
+
   virtual bool operator()() {
     (object_->*method_)(value_);
     return true;

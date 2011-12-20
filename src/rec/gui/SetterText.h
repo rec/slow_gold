@@ -65,7 +65,7 @@ class SetterText : public Layout,
   TextEditor* editor() { return &editor_; }
 
   virtual void textEditorTextChanged(TextEditor&) {
-    setValue(data::Value(str(editor_.getText())));
+    setValue(str(editor_.getText()));
   }
 
   virtual void textEditorReturnKeyPressed(TextEditor& editor) {}

@@ -10,15 +10,15 @@ namespace gui {
 SetterResizer::SetterResizer(const data::Address& address,
                              const string& typeName,
                              Layout* layout,
-                             int itemIndexInLayout)
+                             int itemIndexInLayout,
+                             Scope scope)
   : StretchableLayoutResizerBar(layout->layoutManager(),
                                 itemIndexInLayout,
                                 layout->orientation() == HORIZONTAL),
-    data::GlobalAddressListener(address, typeName),
+    data::AddressListener(address, typeName, scope),
     layout_(layout),
     index_(itemIndexInLayout),
     address_(address) {
-  DCHECK(data);
   setTooltip("You can drag this resizer around to change the screen layout.");
 }
 
@@ -33,6 +33,16 @@ void SetterResizer::moved() {
 void SetterResizer::paint(Graphics& g) {
   g.fillAll(juce::Colour(0xffDDDDF8));
   StretchableLayoutResizerBar::paint(g);
+}
+
+void SetterResizer::operator()(const data::Value& v) {
+  int32 coord = v.int32_f();
+  if (coord != get()) {
+    if (layout_->orientation() == VERTICAL)
+      setTopLeftPosition(getX(), coord);
+    else
+      setTopLeftPosition(coord, getY());
+  }
 }
 
 }  // namespace gui

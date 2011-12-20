@@ -23,7 +23,7 @@ Metadata getMetadata(const StringPairArray& metadata) {
 
     if (k < "TALB" || k > "TRCK") continue;
     else if (k == "TALB") t.set_album_title(v);
-    else if (k == "TCON") t.set_genre(audio::format::mp3::cleanGenre(v));
+    else if (k == "TCON") t.set_genre(audio::format::mpg123::cleanGenre(v));
     else if (k == "TDRC") t.set_year(v);
     else if (k == "TIT2") t.set_track_title(v);
     else if (k == "TPE1") t.set_artist(v);

@@ -8,7 +8,7 @@ namespace util {
 using data::UndoStack;
 using data::DataUpdater;
 
-static UndoStack* undoStack() { return data::getDataCenter()->undo_.get(); }
+static UndoStack* undoStack() { return data::getDataCenter().undo_.get(); }
 
 // How many commands have been undone?
 int undoes() {

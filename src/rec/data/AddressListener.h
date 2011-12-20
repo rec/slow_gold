@@ -25,7 +25,7 @@ class AddressListener : public UntypedDataListener,
     (*this)(getValue(m));
   }
 
-  virtual void setValue(const Value& v, Undoable undoable) const {
+  virtual void setValue(const Value& v, Undoable undoable = CAN_UNDO) const {
     Opener<Message> opener(getData(), undoable);
     setValueWithAddress(address_, opener.mutable_get(), v);
   }

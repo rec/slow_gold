@@ -129,7 +129,7 @@ void TransformController::comboBoxChanged(juce::ComboBox* box) {
       stereo.set_type(StereoProto::SINGLE);
       stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
     }
-    DataListener<StereoProto>::setValue(stereo);
+    DataListener<StereoProto>::setProto(stereo);
   }
 }
 

@@ -125,9 +125,8 @@ bool Instance::isPlaying() const {
   return player_ && player_->state();
 }
 
-void Instance::setProto(const Message& m, Undoable ) {
-  VirtualFile vf = file();
-  return data::
+void Instance::setProto(const Message& m, Undoable undoable) {
+   return data::setProto(m, file(), undoable);
 }
 
 }  // namespace slow

@@ -23,7 +23,7 @@ class Components;
 
 class MainPage {
  public:
-  MainPage(Components*, data::Editable*);
+  MainPage(Components*);
   virtual ~MainPage();
 
   gui::Layout* panel() { return &mainPanel_; }

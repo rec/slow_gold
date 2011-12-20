@@ -56,7 +56,7 @@ void addAlbumValue(const String& key, const string& v, Album* a) {
     data->set_year(v);
 
   else if (key == "DGENRE")
-    data->set_genre(audio::format::mp3::cleanGenre(v));
+    data->set_genre(audio::format::mpg123::cleanGenre(v));
 
   else if (key == "DTITLE")
     *data->mutable_album_title() += v;

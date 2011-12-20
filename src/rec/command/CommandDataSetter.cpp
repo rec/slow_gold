@@ -26,7 +26,7 @@ void CommandDataSetter::operator()(const data::Value& value) {
 void CommandDataSetter::execute() {
   data::Value value = getValue();
   value.set_bool_f(!value.bool_f());
-  setValue(value, CAN_UNDO);
+  setValue(value);
 }
 
 string CommandDataSetter::menuName() const {

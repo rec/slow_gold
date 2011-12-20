@@ -88,9 +88,9 @@ void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) 
   if (isTimeCursor) {
     jumpToTime(t);
   } else {
-    LoopPointList loops(data::get<LoopPointList>(&file()));
+    LoopPointList loops(data::getProto<LoopPointList>(&file()));
     loops.mutable_loop_point(index)->set_time(t);
-    data::set(loops, file());
+    data::setProto(loops, &file());
   }
 }
 

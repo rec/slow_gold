@@ -8,11 +8,13 @@ namespace rec {
 namespace data {
 
 template <typename Proto>
-const Proto getFromData(Data* data);
+const Proto getFromData(Data*);
 
-Message* newMessage(Data* data);
+Message* cloneMessage(Data*);
 
-void setWithData(Data*, const Message&);
+inline Message* newMessage(Data* data) { return cloneMessage(data); }
+
+void setWithData(Data*, const Message&, Undoable undoable = CAN_UNDO);
 
 // The virtual file for global data (not attached to any specific file).
 const VirtualFile* global();
@@ -33,6 +35,9 @@ inline void set(const Message& m, const VirtualFile* vf, Undoable undoable = CAN
 
 template <typename Proto>
 const Proto getProto(const VirtualFile* vf);
+
+template <typename Proto>
+const Proto getProto(const VirtualFile& vf) { return getProto<Proto>(&vf); }
 
 template <typename Proto>
 const Proto get(const VirtualFile* vf) {
@@ -68,8 +73,8 @@ const Proto getProto(Data* data) {
   return *Reader<Proto>(data);
 }
 
-inline Message* newMessage(Data* data) {
-  return Reader<Message>(data).newMessage();
+inline Message* cloneMessage(Data* data) {
+  return Reader<Message>(data).cloneMessage();
 }
 
 inline void setWithData(Data* data, const Message& m, Undoable undoable) {

@@ -52,24 +52,29 @@ void add(gui::Layout* layout, Type t, double size) {
   add(layout, t, size, size, size);
 }
 
+static const string& layoutTypeName() {
+  static string name = getTypeName<AppLayout>();
+  return name;
+}
+
 }  // namespace
 
-MainPage::MainPage(Components* components, data::Editable* e)
+MainPage::MainPage(Components* components)
     : mainPanel_("Main", VERTICAL),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
       helpPanel_(new gui::SimpleLabel("", "")),
-      transformPanel_("Transform"),
-      controlPanel_("Control"),
+      transformPanel_(layoutTypeName(), "Transform"),
+      controlPanel_(layoutTypeName(), "Control"),
 
-      navigationResizer_("navigation_y", &mainPanel_, 1, e),
+      navigationResizer_(layoutTypeName(), "navigation_y", &mainPanel_, 1),
 
-      directoryResizer_("directory_x", &navigationPanel_, 1, e),
-      metadataResizer_("metadata_x", &navigationPanel_, 3, e),
+      directoryResizer_(layoutTypeName(), "directory_x", &navigationPanel_, 1),
+      metadataResizer_(layoutTypeName(), "metadata_x", &navigationPanel_, 3),
 
-      helpResizer_("help_x", &playbackPanel_, 1, e),
-      transformResizer_("transform_x", &playbackPanel_, 3, e),
-      controlResizer_("control_x", &playbackPanel_, 5, e) {
+      helpResizer_(layoutTypeName(), "help_x", &playbackPanel_, 1),
+      transformResizer_(layoutTypeName(), "transform_x", &playbackPanel_, 3),
+      controlResizer_(layoutTypeName(), "control_x", &playbackPanel_, 5) {
   add(&mainPanel_, &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
   add(&mainPanel_, &navigationResizer_, MIN_RESIZER);
 

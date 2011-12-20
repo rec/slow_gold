@@ -35,7 +35,7 @@ class TransportController : public Layout,
   void setTransportState(rec::audio::transport::State state);
   void setTime(Samples<44100> time) { time_ = time; }
 
-  listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
+  util::Listener<const rec::audio::LevelVector&>* levelListener() { return &levelMeter_; }
   void clearLevels();
   LevelMeter* levelMeter() { return &levelMeter_; }
 

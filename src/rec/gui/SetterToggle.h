@@ -24,8 +24,8 @@ class SetterToggle : public juce::ToggleButton, public data::AddressListener {
     setToggleState(state, false);
   }
 
-  virtual void operator()(const Message&) {
-    thread::callAsync(this, &SetterToggle::setToggle, data::getValue().bool_f());
+  virtual void operator()(const data::Value& v) {
+    thread::callAsync(this, &SetterToggle::setToggle, v.bool_f());
   }
 
  private:

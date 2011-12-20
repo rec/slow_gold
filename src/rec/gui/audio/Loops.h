@@ -17,9 +17,7 @@ class Loops : public component::Focusable<TableController>,
               public HasCuttable {
  public:
   explicit Loops(MenuBarModel* menus, const TableColumnList* desc = NULL,
-                 const data::Address& partAddress = data::Address("loop_point"),
-                 const data::Address& baseAddress =
-                 data::Address::default_instance());
+                 const data::Address& partAddress = data::Address("loop_point"));
   virtual ~Loops();
 
   virtual Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected,

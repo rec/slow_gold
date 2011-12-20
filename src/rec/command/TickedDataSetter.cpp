@@ -21,7 +21,7 @@ void TickedDataSetter::operator()(const data::Value& v) {
 void TickedDataSetter::execute() {
   data::Value value = this->getValue();
   value.set_bool_f(!value.bool_f());
-  setValue(value, CAN_UNDO);
+  setValue(value);
 }
 
 string TickedDataSetter::menuName() const {

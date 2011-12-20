@@ -9,7 +9,7 @@ namespace slow {
 
 LoopSnapshot::LoopSnapshot(Instance* i)
   : instance_(i),
-    loops_(data::get<LoopPointList>(&i->file())){
+    loops_(data::getProto<LoopPointList>(i->file())){
 }
 
 }  // namespace slow

@@ -56,7 +56,7 @@ class DropTarget : public Interface, public Parent {
     }
   }
 
-  listener::Broadcaster<const DropFiles&> broadcaster_;
+  Broadcaster<const DropFiles&> broadcaster_;
   bool draggingOver_;
 
  private:

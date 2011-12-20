@@ -15,7 +15,6 @@ static const float LINE_WIDTH = 0.6f;
 OutlinedCursorLabel::OutlinedCursorLabel(Cursor *cursor)
     : cursor_(cursor) {
   selectButton_.addListener(this);
-  UpdateRequester::requestAllUpdates();
   setEditable(true, false, false);
 }
 

@@ -1,5 +1,6 @@
 #include "rec/widget/waveform/Zoom.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 
 namespace rec {
 namespace widget {

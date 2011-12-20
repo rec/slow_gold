@@ -21,36 +21,38 @@ class SongData : public component::Focusable<SetterTextArea>,
   explicit SongData(MenuBarModel* model)
     : component::Focusable<SetterTextArea>(model),
       UntypedDataListener(getTypeName<music::Metadata>()) {
+    const string& typeName = getTypeName<music::Metadata>();
     setName("SongData");
-    add("Track", typeName(),
+    add("Track", typeName,
         Address("track_title"), "The name of this track.");
-    add("Album", typeName(),
+    add("Album", typeName,
         Address("album_title"),
         "The name of the album this track is from.");
-    add("Artist", typeName(),
+    add("Artist", typeName,
         Address("artist"),
         "The artist or musician who made this specific track");
-    add("Number", typeName(),
+    add("Number", typeName,
         Address("track_number"),
         "The album track number for this track");
-    add("Year", typeName(),
+    add("Year", typeName,
         Address("year"),
         "The year that that this track was recorded.");
-    add("Genre", typeName(),
+    add("Genre", typeName,
         Address("genre"),
         "Tags that categorize this track.");
-    add("Notes", typeName(),
+    add("Notes", typeName,
         Address("notes"), "Your notes here.")->
         editor()->setMultiLine(true, true);
   }
 
+  virtual void operator()(const Message&) {}
   virtual bool canCopy() const { return true; }
   virtual bool canCut() const { return false; }
   virtual bool canPaste(const string&) const { return false; }
   virtual bool paste(const string&) { return false; }
   virtual const string cuttableName() const { return "SongData"; }
   virtual string copy() const {
-    return yaml::write(*ptr<Message>(clone()));
+    return yaml::write(*ptr<Message>(data::cloneMessage(getData())));
   }
   virtual void cut() {}
 

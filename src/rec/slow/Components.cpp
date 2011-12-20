@@ -31,7 +31,7 @@ Components::Components(Instance* instance)
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
       commandBar_(new gui::audio::CommandBar),
-      mainPage_(new MainPage(this, data::editable<AppLayout>())) {
+      mainPage_(new MainPage(this)) {
   setDefaultCuttable(loops_.get());
 }
 

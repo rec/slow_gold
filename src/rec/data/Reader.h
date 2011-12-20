@@ -25,7 +25,7 @@ struct Reader {
     return *proto_;
   }
 
-  Message* newMessage() const {
+  Message* cloneMessage() const {
     return clone(*proto_);
   }
 

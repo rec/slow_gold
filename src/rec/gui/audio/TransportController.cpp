@@ -36,11 +36,11 @@ TransportController::TransportController(TimeController* timeController)
       muteButton_(MUTE_BUTTON_TEXT, getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
-  jumpToStartButton_.setImages(ptr<Drawable>(icon::ZoomIn::create()).get());
+  jumpToStartButton_.setImages(icon::ZoomIn::get());
   startStopButton_.setImages(
-      ptr<Drawable>(icon::MediaPlaybackStart::create()).get(),
+      icon::MediaPlaybackStart::get(),
       NULL, NULL, NULL,
-      ptr<Drawable>(icon::MediaPlaybackStop::create()).get());
+      icon::MediaPlaybackStop::get());
 
   jumpToStartButton_.addListener(this);
   startStopButton_.addListener(this);
@@ -105,7 +105,7 @@ void TransportController::setGain(rec::audio::Gain gain) {
 }
 
 void TransportController::clearLevels() {
-  levelMeter_(LevelVector());
+  levelMeter_(rec::audio::LevelVector());
 }
 
 }  // namespace rec
