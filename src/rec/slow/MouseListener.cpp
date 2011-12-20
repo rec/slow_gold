@@ -138,7 +138,7 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
   } else {
     int i = cursor->index();
     cursorDragStart_ = cursor->getX();
-    LoopPointList loops = data::get<LoopPointList>(file());
+    LoopPointList loops = data::getProto<LoopPointList>(file());
     cursorRestrict_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) + DRAG_PAD;
     cursorRestrict_.end_ = -DRAG_PAD + ((i == loops.loop_point_size() - 1) ?
                                         loops.length() : loops.loop_point(i + 1).time());

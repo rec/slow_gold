@@ -2,6 +2,8 @@
 #define __REC_WIDGET_TREE_ROOT__
 
 #include "rec/widget/tree/NodeItem.h"
+
+#include "rec/data/DataListener.h"
 #include "rec/util/file/VirtualFile.pb.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
@@ -11,7 +13,7 @@ namespace widget {
 namespace tree {
 
 class Root : public Broadcaster<const VirtualFile&>,
-             public Listener<const file::VirtualFileList&>,
+             data::GlobalDataListener<VirtualFileList>,
              public Listener<const VirtualFile&>,
              public juce::MouseListener {
  public:

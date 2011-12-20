@@ -1,10 +1,11 @@
 #include "rec/slow/SlowWindow.h"
 
-#include "rec/audio/util/Gain.pb.h"
 #include "rec/audio/source/Stereo.pb.h"
 #include "rec/audio/stretch/Stretch.pb.h"
+#include "rec/audio/util/Gain.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
+#include "rec/data/MessageRegistrar.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/gui/WindowPosition.pb.h"
@@ -47,8 +48,10 @@ void SlowWindow::doStartup() {
 }
 
 void SlowWindow::trashPreferences() {
+#if 0
   data::editableFile<gui::WindowPosition>().deleteFile();
   data::editableFile<VirtualFile>().deleteFile();
+#endif
 }
 
 Component* SlowWindow::getMainComponent() {
@@ -87,23 +90,23 @@ static Def<gui::WindowPosition> windowPosition(
 using namespace rec::data;
 
 void SlowWindow::registerData(MessageRegistrar* r) {
-  registerClass<audio::Gain>(r);
-  registerClass<audio::source::StereoProto>(r);
-  registerClass<audio::stretch::Stretch>(r);
-  registerClass<command::CommandMapProto>(r);
-  registerClass<command::Commands>(r);
-  registerClass<gui::RecentFiles>(r);
-  registerClass<gui::WindowPosition>(r);
-  registerClass<music::Metadata>(r);
-  registerClass<util::LoopPointList>(r);
-  registerClass<util::Mode>(r);
-  registerClass<util::file::VirtualFile>(r);
-  registerClass<util::file::VirtualFileList>(r);
-  registerClass<widget::tree::NavigatorConfig>(r);
-  registerClass<widget::waveform::WaveformProto>(r);
-  registerClass<widget::waveform::ZoomProto>(r);
-  registerClass<slow::AppLayout>(r);
-  registerClass<slow::GuiSettings>(r);
+  data::registerClass<audio::Gain>(r);
+  data::registerClass<audio::source::StereoProto>(r);
+  data::registerClass<audio::stretch::Stretch>(r);
+  data::registerClass<command::CommandMapProto>(r);
+  data::registerClass<command::Commands>(r);
+  data::registerClass<gui::RecentFiles>(r);
+  data::registerClass<gui::WindowPosition>(r);
+  data::registerClass<music::Metadata>(r);
+  data::registerClass<util::LoopPointList>(r);
+  data::registerClass<util::Mode>(r);
+  data::registerClass<util::file::VirtualFile>(r);
+  data::registerClass<util::file::VirtualFileList>(r);
+  data::registerClass<widget::tree::NavigatorConfig>(r);
+  data::registerClass<widget::waveform::WaveformProto>(r);
+  data::registerClass<widget::waveform::ZoomProto>(r);
+  data::registerClass<slow::AppLayout>(r);
+  data::registerClass<slow::GuiSettings>(r);
 }
 
 void SlowWindow::activeWindowStatusChanged() {

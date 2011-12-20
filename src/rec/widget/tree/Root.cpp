@@ -37,11 +37,6 @@ Root::Root(MenuBarModel* model, const NodeDesc& desc)
   tree_.addMouseListener(this, false);
   tree_.setRootItem(&root_);
   tree_.setRootItemVisible(false);
-
-  data::TypedEditable<VirtualFileList>* setter =
-    data::editable<VirtualFileList>();
-  setter->addListener(this);
-  volumes_ = setter->get();
 }
 
 void Root::checkVolumes() {
@@ -111,7 +106,7 @@ void Root::mouseDoubleClick(const juce::MouseEvent&) {
 }
 
 void Root::doAdd() {
-  if (addDialogOpen_ || !data::getGlobal<NavigatorConfig>().allow_file_drop())
+  if (addDialogOpen_ || !data::getProto<NavigatorConfig>(data::global()).allow_file_drop())
     return;
 
   addDialogOpen_ = true;
