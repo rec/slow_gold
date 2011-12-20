@@ -18,7 +18,7 @@ class DataListener : public Listener<const Proto&> {
 
   virtual void operator()(const Proto&) = 0;
   Data* getData() const { return adaptor_.getData(); }
-  const Proto getProto() const { return getFromData<Proto>(getData()); }
+  const Proto getProto() const { return data::getProto<Proto>(getData()); }
   void setProto(const Proto& p) { setWithData(getData(), p); }
 
  private:

@@ -8,7 +8,7 @@ namespace rec {
 namespace data {
 
 template <typename Proto>
-const Proto getFromData(Data*);
+const Proto getProto(Data*);
 
 Message* cloneMessage(Data*);
 

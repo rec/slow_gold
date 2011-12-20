@@ -9,7 +9,7 @@
 namespace rec {
 namespace data {
 
-class DataImpl : public Data, public DataMaker {
+class DataImpl : public Data {
  public:
   DataImpl(Message*, const File&, DataUpdater*, UndoStack*);
   virtual ~DataImpl() {}
@@ -23,8 +23,6 @@ class DataImpl : public Data, public DataMaker {
 
   virtual void addListener(Listener<const Message&>*);
   virtual void removeListener(Listener<const Message&>*);
-
-  virtual Data* makeData(Message*, const File&) const;
 
  private:
   typedef std::set<Listener<const Message&>*> ListenerSet;

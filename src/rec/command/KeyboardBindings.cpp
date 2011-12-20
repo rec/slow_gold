@@ -56,7 +56,7 @@ void writeKeyboardBindingFile(XmlElement* element) {
 XmlElement* readKeyboardBindingFile(const Commands& commands) {
   data::Data* d = data::getData<Commands>(getBindingFile());
   return readKeyboardCommands(d->fileReadSuccess() ?
-  	                          data::getFromData<Commands>(d) : commands);
+  	                          data::getProto<Commands>(d) : commands);
 }
 
 }  // namespace
