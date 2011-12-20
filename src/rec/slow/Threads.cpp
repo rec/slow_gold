@@ -1,6 +1,8 @@
 #include "rec/slow/Threads.h"
 
 #include "rec/data/Data.h"
+#include "rec/data/DataCenter.h"
+#include "rec/data/DataUpdater.h"
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
@@ -55,9 +57,11 @@ namespace {
 struct Period {
   enum Enum {
     DIRECTORY = 1000,
-    FILL = 40,
+    FILL = 41,
     NAVIGATOR = 1001,
-    WRITE_GUI = 103,
+    WRITE_GUI = 501,
+    WRITE_DATA = 1003,
+    UPDATE_DATA = 101,
   };
 };
 
@@ -68,6 +72,8 @@ struct Priority {
     FILL = 4,
     NAVIGATOR = 2,
     WRITE_GUI = 4,
+    WRITE_DATA = 4,
+    UPDATE_DATA = 5,
   };
 };
 
@@ -82,6 +88,16 @@ int writeGui(Instance* i) {
   return Period::WRITE_GUI;
 }
 
+int writeData(Instance*) {
+  data::getDataCenter().updater_->write();
+  return Period::WRITE_DATA;
+}
+
+int updateData(Instance*) {
+  data::getDataCenter().updater_->update();
+  return Period::UPDATE_DATA;
+}
+
 thread::Result fill(Instance* i) {
   return i->bufferFiller_->fillOnce();
 }
@@ -93,11 +109,13 @@ thread::Result directory(Instance* i) {
 
 }  // namespace
 
-void Threads::startAll() {
+void Threads::start() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
   fillThread_ = start(&fill, "Fill", Priority::FILL);
   start(&directory, "Directory", Priority::DIRECTORY);
   start(&writeGui, "writeGUI", Priority::WRITE_GUI);
+  start(&writeData, "writeData", Priority::WRITE_DATA);
+  start(&updateData, "updateData", Priority::UPDATE_DATA);
 }
 
 }  // namespace slow

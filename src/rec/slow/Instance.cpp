@@ -77,7 +77,6 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   player_->timeBroadcaster()->addListener(currentTime_.get());
   components_->waveform_->setAudioThumbnail(thumbnailBuffer->thumbnail());
 
-  threads_->startAll();
   window->addListener(menus_.get());
 
   DialogLocker::getDisableBroadcaster()->addListener(target_->targetManager());
@@ -89,6 +88,8 @@ Instance::Instance(SlowWindow* window) : window_(window) {
     mode.clear_click();
     setProto(mode);
   }
+
+  threads_->start();
 }
 
 Instance::~Instance() {

@@ -19,7 +19,7 @@ class Threads : public HasInstance {
 
   explicit Threads(Instance* i);
   ~Threads();
-  void startAll();
+  void start();
   void stop();
   CriticalSection* lock() { return &lock_; }
 
@@ -28,9 +28,9 @@ class Threads : public HasInstance {
   Thread* fillThread() { return fillThread_; }
   Thread* bufferThread() { return bufferThread_; }
 
+ private:
   template <typename Operator>
   Thread* start(Operator op, const String& name, int priority = 0) {
-
     Thread* thread = thread::makeLooper(name, op, instance_);
     if (priority)
       thread->setPriority(priority);
@@ -39,7 +39,6 @@ class Threads : public HasInstance {
     return thread;
   }
 
- private:
   typedef std::vector<Thread*> ThreadList;
 
   ThreadList threads_;
