@@ -5,7 +5,9 @@
 #include "rec/audio/util/Gain.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
+#include "rec/data/DataCenter.h"
 #include "rec/data/MessageRegistrar.h"
+#include "rec/data/MessageRegistrarAndMaker.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/gui/WindowPosition.pb.h"
@@ -89,7 +91,9 @@ static Def<gui::WindowPosition> windowPosition(
 
 using namespace rec::data;
 
-void SlowWindow::registerData(MessageRegistrar* r) {
+void initialize(app::GenericApplication*) {
+  MessageRegistrar* r = getDataCenter().registry_.get();
+
   data::registerClass<audio::Gain>(r);
   data::registerClass<audio::source::StereoProto>(r);
   data::registerClass<audio::stretch::Stretch>(r);
