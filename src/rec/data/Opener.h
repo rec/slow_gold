@@ -10,10 +10,14 @@ template <typename Proto>
 struct Opener : public Reader<Proto> {
   Opener(Data* d, Undoable undoable = CAN_UNDO)
       : Reader<Proto>(d),
-        changed_(false),
         undoable_(undoable) {
-    before_.reset(this->cloneMessage());
-    before_->CopyFrom(*this->proto_);
+    initialize();
+  }
+
+  Opener(VirtualFile* vf, Undoable undoable = CAN_UNDO)
+      : Reader<Proto>(vf),
+        undoable_(undoable) {
+    initialize();
   }
 
   ~Opener() {
@@ -33,8 +37,14 @@ struct Opener : public Reader<Proto> {
   }
 
  private:
+  void initialize() {
+    changed_ = false;
+    before_.reset(this->cloneMessage());
+    before_->CopyFrom(*this->proto_);
+  }
+
   bool changed_;
-  Undoable undoable_;
+  const Undoable undoable_;
   ptr<Message> before_;
 };
 

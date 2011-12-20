@@ -11,11 +11,8 @@ namespace data {
 
 template <typename Proto>
 struct Reader {
-  Reader(Data* d)
-      : data_(d),
-        locker_(new Lock(d->lock_)),
-        proto_(dynamic_cast<Proto*>(d->message_.get())) {
-  }
+  Reader(Data* d) : data_(d) { initialize(); }
+  Reader(const VirtualFile* vf) : data_(getData<Proto>(vf)) { initialize(); }
 
   ~Reader() {}
 
@@ -32,7 +29,13 @@ struct Reader {
  protected:
   Data* const data_;
   ptr<Lock> locker_;
-  Proto* const proto_;
+  Proto* proto_;
+
+ private:
+  void initialize() {
+    locker_.reset(new Lock(data_->lock_));
+    proto_ = dynamic_cast<Proto*>(data_->message_.get());
+  }
 };
 
 }  // namespace data

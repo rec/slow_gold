@@ -34,7 +34,7 @@ class Instance {
   Samples<44100> length() const;
   bool isPlaying() const;
   void updateGui();
-  void setProto(const Message&);
+  void setProto(const Message&, Undoable undoable = CAN_UNDO);
 
   SlowWindow* window_;
 

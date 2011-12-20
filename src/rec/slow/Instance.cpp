@@ -87,7 +87,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   Mode mode = data::getGlobal<Mode>();
   if (mode.click() == Mode::DRAW_LOOP_POINTS) {
     mode.clear_click();
-    data::set(mode);
+    setProto(mode);
   }
 }
 
@@ -97,9 +97,6 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  data::editable<VirtualFile>()->operator()();
-  UpdateRequester::requestAllUpdates();
-  startUndo();
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
 }

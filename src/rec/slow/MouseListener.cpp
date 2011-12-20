@@ -39,7 +39,8 @@ namespace {
 typedef widget::waveform::OutlinedCursorLabel Label;
 
 void toggleSelectionSegment(const VirtualFile& file, Samples<44100> time) {
-  data::apply(file, &audio::toggleSelectionSegment, time);
+  data::Opener<LoopPointList> opener(data::getData<LoopPointList>(&file));
+  audio::toggleSelectionSegment(opener.mutable_get(), time);
 }
 
 static const double WHEEL_RATIO = 4.0;
@@ -85,7 +86,7 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
 }
 
 void MouseListener::addLoopPoint(Samples<44100> time) {
-  audio::addLoopPointToEditable(file(), time);
+  audio::addLoopPointToData(file(), time);
   toggleAddLoopPointMode();
 }
 
@@ -137,7 +138,7 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
   } else {
     int i = cursor->index();
     cursorDragStart_ = cursor->getX();
-    LoopPointList loops = data::get<LoopPointList>(&file());
+    LoopPointList loops = data::get<LoopPointList>(file());
     cursorRestrict_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) + DRAG_PAD;
     cursorRestrict_.end_ = -DRAG_PAD + ((i == loops.loop_point_size() - 1) ?
                                         loops.length() : loops.loop_point(i + 1).time());
@@ -171,7 +172,7 @@ void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
     zoom.set_end(end);
 
     zoom.set_end(zoom.begin() + size);
-    DataListener<widget::waveform::ZoomProto>::setValue(zoom);
+    DataListener<widget::waveform::ZoomProto>::setProto(zoom);
   }
 }
 

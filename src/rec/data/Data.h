@@ -4,6 +4,7 @@
 #include <google/protobuf/message.h>
 
 #include "rec/util/Listener.h"
+#include "rec/util/Proto.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {
@@ -40,6 +41,17 @@ class Data : public Broadcaster<const Message&> {
   template <typename Proto> friend class Reader;
   template <typename Proto> friend class Opener;
 };
+
+Data* getData(const string& typeName, const VirtualFile* vf);
+
+template <typename Proto>
+Data* getData(const VirtualFile* vf) {
+  return getData(getTypeName<Proto>(), vf);
+}
+
+inline Data* getData(const Message& m, const VirtualFile* vf) {
+  return getData(getTypeName(m), vf);
+}
 
 }  // namespace data
 }  // namespace rec

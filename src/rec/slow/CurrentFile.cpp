@@ -2,6 +2,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/RecentFiles.h"
@@ -24,6 +25,7 @@ CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
+#if 0
   if (components()->directoryTree_->treeView()->isTreeDrop(dropFiles.target_)) {
     using file::getFile;
 
@@ -38,15 +40,16 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
         data::editable<VirtualFileList>()->append(files.file(i), data::Address("file"));
     }
   } else {
+  }
+#endif
     if (files.file_size() >= 1)
       (*this)(files.file(0));
-  }
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
   gui::addRecentFile(file_, data::get<music::Metadata>(&file_));
   setFile(f);
-  data::set(f);
+  data::setProto(f, data::global());
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
@@ -80,12 +83,12 @@ void CurrentFile::setFile(const VirtualFile& f) {
       return;
     }
 
-    LoopPointList lpl = data::get<LoopPointList>(&file_);
+    LoopPointList lpl = data::getProto<LoopPointList>(&file_);
     if (lpl.length() != length || !lpl.loop_point_size()) {
       lpl.set_length(length);
       if (!lpl.loop_point_size())
         lpl.add_loop_point()->set_selected(true);
-      data::set<LoopPointList>(lpl, file_, false);
+      data::setProto(lpl, file_);
     }
   }
 

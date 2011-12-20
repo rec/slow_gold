@@ -8,6 +8,7 @@
 #include "rec/command/map/KeyCommandMapEditor.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/SetupPage.h"
@@ -34,7 +35,7 @@ namespace {
 static const int SELECTION_WIDTH_PORTION = 20;
 
 void addLoopPoint(Instance* i) {
-  audio::addLoopPointToEditable(i->file(), i->player_->getTime());
+  audio::addLoopPointToData(i->file(), i->player_->getTime());
 }
 
 void addLoopPointClick(Instance* i) {
@@ -47,41 +48,41 @@ void nudgeVolumeDownOp(audio::Gain* gain) {
 }
 
 void nudgeVolumeDown(Instance* i) {
-  data::apply(i->file(), nudgeVolumeDownOp);
+  data::apply(nudgeVolumeDownOp, i->file());
 }
 
 void nudgeVolumeUp(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(&i->file()));
+  audio::Gain gain(data::getProto<audio::Gain>(i->file()));
   if (!(gain.dim() || gain.mute())) {
     gain.set_gain(gain.gain() + 1.0);
-    data::set(gain, i->file());
+    data::setProto(gain, i->file());
   }
 }
 
 void clearLoops(Instance *i) {
   LoopPointList loops;
   loops.add_loop_point();
-  data::set(loops, i->file());
+  data::setProto(loops, i->file());
 }
 
-void clearNavigator(Instance *) { data::set(VirtualFileList()); }
+void clearNavigator(Instance *) { data::setProto(VirtualFileList(), data::global()); }
 
 void dimVolumeToggle(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(&i->file()));
+  audio::Gain gain(data::getProto<audio::Gain>(i->file()));
   gain.set_dim(!gain.dim());
-  data::set(gain, i->file());
+  data::setProto(gain, i->file());
 }
 
 void muteVolumeToggle(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(&i->file()));
+  audio::Gain gain(data::getProto<audio::Gain>(i->file()));
   gain.set_mute(!gain.mute());
-  data::set(gain, i->file());
+  data::setProto(gain, i->file());
 }
 
 void resetGainToUnity(Instance* i) {
-  audio::Gain gain(data::get<audio::Gain>(&i->file()));
+  audio::Gain gain(data::getProto<audio::Gain>(i->file()));
   gain.set_gain(0);
-  data::set(gain, i->file());
+  data::setProto(gain, i->file());
 }
 
 void keyboardMappings(Instance* i) {
@@ -119,7 +120,7 @@ void midiMappings(Instance* i) {
   juce::DialogWindow::showModalDialog("Select MIDI mappings",
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
-  data::set(i->target_->midiCommandMap()->getProto());
+  data::setProto(i->target_->midiCommandMap()->getProto(), data::global());
 }
 
 
@@ -164,7 +165,7 @@ void zoomToSelection(Instance* i) {
   ZoomProto zoom;
   zoom.set_begin(std::max(0LL, range.first - pad));
   zoom.set_end(std::min(i->length().get(), range.second + pad));
-  data::set(zoom, i->file());
+  data::setProto(zoom, i->file());
 }
 
 void audioPreferences(Instance* i) {
@@ -172,7 +173,7 @@ void audioPreferences(Instance* i) {
 }
 
 void closeFile(Instance* i) {
-  data::set(VirtualFile());
+  data::setProto(VirtualFile(), data::global());
 }
 
 void open(Instance* i) {

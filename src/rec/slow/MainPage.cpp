@@ -64,8 +64,8 @@ MainPage::MainPage(Components* components)
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
       helpPanel_(new gui::SimpleLabel("", "")),
-      transformPanel_(layoutTypeName(), "Transform"),
-      controlPanel_(layoutTypeName(), "Control"),
+      transformPanel_(str(layoutTypeName()), "Transform"),
+      controlPanel_(str(layoutTypeName()), "Control"),
 
       navigationResizer_(layoutTypeName(), "navigation_y", &mainPanel_, 1),
 

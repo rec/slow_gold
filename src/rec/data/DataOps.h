@@ -22,12 +22,13 @@ const VirtualFile* global();
 // The virtual file for empty data (not stored or updated).
 const VirtualFile* empty();
 
-Data* getData(const string& typeName, const VirtualFile* vf);
+void setProto(const Message& m, const VirtualFile* vf,
+              Undoable undoable = CAN_UNDO);
 
-template <typename Proto>
-Data* getData(const VirtualFile* vf);
-
-void setProto(const Message& m, const VirtualFile* vf, Undoable undoable = CAN_UNDO);
+inline void setProto(const Message& m, const VirtualFile& vf,
+                     Undoable undoable = CAN_UNDO) {
+  setProto(m, &vf, undoable);
+}
 
 inline void set(const Message& m, const VirtualFile* vf, Undoable undoable = CAN_UNDO) {
   return setProto(m, vf, undoable);
@@ -52,10 +53,10 @@ inline void setGlobal(const Message& m, Undoable undoable = CAN_UNDO) {
 }
 
 template <typename Proto>
-void apply(void (*function)(Proto*), const VirtualFile*);
+void apply(void (*function)(Proto*), const VirtualFile&);
 
 template <typename Proto, typename Functor>
-void apply(Functor functor, VirtualFile*);
+void apply(Functor functor, const VirtualFile&);
 
 //
 //
@@ -81,15 +82,6 @@ inline void setWithData(Data* data, const Message& m, Undoable undoable) {
   Opener<Message>(data, undoable)->CopyFrom(m);
 }
 
-inline Data* getData(const Message& m, const VirtualFile* vf) {
-  return getData(getTypeName(m), vf);
-}
-
-template <typename Proto>
-Data* getData(const VirtualFile* vf) {
-  return getData(getTypeName<Proto>(), vf);
-}
-
 inline void setProto(const Message& m, const VirtualFile* vf, Undoable undoable) {
   setWithData(getData(getTypeName(m), vf), m, undoable);
 }
@@ -100,13 +92,13 @@ const Proto getProto(const VirtualFile* vf) {
 }
 
 template <typename Proto>
-void apply(void (*function)(Proto*), const VirtualFile* vf) {
-  function(Opener<Proto>(getData(getTypeName<Proto>(), vf)).get());
+void apply(void (*function)(Proto*), const VirtualFile& vf) {
+  function(Opener<Proto>(getData(getTypeName<Proto>(), &vf)).mutable_get());
 }
 
 template <typename Proto, typename Functor>
-void apply(Functor functor, VirtualFile* vf) {
-  functor(Opener<Proto>(getData(getTypeName<Proto>(), vf)).get());
+void apply(Functor functor, const VirtualFile& vf) {
+  functor(Opener<Proto>(getData(getTypeName<Proto>(), &vf)).mutable_get());
 }
 
 template <typename Proto>
