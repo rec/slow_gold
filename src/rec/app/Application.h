@@ -9,7 +9,8 @@ namespace app {
 template <typename WindowImpl>
 class Application : public GenericApplication {
  public:
-  Application(const String& n, const String& v) : GenericApplication(n, v) {
+  Application(const String& n, const String& v, ApplicationInitializer init)
+      : GenericApplication(n, v, init) {
     google::InitGoogleLogging(str(n).c_str());
   }
   virtual Window* createWindow() { return new WindowImpl(this); }
@@ -25,15 +26,15 @@ class Application : public GenericApplication {
 // example:  START_REC_APPLICATION(SlowWindow, SlowGold, "0.2.23")
 //
 
-#define REC_APPLICATION_HELPER(NAME, CLASS, BASE_CLASS, VERSION)        \
+#define REC_APPLICATION_HELPER(NAME, CLASS, BASE_CLASS, VERSION, INIT)  \
   struct CLASS : public BASE_CLASS {                                    \
-    CLASS() : BASE_CLASS(#NAME, VERSION) {}                             \
+    CLASS() : BASE_CLASS(#NAME, VERSION, INIT) {}                       \
   };                                                                    \
   START_JUCE_APPLICATION(CLASS)
 
-#define START_REC_APPLICATION(WINDOW_CLASS, NAME, VERSION)              \
+#define START_REC_APPLICATION(WINDOW_CLASS, NAME, VERSION, INIT)        \
   REC_APPLICATION_HELPER(NAME, NAME ## Application,                     \
-                         rec::app::Application<WINDOW_CLASS>, VERSION)
+                         rec::app::Application<WINDOW_CLASS>, VERSION, INIT)
 
 }  // namespace app
 }  // namespace rec

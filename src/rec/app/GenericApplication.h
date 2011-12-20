@@ -9,13 +9,17 @@
 namespace rec {
 namespace app {
 
+class GenericApplication;
 class Window;
+
+typedef void (*ApplicationInitializer)(GenericApplication*);
 
 class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
  public:
   static const int STARTUP_THREAD_PRIORITY = 4;
 
-  GenericApplication(const String& name, const String& version);
+  GenericApplication(const String& name, const String& version,
+                     ApplicationInitializer initializer);
   virtual ~GenericApplication();
 
   virtual void initialise(const String& commandLine);
@@ -31,12 +35,13 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   virtual void operator()(bool disabled) { Lock l(lock_); disabled_ = disabled; }
 
  protected:
-  CriticalSection lock_;
   const String name_;
   const String version_;
+  ApplicationInitializer initializer_;
   ptr<Window> window_;
   thread_ptr<Thread> startupThread_;
   bool disabled_;
+  CriticalSection lock_;
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GenericApplication);

@@ -38,6 +38,9 @@ class SlowWindow : public app::Window, public HasInstance {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowWindow);
 };
 
+inline void initialize(app::GenericApplication*) {
+}
+
 }  // namespace slow
 }  // namespace rec
 

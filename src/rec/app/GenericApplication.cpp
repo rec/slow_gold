@@ -12,8 +12,9 @@
 namespace rec {
 namespace app {
 
-GenericApplication::GenericApplication(const String& name, const String& v)
-    : name_(name), version_(v), disabled_(false) {
+GenericApplication::GenericApplication(const String& name, const String& v,
+                                       ApplicationInitializer i)
+    : name_(name), version_(v), initializer_(i), disabled_(false) {
 }
 
 GenericApplication::~GenericApplication() {}
@@ -27,8 +28,9 @@ void GenericApplication::initialise(const String&) {
   }
 
   audio::format::mpg123::initializeOnce();
+  initializer_(this);
   window_.reset(createWindow());
-  // TODO: need to fill the MessageRegistrar around here...
+
   window_->initialise();
 
   thread::runInNewThread("startup thread",
