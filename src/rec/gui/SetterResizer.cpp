@@ -36,6 +36,7 @@ void SetterResizer::paint(Graphics& g) {
 }
 
 void SetterResizer::operator()(const data::Value& v) {
+  MessageManagerLock l;
   int32 coord = v.int32_f();
   if (coord != get()) {
     if (layout_->orientation() == VERTICAL)

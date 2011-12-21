@@ -9,22 +9,24 @@
 namespace rec {
 namespace data {
 
-class UntypedDataListener : public Listener<const Message&>,
-                            public Listener<const VirtualFile&> {
+class UntypedDataListener : public Listener<const Message&> {
  public:
   explicit UntypedDataListener(const string& typeName,
                                Scope scope = FILE_SCOPE);
-  virtual ~UntypedDataListener() {}
+  virtual ~UntypedDataListener();
 
-  virtual void operator()(const VirtualFile& vf);
   virtual void operator()(const Message& m) = 0;
-
-  virtual void setData(const VirtualFile*);
   Data* getData() const;
 
  private:
+  virtual void setData(const VirtualFile*);
+
+  struct FileListener;
+  friend struct FileListener;
+
   const string typeName_;
   Data* data_;
+  ptr<FileListener> fileListener_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);

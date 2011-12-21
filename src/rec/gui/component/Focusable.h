@@ -24,7 +24,6 @@ class Focusable : public Type {
   virtual void paintFocus(Graphics& g) {
     if (this->hasKeyboardFocus(true) ||
         Component::getCurrentlyFocusedComponent() == this) {
-      // DLOG(INFO) << "hasFocus: " << str(this->getName());
       g.setColour(juce::Colours::red.withAlpha(0.8f));
       g.drawRect(this->getLocalBounds());
     }
@@ -34,7 +33,6 @@ class Focusable : public Type {
 
  private:
   void doFocus() {
-    // DLOG(INFO) << "Focus: " << str(this->getName());
     menuBarModel_->menuItemsChanged();
     this->repaint();
   }

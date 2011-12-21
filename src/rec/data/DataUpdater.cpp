@@ -3,6 +3,7 @@
 #include "rec/data/DataUpdater.h"
 
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/util/STL.h"
 
 namespace rec {
@@ -10,12 +11,10 @@ namespace data {
 
 // A piece of data got new information!
 void DataUpdater::reportChange(Data* data) {
-  {
-    Lock l(lock_);
-    updateData_.insert(data);
-    if (updateThread_)
-      updateThread_->notify();
-  }
+  Lock l(lock_);
+  updateData_.insert(data);
+  if (updateThread_)
+    updateThread_->notify();
 }
 
 bool DataUpdater::update() {
@@ -26,6 +25,9 @@ bool DataUpdater::update() {
 
   DataSet toUpdate, toWrite;
   updateData_.swap(toUpdate);
+
+  if (toUpdate.empty())
+    return false;
 
   {
     ScopedUnlock u(lock_);

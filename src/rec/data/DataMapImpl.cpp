@@ -32,7 +32,6 @@ DataMapImpl::DataMapImpl(MessageMaker* m, DataMaker* d)
 }
 
 DataMapImpl::~DataMapImpl() {
-  DLOG(INFO) << "Deleting DataMapImpl";
   for (Map::iterator i = map_.begin(); i != map_.end(); ++i) {
     delete i->second->data_;
     delete i->second;
@@ -54,6 +53,7 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
     return NULL;
   }
 
+  DCHECK_EQ(typeName, getTypeName(*msg));
   Data* data = dataMaker_->makeData(msg.transfer(), file);
   if (!data) {
     LOG(DFATAL) << "Unable to make data for " << typeName;

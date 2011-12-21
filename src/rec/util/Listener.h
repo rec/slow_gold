@@ -10,14 +10,6 @@ namespace rec {
 namespace util {
 
 template <typename Type> class Broadcaster;
-template <typename Type> class Listener;
-
-template <typename Type>
-string getName(const Broadcaster<Type>*);
-
-template <typename Type>
-string getName(const Listener<Type>*);
-
 
 template <typename Type>
 class Listener {
@@ -25,9 +17,7 @@ class Listener {
   typedef std::set<Broadcaster<Type>*> BroadcasterSet;
   typedef typename BroadcasterSet::iterator iterator;
 
-  Listener() : state_(LISTENING) {
-    // DLOG(INFO) << "Creating " << getName(this);
-  }
+  Listener() : state_(LISTENING) {}
   virtual ~Listener();
 
   virtual void operator()(Type x) = 0;
@@ -63,9 +53,7 @@ class Broadcaster {
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;
 
-  Broadcaster() {
-    // DLOG(INFO) << "Creating " << getName(this);
-  }
+  Broadcaster() {}
 
   virtual ~Broadcaster();
 
@@ -87,7 +75,6 @@ class Broadcaster {
 
 template <typename Type>
 Listener<Type>::~Listener() {
-  DLOG(INFO) << "deleting " << getName(this);
   setState(DELETING);
 
   BroadcasterSet toDelete;
@@ -141,7 +128,6 @@ void Broadcaster<Type>::broadcast(Type x) {
 
 template <typename Type>
 Broadcaster<Type>::~Broadcaster() {
-  DLOG(INFO) << "deleting " << getName(this);
   while (true) {
     Listener<Type>* listener;
     {
@@ -158,7 +144,6 @@ Broadcaster<Type>::~Broadcaster() {
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
-  DLOG(INFO) << "adding " << getName(listener) << " to " << getName(this);
   {
     Lock l(broadcasterLock_);
     listeners_.insert(listener);
@@ -172,51 +157,12 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
 
 template <typename Type>
 void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
-  DLOG(INFO) << "removing " << getName(listener) << " from " << getName(this);
   {
     Lock l(broadcasterLock_);
     listeners_.erase(listener);
   }
 
   listener->wasRemovedFrom(this);
-}
-
-struct PointerCounter : public std::map<const void*, int> {
-  ~PointerCounter() {
-    DLOG(INFO) << "Deleting PointerCounter";
-  }
-};
-
-inline PointerCounter* getListenerNames() {
-  static PointerCounter* p = new PointerCounter();
-  return p;
-}
-
-inline PointerCounter* getBroadcasterNames() {
-  static PointerCounter* p = new PointerCounter();
-  return p;
-}
-
-inline string getName(PointerCounter* map, const void* x) {
-  PointerCounter::iterator i = map->find(x);
-  int index;
-  if (i == map->end()) {
-    index = map->size();
-    map->insert(i, std::make_pair(x, index));
-  } else {
-    index = i->second;
-  }
-  return str(String(index));
-}
-
-template <typename Type>
-string getName(const Broadcaster<Type>* b) {
-  return "broad-" + getName(getBroadcasterNames(), b);
-}
-
-template <typename Type>
-string getName(const Listener<Type>* l) {
-  return "listen-" + getName(getListenerNames(), l);
 }
 
 }  // namespace util

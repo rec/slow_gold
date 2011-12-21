@@ -6,6 +6,16 @@
 namespace rec {
 namespace data {
 
+struct UntypedDataListener::FileListener : public Listener<const VirtualFile&> {
+  FileListener(UntypedDataListener* parent) : parent_(parent) {}
+
+  virtual void operator()(const VirtualFile& vf) {
+    parent_->setData(file::empty(vf) ? &vf : empty());
+  }
+
+  UntypedDataListener* const parent_;
+};
+
 UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
     : typeName_(tn), data_(NULL) {
   if (scope == GLOBAL_SCOPE) {
@@ -16,16 +26,12 @@ UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
   }
 }
 
-void UntypedDataListener::operator()(const VirtualFile& vf) {
-  Lock l(lock_);
-  setData(file::empty(vf) ? &vf : empty());
-}
+UntypedDataListener::~UntypedDataListener() {}
 
 void UntypedDataListener::setData(const VirtualFile* vf) {
   Data* newData = data::getData(typeName_, vf);
 
   Lock l(lock_);
-
   if (data_)
     data_->removeListener(this);
 

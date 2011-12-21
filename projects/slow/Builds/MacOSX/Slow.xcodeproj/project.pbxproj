@@ -123,6 +123,7 @@
 		752CA61E22F468FA163B7D19 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95A353F3CAC7E1B0000A0E98 /* scanner.cpp */; };
 		75BD85D0F7112C06B557C6AF /* emitterutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDC50620E5F86319AD56FA /* emitterutils.cpp */; };
 		75DE7532CA4540FE9B76F423 /* Gain.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = D137F184286AEF0AE1515725 /* Gain.pb.cc */; };
+		78A19D699364F2069376A031 /* AddressListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32541E6165A0CD90E075780B /* AddressListener.cpp */; };
 		7952501EFED28CD74DEB4478 /* Gain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40EB1C11D08162E107F35773 /* Gain.cpp */; };
 		7A4960341F02ACDBF630C65F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05EBBE6ECD75008F41ECB8AB /* Carbon.framework */; };
 		7C33CFD9B22820CCE3E06613 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */; };
@@ -379,6 +380,7 @@
 		30875910F8DD2C7BA5FEE69A /* yaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = yaml.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/yaml.h"; sourceTree = SOURCE_ROOT; };
 		30D7748F8205674CA55176A7 /* aliasmanager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aliasmanager.cpp; path = ../../../../src/rec/data/yaml/src/aliasmanager.cpp; sourceTree = SOURCE_ROOT; };
 		31C104002E95159BD839F317 /* Reader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reader.h; path = ../../../../src/rec/audio/format/mpg123/Reader.h; sourceTree = SOURCE_ROOT; };
+		32541E6165A0CD90E075780B /* AddressListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AddressListener.cpp; path = ../../../../src/rec/data/AddressListener.cpp; sourceTree = SOURCE_ROOT; };
 		328224446BFDBBD3D89F8C91 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Window.h; path = ../../../../src/rec/app/Window.h; sourceTree = SOURCE_ROOT; };
 		32C81A4DEBCAB0980DFCF479 /* Difference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Difference.h; path = ../../../../src/rec/util/block/Difference.h; sourceTree = SOURCE_ROOT; };
 		33301B7A93A933080C55E811 /* CreateMusicFileReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CreateMusicFileReader.cpp; path = ../../../../src/rec/music/CreateMusicFileReader.cpp; sourceTree = SOURCE_ROOT; };
@@ -1213,6 +1215,16 @@
 			name = component;
 			sourceTree = "<group>";
 		};
+		5B24A34DE91C6B1318AD98BB /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
+				1AB486317E06D9E7CC790074 /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		5B97EF3D5D0B5F452514E299 /* thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -1625,7 +1637,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				F7F7D1B7B3DD1A4398E93A6D /* Slow */,
+				5B24A34DE91C6B1318AD98BB /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1742,6 +1754,7 @@
 			children = (
 				2E035C392A7545D2FFA30EA2 /* Address.cpp */,
 				7DCBA95B187EAB0F0DD94B55 /* Address.h */,
+				32541E6165A0CD90E075780B /* AddressListener.cpp */,
 				537EDD9540B4A725961A2F39 /* AddressListener.h */,
 				3D0B4149DC5933133201708F /* Data.h */,
 				B80D7FE831FA7778728B7243 /* DataCenter.cpp */,
@@ -1947,16 +1960,6 @@
 			name = widget;
 			sourceTree = "<group>";
 		};
-		F7F7D1B7B3DD1A4398E93A6D /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
-				1AB486317E06D9E7CC790074 /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		FB1B624F52EE7A456FE433A1 /* layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -2136,6 +2139,7 @@
 				E47F4C5221BE498D2AB1D4A4 /* TargetManager.cpp in Sources */,
 				75150D460019B3AFA80BE755 /* TickedDataSetter.cpp in Sources */,
 				69797CFF254AADA35A5C7DDB /* Address.cpp in Sources */,
+				78A19D699364F2069376A031 /* AddressListener.cpp in Sources */,
 				1B05B181E45EDE29034E6E50 /* DataCenter.cpp in Sources */,
 				70A696BF702D0627ECEB3CF2 /* DataImpl.cpp in Sources */,
 				4A78D495EDD0D35A8A125483 /* DataMap.cpp in Sources */,

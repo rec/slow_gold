@@ -13,10 +13,13 @@ Window::Window(GenericApplication* application,
 }
 
 void Window::initialise() {
-  Lock l(lock_);
-  if (running_) {
-    LOG(DFATAL) << "already running!";
-    return;
+  {
+    Lock l(lock_);
+    if (running_) {
+      LOG(DFATAL) << "already running!";
+      return;
+    }
+    running_ = true;
   }
 
   ModifierKeys keys = ModifierKeys::getCurrentModifiersRealtime();
@@ -40,8 +43,6 @@ void Window::initialise() {
 
   setContentOwned(mp, false);
   setVisible(true);
-
-  running_ = true;
 }
 
 Window::~Window() {
@@ -65,14 +66,14 @@ void Window::shutdown() {
       return;
 
     running_ = false;
+  }
 
-    setOKToSavePosition(false);
+  setOKToSavePosition(false);
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
     // Why isn't this in GenericApplication?
-    MenuBarModel::setMacMainMenu(NULL);
+  MenuBarModel::setMacMainMenu(NULL);
 #endif
-    setMenuBar(NULL);
-  }
+  setMenuBar(NULL);
   doShutdown();
 }
 

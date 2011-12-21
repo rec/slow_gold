@@ -34,6 +34,7 @@ class DataImpl : public Data {
 
   bool alreadyReadFromFile_;
   bool fileReadSuccess_;
+  string typeName_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(DataImpl);
 };

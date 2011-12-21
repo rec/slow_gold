@@ -15,6 +15,8 @@ DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s)
   fileReadSuccess_ = copy::copy(file_, message_.get());
   if (!fileReadSuccess_)
     message_.swap(original);
+  typeName_ = getTypeName(*m);
+  // DCHECK_NE(typeName_, getTypeName<VirtualFile>());
 }
 
 void DataImpl::pushOnUndoStack(const Message& before) {
@@ -45,6 +47,7 @@ void DataImpl::addListener(Listener<const Message&>* lis) {
   Lock l(broadcasterLock_);
   Data::addListener(lis);
   recentListeners_.insert(lis);
+  dataUpdater_->reportChange(this);
 }
 
 void DataImpl::removeListener(Listener<const Message&>* lis) {
@@ -60,8 +63,10 @@ bool DataImpl::update() {
     Lock l(broadcasterLock_);
     if (clientsNeedUpdate_)
       recentListeners_.clear();
+
     else if (!recentListeners_.empty())
       toUpdate.swap(recentListeners_);
+
     else
       return false;
   }
@@ -69,16 +74,20 @@ bool DataImpl::update() {
   bool clientsNeedUpdate;
   {
     Lock l(lock_);
+    DCHECK_EQ(typeName_, getTypeName(*message_));
     m.reset(clone(*message_));
     clientsNeedUpdate = clientsNeedUpdate_;
     clientsNeedUpdate_ = false;
   }
 
   if (clientsNeedUpdate) {
+    DLOG(INFO) << "Needs update! " << getTypeName(*m) << ", " << typeName_;
     broadcast(*m);
   } else {
-    for (ListenerSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i)
+    for (ListenerSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {
+      // DLOG(INFO) << "Updating: " << getTypeName(*m);
       (**i)(*m);
+    }
   }
 
   return true;

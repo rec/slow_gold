@@ -16,9 +16,7 @@ DataCenter::DataCenter() : registry_(new MessageRegistrarAndMaker),
                            map_(new DataMapImpl(registry_.get(), maker_.get())) {
 }
 
-DataCenter::~DataCenter() {
-  DLOG(INFO) << "Deleting the data center";
-}
+DataCenter::~DataCenter() {}
 
 static DataCenter* getDC() {
   static DataCenter* dataCenter = new DataCenter;

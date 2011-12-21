@@ -31,10 +31,11 @@ class DataListener : public Listener<const Proto&> {
     virtual ~Adaptor() {}
 
     virtual void operator()(const Message& m) {
-      if (const Proto* p = dynamic_cast<const Proto*>(&m))
+      if (const Proto* p = dynamic_cast<const Proto*>(&m)) {
+        DLOG(INFO) << "Success! " << getTypeName(m);
         (*parent_)(*p);
-      else
-        LOG(DFATAL) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
+      } else
+        LOG(ERROR) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
     }
 
    private:
