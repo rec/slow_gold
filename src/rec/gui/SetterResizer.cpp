@@ -7,8 +7,8 @@
 namespace rec {
 namespace gui {
 
-SetterResizer::SetterResizer(const data::Address& address,
-                             const string& typeName,
+SetterResizer::SetterResizer(const string& typeName,
+                             const data::Address& address,
                              Layout* layout,
                              int itemIndexInLayout,
                              Scope scope)

@@ -26,6 +26,8 @@ class SlowWindow : public app::Window, public HasInstance {
 
  protected:
   virtual void doStartup();
+  virtual void doShutdown();
+
   virtual void constructInstance();
   virtual Component* getMainComponent();
   virtual MenuBarModel* getMenuBarModel();
@@ -38,6 +40,7 @@ class SlowWindow : public app::Window, public HasInstance {
 };
 
 void initialize(app::GenericApplication*);
+void shutdown(app::GenericApplication*);
 
 }  // namespace slow
 }  // namespace rec

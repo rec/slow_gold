@@ -6,7 +6,7 @@ namespace rec {
 namespace util {
 
 const string& getTypeName(const Message& m) {
-  return m.GetDescriptor()->name();
+  return m.GetDescriptor()->full_name();
 }
 
 }  // namespace util

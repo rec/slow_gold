@@ -49,11 +49,13 @@ void SlowWindow::doStartup() {
   instance_->startup();
 }
 
+void SlowWindow::doShutdown() {
+  Lock l(gui::PersistentWindow::lock_);
+  instance_ = NULL;
+  instanceDeleter_.reset();
+}
+
 void SlowWindow::trashPreferences() {
-#if 0
-  data::editableFile<gui::WindowPosition>().deleteFile();
-  data::editableFile<VirtualFile>().deleteFile();
-#endif
 }
 
 Component* SlowWindow::getMainComponent() {
@@ -64,59 +66,37 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
   return menus();
 }
 
-static Def<LoopPointList> loops(
-"loop_point { selected: true }"
-);
-
-#if 0
-static Def<AppLayout> layout(
-"waveform_y: 200\n"
-"control_y: 550\n"
-
-"songdata_x: 350\n"
-"loops_x: 650\n"
-
-"transform_x: 350\n"
-"controls_x: 650\n"
-""
-);
-
-static Def<gui::WindowPosition> windowPosition(
-"bounds {\n"
-"  top_left { x: 300 y: 100 }\n"
-"  dimensions { x: 800 y: 600 }\n"
-"}\n");
-
-#endif
+void SlowWindow::activeWindowStatusChanged() {
+  menus()->menuItemsChanged();
+}
 
 using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
   MessageRegistrar* r = getDataCenter().registry_.get();
 
-  data::registerClass<audio::Gain>(r);
-  data::registerClass<audio::source::StereoProto>(r);
-  data::registerClass<audio::stretch::Stretch>(r);
-  data::registerClass<command::CommandMapProto>(r);
-  data::registerClass<command::Commands>(r);
-  data::registerClass<gui::RecentFiles>(r);
-  data::registerClass<gui::WindowPosition>(r);
-  data::registerClass<music::Metadata>(r);
-  data::registerClass<util::LoopPointList>(r);
-  data::registerClass<util::Mode>(r);
-  data::registerClass<util::file::VirtualFile>(r);
-  data::registerClass<util::file::VirtualFileList>(r);
-  data::registerClass<widget::tree::NavigatorConfig>(r);
-  data::registerClass<widget::waveform::WaveformProto>(r);
-  data::registerClass<widget::waveform::ZoomProto>(r);
-  data::registerClass<slow::AppLayout>(r);
-  data::registerClass<slow::GuiSettings>(r);
+  registerClass<audio::Gain>(r);
+  registerClass<audio::source::StereoProto>(r);
+  registerClass<audio::stretch::Stretch>(r);
+  registerClass<command::CommandMapProto>(r);
+  registerClass<command::Commands>(r);
+  registerClass<gui::RecentFiles>(r);
+  registerClass<gui::WindowPosition>(r);
+  registerClass<music::Metadata>(r);
+  registerClass<util::LoopPointList>(r);
+  registerClass<util::Mode>(r);
+  registerClass<util::file::VirtualFile>(r);
+  registerClass<util::file::VirtualFileList>(r);
+  registerClass<widget::tree::NavigatorConfig>(r);
+  registerClass<widget::waveform::WaveformProto>(r);
+  registerClass<widget::waveform::ZoomProto>(r);
+  registerClass<slow::AppLayout>(r);
+  registerClass<slow::GuiSettings>(r);
 }
 
-void SlowWindow::activeWindowStatusChanged() {
-  menus()->menuItemsChanged();
+void shutdown(app::GenericApplication*) {
+  data::deleteDataCenter();
 }
 
 }  // namespace slow
 }  // namespace rec
-

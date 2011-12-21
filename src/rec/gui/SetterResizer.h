@@ -16,8 +16,8 @@ class SetterResizer : public StretchableLayoutResizerBar,
                       public SettableTooltipClient,
                       public data::AddressListener {
  public:
-  SetterResizer(const data::Address& address,
-                const string& typeName,
+  SetterResizer(const string& typeName,
+                const data::Address& address,
                 Layout* layout,
                 int itemIndexInLayout,
                 Scope scope = FILE_SCOPE);

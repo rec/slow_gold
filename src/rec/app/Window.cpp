@@ -59,18 +59,21 @@ void Window::startup() {
 }
 
 void Window::shutdown() {
-  Lock l(lock_);
-  if (!running_)
-    return;
+  {
+    Lock l(lock_);
+    if (!running_)
+      return;
 
-  running_ = false;
+    running_ = false;
 
-  setOKToSavePosition(false);
+    setOKToSavePosition(false);
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
-  // Why isn't this in GenericApplication?
-  MenuBarModel::setMacMainMenu(NULL);
+    // Why isn't this in GenericApplication?
+    MenuBarModel::setMacMainMenu(NULL);
 #endif
-  setMenuBar(NULL);
+    setMenuBar(NULL);
+  }
+  doShutdown();
 }
 
 

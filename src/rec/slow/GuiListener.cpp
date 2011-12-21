@@ -18,11 +18,13 @@ GuiListener::GuiListener(Instance* i) : HasInstance(i),
 }
 
 void GuiListener::operator()(const GuiSettings& settings) {
-  if (!settings.show_tooltips())
+  if (!settings.show_tooltips()) {
     tooltipWindow_.reset();
 
-  else if (!tooltipWindow_)
+  } else if (!tooltipWindow_) {
+    MessageManagerLock l;
     tooltipWindow_.reset(new TooltipWindow(NULL, MS_TILL_TOOLTIP));
+  }
 
   Lock l(lock_);
   displayHelpPane_ = settings.show_help_pane();

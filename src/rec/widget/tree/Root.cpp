@@ -57,7 +57,7 @@ static void restoreOpenness(Node* node, const XmlElement& xml) {
       if (i < n)
         restoreOpenness(dynamic_cast<Node*>(node->getSubItem(i)), *child);
       else
-        LOG(DFATAL) << "Didn't find id " << id;
+        LOG(ERROR) << "Didn't find id " << id;
     }
   }
 }

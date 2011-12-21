@@ -35,6 +35,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual Component* getMainComponent() = 0;
   virtual MenuBarModel* getMenuBarModel() = 0;
   virtual void doStartup() = 0;
+  virtual void doShutdown() = 0;
 
  private:
   GenericApplication* application_;

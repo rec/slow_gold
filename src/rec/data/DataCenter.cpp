@@ -16,11 +16,21 @@ DataCenter::DataCenter() : registry_(new MessageRegistrarAndMaker),
                            map_(new DataMapImpl(registry_.get(), maker_.get())) {
 }
 
-DataCenter::~DataCenter() {}
+DataCenter::~DataCenter() {
+  DLOG(INFO) << "Deleting the data center";
+}
+
+static DataCenter* getDC() {
+  static DataCenter* dataCenter = new DataCenter;
+  return dataCenter;
+}
+
+void deleteDataCenter() {
+  delete getDC();
+}
 
 const DataCenter& getDataCenter() {
-  static DataCenter dataCenter;
-  return dataCenter;
+  return *getDC();
 }
 
 }  // namespace data

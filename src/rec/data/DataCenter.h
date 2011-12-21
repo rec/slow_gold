@@ -24,6 +24,7 @@ struct DataCenter {
 };
 
 const DataCenter& getDataCenter();
+void deleteDataCenter();
 
 }  // namespace data
 }  // namespace rec

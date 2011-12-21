@@ -11,7 +11,7 @@ namespace data {
 
 namespace {
 
-const char* const EMPTY_DIRECTORY_NAME = "empty-empty-empty";
+const char* const EMPTY_DIRECTORY_NAME = "/empty-empty-empty";
 
 File dataFile(const VirtualFile* vf, const string& typeName) {
   File directory = vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
@@ -32,6 +32,7 @@ DataMapImpl::DataMapImpl(MessageMaker* m, DataMaker* d)
 }
 
 DataMapImpl::~DataMapImpl() {
+  DLOG(INFO) << "Deleting DataMapImpl";
   for (Map::iterator i = map_.begin(); i != map_.end(); ++i) {
     delete i->second->data_;
     delete i->second;

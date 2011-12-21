@@ -1158,6 +1158,16 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		5637F0440EABF8D97D9F3845 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
+				1AB486317E06D9E7CC790074 /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		58C331044627FD164AAC84DC /* cd */ = {
 			isa = PBXGroup;
 			children = (
@@ -1315,16 +1325,6 @@
 				630C70C1DA5CF19D45FA4BBE /* icon.png */,
 			);
 			name = binary;
-			sourceTree = "<group>";
-		};
-		770F98551D007497AE53683F /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
-				1AB486317E06D9E7CC790074 /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		7822844912BBCA7409129CFA /* stretch */ = {
@@ -1632,7 +1632,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				770F98551D007497AE53683F /* Slow */,
+				5637F0440EABF8D97D9F3845 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,

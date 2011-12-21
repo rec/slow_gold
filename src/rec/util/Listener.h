@@ -1,6 +1,7 @@
 #ifndef __REC_UTIL_LISTENER_LISTENER__
 #define __REC_UTIL_LISTENER_LISTENER__
 
+#include <map>
 #include <set>
 
 #include "rec/base/base.h"
@@ -9,6 +10,14 @@ namespace rec {
 namespace util {
 
 template <typename Type> class Broadcaster;
+template <typename Type> class Listener;
+
+template <typename Type>
+string getName(const Broadcaster<Type>*);
+
+template <typename Type>
+string getName(const Listener<Type>*);
+
 
 template <typename Type>
 class Listener {
@@ -16,7 +25,9 @@ class Listener {
   typedef std::set<Broadcaster<Type>*> BroadcasterSet;
   typedef typename BroadcasterSet::iterator iterator;
 
-  Listener() : state_(LISTENING) {}
+  Listener() : state_(LISTENING) {
+    // DLOG(INFO) << "Creating " << getName(this);
+  }
   virtual ~Listener();
 
   virtual void operator()(Type x) = 0;
@@ -43,18 +54,6 @@ class Listener {
   friend class Broadcaster<Type>;
 };
 
-template <typename Type, typename ListenTo>
-void listenTo(Listener<Type>* listener, ListenTo* newValue, ListenTo** target) {
-  Lock l(listener->lock());
-  if (*target)
-    (*target)->removeListener(listener);
-
-  *target = newValue;
-
-  if (*target)
-    (*target)->addListener(listener);
-}
-
 //
 // Broadcast updates of type Type to a set of Listener<Type>.
 //
@@ -64,7 +63,10 @@ class Broadcaster {
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;
 
-  Broadcaster() {}
+  Broadcaster() {
+    // DLOG(INFO) << "Creating " << getName(this);
+  }
+
   virtual ~Broadcaster();
 
   virtual void broadcast(Type x);
@@ -85,6 +87,7 @@ class Broadcaster {
 
 template <typename Type>
 Listener<Type>::~Listener() {
+  DLOG(INFO) << "deleting " << getName(this);
   setState(DELETING);
 
   BroadcasterSet toDelete;
@@ -103,9 +106,9 @@ Listener<Type>::~Listener() {
 template <typename Type>
 void Listener<Type>::wasRemovedFrom(Broadcaster<Type>* broadcaster) {
   Lock l(listenerLock_);
-  broadcasters_.erase(broadcaster);
+  if (state_ != DELETING)
+    broadcasters_.erase(broadcaster);
 }
-
 
 template <typename Type>
 bool Listener<Type>::setState(ListenerState state) {
@@ -138,12 +141,24 @@ void Broadcaster<Type>::broadcast(Type x) {
 
 template <typename Type>
 Broadcaster<Type>::~Broadcaster() {
-  for (iterator i = listeners_.begin(); i != listeners_.end(); ++i)
-    (*i)->broadcasters_.erase(this);
+  DLOG(INFO) << "deleting " << getName(this);
+  while (true) {
+    Listener<Type>* listener;
+    {
+      Lock l(broadcasterLock_);
+      if (listeners_.empty())
+        return;
+
+      listener = (*listeners_.begin());
+      listeners_.erase(listener);
+    }
+    listener->wasRemovedFrom(this);
+  }
 }
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
+  DLOG(INFO) << "adding " << getName(listener) << " to " << getName(this);
   {
     Lock l(broadcasterLock_);
     listeners_.insert(listener);
@@ -157,12 +172,51 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
 
 template <typename Type>
 void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
+  DLOG(INFO) << "removing " << getName(listener) << " from " << getName(this);
   {
     Lock l(broadcasterLock_);
     listeners_.erase(listener);
   }
 
   listener->wasRemovedFrom(this);
+}
+
+struct PointerCounter : public std::map<const void*, int> {
+  ~PointerCounter() {
+    DLOG(INFO) << "Deleting PointerCounter";
+  }
+};
+
+inline PointerCounter* getListenerNames() {
+  static PointerCounter* p = new PointerCounter();
+  return p;
+}
+
+inline PointerCounter* getBroadcasterNames() {
+  static PointerCounter* p = new PointerCounter();
+  return p;
+}
+
+inline string getName(PointerCounter* map, const void* x) {
+  PointerCounter::iterator i = map->find(x);
+  int index;
+  if (i == map->end()) {
+    index = map->size();
+    map->insert(i, std::make_pair(x, index));
+  } else {
+    index = i->second;
+  }
+  return str(String(index));
+}
+
+template <typename Type>
+string getName(const Broadcaster<Type>* b) {
+  return "broad-" + getName(getBroadcasterNames(), b);
+}
+
+template <typename Type>
+string getName(const Listener<Type>* l) {
+  return "listen-" + getName(getListenerNames(), l);
 }
 
 }  // namespace util

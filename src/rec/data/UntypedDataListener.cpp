@@ -7,7 +7,7 @@ namespace rec {
 namespace data {
 
 UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
-    : typeName_(tn) {
+    : typeName_(tn), data_(NULL) {
   if (scope == GLOBAL_SCOPE) {
     setData(global());
   } else {

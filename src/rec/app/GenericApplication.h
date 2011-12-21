@@ -12,14 +12,15 @@ namespace app {
 class GenericApplication;
 class Window;
 
-typedef void (*ApplicationInitializer)(GenericApplication*);
+typedef void (*ApplicationFunction)(GenericApplication*);
 
 class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
  public:
   static const int STARTUP_THREAD_PRIORITY = 4;
 
   GenericApplication(const String& name, const String& version,
-                     ApplicationInitializer initializer);
+                     ApplicationFunction initializer,
+                     ApplicationFunction shutdown);
   virtual ~GenericApplication();
 
   virtual void initialise(const String& commandLine);
@@ -37,7 +38,8 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
  protected:
   const String name_;
   const String version_;
-  ApplicationInitializer initializer_;
+  ApplicationFunction initializer_;
+  ApplicationFunction shutdown_;
   ptr<Window> window_;
   thread_ptr<Thread> startupThread_;
   bool disabled_;

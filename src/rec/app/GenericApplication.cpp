@@ -12,9 +12,10 @@
 namespace rec {
 namespace app {
 
-GenericApplication::GenericApplication(const String& name, const String& v,
-                                       ApplicationInitializer i)
-    : name_(name), version_(v), initializer_(i), disabled_(false) {
+GenericApplication::GenericApplication(const String& n, const String& v,
+                                       ApplicationFunction i,
+                                       ApplicationFunction s)
+    : name_(n), version_(v), initializer_(i), shutdown_(s), disabled_(false) {
 }
 
 GenericApplication::~GenericApplication() {}
@@ -30,7 +31,6 @@ void GenericApplication::initialise(const String&) {
   audio::format::mpg123::initializeOnce();
   initializer_(this);
   window_.reset(createWindow());
-
   window_->initialise();
 
   thread::runInNewThread("startup thread",
@@ -45,6 +45,7 @@ void GenericApplication::shutdown() {
   // stopUndo();  // TODO
 
   gui::dialog::shutdownDialog();
+  shutdown_(this);
   window_->shutdown();
   util::thread::trash::waitForAllThreadsToExit(1000);
 
