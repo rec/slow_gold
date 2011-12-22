@@ -16,7 +16,6 @@ DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s)
   if (!fileReadSuccess_)
     message_.swap(original);
   typeName_ = getTypeName(*m);
-  // DCHECK_NE(typeName_, getTypeName<VirtualFile>());
 }
 
 void DataImpl::pushOnUndoStack(const Message& before) {
@@ -26,7 +25,7 @@ void DataImpl::pushOnUndoStack(const Message& before) {
 void DataImpl::reportChange() {
   {
     Lock l(lock_);
-    clientsNeedUpdate_ = true;
+    changed_ = true;
   }
   dataUpdater_->reportChange(this);
 }
@@ -61,7 +60,7 @@ bool DataImpl::update() {
   ListenerSet toUpdate;
   {
     Lock l(broadcasterLock_);
-    if (clientsNeedUpdate_)
+    if (changed_)
       recentListeners_.clear();
 
     else if (!recentListeners_.empty())
@@ -71,29 +70,23 @@ bool DataImpl::update() {
       return false;
   }
 
-  bool clientsNeedUpdate;
+  bool changed;
   {
     Lock l(lock_);
     DCHECK_EQ(typeName_, getTypeName(*message_));
     m.reset(clone(*message_));
-    clientsNeedUpdate = clientsNeedUpdate_;
-    clientsNeedUpdate_ = false;
+    changed = changed_;
+    changed_ = false;
   }
 
-  if (clientsNeedUpdate) {
-#if 0
-    DLOG(INFO) << "Needs update! " << getTypeName(*m) << ", " << typeName_
-               << ", " << listenerSize();
-#endif
+  if (changed) {
     broadcast(*m);
   } else {
-    for (ListenerSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {
-      // DLOG(INFO) << "Updating: " << getTypeName(*m);
+    for (ListenerSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i)
       (**i)(*m);
-    }
   }
 
-  return true;
+  return changed;
 }
 
 void DataImpl::clearRecentListeners() {

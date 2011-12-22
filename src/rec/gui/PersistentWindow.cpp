@@ -26,7 +26,7 @@ PersistentWindow::PersistentWindow(const String& name,
       running_(false),
       okToSavePosition_(false) {
   setBroughtToFrontOnMouseClick(true);
-  setResizable(true, false); // resizability is a property of ResizableWindow
+  setResizable(true, false);
 
   resizeLimits_ = getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea());
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT,
@@ -60,12 +60,20 @@ void PersistentWindow::doSetBounds() {
   {
     Lock l(lock_);
     bounds = copy(position_.bounds());
+    DLOG(INFO) << "doSetBounds " << position_.ShortDebugString();
   }
 
   setBoundsConstrained(bounds);
 }
 
+void PersistentWindow::moved() {
+  DLOG(INFO) << "moved ";
+  DocumentWindow::moved();
+  writeData();
+}
+
 void PersistentWindow::resized() {
+  DLOG(INFO) << "resized ";
   DocumentWindow::resized();
   writeData();
 }
@@ -87,11 +95,6 @@ void PersistentWindow::writeData() {
     position_ = position;
     requestWrite();
   }
-}
-
-void PersistentWindow::moved() {
-  DocumentWindow::moved();
-  writeData();
 }
 
 void PersistentWindow::closeButtonPressed() {

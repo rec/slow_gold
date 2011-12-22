@@ -62,8 +62,8 @@ bool DataUpdater::write() {
 
     if (writeThread_->threadShouldExit() || writeData_.empty())
       return false;
-
     writeData_.swap(toWrite);
+    DLOG(INFO) << "About to write " << toWrite.size();
   }
 
   for (DataSet::iterator i = toWrite.begin(); i != toWrite.end(); ++i) {

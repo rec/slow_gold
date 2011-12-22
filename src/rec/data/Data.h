@@ -32,7 +32,7 @@ class Data : public Broadcaster<const Message&> {
 
   CriticalSection lock_;
   ptr<Message> message_;
-  bool clientsNeedUpdate_;
+  bool changed_;
 
   friend class DataImpl;
   friend class DataMapImpl;
