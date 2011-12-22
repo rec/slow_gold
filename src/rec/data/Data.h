@@ -20,7 +20,7 @@ class Data : public Broadcaster<const Message&> {
   virtual bool fileReadSuccess() const = 0;
 
  private:
-  Data(Message* m) : message_(m) {}
+  Data(Message* m) : message_(m), changed_(false) {}
   virtual ~Data() {}
 
   // Report a change to the protocol buffer.

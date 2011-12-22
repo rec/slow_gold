@@ -39,9 +39,9 @@ void Window::initialise() {
 Window::~Window() {}
 
 void Window::startup() {
-  Lock l(lock_);
+  Thread::sleep(100);  // We need this so that our GUI has settled down...
   doStartup();
-  // GuiWriteable::setWriteableAll(true);
+  GuiWriteable::setWriteableAll(true);
 }
 
 void Window::shutdown() {
