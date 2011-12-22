@@ -9,11 +9,6 @@
 namespace rec {
 namespace util {
 
-inline bool *listenersEnabled() {
-  static bool enabled = true;
-  return &enabled;
-}
-
 template <typename Type> class Broadcaster;
 
 template <typename Type>
@@ -76,7 +71,6 @@ class Broadcaster {
 
 template <typename Type>
 Listener<Type>::~Listener() {
-  DLOG(INFO) << "~Listener " << this;
   BroadcasterSet toDelete;
   {
     Lock l(listenerLock_);
@@ -86,11 +80,8 @@ Listener<Type>::~Listener() {
     broadcasters_.swap(toDelete);
   }
 
-  for (iterator i = toDelete.begin(); i != toDelete.end(); ++i) {
-    DLOG(INFO) << "removing listener from " << *i;
+  for (iterator i = toDelete.begin(); i != toDelete.end(); ++i)
     (*i)->removeListener(this);
-  }
-  DLOG(INFO) << "~Listener DONE";
 }
 
 template <typename Type>
@@ -117,38 +108,29 @@ void Broadcaster<Type>::broadcast(Type x) {
 
 template <typename Type>
 Broadcaster<Type>::~Broadcaster() {
-  DLOG(INFO) << "~Broadcaster " << this;
   Lock l(broadcasterLock_);
-  for (iterator i = listeners_.begin(); i != listeners_.end(); ++i) {
-    DLOG(INFO) << "removing broadcaster from " << *i;
+  for (iterator i = listeners_.begin(); i != listeners_.end(); ++i)
     (*i)->wasRemovedFrom(this);
-  }
-  DLOG(INFO) << "~Broadcaster DONE";
 }
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
-  DCHECK(*listenersEnabled());
-  DLOG(INFO) << "addListener " << this << ", " << listener;
   {
     Lock l(broadcasterLock_);
     listeners_.insert(listener);
   }
 
   listener->wasAddedTo(this);
-  DLOG(INFO) << "addListener DONE";
 }
 
 template <typename Type>
 void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
-  DLOG(INFO) << "removeListener " << this << ", " << listener;
   {
     Lock l(broadcasterLock_);
     listeners_.erase(listener);
   }
 
   listener->wasRemovedFrom(this);
-  DLOG(INFO) << "removeListener DONE";
 }
 
 }  // namespace util
