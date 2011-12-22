@@ -9,6 +9,11 @@
 namespace rec {
 namespace util {
 
+inline bool *listenersEnabled() {
+  static bool enabled = true;
+  return &enabled;
+}
+
 template <typename Type> class Broadcaster;
 
 template <typename Type>
@@ -17,25 +22,20 @@ class Listener {
   typedef std::set<Broadcaster<Type>*> BroadcasterSet;
   typedef typename BroadcasterSet::iterator iterator;
 
-  Listener() : state_(LISTENING) {}
+  Listener() {}
   virtual ~Listener();
 
   virtual void operator()(Type x) = 0;
 
   const CriticalSection& lock() const { return listenerLock_; }
-  virtual void wasRemovedFrom(Broadcaster<Type>*);
   int broadcasterSize() const { return broadcasters_.size(); }
 
  protected:
   CriticalSection listenerLock_;
 
  private:
-  enum ListenerState { LISTENING, UPDATING, DELETING };
-  CriticalSection stateLock_;
-
-  bool setState(ListenerState);
-
-  ListenerState state_;
+  virtual void wasRemovedFrom(Broadcaster<Type>*);
+  void wasAddedTo(Broadcaster<Type>*);
 
   BroadcasterSet broadcasters_;
 
@@ -76,8 +76,7 @@ class Broadcaster {
 
 template <typename Type>
 Listener<Type>::~Listener() {
-  setState(DELETING);
-
+  DLOG(INFO) << "~Listener " << this;
   BroadcasterSet toDelete;
   {
     Lock l(listenerLock_);
@@ -87,83 +86,69 @@ Listener<Type>::~Listener() {
     broadcasters_.swap(toDelete);
   }
 
-  for (iterator i = toDelete.begin(); i != toDelete.end(); ++i)
+  for (iterator i = toDelete.begin(); i != toDelete.end(); ++i) {
+    DLOG(INFO) << "removing listener from " << *i;
     (*i)->removeListener(this);
+  }
+  DLOG(INFO) << "~Listener DONE";
 }
 
 template <typename Type>
 void Listener<Type>::wasRemovedFrom(Broadcaster<Type>* broadcaster) {
   Lock l(listenerLock_);
-  if (state_ != DELETING)
-    broadcasters_.erase(broadcaster);
+  broadcasters_.erase(broadcaster);
 }
 
 template <typename Type>
-bool Listener<Type>::setState(ListenerState state) {
-  while (true) {
-    Lock l(stateLock_);
-    if (state_ == DELETING) {
-      return false;
-    } else if (state == LISTENING) {
-      state_ = state;
-      return true;
-    } else if (state_ == LISTENING) {
-      state_ = state;
-      return true;
-    }
-    Thread::sleep(1);
-  }
-};
+void Listener<Type>::wasAddedTo(Broadcaster<Type>* broadcaster) {
+  Lock l(listenerLock_);
+  broadcasters_.insert(broadcaster);
+}
 
 template <typename Type>
 void Broadcaster<Type>::broadcast(Type x) {
   Lock l(broadcasterLock_);
   for (iterator i = listeners_.begin(); i != listeners_.end(); ++i) {
     Listener<Type>* listener = *i;
-    if (listener->setState(Listener<Type>::UPDATING)) {
-      (*listener)(x);
-      listener->setState(Listener<Type>::LISTENING);
-    }
+    Lock m(listener->listenerLock_);
+    (*listener)(x);
   }
 }
 
 template <typename Type>
 Broadcaster<Type>::~Broadcaster() {
-  while (true) {
-    Listener<Type>* listener;
-    {
-      Lock l(broadcasterLock_);
-      if (listeners_.empty())
-        return;
-
-      listener = (*listeners_.begin());
-      listeners_.erase(listener);
-    }
-    listener->wasRemovedFrom(this);
+  DLOG(INFO) << "~Broadcaster " << this;
+  Lock l(broadcasterLock_);
+  for (iterator i = listeners_.begin(); i != listeners_.end(); ++i) {
+    DLOG(INFO) << "removing broadcaster from " << *i;
+    (*i)->wasRemovedFrom(this);
   }
+  DLOG(INFO) << "~Broadcaster DONE";
 }
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
+  DCHECK(*listenersEnabled());
+  DLOG(INFO) << "addListener " << this << ", " << listener;
   {
     Lock l(broadcasterLock_);
     listeners_.insert(listener);
   }
 
-  {
-    Lock l(listener->listenerLock_);
-    listener->broadcasters_.insert(this);
-  }
+  listener->wasAddedTo(this);
+  DLOG(INFO) << "addListener DONE";
 }
 
 template <typename Type>
 void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
+  DLOG(INFO) << "removeListener " << this << ", " << listener;
   {
     Lock l(broadcasterLock_);
     listeners_.erase(listener);
   }
 
   listener->wasRemovedFrom(this);
+  DLOG(INFO) << "removeListener DONE";
 }
 
 }  // namespace util

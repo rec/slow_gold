@@ -23,7 +23,6 @@ void DataImpl::pushOnUndoStack(const Message& before) {
 }
 
 void DataImpl::reportChange() {
-  DCHECK(false);
   {
     Lock l(lock_);
     changed_ = true;
@@ -52,16 +51,24 @@ void DataImpl::addListener(Listener<const Message&>* lis) {
 
 void DataImpl::removeListener(Listener<const Message&>* lis) {
   Lock l(broadcasterLock_);
-  Data::addListener(lis);
+  Data::removeListener(lis);
   recentListeners_.erase(lis);
 }
 
 bool DataImpl::update() {
   ptr<Message> m;
   ListenerSet toUpdate;
+
+  bool changed;
+  {
+    Lock l(lock_);
+    changed = changed_;
+    changed_ = false;
+  }
+
   {
     Lock l(broadcasterLock_);
-    if (changed_)
+    if (changed)
       recentListeners_.clear();
 
     else if (!recentListeners_.empty())
@@ -71,7 +78,6 @@ bool DataImpl::update() {
       return false;
   }
 
-  bool changed;
   {
     Lock l(lock_);
     DCHECK_EQ(typeName_, getTypeName(*message_));

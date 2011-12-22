@@ -20,7 +20,6 @@ class Threads : public HasInstance {
   explicit Threads(Instance* i);
   ~Threads();
   void start();
-  void stop();
   CriticalSection* lock() { return &lock_; }
 
   void clean();
@@ -29,6 +28,8 @@ class Threads : public HasInstance {
   Thread* bufferThread() { return bufferThread_; }
 
  private:
+  void stop();
+
   template <typename Operator>
   Thread* start(Operator op, const String& name, int priority = 0) {
     Thread* thread = thread::makeLooper(name, op, instance_);

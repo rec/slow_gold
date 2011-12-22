@@ -42,14 +42,14 @@ void GenericApplication::initialise(const String&) {
 
 void GenericApplication::shutdown() {
   LOG(INFO) << name_ << ": shutdown starting...";
-  // stopUndo();  // TODO
+  *listenersEnabled() = false;
 
   gui::dialog::shutdownDialog();
-  shutdown_(this);
   window_->shutdown();
   window_.reset();
 
   util::thread::trash::waitForAllThreadsToExit(1000);
+  shutdown_(this);
 
   LOG(INFO) << name_ << ": shutdown finished.";
 }

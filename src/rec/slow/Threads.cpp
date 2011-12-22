@@ -28,7 +28,9 @@ static const int THREAD_STOP_PERIOD = 20000;
 static const int BUFFER_FILL_CHUNK = 256;
 
 Threads::Threads(Instance* i) : HasInstance(i),
-                                fillThread_(NULL), bufferThread_(NULL) {}
+                                fillThread_(NULL),
+                                bufferThread_(NULL) {
+}
 
 Threads::~Threads() {
   stop();
@@ -36,10 +38,8 @@ Threads::~Threads() {
 }
 
 void Threads::stop() {
-  for (uint i = 0; i < threads_.size(); ++i) {
-    VLOG(1) << "Stopping thread " << threads_[i]->getThreadName();
+  for (uint i = 0; i < threads_.size(); ++i)
     threads_[i]->stopThread(THREAD_STOP_PERIOD);
-  }
 }
 
 void Threads::clean() {
@@ -65,7 +65,6 @@ struct Period {
     UPDATE_DATA = 101,
   };
 };
-
 
 struct Priority {
   enum Enum {

@@ -39,18 +39,15 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
 SlowWindow::~SlowWindow() {}
 
 void SlowWindow::constructInstance() {
-  Lock l(gui::PersistentWindow::lock_);
   instanceDeleter_.reset(new slow::Instance(this));
   instance_ = instanceDeleter_.get();
 }
 
 void SlowWindow::doStartup() {
-  Lock l(gui::PersistentWindow::lock_);
   instance_->startup();
 }
 
 void SlowWindow::doShutdown() {
-  Lock l(gui::PersistentWindow::lock_);
   instance_ = NULL;
   instanceDeleter_.reset();
 }

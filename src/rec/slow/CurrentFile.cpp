@@ -53,7 +53,6 @@ void CurrentFile::operator()(const VirtualFile& f) {
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
-  DLOG(INFO) << f.ShortDebugString();
   if (player())
     player()->clear();
 

@@ -58,20 +58,17 @@ void PersistentWindow::doSetBounds() {
   {
     Lock l(lock_);
     bounds = copy(position_.bounds());
-    DLOG(INFO) << "doSetBounds " << position_.ShortDebugString();
   }
 
   setBoundsConstrained(bounds);
 }
 
 void PersistentWindow::moved() {
-  DLOG(INFO) << "moved ";
   DocumentWindow::moved();
   writeData();
 }
 
 void PersistentWindow::resized() {
-  DLOG(INFO) << "resized ";
   DocumentWindow::resized();
   writeData();
 }

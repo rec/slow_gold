@@ -9,27 +9,28 @@
 namespace rec {
 namespace data {
 
-DataCenter::DataCenter() : registry_(new MessageRegistrarAndMaker),
-                           updater_(new DataUpdater),
-                           undo_(new UndoStack),
-                           maker_(new DataMakerImpl(updater_.get(), undo_.get())),
-                           map_(new DataMapImpl(registry_.get(), maker_.get())) {
+DataCenter::DataCenter()
+  : registry_(new MessageRegistrarAndMaker),
+    updater_(new DataUpdater),
+    undo_(new UndoStack),
+    maker_(new DataMakerImpl(updater_.get(), undo_.get())),
+    map_(new DataMapImpl(registry_.get(), maker_.get())) {
 }
 
 DataCenter::~DataCenter() {}
 
-static DataCenter* getDC() {
+static DataCenter** getDC() {
   static DataCenter* dataCenter = new DataCenter;
-  return dataCenter;
+  return &dataCenter;
 }
 
 void deleteDataCenter() {
-	DLOG(INFO) << "deleting datacenter";
-  delete getDC();
+  delete *getDC();
+  *getDC() = NULL;
 }
 
 const DataCenter& getDataCenter() {
-  return *getDC();
+  return **getDC();
 }
 
 }  // namespace data

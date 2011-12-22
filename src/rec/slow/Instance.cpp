@@ -94,7 +94,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 
 Instance::~Instance() {
   player_->setState(audio::transport::STOPPED);
-  threads_->stop();
+  threads_.reset();
 }
 
 void Instance::startup() {
