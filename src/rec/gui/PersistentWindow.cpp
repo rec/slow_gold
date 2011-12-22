@@ -15,7 +15,6 @@ static const int MIN_WIDTH = 700;
 static const int MIN_HEIGHT = 450;
 static const int MIN_X = 10;
 static const int MIN_Y = 100;
-static const int MIN_UPDATE_GAP = 500;
 
 typedef juce::Rectangle<int> Rect;
 
@@ -25,9 +24,7 @@ PersistentWindow::PersistentWindow(const String& name,
                                    bool addToDesktop)
     : DocumentWindow(name, bg, requiredButtons, addToDesktop),
       running_(false),
-      okToSavePosition_(false),
-      ignoreNextResize_(false),
-      needsWrite_(false) {
+      okToSavePosition_(false) {
   setBroughtToFrontOnMouseClick(true);
   setResizable(true, false); // resizability is a property of ResizableWindow
 
@@ -78,17 +75,8 @@ bool PersistentWindow::isFullScreenSize() const {
           subtractedFrom(getParentMonitorArea()));
 }
 
-static int64 time() { return juce::Time::currentTimeMillis(); }
-
 void PersistentWindow::writeData() {
   if (okToSavePosition_) {
-    {
-      Lock l(lock_);
-      if (ignoreNextResize_) {
-        ignoreNextResize_ = false;
-        return;
-      }
-    }
     WindowPosition position(getProto());
     juce::Rectangle<int> bounds = getBounds();
 
@@ -96,9 +84,8 @@ void PersistentWindow::writeData() {
     fixPosition(&position);
 
     Lock l(lock_);
-    needsWrite_ = true;
-    lastUpdateTime_ = time();
     position_ = position;
+    requestWrite();
   }
 }
 
@@ -111,12 +98,10 @@ void PersistentWindow::closeButtonPressed() {
   JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
-void PersistentWindow::writeGui() {
+void PersistentWindow::doWriteGui() {
   Lock l(lock_);
-  if (running_ && needsWrite_ && (time() - lastUpdateTime_) > MIN_UPDATE_GAP) {
+  if (running_)
     setProto(position_);
-    needsWrite_ = false;
-  }
 }
 
 }  // namespace gui

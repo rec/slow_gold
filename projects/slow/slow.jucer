@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="q3raDPyuI" name="Slow">
+  <MAINGROUP id="NzUhssTEx" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -660,6 +660,10 @@
               name="Geometry.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Geometry.h" id="mVeSuUOUh"
               name="Geometry.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/GuiWriteable.cpp" id="C1c2oJ7py"
+              name="GuiWriteable.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/GuiWriteable.h" id="RttFhpliJ"
+              name="GuiWriteable.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/HasSizeHints.h" id="2cUxMDrt8"
               name="HasSizeHints.h" resource="0"/>
         <GROUP id="XdYcYCV4C" name="icon">
@@ -1334,7 +1338,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="lzp3GKBW8" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="GoQEWL3rE" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

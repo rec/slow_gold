@@ -132,6 +132,7 @@
 		7FE0BC330B130293FA5FCD14 /* VirtualFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F00CD57CEBFF8DF24388554 /* VirtualFile.cpp */; };
 		8288C37D4E9792C7A924D0BF /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DEA0EB0341E45C37F2388423 /* Widget.cpp */; };
 		830D13AF3D404CBF2A9E05E3 /* Partition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302A5AA90FB30F7613069965 /* Partition.cpp */; };
+		83EBA5714EBE41460D2A13BE /* GuiWriteable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0694B043C26CD74E83C1ABE2 /* GuiWriteable.cpp */; };
 		858B869F6A6B0DABA31BAC20 /* SetterResizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 908C52E59BABA47A9B73B2CE /* SetterResizer.cpp */; };
 		8735558EA7A879E5A368F972 /* DialComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */; };
 		8751C4C402D9D84B93C77213 /* FillSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D64E4517C63D1D001A1F33E2 /* FillSeries.cpp */; };
@@ -275,6 +276,7 @@
 		05EBBE6ECD75008F41ECB8AB /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		061FBB036746790735D492AB /* SlowWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SlowWindow.h; path = ../../../../src/rec/slow/SlowWindow.h; sourceTree = SOURCE_ROOT; };
 		063828F9F615C4DE27362445 /* Selection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Selection.h; path = ../../../../src/rec/audio/source/Selection.h; sourceTree = SOURCE_ROOT; };
+		0694B043C26CD74E83C1ABE2 /* GuiWriteable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GuiWriteable.cpp; path = ../../../../src/rec/gui/GuiWriteable.cpp; sourceTree = SOURCE_ROOT; };
 		06B6D22A1415063B62CDE517 /* Cast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cast.h; path = ../../../../src/rec/base/Cast.h; sourceTree = SOURCE_ROOT; };
 		07073623820EDE748375C06C /* RubberBand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RubberBand.h; path = ../../../../src/rec/audio/stretch/RubberBand.h; sourceTree = SOURCE_ROOT; };
 		0709F9B4C899476664896767 /* Callback4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback4.h; path = ../../../../src/rec/util/thread/Callback4.h; sourceTree = SOURCE_ROOT; };
@@ -547,6 +549,7 @@
 		7968D536350B0BEB60FC2FD1 /* ThumbnailBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThumbnailBuffer.h; path = ../../../../src/rec/audio/util/ThumbnailBuffer.h; sourceTree = SOURCE_ROOT; };
 		7A0C1AE7900A7E07C1CA124E /* Selection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Selection.cpp; path = ../../../../src/rec/audio/source/Selection.cpp; sourceTree = SOURCE_ROOT; };
 		7A6CA6FB61B33BDDB0880203 /* Font.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Font.pb.h; path = ../../../../genfiles/proto/rec/gui/Font.pb.h; sourceTree = SOURCE_ROOT; };
+		7ABABECB10484F7845CCD7B6 /* GuiWriteable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GuiWriteable.h; path = ../../../../src/rec/gui/GuiWriteable.h; sourceTree = SOURCE_ROOT; };
 		7ACCDDE1865D383FC89B7790 /* TransportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportController.h; path = ../../../../src/rec/gui/audio/TransportController.h; sourceTree = SOURCE_ROOT; };
 		7B0B52E98BF728FA6655818A /* PointingHand.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PointingHand.svg.cpp; path = ../../../../src/rec/gui/icon/PointingHand.svg.cpp; sourceTree = SOURCE_ROOT; };
 		7B14E17E48ABCFEE5DF2E80E /* UntypedDataListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UntypedDataListener.h; path = ../../../../src/rec/data/UntypedDataListener.h; sourceTree = SOURCE_ROOT; };
@@ -1215,16 +1218,6 @@
 			name = component;
 			sourceTree = "<group>";
 		};
-		5B24A34DE91C6B1318AD98BB /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
-				1AB486317E06D9E7CC790074 /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		5B97EF3D5D0B5F452514E299 /* thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -1637,7 +1630,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5B24A34DE91C6B1318AD98BB /* Slow */,
+				D37ACFF5F3F4B8B847180071 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1685,6 +1678,8 @@
 				C7F6DEB00B43664A84156175 /* Font.h */,
 				9316F0EECFA95C056CF5A9C7 /* Geometry.cpp */,
 				D4CEB6544324F0509CC63C69 /* Geometry.h */,
+				0694B043C26CD74E83C1ABE2 /* GuiWriteable.cpp */,
+				7ABABECB10484F7845CCD7B6 /* GuiWriteable.h */,
 				B83B32AEC409ED04C24B5DF4 /* HasSizeHints.h */,
 				3EE47BC7B2D34ABDFE946AE5 /* icon */,
 				FB1B624F52EE7A456FE433A1 /* layout */,
@@ -1797,6 +1792,16 @@
 				C2A6DD3BC6EE1C5E16B53398 /* CommandMap.pb.h */,
 			);
 			name = map;
+			sourceTree = "<group>";
+		};
+		D37ACFF5F3F4B8B847180071 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
+				1AB486317E06D9E7CC790074 /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
 			sourceTree = "<group>";
 		};
 		DBBED81D920B27CB9107C128 /* Products */ = {
@@ -2199,6 +2204,7 @@
 				B5994044A31BC17761B16591 /* Color.cpp in Sources */,
 				46FFDC19A70EC9CB800FAFBE /* Dialog.cpp in Sources */,
 				FD55EC648F3B38175CF75372 /* Geometry.cpp in Sources */,
+				83EBA5714EBE41460D2A13BE /* GuiWriteable.cpp in Sources */,
 				895DC5EF8406600F0CD43F41 /* AudioCard.svg.cpp in Sources */,
 				8F40645B342B9A40E2B21391 /* AudioInputMicrophone.svg.cpp in Sources */,
 				56DB6178C5A0B1CE4ED907C9 /* AudioXGeneric.svg.cpp in Sources */,

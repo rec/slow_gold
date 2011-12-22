@@ -18,7 +18,9 @@ SetterResizer::SetterResizer(const string& typeName,
     data::AddressListener(address, typeName, scope),
     layout_(layout),
     index_(itemIndexInLayout),
-    address_(address) {
+    address_(address),
+    needsWrite_(false),
+    lastValue_(-1) {
   setTooltip("You can drag this resizer around to change the screen layout.");
 }
 
@@ -27,7 +29,8 @@ int SetterResizer::get() const {
 }
 
 void SetterResizer::moved() {
-  setValue(static_cast<uint32>(get()));
+  Lock l(lock_);
+  lastValue_ = get();
 }
 
 void SetterResizer::paint(Graphics& g) {
@@ -45,6 +48,13 @@ void SetterResizer::operator()(const data::Value& v) {
     else
       setTopLeftPosition(coord, getY());
   }
+}
+
+void SetterResizer::doWriteGui() {
+  Lock l(lock_);
+  int val = static_cast<uint32>(get());
+  if (lastValue_ != val)
+    setValue((lastValue_ = val));
 }
 
 }  // namespace gui

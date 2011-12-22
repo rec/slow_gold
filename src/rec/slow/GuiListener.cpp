@@ -1,5 +1,6 @@
 #include "rec/slow/GuiListener.h"
 
+#include "rec/gui/GuiWriteable.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/MainPage.h"
@@ -43,7 +44,7 @@ static String getTooltip(Component* c) {
 }
 
 void GuiListener::update() {
-  window()->writeGui();
+  gui::GuiWriteable::writeAll();
   {
     Lock l(lock_);
     if (!displayHelpPane_)

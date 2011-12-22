@@ -3,6 +3,7 @@
 
 #include "rec/data/Address.h"
 #include "rec/data/AddressListener.h"
+#include "rec/gui/GuiWriteable.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -14,7 +15,8 @@ namespace gui {
 
 class SetterResizer : public StretchableLayoutResizerBar,
                       public SettableTooltipClient,
-                      public data::AddressListener {
+                      public data::AddressListener,
+                      public GuiWriteable {
  public:
   SetterResizer(const string& typeName,
                 const data::Address& address,
@@ -27,12 +29,18 @@ class SetterResizer : public StretchableLayoutResizerBar,
   virtual void moved();
   virtual void paint(Graphics& g);
 
+ protected:
+  virtual void doWriteGui();
+
  private:
   Layout* layout_;
   juce::StretchableLayoutManager* layoutManager_;
   int index_;
   data::Address address_;
   bool active_;
+  bool needsWrite_;
+  int lastValue_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterResizer);
 };

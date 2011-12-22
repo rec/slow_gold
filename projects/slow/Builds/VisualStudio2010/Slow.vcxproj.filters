@@ -511,6 +511,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\Geometry.cpp">
       <Filter>Slow\rec\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\GuiWriteable.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
@@ -1462,6 +1465,9 @@
       <Filter>Slow\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\GuiWriteable.h">
       <Filter>Slow\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h">

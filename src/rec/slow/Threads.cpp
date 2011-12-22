@@ -3,6 +3,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataUpdater.h"
+#include "rec/gui/GuiWriteable.h"
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
@@ -84,7 +85,6 @@ int navigator(Instance* i) {
 
 int writeGui(Instance* i) {
   i->updateGui();
-
   return Period::WRITE_GUI;
 }
 

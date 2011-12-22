@@ -4,13 +4,15 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataListener.h"
 #include "rec/gui/Geometry.h"
+#include "rec/gui/GuiWriteable.h"
 #include "rec/gui/WindowPosition.pb.h"
 
 namespace rec {
 namespace gui {
 
 class PersistentWindow : public DocumentWindow,
-                         public data::GlobalDataListener<WindowPosition> {
+                         public data::GlobalDataListener<WindowPosition>,
+                         public GuiWriteable {
  public:
   PersistentWindow(const String& name,
                    const Colour& bg,
@@ -26,7 +28,7 @@ class PersistentWindow : public DocumentWindow,
   virtual void resized();
   virtual void moved();
   void setOKToSavePosition(bool ok = true) { okToSavePosition_ = ok; }
-  void writeGui();
+  virtual void doWriteGui();
 
  protected:
   CriticalSection lock_;
@@ -40,7 +42,6 @@ class PersistentWindow : public DocumentWindow,
   bool okToSavePosition_;
   WindowPosition position_;
   juce::Rectangle<int> resizeLimits_;
-  bool ignoreNextResize_;
   bool needsWrite_;
   int64 lastUpdateTime_;
 

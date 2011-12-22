@@ -107,7 +107,6 @@ const VirtualFile Instance::file() const {
 }
 
 void Instance::updateGui() {
-  window_->writeGui();
   guiListener_->update();
 }
 
