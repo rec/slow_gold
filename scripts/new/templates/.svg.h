@@ -6,7 +6,7 @@
 {namespace}
 
 struct {classname} {{
-  static juce::Drawable* get();
+  static juce::Drawable* create();
 }};
 
 {namespace_end}

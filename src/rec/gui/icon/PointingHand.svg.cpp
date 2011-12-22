@@ -11,7 +11,7 @@ using juce::Drawable;
 // Created by the command line:
 // new src/rec/gui/icon/PointingHand.svg
 
-Drawable* PointingHand::get() {
+Drawable* PointingHand::create() {
   static const char data[] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
   "<svg\n"
   "   xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
@@ -54,8 +54,7 @@ Drawable* PointingHand::get() {
   " "
 ;
 
-  static Drawable* d = createBinary<Drawable>(data, arraysize(data));
-  return d;
+  return createBinary<Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon

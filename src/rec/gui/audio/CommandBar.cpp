@@ -29,16 +29,16 @@ CommandBar::CommandBar()
   zoomToSelection_.addListener(this);
 
   addLoopPoint_.setImages(
-      icon::MediaPlay::get(), NULL,
-      icon::MediaRecord::get());
+                          ptr<Drawable>(icon::MediaPlay::create()).get(), NULL,
+                          ptr<Drawable>(icon::MediaRecord::create()).get());
 
-  zoomOut_.setImages(icon::FullScreen::get(),
+  zoomOut_.setImages(ptr<Drawable>(icon::FullScreen::create()).get(),
                      NULL,
-                     icon::FullScreenRev::get());
+                     ptr<Drawable>(icon::FullScreenRev::create()).get());
 
-  zoomToSelection_.setImages(icon::FullScreen::get(),
+  zoomToSelection_.setImages(ptr<Drawable>(icon::FullScreen::create()).get(),
                              NULL,
-                             icon::FullScreenRev::get());
+                             ptr<Drawable>(icon::FullScreenRev::create()).get());
 
   addLoopPoint_.setTooltip("Add a loop point at the current time.");
   zoomOut_.setTooltip("Zoom the waveform out one step.");

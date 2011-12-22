@@ -11,7 +11,7 @@ using juce::Drawable;
 // Created by the command line:
 // new src/rec/gui/icon/Crosshairs.svg
 
-Drawable* Crosshairs::get() {
+Drawable* Crosshairs::create() {
   static const char data[] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
   "<svg xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:cc=\"http://web.resource.org/cc/\" xmlns:rdf=\"http://"
   "www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" "
@@ -26,8 +26,7 @@ Drawable* Crosshairs::get() {
   "</svg> "
 ;
 
-  static Drawable* d = createBinary<Drawable>(data, arraysize(data));
-  return d;
+  return createBinary<Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon

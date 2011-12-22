@@ -8,7 +8,7 @@ namespace gui {
 namespace icon {
 
 struct ZoomIn {
-  static juce::Drawable* get();
+  static juce::Drawable* create();
 };
 
 }  // namespace icon

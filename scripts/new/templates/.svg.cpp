@@ -9,11 +9,10 @@ using juce::Drawable;
 // Created by the command line:
 // {commandline}
 
-Drawable* {classname}::get() {{
+Drawable* {classname}::create() {{
   static const char data[] = {data};
 
-  static Drawable* d = createBinary<Drawable>(data, arraysize(data));
-  return d;
+  return createBinary<Drawable>(data, arraysize(data));
 }};
 
 {namespace_end}

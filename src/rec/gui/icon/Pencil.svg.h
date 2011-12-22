@@ -8,7 +8,7 @@ namespace gui {
 namespace icon {
 
 struct Pencil {
-  static juce::Drawable* get();
+  static juce::Drawable* create();
 };
 
 }  // namespace icon

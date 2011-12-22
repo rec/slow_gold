@@ -36,11 +36,10 @@ TransportController::TransportController(TimeController* timeController)
       muteButton_(MUTE_BUTTON_TEXT, getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
-  jumpToStartButton_.setImages(icon::ZoomIn::get());
-  startStopButton_.setImages(
-      icon::MediaPlaybackStart::get(),
-      NULL, NULL, NULL,
-      icon::MediaPlaybackStop::get());
+  jumpToStartButton_.setImages(ptr<Drawable>(icon::ZoomIn::create()).get());
+  startStopButton_.setImages(ptr<Drawable>(icon::MediaPlaybackStart::create()).get(),
+                             NULL, NULL, NULL,
+                             ptr<Drawable>(icon::MediaPlaybackStop::create()).get());
 
   jumpToStartButton_.addListener(this);
   startStopButton_.addListener(this);

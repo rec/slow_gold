@@ -26,7 +26,7 @@ namespace {
 template <typename T>
 void setImage(ModeSelector* selector, DrawableButton* b, Mode::Action action,
               const String& tooltip) {
-  b->setImages(T::get());
+  b->setImages(ptr<Drawable>(T::create()).get());
   b->addListener(selector);
   selector->addToLayout(b);
   (*selector->buttonMap())[action] = b;

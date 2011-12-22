@@ -11,7 +11,7 @@ using juce::Drawable;
 // Created by the command line:
 // new src/rec/gui/icon/MediaRecord.svg
 
-Drawable* MediaRecord::get() {
+Drawable* MediaRecord::create() {
   static const char data[] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
   "<!-- Created with Inkscape (http://www.inkscape.org/) -->\n"
   "<svg\n"
@@ -368,8 +368,7 @@ Drawable* MediaRecord::get() {
   " "
 ;
 
-  static Drawable* d = createBinary<Drawable>(data, arraysize(data));
-  return d;
+  return createBinary<Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon

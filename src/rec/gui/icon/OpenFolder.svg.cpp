@@ -11,7 +11,7 @@ using juce::Drawable;
 // Created by the command line:
 // new src/rec/gui/icon/OpenFolder.svg
 
-Drawable* OpenFolder::get() {
+Drawable* OpenFolder::create() {
   static const char data[] = "<?xml version=\"1.0\" standalone=\"no\"?>\n"
   "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n"
   "\"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\"\n"
@@ -449,8 +449,7 @@ Drawable* OpenFolder::get() {
   " "
 ;
 
-  static Drawable* d = createBinary<Drawable>(data, arraysize(data));
-  return d;
+  return createBinary<Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon
