@@ -24,6 +24,7 @@ class Listener {
 
   const CriticalSection& lock() const { return listenerLock_; }
   virtual void wasRemovedFrom(Broadcaster<Type>*);
+  int broadcasterSize() const { return broadcasters_.size(); }
 
  protected:
   CriticalSection listenerLock_;

@@ -26,6 +26,9 @@ class AddressListener : public Listener<const Value&> {
 
  private:
   struct UntypedListener;
+  friend struct UntypedListener;
+
+  void setMessage(const Message&);
 
   ptr<UntypedListener> untypedListener_;
   const Address address_;

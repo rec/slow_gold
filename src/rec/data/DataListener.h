@@ -13,7 +13,9 @@ class Data;
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
  public:
-  explicit DataListener(Scope scope = FILE_SCOPE) : adaptor_(this, scope) {}
+  explicit DataListener(Scope scope = FILE_SCOPE) : adaptor_(this, scope) {
+    DLOG(INFO) << getTypeName<Proto>();
+  }
   virtual ~DataListener() {}
 
   virtual void operator()(const Proto&) = 0;

@@ -27,7 +27,6 @@ namespace slow {
 
 using namespace rec::widget::waveform;
 using data::Address;
-using gui::SetterResizer;
 
 namespace {
 

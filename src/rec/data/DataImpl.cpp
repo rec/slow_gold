@@ -81,7 +81,8 @@ bool DataImpl::update() {
   }
 
   if (clientsNeedUpdate) {
-    DLOG(INFO) << "Needs update! " << getTypeName(*m) << ", " << typeName_;
+    DLOG(INFO) << "Needs update! " << getTypeName(*m) << ", " << typeName_
+               << ", " << listenerSize();
     broadcast(*m);
   } else {
     for (ListenerSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {

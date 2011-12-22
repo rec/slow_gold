@@ -16,8 +16,11 @@ struct UntypedDataListener::FileListener : public Listener<const VirtualFile&> {
   UntypedDataListener* const parent_;
 };
 
+static int cre = 0;
+
 UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
     : typeName_(tn), data_(NULL) {
+  DLOG(INFO) << ++cre;
   if (scope == GLOBAL_SCOPE) {
     setData(global());
   } else {
