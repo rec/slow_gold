@@ -22,9 +22,7 @@ PersistentWindow::PersistentWindow(const String& name,
                                    const Colour& bg,
                                    int requiredButtons,
                                    bool addToDesktop)
-    : DocumentWindow(name, bg, requiredButtons, addToDesktop),
-      running_(false),
-      okToSavePosition_(false) {
+    : DocumentWindow(name, bg, requiredButtons, addToDesktop) {
   setBroughtToFrontOnMouseClick(true);
   setResizable(true, false);
 
@@ -84,7 +82,7 @@ bool PersistentWindow::isFullScreenSize() const {
 }
 
 void PersistentWindow::writeData() {
-  if (okToSavePosition_) {
+  if (isEnabled()) {
     WindowPosition position(getProto());
     juce::Rectangle<int> bounds = getBounds();
 
@@ -103,8 +101,7 @@ void PersistentWindow::closeButtonPressed() {
 
 void PersistentWindow::doWriteGui() {
   Lock l(lock_);
-  if (running_)
-    setProto(position_);
+  setProto(position_);
 }
 
 }  // namespace gui

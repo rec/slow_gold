@@ -24,6 +24,7 @@ static DataCenter* getDC() {
 }
 
 void deleteDataCenter() {
+	DLOG(INFO) << "deleting datacenter";
   delete getDC();
 }
 

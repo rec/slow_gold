@@ -26,6 +26,12 @@ void GuiWriteable::writeAll() {
     (*i)->writeGui();
 }
 
+void GuiWriteable::setWriteableAll(bool writeable) {
+  WriteableVector* v = getWriteableVector();
+  for (WriteableVector::const_iterator i = v->begin(); i != v->end(); ++i)
+    (*i)->setWriteable(writeable);
+}
+
 void GuiWriteable::writeGui() {
   Lock l(lock_);
   if (needsUpdate_ && (time() - lastUpdateTime_) > MIN_UPDATE_GAP) {
@@ -34,11 +40,18 @@ void GuiWriteable::writeGui() {
   }
 }
 
+void GuiWriteable::setWriteable(bool writeable) {
+  Lock l(lock_);
+  writeable_ = true;
+}
+
 void GuiWriteable::requestWrite() {
   Lock l(lock_);
 
-  needsUpdate_ = true;
-  lastUpdateTime_ = time();
+  if (writeable_) {
+    needsUpdate_ = true;
+    lastUpdateTime_ = time();
+  }
 }
 
 }  // namespace gui

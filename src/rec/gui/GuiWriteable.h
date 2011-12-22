@@ -8,16 +8,19 @@ namespace gui {
 
 class GuiWriteable {
  public:
-  GuiWriteable() : needsUpdate_(false) { add(this); }
+  GuiWriteable() : needsUpdate_(false), writeable_(false) { add(this); }
   virtual ~GuiWriteable() {}
 
   static void writeAll();
+  static void setWriteableAll(bool enable);
 
   static const int MIN_UPDATE_GAP = 500;
 
  protected:
   virtual void doWriteGui() = 0;
   void requestWrite();
+  void setWriteable(bool writeable);
+  bool isWriteable() const { Lock l(lock_); return writeable_; }
 
   CriticalSection lock_;
 
@@ -27,6 +30,7 @@ class GuiWriteable {
 
   bool needsUpdate_;
   int64 lastUpdateTime_;
+  bool writeable_;
 };
 
 

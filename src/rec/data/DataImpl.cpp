@@ -23,6 +23,7 @@ void DataImpl::pushOnUndoStack(const Message& before) {
 }
 
 void DataImpl::reportChange() {
+  DCHECK(false);
   {
     Lock l(lock_);
     changed_ = true;

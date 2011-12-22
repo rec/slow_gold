@@ -27,19 +27,16 @@ class PersistentWindow : public DocumentWindow,
 
   virtual void resized();
   virtual void moved();
-  void setOKToSavePosition(bool ok = true) { okToSavePosition_ = ok; }
   virtual void doWriteGui();
 
  protected:
   CriticalSection lock_;
-  bool running_;
 
  private:
   void doSetBounds();
   void fixPosition(WindowPosition*);
   void writeData();
 
-  bool okToSavePosition_;
   WindowPosition position_;
   juce::Rectangle<int> resizeLimits_;
   bool needsWrite_;

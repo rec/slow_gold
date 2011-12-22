@@ -13,15 +13,6 @@ Window::Window(GenericApplication* application,
 }
 
 void Window::initialise() {
-  {
-    Lock l(lock_);
-    if (running_) {
-      LOG(DFATAL) << "already running!";
-      return;
-    }
-    running_ = true;
-  }
-
   ModifierKeys keys = ModifierKeys::getCurrentModifiersRealtime();
   if (keys.isCommandDown()) {
     LOG(ERROR) << "Trashing your preferences files.";
@@ -45,30 +36,16 @@ void Window::initialise() {
   setVisible(true);
 }
 
-Window::~Window() {
-  shutdown();
-}
+Window::~Window() {}
 
 void Window::startup() {
-  // Final startup, done later in another thread.
   Lock l(lock_);
-
-  if (running_) {
-    doStartup();
-    setOKToSavePosition(true);
-  }
+  doStartup();
+  // GuiWriteable::setWriteableAll(true);
 }
 
 void Window::shutdown() {
-  {
-    Lock l(lock_);
-    if (!running_)
-      return;
-
-    running_ = false;
-  }
-
-  setOKToSavePosition(false);
+  GuiWriteable::setWriteableAll(false);
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
     // Why isn't this in GenericApplication?
   MenuBarModel::setMacMainMenu(NULL);
