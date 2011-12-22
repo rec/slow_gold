@@ -6,26 +6,27 @@
 namespace rec {
 namespace data {
 
-struct UntypedDataListener::FileListener : public Listener<const VirtualFile&> {
+struct UntypedDataListener::FileListener : public Listener<const Message&> {
   FileListener(UntypedDataListener* parent) : parent_(parent) {}
 
-  virtual void operator()(const VirtualFile& vf) {
-    parent_->setData(file::empty(vf) ? &vf : empty());
+  virtual void operator()(const Message& m) {
+    if (const VirtualFile* vf = dynamic_cast<const VirtualFile*>(&m))
+      parent_->setData(file::empty(*vf) ? vf : empty());
+    else
+      LOG(DFATAL) << "Got the wrong update for the file listener";
   }
 
   UntypedDataListener* const parent_;
 };
 
-static int cre = 0;
 
 UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
-    : typeName_(tn), data_(NULL) {
-  DLOG(INFO) << ++cre;
+    : typeName_(tn), data_(NULL), fileListener_(new FileListener(this)) {
   if (scope == GLOBAL_SCOPE) {
     setData(global());
   } else {
     setData(empty());
-    data::getData<VirtualFile>(global())->addListener(this);
+    data::getData<VirtualFile>(global())->addListener(fileListener_.get());
   }
 }
 

@@ -93,10 +93,8 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 }
 
 Instance::~Instance() {
-  DLOG(INFO) << "*** Deleting instance!";
   player_->setState(audio::transport::STOPPED);
   threads_->stop();
-  DLOG(INFO) << "*** instance DELETED!!";
 }
 
 void Instance::startup() {

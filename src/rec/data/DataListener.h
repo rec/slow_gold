@@ -13,9 +13,7 @@ class Data;
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
  public:
-  explicit DataListener(Scope scope = FILE_SCOPE) : adaptor_(this, scope) {
-    DLOG(INFO) << getTypeName<Proto>();
-  }
+  explicit DataListener(Scope scope = FILE_SCOPE) : adaptor_(this, scope) {}
   virtual ~DataListener() {}
 
   virtual void operator()(const Proto&) = 0;
@@ -33,11 +31,11 @@ class DataListener : public Listener<const Proto&> {
     virtual ~Adaptor() {}
 
     virtual void operator()(const Message& m) {
-      if (const Proto* p = dynamic_cast<const Proto*>(&m)) {
-        DLOG(INFO) << "Success! " << getTypeName(m);
+      if (const Proto* p = dynamic_cast<const Proto*>(&m))
         (*parent_)(*p);
-      } else
+      else
         LOG(ERROR) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
+      // TODO: should be DFATAL.
     }
 
    private:

@@ -23,6 +23,9 @@ bool DataUpdater::update() {
   if (!updateThread_)
     updateThread_ = Thread::getCurrentThread();
 
+  if (updateThread_->threadShouldExit())
+    return false;
+
   DataSet toUpdate, toWrite;
   updateData_.swap(toUpdate);
 
@@ -40,6 +43,9 @@ bool DataUpdater::update() {
       return false;
   }
 
+  if (updateThread_->threadShouldExit())
+    return false;
+
   stl::moveTo(&toWrite, &writeData_);
   if (writeThread_)
     writeThread_->notify();
@@ -54,14 +60,18 @@ bool DataUpdater::write() {
     if (!writeThread_)
       writeThread_ = Thread::getCurrentThread();
 
-    if (writeData_.empty())
+    if (writeThread_->threadShouldExit() || writeData_.empty())
       return false;
 
     writeData_.swap(toWrite);
   }
 
-  for (DataSet::iterator i = toWrite.begin(); i != toWrite.end(); ++i)
-    (*i)->writeToFile();
+  for (DataSet::iterator i = toWrite.begin(); i != toWrite.end(); ++i) {
+    if (writeThread_->threadShouldExit())
+      return false;
+    else
+      (*i)->writeToFile();
+  }
 
   return true;
 }
