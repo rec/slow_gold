@@ -29,9 +29,8 @@ void protobuf_AssignDesc_rec_2fgui_2fWindowPosition_2eproto() {
       "rec/gui/WindowPosition.proto");
   GOOGLE_CHECK(file != NULL);
   WindowPosition_descriptor_ = file->message_type(0);
-  static const int WindowPosition_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WindowPosition, bounds_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WindowPosition, full_screen_),
+  static const int WindowPosition_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WindowPosition, juce_position_),
   };
   WindowPosition_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -76,9 +75,8 @@ void protobuf_AddDesc_rec_2fgui_2fWindowPosition_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/gui/WindowPosition.proto\022\007rec.gui\032"
-    "\026rec/gui/Geometry.proto\"I\n\016WindowPositio"
-    "n\022\"\n\006bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\023\n"
-    "\013full_screen\030\002 \001(\010", 138);
+    "\026rec/gui/Geometry.proto\"\'\n\016WindowPositio"
+    "n\022\025\n\rjuce_position\030\001 \001(\t", 104);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/WindowPosition.proto", &protobuf_RegisterTypes);
   WindowPosition::default_instance_ = new WindowPosition();
@@ -96,9 +94,9 @@ struct StaticDescriptorInitializer_rec_2fgui_2fWindowPosition_2eproto {
 
 // ===================================================================
 
+const ::std::string WindowPosition::_default_juce_position_;
 #ifndef _MSC_VER
-const int WindowPosition::kBoundsFieldNumber;
-const int WindowPosition::kFullScreenFieldNumber;
+const int WindowPosition::kJucePositionFieldNumber;
 #endif  // !_MSC_VER
 
 WindowPosition::WindowPosition()
@@ -107,7 +105,6 @@ WindowPosition::WindowPosition()
 }
 
 void WindowPosition::InitAsDefaultInstance() {
-  bounds_ = const_cast< ::rec::gui::Rectangle*>(&::rec::gui::Rectangle::default_instance());
 }
 
 WindowPosition::WindowPosition(const WindowPosition& from)
@@ -118,8 +115,7 @@ WindowPosition::WindowPosition(const WindowPosition& from)
 
 void WindowPosition::SharedCtor() {
   _cached_size_ = 0;
-  bounds_ = NULL;
-  full_screen_ = false;
+  juce_position_ = const_cast< ::std::string*>(&_default_juce_position_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -128,8 +124,10 @@ WindowPosition::~WindowPosition() {
 }
 
 void WindowPosition::SharedDtor() {
+  if (juce_position_ != &_default_juce_position_) {
+    delete juce_position_;
+  }
   if (this != default_instance_) {
-    delete bounds_;
   }
 }
 
@@ -156,9 +154,10 @@ WindowPosition* WindowPosition::New() const {
 void WindowPosition::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
+      if (juce_position_ != &_default_juce_position_) {
+        juce_position_->clear();
+      }
     }
-    full_screen_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -170,28 +169,15 @@ bool WindowPosition::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.Rectangle bounds = 1;
+      // optional string juce_position = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_bounds()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_full_screen;
-        break;
-      }
-      
-      // optional bool full_screen = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_full_screen:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &full_screen_)));
-          _set_bit(1);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_juce_position()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->juce_position().data(), this->juce_position().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -217,15 +203,13 @@ bool WindowPosition::MergePartialFromCodedStream(
 
 void WindowPosition::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.Rectangle bounds = 1;
+  // optional string juce_position = 1;
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->bounds(), output);
-  }
-  
-  // optional bool full_screen = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->full_screen(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->juce_position().data(), this->juce_position().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->juce_position(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -236,16 +220,14 @@ void WindowPosition::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WindowPosition::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.Rectangle bounds = 1;
+  // optional string juce_position = 1;
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->bounds(), target);
-  }
-  
-  // optional bool full_screen = 2;
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->full_screen(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->juce_position().data(), this->juce_position().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->juce_position(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -259,16 +241,11 @@ int WindowPosition::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.Rectangle bounds = 1;
-    if (has_bounds()) {
+    // optional string juce_position = 1;
+    if (has_juce_position()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->bounds());
-    }
-    
-    // optional bool full_screen = 2;
-    if (has_full_screen()) {
-      total_size += 1 + 1;
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->juce_position());
     }
     
   }
@@ -299,10 +276,7 @@ void WindowPosition::MergeFrom(const WindowPosition& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_bounds()->::rec::gui::Rectangle::MergeFrom(from.bounds());
-    }
-    if (from._has_bit(1)) {
-      set_full_screen(from.full_screen());
+      set_juce_position(from.juce_position());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -327,8 +301,7 @@ bool WindowPosition::IsInitialized() const {
 
 void WindowPosition::Swap(WindowPosition* other) {
   if (other != this) {
-    std::swap(bounds_, other->bounds_);
-    std::swap(full_screen_, other->full_screen_);
+    std::swap(juce_position_, other->juce_position_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

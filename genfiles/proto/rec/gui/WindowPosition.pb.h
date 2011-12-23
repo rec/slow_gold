@@ -92,32 +92,28 @@ class WindowPosition : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.gui.Rectangle bounds = 1;
-  inline bool has_bounds() const;
-  inline void clear_bounds();
-  static const int kBoundsFieldNumber = 1;
-  inline const ::rec::gui::Rectangle& bounds() const;
-  inline ::rec::gui::Rectangle* mutable_bounds();
-  
-  // optional bool full_screen = 2;
-  inline bool has_full_screen() const;
-  inline void clear_full_screen();
-  static const int kFullScreenFieldNumber = 2;
-  inline bool full_screen() const;
-  inline void set_full_screen(bool value);
+  // optional string juce_position = 1;
+  inline bool has_juce_position() const;
+  inline void clear_juce_position();
+  static const int kJucePositionFieldNumber = 1;
+  inline const ::std::string& juce_position() const;
+  inline void set_juce_position(const ::std::string& value);
+  inline void set_juce_position(const char* value);
+  inline void set_juce_position(const char* value, size_t size);
+  inline ::std::string* mutable_juce_position();
   
   // @@protoc_insertion_point(class_scope:rec.gui.WindowPosition)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::gui::Rectangle* bounds_;
-  bool full_screen_;
+  ::std::string* juce_position_;
+  static const ::std::string _default_juce_position_;
   friend void  protobuf_AddDesc_rec_2fgui_2fWindowPosition_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fWindowPosition_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fWindowPosition_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -140,37 +136,46 @@ class WindowPosition : public ::google::protobuf::Message {
 
 // WindowPosition
 
-// optional .rec.gui.Rectangle bounds = 1;
-inline bool WindowPosition::has_bounds() const {
+// optional string juce_position = 1;
+inline bool WindowPosition::has_juce_position() const {
   return _has_bit(0);
 }
-inline void WindowPosition::clear_bounds() {
-  if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
+inline void WindowPosition::clear_juce_position() {
+  if (juce_position_ != &_default_juce_position_) {
+    juce_position_->clear();
+  }
   _clear_bit(0);
 }
-inline const ::rec::gui::Rectangle& WindowPosition::bounds() const {
-  return bounds_ != NULL ? *bounds_ : *default_instance_->bounds_;
+inline const ::std::string& WindowPosition::juce_position() const {
+  return *juce_position_;
 }
-inline ::rec::gui::Rectangle* WindowPosition::mutable_bounds() {
+inline void WindowPosition::set_juce_position(const ::std::string& value) {
   _set_bit(0);
-  if (bounds_ == NULL) bounds_ = new ::rec::gui::Rectangle;
-  return bounds_;
+  if (juce_position_ == &_default_juce_position_) {
+    juce_position_ = new ::std::string;
+  }
+  juce_position_->assign(value);
 }
-
-// optional bool full_screen = 2;
-inline bool WindowPosition::has_full_screen() const {
-  return _has_bit(1);
+inline void WindowPosition::set_juce_position(const char* value) {
+  _set_bit(0);
+  if (juce_position_ == &_default_juce_position_) {
+    juce_position_ = new ::std::string;
+  }
+  juce_position_->assign(value);
 }
-inline void WindowPosition::clear_full_screen() {
-  full_screen_ = false;
-  _clear_bit(1);
+inline void WindowPosition::set_juce_position(const char* value, size_t size) {
+  _set_bit(0);
+  if (juce_position_ == &_default_juce_position_) {
+    juce_position_ = new ::std::string;
+  }
+  juce_position_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline bool WindowPosition::full_screen() const {
-  return full_screen_;
-}
-inline void WindowPosition::set_full_screen(bool value) {
-  _set_bit(1);
-  full_screen_ = value;
+inline ::std::string* WindowPosition::mutable_juce_position() {
+  _set_bit(0);
+  if (juce_position_ == &_default_juce_position_) {
+    juce_position_ = new ::std::string;
+  }
+  return juce_position_;
 }
 
 

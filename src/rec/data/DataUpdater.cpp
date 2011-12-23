@@ -39,8 +39,10 @@ bool DataUpdater::update() {
         toWrite.insert(*i);
     }
 
-    if (toWrite.empty())
+    if (toWrite.empty()) {
+      DLOG(INFO) << "Nothing to update";
       return false;
+    }
   }
 
   if (updateThread_->threadShouldExit())

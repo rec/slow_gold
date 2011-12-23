@@ -32,7 +32,6 @@ class DataImpl : public Data {
   DataUpdater* dataUpdater_;
   UndoStack* undoStack_;
 
-  bool alreadyReadFromFile_;
   bool fileReadSuccess_;
   string typeName_;
 

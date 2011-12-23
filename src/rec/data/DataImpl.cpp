@@ -34,8 +34,6 @@ bool DataImpl::writeToFile() {
   ptr<Message> m;
   {
     Lock l(lock_);
-    if (!alreadyReadFromFile_)
-      return false;
     m.reset(clone(*message_));
   }
 
@@ -82,8 +80,6 @@ bool DataImpl::update() {
     Lock l(lock_);
     DCHECK_EQ(typeName_, getTypeName(*message_));
     m.reset(clone(*message_));
-    changed = changed_;
-    changed_ = false;
   }
 
   if (changed) {

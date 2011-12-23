@@ -33,8 +33,6 @@ class PersistentWindow : public DocumentWindow,
   CriticalSection lock_;
 
  private:
-  void doSetBounds();
-  void fixPosition(WindowPosition*);
   void writeData();
 
   WindowPosition position_;

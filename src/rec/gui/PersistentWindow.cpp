@@ -33,6 +33,7 @@ PersistentWindow::PersistentWindow(const String& name,
 
 PersistentWindow::~PersistentWindow() {}
 
+#if 0
 void PersistentWindow::fixPosition(WindowPosition* pos) {
   gui::Point* dim = pos->mutable_bounds()->mutable_dimensions();
   int w = std::min(resizeLimits_.getWidth(), std::max(MIN_WIDTH, dim->x()));
@@ -40,27 +41,23 @@ void PersistentWindow::fixPosition(WindowPosition* pos) {
   dim->set_x(w);
   dim->set_y(h);
 }
+#endif
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-  WindowPosition position = p;
-  fixPosition(&position);
-
   {
     Lock l(lock_);
-    position_ = position;
+    position_ = p;
   }
   MessageManagerLock l;
-  doSetBounds();
-}
+  if (!p.juce_position().empty())
+    restoreWindowStateFromString(str(p.juce_position()));
 
-void PersistentWindow::doSetBounds() {
-  juce::Rectangle<int> bounds;
-  {
-    Lock l(lock_);
-    bounds = copy(position_.bounds());
-  }
-
-  setBoundsConstrained(bounds);
+  Rect bounds = getBounds();
+  bounds.setWidth(std::min(resizeLimits_.getWidth(),
+                           std::max(MIN_WIDTH, bounds.getWidth())));
+  bounds.setHeight(std::min(resizeLimits_.getHeight(),
+                            std::max(MIN_HEIGHT, bounds.getHeight())));
+  setBounds(bounds);
 }
 
 void PersistentWindow::moved() {
@@ -80,14 +77,8 @@ bool PersistentWindow::isFullScreenSize() const {
 
 void PersistentWindow::writeData() {
   if (isEnabled()) {
-    WindowPosition position(getProto());
-    juce::Rectangle<int> bounds = getBounds();
-
-    *position.mutable_bounds() = copy(bounds);
-    fixPosition(&position);
-
     Lock l(lock_);
-    position_ = position;
+    position_.set_juce_position(str(getWindowStateAsString()));
     requestWrite();
   }
 }
