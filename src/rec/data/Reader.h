@@ -23,7 +23,7 @@ struct Reader {
   }
 
   Message* cloneMessage() const {
-    return clone(*proto_);
+    return proto_ ? clone(*proto_) : NULL;
   }
 
  protected:

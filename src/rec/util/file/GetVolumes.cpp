@@ -47,7 +47,7 @@ void addAudioCDs(VirtualFileList* volumes) {
     if (reader && reader->getNumTracks())
       add(VirtualFile::CD, str(cd::getCDKey(reader.get())), volumes);
     else
-      LOG(DFATAL) << "Couldn't create reader for " << names[i];
+      LOG(ERROR) << "Couldn't create reader for " << names[i];
   }
 }
 

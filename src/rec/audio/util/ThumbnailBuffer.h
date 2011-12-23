@@ -18,8 +18,6 @@ class ThumbnailBuffer {
   FillableFrameBuffer<short, 2> *buffer() { return &buffer_; }
 
   Samples<44100> setReader(const VirtualFile& file, AudioFormatReader* r);
-  void setFile(const File& file, int sampleLength);
-
   void addBlock(Samples<44100> pos, const AudioSourceChannelInfo& info);
 
   void writeThumbnail();

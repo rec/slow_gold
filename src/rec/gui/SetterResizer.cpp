@@ -41,12 +41,13 @@ void SetterResizer::paint(Graphics& g) {
 void SetterResizer::operator()(const data::Value& v) {
   MessageManagerLock l;
   int32 coord = v.int32_f();
-  // DLOG(INFO) << getX() << ", " << getY() << ", " << coord;
-  if (coord != get()) {
+  if (coord && coord != get()) {
     if (layout_->orientation() == VERTICAL)
       setTopLeftPosition(getX(), coord);
     else
       setTopLeftPosition(coord, getY());
+  } else if (!coord) {
+    LOG(ERROR) << "Empty coordinate for " << address_.ShortDebugString();
   }
 }
 

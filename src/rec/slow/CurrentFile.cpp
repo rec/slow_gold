@@ -42,8 +42,8 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   } else {
   }
 #endif
-    if (files.file_size() >= 1)
-      (*this)(files.file(0));
+  if (files.file_size() >= 1)
+    (*this)(files.file(0));
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
@@ -53,7 +53,6 @@ void CurrentFile::operator()(const VirtualFile& f) {
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
-  DLOG(INFO) << f.ShortDebugString();
   if (player())
     player()->clear();
 
