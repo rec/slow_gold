@@ -28,6 +28,8 @@ inline const string toString(const VirtualFile& f) {
 }
 
 bool compare(const VirtualFile& x, const VirtualFile& y);
+
+// TODO: conflicts with the idea of data::empty().
 bool empty(const VirtualFile& file);
 
 VirtualFile toVirtualFile(const File& file);

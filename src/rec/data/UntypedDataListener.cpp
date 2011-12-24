@@ -14,7 +14,7 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
       {
       // DLOG(INFO) << toString(*(file::empty(*vf) ? vf : empty()));
       DLOG(INFO) << toString(*vf);
-      parent_->setData(file::empty(*vf) ? vf : empty());
+      parent_->setData(file::empty(*vf) ? empty() : vf);  // TODO: *very* confusing
       }
     else
       LOG(DFATAL) << "Got the wrong update for the file listener";

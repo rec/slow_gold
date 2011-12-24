@@ -20,6 +20,7 @@ void setWithData(Data*, const Message&, Undoable undoable = CAN_UNDO);
 const VirtualFile* global();
 
 // The virtual file for empty data (not stored or updated).
+// TODO: this conflicts with the idea of file::empty();
 const VirtualFile* empty();
 
 void setProto(const Message& m, const VirtualFile* vf,
