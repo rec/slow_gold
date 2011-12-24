@@ -1,12 +1,30 @@
 #!/usr/bin/python
 
+
 import getopt
 import os
 import sys
+import xml.dom.minidom
 
 import split
 
 ROOT = '/Users/tom/Documents/development/rec/scripts/new/templates/'
+
+def cleanSvg(data):
+  tagNames = set(['metadata', 'i:pgf'])
+
+  def removeTags(node):
+    if hasattr(node, 'childNodes'):
+      for n in node.childNodes:
+        if n.nodeName in tagNames:
+          node.removeChild(n)
+        else:
+          removeTags(n)
+
+  document = xml.dom.minidom.parseString(data)
+  removeTags(document)
+  return document.toprettyxml('  ')
+
 
 GROUPS = {
   'h': dict(files=['.h']),
@@ -18,7 +36,8 @@ GROUPS = {
   'test': dict(files=['.cpp', '.h', '_test.cpp']),
   'svg': dict(files=['.svg.h', '.svg.cpp'],
               filetype='svg',
-              datatype='juce::Drawable'),
+              datatype='juce::Drawable',
+              process=cleanSvg),
   'xml': dict(files=['.data.h', '.data.cpp'],
               filetype='xml',
               datatype='juce::XmlElement'),
@@ -107,7 +126,10 @@ def createCppFiles(file, groupname, protoname, namespace, includes):
 
     ft = group['filetype']
     datafile = '%s.%s' % (file, ft)
-    data = convertToCCode(open(datafile).read(), True or not isDef)
+    data = open(datafile).read()
+    if group.has_key('process'):
+      data = group['process'](data)
+    data = convertToCCode(data, True or not isDef)
     context.update(data=data, datatype=datatype)
     header_file = '%s.%s.h' % (classname, ft)
   else:

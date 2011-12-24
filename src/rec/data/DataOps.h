@@ -20,8 +20,7 @@ void setWithData(Data*, const Message&, Undoable undoable = CAN_UNDO);
 const VirtualFile* global();
 
 // The virtual file for empty data (not stored or updated).
-// TODO: this conflicts with the idea of file::empty();
-const VirtualFile* empty();
+const VirtualFile* noData();
 
 void setProto(const Message& m, const VirtualFile* vf,
               Undoable undoable = CAN_UNDO);
@@ -68,7 +67,7 @@ void apply(Functor functor, const VirtualFile&);
 //
 
 inline const VirtualFile* global() { return &file::none(); }
-inline const VirtualFile* empty() { return NULL; }
+inline const VirtualFile* noData() { return NULL; }
 
 template <typename Proto>
 const Proto getProto(Data* data) {

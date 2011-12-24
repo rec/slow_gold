@@ -14,7 +14,8 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
       {
       // DLOG(INFO) << toString(*(file::empty(*vf) ? vf : empty()));
       DLOG(INFO) << toString(*vf);
-      parent_->setData(file::empty(*vf) ? empty() : vf);  // TODO: *very* confusing
+      // TODO: confusing
+      parent_->setData(file::empty(*vf) ? noData() : vf);
       }
     else
       LOG(DFATAL) << "Got the wrong update for the file listener";
@@ -29,7 +30,7 @@ UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
   if (scope == GLOBAL_SCOPE) {
     setData(global());
   } else {
-    setData(empty());
+    setData(noData());
     data::getData<VirtualFile>(global())->addListener(fileListener_.get());
   }
 }
