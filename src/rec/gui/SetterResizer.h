@@ -22,7 +22,7 @@ class SetterResizer : public StretchableLayoutResizerBar,
                 const data::Address& address,
                 Layout* layout,
                 int itemIndexInLayout,
-                Scope scope = FILE_SCOPE);
+                Scope scope = GLOBAL_SCOPE);
 
   virtual void operator()(const data::Value&);
   int get() const;

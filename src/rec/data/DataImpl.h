@@ -11,7 +11,7 @@ namespace data {
 
 class DataImpl : public Data {
  public:
-  DataImpl(Message*, const File&, DataUpdater*, UndoStack*);
+  DataImpl(Message*, const File&, DataUpdater*, UndoStack*, bool isEmpty);
   virtual ~DataImpl() {}
 
   virtual void pushOnUndoStack(const Message& before);

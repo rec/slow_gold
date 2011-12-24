@@ -23,6 +23,7 @@ class AddressListener : public Listener<const Value&> {
   virtual void setValue(const Value& v, Undoable undoable = CAN_UNDO) const;
   const Value getValue(const Message& m) const;
   const Value getValue() const;
+  const Address& address() const { return address_; }
 
  private:
   struct UntypedListener;

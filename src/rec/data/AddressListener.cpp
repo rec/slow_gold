@@ -43,8 +43,7 @@ void AddressListener::setMessage(const Message& m) {
   if (getTypeName(m) == untypedListener_->typeName())
     (*this)(getValue(m));
   else
-    LOG(ERROR) << "Bad update " << getTypeName(m) << ", " << untypedListener_->typeName();
-  // TODO: should be DFATAL.
+    LOG(DFATAL) << "Bad update " << getTypeName(m) << ", " << untypedListener_->typeName();
 }
 
 }  // namespace data

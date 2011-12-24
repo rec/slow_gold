@@ -31,7 +31,7 @@ typedef vector<Cursor*> CursorList;
 class Waveform : public Component,
                  public SettableTooltipClient,
                  public DataListener<LoopPointList>,
-                 public DataListener<Mode>,
+                 public GlobalDataListener<Mode>,
                  public GlobalDataListener<WaveformProto>,
                  public DataListener<ZoomProto>,
                  public Broadcaster<const MouseWheelEvent&>,

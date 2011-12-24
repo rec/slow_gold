@@ -18,9 +18,10 @@ template <typename Proto> class Opener;
 class Data : public Broadcaster<const Message&> {
  public:
   virtual bool fileReadSuccess() const = 0;
+  bool isEmpty() const { return isEmpty_; }
 
  private:
-  Data(Message* m) : message_(m), changed_(false) {}
+  Data(bool e) : changed_(false), isEmpty_(e) {}
   virtual ~Data() {}
 
   // Report a change to the protocol buffer.
@@ -33,6 +34,7 @@ class Data : public Broadcaster<const Message&> {
   CriticalSection lock_;
   ptr<Message> message_;
   bool changed_;
+  const bool isEmpty_;
 
   friend class DataImpl;
   friend class DataMapImpl;

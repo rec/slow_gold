@@ -8,14 +8,19 @@
 namespace rec {
 namespace data {
 
-DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s)
-    : Data(NULL), file_(file), dataUpdater_(u), undoStack_(s) {
-  ptr<Message> original(m);
-  message_.reset(m->New());
-  fileReadSuccess_ = copy::copy(file_, message_.get());
-  if (!fileReadSuccess_)
-    message_.swap(original);
-  typeName_ = getTypeName(*m);
+DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
+                   bool isEmpty)
+    : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s) {
+  if (isEmpty) {
+    message_.reset(m);
+  } else {
+    ptr<Message> original(m);
+    message_.reset(m->New());
+    fileReadSuccess_ = copy::copy(file_, message_.get());
+    if (!fileReadSuccess_)
+      message_.swap(original);
+  }
+  typeName_ = getTypeName(*message_);
 }
 
 void DataImpl::pushOnUndoStack(const Message& before) {
@@ -31,6 +36,10 @@ void DataImpl::reportChange() {
 }
 
 bool DataImpl::writeToFile() {
+  if (isEmpty_) {
+    LOG(ERROR) << "Tried to write an empty value.";
+    return false;
+  }
   ptr<Message> m;
   {
     Lock l(lock_);
@@ -54,6 +63,10 @@ void DataImpl::removeListener(Listener<const Message&>* lis) {
 }
 
 bool DataImpl::update() {
+  if (isEmpty_) {
+    LOG(ERROR) << "Tried to update an empty value.";
+    return false;
+  }
   ptr<Message> m;
   ListenerSet toUpdate;
 

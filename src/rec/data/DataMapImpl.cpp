@@ -54,7 +54,7 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
   }
 
   DCHECK_EQ(typeName, getTypeName(*msg));
-  Data* data = dataMaker_->makeData(msg.transfer(), file);
+  Data* data = dataMaker_->makeData(msg.transfer(), file, !vf);
   if (!data) {
     LOG(DFATAL) << "Unable to make data for " << typeName;
     return NULL;

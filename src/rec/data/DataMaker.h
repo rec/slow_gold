@@ -13,7 +13,7 @@ class DataMaker {
   DataMaker() {}
   virtual ~DataMaker() {}
 
-  virtual Data* makeData(Message*, const File&) const = 0;
+  virtual Data* makeData(Message*, const File&, bool isEmpty) const = 0;
 };
 
 }  // namespace data

@@ -29,28 +29,12 @@ PersistentWindow::PersistentWindow(const String& name,
   setResizable(true, false);
 
   resizeLimits_ = getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea());
-  (*this)(getProto());
-#if 0
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT,
                   resizeLimits_.getWidth(), resizeLimits_.getHeight());
-  resizeLimits_.setWidth(1000);
-  resizeLimits_.setHeight(1000);
-  setBounds(resizeLimits_);
-#endif
-  DLOG(INFO) << gui::toString(getBounds());
+  (*this)(getProto());
 }
 
 PersistentWindow::~PersistentWindow() {}
-
-#if 0
-void PersistentWindow::fixPosition(WindowPosition* pos) {
-  gui::Point* dim = pos->mutable_bounds()->mutable_dimensions();
-  int w = std::min(resizeLimits_.getWidth(), std::max(MIN_WIDTH, dim->x()));
-  int h = std::min(resizeLimits_.getHeight(), std::max(MIN_HEIGHT, dim->y()));
-  dim->set_x(w);
-  dim->set_y(h);
-}
-#endif
 
 void PersistentWindow::operator()(const WindowPosition& p) {
   {

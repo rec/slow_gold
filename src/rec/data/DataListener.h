@@ -34,8 +34,8 @@ class DataListener : public Listener<const Proto&> {
       if (const Proto* p = dynamic_cast<const Proto*>(&m))
         (*parent_)(*p);
       else
-        LOG(ERROR) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
-      // TODO: should be DFATAL.
+        LOG(DFATAL) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
+      DLOG(INFO) << "Received update: " << getTypeName(m) << ", " << m.ShortDebugString();
     }
 
    private:
