@@ -61,7 +61,6 @@ int Loops::getNumRows() {
 }
 
 void Loops::operator()(const LoopPointList& loops) {
-  DLOG(INFO) << "LoopPointList " << loops.ShortDebugString();
   {
     Lock l(TableController::lock_);
     loops_ = loops;

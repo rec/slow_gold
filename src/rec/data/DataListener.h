@@ -13,7 +13,7 @@ class Data;
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
  public:
-  explicit DataListener(Scope scope = FILE_SCOPE) : adaptor_(this) {}
+  explicit DataListener(Scope scope = FILE_SCOPE) : adaptor_(this, scope) {}
   virtual ~DataListener() {}
 
   virtual void operator()(const Proto&) = 0;
@@ -24,8 +24,8 @@ class DataListener : public Listener<const Proto&> {
  private:
   class Adaptor : public UntypedDataListener {
    public:
-    Adaptor(DataListener<Proto>* p)
-        : UntypedDataListener(getTypeName<Proto>(), GLOBAL_SCOPE),
+    Adaptor(DataListener<Proto>* p, Scope scope)
+        : UntypedDataListener(getTypeName<Proto>(), scope),
           parent_(p) {
     }
     virtual ~Adaptor() {}
@@ -35,7 +35,6 @@ class DataListener : public Listener<const Proto&> {
         (*parent_)(*p);
       else
         LOG(DFATAL) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
-      DLOG(INFO) << "Received update: " << getTypeName(m) << ", " << m.ShortDebugString();
     }
 
    private:
