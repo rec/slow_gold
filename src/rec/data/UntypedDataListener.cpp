@@ -11,7 +11,11 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
 
   virtual void operator()(const Message& m) {
     if (const VirtualFile* vf = dynamic_cast<const VirtualFile*>(&m))
+      {
+      // DLOG(INFO) << toString(*(file::empty(*vf) ? vf : empty()));
+      DLOG(INFO) << toString(*vf);
       parent_->setData(file::empty(*vf) ? vf : empty());
+      }
     else
       LOG(DFATAL) << "Got the wrong update for the file listener";
   }
