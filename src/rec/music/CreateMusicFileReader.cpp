@@ -34,7 +34,6 @@ AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata)
 }  // namespace
 
 AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
-  DLOG(INFO) << "Creating music file reader for " << file.ShortDebugString();
   if (file::empty(file) || !file.path_size()) {
     LOG(DFATAL) << "Can't create track for " << file.ShortDebugString();
     return NULL;
@@ -56,7 +55,6 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
     return NULL;
   }
 
-  DLOG(INFO) << "*****   Setting metadata";
   if (metadata && (*metadata != music::Metadata::default_instance()))
     data::setWithData(d, *metadata, CANT_UNDO);
 

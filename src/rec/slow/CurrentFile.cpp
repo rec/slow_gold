@@ -83,6 +83,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
       return;
     }
 
+    DLOG(INFO) << "Getting loop points";
     LoopPointList lpl = data::getProto<LoopPointList>(&file_);
     if (lpl.length() != length || !lpl.loop_point_size()) {
       lpl.set_length(length);

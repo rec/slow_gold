@@ -42,8 +42,6 @@ class SetterText : public Layout,
   }
 
   virtual void operator()(const data::Value& v) {
-    DLOG(INFO) << "Got string " << v.ShortDebugString() << ", "
-               << address().ShortDebugString();
     if (v.has_string_f() && str(v.string_f()) != editor_.getText())
       thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
   }

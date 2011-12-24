@@ -93,8 +93,6 @@ bool DataImpl::update() {
     Lock l(lock_);
     DCHECK_EQ(typeName_, getTypeName(*message_));
     m.reset(clone(*message_));
-    DLOG(INFO) << m->ShortDebugString();
-    DLOG(INFO) << message_->ShortDebugString();
   }
 
   if (changed) {

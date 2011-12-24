@@ -606,6 +606,7 @@
 		9316F0EECFA95C056CF5A9C7 /* Geometry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Geometry.cpp; path = ../../../../src/rec/gui/Geometry.cpp; sourceTree = SOURCE_ROOT; };
 		93B15308EAEBC956C5AFE7BC /* anchor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = anchor.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/anchor.h"; sourceTree = SOURCE_ROOT; };
 		94646382FAB21A45C282242D /* Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Math.h; path = ../../../../src/rec/util/Math.h; sourceTree = SOURCE_ROOT; };
+		95158EAF8B154584467A3F3C /* LockedState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedState.h; path = ../../../../src/rec/util/LockedState.h; sourceTree = SOURCE_ROOT; };
 		9579FABA5679ADD5B887049B /* MouseWheelEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MouseWheelEvent.h; path = ../../../../src/rec/widget/waveform/MouseWheelEvent.h; sourceTree = SOURCE_ROOT; };
 		95A353F3CAC7E1B0000A0E98 /* scanner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = scanner.cpp; path = ../../../../src/rec/data/yaml/src/scanner.cpp; sourceTree = SOURCE_ROOT; };
 		95A75A6FAADBC25EFF4B201A /* CurrentFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrentFile.h; path = ../../../../src/rec/slow/CurrentFile.h; sourceTree = SOURCE_ROOT; };
@@ -768,7 +769,7 @@
 		D2AAAD0A8B6877EC8FBBBBFF /* DriveOptical.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DriveOptical.svg.cpp; path = ../../../../src/rec/gui/icon/DriveOptical.svg.cpp; sourceTree = SOURCE_ROOT; };
 		D3095941488411CA120D4BE7 /* Convertors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Convertors.cpp; path = ../../../../src/rec/util/partition/Convertors.cpp; sourceTree = SOURCE_ROOT; };
 		D34816C7D8A0A95C38583580 /* Trash.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Trash.cpp; path = ../../../../src/rec/util/thread/Trash.cpp; sourceTree = SOURCE_ROOT; };
-		D427FD0910FEA6098B36B56B /* SlowGold (debug build).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold (debug build).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8 (debug build).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D480F045D0DBCDA5FCC51F6C /* RawFormatReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RawFormatReader.h; path = ../../../../src/rec/audio/format/raw/RawFormatReader.h; sourceTree = SOURCE_ROOT; };
 		D48DDECB9F35916340C9E1FE /* Value.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/Value.pb.cc; sourceTree = SOURCE_ROOT; };
 		D48EB8180E2C24EAFE50DFFB /* nodebuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = nodebuilder.cpp; path = ../../../../src/rec/data/yaml/src/nodebuilder.cpp; sourceTree = SOURCE_ROOT; };
@@ -1147,6 +1148,7 @@
 				D68751B79A54FB06EBCC03A4 /* FormatTime.h */,
 				3BC01A4B5338CCCD2B2A77D7 /* Listener.h */,
 				CBAE38625CB4949CB2CC9300 /* ListenerAdaptor.h */,
+				95158EAF8B154584467A3F3C /* LockedState.h */,
 				2C08F978939B04D301BF2363 /* LoopPoint.cpp */,
 				86AAE2258AE68C6045F5A400 /* LoopPoint.h */,
 				94646382FAB21A45C282242D /* Math.h */,
@@ -1505,6 +1507,16 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		A8E99E9C4507C050555676E2 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
+				1AB486317E06D9E7CC790074 /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1630,7 +1642,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D37ACFF5F3F4B8B847180071 /* Slow */,
+				A8E99E9C4507C050555676E2 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1794,20 +1806,10 @@
 			name = map;
 			sourceTree = "<group>";
 		};
-		D37ACFF5F3F4B8B847180071 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
-				1AB486317E06D9E7CC790074 /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		DBBED81D920B27CB9107C128 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D427FD0910FEA6098B36B56B /* SlowGold (debug build).app */,
+				D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2055,7 +2057,7 @@
 			name = Slow;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Slow;
-			productReference = D427FD0910FEA6098B36B56B /* SlowGold (debug build).app */;
+			productReference = D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2363,7 +2365,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_UNROLL_LOOPS = NO;
+				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -2387,7 +2389,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PRODUCT_NAME = SlowGold;
+				PRODUCT_NAME = "SlowGold 8";
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
@@ -2472,7 +2474,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_UNROLL_LOOPS = NO;
+				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -2496,7 +2498,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PRODUCT_NAME = "SlowGold (debug build)";
+				PRODUCT_NAME = "SlowGold 8 (debug build)";
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;

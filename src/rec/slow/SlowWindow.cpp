@@ -36,7 +36,6 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", BACKGROUND_COLOR,
                   DocumentWindow::allButtons, true),
       HasInstance(NULL) {
-  // thread::runInNewThread("oops", 4, this, &SlowWindow::tweakWindow);
 }
 
 SlowWindow::~SlowWindow() {}
@@ -68,29 +67,6 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
 
 void SlowWindow::activeWindowStatusChanged() {
   menus()->menuItemsChanged();
-}
-
-void SlowWindow::tweakWindow() {
-  Thread::sleep(20000);
-  static const int DELTA = 50;
-  DLOG(INFO) << "tweak 1 " << gui::toString(getBounds());
-  juce::Rectangle<int> bounds = getBounds();
-  DLOG(INFO) << "tweak 2 " << gui::toString(bounds);
-  bounds.setWidth(bounds.getWidth() + DELTA);
-  bounds.setHeight(bounds.getHeight() + DELTA);
-  {
-    MessageManagerLock l;
-    setBounds(bounds);
-  }
-  DLOG(INFO) << "tweak 3 " << gui::toString(bounds);
-  Thread::sleep(2000);
-  bounds.setWidth(bounds.getWidth() - DELTA);
-  bounds.setHeight(bounds.getHeight() - DELTA);
-  {
-    MessageManagerLock l;
-    setBounds(bounds);
-  }
-  DLOG(INFO) << "tweak 4 " << gui::toString(bounds);
 }
 
 using namespace rec::data;

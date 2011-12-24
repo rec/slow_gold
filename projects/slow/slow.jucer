@@ -24,12 +24,12 @@
   <CONFIGURATIONS>
     <CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                    isDebug="1" name="Debug" optimisation="0" osxArchitecture="32BitUniversal"
-                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold (debug build)"/>
+                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8 (debug build)"/>
     <CONFIGURATION defines="__JUCE_CONFIG=Release" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Release/glog/include;../../../../../build/Release/gtest/include;../../../../../build/Release/mpg123;../../../../../build/Release/protobuf/include;../.."
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
-                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold"/>
+                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="NzUhssTEx" name="Slow">
+  <MAINGROUP id="pZxFWRpuB" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -1006,6 +1006,8 @@
               name="Listener.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/ListenerAdaptor.h" id="tTK4xCPAL"
               name="ListenerAdaptor.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/LockedState.h" id="D6HKqv0UI"
+              name="LockedState.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/LoopPoint.cpp" id="pqfiLAv2Y"
               name="LoopPoint.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/LoopPoint.h" id="XpzJFI5dw"
@@ -1338,7 +1340,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="GoQEWL3rE" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="gtmaUCA9b" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

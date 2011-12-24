@@ -23,7 +23,6 @@ class SlowWindow : public app::Window, public HasInstance {
   }
 
   virtual void trashPreferences();
-  void tweakWindow();
 
  protected:
   virtual void doStartup();

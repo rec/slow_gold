@@ -26,7 +26,7 @@
             MkTypLibCompatible="true"
             SuppressStartupBanner="true"
             TargetEnvironment="1"
-            TypeLibraryName=".\Debug\SlowGold (debug build).tlb"
+            TypeLibraryName=".\Debug\SlowGold 8 (debug build).tlb"
             HeaderFileName=""/>
       <Tool Name="VCCLCompilerTool"
             Optimization="0"
@@ -37,7 +37,7 @@
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
-            PrecompiledHeaderFile=".\Debug\SlowGold (debug build).pch"
+            PrecompiledHeaderFile=".\Debug\SlowGold 8 (debug build).pch"
             AssemblerListingLocation=".\Debug\"
             ObjectFile=".\Debug\"
             ProgramDataBaseFileName=".\Debug\"
@@ -48,11 +48,11 @@
             PreprocessorDefinitions="_DEBUG"/>
       <Tool Name="VCPreLinkEventTool"/>
       <Tool Name="VCLinkerTool"
-            OutputFile=".\Debug\SlowGold (debug build).exe"
+            OutputFile=".\Debug\SlowGold 8 (debug build).exe"
             SuppressStartupBanner="true"
             IgnoreDefaultLibraryNames="libcmt.lib, msvcrt.lib"
             GenerateDebugInformation="true"
-            ProgramDatabaseFile=".\Debug\SlowGold (debug build).pdb"
+            ProgramDatabaseFile=".\Debug\SlowGold 8 (debug build).pdb"
             SubSystem="2"
             TargetMachine="1"
             AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
@@ -61,7 +61,7 @@
       <Tool Name="VCXDCMakeTool"/>
       <Tool Name="VCBscMakeTool"
             SuppressStartupBanner="true"
-            OutputFile=".\Debug\SlowGold (debug build).bsc"/>
+            OutputFile=".\Debug\SlowGold 8 (debug build).bsc"/>
       <Tool Name="VCFxCopTool"/>
       <Tool Name="VCAppVerifierTool"/>
       <Tool Name="VCPostBuildEventTool"/>
@@ -83,7 +83,7 @@
             MkTypLibCompatible="true"
             SuppressStartupBanner="true"
             TargetEnvironment="1"
-            TypeLibraryName=".\Release\SlowGold.tlb"
+            TypeLibraryName=".\Release\SlowGold 8.tlb"
             HeaderFileName=""/>
       <Tool Name="VCCLCompilerTool"
             Optimization="2"
@@ -94,7 +94,7 @@
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
-            PrecompiledHeaderFile=".\Release\SlowGold.pch"
+            PrecompiledHeaderFile=".\Release\SlowGold 8.pch"
             AssemblerListingLocation=".\Release\"
             ObjectFile=".\Release\"
             ProgramDataBaseFileName=".\Release\"
@@ -105,11 +105,11 @@
             PreprocessorDefinitions="NDEBUG"/>
       <Tool Name="VCPreLinkEventTool"/>
       <Tool Name="VCLinkerTool"
-            OutputFile=".\Release\SlowGold.exe"
+            OutputFile=".\Release\SlowGold 8.exe"
             SuppressStartupBanner="true"
             IgnoreDefaultLibraryNames=""
             GenerateDebugInformation="false"
-            ProgramDatabaseFile=".\Release\SlowGold.pdb"
+            ProgramDatabaseFile=".\Release\SlowGold 8.pdb"
             SubSystem="2"
             GenerateManifest="false"
             OptimizeReferences="2"
@@ -121,7 +121,7 @@
       <Tool Name="VCXDCMakeTool"/>
       <Tool Name="VCBscMakeTool"
             SuppressStartupBanner="true"
-            OutputFile=".\Release\SlowGold.bsc"/>
+            OutputFile=".\Release\SlowGold 8.bsc"/>
       <Tool Name="VCFxCopTool"/>
       <Tool Name="VCAppVerifierTool"/>
       <Tool Name="VCPostBuildEventTool"/>
@@ -667,6 +667,7 @@
           <File RelativePath="..\..\..\..\src\rec\util\FormatTime.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Listener.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\ListenerAdaptor.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\LockedState.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
