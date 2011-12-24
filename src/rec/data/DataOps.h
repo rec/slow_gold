@@ -71,7 +71,6 @@ inline const VirtualFile* empty() { return NULL; }
 
 template <typename Proto>
 const Proto getProto(Data* data) {
-  // DCHECK_NE(getTypeName<Proto>(), getTypeName<VirtualFile>());
   return *Reader<Proto>(data);
 }
 

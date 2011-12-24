@@ -11,10 +11,12 @@ namespace gui {
 
 using namespace juce;
 
-static const int MIN_WIDTH = 700;
-static const int MIN_HEIGHT = 450;
+static const int MIN_WIDTH = 800;
+static const int MIN_HEIGHT = 550;
 static const int MIN_X = 10;
 static const int MIN_Y = 100;
+static const int X_FUDGE = 50;
+static const int Y_FUDGE = 50;
 
 typedef juce::Rectangle<int> Rect;
 
@@ -27,8 +29,15 @@ PersistentWindow::PersistentWindow(const String& name,
   setResizable(true, false);
 
   resizeLimits_ = getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea());
+  (*this)(getProto());
+#if 0
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT,
                   resizeLimits_.getWidth(), resizeLimits_.getHeight());
+  resizeLimits_.setWidth(1000);
+  resizeLimits_.setHeight(1000);
+  setBounds(resizeLimits_);
+#endif
+  DLOG(INFO) << gui::toString(getBounds());
 }
 
 PersistentWindow::~PersistentWindow() {}

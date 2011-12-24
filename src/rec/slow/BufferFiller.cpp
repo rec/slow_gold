@@ -29,7 +29,12 @@ BufferFiller::~BufferFiller() {}
 
 thread::Result BufferFiller::fillOnce() {
   FillableFrameBuffer<short, 2>* buf = thumbnailBuffer_.buffer();
-  if (buf && buf->isFull()) {
+  if (!buf) {
+    LOG(DFATAL) << "No buffer";
+    return static_cast<thread::Result>(PARAMETER_WAIT);
+  }
+
+  if (buf->isFull()) {
     thumbnailBuffer_.writeThumbnail();
     return static_cast<thread::Result>(PARAMETER_WAIT);
   }

@@ -46,8 +46,6 @@ void SetterResizer::operator()(const data::Value& v) {
       setTopLeftPosition(getX(), coord);
     else
       setTopLeftPosition(coord, getY());
-  } else if (!coord) {
-    LOG(ERROR) << "Empty coordinate for " << address_.ShortDebugString();
   }
 }
 

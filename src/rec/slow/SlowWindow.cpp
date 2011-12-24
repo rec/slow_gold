@@ -9,6 +9,7 @@
 #include "rec/data/MessageRegistrar.h"
 #include "rec/data/MessageRegistrarAndMaker.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/gui/Geometry.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/gui/WindowPosition.pb.h"
 #include "rec/music/Metadata.pb.h"
@@ -21,6 +22,7 @@
 #include "rec/util/Defaulter.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/Mode.pb.h"
+#include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
@@ -34,6 +36,7 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", BACKGROUND_COLOR,
                   DocumentWindow::allButtons, true),
       HasInstance(NULL) {
+  // thread::runInNewThread("oops", 4, this, &SlowWindow::tweakWindow);
 }
 
 SlowWindow::~SlowWindow() {}
@@ -65,6 +68,29 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
 
 void SlowWindow::activeWindowStatusChanged() {
   menus()->menuItemsChanged();
+}
+
+void SlowWindow::tweakWindow() {
+  Thread::sleep(20000);
+  static const int DELTA = 50;
+  DLOG(INFO) << "tweak 1 " << gui::toString(getBounds());
+  juce::Rectangle<int> bounds = getBounds();
+  DLOG(INFO) << "tweak 2 " << gui::toString(bounds);
+  bounds.setWidth(bounds.getWidth() + DELTA);
+  bounds.setHeight(bounds.getHeight() + DELTA);
+  {
+    MessageManagerLock l;
+    setBounds(bounds);
+  }
+  DLOG(INFO) << "tweak 3 " << gui::toString(bounds);
+  Thread::sleep(2000);
+  bounds.setWidth(bounds.getWidth() - DELTA);
+  bounds.setHeight(bounds.getHeight() - DELTA);
+  {
+    MessageManagerLock l;
+    setBounds(bounds);
+  }
+  DLOG(INFO) << "tweak 4 " << gui::toString(bounds);
 }
 
 using namespace rec::data;
