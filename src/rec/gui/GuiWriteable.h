@@ -14,7 +14,7 @@ class GuiWriteable {
   static void writeAll();
   static void setWriteableAll(bool enable);
 
-  static const int MIN_UPDATE_GAP = 500;
+  static const int MIN_UPDATE_GAP = 200;
 
  protected:
   virtual void doWriteGui() = 0;

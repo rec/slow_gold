@@ -60,7 +60,7 @@ struct Period {
     DIRECTORY = 1000,
     FILL = 41,
     NAVIGATOR = 1001,
-    WRITE_GUI = 501,
+    WRITE_GUI = 201,
     WRITE_DATA = 1003,
     UPDATE_DATA = 101,
   };
