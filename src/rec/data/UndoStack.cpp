@@ -17,6 +17,8 @@ class UndoStack::Entry {
       : data_(d), before_(clone(b)), after_(clone(a)), timestamp_(t) {
     if (!timestamp_)
       timestamp_ = juce::Time::currentTimeMillis();
+    DCHECK(before_);
+    DCHECK(after_);
   }
 
   static const uint64 MAX_GROUP_TIME = 2000;
@@ -34,7 +36,7 @@ class UndoStack::Entry {
   }
 
   void setDataValue(bool isBefore) {
-    Opener<Message>(data_)->CopyFrom(isBefore ? *before_ : *after_);
+    Opener<Message>(data_, CANT_UNDO)->CopyFrom(isBefore ? *before_ : *after_);
   }
 
   Data* data_;
@@ -50,6 +52,9 @@ UndoStack::~UndoStack() {
 }
 
 int UndoStack::popRedos() {
+	DLOG(INFO) << "before " << undoes_ << ", " << stack_.size();
+	for (int i = 0; i < stack_.size(); ++i)
+    DLOG(INFO) << i << ", " << stack_[i];
   if (!undoes_)
     return 0;
 
@@ -61,6 +66,10 @@ int UndoStack::popRedos() {
 
   int undoes = undoes_;
   undoes_ = 0;
+
+	DLOG(INFO) << "after";
+	for (int i = 0; i < stack_.size(); ++i)
+    DLOG(INFO) << i << ", " << stack_[i];
   return undoes;
 }
 
@@ -72,10 +81,18 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
       stack_.push_back(ue.transfer());
   }
   broadcast(None());
+#if 1
+  for (uint i = 0; i < stack_.size(); ++i) {
+    DLOG(INFO) << i << ": " << undoes_ << ": "
+               << stack_[i]->data_->toString() << ", "
+               << stack_[i]->before_->ShortDebugString() << ", "
+               << stack_[i]->after_->ShortDebugString();
+  }
+#endif
 }
 
 void UndoStack::redoOrUndo(bool isUndo) {
-  int pos = stack_.size() - (isUndo ? undoes_-- : ++undoes_);
+  int pos = stack_.size() - 1 - (isUndo ? undoes_++ : --undoes_);
   stack_[pos]->setDataValue(isUndo);
 
   broadcast(None());

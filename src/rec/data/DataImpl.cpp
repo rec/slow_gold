@@ -35,6 +35,10 @@ void DataImpl::reportChange() {
   dataUpdater_->reportChange(this);
 }
 
+const string DataImpl::toString() const {
+  return "Data: " + typeName_ + " - " + message_->ShortDebugString();
+}
+
 bool DataImpl::writeToFile() {
   if (isEmpty_) {
     LOG(ERROR) << "Tried to write an empty value.";

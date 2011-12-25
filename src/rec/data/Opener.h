@@ -2,6 +2,7 @@
 #define __REC_DATA_OPENER__
 
 #include "rec/data/Reader.h"
+#include "rec/util/Proto.h"
 
 namespace rec {
 namespace data {
@@ -39,8 +40,8 @@ struct Opener : public Reader<Proto> {
  private:
   void initialize() {
     changed_ = false;
-    before_.reset(this->cloneMessage());
-    before_->CopyFrom(*this->proto_);
+    before_.reset(clone(*this->proto_));
+    DLOG(INFO) << "initializing " << this->data_->toString() << " with: " << before_->ShortDebugString();
   }
 
   bool changed_;

@@ -19,6 +19,7 @@ class Data : public Broadcaster<const Message&> {
  public:
   virtual bool fileReadSuccess() const = 0;
   bool isEmpty() const { return isEmpty_; }
+  virtual const string toString() const = 0;
 
  private:
   Data(bool e) : changed_(false), isEmpty_(e) {}
