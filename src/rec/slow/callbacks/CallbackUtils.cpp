@@ -19,7 +19,7 @@ void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos)
   LoopPointList* loops = &snap.loops_;
   int segment = audio::getSegment(*loops, snap.instance_->time());
   int size = loops->loop_point_size();
-  int p = pos.toIndex(segment, size - 1);
+  int p = pos.toIndex(segment, size);
 
 
   bool allSelected = (audio::getSelectionCount(snap.loops_) == size);
