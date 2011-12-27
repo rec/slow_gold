@@ -11,8 +11,7 @@ using juce::Drawable;
 
 Drawable* {classname}::create() {{
   static const char data[] = {data};
-
-  return createBinary<Drawable>(data, arraysize(data));
+  return createBinary<Drawable>(data, arraysize(data), "{filename}");
 }};
 
 {namespace_end}

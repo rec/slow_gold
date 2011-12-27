@@ -138,8 +138,7 @@ Drawable* PointingHand::create() {
   "</svg>\n"
   " "
 ;
-
-  return createBinary<Drawable>(data, arraysize(data));
+  return createBinary<Drawable>(data, arraysize(data), "PointingHand.svg");
 };
 
 }  // namespace icon

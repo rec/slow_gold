@@ -7,7 +7,7 @@ namespace rec {
 namespace util {
 
 template <typename Type>
-Type* createBinary(const char* data, int len);
+Type* createBinary(const char* data, size_t len, const string& filename = "");
 
 }  // namespace util
 }  // namespace rec

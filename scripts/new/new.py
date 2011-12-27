@@ -110,6 +110,7 @@ def createCppFiles(file, groupname, protoname, namespace, includes):
   context = dict(
     classname=classname,
     commandline=' '.join(['new'] + sys.argv[1:]),
+    filename='%s.%s' % (os.path.split(name)[1], groupname),
     guard='__%s__' % '_'.join(s.upper() for s in path + [classname]),
     includes='\n'.join(includes),
     namespace='\n'.join('namespace %s {' % p for p in path),
