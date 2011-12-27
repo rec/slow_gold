@@ -38,6 +38,7 @@ void ThumbnailBuffer::writeThumbnail() {
     // TODO: fix this.
     LOG(ERROR) << "writing empty cache";
   } else {
+    file_.getParentDirectory().createDirectory();
     ptr<juce::FileOutputStream> out(file_.createOutputStream());
     if (!out)
     	LOG(DFATAL) << "Unable to write file " << str(file_);

@@ -146,11 +146,13 @@ string cleanGenre(int index) {
 
 string cleanGenre(const string& s) {
   string result(s);
-  if (!s.empty()) {
-    while (*(s.begin()) == '(' && *(s.rbegin()) == ')')
-      result = result.substr(1, s.size() - 2);
-    if (isdigit(s[0]))
-      result = cleanGenre(str(s).getIntValue());
+  if (!result.empty()) {
+    while (*(result.begin()) == '(' && *(result.rbegin()) == ')')
+      result = result.substr(1, result.size() - 2);
+    if (isdigit(result[0]))
+      result = cleanGenre(str(result).getIntValue());
+    if (result.empty())
+      result = s;
   }
   return result;
 }

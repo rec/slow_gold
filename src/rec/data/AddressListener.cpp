@@ -23,23 +23,28 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
 AddressListener::AddressListener(const Address& a, const string& tn, Scope s)
     : untypedListener_(new UntypedListener(this, tn, s)),
       address_(a),
-      failOnError_(true) {
+      failOnError_(false) {
 }
 
 AddressListener::~AddressListener() {}
 
+static void logError(const string& error, bool failOnError) {
+  if (!error.empty()) {
+    if (failOnError)
+      LOG(DFATAL) << error;
+    else
+      LOG(ERROR) << error;
+  }
+}
+
 void AddressListener::setValue(const Value& v, Undoable undoable) const {
   Opener<Message> opener(untypedListener_->getData(), undoable);
-  string error = setMessageField(address_, opener.mutable_get(), v);
-  if (failOnError_ && !error.empty())
-    LOG(DFATAL) << error;
+  logError(setMessageField(address_, opener.mutable_get(), v), failOnError_);
 }
 
 const Value AddressListener::getValue(const Message& m) const {
   Value value;
-  string error = getMessageField(address_, m, &value);
-  if (failOnError_ && !error.empty())
-    LOG(DFATAL) << error;
+  logError(getMessageField(address_, m, &value), failOnError_);
   return value;
 }
 

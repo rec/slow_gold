@@ -5,19 +5,3 @@
 * Got this error:  GetVolumes.cpp:50] Couldn't create reader for Audio CD
 * There's a spurious label on the loop window.
 
-* intermittent crashes in startup: see below
-
-
-#0	0x001f5186 in rec::widget::waveform::WaveformProto::CopyFrom at Waveform.pb.cc:1164
-#1	0x00189a90 in rec::widget::waveform::WaveformProto::operator= at Waveform.pb.h:72
-#2	0x001859a1 in rec::widget::waveform::Cursor::operator() at Cursor.cpp:225
-#3	0x0018ab1e in rec::data::DataListener<rec::widget::waveform::WaveformProto>::Adaptor::operator() at DataListener.h:35
-#4	0x000af85a in rec::data::DataImpl::update at DataImpl.cpp:106
-#5	0x000b46b5 in rec::data::DataUpdater::update at DataUpdater.cpp:38
-#6	0x0015ead9 in rec::slow::(anonymous namespace)::updateData at Threads.cpp:96
-#7	0x0015f30f in rec::util::thread::Looper<int (*)(rec::slow::Instance*), rec::slow::Instance*>::run at Looper.h:17
-#8	0x00291bfa in juce::Thread::threadEntryPoint at juce_Thread.cpp:143
-#9	0x00291cd8 in juce::juce_threadEntryPoint at juce_Thread.cpp:155
-#10	0x00291cf7 in juce::threadEntryProc at juce_posix_SharedCode.h:788
-#11	0x92034259 in _pthread_start
-#12	0x920340de in thread_start
