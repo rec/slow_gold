@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		031D341649B4A296F511CA2F /* FullScreenRev.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */; };
 		0338ECF985E6BC4E51054694 /* Components.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362E2E7C8F32ECBEF4903444 /* Components.cpp */; };
+		0637B3470243512096F0DFCE /* SetterText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E79D1A74EEF246E217F7545 /* SetterText.cpp */; };
 		066FBFA7B2040738E76F567C /* Undo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A93704276F2527D815042611 /* Undo.cpp */; };
 		08879D3DFDD1B955E8E15916 /* ThumbnailBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */; };
 		092F53680B2E5DE75587CD65 /* LogFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A07F6E68CF4223DBB8C90C1F /* LogFile.cpp */; };
@@ -567,6 +568,7 @@
 		7E4E61FC134C722511C12884 /* Result.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Result.h; path = ../../../../src/rec/util/thread/Result.h; sourceTree = SOURCE_ROOT; };
 		7E5402E1DF422CC16670417B /* FillableFrameBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FillableFrameBuffer.h; path = ../../../../src/rec/audio/util/FillableFrameBuffer.h; sourceTree = SOURCE_ROOT; };
 		7E644B847054095F833456FD /* DataMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DataMap.cpp; path = ../../../../src/rec/data/DataMap.cpp; sourceTree = SOURCE_ROOT; };
+		7E79D1A74EEF246E217F7545 /* SetterText.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SetterText.cpp; path = ../../../../src/rec/gui/SetterText.cpp; sourceTree = SOURCE_ROOT; };
 		7EAC704C96F798B1C69A0DD2 /* CopySamples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CopySamples.h; path = ../../../../src/rec/audio/util/CopySamples.h; sourceTree = SOURCE_ROOT; };
 		7FD45249C8FCAA197972C812 /* TestData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestData.h; path = ../../../../src/rec/util/TestData.h; sourceTree = SOURCE_ROOT; };
 		80A92E416408D8FA697D83E8 /* ThickFolder.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ThickFolder.svg.cpp; path = ../../../../src/rec/gui/icon/ThickFolder.svg.cpp; sourceTree = SOURCE_ROOT; };
@@ -1507,7 +1509,7 @@
 			name = util;
 			sourceTree = "<group>";
 		};
-		A8E99E9C4507C050555676E2 /* Slow */ = {
+		A80CB98602FB23DBDD107508 /* Slow */ = {
 			isa = PBXGroup;
 			children = (
 				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
@@ -1642,7 +1644,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A8E99E9C4507C050555676E2 /* Slow */,
+				A80CB98602FB23DBDD107508 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1701,6 +1703,7 @@
 				182478B8E788D09B2EEFA6EC /* RecentFiles.h */,
 				908C52E59BABA47A9B73B2CE /* SetterResizer.cpp */,
 				F0F634962FF9D366FEDA2C67 /* SetterResizer.h */,
+				7E79D1A74EEF246E217F7545 /* SetterText.cpp */,
 				C77E42447CB46914F9E7E559 /* SetterText.h */,
 				E3AE05DBC426A63DC00E081B /* SetterTextArea.h */,
 				B54F45E4D165529595DDAB5C /* SetterToggle.h */,
@@ -2230,6 +2233,7 @@
 				BD6A11F62CD0E7AB15538090 /* PersistentWindow.cpp in Sources */,
 				A449A75BAE696198F89C5828 /* RecentFiles.cpp in Sources */,
 				858B869F6A6B0DABA31BAC20 /* SetterResizer.cpp in Sources */,
+				0637B3470243512096F0DFCE /* SetterText.cpp in Sources */,
 				4F2B1DC2C5EC723AC5B999F1 /* TableController.cpp in Sources */,
 				DC557F7E3B65D752ADC0B174 /* CleanName.cpp in Sources */,
 				17B5F47A7EF843A5B4FF4130 /* CreateMusicFileReader.cpp in Sources */,

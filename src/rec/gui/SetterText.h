@@ -10,8 +10,6 @@
 namespace rec {
 namespace gui {
 
-static const int CAPTION_SIZE = 50;
-
 class SetterText : public Layout,
                    public data::AddressListener,
                    public TextEditor::Listener {
@@ -22,66 +20,27 @@ class SetterText : public Layout,
              const String& tip = String::empty,
              const String& caption = String::empty,
              bool useCaption = true,
-             Scope scope = FILE_SCOPE)
-      : Layout(name, HORIZONTAL),
-        data::AddressListener(address, typeName, scope) {
-    DCHECK(name.length());
-    const String& cap = caption.length() ? caption : name;
-    caption_.setName(name + ".caption");
-    editor_.setName(name + ".editor");
+             Scope scope = FILE_SCOPE);
+  virtual ~SetterText() {}
 
-    setTooltip(tip.length() ? tip : cap);
-
-    if (useCaption) {
-      caption_.setText(cap, false);
-      addToLayout(&caption_, CAPTION_SIZE);
-    }
-    addToLayout(&editor_);
-
-    editor_.addListener(this);
-  }
-
-  virtual void operator()(const data::Value& v) {
-    if (v.has_string_f() && str(v.string_f()) != editor_.getText())
-      thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
-  }
-
-
-  virtual void setTooltip(const String& newTooltip) {
-    Layout::setTooltip(newTooltip);
-    editor_.setTooltip(newTooltip);
-    caption_.setTooltip(newTooltip);
-  }
-
-    void setReadOnly(bool readOnly) {
-    if (readOnly != isReadOnly()) {
-      editor_.setReadOnly(readOnly);
-      editor_.setCaretVisible(!readOnly);
-    }
-  }
+  virtual void operator()(const data::Value& v);
+  virtual void setTooltip(const String& newTooltip);
+  void setReadOnly(bool readOnly);
 
   bool isReadOnly() const { return editor_.isReadOnly(); }
 
   TextEditor* editor() { return &editor_; }
 
-  virtual void textEditorTextChanged(TextEditor&) {
-    setValue(str(editor_.getText()));
-  }
+  virtual void textEditorTextChanged(TextEditor&);
+  virtual void textEditorReturnKeyPressed(TextEditor&) {}
+  virtual void textEditorEscapeKeyPressed(TextEditor&) {}
+  virtual void textEditorFocusLost(TextEditor&) {}
 
-  virtual void textEditorReturnKeyPressed(TextEditor& editor) {}
-  virtual void textEditorEscapeKeyPressed(TextEditor& editor) {}
-  virtual void textEditorFocusLost(TextEditor& editor) {}
-
-  void setEditorBackground(const juce::Colour& c) {
-    editor_.setColour(juce::TextEditor::backgroundColourId, c);
-  }
+  void setEditorBackground(const juce::Colour&);
 
  protected:
-  void setEditorText(String text) {
-  	editor_.setText(text, false);
-    repaint();
-  }
-
+  void setEditorText(String);
+  
   SimpleLabel caption_;
   TextEditor editor_;
 

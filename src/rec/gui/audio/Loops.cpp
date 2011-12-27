@@ -128,7 +128,9 @@ class LoopsSetterText : public SetterText {
       : SetterText("LoopsSetterText",
                    getTypeName<LoopPointList>(),
                    "loop_point" + Address(row) + col.address(),
-                   "", ""),
+                   "",
+                   "",
+                   false),
         row_(row) {
     setFailOnError(false);
   }

@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="pZxFWRpuB" name="Slow">
+  <MAINGROUP id="OwxUAXqaI" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -764,6 +764,8 @@
               name="SetterResizer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterResizer.h" id="PEMZXVavr"
               name="SetterResizer.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/SetterText.cpp" id="HLhukcsup"
+              name="SetterText.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterText.h" id="zzS796pwJ"
               name="SetterText.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterTextArea.h" id="nRTfUjcE0"
@@ -1340,7 +1342,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="gtmaUCA9b" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="4wl7K59Wx" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
