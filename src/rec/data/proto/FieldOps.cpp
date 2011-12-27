@@ -18,6 +18,9 @@ static void logError(const string& error, const Address& a, const Message& m) {
 
 string getMessageField(const Address& a, const Message& m, ValueProto* value) {
   MessageField f = createMessageField(a, m);
+  if (!f.message_)
+    return "Couldn't get field from address.";
+     
   if (!f.field_) {
     value->set_message_f(pmessage(*f.message_));
     return "";

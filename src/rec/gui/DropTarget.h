@@ -31,6 +31,7 @@ class DropTarget : public Interface, public Parent {
   }
 
   virtual void filesDropped(const StringArray& files, int, int) {
+    DLOG(INFO) << "here!";
     setDraggingOver(false);
     if (isInterestedInFileDrag(files))
       broadcaster_.broadcast(DropFiles(file::toVirtualFileList(files), this));
