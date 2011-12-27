@@ -20,7 +20,7 @@
 namespace rec {
 namespace slow {
 
-static const int DRAG_PAD = audio::CLOSE_LOOPS;
+static const Samples<44100> DRAG_PAD = audio::CLOSE_LOOPS;
 static const int DRAG_TWEAK = 5;
 
 using namespace rec::audio;
