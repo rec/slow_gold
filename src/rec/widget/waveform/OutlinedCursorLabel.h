@@ -31,9 +31,13 @@ class OutlinedCursorLabel : public gui::SimpleLabel,
 
   void showButtons(WaveformProto);
 
+  virtual void editorShown(TextEditor*);
+  virtual void editorAboutToBeHidden(TextEditor*);
+
  private:
   Cursor* cursor_;
   juce::ToggleButton selectButton_;
+  bool showSelectionButtons_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(OutlinedCursorLabel);
 };

@@ -50,6 +50,7 @@ class Cursor : public Component,
   Waveform* waveform() const { return waveform_; }
   void resizeCaption();
   void selectButtonPressed(bool);
+  Component* getCaption();
 
  private:
   void adjustCaption();

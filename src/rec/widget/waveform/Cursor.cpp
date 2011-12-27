@@ -66,6 +66,11 @@ Cursor::~Cursor() {
   waveform_->removeChildComponent(caption_.get());
 }
 
+
+Component* Cursor::getCaption() {
+  return caption_.get();
+}
+
 void Cursor::labelTextChanged(juce::Label*) {
   setText(caption_->getText());
 }

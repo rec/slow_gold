@@ -180,7 +180,8 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
       } else {
         c = unusedCursors_.back();
         c->setIndex(i);
-        c->setVisible(true);
+        addAndMakeVisible(c);
+        addAndMakeVisible(c->getCaption());
         unusedCursors_.pop_back();
       }
       cursors_.push_back(c);
@@ -192,7 +193,8 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
 
   while (cursors_.size() > size) {
     Cursor* c = cursors_.back();
-    c->setVisible(false);
+    removeChildComponent(c);
+    removeChildComponent(c->getCaption());
     unusedCursors_.push_back(c);
     cursors_.pop_back();
   }

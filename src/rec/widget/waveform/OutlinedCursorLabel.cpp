@@ -26,7 +26,8 @@ void OutlinedCursorLabel::operator()(const WaveformProto& waveform) {
 }
 
 void OutlinedCursorLabel::showButtons(WaveformProto waveform) {
-  if (waveform.show_selection_buttons())
+  showSelectionButtons_ = waveform.show_selection_buttons();
+  if (showSelectionButtons_)
     addAndMakeVisible(&selectButton_);
   else
     removeChildComponent(&selectButton_);
@@ -70,6 +71,16 @@ void OutlinedCursorLabel::buttonClicked(juce::Button* b) {
 void OutlinedCursorLabel::textEditorTextChanged(TextEditor& e) {
   gui::SimpleLabel::textEditorTextChanged(e);
   cursor_->setText(e.getText());
+}
+
+void OutlinedCursorLabel::editorShown(TextEditor*) {
+  if (showSelectionButtons_)
+    removeChildComponent(&selectButton_);
+}
+
+void OutlinedCursorLabel::editorAboutToBeHidden(TextEditor*) {
+  if (showSelectionButtons_)
+    addAndMakeVisible(&selectButton_);
 }
 
 }  // namespace waveform
