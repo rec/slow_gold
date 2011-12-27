@@ -16,23 +16,7 @@ static void logError(const string& error, const Address& a, const Message& m) {
   }
 }
 
-string copyFrom(const Address& a, Message* m, const Value& value) {
-  MessageField f = createMessageField(a, *m);
-  if (!f.field_) {
-    if (value.has_message_f())
-      return pmessage(value.message_f()).Parse(f.message_) ? "" :
-        "Couldn't parse message";
-
-    return "The Value contained no message field.";
-  }
-
-  bool success = (f.type_ == MessageField::SINGLE) ?
-    typer::copyFrom(f.message_, f.field_, value) :
-    typer::copyFrom(f.message_, f.field_, f.index_, value);
-  return success ? "" : "Couldn't copyFrom";
-}
-
-string copyTo(const Address& a, const Message& m, ValueProto* value) {
+string getMessageField(const Address& a, const Message& m, ValueProto* value) {
   MessageField f = createMessageField(a, m);
   if (!f.field_) {
     value->set_message_f(pmessage(*f.message_));
@@ -49,14 +33,30 @@ string copyTo(const Address& a, const Message& m, ValueProto* value) {
     (f.message_ ? f.message_->GetTypeName() : "NO MESSAGE");
 }
 
-Value getValueWithAddress(const Address& a, const Message& m) {
+string setMessageField(const Address& a, Message* m, const ValueProto& value) {
+  MessageField f = createMessageField(a, *m);
+  if (!f.field_) {
+    if (value.has_message_f())
+      return pmessage(value.message_f()).Parse(f.message_) ? "" :
+        "Couldn't parse message";
+
+    return "The Value contained no message field.";
+  }
+
+  bool success = (f.type_ == MessageField::SINGLE) ?
+    typer::copyFrom(f.message_, f.field_, value) :
+    typer::copyFrom(f.message_, f.field_, f.index_, value);
+  return success ? "" : "Couldn't copyFrom";
+}
+
+Value getMessageFieldOrDie(const Address& a, const Message& m) {
   Value v;
-  logError(copyTo(a, m, &v), a, m);
+  logError(getMessageField(a, m, &v), a, m);
   return v;
 }
 
-void setValueWithAddress(const Address& a, Message* m, const ValueProto& v) {
-  logError(copyFrom(a, m, v), a, *m);
+void setMessageFieldOrDie(const Address& a, Message* m, const ValueProto& v) {
+  logError(setMessageField(a, m, v), a, *m);
 }
 
 }  // namespace data

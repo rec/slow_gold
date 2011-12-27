@@ -9,11 +9,13 @@ namespace data {
 class Address;
 class ValueProto;
 
-string copyFrom(const Address& a, Message* m, const Value& value);
-string copyTo(const Address& a, const Message& m, ValueProto* value);
+// Get or set a field in a Messsage and return a string error.
+string getMessageField(const Address& a, const Message& m, ValueProto* value);
+string setMessageField(const Address& a, Message* m, const ValueProto& value);
 
-Value getValueWithAddress(const Address&, const Message&);
-void setValueWithAddress(const Address&, Message*, const ValueProto&);
+// Get or set a field in a Message, logging DFATAL if there's an error.
+Value getMessageFieldOrDie(const Address&, const Message&);
+void setMessageFieldOrDie(const Address&, Message*, const ValueProto&);
 
 }  // namespace data
 }  // namespace rec

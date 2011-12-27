@@ -9,8 +9,8 @@ namespace rec {
 namespace data {
 
 struct AddressListener::UntypedListener : public UntypedDataListener {
-  UntypedListener(AddressListener* parent, const string& typeName, Scope scope)
-      : UntypedDataListener(typeName, scope), parent_(parent) {
+  UntypedListener(AddressListener* p, const string& typeName, Scope s)
+      : UntypedDataListener(typeName, s), parent_(p) {
     DCHECK_NE(typeName, getTypeName<VirtualFile>());
   }
   AddressListener* parent_;
@@ -21,18 +21,26 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
 };
 
 AddressListener::AddressListener(const Address& a, const string& tn, Scope s)
-    : untypedListener_(new UntypedListener(this, tn, s)), address_(a) {
+    : untypedListener_(new UntypedListener(this, tn, s)),
+      address_(a),
+      failOnError_(true) {
 }
 
 AddressListener::~AddressListener() {}
 
 void AddressListener::setValue(const Value& v, Undoable undoable) const {
   Opener<Message> opener(untypedListener_->getData(), undoable);
-  setValueWithAddress(address_, opener.mutable_get(), v);
+  string error = setMessageField(address_, opener.mutable_get(), v);
+  if (failOnError_ && !error.empty())
+    LOG(DFATAL) << error;
 }
 
 const Value AddressListener::getValue(const Message& m) const {
-  return getValueWithAddress(address_, m);
+  Value value;
+  string error = getMessageField(address_, m, &value);
+  if (failOnError_ && !error.empty())
+    LOG(DFATAL) << error;
+  return value;
 }
 
 const Value AddressListener::getValue() const {

@@ -41,7 +41,6 @@ struct Opener : public Reader<Proto> {
   void initialize() {
     changed_ = false;
     before_.reset(clone(*this->proto_));
-    DLOG(INFO) << "initializing " << this->data_->toString() << " with: " << before_->ShortDebugString();
   }
 
   bool changed_;

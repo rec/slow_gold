@@ -24,6 +24,7 @@ class AddressListener : public Listener<const Value&> {
   const Value getValue(const Message& m) const;
   const Value getValue() const;
   const Address& address() const { return address_; }
+  void setFailOnError(bool f) { failOnError_ = f; }
 
  private:
   struct UntypedListener;
@@ -33,6 +34,7 @@ class AddressListener : public Listener<const Value&> {
 
   ptr<UntypedListener> untypedListener_;
   const Address address_;
+  bool failOnError_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(AddressListener);
 };

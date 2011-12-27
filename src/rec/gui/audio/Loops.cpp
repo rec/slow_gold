@@ -81,8 +81,10 @@ static String getDisplayText(const Value& v, const TableColumn& col, Samples<441
 
 String Loops::displayText(const TableColumn& col, int rowIndex) {
   Address row = partAddress_ + Address(rowIndex) + col.address();
-  data::Value value(getValueWithAddress(row, getProto()));
-  return getDisplayText(value, col, Samples<44100>(loops_.length()));
+  data::Value value;
+  string error = getMessageField(row, getProto(), &value);
+  return error.empty() ?
+    getDisplayText(value, col, Samples<44100>(loops_.length())) : "(error)";
 }
 
 void Loops::selectedRowsChanged(int lastRowSelected) {
@@ -128,6 +130,7 @@ class LoopsSetterText : public SetterText {
                    "loop_point" + Address(row) + col.address(),
                    "", ""),
         row_(row) {
+    setFailOnError(false);
   }
 
  protected:
