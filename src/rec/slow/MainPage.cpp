@@ -33,7 +33,7 @@ namespace {
 const int MIN_NAV_PANEL = 100;
 const double MIN_RESIZER = 7.0;
 const int MIN_WAVEFORM = 150;
-const int MIN_PLAYBACK_PANEL = 90;
+const int MIN_PLAYBACK_PANEL = 100;
 const int MIN_HELP_PANEL = 175;
 
 template <typename Type>

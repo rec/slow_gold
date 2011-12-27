@@ -55,8 +55,9 @@ TransportController::TransportController(TimeController* timeController)
   gainLayout_.addToLayout(&muteButton_, MUTE_BUTTON_SIZE);
   gainLayout_.addToLayout(&level_);
 
-  addToLayout(&buttonsLayout_, 40);
-  addToLayout(&gainLayout_, 40);
+  addToLayout(&buttonsLayout_, ICON_SIZE);
+  addToLayout(&gainLayout_, ICON_SIZE);
+  addToLayout(&levelMeter_, ICON_SIZE);
 
   startStopButton_.setTooltip("Toggle between pause and play.");
   jumpToStartButton_.setTooltip("Jump to the start of the selection.");
