@@ -19,6 +19,9 @@ class UntypedDataListener : public Listener<const Message&> {
   Data* getData() const;
   const string& typeName() const { return typeName_; }
 
+ protected:
+  CriticalSection lock_;
+
  private:
   virtual void setData(const VirtualFile*);
 
@@ -28,7 +31,6 @@ class UntypedDataListener : public Listener<const Message&> {
   const string typeName_;
   Data* data_;
   ptr<FileListener> fileListener_;
-  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
 };

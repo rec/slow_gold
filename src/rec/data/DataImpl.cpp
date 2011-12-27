@@ -11,6 +11,8 @@ namespace data {
 DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
                    bool isEmpty)
     : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s) {
+  Lock l(lock_);
+
   if (isEmpty) {
     message_.reset(m);
   } else {
@@ -27,10 +29,7 @@ void DataImpl::pushOnUndoStack(const Message& before) {
 }
 
 void DataImpl::reportChange() {
-  if (isEmpty_) {
-    LOG(ERROR) << "reportChange on empty value: " << getTypeName();
-    return;
-  } else {
+  {
     Lock l(lock_);
     changed_ = true;
   }
@@ -67,10 +66,6 @@ void DataImpl::removeListener(Listener<const Message&>* lis) {
 }
 
 bool DataImpl::update() {
-  if (isEmpty_) {
-    LOG(DFATAL) << "Tried to update an empty value: " << getTypeName();
-    return false;
-  }
   ptr<Message> m;
   ListenerSet toUpdate;
 
@@ -79,6 +74,11 @@ bool DataImpl::update() {
     Lock l(lock_);
     changed = changed_;
     changed_ = false;
+  }
+
+  if (isEmpty_ && changed) {
+    LOG(DFATAL) << "Tried to update an empty value: " << getTypeName();
+    return false;
   }
 
   {

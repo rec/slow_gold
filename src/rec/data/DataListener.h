@@ -31,6 +31,7 @@ class DataListener : public Listener<const Proto&> {
     virtual ~Adaptor() {}
 
     virtual void operator()(const Message& m) {
+      Lock l(this->lock_);
       if (const Proto* p = dynamic_cast<const Proto*>(&m))
         (*parent_)(*p);
       else

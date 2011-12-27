@@ -22,6 +22,7 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
 
 UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
     : typeName_(tn), data_(NULL), fileListener_(new FileListener(this)) {
+  Lock l(lock_);
   if (scope == GLOBAL_SCOPE) {
     setData(global());
   } else {
@@ -33,9 +34,9 @@ UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
 UntypedDataListener::~UntypedDataListener() {}
 
 void UntypedDataListener::setData(const VirtualFile* vf) {
+  Lock l(lock_);
   Data* newData = data::getData(typeName_, vf);
 
-  Lock l(lock_);
   if (data_)
     data_->removeListener(this);
 

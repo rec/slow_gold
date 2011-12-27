@@ -22,9 +22,13 @@ struct Opener : public Reader<Proto> {
   }
 
   ~Opener() {
-    if (undoable_ == CAN_UNDO)
-      this->data_->pushOnUndoStack(*before_);
-    this->data_->reportChange();
+    if (this->data_->isEmpty()) {
+      LOG(ERROR) << "Opening empty data " << this->data_->getTypeName();
+    } else {
+      if (undoable_ == CAN_UNDO)
+        this->data_->pushOnUndoStack(*before_);
+      this->data_->reportChange();
+    }
   }
 
   Proto& operator*() { return *mutable_get(); }
