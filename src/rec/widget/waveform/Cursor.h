@@ -17,7 +17,6 @@ namespace waveform {
 class OutlinedCursorLabel;
 
 class Cursor : public Component,
-               public GlobalDataListener<WaveformProto>,
                public SettableTooltipClient,
                public Listener< Samples<44100> >,
                public juce::Label::Listener {
@@ -67,6 +66,8 @@ class Cursor : public Component,
   int captionWidth_;
   bool showSelection_;
   WaveformProto waveDesc_;
+
+  ptr<GlobalDataListener<WaveformProto> > waveformListener_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);
 };

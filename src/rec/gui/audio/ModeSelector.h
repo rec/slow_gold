@@ -35,7 +35,6 @@ class ModeSelector : public Layout,
 
   DrawableButton drag_;
   DrawableButton setTime_;
-  DrawableButton toggleSelection_;
   DrawableButton zoomIn_;
   DrawableButton addLoopPointClick_;
 

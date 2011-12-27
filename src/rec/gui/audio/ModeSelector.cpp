@@ -15,7 +15,7 @@ using namespace juce;
 static const bool ENABLE_SHIFTS = false;
 static const int BUTTON_SIZE = 16;
 static const int PADDING = 4;
-static const int BUTTON_COUNT = 5;
+static const int BUTTON_COUNT = 4;
 
 namespace rec {
 namespace gui {
@@ -44,7 +44,6 @@ ModeSelector::ModeSelector()
     : Layout("ModeSelector", HORIZONTAL),
       drag_("Drag", DrawableButton::ImageFitted),
       setTime_("setTime", DrawableButton::ImageFitted),
-      toggleSelection_("toggleSelection", DrawableButton::ImageFitted),
       zoomIn_("zoomIn", DrawableButton::ImageFitted),
       addLoopPointClick_("CreateClick", DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
@@ -54,8 +53,6 @@ ModeSelector::ModeSelector()
   // setImage<Pencil>(this, &drawLoopPoints_, Mode::DRAW_LOOP_POINTS);
   setImage<Crosshairs>(this, &setTime_, Mode::SET_TIME,
                        "Set current time mode: clicking in the waveform sets the current time.");
-  setImage<PointingHand>(this, &toggleSelection_, Mode::TOGGLE_SELECTION,
-                         "Toggle selection mode: clicking toggle segments in the waveform on and off.");
   setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN,
                    "Zoom mode: clicking on the waveform zooms in on that point.");
 

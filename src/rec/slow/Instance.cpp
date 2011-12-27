@@ -82,12 +82,14 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   DialogLocker::getDisableBroadcaster()->addListener(target_->targetManager());
   DialogLocker::getDisableBroadcaster()->addListener(window->application());
 
+#ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK
   // TODO: move this elsewhere.
   Mode mode = data::getGlobal<Mode>();
   if (mode.click() == Mode::DRAW_LOOP_POINTS) {
     mode.clear_click();
     setProto(mode);
   }
+#endif
 
   threads_->start();
 }

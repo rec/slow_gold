@@ -193,6 +193,7 @@ void MouseListener::mouseUp(const MouseEvent& e) {
 }
 
 void MouseListener::toggleAddLoopPointMode() {
+#ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK
   if (mode_.click() == Mode::DRAW_LOOP_POINTS) {
     mode_ = previousMode_;
   } else {
@@ -200,6 +201,7 @@ void MouseListener::toggleAddLoopPointMode() {
     mode_.set_click(Mode::DRAW_LOOP_POINTS);
   }
   GlobalDataListener<Mode>::setProto(mode_);
+#endif
 }
 
 }  // namespace slow
