@@ -4,8 +4,6 @@
 #include "rec/gui/icon/Crosshairs.svg.h"
 #include "rec/gui/icon/DraggingHand.svg.h"
 #include "rec/gui/icon/MediaRecord.svg.h"
-#include "rec/gui/icon/Pencil.svg.h"
-#include "rec/gui/icon/PointingHand.svg.h"
 #include "rec/gui/icon/ZoomIn.svg.h"
 
 using namespace juce;
@@ -50,7 +48,6 @@ ModeSelector::ModeSelector()
 
   setImage<DraggingHand>(this, &drag_, Mode::DRAG,
                          "Drag mode: use the mouse to drag the waveform back and forth");
-  // setImage<Pencil>(this, &drawLoopPoints_, Mode::DRAW_LOOP_POINTS);
   setImage<Crosshairs>(this, &setTime_, Mode::SET_TIME,
                        "Set current time mode: clicking in the waveform sets the current time.");
   setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN,

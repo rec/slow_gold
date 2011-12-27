@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="OwxUAXqaI" name="Slow">
+  <MAINGROUP id="amJPMbbln" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -667,18 +667,6 @@
         <FILE compile="0" file="../../src/rec/gui/HasSizeHints.h" id="2cUxMDrt8"
               name="HasSizeHints.h" resource="0"/>
         <GROUP id="XdYcYCV4C" name="icon">
-          <FILE compile="1" file="../../src/rec/gui/icon/AudioCard.svg.cpp" id="ly0QggELk"
-                name="AudioCard.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/AudioCard.svg.h" id="oTFK4KRIB"
-                name="AudioCard.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/AudioInputMicrophone.svg.cpp"
-                id="t4SfaYuyq" name="AudioInputMicrophone.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/AudioInputMicrophone.svg.h"
-                id="uPentsnWg" name="AudioInputMicrophone.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/AudioXGeneric.svg.cpp"
-                id="RTApSJP8Y" name="AudioXGeneric.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/AudioXGeneric.svg.h"
-                id="8N274krg7" name="AudioXGeneric.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/Crosshairs.svg.cpp"
                 id="NI3qwHrSg" name="Crosshairs.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/Crosshairs.svg.h" id="ObfevjJQL"
@@ -687,14 +675,6 @@
                 id="B2B7ljTaR" name="DraggingHand.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/DraggingHand.svg.h"
                 id="lQVt2nBFU" name="DraggingHand.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/DriveHardDisk.svg.cpp"
-                id="3O6xfv6ro" name="DriveHardDisk.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/DriveHardDisk.svg.h"
-                id="BEZl4G8fg" name="DriveHardDisk.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/DriveOptical.svg.cpp"
-                id="ieXf2D9ro" name="DriveOptical.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/DriveOptical.svg.h"
-                id="nvWzHRjzB" name="DriveOptical.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/FullScreen.svg.cpp"
                 id="g7zlVF9zw" name="FullScreen.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/FullScreen.svg.h" id="DJgZN4Xz7"
@@ -703,10 +683,6 @@
                 id="5zDt0es3R" name="FullScreenRev.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/FullScreenRev.svg.h"
                 id="jNYfFNpQE" name="FullScreenRev.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/MediaOptical.svg.cpp"
-                id="AwvDMY5IO" name="MediaOptical.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/MediaOptical.svg.h"
-                id="UuYsDmqDr" name="MediaOptical.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/MediaPlay.svg.cpp" id="RDaxQ5ykQ"
                 name="MediaPlay.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlay.svg.h" id="pz1u23xOI"
@@ -723,26 +699,6 @@
                 id="uMI9t3T9k" name="MediaRecord.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaRecord.svg.h" id="y68uAynFg"
                 name="MediaRecord.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/OpenFolder.svg.cpp"
-                id="CVhNP3FWe" name="OpenFolder.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/OpenFolder.svg.h" id="Xxz1Znxqm"
-                name="OpenFolder.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/Pencil.svg.cpp" id="1V52rFpPE"
-                name="Pencil.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/Pencil.svg.h" id="Yvm7Emj3q"
-                name="Pencil.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/PointingHand.svg.cpp"
-                id="vob5jbSjN" name="PointingHand.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/PointingHand.svg.h"
-                id="k1m4MXQTx" name="PointingHand.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/ThickFolder.svg.cpp"
-                id="jS0JTQYQb" name="ThickFolder.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/ThickFolder.svg.h" id="MiX0RE5gN"
-                name="ThickFolder.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/ThinFolder.svg.cpp"
-                id="D2tssc7pL" name="ThinFolder.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/ThinFolder.svg.h" id="1vx0ggL9U"
-                name="ThinFolder.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/ZoomIn.svg.cpp" id="vdhxbQxuB"
                 name="ZoomIn.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/ZoomIn.svg.h" id="8IWlBefvK"
@@ -1342,7 +1298,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="4wl7K59Wx" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="McRLXl0af" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
