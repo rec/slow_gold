@@ -53,6 +53,7 @@ void CurrentFile::operator()(const VirtualFile& f) {
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
+  DLOG(INFO) << "Here! " << file::toString(f);
   if (player())
     player()->clear();
 
