@@ -22,6 +22,9 @@ GenericApplication::~GenericApplication() {}
 
 void GenericApplication::initialise(const String&) {
   FLAGS_logtostderr = true;
+#if 0 && JUCE_MAC
+  FLAGS_log_dir = str(File::getSpecialLocation(File::userApplicationDataDirectory).getChildFile("Logs"));
+#endif
   setName(name_);
   if (downloadNewVersionIfNeeded(version_, name_)) {
     quit();
