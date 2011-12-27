@@ -11,6 +11,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
+#include "rec/widget/waveform/Zoom.h"
 
 using namespace rec::util::block;
 
@@ -203,6 +204,7 @@ void Waveform::operator()(const ZoomProto& zp) {
   {
     Lock l(lock_);
     zoom_ = zp;
+    constrainZoom(&zoom_, length_);
   }
 
   thread::callAsync(this, &Waveform::layout);
@@ -290,9 +292,6 @@ Range<Samples<44100> > Waveform::getTimeRange() const {
     r.end_ = Samples<44100>(selection_.rbegin()->second);
     if (r.end_ == 0)
       r.end_ = zoomEnd();
-
-    // r.begin_ -= desc_.selection_frame_in_seconds();
-    // r.end_ += desc_.selection_frame_in_seconds();
 
     r.begin_ = std::max<Samples<44100> >(r.begin_, 0);
     r.end_ = std::min<Samples<44100> >(r.end_, zoomEnd());
@@ -389,7 +388,12 @@ void Waveform::setCursorText(int index, const String& text) {
 }
 
 void Waveform::repaintBlock(Block b) {
-  repaint(timeToX(b.first), 0, timeToX(b.second), getHeight());
+  int x1 = timeToX(b.first);
+  if (x1 < getWidth()) {
+    int x2 = timeToX(b.second);
+    if (x2 >= 0)
+      repaint(std::max(0, x1), 0, std::min(x2, getWidth()), getHeight());
+  }
 }
 
 void Waveform::repaintBlocks(const BlockSet& b) {

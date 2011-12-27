@@ -1,6 +1,7 @@
 #include "rec/widget/waveform/Zoom.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
+#include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
 namespace widget {
@@ -18,7 +19,7 @@ double zoomFunction(double increment) {
 
 ZoomProto zoom(const ZoomProto& z, Samples<44100> length, Samples<44100> t, double k) {
   k = zoomFunction(k * ZOOM_INCREMENT);
-  DCHECK_LE(z.begin(), z.end());
+  // DCHECK_LE(z.begin(), z.end());
   ZoomProto zoom(z);
   Samples<44100> b = zoom.begin();
   Samples<44100> e = zoom.has_end() ? zoom.end() : length.get();
@@ -26,16 +27,17 @@ ZoomProto zoom(const ZoomProto& z, Samples<44100> length, Samples<44100> t, doub
   if (k >= 1.0 || k * (e - b) >= SMALLEST_TIME_SAMPLES) {
     int64 begin = static_cast<int64>(k * b + (1.0 - k) * t);
     int64 end = static_cast<int64>(k * e + (1.0 - k) * t);
-    DCHECK_LE(0, end) << k << ", "
-                      << b << ", "
-                      << e << ", " << z.ShortDebugString();
+    //DCHECK_LE(0, end) << k << ", "
+    //                  << b << ", "
+    //                  << e << ", " << z.ShortDebugString();
     zoom.set_begin(std::max(0LL, begin));
     zoom.set_end(std::min(static_cast<int64>(length), end));
     if (zoom.end() < 0) {
-      LOG(DFATAL) << "Bad zoom: " << zoom.end();
+      LOG(ERROR) << "Bad zoom: " << zoom.end();
       zoom.set_end(length);
     }
   }
+  constrainZoom(&zoom, length);
 
   return zoom;
 }
@@ -45,6 +47,15 @@ ZoomProto zoom(const ZoomProto& z, Samples<44100> length, double k) {
 }
 
 }  // namespace
+
+void constrainZoom(ZoomProto* z, Samples<44100> length) {
+  if (z->begin() < 0 || z->end() > length ||
+      (z->end() - z->begin()) < SMALLEST_TIME_SAMPLES) {
+    z->set_begin(0);
+    z->set_end(length);
+  }
+}
+
 
 void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k) {
   data::setProto(zoom(data::getProto<ZoomProto>(&f), length, time, k), &f);
