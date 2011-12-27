@@ -1,8 +1,11 @@
-* intermittent ccrashes in startup: see below
+* Close (command-W) works but doesn't update the screen.
+* The Recent File menu doesn't appear.
 * Getting this error: Root.cpp:60] Didn't find id Amazon MP3
 * Gain meter doesn't appear.
 * Got this error:  GetVolumes.cpp:50] Couldn't create reader for Audio CD
 * There's a spurious label on the loop window.
+
+* intermittent crashes in startup: see below
 
 
 #0	0x001f5186 in rec::widget::waveform::WaveformProto::CopyFrom at Waveform.pb.cc:1164

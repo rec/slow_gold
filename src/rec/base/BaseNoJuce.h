@@ -39,10 +39,7 @@ inline Orientation inverse(Orientation o) {
   return (o == HORIZONTAL) ? VERTICAL : HORIZONTAL;
 }
 
-
 class None {};
-
-#define DISABLE_UNDOES true
 
 }  // namespace rec
 

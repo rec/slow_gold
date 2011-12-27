@@ -9,143 +9,54 @@
 namespace rec {
 namespace data {
 
-namespace {
+static void logError(const string& error, const Address& a, const Message& m) {
+  if (!error.empty()) {
+    LOG(DFATAL) << error << ":" << a.ShortDebugString() << ", "
+                << m.ShortDebugString();
+  }
+}
 
-bool copyFrom(const MessageField& f, const Value& value) {
+string copyFrom(const Address& a, Message* m, const Value& value) {
+  MessageField f = createMessageField(a, *m);
   if (!f.field_) {
     if (value.has_message_f())
-      return pmessage(value.message_f()).Parse(f.message_);
+      return pmessage(value.message_f()).Parse(f.message_) ? "" :
+        "Couldn't parse message";
 
-    LOG(DFATAL) << "The Value contained no message field.";
-    return false;
+    return "The Value contained no message field.";
   }
 
-  return (f.type_ == MessageField::SINGLE) ?
+  bool success = (f.type_ == MessageField::SINGLE) ?
     typer::copyFrom(f.message_, f.field_, value) :
     typer::copyFrom(f.message_, f.field_, f.index_, value);
+  return success ? "" : "Couldn't copyFrom";
 }
 
-bool addFrom(const MessageField& f, const Value& value) {
-  if (f.field_)
-    return typer::add(f.message_, f.field_, value);
-
-  LOG(DFATAL) << "Can't add to self";
-  return false;
-}
-
-bool removeLast(const MessageField& f) {
-  if (f.field_ && f.type_ == MessageField::REPEATED) {
-    f.message_->GetReflection()->RemoveLast(f.message_, f.field_);
-    return true;
-  }
-
-  LOG(DFATAL) << "Can't remove last of self";
-  return false;
-}
-
-bool setSingle(const MessageField& field, const Operation& op) {
-  if (op.value_size() != 1) {
-    LOG(DFATAL) << "Can only set one value at a time";
-    return false;
-  }
-  return copyFrom(field, op.value(0));
-}
-
-bool clearSingle(const MessageField& field, const Operation&) {
-  field.message_->Clear();
-  return true;
-}
-
-bool addRepeated(const MessageField& field, const Operation& op) {
-  for (int i = 0; i < op.value_size(); ++i) {
-    if (!addFrom(field, op.value(i)))
-      return false;
-  }
-  return true;
-}
-
-bool swapRepeated(const MessageField& field, const Operation& op) {
-  int s1 = op.swap1(), s2 = op.swap2();
-  int size = getSize(field);
-
-  if (s1 < 0 || s2 < 0 || s1 >= size || s2 >= size) {
-    LOG(DFATAL) << "Can't swap positions " << s1 << "," << s2 << ": " << size;
-    return false;
-  } else {
-    Message* m = field.message_;
-    m->GetReflection()->SwapElements(m, field.field_, s1, s2);
-    return true;
-  }
-}
-
-bool removeRepeated(const MessageField& field, const Operation& op) {
-  int toRemove = (op.command() == Operation::CLEAR) ? field.repeatCount_ :
-    op.remove();
-  Message* msg = field.message_;
-  for (int i = 0; i < toRemove; ++i)
-    msg->GetReflection()->RemoveLast(msg, field.field_);
-  return true;
-}
-
-typedef bool (*Applier)(const MessageField&, const Operation&);
-
-static Applier appliers[Operation::COMMAND_COUNT][MessageField::TYPE_COUNT] = {
-  {NULL,       &addRepeated,     NULL},
-  {NULL,       &removeRepeated,   &clearSingle},
-  {NULL,       &removeRepeated,  NULL},
-  {&setSingle,  NULL,            &setSingle},
-  {NULL,       &swapRepeated,    NULL},
-};
-
-bool valid(const Operation::Command c, const MessageField::Type t) {
-  return c >= Operation::APPEND && c <= Operation::SWAP
-    && t >= MessageField::INDEXED && t <= MessageField::SINGLE;
-}
-
-}  // namespace
-
-bool copyTo(const MessageField& f, ValueProto* value) {
+string copyTo(const Address& a, const Message& m, ValueProto* value) {
+  MessageField f = createMessageField(a, m);
   if (!f.field_) {
     value->set_message_f(pmessage(*f.message_));
-    return true;
+    return "";
   }
 
   if (f.type_ == MessageField::SINGLE)
-    return typer::copyTo(*f.message_, f.field_, value);
+    return typer::copyTo(*f.message_, f.field_, value) ? "" : "type::copyTo";
 
   if (f.index_ >= 0)
-    return typer::copyTo(*f.message_, f.field_, f.index_, value);
+    return typer::copyTo(*f.message_, f.field_, f.index_, value) ? "": "type::copyTo";
 
-  LOG(ERROR) << "copyTo failed with no index: "
-              << (f.message_ ? f.message_->GetTypeName() : "NO MESSAGE");
-  return false;
-}
-
-bool apply(const MessageField& field, const Operation& op) {
-  const Operation::Command c = op.command();
-  const MessageField::Type t = field.type_;
-  if (!valid(c, t)) {
-    LOG(ERROR) << "Not valid: " << op.ShortDebugString();
-    return false;
-  }
-
-  if (Applier applier = appliers[c][t])
-    return (*applier)(field, op);
-
-  LOG(ERROR) << "Couldn't apply " << op.ShortDebugString();
-  return false;
+  return "copyTo failed with no index: " +
+    (f.message_ ? f.message_->GetTypeName() : "NO MESSAGE");
 }
 
 Value getValueWithAddress(const Address& a, const Message& m) {
   Value v;
-  if (!copyTo(createMessageField(a, m), &v))
-    LOG(DFATAL) << a.ShortDebugString() << "," << m.ShortDebugString();
+  logError(copyTo(a, m, &v), a, m);
   return v;
 }
 
 void setValueWithAddress(const Address& a, Message* m, const ValueProto& v) {
-  if (!copyFrom(createMessageField(a, *m), v))
-    LOG(DFATAL) << a.ShortDebugString() << "," << v.ShortDebugString();
+  logError(copyFrom(a, m, v), a, *m);
 }
 
 }  // namespace data

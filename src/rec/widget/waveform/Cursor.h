@@ -25,6 +25,10 @@ class Cursor : public Component,
   Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time,
          int index, bool hasCaption);
   virtual ~Cursor();
+
+  virtual void operator()(const WaveformProto&);
+  virtual void operator()(Samples<44100> t);
+
   virtual void labelTextChanged(juce::Label*);
 
   void setText(const String&);
@@ -34,14 +38,11 @@ class Cursor : public Component,
   Samples<44100> getTime() const;
   bool setDragTime(Samples<44100> time);
   void setTime(Samples<44100> time);
-  virtual void operator()(const WaveformProto&);
   virtual void setTooltip(const String&);
 
   bool isTimeCursor() const { return (this == waveform_->timeCursor()); }
 
   const CursorProto& desc() const { return desc_; }
-
-  virtual void operator()(Samples<44100> t);
 
   int index() { return index_; }
   void layout();

@@ -56,8 +56,8 @@ void GuiListener::update() {
 
   if (comp != lastComponent_) {
     lastComponent_ = comp;
-    String s = getTooltip(comp);
     MessageManagerLock l;
+    String s = getTooltip(comp);
     components()->mainPage_->setTooltip(s);
   }
 }

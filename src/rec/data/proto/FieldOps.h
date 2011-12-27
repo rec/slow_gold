@@ -7,12 +7,10 @@ namespace rec {
 namespace data {
 
 class Address;
-class MessageField;
-class Operation;
 class ValueProto;
 
-bool apply(const MessageField&, const Operation&);
-bool copyTo(const MessageField&, ValueProto*);
+string copyFrom(const Address& a, Message* m, const Value& value);
+string copyTo(const Address& a, const Message& m, ValueProto* value);
 
 Value getValueWithAddress(const Address&, const Message&);
 void setValueWithAddress(const Address&, Message*, const ValueProto&);
