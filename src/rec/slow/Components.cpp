@@ -37,5 +37,17 @@ Components::Components(Instance* instance)
 
 Components::~Components() {}
 
+void Components::setEnabled(bool enabled) {
+  timeController_->setEnabled(enabled);
+  loops_->setEnabled(enabled);
+  songData_->setEnabled(enabled);
+  transformController_->setEnabled(enabled);
+  transportController_->setEnabled(enabled);
+  waveform_->setEnabled(enabled);
+  modeSelector_->setEnabled(enabled);
+  commandBar_->setEnabled(enabled);
+  mainPage_->setEnabled(enabled);
+}
+
 }  // namespace slow
 }  // namespace rec

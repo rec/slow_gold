@@ -65,6 +65,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
 
   bool isEmpty = file::empty(file_);
   if (components()) {
+    components()->setEnabled(!isEmpty);
     components()->directoryTree_->refreshNode(oldFile);
     components()->directoryTree_->refreshNode(f);
   }

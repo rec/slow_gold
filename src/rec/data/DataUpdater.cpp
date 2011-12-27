@@ -11,10 +11,14 @@ namespace data {
 
 // A piece of data got new information!
 void DataUpdater::reportChange(Data* data) {
-  Lock l(lock_);
-  updateData_.insert(data);
-  if (updateThread_)
-    updateThread_->notify();
+  if (!data->isEmpty()) {
+    Lock l(lock_);
+    updateData_.insert(data);
+    if (updateThread_)
+      updateThread_->notify();
+  } else {
+    LOG(ERROR) << "Reported a change to an empty value: " << data;
+  }
 }
 
 bool DataUpdater::update() {

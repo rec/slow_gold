@@ -18,8 +18,10 @@ template <typename Proto> class Opener;
 class Data : public Broadcaster<const Message&> {
  public:
   virtual bool fileReadSuccess() const = 0;
-  bool isEmpty() const { return isEmpty_; }
   virtual const string toString() const = 0;
+
+  bool isEmpty() const { return isEmpty_; }
+  const string& getTypeName() const { return util::getTypeName(*message_); }
 
  private:
   Data(bool e) : changed_(false), isEmpty_(e) {}
@@ -34,6 +36,7 @@ class Data : public Broadcaster<const Message&> {
 
   CriticalSection lock_;
   ptr<Message> message_;
+
   bool changed_;
   const bool isEmpty_;
 

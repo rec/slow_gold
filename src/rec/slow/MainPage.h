@@ -28,6 +28,7 @@ class MainPage {
 
   gui::Layout* panel() { return &mainPanel_; }
   void setTooltip(const String&);
+  void setEnabled(bool);
 
  private:
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.

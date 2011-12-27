@@ -113,5 +113,13 @@ void MainPage::setTooltip(const String& tt) {
   helpPanel_->setText(tt, false);
 }
 
+void MainPage::setEnabled(bool enabled) {
+  mainPanel_.setEnabled(enabled);
+  navigationPanel_.setEnabled(enabled);
+  playbackPanel_.setEnabled(enabled);
+  transformPanel_.setEnabled(enabled);
+  controlPanel_.setEnabled(enabled);
+}
+
 }  // namespace slow
 }  // Namespace rec

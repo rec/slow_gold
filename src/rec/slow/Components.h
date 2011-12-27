@@ -27,6 +27,8 @@ public:
   explicit Components(Instance*);
   ~Components();
 
+  void setEnabled(bool enabled);
+
   ApplicationCommandManager* manager_;
   ptr<gui::audio::TimeController> timeController_;
 

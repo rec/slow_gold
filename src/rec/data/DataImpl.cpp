@@ -20,7 +20,6 @@ DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
     if (!fileReadSuccess_)
       message_.swap(original);
   }
-  typeName_ = getTypeName(*message_);
 }
 
 void DataImpl::pushOnUndoStack(const Message& before) {
@@ -28,7 +27,10 @@ void DataImpl::pushOnUndoStack(const Message& before) {
 }
 
 void DataImpl::reportChange() {
-  {
+  if (isEmpty_) {
+    LOG(ERROR) << "reportChange on empty value: " << getTypeName();
+    return;
+  } else {
     Lock l(lock_);
     changed_ = true;
   }
@@ -36,20 +38,18 @@ void DataImpl::reportChange() {
 }
 
 const string DataImpl::toString() const {
-  return "Data: " + typeName_ + " - " + message_->ShortDebugString();
+  return getTypeName() + ": " + message_->ShortDebugString();
 }
 
 bool DataImpl::writeToFile() {
+  ptr<Message> m;
   if (isEmpty_) {
     LOG(DFATAL) << "Tried to write an empty value.";
     return false;
-  }
-  ptr<Message> m;
-  {
+  } else {
     Lock l(lock_);
     m.reset(clone(*message_));
   }
-
   return copy::copy(*m, file_);
 }
 
@@ -68,7 +68,7 @@ void DataImpl::removeListener(Listener<const Message&>* lis) {
 
 bool DataImpl::update() {
   if (isEmpty_) {
-    LOG(ERROR) << "Tried to update an empty value: " << typeName_;
+    LOG(DFATAL) << "Tried to update an empty value: " << getTypeName();
     return false;
   }
   ptr<Message> m;
@@ -95,7 +95,6 @@ bool DataImpl::update() {
 
   {
     Lock l(lock_);
-    DCHECK_EQ(typeName_, getTypeName(*message_));
     m.reset(clone(*message_));
   }
 
