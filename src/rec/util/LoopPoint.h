@@ -19,7 +19,7 @@ LoopPointList cutSelected(const LoopPointList& loops, bool selected);
 LoopPointList addLoopPoints(const LoopPointList&, const LoopPointList&);
 LoopPointList addLoopPoint(const LoopPointList&, Samples<44100>);
 
-
+static const Samples<44100> CLOSE_LOOPS = 44100 / 20;
 
 void sort(LoopPointList*);
 

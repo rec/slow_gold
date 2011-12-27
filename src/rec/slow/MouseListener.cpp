@@ -10,6 +10,7 @@
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Target.h"
 #include "rec/util/Math.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/OutlinedCursorLabel.h"
@@ -19,7 +20,7 @@
 namespace rec {
 namespace slow {
 
-static const int DRAG_PAD = 22050;
+static const int DRAG_PAD = audio::CLOSE_LOOPS;
 static const int DRAG_TWEAK = 5;
 
 using namespace rec::audio;

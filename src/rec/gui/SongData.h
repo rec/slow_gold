@@ -12,15 +12,14 @@
 namespace rec {
 namespace gui {
 
-class SongData : public component::Focusable<SetterTextArea>,
+class SongData : public SetterTextArea,
                  public Cuttable,
                  public UntypedDataListener {
  public:
   typedef data::Address Address;
 
-  explicit SongData(MenuBarModel* model)
-    : component::Focusable<SetterTextArea>(model),
-      UntypedDataListener(getTypeName<music::Metadata>()) {
+  explicit SongData(MenuBarModel*)
+    : UntypedDataListener(getTypeName<music::Metadata>()) {
     const string& typeName = getTypeName<music::Metadata>();
     setName("SongData");
     add("Track", typeName,
