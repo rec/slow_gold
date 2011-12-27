@@ -52,9 +52,6 @@ UndoStack::~UndoStack() {
 }
 
 int UndoStack::popRedos() {
-	DLOG(INFO) << "before " << undoes_ << ", " << stack_.size();
-	for (uint i = 0; i < stack_.size(); ++i)
-    DLOG(INFO) << i << ", " << stack_[i];
   if (!undoes_)
     return 0;
 
@@ -67,14 +64,10 @@ int UndoStack::popRedos() {
   int undoes = undoes_;
   undoes_ = 0;
 
-	DLOG(INFO) << "after " << undoes_ << ", " << stack_.size();
-	for (int i = 0; i < stack_.size(); ++i)
-    DLOG(INFO) << i << ", " << stack_[i];
   return undoes;
 }
 
 void UndoStack::push(Data* e, const Message& before, const Message& after) {
-  DLOG(INFO) << "Pushing data onto the stack";
   {
     Lock l(lock_);
     ptr<Entry> ue(new Entry(e, before, after));
@@ -82,14 +75,6 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
       stack_.push_back(ue.transfer());
   }
   broadcast(None());
-#if 1
-  for (uint i = 0; i < stack_.size(); ++i) {
-    DLOG(INFO) << i << ": " << undoes_ << ": "
-               << stack_[i]->data_->toString() << ", "
-               << stack_[i]->before_->ShortDebugString() << ", "
-               << stack_[i]->after_->ShortDebugString();
-  }
-#endif
 }
 
 void UndoStack::redoOrUndo(bool isUndo) {

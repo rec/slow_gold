@@ -27,7 +27,7 @@ namespace widget {
 namespace waveform {
 
 Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
-               int index, bool hasCaption)
+               int index, bool isTimeCursor)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
@@ -36,7 +36,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addAndMakeVisible(this, 0);
 
-  if (hasCaption) {
+  if (!isTimeCursor) {
     waveform_->addAndMakeVisible(caption_.get(), 0);
     caption_->addListener(this);
   }

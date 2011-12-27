@@ -41,7 +41,7 @@ const string DataImpl::toString() const {
 
 bool DataImpl::writeToFile() {
   if (isEmpty_) {
-    LOG(ERROR) << "Tried to write an empty value.";
+    LOG(DFATAL) << "Tried to write an empty value.";
     return false;
   }
   ptr<Message> m;
@@ -68,7 +68,7 @@ void DataImpl::removeListener(Listener<const Message&>* lis) {
 
 bool DataImpl::update() {
   if (isEmpty_) {
-    LOG(ERROR) << "Tried to update an empty value.";
+    LOG(ERROR) << "Tried to update an empty value: " << typeName_;
     return false;
   }
   ptr<Message> m;

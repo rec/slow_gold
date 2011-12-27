@@ -52,7 +52,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
              "If your mouse has a wheel, use it to zoom the waveform."
              "The four mode buttons on the top right control how clicks work. ");
 
-  timeCursor_.reset(new Cursor(*timeCursor, this, 0, 0, false));
+  timeCursor_.reset(new Cursor(*timeCursor, this, 0, 0, true));
   timeCursor_->setTooltip("This is the playback time cursor - it follows the "
                           "current time during playback or you can drag it "
                           "around to set the current playback time.");
@@ -60,6 +60,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 
 Waveform::~Waveform() {
   stl::deletePointers(&cursors_);
+  stl::deletePointers(&unusedCursors_);
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {
@@ -162,31 +163,36 @@ void Waveform::operator()(const LoopPointList& loopPoints) {
     thread::callAsync(this, &Waveform::repaintBlocks, dirty);
 }
 
-static const bool CAPTION_ON_FIRST_CURSOR = true;
-
 void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
-    bool hasCaption = CAPTION_ON_FIRST_CURSOR || (i != 0);
     Samples<44100> time = loopPoints.loop_point(i).time();
     Cursor* c;
     if (i < cursors_.size()) {
       c = cursors_[i];
     } else {
-      c = new Cursor(*defaultDesc, this, time, i, hasCaption);
-      c->setTooltip("This is a loop point in your track.  You can drag it "
-                    "around on the waveform, or you can click on the label "
-                    "above and to the right to edit its name.");
+      if (unusedCursors_.empty()) {
+        c = new Cursor(*defaultDesc, this, time, i, false);
+        c->setTooltip("This is a loop point in your track.  You can drag it "
+                      "around on the waveform, or you can click on the label "
+                      "above and to the right to edit its name.");
+      } else {
+        c = unusedCursors_.back();
+        c->setIndex(i);
+        c->setVisible(true);
+        unusedCursors_.pop_back();
+      }
       cursors_.push_back(c);
     }
     c->setTime(time);
     c->setSelected(loopPoints.loop_point(i).selected());
-    if (hasCaption)
-      c->setCaption(str(loopPoints.loop_point(i).name()));
+    c->setCaption(str(loopPoints.loop_point(i).name()));
   }
 
   while (cursors_.size() > size) {
-    delete cursors_.back();
+    Cursor* c = cursors_.back();
+    c->setVisible(false);
+    unusedCursors_.push_back(c);
     cursors_.pop_back();
   }
 

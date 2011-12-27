@@ -91,6 +91,7 @@ class Waveform : public Component,
   block::BlockSet selection_;
 
   CursorList cursors_;
+  CursorList unusedCursors_;
   ptr<Cursor> timeCursor_;
 
   ZoomProto zoom_;

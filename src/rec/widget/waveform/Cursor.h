@@ -23,7 +23,7 @@ class Cursor : public Component,
                public juce::Label::Listener {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time,
-         int index, bool hasCaption);
+         int index, bool isTimeCursor);
   virtual ~Cursor();
 
   virtual void operator()(const WaveformProto&);
@@ -45,6 +45,7 @@ class Cursor : public Component,
   const CursorProto& desc() const { return desc_; }
 
   int index() { return index_; }
+  void setIndex(int index) { index_ = index; }
   void layout();
   void setCaption(const String&);
   Waveform* waveform() const { return waveform_; }
