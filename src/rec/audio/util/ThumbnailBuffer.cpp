@@ -41,7 +41,7 @@ void ThumbnailBuffer::writeThumbnail() {
     file_.getParentDirectory().createDirectory();
     ptr<juce::FileOutputStream> out(file_.createOutputStream());
     if (!out)
-    	LOG(DFATAL) << "Unable to write file " << str(file_);
+    	LOG(ERROR) << "Unable to write file " << str(file_);
     else
       thumbnail_.saveTo(*out);
   }
@@ -49,10 +49,8 @@ void ThumbnailBuffer::writeThumbnail() {
 
 Samples<44100> ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
   Lock l(lock_);
-  if (!reader) {
-    LOG(DFATAL) << "Thumbnail buffer had no reader";
-    return false;
-  }
+  if (!reader)
+    return 0;
 
   ptr<AudioFormatReader> r(reader);
   file_ = getShadowFile(f, "thumbnail.stream");
@@ -64,7 +62,7 @@ Samples<44100> ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReade
       thumbnail_.loadFrom(*out);
       cacheWritten_ = thumbnail_.isFullyLoaded();
     } else {
-      LOG(DFATAL) << "Couldn't load from " << file_.getFullPathName();
+      LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
     }
   } else {
     cacheWritten_ = false;

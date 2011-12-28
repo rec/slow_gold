@@ -25,7 +25,7 @@ Samples<44100> FillableFrameBuffer<Sample, CHANNELS>::setReader(
 
   Samples<44100> size = reader->lengthInSamples;
   if (!frames_.setLength(size)) {
-    LOG(DFATAL) << "Unable to set frame length";
+    LOG(ERROR) << "Ran out of memory, unable to set frame length";
     return 0;
   }
 

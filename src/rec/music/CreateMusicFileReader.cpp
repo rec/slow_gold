@@ -51,7 +51,7 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
     reader.reset(createFileReader(file, metadata.get()));
 
   if (!reader) {
-    LOG(DFATAL) << "Couldn't create reader for file " << file.ShortDebugString();
+    LOG(ERROR) << "Couldn't create reader for file " << file.ShortDebugString();
     return NULL;
   }
 

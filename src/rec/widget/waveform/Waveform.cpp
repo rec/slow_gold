@@ -323,7 +323,7 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
 void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
   Samples<44100> width = r.size();
   if (width < SMALLEST_TIME_SAMPLES) {
-    LOG_FIRST_N(ERROR, 4) << "Nothing on screen!";
+    LOG_FIRST_N(ERROR, 4) << "Nothing on screen! " << width;
     return;
   }
   double seconds = pow(10.0, floor(log10(width / 44100.0)));
@@ -393,8 +393,12 @@ void Waveform::repaintBlock(Block b) {
   int x1 = timeToX(b.first);
   if (x1 < getWidth()) {
     int x2 = timeToX(b.second);
-    if (x2 >= 0)
-      repaint(std::max(0, x1), 0, std::min(x2, getWidth()), getHeight());
+    if (x2 >= 0) {
+      x1 = std::max(0, x1);
+      x2 = std::min(x2, getWidth());
+      if (x1 < x2 && getHeight())
+        repaint(x1, 0, x2 - x1, getHeight());
+    }
   }
 }
 
