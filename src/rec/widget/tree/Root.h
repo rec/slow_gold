@@ -13,7 +13,7 @@ namespace widget {
 namespace tree {
 
 class Root : public Broadcaster<const VirtualFile&>,
-             data::GlobalDataListener<VirtualFileList>,
+             public data::GlobalDataListener<VirtualFileList>,
              public Listener<const VirtualFile&>,
              public juce::MouseListener {
  public:

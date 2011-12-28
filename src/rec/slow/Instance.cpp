@@ -38,7 +38,6 @@ static const int MS_TILL_TOOLTIP = 700;
 
 using juce::TooltipWindow;
 
-
 Instance::Instance(SlowWindow* window) : window_(window) {
   menus_.reset(new Menus(this));
   device_.reset(new audio::Device);
@@ -97,6 +96,14 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 Instance::~Instance() {
   player_->setState(audio::transport::STOPPED);
   threads_.reset();
+}
+
+void Instance::startListening() {
+  player_->startListening();
+  components_->startListening();
+  currentTime_->startListening();
+  guiListener_->startListening();
+  mouseListener_->startListening();
 }
 
 void Instance::startup() {

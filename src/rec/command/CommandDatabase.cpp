@@ -169,8 +169,9 @@ class CommandDatabase {
 
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
-      cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, c, a,
-                                             scope(c.is_global_setter())));
+      ptr<TickedDataSetter> tds(new TickedDataSetter(&cr->info_, ls, c, a));
+      tds->startListening(scope(c.is_global_setter()));
+      cr->setter_.reset(tds.transfer());
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                  &CommandItemSetter::execute));
     }

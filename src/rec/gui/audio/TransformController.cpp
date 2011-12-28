@@ -107,6 +107,10 @@ TransformController::~TransformController() {}
 void TransformController::startListening() {
   data::DataListener<rec::audio::source::StereoProto>::startListening();
   data::DataListener<rec::audio::stretch::Stretch>::startListening();
+  playbackSpeed_.startListening();
+  pitchScale_.startListening();
+  fineScale_.startListening();
+  enableButton_.startListening();
 }
 
 void TransformController::operator()(const Stretch& s) {

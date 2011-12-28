@@ -57,6 +57,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
   timeCursor_->setTooltip("This is the playback time cursor - it follows the "
                           "current time during playback or you can drag it "
                           "around to set the current playback time.");
+  timeCursor_->startListening();
 }
 
 Waveform::~Waveform() {
@@ -66,6 +67,8 @@ Waveform::~Waveform() {
 
 void Waveform::startListening() {
   DataListener<LoopPointList>::startListening();
+  DataListener<ZoomProto>::startListening();
+
   GlobalDataListener<Mode>::startListening();
   GlobalDataListener<WaveformProto>::startListening();
 }
@@ -183,6 +186,7 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
         c->setTooltip("This is a loop point in your track.  You can drag it "
                       "around on the waveform, or you can click on the label "
                       "above and to the right to edit its name.");
+        c->startListening();
       } else {
         c = unusedCursors_.back();
         c->setIndex(i);

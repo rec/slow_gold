@@ -47,8 +47,6 @@ class BufferFiller : public HasInstance {
   AudioSourceChannelInfo updateInfo_;
   audio::source::FrameSource<short, 2> updateSource_;
 
-  typedef DataListener<LoopPointList> LoopListener;
-
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(BufferFiller);
 };
 

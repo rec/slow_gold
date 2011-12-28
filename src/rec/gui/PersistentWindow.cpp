@@ -31,10 +31,14 @@ PersistentWindow::PersistentWindow(const String& name,
   resizeLimits_ = getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea());
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT,
                   resizeLimits_.getWidth(), resizeLimits_.getHeight());
-  (*this)(getProto());
 }
 
 PersistentWindow::~PersistentWindow() {}
+
+void PersistentWindow::startListening() {
+  data::GlobalDataListener<WindowPosition>::startListening();
+  (*this)(getProto());
+}
 
 void PersistentWindow::operator()(const WindowPosition& p) {
   {

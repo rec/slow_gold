@@ -66,6 +66,12 @@ TransportController::TransportController(TimeController* timeController)
   muteButton_.setTooltip("Mute or unmute the sound.");
 }
 
+void TransportController::startListening() {
+  DataListener<rec::audio::Gain>::startListening();
+  level_.startListening();
+  muteButton_.startListening();
+}
+
 TransportController::~TransportController() {}
 
 using rec::audio::transport::State;

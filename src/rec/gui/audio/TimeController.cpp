@@ -43,6 +43,10 @@ TimeController::TimeController()
   addToLayout(&filler_);
 }
 
+void TimeController::startListening() {
+  songDial_.startListening();
+}
+
 void TimeController::operator()(const Stretch& stretch) {
   Lock l(lock_);
   timeScale_ = timeScale(stretch);

@@ -23,7 +23,11 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
 UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
     : typeName_(tn), data_(NULL), fileListener_(new FileListener(this)),
       started_(false) {
-  startListening(scope);
+}
+
+UntypedDataListener::~UntypedDataListener() {
+  DCHECK(started_) << "created a listener but never started it! "
+                   << typeName();
 }
 
 void UntypedDataListener::startListening(Scope scope) {
@@ -39,8 +43,6 @@ void UntypedDataListener::startListening(Scope scope) {
 
   started_ = true;
 }
-
-UntypedDataListener::~UntypedDataListener() {}
 
 void UntypedDataListener::setData(const VirtualFile* vf) {
   Lock l(lock_);

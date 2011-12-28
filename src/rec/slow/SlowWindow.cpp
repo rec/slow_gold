@@ -43,6 +43,7 @@ SlowWindow::~SlowWindow() {}
 void SlowWindow::constructInstance() {
   instanceDeleter_.reset(new slow::Instance(this));
   instance_ = instanceDeleter_.get();
+  instance_->startListening();
 }
 
 void SlowWindow::doStartup() {

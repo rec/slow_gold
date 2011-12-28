@@ -37,6 +37,18 @@ Components::Components(Instance* instance)
 
 Components::~Components() {}
 
+void Components::startListening() {
+  directoryTree_->startListening();
+  timeController_->startListening();
+  loops_->startListening();
+  songData_->startListening();
+  transformController_->startListening();
+  transportController_->startListening();
+  waveform_->startListening();
+  modeSelector_->startListening();
+  mainPage_->startListening();
+}
+
 void Components::setEnabled(bool enabled) {
   timeController_->setEnabled(enabled);
   loops_->setEnabled(enabled);

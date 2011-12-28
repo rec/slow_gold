@@ -26,6 +26,8 @@ class MainPage {
   MainPage(Components*);
   virtual ~MainPage();
 
+  virtual void startListening();
+
   gui::Layout* panel() { return &mainPanel_; }
   void setTooltip(const String&);
   void setEnabled(bool);

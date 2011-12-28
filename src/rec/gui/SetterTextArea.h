@@ -12,8 +12,14 @@ namespace gui {
 class SetterTextArea : public Layout {
  public:
   SetterTextArea(const String& name = String::empty) : Layout(name, VERTICAL) {}
-
   ~SetterTextArea() { stl::deletePointers(&components_); }
+
+  virtual void startListening() {
+    for (int i = 0; i < getNumChildComponents(); ++i) {
+      if (SetterText* st = dynamic_cast<SetterText*>(getChildComponent(i)))
+        st->startListening();
+    }
+  }
 
   SetterText* text(int i) {
     return static_cast<SetterText*>(components_[i]);

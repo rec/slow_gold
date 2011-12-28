@@ -28,6 +28,10 @@ AddressListener::AddressListener(const Address& a, const string& tn, Scope s)
 
 AddressListener::~AddressListener() {}
 
+void AddressListener::startListening(Scope s) {
+  untypedListener_->startListening(s);
+}
+
 static void logError(const string& error, bool failOnError) {
   if (!error.empty()) {
     if (failOnError)

@@ -165,6 +165,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
         ptr<LoopsSetterText> lst(new LoopsSetterText(row, col));
         lst->setTooltip("This is the name of the loop, and you can edit "
                         "it by clicking here.");
+        lst->startListening();
         existing = lst.transfer();
       }
     }

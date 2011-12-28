@@ -44,6 +44,11 @@ class SongData : public SetterTextArea,
         editor()->setMultiLine(true, true);
   }
 
+  virtual void startListening() {
+    SetterTextArea::startListening();
+    UntypedDataListener::startListening();
+  }
+
   virtual void operator()(const Message&) {}
   virtual bool canCopy() const { return true; }
   virtual bool canCut() const { return false; }

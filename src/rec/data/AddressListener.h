@@ -17,6 +17,9 @@ class AddressListener : public Listener<const Value&> {
   AddressListener(const Address& a, const string& typeName,
                   Scope s = FILE_SCOPE);
   virtual ~AddressListener();
+  virtual void startListening() { startListening(FILE_SCOPE); }
+
+  void startListening(Scope s);
 
   virtual void operator()(const Value&) = 0;
 
@@ -43,6 +46,10 @@ class GlobalAddressListener : public AddressListener {
  public:
   GlobalAddressListener(const Address& a, const string& tn)
       : AddressListener(a, tn) {
+  }
+
+  virtual void startListening() {
+    AddressListener::startListening(GLOBAL_SCOPE);
   }
 
  private:

@@ -109,6 +109,15 @@ MainPage::MainPage(Components* components)
 
 MainPage::~MainPage() {}
 
+void MainPage::startListening() {
+  navigationResizer_.startListening();
+  directoryResizer_.startListening();
+  metadataResizer_.startListening();
+  helpResizer_.startListening();
+  transformResizer_.startListening();
+  controlResizer_.startListening();
+}
+
 void MainPage::setTooltip(const String& tt) {
   helpPanel_->setText(tt, false);
 }

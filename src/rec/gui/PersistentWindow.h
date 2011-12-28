@@ -19,6 +19,7 @@ class PersistentWindow : public DocumentWindow,
                    int requiredButtons,
                    bool addToDesktop = true);
   ~PersistentWindow();
+  virtual void startListening();
 
   virtual void operator()(const WindowPosition&);
 

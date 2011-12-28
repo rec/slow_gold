@@ -44,7 +44,8 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
-      index_(index) {
+      index_(index),
+      isTimeCursor_(isTimeCursor) {
   Lock l(lock_);
   caption_.reset(new OutlinedCursorLabel(this));
   desc_.mutable_widget()->set_transparent(true);
@@ -66,6 +67,10 @@ Cursor::~Cursor() {
   waveform_->removeChildComponent(caption_.get());
 }
 
+void Cursor::startListening() {
+  caption_->startListening();
+  waveformListener_->startListening();
+}
 
 Component* Cursor::getCaption() {
   return caption_.get();

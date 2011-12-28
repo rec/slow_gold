@@ -28,6 +28,8 @@ class Instance {
   explicit Instance(SlowWindow* window);
   ~Instance();
 
+  void startListening();
+
   void startup();
   const VirtualFile file() const;
   Samples<44100> time() const;
