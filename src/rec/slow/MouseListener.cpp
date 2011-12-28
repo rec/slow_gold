@@ -35,6 +35,11 @@ MouseListener::MouseListener(Instance* i)
   w->addListener(this);
 }
 
+void MouseListener::startListening() {
+  DataListener<widget::waveform::ZoomProto>::startListening();
+  GlobalDataListener<Mode>::startListening();
+}
+
 namespace {
 
 typedef widget::waveform::OutlinedCursorLabel Label;

@@ -15,7 +15,9 @@ class UntypedDataListener : public Listener<const Message&> {
                                Scope scope = FILE_SCOPE);
   virtual ~UntypedDataListener();
 
-  void startListening(Scope scoped = FILE_SCOPE);
+  void startListening(Scope scoped);
+  virtual void startListening() { startListening(FILE_SCOPE); }
+
   virtual void operator()(const Message& m) = 0;
   Data* getData() const;
   const string& typeName() const { return typeName_; }
@@ -43,6 +45,10 @@ class UntypedGlobalDataListener : public UntypedDataListener {
       :  UntypedDataListener(typeName, GLOBAL_SCOPE) {
   }
   virtual ~UntypedGlobalDataListener() {}
+
+  virtual void startListening() {
+    UntypedDataListener::startListening(GLOBAL_SCOPE);
+  }
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedGlobalDataListener);

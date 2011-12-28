@@ -64,6 +64,12 @@ Waveform::~Waveform() {
   stl::deletePointers(&unusedCursors_);
 }
 
+void Waveform::startListening() {
+  DataListener<LoopPointList>::startListening();
+  GlobalDataListener<Mode>::startListening();
+  GlobalDataListener<WaveformProto>::startListening();
+}
+
 const CursorProto& Waveform::defaultTimeCursor() {
   return timeDesc.get();
 }

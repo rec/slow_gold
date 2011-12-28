@@ -22,6 +22,12 @@ CurrentTime::CurrentTime(Instance* i)
       followCursor_(false) {
 }
 
+void CurrentTime::startListening() {
+  DataListener<LoopPointList>::startListening();
+  DataListener<widget::waveform::ZoomProto>::startListening();
+  GlobalDataListener<GuiSettings>::startListening();
+}
+
 void CurrentTime::operator()(Samples<44100> t) {
   Lock l(lock_);
   time_ = t;

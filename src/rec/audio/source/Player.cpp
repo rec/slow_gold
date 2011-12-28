@@ -36,6 +36,8 @@ void Player::startListening() {
   DataListener<Gain>::startListening();
   DataListener<stretch::Stretch>::startListening();
   DataListener<StereoProto>::startListening();
+
+  selection_->startListening();
 }
 
 Samples<44100> Player::getNextReadPosition() {

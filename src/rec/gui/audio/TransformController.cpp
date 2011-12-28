@@ -104,6 +104,11 @@ TransformController::TransformController()
 
 TransformController::~TransformController() {}
 
+void TransformController::startListening() {
+  data::DataListener<rec::audio::source::StereoProto>::startListening();
+  data::DataListener<rec::audio::stretch::Stretch>::startListening();
+}
+
 void TransformController::operator()(const Stretch& s) {
   MessageManagerLock l;
   playbackSpeed_.setEnabled(s.enabled());

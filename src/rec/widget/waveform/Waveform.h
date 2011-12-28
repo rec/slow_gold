@@ -41,6 +41,8 @@ class Waveform : public Component,
            const CursorProto* cursor = &defaultTimeCursor());
   virtual ~Waveform();
 
+  virtual void startListening();
+
   static const CursorProto& defaultTimeCursor();
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }

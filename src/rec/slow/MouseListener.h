@@ -25,6 +25,9 @@ class MouseListener : public HasInstance,
                       public Listener<const widget::waveform::MouseWheelEvent&> {
  public:
   MouseListener(Instance* i);
+  virtual ~MouseListener() {}
+
+  virtual void startListening();
 
   virtual void mouseDown(const MouseEvent&);
   virtual void mouseDrag(const MouseEvent&);

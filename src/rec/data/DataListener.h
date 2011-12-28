@@ -21,7 +21,11 @@ class DataListener : public Listener<const Proto&> {
   const Proto getProto() const { return data::getProto<Proto>(getData()); }
   void setProto(const Proto& p) { setWithData(getData(), p); }
 
-  void startListening(Scope scope = FILE_SCOPE) {
+  virtual void startListening() {
+    startListening(FILE_SCOPE);
+  }
+
+  void startListening(Scope scope) {
     adaptor_.startListening(scope);
   }
 
@@ -56,6 +60,10 @@ class GlobalDataListener : public DataListener<Proto> {
  public:
   GlobalDataListener() : DataListener<Proto>(GLOBAL_SCOPE) {}
   virtual ~GlobalDataListener() {}
+
+  virtual void startListening() {
+    DataListener<Proto>::startListening(GLOBAL_SCOPE);
+  }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(GlobalDataListener);
