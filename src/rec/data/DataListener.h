@@ -21,6 +21,10 @@ class DataListener : public Listener<const Proto&> {
   const Proto getProto() const { return data::getProto<Proto>(getData()); }
   void setProto(const Proto& p) { setWithData(getData(), p); }
 
+  void startListening(Scope scope) {
+    adaptor_.startListening(scope);
+  }
+
  private:
   class Adaptor : public UntypedDataListener {
    public:

@@ -21,14 +21,23 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
 
 
 UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
-    : typeName_(tn), data_(NULL), fileListener_(new FileListener(this)) {
+    : typeName_(tn), data_(NULL), fileListener_(new FileListener(this)),
+      started_(false) {
+  startListening(scope);
+}
+
+void UntypedDataListener::startListening(Scope scope) {
   Lock l(lock_);
-  if (scope == GLOBAL_SCOPE) {
+  if (started_) {
+    LOG(DFATAL) << "Can't start a listener twice";
+  } else if (scope == GLOBAL_SCOPE) {
     setData(global());
   } else {
     setData(noData());
     data::getData<VirtualFile>(global())->addListener(fileListener_.get());
   }
+
+  started_ = true;
 }
 
 UntypedDataListener::~UntypedDataListener() {}

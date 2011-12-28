@@ -18,6 +18,7 @@ class UntypedDataListener : public Listener<const Message&> {
   virtual void operator()(const Message& m) = 0;
   Data* getData() const;
   const string& typeName() const { return typeName_; }
+  void startListening(Scope);
 
  protected:
   CriticalSection lock_;
@@ -31,6 +32,7 @@ class UntypedDataListener : public Listener<const Message&> {
   const string typeName_;
   Data* data_;
   ptr<FileListener> fileListener_;
+  bool started_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
 };
