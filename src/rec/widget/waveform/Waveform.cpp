@@ -62,7 +62,6 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 
 Waveform::~Waveform() {
   stl::deletePointers(&cursors_);
-  stl::deletePointers(&unusedCursors_);
 }
 
 void Waveform::startListening() {
@@ -181,19 +180,11 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
     if (i < cursors_.size()) {
       c = cursors_[i];
     } else {
-      if (unusedCursors_.empty()) {
-        c = new Cursor(*defaultDesc, this, time, i, false);
-        c->setTooltip("This is a loop point in your track.  You can drag it "
-                      "around on the waveform, or you can click on the label "
-                      "above and to the right to edit its name.");
-        c->startListening();
-      } else {
-        c = unusedCursors_.back();
-        c->setIndex(i);
-        addAndMakeVisible(c);
-        addAndMakeVisible(c->getCaption());
-        unusedCursors_.pop_back();
-      }
+      c = new Cursor(*defaultDesc, this, time, i, false);
+      c->setTooltip("This is a loop point in your track.  You can drag it "
+                    "around on the waveform, or you can click on the label "
+                    "above and to the right to edit its name.");
+      c->startListening();
       cursors_.push_back(c);
     }
     c->setTime(time);
@@ -205,7 +196,7 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
     Cursor* c = cursors_.back();
     removeChildComponent(c);
     removeChildComponent(c->getCaption());
-    unusedCursors_.push_back(c);
+    delete c;
     cursors_.pop_back();
   }
 
