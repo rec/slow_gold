@@ -20,7 +20,7 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
 };
 
 
-UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
+UntypedDataListener::UntypedDataListener(const string& tn)
     : typeName_(tn), data_(NULL), fileListener_(new FileListener(this)),
       started_(false) {
 }

@@ -10,12 +10,11 @@ namespace gui {
 SetterResizer::SetterResizer(const string& typeName,
                              const data::Address& address,
                              Layout* layout,
-                             int itemIndexInLayout,
-                             Scope scope)
+                             int itemIndexInLayout)
   : StretchableLayoutResizerBar(layout->layoutManager(),
                                 itemIndexInLayout,
                                 layout->orientation() == HORIZONTAL),
-    data::AddressListener(address, typeName, scope),
+    data::AddressListener(address, typeName),
     layout_(layout),
     index_(itemIndexInLayout),
     address_(address),

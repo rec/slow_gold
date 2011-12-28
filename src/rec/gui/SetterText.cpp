@@ -10,10 +10,9 @@ SetterText::SetterText(const String& name,
                        const data::Address& address,
                        const String& tip,
                        const String& caption,
-                       bool useCaption,
-                       Scope scope)
+                       bool useCaption)
     : Layout(name, HORIZONTAL),
-      data::AddressListener(address, typeName, scope) {
+      data::AddressListener(address, typeName) {
   DCHECK(name.length());
   const String& cap = caption.length() ? caption : name;
   caption_.setName(name + ".caption");

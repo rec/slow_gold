@@ -14,8 +14,7 @@ class UntypedDataListener;
 
 class AddressListener : public Listener<const Value&> {
  public:
-  AddressListener(const Address& a, const string& typeName,
-                  Scope s = FILE_SCOPE);
+  AddressListener(const Address& a, const string& typeName);
   virtual ~AddressListener();
   virtual void startListening() { startListening(FILE_SCOPE); }
 

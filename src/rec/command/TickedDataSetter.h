@@ -15,8 +15,7 @@ class TickedDataSetter : public CommandDataSetter {
   TickedDataSetter(ApplicationCommandInfo* info,
                    Listener<None>* changeListener,
                    const Command& command,
-                   const data::Address& a,
-                   Scope scope = FILE_SCOPE);
+                   const data::Address& a);
 
   virtual ~TickedDataSetter() {}
 

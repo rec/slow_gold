@@ -22,10 +22,9 @@ class DataSlider : public Layout,
              const string& typeName,
              const data::Address& address,
              const String& caption = String::empty,
-             const String& tip = String::empty,
-             Scope scope = FILE_SCOPE)
+             const String& tip = String::empty)
     : Layout(name, HORIZONTAL, true),
-      data::AddressListener(address, typeName, scope),
+      data::AddressListener(address, typeName),
       slider_(name),
       caption_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);

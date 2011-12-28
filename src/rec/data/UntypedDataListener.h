@@ -11,11 +11,10 @@ namespace data {
 
 class UntypedDataListener : public Listener<const Message&> {
  public:
-  explicit UntypedDataListener(const string& typeName,
-                               Scope scope = FILE_SCOPE);
+  explicit UntypedDataListener(const string& typeName);
   virtual ~UntypedDataListener();
 
-  void startListening(Scope scoped);
+  void startListening(Scope);
   virtual void startListening() { startListening(FILE_SCOPE); }
 
   virtual void operator()(const Message& m) = 0;
@@ -42,7 +41,7 @@ class UntypedDataListener : public Listener<const Message&> {
 class UntypedGlobalDataListener : public UntypedDataListener {
  public:
   explicit UntypedGlobalDataListener(const string& typeName)
-      :  UntypedDataListener(typeName, GLOBAL_SCOPE) {
+      :  UntypedDataListener(typeName) {
   }
   virtual ~UntypedGlobalDataListener() {}
 

@@ -19,8 +19,7 @@ class SetterText : public Layout,
              const data::Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty,
-             bool useCaption = true,
-             Scope scope = FILE_SCOPE);
+             bool useCaption = true);
   virtual ~SetterText() {}
 
   virtual void operator()(const data::Value& v);
@@ -40,7 +39,7 @@ class SetterText : public Layout,
 
  protected:
   void setEditorText(String);
-  
+
   SimpleLabel caption_;
   TextEditor editor_;
 
