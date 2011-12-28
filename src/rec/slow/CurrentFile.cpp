@@ -63,27 +63,16 @@ void CurrentFile::setFile(const VirtualFile& f) {
     file_ = f;
   }
 
-  bool isEmpty = file::empty(file_);
-  if (components()) {
-    components()->setEnabled(!isEmpty);
-    components()->directoryTree_->refreshNode(oldFile);
-    components()->directoryTree_->refreshNode(f);
-  }
+  Samples<44100> length(0);
 
-  Samples<44100> length;
-  if (isEmpty) {
-    length = 0;
-  } else {
+  if (!file::empty(file_)) {
     using audio::util::ThumbnailBuffer;
 
     ThumbnailBuffer* thumbnail = bufferFiller()->thumbnailBuffer();
     length = thumbnail->setReader(file_, music::createMusicFileReader(file_));
+  }
 
-    if (!length) {
-      LOG(DFATAL) << "Unable to read file " << getFullDisplayName(file_);
-      return;
-    }
-
+  if (length) {
     LoopPointList lpl = data::getProto<LoopPointList>(&file_);
     if (lpl.length() != length || !lpl.loop_point_size()) {
       lpl.set_length(length);
@@ -96,6 +85,12 @@ void CurrentFile::setFile(const VirtualFile& f) {
   {
     Lock l(lock_);
     length_ = length;
+  }
+
+  if (components()) {
+    components()->setEnabled(length);
+    components()->directoryTree_->refreshNode(oldFile);
+    components()->directoryTree_->refreshNode(f);
   }
 
   if (threads())
