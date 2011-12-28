@@ -1,6 +1,6 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/audio/source/Player.h"
-#include "rec/audio/util/ThumbnailBuffer.h"
+#include "rec/audio/util/TrackBufferAndThumbnail.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/gui/audio/Loops.h"
@@ -66,9 +66,9 @@ void CurrentFile::setFile(const VirtualFile& f) {
   Samples<44100> length(0);
 
   if (!file::empty(file_)) {
-    using audio::util::ThumbnailBuffer;
+    using audio::util::TrackBufferAndThumbnail;
 
-    ThumbnailBuffer* thumbnail = bufferFiller()->thumbnailBuffer();
+    TrackBufferAndThumbnail* thumbnail = bufferFiller()->thumbnailBuffer();
     length = thumbnail->setReader(file_, music::createMusicFileReader(file_));
   }
 

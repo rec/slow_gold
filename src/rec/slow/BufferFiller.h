@@ -4,7 +4,7 @@
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/stretch/Stretch.pb.h"
-#include "rec/audio/util/ThumbnailBuffer.h"
+#include "rec/audio/util/TrackBufferAndThumbnail.h"
 #include "rec/data/Data.h"
 #include "rec/music/Metadata.pb.h"
 #include "rec/slow/Components.h"
@@ -29,19 +29,19 @@ class BufferFiller : public HasInstance {
   typedef music::Metadata Metadata;
   typedef widget::waveform::ZoomProto ZoomProto;
 
-  typedef audio::util::ThumbnailBuffer ThumbnailBuffer;
+  typedef audio::util::TrackBufferAndThumbnail TrackBufferAndThumbnail;
 
   explicit BufferFiller(Instance* i);
   virtual ~BufferFiller();
 
   thread::Result fillOnce();
-  ThumbnailBuffer* thumbnailBuffer() { return &thumbnailBuffer_; }
+  TrackBufferAndThumbnail* thumbnailBuffer() { return &thumbnailBuffer_; }
 
  private:
   CriticalSection lock_;
 
   Samples<44100> triggerPosition_;
-  ThumbnailBuffer thumbnailBuffer_;
+  TrackBufferAndThumbnail thumbnailBuffer_;
 
   AudioSampleBuffer updateBuffer_;
   AudioSourceChannelInfo updateInfo_;

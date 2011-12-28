@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_UTIL_THUMBNAILBUFFER__
-#define __REC_AUDIO_UTIL_THUMBNAILBUFFER__
+#ifndef __REC_AUDIO_UTIL_TRACKBUFFERANDTHUMBNAIL__
+#define __REC_AUDIO_UTIL_TRACKBUFFERANDTHUMBNAIL__
 
 #include "rec/audio/util/Frame.h"
 #include "rec/audio/util/FillableFrameBuffer.h"
@@ -10,10 +10,10 @@ namespace util {
 
 class CachedThumbnail;
 
-class ThumbnailBuffer {
+class TrackBufferAndThumbnail {
  public:
-  ThumbnailBuffer();
-  virtual ~ThumbnailBuffer();
+  TrackBufferAndThumbnail();
+  virtual ~TrackBufferAndThumbnail();
 
   FillableFrameBuffer<short, 2> *buffer() { return &buffer_; }
 
@@ -34,11 +34,11 @@ class ThumbnailBuffer {
 
   FillableFrameBuffer<short, 2> buffer_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(ThumbnailBuffer);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(TrackBufferAndThumbnail);
 };
 
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_THUMBNAILBUFFER__
+#endif  // __REC_AUDIO_UTIL_TRACKBUFFERANDTHUMBNAIL__

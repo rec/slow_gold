@@ -1,4 +1,4 @@
-#include "rec/audio/util/ThumbnailBuffer.h"
+#include "rec/audio/util/TrackBufferAndThumbnail.h"
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/util/AudioFormatManager.h"
@@ -16,19 +16,19 @@ using rec::audio::getAudioFormatManager;
 
 static const int COMPRESSION = RunnyProto::default_instance().compression();
 
-ThumbnailBuffer::ThumbnailBuffer()
+TrackBufferAndThumbnail::TrackBufferAndThumbnail()
     : cache_(1), cacheWritten_(false),
       thumbnail_(COMPRESSION, *rec::audio::getAudioFormatManager(), cache_) {
 }
 
-ThumbnailBuffer::~ThumbnailBuffer() {}
+TrackBufferAndThumbnail::~TrackBufferAndThumbnail() {}
 
-void ThumbnailBuffer::addBlock(Samples<44100> pos, const Info& i) {
+void TrackBufferAndThumbnail::addBlock(Samples<44100> pos, const Info& i) {
   Lock l(lock_);
   thumbnail_.addBlock(pos, *i.buffer, i.startSample, i.numSamples);
 }
 
-void ThumbnailBuffer::writeThumbnail() {
+void TrackBufferAndThumbnail::writeThumbnail() {
   Lock l(lock_);
   if (cacheWritten_)
     return;
@@ -47,7 +47,7 @@ void ThumbnailBuffer::writeThumbnail() {
   }
 }
 
-Samples<44100> ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
+Samples<44100> TrackBufferAndThumbnail::setReader(const VirtualFile& f, AudioFormatReader* reader) {
   Lock l(lock_);
   if (!reader)
     return 0;
