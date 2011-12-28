@@ -45,6 +45,8 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   currentFile_.reset(new CurrentFile(this));
   player_.reset(new audio::source::Player(device_.get()));
   components_.reset(new Components(this));
+  currentFile_->setFile(data::getGlobal<VirtualFile>());
+
   currentTime_.reset(new CurrentTime(this));
   target_.reset(new Target(this));
   mouseListener_.reset(new MouseListener(this));

@@ -19,9 +19,7 @@
 namespace rec {
 namespace slow {
 
-CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {
-  setFile(data::getGlobal<VirtualFile>());
-}
+CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {}
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
@@ -65,7 +63,9 @@ void CurrentFile::setFile(const VirtualFile& f) {
 
   Samples<44100> length(0);
 
-  if (!file::empty(file_)) {
+  bool fileEmpty = file::empty(file_);
+
+  if (!fileEmpty) {
     using audio::util::TrackBufferAndThumbnail;
 
     TrackBufferAndThumbnail* thumbnail = bufferFiller()->trackBuffer();
@@ -80,6 +80,9 @@ void CurrentFile::setFile(const VirtualFile& f) {
         lpl.add_loop_point()->set_selected(true);
       data::setProto(lpl, file_);
     }
+  } else if (!fileEmpty) {
+    (*this)(file::none());
+    return;
   }
 
   {
@@ -87,11 +90,9 @@ void CurrentFile::setFile(const VirtualFile& f) {
     length_ = length;
   }
 
-  if (components()) {
-    components()->setEnabled(length);
-    components()->directoryTree_->refreshNode(oldFile);
-    components()->directoryTree_->refreshNode(f);
-  }
+  components()->setEnabled(length);
+  components()->directoryTree_->refreshNode(oldFile);
+  components()->directoryTree_->refreshNode(f);
 
   if (threads())
     threads()->fillThread()->notify();
