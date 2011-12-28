@@ -68,7 +68,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
   if (!file::empty(file_)) {
     using audio::util::TrackBufferAndThumbnail;
 
-    TrackBufferAndThumbnail* thumbnail = bufferFiller()->thumbnailBuffer();
+    TrackBufferAndThumbnail* thumbnail = bufferFiller()->trackBuffer();
     length = thumbnail->setReader(file_, music::createMusicFileReader(file_));
   }
 

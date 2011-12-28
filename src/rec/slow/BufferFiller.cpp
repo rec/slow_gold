@@ -20,7 +20,7 @@ const int PRELOAD = 10000;
 
 BufferFiller::BufferFiller(Instance* i) : HasInstance(i),
                             updateBuffer_(2, 1024),
-                            updateSource_(thumbnailBuffer_.buffer()->frames()) {
+                            updateSource_(trackBuffer_.buffer()->frames()) {
   updateInfo_.buffer = &updateBuffer_;
   updateInfo_.startSample = 0;
 }
@@ -28,14 +28,14 @@ BufferFiller::BufferFiller(Instance* i) : HasInstance(i),
 BufferFiller::~BufferFiller() {}
 
 thread::Result BufferFiller::fillOnce() {
-  FillableFrameBuffer<short, 2>* buf = thumbnailBuffer_.buffer();
+  FillableFrameBuffer<short, 2>* buf = trackBuffer_.buffer();
   if (!buf) {
     LOG(DFATAL) << "No buffer";
     return static_cast<thread::Result>(PARAMETER_WAIT);
   }
 
   if (buf->isFull()) {
-    thumbnailBuffer_.writeThumbnail();
+    trackBuffer_.writeThumbnail();
     return static_cast<thread::Result>(PARAMETER_WAIT);
   }
 
@@ -68,7 +68,7 @@ thread::Result BufferFiller::fillOnce() {
   updateBuffer_.setSize(2, filled, false, false, true);
   updateSource_.setNextReadPosition(pos);
   updateSource_.getNextAudioBlock(updateInfo_);
-  thumbnailBuffer_.addBlock(pos, updateInfo_);
+  trackBuffer_.addBlock(pos, updateInfo_);
 
   thread::callAsync(components()->waveform_.get(),
                     &Waveform::repaintBlock,

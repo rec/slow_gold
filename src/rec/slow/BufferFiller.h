@@ -35,13 +35,13 @@ class BufferFiller : public HasInstance {
   virtual ~BufferFiller();
 
   thread::Result fillOnce();
-  TrackBufferAndThumbnail* thumbnailBuffer() { return &thumbnailBuffer_; }
+  TrackBufferAndThumbnail* trackBuffer() { return &trackBuffer_; }
 
  private:
   CriticalSection lock_;
 
   Samples<44100> triggerPosition_;
-  TrackBufferAndThumbnail thumbnailBuffer_;
+  TrackBufferAndThumbnail trackBuffer_;
 
   AudioSampleBuffer updateBuffer_;
   AudioSourceChannelInfo updateInfo_;

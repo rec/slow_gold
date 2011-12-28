@@ -70,11 +70,11 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 
   player_->level()->addListener(components_->transportController_->levelListener());
 
-  TrackBufferAndThumbnail* thumbnailBuffer = bufferFiller_->thumbnailBuffer();
-  Source *s = new FrameSource<short, 2>(thumbnailBuffer->buffer()->frames());
+  TrackBufferAndThumbnail* trackBuffer = bufferFiller_->trackBuffer();
+  Source *s = new FrameSource<short, 2>(trackBuffer->buffer()->frames());
   player_->setSource(s);
   player_->timeBroadcaster()->addListener(currentTime_.get());
-  components_->waveform_->setAudioThumbnail(thumbnailBuffer->thumbnail());
+  components_->waveform_->setAudioThumbnail(trackBuffer->thumbnail());
 
   window->addListener(menus_.get());
 

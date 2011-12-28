@@ -110,7 +110,7 @@ void CurrentTime::jumpToTime(Samples<44100> pos) {
     }
 
     FillableFrameBuffer<short, 2>* buf =
-      bufferFiller()->thumbnailBuffer()->buffer();
+      bufferFiller()->trackBuffer()->buffer();
     jumpTime_ = pos;
     if (buf && !buf->hasFilled(block::Block(pos, pos + PRELOAD))) {
       buf->setNextFillPosition(pos);
