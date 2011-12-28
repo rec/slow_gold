@@ -26,6 +26,7 @@ class AddressListener : public Listener<const Value&> {
   const Value getValue(const Message& m) const;
   const Value getValue() const;
   const Address& address() const { return address_; }
+
   void setFailOnError(bool f) { failOnError_ = f; }
 
  private:

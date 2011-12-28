@@ -23,7 +23,7 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
 AddressListener::AddressListener(const Address& a, const string& tn)
     : untypedListener_(new UntypedListener(this, tn)),
       address_(a),
-      failOnError_(false) {
+      failOnError_(true) {
 }
 
 AddressListener::~AddressListener() {}
@@ -36,8 +36,6 @@ static void logError(const string& error, bool failOnError) {
   if (!error.empty()) {
     if (failOnError)
       LOG(DFATAL) << error;
-    else
-      LOG(ERROR) << error;
   }
 }
 

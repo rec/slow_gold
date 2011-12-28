@@ -33,6 +33,7 @@ struct MessageField {
   int32 index_;
   Type type_;
   int32 repeatCount_;
+  string error_;
 
   JUCE_LEAK_DETECTOR(MessageField);
 };
