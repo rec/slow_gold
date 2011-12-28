@@ -32,6 +32,12 @@ Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
+void Player::startListening() {
+  DataListener<Gain>::startListening();
+  DataListener<stretch::Stretch>::startListening();
+  DataListener<StereoProto>::startListening();
+}
+
 Samples<44100> Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
 }

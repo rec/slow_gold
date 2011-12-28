@@ -29,13 +29,15 @@ class StereoProto;
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be NULL if no stretch has been requested.
 class Player : public DataListener<Gain>,
-               public Broadcaster<transport::State>,
                public DataListener<stretch::Stretch>,
                public DataListener<StereoProto>,
+               public Broadcaster<transport::State>,
                public juce::ChangeListener {
  public:
   Player(Device* d);
   virtual ~Player();
+
+  void startListening();
 
   void setState(transport::State state);
 
