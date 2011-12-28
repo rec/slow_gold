@@ -14,38 +14,34 @@ namespace {
 using namespace rec::proto;
 using namespace google::protobuf;
 
-bool dereference(MessageField* f, const Address::Part& afield) {
+string dereference(MessageField* f, const Address::Part& afield) {
   if (f->field_) {
     const Reflection& r = *f->message_->GetReflection();
     if (f->type_ == MessageField::INDEXED) {
       if (f->field_->type() == FieldDescriptor::TYPE_MESSAGE) {
         if (f->index_ < 0 || f->index_ >= getSize(*f)) {
-          LOG(ERROR) << " Index " << f->index_ << " not in range " << getSize(*f)
-                      << ": " << f->message_->ShortDebugString();
-          return false;
+          return " Index " + str(String(f->index_)) + " not in range "
+            + str(String(getSize(*f))) + ": " + f->message_->ShortDebugString();
         }
         f->message_ = r.MutableRepeatedMessage(f->message_, f->field_, f->index_);
       } else {
-        LOG(ERROR) << "Non-terminal field had type " << f->field_->type();
-        return false;
+        return "Non-terminal field had type " + str(String(f->field_->type()));
       }
 
     } else if (f->type_ == MessageField::REPEATED) {
-      if (!afield.has_index()) {
-        LOG(ERROR) << "Repeated has no index ";
-        return false;
-      }
+      if (!afield.has_index())
+        return "Repeated has no index ";
 
       int32 index = static_cast<int32>(afield.index());
       if (index >= f->repeatCount_) {
-        LOG(ERROR) << "Index " << index << " out of bounds " << f->repeatCount_
-                    << ": " << f->message_->ShortDebugString();
-        return false;
+        return "Index " + str(String(index)) + " out of bounds "
+          + str(String(f->repeatCount_)) + ": " +
+          f->message_->ShortDebugString();
       }
 
       f->type_ = MessageField::INDEXED;
       f->index_ = index;
-      return true;
+      return "";
 
     } else {
       f->message_ = r.MutableMessage(f->message_, f->field_);
@@ -53,21 +49,16 @@ bool dereference(MessageField* f, const Address::Part& afield) {
     }
   }
 
-  if (!afield.has_name()) {
-    LOG(ERROR) << "Expected a name at this point";
-    return false;
-  }
+  if (!afield.has_name())
+    return "Expected a name at this point";
 
-  if (!f->message_) {
-    LOG(ERROR) << "Empty message";
-    return false;
-  }
+  if (!f->message_)
+    return "Empty message";
 
   f->field_ = f->message_->GetDescriptor()->FindFieldByName(afield.name());
   if (!f->field_) {
-    LOG(ERROR) << "Could not find field named " << afield.name()
-               << " in class named " << f->message_->GetTypeName();
-    return false;
+    return "Could not find field named " + afield.name() +
+      " in class named " + f->message_->GetTypeName();
   }
 
   if (f->field_->label() == FieldDescriptor::LABEL_REPEATED) {
@@ -79,7 +70,7 @@ bool dereference(MessageField* f, const Address::Part& afield) {
     f->repeatCount_ = 1;
   }
 
-  return true;
+  return "";
 }
 
 }  // namespace
@@ -92,9 +83,10 @@ MessageField createMessageField(const Address& address, const Message& msg) {
   field.type_ = MessageField::SINGLE;
 
   for (int i = 0; field.message_ && i < address.part_size(); ++i) {
-    if (!dereference(&field, address.part(i))) {
-      field.error_ = "Couldn't get field from address:\n" +
-        address.ShortDebugString() + "\nMessage:\n" + msg.ShortDebugString();
+    string error = dereference(&field, address.part(i));
+    if (!error.empty()) {
+      field.error_ = error + ": " + address.ShortDebugString() +
+        "\nMessage:\n" + msg.ShortDebugString();
       break;
     }
   }
