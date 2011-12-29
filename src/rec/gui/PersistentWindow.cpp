@@ -42,11 +42,8 @@ void PersistentWindow::startListening() {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-  {
-    Lock l(lock_);
-    position_ = p;
-  }
   MessageManagerLock l;
+  position_ = p;
   if (!p.juce_position().empty())
     restoreWindowStateFromString(str(p.juce_position()));
 
@@ -59,11 +56,13 @@ void PersistentWindow::operator()(const WindowPosition& p) {
 }
 
 void PersistentWindow::moved() {
+  MessageManagerLock l;
   DocumentWindow::moved();
   writeData();
 }
 
 void PersistentWindow::resized() {
+  MessageManagerLock l2;
   DocumentWindow::resized();
   writeData();
 }
@@ -74,8 +73,8 @@ bool PersistentWindow::isFullScreenSize() const {
 }
 
 void PersistentWindow::writeData() {
+  MessageManagerLock l;
   if (isEnabled()) {
-    Lock l(lock_);
     position_.set_juce_position(str(getWindowStateAsString()));
     requestWrite();
   }
@@ -86,7 +85,7 @@ void PersistentWindow::closeButtonPressed() {
 }
 
 void PersistentWindow::doWriteGui() {
-  Lock l(lock_);
+  MessageManagerLock l;
   setProto(position_);
 }
 
