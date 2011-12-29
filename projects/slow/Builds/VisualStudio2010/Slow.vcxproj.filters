@@ -514,31 +514,97 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\GuiWriteable.cpp">
       <Filter>Slow\rec\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\Crosshairs.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButton.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DraggingHand.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonDisabled.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreen.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonPressed.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointMode.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointModeDisabled.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DragMode.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DragModeDisabled.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButton.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomIn.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonPressed.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButton.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonPressed.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp">
@@ -1443,31 +1509,97 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h">
       <Filter>Slow\rec\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\Crosshairs.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButton.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DraggingHand.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonDisabled.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreen.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonPressed.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointMode.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointModeDisabled.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DragMode.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DragModeDisabled.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButton.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomIn.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonPressed.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButton.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonPressed.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h">
       <Filter>Slow\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h">

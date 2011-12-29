@@ -2,9 +2,18 @@
 
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/gui/audio/TimeController.h"
-#include "rec/gui/icon/MediaPlaybackStart.svg.h"
-#include "rec/gui/icon/MediaPlaybackStop.svg.h"
-#include "rec/gui/icon/ZoomIn.svg.h"
+#include "rec/gui/icon/JumpBackButton.svg.h"
+#include "rec/gui/icon/JumpBackButtonDisabled.svg.h"
+#include "rec/gui/icon/JumpBackButtonPressed.svg.h"
+#include "rec/gui/icon/JumpForwardButton.svg.h"
+#include "rec/gui/icon/JumpForwardButtonDisabled.svg.h"
+#include "rec/gui/icon/JumpForwardButtonPressed.svg.h"
+#include "rec/gui/icon/JumpToStartButton.svg.h"
+#include "rec/gui/icon/JumpToStartButtonDisabled.svg.h"
+#include "rec/gui/icon/JumpToStartButtonPressed.svg.h"
+#include "rec/gui/icon/PlayButton.svg.h"
+#include "rec/gui/icon/PlayButtonDisabled.svg.h"
+#include "rec/gui/icon/StopButton.svg.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -36,10 +45,10 @@ TransportController::TransportController(TimeController* timeController)
       muteButton_(MUTE_BUTTON_TEXT, getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
-  jumpToStartButton_.setImages(ptr<Drawable>(icon::ZoomIn::create()).get());
-  startStopButton_.setImages(ptr<Drawable>(icon::MediaPlaybackStart::create()).get(),
+  jumpToStartButton_.setImages(ptr<Drawable>(icon::JumpToStartButton::create()).get());
+  startStopButton_.setImages(ptr<Drawable>(icon::PlayButton::create()).get(),
                              NULL, NULL, NULL,
-                             ptr<Drawable>(icon::MediaPlaybackStop::create()).get());
+                             ptr<Drawable>(icon::StopButton::create()).get());
 
   jumpToStartButton_.addListener(this);
   startStopButton_.addListener(this);

@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="yYX2KOKCb" name="Slow">
+  <MAINGROUP id="Tlw1u3YEq" name="Slow">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -667,42 +667,130 @@
         <FILE compile="0" file="../../src/rec/gui/HasSizeHints.h" id="2cUxMDrt8"
               name="HasSizeHints.h" resource="0"/>
         <GROUP id="XdYcYCV4C" name="icon">
-          <FILE compile="1" file="../../src/rec/gui/icon/Crosshairs.svg.cpp"
-                id="NI3qwHrSg" name="Crosshairs.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/Crosshairs.svg.h" id="ObfevjJQL"
-                name="Crosshairs.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/DraggingHand.svg.cpp"
-                id="B2B7ljTaR" name="DraggingHand.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/DraggingHand.svg.h"
-                id="lQVt2nBFU" name="DraggingHand.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/FullScreen.svg.cpp"
-                id="g7zlVF9zw" name="FullScreen.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/FullScreen.svg.h" id="DJgZN4Xz7"
-                name="FullScreen.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/FullScreenRev.svg.cpp"
-                id="5zDt0es3R" name="FullScreenRev.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/FullScreenRev.svg.h"
-                id="jNYfFNpQE" name="FullScreenRev.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/MediaPlay.svg.cpp" id="RDaxQ5ykQ"
-                name="MediaPlay.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/MediaPlay.svg.h" id="pz1u23xOI"
-                name="MediaPlay.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.cpp"
-                id="5BOSpctvc" name="MediaPlaybackStart.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.h"
-                id="VYxnNGFXI" name="MediaPlaybackStart.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.cpp"
-                id="87ZKY3yRC" name="MediaPlaybackStop.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.h"
-                id="zJDwfO1SW" name="MediaPlaybackStop.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/MediaRecord.svg.cpp"
-                id="uMI9t3T9k" name="MediaRecord.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/MediaRecord.svg.h" id="y68uAynFg"
-                name="MediaRecord.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/ZoomIn.svg.cpp" id="vdhxbQxuB"
-                name="ZoomIn.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/ZoomIn.svg.h" id="8IWlBefvK"
-                name="ZoomIn.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/AddLoopPointButton.svg.cpp"
+                id="VzckcNTNP" name="AddLoopPointButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/AddLoopPointButton.svg.h"
+                id="ThMcjILKk" name="AddLoopPointButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/AddLoopPointButtonDisabled.svg.cpp"
+                id="NjasuIbNR" name="AddLoopPointButtonDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/AddLoopPointButtonDisabled.svg.h"
+                id="KMqtfwBZr" name="AddLoopPointButtonDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/AddLoopPointButtonPressed.svg.cpp"
+                id="tZhKoIgXX" name="AddLoopPointButtonPressed.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/AddLoopPointButtonPressed.svg.h"
+                id="OFOOhdLE2" name="AddLoopPointButtonPressed.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/AddLoopPointMode.svg.cpp"
+                id="gQC1YqXTy" name="AddLoopPointMode.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/AddLoopPointMode.svg.h"
+                id="1JzvQTJfU" name="AddLoopPointMode.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/AddLoopPointModeDisabled.svg.cpp"
+                id="hJNrRZeul" name="AddLoopPointModeDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/AddLoopPointModeDisabled.svg.h"
+                id="nwGllh2x1" name="AddLoopPointModeDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/DragMode.svg.cpp" id="DGJeWOUH4"
+                name="DragMode.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/DragMode.svg.h" id="ddGZhpfV4"
+                name="DragMode.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/DragModeDisabled.svg.cpp"
+                id="45t26KzDl" name="DragModeDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/DragModeDisabled.svg.h"
+                id="3H9P0S3wb" name="DragModeDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpBackButton.svg.cpp"
+                id="XJpmIc7Ru" name="JumpBackButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpBackButton.svg.h"
+                id="jpFVaKZ97" name="JumpBackButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpBackButtonDisabled.svg.cpp"
+                id="dpEhVpZG9" name="JumpBackButtonDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpBackButtonDisabled.svg.h"
+                id="kB4sCzh8A" name="JumpBackButtonDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpBackButtonPressed.svg.cpp"
+                id="RR83UBc65" name="JumpBackButtonPressed.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpBackButtonPressed.svg.h"
+                id="HO0m7OuNw" name="JumpBackButtonPressed.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpForwardButton.svg.cpp"
+                id="x5OeJ5s78" name="JumpForwardButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpForwardButton.svg.h"
+                id="dDpNAcCOB" name="JumpForwardButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpForwardButtonDisabled.svg.cpp"
+                id="yBJgvIvUd" name="JumpForwardButtonDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpForwardButtonDisabled.svg.h"
+                id="m6mJbjiPH" name="JumpForwardButtonDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpForwardButtonPressed.svg.cpp"
+                id="TTPbw3lK4" name="JumpForwardButtonPressed.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpForwardButtonPressed.svg.h"
+                id="Ssz9ifvdj" name="JumpForwardButtonPressed.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpToStartButton.svg.cpp"
+                id="vUoEt9NIm" name="JumpToStartButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpToStartButton.svg.h"
+                id="zaoTKceZY" name="JumpToStartButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpToStartButtonDisabled.svg.cpp"
+                id="SMi3KnADr" name="JumpToStartButtonDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpToStartButtonDisabled.svg.h"
+                id="oE1EOdcO8" name="JumpToStartButtonDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/JumpToStartButtonPressed.svg.cpp"
+                id="o4qsrDTwB" name="JumpToStartButtonPressed.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/JumpToStartButtonPressed.svg.h"
+                id="OwsqwdPB2" name="JumpToStartButtonPressed.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/PlayButton.svg.cpp"
+                id="LGPpkrQAu" name="PlayButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/PlayButton.svg.h" id="oga0ADevR"
+                name="PlayButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/PlayButtonDisabled.svg.cpp"
+                id="LNXkbOXJn" name="PlayButtonDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/PlayButtonDisabled.svg.h"
+                id="SdOIv53bd" name="PlayButtonDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/SetTimeMode.svg.cpp"
+                id="MO9CKDHPA" name="SetTimeMode.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/SetTimeMode.svg.h" id="8lp8QhvNp"
+                name="SetTimeMode.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/SetTimeModeDisabled.svg.cpp"
+                id="jAb2H4Hk5" name="SetTimeModeDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/SetTimeModeDisabled.svg.h"
+                id="YaAyqoRMQ" name="SetTimeModeDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/StopButton.svg.cpp"
+                id="flLqNM7IP" name="StopButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/StopButton.svg.h" id="87HSwNA4q"
+                name="StopButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/StopButtonDisabled.svg.cpp"
+                id="tJPSZWeaN" name="StopButtonDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/StopButtonDisabled.svg.h"
+                id="xususW4Ty" name="StopButtonDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomMode.svg.cpp" id="nRu5BURoz"
+                name="ZoomMode.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomMode.svg.h" id="wcgMLuRDz"
+                name="ZoomMode.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomModeDisabled.svg.cpp"
+                id="IFwKHCT9N" name="ZoomModeDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomModeDisabled.svg.h"
+                id="k264dnK4w" name="ZoomModeDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomOutButton.svg.cpp"
+                id="jalcd19UX" name="ZoomOutButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomOutButton.svg.h"
+                id="FxKBJpzb5" name="ZoomOutButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomOutButtonDisabled.svg.cpp"
+                id="pnIoqOjeC" name="ZoomOutButtonDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomOutButtonDisabled.svg.h"
+                id="XexZbyuOf" name="ZoomOutButtonDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomOutButtonPressed.svg.cpp"
+                id="vvSUoIdep" name="ZoomOutButtonPressed.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomOutButtonPressed.svg.h"
+                id="a7f3Q848G" name="ZoomOutButtonPressed.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomOutButtonPressedDisabled.svg.cpp"
+                id="2GGpeKUCY" name="ZoomOutButtonPressedDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomOutButtonPressedDisabled.svg.h"
+                id="yuxGyYdfc" name="ZoomOutButtonPressedDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomToSelectionButton.svg.cpp"
+                id="OxviVtHln" name="ZoomToSelectionButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomToSelectionButton.svg.h"
+                id="fpVKW2HyG" name="ZoomToSelectionButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomToSelectionButtonDisabled.svg.cpp"
+                id="cZvoBqbfp" name="ZoomToSelectionButtonDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomToSelectionButtonDisabled.svg.h"
+                id="qCl65ygnz" name="ZoomToSelectionButtonDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomToSelectionButtonPressed.svg.cpp"
+                id="jLViJk9hI" name="ZoomToSelectionButtonPressed.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomToSelectionButtonPressed.svg.h"
+                id="QrHVjVryR" name="ZoomToSelectionButtonPressed.svg.h" resource="0"/>
         </GROUP>
         <GROUP id="5bQkbq9Qq" name="layout">
           <FILE compile="0" file="../../src/rec/gui/layout/Layout.h" id="lIPjgRqGS"
@@ -1298,7 +1386,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Z5hwX0zTY" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="tdf4mBejV" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

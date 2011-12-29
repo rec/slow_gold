@@ -1,8 +1,13 @@
 #include "rec/gui/audio/CommandBar.h"
-#include "rec/gui/icon/FullScreen.svg.h"
-#include "rec/gui/icon/FullScreenRev.svg.h"
-#include "rec/gui/icon/MediaPlay.svg.h"
-#include "rec/gui/icon/MediaRecord.svg.h"
+#include "rec/gui/icon/AddLoopPointButton.svg.h"
+#include "rec/gui/icon/AddLoopPointButtonPressed.svg.h"
+#include "rec/gui/icon/AddLoopPointButtonDisabled.svg.h"
+#include "rec/gui/icon/ZoomOutButton.svg.h"
+#include "rec/gui/icon/ZoomOutButtonPressed.svg.h"
+#include "rec/gui/icon/ZoomOutButtonDisabled.svg.h"
+#include "rec/gui/icon/ZoomToSelectionButton.svg.h"
+#include "rec/gui/icon/ZoomToSelectionButtonPressed.svg.h"
+#include "rec/gui/icon/ZoomToSelectionButtonDisabled.svg.h"
 
 namespace rec {
 namespace gui {
@@ -29,16 +34,16 @@ CommandBar::CommandBar()
   zoomToSelection_.addListener(this);
 
   addLoopPoint_.setImages(
-                          ptr<Drawable>(icon::MediaPlay::create()).get(), NULL,
-                          ptr<Drawable>(icon::MediaRecord::create()).get());
+                          ptr<Drawable>(icon::AddLoopPointButton::create()).get(), NULL,
+                          ptr<Drawable>(icon::AddLoopPointButtonPressed::create()).get());
 
-  zoomOut_.setImages(ptr<Drawable>(icon::FullScreen::create()).get(),
+  zoomOut_.setImages(ptr<Drawable>(icon::ZoomOutButton::create()).get(),
                      NULL,
-                     ptr<Drawable>(icon::FullScreenRev::create()).get());
+                     ptr<Drawable>(icon::ZoomOutButtonPressed::create()).get());
 
-  zoomToSelection_.setImages(ptr<Drawable>(icon::FullScreen::create()).get(),
+  zoomToSelection_.setImages(ptr<Drawable>(icon::ZoomToSelectionButton::create()).get(),
                              NULL,
-                             ptr<Drawable>(icon::FullScreenRev::create()).get());
+                             ptr<Drawable>(icon::ZoomToSelectionButtonPressed::create()).get());
 
   addLoopPoint_.setTooltip("Add a loop point at the current time.");
   zoomOut_.setTooltip("Zoom the waveform out one step.");

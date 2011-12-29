@@ -1,10 +1,14 @@
 #include "rec/gui/audio/ModeSelector.h"
 
 #include "rec/data/Value.h"
-#include "rec/gui/icon/Crosshairs.svg.h"
-#include "rec/gui/icon/DraggingHand.svg.h"
-#include "rec/gui/icon/MediaRecord.svg.h"
-#include "rec/gui/icon/ZoomIn.svg.h"
+#include "rec/gui/icon/SetTimeMode.svg.h"
+#include "rec/gui/icon/DragMode.svg.h"
+#include "rec/gui/icon/AddLoopPointMode.svg.h"
+#include "rec/gui/icon/ZoomMode.svg.h"
+#include "rec/gui/icon/SetTimeModeDisabled.svg.h"
+#include "rec/gui/icon/DragModeDisabled.svg.h"
+#include "rec/gui/icon/AddLoopPointModeDisabled.svg.h"
+#include "rec/gui/icon/ZoomModeDisabled.svg.h"
 
 using namespace juce;
 
@@ -46,14 +50,14 @@ ModeSelector::ModeSelector()
       addLoopPointClick_("CreateClick", DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
 
-  setImage<DraggingHand>(this, &drag_, Mode::DRAG,
+  setImage<DragMode>(this, &drag_, Mode::DRAG,
                          "Drag mode: use the mouse to drag the waveform back and forth");
-  setImage<Crosshairs>(this, &setTime_, Mode::SET_TIME,
+  setImage<SetTimeMode>(this, &setTime_, Mode::SET_TIME,
                        "Set current time mode: clicking in the waveform sets the current time.");
-  setImage<ZoomIn>(this, &zoomIn_, Mode::ZOOM_IN,
+  setImage<ZoomMode>(this, &zoomIn_, Mode::ZOOM_IN,
                    "Zoom mode: clicking on the waveform zooms in on that point.");
 
-  setImage<MediaRecord>(this, &addLoopPointClick_, Mode::DRAW_LOOP_POINTS,
+  setImage<AddLoopPointMode>(this, &addLoopPointClick_, Mode::DRAW_LOOP_POINTS,
                         "Add loop point mode: clicking on the waveform creates a loop point.");
 
   minSize_ = juce::Point<int>(BUTTON_COUNT * BUTTON_SIZE +
