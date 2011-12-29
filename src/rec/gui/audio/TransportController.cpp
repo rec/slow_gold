@@ -1,5 +1,6 @@
 #include "rec/gui/audio/TransportController.h"
 
+#include "rec/command/Command.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/icon/JumpBackButton.svg.h"
@@ -91,15 +92,11 @@ void TransportController::operator()(State state) {
 
 void TransportController::buttonClicked(juce::Button *button) {
   using namespace rec::command;
-  static CommandID JUMP_TO_FIRST_SELECTED =
-    CommandIDEncoder::toCommandID(CommandIDEncoder::FIRST,
-                                  Command::JUMP_SELECTED);
-
   if (button == &startStopButton_)
     broadcast(Command::TOGGLE_START_STOP);
 
   else if (button == &jumpToStartButton_)
-    broadcast(JUMP_TO_FIRST_SELECTED);
+    broadcast(command::JUMP_TO_FIRST_SELECTED);
 
   else
     LOG(DFATAL) << "Unknown button " << button;

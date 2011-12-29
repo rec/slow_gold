@@ -48,6 +48,8 @@ class CommandRecordTable {
 
 string commandName(CommandID);
 
+extern const CommandID JUMP_TO_FIRST_SELECTED;
+
 }  // namespace command
 }  // namespace rec
 

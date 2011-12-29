@@ -45,10 +45,11 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   currentFile_.reset(new CurrentFile(this));
   player_.reset(new audio::source::Player(device_.get()));
   components_.reset(new Components(this));
+  target_.reset(new Target(this));
+  currentTime_.reset(new CurrentTime(this));
+
   currentFile_->setFile(data::getGlobal<VirtualFile>());
 
-  currentTime_.reset(new CurrentTime(this));
-  target_.reset(new Target(this));
   mouseListener_.reset(new MouseListener(this));
   guiListener_.reset(new GuiListener(this));
   threads_.reset(new Threads(this));
@@ -111,6 +112,9 @@ void Instance::startListening() {
 void Instance::startup() {
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
+
+  MessageManagerLock l;
+  window_->toFront(true);
 }
 
 const VirtualFile Instance::file() const {

@@ -28,7 +28,8 @@ PersistentWindow::PersistentWindow(const String& name,
   setBroughtToFrontOnMouseClick(true);
   setResizable(true, false);
 
-  resizeLimits_ = getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea());
+  resizeLimits_ = getPeer()->getFrameSize().
+    subtractedFrom(getParentMonitorArea());
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT,
                   resizeLimits_.getWidth(), resizeLimits_.getHeight());
 }

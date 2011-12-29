@@ -73,7 +73,7 @@ struct Priority {
     NAVIGATOR = 2,
     WRITE_GUI = 4,
     WRITE_DATA = 4,
-    UPDATE_DATA = 5,
+    UPDATE_DATA = 4,
   };
 };
 

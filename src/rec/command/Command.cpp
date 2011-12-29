@@ -41,5 +41,9 @@ string commandName(CommandID id) {
   return CommandIDEncoder::commandIDName(id);
 }
 
+const CommandID JUMP_TO_FIRST_SELECTED =
+  CommandIDEncoder::toCommandID(CommandIDEncoder::FIRST,
+                                Command::JUMP_SELECTED);
+
 }  // namespace command
 }  // namespace rec

@@ -1,6 +1,8 @@
 #include "rec/slow/CurrentFile.h"
+
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/TrackBufferAndThumbnail.h"
+#include "rec/command/Command.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/gui/audio/Loops.h"
@@ -11,7 +13,9 @@
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/BufferFiller.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/slow/Menus.h"
+#include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -80,8 +84,18 @@ void CurrentFile::setFile(const VirtualFile& f) {
         lpl.add_loop_point()->set_selected(true);
       data::setProto(lpl, file_);
     }
+    for (int i = 0; i < lpl.loop_point_size(); ++i) {
+      if (lpl.loop_point(i).selected()) {
+        Samples<44100> t = lpl.loop_point(i).time();
+        currentTime()->jumpToTime(t);
+        (*currentTime())(t);
+      }
+    }
+
   } else if (!fileEmpty) {
     (*this)(file::none());
+    currentTime()->jumpToTime(0);
+    (*currentTime())(0);
     return;
   }
 
