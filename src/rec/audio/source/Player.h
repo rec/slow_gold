@@ -51,8 +51,10 @@ class Player : public DataListener<Gain>,
 
   transport::State state() const;
   Device* device() { return device_; }
-  Broadcaster< Samples<44100> >* timeBroadcaster() { return timer_; }
+  // Broadcaster< Samples<44100> >* timeBroadcaster() { return timer_; }
   Level* level() { return &level_; }
+  Timer* timer() { return timer_; }
+
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
   virtual void operator()(const Gain&);

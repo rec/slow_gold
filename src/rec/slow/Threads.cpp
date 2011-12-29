@@ -1,5 +1,6 @@
 #include "rec/slow/Threads.h"
 
+#include "rec/audio/source/Player.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataUpdater.h"
@@ -63,6 +64,7 @@ struct Period {
     WRITE_GUI = 201,
     WRITE_DATA = 1003,
     UPDATE_DATA = 101,
+    TIMER = 203,
   };
 };
 
@@ -74,6 +76,7 @@ struct Priority {
     WRITE_GUI = 4,
     WRITE_DATA = 4,
     UPDATE_DATA = 4,
+    TIMER = 4,
   };
 };
 
@@ -106,6 +109,11 @@ thread::Result directory(Instance* i) {
     thread::YIELD : static_cast<thread::Result>(Period::DIRECTORY);
 }
 
+int timer(Instance* i) {
+  i->player_->timer()->broadcastTime();
+  return Period::TIMER;
+}
+
 }  // namespace
 
 void Threads::start() {
@@ -115,6 +123,7 @@ void Threads::start() {
   start(&writeGui, "writeGUI", Priority::WRITE_GUI);
   start(&writeData, "writeData", Priority::WRITE_DATA);
   start(&updateData, "updateData", Priority::UPDATE_DATA);
+  player()->timer()->setThread(start(&timer, "timer", Priority::TIMER));
 }
 
 }  // namespace slow

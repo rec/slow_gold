@@ -18,7 +18,7 @@ using namespace rec::audio::transport;
 using namespace rec::audio::stretch;
 
 Player::Player(Device* d) : device_(d),
-                            timer_(new Timer()),
+                            timer_(new Timer(NULL)),
                             selection_(new Selection(timer_)),
                             stretchy_(new Stretchy(selection_)),
                             stereo_(new Stereo(stretchy_)) {

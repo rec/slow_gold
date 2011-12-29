@@ -32,7 +32,7 @@ void CurrentTime::operator()(Samples<44100> t) {
   Lock l(lock_);
   time_ = t;
 
-  if (!followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
+  if (true || !followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
     return;
 
   zoomTime_ = t;
@@ -51,9 +51,12 @@ void CurrentTime::operator()(Samples<44100> t) {
 
   z.set_end(z.begin() + width);
 
+  if (!true)
+    return;
+
   // TODO:  why do I need all of this condition?
-  if (t < zoom_.begin() || t > zoom_.end() ||
-      abs(zoom_.begin() - z.begin()) > (width * MIN_CURSOR_RATIO_CHANGE)) {
+  if (t < z.begin() || t > z.end() ||
+      abs(z.begin() - z.begin()) > (width * MIN_CURSOR_RATIO_CHANGE)) {
     DataListener<ZoomProto>::setProto(z);
   }
 }

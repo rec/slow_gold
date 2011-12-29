@@ -11,21 +11,31 @@ namespace source {
 
 class Timer : public Wrappy, public Broadcaster<Samples<44100> > {
  public:
-  explicit Timer(PositionableAudioSource* s = NULL) : Wrappy(s) {}
+  explicit Timer(PositionableAudioSource* s) : Wrappy(s), thread_(NULL) {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     Wrappy::getNextAudioBlock(i);
-    thread::callAsync(this, &Timer::broadcast, getNextReadPosition());
+    if (thread_)
+      thread_->notify();
   }
 
   virtual void setNextReadPosition(int64 time) {
     DCHECK_GE(time, 0);
     DCHECK_LE(time, 60 * 60 * 10 * 44100);
     Wrappy::setNextReadPosition(time);
-    thread::callAsync(this, &Timer::broadcast, time);
+    if (thread_)
+      thread_->notify();
+  }
+
+  void setThread(Thread* t) { thread_ = t; }
+
+  void broadcastTime() {
+    broadcast(getNextReadPosition());
   }
 
  private:
+  Thread* thread_;
+
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Timer);
 };
 
