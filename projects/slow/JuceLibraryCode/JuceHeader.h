@@ -19,7 +19,7 @@
 
 namespace ProjectInfo
 {
-    const char* const  projectName    = "Slow";
+    const char* const  projectName    = "SlowGold 8";
     const char* const  versionString  = "0.9.0";
     const int          versionNumber  = 0x900;
 }

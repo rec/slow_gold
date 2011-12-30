@@ -58,7 +58,8 @@ void addFileMenu(TargetManager* t, PopupMenu* popup) {
   popup->addSubMenu("Open recent", submenu);
 
 #if !JUCE_MAC
-    t->addCommandItem(&m, Command::QUIT);
+  t->addCommandItem(&m, Command::ABOUT_THIS_PROGRAM);
+  t->addCommandItem(&m, Command::QUIT);
 #endif
 }
 

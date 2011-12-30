@@ -29,7 +29,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   }
   virtual void trashPreferences() {}
   GenericApplication* application() { return application_; }
-  virtual PopupMenu* getAppleMenu() { return NULL; }
+  PopupMenu* getAppleMenu() { return &menu_; }
 
  protected:
   virtual void constructInstance() = 0;
@@ -40,6 +40,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
 
  private:
   GenericApplication* application_;
+  PopupMenu menu_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Window);
 };

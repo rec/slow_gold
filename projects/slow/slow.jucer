@@ -3,7 +3,7 @@
 <JUCERPROJECT bigIcon="4LOym0Akj" buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="SlowGold 8"
               defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
               icon="72fj5AiQf" id="sDthDibyr" juceLinkage="amalg_template"
-              jucerVersion="3.0.0" name="Slow" pluginAUExportPrefix="JuceProjectAU"
+              jucerVersion="3.0.0" name="SlowGold 8" pluginAUExportPrefix="JuceProjectAU"
               pluginAUViewClass="JuceProjectAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}"
               pluginCode="Abcd" pluginDesc="Juce Project" pluginEditorRequiresKeys="0"
               pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="a8xRYYO9d" name="Slow">
+  <MAINGROUP id="69hzWvPkC" name="SlowGold 8">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -1390,7 +1390,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="62Q3EGtTA" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="L1Vk153nG" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

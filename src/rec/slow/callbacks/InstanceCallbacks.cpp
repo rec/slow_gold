@@ -35,7 +35,6 @@ namespace {
 static const int SELECTION_WIDTH_PORTION = 20;
 
 void aboutThisProgram(Instance* i) {
-  DLOG(INFO) << "here!";
 }
 
 void addLoopPoint(Instance* i) {
