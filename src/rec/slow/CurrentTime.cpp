@@ -14,7 +14,7 @@ using widget::waveform::ZoomProto;
 static const int PRELOAD = 10000;
 
 static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
-static const double MIN_CURSOR_RATIO_CHANGE = 0.85;
+static const double MIN_CURSOR_RATIO_CHANGE = 0.95;
 static const Samples<44100> MIN_ZOOM_TIME = 44100 / 2;
 
 CurrentTime::CurrentTime(Instance* i)
@@ -32,16 +32,18 @@ void CurrentTime::operator()(Samples<44100> t) {
   Lock l(lock_);
   time_ = t;
 
-  if (true || !followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
+  if (!followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
     return;
 
   zoomTime_ = t;
 
   // Now compute an ideal zoom for this time.
+  Samples<44100> width = zoom_.end() - zoom_.begin();
+  Samples<44100> off = static_cast<int64>(MIN_CURSOR_RATIO_CHANGE * width);
+  if (t >= zoom_.begin() && t <= zoom_.begin() + off)
+    return;
   ZoomProto z = zoom_;
-  Samples<44100> width = z.end() - z.begin();
-  Samples<44100> off = static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width);
-  z.set_begin(t - off);
+  z.set_begin(t - static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width));
 
   if (z.begin() + width > length_)
     z.set_begin(length_ - width);
@@ -50,15 +52,7 @@ void CurrentTime::operator()(Samples<44100> t) {
     z.set_begin(0);
 
   z.set_end(z.begin() + width);
-
-  if (!true)
-    return;
-
-  // TODO:  why do I need all of this condition?
-  if (t < z.begin() || t > z.end() ||
-      abs(z.begin() - z.begin()) > (width * MIN_CURSOR_RATIO_CHANGE)) {
-    DataListener<ZoomProto>::setProto(z);
-  }
+  DataListener<ZoomProto>::setProto(z);
 }
 
 void CurrentTime::operator()(const ZoomProto& zoom) {

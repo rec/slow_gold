@@ -14,7 +14,7 @@ namespace util {
 using rec::audio::source::RunnyProto;
 using rec::audio::getAudioFormatManager;
 
-static const int COMPRESSION = RunnyProto::default_instance().compression();
+static const int COMPRESSION = 2048;
 
 TrackBufferAndThumbnail::TrackBufferAndThumbnail()
     : cache_(1), cacheWritten_(false),

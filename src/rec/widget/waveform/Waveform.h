@@ -48,6 +48,8 @@ class Waveform : public Component,
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
   virtual void resized() { layout(); }
 
+  virtual void internalRepaint (int x, int y, int width, int height);
+
   virtual void paint(Graphics&);
   virtual void operator()(const LoopPointList&);
   virtual void operator()(const Mode&);
@@ -98,6 +100,7 @@ class Waveform : public Component,
   ZoomProto zoom_;
   bool empty_;
   bool isDraggingCursor_;
+  juce::Rectangle<int> dirty_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 
