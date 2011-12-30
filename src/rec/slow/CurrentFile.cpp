@@ -15,6 +15,7 @@
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/Menus.h"
+#include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 #include "rec/widget/tree/Root.h"
@@ -93,9 +94,15 @@ void CurrentFile::setFile(const VirtualFile& f) {
     }
 
   } else if (!fileEmpty) {
+    String s = file::getDisplayName(file_);
     (*this)(file::none());
     currentTime()->jumpToTime(0);
     (*currentTime())(0);
+
+    juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
+                                      "File does not exist or can't be read",
+                                      "File " + s + " does not exist or can't be read as an audio file.",
+                                      "", window());
     return;
   }
 

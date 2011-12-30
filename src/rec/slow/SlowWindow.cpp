@@ -26,6 +26,7 @@
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
+#include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
@@ -72,6 +73,7 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
 
 void SlowWindow::activeWindowStatusChanged() {
   menus()->menuItemsChanged();
+  components()->waveform_->repaint();
 }
 
 void SlowWindow::startAboutWindow() {
