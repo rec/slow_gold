@@ -22,6 +22,7 @@ Target::Target(Instance* i)
   i->window_->addKeyListener(manager_.commandManager()->getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   (*midiCommandMap_)(data::getGlobal<command::CommandMapProto>());
+  manager_.addListener(this);
 }
 
 Target::~Target() {
@@ -32,6 +33,10 @@ void Target::addCommands() {
   manager_.addCommands();
   window()->getAppleMenu()->addCommandItem(manager_.commandManager(),
                                              Command::ABOUT_THIS_PROGRAM);
+}
+
+void Target::operator()(None) {
+  window()->stopAboutWindow();
 }
 
 }  // namespace slow

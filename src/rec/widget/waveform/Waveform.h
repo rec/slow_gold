@@ -35,7 +35,8 @@ class Waveform : public Component,
                  public GlobalDataListener<WaveformProto>,
                  public DataListener<ZoomProto>,
                  public Broadcaster<const MouseWheelEvent&>,
-                 public Broadcaster<const TimeAndMouseEvent&> {
+                 public Broadcaster<const TimeAndMouseEvent&>,
+                 public Listener<bool> {
  public:
   Waveform(MenuBarModel* model = NULL,
            const CursorProto* cursor = &defaultTimeCursor());
@@ -55,6 +56,12 @@ class Waveform : public Component,
   virtual void operator()(const Mode&);
   virtual void operator()(const WaveformProto&);
   virtual void operator()(const ZoomProto&);
+  virtual void operator()(bool b) {
+    MessageManagerLock l;
+    helpScreenUp_ = b;
+    if (!helpScreenUp_)
+      repaint();
+  }
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 
@@ -101,6 +108,7 @@ class Waveform : public Component,
   bool empty_;
   bool isDraggingCursor_;
   juce::Rectangle<int> dirty_;
+  bool helpScreenUp_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 

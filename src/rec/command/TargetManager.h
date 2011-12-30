@@ -17,7 +17,8 @@ namespace command {
 // with a callback.
 class TargetManager : public ApplicationCommandTarget,
                       public Listener<CommandID>,
-                      public Listener<bool> {
+                      public Listener<bool>,
+                      public Broadcaster<None> {
  public:
   explicit TargetManager(CommandData*);
   virtual ~TargetManager();
@@ -45,7 +46,7 @@ class TargetManager : public ApplicationCommandTarget,
 
   virtual void getAllCommands(juce::Array<CommandID>&);
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
-  virtual bool perform(const InvocationInfo&); // { return false; }
+  virtual bool perform(const InvocationInfo&);
 
   InvocationInfo lastInvocation() const;
   void addCallback(CommandID id, Callback* cb,

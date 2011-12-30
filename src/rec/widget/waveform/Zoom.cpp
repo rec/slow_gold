@@ -9,7 +9,7 @@ namespace waveform {
 
 namespace {
 
-static const int64 SMALLEST_TIME_SAMPLES = 1 * 44100;
+static const int64 SMALLEST_TIME_SAMPLES = 8 * 44100;
 static const double POWER = 4.0;
 static const double ZOOM_INCREMENT = 0.3;
 
@@ -64,7 +64,6 @@ void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, doub
 void zoom(const VirtualFile& f, Samples<44100> length, double k) {
   data::setProto(zoom(data::getProto<ZoomProto>(&f), length, k), &f);
 }
-
 
 }  // namespace waveform
 }  // namespace widget

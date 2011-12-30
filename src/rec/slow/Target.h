@@ -12,7 +12,7 @@ namespace slow {
 
 class Instance;
 
-class Target : public HasInstance {
+class Target : public HasInstance, public Listener<None> {
  public:
   explicit Target(Instance* instance);
   virtual ~Target();
@@ -20,6 +20,8 @@ class Target : public HasInstance {
   command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
   command::TargetManager* targetManager() { return &manager_; }
   void addCommands();
+
+  virtual void operator()(None);
 
  private:
   command::TargetManager manager_;

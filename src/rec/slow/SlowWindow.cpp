@@ -16,12 +16,14 @@
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/AboutWindow.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/Mode.pb.h"
+#include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
@@ -38,7 +40,9 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
       HasInstance(NULL) {
 }
 
-SlowWindow::~SlowWindow() {}
+SlowWindow::~SlowWindow() {
+  aboutWindow_.reset();
+}
 
 void SlowWindow::constructInstance() {
   instanceDeleter_.reset(new slow::Instance(this));
@@ -66,10 +70,29 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
   return menus();
 }
 
-
-
 void SlowWindow::activeWindowStatusChanged() {
   menus()->menuItemsChanged();
+}
+
+void SlowWindow::startAboutWindow() {
+  if (!aboutWindow_) {
+    aboutWindowBroadcaster_.broadcast(true);
+    MessageManagerLock l;
+    aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_));
+  }
+}
+
+void SlowWindow::stopAboutWindow() {
+  if (aboutWindow_) {
+    MessageManagerLock l;
+    aboutWindow_.reset();
+    thread::runInNewThread("stopAboutWindow", 4, this, &SlowWindow::turnOffAboutWindow);
+  }
+}
+
+void SlowWindow::turnOffAboutWindow() {
+  Thread::sleep(AboutWindow::FADE_OUT_TIME + 1000);
+  aboutWindowBroadcaster_.broadcast(false);
 }
 
 using namespace rec::data;

@@ -59,6 +59,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 	typedef gui::DropTarget<Waveform> DropWave;
   DropWave* waveform = dynamic_cast<DropWave*>(components_->waveform_.get());
   waveform->dropBroadcaster()->addListener(currentFile_.get());
+  window_->aboutWindowBroadcaster()->addListener(waveform);
 
   widget::tree::Root* root = components_->directoryTree_.get();
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
@@ -79,7 +80,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   player_->setSource(s);
   components_->waveform_->setAudioThumbnail(trackBuffer->thumbnail());
 
-  window->addListener(menus_.get());
+  window_->addListener(menus_.get());
 
   DialogLocker::getDisableBroadcaster()->addListener(target_->targetManager());
   DialogLocker::getDisableBroadcaster()->addListener(window->application());

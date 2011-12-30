@@ -23,6 +23,7 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
+#include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
@@ -35,6 +36,8 @@ namespace {
 static const int SELECTION_WIDTH_PORTION = 20;
 
 void aboutThisProgram(Instance* i) {
+  (*i->components_->waveform_)(false);
+  i->window_->startAboutWindow();
 }
 
 void addLoopPoint(Instance* i) {

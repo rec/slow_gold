@@ -46,7 +46,8 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : length_(0),
       thumbnail_(NULL),
       empty_(true),
-      isDraggingCursor_(false) {
+      isDraggingCursor_(false),
+      helpScreenUp_(false) {
   setName("Waveform");
   setTooltip("This is the waveform window, which shows your current track. "
              "You can drag files from your desktop or your music player here. "
@@ -102,10 +103,12 @@ void Waveform::paint(Graphics& g) {
 
   {
     Lock l(lock_);
-    bool isDirty = g.reduceClipRegion(dirty_);
-    gui::clear(&dirty_);
-    if (!isDirty)
-      return;
+    if (!helpScreenUp_) {
+      bool isDirty = g.reduceClipRegion(dirty_);
+      gui::clear(&dirty_);
+      if (!isDirty)
+        return;
+    }
 
     Painter p(desc_.widget(), &g);
 

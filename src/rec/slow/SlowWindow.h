@@ -2,6 +2,7 @@
 #define __REC_SLOW_SLOWWINDOW__
 
 #include "rec/app/Window.h"
+#include "rec/util/Listener.h"
 #include "rec/slow/HasInstance.h"
 
 namespace rec {
@@ -23,6 +24,9 @@ class SlowWindow : public app::Window, public HasInstance {
   }
 
   virtual void trashPreferences();
+  void startAboutWindow();
+  void stopAboutWindow();
+  Broadcaster<bool>* aboutWindowBroadcaster() { return &aboutWindowBroadcaster_; }
 
  protected:
   virtual void doStartup();
@@ -34,7 +38,11 @@ class SlowWindow : public app::Window, public HasInstance {
   virtual void activeWindowStatusChanged();
 
  private:
+  void turnOffAboutWindow();
+
   ptr<Instance> instanceDeleter_;
+  ptr<Component> aboutWindow_;
+  Broadcaster<bool> aboutWindowBroadcaster_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowWindow);
 };

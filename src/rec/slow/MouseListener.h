@@ -18,6 +18,8 @@ namespace widget { namespace waveform { struct Waveform; } }
 
 namespace slow {
 
+// TODO: rename this to something else to avoid conflicting with Juce's
+// MouseListener.
 class MouseListener : public HasInstance,
                       public juce::MouseListener,
                       public DataListener<widget::waveform::ZoomProto>,
