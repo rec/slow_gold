@@ -1,0 +1,2084 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="SlowGold 8">
+      <UniqueIdentifier>{677D7AD4-A31D-16EE-E14E-CFACBB20C3FF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec">
+      <UniqueIdentifier>{C032AACD-9E0C-FFF0-AD6E-B34250C708C4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\app">
+      <UniqueIdentifier>{8DB11984-F108-BD7A-8D85-0DDA03135B44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\audio">
+      <UniqueIdentifier>{EC9E007D-E000-ADBA-C555-54733CB568CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\audio\format">
+      <UniqueIdentifier>{5F41DC8D-9D37-CDDC-F58E-7ADC3A706757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\audio\format\mpg123">
+      <UniqueIdentifier>{B92764E4-9CBB-E9F7-AF0F-95B3D7342CDA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\audio\format\raw">
+      <UniqueIdentifier>{5E000F27-21FA-7CEA-A9B1-A353DA675A35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\audio\source">
+      <UniqueIdentifier>{A109B5AE-84A6-3569-0C97-0CB8DC256D86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\audio\stretch">
+      <UniqueIdentifier>{ED91099B-3B27-FA91-B96E-104F5B87225A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\audio\util">
+      <UniqueIdentifier>{9D78B921-2B61-AD0A-7DC4-A00D26835F16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\base">
+      <UniqueIdentifier>{85A74695-10D8-5CF0-A7CD-DD765A1C7C8F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\binary">
+      <UniqueIdentifier>{5A33E14D-49B5-15CC-C0D3-9605331A8919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\command">
+      <UniqueIdentifier>{8812538C-2E50-2342-341F-25981BDE7F9F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\command\map">
+      <UniqueIdentifier>{3F4059DF-5FA9-9BA8-9F18-09BB68EDEFE7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\data">
+      <UniqueIdentifier>{1979EF57-F364-5AD1-159C-82626448556A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\data\proto">
+      <UniqueIdentifier>{701F108F-B245-3397-73B5-EDC9983C4DEB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\data\yaml">
+      <UniqueIdentifier>{7FA7C78B-8A97-3175-3213-18AE03D3AC43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\data\yaml\include">
+      <UniqueIdentifier>{3F59BF7A-68C9-F3FE-5AFE-F060CE9CEE15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\data\yaml\include\yaml-cpp">
+      <UniqueIdentifier>{933CD1F9-F1D8-E410-FFFC-E6CB265459FC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\data\yaml\src">
+      <UniqueIdentifier>{F36F3038-8AEF-1A49-C423-6B4F13BC482A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\gui">
+      <UniqueIdentifier>{AC7ED372-742C-41B2-BC36-810F79082DB7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\gui\audio">
+      <UniqueIdentifier>{796B61CA-6F3A-6C95-C063-09086A4AC627}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\gui\component">
+      <UniqueIdentifier>{29F850EA-4162-D0DC-E5AD-40601C4427E4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\gui\icon">
+      <UniqueIdentifier>{7523E242-FD47-FC44-715A-8593F3AEA79B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\gui\layout">
+      <UniqueIdentifier>{B443EF27-6B65-5713-9B99-9997359557FB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\music">
+      <UniqueIdentifier>{91AD397D-763D-F55A-86C0-62DA89F9DB64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\slow">
+      <UniqueIdentifier>{8DCBC788-2E2D-B52D-03DD-6A56FAC937A4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\slow\callbacks">
+      <UniqueIdentifier>{C92D0AF0-2BB5-91B9-E151-A26E0F13E2A4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\slow\commands">
+      <UniqueIdentifier>{6B3C7869-68BC-1423-10BF-DC5A3C4B4B79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\util">
+      <UniqueIdentifier>{39571D3D-DF31-EE02-C0AA-A7DF4227A552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\util\block">
+      <UniqueIdentifier>{A58A8246-F195-2CB2-B043-AF81975644F7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\util\cd">
+      <UniqueIdentifier>{709ECF28-C88C-B640-60B3-66328D2DD87A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\util\file">
+      <UniqueIdentifier>{43E55D3E-7955-4888-3C7D-6B0AF3269D50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\util\partition">
+      <UniqueIdentifier>{07C4FA32-6691-B798-D476-CC3AFE820E51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\util\thread">
+      <UniqueIdentifier>{36052B94-B2BD-D1CF-1ED6-F1FBCD5970B4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\util\unused">
+      <UniqueIdentifier>{60DB5DF9-6A25-5030-F44F-53CE3FE11ADC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\widget">
+      <UniqueIdentifier>{F3368FBB-6EA1-B0E3-9541-0F9F794A872B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\widget\status">
+      <UniqueIdentifier>{9C85224F-EA8C-A157-E2B4-AB332FB55E1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\widget\tree">
+      <UniqueIdentifier>{20B469B7-6B06-EC4E-EE46-04AED515C05A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\rec\widget\waveform">
+      <UniqueIdentifier>{86B8E22F-2148-397A-D02F-E8F08BEC87DE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto">
+      <UniqueIdentifier>{FD13EE7F-A224-E33D-9079-747667D023A9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec">
+      <UniqueIdentifier>{50352F37-3AEF-7203-BA63-497DCD23F3AA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\audio">
+      <UniqueIdentifier>{1B9E24AF-FDDF-6A56-8628-53D196445281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\audio\source">
+      <UniqueIdentifier>{99C319E2-7661-E45A-5AA1-733A12F74695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\audio\stretch">
+      <UniqueIdentifier>{B18BB814-9D46-697A-3612-3FFC28865BE5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\audio\util">
+      <UniqueIdentifier>{48BCD34A-760B-EEFB-4FFF-4F2DA03E1DB1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\command">
+      <UniqueIdentifier>{EF451869-5819-949C-97FE-0D43A5FBE1F7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\command\map">
+      <UniqueIdentifier>{E4CDCC84-AD89-AB91-1493-641ED42943DB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\data">
+      <UniqueIdentifier>{D9B67D2E-3436-2EF6-743B-97DFD5EB3F19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\data\proto">
+      <UniqueIdentifier>{DAC11C43-2F18-12B2-6076-D9CC1495D452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\gui">
+      <UniqueIdentifier>{7EF8D616-E3F5-25C9-40B6-DF21ABD75C5D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\music">
+      <UniqueIdentifier>{515F19E2-DED9-194E-FB0F-3DAD89CFE87D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\slow">
+      <UniqueIdentifier>{0515BF45-547D-06F2-54B2-F8EFDFDB2E96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\util">
+      <UniqueIdentifier>{3A4C3265-DA55-68C5-232E-957485D254A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\util\file">
+      <UniqueIdentifier>{45E7E6B6-E45D-EFBF-8094-0DDB2191DCA3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\util\thread">
+      <UniqueIdentifier>{0307F511-85EE-3481-E67B-4C54E59B912B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\widget">
+      <UniqueIdentifier>{7C1704FF-0F6E-BF85-EF82-703934429935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\widget\status">
+      <UniqueIdentifier>{48173C7A-947C-CFE6-E97B-E58DACEF85DB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\widget\tree">
+      <UniqueIdentifier>{A0DA16FD-FFDE-4EED-D163-CA03A102C979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold 8\proto\rec\widget\waveform">
+      <UniqueIdentifier>{1DD0D0DA-05D8-A3B5-24E7-E4F3497F0299}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Library Code">
+      <UniqueIdentifier>{F7048EA6-F4B2-F31B-E402-E05D678A1111}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp">
+      <Filter>SlowGold 8\rec\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Format.cpp">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.cpp">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.cpp">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.cpp">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp">
+      <Filter>SlowGold 8\rec\audio\format\raw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Selection.cpp">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Implementation.cpp">
+      <Filter>SlowGold 8\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\RubberBand.cpp">
+      <Filter>SlowGold 8\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp">
+      <Filter>SlowGold 8\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp">
+      <Filter>SlowGold 8\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.cpp">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\binary\big-icon.png">
+      <Filter>SlowGold 8\rec\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\binary\icon.png">
+      <Filter>SlowGold 8\rec\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandDataSetter.cpp">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditor.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\Keyboard.xml.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMap.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\TickedDataSetter.cpp">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\AddressListener.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataCenter.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataImpl.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataMap.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataMapImpl.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataOps.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\MessageField.cpp">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedOperations.cpp">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedTyper.cpp">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\UndoStack.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\UntypedDataListener.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Value.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\ReadYaml.cpp">
+      <Filter>SlowGold 8\rec\data\yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliasmanager.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\content.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\conversion.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\directives.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitfromevents.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitter.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitterstate.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitterutils.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\exp.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\iterator.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\map.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\node.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\nodebuilder.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\null.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\ostream.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\parser.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\parserstate.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\regex.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scalar.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scanner.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scanscalar.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scantag.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scantoken.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\sequence.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\simplekey.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\singledocparser.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\stream.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\tag.cpp">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp">
+      <Filter>SlowGold 8\rec\data\yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\CommandBar.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\Loops.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\LoopsCuttable.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\ModeSelector.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\SetupPage.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TimeController.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TransformController.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TransportController.cpp">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Color.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Dialog.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Geometry.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\GuiWriteable.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonPressed.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointMode.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointModeDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DragMode.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DragModeDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonPressed.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonPressed.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\RecentFiles.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\SetterText.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\TableController.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\music\CleanName.cpp">
+      <Filter>SlowGold 8\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\music\CreateMusicFileReader.cpp">
+      <Filter>SlowGold 8\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp">
+      <Filter>SlowGold 8\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\BufferFiller.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.cpp">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Commands.def.cpp">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Descriptions.def.cpp">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\KeyPresses.def.cpp">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Repeated.def.cpp">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\Setters.def.cpp">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\CurrentTime.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\GuiListener.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\Fillable.cpp">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\CDReader.cpp">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Eject.cpp">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Socket.cpp">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\StripLines.cpp">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp">
+      <Filter>SlowGold 8\rec\util\partition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp">
+      <Filter>SlowGold 8\rec\util\partition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Proto.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp">
+      <Filter>SlowGold 8\rec\util\unused</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp">
+      <Filter>SlowGold 8\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\Status.cpp">
+      <Filter>SlowGold 8\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\TextComponent.cpp">
+      <Filter>SlowGold 8\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\CD.cpp">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\Directory.cpp">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\NodeItem.cpp">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\Root.cpp">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.cpp">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Cursor.cpp">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.cpp">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp">
+      <Filter>SlowGold 8\rec\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc">
+      <Filter>SlowGold 8\proto\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc">
+      <Filter>SlowGold 8\proto\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc">
+      <Filter>SlowGold 8\proto\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc">
+      <Filter>SlowGold 8\proto\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.cc">
+      <Filter>SlowGold 8\proto\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc">
+      <Filter>SlowGold 8\proto\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\map\CommandMap.pb.cc">
+      <Filter>SlowGold 8\proto\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc">
+      <Filter>SlowGold 8\proto\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.cc">
+      <Filter>SlowGold 8\proto\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.cc">
+      <Filter>SlowGold 8\proto\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.cc">
+      <Filter>SlowGold 8\proto\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.cc">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc">
+      <Filter>SlowGold 8\proto\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc">
+      <Filter>SlowGold 8\proto\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc">
+      <Filter>SlowGold 8\proto\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc">
+      <Filter>SlowGold 8\proto\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc">
+      <Filter>SlowGold 8\proto\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc">
+      <Filter>SlowGold 8\proto\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc">
+      <Filter>SlowGold 8\proto\rec\util\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\NavigatorConfig.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.cc">
+      <Filter>SlowGold 8\proto\rec\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Main.cpp">
+      <Filter>SlowGold 8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\rec\app\Application.h">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\Files.h">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\Window.h">
+      <Filter>SlowGold 8\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h">
+      <Filter>SlowGold 8\rec\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\Device.h">
+      <Filter>SlowGold 8\rec\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Format.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Manager.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.h">
+      <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.h">
+      <Filter>SlowGold 8\rec\audio\format\raw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatReader.h">
+      <Filter>SlowGold 8\rec\audio\format\raw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h">
+      <Filter>SlowGold 8\rec\audio\format\raw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\FrameSource.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Level.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Player.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Seggy.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Selection.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Snoopy.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Stereo.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Testy.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\ThreadedSource.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Timer.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h">
+      <Filter>SlowGold 8\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Implementation.h">
+      <Filter>SlowGold 8\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\RubberBand.h">
+      <Filter>SlowGold 8\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h">
+      <Filter>SlowGold 8\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h">
+      <Filter>SlowGold 8\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\OwnedFrames.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.h">
+      <Filter>SlowGold 8\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\base.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\BaseNoJuce.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\basictypes.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\build_config.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\Cast.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\CompileAssert.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\disallow.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\Juce.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\port.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\ptr.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\Samples.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\types.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandIDEncoder.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapCategoryItem.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditButton.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditor.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditorMappingItem.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapItemComponent.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapTopLevelItem.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\GenericCommandMapEditor.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\Keyboard.xml.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMap.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\MidiName.h">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\TickedDataSetter.h">
+      <Filter>SlowGold 8\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Address.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\AddressListener.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataImpl.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataListener.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataMaker.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataMakerImpl.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataMap.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataMapImpl.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataOps.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageMaker.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrar.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Opener.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\FieldOps.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\GetProtoName.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\MessageField.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\NameToProto.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedOperations.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedTyper.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Typer.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h">
+      <Filter>SlowGold 8\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Reader.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\UndoStack.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\UntypedDataListener.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Value.h">
+      <Filter>SlowGold 8\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\aliasmanager.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\anchor.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\conversion.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitfromevents.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitter.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emittermanip.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\eventhandler.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\exceptions.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\iterator.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\mark.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\node.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeimpl.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeproperties.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodereadimpl.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeutil.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\noncopyable.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\null.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\ostream.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\parser.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlemitter.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlnode.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\traits.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\yaml.h">
+      <Filter>SlowGold 8\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\Internal.h">
+      <Filter>SlowGold 8\rec\data\yaml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\collectionstack.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\content.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\directives.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\emitterstate.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\emitterutils.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\exp.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\indentation.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\iterpriv.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\ltnode.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\map.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\nodebuilder.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\parserstate.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\ptr_stack.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\regex.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\regeximpl.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scalar.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scanner.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scanscalar.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scantag.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\sequence.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\setting.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\singledocparser.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\stream.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\streamcharsource.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\stringsource.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\tag.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\token.h">
+      <Filter>SlowGold 8\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h">
+      <Filter>SlowGold 8\rec\data\yaml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\AboutWindow.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\CommandBar.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\Loops.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\LoopsCuttable.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\ModeSelector.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\SetupPage.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TimeController.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TransformController.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TransportController.h">
+      <Filter>SlowGold 8\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Color.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\component\Focusable.h">
+      <Filter>SlowGold 8\rec\gui\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DataSlider.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DetentSlider.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Dialog.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DropFiles.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Font.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\GuiWriteable.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonPressed.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointMode.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointModeDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DragMode.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DragModeDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonPressed.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonPressed.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\IconButton.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h">
+      <Filter>SlowGold 8\rec\gui\layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\RecentFiles.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterResizer.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterText.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterTextArea.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterToggle.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SimpleLabel.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SizeAccumulator.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SizeHintAccumulator.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SongData.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\TableController.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h">
+      <Filter>SlowGold 8\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h">
+      <Filter>SlowGold 8\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h">
+      <Filter>SlowGold 8\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\BufferFiller.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.h">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h">
+      <Filter>SlowGold 8\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Commands.def.h">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Descriptions.def.h">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\KeyPresses.def.h">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Repeated.def.h">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\Setters.def.h">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h">
+      <Filter>SlowGold 8\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Components.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\CurrentTime.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\GuiListener.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Target.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h">
+      <Filter>SlowGold 8\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\CDDBResponse.h">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\CDReader.h">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.h">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Eject.h">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Socket.h">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\StripLines.h">
+      <Filter>SlowGold 8\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Compare.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Copy.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h">
+      <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Listener.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\ListenerAdaptor.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\LockedState.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\LoopPoint.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Math.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\partition\Convertors.h">
+      <Filter>SlowGold 8\rec\util\partition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\partition\Partition.h">
+      <Filter>SlowGold 8\rec\util\partition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Platform.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Proto.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Range.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\STL.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\TestData.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\CallAsync.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback0.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback1.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback2.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback3.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback4.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\FileWriter.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\FunctionCallback.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\LockedFlag.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Looper.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeCallback.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeThread.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Pointer.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h">
+      <Filter>SlowGold 8\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Undo.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\Circular.h">
+      <Filter>SlowGold 8\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\DelegateToList.h">
+      <Filter>SlowGold 8\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\PointerList.h">
+      <Filter>SlowGold 8\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.h">
+      <Filter>SlowGold 8\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\ShouldExit.h">
+      <Filter>SlowGold 8\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\unused\Switcher.h">
+      <Filter>SlowGold 8\rec\util\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\Painter.h">
+      <Filter>SlowGold 8\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\DialComponent.h">
+      <Filter>SlowGold 8\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\Status.h">
+      <Filter>SlowGold 8\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\TextComponent.h">
+      <Filter>SlowGold 8\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\CD.h">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Directory.h">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\NodeComponent.h">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\NodeItem.h">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Root.h">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Shard.h">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.h">
+      <Filter>SlowGold 8\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Cursor.h">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\MouseWheelEvent.h">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.h">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h">
+      <Filter>SlowGold 8\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h">
+      <Filter>SlowGold 8\proto\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h">
+      <Filter>SlowGold 8\proto\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h">
+      <Filter>SlowGold 8\proto\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h">
+      <Filter>SlowGold 8\proto\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.h">
+      <Filter>SlowGold 8\proto\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.h">
+      <Filter>SlowGold 8\proto\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\map\CommandMap.pb.h">
+      <Filter>SlowGold 8\proto\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h">
+      <Filter>SlowGold 8\proto\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.h">
+      <Filter>SlowGold 8\proto\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.h">
+      <Filter>SlowGold 8\proto\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.h">
+      <Filter>SlowGold 8\proto\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.h">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h">
+      <Filter>SlowGold 8\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h">
+      <Filter>SlowGold 8\proto\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h">
+      <Filter>SlowGold 8\proto\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h">
+      <Filter>SlowGold 8\proto\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h">
+      <Filter>SlowGold 8\proto\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h">
+      <Filter>SlowGold 8\proto\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h">
+      <Filter>SlowGold 8\proto\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h">
+      <Filter>SlowGold 8\proto\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\NavigatorConfig.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.h">
+      <Filter>SlowGold 8\proto\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".\icon.ico">
+      <Filter>Juce Library Code</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include=".\resources.rc">
+      <Filter>Juce Library Code</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
