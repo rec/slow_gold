@@ -34,6 +34,10 @@ namespace {
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
+void aboutThisProgram(Instance* i) {
+  DLOG(INFO) << "here!";
+}
+
 void addLoopPoint(Instance* i) {
   audio::addLoopPointToData(i->file(), i->player_->getTime());
 }
@@ -197,6 +201,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;
 
+  addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram, i);
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
   addCallback(c, Command::ADD_LOOP_POINT_CLICK, addLoopPointClick, i);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);

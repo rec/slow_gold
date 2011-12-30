@@ -13,6 +13,7 @@ message Command {
   enum Type {
     NONE = 0;
 
+    ABOUT_THIS_PROGRAM = 58;
     ADD_LOOP_POINT = 1;
     ADD_LOOP_POINT_CLICK = 44;
     AUDIO_PREFERENCES = 2;
@@ -85,7 +86,7 @@ message Command {
     ZOOM_OUT = 40;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 57;
+    LAST_TYPE = 58;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

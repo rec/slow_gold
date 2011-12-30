@@ -42,6 +42,7 @@ class Mapping;
 
 enum Command_Type {
   Command_Type_NONE = 0,
+  Command_Type_ABOUT_THIS_PROGRAM = 58,
   Command_Type_ADD_LOOP_POINT = 1,
   Command_Type_ADD_LOOP_POINT_CLICK = 44,
   Command_Type_AUDIO_PREFERENCES = 2,
@@ -98,7 +99,7 @@ enum Command_Type {
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 57,
+  Command_Type_LAST_TYPE = 58,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -303,6 +304,7 @@ class Command : public ::google::protobuf::Message {
   
   typedef Command_Type Type;
   static const Type NONE = Command_Type_NONE;
+  static const Type ABOUT_THIS_PROGRAM = Command_Type_ABOUT_THIS_PROGRAM;
   static const Type ADD_LOOP_POINT = Command_Type_ADD_LOOP_POINT;
   static const Type ADD_LOOP_POINT_CLICK = Command_Type_ADD_LOOP_POINT_CLICK;
   static const Type AUDIO_PREFERENCES = Command_Type_AUDIO_PREFERENCES;

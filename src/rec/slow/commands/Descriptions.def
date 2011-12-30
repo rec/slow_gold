@@ -6,6 +6,13 @@ command {
   }
 }
 command {
+  type: ABOUT_THIS_PROGRAM
+  desc {
+    menu: "About SlowGold 8"
+    full: "Bring up a window describing SlowGold 8."
+  }
+}
+command {
   type: ADD_LOOP_POINT_CLICK
   desc {
     menu: "Add Loop Point By Clicking"

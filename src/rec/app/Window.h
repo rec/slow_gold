@@ -29,6 +29,7 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   }
   virtual void trashPreferences() {}
   GenericApplication* application() { return application_; }
+  virtual PopupMenu* getAppleMenu() { return NULL; }
 
  protected:
   virtual void constructInstance() = 0;

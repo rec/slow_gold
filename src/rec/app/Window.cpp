@@ -21,8 +21,7 @@ void Window::initialise() {
   constructInstance();
 
 #if JUCE_MAC
-  // TODO: make sure this is in the right place.
-  juce::MenuBarModel::setMacMainMenu(getMenuBarModel());
+  juce::MenuBarModel::setMacMainMenu(getMenuBarModel(), getAppleMenu());
   setMenuBar(NULL);
 #else
   setMenuBar(getMenuBarModel());

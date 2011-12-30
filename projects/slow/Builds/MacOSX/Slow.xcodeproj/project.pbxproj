@@ -422,6 +422,7 @@
 		3BDE9AD571FACA82E27019B2 /* content.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = content.h; path = ../../../../src/rec/data/yaml/src/content.h; sourceTree = SOURCE_ROOT; };
 		3CFA6D7742E910D37001E1B5 /* JumpForwardButtonPressed.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = JumpForwardButtonPressed.svg.cpp; path = ../../../../src/rec/gui/icon/JumpForwardButtonPressed.svg.cpp; sourceTree = SOURCE_ROOT; };
 		3D0B4149DC5933133201708F /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Data.h; path = ../../../../src/rec/data/Data.h; sourceTree = SOURCE_ROOT; };
+		3DAD574FC1A6F3393B8B0C24 /* AboutWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AboutWindow.h; path = ../../../../src/rec/gui/AboutWindow.h; sourceTree = SOURCE_ROOT; };
 		3DEC392CBABC527C1E1987BF /* Repeated.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Repeated.def.h; path = ../../../../src/rec/slow/commands/Repeated.def.h; sourceTree = SOURCE_ROOT; };
 		3E0FB5803707579F4DBC6D8F /* CommandBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandBar.h; path = ../../../../src/rec/gui/audio/CommandBar.h; sourceTree = SOURCE_ROOT; };
 		3E62D9B9243FA97172878F88 /* Color.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Color.pb.h; path = ../../../../genfiles/proto/rec/gui/Color.pb.h; sourceTree = SOURCE_ROOT; };
@@ -556,6 +557,7 @@
 		71BF190106219F20E4492E93 /* MessageField.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MessageField.cpp; path = ../../../../src/rec/data/proto/MessageField.cpp; sourceTree = SOURCE_ROOT; };
 		7234162EF60CC8CA998882E9 /* NewHandle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NewHandle.cpp; path = ../../../../src/rec/audio/format/mpg123/NewHandle.cpp; sourceTree = SOURCE_ROOT; };
 		72E88DD4823883A18B5650F9 /* Copy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Copy.h; path = ../../../../src/rec/util/Copy.h; sourceTree = SOURCE_ROOT; };
+		72F974AC1ABD3F29A867048C /* IconButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IconButton.h; path = ../../../../src/rec/gui/IconButton.h; sourceTree = SOURCE_ROOT; };
 		72FE686CDF4019DBFDC99E61 /* Commands.def.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Commands.def.cpp; path = ../../../../src/rec/slow/commands/Commands.def.cpp; sourceTree = SOURCE_ROOT; };
 		734BB2F3F69DA9F887B6DDDE /* setting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = setting.h; path = ../../../../src/rec/data/yaml/src/setting.h; sourceTree = SOURCE_ROOT; };
 		73BE6D1E208BAB0190FAA087 /* Runny.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Runny.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Runny.pb.h; sourceTree = SOURCE_ROOT; };
@@ -1383,16 +1385,6 @@
 			name = binary;
 			sourceTree = "<group>";
 		};
-		71C41014EBDCF7B6B7ADE908 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
-				1AB486317E06D9E7CC790074 /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		7822844912BBCA7409129CFA /* stretch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1653,6 +1645,16 @@
 			name = base;
 			sourceTree = "<group>";
 		};
+		AE3777B9821C79DD470409B9 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
+				1AB486317E06D9E7CC790074 /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		B0EF9B820F630AB81AE8CB0D /* thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -1699,7 +1701,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				71C41014EBDCF7B6B7ADE908 /* Slow */,
+				AE3777B9821C79DD470409B9 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1734,6 +1736,7 @@
 		B8EA16E9BCCE1650EDE4C8B2 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				3DAD574FC1A6F3393B8B0C24 /* AboutWindow.h */,
 				EE3E146D8E5479B28703136D /* audio */,
 				FD48E942DCF34E501D534EE3 /* Color.cpp */,
 				1A5A7B859A4E6759DDA42B68 /* Color.h */,
@@ -1751,6 +1754,7 @@
 				7ABABECB10484F7845CCD7B6 /* GuiWriteable.h */,
 				B83B32AEC409ED04C24B5DF4 /* HasSizeHints.h */,
 				3EE47BC7B2D34ABDFE946AE5 /* icon */,
+				72F974AC1ABD3F29A867048C /* IconButton.h */,
 				FB1B624F52EE7A456FE433A1 /* layout */,
 				60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */,
 				350C32878B8796E199D10089 /* PersistentWindow.h */,

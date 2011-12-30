@@ -8,7 +8,8 @@ namespace slow {
 namespace commands {
 
 Def<command::Commands> commands(
-"command { type: ADD_LOOP_POINT category: \"Loops\"}\n"
+"command { type: ABOUT_THIS_PROGRAM category: \"Apple\"}\n"
+  "command { type: ADD_LOOP_POINT category: \"Loops\"}\n"
   "command { type: ADD_LOOP_POINT_CLICK category: \"Loops\"}\n"
   "command { type: AUDIO_PREFERENCES category: \"Audio\"}\n"
   "command { type: CLEAR_LOOPS category: \"Loops\" }\n"

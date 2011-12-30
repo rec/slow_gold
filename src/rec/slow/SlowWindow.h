@@ -23,6 +23,7 @@ class SlowWindow : public app::Window, public HasInstance {
   }
 
   virtual void trashPreferences();
+  virtual PopupMenu* getAppleMenu() { return &appleMenu_; }
 
  protected:
   virtual void doStartup();
@@ -35,6 +36,7 @@ class SlowWindow : public app::Window, public HasInstance {
 
  private:
   ptr<Instance> instanceDeleter_;
+  PopupMenu appleMenu_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowWindow);
 };

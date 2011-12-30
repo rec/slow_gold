@@ -66,6 +66,8 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
   return menus();
 }
 
+
+
 void SlowWindow::activeWindowStatusChanged() {
   menus()->menuItemsChanged();
 }
