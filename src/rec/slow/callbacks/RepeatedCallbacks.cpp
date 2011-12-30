@@ -23,7 +23,7 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
 }
 
 void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
-  int size = snap->loops_.loop_point_size() - 1;
+  int size = snap->loops_.loop_point_size();
   int p = pos.toIndex(getSegment(*snap), size);
   snap->loops_.mutable_loop_point(p)->set_selected(true);
   setTimeFromSegment(snap, p);
