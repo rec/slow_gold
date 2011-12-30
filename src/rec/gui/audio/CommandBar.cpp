@@ -47,6 +47,7 @@ CommandBar::CommandBar()
   addToLayout(&addLoopPoint_, BUTTON_SIZE);
   addToLayout(&zoomOut_, BUTTON_SIZE);
   addToLayout(&zoomToSelection_, BUTTON_SIZE);
+  addToLayout(&padding_);
 
   setBounds(0, BUTTON_SIZE + 4 * PADDING,
             4 * BUTTON_SIZE + 5 * PADDING, BUTTON_SIZE + 2 * PADDING);

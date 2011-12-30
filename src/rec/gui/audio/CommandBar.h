@@ -22,6 +22,7 @@ class CommandBar : public Layout,
   DrawableButton addLoopPoint_;
   DrawableButton zoomOut_;
   DrawableButton zoomToSelection_;
+  Layout padding_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandBar);
 };
