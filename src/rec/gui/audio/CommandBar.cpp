@@ -1,4 +1,6 @@
 #include "rec/gui/audio/CommandBar.h"
+
+#include "rec/gui/IconButton.h"
 #include "rec/gui/icon/AddLoopPointButton.svg.h"
 #include "rec/gui/icon/AddLoopPointButtonPressed.svg.h"
 #include "rec/gui/icon/AddLoopPointButtonDisabled.svg.h"
@@ -33,17 +35,9 @@ CommandBar::CommandBar()
   zoomOut_.addListener(this);
   zoomToSelection_.addListener(this);
 
-  addLoopPoint_.setImages(
-                          ptr<Drawable>(icon::AddLoopPointButton::create()).get(), NULL,
-                          ptr<Drawable>(icon::AddLoopPointButtonPressed::create()).get());
-
-  zoomOut_.setImages(ptr<Drawable>(icon::ZoomOutButton::create()).get(),
-                     NULL,
-                     ptr<Drawable>(icon::ZoomOutButtonPressed::create()).get());
-
-  zoomToSelection_.setImages(ptr<Drawable>(icon::ZoomToSelectionButton::create()).get(),
-                             NULL,
-                             ptr<Drawable>(icon::ZoomToSelectionButtonPressed::create()).get());
+  SET_BUTTON_IMAGES3(&addLoopPoint_, AddLoopPointButton);
+  SET_BUTTON_IMAGES3(&zoomOut_, ZoomOutButton);
+  SET_BUTTON_IMAGES3(&zoomToSelection_, ZoomToSelectionButton);
 
   addLoopPoint_.setTooltip("Add a loop point at the current time.");
   zoomOut_.setTooltip("Zoom the waveform out one step.");

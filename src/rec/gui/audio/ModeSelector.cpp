@@ -1,13 +1,14 @@
 #include "rec/gui/audio/ModeSelector.h"
 
 #include "rec/data/Value.h"
-#include "rec/gui/icon/SetTimeMode.svg.h"
-#include "rec/gui/icon/DragMode.svg.h"
+#include "rec/gui/IconButton.h"
 #include "rec/gui/icon/AddLoopPointMode.svg.h"
-#include "rec/gui/icon/ZoomMode.svg.h"
-#include "rec/gui/icon/SetTimeModeDisabled.svg.h"
-#include "rec/gui/icon/DragModeDisabled.svg.h"
 #include "rec/gui/icon/AddLoopPointModeDisabled.svg.h"
+#include "rec/gui/icon/DragMode.svg.h"
+#include "rec/gui/icon/DragModeDisabled.svg.h"
+#include "rec/gui/icon/SetTimeMode.svg.h"
+#include "rec/gui/icon/SetTimeModeDisabled.svg.h"
+#include "rec/gui/icon/ZoomMode.svg.h"
 #include "rec/gui/icon/ZoomModeDisabled.svg.h"
 
 using namespace juce;
@@ -25,16 +26,13 @@ namespace audio {
 
 namespace {
 
-template <typename T>
 void setImage(ModeSelector* selector, DrawableButton* b, Mode::Action action,
               const String& tooltip) {
-  b->setImages(ptr<Drawable>(T::create()).get());
   b->addListener(selector);
   selector->addToLayout(b);
   (*selector->buttonMap())[action] = b;
   b->setTooltip(tooltip);
 }
-
 
 enum Sides {
   STEREO = 1, LEFT, RIGHT, LEFT_PLUS_RIGHT
@@ -50,15 +48,20 @@ ModeSelector::ModeSelector()
       addLoopPointClick_("CreateClick", DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
 
-  setImage<DragMode>(this, &drag_, Mode::DRAG,
-                         "Drag mode: use the mouse to drag the waveform back and forth");
-  setImage<SetTimeMode>(this, &setTime_, Mode::SET_TIME,
-                       "Set current time mode: clicking in the waveform sets the current time.");
-  setImage<ZoomMode>(this, &zoomIn_, Mode::ZOOM_IN,
-                   "Zoom mode: clicking on the waveform zooms in on that point.");
+  SET_BUTTON_IMAGES2(&drag_, DragMode);
+  SET_BUTTON_IMAGES2(&setTime_, SetTimeMode);
+  SET_BUTTON_IMAGES2(&zoomIn_, ZoomMode);
+  SET_BUTTON_IMAGES2(&addLoopPointClick_, AddLoopPointMode);
 
-  setImage<AddLoopPointMode>(this, &addLoopPointClick_, Mode::DRAW_LOOP_POINTS,
-                        "Add loop point mode: clicking on the waveform creates a loop point.");
+  setImage(this, &drag_, Mode::DRAG,
+           "Drag mode: use the mouse to drag the waveform back and forth");
+  setImage(this, &setTime_, Mode::SET_TIME,
+           "Set current time mode: clicking in the waveform sets the current time.");
+  setImage(this, &zoomIn_, Mode::ZOOM_IN,
+           "Zoom mode: clicking on the waveform zooms in on that point.");
+
+  setImage(this, &addLoopPointClick_, Mode::DRAW_LOOP_POINTS,
+           "Add loop point mode: clicking on the waveform creates a loop point.");
 
   minSize_ = juce::Point<int>(BUTTON_COUNT * BUTTON_SIZE +
                               (BUTTON_COUNT + 1) * PADDING,

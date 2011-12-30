@@ -2,6 +2,7 @@
 
 #include "rec/command/Command.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/gui/IconButton.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/icon/JumpBackButton.svg.h"
 #include "rec/gui/icon/JumpBackButtonDisabled.svg.h"
@@ -42,20 +43,31 @@ TransportController::TransportController(TimeController* timeController)
       gainLayout_("Gain", HORIZONTAL),
       startStopButton_("Start/stop", juce::DrawableButton::ImageFitted),
       jumpToStartButton_("Jump to start", juce::DrawableButton::ImageFitted),
+      jumpBackButton_("Jump Back", juce::DrawableButton::ImageFitted),
+      jumpForwardButton_("Jump Formward", juce::DrawableButton::ImageFitted),
       level_("Gain", getTypeName<Gain>(), data::Address("gain")),
       muteButton_(MUTE_BUTTON_TEXT, getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
-  jumpToStartButton_.setImages(ptr<Drawable>(icon::JumpToStartButton::create()).get());
-  startStopButton_.setImages(ptr<Drawable>(icon::PlayButton::create()).get(),
-                             NULL, NULL, NULL,
-                             ptr<Drawable>(icon::StopButton::create()).get());
+  using namespace rec::gui::icon;
+  SET_BUTTON_IMAGES2(&jumpToStartButton_, JumpToStartButton);
+  SET_BUTTON_IMAGES2(&jumpForwardButton_, JumpForwardButton);
+  SET_BUTTON_IMAGES2(&jumpBackButton_, JumpBackButton);
 
+  startStopButton_.setImages(ptr<Drawable>(PlayButton::create()).get(),
+                             NULL, NULL,
+                             ptr<Drawable>(PlayButtonDisabled::create()).get(),
+                             ptr<Drawable>(StopButton::create()).get());
+
+  jumpForwardButton_.addListener(this);
+  jumpBackButton_.addListener(this);
   jumpToStartButton_.addListener(this);
   startStopButton_.addListener(this);
 
   buttonsLayout_.addToLayout(&startStopButton_, ICON_SIZE);
   buttonsLayout_.addToLayout(&jumpToStartButton_, ICON_SIZE);
+  buttonsLayout_.addToLayout(&jumpBackButton_, ICON_SIZE);
+  buttonsLayout_.addToLayout(&jumpForwardButton_, ICON_SIZE);
   buttonsLayout_.addToLayout(timeController_);
 
   level_.slider()->setRange(-36.0, +12.0, 0.1);
@@ -70,6 +82,8 @@ TransportController::TransportController(TimeController* timeController)
   addToLayout(&levelMeter_, 20);
 
   startStopButton_.setTooltip("Toggle between pause and play.");
+  jumpForwardButton_.setTooltip("Jump to the start of the next segment in the selection.");
+  jumpBackButton_.setTooltip("Jump to the start of the next segment in the selection.");
   jumpToStartButton_.setTooltip("Jump to the start of the selection.");
   levelMeter_.setTooltip("Display the sound intensity, in RMS dB.");
   level_.setTooltip("Raise or lower the sound intensity, in dB.");
@@ -92,11 +106,23 @@ void TransportController::operator()(State state) {
 
 void TransportController::buttonClicked(juce::Button *button) {
   using namespace rec::command;
+
+  static const CommandID JUMP_BACK =
+    CommandIDEncoder::toCommandID(CommandIDEncoder::PREVIOUS, Command::JUMP);
+  static const CommandID JUMP_FORWARD =
+    CommandIDEncoder::toCommandID(CommandIDEncoder::NEXT, Command::JUMP);
+
   if (button == &startStopButton_)
     broadcast(Command::TOGGLE_START_STOP);
 
   else if (button == &jumpToStartButton_)
     broadcast(command::JUMP_TO_FIRST_SELECTED);
+
+  else if (button == &jumpBackButton_)
+    broadcast(JUMP_BACK);
+
+  else if (button == &jumpForwardButton_)
+    broadcast(JUMP_FORWARD);
 
   else
     LOG(DFATAL) << "Unknown button " << button;

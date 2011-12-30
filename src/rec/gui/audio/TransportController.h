@@ -51,6 +51,8 @@ class TransportController : public Layout,
 
   DrawableButton startStopButton_;
   DrawableButton jumpToStartButton_;
+  DrawableButton jumpBackButton_;
+  DrawableButton jumpForwardButton_;
   LevelMeter levelMeter_;
   DataSlider level_;
   gui::SetterToggle muteButton_;
