@@ -69,11 +69,9 @@ Waveform::~Waveform() {
 void Waveform::internalRepaint(int x, int y, int width, int height) {
   Lock l(lock_);
   juce::Rectangle<int> r(std::max(x, 0), std::max(y, 0), width, height);
-  // DLOG(INFO) << dirty_.toString() << ", " << r.toString();
   gui::addInto(r, &dirty_);
   dirty_.setWidth(std::min(getWidth() - dirty_.getX(), dirty_.getWidth()));
   dirty_.setHeight(std::min(getHeight() - dirty_.getY(), dirty_.getHeight()));
-  // DLOG(INFO) << dirty_.toString();
   Component::internalRepaint(x, y, width, height);
 }
 
@@ -89,18 +87,7 @@ const CursorProto& Waveform::defaultTimeCursor() {
   return timeDesc.get();
 }
 
-// static int64 currentTime = 0;
-
 void Waveform::paint(Graphics& g) {
-#if 0
-  int64 t = juce::Time::currentTimeMillis();
-  if (currentTime) {
-    LOG(INFO) << t - currentTime << ", "
-              << gui::toString(g.getClipBounds());
-  }
-  currentTime = t;
-#endif
-
   {
     Lock l(lock_);
     if (!helpScreenUp_) {
@@ -184,6 +171,7 @@ void Waveform::operator()(const WaveformProto& proto) {
 }
 
 void Waveform::operator()(const LoopPointList& loopPoints) {
+  DLOG(INFO) << loopPoints.ShortDebugString();
   BlockSet newSelection = rec::audio::getTimeSelection(loopPoints);
   bool isDraggingCursor;
   BlockSet oldSelection;
@@ -191,7 +179,8 @@ void Waveform::operator()(const LoopPointList& loopPoints) {
     Lock l(lock_);
     oldSelection = selection_;
     selection_ = newSelection;
-    length_ = Samples<44100>(loopPoints.length());
+    length_ = loopPoints.length();
+    constrainZoom(&zoom_, length_);
     empty_ = !loopPoints.has_length();
     isDraggingCursor = isDraggingCursor_;
   }
@@ -263,7 +252,6 @@ void Waveform::operator()(const Mode& mode) {
 }
 
 void Waveform::layout() {
-  // DLOG(INFO) << "layout";
   {
     Lock l(lock_);
     for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
@@ -429,10 +417,8 @@ void Waveform::repaintBlock(Block b) {
     if (x2 >= 0) {
       x1 = std::max(0, x1);
       x2 = std::min(x2, getWidth());
-      if (x1 < x2 && getHeight()) {
-        // DLOG(INFO) << x1 << ", " << x2;
+      if (x1 < x2 && getHeight())
         repaint(x1, 0, x2 - x1, getHeight());
-      }
     }
   }
 }
