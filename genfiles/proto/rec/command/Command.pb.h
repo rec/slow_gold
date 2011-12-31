@@ -44,7 +44,6 @@ enum Command_Type {
   Command_Type_NONE = 0,
   Command_Type_ABOUT_THIS_PROGRAM = 58,
   Command_Type_ADD_LOOP_POINT = 1,
-  Command_Type_ADD_LOOP_POINT_CLICK = 44,
   Command_Type_AUDIO_PREFERENCES = 2,
   Command_Type_CLEAR_NAVIGATOR = 3,
   Command_Type_CLEAR_LOOPS = 4,
@@ -306,7 +305,6 @@ class Command : public ::google::protobuf::Message {
   static const Type NONE = Command_Type_NONE;
   static const Type ABOUT_THIS_PROGRAM = Command_Type_ABOUT_THIS_PROGRAM;
   static const Type ADD_LOOP_POINT = Command_Type_ADD_LOOP_POINT;
-  static const Type ADD_LOOP_POINT_CLICK = Command_Type_ADD_LOOP_POINT_CLICK;
   static const Type AUDIO_PREFERENCES = Command_Type_AUDIO_PREFERENCES;
   static const Type CLEAR_NAVIGATOR = Command_Type_CLEAR_NAVIGATOR;
   static const Type CLEAR_LOOPS = Command_Type_CLEAR_LOOPS;

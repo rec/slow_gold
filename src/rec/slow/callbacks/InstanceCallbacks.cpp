@@ -44,10 +44,6 @@ void addLoopPoint(Instance* i) {
   audio::addLoopPointToData(i->file(), i->player_->getTime());
 }
 
-void addLoopPointClick(Instance* i) {
-  i->mouseListener_->toggleAddLoopPointMode();
-}
-
 void nudgeVolumeDownOp(audio::Gain* gain) {
   if (!(gain->dim() || gain->mute()))
     gain->set_gain(gain->gain() - 1.0);
@@ -205,7 +201,6 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
 
   addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram, i);
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
-  addCallback(c, Command::ADD_LOOP_POINT_CLICK, addLoopPointClick, i);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
   addCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
   addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);

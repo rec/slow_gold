@@ -805,7 +805,7 @@
 		D1808F156C23D6DD357F18A0 /* tag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = tag.cpp; path = ../../../../src/rec/data/yaml/src/tag.cpp; sourceTree = SOURCE_ROOT; };
 		D3095941488411CA120D4BE7 /* Convertors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Convertors.cpp; path = ../../../../src/rec/util/partition/Convertors.cpp; sourceTree = SOURCE_ROOT; };
 		D34816C7D8A0A95C38583580 /* Trash.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Trash.cpp; path = ../../../../src/rec/util/thread/Trash.cpp; sourceTree = SOURCE_ROOT; };
-		D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8 (debug build).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D427FD0910FEA6098B36B56B /* SlowGold 8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D480F045D0DBCDA5FCC51F6C /* RawFormatReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RawFormatReader.h; path = ../../../../src/rec/audio/format/raw/RawFormatReader.h; sourceTree = SOURCE_ROOT; };
 		D48DDECB9F35916340C9E1FE /* Value.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/Value.pb.cc; sourceTree = SOURCE_ROOT; };
 		D48EB8180E2C24EAFE50DFFB /* nodebuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = nodebuilder.cpp; path = ../../../../src/rec/data/yaml/src/nodebuilder.cpp; sourceTree = SOURCE_ROOT; };
@@ -1861,7 +1861,7 @@
 		DBBED81D920B27CB9107C128 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */,
+				D427FD0910FEA6098B36B56B /* SlowGold 8.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2119,7 +2119,7 @@
 			name = "SlowGold 8";
 			productInstallPath = "$(HOME)/Applications";
 			productName = "SlowGold 8";
-			productReference = D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */;
+			productReference = D427FD0910FEA6098B36B56B /* SlowGold 8.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

@@ -1,6 +1,5 @@
-command { type: ABOUT_THIS_PROGRAM category: "Apple"}
+command { type: ABOUT_THIS_PROGRAM category: "(None)"}
 command { type: ADD_LOOP_POINT category: "Loops"}
-command { type: ADD_LOOP_POINT_CLICK category: "Loops"}
 command { type: AUDIO_PREFERENCES category: "Audio"}
 command { type: CLEAR_LOOPS category: "Loops" }
 command { type: CLEAR_NAVIGATOR category: "File"}
@@ -24,7 +23,6 @@ command { type: RESET_GAIN_TO_UNITY category: "Audio"}
 command { type: SELECT_ALL category: "Transport"}
 command { type: TOGGLE_START_STOP category: "Transport"}
 command { type: TOGGLE_WHOLE_SONG_LOOP category: "Selection" }
-command { type: QUIT category: "Application"}
 command { type: UNDO category: "Edit"}
 command { type: ZOOM_OUT category: "Audio"}
 command { type: ZOOM_TO_SELECTION category: "Audio"}

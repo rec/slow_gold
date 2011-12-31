@@ -1,7 +1,7 @@
 command {
   type: ADD_LOOP_POINT
   desc {
-    menu: "Add Loop Point"
+    menu: "Add Loop Point At Current Time"
     full: "Add a loop point at the current time."
   }
 }
@@ -13,24 +13,10 @@ command {
   }
 }
 command {
-  type: ADD_LOOP_POINT_CLICK
-  desc {
-    menu: "Add Loop Point By Clicking"
-    full: "Add a loop point by clicking on the waveform display."
-  }
-}
-command {
   type: AUDIO_PREFERENCES
   desc {
     menu: "Audio Preferences..."
     full: "Open the Audio Preferences pane."
-  }
-}
-command {
-  type: CLEAR_NAVIGATOR
-  desc {
-    menu: "Clear Navigator"
-    full: "Clear all files and directories from "
   }
 }
 command {

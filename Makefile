@@ -31,7 +31,7 @@ code: $(icon_code) $(binary_code) $(command_code)
 .PHONY: build code all
 
 build:
-	xcodebuild -project projects/slow/Builds/MacOSX/Slow.xcodeproj -configuration Debug
+	xcodebuild -project "projects/slow/Builds/MacOSX/SlowGold 8.xcodeproj" -configuration Debug
 
 clean:
 	rm $(icon_code) $(binary_code) $(command_code)
