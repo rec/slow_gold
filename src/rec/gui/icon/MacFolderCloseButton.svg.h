@@ -1,5 +1,5 @@
-#ifndef __REC_GUI_ICON_MACFOLDERCLOSEDBUTTON__
-#define __REC_GUI_ICON_MACFOLDERCLOSEDBUTTON__
+#ifndef __REC_GUI_ICON_MACFOLDERCLOSEBUTTON__
+#define __REC_GUI_ICON_MACFOLDERCLOSEBUTTON__
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -7,7 +7,7 @@ namespace rec {
 namespace gui {
 namespace icon {
 
-struct MacFolderClosedButton {
+struct MacFolderCloseButton {
   static juce::Drawable* create();
 };
 
@@ -15,4 +15,4 @@ struct MacFolderClosedButton {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_ICON_MACFOLDERCLOSEDBUTTON__
+#endif  // __REC_GUI_ICON_MACFOLDERCLOSEBUTTON__

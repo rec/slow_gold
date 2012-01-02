@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		004A6D39FB608C9AE205E1B6 /* JumpBackButtonPressed.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD35F54BC57FA03D574FABF4 /* JumpBackButtonPressed.svg.cpp */; };
 		0338ECF985E6BC4E51054694 /* Components.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362E2E7C8F32ECBEF4903444 /* Components.cpp */; };
-		0393EAA128D5E8506D1A5217 /* MacFolderClosedButton.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0943D2D3EEF1B8883C931E /* MacFolderClosedButton.svg.cpp */; };
 		0637B3470243512096F0DFCE /* SetterText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E79D1A74EEF246E217F7545 /* SetterText.cpp */; };
 		066FBFA7B2040738E76F567C /* Undo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A93704276F2527D815042611 /* Undo.cpp */; };
 		092F53680B2E5DE75587CD65 /* LogFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A07F6E68CF4223DBB8C90C1F /* LogFile.cpp */; };
@@ -133,6 +132,7 @@
 		7952501EFED28CD74DEB4478 /* Gain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40EB1C11D08162E107F35773 /* Gain.cpp */; };
 		7A4960341F02ACDBF630C65F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05EBBE6ECD75008F41ECB8AB /* Carbon.framework */; };
 		7C33CFD9B22820CCE3E06613 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */; };
+		7D04AA2D56C74E8D9BD9DE89 /* LookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DF4227A552BC837D6FECBAD /* LookAndFeel.cpp */; };
 		7D4CE5AC5622AD5E956E5472 /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF17D3C8BCE60CBC91DBAAB0 /* map.cpp */; };
 		7F82FDE120AE07D767583F5F /* singledocparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62F619D5C3EA76A01C0392A7 /* singledocparser.cpp */; };
 		7FE0BC330B130293FA5FCD14 /* VirtualFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F00CD57CEBFF8DF24388554 /* VirtualFile.cpp */; };
@@ -159,6 +159,7 @@
 		9572BD2A620573A2C8416BE1 /* conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B336F1C1C2090670B7DA2C4 /* conversion.cpp */; };
 		965D9EBABDDADEDD8E21A424 /* regex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4132813AF6EC06285C2AF89 /* regex.cpp */; };
 		96C988519453217044C5E2B4 /* DataUpdater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA4EA0AA04F5A0547B7B9A1E /* DataUpdater.cpp */; };
+		970203EB6284B2C5FF7938DA /* MacFolderCloseButton.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4162484EB2E39DD862E1E2AC /* MacFolderCloseButton.svg.cpp */; };
 		97FB7094BC6C411643657C15 /* Metadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490604E738E7F7E49FABE411 /* Metadata.cpp */; };
 		981CA376A6661D1EBD9B093A /* ZoomOutButton.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90650245995D67AF68895ABF /* ZoomOutButton.svg.cpp */; };
 		9A907178688A42A189BF293E /* null.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7073B7FF6A3F516F96A1D338 /* null.cpp */; };
@@ -434,6 +435,7 @@
 		407D61C19B839D775B372156 /* NameToProto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NameToProto.h; path = ../../../../src/rec/data/proto/NameToProto.h; sourceTree = SOURCE_ROOT; };
 		40EB1C11D08162E107F35773 /* Gain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Gain.cpp; path = ../../../../src/rec/audio/util/Gain.cpp; sourceTree = SOURCE_ROOT; };
 		4121F83242BFF073C048DC89 /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
+		4162484EB2E39DD862E1E2AC /* MacFolderCloseButton.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MacFolderCloseButton.svg.cpp; path = ../../../../src/rec/gui/icon/MacFolderCloseButton.svg.cpp; sourceTree = SOURCE_ROOT; };
 		41ECEA2B08C7F76CC55BC17D /* string_piece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = string_piece.h; path = ../../../../src/rec/base/string_piece.h; sourceTree = SOURCE_ROOT; };
 		426696C39C8744DA2A22CD99 /* TestData.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestData.pb.h; path = ../../../../genfiles/proto/rec/data/proto/TestData.pb.h; sourceTree = SOURCE_ROOT; };
 		426AC73876AE69A3181F7200 /* DataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DataCenter.h; path = ../../../../src/rec/data/DataCenter.h; sourceTree = SOURCE_ROOT; };
@@ -485,6 +487,7 @@
 		550152193EB8E4C95F11184F /* Stretch.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.pb.cc; path = ../../../../genfiles/proto/rec/audio/stretch/Stretch.pb.cc; sourceTree = SOURCE_ROOT; };
 		55295BC8F2C653BA4552E683 /* scalar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scalar.h; path = ../../../../src/rec/data/yaml/src/scalar.h; sourceTree = SOURCE_ROOT; };
 		55B2494A8023C02EBBDC329D /* CompileAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CompileAssert.h; path = ../../../../src/rec/base/CompileAssert.h; sourceTree = SOURCE_ROOT; };
+		55DC13CEE0FC366DF31FC97A /* LookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LookAndFeel.h; path = ../../../../src/rec/gui/LookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		562E0DFFB03C7D6AAEDA15F6 /* PlayButtonDisabled.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayButtonDisabled.svg.h; path = ../../../../src/rec/gui/icon/PlayButtonDisabled.svg.h; sourceTree = SOURCE_ROOT; };
 		563DF22BC2C1FEECF7671C58 /* Repeated.def.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Repeated.def.cpp; path = ../../../../src/rec/slow/commands/Repeated.def.cpp; sourceTree = SOURCE_ROOT; };
 		5643F10B98D25BC8271DCBA3 /* Geometry.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Geometry.pb.cc; path = ../../../../genfiles/proto/rec/gui/Geometry.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -500,7 +503,6 @@
 		58DB855A8CC5B40D4E8A4256 /* Wrappy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrappy.h; path = ../../../../src/rec/audio/source/Wrappy.h; sourceTree = SOURCE_ROOT; };
 		592498CE8FB30C95C772099B /* Zoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Zoom.h; path = ../../../../src/rec/widget/waveform/Zoom.h; sourceTree = SOURCE_ROOT; };
 		59AE2C2C6427F46A8B31F173 /* Fillable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Fillable.h; path = ../../../../src/rec/util/block/Fillable.h; sourceTree = SOURCE_ROOT; };
-		5A0943D2D3EEF1B8883C931E /* MacFolderClosedButton.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MacFolderClosedButton.svg.cpp; path = ../../../../src/rec/gui/icon/MacFolderClosedButton.svg.cpp; sourceTree = SOURCE_ROOT; };
 		5A92B86B147015CDAF3C19BF /* RepeatedCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RepeatedCallbacks.h; path = ../../../../src/rec/slow/callbacks/RepeatedCallbacks.h; sourceTree = SOURCE_ROOT; };
 		5A94CB517D27D8D7FF6ED83E /* scantag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = scantag.cpp; path = ../../../../src/rec/data/yaml/src/scantag.cpp; sourceTree = SOURCE_ROOT; };
 		5A996F08CA2F90D8BB1A11B9 /* Callbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Callbacks.cpp; path = ../../../../src/rec/slow/callbacks/Callbacks.cpp; sourceTree = SOURCE_ROOT; };
@@ -590,6 +592,7 @@
 		7D108DC8B2379D556C4B2F96 /* SimpleLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SimpleLabel.h; path = ../../../../src/rec/gui/SimpleLabel.h; sourceTree = SOURCE_ROOT; };
 		7D2636CC38585B429779FBA0 /* Implementation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Implementation.cpp; path = ../../../../src/rec/audio/stretch/Implementation.cpp; sourceTree = SOURCE_ROOT; };
 		7DCBA95B187EAB0F0DD94B55 /* Address.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Address.h; path = ../../../../src/rec/data/Address.h; sourceTree = SOURCE_ROOT; };
+		7DF4227A552BC837D6FECBAD /* LookAndFeel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LookAndFeel.cpp; path = ../../../../src/rec/gui/LookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
 		7E231F25E3FE61F2EC3A82C6 /* Manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Manager.h; path = ../../../../src/rec/audio/format/mpg123/Manager.h; sourceTree = SOURCE_ROOT; };
 		7E4E61FC134C722511C12884 /* Result.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Result.h; path = ../../../../src/rec/util/thread/Result.h; sourceTree = SOURCE_ROOT; };
 		7E5402E1DF422CC16670417B /* FillableFrameBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FillableFrameBuffer.h; path = ../../../../src/rec/audio/util/FillableFrameBuffer.h; sourceTree = SOURCE_ROOT; };
@@ -751,7 +754,6 @@
 		BBB468FF9DBECC53691C7410 /* Stretch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretch.h; path = ../../../../src/rec/audio/stretch/Stretch.h; sourceTree = SOURCE_ROOT; };
 		BBCA7FFD1DE92D807F41C69E /* sequence.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = sequence.cpp; path = ../../../../src/rec/data/yaml/src/sequence.cpp; sourceTree = SOURCE_ROOT; };
 		BC5206066642F8961B48ACD0 /* Switcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Switcher.h; path = ../../../../src/rec/util/unused/Switcher.h; sourceTree = SOURCE_ROOT; };
-		BCFB41794C3A8CA7B8B382DB /* MacFolderClosedButton.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MacFolderClosedButton.svg.h; path = ../../../../src/rec/gui/icon/MacFolderClosedButton.svg.h; sourceTree = SOURCE_ROOT; };
 		BD8C10E13EA1C8B0DB22E914 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		BF392C2A41318BB3C928A151 /* GuiSettings.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GuiSettings.pb.cc; path = ../../../../genfiles/proto/rec/slow/GuiSettings.pb.cc; sourceTree = SOURCE_ROOT; };
 		BF6A3CCB38CBE7983E8528FA /* Directory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Directory.cpp; path = ../../../../src/rec/widget/tree/Directory.cpp; sourceTree = SOURCE_ROOT; };
@@ -808,7 +810,7 @@
 		D1808F156C23D6DD357F18A0 /* tag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = tag.cpp; path = ../../../../src/rec/data/yaml/src/tag.cpp; sourceTree = SOURCE_ROOT; };
 		D3095941488411CA120D4BE7 /* Convertors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Convertors.cpp; path = ../../../../src/rec/util/partition/Convertors.cpp; sourceTree = SOURCE_ROOT; };
 		D34816C7D8A0A95C38583580 /* Trash.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Trash.cpp; path = ../../../../src/rec/util/thread/Trash.cpp; sourceTree = SOURCE_ROOT; };
-		D427FD0910FEA6098B36B56B /* SlowGold 8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8 (debug build).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D480F045D0DBCDA5FCC51F6C /* RawFormatReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RawFormatReader.h; path = ../../../../src/rec/audio/format/raw/RawFormatReader.h; sourceTree = SOURCE_ROOT; };
 		D48DDECB9F35916340C9E1FE /* Value.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/Value.pb.cc; sourceTree = SOURCE_ROOT; };
 		D48EB8180E2C24EAFE50DFFB /* nodebuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = nodebuilder.cpp; path = ../../../../src/rec/data/yaml/src/nodebuilder.cpp; sourceTree = SOURCE_ROOT; };
@@ -829,6 +831,7 @@
 		DB55D4F8EB171A13369DB8B8 /* Eject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Eject.h; path = ../../../../src/rec/util/cd/Eject.h; sourceTree = SOURCE_ROOT; };
 		DBFAB3FB75875EA3528083FC /* DropFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DropFiles.h; path = ../../../../src/rec/gui/DropFiles.h; sourceTree = SOURCE_ROOT; };
 		DC289156EF03CF80F88EF201 /* DedupeCDDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DedupeCDDB.h; path = ../../../../src/rec/util/cd/DedupeCDDB.h; sourceTree = SOURCE_ROOT; };
+		DCCB6C53DA5F3C8BF25C0BA0 /* MacFolderCloseButton.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MacFolderCloseButton.svg.h; path = ../../../../src/rec/gui/icon/MacFolderCloseButton.svg.h; sourceTree = SOURCE_ROOT; };
 		DE667AF256DF661BB1295251 /* scanscalar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scanscalar.h; path = ../../../../src/rec/data/yaml/src/scanscalar.h; sourceTree = SOURCE_ROOT; };
 		DEA0EB0341E45C37F2388423 /* Widget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.cpp; path = ../../../../src/rec/widget/Widget.cpp; sourceTree = SOURCE_ROOT; };
 		DEE9C9F93056C0DB671B1695 /* Cuttable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cuttable.h; path = ../../../../src/rec/util/Cuttable.h; sourceTree = SOURCE_ROOT; };
@@ -1094,8 +1097,8 @@
 				63BFAB23E9C3A8AFADF66BE2 /* JumpToStartButtonDisabled.svg.h */,
 				D87A9F06E7E41634BFFAD86C /* JumpToStartButtonPressed.svg.cpp */,
 				2B98C5897C1691B944BDD39F /* JumpToStartButtonPressed.svg.h */,
-				5A0943D2D3EEF1B8883C931E /* MacFolderClosedButton.svg.cpp */,
-				BCFB41794C3A8CA7B8B382DB /* MacFolderClosedButton.svg.h */,
+				4162484EB2E39DD862E1E2AC /* MacFolderCloseButton.svg.cpp */,
+				DCCB6C53DA5F3C8BF25C0BA0 /* MacFolderCloseButton.svg.h */,
 				6FA50BA12EC488F1084E4FC7 /* MacFolderOpenButton.svg.cpp */,
 				5E87CFF4B0D3FBCC8D6CF341 /* MacFolderOpenButton.svg.h */,
 				78BC8B3AC4E493EBEEC27410 /* PlayButton.svg.cpp */,
@@ -1599,7 +1602,7 @@
 			name = rec;
 			sourceTree = "<group>";
 		};
-		AD16D552B903F8253BEC5298 /* SlowGold 8 */ = {
+		ACFD32C00F99364EC54026D3 /* SlowGold 8 */ = {
 			isa = PBXGroup;
 			children = (
 				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
@@ -1707,7 +1710,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				AD16D552B903F8253BEC5298 /* SlowGold 8 */,
+				ACFD32C00F99364EC54026D3 /* SlowGold 8 */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1761,6 +1764,8 @@
 				3EE47BC7B2D34ABDFE946AE5 /* icon */,
 				72F974AC1ABD3F29A867048C /* IconButton.h */,
 				FB1B624F52EE7A456FE433A1 /* layout */,
+				7DF4227A552BC837D6FECBAD /* LookAndFeel.cpp */,
+				55DC13CEE0FC366DF31FC97A /* LookAndFeel.h */,
 				60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */,
 				350C32878B8796E199D10089 /* PersistentWindow.h */,
 				13BDD945E532565AC5D254D1 /* RecentFiles.cpp */,
@@ -1876,7 +1881,7 @@
 		DBBED81D920B27CB9107C128 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D427FD0910FEA6098B36B56B /* SlowGold 8.app */,
+				D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2124,7 +2129,7 @@
 			name = "SlowGold 8";
 			productInstallPath = "$(HOME)/Applications";
 			productName = "SlowGold 8";
-			productReference = D427FD0910FEA6098B36B56B /* SlowGold 8.app */;
+			productReference = D427FD0910FEA6098B36B56B /* SlowGold 8 (debug build).app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2290,7 +2295,7 @@
 				8615C7239DB6B1B0B59089C7 /* JumpToStartButton.svg.cpp in Sources */,
 				D3890F607C9FF949845490EC /* JumpToStartButtonDisabled.svg.cpp in Sources */,
 				530D513EF44A93AD1FA6579D /* JumpToStartButtonPressed.svg.cpp in Sources */,
-				0393EAA128D5E8506D1A5217 /* MacFolderClosedButton.svg.cpp in Sources */,
+				970203EB6284B2C5FF7938DA /* MacFolderCloseButton.svg.cpp in Sources */,
 				2054FC7785A2C08DDAAFDDEC /* MacFolderOpenButton.svg.cpp in Sources */,
 				D6D70D0C28F013740B5FF5C0 /* PlayButton.svg.cpp in Sources */,
 				D29510C5AB15F496961B3C63 /* PlayButtonDisabled.svg.cpp in Sources */,
@@ -2306,6 +2311,7 @@
 				B9D51141FF244581AEA78E7E /* ZoomToSelectionButton.svg.cpp in Sources */,
 				32FA0AA37E1E04CBA55B23BA /* ZoomToSelectionButtonDisabled.svg.cpp in Sources */,
 				CEC56744D95797DFBC88C26D /* ZoomToSelectionButtonPressed.svg.cpp in Sources */,
+				7D04AA2D56C74E8D9BD9DE89 /* LookAndFeel.cpp in Sources */,
 				BD6A11F62CD0E7AB15538090 /* PersistentWindow.cpp in Sources */,
 				A449A75BAE696198F89C5828 /* RecentFiles.cpp in Sources */,
 				858B869F6A6B0DABA31BAC20 /* SetterResizer.cpp in Sources */,

@@ -171,7 +171,6 @@ void Waveform::operator()(const WaveformProto& proto) {
 }
 
 void Waveform::operator()(const LoopPointList& loopPoints) {
-  DLOG(INFO) << loopPoints.ShortDebugString();
   BlockSet newSelection = rec::audio::getTimeSelection(loopPoints);
   bool isDraggingCursor;
   BlockSet oldSelection;

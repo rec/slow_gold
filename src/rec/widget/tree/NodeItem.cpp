@@ -20,6 +20,8 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
       clicked_(false) {
   if (name)
     name_ = name;
+
+  setLinesDrawnForSubItems(!JUCE_MAC);
 }
 
 ColorName Node::getColor() const {

@@ -7,6 +7,7 @@ namespace rec {
 
 namespace audio { class Device; }
 namespace audio { namespace source { class Player; }}
+namespace gui { class LookAndFeel; }
 
 namespace slow {
 
@@ -53,6 +54,7 @@ class Instance {
   ptr<MouseListener> mouseListener_;
   ptr<GuiListener> guiListener_;
   ptr<Threads> threads_;
+  ptr<gui::LookAndFeel> lookAndFeel_;
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Instance);

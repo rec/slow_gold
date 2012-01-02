@@ -1,4 +1,4 @@
-#include "rec/gui/icon/MacFolderClosedButton.svg.h"
+#include "rec/gui/icon/MacFolderCloseButton.svg.h"
 #include "rec/base/ArraySize.h"
 #include "rec/util/Binary.h"
 
@@ -9,9 +9,9 @@ namespace icon {
 using juce::Drawable;
 
 // Created by the command line:
-// new src/rec/gui/icon/MacFolderClosedButton.svg
+// new src/rec/gui/icon/MacFolderCloseButton.svg
 
-Drawable* MacFolderClosedButton::create() {
+Drawable* MacFolderCloseButton::create() {
   static const char data[] = "<?xml version=\"1.0\" ?>\n"
   "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
   "<!DOCTYPE svg\n"
@@ -29,9 +29,9 @@ Drawable* MacFolderClosedButton::create() {
   "	<!ENTITY ns_svg \"http://www.w3.org/2000/svg\">\n"
   "	<!ENTITY ns_xlink \"http://www.w3.org/1999/xlink\">\n"
   "]>\n"
-  "<svg enable-background=\"new 0 0 17.256 20.557\" height=\"20.557\" i:pageBounds=\"0 25.9199 25.9199 0\" "
-  "i:rulerOrigin=\"0 0\" i:viewOrigin=\"6.7178 22.9277\" overflow=\"visible\" viewBox=\"0 0 17.256 20.557\" "
-  "width=\"17.256\" xml:space=\"preserve\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:a=\"http://ns.adobe.com/"
+  "<svg enable-background=\"new 0 0 20.594 17.256\" height=\"17.256\" i:pageBounds=\"0 25.9199 25.9199 0\" "
+  "i:rulerOrigin=\"0 0\" i:viewOrigin=\"2.7988 18.9424\" overflow=\"visible\" viewBox=\"0 0 20.594 17.256\" "
+  "width=\"20.594\" xml:space=\"preserve\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:a=\"http://ns.adobe.com/"
   "AdobeSVGViewerExtensions/3.0/\" xmlns:graph=\"http://ns.adobe.com/Graphs/1.0/\" xmlns:i=\"http://ns.adobe.com/"
   "AdobeIllustrator/10.0/\" xmlns:x=\"http://ns.adobe.com/Extensibility/1.0/\" xmlns:xlink=\"http://www.w3.org/1999/"
   "xlink\">\n"
@@ -42,10 +42,10 @@ Drawable* MacFolderClosedButton::create() {
   "  <g i:dimmedPercent=\"50\" i:layer=\"yes\" i:rgbTrio=\"#4F008000FFFF\" id=\"Layer_1\">\n"
   "    \n"
   "			\n"
-  "    <polygon i:knockout=\"Off\" points=\"0.657,20.557 0.657,1.106 17.256,10.783 \"/>\n"
+  "    <polygon i:knockout=\"Off\" points=\"1.144,0.657 20.594,0.657 10.917,17.256 \"/>\n"
   "    \n"
   "			\n"
-  "    <polygon fill=\"#949494\" i:knockout=\"Off\" points=\"0,19.45 0,0 16.599,9.677 \"/>\n"
+  "    <polygon fill=\"#949494\" i:knockout=\"Off\" points=\"0,0 19.45,0 9.773,16.599 \"/>\n"
   "    \n"
   "		\n"
   "  </g>\n"
@@ -54,7 +54,7 @@ Drawable* MacFolderClosedButton::create() {
   "</svg>\n"
   " "
 ;
-  return createBinary<Drawable>(data, arraysize(data), "MacFolderClosedButton.svg");
+  return createBinary<Drawable>(data, arraysize(data), "MacFolderCloseButton.svg");
 };
 
 }  // namespace icon

@@ -562,7 +562,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderCloseButton.svg.cpp">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.cpp">
@@ -609,6 +609,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp">
+      <Filter>SlowGold 8\rec\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp">
       <Filter>SlowGold 8\rec\gui</Filter>
@@ -1560,7 +1563,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderCloseButton.svg.h">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.h">
@@ -1613,6 +1616,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h">
       <Filter>SlowGold 8\rec\gui\layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\LookAndFeel.h">
+      <Filter>SlowGold 8\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h">
       <Filter>SlowGold 8\rec\gui</Filter>

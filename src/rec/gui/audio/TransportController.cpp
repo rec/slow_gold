@@ -50,9 +50,9 @@ TransportController::TransportController(TimeController* timeController)
   startStopButton_.setClickingTogglesState(true);
 
   using namespace rec::gui::icon;
-  SET_BUTTON_IMAGES2(&jumpToStartButton_, JumpToStartButton);
-  SET_BUTTON_IMAGES2(&jumpForwardButton_, JumpForwardButton);
-  SET_BUTTON_IMAGES2(&jumpBackButton_, JumpBackButton);
+  SET_BUTTON_IMAGES3(&jumpToStartButton_, JumpToStartButton);
+  SET_BUTTON_IMAGES3(&jumpForwardButton_, JumpForwardButton);
+  SET_BUTTON_IMAGES3(&jumpBackButton_, JumpBackButton);
 
   startStopButton_.setImages(ptr<Drawable>(PlayButton::create()).get(),
                              NULL, NULL,

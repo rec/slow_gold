@@ -5,6 +5,7 @@
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Player.h"
 #include "rec/gui/Dialog.h"
+#include "rec/gui/LookAndFeel.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransformController.h"
@@ -47,6 +48,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   components_.reset(new Components(this));
   target_.reset(new Target(this));
   currentTime_.reset(new CurrentTime(this));
+  lookAndFeel_.reset(new gui::LookAndFeel);
 
   currentFile_->setFile(data::getGlobal<VirtualFile>());
 
@@ -116,6 +118,7 @@ void Instance::startup() {
 
   MessageManagerLock l;
   window_->toFront(true);
+  juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
 }
 
 const VirtualFile Instance::file() const {

@@ -203,7 +203,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
   addCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
-  addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
+  // addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
   addCallback(c, Command::CLOSE_FILE, closeFile, i);
   addCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);

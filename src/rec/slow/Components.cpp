@@ -20,6 +20,15 @@
 namespace rec {
 namespace slow {
 
+static void enableAllDrawableButtons(Component *c, bool enabled) {
+  if (DrawableButton* b = dynamic_cast<DrawableButton*>(c)) {
+    b->setEnabled(enabled);
+  } else {
+    for (int i = 0; i < c->getNumChildComponents(); ++i)
+      enableAllDrawableButtons(c->getChildComponent(i), enabled);
+  }
+}
+
 Components::Components(Instance* instance)
     : manager_(instance->target_->targetManager()->commandManager()),
       timeController_(new gui::audio::TimeController),
@@ -59,6 +68,8 @@ void Components::setEnabled(bool enabled) {
   modeSelector_->setEnabled(enabled);
   commandBar_->setEnabled(enabled);
   mainPage_->setEnabled(enabled);
+
+  enableAllDrawableButtons(transportController_.get(), enabled);
 }
 
 }  // namespace slow

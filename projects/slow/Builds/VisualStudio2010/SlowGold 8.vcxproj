@@ -249,7 +249,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderCloseButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.cpp"/>
@@ -265,6 +265,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
@@ -583,7 +584,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderCloseButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.h"/>
@@ -601,6 +602,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\IconButton.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\LookAndFeel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\RecentFiles.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterResizer.h"/>
