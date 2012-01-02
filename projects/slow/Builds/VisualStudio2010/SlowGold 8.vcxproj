@@ -249,6 +249,8 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.cpp"/>
@@ -260,7 +262,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp"/>
@@ -546,7 +547,6 @@
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\tag.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\token.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\AboutWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\CommandBar.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\Loops.h"/>
@@ -583,6 +583,8 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.h"/>
@@ -594,7 +596,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h"/>
@@ -614,6 +615,7 @@
     <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\BufferFiller.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.h"/>

@@ -29,6 +29,7 @@ bool isReadyForUpdate() {
     LOG(INFO) << "Must-update file exists";
 
   } else {
+    DLOG(INFO) << "No mustUpdateFile exists";
     File lastUpdateFile = getAppFile(LAST_UPDATE_FILE);
     if (lastUpdateFile.exists()) {
       Time last = lastUpdateFile.getLastModificationTime();
@@ -40,6 +41,7 @@ bool isReadyForUpdate() {
       ready = (now - last) > UPDATE;
 
     } else {
+      DLOG(INFO) << "Creating lastUpdate file";
       lastUpdateFile.create();
       if (!lastUpdateFile.exists())
         LOG(DFATAL) << "Couldn't create lastUpdate file!!";

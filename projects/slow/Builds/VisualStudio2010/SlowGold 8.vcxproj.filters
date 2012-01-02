@@ -562,6 +562,12 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.cpp">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
@@ -593,9 +599,6 @@
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.cpp">
-      <Filter>SlowGold 8\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.cpp">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp">
@@ -1449,9 +1452,6 @@
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h">
       <Filter>SlowGold 8\rec\data\yaml</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\AboutWindow.h">
-      <Filter>SlowGold 8\rec\gui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\CommandBar.h">
       <Filter>SlowGold 8\rec\gui\audio</Filter>
     </ClInclude>
@@ -1560,6 +1560,12 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.h">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClInclude>
@@ -1591,9 +1597,6 @@
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.h">
-      <Filter>SlowGold 8\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.h">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.h">
@@ -1652,6 +1655,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h">
       <Filter>SlowGold 8\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\BufferFiller.h">
       <Filter>SlowGold 8\rec\slow</Filter>

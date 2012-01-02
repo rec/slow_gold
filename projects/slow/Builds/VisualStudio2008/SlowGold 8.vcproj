@@ -450,7 +450,6 @@
           </Filter>
         </Filter>
         <Filter Name="gui">
-          <File RelativePath="..\..\..\..\src\rec\gui\AboutWindow.h"/>
           <Filter Name="audio">
             <File RelativePath="..\..\..\..\src\rec\gui\audio\CommandBar.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\CommandBar.h"/>
@@ -521,6 +520,10 @@
             <File RelativePath="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MacFolderClosedButton.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\PlayButton.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\PlayButton.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.cpp"/>
@@ -543,8 +546,6 @@
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.h"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressedDisabled.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp"/>
@@ -582,6 +583,7 @@
           <File RelativePath="..\..\..\..\src\rec\music\Metadata.h"/>
         </Filter>
         <Filter Name="slow">
+          <File RelativePath="..\..\..\..\src\rec\slow\AboutWindow.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\BufferFiller.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\BufferFiller.h"/>
           <Filter Name="callbacks">

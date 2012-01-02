@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="69hzWvPkC" name="SlowGold 8">
+  <MAINGROUP id="3sxXKio0j" name="SlowGold 8">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -596,8 +596,6 @@
         </GROUP>
       </GROUP>
       <GROUP id="2Jai0j1Gr" name="gui">
-        <FILE compile="0" file="../../src/rec/gui/AboutWindow.h" id="mwBwLxL9e"
-              name="AboutWindow.h" resource="0"/>
         <GROUP id="FBcbiIjpZ" name="audio">
           <FILE compile="1" file="../../src/rec/gui/audio/CommandBar.cpp" id="aFoeLwM07"
                 name="CommandBar.cpp" resource="0"/>
@@ -733,6 +731,14 @@
                 id="o4qsrDTwB" name="JumpToStartButtonPressed.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/JumpToStartButtonPressed.svg.h"
                 id="OwsqwdPB2" name="JumpToStartButtonPressed.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/MacFolderClosedButton.svg.cpp"
+                id="AlBq06bLE" name="MacFolderClosedButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/MacFolderClosedButton.svg.h"
+                id="u9LDLmb3y" name="MacFolderClosedButton.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/MacFolderOpenButton.svg.cpp"
+                id="XawBpmheC" name="MacFolderOpenButton.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/MacFolderOpenButton.svg.h"
+                id="8IFlZBl1O" name="MacFolderOpenButton.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/PlayButton.svg.cpp"
                 id="LGPpkrQAu" name="PlayButton.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/PlayButton.svg.h" id="oga0ADevR"
@@ -777,10 +783,6 @@
                 id="vvSUoIdep" name="ZoomOutButtonPressed.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/ZoomOutButtonPressed.svg.h"
                 id="a7f3Q848G" name="ZoomOutButtonPressed.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/ZoomOutButtonPressedDisabled.svg.cpp"
-                id="2GGpeKUCY" name="ZoomOutButtonPressedDisabled.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/ZoomOutButtonPressedDisabled.svg.h"
-                id="yuxGyYdfc" name="ZoomOutButtonPressedDisabled.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/ZoomToSelectionButton.svg.cpp"
                 id="OxviVtHln" name="ZoomToSelectionButton.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/ZoomToSelectionButton.svg.h"
@@ -848,6 +850,8 @@
               name="Metadata.h" resource="0"/>
       </GROUP>
       <GROUP id="xPHC08adU" name="slow">
+        <FILE compile="0" file="../../src/rec/slow/AboutWindow.h" id="Xx81e8p0h"
+              name="AboutWindow.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/BufferFiller.cpp" id="afLrEVMaj"
               name="BufferFiller.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/BufferFiller.h" id="otAqnYIhq"
@@ -1390,7 +1394,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="L1Vk153nG" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="qddrJPi51" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
