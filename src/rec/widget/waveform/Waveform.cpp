@@ -72,7 +72,9 @@ void Waveform::internalRepaint(int x, int y, int width, int height) {
   gui::addInto(r, &dirty_);
   dirty_.setWidth(std::min(getWidth() - dirty_.getX(), dirty_.getWidth()));
   dirty_.setHeight(std::min(getHeight() - dirty_.getY(), dirty_.getHeight()));
-  Component::internalRepaint(x, y, width, height);
+
+  if (width * height)
+    Component::internalRepaint(x, y, width, height);
 }
 
 void Waveform::startListening() {
@@ -91,10 +93,15 @@ void Waveform::paint(Graphics& g) {
   {
     Lock l(lock_);
     if (!helpScreenUp_) {
-      bool isDirty = g.reduceClipRegion(dirty_);
-      gui::clear(&dirty_);
-      if (!isDirty)
+      juce::Rectangle<int> clip = g.getClipBounds().getIntersection(dirty_);
+      bool hasClip = clip.getWidth() * clip.getHeight();
+      if (hasClip) {
+        g.reduceClipRegion(dirty_);
+        gui::clear(&dirty_);
+      } else {
+        gui::clear(&dirty_);
         return;
+      }
     }
 
     Painter p(desc_.widget(), &g);

@@ -11,6 +11,8 @@ namespace gui { class DropFiles; }
 
 namespace slow {
 
+class FileDataListener;
+
 class CurrentFile : public HasInstance,
                     public Listener<const VirtualFile&>,
                     public Listener<const gui::DropFiles&> {
@@ -32,10 +34,13 @@ class CurrentFile : public HasInstance,
 
   VirtualFile file_;
   Samples<44100> length_;
+  ptr<FileDataListener> fileListener_;
+  bool initialized_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 
   friend class Instance;
+  friend class FileDataListener;
 };
 
 }  // namespace slow

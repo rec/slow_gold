@@ -5,6 +5,7 @@
 #include "rec/command/Command.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/RecentFiles.h"
@@ -24,7 +25,22 @@
 namespace rec {
 namespace slow {
 
-CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {}
+class FileDataListener : public data::GlobalDataListener<VirtualFile> {
+ public:
+  explicit FileDataListener(CurrentFile* f) : parent_(f) {}
+  virtual void operator()(const VirtualFile& f) {
+    parent_->setFile(f);
+  }
+
+ private:
+  CurrentFile* const parent_;
+};
+
+
+CurrentFile::CurrentFile(Instance* i) : HasInstance(i), initialized_(false) {
+  fileListener_.reset(new FileDataListener(this));
+  fileListener_->startListening();
+}
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
@@ -50,15 +66,23 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::operator()(const VirtualFile& f) {
-  gui::addRecentFile(file_, data::get<music::Metadata>(&file_));
   setFile(f);
   data::setProto(f, data::global());
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
+  if (initialized_) {
+    Lock l(lock_);
+    if (data::equals(f, file_))
+      return;
+  } else {
+    initialized_ = true;
+  }
+
   if (player())
     player()->clear();
 
+  gui::addRecentFile(file_, data::get<music::Metadata>(&file_));
   VirtualFile oldFile;
   {
     Lock l(lock_);

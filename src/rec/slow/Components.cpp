@@ -22,12 +22,8 @@ namespace slow {
 
 static void enableAllDrawableButtons(Component *c, bool enabled) {
   if (DrawableButton* b = dynamic_cast<DrawableButton*>(c)) {
-    DLOG(INFO) << (enabled ? "enabling " : "disabling ")
-               << b->getName();
     b->setEnabled(enabled);
-    b->buttonStateChanged(); /*
-    b->setButtonStyle(DrawableButton::ImageRaw);
-    b->setButtonStyle(DrawableButton::ImageFitted);*/
+    b->buttonStateChanged();
   } else {
     for (int i = 0; i < c->getNumChildComponents(); ++i)
       enableAllDrawableButtons(c->getChildComponent(i), enabled);
@@ -40,7 +36,8 @@ Components::Components(Instance* instance)
       loops_(new gui::audio::Loops(instance->menus_.get())),
       songData_(new gui::SongData(instance->menus_.get())),
       transformController_(new gui::audio::TransformController),
-      transportController_(new gui::audio::TransportController(timeController_.get())),
+      transportController_(
+          new gui::audio::TransportController(timeController_.get())),
       directoryTree_(new widget::tree::Root(instance->menus_.get())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
@@ -64,6 +61,8 @@ void Components::startListening() {
 }
 
 void Components::setEnabled(bool enabled) {
+  MessageManagerLock l;
+
   timeController_->setEnabled(enabled);
   loops_->setEnabled(enabled);
   songData_->setEnabled(enabled);
@@ -75,6 +74,8 @@ void Components::setEnabled(bool enabled) {
   mainPage_->setEnabled(enabled);
 
   enableAllDrawableButtons(transportController_.get(), enabled);
+  enableAllDrawableButtons(modeSelector_.get(), enabled);
+  enableAllDrawableButtons(commandBar_.get(), enabled);
 }
 
 }  // namespace slow

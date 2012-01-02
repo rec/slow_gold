@@ -48,8 +48,10 @@ void GenericApplication::shutdown() {
   LOG(INFO) << name_ << ": shutdown starting...";
 
   gui::dialog::shutdownDialog();
-  window_->shutdown();
-  window_.reset();
+  if (window_) {
+    window_->shutdown();
+    window_.reset();
+  }
 
   util::thread::trash::waitForAllThreadsToExit(1000);
   shutdown_(this);
