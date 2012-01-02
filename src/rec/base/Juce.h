@@ -35,7 +35,7 @@ typedef juce::Component Component;
 
 typedef juce::DocumentWindow DocumentWindow;
 typedef juce::Drawable Drawable;
-typedef juce::DrawableButton DrawableButton;
+// typedef juce::DrawableButton DrawableButton;
 
 typedef juce::File File;
 typedef juce::FileChooser FileChooser;
@@ -115,6 +115,15 @@ inline const string str(const MidiMessage& msg) {
 inline void beep( ) {
   juce::LookAndFeel::getDefaultLookAndFeel().playAlertSound();
 }
+
+class DrawableButton : public juce::DrawableButton {
+ public:
+  DrawableButton (const String& buttonName,
+                  ButtonStyle buttonStyle) : juce::DrawableButton(buttonName, buttonStyle) {}
+  void buttonStateChanged() {
+    juce::DrawableButton::buttonStateChanged();
+  }
+};
 
 }  // namespace rec
 

@@ -22,7 +22,12 @@ namespace slow {
 
 static void enableAllDrawableButtons(Component *c, bool enabled) {
   if (DrawableButton* b = dynamic_cast<DrawableButton*>(c)) {
+    DLOG(INFO) << (enabled ? "enabling " : "disabling ")
+               << b->getName();
     b->setEnabled(enabled);
+    b->buttonStateChanged(); /*
+    b->setButtonStyle(DrawableButton::ImageRaw);
+    b->setButtonStyle(DrawableButton::ImageFitted);*/
   } else {
     for (int i = 0; i < c->getNumChildComponents(); ++i)
       enableAllDrawableButtons(c->getChildComponent(i), enabled);
