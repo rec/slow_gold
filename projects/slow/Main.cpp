@@ -3,6 +3,6 @@
 
 START_REC_APPLICATION(rec::slow::SlowWindow,
                       SlowGold,
-                      "0.2.24",
+                      "0.2.25",
                       rec::slow::initialize,
                       rec::slow::shutdown)
