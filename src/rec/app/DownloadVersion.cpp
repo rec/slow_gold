@@ -18,6 +18,7 @@ const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const URL VERSION_FILE(WOODSHED + "currentversion/");
 const String LAST_UPDATE_FILE("LastUpdate.txt");
 const String MUST_UPDATE_FILE("MustUpdate.txt");
+const bool UPDATE_ON_MINOR_VERSION_CHANGE = true;
 
 // const RelativeTime UPDATE(RelativeTime::days(1));
 const RelativeTime UPDATE(1);  // 1 second for testing.
@@ -65,7 +66,7 @@ String getVersion() {
 String majorVersion(const String& version) {
   String v(version);
 
-  int i = v.indexOfChar(0, '.');
+ int i = v.indexOfChar(0, '.');
   if (i >= 0) {
     int j = v.indexOfChar(i + 1, '.');
     if (j >= 0)
@@ -74,11 +75,21 @@ String majorVersion(const String& version) {
   return v;
 }
 
-bool downloadNewVersion(const String& appName, const String& version) {
-  AlertWindow dialog("Downloading a new version " + version,
-                     "white", AlertWindow::WarningIcon, NULL);
-  dialog.enterModalState();
-  bool ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
+bool downloadNewVersion(const String& appName, const String& version,
+                        const String& oldVersion) {
+  String msg = "A new version of SlowGold, " + version + "is available.";
+  bool ok = AlertWindow::showOkCancelBox(
+      AlertWindow::WarningIcon, msg,
+      msg + "Would you like to download it?",
+      "Download new version and quit this old one.",
+      "Run this old version " + version);
+
+  if (!ok) {
+    LOG(INFO) << "New version download cancelled";
+    return false;
+  }
+
+  ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
 
   if (!ok) {
     AlertWindow::showMessageBox(AlertWindow::WarningIcon,
@@ -86,8 +97,6 @@ bool downloadNewVersion(const String& appName, const String& version) {
                                "Couldn't update to version " + version,
                                "Click to continue");
   }
-  dialog.exitModalState(true);
-
   return ok;
 }
 
@@ -102,9 +111,11 @@ bool checkForNewMajorVersion(const String& current, const String&,
     return false;
   }
 
-  int cmp = majorVersion(*version).compare(majorVersion(current));
+  int cmp = UPDATE_ON_MINOR_VERSION_CHANGE ?
+    version->compare(current) :
+    majorVersion(*version).compare(majorVersion(current));
   // This cheap comparison won't work if we get a minor version #10 or greater
-  // so let's not do that.
+  // so let's not do that. :-D
 
   if (cmp < 0)
     LOG(DFATAL) << "Future Version number! " << current << ", " << *version;
@@ -118,13 +129,10 @@ bool downloadNewVersionIfNeeded(const String& version, const String& name) {
   String newVersion;
   bool isNew = checkForNewMajorVersion(version, name, &newVersion);
 
-  if (isNew)
-    downloadNewVersion(name, newVersion);
-  else
-    LOG(INFO) << "No new version needed.  this: "  << version
-              << " current: " << newVersion;
+  if (!isNew)
+    LOG(INFO) << "New: "  << version << " current: " << newVersion;
 
-  return isNew;
+  return isNew && downloadNewVersion(name, newVersion, version);
 }
 
 }  // namespace app
