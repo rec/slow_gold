@@ -19,7 +19,6 @@ class BasicMenuMaker : public MenuMaker {
   void addEditMenu();
   void addSelectMenu();
   void addTransportMenu();
-  void addDisplayMenu();
   virtual void addMenu(const String& menuName);
 
  private:

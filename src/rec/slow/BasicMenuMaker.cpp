@@ -49,10 +49,8 @@ void BasicMenuMaker::addEditMenu() {
 
 void BasicMenuMaker::addAudioMenu() {
   add(Command::MUTE_VOLUME_TOGGLE);
-  add(Command::DIM_VOLUME_TOGGLE);
   add(Command::NUDGE_VOLUME_UP);
   add(Command::NUDGE_VOLUME_DOWN);
-  add(Command::RESET_GAIN_TO_UNITY);
   add(Command::TOGGLE_STRETCH_ENABLE);
 
   menu_.addSeparator();
@@ -66,45 +64,16 @@ void BasicMenuMaker::addSelectMenu() {
   add(Command::INVERT_LOOP_SELECTION);
   add(Command::TOGGLE_WHOLE_SONG_LOOP);
 
-  menu_.addSeparator();
-
-  addBank(Command::SELECT, "Select...");
-  addBank(Command::SELECT_ONLY, "Select Only...");
-  addBank(Command::TOGGLE_SELECTION, "Toggle...");
-  addBank(Command::UNSELECT, "Unselect...");
 }
 
 void BasicMenuMaker::addTransportMenu() {
   add(Command::TOGGLE_START_STOP);
   add(Command::ADD_LOOP_POINT);
   add(Command::CLEAR_LOOPS);
-  add(Command::TOGGLE_PREFADER_LEVELS);
-
-  menu_.addSeparator();
-
-  addBank(Command::JUMP, "Jump To...");
-  addBank(Command::JUMP_SELECTED, "Jump To Selected...");
-}
-
-void BasicMenuMaker::addDisplayMenu() {
-  add(Command::TOGGLE_GRID_DISPLAY);
-  add(Command::TOGGLE_PARALLEL_WAVEFORMS);
-  add(Command::TOGGLE_FOLLOW_CURSOR);
-  add(Command::TOGGLE_SHOW_HELP_PANE);
-  add(Command::TOGGLE_SHOW_TOOLTIPS);
-  add(Command::TOGGLE_SHOW_SELECTION_BUTTONS);
-  add(Command::TOGGLE_SHOW_CURSOR_LABELS);
-  add(Command::TOGGLE_SHOW_TIMES_AT_TOP);
-  add(Command::TOGGLE_SHOW_LABELS_AT_TOP);
-  add(Command::TOGGLE_COMMAND_BAR_AT_LEFT);
-  add(Command::TOGGLE_COMMAND_BAR_AT_TOP);
-  add(Command::TOGGLE_MODES_AT_LEFT);
-  add(Command::TOGGLE_MODES_AT_TOP);
 }
 
 const StringArray BasicMenuMaker::getMenuBarNames() const {
-  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select",
-                                "Display"};
+  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select"};
   return StringArray(NAMES, arraysize(NAMES));
 }
 
@@ -123,9 +92,6 @@ void BasicMenuMaker::addMenu(const String& menuName) {
 
   else if (menuName == "Transport")
     addTransportMenu();
-
-  else if (menuName == "Display")
-    addDisplayMenu();
 }
 
 }  // namespace slow
