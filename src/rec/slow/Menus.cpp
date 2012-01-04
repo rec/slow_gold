@@ -2,20 +2,15 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandIDEncoder.h"
-#include "rec/gui/RecentFiles.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MenuMaker.h"
 #include "rec/slow/Target.h"
-#include "rec/util/Cuttable.h"
-#include "rec/util/Undo.h"
 
 using namespace rec::command;
 
 namespace rec {
 namespace slow {
-
-static const int SLOT_COUNT = 10;
 
 Menus::Menus(Instance* i) : HasInstance(i), isAdvanced_(false) {}
 

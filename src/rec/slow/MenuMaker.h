@@ -12,6 +12,8 @@ namespace slow {
 
 class MenuMaker {
  public:
+  static const int SLOT_COUNT = 10;
+
   MenuMaker(command::TargetManager* t) : targetManager_(t) {}
 
   const PopupMenu makeMenu(const String& name);
@@ -27,15 +29,20 @@ class MenuMaker {
                  const String& name = String::empty,
                  bool enabled = true,
                  PopupMenu* m = NULL);
+
+  void addMenu(const String& menuName);
+
   void addEnabled(command::Command::Type command, bool enabled);
   void addBank(command::Command::Type command, const String& name,
                int begin = command::CommandIDEncoder::FIRST,
                int end = SLOT_COUNT);
+
+  void addAudioMenu();
   void addFileMenu();
   void addEditMenu();
   void addSelectMenu();
+  void addTransportMenu();
   void addDisplayMenu();
-  void addMenu(const String& menuName);
 
  private:
   command::TargetManager* targetManager_;
