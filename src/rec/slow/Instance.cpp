@@ -110,6 +110,7 @@ void Instance::startListening() {
   currentTime_->startListening();
   guiListener_->startListening();
   mouseListener_->startListening();
+  menus_->startListening();
 }
 
 void Instance::startup() {
