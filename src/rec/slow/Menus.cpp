@@ -17,7 +17,7 @@ void Menus::operator()(const GuiSettings& settings) {
 
 void Menus::setMenuMaker(bool isAdvanced) {
   Lock l(lock_);
-  menuMaker_.reset(new MenuMaker(target()->targetManager()));
+  menuMaker_.reset(makeMenuMaker(target()->targetManager(), isAdvanced));
 }
 
 MenuMaker* Menus::getMenuMaker() {

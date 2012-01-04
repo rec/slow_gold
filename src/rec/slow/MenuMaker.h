@@ -17,10 +17,9 @@ class MenuMaker {
   MenuMaker(command::TargetManager* t) : targetManager_(t) {}
 
   const PopupMenu makeMenu(const String& name);
-
   const StringArray getMenuBarNames() const;
 
- private:
+ protected:
   void add(CommandID id,
            const String& name = String::empty,
            bool enabled = true,
@@ -53,6 +52,10 @@ class MenuMaker {
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MenuMaker);
 };
+
+inline MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced) {
+  return new MenuMaker(tm);
+}
 
 }  // namespace slow
 }  // namespace rec
