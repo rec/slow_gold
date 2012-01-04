@@ -31,7 +31,7 @@ void AdvancedMenuMaker::addFileMenu() {
 
   menu_.addSubMenu("Open recent", submenu);
 
-#if !JUCE_MACb
+#if !JUCE_MAC
   add(Command::ABOUT_THIS_PROGRAM);
   add(Command::QUIT);
 #endif

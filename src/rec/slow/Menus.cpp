@@ -10,6 +10,7 @@ namespace rec {
 namespace slow {
 
 Menus::Menus(Instance* i) : HasInstance(i) {}
+Menus::~Menus() {}
 
 void Menus::operator()(const GuiSettings& settings) {
   setMenuMaker(settings.advanced_menus());

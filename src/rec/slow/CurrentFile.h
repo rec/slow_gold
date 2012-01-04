@@ -18,6 +18,7 @@ class CurrentFile : public HasInstance,
                     public Listener<const gui::DropFiles&> {
  public:
   explicit CurrentFile(Instance* i);
+  virtual ~CurrentFile();
 
   // Set the file and change the persistent data.
   virtual void operator()(const gui::DropFiles&);

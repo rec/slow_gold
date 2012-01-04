@@ -12,11 +12,13 @@ class GuiSettings;
 class Instance;
 class MenuMaker;
 
-class Menus : public MenuBarModel, public HasInstance,
+class Menus : public MenuBarModel,
+              public HasInstance,
               public Listener<None>,
-              public DataListener<GuiSettings> {
+              public GlobalDataListener<GuiSettings> {
  public:
   Menus(Instance* i);
+  virtual ~Menus();
 
   virtual const StringArray getMenuBarNames();
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& name);

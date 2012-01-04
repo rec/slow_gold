@@ -42,6 +42,8 @@ CurrentFile::CurrentFile(Instance* i) : HasInstance(i), initialized_(false) {
   fileListener_->startListening();
 }
 
+CurrentFile::~CurrentFile() {}
+
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
 #if 0
