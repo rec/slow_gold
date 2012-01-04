@@ -69,6 +69,7 @@ enum Command_Type {
   Command_Type_RESET_GAIN_TO_UNITY = 24,
   Command_Type_SELECT = 25,
   Command_Type_SELECT_ONLY = 26,
+  Command_Type_TOGGLE_ADVANCED_MENUS = 59,
   Command_Type_TOGGLE_FOLLOW_CURSOR = 43,
   Command_Type_TOGGLE_GRID_DISPLAY = 27,
   Command_Type_TOGGLE_COMMAND_BAR_AT_LEFT = 54,
@@ -98,7 +99,7 @@ enum Command_Type {
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 58,
+  Command_Type_LAST_TYPE = 59,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -330,6 +331,7 @@ class Command : public ::google::protobuf::Message {
   static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;
   static const Type SELECT = Command_Type_SELECT;
   static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
+  static const Type TOGGLE_ADVANCED_MENUS = Command_Type_TOGGLE_ADVANCED_MENUS;
   static const Type TOGGLE_FOLLOW_CURSOR = Command_Type_TOGGLE_FOLLOW_CURSOR;
   static const Type TOGGLE_GRID_DISPLAY = Command_Type_TOGGLE_GRID_DISPLAY;
   static const Type TOGGLE_COMMAND_BAR_AT_LEFT = Command_Type_TOGGLE_COMMAND_BAR_AT_LEFT;

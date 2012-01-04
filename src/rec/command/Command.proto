@@ -52,6 +52,7 @@ message Command {
     SELECT = 25;
     SELECT_ONLY = 26;
 
+    TOGGLE_ADVANCED_MENUS = 59;
     TOGGLE_FOLLOW_CURSOR = 43;
     TOGGLE_GRID_DISPLAY = 27;
     TOGGLE_COMMAND_BAR_AT_LEFT = 54;
@@ -85,7 +86,7 @@ message Command {
     ZOOM_OUT = 40;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 58;
+    LAST_TYPE = 59;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

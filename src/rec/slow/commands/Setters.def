@@ -27,6 +27,13 @@ command {
   category: "Display"
 }
 command {
+  type: TOGGLE_ADVANCED_MENUS
+  is_global_setter: true
+  address { part: { name: "advanced_menus" } }
+  setter_type_name: "rec.slow.GuiSettings"
+  category: "File"
+}
+command {
   type: TOGGLE_FOLLOW_CURSOR
   is_global_setter: true
   address { part: { name: "follow_cursor" } }
