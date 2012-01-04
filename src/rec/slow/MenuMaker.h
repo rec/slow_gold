@@ -15,9 +15,10 @@ class MenuMaker {
   static const int SLOT_COUNT = 10;
 
   MenuMaker(command::TargetManager* t) : targetManager_(t) {}
+  virtual ~MenuMaker() {}
 
   const PopupMenu makeMenu(const String& name);
-  const StringArray getMenuBarNames() const;
+  virtual const StringArray getMenuBarNames() const = 0;
 
  protected:
   void add(CommandID id,
@@ -31,31 +32,22 @@ class MenuMaker {
                  bool enabled = true,
                  PopupMenu* m = NULL);
 
-  void addMenu(const String& menuName);
+  virtual void addMenu(const String& menuName) = 0;
 
   void addEnabled(command::Command::Type command, bool enabled);
   void addBank(command::Command::Type command, const String& name,
                int begin = command::CommandIDEncoder::FIRST,
                int end = SLOT_COUNT);
 
-  void addAudioMenu();
-  void addFileMenu();
-  void addEditMenu();
-  void addSelectMenu();
-  void addTransportMenu();
-  void addDisplayMenu();
+  PopupMenu menu_;
 
  private:
   command::TargetManager* targetManager_;
-  PopupMenu menu_;
-  bool isAdvanced_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MenuMaker);
 };
 
-inline MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced) {
-  return new MenuMaker(tm);
-}
+MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced);
 
 }  // namespace slow
 }  // namespace rec
