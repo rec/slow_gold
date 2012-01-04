@@ -26,6 +26,7 @@ class Menus : public MenuBarModel, public HasInstance,
 
  private:
   void setMenuMaker(bool isAdvanced);
+  MenuMaker* getMenuMaker();
 
   ptr<MenuMaker> menuMaker_;
   CriticalSection lock_;

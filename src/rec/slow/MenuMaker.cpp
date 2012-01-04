@@ -1,4 +1,7 @@
 #include "rec/slow/MenuMaker.h"
+
+#include "rec/base/ArraySize.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/TargetManager.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/Cuttable.h"
@@ -136,6 +139,13 @@ void MenuMaker::addDisplayMenu() {
   add(Command::TOGGLE_MODES_AT_LEFT);
   add(Command::TOGGLE_MODES_AT_TOP);
 }
+
+const StringArray MenuMaker::getMenuBarNames() const {
+  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select",
+                                "Display"};
+  return StringArray(NAMES, arraysize(NAMES));
+}
+
 
 void MenuMaker::addMenu(const String& menuName) {
   if (menuName == "File")

@@ -18,6 +18,8 @@ class MenuMaker {
 
   const PopupMenu makeMenu(const String& name);
 
+  const StringArray getMenuBarNames() const;
+
  private:
   void add(CommandID id,
            const String& name = String::empty,
