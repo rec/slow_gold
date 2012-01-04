@@ -105,12 +105,12 @@ Instance::~Instance() {
 }
 
 void Instance::startListening() {
+  menus_->startListening();
   player_->startListening();
   components_->startListening();
   currentTime_->startListening();
   guiListener_->startListening();
   mouseListener_->startListening();
-  menus_->startListening();
 }
 
 void Instance::startup() {

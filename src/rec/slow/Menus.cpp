@@ -12,10 +12,15 @@ using namespace rec::command;
 namespace rec {
 namespace slow {
 
-Menus::Menus(Instance* i) : HasInstance(i), isAdvanced_(false) {}
+Menus::Menus(Instance* i) : HasInstance(i) {}
 
 void Menus::operator()(const GuiSettings& settings) {
-  //  isAdvanced_ = settings.advanced_menus();
+  setMenuMaker(settings.advanced_menus());
+}
+
+void Menus::setMenuMaker(bool isAdvanced) {
+  Lock l(lock_);
+  menuMaker_.reset(new MenuMaker(target()->targetManager()));
 }
 
 const StringArray Menus::getMenuBarNames() {
@@ -25,7 +30,9 @@ const StringArray Menus::getMenuBarNames() {
 }
 
 const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
-  return MenuMaker(target()->targetManager()).makeMenu(menuName);
+  if (!menuMaker_)
+    setMenuMaker(false);
+  return menuMaker_->makeMenu(menuName);
 }
 
 }  // namespace slow

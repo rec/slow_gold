@@ -10,6 +10,7 @@ namespace slow {
 
 class GuiSettings;
 class Instance;
+class MenuMaker;
 
 class Menus : public MenuBarModel, public HasInstance,
               public Listener<None>,
@@ -24,7 +25,11 @@ class Menus : public MenuBarModel, public HasInstance,
   virtual void operator()(const GuiSettings&);
 
  private:
-  bool isAdvanced_;
+  void setMenuMaker(bool isAdvanced);
+
+  ptr<MenuMaker> menuMaker_;
+  CriticalSection lock_;
+
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Menus);
 };
 
