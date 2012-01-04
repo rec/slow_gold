@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="rHwZKMpTn" name="SlowGold 8">
+  <MAINGROUP id="NRf6T9VUw" name="SlowGold 8">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -860,6 +860,10 @@
               name="AdvancedMenuMaker.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AdvancedMenuMaker.h" id="Q1mGepHT6"
               name="AdvancedMenuMaker.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/BasicMenuMaker.cpp" id="1WrpJOBUB"
+              name="BasicMenuMaker.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/BasicMenuMaker.h" id="6zSy5f6A1"
+              name="BasicMenuMaker.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/BufferFiller.cpp" id="afLrEVMaj"
               name="BufferFiller.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/BufferFiller.h" id="otAqnYIhq"
@@ -1406,7 +1410,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="hQS7rMpNZ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Ztv7XoLH2" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -1,4 +1,4 @@
-#include "rec/slow/AdvancedMenuMaker.h"
+#include "rec/slow/BasicMenuMaker.h"
 
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandIDEncoder.h"
@@ -12,7 +12,7 @@ namespace slow {
 
 using namespace rec::command;
 
-void AdvancedMenuMaker::addFileMenu() {
+void BasicMenuMaker::addFileMenu() {
   add(Command::OPEN);
   add(Command::CLOSE_FILE);
   add(Command::EJECT_CDS);
@@ -30,13 +30,13 @@ void AdvancedMenuMaker::addFileMenu() {
 
   menu_.addSubMenu("Open recent", submenu);
 
-#if !JUCE_MACb
+#if !JUCE_MAC
   add(Command::ABOUT_THIS_PROGRAM);
   add(Command::QUIT);
 #endif
 }
 
-void AdvancedMenuMaker::addEditMenu() {
+void BasicMenuMaker::addEditMenu() {
   addEnabled(Command::UNDO, canUndo());
   addEnabled(Command::REDO, canRedo());
 
@@ -47,7 +47,7 @@ void AdvancedMenuMaker::addEditMenu() {
   addEnabled(Command::PASTE, canPaste());
 }
 
-void AdvancedMenuMaker::addAudioMenu() {
+void BasicMenuMaker::addAudioMenu() {
   add(Command::MUTE_VOLUME_TOGGLE);
   add(Command::DIM_VOLUME_TOGGLE);
   add(Command::NUDGE_VOLUME_UP);
@@ -60,7 +60,7 @@ void AdvancedMenuMaker::addAudioMenu() {
   add(Command::AUDIO_PREFERENCES);
 }
 
-void AdvancedMenuMaker::addSelectMenu() {
+void BasicMenuMaker::addSelectMenu() {
   add(Command::SELECT_ALL);
   add(Command::DESELECT_ALL);
   add(Command::INVERT_LOOP_SELECTION);
@@ -74,7 +74,7 @@ void AdvancedMenuMaker::addSelectMenu() {
   addBank(Command::UNSELECT, "Unselect...");
 }
 
-void AdvancedMenuMaker::addTransportMenu() {
+void BasicMenuMaker::addTransportMenu() {
   add(Command::TOGGLE_START_STOP);
   add(Command::ADD_LOOP_POINT);
   add(Command::CLEAR_LOOPS);
@@ -86,7 +86,7 @@ void AdvancedMenuMaker::addTransportMenu() {
   addBank(Command::JUMP_SELECTED, "Jump To Selected...");
 }
 
-void AdvancedMenuMaker::addDisplayMenu() {
+void BasicMenuMaker::addDisplayMenu() {
   add(Command::TOGGLE_GRID_DISPLAY);
   add(Command::TOGGLE_PARALLEL_WAVEFORMS);
   add(Command::TOGGLE_FOLLOW_CURSOR);
@@ -102,13 +102,13 @@ void AdvancedMenuMaker::addDisplayMenu() {
   add(Command::TOGGLE_MODES_AT_TOP);
 }
 
-const StringArray AdvancedMenuMaker::getMenuBarNames() const {
+const StringArray BasicMenuMaker::getMenuBarNames() const {
   static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select",
                                 "Display"};
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void AdvancedMenuMaker::addMenu(const String& menuName) {
+void BasicMenuMaker::addMenu(const String& menuName) {
   if (menuName == "File")
     addFileMenu();
 

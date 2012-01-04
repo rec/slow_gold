@@ -199,6 +199,7 @@
 		B69E7726FCA60AE0E8993D6B /* scanscalar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96B624C4ADC0CDAEECCF34BA /* scanscalar.cpp */; };
 		B6FEEDC6E6F581A35B76E048 /* Loops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F67837B1F913F0981A51B001 /* Loops.cpp */; };
 		B701640E5F7DB8B799C48B9C /* Runny.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5C25F39EEC13CD85D325D62B /* Runny.pb.cc */; };
+		B7790226099DBCD8DEE1BE55 /* BasicMenuMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAF11FA597B28CFC3CE16F08 /* BasicMenuMaker.cpp */; };
 		B78C44F06E991FF8183A25C8 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B15833E2B2EB99E74F7E6 /* Socket.cpp */; };
 		B7C417BDE4BAB6C89A4EED91 /* TextComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2000FCFB9C477494BF630DC /* TextComponent.cpp */; };
 		B8453F04CC78E611977090B2 /* SetTimeModeDisabled.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03CF50D3803CFF7F03237B7 /* SetTimeModeDisabled.svg.cpp */; };
@@ -833,6 +834,7 @@
 		D9511B40588AEE72CC9179B9 /* CreateMusicFileReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateMusicFileReader.h; path = ../../../../src/rec/music/CreateMusicFileReader.h; sourceTree = SOURCE_ROOT; };
 		DA0B702A5C4F367EC9B12DEE /* stlnode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stlnode.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/stlnode.h"; sourceTree = SOURCE_ROOT; };
 		DA567D215C489B60F454D735 /* Typer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typer.h; path = ../../../../src/rec/data/proto/Typer.h; sourceTree = SOURCE_ROOT; };
+		DAF11FA597B28CFC3CE16F08 /* BasicMenuMaker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BasicMenuMaker.cpp; path = ../../../../src/rec/slow/BasicMenuMaker.cpp; sourceTree = SOURCE_ROOT; };
 		DB55D4F8EB171A13369DB8B8 /* Eject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Eject.h; path = ../../../../src/rec/util/cd/Eject.h; sourceTree = SOURCE_ROOT; };
 		DBFAB3FB75875EA3528083FC /* DropFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DropFiles.h; path = ../../../../src/rec/gui/DropFiles.h; sourceTree = SOURCE_ROOT; };
 		DC289156EF03CF80F88EF201 /* DedupeCDDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DedupeCDDB.h; path = ../../../../src/rec/util/cd/DedupeCDDB.h; sourceTree = SOURCE_ROOT; };
@@ -919,6 +921,7 @@
 		FD227E4F5EFA6DD53CE22B76 /* Range.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Range.h; path = ../../../../src/rec/util/Range.h; sourceTree = SOURCE_ROOT; };
 		FD35F54BC57FA03D574FABF4 /* JumpBackButtonPressed.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = JumpBackButtonPressed.svg.cpp; path = ../../../../src/rec/gui/icon/JumpBackButtonPressed.svg.cpp; sourceTree = SOURCE_ROOT; };
 		FD48E942DCF34E501D534EE3 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cpp; path = ../../../../src/rec/gui/Color.cpp; sourceTree = SOURCE_ROOT; };
+		FDD75B96DDE8AA7ACFE75E1D /* BasicMenuMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BasicMenuMaker.h; path = ../../../../src/rec/slow/BasicMenuMaker.h; sourceTree = SOURCE_ROOT; };
 		FE13E39BB7E7A14C80BDBFF2 /* PlayButtonDisabled.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlayButtonDisabled.svg.cpp; path = ../../../../src/rec/gui/icon/PlayButtonDisabled.svg.cpp; sourceTree = SOURCE_ROOT; };
 		FE546CAE7BB75B8A3CC7F052 /* VirtualFile.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VirtualFile.pb.cc; path = ../../../../genfiles/proto/rec/util/file/VirtualFile.pb.cc; sourceTree = SOURCE_ROOT; };
 		FE8BF8CA052D6B0E76511C52 /* SetTimeMode.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SetTimeMode.svg.cpp; path = ../../../../src/rec/gui/icon/SetTimeMode.svg.cpp; sourceTree = SOURCE_ROOT; };
@@ -1340,6 +1343,8 @@
 				BAA2F9DA9F62C9DCC37C7EBC /* AboutWindow.h */,
 				E0160142D4A72A85BAC0E488 /* AdvancedMenuMaker.cpp */,
 				CD2127AF722CE2C24BFE0A6A /* AdvancedMenuMaker.h */,
+				DAF11FA597B28CFC3CE16F08 /* BasicMenuMaker.cpp */,
+				FDD75B96DDE8AA7ACFE75E1D /* BasicMenuMaker.h */,
 				9DD243D16FA82607AB4696FD /* BufferFiller.cpp */,
 				E935C78CD987833E3858687C /* BufferFiller.h */,
 				425F380473BEE2CABBAFCBCA /* callbacks */,
@@ -1576,16 +1581,6 @@
 			name = data;
 			sourceTree = "<group>";
 		};
-		9E10F02172B133B6DD9E8A72 /* SlowGold 8 */ = {
-			isa = PBXGroup;
-			children = (
-				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
-				1AB486317E06D9E7CC790074 /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = "SlowGold 8";
-			sourceTree = "<group>";
-		};
 		A4573E9EB5E330DB6721C926 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1593,6 +1588,16 @@
 				2DBF006E7477255F0DD38268 /* Gain.pb.h */,
 			);
 			name = util;
+			sourceTree = "<group>";
+		};
+		A4C0E4E8DA3F688A440DA1C0 /* SlowGold 8 */ = {
+			isa = PBXGroup;
+			children = (
+				ACCCF36FDDDC59AE37FAFAF4 /* rec */,
+				1AB486317E06D9E7CC790074 /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = "SlowGold 8";
 			sourceTree = "<group>";
 		};
 		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
@@ -1720,7 +1725,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				9E10F02172B133B6DD9E8A72 /* SlowGold 8 */,
+				A4C0E4E8DA3F688A440DA1C0 /* SlowGold 8 */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -2331,6 +2336,7 @@
 				17B5F47A7EF843A5B4FF4130 /* CreateMusicFileReader.cpp in Sources */,
 				97FB7094BC6C411643657C15 /* Metadata.cpp in Sources */,
 				7998A57CA1CBCBB3E176C2D4 /* AdvancedMenuMaker.cpp in Sources */,
+				B7790226099DBCD8DEE1BE55 /* BasicMenuMaker.cpp in Sources */,
 				A4AACC4F1D9D38A72A74750D /* BufferFiller.cpp in Sources */,
 				EB888FC7E10D5FB6A27B2E03 /* Callbacks.cpp in Sources */,
 				42CC05EA361156AEB990C86E /* CallbackUtils.cpp in Sources */,

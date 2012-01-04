@@ -5,6 +5,7 @@
 #include "rec/command/TargetManager.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/AdvancedMenuMaker.h"
+#include "rec/slow/BasicMenuMaker.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 
@@ -53,7 +54,10 @@ void MenuMaker::addBank(Command::Type command, const String& name,
 }
 
 MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced) {
-  return new AdvancedMenuMaker(tm);
+  if (isAdvanced)
+    return new AdvancedMenuMaker(tm);
+  else
+    return new BasicMenuMaker(tm);
 }
 
 }  // namespace slow
