@@ -43,6 +43,7 @@ class MenuMaker {
 
  private:
   command::TargetManager* targetManager_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MenuMaker);
 };

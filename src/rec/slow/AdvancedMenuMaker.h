@@ -14,12 +14,10 @@ class AdvancedMenuMaker : public BasicMenuMaker {
   virtual const StringArray getMenuBarNames() const;
 
  protected:
-  void addAudioMenu();
-  void addFileMenu();
-  void addEditMenu();
-  void addSelectMenu();
-  void addTransportMenu();
-  void addDisplayMenu();
+  virtual void addAudioMenu();
+  virtual void addSelectMenu();
+  virtual void addTransportMenu();
+  virtual void addDisplayMenu();
   virtual bool addMenu(const String& menuName);
 
  private:
