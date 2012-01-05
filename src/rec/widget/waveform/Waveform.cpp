@@ -26,7 +26,7 @@ static const int GRID_TEXT_HEIGHT = 9;
 static const int GRID_TEXT_PAD = 4;
 static const int CURSOR_LABEL_HEIGHT = 20;
 static const int MODE_SELECTOR_OFFSET = 5;
-static const int COMMAND_BAR_OFFSET = 3;
+static const int COMMAND_BAR_OFFSET = -2;
 
 static const int64 SMALLEST_TIME_SAMPLES = 10000;
 

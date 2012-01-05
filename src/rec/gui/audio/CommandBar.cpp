@@ -19,8 +19,9 @@ namespace {
 
 // TODO: i18n
 
-const int BUTTON_SIZE = 30;
-const int PADDING = 4;
+const int BUTTON_SIZE = 39;
+const int PADDING = 3;
+const int COMMAND_BAR_PAD = -5;
 
 }  // namespace
 
@@ -50,7 +51,8 @@ CommandBar::CommandBar()
   addToLayout(&padding_);
 
   setBounds(0, BUTTON_SIZE + 4 * PADDING,
-            4 * BUTTON_SIZE + 5 * PADDING, BUTTON_SIZE + 2 * PADDING);
+            3 * BUTTON_SIZE + 2 * PADDING + COMMAND_BAR_PAD,
+            BUTTON_SIZE + 2 * PADDING);
 
   // setImage<Pencil>(this, &drawLoopPoints_, Mode::DRAW_LOOP_POINTS);
 }
