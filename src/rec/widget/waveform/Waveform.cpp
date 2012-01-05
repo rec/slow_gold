@@ -244,8 +244,8 @@ static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
   switch (mode.click()) {
     case Mode::DRAG:              return MouseCursor::DraggingHandCursor;
     case Mode::DRAW_LOOP_POINTS:  return MouseCursor::IBeamCursor;
-    case Mode::SET_TIME:          return MouseCursor::CrosshairCursor;
-    case Mode::TOGGLE_SELECTION:  return MouseCursor::PointingHandCursor;
+    case Mode::SET_TIME:          return MouseCursor::PointingHandCursor;
+    case Mode::TOGGLE_SELECTION:  return MouseCursor::CrosshairCursor;
     case Mode::ZOOM_IN:
     case Mode::ZOOM_OUT:          return MouseCursor::UpDownLeftRightResizeCursor;
     default:                      return MouseCursor::NormalCursor;
