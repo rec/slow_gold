@@ -20,7 +20,7 @@ class AdvancedMenuMaker : public MenuMaker {
   void addSelectMenu();
   void addTransportMenu();
   void addDisplayMenu();
-  virtual void addMenu(const String& menuName);
+  virtual bool addMenu(const String& menuName);
 
  private:
   command::TargetManager* targetManager_;

@@ -23,6 +23,7 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
+#include "rec/util/Mode.pb.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Zoom.h"
 
@@ -190,6 +191,28 @@ void toggleStartStop(Instance* i) {
   i->player_->toggle();
 }
 
+void setMode(Mode::Action action) {
+  Mode mode;
+  mode.set_click(action);
+  data::setProto(mode, data::global());
+}
+
+void modeDrag(Instance* i) {
+  setMode(Mode::DRAG);
+}
+
+void modeSetTime(Instance* i) {
+  setMode(Mode::SET_TIME);
+}
+
+void modeZoomIn(Instance* i) {
+  setMode(Mode::ZOOM_IN);
+}
+
+void modeAddLoopPoint(Instance* i) {
+  setMode(Mode::DRAW_LOOP_POINTS);
+}
+
 }  // namespace
 
 using namespace rec::command;
@@ -208,6 +231,10 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings, i);
+  addCallback(c, Command::MODE_DRAG, modeDrag, i);
+  addCallback(c, Command::MODE_SET_TIME, modeSetTime, i);
+  addCallback(c, Command::MODE_ZOOM_IN, modeZoomIn, i);
+  addCallback(c, Command::MODE_ADD_LOOP_POINT, modeAddLoopPoint, i);
   addCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
   addCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
   addCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);

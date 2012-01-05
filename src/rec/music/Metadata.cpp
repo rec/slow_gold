@@ -2,6 +2,7 @@
 
 #include "rec/audio/format/mpg123/CleanGenre.h"
 #include "rec/music/Metadata.pb.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace music {
@@ -31,6 +32,25 @@ Metadata getMetadata(const StringPairArray& metadata) {
     else if (k == "TRCK") t.set_track_number(v);
   }
   return t;
+}
+
+string getTitle(const Metadata& md) {
+  string result = "\"" + md.track_title() + "\" - " + md.album_title() + " (" +
+    md.artist() + ")";
+  if (result == " - ")
+    result.clear();
+  return result;
+}
+
+string getTitle(const VirtualFile& f) {
+  string result;
+  if (f.path_size())
+    result = f.path(f.path_size() - 1);
+  return result;
+}
+
+string getTitle(const File& f) {
+  return str(f.getFileName());
 }
 
 }  // namespace music

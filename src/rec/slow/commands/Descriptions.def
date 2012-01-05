@@ -97,6 +97,34 @@ command {
   }
 }
 command {
+  type: MODE_DRAG
+  desc {
+    menu: "Drag Mode"
+    full: "Enter drag mode, where you can drag the waveform back and forth."
+  }
+}
+command {
+  type: MODE_SET_TIME
+  desc {
+    menu: "Set Time Mode"
+    full: "Enter Set Time Mode, where clicking in the waveform sets the time."
+  }
+}
+command {
+  type: MODE_ZOOM_IN
+  desc {
+    menu: "Zoom In Mode"
+    full: "Enter Zoom In Mode, where clicking on the waveform zooms in."
+  }
+}
+command {
+  type: MODE_ADD_LOOP_POINT
+  desc {
+    menu: "Add Loop Point Mode"
+    full: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
+  }
+}
+command {
   type: MUTE_VOLUME_TOGGLE
   desc {
     menu: "Toggle audio mute"

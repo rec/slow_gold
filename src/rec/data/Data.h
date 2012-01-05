@@ -19,6 +19,7 @@ class Data : public Broadcaster<const Message&> {
  public:
   virtual bool fileReadSuccess() const = 0;
   virtual const string toString() const = 0;
+  virtual const File getFile() const = 0;
 
   bool isEmpty() const { return isEmpty_; }
   const string& getTypeName() const { return util::getTypeName(*message_); }

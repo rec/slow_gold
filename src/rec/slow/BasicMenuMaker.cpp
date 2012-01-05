@@ -46,6 +46,14 @@ void BasicMenuMaker::addEditMenu() {
   addEnabled(Command::CUT, canCut());
   addEnabled(Command::COPY, canCopy());
   addEnabled(Command::PASTE, canPaste());
+
+  menu_.addSeparator();
+
+  add(Command::MODE_SET_TIME);
+  add(Command::MODE_DRAG);
+  add(Command::MODE_ADD_LOOP_POINT);
+  add(Command::MODE_ZOOM_IN);
+
 }
 
 void BasicMenuMaker::addAudioMenu() {
@@ -64,7 +72,6 @@ void BasicMenuMaker::addSelectMenu() {
   add(Command::DESELECT_ALL);
   add(Command::INVERT_LOOP_SELECTION);
   add(Command::TOGGLE_WHOLE_SONG_LOOP);
-
 }
 
 void BasicMenuMaker::addTransportMenu() {
@@ -78,7 +85,7 @@ const StringArray BasicMenuMaker::getMenuBarNames() const {
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void BasicMenuMaker::addMenu(const String& menuName) {
+bool BasicMenuMaker::addMenu(const String& menuName) {
   if (menuName == "File")
     addFileMenu();
 
@@ -93,6 +100,9 @@ void BasicMenuMaker::addMenu(const String& menuName) {
 
   else if (menuName == "Transport")
     addTransportMenu();
+
+  else
+    return false;
 }
 
 }  // namespace slow

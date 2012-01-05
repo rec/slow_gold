@@ -12,7 +12,7 @@
 #include "rec/gui/Geometry.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/gui/WindowPosition.pb.h"
-#include "rec/music/Metadata.pb.h"
+#include "rec/music/Metadata.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -43,6 +43,17 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
 
 SlowWindow::~SlowWindow() {
   aboutWindow_.reset();
+}
+
+void SlowWindow::startListening() {
+  app::Window::startListening();
+  data::DataListener<music::Metadata>::startListening();
+}
+
+void SlowWindow::operator()(const music::Metadata& md) {
+  File file = data::DataListener<music::Metadata>::getData()->getFile();
+  MessageManagerLock l;
+  setName(str(music::getTitle(md, file)));
 }
 
 void SlowWindow::constructInstance() {

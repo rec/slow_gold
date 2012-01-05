@@ -1,7 +1,7 @@
 #include "rec/slow/commands/Commands.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=command::Commands src/rec/slow/commands/Commands.def
+// new --include=command/Command --proto=command::Commands Commands.def
 
 namespace rec {
 namespace slow {
@@ -22,6 +22,10 @@ Def<command::Commands> commands(
   "command { type: INVERT_LOOP_SELECTION category: \"Selection\" }\n"
   "command { type: KEYBOARD_MAPPINGS category: \"File\"}\n"
   "command { type: MIDI_MAPPINGS category: \"File\"}\n"
+  "command { type: MODE_DRAG category: \"Audio\"}\n"
+  "command { type: MODE_SET_TIME category: \"Audio\"}\n"
+  "command { type: MODE_ZOOM_IN category: \"Audio\"}\n"
+  "command { type: MODE_ADD_LOOP_POINT category: \"Audio\"}\n"
   "command { type: MUTE_VOLUME_TOGGLE category: \"Audio\"}\n"
   "command { type: NUDGE_VOLUME_DOWN category: \"Audio\"}\n"
   "command { type: NUDGE_VOLUME_UP category: \"Audio\"}\n"

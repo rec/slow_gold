@@ -32,7 +32,7 @@ class MenuMaker {
                  bool enabled = true,
                  PopupMenu* m = NULL);
 
-  virtual void addMenu(const String& menuName) = 0;
+  virtual bool addMenu(const String& menuName) = 0;
 
   void addEnabled(command::Command::Type command, bool enabled);
   void addBank(command::Command::Type command, const String& name,

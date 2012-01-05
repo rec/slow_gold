@@ -15,12 +15,14 @@ class DataImpl : public Data {
   virtual ~DataImpl() {}
 
   virtual bool fileReadSuccess() const { return fileReadSuccess_; }
+  const string toString() const;
+  virtual const File getFile() const { Lock l(lock_); return file_; }
+
   virtual void pushOnUndoStack(const Message& before);
   virtual void reportChange();
   virtual bool update();
   virtual void clearRecentListeners();
   virtual bool writeToFile();
-  const string toString() const;
 
   virtual void addListener(Listener<const Message&>*);
   virtual void removeListener(Listener<const Message&>*);

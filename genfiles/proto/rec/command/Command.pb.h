@@ -56,6 +56,10 @@ enum Command_Type {
   Command_Type_JUMP_SELECTED = 11,
   Command_Type_KEYBOARD_MAPPINGS = 12,
   Command_Type_MIDI_MAPPINGS = 13,
+  Command_Type_MODE_DRAG = 60,
+  Command_Type_MODE_SET_TIME = 61,
+  Command_Type_MODE_ZOOM_IN = 62,
+  Command_Type_MODE_ADD_LOOP_POINT = 63,
   Command_Type_MUTE_VOLUME_TOGGLE = 14,
   Command_Type_NUDGE_BEGIN_LEFT = 15,
   Command_Type_NUDGE_BEGIN_RIGHT = 16,
@@ -99,7 +103,7 @@ enum Command_Type {
   Command_Type_ZOOM_IN = 39,
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 59,
+  Command_Type_LAST_TYPE = 63,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -318,6 +322,10 @@ class Command : public ::google::protobuf::Message {
   static const Type JUMP_SELECTED = Command_Type_JUMP_SELECTED;
   static const Type KEYBOARD_MAPPINGS = Command_Type_KEYBOARD_MAPPINGS;
   static const Type MIDI_MAPPINGS = Command_Type_MIDI_MAPPINGS;
+  static const Type MODE_DRAG = Command_Type_MODE_DRAG;
+  static const Type MODE_SET_TIME = Command_Type_MODE_SET_TIME;
+  static const Type MODE_ZOOM_IN = Command_Type_MODE_ZOOM_IN;
+  static const Type MODE_ADD_LOOP_POINT = Command_Type_MODE_ADD_LOOP_POINT;
   static const Type MUTE_VOLUME_TOGGLE = Command_Type_MUTE_VOLUME_TOGGLE;
   static const Type NUDGE_BEGIN_LEFT = Command_Type_NUDGE_BEGIN_LEFT;
   static const Type NUDGE_BEGIN_RIGHT = Command_Type_NUDGE_BEGIN_RIGHT;

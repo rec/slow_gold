@@ -34,6 +34,7 @@ class UntypedDataListener : public Listener<const Message&> {
   Data* data_;
   ptr<FileListener> fileListener_;
   bool started_;
+  ptr<VirtualFile> fileName_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
 };

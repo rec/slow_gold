@@ -14,12 +14,12 @@ class BasicMenuMaker : public MenuMaker {
   virtual const StringArray getMenuBarNames() const;
 
  protected:
-  void addAudioMenu();
-  void addFileMenu();
-  void addEditMenu();
-  void addSelectMenu();
-  void addTransportMenu();
-  virtual void addMenu(const String& menuName);
+  virtual void addAudioMenu();
+  virtual void addFileMenu();
+  virtual void addEditMenu();
+  virtual void addSelectMenu();
+  virtual void addTransportMenu();
+  virtual bool addMenu(const String& menuName);
 
  private:
   command::TargetManager* targetManager_;

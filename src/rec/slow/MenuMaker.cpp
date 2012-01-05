@@ -14,7 +14,6 @@ namespace slow {
 
 using namespace rec::command;
 
-
 const PopupMenu MenuMaker::makeMenu(const String& name) {
   menu_.clear();
   addMenu(name);
