@@ -103,6 +103,8 @@ bool BasicMenuMaker::addMenu(const String& menuName) {
 
   else
     return false;
+
+  return true;
 }
 
 }  // namespace slow

@@ -1,14 +1,14 @@
 #ifndef __REC_SLOW_ADVANCEDMENUMAKER__
 #define __REC_SLOW_ADVANCEDMENUMAKER__
 
-#include "rec/slow/MenuMaker.h"
+#include "rec/slow/BasicMenuMaker.h"
 
 namespace rec {
 namespace slow {
 
-class AdvancedMenuMaker : public MenuMaker {
+class AdvancedMenuMaker : public BasicMenuMaker {
  public:
-  AdvancedMenuMaker(command::TargetManager* t) : MenuMaker(t) {}
+  AdvancedMenuMaker(command::TargetManager* t) : BasicMenuMaker(t) {}
   virtual ~AdvancedMenuMaker() {}
 
   virtual const StringArray getMenuBarNames() const;

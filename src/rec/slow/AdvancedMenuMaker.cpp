@@ -117,22 +117,10 @@ const StringArray AdvancedMenuMaker::getMenuBarNames() const {
 }
 
 bool AdvancedMenuMaker::addMenu(const String& menuName) {
-  if (menuName == "File")
-    addFileMenu();
+  if (BasicMenuMaker::addMenu(menuName))
+    return true;
 
-  else if (menuName == "Edit")
-    addEditMenu();
-
-  else if (menuName == "Audio")
-    addAudioMenu();
-
-  else if (menuName == "Select")
-    addSelectMenu();
-
-  else if (menuName == "Transport")
-    addTransportMenu();
-
-  else if (menuName == "Display")
+  if (menuName == "Display")
     addDisplayMenu();
 
   else
