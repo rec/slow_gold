@@ -20,7 +20,7 @@ class CommandBar : public Layout,
 
  private:
   DrawableButton addLoopPoint_;
-  DrawableButton zoomOut_;
+  DrawableButton zoomOutFull_;
   DrawableButton zoomToSelection_;
   Layout padding_;
 

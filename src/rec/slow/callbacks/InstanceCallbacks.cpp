@@ -161,6 +161,10 @@ void zoomOut(Instance* i) {
   widget::waveform::zoom(i->file(), i->length(), -1.0);
 }
 
+void zoomOutFull(Instance* i) {
+  widget::waveform::zoom(i->file(), i->length(), -1.0);
+}
+
 void zoomToSelection(Instance* i) {
   block::Block range = block::toBlock(i->currentTime_->timeSelection());
   int64 pad = block::getSize(range) / SELECTION_WIDTH_PORTION;
@@ -243,6 +247,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
   addCallback(c, Command::ZOOM_OUT, zoomOut, i);
+  addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);
   addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection, i);
 }
 

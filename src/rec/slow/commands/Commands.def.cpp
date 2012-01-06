@@ -39,6 +39,7 @@ Def<command::Commands> commands(
   "command { type: QUIT category: \"(None)\"}\n"
   "command { type: UNDO category: \"Edit\"}\n"
   "command { type: ZOOM_OUT category: \"Audio\"}\n"
+  "command { type: ZOOM_OUT_FULL category: \"Audio\"}\n"
   "command { type: ZOOM_TO_SELECTION category: \"Audio\"}\n"
   " "
 );

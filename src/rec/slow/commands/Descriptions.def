@@ -388,6 +388,13 @@ command {
   }
 }
 command {
+  type: ZOOM_OUT_FULL
+  desc {
+    menu: "Zoom Out Completely"
+    full: "Zoom out as far as possible."
+  }
+}
+command {
   type: ZOOM_TO_SELECTION
   desc {
     menu: "Zoom To Selection"

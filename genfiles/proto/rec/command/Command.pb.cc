@@ -179,14 +179,14 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"7\n\013Descri"
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \001(\t\022\014\n\004hel"
-    "p\030\003 \001(\t\"\325\r\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
+    "p\030\003 \001(\t\"\350\r\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
     "command.Command.Type\022\r\n\005index\030\002 \001(\021\022\023\n\013s"
     "tart_index\030\n \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004de"
     "sc\030\004 \001(\0132\030.rec.command.Description\022\020\n\010ke"
     "ypress\030\005 \003(\t\022\021\n\tis_setter\030\006 \001(\010\022\030\n\020is_gl"
     "obal_setter\030\007 \001(\010\022\'\n\007address\030\010 \001(\0132\026.rec"
     ".data.AddressProto\022\030\n\020setter_type_name\030\t"
-    " \001(\t\"\300\013\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_PR"
+    " \001(\t\"\323\013\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_PR"
     "OGRAM\020:\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PRE"
     "FERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR"
     "_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nC"
@@ -218,15 +218,16 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE"
     "_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013"
     "\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\013\n\007Z"
-    "OOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\025\n\021ZOOM_TO_SELECT"
-    "ION\020-\022\r\n\tLAST_TYPE\020?\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202"
-    " \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSE"
-    "LECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_S"
-    "TART\020\201 \022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\""
-    "1\n\010Commands\022%\n\007command\030\001 \003(\0132\024.rec.comma"
-    "nd.Command\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
-    "alue\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\013"
-    "2\025.rec.command.KeyValue", 2023);
+    "OOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\021\n\rZOOM_OUT_FULL\020"
+    "@\022\025\n\021ZOOM_TO_SELECTION\020-\022\r\n\tLAST_TYPE\020@\022"
+    "\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204"
+    " \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELE"
+    "CT_ALL\020\207 \022\017\n\nJUCE_START\020\201 \022\r\n\010JUCE_END\020\207"
+    " \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022%\n\007comman"
+    "d\030\001 \003(\0132\024.rec.command.Command\"&\n\010KeyValu"
+    "e\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Mapping"
+    "\022(\n\tkey_value\030\001 \003(\0132\025.rec.command.KeyVal"
+    "ue", 2042);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -651,6 +652,7 @@ bool Command_Type_IsValid(int value) {
     case 61:
     case 62:
     case 63:
+    case 64:
     case 4097:
     case 4098:
     case 4099:
@@ -727,6 +729,7 @@ const Command_Type Command::UNDO;
 const Command_Type Command::UNSELECT;
 const Command_Type Command::ZOOM_IN;
 const Command_Type Command::ZOOM_OUT;
+const Command_Type Command::ZOOM_OUT_FULL;
 const Command_Type Command::ZOOM_TO_SELECTION;
 const Command_Type Command::LAST_TYPE;
 const Command_Type Command::QUIT;
