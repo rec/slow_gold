@@ -16,12 +16,12 @@ class AboutWindow : public Component, public HasInstance {
   static const int FADE_OUT_TIME = 1000;
 
   explicit AboutWindow(Component* parent, Instance* instance,
-                       const String& versionNumber = String::empty)
+                       const String& name,
+                       const String& versionNumber)
       : Component("AboutWindow"),
         HasInstance(instance),
         parent_(parent),
-        content_("AboutContent"),
-        versionNumber_(versionNumber) {
+        content_("AboutContent") {
     setOpaque(false);
     juce::Rectangle<int> bounds = parent_->getLocalBounds();
     setBounds(bounds);
@@ -32,9 +32,9 @@ class AboutWindow : public Component, public HasInstance {
     content_.setColour(juce::Label::backgroundColourId, juce::Colours::white);
     content_.setColour(juce::Label::outlineColourId, juce::Colours::red);
 
-    String text = juce::CharPointer_UTF8("SlowGold 8.0\nWorld Wide Woodshed "
-                                         "Software\nCopyright © 2011\n") +
-      "Version: " + versionNumber_;
+    String text = name + " " + versionNumber +
+      "\nWorld Wide Woodshed Software\n" +
+      String(juce::CharPointer_UTF8("Copyright © 2012\n"));
 
     content_.setText(text, false);
     setAlpha(0.0f);
@@ -57,7 +57,6 @@ class AboutWindow : public Component, public HasInstance {
  private:
   Component* parent_;
   gui::SimpleLabel content_;
-  String versionNumber_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(AboutWindow);
 };

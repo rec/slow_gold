@@ -1,5 +1,6 @@
 #include "rec/slow/SlowWindow.h"
 
+#include "rec/app/GenericApplication.h"
 #include "rec/audio/source/Stereo.pb.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.pb.h"
@@ -93,7 +94,9 @@ void SlowWindow::startAboutWindow() {
   if (!aboutWindow_) {
     aboutWindowBroadcaster_.broadcast(true);
     MessageManagerLock l;
-    aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_));
+    aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
+                                       application()->name(),
+                                       application()->version()));
   }
 }
 

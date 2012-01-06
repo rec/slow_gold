@@ -35,6 +35,9 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
 
   virtual void operator()(bool disabled) { Lock l(lock_); disabled_ = disabled; }
 
+  const String& version() const { return version_; }
+  const String& name() const { return name_; }
+
  protected:
   const String name_;
   const String version_;
