@@ -18,7 +18,8 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
   String filename = str(file.name());
   if (metadata) {
     ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
-    *metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
+    if (cdr) 
+      *metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
   }
   return cd::createCDTrackReader(filename, track);
 }
