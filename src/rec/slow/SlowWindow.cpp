@@ -110,6 +110,13 @@ void SlowWindow::turnOffAboutWindow() {
   aboutWindowBroadcaster_.broadcast(false);
 }
 
+void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
+  DLOG(INFO) << "Here!";
+  if (!isNowMinimised)
+    components()->waveform_->repaint();
+}
+
+
 using namespace rec::data;
 
 void initialize(app::GenericApplication*) {

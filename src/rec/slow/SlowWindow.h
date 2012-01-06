@@ -32,6 +32,7 @@ class SlowWindow : public app::Window,
   void stopAboutWindow();
   Broadcaster<bool>* aboutWindowBroadcaster() { return &aboutWindowBroadcaster_; }
   virtual void operator()(const music::Metadata&);
+  virtual void minimisationStateChanged(bool isNowMinimised);
 
  protected:
   virtual void doStartup();
