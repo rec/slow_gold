@@ -27,7 +27,8 @@ String readSocket(Socket* sock, int timeout) {
   if (read <= 0)
     throw Exception("Socket read error " + read);
 
-  return String(buffer, read);
+  // TODO: this will fail and crash for bad UTF-8 strings.
+  return String(juce::CharPointer_UTF8(buffer), read);
 }
 
 void connect(Socket* s, const String& server, int port, int timeout) {

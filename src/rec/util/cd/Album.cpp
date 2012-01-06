@@ -77,7 +77,7 @@ void fillAlbum(const StringArray& cds, int tracks, Album* album) {
     if (line.length() && line[0] != '#') {
       int loc = line.indexOfChar('=');
       if (loc == -1) {
-        LOG(DFATAL) << "Couldn't find = in line " << line;
+        LOG(ERROR) << "Couldn't find = in line " << line;
       } else {
         String value = line.substring(loc + 1);
         if (value.length() || !value.startsWith("EXT"))
