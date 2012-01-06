@@ -162,7 +162,7 @@ void zoomOut(Instance* i) {
 }
 
 void zoomOutFull(Instance* i) {
-  widget::waveform::zoom(i->file(), i->length(), -1.0);
+  widget::waveform::zoomOutFull(i->file(), i->length());
 }
 
 void zoomToSelection(Instance* i) {
