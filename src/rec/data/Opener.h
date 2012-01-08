@@ -8,7 +8,8 @@ namespace rec {
 namespace data {
 
 template <typename Proto>
-struct Opener : public Reader<Proto> {
+class Opener : public Reader<Proto> {
+ public:
   Opener(Data* d, Undoable undoable = CAN_UNDO)
       : Reader<Proto>(d),
         undoable_(undoable),
