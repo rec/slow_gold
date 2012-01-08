@@ -27,11 +27,10 @@ class Menus : public MenuBarModel,
   virtual void operator()(const GuiSettings&);
 
  private:
-  void setMenuMaker(bool isAdvanced);
   MenuMaker* getMenuMaker();
 
-  ptr<MenuMaker> menuMaker_;
   CriticalSection lock_;
+  bool advanced_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Menus);
 };

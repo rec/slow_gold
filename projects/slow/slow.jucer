@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="NRf6T9VUw" name="SlowGold 8">
+  <MAINGROUP id="D8B07zwav" name="SlowGold 8">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -755,6 +755,10 @@
                 id="jAb2H4Hk5" name="SetTimeModeDisabled.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/SetTimeModeDisabled.svg.h"
                 id="YaAyqoRMQ" name="SetTimeModeDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/SlowGold.svg.cpp" id="pkHKX8V1w"
+                name="SlowGold.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/SlowGold.svg.h" id="Slc3dWmp9"
+                name="SlowGold.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/StopButton.svg.cpp"
                 id="flLqNM7IP" name="StopButton.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/StopButton.svg.h" id="87HSwNA4q"
@@ -1410,7 +1414,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Ztv7XoLH2" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="6hpDMGk8F" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

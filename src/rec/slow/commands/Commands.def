@@ -12,6 +12,10 @@ command { type: EJECT_CDS category: "File"}
 command { type: INVERT_LOOP_SELECTION category: "Selection" }
 command { type: KEYBOARD_MAPPINGS category: "File"}
 command { type: MIDI_MAPPINGS category: "File"}
+command { type: MODE_DRAG category: "Audio"}
+command { type: MODE_SET_TIME category: "Audio"}
+command { type: MODE_ZOOM_IN category: "Audio"}
+command { type: MODE_ADD_LOOP_POINT category: "Audio"}
 command { type: MUTE_VOLUME_TOGGLE category: "Audio"}
 command { type: NUDGE_VOLUME_DOWN category: "Audio"}
 command { type: NUDGE_VOLUME_UP category: "Audio"}
@@ -25,4 +29,5 @@ command { type: TOGGLE_WHOLE_SONG_LOOP category: "Selection" }
 command { type: QUIT category: "(None)"}
 command { type: UNDO category: "Edit"}
 command { type: ZOOM_OUT category: "Audio"}
+command { type: ZOOM_OUT_FULL category: "Audio"}
 command { type: ZOOM_TO_SELECTION category: "Audio"}

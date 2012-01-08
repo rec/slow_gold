@@ -37,6 +37,8 @@ class TreeViewDropAll : public FocusableTarget
 #endif
 
  private:
+  ptr<Drawable> slowGoldIcon_;
+
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TreeViewDropAll);
 };
 

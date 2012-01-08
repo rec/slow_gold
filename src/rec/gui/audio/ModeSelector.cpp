@@ -16,7 +16,7 @@ using namespace juce;
 // TODO: i18n
 
 static const bool ENABLE_SHIFTS = false;
-static const int BUTTON_SIZE = 24;
+static const int BUTTON_SIZE = 34;
 static const int PADDING = 4;
 static const int BUTTON_COUNT = 4;
 

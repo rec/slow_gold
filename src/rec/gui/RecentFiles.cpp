@@ -6,7 +6,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/music/Metadata.pb.h"
+#include "rec/music/Metadata.h"
 #include "rec/util/file/VirtualFile.h"
 
 using namespace google::protobuf;
@@ -58,18 +58,10 @@ static const int MAX_DEDUPE_COUNT = 2;
 std::vector<string> getRecentFileNames() {
   typedef std::vector<string> StrList;
 
-  RecentFiles recent = data::getGlobal<RecentFiles>();
-  StrList results(recent.file_size());
-  for (int i = 0; i < recent.file_size(); ++i) {
-    music::Metadata md = recent.file(i).metadata();
-    results[i] = "\"" + md.track_title() + "\" - " + md.album_title() +
-      " (" + md.artist() + ")";
-    if (results[i] == " - ") {
-      const VirtualFile f = recent.file(i).file();
-      if (f.path_size())
-        results[i] = f.path(f.path_size() - 1);
-    }
-  }
+  RecentFiles rf = data::getGlobal<RecentFiles>();
+  StrList results(rf.file_size());
+  for (int i = 0; i < rf.file_size(); ++i)
+    results[i] = music::getTitle(rf.file(i).metadata(), rf.file(i).file());
 
   typedef std::map<string, int> StrMap;
   typedef std::set<int> IntSet;
@@ -94,7 +86,7 @@ std::vector<string> getRecentFileNames() {
       break;
 
     for (IntSet::iterator j = dupes.begin(); j != dupes.end(); ++j) {
-      const music::Metadata& md = recent.file(*j).metadata();
+      const music::Metadata& md = rf.file(*j).metadata();
       string add = (i == 0) ? md.album_title() : md.artist();
       if (add.size())
         results[*j] += ("(" + add + ")");

@@ -32,7 +32,7 @@ class MenuMaker {
                  bool enabled = true,
                  PopupMenu* m = NULL);
 
-  virtual void addMenu(const String& menuName) = 0;
+  virtual bool addMenu(const String& menuName) = 0;
 
   void addEnabled(command::Command::Type command, bool enabled);
   void addBank(command::Command::Type command, const String& name,
@@ -43,6 +43,7 @@ class MenuMaker {
 
  private:
   command::TargetManager* targetManager_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MenuMaker);
 };

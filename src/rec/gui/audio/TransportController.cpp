@@ -108,17 +108,15 @@ void TransportController::buttonClicked(juce::Button *button) {
   using namespace rec::command;
 
   static const CommandID JUMP_BACK =
-    CommandIDEncoder::toCommandID(CommandIDEncoder::PREVIOUS,
-                                  Command::JUMP_SELECTED);
+    CommandIDEncoder::toCommandID(CommandIDEncoder::PREVIOUS, Command::JUMP);
   static const CommandID JUMP_FORWARD =
-    CommandIDEncoder::toCommandID(CommandIDEncoder::NEXT,
-                                  Command::JUMP_SELECTED);
+    CommandIDEncoder::toCommandID(CommandIDEncoder::NEXT, Command::JUMP);
 
   if (button == &startStopButton_)
     broadcast(Command::TOGGLE_START_STOP);
 
   else if (button == &jumpToStartButton_)
-    broadcast(command::JUMP_TO_FIRST_SELECTED);
+    broadcast(command::JUMP_TO_FIRST);
 
   else if (button == &jumpBackButton_)
     broadcast(JUMP_BACK);

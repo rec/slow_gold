@@ -109,6 +109,7 @@ class Waveform : public Component,
   bool isDraggingCursor_;
   juce::Rectangle<int> dirty_;
   bool helpScreenUp_;
+  juce::MouseCursor	zoomCursor_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 

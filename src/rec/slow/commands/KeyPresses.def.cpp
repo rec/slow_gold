@@ -1,7 +1,7 @@
 #include "rec/slow/commands/KeyPresses.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=command::Commands src/rec/slow/commands/KeyPresses.def
+// new --include=command/Command --proto=command::Commands KeyPresses.def
 
 namespace rec {
 namespace slow {
@@ -76,6 +76,10 @@ Def<command::Commands> keyPresses(
   "command {\n"
   "  type: ZOOM_OUT\n"
   "  keypress: \"command + -\"\n"
+  "}\n"
+  "command {\n"
+  "  type: ZOOM_OUT_FULL\n"
+  "  keypress: \"command + shift + -\"\n"
   "}\n"
   "command {\n"
   "  type: ZOOM_TO_SELECTION\n"

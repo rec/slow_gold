@@ -15,7 +15,9 @@ class AboutWindow : public Component, public HasInstance {
   static const int FADE_IN_TIME = 2000;
   static const int FADE_OUT_TIME = 1000;
 
-  explicit AboutWindow(Component* parent, Instance* instance)
+  explicit AboutWindow(Component* parent, Instance* instance,
+                       const String& name,
+                       const String& versionNumber)
       : Component("AboutWindow"),
         HasInstance(instance),
         parent_(parent),
@@ -30,9 +32,11 @@ class AboutWindow : public Component, public HasInstance {
     content_.setColour(juce::Label::backgroundColourId, juce::Colours::white);
     content_.setColour(juce::Label::outlineColourId, juce::Colours::red);
 
-    content_.setText(
-        String(juce::CharPointer_UTF8("SlowGold 8.0\nWorld Wide Woodshed "
-                                      "Software\nCopyright © 2011")), false);
+    String text = name + " " + versionNumber +
+      "\nWorld Wide Woodshed Software\n" +
+      String(juce::CharPointer_UTF8("Copyright © 2012\n"));
+
+    content_.setText(text, false);
     setAlpha(0.0f);
     parent_->addAndMakeVisible(this);
     juce::Desktop::getInstance().getAnimator().fadeIn(this, 2000);

@@ -34,6 +34,10 @@ message Command {
     KEYBOARD_MAPPINGS = 12;
 
     MIDI_MAPPINGS = 13;
+    MODE_DRAG = 60;
+    MODE_SET_TIME = 61;
+    MODE_ZOOM_IN = 62;
+    MODE_ADD_LOOP_POINT = 63;
     MUTE_VOLUME_TOGGLE = 14;
 
     NUDGE_BEGIN_LEFT = 15;
@@ -84,9 +88,10 @@ message Command {
 
     ZOOM_IN = 39;
     ZOOM_OUT = 40;
+    ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 59;
+    LAST_TYPE = 64;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

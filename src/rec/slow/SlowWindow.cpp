@@ -1,5 +1,6 @@
 #include "rec/slow/SlowWindow.h"
 
+#include "rec/app/GenericApplication.h"
 #include "rec/audio/source/Stereo.pb.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.pb.h"
@@ -12,7 +13,7 @@
 #include "rec/gui/Geometry.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/gui/WindowPosition.pb.h"
-#include "rec/music/Metadata.pb.h"
+#include "rec/music/Metadata.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -43,6 +44,17 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
 
 SlowWindow::~SlowWindow() {
   aboutWindow_.reset();
+}
+
+void SlowWindow::startListening() {
+  app::Window::startListening();
+  data::DataListener<music::Metadata>::startListening();
+}
+
+void SlowWindow::operator()(const music::Metadata& md) {
+  File file = data::DataListener<music::Metadata>::getData()->getFile();
+  MessageManagerLock l;
+  setName(str(music::getTitle(md, file)));
 }
 
 void SlowWindow::constructInstance() {
@@ -82,7 +94,9 @@ void SlowWindow::startAboutWindow() {
   if (!aboutWindow_) {
     aboutWindowBroadcaster_.broadcast(true);
     MessageManagerLock l;
-    aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_));
+    aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
+                                       application()->name(),
+                                       application()->version()));
   }
 }
 
@@ -98,6 +112,13 @@ void SlowWindow::turnOffAboutWindow() {
   Thread::sleep(AboutWindow::FADE_OUT_TIME + 1000);
   aboutWindowBroadcaster_.broadcast(false);
 }
+
+void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
+  DLOG(INFO) << "Here!";
+  if (!isNowMinimised)
+    components()->waveform_->repaint();
+}
+
 
 using namespace rec::data;
 

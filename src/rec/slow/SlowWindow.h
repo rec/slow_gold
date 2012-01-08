@@ -8,13 +8,16 @@
 namespace rec {
 
 namespace app { class GenericApplication; }
+namespace music { class Metadata; }
 
 namespace slow {
 
 class AppLayout;
 class Instance;
 
-class SlowWindow : public app::Window, public HasInstance {
+class SlowWindow : public app::Window,
+                   public HasInstance,
+                   public data::DataListener<music::Metadata>  {
  public:
   explicit SlowWindow(app::GenericApplication*);
   virtual ~SlowWindow();
@@ -23,10 +26,13 @@ class SlowWindow : public app::Window, public HasInstance {
     g.fillAll(juce::Colours::lightgrey);
   }
 
+  virtual void startListening();
   virtual void trashPreferences();
   void startAboutWindow();
   void stopAboutWindow();
   Broadcaster<bool>* aboutWindowBroadcaster() { return &aboutWindowBroadcaster_; }
+  virtual void operator()(const music::Metadata&);
+  virtual void minimisationStateChanged(bool isNowMinimised);
 
  protected:
   virtual void doStartup();

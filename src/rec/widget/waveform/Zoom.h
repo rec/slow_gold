@@ -13,6 +13,7 @@ class ZoomProto;
 // be after the zoom.
 void zoom(const VirtualFile& f, Samples<44100> length, double k);
 void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k);
+void zoomOutFull(const VirtualFile& f, Samples<44100> length);
 
 void constrainZoom(ZoomProto* z, Samples<44100> length);
 

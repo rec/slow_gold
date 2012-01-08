@@ -218,7 +218,7 @@ class CommandDatabase {
       CommandID id = i->first;
       CommandRecord* cr = i->second;
       if (!cr->command_)
-        LOG(DFATAL) << "Empty command " << commandName(id);
+        LOG(DFATAL) << "Command not in Command.def " << commandName(id);
       else if (!cr->callback_)
         LOG(DFATAL) << "Empty callback " << commandName(id);
       else {

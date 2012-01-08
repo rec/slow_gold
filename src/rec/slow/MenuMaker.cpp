@@ -14,8 +14,8 @@ namespace slow {
 
 using namespace rec::command;
 
-
 const PopupMenu MenuMaker::makeMenu(const String& name) {
+  Lock l(lock_);
   menu_.clear();
   addMenu(name);
   return menu_;
@@ -43,6 +43,7 @@ void MenuMaker::addEnabled(Command::Type command, bool enabled) {
 void MenuMaker::addBank(Command::Type command, const String& name,
              int begin,
              int end) {
+  Lock l(lock_);
   PopupMenu sub;
   for (int i = begin; i < end; ++i) {
     if (i == 0)

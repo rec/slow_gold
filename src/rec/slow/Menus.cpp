@@ -9,30 +9,25 @@ using namespace rec::command;
 namespace rec {
 namespace slow {
 
-Menus::Menus(Instance* i) : HasInstance(i) {}
+Menus::Menus(Instance* i) : HasInstance(i), advanced_(false) {}
 Menus::~Menus() {}
 
 void Menus::operator()(const GuiSettings& settings) {
-  setMenuMaker(settings.advanced_menus());
-}
-
-void Menus::setMenuMaker(bool isAdvanced) {
   Lock l(lock_);
-  menuMaker_.reset(makeMenuMaker(target()->targetManager(), isAdvanced));
+  advanced_ = settings.advanced_menus();
 }
 
 MenuMaker* Menus::getMenuMaker() {
-  if (!menuMaker_)
-    setMenuMaker(false);
-  return menuMaker_.get();
+  Lock l(lock_);
+  return makeMenuMaker(target()->targetManager(), advanced_);
 }
 
 const StringArray Menus::getMenuBarNames() {
-  return getMenuMaker()->getMenuBarNames();
+  return ptr<MenuMaker>(getMenuMaker())->getMenuBarNames();
 }
 
 const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
-  return getMenuMaker()->makeMenu(menuName);
+  return ptr<MenuMaker>(getMenuMaker())->makeMenu(menuName);
 }
 
 }  // namespace slow

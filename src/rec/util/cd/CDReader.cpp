@@ -14,11 +14,11 @@ AudioCDReader* getAudioCDReader(const String& cdKey) {
   for (int i = 0; i < size; ++i) {
     ScopedPointer<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
     if (!reader)
-      LOG(DFATAL) << "Couldn't create reader for " << names[i];
+      LOG(ERROR) << "Couldn't create reader for " << names[i];
     else if (reader->getCDDBId() == id)
       return reader.release();
   }
-  LOG(DFATAL) << "Couldn't find an AudioCDReader for ID " << id;
+  LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
   return NULL;
 }
 
@@ -40,7 +40,7 @@ AudioFormatReader* createCDTrackReader(const String& cdKey, int track) {
   if (reader)
     return createCDTrackReader(reader.transfer(), track);
 
-  LOG(DFATAL) << "Couldn't create reader for " << cdKey;
+  LOG(ERROR) << "Couldn't create reader for " << cdKey;
   return NULL;
 }
 

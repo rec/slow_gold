@@ -2,6 +2,7 @@
 
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
+#include "rec/gui/icon/ZoomMode.svg.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/Math.h"
@@ -26,9 +27,23 @@ static const int GRID_TEXT_HEIGHT = 9;
 static const int GRID_TEXT_PAD = 4;
 static const int CURSOR_LABEL_HEIGHT = 20;
 static const int MODE_SELECTOR_OFFSET = 5;
-static const int COMMAND_BAR_OFFSET = 3;
+static const int COMMAND_BAR_OFFSET = -2;
 
 static const int64 SMALLEST_TIME_SAMPLES = 10000;
+static const int ZOOM_CURSOR_X_HOTSPOT = 8;
+static const int ZOOM_CURSOR_Y_HOTSPOT = 8;
+static const int ZOOM_CURSOR_WIDTH = 24;
+static const int ZOOM_CURSOR_HEIGHT = 24;
+
+
+static juce::Image* getZoomCursor() {
+  ptr<juce::Image> img(new juce::Image(juce::Image::RGB, ZOOM_CURSOR_WIDTH,
+                                       ZOOM_CURSOR_HEIGHT, false));
+  Graphics g(*img);
+  ptr<Drawable> drawable(gui::icon::ZoomMode::create());
+  drawable->draw(g, 1.0f);
+  return img.transfer();
+}
 
 Def<CursorProto> timeDesc(
 "widget {colors {color: {name: \"red\"}}}\n"
@@ -47,7 +62,9 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       thumbnail_(NULL),
       empty_(true),
       isDraggingCursor_(false),
-      helpScreenUp_(false) {
+      helpScreenUp_(false),
+      zoomCursor_(*ptr<juce::Image>(getZoomCursor()), ZOOM_CURSOR_X_HOTSPOT,
+                  ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
   setTooltip("This is the waveform window, which shows your current track. "
              "You can drag files from your desktop or your music player here. "
@@ -244,8 +261,8 @@ static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
   switch (mode.click()) {
     case Mode::DRAG:              return MouseCursor::DraggingHandCursor;
     case Mode::DRAW_LOOP_POINTS:  return MouseCursor::IBeamCursor;
-    case Mode::SET_TIME:          return MouseCursor::CrosshairCursor;
-    case Mode::TOGGLE_SELECTION:  return MouseCursor::PointingHandCursor;
+    case Mode::SET_TIME:          return MouseCursor::PointingHandCursor;
+    case Mode::TOGGLE_SELECTION:  return MouseCursor::CrosshairCursor;
     case Mode::ZOOM_IN:
     case Mode::ZOOM_OUT:          return MouseCursor::UpDownLeftRightResizeCursor;
     default:                      return MouseCursor::NormalCursor;
@@ -254,7 +271,10 @@ static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
 
 void Waveform::operator()(const Mode& mode) {
   Lock l(lock_);
-  setMouseCursor(getCursor(mode));
+  if (mode.click() == Mode::ZOOM_IN)
+    setMouseCursor(zoomCursor_);
+  else
+    setMouseCursor(getCursor(mode));
 }
 
 void Waveform::layout() {

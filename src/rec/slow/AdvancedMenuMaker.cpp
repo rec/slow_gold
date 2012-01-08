@@ -12,42 +12,6 @@ namespace slow {
 
 using namespace rec::command;
 
-void AdvancedMenuMaker::addFileMenu() {
-  add(Command::OPEN);
-  add(Command::CLOSE_FILE);
-  add(Command::EJECT_CDS);
-
-  menu_.addSeparator();
-
-  // add(Command::CLEAR_NAVIGATOR);
-  add(Command::KEYBOARD_MAPPINGS);
-  add(Command::MIDI_MAPPINGS);
-  add(Command::TOGGLE_ADVANCED_MENUS);
-
-  std::vector<string> recent = rec::gui::getRecentFileNames();
-  PopupMenu submenu;
-  for (uint i = 0; i < recent.size(); ++i)
-    addRepeat(Command::RECENT_FILES, i, str(recent[i]), true, &submenu);
-
-  menu_.addSubMenu("Open recent", submenu);
-
-#if !JUCE_MAC
-  add(Command::ABOUT_THIS_PROGRAM);
-  add(Command::QUIT);
-#endif
-}
-
-void AdvancedMenuMaker::addEditMenu() {
-  addEnabled(Command::UNDO, canUndo());
-  addEnabled(Command::REDO, canRedo());
-
-  menu_.addSeparator();
-
-  addEnabled(Command::CUT, canCut());
-  addEnabled(Command::COPY, canCopy());
-  addEnabled(Command::PASTE, canPaste());
-}
-
 void AdvancedMenuMaker::addAudioMenu() {
   add(Command::MUTE_VOLUME_TOGGLE);
   add(Command::DIM_VOLUME_TOGGLE);
@@ -62,10 +26,7 @@ void AdvancedMenuMaker::addAudioMenu() {
 }
 
 void AdvancedMenuMaker::addSelectMenu() {
-  add(Command::SELECT_ALL);
-  add(Command::DESELECT_ALL);
-  add(Command::INVERT_LOOP_SELECTION);
-  add(Command::TOGGLE_WHOLE_SONG_LOOP);
+  BasicMenuMaker::addSelectMenu();
 
   menu_.addSeparator();
 
@@ -76,9 +37,7 @@ void AdvancedMenuMaker::addSelectMenu() {
 }
 
 void AdvancedMenuMaker::addTransportMenu() {
-  add(Command::TOGGLE_START_STOP);
-  add(Command::ADD_LOOP_POINT);
-  add(Command::CLEAR_LOOPS);
+  BasicMenuMaker::addTransportMenu();
   add(Command::TOGGLE_PREFADER_LEVELS);
 
   menu_.addSeparator();
@@ -109,24 +68,17 @@ const StringArray AdvancedMenuMaker::getMenuBarNames() const {
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void AdvancedMenuMaker::addMenu(const String& menuName) {
-  if (menuName == "File")
-    addFileMenu();
+bool AdvancedMenuMaker::addMenu(const String& menuName) {
+  if (BasicMenuMaker::addMenu(menuName))
+    return true;
 
-  else if (menuName == "Edit")
-    addEditMenu();
-
-  else if (menuName == "Audio")
-    addAudioMenu();
-
-  else if (menuName == "Select")
-    addSelectMenu();
-
-  else if (menuName == "Transport")
-    addTransportMenu();
-
-  else if (menuName == "Display")
+  if (menuName == "Display")
     addDisplayMenu();
+
+  else
+    return false;
+
+  return true;
 }
 
 }  // namespace slow

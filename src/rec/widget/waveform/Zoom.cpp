@@ -56,13 +56,18 @@ void constrainZoom(ZoomProto* z, Samples<44100> length) {
   }
 }
 
-
 void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k) {
   data::setProto(zoom(data::getProto<ZoomProto>(&f), length, time, k), &f);
 }
 
 void zoom(const VirtualFile& f, Samples<44100> length, double k) {
   data::setProto(zoom(data::getProto<ZoomProto>(&f), length, k), &f);
+}
+
+void zoomOutFull(const VirtualFile& f, Samples<44100> length) {
+  ZoomProto zoom;
+  zoom.set_end(length);
+  data::setProto(zoom, &f);
 }
 
 }  // namespace waveform

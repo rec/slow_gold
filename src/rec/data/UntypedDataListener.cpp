@@ -46,6 +46,8 @@ void UntypedDataListener::startListening(Scope scope) {
 
 void UntypedDataListener::setData(const VirtualFile* vf) {
   Lock l(lock_);
+  fileName_.reset(vf ? new VirtualFile(*vf) : NULL);
+
   Data* newData = data::getData(typeName_, vf);
 
   if (data_)
