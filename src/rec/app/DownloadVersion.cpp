@@ -82,7 +82,7 @@ bool downloadNewVersion(const String& appName, const String& version,
       AlertWindow::WarningIcon, msg,
       msg + "Would you like to download it?",
       "Download new version and quit this old one.",
-      "Run this old version " + version);
+      "Run this old version " + oldVersion);
 
   if (!ok) {
     LOG(INFO) << "New version download cancelled";
