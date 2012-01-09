@@ -206,6 +206,7 @@ void Cursor::paint(Graphics& g) {
   // larger cursors.
   float displayWidth = static_cast<float>(desc().display_width());
   float componentWidth = static_cast<float>(desc().component_width());
+  float middle = componentWidth / 2.0f;
   float top = static_cast<float>(desc_.widget().margin());
   float height = bounds.getHeight() - 2.0f * top;
   float offset = (componentWidth - displayWidth) / 2.0f;

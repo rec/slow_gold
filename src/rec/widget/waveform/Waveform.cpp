@@ -415,7 +415,7 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
     g.setColour(juce::Colours::black);
     g.drawText(s, i ? x - GRID_TEXT_WIDTH / 2 : x - GRID_TEXT_WIDTH / 4,
                desc_.show_times_at_top() ? GRID_TEXT_PAD :
-               (h - GRID_TEXT_PAD - GRID_TEXT_HEIGHT),
+               (static_cast<int>(h) - GRID_TEXT_PAD - GRID_TEXT_HEIGHT),
                GRID_TEXT_WIDTH,
                GRID_TEXT_HEIGHT,
                Justification::centred, true);

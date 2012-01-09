@@ -21,8 +21,8 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
 
 
 UntypedDataListener::UntypedDataListener(const string& tn)
-    : typeName_(tn), data_(NULL), fileListener_(new FileListener(this)),
-      started_(false) {
+    : typeName_(tn), data_(NULL), started_(false) {
+  fileListener_.reset(new FileListener(this));
 }
 
 UntypedDataListener::~UntypedDataListener() {
