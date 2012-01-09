@@ -204,10 +204,8 @@ void Cursor::paint(Graphics& g) {
 
   // TODO: some latent issue lurks in here, causing a pixel or two error for
   // larger cursors.
-  float displayWidth = desc().display_width();
-  float componentWidth = desc().component_width();
-
-  float middle = componentWidth / 2.0f;
+  float displayWidth = static_cast<float>(desc().display_width());
+  float componentWidth = static_cast<float>(desc().component_width());
   float top = static_cast<float>(desc_.widget().margin());
   float height = bounds.getHeight() - 2.0f * top;
   float offset = (componentWidth - displayWidth) / 2.0f;

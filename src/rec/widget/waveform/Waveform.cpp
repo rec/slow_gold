@@ -391,7 +391,7 @@ void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
   b = static_cast<int>(ceil(r.begin_ / samples));
   e = static_cast<int>(floor(r.end_ / samples));
 
-  int h = getHeight();
+  float h = static_cast<float>(getHeight());
   int decimals = 0;
   if (samples < 0.01 * 44100.0)
     decimals = 3;

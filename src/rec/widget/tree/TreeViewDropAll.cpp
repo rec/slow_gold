@@ -36,7 +36,8 @@ void TreeViewDropAll::paint(Graphics& g) {
                      0, HEIGHT, getWidth(), getHeight(),
                      juce::Justification::centred, 0);
   } else if (!getRootItem()->getNumSubItems()) {
-    juce::Rectangle<float> bounds(0, 0, getWidth(), getHeight());
+    juce::Rectangle<float> bounds(0, 0, static_cast<float>(getWidth()), 
+      static_cast<float>(getHeight()));
     slowGoldIcon_->drawWithin(g, bounds,
                               juce::RectanglePlacement::stretchToFit, 0.4f);
   }

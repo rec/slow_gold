@@ -8,6 +8,10 @@
 
 using namespace juce;
 
+#if !JUCE_MAC
+#pragma warning(disable: 4706)
+#endif
+
 namespace rec {
 namespace audio {
 namespace format {
@@ -32,7 +36,7 @@ off_t seek(void *inputStream, off_t off, int whence) {
   else if (whence != SEEK_SET)
     offset = -1;
 
-  return (offset >= 0) && in->setPosition(offset) ? offset : -1;
+  return static_cast<off_t>((offset >= 0) && in->setPosition(offset) ? offset : -1);
 }
 
 }  // namespace

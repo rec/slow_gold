@@ -19,7 +19,7 @@ class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
   virtual void registerInstance(const Message& m, bool copy = true);
 
  private:
-  struct Entry;
+  class Entry;
   typedef std::map<string, Entry*> Registry;
 
   Registry registry_;

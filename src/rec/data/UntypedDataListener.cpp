@@ -53,7 +53,9 @@ void UntypedDataListener::setData(const VirtualFile* vf) {
   if (data_)
     data_->removeListener(this);
 
-  if ((data_ = newData))
+  data_ = newData;
+
+  if (data_)
     data_->addListener(this);
 }
 

@@ -23,7 +23,7 @@ string normalize(const string& s) {
 
   string result(s, start, length);
   for (uint i = 0; i < result.size(); ++i)
-    result[i] = tolower(result[i]);
+    result[i] = static_cast<char>(tolower(result[i]));
 
   return result;
 }
