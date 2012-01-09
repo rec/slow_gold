@@ -42,6 +42,7 @@ Components::Components(Instance* instance)
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
 	  commandBar_(new gui::audio::CommandBar) {
+  loops_->setModel(loops_.get());
   mainPage_.reset(new MainPage(this));
   setDefaultCuttable(loops_.get());
 }

@@ -58,9 +58,11 @@ class Layout : public Component, public SizeHintAccumulator,
 
  protected:
   virtual void layout() {
-    layoutManager_.layOutComponents(&components_[0], components_.size(),
-                                    0, 0, getWidth(), getHeight(),
-                                    orientation_, resizeOtherDimension_);
+	if (components_.size()) {
+      layoutManager_.layOutComponents(&components_[0], components_.size(),
+                                      0, 0, getWidth(), getHeight(),
+                                      orientation_, resizeOtherDimension_);
+	}
   }
 
   StretchableLayoutManager layoutManager_;
