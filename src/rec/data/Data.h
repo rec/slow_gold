@@ -45,7 +45,7 @@ class Data : public Broadcaster<const Message&> {
   friend class DataMapImpl;
   friend class DataUpdater;
 
-  template <typename Proto> friend struct Reader;
+  template <typename Proto> friend class Reader;
   template <typename Proto> friend class Opener;
 };
 
