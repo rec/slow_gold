@@ -7,7 +7,7 @@ namespace rec {
 namespace audio {
 
 // A class to represent 24-bit integers.
-typedef struct int24 {
+struct int24 {
   int value_;
 
   int24(int value) : value_(value) {}

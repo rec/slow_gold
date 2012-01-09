@@ -9,6 +9,7 @@
 #include "rec/util/cd/Socket.h"
 #include "rec/util/cd/StripLines.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/music/Metadata.h"
 
 using namespace rec::music;
 

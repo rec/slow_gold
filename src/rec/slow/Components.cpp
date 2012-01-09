@@ -41,8 +41,8 @@ Components::Components(Instance* instance)
       directoryTree_(new widget::tree::Root(instance->menus_.get())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
-      commandBar_(new gui::audio::CommandBar),
-      mainPage_(new MainPage(this)) {
+	  commandBar_(new gui::audio::CommandBar) {
+  mainPage_.reset(new MainPage(this));
   setDefaultCuttable(loops_.get());
 }
 

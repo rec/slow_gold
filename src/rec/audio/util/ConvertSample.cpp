@@ -5,7 +5,7 @@ namespace audio {
 
 namespace {
 
-#ifdef JUCE_MAC
+#if JUCE_MAC
 long long enum
 #else
 enum : long long

@@ -13,7 +13,6 @@
 #include "rec/gui/Geometry.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/gui/WindowPosition.pb.h"
-#include "rec/music/Metadata.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"

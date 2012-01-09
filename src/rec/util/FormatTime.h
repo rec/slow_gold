@@ -30,13 +30,9 @@ const String formatTime(Samples<RATE> time,
   if (flash && (sec & 1))
     ch = ' ';
 
+#if JUCE_MAC
   if (displayHours) {
-#ifdef _WIN32
-    _snprintf
-#else
-    snprintf
-#endif
-      (buffer, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
+    snprintf(buffer, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
   } else {
     minutes += 60 * hours;
     const char* zero = (sec < 10 && decimals)  ? "0" : "";
@@ -46,6 +42,20 @@ const String formatTime(Samples<RATE> time,
       snprintf(buffer, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals, sf);
     }
   }
+#else
+
+  if (displayHours) {
+    _snprintf_s(buffer, 64, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
+  } else {
+    minutes += 60 * hours;
+    const char* zero = (sec < 10 && decimals)  ? "0" : "";
+    if (leadingZeros) {
+      _snprintf_s(buffer, 64, 64, "%02d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+    } else {
+      _snprintf_s(buffer, 64, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+    }
+  }
+#endif
 
   return buffer;
 }

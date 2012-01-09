@@ -4,6 +4,7 @@
 #include "rec/audio/util/FillableFrameBuffer.h"
 #include "rec/audio/source/FrameSource.h"
 #include "rec/slow/BufferFiller.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/LoopPoint.h"
 
 namespace rec {

@@ -51,7 +51,7 @@ inline Size compare(const BlockSet& x, const BlockSet& y) {
   BlockSet::const_iterator i = x.begin();
   BlockSet::const_iterator j = y.begin();
 
-  while (true) {
+  for (;;) {
     if (i == x.end())
       return (j == y.end()) ? 0 : -1;
 
