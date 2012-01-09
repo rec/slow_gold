@@ -33,10 +33,8 @@
 namespace rec {
 namespace slow {
 
-static const Colour BACKGROUND_COLOR = juce::Colours::azure;
-
 SlowWindow::SlowWindow(app::GenericApplication* application)
-    : app::Window(application, "SlowGold", BACKGROUND_COLOR,
+    : app::Window(application, "SlowGold", juce::Colours::azure,
                   DocumentWindow::allButtons, true),
       HasInstance(NULL) {
 }
