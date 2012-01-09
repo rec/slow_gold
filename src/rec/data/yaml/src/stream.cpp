@@ -406,8 +406,8 @@ namespace YAML
 		if (m_nPrefetchedUsed >= m_nPrefetchedAvailable)
 		{
 			std::streambuf *pBuf = m_input.rdbuf();
-			m_nPrefetchedAvailable = pBuf->sgetn(ReadBuffer(m_pPrefetched), 
-				YAML_PREFETCH_SIZE);
+			m_nPrefetchedAvailable = static_cast<size_t>(pBuf->sgetn(ReadBuffer(m_pPrefetched), 
+				YAML_PREFETCH_SIZE));
 			m_nPrefetchedUsed = 0;
 			if (!m_nPrefetchedAvailable)
 			{

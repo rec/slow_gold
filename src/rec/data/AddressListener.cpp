@@ -21,9 +21,9 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
 };
 
 AddressListener::AddressListener(const Address& a, const string& tn)
-    : untypedListener_(new UntypedListener(this, tn)),
-      address_(a),
+    : address_(a),
       failOnError_(true) {
+  untypedListener_.reset(new UntypedListener(this, tn));
 }
 
 AddressListener::~AddressListener() {}

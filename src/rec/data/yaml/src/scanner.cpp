@@ -271,6 +271,7 @@ namespace YAML
 			case IndentMarker::NONE: assert(false); break;
 		}
 		assert(false);
+		return Token::BLOCK_MAP_START;
 	}
 
 	// PushIndentTo

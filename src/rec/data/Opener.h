@@ -8,17 +8,18 @@ namespace rec {
 namespace data {
 
 template <typename Proto>
-struct Opener : public Reader<Proto> {
+class Opener : public Reader<Proto> {
+ public:
   Opener(Data* d, Undoable undoable = CAN_UNDO)
       : Reader<Proto>(d),
-        undoable_(undoable),
-        before_(clone(*this->proto_)) {
+        undoable_(undoable) {
+    before_.reset(clone(*this->proto_));
   }
 
   Opener(VirtualFile* vf, Undoable undoable = CAN_UNDO)
       : Reader<Proto>(vf),
-        undoable_(undoable),
-        before_(clone(*this->proto_)) {
+        undoable_(undoable) {
+    before_.reset(clone(*this->proto_));
   }
 
   ~Opener() {

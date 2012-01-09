@@ -44,6 +44,7 @@ namespace YAML
 				return "!";
 			default:
 				assert(false);
+				return "!";
 		}
 	}
 }

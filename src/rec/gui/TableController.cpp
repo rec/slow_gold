@@ -15,7 +15,9 @@ static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
 using data::Address;
 using data::Value;
 
-TableController::TableController() : TableListBox("TableController", this) {}
+TableController::TableController() : TableListBox("TableController") {
+  setModel(this);
+}
 
 // TODO: can we put this back into the constructor now?
 void TableController::initialize(const TableColumnList& c, const char* name) {
@@ -65,7 +67,7 @@ void TableController::resized() {
   int columns = header.getNumColumns(false);
   int width = 0;
   int lastC = 0;
-  int lastWidth;
+  int lastWidth = 0;
   for (int i = 1; i <= columns; ++i) {
     if (header.isColumnVisible(i)) {
       lastC = i;

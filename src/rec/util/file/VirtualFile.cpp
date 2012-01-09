@@ -121,7 +121,6 @@ bool compare(const VirtualFile& x, const VirtualFile& y) {
     if (y.path(i) < x.path(i))
       return false;
   }
-  return false;
 }
 
 bool empty(const VirtualFile& f) {

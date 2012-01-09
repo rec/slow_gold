@@ -5,9 +5,11 @@ namespace audio {
 
 namespace {
 
-#ifdef JUCE_MAC
+#if JUCE_MAC
 long long enum
 #else
+
+#pragma warning(disable: 4480)
 enum : long long
 #endif
 {

@@ -12,9 +12,9 @@ int undoes();
 // How many commands can be undone?
 int undoable();
 
-inline bool canRedo() { return undoes(); }
+inline bool canRedo() { return undoes() != 0; }
 
-inline bool canUndo() { return undoable(); }
+inline bool canUndo() { return undoable() != 0; }
 
 void undo();
 void redo();

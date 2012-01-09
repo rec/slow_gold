@@ -2,6 +2,7 @@
 #define __REC_SLOW_MENUS__
 
 #include "rec/data/DataListener.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/Listener.h"
 

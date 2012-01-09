@@ -10,7 +10,8 @@ namespace rec {
 namespace data {
 
 template <typename Proto>
-struct Reader {
+class Reader {
+ public:
   Reader(Data* d) : data_(d) { initialize(); }
   Reader(const VirtualFile* vf) : data_(getData<Proto>(vf)) { initialize(); }
 

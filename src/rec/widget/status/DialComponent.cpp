@@ -67,7 +67,7 @@ void DialComponent::operator()(Samples<44100> time) {
       return;
     }
 
-    double length = range.size();
+    double length = static_cast<double>(range.size());
     double zeroAngle = description_.zero_point() * 2.0 * PI;
 
     timeRatio_ = std::max(0.0, std::min(1.0, (time_ - range.begin_) / length));
@@ -104,8 +104,10 @@ void DialComponent::paint(Graphics& g) {
                                  static_cast<float>(timeRatio_)));
   }
 
-  path.addPieSegment(bounds.getX(), bounds.getY(),
-                     bounds.getWidth(), bounds.getHeight(),
+  path.addPieSegment(static_cast<float>(bounds.getX()), 
+	                 static_cast<float>(bounds.getY()),
+                     static_cast<float>(bounds.getWidth()), 
+					 static_cast<float>(bounds.getHeight()),
                      static_cast<float>(zeroAngle_),
                      static_cast<float>(timeAngle_), 0.0f);
 

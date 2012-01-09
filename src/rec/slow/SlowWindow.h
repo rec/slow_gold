@@ -3,6 +3,7 @@
 
 #include "rec/app/Window.h"
 #include "rec/util/Listener.h"
+#include "rec/music/Metadata.h"
 #include "rec/slow/HasInstance.h"
 
 namespace rec {

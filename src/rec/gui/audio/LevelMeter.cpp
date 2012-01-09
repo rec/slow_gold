@@ -46,7 +46,7 @@ void LevelMeter::paint(Graphics& g) {
     return;
 
   float travel = static_cast<float>(horizontal_ ? getWidth() : getHeight());
-  float base = horizontal_ ? getHeight() : getWidth();
+  float base = static_cast<float>(horizontal_ ? getHeight() : getWidth());
   float adjustedBase = base - (size - 1) * margin_;
   float w = adjustedBase / size;
 

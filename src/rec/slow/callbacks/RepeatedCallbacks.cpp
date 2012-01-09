@@ -33,7 +33,7 @@ void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
 void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
   vector<int> selected;
   const LoopPointList& loops = snap->loops_;
-  size_t s;
+  size_t s = 0;
   bool found = false;
   for (int i = 0; i < loops.loop_point_size(); ++i) {
     if (!audio::getSelectionCount(loops) || loops.loop_point(i).selected()) {

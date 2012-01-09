@@ -9,6 +9,7 @@
 #include "rec/util/cd/Socket.h"
 #include "rec/util/cd/StripLines.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/music/Metadata.h"
 
 using namespace rec::music;
 
@@ -32,7 +33,7 @@ void splitTitle(Album *album) { splitTitle(album->mutable_album()); }
 void splitTracks(Album* album) {
   // Look for likely song splits.
   static const char splits[] = "/:-";
-  bool splitting;
+  bool splitting = true;
   for (uint i = 0; !splitting && i < arraysize(splits); ++i) {
     char ch = splits[i];
     splitting = true;

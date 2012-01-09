@@ -30,6 +30,10 @@ Error setFormat(mpg123_handle* mh,
 
 }  // namespace
 
+#if !JUCE_MAC
+#pragma warning(disable: 4706)
+#endif
+
 Error createReader(InputStream* in,
                    AudioFormatReader** reader,
                    OutputFormat* begin,

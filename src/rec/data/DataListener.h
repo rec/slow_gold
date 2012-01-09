@@ -13,11 +13,11 @@ class Data;
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
  public:
-  explicit DataListener() : adaptor_(this) {}
+  explicit DataListener() { adaptor_.reset(new Adaptor(this)); }
   virtual ~DataListener() {}
 
   virtual void operator()(const Proto&) = 0;
-  Data* getData() const { return adaptor_.getData(); }
+  Data* getData() const { return adaptor_->getData(); }
   const Proto getProto() const { return data::getProto<Proto>(getData()); }
   void setProto(const Proto& p) { setWithData(getData(), p); }
 
@@ -26,7 +26,7 @@ class DataListener : public Listener<const Proto&> {
   }
 
   void startListening(Scope scope) {
-    adaptor_.startListening(scope);
+    adaptor_->startListening(scope);
   }
 
  private:
@@ -49,7 +49,7 @@ class DataListener : public Listener<const Proto&> {
     DataListener<Proto>* const parent_;
   };
 
-  Adaptor adaptor_;
+  ptr<Adaptor> adaptor_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataListener);
 };

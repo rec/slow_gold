@@ -21,7 +21,13 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
   if (name)
     name_ = name;
 
-  setLinesDrawnForSubItems(!JUCE_MAC);
+  setLinesDrawnForSubItems(
+#if JUCE_MAC
+    false
+#else
+	true
+#endif
+	);
 }
 
 ColorName Node::getColor() const {

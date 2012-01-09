@@ -34,7 +34,7 @@ bool stripLine(String* data, StringArray* lines) {
 StringPair splitLine(const string& s, int ch) {
   string first = s, second;
   string sep = "   ";
-  sep[1] = ch;
+  sep[1] = static_cast<char>(ch);
   int loc = s.find(sep);
   if (loc != -1) {
     first = s.substr(0, loc);

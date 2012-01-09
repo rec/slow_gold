@@ -12,9 +12,9 @@
 namespace rec {
 
 namespace util { class Mode; }
-namespace widget { namespace waveform { struct Cursor; } }
+namespace widget { namespace waveform { class Cursor; } }
 namespace widget { namespace waveform { struct MouseWheelEvent; } }
-namespace widget { namespace waveform { struct Waveform; } }
+namespace widget { namespace waveform { class Waveform; } }
 
 namespace slow {
 

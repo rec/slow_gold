@@ -1,7 +1,6 @@
 #include "rec/music/Metadata.h"
 
 #include "rec/audio/format/mpg123/CleanGenre.h"
-#include "rec/music/Metadata.pb.h"
 #include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {

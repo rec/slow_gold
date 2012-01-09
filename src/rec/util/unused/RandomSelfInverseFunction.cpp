@@ -28,14 +28,14 @@ ByteFunction randomSelfInverseFunction(unsigned seed) {
   ByteFunction func;
 
   ByteVector bytes(COUNT);
-  for (int i = 0; i < COUNT; ++i)
+  for (byte i = 0; i < COUNT; ++i)
     bytes[i] = i;
 
   while (int size = bytes.size()) {
     int x = randomItemIndex(size);
     int y = randomItemIndex(size);
-    int bx = bytes[x];
-    int by = bytes[y];
+    byte bx = bytes[x];
+    byte by = bytes[y];
 
     func.function[bx] = by;
     func.function[by] = bx;
