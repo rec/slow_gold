@@ -11,7 +11,11 @@ namespace data {
 
 namespace {
 
+#if JUCE_WINDOWS
+const char* const EMPTY_DIRECTORY_NAME = "C:\\empty-empty-empty";
+#else
 const char* const EMPTY_DIRECTORY_NAME = "/empty-empty-empty";
+#endif
 
 File dataFile(const VirtualFile* vf, const string& typeName) {
   File directory = vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
