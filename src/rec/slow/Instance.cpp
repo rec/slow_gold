@@ -116,6 +116,7 @@ void Instance::startListening() {
 void Instance::startup() {
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
+  DLOG(INFO) << "About to take the MessageManagerLock on startup.";
 
   MessageManagerLock l;
   window_->toFront(true);

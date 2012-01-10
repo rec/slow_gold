@@ -51,7 +51,9 @@ void SlowWindow::startListening() {
 void SlowWindow::operator()(const music::Metadata& md) {
   File file = data::DataListener<music::Metadata>::getData()->getFile();
   MessageManagerLock l;
+#if JUCE_MAC
   setName(str(music::getTitle(md, file)));
+#endif
 }
 
 void SlowWindow::constructInstance() {
