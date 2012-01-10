@@ -38,7 +38,8 @@ void Window::initialise() {
 Window::~Window() {}
 
 void Window::startup() {
-  Thread::sleep(500);  // We need this so that our GUI has settled down...
+  Thread::sleep(500);
+  // Yes, it's lame, but we need this so that our GUI has settled down...
   doStartup();
   GuiWriteable::setWriteableAll(true);
 }

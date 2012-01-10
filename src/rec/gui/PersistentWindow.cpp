@@ -44,8 +44,13 @@ void PersistentWindow::startListening() {
 void PersistentWindow::operator()(const WindowPosition& p) {
   MessageManagerLock l;
   position_ = p;
-  if (!p.juce_position().empty())
-    restoreWindowStateFromString(str(p.juce_position()));
+  String state = str(p.juce_position());
+  thread::callAsync(this, &PersistentWindow::setWindowState, state);
+}
+
+void PersistentWindow::setWindowState(const String& state) {
+  if (!state.length())
+    restoreWindowStateFromString(state);
 
   Rect bounds = getBounds();
   bounds.setWidth(std::min(resizeLimits_.getWidth(),

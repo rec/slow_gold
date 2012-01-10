@@ -23,7 +23,7 @@
 #include "rec/util/Defaulter.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/Mode.pb.h"
-#include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -50,11 +50,7 @@ void SlowWindow::startListening() {
 
 void SlowWindow::operator()(const music::Metadata& md) {
   File file = data::DataListener<music::Metadata>::getData()->getFile();
-  string name = music::getTitle(md, file);
-
-  LOG(ERROR) << "Setting " << name;
-  MessageManagerLock l;
-  setName(str(name) + "!");
+  thread::callAsync(this, &SlowWindow::setName, str(music::getTitle(md, file)));
 }
 
 void SlowWindow::constructInstance() {
@@ -114,7 +110,6 @@ void SlowWindow::turnOffAboutWindow() {
 }
 
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
-  DLOG(INFO) << "Here!";
   if (!isNowMinimised)
     components()->waveform_->repaint();
 }
