@@ -10,7 +10,10 @@ bool Frames<Frame>::setLength(Samples<44100> length, bool mustReallocate) {
   if (length != length_ && (mustReallocate || length > allocatedLength_)) {
     allocatedLength_ = length;
     size_t size = static_cast<size_t>(sizeof(Frame) * length);
-    frames_ = reinterpret_cast<Frame*>(reallocf(frames_, size));
+	void *f = realloc(frames_, size);
+	DCHECK(!size || f) << "Couldn't allocate " << size;
+    frames_ = reinterpret_cast<Frame*>(f);
+	DCHECK(!size || frames_) << "Couldn't cast " << size;
   }
   bool success = !length || frames_;
   if (!success)
