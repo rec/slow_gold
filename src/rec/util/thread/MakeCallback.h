@@ -28,12 +28,12 @@ template <typename Type, typename Method, typename Value>
 Callback* methodCallback(Type* o, Method m, Value v) {
   return new callback::Callback1<Type, Method, Value>(o, m, v);
 }
-#if 1
+
 template <typename Type, typename Method, typename V1, typename V2>
 Callback* methodCallback(Type* o, Method m, V1 v1, V2 v2) {
   return new callback::Callback2<Type, Method, V1, V2>(o, m, v1, v2);
 }
-#endif
+
 template <typename Type, typename Method, typename V1, typename V2, typename V3>
 Callback* methodCallback(Type* o, Method m, V1 v1, V2 v2, V3 v3) {
   return new callback::Callback3<Type, Method, V1, V2, V3>(o, m, v1, v2, v3);

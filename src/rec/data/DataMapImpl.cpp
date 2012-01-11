@@ -19,7 +19,9 @@ const char* const EMPTY_DIRECTORY_NAME = "/empty-empty-empty";
 
 File dataFile(const VirtualFile* vf, const string& typeName) {
   File directory = vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
-  return directory.getChildFile(str(typeName));
+  File f = directory.getChildFile(str(typeName));
+  DLOG(ERROR) << str(f) << ", " << (vf ? vf->ShortDebugString() : "empty");
+  return f;
 }
 
 }  // namespace
