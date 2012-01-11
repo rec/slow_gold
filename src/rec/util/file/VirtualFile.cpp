@@ -21,14 +21,17 @@ const File getFile(const File& f, const string& path) {
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
 const File getFile(File f, const Path& path) {
-  for (int i = 0; i < path.size(); ++i)
-    f = getFile(f, path.Get(i));
+  DLOG(ERROR) << "! " << str(f);
+  for (int i = 0; i < path.size(); ++i) {
+    DLOG(ERROR) << i << ": " << str(f) << ", " << path.Get(i);
+    f = getFile(f, str(str(path.Get(i)).replace(":", "-")));
+  }
 
   return f;
 }
 
 const File getVirtual(const VirtualFile& v) {
-  if (v.type() == VirtualFile::CD) {
+   if (v.type() == VirtualFile::CD) {
     CHECK(v.type() != VirtualFile::CD);
   }
 
@@ -58,10 +61,16 @@ const File getShadowDirectory(const VirtualFile& vf) {
 
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
   File f = app::getAppFile(name);
-  return getFile(getFile(f, vf.name()), vf.path());
+  // return getFile(getFile(f, vf.name()), vf.path());
+  DLOG(ERROR) << vf.ShortDebugString();
+  File f1 = getFile(f, vf.name());
+  File f2 = getFile(f1, vf.path());
+  DLOG(ERROR) << str(f) << ", " << str(f1) << ", " << str(f2);
+  return f2;
 }
 
 const File getFile(const VirtualFile& file) {
+  DLOG(ERROR) << "!? " << file.ShortDebugString();
   return getFile(getVirtual(file), file.path());
 }
 

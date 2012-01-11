@@ -47,6 +47,8 @@ DataMapImpl::~DataMapImpl() {
 Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
   File file = dataFile(vf, typeName);
   string key = str(file);
+  DCHECK(!vf || str(key).contains("Application Data"));
+  LOG(ERROR) << key;
 
   Lock l(lock_);
   Map::iterator i = map_.find(key);
