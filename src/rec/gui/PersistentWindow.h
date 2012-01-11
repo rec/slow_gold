@@ -35,6 +35,7 @@ class PersistentWindow : public DocumentWindow,
 
  private:
   void writeData();
+  void setWindowState(const String& state);
 
   WindowPosition position_;
   juce::Rectangle<int> resizeLimits_;
