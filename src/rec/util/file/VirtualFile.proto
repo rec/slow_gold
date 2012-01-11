@@ -19,7 +19,7 @@ message VirtualFile {
   };
 
   optional Type type = 1 [default = NONE];
-  optional string name = 2;
+  optional string volume_name = 2;
   repeated string path = 3;
   optional Status status = 4 [default = ONLINE];
 };

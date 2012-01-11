@@ -37,7 +37,7 @@ void protobuf_AssignDesc_rec_2futil_2ffile_2fVirtualFile_2eproto() {
   VirtualFile_descriptor_ = file->message_type(0);
   static const int VirtualFile_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, volume_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, path_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, status_),
   };
@@ -104,16 +104,16 @@ void protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/util/file/VirtualFile.proto\022\rrec.u"
-    "til.file\"\264\002\n\013VirtualFile\0223\n\004type\030\001 \001(\0162\037"
-    ".rec.util.file.VirtualFile.Type:\004NONE\022\014\n"
-    "\004name\030\002 \001(\t\022\014\n\004path\030\003 \003(\t\0229\n\006status\030\004 \001("
-    "\0162!.rec.util.file.VirtualFile.Status:\006ON"
-    "LINE\"9\n\004Type\022\010\n\004NONE\020\000\022\006\n\002CD\020\001\022\t\n\005MUSIC\020"
-    "\002\022\010\n\004USER\020\003\022\n\n\006VOLUME\020\004\"^\n\006Status\022\n\n\006ONL"
-    "INE\020\001\022\013\n\007OFFLINE\020\002\022\r\n\tDISK_OPEN\020\003\022\022\n\016WRI"
-    "TEABLE_DISK\020\004\022\013\n\007NO_DISK\020\005\022\013\n\007UNKNOWN\020\006\""
-    ";\n\017VirtualFileList\022(\n\004file\030\001 \003(\0132\032.rec.u"
-    "til.file.VirtualFile", 420);
+    "til.file\"\273\002\n\013VirtualFile\0223\n\004type\030\001 \001(\0162\037"
+    ".rec.util.file.VirtualFile.Type:\004NONE\022\023\n"
+    "\013volume_name\030\002 \001(\t\022\014\n\004path\030\003 \003(\t\0229\n\006stat"
+    "us\030\004 \001(\0162!.rec.util.file.VirtualFile.Sta"
+    "tus:\006ONLINE\"9\n\004Type\022\010\n\004NONE\020\000\022\006\n\002CD\020\001\022\t\n"
+    "\005MUSIC\020\002\022\010\n\004USER\020\003\022\n\n\006VOLUME\020\004\"^\n\006Status"
+    "\022\n\n\006ONLINE\020\001\022\013\n\007OFFLINE\020\002\022\r\n\tDISK_OPEN\020\003"
+    "\022\022\n\016WRITEABLE_DISK\020\004\022\013\n\007NO_DISK\020\005\022\013\n\007UNK"
+    "NOWN\020\006\";\n\017VirtualFileList\022(\n\004file\030\001 \003(\0132"
+    "\032.rec.util.file.VirtualFile", 427);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/file/VirtualFile.proto", &protobuf_RegisterTypes);
   VirtualFile::default_instance_ = new VirtualFile();
@@ -189,10 +189,10 @@ const VirtualFile_Status VirtualFile::Status_MIN;
 const VirtualFile_Status VirtualFile::Status_MAX;
 const int VirtualFile::Status_ARRAYSIZE;
 #endif  // _MSC_VER
-const ::std::string VirtualFile::_default_name_;
+const ::std::string VirtualFile::_default_volume_name_;
 #ifndef _MSC_VER
 const int VirtualFile::kTypeFieldNumber;
-const int VirtualFile::kNameFieldNumber;
+const int VirtualFile::kVolumeNameFieldNumber;
 const int VirtualFile::kPathFieldNumber;
 const int VirtualFile::kStatusFieldNumber;
 #endif  // !_MSC_VER
@@ -214,7 +214,7 @@ VirtualFile::VirtualFile(const VirtualFile& from)
 void VirtualFile::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
-  name_ = const_cast< ::std::string*>(&_default_name_);
+  volume_name_ = const_cast< ::std::string*>(&_default_volume_name_);
   status_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -224,8 +224,8 @@ VirtualFile::~VirtualFile() {
 }
 
 void VirtualFile::SharedDtor() {
-  if (name_ != &_default_name_) {
-    delete name_;
+  if (volume_name_ != &_default_volume_name_) {
+    delete volume_name_;
   }
   if (this != default_instance_) {
   }
@@ -255,8 +255,8 @@ void VirtualFile::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0;
     if (_has_bit(1)) {
-      if (name_ != &_default_name_) {
-        name_->clear();
+      if (volume_name_ != &_default_volume_name_) {
+        volume_name_->clear();
       }
     }
     status_ = 1;
@@ -288,19 +288,19 @@ bool VirtualFile::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_name;
+        if (input->ExpectTag(18)) goto parse_volume_name;
         break;
       }
       
-      // optional string name = 2;
+      // optional string volume_name = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
+         parse_volume_name:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
+                input, this->mutable_volume_name()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
+            this->volume_name().data(), this->volume_name().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -372,13 +372,13 @@ void VirtualFile::SerializeWithCachedSizes(
       1, this->type(), output);
   }
   
-  // optional string name = 2;
+  // optional string volume_name = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
+      this->volume_name().data(), this->volume_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(), output);
+      2, this->volume_name(), output);
   }
   
   // repeated string path = 3;
@@ -410,14 +410,14 @@ void VirtualFile::SerializeWithCachedSizes(
       1, this->type(), target);
   }
   
-  // optional string name = 2;
+  // optional string volume_name = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
+      this->volume_name().data(), this->volume_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
+        2, this->volume_name(), target);
   }
   
   // repeated string path = 3;
@@ -452,11 +452,11 @@ int VirtualFile::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
-    // optional string name = 2;
-    if (has_name()) {
+    // optional string volume_name = 2;
+    if (has_volume_name()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
+          this->volume_name());
     }
     
     // optional .rec.util.file.VirtualFile.Status status = 4 [default = ONLINE];
@@ -504,7 +504,7 @@ void VirtualFile::MergeFrom(const VirtualFile& from) {
       set_type(from.type());
     }
     if (from._has_bit(1)) {
-      set_name(from.name());
+      set_volume_name(from.volume_name());
     }
     if (from._has_bit(3)) {
       set_status(from.status());
@@ -533,7 +533,7 @@ bool VirtualFile::IsInitialized() const {
 void VirtualFile::Swap(VirtualFile* other) {
   if (other != this) {
     std::swap(type_, other->type_);
-    std::swap(name_, other->name_);
+    std::swap(volume_name_, other->volume_name_);
     path_.Swap(&other->path_);
     std::swap(status_, other->status_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

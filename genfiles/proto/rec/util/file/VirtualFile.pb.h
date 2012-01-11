@@ -200,15 +200,15 @@ class VirtualFile : public ::google::protobuf::Message {
   inline ::rec::util::file::VirtualFile_Type type() const;
   inline void set_type(::rec::util::file::VirtualFile_Type value);
   
-  // optional string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
+  // optional string volume_name = 2;
+  inline bool has_volume_name() const;
+  inline void clear_volume_name();
+  static const int kVolumeNameFieldNumber = 2;
+  inline const ::std::string& volume_name() const;
+  inline void set_volume_name(const ::std::string& value);
+  inline void set_volume_name(const char* value);
+  inline void set_volume_name(const char* value, size_t size);
+  inline ::std::string* mutable_volume_name();
   
   // repeated string path = 3;
   inline int path_size() const;
@@ -239,8 +239,8 @@ class VirtualFile : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int type_;
-  ::std::string* name_;
-  static const ::std::string _default_name_;
+  ::std::string* volume_name_;
+  static const ::std::string _default_volume_name_;
   ::google::protobuf::RepeatedPtrField< ::std::string> path_;
   int status_;
   friend void  protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
@@ -381,46 +381,46 @@ inline void VirtualFile::set_type(::rec::util::file::VirtualFile_Type value) {
   type_ = value;
 }
 
-// optional string name = 2;
-inline bool VirtualFile::has_name() const {
+// optional string volume_name = 2;
+inline bool VirtualFile::has_volume_name() const {
   return _has_bit(1);
 }
-inline void VirtualFile::clear_name() {
-  if (name_ != &_default_name_) {
-    name_->clear();
+inline void VirtualFile::clear_volume_name() {
+  if (volume_name_ != &_default_volume_name_) {
+    volume_name_->clear();
   }
   _clear_bit(1);
 }
-inline const ::std::string& VirtualFile::name() const {
-  return *name_;
+inline const ::std::string& VirtualFile::volume_name() const {
+  return *volume_name_;
 }
-inline void VirtualFile::set_name(const ::std::string& value) {
+inline void VirtualFile::set_volume_name(const ::std::string& value) {
   _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
+  if (volume_name_ == &_default_volume_name_) {
+    volume_name_ = new ::std::string;
   }
-  name_->assign(value);
+  volume_name_->assign(value);
 }
-inline void VirtualFile::set_name(const char* value) {
+inline void VirtualFile::set_volume_name(const char* value) {
   _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
+  if (volume_name_ == &_default_volume_name_) {
+    volume_name_ = new ::std::string;
   }
-  name_->assign(value);
+  volume_name_->assign(value);
 }
-inline void VirtualFile::set_name(const char* value, size_t size) {
+inline void VirtualFile::set_volume_name(const char* value, size_t size) {
   _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
+  if (volume_name_ == &_default_volume_name_) {
+    volume_name_ = new ::std::string;
   }
-  name_->assign(reinterpret_cast<const char*>(value), size);
+  volume_name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* VirtualFile::mutable_name() {
+inline ::std::string* VirtualFile::mutable_volume_name() {
   _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
+  if (volume_name_ == &_default_volume_name_) {
+    volume_name_ = new ::std::string;
   }
-  return name_;
+  return volume_name_;
 }
 
 // repeated string path = 3;

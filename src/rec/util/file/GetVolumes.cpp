@@ -16,7 +16,7 @@ namespace {
 void add(VirtualFile::Type type, const string& name, VirtualFileList* volumes) {
   VirtualFile* vf = volumes->add_file();
   vf->set_type(type);
-  vf->set_name(name);
+  vf->set_volume_name(name);
 }
 
 void addFileRoots(VirtualFileList* volumes) {

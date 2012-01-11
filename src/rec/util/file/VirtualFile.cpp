@@ -14,37 +14,44 @@ namespace file {
 
 namespace {
 
-const File getFile(const File& f, const string& path) {
-  return f.getChildFile(str(path));
-}
-
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
-const File getFile(File f, const Path& path) {
-  DLOG(ERROR) << "! " << str(f);
+String fixPathElement(const String& s) {
+  return s.replace(":", "-");
+}
+
+const File getFileFromPath(File f, const Path& path) {
   for (int i = 0; i < path.size(); ++i) {
-    DLOG(ERROR) << i << ": " << str(f) << ", " << path.Get(i);
-    f = getFile(f, str(str(path.Get(i)).replace(":", "-")));
+    String p = str(path.Get(i));
+    if (f == File::nonexistent) {
+#if JUCE_MAC
+      if (!p.startsWithChar(File::separator))
+        p = File::separatorString + p;
+#endif
+      f = File(p);
+    } else {
+    	f = f.getChildFile(fixPathElement(p));
+    }
   }
 
   return f;
 }
 
-const File getVirtual(const VirtualFile& v) {
-   if (v.type() == VirtualFile::CD) {
+const File getRootFile(const VirtualFile& v) {
+  if (v.type() == VirtualFile::CD) {
     CHECK(v.type() != VirtualFile::CD);
   }
 
   if (v.type() == VirtualFile::MUSIC) {
-    DCHECK_EQ(v.name(), "");
+    DCHECK_EQ(v.volume_name(), "");
     return File::getSpecialLocation(File::userMusicDirectory);
   }
 
   if (v.type() == VirtualFile::VOLUME)
-    return File(str(v.name()));
+    return v.volume_name().empty() ? File() : File(str(v.volume_name()));
 
   if (v.type() == VirtualFile::USER) {
-    DCHECK_EQ(v.name(), "");
+    DCHECK_EQ(v.volume_name(), "");
     return File::getSpecialLocation(File::userHomeDirectory);
   }
 
@@ -61,17 +68,17 @@ const File getShadowDirectory(const VirtualFile& vf) {
 
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
   File f = app::getAppFile(name);
-  // return getFile(getFile(f, vf.name()), vf.path());
+  // return getFile(getFile(f, vf.volume_name()), vf.path());
   DLOG(ERROR) << vf.ShortDebugString();
-  File f1 = getFile(f, vf.name());
-  File f2 = getFile(f1, vf.path());
+  File f1 = f.getChildFile(str(vf.volume_name()));
+  File f2 = getFileFromPath(f1, vf.path());
   DLOG(ERROR) << str(f) << ", " << str(f1) << ", " << str(f2);
   return f2;
 }
 
-const File getFile(const VirtualFile& file) {
+const File getRealFile(const VirtualFile& file) {
   DLOG(ERROR) << "!? " << file.ShortDebugString();
-  return getFile(getVirtual(file), file.path());
+  return getFileFromPath(getRootFile(file), file.path());
 }
 
 const String getFilename(const VirtualFile& file) {
@@ -90,7 +97,7 @@ const String getDisplayName(const VirtualFile& file) {
     return "<User>";
 
   if (type == VirtualFile::VOLUME || type == VirtualFile::CD) {
-    string name = file.name();
+    string name = file.volume_name();
     eraseVolumePrefix(&name, false);
     return name.empty() ? String("<Root>") : str(name);
   }
@@ -112,10 +119,10 @@ bool compare(const VirtualFile& x, const VirtualFile& y) {
   if (x.type() > y.type())
     return false;
 
-  if (x.name() < y.name())
+  if (x.volume_name() < y.volume_name())
     return true;
 
-  if (x.name() > y.name())
+  if (x.volume_name() > y.volume_name())
     return false;
 
   for (int i = 0; ; i++) {
@@ -123,10 +130,13 @@ bool compare(const VirtualFile& x, const VirtualFile& y) {
     bool yDone = (i >= y.path_size());
     if (xDone)
       return !yDone;
+
     if (yDone)
       return false;
+
     if (x.path(i) < y.path(i))
       return true;
+
     if (y.path(i) < x.path(i))
       return false;
   }
@@ -153,7 +163,7 @@ VirtualFile toVirtualFile(const File& file) {
   const string& root = vf.path(last);
 
   if (root == "Virtuals" && last != 0) {
-    vf.set_name(vf.path(last - 1));
+    vf.set_volume_name(vf.path(last - 1));
     vf.mutable_path()->RemoveLast();
     vf.mutable_path()->RemoveLast();
   }
@@ -174,6 +184,7 @@ VirtualFile toVirtualFile(const string& s) {
   return f;
 };
 
+namespace {
 
 template <typename Collection>
 VirtualFileList toVirtualFileListHelper(const Collection& infiles) {
@@ -182,6 +193,8 @@ VirtualFileList toVirtualFileListHelper(const Collection& infiles) {
     files.add_file()->CopyFrom(file::toVirtualFile(infiles[i]));
   return files;
 }
+
+}  // namespace
 
 VirtualFileList toVirtualFileList(const StringArray& files) {
   return toVirtualFileListHelper(files);

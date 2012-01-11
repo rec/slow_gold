@@ -47,8 +47,10 @@ DataMapImpl::~DataMapImpl() {
 Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
   File file = dataFile(vf, typeName);
   string key = str(file);
+#if JUCE_WINDOWS
   DCHECK(!vf || str(key).contains("Application Data"));
   LOG(ERROR) << key;
+#endif
 
   Lock l(lock_);
   Map::iterator i = map_.find(key);

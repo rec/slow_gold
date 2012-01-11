@@ -15,17 +15,17 @@ namespace {
 
 AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
   int track = String(file.path(0).c_str()).getIntValue();
-  String filename = str(file.name());
+  String filename = str(file.volume_name());
   if (metadata) {
     ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
-    if (cdr) 
+    if (cdr)
       *metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
   }
   return cd::createCDTrackReader(filename, track);
 }
 
 AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata) {
-  ptr<AudioFormatReader> reader(audio::createReader(getFile(file)));
+  ptr<AudioFormatReader> reader(audio::createReader(getRealFile(file)));
   if (metadata && reader)
     *metadata = music::getMetadata(reader->metadataValues);
 

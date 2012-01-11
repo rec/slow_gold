@@ -9,7 +9,7 @@ void CD::computeChildren() {
   name_ = "<Unknown CD>";
   std::vector<string> tracks;
 
-  const string& cdKey = virtualFile_.name();
+  const string& cdKey = virtualFile_.volume_name();
   ptr<AudioCDReader> reader(cd::getAudioCDReader(str(cdKey)));
   if (reader) {
     cd::TrackOffsets trackOffsets = reader->getTrackOffsets();

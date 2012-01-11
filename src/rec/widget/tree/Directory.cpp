@@ -38,7 +38,7 @@ Node* Directory::createChildFile(const partition::Shard& shard) const {
   const File& f = (*children_)[shard.range_.begin_];
   VirtualFile vf(virtualFile_);
   vf.add_path(str(f.getFileName()));
-  bool isDir = getFile(vf).isDirectory();
+  bool isDir = getRealFile(vf).isDirectory();
   return isDir ? new Directory(desc_, vf) : new Node(desc_, vf);
 }
 
@@ -48,7 +48,7 @@ void Directory::computeChildren() {
 
   childrenStarted_ = true;
 
-  File f = getFile(virtualFile_);
+  File f = getRealFile(virtualFile_);
   if (f.isDirectory()) {
     resetChildren();
     file::sortedChildren(f, children_);
