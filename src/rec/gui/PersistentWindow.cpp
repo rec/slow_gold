@@ -43,7 +43,6 @@ void PersistentWindow::startListening() {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-  DLOG(ERROR) << "HERE!";
   MessageManagerLock l;
   position_ = p;
   String state = str(p.juce_position());
