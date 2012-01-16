@@ -61,17 +61,30 @@ static const string& layoutTypeName() {
   return name;
 }
 
+class MainPanel : public gui::Layout {
+ public:
+  MainPanel() : gui::Layout("Main", VERTICAL) {}
+
+#if JUCE_WINDOWS
+  virtual void paintOverChildren(Graphics& g) {
+    g.setColour(juce::Colours::black);
+    g.drawLine(0.0f, 0.0f, static_cast<float>(getWidth()), 0);
+  }
+#endif
+};
+
+
 }  // namespace
 
 MainPage::MainPage(Components* components)
-    : mainPanel_("Main", VERTICAL),
+    : mainPanel_(new MainPanel),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
       helpPanel_(new gui::SimpleLabel("", "")),
       transformPanel_("Transform"),
       controlPanel_("Control"),
 
-      navigationResizer_(layoutTypeName(), "navigation_y", &mainPanel_, 1),
+      navigationResizer_(layoutTypeName(), "navigation_y", mainPanel_.get(), 1),
 
       directoryResizer_(layoutTypeName(), "directory_x", &navigationPanel_, 1),
       metadataResizer_(layoutTypeName(), "metadata_x", &navigationPanel_, 3),
@@ -79,16 +92,16 @@ MainPage::MainPage(Components* components)
       helpResizer_(layoutTypeName(), "help_x", &playbackPanel_, 1),
       transformResizer_(layoutTypeName(), "transform_x", &playbackPanel_, 3),
       controlResizer_(layoutTypeName(), "control_x", &playbackPanel_, 5) {
-  add(&mainPanel_, &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
-  add(&mainPanel_, &navigationResizer_, MIN_RESIZER);
+  add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
+  add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
   Component* waveform = components->waveform_.get();
 
-  add(&mainPanel_, waveform, MIN_WAVEFORM, -1.0, -0.5);
+  add(mainPanel_.get(), waveform, MIN_WAVEFORM, -1.0, -0.5);
   waveform->addAndMakeVisible(components->modeSelector_.get());
   waveform->addAndMakeVisible(components->commandBar_.get());
 
-  add(&mainPanel_, &playbackPanel_, MIN_PLAYBACK_PANEL);
+  add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
 
   // Navigation panel.
   components->directoryTree_->treeView()->setTooltip("The CD window shows any "
@@ -128,7 +141,7 @@ void MainPage::setTooltip(const String& tt) {
 }
 
 void MainPage::setEnabled(bool enabled) {
-  mainPanel_.setEnabled(enabled);
+  mainPanel_->setEnabled(enabled);
   navigationPanel_.setEnabled(enabled);
   playbackPanel_.setEnabled(enabled);
   transformPanel_.setEnabled(enabled);

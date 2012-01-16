@@ -28,13 +28,13 @@ class MainPage {
 
   virtual void startListening();
 
-  gui::Layout* panel() { return &mainPanel_; }
+  gui::Layout* panel() { return mainPanel_.get(); }
   void setTooltip(const String&);
   void setEnabled(bool);
 
  private:
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
-  gui::Layout mainPanel_;
+  ptr<gui::Layout> mainPanel_;
 
   // navigationPanel_ contains the navigator, song metadata and loops.
   gui::Layout navigationPanel_;
