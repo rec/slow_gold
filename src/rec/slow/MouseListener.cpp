@@ -6,6 +6,7 @@
 #include "rec/data/Data.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/Target.h"
@@ -126,6 +127,9 @@ void MouseListener::clickWaveform(const MouseEvent& e, Waveform* waveform) {
 }
 
 void MouseListener::mouseDown(const MouseEvent& e) {
+  if (currentFile()->empty())
+    return;
+
   Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform)
     clickWaveform(e, waveform);
@@ -183,6 +187,9 @@ void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
 }
 
 void MouseListener::mouseDrag(const MouseEvent& e) {
+  if (currentFile()->empty())
+    return;
+
   Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform)
     dragWaveform(e, waveform);
@@ -195,7 +202,8 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 }
 
 void MouseListener::mouseUp(const MouseEvent& e) {
-  components()->waveform_->setIsDraggingCursor(false);
+  if (!currentFile()->empty())
+    components()->waveform_->setIsDraggingCursor(false);
 }
 
 void MouseListener::toggleAddLoopPointMode() {

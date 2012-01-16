@@ -37,7 +37,8 @@ class FileDataListener : public data::GlobalDataListener<VirtualFile> {
 };
 
 
-CurrentFile::CurrentFile(Instance* i) : HasInstance(i), initialized_(false) {
+CurrentFile::CurrentFile(Instance* i) : HasInstance(i), initialized_(false),
+                                        empty_(true) {
   fileListener_.reset(new FileDataListener(this));
   fileListener_->startListening();
 }
@@ -94,9 +95,9 @@ void CurrentFile::setFile(const VirtualFile& f) {
 
   Samples<44100> length(0);
 
-  bool fileEmpty = file::empty(file_);
+  empty_ = file::empty(file_);
 
-  if (!fileEmpty) {
+  if (!empty_) {
     using audio::util::TrackBufferAndThumbnail;
 
     TrackBufferAndThumbnail* thumbnail = bufferFiller()->trackBuffer();
@@ -119,8 +120,8 @@ void CurrentFile::setFile(const VirtualFile& f) {
       }
     }
 
-  } else if (!fileEmpty) {
-    String s = file::getDisplayName(file_);
+  } else if (!empty_) {
+    String s = file::getFullDisplayName(file_);
     (*this)(file::none());
     currentTime()->jumpToTime(0);
     (*currentTime())(0);

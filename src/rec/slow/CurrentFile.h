@@ -26,6 +26,7 @@ class CurrentFile : public HasInstance,
 
   const VirtualFile virtualFile() const { Lock l(lock_); return file_; }
   const Samples<44100> length() const { Lock l(lock_); return length_; }
+  bool empty() const { return empty_; }
 
  private:
   // Sets the current file but does not change the persistent data.
@@ -37,6 +38,7 @@ class CurrentFile : public HasInstance,
   Samples<44100> length_;
   ptr<FileDataListener> fileListener_;
   bool initialized_;
+  bool empty_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 

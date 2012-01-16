@@ -27,7 +27,6 @@ class HasInstance {
   Samples<44100> length() const { return instance_->length(); }
   bool isPlaying() const { return instance_->isPlaying(); }
 
-
  protected:
   Instance* instance_;
 
