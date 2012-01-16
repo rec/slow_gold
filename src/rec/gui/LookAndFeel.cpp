@@ -13,10 +13,10 @@ LookAndFeel::LookAndFeel()
 {
 }
 
+#if JUCE_MAC
 void LookAndFeel::drawTreeviewPlusMinusBox(Graphics& g, int x, int y, int w,
                                            int h, bool isPlus,
                                            bool isMouseOver) {
-#if JUCE_MAC
   static const int PAD_X = 5;
   static const int PAD_Y = 5;
 
@@ -25,8 +25,8 @@ void LookAndFeel::drawTreeviewPlusMinusBox(Graphics& g, int x, int y, int w,
   (isPlus ? open_ : close_)->drawWithin(g, bounds,
                                         juce::RectanglePlacement::stretchToFit,
                                         1.0f);
-#endif  // JUCE_MAC
 }
+#endif  // JUCE_MAC
 
 }  // namespace gui
 }  // namespace rec
