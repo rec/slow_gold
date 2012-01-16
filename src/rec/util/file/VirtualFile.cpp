@@ -67,17 +67,11 @@ const File getShadowDirectory(const VirtualFile& vf) {
     return appDir;
 
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
-  File f = app::getAppFile(name);
-  // return getFile(getFile(f, vf.volume_name()), vf.path());
-  DLOG(ERROR) << vf.ShortDebugString();
-  File f1 = f.getChildFile(str(vf.volume_name()));
-  File f2 = getFileFromPath(f1, vf.path());
-  DLOG(ERROR) << str(f) << ", " << str(f1) << ", " << str(f2);
-  return f2;
+  File f = app::getAppFile(name).getChildFile(str(vf.volume_name()));
+  return getFileFromPath(f, vf.path());
 }
 
 const File getRealFile(const VirtualFile& file) {
-  DLOG(ERROR) << "!? " << file.ShortDebugString();
   return getFileFromPath(getRootFile(file), file.path());
 }
 

@@ -164,7 +164,6 @@ void Cursor::layout() {
     return;
   juce::Rectangle<int> after = getBounds();
   if (before != after) {
-    // DLOG(INFO) << gui::toString(before) << ", " << gui::toString(after);
     waveform_->repaint(before);
     waveform_->repaint(after);
   }

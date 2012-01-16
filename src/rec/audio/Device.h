@@ -16,6 +16,7 @@ class Device {
   ptr<SetupPage> setupPage_;
 
   void saveState();
+  void shutdown();
 
  private:
   void loadState();

@@ -55,7 +55,6 @@ void writeKeyboardBindingFile(XmlElement* element) {
 
 XmlElement* readKeyboardBindingFile(const Commands& commands) {
   const VirtualFile* f = getBindingFile();
-  DLOG(INFO) << (f ? f->ShortDebugString() : string("none"));
   data::Data* d = data::getData<Commands>(f);
   return readKeyboardCommands(d->fileReadSuccess() ?
   	                          data::getProto<Commands>(d) : commands);

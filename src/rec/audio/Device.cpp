@@ -33,5 +33,9 @@ void Device::saveState() {
   }
 }
 
+void Device::shutdown() {
+  manager_.closeAudioDevice();
+}
+
 }  // namespace audio
 }  // namespace rec
