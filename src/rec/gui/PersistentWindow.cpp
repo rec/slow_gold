@@ -13,8 +13,8 @@ using namespace juce;
 
 static const int MIN_WIDTH = 800;
 static const int MIN_HEIGHT = 550;
-static const int MIN_X = 10;
-static const int MIN_Y = 100;
+static const int MIN_X = 20;
+static const int MIN_Y = 10;
 static const int X_FUDGE = 50;
 static const int Y_FUDGE = 50;
 
@@ -57,6 +57,8 @@ void PersistentWindow::setWindowState(const String& state) {
                            std::max(MIN_WIDTH, bounds.getWidth())));
   bounds.setHeight(std::min(resizeLimits_.getHeight(),
                             std::max(MIN_HEIGHT, bounds.getHeight())));
+  bounds.setX(std::max(bounds.getX(), MIN_X));
+  bounds.setY(std::max(bounds.getY(), MIN_Y + getTitleBarHeight()));
   setBounds(bounds);
 }
 
