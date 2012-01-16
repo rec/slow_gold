@@ -23,16 +23,14 @@ GenericApplication::GenericApplication(const String& n, const String& v,
 GenericApplication::~GenericApplication() {}
 
 void GenericApplication::initialise(const String&) {
-  if (false) {
-    // FLAGS_logtostderr = true;
-  } else {
-    google::SetLogDestination(0, "c:\\info.txt");
-    google::SetLogDestination(2, "c:\\error.txt");
-    google::SetLogDestination(3, "c:\\fatal.txt");
-  }
-#if 0 && JUCE_MAC
-  FLAGS_log_dir = str(File::getSpecialLocation(File::userApplicationDataDirectory).getChildFile("Logs"));
+#if JUCE_MAC
+  FLAGS_logtostderr = true;
+#else
 #endif
+
+  // FLAGS_log_dir = str(File::getSpecialLocation(
+  //     File::userApplicationDataDirectory).getChildFile("Logs"));
+
   setName(name_);
   if (downloadNewVersionIfNeeded(version_, name_)) {
     quit();

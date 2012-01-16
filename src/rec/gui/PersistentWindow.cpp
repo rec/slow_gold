@@ -25,6 +25,7 @@ PersistentWindow::PersistentWindow(const String& name,
                                    int requiredButtons,
                                    bool addToDesktop)
     : DocumentWindow(name, bg, requiredButtons, addToDesktop) {
+  DLOG(ERROR) << "Initializing!";
   setBroughtToFrontOnMouseClick(true);
   setResizable(true, false);
 
@@ -42,6 +43,7 @@ void PersistentWindow::startListening() {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
+  DLOG(ERROR) << "HERE!";
   MessageManagerLock l;
   position_ = p;
   String state = str(p.juce_position());
