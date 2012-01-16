@@ -35,6 +35,11 @@ const double MIN_RESIZER = 7.0;
 const int MIN_WAVEFORM = 150;
 const int MIN_PLAYBACK_PANEL = 100;
 const int MIN_HELP_PANEL = 175;
+const int MIN_TRANSFORM_PANEL = 250;
+const int MIN_TRANSPORT_PANEL = 340;
+const int MIN_SONG_DATA = 150;
+const int MIN_LOOPS = 250;
+const int MIN_DIRECTORY = 75;
 
 template <typename Type>
 void add(gui::Layout* layout, Type* t, double min, double max, double pref) {
@@ -89,11 +94,11 @@ MainPage::MainPage(Components* components)
   components->directoryTree_->treeView()->setTooltip("The CD window shows any "
                                                      "CDs that you have in "
                                                      "your computer's CD drives");
-  add(&navigationPanel_, components->directoryTree_->treeView(), 75, -1.0, -0.2);
+  add(&navigationPanel_, components->directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
-  add(&navigationPanel_, components->songData_, 150, -1.0, -0.30);
+  add(&navigationPanel_, components->songData_, MIN_SONG_DATA, -1.0, -0.30);
   add(&navigationPanel_, &metadataResizer_, MIN_RESIZER);
-  add(&navigationPanel_, components->loops_.get(), 250, -1.0, -0.3);
+  add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
   // Playback panel.
   helpPanel_->setTooltip("The help panel shows help about whatever the mouse "
@@ -102,9 +107,9 @@ MainPage::MainPage(Components* components)
   helpPanel_->setJustificationType(juce::Justification::centredLeft);
   add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
   add(&playbackPanel_, &helpResizer_, 5.0);
-  add(&playbackPanel_, components->transformController_, 180, -1.0, -0.75);
+  add(&playbackPanel_, components->transformController_, MIN_TRANSFORM_PANEL, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
-  add(&playbackPanel_, components->transportController_.get(), 180, -1.0, -0.40);
+  add(&playbackPanel_, components->transportController_.get(), MIN_TRANSPORT_PANEL, -1.0, -0.40);
 }
 
 MainPage::~MainPage() {}
