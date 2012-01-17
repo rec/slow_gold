@@ -50,7 +50,7 @@ void PersistentWindow::operator()(const WindowPosition& p) {
 }
 
 void PersistentWindow::setWindowState(const String& state) {
-  if (!state.length())
+  if (state.length())
     restoreWindowStateFromString(state);
 
   Rect bounds = getBounds();
