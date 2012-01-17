@@ -69,15 +69,15 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::setFileAndData(const VirtualFile& f) {
-  setFile(f);
-  data::setProto(f, data::global());
+  if (setFile(f))
+    data::setProto(f, data::global());
 }
 
-void CurrentFile::setFile(const VirtualFile& f) {
+bool CurrentFile::setFile(const VirtualFile& f) {
   if (initialized_) {
     Lock l(lock_);
     if (data::equals(f, file_))
-      return;
+      return false;
   } else {
     initialized_ = true;
   }
@@ -121,16 +121,16 @@ void CurrentFile::setFile(const VirtualFile& f) {
     }
 
   } else if (!empty_) {
-    String s = file::getFullDisplayName(file_);
+    juce::AlertWindow::showMessageBox(
+        juce::AlertWindow::WarningIcon, "File does not exist or can't be read",
+        "File " + file::getFullDisplayName(file_) +
+        " does not exist or can't be read as an audio file.", "", window());
+    empty_ = true;
     (*this)(file::none());
     currentTime()->jumpToTime(0);
     (*currentTime())(0);
 
-    juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
-                                      "File does not exist or can't be read",
-                                      "File " + s + " does not exist or can't be read as an audio file.",
-                                      "", window());
-    return;
+    return false;
   }
 
   {
@@ -147,6 +147,8 @@ void CurrentFile::setFile(const VirtualFile& f) {
 
   if (menus())
     menus()->menuItemsChanged();
+
+  return true;
 }
 
 }  // namespace slow

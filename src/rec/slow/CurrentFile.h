@@ -31,7 +31,7 @@ class CurrentFile : public HasInstance,
 
  private:
   // Sets the current file but does not change the persistent data.
-  void setFile(const VirtualFile&);
+  bool setFile(const VirtualFile&);
 
   CriticalSection lock_;
 
