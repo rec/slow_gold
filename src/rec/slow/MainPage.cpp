@@ -89,8 +89,7 @@ MainPage::MainPage(Components* components)
       metadataResizer_(layoutTypeName(), "metadata_x", &navigationPanel_, 3),
 
       helpResizer_(layoutTypeName(), "help_x", &playbackPanel_, 1),
-      transformResizer_(layoutTypeName(), "transform_x", &playbackPanel_, 3),
-      controlResizer_(layoutTypeName(), "control_x", &playbackPanel_, 5) {
+      transformResizer_(layoutTypeName(), "transform_x", &playbackPanel_, 3) {
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
@@ -132,7 +131,6 @@ void MainPage::startListening() {
   metadataResizer_.startListening();
   helpResizer_.startListening();
   transformResizer_.startListening();
-  controlResizer_.startListening();
 }
 
 void MainPage::setTooltip(const String& tt) {

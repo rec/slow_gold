@@ -32,6 +32,10 @@ void AddressListener::startListening(Scope s) {
   untypedListener_->startListening(s);
 }
 
+bool AddressListener::isStarted() const {
+  return untypedListener_->isStarted();
+}
+
 static void logError(const string& error, bool failOnError) {
   if (!error.empty()) {
     if (failOnError)
@@ -40,7 +44,6 @@ static void logError(const string& error, bool failOnError) {
 }
 
 void AddressListener::setValue(const Value& v, Undoable undoable) const {
-  DLOG(INFO) << "setValue: " << v.ShortDebugString();
   Opener<Message> opener(untypedListener_->getData(), undoable);
   logError(setMessageField(address_, opener.mutable_get(), v), failOnError_);
 }

@@ -20,6 +20,7 @@ class UntypedDataListener : public Listener<const Message&> {
   virtual void operator()(const Message& m) = 0;
   Data* getData() const;
   const string& typeName() const { return typeName_; }
+  bool isStarted() const { return started_; }
 
  protected:
   CriticalSection lock_;

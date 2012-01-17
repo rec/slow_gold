@@ -12,13 +12,15 @@ static uint32 NO_VALUE = static_cast<uint32>(-1);
 SetterResizer::SetterResizer(const string& typeName,
                              const data::Address& address,
                              Layout* layout,
-                             int itemIndexInLayout)
+                             int itemIndexInLayout,
+                             uint32 minValue)
   : StretchableLayoutResizerBar(layout->layoutManager(),
                                 itemIndexInLayout,
                                 layout->orientation() == HORIZONTAL),
     data::GlobalAddressListener(address, typeName),
     layout_(layout),
     index_(itemIndexInLayout),
+    minValue_(minValue),
     address_(address),
     needsWrite_(false),
     lastValue_(NO_VALUE) {
@@ -33,8 +35,8 @@ uint32 SetterResizer::get() const {
 
 void SetterResizer::moved() {
   Lock l(lock_);
-  requestWrite();
-  DLOG(INFO) << "requestWrite " << address_.ShortDebugString();
+  if (isStarted())
+    requestWrite();
 }
 
 void SetterResizer::paint(Graphics& g) {
@@ -44,25 +46,26 @@ void SetterResizer::paint(Graphics& g) {
 
 void SetterResizer::operator()(const data::Value& v) {
   uint32 coord = v.uint32_f();
-  DLOG(INFO) << "Got an update! " << coord << ", |" << v.ShortDebugString() << "|";
   MessageManagerLock l;
-  if (coord && coord != get()) {
+  if (coord >= minValue_ && coord != get()) {
     if (layout_->orientation() == VERTICAL)
       setTopLeftPosition(getX(), coord);
     else
       setTopLeftPosition(coord, getY());
+    layout_->layoutManager()->setItemPosition(index_, coord);
+    hasBeenMoved();
   }
 }
 
 void SetterResizer::doWriteGui() {
+  if (!isStarted())
+    return;
+
   Lock l(lock_);
   uint32 val = get();
-  if (lastValue_ != val) {
-    DLOG(INFO) << "doWriteGui " << lastValue_ << ", " << val;
+  if (lastValue_ != val && val >= minValue_) {
     setValue(val);
     lastValue_ = val;
-  } else {
-    DLOG(INFO) << "doWriteGui NO: " << val;
   }
 }
 

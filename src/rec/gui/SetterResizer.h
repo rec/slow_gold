@@ -21,7 +21,8 @@ class SetterResizer : public StretchableLayoutResizerBar,
   SetterResizer(const string& typeName,
                 const data::Address& address,
                 Layout* layout,
-                int itemIndexInLayout);
+                int itemIndexInLayout,
+                uint32 minValue = 20);
 
   virtual void operator()(const data::Value&);
   virtual void moved();
@@ -32,9 +33,10 @@ class SetterResizer : public StretchableLayoutResizerBar,
   uint32 get() const;
 
  private:
-  Layout* layout_;
-  juce::StretchableLayoutManager* layoutManager_;
-  int index_;
+  Layout* const layout_;
+  const int index_;
+  const uint32 minValue_;
+
   data::Address address_;
   bool active_;
   bool needsWrite_;

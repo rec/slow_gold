@@ -55,7 +55,6 @@ class MainPage {
   // Resizers for playbackPanel_.
   gui::SetterResizer helpResizer_;
   gui::SetterResizer transformResizer_;
-  gui::SetterResizer controlResizer_;
 
   double length_;
 
