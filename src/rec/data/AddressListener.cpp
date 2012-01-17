@@ -16,7 +16,7 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
   AddressListener* parent_;
 
   virtual void operator()(const Message& m) {
-    parent_->setMessage(m);
+    parent_->receiveMessage(m);
   }
 };
 
@@ -40,6 +40,7 @@ static void logError(const string& error, bool failOnError) {
 }
 
 void AddressListener::setValue(const Value& v, Undoable undoable) const {
+  DLOG(INFO) << "setValue: " << v.ShortDebugString();
   Opener<Message> opener(untypedListener_->getData(), undoable);
   logError(setMessageField(address_, opener.mutable_get(), v), failOnError_);
 }
@@ -54,7 +55,7 @@ const Value AddressListener::getValue() const {
   return getValue(*Opener<Message>(untypedListener_->getData(), CANT_UNDO));
 }
 
-void AddressListener::setMessage(const Message& m) {
+void AddressListener::receiveMessage(const Message& m) {
   if (getTypeName(m) == untypedListener_->typeName())
     (*this)(getValue(m));
   else

@@ -7,6 +7,8 @@
 namespace rec {
 namespace gui {
 
+static uint32 NO_VALUE = static_cast<uint32>(-1);
+
 SetterResizer::SetterResizer(const string& typeName,
                              const data::Address& address,
                              Layout* layout,
@@ -14,22 +16,25 @@ SetterResizer::SetterResizer(const string& typeName,
   : StretchableLayoutResizerBar(layout->layoutManager(),
                                 itemIndexInLayout,
                                 layout->orientation() == HORIZONTAL),
-    data::AddressListener(address, typeName),
+    data::GlobalAddressListener(address, typeName),
     layout_(layout),
     index_(itemIndexInLayout),
     address_(address),
     needsWrite_(false),
-    lastValue_(-1) {
+    lastValue_(NO_VALUE) {
   setTooltip("You can drag this resizer around to change the screen layout.");
+  setWriteable(true);
 }
 
-int SetterResizer::get() const {
-  return (layout_->orientation() == VERTICAL) ? getY() : getX();
+uint32 SetterResizer::get() const {
+  bool isVertical = (layout_->orientation() == VERTICAL);
+  return static_cast<uint32>(isVertical ? getY() : getX());
 }
 
 void SetterResizer::moved() {
   Lock l(lock_);
-  lastValue_ = get();
+  requestWrite();
+  DLOG(INFO) << "requestWrite " << address_.ShortDebugString();
 }
 
 void SetterResizer::paint(Graphics& g) {
@@ -38,8 +43,9 @@ void SetterResizer::paint(Graphics& g) {
 }
 
 void SetterResizer::operator()(const data::Value& v) {
+  uint32 coord = v.uint32_f();
+  DLOG(INFO) << "Got an update! " << coord << ", |" << v.ShortDebugString() << "|";
   MessageManagerLock l;
-  int32 coord = v.int32_f();
   if (coord && coord != get()) {
     if (layout_->orientation() == VERTICAL)
       setTopLeftPosition(getX(), coord);
@@ -50,9 +56,14 @@ void SetterResizer::operator()(const data::Value& v) {
 
 void SetterResizer::doWriteGui() {
   Lock l(lock_);
-  int val = static_cast<uint32>(get());
-  if (lastValue_ != val)
-    setValue((lastValue_ = val));
+  uint32 val = get();
+  if (lastValue_ != val) {
+    DLOG(INFO) << "doWriteGui " << lastValue_ << ", " << val;
+    setValue(val);
+    lastValue_ = val;
+  } else {
+    DLOG(INFO) << "doWriteGui NO: " << val;
+  }
 }
 
 }  // namespace gui

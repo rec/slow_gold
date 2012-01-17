@@ -73,7 +73,6 @@ class MainPanel : public gui::Layout {
 #endif
 };
 
-
 }  // namespace
 
 MainPage::MainPage(Components* components)

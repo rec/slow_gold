@@ -33,7 +33,7 @@ class AddressListener : public Listener<const Value&> {
   struct UntypedListener;
   friend struct UntypedListener;
 
-  void setMessage(const Message&);
+  void receiveMessage(const Message&);
 
   ptr<UntypedListener> untypedListener_;
   const Address address_;

@@ -15,7 +15,7 @@ namespace gui {
 
 class SetterResizer : public StretchableLayoutResizerBar,
                       public SettableTooltipClient,
-                      public data::AddressListener,
+                      public data::GlobalAddressListener,
                       public GuiWriteable {
  public:
   SetterResizer(const string& typeName,
@@ -24,12 +24,12 @@ class SetterResizer : public StretchableLayoutResizerBar,
                 int itemIndexInLayout);
 
   virtual void operator()(const data::Value&);
-  int get() const;
   virtual void moved();
   virtual void paint(Graphics& g);
 
  protected:
   virtual void doWriteGui();
+  uint32 get() const;
 
  private:
   Layout* layout_;
@@ -38,7 +38,7 @@ class SetterResizer : public StretchableLayoutResizerBar,
   data::Address address_;
   bool active_;
   bool needsWrite_;
-  int lastValue_;
+  uint32 lastValue_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterResizer);

@@ -25,7 +25,6 @@ PersistentWindow::PersistentWindow(const String& name,
                                    int requiredButtons,
                                    bool addToDesktop)
     : DocumentWindow(name, bg, requiredButtons, addToDesktop) {
-  DLOG(ERROR) << "Initializing!";
   setBroughtToFrontOnMouseClick(true);
   setResizable(true, false);
 
