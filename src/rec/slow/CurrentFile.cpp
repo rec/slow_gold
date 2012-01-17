@@ -68,7 +68,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
     (*this)(files.file(0));
 }
 
-void CurrentFile::operator()(const VirtualFile& f) {
+void CurrentFile::setFileAndData(const VirtualFile& f) {
   setFile(f);
   data::setProto(f, data::global());
 }

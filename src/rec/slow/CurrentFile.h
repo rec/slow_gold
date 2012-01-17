@@ -22,11 +22,12 @@ class CurrentFile : public HasInstance,
 
   // Set the file and change the persistent data.
   virtual void operator()(const gui::DropFiles&);
-  virtual void operator()(const VirtualFile&);
+  virtual void operator()(const VirtualFile& vf) { setFileAndData(vf); }
 
   const VirtualFile virtualFile() const { Lock l(lock_); return file_; }
   const Samples<44100> length() const { Lock l(lock_); return length_; }
   bool empty() const { return empty_; }
+  void setFileAndData(const VirtualFile&);
 
  private:
   // Sets the current file but does not change the persistent data.

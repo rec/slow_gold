@@ -4,6 +4,7 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/BufferFiller.h"
+#include "rec/util/thread/MakeThread.h"
 
 using namespace std;
 using namespace rec::command;
@@ -71,6 +72,7 @@ void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
 
 // TODO: this duplicates a value in the Repeated.def data file.
 static const int RECENT_MENU_REPEATS = 10;
+static const int RECENT_FILE_THREAD_PRIORITY = 4;
 
 void loadRecentFile(Instance* instance, int i) {
   gui::RecentFiles rf = data::getGlobal<gui::RecentFiles>();
@@ -79,7 +81,10 @@ void loadRecentFile(Instance* instance, int i) {
     return;
   }
 
-  (*instance->currentFile_)(rf.file(i).file());
+  thread::runInNewThread("loadRecentFile", RECENT_FILE_THREAD_PRIORITY,
+                         instance->currentFile_.get(),
+                         &CurrentFile::setFileAndData,
+                         rf.file(i).file());
 }
 
 }  // namespace
