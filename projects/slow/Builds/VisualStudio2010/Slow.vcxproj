@@ -118,7 +118,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalOptions>/NODEFAULTLIB:MSVCRT /NODEFAULTLIB:MSVCPRT /LIBPATH:..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib /LIBPATH:..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\release\\static rubberband-library.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Release libglog_static.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Release libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Release libprotobuf.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCRT /LIBPATH:..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib /LIBPATH:..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\release\\static rubberband-library.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Release libglog_static.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Release libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Release libprotobuf.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
