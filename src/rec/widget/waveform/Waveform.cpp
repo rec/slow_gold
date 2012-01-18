@@ -66,14 +66,13 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       zoomCursor_(*ptr<juce::Image>(getZoomCursor()), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
-  setTooltip("This is the waveform window, which shows your current track. "
+  setTooltip("Waveform Window:"
              "You can drag files from your desktop or your music player here. "
-             "If your mouse has a wheel, use it to zoom the waveform."
-             "The four mode buttons on the top right control how clicks work. ");
+             "If your mouse has a wheel, use it to zoom the waveform.");
 
   timeCursor_.reset(new Cursor(*timeCursor, this, 0, 0, true));
-  timeCursor_->setTooltip("This is the playback time cursor - it follows the "
-                          "current time during playback or you can drag it "
+  timeCursor_->setTooltip("Playback Time Cursor: This follows the "
+                          "current time during playback. You can also drag it "
                           "around to set the current playback time.");
   timeCursor_->startListening();
   gui::clear(&dirty_);
@@ -224,9 +223,9 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
       c = cursors_[i];
     } else {
       c = new Cursor(*defaultDesc, this, time, i, false);
-      c->setTooltip("This is a loop point in your track.  You can drag it "
-                    "around on the waveform, or you can click on the label "
-                    "above and to the right to edit its name.");
+      c->setTooltip("Loop Point:  You can drag it around on the waveform, "
+                    "or you can click on the label above and to the right "
+                    "to edit its name.");
       c->startListening();
       cursors_.push_back(c);
     }

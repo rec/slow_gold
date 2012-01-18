@@ -34,7 +34,7 @@ DialComponent::DialComponent(const Dial& desc)
       timeAngle_(0.0),
       timeRatio_(0.0) {
   description_.mutable_widget()->set_transparent(true);
-  setTooltip("The time dial shows graphically how much of the loop remains.");
+  setTooltip("Time Dial: Shows graphically how much of the loop remains.");
 }
 
 static const bool USE_CONTIGUOUS_SEGMENTS = true;
@@ -104,9 +104,9 @@ void DialComponent::paint(Graphics& g) {
                                  static_cast<float>(timeRatio_)));
   }
 
-  path.addPieSegment(static_cast<float>(bounds.getX()), 
+  path.addPieSegment(static_cast<float>(bounds.getX()),
 	                 static_cast<float>(bounds.getY()),
-                     static_cast<float>(bounds.getWidth()), 
+                     static_cast<float>(bounds.getWidth()),
 					 static_cast<float>(bounds.getHeight()),
                      static_cast<float>(zeroAngle_),
                      static_cast<float>(timeAngle_), 0.0f);

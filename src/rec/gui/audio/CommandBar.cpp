@@ -40,10 +40,13 @@ CommandBar::CommandBar()
   SET_BUTTON_IMAGES3(&zoomOutFull_, ZoomOutButton);
   SET_BUTTON_IMAGES3(&zoomToSelection_, ZoomToSelectionButton);
 
-  addLoopPoint_.setTooltip("Add a loop point at the current time.");
-  zoomOutFull_.setTooltip("Zoom the waveform all the way out.");
-  zoomToSelection_.setTooltip("Zoom in or out so the whole selection "
-                              "fits the waveform");
+  addLoopPoint_.setTooltip("Add Loop Point Button: "
+                           "Add a loop point at the current time.");
+  zoomOutFull_.setTooltip("Zoom Out Full Button: "
+                          "Zoom the waveform all the way out.");
+  zoomToSelection_.setTooltip("Zoom To Selection Button: "
+                              "Zoom in or out so the whole selection "
+                              "fits the waveform.");
 
   addToLayout(&addLoopPoint_, BUTTON_SIZE);
   addToLayout(&zoomOutFull_, BUTTON_SIZE);

@@ -24,7 +24,8 @@ SetterResizer::SetterResizer(const string& typeName,
     address_(address),
     needsWrite_(false),
     lastValue_(NO_VALUE) {
-  setTooltip("You can drag this resizer around to change the screen layout.");
+  setTooltip("Resizer: "
+             "You can drag this resizer around to change the screen layout.");
   setWriteable(true);
 }
 

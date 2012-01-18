@@ -81,13 +81,17 @@ TransportController::TransportController(TimeController* timeController)
   addToLayout(&gainLayout_, ICON_SIZE);
   addToLayout(&levelMeter_, 20);
 
-  startStopButton_.setTooltip("Toggle between pause and play.");
-  jumpForwardButton_.setTooltip("Jump to the start of the next segment in the selection.");
-  jumpBackButton_.setTooltip("Jump to the start of the next segment in the selection.");
-  jumpToStartButton_.setTooltip("Jump to the start of the selection.");
-  levelMeter_.setTooltip("Display the sound intensity, in RMS dB.");
-  level_.setTooltip("Raise or lower the sound intensity, in dB.");
-  muteButton_.setTooltip("Mute or unmute the sound.");
+  startStopButton_.setTooltip("Start/Stop Button: "
+                              "Toggle between pause and play.");
+  jumpForwardButton_.setTooltip("Jump Forward Button: "
+                                "Jump to the start of the next segment.");
+  jumpBackButton_.setTooltip("Jump Back Button: "
+                             "Jump to the start of the next segment.");
+  jumpToStartButton_.setTooltip("Jump To Start Button: "
+                                "Jump to the start of the track.");
+  levelMeter_.setTooltip("Level Meter: Display the sound intensity, in RMS dB.");
+  level_.setTooltip("Level Slider: Raise or lower the sound intensity, in dB.");
+  muteButton_.setTooltip("Mute Button: Mute or unmute the sound.");
 }
 
 void TransportController::startListening() {

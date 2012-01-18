@@ -102,9 +102,9 @@ MainPage::MainPage(Components* components)
   add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
 
   // Navigation panel.
-  components->directoryTree_->treeView()->setTooltip("The CD window shows any "
-                                                     "CDs that you have in "
-                                                     "your computer's CD drives");
+  components->directoryTree_->treeView()->setTooltip(
+      "CD Window:  Any CDs that you have in "
+      "your computer's CD drives will appear here.");
   add(&navigationPanel_, components->directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->songData_, MIN_SONG_DATA, -1.0, -0.30);
@@ -112,8 +112,8 @@ MainPage::MainPage(Components* components)
   add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
   // Playback panel.
-  helpPanel_->setTooltip("The help panel shows help about whatever the mouse "
-                         "is over.");
+  helpPanel_->setTooltip("Help Panel: "
+                         "Shows help about whatever the mouse is over.");
   helpPanel_->setColour(juce::Label::textColourId, juce::Colours::darkgreen);
   helpPanel_->setJustificationType(juce::Justification::centredLeft);
   add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);

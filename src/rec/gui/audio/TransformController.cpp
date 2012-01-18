@@ -75,17 +75,21 @@ TransformController::TransformController()
   stereoComboBox_.addItem(LEFT_PLUS_RIGHT_TEXT, LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
-  playbackSpeed_.setTooltip("Control how fast the loop plays back: "
+  playbackSpeed_.setTooltip("Playback Speed Slider: "
+                            "Controls how fast the loop plays back: "
                             "higher numbers mean the loop plays back faster.");
-  pitchScale_.setTooltip("Tune loop playback up and down in pitch, "
+  pitchScale_.setTooltip("Playback Tuning Slider: "
+                         "Tune loop playback up and down in pitch, "
                          "measured in semitones.");
-  fineScale_.setTooltip("Fine-tune loop up or down in pitch, measured in "
-                        "cents or 1/100 semitones.");
-  stereoComboBox_.setTooltip("Stereo processing:  choose between the "
+  fineScale_.setTooltip("Playback Fine Tuning Slider: "
+                        "Tune loop up or down in pitch, measured in "
+                        "cents (1/100 of a semitone.");
+  stereoComboBox_.setTooltip("Stereo Processing Menu:  choose between the "
                              "original stereo, just the left channel, "
                              "just the right channel, "
                              "or a mono mix of both channels.");
-  enableButton_.setTooltip("Disable or enable all sound transformations: "
+  enableButton_.setTooltip("Transform Enable Button: "
+                           "Disable or enable all sound transformations: "
                            "pitch, time and stereo processing.");
 
   leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
