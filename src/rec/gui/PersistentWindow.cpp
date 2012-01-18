@@ -13,8 +13,8 @@ using namespace juce;
 
 static const int MIN_WIDTH = 800;
 static const int MIN_HEIGHT = 550;
-static const int MIN_X = 30;
-static const int MIN_Y = 100;
+static const int MIN_X = 10;
+static const int MIN_Y = 10;
 static const int X_FUDGE = 50;
 static const int Y_FUDGE = 50;
 

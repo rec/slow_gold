@@ -17,6 +17,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/AboutWindow.h"
+#include "rec/slow/CurrentFile.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
@@ -49,8 +50,12 @@ void SlowWindow::startListening() {
 }
 
 void SlowWindow::operator()(const music::Metadata& md) {
-  File file = data::DataListener<music::Metadata>::getData()->getFile();
-  thread::callAsync(this, &SlowWindow::setName, str(music::getTitle(md, file)));
+  String name = "(no file loaded)";
+  if (!currentFile()->empty()) {
+    File file = data::DataListener<music::Metadata>::getData()->getFile();
+    name = str(music::getTitle(md, file.getParentDirectory()));
+  }
+  thread::callAsync(this, &SlowWindow::setName, name);
 }
 
 void SlowWindow::constructInstance() {
