@@ -11,7 +11,8 @@ namespace data {
 
 class DataImpl : public Data {
  public:
-  DataImpl(Message*, const File&, DataUpdater*, UndoStack*, bool isEmpty);
+  DataImpl(Message*, const File&, DataUpdater*, UndoStack*, bool isEmpty,
+           const string& key);
   virtual ~DataImpl() {}
 
   virtual bool fileReadSuccess() const { return fileReadSuccess_; }
@@ -26,6 +27,7 @@ class DataImpl : public Data {
 
   virtual void addListener(Listener<const Message&>*);
   virtual void removeListener(Listener<const Message&>*);
+  virtual const string& key() const { return key_; }
 
  private:
   typedef std::set<Listener<const Message&>*> ListenerSet;
@@ -34,6 +36,7 @@ class DataImpl : public Data {
   File file_;
   DataUpdater* dataUpdater_;
   UndoStack* undoStack_;
+  const string key_;
 
   bool fileReadSuccess_;
 

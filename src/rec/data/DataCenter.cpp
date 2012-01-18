@@ -11,10 +11,11 @@ namespace data {
 
 DataCenter::DataCenter()
   : registry_(new MessageRegistrarAndMaker),
-    updater_(new DataUpdater),
+    updater_(new DataUpdater()),
     undo_(new UndoStack),
     maker_(new DataMakerImpl(updater_.get(), undo_.get())),
     map_(new DataMapImpl(registry_.get(), maker_.get())) {
+  updater_->setMap(map_.get());
 }
 
 DataCenter::~DataCenter() {}

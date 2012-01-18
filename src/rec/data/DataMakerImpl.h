@@ -15,8 +15,9 @@ class DataMakerImpl : public DataMaker {
 
   virtual ~DataMakerImpl() {}
 
-  virtual Data* makeData(Message* m, const File& file, bool isEmpty) const {
-    return new DataImpl(m, file, dataUpdater_, undoStack_, isEmpty);
+  virtual Data* makeData(Message* m, const File& file, bool isEmpty,
+                         const string& key) const {
+    return new DataImpl(m, file, dataUpdater_, undoStack_, isEmpty, key);
   }
 
  private:

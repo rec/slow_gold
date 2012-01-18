@@ -59,7 +59,7 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
   }
 
   DCHECK_EQ(typeName, getTypeName(*msg));
-  Data* data = dataMaker_->makeData(msg.transfer(), file, !vf);
+  Data* data = dataMaker_->makeData(msg.transfer(), file, !vf, key);
   if (!data) {
     LOG(DFATAL) << "Unable to make data for " << typeName;
     return NULL;
@@ -68,6 +68,19 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
   DataFile* df = new DataFile(data, file);
   map_.insert(i, make_pair(key, df));
   return data;
+}
+
+void DataMapImpl::removeData(Data* data) {
+  Lock l(lock_);
+
+  const string& key = data->key();
+  Map::iterator i = map_.find(key);
+  if (i != map_.end()) {
+    map_.erase(i);
+    delete data;
+  } else {
+    LOG(DFATAL) << "Tried to remove a non-existent piece of data";
+  }
 }
 
 }  // namespace data

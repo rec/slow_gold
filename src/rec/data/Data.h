@@ -23,6 +23,7 @@ class Data : public Broadcaster<const Message&> {
 
   bool isEmpty() const { return isEmpty_; }
   const string& getTypeName() const { return util::getTypeName(*message_); }
+  virtual const string& key() const = 0;
 
  private:
   Data(bool e) : changed_(false), isEmpty_(e) {}

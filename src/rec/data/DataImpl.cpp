@@ -9,8 +9,8 @@ namespace rec {
 namespace data {
 
 DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
-                   bool isEmpty)
-    : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s) {
+                   bool isEmpty, const string& key)
+    : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s), key_(key) {
   Lock l(lock_);
 
   if (isEmpty) {
@@ -63,6 +63,8 @@ void DataImpl::removeListener(Listener<const Message&>* lis) {
   Lock l(broadcasterLock_);
   Data::removeListener(lis);
   recentListeners_.erase(lis);
+  if (!listenerSize())
+    dataUpdater_->reportChange(this);
 }
 
 bool DataImpl::update() {

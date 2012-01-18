@@ -18,6 +18,7 @@ class DataMapImpl : public DataMap {
   virtual ~DataMapImpl();
 
   virtual Data* getData(const string& typeName, const VirtualFile* vf);
+  virtual void removeData(Data*);
 
  private:
   struct DataFile;

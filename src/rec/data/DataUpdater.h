@@ -7,19 +7,22 @@
 namespace rec {
 namespace data {
 
-class UndoStack;
 class Data;
+class DataMap;
+class UndoStack;
 
 // DataUpdater sends out updates to data clients and writes copies of the data
 // to the file system.
 class DataUpdater {
  public:
-  DataUpdater() : updateThread_(NULL), writeThread_(NULL) {}
+  DataUpdater() : updateThread_(NULL), writeThread_(NULL), map_(NULL) {}
   ~DataUpdater() {}
 
   void reportChange(Data*);
   bool update();
   bool write();
+  void removeData(Data*);
+  void setMap(DataMap* m) { map_ = m; }
 
  private:
   CriticalSection lock_;
@@ -31,6 +34,8 @@ class DataUpdater {
 
   DataSet updateData_;
   DataSet writeData_;
+  DataSet removeData_;
+  DataMap* map_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataUpdater);
 };
