@@ -54,11 +54,11 @@ ModeSelector::ModeSelector()
   SET_BUTTON_IMAGES2(&addLoopPointClick_, AddLoopPointMode);
 
   setImage(this, &drag_, Mode::DRAG,
-           "Drag Mode: use the mouse to drag the waveform back and forth");
+           "Drag Mode: Use the mouse to drag the waveform back and forth");
   setImage(this, &setTime_, Mode::SET_TIME,
-           "Set Current Time Mode: clicking in the waveform sets the current time.");
+           "Set Current Time Mode: Clicking in the waveform sets the current time.");
   setImage(this, &zoomIn_, Mode::ZOOM_IN,
-           "Zoom Mode: clicking on the waveform zooms in on that point.");
+           "Zoom Mode: Clicking on the waveform zooms in on that point.");
 
   setImage(this, &addLoopPointClick_, Mode::DRAW_LOOP_POINTS,
            "Add loop point mode: clicking on the waveform creates a loop point.");

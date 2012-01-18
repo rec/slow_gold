@@ -5,8 +5,9 @@
 #include <vector>
 
 #include "rec/gui/layout/Layout.h"
-#include "rec/gui/SetterResizer.h"
 #include "rec/gui/DropTarget.h"
+#include "rec/gui/SimpleLabel.h"
+#include "rec/gui/SetterResizer.h"
 
 namespace rec {
 
@@ -41,7 +42,7 @@ class MainPage {
 
   // playbackPanel_ contains help, transform and the controls.
   gui::Layout playbackPanel_;
-  ptr<gui::SimpleLabel> helpPanel_;
+  gui::Layout helpPanel_;
   gui::Layout transformPanel_;
   gui::Layout controlPanel_;
 
@@ -56,6 +57,8 @@ class MainPage {
   gui::SetterResizer helpResizer_;
   gui::SetterResizer transformResizer_;
 
+  gui::SimpleLabel helpCaption_;
+  gui::SimpleLabel helpBody_;
   double length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(MainPage);

@@ -11,7 +11,7 @@ namespace gui {
 
 using namespace juce;
 
-static const int MIN_WIDTH = 800;
+static const int MIN_WIDTH = 825;
 static const int MIN_HEIGHT = 550;
 static const int MIN_X = 10;
 static const int MIN_Y = 10;

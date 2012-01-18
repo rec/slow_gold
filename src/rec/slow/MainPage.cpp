@@ -5,7 +5,6 @@
 #include "rec/base/ArraySize.h"
 #include "rec/data/Address.h"
 #include "rec/gui/RecentFiles.h"
-#include "rec/gui/SimpleLabel.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
@@ -34,12 +33,13 @@ const int MIN_NAV_PANEL = 100;
 const double MIN_RESIZER = 7.0;
 const int MIN_WAVEFORM = 150;
 const int MIN_PLAYBACK_PANEL = 100;
-const int MIN_HELP_PANEL = 175;
+const int MIN_HELP_PANEL = 200;
 const int MIN_TRANSFORM_PANEL = 250;
 const int MIN_TRANSPORT_PANEL = 340;
 const int MIN_SONG_DATA = 150;
 const int MIN_LOOPS = 250;
 const int MIN_DIRECTORY = 75;
+const int HELP_CAPTION_HEIGHT = 28;
 
 template <typename Type>
 void add(gui::Layout* layout, Type* t, double min, double max, double pref) {
@@ -79,7 +79,7 @@ MainPage::MainPage(Components* components)
     : mainPanel_(new MainPanel),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
-      helpPanel_(new gui::SimpleLabel("", "")),
+      helpPanel_("Help", VERTICAL),
       transformPanel_("Transform"),
       controlPanel_("Control"),
 
@@ -89,7 +89,9 @@ MainPage::MainPage(Components* components)
       metadataResizer_(layoutTypeName(), "metadata_x", &navigationPanel_, 3),
 
       helpResizer_(layoutTypeName(), "help_x", &playbackPanel_, 1),
-      transformResizer_(layoutTypeName(), "transform_x", &playbackPanel_, 3) {
+      transformResizer_(layoutTypeName(), "transform_x", &playbackPanel_, 3),
+      helpCaption_("", ""),
+      helpBody_("", "") {
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
@@ -112,11 +114,27 @@ MainPage::MainPage(Components* components)
   add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
   // Playback panel.
-  helpPanel_->setTooltip("Help Panel: "
-                         "Shows help about whatever the mouse is over.");
-  helpPanel_->setColour(juce::Label::textColourId, juce::Colours::darkgreen);
-  helpPanel_->setJustificationType(juce::Justification::centredLeft);
-  add(&playbackPanel_, helpPanel_.get(), MIN_HELP_PANEL, -1.0, -0.20);
+  String helpHelp = "Help Panel: Shows help about whatever the mouse is over.";
+  helpPanel_.setTooltip(helpHelp);
+
+  helpCaption_.setTooltip(helpHelp);
+  helpCaption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
+  helpCaption_.setJustificationType(juce::Justification::centred);
+  Font font = helpCaption_.getFont();
+  font.setBold(true);
+  font.setHeight(font.getHeight() + 2);
+  helpBody_.setFont(font);
+  font.setHeight(font.getHeight() + 3);
+  helpCaption_.setFont(font);
+
+  helpBody_.setTooltip(helpHelp);
+  helpBody_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
+  helpBody_.setJustificationType(juce::Justification::topLeft);
+
+  add(&playbackPanel_, &helpPanel_, MIN_HELP_PANEL, -1.0, -0.20);
+  add(&helpPanel_, &helpCaption_, HELP_CAPTION_HEIGHT);
+  add(&helpPanel_, &helpBody_, -0.1, -1.0, -0.7);
+
   add(&playbackPanel_, &helpResizer_, 5.0);
   add(&playbackPanel_, components->transformController_, MIN_TRANSFORM_PANEL, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
@@ -134,7 +152,14 @@ void MainPage::startListening() {
 }
 
 void MainPage::setTooltip(const String& tt) {
-  helpPanel_->setText(tt, false);
+  String caption, body = tt;
+  int pos = tt.indexOf(":");
+  if (pos != -1) {
+    caption = tt.substring(0, pos).trim();
+    body = tt.substring(pos + 1).trim();
+  }
+  helpCaption_.setText(caption, false);
+  helpBody_.setText(body, false);
 }
 
 void MainPage::setEnabled(bool enabled) {
