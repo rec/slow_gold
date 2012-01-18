@@ -29,19 +29,25 @@ bool DataUpdater::update() {
   if (updateThread_->threadShouldExit())
     return false;
 
-  DataSet toUpdate, toWrite, toRemove;
+  DataSet toUpdate;
   updateData_.swap(toUpdate);
 
   if (toUpdate.empty())
     return false;
 
+  DataSet toWrite, toRemove;
+  for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {
+    Data* data = *i;
+    if (!data->listenerSize())
+      toRemove.insert(data);
+  }
+  removeData_.insert(toRemove.begin(), toRemove.end());
+
   {
     ScopedUnlock u(lock_);
     for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {
       Data* data = *i;
-      if (!data->listenerSize())
-        toRemove.insert(data);
-      else if (data->update())
+      if (toRemove.find(data) == toRemove.end() && data->update())
         toWrite.insert(data);
     }
 
@@ -52,8 +58,7 @@ bool DataUpdater::update() {
   if (updateThread_->threadShouldExit())
     return false;
 
-  stl::moveTo(&toWrite, &writeData_);
-  stl::moveTo(&toRemove, &removeData_);
+  writeData_.insert(toWrite.begin(), toWrite.end());
   if (writeThread_)
     writeThread_->notify();
 
@@ -87,16 +92,10 @@ bool DataUpdater::write() {
     if (writeThread_->threadShouldExit())
       return false;
     else
-      removeData(*i);
+      map_->removeData(*i);
   }
 
   return true;
-}
-
-void DataUpdater::removeData(Data* data) {
-  // DLOG(INFO) << "Removing data " << data->getTypeName() << ", " << data->key();
-  // TODO: why doesn't this work?
-  // map_->removeData(data);
 }
 
 }  // namespace data

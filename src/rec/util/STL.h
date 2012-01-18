@@ -49,17 +49,6 @@ typename Container::value_type pop_front(Container *c) {
   return t;
 }
 
-// Remove the contents of from and put into to.
-template <typename Container>
-void moveTo(Container *from, Container *to) {
-  if (to->empty()) {
-    to->swap(*from);
-  } else {
-    to->insert(from->begin(), from->end());
-    to->clear();
-  }
-}
-
 }  // namespace stl
 }  // namespace rec
 

@@ -71,8 +71,11 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
 }
 
 void DataMapImpl::removeData(Data* data) {
-  Lock l(lock_);
+    // TODO: why doesn't this work?
+  if (!false)
+    return;
 
+  Lock l(lock_);
   const string& key = data->key();
   Map::iterator i = map_.find(key);
   if (i != map_.end()) {

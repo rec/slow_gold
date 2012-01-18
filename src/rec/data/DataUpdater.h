@@ -21,7 +21,6 @@ class DataUpdater {
   void reportChange(Data*);
   bool update();
   bool write();
-  void removeData(Data*);
   void setMap(DataMap* m) { map_ = m; }
 
  private:
