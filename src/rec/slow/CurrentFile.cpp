@@ -112,11 +112,16 @@ bool CurrentFile::setFile(const VirtualFile& f) {
         lpl.add_loop_point()->set_selected(true);
       data::setProto(lpl, file_);
     }
-    for (int i = 0; i < lpl.loop_point_size(); ++i) {
-      if (lpl.loop_point(i).selected()) {
-        Samples<44100> t = lpl.loop_point(i).time();
-        currentTime()->jumpToTime(t);
-        (*currentTime())(t);
+    if (true) {
+      currentTime()->jumpToTime(0);
+      (*currentTime())(0);
+    } else {
+      for (int i = 0; i < lpl.loop_point_size(); ++i) {
+        if (lpl.loop_point(i).selected()) {
+          Samples<44100> t = lpl.loop_point(i).time();
+          currentTime()->jumpToTime(t);
+          (*currentTime())(t);
+        }
       }
     }
 
