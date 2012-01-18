@@ -77,7 +77,7 @@ String majorVersion(const String& version) {
 
 bool downloadNewVersion(const String& appName, const String& version,
                         const String& oldVersion) {
-  String msg = "A new version of SlowGold, " + version + "is available.";
+  String msg = "A new version of SlowGold, " + version + " is available.";
   bool ok = AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon, msg,
       msg + "Would you like to download it?",
