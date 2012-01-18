@@ -36,7 +36,8 @@ public:
 
         for (int i = 0; i < categories.size(); ++i)
         {
-            const Array <CommandID> commands (owner.getCommandManager().getCommandsInCategory (categories[i]));
+            const String& cat = categories[i];
+            const Array <CommandID> commands (owner.getCommandManager().getCommandsInCategory (cat));
             int count = 0;
 
             for (int j = 0; j < commands.size(); ++j)
@@ -44,9 +45,9 @@ public:
                     ++count;
 
             if (count > 0)
-                addSubItem (new CommandMapCategoryItem(owner, categories[i]));
-            else {
-              LOG(DFATAL) << "Nothing in category " << str(categories[i])
+                addSubItem (new CommandMapCategoryItem(owner, cat));
+            else if (cat != "(None)") {
+              LOG(DFATAL) << "Nothing in category " << str(cat)
                          << ", " << commands.size();
             }
 

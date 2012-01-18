@@ -12,10 +12,10 @@ command { type: EJECT_CDS category: "File"}
 command { type: INVERT_LOOP_SELECTION category: "Selection" }
 command { type: KEYBOARD_MAPPINGS category: "File"}
 command { type: MIDI_MAPPINGS category: "File"}
-command { type: MODE_DRAG category: "Audio"}
-command { type: MODE_SET_TIME category: "Audio"}
-command { type: MODE_ZOOM_IN category: "Audio"}
-command { type: MODE_ADD_LOOP_POINT category: "Audio"}
+command { type: MODE_DRAG category: "Edit"}
+command { type: MODE_SET_TIME category: "Edit"}
+command { type: MODE_ZOOM_IN category: "Edit"}
+command { type: MODE_ADD_LOOP_POINT category: "Edit"}
 command { type: MUTE_VOLUME_TOGGLE category: "Audio"}
 command { type: NUDGE_VOLUME_DOWN category: "Audio"}
 command { type: NUDGE_VOLUME_UP category: "Audio"}

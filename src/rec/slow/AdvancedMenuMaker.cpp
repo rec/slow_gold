@@ -25,6 +25,17 @@ void AdvancedMenuMaker::addAudioMenu() {
   add(Command::AUDIO_PREFERENCES);
 }
 
+void AdvancedMenuMaker::addEditMenu() {
+  BasicMenuMaker::addEditMenu();
+
+  menu_.addSeparator();
+
+  add(Command::MODE_SET_TIME);
+  add(Command::MODE_DRAG);
+  add(Command::MODE_ADD_LOOP_POINT);
+  add(Command::MODE_ZOOM_IN);
+}
+
 void AdvancedMenuMaker::addSelectMenu() {
   BasicMenuMaker::addSelectMenu();
 

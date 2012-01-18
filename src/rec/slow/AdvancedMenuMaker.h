@@ -15,6 +15,7 @@ class AdvancedMenuMaker : public BasicMenuMaker {
 
  protected:
   virtual void addAudioMenu();
+  virtual void addEditMenu();
   virtual void addSelectMenu();
   virtual void addTransportMenu();
   virtual void addDisplayMenu();

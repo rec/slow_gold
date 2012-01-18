@@ -46,14 +46,6 @@ void BasicMenuMaker::addEditMenu() {
   addEnabled(Command::CUT, canCut());
   addEnabled(Command::COPY, canCopy());
   addEnabled(Command::PASTE, canPaste());
-
-  menu_.addSeparator();
-
-  add(Command::MODE_SET_TIME);
-  add(Command::MODE_DRAG);
-  add(Command::MODE_ADD_LOOP_POINT);
-  add(Command::MODE_ZOOM_IN);
-
 }
 
 void BasicMenuMaker::addAudioMenu() {

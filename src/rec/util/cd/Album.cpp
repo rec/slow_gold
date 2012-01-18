@@ -106,7 +106,7 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
 #define DEFAULT_HOST        "localhost"
 #define DEFAULT_TIMEOUT     10
 
-#ifdef USE_FREEDB
+#if 0
 
 #define DEFAULT_SERVER      "ecddb.gracenote.com"
 #define DEFAULT_PORT        8080
@@ -123,7 +123,7 @@ static String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
     Socket sock;
     connect(&sock, DEFAULT_SERVER, DEFAULT_PORT, DEFAULT_TIMEOUT * 1000);
     readCDDBResponse(&sock);
-    makeCDDBRequest("cddb hello anonymous localhost slowgold 1.0", &sock);
+    makeCDDBRequest("cddb hello anonymous localhost itunes 10.5.1", &sock);
     makeCDDBRequest("proto 6", &sock);
 
     fillAlbumList(&sock, off, albums);

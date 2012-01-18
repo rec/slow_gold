@@ -31,6 +31,21 @@ command {
   type: MIDI_MAPPINGS
   keypress: "command + m"
 }
+command {type: MODE_ADD_LOOP_POINT
+  keypress: "option + a"
+}
+command {
+  type: MODE_DRAG
+  keypress: "option + d"
+}
+command {
+  type: MODE_SET_TIME
+  keypress: "option + t"
+}
+command {
+  type: MODE_ZOOM_IN
+  keypress: "option + z"
+}
 command {
   type: MUTE_VOLUME_TOGGLE
   keypress: "."
