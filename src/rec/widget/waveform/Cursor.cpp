@@ -260,7 +260,8 @@ void Cursor::operator()(const WaveformProto& wp) {
 
 void Cursor::setTooltip(const String& t) {
   SettableTooltipClient::setTooltip(t);
-  caption_->setTooltip(t);
+  caption_->setTooltip("Loop Point Name: Edit the Loop Point's name "
+                       "by clicking here.");
 }
 
 }  // namespace waveform
