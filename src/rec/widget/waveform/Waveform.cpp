@@ -2,7 +2,7 @@
 
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
-#include "rec/gui/icon/ZoomMode.svg.h"
+#include "rec/gui/icon/ZoomInCursor.svg.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/Math.h"
@@ -40,7 +40,7 @@ static juce::Image* getZoomCursor() {
   ptr<juce::Image> img(new juce::Image(juce::Image::RGB, ZOOM_CURSOR_WIDTH,
                                        ZOOM_CURSOR_HEIGHT, false));
   Graphics g(*img);
-  ptr<Drawable> drawable(gui::icon::ZoomMode::create());
+  ptr<Drawable> drawable(gui::icon::ZoomInCursor::create());
   drawable->draw(g, 1.0f);
   return img.transfer();
 }

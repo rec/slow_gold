@@ -76,7 +76,7 @@
       <ProgramDatabaseFile>.\Debug\SlowGold 8 (debug build).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\build\\Debug\\rubberband\\lib ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib rubberband-library.lib /LIBPATH:..\\..\\..\\..\\..\\build\\Debug\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\build\\Debug\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -118,7 +118,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\build\\Release\\rubberband\\lib ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib rubberband-library.lib /LIBPATH:..\\..\\..\\..\\..\\build\\Release\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\build\\Release\\gflags\\lib libgflags.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -255,9 +255,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SlowGold.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomInCursor.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.cpp"/>
@@ -597,6 +597,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\SlowGold.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomInCursor.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.h"/>

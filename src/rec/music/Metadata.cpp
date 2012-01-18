@@ -34,10 +34,21 @@ Metadata getMetadata(const StringPairArray& metadata) {
 }
 
 string getTitle(const Metadata& md) {
-  string result = "\"" + md.track_title() + "\" - " + md.album_title() + " (" +
-    md.artist() + ")";
-  if (result == " - ")
-    result.clear();
+  string result;
+
+  if (md.has_track_title())
+    result = "\"" + md.track_title() + "\"";
+
+  if (md.has_album_title()) {
+    if (result.empty())
+      result = md.album_title();
+    else
+      result += " - " + md.album_title();
+  }
+
+  if (md.has_artist() && !result.empty())
+    result += " (" + md.artist() + ")";
+
   return result;
 }
 

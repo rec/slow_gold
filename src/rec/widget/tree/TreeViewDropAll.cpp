@@ -2,7 +2,6 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/Value.h"
 #include "rec/data/yaml/Yaml.h"
-#include "rec/gui/icon/SlowGold.svg.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
 #include "rec/widget/tree/NodeItem.h"
@@ -12,8 +11,7 @@ namespace widget {
 namespace tree {
 
 TreeViewDropAll::TreeViewDropAll(MenuBarModel* m)
-    : FocusableTarget(m),
-      slowGoldIcon_(gui::icon::SlowGold::create()) {
+    : FocusableTarget(m) {
   setName("Tree");
 }
 
@@ -36,10 +34,12 @@ void TreeViewDropAll::paint(Graphics& g) {
                      0, HEIGHT, getWidth(), getHeight(),
                      juce::Justification::centred, 0);
   } else if (!getRootItem()->getNumSubItems()) {
-    juce::Rectangle<float> bounds(0, 0, static_cast<float>(getWidth()), 
+#if 0
+    juce::Rectangle<float> bounds(0, 0, static_cast<float>(getWidth()),
       static_cast<float>(getHeight()));
     slowGoldIcon_->drawWithin(g, bounds,
                               juce::RectanglePlacement::stretchToFit, 0.4f);
+#endif
   }
   paintFocus(g);
 }
