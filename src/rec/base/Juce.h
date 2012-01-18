@@ -29,6 +29,7 @@ typedef juce::CallbackMessage CallbackMessage;
 typedef juce::ChangeBroadcaster ChangeBroadcaster;
 typedef juce::ChangeListener ChangeListener;
 typedef juce::CriticalSection CriticalSection;
+typedef juce::CharPointer_UTF8 CharPointer_UTF8;
 typedef juce::Colour Colour;
 typedef juce::CommandID CommandID;
 typedef juce::Component Component;
@@ -88,7 +89,10 @@ inline string str(const String& s) {
 }
 
 inline String str(const string& s) {
-  return String::fromUTF8(s.c_str());
+  const char* p = s.c_str();
+  size_t size = s.size();
+  return CharPointer_UTF8::isValidString(p, size) ?
+    String::fromUTF8(p, size) : "(badly encoded string)";
 }
 
 inline string str(const File& f) {

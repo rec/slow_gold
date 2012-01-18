@@ -9,11 +9,11 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-static void set(mpg123_text* text, int size, StringPairArray* data) {
+static void setData(mpg123_text* text, int size, StringPairArray* data) {
   for (mpg123_text* t = text; t != text + size; ++t) {
     String name(t->id, 4);
     for (; (*data)[name] != ""; name += "+");
-    data->set(name, String::fromUTF8(t->text.p, t->text.fill));
+    data->set(name, str(string(t->text.p, t->text.fill)));
   }
 }
 
@@ -29,9 +29,9 @@ Error getMp3Tags(mpg123_handle* mh, StringPairArray* data) {
 
   if (v2) {
     data->set("idversion", "id3v2");
-    set(v2->text, v2->texts, data);
-    set(v2->comment_list, v2->comments, data);
-    set(v2->extra, v2->extras, data);
+    setData(v2->text, v2->texts, data);
+    setData(v2->comment_list, v2->comments, data);
+    setData(v2->extra, v2->extras, data);
 
     return MPG123_OK;
   }

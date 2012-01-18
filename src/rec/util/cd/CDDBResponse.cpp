@@ -42,7 +42,7 @@ StringArray readCDDBResponse(Socket *sock) {
   static const int TIMEOUT = 3000;
 
   do {
-    data += readSocket(sock, TIMEOUT);
+    data += str(readSocket(sock, TIMEOUT));
   } while (oneCDDBResponse(&data, &lines));
 
   return lines;
