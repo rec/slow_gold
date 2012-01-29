@@ -1,9 +1,10 @@
-#include "rec/audio/util/AudioFormatManager.h"
+#include "rec/audio/format/AudioFormatManager.h"
 #include "rec/audio/format/mpg123/Format.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace audio {
+namespace format {
 
 namespace {
 
@@ -27,7 +28,11 @@ AudioFormatReader* createReader(const File& f) {
   return getAudioFormatManager()->createReaderFor(f);
 }
 
-AudioFormatReader* createReader(const String& f) { return createReader(File(f)); }
+AudioFormatReader* createReader(const String& f) {
+  return createReader(File(f));
+}
 
+}  // namespace format
 }  // namespace audio
 }  // namespace rec
+

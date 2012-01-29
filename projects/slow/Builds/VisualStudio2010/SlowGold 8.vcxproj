@@ -131,6 +131,7 @@
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\AudioFormatManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp"/>
@@ -148,7 +149,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\RubberBand.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp"/>
@@ -260,6 +260,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomInCursor.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMoveDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.cpp"/>
@@ -391,6 +392,7 @@
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\AudioFormatManager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.h"/>
@@ -419,7 +421,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\RubberBand.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
@@ -600,6 +601,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomInCursor.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMoveDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.h"/>

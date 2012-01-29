@@ -1,7 +1,7 @@
 #include "rec/audio/util/TrackBufferAndThumbnail.h"
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
-#include "rec/audio/util/AudioFormatManager.h"
+#include "rec/audio/format/AudioFormatManager.h"
 #include "rec/base/Samples.h"
 #include "rec/util/file/VirtualFile.h"
 
@@ -12,13 +12,13 @@ namespace audio {
 namespace util {
 
 using rec::audio::source::RunnyProto;
-using rec::audio::getAudioFormatManager;
+using rec::audio::format::getAudioFormatManager;
 
 static const int COMPRESSION = 2048;
 
 TrackBufferAndThumbnail::TrackBufferAndThumbnail()
     : cache_(1), cacheWritten_(false),
-      thumbnail_(COMPRESSION, *rec::audio::getAudioFormatManager(), cache_) {
+      thumbnail_(COMPRESSION, *getAudioFormatManager(), cache_) {
 }
 
 TrackBufferAndThumbnail::~TrackBufferAndThumbnail() {}

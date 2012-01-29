@@ -202,6 +202,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp">
       <Filter>SlowGold 8\rec\audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\AudioFormatManager.cpp">
+      <Filter>SlowGold 8\rec\audio\format</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp">
       <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
     </ClCompile>
@@ -252,9 +255,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp">
       <Filter>SlowGold 8\rec\audio\stretch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp">
-      <Filter>SlowGold 8\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp">
       <Filter>SlowGold 8\rec\audio\util</Filter>
@@ -593,6 +593,9 @@
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.cpp">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMoveDisabled.svg.cpp">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.cpp">
@@ -984,6 +987,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h">
       <Filter>SlowGold 8\rec\audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\AudioFormatManager.h">
+      <Filter>SlowGold 8\rec\audio\format</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h">
       <Filter>SlowGold 8\rec\audio\format\mpg123</Filter>
     </ClInclude>
@@ -1067,9 +1073,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h">
       <Filter>SlowGold 8\rec\audio\stretch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.h">
-      <Filter>SlowGold 8\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h">
       <Filter>SlowGold 8\rec\audio\util</Filter>
@@ -1609,6 +1612,9 @@
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.h">
+      <Filter>SlowGold 8\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMoveDisabled.svg.h">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.h">

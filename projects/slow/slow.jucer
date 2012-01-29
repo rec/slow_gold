@@ -29,7 +29,7 @@
                    isDebug="0" name="Release" optimisation="2" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowGold 8"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="rN98BgQ3P" name="SlowGold 8">
+  <MAINGROUP id="MZwsyljgl" name="SlowGold 8">
     <GROUP id="iYDL9zEV1" name="rec">
       <GROUP id="FReigGzuv" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="YTKSvNklH"
@@ -59,6 +59,10 @@
         <FILE compile="0" file="../../src/rec/audio/Device.h" id="cDHw0KToW"
               name="Device.h" resource="0"/>
         <GROUP id="oQ9QbFgiB" name="format">
+          <FILE compile="1" file="../../src/rec/audio/format/AudioFormatManager.cpp"
+                id="BOv4WSlVw" name="AudioFormatManager.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/format/AudioFormatManager.h"
+                id="ZY4skzrq8" name="AudioFormatManager.h" resource="0"/>
           <GROUP id="kjoc9Chnp" name="mpg123">
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/CleanGenre.cpp"
                   id="SjjNg5sly" name="CleanGenre.cpp" resource="0"/>
@@ -159,10 +163,6 @@
                 name="Stretchy.h" resource="0"/>
         </GROUP>
         <GROUP id="TZdOqjuzD" name="util">
-          <FILE compile="1" file="../../src/rec/audio/util/AudioFormatManager.cpp"
-                id="8xK2xXiKT" name="AudioFormatManager.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/AudioFormatManager.h"
-                id="I7gJwI2Kz" name="AudioFormatManager.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Clear.h" id="R4evUd7Ay"
                 name="Clear.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ConvertSample.cpp"
@@ -777,6 +777,10 @@
                 id="IFwKHCT9N" name="ZoomModeDisabled.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/ZoomModeDisabled.svg.h"
                 id="k264dnK4w" name="ZoomModeDisabled.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomMoveDisabled.svg.cpp"
+                id="R25zcXQtO" name="ZoomMoveDisabled.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomMoveDisabled.svg.h"
+                id="hnw237wsA" name="ZoomMoveDisabled.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/ZoomOutButton.svg.cpp"
                 id="jalcd19UX" name="ZoomOutButton.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/ZoomOutButton.svg.h"
@@ -1416,7 +1420,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="rcbNuESeJ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="iEojPkGQF" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

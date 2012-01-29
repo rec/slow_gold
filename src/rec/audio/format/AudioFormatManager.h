@@ -5,12 +5,14 @@
 
 namespace rec {
 namespace audio {
+namespace format {
 
 AudioFormatManager* getAudioFormatManager();
 
 AudioFormatReader* createReader(const File&);
 AudioFormatReader* createReader(const String&);
 
+}  // namespace format
 }  // namespace audio
 }  // namespace rec
 

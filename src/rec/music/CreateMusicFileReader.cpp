@@ -1,7 +1,7 @@
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/cd/Album.h"
-#include "rec/audio/util/AudioFormatManager.h"
+#include "rec/audio/format/AudioFormatManager.h"
 #include "rec/music/Metadata.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
@@ -12,6 +12,8 @@ namespace rec {
 namespace music {
 
 namespace {
+
+using namespace rec::audio::format;
 
 AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
   int track = String(file.path(0).c_str()).getIntValue();
@@ -25,7 +27,7 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
 }
 
 AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata) {
-  ptr<AudioFormatReader> reader(audio::createReader(getRealFile(file)));
+  ptr<AudioFormatReader> reader(createReader(getRealFile(file)));
   if (metadata && reader)
     *metadata = music::getMetadata(reader->metadataValues);
 

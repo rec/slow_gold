@@ -1,5 +1,5 @@
 #include "rec/audio/util/ProcessAudioFile.h"
-#include "rec/audio/util/AudioFormatManager.h"
+#include "rec/audio/format/AudioFormatManager.h"
 
 namespace rec {
 namespace audio {
@@ -8,7 +8,7 @@ namespace util {
 void processAudioFile(const File& in, const File& out,
                       SourceFilter filter) {
   CHECK(in.exists()) << "File " << str(in) << " doesn't exist";
-  ptr<AudioFormatReader> reader(createReader(in));
+  ptr<AudioFormatReader> reader(format::createReader(in));
   ptr<PositionableAudioSource> src(
       new AudioFormatReaderSource(reader.get(), false));
 
@@ -17,7 +17,7 @@ void processAudioFile(const File& in, const File& out,
   OutputStream* stream = out.createOutputStream();
   CHECK(stream) << "Couldn't create file " << str(out);
 
-  AudioFormat* f = getAudioFormatManager()->
+  AudioFormat* f = format::getAudioFormatManager()->
     findFormatForFileExtension(out.getFileExtension());
   CHECK(f) << "Couldn't find format for file " << str(out);
 
@@ -38,14 +38,14 @@ typedef std::pair<Source*, AudioFormatWriter*> SourceAndWriter;
 
 SourceAndWriter makeSourceAndWriter(const File& in, const File& out) {
   CHECK(in.exists()) << "File " << str(in) << " doesn't exist";
-  ptr<AudioFormatReader> reader(createReader(in));
+  ptr<AudioFormatReader> reader(format::createReader(in));
 
   if (out.exists())
     out.deleteFile();
   OutputStream* stream = out.createOutputStream();
   CHECK(stream) << "Couldn't create file " << str(out);
 
-  AudioFormat* f = getAudioFormatManager()->
+  AudioFormat* f = format::getAudioFormatManager()->
     findFormatForFileExtension(out.getFileExtension());
   CHECK(f) << "Couldn't find format for file " << str(out);
 
