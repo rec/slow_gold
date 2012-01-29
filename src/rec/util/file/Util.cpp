@@ -62,21 +62,43 @@ bool isHidden(const File& file) {
   return nameSet.find(name) != nameSet.end();
 }
 
-// TODO: expand this and make it neater and dealing with lower-case.
-bool isAudio(const File& file) {
-  return
-    file.hasFileExtension("aiff") ||
-    file.hasFileExtension("aif") ||
-    file.hasFileExtension("flac") ||
-    //    file.hasFileExtension("m4a") ||  // TODO
-    file.hasFileExtension("mp3") ||
-    file.hasFileExtension("ogg") ||
-    file.hasFileExtension("wav");
+namespace {
+
+const char* AUDIO_EXTENSIONS[] = {
+  "aif",
+  "aiff",
+  "flac",
+  "m4a",
+  "mp3",
+  "ogg",
+  "wav",
+};
+
+const char** const audioExtensions() { return AUDIO_EXTENSIONS; }
+int audioExtensionCount() { return arraysize(AUDIO_EXTENSIONS); }
+
+String makePatterns() {
+  StringArray s;
+  String prefix("*.");
+  for (int i = 0; i < audioExtensionCount(); ++i)
+    s.add(prefix + audioExtensions()[i]);
+  return s.joinIntoString(";");
 }
 
-String audioFilePatterns() {
-  //  return "*.aiff;*.flac;*.m4a;*.mp3;*.ogg;*.wav";
-  return "*.aiff;*.aif;*.flac;*.mp3;*.ogg;*.wav";
+}  // namespace
+
+bool isAudio(const File& file) {
+  String extension = file.getFileExtension().toLowerCase();
+  for (int i = 0; i < audioExtensionCount(); ++i) {
+    if (String(audioExtensions()[i]) == extension)
+      return true;
+  }
+  return false;
+}
+
+const String& audioFilePatterns() {
+  const String patterns = makePatterns();
+  return patterns;
 }
 
 bool isAudioOrDirectory(const File& file) {
