@@ -202,7 +202,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp">
       <Filter>SlowGold 8\rec\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\AudioFormatManager.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\Manager.cpp">
       <Filter>SlowGold 8\rec\audio\format</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp">
@@ -987,7 +987,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h">
       <Filter>SlowGold 8\rec\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\AudioFormatManager.h">
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\Manager.h">
       <Filter>SlowGold 8\rec\audio\format</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h">

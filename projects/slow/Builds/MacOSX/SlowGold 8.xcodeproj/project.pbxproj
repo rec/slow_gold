@@ -24,7 +24,7 @@
 		3F231E8534507C1CB8E771DC = { isa = PBXBuildFile; fileRef = 576030227C6A7D5AFE20D0AF; };
 		3B1DEC38592EDE755611AD49 = { isa = PBXBuildFile; fileRef = F9D5B5EE2CE56D8DCE8774C1; };
 		2E267CAA142D0E23FBB8C974 = { isa = PBXBuildFile; fileRef = 3A4C8425168239B436624D29; };
-		561560D52D998D4D5B534093 = { isa = PBXBuildFile; fileRef = 9A0CEA390511B32B3A30F199; };
+		155AB09B426373F7E121C1F7 = { isa = PBXBuildFile; fileRef = A6BADEE1D231CBB2145CA91E; };
 		17779DF1FBCEB599C5F03E3F = { isa = PBXBuildFile; fileRef = 261498B6B83C44E4869B8D63; };
 		CA269D42B0B82AB2D9B0950F = { isa = PBXBuildFile; fileRef = EC987E2C0BF96C46EB809A6B; };
 		C177B11687BD211F24FD8744 = { isa = PBXBuildFile; fileRef = 3788365111D9219CCA28070F; };
@@ -303,8 +303,8 @@
 		C3BABA804C594DF88A50B485 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Audio.h; path = ../../../../src/rec/audio/Audio.h; sourceTree = "SOURCE_ROOT"; };
 		3A4C8425168239B436624D29 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Device.cpp; path = ../../../../src/rec/audio/Device.cpp; sourceTree = "SOURCE_ROOT"; };
 		451A7EAAAB6BE589D2559255 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Device.h; path = ../../../../src/rec/audio/Device.h; sourceTree = "SOURCE_ROOT"; };
-		9A0CEA390511B32B3A30F199 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioFormatManager.cpp; path = ../../../../src/rec/audio/format/AudioFormatManager.cpp; sourceTree = "SOURCE_ROOT"; };
-		08B7B17A1FEC2C16E72D775B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioFormatManager.h; path = ../../../../src/rec/audio/format/AudioFormatManager.h; sourceTree = "SOURCE_ROOT"; };
+		A6BADEE1D231CBB2145CA91E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Manager.cpp; path = ../../../../src/rec/audio/format/Manager.cpp; sourceTree = "SOURCE_ROOT"; };
+		7CE29DA2C6C65836EFF5C237 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Manager.h; path = ../../../../src/rec/audio/format/Manager.h; sourceTree = "SOURCE_ROOT"; };
 		261498B6B83C44E4869B8D63 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CleanGenre.cpp; path = ../../../../src/rec/audio/format/mpg123/CleanGenre.cpp; sourceTree = "SOURCE_ROOT"; };
 		4F5EC8EDBF653A29F2B98C58 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CleanGenre.h; path = ../../../../src/rec/audio/format/mpg123/CleanGenre.h; sourceTree = "SOURCE_ROOT"; };
 		EC987E2C0BF96C46EB809A6B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copier.cpp; path = ../../../../src/rec/audio/format/mpg123/Copier.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -967,8 +967,8 @@
 				D480F045D0DBCDA5FCC51F6C,
 				84EC8546EA7938A4501BDD57 ); name = raw; sourceTree = "<group>"; };
 		BF63AFD6224B734FCF1168BB = { isa = PBXGroup; children = (
-				9A0CEA390511B32B3A30F199,
-				08B7B17A1FEC2C16E72D775B,
+				A6BADEE1D231CBB2145CA91E,
+				7CE29DA2C6C65836EFF5C237,
 				F5A67F6FF9DA192A58B4A144,
 				68880CCFD011384A06B624EA ); name = format; sourceTree = "<group>"; };
 		B47F47B5ECDEF50AC5C84324 = { isa = PBXGroup; children = (
@@ -1685,7 +1685,7 @@
 				421A4C330D68791277CAD9F8 ); name = rec; sourceTree = "<group>"; };
 		1AB486317E06D9E7CC790074 = { isa = PBXGroup; children = (
 				51342606A895BB5BA07F2E43 ); name = proto; sourceTree = "<group>"; };
-		8211E83D2B03EB08B6BC6E0A = { isa = PBXGroup; children = (
+		AC064B1D5B25AB0AC9726059 = { isa = PBXGroup; children = (
 				ACCCF36FDDDC59AE37FAFAF4,
 				1AB486317E06D9E7CC790074,
 				107F029BEE50E0870F8E5A13 ); name = "SlowGold 8"; sourceTree = "<group>"; };
@@ -1714,7 +1714,7 @@
 		DBBED81D920B27CB9107C128 = { isa = PBXGroup; children = (
 				D427FD0910FEA6098B36B56B ); name = Products; sourceTree = "<group>"; };
 		B2772D76DA45DD25AC30B180 = { isa = PBXGroup; children = (
-				8211E83D2B03EB08B6BC6E0A,
+				AC064B1D5B25AB0AC9726059,
 				E89CD5E8F8F5E56D76A0DE49,
 				AC0A55CC5C6219AB36B5C26B,
 				C0B90B9133DBCC84A6028DCC,
@@ -1873,7 +1873,7 @@
 				3F231E8534507C1CB8E771DC,
 				3B1DEC38592EDE755611AD49,
 				2E267CAA142D0E23FBB8C974,
-				561560D52D998D4D5B534093,
+				155AB09B426373F7E121C1F7,
 				17779DF1FBCEB599C5F03E3F,
 				CA269D42B0B82AB2D9B0950F,
 				C177B11687BD211F24FD8744,

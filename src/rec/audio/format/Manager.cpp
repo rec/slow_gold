@@ -1,4 +1,4 @@
-#include "rec/audio/format/AudioFormatManager.h"
+#include "rec/audio/format/Manager.h"
 #include "rec/audio/format/mpg123/Format.h"
 #include "rec/util/file/VirtualFile.h"
 

@@ -131,7 +131,7 @@
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\AudioFormatManager.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\Manager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp"/>
@@ -392,7 +392,7 @@
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\AudioFormatManager.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\Manager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.h"/>
