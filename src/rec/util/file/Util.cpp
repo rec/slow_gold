@@ -76,7 +76,8 @@ const char** const audioExtensions() { return AUDIO_EXTENSIONS; }
 int audioExtensionCount() { return arraysize(AUDIO_EXTENSIONS); }
 
 bool isAudio(const File& file) {
-  String extension = file.getFileExtension().toLowerCase();
+  String extension = file.getFileExtension().toLowerCase().
+    trimCharactersAtStart(".");
   for (int i = 0; i < audioExtensionCount(); ++i) {
     if (String(audioExtensions()[i]) == extension)
       return true;

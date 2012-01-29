@@ -1,7 +1,7 @@
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/cd/Album.h"
-#include "rec/audio/format/AudioFormatManager.h"
+#include "rec/audio/format/Manager.h"
 #include "rec/music/Metadata.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"

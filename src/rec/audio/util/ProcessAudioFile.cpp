@@ -1,5 +1,5 @@
 #include "rec/audio/util/ProcessAudioFile.h"
-#include "rec/audio/format/AudioFormatManager.h"
+#include "rec/audio/format/Manager.h"
 
 namespace rec {
 namespace audio {

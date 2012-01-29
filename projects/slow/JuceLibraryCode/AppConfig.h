@@ -19,7 +19,7 @@
 //#define  JUCE_DIRECTSHOW
 //#define  JUCE_MEDIAFOUNDATION
 //#define  JUCE_ALSA
-//#define  JUCE_QUICKTIME
+#define    JUCE_QUICKTIME 1
 //#define  JUCE_OPENGL
 //#define  JUCE_DIRECT2D
 //#define  JUCE_USE_FLAC
