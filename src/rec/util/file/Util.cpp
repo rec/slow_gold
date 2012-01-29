@@ -62,9 +62,7 @@ bool isHidden(const File& file) {
   return nameSet.find(name) != nameSet.end();
 }
 
-namespace {
-
-const char* AUDIO_EXTENSIONS[] = {
+static const char* AUDIO_EXTENSIONS[] = {
   "aif",
   "aiff",
   "flac",
@@ -77,16 +75,6 @@ const char* AUDIO_EXTENSIONS[] = {
 const char** const audioExtensions() { return AUDIO_EXTENSIONS; }
 int audioExtensionCount() { return arraysize(AUDIO_EXTENSIONS); }
 
-String makePatterns() {
-  StringArray s;
-  String prefix("*.");
-  for (int i = 0; i < audioExtensionCount(); ++i)
-    s.add(prefix + audioExtensions()[i]);
-  return s.joinIntoString(";");
-}
-
-}  // namespace
-
 bool isAudio(const File& file) {
   String extension = file.getFileExtension().toLowerCase();
   for (int i = 0; i < audioExtensionCount(); ++i) {
@@ -96,8 +84,16 @@ bool isAudio(const File& file) {
   return false;
 }
 
+static String makePatterns() {
+  StringArray s;
+  String prefix("*.");
+  for (int i = 0; i < audioExtensionCount(); ++i)
+    s.add(prefix + audioExtensions()[i]);
+  return s.joinIntoString(";");
+}
+
 const String& audioFilePatterns() {
-  const String patterns = makePatterns();
+  static const String patterns = makePatterns();
   return patterns;
 }
 

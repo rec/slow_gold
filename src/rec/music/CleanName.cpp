@@ -28,8 +28,6 @@ String removeIntPrefix(const String& s) {
 
 }
 
-// TODO!
-
 String cleanName(const String& s) {
   static const char* const suf[] = {".wav", ".mp3", ".aif"};
   return removeIntPrefix(removeSuffixes(s, suf, suf + arraysize(suf)));
