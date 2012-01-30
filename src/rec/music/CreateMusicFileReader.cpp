@@ -69,19 +69,22 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
       reader_.reset(createFileReader(file, metadata.get()));
 
       if (!reader) {
+#if JUCE_WINDOWS
         if (f.getFileExtension() == ".m4a") {
-          errorTitle_ = "QuickTime Is Needed To Read .m4a Files";
+          errorTitle_ = "We Can't Read .m4a Files On Windows";
           errorDetails_ = "Sorry, file " + file::getFullDisplayName(file) +
-            " is an .m4a file and you apparently don't have QuickTime"
-            " installed - either install QuickTime or convert the file"
-            " to mp3 using iTunes.";
+            " is an .m4a file and we can't yet read these files on Windows: "
+            " please convert it to mp3 using iTunes.";
         } else {
+#endif
           errorTitle_ = "Couldn't Open Your File.";
           errorDetails_ = "Sorry, the program couldn't open your file " +
             file::getFullDisplayName(file) +
             ".\nEither it wasn't in the right format, it's corrupted, or "
             "the programmer made a mistake.";
+#if JUCE_WINDOWS
         }
+#endif
       }
     }
   }
