@@ -11,8 +11,10 @@ namespace {
 AudioFormatManager* getInstance() {
   format::mpg123::initializeOnce();
   ptr<AudioFormatManager> afm(new AudioFormatManager());
-  afm->registerFormat(new juce::QuickTimeAudioFormat(), false);
   afm->registerFormat(new format::mpg123::Format(), false);
+#if JUCE_MAC
+  afm->registerFormat(new juce::QuickTimeAudioFormat(), false);
+#endif
   afm->registerBasicFormats();
 
   return afm.transfer();

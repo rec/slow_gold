@@ -13,6 +13,8 @@ namespace music {
 
 namespace {
 
+const int MINIMUM_FILE_SIZE = 44100;
+
 using namespace rec::audio::format;
 
 AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
@@ -34,34 +36,75 @@ AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata)
   return reader.transfer();
 }
 
+
 }  // namespace
 
-AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
+MusicFileReader::MusicFileReader(const VirtualFile& file) {
   if (file::empty(file) || !file.path_size()) {
-    LOG(DFATAL) << "Can't create track for " << file.ShortDebugString();
-    return NULL;
+    errorTitle_ = "Can't create track for " + str(file.ShortDebugString());
+    errorDetails_ = errorTitle_;
+    LOG(DFATAL) << errorTitle_;
+    return;
   }
 
   ptr<Metadata> metadata;
-  data::Data* d = data::getData<music::Metadata>(&file);
+  data::Data* d = data::getData<Metadata>(&file);
   if (!d->fileReadSuccess())
     metadata.reset(new Metadata);
 
   ptr<AudioFormatReader> reader;
-  if (file.type() == VirtualFile::CD)
-    reader.reset(createCDReader(file, metadata.get()));
-  else
-    reader.reset(createFileReader(file, metadata.get()));
+  if (file.type() == VirtualFile::CD) {
+    reader_.reset(createCDReader(file, metadata.get()));
+    if (!reader_) {
+      errorTitle_ = "Couldn't Open CD Track.";
+      errorDetails_ = "Couldn't open a track on CD - perhaps you ejected it?";
+    }
+  } else {
+    File f = getRealFile(file);
+    if (!f.existsAsFile()) {
+      errorTitle_ = "File Does Not Exist";
+      errorDetails_ = "Sorry, file " + file::getFullDisplayName(file) +
+        " does not exist.";
+    } else {
+      reader_.reset(createFileReader(file, metadata.get()));
 
-  if (!reader) {
-    LOG(ERROR) << "Couldn't create reader for file " << file.ShortDebugString();
-    return NULL;
+      if (!reader) {
+        if (f.getFileExtension() == ".m4a") {
+          errorTitle_ = "QuickTime Is Needed To Read .m4a Files";
+          errorDetails_ = "Sorry, file " + file::getFullDisplayName(file) +
+            " is an .m4a file and you apparently don't have QuickTime"
+            " installed - either install QuickTime or convert the file"
+            " to mp3 using iTunes.";
+        } else {
+          errorTitle_ = "Couldn't Open Your File.";
+          errorDetails_ = "Sorry, the program couldn't open your file " +
+            file::getFullDisplayName(file) +
+            ".\nEither it wasn't in the right format, it's corrupted, or "
+            "the programmer made a mistake.";
+        }
+      }
+    }
   }
 
-  if (metadata && (*metadata != music::Metadata::default_instance()))
-    data::setWithData(d, *metadata, CANT_UNDO);
+  if (reader_) {
+    int64 length = reader_->lengthInSamples;
+    if (!length) {
+      errorTitle_ = "Your File Was Empty.";
+      errorDetails_ = "Sorry, the file you tried to open, " +
+        file::getFullDisplayName(file) +
+            " has a length of zero.";
+      reader_.reset();
+    } else if (length < MINIMUM_FILE_SIZE) {
+      errorTitle_ = "Your File Was Too Small.";
+      errorDetails_ = "Sorry, the file you tried to open, " +
+        file::getFullDisplayName(file) +
+            " has a length of less than one second.";
+      reader_.reset();
+    }
+  }
 
-  return reader.transfer();
+  if (reader_ && metadata && (*metadata != music::Metadata::default_instance()))
+    data::setWithData(d, *metadata, CANT_UNDO);
 }
 
 

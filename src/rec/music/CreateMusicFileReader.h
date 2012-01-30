@@ -6,7 +6,27 @@
 namespace rec {
 namespace music {
 
-AudioFormatReader* createMusicFileReader(const VirtualFile& file);
+class Metadata;
+
+class MusicFileReader {
+ public:
+  MusicFileReader(const VirtualFile&);
+  AudioFormatReader* reader() { return reader_.get(); }
+  const String& errorTitle() const { return errorTitle_; }
+  const String& errorDetails() const { return errorDetails_; }
+  AudioFormatReader* transfer() { return reader_.transfer(); }
+  bool empty() const { return !reader_; }
+
+  void setError(const String& title, const String& details) {
+    errorTitle_ = title;
+    errorDetails_ = details;
+  }
+
+ private:
+  ptr<AudioFormatReader> reader_;
+  String errorTitle_;
+  String errorDetails_;
+};
 
 }  // namespace music
 }  // namespace rec

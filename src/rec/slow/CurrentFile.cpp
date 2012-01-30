@@ -85,7 +85,9 @@ bool CurrentFile::setFile(const VirtualFile& f) {
   if (player())
     player()->clear();
 
-  gui::addRecentFile(file_, data::get<music::Metadata>(&file_));
+  if (!empty_)
+    gui::addRecentFile(file_, data::get<music::Metadata>(&file_));
+
   VirtualFile oldFile;
   {
     Lock l(lock_);
@@ -96,15 +98,29 @@ bool CurrentFile::setFile(const VirtualFile& f) {
   Samples<44100> length(0);
 
   empty_ = file::empty(file_);
-
   if (!empty_) {
-    using audio::util::TrackBufferAndThumbnail;
+    music::MusicFileReader musicReader(file_);
+    if (musicReader.empty()) {
+      empty_ = true;
+    } else {
+      length = bufferFiller()->trackBuffer()->
+        setReader(file_, musicReader.transfer());
+      if (!length) {
+        musicReader.setError("Ran Out Of Memory For Your File",
+                             "Your file was so large that the program "
+                             "ran out of memory.");
+        empty_ = true;
+      }
+    }
 
-    TrackBufferAndThumbnail* thumbnail = bufferFiller()->trackBuffer();
-    length = thumbnail->setReader(file_, music::createMusicFileReader(file_));
+    if (empty_) {
+      juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
+                                        musicReader.errorTitle(),
+                                        musicReader.errorDetails());
+    }
   }
 
-  if (length) {
+  if (!empty_) {
     LoopPointList lpl = data::getProto<LoopPointList>(&file_);
     if (lpl.length() != length || !lpl.loop_point_size()) {
       lpl.set_length(length);
@@ -124,18 +140,6 @@ bool CurrentFile::setFile(const VirtualFile& f) {
         }
       }
     }
-
-  } else if (!empty_) {
-    juce::AlertWindow::showMessageBox(
-        juce::AlertWindow::WarningIcon, "File does not exist or can't be read",
-        "File " + file::getFullDisplayName(file_) +
-        " does not exist or can't be read as an audio file.", "", window());
-    empty_ = true;
-    (*this)(file::none());
-    currentTime()->jumpToTime(0);
-    (*currentTime())(0);
-
-    return false;
   }
 
   {

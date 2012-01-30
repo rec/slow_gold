@@ -12,13 +12,12 @@ namespace audio {
 namespace util {
 
 using rec::audio::source::RunnyProto;
-using rec::audio::format::getAudioFormatManager;
 
 static const int COMPRESSION = 2048;
 
 TrackBufferAndThumbnail::TrackBufferAndThumbnail()
     : cache_(1), cacheWritten_(false),
-      thumbnail_(COMPRESSION, *getAudioFormatManager(), cache_) {
+      thumbnail_(COMPRESSION, *format::getAudioFormatManager(), cache_) {
 }
 
 TrackBufferAndThumbnail::~TrackBufferAndThumbnail() {}
@@ -49,20 +48,20 @@ void TrackBufferAndThumbnail::writeThumbnail() {
 
 Samples<44100> TrackBufferAndThumbnail::setReader(const VirtualFile& f, AudioFormatReader* reader) {
   Lock l(lock_);
-  if (!reader)
-    return 0;
+  DCHECK(reader);
+  DCHECK(reader->lengthInSamples);
 
   ptr<AudioFormatReader> r(reader);
-  file_ = getShadowFile(f, "thumbnail.stream");
+  File file = getShadowFile(f, "thumbnail.stream");
 
   thumbnail_.reset(2, 44100.0f, reader->lengthInSamples);  // TODO: hard-coded 44k?
-  if (file_.exists()) {
-    ptr<juce::FileInputStream> out(file_.createInputStream());
+  if (file.exists()) {
+    ptr<juce::FileInputStream> out(file.createInputStream());
     if (out) {
       thumbnail_.loadFrom(*out);
       cacheWritten_ = thumbnail_.isFullyLoaded();
     } else {
-      LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
+      LOG(ERROR) << "Couldn't load from " << file.getFullPathName();
     }
   } else {
     cacheWritten_ = false;
