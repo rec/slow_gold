@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-
 import getopt
 import os
 import sys
