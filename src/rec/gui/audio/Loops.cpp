@@ -6,6 +6,7 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/FieldOps.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/gui/SetterLabel.h"
 #include "rec/gui/SetterText.h"
 #include "rec/gui/audio/LoopsCuttable.h"
 #include "rec/util/Defaulter.h"
