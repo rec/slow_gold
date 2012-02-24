@@ -162,7 +162,8 @@ bool Instance::isPlaying() const {
 }
 
 void Instance::setProto(const Message& m, Undoable undoable) {
-   return data::setProto(m, file(), undoable);
+   data::setProto(m, file(), undoable);
+   menus_->menuItemsChanged();
 }
 
 }  // namespace slow
