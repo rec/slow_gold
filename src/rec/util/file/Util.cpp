@@ -66,7 +66,9 @@ static const char* AUDIO_EXTENSIONS[] = {
   "aif",
   "aiff",
   "flac",
+#if JUCE_MAC
   "m4a",
+#endif
   "mp3",
   "ogg",
   "wav",

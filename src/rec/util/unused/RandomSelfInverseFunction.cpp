@@ -28,7 +28,7 @@ ByteFunction randomSelfInverseFunction(unsigned seed) {
   ByteFunction func;
 
   ByteVector bytes(COUNT);
-  for (byte i = 0; i < COUNT; ++i) // BIG BUG HERE!
+  for (int i = 0; i < COUNT; ++i)
     bytes[i] = i;
 
   while (int size = bytes.size()) {
