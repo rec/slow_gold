@@ -30,8 +30,12 @@ class CurrentFile : public HasInstance,
   void setFileAndData(const VirtualFile&);
 
  private:
+  enum FileResult {
+     ERROR_FILE, GOOD_FILE, EMPTY_FILE, NO_CHANGE
+  };
+
   // Sets the current file but does not change the persistent data.
-  bool setFile(const VirtualFile&);
+  FileResult setFile(const VirtualFile&);
 
   CriticalSection lock_;
 

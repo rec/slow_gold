@@ -36,7 +36,6 @@ class FileDataListener : public data::GlobalDataListener<VirtualFile> {
   CurrentFile* const parent_;
 };
 
-
 CurrentFile::CurrentFile(Instance* i) : HasInstance(i), initialized_(false),
                                         empty_(true) {
   fileListener_.reset(new FileDataListener(this));
@@ -47,37 +46,21 @@ CurrentFile::~CurrentFile() {}
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
-#if 0
-  if (components()->directoryTree_->treeView()->isTreeDrop(dropFiles.target_)) {
-    using file::getFile;
-
-    typedef std::set<string> FileSet;
-    FileSet existing;
-    VirtualFileList list(data::getGlobal<file::VirtualFileList>());
-    for (int i = 0; i < list.file_size(); ++i)
-      existing.insert(str(getFile(list.file(i)).getFullPathName()));
-
-    for (int i = 0; i < files.file_size(); ++i) {
-      if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        data::editable<VirtualFileList>()->append(files.file(i), data::Address("file"));
-    }
-  } else {
-  }
-#endif
   if (files.file_size() >= 1)
     (*this)(files.file(0));
 }
 
 void CurrentFile::setFileAndData(const VirtualFile& f) {
-  if (setFile(f))
-    data::setProto(f, data::global());
+  FileResult result = setFile(f);
+  if (result != NO_CHANGE)
+    data::setProto(result ? f : VirtualFile(), data::global());
 }
 
-bool CurrentFile::setFile(const VirtualFile& f) {
+CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
   if (initialized_) {
     Lock l(lock_);
     if (data::equals(f, file_))
-      return false;
+      return NO_CHANGE;
   } else {
     initialized_ = true;
   }
@@ -96,9 +79,12 @@ bool CurrentFile::setFile(const VirtualFile& f) {
   }
 
   Samples<44100> length(0);
+  FileResult result = GOOD_FILE;
 
   empty_ = file::empty(file_);
-  if (!empty_) {
+  if (empty_) {
+    result = EMPTY_FILE;
+  } else {
     music::MusicFileReader musicReader(file_);
     if (musicReader.empty()) {
       empty_ = true;
@@ -114,9 +100,12 @@ bool CurrentFile::setFile(const VirtualFile& f) {
     }
 
     if (empty_) {
+      result = ERROR_FILE;
       juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
                                         musicReader.errorTitle(),
                                         musicReader.errorDetails());
+      Lock l(lock_);
+      file_.Clear();
     }
   }
 
@@ -157,9 +146,34 @@ bool CurrentFile::setFile(const VirtualFile& f) {
   if (menus())
     menus()->menuItemsChanged();
 
-  return true;
+  return result;
 }
 
 }  // namespace slow
 }  // namespace rec
+
+#if 0
+
+void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
+  const file::VirtualFileList& files = dropFiles.files_;
+  if (components()->directoryTree_->treeView()->isTreeDrop(dropFiles.target_)) {
+    using file::getFile;
+
+    typedef std::set<string> FileSet;
+    FileSet existing;
+    VirtualFileList list(data::getGlobal<file::VirtualFileList>());
+    for (int i = 0; i < list.file_size(); ++i)
+      existing.insert(str(getFile(list.file(i)).getFullPathName()));
+
+    for (int i = 0; i < files.file_size(); ++i) {
+      if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
+        data::editable<VirtualFileList>()->append(files.file(i), data::Address("file"));
+    }
+  } else {
+  }
+  if (files.file_size() >= 1)
+    (*this)(files.file(0));
+}
+
+#endif
 
