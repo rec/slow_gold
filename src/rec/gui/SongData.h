@@ -4,7 +4,6 @@
 #include "rec/data/Data.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/gui/SetterTextArea.h"
-#include "rec/gui/component/Focusable.h"
 #include "rec/music/Metadata.h"
 #include "rec/util/Cuttable.h"
 #include "rec/data/DataListener.h"

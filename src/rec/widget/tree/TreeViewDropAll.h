@@ -3,7 +3,6 @@
 
 #include "rec/data/Data.h"
 #include "rec/gui/DropTarget.h"
-#include "rec/gui/component/Focusable.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Listener.h"
 
@@ -12,9 +11,8 @@ namespace widget {
 namespace tree {
 
 typedef gui::DropTarget<TreeView, gui::NullInterface> TreeViewDropTarget;
-typedef gui::component::Focusable<TreeViewDropTarget> FocusableTarget;
 
-class TreeViewDropAll : public FocusableTarget
+class TreeViewDropAll : public TreeViewDropTarget
 #ifdef TREE_VIEW_IS_CUTTABLE
 , public Cuttable
 #endif

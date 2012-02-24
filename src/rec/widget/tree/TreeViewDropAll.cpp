@@ -2,7 +2,6 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/Value.h"
 #include "rec/data/yaml/Yaml.h"
-#include "rec/gui/component/Focusable.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
 #include "rec/widget/tree/NodeItem.h"
 
@@ -10,8 +9,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-TreeViewDropAll::TreeViewDropAll(MenuBarModel* m)
-    : FocusableTarget(m) {
+TreeViewDropAll::TreeViewDropAll(MenuBarModel* m) {
   setName("Tree");
 }
 
@@ -41,12 +39,11 @@ void TreeViewDropAll::paint(Graphics& g) {
                               juce::RectanglePlacement::stretchToFit, 0.4f);
 #endif
   }
-  paintFocus(g);
 }
 
 bool TreeViewDropAll::isInterestedInFileDrag(const StringArray& files) {
   if (!isTreeDrop(this))
-    return FocusableTarget::isInterestedInFileDrag(files);
+    return TreeViewDropTarget::isInterestedInFileDrag(files);
 
   for (int i = 0; i < files.size(); ++i) {
     if (!file::isAudio(files[i]) || File(files[i]).isDirectory())

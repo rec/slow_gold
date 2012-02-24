@@ -3,7 +3,6 @@
 
 #include "rec/data/Address.h"
 #include "rec/gui/TableController.h"
-#include "rec/gui/component/Focusable.h"
 #include "rec/util/Cuttable.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/LoopPoint.pb.h"
@@ -12,7 +11,7 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class Loops : public component::Focusable<TableController>,
+class Loops : public TableController,
               public DataListener<LoopPointList>,
               public HasCuttable {
  public:

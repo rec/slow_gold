@@ -20,7 +20,7 @@ TextComponent::TextComponent(const Text& desc)
   setJustificationType(juce::Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
   setTooltip("Time Display: Shows the current playback time in minutes, "
-             "seconds and millseconds.");
+             "seconds and omillseconds.");
 }
 
 Samples<44100> TextComponent::getTime() const {

@@ -44,8 +44,7 @@ static Def<TableColumnList> dflt(
 
 Loops::Loops(MenuBarModel* menus, const TableColumnList* desc,
              const Address& partAddress)
-    : component::Focusable<TableController>(menus),
-      partAddress_(partAddress) {
+    : partAddress_(partAddress) {
   cuttable_.reset(new LoopsCuttable(this));
   initialize(dflt.get(desc), "Loops");
   fillHeader(&getHeader());
