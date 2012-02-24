@@ -63,9 +63,11 @@ void nudgeVolumeUp(Instance* i) {
 }
 
 void clearLoops(Instance *i) {
+  const VirtualFile& f = i->file();
   LoopPointList loops;
   loops.add_loop_point();
-  data::setProto(loops, i->file());
+  loops.set_length(data::getProto<LoopPointList>(f).length());
+  data::setProto(loops, f);
 }
 
 void clearNavigator(Instance *) { data::setProto(VirtualFileList(), data::global()); }
