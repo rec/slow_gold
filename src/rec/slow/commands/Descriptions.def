@@ -134,15 +134,15 @@ command {
 command {
   type: NUDGE_VOLUME_DOWN
   desc {
-    menu: "Nudge gain down"
-    full: "Nudge gain down by 2dB"
+    menu: "Nudge volume down"
+    full: "Nudge volume down by 2dB"
   }
 }
 command {
   type: NUDGE_VOLUME_UP
   desc {
-    menu: "Nudge gain up"
-    full: "Nudge gain up by 2dB"
+    menu: "Nudge volume up"
+    full: "Nudge volume up by 2dB"
   }
 }
 command {
@@ -292,8 +292,8 @@ command {
 command {
   type: RESET_GAIN_TO_UNITY
   desc {
-    menu: "Reset Level"
-    full: "Reset audio level to 0 dB"
+    menu: "Reset Volume"
+    full: "Reset volume to 0 dB"
   }
 }
 command {
