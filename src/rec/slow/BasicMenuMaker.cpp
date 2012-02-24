@@ -63,10 +63,20 @@ void BasicMenuMaker::addSelectMenu() {
   add(Command::SELECT_ALL);
   add(Command::DESELECT_ALL);
   add(Command::INVERT_LOOP_SELECTION);
-  if (isOneSegmentSelected_ && (*isOneSegmentSelected_)())
+
+  switch (isWholeSong_.isWholeSong()) {
+   case IsWholeSong::ONE_SEGMENT:
     add(Command::TOGGLE_WHOLE_SONG_LOOP, "Loop Entire Track");
-  else
+    break;
+
+   case IsWholeSong::WHOLE_SONG:
     add(Command::TOGGLE_WHOLE_SONG_LOOP);
+    break;
+
+   case IsWholeSong::SONG_IS_ONE_SEGMENT:
+    add(Command::TOGGLE_WHOLE_SONG_LOOP, "Loop Entire Track", false);
+    break;
+  }
 }
 
 void BasicMenuMaker::addTransportMenu() {

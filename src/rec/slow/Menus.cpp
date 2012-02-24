@@ -1,6 +1,7 @@
 #include "rec/slow/Menus.h"
 
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/IsWholeSong.h"
 #include "rec/slow/MenuMaker.h"
 #include "rec/slow/Target.h"
 
@@ -9,7 +10,10 @@ using namespace rec::command;
 namespace rec {
 namespace slow {
 
-Menus::Menus(Instance* i) : HasInstance(i), advanced_(false) {}
+Menus::Menus(Instance* i, IsWholeSong* isWholeSong)
+    : HasInstance(i), advanced_(false), isWholeSong_(isWholeSong) {
+}
+
 Menus::~Menus() {}
 
 void Menus::operator()(const GuiSettings& settings) {
@@ -19,7 +23,7 @@ void Menus::operator()(const GuiSettings& settings) {
 
 MenuMaker* Menus::getMenuMaker() {
   Lock l(lock_);
-  return makeMenuMaker(target()->targetManager(), advanced_, NULL);
+  return makeMenuMaker(target()->targetManager(), advanced_, *isWholeSong_);
 }
 
 const StringArray Menus::getMenuBarNames() {

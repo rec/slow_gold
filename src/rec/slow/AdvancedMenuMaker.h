@@ -8,8 +8,8 @@ namespace slow {
 
 class AdvancedMenuMaker : public BasicMenuMaker {
  public:
-  AdvancedMenuMaker(command::TargetManager* t, Callback* isOneSegmentSelected)
-      : BasicMenuMaker(t, isOneSegmentSelected) {
+  AdvancedMenuMaker(command::TargetManager* t, const IsWholeSong& isWholeSong)
+      : BasicMenuMaker(t, isWholeSong) {
   }
   virtual ~AdvancedMenuMaker() {}
 

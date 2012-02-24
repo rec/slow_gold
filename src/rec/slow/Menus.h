@@ -5,6 +5,7 @@
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/Listener.h"
+#include "rec/util/thread/Callback.h"
 
 namespace rec {
 namespace slow {
@@ -12,13 +13,14 @@ namespace slow {
 class GuiSettings;
 class Instance;
 class MenuMaker;
+class IsWholeSong;
 
 class Menus : public MenuBarModel,
               public HasInstance,
               public Listener<None>,
               public GlobalDataListener<GuiSettings> {
  public:
-  Menus(Instance* i);
+  Menus(Instance*, IsWholeSong*);
   virtual ~Menus();
 
   virtual const StringArray getMenuBarNames();
@@ -32,6 +34,7 @@ class Menus : public MenuBarModel,
 
   CriticalSection lock_;
   bool advanced_;
+  ptr<IsWholeSong> isWholeSong_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Menus);
 };

@@ -15,12 +15,14 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiListener.h"
+#include "rec/slow/IsWholeSong.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -39,8 +41,24 @@ static const int MS_TILL_TOOLTIP = 700;
 
 using juce::TooltipWindow;
 
+namespace {
+
+class IsWholeSongInstance : public IsWholeSong, public HasInstance {
+ public:
+  IsWholeSongInstance(Instance* i) : HasInstance(i) {}
+
+  virtual IsWholeSong::WholeSong isWholeSong() const {
+    LoopPointList lpl = data::getProto<LoopPointList>(file());
+    return (lpl.loop_point_size() <= 1) ? IsWholeSong::SONG_IS_ONE_SEGMENT :
+      (audio::getSelectionCount(lpl) == 1) ? IsWholeSong::ONE_SEGMENT :
+      IsWholeSong::WHOLE_SONG;
+  }
+};
+
+}  // namespace
+
 Instance::Instance(SlowWindow* window) : window_(window) {
-  menus_.reset(new Menus(this));
+  menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
   device_.reset(new audio::Device);
   bufferFiller_.reset(new BufferFiller(this));
   currentFile_.reset(new CurrentFile(this));

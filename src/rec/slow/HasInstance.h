@@ -3,6 +3,7 @@
 
 #include "rec/slow/Instance.h"
 #include "rec/util/file/VirtualFile.pb.h"
+#include "rec/util/LoopPoint.pb.h"
 
 namespace rec {
 namespace slow {

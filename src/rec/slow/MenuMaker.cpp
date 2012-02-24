@@ -55,11 +55,11 @@ void MenuMaker::addBank(Command::Type command, const String& name,
 }
 
 MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
-                         Callback* isOneSegmentSelected) {
+                         const IsWholeSong& isWholeSong) {
   if (isAdvanced)
-    return new AdvancedMenuMaker(tm, isOneSegmentSelected);
+    return new AdvancedMenuMaker(tm, isWholeSong);
   else
-    return new BasicMenuMaker(tm, isOneSegmentSelected);
+    return new BasicMenuMaker(tm, isWholeSong);
 }
 
 }  // namespace slow

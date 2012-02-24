@@ -3,6 +3,7 @@
 
 #include "rec/base/base.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/slow/IsWholeSong.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
@@ -15,7 +16,9 @@ class MenuMaker {
  public:
   static const int SLOT_COUNT = 10;
 
-  MenuMaker(command::TargetManager* t) : targetManager_(t) {}
+  MenuMaker(command::TargetManager* t, const IsWholeSong& isWholeSong)
+      : isWholeSong_(isWholeSong), targetManager_(t) {
+  }
   virtual ~MenuMaker() {}
 
   const PopupMenu makeMenu(const String& name);
@@ -41,6 +44,7 @@ class MenuMaker {
                int end = SLOT_COUNT);
 
   PopupMenu menu_;
+  const IsWholeSong& isWholeSong_;
 
  private:
   command::TargetManager* targetManager_;
@@ -50,7 +54,7 @@ class MenuMaker {
 };
 
 MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
-                         Callback* isOneSegmentSelected);
+                         const IsWholeSong&);
 
 }  // namespace slow
 }  // namespace rec

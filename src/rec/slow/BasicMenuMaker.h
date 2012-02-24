@@ -2,15 +2,15 @@
 #define __REC_SLOW_BASICMENUMAKER__
 
 #include "rec/slow/MenuMaker.h"
-#include "rec/util/thread/Callback.h"
+#include "rec/slow/IsWholeSong.h"
 
 namespace rec {
 namespace slow {
 
 class BasicMenuMaker : public MenuMaker {
  public:
-  BasicMenuMaker(command::TargetManager* t, Callback* isOneSegmentSelected)
-      : MenuMaker(t), isOneSegmentSelected_(isOneSegmentSelected) {
+  BasicMenuMaker(command::TargetManager* t, const IsWholeSong& isWholeSong)
+      : MenuMaker(t, isWholeSong) {
   }
   virtual ~BasicMenuMaker() {}
 
@@ -25,8 +25,6 @@ class BasicMenuMaker : public MenuMaker {
   virtual bool addMenu(const String& menuName);
 
  private:
-  ptr<Callback> isOneSegmentSelected_;
-
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(BasicMenuMaker);
 };
 
