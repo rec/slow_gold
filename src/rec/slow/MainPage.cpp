@@ -119,7 +119,7 @@ MainPage::MainPage(Components* components)
 
   helpCaption_.setTooltip(helpHelp);
   helpCaption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
-  helpCaption_.setJustificationType(juce::Justification::centred);
+  helpCaption_.setJustificationType(Justification::centred);
   Font font = helpCaption_.getFont();
   font.setBold(true);
   font.setHeight(font.getHeight() + 2);
@@ -129,7 +129,7 @@ MainPage::MainPage(Components* components)
 
   helpBody_.setTooltip(helpHelp);
   helpBody_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
-  helpBody_.setJustificationType(juce::Justification::topLeft);
+  helpBody_.setJustificationType(Justification::topLeft);
 
   add(&playbackPanel_, &helpPanel_, MIN_HELP_PANEL, -1.0, -0.20);
   add(&helpPanel_, &helpCaption_, HELP_CAPTION_HEIGHT);

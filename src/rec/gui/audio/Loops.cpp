@@ -120,17 +120,16 @@ void Loops::update() {
 
 using data::Address;
 
-class LoopsSetterText : public SetterText {
+class LoopsSetterLabel : public SetterLabel {
  public:
-  explicit LoopsSetterText(int row, const TableColumn& col)
-      : SetterText("LoopsSetterText",
-                   getTypeName<LoopPointList>(),
-                   "loop_point" + Address(row) + col.address(),
-                   "",
-                   "",
-                   false),
+  explicit LoopsSetterLabel(int row, const TableColumn& col)
+      : SetterLabel("LoopsSetterLabel",
+                    getTypeName<LoopPointList>(),
+                    "loop_point" + Address(row) + col.address()),
         row_(row) {
+    setEditable(true, false, false);
     setFailOnError(false);
+    setJustificationType(Justification::centredLeft);
   }
 
  protected:
@@ -139,7 +138,7 @@ class LoopsSetterText : public SetterText {
     // at a point when it no longer points to a valid item in the LoopPointList.
     if (const LoopPointList* lpl = dynamic_cast<const LoopPointList*>(&m)) {
       if (row_ < lpl->loop_point_size())
-        SetterText::operator()(m);
+        SetterLabel::operator()(m);
     }
   }
 
@@ -147,7 +146,7 @@ class LoopsSetterText : public SetterText {
   CriticalSection lock_;
   int row_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LoopsSetterText);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LoopsSetterLabel);
 };
 
 Component* Loops::refreshComponentForCell(int row, int column,
@@ -160,7 +159,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
     } else {
       const TableColumn& col = columns().column(column - 1);
       if (col.type() == TableColumn::STRING) {
-        ptr<LoopsSetterText> lst(new LoopsSetterText(row, col));
+        ptr<LoopsSetterLabel> lst(new LoopsSetterLabel(row, col));
         lst->setTooltip("Loop Point Name: Edit the Loop Point's name "
                         "by clicking here.");
         lst->startListening();
@@ -169,7 +168,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
     }
   }
   if (existing) {
-    LoopsSetterText* text = dynamic_cast<LoopsSetterText*>(existing);
+    LoopsSetterLabel* text = dynamic_cast<LoopsSetterLabel*>(existing);
     if (text)
       text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
     else

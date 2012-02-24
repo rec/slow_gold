@@ -17,7 +17,7 @@ TextComponent::TextComponent(const Text& desc)
     : gui::SimpleLabel(str(desc.widget().name())),
       description_(desc),
       length_(0) {
-  setJustificationType(juce::Justification::centred);
+  setJustificationType(Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
   setTooltip("Time Display: Shows the current playback time in minutes, "
              "seconds and omillseconds.");

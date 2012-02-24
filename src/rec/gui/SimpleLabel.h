@@ -12,7 +12,7 @@ class SimpleLabel : public juce::Label {
               const String& labelText = String::empty)
       : juce::Label(name, labelText.length() ? labelText : name) {
     setFont(Font(12.0000f, Font::bold));
-    setJustificationType(juce::Justification::centredRight);
+    setJustificationType(Justification::centredRight);
     setEditable(false, false, false);
     setColour(juce::TextEditor::textColourId, juce::Colours::black);
     setColour(juce::TextEditor::backgroundColourId, Colour(0x0));

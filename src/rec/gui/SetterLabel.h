@@ -20,8 +20,10 @@ class SetterLabel : public SimpleLabel, public data::AddressListener {
   void operator()(const data::Value& v) {
     if (v.has_string_f()) {
       String s = str(v.string_f());
-      if (s != getText())
+      if (s != getText(true)) {
+        DLOG(INFO) << str(s) << ", " << str(getText(true));
         thread::callAsync(this, &SetterLabel::setText, s, false);
+      }
     }
   }
 
