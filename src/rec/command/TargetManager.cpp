@@ -5,7 +5,6 @@
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/KeyboardBindings.h"
-#include "rec/command/map/Keyboard.xml.h"
 #include "rec/data/Data.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
