@@ -22,9 +22,6 @@ class BasicMenuMaker : public MenuMaker {
   virtual bool addMenu(const String& menuName);
 
  private:
-  command::TargetManager* targetManager_;
-  bool isAdvanced_;
-
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(BasicMenuMaker);
 };
 
