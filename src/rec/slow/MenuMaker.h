@@ -3,6 +3,7 @@
 
 #include "rec/base/base.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/util/thread/Callback.h"
 
 namespace rec {
 
@@ -48,7 +49,8 @@ class MenuMaker {
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MenuMaker);
 };
 
-MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced);
+MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
+                         Callback* isOneSegmentSelected);
 
 }  // namespace slow
 }  // namespace rec

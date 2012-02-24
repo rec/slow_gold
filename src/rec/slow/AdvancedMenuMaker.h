@@ -8,7 +8,9 @@ namespace slow {
 
 class AdvancedMenuMaker : public BasicMenuMaker {
  public:
-  AdvancedMenuMaker(command::TargetManager* t) : BasicMenuMaker(t) {}
+  AdvancedMenuMaker(command::TargetManager* t, Callback* isOneSegmentSelected)
+      : BasicMenuMaker(t, isOneSegmentSelected) {
+  }
   virtual ~AdvancedMenuMaker() {}
 
   virtual const StringArray getMenuBarNames() const;

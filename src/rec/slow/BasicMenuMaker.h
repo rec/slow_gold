@@ -9,8 +9,7 @@ namespace slow {
 
 class BasicMenuMaker : public MenuMaker {
  public:
-  BasicMenuMaker(command::TargetManager* t,
-                 Callback* isOneSegmentSelected = NULL)
+  BasicMenuMaker(command::TargetManager* t, Callback* isOneSegmentSelected)
       : MenuMaker(t), isOneSegmentSelected_(isOneSegmentSelected) {
   }
   virtual ~BasicMenuMaker() {}

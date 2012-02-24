@@ -19,7 +19,7 @@ void Menus::operator()(const GuiSettings& settings) {
 
 MenuMaker* Menus::getMenuMaker() {
   Lock l(lock_);
-  return makeMenuMaker(target()->targetManager(), advanced_);
+  return makeMenuMaker(target()->targetManager(), advanced_, NULL);
 }
 
 const StringArray Menus::getMenuBarNames() {

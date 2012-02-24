@@ -54,11 +54,12 @@ void MenuMaker::addBank(Command::Type command, const String& name,
   menu_.addSubMenu(name, sub);
 }
 
-MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced) {
+MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
+                         Callback* isOneSegmentSelected) {
   if (isAdvanced)
-    return new AdvancedMenuMaker(tm);
+    return new AdvancedMenuMaker(tm, isOneSegmentSelected);
   else
-    return new BasicMenuMaker(tm);
+    return new BasicMenuMaker(tm, isOneSegmentSelected);
 }
 
 }  // namespace slow
