@@ -2,13 +2,17 @@
 #define __REC_SLOW_BASICMENUMAKER__
 
 #include "rec/slow/MenuMaker.h"
+#include "rec/util/thread/Callback.h"
 
 namespace rec {
 namespace slow {
 
 class BasicMenuMaker : public MenuMaker {
  public:
-  BasicMenuMaker(command::TargetManager* t) : MenuMaker(t) {}
+  BasicMenuMaker(command::TargetManager* t,
+                 Callback* isOneSegmentSelected = NULL)
+      : MenuMaker(t), isOneSegmentSelected_(isOneSegmentSelected) {
+  }
   virtual ~BasicMenuMaker() {}
 
   virtual const StringArray getMenuBarNames() const;
@@ -22,6 +26,8 @@ class BasicMenuMaker : public MenuMaker {
   virtual bool addMenu(const String& menuName);
 
  private:
+  ptr<Callback> isOneSegmentSelected_;
+
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(BasicMenuMaker);
 };
 

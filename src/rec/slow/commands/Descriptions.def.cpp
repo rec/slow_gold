@@ -309,7 +309,7 @@ Def<command::Commands> descriptions(
   "command {\n"
   "  type: TOGGLE_WHOLE_SONG_LOOP\n"
   "  desc {\n"
-  "    menu: \"Toggle Whole Segment Selection\"\n"
+  "    menu: \"Loop This Segment\"\n"
   "    full: \"Toggle selection between the current segment and the whole song.\"\n"
   "  }\n"
   "}\n"

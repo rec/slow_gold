@@ -63,7 +63,10 @@ void BasicMenuMaker::addSelectMenu() {
   add(Command::SELECT_ALL);
   add(Command::DESELECT_ALL);
   add(Command::INVERT_LOOP_SELECTION);
-  add(Command::TOGGLE_WHOLE_SONG_LOOP);
+  if (isOneSegmentSelected_ && (*isOneSegmentSelected_)())
+    add(Command::TOGGLE_WHOLE_SONG_LOOP, "Loop Entire Track");
+  else
+    add(Command::TOGGLE_WHOLE_SONG_LOOP);
 }
 
 void BasicMenuMaker::addTransportMenu() {
