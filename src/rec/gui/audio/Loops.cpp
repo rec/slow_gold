@@ -4,15 +4,14 @@
 
 #include "rec/base/Samples.h"
 #include "rec/data/DataOps.h"
-#include "rec/data/proto/FieldOps.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/data/proto/FieldOps.h"
 #include "rec/gui/SetterLabel.h"
 #include "rec/gui/SetterText.h"
 #include "rec/gui/audio/LoopsCuttable.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/Math.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/thread/CallAsync.h"
@@ -21,19 +20,16 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-namespace {
-
-}  // namespace
-
-static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
-static const juce::Colour SELECTED_COLOR(0xffefef80);
-
 using data::Address;
 using data::Value;
 using gui::TableColumn;
-using rec::audio::getSelected;
 
-static Def<TableColumnList> dflt(
+namespace {
+
+const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
+const juce::Colour SELECTED_COLOR(0xffefef80);
+
+Def<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
 "column { "
 "  type: STRING "
@@ -42,6 +38,8 @@ static Def<TableColumnList> dflt(
 "  width: 170 "
 "} "
 );
+
+}  // namespace
 
 Loops::Loops(MenuBarModel* menus, const TableColumnList* desc,
              const Address& partAddress)
