@@ -46,7 +46,7 @@ class Root : public Broadcaster<const VirtualFile&>,
    public:
     RootNode() : Node(NodeDesc(), VirtualFile()) {}
     virtual bool mightContainSubItems() { return true; }
-    virtual const String getUniqueName() const { return "root"; }
+    virtual String getUniqueName() const { return "root"; }
   };
 
   NodeDesc desc_;

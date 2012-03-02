@@ -18,7 +18,7 @@ class Shard : public Directory {
     partition();
   }
 
-  const String computeName() const { return shard_.name_; }
+  String computeName() const { return shard_.name_; }
 
   virtual void requestChildren() {}
   virtual void computeChildren() {}

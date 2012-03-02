@@ -24,12 +24,12 @@ AudioFormatWriter* RawFormat::createWriterFor(OutputStream* output,
                              bitsPerSample);
 }
 
-const juce::Array<int> RawFormat::getPossibleSampleRates() {
+juce::Array<int> RawFormat::getPossibleSampleRates() {
   static int rates[] = {22050, 24000, 44100, 48000, 88200, 96000};
   return juce::Array<int>(rates, arraysize(rates));
 }
 
-const juce::Array<int> RawFormat::getPossibleBitDepths() {
+juce::Array<int> RawFormat::getPossibleBitDepths() {
   static const int depths[] = {8, 16, 32};
   return juce::Array<int>(depths, arraysize(depths));
 }

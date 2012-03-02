@@ -15,7 +15,7 @@ public:
     {
     }
 
-    const String getUniqueName() const          { return String ((int) commandID) + "_id"; }
+    String getUniqueName() const          { return String ((int) commandID) + "_id"; }
     bool mightContainSubItems()                 { return false; }
     int getItemHeight() const                   { return 20; }
 

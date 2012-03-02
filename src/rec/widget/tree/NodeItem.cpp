@@ -101,7 +101,7 @@ void Node::refreshNode(const VirtualFile& f) {
   }
 }
 
-const String Node::computeName() const {
+String Node::computeName() const {
   String name = getDisplayName(virtualFile_);
   if (!isDirectory())
     name = music::cleanName(name);

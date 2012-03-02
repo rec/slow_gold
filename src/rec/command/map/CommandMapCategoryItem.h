@@ -21,7 +21,7 @@ public:
         return new CommandMapEditorMappingItem(owner, cmd);
     }
 
-    const String getUniqueName() const          { return categoryName + "_cat"; }
+    String getUniqueName() const          { return categoryName + "_cat"; }
     bool mightContainSubItems()                 { return true; }
     int getItemHeight() const                   { return 28; }
 

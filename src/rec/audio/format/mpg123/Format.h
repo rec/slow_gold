@@ -27,8 +27,8 @@ class Format : public juce::AudioFormat {
     return NULL;
   }
 
-  virtual const juce::Array<int> getPossibleSampleRates();
-  virtual const juce::Array<int> getPossibleBitDepths();
+  juce::Array<int> getPossibleSampleRates();
+  juce::Array<int> getPossibleBitDepths();
 
   virtual bool canDoStereo() { return true; }
   virtual bool canDoMono() { return true; }

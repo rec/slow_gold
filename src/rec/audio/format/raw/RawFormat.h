@@ -23,8 +23,8 @@ class RawFormat : public juce::AudioFormat {
                                              const StringPairArray& meta,
                                              int quality);
 
-  virtual const juce::Array<int> getPossibleSampleRates();
-  virtual const juce::Array<int> getPossibleBitDepths();
+  virtual juce::Array<int> getPossibleSampleRates();
+  virtual juce::Array<int> getPossibleBitDepths();
 
   virtual bool canDoStereo() { return true; }
   virtual bool canDoMono() { return true; }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT bundleIdentifier="recs.to" id="NSu8BB" jucerVersion="3.0.0" name="slow"
+<JUCERPROJECT bundleIdentifier="recs.to" id="NSu8BB" jucerVersion="3.0.0" name="SlowGold 8"
               projectType="guiapp" version="1.0.0">
   <EXPORTFORMATS>
     <XCODE_MAC juceFolder="../../../juce/modules" objCExtraSuffix="jeMWW9" targetFolder="Builds/MacOSX"
@@ -15,7 +15,7 @@
       </CONFIGURATIONS>
     </XCODE_MAC>
   </EXPORTFORMATS>
-  <MAINGROUP id="zjy0kho1V" name="slow">
+  <MAINGROUP id="zjy0kho1V" name="SlowGold 8">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1418,6 +1418,7 @@
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS JUCE_PLUGINHOST_AU="disabled" JUCE_PLUGINHOST_VST="disabled"

@@ -23,12 +23,12 @@ AudioFormatReader* Format::createReaderFor(InputStream* sourceStream,
   return reader;
 }
 
-const Array<int> Format::getPossibleSampleRates() { 
-  return getSampleRates(); 
+Array<int> Format::getPossibleSampleRates() {
+  return getSampleRates();
 }
 
-const Array<int> Format::getPossibleBitDepths() { 
-  return getBitDepths(); 
+Array<int> Format::getPossibleBitDepths() {
+  return getBitDepths();
 }
 
 }  // namespace mpg123

@@ -25,7 +25,7 @@ class Node : public juce::TreeViewItem,
   virtual void requestChildren() {}
 
   virtual bool mightContainSubItems() { return isDirectory(); }
-  virtual const String getUniqueName() const { return name(); }
+  virtual String getUniqueName() const { return name(); }
   virtual int getItemWidth() const;
   virtual int getItemHeight() const;
   virtual juce::Component* createItemComponent();
@@ -34,7 +34,7 @@ class Node : public juce::TreeViewItem,
   void refreshNode(const VirtualFile&);
 
   const String name() const;
-  virtual const String computeName() const;
+  virtual String computeName() const;
 
   void paint(juce::Graphics& g) const;
 

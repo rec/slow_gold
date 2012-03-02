@@ -25,7 +25,7 @@ public:
     }
 
     bool mightContainSubItems()             { return true; }
-    const String getUniqueName() const      { return "keys"; }
+    String getUniqueName() const      { return "keys"; }
 
     void changeListenerCallback (ChangeBroadcaster*)
     {
