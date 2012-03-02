@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="NSu8BB" name="slow" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="recs.to" jucerVersion="3.0.0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="jeMWW9" juceFolder="../../../juce/modules">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="NewProject"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="NewProject"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+      </CONFIGURATIONS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MAINGROUP id="knxP3N" name="slow">
+    <GROUP id="{0DA8697D-F72D-8F37-09A5-26F644BFA29E}" name="Source"/>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_USE_CDREADER="enabled" JUCE_USE_CDBURNER="enabled" JUCE_USE_FLAC="enabled"
+               JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"
+               JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_AU="disabled"/>
+</JUCERPROJECT>
