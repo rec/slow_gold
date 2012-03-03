@@ -27,6 +27,8 @@ struct TimeAndMouseEvent;
 
 typedef vector<Cursor*> CursorList;
 
+// #define USE_CUSTOM_REPAINT
+
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
                  public SettableTooltipClient,
@@ -35,8 +37,11 @@ class Waveform : public Component,
                  public GlobalDataListener<WaveformProto>,
                  public DataListener<ZoomProto>,
                  public Broadcaster<const MouseWheelEvent&>,
-                 public Broadcaster<const TimeAndMouseEvent&>,
-                 public Listener<bool> {
+                 public Broadcaster<const TimeAndMouseEvent&>
+#ifdef USE_CUSTOM_REPAINT
+               , public Listener<bool>
+#endif
+{
  public:
   Waveform(MenuBarModel* model = NULL,
            const CursorProto* cursor = &defaultTimeCursor());
@@ -49,19 +54,23 @@ class Waveform : public Component,
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
   virtual void resized() { layout(); }
 
+#ifdef USE_CUSTOM_REPAINT
   virtual void internalRepaint (int x, int y, int width, int height);
+
+  virtual void operator()(bool b) {
+    DLOG(INFO) << "What's this?!";
+    MessageManagerLock l;
+    helpScreenUp_ = b;
+    if (!helpScreenUp_)
+      repaint();
+  }
+#endif
 
   virtual void paint(Graphics&);
   virtual void operator()(const LoopPointList&);
   virtual void operator()(const Mode&);
   virtual void operator()(const WaveformProto&);
   virtual void operator()(const ZoomProto&);
-  virtual void operator()(bool b) {
-    MessageManagerLock l;
-    helpScreenUp_ = b;
-    if (!helpScreenUp_)
-      repaint();
-  }
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 
@@ -107,8 +116,12 @@ class Waveform : public Component,
   ZoomProto zoom_;
   bool empty_;
   bool isDraggingCursor_;
+
+#ifdef USE_CUSTOM_REPAINT
   juce::Rectangle<int> dirty_;
   bool helpScreenUp_;
+#endif
+
   juce::MouseCursor	zoomCursor_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);

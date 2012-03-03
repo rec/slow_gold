@@ -62,7 +62,9 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       thumbnail_(NULL),
       empty_(true),
       isDraggingCursor_(false),
+#ifdef USE_CUSTOM_REPAINT
       helpScreenUp_(false),
+#endif
       zoomCursor_(*ptr<juce::Image>(getZoomCursor()), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
@@ -75,13 +77,16 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
                           "current time during playback. You can also drag it "
                           "around to set the current playback time.");
   timeCursor_->startListening();
+#ifdef USE_CUSTOM_REPAINT
   gui::clear(&dirty_);
+#endif
 }
 
 Waveform::~Waveform() {
   stl::deletePointers(&cursors_);
 }
 
+#ifdef USE_CUSTOM_REPAINT
 void Waveform::internalRepaint(int x, int y, int width, int height) {
   Lock l(lock_);
   juce::Rectangle<int> r(std::max(x, 0), std::max(y, 0), width, height);
@@ -92,6 +97,7 @@ void Waveform::internalRepaint(int x, int y, int width, int height) {
   if (width * height)
     Component::internalRepaint(x, y, width, height);
 }
+#endif
 
 void Waveform::startListening() {
   DataListener<LoopPointList>::startListening();
@@ -108,6 +114,7 @@ const CursorProto& Waveform::defaultTimeCursor() {
 void Waveform::paint(Graphics& g) {
   {
     Lock l(lock_);
+#ifdef USE_CUSTOM_REPAINT
     if (!helpScreenUp_) {
       juce::Rectangle<int> clip = g.getClipBounds().getIntersection(dirty_);
       bool hasClip = clip.getWidth() * clip.getHeight();
@@ -119,6 +126,7 @@ void Waveform::paint(Graphics& g) {
         return;
       }
     }
+#endif
 
     Painter p(desc_.widget(), &g);
 

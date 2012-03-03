@@ -37,7 +37,9 @@ namespace {
 static const int SELECTION_WIDTH_PORTION = 20;
 
 void aboutThisProgram(Instance* i) {
+#ifdef USE_CUSTOM_REPAINT
   (*i->components_->waveform_)(false);
+#endif
   i->window_->startAboutWindow();
 }
 
