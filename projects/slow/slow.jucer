@@ -4,7 +4,8 @@
               projectType="guiapp" version="1.0.0">
   <EXPORTFORMATS>
     <XCODE_MAC juceFolder="../../../juce/modules" objCExtraSuffix="jeMWW9" targetFolder="Builds/MacOSX"
-               extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged">
+               extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
+               smallIcon="k8EMdGWkD" bigIcon="wiIhPYIwK">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" optimisation="1" osxArchitecture="default"
                        osxCompatibility="default" osxSDK="default" targetName="SlowGold 8-debug"

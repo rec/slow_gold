@@ -228,6 +228,7 @@
 		D0984E8D4521CE2EC54492DC /* CommandDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59452ABC44BDF2414798FA60 /* CommandDatabase.cpp */; };
 		D0C5EAB5F8CA8A1630DA6CA5 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DE48437DACB33D91141358F /* NewHandle.cpp */; };
 		D11636A593BF3C167EEB0B11 /* emitfromevents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B8B25CA6B0E228D915771 /* emitfromevents.cpp */; };
+		D1656AA086B7135380C6BB3A /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AC12A72D9D263885F500466D /* Icon.icns */; };
 		D218B642E1AFCAE5B2B195F9 /* GetVolumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF5711EADB32957806AC6E6 /* GetVolumes.cpp */; };
 		D251F40A1F0B531D56E9AA3A /* Zoom.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = AF6D10012174CC035761FF73 /* Zoom.pb.cc */; };
 		D2D9B0301BC9796393C17DE4 /* CommandMapEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A68A756B9179F920C6DCDBB9 /* CommandMapEditor.cpp */; };
@@ -820,7 +821,7 @@
 		5717827E485ECB356F536CAB /* juce_android_CameraDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_CameraDevice.cpp; path = ../../../../../juce/modules/juce_video/native/juce_android_CameraDevice.cpp; sourceTree = SOURCE_ROOT; };
 		5717DEB69D118F82FABED64D /* juce_ChangeListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ChangeListener.h; path = ../../../../../juce/modules/juce_events/broadcasters/juce_ChangeListener.h; sourceTree = SOURCE_ROOT; };
 		5743C7068DFB147AE0F83DA3 /* SetterResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterResizer.h; path = ../../../../src/rec/gui/SetterResizer.h; sourceTree = SOURCE_ROOT; };
-		57A179F92CC94E9DAF17FBF5 /* SlowGold 8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57A179F92CC94E9DAF17FBF5 /* SlowGold 8-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		580E722F4D575D7823A165A8 /* juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_audio_utils.mm; path = ../../../../../juce/modules/juce_audio_utils/juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
 		585B6DEEBA218C24E925C8AB /* juce_CharPointer_ASCII.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_CharPointer_ASCII.h; path = ../../../../../juce/modules/juce_core/text/juce_CharPointer_ASCII.h; sourceTree = SOURCE_ROOT; };
 		5865D2663DFD5F540E0D33CE /* scantag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scantag.h; path = ../../../../src/rec/data/yaml/src/scantag.h; sourceTree = SOURCE_ROOT; };
@@ -1293,6 +1294,7 @@
 		AB88943B9AEFA759477BCACE /* KeyCommandMapEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KeyCommandMapEditor.cpp; path = ../../../../src/rec/command/map/KeyCommandMapEditor.cpp; sourceTree = SOURCE_ROOT; };
 		ABC4358166F46DD68A8BD9D8 /* Clear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Clear.h; path = ../../../../src/rec/audio/util/Clear.h; sourceTree = SOURCE_ROOT; };
 		ABFA484BEE847985DCDF3FF1 /* juce_AudioIODeviceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_AudioIODeviceType.h; path = ../../../../../juce/modules/juce_audio_devices/audio_io/juce_AudioIODeviceType.h; sourceTree = SOURCE_ROOT; };
+		AC12A72D9D263885F500466D /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = SOURCE_ROOT; };
 		AC133A5851DE469081C8ECA5 /* aliascontent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aliascontent.h; path = ../../../../src/rec/data/yaml/src/aliascontent.h; sourceTree = SOURCE_ROOT; };
 		AC14DE66CF52DCE0A4685606 /* juce_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_core.h; path = ../../../../../juce/modules/juce_core/juce_core.h; sourceTree = SOURCE_ROOT; };
 		AC3123A0553564694C80CF94 /* juce_MarkerList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_MarkerList.cpp; path = ../../../../../juce/modules/juce_gui_basics/positioning/juce_MarkerList.cpp; sourceTree = SOURCE_ROOT; };
@@ -1848,6 +1850,7 @@
 			isa = PBXGroup;
 			children = (
 				7438E70B06C55782C849220B /* Info.plist */,
+				AC12A72D9D263885F500466D /* Icon.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2043,7 +2046,7 @@
 		15D5B9524ABD37A7B5D2F73D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				57A179F92CC94E9DAF17FBF5 /* SlowGold 8.app */,
+				57A179F92CC94E9DAF17FBF5 /* SlowGold 8-debug.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4563,7 +4566,7 @@
 			name = "SlowGold 8";
 			productInstallPath = "$(HOME)/Applications";
 			productName = "SlowGold 8";
-			productReference = 57A179F92CC94E9DAF17FBF5 /* SlowGold 8.app */;
+			productReference = 57A179F92CC94E9DAF17FBF5 /* SlowGold 8-debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -4595,6 +4598,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1656AA086B7135380C6BB3A /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,6 +48,7 @@ message Command {
     NUDGE_VOLUME_UP = 20;
 
     OPEN = 21;
+    OPEN_MANUAL = 65;
 
     RECENT_FILES = 22;
     REDO = 23;
@@ -91,7 +92,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 64;
+    LAST_TYPE = 65;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

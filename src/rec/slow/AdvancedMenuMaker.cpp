@@ -75,7 +75,7 @@ void AdvancedMenuMaker::addDisplayMenu() {
 
 const StringArray AdvancedMenuMaker::getMenuBarNames() const {
   static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select",
-                                "Display"};
+                                "Display", "Help"};
   return StringArray(NAMES, arraysize(NAMES));
 }
 

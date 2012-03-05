@@ -85,8 +85,12 @@ void BasicMenuMaker::addTransportMenu() {
   add(Command::CLEAR_LOOPS);
 }
 
+void BasicMenuMaker::addHelpMenu() {
+  add(Command::OPEN_MANUAL);
+}
+
 const StringArray BasicMenuMaker::getMenuBarNames() const {
-  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select"};
+  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select", "Help"};
   return StringArray(NAMES, arraysize(NAMES));
 }
 
@@ -105,6 +109,9 @@ bool BasicMenuMaker::addMenu(const String& menuName) {
 
   else if (menuName == "Transport")
     addTransportMenu();
+
+  else if (menuName == "Help")
+    addHelpMenu();
 
   else
     return false;

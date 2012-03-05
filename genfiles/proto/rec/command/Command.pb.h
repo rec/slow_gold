@@ -56,10 +56,10 @@ enum Command_Type {
   Command_Type_JUMP_SELECTED = 11,
   Command_Type_KEYBOARD_MAPPINGS = 12,
   Command_Type_MIDI_MAPPINGS = 13,
+  Command_Type_MODE_ADD_LOOP_POINT = 63,
   Command_Type_MODE_DRAG = 60,
   Command_Type_MODE_SET_TIME = 61,
   Command_Type_MODE_ZOOM_IN = 62,
-  Command_Type_MODE_ADD_LOOP_POINT = 63,
   Command_Type_MUTE_VOLUME_TOGGLE = 14,
   Command_Type_NUDGE_BEGIN_LEFT = 15,
   Command_Type_NUDGE_BEGIN_RIGHT = 16,
@@ -68,6 +68,7 @@ enum Command_Type {
   Command_Type_NUDGE_VOLUME_DOWN = 19,
   Command_Type_NUDGE_VOLUME_UP = 20,
   Command_Type_OPEN = 21,
+  Command_Type_OPEN_MANUAL = 65,
   Command_Type_RECENT_FILES = 22,
   Command_Type_REDO = 23,
   Command_Type_RESET_GAIN_TO_UNITY = 24,
@@ -104,7 +105,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 64,
+  Command_Type_LAST_TYPE = 65,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -323,10 +324,10 @@ class Command : public ::google::protobuf::Message {
   static const Type JUMP_SELECTED = Command_Type_JUMP_SELECTED;
   static const Type KEYBOARD_MAPPINGS = Command_Type_KEYBOARD_MAPPINGS;
   static const Type MIDI_MAPPINGS = Command_Type_MIDI_MAPPINGS;
+  static const Type MODE_ADD_LOOP_POINT = Command_Type_MODE_ADD_LOOP_POINT;
   static const Type MODE_DRAG = Command_Type_MODE_DRAG;
   static const Type MODE_SET_TIME = Command_Type_MODE_SET_TIME;
   static const Type MODE_ZOOM_IN = Command_Type_MODE_ZOOM_IN;
-  static const Type MODE_ADD_LOOP_POINT = Command_Type_MODE_ADD_LOOP_POINT;
   static const Type MUTE_VOLUME_TOGGLE = Command_Type_MUTE_VOLUME_TOGGLE;
   static const Type NUDGE_BEGIN_LEFT = Command_Type_NUDGE_BEGIN_LEFT;
   static const Type NUDGE_BEGIN_RIGHT = Command_Type_NUDGE_BEGIN_RIGHT;
@@ -335,6 +336,7 @@ class Command : public ::google::protobuf::Message {
   static const Type NUDGE_VOLUME_DOWN = Command_Type_NUDGE_VOLUME_DOWN;
   static const Type NUDGE_VOLUME_UP = Command_Type_NUDGE_VOLUME_UP;
   static const Type OPEN = Command_Type_OPEN;
+  static const Type OPEN_MANUAL = Command_Type_OPEN_MANUAL;
   static const Type RECENT_FILES = Command_Type_RECENT_FILES;
   static const Type REDO = Command_Type_REDO;
   static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;

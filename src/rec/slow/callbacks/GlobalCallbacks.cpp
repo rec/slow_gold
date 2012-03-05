@@ -8,6 +8,13 @@
 namespace rec {
 namespace slow {
 
+namespace {
+
+void openManual() {
+}
+
+}
+
 using command::Command;
 
 void addGlobalCallbacks(CommandRecordTable* t) {
@@ -18,6 +25,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::REDO, redo);
   addCallback(t, Command::UNDO, undo);
   addCallback(t, Command::EJECT_CDS, &cd::ejectAll);
+  addCallback(t, Command::OPEN_MANUAL, &openManual);
 }
 
 }  // namespace slow
