@@ -77,6 +77,7 @@ void BasicMenuMaker::addSelectMenu() {
     add(Command::TOGGLE_WHOLE_SONG_LOOP, "Loop Entire Track", false);
     break;
   }
+  add(Command::ZOOM_TO_SELECTION);
 }
 
 void BasicMenuMaker::addTransportMenu() {

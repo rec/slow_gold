@@ -88,6 +88,7 @@ command {
 }
 command {
   type: ZOOM_TO_SELECTION
+  keypress: "command  + '"
   keypress: "numpad *"
 }
 command {

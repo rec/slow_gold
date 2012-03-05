@@ -98,6 +98,7 @@ Def<command::Commands> keyPresses(
   "}\n"
   "command {\n"
   "  type: ZOOM_TO_SELECTION\n"
+  "  keypress: \"command  + '\"\n"
   "  keypress: \"numpad *\"\n"
   "}\n"
   "command {\n"
