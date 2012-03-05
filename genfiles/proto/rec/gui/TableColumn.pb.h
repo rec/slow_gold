@@ -207,14 +207,14 @@ class TableColumn : public ::google::protobuf::Message {
   inline void set_name(const char* value, size_t size);
   inline ::std::string* mutable_name();
   
-  // optional uint32 width = 1 [default = 80];
+  // optional uint32 width = 1 [default = 60];
   inline bool has_width() const;
   inline void clear_width();
   static const int kWidthFieldNumber = 1;
   inline ::google::protobuf::uint32 width() const;
   inline void set_width(::google::protobuf::uint32 value);
   
-  // optional uint32 minimum_width = 2 [default = 80];
+  // optional uint32 minimum_width = 2 [default = 60];
   inline bool has_minimum_width() const;
   inline void clear_minimum_width();
   static const int kMinimumWidthFieldNumber = 2;
@@ -425,12 +425,12 @@ inline ::std::string* TableColumn::mutable_name() {
   return name_;
 }
 
-// optional uint32 width = 1 [default = 80];
+// optional uint32 width = 1 [default = 60];
 inline bool TableColumn::has_width() const {
   return _has_bit(1);
 }
 inline void TableColumn::clear_width() {
-  width_ = 80u;
+  width_ = 60u;
   _clear_bit(1);
 }
 inline ::google::protobuf::uint32 TableColumn::width() const {
@@ -441,12 +441,12 @@ inline void TableColumn::set_width(::google::protobuf::uint32 value) {
   width_ = value;
 }
 
-// optional uint32 minimum_width = 2 [default = 80];
+// optional uint32 minimum_width = 2 [default = 60];
 inline bool TableColumn::has_minimum_width() const {
   return _has_bit(2);
 }
 inline void TableColumn::clear_minimum_width() {
-  minimum_width_ = 80u;
+  minimum_width_ = 60u;
   _clear_bit(2);
 }
 inline ::google::protobuf::uint32 TableColumn::minimum_width() const {

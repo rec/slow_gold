@@ -26,8 +26,8 @@ message TableColumn {
   };
 
   optional string name = 7;
-  optional uint32 width = 1 [default = 80];
-  optional uint32 minimum_width = 2 [default = 80];
+  optional uint32 width = 1 [default = 60];
+  optional uint32 minimum_width = 2 [default = 60];
   optional int32 maximum_width = 3 [default = -1];
 
   optional Properties property_flags = 4 [default = DEFAULT];

@@ -108,8 +108,8 @@ void protobuf_AddDesc_rec_2fgui_2fTableColumn_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/gui/TableColumn.proto\022\007rec.gui\032\034re"
     "c/data/proto/Address.proto\"\332\003\n\013TableColu"
-    "mn\022\014\n\004name\030\007 \001(\t\022\021\n\005width\030\001 \001(\r:\00280\022\031\n\rm"
-    "inimum_width\030\002 \001(\r:\00280\022\031\n\rmaximum_width\030"
+    "mn\022\014\n\004name\030\007 \001(\t\022\021\n\005width\030\001 \001(\r:\00260\022\031\n\rm"
+    "inimum_width\030\002 \001(\r:\00260\022\031\n\rmaximum_width\030"
     "\003 \001(\005:\002-1\022@\n\016property_flags\030\004 \001(\0162\037.rec."
     "gui.TableColumn.Properties:\007DEFAULT\022\'\n\007a"
     "ddress\030\005 \001(\0132\026.rec.data.AddressProto\022\'\n\004"
@@ -229,8 +229,8 @@ TableColumn::TableColumn(const TableColumn& from)
 void TableColumn::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&_default_name_);
-  width_ = 80u;
-  minimum_width_ = 80u;
+  width_ = 60u;
+  minimum_width_ = 60u;
   maximum_width_ = -1;
   property_flags_ = 143;
   address_ = NULL;
@@ -278,8 +278,8 @@ void TableColumn::Clear() {
         name_->clear();
       }
     }
-    width_ = 80u;
-    minimum_width_ = 80u;
+    width_ = 60u;
+    minimum_width_ = 60u;
     maximum_width_ = -1;
     property_flags_ = 143;
     if (_has_bit(5)) {
@@ -297,7 +297,7 @@ bool TableColumn::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 width = 1 [default = 80];
+      // optional uint32 width = 1 [default = 60];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -312,7 +312,7 @@ bool TableColumn::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 minimum_width = 2 [default = 80];
+      // optional uint32 minimum_width = 2 [default = 60];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -435,12 +435,12 @@ bool TableColumn::MergePartialFromCodedStream(
 
 void TableColumn::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 width = 1 [default = 80];
+  // optional uint32 width = 1 [default = 60];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->width(), output);
   }
   
-  // optional uint32 minimum_width = 2 [default = 80];
+  // optional uint32 minimum_width = 2 [default = 60];
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->minimum_width(), output);
   }
@@ -485,12 +485,12 @@ void TableColumn::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* TableColumn::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint32 width = 1 [default = 80];
+  // optional uint32 width = 1 [default = 60];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->width(), target);
   }
   
-  // optional uint32 minimum_width = 2 [default = 80];
+  // optional uint32 minimum_width = 2 [default = 60];
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->minimum_width(), target);
   }
@@ -547,14 +547,14 @@ int TableColumn::ByteSize() const {
           this->name());
     }
     
-    // optional uint32 width = 1 [default = 80];
+    // optional uint32 width = 1 [default = 60];
     if (has_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->width());
     }
     
-    // optional uint32 minimum_width = 2 [default = 80];
+    // optional uint32 minimum_width = 2 [default = 60];
     if (has_minimum_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

@@ -30,7 +30,12 @@ const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
 const juce::Colour SELECTED_COLOR(0xffefef80);
 
 Def<TableColumnList> dflt(
-"column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
+"column { "
+"  type: TIME "
+"  name: \"Time\" "
+"  address { part { name: \"time\" } } "
+"  width: 50 "
+"} "
 "column { "
 "  type: STRING "
 "  name: \"Name\" "
@@ -67,11 +72,13 @@ void Loops::operator()(const LoopPointList& loops) {
   thread::callAsync(this, &Loops::updateAndRepaint);
 }
 
+
 static String getDisplayText(const Value& v, const TableColumn& col, Samples<44100> length) {
   switch (col.type()) {
    case TableColumn::STRING:  return str(v.string_f());
    case TableColumn::UINT32:  return String(v.uint32_f());
-   case TableColumn::TIME:    return formatTime(Samples<44100>(v.int64_f()), length);
+   case TableColumn::TIME:    return formatTime(Samples<44100>(v.int64_f()),
+                                                length, false, true, 0);
    case TableColumn::DOUBLE:  return String(v.double_f());
    default:                   return "<unknown>";
   }
