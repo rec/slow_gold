@@ -172,11 +172,10 @@ void zoomOutFull(Instance* i) {
 void zoomToSelection(Instance* i) {
   block::Block range = block::toBlock(i->currentTime_->timeSelection());
   int64 pad = block::getSize(range) / SELECTION_WIDTH_PORTION;
-
-  ZoomProto zoom;
-  zoom.set_begin(std::max(0LL, range.first - pad));
-  zoom.set_end(std::min(i->length().get(), range.second + pad));
-  data::setProto(zoom, i->file());
+  widget::waveform::zoomTo(i->file(),
+                           std::max(0LL, range.first - pad),
+                           std::min(i->length().get(), range.second + pad),
+                           i->length());
 }
 
 void audioPreferences(Instance* i) {

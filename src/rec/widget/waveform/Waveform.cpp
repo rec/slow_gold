@@ -257,7 +257,8 @@ void Waveform::operator()(const ZoomProto& zp) {
   {
     Lock l(lock_);
     zoom_ = zp;
-    constrainZoom(&zoom_, length_);
+    if (length_)
+      constrainZoom(&zoom_, length_);
   }
 
   thread::callAsync(this, &Waveform::layout);

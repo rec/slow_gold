@@ -49,10 +49,21 @@ ZoomProto zoom(const ZoomProto& z, Samples<44100> length, double k) {
 }  // namespace
 
 void constrainZoom(ZoomProto* z, Samples<44100> length) {
-  if (z->begin() < 0 || z->end() > length ||
-      (z->end() - z->begin()) < SMALLEST_TIME_SAMPLES) {
+  DCHECK(length);
+
+  if (z->begin() < 0)
     z->set_begin(0);
+
+  if (z->end() > length || !z->end())
     z->set_end(length);
+
+  Samples<44100> under = SMALLEST_TIME_SAMPLES - (z->end() - z->begin());
+  if (under > 0) {
+    Samples<44100> end = z->end() + under;
+    if (end < length)
+      z->set_end(end);
+    else
+      z->set_begin(z->begin() - under);
   }
 }
 
@@ -69,6 +80,17 @@ void zoomOutFull(const VirtualFile& f, Samples<44100> length) {
   zoom.set_end(length);
   data::setProto(zoom, &f);
 }
+
+void zoomTo(const VirtualFile& f, Samples<44100> begin, Samples<44100> end,
+            Samples<44100> length) {
+  ZoomProto zoom;
+  zoom.set_begin(begin);
+  zoom.set_end(end);
+
+  constrainZoom(&zoom, length);
+  data::setProto(zoom, &f);
+}
+
 
 }  // namespace waveform
 }  // namespace widget
