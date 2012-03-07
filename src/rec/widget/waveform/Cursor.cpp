@@ -158,12 +158,14 @@ void Cursor::layout() {
     return;
 
   setBounds(bounds);
-  adjustCaption();
 
   if (isTimeCursor_)
     return;
+
+  adjustCaption();
   juce::Rectangle<int> after = getBounds();
   if (before != after) {
+    DLOG(INFO) << str(gui::toString(before)) << ", " << str(gui::toString(after));
     waveform_->repaint(before);
     waveform_->repaint(after);
   }
@@ -186,6 +188,7 @@ void Cursor::adjustCaption() {
   if (!isTimeCursor_) {
     juce::Rectangle<int> after = caption_->getBounds();
     if (before != after) {
+      DLOG(INFO) << str(gui::toString(before)) << ", " << str(gui::toString(after));
       waveform_->repaint(before);
       waveform_->repaint(after);
     }

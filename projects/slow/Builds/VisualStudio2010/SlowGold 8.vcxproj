@@ -272,6 +272,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\layout\Layout.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
@@ -2238,6 +2239,9 @@
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include=".\resources.rc"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <ImportGroup Label="ExtensionTargets"/>

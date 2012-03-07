@@ -61,6 +61,7 @@
 		34C7EFC11FE04B08DBE97CEC /* CurrentTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75533DC929D839C5E0C34A52 /* CurrentTime.cpp */; };
 		3573A760725B3B872B029AA4 /* Loops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12EA84D3E88B2A0E15AF35CD /* Loops.cpp */; };
 		36827536EDF9245B419061A6 /* stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB4272C0E76744FC58762F61 /* stream.cpp */; };
+		3993AFB1C0200AD228DD372E /* Layout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B524B46C6135812738601231 /* Layout.cpp */; };
 		3AECBDF82C948A8931C1558B /* JumpBackButtonDisabled.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DB583EFBE0388289640847 /* JumpBackButtonDisabled.svg.cpp */; };
 		3B412A0980D98689BD4C81A8 /* Stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B32BBBE7EA0061FE5510709F /* Stereo.cpp */; };
 		3B5CEF646BC42F0ADF467AE6 /* Thread.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B88630693EEC7D15DADC3 /* Thread.pb.cc */; };
@@ -1345,6 +1346,7 @@
 		B4BD2D37579AD5C7467D492D /* juce_PluginDescription.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_PluginDescription.cpp; path = ../../../../../juce/modules/juce_audio_processors/processors/juce_PluginDescription.cpp; sourceTree = SOURCE_ROOT; };
 		B4C9CAEFE6E8E5B836775371 /* juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_events.mm; path = ../../../../../juce/modules/juce_events/juce_events.mm; sourceTree = SOURCE_ROOT; };
 		B5209213FA35ADBECE1C5917 /* juce_Synthesiser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_Synthesiser.h; path = ../../../../../juce/modules/juce_audio_basics/synthesisers/juce_Synthesiser.h; sourceTree = SOURCE_ROOT; };
+		B524B46C6135812738601231 /* Layout.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Layout.cpp; path = ../../../../src/rec/gui/layout/Layout.cpp; sourceTree = SOURCE_ROOT; };
 		B5E090EE385A478AFE02DFE0 /* juce_NamedPipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_NamedPipe.h; path = ../../../../../juce/modules/juce_core/network/juce_NamedPipe.h; sourceTree = SOURCE_ROOT; };
 		B5F0EEE610A868084A6DA7A0 /* GuiSettings.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GuiSettings.pb.h; path = ../../../../genfiles/proto/rec/slow/GuiSettings.pb.h; sourceTree = SOURCE_ROOT; };
 		B6374ED1B232D89AAB62435D /* juce_AudioProcessorGraph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_AudioProcessorGraph.cpp; path = ../../../../../juce/modules/juce_audio_processors/processors/juce_AudioProcessorGraph.cpp; sourceTree = SOURCE_ROOT; };
@@ -1785,19 +1787,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		007B8D71BDDA0FADF61C0059 /* SlowGold 8 */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = "SlowGold 8";
-			sourceTree = "<group>";
-		};
 		01CE9CC66F0D11650D074E36 /* layout */ = {
 			isa = PBXGroup;
 			children = (
+				B524B46C6135812738601231 /* Layout.cpp */,
 				00E59A0448E53D2DC32250D1 /* Layout.h */,
 			);
 			name = layout;
@@ -2091,6 +2084,16 @@
 				144CFB3A0F9B4753AA60BD0F /* juce_AudioTransportSource.h */,
 			);
 			name = sources;
+			sourceTree = "<group>";
+		};
+		1EC98DE0624750388FB33B37 /* SlowGold 8 */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = "SlowGold 8";
 			sourceTree = "<group>";
 		};
 		1F19AB95A57E148B437488EB /* xml */ = {
@@ -3028,7 +3031,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				007B8D71BDDA0FADF61C0059 /* SlowGold 8 */,
+				1EC98DE0624750388FB33B37 /* SlowGold 8 */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -4749,6 +4752,7 @@
 				7E753B01AC600E3F14B39CF4 /* ZoomToSelectionButton.svg.cpp in Sources */,
 				9AD94A2D272DEFF4C4A9F7D3 /* ZoomToSelectionButtonDisabled.svg.cpp in Sources */,
 				846EDC16D544A7879EE3B3BB /* ZoomToSelectionButtonPressed.svg.cpp in Sources */,
+				3993AFB1C0200AD228DD372E /* Layout.cpp in Sources */,
 				681813F4E5F0ACD50CA9462E /* LookAndFeel.cpp in Sources */,
 				749F3F7EA1A02AF7A224E869 /* PersistentWindow.cpp in Sources */,
 				911695A94B711D8C3EBC342E /* RecentFiles.cpp in Sources */,
@@ -4937,6 +4941,7 @@
 					"-lippsremerged",
 					"-lippsrmerged",
 				);
+				SRCROOT = ../..;
 			};
 			name = Release;
 		};
@@ -5034,6 +5039,7 @@
 					"-lippsremerged",
 					"-lippsrmerged",
 				);
+				SRCROOT = ../..;
 			};
 			name = Debug;
 		};

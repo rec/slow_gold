@@ -3,6 +3,7 @@
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/icon/ZoomInCursor.svg.h"
+#include "rec/gui/Geometry.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/Math.h"
@@ -58,7 +59,8 @@ Def<CursorProto> defaultDesc(
 }  // namespace
 
 Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
-    : length_(0),
+    : Component("WaveformComponent"),
+      length_(0),
       thumbnail_(NULL),
       empty_(true),
       isDraggingCursor_(false),
@@ -77,6 +79,8 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
                           "current time during playback. You can also drag it "
                           "around to set the current playback time.");
   timeCursor_->startListening();
+  setOpaque(true);
+
 #ifdef USE_CUSTOM_REPAINT
   gui::clear(&dirty_);
 #endif
@@ -85,19 +89,6 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 Waveform::~Waveform() {
   stl::deletePointers(&cursors_);
 }
-
-#ifdef USE_CUSTOM_REPAINT
-void Waveform::internalRepaint(int x, int y, int width, int height) {
-  Lock l(lock_);
-  juce::Rectangle<int> r(std::max(x, 0), std::max(y, 0), width, height);
-  gui::addInto(r, &dirty_);
-  dirty_.setWidth(std::min(getWidth() - dirty_.getX(), dirty_.getWidth()));
-  dirty_.setHeight(std::min(getHeight() - dirty_.getY(), dirty_.getHeight()));
-
-  if (width * height)
-    Component::internalRepaint(x, y, width, height);
-}
-#endif
 
 void Waveform::startListening() {
   DataListener<LoopPointList>::startListening();
@@ -129,6 +120,11 @@ void Waveform::paint(Graphics& g) {
 #endif
 
     Painter p(desc_.widget(), &g);
+    DLOG(INFO) << str(gui::toString(g.getClipBounds())) << ", "
+               << (isOnDesktop() ? "heavy" : "light")
+               << ", " << str(getName())
+               << ", " << str(getParentComponent()->getName())
+      ;
 
     if (empty_) {
       g.setFont(14.0f);
@@ -210,7 +206,8 @@ void Waveform::operator()(const LoopPointList& loopPoints) {
     oldSelection = selection_;
     selection_ = newSelection;
     length_ = loopPoints.length();
-    constrainZoom(&zoom_, length_);
+    if (length_)
+      constrainZoom(&zoom_, length_);
     empty_ = !loopPoints.has_length();
     isDraggingCursor = isDraggingCursor_;
   }
@@ -451,8 +448,10 @@ void Waveform::repaintBlock(Block b) {
     if (x2 >= 0) {
       x1 = std::max(0, x1);
       x2 = std::min(x2, getWidth());
-      if (x1 < x2 && getHeight())
+      if (x1 < x2 && getHeight()) {
+        DLOG(INFO) << x1 << ", " << 0 << ", " << x2 - x1 << ", " << getHeight();
         repaint(x1, 0, x2 - x1, getHeight());
+      }
     }
   }
 }
@@ -476,6 +475,19 @@ void Waveform::setSelected(int index, bool selected) {
   lpl.mutable_loop_point(index)->set_selected(selected);
   DataListener<LoopPointList>::setProto(lpl);
 }
+
+#ifdef USE_CUSTOM_REPAINT
+void Waveform::internalRepaint(int x, int y, int width, int height) {
+  Lock l(lock_);
+  juce::Rectangle<int> r(std::max(x, 0), std::max(y, 0), width, height);
+  gui::addInto(r, &dirty_);
+  dirty_.setWidth(std::min(getWidth() - dirty_.getX(), dirty_.getWidth()));
+  dirty_.setHeight(std::min(getHeight() - dirty_.getY(), dirty_.getHeight()));
+
+  if (width * height)
+    Component::internalRepaint(x, y, width, height);
+}
+#endif
 
 }  // namespace waveform
 }  // namespace widget

@@ -1,8 +1,8 @@
 #include "rec/widget/tree/Root.h"
 
+#include "rec/app/Files.h"
 #include "rec/data/Data.h"
 #include "rec/gui/Color.h"
-#include "rec/app/Files.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Trash.h"
@@ -139,6 +139,8 @@ void Root::mergeNewIntoOld(file::VirtualFileList volumes) {
       j++;
   }
   writeOpenness();
+
+
 }
 
 void Root::addVolume(const VirtualFile& volume, int insertAt) {

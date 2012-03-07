@@ -904,6 +904,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
       <Filter>SlowGold 8\rec\gui\icon</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\layout\Layout.cpp">
+      <Filter>SlowGold 8\rec\gui\layout</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp">
       <Filter>SlowGold 8\rec\gui</Filter>
     </ClCompile>
@@ -4839,5 +4842,10 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include=".\resources.rc">
+      <Filter>Juce Library Code</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

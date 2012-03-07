@@ -30,6 +30,7 @@ void CurrentTime::startListening() {
 }
 
 void CurrentTime::operator()(Samples<44100> t) {
+  return;
   Lock l(lock_);
   time_ = t;
 

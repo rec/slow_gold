@@ -18,52 +18,22 @@ class Layout : public Component, public SizeHintAccumulator,
 
   Layout(const String& name = String::empty,
          Orientation o = HORIZONTAL,
-         bool resizeOther = true)
-      : Component(name),
-        SizeHintAccumulator(o),
-        orientation_(o),
-        resizeOtherDimension_(resizeOther) {
-  }
+         bool resizeOther = true);
 
   void setOrientation(Orientation o) { orientation_ = o; }
   Orientation orientation() const { return orientation_; }
 
-  void addToLayout(Component* c) {
-    if (HasSizeHints* h = dynamic_cast<HasSizeHints*>(c))
-      addToLayout(c, h->size(MIN), h->size(MAX), h->size(PREF));
-    else
-      addToLayout(c, DEFAULT_MIN, DEFAULT_MAX, DEFAULT_PREF);
-  }
-
-   void addToLayout(Component* c, double m) {
-     addToLayout(c, m, m, m);
-   }
-
-  void addToLayout(Component* c, double min, double max, double pref) {
-    accumulate(min, max, pref);
-    layoutManager_.setItemLayout(components_.size(), min, max, pref);
-    components_.push_back(c);
-    MessageManagerLock l;
-    addAndMakeVisible(c);
-  }
+  void addToLayout(Component* c);
+  void addToLayout(Component* c, double m) { addToLayout(c, m, m, m); }
+  void addToLayout(Component* c, double min, double max, double pref);
 
   int size() const { return components_.size(); }
 
-  virtual void resized() {
-    Component::resized();
-    layout();
-  }
-
+  virtual void resized();
   StretchableLayoutManager* layoutManager() { return &layoutManager_; }
 
  protected:
-  virtual void layout() {
-	if (components_.size()) {
-      layoutManager_.layOutComponents(&components_[0], components_.size(),
-                                      0, 0, getWidth(), getHeight(),
-                                      orientation_, resizeOtherDimension_);
-	}
-  }
+  virtual void layout();
 
   StretchableLayoutManager layoutManager_;
   std::vector<Component*> components_;

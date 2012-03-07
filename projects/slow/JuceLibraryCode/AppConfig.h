@@ -75,6 +75,10 @@
  #define   JUCE_USE_MP3AUDIOFORMAT 1
 #endif
 
+#ifndef    JUCE_USE_WINDOWS_MEDIA_FORMAT
+ //#define JUCE_USE_WINDOWS_MEDIA_FORMAT
+#endif
+
 //==============================================================================
 // juce_audio_processors flags:
 
