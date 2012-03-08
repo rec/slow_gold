@@ -7,18 +7,32 @@ namespace rec {
 namespace util {
 namespace cd {
 
-AudioCDReader* getAudioCDReader(const String& cdKey) {
+AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
+  String e;
+  if (!error)
+    error = &e;
+
   int id = cdKey.initialSectionNotContaining("-").getHexValue32();
   StringArray names = AudioCDReader::getAvailableCDNames();
   int size = names.size();
+  if (!size) {
+    (*error) = "No available CDs";
+    return NULL;
+  }
   for (int i = 0; i < size; ++i) {
     ScopedPointer<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
-    if (!reader)
+    if (!reader) {
       LOG(ERROR) << "Couldn't create reader for " << names[i];
-    else if (reader->getCDDBId() == id)
+      if (error->length())
+        *error += ", ";
+      *error += names[i];
+    } else if (reader->getCDDBId() == id) {
+      *error = "";
       return reader.release();
+    }
   }
   LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
+  (*error) = "Tried to read CD, id=" + String(id) + ", names=" + *error;
   return NULL;
 }
 

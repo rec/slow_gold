@@ -9,7 +9,6 @@ namespace waveform {
 
 namespace {
 
-static const int64 SMALLEST_TIME_SAMPLES = 8 * 44100;
 static const double POWER = 4.0;
 static const double ZOOM_INCREMENT = 0.3;
 
@@ -24,7 +23,7 @@ ZoomProto zoom(const ZoomProto& z, Samples<44100> length, Samples<44100> t, doub
   Samples<44100> b = zoom.begin();
   Samples<44100> e = zoom.has_end() ? zoom.end() : length.get();
 
-  if (k >= 1.0 || k * (e - b) >= SMALLEST_TIME_SAMPLES) {
+  if (k >= 1.0 || k * (e - b) >= MIN_ZOOM_TIME) {
     int64 begin = static_cast<int64>(k * b + (1.0 - k) * t);
     int64 end = static_cast<int64>(k * e + (1.0 - k) * t);
     //DCHECK_LE(0, end) << k << ", "
@@ -57,7 +56,7 @@ void constrainZoom(ZoomProto* z, Samples<44100> length) {
   if (z->end() > length || !z->end())
     z->set_end(length);
 
-  Samples<44100> under = SMALLEST_TIME_SAMPLES - (z->end() - z->begin());
+  Samples<44100> under = MIN_ZOOM_TIME - (z->end() - z->begin());
   if (under > 0) {
     Samples<44100> end = z->end() + under;
     if (end < length)

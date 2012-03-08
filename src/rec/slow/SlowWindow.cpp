@@ -85,7 +85,6 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
 }
 
 void SlowWindow::activeWindowStatusChanged() {
-  DLOG(INFO) << "activeWindowStatusChanged";
   if (menus())
     menus()->menuItemsChanged();
   if (components())

@@ -80,6 +80,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
                           "around to set the current playback time.");
   timeCursor_->startListening();
   setOpaque(true);
+  setBufferedToImage(true);
 
 #ifdef USE_CUSTOM_REPAINT
   gui::clear(&dirty_);
@@ -120,12 +121,13 @@ void Waveform::paint(Graphics& g) {
 #endif
 
     Painter p(desc_.widget(), &g);
+#if 0
     DLOG(INFO) << str(gui::toString(g.getClipBounds())) << ", "
                << (isOnDesktop() ? "heavy" : "light")
                << ", " << str(getName())
                << ", " << str(getParentComponent()->getName())
       ;
-
+#endif
     if (empty_) {
       g.setFont(14.0f);
       g.drawFittedText("Drop a file here or double-click to open a new file",
@@ -449,7 +451,7 @@ void Waveform::repaintBlock(Block b) {
       x1 = std::max(0, x1);
       x2 = std::min(x2, getWidth());
       if (x1 < x2 && getHeight()) {
-        DLOG(INFO) << x1 << ", " << 0 << ", " << x2 - x1 << ", " << getHeight();
+        // DLOG(INFO) << x1 << ", " << 0 << ", " << x2 - x1 << ", " << getHeight();
         repaint(x1, 0, x2 - x1, getHeight());
       }
     }

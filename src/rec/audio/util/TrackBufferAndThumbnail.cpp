@@ -13,7 +13,7 @@ namespace util {
 
 using rec::audio::source::RunnyProto;
 
-static const int COMPRESSION = 2048;
+static const int COMPRESSION = 256;
 
 TrackBufferAndThumbnail::TrackBufferAndThumbnail()
     : cache_(1), cacheWritten_(false),

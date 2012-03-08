@@ -32,6 +32,8 @@ class Layout : public Component, public SizeHintAccumulator,
   virtual void resized();
   StretchableLayoutManager* layoutManager() { return &layoutManager_; }
 
+  void useCachedComponent();
+
  protected:
   virtual void layout();
 
@@ -40,6 +42,7 @@ class Layout : public Component, public SizeHintAccumulator,
   Orientation orientation_;
   const bool resizeOtherDimension_;
   SizeAccumulator sizeHints_[LAST];
+  juce::CachedComponentImage *cache_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Layout);

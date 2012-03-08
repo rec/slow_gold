@@ -6,17 +6,18 @@
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
 namespace slow {
 
 using widget::waveform::ZoomProto;
+using widget::waveform::MIN_ZOOM_TIME;
 
 static const int PRELOAD = 10000;
 
 static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
-static const double MIN_CURSOR_RATIO_CHANGE = 0.95;
-static const Samples<44100> MIN_ZOOM_TIME = 44100 / 2;
+static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
 
 CurrentTime::CurrentTime(Instance* i)
     : HasInstance(i), time_(0), jumpTime_(-1), length_(0),
@@ -30,7 +31,6 @@ void CurrentTime::startListening() {
 }
 
 void CurrentTime::operator()(Samples<44100> t) {
-  return;
   Lock l(lock_);
   time_ = t;
 

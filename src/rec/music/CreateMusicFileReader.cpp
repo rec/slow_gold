@@ -17,11 +17,12 @@ const int MINIMUM_FILE_SIZE = 44100;
 
 using namespace rec::audio::format;
 
-AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
+AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata,
+                                  String* error) {
   int track = String(file.path(0).c_str()).getIntValue();
   String filename = str(file.volume_name());
   if (metadata) {
-    ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
+    ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename, error));
     if (cdr)
       *metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
   }
@@ -54,10 +55,12 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
 
   ptr<AudioFormatReader> reader;
   if (file.type() == VirtualFile::CD) {
-    reader_.reset(createCDReader(file, metadata.get()));
+    String error;
+    reader_.reset(createCDReader(file, metadata.get(), &error));
     if (!reader_) {
       errorTitle_ = "Couldn't Open CD Track.";
-      errorDetails_ = "Couldn't open a track on CD - perhaps you ejected it?";
+      errorDetails_ = "Couldn't open track on CD - perhaps you ejected it?\n"
+        "Error was: " + error;
     }
   } else {
     File f = getRealFile(file);
