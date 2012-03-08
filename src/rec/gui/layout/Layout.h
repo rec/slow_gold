@@ -32,8 +32,6 @@ class Layout : public Component, public SizeHintAccumulator,
   virtual void resized();
   StretchableLayoutManager* layoutManager() { return &layoutManager_; }
 
-  void useCachedComponent();
-
  protected:
   virtual void layout();
 

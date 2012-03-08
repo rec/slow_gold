@@ -14,9 +14,7 @@ namespace slow {
 
 namespace {
 
-int getSegment(const LoopSnapshot& snap) {
-  return audio::getSegment(snap.loops_, snap.instance_->time());
-}
+const Samples<44100> MAX_JUMP_TIME = 44100;
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   Samples<44100> time = snapshot->loops_.loop_point(segment).time();
@@ -24,9 +22,17 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
 }
 
 void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
+  Samples<44100> time = snap->instance_->time();
   int size = snap->loops_.loop_point_size();
-  int segment = getSegment(*snap);
+  int segment = audio::getSegment(snap->loops_, time);
   int p = pos.toIndex(segment, size);
+
+  // Special case for "jump back";
+  if (pos == command::CommandIDEncoder::PREVIOUS &&
+      (time - snap->loops_.loop_point(segment).time()) >= MAX_JUMP_TIME) {
+    p = segment;
+  }
+
   snap->loops_.mutable_loop_point(p)->set_selected(true);
   setTimeFromSegment(snap, p);
 }
@@ -36,9 +42,11 @@ void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
   const LoopPointList& loops = snap->loops_;
   size_t s = 0;
   bool found = false;
+  int selectedSegment = audio::getSegment(loops, snap->instance_->time());
+
   for (int i = 0; i < loops.loop_point_size(); ++i) {
     if (!audio::getSelectionCount(loops) || loops.loop_point(i).selected()) {
-      if (i == getSegment(*snap)) {
+      if (i == selectedSegment) {
         DCHECK(!found);
         s = selected.size();
         found = true;
