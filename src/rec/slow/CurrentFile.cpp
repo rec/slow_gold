@@ -36,8 +36,10 @@ class FileDataListener : public data::GlobalDataListener<VirtualFile> {
   CurrentFile* const parent_;
 };
 
-CurrentFile::CurrentFile(Instance* i) : HasInstance(i), initialized_(false),
-                                        empty_(true) {
+CurrentFile::CurrentFile(Instance* i) : HasInstance(i),
+                                        initialized_(false),
+                                        empty_(true),
+                                        allowErrorDisplay_(false) {
   fileListener_.reset(new FileDataListener(this));
   fileListener_->startListening();
 }
@@ -101,9 +103,11 @@ CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
 
     if (empty_) {
       result = ERROR_FILE;
-      juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
-                                        musicReader.errorTitle(),
-                                        musicReader.errorDetails());
+      if (allowErrorDisplay_) {
+        juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
+                                          musicReader.errorTitle(),
+                                          musicReader.errorDetails());
+      }
       Lock l(lock_);
       file_.Clear();
     }

@@ -35,11 +35,12 @@ void protobuf_AssignDesc_rec_2futil_2ffile_2fVirtualFile_2eproto() {
       "rec/util/file/VirtualFile.proto");
   GOOGLE_CHECK(file != NULL);
   VirtualFile_descriptor_ = file->message_type(0);
-  static const int VirtualFile_offsets_[4] = {
+  static const int VirtualFile_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, volume_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, path_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, status_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VirtualFile, cd_name_),
   };
   VirtualFile_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -104,16 +105,17 @@ void protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/util/file/VirtualFile.proto\022\rrec.u"
-    "til.file\"\273\002\n\013VirtualFile\0223\n\004type\030\001 \001(\0162\037"
+    "til.file\"\314\002\n\013VirtualFile\0223\n\004type\030\001 \001(\0162\037"
     ".rec.util.file.VirtualFile.Type:\004NONE\022\023\n"
     "\013volume_name\030\002 \001(\t\022\014\n\004path\030\003 \003(\t\0229\n\006stat"
     "us\030\004 \001(\0162!.rec.util.file.VirtualFile.Sta"
-    "tus:\006ONLINE\"9\n\004Type\022\010\n\004NONE\020\000\022\006\n\002CD\020\001\022\t\n"
-    "\005MUSIC\020\002\022\010\n\004USER\020\003\022\n\n\006VOLUME\020\004\"^\n\006Status"
-    "\022\n\n\006ONLINE\020\001\022\013\n\007OFFLINE\020\002\022\r\n\tDISK_OPEN\020\003"
-    "\022\022\n\016WRITEABLE_DISK\020\004\022\013\n\007NO_DISK\020\005\022\013\n\007UNK"
-    "NOWN\020\006\";\n\017VirtualFileList\022(\n\004file\030\001 \003(\0132"
-    "\032.rec.util.file.VirtualFile", 427);
+    "tus:\006ONLINE\022\017\n\007cd_name\030\005 \001(\t\"9\n\004Type\022\010\n\004"
+    "NONE\020\000\022\006\n\002CD\020\001\022\t\n\005MUSIC\020\002\022\010\n\004USER\020\003\022\n\n\006V"
+    "OLUME\020\004\"^\n\006Status\022\n\n\006ONLINE\020\001\022\013\n\007OFFLINE"
+    "\020\002\022\r\n\tDISK_OPEN\020\003\022\022\n\016WRITEABLE_DISK\020\004\022\013\n"
+    "\007NO_DISK\020\005\022\013\n\007UNKNOWN\020\006\";\n\017VirtualFileLi"
+    "st\022(\n\004file\030\001 \003(\0132\032.rec.util.file.Virtual"
+    "File", 444);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/file/VirtualFile.proto", &protobuf_RegisterTypes);
   VirtualFile::default_instance_ = new VirtualFile();
@@ -190,11 +192,13 @@ const VirtualFile_Status VirtualFile::Status_MAX;
 const int VirtualFile::Status_ARRAYSIZE;
 #endif  // _MSC_VER
 const ::std::string VirtualFile::_default_volume_name_;
+const ::std::string VirtualFile::_default_cd_name_;
 #ifndef _MSC_VER
 const int VirtualFile::kTypeFieldNumber;
 const int VirtualFile::kVolumeNameFieldNumber;
 const int VirtualFile::kPathFieldNumber;
 const int VirtualFile::kStatusFieldNumber;
+const int VirtualFile::kCdNameFieldNumber;
 #endif  // !_MSC_VER
 
 VirtualFile::VirtualFile()
@@ -216,6 +220,7 @@ void VirtualFile::SharedCtor() {
   type_ = 0;
   volume_name_ = const_cast< ::std::string*>(&_default_volume_name_);
   status_ = 1;
+  cd_name_ = const_cast< ::std::string*>(&_default_cd_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -226,6 +231,9 @@ VirtualFile::~VirtualFile() {
 void VirtualFile::SharedDtor() {
   if (volume_name_ != &_default_volume_name_) {
     delete volume_name_;
+  }
+  if (cd_name_ != &_default_cd_name_) {
+    delete cd_name_;
   }
   if (this != default_instance_) {
   }
@@ -260,6 +268,11 @@ void VirtualFile::Clear() {
       }
     }
     status_ = 1;
+    if (_has_bit(4)) {
+      if (cd_name_ != &_default_cd_name_) {
+        cd_name_->clear();
+      }
+    }
   }
   path_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -344,6 +357,23 @@ bool VirtualFile::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(42)) goto parse_cd_name;
+        break;
+      }
+      
+      // optional string cd_name = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_cd_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_cd_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->cd_name().data(), this->cd_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -396,6 +426,15 @@ void VirtualFile::SerializeWithCachedSizes(
       4, this->status(), output);
   }
   
+  // optional string cd_name = 5;
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->cd_name().data(), this->cd_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->cd_name(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -435,6 +474,16 @@ void VirtualFile::SerializeWithCachedSizes(
       4, this->status(), target);
   }
   
+  // optional string cd_name = 5;
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->cd_name().data(), this->cd_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->cd_name(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -463,6 +512,13 @@ int VirtualFile::ByteSize() const {
     if (has_status()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
+    }
+    
+    // optional string cd_name = 5;
+    if (has_cd_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->cd_name());
     }
     
   }
@@ -509,6 +565,9 @@ void VirtualFile::MergeFrom(const VirtualFile& from) {
     if (from._has_bit(3)) {
       set_status(from.status());
     }
+    if (from._has_bit(4)) {
+      set_cd_name(from.cd_name());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -536,6 +595,7 @@ void VirtualFile::Swap(VirtualFile* other) {
     std::swap(volume_name_, other->volume_name_);
     path_.Swap(&other->path_);
     std::swap(status_, other->status_);
+    std::swap(cd_name_, other->cd_name_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

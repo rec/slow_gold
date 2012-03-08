@@ -233,6 +233,16 @@ class VirtualFile : public ::google::protobuf::Message {
   inline ::rec::util::file::VirtualFile_Status status() const;
   inline void set_status(::rec::util::file::VirtualFile_Status value);
   
+  // optional string cd_name = 5;
+  inline bool has_cd_name() const;
+  inline void clear_cd_name();
+  static const int kCdNameFieldNumber = 5;
+  inline const ::std::string& cd_name() const;
+  inline void set_cd_name(const ::std::string& value);
+  inline void set_cd_name(const char* value);
+  inline void set_cd_name(const char* value, size_t size);
+  inline ::std::string* mutable_cd_name();
+  
   // @@protoc_insertion_point(class_scope:rec.util.file.VirtualFile)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -243,11 +253,13 @@ class VirtualFile : public ::google::protobuf::Message {
   static const ::std::string _default_volume_name_;
   ::google::protobuf::RepeatedPtrField< ::std::string> path_;
   int status_;
+  ::std::string* cd_name_;
+  static const ::std::string _default_cd_name_;
   friend void  protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2ffile_2fVirtualFile_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -482,6 +494,48 @@ inline void VirtualFile::set_status(::rec::util::file::VirtualFile_Status value)
   GOOGLE_DCHECK(::rec::util::file::VirtualFile_Status_IsValid(value));
   _set_bit(3);
   status_ = value;
+}
+
+// optional string cd_name = 5;
+inline bool VirtualFile::has_cd_name() const {
+  return _has_bit(4);
+}
+inline void VirtualFile::clear_cd_name() {
+  if (cd_name_ != &_default_cd_name_) {
+    cd_name_->clear();
+  }
+  _clear_bit(4);
+}
+inline const ::std::string& VirtualFile::cd_name() const {
+  return *cd_name_;
+}
+inline void VirtualFile::set_cd_name(const ::std::string& value) {
+  _set_bit(4);
+  if (cd_name_ == &_default_cd_name_) {
+    cd_name_ = new ::std::string;
+  }
+  cd_name_->assign(value);
+}
+inline void VirtualFile::set_cd_name(const char* value) {
+  _set_bit(4);
+  if (cd_name_ == &_default_cd_name_) {
+    cd_name_ = new ::std::string;
+  }
+  cd_name_->assign(value);
+}
+inline void VirtualFile::set_cd_name(const char* value, size_t size) {
+  _set_bit(4);
+  if (cd_name_ == &_default_cd_name_) {
+    cd_name_ = new ::std::string;
+  }
+  cd_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* VirtualFile::mutable_cd_name() {
+  _set_bit(4);
+  if (cd_name_ == &_default_cd_name_) {
+    cd_name_ = new ::std::string;
+  }
+  return cd_name_;
 }
 
 // -------------------------------------------------------------------

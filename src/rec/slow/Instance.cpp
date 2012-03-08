@@ -68,7 +68,9 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   currentTime_.reset(new CurrentTime(this));
   lookAndFeel_.reset(new gui::LookAndFeel);
 
+#ifdef SET_FILE_EARLY
   currentFile_->setFile(data::getGlobal<VirtualFile>());
+#endif
 
   mouseListener_.reset(new MouseListener(this));
   guiListener_.reset(new GuiListener(this));
@@ -98,10 +100,12 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 
   player_->level()->addListener(components_->transportController_->levelListener());
 
+  //#ifdef SET_FILE_EARLY
   TrackBufferAndThumbnail* trackBuffer = bufferFiller_->trackBuffer();
   Source *s = new FrameSource<short, 2>(trackBuffer->buffer()->frames());
   player_->setSource(s);
   components_->waveform_->setAudioThumbnail(trackBuffer->thumbnail());
+  //#endif
 
   window_->addListener(menus_.get());
 
@@ -142,6 +146,7 @@ void Instance::startup() {
   MessageManagerLock l;
   window_->toFront(true);
   juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
+  currentFile_->allowErrorDisplay();
 }
 
 const VirtualFile Instance::file() const {

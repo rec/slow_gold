@@ -53,7 +53,7 @@ void constrainZoom(ZoomProto* z, Samples<44100> length) {
   if (z->begin() < 0)
     z->set_begin(0);
 
-  if (z->end() > length || !z->end())
+  if (z->end() > length || !z->has_end())
     z->set_end(length);
 
   Samples<44100> under = MIN_ZOOM_TIME - (z->end() - z->begin());

@@ -13,13 +13,13 @@ namespace music {
 
 namespace {
 
-const int MINIMUM_FILE_SIZE = 44100;
+const int MINIMUM_FILE_SIZE = 5 * 44100;
 
 using namespace rec::audio::format;
 
 AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata,
                                   String* error) {
-  int track = String(file.path(0).c_str()).getIntValue();
+  int track = String(file.path(0).c_str()).getIntValue() - 1;
   String filename = str(file.volume_name());
   if (metadata) {
     ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename, error));
@@ -104,7 +104,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
       errorTitle_ = "Your File Was Too Small.";
       errorDetails_ = "Sorry, the file you tried to open, " +
         file::getFullDisplayName(file) +
-            " has a length of less than one second.";
+            " has a length of less than five seconds.";
       reader_.reset();
     }
   }

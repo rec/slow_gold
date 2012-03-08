@@ -19,6 +19,7 @@ AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
     (*error) = "No available CDs";
     return NULL;
   }
+
   for (int i = 0; i < size; ++i) {
     ScopedPointer<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
     if (!reader) {

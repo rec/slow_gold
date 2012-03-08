@@ -14,10 +14,12 @@ namespace file {
 
 namespace {
 
-void add(VirtualFile::Type type, const string& name, VirtualFileList* volumes) {
+void add(VirtualFile::Type type, const string& key, const String& cdName,
+         VirtualFileList* volumes) {
   VirtualFile* vf = volumes->add_file();
   vf->set_type(type);
-  vf->set_volume_name(name);
+  vf->set_volume_name(key);
+  vf->set_cd_name(str(cdName));
 }
 
 void addAudioCDs(VirtualFileList* volumes) {
@@ -32,7 +34,7 @@ void addAudioCDs(VirtualFileList* volumes) {
     else if (!reader->getNumTracks())
       LOG(ERROR) << "No tracks for " << names[i];
     else
-      add(VirtualFile::CD, str(cd::getCDKey(reader.get())), volumes);
+      add(VirtualFile::CD, str(cd::getCDKey(reader.get())), names[i], volumes);
   }
 
   app::getAppFile("OpenCDs.txt").replaceWithText(str(volumes->DebugString()));

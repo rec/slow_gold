@@ -38,9 +38,10 @@ void CurrentTime::operator()(Samples<44100> t) {
     return;
 
   zoomTime_ = t;
+  Samples<44100> end = zoom_.has_end() ? Samples<44100>(zoom_.end()) : length_;
 
   // Now compute an ideal zoom for this time.
-  Samples<44100> width = zoom_.end() - zoom_.begin();
+  Samples<44100> width = end - zoom_.begin();
   Samples<44100> off = static_cast<int64>(MIN_CURSOR_RATIO_CHANGE * width);
   if (t >= zoom_.begin() && t <= zoom_.begin() + off)
     return;
@@ -58,8 +59,10 @@ void CurrentTime::operator()(Samples<44100> t) {
 }
 
 void CurrentTime::operator()(const ZoomProto& zoom) {
-  Lock l(lock_);
-  zoom_ = zoom;
+  if (zoom.has_end()) {
+    Lock l(lock_);
+    zoom_ = zoom;
+  }
 }
 
 void CurrentTime::operator()(const LoopPointList& loops) {

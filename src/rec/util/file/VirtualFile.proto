@@ -22,6 +22,7 @@ message VirtualFile {
   optional string volume_name = 2;
   repeated string path = 3;
   optional Status status = 4 [default = ONLINE];
+  optional string cd_name = 5;
 };
 
 message VirtualFileList {

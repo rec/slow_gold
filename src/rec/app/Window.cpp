@@ -3,6 +3,8 @@
 namespace rec {
 namespace app {
 
+static const int SLEEP_BEFORE_STARTUP = 500;
+
 Window::Window(GenericApplication* application,
                const String& name,
                const Colour& bg,
@@ -38,7 +40,7 @@ void Window::initialise() {
 Window::~Window() {}
 
 void Window::startup() {
-  Thread::sleep(500);
+  Thread::sleep(SLEEP_BEFORE_STARTUP);
   // Yes, it's lame, but we need this so that our GUI has settled down...
   doStartup();
   GuiWriteable::setWriteableAll(true);

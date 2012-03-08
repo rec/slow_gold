@@ -17,7 +17,7 @@ void CD::computeChildren() {
     if (!album.track_size()) {
       int audioTracks = cd::getAudioTrackCount(*reader);
       for (int i = 0; i < audioTracks; ++i)
-        tracks.push_back(str(String(i)));
+        tracks.push_back(str(String(i + 1)));
 
       name_ = "Unknown CD: ID = 0x" + cd::getCDKey(reader.get()).upToFirstOccurrenceOf("-", false, false);
 
@@ -39,7 +39,7 @@ void CD::computeChildren() {
   VirtualFile vf(virtualFile_);
   string* path = vf.add_path();
   for (uint32 i = 0; i < tracks.size(); ++i) {
-    *path = str(String(i));
+    *path = str(String(i + 1));
     ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));  // TODO
     node->addListener(this);
     thread::callAsync(this, &TreeViewItem::addSubItem, node.transfer(), -1);

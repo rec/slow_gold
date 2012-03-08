@@ -128,7 +128,7 @@ void Waveform::paint(Graphics& g) {
                << ", " << str(getParentComponent()->getName())
       ;
 #endif
-    if (empty_) {
+    if (empty_ || !thumbnail_) {
       g.setFont(14.0f);
       g.drawFittedText("Drop a file here or double-click to open a new file",
                        0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
