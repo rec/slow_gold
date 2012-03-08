@@ -52,16 +52,16 @@ Samples<44100> TrackBufferAndThumbnail::setReader(const VirtualFile& f, AudioFor
   DCHECK(reader->lengthInSamples);
 
   ptr<AudioFormatReader> r(reader);
-  File file = getShadowFile(f, "thumbnail.stream");
+  file_ = getShadowFile(f, "thumbnail.stream");
 
   thumbnail_.reset(2, 44100.0f, reader->lengthInSamples);  // TODO: hard-coded 44k?
-  if (file.exists()) {
-    ptr<juce::FileInputStream> out(file.createInputStream());
+  if (file_.exists()) {
+    ptr<juce::FileInputStream> out(file_.createInputStream());
     if (out) {
       thumbnail_.loadFrom(*out);
       cacheWritten_ = thumbnail_.isFullyLoaded();
     } else {
-      LOG(ERROR) << "Couldn't load from " << file.getFullPathName();
+      LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
     }
   } else {
     cacheWritten_ = false;
