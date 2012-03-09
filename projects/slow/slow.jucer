@@ -19,7 +19,8 @@
     </XCODE_MAC>
     <VS2010 extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="
             extraLinkerFlags=" ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT  /NODEFAULTLIB:LIBCMTD"
-            juceFolder="../../../juce/modules" libraryType="1" targetFolder="Builds/VisualStudio2010">
+            juceFolder="../../../juce/modules" libraryType="1" targetFolder="Builds/VisualStudio2010"
+            smallIcon="k8EMdGWkD" bigIcon="wiIhPYIwK">
       <CONFIGURATIONS>
         <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="1" libraryPath="..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\debug\\static;..\\..\\..\\..\\..\\glog\\Debug;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug "
