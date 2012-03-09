@@ -33,11 +33,9 @@ void addAudioCDs(VirtualFileList* volumes) {
       continue;
     else if (!reader->getNumTracks())
       LOG(ERROR) << "No tracks for " << names[i];
-    else
+    else if (reader->getTrackOffsets().size() > 1)
       add(VirtualFile::CD, str(cd::getCDKey(reader.get())), names[i], volumes);
   }
-
-  app::getAppFile("OpenCDs.txt").replaceWithText(str(volumes->DebugString()));
 }
 
 }  // namespace

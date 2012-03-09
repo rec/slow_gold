@@ -91,6 +91,9 @@ String getCDKey(AudioCDReader* reader) {
 
   int64 r = 0;
   int last = offsets.size() - 1;
+  if (last <= 0)
+    return "";
+
   for (int i = 0; i < last; ++i)
     r += (primes[i] * offsets[i] * (reader->isTrackAudio(i) ? 1 : -1));
   r += primes[last] * offsets[last];
