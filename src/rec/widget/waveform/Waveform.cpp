@@ -37,13 +37,13 @@ static const int ZOOM_CURSOR_WIDTH = 24;
 static const int ZOOM_CURSOR_HEIGHT = 24;
 
 
-static juce::Image* getZoomCursor() {
-  ptr<juce::Image> img(new juce::Image(juce::Image::RGB, ZOOM_CURSOR_WIDTH,
-                                       ZOOM_CURSOR_HEIGHT, false));
-  Graphics g(*img);
+static juce::Image getZoomCursor() {
+  juce::Image img(juce::Image::RGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT,
+                  false);
+  Graphics g(img);
   ptr<Drawable> drawable(gui::icon::ZoomInCursor::create());
   drawable->draw(g, 1.0f);
-  return img.transfer();
+  return img;
 }
 
 Def<CursorProto> timeDesc(
@@ -67,7 +67,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 #ifdef USE_CUSTOM_REPAINT
       helpScreenUp_(false),
 #endif
-      zoomCursor_(*ptr<juce::Image>(getZoomCursor()), ZOOM_CURSOR_X_HOTSPOT,
+      zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
   setTooltip("Waveform Window:"
