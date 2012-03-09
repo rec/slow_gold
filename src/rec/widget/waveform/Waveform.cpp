@@ -38,7 +38,7 @@ static const int ZOOM_CURSOR_HEIGHT = 24;
 
 
 static juce::Image getZoomCursor() {
-  juce::Image img(juce::Image::RGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT,
+  juce::Image img(juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT,
                   false);
   Graphics g(img);
   ptr<Drawable> drawable(gui::icon::ZoomInCursor::create());
