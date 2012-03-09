@@ -15,6 +15,8 @@ const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const String MANUAL = "SlowGoldManual.pdf";
 const String FULL_MANUAL = WOODSHED + MANUAL;
 
+using juce::AlertWindow;
+
 void openManual() {
   bool ok = juce::URL(FULL_MANUAL).launchInDefaultBrowser();
   if (!ok) {

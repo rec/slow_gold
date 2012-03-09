@@ -14,7 +14,7 @@ class SetterLabel : public SimpleLabel, public data::AddressListener {
   SetterLabel(const String& name,
               const string& typeName,
               const data::Address& address)
-      : data::AddressListener(address, typeName) {
+      : SimpleLabel(name), data::AddressListener(address, typeName) {
   }
 
   void operator()(const data::Value& v) {

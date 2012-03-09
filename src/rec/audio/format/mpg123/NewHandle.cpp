@@ -6,8 +6,6 @@
 
 #include "rec/audio/format/mpg123/NewHandle.h"
 
-using namespace juce;
-
 #if !JUCE_MAC
 #pragma warning(disable: 4706)
 #endif

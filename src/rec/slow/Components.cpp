@@ -33,7 +33,7 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
 Components::Components(Instance* instance)
     : manager_(instance->target_->targetManager()->commandManager()),
       timeController_(new gui::audio::TimeController),
-      loops_(new gui::audio::Loops(instance->menus_.get())),
+      loops_(new gui::audio::Loops()),
       songData_(new gui::SongData(instance->menus_.get())),
       transformController_(new gui::audio::TransformController),
       transportController_(

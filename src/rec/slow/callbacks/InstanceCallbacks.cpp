@@ -131,34 +131,34 @@ void midiMappings(Instance* i) {
 }
 
 
-void nudgeBeginLeft(Instance* i) {
+void nudgeBeginLeft(Instance*) {
 }
 
-void nudgeBeginRight(Instance* i) {
+void nudgeBeginRight(Instance*) {
 }
 
-void nudgeEndLeft(Instance* i) {
+void nudgeEndLeft(Instance*) {
 }
 
-void nudgeEndRight(Instance* i) {
+void nudgeEndRight(Instance*) {
 }
 
-void treeClose(Instance* i) {
+void treeClose(Instance*) {
 }
 
-void treeDown(Instance* i) {
+void treeDown(Instance*) {
 }
 
-void treeLeft(Instance* i) {
+void treeLeft(Instance*) {
 }
 
-void treeOpen(Instance* i) {
+void treeOpen(Instance*) {
 }
 
-void treeRight(Instance* i) {
+void treeRight(Instance*) {
 }
 
-void treeUp(Instance* i) {
+void treeUp(Instance*) {
 }
 
 void zoomOut(Instance* i) {
@@ -204,19 +204,19 @@ void setMode(Mode::Action action) {
   data::setProto(mode, data::global());
 }
 
-void modeDrag(Instance* i) {
+void modeDrag(Instance*) {
   setMode(Mode::DRAG);
 }
 
-void modeSetTime(Instance* i) {
+void modeSetTime(Instance*) {
   setMode(Mode::SET_TIME);
 }
 
-void modeZoomIn(Instance* i) {
+void modeZoomIn(Instance*) {
   setMode(Mode::ZOOM_IN);
 }
 
-void modeAddLoopPoint(Instance* i) {
+void modeAddLoopPoint(Instance*) {
   setMode(Mode::DRAW_LOOP_POINTS);
 }
 

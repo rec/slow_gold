@@ -24,7 +24,7 @@ class RawFormatReader : public AudioFormatReader {
 
   virtual bool readSamples(int** destSamples,
                            int numDestChannels,
-                           int startOffsetInDestBuffer,  // TODO:  Why isn't this used?
+                           int /*startOffsetInDestBuffer*/,  // TODO:  Why isn't this used?
                            int64 startSampleInFile,
                            int numSamples) {
     numDestChannels = std::min(static_cast<int>(numChannels), numDestChannels);

@@ -22,7 +22,7 @@ class PersistentWindow : public DocumentWindow,
   virtual void startListening();
 
   virtual void operator()(const WindowPosition&);
-  virtual void paint(Graphics& g) {}
+  virtual void paint(Graphics&) {}
 
   bool isFullScreenSize() const;
   void closeButtonPressed();

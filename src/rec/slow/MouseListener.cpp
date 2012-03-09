@@ -201,7 +201,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     dragCursor(e, label->getCursor());
 }
 
-void MouseListener::mouseUp(const MouseEvent& e) {
+void MouseListener::mouseUp(const MouseEvent&) {
   if (!currentFile()->empty())
     components()->waveform_->setIsDraggingCursor(false);
 }

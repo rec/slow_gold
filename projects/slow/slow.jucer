@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT bundleIdentifier="recs.to" id="NSu8BB" jucerVersion="3.0.0" name="SlowGold 8"
-              projectType="guiapp" version="1.0.0">
+              projectType="guiapp" version="1.0.0" defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO">
   <EXPORTFORMATS>
     <XCODE_MAC bigIcon="wiIhPYIwK" extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
                juceFolder="../../../juce/modules" objCExtraSuffix="jeMWW9" smallIcon="k8EMdGWkD"

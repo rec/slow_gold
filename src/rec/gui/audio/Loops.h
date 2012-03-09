@@ -15,7 +15,7 @@ class Loops : public TableController,
               public DataListener<LoopPointList>,
               public HasCuttable {
  public:
-  explicit Loops(MenuBarModel* menus, const TableColumnList* desc = NULL,
+  explicit Loops(const TableColumnList* desc = NULL,
                  const data::Address& partAddress = data::Address("loop_point"));
   virtual ~Loops();
 

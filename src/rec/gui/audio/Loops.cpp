@@ -46,7 +46,7 @@ Def<TableColumnList> dflt(
 
 }  // namespace
 
-Loops::Loops(MenuBarModel* menus, const TableColumnList* desc,
+Loops::Loops(const TableColumnList* desc,
              const Address& partAddress)
     : partAddress_(partAddress) {
   cuttable_.reset(new LoopsCuttable(this));
@@ -92,7 +92,7 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
     getDisplayText(value, col, Samples<44100>(loops_.length())) : "(error)";
 }
 
-void Loops::selectedRowsChanged(int lastRowSelected) {
+void Loops::selectedRowsChanged(int /*lastRowSelected*/) {
   Lock l(TableController::lock_);
   bool changed = false;
 

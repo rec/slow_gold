@@ -46,7 +46,7 @@ class FrameSource : public PositionableAudioSource {
   virtual bool isLooping() const { return looping_; }
   virtual void setLooping (bool shouldLoop) { looping_ = shouldLoop; }
 
-  virtual void prepareToPlay(int s, double r) {}
+  virtual void prepareToPlay(int, double) {}
   virtual void releaseResources() {}
 
  private:

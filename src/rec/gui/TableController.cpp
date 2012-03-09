@@ -33,7 +33,7 @@ void TableController::fillHeader(TableHeaderComponent* headers) {
 }
 
 void TableController::paintRowBackground(Graphics& g,
-                                        int rowNumber,
+                                        int /*rowNumber*/,
                                         int width, int height,
                                         bool rowIsSelected) {
   Lock l(lock_);
@@ -45,7 +45,7 @@ void TableController::paintCell(Graphics& g,
                                int rowNumber,
                                int columnId,
                                int width, int height,
-                               bool rowIsSelected) {
+                               bool /*rowIsSelected*/) {
   Lock l(lock_);
   g.setColour(juce::Colours::black);
   if (columnId > columns_.column_size() || columnId <= 0) {

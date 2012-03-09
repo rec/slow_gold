@@ -30,7 +30,7 @@ const StringArray Menus::getMenuBarNames() {
   return ptr<MenuMaker>(getMenuMaker())->getMenuBarNames();
 }
 
-const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
+const PopupMenu Menus::getMenuForIndex(int /*menuIndex*/, const String& menuName) {
   return ptr<MenuMaker>(getMenuMaker())->makeMenu(menuName);
 }
 

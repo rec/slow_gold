@@ -42,7 +42,7 @@ void GuiWriteable::writeGui() {
 
 void GuiWriteable::setWriteable(bool writeable) {
   Lock l(lock_);
-  writeable_ = true;
+  writeable_ = writeable;
 }
 
 void GuiWriteable::requestWrite() {

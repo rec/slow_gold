@@ -15,11 +15,8 @@ class TableController : public TableListBoxModel, public TableListBox {
   void initialize(const TableColumnList& columns, const char* name);
 
   virtual void fillHeader(TableHeaderComponent* headers);
-  virtual int getNumRows() = 0;
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
-
-  virtual void selectedRowsChanged(int lastRowSelected) = 0;
 
   void updateAndRepaint() { update(); repaint(); }
   const TableColumnList& columns() { return columns_; }
