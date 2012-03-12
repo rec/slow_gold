@@ -10,8 +10,8 @@ namespace commands {
 Def<command::Commands> keyPresses(
 "command {\n"
   "  type: ADD_LOOP_POINT\n"
-  "  keypress: \"return\"\n"
-  "  keypress: \"command + =\"\n"
+  "  keypress: \"l\"\n"
+  "  keypress: \"command + l\"\n"
   "}\n"
   "command {\n"
   "  type: AUDIO_PREFERENCES\n"

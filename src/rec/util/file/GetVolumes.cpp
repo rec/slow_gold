@@ -32,8 +32,18 @@ void addAudioCDs(VirtualFileList* volumes) {
       continue;
     else if (!reader->getNumTracks())
       LOG(ERROR) << "No tracks for " << names[i];
-    else if (reader->getTrackOffsets().size() > 1)
-      add(VirtualFile::CD, str(cd::getCDKey(reader.get())), names[i], volumes);
+    else {
+      string key = str(cd::getCDKey(reader.get()));
+      if (key.size()) {
+        add(VirtualFile::CD, key, names[i], volumes);
+      } else {
+        String s;
+        const Array<int>& offsets = reader->getTrackOffsets();
+        for (int i = 0; i < offsets.size(); ++i)
+          s += (String(offsets[i]) + ", ");
+        app::getAppFile("OpenCDs.txt").replaceWithText(s);
+      }
+    }
   }
 }
 

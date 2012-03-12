@@ -1,7 +1,7 @@
 command {
   type: ADD_LOOP_POINT
-  keypress: "return"
-  keypress: "command + ="
+  keypress: "l"
+  keypress: "command + l"
 }
 command {
   type: AUDIO_PREFERENCES
@@ -69,6 +69,7 @@ command {
 command {
   type: TOGGLE_START_STOP
   keypress: "spacebar"
+  keypress: "return"
 }
 command {
   type: TOGGLE_WHOLE_SONG_LOOP

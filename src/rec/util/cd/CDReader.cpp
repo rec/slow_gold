@@ -99,7 +99,8 @@ String getCDKey(AudioCDReader* reader) {
   r += primes[last] * offsets[last];
 
   int c = reader->getCDDBId();
-  return (String::toHexString(c) + "-" + String::toHexString(r)).toUpperCase();
+  return (c == 0x2000001 || r == 0) ? String("") :
+    (String::toHexString(c) + "-" + String::toHexString(r)).toUpperCase();
 }
 
 }  // namespace cd
