@@ -70,7 +70,7 @@ void BasicMenuMaker::addSelectMenu() {
     break;
 
    case IsWholeSong::WHOLE_SONG:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP);
+    add(Command::TOGGLE_WHOLE_SONG_LOOP, "Loop This Segment");
     break;
 
    case IsWholeSong::SONG_IS_ONE_SEGMENT:

@@ -22,11 +22,11 @@ void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos)
   int p = pos.toIndex(segment, size);
 
 
-  bool allSelected = (audio::getSelectionCount(snap.loops_) == size);
+  bool multipleSelections = (audio::getSelectionCount(snap.loops_) > 1);
 
   for (int i = 0; i < size; ++i) {
     LoopPoint* lp = loops->mutable_loop_point(i);
-    lp->set_selected(selector(i, p, lp->selected(), allSelected));
+    lp->set_selected(selector(i, p, lp->selected(), multipleSelections));
   }
   instance->setProto(snap.loops_);
 }
