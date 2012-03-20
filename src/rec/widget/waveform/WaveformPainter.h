@@ -16,7 +16,7 @@ class Waveform;
 class WaveformPainter {
  public:
   WaveformPainter(Waveform* w) : waveform_(w), thumbnail_(NULL) {}
-  void paint(Graphics&);
+  void paint(Graphics&, const Range<Samples<44100> >&);
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
 

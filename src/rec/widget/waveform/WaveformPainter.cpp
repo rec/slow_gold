@@ -20,7 +20,7 @@ const int64 SMALLEST_TIME_SAMPLES = 10000;
 
 using namespace rec::util::block;
 
-void WaveformPainter::paint(Graphics& g) {
+void WaveformPainter::paint(Graphics& g, const Range<Samples<44100> >& range) {
   Painter p(waveform_->desc_.widget(), &g);
   if (waveform_->empty_ || !thumbnail_) {
     g.setFont(14.0f);
@@ -29,7 +29,6 @@ void WaveformPainter::paint(Graphics& g) {
                      waveform_->getHeight(),
                      juce::Justification::centred, 0);
   } else {
-    Range<Samples<44100> > range = waveform_->getTimeRange();
     drawWaveform(p, range);
     drawGrid(g, range);
   }

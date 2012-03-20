@@ -21,9 +21,11 @@ namespace waveform {
 
 class Cursor;
 class CursorProto;
+class WaveformPainter;
+class WaveformModel;
+
 struct MouseWheelEvent;
 struct TimeAndMouseEvent;
-class WaveformPainter;
 
 typedef vector<Cursor*> CursorList;
 
@@ -47,7 +49,7 @@ class Waveform : public Component,
   static const CursorProto& defaultTimeCursor();
 
   void setAudioThumbnail(juce::AudioThumbnail*);
-  virtual void resized() { layout(); }
+  virtual void resized();
 
   virtual void paint(Graphics&);
   virtual void operator()(const LoopPointList&);
@@ -91,6 +93,7 @@ class Waveform : public Component,
   juce::AudioThumbnail* thumbnail_;
   block::BlockSet selection_;
   ptr<WaveformPainter> painter_;
+  ptr<WaveformModel> model_;
 
   CursorList cursors_;
   ptr<Cursor> timeCursor_;

@@ -12,6 +12,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
+#include "rec/widget/waveform/WaveformModel.h"
 #include "rec/widget/waveform/WaveformPainter.h"
 #include "rec/widget/waveform/Zoom.h"
 
@@ -61,6 +62,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : Component("WaveformComponent"),
       length_(0),
       painter_(new WaveformPainter(this)),
+      model_(new WaveformModel),
       empty_(true),
       isDraggingCursor_(false),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
@@ -101,7 +103,11 @@ const CursorProto& Waveform::defaultTimeCursor() {
 
 void Waveform::paint(Graphics& g) {
   Lock l(lock_);
-  painter_->paint(g);
+  painter_->paint(g, getTimeRange());
+}
+
+void Waveform::resized() {
+  layout();
 }
 
 int Waveform::timeToX(Samples<44100> t) const {
