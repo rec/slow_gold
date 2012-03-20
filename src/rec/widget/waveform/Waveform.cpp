@@ -13,6 +13,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
+#include "rec/widget/waveform/WaveformPainter.h"
 #include "rec/widget/waveform/Zoom.h"
 
 using namespace rec::util::block;
@@ -23,18 +24,18 @@ namespace waveform {
 
 namespace {
 
-static const int GRID_TEXT_WIDTH = 50;
-static const int GRID_TEXT_HEIGHT = 9;
-static const int GRID_TEXT_PAD = 4;
-static const int CURSOR_LABEL_HEIGHT = 20;
-static const int MODE_SELECTOR_OFFSET = 5;
-static const int COMMAND_BAR_OFFSET = -2;
+const int GRID_TEXT_WIDTH = 50;
+const int GRID_TEXT_HEIGHT = 9;
+const int GRID_TEXT_PAD = 4;
+const int CURSOR_LABEL_HEIGHT = 20;
+const int MODE_SELECTOR_OFFSET = 5;
+const int COMMAND_BAR_OFFSET = -2;
 
-static const int64 SMALLEST_TIME_SAMPLES = 10000;
-static const int ZOOM_CURSOR_X_HOTSPOT = 8;
-static const int ZOOM_CURSOR_Y_HOTSPOT = 8;
-static const int ZOOM_CURSOR_WIDTH = 24;
-static const int ZOOM_CURSOR_HEIGHT = 24;
+const int64 SMALLEST_TIME_SAMPLES = 10000;
+const int ZOOM_CURSOR_X_HOTSPOT = 8;
+const int ZOOM_CURSOR_Y_HOTSPOT = 8;
+const int ZOOM_CURSOR_WIDTH = 24;
+const int ZOOM_CURSOR_HEIGHT = 24;
 
 
 static juce::Image getZoomCursor() {
@@ -62,6 +63,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : Component("WaveformComponent"),
       length_(0),
       thumbnail_(NULL),
+      painter_(new WaveformPainter),
       empty_(true),
       isDraggingCursor_(false),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,

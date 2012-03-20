@@ -4,13 +4,13 @@
 #include <set>
 
 #include "rec/base/Samples.h"
-#include "rec/util/LoopPoint.h"
 #include "rec/data/DataListener.h"
+#include "rec/util/Listener.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
-#include "rec/util/Listener.h"
-#include "rec/util/file/VirtualFile.h"
 #include "rec/util/block/Block.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
@@ -24,6 +24,7 @@ class Cursor;
 class CursorProto;
 struct MouseWheelEvent;
 struct TimeAndMouseEvent;
+class WaveformPainter;
 
 typedef vector<Cursor*> CursorList;
 
@@ -92,6 +93,7 @@ class Waveform : public Component,
   Samples<44100> length_;
   juce::AudioThumbnail* thumbnail_;
   block::BlockSet selection_;
+  ptr<WaveformPainter> painter_;
 
   CursorList cursors_;
   ptr<Cursor> timeCursor_;
