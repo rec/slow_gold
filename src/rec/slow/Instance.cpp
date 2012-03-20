@@ -82,10 +82,6 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   DropWave* waveform = dynamic_cast<DropWave*>(components_->waveform_.get());
   waveform->dropBroadcaster()->addListener(currentFile_.get());
 
-#ifdef USE_CUSTOM_REPAINT
-  window_->aboutWindowBroadcaster()->addListener(waveform);
-#endif
-
   widget::tree::Root* root = components_->directoryTree_.get();
   root->treeView()->dropBroadcaster()->addListener(currentFile_.get());
   root->addListener(currentFile_.get());

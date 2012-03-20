@@ -64,9 +64,6 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       thumbnail_(NULL),
       empty_(true),
       isDraggingCursor_(false),
-#ifdef USE_CUSTOM_REPAINT
-      helpScreenUp_(false),
-#endif
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
@@ -81,10 +78,6 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
   timeCursor_->startListening();
   setOpaque(true);
   setBufferedToImage(true);
-
-#ifdef USE_CUSTOM_REPAINT
-  gui::clear(&dirty_);
-#endif
 }
 
 Waveform::~Waveform() {
@@ -106,28 +99,7 @@ const CursorProto& Waveform::defaultTimeCursor() {
 void Waveform::paint(Graphics& g) {
   {
     Lock l(lock_);
-#ifdef USE_CUSTOM_REPAINT
-    if (!helpScreenUp_) {
-      juce::Rectangle<int> clip = g.getClipBounds().getIntersection(dirty_);
-      bool hasClip = clip.getWidth() * clip.getHeight();
-      if (hasClip) {
-        g.reduceClipRegion(dirty_);
-        gui::clear(&dirty_);
-      } else {
-        gui::clear(&dirty_);
-        return;
-      }
-    }
-#endif
-
     Painter p(desc_.widget(), &g);
-#if 0
-    DLOG(INFO) << str(gui::toString(g.getClipBounds())) << ", "
-               << (isOnDesktop() ? "heavy" : "light")
-               << ", " << str(getName())
-               << ", " << str(getParentComponent()->getName())
-      ;
-#endif
     if (empty_ || !thumbnail_) {
       g.setFont(14.0f);
       g.drawFittedText("Drop a file here or double-click to open a new file",
@@ -477,19 +449,6 @@ void Waveform::setSelected(int index, bool selected) {
   lpl.mutable_loop_point(index)->set_selected(selected);
   DataListener<LoopPointList>::setProto(lpl);
 }
-
-#ifdef USE_CUSTOM_REPAINT
-void Waveform::internalRepaint(int x, int y, int width, int height) {
-  Lock l(lock_);
-  juce::Rectangle<int> r(std::max(x, 0), std::max(y, 0), width, height);
-  gui::addInto(r, &dirty_);
-  dirty_.setWidth(std::min(getWidth() - dirty_.getX(), dirty_.getWidth()));
-  dirty_.setHeight(std::min(getHeight() - dirty_.getY(), dirty_.getHeight()));
-
-  if (width * height)
-    Component::internalRepaint(x, y, width, height);
-}
-#endif
 
 }  // namespace waveform
 }  // namespace widget
