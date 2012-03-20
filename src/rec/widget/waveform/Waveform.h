@@ -11,7 +11,6 @@
 #include "rec/util/Range.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
@@ -78,8 +77,6 @@ class Waveform : public Component,
   void setSelected(int index, bool selected);
 
  private:
-  void drawWaveform(Painter& g, const Range<Samples<44100> >&);
-  void drawGrid(Graphics& g, const Range<Samples<44100> >&);
   void layout();
 
   Samples<44100> zoomEnd() const;
@@ -107,6 +104,7 @@ class Waveform : public Component,
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 
   friend class Cursor;
+  friend class WaveformPainter;
 };
 
 }  // namespace waveform

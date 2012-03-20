@@ -5,7 +5,6 @@
 #include "rec/gui/icon/ZoomInCursor.svg.h"
 #include "rec/gui/Geometry.h"
 #include "rec/util/Defaulter.h"
-#include "rec/util/FormatTime.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/STL.h"
@@ -16,22 +15,21 @@
 #include "rec/widget/waveform/WaveformPainter.h"
 #include "rec/widget/waveform/Zoom.h"
 
-using namespace rec::util::block;
-
 namespace rec {
 namespace widget {
 namespace waveform {
 
 namespace {
 
-const int GRID_TEXT_WIDTH = 50;
-const int GRID_TEXT_HEIGHT = 9;
-const int GRID_TEXT_PAD = 4;
+using namespace rec::util::block;
+
+const int GRID_TEXT_HEIGHT = 9;  // ALSO IN WaveformPainter!
+
 const int CURSOR_LABEL_HEIGHT = 20;
 const int MODE_SELECTOR_OFFSET = 5;
 const int COMMAND_BAR_OFFSET = -2;
 
-const int64 SMALLEST_TIME_SAMPLES = 10000;
+const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
 const int ZOOM_CURSOR_X_HOTSPOT = 8;
 const int ZOOM_CURSOR_Y_HOTSPOT = 8;
 const int ZOOM_CURSOR_WIDTH = 24;
@@ -63,7 +61,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : Component("WaveformComponent"),
       length_(0),
       thumbnail_(NULL),
-      painter_(new WaveformPainter),
+      painter_(new WaveformPainter(this)),
       empty_(true),
       isDraggingCursor_(false),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
@@ -99,58 +97,8 @@ const CursorProto& Waveform::defaultTimeCursor() {
 }
 
 void Waveform::paint(Graphics& g) {
-  {
-    Lock l(lock_);
-    Painter p(desc_.widget(), &g);
-    if (empty_ || !thumbnail_) {
-      g.setFont(14.0f);
-      g.drawFittedText("Drop a file here or double-click to open a new file",
-                       0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
-    } else {
-      Range<Samples<44100> > range = getTimeRange();
-      drawWaveform(p, range);
-      drawGrid(g, range);
-    }
-  }
-}
-
-void Waveform::drawWaveform(Painter& p, const Range<Samples<44100> >& range) {
-  BlockSet::iterator i = selection_.begin();
-  Block r;
-  r.first = Samples<44100>(range.begin_);
-  r.second = Samples<44100>(range.end_);
-  const juce::Rectangle<int>& bounds = getLocalBounds();
-  int channels = thumbnail_->getNumChannels();
-
-  while (getSize(r) > 0) {
-    for (; i != selection_.end() && i->second <= r.first; ++i);
-    bool selected = (i != selection_.end() && r.first >= i->first);
-    Block draw = r;
-    if (selected)
-      draw.second = i->second;
-
-    else if (i != selection_.end())
-      draw.second = i->first;
-
-    int x1 = timeToX(Samples<44100>(draw.first));
-    int x2 = timeToX(Samples<44100>(draw.second));
-
-    juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
-
-    double first = static_cast<double>(draw.first) / 44100.0;
-    double second = static_cast<double>(draw.second) / 44100.0;
-    if (desc_.parallel_waveforms() ||
-        desc_.layout() == WaveformProto::PARALLEL) {
-      for (int i = 0; i < channels; ++i) {
-        p.setColor(selected ? i + 1 : i + 1 + channels);
-        thumbnail_->drawChannel(*p.graphics(), b, first, second, i, 1.0f);
-      }
-    } else {
-      p.setColor(2 + (!selected) * 2);
-      thumbnail_->drawChannels(*p.graphics(), b, first, second, 1.0f);
-    }
-    r.first = draw.second;
-  }
+  Lock l(lock_);
+  painter_->paint(g);
 }
 
 int Waveform::timeToX(Samples<44100> t) const {
@@ -346,61 +294,6 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
   we.xIncrement_ = xIncrement;
   we.yIncrement_ = yIncrement;
   Broadcaster<const MouseWheelEvent&>::broadcast(we);
-}
-
-void Waveform::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
-  Samples<44100> width = r.size();
-  if (width < SMALLEST_TIME_SAMPLES) {
-    LOG_FIRST_N(ERROR, 4) << "Nothing on screen! " << width;
-    return;
-  }
-  double seconds = pow(10.0, floor(log10(width / 44100.0)));
-  double samples = seconds * 44100.0;
-
-  int b = static_cast<int>(ceil(r.begin_ / samples));
-  int e = static_cast<int>(r.end_ / samples);
-  int diff = e - b;
-
-  if (diff <= 2)
-    samples /= 2.0;
-  else if (diff > 15)
-    samples *= 5.0;
-
-  if (samples > 10.0 * 44100)
-    samples *= 1.2;
-
-  b = static_cast<int>(ceil(r.begin_ / samples));
-  e = static_cast<int>(floor(r.end_ / samples));
-
-  float h = static_cast<float>(getHeight());
-  int decimals = 0;
-  if (samples < 0.01 * 44100.0)
-    decimals = 3;
-  else if (samples < 0.1 * 44100.0)
-    decimals = 2;
-  else if (samples < 1 * 44100.0)
-    decimals = 1;
-
-  g.setFont(10);
-
-  for (int i = b - 1; i <= e + 1; ++i) {
-    Samples<44100> time = static_cast<int64>(i * samples);
-    int x = timeToX(time);
-
-    if (desc_.show_grid()) {
-      g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
-      g.drawVerticalLine(x, 0, h);
-    }
-
-    String s = formatTime(time, length_, false, false, decimals);
-    g.setColour(juce::Colours::black);
-    g.drawText(s, i ? x - GRID_TEXT_WIDTH / 2 : x - GRID_TEXT_WIDTH / 4,
-               desc_.show_times_at_top() ? GRID_TEXT_PAD :
-               (static_cast<int>(h) - GRID_TEXT_PAD - GRID_TEXT_HEIGHT),
-               GRID_TEXT_WIDTH,
-               GRID_TEXT_HEIGHT,
-               Justification::centred, true);
-  }
 }
 
 int Waveform::getCursorX(uint index) const {
