@@ -46,7 +46,7 @@ class Waveform : public Component,
 
   static const CursorProto& defaultTimeCursor();
 
-  void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
+  void setAudioThumbnail(juce::AudioThumbnail*);
   virtual void resized() { layout(); }
 
   virtual void paint(Graphics&);

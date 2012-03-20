@@ -17,11 +17,12 @@ const int GRID_TEXT_PAD = 4;
 const int64 SMALLEST_TIME_SAMPLES = 10000;
 
 }  // namespace
+
 using namespace rec::util::block;
 
 void WaveformPainter::paint(Graphics& g) {
   Painter p(waveform_->desc_.widget(), &g);
-  if (waveform_->empty_ || !waveform_->thumbnail_) {
+  if (waveform_->empty_ || !thumbnail_) {
     g.setFont(14.0f);
     g.drawFittedText("Drop a file here or double-click to open a new file",
                      0, 0, waveform_->getWidth(),
@@ -37,13 +38,12 @@ void WaveformPainter::paint(Graphics& g) {
 void WaveformPainter::drawWaveform(Painter& p,
                                    const Range<Samples<44100> >& range) {
   const BlockSet& selection = waveform_->selection_;
-  juce::AudioThumbnail* thumbnail = waveform_->thumbnail_;
   BlockSet::iterator i = selection.begin();
   Block r;
   r.first = Samples<44100>(range.begin_);
   r.second = Samples<44100>(range.end_);
   const juce::Rectangle<int>& bounds = waveform_->getLocalBounds();
-  int channels = thumbnail->getNumChannels();
+  int channels = thumbnail_->getNumChannels();
 
   while (getSize(r) > 0) {
     for (; i != selection.end() && i->second <= r.first; ++i);
@@ -66,11 +66,11 @@ void WaveformPainter::drawWaveform(Painter& p,
         waveform_->desc_.layout() == WaveformProto::PARALLEL) {
       for (int i = 0; i < channels; ++i) {
         p.setColor(selected ? i + 1 : i + 1 + channels);
-        thumbnail->drawChannel(*p.graphics(), b, first, second, i, 1.0f);
+        thumbnail_->drawChannel(*p.graphics(), b, first, second, i, 1.0f);
       }
     } else {
       p.setColor(2 + (!selected) * 2);
-      thumbnail->drawChannels(*p.graphics(), b, first, second, 1.0f);
+      thumbnail_->drawChannels(*p.graphics(), b, first, second, 1.0f);
     }
     r.first = draw.second;
   }

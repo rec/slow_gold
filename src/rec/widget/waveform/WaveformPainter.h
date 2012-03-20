@@ -15,14 +15,17 @@ class Waveform;
 
 class WaveformPainter {
  public:
-  WaveformPainter(Waveform* waveform) : waveform_(waveform) {}
+  WaveformPainter(Waveform* w) : waveform_(w), thumbnail_(NULL) {}
   void paint(Graphics&);
+
+  void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
 
  private:
   void drawWaveform(Painter& g, const Range<Samples<44100> >&);
   void drawGrid(Graphics& g, const Range<Samples<44100> >&);
 
   Waveform* waveform_;
+  juce::AudioThumbnail* thumbnail_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformPainter);
 };

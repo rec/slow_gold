@@ -60,7 +60,6 @@ Def<CursorProto> defaultDesc(
 Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : Component("WaveformComponent"),
       length_(0),
-      thumbnail_(NULL),
       painter_(new WaveformPainter(this)),
       empty_(true),
       isDraggingCursor_(false),
@@ -82,6 +81,10 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
 
 Waveform::~Waveform() {
   stl::deletePointers(&cursors_);
+}
+
+void Waveform::setAudioThumbnail(juce::AudioThumbnail* t) {
+  painter_->setAudioThumbnail(t);
 }
 
 void Waveform::startListening() {
@@ -278,12 +281,11 @@ Range<Samples<44100> > Waveform::getTimeRange() const {
     r.end_= zoomEnd();
   }
 
-  if (r.size() < SMALLEST_TIME_SAMPLES) {
-  	Samples<44100> len = SMALLEST_TIME_SAMPLES;
-    if (thumbnail_)
-     len = static_cast<int64>(thumbnail_->getTotalLength() * 44100);
-    r = Range<Samples<44100> >(0, len);
-  }
+  if (r.size() < SMALLEST_TIME_SAMPLES)
+    r = Range<Samples<44100> >(0, length_);
+
+  if (r.size() < SMALLEST_TIME_SAMPLES)
+    r.end_ = SMALLEST_TIME_SAMPLES;
 
   return r;
 }
