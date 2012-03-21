@@ -52,8 +52,8 @@ Def<CursorProto> defaultDesc(
 
 Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : Component("WaveformComponent"),
-      painter_(new WaveformPainter(this)),
       model_(new WaveformModel),
+      painter_(new WaveformPainter(this)),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");

@@ -83,8 +83,8 @@ class Waveform : public Component,
 
   CriticalSection lock_;
   juce::AudioThumbnail* thumbnail_;
-  ptr<WaveformPainter> painter_;
   ptr<WaveformModel> model_;
+  ptr<WaveformPainter> painter_;
 
   CursorList cursors_;
   ptr<Cursor> timeCursor_;

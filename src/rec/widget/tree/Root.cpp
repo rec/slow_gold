@@ -65,6 +65,7 @@ static void restoreOpenness(Node* node, const XmlElement& xml) {
 void Root::readOpenness() {
   if (opennessStarted_)
     return;
+
   opennessStarted_ = true;
   ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
   if (openness) {
@@ -139,8 +140,6 @@ void Root::mergeNewIntoOld(file::VirtualFileList volumes) {
       j++;
   }
   writeOpenness();
-
-
 }
 
 void Root::addVolume(const VirtualFile& volume, int insertAt) {

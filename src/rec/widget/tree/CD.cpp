@@ -42,9 +42,14 @@ void CD::computeChildren() {
     *path = str(String(i + 1));
     ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));  // TODO
     node->addListener(this);
-    thread::callAsync(this, &TreeViewItem::addSubItem, node.transfer(), -1);
+
+    MessageManagerLock l;
+    addSubItem(node.transfer(), -1);
   }
   setProcessing(false);
+
+  MessageManagerLock l;
+  setOpen(true);
 }
 
 }  // namespace tree
