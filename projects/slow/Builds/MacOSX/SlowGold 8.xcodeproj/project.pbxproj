@@ -134,6 +134,7 @@
 		6E139B127C100FF99349F2C2 /* parserstate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7170E00159B1F1B5DBBBA5A /* parserstate.cpp */; };
 		6E488148F4282557EACE9DDC /* Address.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 459B765417C36DEC48A4DAF4 /* Address.pb.cc */; };
 		70A0689A16AA0BDC8388BC0E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39E2C0690E1AEF43CF97D3E7 /* Carbon.framework */; };
+		70D742A6DB9C3B4DD5F1BAF7 /* WaveformModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35E91D2F60FA70F7F0D6C41D /* WaveformModel.cpp */; };
 		7274E4F004F099DA7C45F307 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F656F6C7E2211D393255736B /* Cocoa.framework */; };
 		73659CD7BFA69DC8FCF79B0F /* CommandMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D00FE6722A48A42C78FE19F /* CommandMap.cpp */; };
 		73D298596E1835C395F91DBE /* CopySamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA8313386F7BEF9A5DC18269 /* CopySamples.cpp */; };
@@ -616,6 +617,7 @@
 		35B5D42A96E201AA8BD6C258 /* Widget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.cpp; path = ../../../../src/rec/widget/Widget.cpp; sourceTree = SOURCE_ROOT; };
 		35C0A8092BF2010BAC6ADF28 /* LoopSnapshot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopSnapshot.h; path = ../../../../src/rec/slow/LoopSnapshot.h; sourceTree = SOURCE_ROOT; };
 		35D72977B3AD45BE00082568 /* Widget.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Widget.pb.h; path = ../../../../genfiles/proto/rec/widget/Widget.pb.h; sourceTree = SOURCE_ROOT; };
+		35E91D2F60FA70F7F0D6C41D /* WaveformModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WaveformModel.cpp; path = ../../../../src/rec/widget/waveform/WaveformModel.cpp; sourceTree = SOURCE_ROOT; };
 		361084732E5B6DEF76C34550 /* Exception.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Exception.h; path = ../../../../src/rec/util/Exception.h; sourceTree = SOURCE_ROOT; };
 		369B234306E3D2C21FC373DB /* juce_MidiMessageSequence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_MidiMessageSequence.h; path = ../../../../../juce/modules/juce_audio_basics/midi/juce_MidiMessageSequence.h; sourceTree = SOURCE_ROOT; };
 		36E0346E47A58BD39B2959EC /* LoopPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopPoint.h; path = ../../../../src/rec/util/LoopPoint.h; sourceTree = SOURCE_ROOT; };
@@ -1223,6 +1225,7 @@
 		9D76A7268ED445EA51117664 /* Target.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Target.cpp; path = ../../../../src/rec/slow/Target.cpp; sourceTree = SOURCE_ROOT; };
 		9D84D4A86A4F1C26AA01A984 /* Convertors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Convertors.h; path = ../../../../src/rec/util/partition/Convertors.h; sourceTree = SOURCE_ROOT; };
 		9D9EC0429FDE38896F471322 /* NavigatorConfig.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NavigatorConfig.pb.cc; path = ../../../../genfiles/proto/rec/widget/tree/NavigatorConfig.pb.cc; sourceTree = SOURCE_ROOT; };
+		9DF98B2C6ECE79FA2E625B4D /* WaveformModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformModel.h; path = ../../../../src/rec/widget/waveform/WaveformModel.h; sourceTree = SOURCE_ROOT; };
 		9E713225F174268730DA226F /* WindowPosition.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowPosition.pb.h; path = ../../../../genfiles/proto/rec/gui/WindowPosition.pb.h; sourceTree = SOURCE_ROOT; };
 		9EDDF0A47FB63665D1678590 /* juce_BubbleMessageComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_BubbleMessageComponent.cpp; path = ../../../../../juce/modules/juce_gui_extra/misc/juce_BubbleMessageComponent.cpp; sourceTree = SOURCE_ROOT; };
 		9F20D9519BE27620BE3BEE19 /* juce_TextEditorKeyMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_TextEditorKeyMapper.h; path = ../../../../../juce/modules/juce_gui_basics/keyboard/juce_TextEditorKeyMapper.h; sourceTree = SOURCE_ROOT; };
@@ -1248,6 +1251,7 @@
 		A1932D3FC53FA4BA41DF0AD8 /* juce_AudioIODevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_AudioIODevice.h; path = ../../../../../juce/modules/juce_audio_devices/audio_io/juce_AudioIODevice.h; sourceTree = SOURCE_ROOT; };
 		A1F63987FBBAD9E33BDFB3F7 /* WaveformPainter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformPainter.h; path = ../../../../src/rec/widget/waveform/WaveformPainter.h; sourceTree = SOURCE_ROOT; };
 		A21E606D84ADD437A0198FE7 /* LockedFlag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedFlag.h; path = ../../../../src/rec/util/thread/LockedFlag.h; sourceTree = SOURCE_ROOT; };
+		A243ACCD0792F5375EB95F76 /* juce_android_OpenSL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_OpenSL.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_android_OpenSL.cpp; sourceTree = SOURCE_ROOT; };
 		A27103682A55815E0FBF2919 /* juce_module_info */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_module_info; path = ../../../../../juce/modules/juce_graphics/juce_module_info; sourceTree = SOURCE_ROOT; };
 		A282A041DD060F26F70258B0 /* juce_PathStrokeType.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_PathStrokeType.cpp; path = ../../../../../juce/modules/juce_graphics/geometry/juce_PathStrokeType.cpp; sourceTree = SOURCE_ROOT; };
 		A293EF7CCAF7715BDC2C45EB /* juce_GroupComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_GroupComponent.cpp; path = ../../../../../juce/modules/juce_gui_basics/layout/juce_GroupComponent.cpp; sourceTree = SOURCE_ROOT; };
@@ -2882,6 +2886,16 @@
 			name = stretch;
 			sourceTree = "<group>";
 		};
+		7395006EE4965B9F1BF01A81 /* SlowGold 8 */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = "SlowGold 8";
+			sourceTree = "<group>";
+		};
 		7606C573648C4B2754F776EA /* misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -3024,7 +3038,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				ABA06D683467C1FB7C641BCA /* SlowGold 8 */,
+				7395006EE4965B9F1BF01A81 /* SlowGold 8 */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3444,16 +3458,6 @@
 			name = data;
 			sourceTree = "<group>";
 		};
-		ABA06D683467C1FB7C641BCA /* SlowGold 8 */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = "SlowGold 8";
-			sourceTree = "<group>";
-		};
 		ABBFE7C99DC2DC6C418C1877 /* callbacks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3478,6 +3482,7 @@
 			children = (
 				98377763375846342CDE2793 /* juce_android_Audio.cpp */,
 				D3FBF60984C43673D809352D /* juce_android_Midi.cpp */,
+				A243ACCD0792F5375EB95F76 /* juce_android_OpenSL.cpp */,
 				5144DF265CBD5F9CD63EEEC3 /* juce_ios_Audio.cpp */,
 				76DE32E39A4A6FF534CDB970 /* juce_linux_ALSA.cpp */,
 				508E4C1B1E8CB437A5DFA6A0 /* juce_linux_AudioCDReader.cpp */,
@@ -4131,6 +4136,8 @@
 				7E3BEAC25FF6B2CD445B6E3D /* OutlinedCursorLabel.h */,
 				86A18D99841C1BC07D0F0A19 /* Waveform.cpp */,
 				23790A8B96126E45140D596E /* Waveform.h */,
+				35E91D2F60FA70F7F0D6C41D /* WaveformModel.cpp */,
+				9DF98B2C6ECE79FA2E625B4D /* WaveformModel.h */,
 				B2D0C04EC466F2DEAFC9E945 /* WaveformPainter.cpp */,
 				A1F63987FBBAD9E33BDFB3F7 /* WaveformPainter.h */,
 				1D01959CF715923B37E10C38 /* Zoom.cpp */,
@@ -4835,6 +4842,7 @@
 				FA38A4950CAD83CBFF497A2E /* CursorStates.cpp in Sources */,
 				F6402C92E258A9A3942EE13D /* OutlinedCursorLabel.cpp in Sources */,
 				5175830BC9670F524B09F2B5 /* Waveform.cpp in Sources */,
+				70D742A6DB9C3B4DD5F1BAF7 /* WaveformModel.cpp in Sources */,
 				973E454F43CB6FAA5AB976A4 /* WaveformPainter.cpp in Sources */,
 				23F59998082648C79023F7B3 /* Zoom.cpp in Sources */,
 				4A643D1B47C996C842F04451 /* Widget.cpp in Sources */,

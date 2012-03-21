@@ -52,6 +52,10 @@
  //#define JUCE_JACK
 #endif
 
+#ifndef    JUCE_USE_ANDROID_OPENSLES
+ //#define JUCE_USE_ANDROID_OPENSLES
+#endif
+
 #ifndef    JUCE_USE_CDREADER
  #define   JUCE_USE_CDREADER 1
 #endif

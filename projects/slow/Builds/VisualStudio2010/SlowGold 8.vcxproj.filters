@@ -1138,6 +1138,9 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp">
       <Filter>SlowGold 8\rec\widget\waveform</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\WaveformModel.cpp">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.cpp">
       <Filter>SlowGold 8\rec\widget\waveform</Filter>
     </ClCompile>
@@ -1331,6 +1334,9 @@
       <Filter>Juce Modules\juce_audio_devices\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_audio_devices\native\juce_android_Midi.cpp">
+      <Filter>Juce Modules\juce_audio_devices\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce\modules\juce_audio_devices\native\juce_android_OpenSL.cpp">
       <Filter>Juce Modules\juce_audio_devices\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_audio_devices\native\juce_ios_Audio.cpp">
@@ -3493,6 +3499,9 @@
       <Filter>SlowGold 8\rec\widget\waveform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h">
+      <Filter>SlowGold 8\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\WaveformModel.h">
       <Filter>SlowGold 8\rec\widget\waveform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.h">

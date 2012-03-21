@@ -16,6 +16,7 @@
 #include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/OutlinedCursorLabel.h"
 #include "rec/widget/waveform/Waveform.h"
+#include "rec/widget/waveform/WaveformModel.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
@@ -84,9 +85,10 @@ Mode::Action MouseListener::getClickAction() {
 }
 
 void MouseListener::operator()(const MouseWheelEvent& e) {
-  Waveform* waveform = components()->waveform_.get();
-  if (e.event_->eventComponent == waveform) {
-    Samples<44100> time = waveform->xToTime(e.event_->x);
+  const Waveform& waveform = *components()->waveform_;
+  const WaveformModel& model = components()->waveform_->model();
+  if (e.event_->eventComponent == &waveform) {
+    Samples<44100> time = model.xToTime(e.event_->x);
     double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
     zoom(*instance_, *e.event_, time, inc);
   }
@@ -98,7 +100,7 @@ void MouseListener::addLoopPoint(Samples<44100> time) {
 }
 
 void MouseListener::clickWaveform(const MouseEvent& e, Waveform* waveform) {
-  Samples<44100> time = waveform->xToTime(e.x);
+  Samples<44100> time = waveform->model().xToTime(e.x);
   dragMods_ = e.mods;
   Mode::Action action = getClickAction();
   if (action == Mode::DRAG)
@@ -157,11 +159,11 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
 
 void MouseListener::dragCursor(const MouseEvent& e,
                                widget::waveform::Cursor* cursor) {
-  Waveform* waveform = cursor->waveform();
+  const WaveformModel& model = cursor->waveform()->model();
   components()->waveform_->setIsDraggingCursor(true);
   if (!near(cursor->getTime(), 0, 44)) {
     int cursorX = e.getDistanceFromDragStartX() + cursorDragStart_ + DRAG_TWEAK;
-    Samples<44100> t = cursorRestrict_.restrict(waveform->xToTime(cursorX));
+    Samples<44100> t = cursorRestrict_.restrict(model.xToTime(cursorX));
     if (cursor->setDragTime(t))
       currentTime()->setCursorTime(t, cursor->index(), cursor->isTimeCursor());
   }
@@ -171,7 +173,7 @@ void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
   Mode::Action action = getClickAction();
   if (action == Mode::DRAG) {
     Samples<44100> dt = static_cast<int64>(e.getDistanceFromDragStartX() /
-                                           waveform->pixelsPerSample());
+                                           waveform->model().pixelsPerSample());
     widget::waveform::ZoomProto zoom(DataListener<ZoomProto>::getProto());
     Samples<44100> len = length();
     Samples<44100> end = zoom.has_end() ? Samples<44100>(zoom.end()) : len;

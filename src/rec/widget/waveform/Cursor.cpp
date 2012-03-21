@@ -6,6 +6,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/Proto.h"
 #include "rec/widget/waveform/OutlinedCursorLabel.h"
+#include "rec/widget/waveform/WaveformModel.h"
 
 using namespace rec::gui;
 using namespace rec::gui::color;
@@ -148,8 +149,8 @@ void Cursor::layout() {
   int componentWidth = desc().component_width();
   int x = 0;
 
-  if (waveform_->getTimeRange().size() > SMALLEST_TIME_SAMPLES)
-    x = waveform_->timeToX(getTime());
+  if (waveform_->model().getTimeRange().size() > SMALLEST_TIME_SAMPLES)
+    x = waveform_->model().timeToX(getTime());
 
   bounds.setWidth(componentWidth);
   bounds.setX(x - (componentWidth - desc().width()) / 2);

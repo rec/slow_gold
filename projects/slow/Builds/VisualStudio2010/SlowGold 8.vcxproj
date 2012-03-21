@@ -350,6 +350,7 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\WaveformModel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp"/>
@@ -464,6 +465,9 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_audio_devices\native\juce_android_Midi.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce\modules\juce_audio_devices\native\juce_android_OpenSL.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_audio_devices\native\juce_ios_Audio.cpp">
@@ -1790,6 +1794,7 @@
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\MouseWheelEvent.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\WaveformModel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h"/>

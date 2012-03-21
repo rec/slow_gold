@@ -59,10 +59,6 @@ class Waveform : public Component,
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 
-  Range<Samples<44100> > getTimeRange() const;
-  Samples<44100> xToTime(int x) const;
-  double pixelsPerSample() const;
-
   const CursorList& getCursors() const { return cursors_; }
   CursorList* getCursorsMutable() { return &cursors_; }
 
@@ -71,36 +67,28 @@ class Waveform : public Component,
   int getCursorX(uint index) const;
   void setCursorText(int index, const String& text);
   void setIsDraggingCursor(bool d);
-  bool isDraggingCursor() const { Lock l(lock_); return isDraggingCursor_; }
+  bool isDraggingCursor() const;
   void repaintBlock(block::Block);
   void repaintBlocks(const block::BlockSet&);
 
   void adjustCursors(LoopPointList loopPoints, block::BlockSet dirty);
   void setSelected(int index, bool selected);
+  const WaveformModel& model() { return *model_; }
 
  private:
   void layout();
 
-  Samples<44100> zoomEnd() const;
-
   void doClick(const juce::MouseEvent& e, int clickCount);
-  int timeToX(Samples<44100> t) const;
   void cursorDragged(int index, int x);
 
   CriticalSection lock_;
   WaveformProto desc_;
-  Samples<44100> length_;
   juce::AudioThumbnail* thumbnail_;
-  block::BlockSet selection_;
   ptr<WaveformPainter> painter_;
   ptr<WaveformModel> model_;
 
   CursorList cursors_;
   ptr<Cursor> timeCursor_;
-
-  ZoomProto zoom_;
-  bool empty_;
-  bool isDraggingCursor_;
 
   juce::MouseCursor	zoomCursor_;
 

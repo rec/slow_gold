@@ -8,13 +8,11 @@
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/STL.h"
-#include "rec/util/block/Difference.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/WaveformModel.h"
 #include "rec/widget/waveform/WaveformPainter.h"
-#include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
 namespace widget {
@@ -60,11 +58,8 @@ Def<CursorProto> defaultDesc(
 
 Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
     : Component("WaveformComponent"),
-      length_(0),
       painter_(new WaveformPainter(this)),
       model_(new WaveformModel),
-      empty_(true),
-      isDraggingCursor_(false),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
@@ -103,23 +98,18 @@ const CursorProto& Waveform::defaultTimeCursor() {
 
 void Waveform::paint(Graphics& g) {
   Lock l(lock_);
-  painter_->paint(g, getTimeRange());
+  painter_->paint(g, model_->getTimeRange());
 }
 
 void Waveform::resized() {
+  Lock l(lock_);
   layout();
+  model_->setWidth(getWidth());
 }
 
-int Waveform::timeToX(Samples<44100> t) const {
-  return static_cast<int>((t - getTimeRange().begin_) * pixelsPerSample());
-}
-
-Samples<44100> Waveform::xToTime(int x) const {
-  return static_cast<int64>(getTimeRange().begin_.get() + x / pixelsPerSample());
-}
-
-double Waveform::pixelsPerSample() const {
-  return getWidth() / (1.0 * getTimeRange().size());
+bool Waveform::isDraggingCursor() const {
+  Lock l(lock_);
+  return model_->isDraggingCursor();
 }
 
 void Waveform::operator()(const WaveformProto& proto) {
@@ -131,22 +121,9 @@ void Waveform::operator()(const WaveformProto& proto) {
 }
 
 void Waveform::operator()(const LoopPointList& loopPoints) {
-  BlockSet newSelection = rec::audio::getTimeSelection(loopPoints);
-  bool isDraggingCursor;
-  BlockSet oldSelection;
-  {
-    Lock l(lock_);
-    oldSelection = selection_;
-    selection_ = newSelection;
-    length_ = loopPoints.length();
-    if (length_)
-      constrainZoom(&zoom_, length_);
-    empty_ = !loopPoints.has_length();
-    isDraggingCursor = isDraggingCursor_;
-  }
-
-  BlockSet dirty = symmetricDifference(oldSelection, newSelection);
-  if (!isDraggingCursor_)
+  Lock l(lock_);
+  BlockSet dirty = model_->setLoopPoints(loopPoints);
+  if (!model_->isDraggingCursor())
     thread::callAsync(this, &Waveform::adjustCursors, loopPoints, dirty);
   else if (!dirty.empty())
     thread::callAsync(this, &Waveform::repaintBlocks, dirty);
@@ -186,9 +163,7 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
 void Waveform::operator()(const ZoomProto& zp) {
   {
     Lock l(lock_);
-    zoom_ = zp;
-    if (length_)
-      constrainZoom(&zoom_, length_);
+    model_->setZoom(zp);
   }
 
   thread::callAsync(this, &Waveform::layout);
@@ -266,36 +241,6 @@ void Waveform::layout() {
   repaint();
 }
 
-Samples<44100> Waveform::zoomEnd() const {
-  Lock l(lock_);
-  return zoom_.has_end() ? Samples<44100>(zoom_.end()) : Samples<44100>(length_);
-}
-
-Range<Samples<44100> > Waveform::getTimeRange() const {
-  Lock l(lock_);
-  Range<Samples<44100> > r;
-  if (zoom_.zoom_to_selection() && !selection_.empty()) {
-    r.begin_ = Samples<44100>(selection_.begin()->first);
-    r.end_ = Samples<44100>(selection_.rbegin()->second);
-    if (r.end_ == 0)
-      r.end_ = zoomEnd();
-
-    r.begin_ = std::max<Samples<44100> >(r.begin_, 0);
-    r.end_ = std::min<Samples<44100> >(r.end_, zoomEnd());
-  } else {
-    r.begin_ = zoom_.begin();
-    r.end_= zoomEnd();
-  }
-
-  if (r.size() < SMALLEST_TIME_SAMPLES)
-    r = Range<Samples<44100> >(0, length_);
-
-  if (r.size() < SMALLEST_TIME_SAMPLES)
-    r.end_ = SMALLEST_TIME_SAMPLES;
-
-  return r;
-}
-
 void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncrement) {
   MouseWheelEvent we;
   we.event_ = &e;
@@ -311,7 +256,8 @@ int Waveform::getCursorX(uint index) const {
 void Waveform::setCursorText(int index, const String& text) {
   LoopPointList lpl = DataListener<LoopPointList>::getProto();
   DCHECK_GE(index,  0);
-  DCHECK_LT(index,  lpl.loop_point_size());
+  DCHECK_LT(index, lpl.loop_point_size());
+
   if (index < 0 || index >= lpl.loop_point_size())
     return;
   lpl.mutable_loop_point(index)->set_name(str(text));
@@ -319,16 +265,14 @@ void Waveform::setCursorText(int index, const String& text) {
 }
 
 void Waveform::repaintBlock(Block b) {
-  int x1 = timeToX(b.first);
+  int x1 = model_->timeToX(b.first);
   if (x1 < getWidth()) {
-    int x2 = timeToX(b.second);
+    int x2 = model_->timeToX(b.second);
     if (x2 >= 0) {
       x1 = std::max(0, x1);
       x2 = std::min(x2, getWidth());
-      if (x1 < x2 && getHeight()) {
-        // DLOG(INFO) << x1 << ", " << 0 << ", " << x2 - x1 << ", " << getHeight();
+      if (x1 < x2 && getHeight())
         repaint(x1, 0, x2 - x1, getHeight());
-      }
     }
   }
 }
@@ -340,7 +284,7 @@ void Waveform::repaintBlocks(const BlockSet& b) {
 
 void Waveform::setIsDraggingCursor(bool d) {
   Lock l(lock_);
-  isDraggingCursor_ = d;
+  model_->setIsDraggingCursor(d);
 }
 
 void Waveform::setSelected(int index, bool selected) {
