@@ -12,10 +12,11 @@ class Painter;
 namespace waveform {
 
 class Waveform;
+class WaveformModel;
 
 class WaveformPainter {
  public:
-  WaveformPainter(Waveform* w) : waveform_(w), thumbnail_(NULL) {}
+  WaveformPainter(Waveform* w);
   void paint(Graphics&, const Range<Samples<44100> >&);
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
@@ -25,6 +26,7 @@ class WaveformPainter {
   void drawGrid(Graphics& g, const Range<Samples<44100> >&);
 
   Waveform* waveform_;
+  const WaveformModel& model_;
   juce::AudioThumbnail* thumbnail_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformPainter);
