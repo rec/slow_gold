@@ -4,6 +4,7 @@
 #include "rec/util/LoopPoint.h"
 #include "rec/util/block/Block.h"
 #include "rec/widget/waveform/Zoom.pb.h"
+#include "rec/widget/waveform/Waveform.pb.h"
 
 namespace rec {
 namespace widget {
@@ -27,6 +28,10 @@ class WaveformModel {
   const block::BlockSet& selection() const { return selection_; }
   Samples<44100> length() const { return length_; }
 
+  void setDescription(const WaveformProto& d) { desc_ = d; }
+  const WaveformProto& description() const { return desc_; }
+  void layout(Component* waveform);
+
  private:
   Samples<44100> zoomEnd() const;
 
@@ -36,6 +41,7 @@ class WaveformModel {
   bool empty_;
   bool isDraggingCursor_;
   int width_;
+  WaveformProto desc_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformModel);
 };

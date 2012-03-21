@@ -22,7 +22,7 @@ const int64 SMALLEST_TIME_SAMPLES = 10000;
 using namespace rec::util::block;
 
 void WaveformPainter::paint(Graphics& g, const Range<Samples<44100> >& range) {
-  Painter p(waveform_->desc_.widget(), &g);
+  Painter p(waveform_->model().description().widget(), &g);
   if (waveform_->model().isEmpty() || !thumbnail_) {
     g.setFont(14.0f);
     g.drawFittedText("Drop a file here or double-click to open a new file",
@@ -62,8 +62,8 @@ void WaveformPainter::drawWaveform(Painter& p,
 
     double first = static_cast<double>(draw.first) / 44100.0;
     double second = static_cast<double>(draw.second) / 44100.0;
-    if (waveform_->desc_.parallel_waveforms() ||
-        waveform_->desc_.layout() == WaveformProto::PARALLEL) {
+    if (waveform_->model().description().parallel_waveforms() ||
+        waveform_->model().description().layout() == WaveformProto::PARALLEL) {
       for (int i = 0; i < channels; ++i) {
         p.setColor(selected ? i + 1 : i + 1 + channels);
         thumbnail_->drawChannel(*p.graphics(), b, first, second, i, 1.0f);
@@ -115,7 +115,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
     Samples<44100> time = static_cast<int64>(i * samples);
     int x = waveform_->model().timeToX(time);
 
-    if (waveform_->desc_.show_grid()) {
+    if (waveform_->model().description().show_grid()) {
       g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
       g.drawVerticalLine(x, 0, h);
     }
@@ -123,7 +123,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
     String s = formatTime(time, waveform_->model().length(), false, false, decimals);
     g.setColour(juce::Colours::black);
     g.drawText(s, i ? x - GRID_TEXT_WIDTH / 2 : x - GRID_TEXT_WIDTH / 4,
-               waveform_->desc_.show_times_at_top() ? GRID_TEXT_PAD :
+               waveform_->model().description().show_times_at_top() ? GRID_TEXT_PAD :
                (static_cast<int>(h) - GRID_TEXT_PAD - GRID_TEXT_HEIGHT),
                GRID_TEXT_WIDTH,
                GRID_TEXT_HEIGHT,

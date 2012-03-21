@@ -22,12 +22,6 @@ namespace {
 
 using namespace rec::util::block;
 
-const int GRID_TEXT_HEIGHT = 9;  // ALSO IN WaveformPainter!
-
-const int CURSOR_LABEL_HEIGHT = 20;
-const int MODE_SELECTOR_OFFSET = 5;
-const int COMMAND_BAR_OFFSET = -2;
-
 const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
 const int ZOOM_CURSOR_X_HOTSPOT = 8;
 const int ZOOM_CURSOR_Y_HOTSPOT = 8;
@@ -112,10 +106,10 @@ bool Waveform::isDraggingCursor() const {
   return model_->isDraggingCursor();
 }
 
-void Waveform::operator()(const WaveformProto& proto) {
+void Waveform::operator()(const WaveformProto& desc) {
   {
     Lock l(lock_);
-    desc_ = proto;
+    model_->setDescription(desc);
   }
   thread::callAsync(this, &Waveform::layout);
 }
@@ -193,50 +187,7 @@ void Waveform::operator()(const Mode& mode) {
 void Waveform::layout() {
   {
     Lock l(lock_);
-    for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
-      (*i)->layout();
-
-    using namespace rec::gui::audio;
-    CommandBar* cb = NULL;
-    ModeSelector* ms = NULL;
-    for (int i = 0; i < getNumChildComponents(); ++i) {
-      Component* c = getChildComponent(i);
-      if (!cb)
-        cb = dynamic_cast<CommandBar*>(c);
-      if (!ms)
-        ms = dynamic_cast<ModeSelector*>(c);
-    }
-
-    if (ms) {
-      int dy = MODE_SELECTOR_OFFSET;
-      if (desc_.show_times_at_top() == desc_.modes_at_top())
-        dy += GRID_TEXT_HEIGHT;
-      if (desc_.show_labels_at_top() == desc_.modes_at_top())
-        dy += CURSOR_LABEL_HEIGHT;
-      int x = desc_.modes_at_left() ? 0 : (getWidth() - ms->getWidth());
-      int y = desc_.modes_at_top() ? dy : (getHeight() - ms->getHeight() - dy);
-      ms->setTopLeftPosition(x, y);
-    } else {
-      LOG(DFATAL) << "No mode selector";
-    }
-
-    if (cb) {
-      int dy = COMMAND_BAR_OFFSET;
-      if (desc_.show_times_at_top() == desc_.command_bar_at_top())
-        dy += GRID_TEXT_HEIGHT;
-      if (desc_.show_labels_at_top() == desc_.command_bar_at_top())
-        dy += CURSOR_LABEL_HEIGHT;
-      if (ms && desc_.modes_at_top() == desc_.command_bar_at_top() &&
-          desc_.modes_at_left() == desc_.command_bar_at_left()) {
-        dy += (ms->getHeight() + MODE_SELECTOR_OFFSET);
-      }
-
-      int x = desc_.command_bar_at_left() ? 0 : (getWidth() - cb->getWidth());
-      int y = desc_.command_bar_at_top() ? dy : (getHeight() - cb->getHeight()) - dy;
-      cb->setTopLeftPosition(x, y);
-    } else {
-      LOG(DFATAL) << "No command bar";
-    }
+    model_->layout(this);
   }
   repaint();
 }

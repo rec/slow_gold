@@ -130,7 +130,7 @@ using data::Address;
 class LoopsSetterLabel : public SetterLabel {
  public:
   explicit LoopsSetterLabel(int row, const TableColumn& col)
-      : SetterLabel("LoopsSetterLabel",
+      : SetterLabel("",
                     getTypeName<LoopPointList>(),
                     "loop_point" + Address(row) + col.address()),
         row_(row) {

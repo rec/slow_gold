@@ -82,7 +82,6 @@ class Waveform : public Component,
   void cursorDragged(int index, int x);
 
   CriticalSection lock_;
-  WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
   ptr<WaveformPainter> painter_;
   ptr<WaveformModel> model_;
