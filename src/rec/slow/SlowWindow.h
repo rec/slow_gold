@@ -31,7 +31,6 @@ class SlowWindow : public app::Window,
   virtual void trashPreferences();
   void startAboutWindow();
   void stopAboutWindow();
-  Broadcaster<bool>* aboutWindowBroadcaster() { return &aboutWindowBroadcaster_; }
   virtual void operator()(const music::Metadata&);
   virtual void minimisationStateChanged(bool isNowMinimised);
 
@@ -45,11 +44,8 @@ class SlowWindow : public app::Window,
   virtual void activeWindowStatusChanged();
 
  private:
-  void turnOffAboutWindow();
-
   ptr<Instance> instanceDeleter_;
   ptr<Component> aboutWindow_;
-  Broadcaster<bool> aboutWindowBroadcaster_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowWindow);
 };

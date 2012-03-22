@@ -126,6 +126,13 @@ class GuiSettings : public ::google::protobuf::Message {
   inline bool advanced_menus() const;
   inline void set_advanced_menus(bool value);
   
+  // optional bool show_about_on_startup = 6 [default = true];
+  inline bool has_show_about_on_startup() const;
+  inline void clear_show_about_on_startup();
+  static const int kShowAboutOnStartupFieldNumber = 6;
+  inline bool show_about_on_startup() const;
+  inline void set_show_about_on_startup(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.slow.GuiSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -136,11 +143,12 @@ class GuiSettings : public ::google::protobuf::Message {
   bool show_tooltips_;
   bool show_help_pane_;
   bool advanced_menus_;
+  bool show_about_on_startup_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -241,6 +249,22 @@ inline bool GuiSettings::advanced_menus() const {
 inline void GuiSettings::set_advanced_menus(bool value) {
   _set_bit(4);
   advanced_menus_ = value;
+}
+
+// optional bool show_about_on_startup = 6 [default = true];
+inline bool GuiSettings::has_show_about_on_startup() const {
+  return _has_bit(5);
+}
+inline void GuiSettings::clear_show_about_on_startup() {
+  show_about_on_startup_ = true;
+  _clear_bit(5);
+}
+inline bool GuiSettings::show_about_on_startup() const {
+  return show_about_on_startup_;
+}
+inline void GuiSettings::set_show_about_on_startup(bool value) {
+  _set_bit(5);
+  show_about_on_startup_ = value;
 }
 
 

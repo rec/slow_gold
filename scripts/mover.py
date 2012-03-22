@@ -6,22 +6,7 @@ import os.path
 import re
 import sys
 
-
-def pathParts(s):
-  parts = os.path.abspath(s).split('/src/rec/')[1:]
-  if not parts:
-    raise ValueError(s)
-  parts = ['rec'] + parts[0].split('/')
-  parts[-1] = parts[-1].split('.')[0]
-
-  if parts[-1] == 'base':
-    parts.pop()
-
-  return parts
-
-def run(cmd):
-  print '$', cmd
-  os.system(cmd)
+import util
 
 
 class Mover(object):
@@ -41,8 +26,8 @@ class Mover(object):
     self.state = Mover.NONE
     self.fromFile, self.toFile = self.check(fromFile, toFile)
 
-    fp = pathParts(self.fromFile)
-    tp = pathParts(self.toFile)
+    fp = util.pathParts(self.fromFile)
+    tp = util.pathParts(self.toFile)
     names = tp[:-1]
     self.reps = [[f(fp), f(tp).replace(r'\b', '')] for f in Mover.FUNCTIONS]
 
@@ -71,11 +56,11 @@ class Mover(object):
 
   def move(self):
     tempFile = self.toFile + '.tmp'
-    run('git mv %s %s' % (self.fromFile, self.toFile))
+    util.run('git mv %s %s' % (self.fromFile, self.toFile))
     if os.path.exists(self.fromFile):
-      run('mv -f %s %s' % (self.fromFile, self.toFile))
+      util.run('mv -f %s %s' % (self.fromFile, self.toFile))
 
-    run('cp %s %s' % (self.toFile, tempFile))
+    util.run('cp %s %s' % (self.toFile, tempFile))
     with open(tempFile, 'r') as input:
       with open(self.toFile, 'w') as output:
         self.out = output

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="1AXjAGIn9" name="SlowGold 8">
+  <MAINGROUP id="wU2ITRsFc" name="SlowGold 8">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -867,6 +867,8 @@
               name="Metadata.h" resource="0"/>
       </GROUP>
       <GROUP id="eSTQIRWq5" name="slow">
+        <FILE compile="1" file="../../src/rec/slow/AboutWindow.cpp" id="XDnrh473F"
+              name="AboutWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AboutWindow.h" id="ciogeWCKW"
               name="AboutWindow.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/AdvancedMenuMaker.cpp" id="m9spRoEOJ"
@@ -1433,7 +1435,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="wyCtc8cON" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="AWtjvAtTK" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

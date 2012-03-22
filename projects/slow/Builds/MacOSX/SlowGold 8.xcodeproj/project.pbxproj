@@ -77,6 +77,7 @@
 		4013D8993BA57FA6C4EEC13F /* Gain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5F963C26DE6AF16AE88B44E /* Gain.cpp */; };
 		413D26CE355B1BEEF682E0BA /* TransformController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E10AB4976ED4E0A87469D635 /* TransformController.cpp */; };
 		41EB80BF1BDD40A7533FC42C /* conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC12386FD04DE8A6B7005F0E /* conversion.cpp */; };
+		43126547AB67C04400F864CF /* AboutWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB222B595410F9239997CB53 /* AboutWindow.cpp */; };
 		431B05DFDF74B9B53ED890A3 /* TextComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93AD7EC88811E158E196B6E4 /* TextComponent.cpp */; };
 		43421B81B2E41BC7324DDE8A /* juce_audio_processors.mm in Sources */ = {isa = PBXBuildFile; fileRef = D57A568973030CCBDE75B1C3 /* juce_audio_processors.mm */; };
 		44EFAD664BAD7376A8B861F7 /* Threads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA83DA1B2DE4145F71EFFB /* Threads.cpp */; };
@@ -1465,6 +1466,7 @@
 		CAFF404473885E88E59D16B5 /* Panes.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Panes.pb.cc; path = ../../../../genfiles/proto/rec/widget/Panes.pb.cc; sourceTree = SOURCE_ROOT; };
 		CB056E1365A02DEFF36C58B4 /* juce_OptionalScopedPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OptionalScopedPointer.h; path = ../../../../../juce/modules/juce_core/memory/juce_OptionalScopedPointer.h; sourceTree = SOURCE_ROOT; };
 		CB074B0123FF849EC65F66B0 /* Circular.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Circular.h; path = ../../../../src/rec/util/unused/Circular.h; sourceTree = SOURCE_ROOT; };
+		CB222B595410F9239997CB53 /* AboutWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AboutWindow.cpp; path = ../../../../src/rec/slow/AboutWindow.cpp; sourceTree = SOURCE_ROOT; };
 		CB32B4F7F8828BF093127709 /* juce_GenericAudioProcessorEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_GenericAudioProcessorEditor.cpp; path = ../../../../../juce/modules/juce_audio_processors/processors/juce_GenericAudioProcessorEditor.cpp; sourceTree = SOURCE_ROOT; };
 		CB3B980E87CEEA23F500093A /* juce_linux_Messaging.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_linux_Messaging.cpp; path = ../../../../../juce/modules/juce_events/native/juce_linux_Messaging.cpp; sourceTree = SOURCE_ROOT; };
 		CB9401EACC20E5A9F7EDACDE /* juce_ZipFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ZipFile.h; path = ../../../../../juce/modules/juce_core/zip/juce_ZipFile.h; sourceTree = SOURCE_ROOT; };
@@ -2886,16 +2888,6 @@
 			name = stretch;
 			sourceTree = "<group>";
 		};
-		7395006EE4965B9F1BF01A81 /* SlowGold 8 */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = "SlowGold 8";
-			sourceTree = "<group>";
-		};
 		7606C573648C4B2754F776EA /* misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -3038,7 +3030,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7395006EE4965B9F1BF01A81 /* SlowGold 8 */,
+				D788DE6BA9DE447C3EEA4019 /* SlowGold 8 */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3087,6 +3079,7 @@
 		85C38261903D7DE462378877 /* slow */ = {
 			isa = PBXGroup;
 			children = (
+				CB222B595410F9239997CB53 /* AboutWindow.cpp */,
 				377A515D0F7C7D76E9B2D2E2 /* AboutWindow.h */,
 				639346DE58DC858E646FC051 /* AdvancedMenuMaker.cpp */,
 				0B42678116325E471A6A7CEC /* AdvancedMenuMaker.h */,
@@ -3996,6 +3989,16 @@
 			name = include;
 			sourceTree = "<group>";
 		};
+		D788DE6BA9DE447C3EEA4019 /* SlowGold 8 */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = "SlowGold 8";
+			sourceTree = "<group>";
+		};
 		DDBF5D204BF5F784D221B795 /* maths */ = {
 			isa = PBXGroup;
 			children = (
@@ -4774,6 +4777,7 @@
 				AF9B8738596F2D7404A8DBD2 /* CleanName.cpp in Sources */,
 				2AF3B5B5B7A455EEF03B438A /* CreateMusicFileReader.cpp in Sources */,
 				2EDE868F54B9ABF80B0F8DEB /* Metadata.cpp in Sources */,
+				43126547AB67C04400F864CF /* AboutWindow.cpp in Sources */,
 				03A8350B84FFF7651FD51F58 /* AdvancedMenuMaker.cpp in Sources */,
 				99AE763A1FD54DF2B92F482B /* BasicMenuMaker.cpp in Sources */,
 				D5154E286A8C09D68B20488C /* BufferFiller.cpp in Sources */,

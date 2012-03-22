@@ -93,7 +93,6 @@ void SlowWindow::activeWindowStatusChanged() {
 
 void SlowWindow::startAboutWindow() {
   if (!aboutWindow_) {
-    aboutWindowBroadcaster_.broadcast(true);
     MessageManagerLock l;
     aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
                                        application()->name(),
@@ -105,13 +104,7 @@ void SlowWindow::stopAboutWindow() {
   if (aboutWindow_) {
     MessageManagerLock l;
     aboutWindow_.reset();
-    thread::runInNewThread("stopAboutWindow", 4, this, &SlowWindow::turnOffAboutWindow);
   }
-}
-
-void SlowWindow::turnOffAboutWindow() {
-  Thread::sleep(AboutWindow::FADE_OUT_TIME + 1000);
-  aboutWindowBroadcaster_.broadcast(false);
 }
 
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
