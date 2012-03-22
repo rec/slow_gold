@@ -9,6 +9,10 @@ namespace commands {
 
 Def<command::Commands> keyPresses(
 "command {\n"
+  "  type: ABOUT_THIS_PROGRAM\n"
+  "  keypress: \"shift + ?\"\n"
+  "}\n"
+  "command {\n"
   "  type: ADD_LOOP_POINT\n"
   "  keypress: \"l\"\n"
   "  keypress: \"command + l\"\n"
@@ -79,6 +83,7 @@ Def<command::Commands> keyPresses(
   "command {\n"
   "  type: TOGGLE_START_STOP\n"
   "  keypress: \"spacebar\"\n"
+  "  keypress: \"return\"\n"
   "}\n"
   "command {\n"
   "  type: TOGGLE_WHOLE_SONG_LOOP\n"

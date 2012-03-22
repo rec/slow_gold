@@ -1,4 +1,8 @@
 command {
+  type: ABOUT_THIS_PROGRAM
+  keypress: "shift + ?"
+}
+command {
   type: ADD_LOOP_POINT
   keypress: "l"
   keypress: "command + l"
