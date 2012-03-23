@@ -91,8 +91,8 @@ AboutWindow::AboutWindow(Component* parent,
   aboutPane_->setColour(Label::backgroundColourId, Colours::white);
   aboutPane_->setColour(Label::outlineColourId, Colours::red);
 
-  // setAlpha(0.0f);
-  parent_->addChildComponent(this);
+  setAlpha(0.0f);
+  parent_->addAndMakeVisible(this);
   aboutPane_->addMouseListener(this, false);
   aboutPane_->startListening();
 }
@@ -100,7 +100,6 @@ AboutWindow::AboutWindow(Component* parent,
 AboutWindow::~AboutWindow() {}
 
 void AboutWindow::mouseDown(const MouseEvent&) {
-  DLOG(INFO) << "mouseDown";
   if (window())
     thread::callAsync(window(), &SlowWindow::stopAboutWindow);
 }

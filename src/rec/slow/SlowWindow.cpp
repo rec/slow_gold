@@ -36,13 +36,15 @@ namespace slow {
 
 namespace {
 
+using namespace juce;
+
 const int FADE_IN_TIME = 1500;
 const int FADE_OUT_TIME = 750;
 
 }
 
 SlowWindow::SlowWindow(app::GenericApplication* application)
-    : app::Window(application, "SlowGold", juce::Colours::azure,
+    : app::Window(application, "SlowGold", Colours::azure,
                   DocumentWindow::allButtons, true),
       HasInstance(NULL) {
 }
@@ -99,21 +101,17 @@ void SlowWindow::activeWindowStatusChanged() {
 }
 
 void SlowWindow::startAboutWindow() {
-  DLOG(INFO) << "startAboutWindow";
   if (!aboutWindow_) {
     aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
                                        application()->name(),
                                        application()->version()));
   }
-  aboutWindow_->setVisible(true);
-  // juce::Desktop::getInstance().getAnimator().fadeIn(aboutWindow_.get(), FADE_IN_TIME);
+  Desktop::getInstance().getAnimator().fadeIn(aboutWindow_.get(), FADE_IN_TIME);
 }
 
 void SlowWindow::stopAboutWindow() {
-  DLOG(INFO) << "stopAboutWindow";
   if (aboutWindow_)
-    aboutWindow_->setVisible(false);
-    //juce::Desktop::getInstance().getAnimator().fadeOut(aboutWindow_.get(), FADE_OUT_TIME);
+    Desktop::getInstance().getAnimator().fadeOut(aboutWindow_.get(), FADE_OUT_TIME);
 }
 
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {

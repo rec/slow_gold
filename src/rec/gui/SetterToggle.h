@@ -16,7 +16,6 @@ class SetterToggle : public juce::ToggleButton, public data::AddressListener {
   }
 
   virtual void clicked() {
-    DLOG(INFO) << "Clicked";
     setValue(getToggleState());
   }
 

@@ -37,7 +37,6 @@ void Target::addCommands() {
 }
 
 void Target::operator()(None) {
-  DLOG(INFO) << "Target::operator()";
   if (window())
     thread::callAsync(window(), &SlowWindow::stopAboutWindow);
 }
