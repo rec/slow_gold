@@ -14,7 +14,7 @@ class Looper : public Thread {
 
   virtual void run() {
     while (!threadShouldExit()) {
-      Result r = static_cast<Result>(op_(instance_));
+      Result r = execute();
       switch (r) {
        case CONTINUE:  break;
        case YIELD:     yield(); break;
@@ -22,6 +22,10 @@ class Looper : public Thread {
        default:        wait(static_cast<int>(r)); break;
       }
     }
+  }
+
+  virtual Result execute() const{
+    return static_cast<Result>(op_(instance_));
   }
 
  private:

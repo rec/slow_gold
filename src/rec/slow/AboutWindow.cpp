@@ -37,8 +37,13 @@ class AboutPane : public Component {
                           getTypeName<GuiSettings>(),
                           data::Address("show_about_on_startup"),
                           GLOBAL_SCOPE) {
+#if 0
     right_.setJustification(Justification::bottomRight);
     left_.setJustification(Justification::centredLeft);
+#else
+    right_.setJustification(Justification::topRight);
+    left_.setJustification(Justification::topLeft);
+#endif
 
     Font font("Ariel", 20, 0);
     left_.append(LEFT_STRING, font);
