@@ -1,7 +1,6 @@
 #ifndef __REC_SLOW_ABOUTWINDOW__
 #define __REC_SLOW_ABOUTWINDOW__
 
-#include "rec/gui/SimpleLabel.h"
 #include "rec/slow/HasInstance.h"
 
 namespace rec {
@@ -20,8 +19,7 @@ class AboutWindow : public Component, public HasInstance {
 
  private:
   Component* parent_;
-  gui::SimpleLabel content_;
-
+  ptr<Component> aboutPane_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(AboutWindow);
 };
 
