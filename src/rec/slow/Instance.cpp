@@ -5,6 +5,7 @@
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Player.h"
 #include "rec/gui/Dialog.h"
+#include "rec/data/DataOps.h"
 #include "rec/gui/LookAndFeel.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/TimeController.h"
@@ -15,6 +16,7 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiListener.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/IsWholeSong.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
@@ -141,6 +143,8 @@ void Instance::startup() {
   window_->toFront(true);
   juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
   currentFile_->allowErrorDisplay();
+  if (data::getGlobal<GuiSettings>().show_about_on_startup())
+    window_->startAboutWindow();
 }
 
 const VirtualFile Instance::file() const {
