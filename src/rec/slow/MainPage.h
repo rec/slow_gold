@@ -11,16 +11,11 @@
 
 namespace rec {
 
-namespace gui {
-
-class SetterResizer;
-class SimpleLabel;
-
-}
+namespace gui { class SetterResizer; }
+namespace gui { class SimpleLabel; }
+namespace slow { class Components; }
 
 namespace slow {
-
-class Components;
 
 class MainPage {
  public:

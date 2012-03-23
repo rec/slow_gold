@@ -6,6 +6,8 @@
 namespace rec {
 namespace slow {
 
+class AboutPane;
+
 class AboutWindow : public Component, public HasInstance {
  public:
   static const int FADE_OUT_TIME = 600;
@@ -19,7 +21,7 @@ class AboutWindow : public Component, public HasInstance {
 
  private:
   Component* parent_;
-  ptr<Component> aboutPane_;
+  ptr<AboutPane> aboutPane_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(AboutWindow);
 };
 
