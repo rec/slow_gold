@@ -45,7 +45,9 @@ void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
-  broadcast(None());
+	if (invocation.commandID != Command::ABOUT_THIS_PROGRAM)
+    broadcast(None());
+    
   Lock l(lock_);
   if (disabled_)
     return true;

@@ -34,6 +34,13 @@
 namespace rec {
 namespace slow {
 
+namespace {
+
+const int FADE_IN_TIME = 1500;
+const int FADE_OUT_TIME = 750;
+
+}
+
 SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", juce::Colours::azure,
                   DocumentWindow::allButtons, true),
@@ -92,26 +99,27 @@ void SlowWindow::activeWindowStatusChanged() {
 }
 
 void SlowWindow::startAboutWindow() {
+  DLOG(INFO) << "startAboutWindow";
   if (!aboutWindow_) {
-    MessageManagerLock l;
     aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
                                        application()->name(),
                                        application()->version()));
   }
+  aboutWindow_->setVisible(true);
+  // juce::Desktop::getInstance().getAnimator().fadeIn(aboutWindow_.get(), FADE_IN_TIME);
 }
 
 void SlowWindow::stopAboutWindow() {
-  if (aboutWindow_) {
-    MessageManagerLock l;
-    aboutWindow_.reset();
-  }
+  DLOG(INFO) << "stopAboutWindow";
+  if (aboutWindow_)
+    aboutWindow_->setVisible(false);
+    //juce::Desktop::getInstance().getAnimator().fadeOut(aboutWindow_.get(), FADE_OUT_TIME);
 }
 
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
   if (!isNowMinimised)
     components()->waveform_->repaint();
 }
-
 
 using namespace rec::data;
 

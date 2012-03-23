@@ -14,11 +14,10 @@ using namespace juce;
 
 const int WIDTH = 650;
 const int HEIGHT = 350;
-const int FADE_IN_TIME = 1200;
 const int MARGIN = 20;
 const int OFFSET = 150;
 const int BUTTON_HEIGHT = 20;
-const int BUTTON_WIDTH = 20;
+const int BUTTON_WIDTH = 250;
 const String BUTTON_TEXT = "Display this window on startup";
 
 static const String LEFT_STRING =
@@ -34,8 +33,10 @@ static const String LEFT_STRING =
 class AboutPane : public Component {
  public:
   AboutPane(const String& name, const String& versionNumber)
-      : displayOnStartup_(BUTTON_TEXT, getTypeName<GuiSettings>(),
-                          data::Address("show_about_on_startup")) {
+      : displayOnStartup_(BUTTON_TEXT,
+                          getTypeName<GuiSettings>(),
+                          data::Address("show_about_on_startup"),
+                          GLOBAL_SCOPE) {
     right_.setJustification(Justification::bottomRight);
     left_.setJustification(Justification::centredLeft);
 
@@ -45,9 +46,11 @@ class AboutPane : public Component {
       String(CharPointer_UTF8("Copyright © 2012\n"));
     right_.append(s, font);
 
-    addChildComponent(&displayOnStartup_);
+    addAndMakeVisible(&displayOnStartup_);
     displayOnStartup_.setBounds(MARGIN, HEIGHT - MARGIN - BUTTON_HEIGHT,
                                 BUTTON_WIDTH, BUTTON_HEIGHT);
+    setOpaque(true);
+    displayOnStartup_.setInterceptsMouseClicks(true, true);
   }
 
   void startListening() {
@@ -88,20 +91,18 @@ AboutWindow::AboutWindow(Component* parent,
   aboutPane_->setColour(Label::backgroundColourId, Colours::white);
   aboutPane_->setColour(Label::outlineColourId, Colours::red);
 
-  setAlpha(0.0f);
-  parent_->addAndMakeVisible(this);
-  Desktop::getInstance().getAnimator().fadeIn(this, 2000);
-  aboutPane_->addMouseListener(this, true);
+  // setAlpha(0.0f);
+  parent_->addChildComponent(this);
+  aboutPane_->addMouseListener(this, false);
   aboutPane_->startListening();
 }
 
-AboutWindow::~AboutWindow() {
-  Desktop::getInstance().getAnimator().fadeOut(this, 1000);
-  getParentComponent()->removeChildComponent(this);
-}
+AboutWindow::~AboutWindow() {}
 
 void AboutWindow::mouseDown(const MouseEvent&) {
-  thread::callAsync(window(), &SlowWindow::stopAboutWindow);
+  DLOG(INFO) << "mouseDown";
+  if (window())
+    thread::callAsync(window(), &SlowWindow::stopAboutWindow);
 }
 
 }  // namespace slow

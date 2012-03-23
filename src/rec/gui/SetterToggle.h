@@ -11,11 +11,12 @@ namespace gui {
 class SetterToggle : public juce::ToggleButton, public data::AddressListener {
  public:
   SetterToggle(const String& name, const string& typeName,
-               const data::Address& a)
-      : juce::ToggleButton(name), AddressListener(a, typeName) {
+               const data::Address& a, Scope scope = FILE_SCOPE)
+      : juce::ToggleButton(name), AddressListener(a, typeName, scope) {
   }
 
   virtual void clicked() {
+    DLOG(INFO) << "Clicked";
     setValue(getToggleState());
   }
 

@@ -14,9 +14,10 @@ class UntypedDataListener;
 
 class AddressListener : public Listener<const Value&> {
  public:
-  AddressListener(const Address& a, const string& typeName);
+  AddressListener(const Address& a, const string& typeName,
+                  Scope scope = FILE_SCOPE);
   virtual ~AddressListener();
-  virtual void startListening() { startListening(FILE_SCOPE); }
+  virtual void startListening() { startListening(scope_); }
 
   void startListening(Scope s);
 
@@ -39,6 +40,7 @@ class AddressListener : public Listener<const Value&> {
   ptr<UntypedListener> untypedListener_;
   const Address address_;
   bool failOnError_;
+  const Scope scope_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(AddressListener);
 };
@@ -46,11 +48,7 @@ class AddressListener : public Listener<const Value&> {
 class GlobalAddressListener : public AddressListener {
  public:
   GlobalAddressListener(const Address& a, const string& tn)
-      : AddressListener(a, tn) {
-  }
-
-  virtual void startListening() {
-    AddressListener::startListening(GLOBAL_SCOPE);
+      : AddressListener(a, tn, GLOBAL_SCOPE) {
   }
 
  private:

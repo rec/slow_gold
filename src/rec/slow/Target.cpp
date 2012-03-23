@@ -9,6 +9,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/SlowCommandData.h"
+#include "rec/util/thread/CallAsync.h"
 
 using namespace rec::command;
 
@@ -36,7 +37,9 @@ void Target::addCommands() {
 }
 
 void Target::operator()(None) {
-  window()->stopAboutWindow();
+  DLOG(INFO) << "Target::operator()";
+  if (window())
+    thread::callAsync(window(), &SlowWindow::stopAboutWindow);
 }
 
 }  // namespace slow

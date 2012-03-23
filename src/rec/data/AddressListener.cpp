@@ -20,9 +20,10 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
   }
 };
 
-AddressListener::AddressListener(const Address& a, const string& tn)
+AddressListener::AddressListener(const Address& a, const string& tn, Scope s)
     : address_(a),
-      failOnError_(true) {
+      failOnError_(true),
+      scope_(s) {
   untypedListener_.reset(new UntypedListener(this, tn));
 }
 
