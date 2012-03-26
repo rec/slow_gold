@@ -33,7 +33,6 @@ class DataUpdater {
 
   DataSet updateData_;
   DataSet writeData_;
-  DataSet removeData_;
   DataMap* map_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataUpdater);

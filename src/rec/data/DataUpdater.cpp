@@ -35,23 +35,17 @@ bool DataUpdater::update() {
   if (toUpdate.empty())
     return false;
 
-  DataSet toWrite, toRemove;
-  for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {
-    Data* data = *i;
-    if (!data->listenerSize())
-      toRemove.insert(data);
-  }
-  removeData_.insert(toRemove.begin(), toRemove.end());
-
+  DataSet toWrite;
   {
     ScopedUnlock u(lock_);
-    for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i) {
+    int j = 0;
+    for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i, ++j) {
       Data* data = *i;
-      if (toRemove.find(data) == toRemove.end() && data->update())
+      if (data->update())
         toWrite.insert(data);
     }
 
-    if (toWrite.empty() && toRemove.empty())
+    if (toWrite.empty())
       return false;
   }
 
@@ -66,19 +60,16 @@ bool DataUpdater::update() {
 }
 
 bool DataUpdater::write() {
-  DataSet toWrite, toRemove;
+  DataSet toWrite;
   {
     Lock l(lock_);
     if (!writeThread_)
       writeThread_ = Thread::getCurrentThread();
 
-    if (writeThread_->threadShouldExit() ||
-        (writeData_.empty() && removeData_.empty())) {
+    if (writeThread_->threadShouldExit() || writeData_.empty())
       return false;
-    }
 
     writeData_.swap(toWrite);
-    removeData_.swap(toRemove);
   }
 
   for (DataSet::iterator i = toWrite.begin(); i != toWrite.end(); ++i) {
@@ -86,13 +77,6 @@ bool DataUpdater::write() {
       return false;
     else
       (*i)->writeToFile();
-  }
-
-  for (DataSet::iterator i = toRemove.begin(); i != toRemove.end(); ++i) {
-    if (writeThread_->threadShouldExit())
-      return false;
-    else
-      map_->removeData(*i);
   }
 
   return true;
