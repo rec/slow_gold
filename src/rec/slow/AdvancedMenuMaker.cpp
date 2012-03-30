@@ -61,8 +61,6 @@ void AdvancedMenuMaker::addDisplayMenu() {
   add(Command::TOGGLE_GRID_DISPLAY);
   add(Command::TOGGLE_PARALLEL_WAVEFORMS);
   add(Command::TOGGLE_FOLLOW_CURSOR);
-  add(Command::TOGGLE_SHOW_HELP_PANE);
-  add(Command::TOGGLE_SHOW_TOOLTIPS);
   add(Command::TOGGLE_SHOW_SELECTION_BUTTONS);
   add(Command::TOGGLE_SHOW_CURSOR_LABELS);
   add(Command::TOGGLE_SHOW_TIMES_AT_TOP);

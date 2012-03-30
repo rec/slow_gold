@@ -1,7 +1,7 @@
 #include "rec/slow/commands/Setters.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=command::Commands src/rec/slow/commands/Setters.def
+// new --include=command/Command --proto=command::Commands Setters.def
 
 namespace rec {
 namespace slow {
@@ -79,24 +79,10 @@ Def<command::Commands> setters(
   "  category: \"Display\"\n"
   "}\n"
   "command {\n"
-  "  type: TOGGLE_SHOW_HELP_PANE\n"
-  "  is_global_setter: true\n"
-  "  address { part: { name: \"show_help_pane\" } }\n"
-  "  setter_type_name: \"rec.slow.GuiSettings\"\n"
-  "  category: \"Display\"\n"
-  "}\n"
-  "command {\n"
   "  type: TOGGLE_SHOW_LABELS_AT_TOP\n"
   "  is_global_setter: true\n"
   "  address { part: { name: \"show_labels_at_top\" } }\n"
   "  setter_type_name: \"rec.widget.waveform.WaveformProto\"\n"
-  "  category: \"Display\"\n"
-  "}\n"
-  "command {\n"
-  "  type: TOGGLE_SHOW_TOOLTIPS\n"
-  "  is_global_setter: true\n"
-  "  address { part: { name: \"show_tooltips\" } }\n"
-  "  setter_type_name: \"rec.slow.GuiSettings\"\n"
   "  category: \"Display\"\n"
   "}\n"
   "command {\n"

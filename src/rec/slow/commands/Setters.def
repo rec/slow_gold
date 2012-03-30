@@ -69,24 +69,10 @@ command {
   category: "Display"
 }
 command {
-  type: TOGGLE_SHOW_HELP_PANE
-  is_global_setter: true
-  address { part: { name: "show_help_pane" } }
-  setter_type_name: "rec.slow.GuiSettings"
-  category: "Display"
-}
-command {
   type: TOGGLE_SHOW_LABELS_AT_TOP
   is_global_setter: true
   address { part: { name: "show_labels_at_top" } }
   setter_type_name: "rec.widget.waveform.WaveformProto"
-  category: "Display"
-}
-command {
-  type: TOGGLE_SHOW_TOOLTIPS
-  is_global_setter: true
-  address { part: { name: "show_tooltips" } }
-  setter_type_name: "rec.slow.GuiSettings"
   category: "Display"
 }
 command {
