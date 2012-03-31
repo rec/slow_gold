@@ -14,14 +14,25 @@ using juce::URL;
 
 namespace {
 
+// i18n
+
+const char* NEW_VERSION = "A new version of SlowGold, %s is available.";
+const char* DOWNLOAD_QUESTION = "Would you like to download it?";
+const char* DOWNLOAD_AND_QUIT = "Download new version and quit this old one.";
+const char* RUN_OLD_VERSION = "Run this old version %s.";
+const char* COULDNT_UPDATE =  "Couldn't update to version %s";
+const char* CLICK_TO_CONTINUE = "Click to continue";
+
+
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const URL VERSION_FILE(WOODSHED + "currentversion/");
 const String LAST_UPDATE_FILE("LastUpdate.txt");
 const String MUST_UPDATE_FILE("MustUpdate.txt");
+
 const bool UPDATE_ON_MINOR_VERSION_CHANGE = true;
 
-// const RelativeTime UPDATE(RelativeTime::days(1));
-const RelativeTime UPDATE(1);  // 1 second for testing.
+const RelativeTime UPDATE(RelativeTime::days(1));
+// const RelativeTime UPDATE(1);  // 1 second for testing.
 
 bool isReadyForUpdate() {
   bool ready = true;
@@ -64,7 +75,7 @@ String getVersion() {
 }
 
 String majorVersion(const String& version) {
-  String v(version);
+ String v(version);
 
  int i = v.indexOfChar(0, '.');
   if (i >= 0) {
@@ -77,12 +88,12 @@ String majorVersion(const String& version) {
 
 bool downloadNewVersion(const String& appName, const String& version,
                         const String& oldVersion) {
-  String msg = "A new version of SlowGold, " + version + " is available.";
+  String msg = String::formatted(NEW_VERSION, c_str(version));
   bool ok = AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon, msg,
-      msg + "Would you like to download it?",
-      "Download new version and quit this old one.",
-      "Run this old version " + oldVersion);
+      msg + DOWNLOAD_QUESTION,
+      DOWNLOAD_AND_QUIT,
+      String::formatted(RUN_OLD_VERSION, c_str(oldVersion)));
 
   if (!ok) {
     LOG(INFO) << "New version download cancelled";
@@ -92,10 +103,9 @@ bool downloadNewVersion(const String& appName, const String& version,
   ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
 
   if (!ok) {
-    AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                               "Couldn't update to version " + version,
-                               "Couldn't update to version " + version,
-                               "Click to continue");
+    String error = String::formatted(COULDNT_UPDATE, c_str(version));
+    AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
+                                CLICK_TO_CONTINUE);
   }
   return ok;
 }
