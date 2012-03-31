@@ -6,4 +6,10 @@
 #include "rec/base/Juce.h"
 #include "rec/base/ptr.h"
 
+#ifdef DEBUG
+
+// New features that we don't release to the public yet.
+#define NEW_FEATURES
+
+#endif
 #endif

@@ -115,8 +115,12 @@ bool read(const string& from, Message* to) {
   YAML::Parser parser(s);
 
   YAML::Node node;
-  if (!parser.GetNextDocument(node))
+  try {
+    if (!parser.GetNextDocument(node))
+      return false;
+  } catch (...) {
     return false;
+  }
 
   for (YAML::Iterator i = node.begin(); i != node.end(); ++i) {
     string name = str(i.first());
