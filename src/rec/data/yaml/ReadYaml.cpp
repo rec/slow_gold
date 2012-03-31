@@ -96,8 +96,8 @@ void read(const YAML::Node& node, Message* to) {
 }
 
 
-// TODO: this is bogus and simply gets around the parser crashing on some bad
-// data.
+// Avoid parsing documents that aren't ours - useful because we parse the
+// clip buffer to see if it's our data.
 bool isPossiblyData(const string& s) {
   static const char* const opening = "---\ntype: ";
   return !s.find(opening);
@@ -108,8 +108,6 @@ bool isPossiblyData(const string& s) {
 bool read(const string& from, Message* to) {
   if (!isPossiblyData(from))
     return false;
-
-  // TODO:  the parser could crash on malformed data!  Fix that.
 
   std::istringstream s(from);
   YAML::Parser parser(s);
