@@ -22,6 +22,9 @@ namespace {
 
 using namespace rec::util::block;
 
+// Skin
+// i18n
+
 const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
 const int ZOOM_CURSOR_X_HOTSPOT = 8;
 const int ZOOM_CURSOR_Y_HOTSPOT = 8;

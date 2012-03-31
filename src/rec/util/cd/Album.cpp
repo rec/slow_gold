@@ -17,6 +17,8 @@ namespace rec {
 namespace util {
 namespace cd {
 
+// Skin
+
 namespace {
 
 void splitTitle(Metadata *album) {

@@ -14,6 +14,8 @@ namespace file {
 
 namespace {
 
+// i18n
+
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
 String fixPathElement(const String& s) {

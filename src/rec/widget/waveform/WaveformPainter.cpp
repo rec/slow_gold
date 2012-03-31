@@ -11,6 +11,8 @@ namespace waveform {
 
 namespace {
 
+// Skin
+
 const int GRID_TEXT_WIDTH = 50;
 const int GRID_TEXT_HEIGHT = 9;
 const int GRID_TEXT_PAD = 4;

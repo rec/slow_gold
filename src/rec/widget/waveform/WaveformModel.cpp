@@ -14,6 +14,8 @@ using namespace rec::util::block;
 
 namespace {
 
+// Skin
+
 const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
 const int GRID_TEXT_HEIGHT = 9;  // ALSO IN WaveformPainter!
 const int MODE_SELECTOR_OFFSET = 5;

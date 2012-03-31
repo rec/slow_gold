@@ -10,6 +10,8 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+// Skin
+
 static const int TEXT_WIDTH = 100;
 static const int DIAL_WIDTH = 100;
 

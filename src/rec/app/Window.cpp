@@ -3,6 +3,7 @@
 namespace rec {
 namespace app {
 
+// Skin.
 static const int SLEEP_BEFORE_STARTUP = 500;
 
 Window::Window(GenericApplication* application,

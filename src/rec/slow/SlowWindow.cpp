@@ -38,6 +38,9 @@ namespace {
 
 using namespace juce;
 
+// Skin
+// i18n
+
 const int FADE_IN_TIME = 1500;
 const int FADE_OUT_TIME = 750;
 

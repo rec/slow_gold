@@ -24,6 +24,9 @@ using data::Address;
 using data::Value;
 using gui::TableColumn;
 
+// TODO: i18n
+// Skin
+
 namespace {
 
 const juce::Colour UNSELECTED_COLOR = juce::Colours::white;

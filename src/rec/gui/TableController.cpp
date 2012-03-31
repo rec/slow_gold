@@ -6,6 +6,8 @@
 namespace rec {
 namespace gui {
 
+// i18n
+
 static const int CELL_MARGIN_VERTICAL = 2;
 static const int CELL_MARGIN_HORIZONTAL = 2;
 

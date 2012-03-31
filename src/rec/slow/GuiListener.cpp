@@ -11,6 +11,9 @@ namespace slow {
 
 using namespace juce;
 
+// TODO: we don't have tooltips any more.
+// Skin
+
 static const int MS_TILL_TOOLTIP = 700;
 
 GuiListener::GuiListener(Instance* i) : HasInstance(i),

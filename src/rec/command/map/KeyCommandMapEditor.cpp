@@ -4,6 +4,8 @@
 namespace rec {
 namespace command {
 
+// i18n
+
 namespace {
 
 class KeyCommandEntryWindow : public CommandEntryWindow {

@@ -33,6 +33,8 @@ namespace slow {
 using namespace rec::widget::waveform;
 
 namespace {
+// Skin
+// i18n
 
 static const int SELECTION_WIDTH_PORTION = 20;
 

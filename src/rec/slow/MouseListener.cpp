@@ -22,8 +22,13 @@
 namespace rec {
 namespace slow {
 
+// Skin
+
 static const Samples<44100> DRAG_PAD = audio::CLOSE_LOOPS;
 static const int DRAG_TWEAK = 5;
+static const double WHEEL_RATIO = 4.0;
+static const double SMALL_RATIO = 0.1;
+static const double BIG_RATIO = 2.0;
 
 using namespace rec::audio;
 using namespace rec::gui::audio;
@@ -51,9 +56,6 @@ void toggleSelectionSegment(const VirtualFile& file, Samples<44100> time) {
   audio::toggleSelectionSegment(opener.mutable_get(), time);
 }
 
-static const double WHEEL_RATIO = 4.0;
-static const double SMALL_RATIO = 0.1;
-static const double BIG_RATIO = 2.0;
 
 void zoom(const Instance& instance, const MouseEvent& e,
           Samples<44100> time, double increment) {

@@ -9,6 +9,7 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+// Skin
 const float LevelMeter::SCALE_UP_METER = 2.0f;
 static const float GAP_WIDTH = 2.0f;
 static const int SEGMENT_COUNT = 32;

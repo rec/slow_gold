@@ -10,6 +10,8 @@ namespace command {
 
 namespace {
 
+// i18n
+
 class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:

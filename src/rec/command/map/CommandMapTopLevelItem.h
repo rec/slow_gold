@@ -6,6 +6,8 @@
 namespace rec {
 namespace command {
 
+// i18n
+
 //==============================================================================
 class CommandMapTopLevelItem   : public TreeViewItem,
                                  public ChangeListener,

@@ -8,6 +8,7 @@ namespace gui {
 namespace audio {
 
 // TODO: i18n
+// Skin
 
 using rec::audio::Gain;
 using data::Address;

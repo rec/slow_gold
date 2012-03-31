@@ -3,25 +3,36 @@
 namespace rec {
 namespace command {
 
+// i18n
+
+namespace {
+
+const char* ACTIVE_SENSING = "as";
+const char* SYSEX = "sysex";
+const char* NOTE_OFF = "%s off";
+const char* PROGRAM_CHANGE = "pc %d";
+
+}
+
 static String midiNoteName(const MidiMessage& msg) {
   return MidiMessage::getMidiNoteName(msg.getNoteNumber(), true, true, 3);
 }
 
 String midiName(const MidiMessage& m) {
   if (m.isActiveSense())
-    return "as";
+    return ACTIVE_SENSING;
 
   if (m.isSysEx())
-    return "sysex";
+    return SYSEX;
 
   if (m.isNoteOn())
     return midiNoteName(m);
 
   if (m.isNoteOff())
-    return midiNoteName(m) + " off";
+    return String::formatted(NOTE_OFF, c_str(midiNoteName(m)));
 
   if (m.isProgramChange())
-    return "pc " + String(m.getProgramChangeNumber());
+    return String::formatted(PROGRAM_CHANGE, m.getProgramChangeNumber());
 
   if (m.isController()) {
     return MidiMessage::getControllerName(m.getControllerNumber()) +

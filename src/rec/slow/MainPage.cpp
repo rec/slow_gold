@@ -24,6 +24,9 @@ using namespace juce;
 namespace rec {
 namespace slow {
 
+// Skin
+// i18n
+
 using namespace rec::widget::waveform;
 using data::Address;
 

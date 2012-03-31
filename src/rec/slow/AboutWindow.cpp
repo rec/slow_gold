@@ -10,6 +10,8 @@ namespace slow {
 
 namespace {
 
+// i18n, Skin
+
 using namespace juce;
 
 const int WIDTH = 650;

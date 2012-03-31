@@ -11,6 +11,8 @@ namespace rec {
 namespace util {
 namespace cd {
 
+// Skin
+
 bool oneCDDBResponse(String* data, StringArray* lines) {
   bool wasEmpty = (lines->size() == 0);
   if (stripLines(data, lines)) {

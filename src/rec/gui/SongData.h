@@ -11,6 +11,8 @@
 namespace rec {
 namespace gui {
 
+// i18n
+
 class SongData : public SetterTextArea,
                  public Cuttable,
                  public UntypedDataListener {

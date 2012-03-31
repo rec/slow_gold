@@ -5,6 +5,11 @@
 namespace rec {
 namespace audio {
 
+// Skin
+
+static const double GAIN_FACTOR = 10.0;
+static const double GAIN_EXPONENT = 20.0;
+
 double getGain(const audio::Gain& gain) {
   if (gain.mute())
     return 0.0;
@@ -12,7 +17,8 @@ double getGain(const audio::Gain& gain) {
   if (gain.dim())
     return gain.dim_level();
 
-  return static_cast<double>(powl(10.0, gain.gain() / 20.0) * gain.level());
+  return static_cast<double>(powl(GAIN_FACTOR, gain.gain() / GAIN_EXPONENT) *
+                             gain.level());
 }
 
 }  // namespace audio

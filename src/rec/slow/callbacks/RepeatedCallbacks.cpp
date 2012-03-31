@@ -14,6 +14,8 @@ namespace slow {
 
 namespace {
 
+// Skin
+
 const Samples<44100> MAX_JUMP_TIME = 44100;
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {

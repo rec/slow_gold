@@ -18,6 +18,8 @@ namespace widget {
 namespace status {
 namespace time {
 
+// Skin
+
 // Half a degree.
 static const double ALMOST_ZERO = 0.5 / 360.0;
 

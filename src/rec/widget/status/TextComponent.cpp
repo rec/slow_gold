@@ -13,6 +13,9 @@ namespace widget {
 namespace status {
 namespace time {
 
+// i18n
+// Skin
+
 TextComponent::TextComponent(const Text& desc)
     : gui::SimpleLabel(str(desc.widget().name())),
       description_(desc),

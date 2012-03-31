@@ -14,6 +14,7 @@
 using namespace juce;
 
 // TODO: i18n
+// Skin
 
 static const bool ENABLE_SHIFTS = false;
 static const int BUTTON_SIZE = 34;

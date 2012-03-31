@@ -8,6 +8,8 @@
 namespace rec {
 namespace command {
 
+// i18n
+
 template <typename MappingSet, typename Key>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:

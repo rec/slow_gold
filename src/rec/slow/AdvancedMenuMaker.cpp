@@ -10,6 +10,8 @@
 namespace rec {
 namespace slow {
 
+// i18n
+
 using namespace rec::command;
 
 void AdvancedMenuMaker::addAudioMenu() {

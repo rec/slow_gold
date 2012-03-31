@@ -1,5 +1,4 @@
 #include "rec/audio/util/TrackBufferAndThumbnail.h"
-#include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/format/Manager.h"
 #include "rec/base/Samples.h"
@@ -11,8 +10,7 @@ namespace rec {
 namespace audio {
 namespace util {
 
-using rec::audio::source::RunnyProto;
-
+// Skin.
 static const int COMPRESSION = 256;
 
 TrackBufferAndThumbnail::TrackBufferAndThumbnail()

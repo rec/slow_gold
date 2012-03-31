@@ -9,8 +9,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Level : public Wrappy,
-              public Broadcaster<const LevelVector&> {
+class Level : public Wrappy, public Broadcaster<const LevelVector&> {
  public:
   explicit Level(Source* s = NULL) : Wrappy(s), channels_(2) {}
 
@@ -21,9 +20,7 @@ class Level : public Wrappy,
     LevelVector result(channels_, 0.0);
     for (int c = 0; c < channels_; ++c)
       result[c] = getLevel(i, c);
-#ifndef MENUS_WORKING_AGAIN
-    broadcast(result);  // TODO: this should be done in a new thread.
-#endif
+    broadcast(result);
   }
 
   virtual float getLevel(const AudioSourceChannelInfo& info, int channel) {

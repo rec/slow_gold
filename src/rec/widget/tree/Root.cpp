@@ -18,6 +18,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
+// Skin
+
 using namespace rec::gui;
 
 static const int ROOT_WAIT_TIME = 1000;

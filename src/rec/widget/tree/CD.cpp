@@ -5,6 +5,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
+// i18n
+
 void CD::computeChildren() {
   name_ = "<Unknown CD>";
   std::vector<string> tracks;
@@ -19,7 +21,8 @@ void CD::computeChildren() {
       for (int i = 0; i < audioTracks; ++i)
         tracks.push_back(str(String(i + 1)));
 
-      name_ = "Unknown CD: ID = 0x" + cd::getCDKey(reader.get()).upToFirstOccurrenceOf("-", false, false);
+      name_ = "Unknown CD: ID = 0x" +
+        cd::getCDKey(reader.get()).upToFirstOccurrenceOf("-", false, false);
 
     } else {
       const music::Metadata& data = album.album();

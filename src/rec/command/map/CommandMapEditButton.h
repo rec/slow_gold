@@ -6,6 +6,8 @@
 namespace rec {
 namespace command {
 
+// i18n
+
 class CommandMapEditButton  : public Button
 {
 public:

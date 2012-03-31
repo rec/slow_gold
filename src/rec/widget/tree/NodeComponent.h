@@ -13,19 +13,6 @@ class NodeComponent : public juce::Component {
   virtual void paint(juce::Graphics& g)           { node_->paint(g); }
   virtual void mouseDown(const juce::MouseEvent& e) { node_->itemClicked(e); }
   virtual void mouseUp(const juce::MouseEvent& e)   { node_->itemClicked(e); }
-#if 0
-  {
-    if (!node_->isDirectory())
-      node_->setSelected(true, true);
-
-    node_->itemClicked(e);
-  }
-
-  virtual void mouseUp(const juce::MouseEvent& e)   {
-    if (!node_->isDirectory())
-      node_->setSelected(false, true);
-  }
-#endif
 
  private:
   Node* node_;

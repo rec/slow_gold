@@ -10,12 +10,13 @@ namespace rec {
 namespace audio {
 namespace util {
 
+// Skin
+const static int FILLABLE_FRAME_BLOCK_SIZE = 10240;
+
 template <typename Sample, int CHANNELS>
 class FillableFrameBuffer : public block::Fillable {
  public:
-  const static int BLOCK_SIZE = 10240;
-
-  FillableFrameBuffer(int blockSize = BLOCK_SIZE);
+  FillableFrameBuffer(int blockSize = FILLABLE_FRAME_BLOCK_SIZE);
   virtual ~FillableFrameBuffer() {}
 
   // Returns the length in samples, or 0 if there's an error.

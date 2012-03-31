@@ -13,6 +13,8 @@ using namespace rec::gui::color;
 
 namespace rec {
 
+// Skin
+
 static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
 static const int CAPTION_PADDING_INTERNAL = 10;
 static const int CAPTION_OFFSET = 10000;

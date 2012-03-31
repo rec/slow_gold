@@ -23,6 +23,7 @@ namespace gui {
 namespace audio {
 
 // TODO: i18n
+// Skin
 
 namespace {
 

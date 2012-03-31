@@ -12,6 +12,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
+// Skin
+
 class Directory : public Node, public Listener<const VirtualFile&> {
  public:
   typedef juce::Array<File> FileArray;
