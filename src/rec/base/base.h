@@ -6,10 +6,9 @@
 #include "rec/base/Juce.h"
 #include "rec/base/ptr.h"
 
+// New features that we don't release are protected with NEW_FEATURES.
 #ifdef DEBUG
-
-// New features that we don't release to the public yet.
 #define NEW_FEATURES
-
 #endif
+
 #endif
