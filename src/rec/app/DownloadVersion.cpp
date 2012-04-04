@@ -4,8 +4,6 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 
-#include "rec/base/TranslatedString.h"
-
 namespace rec {
 namespace app {
 

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="NldM9i1g2" name="SlowGold 8">
+  <MAINGROUP id="EPvQl1rI3" name="SlowGold 8">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -241,6 +241,8 @@
               name="scoped_array.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/string_piece.h" id="nJykOkINX"
               name="string_piece.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/base/TranslatedString.h" id="uO07rMfY3"
+              name="TranslatedString.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/types.h" id="cPVXuqA6Q"
               name="types.h" resource="0"/>
       </GROUP>
@@ -983,6 +985,10 @@
               name="MouseListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MouseListener.h" id="GkvgN9kNF"
               name="MouseListener.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/RegisterProtos.cpp" id="6Egwa3zvs"
+              name="RegisterProtos.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/RegisterProtos.h" id="a8RDtMV42"
+              name="RegisterProtos.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/SlowWindow.cpp" id="n6tyffHeo"
               name="SlowWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/SlowWindow.h" id="D7T2iXZcB"
@@ -1439,7 +1445,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="nFTtaMKD6" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ljb5oR1Qf" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

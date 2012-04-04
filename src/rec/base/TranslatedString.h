@@ -9,13 +9,6 @@ namespace rec {
 
 class TranslatedString {
  public:
-  TranslatedString(const char* o, bool translateNow = false) : original_(o) {
-    if (translateNow)
-      translate();
-    else
-      STRINGS.push_back(this);
-  }
-
   operator const String&() const {
     return *translated_;
   }
@@ -23,6 +16,14 @@ class TranslatedString {
   static void translateAll() {
     for (uint i = 0; i < STRINGS.size(); ++i)
       STRINGS[i]->translate();
+  }
+
+ protected:
+  TranslatedString(const char* o, bool translateNow = false) : original_(o) {
+    if (translateNow)
+      translate();
+    else
+      STRINGS.push_back(this);
   }
 
  private:
@@ -40,20 +41,20 @@ class TranslatedString {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TranslatedString);
 };
 
-class TrStatic : public TranslatedString {
+class StaticStr : public TranslatedString {
  public:
-  TrStatic(const char* o) : TranslatedString(o, false) {}
+  StaticStr(const char* o) : TranslatedString(o, false) {}
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(TrStatic);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(StaticStr);
 };
 
-class TrString : public TranslatedString {
+class DynamicStr : public TranslatedString {
  public:
-  TrString(const char* o) : TranslatedString(o, true) {}
+  DynamicStr(const char* o) : TranslatedString(o, true) {}
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(TrString);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(DynamicStr);
 };
 
 }  // namespace rec
