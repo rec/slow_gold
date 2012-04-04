@@ -22,7 +22,6 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-// TODO: i18n
 // Skin
 
 namespace {
@@ -30,8 +29,6 @@ namespace {
 const int ICON_SIZE = 40;
 const int SLIDER_HEIGHT = 18;
 const int MUTE_BUTTON_SIZE = 45;
-
-const char* const MUTE_BUTTON_TEXT = "Mute";
 
 }  // namespace
 
@@ -42,12 +39,14 @@ TransportController::TransportController(TimeController* timeController)
       timeController_(timeController),
       buttonsLayout_("Buttons", HORIZONTAL),
       gainLayout_("Gain", HORIZONTAL),
-      startStopButton_("Start/stop", juce::DrawableButton::ImageFitted),
-      jumpToStartButton_("Jump to start", juce::DrawableButton::ImageFitted),
-      jumpBackButton_("Jump Back", juce::DrawableButton::ImageFitted),
-      jumpForwardButton_("Jump Formward", juce::DrawableButton::ImageFitted),
-      level_("Volume", getTypeName<Gain>(), data::Address("gain")),
-      muteButton_(MUTE_BUTTON_TEXT, getTypeName<Gain>(), data::Address("mute")) {
+      startStopButton_(translate("Start/stop"),
+                       juce::DrawableButton::ImageFitted),
+      jumpToStartButton_(translate("Jump to start"),
+                         juce::DrawableButton::ImageFitted),
+      jumpBackButton_(translate("Jump Back"), juce::DrawableButton::ImageFitted),
+      jumpForwardButton_(translate("Jump Forward"), juce::DrawableButton::ImageFitted),
+      level_(translate("Volume"), getTypeName<Gain>(), data::Address("gain")),
+      muteButton_(translate("Mute"), getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
   using namespace rec::gui::icon;
@@ -82,17 +81,17 @@ TransportController::TransportController(TimeController* timeController)
   addToLayout(&gainLayout_, ICON_SIZE);
   addToLayout(&levelMeter_, 20);
 
-  startStopButton_.setTooltip("Start/Stop Button: "
-                              "Toggle between pause and play.");
-  jumpForwardButton_.setTooltip("Jump Forward Button: "
-                                "Jump to the start of the next segment.");
-  jumpBackButton_.setTooltip("Jump Back Button: "
-                             "Jump to the start of the next segment.");
-  jumpToStartButton_.setTooltip("Jump To Start Button: "
-                                "Jump to the start of the track.");
-  levelMeter_.setTooltip("Level Meter: Display the sound intensity, in RMS dB.");
-  level_.setTooltip("Level Slider: Raise or lower the sound intensity, in dB.");
-  muteButton_.setTooltip("Mute Button: Mute or unmute the sound.");
+  startStopButton_.setTooltip(translate("Start/Stop Button: "
+                                        "Toggle between pause and play."));
+  jumpForwardButton_.setTooltip(translate("Jump Forward Button: "
+                                          "Jump to the start of the next segment."));
+  jumpBackButton_.setTooltip(translate("Jump Back Button: "
+                                       "Jump to the start of the next segment."));
+  jumpToStartButton_.setTooltip(translate("Jump To Start Button: "
+                                          "Jump to the start of the track."));
+  levelMeter_.setTooltip(translate("Level Meter: Display the sound intensity, in RMS dB."));
+  level_.setTooltip(translate("Level Slider: Raise or lower the sound intensity, in dB."));
+  muteButton_.setTooltip(translate("Mute Button: Mute or unmute the sound."));
 }
 
 void TransportController::startListening() {

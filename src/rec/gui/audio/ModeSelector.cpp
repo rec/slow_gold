@@ -13,7 +13,6 @@
 
 using namespace juce;
 
-// TODO: i18n
 // Skin
 
 static const bool ENABLE_SHIFTS = false;
@@ -55,14 +54,14 @@ ModeSelector::ModeSelector()
   SET_BUTTON_IMAGES2(&addLoopPointClick_, AddLoopPointMode);
 
   setImage(this, &drag_, Mode::DRAG,
-           "Drag Mode: Use the mouse to drag the waveform back and forth");
+           translate("Drag Mode: Use the mouse to drag the waveform back and forth"));
   setImage(this, &setTime_, Mode::SET_TIME,
-           "Set Current Time Mode: Clicking in the waveform sets the current time.");
+           translate("Set Current Time Mode: Clicking in the waveform sets the current time."));
   setImage(this, &zoomIn_, Mode::ZOOM_IN,
-           "Zoom Mode: Clicking on the waveform zooms in on that point.");
+           translate("Zoom Mode: Clicking on the waveform zooms in on that point."));
 
   setImage(this, &addLoopPointClick_, Mode::DRAW_LOOP_POINTS,
-           "Add loop point mode: clicking on the waveform creates a loop point.");
+           translate("Add loop point mode: clicking on the waveform creates a loop point."));
 
   minSize_ = juce::Point<int>(BUTTON_COUNT * BUTTON_SIZE +
                               (BUTTON_COUNT + 1) * PADDING,

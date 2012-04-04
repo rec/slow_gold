@@ -11,8 +11,6 @@
 namespace rec {
 namespace gui {
 
-// i18n
-
 class SongData : public SetterTextArea,
                  public Cuttable,
                  public UntypedDataListener {
@@ -23,25 +21,27 @@ class SongData : public SetterTextArea,
     : UntypedDataListener(getTypeName<music::Metadata>()) {
     const string& typeName = getTypeName<music::Metadata>();
     setName("SongData");
-    add("Track", typeName,
-        Address("track_title"), "Track Title: The name of this track.");
-    add("Album", typeName,
+    add(translate("Track"), typeName,
+        Address("track_title"),
+        translate("Track Title: The name of this track."));
+    add(translate("Album"), typeName,
         Address("album_title"),
-        "Album Name: The name of the album this track is from.");
-    add("Artist", typeName,
+        translate("Album Name: The name of the album this track is from."));
+    add(translate("Artist"), typeName,
         Address("artist"),
-        "Artist Name: The artist or musician who made this specific track");
-    add("Number", typeName,
+        translate("Artist Name: The artist or musician who made this specific track"));
+    add(translate("Number"), typeName,
         Address("track_number"),
-        "Track Number: The album track number for this track");
-    add("Year", typeName,
+        translate("Track Number: The album track number for this track"));
+    add(translate("Year"), typeName,
         Address("year"),
-        "Album Year: The year that that this track was recorded.");
-    add("Genre", typeName,
+        translate("Album Year: The year that that this track was recorded."));
+    add(translate("Genre"), typeName,
         Address("genre"),
-        "Track tags: Tags that categorize this track.");
-    add("Notes", typeName,
-        Address("notes"), "Track Notes: You can enter your notes here.")->
+        translate("Track tags: Tags that categorize this track."));
+    add(translate("Notes"), typeName,
+        Address("notes"),
+        translate("Track Notes: You can enter your notes here."))->
         editor()->setMultiLine(true, true);
   }
 

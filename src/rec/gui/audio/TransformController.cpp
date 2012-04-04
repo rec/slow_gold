@@ -7,7 +7,6 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-// TODO: i18n
 // Skin
 
 using rec::audio::Gain;
@@ -24,32 +23,19 @@ const int LEFT_PANEL_WIDTH = 90;
 const int ENABLE_BUTTON_HEIGHT = 40;
 const int COMBO_BOX_HEIGHT = 30;
 
-const char* const PITCH_BUTTON_TEXT = "Pitch";
-const char* const SPEED_BUTTON_TEXT = "Speed";
-const char* const TRANSFORM_BUTTON_TEXT = "Transform";
-const char* const TUNE_BUTTON_TEXT = "Tune";
-
-const char* const STEREO_TEXT = "Stereo";
-const char* const LEFT_TEXT = "Left";
-const char* const RIGHT_TEXT = "Right";
-const char* const LEFT_PLUS_RIGHT_TEXT = "L + R";
-
-const char* const SEMITONES_TEXT = " semitones";
-const char* const CENTS_TEXT = " cents";
-
 }  // namespace
 
 using rec::audio::stretch::Stretch;
 
 TransformController::TransformController()
     : Layout("TransformController", HORIZONTAL),
-      playbackSpeed_(SPEED_BUTTON_TEXT, getTypeName<Stretch>(),
+      playbackSpeed_(translate("Speed"), getTypeName<Stretch>(),
                      Address("time_percent")),
-      pitchScale_(PITCH_BUTTON_TEXT, getTypeName<Stretch>(),
+      pitchScale_(translate("Pitch"), getTypeName<Stretch>(),
                   Address("semitone_shift")),
-      fineScale_(TUNE_BUTTON_TEXT, getTypeName<Stretch>(),
+      fineScale_(translate("Tune"), getTypeName<Stretch>(),
                  Address("detune_cents")),
-      enableButton_(TRANSFORM_BUTTON_TEXT, getTypeName<Stretch>(),
+      enableButton_(translate("Transform"), getTypeName<Stretch>(),
                     Address("enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL) {
@@ -63,35 +49,40 @@ TransformController::TransformController()
   fineScale_.slider()->setDetent(0.0f);
 
   playbackSpeed_.slider()->setTextValueSuffix("%");
-  pitchScale_.slider()->setTextValueSuffix(SEMITONES_TEXT);
-  fineScale_.slider()->setTextValueSuffix(CENTS_TEXT);
+  pitchScale_.slider()->setTextValueSuffix(" semitones");
+  fineScale_.slider()->setTextValueSuffix(" cents");
 
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
-  stereoComboBox_.setTextWhenNothingSelected(STEREO_TEXT);
-  stereoComboBox_.setTextWhenNoChoicesAvailable(STEREO_TEXT);
-  stereoComboBox_.addItem(STEREO_TEXT, STEREO);
-  stereoComboBox_.addItem(LEFT_TEXT, LEFT);
-  stereoComboBox_.addItem(RIGHT_TEXT, RIGHT);
-  stereoComboBox_.addItem(LEFT_PLUS_RIGHT_TEXT, LEFT_PLUS_RIGHT);
+  stereoComboBox_.setTextWhenNothingSelected(translate("Stereo"));
+  stereoComboBox_.setTextWhenNoChoicesAvailable(translate("Stereo"));
+  stereoComboBox_.addItem(translate("Stereo"), STEREO);
+  stereoComboBox_.addItem(translate("Left"), LEFT);
+  stereoComboBox_.addItem(translate("Right"), RIGHT);
+  stereoComboBox_.addItem(translate("L + R"), LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
-  playbackSpeed_.setTooltip("Playback Speed Slider: "
-                            "Controls how fast the loop plays back: "
-                            "higher numbers mean the loop plays back faster.");
-  pitchScale_.setTooltip("Playback Tuning Slider: "
-                         "Tune loop playback up and down in pitch, "
-                         "measured in semitones.");
-  fineScale_.setTooltip("Playback Fine Tuning Slider: "
-                        "Tune loop up or down in pitch, measured in "
-                        "cents (1/100 of a semitone.");
-  stereoComboBox_.setTooltip("Stereo Processing Menu:  choose between the "
-                             "original stereo, just the left channel, "
-                             "just the right channel, "
-                             "or a mono mix of both channels.");
-  enableButton_.setTooltip("Transform Enable Button: "
-                           "Disable or enable all sound transformations: "
-                           "pitch, time and stereo processing.");
+  playbackSpeed_.setTooltip(
+      translate("Playback Speed Slider: "
+                "Controls how fast the loop plays back: "
+                "higher numbers mean the loop plays back faster."));
+  pitchScale_.setTooltip(
+      translate("Playback Tuning Slider: "
+                "Tune loop playback up and down in pitch, "
+                "measured in semitones."));
+  fineScale_.setTooltip(
+      translate("Playback Fine Tuning Slider: "
+                "Tune loop up or down in pitch, measured in "
+                "cents (1/100 of a semitone."));
+  stereoComboBox_.setTooltip(
+      translate("Stereo Processing Menu:  choose between the "
+                "original stereo, just the left channel, "
+                "just the right channel, "
+                "or a mono mix of both channels."));
+  enableButton_.setTooltip(
+      translate("Transform Enable Button: "
+                "Disable or enable all sound transformations: "
+                "pitch, time and stereo processing."));
 
   leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
   leftPanel_.addToLayout(&stereoComboBox_, COMBO_BOX_HEIGHT);
