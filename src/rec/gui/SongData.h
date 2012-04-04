@@ -21,27 +21,27 @@ class SongData : public SetterTextArea,
     : UntypedDataListener(getTypeName<music::Metadata>()) {
     const string& typeName = getTypeName<music::Metadata>();
     setName("SongData");
-    add(translate("Track"), typeName,
+    add(trans("Track"), typeName,
         Address("track_title"),
-        translate("Track Title: The name of this track."));
-    add(translate("Album"), typeName,
+        trans("Track Title: The name of this track."));
+    add(trans("Album"), typeName,
         Address("album_title"),
-        translate("Album Name: The name of the album this track is from."));
-    add(translate("Artist"), typeName,
+        trans("Album Name: The name of the album this track is from."));
+    add(trans("Artist"), typeName,
         Address("artist"),
-        translate("Artist Name: The artist or musician who made this specific track"));
-    add(translate("Number"), typeName,
+        trans("Artist Name: The artist or musician who made this specific track"));
+    add(trans("Number"), typeName,
         Address("track_number"),
-        translate("Track Number: The album track number for this track"));
-    add(translate("Year"), typeName,
+        trans("Track Number: The album track number for this track"));
+    add(trans("Year"), typeName,
         Address("year"),
-        translate("Album Year: The year that that this track was recorded."));
-    add(translate("Genre"), typeName,
+        trans("Album Year: The year that that this track was recorded."));
+    add(trans("Genre"), typeName,
         Address("genre"),
-        translate("Track tags: Tags that categorize this track."));
-    add(translate("Notes"), typeName,
+        trans("Track tags: Tags that categorize this track."));
+    add(trans("Notes"), typeName,
         Address("notes"),
-        translate("Track Notes: You can enter your notes here."))->
+        trans("Track Notes: You can enter your notes here."))->
         editor()->setMultiLine(true, true);
   }
 

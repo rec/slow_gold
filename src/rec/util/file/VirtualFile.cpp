@@ -76,7 +76,7 @@ const File getRealFile(const VirtualFile& file) {
 }
 
 const String getFilename(const VirtualFile& file) {
-  return file.path_size() ? str(file.path().end()[-1]) : String(translate("<none>"));
+  return file.path_size() ? str(file.path().end()[-1]) : String(trans("<none>"));
 }
 
 const String getDisplayName(const VirtualFile& file) {
@@ -85,15 +85,15 @@ const String getDisplayName(const VirtualFile& file) {
     return str(file.path(size - 1));
 
   if (type == VirtualFile::MUSIC)
-    return translate("<Music>");
+    return trans("<Music>");
 
   if (type == VirtualFile::USER)
-    return translate("<User>");
+    return trans("<User>");
 
   if (type == VirtualFile::VOLUME || type == VirtualFile::CD) {
     string name = file.volume_name();
     eraseVolumePrefix(&name, false);
-    return name.empty() ? translate("<Root>") : str(name);
+    return name.empty() ? trans("<Root>") : str(name);
   }
 
   return "<Unknown Virtual>";

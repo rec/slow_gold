@@ -14,7 +14,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
   explicit MidiCommandEntryWindow(MidiCommandMapEditor* owner)
-    : CommandEntryWindow(translate("Waiting for a MIDI note, program change or controller...")),
+    : CommandEntryWindow(trans("Waiting for a MIDI note, program change or controller...")),
         owner_(owner),
         mappings_(&owner->getMappings()) {
     listen(this);
@@ -48,7 +48,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
 
 template <>
 const String MidiCommandMapEditor::name() {
-  return translate("MIDI");
+  return trans("MIDI");
 }
 
 template <>

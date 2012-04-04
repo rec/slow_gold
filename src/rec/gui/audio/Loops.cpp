@@ -53,12 +53,12 @@ Loops::Loops(const TableColumnList* desc,
     : partAddress_(partAddress) {
   cuttable_.reset(new LoopsCuttable(this));
   TableColumnList tcl = dflt.get(desc);
-  tcl.mutable_column(0)->set_name(str(translate("Time")));
-  tcl.mutable_column(1)->set_name(str(translate("Name")));
+  tcl.mutable_column(0)->set_name(str(trans("Time")));
+  tcl.mutable_column(1)->set_name(str(trans("Name")));
   initialize(tcl, "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
-  setTooltip(translate("Loop Point List: You can select and edit loop points here."));
+  setTooltip(trans("Loop Point List: You can select and edit loop points here."));
 }
 
 Loops::~Loops() {}
@@ -94,7 +94,7 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
   data::Value value;
   string error = getMessageField(row, getProto(), &value);
   return error.empty() ?
-    getDisplayText(value, col, Samples<44100>(loops_.length())) : translate("(error)");
+    getDisplayText(value, col, Samples<44100>(loops_.length())) : trans("(error)");
 }
 
 void Loops::selectedRowsChanged(int /*lastRowSelected*/) {
@@ -172,7 +172,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
       const TableColumn& col = columns().column(column - 1);
       if (col.type() == TableColumn::STRING) {
         ptr<LoopsSetterLabel> lst(new LoopsSetterLabel(row, col));
-        lst->setTooltip(translate("Loop Point Name: Edit the Loop Point's name "
+        lst->setTooltip(trans("Loop Point Name: Edit the Loop Point's name "
                                   "by clicking here."));
         lst->startListening();
         existing = lst.transfer();

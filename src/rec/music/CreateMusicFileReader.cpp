@@ -42,7 +42,7 @@ AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata)
 
 MusicFileReader::MusicFileReader(const VirtualFile& file) {
   if (file::empty(file) || !file.path_size()) {
-    errorTitle_ = translate("Can't create track for ") +
+    errorTitle_ = trans("Can't create track for ") +
       str(file.ShortDebugString());
     errorDetails_ = errorTitle_;
     LOG(DFATAL) << errorTitle_;
@@ -59,16 +59,16 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
     String error;
     reader_.reset(createCDReader(file, metadata.get(), &error));
     if (!reader_) {
-      errorTitle_ = translate("Couldn't Open CD Track.");
-      errorDetails_ = translate("Couldn't open track on CD - perhaps you ejected it?\n"
+      errorTitle_ = trans("Couldn't Open CD Track.");
+      errorDetails_ = trans("Couldn't open track on CD - perhaps you ejected it?\n"
                                 "Error was: ") + error;
     }
   } else {
     File f = getRealFile(file);
     if (!f.existsAsFile()) {
-      errorTitle_ = translate("File Does Not Exist");
+      errorTitle_ = trans("File Does Not Exist");
       errorDetails_ = String::formatted(
-          translate("Sorry, file %s does not exist."),
+          trans("Sorry, file %s does not exist."),
           c_str(file::getFullDisplayName(file)));
     } else {
       reader_.reset(createFileReader(file, metadata.get()));
@@ -76,17 +76,17 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
       if (!reader) {
 #if JUCE_WINDOWS
         if (f.getFileExtension() == ".m4a") {
-          errorTitle_ = translate("We Can't Read .m4a Files On Windows");
-          errorDetails_ = translate("Sorry, file ") +
+          errorTitle_ = trans("We Can't Read .m4a Files On Windows");
+          errorDetails_ = trans("Sorry, file ") +
             file::getFullDisplayName(file) +
-            translate(" is an .m4a file and we can't yet read these files on Windows: "
+            trans(" is an .m4a file and we can't yet read these files on Windows: "
                       " please convert it to mp3 using iTunes.");
         } else {
 #endif
-          errorTitle_ = translate("Couldn't Open Your File.");
-          errorDetails_ = translate("Sorry, the program couldn't open your file ") +
+          errorTitle_ = trans("Couldn't Open Your File.");
+          errorDetails_ = trans("Sorry, the program couldn't open your file ") +
             file::getFullDisplayName(file) +
-            translate(".\nEither it wasn't in the right format, it's corrupted, or "
+            trans(".\nEither it wasn't in the right format, it's corrupted, or "
                       "the programmer made a mistake.");
 #if JUCE_WINDOWS
         }
@@ -98,16 +98,16 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
   if (reader_) {
     int64 length = reader_->lengthInSamples;
     if (!length) {
-      errorTitle_ = translate("Your File Was Empty.");
-      errorDetails_ = translate("Sorry, the file you tried to open, ") +
+      errorTitle_ = trans("Your File Was Empty.");
+      errorDetails_ = trans("Sorry, the file you tried to open, ") +
         file::getFullDisplayName(file) +
-        translate(" has a length of zero.");
+        trans(" has a length of zero.");
       reader_.reset();
     } else if (length < MINIMUM_FILE_SIZE) {
-      errorTitle_ = translate("Your File Was Too Small.");
-      errorDetails_ = translate("Sorry, the file you tried to open, ") +
+      errorTitle_ = trans("Your File Was Too Small.");
+      errorDetails_ = trans("Sorry, the file you tried to open, ") +
         file::getFullDisplayName(file) +
-        translate(" has a length of less than five seconds.");
+        trans(" has a length of less than five seconds.");
       reader_.reset();
     }
   }

@@ -46,7 +46,7 @@ public:
 
             if (count > 0)
                 addSubItem (new CommandMapCategoryItem(owner, cat));
-            else if (cat != translate("(None)")) {
+            else if (cat != trans("(None)")) {
               LOG(DFATAL) << "Nothing in category " << str(cat)
                          << ", " << commands.size();
             }
@@ -64,9 +64,9 @@ public:
     {
         AlertWindow::showOkCancelBox(
             AlertWindow::QuestionIcon,
-            translate("Reset to defaults"),
-            translate("Are you sure you want to reset all the key-mappings to their default state?"),
-            translate("Reset"),
+            trans("Reset to defaults"),
+            trans("Are you sure you want to reset all the key-mappings to their default state?"),
+            trans("Reset"),
             String::empty,
             &owner,
             ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));

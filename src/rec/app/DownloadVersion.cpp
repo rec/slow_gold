@@ -81,12 +81,12 @@ String majorVersion(const String& version) {
 bool downloadNewVersion(const String& appName, const String& version,
                         const String& oldVersion) {
   String msg = String::formatted(
-      translate("A new version of SlowGold, %s is available."), c_str(version));
+      trans("A new version of SlowGold, %s is available."), c_str(version));
   bool ok = AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon, msg,
-      msg + translate("Would you like to download it?"),
-      translate("Download new version and quit this old one."),
-      String::formatted(translate("Run this old version %s."),
+      msg + trans("Would you like to download it?"),
+      trans("Download new version and quit this old one."),
+      String::formatted(trans("Run this old version %s."),
                         c_str(oldVersion)));
 
   if (!ok) {
@@ -97,10 +97,10 @@ bool downloadNewVersion(const String& appName, const String& version,
   ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
 
   if (!ok) {
-    String error = String::formatted(translate("Couldn't update to version %s"),
+    String error = String::formatted(trans("Couldn't update to version %s"),
                                      c_str(version));
     AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
-                                translate("Click to continue"));
+                                trans("Click to continue"));
   }
   return ok;
 }

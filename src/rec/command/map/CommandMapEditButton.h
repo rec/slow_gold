@@ -20,8 +20,8 @@ public:
         setWantsKeyboardFocus (false);
         setTriggeredOnMouseDown (keyNum >= 0);
 
-        setTooltip (keyNum_ < 0 ? translate("adds a new key-mapping")
-                                : translate("click to change this key-mapping"));
+        setTooltip (keyNum_ < 0 ? trans("adds a new key-mapping")
+                                : trans("click to change this key-mapping"));
     }
 
     void addCommand() { owner.addButton(this); }
@@ -52,9 +52,9 @@ public:
         {
             // existing key clicked..
             PopupMenu m;
-            m.addItem (1, translate("Change this command mapping"));
+            m.addItem (1, trans("Change this command mapping"));
             m.addSeparator();
-            m.addItem (2, translate("Remove this command mapping"));
+            m.addItem (2, trans("Remove this command mapping"));
 
             m.showMenuAsync (PopupMenu::Options(),
                              ModalCallbackFunction::forComponent (menuCallback, this));

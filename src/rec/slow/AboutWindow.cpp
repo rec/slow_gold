@@ -34,11 +34,12 @@ static const String LEFT_STRING =
 class AboutPane : public Component {
  public:
   AboutPane(const String& name, const String& versionNumber)
-      : displayOnStartup_(translate("Display this window on startup"),
+      : displayOnStartup_(trans("Display this window on startup"),
                           getTypeName<GuiSettings>(),
                           data::Address("show_about_on_startup"),
                           GLOBAL_SCOPE) {
 #if 0
+    // FIX JUCE BUG!
     right_.setJustification(Justification::bottomRight);
     left_.setJustification(Justification::centredLeft);
 #else
@@ -48,16 +49,16 @@ class AboutPane : public Component {
 
     Font font("Ariel", 20, 0);
     String s =
-      translate("* Drag audio files onto the waveform.") + "\n" +
-      translate("* CDs will automatically appear in the top-left when you insert them.") + "\n" +
-      translate("* Press the space bar to start and stop playback.") + "\n" +
-      translate("* Drag the Speed slider to slow down or speed up.") + "\n" +
-      translate("* Create loop points by pressing the L key.") + "\n" +
-      translate("* Download the manual from the Help menu for many more commands.") + "\n";
+      trans("* Drag audio files onto the waveform.") + "\n" +
+      trans("* CDs will automatically appear in the top-left when you insert them.") + "\n" +
+      trans("* Press the space bar to start and stop playback.") + "\n" +
+      trans("* Drag the Speed slider to slow down or speed up.") + "\n" +
+      trans("* Create loop points by pressing the L key.") + "\n" +
+      trans("* Download the manual from the Help menu for many more commands.") + "\n";
 
     left_.append(s, font);
     String t = name + " " + versionNumber + "\nWorld Wide Woodshed Software\n" +
-      translate("Copyright © 2012\n");
+      trans(String(CharPointer_UTF8("Copyright © 2012\n")));
     right_.append(t, font);
 
     addAndMakeVisible(&displayOnStartup_);

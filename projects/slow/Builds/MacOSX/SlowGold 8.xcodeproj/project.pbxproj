@@ -2682,6 +2682,16 @@
 			name = native;
 			sourceTree = "<group>";
 		};
+		6013563408FB19DCF9A147D5 /* SlowGold 8 */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = "SlowGold 8";
+			sourceTree = "<group>";
+		};
 		611E7CDA28A55DCFF11BB64D /* properties */ = {
 			isa = PBXGroup;
 			children = (
@@ -3035,7 +3045,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				EE429AADF3F7ADA24EC92A7E /* SlowGold 8 */,
+				6013563408FB19DCF9A147D5 /* SlowGold 8 */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -4081,16 +4091,6 @@
 				43F657159BCBE58DA944714A /* juce_gui_basics.h */,
 			);
 			name = juce_gui_basics;
-			sourceTree = "<group>";
-		};
-		EE429AADF3F7ADA24EC92A7E /* SlowGold 8 */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = "SlowGold 8";
 			sourceTree = "<group>";
 		};
 		EF57F6771515EAB49925518F /* audio */ = {

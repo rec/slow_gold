@@ -21,13 +21,13 @@ void openManual() {
   bool ok = juce::URL(FULL_MANUAL).launchInDefaultBrowser();
   if (!ok) {
     String message =
-      translate("Sorry, couldn't load the SlowGold 8 user manual");
+      trans("Sorry, couldn't load the SlowGold 8 user manual");
     AlertWindow::showMessageBox(
         AlertWindow::WarningIcon,
         message,
-        message + translate(" at ") + WOODSHED + "\n" +
-        translate("Please contact World Wide Woodshed support."),
-        translate("Click to continue"));
+        message + trans(" at ") + WOODSHED + "\n" +
+        trans("Please contact World Wide Woodshed support."),
+        trans("Click to continue"));
   }
 }
 

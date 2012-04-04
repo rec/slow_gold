@@ -9,19 +9,19 @@ static String midiNoteName(const MidiMessage& msg) {
 
 String midiName(const MidiMessage& m) {
   if (m.isActiveSense())
-    return translate("as");
+    return trans("as");
 
   if (m.isSysEx())
-    return translate("sysex");
+    return trans("sysex");
 
   if (m.isNoteOn())
     return midiNoteName(m);
 
   if (m.isNoteOff())
-    return String::formatted(translate("%s off"), c_str(midiNoteName(m)));
+    return String::formatted(trans("%s off"), c_str(midiNoteName(m)));
 
   if (m.isProgramChange())
-    return String::formatted(translate("pc %d"), m.getProgramChangeNumber());
+    return String::formatted(trans("pc %d"), m.getProgramChangeNumber());
 
   if (m.isController()) {
     return MidiMessage::getControllerName(m.getControllerNumber()) +

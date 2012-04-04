@@ -6,7 +6,7 @@ namespace widget {
 namespace tree {
 
 void CD::computeChildren() {
-  name_ = translate("<Unknown CD>");
+  name_ = trans("<Unknown CD>");
   std::vector<string> tracks;
 
   const string& cdKey = virtualFile_.volume_name();
@@ -19,7 +19,7 @@ void CD::computeChildren() {
       for (int i = 0; i < audioTracks; ++i)
         tracks.push_back(str(String(i + 1)));
 
-      name_ = translate("Unknown CD: ID = 0x") +
+      name_ = trans("Unknown CD: ID = 0x") +
         cd::getCDKey(reader.get()).upToFirstOccurrenceOf("-", false, false);
 
     } else {

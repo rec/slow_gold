@@ -26,8 +26,8 @@ const int COMMAND_BAR_PAD = -5;
 CommandBar::CommandBar()
     : Layout("CommandBar", HORIZONTAL),
       addLoopPoint_("CreateNow", DrawableButton::ImageFitted),
-      zoomOutFull_(translate("Zoom out"), DrawableButton::ImageFitted),
-      zoomToSelection_(translate("Zoom To Selection"), DrawableButton::ImageFitted) {
+      zoomOutFull_(trans("Zoom out"), DrawableButton::ImageFitted),
+      zoomToSelection_(trans("Zoom To Selection"), DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
 
   addLoopPoint_.addListener(this);
@@ -38,11 +38,11 @@ CommandBar::CommandBar()
   SET_BUTTON_IMAGES3(&zoomOutFull_, ZoomOutButton);
   SET_BUTTON_IMAGES3(&zoomToSelection_, ZoomToSelectionButton);
 
-  addLoopPoint_.setTooltip(translate("Add Loop Point Button: "
+  addLoopPoint_.setTooltip(trans("Add Loop Point Button: "
                                      "Add a loop point at the current time."));
-  zoomOutFull_.setTooltip(translate("Zoom Out Full Button: "
+  zoomOutFull_.setTooltip(trans("Zoom Out Full Button: "
                                     "Zoom the waveform all the way out."));
-  zoomToSelection_.setTooltip(translate("Zoom To Selection Button: "
+  zoomToSelection_.setTooltip(trans("Zoom To Selection Button: "
                                         "Zoom in or out so the whole selection "
                                         "fits the waveform."));
 

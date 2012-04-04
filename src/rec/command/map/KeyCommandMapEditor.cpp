@@ -9,7 +9,7 @@ namespace {
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:
     KeyCommandEntryWindow(KeyCommandMapEditor& owner_)
-    : CommandEntryWindow(translate("Please press a key combination now...")),
+    : CommandEntryWindow(trans("Please press a key combination now...")),
       owner(owner_)
     {
     }
@@ -33,7 +33,7 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
 }  // namespace
 
 template <>
-const String KeyCommandMapEditor::name() { return translate("Key"); }
+const String KeyCommandMapEditor::name() { return trans("Key"); }
 
 template <>
 const String KeyCommandMapEditor::getDescription(const KeyPress& key) {

@@ -10,12 +10,12 @@ namespace command {
 class CommandEntryWindow  : public AlertWindow {
 public:
   CommandEntryWindow (const String& caption)
-  : AlertWindow (translate("New command mapping"),
+  : AlertWindow (trans("New command mapping"),
                  caption,
                  AlertWindow::NoIcon)
   {
-    addButton(translate("Ok"), 1);
-    addButton(translate("Cancel"), 0);
+    addButton(trans("Ok"), 1);
+    addButton(trans("Cancel"), 0);
 
     // Probably not needed in the general case but no harm...
     // (avoid return + escape keys getting processed by the buttons..)

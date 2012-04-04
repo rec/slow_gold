@@ -61,7 +61,7 @@ void SlowWindow::startListening() {
 }
 
 void SlowWindow::operator()(const music::Metadata& md) {
-  String name = translate("(no file loaded)");
+  String name = trans("(no file loaded)");
   if (!currentFile()->empty()) {
     File file = data::DataListener<music::Metadata>::getData()->getFile();
     name = str(music::getTitle(md, file.getParentDirectory()));

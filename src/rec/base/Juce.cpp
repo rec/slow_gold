@@ -39,7 +39,7 @@ void dumpTranslations() {
 
 #endif
 
-String translate(const String& s) {
+String trans(const String& s) {
 #ifdef RECORD_TRANSLATIONS
   addTranslation(s);
 #endif

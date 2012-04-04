@@ -54,14 +54,14 @@ ModeSelector::ModeSelector()
   SET_BUTTON_IMAGES2(&addLoopPointClick_, AddLoopPointMode);
 
   setImage(this, &drag_, Mode::DRAG,
-           translate("Drag Mode: Use the mouse to drag the waveform back and forth"));
+           trans("Drag Mode: Use the mouse to drag the waveform back and forth"));
   setImage(this, &setTime_, Mode::SET_TIME,
-           translate("Set Current Time Mode: Clicking in the waveform sets the current time."));
+           trans("Set Current Time Mode: Clicking in the waveform sets the current time."));
   setImage(this, &zoomIn_, Mode::ZOOM_IN,
-           translate("Zoom Mode: Clicking on the waveform zooms in on that point."));
+           trans("Zoom Mode: Clicking on the waveform zooms in on that point."));
 
   setImage(this, &addLoopPointClick_, Mode::DRAW_LOOP_POINTS,
-           translate("Add loop point mode: clicking on the waveform creates a loop point."));
+           trans("Add loop point mode: clicking on the waveform creates a loop point."));
 
   minSize_ = juce::Point<int>(BUTTON_COUNT * BUTTON_SIZE +
                               (BUTTON_COUNT + 1) * PADDING,

@@ -103,7 +103,7 @@ void keyboardMappings(Instance* i) {
   comp.setBounds(0, 0, 500, 1000);
 
   l.setModalComponent(&comp);
-  juce::DialogWindow::showModalDialog(translate("Select keyboard mappings"),
+  juce::DialogWindow::showModalDialog(trans("Select keyboard mappings"),
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
   command::saveKeyboardBindings(manager);
@@ -122,7 +122,7 @@ void midiMappings(Instance* i) {
   comp.setBounds(0, 0, 500, 1000);
 
   l.setModalComponent(&comp);
-  juce::DialogWindow::showModalDialog(translate("Select MIDI mappings"),
+  juce::DialogWindow::showModalDialog(trans("Select MIDI mappings"),
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
   data::setProto(i->target_->midiCommandMap()->getProto(), data::global());
