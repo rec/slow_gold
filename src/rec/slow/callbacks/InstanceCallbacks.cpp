@@ -189,6 +189,7 @@ void open(Instance* i) {
 }
 
 void quit(Instance* i) {
+  dumpTranslations();
   i->window_->application()->systemRequestedQuit();
 }
 
