@@ -146,7 +146,9 @@ void initialize(app::GenericApplication*) {
 }
 
 void shutdown(app::GenericApplication*) {
+#ifdef RECORD_TRANSLATIONS
   dumpTranslations();
+#endif
   data::deleteDataCenter();
 }
 

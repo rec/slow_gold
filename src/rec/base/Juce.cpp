@@ -2,11 +2,12 @@
 
 #include "rec/base/base.h"
 
-namespace rec {
-
 #define RECORD_TRANSLATIONS
 
 #ifdef RECORD_TRANSLATIONS
+
+namespace rec {
+
 namespace {
 
 typedef std::set<string> TranslationSet;
@@ -32,19 +33,12 @@ void dumpTranslations() {
   }
 }
 
-#else
-
-void dumpTranslations() {
-}
-
-#endif
 
 String trans(const String& s) {
-#ifdef RECORD_TRANSLATIONS
   addTranslation(s);
-#endif
-
   return ::juce::translate(s);
 }
 
 }  // namespace rec
+
+#endif

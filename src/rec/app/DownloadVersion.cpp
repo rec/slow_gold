@@ -4,6 +4,8 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 
+#include "rec/base/TranslatedString.h"
+
 namespace rec {
 namespace app {
 
@@ -81,12 +83,12 @@ String majorVersion(const String& version) {
 bool downloadNewVersion(const String& appName, const String& version,
                         const String& oldVersion) {
   String msg = String::formatted(
-      trans("A new version of SlowGold, %s is available."), c_str(version));
+      trans("A new version of SlowGold, %s, is available."), c_str(version));
   bool ok = AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon, msg,
       msg + trans("Would you like to download it?"),
-      trans("Download new version and quit this old one."),
-      String::formatted(trans("Run this old version %s."),
+      trans("Download new version and quit this older one."),
+      String::formatted(trans("Run this older version (%s)."),
                         c_str(oldVersion)));
 
   if (!ok) {
@@ -100,7 +102,7 @@ bool downloadNewVersion(const String& appName, const String& version,
     String error = String::formatted(trans("Couldn't update to version %s"),
                                      c_str(version));
     AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
-                                trans("Click to continue"));
+                                trans("Click to continue."));
   }
   return ok;
 }
