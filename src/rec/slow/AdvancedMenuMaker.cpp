@@ -10,8 +10,6 @@
 namespace rec {
 namespace slow {
 
-// i18n
-
 using namespace rec::command;
 
 void AdvancedMenuMaker::addAudioMenu() {
@@ -43,10 +41,10 @@ void AdvancedMenuMaker::addSelectMenu() {
 
   menu_.addSeparator();
 
-  addBank(Command::SELECT, "Select...");
-  addBank(Command::SELECT_ONLY, "Select Only...");
-  addBank(Command::TOGGLE_SELECTION, "Toggle...");
-  addBank(Command::UNSELECT, "Unselect...");
+  addBank(Command::SELECT, translate("Select..."));
+  addBank(Command::SELECT_ONLY, translate("Select Only..."));
+  addBank(Command::TOGGLE_SELECTION, translate("Toggle..."));
+  addBank(Command::UNSELECT, translate("Unselect..."));
 }
 
 void AdvancedMenuMaker::addTransportMenu() {
@@ -55,8 +53,8 @@ void AdvancedMenuMaker::addTransportMenu() {
 
   menu_.addSeparator();
 
-  addBank(Command::JUMP, "Jump To...");
-  addBank(Command::JUMP_SELECTED, "Jump To Selected...");
+  addBank(Command::JUMP, translate("Jump To..."));
+  addBank(Command::JUMP_SELECTED, translate("Jump To Selected..."));
 }
 
 void AdvancedMenuMaker::addDisplayMenu() {
@@ -74,16 +72,24 @@ void AdvancedMenuMaker::addDisplayMenu() {
 }
 
 const StringArray AdvancedMenuMaker::getMenuBarNames() const {
-  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Select",
-                                "Display", "Help"};
-  return StringArray(NAMES, arraysize(NAMES));
+  StringArray res;
+
+  res.add(translate("File"));
+  res.add(translate("Edit"));
+  res.add(translate("Audio"));
+  res.add(translate("Transport"));
+  res.add(translate("Select"));
+  res.add(translate("Display"));
+  res.add(translate("Help"));
+
+  return res;
 }
 
 bool AdvancedMenuMaker::addMenu(const String& menuName) {
   if (BasicMenuMaker::addMenu(menuName))
     return true;
 
-  if (menuName == "Display")
+  if (menuName == translate("Display"))
     addDisplayMenu();
 
   else

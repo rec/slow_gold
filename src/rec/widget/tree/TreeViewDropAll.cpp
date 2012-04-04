@@ -9,8 +9,6 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-// i18n
-
 TreeViewDropAll::TreeViewDropAll(MenuBarModel* m) {
   setName("Tree");
 }
@@ -26,7 +24,7 @@ void TreeViewDropAll::paint(Graphics& g) {
 
   if (isTreeDrop(this)) {
     static const int HEIGHT = 10;
-    g.drawFittedText("This is your bookmarks area!  Drop directories and ",
+    g.drawFittedText(translate("This is your bookmarks area!  Drop directories and "),
                      0, 0, getWidth(), getHeight() - HEIGHT,
                      juce::Justification::centred, 0);
 

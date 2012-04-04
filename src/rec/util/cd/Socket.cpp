@@ -7,8 +7,6 @@ namespace rec {
 namespace util {
 namespace cd {
 
-// i18n
-
 static const int BUFFER_SIZE = 4096;
 
 void writeSocket(Socket* sock, const String& s) {

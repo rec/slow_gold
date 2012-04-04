@@ -34,7 +34,6 @@ using namespace rec::widget::waveform;
 
 namespace {
 // Skin
-// i18n
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
@@ -104,7 +103,7 @@ void keyboardMappings(Instance* i) {
   comp.setBounds(0, 0, 500, 1000);
 
   l.setModalComponent(&comp);
-  juce::DialogWindow::showModalDialog("Select keyboard mappings",
+  juce::DialogWindow::showModalDialog(translate("Select keyboard mappings"),
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
   command::saveKeyboardBindings(manager);
@@ -123,7 +122,7 @@ void midiMappings(Instance* i) {
   comp.setBounds(0, 0, 500, 1000);
 
   l.setModalComponent(&comp);
-  juce::DialogWindow::showModalDialog("Select MIDI mappings",
+  juce::DialogWindow::showModalDialog(translate("Select MIDI mappings"),
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
   data::setProto(i->target_->midiCommandMap()->getProto(), data::global());

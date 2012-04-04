@@ -14,8 +14,6 @@ namespace file {
 
 namespace {
 
-// i18n
-
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
 String fixPathElement(const String& s) {
@@ -57,7 +55,7 @@ const File getRootFile(const VirtualFile& v) {
     return File::getSpecialLocation(File::userHomeDirectory);
   }
 
-  CHECK(false) << v.type();
+  DCHECK(false) << v.type();
   return File();
 }
 
@@ -78,7 +76,7 @@ const File getRealFile(const VirtualFile& file) {
 }
 
 const String getFilename(const VirtualFile& file) {
-  return file.path_size() ? str(file.path().end()[-1]) : String("<none>");
+  return file.path_size() ? str(file.path().end()[-1]) : String(translate("<none>"));
 }
 
 const String getDisplayName(const VirtualFile& file) {
@@ -87,15 +85,15 @@ const String getDisplayName(const VirtualFile& file) {
     return str(file.path(size - 1));
 
   if (type == VirtualFile::MUSIC)
-    return "<Music>";
+    return translate("<Music>");
 
   if (type == VirtualFile::USER)
-    return "<User>";
+    return translate("<User>");
 
   if (type == VirtualFile::VOLUME || type == VirtualFile::CD) {
     string name = file.volume_name();
     eraseVolumePrefix(&name, false);
-    return name.empty() ? String("<Root>") : str(name);
+    return name.empty() ? translate("<Root>") : str(name);
   }
 
   return "<Unknown Virtual>";

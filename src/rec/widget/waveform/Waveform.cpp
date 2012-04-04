@@ -23,7 +23,6 @@ namespace {
 using namespace rec::util::block;
 
 // Skin
-// i18n
 
 const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
 const int ZOOM_CURSOR_X_HOTSPOT = 8;
@@ -60,14 +59,15 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
-  setTooltip("Waveform Window:"
-             "You can drag files from your desktop or your music player here. "
-             "If your mouse has a wheel, use it to zoom the waveform.");
+  setTooltip(
+      translate("Waveform Window:"
+                "You can drag files from your desktop or your music player here. "
+                "If your mouse has a wheel, use it to zoom the waveform."));
 
   timeCursor_.reset(new Cursor(*timeCursor, this, 0, 0, true));
-  timeCursor_->setTooltip("Playback Time Cursor: This follows the "
-                          "current time during playback. You can also drag it "
-                          "around to set the current playback time.");
+  timeCursor_->setTooltip(translate("Playback Time Cursor: This follows the "
+                                    "current time during playback. You can also drag it "
+                                    "around to set the current playback time."));
   timeCursor_->startListening();
   setOpaque(true);
   setBufferedToImage(true);
@@ -135,9 +135,9 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
       c = cursors_[i];
     } else {
       c = new Cursor(*defaultDesc, this, time, i, false);
-      c->setTooltip("Loop Point:  You can drag it around on the waveform, "
-                    "or you can click on the label above and to the right "
-                    "to edit its name.");
+      c->setTooltip(translate("Loop Point:  You can drag it around on the waveform, "
+                              "or you can click on the label above and to the right "
+                              "to edit its name."));
       c->startListening();
       cursors_.push_back(c);
     }

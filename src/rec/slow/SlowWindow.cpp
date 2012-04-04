@@ -39,7 +39,6 @@ namespace {
 using namespace juce;
 
 // Skin
-// i18n
 
 const int FADE_IN_TIME = 1500;
 const int FADE_OUT_TIME = 750;
@@ -62,7 +61,7 @@ void SlowWindow::startListening() {
 }
 
 void SlowWindow::operator()(const music::Metadata& md) {
-  String name = "(no file loaded)";
+  String name = translate("(no file loaded)");
   if (!currentFile()->empty()) {
     File file = data::DataListener<music::Metadata>::getData()->getFile();
     name = str(music::getTitle(md, file.getParentDirectory()));

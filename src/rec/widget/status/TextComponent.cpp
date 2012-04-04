@@ -13,7 +13,6 @@ namespace widget {
 namespace status {
 namespace time {
 
-// i18n
 // Skin
 
 TextComponent::TextComponent(const Text& desc)
@@ -22,8 +21,8 @@ TextComponent::TextComponent(const Text& desc)
       length_(0) {
   setJustificationType(Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
-  setTooltip("Time Display: Shows the current playback time in minutes, "
-             "seconds and omillseconds.");
+  setTooltip(translate("Time Display: Shows the current playback time in minutes, "
+                       "seconds and omillseconds."));
 }
 
 Samples<44100> TextComponent::getTime() const {

@@ -25,7 +25,6 @@ namespace rec {
 namespace slow {
 
 // Skin
-// i18n
 
 using namespace rec::widget::waveform;
 using data::Address;
@@ -109,8 +108,8 @@ MainPage::MainPage(Components* components)
 
   // Navigation panel.
   components->directoryTree_->treeView()->setTooltip(
-      "CD Window:  Any CDs that you have in "
-      "your computer's CD drives will appear here.");
+      translate("CD Window:  Any CDs that you have in "
+                "your computer's CD drives will appear here."));
   add(&navigationPanel_, components->directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->songData_, MIN_SONG_DATA, -1.0, -0.30);
@@ -118,7 +117,8 @@ MainPage::MainPage(Components* components)
   add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
   // Playback panel.
-  String helpHelp = "Help Panel: Shows help about whatever the mouse is over.";
+  String helpHelp =
+    translate("Help Panel: Shows help about whatever the mouse is over.");
   helpPanel_.setTooltip(helpHelp);
 
   helpCaption_.setTooltip(helpHelp);

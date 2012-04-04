@@ -10,8 +10,6 @@ namespace slow {
 
 namespace {
 
-// i18n
-
 // TODO: this is duplicated in DownloadVersion
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const String MANUAL = "SlowGoldManual.pdf";
@@ -22,12 +20,14 @@ using juce::AlertWindow;
 void openManual() {
   bool ok = juce::URL(FULL_MANUAL).launchInDefaultBrowser();
   if (!ok) {
-    String message = "Sorry, couldn't load the SlowGold 8 user manual";
-    AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                message,
-                                message + " at " + WOODSHED + "\n" +
-                                "Please contact World Wide Woodshed support.",
-                                "Click to continue");
+    String message =
+      translate("Sorry, couldn't load the SlowGold 8 user manual");
+    AlertWindow::showMessageBox(
+        AlertWindow::WarningIcon,
+        message,
+        message + translate(" at ") + WOODSHED + "\n" +
+        translate("Please contact World Wide Woodshed support."),
+        translate("Click to continue"));
   }
 }
 
