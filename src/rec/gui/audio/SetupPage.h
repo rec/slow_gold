@@ -17,6 +17,7 @@ class SetupPage  : public Component {
 
   void resized();
   void show(Component* comp);
+  static void translateAll();
 
  private:
   juce::AudioDeviceSelectorComponent deviceSelector_;

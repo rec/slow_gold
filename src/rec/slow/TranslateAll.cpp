@@ -8,6 +8,7 @@
 #include "rec/command/map/KeyCommandMapEditor.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/command/map/MidiName.h"
+#include "rec/gui/audio/SetupPage.h"
 
 namespace rec {
 namespace slow {
@@ -22,6 +23,7 @@ void translateAll() {
   command::KeyCommandMapEditorTranslator::translateAll();
   command::MidiCommandMapEditorTranslator::translateAll();
   command::MidiName::translateAll();
+  gui::audio::SetupPage::translateAll();
 }
 
 }  // namespace slow
