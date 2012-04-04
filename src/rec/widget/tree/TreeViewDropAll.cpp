@@ -9,6 +9,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
+// TRANS
+
 TreeViewDropAll::TreeViewDropAll(MenuBarModel* m) {
   setName("Tree");
 }

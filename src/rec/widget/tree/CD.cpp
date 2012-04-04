@@ -5,6 +5,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
+// TRANS
+
 void CD::computeChildren() {
   name_ = trans("<Unknown CD>");
   std::vector<string> tracks;

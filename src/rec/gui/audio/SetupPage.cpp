@@ -6,6 +6,8 @@ namespace rec {
 namespace gui {
 namespace audio {
 
+// TRANS
+
 SetupPage::SetupPage(rec::audio::Device* dev)
     : deviceSelector_(dev->manager_, 0, 0, 2, 2, true, false, true, true),
       device_(dev) {

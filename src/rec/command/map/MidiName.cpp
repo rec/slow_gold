@@ -7,6 +7,8 @@ static String midiNoteName(const MidiMessage& msg) {
   return MidiMessage::getMidiNoteName(msg.getNoteNumber(), true, true, 3);
 }
 
+// TRANS
+
 String midiName(const MidiMessage& m) {
   if (m.isActiveSense())
     return trans("as");

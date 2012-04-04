@@ -1,4 +1,6 @@
 #include "rec/command/map/CommandMapEditor.h"
+
+#include "rec/base/Trans.h"
 #include "rec/command/map/CommandMapEditButton.h"
 #include "rec/command/map/CommandMapEditorMappingItem.h"
 #include "rec/command/map/CommandMapTopLevelItem.h"
@@ -8,11 +10,12 @@
 namespace rec {
 namespace command {
 
+static Trans RESET_TO_DEFAULTS("reset to defaults");
+
 //==============================================================================
 CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
                                    ChangeBroadcaster& b)
-    : commandManager(manager), broadcaster(b), resetButton (TRANS ("reset to defaults"))
-{
+    : commandManager(manager), broadcaster(b), resetButton (RESET_TO_DEFAULTS) {
 }
 
 void CommandMapEditor::initialize(const bool showResetToDefaultButton) {
@@ -80,6 +83,10 @@ bool CommandMapEditor::isCommandReadOnly (const CommandID commandID)
     const ApplicationCommandInfo* const ci = commandManager.getCommandForID (commandID);
 
     return ci != nullptr && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor) != 0;
+}
+
+void CommandMapEditor::translateAll() {
+  RESET_TO_DEFAULTS.translate();
 }
 
 }  // namespace command

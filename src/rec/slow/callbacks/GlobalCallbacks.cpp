@@ -10,6 +10,8 @@ namespace slow {
 
 namespace {
 
+// TRANS
+
 // TODO: this is duplicated in DownloadVersion
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const String MANUAL = "SlowGoldManual.pdf";

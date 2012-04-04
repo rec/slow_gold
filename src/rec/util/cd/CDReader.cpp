@@ -7,6 +7,7 @@ namespace rec {
 namespace util {
 namespace cd {
 
+// TRANS
 
 AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
   String e;
