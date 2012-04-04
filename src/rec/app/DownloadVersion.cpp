@@ -1,6 +1,7 @@
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/app/Files.h"
+#include "rec/base/TranslatedString.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -13,6 +14,13 @@ using juce::Time;
 using juce::URL;
 
 namespace {
+
+const Trans NEW_VERSION("A new version of SlowGold, %s, is available.");
+const Trans LIKE_TO_DOWNLOAD("Would you like to download it?");
+const Trans DOWNLOAD_AND_QUIT("Download new version and quit this older one.");
+const Trans RUN_THIS_OLDER_VERSION("Run this older version (%s).");
+const Trans COULDNT_UPDATE("Couldn't update to version %s");
+const Trans CLICK_TO_CONTINUE("Click to continue.");
 
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const URL VERSION_FILE(WOODSHED + "currentversion/");
@@ -80,14 +88,12 @@ String majorVersion(const String& version) {
 
 bool downloadNewVersion(const String& appName, const String& version,
                         const String& oldVersion) {
-  String msg = String::formatted(
-      trans("A new version of SlowGold, %s, is available."), c_str(version));
+  String msg = String::formatted(NEW_VERSION, c_str(version));
   bool ok = AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon, msg,
-      msg + trans("Would you like to download it?"),
-      trans("Download new version and quit this older one."),
-      String::formatted(trans("Run this older version (%s)."),
-                        c_str(oldVersion)));
+      msg + LIKE_TO_DOWNLOAD,
+      DOWNLOAD_AND_QUIT,
+      String::formatted(RUN_THIS_OLDER_VERSION, c_str(oldVersion)));
 
   if (!ok) {
     LOG(INFO) << "New version download cancelled";
@@ -97,10 +103,9 @@ bool downloadNewVersion(const String& appName, const String& version,
   ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
 
   if (!ok) {
-    String error = String::formatted(trans("Couldn't update to version %s"),
-                                     c_str(version));
+    String error = String::formatted(COULDNT_UPDATE, c_str(version));
     AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
-                                trans("Click to continue."));
+                                CLICK_TO_CONTINUE);
   }
   return ok;
 }
@@ -138,6 +143,15 @@ bool downloadNewVersionIfNeeded(const String& version, const String& name) {
     LOG(INFO) << "New: "  << version << " current: " << newVersion;
 
   return isNew && downloadNewVersion(name, newVersion, version);
+}
+
+void DownloadVersion::translateAll() {
+  NEW_VERSION.translate();
+  LIKE_TO_DOWNLOAD.translate();
+  DOWNLOAD_AND_QUIT.translate();
+  RUN_THIS_OLDER_VERSION.translate();
+  COULDNT_UPDATE.translate();
+  CLICK_TO_CONTINUE.translate();
 }
 
 }  // namespace app

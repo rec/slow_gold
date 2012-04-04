@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="EPvQl1rI3" name="SlowGold 8">
+  <MAINGROUP id="mmMO8gspX" name="SlowGold 8">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -278,6 +278,8 @@
         <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="ZxTlCYmLe"
               name="KeyboardBindings.h" resource="0"/>
         <GROUP id="ZOQbo0KNJ" name="map">
+          <FILE compile="1" file="../../src/rec/command/map/CommandEntryWindow.cpp"
+                id="fP4yONplC" name="CommandEntryWindow.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/CommandEntryWindow.h"
                 id="0qUfzbWOI" name="CommandEntryWindow.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/command/map/CommandMap.cpp" id="8aEOhrFRI"
@@ -1001,6 +1003,10 @@
               name="Threads.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Threads.h" id="T7jk37oov"
               name="Threads.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/TranslateAll.cpp" id="yLgIYYSsq"
+              name="TranslateAll.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/TranslateAll.h" id="khzL4JPxk"
+              name="TranslateAll.h" resource="0"/>
       </GROUP>
       <GROUP id="WJnE1pJSy" name="util">
         <FILE compile="1" file="../../src/rec/util/Binary.cpp" id="H5IKbBd1M"
@@ -1445,7 +1451,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ljb5oR1Qf" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="3IIEQiwSV" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

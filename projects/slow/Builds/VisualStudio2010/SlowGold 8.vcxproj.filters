@@ -595,6 +595,9 @@
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
       <Filter>SlowGold 8\rec\command</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp">
       <Filter>SlowGold 8\rec\command\map</Filter>
     </ClCompile>
@@ -1025,6 +1028,9 @@
       <Filter>SlowGold 8\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\TranslateAll.cpp">
       <Filter>SlowGold 8\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp">
@@ -3295,6 +3301,9 @@
       <Filter>SlowGold 8\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
+      <Filter>SlowGold 8\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\TranslateAll.h">
       <Filter>SlowGold 8\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">

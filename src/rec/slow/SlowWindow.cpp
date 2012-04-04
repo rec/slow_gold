@@ -1,36 +1,21 @@
 #include "rec/slow/SlowWindow.h"
 
 #include "rec/app/GenericApplication.h"
-#include "rec/audio/source/Stereo.pb.h"
-#include "rec/audio/stretch/Stretch.pb.h"
-#include "rec/audio/util/Gain.pb.h"
-#include "rec/base/TranslatedString.h"
-#include "rec/command/Command.pb.h"
-#include "rec/command/map/CommandMap.pb.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/Geometry.h"
-#include "rec/gui/RecentFiles.pb.h"
-#include "rec/gui/WindowPosition.pb.h"
-#include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
-#include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/AboutWindow.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/RegisterProtos.h"
+#include "rec/slow/TranslateAll.h"
 #include "rec/util/Defaulter.h"
-#include "rec/util/LoopPoint.pb.h"
-#include "rec/util/Mode.pb.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
-#include "rec/widget/tree/NavigatorConfig.pb.h"
 #include "rec/widget/waveform/Waveform.h"
-#include "rec/widget/waveform/Waveform.pb.h"
-#include "rec/widget/waveform/Zoom.pb.h"
-
 
 namespace rec {
 namespace slow {
@@ -126,7 +111,7 @@ using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
   registerProtos();
-  TranslatedString::translateAll();
+  translateAll();
 }
 
 void shutdown(app::GenericApplication*) {

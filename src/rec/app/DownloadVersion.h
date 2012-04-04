@@ -9,6 +9,10 @@ namespace app {
 // Returns true if a new version was downloaded.
 bool downloadNewVersionIfNeeded(const String& version, const String& name);
 
+struct DownloadVersion {
+  static void translateAll();
+};
+
 }  // namespace app
 }  // namespace rec
 

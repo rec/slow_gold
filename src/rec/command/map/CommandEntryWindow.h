@@ -6,25 +6,11 @@
 namespace rec {
 namespace command {
 
-//==============================================================================
-class CommandEntryWindow  : public AlertWindow {
-public:
-  CommandEntryWindow (const String& caption)
-  : AlertWindow (trans("New command mapping"),
-                 caption,
-                 AlertWindow::NoIcon)
-  {
-    addButton(trans("Ok"), 1);
-    addButton(trans("Cancel"), 0);
+class CommandEntryWindow  : public juce::AlertWindow {
+ public:
+  CommandEntryWindow(const String& caption);
 
-    // Probably not needed in the general case but no harm...
-    // (avoid return + escape keys getting processed by the buttons..)
-    for (int i = getNumChildComponents(); --i >= 0;)
-      getChildComponent (i)->setWantsKeyboardFocus (false);
-
-    setWantsKeyboardFocus (true);
-    grabKeyboardFocus();
-  }
+  static void translateAll();
 
  private:
   JUCE_DECLARE_NON_COPYABLE (CommandEntryWindow);
