@@ -1,8 +1,14 @@
 #include "rec/command/map/CommandMapEditButton.h"
+#include "rec/base/Trans.h"
 #include "rec/command/map/CommandMapEditor.h"
 
 namespace rec {
 namespace command {
+
+Trans ADD_NEW_KEY_MAPPING("adds a new key-mapping");
+Trans CHANGE_KEY_MAPPING("click to change this key-mapping");
+Trans CHANGE_COMMAND_MAPPING("Change this command mapping");
+Trans REMOVE_COMMAND_MAPPING("Remove this command mapping");
 
 CommandMapEditButton::CommandMapEditButton(CommandMapEditor& owner_,
                                            const CommandID commandID_,
@@ -16,8 +22,7 @@ CommandMapEditButton::CommandMapEditButton(CommandMapEditor& owner_,
   setWantsKeyboardFocus (false);
   setTriggeredOnMouseDown (keyNum >= 0);
 
-  setTooltip (keyNum_ < 0 ? trans("adds a new key-mapping")
-              : trans("click to change this key-mapping"));
+  setTooltip(keyNum_ < 0 ? ADD_NEW_KEY_MAPPING : CHANGE_KEY_MAPPING);
 }
 
 void CommandMapEditButton::paintButton (Graphics& g, bool /*isOver*/, bool /*isDown*/)
@@ -49,9 +54,9 @@ void CommandMapEditButton::clicked()
     {
         // existing key clicked..
         PopupMenu m;
-        m.addItem (1, trans("Change this command mapping"));
+        m.addItem (1, CHANGE_COMMAND_MAPPING);
         m.addSeparator();
-        m.addItem (2, trans("Remove this command mapping"));
+        m.addItem (2, REMOVE_COMMAND_MAPPING);
 
         m.showMenuAsync (PopupMenu::Options(),
                          ModalCallbackFunction::forComponent (menuCallback, this));
@@ -75,6 +80,12 @@ void CommandMapEditButton::fitToContent (const int h) noexcept
     }
 }
 
+void CommandMapEditButton::translateAll() {
+  ADD_NEW_KEY_MAPPING.translate();
+  CHANGE_KEY_MAPPING.translate();
+  CHANGE_COMMAND_MAPPING.translate();
+  REMOVE_COMMAND_MAPPING.translate();
+}
 
 }  // namespace command
 }  // namespace rec

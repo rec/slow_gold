@@ -30,6 +30,7 @@ class CommandMapEditButton  : public juce::Button {
   CommandEntryWindow* getCommandEntryWindow() { return currentCommandEntryWindow; }
   void setCommandEntryWindow(CommandEntryWindow* window = nullptr) { currentCommandEntryWindow = window; }
   CommandMapEditor& getOwner() { return owner; }
+  static void translateAll();
 
  private:
   CommandMapEditor& owner;
