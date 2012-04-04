@@ -1,7 +1,16 @@
 #include "rec/command/map/CommandMapTopLevelItem.h"
+#include "rec/base/Trans.h"
 
 namespace rec {
 namespace command {
+
+namespace {
+
+Trans RESET_TO_DEFAULTS("Reset to defaults");
+Trans SURE_YOU_RESET("Are you sure you want to reset all the key-mappings to their default state?");
+Trans RESET("Reset");
+
+}
 
 CommandMapTopLevelItem::CommandMapTopLevelItem(CommandMapEditor& owner_)
     : owner (owner_) {
@@ -43,12 +52,18 @@ void CommandMapTopLevelItem::buttonClicked (Button*)
 {
   AlertWindow::showOkCancelBox(
       AlertWindow::QuestionIcon,
-      trans("Reset to defaults"),
-      trans("Are you sure you want to reset all the key-mappings to their default state?"),
-      trans("Reset"),
+      RESET_TO_DEFAULTS,
+      SURE_YOU_RESET,
+      RESET,
       String::empty,
       &owner,
       ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));
+}
+
+void CommandMapTopLevelItem::translateAll() {
+  RESET_TO_DEFAULTS.translate();
+  SURE_YOU_RESET.translate();
+  RESET.translate();
 }
 
 }  // namespace command

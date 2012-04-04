@@ -20,6 +20,7 @@ public:
   static void resetToDefaultsCallback(int result, CommandMapEditor* owner) {}
 
   void buttonClicked (Button*);
+  static void translateAll();
 
  protected:
   CommandMapEditor& owner;
