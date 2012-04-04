@@ -24,7 +24,6 @@ using data::Address;
 using data::Value;
 using gui::TableColumn;
 
-// i18n
 // Skin
 
 namespace {
@@ -53,10 +52,13 @@ Loops::Loops(const TableColumnList* desc,
              const Address& partAddress)
     : partAddress_(partAddress) {
   cuttable_.reset(new LoopsCuttable(this));
-  initialize(dflt.get(desc), "Loops");
+  TableColumnList tcl = dflt.get(desc);
+  tcl.mutable_column(0)->set_name(str(translate("Time")));
+  tcl.mutable_column(1)->set_name(str(translate("Name")));
+  initialize(tcl, "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
-  setTooltip("Loop Point List: You can select and edit loop points here.");
+  setTooltip(translate("Loop Point List: You can select and edit loop points here."));
 }
 
 Loops::~Loops() {}
@@ -92,7 +94,7 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
   data::Value value;
   string error = getMessageField(row, getProto(), &value);
   return error.empty() ?
-    getDisplayText(value, col, Samples<44100>(loops_.length())) : "(error)";
+    getDisplayText(value, col, Samples<44100>(loops_.length())) : translate("(error)");
 }
 
 void Loops::selectedRowsChanged(int /*lastRowSelected*/) {

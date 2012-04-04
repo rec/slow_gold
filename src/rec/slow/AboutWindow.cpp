@@ -10,7 +10,7 @@ namespace slow {
 
 namespace {
 
-// i18n, Skin
+// Skin
 
 using namespace juce;
 
@@ -20,7 +20,6 @@ const int MARGIN = 20;
 const int OFFSET = 150;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
-const String BUTTON_TEXT = "Display this window on startup";
 
 static const String LEFT_STRING =
   "* Drag audio files onto the waveform.\n"
@@ -35,7 +34,7 @@ static const String LEFT_STRING =
 class AboutPane : public Component {
  public:
   AboutPane(const String& name, const String& versionNumber)
-      : displayOnStartup_(BUTTON_TEXT,
+      : displayOnStartup_(translate("Display this window on startup"),
                           getTypeName<GuiSettings>(),
                           data::Address("show_about_on_startup"),
                           GLOBAL_SCOPE) {
@@ -48,10 +47,18 @@ class AboutPane : public Component {
 #endif
 
     Font font("Ariel", 20, 0);
-    left_.append(LEFT_STRING, font);
-    String s = name + " " + versionNumber + "\nWorld Wide Woodshed Software\n" +
-      String(CharPointer_UTF8("Copyright © 2012\n"));
-    right_.append(s, font);
+    String s =
+      translate("* Drag audio files onto the waveform.") + "\n" +
+      translate("* CDs will automatically appear in the top-left when you insert them.") + "\n" +
+      translate("* Press the space bar to start and stop playback.") + "\n" +
+      translate("* Drag the Speed slider to slow down or speed up.") + "\n" +
+      translate("* Create loop points by pressing the L key.") + "\n" +
+      translate("* Download the manual from the Help menu for many more commands.") + "\n";
+
+    left_.append(s, font);
+    String t = name + " " + versionNumber + "\nWorld Wide Woodshed Software\n" +
+      translate("Copyright © 2012\n");
+    right_.append(t, font);
 
     addAndMakeVisible(&displayOnStartup_);
     displayOnStartup_.setBounds(MARGIN, HEIGHT - MARGIN - BUTTON_HEIGHT,
