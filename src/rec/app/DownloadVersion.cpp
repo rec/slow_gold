@@ -14,16 +14,6 @@ using juce::URL;
 
 namespace {
 
-// i18n
-
-const char* NEW_VERSION = "A new version of SlowGold, %s is available.";
-const char* DOWNLOAD_QUESTION = "Would you like to download it?";
-const char* DOWNLOAD_AND_QUIT = "Download new version and quit this old one.";
-const char* RUN_OLD_VERSION = "Run this old version %s.";
-const char* COULDNT_UPDATE =  "Couldn't update to version %s";
-const char* CLICK_TO_CONTINUE = "Click to continue";
-
-
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const URL VERSION_FILE(WOODSHED + "currentversion/");
 const String LAST_UPDATE_FILE("LastUpdate.txt");
@@ -60,7 +50,7 @@ bool isReadyForUpdate() {
     }
   }
 
-  if (ready)
+ if (ready)
     mustUpdateFile.create();
   else
     mustUpdateFile.deleteFile();
@@ -90,12 +80,14 @@ String majorVersion(const String& version) {
 
 bool downloadNewVersion(const String& appName, const String& version,
                         const String& oldVersion) {
-  String msg = String::formatted(NEW_VERSION, c_str(version));
+  String msg = String::formatted(
+      translate("A new version of SlowGold, %s is available."), c_str(version));
   bool ok = AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon, msg,
-      msg + DOWNLOAD_QUESTION,
-      DOWNLOAD_AND_QUIT,
-      String::formatted(RUN_OLD_VERSION, c_str(oldVersion)));
+      msg + translate("Would you like to download it?"),
+      translate("Download new version and quit this old one."),
+      String::formatted(translate("Run this old version %s."),
+                        c_str(oldVersion)));
 
   if (!ok) {
     LOG(INFO) << "New version download cancelled";
@@ -105,9 +97,10 @@ bool downloadNewVersion(const String& appName, const String& version,
   ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
 
   if (!ok) {
-    String error = String::formatted(COULDNT_UPDATE, c_str(version));
+    String error = String::formatted(translate("Couldn't update to version %s"),
+                                     c_str(version));
     AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
-                                CLICK_TO_CONTINUE);
+                                translate("Click to continue"));
   }
   return ok;
 }
