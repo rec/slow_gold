@@ -4,14 +4,13 @@
 namespace rec {
 namespace command {
 
-// i18n
-
 namespace {
 
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:
     KeyCommandEntryWindow(KeyCommandMapEditor& owner_)
-        : CommandEntryWindow("Please press a key combination now..."), owner(owner_)
+    : CommandEntryWindow(translate("Please press a key combination now...")),
+      owner(owner_)
     {
     }
 
@@ -34,7 +33,7 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
 }  // namespace
 
 template <>
-const String KeyCommandMapEditor::name() { return "Key"; }
+const String KeyCommandMapEditor::name() { return translate("Key"); }
 
 template <>
 const String KeyCommandMapEditor::getDescription(const KeyPress& key) {

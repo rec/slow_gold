@@ -6,8 +6,6 @@
 namespace rec {
 namespace command {
 
-// i18n
-
 //==============================================================================
 class CommandMapTopLevelItem   : public TreeViewItem,
                                  public ChangeListener,
@@ -48,7 +46,7 @@ public:
 
             if (count > 0)
                 addSubItem (new CommandMapCategoryItem(owner, cat));
-            else if (cat != "(None)") {
+            else if (cat != translate("(None)")) {
               LOG(DFATAL) << "Nothing in category " << str(cat)
                          << ", " << commands.size();
             }
@@ -64,13 +62,14 @@ public:
 
     void buttonClicked (Button*)
     {
-        AlertWindow::showOkCancelBox (AlertWindow::QuestionIcon,
-                                      TRANS("Reset to defaults"),
-                                      TRANS("Are you sure you want to reset all the key-mappings to their default state?"),
-                                      TRANS("Reset"),
-                                      String::empty,
-                                      &owner,
-                                      ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));
+        AlertWindow::showOkCancelBox(
+            AlertWindow::QuestionIcon,
+            translate("Reset to defaults"),
+            translate("Are you sure you want to reset all the key-mappings to their default state?"),
+            translate("Reset"),
+            String::empty,
+            &owner,
+            ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));
     }
 
 protected:

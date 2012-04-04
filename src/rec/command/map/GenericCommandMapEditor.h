@@ -8,8 +8,6 @@
 namespace rec {
 namespace command {
 
-// i18n
-
 template <typename MappingSet, typename Key>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
@@ -36,7 +34,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
     const CommandID previousCommand = getCommand(key);
 
     if (previousCommand) {
-      message << "\n\n" << TRANS("(Currently assigned to \"")
+      message << "\n\n" << translate("(Currently assigned to \"")
               << getCommandManager().getNameOfCommand(previousCommand) << "\")";
     }
     return message;
@@ -60,12 +58,12 @@ class GenericCommandMapEditor : public CommandMapEditor {
           else
           {
               AlertWindow::showOkCancelBox (AlertWindow::WarningIcon,
-                                            TRANS("Change key-mapping"),
-                                            TRANS("This key is already assigned to the command \"")
+                                            translate("Change key-mapping"),
+                                            translate("This key is already assigned to the command \"")
                                               + commandManager.getNameOfCommand (previousCommand)
-                                              + TRANS("\"\n\nDo you want to re-assign it to this new command instead?"),
-                                            TRANS("Re-assign"),
-                                            TRANS("Cancel"),
+                                              + translate("\"\n\nDo you want to re-assign it to this new command instead?"),
+                                            translate("Re-assign"),
+                                            translate("Cancel"),
                                             this,
                                             ModalCallbackFunction::forComponent (GenericCommandMapEditor<MappingSet, Key>::assignNewKeyCallback,
                                                                                  button, Key (newKey)));

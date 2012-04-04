@@ -6,8 +6,6 @@
 namespace rec {
 namespace command {
 
-// i18n
-
 class CommandMapEditButton  : public Button
 {
 public:
@@ -22,8 +20,8 @@ public:
         setWantsKeyboardFocus (false);
         setTriggeredOnMouseDown (keyNum >= 0);
 
-        setTooltip (keyNum_ < 0 ? TRANS("adds a new key-mapping")
-                                : TRANS("click to change this key-mapping"));
+        setTooltip (keyNum_ < 0 ? translate("adds a new key-mapping")
+                                : translate("click to change this key-mapping"));
     }
 
     void addCommand() { owner.addButton(this); }
@@ -54,9 +52,9 @@ public:
         {
             // existing key clicked..
             PopupMenu m;
-            m.addItem (1, TRANS("Change this command mapping"));
+            m.addItem (1, translate("Change this command mapping"));
             m.addSeparator();
-            m.addItem (2, TRANS("Remove this command mapping"));
+            m.addItem (2, translate("Remove this command mapping"));
 
             m.showMenuAsync (PopupMenu::Options(),
                              ModalCallbackFunction::forComponent (menuCallback, this));

@@ -24,7 +24,7 @@ using data::Address;
 using data::Value;
 using gui::TableColumn;
 
-// TODO: i18n
+// i18n
 // Skin
 
 namespace {
@@ -170,8 +170,8 @@ Component* Loops::refreshComponentForCell(int row, int column,
       const TableColumn& col = columns().column(column - 1);
       if (col.type() == TableColumn::STRING) {
         ptr<LoopsSetterLabel> lst(new LoopsSetterLabel(row, col));
-        lst->setTooltip("Loop Point Name: Edit the Loop Point's name "
-                        "by clicking here.");
+        lst->setTooltip(translate("Loop Point Name: Edit the Loop Point's name "
+                                  "by clicking here."));
         lst->startListening();
         existing = lst.transfer();
       }

@@ -10,13 +10,11 @@ namespace command {
 
 namespace {
 
-// i18n
-
 class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
   explicit MidiCommandEntryWindow(MidiCommandMapEditor* owner)
-      : CommandEntryWindow("Waiting for a MIDI note, program change or controller..."),
+    : CommandEntryWindow(translate("Waiting for a MIDI note, program change or controller...")),
         owner_(owner),
         mappings_(&owner->getMappings()) {
     listen(this);
@@ -50,7 +48,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
 
 template <>
 const String MidiCommandMapEditor::name() {
-  return "Midi";
+  return translate("MIDI");
 }
 
 template <>

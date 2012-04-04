@@ -17,8 +17,6 @@ namespace audio {
 
 namespace {
 
-// TODO: i18n
-
 const int BUTTON_SIZE = 39;
 const int PADDING = 3;
 const int COMMAND_BAR_PAD = -5;
@@ -28,8 +26,8 @@ const int COMMAND_BAR_PAD = -5;
 CommandBar::CommandBar()
     : Layout("CommandBar", HORIZONTAL),
       addLoopPoint_("CreateNow", DrawableButton::ImageFitted),
-      zoomOutFull_("Zoom out", DrawableButton::ImageFitted),
-      zoomToSelection_("Zoom To Selection", DrawableButton::ImageFitted) {
+      zoomOutFull_(translate("Zoom out"), DrawableButton::ImageFitted),
+      zoomToSelection_(translate("Zoom To Selection"), DrawableButton::ImageFitted) {
   using namespace rec::gui::icon;
 
   addLoopPoint_.addListener(this);
@@ -40,13 +38,13 @@ CommandBar::CommandBar()
   SET_BUTTON_IMAGES3(&zoomOutFull_, ZoomOutButton);
   SET_BUTTON_IMAGES3(&zoomToSelection_, ZoomToSelectionButton);
 
-  addLoopPoint_.setTooltip("Add Loop Point Button: "
-                           "Add a loop point at the current time.");
-  zoomOutFull_.setTooltip("Zoom Out Full Button: "
-                          "Zoom the waveform all the way out.");
-  zoomToSelection_.setTooltip("Zoom To Selection Button: "
-                              "Zoom in or out so the whole selection "
-                              "fits the waveform.");
+  addLoopPoint_.setTooltip(translate("Add Loop Point Button: "
+                                     "Add a loop point at the current time."));
+  zoomOutFull_.setTooltip(translate("Zoom Out Full Button: "
+                                    "Zoom the waveform all the way out."));
+  zoomToSelection_.setTooltip(translate("Zoom To Selection Button: "
+                                        "Zoom in or out so the whole selection "
+                                        "fits the waveform."));
 
   addToLayout(&addLoopPoint_, BUTTON_SIZE);
   addToLayout(&zoomOutFull_, BUTTON_SIZE);
