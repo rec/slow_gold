@@ -146,6 +146,7 @@ void initialize(app::GenericApplication*) {
 }
 
 void shutdown(app::GenericApplication*) {
+  dumpTranslations();
   data::deleteDataCenter();
 }
 

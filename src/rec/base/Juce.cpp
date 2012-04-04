@@ -23,6 +23,7 @@ void addTranslation(const String& s) {
 }  // namespace
 
 void dumpTranslations() {
+  DLOG(INFO) << "Dumping translations " << translations()->size();
   const TranslationSet& t = *translations();
   juce::FileOutputStream output(File("/tmp/translations.txt"));
   for (TranslationSet::const_iterator i = t.begin(); i != t.end(); ++i) {
