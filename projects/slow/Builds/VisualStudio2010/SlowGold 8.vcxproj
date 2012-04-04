@@ -171,7 +171,12 @@
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapCategoryItem.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditButton.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditor.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapItemComponent.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapTopLevelItem.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\GenericCommandMapEditor.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.cpp"/>
@@ -1516,7 +1521,7 @@
     <ClInclude Include="..\..\..\..\src\rec\base\Samples.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\base\TranslatedString.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\Trans.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h"/>

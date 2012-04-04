@@ -8,6 +8,16 @@
 namespace rec {
 namespace command {
 
+bool showCommandMapBox(const String& command,
+                       Component* associatedComponent,
+                       ModalComponentManager::Callback* callback);
+
+String currentlyAssignedTo(const String& commandName);
+
+struct CommandMapEditorTranslation {
+  static void translateAll();
+};
+
 template <typename MappingSet, typename Key>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
@@ -34,8 +44,8 @@ class GenericCommandMapEditor : public CommandMapEditor {
     const CommandID previousCommand = getCommand(key);
 
     if (previousCommand) {
-      message << "\n\n" << trans("(Currently assigned to \"")
-              << getCommandManager().getNameOfCommand(previousCommand) << "\")";
+      String pn = getCommandManager().getNameOfCommand(previousCommand);
+    message += currentlyAssignedTo(pn);
     }
     return message;
   }
@@ -57,16 +67,10 @@ class GenericCommandMapEditor : public CommandMapEditor {
           }
           else
           {
-              AlertWindow::showOkCancelBox (AlertWindow::WarningIcon,
-                                            trans("Change key-mapping"),
-                                            trans("This key is already assigned to the command \"")
-                                              + commandManager.getNameOfCommand (previousCommand)
-                                              + trans("\"\n\nDo you want to re-assign it to this new command instead?"),
-                                            trans("Re-assign"),
-                                            trans("Cancel"),
-                                            this,
-                                            ModalCallbackFunction::forComponent (GenericCommandMapEditor<MappingSet, Key>::assignNewKeyCallback,
-                                                                                 button, Key (newKey)));
+            showCommandMapBox(commandManager.getNameOfCommand (previousCommand),
+                              this,
+                              ModalCallbackFunction::forComponent(GenericCommandMapEditor<MappingSet, Key>::assignNewKeyCallback,
+                                                                  button, Key (newKey)));
           }
       }
   }

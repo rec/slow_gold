@@ -6,74 +6,23 @@
 namespace rec {
 namespace command {
 
-//==============================================================================
-class CommandMapTopLevelItem   : public TreeViewItem,
-                                 public ChangeListener,
-                                 public ButtonListener
-{
+class CommandMapTopLevelItem : public TreeViewItem,
+                               public ChangeListener,
+                               public ButtonListener {
 public:
-    explicit CommandMapTopLevelItem (CommandMapEditor& owner_)
-        : owner (owner_)
-    {
-        setLinesDrawnForSubItems (false);
-        owner.getChangeBroadcaster().addChangeListener (this);
-    }
+  explicit CommandMapTopLevelItem (CommandMapEditor&);
+  ~CommandMapTopLevelItem();
 
-    ~CommandMapTopLevelItem()
-    {
-        owner.getChangeBroadcaster().removeChangeListener (this);
-    }
-
-    bool mightContainSubItems()             { return true; }
+    bool mightContainSubItems()       { return true; }
     String getUniqueName() const      { return "keys"; }
 
-    void changeListenerCallback (ChangeBroadcaster*)
-    {
-        const OpennessRestorer openness (*this);
-        clearSubItems();
+  void changeListenerCallback (ChangeBroadcaster*);
+  static void resetToDefaultsCallback(int result, CommandMapEditor* owner) {}
 
-        const StringArray categories (owner.getCommandManager().getCommandCategories());
+  void buttonClicked (Button*);
 
-        for (int i = 0; i < categories.size(); ++i)
-        {
-            const String& cat = categories[i];
-            const Array <CommandID> commands (owner.getCommandManager().getCommandsInCategory (cat));
-            int count = 0;
-
-            for (int j = 0; j < commands.size(); ++j)
-                if (owner.shouldCommandBeIncluded (commands[j]))
-                    ++count;
-
-            if (count > 0)
-                addSubItem (new CommandMapCategoryItem(owner, cat));
-            else if (cat != trans("(None)")) {
-              LOG(DFATAL) << "Nothing in category " << str(cat)
-                         << ", " << commands.size();
-            }
-
-        }
-    }
-
-    static void resetToDefaultsCallback (int /* result */, CommandMapEditor* /* owner */)
-    {
-        // if (result != 0 && owner != nullptr)
-        //     owner->getMappings().resetToDefaultMappings();
-    }
-
-    void buttonClicked (Button*)
-    {
-        AlertWindow::showOkCancelBox(
-            AlertWindow::QuestionIcon,
-            trans("Reset to defaults"),
-            trans("Are you sure you want to reset all the key-mappings to their default state?"),
-            trans("Reset"),
-            String::empty,
-            &owner,
-            ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));
-    }
-
-protected:
-    CommandMapEditor& owner;
+ protected:
+  CommandMapEditor& owner;
 };
 
 }  // namespace command

@@ -601,7 +601,22 @@
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp">
       <Filter>SlowGold 8\rec\command\map</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapCategoryItem.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditButton.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditor.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapItemComponent.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapTopLevelItem.cpp">
+      <Filter>SlowGold 8\rec\command\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\GenericCommandMapEditor.cpp">
       <Filter>SlowGold 8\rec\command\map</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.cpp">
@@ -2667,7 +2682,7 @@
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h">
       <Filter>SlowGold 8\rec\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\base\TranslatedString.h">
+    <ClInclude Include="..\..\..\..\src\rec\base\Trans.h">
       <Filter>SlowGold 8\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\types.h">

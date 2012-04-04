@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="mmMO8gspX" name="SlowGold 8">
+  <MAINGROUP id="kZGEodkP2" name="SlowGold 8">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -241,8 +241,8 @@
               name="scoped_array.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/string_piece.h" id="nJykOkINX"
               name="string_piece.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/TranslatedString.h" id="uO07rMfY3"
-              name="TranslatedString.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/base/Trans.h" id="bAyMBSEmd"
+              name="Trans.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/types.h" id="cPVXuqA6Q"
               name="types.h" resource="0"/>
       </GROUP>
@@ -286,8 +286,12 @@
                 name="CommandMap.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/CommandMap.h" id="SMFh4nzCo"
                 name="CommandMap.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/CommandMapCategoryItem.cpp"
+                id="5E3frf8Uy" name="CommandMapCategoryItem.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/CommandMapCategoryItem.h"
                 id="1Eat4NS6K" name="CommandMapCategoryItem.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/CommandMapEditButton.cpp"
+                id="Ho6AsnrNo" name="CommandMapEditButton.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/CommandMapEditButton.h"
                 id="TJf93LWTW" name="CommandMapEditButton.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/command/map/CommandMapEditor.cpp"
@@ -296,10 +300,16 @@
                 id="uXbXXdZxt" name="CommandMapEditor.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/CommandMapEditorMappingItem.h"
                 id="36v4Qo3c6" name="CommandMapEditorMappingItem.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/CommandMapItemComponent.cpp"
+                id="pJSAZvSy8" name="CommandMapItemComponent.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/CommandMapItemComponent.h"
                 id="p5s56MLvp" name="CommandMapItemComponent.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/CommandMapTopLevelItem.cpp"
+                id="NCegxexrl" name="CommandMapTopLevelItem.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/CommandMapTopLevelItem.h"
                 id="VVE8iiqDI" name="CommandMapTopLevelItem.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/GenericCommandMapEditor.cpp"
+                id="cxmdVh3wo" name="GenericCommandMapEditor.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/GenericCommandMapEditor.h"
                 id="Qyy7FKpRS" name="GenericCommandMapEditor.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/command/map/KeyCommandMapEditor.cpp"
@@ -1451,7 +1461,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="3IIEQiwSV" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="4e4vLDOHi" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

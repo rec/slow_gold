@@ -9,13 +9,17 @@ namespace rec {
 
 class Trans {
  public:
-  operator const String&() const { return *translated_; }
+  operator const String&() const {
+    if (!translated_)
+      translate();
+    return *translated_;
+  }
 
   void translate() const {
     translated_.reset(new String(trans(original_)));
   }
 
-  Trans(const char* o);
+  Trans(const char* o) : original_(o) {}
 
  private:
   const char* const original_;

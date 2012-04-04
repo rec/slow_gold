@@ -1,7 +1,7 @@
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/app/Files.h"
-#include "rec/base/TranslatedString.h"
+#include "rec/base/Trans.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 

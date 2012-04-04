@@ -7,60 +7,27 @@
 namespace rec {
 namespace command {
 
+class CommandMapEditorMappingItem;
+
 //==============================================================================
 class CommandMapCategoryItem  : public TreeViewItem
 {
 public:
-    CommandMapCategoryItem (CommandMapEditor& owner_, const String& name)
-        : owner (owner_), categoryName (name)
-    {
-    }
+  CommandMapCategoryItem (CommandMapEditor& owner_, const String& name);
+  virtual CommandMapEditorMappingItem* createItemComponent(CommandID cmd) const;
 
-    virtual CommandMapEditorMappingItem* createItemComponent(CommandID cmd) const
-    {
-        return new CommandMapEditorMappingItem(owner, cmd);
-    }
+  virtual String getUniqueName() const          { return categoryName + "_cat"; }
+  virtual bool mightContainSubItems()                 { return true; }
+  virtual int getItemHeight() const                   { return 28; }
 
-    String getUniqueName() const          { return categoryName + "_cat"; }
-    bool mightContainSubItems()                 { return true; }
-    int getItemHeight() const                   { return 28; }
+  virtual void paintItem(Graphics& g, int width, int height);
+  virtual void itemOpennessChanged(bool isNowOpen);
 
-    void paintItem (Graphics& g, int width, int height)
-    {
-        g.setFont (height * 0.6f, Font::bold);
-        g.setColour (owner.findColour (CommandMapEditor::textColourId));
+ private:
+  CommandMapEditor& owner;
+  String categoryName;
 
-        g.drawText (categoryName,
-                    2, 0, width - 2, height,
-                    Justification::centredLeft, true);
-    }
-
-    void itemOpennessChanged (bool isNowOpen)
-    {
-        if (isNowOpen)
-        {
-            if (getNumSubItems() == 0)
-            {
-                Array <CommandID> commands (owner.getCommandManager().getCommandsInCategory (categoryName));
-
-                for (int i = 0; i < commands.size(); ++i)
-                {
-                    if (owner.shouldCommandBeIncluded (commands[i]))
-                      addSubItem (createItemComponent (commands[i]));  // TODO: why?
-                }
-            }
-        }
-        else
-        {
-            clearSubItems();
-        }
-    }
-
-private:
-    CommandMapEditor& owner;
-    String categoryName;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapCategoryItem);
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapCategoryItem);
 };
 
 
