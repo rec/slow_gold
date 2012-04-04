@@ -9,7 +9,7 @@ namespace {
 Trans RESET_TO_DEFAULTS("Reset to defaults");
 Trans SURE_YOU_RESET("Are you sure you want to reset all the key-mappings to their default state?");
 Trans RESET("Reset");
-
+Trans NONE("(None)");
 }
 
 CommandMapTopLevelItem::CommandMapTopLevelItem(CommandMapEditor& owner_)
@@ -40,7 +40,7 @@ void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
 
       if (count > 0)
           addSubItem (new CommandMapCategoryItem(owner, cat));
-      else if (cat != trans("(None)")) {
+      else if (cat != NONE) {
         LOG(DFATAL) << "Nothing in category " << str(cat)
                    << ", " << commands.size();
       }
@@ -64,6 +64,7 @@ void CommandMapTopLevelItem::translateAll() {
   RESET_TO_DEFAULTS.translate();
   SURE_YOU_RESET.translate();
   RESET.translate();
+  NONE.translate();
 }
 
 }  // namespace command
