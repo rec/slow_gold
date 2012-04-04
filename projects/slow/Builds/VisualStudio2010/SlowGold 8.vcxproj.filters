@@ -568,6 +568,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.cpp">
       <Filter>SlowGold 8\rec\audio\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\base\Juce.cpp">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
       <Filter>SlowGold 8\rec\base</Filter>
     </ClCompile>
@@ -2629,6 +2632,9 @@
       <Filter>SlowGold 8\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\disallow.h">
+      <Filter>SlowGold 8\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\DropDead.h">
       <Filter>SlowGold 8\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\Juce.h">

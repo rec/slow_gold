@@ -162,6 +162,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\base\Juce.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp"/>
@@ -1504,6 +1505,7 @@
     <ClInclude Include="..\..\..\..\src\rec\base\Cast.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\CompileAssert.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\disallow.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\DropDead.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\Juce.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\port.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ptr.h"/>

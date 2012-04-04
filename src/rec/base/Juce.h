@@ -133,8 +133,7 @@ class DrawableButton : public juce::DrawableButton {
   }
 };
 
-inline String translate(const String& s) { return ::juce::translate(s); }
-inline String translate(const char* s) { return ::juce::translate(s); }
+String translate(const String&);
 
 }  // namespace rec
 
