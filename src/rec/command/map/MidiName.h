@@ -8,6 +8,10 @@ namespace command {
 
 String midiName(const MidiMessage& msg);
 
+struct MidiName {
+  static void translateAll();
+};
+
 }  // namespace command
 }  // namespace rec
 
