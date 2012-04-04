@@ -30,6 +30,7 @@ static const int RATE = 44100;
 
 RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
     : Implementation(source) {
+  CHECK_DDD(7134, 1893, int32, int16);
   setStretch(stretch);
 }
 

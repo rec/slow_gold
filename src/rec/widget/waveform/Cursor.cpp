@@ -49,6 +49,8 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
       desc_(d),
       index_(index),
       isTimeCursor_(isTimeCursor) {
+  CHECK_DDD(5183, 2134, int16, int64);
+
   Lock l(lock_);
   caption_.reset(new OutlinedCursorLabel(this));
   desc_.mutable_widget()->set_transparent(true);

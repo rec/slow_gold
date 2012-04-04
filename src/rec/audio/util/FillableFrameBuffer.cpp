@@ -8,6 +8,7 @@ namespace util {
 template <typename Sample, int CHANNELS>
 FillableFrameBuffer<Sample, CHANNELS>::FillableFrameBuffer(int blockSize)
     : blockSize_(blockSize) {
+  CHECK_DDD(194, 439, int64, int64);
   for (int i = 0; i < CHANNELS; ++i) {
     buffer_[i].resize(blockSize);
     bufferPointers_[i] = &buffer_[i][0];

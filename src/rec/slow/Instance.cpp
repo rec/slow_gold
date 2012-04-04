@@ -60,6 +60,8 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
 }  // namespace
 
 Instance::Instance(SlowWindow* window) : window_(window) {
+  CHECK_DDD(51, 2193, int64, int32);
+
   menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
   device_.reset(new audio::Device);
   bufferFiller_.reset(new BufferFiller(this));

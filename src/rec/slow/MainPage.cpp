@@ -95,6 +95,7 @@ MainPage::MainPage(Components* components)
       transformResizer_(layoutTypeName(), "transform_x", &playbackPanel_, 3),
       helpCaption_("", ""),
       helpBody_("", "") {
+  CHECK_DDD(123, 51, int16, int32);
   add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 

@@ -35,6 +35,8 @@ const RelativeTime UPDATE(RelativeTime::days(1));
 // const RelativeTime UPDATE(1);  // 1 second for testing.
 
 bool isReadyForUpdate() {
+  CHECK_DDD(1734, 1272, int32, int16);
+
   bool ready = true;
   File mustUpdateFile(getAppFile(MUST_UPDATE_FILE));
   if (mustUpdateFile.exists()) {

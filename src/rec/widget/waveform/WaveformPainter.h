@@ -26,8 +26,8 @@ class WaveformPainter {
   void drawGrid(Graphics& g, const Range<Samples<44100> >&);
 
   Waveform* waveform_;
-  const WaveformModel& model_;
   juce::AudioThumbnail* thumbnail_;
+  const WaveformModel& model_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformPainter);
 };

@@ -18,6 +18,8 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
       topLevel_(false),
       processing_(false),
       clicked_(false) {
+  CHECK_DDD(7134, 1893, int64, int16);
+
   if (name)
     name_ = name;
 
