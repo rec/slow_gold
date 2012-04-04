@@ -9,6 +9,10 @@ namespace command {
 
 typedef GenericCommandMapEditor<MidiCommandMap, MidiMessage> MidiCommandMapEditor;
 
+struct MidiCommandMapEditorTranslator {
+  static void translateAll();
+};
+
 }  // namespace command
 }  // namespace rec
 

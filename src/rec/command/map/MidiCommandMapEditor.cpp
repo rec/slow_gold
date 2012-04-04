@@ -1,6 +1,7 @@
 #include "rec/command/map/MidiCommandMapEditor.h"
 
 #include "rec/audio/Device.h"
+#include "rec/base/Trans.h"
 #include "rec/command/map/MidiName.h"
 #include "rec/util/Listener.h"
 #include "rec/util/thread/CallAsync.h"
@@ -10,11 +11,14 @@ namespace command {
 
 namespace {
 
+Trans WAITING("Waiting for a MIDI note, program change or controller...");
+Trans MIDI("MIDI");
+
 class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
   explicit MidiCommandEntryWindow(MidiCommandMapEditor* owner)
-    : CommandEntryWindow(trans("Waiting for a MIDI note, program change or controller...")),
+  : CommandEntryWindow(WAITING),
         owner_(owner),
         mappings_(&owner->getMappings()) {
     listen(this);
@@ -48,7 +52,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
 
 template <>
 const String MidiCommandMapEditor::name() {
-  return trans("MIDI");
+  return MIDI;
 }
 
 template <>
@@ -120,6 +124,11 @@ void MidiCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton
          MidiCommandMapEditor* editor = dynamic_cast<MidiCommandMapEditor*>(&button->getOwner());
          editor->setNewKey (button, key, true);
      }
+}
+
+void MidiCommandMapEditorTranslator::translateAll() {
+  WAITING.translate();
+  MIDI.translate();
 }
 
 }  // namespace command
