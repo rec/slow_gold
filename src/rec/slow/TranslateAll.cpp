@@ -12,6 +12,7 @@
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/AboutWindow.h"
 #include "rec/slow/callbacks/GlobalCallbacks.h"
+#include "rec/util/cd/CDReader.h"
 
 namespace rec {
 namespace slow {
@@ -30,6 +31,7 @@ void translateAll() {
   music::MusicFileReader::translateAll();
   AboutWindow::translateAll();
   GlobalCallbacks::translateAll();
+  cd::CDReader::translateAll();
 }
 
 }  // namespace slow

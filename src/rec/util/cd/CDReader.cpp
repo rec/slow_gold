@@ -1,4 +1,5 @@
 #include "rec/util/cd/CDReader.h"
+#include "rec/base/Trans.h"
 #include "rec/music/Metadata.h"
 
 using namespace juce;
@@ -7,7 +8,12 @@ namespace rec {
 namespace util {
 namespace cd {
 
-// TRANS
+namespace {
+
+Trans NO_AVAILBLE("No available CDs.");
+Trans TRIED_TO_READ("Tried to read CD, id=%s, names=%s");
+
+}  // namespace
 
 AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
   String e;
@@ -18,14 +24,14 @@ AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
   StringArray names = AudioCDReader::getAvailableCDNames();
   int size = names.size();
   if (!size) {
-    (*error) = trans("No available CDs.");
+    (*error) = NO_AVAILBLE;
     return NULL;
   }
 
   for (int i = 0; i < size; ++i) {
     ScopedPointer<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
     if (!reader) {
-      LOG(ERROR) << trans("Couldn't create reader for ") << names[i];
+      LOG(ERROR) << "Couldn't create reader for " << names[i];
       if (error->length())
         *error += ", ";
       *error += names[i];
@@ -35,8 +41,7 @@ AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
     }
   }
   LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
-  (*error) = trans("Tried to read CD, id=") + String(id) +
-    trans(", names=") + *error;
+  (*error) = String::formatted(TRIED_TO_READ, c_str(String(id)), c_str(*error));
   return NULL;
 }
 
@@ -104,6 +109,11 @@ String getCDKey(AudioCDReader* reader) {
   int c = reader->getCDDBId();
   return (c == 0x2000001 || r == 0) ? String("") :
     (String::toHexString(c) + "-" + String::toHexString(r)).toUpperCase();
+}
+
+void CDReader::translateAll() {
+  NO_AVAILBLE.translate();
+  TRIED_TO_READ.translate();
 }
 
 }  // namespace cd

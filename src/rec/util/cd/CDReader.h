@@ -38,7 +38,11 @@ int getAudioTrackIndex(const AudioCDReader& reader, int track);
 // ID, and then a hash of the track lengths of all the tracks.
 String getCDKey(AudioCDReader* reader);
 
-}  // namespace cd
+struct CDReader {
+  static void translateAll();
+};
+
+}  // Namespace cd
 }  // namespace util
 }  // namespace rec
 
