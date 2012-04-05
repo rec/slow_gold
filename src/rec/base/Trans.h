@@ -20,9 +20,10 @@ class Trans {
   }
 
   Trans(const char* o) : original_(o) {}
+  Trans(const String& o) : original_(o) {}
 
  private:
-  const char* const original_;
+  const String original_;
   mutable ptr<String> translated_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Trans);

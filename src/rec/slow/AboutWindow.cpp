@@ -1,5 +1,6 @@
 #include "rec/slow/AboutWindow.h"
 
+#include "rec/base/Trans.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/SlowWindow.h"
@@ -13,6 +14,17 @@ namespace {
 // Skin
 // TRANS
 
+Trans DISPLAY_ON_STARTUP("Display this window on startup");
+Trans DRAG_AUDIO("Drag audio files onto the waveform.");
+Trans CD_AUTOMATIC("CDs will automatically appear in the top-left when you "
+                   "insert them.");
+Trans PRESS_SPACE("Press the space bar to start and stop playback.");
+Trans DRAG_SPEED("Drag the Speed slider to slow down or speed up.");
+Trans CREATE_LOOPS("Create loop points by pressing the L key.");
+Trans DOWNLOAD_MANUAL("Download the manual from the Help menu for many more "
+                      "commands.");
+Trans COPYRIGHT(String(CharPointer_UTF8("Copyright © %d")));
+
 using namespace juce;
 
 const int WIDTH = 650;
@@ -22,20 +34,12 @@ const int OFFSET = 150;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
 
-static const String LEFT_STRING =
-  "* Drag audio files onto the waveform.\n"
-  "* CDs will automatically appear in the top-left when you insert them.\n"
-  "* Press the space bar to start and stop playback.\n"
-  "* Drag the Speed slider to slow down or speed up.\n"
-  "* Create loop points by pressing the L key.\n"
-  "* Download the manual from the Help menu for many more commands.\n";
-
 }  // namespace
 
 class AboutPane : public Component {
  public:
   AboutPane(const String& name, const String& versionNumber)
-      : displayOnStartup_(trans("Display this window on startup"),
+      : displayOnStartup_(DISPLAY_ON_STARTUP,
                           getTypeName<GuiSettings>(),
                           data::Address("show_about_on_startup"),
                           GLOBAL_SCOPE) {
@@ -50,16 +54,16 @@ class AboutPane : public Component {
 
     Font font("Ariel", 20, 0);
     String s =
-      trans("* Drag audio files onto the waveform.") + "\n" +
-      trans("* CDs will automatically appear in the top-left when you insert them.") + "\n" +
-      trans("* Press the space bar to start and stop playback.") + "\n" +
-      trans("* Drag the Speed slider to slow down or speed up.") + "\n" +
-      trans("* Create loop points by pressing the L key.") + "\n" +
-      trans("* Download the manual from the Help menu for many more commands.") + "\n";
+      str("* " + DRAG_AUDIO + "\n" +
+          "* " + CD_AUTOMATIC + "\n" +
+          "* " + PRESS_SPACE + "\n" +
+          "* " + DRAG_SPEED + "\n" +
+          "* " + CREATE_LOOPS + "\n" +
+          "* " + DOWNLOAD_MANUAL + "\n");
 
     left_.append(s, font);
     String t = name + " " + versionNumber + "\nWorld Wide Woodshed Software\n" +
-      trans(String(CharPointer_UTF8("Copyright © 2012\n")));
+      String::formatted(COPYRIGHT, 2012);
     right_.append(t, font);
 
     addAndMakeVisible(&displayOnStartup_);
@@ -118,6 +122,17 @@ AboutWindow::~AboutWindow() {}
 void AboutWindow::mouseDown(const MouseEvent&) {
   if (window())
     thread::callAsync(window(), &SlowWindow::stopAboutWindow);
+}
+
+void AboutWindow::translateAll() {
+  DISPLAY_ON_STARTUP.translate();
+  DRAG_AUDIO.translate();
+  CD_AUTOMATIC.translate();
+  PRESS_SPACE.translate();
+  DRAG_SPEED.translate();
+  CREATE_LOOPS.translate();
+  DOWNLOAD_MANUAL.translate();
+  COPYRIGHT.translate();
 }
 
 }  // namespace slow

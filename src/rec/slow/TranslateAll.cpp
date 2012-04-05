@@ -10,6 +10,7 @@
 #include "rec/command/map/MidiName.h"
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/music/CreateMusicFileReader.h"
+#include "rec/slow/AboutWindow.h"
 
 namespace rec {
 namespace slow {
@@ -26,6 +27,7 @@ void translateAll() {
   command::MidiName::translateAll();
   gui::audio::SetupPage::translateAll();
   music::MusicFileReader::translateAll();
+  AboutWindow::translateAll();
 }
 
 }  // namespace slow
