@@ -11,6 +11,7 @@
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/AboutWindow.h"
+#include "rec/slow/callbacks/GlobalCallbacks.h"
 
 namespace rec {
 namespace slow {
@@ -28,6 +29,7 @@ void translateAll() {
   gui::audio::SetupPage::translateAll();
   music::MusicFileReader::translateAll();
   AboutWindow::translateAll();
+  GlobalCallbacks::translateAll();
 }
 
 }  // namespace slow

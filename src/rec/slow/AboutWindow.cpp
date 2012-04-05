@@ -12,7 +12,6 @@ namespace slow {
 namespace {
 
 // Skin
-// TRANS
 
 Trans DISPLAY_ON_STARTUP("Display this window on startup");
 Trans DRAG_AUDIO("Drag audio files onto the waveform.");

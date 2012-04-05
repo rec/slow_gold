@@ -8,6 +8,10 @@ namespace slow {
 
 void addGlobalCallbacks(command::CommandRecordTable* t);
 
+struct GlobalCallbacks {
+  static void translateAll();
+};
+
 }  // namespace slow
 }  // namespace rec
 
