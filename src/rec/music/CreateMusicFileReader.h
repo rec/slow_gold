@@ -22,6 +22,8 @@ class MusicFileReader {
     errorDetails_ = details;
   }
 
+  static void translateAll();
+
  private:
   ptr<AudioFormatReader> reader_;
   String errorTitle_;

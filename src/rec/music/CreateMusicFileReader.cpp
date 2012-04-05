@@ -2,6 +2,7 @@
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/cd/Album.h"
 #include "rec/audio/format/Manager.h"
+#include "rec/base/Trans.h"
 #include "rec/music/Metadata.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
@@ -13,7 +14,29 @@ namespace music {
 
 namespace {
 
-// TRANS
+Trans CANT_CREATE_TRACK("Can't create track for %s.");
+Trans COULDNT_OPEN_TRACK("Couldn't Open CD Track.");
+Trans COULDNT_OPEN_TRACK_FULL("Couldn't open track on CD - perhaps you ejected it?");
+Trans ERROR_WAS("Error was");
+Trans FILE_NOT_EXIST("File Does Not Exist");
+Trans FILE_NOT_EXIST_FULL("Sorry, file %s does not exist.");
+Trans CANT_READ_M4A("We Can't Read .m4a Files On Windows");
+Trans CANT_READ_M4A_FULL("Sorry, file %s is an .m4a file and we can't yet "
+                         "read these files on Windows: "
+                         " please convert it to mp3 using iTunes.");
+
+Trans COULDNT_OPEN_FILE("Couldn't Open Your File.");
+Trans COULDNT_OPEN_FILE_FULL("Sorry, the program couldn't open your file %s.");
+Trans WRONG_FORMAT("Either it wasn't in the right format, it's corrupted, or "
+                   "the programmer made a mistake.");
+
+Trans EMPTY_FILE("Your File Was Empty.");
+Trans EMPTY_FILE_FULL("Sorry, the file you tried to open, %s "
+                      "has a length of zero.");
+
+Trans FILE_TOO_SMALL("Your File Was Too Small.");
+Trans FILE_TOO_SMALL_FULL("Sorry, the file you tried to open, %s"
+                          " has a length of less than five seconds.");
 
 const int MINIMUM_FILE_SIZE = 5 * 44100;
 
@@ -44,8 +67,8 @@ AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata)
 
 MusicFileReader::MusicFileReader(const VirtualFile& file) {
   if (file::empty(file) || !file.path_size()) {
-    errorTitle_ = trans("Can't create track for ") +
-      str(file.ShortDebugString());
+    errorTitle_ = String::formatted(CANT_CREATE_TRACK,
+                                    file.ShortDebugString().c_str());
     errorDetails_ = errorTitle_;
     LOG(DFATAL) << errorTitle_;
     return;
@@ -61,16 +84,16 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
     String error;
     reader_.reset(createCDReader(file, metadata.get(), &error));
     if (!reader_) {
-      errorTitle_ = trans("Couldn't Open CD Track.");
-      errorDetails_ = trans("Couldn't open track on CD - perhaps you ejected it?\n"
-                                "Error was: ") + error;
+      errorTitle_ = COULDNT_OPEN_TRACK;
+      errorDetails_ = str(COULDNT_OPEN_TRACK_FULL + "\n" + ERROR_WAS + ": "
+                          + error);
     }
   } else {
     File f = getRealFile(file);
     if (!f.existsAsFile()) {
-      errorTitle_ = trans("File Does Not Exist");
+      errorTitle_ = FILE_NOT_EXIST;
       errorDetails_ = String::formatted(
-          trans("Sorry, file %s does not exist."),
+          FILE_NOT_EXIST_FULL,
           c_str(file::getFullDisplayName(file)));
     } else {
       reader_.reset(createFileReader(file, metadata.get()));
@@ -78,18 +101,17 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
       if (!reader) {
 #if JUCE_WINDOWS
         if (f.getFileExtension() == ".m4a") {
-          errorTitle_ = trans("We Can't Read .m4a Files On Windows");
-          errorDetails_ = trans("Sorry, file ") +
-            file::getFullDisplayName(file) +
-            trans(" is an .m4a file and we can't yet read these files on Windows: "
-                      " please convert it to mp3 using iTunes.");
+          errorTitle_ = CANT_READ_M4A;
+          errorDetails_ = String::formatted(
+              CANT_READ_M4A_FULL,
+              c_str(file::getFullDisplayName(file)));
         } else {
 #endif
-          errorTitle_ = trans("Couldn't Open Your File.");
-          errorDetails_ = trans("Sorry, the program couldn't open your file ") +
-            file::getFullDisplayName(file) +
-            trans(".\nEither it wasn't in the right format, it's corrupted, or "
-                      "the programmer made a mistake.");
+          errorTitle_ = COULDNT_OPEN_FILE;
+          errorDetails_ = String::formatted(
+              COULDNT_OPEN_FILE_FULL,
+              c_str(file::getFullDisplayName(file))) + "\n" + WRONG_FORMAT;
+
 #if JUCE_WINDOWS
         }
 #endif
@@ -100,16 +122,14 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
   if (reader_) {
     int64 length = reader_->lengthInSamples;
     if (!length) {
-      errorTitle_ = trans("Your File Was Empty.");
-      errorDetails_ = trans("Sorry, the file you tried to open, ") +
-        file::getFullDisplayName(file) +
-        trans(" has a length of zero.");
+      errorTitle_ = EMPTY_FILE;
+      errorDetails_ = String::formatted(EMPTY_FILE_FULL,
+                                        c_str(file::getFullDisplayName(file)));
       reader_.reset();
     } else if (length < MINIMUM_FILE_SIZE) {
-      errorTitle_ = trans("Your File Was Too Small.");
-      errorDetails_ = trans("Sorry, the file you tried to open, ") +
-        file::getFullDisplayName(file) +
-        trans(" has a length of less than five seconds.");
+      errorTitle_ = FILE_TOO_SMALL;
+      errorDetails_ = String::formatted(FILE_TOO_SMALL_FULL,
+                                        c_str(file::getFullDisplayName(file)));
       reader_.reset();
     }
   }
@@ -118,6 +138,23 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
     data::setWithData(d, *metadata, CANT_UNDO);
 }
 
+void MusicFileReader::translateAll() {
+  CANT_CREATE_TRACK.translate();
+  COULDNT_OPEN_TRACK.translate();
+  COULDNT_OPEN_TRACK_FULL.translate();
+  ERROR_WAS.translate();
+  FILE_NOT_EXIST.translate();
+  FILE_NOT_EXIST_FULL.translate();
+  CANT_READ_M4A.translate();
+  CANT_READ_M4A_FULL.translate();
+  COULDNT_OPEN_FILE.translate();
+  COULDNT_OPEN_FILE_FULL.translate();
+  WRONG_FORMAT.translate();
+  EMPTY_FILE.translate();
+  EMPTY_FILE_FULL.translate();
+  FILE_TOO_SMALL.translate();
+  FILE_TOO_SMALL_FULL.translate();
+}
 
 }  // namespace music
 }  // namespace rec
