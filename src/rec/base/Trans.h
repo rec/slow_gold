@@ -19,10 +19,20 @@ class Trans {
     translated_.reset(new String(trans(original_)));
   }
 
-  Trans(const char* o) : original_(o) {}
-  Trans(const String& o) : original_(o) {}
+  Trans(const char* o) : original_(o) { check(); }
+  Trans(const String& o) : original_(o) { check(); }
 
  private:
+  void check() {
+    const String& s = original_;
+    DCHECK_GT(s.length(), 0);
+    DCHECK(!s.containsChar('\n')) << str(s);
+    DCHECK(!s.containsChar('\r')) << str(s);
+    DCHECK(!s.containsChar('\t')) << str(s);
+    DCHECK(!isspace(s[0])) << str(s);
+    DCHECK(!isspace(s[s.length() - 1])) << str(s);
+  }
+
   const String original_;
   mutable ptr<String> translated_;
 

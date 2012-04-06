@@ -1,4 +1,6 @@
 #include "rec/widget/tree/TreeViewDropAll.h"
+
+#include "rec/base/Trans.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/Value.h"
 #include "rec/data/yaml/Yaml.h"
@@ -9,7 +11,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-// TRANS
+namespace {
+}  // namespace
 
 TreeViewDropAll::TreeViewDropAll(MenuBarModel* m) {
   setName("Tree");
@@ -98,6 +101,9 @@ bool TreeViewDropAll::paste(const string& s) {
 }
 
 #endif
+
+void TreeViewDropAll::translateAll() {
+}
 
 }  // namespace tree
 }  // namespace widget

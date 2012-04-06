@@ -14,6 +14,7 @@
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/widget/tree/CD.h"
+#include "rec/widget/tree/TreeViewDropAll.h"
 
 namespace rec {
 namespace slow {
@@ -33,6 +34,7 @@ void translateAll() {
   AboutWindow::translateAll();
   GlobalCallbacks::translateAll();
   widget::tree::CD::translateAll();
+  widget::tree::TreeViewDropAll::translateAll();
 }
 
 }  // namespace slow

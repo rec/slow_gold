@@ -18,7 +18,7 @@ TranslationSet* translations() {
 }
 
 void addTranslation(const String& s) {
-  translations()->insert(str(s.replace ("\n", "\\n")));
+  translations()->insert(str(s));
 }
 
 }  // namespace
@@ -26,7 +26,9 @@ void addTranslation(const String& s) {
 void dumpTranslations() {
   DLOG(INFO) << "Dumping translations " << translations()->size();
   const TranslationSet& t = *translations();
-  juce::FileOutputStream output(File("/tmp/translations.txt"));
+  File file("/tmp/translations.txt");
+  file.deleteFile();
+  juce::FileOutputStream output(file);
   for (TranslationSet::const_iterator i = t.begin(); i != t.end(); ++i) {
     output.write(i->c_str(), i->size());
     output.writeByte('\n');

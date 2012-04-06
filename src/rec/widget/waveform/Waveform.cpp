@@ -60,14 +60,14 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
   setTooltip(
-      trans("Waveform Window:"
-                "You can drag files from your desktop or your music player here. "
-                "If your mouse has a wheel, use it to zoom the waveform."));
+      trans("Waveform Window: "
+            "You can drag files from your desktop or your music player here. "
+            "If your mouse has a wheel, use it to zoom the waveform."));
 
   timeCursor_.reset(new Cursor(*timeCursor, this, 0, 0, true));
   timeCursor_->setTooltip(trans("Playback Time Cursor: This follows the "
-                                    "current time during playback. You can also drag it "
-                                    "around to set the current playback time."));
+                                "current time during playback. You can also drag it "
+                                "around to set the current playback time."));
   timeCursor_->startListening();
   setOpaque(true);
   setBufferedToImage(true);

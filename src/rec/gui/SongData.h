@@ -29,7 +29,7 @@ class SongData : public SetterTextArea,
         trans("Album Name: The name of the album this track is from."));
     add(trans("Artist"), typeName,
         Address("artist"),
-        trans("Artist Name: The artist or musician who made this specific track"));
+        trans("Artist Name: The artist or musician who made this specific track."));
     add(trans("Number"), typeName,
         Address("track_number"),
         trans("Track Number: The album track number for this track"));

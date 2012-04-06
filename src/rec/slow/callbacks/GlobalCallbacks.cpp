@@ -11,15 +11,13 @@ namespace slow {
 
 namespace {
 
-// TRANS
-
 // TODO: this is duplicated in DownloadVersion
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const String MANUAL = "SlowGoldManual.pdf";
 const String FULL_MANUAL = WOODSHED + MANUAL;
 
 Trans CANT_LOAD("Sorry, couldn't load the SlowGold 8 user manual");
-Trans AT(" at ");
+Trans AT("at");
 Trans PLEASE_CONTACT("Please contact World Wide Woodshed support.");
 Trans CLICK_TO_CONTINUE("Click to continue");
 
@@ -31,7 +29,7 @@ void openManual() {
     AlertWindow::showMessageBox(
         AlertWindow::WarningIcon,
         CANT_LOAD,
-        CANT_LOAD + String(AT) + WOODSHED + "\n" +
+        CANT_LOAD + String(" ") + String(AT) + String(" ") + WOODSHED + "\n" +
         PLEASE_CONTACT,
         CLICK_TO_CONTINUE);
   }
