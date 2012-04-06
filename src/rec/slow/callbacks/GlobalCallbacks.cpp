@@ -19,7 +19,7 @@ const String FULL_MANUAL = WOODSHED + MANUAL;
 Trans CANT_LOAD("Sorry, couldn't load the SlowGold 8 user manual");
 Trans AT("at");
 Trans PLEASE_CONTACT("Please contact World Wide Woodshed support.");
-Trans CLICK_TO_CONTINUE("Click to continue");
+Trans CLICK_TO_CONTINUE("Click to continue.");
 
 using juce::AlertWindow;
 
