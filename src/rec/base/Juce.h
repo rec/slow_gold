@@ -146,6 +146,12 @@ inline String trans(const String& s) {
   return ::juce::translate(s);
 }
 
+#if 0
+inline String trans(const String& s, const String& hint) {
+  return ::juce::translate(s);
+}
+#endif
+
 #endif
 
 }  // namespace rec

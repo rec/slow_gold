@@ -81,12 +81,12 @@ class CommandDatabase {
     static const char* CAP[] = {" First", " Previous", " Current", " Next",
                                 " Last"};
 
-    const String menu = trans(command.desc().menu_size() ?
+    const String menu = Trans(command.desc().menu_size() ?
                                   str(command.desc().menu(0)) : String());
-    const String full = trans(str(command.desc().full()));
+    const String full = Trans(str(command.desc().full()));
 
     for (int i = 1; i < command.desc().menu_size(); ++i)
-      trans(str(command.desc().menu(i)));
+      Trans(str(command.desc().menu(i)));
 
     CommandID type = command.type();
     CommandID c = Command::BANK_SIZE * type;

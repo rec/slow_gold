@@ -19,12 +19,23 @@ class Trans {
     translated_.reset(new String(trans(original_)));
   }
 
-  Trans(const char* o) : original_(o) { check(); }
-  Trans(const String& o) : original_(o) { check(); }
+  Trans(const char* o) : original_(CharPointer_UTF8(o)) {
+    check(original_);
+  }
+
+  Trans(const String& s) : original_(s) {
+    check(original_);
+  }
+
+  Trans(const char* o, const char* h)
+      : original_(CharPointer_UTF8(o)),
+        hint_(CharPointer_UTF8(h)) {
+    check(original_);
+    check(hint_);
+  }
 
  private:
-  void check() {
-    const String& s = original_;
+  void check(const String& s) {
     DCHECK_GT(s.length(), 0);
     DCHECK(!s.containsChar('\n')) << str(s);
     DCHECK(!s.containsChar('\r')) << str(s);
@@ -34,6 +45,8 @@ class Trans {
   }
 
   const String original_;
+  const String hint_;
+
   mutable ptr<String> translated_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Trans);

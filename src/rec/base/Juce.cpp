@@ -10,6 +10,7 @@ namespace rec {
 
 namespace {
 
+// typedef std::pair<string>
 typedef std::set<string> TranslationSet;
 
 TranslationSet* translations() {
@@ -25,6 +26,7 @@ void addTranslation(const String& s) {
 
 void dumpTranslations() {
   DLOG(INFO) << "Dumping translations " << translations()->size();
+
   const TranslationSet& t = *translations();
   File file("/tmp/translations.txt");
   file.deleteFile();

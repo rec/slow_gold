@@ -27,7 +27,6 @@ def ReadLocalized(input):
 
   return result
 
-
 LANGUAGE_DATA = {
   'fr': 'French fr be mc ch lu',
   'de': 'German de at ch lu li na pl',

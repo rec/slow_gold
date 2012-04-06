@@ -22,7 +22,7 @@ Trans DRAG_SPEED("Drag the Speed slider to slow down or speed up.");
 Trans CREATE_LOOPS("Create loop points by pressing the L key.");
 Trans DOWNLOAD_MANUAL("Download the manual from the Help menu for many more "
                       "commands.");
-Trans COPYRIGHT(String(CharPointer_UTF8("Copyright © %d")));
+Trans COPYRIGHT("Copyright © %d");
 
 using namespace juce;
 
