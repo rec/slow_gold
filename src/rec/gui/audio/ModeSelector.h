@@ -23,7 +23,7 @@ class ModeSelector : public Layout,
   virtual bool isOpaque() const { return true; }
 
   virtual void operator()(const Mode&);
-  DrawableButton* getButton(const Mode::Action&);
+  DrawableButton* getButton(Mode::Action);
 
   typedef std::map<Mode::Action, DrawableButton*> ButtonMap;
   ButtonMap* buttonMap() { return &buttons_; }
@@ -31,6 +31,8 @@ class ModeSelector : public Layout,
   virtual juce::Point<int> getMinSize() const { return minSize_; }
 
  private:
+  void setMode(Mode::Action);
+
   CriticalSection lock_;
 
   DrawableButton drag_;

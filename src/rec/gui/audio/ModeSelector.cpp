@@ -10,6 +10,7 @@
 #include "rec/gui/icon/SetTimeModeDisabled.svg.h"
 #include "rec/gui/icon/ZoomMode.svg.h"
 #include "rec/gui/icon/ZoomModeDisabled.svg.h"
+#include "rec/util/thread/CallAsync.h"
 
 using namespace juce;
 
@@ -69,7 +70,7 @@ ModeSelector::ModeSelector()
   setBounds(0, 0, minSize_.getX(), minSize_.getY());
 }
 
-DrawableButton* ModeSelector::getButton(const Mode::Action& action) {
+DrawableButton* ModeSelector::getButton(Mode::Action action) {
   ButtonMap::iterator i = buttons_.find(action);
   return (i == buttons_.end()) ? NULL : i->second;
 }
@@ -79,8 +80,10 @@ void ModeSelector::operator()(const Mode& mode) {
     Lock l(lock_);
     mode_ = mode;
   }
-  const Mode::Action action = mode.click();
-  MessageManagerLock l;
+  thread::callAsync(this, &ModeSelector::setMode, mode.click());
+}
+
+void ModeSelector::setMode(Mode::Action action) {
   for (ButtonMap::iterator i = buttons_.begin(); i != buttons_.end(); ++i)
     i->second->setToggleState(i->first == action, false);
 }

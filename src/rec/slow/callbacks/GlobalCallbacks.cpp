@@ -26,9 +26,10 @@ Trans CANT_SUPPORT_FULL("Sorry, we were unable to create a support request.");
 Trans CLICK_TO_CONTINUE("Click to continue.");
 Trans MAIL_ATTACH("Please attach the file on your desktop named %s to this "
                   "email and send it to us!");
-Trans MAIL_CREATED("A Support Request file named %s "
+Trans MAIL_CREATED("A Support Request file named \"%s\" "
                    "was created on your desktop.");
-Trans MAIL_SUBJECT("Support Request %s");
+Trans MAIL_DISCARD("You can throw the file away once your email is sent.");
+Trans MAIL_SUBJECT("Support Request: %s");
 Trans PLEASE_CONTACT("Please contact World Wide Woodshed support at");
 Trans PLEASE_MAIL("Please mail the file to %s and then you can throw it away.");
 Trans SUPPORTED("A Support Request Was Created On Your Desktop");
@@ -80,7 +81,8 @@ void requestSupport() {
           String::formatted(MAIL_CREATED, c_str(fn)) + "\n\n" +
           String::formatted(PLEASE_MAIL, c_str(SUPPORT)));
     String subject = String::formatted(MAIL_SUBJECT, c_str(key));
-    String body = String::formatted(MAIL_ATTACH, c_str(fn));
+    String body = String::formatted(MAIL_ATTACH, c_str(fn)) + String("\n\n") +
+      MAIL_DISCARD;
     MAILTO.withParameter("subject", subject).withParameter("body", body).
       launchInDefaultBrowser();
   }
@@ -110,6 +112,7 @@ void GlobalCallbacks::translateAll() {
   CLICK_TO_CONTINUE.translate();
   MAIL_ATTACH.translate();
   MAIL_CREATED.translate();
+  MAIL_DISCARD.translate();
   MAIL_SUBJECT.translate();
   PLEASE_CONTACT.translate();
   PLEASE_MAIL.translate();
