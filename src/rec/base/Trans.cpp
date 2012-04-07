@@ -2,11 +2,11 @@
 
 #include "rec/base/base.h"
 
-#ifdef DEBUG
-
 namespace rec {
 
 using namespace juce;
+
+#ifdef DEBUG
 
 namespace {
 
@@ -48,6 +48,8 @@ void Trans::dumpAll() {
   }
 }
 
+#endif  // DEBUG
+
 void Trans::translate() const {
   translated_.reset(new String(::juce::translate(original_)));
 #ifdef DEBUG
@@ -57,4 +59,3 @@ void Trans::translate() const {
 
 }  // namespace rec
 
-#endif  // DEBUG
