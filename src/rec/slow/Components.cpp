@@ -4,8 +4,9 @@
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
-#include "rec/gui/audio/TransformController.h"
+#include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/audio/TimeController.h"
+#include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Instance.h"
@@ -13,9 +14,9 @@
 #include "rec/slow/Menus.h"
 #include "rec/slow/Target.h"
 #include "rec/util/Cuttable.h"
+#include "rec/util/thread/CallAsync.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
-#include "rec/gui/audio/ModeSelector.h"
 
 namespace rec {
 namespace slow {
@@ -62,8 +63,10 @@ void Components::startListening() {
 }
 
 void Components::setEnabled(bool enabled) {
-  MessageManagerLock l;
+  thread::callAsync(this, &Components::doSetEnabled, enabled);
+}
 
+void Components::doSetEnabled(bool enabled) {
   timeController_->setEnabled(enabled);
   loops_->setEnabled(enabled);
   songData_->setEnabled(enabled);

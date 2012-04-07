@@ -5,6 +5,7 @@
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/SlowWindow.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace slow {
@@ -59,9 +60,8 @@ void GuiListener::update() {
 
   if (comp != lastComponent_) {
     lastComponent_ = comp;
-    MessageManagerLock l;
     String s = getTooltip(comp);
-    components()->mainPage_->setTooltip(s);
+    thread::callAsync(components()->mainPage_.get(), &MainPage::setTooltip, s);
   }
 }
 

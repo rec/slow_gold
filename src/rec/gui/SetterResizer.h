@@ -33,6 +33,8 @@ class SetterResizer : public StretchableLayoutResizerBar,
   uint32 get() const;
 
  private:
+  void doSetValue(data::Value&);
+
   Layout* const layout_;
   const int index_;
   const uint32 minValue_;

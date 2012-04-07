@@ -3,6 +3,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/Value.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
@@ -46,8 +47,11 @@ void SetterResizer::paint(Graphics& g) {
 }
 
 void SetterResizer::operator()(const data::Value& v) {
+  thread::callAsync(this, &SetterResizer::doSetValue, v);
+}
+
+void SetterResizer::doSetValue(data::Value& v) {
   uint32 coord = v.uint32_f();
-  MessageManagerLock l;
   if (coord >= minValue_ && coord != get()) {
     if (layout_->orientation() == VERTICAL)
       setTopLeftPosition(getX(), coord);
