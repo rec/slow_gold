@@ -21,7 +21,7 @@ TextComponent::TextComponent(const Text& desc)
       length_(0) {
   setJustificationType(Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
-  setTooltip(trans("Time Display: Shows the current playback time in minutes, "
+  setTooltip(Trans("Time Display: Shows the current playback time in minutes, "
                        "seconds and millseconds."));
 }
 

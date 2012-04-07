@@ -71,6 +71,7 @@ enum Command_Type {
   Command_Type_OPEN_MANUAL = 65,
   Command_Type_RECENT_FILES = 22,
   Command_Type_REDO = 23,
+  Command_Type_REQUEST_SUPPORT = 66,
   Command_Type_RESET_GAIN_TO_UNITY = 24,
   Command_Type_SELECT = 25,
   Command_Type_SELECT_ONLY = 26,
@@ -105,7 +106,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 65,
+  Command_Type_LAST_TYPE = 66,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -339,6 +340,7 @@ class Command : public ::google::protobuf::Message {
   static const Type OPEN_MANUAL = Command_Type_OPEN_MANUAL;
   static const Type RECENT_FILES = Command_Type_RECENT_FILES;
   static const Type REDO = Command_Type_REDO;
+  static const Type REQUEST_SUPPORT = Command_Type_REQUEST_SUPPORT;
   static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;
   static const Type SELECT = Command_Type_SELECT;
   static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;

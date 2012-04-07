@@ -104,23 +104,21 @@ void protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
-  ::rec::audio::source::protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto();
   ::rec::util::file::protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026rec/widget/Panes.proto\022\017rec.widget.pan"
-    "e\032\027rec/widget/Widget.proto\032\034rec/audio/so"
-    "urce/Runny.proto\032\037rec/util/file/VirtualF"
-    "ile.proto\"\301\002\n\nNavigation\022\"\n\006widget\030\001 \001(\013"
-    "2\022.rec.widget.Widget\022(\n\004file\030\002 \001(\0132\032.rec"
-    ".util.file.VirtualFile\022,\n\003tab\030\003 \001(\0162\037.re"
-    "c.widget.pane.Navigation.Tab\022<\n\013orientat"
-    "ion\030\004 \001(\0162\'.rec.widget.pane.Navigation.O"
-    "rientation\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n\002CD\020\002\022\007\n\003U"
-    "RL\020\003\"W\n\013Orientation\022\017\n\013TABS_AT_TOP\020\000\022\022\n\016"
-    "TABS_AT_BOTTOM\020\001\022\020\n\014TABS_AT_LEFT\020\002\022\021\n\rTA"
-    "BS_AT_RIGHT\020\003\"Y\n\tDirectory\022\"\n\006widget\030\001 \001"
-    "(\0132\022.rec.widget.Widget\022(\n\004file\030\002 \001(\0132\032.r"
-    "ec.util.file.VirtualFile", 544);
+    "e\032\027rec/widget/Widget.proto\032\037rec/util/fil"
+    "e/VirtualFile.proto\"\301\002\n\nNavigation\022\"\n\006wi"
+    "dget\030\001 \001(\0132\022.rec.widget.Widget\022(\n\004file\030\002"
+    " \001(\0132\032.rec.util.file.VirtualFile\022,\n\003tab\030"
+    "\003 \001(\0162\037.rec.widget.pane.Navigation.Tab\022<"
+    "\n\013orientation\030\004 \001(\0162\'.rec.widget.pane.Na"
+    "vigation.Orientation\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n"
+    "\002CD\020\002\022\007\n\003URL\020\003\"W\n\013Orientation\022\017\n\013TABS_AT"
+    "_TOP\020\000\022\022\n\016TABS_AT_BOTTOM\020\001\022\020\n\014TABS_AT_LE"
+    "FT\020\002\022\021\n\rTABS_AT_RIGHT\020\003\"Y\n\tDirectory\022\"\n\006"
+    "widget\030\001 \001(\0132\022.rec.widget.Widget\022(\n\004file"
+    "\030\002 \001(\0132\032.rec.util.file.VirtualFile", 514);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/Panes.proto", &protobuf_RegisterTypes);
   Navigation::default_instance_ = new Navigation();

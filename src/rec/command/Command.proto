@@ -52,6 +52,7 @@ message Command {
 
     RECENT_FILES = 22;
     REDO = 23;
+    REQUEST_SUPPORT = 66;
     RESET_GAIN_TO_UNITY = 24;
 
     SELECT = 25;
@@ -92,7 +93,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 65;
+    LAST_TYPE = 66;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

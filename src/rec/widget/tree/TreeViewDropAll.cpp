@@ -29,7 +29,7 @@ void TreeViewDropAll::paint(Graphics& g) {
 
   if (isTreeDrop(this)) {
     static const int HEIGHT = 10;
-    g.drawFittedText(trans("This is your bookmarks area!  Drop directories and "),
+    g.drawFittedText(Trans("This is your bookmarks area!  Drop directories and "),
                      0, 0, getWidth(), getHeight() - HEIGHT,
                      juce::Justification::centred, 0);
 

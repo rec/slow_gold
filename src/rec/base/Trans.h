@@ -15,9 +15,7 @@ class Trans {
     return *translated_;
   }
 
-  void translate() const {
-    translated_.reset(new String(trans(original_)));
-  }
+  void translate() const;
 
   Trans(const char* o) : original_(CharPointer_UTF8(o)) {
     check(original_);
@@ -33,6 +31,10 @@ class Trans {
     check(original_);
     check(hint_);
   }
+
+#ifdef DEBUG
+  static void dumpAll();
+#endif
 
  private:
   void check(const String& s) {

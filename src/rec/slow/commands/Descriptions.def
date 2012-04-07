@@ -281,13 +281,6 @@ command {
   }
 }
 command {
-  type: RESET_GAIN_TO_UNITY
-  desc {
-    menu: "Reset Volume"
-    full: "Reset volume to 0 dB"
-  }
-}
-command {
   type: TOGGLE_WHOLE_SONG_LOOP
   desc {
     menu: "Loop This Segment"
@@ -299,6 +292,20 @@ command {
   desc {
     menu: "Toggle Start/Stop"
     full: "Start or pause"
+  }
+}
+command {
+  type: RESET_GAIN_TO_UNITY
+  desc {
+    menu: "Reset Volume"
+    full: "Reset volume to 0 dB"
+  }
+}
+command {
+  type: REQUEST_SUPPORT
+  desc {
+    menu: "Request Technical Support"
+    full: "Make a request for technical support to World Wide Woodshed."
   }
 }
 command {

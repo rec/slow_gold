@@ -29,7 +29,7 @@ void BasicMenuMaker::addFileMenu() {
   for (uint i = 0; i < recent.size(); ++i)
     addRepeat(Command::RECENT_FILES, i, str(recent[i]), true, &submenu);
 
-  menu_.addSubMenu(trans("Open recent"), submenu);
+  menu_.addSubMenu(Trans("Open recent"), submenu);
 
 #if !JUCE_MAC
   add(Command::ABOUT_THIS_PROGRAM);
@@ -66,15 +66,15 @@ void BasicMenuMaker::addSelectMenu() {
 
   switch (isWholeSong_.isWholeSong()) {
    case IsWholeSong::ONE_SEGMENT:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP, trans("Loop Entire Track"));
+    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"));
     break;
 
    case IsWholeSong::WHOLE_SONG:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP, trans("Loop This Segment"));
+    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop This Segment"));
     break;
 
    case IsWholeSong::SONG_IS_ONE_SEGMENT:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP, trans("Loop Entire Track"), false);
+    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), false);
     break;
   }
   add(Command::ZOOM_TO_SELECTION);
@@ -88,38 +88,39 @@ void BasicMenuMaker::addTransportMenu() {
 
 void BasicMenuMaker::addHelpMenu() {
   add(Command::OPEN_MANUAL);
+  add(Command::REQUEST_SUPPORT);
 }
 
 const StringArray BasicMenuMaker::getMenuBarNames() const {
   StringArray res;
 
-  res.add(trans("File"));
-  res.add(trans("Edit"));
-  res.add(trans("Audio"));
-  res.add(trans("Transport"));
-  res.add(trans("Select"));
-  res.add(trans("Help"));
+  res.add(Trans("File"));
+  res.add(Trans("Edit"));
+  res.add(Trans("Audio"));
+  res.add(Trans("Transport"));
+  res.add(Trans("Select"));
+  res.add(Trans("Help"));
 
   return res;
 }
 
 bool BasicMenuMaker::addMenu(const String& menuName) {
-  if (menuName == trans("File"))
+  if (menuName == Trans("File"))
     addFileMenu();
 
-  else if (menuName == trans("Edit"))
+  else if (menuName == Trans("Edit"))
     addEditMenu();
 
-  else if (menuName == trans("Audio"))
+  else if (menuName == Trans("Audio"))
     addAudioMenu();
 
-  else if (menuName == trans("Select"))
+  else if (menuName == Trans("Select"))
     addSelectMenu();
 
-  else if (menuName == trans("Transport"))
+  else if (menuName == Trans("Transport"))
     addTransportMenu();
 
-  else if (menuName == trans("Help"))
+  else if (menuName == Trans("Help"))
     addHelpMenu();
 
   else

@@ -34,6 +34,7 @@ Def<command::Commands> commands(
   "command { type: PASTE category: \"Edit\"}\n"
   "command { type: REDO category: \"Edit\"}\n"
   "command { type: RESET_GAIN_TO_UNITY category: \"Audio\"}\n"
+  "command { type: REQUEST_SUPPORT category: \"Audio\"}\n"
   "command { type: SELECT_ALL category: \"Transport\"}\n"
   "command { type: TOGGLE_START_STOP category: \"Transport\"}\n"
   "command { type: TOGGLE_WHOLE_SONG_LOOP category: \"Selection\" }\n"

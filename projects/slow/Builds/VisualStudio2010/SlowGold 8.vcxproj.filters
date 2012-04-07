@@ -568,10 +568,10 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.cpp">
       <Filter>SlowGold 8\rec\audio\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\base\Juce.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
       <Filter>SlowGold 8\rec\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp">
       <Filter>SlowGold 8\rec\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\binary\big-icon.png">
@@ -783,6 +783,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp">
       <Filter>SlowGold 8\rec\data\yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\ZipData.cpp">
+      <Filter>SlowGold 8\rec\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\CommandBar.cpp">
       <Filter>SlowGold 8\rec\gui\audio</Filter>
@@ -3005,6 +3008,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h">
       <Filter>SlowGold 8\rec\data\yaml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\ZipData.h">
+      <Filter>SlowGold 8\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\CommandBar.h">
       <Filter>SlowGold 8\rec\gui\audio</Filter>

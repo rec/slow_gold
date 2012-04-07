@@ -47,7 +47,7 @@ void SlowWindow::startListening() {
 }
 
 void SlowWindow::operator()(const music::Metadata& md) {
-  String name = trans("(no file loaded)");
+  String name = Trans("(no file loaded)");
   if (!currentFile()->empty()) {
     File file = data::DataListener<music::Metadata>::getData()->getFile();
     name = str(music::getTitle(md, file.getParentDirectory()));
@@ -115,8 +115,8 @@ void initialize(app::GenericApplication*) {
 }
 
 void shutdown(app::GenericApplication*) {
-#ifdef RECORD_TRANSLATIONS
-  dumpTranslations();
+#ifdef DEBUG
+  Trans::dumpAll();
 #endif
   data::deleteDataCenter();
 }

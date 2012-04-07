@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="kZGEodkP2" name="SlowGold 8">
+  <MAINGROUP id="qy74xLwDx" name="SlowGold 8">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -223,8 +223,6 @@
               name="disallow.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/DropDead.h" id="EeVRve1cw"
               name="DropDead.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/base/Juce.cpp" id="HDEvx0PLC"
-              name="Juce.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/Juce.h" id="pDxoHzys3" name="Juce.h"
               resource="0"/>
         <FILE compile="0" file="../../src/rec/base/port.h" id="0Ung9GDGw" name="port.h"
@@ -241,6 +239,8 @@
               name="scoped_array.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/string_piece.h" id="nJykOkINX"
               name="string_piece.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/base/Trans.cpp" id="FDG0mFPq8"
+              name="Trans.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/Trans.h" id="bAyMBSEmd"
               name="Trans.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/types.h" id="cPVXuqA6Q"
@@ -615,6 +615,10 @@
           <FILE compile="0" file="../../src/rec/data/yaml/Yaml.h" id="gsjSwC9nc"
                 name="Yaml.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/data/ZipData.cpp" id="iYCrEn7Qd"
+              name="ZipData.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/ZipData.h" id="skqdsbEUU"
+              name="ZipData.h" resource="0"/>
       </GROUP>
       <GROUP id="aP9jJhoVO" name="gui">
         <GROUP id="h5mhSdYgi" name="audio">
@@ -1461,7 +1465,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="4e4vLDOHi" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="GjLT2iFkY" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

@@ -162,8 +162,8 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\base\Juce.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDataSetter.cpp"/>
@@ -232,6 +232,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\stream.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\tag.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\ZipData.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\CommandBar.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
@@ -1629,6 +1630,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\tag.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\token.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\ZipData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\CommandBar.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\audio\Loops.h"/>

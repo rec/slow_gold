@@ -108,7 +108,7 @@ MainPage::MainPage(Components* components)
 
   // Navigation panel.
   components->directoryTree_->treeView()->setTooltip(
-      trans("CD Window:  Any CDs that you have in "
+      Trans("CD Window:  Any CDs that you have in "
                 "your computer's CD drives will appear here."));
   add(&navigationPanel_, components->directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
@@ -118,7 +118,7 @@ MainPage::MainPage(Components* components)
 
   // Playback panel.
   String helpHelp =
-    trans("Help Panel: Shows help about whatever the mouse is over.");
+    Trans("Help Panel: Shows help about whatever the mouse is over.");
   helpPanel_.setTooltip(helpHelp);
 
   helpCaption_.setTooltip(helpHelp);

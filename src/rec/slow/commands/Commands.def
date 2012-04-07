@@ -24,6 +24,7 @@ command { type: OPEN_MANUAL category: "Help"}
 command { type: PASTE category: "Edit"}
 command { type: REDO category: "Edit"}
 command { type: RESET_GAIN_TO_UNITY category: "Audio"}
+command { type: REQUEST_SUPPORT category: "Audio"}
 command { type: SELECT_ALL category: "Transport"}
 command { type: TOGGLE_START_STOP category: "Transport"}
 command { type: TOGGLE_WHOLE_SONG_LOOP category: "Selection" }

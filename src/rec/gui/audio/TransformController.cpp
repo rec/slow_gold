@@ -29,13 +29,13 @@ using rec::audio::stretch::Stretch;
 
 TransformController::TransformController()
     : Layout("TransformController", HORIZONTAL),
-      playbackSpeed_(trans("Speed"), getTypeName<Stretch>(),
+      playbackSpeed_(Trans("Speed"), getTypeName<Stretch>(),
                      Address("time_percent")),
-      pitchScale_(trans("Pitch"), getTypeName<Stretch>(),
+      pitchScale_(Trans("Pitch"), getTypeName<Stretch>(),
                   Address("semitone_shift")),
-      fineScale_(trans("Tune"), getTypeName<Stretch>(),
+      fineScale_(Trans("Tune"), getTypeName<Stretch>(),
                  Address("detune_cents")),
-      enableButton_(trans("Transform"), getTypeName<Stretch>(),
+      enableButton_(Trans("Transform"), getTypeName<Stretch>(),
                     Address("enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL) {
@@ -54,33 +54,33 @@ TransformController::TransformController()
 
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
-  stereoComboBox_.setTextWhenNothingSelected(trans("Stereo"));
-  stereoComboBox_.setTextWhenNoChoicesAvailable(trans("Stereo"));
-  stereoComboBox_.addItem(trans("Stereo"), STEREO);
-  stereoComboBox_.addItem(trans("Left"), LEFT);
-  stereoComboBox_.addItem(trans("Right"), RIGHT);
-  stereoComboBox_.addItem(trans("L + R"), LEFT_PLUS_RIGHT);
+  stereoComboBox_.setTextWhenNothingSelected(Trans("Stereo"));
+  stereoComboBox_.setTextWhenNoChoicesAvailable(Trans("Stereo"));
+  stereoComboBox_.addItem(Trans("Stereo"), STEREO);
+  stereoComboBox_.addItem(Trans("Left"), LEFT);
+  stereoComboBox_.addItem(Trans("Right"), RIGHT);
+  stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
 
   playbackSpeed_.setTooltip(
-      trans("Playback Speed Slider: "
+      Trans("Playback Speed Slider: "
             "Controls how fast the loop plays back: "
             "higher numbers mean the loop plays back faster."));
   pitchScale_.setTooltip(
-      trans("Playback Tuning Slider: "
+      Trans("Playback Tuning Slider: "
             "Coarse loop playback up and down in pitch, "
             "measured in semitones."));
   fineScale_.setTooltip(
-      trans("Playback Fine Tuning Slider: "
+      Trans("Playback Fine Tuning Slider: "
             "Fine tune loop up or down in pitch, measured in "
             "cents (1/100 of a semitone)."));
   stereoComboBox_.setTooltip(
-      trans("Stereo Processing Menu:  choose between the "
+      Trans("Stereo Processing Menu:  choose between the "
             "original stereo, just the left channel, "
             "just the right channel, "
             "or a mono mix of both channels."));
   enableButton_.setTooltip(
-      trans("Transform Enable Button: "
+      Trans("Transform Enable Button: "
             "Disable or enable all sound transformations: "
             "pitch, time and stereo processing."));
 

@@ -41,10 +41,10 @@ void AdvancedMenuMaker::addSelectMenu() {
 
   menu_.addSeparator();
 
-  addBank(Command::SELECT, trans("Select..."));
-  addBank(Command::SELECT_ONLY, trans("Select Only..."));
-  addBank(Command::TOGGLE_SELECTION, trans("Toggle..."));
-  addBank(Command::UNSELECT, trans("Unselect..."));
+  addBank(Command::SELECT, Trans("Select..."));
+  addBank(Command::SELECT_ONLY, Trans("Select Only..."));
+  addBank(Command::TOGGLE_SELECTION, Trans("Toggle..."));
+  addBank(Command::UNSELECT, Trans("Unselect..."));
 }
 
 void AdvancedMenuMaker::addTransportMenu() {
@@ -53,8 +53,8 @@ void AdvancedMenuMaker::addTransportMenu() {
 
   menu_.addSeparator();
 
-  addBank(Command::JUMP, trans("Jump To..."));
-  addBank(Command::JUMP_SELECTED, trans("Jump To Selected..."));
+  addBank(Command::JUMP, Trans("Jump To..."));
+  addBank(Command::JUMP_SELECTED, Trans("Jump To Selected..."));
 }
 
 void AdvancedMenuMaker::addDisplayMenu() {
@@ -74,13 +74,13 @@ void AdvancedMenuMaker::addDisplayMenu() {
 const StringArray AdvancedMenuMaker::getMenuBarNames() const {
   StringArray res;
 
-  res.add(trans("File"));
-  res.add(trans("Edit"));
-  res.add(trans("Audio"));
-  res.add(trans("Transport"));
-  res.add(trans("Select"));
-  res.add(trans("Display"));
-  res.add(trans("Help"));
+  res.add(Trans("File"));
+  res.add(Trans("Edit"));
+  res.add(Trans("Audio"));
+  res.add(Trans("Transport"));
+  res.add(Trans("Select"));
+  res.add(Trans("Display"));
+  res.add(Trans("Help"));
 
   return res;
 }
@@ -89,7 +89,7 @@ bool AdvancedMenuMaker::addMenu(const String& menuName) {
   if (BasicMenuMaker::addMenu(menuName))
     return true;
 
-  if (menuName == trans("Display"))
+  if (menuName == Trans("Display"))
     addDisplayMenu();
 
   else
