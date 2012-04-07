@@ -25,7 +25,8 @@ void Layout::addToLayout(Component* c, double min, double max, double pref) {
   accumulate(min, max, pref);
   layoutManager_.setItemLayout(components_.size(), min, max, pref);
   components_.push_back(c);
-  MessageManagerLock l;
+
+  MessageManagerLock l;  // TODO: is this needed?
   addAndMakeVisible(c);
 }
 

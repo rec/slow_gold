@@ -42,7 +42,7 @@ void PersistentWindow::startListening() {
 }
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-  MessageManagerLock l;
+  MessageManagerLock l;  // TODO: is this needed?
   position_ = p;
   String state = str(p.juce_position());
   thread::callAsync(this, &PersistentWindow::setWindowState, state);
@@ -63,13 +63,13 @@ void PersistentWindow::setWindowState(const String& state) {
 }
 
 void PersistentWindow::moved() {
-  MessageManagerLock l;
+  MessageManagerLock l;  // TODO: is this needed?
   DocumentWindow::moved();
   writeData();
 }
 
 void PersistentWindow::resized() {
-  MessageManagerLock l2;
+  MessageManagerLock l;  // TODO: is this needed?
   DocumentWindow::resized();
   writeData();
 }
