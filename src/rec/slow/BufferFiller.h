@@ -26,10 +26,8 @@ class Instance;
 class BufferFiller : public HasInstance {
  public:
   typedef audio::stretch::Stretch Stretch;
-  typedef music::Metadata Metadata;
-  typedef widget::waveform::ZoomProto ZoomProto;
-
   typedef audio::util::TrackBufferAndThumbnail TrackBufferAndThumbnail;
+  typedef music::Metadata Metadata;
 
   explicit BufferFiller(Instance* i);
   virtual ~BufferFiller();

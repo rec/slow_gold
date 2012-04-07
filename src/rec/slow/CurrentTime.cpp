@@ -31,31 +31,34 @@ void CurrentTime::startListening() {
 }
 
 void CurrentTime::operator()(Samples<44100> t) {
-  Lock l(lock_);
-  time_ = t;
+  ZoomProto zoom;
+  {
+    Lock l(lock_);
+    time_ = t;
 
-  if (!followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
-    return;
+    if (!followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
+      return;
 
-  zoomTime_ = t;
-  Samples<44100> end = zoom_.has_end() ? Samples<44100>(zoom_.end()) : length_;
+    zoomTime_ = t;
+    zoom = zoom_;
+  }
 
+  Samples<44100> end = zoom.has_end() ? Samples<44100>(zoom.end()) : length_;
   // Now compute an ideal zoom for this time.
-  Samples<44100> width = end - zoom_.begin();
+  Samples<44100> width = end - zoom.begin();
   Samples<44100> off = static_cast<int64>(MIN_CURSOR_RATIO_CHANGE * width);
-  if (t >= zoom_.begin() && t <= zoom_.begin() + off)
+  if (t >= zoom.begin() && t <= zoom.begin() + off)
     return;
-  ZoomProto z = zoom_;
-  z.set_begin(t - static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width));
+  zoom.set_begin(t - static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width));
 
-  if (z.begin() + width > length_)
-    z.set_begin(length_ - width);
+  if (zoom.begin() + width > length_)
+    zoom.set_begin(length_ - width);
 
-  if (z.begin() < 0)
-    z.set_begin(0);
+  if (zoom.begin() < 0)
+    zoom.set_begin(0);
 
-  z.set_end(z.begin() + width);
-  DataListener<ZoomProto>::setProto(z);
+  zoom.set_end(zoom.begin() + width);
+  DataListener<ZoomProto>::setProto(zoom);
 }
 
 void CurrentTime::operator()(const ZoomProto& zoom) {
@@ -66,25 +69,33 @@ void CurrentTime::operator()(const ZoomProto& zoom) {
 }
 
 void CurrentTime::operator()(const LoopPointList& loops) {
-  Lock l(lock_);
-  length_ = loops.length();
-  if (loops.has_length()) {
-    timeSelection_ = audio::getTimeSelection(loops);
-    if (!timeSelection_.empty()) {
-      block::BlockSet::const_iterator i = timeSelection_.begin();
-      for (; i != timeSelection_.end(); ++i) {
-        if (time_ < i->second) {
-          if (time_ < i->first)
-            jumpToTime(i->first);
-          return;
+  Samples<44100> time;
+  bool jump = true;
+  {
+    Lock l(lock_);
+    length_ = loops.length();
+    if (loops.has_length()) {
+      timeSelection_ = audio::getTimeSelection(loops);
+      if (!timeSelection_.empty()) {
+        block::BlockSet::const_iterator i = timeSelection_.begin();
+        for (; i != timeSelection_.end(); ++i) {
+          if (time_ < i->second) {
+            if (time_ < i->first)
+              time = i->first;
+            else
+              jump = false;
+            break;
+          }
         }
+        time = timeSelection_.begin()->first;
       }
-      jumpToTime(timeSelection_.begin()->first);
+    } else {
+      timeSelection_.clear();
+      time = 0;
     }
-  } else {
-    timeSelection_.clear();
-    jumpToTime(0);
   }
+  if (jump)
+    jumpToTime(time);
 }
 
 void CurrentTime::operator()(const GuiSettings& settings) {
@@ -107,7 +118,7 @@ void CurrentTime::jumpToTime(Samples<44100> pos) {
   {
     Lock l(lock_);
     if (isPlaying() &&
-        !(timeSelection_.empty() || block::contains(timeSelection(), pos))) {
+        !(timeSelection_.empty() || block::contains(timeSelection_, pos))) {
       return;
     }
 
