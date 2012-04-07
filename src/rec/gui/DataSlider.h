@@ -30,7 +30,7 @@ class DataSlider : public Layout,
     slider_.setSliderStyle(Slider::LinearHorizontal);
 
     // TODO: constants
-    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 70, 12);
+    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 16);
 
     const String& cap = caption.length() ? caption : name;
     slider_.setTooltip(tip.length() ? tip : cap);

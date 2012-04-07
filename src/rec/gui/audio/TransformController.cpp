@@ -1,4 +1,5 @@
 #include "rec/gui/audio/TransformController.h"
+#include "rec/util/thread/CallAsync.h"
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
@@ -110,7 +111,10 @@ void TransformController::startListening() {
 }
 
 void TransformController::operator()(const Stretch& s) {
-  MessageManagerLock l;
+  thread::callAsync(this, &TransformController::setStretch, s);
+}
+
+void TransformController::setStretch(const Stretch& s) {
   playbackSpeed_.setEnabled(s.enabled());
   pitchScale_.setEnabled(s.enabled());
   fineScale_.setEnabled(s.enabled());
@@ -122,8 +126,8 @@ void TransformController::operator()(const StereoProto& stereo) {
   if (stereo.type())
     sides = static_cast<Sides>(2 + stereo.side());
 
-  MessageManagerLock l;
-  stereoComboBox_.setSelectedId(sides, true);
+  thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
+                    sides, true);
 }
 
 void TransformController::comboBoxChanged(juce::ComboBox* box) {

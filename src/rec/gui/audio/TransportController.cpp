@@ -27,7 +27,6 @@ namespace audio {
 namespace {
 
 const int ICON_SIZE = 40;
-const int SLIDER_HEIGHT = 18;
 const int MUTE_BUTTON_SIZE = 45;
 
 }  // namespace
@@ -82,13 +81,13 @@ TransportController::TransportController(TimeController* timeController)
   addToLayout(&levelMeter_, 20);
 
   startStopButton_.setTooltip(Trans("Start/Stop Button: "
-                                        "Toggle between pause and play."));
+                                    "Toggle between pause and play."));
   jumpForwardButton_.setTooltip(Trans("Jump Forward Button: "
-                                          "Jump to the start of the next segment."));
+                                      "Jump to the start of the next segment."));
   jumpBackButton_.setTooltip(Trans("Jump Back Button: "
-                                       "Jump to the start of the next segment."));
+                                   "Jump to the start of the next segment."));
   jumpToStartButton_.setTooltip(Trans("Jump To Start Button: "
-                                          "Jump to the start of the track."));
+                                      "Jump to the start of the track."));
   levelMeter_.setTooltip(Trans("Level Meter: Display the sound intensity, in RMS dB."));
   level_.setTooltip(Trans("Level Slider: Raise or lower the sound intensity, in dB."));
   muteButton_.setTooltip(Trans("Mute Button: Mute or unmute the sound."));

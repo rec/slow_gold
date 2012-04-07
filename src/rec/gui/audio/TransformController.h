@@ -31,6 +31,8 @@ class TransformController : public Layout,
   virtual void comboBoxChanged(juce::ComboBox*);
 
  private:
+  void setStretch(const rec::audio::stretch::Stretch&);
+
   DataSlider playbackSpeed_;
   DataSlider pitchScale_;
   DataSlider fineScale_;
