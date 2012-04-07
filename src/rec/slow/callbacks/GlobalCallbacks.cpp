@@ -12,6 +12,8 @@ namespace slow {
 
 namespace {
 
+using namespace juce;
+
 // TODO: this is duplicated in DownloadVersion
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const String MANUAL = "SlowGoldManual.pdf";
@@ -22,21 +24,40 @@ Trans CANT_LOAD_FULL("Sorry, couldn't load the SlowGold 8 user manual at");
 Trans CANT_SUPPORT("Couldn't Create A Support Request");
 Trans CANT_SUPPORT_FULL("Sorry, we were unable to create a support request.");
 Trans CLICK_TO_CONTINUE("Click to continue.");
+Trans MAIL_ATTACH("Please attach the file on your desktop named %s to this "
+                  "email and send it to us!");
+Trans MAIL_CREATED("A Support Request file named %s "
+                   "was created on your desktop.");
+Trans MAIL_SUBJECT("Support Request %s");
 Trans PLEASE_CONTACT("Please contact World Wide Woodshed support at");
 Trans PLEASE_MAIL("Please mail the file to %s and then you can throw it away.");
 Trans SUPPORTED("A Support Request Was Created On Your Desktop");
-Trans SUPPORT_FULL("A Support Request file named %s "
-                   "was created on your desktop.");
 
 const String SUPPORT = "support@worldwidewoodshed.com";
-const String MAILTO = "mailto:support%40worldwidewoodshed.com"
-  "?subject=Support%20Request%3A";
+const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
 
 using juce::AlertWindow;
 
 void alert(const String& title, const String& msg) {
   AlertWindow::showMessageBox(AlertWindow::WarningIcon, title, msg,
                               CLICK_TO_CONTINUE);
+}
+
+const char* const VOWELS = "aeiouy";
+const char* const CONSONANTS = "bdfgjlmnprsvwxz";
+const char* const LETTERS[] = {VOWELS, CONSONANTS};
+const uint32 LENGTHS[] = {strlen(VOWELS), strlen(CONSONANTS)};
+
+const int LENGTH = 10;
+
+String randomKey(int length = LENGTH) {
+  String s;
+  Random random;
+  int index = random.nextInt(2);
+  for (int i = 0; i < length; ++i, index = 1 - index)
+    s += LETTERS[index][random.nextInt(LENGTHS[index])];
+
+  return s;
 }
 
 void openManual() {
@@ -48,16 +69,20 @@ void openManual() {
 }
 
 void requestSupport() {
-  File f = data::zipData();
+  String key = randomKey();
+  File f = data::zipData(key);
   if (f == File::nonexistent) {
     alert(CANT_SUPPORT, CANT_SUPPORT_FULL + String("\n") +
           PLEASE_CONTACT + String("\n") + SUPPORT);
   } else {
+    String fn = f.getFileName();
     alert(SUPPORTED,
-          String::formatted(SUPPORT_FULL, c_str(f.getFileName())) + "\n\n" +
+          String::formatted(MAIL_CREATED, c_str(fn)) + "\n\n" +
           String::formatted(PLEASE_MAIL, c_str(SUPPORT)));
-
-    juce::URL(MAILTO).launchInDefaultBrowser();
+    String subject = String::formatted(MAIL_SUBJECT, c_str(key));
+    String body = String::formatted(MAIL_ATTACH, c_str(fn));
+    MAILTO.withParameter("subject", subject).withParameter("body", body).
+      launchInDefaultBrowser();
   }
 }
 
@@ -79,23 +104,16 @@ void addGlobalCallbacks(CommandRecordTable* t) {
 
 void GlobalCallbacks::translateAll() {
   CANT_LOAD.translate();
-  CANT_LOAD.translate();
-  CANT_LOAD_FULL.translate();
   CANT_LOAD_FULL.translate();
   CANT_SUPPORT.translate();
-  CANT_SUPPORT.translate();
-  CANT_SUPPORT_FULL.translate();
   CANT_SUPPORT_FULL.translate();
   CLICK_TO_CONTINUE.translate();
-  CLICK_TO_CONTINUE.translate();
-  PLEASE_CONTACT.translate();
+  MAIL_ATTACH.translate();
+  MAIL_CREATED.translate();
+  MAIL_SUBJECT.translate();
   PLEASE_CONTACT.translate();
   PLEASE_MAIL.translate();
-  PLEASE_MAIL.translate();
   SUPPORTED.translate();
-  SUPPORTED.translate();
-  SUPPORT_FULL.translate();
-  SUPPORT_FULL.translate();
 }
 
 }  // namespace slow
