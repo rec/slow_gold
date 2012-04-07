@@ -22,18 +22,18 @@ File zipFileName() {
     getChildFile(Time::getCurrentTime().formatted(TIME_FILE_FORMAT));
 }
 
-}  // namespace
+void addFiles(const File& root, Builder* builder, int cmp = COMPRESSION_LEVEL) {
+  int toFind = File::findFilesAndDirectories + File::ignoreHiddenFiles;
+  DirectoryIterator it(root, true, "*", toFind);
 
-File zipData() {
-  Builder builder;
-
-  DirectoryIterator it(app::getAppDirectory(), true);
-  bool isDirectory;
-  while (it.next(&isDirectory, NULL, NULL, NULL, NULL, NULL)) {
-    if (!isDirectory && mustZip(it.getFile()))
-      builder.addFile(it.getFile(), COMPRESSION_LEVEL);
+  for (bool isDir; it.next(&isDir, NULL, NULL, NULL, NULL, NULL); ) {
+    File f = it.getFile();
+    if (!isDir && mustZip(f))
+      builder->addFile(f, cmp, f.getRelativePathFrom(root));
   }
+}
 
+File writeZipFile(const Builder& builder) {
   File f = zipFileName();
   FileOutputStream output(f);
   if (builder.writeToStream(output))
@@ -41,6 +41,14 @@ File zipData() {
 
   LOG(ERROR) << "Couldn't write to " << str(f);
   return File::nonexistent;
+}
+
+}  // namespace
+
+File zipData() {
+  Builder builder;
+  addFiles(app::getAppDirectory(), &builder);
+  return writeZipFile(builder);
 }
 
 }  // namespace data

@@ -29,31 +29,32 @@ Trans SUPPORT_FULL("A Support Request file named %s "
                    "was created on your desktop.");
 
 const String SUPPORT = "support@worldwidewoodshed.com";
-const String MAILTO = "mailto:" + SUPPORT + "?subj=Support-Request";
+const String MAILTO = "mailto:support%40worldwidewoodshed.com"
+  "?subject=Support%20Request%3A";
 
 using juce::AlertWindow;
 
 void alert(const String& title, const String& msg) {
-  AlertWindow::showMessageBox(AlertWindow::WarningIcon, title, msg +
-                              PLEASE_CONTACT + "\n" + SUPPORT,
+  AlertWindow::showMessageBox(AlertWindow::WarningIcon, title, msg,
                               CLICK_TO_CONTINUE);
 }
 
 void openManual() {
   bool ok = juce::URL(FULL_MANUAL).launchInDefaultBrowser();
   if (!ok) {
-    String m = CANT_LOAD_FULL + String(" ") + WOODSHED + "\n" + PLEASE_CONTACT;
-    alert(CANT_LOAD, m);
+    String m = CANT_LOAD_FULL + String(" ") + WOODSHED + "\n\n";
+    alert(CANT_LOAD, m + PLEASE_CONTACT + "\n" + SUPPORT);
   }
 }
 
 void requestSupport() {
   File f = data::zipData();
   if (f == File::nonexistent) {
-    alert(CANT_SUPPORT, CANT_SUPPORT_FULL);
+    alert(CANT_SUPPORT, CANT_SUPPORT_FULL + String("\n") +
+          PLEASE_CONTACT + String("\n") + SUPPORT);
   } else {
     alert(SUPPORTED,
-          String::formatted(SUPPORT_FULL, c_str(f.getFileName())) + "\n" +
+          String::formatted(SUPPORT_FULL, c_str(f.getFileName())) + "\n\n" +
           String::formatted(PLEASE_MAIL, c_str(SUPPORT)));
 
     juce::URL(MAILTO).launchInDefaultBrowser();
