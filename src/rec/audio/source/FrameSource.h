@@ -34,7 +34,6 @@ class FrameSource : public PositionableAudioSource {
   }
 
   virtual int64 getTotalLength() const {
-    Lock l(lock_);
     return buffer_.length();
   }
 
@@ -50,8 +49,6 @@ class FrameSource : public PositionableAudioSource {
   virtual void releaseResources() {}
 
  private:
-  CriticalSection lock_;
-
   const SourceFrames& buffer_;
   int64 position_;
   bool looping_;
