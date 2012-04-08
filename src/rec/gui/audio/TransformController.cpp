@@ -40,9 +40,9 @@ TransformController::TransformController()
                     Address("enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL) {
-  playbackSpeed_.slider()->setRange(5.0, 200.0, 1.0);
+  playbackSpeed_.slider()->setRange(5.0, 200.0, 0.1);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
-  fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
+  fineScale_.slider()->setRange(-50.0, 50.0, 0.1);
 
   playbackSpeed_.slider()->setDetent(100.0f);
   playbackSpeed_.slider()->setDetentRadius(0.008f);  // TODO: Why so small?

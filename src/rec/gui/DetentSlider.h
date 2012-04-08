@@ -10,6 +10,7 @@ class DetentSlider : public juce::Slider {
  public:
   explicit DetentSlider(const String& name = String::empty) :
       Slider(name), detentRadius_(0.05f), detentSet_(false) {
+    setTextBoxIsEditable(true);
   }
 
   void setDetent(float d) { detent_ = d; detentSet_ = true; }
