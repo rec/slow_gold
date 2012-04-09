@@ -1126,6 +1126,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Proto.cpp">
       <Filter>SlowGold 8\rec\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
       <Filter>SlowGold 8\rec\util\thread</Filter>
     </ClCompile>
@@ -1250,6 +1253,9 @@
       <Filter>SlowGold 8\proto\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc">
+      <Filter>SlowGold 8\proto\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\SystemStats.pb.cc">
       <Filter>SlowGold 8\proto\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc">
@@ -3432,6 +3438,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h">
       <Filter>SlowGold 8\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\SystemStats.h">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\TestData.h">
       <Filter>SlowGold 8\rec\util</Filter>
     </ClInclude>
@@ -3628,6 +3637,9 @@
       <Filter>SlowGold 8\proto\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h">
+      <Filter>SlowGold 8\proto\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\SystemStats.pb.h">
       <Filter>SlowGold 8\proto\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h">

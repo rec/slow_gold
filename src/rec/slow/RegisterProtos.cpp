@@ -14,6 +14,7 @@
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/Mode.pb.h"
+#include "rec/util/SystemStats.pb.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"

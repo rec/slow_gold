@@ -346,6 +346,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Proto.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp"/>
@@ -388,6 +389,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\SystemStats.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.cc"/>
@@ -1771,6 +1773,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Proto.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\SystemStats.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\TestData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\CallAsync.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback.h"/>
@@ -1837,6 +1840,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\SystemStats.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.h"/>

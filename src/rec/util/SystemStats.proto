@@ -1,0 +1,20 @@
+package rec.util;
+
+message SystemStats {
+  optional string juce_version = 1;
+  optional uint32 operating_system_type = 2;
+  optional string operating_system_name = 3;
+  optional bool is_operating_system_64_bit = 4;
+  optional uint32 osx_minor_version_number = 5;
+  optional string logon_name = 6;
+  optional string full_user_name = 7;
+  optional string computer_name = 8;
+  optional uint32 num_cpus = 9;
+  optional uint32 cpu_speed_in_megahertz = 10;
+  optional string cpu_vendor = 11;
+  optional bool has_mmx = 12;
+  optional bool has_sse = 13;
+  optional bool has_sse2 = 14;
+  optional bool has_3dnow = 15;
+  optional uint32 memory_size_in_megabytes = 16;
+};

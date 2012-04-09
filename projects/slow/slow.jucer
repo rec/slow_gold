@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="qy74xLwDx" name="SlowGold 8">
+  <MAINGROUP id="UR9w4UZHz" name="SlowGold 8">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1151,6 +1151,10 @@
               name="Range.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="KH3XIw3uH" name="STL.h"
               resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/SystemStats.cpp" id="QsF7bAzjO"
+              name="SystemStats.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/SystemStats.h" id="cKb2ghaOz"
+              name="SystemStats.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/TestData.h" id="lsNQHknCR"
               name="TestData.h" resource="0"/>
         <GROUP id="YFOsrAtAV" name="thread">
@@ -1408,6 +1412,10 @@
                 name="Mode.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/util/Mode.pb.h" id="Umpp3chBr"
                 name="Mode.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/util/SystemStats.pb.cc"
+                id="tk1BRBsw7" name="SystemStats.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/util/SystemStats.pb.h"
+                id="acWd7q3p8" name="SystemStats.pb.h" resource="0"/>
           <GROUP id="igaze1ppp" name="thread">
             <FILE compile="1" file="../../genfiles/proto/rec/util/thread/Thread.pb.cc"
                   id="BHyDv4SPM" name="Thread.pb.cc" resource="0"/>
@@ -1465,7 +1473,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="GjLT2iFkY" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="1N32SoHDI" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
