@@ -1,9 +1,11 @@
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 
-#include "rec/data/ZipData.h"
 #include "rec/base/Trans.h"
+#include "rec/data/DataOps.h"
+#include "rec/data/ZipData.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/util/Cuttable.h"
+#include "rec/util/Mode.pb.h"
 #include "rec/util/Undo.h"
 #include "rec/util/cd/Eject.h"
 
@@ -88,20 +90,46 @@ void requestSupport() {
   }
 }
 
+void setMode(Mode::Action action) {
+  Mode mode;
+  mode.set_click(action);
+  data::setProto(mode, data::global());
+}
+
+void modeDrag() {
+  setMode(Mode::DRAG);
+}
+
+void modeSetTime() {
+  setMode(Mode::SET_TIME);
+}
+
+void modeZoomIn() {
+  setMode(Mode::ZOOM_IN);
+}
+
+void modeAddLoopPoint() {
+  setMode(Mode::DRAW_LOOP_POINTS);
+}
+
 }
 
 using command::Command;
 
 void addGlobalCallbacks(CommandRecordTable* t) {
-  addCallback(t, Command::DEL, cutNoClipboard);
-  addCallback(t, Command::CUT, cutToClipboard);
+  addCallback(t, Command::MODE_ADD_LOOP_POINT, modeAddLoopPoint);
+  addCallback(t, Command::MODE_DRAG, modeDrag);
+  addCallback(t, Command::MODE_SET_TIME, modeSetTime);
+  addCallback(t, Command::MODE_ZOOM_IN, modeZoomIn);
   addCallback(t, Command::COPY, copyToClipboard);
-  addCallback(t, Command::PASTE, pasteFromClipboard);
-  addCallback(t, Command::REDO, redo);
-  addCallback(t, Command::UNDO, undo);
+  addCallback(t, Command::CUT, cutToClipboard);
+  addCallback(t, Command::DEL, cutNoClipboard);
   addCallback(t, Command::EJECT_CDS, cd::ejectAll);
   addCallback(t, Command::OPEN_MANUAL, openManual);
+  addCallback(t, Command::PASTE, pasteFromClipboard);
+  addCallback(t, Command::REDO, redo);
   addCallback(t, Command::REQUEST_SUPPORT, requestSupport);
+  addCallback(t, Command::UNDO, undo);
 }
 
 void GlobalCallbacks::translateAll() {

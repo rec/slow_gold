@@ -22,9 +22,9 @@ const PopupMenu MenuMaker::makeMenu(const String& name) {
 }
 
 void MenuMaker::add(CommandID id,
-         const String& name,
-         bool enabled,
-         PopupMenu* m) {
+                    const String& name,
+                    bool enabled,
+                    PopupMenu* m) {
   targetManager_->addCommandItem(m ? m : &menu_, id, enabled, name);
 }
 

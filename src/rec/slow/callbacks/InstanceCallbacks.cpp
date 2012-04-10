@@ -23,7 +23,6 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
-#include "rec/util/Mode.pb.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Zoom.h"
 
@@ -196,31 +195,25 @@ void toggleStartStop(Instance* i) {
   i->player_->toggle();
 }
 
-void setMode(Mode::Action action) {
-  Mode mode;
-  mode.set_click(action);
-  data::setProto(mode, data::global());
-}
-
-void modeDrag(Instance*) {
-  setMode(Mode::DRAG);
-}
-
-void modeSetTime(Instance*) {
-  setMode(Mode::SET_TIME);
-}
-
-void modeZoomIn(Instance*) {
-  setMode(Mode::ZOOM_IN);
-}
-
-void modeAddLoopPoint(Instance*) {
-  setMode(Mode::DRAW_LOOP_POINTS);
-}
-
 void checkForUpdates(Instance * i) {
   i->window_->application()->checkForUpdates();
 }
+
+void saveAsAIFF(Instance* i) {
+}
+
+void saveAsFLAC(Instance* i) {
+}
+
+void saveAsMP3(Instance* i) {
+}
+
+void saveAsOGG(Instance* i) {
+}
+
+void saveAsWAV(Instance* i) {
+}
+
 
 }  // namespace
 
@@ -240,16 +233,17 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings, i);
-  addCallback(c, Command::MODE_DRAG, modeDrag, i);
-  addCallback(c, Command::MODE_SET_TIME, modeSetTime, i);
-  addCallback(c, Command::MODE_ZOOM_IN, modeZoomIn, i);
-  addCallback(c, Command::MODE_ADD_LOOP_POINT, modeAddLoopPoint, i);
   addCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
   addCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
   addCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
   addCallback(c, Command::OPEN, open, i);
   addCallback(c, Command::QUIT, quit, i);
   addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
+  addCallback(c, Command::SAVE_AS_AIFF, saveAsAIFF, i);
+  addCallback(c, Command::SAVE_AS_FLAC, saveAsFLAC, i);
+  addCallback(c, Command::SAVE_AS_MP3, saveAsMP3, i);
+  addCallback(c, Command::SAVE_AS_OGG, saveAsOGG, i);
+  addCallback(c, Command::SAVE_AS_WAV, saveAsWAV, i);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
   addCallback(c, Command::ZOOM_OUT, zoomOut, i);
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);

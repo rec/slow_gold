@@ -74,6 +74,11 @@ enum Command_Type {
   Command_Type_REDO = 23,
   Command_Type_REQUEST_SUPPORT = 66,
   Command_Type_RESET_GAIN_TO_UNITY = 24,
+  Command_Type_SAVE_AS_AIFF = 69,
+  Command_Type_SAVE_AS_FLAC = 70,
+  Command_Type_SAVE_AS_MP3 = 71,
+  Command_Type_SAVE_AS_OGG = 72,
+  Command_Type_SAVE_AS_WAV = 73,
   Command_Type_SELECT = 25,
   Command_Type_SELECT_ONLY = 26,
   Command_Type_TOGGLE_ADVANCED_MENUS = 59,
@@ -108,7 +113,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 68,
+  Command_Type_LAST_TYPE = 73,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -345,6 +350,11 @@ class Command : public ::google::protobuf::Message {
   static const Type REDO = Command_Type_REDO;
   static const Type REQUEST_SUPPORT = Command_Type_REQUEST_SUPPORT;
   static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;
+  static const Type SAVE_AS_AIFF = Command_Type_SAVE_AS_AIFF;
+  static const Type SAVE_AS_FLAC = Command_Type_SAVE_AS_FLAC;
+  static const Type SAVE_AS_MP3 = Command_Type_SAVE_AS_MP3;
+  static const Type SAVE_AS_OGG = Command_Type_SAVE_AS_OGG;
+  static const Type SAVE_AS_WAV = Command_Type_SAVE_AS_WAV;
   static const Type SELECT = Command_Type_SELECT;
   static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
   static const Type TOGGLE_ADVANCED_MENUS = Command_Type_TOGGLE_ADVANCED_MENUS;

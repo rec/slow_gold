@@ -181,6 +181,41 @@ command {
   }
 }
 command {
+  type: SAVE_AS_AIFF
+  desc {
+    menu: "Save Transformed File As AIFF..."
+    full: "Save Transformed File As AIFF."
+  }
+}
+command {
+  type: SAVE_AS_FLAC
+  desc {
+    menu: "Save Transformed File As FLAC..."
+    full: "Save Transformed File As FLAC."
+  }
+}
+command {
+  type:  SAVE_AS_MP3
+  desc {
+    menu: "Save Transformed File As MP3..."
+    full: "Save Transformed File As MP3."
+  }
+}
+command {
+  type:  SAVE_AS_OGG
+  desc {
+    menu: "Save Transformed File As OGG..."
+    full: "Save Transformed File As OGG."
+  }
+}
+command {
+  type:  SAVE_AS_WAV
+  desc {
+    menu: "Save Transformed File As WAV..."
+    full: "Save Transformed File As WAV."
+  }
+}
+command {
   type: TOGGLE_COMMAND_BAR_AT_LEFT
   desc {
     menu: "Command Bar At Left Side"
