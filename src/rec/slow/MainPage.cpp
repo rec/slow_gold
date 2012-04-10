@@ -167,7 +167,6 @@ void MainPage::setTooltip(const String& tt) {
 }
 
 void MainPage::setEnabled(bool enabled) {
-  mainPanel_->setEnabled(enabled);
   navigationPanel_.setEnabled(enabled);
   playbackPanel_.setEnabled(enabled);
   transformPanel_.setEnabled(enabled);

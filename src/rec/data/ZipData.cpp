@@ -1,5 +1,8 @@
 #include "rec/data/ZipData.h"
+
 #include "rec/app/Files.h"
+#include "rec/data/DataOps.h"
+#include "rec/util/SystemStats.h"
 
 namespace rec {
 namespace data {
@@ -30,8 +33,10 @@ void addFiles(const File& root, Builder* builder, int cmp = COMPRESSION_LEVEL) {
 
   for (bool isDir; it.next(&isDir, NULL, NULL, NULL, NULL, NULL); ) {
     File f = it.getFile();
-    if (!isDir && mustZip(f))
+    if (!isDir && mustZip(f)) {
+      // DLOG(INFO) << str(f.getRelativePathFrom(root));
       builder->addFile(f, cmp, f.getRelativePathFrom(root));
+    }
   }
 }
 
@@ -48,6 +53,9 @@ File writeZipFile(const Builder& builder, const String& name) {
 }  // namespace
 
 File zipData(const String& name) {
+  data::setGlobal(getSystemStats(), CANT_UNDO);
+  Thread::sleep(1000);  // TODO: hack!
+
   Builder builder;
   addFiles(app::getAppDirectory(), &builder);
   return writeZipFile(builder, name);

@@ -17,10 +17,18 @@ namespace app {
 GenericApplication::GenericApplication(const String& n, const String& v,
                                        ApplicationFunction i,
                                        ApplicationFunction s)
-    : name_(n), version_(v), initializer_(i), shutdown_(s), disabled_(false) {
+    : name_(n), version_(v), initializer_(i), shutdown_(s), disabled_(false),
+      autoCheckForUpdates_(false) {
 }
 
 GenericApplication::~GenericApplication() {}
+
+bool GenericApplication::checkForUpdates() {
+  bool newVersion = downloadNewVersionIfNeeded(version_, name_);
+  if (newVersion)
+    quit();
+  return newVersion;
+}
 
 void GenericApplication::initialise(const String&) {
 #if JUCE_MAC
@@ -32,10 +40,8 @@ void GenericApplication::initialise(const String&) {
   //     File::userApplicationDataDirectory).getChildFile("Logs"));
 
   setName(name_);
-  if (downloadNewVersionIfNeeded(version_, name_)) {
-    quit();
+  if (autoCheckForUpdates() && checkForUpdates())
     return;
-  }
 
   audio::format::mpg123::initializeOnce();
   initializer_(this);

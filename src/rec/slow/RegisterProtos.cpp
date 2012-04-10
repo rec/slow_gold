@@ -34,15 +34,16 @@ void registerProtos() {
   registerClass<gui::RecentFiles>(r);
   registerClass<gui::WindowPosition>(r);
   registerClass<music::Metadata>(r);
+  registerClass<slow::AppLayout>(r);
+  registerClass<slow::GuiSettings>(r);
   registerClass<util::LoopPointList>(r);
   registerClass<util::Mode>(r);
+  registerClass<util::SystemStats>(r);
   registerClass<util::file::VirtualFile>(r);
   registerClass<util::file::VirtualFileList>(r);
   registerClass<widget::tree::NavigatorConfig>(r);
   registerClass<widget::waveform::WaveformProto>(r);
   registerClass<widget::waveform::ZoomProto>(r);
-  registerClass<slow::AppLayout>(r);
-  registerClass<slow::GuiSettings>(r);
 }
 
 }  // namespace slow

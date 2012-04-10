@@ -34,6 +34,13 @@ command {
   category: "File"
 }
 command {
+  type: TOGGLE_AUTOMATIC_UPDATES
+  is_global_setter: true
+  address { part: { name: "auto_check_for_updates" } }
+  setter_type_name: "rec.slow.GuiSettings"
+  category: "Help"
+}
+command {
   type: TOGGLE_FOLLOW_CURSOR
   is_global_setter: true
   address { part: { name: "follow_cursor" } }

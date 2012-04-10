@@ -29,13 +29,14 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
       "rec/slow/GuiSettings.proto");
   GOOGLE_CHECK(file != NULL);
   GuiSettings_descriptor_ = file->message_type(0);
-  static const int GuiSettings_offsets_[6] = {
+  static const int GuiSettings_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, follow_cursor_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, drop_adds_to_browser_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_tooltips_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_help_pane_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, advanced_menus_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_about_on_startup_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, auto_check_for_updates_),
   };
   GuiSettings_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -78,13 +79,14 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\316"
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\365"
     "\001\n\013GuiSettings\022\033\n\rfollow_cursor\030\001 \001(\010:\004t"
     "rue\022\"\n\024drop_adds_to_browser\030\002 \001(\010:\004true\022"
     "\034\n\rshow_tooltips\030\003 \001(\010:\005false\022\034\n\016show_he"
     "lp_pane\030\004 \001(\010:\004true\022\035\n\016advanced_menus\030\005 "
     "\001(\010:\005false\022#\n\025show_about_on_startup\030\006 \001("
-    "\010:\004true", 247);
+    "\010:\004true\022%\n\026auto_check_for_updates\030\007 \001(\010:"
+    "\005false", 286);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -109,6 +111,7 @@ const int GuiSettings::kShowTooltipsFieldNumber;
 const int GuiSettings::kShowHelpPaneFieldNumber;
 const int GuiSettings::kAdvancedMenusFieldNumber;
 const int GuiSettings::kShowAboutOnStartupFieldNumber;
+const int GuiSettings::kAutoCheckForUpdatesFieldNumber;
 #endif  // !_MSC_VER
 
 GuiSettings::GuiSettings()
@@ -133,6 +136,7 @@ void GuiSettings::SharedCtor() {
   show_help_pane_ = true;
   advanced_menus_ = false;
   show_about_on_startup_ = true;
+  auto_check_for_updates_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -173,6 +177,7 @@ void GuiSettings::Clear() {
     show_help_pane_ = true;
     advanced_menus_ = false;
     show_about_on_startup_ = true;
+    auto_check_for_updates_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -275,6 +280,22 @@ bool GuiSettings::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(56)) goto parse_auto_check_for_updates;
+        break;
+      }
+      
+      // optional bool auto_check_for_updates = 7 [default = false];
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_auto_check_for_updates:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &auto_check_for_updates_)));
+          _set_bit(6);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -327,6 +348,11 @@ void GuiSettings::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->show_about_on_startup(), output);
   }
   
+  // optional bool auto_check_for_updates = 7 [default = false];
+  if (_has_bit(6)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->auto_check_for_updates(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -363,6 +389,11 @@ void GuiSettings::SerializeWithCachedSizes(
   // optional bool show_about_on_startup = 6 [default = true];
   if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->show_about_on_startup(), target);
+  }
+  
+  // optional bool auto_check_for_updates = 7 [default = false];
+  if (_has_bit(6)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->auto_check_for_updates(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -403,6 +434,11 @@ int GuiSettings::ByteSize() const {
     
     // optional bool show_about_on_startup = 6 [default = true];
     if (has_show_about_on_startup()) {
+      total_size += 1 + 1;
+    }
+    
+    // optional bool auto_check_for_updates = 7 [default = false];
+    if (has_auto_check_for_updates()) {
       total_size += 1 + 1;
     }
     
@@ -451,6 +487,9 @@ void GuiSettings::MergeFrom(const GuiSettings& from) {
     if (from._has_bit(5)) {
       set_show_about_on_startup(from.show_about_on_startup());
     }
+    if (from._has_bit(6)) {
+      set_auto_check_for_updates(from.auto_check_for_updates());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -480,6 +519,7 @@ void GuiSettings::Swap(GuiSettings* other) {
     std::swap(show_help_pane_, other->show_help_pane_);
     std::swap(advanced_menus_, other->advanced_menus_);
     std::swap(show_about_on_startup_, other->show_about_on_startup_);
+    std::swap(auto_check_for_updates_, other->auto_check_for_updates_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

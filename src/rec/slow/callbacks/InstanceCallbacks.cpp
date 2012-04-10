@@ -218,6 +218,10 @@ void modeAddLoopPoint(Instance*) {
   setMode(Mode::DRAW_LOOP_POINTS);
 }
 
+void checkForUpdates(Instance * i) {
+  i->window_->application()->checkForUpdates();
+}
+
 }  // namespace
 
 using namespace rec::command;
@@ -250,6 +254,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::ZOOM_OUT, zoomOut, i);
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);
   addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection, i);
+  addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates, i);
 }
 
 }  // namespace slow

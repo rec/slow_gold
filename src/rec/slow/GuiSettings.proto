@@ -7,4 +7,5 @@ message GuiSettings {
   optional bool show_help_pane = 4 [default = true];
   optional bool advanced_menus = 5 [default = false];
   optional bool show_about_on_startup = 6 [default = true];
+  optional bool auto_check_for_updates = 7 [default = false];
 };

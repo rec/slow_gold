@@ -27,6 +27,13 @@ command {
   }
 }
 command {
+  type: CHECK_FOR_UPDATES
+  desc {
+    menu: "Check For Updates"
+    full: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
+  }
+}
+command {
   type: CLOSE_FILE
   desc {
     menu: "Close"
@@ -214,6 +221,14 @@ command {
     menu: "Show Advanced Menus"
     menu: "Hide Advanced Menus"
     full: "Toggle show/hide of advanced menus."
+  }
+}
+command {
+  type: TOGGLE_AUTOMATIC_UPDATES
+  desc {
+    menu: "Enable Automatic Updates"
+    menu: "Disable Automatic Updates"
+    full: "Enable or disable automatic updates of SlowGold 8."
   }
 }
 command {

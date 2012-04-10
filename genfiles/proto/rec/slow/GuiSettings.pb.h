@@ -133,6 +133,13 @@ class GuiSettings : public ::google::protobuf::Message {
   inline bool show_about_on_startup() const;
   inline void set_show_about_on_startup(bool value);
   
+  // optional bool auto_check_for_updates = 7 [default = false];
+  inline bool has_auto_check_for_updates() const;
+  inline void clear_auto_check_for_updates();
+  static const int kAutoCheckForUpdatesFieldNumber = 7;
+  inline bool auto_check_for_updates() const;
+  inline void set_auto_check_for_updates(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.slow.GuiSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -144,11 +151,12 @@ class GuiSettings : public ::google::protobuf::Message {
   bool show_help_pane_;
   bool advanced_menus_;
   bool show_about_on_startup_;
+  bool auto_check_for_updates_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -265,6 +273,22 @@ inline bool GuiSettings::show_about_on_startup() const {
 inline void GuiSettings::set_show_about_on_startup(bool value) {
   _set_bit(5);
   show_about_on_startup_ = value;
+}
+
+// optional bool auto_check_for_updates = 7 [default = false];
+inline bool GuiSettings::has_auto_check_for_updates() const {
+  return _has_bit(6);
+}
+inline void GuiSettings::clear_auto_check_for_updates() {
+  auto_check_for_updates_ = false;
+  _clear_bit(6);
+}
+inline bool GuiSettings::auto_check_for_updates() const {
+  return auto_check_for_updates_;
+}
+inline void GuiSettings::set_auto_check_for_updates(bool value) {
+  _set_bit(6);
+  auto_check_for_updates_ = value;
 }
 
 

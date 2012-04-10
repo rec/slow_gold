@@ -37,6 +37,9 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
 
   const String& version() const { return version_; }
   const String& name() const { return name_; }
+  bool autoCheckForUpdates() const { return autoCheckForUpdates_; }
+  void setAutoCheckForUpdates(bool a) { autoCheckForUpdates_ = a; }
+  bool checkForUpdates();
 
  protected:
   const String name_;
@@ -46,6 +49,7 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   ptr<Window> window_;
   thread_ptr<Thread> startupThread_;
   bool disabled_;
+  bool autoCheckForUpdates_;
   CriticalSection lock_;
 
  private:

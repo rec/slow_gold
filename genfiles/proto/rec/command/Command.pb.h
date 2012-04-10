@@ -45,6 +45,7 @@ enum Command_Type {
   Command_Type_ABOUT_THIS_PROGRAM = 58,
   Command_Type_ADD_LOOP_POINT = 1,
   Command_Type_AUDIO_PREFERENCES = 2,
+  Command_Type_CHECK_FOR_UPDATES = 68,
   Command_Type_CLEAR_NAVIGATOR = 3,
   Command_Type_CLEAR_LOOPS = 4,
   Command_Type_CLEAR_SAVED_FILE_DATA = 5,
@@ -76,6 +77,7 @@ enum Command_Type {
   Command_Type_SELECT = 25,
   Command_Type_SELECT_ONLY = 26,
   Command_Type_TOGGLE_ADVANCED_MENUS = 59,
+  Command_Type_TOGGLE_AUTOMATIC_UPDATES = 67,
   Command_Type_TOGGLE_FOLLOW_CURSOR = 43,
   Command_Type_TOGGLE_GRID_DISPLAY = 27,
   Command_Type_TOGGLE_COMMAND_BAR_AT_LEFT = 54,
@@ -106,7 +108,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 66,
+  Command_Type_LAST_TYPE = 68,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -314,6 +316,7 @@ class Command : public ::google::protobuf::Message {
   static const Type ABOUT_THIS_PROGRAM = Command_Type_ABOUT_THIS_PROGRAM;
   static const Type ADD_LOOP_POINT = Command_Type_ADD_LOOP_POINT;
   static const Type AUDIO_PREFERENCES = Command_Type_AUDIO_PREFERENCES;
+  static const Type CHECK_FOR_UPDATES = Command_Type_CHECK_FOR_UPDATES;
   static const Type CLEAR_NAVIGATOR = Command_Type_CLEAR_NAVIGATOR;
   static const Type CLEAR_LOOPS = Command_Type_CLEAR_LOOPS;
   static const Type CLEAR_SAVED_FILE_DATA = Command_Type_CLEAR_SAVED_FILE_DATA;
@@ -345,6 +348,7 @@ class Command : public ::google::protobuf::Message {
   static const Type SELECT = Command_Type_SELECT;
   static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
   static const Type TOGGLE_ADVANCED_MENUS = Command_Type_TOGGLE_ADVANCED_MENUS;
+  static const Type TOGGLE_AUTOMATIC_UPDATES = Command_Type_TOGGLE_AUTOMATIC_UPDATES;
   static const Type TOGGLE_FOLLOW_CURSOR = Command_Type_TOGGLE_FOLLOW_CURSOR;
   static const Type TOGGLE_GRID_DISPLAY = Command_Type_TOGGLE_GRID_DISPLAY;
   static const Type TOGGLE_COMMAND_BAR_AT_LEFT = Command_Type_TOGGLE_COMMAND_BAR_AT_LEFT;

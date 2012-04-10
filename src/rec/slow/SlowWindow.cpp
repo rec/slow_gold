@@ -2,11 +2,13 @@
 
 #include "rec/app/GenericApplication.h"
 #include "rec/data/DataCenter.h"
+#include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/Geometry.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/AboutWindow.h"
 #include "rec/slow/CurrentFile.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
@@ -35,6 +37,8 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", Colours::azure,
                   DocumentWindow::allButtons, true),
       HasInstance(NULL) {
+  bool check = data::getGlobal<GuiSettings>().auto_check_for_updates();
+  application->setAutoCheckForUpdates(check);
 }
 
 SlowWindow::~SlowWindow() {
