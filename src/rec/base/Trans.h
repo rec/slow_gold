@@ -54,6 +54,11 @@ class Trans {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Trans);
 };
 
+inline const char* c_str(const Trans& s) {
+  return c_str(String(s));
+}
+
+
 }  // namespace rec
 
 

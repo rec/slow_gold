@@ -52,6 +52,8 @@ class Player : public DataListener<Gain>,
   Device* device() { return device_; }
   Level* level() { return &level_; }
   Timer* timer() { return timer_; }
+  stretch::Stretchy* stretchy() { return stretchy_; }
+
   Source* makeSourceCopy(Source* s, bool usingSelection);
 
   virtual void changeListenerCallback(ChangeBroadcaster*);

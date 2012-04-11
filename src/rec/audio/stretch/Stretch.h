@@ -7,8 +7,9 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-double timeScale(const Stretch& d);
-double pitchScale(const Stretch& d);
+double timeScale(const Stretch&);
+double pitchScale(const Stretch&);
+double pitchSemitones(const Stretch&);
 
 }  // namespace stretch
 }  // namespace audio

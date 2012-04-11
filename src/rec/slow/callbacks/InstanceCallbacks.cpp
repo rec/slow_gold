@@ -1,5 +1,7 @@
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 
+#include "rec/audio/stretch/Stretch.h"
+#include "rec/audio/stretch/Stretchy.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
@@ -37,6 +39,11 @@ namespace {
 Trans FINISHING_LOADING("Finishing loading audio from disk.");
 Trans SAVING_FILE("Saving file %s.");
 Trans SELECT_SAVE_FILE("Choose File To Save to");
+Trans DOWN("down");
+Trans UP("up");
+
+Trans TRANSPOSE_ONE("one semitone %s");
+Trans TRANSPOSE_MANY("%s %s semitones");
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
@@ -204,10 +211,11 @@ void checkForUpdates(Instance * i) {
 }
 
 void save(Instance* instance, const String& suffix, bool useSelection) {
+  using namespace juce;
+ using namespace rec::audio::stretch;
+
   if (instance->empty())
     return;  // TODO: show never get here!
-
-  using namespace juce;
 
   GuiSettings settings = data::getGlobal<GuiSettings>();
   File startFile;
@@ -216,7 +224,40 @@ void save(Instance* instance, const String& suffix, bool useSelection) {
   else
     startFile = File::getSpecialLocation(File::userMusicDirectory);
 
+  String baseName = instance->window_->getName();
+  Stretch stretch = instance->player_->stretchy()->getStretch();
+  double ts = 100.0 / audio::stretch::timeScale(stretch);
 
+  if (!near(ts, 100.0, 0.05)) {
+    int roundTs = static_cast<int>(ts);
+    if (near(ts, roundTs, 0.05))
+      baseName += String::formatted(" @ %d%%", roundTs);
+    else
+      baseName += String::formatted(" @ %.1f%%", ts);
+  }
+
+  double ps = audio::stretch::pitchSemitones(stretch);
+  if (!near(ps, 0.0, 0.005)) {
+    const Trans& sign = (ps > 0) ? UP : DOWN;
+    ps = abs(ps);
+    int roundPs = static_cast<int>(ps);
+    String num;
+    if (near(ps, roundPs, 0.005))
+      num = String::formatted("%d", roundPs);
+    else
+      num = String::formatted("%.3f", ps);
+
+    DLOG(INFO) << str(sign) << ", " << ps << ", " << str(num) << ", " << audio::stretch::pitchScale(stretch);
+    DLOG(INFO) << stretch.ShortDebugString();
+
+    baseName += ", ";
+    if (num == "1")
+      baseName += String::formatted(TRANSPOSE_ONE, c_str(sign));
+    else
+      baseName += String::formatted(TRANSPOSE_MANY, c_str(sign), c_str(num));
+  }
+
+  startFile = startFile.getChildFile(baseName + suffix);
 
   File file;
   if (settings.use_tree_view_in_file_dialogs()) {
@@ -304,6 +345,10 @@ void InstanceCallbacks::translateAll() {
   FINISHING_LOADING.translate();
   SAVING_FILE.translate();
   SELECT_SAVE_FILE.translate();
+  DOWN.translate();
+  UP.translate();
+  TRANSPOSE_ONE.translate();
+  TRANSPOSE_MANY.translate();
 }
 
 }  // namespace slow

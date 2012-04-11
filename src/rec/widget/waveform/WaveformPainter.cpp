@@ -126,7 +126,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
       g.drawVerticalLine(x, 0, h);
     }
 
-    String s = formatTime(time, model_.length(), false, false, decimals);
+    String s = formatTime(time, model_.length(), 44100, false, false, decimals);
     g.setColour(juce::Colours::black);
     g.drawText(s, i ? x - GRID_TEXT_WIDTH / 2 : x - GRID_TEXT_WIDTH / 4,
                model_.description().show_times_at_top() ? GRID_TEXT_PAD :

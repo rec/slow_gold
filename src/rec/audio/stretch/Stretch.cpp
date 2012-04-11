@@ -15,8 +15,12 @@ double pitchScale(const Stretch& d) {
   if (!d.enabled() || d.pitch_disabled())
     return 1.0;
 
-  double detune = d.detune_cents() / 100.0 + d.semitone_shift() / 12.0;
+  double detune = (d.detune_cents() / 100.0 + d.semitone_shift()) / 12.0;
   return d.pitch_scale() * pow(2.0, detune);
+}
+
+double pitchSemitones(const Stretch& d) {
+  return 12.0 * log2(pitchScale(d));
 }
 
 }  // namespace stretch
