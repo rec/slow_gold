@@ -36,6 +36,7 @@ namespace {
 
 Trans FINISHING_LOADING("Finishing loading audio from disk.");
 Trans SAVING_FILE("Saving file %s.");
+Trans SELECT_SAVE_FILE("Choose File To Save to");
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
@@ -203,7 +204,39 @@ void checkForUpdates(Instance * i) {
 }
 
 void save(Instance* i, const String& suffix, bool useSelection) {
+  using namespace juce;
 
+  GuiSettings settings = data::getGlobal<GuiSettings>();
+  File startFile;
+  if (settings.has_last_directory())
+    startFile = str(settings.last_directory());
+
+  File file;
+  if (settings.use_tree_view_in_file_dialogs()) {
+    int flags = FileBrowserComponent::saveMode +
+      FileBrowserComponent::canSelectFiles +
+      FileBrowserComponent::useTreeView;
+
+    FileBrowserComponent fileBrowser(flags, startFile, NULL, NULL);
+    FileChooserDialogBox dialogBox(SELECT_SAVE_FILE, "", fileBrowser, true,
+                                   Colours::white);
+    if (!dialogBox.show())
+      return;
+    DCHECK_EQ(fileBrowser.getNumSelectedFiles(), 1);
+    if (!fileBrowser.getNumSelectedFiles())
+      return;
+    file = fileBrowser.getSelectedFile(0);
+  } else {
+    FileChooser chooser(SELECT_SAVE_FILE, startFile);
+    if (!chooser.browseForFileToSave(true))
+      return;
+    file = chooser.getResult();
+  }
+
+  settings.set_last_directory(str(file.getParentDirectory()));
+  data::setGlobal(settings);
+
+  DLOG(INFO) << str(file);
 
 }
 
@@ -261,7 +294,9 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
 }
 
 void InstanceCallbacks::translateAll() {
-
+  FINISHING_LOADING.translate();
+  SAVING_FILE.translate();
+  SELECT_SAVE_FILE.translate();
 }
 
 }  // namespace slow

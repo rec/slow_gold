@@ -29,7 +29,7 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
       "rec/slow/GuiSettings.proto");
   GOOGLE_CHECK(file != NULL);
   GuiSettings_descriptor_ = file->message_type(0);
-  static const int GuiSettings_offsets_[7] = {
+  static const int GuiSettings_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, follow_cursor_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, drop_adds_to_browser_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_tooltips_),
@@ -37,6 +37,8 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, advanced_menus_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_about_on_startup_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, auto_check_for_updates_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, use_tree_view_in_file_dialogs_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, last_directory_),
   };
   GuiSettings_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,14 +81,15 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\365"
-    "\001\n\013GuiSettings\022\033\n\rfollow_cursor\030\001 \001(\010:\004t"
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\273"
+    "\002\n\013GuiSettings\022\033\n\rfollow_cursor\030\001 \001(\010:\004t"
     "rue\022\"\n\024drop_adds_to_browser\030\002 \001(\010:\004true\022"
     "\034\n\rshow_tooltips\030\003 \001(\010:\005false\022\034\n\016show_he"
     "lp_pane\030\004 \001(\010:\004true\022\035\n\016advanced_menus\030\005 "
     "\001(\010:\005false\022#\n\025show_about_on_startup\030\006 \001("
     "\010:\004true\022%\n\026auto_check_for_updates\030\007 \001(\010:"
-    "\005false", 286);
+    "\005false\022,\n\035use_tree_view_in_file_dialogs\030"
+    "\010 \001(\010:\005false\022\026\n\016last_directory\030\t \001(\t", 356);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -104,6 +107,7 @@ struct StaticDescriptorInitializer_rec_2fslow_2fGuiSettings_2eproto {
 
 // ===================================================================
 
+const ::std::string GuiSettings::_default_last_directory_;
 #ifndef _MSC_VER
 const int GuiSettings::kFollowCursorFieldNumber;
 const int GuiSettings::kDropAddsToBrowserFieldNumber;
@@ -112,6 +116,8 @@ const int GuiSettings::kShowHelpPaneFieldNumber;
 const int GuiSettings::kAdvancedMenusFieldNumber;
 const int GuiSettings::kShowAboutOnStartupFieldNumber;
 const int GuiSettings::kAutoCheckForUpdatesFieldNumber;
+const int GuiSettings::kUseTreeViewInFileDialogsFieldNumber;
+const int GuiSettings::kLastDirectoryFieldNumber;
 #endif  // !_MSC_VER
 
 GuiSettings::GuiSettings()
@@ -137,6 +143,8 @@ void GuiSettings::SharedCtor() {
   advanced_menus_ = false;
   show_about_on_startup_ = true;
   auto_check_for_updates_ = false;
+  use_tree_view_in_file_dialogs_ = false;
+  last_directory_ = const_cast< ::std::string*>(&_default_last_directory_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -145,6 +153,9 @@ GuiSettings::~GuiSettings() {
 }
 
 void GuiSettings::SharedDtor() {
+  if (last_directory_ != &_default_last_directory_) {
+    delete last_directory_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -178,6 +189,14 @@ void GuiSettings::Clear() {
     advanced_menus_ = false;
     show_about_on_startup_ = true;
     auto_check_for_updates_ = false;
+    use_tree_view_in_file_dialogs_ = false;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (_has_bit(8)) {
+      if (last_directory_ != &_default_last_directory_) {
+        last_directory_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -296,6 +315,39 @@ bool GuiSettings::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(64)) goto parse_use_tree_view_in_file_dialogs;
+        break;
+      }
+      
+      // optional bool use_tree_view_in_file_dialogs = 8 [default = false];
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_use_tree_view_in_file_dialogs:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &use_tree_view_in_file_dialogs_)));
+          _set_bit(7);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_last_directory;
+        break;
+      }
+      
+      // optional string last_directory = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_last_directory:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_last_directory()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->last_directory().data(), this->last_directory().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -353,6 +405,20 @@ void GuiSettings::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->auto_check_for_updates(), output);
   }
   
+  // optional bool use_tree_view_in_file_dialogs = 8 [default = false];
+  if (_has_bit(7)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->use_tree_view_in_file_dialogs(), output);
+  }
+  
+  // optional string last_directory = 9;
+  if (_has_bit(8)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->last_directory().data(), this->last_directory().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      9, this->last_directory(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -394,6 +460,21 @@ void GuiSettings::SerializeWithCachedSizes(
   // optional bool auto_check_for_updates = 7 [default = false];
   if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->auto_check_for_updates(), target);
+  }
+  
+  // optional bool use_tree_view_in_file_dialogs = 8 [default = false];
+  if (_has_bit(7)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->use_tree_view_in_file_dialogs(), target);
+  }
+  
+  // optional string last_directory = 9;
+  if (_has_bit(8)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->last_directory().data(), this->last_directory().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        9, this->last_directory(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -440,6 +521,20 @@ int GuiSettings::ByteSize() const {
     // optional bool auto_check_for_updates = 7 [default = false];
     if (has_auto_check_for_updates()) {
       total_size += 1 + 1;
+    }
+    
+    // optional bool use_tree_view_in_file_dialogs = 8 [default = false];
+    if (has_use_tree_view_in_file_dialogs()) {
+      total_size += 1 + 1;
+    }
+    
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional string last_directory = 9;
+    if (has_last_directory()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->last_directory());
     }
     
   }
@@ -490,6 +585,14 @@ void GuiSettings::MergeFrom(const GuiSettings& from) {
     if (from._has_bit(6)) {
       set_auto_check_for_updates(from.auto_check_for_updates());
     }
+    if (from._has_bit(7)) {
+      set_use_tree_view_in_file_dialogs(from.use_tree_view_in_file_dialogs());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from._has_bit(8)) {
+      set_last_directory(from.last_directory());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -520,6 +623,8 @@ void GuiSettings::Swap(GuiSettings* other) {
     std::swap(advanced_menus_, other->advanced_menus_);
     std::swap(show_about_on_startup_, other->show_about_on_startup_);
     std::swap(auto_check_for_updates_, other->auto_check_for_updates_);
+    std::swap(use_tree_view_in_file_dialogs_, other->use_tree_view_in_file_dialogs_);
+    std::swap(last_directory_, other->last_directory_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

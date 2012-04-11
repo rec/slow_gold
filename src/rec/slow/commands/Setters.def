@@ -55,6 +55,13 @@ command {
   category: "Display"
 }
 command {
+  type: TOGGLE_FILE_OPEN_TREE_DISPLAY
+  is_global_setter: true
+  address { part: { name: "use_tree_view_in_file_dialogs" } }
+  setter_type_name: "rec.slow.GuiSettings"
+  category: "Display"
+}
+command {
   type: TOGGLE_PARALLEL_WAVEFORMS
   is_global_setter: true
   address { part: { name: "parallel_waveforms" } }

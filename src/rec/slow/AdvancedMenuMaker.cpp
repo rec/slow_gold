@@ -59,6 +59,7 @@ void AdvancedMenuMaker::addTransportMenu() {
 
 void AdvancedMenuMaker::addDisplayMenu() {
   add(Command::TOGGLE_GRID_DISPLAY);
+  add(Command::TOGGLE_FILE_OPEN_TREE_DISPLAY);
   add(Command::TOGGLE_PARALLEL_WAVEFORMS);
   add(Command::TOGGLE_FOLLOW_CURSOR);
   add(Command::TOGGLE_SHOW_SELECTION_BUTTONS);

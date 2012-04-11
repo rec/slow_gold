@@ -140,6 +140,23 @@ class GuiSettings : public ::google::protobuf::Message {
   inline bool auto_check_for_updates() const;
   inline void set_auto_check_for_updates(bool value);
   
+  // optional bool use_tree_view_in_file_dialogs = 8 [default = false];
+  inline bool has_use_tree_view_in_file_dialogs() const;
+  inline void clear_use_tree_view_in_file_dialogs();
+  static const int kUseTreeViewInFileDialogsFieldNumber = 8;
+  inline bool use_tree_view_in_file_dialogs() const;
+  inline void set_use_tree_view_in_file_dialogs(bool value);
+  
+  // optional string last_directory = 9;
+  inline bool has_last_directory() const;
+  inline void clear_last_directory();
+  static const int kLastDirectoryFieldNumber = 9;
+  inline const ::std::string& last_directory() const;
+  inline void set_last_directory(const ::std::string& value);
+  inline void set_last_directory(const char* value);
+  inline void set_last_directory(const char* value, size_t size);
+  inline ::std::string* mutable_last_directory();
+  
   // @@protoc_insertion_point(class_scope:rec.slow.GuiSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -152,11 +169,14 @@ class GuiSettings : public ::google::protobuf::Message {
   bool advanced_menus_;
   bool show_about_on_startup_;
   bool auto_check_for_updates_;
+  bool use_tree_view_in_file_dialogs_;
+  ::std::string* last_directory_;
+  static const ::std::string _default_last_directory_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -289,6 +309,64 @@ inline bool GuiSettings::auto_check_for_updates() const {
 inline void GuiSettings::set_auto_check_for_updates(bool value) {
   _set_bit(6);
   auto_check_for_updates_ = value;
+}
+
+// optional bool use_tree_view_in_file_dialogs = 8 [default = false];
+inline bool GuiSettings::has_use_tree_view_in_file_dialogs() const {
+  return _has_bit(7);
+}
+inline void GuiSettings::clear_use_tree_view_in_file_dialogs() {
+  use_tree_view_in_file_dialogs_ = false;
+  _clear_bit(7);
+}
+inline bool GuiSettings::use_tree_view_in_file_dialogs() const {
+  return use_tree_view_in_file_dialogs_;
+}
+inline void GuiSettings::set_use_tree_view_in_file_dialogs(bool value) {
+  _set_bit(7);
+  use_tree_view_in_file_dialogs_ = value;
+}
+
+// optional string last_directory = 9;
+inline bool GuiSettings::has_last_directory() const {
+  return _has_bit(8);
+}
+inline void GuiSettings::clear_last_directory() {
+  if (last_directory_ != &_default_last_directory_) {
+    last_directory_->clear();
+  }
+  _clear_bit(8);
+}
+inline const ::std::string& GuiSettings::last_directory() const {
+  return *last_directory_;
+}
+inline void GuiSettings::set_last_directory(const ::std::string& value) {
+  _set_bit(8);
+  if (last_directory_ == &_default_last_directory_) {
+    last_directory_ = new ::std::string;
+  }
+  last_directory_->assign(value);
+}
+inline void GuiSettings::set_last_directory(const char* value) {
+  _set_bit(8);
+  if (last_directory_ == &_default_last_directory_) {
+    last_directory_ = new ::std::string;
+  }
+  last_directory_->assign(value);
+}
+inline void GuiSettings::set_last_directory(const char* value, size_t size) {
+  _set_bit(8);
+  if (last_directory_ == &_default_last_directory_) {
+    last_directory_ = new ::std::string;
+  }
+  last_directory_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* GuiSettings::mutable_last_directory() {
+  _set_bit(8);
+  if (last_directory_ == &_default_last_directory_) {
+    last_directory_ = new ::std::string;
+  }
+  return last_directory_;
 }
 
 

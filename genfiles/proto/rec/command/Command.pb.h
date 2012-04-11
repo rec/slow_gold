@@ -92,6 +92,7 @@ enum Command_Type {
   Command_Type_TOGGLE_GRID_DISPLAY = 27,
   Command_Type_TOGGLE_COMMAND_BAR_AT_LEFT = 54,
   Command_Type_TOGGLE_COMMAND_BAR_AT_TOP = 55,
+  Command_Type_TOGGLE_FILE_OPEN_TREE_DISPLAY = 79,
   Command_Type_TOGGLE_MODES_AT_LEFT = 56,
   Command_Type_TOGGLE_MODES_AT_TOP = 57,
   Command_Type_TOGGLE_PARALLEL_WAVEFORMS = 42,
@@ -118,7 +119,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 78,
+  Command_Type_LAST_TYPE = 79,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -373,6 +374,7 @@ class Command : public ::google::protobuf::Message {
   static const Type TOGGLE_GRID_DISPLAY = Command_Type_TOGGLE_GRID_DISPLAY;
   static const Type TOGGLE_COMMAND_BAR_AT_LEFT = Command_Type_TOGGLE_COMMAND_BAR_AT_LEFT;
   static const Type TOGGLE_COMMAND_BAR_AT_TOP = Command_Type_TOGGLE_COMMAND_BAR_AT_TOP;
+  static const Type TOGGLE_FILE_OPEN_TREE_DISPLAY = Command_Type_TOGGLE_FILE_OPEN_TREE_DISPLAY;
   static const Type TOGGLE_MODES_AT_LEFT = Command_Type_TOGGLE_MODES_AT_LEFT;
   static const Type TOGGLE_MODES_AT_TOP = Command_Type_TOGGLE_MODES_AT_TOP;
   static const Type TOGGLE_PARALLEL_WAVEFORMS = Command_Type_TOGGLE_PARALLEL_WAVEFORMS;

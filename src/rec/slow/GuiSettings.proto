@@ -8,4 +8,6 @@ message GuiSettings {
   optional bool advanced_menus = 5 [default = false];
   optional bool show_about_on_startup = 6 [default = true];
   optional bool auto_check_for_updates = 7 [default = false];
+  optional bool use_tree_view_in_file_dialogs = 8 [default = false];
+  optional string last_directory = 9;
 };

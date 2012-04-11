@@ -302,6 +302,13 @@ command {
   }
 }
 command {
+  type: TOGGLE_FILE_OPEN_TREE_DISPLAY
+  desc {
+    menu: "Use Tree Display In File Open Dialog"
+    full: "Use Tree Display In File Open Dialog"
+  }
+}
+command {
   type: TOGGLE_GRID_DISPLAY
   desc {
     menu: "Show Time Gridlines"
