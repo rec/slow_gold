@@ -210,9 +210,16 @@ void checkForUpdates(Instance * i) {
   i->window_->application()->checkForUpdates();
 }
 
+String removeTrailingZeroes(const String& s) {
+  String st = s;
+  st = st.trimCharactersAtEnd("0");
+  st = st.trimCharactersAtEnd(".");
+  return st;
+}
+
 void save(Instance* instance, const String& suffix, bool useSelection) {
   using namespace juce;
- using namespace rec::audio::stretch;
+  using namespace rec::audio::stretch;
 
   if (instance->empty())
     return;  // TODO: show never get here!
@@ -240,16 +247,7 @@ void save(Instance* instance, const String& suffix, bool useSelection) {
   if (!near(ps, 0.0, 0.005)) {
     const Trans& sign = (ps > 0) ? UP : DOWN;
     ps = abs(ps);
-    int roundPs = static_cast<int>(ps);
-    String num;
-    if (near(ps, roundPs, 0.005))
-      num = String::formatted("%d", roundPs);
-    else
-      num = String::formatted("%.3f", ps);
-
-    DLOG(INFO) << str(sign) << ", " << ps << ", " << str(num) << ", " << audio::stretch::pitchScale(stretch);
-    DLOG(INFO) << stretch.ShortDebugString();
-
+    String num = removeTrailingZeroes(String::formatted("%.3f", ps));
     baseName += ", ";
     if (num == "1")
       baseName += String::formatted(TRANSPOSE_ONE, c_str(sign));
