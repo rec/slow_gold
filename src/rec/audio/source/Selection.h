@@ -20,11 +20,16 @@ class Selection : public Wrappy, public DataListener<LoopPointList> {
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
-  virtual void operator()(const LoopPointList&);
+  virtual void operator()(const LoopPointList& lpl);
 
   const block::BlockSet selection() const {
     Lock l(Wrappy::lock_);
     return selection_;
+  }
+
+  const LoopPointList loopPoints() const {
+    Lock l(Wrappy::lock_);
+    return loopPoints_;
   }
 
   // Move the clock backward, taking into account the segments.
@@ -32,6 +37,7 @@ class Selection : public Wrappy, public DataListener<LoopPointList> {
 
  private:
   block::BlockSet selection_;
+  LoopPointList loopPoints_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Selection);
 };

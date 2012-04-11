@@ -27,6 +27,11 @@ class Stretchy : public source::Wrappy {
   virtual int64 getNextReadPosition() const;
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
 
+  Stretch getStretch() const {
+    Lock l(lock_);
+    return stretch_;
+  }
+
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
   int64 scale(int64 x) const { return static_cast<int64>(timeScale_ * x); }
@@ -38,6 +43,7 @@ class Stretchy : public source::Wrappy {
   int channels_;
   double timeScale_;
   bool bypass_;
+  Stretch stretch_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
 };

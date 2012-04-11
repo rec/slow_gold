@@ -34,6 +34,9 @@ using namespace rec::widget::waveform;
 namespace {
 // Skin
 
+Trans FINISHING_LOADING("Finishing loading audio from disk.");
+Trans SAVING_FILE("Saving file %s.");
+
 static const int SELECTION_WIDTH_PORTION = 20;
 
 void aboutThisProgram(Instance* i) {
@@ -199,21 +202,16 @@ void checkForUpdates(Instance * i) {
   i->window_->application()->checkForUpdates();
 }
 
-void saveAsAIFF(Instance* i) {
+void save(Instance* i, const String& suffix) {
+
+
 }
 
-void saveAsFLAC(Instance* i) {
-}
-
-void saveAsMP3(Instance* i) {
-}
-
-void saveAsOGG(Instance* i) {
-}
-
-void saveAsWAV(Instance* i) {
-}
-
+void saveAsAIFF(Instance* i) { save(i, "aiff"); }
+void saveAsFLAC(Instance* i) { save(i, "flac"); }
+void saveAsMP3(Instance* i) { save(i, "mp3"); }
+void saveAsOGG(Instance* i) { save(i, "ogg"); }
+void saveAsWAV(Instance* i) { save(i, "wav"); }
 
 }  // namespace
 
@@ -238,7 +236,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
   addCallback(c, Command::OPEN, open, i);
   addCallback(c, Command::QUIT, quit, i);
-  addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
+ addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   addCallback(c, Command::SAVE_AS_AIFF, saveAsAIFF, i);
   addCallback(c, Command::SAVE_AS_FLAC, saveAsFLAC, i);
   addCallback(c, Command::SAVE_AS_MP3, saveAsMP3, i);
@@ -249,6 +247,10 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);
   addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection, i);
   addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates, i);
+}
+
+void InstanceCallbacks::translateAll() {
+
 }
 
 }  // namespace slow

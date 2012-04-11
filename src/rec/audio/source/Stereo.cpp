@@ -11,6 +11,11 @@ void Stereo::setStereo(const StereoProto& desc) {
   desc_ = desc;
 }
 
+StereoProto Stereo::getStereo() const {
+  Lock l(lock_);
+  return desc_;
+}
+
 void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   StereoProto desc;
   {

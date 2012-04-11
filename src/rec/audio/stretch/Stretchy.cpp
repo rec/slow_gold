@@ -45,6 +45,7 @@ static Implementation* makeImplementation(Source* src, const Stretch& stretch) {
 
 void Stretchy::setStretch(const stretch::Stretch& stretch) {
   Lock l(lock_);
+  stretch_ = stretch;
   channels_ = stretch.channels();
 
   static const double DELTA = 0.00001;

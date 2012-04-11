@@ -98,6 +98,22 @@ void Player::setGain(double gain) {
   player_.setGain(static_cast<float>(gain));
 }
 
+Source* Player::makeSourceCopy(Source* s, bool usingSelection) {
+  ptr<Source> source(s);
+  if (usingSelection) {
+    ptr<Selection> selection(new Selection(source.transfer()));
+    (*selection)(selection_->loopPoints());
+    source.reset(selection.transfer());
+  }
+
+  ptr<Stretchy> stretchy(new Stretchy(source.transfer()));
+  stretchy->setStretch(stretchy_->getStretch());
+  source.reset(stretchy.transfer());
+
+  // TODO: we don't take into account the final "gain" slider.
+  return source.transfer();
+}
+
 }  // namespace source
 }  // namespace audio
 }  // namespace rec

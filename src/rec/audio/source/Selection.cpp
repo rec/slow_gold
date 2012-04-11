@@ -28,6 +28,7 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
 
 void Selection::operator()(const LoopPointList& loops) {
   Lock l(Wrappy::lock_);
+  loopPoints_ = loops;
   selection_ = getTimeSelection(loops);
   if (selection_.empty())
     selection_.insert(block::makeBlock(0, loops.length()));
