@@ -210,6 +210,10 @@ void save(Instance* i, const String& suffix, bool useSelection) {
   File startFile;
   if (settings.has_last_directory())
     startFile = str(settings.last_directory());
+  else
+    startFile = File::getSpecialLocation(File::userMusicDirectory);
+
+
 
   File file;
   if (settings.use_tree_view_in_file_dialogs()) {

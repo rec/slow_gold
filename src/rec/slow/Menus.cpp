@@ -23,7 +23,7 @@ void Menus::operator()(const GuiSettings& settings) {
 
 MenuMaker* Menus::getMenuMaker() {
   Lock l(lock_);
-  return makeMenuMaker(target()->targetManager(), advanced_, *isWholeSong_);
+  return makeMenuMaker(target()->targetManager(), advanced_, *isWholeSong_, false);
 }
 
 const StringArray Menus::getMenuBarNames() {

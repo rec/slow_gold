@@ -57,7 +57,7 @@ class MenuMaker {
 };
 
 MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
-                         const IsWholeSong&);
+                         const IsWholeSong&, bool isEmpty);
 
 }  // namespace slow
 }  // namespace rec
