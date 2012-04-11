@@ -41,7 +41,6 @@ class Player : public DataListener<Gain>,
 
   void setState(transport::State state);
 
-  // Source must be pre-prepared.  TODO:  what does this mean?
   void broadcastState();
   void toggle() { setState(invert(state())); }
 

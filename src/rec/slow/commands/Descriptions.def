@@ -216,6 +216,41 @@ command {
   }
 }
 command {
+  type: SAVE_SELECTION_AS_AIFF
+  desc {
+    menu: "Save Transformed Selection As AIFF..."
+    full: "Save Transformed Selection As AIFF."
+  }
+}
+command {
+  type: SAVE_SELECTION_AS_FLAC
+  desc {
+    menu: "Save Transformed Selection As FLAC..."
+    full: "Save Transformed Selection As FLAC."
+  }
+}
+command {
+  type:  SAVE_SELECTION_AS_MP3
+  desc {
+    menu: "Save Transformed Selection As MP3..."
+    full: "Save Transformed Selection As MP3."
+  }
+}
+command {
+  type:  SAVE_SELECTION_AS_OGG
+  desc {
+    menu: "Save Transformed Selection As OGG..."
+    full: "Save Transformed Selection As OGG."
+  }
+}
+command {
+  type:  SAVE_SELECTION_AS_WAV
+  desc {
+    menu: "Save Transformed Selection As WAV..."
+    full: "Save Transformed Selection As WAV."
+  }
+}
+command {
   type: TOGGLE_COMMAND_BAR_AT_LEFT
   desc {
     menu: "Command Bar At Left Side"

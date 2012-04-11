@@ -25,11 +25,11 @@ class TextComponent : public gui::SimpleLabel,
   void redisplay();
 
  private:
-  CriticalSection lock_;
   Text description_;
   Samples<44100> time_;
   String timeDisplay_;
   Samples<44100> length_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TextComponent);
 };

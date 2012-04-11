@@ -13,6 +13,18 @@ CommandRecordTable::~CommandRecordTable() {
   stl::deleteMapPointers(&table_);
 }
 
+void CommandRecordTable::writeTable() const {
+  File out("/tmp/records.txt");
+  out.deleteFile();
+
+  Commands commands;
+  for (const_iterator i = begin(); i != end(); ++i)
+    commands.add_command()->CopyFrom(*i->second->command_);
+
+  String res = str(commands.DebugString());
+  juce::FileOutputStream(out).writeText(res, false, false);
+}
+
 CommandRecord* CommandRecordTable::find(CommandID id, bool create) {
   CHECK(id != CommandIDEncoder::toCommandID(Command::JUMP, 10) || !create);
   CommandRecordTable::iterator i = table_.find(id);

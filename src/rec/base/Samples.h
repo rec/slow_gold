@@ -15,8 +15,6 @@ struct Samples {
   Samples(int p) : position_(p) {}
   Samples(short p) : position_(p) {}
 
-  Samples(RealTime time) : position_(toSampleCount(time)) {}
-
   Samples& operator++() { ++position_; return *this; }
   Samples& operator--() { --position_; return *this; }
 
@@ -40,14 +38,19 @@ struct Samples {
   operator int64() const { return position_; }
   int64 get() { return position_; }
 
-  double toRealTime() const {
-    return static_cast<double>(position_) / static_cast<double>(SAMPLES_PER_SEC);
+  double toRealTime(int32 sampleRate) const {
+    return static_cast<double>(position_) / static_cast<double>(sampleRate);
   }
+
+
+#if 0
+  Samples(RealTime time) : position_(toSampleCount(time)) {}
 
   template <typename Type>
   static int64 toSampleCount(Type t) {
     return static_cast<int64>(SAMPLES_PER_SEC * t);
   }
+#endif
 
   // TODO: we shouldn't need this, but Juce sometimes wants ints.  Bug Jules!
   int toInt() const { return static_cast<int>(position_); }
@@ -59,6 +62,7 @@ struct Samples {
   // Disallow these two constructors.
   Samples(float time);
   Samples(double time);
+  Samples(RealTime time); // : position_(toSampleCount(time)) {}
 
   JUCE_LEAK_DETECTOR(Samples);
 };

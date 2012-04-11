@@ -30,9 +30,43 @@ class CommandDatabase {
     mergeKeyPresses();
     mergeDescriptions();
     removeEmptiesAndFillCommandInfo();
+    rawMergeAndPrint();
   }
 
  private:
+  typedef std::map<CommandID, Command*> Table;
+
+  void rawMerge(Table* table, Commands commands) {
+    for (int i = 0; i < commands.command_size(); ++i) {
+      const Command& c = commands.command(i);
+      Table::iterator i = table->find(c.type());
+      if (i == table->end())
+        table->insert(std::make_pair(c.type(), new Command(c)));
+      else
+        i->second->MergeFrom(c);
+    }
+  }
+
+  void rawMergeAndPrint() {
+    Table table;
+
+    rawMerge(&table, data_.commands());
+    rawMerge(&table, data_.repeated());
+    rawMerge(&table, data_.setters());
+    rawMerge(&table, data_.keyPresses(access_));
+    rawMerge(&table, data_.descriptions(access_));
+
+    Commands commands;
+    for (Table::iterator i = table.begin(); i != table.end(); ++i)
+      commands.add_command()->CopyFrom(*i->second);
+    String commandString(str(commands.DebugString()));
+
+    File out("/tmp/records.txt");
+    out.deleteFile();
+    juce::FileOutputStream(out).writeText(commandString, false, false);
+  }
+
+
   enum MergeType {INSERT, MERGE};
 
   void addTo(MergeType type, const Command& cmd, CommandID id = 0) {
@@ -76,6 +110,7 @@ class CommandDatabase {
       return;
     }
 
+    // If we get here, this is a repeated command!
     static const char* LOWER[] = {" the first", " the previous", " the current",
                                   " the next", " the last"};
     static const char* CAP[] = {" First", " Previous", " Current", " Next",

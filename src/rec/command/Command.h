@@ -39,6 +39,7 @@ class CommandRecordTable {
   iterator end() { return table_.end(); }
   const_iterator begin() const { return table_.begin(); }
   const_iterator end() const { return table_.end(); }
+  void writeTable() const;
 
  private:
   Table table_;

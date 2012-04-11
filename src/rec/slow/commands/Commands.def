@@ -31,6 +31,11 @@ command { type: SAVE_AS_FLAC category: "Audio"}
 command { type: SAVE_AS_MP3 category: "Audio"}
 command { type: SAVE_AS_OGG category: "Audio"}
 command { type: SAVE_AS_WAV category: "Audio"}
+command { type: SAVE_SELECTION_AS_AIFF category: "Audio"}
+command { type: SAVE_SELECTION_AS_FLAC category: "Audio"}
+command { type: SAVE_SELECTION_AS_MP3 category: "Audio"}
+command { type: SAVE_SELECTION_AS_OGG category: "Audio"}
+command { type: SAVE_SELECTION_AS_WAV category: "Audio"}
 command { type: SELECT_ALL category: "Transport"}
 command { type: TOGGLE_START_STOP category: "Transport"}
 command { type: TOGGLE_WHOLE_SONG_LOOP category: "Selection" }

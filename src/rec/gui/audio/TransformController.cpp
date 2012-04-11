@@ -76,7 +76,7 @@ TransformController::TransformController()
             "Fine tune loop up or down in pitch, measured in "
             "cents (1/100 of a semitone)."));
   stereoComboBox_.setTooltip(
-      Trans("Stereo Processing Menu:  choose between the "
+      Trans("Stereo Processing Menu:  Choose between the "
             "original stereo, just the left channel, "
             "just the right channel, "
             "or a mono mix of both channels."));

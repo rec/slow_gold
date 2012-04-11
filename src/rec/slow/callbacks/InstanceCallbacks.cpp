@@ -202,16 +202,22 @@ void checkForUpdates(Instance * i) {
   i->window_->application()->checkForUpdates();
 }
 
-void save(Instance* i, const String& suffix) {
+void save(Instance* i, const String& suffix, bool useSelection) {
 
 
 }
 
-void saveAsAIFF(Instance* i) { save(i, "aiff"); }
-void saveAsFLAC(Instance* i) { save(i, "flac"); }
-void saveAsMP3(Instance* i) { save(i, "mp3"); }
-void saveAsOGG(Instance* i) { save(i, "ogg"); }
-void saveAsWAV(Instance* i) { save(i, "wav"); }
+void saveAsAIFF(Instance* i) { save(i, ".aiff", false); }
+void saveAsFLAC(Instance* i) { save(i, ".flac", false); }
+void saveAsMP3(Instance* i) { save(i, ".mp3", false); }
+void saveAsOGG(Instance* i) { save(i, ".ogg", false); }
+void saveAsWAV(Instance* i) { save(i, ".wav", false); }
+
+void saveSelectionAsAIFF(Instance* i) { save(i, ".aiff", true); }
+void saveSelectionAsFLAC(Instance* i) { save(i, ".flac", true); }
+void saveSelectionAsMP3(Instance* i) { save(i, ".mp3", true); }
+void saveSelectionAsOGG(Instance* i) { save(i, ".ogg", true); }
+void saveSelectionAsWAV(Instance* i) { save(i, ".wav", true); }
 
 }  // namespace
 
@@ -236,12 +242,17 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
   addCallback(c, Command::OPEN, open, i);
   addCallback(c, Command::QUIT, quit, i);
- addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
+  addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   addCallback(c, Command::SAVE_AS_AIFF, saveAsAIFF, i);
   addCallback(c, Command::SAVE_AS_FLAC, saveAsFLAC, i);
   addCallback(c, Command::SAVE_AS_MP3, saveAsMP3, i);
   addCallback(c, Command::SAVE_AS_OGG, saveAsOGG, i);
   addCallback(c, Command::SAVE_AS_WAV, saveAsWAV, i);
+  addCallback(c, Command::SAVE_SELECTION_AS_AIFF, saveSelectionAsAIFF, i);
+  addCallback(c, Command::SAVE_SELECTION_AS_FLAC, saveSelectionAsFLAC, i);
+  addCallback(c, Command::SAVE_SELECTION_AS_MP3, saveSelectionAsMP3, i);
+  addCallback(c, Command::SAVE_SELECTION_AS_OGG, saveSelectionAsOGG, i);
+  addCallback(c, Command::SAVE_SELECTION_AS_WAV, saveSelectionAsWAV, i);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
   addCallback(c, Command::ZOOM_OUT, zoomOut, i);
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);

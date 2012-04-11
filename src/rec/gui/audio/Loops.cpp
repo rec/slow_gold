@@ -78,12 +78,13 @@ void Loops::operator()(const LoopPointList& loops) {
 }
 
 
-static String getDisplayText(const Value& v, const TableColumn& col, Samples<44100> length) {
+static String getDisplayText(const Value& v, const TableColumn& col,
+                             Samples<44100> length, int sampleRate) {
   switch (col.type()) {
    case TableColumn::STRING:  return str(v.string_f());
    case TableColumn::UINT32:  return String(v.uint32_f());
-   case TableColumn::TIME:    return formatTime(Samples<44100>(v.int64_f()),
-                                                length, false, true, 0);
+   case TableColumn::TIME:    return formatTime(Samples<44100>(v.int64_f()), length,
+                                                sampleRate, false, true, 0);
    case TableColumn::DOUBLE:  return String(v.double_f());
    default:                   return "<unknown>";
   }
@@ -94,7 +95,8 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
   data::Value value;
   string error = getMessageField(row, getProto(), &value);
   return error.empty() ?
-    getDisplayText(value, col, Samples<44100>(loops_.length())) : String(Trans("(error)"));
+    getDisplayText(value, col, Samples<44100>(loops_.length()), 44100) :
+    String(Trans("(error)"));
 }
 
 void Loops::selectedRowsChanged(int /*lastRowSelected*/) {

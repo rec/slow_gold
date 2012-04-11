@@ -33,6 +33,15 @@ void BasicMenuMaker::addFileMenu() {
   add(Command::SAVE_AS_WAV, String::empty, true, &savemenu);
 
   menu_.addSubMenu(Trans("Save..."), savemenu);
+
+  PopupMenu saveselmenu;
+  add(Command::SAVE_SELECTION_AS_AIFF, String::empty, true, &saveselmenu);
+  add(Command::SAVE_SELECTION_AS_FLAC, String::empty, true, &saveselmenu);
+  add(Command::SAVE_SELECTION_AS_MP3, String::empty, true, &saveselmenu);
+  add(Command::SAVE_SELECTION_AS_OGG, String::empty, true, &saveselmenu);
+  add(Command::SAVE_SELECTION_AS_WAV, String::empty, true, &saveselmenu);
+
+  menu_.addSubMenu(Trans("Save Selection..."), saveselmenu);
 #endif
 
   std::vector<string> recent = rec::gui::getRecentFileNames();

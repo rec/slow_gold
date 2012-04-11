@@ -33,7 +33,7 @@ Samples<44100> TextComponent::getTime() const {
 void TextComponent::setTime(Samples<44100> time) {
   Lock l(lock_);
   time_ = time;
-  String timeDisplay = formatTime(time_, length_, description_.separator().flash());
+  String timeDisplay = formatTime(time_, length_, 44100, description_.separator().flash());
   if (timeDisplay != timeDisplay_) {
     timeDisplay_ = timeDisplay;
     thread::callAsync(this, &TextComponent::redisplay);

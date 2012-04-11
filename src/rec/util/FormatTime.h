@@ -7,18 +7,18 @@
 namespace rec {
 namespace util {
 
-template <int RATE>
-const String formatTime(Samples<RATE> time,
-                        Samples<RATE> mTime,
-                        bool flash = false,
-                        bool leadingZeros = true,
-                        int decimals = 3) {
-  Samples<RATE> maxTime = std::max(time, mTime);
-  bool displayHours = (maxTime >= 3600 * RATE);
+inline const String formatTime(Samples<44100> time,
+                               Samples<44100> mTime,
+                               int sampleRate,
+                               bool flash = false,
+                               bool leadingZeros = true,
+                               int decimals = 3) {
+  Samples<44100> maxTime = std::max(time, mTime);
+  bool displayHours = (maxTime >= 3600 * sampleRate);
 
-  int frac = static_cast<int>(mod(time.get(), RATE));
-  int sec = static_cast<int>((time - frac).toRealTime());
-  double fraction = frac / (1.0 * RATE);
+  int frac = static_cast<int>(mod(time.get(), sampleRate));
+  int sec = static_cast<int>((time - frac).toRealTime(44100));
+  double fraction = frac / (1.0 * sampleRate);
 
   int minutes = sec / 60;
   int hours = minutes / 60;
