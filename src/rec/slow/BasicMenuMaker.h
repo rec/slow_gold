@@ -9,8 +9,10 @@ namespace slow {
 
 class BasicMenuMaker : public MenuMaker {
  public:
-  BasicMenuMaker(command::TargetManager* t, const IsWholeSong& isWholeSong)
-      : MenuMaker(t, isWholeSong) {
+  BasicMenuMaker(command::TargetManager* t,
+                 const IsWholeSong& isWholeSong,
+                 bool isEmpty)
+      : MenuMaker(t, isWholeSong, isEmpty) {
   }
   virtual ~BasicMenuMaker() {}
 

@@ -8,8 +8,10 @@ namespace slow {
 
 class AdvancedMenuMaker : public BasicMenuMaker {
  public:
-  AdvancedMenuMaker(command::TargetManager* t, const IsWholeSong& isWholeSong)
-      : BasicMenuMaker(t, isWholeSong) {
+  AdvancedMenuMaker(command::TargetManager* t,
+                    const IsWholeSong& isWholeSong,
+                    bool isEmpty)
+      : BasicMenuMaker(t, isWholeSong, isEmpty) {
   }
   virtual ~AdvancedMenuMaker() {}
 
@@ -18,6 +20,7 @@ class AdvancedMenuMaker : public BasicMenuMaker {
  protected:
   virtual void addAudioMenu();
   virtual void addEditMenu();
+  virtual void addFileMenu();
   virtual void addSelectMenu();
   virtual void addTransportMenu();
   virtual void addDisplayMenu();

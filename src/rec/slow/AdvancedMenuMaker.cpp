@@ -36,6 +36,30 @@ void AdvancedMenuMaker::addEditMenu() {
   add(Command::MODE_ZOOM_IN);
 }
 
+void AdvancedMenuMaker::addFileMenu() {
+  BasicMenuMaker::addFileMenu();
+
+#ifdef NEW_FEATURES
+  PopupMenu saveMenu;
+  add(Command::SAVE_AS_AIFF, String::empty, !isEmpty_, &saveMenu);
+  add(Command::SAVE_AS_FLAC, String::empty, !isEmpty_, &saveMenu);
+  add(Command::SAVE_AS_MP3, String::empty, !isEmpty_, &saveMenu);
+  add(Command::SAVE_AS_OGG, String::empty, !isEmpty_, &saveMenu);
+  add(Command::SAVE_AS_WAV, String::empty, !isEmpty_, &saveMenu);
+
+  menu_.addSubMenu(Trans("Save..."), saveMenu);
+
+  PopupMenu selMenu;
+  add(Command::SAVE_SELECTION_AS_AIFF, String::empty, !isEmpty_, &selMenu);
+  add(Command::SAVE_SELECTION_AS_FLAC, String::empty, !isEmpty_, &selMenu);
+  add(Command::SAVE_SELECTION_AS_MP3, String::empty, !isEmpty_, &selMenu);
+  add(Command::SAVE_SELECTION_AS_OGG, String::empty, !isEmpty_, &selMenu);
+  add(Command::SAVE_SELECTION_AS_WAV, String::empty, !isEmpty_, &selMenu);
+
+  menu_.addSubMenu(Trans("Save Selection..."), selMenu);
+#endif
+}
+
 void AdvancedMenuMaker::addSelectMenu() {
   BasicMenuMaker::addSelectMenu();
 

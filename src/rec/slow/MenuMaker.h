@@ -16,8 +16,10 @@ class MenuMaker {
  public:
   static const int SLOT_COUNT = 10;
 
-  MenuMaker(command::TargetManager* t, const IsWholeSong& isWholeSong)
-      : isWholeSong_(isWholeSong), targetManager_(t) {
+  MenuMaker(command::TargetManager* t,
+            const IsWholeSong& isWholeSong,
+            bool isEmpty)
+      : isWholeSong_(isWholeSong), isEmpty_(isEmpty), targetManager_(t) {
   }
   virtual ~MenuMaker() {}
 
@@ -45,6 +47,7 @@ class MenuMaker {
 
   PopupMenu menu_;
   const IsWholeSong& isWholeSong_;
+  const bool isEmpty_;
 
  private:
   command::TargetManager* targetManager_;
