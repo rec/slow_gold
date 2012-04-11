@@ -169,6 +169,10 @@ bool Instance::isPlaying() const {
   return player_ && player_->state();
 }
 
+bool Instance::empty() const {
+  return currentFile_ && currentFile_->empty();
+}
+
 void Instance::setProto(const Message& m, Undoable undoable) {
    data::setProto(m, file(), undoable);
    menus_->menuItemsChanged();

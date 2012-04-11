@@ -203,7 +203,10 @@ void checkForUpdates(Instance * i) {
   i->window_->application()->checkForUpdates();
 }
 
-void save(Instance* i, const String& suffix, bool useSelection) {
+void save(Instance* instance, const String& suffix, bool useSelection) {
+  if (instance->empty())
+    return;  // TODO: show never get here!
+
   using namespace juce;
 
   GuiSettings settings = data::getGlobal<GuiSettings>();
