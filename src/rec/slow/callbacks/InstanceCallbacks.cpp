@@ -217,19 +217,16 @@ String removeTrailingZeroes(const String& s) {
   return st;
 }
 
-void save(Instance* instance, const String& suffix, bool useSelection) {
+File getBaseFile(Instance* instance, const String& suffix,
+                 const GuiSettings& settings) {
   using namespace juce;
   using namespace rec::audio::stretch;
 
-  if (instance->empty())
-    return;  // TODO: show never get here!
-
-  GuiSettings settings = data::getGlobal<GuiSettings>();
-  File startFile;
+  File file;
   if (settings.has_last_directory())
-    startFile = str(settings.last_directory());
+    file = str(settings.last_directory());
   else
-    startFile = File::getSpecialLocation(File::userMusicDirectory);
+    file = File::getSpecialLocation(File::userMusicDirectory);
 
   String baseName = instance->window_->getName();
   Stretch stretch = instance->player_->stretchy()->getStretch();
@@ -255,35 +252,45 @@ void save(Instance* instance, const String& suffix, bool useSelection) {
       baseName += String::formatted(TRANSPOSE_MANY, c_str(sign), c_str(num));
   }
 
-  startFile = startFile.getChildFile(baseName + suffix);
+  return file.getChildFile(baseName + suffix);
+}
 
+File browseForFileToSave(const File& startFile) {
+  FileChooser c(SELECT_SAVE_FILE, startFile);
+  return c.browseForFileToSave(true) ? File::nonexistent : c.getResult();
+}
+
+File browseForFileToSaveTreeView(const File& startFile) {
+  int flags = FileBrowserComponent::saveMode +
+    FileBrowserComponent::canSelectFiles +
+    FileBrowserComponent::useTreeView;
+
+  FileBrowserComponent fileBrowser(flags, startFile, NULL, NULL);
+  FileChooserDialogBox dialogBox(SELECT_SAVE_FILE, "", fileBrowser, true,
+                                 Colours::white);
+  return dialogBox.show() ? fileBrowser.getSelectedFile(0) : File::nonexistent;
+}
+
+File getSaveFile(Instance* instance, const String& suffix) {
   File file;
-  if (settings.use_tree_view_in_file_dialogs()) {
-    int flags = FileBrowserComponent::saveMode +
-      FileBrowserComponent::canSelectFiles +
-      FileBrowserComponent::useTreeView;
+  if (instance->empty())
+    return file;
 
-    FileBrowserComponent fileBrowser(flags, startFile, NULL, NULL);
-    FileChooserDialogBox dialogBox(SELECT_SAVE_FILE, "", fileBrowser, true,
-                                   Colours::white);
-    if (!dialogBox.show())
-      return;
-    DCHECK_EQ(fileBrowser.getNumSelectedFiles(), 1);
-    if (!fileBrowser.getNumSelectedFiles())
-      return;
-    file = fileBrowser.getSelectedFile(0);
-  } else {
-    FileChooser chooser(SELECT_SAVE_FILE, startFile);
-    if (!chooser.browseForFileToSave(true))
-      return;
-    file = chooser.getResult();
+  GuiSettings settings = data::getGlobal<GuiSettings>();
+  File startFile = getBaseFile(instance, suffix, settings);
+  file = settings.use_tree_view_in_file_dialogs() ?
+    browseForFileToSave(startFile) : browseForFileToSaveTreeView(startFile);
+
+  if (file != File::nonexistent) {
+    settings.set_last_directory(str(file.getParentDirectory()));
+    data::setGlobal(settings);
   }
+  return file;
+}
 
-  settings.set_last_directory(str(file.getParentDirectory()));
-  data::setGlobal(settings);
-
+void save(Instance* instance, const String& suffix, bool useSelection) {
+  File file = getSaveFile(instance, suffix);
   DLOG(INFO) << str(file);
-
 }
 
 void saveAsAIFF(Instance* i) { save(i, ".aiff", false); }
