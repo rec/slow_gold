@@ -21,7 +21,7 @@ Trans ERROR_WAS("Error was");
 Trans FILE_NOT_EXIST("File Does Not Exist");
 Trans FILE_NOT_EXIST_FULL("Sorry, file %s does not exist.");
 Trans CANT_READ_M4A("We Can't Read .m4a Files On Windows");
-Trans CANT_READ_M4A_FULL("Sorry, file %s is an .m4a file and we can't yet "
+Trans CANT_READ_M4A_FULL("Sorry, file %s is an .m4a file and we cano't yet "
                          "read these files on Windows: "
                          " please convert it to mp3 using iTunes.");
 

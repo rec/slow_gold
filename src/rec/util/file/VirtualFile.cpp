@@ -16,8 +16,8 @@ namespace {
 
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
-String fixPathElement(const String& s) {
-  return s.replace(":", "-");
+inline String fixPathElement(const String& s) {
+  return s;  // .replace(":", "-");
 }
 
 const File getFileFromPath(File f, const Path& path) {
