@@ -34,6 +34,7 @@ class BufferFiller : public HasInstance {
 
   thread::Result fillOnce();
   TrackBufferAndThumbnail* trackBuffer() { return &trackBuffer_; }
+  bool isFull() const;
 
  private:
   CriticalSection lock_;

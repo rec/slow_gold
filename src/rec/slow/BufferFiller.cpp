@@ -27,6 +27,10 @@ BufferFiller::BufferFiller(Instance* i) : HasInstance(i),
 
 BufferFiller::~BufferFiller() {}
 
+bool BufferFiller::isFull() const {
+  return trackBuffer_.buffer().isFull();
+}
+
 thread::Result BufferFiller::fillOnce() {
   FillableFrameBuffer<short, 2>* buf = trackBuffer_.buffer();
   if (!buf) {

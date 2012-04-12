@@ -25,6 +25,7 @@ class Fillable {
   bool hasFilled(const Block& b) const;
   BlockSet filled() const { Lock l(lock_); return filled_; }
   void clear() { filled_.clear(); }
+  double filledPercent() const;
 
  protected:
   virtual Size doFillNextBlock(const Block& b) = 0;

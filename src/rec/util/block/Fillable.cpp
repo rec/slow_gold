@@ -28,6 +28,11 @@ int64 Fillable::position() const {
   return position_;
 }
 
+double Fillable::filledPercent() const {
+  Lock l(lock_);
+  return static_cast<double>(getSize(filled_)) / length_;
+}
+
 bool Fillable::hasFilled(const Block& b) const {
   Lock l(lock_);
   if (isFull())

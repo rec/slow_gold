@@ -257,7 +257,7 @@ File getBaseFile(Instance* instance, const String& suffix,
 
 File browseForFileToSave(const File& startFile) {
   FileChooser c(SELECT_SAVE_FILE, startFile);
-  return c.browseForFileToSave(true) ? File::nonexistent : c.getResult();
+  return c.browseForFileToSave(true) ? c.getResult() : File::nonexistent;
 }
 
 File browseForFileToSaveTreeView(const File& startFile) {
@@ -288,9 +288,34 @@ File getSaveFile(Instance* instance, const String& suffix) {
   return file;
 }
 
+class Callback : public ModalComponentManager::Callback {
+ public:
+  Callback() {}
+  virtual ~Callback() {}
+  virtual void modalStateFinished (int returnValue) {
+    DLOG(INFO) << "Here! " << returnValue;
+  }
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Callback)
+};
+
 void save(Instance* instance, const String& suffix, bool useSelection) {
+  using namespace juce;
   File file = getSaveFile(instance, suffix);
+  if (file == File::nonexistent) {
+    DLOG(INFO) << "none!";
+    return;
+  }
+
+  AlertWindow alert(FINISHING_LOADING, FINISHING_LOADING,
+                    AlertWindow::InfoIcon);
+  double progress = 0.0;
+  alert.addProgressBarComponent(progress);
+  alert.enterModalState(true, new Callback);
+  Thread::sleep(5000);
   DLOG(INFO) << str(file);
+
 }
 
 void saveAsAIFF(Instance* i) { save(i, ".aiff", false); }

@@ -16,6 +16,7 @@ class TrackBufferAndThumbnail {
   virtual ~TrackBufferAndThumbnail();
 
   FillableFrameBuffer<short, 2> *buffer() { return &buffer_; }
+  const FillableFrameBuffer<short, 2>& buffer() const { return buffer_; }
 
   Samples<44100> setReader(const VirtualFile& file, AudioFormatReader* r);
   void addBlock(Samples<44100> pos, const AudioSourceChannelInfo& info);

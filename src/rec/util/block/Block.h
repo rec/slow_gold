@@ -67,6 +67,15 @@ inline bool intersects(const Block& x, const Block& y) {
   return contains(x, y.first) || contains(y, x.first);
 }
 
+inline Size getSize(const BlockSet& set) {
+  Size size = 0;
+  for (BlockSet::const_iterator i = set.begin(); i != set.end(); ++i)
+    size += getSize(*i);
+
+  return size;
+}
+
+
 inline bool isBlock(const BlockSet& set, const Block& block) {
   return (set.size() == 1) && (*set.begin() == block);
 }
