@@ -128,16 +128,27 @@ template <> void convertSample<int64, int64>(int64 f, int64 *t) {
   *t = f;
 }
 
-static const float HALF_RANGE = 32768.0f;
-static const float FULL_RANGE = (2.0f * HALF_RANGE - 1.0f);
+static const float HALF_SHORT_RANGE = 32768.0f;
+static const float FULL_SHORT_RANGE = (2.0f * HALF_SHORT_RANGE - 1.0f);
 
 template <> void convertSample<short, float>(const short from, float* to) {
-  *to = (from + HALF_RANGE) / FULL_RANGE * 2.0f - 1.0f;
+  *to = (from + HALF_SHORT_RANGE) / FULL_SHORT_RANGE * 2.0f - 1.0f;
 }
 
 template <> void convertSample<float, short>(const float from, short* to) {
-  float f = FULL_RANGE * (1.0f + from) / 2.0f - HALF_RANGE;
-  *to = static_cast<short>(std::min(floorf(f), HALF_RANGE - 1.0f));
+  float f = FULL_SHORT_RANGE * (1.0f + from) / 2.0f - HALF_SHORT_RANGE;
+  *to = static_cast<short>(std::min(floorf(f), HALF_SHORT_RANGE - 1.0f));
+}
+
+static const int32 MAX_VALUE = 0x7fffffff;;
+static const double DIVIDER = 1.0 + MAX_VALUE;
+
+template <> void convertSample<int32, float>(const int32 from, float* to) {
+  *to = static_cast<float>(from / DIVIDER);
+}
+
+template <> void convertSample<float, int32>(const float from, int32* to) {
+  *to = static_cast<int32>(from * MAX_VALUE);
 }
 
 template <> void convertSample<float, float>(float f, float *t) {

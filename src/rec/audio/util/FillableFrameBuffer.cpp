@@ -7,12 +7,8 @@ namespace util {
 
 template <typename Sample, int CHANNELS>
 FillableFrameBuffer<Sample, CHANNELS>::FillableFrameBuffer(int blockSize)
-    : blockSize_(blockSize) {
+    : blockSize_(blockSize), intBuffer_(blockSize), floatBuffer_(blockSize) {
   CHECK_DDD(194, 439, int64, int64);
-  for (int i = 0; i < CHANNELS; ++i) {
-    buffer_[i].resize(blockSize);
-    bufferPointers_[i] = &buffer_[i][0];
-  }
 }
 
 template <typename Sample, int CHANNELS>
@@ -47,7 +43,11 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
   }
 
   Samples<44100> size = std::min(block::getSize(b), blockSize_);
-  if (!reader_->read(bufferPointers_, CHANNELS, b.first, size.toInt(), false)) {
+
+  int32** pointers = reader_->usesFloatingPointData ?
+    reinterpret_cast<int32**>(floatBuffer_.pointers_) : intBuffer_.pointers_;
+
+  if (!reader_->read(pointers, CHANNELS, b.first, size.toInt(), false)) {
     LOG(DFATAL) << "Reader failed to read!";
     return 0;
   }
@@ -56,8 +56,13 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
 
   for (int i = 0; i < size; ++i, ++frame) {
     for (int c = 0; c < CHANNELS; ++c) {
-      int32 sample = bufferPointers_[c][i];
-      convertSample<int32, Sample>(sample, &frame->sample_[c]);
+      if (reader_->usesFloatingPointData) {
+        float sample = floatBuffer_.pointers_[c][i];
+        convertSample<float, Sample>(sample, &frame->sample_[c]);
+      } else {
+        int32 sample = intBuffer_.pointers_[c][i];
+        convertSample<int32, Sample>(sample, &frame->sample_[c]);
+      }
     }
   }
 

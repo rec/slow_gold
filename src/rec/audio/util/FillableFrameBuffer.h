@@ -14,6 +14,19 @@ namespace util {
 const static int FILLABLE_FRAME_BLOCK_SIZE = 10240;
 
 template <typename Sample, int CHANNELS>
+struct SampleBuffer {
+  SampleBuffer(int sampleCount) {
+    for (int i = 0; i < CHANNELS; ++i) {
+      buffer_[i].resize(sampleCount);
+      pointers_[i] = &buffer_[i][0];
+    }
+  }
+
+  vector<Sample> buffer_[CHANNELS];
+  Sample* pointers_[CHANNELS];
+};
+
+template <typename Sample, int CHANNELS>
 class FillableFrameBuffer : public block::Fillable {
  public:
   FillableFrameBuffer(int blockSize = FILLABLE_FRAME_BLOCK_SIZE);
@@ -36,8 +49,9 @@ class FillableFrameBuffer : public block::Fillable {
   const block::Size blockSize_;
   FillableFrame frames_;
   ptr<AudioFormatReader> reader_;
-  vector<int> buffer_[CHANNELS];
-  int* bufferPointers_[CHANNELS];
+
+  SampleBuffer<int32, CHANNELS> intBuffer_;
+  SampleBuffer<float, CHANNELS> floatBuffer_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(FillableFrameBuffer);
 };
