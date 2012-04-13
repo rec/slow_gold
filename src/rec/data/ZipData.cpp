@@ -42,7 +42,7 @@ void addFiles(const File& root, Builder* builder, int cmp = COMPRESSION_LEVEL) {
 File writeZipFile(const Builder& builder, const String& name) {
   File f = zipFileName(name);
   FileOutputStream output(f);
-  if (builder.writeToStream(output))
+  if (builder.writeToStream(output, NULL))
     return f;
 
   LOG(ERROR) << "Couldn't write to " << str(f);
