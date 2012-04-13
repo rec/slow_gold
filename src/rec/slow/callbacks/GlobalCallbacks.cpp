@@ -86,10 +86,7 @@ void requestSupport() {
     String body = String::formatted(MAIL_ATTACH, c_str(fn)) + String("\n\n") +
       MAIL_DISCARD;
     URL url = MAILTO.withParameter("subject", subject).withParameter("body", body);
-    LOG(INFO) << str(url.toString(true));
-    File f("/tmp/url.txt");
-    f.deleteFile();
-    juce::FileOutputStream fos(f);
+    File("/tmp/url.txt").replaceWithText(url.toString(true));
     url.launchInDefaultBrowser();
   }
 }
