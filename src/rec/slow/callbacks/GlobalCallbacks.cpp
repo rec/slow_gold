@@ -79,19 +79,13 @@ void requestSupport() {
           PLEASE_CONTACT + String("\n") + SUPPORT);
   } else {
     String fn = f.getFileName();
-    const char* f2 = c_str(fn);
     alert(SUPPORTED,
-          String::formatted(MAIL_CREATED, f2) + "\n\n" +
+          String::formatted(MAIL_CREATED, c_str(fn)) + "\n\n" +
           String::formatted(PLEASE_MAIL, c_str(SUPPORT)));
     String subject = String::formatted(MAIL_SUBJECT, c_str(key));
     String body = String::formatted(MAIL_ATTACH, c_str(fn)) + String("\n\n") +
       MAIL_DISCARD;
     URL url = MAILTO.withParameter("subject", subject).withParameter("body", body);
-    File("/tmp/url.txt").replaceWithText(url.toString(true));
-    File("/tmp/subject.txt").replaceWithText(subject);
-    File("/tmp/body.txt").replaceWithText(body);
-    File("/tmp/fn.txt").replaceWithText(fn);
-    File("/tmp/fn2.txt").replaceWithText(c_str(fn));
     url.launchInDefaultBrowser();
   }
 }

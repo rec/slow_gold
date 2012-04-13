@@ -116,9 +116,19 @@ inline const string str(const MidiMessage& msg) {
                 msg.getRawDataSize());
 }
 
+#if JUCE_WINDOWS
+
+inline const wchar_t* c_str(const String& s) {
+  return s.toWideCharPointer();
+}
+
+#else
+
 inline const char* c_str(const String& s) {
   return s.toUTF8().getAddress();
 }
+
+#endif
 
 inline void beep( ) {
   juce::LookAndFeel::getDefaultLookAndFeel().playAlertSound();

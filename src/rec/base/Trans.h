@@ -54,10 +54,19 @@ class Trans {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Trans);
 };
 
+#if JUCE_WINDOWS
+
+inline const wchar_t* c_str(const Trans& s) {
+  return w_str(String(s));
+}
+
+#else
+
 inline const char* c_str(const Trans& s) {
   return c_str(String(s));
 }
 
+#endif
 
 }  // namespace rec
 
