@@ -39,11 +39,11 @@ class CommandDatabase {
   void rawMerge(Table* table, Commands commands) {
     for (int i = 0; i < commands.command_size(); ++i) {
       const Command& c = commands.command(i);
-      Table::iterator i = table->find(c.type());
-      if (i == table->end())
+      Table::iterator j = table->find(c.type());
+      if (j == table->end())
         table->insert(std::make_pair(c.type(), new Command(c)));
       else
-        i->second->MergeFrom(c);
+        j->second->MergeFrom(c);
     }
   }
 

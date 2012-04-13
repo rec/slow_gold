@@ -20,7 +20,7 @@ double pitchScale(const Stretch& d) {
 }
 
 double pitchSemitones(const Stretch& d) {
-  return 12.0 * log2(pitchScale(d));
+  return 12.0 * log(pitchScale(d)) / log(2.0);
 }
 
 }  // namespace stretch
