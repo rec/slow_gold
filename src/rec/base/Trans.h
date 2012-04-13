@@ -57,7 +57,7 @@ class Trans {
 #if JUCE_WINDOWS
 
 inline const wchar_t* c_str(const Trans& s) {
-  return w_str(String(s));
+  return c_str(String(s));
 }
 
 #else
