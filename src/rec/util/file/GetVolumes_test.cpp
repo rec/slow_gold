@@ -1,3 +1,5 @@
+#ifdef FIX_TESTS
+
 #include <gtest/gtest.h>
 
 #include "rec/util/file/GetVolumes.h"
@@ -22,3 +24,6 @@ TEST(GetVolumes, get) {
 }  // namespace file
 }  // namespace util
 }  // namespace rec
+
+
+#endif  // FIX_TESTS

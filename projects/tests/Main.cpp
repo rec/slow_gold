@@ -12,7 +12,7 @@ using namespace rec::app;
 
 class TestApplication : public GenericApplication {
  public:
-  TestApplication() : GenericApplication("tests", "1.0") {}
+  TestApplication() : GenericApplication(NULL, NULL) {}
   virtual ~TestApplication() {}
 
   virtual void initialise(const String& commandLine) {
@@ -22,7 +22,7 @@ class TestApplication : public GenericApplication {
     setApplicationReturnValue(RUN_ALL_TESTS());
     quit();
   }
-  virtual DocumentWindow* createWindow() const { return NULL; }
+  virtual app::Window* createWindow() { return NULL; }
 
 };
 

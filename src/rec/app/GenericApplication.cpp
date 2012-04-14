@@ -43,7 +43,8 @@ void GenericApplication::initialise(const String&) {
     return;
 
   audio::format::mpg123::initializeOnce();
-  initializer_(this);
+  if (initializer_)
+    initializer_(this);
   window_.reset(createWindow());
   window_->startListening();
   window_->initialise();
@@ -65,7 +66,8 @@ void GenericApplication::shutdown() {
   }
 
   util::thread::trash::waitForAllThreadsToExit(1000);
-  shutdown_(this);
+  if (shutdown_)
+    shutdown_(this);
 
   LOG(INFO) << name() << ": shutdown finished.";
 }

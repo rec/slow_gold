@@ -1,3 +1,5 @@
+#ifdef FIX_TESTS
+
 #include <stdio.h>
 #include <string.h>
 
@@ -54,3 +56,5 @@ TEST(Reader, All) {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
+
+#endif  // FIX_TESTS

@@ -1,3 +1,5 @@
+#if FIX_TESTS
+
 #include <gtest/gtest.h>
 
 #include "rec/audio/util/ConvertSample.h"
@@ -18,3 +20,5 @@ TEST(Audio, Convert) {
 
 }  // namespace audio
 }  // namespace rec
+
+#endif   // FIX_TESTS

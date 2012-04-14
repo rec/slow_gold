@@ -1,3 +1,5 @@
+#ifdef FIX_TESTS
+
 #include <gtest/gtest.h>
 
 #include "rec/data/proto/TestData.pb.h"
@@ -7,7 +9,7 @@
 #include "rec/data/Operation.pb.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 
 TEST(Proto, Apply) {
   LoopPointList loop_point;
@@ -22,5 +24,7 @@ TEST(Proto, Apply) {
   EXPECT_EQ(v.uint32_f(), 23.5);
 }
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
+
+#endif  // FIX_TESTS

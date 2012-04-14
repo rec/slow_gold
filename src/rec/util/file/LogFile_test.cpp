@@ -1,3 +1,5 @@
+#ifdef FIX_TESTS
+
 #include <gtest/gtest.h>
 
 #include "rec/util/file/LogFile.h"
@@ -108,3 +110,5 @@ TEST(LogFile, TwoRecords) {
 }  // namespace util
 }  // namespace file
 }  // namespace rec
+
+#endif  // FIX_TESTS

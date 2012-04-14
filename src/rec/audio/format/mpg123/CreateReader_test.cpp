@@ -1,3 +1,5 @@
+#ifdef FIX_TESTS
+
 #include <stdio.h>
 
 #include <gtest/gtest.h>
@@ -37,3 +39,5 @@ TEST(CreateReader, Create) {
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
+
+#endif  // FIX_TESTS

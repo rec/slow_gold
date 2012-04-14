@@ -6,7 +6,7 @@
 // #include "rec/slow/Parameters.pb.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 namespace {
 
 TEST(Equals, VirtualFile) {
@@ -56,5 +56,5 @@ TEST(Equals, Parameters) {
 #endif
 
 }  // namespace
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
