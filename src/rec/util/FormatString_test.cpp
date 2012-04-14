@@ -34,6 +34,20 @@ TEST(FormatString, ThreeParts) {
   EXPECT_EQ(2, s.args().size());
 }
 
+TEST(FormatString, ThreePartsTwoEmpty) {
+  FormatString s("foo %1%2");
+  EXPECT_EQ("foo barbing", str(s.format("bar", "bing")));
+  EXPECT_EQ(3, s.parts().size());
+  EXPECT_EQ(2, s.args().size());
+}
+
+TEST(FormatString, MissingNumber) {
+  FormatString s("foo %hello");
+  EXPECT_EQ("foo %hello", str(s.format()));
+  EXPECT_EQ(1, s.parts().size());
+  EXPECT_EQ(0, s.args().size());
+}
+
 }  // namespace
 }  // namespace util
 }  // namespace rec

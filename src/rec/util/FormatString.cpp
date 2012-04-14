@@ -49,8 +49,6 @@ class FormatHelper {
   void parsePercent() {
     if (wasPercent_)
       prefix_ += '%';
-    else
-      addPart();
     wasPercent_ = !wasPercent_;
   }
 
@@ -58,16 +56,15 @@ class FormatHelper {
     if (wasPercent_) {
       wasPercent_ = false;
       if (isdigit(ch)) {
+        addPart();
         inNumber_ = true;
         addDigit(ch);
+        return;
       } else {
-        LOG(DFATAL) << "% without a following number";
-        number_ = 0;
-        addArg();
+        prefix_ += '%';
       }
-    } else {
-      prefix_ += ch;
     }
+    prefix_ += ch;
   }
 
   void addPart() {
