@@ -341,6 +341,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\FormatString.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
@@ -1752,6 +1753,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\FormatString.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Listener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\ListenerAdaptor.h"/>

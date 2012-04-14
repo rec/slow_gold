@@ -1111,6 +1111,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp">
       <Filter>SlowGold 8\rec\util\file</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\FormatString.cpp">
+      <Filter>SlowGold 8\rec\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp">
       <Filter>SlowGold 8\rec\util</Filter>
     </ClCompile>
@@ -3386,6 +3389,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h">
       <Filter>SlowGold 8\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\FormatString.h">
+      <Filter>SlowGold 8\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h">
       <Filter>SlowGold 8\rec\util</Filter>

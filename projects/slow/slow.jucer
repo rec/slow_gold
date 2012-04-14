@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="auMOhG3ic" name="SlowGold 8">
+  <MAINGROUP id="gst8ho25T" name="SlowGold 8">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1115,6 +1115,10 @@
           <FILE compile="0" file="../../src/rec/util/file/ZeroCopy.h" id="2G2AS8h7l"
                 name="ZeroCopy.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/util/FormatString.cpp" id="NzqFkr6Zl"
+              name="FormatString.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/FormatString.h" id="BeyY6ecEj"
+              name="FormatString.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/FormatTime.cpp" id="B5k4EzsmP"
               name="FormatTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="PBRyregJE"
@@ -1473,7 +1477,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="6creOd9uQ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="9qiZ8DEQq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
