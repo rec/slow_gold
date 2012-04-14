@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="ZzXCNBbAG" name="tests">
+  <MAINGROUP id="fu8B1XNNM" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1161,6 +1161,8 @@
               name="FormatString.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatString.h" id="BeyY6ecEj"
               name="FormatString.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/FormatString_test.cpp" id="Jjuk2KTfa"
+              name="FormatString_test.cpp" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/FormatTime.cpp" id="B5k4EzsmP"
               name="FormatTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="PBRyregJE"
@@ -1533,7 +1535,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="JVdyYoS8i" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="gtzTIFyrB" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

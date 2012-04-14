@@ -14,6 +14,7 @@ class FormatHelper {
     for (int i = 0; i < source.length(); ++i)
       parseChar(source[i]);
     parseChar('\0');
+    DCHECK_EQ(parts_->size(), args_->size() + 1);
   }
 
  private:

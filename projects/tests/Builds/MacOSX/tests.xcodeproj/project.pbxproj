@@ -93,6 +93,7 @@
 		44FA0A5365B73C1181F3A892 /* Stereo.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1D9F3E23B6A2131F8203E399 /* Stereo.pb.cc */; };
 		45246857D22A7669186633C4 /* TransportController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1C93F8AC97C06F913B703C4 /* TransportController.cpp */; };
 		45C5E65282CCEF11BC56DCA7 /* Value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9053F4C3E1578C76E34A94A7 /* Value.cpp */; };
+		460FCAEFD52CF0EB9CD936F5 /* FormatString_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1952CECA5E2E30802AE1021 /* FormatString_test.cpp */; };
 		47234A319CC271A22FD4DBEE /* Range_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F500CBD551D9229619C5850 /* Range_test.cpp */; };
 		4729829DF83AD35B09650FDC /* Cursor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = B6DDAAAFF971D211D0E97444 /* Cursor.pb.cc */; };
 		474DD20FB878283600B53A6D /* JumpForwardButton.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB878B7B3A53161E3DE6A6 /* JumpForwardButton.svg.cpp */; };
@@ -1317,6 +1318,7 @@
 		A1724B9811792F48CAD911B2 /* juce_module_info */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_module_info; path = ../../../../../juce/modules/juce_events/juce_module_info; sourceTree = SOURCE_ROOT; };
 		A1841327A667799AAC2061E2 /* juce_Thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_Thread.h; path = ../../../../../juce/modules/juce_core/threads/juce_Thread.h; sourceTree = SOURCE_ROOT; };
 		A1932D3FC53FA4BA41DF0AD8 /* juce_AudioIODevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_AudioIODevice.h; path = ../../../../../juce/modules/juce_audio_devices/audio_io/juce_AudioIODevice.h; sourceTree = SOURCE_ROOT; };
+		A1952CECA5E2E30802AE1021 /* FormatString_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FormatString_test.cpp; path = ../../../../src/rec/util/FormatString_test.cpp; sourceTree = SOURCE_ROOT; };
 		A1F63987FBBAD9E33BDFB3F7 /* WaveformPainter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformPainter.h; path = ../../../../src/rec/widget/waveform/WaveformPainter.h; sourceTree = SOURCE_ROOT; };
 		A21E606D84ADD437A0198FE7 /* LockedFlag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedFlag.h; path = ../../../../src/rec/util/thread/LockedFlag.h; sourceTree = SOURCE_ROOT; };
 		A243ACCD0792F5375EB95F76 /* juce_android_OpenSL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_OpenSL.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_android_OpenSL.cpp; sourceTree = SOURCE_ROOT; };
@@ -2504,6 +2506,16 @@
 			name = waveform;
 			sourceTree = "<group>";
 		};
+		3EF2C2B2244509CCCBAEBB67 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = tests;
+			sourceTree = "<group>";
+		};
 		3F7343F4E42FE7BE81ED7547 /* hashing */ = {
 			isa = PBXGroup;
 			children = (
@@ -2980,16 +2992,6 @@
 			name = documents;
 			sourceTree = "<group>";
 		};
-		71D6AD0925B8A3854D36FCCF /* tests */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = tests;
-			sourceTree = "<group>";
-		};
 		7321A4C36D1B0DBF7B39B8BB /* stretch */ = {
 			isa = PBXGroup;
 			children = (
@@ -3117,6 +3119,7 @@
 				91F15E3D14FBFE4017DFB950 /* file */,
 				A278F48B47651D96AE043ECB /* FormatString.cpp */,
 				CE0B421092F69F467EE98190 /* FormatString.h */,
+				A1952CECA5E2E30802AE1021 /* FormatString_test.cpp */,
 				47515E20811B826BDF862EE3 /* FormatTime.cpp */,
 				4E9494A6C04B7A86D01FA7E6 /* FormatTime.h */,
 				A0D48B97E349904DDCDD4873 /* Listener.h */,
@@ -3147,7 +3150,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				71D6AD0925B8A3854D36FCCF /* tests */,
+				3EF2C2B2244509CCCBAEBB67 /* tests */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -4995,6 +4998,7 @@
 				8091044CE4D2EB0F003BE657 /* Util.cpp in Sources */,
 				540F75E2FEC46790673CE9CD /* VirtualFile.cpp in Sources */,
 				9861DD8A90724D90E03CD5ED /* FormatString.cpp in Sources */,
+				460FCAEFD52CF0EB9CD936F5 /* FormatString_test.cpp in Sources */,
 				06C91DCCD57D391C3D56AC9B /* FormatTime.cpp in Sources */,
 				5C23587B94736B28BA659A12 /* LoopPoint.cpp in Sources */,
 				64DDBE4C369F18DA00FFDD7A /* Mathy_test.cpp in Sources */,
