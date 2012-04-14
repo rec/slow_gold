@@ -62,7 +62,7 @@ class FormatHelper {
         addDigit(ch);
       } else {
         LOG(DFATAL) << "% without a following number";
-        number_ = -1;
+        number_ = 0;
         addArg();
       }
     } else {
@@ -76,13 +76,13 @@ class FormatHelper {
   }
 
   void addArg() {
-    args_->add(number_);
+    args_->add(number_ - 1);
     number_ = 0;
     inNumber_ = false;
   }
 
   void addDigit(juce_wchar ch) {
-    number_ = 10 * number_ + (ch - '\0');
+    number_ = 10 * number_ + (ch - '0');
     inNumber_ = true;
   }
 
@@ -117,6 +117,8 @@ String FormatString::format(const StringArray& strings) const {
     append(&result, parts_[i]);
     if (i < args_.size()) {
       int a = args_[i];
+      DCHECK_GE(a, 0);
+      DCHECK_LT(a, len);
       append(&result, (a >= 0 && a < len) ? strings[args_[i]] : ERROR);
     }
   }
