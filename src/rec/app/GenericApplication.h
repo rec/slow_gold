@@ -5,6 +5,7 @@
 
 #include "rec/util/thread/Trash.h"
 #include "rec/util/Listener.h"
+#include "JuceHeader.h"
 
 namespace rec {
 namespace app {
@@ -18,8 +19,7 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
  public:
   static const int STARTUP_THREAD_PRIORITY = 4;
 
-  GenericApplication(const String& name, const String& version,
-                     ApplicationFunction initializer,
+  GenericApplication(ApplicationFunction initializer,
                      ApplicationFunction shutdown);
   virtual ~GenericApplication();
 
@@ -27,23 +27,21 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   virtual void shutdown();
   virtual Window* createWindow() = 0;
 
-  virtual const String getApplicationName()    { return name_; }
-  virtual const String getApplicationVersion() { return version_; }
+  virtual const String getApplicationName()    { return name(); }
+  virtual const String getApplicationVersion() { return version(); }
   virtual bool moreThanOneInstanceAllowed()    { return false; }
   virtual void anotherInstanceStarted(const String&) {}
   virtual void systemRequestedQuit();
 
   virtual void operator()(bool disabled) { Lock l(lock_); disabled_ = disabled; }
 
-  const String& version() const { return version_; }
-  const String& name() const { return name_; }
+  const String version() const { return ProjectInfo::versionString; }
+  const String name() const { return ProjectInfo::projectName; }
   bool autoCheckForUpdates() const { return autoCheckForUpdates_; }
   void setAutoCheckForUpdates(bool a) { autoCheckForUpdates_ = a; }
   bool checkForUpdates();
 
  protected:
-  const String name_;
-  const String version_;
   ApplicationFunction initializer_;
   ApplicationFunction shutdown_;
   ptr<Window> window_;

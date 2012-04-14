@@ -2398,9 +2398,6 @@
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_gui_extra\juce_module_info">
       <Filter>Juce Modules\juce_gui_extra</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLComponent.cpp">
-      <Filter>Juce Modules\juce_opengl\opengl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLContext.cpp">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClCompile>
@@ -2416,26 +2413,14 @@
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLImage.cpp">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLPixelFormat.cpp">
+      <Filter>Juce Modules\juce_opengl\opengl</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLShaderProgram.cpp">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLTexture.cpp">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_android_OpenGLComponent.cpp">
-      <Filter>Juce Modules\juce_opengl\native</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_ios_OpenGLComponent.mm">
-      <Filter>Juce Modules\juce_opengl\native</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_linux_OpenGLComponent.cpp">
-      <Filter>Juce Modules\juce_opengl\native</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_mac_OpenGLComponent.mm">
-      <Filter>Juce Modules\juce_opengl\native</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_win32_OpenGLComponent.cpp">
-      <Filter>Juce Modules\juce_opengl\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_opengl\juce_module_info">
       <Filter>Juce Modules\juce_opengl</Filter>
@@ -4854,9 +4839,6 @@
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_Matrix3D.h">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLComponent.h">
-      <Filter>Juce Modules\juce_opengl\opengl</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLContext.h">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClInclude>
@@ -4875,6 +4857,9 @@
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLPixelFormat.h">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLRenderer.h">
+      <Filter>Juce Modules\juce_opengl\opengl</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\opengl\juce_OpenGLShaderProgram.h">
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClInclude>
@@ -4888,6 +4873,21 @@
       <Filter>Juce Modules\juce_opengl\opengl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_MissingGLDefinitions.h">
+      <Filter>Juce Modules\juce_opengl\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_OpenGL_android.h">
+      <Filter>Juce Modules\juce_opengl\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_OpenGL_ios.h">
+      <Filter>Juce Modules\juce_opengl\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_OpenGL_linux.h">
+      <Filter>Juce Modules\juce_opengl\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_OpenGL_osx.h">
+      <Filter>Juce Modules\juce_opengl\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_OpenGL_win32.h">
       <Filter>Juce Modules\juce_opengl\native</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_opengl\native\juce_OpenGLExtensions.h">

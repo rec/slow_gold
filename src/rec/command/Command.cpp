@@ -14,6 +14,7 @@ CommandRecordTable::~CommandRecordTable() {
 }
 
 void CommandRecordTable::writeTable() const {
+#ifdef DEBUG
   File out("/tmp/records.txt");
   out.deleteFile();
 
@@ -23,6 +24,7 @@ void CommandRecordTable::writeTable() const {
 
   String res = str(commands.DebugString());
   juce::FileOutputStream(out).writeText(res, false, false);
+#endif
 }
 
 CommandRecord* CommandRecordTable::find(CommandID id, bool create) {

@@ -14,17 +14,16 @@
 namespace rec {
 namespace app {
 
-GenericApplication::GenericApplication(const String& n, const String& v,
-                                       ApplicationFunction i,
+GenericApplication::GenericApplication(ApplicationFunction i,
                                        ApplicationFunction s)
-    : name_(n), version_(v), initializer_(i), shutdown_(s), disabled_(false),
+    : initializer_(i), shutdown_(s), disabled_(false),
       autoCheckForUpdates_(false) {
 }
 
 GenericApplication::~GenericApplication() {}
 
 bool GenericApplication::checkForUpdates() {
-  bool newVersion = downloadNewVersionIfNeeded(version_, name_);
+  bool newVersion = downloadNewVersionIfNeeded(version(), name());
   if (newVersion)
     quit();
   return newVersion;
@@ -39,7 +38,7 @@ void GenericApplication::initialise(const String&) {
   // FLAGS_log_dir = str(File::getSpecialLocation(
   //     File::userApplicationDataDirectory).getChildFile("Logs"));
 
-  setName(name_);
+  setName(name());
   if (autoCheckForUpdates() && checkForUpdates())
     return;
 
@@ -53,11 +52,11 @@ void GenericApplication::initialise(const String&) {
                          STARTUP_THREAD_PRIORITY,
                          window_.get(),
                          &Window::startup);
-  LOG(INFO) << name_ << ": initialise finished.";
+  LOG(INFO) << name() << ": initialise finished.";
 }
 
 void GenericApplication::shutdown() {
-  LOG(INFO) << name_ << ": shutdown starting...";
+  LOG(INFO) << name() << ": shutdown starting...";
 
   gui::dialog::shutdownDialog();
   if (window_) {
@@ -68,7 +67,7 @@ void GenericApplication::shutdown() {
   util::thread::trash::waitForAllThreadsToExit(1000);
   shutdown_(this);
 
-  LOG(INFO) << name_ << ": shutdown finished.";
+  LOG(INFO) << name() << ": shutdown finished.";
 }
 
 void GenericApplication::systemRequestedQuit() {

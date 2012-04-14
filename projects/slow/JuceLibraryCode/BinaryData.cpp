@@ -1006,6 +1006,7 @@ static const unsigned char temp_82906af6[] =
 const char* icon_png = (const char*) temp_82906af6;
 
 
+const char* getNamedResource (const char*, int&) throw();
 const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw()
 {
     int hash = 0;

@@ -1,6 +1,5 @@
 ("$ROOT/rec/scripts/jucer/build_jucer_files.py" slow &&\
 \
- ICON_SOURCE="$ROOT/rec/art/icons" &&\
  ICON_MAC="$ROOT/rec/projects/slow/Builds/MacOSX" &&\
  ICON_WINDOWS="$ROOT/rec/projects/slow/Builds/VisualStudio2010" &&\
 \
