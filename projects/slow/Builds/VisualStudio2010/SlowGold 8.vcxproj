@@ -299,6 +299,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\Commands.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\Descriptions.def.cpp"/>
@@ -1706,6 +1707,7 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\Commands.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\Descriptions.def.h"/>

@@ -1,7 +1,5 @@
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 
-#include "rec/audio/stretch/Stretch.h"
-#include "rec/audio/stretch/Stretchy.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
@@ -23,8 +21,8 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
+#include "rec/slow/callbacks/SaveFile.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/Math.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Zoom.h"
 
@@ -35,16 +33,6 @@ using namespace rec::widget::waveform;
 
 namespace {
 // Skin
-
-Trans FINISHING_LOADING("Finishing loading audio from disk.");
-Trans SAVING_FILE("Saving file %s.");
-Trans SELECT_SAVE_FILE("Choose File To Save to");
-Trans DOWN("down");
-Trans UP("up");
-
-Trans TRANSPOSE_ONE("one semitone %s");
-Trans TRANSPOSE_MANY("%s %s semitones");
-Trans CANCEL("Cancel");
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
@@ -211,142 +199,6 @@ void checkForUpdates(Instance * i) {
   i->window_->application()->checkForUpdates();
 }
 
-String removeTrailingZeroes(const String& s) {
-  String st = s;
-  st = st.trimCharactersAtEnd("0");
-  st = st.trimCharactersAtEnd(".");
-  return st;
-}
-
-File getBaseFile(Instance* instance, const String& suffix,
-                 const GuiSettings& settings) {
-  using namespace juce;
-  using namespace rec::audio::stretch;
-
-  File file;
-  if (settings.has_last_directory())
-    file = str(settings.last_directory());
-  else
-    file = File::getSpecialLocation(File::userMusicDirectory);
-
-  String baseName = instance->window_->getName();
-  Stretch stretch = instance->player_->stretchy()->getStretch();
-  double ts = 100.0 / audio::stretch::timeScale(stretch);
-
-  if (!near(ts, 100.0, 0.05)) {
-    int roundTs = static_cast<int>(ts);
-    if (near(ts, roundTs, 0.05))
-      baseName += String::formatted(" @ %d%%", roundTs);
-    else
-      baseName += String::formatted(" @ %.1f%%", ts);
-  }
-
-  double ps = audio::stretch::pitchSemitones(stretch);
-  if (!near(ps, 0.0, 0.005)) {
-    const Trans& sign = (ps > 0) ? UP : DOWN;
-    ps = abs(ps);
-    String num = removeTrailingZeroes(String::formatted("%.3f", ps));
-    baseName += ", ";
-    if (num == "1")
-      baseName += String::formatted(TRANSPOSE_ONE, c_str(sign));
-    else
-      baseName += String::formatted(TRANSPOSE_MANY, c_str(sign), c_str(num));
-  }
-
-  return file.getChildFile(baseName + suffix);
-}
-
-File browseForFileToSave(const File& startFile) {
-  FileChooser c(SELECT_SAVE_FILE, startFile);
-  return c.browseForFileToSave(true) ? c.getResult() : File::nonexistent;
-}
-
-File browseForFileToSaveTreeView(const File& startFile) {
-  int flags = FileBrowserComponent::saveMode +
-    FileBrowserComponent::canSelectFiles +
-    FileBrowserComponent::useTreeView;
-
-  FileBrowserComponent fileBrowser(flags, startFile, NULL, NULL);
-  FileChooserDialogBox dialogBox(SELECT_SAVE_FILE, "", fileBrowser, true,
-                                 Colours::white);
-  return dialogBox.show() ? fileBrowser.getSelectedFile(0) : File::nonexistent;
-}
-
-File getSaveFile(Instance* instance, const String& suffix) {
-  File file;
-  if (instance->empty())
-    return file;
-
-  GuiSettings settings = data::getGlobal<GuiSettings>();
-  File startFile = getBaseFile(instance, suffix, settings);
-  file = settings.use_tree_view_in_file_dialogs() ?
-    browseForFileToSave(startFile) : browseForFileToSaveTreeView(startFile);
-
-  if (file != File::nonexistent) {
-    settings.set_last_directory(str(file.getParentDirectory()));
-    data::setGlobal(settings);
-  }
-  return file;
-}
-
-class Callback : public ModalComponentManager::Callback {
- public:
-  Callback(bool* cancelled) : cancelled_(cancelled) {}
-  virtual ~Callback() {}
-  virtual void modalStateFinished (int returnValue) {
-    DLOG(INFO) << "Here!!";
-    *cancelled_ = true;
-  }
-
- private:
-  bool* const cancelled_;
-
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Callback)
-};
-
-void save(Instance* instance, const String& suffix, bool useSelection) {
-  using namespace juce;
-  File file = getSaveFile(instance, suffix);
-  if (file == File::nonexistent) {
-    DLOG(INFO) << "none!";
-    return;
-  }
-
-  AlertWindow alert(FINISHING_LOADING, FINISHING_LOADING,
-                    AlertWindow::InfoIcon);
-  alert.addButton(CANCEL, 1, KeyPress(KeyPress::escapeKey));
-  double progress = 0.0;
-  bool cancelled = false;
-  alert.addProgressBarComponent(progress);
-  alert.enterModalState(true, new Callback(&cancelled));
-
-  const block::Fillable& buffer =
-    *instance->bufferFiller_->trackBuffer()->buffer();
-
-  DLOG(INFO) << "Starting to wait";
-  while (!(cancelled || buffer.isFull())) {
-    progress = buffer.filledPercent();
-    Thread::sleep(500);
-  }
-  DLOG(INFO) << "First loop done";
-  while (!cancelled) {
-    Thread::sleep(500);
-  }
-  DLOG(INFO) << "Second loop done";
-}
-
-void saveAsAIFF(Instance* i) { save(i, ".aiff", false); }
-void saveAsFLAC(Instance* i) { save(i, ".flac", false); }
-void saveAsMP3(Instance* i) { save(i, ".mp3", false); }
-void saveAsOGG(Instance* i) { save(i, ".ogg", false); }
-void saveAsWAV(Instance* i) { save(i, ".wav", false); }
-
-void saveSelectionAsAIFF(Instance* i) { save(i, ".aiff", true); }
-void saveSelectionAsFLAC(Instance* i) { save(i, ".flac", true); }
-void saveSelectionAsMP3(Instance* i) { save(i, ".mp3", true); }
-void saveSelectionAsOGG(Instance* i) { save(i, ".ogg", true); }
-void saveSelectionAsWAV(Instance* i) { save(i, ".wav", true); }
-
 }  // namespace
 
 using namespace rec::command;
@@ -386,17 +238,6 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);
   addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection, i);
   addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates, i);
-}
-
-void InstanceCallbacks::translateAll() {
-  FINISHING_LOADING.translate();
-  SAVING_FILE.translate();
-  SELECT_SAVE_FILE.translate();
-  DOWN.translate();
-  UP.translate();
-  TRANSPOSE_ONE.translate();
-  TRANSPOSE_MANY.translate();
-  CANCEL.translate();
 }
 
 }  // namespace slow

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="fu8B1XNNM" name="tests">
+  <MAINGROUP id="douPk14wt" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -952,6 +952,10 @@
                 id="SSxsa84iR" name="RepeatedCallbacks.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/RepeatedCallbacks.h"
                 id="sZlIPSnL7" name="RepeatedCallbacks.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/callbacks/SaveFile.cpp"
+                id="PV6sppgME" name="SaveFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/SaveFile.h" id="aZQKl6MJL"
+                name="SaveFile.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/callbacks/SelectionCallbacks.cpp"
                 id="LLz6U50Zg" name="SelectionCallbacks.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/SelectionCallbacks.h"
@@ -1535,7 +1539,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="gtzTIFyrB" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="eV4rYSuYy" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
