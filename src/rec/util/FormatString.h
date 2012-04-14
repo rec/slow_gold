@@ -17,9 +17,6 @@ class FormatString {
   String format(const String&, const String&) const;
   String format(const String&, const String&, const String&) const;
 
-  const juce::StringArray& parts() const { return parts_; }
-  juce::Array<int> args() const { return args_; }
-
  private:
   juce::StringArray parts_;
   juce::Array<int> args_;
