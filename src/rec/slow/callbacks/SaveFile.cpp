@@ -105,19 +105,33 @@ File getSaveFile(Instance* instance, const String& suffix) {
   return file;
 }
 
-class Callback : public ModalComponentManager::Callback {
+class SaveThread : public ThreadWithProgressWindow {
  public:
-  Callback(bool* cancelled) : cancelled_(cancelled) {}
-  virtual ~Callback() {}
-  virtual void modalStateFinished (int returnValue) {
-    DLOG(INFO) << "Here!!";
-    *cancelled_ = true;
+  SaveThread(Instance* instance, const File& file)
+      : ThreadWithProgressWindow(FINISHING_LOADING, true, true),
+        instance_(instance), file_(file) {
+    setStatusMessage(FINISHING_LOADING);
+  }
+  virtual ~SaveThread() {}
+
+  virtual void run() {
+    const block::Fillable& buffer =
+      *instance_->bufferFiller_->trackBuffer()->buffer();
+
+    while (!(threadShouldExit() || buffer.isFull())) {
+      setProgress(buffer.filledPercent());
+      Thread::sleep(100);
+    }
+
+    while (!(threadShouldExit() || buffer.isFull())) {
+    }
   }
 
  private:
-  bool* const cancelled_;
+  Instance* instance_;
+  const File file_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Callback)
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(SaveThread)
 };
 
 }  // namespace
@@ -125,32 +139,8 @@ class Callback : public ModalComponentManager::Callback {
 void saveFile(Instance* instance, const String& suffix, bool useSelection) {
   using namespace juce;
   File file = getSaveFile(instance, suffix);
-  if (file == File::nonexistent) {
-    DLOG(INFO) << "none!";
-    return;
-  }
-
-  AlertWindow alert(FINISHING_LOADING, FINISHING_LOADING,
-                    AlertWindow::InfoIcon);
-  alert.addButton(CANCEL, 1, KeyPress(KeyPress::escapeKey));
-  double progress = 0.0;
-  bool cancelled = false;
-  alert.addProgressBarComponent(progress);
-  alert.enterModalState(true, new Callback(&cancelled));
-
-  const block::Fillable& buffer =
-    *instance->bufferFiller_->trackBuffer()->buffer();
-
-  DLOG(INFO) << "Starting to wait";
-  while (!(cancelled || buffer.isFull())) {
-    progress = buffer.filledPercent();
-    Thread::sleep(500);
-  }
-  DLOG(INFO) << "First loop done";
-  while (!cancelled) {
-    Thread::sleep(500);
-  }
-  DLOG(INFO) << "Second loop done";
+  if (file != File::nonexistent)
+    SaveThread(instance, file).runThread();
 }
 
 void SaveFile::translateAll() {
