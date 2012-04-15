@@ -11,6 +11,7 @@ AudioFormatManager* getAudioFormatManager();
 
 AudioFormatReader* createReader(const File&);
 AudioFormatReader* createReader(const String&);
+AudioFormatWriter* createWriter(const File&);
 
 }  // namespace format
 }  // namespace audio
