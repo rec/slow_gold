@@ -18,15 +18,22 @@ namespace {
 
 using namespace juce;
 
+Trans FILE_SAVE_FAILED("Error During Save.");
+Trans FILE_SAVE_FAILED_FULL("There was an error saving your file %s.");
 Trans FINISHING_LOADING("Finishing loading audio from disk.");
 Trans SAVING_FILE("Saving File %s.");
 Trans SELECT_SAVE_FILE("Choose File To Save to");
 Trans DOWN("down");
 Trans UP("up");
+Trans OK("OK");
 
 Trans TRANSPOSE_ONE("one semitone %s");
 Trans TRANSPOSE_MANY("%s %s semitones");
 Trans CANCEL("Cancel");
+
+// Skin
+const int COPY_UPDATE_SIZE = 2048;
+const int COPY_BLOCK_SIZE = 2048;
 
 String removeTrailingZeroes(const String& s) {
   String st = s;
@@ -132,8 +139,19 @@ class SaveThread : public ThreadWithProgressWindow {
     }
 
     setProgress(0.0);
-    while (!threadShouldExit()) {
-
+    source_->prepareToPlay(COPY_BLOCK_SIZE, 44100.0);
+    for (Samples<44100> toCopy = source_->getTotalLength();
+         !threadShouldExit() && toCopy > 0; toCopy -= COPY_UPDATE_SIZE) {
+      if (!writer->writeFromAudioSource(*source_,
+                                        std::min(COPY_UPDATE_SIZE, toCopy.toInt()),
+                                        COPY_BLOCK_SIZE)) {
+        writer.reset();
+        file_.deleteFile();
+        String error = String::formatted(FILE_SAVE_FAILED_FULL,
+                                         c_str(file_.getFileName()));
+        AlertWindow::showMessageBox(AlertWindow::InfoIcon, FILE_SAVE_FAILED,
+                                    error, OK);
+      }
     }
   }
 
@@ -159,9 +177,12 @@ void saveFile(Instance* instance, const String& suffix, bool useSelection) {
 }
 
 void SaveFile::translateAll() {
+  FILE_SAVE_FAILED.translate();
+  FILE_SAVE_FAILED_FULL.translate();
   FINISHING_LOADING.translate();
   SAVING_FILE.translate();
   SELECT_SAVE_FILE.translate();
+  OK.translate();
   DOWN.translate();
   UP.translate();
   TRANSPOSE_ONE.translate();
