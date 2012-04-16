@@ -95,12 +95,12 @@ MainPage::MainPage(Components* components)
       helpCaption_("", ""),
       helpBody_("", "") {
   CHECK_DDD(123, 51, int16, int32);
-  add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.4);
+  add(mainPanel_.get(), &navigationPanel_, MIN_NAV_PANEL, -1.0, -0.2);
   add(mainPanel_.get(), &navigationResizer_, MIN_RESIZER);
 
   Component* waveform = components->waveform_.get();
 
-  add(mainPanel_.get(), waveform, MIN_WAVEFORM, -1.0, -0.5);
+  add(mainPanel_.get(), waveform, MIN_WAVEFORM, -1.0, -0.6);
   waveform->addAndMakeVisible(components->modeSelector_.get());
   waveform->addAndMakeVisible(components->commandBar_.get());
 
