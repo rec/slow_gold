@@ -10,12 +10,10 @@ const char COMPANY_NAME[] = "World Wide Woodshed";
 
 }  // namespace
 
-void setName(const String& name) {
+void setApplicationName(const String& name) {
   DCHECK(!applicationName.length());
   applicationName = name;
 }
-
-const String& getName() { return applicationName; }
 
 File getAppDirectory() {
   return File::getSpecialLocation(File::userApplicationDataDirectory).

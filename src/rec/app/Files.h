@@ -7,8 +7,7 @@ namespace rec {
 namespace app {
 
 // Set the name of the application ("SlowGold").  You may only call this once.
-void setName(const String&);
-const String& getName();
+void setApplicationName(const String&);
 
 // Get the root directory to store files.
 File getAppDirectory();

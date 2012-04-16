@@ -38,7 +38,7 @@ void GenericApplication::initialise(const String&) {
   // FLAGS_log_dir = str(File::getSpecialLocation(
   //     File::userApplicationDataDirectory).getChildFile("Logs"));
 
-  setName(name());
+  setApplicationName(name());
   if (autoCheckForUpdates() && checkForUpdates())
     return;
 

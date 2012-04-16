@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/SaveFile.h"
 
+#include "rec/audio/format/Manager.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretchy.h"
@@ -107,9 +108,9 @@ File getSaveFile(Instance* instance, const String& suffix) {
 
 class SaveThread : public ThreadWithProgressWindow {
  public:
-  SaveThread(Instance* instance, const File& file)
+  SaveThread(Instance* instance, const File& file, bool useSelection)
       : ThreadWithProgressWindow(FINISHING_LOADING, true, true),
-        instance_(instance), file_(file) {
+        instance_(instance), file_(file), useSelection_(useSelection) {
     setStatusMessage(FINISHING_LOADING);
   }
   virtual ~SaveThread() {}
@@ -123,13 +124,19 @@ class SaveThread : public ThreadWithProgressWindow {
       Thread::sleep(100);
     }
 
-    while (!(threadShouldExit() || buffer.isFull())) {
+    ptr<AudioFormatWriter> writer(audio::format::createWriter(file_));
+    if (!writer)
+      return;
+
+    setProgress(0.0);
+    while (!threadShouldExit()) {
     }
   }
 
  private:
-  Instance* instance_;
+  Instance* const instance_;
   const File file_;
+  const bool useSelection_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SaveThread)
 };
@@ -140,7 +147,7 @@ void saveFile(Instance* instance, const String& suffix, bool useSelection) {
   using namespace juce;
   File file = getSaveFile(instance, suffix);
   if (file != File::nonexistent)
-    SaveThread(instance, file).runThread();
+    SaveThread(instance, file, useSelection).runThread();
 }
 
 void SaveFile::translateAll() {

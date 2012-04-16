@@ -53,9 +53,14 @@ void Selection::moveBackward(Samples<44100> dt) {
     position_ -= moved;
     if (dt > 0 && i == sel.begin()) {
       i = sel.end();
-      position_ = getTotalLength();
+      position_ = Wrappy::getTotalLength();
     }
   }
+}
+
+int64 Selection::getTotalLength() const {
+  Lock l(lock_);
+  return block::getSize(selection_);
 }
 
 }  // namespace source

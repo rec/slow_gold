@@ -143,7 +143,7 @@ void toggleSelectionSegment(LoopPointList* loops, Samples<44100> time) {
 }
 
 Range<Samples<44100> > contiguousSelectionContaining(const LoopPointList& lpl,
-                                              Samples<44100> time) {
+                                                     Samples<44100> time) {
   int i = 1;
   int size = lpl.loop_point_size();
 
@@ -156,7 +156,6 @@ Range<Samples<44100> > contiguousSelectionContaining(const LoopPointList& lpl,
   }
   return range;
 }
-
 
 }  // namespace audio
 }  // namespace rec

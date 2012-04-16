@@ -35,6 +35,8 @@ class Selection : public Wrappy, public DataListener<LoopPointList> {
   // Move the clock backward, taking into account the segments.
   void moveBackward(Samples<44100> dt);
 
+  virtual int64 getTotalLength() const;
+
  private:
   block::BlockSet selection_;
   LoopPointList loopPoints_;

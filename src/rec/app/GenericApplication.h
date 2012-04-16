@@ -5,7 +5,6 @@
 
 #include "rec/util/thread/Trash.h"
 #include "rec/util/Listener.h"
-#include "JuceHeader.h"
 
 namespace rec {
 namespace app {

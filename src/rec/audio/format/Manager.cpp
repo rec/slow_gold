@@ -55,7 +55,6 @@ AudioFormatWriter* createWriter(const File& f) {
   return writer.transfer();
 }
 
-
 }  // namespace format
 }  // namespace audio
 }  // namespace rec
