@@ -12,7 +12,7 @@ class Frames {
  public:
   Frames(Samples<44100> length = 0)
       : length_(-1), allocatedLength_(-1), frames_(NULL) {
-    setLength(length);
+        setLength(length);
   }
   ~Frames() { free(frames_); }
 
