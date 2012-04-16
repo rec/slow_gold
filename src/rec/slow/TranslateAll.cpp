@@ -11,6 +11,7 @@
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/AboutWindow.h"
+#include "rec/slow/callbacks/InstanceCallbacks.h"
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 #include "rec/slow/callbacks/SaveFile.h"
 #include "rec/util/cd/CDReader.h"
@@ -23,6 +24,7 @@ namespace slow {
 void translateAll() {
   AboutWindow::translateAll();
   GlobalCallbacks::translateAll();
+  InstanceCallbacks::translateAll();
   SaveFile::translateAll();
 
   app::DownloadVersion::translateAll();

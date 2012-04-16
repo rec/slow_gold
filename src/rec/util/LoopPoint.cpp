@@ -8,43 +8,45 @@
 namespace rec {
 namespace audio {
 
-const block::BlockSet getTimeSelection(const LoopPointList& list) {
+const block::BlockSet getTimeSelection(const LoopPointList& lpl) {
   block::BlockSet sel;
-  Samples<44100> length(list.length());
-  int size = list.loop_point_size();
+  Samples<44100> length(lpl.length());
+  int size = lpl.loop_point_size();
   for (int i = 0, j; i < size; ++i) {
-    for (; i < size && !list.loop_point(i).selected(); ++i);
-    for (j = i; j < size && list.loop_point(j).selected(); ++j);
+    for (; i < size && !lpl.loop_point(i).selected(); ++i);
+    for (j = i; j < size && lpl.loop_point(j).selected(); ++j);
     if (j != i) {
-      Samples<44100> begin = list.loop_point(i).time();
+      Samples<44100> begin = lpl.loop_point(i).time();
       Samples<44100> endTime = length;
       if (j < size)
-        endTime = list.loop_point(j).time();
+        endTime = lpl.loop_point(j).time();
       Samples<44100> end = endTime;
-      sel.insert(block::makeBlock(Samples<44100>(begin), Samples<44100>(end)));
+      sel.insert(block::makeBlock(begin, end));
     }
     i = j;
   }
 
+  if (sel.empty())
+    sel.insert(block::makeBlock(0, length));
   return sel;
 }
 
-bool isCloseTo(const LoopPointList& loops, Samples<44100> t) {
-  DCHECK(loops.has_length());
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
-    if (Math<Samples<44100> >::near(t, loops.loop_point(i).time(), CLOSE_LOOPS))
+bool isCloseTo(const LoopPointList& lpl, Samples<44100> t) {
+  DCHECK(lpl.has_length());
+  for (int i = 0; i < lpl.loop_point_size(); ++i) {
+    if (Math<Samples<44100> >::near(t, lpl.loop_point(i).time(), CLOSE_LOOPS))
       return true;
   }
-  return Math<Samples<44100> >::near(t, loops.length(), CLOSE_LOOPS);
+  return Math<Samples<44100> >::near(t, lpl.length(), CLOSE_LOOPS);
 }
 
-LoopPointList getSelected(const LoopPointList& loops, bool selected) {
+LoopPointList getSelected(const LoopPointList& lpl, bool selected) {
   LoopPointList result;
-  result.set_length(loops.length());
+  result.set_length(lpl.length());
 
-  for (int i = 0, size = loops.loop_point_size(); i < size; ++i) {
-    if (loops.loop_point(i).selected() == selected)
-      result.add_loop_point()->CopyFrom(loops.loop_point(i));
+  for (int i = 0, size = lpl.loop_point_size(); i < size; ++i) {
+    if (lpl.loop_point(i).selected() == selected)
+      result.add_loop_point()->CopyFrom(lpl.loop_point(i));
   }
   return result;
 }
@@ -96,9 +98,9 @@ struct CompareLoopPoints {
 
 }  // namespace
 
-void sort(LoopPointList* loops) {
-  std::sort(loops->mutable_loop_point()->begin(),
-            loops->mutable_loop_point()->end(),
+void sort(LoopPointList* lpl) {
+  std::sort(lpl->mutable_loop_point()->begin(),
+            lpl->mutable_loop_point()->end(),
             CompareLoopPoints());
 }
 
@@ -112,33 +114,33 @@ LoopPointList addLoopPoint(const LoopPointList& lpl, Samples<44100> t) {
 }
 
 void addLoopPointToData(const VirtualFile& file, Samples<44100> time) {
-  LoopPointList loops = data::getProto<LoopPointList>(&file);
-  data::setProto(audio::addLoopPoint(loops, time), &file);
+  LoopPointList lpl = data::getProto<LoopPointList>(&file);
+  data::setProto(audio::addLoopPoint(lpl, time), &file);
 }
 
-int getSelectionCount(const LoopPointList& loops) {
+int getSelectionCount(const LoopPointList& lpl) {
   int count = 0;
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
-    if (loops.loop_point(i).selected())
+  for (int i = 0; i < lpl.loop_point_size(); ++i) {
+    if (lpl.loop_point(i).selected())
       ++count;
   }
   return count;
 }
 
-int getSegment(const LoopPointList& loops, Samples<44100> time) {
-  int size = loops.loop_point_size();
+int getSegment(const LoopPointList& lpl, Samples<44100> time) {
+  int size = lpl.loop_point_size();
   for (int i = 1; ; ++i) {
-    if (i >= size || time < static_cast<int64>(loops.loop_point(i).time()))
+    if (i >= size || time < static_cast<int64>(lpl.loop_point(i).time()))
       return i - 1;
   }
 }
 
-void toggleSelectionSegment(LoopPointList* loops, Samples<44100> time) {
-  if (!(loops && loops->loop_point_size())) {
+void toggleSelectionSegment(LoopPointList* lpl, Samples<44100> time) {
+  if (!(lpl && lpl->loop_point_size())) {
     LOG(DFATAL) << "no loops";
     return;
   }
-  LoopPoint* lp = loops->mutable_loop_point(getSegment(*loops, time));
+  LoopPoint* lp = lpl->mutable_loop_point(getSegment(*lpl, time));
   lp->set_selected(!lp->selected());
 }
 

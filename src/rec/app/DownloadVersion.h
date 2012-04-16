@@ -6,8 +6,15 @@
 namespace rec {
 namespace app {
 
+enum DownloadStatus {
+  DOWNLOAD_NOT_FOUND,
+  DOWNLOAD_SUCCEEDED,
+  DOWNLOAD_CANCELLED_OR_FAILED
+};
+
 // Returns true if a new version was downloaded.
-bool downloadNewVersionIfNeeded(const String& version, const String& name);
+DownloadStatus downloadNewVersionIfNeeded(const String& version,
+                                          const String& name);
 
 struct DownloadVersion {
   static void translateAll();

@@ -128,21 +128,25 @@ bool checkForNewMajorVersion(const String& current, const String&,
   // so let's not do that. :-D
 
   if (cmp < 0)
-    LOG(DFATAL) << "Future Version number! " << current << ", " << *version;
+    DLOG(ERROR) << "Future Version number! " << current << ", " << *version;
 
   return (cmp > 0);
 }
 
 }  // namespace
 
-bool downloadNewVersionIfNeeded(const String& version, const String& name) {
+DownloadStatus downloadNewVersionIfNeeded(const String& version,
+                                          const String& name) {
   String newVersion;
   bool isNew = checkForNewMajorVersion(version, name, &newVersion);
 
-  if (!isNew)
+  if (!isNew) {
     LOG(INFO) << "New: "  << version << " current: " << newVersion;
+    return DOWNLOAD_NOT_FOUND;
+  }
 
-  return isNew && downloadNewVersion(name, newVersion, version);
+  return downloadNewVersion(name, newVersion, version) ? DOWNLOAD_SUCCEEDED :
+    DOWNLOAD_CANCELLED_OR_FAILED;
 }
 
 void DownloadVersion::translateAll() {

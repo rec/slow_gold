@@ -4,6 +4,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/Gain.h"
+#include "rec/base/Trans.h"
 #include "rec/command/KeyboardBindings.h"
 #include "rec/command/map/KeyCommandMapEditor.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
@@ -33,6 +34,11 @@ using namespace rec::widget::waveform;
 
 namespace {
 // Skin
+
+Trans NO_DOWNLOAD_FOUND("Your Version Of SlowGold Is Up-To-Date");
+Trans NO_DOWNLOAD_FOUND_FULL("Your version of SlowGold, %s, is up-to-date.");
+Trans OK("OK");
+
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
@@ -64,7 +70,9 @@ void nudgeVolumeUp(Instance* i) {
 void clearLoops(Instance *i) {
   const VirtualFile& f = i->file();
   LoopPointList loops;
-  loops.add_loop_point();
+  LoopPoint* loop = loops.add_loop_point();
+  loop->set_selected(true);
+  loop->set_time(0);
   loops.set_length(data::getProto<LoopPointList>(f).length());
   data::setProto(loops, f);
 }
@@ -196,7 +204,12 @@ void toggleStartStop(Instance* i) {
 }
 
 void checkForUpdates(Instance * i) {
-  i->window_->application()->checkForUpdates();
+  if (i->window_->application()->checkForUpdates() == app::DOWNLOAD_NOT_FOUND) {
+    String msg = String::formatted(NO_DOWNLOAD_FOUND_FULL,
+                                   c_str(i->window_->application()->version()));
+    AlertWindow::showMessageBox(AlertWindow::InfoIcon, NO_DOWNLOAD_FOUND,
+                                msg, OK);
+  }
 }
 
 }  // namespace
@@ -238,6 +251,12 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);
   addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection, i);
   addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates, i);
+}
+
+void InstanceCallbacks::translateAll() {
+  NO_DOWNLOAD_FOUND.translate();
+  NO_DOWNLOAD_FOUND_FULL.translate();
+  OK.translate();
 }
 
 }  // namespace slow

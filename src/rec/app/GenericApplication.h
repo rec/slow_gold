@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include "rec/app/DownloadVersion.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/util/Listener.h"
 
@@ -38,7 +39,7 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   const String name() const { return ProjectInfo::projectName; }
   bool autoCheckForUpdates() const { return autoCheckForUpdates_; }
   void setAutoCheckForUpdates(bool a) { autoCheckForUpdates_ = a; }
-  bool checkForUpdates();
+  DownloadStatus checkForUpdates();
 
  protected:
   ApplicationFunction initializer_;

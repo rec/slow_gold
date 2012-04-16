@@ -1,8 +1,5 @@
-//#include <glog/log_severity.h>
-
 #include "rec/app/GenericApplication.h"
 
-#include "rec/app/DownloadVersion.h"
 #include "rec/app/Files.h"
 #include "rec/app/Window.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
@@ -22,9 +19,9 @@ GenericApplication::GenericApplication(ApplicationFunction i,
 
 GenericApplication::~GenericApplication() {}
 
-bool GenericApplication::checkForUpdates() {
-  bool newVersion = downloadNewVersionIfNeeded(version(), name());
-  if (newVersion)
+DownloadStatus GenericApplication::checkForUpdates() {
+  DownloadStatus newVersion = downloadNewVersionIfNeeded(version(), name());
+  if (newVersion == DOWNLOAD_SUCCEEDED)
     quit();
   return newVersion;
 }

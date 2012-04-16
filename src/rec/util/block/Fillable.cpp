@@ -8,9 +8,10 @@ namespace util {
 namespace block {
 
 void Fillable::setNextFillPosition(int64 position) {
-  DCHECK_GE(position, 0);  // TODO: why did this fire once?
+  DCHECK_GE(position, 0);
+  DCHECK_LT(position, length_);
   Lock l(lock_);
-  position_ = juce::jmax(position, 0LL);
+  position_ = juce::jmin(length_, juce::jmax(position, 0LL));
 }
 
 void Fillable::setLength(int64 length) {
