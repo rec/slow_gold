@@ -54,7 +54,7 @@ class Player : public DataListener<Gain>,
   Timer* timer() { return timer_; }
   stretch::Stretchy* stretchy() { return stretchy_; }
 
-  Source* makeSourceCopy(Source* s, bool usingSelection);
+  Source* makeSourceCopy(Source* s, bool useSelection);
 
   virtual void changeListenerCallback(ChangeBroadcaster*);
 

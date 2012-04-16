@@ -98,9 +98,9 @@ void Player::setGain(double gain) {
   player_.setGain(static_cast<float>(gain));
 }
 
-Source* Player::makeSourceCopy(Source* s, bool usingSelection) {
+Source* Player::makeSourceCopy(Source* s, bool useSelection) {
   ptr<Source> source(s);
-  if (usingSelection) {
+  if (useSelection) {
     ptr<Selection> selection(new Selection(source.transfer()));
     (*selection)(selection_->loopPoints());
     source.reset(selection.transfer());

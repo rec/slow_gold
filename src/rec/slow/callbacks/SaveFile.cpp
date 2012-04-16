@@ -108,9 +108,9 @@ File getSaveFile(Instance* instance, const String& suffix) {
 
 class SaveThread : public ThreadWithProgressWindow {
  public:
-  SaveThread(Instance* instance, const File& file, bool useSelection)
+  SaveThread(Instance* instance, const File& file, audio::Source* source)
       : ThreadWithProgressWindow(FINISHING_LOADING, true, true),
-        instance_(instance), file_(file), useSelection_(useSelection) {
+        instance_(instance), file_(file), source_(source) {
     setStatusMessage(FINISHING_LOADING);
   }
   virtual ~SaveThread() {}
@@ -119,24 +119,28 @@ class SaveThread : public ThreadWithProgressWindow {
     const block::Fillable& buffer =
       *instance_->bufferFiller_->trackBuffer()->buffer();
 
+    setProgress(0.0);
     while (!(threadShouldExit() || buffer.isFull())) {
       setProgress(buffer.filledPercent());
       Thread::sleep(100);
     }
 
     ptr<AudioFormatWriter> writer(audio::format::createWriter(file_));
-    if (!writer)
+    if (!writer) {
+      LOG(DFATAL) << "Couldn't create AudioFormatWriter for " << str(file_);
       return;
+    }
 
     setProgress(0.0);
     while (!threadShouldExit()) {
+
     }
   }
 
  private:
   Instance* const instance_;
   const File file_;
-  const bool useSelection_;
+  ptr<audio::Source> source_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SaveThread)
 };
@@ -146,8 +150,11 @@ class SaveThread : public ThreadWithProgressWindow {
 void saveFile(Instance* instance, const String& suffix, bool useSelection) {
   using namespace juce;
   File file = getSaveFile(instance, suffix);
-  if (file != File::nonexistent)
-    SaveThread(instance, file, useSelection).runThread();
+  if (file != File::nonexistent) {
+    ptr<audio::Source> s(instance->makeSource());
+    s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
+    SaveThread(instance, file, s.transfer()).runThread();
+  }
 }
 
 void SaveFile::translateAll() {

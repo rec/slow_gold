@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_INSTANCE__
 #define __REC_SLOW_INSTANCE__
 
-#include "rec/base/Samples.h"
+#include "rec/audio/Audio.h"
 
 namespace rec {
 
@@ -38,6 +38,7 @@ class Instance {
   bool isPlaying() const;
   void updateGui();
   bool empty() const;
+  audio::Source* makeSource() const;
   void setProto(const Message&, Undoable undoable = CAN_UNDO);
 
   SlowWindow* window_;

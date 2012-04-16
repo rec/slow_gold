@@ -2,7 +2,6 @@
 #define __REC_AUDIO_AUDIO__
 
 #include "rec/base/Samples.h"
-#include "rec/base/Samples.h"
 #include "rec/util/Range.h"
 
 namespace rec {

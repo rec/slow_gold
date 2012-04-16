@@ -100,10 +100,9 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 
   player_->level()->addListener(components_->transportController_->levelListener());
 
-  TrackBufferAndThumbnail* trackBuffer = bufferFiller_->trackBuffer();
-  Source *s = new FrameSource<short, 2>(trackBuffer->buffer()->frames());
-  player_->setSource(s);
-  components_->waveform_->setAudioThumbnail(trackBuffer->thumbnail());
+  player_->setSource(makeSource());
+  components_->waveform_->setAudioThumbnail(bufferFiller_->trackBuffer()->
+                                            thumbnail());
 
   window_->addListener(menus_.get());
 
@@ -120,6 +119,10 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 #endif
 
   threads_->start();
+}
+
+audio::Source* Instance::makeSource() const {
+  return bufferFiller_->trackBuffer()->buffer()->makeSource();
 }
 
 Instance::~Instance() {

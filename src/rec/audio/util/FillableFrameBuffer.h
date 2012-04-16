@@ -37,6 +37,7 @@ class FillableFrameBuffer : public block::Fillable {
   virtual block::Size doFillNextBlock(const block::Block& b);
 
   typedef Frames<InterleavedFrame<Sample, CHANNELS> > FillableFrame;
+  Source* makeSource() const;
 
   const FillableFrame& frames() const { return frames_; }
 

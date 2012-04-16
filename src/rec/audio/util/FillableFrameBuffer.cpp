@@ -1,5 +1,6 @@
 #include "rec/audio/util/FillableFrameBuffer.h"
 #include "rec/audio/util/ConvertSample.h"
+#include "rec/audio/source/FrameSource.h"
 
 namespace rec {
 namespace audio {
@@ -67,6 +68,11 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
   }
 
   return size;
+}
+
+template <typename Sample, int CHANNELS>
+Source* FillableFrameBuffer<Sample, CHANNELS>::makeSource() const {
+  return new source::FrameSource<Sample, CHANNELS>(frames_);
 }
 
 template class FillableFrameBuffer<short, 2>;
