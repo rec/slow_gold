@@ -19,7 +19,7 @@ namespace {
 using namespace juce;
 
 Trans FINISHING_LOADING("Finishing loading audio from disk.");
-Trans SAVING_FILE("Saving file %s.");
+Trans SAVING_FILE("Saving File %s.");
 Trans SELECT_SAVE_FILE("Choose File To Save to");
 Trans DOWN("down");
 Trans UP("up");
@@ -108,10 +108,9 @@ File getSaveFile(Instance* instance, const String& suffix) {
 
 class SaveThread : public ThreadWithProgressWindow {
  public:
-  SaveThread(Instance* instance, const File& file, audio::Source* source)
-      : ThreadWithProgressWindow(FINISHING_LOADING, true, true),
-        instance_(instance), file_(file), source_(source) {
-    setStatusMessage(FINISHING_LOADING);
+  SaveThread(const String& name, Instance* i, const File& f, audio::Source* s)
+      : ThreadWithProgressWindow(name, true, true),
+        instance_(i), file_(f), source_(s) {
   }
   virtual ~SaveThread() {}
 
@@ -120,6 +119,7 @@ class SaveThread : public ThreadWithProgressWindow {
       *instance_->bufferFiller_->trackBuffer()->buffer();
 
     setProgress(0.0);
+    setStatusMessage(FINISHING_LOADING);
     while (!(threadShouldExit() || buffer.isFull())) {
       setProgress(buffer.filledPercent());
       Thread::sleep(100);
@@ -153,7 +153,8 @@ void saveFile(Instance* instance, const String& suffix, bool useSelection) {
   if (file != File::nonexistent) {
     ptr<audio::Source> s(instance->makeSource());
     s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
-    SaveThread(instance, file, s.transfer()).runThread();
+    String name = String::formatted(SAVING_FILE, c_str(file.getFileName()));
+    SaveThread(name, instance, file, s.transfer()).runThread();
   }
 }
 
