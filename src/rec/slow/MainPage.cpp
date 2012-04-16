@@ -37,7 +37,7 @@ const int MIN_WAVEFORM = 150;
 const int MIN_PLAYBACK_PANEL = 100;
 const int MIN_HELP_PANEL = 200;
 const int MIN_TRANSFORM_PANEL = 250;
-const int MIN_TRANSPORT_PANEL = 340;
+const int MIN_TRANSPORT_PANEL = 260;
 const int MIN_SONG_DATA = 150;
 const int MIN_LOOPS = 250;
 const int MIN_DIRECTORY = 75;
@@ -137,12 +137,14 @@ MainPage::MainPage(Components* components)
 
   add(&playbackPanel_, &helpPanel_, MIN_HELP_PANEL, -1.0, -0.20);
   add(&helpPanel_, &helpCaption_, HELP_CAPTION_HEIGHT);
-  add(&helpPanel_, &helpBody_, -0.1, -1.0, -0.7);
+  add(&helpPanel_, &helpBody_, -0.1, -1.0, -0.2);
 
   add(&playbackPanel_, &helpResizer_, 5.0);
-  add(&playbackPanel_, components->transformController_, MIN_TRANSFORM_PANEL, -1.0, -0.75);
+  add(&playbackPanel_, components->transformController_,
+      MIN_TRANSFORM_PANEL, -1.0, -0.75);
   add(&playbackPanel_, &transformResizer_, 5.0);
-  add(&playbackPanel_, components->transportController_.get(), MIN_TRANSPORT_PANEL, -1.0, -0.40);
+  add(&playbackPanel_, components->transportController_.get(),
+      MIN_TRANSPORT_PANEL, -1.0, -0.20);
 }
 
 MainPage::~MainPage() {}
