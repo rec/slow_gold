@@ -28,6 +28,7 @@ const block::BlockSet getTimeSelection(const LoopPointList& lpl) {
 
   if (sel.empty())
     sel.insert(block::makeBlock(0, length));
+
   return sel;
 }
 

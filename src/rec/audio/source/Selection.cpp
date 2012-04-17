@@ -60,7 +60,11 @@ void Selection::moveBackward(Samples<44100> dt) {
 
 int64 Selection::getTotalLength() const {
   Lock l(lock_);
+#if 0
   return block::getSize(selection_);
+#else
+  return Wrappy::getTotalLength();
+#endif
 }
 
 }  // namespace source
