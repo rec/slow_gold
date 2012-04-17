@@ -27,16 +27,16 @@
       <CONFIGURATIONS>
         <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="1" libraryPath="..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\debug\\static;..\\..\\..\\..\\..\\glog\\Debug;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug "
-                       name="Debug" optimisation="1" targetName="SlowGold 8.0.1" winArchitecture="32-bit"
+                       name="Debug" optimisation="1" targetName="SlowGold 8" winArchitecture="32-bit"
                        winWarningLevel="3"/>
         <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="0" libraryPath=";..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\release\\static;..\\..\\..\\..\\..\\glog\\Release;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Release;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Release"
-                       name="Release" optimisation="2" targetName="SlowGold 8.0.1" winArchitecture="32-bit"
+                       name="Release" optimisation="2" targetName="SlowGold 8" winArchitecture="32-bit"
                        winWarningLevel="3"/>
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="EQnatniL0" name="SlowGold">
+  <MAINGROUP id="J7mupF9HP" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1481,7 +1481,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="WVG95BIZb" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="XtjNJTmUT" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
