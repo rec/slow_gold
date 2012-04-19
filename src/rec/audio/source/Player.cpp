@@ -9,6 +9,7 @@
 #include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/util/Math.h"
+#include "rec/util/block/Block.h"
 
 namespace rec {
 namespace audio {
@@ -34,10 +35,9 @@ Player::~Player() {
 
 void Player::init() {
   DataListener<Gain>::init();
-  DataListener<stretch::Stretch>::init();
+  DataListener<LoopPointList>::init();
   DataListener<StereoProto>::init();
-
-  selection_->init();
+  DataListener<stretch::Stretch>::init();
 }
 
 Samples<44100> Player::getNextReadPosition() {
@@ -73,6 +73,23 @@ void Player::operator()(const stretch::Stretch& stretch) {
   stretchy_->setStretch(stretch);
 }
 
+void Player::operator()(const StereoProto& s) {
+  stereo_->setStereo(s);
+}
+
+void Player::operator()(const LoopPointList& loops) {
+  selection_->setSelection(getTimeSelection(loops));
+}
+
+void Player::operator()(const Gain& gain) {
+  setGain(getGain(gain));
+}
+
+void Player::reset() {
+  setState(audio::transport::STOPPED);
+  timer_->setNextReadPosition(0);
+}
+
 State Player::state() const {
   return transportSource_.isPlaying() ? RUNNING : STOPPED;
 }
@@ -81,29 +98,16 @@ void Player::changeListenerCallback(ChangeBroadcaster*) {
   broadcastState();
 }
 
-void Player::operator()(const StereoProto& s) {
-  stereo_->setStereo(s);
-}
-
-void Player::reset() {
-  setState(audio::transport::STOPPED);
-  timer_->setNextReadPosition(0);
-}
-
-void Player::operator()(const Gain& gain) {
-  setGain(getGain(gain));
-}
-
 void Player::setGain(double gain) {
   player_.setGain(static_cast<float>(gain));
 }
 
-Source* Player::makeSourceCopy(Source* s, bool useSelection,
-                               const LoopPointList& loops) {
+Source* Player::makeSourceCopy(Source* s, bool useSelection) {
+  Lock l(lock_);
   ptr<Source> source(s);
   if (useSelection) {
     ptr<Selection> selection(new Selection(source.transfer()));
-    (*selection)(loops);
+    selection->setSelection(selection_->selection());
     source.reset(selection.transfer());
   }
 

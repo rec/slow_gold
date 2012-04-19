@@ -29,8 +29,9 @@ class StereoProto;
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be NULL if no stretch has been requested.
 class Player : public DataListener<Gain>,
-               public DataListener<stretch::Stretch>,
+               public DataListener<LoopPointList>,
                public DataListener<StereoProto>,
+               public DataListener<stretch::Stretch>,
                public Broadcaster<transport::State>,
                public juce::ChangeListener {
  public:
@@ -54,11 +55,12 @@ class Player : public DataListener<Gain>,
   Timer* timer() { return timer_; }
   stretch::Stretchy* stretchy() { return stretchy_; }
 
-  Source* makeSourceCopy(Source* s, bool useSelection, const LoopPointList&);
+  Source* makeSourceCopy(Source* s, bool useSelection);
 
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
   virtual void operator()(const Gain&);
+  virtual void operator()(const LoopPointList&);
   virtual void operator()(const StereoProto&);
   virtual void operator()(const stretch::Stretch&);
 

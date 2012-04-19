@@ -11,24 +11,24 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Selection : public Wrappy, public DataListener<LoopPointList> {
+class Selection : public Wrappy {
  public:
   Selection(PositionableAudioSource* source) : Wrappy(source) {}
 
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
 
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
-  virtual void operator()(const LoopPointList& lpl);
+  virtual void setSelection(const block::BlockSet& s) {
+    Lock l(Wrappy::lock_);
+    selection_ = s;
+  }
 
   const block::BlockSet selection() const {
     Lock l(Wrappy::lock_);
     return selection_;
   }
-
-  // Move the clock backward, taking into account the segments.
-  void moveBackward(Samples<44100> dt);
 
   virtual int64 getTotalLength() const;
 

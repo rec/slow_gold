@@ -170,8 +170,7 @@ void saveFile(Instance* instance, const String& suffix, bool useSelection) {
   File file = getSaveFile(instance, suffix);
   if (file != File::nonexistent) {
     ptr<audio::Source> s(instance->makeSource());
-    LoopPointList lpl;  // TODO:  fill this!
-    s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection, lpl));
+    s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
     String name = String::formatted(SAVING_FILE, c_str(file.getFileName()));
     SaveThread(name, instance, file, s.transfer()).runThread();
   }

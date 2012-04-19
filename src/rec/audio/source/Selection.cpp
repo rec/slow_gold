@@ -26,35 +26,6 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
   }
 }
 
-void Selection::operator()(const LoopPointList& loops) {
-  Lock l(Wrappy::lock_);
-  selection_ = getTimeSelection(loops);
-}
-
-void Selection::moveBackward(Samples<44100> dt) {
-  Lock l(Wrappy::lock_);
-  BlockSet sel = selection();
-  if (!sel.begin()->second) {
-    return;
-  }
-  BlockSet::const_iterator i = sel.begin();
-  for (; i != sel.end() && i->second <= position_; ++i);
-  if (i == sel.end())
-    --i;
-
-  for (; dt > 0; --i) {
-    position_ = std::min<int64>(position_, i->second);
-    Samples<44100> moved = std::min<int64>(position_ - i->first, dt);
-    DCHECK(moved);
-    dt -= moved;
-    position_ -= moved;
-    if (dt > 0 && i == sel.begin()) {
-      i = sel.end();
-      position_ = Wrappy::getTotalLength();
-    }
-  }
-}
-
 int64 Selection::getTotalLength() const {
   Lock l(lock_);
 #ifdef CORRECT_SIZE_CALCULATIONS
