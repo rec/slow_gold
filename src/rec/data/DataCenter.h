@@ -21,6 +21,8 @@ struct DataCenter {
   ptr<UndoStack> undo_;
   ptr<DataMaker> maker_;
   ptr<DataMap> map_;
+
+  const CriticalSection& lock() const;
 };
 
 const DataCenter& getDataCenter();

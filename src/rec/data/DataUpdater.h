@@ -23,8 +23,12 @@ class DataUpdater {
   bool write();
   void setMap(DataMap* m) { map_ = m; }
 
+  const CriticalSection& lock() const { return lock_; }
+
  private:
   CriticalSection lock_;
+  CriticalSection updateLock_;
+  CriticalSection writeLock_;
 
   Thread* updateThread_;
   Thread* writeThread_;

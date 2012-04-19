@@ -12,46 +12,38 @@ namespace data {
 
 // A piece of data got new information!
 void DataUpdater::reportChange(Data* data) {
-  {
-    Lock l(lock_);
-    updateData_.insert(data);
-    if (updateThread_)
-      updateThread_->notify();
-  }
+  Lock l(updateLock_);
+  updateData_.insert(data);
+  if (updateThread_)
+    updateThread_->notify();
 }
 
 bool DataUpdater::update() {
-  Lock l(lock_);
-
-  if (!updateThread_)
-    updateThread_ = Thread::getCurrentThread();
-
-  if (updateThread_->threadShouldExit())
-    return false;
-
   DataSet toUpdate;
-  updateData_.swap(toUpdate);
+  Lock l(lock_);
+  {
+    Lock l2(updateLock_);
+    if (!updateThread_)
+      updateThread_ = Thread::getCurrentThread();
+
+    updateData_.swap(toUpdate);
+  }
 
   if (toUpdate.empty())
     return false;
 
   DataSet toWrite;
-  {
-    ScopedUnlock u(lock_);
-    int j = 0;
-    for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i, ++j) {
-      Data* data = *i;
-      if (data->update())
-        toWrite.insert(data);
-    }
-
-    if (toWrite.empty())
-      return false;
+  int j = 0;
+  for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i, ++j) {
+    Data* data = *i;
+    if (data->update())
+      toWrite.insert(data);
   }
 
-  if (updateThread_->threadShouldExit())
-    return false;
+  if (toWrite.empty())
+      return false;
 
+  Lock l2(writeLock_);
   writeData_.insert(toWrite.begin(), toWrite.end());
   if (writeThread_)
     writeThread_->notify();
@@ -62,22 +54,18 @@ bool DataUpdater::update() {
 bool DataUpdater::write() {
   DataSet toWrite;
   {
-    Lock l(lock_);
+    Lock l2(writeLock_);
     if (!writeThread_)
       writeThread_ = Thread::getCurrentThread();
 
-    if (writeThread_->threadShouldExit() || writeData_.empty())
+    if (writeData_.empty())
       return false;
 
     writeData_.swap(toWrite);
   }
 
-  for (DataSet::iterator i = toWrite.begin(); i != toWrite.end(); ++i) {
-    if (writeThread_->threadShouldExit())
-      return false;
-    else
-      (*i)->writeToFile();
-  }
+  for (DataSet::iterator i = toWrite.begin(); i != toWrite.end(); ++i)
+    (*i)->writeToFile();
 
   return true;
 }

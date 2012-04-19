@@ -20,6 +20,10 @@ DataCenter::DataCenter()
 
 DataCenter::~DataCenter() {}
 
+const CriticalSection& DataCenter::lock() const {
+  return updater_->lock();
+}
+
 static DataCenter** getDC() {
   static DataCenter* dataCenter = new DataCenter;
   return &dataCenter;

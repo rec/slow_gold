@@ -49,7 +49,7 @@ thread::Result BufferFiller::fillOnce() {
   if (jump == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(currentTime()->timeSelection(), buf->filled());
-    block::print(DLOG(INFO), fill);
+    // block::print(DLOG(INFO), fill);
     if (!fill.empty()) {
       BlockList fillList = fillSeries(fill, time(), length());
       if (!fillList.empty())
