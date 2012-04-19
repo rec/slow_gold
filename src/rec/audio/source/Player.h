@@ -37,7 +37,7 @@ class Player : public DataListener<Gain>,
   Player(Device* d);
   virtual ~Player();
 
-  void startListening();
+  void init();
 
   void setState(transport::State state);
 
@@ -54,7 +54,7 @@ class Player : public DataListener<Gain>,
   Timer* timer() { return timer_; }
   stretch::Stretchy* stretchy() { return stretchy_; }
 
-  Source* makeSourceCopy(Source* s, bool useSelection);
+  Source* makeSourceCopy(Source* s, bool useSelection, const LoopPointList&);
 
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
@@ -65,7 +65,9 @@ class Player : public DataListener<Gain>,
   void setGain(double);
 
   void setSource(Source*);
-  void clear();
+
+  // Stop the player and reset the position to 0.
+  void reset();
 
  private:
   CriticalSection lock_;

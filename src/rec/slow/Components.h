@@ -27,7 +27,7 @@ public:
   explicit Components(Instance*);
   ~Components();
 
-  void startListening();
+  void init();
   void setEnabled(bool enabled);
 
   ApplicationCommandManager* manager_;

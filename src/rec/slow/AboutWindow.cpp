@@ -72,8 +72,8 @@ class AboutPane : public Component {
     displayOnStartup_.setInterceptsMouseClicks(true, true);
   }
 
-  void startListening() {
-    displayOnStartup_.startListening();
+  void init() {
+    displayOnStartup_.init();
   }
 
   void paint(Graphics& g) {
@@ -113,7 +113,7 @@ AboutWindow::AboutWindow(Component* parent,
   setAlpha(0.0f);
   parent_->addAndMakeVisible(this);
   aboutPane_->addMouseListener(this, false);
-  aboutPane_->startListening();
+  aboutPane_->init();
 }
 
 AboutWindow::~AboutWindow() {}

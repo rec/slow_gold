@@ -22,7 +22,7 @@ class MainPage {
   MainPage(Components*);
   virtual ~MainPage();
 
-  virtual void startListening();
+  virtual void init();
 
   gui::Layout* panel() { return mainPanel_.get(); }
   void setTooltip(const String&);

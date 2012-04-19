@@ -43,8 +43,8 @@ TimeController::TimeController()
   addToLayout(&filler_);
 }
 
-void TimeController::startListening() {
-  songDial_.startListening();
+void TimeController::init() {
+  songDial_.init();
 }
 
 void TimeController::operator()(const Stretch& stretch) {

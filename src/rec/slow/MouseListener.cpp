@@ -42,9 +42,9 @@ MouseListener::MouseListener(Instance* i)
   w->addListener(this);
 }
 
-void MouseListener::startListening() {
-  DataListener<widget::waveform::ZoomProto>::startListening();
-  GlobalDataListener<Mode>::startListening();
+void MouseListener::init() {
+  DataListener<widget::waveform::ZoomProto>::init();
+  GlobalDataListener<Mode>::init();
 }
 
 namespace {

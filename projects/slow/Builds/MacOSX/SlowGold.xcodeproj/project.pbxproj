@@ -33,6 +33,7 @@
 		18970AF71C6B4DF3B194F2FB /* PlayButton.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6362EA88DA339B8FFE8476BB /* PlayButton.svg.cpp */; };
 		18F164BE38E935DEE9D4EAB0 /* TreeViewDropAll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC401961598B326839AC20BE /* TreeViewDropAll.cpp */; };
 		19362A35292B67D07FBD9378 /* MidiCommandMapEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB3D4B33F49B105151C91F45 /* MidiCommandMapEditor.cpp */; };
+		19924BACC60E6026EC5B2958 /* Instance.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43C23A199B456C4B58575764 /* Instance.pb.cc */; };
 		19E68BEA6097306642292244 /* ReadYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 531B8EC44A1179D2DA8C08E9 /* ReadYaml.cpp */; };
 		1C19EE8DD7DAF944090F78F4 /* Cursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CCC6B55A03032DB3C2C19CD /* Cursor.cpp */; };
 		1C5F7A179FC283B1F7A8C2C3 /* Stretch.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = A9F5F463F116A1AADBC7101E /* Stretch.pb.cc */; };
@@ -724,6 +725,7 @@
 		43569462B351E766C80C6040 /* juce_Viewport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_Viewport.cpp; path = ../../../../../juce/modules/juce_gui_basics/layout/juce_Viewport.cpp; sourceTree = SOURCE_ROOT; };
 		438E42DC4703022C86591458 /* Trans.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Trans.cpp; path = ../../../../src/rec/base/Trans.cpp; sourceTree = SOURCE_ROOT; };
 		43A48BF898A319526A90EA73 /* ZoomToSelectionButton.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ZoomToSelectionButton.svg.cpp; path = ../../../../src/rec/gui/icon/ZoomToSelectionButton.svg.cpp; sourceTree = SOURCE_ROOT; };
+		43C23A199B456C4B58575764 /* Instance.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Instance.pb.cc; path = ../../../../genfiles/proto/rec/slow/Instance.pb.cc; sourceTree = SOURCE_ROOT; };
 		43F657159BCBE58DA944714A /* juce_gui_basics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_gui_basics.h; path = ../../../../../juce/modules/juce_gui_basics/juce_gui_basics.h; sourceTree = SOURCE_ROOT; };
 		4411105838FDB57822BB5BD3 /* juce_android_SystemStats.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_SystemStats.cpp; path = ../../../../../juce/modules/juce_core/native/juce_android_SystemStats.cpp; sourceTree = SOURCE_ROOT; };
 		44555235CA5DE9FFAC93E7BE /* juce_linux_Midi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_linux_Midi.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_linux_Midi.cpp; sourceTree = SOURCE_ROOT; };
@@ -870,6 +872,7 @@
 		5BF0E82E6FEE4B20AE111D8B /* juce_DrawableShape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_DrawableShape.h; path = ../../../../../juce/modules/juce_gui_basics/drawables/juce_DrawableShape.h; sourceTree = SOURCE_ROOT; };
 		5C5A3AF99E3B6E95AFA7A5B6 /* TargetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TargetManager.cpp; path = ../../../../src/rec/command/TargetManager.cpp; sourceTree = SOURCE_ROOT; };
 		5C8FE9EF2B7AF94F5B9FF270 /* Proto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Proto.h; path = ../../../../src/rec/util/Proto.h; sourceTree = SOURCE_ROOT; };
+		5CC2549D33D14F5AF1B5AF7E /* Instance.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Instance.pb.h; path = ../../../../genfiles/proto/rec/slow/Instance.pb.h; sourceTree = SOURCE_ROOT; };
 		5D2E4E209FEEA62AC2102377 /* port.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = port.h; path = ../../../../src/rec/base/port.h; sourceTree = SOURCE_ROOT; };
 		5DA7D8A03D1DFFA317211741 /* juce_PropertyPanel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_PropertyPanel.cpp; path = ../../../../../juce/modules/juce_gui_basics/properties/juce_PropertyPanel.cpp; sourceTree = SOURCE_ROOT; };
 		5E141DB5136DFF22759E77E7 /* Status.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.pb.h; path = ../../../../genfiles/proto/rec/widget/status/Status.pb.h; sourceTree = SOURCE_ROOT; };
@@ -2687,6 +2690,8 @@
 				36F15C058A3D5BA05FCA827D /* AppLayout.pb.h */,
 				2AC73BCA090D8A1DB4B4C4A5 /* GuiSettings.pb.cc */,
 				B5F0EEE610A868084A6DA7A0 /* GuiSettings.pb.h */,
+				43C23A199B456C4B58575764 /* Instance.pb.cc */,
+				5CC2549D33D14F5AF1B5AF7E /* Instance.pb.h */,
 			);
 			name = slow;
 			sourceTree = "<group>";
@@ -3076,7 +3081,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D6FFAE61E65398E3CCCCBF01 /* SlowGold */,
+				C91E137EB346C8A044B09DEB /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3939,6 +3944,16 @@
 			name = unit_tests;
 			sourceTree = "<group>";
 		};
+		C91E137EB346C8A044B09DEB /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		CA53072CC28BA215A8697272 /* audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -4047,16 +4062,6 @@
 				F7740AADB3E3F1DD52C6AE32 /* yaml-cpp */,
 			);
 			name = include;
-			sourceTree = "<group>";
-		};
-		D6FFAE61E65398E3CCCCBF01 /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		DDBF5D204BF5F784D221B795 /* maths */ = {
@@ -4943,6 +4948,7 @@
 				61869FFF6D39F21EF6171E8A /* Metadata.pb.cc in Sources */,
 				B3B44F601DBDB3C181F16009 /* AppLayout.pb.cc in Sources */,
 				610E241BCA49251C21D302F3 /* GuiSettings.pb.cc in Sources */,
+				19924BACC60E6026EC5B2958 /* Instance.pb.cc in Sources */,
 				984C31B83DF22BA2CEAA4A98 /* VirtualFile.pb.cc in Sources */,
 				96A6C918A9DC425D960BAC76 /* LoopPoint.pb.cc in Sources */,
 				FE278994897FD64CF39085C5 /* Mode.pb.cc in Sources */,

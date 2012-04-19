@@ -24,7 +24,7 @@ class Cursor : public Component,
   Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> time,
          int index, bool isTimeCursor);
   virtual ~Cursor();
-  virtual void startListening();
+  virtual void init();
 
   virtual void operator()(const WaveformProto&);
   virtual void operator()(Samples<44100> t);

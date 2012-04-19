@@ -24,10 +24,10 @@ CurrentTime::CurrentTime(Instance* i)
       followCursor_(false) {
 }
 
-void CurrentTime::startListening() {
-  DataListener<LoopPointList>::startListening();
-  DataListener<widget::waveform::ZoomProto>::startListening();
-  GlobalDataListener<GuiSettings>::startListening();
+void CurrentTime::init() {
+  DataListener<LoopPointList>::init();
+  DataListener<widget::waveform::ZoomProto>::init();
+  GlobalDataListener<GuiSettings>::init();
 }
 
 void CurrentTime::operator()(Samples<44100> t) {

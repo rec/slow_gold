@@ -42,9 +42,12 @@ class FileDataListener : public data::GlobalDataListener<VirtualFile> {
 CurrentFile::CurrentFile(Instance* i) : HasInstance(i),
                                         initialized_(false),
                                         empty_(true),
-                                        allowErrorDisplay_(false) {
+                                        hasStarted_(false) {
   fileListener_.reset(new FileDataListener(this));
-  fileListener_->startListening();
+}
+
+void CurrentFile::init() {
+  fileListener_->init();
 }
 
 CurrentFile::~CurrentFile() {}
@@ -62,26 +65,21 @@ void CurrentFile::setFileAndData(const VirtualFile& f) {
 }
 
 CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
-  if (initialized_) {
-    Lock l(lock_);
-    if (data::equals(f, file_))
-      return NO_CHANGE;
-  } else {
+  Lock l(instance_->lock_);
+  if (!initialized_)
     initialized_ = true;
-  }
+  else if (data::equals(f, file_))
+    return NO_CHANGE;
 
   if (player())
-    player()->clear();
+    player()->reset();
 
   if (!empty_)
     gui::addRecentFile(file_, data::get<music::Metadata>(&file_));
 
   VirtualFile oldFile;
-  {
-    Lock l(lock_);
-    oldFile = file_;
-    file_ = f;
-  }
+  oldFile = file_;
+  file_ = f;
 
   Samples<44100> length(0);
   FileResult result = GOOD_FILE;
@@ -106,12 +104,11 @@ CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
 
     if (empty_) {
       result = ERROR_FILE;
-      if (allowErrorDisplay_) {
+      if (hasStarted_) {
         juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
                                           musicReader.errorTitle(),
                                           musicReader.errorDetails());
       }
-      Lock l(lock_);
       file_.Clear();
     }
   }
@@ -128,11 +125,7 @@ CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
     (*currentTime())(0);
   }
 
-
-  {
-    Lock l(lock_);
-    length_ = length;
-  }
+  length_ = length;
 
   ZoomProto zoom = data::getProto<ZoomProto>(&file_);
   (*components()->waveform_)(zoom);

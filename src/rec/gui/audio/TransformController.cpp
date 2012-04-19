@@ -101,13 +101,13 @@ TransformController::TransformController()
 
 TransformController::~TransformController() {}
 
-void TransformController::startListening() {
-  data::DataListener<rec::audio::source::StereoProto>::startListening();
-  data::DataListener<rec::audio::stretch::Stretch>::startListening();
-  playbackSpeed_.startListening();
-  pitchScale_.startListening();
-  fineScale_.startListening();
-  enableButton_.startListening();
+void TransformController::init() {
+  data::DataListener<rec::audio::source::StereoProto>::init();
+  data::DataListener<rec::audio::stretch::Stretch>::init();
+  playbackSpeed_.init();
+  pitchScale_.init();
+  fineScale_.init();
+  enableButton_.init();
 }
 
 void TransformController::operator()(const Stretch& s) {

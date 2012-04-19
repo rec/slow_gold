@@ -30,7 +30,7 @@ UntypedDataListener::~UntypedDataListener() {
                    << typeName();
 }
 
-void UntypedDataListener::startListening(Scope scope) {
+void UntypedDataListener::init(Scope scope) {
   Lock l(lock_);
   if (started_) {
     LOG(DFATAL) << "Can't start a listener twice";

@@ -1252,6 +1252,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc">
       <Filter>SlowGold\proto\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\Instance.pb.cc">
+      <Filter>SlowGold\proto\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc">
       <Filter>SlowGold\proto\rec\util\file</Filter>
     </ClCompile>
@@ -3625,6 +3628,9 @@
       <Filter>SlowGold\proto\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h">
+      <Filter>SlowGold\proto\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\Instance.pb.h">
       <Filter>SlowGold\proto\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h">

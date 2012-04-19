@@ -1,0 +1,9 @@
+package rec.slow;
+
+import "rec/util/LoopPoint.proto";
+import "rec/widget/waveform/Zoom.proto";
+
+message InstanceProto {
+  optional util.LoopPointList loop_points = 1;
+  optional widget.waveform.ZoomProto zoom = 2;
+};

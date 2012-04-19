@@ -131,13 +131,14 @@ Instance::~Instance() {
   threads_.reset();
 }
 
-void Instance::startListening() {
-  menus_->startListening();
-  player_->startListening();
-  components_->startListening();
-  currentTime_->startListening();
-  guiListener_->startListening();
-  mouseListener_->startListening();
+void Instance::init() {
+  menus_->init();
+  player_->init();
+  components_->init();
+  currentFile_->init();
+  currentTime_->init();
+  guiListener_->init();
+  mouseListener_->init();
 }
 
 void Instance::startup() {
@@ -147,7 +148,7 @@ void Instance::startup() {
   MessageManagerLock l;
   window_->toFront(true);
   juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
-  currentFile_->allowErrorDisplay();
+  currentFile_->hasStarted();
   if (data::getGlobal<GuiSettings>().show_about_on_startup())
     window_->startAboutWindow();
 }

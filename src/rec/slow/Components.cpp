@@ -50,16 +50,16 @@ Components::Components(Instance* instance)
 
 Components::~Components() {}
 
-void Components::startListening() {
-  directoryTree_->startListening();
-  timeController_->startListening();
-  loops_->startListening();
-  songData_->startListening();
-  transformController_->startListening();
-  transportController_->startListening();
-  waveform_->startListening();
-  modeSelector_->startListening();
-  mainPage_->startListening();
+void Components::init() {
+  directoryTree_->init();
+  timeController_->init();
+  loops_->init();
+  songData_->init();
+  transformController_->init();
+  transportController_->init();
+  waveform_->init();
+  modeSelector_->init();
+  mainPage_->init();
 }
 
 void Components::setEnabled(bool enabled) {

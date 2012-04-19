@@ -28,10 +28,7 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
 
 void Selection::operator()(const LoopPointList& loops) {
   Lock l(Wrappy::lock_);
-  loopPoints_ = loops;
   selection_ = getTimeSelection(loops);
-  if (selection_.empty())
-    selection_.insert(block::makeBlock(0, loops.length()));
 }
 
 void Selection::moveBackward(Samples<44100> dt) {
@@ -60,7 +57,7 @@ void Selection::moveBackward(Samples<44100> dt) {
 
 int64 Selection::getTotalLength() const {
   Lock l(lock_);
-#if 0
+#ifdef CORRECT_SIZE_CALCULATIONS
   return block::getSize(selection_);
 #else
   return Wrappy::getTotalLength();

@@ -68,7 +68,7 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
   timeCursor_->setTooltip(Trans("Playback Time Cursor: This follows the "
                                 "current time during playback. You can also drag it "
                                 "around to set the current playback time."));
-  timeCursor_->startListening();
+  timeCursor_->init();
   setOpaque(true);
   setBufferedToImage(true);
 }
@@ -81,12 +81,12 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* t) {
   painter_->setAudioThumbnail(t);
 }
 
-void Waveform::startListening() {
-  DataListener<LoopPointList>::startListening();
-  DataListener<ZoomProto>::startListening();
+void Waveform::init() {
+  DataListener<LoopPointList>::init();
+  DataListener<ZoomProto>::init();
 
-  GlobalDataListener<Mode>::startListening();
-  GlobalDataListener<WaveformProto>::startListening();
+  GlobalDataListener<Mode>::init();
+  GlobalDataListener<WaveformProto>::init();
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {
@@ -138,7 +138,7 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
       c->setTooltip(Trans("Loop Point:  You can drag it around on the waveform, "
                               "or you can click on the label above and to the right "
                               "to edit its name."));
-      c->startListening();
+      c->init();
       cursors_.push_back(c);
     }
     c->setTime(time);

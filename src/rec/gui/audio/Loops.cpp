@@ -176,7 +176,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
         ptr<LoopsSetterLabel> lst(new LoopsSetterLabel(row, col));
         lst->setTooltip(Trans("Loop Point Name: Edit the Loop Point's name "
                                   "by clicking here."));
-        lst->startListening();
+        lst->init();
         existing = lst.transfer();
       }
     }

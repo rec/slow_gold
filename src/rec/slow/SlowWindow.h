@@ -27,7 +27,7 @@ class SlowWindow : public app::Window,
     g.fillAll(juce::Colours::lightgrey);
   }
 
-  virtual void startListening();
+  virtual void init();
   virtual void trashPreferences();
   void startAboutWindow();
   void stopAboutWindow();

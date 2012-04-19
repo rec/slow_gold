@@ -21,12 +21,12 @@ class DataListener : public Listener<const Proto&> {
   const Proto getProto() const { return data::getProto<Proto>(getData()); }
   void setProto(const Proto& p) { setWithData(getData(), p); }
 
-  virtual void startListening() {
-    startListening(FILE_SCOPE);
+  virtual void init() {
+    init(FILE_SCOPE);
   }
 
-  void startListening(Scope scope) {
-    adaptor_->startListening(scope);
+  void init(Scope scope) {
+    adaptor_->init(scope);
   }
 
  private:
@@ -60,8 +60,8 @@ class GlobalDataListener : public DataListener<Proto> {
   GlobalDataListener() {}
   virtual ~GlobalDataListener() {}
 
-  virtual void startListening() {
-    DataListener<Proto>::startListening(GLOBAL_SCOPE);
+  virtual void init() {
+    DataListener<Proto>::init(GLOBAL_SCOPE);
   }
 
  private:

@@ -32,12 +32,12 @@ Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
-void Player::startListening() {
-  DataListener<Gain>::startListening();
-  DataListener<stretch::Stretch>::startListening();
-  DataListener<StereoProto>::startListening();
+void Player::init() {
+  DataListener<Gain>::init();
+  DataListener<stretch::Stretch>::init();
+  DataListener<StereoProto>::init();
 
-  selection_->startListening();
+  selection_->init();
 }
 
 Samples<44100> Player::getNextReadPosition() {
@@ -85,7 +85,7 @@ void Player::operator()(const StereoProto& s) {
   stereo_->setStereo(s);
 }
 
-void Player::clear() {
+void Player::reset() {
   setState(audio::transport::STOPPED);
   timer_->setNextReadPosition(0);
 }
@@ -98,11 +98,12 @@ void Player::setGain(double gain) {
   player_.setGain(static_cast<float>(gain));
 }
 
-Source* Player::makeSourceCopy(Source* s, bool useSelection) {
+Source* Player::makeSourceCopy(Source* s, bool useSelection,
+                               const LoopPointList& loops) {
   ptr<Source> source(s);
   if (useSelection) {
     ptr<Selection> selection(new Selection(source.transfer()));
-    (*selection)(selection_->loopPoints());
+    (*selection)(loops);
     source.reset(selection.transfer());
   }
 

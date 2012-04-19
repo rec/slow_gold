@@ -14,8 +14,8 @@ class UntypedDataListener : public Listener<const Message&> {
   explicit UntypedDataListener(const string& typeName);
   virtual ~UntypedDataListener();
 
-  void startListening(Scope);
-  virtual void startListening() { startListening(FILE_SCOPE); }
+  void init(Scope);
+  virtual void init() { init(FILE_SCOPE); }
 
   virtual void operator()(const Message& m) = 0;
   Data* getData() const;
@@ -47,8 +47,8 @@ class UntypedGlobalDataListener : public UntypedDataListener {
   }
   virtual ~UntypedGlobalDataListener() {}
 
-  virtual void startListening() {
-    UntypedDataListener::startListening(GLOBAL_SCOPE);
+  virtual void init() {
+    UntypedDataListener::init(GLOBAL_SCOPE);
   }
 
  private:

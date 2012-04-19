@@ -28,7 +28,9 @@ class CurrentFile : public HasInstance,
   const Samples<44100> length() const { Lock l(lock_); return length_; }
   bool empty() const { return empty_; }
   void setFileAndData(const VirtualFile&);
-  void allowErrorDisplay() { Lock l(lock_); allowErrorDisplay_ = true; }
+  void hasStarted() { Lock l(lock_); hasStarted_ = true; }
+  const CriticalSection& lock() const { return lock_; }
+  void init();
 
  private:
   enum FileResult {
@@ -45,8 +47,7 @@ class CurrentFile : public HasInstance,
   ptr<FileDataListener> fileListener_;
   bool initialized_;
   bool empty_;
-  bool allowErrorDisplay_;
-
+  bool hasStarted_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 
   friend class Instance;

@@ -27,11 +27,6 @@ class Selection : public Wrappy, public DataListener<LoopPointList> {
     return selection_;
   }
 
-  const LoopPointList loopPoints() const {
-    Lock l(Wrappy::lock_);
-    return loopPoints_;
-  }
-
   // Move the clock backward, taking into account the segments.
   void moveBackward(Samples<44100> dt);
 
@@ -39,7 +34,6 @@ class Selection : public Wrappy, public DataListener<LoopPointList> {
 
  private:
   block::BlockSet selection_;
-  LoopPointList loopPoints_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Selection);
 };

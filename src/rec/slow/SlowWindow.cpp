@@ -45,9 +45,9 @@ SlowWindow::~SlowWindow() {
   aboutWindow_.reset();
 }
 
-void SlowWindow::startListening() {
-  app::Window::startListening();
-  data::DataListener<music::Metadata>::startListening();
+void SlowWindow::init() {
+  app::Window::init();
+  data::DataListener<music::Metadata>::init();
 }
 
 void SlowWindow::operator()(const music::Metadata& md) {
@@ -62,7 +62,7 @@ void SlowWindow::operator()(const music::Metadata& md) {
 void SlowWindow::constructInstance() {
   instanceDeleter_.reset(new slow::Instance(this));
   instance_ = instanceDeleter_.get();
-  instance_->startListening();
+  instance_->init();
 }
 
 void SlowWindow::doStartup() {

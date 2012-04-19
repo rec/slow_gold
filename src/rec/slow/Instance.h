@@ -29,7 +29,7 @@ class Instance {
   explicit Instance(SlowWindow* window);
   ~Instance();
 
-  void startListening();
+  void init();
 
   void startup();
   const VirtualFile file() const;
@@ -42,6 +42,7 @@ class Instance {
   void setProto(const Message&, Undoable undoable = CAN_UNDO);
 
   SlowWindow* window_;
+  CriticalSection lock_;
 
   ptr<Menus> menus_;
   ptr<audio::Device> device_;

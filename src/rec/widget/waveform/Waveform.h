@@ -37,14 +37,12 @@ class Waveform : public Component,
                  public GlobalDataListener<WaveformProto>,
                  public DataListener<ZoomProto>,
                  public Broadcaster<const MouseWheelEvent&>,
-                 public Broadcaster<const TimeAndMouseEvent&>
-{
+                 public Broadcaster<const TimeAndMouseEvent&> {
  public:
   Waveform(MenuBarModel* model = NULL,
            const CursorProto* cursor = &defaultTimeCursor());
   virtual ~Waveform();
-
-  virtual void startListening();
+  void init();
 
   static const CursorProto& defaultTimeCursor();
 

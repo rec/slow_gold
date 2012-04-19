@@ -21,7 +21,7 @@ class CurrentTime : public HasInstance,
  public:
   explicit CurrentTime(Instance* i);
   virtual ~CurrentTime() {}
-  virtual void startListening();
+  virtual void init();
 
   virtual void operator()(Samples<44100> t);
   virtual void operator()(const LoopPointList&);

@@ -43,8 +43,8 @@ PersistentWindow::PersistentWindow(const String& name,
 
 PersistentWindow::~PersistentWindow() {}
 
-void PersistentWindow::startListening() {
-  data::GlobalDataListener<WindowPosition>::startListening();
+void PersistentWindow::init() {
+  data::GlobalDataListener<WindowPosition>::init();
   (*this)(getProto());
 }
 

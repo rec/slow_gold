@@ -74,9 +74,9 @@ Cursor::~Cursor() {
   waveform_->removeChildComponent(caption_.get());
 }
 
-void Cursor::startListening() {
-  caption_->startListening();
-  waveformListener_->startListening();
+void Cursor::init() {
+  caption_->init();
+  waveformListener_->init();
 }
 
 Component* Cursor::getCaption() {

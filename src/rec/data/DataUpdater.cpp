@@ -51,6 +51,11 @@ bool DataUpdater::update() {
   return true;
 }
 
+bool DataUpdater::hasUpdates() const {
+  Lock l(updateLock_);
+  return !updateData_.empty();
+}
+
 bool DataUpdater::write() {
   DataSet toWrite;
   {

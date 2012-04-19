@@ -29,8 +29,8 @@ AddressListener::AddressListener(const Address& a, const string& tn, Scope s)
 
 AddressListener::~AddressListener() {}
 
-void AddressListener::startListening(Scope s) {
-  untypedListener_->startListening(s);
+void AddressListener::init(Scope s) {
+  untypedListener_->init(s);
 }
 
 bool AddressListener::isStarted() const {

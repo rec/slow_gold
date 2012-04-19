@@ -21,7 +21,7 @@ class TransformController : public Layout,
  public:
   TransformController();
   virtual ~TransformController();
-  virtual void startListening();
+  virtual void init();
 
   virtual bool isOpaque() const { return true; }
 

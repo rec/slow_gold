@@ -149,12 +149,12 @@ MainPage::MainPage(Components* components)
 
 MainPage::~MainPage() {}
 
-void MainPage::startListening() {
-  navigationResizer_.startListening();
-  directoryResizer_.startListening();
-  metadataResizer_.startListening();
-  helpResizer_.startListening();
-  transformResizer_.startListening();
+void MainPage::init() {
+  navigationResizer_.init();
+  directoryResizer_.init();
+  metadataResizer_.init();
+  helpResizer_.init();
+  transformResizer_.init();
 }
 
 void MainPage::setTooltip(const String& tt) {
