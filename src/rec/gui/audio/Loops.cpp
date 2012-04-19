@@ -68,7 +68,7 @@ int Loops::getNumRows() {
   return loops_.loop_point_size();
 }
 
-void Loops::operator()(const LoopPointList& loops) {
+void Loops::setLoops(const LoopPointList& loops) {
   {
     Lock l(TableController::lock_);
     loops_ = loops;
@@ -192,7 +192,7 @@ Component* Loops::refreshComponentForCell(int row, int column,
 }
 
 void Loops::editLoopPoints(const LoopPointList& lpl) {
-  operator()(lpl);
+  setLoops(lpl);
   updateContent();
   setProto(lpl);
 }

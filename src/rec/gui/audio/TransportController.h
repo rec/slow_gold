@@ -9,7 +9,6 @@
 #include "rec/gui/audio/LevelMeter.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/Listener.h"
-#include "rec/util/LoopPoint.pb.h"
 
 namespace rec {
 namespace gui {
@@ -59,7 +58,6 @@ class TransportController : public Layout,
 
   juce::Label filler_;
   Samples<44100> time_;
-  LoopPointList loopPointList_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransportController);
 };

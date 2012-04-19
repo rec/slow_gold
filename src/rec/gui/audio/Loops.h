@@ -22,7 +22,7 @@ class Loops : public TableController,
   virtual Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected,
                                              Component* existingComponentToUpdate);
 
-  virtual void operator()(const LoopPointList&);
+  virtual void operator()(const LoopPointList& lpl) { setLoops(lpl); }
   virtual int getNumRows();
   virtual Cuttable* cuttable() { return cuttable_.get(); }
   virtual void selectedRowsChanged(int lastRowSelected);
@@ -34,6 +34,8 @@ class Loops : public TableController,
   virtual String displayText(const TableColumn& col, int row);
 
  private:
+  void setLoops(const LoopPointList&);
+
   LoopPointList loops_;
   data::Address partAddress_;
   ptr<Cuttable> cuttable_;
