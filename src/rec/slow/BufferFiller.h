@@ -6,7 +6,6 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/TrackBufferAndThumbnail.h"
 #include "rec/data/Data.h"
-#include "rec/music/Metadata.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/LoopPoint.h"
@@ -27,7 +26,6 @@ class BufferFiller : public HasInstance {
  public:
   typedef audio::stretch::Stretch Stretch;
   typedef audio::util::TrackBufferAndThumbnail TrackBufferAndThumbnail;
-  typedef music::Metadata Metadata;
 
   explicit BufferFiller(Instance* i);
   virtual ~BufferFiller();

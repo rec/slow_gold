@@ -11,16 +11,16 @@ namespace slow {
 
 using namespace rec::audio::util;
 using namespace rec::gui::audio;
-using namespace rec::music;
 using namespace rec::util::block;
 using namespace rec::widget::waveform;
 
 const int PARAMETER_WAIT = 1000;
 const int PRELOAD = 10000;
 
-BufferFiller::BufferFiller(Instance* i) : HasInstance(i),
-                            updateBuffer_(2, 1024),
-                            updateSource_(trackBuffer_.buffer()->frames()) {
+BufferFiller::BufferFiller(Instance* i)
+  : HasInstance(i),
+    updateBuffer_(2, 1024),
+    updateSource_(trackBuffer_.buffer()->frames()) {
   updateInfo_.buffer = &updateBuffer_;
   updateInfo_.startSample = 0;
 }
@@ -49,6 +49,7 @@ thread::Result BufferFiller::fillOnce() {
   if (jump == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(currentTime()->timeSelection(), buf->filled());
+    block::print(DLOG(INFO), fill);
     if (!fill.empty()) {
       BlockList fillList = fillSeries(fill, time(), length());
       if (!fillList.empty())

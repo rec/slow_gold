@@ -31,8 +31,7 @@ static const int THREAD_STOP_PERIOD = 20000;
 static const int BUFFER_FILL_CHUNK = 256;
 
 Threads::Threads(Instance* i) : HasInstance(i),
-                                fillThread_(NULL),
-                                bufferThread_(NULL) {
+                                fillThread_(NULL) {
 }
 
 Threads::~Threads() {

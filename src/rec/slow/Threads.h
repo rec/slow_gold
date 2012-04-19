@@ -25,7 +25,6 @@ class Threads : public HasInstance {
   void clean();
 
   Thread* fillThread() { return fillThread_; }
-  Thread* bufferThread() { return bufferThread_; }
 
  private:
   void stop();
@@ -44,7 +43,6 @@ class Threads : public HasInstance {
 
   ThreadList threads_;
   Thread* fillThread_;
-  Thread* bufferThread_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Threads);
