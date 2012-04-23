@@ -3,6 +3,7 @@
 
 #include "rec/audio/util/Frame.h"
 #include "rec/audio/util/BufferedReader.h"
+#include "rec/audio/util/CachedThumbnail.h"
 
 namespace rec {
 namespace audio {
@@ -19,21 +20,21 @@ class TrackBufferAndThumbnail {
   const BufferedReader& reader() const { return *reader_; }
 
   Samples<44100> setReader(const VirtualFile& file, AudioFormatReader* r);
-  void addBlock(Samples<44100> pos, const AudioSourceChannelInfo& info);
 
-  void writeThumbnail();
-  bool cacheWritten() const { return cacheWritten_; }
-  juce::AudioThumbnail* thumbnail() { return &thumbnail_; }
+  void addBlock(Samples<44100> pos, const AudioSourceChannelInfo& info) {
+    thumbnail_.addBlock(pos, info);
+  }
+
+  void writeThumbnail() { thumbnail_.write(file_); }
+  bool cacheWritten() const { return thumbnail_.cacheWritten(); }
+  AudioThumbnail* thumbnail() { return thumbnail_.thumbnail(); }
 
  private:
   CriticalSection lock_;
 
-  File file_;
-  juce::AudioThumbnailCache cache_;
-  bool cacheWritten_;
-  juce::AudioThumbnail thumbnail_;
-
+  CachedThumbnail thumbnail_;
   ptr<BufferedReader> reader_;
+  File file_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TrackBufferAndThumbnail);
 };

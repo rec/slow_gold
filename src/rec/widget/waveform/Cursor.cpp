@@ -42,16 +42,17 @@ class WaveformListener : public GlobalDataListener<WaveformProto> {
 
 }
 
-Cursor::Cursor(const CursorProto& d, Waveform* w, int index, bool isTimeCursor)
+Cursor::Cursor(const CursorProto& d, Waveform* w, int index)
     : Component("Cursor"),
       waveform_(w),
       desc_(d),
-      index_(index),
-      isTimeCursor_(isTimeCursor) {
+      index_(index) {
+  DLOG(INFO) << "Constructing " << this;
   CHECK_DDD(5183, 2134, int16, int64);
 }
 
 Cursor::~Cursor() {
+  DLOG(INFO) << "deleting " << this;
   waveformListener_.reset();
   waveform_->removeChildComponent(this);
   waveform_->removeChildComponent(caption_.get());
@@ -69,7 +70,7 @@ void Cursor::init() {
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addAndMakeVisible(this, 0);
 
-  if (!isTimeCursor_) {
+  if (!isTimeCursor()) {
     waveform_->addAndMakeVisible(caption_.get(), 0);
     caption_->addListener(this);
   }
@@ -134,7 +135,7 @@ bool Cursor::setDragTime(Samples<44100> t) {
     }
   }
 
-  setTime(t);
+  setTime(t);  // TODO: is this right?
   return true;
 }
 
@@ -167,7 +168,7 @@ void Cursor::layout() {
 
   setBounds(bounds);
 
-  if (isTimeCursor_)
+  if (isTimeCursor())
     return;
 
   juce::Rectangle<int> after = getBounds();
@@ -193,7 +194,7 @@ void Cursor::layoutCaption() {
   int x = getX() + desc().component_width() + CAPTION_X_OFFSET;
   caption_->setBounds(x, y, std::min(captionWidth_, remains), captionHeight);
 
-  if (!isTimeCursor_) {
+  if (!isTimeCursor()) {
     juce::Rectangle<int> after = caption_->getBounds();
     if (before != after) {
       waveform_->repaint(before);
@@ -272,6 +273,19 @@ void Cursor::setTooltip(const String& t) {
   SettableTooltipClient::setTooltip(t);
   caption_->setTooltip("Loop Point Name: Edit the Loop Point's name "
                        "by clicking here.");
+}
+
+Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,
+                   Samples<44100> time) {
+  ptr<Cursor> cursor(new Cursor(cp, w, index));
+  cursor->init();
+  cursor->setTime(time);
+
+  return cursor.transfer();
+}
+
+Cursor* makeTimeCursor(const CursorProto& cp, Waveform* w) {
+  return makeCursor(cp, w, -1, 0);
 }
 
 }  // namespace waveform

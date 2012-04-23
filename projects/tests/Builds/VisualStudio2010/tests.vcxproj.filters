@@ -571,6 +571,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp">
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp">
+      <Filter>tests\rec\audio\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp">
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
@@ -2692,6 +2695,9 @@
       <Filter>tests\rec\audio\stretch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h">
+      <Filter>tests\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h">

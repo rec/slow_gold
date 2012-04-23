@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="5grMiZddN" name="tests">
+  <MAINGROUP id="pbiuyYddJ" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -184,6 +184,10 @@
                 id="e8PritKAI" name="BufferedReader.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/BufferedReader.h"
                 id="yHssCdtow" name="BufferedReader.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/CachedThumbnail.cpp"
+                id="v4LMocqFO" name="CachedThumbnail.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/CachedThumbnail.h"
+                id="Mdf2LhANn" name="CachedThumbnail.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Clear.h" id="7BPlHchyp"
                 name="Clear.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ConvertSample.cpp"
@@ -1541,7 +1545,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="uUfTiryKK" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="dyJdVua0A" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

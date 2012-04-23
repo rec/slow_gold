@@ -14,6 +14,12 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
+class Cursor;
+
+Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,
+                   Samples<44100> time);
+Cursor* makeTimeCursor(const CursorProto& cp, Waveform* w);
+
 class OutlinedCursorLabel;
 
 class Cursor : public Component,
@@ -21,7 +27,7 @@ class Cursor : public Component,
                public Listener< Samples<44100> >,
                public juce::Label::Listener {
  public:
-  Cursor(const CursorProto& d, Waveform* w, int index, bool isTimeCursor);
+  Cursor(const CursorProto& d, Waveform* w, int index);
   virtual ~Cursor();
   virtual void init();
 
@@ -67,7 +73,6 @@ class Cursor : public Component,
   int captionWidth_;
   bool showSelection_;
   WaveformProto waveDesc_;
-  const bool isTimeCursor_;
 
   ptr<GlobalDataListener<WaveformProto> > waveformListener_;
 

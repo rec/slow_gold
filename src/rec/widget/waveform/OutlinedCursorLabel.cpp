@@ -14,18 +14,23 @@ static const float LINE_WIDTH = 0.6f;
 
 OutlinedCursorLabel::OutlinedCursorLabel(Cursor *cursor)
     : cursor_(cursor) {
+  DLOG(INFO) << "Constructing " << this;
+  DCHECK(cursor);
   selectButton_.addListener(this);
   setEditable(true, false, false);
 }
 
 OutlinedCursorLabel::~OutlinedCursorLabel() {
+  DLOG(INFO) << "deleting " << this;
 }
 
 void OutlinedCursorLabel::operator()(const WaveformProto& waveform) {
+  DLOG(INFO) << "calling " << this;
   thread::callAsync(this, &OutlinedCursorLabel::showButtons, waveform);
 }
 
 void OutlinedCursorLabel::showButtons(WaveformProto waveform) {
+  DLOG(INFO) << "showButtons " << this;
   showSelectionButtons_ = waveform.show_selection_buttons();
   if (showSelectionButtons_)
     addAndMakeVisible(&selectButton_);

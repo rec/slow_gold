@@ -163,6 +163,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp"/>
@@ -1521,6 +1522,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
