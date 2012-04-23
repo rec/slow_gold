@@ -11,6 +11,7 @@
 namespace rec {
 namespace slow {
 
+using audio::util::FillableSourceReader;
 using widget::waveform::Zoom;
 using widget::waveform::MIN_ZOOM_TIME;
 
@@ -122,8 +123,7 @@ void CurrentTime::jumpToTime(Samples<44100> pos) {
       return;
     }
 
-    FillableFrameBuffer<short, 2>* buf =
-      bufferFiller()->trackBuffer()->buffer();
+    FillableSourceReader* buf = bufferFiller()->trackBuffer()->buffer();
     jumpTime_ = pos;
     if (buf && !buf->hasFilled(block::Block(pos, pos + PRELOAD))) {
       buf->setNextFillPosition(pos);

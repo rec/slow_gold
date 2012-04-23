@@ -20,7 +20,7 @@ const int PRELOAD = 10000;
 BufferFiller::BufferFiller(Instance* i)
   : HasInstance(i),
     updateBuffer_(2, 1024),
-    updateSource_(trackBuffer_.buffer()->frames()) {
+    updateSource_(trackBuffer_.buffer()->makeSource()) {
   updateInfo_.buffer = &updateBuffer_;
   updateInfo_.startSample = 0;
 }
@@ -32,7 +32,7 @@ bool BufferFiller::isFull() const {
 }
 
 void BufferFiller::fillOnce() {
-  FillableFrameBuffer<short, 2>* buf = trackBuffer_.buffer();
+  FillableSourceReader* buf = trackBuffer_.buffer();
 
   if (isFull()) {
     trackBuffer_.writeThumbnail();
@@ -67,8 +67,8 @@ void BufferFiller::fillOnce() {
 
   updateInfo_.numSamples = filled;
   updateBuffer_.setSize(2, filled, false, false, true);
-  updateSource_.setNextReadPosition(pos);
-  updateSource_.getNextAudioBlock(updateInfo_);
+  updateSource_->setNextReadPosition(pos);
+  updateSource_->getNextAudioBlock(updateInfo_);
   trackBuffer_.addBlock(pos, updateInfo_);
 
   thread::callAsync(components()->waveform_.get(),

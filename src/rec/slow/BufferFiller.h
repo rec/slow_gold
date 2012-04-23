@@ -42,7 +42,7 @@ class BufferFiller : public HasInstance {
 
   AudioSampleBuffer updateBuffer_;
   AudioSourceChannelInfo updateInfo_;
-  audio::source::FrameSource<short, 2> updateSource_;
+  ptr<audio::Source> updateSource_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(BufferFiller);
 };
