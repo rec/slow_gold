@@ -1,3 +1,5 @@
+import os
+
 def pathParts(s):
   parts = os.path.abspath(s).split('/src/rec/')[1:]
   if not parts:

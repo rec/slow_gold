@@ -32,12 +32,7 @@ bool BufferFiller::isFull() const {
 }
 
 void BufferFiller::fillOnce() {
-  FillableSourceReader* buf = trackBuffer_.buffer();
-
-  if (isFull()) {
-    trackBuffer_.writeThumbnail();
-    return;
-  }
+  BufferedReader* buf = trackBuffer_.buffer();
 
   bool empty = false;
   Samples<44100> jump = currentTime()->jumpTime();
@@ -74,6 +69,9 @@ void BufferFiller::fillOnce() {
   thread::callAsync(components()->waveform_.get(),
                     &Waveform::repaintBlock,
                     block::makeBlock(pos, pos + filled));
+
+  if (isFull())
+    trackBuffer_.writeThumbnail();
 }
 
 }  // namespace slow

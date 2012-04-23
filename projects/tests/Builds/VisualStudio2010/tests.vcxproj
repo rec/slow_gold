@@ -162,10 +162,10 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy_test.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableSourceReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
@@ -1520,11 +1520,11 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\RubberBand.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableSourceReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h"/>

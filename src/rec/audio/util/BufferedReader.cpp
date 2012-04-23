@@ -1,10 +1,10 @@
-#include "rec/audio/util/FillableSourceReader.h"
+#include "rec/audio/util/BufferedReader.h"
 
 namespace rec {
 namespace audio {
 namespace util {
 
-Samples<44100> FillableSourceReader::setReader(AudioFormatReader* reader) {
+Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
   Lock l(lock_);
   if (!reader) {
     reader_.reset();
@@ -26,3 +26,4 @@ Samples<44100> FillableSourceReader::setReader(AudioFormatReader* reader) {
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
+

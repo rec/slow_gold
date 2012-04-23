@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="k5D1b25JS" name="SlowGold">
+  <MAINGROUP id="nmBL8Z8E8" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -164,6 +164,10 @@
                 name="Stretchy.h" resource="0"/>
         </GROUP>
         <GROUP id="7neu1vQ4N" name="util">
+          <FILE compile="1" file="../../src/rec/audio/util/BufferedReader.cpp"
+                id="EUOquSCTi" name="BufferedReader.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/BufferedReader.h"
+                id="C9x7me5SI" name="BufferedReader.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Clear.h" id="7BPlHchyp"
                 name="Clear.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ConvertSample.cpp"
@@ -178,10 +182,6 @@
                 id="5EsPf7Ifh" name="FillableFrameBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/FillableFrameBuffer.h"
                 id="tdGsutyKB" name="FillableFrameBuffer.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/util/FillableSourceReader.cpp"
-                id="LKfHnBq0b" name="FillableSourceReader.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/FillableSourceReader.h"
-                id="QTljQumV7" name="FillableSourceReader.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/Frame.cpp" id="WoNxyolCP"
                 name="Frame.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Frame.h" id="nGp2UeWgU"
@@ -1485,7 +1485,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="TJEgzUbyR" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="lNWurLvWG" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

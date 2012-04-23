@@ -547,6 +547,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp">
       <Filter>SlowGold\rec\audio\stretch</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp">
+      <Filter>SlowGold\rec\audio\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClCompile>
@@ -554,9 +557,6 @@
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp">
-      <Filter>SlowGold\rec\audio\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableSourceReader.cpp">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp">
@@ -2607,6 +2607,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h">
       <Filter>SlowGold\rec\audio\stretch</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h">
+      <Filter>SlowGold\rec\audio\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClInclude>
@@ -2617,9 +2620,6 @@
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h">
-      <Filter>SlowGold\rec\audio\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableSourceReader.h">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h">

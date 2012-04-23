@@ -568,6 +568,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy_test.cpp">
       <Filter>tests\rec\audio\stretch</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp">
+      <Filter>tests\rec\audio\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp">
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
@@ -575,9 +578,6 @@
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp">
-      <Filter>tests\rec\audio\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableSourceReader.cpp">
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp">
@@ -2691,6 +2691,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h">
       <Filter>tests\rec\audio\stretch</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h">
+      <Filter>tests\rec\audio\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
@@ -2701,9 +2704,6 @@
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h">
-      <Filter>tests\rec\audio\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableSourceReader.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h">
