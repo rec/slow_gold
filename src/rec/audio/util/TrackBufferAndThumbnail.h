@@ -15,10 +15,8 @@ class TrackBufferAndThumbnail {
   TrackBufferAndThumbnail();
   virtual ~TrackBufferAndThumbnail();
 
-#if 1
-  BufferedReader *buffer() { return buffer_.get(); }
-  const BufferedReader& buffer() const { return *buffer_; }
-#endif
+  BufferedReader *reader() { return reader_.get(); }
+  const BufferedReader& reader() const { return *reader_; }
 
   Samples<44100> setReader(const VirtualFile& file, AudioFormatReader* r);
   void addBlock(Samples<44100> pos, const AudioSourceChannelInfo& info);
@@ -35,7 +33,7 @@ class TrackBufferAndThumbnail {
   bool cacheWritten_;
   juce::AudioThumbnail thumbnail_;
 
-  ptr<BufferedReader> buffer_;
+  ptr<BufferedReader> reader_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TrackBufferAndThumbnail);
 };

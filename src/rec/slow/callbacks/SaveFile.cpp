@@ -123,7 +123,7 @@ class SaveThread : public ThreadWithProgressWindow {
 
   virtual void run() {
     const block::Fillable& buffer =
-      *instance_->bufferFiller_->trackBuffer()->buffer();
+      *instance_->bufferFiller_->trackBuffer()->reader();
 
     setProgress(0.0);
     setStatusMessage(FINISHING_LOADING);

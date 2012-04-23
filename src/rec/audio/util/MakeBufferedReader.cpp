@@ -1,4 +1,4 @@
-#include "rec/audio/util/FillableFrameBuffer.h"
+#include "rec/audio/util/MakeBufferedReader.h"
 
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/util/ConvertSample.h"
@@ -25,13 +25,13 @@ struct SampleBuffer {
 };
 
 template <typename Sample, int CHANNELS>
-class FillableFrameBuffer : public BufferedReader {
+class BufferedReaderImpl : public BufferedReader {
  public:
-  FillableFrameBuffer(int s) : blockSize_(s), intBuffer_(s), floatBuffer_(s) {
+  BufferedReaderImpl(int s) : blockSize_(s), intBuffer_(s), floatBuffer_(s) {
     CHECK_DDD(194, 439, int64, int64);
   }
 
-  virtual ~FillableFrameBuffer() {}
+  virtual ~BufferedReaderImpl() {}
 
   // Returns the length in samples, or 0 if there's an error.
   virtual block::Size doFillNextBlock(const block::Block& b) {
@@ -95,14 +95,14 @@ class FillableFrameBuffer : public BufferedReader {
   SampleBuffer<int32, CHANNELS> intBuffer_;
   SampleBuffer<float, CHANNELS> floatBuffer_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(FillableFrameBuffer);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(BufferedReaderImpl);
 };
 
 }  // namespace
 
 template <typename Sample, int CHANNELS>
 BufferedReader* makeBufferedReader(int size) {
-  return new FillableFrameBuffer<Sample, CHANNELS>(size);
+  return new BufferedReaderImpl<Sample, CHANNELS>(size);
 }
 
 template BufferedReader* makeBufferedReader<short, 2>(int);

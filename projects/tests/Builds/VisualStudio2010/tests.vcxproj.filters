@@ -577,13 +577,13 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp">
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp">
-      <Filter>tests\rec\audio\util</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp">
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp">
+      <Filter>tests\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.cpp">
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp">
@@ -2703,13 +2703,13 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h">
-      <Filter>tests\rec\audio\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h">
+      <Filter>tests\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h">

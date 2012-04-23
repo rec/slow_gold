@@ -2,7 +2,7 @@
 #include "rec/audio/format/Manager.h"
 #include "rec/base/Samples.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/audio/util/FillableFrameBuffer.h"
+#include "rec/audio/util/MakeBufferedReader.h"
 
 using namespace juce;
 
@@ -14,9 +14,10 @@ namespace util {
 static const int COMPRESSION = 256;
 
 TrackBufferAndThumbnail::TrackBufferAndThumbnail()
-    : cache_(1), cacheWritten_(false),
+    : cache_(1),
+      cacheWritten_(false),
       thumbnail_(COMPRESSION, *format::getAudioFormatManager(), cache_),
-      buffer_(makeBufferedReader<short, 2>()) {
+      reader_(makeBufferedReader<short, 2>()) {
 }
 
 TrackBufferAndThumbnail::~TrackBufferAndThumbnail() {}
@@ -66,7 +67,7 @@ Samples<44100> TrackBufferAndThumbnail::setReader(const VirtualFile& f, AudioFor
     cacheWritten_ = false;
   }
 
-  return buffer_->setReader(r.transfer());
+  return reader_->setReader(r.transfer());
 }
 
 }  // namespace util

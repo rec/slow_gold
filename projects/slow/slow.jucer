@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="nmBL8Z8E8" name="SlowGold">
+  <MAINGROUP id="8h5eEmf6l" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -178,10 +178,6 @@
                 name="CopySamples.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/CopySamples.h" id="y36qPSlpq"
                 name="CopySamples.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/util/FillableFrameBuffer.cpp"
-                id="5EsPf7Ifh" name="FillableFrameBuffer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/FillableFrameBuffer.h"
-                id="tdGsutyKB" name="FillableFrameBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/Frame.cpp" id="WoNxyolCP"
                 name="Frame.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Frame.h" id="nGp2UeWgU"
@@ -190,6 +186,10 @@
                 name="Gain.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Gain.h" id="91KIiQ8qN"
                 name="Gain.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/MakeBufferedReader.cpp"
+                id="5IVxm9aJ4" name="MakeBufferedReader.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/MakeBufferedReader.h"
+                id="KSlkZDKHC" name="MakeBufferedReader.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ProcessAudioFile.cpp"
                 id="JYlfsO3w8" name="ProcessAudioFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/ProcessAudioFile.h"
@@ -1485,7 +1485,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="lNWurLvWG" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="VusjaJGGp" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

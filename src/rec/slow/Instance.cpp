@@ -122,7 +122,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 }
 
 audio::Source* Instance::makeSource() const {
-  return bufferFiller_->trackBuffer()->buffer()->makeSource();
+  return bufferFiller_->trackBuffer()->reader()->makeSource();
 }
 
 Instance::~Instance() {

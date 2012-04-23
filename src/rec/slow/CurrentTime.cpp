@@ -1,7 +1,7 @@
 #include "rec/slow/CurrentTime.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/Frame.h"
-#include "rec/audio/util/FillableFrameBuffer.h"
+#include "rec/audio/util/BufferedReader.h"
 #include "rec/audio/source/FrameSource.h"
 #include "rec/slow/BufferFiller.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -122,7 +122,7 @@ void CurrentTime::jumpToTime(Samples<44100> pos) {
       return;
     }
 
-    BufferedReader* reader = bufferFiller()->trackBuffer()->buffer();
+    BufferedReader* reader = bufferFiller()->trackBuffer()->reader();
     jumpTime_ = pos;
     if (reader && !reader->hasFilled(block::Block(pos, pos + PRELOAD))) {
       reader->setNextFillPosition(pos);
