@@ -1177,6 +1177,9 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.cpp">
       <Filter>SlowGold\rec\widget\waveform</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Viewport.cpp">
+      <Filter>SlowGold\rec\widget\waveform</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp">
       <Filter>SlowGold\rec\widget\waveform</Filter>
     </ClCompile>
@@ -1252,9 +1255,6 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc">
       <Filter>SlowGold\proto\rec\slow</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\Instance.pb.cc">
-      <Filter>SlowGold\proto\rec\slow</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc">
       <Filter>SlowGold\proto\rec\util\file</Filter>
     </ClCompile>
@@ -1289,6 +1289,9 @@
       <Filter>SlowGold\proto\rec\widget\tree</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc">
+      <Filter>SlowGold\proto\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Viewport.pb.cc">
       <Filter>SlowGold\proto\rec\widget\waveform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.cc">
@@ -3555,6 +3558,9 @@
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.h">
       <Filter>SlowGold\rec\widget\waveform</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Viewport.h">
+      <Filter>SlowGold\rec\widget\waveform</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h">
       <Filter>SlowGold\rec\widget\waveform</Filter>
     </ClInclude>
@@ -3630,9 +3636,6 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h">
       <Filter>SlowGold\proto\rec\slow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\Instance.pb.h">
-      <Filter>SlowGold\proto\rec\slow</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h">
       <Filter>SlowGold\proto\rec\util\file</Filter>
     </ClInclude>
@@ -3667,6 +3670,9 @@
       <Filter>SlowGold\proto\rec\widget\tree</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.h">
+      <Filter>SlowGold\proto\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Viewport.pb.h">
       <Filter>SlowGold\proto\rec\widget\waveform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.h">

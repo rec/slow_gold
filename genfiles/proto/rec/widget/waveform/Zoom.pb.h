@@ -34,18 +34,18 @@ void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto();
 void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto();
 void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fZoom_2eproto();
 
-class ZoomProto;
+class Zoom;
 
 // ===================================================================
 
-class ZoomProto : public ::google::protobuf::Message {
+class Zoom : public ::google::protobuf::Message {
  public:
-  ZoomProto();
-  virtual ~ZoomProto();
+  Zoom();
+  virtual ~Zoom();
   
-  ZoomProto(const ZoomProto& from);
+  Zoom(const Zoom& from);
   
-  inline ZoomProto& operator=(const ZoomProto& from) {
+  inline Zoom& operator=(const Zoom& from) {
     CopyFrom(from);
     return *this;
   }
@@ -59,17 +59,17 @@ class ZoomProto : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ZoomProto& default_instance();
+  static const Zoom& default_instance();
   
-  void Swap(ZoomProto* other);
+  void Swap(Zoom* other);
   
   // implements Message ----------------------------------------------
   
-  ZoomProto* New() const;
+  Zoom* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ZoomProto& from);
-  void MergeFrom(const ZoomProto& from);
+  void CopyFrom(const Zoom& from);
+  void MergeFrom(const Zoom& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -113,7 +113,7 @@ class ZoomProto : public ::google::protobuf::Message {
   inline bool zoom_to_selection() const;
   inline void set_zoom_to_selection(bool value);
   
-  // @@protoc_insertion_point(class_scope:rec.widget.waveform.ZoomProto)
+  // @@protoc_insertion_point(class_scope:rec.widget.waveform.Zoom)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -139,59 +139,59 @@ class ZoomProto : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static ZoomProto* default_instance_;
+  static Zoom* default_instance_;
 };
 // ===================================================================
 
 
 // ===================================================================
 
-// ZoomProto
+// Zoom
 
 // optional int64 begin = 1;
-inline bool ZoomProto::has_begin() const {
+inline bool Zoom::has_begin() const {
   return _has_bit(0);
 }
-inline void ZoomProto::clear_begin() {
+inline void Zoom::clear_begin() {
   begin_ = GOOGLE_LONGLONG(0);
   _clear_bit(0);
 }
-inline ::google::protobuf::int64 ZoomProto::begin() const {
+inline ::google::protobuf::int64 Zoom::begin() const {
   return begin_;
 }
-inline void ZoomProto::set_begin(::google::protobuf::int64 value) {
+inline void Zoom::set_begin(::google::protobuf::int64 value) {
   _set_bit(0);
   begin_ = value;
 }
 
 // optional int64 end = 2;
-inline bool ZoomProto::has_end() const {
+inline bool Zoom::has_end() const {
   return _has_bit(1);
 }
-inline void ZoomProto::clear_end() {
+inline void Zoom::clear_end() {
   end_ = GOOGLE_LONGLONG(0);
   _clear_bit(1);
 }
-inline ::google::protobuf::int64 ZoomProto::end() const {
+inline ::google::protobuf::int64 Zoom::end() const {
   return end_;
 }
-inline void ZoomProto::set_end(::google::protobuf::int64 value) {
+inline void Zoom::set_end(::google::protobuf::int64 value) {
   _set_bit(1);
   end_ = value;
 }
 
 // optional bool zoom_to_selection = 3;
-inline bool ZoomProto::has_zoom_to_selection() const {
+inline bool Zoom::has_zoom_to_selection() const {
   return _has_bit(2);
 }
-inline void ZoomProto::clear_zoom_to_selection() {
+inline void Zoom::clear_zoom_to_selection() {
   zoom_to_selection_ = false;
   _clear_bit(2);
 }
-inline bool ZoomProto::zoom_to_selection() const {
+inline bool Zoom::zoom_to_selection() const {
   return zoom_to_selection_;
 }
-inline void ZoomProto::set_zoom_to_selection(bool value) {
+inline void Zoom::set_zoom_to_selection(bool value) {
   _set_bit(2);
   zoom_to_selection_ = value;
 }

@@ -7,7 +7,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class ZoomProto;
+class Zoom;
 
 static const Samples<41000> MIN_ZOOM_TIME = 4 * 44100;
 
@@ -19,7 +19,7 @@ void zoomTo(const VirtualFile& f, Samples<44100> begin, Samples<44100> end,
             Samples<44100> length);
 void zoomOutFull(const VirtualFile& f, Samples<44100> length);
 
-void constrainZoom(ZoomProto* z, Samples<44100> length);
+void constrainZoom(Zoom* z, Samples<44100> length);
 
 }  // namespace waveform
 }  // namespace widget

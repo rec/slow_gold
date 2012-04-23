@@ -43,7 +43,7 @@ void registerProtos() {
   registerClass<util::file::VirtualFileList>(r);
   registerClass<widget::tree::NavigatorConfig>(r);
   registerClass<widget::waveform::WaveformProto>(r);
-  registerClass<widget::waveform::ZoomProto>(r);
+  registerClass<widget::waveform::Zoom>(r);
 }
 
 }  // namespace slow

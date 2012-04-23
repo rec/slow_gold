@@ -23,7 +23,7 @@ class WaveformModel {
   bool isDraggingCursor() const { return isDraggingCursor_; }
   void setIsDraggingCursor(bool b) { isDraggingCursor_ = b; }
   void setWidth(int w) { width_ = w; }
-  void setZoom(const ZoomProto&);
+  void setZoom(const Zoom&);
   bool isEmpty() const { return empty_; }
   const block::BlockSet& selection() const { return selection_; }
   Samples<44100> length() const { return length_; }
@@ -37,7 +37,7 @@ class WaveformModel {
 
   Samples<44100> length_;
   block::BlockSet selection_;
-  ZoomProto zoom_;
+  Zoom zoom_;
   bool empty_;
   bool isDraggingCursor_;
   int width_;

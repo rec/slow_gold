@@ -9,11 +9,6 @@ static File getDeviceFile() {
 }
 
 Device::Device() {
-  loadState();
-  setupPage_.reset(new SetupPage(this));
-}
-
-void Device::loadState() {
   ptr<juce::XmlElement> state;
 
   File f = getDeviceFile();
@@ -23,6 +18,7 @@ void Device::loadState() {
   String err = manager_.initialise(0, 2, state.get(), true);
   if (err.length())
     LOG(DFATAL) << "Couldn't initialize audio::Device, error " << str(err);
+  setupPage_.reset(new SetupPage(this));
 }
 
 void Device::saveState() {

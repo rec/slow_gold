@@ -83,7 +83,7 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* t) {
 
 void Waveform::init() {
   DataListener<LoopPointList>::init();
-  DataListener<ZoomProto>::init();
+  DataListener<Zoom>::init();
 
   GlobalDataListener<Mode>::init();
   GlobalDataListener<WaveformProto>::init();
@@ -157,7 +157,7 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
   repaintBlocks(dirty);
 }
 
-void Waveform::operator()(const ZoomProto& zp) {
+void Waveform::operator()(const Zoom& zp) {
   {
     Lock l(lock_);
     model_->setZoom(zp);

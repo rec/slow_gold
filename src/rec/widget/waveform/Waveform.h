@@ -35,7 +35,7 @@ class Waveform : public Component,
                  public DataListener<LoopPointList>,
                  public GlobalDataListener<Mode>,
                  public GlobalDataListener<WaveformProto>,
-                 public DataListener<ZoomProto>,
+                 public DataListener<Zoom>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&> {
  public:
@@ -53,7 +53,7 @@ class Waveform : public Component,
   virtual void operator()(const LoopPointList&);
   virtual void operator()(const Mode&);
   virtual void operator()(const WaveformProto&);
-  virtual void operator()(const ZoomProto&);
+  virtual void operator()(const Zoom&);
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 

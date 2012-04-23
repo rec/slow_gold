@@ -26,7 +26,7 @@ void addAudioCDs(VirtualFileList* volumes) {
   StringArray names = AudioCDReader::getAvailableCDNames();
   for (int i = 0; i < names.size(); ++i) {
     ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
-    if (reader && reader->isCDStillPresent() && !reader->getNumTracks()) {
+    if (reader && reader->isCDStillPresent() && reader->getNumTracks()) {
       string key = str(cd::getCDKey(reader.get()));
       if (key.size())
         add(VirtualFile::CD, key, names[i], volumes);

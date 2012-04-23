@@ -127,7 +127,7 @@ CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
 
   length_ = length;
 
-  ZoomProto zoom = data::getProto<ZoomProto>(&file_);
+  Zoom zoom = data::getProto<Zoom>(&file_);
   (*components()->waveform_)(zoom);
   (*currentTime())(zoom);
 

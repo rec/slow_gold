@@ -19,8 +19,6 @@ class Device {
   void shutdown();
 
  private:
-  void loadState();
-
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Device);
 };
 

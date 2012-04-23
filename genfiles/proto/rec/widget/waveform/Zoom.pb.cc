@@ -16,9 +16,9 @@ namespace waveform {
 
 namespace {
 
-const ::google::protobuf::Descriptor* ZoomProto_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Zoom_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  ZoomProto_reflection_ = NULL;
+  Zoom_reflection_ = NULL;
 
 }  // namespace
 
@@ -29,23 +29,23 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/widget/waveform/Zoom.proto");
   GOOGLE_CHECK(file != NULL);
-  ZoomProto_descriptor_ = file->message_type(0);
-  static const int ZoomProto_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, begin_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, end_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, zoom_to_selection_),
+  Zoom_descriptor_ = file->message_type(0);
+  static const int Zoom_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Zoom, begin_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Zoom, end_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Zoom, zoom_to_selection_),
   };
-  ZoomProto_reflection_ =
+  Zoom_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      ZoomProto_descriptor_,
-      ZoomProto::default_instance_,
-      ZoomProto_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, _unknown_fields_),
+      Zoom_descriptor_,
+      Zoom::default_instance_,
+      Zoom_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Zoom, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Zoom, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(ZoomProto));
+      sizeof(Zoom));
 }
 
 namespace {
@@ -59,14 +59,14 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    ZoomProto_descriptor_, &ZoomProto::default_instance());
+    Zoom_descriptor_, &Zoom::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fZoom_2eproto() {
-  delete ZoomProto::default_instance_;
-  delete ZoomProto_reflection_;
+  delete Zoom::default_instance_;
+  delete Zoom_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto() {
@@ -77,13 +77,12 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\036rec/widget/waveform/Zoom.proto\022\023rec.wi"
-    "dget.waveform\"B\n\tZoomProto\022\r\n\005begin\030\001 \001("
-    "\003\022\013\n\003end\030\002 \001(\003\022\031\n\021zoom_to_selection\030\003 \001("
-    "\010", 121);
+    "dget.waveform\"=\n\004Zoom\022\r\n\005begin\030\001 \001(\003\022\013\n\003"
+    "end\030\002 \001(\003\022\031\n\021zoom_to_selection\030\003 \001(\010", 116);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Zoom.proto", &protobuf_RegisterTypes);
-  ZoomProto::default_instance_ = new ZoomProto();
-  ZoomProto::default_instance_->InitAsDefaultInstance();
+  Zoom::default_instance_ = new Zoom();
+  Zoom::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fZoom_2eproto);
 }
 
@@ -98,26 +97,26 @@ struct StaticDescriptorInitializer_rec_2fwidget_2fwaveform_2fZoom_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int ZoomProto::kBeginFieldNumber;
-const int ZoomProto::kEndFieldNumber;
-const int ZoomProto::kZoomToSelectionFieldNumber;
+const int Zoom::kBeginFieldNumber;
+const int Zoom::kEndFieldNumber;
+const int Zoom::kZoomToSelectionFieldNumber;
 #endif  // !_MSC_VER
 
-ZoomProto::ZoomProto()
+Zoom::Zoom()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void ZoomProto::InitAsDefaultInstance() {
+void Zoom::InitAsDefaultInstance() {
 }
 
-ZoomProto::ZoomProto(const ZoomProto& from)
+Zoom::Zoom(const Zoom& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void ZoomProto::SharedCtor() {
+void Zoom::SharedCtor() {
   _cached_size_ = 0;
   begin_ = GOOGLE_LONGLONG(0);
   end_ = GOOGLE_LONGLONG(0);
@@ -125,36 +124,36 @@ void ZoomProto::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-ZoomProto::~ZoomProto() {
+Zoom::~Zoom() {
   SharedDtor();
 }
 
-void ZoomProto::SharedDtor() {
+void Zoom::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void ZoomProto::SetCachedSize(int size) const {
+void Zoom::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* ZoomProto::descriptor() {
+const ::google::protobuf::Descriptor* Zoom::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return ZoomProto_descriptor_;
+  return Zoom_descriptor_;
 }
 
-const ZoomProto& ZoomProto::default_instance() {
+const Zoom& Zoom::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto();  return *default_instance_;
 }
 
-ZoomProto* ZoomProto::default_instance_ = NULL;
+Zoom* Zoom::default_instance_ = NULL;
 
-ZoomProto* ZoomProto::New() const {
-  return new ZoomProto;
+Zoom* Zoom::New() const {
+  return new Zoom;
 }
 
-void ZoomProto::Clear() {
+void Zoom::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     begin_ = GOOGLE_LONGLONG(0);
     end_ = GOOGLE_LONGLONG(0);
@@ -164,7 +163,7 @@ void ZoomProto::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool ZoomProto::MergePartialFromCodedStream(
+bool Zoom::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -233,7 +232,7 @@ bool ZoomProto::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void ZoomProto::SerializeWithCachedSizes(
+void Zoom::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional int64 begin = 1;
   if (_has_bit(0)) {
@@ -256,7 +255,7 @@ void ZoomProto::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* ZoomProto::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Zoom::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional int64 begin = 1;
   if (_has_bit(0)) {
@@ -280,7 +279,7 @@ void ZoomProto::SerializeWithCachedSizes(
   return target;
 }
 
-int ZoomProto::ByteSize() const {
+int Zoom::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -315,10 +314,10 @@ int ZoomProto::ByteSize() const {
   return total_size;
 }
 
-void ZoomProto::MergeFrom(const ::google::protobuf::Message& from) {
+void Zoom::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const ZoomProto* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const ZoomProto*>(
+  const Zoom* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Zoom*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -327,7 +326,7 @@ void ZoomProto::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void ZoomProto::MergeFrom(const ZoomProto& from) {
+void Zoom::MergeFrom(const Zoom& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
@@ -343,24 +342,24 @@ void ZoomProto::MergeFrom(const ZoomProto& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void ZoomProto::CopyFrom(const ::google::protobuf::Message& from) {
+void Zoom::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void ZoomProto::CopyFrom(const ZoomProto& from) {
+void Zoom::CopyFrom(const Zoom& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ZoomProto::IsInitialized() const {
+bool Zoom::IsInitialized() const {
   
   return true;
 }
 
-void ZoomProto::Swap(ZoomProto* other) {
+void Zoom::Swap(Zoom* other) {
   if (other != this) {
     std::swap(begin_, other->begin_);
     std::swap(end_, other->end_);
@@ -371,11 +370,11 @@ void ZoomProto::Swap(ZoomProto* other) {
   }
 }
 
-::google::protobuf::Metadata ZoomProto::GetMetadata() const {
+::google::protobuf::Metadata Zoom::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = ZoomProto_descriptor_;
-  metadata.reflection = ZoomProto_reflection_;
+  metadata.descriptor = Zoom_descriptor_;
+  metadata.reflection = Zoom_reflection_;
   return metadata;
 }
 

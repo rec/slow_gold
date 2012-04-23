@@ -16,10 +16,10 @@ double zoomFunction(double increment) {
   return pow(POWER, -increment);
 }
 
-ZoomProto zoom(const ZoomProto& z, Samples<44100> length, Samples<44100> t, double k) {
+Zoom zoom(const Zoom& z, Samples<44100> length, Samples<44100> t, double k) {
   k = zoomFunction(k * ZOOM_INCREMENT);
   // DCHECK_LE(z.begin(), z.end());
-  ZoomProto zoom(z);
+  Zoom zoom(z);
   Samples<44100> b = zoom.begin();
   Samples<44100> e = zoom.has_end() ? zoom.end() : length.get();
 
@@ -41,13 +41,13 @@ ZoomProto zoom(const ZoomProto& z, Samples<44100> length, Samples<44100> t, doub
   return zoom;
 }
 
-ZoomProto zoom(const ZoomProto& z, Samples<44100> length, double k) {
+Zoom zoom(const Zoom& z, Samples<44100> length, double k) {
   return zoom(z, length, (z.begin() + z.end()) / 2, k);
 }
 
 }  // namespace
 
-void constrainZoom(ZoomProto* z, Samples<44100> length) {
+void constrainZoom(Zoom* z, Samples<44100> length) {
   DCHECK(length);
 
   if (z->begin() < 0)
@@ -67,22 +67,22 @@ void constrainZoom(ZoomProto* z, Samples<44100> length) {
 }
 
 void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k) {
-  data::setProto(zoom(data::getProto<ZoomProto>(&f), length, time, k), &f);
+  data::setProto(zoom(data::getProto<Zoom>(&f), length, time, k), &f);
 }
 
 void zoom(const VirtualFile& f, Samples<44100> length, double k) {
-  data::setProto(zoom(data::getProto<ZoomProto>(&f), length, k), &f);
+  data::setProto(zoom(data::getProto<Zoom>(&f), length, k), &f);
 }
 
 void zoomOutFull(const VirtualFile& f, Samples<44100> length) {
-  ZoomProto zoom;
+  Zoom zoom;
   zoom.set_end(length);
   data::setProto(zoom, &f);
 }
 
 void zoomTo(const VirtualFile& f, Samples<44100> begin, Samples<44100> end,
             Samples<44100> length) {
-  ZoomProto zoom;
+  Zoom zoom;
   zoom.set_begin(begin);
   zoom.set_end(end);
 

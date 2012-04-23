@@ -77,7 +77,7 @@ Samples<44100> WaveformModel::zoomEnd() const {
   return zoom_.has_end() ? Samples<44100>(zoom_.end()) : Samples<44100>(length_);
 }
 
-void WaveformModel::setZoom(const ZoomProto& zoom) {
+void WaveformModel::setZoom(const Zoom& zoom) {
   zoom_ = zoom;
   if (length_)
     constrainZoom(&zoom_, length_);

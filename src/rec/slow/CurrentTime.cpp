@@ -11,7 +11,7 @@
 namespace rec {
 namespace slow {
 
-using widget::waveform::ZoomProto;
+using widget::waveform::Zoom;
 using widget::waveform::MIN_ZOOM_TIME;
 
 static const int PRELOAD = 10000;
@@ -26,12 +26,12 @@ CurrentTime::CurrentTime(Instance* i)
 
 void CurrentTime::init() {
   DataListener<LoopPointList>::init();
-  DataListener<widget::waveform::ZoomProto>::init();
+  DataListener<widget::waveform::Zoom>::init();
   GlobalDataListener<GuiSettings>::init();
 }
 
 void CurrentTime::operator()(Samples<44100> t) {
-  ZoomProto zoom;
+  Zoom zoom;
   {
     Lock l(lock_);
     time_ = t;
@@ -58,10 +58,10 @@ void CurrentTime::operator()(Samples<44100> t) {
     zoom.set_begin(0);
 
   zoom.set_end(zoom.begin() + width);
-  DataListener<ZoomProto>::setProto(zoom);
+  DataListener<Zoom>::setProto(zoom);
 }
 
-void CurrentTime::operator()(const ZoomProto& zoom) {
+void CurrentTime::operator()(const Zoom& zoom) {
   if (zoom.has_end()) {
     Lock l(lock_);
     zoom_ = zoom;

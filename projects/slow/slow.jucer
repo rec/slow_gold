@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="9zOzZcZ3k" name="SlowGold">
+  <MAINGROUP id="Y2d8PnrKG" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1278,6 +1278,10 @@
                 id="il1rgwOjk" name="OutlinedCursorLabel.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/OutlinedCursorLabel.h"
                 id="0o7WDir2R" name="OutlinedCursorLabel.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/waveform/Viewport.cpp"
+                id="vI2DYL4o6" name="Viewport.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/waveform/Viewport.h" id="ygL6SCPSe"
+                name="Viewport.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/waveform/Waveform.cpp"
                 id="MHpNv9EN1" name="Waveform.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/Waveform.h" id="hHunyctLV"
@@ -1404,10 +1408,6 @@
                 id="fYOvW40VL" name="GuiSettings.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/slow/GuiSettings.pb.h"
                 id="OkLwYI0Wa" name="GuiSettings.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/slow/Instance.pb.cc"
-                id="udf8kvANb" name="Instance.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/slow/Instance.pb.h"
-                id="FOPyjCHOt" name="Instance.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="LjvPC4z43" name="util">
           <GROUP id="uctc5r1ut" name="file">
@@ -1469,6 +1469,10 @@
                   id="SQGrDu5EV" name="Cursor.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/widget/waveform/Cursor.pb.h"
                   id="ZNkuUqrG9" name="Cursor.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/widget/waveform/Viewport.pb.cc"
+                  id="26rqRwRuq" name="Viewport.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/widget/waveform/Viewport.pb.h"
+                  id="kliY65i9z" name="Viewport.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/widget/waveform/Waveform.pb.cc"
                   id="igugHj3Ok" name="Waveform.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/widget/waveform/Waveform.pb.h"
@@ -1485,7 +1489,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="dqNrOLTsz" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="jr2OZOl59" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

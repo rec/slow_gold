@@ -363,6 +363,7 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Viewport.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\WaveformModel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.cpp"/>
@@ -388,7 +389,6 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\Instance.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc"/>
@@ -401,6 +401,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Viewport.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.cc"/>
@@ -1808,6 +1809,7 @@
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Cursor.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\MouseWheelEvent.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\OutlinedCursorLabel.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Viewport.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\WaveformModel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.h"/>
@@ -1833,7 +1835,6 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\Instance.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h"/>
@@ -1846,6 +1847,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Viewport.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.h"/>

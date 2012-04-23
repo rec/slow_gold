@@ -15,7 +15,7 @@ namespace slow {
 
 class CurrentTime : public HasInstance,
                     public DataListener<LoopPointList>,
-                    public DataListener<widget::waveform::ZoomProto>,
+                    public DataListener<widget::waveform::Zoom>,
                     public GlobalDataListener<GuiSettings>,
                     public Listener< Samples<44100> > {
  public:
@@ -26,7 +26,7 @@ class CurrentTime : public HasInstance,
   virtual void operator()(Samples<44100> t);
   virtual void operator()(const LoopPointList&);
   virtual void operator()(const GuiSettings&);
-  virtual void operator()(const widget::waveform::ZoomProto&);
+  virtual void operator()(const widget::waveform::Zoom&);
 
   void setCursorTime(Samples<44100> time, int index, bool isTimeCursor);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
@@ -45,7 +45,7 @@ class CurrentTime : public HasInstance,
   Samples<44100> zoomTime_;
   Samples<44100> length_;
   bool followCursor_;
-  widget::waveform::ZoomProto zoom_;
+  widget::waveform::Zoom zoom_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentTime);
 };
