@@ -1,5 +1,4 @@
 #include "rec/audio/util/TrackBufferAndThumbnail.h"
-#include "rec/audio/source/Snoopy.h"
 #include "rec/audio/format/Manager.h"
 #include "rec/base/Samples.h"
 #include "rec/util/file/VirtualFile.h"

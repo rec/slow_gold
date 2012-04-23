@@ -17,8 +17,8 @@ double getGain(const audio::Gain& gain) {
   if (gain.dim())
     return gain.dim_level();
 
-  return static_cast<double>(powl(GAIN_FACTOR, gain.gain() / GAIN_EXPONENT) *
-                             gain.level());
+  double g = gain.gain() / GAIN_EXPONENT;
+  return static_cast<double>(pow(GAIN_FACTOR, g) * gain.level());
 }
 
 }  // namespace audio

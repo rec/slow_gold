@@ -152,7 +152,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\Runny_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Selection.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\TestSource_test.cpp"/>
@@ -1510,13 +1509,10 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\source\FrameSource.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Level.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Player.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Seggy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Selection.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Snoopy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Stereo.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\TestSource_test.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Testy.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\ThreadedSource.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Timer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Implementation.h"/>
