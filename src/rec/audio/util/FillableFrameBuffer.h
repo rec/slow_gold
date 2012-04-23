@@ -4,7 +4,7 @@
 #include "rec/audio/util/Frame.h"
 #include "rec/base/Samples.h"
 #include "rec/util/block/Fillable.h"
-#include "rec/util/Listener.h"
+#include "rec/audio/util/FillableSourceReader.h"
 
 namespace rec {
 namespace audio {
@@ -27,17 +27,16 @@ struct SampleBuffer {
 };
 
 template <typename Sample, int CHANNELS>
-class FillableFrameBuffer : public block::Fillable {
+class FillableFrameBuffer : public FillableSourceReader {
  public:
   FillableFrameBuffer(int blockSize = FILLABLE_FRAME_BLOCK_SIZE);
   virtual ~FillableFrameBuffer() {}
 
-  // Returns the length in samples, or 0 if there's an error.
-  Samples<44100> setReader(AudioFormatReader* reader);
   virtual block::Size doFillNextBlock(const block::Block& b);
 
   typedef Frames<InterleavedFrame<Sample, CHANNELS> > FillableFrame;
-  Source* makeSource() const;
+  virtual Source* makeSource() const;
+  virtual bool setLength(int64 length);
 
   const FillableFrame& frames() const { return frames_; }
 

@@ -13,24 +13,10 @@ FillableFrameBuffer<Sample, CHANNELS>::FillableFrameBuffer(int blockSize)
 }
 
 template <typename Sample, int CHANNELS>
-Samples<44100> FillableFrameBuffer<Sample, CHANNELS>::setReader(
-    AudioFormatReader* reader) {
-  Lock l(lock_);
-  if (!reader) {
-    reader_.reset();
-    return 0;
-  }
-
-  Samples<44100> size = reader->lengthInSamples;
-  if (!frames_.setLength(size)) {
-    LOG(ERROR) << "Ran out of memory, unable to set frame length";
-    return 0;
-  }
-
-  setLength(size);
-  reader_.reset(reader);
-  filled_.clear();
-  return size;
+bool FillableFrameBuffer<Sample, CHANNELS>::setLength(int64 length) {
+  bool success = frames_.setLength(length);
+  Fillable::setLength(success ? length : 0);
+  return success;
 }
 
 template <typename Sample, int CHANNELS>
