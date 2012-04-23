@@ -135,9 +135,6 @@ CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
   components()->directoryTree_->refreshNode(oldFile);
   components()->directoryTree_->refreshNode(f);
 
-  if (threads())
-    threads()->fillThread()->notify();
-
   if (menus())
     menus()->menuItemsChanged();
 

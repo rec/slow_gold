@@ -31,16 +31,12 @@ bool BufferFiller::isFull() const {
   return trackBuffer_.buffer().isFull();
 }
 
-thread::Result BufferFiller::fillOnce() {
+void BufferFiller::fillOnce() {
   FillableFrameBuffer<short, 2>* buf = trackBuffer_.buffer();
-  if (!buf) {
-    LOG(DFATAL) << "No buffer";
-    return static_cast<thread::Result>(PARAMETER_WAIT);
-  }
 
-  if (buf->isFull()) {
+  if (isFull()) {
     trackBuffer_.writeThumbnail();
-    return static_cast<thread::Result>(PARAMETER_WAIT);
+    return;
   }
 
   bool empty = false;
@@ -78,7 +74,6 @@ thread::Result BufferFiller::fillOnce() {
   thread::callAsync(components()->waveform_.get(),
                     &Waveform::repaintBlock,
                     block::makeBlock(pos, pos + filled));
-  return thread::YIELD;
 }
 
 }  // namespace slow

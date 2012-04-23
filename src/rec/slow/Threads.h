@@ -24,8 +24,6 @@ class Threads : public HasInstance {
 
   void clean();
 
-  Thread* fillThread() { return fillThread_; }
-
  private:
   void stop();
 
@@ -42,7 +40,6 @@ class Threads : public HasInstance {
   typedef std::vector<Thread*> ThreadList;
 
   ThreadList threads_;
-  Thread* fillThread_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Threads);

@@ -165,6 +165,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableSourceReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
@@ -1523,9 +1524,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableSourceReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\OwnedFrames.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h"/>

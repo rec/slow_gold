@@ -5,7 +5,6 @@
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataUpdater.h"
 #include "rec/gui/GuiWriteable.h"
-#include "rec/slow/BufferFiller.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Menus.h"
@@ -24,14 +23,12 @@ namespace slow {
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
-using namespace rec::audio::util;
 using namespace rec::util::thread;
 
 static const int THREAD_STOP_PERIOD = 20000;
 static const int BUFFER_FILL_CHUNK = 256;
 
-Threads::Threads(Instance* i) : HasInstance(i),
-                                fillThread_(NULL) {
+Threads::Threads(Instance* i) : HasInstance(i) {
 }
 
 Threads::~Threads() {
@@ -60,7 +57,6 @@ namespace {
 struct Period {
   enum Enum {
     DIRECTORY = 1000,
-    FILL = 41,
     NAVIGATOR = 1001,
     WRITE_GUI = 201,
     WRITE_DATA = 1003,
@@ -72,7 +68,6 @@ struct Period {
 struct Priority {
   enum Enum {
     DIRECTORY = 3,
-    FILL = 4,
     NAVIGATOR = 2,
     WRITE_GUI = 4,
     WRITE_DATA = 4,
@@ -101,10 +96,6 @@ int updateData(Instance*) {
   return Period::UPDATE_DATA;
 }
 
-thread::Result fill(Instance* i) {
-  return i->bufferFiller_->fillOnce();
-}
-
 thread::Result directory(Instance* i) {
   return i->components_->directoryTree_->run() ?
     thread::YIELD : static_cast<thread::Result>(Period::DIRECTORY);
@@ -119,7 +110,6 @@ int timer(Instance* i) {
 
 void Threads::start() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
-  fillThread_ = start(&fill, "Fill", Priority::FILL);
   start(&directory, "Directory", Priority::DIRECTORY);
   start(&writeGui, "writeGUI", Priority::WRITE_GUI);
   start(&writeData, "writeData", Priority::WRITE_DATA);

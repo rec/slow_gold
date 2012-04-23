@@ -30,7 +30,7 @@ class BufferFiller : public HasInstance {
   explicit BufferFiller(Instance* i);
   virtual ~BufferFiller();
 
-  thread::Result fillOnce();
+  void fillOnce();
   TrackBufferAndThumbnail* trackBuffer() { return &trackBuffer_; }
   bool isFull() const;
 

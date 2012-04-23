@@ -64,7 +64,8 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
             "You can drag files from your desktop or your music player here. "
             "If your mouse has a wheel, use it to zoom the waveform."));
 
-  timeCursor_.reset(new Cursor(*timeCursor, this, 0, 0, true));
+  timeCursor_.reset(new Cursor(*timeCursor, this, 0, true));
+  timeCursor_->setTime(0);
   timeCursor_->setTooltip(Trans("Playback Time Cursor: This follows the "
                                 "current time during playback. You can also drag it "
                                 "around to set the current playback time."));
@@ -134,7 +135,8 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
     if (i < cursors_.size()) {
       c = cursors_[i];
     } else {
-      c = new Cursor(*defaultDesc, this, time, i, false);
+      c = new Cursor(*defaultDesc, this, i, false);
+      c->setTime(time);
       c->setTooltip(Trans("Loop Point:  You can drag it around on the waveform, "
                               "or you can click on the label above and to the right "
                               "to edit its name."));

@@ -42,30 +42,13 @@ class WaveformListener : public GlobalDataListener<WaveformProto> {
 
 }
 
-Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
-               int index, bool isTimeCursor)
+Cursor::Cursor(const CursorProto& d, Waveform* w, int index, bool isTimeCursor)
     : Component("Cursor"),
-      waveform_(waveform),
+      waveform_(w),
       desc_(d),
       index_(index),
       isTimeCursor_(isTimeCursor) {
   CHECK_DDD(5183, 2134, int16, int64);
-
-  Lock l(lock());
-  caption_.reset(new OutlinedCursorLabel(this));
-  desc_.mutable_widget()->set_transparent(true);
-  waveform_->addAndMakeVisible(this, 0);
-
-  if (!isTimeCursor) {
-    waveform_->addAndMakeVisible(caption_.get(), 0);
-    caption_->addListener(this);
-  }
-
-  setTime(t);
-  setRepaintsOnMouseActivity(true);
-  waveformListener_.reset(new WaveformListener(this));
-
-  setMouseCursor(juce::MouseCursor::DraggingHandCursor);
 }
 
 Cursor::~Cursor() {
@@ -75,12 +58,25 @@ Cursor::~Cursor() {
 }
 
 void Cursor::init() {
-  caption_->init();
-  waveformListener_->init();
-}
+  Lock l(lock());
 
-Component* Cursor::getCaption() {
-  return caption_.get();
+  caption_.reset(new OutlinedCursorLabel(this));
+  caption_->init();
+
+  waveformListener_.reset(new WaveformListener(this));
+  waveformListener_->init();
+
+  desc_.mutable_widget()->set_transparent(true);
+  waveform_->addAndMakeVisible(this, 0);
+
+  if (!isTimeCursor_) {
+    waveform_->addAndMakeVisible(caption_.get(), 0);
+    caption_->addListener(this);
+  }
+
+  setRepaintsOnMouseActivity(true);
+
+  setMouseCursor(juce::MouseCursor::DraggingHandCursor);
 }
 
 void Cursor::labelTextChanged(juce::Label*) {
@@ -88,8 +84,15 @@ void Cursor::labelTextChanged(juce::Label*) {
 }
 
 void Cursor::setText(const String& s) {
-  waveform_->setCursorText(index_, s);
-  layout();
+  {
+    Lock l(lock());
+    waveform_->setCursorText(index_, s);
+  }
+  layoutCaption();
+}
+
+Component* Cursor::getCaption() {
+  return caption_.get();
 }
 
 Samples<44100> Cursor::getTime() const {
@@ -142,7 +145,7 @@ void Cursor::setTime(Samples<44100> time) {
   }
   layout();
   if (index_ > 1)
-    waveform_->getCursors()[index_ - 1]->adjustCaption();
+    waveform_->getCursors()[index_ - 1]->layoutCaption();
 }
 
 void Cursor::layout() {
@@ -167,15 +170,16 @@ void Cursor::layout() {
   if (isTimeCursor_)
     return;
 
-  adjustCaption();
   juce::Rectangle<int> after = getBounds();
   if (before != after) {
     waveform_->repaint(before);
     waveform_->repaint(after);
   }
+
+  layoutCaption();
 }
 
-void Cursor::adjustCaption() {
+void Cursor::layoutCaption() {
   juce::Rectangle<int> before = caption_->getBounds();
 
   int remains = waveform_->getCursorX(index_ + 1) - getX() -
