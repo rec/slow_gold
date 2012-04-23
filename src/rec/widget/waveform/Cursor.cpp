@@ -51,7 +51,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, Samples<44100> t,
       isTimeCursor_(isTimeCursor) {
   CHECK_DDD(5183, 2134, int16, int64);
 
-  Lock l(lock_);
+  Lock l(lock());
   caption_.reset(new OutlinedCursorLabel(this));
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addAndMakeVisible(this, 0);
@@ -93,18 +93,18 @@ void Cursor::setText(const String& s) {
 }
 
 Samples<44100> Cursor::getTime() const {
-  Lock l(lock_);
+  Lock l(lock());
   return time_;
 }
 
 void Cursor::operator()(Samples<44100> time) {
-  Lock l(lock_);
+  Lock l(lock());
   if (!waveform_->isDraggingCursor())
     thread::callAsync(this, &Cursor::setTime, time);
 }
 
 bool Cursor::setDragTime(Samples<44100> t) {
-  Lock l(lock_);
+  Lock l(lock());
 
   if (!isTimeCursor()) {
     if (index_ == 0 || t < SMALLEST_TIME_SAMPLES)
@@ -137,7 +137,7 @@ bool Cursor::setDragTime(Samples<44100> t) {
 
 void Cursor::setTime(Samples<44100> time) {
   {
-    Lock l(lock_);
+    Lock l(lock());
     time_ = time;
   }
   layout();
@@ -201,7 +201,7 @@ void Cursor::adjustCaption() {
 void Cursor::paint(Graphics& g) {
   juce::Rectangle<int> bounds;
   {
-    Lock l(lock_);
+    Lock l(lock());
     bounds = getLocalBounds();
   }
 
@@ -217,7 +217,7 @@ void Cursor::paint(Graphics& g) {
   float offset = (componentWidth - displayWidth) / 2.0f;
   bool highlight = !isTimeCursor() && isMouseOverOrDragging();
 
-  Lock l(lock_);
+  Lock l(lock());
 
   p.setColor(highlight ? HIGHLIGHT : BACKGROUND);
   g.fillRect(offset, top, displayWidth, height);
@@ -258,7 +258,7 @@ void Cursor::selectButtonPressed(bool select) {
 }
 
 void Cursor::operator()(const WaveformProto& wp) {
-  Lock l(lock_);
+  Lock l(lock());
 
   waveDesc_ = wp;
   thread::callAsync(this, &Cursor::layout);

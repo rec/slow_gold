@@ -57,7 +57,7 @@ class Cursor : public Component,
   void adjustCaption();
 
   Waveform* const waveform_;
-  CriticalSection lock_;
+  const CriticalSection& lock() const { return waveform_->lock_; }
   CursorProto desc_;
   Samples<44100> time_;
   int index_;
