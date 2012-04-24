@@ -4,6 +4,7 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/util/thread/MakeThread.h"
+#include "rec/util/LoopPoint.h"
 
 using namespace std;
 using namespace rec::command;
@@ -18,29 +19,29 @@ namespace {
 const Samples<44100> MAX_JUMP_TIME = 44100;
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
-  Samples<44100> time = snapshot->loops_.loop_point(segment).time();
+  Samples<44100> time = snapshot->loops_->loop_point(segment).time();
   snapshot->instance_->currentTime_->jumpToTime(time);
 }
 
 void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
   Samples<44100> time = snap->instance_->time();
-  int size = snap->loops_.loop_point_size();
-  int segment = audio::getSegment(snap->loops_, time);
+  int size = snap->loops_->loop_point_size();
+  int segment = audio::getSegment(*snap->loops_, time);
   int p = pos.toIndex(segment, size);
 
   // Special case for "jump back";
   if (pos == command::CommandIDEncoder::PREVIOUS &&
-      (time - snap->loops_.loop_point(segment).time()) >= MAX_JUMP_TIME) {
+      (time - snap->loops_->loop_point(segment).time()) >= MAX_JUMP_TIME) {
     p = segment;
   }
 
-  snap->loops_.mutable_loop_point(p)->set_selected(true);
+  snap->loops_->mutable_loop_point(p)->set_selected(true);
   setTimeFromSegment(snap, p);
 }
 
 void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
   vector<int> selected;
-  const LoopPointList& loops = snap->loops_;
+  const LoopPointList& loops = *snap->loops_;
   size_t s = 0;
   bool found = false;
   int selectedSegment = audio::getSegment(loops, snap->instance_->time());
@@ -92,7 +93,7 @@ void loadRecentFile(Instance* instance, int i) {
 
   thread::runInNewThread("loadRecentFile", RECENT_FILE_THREAD_PRIORITY,
                          instance->currentFile_.get(),
-                         &CurrentFile::setFileAndData,
+                         &CurrentFile::setFile,
                          rf.file(i).file());
 }
 

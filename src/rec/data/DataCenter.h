@@ -22,6 +22,7 @@ struct DataCenter {
   ptr<DataMaker> maker_;
   ptr<DataMap> map_;
 
+  bool hasUpdates() const;
   const CriticalSection& lock() const;
 };
 

@@ -85,12 +85,11 @@ void DialComponent::operator()(Samples<44100> time) {
   thread::callAsync(this, &DialComponent::repaint);
 }
 
-void DialComponent::operator()(const LoopPointList& lpl) {
+void DialComponent::operator()(const waveform::Viewport& vp) {
   Lock l(lock_);
-  loops_ = lpl;
+  loops_ = vp.loop_points();
   timeAngle_ = zeroAngle_ = 0.0;
 }
-
 
 void DialComponent::paint(Graphics& g) {
   Lock l(lock_);

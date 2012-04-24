@@ -11,18 +11,21 @@
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/AboutWindow.h"
+#include "rec/slow/CurrentFile.h"
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 #include "rec/slow/callbacks/SaveFile.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/widget/tree/CD.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
+#include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
 namespace slow {
 
 void translateAll() {
   AboutWindow::translateAll();
+  CurrentFile::translateAll();
   GlobalCallbacks::translateAll();
   InstanceCallbacks::translateAll();
   SaveFile::translateAll();
@@ -44,6 +47,7 @@ void translateAll() {
 
   widget::tree::CD::translateAll();
   widget::tree::TreeViewDropAll::translateAll();
+  widget::waveform::Waveform::translateAll();
 }
 
 }  // namespace slow

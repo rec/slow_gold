@@ -16,6 +16,7 @@
 #include "rec/widget/waveform/OutlinedCursorLabel.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/WaveformModel.h"
+#include "rec/widget/waveform/Viewport.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
@@ -42,7 +43,7 @@ MouseListener::MouseListener(Instance* i)
 }
 
 void MouseListener::init() {
-  DataListener<widget::waveform::Zoom>::init();
+  DataListener<widget::waveform::Viewport>::init();
   GlobalDataListener<Mode>::init();
 }
 
@@ -50,17 +51,17 @@ namespace {
 
 typedef widget::waveform::OutlinedCursorLabel Label;
 
-void toggleSelectionSegment(const VirtualFile& file, Samples<44100> time) {
-  data::Opener<LoopPointList> opener(data::getData<LoopPointList>(&file));
-  audio::toggleSelectionSegment(opener.mutable_get(), time);
+void toggleSelectionSegment(const VirtualFile& file, Samples<44100> t) {
+  data::Opener<Viewport> opener(data::getData<Viewport>(&file));
+  audio::toggleSelectionSegment(opener.mutable_get()->mutable_loop_points(), t);
 }
-
 
 void zoom(const Instance& instance, const MouseEvent& e,
           Samples<44100> time, double increment) {
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
-  widget::waveform::zoom(instance.file(), instance.length(), time, s * increment);
+  widget::waveform::zoomScaleAt(instance.file(), instance.length(), time,
+                                s * increment);
 }
 
 }  // namespace
@@ -96,7 +97,7 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
 }
 
 void MouseListener::addLoopPoint(Samples<44100> time) {
-  audio::addLoopPointToData(file(), time);
+  widget::waveform::addLoopPointToViewport(file(), time);
   toggleAddLoopPointMode();
 }
 
@@ -105,7 +106,7 @@ void MouseListener::clickWaveform(const MouseEvent& e, Waveform* waveform) {
   dragMods_ = e.mods;
   Mode::Action action = getClickAction();
   if (action == Mode::DRAG)
-    waveformDragStart_ = DataListener<Zoom>::getProto().begin();
+    waveformDragStart_ = DataListener<Viewport>::getProto().zoom().begin();
 
   else if (action == Mode::DRAW_LOOP_POINTS)
     addLoopPoint(time);
@@ -151,7 +152,8 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
     cursorRestrict_.end_ = length();
   } else {
     int i = cursor->index();
-    LoopPointList loops = data::getProto<LoopPointList>(file());
+    Viewport vp = data::getProto<Viewport>(file());
+    const LoopPointList& loops = vp.loop_points();
     cursorRestrict_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) + DRAG_PAD;
     cursorRestrict_.end_ = -DRAG_PAD + ((i >= loops.loop_point_size() - 1) ?
                                         loops.length() : loops.loop_point(i + 1).time());
@@ -169,9 +171,10 @@ void MouseListener::dragCursor(const MouseEvent& e,
       if (cursor->isTimeCursor()) {
         currentTime()->jumpToTime(t);
       } else {
-        LoopPointList loops(data::getProto<LoopPointList>(file()));
-        loops.mutable_loop_point(cursor->index())->set_time(t);
-        data::setProto(loops, file());
+        Viewport viewport = data::getProto<Viewport>(file());
+        int i = cursor->index();
+        viewport.mutable_loop_points()->mutable_loop_point(i)->set_time(t);
+        data::setProto(viewport, file());
       }
     }
   }
@@ -182,17 +185,18 @@ void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
   if (action == Mode::DRAG) {
     Samples<44100> dt = static_cast<int64>(e.getDistanceFromDragStartX() /
                                            waveform->model().pixelsPerSample());
-    widget::waveform::Zoom zoom(DataListener<Zoom>::getProto());
+    Viewport viewport(DataListener<Viewport>::getProto());
+    Zoom* zoom = viewport.mutable_zoom();
     Samples<44100> len = length();
-    Samples<44100> end = zoom.has_end() ? Samples<44100>(zoom.end()) : len;
-    Samples<44100> size = end - zoom.begin();
+    Samples<44100> end = zoom->has_end() ? Samples<44100>(zoom->end()) : len;
+    Samples<44100> size = end - zoom->begin();
     Samples<44100> begin = std::max(waveformDragStart_ - dt, Samples<44100>(0));
     Samples<44100> e2 = std::min(len, begin + size);
-    zoom.set_begin(e2 - size);
-    zoom.set_end(end);
+    zoom->set_begin(e2 - size);
+    zoom->set_end(end);
 
-    zoom.set_end(zoom.begin() + size);
-    DataListener<widget::waveform::Zoom>::setProto(zoom);
+    zoom->set_end(zoom->begin() + size);
+    DataListener<widget::waveform::Viewport>::setProto(viewport);
   }
 }
 

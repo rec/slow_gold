@@ -125,11 +125,12 @@ bool Cursor::setDragTime(Samples<44100> t) {
     if (next >= 0) {
       cursors[index_] = cursors[next];
       cursors[next] = this;
-      LoopPointList lpl = waveform_->DataListener<LoopPointList>::getProto();
-      lpl.mutable_loop_point(index_)->set_time(t);
-      lpl.mutable_loop_point()->SwapElements(index_, next);
-      waveform_->DataListener<LoopPointList>::setProto(lpl);
-      waveform_->adjustCursors(lpl, block::BlockSet());
+      Viewport viewport = waveform_->DataListener<Viewport>::getProto();
+      LoopPointList* lpl = viewport.mutable_loop_points();
+      lpl->mutable_loop_point(index_)->set_time(t);
+      lpl->mutable_loop_point()->SwapElements(index_, next);
+      waveform_->DataListener<Viewport>::setProto(viewport);
+      waveform_->adjustCursors(*lpl, block::BlockSet());
     }
   }
 

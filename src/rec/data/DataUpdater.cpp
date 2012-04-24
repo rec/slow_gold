@@ -53,7 +53,7 @@ bool DataUpdater::update() {
 
 bool DataUpdater::hasUpdates() const {
   Lock l(updateLock_);
-  return !updateData_.empty();
+  return updateThread_ && !updateData_.empty();
 }
 
 bool DataUpdater::write() {

@@ -24,6 +24,10 @@ const CriticalSection& DataCenter::lock() const {
   return updater_->lock();
 }
 
+bool DataCenter::hasUpdates() const {
+  return updater_->hasUpdates();
+}
+
 static DataCenter** getDC() {
   static DataCenter* dataCenter = new DataCenter;
   return &dataCenter;

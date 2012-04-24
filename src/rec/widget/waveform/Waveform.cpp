@@ -1,10 +1,11 @@
 #include "rec/widget/waveform/Waveform.h"
 
+#include "rec/gui/Geometry.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/icon/ZoomInCursor.svg.h"
-#include "rec/gui/Geometry.h"
 #include "rec/util/Defaulter.h"
+// #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/STL.h"
@@ -30,6 +31,10 @@ const int ZOOM_CURSOR_Y_HOTSPOT = 8;
 const int ZOOM_CURSOR_WIDTH = 24;
 const int ZOOM_CURSOR_HEIGHT = 24;
 
+Trans LOOP_POINT_TOOLTIP("Loop Point:  You can drag it around on the waveform, "
+                         "or you can click on the label above and to the right "
+                         "to edit its name.");
+
 
 static juce::Image getZoomCursor() {
   juce::Image img(juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT,
@@ -52,7 +57,7 @@ Def<CursorProto> defaultDesc(
 
 }  // namespace
 
-Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
+Waveform::Waveform(MenuBarModel* m)
     : Component("WaveformComponent"),
       model_(new WaveformModel),
       painter_(new WaveformPainter(this)),
@@ -64,10 +69,6 @@ Waveform::Waveform(MenuBarModel* m, const CursorProto* timeCursor)
             "You can drag files from your desktop or your music player here. "
             "If your mouse has a wheel, use it to zoom the waveform."));
 
-  timeCursor_.reset(makeTimeCursor(*timeCursor, this));
-  timeCursor_->setTooltip(Trans("Playback Time Cursor: This follows the "
-                                "current time during playback. You can also drag it "
-                                "around to set the current playback time."));
   setOpaque(true);
   setBufferedToImage(true);
 }
@@ -81,11 +82,14 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* t) {
 }
 
 void Waveform::init() {
-  DataListener<LoopPointList>::init();
-  DataListener<Zoom>::init();
-
+  DataListener<Viewport>::init();
   GlobalDataListener<Mode>::init();
   GlobalDataListener<WaveformProto>::init();
+
+  timeCursor_.reset(makeTimeCursor(defaultTimeCursor(), this));
+  timeCursor_->setTooltip(Trans("Playback Time Cursor: This follows the "
+                                "current time during playback. You can also drag it "
+                                "around to set the current playback time."));
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {
@@ -116,16 +120,21 @@ void Waveform::operator()(const WaveformProto& desc) {
   thread::callAsync(this, &Waveform::layout);
 }
 
-void Waveform::operator()(const LoopPointList& loopPoints) {
+void Waveform::setViewport(const Viewport& viewport) {
+  const LoopPointList& loopPoints = viewport.loop_points();
   Lock l(lock_);
-  BlockSet dirty = model_->setLoopPoints(loopPoints);
+  if (model_->setViewport(viewport))
+    thread::callAsync(this, &Waveform::layout);
+
+  BlockSet dirty = model_->dirty();
   if (!model_->isDraggingCursor())
     thread::callAsync(this, &Waveform::adjustCursors, loopPoints, dirty);
   else if (!dirty.empty())
     thread::callAsync(this, &Waveform::repaintBlocks, dirty);
 }
 
-void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
+void Waveform::adjustCursors(const LoopPointList& loopPoints,
+                             const block::BlockSet& dirty) {
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
     Samples<44100> time = loopPoints.loop_point(i).time();
@@ -135,8 +144,8 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
     } else {
       c = makeCursor(*defaultDesc, this, i, time);
       c->setTooltip(Trans("Loop Point:  You can drag it around on the waveform, "
-                              "or you can click on the label above and to the right "
-                              "to edit its name."));
+                          "or you can click on the label above and to the right "
+                          "to edit its name."));
       cursors_.push_back(c);
     }
     c->setTime(time);
@@ -153,15 +162,6 @@ void Waveform::adjustCursors(LoopPointList loopPoints, BlockSet dirty) {
   }
 
   repaintBlocks(dirty);
-}
-
-void Waveform::operator()(const Zoom& zp) {
-  {
-    Lock l(lock_);
-    model_->setZoom(zp);
-  }
-
-  thread::callAsync(this, &Waveform::layout);
 }
 
 static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
@@ -206,14 +206,15 @@ int Waveform::getCursorX(uint index) const {
 }
 
 void Waveform::setCursorText(int index, const String& text) {
-  LoopPointList lpl = DataListener<LoopPointList>::getProto();
+  Viewport viewport = DataListener<Viewport>::getProto();
+  LoopPointList* lpl = viewport.mutable_loop_points();
   DCHECK_GE(index,  0);
-  DCHECK_LT(index, lpl.loop_point_size());
+  DCHECK_LT(index, lpl->loop_point_size());
 
-  if (index < 0 || index >= lpl.loop_point_size())
+  if (index < 0 || index >= lpl->loop_point_size())
     return;
-  lpl.mutable_loop_point(index)->set_name(str(text));
-  DataListener<LoopPointList>::setProto(lpl);
+  lpl->mutable_loop_point(index)->set_name(str(text));
+  DataListener<Viewport>::setProto(viewport);
 }
 
 void Waveform::repaintBlock(Block b) {
@@ -240,13 +241,18 @@ void Waveform::setIsDraggingCursor(bool d) {
 }
 
 void Waveform::setSelected(int index, bool selected) {
-  LoopPointList lpl = DataListener<LoopPointList>::getProto();
-  if (index < 0 || index >= lpl.loop_point_size()) {
-    LOG(DFATAL) << "Bad index " << index << ", " << lpl.loop_point_size();
+  Viewport viewport = DataListener<Viewport>::getProto();
+  LoopPointList* lpl = viewport.mutable_loop_points();
+  if (index < 0 || index >= lpl->loop_point_size()) {
+    LOG(DFATAL) << "Bad index " << index << ", " << lpl->loop_point_size();
     return;
   }
-  lpl.mutable_loop_point(index)->set_selected(selected);
-  DataListener<LoopPointList>::setProto(lpl);
+  lpl->mutable_loop_point(index)->set_selected(selected);
+  DataListener<Viewport>::setProto(viewport);
+}
+
+void Waveform::translateAll() {
+  LOOP_POINT_TOOLTIP.translate();
 }
 
 }  // namespace waveform

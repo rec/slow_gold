@@ -25,6 +25,7 @@
 #include "rec/slow/callbacks/SaveFile.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/widget/waveform/Waveform.h"
+#include "rec/widget/waveform/Viewport.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
@@ -48,7 +49,7 @@ void aboutThisProgram(Instance* i) {
 }
 
 void addLoopPoint(Instance* i) {
-  audio::addLoopPointToData(i->file(), i->player_->getTime());
+  widget::waveform::addLoopPointToViewport(i->file(), i->player_->getTime());
 }
 
 void nudgeVolumeDownOp(audio::Gain* gain) {
@@ -70,12 +71,13 @@ void nudgeVolumeUp(Instance* i) {
 
 void clearLoops(Instance *i) {
   const VirtualFile& f = i->file();
-  LoopPointList loops;
-  LoopPoint* loop = loops.add_loop_point();
+  Viewport viewport;
+  LoopPointList* loops = viewport.mutable_loop_points();
+  LoopPoint* loop = loops->add_loop_point();
   loop->set_selected(true);
   loop->set_time(0);
-  loops.set_length(data::getProto<LoopPointList>(f).length());
-  data::setProto(loops, f);
+  loops->set_length(data::getProto<Viewport>(f).loop_points().length());
+  data::setProto(viewport, f);
 }
 
 void clearNavigator(Instance *) { data::setProto(VirtualFileList(), data::global()); }
@@ -168,7 +170,7 @@ void treeUp(Instance*) {
 }
 
 void zoomOut(Instance* i) {
-  widget::waveform::zoom(i->file(), i->length(), -1.0);
+  widget::waveform::zoomScale(i->file(), i->length(), -1.0);
 }
 
 void zoomOutFull(Instance* i) {

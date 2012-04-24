@@ -1,6 +1,7 @@
 #include "rec/widget/waveform/Zoom.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
@@ -16,7 +17,8 @@ double zoomFunction(double increment) {
   return pow(POWER, -increment);
 }
 
-Zoom zoom(const Zoom& z, Samples<44100> length, Samples<44100> t, double k) {
+Zoom makeZoom(const Zoom& z, Samples<44100> length, Samples<44100> t,
+              double k) {
   k = zoomFunction(k * ZOOM_INCREMENT);
   // DCHECK_LE(z.begin(), z.end());
   Zoom zoom(z);
@@ -41,8 +43,8 @@ Zoom zoom(const Zoom& z, Samples<44100> length, Samples<44100> t, double k) {
   return zoom;
 }
 
-Zoom zoom(const Zoom& z, Samples<44100> length, double k) {
-  return zoom(z, length, (z.begin() + z.end()) / 2, k);
+Zoom makeZoom(const Zoom& z, Samples<44100> length, double k) {
+  return makeZoom(z, length, (z.begin() + z.end()) / 2, k);
 }
 
 }  // namespace
@@ -66,30 +68,35 @@ void constrainZoom(Zoom* z, Samples<44100> length) {
   }
 }
 
-void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k) {
-  data::setProto(zoom(data::getProto<Zoom>(&f), length, time, k), &f);
+void zoomScaleAt(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k) {
+  Viewport vp(data::getProto<Viewport>(&f));
+  vp.mutable_zoom()->CopyFrom(makeZoom(vp.zoom(), length, time, k));
+  data::setProto(vp, &f);
 }
 
-void zoom(const VirtualFile& f, Samples<44100> length, double k) {
-  data::setProto(zoom(data::getProto<Zoom>(&f), length, k), &f);
+void zoomScale(const VirtualFile& f, Samples<44100> length, double k) {
+  Viewport vp(data::getProto<Viewport>(&f));
+  vp.mutable_zoom()->CopyFrom(makeZoom(vp.zoom(), length, k));
+  data::setProto(vp, &f);
 }
 
 void zoomOutFull(const VirtualFile& f, Samples<44100> length) {
-  Zoom zoom;
-  zoom.set_end(length);
-  data::setProto(zoom, &f);
+  Viewport vp(data::getProto<Viewport>(&f));
+  vp.mutable_zoom()->set_begin(0);
+  vp.mutable_zoom()->set_end(length);
+  data::setProto(vp, &f);
 }
 
 void zoomTo(const VirtualFile& f, Samples<44100> begin, Samples<44100> end,
             Samples<44100> length) {
-  Zoom zoom;
-  zoom.set_begin(begin);
-  zoom.set_end(end);
+  Viewport vp(data::getProto<Viewport>(&f));
+  Zoom* zoom = vp.mutable_zoom();
+  zoom->set_begin(begin);
+  zoom->set_end(end);
 
-  constrainZoom(&zoom, length);
-  data::setProto(zoom, &f);
+  constrainZoom(zoom, length);
+  data::setProto(vp, &f);
 }
-
 
 }  // namespace waveform
 }  // namespace widget

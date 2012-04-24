@@ -6,7 +6,6 @@
 #include "rec/base/Samples.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
-#include "rec/util/LoopPoint.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/block/Block.h"
@@ -14,6 +13,7 @@
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace widget {
@@ -32,15 +32,13 @@ typedef vector<Cursor*> CursorList;
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
                  public SettableTooltipClient,
-                 public DataListener<LoopPointList>,
+                 public DataListener<Viewport>,
                  public GlobalDataListener<Mode>,
                  public GlobalDataListener<WaveformProto>,
-                 public DataListener<Zoom>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&> {
  public:
-  Waveform(MenuBarModel* model = NULL,
-           const CursorProto* cursor = &defaultTimeCursor());
+  Waveform(MenuBarModel* model = NULL);
   virtual ~Waveform();
   void init();
 
@@ -50,10 +48,11 @@ class Waveform : public Component,
   virtual void resized();
 
   virtual void paint(Graphics&);
-  virtual void operator()(const LoopPointList&);
   virtual void operator()(const Mode&);
   virtual void operator()(const WaveformProto&);
-  virtual void operator()(const Zoom&);
+  virtual void operator()(const Viewport& vp) { setViewport(vp); }
+
+  void setViewport(const Viewport&);
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 
@@ -69,9 +68,11 @@ class Waveform : public Component,
   void repaintBlock(block::Block);
   void repaintBlocks(const block::BlockSet&);
 
-  void adjustCursors(LoopPointList loopPoints, block::BlockSet dirty);
+  void adjustCursors(const LoopPointList& loopPoints,
+                     const block::BlockSet& dirty);
   void setSelected(int index, bool selected);
   const WaveformModel& model() { return *model_; }
+  static void translateAll();
 
  private:
   void layout();

@@ -2,41 +2,42 @@
 #define __REC_GUI_AUDIO_LOOPS__
 
 #include "rec/data/Address.h"
+#include "rec/data/DataListener.h"
 #include "rec/gui/TableController.h"
 #include "rec/util/Cuttable.h"
-#include "rec/data/DataListener.h"
-#include "rec/util/LoopPoint.pb.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace gui {
 namespace audio {
 
 class Loops : public TableController,
-              public DataListener<LoopPointList>,
+              public DataListener<widget::waveform::Viewport>,
               public HasCuttable {
  public:
   explicit Loops(const TableColumnList* desc = NULL,
-                 const data::Address& partAddress = data::Address("loop_point"));
+                 const data::Address& partAddress = data::Address("loop_points")
+                 + data::Address("loop_point"));
   virtual ~Loops();
 
   virtual Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected,
                                              Component* existingComponentToUpdate);
 
-  virtual void operator()(const LoopPointList& lpl) { setLoops(lpl); }
+  virtual void operator()(const widget::waveform::Viewport&);
   virtual int getNumRows();
   virtual Cuttable* cuttable() { return cuttable_.get(); }
   virtual void selectedRowsChanged(int lastRowSelected);
 
-  void editLoopPoints(const LoopPointList&);
+  void editViewport(const widget::waveform::Viewport&);
 
  protected:
   virtual void update();
   virtual String displayText(const TableColumn& col, int row);
 
  private:
-  void setLoops(const LoopPointList&);
+  void setViewport(const widget::waveform::Viewport&);
 
-  LoopPointList loops_;
+  widget::waveform::Viewport viewport_;
   data::Address partAddress_;
   ptr<Cuttable> cuttable_;
 

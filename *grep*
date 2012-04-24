@@ -1,0 +1,65 @@
+-*- mode: grep; default-directory: "/development/rec.changed/src/rec/" -*-
+Grep started at Tue Apr 24 01:40:23
+
+grep -nHR * -e viewport -i /dev/null
+slow/CurrentFile.cpp:25:#include "rec/widget/waveform/Viewport.pb.h"
+slow/CurrentFile.cpp:75:  Viewport vp = data::getProto<Viewport>(&file_);
+slow/CurrentFile.cpp:113:  currentTime()->setViewport(vp);
+slow/CurrentFile.cpp:114:  components()->waveform_->setViewport(vp);
+slow/CurrentTime.cpp:17:using widget::waveform::Viewport;
+slow/CurrentTime.cpp:32:  DataListener<widget::waveform::Viewport>::init();
+slow/CurrentTime.cpp:37:  Viewport viewport;
+slow/CurrentTime.cpp:46:    viewport = viewport_;
+slow/CurrentTime.cpp:48:  Zoom* zoom = viewport_.mutable_zoom();
+slow/CurrentTime.cpp:64:  DataListener<Viewport>::setProto(viewport);
+slow/CurrentTime.cpp:67:void CurrentTime::setViewport(const Viewport& viewport) {
+slow/CurrentTime.cpp:68:  // DCHECK(viewport.zoom().has_end());  // TODO
+slow/CurrentTime.cpp:75:    viewport_ = viewport;
+slow/CurrentTime.cpp:76:    const LoopPointList& loops = viewport_.loop_points();
+slow/CurrentTime.cpp:111:    Viewport viewport(data::getProto<Viewport>(file()));
+slow/CurrentTime.cpp:112:    viewport.mutable_loop_points()->mutable_loop_point(index)->set_time(t);
+slow/CurrentTime.cpp:113:    data::setProto(viewport, file());
+slow/CurrentTime.h:11:#include "rec/widget/waveform/Viewport.pb.h"
+slow/CurrentTime.h:17:                    public DataListener<widget::waveform::Viewport>,
+slow/CurrentTime.h:26:  void setViewport(const widget::waveform::Viewport&);
+slow/CurrentTime.h:30:  virtual void operator()(const widget::waveform::Viewport& vp) {
+slow/CurrentTime.h:31:    setViewport(vp);
+slow/CurrentTime.h:51:  widget::waveform::Viewport viewport_;
+slow/MouseListener.cpp:20:#include "rec/widget/waveform/Viewport.h"
+slow/MouseListener.cpp:47:  DataListener<widget::waveform::Viewport>::init();
+slow/MouseListener.cpp:56:  data::Opener<Viewport> opener(data::getData<Viewport>(&file));
+slow/MouseListener.cpp:102:  widget::waveform::addLoopPointToViewport(file(), time);
+slow/MouseListener.cpp:111:    waveformDragStart_ = DataListener<Viewport>::getProto().zoom().begin();
+slow/MouseListener.cpp:181:    Viewport viewport(DataListener<Viewport>::getProto());
+slow/MouseListener.cpp:182:    Zoom* zoom = viewport.mutable_zoom();
+slow/MouseListener.cpp:192:    DataListener<widget::waveform::Viewport>::setProto(viewport);
+slow/MouseListener.h:9:#include "rec/widget/waveform/Viewport.pb.h"
+slow/MouseListener.h:25:                      public DataListener<widget::waveform::Viewport>,
+slow/MouseListener.h:39:  virtual void operator()(const widget::waveform::Viewport&) {}
+widget/waveform/Waveform.cpp:80:  DataListener<Viewport>::init();
+widget/waveform/Waveform.cpp:121:void Waveform::setViewport(const Viewport& viewport) {
+widget/waveform/Waveform.cpp:122:  const LoopPointList& loopPoints = viewport.loop_points();
+widget/waveform/Waveform.cpp:124:  if (model_->setViewport(viewport))
+widget/waveform/Waveform.cpp:208:  Viewport viewport = DataListener<Viewport>::getProto();
+widget/waveform/Waveform.cpp:209:  LoopPointList* lpl = viewport.mutable_loop_points();
+widget/waveform/Waveform.cpp:216:  DataListener<Viewport>::setProto(viewport);
+widget/waveform/Waveform.cpp:243:  Viewport viewport = DataListener<Viewport>::getProto();
+widget/waveform/Waveform.cpp:244:  LoopPointList* lpl = viewport.mutable_loop_points();
+widget/waveform/Waveform.cpp:250:  DataListener<Viewport>::setProto(viewport);
+widget/waveform/Waveform.h:16:#include "rec/widget/waveform/Viewport.pb.h"
+widget/waveform/Waveform.h:37:                 public DataListener<Viewport>,
+widget/waveform/Waveform.h:53:  virtual void operator()(const Viewport& vp) { setViewport(vp); }
+widget/waveform/Waveform.h:59:  void setViewport(const Viewport&);
+widget/waveform/WaveformModel.cpp:29:  const Zoom& zoom = viewport_.zoom();
+widget/waveform/WaveformModel.cpp:45:    r = Range<Samples<44100> >(0, viewport_.loop_points().length());
+widget/waveform/WaveformModel.cpp:66:  const Zoom& zoom = viewport_.zoom();
+widget/waveform/WaveformModel.cpp:71:bool WaveformModel::setViewport(const Viewport& vp) {
+widget/waveform/WaveformModel.cpp:72:  bool changed = !data::equals(vp.zoom(), viewport_.zoom());
+widget/waveform/WaveformModel.cpp:73:  viewport_ = vp;
+widget/waveform/WaveformModel.cpp:80:    constrainZoom(viewport_.mutable_zoom(), len);
+widget/waveform/WaveformModel.h:6:#include "rec/widget/waveform/Viewport.pb.h"
+widget/waveform/WaveformModel.h:27:  bool setViewport(const Viewport&);
+widget/waveform/WaveformModel.h:31:  Samples<44100> length() const { return viewport_.loop_points().length(); }
+widget/waveform/WaveformModel.h:42:  Viewport viewport_;
+
+Grep finished (matches found) at Tue Apr 24 01:40:24

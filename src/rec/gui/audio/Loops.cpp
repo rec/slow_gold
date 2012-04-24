@@ -23,6 +23,7 @@ namespace audio {
 using data::Address;
 using data::Value;
 using gui::TableColumn;
+using namespace rec::widget::waveform;
 
 // Skin
 
@@ -65,18 +66,22 @@ Loops::~Loops() {}
 
 int Loops::getNumRows() {
   Lock l(TableController::lock_);
-  return loops_.loop_point_size();
+  return viewport_.loop_points().loop_point_size();
 }
 
-void Loops::setLoops(const LoopPointList& loops) {
+void Loops::operator()(const Viewport& vp) {
+  setViewport(vp);
+}
+
+
+void Loops::setViewport(const Viewport& viewport) {
   {
     Lock l(TableController::lock_);
-    loops_ = loops;
+    viewport_ = viewport;
   }
 
   thread::callAsync(this, &Loops::updateAndRepaint);
 }
-
 
 static String getDisplayText(const Value& v, const TableColumn& col,
                              Samples<44100> length, int sampleRate) {
@@ -94,9 +99,13 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
   Address row = partAddress_ + Address(rowIndex) + col.address();
   data::Value value;
   string error = getMessageField(row, getProto(), &value);
-  return error.empty() ?
-    getDisplayText(value, col, Samples<44100>(loops_.length()), 44100) :
-    String(Trans("(error)"));
+  if (!error.empty()) {
+    LOG(ERROR) << error << ",\n" << row.DebugString();
+    return Trans("(error)"); // TODO
+  }
+
+  Samples<44100> length = Samples<44100>(viewport_.loop_points().length());
+  return getDisplayText(value, col, length, 44100);
 }
 
 void Loops::selectedRowsChanged(int /*lastRowSelected*/) {
@@ -105,8 +114,8 @@ void Loops::selectedRowsChanged(int /*lastRowSelected*/) {
 
   juce::SparseSet<int> selected(getSelectedRows());
 
-  for (int i = 0; i < loops_.loop_point_size(); ++i) {
-    LoopPoint* lp = loops_.mutable_loop_point(i);
+  for (int i = 0; i < getNumRows(); ++i) {
+    LoopPoint* lp = viewport_.mutable_loop_points()->mutable_loop_point(i);
     bool contains = selected.contains(i);
     if (lp->selected() != contains) {
       lp->set_selected(contains);
@@ -114,7 +123,7 @@ void Loops::selectedRowsChanged(int /*lastRowSelected*/) {
     }
   }
   if (changed)
-    setProto(loops_);
+    setProto(viewport_);
 }
 
 void Loops::update() {
@@ -123,8 +132,8 @@ void Loops::update() {
   Lock l(TableController::lock_);
 
   juce::SparseSet<int> sel;
-  for (int i = 0; i < loops_.loop_point_size(); ++i) {
-    if (loops_.loop_point(i).selected())
+  for (int i = 0; i < getNumRows(); ++i) {
+    if (viewport_.loop_points().loop_point(i).selected())
       sel.addRange(juce::Range<int>(i, i + 1));
   }
 
@@ -138,8 +147,9 @@ class LoopsSetterLabel : public SetterLabel {
  public:
   explicit LoopsSetterLabel(int row, const TableColumn& col)
       : SetterLabel("",
-                    getTypeName<LoopPointList>(),
-                    "loop_point" + Address(row) + col.address()),
+                    getTypeName<Viewport>(),
+                    Address("loop_points") + "loop_point" +
+                    Address(row) + col.address()),
         row_(row) {
     setEditable(true, false, false);
     setFailOnError(false);
@@ -150,8 +160,8 @@ class LoopsSetterLabel : public SetterLabel {
   virtual void operator()(const Message& m) {
     // Juce takes some time to delete this item, and it might get an update
     // at a point when it no longer points to a valid item in the LoopPointList.
-    if (const LoopPointList* lpl = dynamic_cast<const LoopPointList*>(&m)) {
-      if (row_ < lpl->loop_point_size())
+    if (const Viewport* vp = dynamic_cast<const Viewport*>(&m)) {
+      if (row_ < vp->loop_points().loop_point_size())
         SetterLabel::operator()(m);
     }
   }
@@ -191,10 +201,10 @@ Component* Loops::refreshComponentForCell(int row, int column,
   return existing;
 }
 
-void Loops::editLoopPoints(const LoopPointList& lpl) {
-  setLoops(lpl);
+void Loops::editViewport(const widget::waveform::Viewport& viewport) {
+  setViewport(viewport);
   updateContent();
-  setProto(lpl);
+  setProto(viewport);
 }
 
 }  // namespace audio

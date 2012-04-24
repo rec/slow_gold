@@ -4,9 +4,9 @@
 #include "rec/base/Samples.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
-#include "rec/util/LoopPoint.h"
 #include "rec/util/Range.h"
 #include "rec/widget/status/Time.pb.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace widget {
@@ -15,7 +15,7 @@ namespace time {
 
 class DialComponent : public Component,
                       public Listener<Samples<44100> >,
-                      public DataListener<LoopPointList>,
+                      public DataListener<waveform::Viewport>,
                       public SettableTooltipClient {
  public:
   explicit DialComponent(const Dial& desc);
@@ -29,7 +29,7 @@ class DialComponent : public Component,
   static const double REDRAW_ANGLE;
 
  protected:
-  void operator()(const LoopPointList&);
+  virtual void operator()(const waveform::Viewport&);
 
  private:
   void recomputeAngle();

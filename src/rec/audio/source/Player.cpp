@@ -10,13 +10,17 @@
 #include "rec/audio/util/Gain.h"
 #include "rec/util/Math.h"
 #include "rec/util/block/Block.h"
+#include "rec/widget/waveform/Viewport.pb.h"
+
+// #include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-using namespace rec::audio::transport;
 using namespace rec::audio::stretch;
+using namespace rec::audio::transport;
+using namespace rec::widget::waveform;
 
 Player::Player(Device* d) : device_(d),
                             timer_(new Timer(NULL)),
@@ -35,9 +39,9 @@ Player::~Player() {
 
 void Player::init() {
   DataListener<Gain>::init();
-  DataListener<LoopPointList>::init();
   DataListener<StereoProto>::init();
-  DataListener<stretch::Stretch>::init();
+  DataListener<Stretch>::init();
+  DataListener<Viewport>::init();
 }
 
 Samples<44100> Player::getNextReadPosition() {
@@ -77,8 +81,8 @@ void Player::operator()(const StereoProto& s) {
   stereo_->setStereo(s);
 }
 
-void Player::operator()(const LoopPointList& loops) {
-  selection_->setSelection(getTimeSelection(loops));
+void Player::operator()(const Viewport& viewport) {
+  selection_->setSelection(getTimeSelection(viewport.loop_points()));
 }
 
 void Player::operator()(const Gain& gain) {

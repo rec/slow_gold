@@ -3,6 +3,7 @@
 #include "rec/data/yaml/Yaml.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace gui {
@@ -10,12 +11,14 @@ namespace audio {
 
 namespace {
 
+using rec::widget::waveform::Viewport;
+
 const LoopPointList getSelected(const LoopPointList& lpl, bool sel) {
   return rec::audio::getSelected(lpl, sel);
 }
 
 const LoopPointList getSelected(const Loops& loops, bool sel) {
-  return getSelected(loops.getProto(), sel);
+  return getSelected(loops.getProto().loop_points(), sel);
 }
 
 }  // namespace
@@ -40,17 +43,23 @@ bool LoopsCuttable::canCut() const {
 }
 
 void LoopsCuttable::cut() {
-  loops_->editLoopPoints(rec::audio::cutSelected(loops_->getProto(), true));
+  Viewport vp = loops_->getProto();
+  LoopPointList lpl = rec::audio::cutSelected(vp.loop_points(), true);
+  vp.mutable_loop_points()->CopyFrom(lpl);
+  loops_->editViewport(vp);
 }
 
 bool LoopsCuttable::paste(const string& s) {
   using rec::audio::addLoopPoints;
 
-  LoopPointList lpl;
-  if (!yaml::read(s, &lpl))
+  Viewport vp;
+  if (!yaml::read(s, &vp))
     return false;
 
-  loops_->editLoopPoints(addLoopPoints(loops_->getProto(), lpl));
+  Viewport vp2 = loops_->getProto();
+  LoopPointList lpl = addLoopPoints(vp.loop_points(), vp2.loop_points());
+  vp2.mutable_loop_points()->CopyFrom(lpl);
+  loops_->editViewport(vp2);
   return true;
 }
 

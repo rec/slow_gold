@@ -13,8 +13,8 @@ static const Samples<41000> MIN_ZOOM_TIME = 4 * 44100;
 
 // The factor of k indicates how much wider or narrower the displayed area will
 // be after the zoom.
-void zoom(const VirtualFile& f, Samples<44100> length, double k);
-void zoom(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k);
+void zoomScale(const VirtualFile& f, Samples<44100> length, double k);
+void zoomScaleAt(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k);
 void zoomTo(const VirtualFile& f, Samples<44100> begin, Samples<44100> end,
             Samples<44100> length);
 void zoomOutFull(const VirtualFile& f, Samples<44100> length);

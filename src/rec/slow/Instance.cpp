@@ -53,7 +53,7 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
   IsWholeSongInstance(Instance* i) : HasInstance(i) {}
 
   virtual IsWholeSong::WholeSong isWholeSong() const {
-    LoopPointList lpl = data::getProto<LoopPointList>(file());
+    LoopPointList lpl = data::getProto<Viewport>(file()).loop_points();
     return (lpl.loop_point_size() <= 1) ? IsWholeSong::SONG_IS_ONE_SEGMENT :
       (audio::getSelectionCount(lpl) == 1) ? IsWholeSong::ONE_SEGMENT :
       IsWholeSong::WHOLE_SONG;
@@ -64,7 +64,9 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
 
 Instance::Instance(SlowWindow* window) : window_(window) {
   CHECK_DDD(51, 2193, int64, int32);
+}
 
+void Instance::init() {
   menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
   device_.reset(new audio::Device);
   currentFile_.reset(new CurrentFile(this));
@@ -79,6 +81,13 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   guiListener_.reset(new GuiListener(this));
   fillerThread_.reset(new FillerThread(this));
   threads_.reset(new Threads(this));
+
+  menus_->init();
+  player_->init();
+  components_->init();
+  currentTime_->init();
+  guiListener_->init();
+  mouseListener_->init();
 
   fillerThread_->setPriority(FILLER_PRIORITY);
 
@@ -108,7 +117,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   window_->addListener(menus_.get());
 
   DialogLocker::getDisableBroadcaster()->addListener(target_->targetManager());
-  DialogLocker::getDisableBroadcaster()->addListener(window->application());
+  DialogLocker::getDisableBroadcaster()->addListener(window_->application());
 
 #ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK
   // TODO: move this elsewhere.
@@ -130,16 +139,6 @@ Instance::~Instance() {
   player_->setState(audio::transport::STOPPED);
   device_->shutdown();
   threads_.reset();
-}
-
-void Instance::init() {
-  menus_->init();
-  player_->init();
-  components_->init();
-  currentFile_->init();
-  currentTime_->init();
-  guiListener_->init();
-  mouseListener_->init();
 }
 
 void Instance::startup() {

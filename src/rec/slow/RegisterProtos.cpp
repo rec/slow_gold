@@ -16,6 +16,7 @@
 #include "rec/util/Mode.pb.h"
 #include "rec/util/SystemStats.pb.h"
 #include "rec/widget/tree/NavigatorConfig.pb.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
@@ -42,6 +43,7 @@ void registerProtos() {
   registerClass<util::file::VirtualFile>(r);
   registerClass<util::file::VirtualFileList>(r);
   registerClass<widget::tree::NavigatorConfig>(r);
+  registerClass<widget::waveform::Viewport>(r);
   registerClass<widget::waveform::WaveformProto>(r);
   registerClass<widget::waveform::Zoom>(r);
 }

@@ -8,7 +8,6 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/data/DataListener.h"
-#include "rec/util/LoopPoint.h"
 
 namespace rec {
 
@@ -16,6 +15,7 @@ namespace audio { class Device; }
 namespace audio { namespace stretch { class Stretch; }}
 namespace audio { namespace stretch { class Stretchy; }}
 namespace audio { class Gain; }
+namespace widget { namespace waveform { class Viewport; }}
 
 namespace audio {
 namespace source {
@@ -29,7 +29,7 @@ class StereoProto;
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be NULL if no stretch has been requested.
 class Player : public DataListener<Gain>,
-               public DataListener<LoopPointList>,
+               public DataListener<widget::waveform::Viewport>,
                public DataListener<StereoProto>,
                public DataListener<stretch::Stretch>,
                public Broadcaster<transport::State>,
@@ -60,7 +60,7 @@ class Player : public DataListener<Gain>,
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
   virtual void operator()(const Gain&);
-  virtual void operator()(const LoopPointList&);
+  virtual void operator()(const widget::waveform::Viewport&);
   virtual void operator()(const StereoProto&);
   virtual void operator()(const stretch::Stretch&);
 

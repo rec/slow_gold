@@ -13,7 +13,7 @@ namespace slow {
 
 using audio::util::BufferedReader;
 using widget::waveform::Zoom;
-using widget::waveform::MIN_ZOOM_TIME;
+using namespace rec::widget::waveform;
 
 static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
 static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
@@ -26,13 +26,12 @@ CurrentTime::CurrentTime(Instance* i)
 }
 
 void CurrentTime::init() {
-  DataListener<LoopPointList>::init();
-  DataListener<widget::waveform::Zoom>::init();
+  DataListener<widget::waveform::Viewport>::init();
   GlobalDataListener<GuiSettings>::init();
 }
 
-void CurrentTime::operator()(Samples<44100> t) {
-  Zoom zoom;
+void CurrentTime::setTime(Samples<44100> t) {
+  Viewport viewport;
   {
     Lock l(lock());
     time_ = t;
@@ -41,39 +40,37 @@ void CurrentTime::operator()(Samples<44100> t) {
       return;
 
     zoomTime_ = t;
-    zoom = zoom_;
+    viewport = viewport_;
   }
-
-  Samples<44100> end = zoom.has_end() ? Samples<44100>(zoom.end()) : length_;
+  Zoom* zoom = viewport_.mutable_zoom();
+  Samples<44100> end = zoom->has_end() ? Samples<44100>(zoom->end()) : length_;
   // Now compute an ideal zoom for this time.
-  Samples<44100> width = end - zoom.begin();
+  Samples<44100> width = end - zoom->begin();
   Samples<44100> off = static_cast<int64>(MIN_CURSOR_RATIO_CHANGE * width);
-  if (t >= zoom.begin() && t <= zoom.begin() + off)
+  if (t >= zoom->begin() && t <= zoom->begin() + off)
     return;
-  zoom.set_begin(t - static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width));
+  zoom->set_begin(t - static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width));
 
-  if (zoom.begin() + width > length_)
-    zoom.set_begin(length_ - width);
+  if (zoom->begin() + width > length_)
+    zoom->set_begin(length_ - width);
 
-  if (zoom.begin() < 0)
-    zoom.set_begin(0);
+  if (zoom->begin() < 0)
+    zoom->set_begin(0);
 
-  zoom.set_end(zoom.begin() + width);
-  DataListener<Zoom>::setProto(zoom);
+  zoom->set_end(zoom->begin() + width);
+  DataListener<Viewport>::setProto(viewport);
 }
 
-void CurrentTime::operator()(const Zoom& zoom) {
-  if (zoom.has_end()) {
-    Lock l(lock());
-    zoom_ = zoom;
-  }
-}
+void CurrentTime::setViewport(const Viewport& viewport) {
+  // DCHECK(viewport.zoom().has_end());  // TODO
 
-void CurrentTime::operator()(const LoopPointList& loops) {
   Samples<44100> time;
   bool jump = true;
+
   {
     Lock l(lock());
+    viewport_ = viewport;
+    const LoopPointList& loops = viewport_.loop_points();
     length_ = loops.length();
     if (loops.has_length()) {
       timeSelection_ = audio::getTimeSelection(loops);
@@ -102,6 +99,16 @@ void CurrentTime::operator()(const LoopPointList& loops) {
 void CurrentTime::operator()(const GuiSettings& settings) {
   Lock l(lock());
   followCursor_ = settings.follow_cursor();
+}
+
+void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) {
+  if (isTimeCursor) {
+    jumpToTime(t);
+  } else {
+    Viewport viewport(data::getProto<Viewport>(file()));
+    viewport.mutable_loop_points()->mutable_loop_point(index)->set_time(t);
+    data::setProto(viewport, file());
+  }
 }
 
 void CurrentTime::jumpToTime(Samples<44100> time) {

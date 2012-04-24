@@ -3,7 +3,7 @@
 
 #include "rec/util/LoopPoint.h"
 #include "rec/util/block/Block.h"
-#include "rec/widget/waveform/Zoom.pb.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
 namespace rec {
@@ -12,21 +12,23 @@ namespace waveform {
 
 class WaveformModel {
  public:
-  WaveformModel() : length_(0), empty_(true), isDraggingCursor_(false) {}
+  WaveformModel() : isDraggingCursor_(false) {}
 
   util::Range<Samples<44100> > getTimeRange() const;
   Samples<44100> xToTime(int x) const;
   double pixelsPerSample() const;
   int timeToX(Samples<44100> t) const;
-  block::BlockSet setLoopPoints(const LoopPointList& loopPoints);
 
   bool isDraggingCursor() const { return isDraggingCursor_; }
   void setIsDraggingCursor(bool b) { isDraggingCursor_ = b; }
   void setWidth(int w) { width_ = w; }
-  void setZoom(const Zoom&);
-  bool isEmpty() const { return empty_; }
+
+  // Return true if we need to layout the Waveform.
+  bool setViewport(const Viewport&);
+  bool isEmpty() const { return !length(); }
   const block::BlockSet& selection() const { return selection_; }
-  Samples<44100> length() const { return length_; }
+  const block::BlockSet& dirty() const { return dirty_; }
+  Samples<44100> length() const { return viewport_.loop_points().length(); }
 
   void setDescription(const WaveformProto& d) { desc_ = d; }
   const WaveformProto& description() const { return desc_; }
@@ -35,10 +37,9 @@ class WaveformModel {
  private:
   Samples<44100> zoomEnd() const;
 
-  Samples<44100> length_;
   block::BlockSet selection_;
-  Zoom zoom_;
-  bool empty_;
+  block::BlockSet dirty_;
+  Viewport viewport_;
   bool isDraggingCursor_;
   int width_;
   WaveformProto desc_;
