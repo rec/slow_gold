@@ -22,6 +22,8 @@ struct DataCenter {
   ptr<DataMaker> maker_;
   ptr<DataMap> map_;
 
+  void clearUndoes() const;
+
   bool hasUpdates() const;
   const CriticalSection& lock() const;
 };

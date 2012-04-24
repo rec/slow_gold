@@ -55,6 +55,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
   while (data::getDataCenter().hasUpdates())
     Thread::sleep(1);
 
+  data::getDataCenter().clearUndoes();
   Lock l(instance_->lock_);
   if (!initialized_)
     initialized_ = true;

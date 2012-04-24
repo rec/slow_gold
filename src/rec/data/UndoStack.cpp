@@ -51,6 +51,13 @@ UndoStack::~UndoStack() {
   stl::deletePointers(&stack_);
 }
 
+void UndoStack::clear() {
+  Lock l(lock_);
+  stl::deletePointers(&stack_);
+  stack_.clear();
+  broadcast(None());
+}
+
 int UndoStack::popRedos() {
   if (!undoes_)
     return 0;

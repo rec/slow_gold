@@ -15,6 +15,8 @@ class UndoStack : public Broadcaster<None> {
   UndoStack() : undoes_(0) {}
   ~UndoStack();
 
+  void clear();
+
   void push(Data*, const Message& before, const Message& after);
 
   int undoable() const { Lock l(lock_); return stack_.size() - undoes_; }

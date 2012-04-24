@@ -28,6 +28,11 @@ bool DataCenter::hasUpdates() const {
   return updater_->hasUpdates();
 }
 
+void DataCenter::clearUndoes() const {
+  UndoStack* undo = const_cast<UndoStack*>(undo_.get());
+  undo->clear();
+}
+
 static DataCenter** getDC() {
   static DataCenter* dataCenter = new DataCenter;
   return &dataCenter;
