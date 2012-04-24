@@ -29,16 +29,16 @@ class CurrentTime : public HasInstance,
   virtual void operator()(const widget::waveform::Zoom&);
 
   const block::BlockSet& timeSelection() const { return timeSelection_; }
-  Samples<44100> length() const { Lock l(lock_); return length_; }
-  Samples<44100> time() const { Lock l(lock_); return time_; }
-  Samples<44100> requestedTime() const { Lock l(lock_); return requestedTime_; }
+  Samples<44100> length() const { Lock l(lock()); return length_; }
+  Samples<44100> time() const { Lock l(lock()); return time_; }
+  Samples<44100> requestedTime() const { Lock l(lock()); return requestedTime_; }
   void jumpToTime(Samples<44100> pos);
 
-  void clear() { Lock l(lock_); time_ = 0; }
+  void clear() { Lock l(lock()); time_ = 0; }
+
+  const CriticalSection& lock() const { return instance_->lock_; }
 
  private:
-  CriticalSection lock_;
-
   block::BlockSet timeSelection_;
   Samples<44100> time_;
   Samples<44100> requestedTime_;

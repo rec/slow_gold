@@ -27,6 +27,7 @@ class HasInstance {
   Samples<44100> time() const { return instance_->time(); }
   Samples<44100> length() const { return instance_->length(); }
   bool isPlaying() const { return instance_->isPlaying(); }
+  const CriticalSection& lock() const { return instance_->lock_; }
 
  protected:
   Instance* instance_;

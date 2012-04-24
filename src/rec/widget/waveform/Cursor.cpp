@@ -47,12 +47,10 @@ Cursor::Cursor(const CursorProto& d, Waveform* w, int index)
       waveform_(w),
       desc_(d),
       index_(index) {
-  DLOG(INFO) << "Constructing " << this;
   CHECK_DDD(5183, 2134, int16, int64);
 }
 
 Cursor::~Cursor() {
-  DLOG(INFO) << "deleting " << this;
   waveformListener_.reset();
   waveform_->removeChildComponent(this);
   waveform_->removeChildComponent(caption_.get());

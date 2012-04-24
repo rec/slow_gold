@@ -1021,6 +1021,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentTime.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\FillerThread.cpp">
+      <Filter>SlowGold\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\GuiListener.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
@@ -3286,6 +3289,9 @@
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentTime.h">
+      <Filter>SlowGold\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\FillerThread.h">
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\GuiListener.h">

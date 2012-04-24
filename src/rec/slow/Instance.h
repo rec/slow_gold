@@ -2,6 +2,7 @@
 #define __REC_SLOW_INSTANCE__
 
 #include "rec/audio/Audio.h"
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 
@@ -15,6 +16,7 @@ namespace slow {
 class Components;
 class CurrentFile;
 class CurrentTime;
+class FillerThread;
 class GuiListener;
 class Menus;
 class MouseListener;
@@ -57,6 +59,7 @@ class Instance {
   ptr<MouseListener> mouseListener_;
   ptr<GuiListener> guiListener_;
   ptr<Threads> threads_;
+  thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
 
  private:

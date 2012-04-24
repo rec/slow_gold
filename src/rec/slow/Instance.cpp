@@ -16,6 +16,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
+#include "rec/slow/FillerThread.h"
 #include "rec/slow/GuiListener.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/IsWholeSong.h"
@@ -41,6 +42,7 @@ using namespace rec::widget::waveform;
 using gui::DialogLocker;
 
 static const int MS_TILL_TOOLTIP = 700;
+static const int FILLER_PRIORITY = 4;
 
 using juce::TooltipWindow;
 
@@ -73,13 +75,12 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   bufferFiller_.reset(new BufferFiller);
   lookAndFeel_.reset(new gui::LookAndFeel);
 
-#ifdef SET_FILE_EARLY
-  currentFile_->setFile(data::getGlobal<VirtualFile>());
-#endif
-
   mouseListener_.reset(new MouseListener(this));
   guiListener_.reset(new GuiListener(this));
+  fillerThread_.reset(new FillerThread(this));
   threads_.reset(new Threads(this));
+
+  fillerThread_->setPriority(FILLER_PRIORITY);
 
   target_->addCommands();
   player_->addListener(components_->transportController_.get());
@@ -148,6 +149,7 @@ void Instance::startup() {
   MessageManagerLock l;
   window_->toFront(true);
   juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
+  currentFile_->setFile(data::getGlobal<VirtualFile>());
   currentFile_->hasStarted();
   if (data::getGlobal<GuiSettings>().show_about_on_startup())
     window_->startAboutWindow();

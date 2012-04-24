@@ -25,6 +25,8 @@
 namespace rec {
 namespace slow {
 
+static const int FILLER_THREAD_STOP_TIME = 1000;
+
 using namespace rec::widget::waveform;
 
 class FileDataListener : public data::GlobalDataListener<VirtualFile> {
@@ -42,11 +44,11 @@ CurrentFile::CurrentFile(Instance* i) : HasInstance(i),
                                         initialized_(false),
                                         empty_(true),
                                         hasStarted_(false) {
-  fileListener_.reset(new FileDataListener(this));
+  // fileListener_.reset(new FileDataListener(this));
 }
 
 void CurrentFile::init() {
-  fileListener_->init();
+  // fileListener_->init();
 }
 
 CurrentFile::~CurrentFile() {}
@@ -64,6 +66,8 @@ void CurrentFile::setFileAndData(const VirtualFile& f) {
 }
 
 CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
+  instance_->fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
+
   Lock l(instance_->lock_);
   if (!initialized_)
     initialized_ = true;
@@ -135,6 +139,8 @@ CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
 
   if (menus())
     menus()->menuItemsChanged();
+
+  instance_->fillerThread_->startThread();
 
   return result;
 }

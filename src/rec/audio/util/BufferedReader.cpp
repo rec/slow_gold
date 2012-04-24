@@ -4,6 +4,8 @@ namespace rec {
 namespace audio {
 namespace util {
 
+static const int PRELOAD = 10000;  // TODO:  duplicate code.
+
 Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
   Lock l(lock_);
   if (!reader) {
@@ -21,6 +23,10 @@ Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
   reader_.reset(reader);
   filled_.clear();
   return size;
+}
+
+bool BufferedReader::coversTime(Samples<44100> time) const {
+  return hasFilled(block::Block(time, time + PRELOAD));
 }
 
 }  // namespace util

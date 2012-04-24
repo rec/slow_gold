@@ -15,10 +15,10 @@ using audio::util::BufferedReader;
 using widget::waveform::Zoom;
 using widget::waveform::MIN_ZOOM_TIME;
 
-static const int PRELOAD = 10000;
-
 static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
 static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
+
+static const int PRELOAD = 10000;  // TODO:  duplicate code.
 
 CurrentTime::CurrentTime(Instance* i)
     : HasInstance(i), time_(0), requestedTime_(-1), zoomTime_(0), length_(0),
@@ -34,7 +34,7 @@ void CurrentTime::init() {
 void CurrentTime::operator()(Samples<44100> t) {
   Zoom zoom;
   {
-    Lock l(lock_);
+    Lock l(lock());
     time_ = t;
 
     if (!followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
@@ -64,7 +64,7 @@ void CurrentTime::operator()(Samples<44100> t) {
 
 void CurrentTime::operator()(const Zoom& zoom) {
   if (zoom.has_end()) {
-    Lock l(lock_);
+    Lock l(lock());
     zoom_ = zoom;
   }
 }
@@ -73,7 +73,7 @@ void CurrentTime::operator()(const LoopPointList& loops) {
   Samples<44100> time;
   bool jump = true;
   {
-    Lock l(lock_);
+    Lock l(lock());
     length_ = loops.length();
     if (loops.has_length()) {
       timeSelection_ = audio::getTimeSelection(loops);
@@ -100,29 +100,30 @@ void CurrentTime::operator()(const LoopPointList& loops) {
 }
 
 void CurrentTime::operator()(const GuiSettings& settings) {
-  Lock l(lock_);
+  Lock l(lock());
   followCursor_ = settings.follow_cursor();
 }
 
-void CurrentTime::jumpToTime(Samples<44100> pos) {
+void CurrentTime::jumpToTime(Samples<44100> time) {
   {
-    Lock l(lock_);
+    Lock l(lock());
     if (isPlaying() &&
-        !(timeSelection_.empty() || block::contains(timeSelection_, pos))) {
+        !(timeSelection_.empty() || block::contains(timeSelection_, time))) {
       return;
     }
 
     BufferedReader* reader = bufferFiller()->reader();
-    requestedTime_ = pos;
-    if (reader && !reader->hasFilled(block::Block(pos, pos + PRELOAD))) {
-      reader->setNextFillPosition(pos);
+    requestedTime_ = time;
+    DCHECK(reader);  // TODO: remove
+    if (reader && !reader->coversTime(time)) {
+      reader->setNextFillPosition(time);
       if (player()->state())
         return;
     }
     requestedTime_ = -1;
   }
 
-	player()->setNextReadPosition(pos);
+	player()->setNextReadPosition(time);
 }
 
 }  // namespace slow

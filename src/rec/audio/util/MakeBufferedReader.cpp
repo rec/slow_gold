@@ -76,6 +76,7 @@ class BufferedReaderImpl : public BufferedReader {
   }
 
   virtual bool setLength(int64 length) {
+    DLOG(INFO) << length;
     bool success = frames_.setLength(length);
     Fillable::setLength(success ? length : 0);
     return success;

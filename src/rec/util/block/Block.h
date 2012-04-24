@@ -26,6 +26,10 @@ inline Size getSize(const Block& b) {
   return b.second - b.first;
 }
 
+inline bool empty(const Block& b) {
+  return (b.second == b.first);
+}
+
 inline bool contains(const Block& b, Size x) {
   return (x >= b.first) && (x < b.second);
 }

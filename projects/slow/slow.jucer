@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="FlAEGoW0P" name="SlowGold">
+  <MAINGROUP id="ZAyhiZOe6" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -971,6 +971,10 @@
               name="CurrentTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/CurrentTime.h" id="0utIc94CW"
               name="CurrentTime.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/FillerThread.cpp" id="TrA4EMvVb"
+              name="FillerThread.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/FillerThread.h" id="MHiOLJc0f"
+              name="FillerThread.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/GuiListener.cpp" id="sgoXOX3LR"
               name="GuiListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/GuiListener.h" id="4upj8hMAk"
@@ -1487,7 +1491,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="6GZUtGcWy" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="lRJvRUqJn" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
