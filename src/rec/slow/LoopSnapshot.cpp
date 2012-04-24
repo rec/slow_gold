@@ -1,8 +1,9 @@
 #include "rec/slow/LoopSnapshot.h"
 
-#include "rec/util/LoopPoint.h"
 #include "rec/audio/source/Player.h"
-#include "rec/slow/BufferFiller.h"
+#include "rec/data/DataOps.h"
+#include "rec/slow/Instance.h"
+#include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace slow {

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="wVPwmled5" name="SlowGold">
+  <MAINGROUP id="ru9L6jtLZ" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -198,10 +198,8 @@
                 id="JYlfsO3w8" name="ProcessAudioFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/ProcessAudioFile.h"
                 id="KT3Xt0MOi" name="ProcessAudioFile.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/util/TrackBufferAndThumbnail.cpp"
-                id="SA6kZPXoi" name="TrackBufferAndThumbnail.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/TrackBufferAndThumbnail.h"
-                id="ZpshJ73cZ" name="TrackBufferAndThumbnail.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/TimeKeeper.h" id="TAsYAbfKE"
+                name="TimeKeeper.h" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="U7Ad0hg9g" name="base">
@@ -1489,7 +1487,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="IkPL66310" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="fsAQ6l4V7" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

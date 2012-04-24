@@ -163,7 +163,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp"/>
@@ -1502,7 +1501,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\TimeKeeper.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\base.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\BaseNoJuce.h"/>

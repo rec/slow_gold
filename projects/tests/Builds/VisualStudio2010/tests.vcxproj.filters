@@ -592,9 +592,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp">
       <Filter>tests\rec\audio\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.cpp">
-      <Filter>tests\rec\audio\util</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
       <Filter>tests\rec\base</Filter>
     </ClCompile>
@@ -2721,7 +2718,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\TrackBufferAndThumbnail.h">
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\TimeKeeper.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h">

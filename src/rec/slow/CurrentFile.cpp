@@ -1,7 +1,6 @@
 #include "rec/slow/CurrentFile.h"
 
 #include "rec/audio/source/Player.h"
-#include "rec/audio/util/TrackBufferAndThumbnail.h"
 #include "rec/command/Command.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
