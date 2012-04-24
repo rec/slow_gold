@@ -550,6 +550,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferFiller.cpp">
+      <Filter>SlowGold\rec\audio\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClCompile>
@@ -968,9 +971,6 @@
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\BasicMenuMaker.cpp">
-      <Filter>SlowGold\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\BufferFiller.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp">
@@ -2610,6 +2610,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferFiller.h">
+      <Filter>SlowGold\rec\audio\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.h">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClInclude>
@@ -3235,9 +3238,6 @@
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\BasicMenuMaker.h">
-      <Filter>SlowGold\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\BufferFiller.h">
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h">

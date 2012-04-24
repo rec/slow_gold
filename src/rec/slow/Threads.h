@@ -8,8 +8,6 @@
 namespace rec {
 namespace slow {
 
-class BufferFiller;
-
 typedef void (*InstanceFunction)(Instance*);
 typedef thread::Result (*InstanceLoop)(Instance*);
 

@@ -12,7 +12,7 @@ class HasInstance {
  public:
   explicit HasInstance(Instance* i = NULL) : instance_(i) {}
 
-  BufferFiller* bufferFiller() { return instance_->bufferFiller_.get(); }
+  audio::util::BufferFiller* bufferFiller() { return instance_->bufferFiller_.get(); }
   Components* components() { return instance_->components_.get(); }
   Target* target() { return instance_->target_.get(); }
   Threads* threads() { return instance_->threads_.get(); }

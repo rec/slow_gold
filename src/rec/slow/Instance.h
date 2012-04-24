@@ -7,11 +7,11 @@ namespace rec {
 
 namespace audio { class Device; }
 namespace audio { namespace source { class Player; }}
+namespace audio { namespace util { class BufferFiller; }}
 namespace gui { class LookAndFeel; }
 
 namespace slow {
 
-class BufferFiller;
 class Components;
 class CurrentFile;
 class CurrentTime;
@@ -46,7 +46,7 @@ class Instance {
 
   ptr<Menus> menus_;
   ptr<audio::Device> device_;
-  ptr<BufferFiller> bufferFiller_;
+  ptr<audio::util::BufferFiller> bufferFiller_;
   ptr<CurrentFile> currentFile_;
 
   ptr<audio::source::Player> player_;

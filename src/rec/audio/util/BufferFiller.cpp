@@ -1,4 +1,4 @@
-#include "rec/slow/BufferFiller.h"
+#include "rec/audio/util/BufferFiller.h"
 
 #include "rec/audio/util/CachedThumbnail.h"
 #include "rec/audio/util/MakeBufferedReader.h"
@@ -12,9 +12,9 @@
 #include "rec/audio/util/BufferedReader.h"
 
 namespace rec {
-namespace slow {
+namespace audio {
+namespace util {
 
-using namespace rec::audio::util;
 using namespace rec::util::block;
 using namespace rec::widget::waveform;
 
@@ -51,23 +51,7 @@ Samples<44100> BufferFiller::setReader(const VirtualFile& f,
   return reader_->setReader(reader);
 }
 
-block::Block BufferFiller::fillOnce(CurrentTime* currentTime) {
-  Samples<44100> jump = currentTime->requestedTime();
-
-  if (jump == -1) {
-    // Find the first moment in the selection after "time" that needs to be filled.
-    BlockSet fill = difference(currentTime->timeSelection(), reader_->filled());
-    if (!fill.empty()) {
-      BlockList fillList = fillSeries(fill, currentTime->time(),
-                                      currentTime->length());
-      if (!fillList.empty())
-        reader_->setNextFillPosition(fillList.begin()->first);
-    }
-  }
-
-  if (jump != -1 && reader_->hasFilled(block::Block(jump, jump + PRELOAD)))
-    currentTime->jumpToTime(jump);
-
+block::Block BufferFiller::fillOnce() {
   int64 pos = reader_->position();
   int filled = static_cast<int>(reader_->fillNextBlock());
   DCHECK(filled);
@@ -88,9 +72,26 @@ block::Block BufferFiller::fillOnce(CurrentTime* currentTime) {
                     &Waveform::repaintBlock,
                     block::makeBlock(pos, pos + filled));
 
+
+  Samples<44100> jump = currentTime->requestedTime();
+
+  if (jump == -1) {
+    // Find the first moment in the selection after "time" that needs to be filled.
+    BlockSet fill = difference(currentTime->timeSelection(), reader_->filled());
+    if (!fill.empty()) {
+      BlockList fillList = fillSeries(fill, currentTime->time(),
+                                      currentTime->length());
+      if (!fillList.empty())
+        reader_->setNextFillPosition(fillList.begin()->first);
+    }
+  }
+
+  if (jump != -1 && reader_->hasFilled(block::Block(jump, jump + PRELOAD)))
+    currentTime->jumpToTime(jump);
 #endif
 }
 
-}  // namespace slow
+}  // namespace util
+}  // namespace audio
 }  // namespace rec
 

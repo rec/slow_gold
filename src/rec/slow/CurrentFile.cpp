@@ -1,6 +1,7 @@
 #include "rec/slow/CurrentFile.h"
 
 #include "rec/audio/source/Player.h"
+#include "rec/audio/util/BufferFiller.h"
 #include "rec/command/Command.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
@@ -12,7 +13,6 @@
 #include "rec/gui/audio/TimeController.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
-#include "rec/slow/BufferFiller.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/SlowWindow.h"

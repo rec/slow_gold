@@ -1,26 +1,23 @@
-#ifndef __REC_SLOW_BUFFERFILLER__
-#define __REC_SLOW_BUFFERFILLER__
+#ifndef __REC_AUDIO_UTIL_BUFFERFILLER__
+#define __REC_AUDIO_UTIL_BUFFERFILLER__
 
 #include "rec/audio/Audio.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {
+namespace audio {
+namespace util {
 
-namespace audio { namespace util { class BufferedReader; }}
-namespace audio { namespace util { class CachedThumbnail; }}
-
-namespace slow {
-
-class Instance;
-class CurrentTime;
+class BufferedReader;
+class CachedThumbnail;
 
 class BufferFiller {
  public:
   BufferFiller();
   virtual ~BufferFiller();
 
-  block::Block fillOnce(CurrentTime*);
+  block::Block fillOnce();
   bool isFull() const;
   Samples<44100> setReader(const VirtualFile& file, AudioFormatReader* r);
   audio::util::BufferedReader* reader() { return reader_.get(); }
@@ -29,8 +26,8 @@ class BufferFiller {
  private:
   CriticalSection lock_;
 
-  ptr<audio::util::CachedThumbnail> thumbnail_;
-  ptr<audio::util::BufferedReader> reader_;
+  ptr<CachedThumbnail> thumbnail_;
+  ptr<BufferedReader> reader_;
   File file_;
 
   AudioSampleBuffer updateBuffer_;
@@ -40,7 +37,8 @@ class BufferFiller {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(BufferFiller);
 };
 
-}  // namespace slow
+}  // namespace util
+}  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_SLOW_BUFFERFILLER__
+#endif  // __REC_AUDIO_UTIL_BUFFERFILLER__

@@ -3,6 +3,7 @@
 #include "rec/app/GenericApplication.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
+#include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/base/Trans.h"
 #include "rec/command/KeyboardBindings.h"
@@ -13,7 +14,6 @@
 #include "rec/gui/Dialog.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/SetupPage.h"
-#include "rec/slow/BufferFiller.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
@@ -30,6 +30,7 @@
 namespace rec {
 namespace slow {
 
+using namespace rec::audio::util;
 using namespace rec::widget::waveform;
 
 namespace {

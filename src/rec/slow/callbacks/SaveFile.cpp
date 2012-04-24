@@ -5,7 +5,7 @@
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretchy.h"
 #include "rec/base/Trans.h"
-#include "rec/slow/BufferFiller.h"
+#include "rec/audio/util/BufferFiller.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"

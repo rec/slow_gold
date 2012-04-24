@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="OMpftHDLz" name="tests">
+  <MAINGROUP id="yMgEONQHO" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -184,6 +184,10 @@
                 id="e8PritKAI" name="BufferedReader.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/BufferedReader.h"
                 id="yHssCdtow" name="BufferedReader.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/BufferFiller.cpp"
+                id="yYmIf4cL1" name="BufferFiller.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/BufferFiller.h" id="bIRP5QUwx"
+                name="BufferFiller.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/CachedThumbnail.cpp"
                 id="v4LMocqFO" name="CachedThumbnail.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/CachedThumbnail.h"
@@ -923,10 +927,6 @@
               name="BasicMenuMaker.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/BasicMenuMaker.h" id="2psFDA5UL"
               name="BasicMenuMaker.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/BufferFiller.cpp" id="qliOOPTUM"
-              name="BufferFiller.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/BufferFiller.h" id="8LicKTTgt"
-              name="BufferFiller.h" resource="0"/>
         <GROUP id="7F8UQVrIh" name="callbacks">
           <FILE compile="1" file="../../src/rec/slow/callbacks/Callbacks.cpp"
                 id="QiBjfjTfq" name="Callbacks.cpp" resource="0"/>
@@ -1543,7 +1543,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="RP4dnRHLD" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="7RsyhTg23" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

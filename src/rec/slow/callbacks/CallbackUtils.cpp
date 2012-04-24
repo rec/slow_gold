@@ -1,7 +1,6 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 
 #include "rec/data/DataOps.h"
-#include "rec/slow/BufferFiller.h"
 
 namespace rec {
 namespace slow {

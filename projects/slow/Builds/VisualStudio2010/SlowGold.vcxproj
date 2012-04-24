@@ -156,6 +156,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferFiller.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
@@ -294,7 +295,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\AboutWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\BasicMenuMaker.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\BufferFiller.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp"/>
@@ -1493,6 +1493,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferFiller.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h"/>
@@ -1702,7 +1703,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\BasicMenuMaker.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\BufferFiller.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h"/>

@@ -3,7 +3,6 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
-#include "rec/slow/BufferFiller.h"
 #include "rec/util/thread/MakeThread.h"
 
 using namespace std;
