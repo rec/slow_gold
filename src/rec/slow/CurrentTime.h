@@ -28,10 +28,10 @@ class CurrentTime : public HasInstance,
   virtual void operator()(const GuiSettings&);
   virtual void operator()(const widget::waveform::Zoom&);
 
-  void setCursorTime(Samples<44100> time, int index, bool isTimeCursor);
   const block::BlockSet& timeSelection() const { return timeSelection_; }
+  Samples<44100> length() const { Lock l(lock_); return length_; }
   Samples<44100> time() const { Lock l(lock_); return time_; }
-  Samples<44100> jumpTime() const { Lock l(lock_); return jumpTime_; }
+  Samples<44100> requestedTime() const { Lock l(lock_); return requestedTime_; }
   void jumpToTime(Samples<44100> pos);
 
   void clear() { Lock l(lock_); time_ = 0; }
@@ -41,7 +41,7 @@ class CurrentTime : public HasInstance,
 
   block::BlockSet timeSelection_;
   Samples<44100> time_;
-  Samples<44100> jumpTime_;
+  Samples<44100> requestedTime_;
   Samples<44100> zoomTime_;
   Samples<44100> length_;
   bool followCursor_;

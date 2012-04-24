@@ -21,7 +21,7 @@ static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
 static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
 
 CurrentTime::CurrentTime(Instance* i)
-    : HasInstance(i), time_(0), jumpTime_(-1), length_(0),
+    : HasInstance(i), time_(0), requestedTime_(-1), zoomTime_(0), length_(0),
       followCursor_(false) {
 }
 
@@ -104,16 +104,6 @@ void CurrentTime::operator()(const GuiSettings& settings) {
   followCursor_ = settings.follow_cursor();
 }
 
-void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) {
-  if (isTimeCursor) {
-    jumpToTime(t);
-  } else {
-    LoopPointList loops(data::getProto<LoopPointList>(file()));
-    loops.mutable_loop_point(index)->set_time(t);
-    data::setProto(loops, file());
-  }
-}
-
 void CurrentTime::jumpToTime(Samples<44100> pos) {
   {
     Lock l(lock_);
@@ -122,14 +112,14 @@ void CurrentTime::jumpToTime(Samples<44100> pos) {
       return;
     }
 
-    BufferedReader* reader = bufferFiller()->trackBuffer()->reader();
-    jumpTime_ = pos;
+    BufferedReader* reader = bufferFiller()->reader();
+    requestedTime_ = pos;
     if (reader && !reader->hasFilled(block::Block(pos, pos + PRELOAD))) {
       reader->setNextFillPosition(pos);
       if (player()->state())
         return;
     }
-    jumpTime_ = -1;
+    requestedTime_ = -1;
   }
 
 	player()->setNextReadPosition(pos);

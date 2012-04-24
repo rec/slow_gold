@@ -64,12 +64,12 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 
   menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
   device_.reset(new audio::Device);
-  bufferFiller_.reset(new BufferFiller(this));
   currentFile_.reset(new CurrentFile(this));
   player_.reset(new audio::source::Player(device_.get()));
   components_.reset(new Components(this));
   target_.reset(new Target(this));
   currentTime_.reset(new CurrentTime(this));
+  bufferFiller_.reset(new BufferFiller);
   lookAndFeel_.reset(new gui::LookAndFeel);
 
 #ifdef SET_FILE_EARLY
@@ -101,8 +101,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
   player_->level()->addListener(components_->transportController_->levelListener());
 
   player_->setSource(makeSource());
-  components_->waveform_->setAudioThumbnail(bufferFiller_->trackBuffer()->
-                                            thumbnail());
+  components_->waveform_->setAudioThumbnail(bufferFiller_->thumbnail());
 
   window_->addListener(menus_.get());
 
@@ -122,7 +121,7 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 }
 
 audio::Source* Instance::makeSource() const {
-  return bufferFiller_->trackBuffer()->reader()->makeSource();
+  return bufferFiller_->reader()->makeSource();
 }
 
 Instance::~Instance() {

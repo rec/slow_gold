@@ -166,8 +166,15 @@ void MouseListener::dragCursor(const MouseEvent& e,
   if (!near(cursor->getTime(), 0, 44)) {
     int cursorX = e.getDistanceFromDragStartX() + cursorDragStart_ + DRAG_TWEAK;
     Samples<44100> t = cursorRestrict_.restrict(model.xToTime(cursorX));
-    if (cursor->setDragTime(t))
-      currentTime()->setCursorTime(t, cursor->index(), cursor->isTimeCursor());
+    if (cursor->setDragTime(t)) {
+      if (cursor->isTimeCursor()) {
+        currentTime()->jumpToTime(t);
+      } else {
+        LoopPointList loops(data::getProto<LoopPointList>(file()));
+        loops.mutable_loop_point(cursor->index())->set_time(t);
+        data::setProto(loops, file());
+      }
+    }
   }
 }
 

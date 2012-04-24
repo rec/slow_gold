@@ -92,8 +92,7 @@ CurrentFile::FileResult CurrentFile::setFile(const VirtualFile& f) {
     if (musicReader.empty()) {
       empty_ = true;
     } else {
-      length = bufferFiller()->trackBuffer()->
-        setReader(file_, musicReader.transfer());
+      length = bufferFiller()->setReader(file_, musicReader.transfer());
       if (!length) {
         musicReader.setError("Ran Out Of Memory For Your File",
                              "Your file was so large that the program "

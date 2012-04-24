@@ -122,6 +122,7 @@ class SaveThread : public ThreadWithProgressWindow {
   virtual ~SaveThread() {}
 
   virtual void run() {
+#if 0
     const block::Fillable& buffer =
       *instance_->bufferFiller_->trackBuffer()->reader();
 
@@ -153,6 +154,7 @@ class SaveThread : public ThreadWithProgressWindow {
                                     error, OK);
       }
     }
+#endif
   }
 
  private:
