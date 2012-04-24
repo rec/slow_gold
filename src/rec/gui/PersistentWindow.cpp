@@ -35,7 +35,7 @@ PersistentWindow::PersistentWindow(const String& name,
     subtractedFrom(getParentMonitorArea());
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT,
                   resizeLimits_.getWidth(), resizeLimits_.getHeight());
-  Rect bounds = juce::Desktop::getInstance().getMainMonitorArea();
+  Rect bounds = getParentMonitorArea();
   setBounds((bounds.getWidth() - START_WIDTH) / 2,
             (bounds.getHeight() - START_HEIGHT) / 2,
             START_WIDTH, START_HEIGHT);

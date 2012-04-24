@@ -52,10 +52,8 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
-  while (data::getDataCenter().hasUpdates())
-    Thread::sleep(1);
+  data::getDataCenter().waitTillClear();
 
-  data::getDataCenter().clearUndoes();
   Lock l(instance_->lock_);
   if (!initialized_)
     initialized_ = true;
@@ -87,6 +85,8 @@ void CurrentFile::setFile(const VirtualFile& f) {
   instance_->fillerThread_->startThread();
 
   data::setGlobal(file_);
+  data::getDataCenter().waitTillClear();
+  data::getDataCenter().clearUndoes();
 }
 
 int64 CurrentFile::getFileLength() {

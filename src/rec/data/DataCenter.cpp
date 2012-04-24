@@ -33,6 +33,11 @@ void DataCenter::clearUndoes() const {
   undo->clear();
 }
 
+void DataCenter::waitTillClear() const {
+  while (hasUpdates())
+    Thread::sleep(1);
+}
+
 static DataCenter** getDC() {
   static DataCenter* dataCenter = new DataCenter;
   return &dataCenter;

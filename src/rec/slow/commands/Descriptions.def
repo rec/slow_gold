@@ -289,7 +289,6 @@ command {
   type: TOGGLE_ADVANCED_MENUS
   desc {
     menu: "Show Advanced Menus"
-    menu: "Hide Advanced Menus"
     full: "Toggle show/hide of advanced menus."
   }
 }
@@ -297,7 +296,6 @@ command {
   type: TOGGLE_AUTOMATIC_UPDATES
   desc {
     menu: "Enable Automatic Updates"
-    menu: "Disable Automatic Updates"
     full: "Enable or disable automatic updates of SlowGold 8."
   }
 }
@@ -312,7 +310,6 @@ command {
   type: TOGGLE_GRID_DISPLAY
   desc {
     menu: "Show Time Gridlines"
-    menu: "Hide Time Gridlines"
     full: "Toggle display of the time grid."
   }
 }
@@ -320,7 +317,6 @@ command {
   type: TOGGLE_PARALLEL_WAVEFORMS
   desc {
     menu: "Show Stacked Waveform"
-    menu: "Show Parallel Waveforms"
     full: "Toggle parallel/stacked waveform display."
   }
 }
@@ -328,7 +324,6 @@ command {
   type: TOGGLE_PREFADER_LEVELS
   desc {
     menu: "Show Pre-Fader Levels"
-    menu: "Show Post-Fader levels"
     full: "Toggle level display between pre- and post-fader."
   }
 }
@@ -336,7 +331,6 @@ command {
   type: TOGGLE_SHOW_CURSOR_LABELS
   desc {
     menu: "Show Loop Point Labels"
-    menu: "Hide Help Pane"
     full: "Show draggable labels for the loop points on the waveform display."
   }
 }
@@ -344,7 +338,6 @@ command {
   type: TOGGLE_SHOW_LABELS_AT_TOP
   desc {
     menu: "Show Loop Point Labels At Top"
-    menu: "Hide Help Pane"
     full: "Show the loop point labels at the top of the waveform display."
   }
 }
@@ -352,7 +345,6 @@ command {
   type: TOGGLE_SHOW_SELECTION_BUTTONS
   desc {
     menu: "Show Loop Point Selection Buttons"
-    menu: "Hide Help Pane"
     full: "Show help in help pane."
   }
 }
@@ -360,7 +352,6 @@ command {
   type: TOGGLE_SHOW_TIMES_AT_TOP
   desc {
     menu: "Show Grid Times At Top"
-    menu: "Hide Help Pane"
     full: "Show the grid times for the grid at the top of the waveform display."
   }
 }
@@ -368,7 +359,6 @@ command {
   type: TOGGLE_STRETCH_ENABLE
   desc {
     menu: "Enable Transforms"
-    menu: "Disable Transforms"
     full: "Toggle pitch, time and stereo transforms of the sound."
   }
 }

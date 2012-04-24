@@ -23,8 +23,10 @@ struct DataCenter {
   ptr<DataMap> map_;
 
   void clearUndoes() const;
-
   bool hasUpdates() const;
+
+  void waitTillClear() const;
+
   const CriticalSection& lock() const;
 };
 

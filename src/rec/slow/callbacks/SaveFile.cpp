@@ -1,9 +1,11 @@
 #include "rec/slow/callbacks/SaveFile.h"
 
 #include "rec/audio/format/Manager.h"
+#include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretchy.h"
+#include "rec/audio/util/BufferedReader.h"
 #include "rec/base/Trans.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -122,9 +124,7 @@ class SaveThread : public ThreadWithProgressWindow {
   virtual ~SaveThread() {}
 
   virtual void run() {
-#if 0
-    const block::Fillable& buffer =
-      *instance_->bufferFiller_->trackBuffer()->reader();
+    const block::Fillable& buffer = *instance_->bufferFiller_->reader();
 
     setProgress(0.0);
     setStatusMessage(FINISHING_LOADING);
@@ -141,11 +141,17 @@ class SaveThread : public ThreadWithProgressWindow {
 
     setProgress(0.0);
     source_->prepareToPlay(COPY_BLOCK_SIZE, 44100.0);
+    String name = file_.getFileName();
+    setStatusMessage(String::formatted(SAVING_FILE, c_str(name));
+    double fullSize = source_->getTotalLength();
+
     for (Samples<44100> toCopy = source_->getTotalLength();
          !threadShouldExit() && toCopy > 0; toCopy -= COPY_UPDATE_SIZE) {
-      if (!writer->writeFromAudioSource(*source_,
+      if (writer->writeFromAudioSource(*source_,
                                         std::min(COPY_UPDATE_SIZE, toCopy.toInt()),
                                         COPY_BLOCK_SIZE)) {
+        setProgress(1.0 - toCopy / fullSize);
+      } else {
         writer.reset();
         file_.deleteFile();
         String error = String::formatted(FILE_SAVE_FAILED_FULL,
@@ -154,7 +160,6 @@ class SaveThread : public ThreadWithProgressWindow {
                                     error, OK);
       }
     }
-#endif
   }
 
  private:

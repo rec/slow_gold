@@ -43,11 +43,11 @@ AudioFormatWriter* createWriter(const File& f) {
   }
 
   f.deleteFile();
-  FileOutputStream fos(f);
+  ptr<FileOutputStream> fos(new FileOutputStream(f));
   StringArray qualityOptions = fmt->getQualityOptions();
   int quality = std::max(0, qualityOptions.size() - 1);
 
-  ptr<AudioFormatWriter> writer(fmt->createWriterFor(&fos, 44100.0, 2, 16,
+  ptr<AudioFormatWriter> writer(fmt->createWriterFor(fos.transfer(), 44100.0, 2, 16,
                                                      StringPairArray(),
                                                      quality));
   if (!writer)

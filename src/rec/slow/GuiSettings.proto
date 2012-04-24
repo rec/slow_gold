@@ -1,6 +1,13 @@
 package rec.slow;
 
 message GuiSettings {
+  enum FileType {
+    AIFF = 0;
+    FLAC = 1;
+    MP3 = 2;
+    OGG = 3;
+    WAV = 4;
+  };
   optional bool follow_cursor = 1 [default = true];
   optional bool drop_adds_to_browser = 2 [default = true];
   optional bool show_tooltips = 3 [default = false];
@@ -10,4 +17,6 @@ message GuiSettings {
   optional bool auto_check_for_updates = 7 [default = false];
   optional bool use_tree_view_in_file_dialogs = 8 [default = false];
   optional string last_directory = 9;
+
+  optional FileType file_type_for_save = 10 [default = AIFF];
 };

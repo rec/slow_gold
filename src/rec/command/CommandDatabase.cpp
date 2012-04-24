@@ -207,7 +207,10 @@ class CommandDatabase {
 
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
-      ptr<TickedDataSetter> tds(new TickedDataSetter(&cr->info_, ls, c, a));
+      bool isTicked = true || (c.desc().menu_size() == 1);
+      ptr<CommandDataSetter> tds(isTicked ?
+                                 new TickedDataSetter(&cr->info_, ls, c, a) :
+                                 new CommandDataSetter(ls, c, a));
       tds->init(scope(c.is_global_setter()));
       cr->setter_.reset(tds.transfer());
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
