@@ -42,6 +42,11 @@ class Instance {
   bool empty() const;
   audio::Source* makeSource() const;
   void setProto(const Message&, Undoable undoable = CAN_UNDO);
+  void stopFilling() {
+    fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
+  }
+
+  static const int FILLER_THREAD_STOP_TIME = 10000;
 
   SlowWindow* window_;
   CriticalSection lock_;

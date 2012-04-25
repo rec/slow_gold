@@ -198,9 +198,7 @@ void open(Instance* i) {
   gui::dialog::openOneFile(i->currentFile_.get());
 }
 
-void quit(Instance* i) {
-  i->window_->application()->systemRequestedQuit();
-}
+void quit(Instance* i) {}  // This is never used.
 
 void toggleStartStop(Instance* i) {
   if (!i->empty())

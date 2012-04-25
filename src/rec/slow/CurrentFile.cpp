@@ -29,8 +29,6 @@ namespace slow {
 
 namespace {
 
-const int FILLER_THREAD_STOP_TIME = 1000;
-
 Trans RAN_OUT_OF_MEMORY("Ran Out Of Memory For Your File");
 Trans RAN_OUT_OF_MEMORY_FULL("Your file was so large that the program "
                              "ran out of memory.");
@@ -61,7 +59,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
     return;
 
   player()->reset();
-  instance_->fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
+  instance_->stopFilling();
 
   if (!empty())
     gui::addRecentFile(file_, data::get<music::Metadata>(&file_));

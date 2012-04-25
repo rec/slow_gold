@@ -70,6 +70,8 @@ void SlowWindow::doStartup() {
 }
 
 void SlowWindow::doShutdown() {
+  instance_->stopFilling();
+
   instance_ = NULL;
   instanceDeleter_.reset();
 }

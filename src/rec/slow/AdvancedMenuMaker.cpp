@@ -41,7 +41,6 @@ void AdvancedMenuMaker::addEditMenu() {
 void AdvancedMenuMaker::addFileMenu() {
   BasicMenuMaker::addFileMenu();
 
-#ifdef NEW_FEATURES
   addIfNotEmpty(Command::SAVE_FILE);
   addIfNotEmpty(Command::SAVE_FILE_SELECTION);
 
@@ -54,7 +53,6 @@ void AdvancedMenuMaker::addFileMenu() {
     addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
 
   menu_.addSubMenu(Trans("File Type For Save..."), save);
-#endif
 }
 
 void AdvancedMenuMaker::addSelectMenu() {
