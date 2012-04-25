@@ -91,6 +91,7 @@ void BasicMenuMaker::addHelpMenu() {
   add(Command::REQUEST_SUPPORT);
   add(Command::CHECK_FOR_UPDATES);
   add(Command::TOGGLE_AUTOMATIC_UPDATES);
+  add(Command::WHATS_NEW_PAGE);
 }
 
 const StringArray BasicMenuMaker::getMenuBarNames() const {

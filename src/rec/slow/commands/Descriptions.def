@@ -415,6 +415,13 @@ command {
   }
 }
 command {
+  type: WHATS_NEW_PAGE
+  desc {
+    menu: "What's New In This Release?"
+    full: "Go to the webpage which tells you what new features and bug fixes are in the release you're running."
+  }
+}
+command {
   type: ZOOM_OUT
   desc {
     menu: "Zoom Out"

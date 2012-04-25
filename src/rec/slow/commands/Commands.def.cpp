@@ -43,6 +43,7 @@ Def<command::Commands> commands(
   "command { type: TOGGLE_WHOLE_SONG_LOOP category: \"Selection\" }\n"
   "command { type: QUIT category: \"(None)\"}\n"
   "command { type: UNDO category: \"Edit\"}\n"
+  "command { type: WHATS_NEW_PAGE category: \"Help\"}\n"
   "command { type: ZOOM_OUT category: \"Audio\"}\n"
   "command { type: ZOOM_OUT_FULL category: \"Audio\"}\n"
   "command { type: ZOOM_TO_SELECTION category: \"Audio\"}\n"

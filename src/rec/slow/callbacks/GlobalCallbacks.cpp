@@ -20,6 +20,7 @@ using namespace juce;
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const String MANUAL = "SlowGoldManual.pdf";
 const String FULL_MANUAL = WOODSHED + MANUAL;
+const String WHATS_NEW_URL = WOODSHED + "%s/whats-new.html";
 
 Trans CANT_LOAD("Couldn't Load The SlowGold 8 User Manual");
 Trans CANT_LOAD_FULL("Sorry, couldn't load the SlowGold 8 user manual at");
@@ -112,7 +113,11 @@ void modeAddLoopPoint() {
   setMode(Mode::DRAW_LOOP_POINTS);
 }
 
-void setSaveFormat() {
+
+
+void whatsNewPage() {
+  const String& vers = JUCEApplication::getInstance()->getApplicationVersion();
+  URL(String::formatted(WHATS_NEW_URL, c_str(vers))).launchInDefaultBrowser();
 }
 
 }
@@ -133,6 +138,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::REDO, redo);
   addCallback(t, Command::REQUEST_SUPPORT, requestSupport);
   addCallback(t, Command::UNDO, undo);
+  addCallback(t, Command::WHATS_NEW_PAGE, whatsNewPage);
 }
 
 void GlobalCallbacks::translateAll() {
