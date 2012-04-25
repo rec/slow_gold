@@ -35,6 +35,11 @@ int64 Selection::getTotalLength() const {
 #endif
 }
 
+int64 Selection::getCorrectTotalLength() const {
+  Lock l(lock_);
+  return block::getSize(selection_);
+}
+
 }  // namespace source
 }  // namespace audio
 }  // namespace rec

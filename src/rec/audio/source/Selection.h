@@ -31,6 +31,7 @@ class Selection : public Wrappy {
   }
 
   virtual int64 getTotalLength() const;
+  virtual int64 getCorrectTotalLength() const;
 
  private:
   block::BlockSet selection_;

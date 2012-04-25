@@ -117,9 +117,10 @@ File getSaveFile(Instance* instance, const String& suffix) {
 
 class SaveThread : public ThreadWithProgressWindow {
  public:
-  SaveThread(const String& name, Instance* i, const File& f, audio::Source* s)
+  SaveThread(const String& name, Instance* i, const File& f, audio::Source* s,
+             Samples<44100> length)
       : ThreadWithProgressWindow(name, true, true),
-        instance_(i), file_(f), source_(s) {
+        instance_(i), file_(f), source_(s), length_(length) {
   }
   virtual ~SaveThread() {}
 
@@ -142,15 +143,15 @@ class SaveThread : public ThreadWithProgressWindow {
     setProgress(0.0);
     source_->prepareToPlay(COPY_BLOCK_SIZE, 44100.0);
     String name = file_.getFileName();
-    setStatusMessage(String::formatted(SAVING_FILE, c_str(name));
+    setStatusMessage(String::formatted(SAVING_FILE, c_str(name)));
     double fullSize = source_->getTotalLength();
 
-    for (Samples<44100> toCopy = source_->getTotalLength();
+    for (Samples<44100> toCopy = length_;
          !threadShouldExit() && toCopy > 0; toCopy -= COPY_UPDATE_SIZE) {
       if (writer->writeFromAudioSource(*source_,
                                         std::min(COPY_UPDATE_SIZE, toCopy.toInt()),
                                         COPY_BLOCK_SIZE)) {
-        setProgress(1.0 - toCopy / fullSize);
+        setProgress(1.0 - toCopy / (1.0 * length_));
       } else {
         writer.reset();
         file_.deleteFile();
@@ -166,6 +167,7 @@ class SaveThread : public ThreadWithProgressWindow {
   Instance* const instance_;
   const File file_;
   ptr<audio::Source> source_;
+  const Samples<44100> length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SaveThread)
 };
@@ -179,7 +181,9 @@ void saveFile(Instance* instance, const String& suffix, bool useSelection) {
     ptr<audio::Source> s(instance->makeSource());
     s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
     String name = String::formatted(SAVING_FILE, c_str(file.getFileName()));
-    SaveThread(name, instance, file, s.transfer()).runThread();
+    Samples<44100> len = useSelection ?
+      instance->player_->getSelectionLength() : Samples<44100>(s->getTotalLength());
+    SaveThread(name, instance, file, s.transfer(), len).runThread();
   }
 }
 

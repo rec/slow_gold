@@ -6,6 +6,7 @@
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Timer.h"
+#include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/util/Math.h"
@@ -83,6 +84,11 @@ void Player::operator()(const StereoProto& s) {
 
 void Player::operator()(const Viewport& viewport) {
   selection_->setSelection(getTimeSelection(viewport.loop_points()));
+}
+
+Samples<44100> Player::getSelectionLength() const {
+  double s = stretch::timeScale(stretchy_->getStretch());
+  return static_cast<int64>(s * selection_->getCorrectTotalLength());
 }
 
 void Player::operator()(const Gain& gain) {

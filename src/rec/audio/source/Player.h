@@ -71,6 +71,8 @@ class Player : public DataListener<Gain>,
   // Stop the player and reset the position to 0.
   void reset();
 
+  Samples<44100> getSelectionLength() const;
+
  private:
   CriticalSection lock_;
 
