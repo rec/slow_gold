@@ -32,6 +32,8 @@ Trans OK("OK");
 Trans TRANSPOSE_ONE("one semitone %s");
 Trans TRANSPOSE_MANY("%s %s semitones");
 Trans CANCEL("Cancel");
+Trans CANT_CHANGE_SUFFIX("The file extension must be %s - "
+                         "please don't change it.");
 
 // Skin
 const int COPY_UPDATE_SIZE = 2048;
@@ -98,15 +100,25 @@ File browseForFileToSaveTreeView(const File& startFile) {
   return dialogBox.show() ? fileBrowser.getSelectedFile(0) : File::nonexistent;
 }
 
-File getSaveFile(Instance* instance, const String& suffix) {
-  File file;
-  if (instance->empty())
-    return file;
+static const char* SUFFIXES[] = {".aiff", ".flac", ".mp3", ".ogg", ".wav"};
 
+File getSaveFile(Instance* instance, GuiSettings::FileType t) {
+  if (instance->empty())
+    return File::nonexistent;
+
+  String suffix = SUFFIXES[t];
+  File file;
   GuiSettings settings = data::getGlobal<GuiSettings>();
   File startFile = getBaseFile(instance, suffix, settings);
-  file = settings.use_tree_view_in_file_dialogs() ?
-    browseForFileToSave(startFile) : browseForFileToSaveTreeView(startFile);
+
+  while (true) {
+    file = settings.use_tree_view_in_file_dialogs() ?
+      browseForFileToSave(startFile) : browseForFileToSaveTreeView(startFile);
+    if (file == File::nonexistent || file.getFileExtension() == suffix)
+      break;
+    String error = String::formatted(CANT_CHANGE_SUFFIX, c_str(suffix));
+    AlertWindow::showMessageBox(AlertWindow::InfoIcon, error, error, OK);
+  }
 
   if (file != File::nonexistent) {
     settings.set_last_directory(str(file.getParentDirectory()));
@@ -171,11 +183,10 @@ class SaveThread : public ThreadWithProgressWindow {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SaveThread)
 };
 
-}  // namespace
-
-void saveFile(Instance* instance, const String& suffix, bool useSelection) {
+void doSaveFile(Instance* instance, bool useSelection) {
   using namespace juce;
-  File file = getSaveFile(instance, suffix);
+  GuiSettings::FileType t = data::getGlobal<GuiSettings>().file_type_for_save();
+  File file = getSaveFile(instance, t);
   if (file != File::nonexistent) {
     ptr<audio::Source> s(instance->makeSource());
     s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
@@ -184,6 +195,17 @@ void saveFile(Instance* instance, const String& suffix, bool useSelection) {
       instance->player_->getSelectionLength() : Samples<44100>(s->getTotalLength());
     SaveThread(name, instance, file, s.transfer(), len).runThread();
   }
+}
+
+}  // namespace
+
+
+void saveFile(Instance* instance) {
+  doSaveFile(instance, false);
+}
+
+void saveFileSelection(Instance* instance) {
+  doSaveFile(instance, true);
 }
 
 void SaveFile::translateAll() {
@@ -198,6 +220,7 @@ void SaveFile::translateAll() {
   TRANSPOSE_ONE.translate();
   TRANSPOSE_MANY.translate();
   CANCEL.translate();
+  CANT_CHANGE_SUFFIX.translate();
 }
 
 }  // namespace slow

@@ -42,29 +42,18 @@ void AdvancedMenuMaker::addFileMenu() {
   BasicMenuMaker::addFileMenu();
 
 #ifdef NEW_FEATURES
-  PopupMenu saveMenu;
-  add(Command::SAVE_AS_AIFF, String::empty, !isEmpty_, &saveMenu);
-  add(Command::SAVE_AS_FLAC, String::empty, !isEmpty_, &saveMenu);
-  add(Command::SAVE_AS_MP3, String::empty, !isEmpty_, &saveMenu);
-  add(Command::SAVE_AS_OGG, String::empty, !isEmpty_, &saveMenu);
-  add(Command::SAVE_AS_WAV, String::empty, !isEmpty_, &saveMenu);
+  add(Command::SAVE_FILE);
+  add(Command::SAVE_FILE_SELECTION);
 
-  menu_.addSubMenu(Trans("Save..."), saveMenu);
-
-  PopupMenu selMenu;
-  add(Command::SAVE_SELECTION_AS_AIFF, String::empty, !isEmpty_, &selMenu);
-  add(Command::SAVE_SELECTION_AS_FLAC, String::empty, !isEmpty_, &selMenu);
-  add(Command::SAVE_SELECTION_AS_MP3, String::empty, !isEmpty_, &selMenu);
-  add(Command::SAVE_SELECTION_AS_OGG, String::empty, !isEmpty_, &selMenu);
-  add(Command::SAVE_SELECTION_AS_WAV, String::empty, !isEmpty_, &selMenu);
-
-  menu_.addSubMenu(Trans("Save Selection..."), selMenu);
-
-  PopupMenu saveTypeMenu;
+  PopupMenu save;
   int t = static_cast<int>(data::getGlobal<GuiSettings>().file_type_for_save());
-  for (int i = 0; i < t; ++i) {
+  static const int TICKED = ApplicationCommandInfo::isTicked;
+  static const char* NAMES[] = {"AIFF", "FLAC", "MP3", "Ogg Vorbis", "WAV"};
+  static const Command::Type COMMAND = Command::SET_SAVE_FORMAT;
+  for (int i = 0; i < GuiSettings::COUNT; ++i)
+    addRepeat(COMMAND, i, NAMES[i], true, &save, (i == t) ? TICKED : 0);
 
-  }
+  menu_.addSubMenu(Trans("File Type For Save..."), save);
 #endif
 }
 

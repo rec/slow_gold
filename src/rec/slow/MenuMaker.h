@@ -30,13 +30,15 @@ class MenuMaker {
   void add(CommandID id,
            const String& name = String::empty,
            bool enabled = true,
-           PopupMenu* m = NULL);
+           PopupMenu* m = NULL,
+           int flags = 0);
 
   void addRepeat(command::Command::Type command,
                  int slot,
                  const String& name = String::empty,
                  bool enabled = true,
-                 PopupMenu* m = NULL);
+                 PopupMenu* m = NULL,
+                 int flags = 0);
 
   virtual bool addMenu(const String& menuName) = 0;
 

@@ -57,16 +57,8 @@ message Command {
 
     RESET_GAIN_TO_UNITY = 24;
 
-    SAVE_AS_AIFF = 69;
-    SAVE_AS_FLAC = 70;
-    SAVE_AS_MP3 = 71;
-    SAVE_AS_OGG = 72;
-    SAVE_AS_WAV = 73;
-    SAVE_SELECTION_AS_AIFF = 74;
-    SAVE_SELECTION_AS_FLAC = 75;
-    SAVE_SELECTION_AS_MP3 = 76;
-    SAVE_SELECTION_AS_OGG = 77;
-    SAVE_SELECTION_AS_WAV = 78;
+    SAVE_FILE = 69;
+    SAVE_FILE_SELECTION = 74;
 
     SELECT = 25;
     SELECT_ONLY = 26;
@@ -110,6 +102,7 @@ message Command {
     ZOOM_TO_SELECTION = 45;
 
     LAST_TYPE = 80;
+    // Gaps: 70-73; 75-78
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

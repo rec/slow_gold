@@ -239,16 +239,8 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::OPEN, open, i);
   addCallback(c, Command::QUIT, quit, i);
   addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
-  addCallback(c, Command::SAVE_AS_AIFF, saveAsAIFF, i);
-  addCallback(c, Command::SAVE_AS_FLAC, saveAsFLAC, i);
-  addCallback(c, Command::SAVE_AS_MP3, saveAsMP3, i);
-  addCallback(c, Command::SAVE_AS_OGG, saveAsOGG, i);
-  addCallback(c, Command::SAVE_AS_WAV, saveAsWAV, i);
-  addCallback(c, Command::SAVE_SELECTION_AS_AIFF, saveSelectionAsAIFF, i);
-  addCallback(c, Command::SAVE_SELECTION_AS_FLAC, saveSelectionAsFLAC, i);
-  addCallback(c, Command::SAVE_SELECTION_AS_MP3, saveSelectionAsMP3, i);
-  addCallback(c, Command::SAVE_SELECTION_AS_OGG, saveSelectionAsOGG, i);
-  addCallback(c, Command::SAVE_SELECTION_AS_WAV, saveSelectionAsWAV, i);
+  addCallback(c, Command::SAVE_FILE, saveFile, i);
+  addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection, i);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
   addCallback(c, Command::ZOOM_OUT, zoomOut, i);
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);

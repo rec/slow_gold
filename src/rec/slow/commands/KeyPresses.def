@@ -131,6 +131,14 @@ command {
   keypress: "command + d"
 }
 command {
+  type: SAVE_FILE
+  keypress: "command + s"
+}
+command {
+  type: SAVE_FILE_SELECTION
+  keypress: "command + shift + s"
+}
+command {
   type: JUMP
   index: 0
   keypress: "1"

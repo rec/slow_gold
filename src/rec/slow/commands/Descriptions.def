@@ -181,73 +181,17 @@ command {
   }
 }
 command {
-  type: SAVE_AS_AIFF
+  type: SAVE_FILE
   desc {
-    menu: "Save Transformed File As AIFF..."
-    full: "Save Transformed File As AIFF."
+    menu: "Save..."
+    full: "Save the full transformed file in the default save format."
   }
 }
 command {
-  type: SAVE_AS_FLAC
+  type: SAVE_FILE_SELECTION
   desc {
-    menu: "Save Transformed File As FLAC..."
-    full: "Save Transformed File As FLAC."
-  }
-}
-command {
-  type:  SAVE_AS_MP3
-  desc {
-    menu: "Save Transformed File As MP3..."
-    full: "Save Transformed File As MP3."
-  }
-}
-command {
-  type:  SAVE_AS_OGG
-  desc {
-    menu: "Save Transformed File As OGG..."
-    full: "Save Transformed File As OGG."
-  }
-}
-command {
-  type:  SAVE_AS_WAV
-  desc {
-    menu: "Save Transformed File As WAV..."
-    full: "Save Transformed File As WAV."
-  }
-}
-command {
-  type: SAVE_SELECTION_AS_AIFF
-  desc {
-    menu: "Save Transformed Selection As AIFF..."
-    full: "Save Transformed Selection As AIFF."
-  }
-}
-command {
-  type: SAVE_SELECTION_AS_FLAC
-  desc {
-    menu: "Save Transformed Selection As FLAC..."
-    full: "Save Transformed Selection As FLAC."
-  }
-}
-command {
-  type:  SAVE_SELECTION_AS_MP3
-  desc {
-    menu: "Save Transformed Selection As MP3..."
-    full: "Save Transformed Selection As MP3."
-  }
-}
-command {
-  type:  SAVE_SELECTION_AS_OGG
-  desc {
-    menu: "Save Transformed Selection As OGG..."
-    full: "Save Transformed Selection As OGG."
-  }
-}
-command {
-  type:  SAVE_SELECTION_AS_WAV
-  desc {
-    menu: "Save Transformed Selection As WAV..."
-    full: "Save Transformed Selection As WAV."
+    menu: "Save Selection..."
+    full: "Save just the selected portion of the transformed file in the default save format."
   }
 }
 command {

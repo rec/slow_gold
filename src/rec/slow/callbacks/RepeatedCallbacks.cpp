@@ -4,6 +4,7 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/Menus.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/LoopPoint.h"
 
@@ -99,6 +100,10 @@ void loadRecentFile(Instance* instance, int i) {
 }
 
 void setSaveFileType(Instance* instance, int i) {
+  GuiSettings settings = data::getGlobal<GuiSettings>();
+  settings.set_file_type_for_save(static_cast<GuiSettings::FileType>(i));
+  data::setGlobal(settings);
+  instance->menus_->menuItemsChanged();
 }
 
 }  // namespace

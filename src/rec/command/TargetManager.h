@@ -51,12 +51,15 @@ class TargetManager : public ApplicationCommandTarget,
   InvocationInfo lastInvocation() const;
   void addCallback(CommandID id, Callback* cb,
                    const String& name,
-                   const String& category, const String& desc);
+                   const String& category,
+                   const String& desc,
+                   int flags = 0);
 
   ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
   void addCommandItem(PopupMenu*, CommandID, bool enable = true,
-                      const String& name = String::empty);
+                      const String& name = String::empty,
+                      int flags = 0);
   CommandRecordTable* commandRecordTable() { return &table_; }
 
  private:

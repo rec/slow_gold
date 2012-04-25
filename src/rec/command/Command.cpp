@@ -28,10 +28,6 @@ void CommandRecordTable::writeTable() const {
 }
 
 CommandRecord* CommandRecordTable::find(CommandID id, bool create) {
-  if (create) {
-    DLOG(INFO) << id;
-    DCHECK_NE(id, 80);
-  }
   CHECK(id != CommandIDEncoder::toCommandID(Command::JUMP, 10) || !create);
   CommandRecordTable::iterator i = table_.find(id);
   if (i != table_.end())
