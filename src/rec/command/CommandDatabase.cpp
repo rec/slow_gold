@@ -89,14 +89,10 @@ class CommandDatabase {
   }
 
   void merge(const Command& cmd, CommandID id = 0) {
-    if (cmd.type() == Command::SET_SAVE_FORMAT)
-      DLOG(INFO) << "merge";
     addTo(MERGE, cmd, id);
   }
 
   void insert(const Command& cmd, CommandID id = 0) {
-    if (cmd.type() == Command::SET_SAVE_FORMAT)
-      DLOG(INFO) << "insert ";
     addTo(INSERT, cmd, id);
   }
 
@@ -170,15 +166,12 @@ class CommandDatabase {
   void insertRepeated() {
     for (int i = 0; i < data_.repeated().command_size(); ++i) {
       const Command& command = data_.repeated().command(i);
-      if (command.type() == Command::SET_SAVE_FORMAT)
-        DLOG(INFO) << "repeated";
       Command c = command;
       int j = command.has_start_index() ? command.start_index() :
         CommandIDEncoder::FIRST;
       // Insert each specific subcommand.
       for (; j < command.index(); ++j) {
         c.set_index(j);
-        DLOG(INFO) << "About to insert " << CommandIDEncoder::toCommandID(j, command.type());
         insert(c, CommandIDEncoder::toCommandID(j, command.type()));
       }
     }
@@ -217,7 +210,7 @@ class CommandDatabase {
       bool isTicked = true || (c.desc().menu_size() == 1);
       ptr<CommandDataSetter> tds(isTicked ?
                                  new TickedDataSetter(&cr->info_, ls, c, a) :
-                                 new CommandDataSetter(ls, c, a));
+                                 new CommandDataSetter(&cr->info_, ls, c, a));
       tds->init(scope(c.is_global_setter()));
       cr->setter_.reset(tds.transfer());
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),

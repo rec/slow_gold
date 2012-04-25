@@ -7,8 +7,7 @@ TickedDataSetter::TickedDataSetter(ApplicationCommandInfo* info,
                                    Listener<None>* changeListener,
                                    const Command& command,
                                    const data::Address& addr)
-    : CommandDataSetter(changeListener, command, addr),
-      info_(info) {
+    : CommandDataSetter(info, changeListener, command, addr) {
 }
 
 void TickedDataSetter::operator()(const data::Value& v) {

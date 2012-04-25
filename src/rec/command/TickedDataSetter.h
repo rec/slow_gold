@@ -24,8 +24,6 @@ class TickedDataSetter : public CommandDataSetter {
   virtual string menuName() const;
 
  private:
-  ApplicationCommandInfo* info_;
-
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TickedDataSetter);
 };
 

@@ -3,7 +3,9 @@
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/TargetManager.h"
+#include "rec/data/DataOps.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 
@@ -57,6 +59,12 @@ void AdvancedMenuMaker::addFileMenu() {
   add(Command::SAVE_SELECTION_AS_WAV, String::empty, !isEmpty_, &selMenu);
 
   menu_.addSubMenu(Trans("Save Selection..."), selMenu);
+
+  PopupMenu saveTypeMenu;
+  int t = static_cast<int>(data::getGlobal<GuiSettings>().file_type_for_save());
+  for (int i = 0; i < t; ++i) {
+
+  }
 #endif
 }
 

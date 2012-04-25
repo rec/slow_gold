@@ -13,7 +13,8 @@ namespace command {
 class CommandDataSetter : public data::AddressListener,
                           public CommandItemSetter {
  public:
-  explicit CommandDataSetter(Listener<None>* changeListener,
+  explicit CommandDataSetter(ApplicationCommandInfo* info,
+                             Listener<None>* changeListener,
                              const Command& command,
                              const data::Address& addr);
   virtual ~CommandDataSetter() {}
@@ -24,8 +25,9 @@ class CommandDataSetter : public data::AddressListener,
 
  protected:
   CriticalSection lock_;
-  Listener<None>* changeListener_;
 
+  ApplicationCommandInfo* info_;
+  Listener<None>* changeListener_;
   const Command& command_;
   string menuName_;
 

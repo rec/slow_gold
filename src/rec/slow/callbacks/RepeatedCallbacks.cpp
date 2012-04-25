@@ -98,6 +98,9 @@ void loadRecentFile(Instance* instance, int i) {
                          rf.file(i).file());
 }
 
+void setSaveFileType(Instance* instance, int i) {
+}
+
 }  // namespace
 
 void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
@@ -119,9 +122,8 @@ void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
 
   for (int j = 0; j < GuiSettings::COUNT; ++j) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_SAVE_FORMAT);
-    addCallback(t, id, loadRecentFile, i, j);
+    addCallback(t, id, setSaveFileType, i, j);
   }
-
 }
 
 }  // namespace slow
