@@ -4,11 +4,10 @@ message GuiSettings {
   enum FileType {
     AIFF = 0;
     FLAC = 1;
-    MP3 = 2;
-    OGG = 3;
-    WAV = 4;
+    OGG = 2;
+    WAV = 3;
 
-    COUNT = 5;
+    COUNT = 4;
   };
   optional bool follow_cursor = 1 [default = true];
   optional bool drop_adds_to_browser = 2 [default = true];

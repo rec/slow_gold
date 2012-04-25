@@ -100,7 +100,7 @@ File browseForFileToSaveTreeView(const File& startFile) {
   return dialogBox.show() ? fileBrowser.getSelectedFile(0) : File::nonexistent;
 }
 
-static const char* SUFFIXES[] = {".aiff", ".flac", ".mp3", ".ogg", ".wav"};
+static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav"};
 
 File getSaveFile(Instance* instance, GuiSettings::FileType t) {
   if (instance->empty())
@@ -113,17 +113,18 @@ File getSaveFile(Instance* instance, GuiSettings::FileType t) {
 
   while (true) {
     file = settings.use_tree_view_in_file_dialogs() ?
-      browseForFileToSave(startFile) : browseForFileToSaveTreeView(startFile);
-    if (file == File::nonexistent || file.getFileExtension() == suffix)
+      browseForFileToSaveTreeView(startFile) : browseForFileToSave(startFile);
+    if (file == File::nonexistent)
+      return file;
+    if (file.getFileExtension() == suffix)
       break;
     String error = String::formatted(CANT_CHANGE_SUFFIX, c_str(suffix));
     AlertWindow::showMessageBox(AlertWindow::InfoIcon, error, error, OK);
   }
 
-  if (file != File::nonexistent) {
-    settings.set_last_directory(str(file.getParentDirectory()));
-    data::setGlobal(settings);
-  }
+  settings.set_last_directory(str(file.getParentDirectory()));
+  data::setGlobal(settings);
+
   return file;
 }
 

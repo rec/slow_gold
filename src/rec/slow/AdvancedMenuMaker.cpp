@@ -48,7 +48,7 @@ void AdvancedMenuMaker::addFileMenu() {
   PopupMenu save;
   int t = static_cast<int>(data::getGlobal<GuiSettings>().file_type_for_save());
   static const int TICKED = ApplicationCommandInfo::isTicked;
-  static const char* NAMES[] = {"AIFF", "FLAC", "MP3", "Ogg Vorbis", "WAV"};
+  static const char* NAMES[] = {"AIFF", "FLAC", "Ogg Vorbis", "WAV"};
   static const Command::Type COMMAND = Command::SET_SAVE_FORMAT;
   for (int i = 0; i < GuiSettings::COUNT; ++i)
     addRepeat(COMMAND, i, NAMES[i], true, &save, (i == t) ? TICKED : 0);

@@ -84,7 +84,7 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\303"
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\272"
     "\003\n\013GuiSettings\022\033\n\rfollow_cursor\030\001 \001(\010:\004t"
     "rue\022\"\n\024drop_adds_to_browser\030\002 \001(\010:\004true\022"
     "\034\n\rshow_tooltips\030\003 \001(\010:\005false\022\034\n\016show_he"
@@ -94,9 +94,9 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
     "\005false\022,\n\035use_tree_view_in_file_dialogs\030"
     "\010 \001(\010:\005false\022\026\n\016last_directory\030\t \001(\t\022@\n\022"
     "file_type_for_save\030\n \001(\0162\036.rec.slow.GuiS"
-    "ettings.FileType:\004AIFF\"D\n\010FileType\022\010\n\004AI"
-    "FF\020\000\022\010\n\004FLAC\020\001\022\007\n\003MP3\020\002\022\007\n\003OGG\020\003\022\007\n\003WAV\020"
-    "\004\022\t\n\005COUNT\020\005", 492);
+    "ettings.FileType:\004AIFF\";\n\010FileType\022\010\n\004AI"
+    "FF\020\000\022\010\n\004FLAC\020\001\022\007\n\003OGG\020\002\022\007\n\003WAV\020\003\022\t\n\005COUN"
+    "T\020\004", 483);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -125,7 +125,6 @@ bool GuiSettings_FileType_IsValid(int value) {
     case 2:
     case 3:
     case 4:
-    case 5:
       return true;
     default:
       return false;
@@ -135,7 +134,6 @@ bool GuiSettings_FileType_IsValid(int value) {
 #ifndef _MSC_VER
 const GuiSettings_FileType GuiSettings::AIFF;
 const GuiSettings_FileType GuiSettings::FLAC;
-const GuiSettings_FileType GuiSettings::MP3;
 const GuiSettings_FileType GuiSettings::OGG;
 const GuiSettings_FileType GuiSettings::WAV;
 const GuiSettings_FileType GuiSettings::COUNT;

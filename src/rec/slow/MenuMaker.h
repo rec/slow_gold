@@ -31,14 +31,14 @@ class MenuMaker {
            const String& name = String::empty,
            bool enabled = true,
            PopupMenu* m = NULL,
-           int flags = 0);
+           int flags = -1);
 
   void addRepeat(command::Command::Type command,
                  int slot,
                  const String& name = String::empty,
                  bool enabled = true,
                  PopupMenu* m = NULL,
-                 int flags = 0);
+                 int flags = -1);
 
   virtual bool addMenu(const String& menuName) = 0;
 

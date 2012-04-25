@@ -38,10 +38,9 @@ class GuiSettings;
 enum GuiSettings_FileType {
   GuiSettings_FileType_AIFF = 0,
   GuiSettings_FileType_FLAC = 1,
-  GuiSettings_FileType_MP3 = 2,
-  GuiSettings_FileType_OGG = 3,
-  GuiSettings_FileType_WAV = 4,
-  GuiSettings_FileType_COUNT = 5
+  GuiSettings_FileType_OGG = 2,
+  GuiSettings_FileType_WAV = 3,
+  GuiSettings_FileType_COUNT = 4
 };
 bool GuiSettings_FileType_IsValid(int value);
 const GuiSettings_FileType GuiSettings_FileType_FileType_MIN = GuiSettings_FileType_AIFF;
@@ -115,7 +114,6 @@ class GuiSettings : public ::google::protobuf::Message {
   typedef GuiSettings_FileType FileType;
   static const FileType AIFF = GuiSettings_FileType_AIFF;
   static const FileType FLAC = GuiSettings_FileType_FLAC;
-  static const FileType MP3 = GuiSettings_FileType_MP3;
   static const FileType OGG = GuiSettings_FileType_OGG;
   static const FileType WAV = GuiSettings_FileType_WAV;
   static const FileType COUNT = GuiSettings_FileType_COUNT;

@@ -13,7 +13,7 @@ using namespace juce;
 AudioFormatManager* getInstance() {
   format::mpg123::initializeOnce();
   ptr<AudioFormatManager> afm(new AudioFormatManager());
-  afm->registerFormat(new format::mpg123::Format(), false);
+  // afm->registerFormat(new format::mpg123::Format(), false);
   afm->registerBasicFormats();
 
   return afm.transfer();

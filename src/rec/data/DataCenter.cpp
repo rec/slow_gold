@@ -34,8 +34,8 @@ void DataCenter::clearUndoes() const {
 }
 
 void DataCenter::waitTillClear() const {
-  while (hasUpdates())
-    Thread::sleep(1);
+  //while (hasUpdates())  // TODO
+    Thread::sleep(10);
 }
 
 static DataCenter** getDC() {

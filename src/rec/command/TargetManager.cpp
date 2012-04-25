@@ -69,8 +69,7 @@ InvocationInfo TargetManager::lastInvocation() const {
 void TargetManager::addCallback(CommandID id, Callback* cb,
                                 const String& name,
                                 const String& category,
-                                const String& desc,
-                                int flags) {
+                                const String& desc) {
   ptr<Callback> callback(cb);
   if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
     LOG(DFATAL) << "Can't add " << commandName(id)
@@ -79,6 +78,7 @@ void TargetManager::addCallback(CommandID id, Callback* cb,
   }
 
   ApplicationCommandInfo info(id);
+  int flags = 0;
   if (category == "" || category == "(None)")
     flags += ApplicationCommandInfo::hiddenFromKeyEditor;
   info.setInfo(name, desc, category, flags);
@@ -107,7 +107,8 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
   if (!info->shortName.length())
     LOG(DFATAL) << "No name for " << commandName(id);
   info->setActive(enable);
-  info->flags = flags;
+  if (flags >= 0)
+    info->flags = flags;
   menu->addCommandItem(commandManager(), id);
 }
 

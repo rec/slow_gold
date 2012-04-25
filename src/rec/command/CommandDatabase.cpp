@@ -8,7 +8,6 @@
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
-#include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
@@ -181,7 +180,6 @@ class CommandDatabase {
     using widget::waveform::WaveformProto;
     using audio::stretch::Stretch;
     using audio::Gain;
-    using slow::GuiSettings;
 
     for (int i = 0; i < data_.setters().command_size(); ++i) {
       int id = data_.setters().command(i).type();
@@ -207,10 +205,7 @@ class CommandDatabase {
 
       const data::Address& a = c.address();
       Listener<None>* ls = data_.getMenuUpdateListener();
-      bool isTicked = true || (c.desc().menu_size() == 1);
-      ptr<CommandDataSetter> tds(isTicked ?
-                                 new TickedDataSetter(&cr->info_, ls, c, a) :
-                                 new CommandDataSetter(&cr->info_, ls, c, a));
+      ptr<TickedDataSetter> tds(new TickedDataSetter(&cr->info_, ls, c, a));
       tds->init(scope(c.is_global_setter()));
       cr->setter_.reset(tds.transfer());
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
@@ -240,7 +235,7 @@ class CommandDatabase {
       int flags = 0;
       if (category == "" || category == "(None)") {
         DCHECK_NE(category, "");
-        flags = ApplicationCommandInfo::hiddenFromKeyEditor;
+        flags += ApplicationCommandInfo::hiddenFromKeyEditor;
       }
 
       cr->info_.setInfo(str(desc.menu(0)), name, category, flags);

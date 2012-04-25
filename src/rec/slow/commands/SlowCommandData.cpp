@@ -1,7 +1,6 @@
 #include "rec/slow/commands/SlowCommandData.h"
 #include "rec/command/CommandData.h"
 #include "rec/slow/HasInstance.h"
-#include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/Commands.def.h"

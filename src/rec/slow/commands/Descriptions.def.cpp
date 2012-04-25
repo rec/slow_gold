@@ -384,7 +384,6 @@ Def<command::Commands> descriptions(
   "  desc {\n"
   "    menu: \"AIFF\"\n"
   "    menu: \"FLAC\"\n"
-  "    menu: \"MP3\"\n"
   "    menu: \"Ogg Vorbis\"\n"
   "    menu: \"WAV\"\n"
   "    full: \"...\"\n"
