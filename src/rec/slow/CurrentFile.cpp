@@ -157,4 +157,3 @@ void CurrentFile::translateAll() {
 
 }  // namespace slow
 }  // namespace rec
-
