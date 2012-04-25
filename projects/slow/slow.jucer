@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="ZAyhiZOe6" name="SlowGold">
+  <MAINGROUP id="r2EYlHZCr" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -202,8 +202,6 @@
                 id="JYlfsO3w8" name="ProcessAudioFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/ProcessAudioFile.h"
                 id="KT3Xt0MOi" name="ProcessAudioFile.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/TimeKeeper.h" id="TAsYAbfKE"
-                name="TimeKeeper.h" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="U7Ad0hg9g" name="base">
@@ -1311,10 +1309,6 @@
       <GROUP id="VypJ7N0Vw" name="rec">
         <GROUP id="TbRxwjhvZ" name="audio">
           <GROUP id="V2pGmoMBL" name="source">
-            <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
-                  id="6iUfs4HyN" name="Runny.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Runny.pb.h"
-                  id="PbgIFoWfL" name="Runny.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Stereo.pb.cc"
                   id="zYLzVueTm" name="Stereo.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Stereo.pb.h"
@@ -1491,7 +1485,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="lRJvRUqJn" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="272KzYqac" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

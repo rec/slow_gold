@@ -1282,9 +1282,6 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget_test.cpp">
       <Filter>tests\rec\widget</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc">
-      <Filter>tests\proto\rec\audio\source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc">
       <Filter>tests\proto\rec\audio\source</Filter>
     </ClCompile>
@@ -2724,9 +2721,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\TimeKeeper.h">
-      <Filter>tests\rec\audio\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h">
       <Filter>tests\rec\base</Filter>
     </ClInclude>
@@ -3662,9 +3656,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h">
       <Filter>tests\rec\widget</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h">
-      <Filter>tests\proto\rec\audio\source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h">
       <Filter>tests\proto\rec\audio\source</Filter>

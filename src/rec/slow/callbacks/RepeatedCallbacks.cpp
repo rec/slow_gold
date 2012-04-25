@@ -3,6 +3,7 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/LoopPoint.h"
 
@@ -115,6 +116,12 @@ void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::RECENT_FILES);
     addCallback(t, id, loadRecentFile, i, j);
   }
+
+  for (int j = 0; j < GuiSettings::COUNT; ++j) {
+    CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_SAVE_FORMAT);
+    addCallback(t, id, loadRecentFile, i, j);
+  }
+
 }
 
 }  // namespace slow

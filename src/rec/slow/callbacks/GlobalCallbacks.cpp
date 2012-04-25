@@ -112,6 +112,9 @@ void modeAddLoopPoint() {
   setMode(Mode::DRAW_LOOP_POINTS);
 }
 
+void setSaveFormat() {
+}
+
 }
 
 using command::Command;

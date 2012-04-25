@@ -1201,9 +1201,6 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp">
       <Filter>SlowGold\rec\widget</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc">
-      <Filter>SlowGold\proto\rec\audio\source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc">
       <Filter>SlowGold\proto\rec\audio\source</Filter>
     </ClCompile>
@@ -2640,9 +2637,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h">
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\TimeKeeper.h">
-      <Filter>SlowGold\rec\audio\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h">
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
@@ -3578,9 +3572,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h">
       <Filter>SlowGold\rec\widget</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h">
-      <Filter>SlowGold\proto\rec\audio\source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h">
       <Filter>SlowGold\proto\rec\audio\source</Filter>

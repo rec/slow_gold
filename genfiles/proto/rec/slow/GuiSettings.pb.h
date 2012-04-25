@@ -35,6 +35,29 @@ void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
 
 class GuiSettings;
 
+enum GuiSettings_FileType {
+  GuiSettings_FileType_AIFF = 0,
+  GuiSettings_FileType_FLAC = 1,
+  GuiSettings_FileType_MP3 = 2,
+  GuiSettings_FileType_OGG = 3,
+  GuiSettings_FileType_WAV = 4,
+  GuiSettings_FileType_COUNT = 5
+};
+bool GuiSettings_FileType_IsValid(int value);
+const GuiSettings_FileType GuiSettings_FileType_FileType_MIN = GuiSettings_FileType_AIFF;
+const GuiSettings_FileType GuiSettings_FileType_FileType_MAX = GuiSettings_FileType_COUNT;
+const int GuiSettings_FileType_FileType_ARRAYSIZE = GuiSettings_FileType_FileType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* GuiSettings_FileType_descriptor();
+inline const ::std::string& GuiSettings_FileType_Name(GuiSettings_FileType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    GuiSettings_FileType_descriptor(), value);
+}
+inline bool GuiSettings_FileType_Parse(
+    const ::std::string& name, GuiSettings_FileType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<GuiSettings_FileType>(
+    GuiSettings_FileType_descriptor(), name, value);
+}
 // ===================================================================
 
 class GuiSettings : public ::google::protobuf::Message {
@@ -88,6 +111,34 @@ class GuiSettings : public ::google::protobuf::Message {
   ::google::protobuf::Metadata GetMetadata() const;
   
   // nested types ----------------------------------------------------
+  
+  typedef GuiSettings_FileType FileType;
+  static const FileType AIFF = GuiSettings_FileType_AIFF;
+  static const FileType FLAC = GuiSettings_FileType_FLAC;
+  static const FileType MP3 = GuiSettings_FileType_MP3;
+  static const FileType OGG = GuiSettings_FileType_OGG;
+  static const FileType WAV = GuiSettings_FileType_WAV;
+  static const FileType COUNT = GuiSettings_FileType_COUNT;
+  static inline bool FileType_IsValid(int value) {
+    return GuiSettings_FileType_IsValid(value);
+  }
+  static const FileType FileType_MIN =
+    GuiSettings_FileType_FileType_MIN;
+  static const FileType FileType_MAX =
+    GuiSettings_FileType_FileType_MAX;
+  static const int FileType_ARRAYSIZE =
+    GuiSettings_FileType_FileType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  FileType_descriptor() {
+    return GuiSettings_FileType_descriptor();
+  }
+  static inline const ::std::string& FileType_Name(FileType value) {
+    return GuiSettings_FileType_Name(value);
+  }
+  static inline bool FileType_Parse(const ::std::string& name,
+      FileType* value) {
+    return GuiSettings_FileType_Parse(name, value);
+  }
   
   // accessors -------------------------------------------------------
   
@@ -157,6 +208,13 @@ class GuiSettings : public ::google::protobuf::Message {
   inline void set_last_directory(const char* value, size_t size);
   inline ::std::string* mutable_last_directory();
   
+  // optional .rec.slow.GuiSettings.FileType file_type_for_save = 10 [default = AIFF];
+  inline bool has_file_type_for_save() const;
+  inline void clear_file_type_for_save();
+  static const int kFileTypeForSaveFieldNumber = 10;
+  inline ::rec::slow::GuiSettings_FileType file_type_for_save() const;
+  inline void set_file_type_for_save(::rec::slow::GuiSettings_FileType value);
+  
   // @@protoc_insertion_point(class_scope:rec.slow.GuiSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -172,11 +230,12 @@ class GuiSettings : public ::google::protobuf::Message {
   bool use_tree_view_in_file_dialogs_;
   ::std::string* last_directory_;
   static const ::std::string _default_last_directory_;
+  int file_type_for_save_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -369,6 +428,23 @@ inline ::std::string* GuiSettings::mutable_last_directory() {
   return last_directory_;
 }
 
+// optional .rec.slow.GuiSettings.FileType file_type_for_save = 10 [default = AIFF];
+inline bool GuiSettings::has_file_type_for_save() const {
+  return _has_bit(9);
+}
+inline void GuiSettings::clear_file_type_for_save() {
+  file_type_for_save_ = 0;
+  _clear_bit(9);
+}
+inline ::rec::slow::GuiSettings_FileType GuiSettings::file_type_for_save() const {
+  return static_cast< ::rec::slow::GuiSettings_FileType >(file_type_for_save_);
+}
+inline void GuiSettings::set_file_type_for_save(::rec::slow::GuiSettings_FileType value) {
+  GOOGLE_DCHECK(::rec::slow::GuiSettings_FileType_IsValid(value));
+  _set_bit(9);
+  file_type_for_save_ = value;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -379,6 +455,10 @@ inline ::std::string* GuiSettings::mutable_last_directory() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::slow::GuiSettings_FileType>() {
+  return ::rec::slow::GuiSettings_FileType_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

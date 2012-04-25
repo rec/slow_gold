@@ -89,10 +89,14 @@ class CommandDatabase {
   }
 
   void merge(const Command& cmd, CommandID id = 0) {
+    if (cmd.type() == Command::SET_SAVE_FORMAT)
+      DLOG(INFO) << "merge";
     addTo(MERGE, cmd, id);
   }
 
   void insert(const Command& cmd, CommandID id = 0) {
+    if (cmd.type() == Command::SET_SAVE_FORMAT)
+      DLOG(INFO) << "insert ";
     addTo(INSERT, cmd, id);
   }
 
@@ -126,7 +130,7 @@ class CommandDatabase {
     CommandID type = command.type();
     CommandID c = Command::BANK_SIZE * type;
     for (int i = 0; i <= CommandIDEncoder::LAST - CommandIDEncoder::FIRST; ++i, ++c) {
-      if (type != Command::RECENT_FILES) {
+      if (type != Command::RECENT_FILES && type != Command::SET_SAVE_FORMAT) {
         CommandRecord* cr = table_->find(c);
         if (!cr->command_) {
           LOG(DFATAL) << "Couldn't find position " << i
@@ -166,12 +170,15 @@ class CommandDatabase {
   void insertRepeated() {
     for (int i = 0; i < data_.repeated().command_size(); ++i) {
       const Command& command = data_.repeated().command(i);
+      if (command.type() == Command::SET_SAVE_FORMAT)
+        DLOG(INFO) << "repeated";
       Command c = command;
       int j = command.has_start_index() ? command.start_index() :
         CommandIDEncoder::FIRST;
       // Insert each specific subcommand.
       for (; j < command.index(); ++j) {
         c.set_index(j);
+        DLOG(INFO) << "About to insert " << CommandIDEncoder::toCommandID(j, command.type());
         insert(c, CommandIDEncoder::toCommandID(j, command.type()));
       }
     }

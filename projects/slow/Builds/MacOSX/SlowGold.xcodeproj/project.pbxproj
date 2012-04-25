@@ -23,7 +23,6 @@
 		08D9FB1B25E259AACD8A7297 /* MessageField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 981E2D85A962219C8E981156 /* MessageField.cpp */; };
 		0C2FD4F7D007BE7217467F77 /* Trash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1BA8637B68E07E9D1B63242 /* Trash.cpp */; };
 		0C90AC8E91C9CC2082739207 /* MergeBlockSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D73A343C29EA1415A49FB4B /* MergeBlockSet.cpp */; };
-		0D674DE69F3D596083B75D72 /* Runny.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9411889528FAB828EB2839E4 /* Runny.pb.cc */; };
 		0E4DFBBB2345C6D83DBA654F /* KeyCommandMapEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB88943B9AEFA759477BCACE /* KeyCommandMapEditor.cpp */; };
 		0E5DFED63F314BE646E4A6F7 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3928C379CD16E871634D0171 /* QuickTime.framework */; };
 		0FC9F3471A4BCA02ACFB65FD /* Fillable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A4933BAEB18F114F30B72E2 /* Fillable.cpp */; };
@@ -706,7 +705,6 @@
 		405AB1E42CDCCEC3CDDE2316 /* VirtualFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualFile.h; path = ../../../../src/rec/util/file/VirtualFile.h; sourceTree = SOURCE_ROOT; };
 		40B23D6A4FE3087130F8960C /* Stretch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.cpp; path = ../../../../src/rec/audio/stretch/Stretch.cpp; sourceTree = SOURCE_ROOT; };
 		40BE604231E6E24DF57B4069 /* juce_UnitTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_UnitTest.cpp; path = ../../../../../juce/modules/juce_core/unit_tests/juce_UnitTest.cpp; sourceTree = SOURCE_ROOT; };
-		4112B4F40CAF8223FC5848FC /* Runny.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Runny.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Runny.pb.h; sourceTree = SOURCE_ROOT; };
 		413AF157F7B4F6AF7E8A829A /* juce_mac_FileChooser.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_mac_FileChooser.mm; path = ../../../../../juce/modules/juce_gui_basics/native/juce_mac_FileChooser.mm; sourceTree = SOURCE_ROOT; };
 		418A9E0FC4C65480A8B9949D /* CommandMapEditButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandMapEditButton.cpp; path = ../../../../src/rec/command/map/CommandMapEditButton.cpp; sourceTree = SOURCE_ROOT; };
 		418D98B806811CB1F022803E /* streamcharsource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = streamcharsource.h; path = ../../../../src/rec/data/yaml/src/streamcharsource.h; sourceTree = SOURCE_ROOT; };
@@ -1197,7 +1195,6 @@
 		938545EF1B44AF06507FFD1F /* LevelMeter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LevelMeter.cpp; path = ../../../../src/rec/gui/audio/LevelMeter.cpp; sourceTree = SOURCE_ROOT; };
 		93967E565F8B0A6B03501A10 /* ModeSelector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ModeSelector.cpp; path = ../../../../src/rec/gui/audio/ModeSelector.cpp; sourceTree = SOURCE_ROOT; };
 		93AD7EC88811E158E196B6E4 /* TextComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TextComponent.cpp; path = ../../../../src/rec/widget/status/TextComponent.cpp; sourceTree = SOURCE_ROOT; };
-		9411889528FAB828EB2839E4 /* Runny.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Runny.pb.cc; path = ../../../../genfiles/proto/rec/audio/source/Runny.pb.cc; sourceTree = SOURCE_ROOT; };
 		94191A451F8E3EC9E3F8925F /* juce_ComponentMovementWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ComponentMovementWatcher.h; path = ../../../../../juce/modules/juce_gui_basics/layout/juce_ComponentMovementWatcher.h; sourceTree = SOURCE_ROOT; };
 		94472BF73942E3F6DC412C7A /* DragModeDisabled.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DragModeDisabled.svg.h; path = ../../../../src/rec/gui/icon/DragModeDisabled.svg.h; sourceTree = SOURCE_ROOT; };
 		94DCE0271ABCC82E72D6D6B2 /* juce_TreeView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_TreeView.cpp; path = ../../../../../juce/modules/juce_gui_basics/widgets/juce_TreeView.cpp; sourceTree = SOURCE_ROOT; };
@@ -1649,7 +1646,6 @@
 		E4B221EFF8560D840B82E4F8 /* juce_ColourGradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ColourGradient.h; path = ../../../../../juce/modules/juce_graphics/colour/juce_ColourGradient.h; sourceTree = SOURCE_ROOT; };
 		E4C9FF3F4D812A40899CDD46 /* TestData.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestData.pb.h; path = ../../../../genfiles/proto/rec/data/proto/TestData.pb.h; sourceTree = SOURCE_ROOT; };
 		E58AC19914A9D56E92974406 /* juce_AudioProcessorPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_AudioProcessorPlayer.h; path = ../../../../../juce/modules/juce_audio_utils/players/juce_AudioProcessorPlayer.h; sourceTree = SOURCE_ROOT; };
-		E5A172685AEE40BA6AF5F0DF /* TimeKeeper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeKeeper.h; path = ../../../../src/rec/audio/util/TimeKeeper.h; sourceTree = SOURCE_ROOT; };
 		E5A7B98BDEE93F1C4FDFB74A /* juce_OpenGL_android.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OpenGL_android.h; path = ../../../../../juce/modules/juce_opengl/native/juce_OpenGL_android.h; sourceTree = SOURCE_ROOT; };
 		E65A44B3FF08581475A94D77 /* Fillable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Fillable.h; path = ../../../../src/rec/util/block/Fillable.h; sourceTree = SOURCE_ROOT; };
 		E681A9F3C65AC60B942D8D64 /* juce_win32_ASIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_ASIO.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_win32_ASIO.cpp; sourceTree = SOURCE_ROOT; };
@@ -2628,7 +2624,6 @@
 				53FFE4C3BA4CAA9AD409F9EF /* MakeBufferedReader.h */,
 				14F6CF845C05DE9D8DCA4796 /* ProcessAudioFile.cpp */,
 				F7CB5DAB1AEC359934CFD9B3 /* ProcessAudioFile.h */,
-				E5A172685AEE40BA6AF5F0DF /* TimeKeeper.h */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -3091,7 +3086,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				99AC8F7A9E86FC079548B547 /* SlowGold */,
+				92227B09BE06E8A7E5D82D33 /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3354,6 +3349,16 @@
 			name = file;
 			sourceTree = "<group>";
 		};
+		92227B09BE06E8A7E5D82D33 /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		9744D7CFD417C4069CD82142 /* gui */ = {
 			isa = PBXGroup;
 			children = (
@@ -3384,16 +3389,6 @@
 				C0D8C53C6F5A641D7B87BFDF /* Path.pb.h */,
 			);
 			name = tree;
-			sourceTree = "<group>";
-		};
-		99AC8F7A9E86FC079548B547 /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		9AA29039A94CDDE5A119A6A7 /* scanning */ = {
@@ -3502,8 +3497,6 @@
 		A7953ADE5C751C441F61FA5B /* source */ = {
 			isa = PBXGroup;
 			children = (
-				9411889528FAB828EB2839E4 /* Runny.pb.cc */,
-				4112B4F40CAF8223FC5848FC /* Runny.pb.h */,
 				1D9F3E23B6A2131F8203E399 /* Stereo.pb.cc */,
 				D0A2645A34246ED915285619 /* Stereo.pb.h */,
 			);
@@ -4940,7 +4933,6 @@
 				973E454F43CB6FAA5AB976A4 /* WaveformPainter.cpp in Sources */,
 				23F59998082648C79023F7B3 /* Zoom.cpp in Sources */,
 				4A643D1B47C996C842F04451 /* Widget.cpp in Sources */,
-				0D674DE69F3D596083B75D72 /* Runny.pb.cc in Sources */,
 				44FA0A5365B73C1181F3A892 /* Stereo.pb.cc in Sources */,
 				1C5F7A179FC283B1F7A8C2C3 /* Stretch.pb.cc in Sources */,
 				EC226CF7C92750FDE72E58D7 /* Gain.pb.cc in Sources */,

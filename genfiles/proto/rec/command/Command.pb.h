@@ -86,6 +86,7 @@ enum Command_Type {
   Command_Type_SAVE_SELECTION_AS_WAV = 78,
   Command_Type_SELECT = 25,
   Command_Type_SELECT_ONLY = 26,
+  Command_Type_SET_SAVE_FORMAT = 80,
   Command_Type_TOGGLE_ADVANCED_MENUS = 59,
   Command_Type_TOGGLE_AUTOMATIC_UPDATES = 67,
   Command_Type_TOGGLE_FOLLOW_CURSOR = 43,
@@ -119,7 +120,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 79,
+  Command_Type_LAST_TYPE = 80,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -368,6 +369,7 @@ class Command : public ::google::protobuf::Message {
   static const Type SAVE_SELECTION_AS_WAV = Command_Type_SAVE_SELECTION_AS_WAV;
   static const Type SELECT = Command_Type_SELECT;
   static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
+  static const Type SET_SAVE_FORMAT = Command_Type_SET_SAVE_FORMAT;
   static const Type TOGGLE_ADVANCED_MENUS = Command_Type_TOGGLE_ADVANCED_MENUS;
   static const Type TOGGLE_AUTOMATIC_UPDATES = Command_Type_TOGGLE_AUTOMATIC_UPDATES;
   static const Type TOGGLE_FOLLOW_CURSOR = Command_Type_TOGGLE_FOLLOW_CURSOR;

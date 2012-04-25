@@ -398,7 +398,6 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget_test.cpp"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc"/>
@@ -1531,7 +1530,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\TimeKeeper.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\base.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\BaseNoJuce.h"/>
@@ -1844,7 +1842,6 @@
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h"/>

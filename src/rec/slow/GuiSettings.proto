@@ -7,6 +7,8 @@ message GuiSettings {
     MP3 = 2;
     OGG = 3;
     WAV = 4;
+
+    COUNT = 5;
   };
   optional bool follow_cursor = 1 [default = true];
   optional bool drop_adds_to_browser = 2 [default = true];

@@ -426,6 +426,17 @@ command {
   }
 }
 command {
+  type: SET_SAVE_FORMAT
+  desc {
+    menu: "AIFF"
+    menu: "FLAC"
+    menu: "MP3"
+    menu: "Ogg Vorbis"
+    menu: "WAV"
+    full: "..."
+  }
+}
+command {
   type: QUIT
   desc {
     menu: "Quit"

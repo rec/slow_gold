@@ -144,7 +144,6 @@ class SaveThread : public ThreadWithProgressWindow {
     source_->prepareToPlay(COPY_BLOCK_SIZE, 44100.0);
     String name = file_.getFileName();
     setStatusMessage(String::formatted(SAVING_FILE, c_str(name)));
-    double fullSize = source_->getTotalLength();
 
     for (Samples<44100> toCopy = length_;
          !threadShouldExit() && toCopy > 0; toCopy -= COPY_UPDATE_SIZE) {

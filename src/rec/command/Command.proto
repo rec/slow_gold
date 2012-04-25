@@ -67,8 +67,10 @@ message Command {
     SAVE_SELECTION_AS_MP3 = 76;
     SAVE_SELECTION_AS_OGG = 77;
     SAVE_SELECTION_AS_WAV = 78;
+
     SELECT = 25;
     SELECT_ONLY = 26;
+    SET_SAVE_FORMAT = 80;
 
     TOGGLE_ADVANCED_MENUS = 59;
     TOGGLE_AUTOMATIC_UPDATES = 67;
@@ -107,7 +109,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 79;
+    LAST_TYPE = 80;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;
