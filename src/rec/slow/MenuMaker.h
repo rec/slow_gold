@@ -18,8 +18,8 @@ class MenuMaker {
 
   MenuMaker(command::TargetManager* t,
             const IsWholeSong& isWholeSong,
-            bool isEmpty)
-      : isWholeSong_(isWholeSong), isEmpty_(isEmpty), targetManager_(t) {
+            bool empty)
+      : isWholeSong_(isWholeSong), empty_(empty), targetManager_(t) {
   }
   virtual ~MenuMaker() {}
 
@@ -36,20 +36,20 @@ class MenuMaker {
   void addRepeat(command::Command::Type command,
                  int slot,
                  const String& name = String::empty,
-                 bool enabled = true,
                  PopupMenu* m = NULL,
                  int flags = -1);
 
+  void addSimpleRepeat(command::Command::Type command, int slot, PopupMenu*);
+
   virtual bool addMenu(const String& menuName) = 0;
 
-  void addEnabled(command::Command::Type command, bool enabled);
-  void addBank(command::Command::Type command, const String& name,
-               int begin = command::CommandIDEncoder::FIRST,
-               int end = SLOT_COUNT);
+  void addIfNotEmpty(command::Command::Type command);
+  void addEnabled(command::Command::Type command, bool enable);
+  void addBank(command::Command::Type command, const String& name);
 
   PopupMenu menu_;
   const IsWholeSong& isWholeSong_;
-  const bool isEmpty_;
+  const bool empty_;
 
  private:
   command::TargetManager* targetManager_;
@@ -59,7 +59,7 @@ class MenuMaker {
 };
 
 MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
-                         const IsWholeSong&, bool isEmpty);
+                         const IsWholeSong&, bool empty);
 
 }  // namespace slow
 }  // namespace rec

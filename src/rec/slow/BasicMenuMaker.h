@@ -11,8 +11,8 @@ class BasicMenuMaker : public MenuMaker {
  public:
   BasicMenuMaker(command::TargetManager* t,
                  const IsWholeSong& isWholeSong,
-                 bool isEmpty)
-      : MenuMaker(t, isWholeSong, isEmpty) {
+                 bool empty)
+      : MenuMaker(t, isWholeSong, empty) {
   }
   virtual ~BasicMenuMaker() {}
 

@@ -10,8 +10,8 @@ class AdvancedMenuMaker : public BasicMenuMaker {
  public:
   AdvancedMenuMaker(command::TargetManager* t,
                     const IsWholeSong& isWholeSong,
-                    bool isEmpty)
-      : BasicMenuMaker(t, isWholeSong, isEmpty) {
+                    bool empty)
+      : BasicMenuMaker(t, isWholeSong, empty) {
   }
   virtual ~AdvancedMenuMaker() {}
 

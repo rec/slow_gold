@@ -15,12 +15,12 @@ namespace slow {
 using namespace rec::command;
 
 void AdvancedMenuMaker::addAudioMenu() {
-  add(Command::MUTE_VOLUME_TOGGLE);
-  add(Command::DIM_VOLUME_TOGGLE);
-  add(Command::NUDGE_VOLUME_UP);
-  add(Command::NUDGE_VOLUME_DOWN);
-  add(Command::RESET_GAIN_TO_UNITY);
-  add(Command::TOGGLE_STRETCH_ENABLE);
+  addIfNotEmpty(Command::MUTE_VOLUME_TOGGLE);
+  addIfNotEmpty(Command::DIM_VOLUME_TOGGLE);
+  addIfNotEmpty(Command::NUDGE_VOLUME_UP);
+  addIfNotEmpty(Command::NUDGE_VOLUME_DOWN);
+  addIfNotEmpty(Command::RESET_GAIN_TO_UNITY);
+  addIfNotEmpty(Command::TOGGLE_STRETCH_ENABLE);
 
   menu_.addSeparator();
 
@@ -32,20 +32,18 @@ void AdvancedMenuMaker::addEditMenu() {
 
   menu_.addSeparator();
 
-  add(Command::MODE_SET_TIME);
-  add(Command::MODE_DRAG);
-  add(Command::MODE_ADD_LOOP_POINT);
-  add(Command::MODE_ZOOM_IN);
+  addIfNotEmpty(Command::MODE_SET_TIME);
+  addIfNotEmpty(Command::MODE_DRAG);
+  addIfNotEmpty(Command::MODE_ADD_LOOP_POINT);
+  addIfNotEmpty(Command::MODE_ZOOM_IN);
 }
 
 void AdvancedMenuMaker::addFileMenu() {
   BasicMenuMaker::addFileMenu();
 
 #ifdef NEW_FEATURES
-  VirtualFile f = data::getGlobal<VirtualFile>();
-  bool empty = file::empty(f);
-  add(Command::SAVE_FILE, "", !empty);
-  add(Command::SAVE_FILE_SELECTION, "", !empty);
+  addIfNotEmpty(Command::SAVE_FILE);
+  addIfNotEmpty(Command::SAVE_FILE_SELECTION);
 
   PopupMenu save;
   int t = static_cast<int>(data::getGlobal<GuiSettings>().file_type_for_save());
@@ -53,7 +51,7 @@ void AdvancedMenuMaker::addFileMenu() {
   static const char* NAMES[] = {"AIFF", "FLAC", "Ogg Vorbis", "WAV"};
   static const Command::Type COMMAND = Command::SET_SAVE_FORMAT;
   for (int i = 0; i < GuiSettings::COUNT; ++i)
-    addRepeat(COMMAND, i, NAMES[i], true, &save, (i == t) ? TICKED : 0);
+    addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
 
   menu_.addSubMenu(Trans("File Type For Save..."), save);
 #endif
@@ -72,7 +70,7 @@ void AdvancedMenuMaker::addSelectMenu() {
 
 void AdvancedMenuMaker::addTransportMenu() {
   BasicMenuMaker::addTransportMenu();
-  add(Command::TOGGLE_PREFADER_LEVELS);
+  addIfNotEmpty(Command::TOGGLE_PREFADER_LEVELS);
 
   menu_.addSeparator();
 

@@ -14,7 +14,7 @@ using namespace rec::command;
 
 void BasicMenuMaker::addFileMenu() {
   add(Command::OPEN);
-  add(Command::CLOSE_FILE);
+  addIfNotEmpty(Command::CLOSE_FILE);
   add(Command::EJECT_CDS);
 
   menu_.addSeparator();
@@ -27,7 +27,7 @@ void BasicMenuMaker::addFileMenu() {
   std::vector<string> recent = rec::gui::getRecentFileNames();
   PopupMenu submenu;
   for (uint i = 0; i < recent.size(); ++i)
-    addRepeat(Command::RECENT_FILES, i, str(recent[i]), true, &submenu);
+    addRepeat(Command::RECENT_FILES, i, str(recent[i]), &submenu);
 
   menu_.addSubMenu(Trans("Open recent"), submenu);
 
@@ -49,10 +49,10 @@ void BasicMenuMaker::addEditMenu() {
 }
 
 void BasicMenuMaker::addAudioMenu() {
-  add(Command::MUTE_VOLUME_TOGGLE);
-  add(Command::NUDGE_VOLUME_UP);
-  add(Command::NUDGE_VOLUME_DOWN);
-  add(Command::TOGGLE_STRETCH_ENABLE);
+  addIfNotEmpty(Command::MUTE_VOLUME_TOGGLE);
+  addIfNotEmpty(Command::NUDGE_VOLUME_UP);
+  addIfNotEmpty(Command::NUDGE_VOLUME_DOWN);
+  addIfNotEmpty(Command::TOGGLE_STRETCH_ENABLE);
 
   menu_.addSeparator();
 
@@ -60,30 +60,30 @@ void BasicMenuMaker::addAudioMenu() {
 }
 
 void BasicMenuMaker::addSelectMenu() {
-  add(Command::SELECT_ALL);
-  add(Command::DESELECT_ALL);
-  add(Command::INVERT_LOOP_SELECTION);
+  addIfNotEmpty(Command::SELECT_ALL);
+  addIfNotEmpty(Command::DESELECT_ALL);
+  addIfNotEmpty(Command::INVERT_LOOP_SELECTION);
 
   switch (isWholeSong_.isWholeSong()) {
    case IsWholeSong::ONE_SEGMENT:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"));
+    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), !empty_);
     break;
 
    case IsWholeSong::WHOLE_SONG:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop This Segment"));
+    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop This Segment"), !empty_);
     break;
 
    case IsWholeSong::SONG_IS_ONE_SEGMENT:
     add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), false);
     break;
   }
-  add(Command::ZOOM_TO_SELECTION);
+  addIfNotEmpty(Command::ZOOM_TO_SELECTION);
 }
 
 void BasicMenuMaker::addTransportMenu() {
-  add(Command::TOGGLE_START_STOP);
-  add(Command::ADD_LOOP_POINT);
-  add(Command::CLEAR_LOOPS);
+  addIfNotEmpty(Command::TOGGLE_START_STOP);
+  addIfNotEmpty(Command::ADD_LOOP_POINT);
+  addIfNotEmpty(Command::CLEAR_LOOPS);
 }
 
 void BasicMenuMaker::addHelpMenu() {

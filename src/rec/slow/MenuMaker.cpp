@@ -32,35 +32,40 @@ void MenuMaker::add(CommandID id,
 void MenuMaker::addRepeat(Command::Type command,
                           int slot,
                           const String& name,
-                          bool enabled,
                           PopupMenu* m,
                           int flags) {
-  add(CommandIDEncoder::toCommandID(slot, command), name, enabled, m, flags);
+  add(CommandIDEncoder::toCommandID(slot, command), name, true, m, flags);
+}
+
+void MenuMaker::addSimpleRepeat(Command::Type command, int slot, PopupMenu* m) {
+  add(CommandIDEncoder::toCommandID(slot, command), "", !empty_, m, 0);
 }
 
 void MenuMaker::addEnabled(Command::Type command, bool enabled) {
   add(command, "", enabled);
 }
 
-void MenuMaker::addBank(Command::Type command, const String& name, int begin,
-                        int end) {
-  Lock l(lock_);
+void MenuMaker::addIfNotEmpty(Command::Type command) {
+  addEnabled(command, !empty_);
+}
+
+void MenuMaker::addBank(Command::Type command, const String& name) {
   PopupMenu sub;
-  for (int i = begin; i < end; ++i) {
+  for (int i = command::CommandIDEncoder::FIRST; i < SLOT_COUNT; ++i) {
     if (i == 0)
       sub.addSeparator();
-    addRepeat(command, i, "", true, &sub);
+    addSimpleRepeat(command, i, &sub);
   }
 
-  menu_.addSubMenu(name, sub);
+  menu_.addSubMenu(name, sub, !empty_);
 }
 
 MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
-                         const IsWholeSong& isWholeSong, bool isEmpty) {
+                         const IsWholeSong& isWholeSong, bool empty) {
   if (isAdvanced)
-    return new AdvancedMenuMaker(tm, isWholeSong, isEmpty);
+    return new AdvancedMenuMaker(tm, isWholeSong, empty);
   else
-    return new BasicMenuMaker(tm, isWholeSong, isEmpty);
+    return new BasicMenuMaker(tm, isWholeSong, empty);
 }
 
 }  // namespace slow

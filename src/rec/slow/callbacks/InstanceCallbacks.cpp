@@ -203,7 +203,8 @@ void quit(Instance* i) {
 }
 
 void toggleStartStop(Instance* i) {
-  i->player_->toggle();
+  if (!i->empty())
+    i->player_->toggle();
 }
 
 void checkForUpdates(Instance * i) {
