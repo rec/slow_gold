@@ -42,8 +42,10 @@ void AdvancedMenuMaker::addFileMenu() {
   BasicMenuMaker::addFileMenu();
 
 #ifdef NEW_FEATURES
-  add(Command::SAVE_FILE);
-  add(Command::SAVE_FILE_SELECTION);
+  VirtualFile f = data::getGlobal<VirtualFile>();
+  bool empty = file::empty(f);
+  add(Command::SAVE_FILE, "", !empty);
+  add(Command::SAVE_FILE_SELECTION, "", !empty);
 
   PopupMenu save;
   int t = static_cast<int>(data::getGlobal<GuiSettings>().file_type_for_save());
