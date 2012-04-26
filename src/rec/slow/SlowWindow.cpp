@@ -46,6 +46,7 @@ SlowWindow::~SlowWindow() {
 }
 
 void SlowWindow::init() {
+  google::LogToStderr();
   app::Window::init();
   data::DataListener<music::Metadata>::init();
 }
