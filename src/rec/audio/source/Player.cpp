@@ -11,7 +11,6 @@
 #include "rec/audio/util/Gain.h"
 #include "rec/util/Math.h"
 #include "rec/util/block/Block.h"
-#include "rec/widget/waveform/Viewport.pb.h"
 
 // #include "rec/util/LoopPoint.h"
 

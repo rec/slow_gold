@@ -8,6 +8,7 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/data/DataListener.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 
