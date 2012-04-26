@@ -29,10 +29,13 @@ class CommandDatabase {
     mergeKeyPresses();
     mergeDescriptions();
     removeEmptiesAndFillCommandInfo();
+#if JUCE_MAC
     rawMergeAndPrint();
+#endif
   }
 
  private:
+#if JUCE_MAC
   typedef std::map<CommandID, Command*> Table;
 
   void rawMerge(Table* table, Commands commands) {
@@ -64,7 +67,7 @@ class CommandDatabase {
     out.deleteFile();
     juce::FileOutputStream(out).writeText(commandString, false, false);
   }
-
+#endif
 
   enum MergeType {INSERT, MERGE};
 

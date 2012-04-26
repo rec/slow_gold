@@ -28,8 +28,6 @@ void fixWindowsDriveLetters(String *p, ConversionType conv) {
   if (conv == TO_SHADOW_FILE) {
     if (p->endsWithChar(':'))
       *p = p->dropLastCharacters(1);
-    else
-      LOG(DFATAL) << "TO: First path element was " << p;
   } else {
     if (!p->endsWithChar(':'))
       *p += ':';
