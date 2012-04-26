@@ -80,7 +80,8 @@ void CurrentFile::setFile(const VirtualFile& f) {
   components()->directoryTree_->refreshNode(file_);
 
   menus()->menuItemsChanged();
-  instance_->fillerThread_->startThread();
+  if (!empty())
+    instance_->fillerThread_->startThread();
 
   data::setGlobal(file_);
   data::getDataCenter().waitTillClear();

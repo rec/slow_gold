@@ -60,7 +60,6 @@ Def<CursorProto> defaultDesc(
 Waveform::Waveform(MenuBarModel* m)
     : Component("WaveformComponent"),
       model_(new WaveformModel),
-      painter_(new WaveformPainter(this)),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT) {
   setName("Waveform");
@@ -86,6 +85,7 @@ void Waveform::init() {
   GlobalDataListener<Mode>::init();
   GlobalDataListener<WaveformProto>::init();
 
+  painter_.reset(new WaveformPainter(this));
   timeCursor_.reset(makeTimeCursor(defaultTimeCursor(), this));
   timeCursor_->setTooltip(Trans("Playback Time Cursor: This follows the "
                                 "current time during playback. You can also drag it "
