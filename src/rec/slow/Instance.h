@@ -46,7 +46,7 @@ class Instance {
     fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
   }
 
-  static const int FILLER_THREAD_STOP_TIME = 10000;
+  static const int FILLER_THREAD_STOP_TIME = 60000;
 
   SlowWindow* window_;
   CriticalSection lock_;

@@ -45,7 +45,9 @@ class Cursor : public Component,
   void setTime(Samples<44100> time);
   virtual void setTooltip(const String&);
 
-  bool isTimeCursor() const { return (this == waveform_->timeCursor()); }
+  static const int TIME_CURSOR_INDEX = -1;
+
+  bool isTimeCursor() const { return index_ == TIME_CURSOR_INDEX; }
 
   const CursorProto& desc() const { return desc_; }
 

@@ -17,21 +17,45 @@ namespace {
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
 inline String fixPathElement(const String& s) {
-  return s;  // .replace(":", "-");
+  return s.replace(":", "-");
 }
 
-const File getFileFromPath(File f, const Path& path) {
+enum ConversionType {
+  TO_SHADOW_FILE, TO_REAL_FILE
+};
+
+void fixWindowsDriveLetters(String *p, ConversionType conv) {
+  if (conv == TO_SHADOW_FILE) {
+    if (p->endsWithChar(':'))
+      *p = p->dropLastCharacters(1);
+    else
+      LOG(DFATAL) << "TO: First path element was " << p;
+  } else {
+    if (!p->endsWithChar(':'))
+      *p += ':';
+    else
+      LOG(DFATAL) << "FROM: First path element was " << p;
+  }
+}
+
+const File getRootFile(const String &s) {
+#if JUCE_MAC
+  if (!s.startsWithChar(File::separator))
+    return File(File::separatorString + s);
+#endif
+  return File(s);
+}
+
+const File getFileFromPath(File f, const Path& path, ConversionType conv) {
   for (int i = 0; i < path.size(); ++i) {
     String p = str(path.Get(i));
-    if (f == File::nonexistent) {
-#if JUCE_MAC
-      if (!p.startsWithChar(File::separator))
-        p = File::separatorString + p;
+    bool isNonexistent = (f == File::nonexistent);
+    DCHECK(!isNonexistent || (i == 0 && conv == TO_REAL_FILE));
+#if JUCE_WINDOWS
+    if (i == 0)
+      fixWindowsDriveLetters();
 #endif
-      f = File(p);
-    } else {
-    	f = f.getChildFile(fixPathElement(p));
-    }
+    f = isNonexistent ? getRootFile(p) : f.getChildFile(p);
   }
 
   return f;
@@ -68,11 +92,11 @@ const File getShadowDirectory(const VirtualFile& vf) {
 
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
   File f = app::getAppFile(name).getChildFile(str(vf.volume_name()));
-  return getFileFromPath(f, vf.path());
+  return getFileFromPath(f, vf.path(), TO_SHADOW_FILE);
 }
 
 const File getRealFile(const VirtualFile& file) {
-  return getFileFromPath(getRootFile(file), file.path());
+  return getFileFromPath(getRootFile(file), file.path(), TO_REAL_FILE);
 }
 
 const String getFilename(const VirtualFile& file) {

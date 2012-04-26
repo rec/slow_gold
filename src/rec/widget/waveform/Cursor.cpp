@@ -285,7 +285,7 @@ Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,
 }
 
 Cursor* makeTimeCursor(const CursorProto& cp, Waveform* w) {
-  return makeCursor(cp, w, -1, 0);
+  return makeCursor(cp, w, Cursor::TIME_CURSOR_INDEX, 0);
 }
 
 }  // namespace waveform
