@@ -51,7 +51,7 @@ const File getFileFromPath(File f, const Path& path, ConversionType conv) {
     DCHECK(!isNonexistent || (i == 0 && conv == TO_REAL_FILE));
 #if JUCE_WINDOWS
     if (i == 0)
-      fixWindowsDriveLetters();
+      fixWindowsDriveLetters(&p, conv);
 #endif
     f = isNonexistent ? getRootFile(p) : f.getChildFile(p);
   }
