@@ -39,7 +39,8 @@ void Layout::layout() {
   if (components_.size()) {
     layoutManager_.layOutComponents(&components_[0], components_.size(),
                                     0, 0, getWidth(), getHeight(),
-                                    orientation_, resizeOtherDimension_);
+                                    orientation_ == VERTICAL, 
+									resizeOtherDimension_);
     if (cache_)
       cache_->invalidateAll();
   }

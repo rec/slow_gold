@@ -31,8 +31,6 @@ void fixWindowsDriveLetters(String *p, ConversionType conv) {
   } else {
     if (!p->endsWithChar(':'))
       *p += ':';
-    else
-      LOG(DFATAL) << "FROM: First path element was " << p;
   }
 }
 

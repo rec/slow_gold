@@ -28,7 +28,7 @@ using namespace juce;
 
 const int WIDTH = 650;
 const int HEIGHT = 350;
-const int MARGIN = 20;
+const float MARGIN = 20.0f;
 const int OFFSET = 150;
 const int BUTTON_HEIGHT = 20;
 const int BUTTON_WIDTH = 250;
@@ -66,7 +66,8 @@ class AboutPane : public Component {
     right_.append(t, font);
 
     addAndMakeVisible(&displayOnStartup_);
-    displayOnStartup_.setBounds(MARGIN, HEIGHT - MARGIN - BUTTON_HEIGHT,
+    displayOnStartup_.setBounds(static_cast<int>(MARGIN), 
+		                        HEIGHT - static_cast<int>(MARGIN) - BUTTON_HEIGHT,
                                 BUTTON_WIDTH, BUTTON_HEIGHT);
     setOpaque(true);
     displayOnStartup_.setInterceptsMouseClicks(true, true);
@@ -81,7 +82,8 @@ class AboutPane : public Component {
     g.setColour(Colours::red);
     g.drawRect(0, 0, WIDTH, HEIGHT);
     Rectangle<float> area(MARGIN, MARGIN,
-                          WIDTH - 2 * MARGIN, HEIGHT - 2 * MARGIN);
+                          static_cast<float>(WIDTH - 2 * MARGIN), 
+						  static_cast<float>(HEIGHT - 2 * MARGIN));
     right_.draw(g, area);
     area.setY(area.getY() + OFFSET);
     left_.draw(g, area);

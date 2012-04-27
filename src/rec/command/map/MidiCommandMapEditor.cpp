@@ -21,7 +21,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
   : CommandEntryWindow(WAITING),
         owner_(owner),
         mappings_(&owner->getMappings()) {
-    listen(this);
+    listen(true);
   }
 
   void listen(bool on) { mappings_->requestOneMessage(on ? this : NULL); }

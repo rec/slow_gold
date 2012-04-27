@@ -61,7 +61,7 @@ Error createReader(InputStream* in,
     r.bitsPerSample = bitsPerSample;
     r.sampleRate = int(sampleRate);
     r.lengthInSamples = mpg123_length(mh);
-    r.usesFloatingPointData = (encoding & MPG123_ENC_FLOAT);
+    r.usesFloatingPointData = (encoding & MPG123_ENC_FLOAT) != 0;
     r.numChannels = numChannels;
 
     getMp3Tags(mh, &r.metadataValues);

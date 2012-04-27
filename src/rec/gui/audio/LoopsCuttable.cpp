@@ -28,7 +28,7 @@ string LoopsCuttable::copy() const {
 }
 
 bool LoopsCuttable::canCopy() const {
-  return getSelected(*loops_, true).loop_point_size();
+  return getSelected(*loops_, true).loop_point_size() > 0;
 }
 
 bool LoopsCuttable::canPaste(const string& s) const {
