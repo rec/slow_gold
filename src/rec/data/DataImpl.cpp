@@ -54,7 +54,7 @@ bool DataImpl::writeToFile() {
 
 void DataImpl::addListener(Listener<const Message&>* lis) {
   {
-    Lock l(broadcasterLock_);
+    Lock l(lock_);
     Data::addListener(lis);
     recentListeners_.insert(lis);
   }
@@ -63,7 +63,7 @@ void DataImpl::addListener(Listener<const Message&>* lis) {
 
 void DataImpl::removeListener(Listener<const Message&>* lis) {
   {
-    Lock l(broadcasterLock_);
+    Lock l(lock_);
     Data::removeListener(lis);
     recentListeners_.erase(lis);
   }
@@ -80,15 +80,12 @@ bool DataImpl::update() {
     Lock l(lock_);
     changed = changed_;
     changed_ = false;
-  }
 
-  if (isEmpty_ && changed) {
-    LOG(DFATAL) << "Tried to update an empty value: " << getTypeName();
-    return false;
-  }
+    if (isEmpty_ && changed) {
+      LOG(DFATAL) << "Tried to update an empty value: " << getTypeName();
+      return false;
+    }
 
-  {
-    Lock l(broadcasterLock_);
     if (changed)
       recentListeners_.clear();
 
@@ -97,10 +94,7 @@ bool DataImpl::update() {
 
     else
       return false;
-  }
 
-  {
-    Lock l(lock_);
     m.reset(clone(*message_));
   }
 
@@ -112,11 +106,6 @@ bool DataImpl::update() {
   }
 
   return changed;
-}
-
-void DataImpl::clearRecentListeners() {
-  Lock l(lock_);
-  recentListeners_.clear();
 }
 
 }  // namespace data

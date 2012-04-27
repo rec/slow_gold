@@ -22,7 +22,6 @@ class DataImpl : public Data {
   virtual void pushOnUndoStack(const Message& before);
   virtual void reportChange();
   virtual bool update();
-  virtual void clearRecentListeners();
   virtual bool writeToFile();
 
   virtual void addListener(Listener<const Message&>*);

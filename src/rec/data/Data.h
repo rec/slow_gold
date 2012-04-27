@@ -33,7 +33,6 @@ class Data : public Broadcaster<const Message&> {
   virtual void pushOnUndoStack(const Message& before) = 0;
   virtual void reportChange() = 0;
   virtual bool update() = 0;
-  virtual void clearRecentListeners() = 0;
   virtual bool writeToFile() = 0;
 
   CriticalSection lock_;

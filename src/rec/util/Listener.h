@@ -22,13 +22,11 @@ class Listener {
 
   virtual void operator()(Type x) = 0;
 
-  const CriticalSection& lock() const { return listenerLock_; }
-  int broadcasterSize() const { return broadcasters_.size(); }
-
- protected:
-  CriticalSection listenerLock_;
+  int broadcasterSize() const { Lock l(lock_); return broadcasters_.size(); }
 
  private:
+  CriticalSection lock_;
+
   virtual void wasRemovedFrom(Broadcaster<Type>*);
   void wasAddedTo(Broadcaster<Type>*);
 
@@ -58,13 +56,12 @@ class Broadcaster {
   virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);
 
-  int listenerSize() const { return listeners_.size(); }
-
- protected:
-  CriticalSection broadcasterLock_;
-  ListenerSet listeners_;
+  int listenerSize() const { Lock l(lock_); return listeners_.size(); }
 
  private:
+  CriticalSection lock_;
+  ListenerSet listeners_;
+
   DISALLOW_COPY_AND_ASSIGN(Broadcaster);
   JUCE_LEAK_DETECTOR(Broadcaster<Type>);
 };
@@ -73,7 +70,7 @@ template <typename Type>
 Listener<Type>::~Listener() {
   BroadcasterSet toDelete;
   {
-    Lock l(listenerLock_);
+    Lock l(lock_);
     if (broadcasters_.empty())
       return;
 
@@ -86,29 +83,29 @@ Listener<Type>::~Listener() {
 
 template <typename Type>
 void Listener<Type>::wasRemovedFrom(Broadcaster<Type>* broadcaster) {
-  Lock l(listenerLock_);
+  Lock l(lock_);
   broadcasters_.erase(broadcaster);
 }
 
 template <typename Type>
 void Listener<Type>::wasAddedTo(Broadcaster<Type>* broadcaster) {
-  Lock l(listenerLock_);
+  Lock l(lock_);
   broadcasters_.insert(broadcaster);
 }
 
 template <typename Type>
 void Broadcaster<Type>::broadcast(Type x) {
-  Lock l(broadcasterLock_);
+  Lock l(lock_);
   for (iterator i = listeners_.begin(); i != listeners_.end(); ++i) {
     Listener<Type>* listener = *i;
-    Lock m(listener->listenerLock_);
+    Lock m(listener->lock_);
     (*listener)(x);
   }
 }
 
 template <typename Type>
 Broadcaster<Type>::~Broadcaster() {
-  Lock l(broadcasterLock_);
+  Lock l(lock_);
   for (iterator i = listeners_.begin(); i != listeners_.end(); ++i)
     (*i)->wasRemovedFrom(this);
 }
@@ -116,7 +113,7 @@ Broadcaster<Type>::~Broadcaster() {
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
   {
-    Lock l(broadcasterLock_);
+    Lock l(lock_);
     listeners_.insert(listener);
   }
 
@@ -126,7 +123,7 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
 template <typename Type>
 void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
   {
-    Lock l(broadcasterLock_);
+    Lock l(lock_);
     listeners_.erase(listener);
   }
 
