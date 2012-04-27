@@ -21,12 +21,12 @@ class Selection : public Wrappy {
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
   virtual void setSelection(const block::BlockSet& s) {
-    Lock l(Wrappy::lock_);
+    Lock l(lock_);
     selection_ = s;
   }
 
   const block::BlockSet selection() const {
-    Lock l(Wrappy::lock_);
+    Lock l(lock_);
     return selection_;
   }
 

@@ -53,16 +53,20 @@ bool DataImpl::writeToFile() {
 }
 
 void DataImpl::addListener(Listener<const Message&>* lis) {
-  Lock l(broadcasterLock_);
-  Data::addListener(lis);
-  recentListeners_.insert(lis);
+  {
+    Lock l(broadcasterLock_);
+    Data::addListener(lis);
+    recentListeners_.insert(lis);
+  }
   dataUpdater_->reportChange(this);
 }
 
 void DataImpl::removeListener(Listener<const Message&>* lis) {
-  Lock l(broadcasterLock_);
-  Data::removeListener(lis);
-  recentListeners_.erase(lis);
+  {
+    Lock l(broadcasterLock_);
+    Data::removeListener(lis);
+    recentListeners_.erase(lis);
+  }
   if (!listenerSize())
     dataUpdater_->reportChange(this);
 }

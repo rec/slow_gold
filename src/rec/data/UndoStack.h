@@ -26,7 +26,7 @@ class UndoStack : public Broadcaster<None> {
   void redo();
 
  private:
-  void redoOrUndo(bool isUndo);
+  void undoOrRedo(bool isUndo);
   int popRedos();
 
   class Entry;

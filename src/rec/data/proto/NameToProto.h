@@ -29,6 +29,7 @@ class NameToProto {
   }
 
   const Message* getProto(const string& name) {
+    Lock l(lock_);
     NameToProtoMap::iterator i = map_.find(name);
     if (i == map_.end()) {
       LOG(DFATAL) << "Couldn't get proto for " << name;
