@@ -66,15 +66,10 @@ const CommandMapProto CommandMap::getProto() const {
   return commands;
 }
 
-
 bool CommandMap::invoke(const Key& key, ApplicationCommandManager* acm,
                         bool async) const {
-  if (CommandID id = getCommand(key)) {
-    MessageManagerLock l;  // TODO:  is this needed?
-    return acm->invokeDirectly(id, async);
-  } else {
-    return false;
-  }
+  CommandID id = getCommand(key);
+  return id && acm->invokeDirectly(id, async);
 }
 
 command::Command::Type CommandMap::getCommand(const string& key) const {

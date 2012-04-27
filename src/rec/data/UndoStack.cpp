@@ -14,11 +14,11 @@ namespace data {
 class UndoStack::Entry {
  public:
   Entry(Data* d, const Message& b, const Message& a, int64 t = 0)
-      : data_(d), before_(clone(b)), after_(clone(a)), timestamp_(t) {
+      : data_(d), undo_(clone(b)), redo_(clone(a)), timestamp_(t) {
     if (!timestamp_)
       timestamp_ = juce::Time::currentTimeMillis();
-    DCHECK(before_);
-    DCHECK(after_);
+    DCHECK(undo_);
+    DCHECK(redo_);
   }
 
   static const uint64 MAX_GROUP_TIME = 2000;
@@ -31,18 +31,18 @@ class UndoStack::Entry {
         GROUP_BY_TIME && !near(ue->timestamp_, timestamp_, MAX_GROUP_TIME))
       return false;
 
-    after_.swap(ue->after_);
+    redo_.swap(ue->redo_);
     return true;
   }
 
-  void setDataValue(bool isBefore) {
-    Opener<Message>(data_, CANT_UNDO)->CopyFrom(isBefore ? *before_ : *after_);
+  void undoOrRedo(bool isUndo) {
+    Opener<Message>(data_, CANT_UNDO)->CopyFrom(isUndo ? *undo_ : *redo_);
   }
 
   Data* data_;
 
-  ptr<Message> before_;
-  ptr<Message> after_;
+  ptr<Message> undo_;
+  ptr<Message> redo_;
   int64 timestamp_;
 };
 
@@ -52,9 +52,11 @@ UndoStack::~UndoStack() {
 }
 
 void UndoStack::clear() {
-  Lock l(lock_);
-  stl::deletePointers(&stack_);
-  stack_.clear();
+  {
+    Lock l(lock_);
+    stl::deletePointers(&stack_);
+    stack_.clear();
+  }
   broadcast(None());
 }
 
@@ -84,23 +86,26 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
   broadcast(None());
 }
 
-void UndoStack::redoOrUndo(bool isUndo) {
-  int pos = stack_.size() - 1 - (isUndo ? undoes_++ : --undoes_);
-  stack_[pos]->setDataValue(isUndo);
+void UndoStack::undoOrRedo(bool isUndo) {
+  {
+    Lock l(lock_);
+    int pos = stack_.size() - 1 - (isUndo ? undoes_++ : --undoes_);
+    stack_[pos]->undoOrRedo(isUndo);
+  }
 
   broadcast(None());
 }
 
 void UndoStack::undo() {
   if (undoable())
-    redoOrUndo(true);
+    undoOrRedo(true);
   else
     LOG(DFATAL) << "Tried to undo when nothing was undoable";
 }
 
 void UndoStack::redo() {
   if (undoes())
-    redoOrUndo(false);
+    undoOrRedo(false);
   else
     LOG(DFATAL) << "Tried to redo when nothing was redoable";
 }
