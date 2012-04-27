@@ -86,9 +86,11 @@ void DialComponent::operator()(Samples<44100> time) {
 }
 
 void DialComponent::operator()(const waveform::Viewport& vp) {
+  DLOG(ERROR) << "start";
   Lock l(lock_);
   loops_ = vp.loop_points();
   timeAngle_ = zeroAngle_ = 0.0;
+  DLOG(ERROR) << "end";
 }
 
 void DialComponent::paint(Graphics& g) {

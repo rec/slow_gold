@@ -31,7 +31,7 @@ class CurrentTime : public HasInstance,
   }
 
   void setCursorTime(Samples<44100> time, int index, bool isTimeCursor);
-  const block::BlockSet& timeSelection() const { return timeSelection_; }
+  const block::BlockSet timeSelection() const { Lock l(lock()); return timeSelection_; }
   Samples<44100> length() const { Lock l(lock()); return length_; }
   Samples<44100> time() const { Lock l(lock()); return time_; }
   Samples<44100> requestedTime() const { Lock l(lock()); return requestedTime_; }

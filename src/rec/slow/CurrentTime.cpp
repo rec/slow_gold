@@ -62,11 +62,10 @@ void CurrentTime::setTime(Samples<44100> t) {
 }
 
 void CurrentTime::setViewport(const Viewport& viewport) {
-  // DCHECK(viewport.zoom().has_end());  // TODO
-
   Samples<44100> time;
   bool jump = true;
 
+  DLOG(ERROR) << "start";
   {
     Lock l(lock());
     viewport_ = viewport;
@@ -92,8 +91,10 @@ void CurrentTime::setViewport(const Viewport& viewport) {
       time = 0;
     }
   }
+  DLOG(ERROR) << "end";
   if (jump)
     jumpToTime(time);
+  DLOG(ERROR) << "end2";
 }
 
 void CurrentTime::operator()(const GuiSettings& settings) {

@@ -75,12 +75,14 @@ void Loops::operator()(const Viewport& vp) {
 
 
 void Loops::setViewport(const Viewport& viewport) {
+  DLOG(ERROR) << "start";
   {
     Lock l(TableController::lock_);
     viewport_ = viewport;
   }
 
   thread::callAsync(this, &Loops::updateAndRepaint);
+  DLOG(ERROR) << "end";
 }
 
 static String getDisplayText(const Value& v, const TableColumn& col,
@@ -109,32 +111,37 @@ String Loops::displayText(const TableColumn& col, int rowIndex) {
 }
 
 void Loops::selectedRowsChanged(int /*lastRowSelected*/) {
-  Lock l(TableController::lock_);
+  Viewport viewport;
   bool changed = false;
+  {
+    Lock l(TableController::lock_);
 
-  juce::SparseSet<int> selected(getSelectedRows());
+    juce::SparseSet<int> selected(getSelectedRows());
 
-  for (int i = 0; i < getNumRows(); ++i) {
-    LoopPoint* lp = viewport_.mutable_loop_points()->mutable_loop_point(i);
-    bool contains = selected.contains(i);
-    if (lp->selected() != contains) {
-      lp->set_selected(contains);
-      changed = true;
+    for (int i = 0; i < getNumRows(); ++i) {
+      LoopPoint* lp = viewport_.mutable_loop_points()->mutable_loop_point(i);
+      bool contains = selected.contains(i);
+      if (lp->selected() != contains) {
+        lp->set_selected(contains);
+        changed = true;
+      }
     }
+    viewport = viewport_;
   }
   if (changed)
-    setProto(viewport_);
+    setProto(viewport);
 }
 
 void Loops::update() {
   TableController::update();
 
-  Lock l(TableController::lock_);
-
   juce::SparseSet<int> sel;
-  for (int i = 0; i < getNumRows(); ++i) {
-    if (viewport_.loop_points().loop_point(i).selected())
-      sel.addRange(juce::Range<int>(i, i + 1));
+  {
+    Lock l(TableController::lock_);
+    for (int i = 0; i < getNumRows(); ++i) {
+      if (viewport_.loop_points().loop_point(i).selected())
+        sel.addRange(juce::Range<int>(i, i + 1));
+    }
   }
 
   if (sel != getSelectedRows())
@@ -167,7 +174,6 @@ class LoopsSetterLabel : public SetterLabel {
   }
 
  private:
-  CriticalSection lock_;
   int row_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LoopsSetterLabel);
