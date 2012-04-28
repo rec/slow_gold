@@ -343,6 +343,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet_test.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\BroadcastThread.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
@@ -1767,6 +1768,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\BroadcastThread.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\CDReader.h"/>
@@ -1786,6 +1788,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\FormatString.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\HasLock.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Listener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\ListenerAdaptor.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\LockedState.h"/>

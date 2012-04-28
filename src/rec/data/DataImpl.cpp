@@ -67,7 +67,7 @@ void DataImpl::removeListener(Listener<const Message&>* lis) {
     Data::removeListener(lis);
     recentListeners_.erase(lis);
   }
-  if (!listenerSize())
+  /// if (!listenerSize())  // TODO: remove
     dataUpdater_->reportChange(this);
 }
 

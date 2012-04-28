@@ -1117,6 +1117,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet_test.cpp">
       <Filter>tests\rec\util\block</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\BroadcastThread.cpp">
+      <Filter>tests\rec\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp">
       <Filter>tests\rec\util\cd</Filter>
     </ClCompile>
@@ -3432,6 +3435,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h">
       <Filter>tests\rec\util\block</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\BroadcastThread.h">
+      <Filter>tests\rec\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h">
       <Filter>tests\rec\util\cd</Filter>
     </ClInclude>
@@ -3487,6 +3493,9 @@
       <Filter>tests\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h">
+      <Filter>tests\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\HasLock.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Listener.h">

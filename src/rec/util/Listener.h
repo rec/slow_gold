@@ -4,7 +4,8 @@
 #include <map>
 #include <set>
 
-#include "rec/base/base.h"
+#include "rec/util/HasLock.h"
+#include "rec/util/BroadcastThread.h"
 
 namespace rec {
 namespace util {
@@ -12,7 +13,7 @@ namespace util {
 template <typename Type> class Broadcaster;
 
 template <typename Type>
-class Listener {
+class Listener : public HasLock {
  public:
   typedef std::set<Broadcaster<Type>*> BroadcasterSet;
   typedef typename BroadcasterSet::iterator iterator;
@@ -21,8 +22,6 @@ class Listener {
   virtual ~Listener();
 
   virtual void operator()(Type x) = 0;
-
-  int broadcasterSize() const { Lock l(lock_); return broadcasters_.size(); }
 
  private:
   CriticalSection lock_;
@@ -56,7 +55,7 @@ class Broadcaster {
   virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);
 
-  int listenerSize() const { Lock l(lock_); return listeners_.size(); }
+  // int listenerSize() const { Lock l(lock_); return listeners_.size(); }
 
  private:
   CriticalSection lock_;

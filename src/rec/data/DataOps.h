@@ -111,11 +111,6 @@ bool applyToData(Functor functor, Data* data) {
   return functor(Opener<Proto>(data).mutable_get());
 }
 
-inline void updateClients(Data* data) {
-  data->broadcast(*Opener<Message>(data));
-}
-
-
 }  // namespace data
 }  // namespace rec
 

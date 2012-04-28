@@ -39,6 +39,8 @@ Threads::~Threads() {
 void Threads::stop() {
   for (uint i = 0; i < threads_.size(); ++i)
     threads_[i]->stopThread(THREAD_STOP_PERIOD);
+
+  BroadcastThread::instance()->stopThread(THREAD_STOP_PERIOD);
 }
 
 void Threads::clean() {
@@ -73,6 +75,7 @@ struct Priority {
     WRITE_DATA = 4,
     UPDATE_DATA = 4,
     TIMER = 4,
+    BROADCAST = 4,
   };
 };
 
@@ -115,6 +118,7 @@ void Threads::start() {
   start(&writeData, "writeData", Priority::WRITE_DATA);
   start(&updateData, "updateData", Priority::UPDATE_DATA);
   player()->timer()->setThread(start(&timer, "timer", Priority::TIMER));
+  BroadcastThread::instance()->startThread(Priority::BROADCAST);
 }
 
 }  // namespace slow

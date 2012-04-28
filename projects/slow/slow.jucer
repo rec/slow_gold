@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="VI4TzjWrt" name="SlowGold">
+  <MAINGROUP id="RzKm5fLNE" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1051,6 +1051,10 @@
           <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="P90hwWX6W"
                 name="MergeBlockSet.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/util/BroadcastThread.cpp" id="kvooVur4t"
+              name="BroadcastThread.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/BroadcastThread.h" id="0eRkhhJFn"
+              name="BroadcastThread.h" resource="0"/>
         <GROUP id="87uOq32WV" name="cd">
           <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="4tz0vxRRf"
                 name="Album.cpp" resource="0"/>
@@ -1127,6 +1131,8 @@
               name="FormatTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="PBRyregJE"
               name="FormatTime.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/HasLock.h" id="sITGH6KUD"
+              name="HasLock.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Listener.h" id="Daa1p48hu"
               name="Listener.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/ListenerAdaptor.h" id="Z6lAR895V"
@@ -1485,7 +1491,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="gTEuL2295" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="cqUfWTiFy" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
