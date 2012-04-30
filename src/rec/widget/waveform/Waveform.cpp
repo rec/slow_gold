@@ -121,7 +121,6 @@ void Waveform::operator()(const WaveformProto& desc) {
 }
 
 void Waveform::setViewport(const Viewport& viewport) {
-  DLOG(ERROR) << "start";
   const LoopPointList& loopPoints = viewport.loop_points();
   bool result;
   BlockSet dirty;
@@ -138,8 +137,6 @@ void Waveform::setViewport(const Viewport& viewport) {
     adjustCursors(loopPoints, dirty);
   else if (!dirty.empty())
     repaintBlocks(dirty);
-
-  DLOG(ERROR) << "end";
 }
 
 void Waveform::adjustCursors(const LoopPointList& loopPoints,

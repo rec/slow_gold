@@ -343,7 +343,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet_test.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\BroadcastThread.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
@@ -375,6 +374,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Proto.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Range_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\thread\CallbackQueue.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\unused\Circular_test.cpp"/>
@@ -1768,7 +1768,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\BroadcastThread.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\CDReader.h"/>
@@ -1809,6 +1808,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback2.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback3.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback4.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\CallbackQueue.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\FunctionCallback.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\LockedFlag.h"/>

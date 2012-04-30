@@ -25,36 +25,10 @@ using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 using namespace rec::util::thread;
 
-static const int THREAD_STOP_PERIOD = 20000;
-static const int BUFFER_FILL_CHUNK = 256;
-
-Threads::Threads(Instance* i) : HasInstance(i) {
-}
-
-Threads::~Threads() {
-  stop();
-  stl::deletePointers(&threads_);
-}
-
-void Threads::stop() {
-  for (uint i = 0; i < threads_.size(); ++i)
-    threads_[i]->stopThread(THREAD_STOP_PERIOD);
-
-  BroadcastThread::instance()->stopThread(THREAD_STOP_PERIOD);
-}
-
-void Threads::clean() {
-  Lock l(lock_);
-  for (uint i = 0; i < threads_.size(); ++i) {
-    if (!threads_[i]->isThreadRunning()) {
-      delete threads_[i];
-      threads_[i] = threads_.back();
-      threads_.pop_back();
-    }
-  }
-}
-
 namespace {
+
+const int THREAD_STOP_PERIOD = 20000;
+const int BUFFER_FILL_CHUNK = 256;
 
 struct Period {
   enum Enum {
@@ -62,8 +36,9 @@ struct Period {
     NAVIGATOR = 1001,
     WRITE_GUI = 201,
     WRITE_DATA = 1003,
-    UPDATE_DATA = 101,
-    TIMER = 203,
+    UPDATE_DATA = 51,
+    TIMER = 101,
+    BROADCAST = 49,
   };
 };
 
@@ -111,6 +86,53 @@ int timer(Instance* i) {
 
 }  // namespace
 
+struct Threads::ThreadList {
+  ~ThreadList() {
+    stop();
+    stl::deletePointers(&threads_);
+  }
+
+  void stop() {
+    for (uint i = 0; i < threads_.size(); ++i)
+      threads_[i]->stopThread(THREAD_STOP_PERIOD);
+  }
+
+  void clean() {
+    for (uint i = 0; i < threads_.size(); ++i) {
+      if (!threads_[i]->isThreadRunning()) {
+        delete threads_[i];
+        threads_[i] = threads_.back();
+        threads_.pop_back();
+      }
+    }
+  }
+
+  vector<Thread*> threads_;
+};
+
+Threads::Threads(Instance* i) : HasInstance(i), threadList_(new ThreadList) {}
+Threads::~Threads() {}
+
+template <typename Operator>
+Thread* Threads::start(Operator op, const String& name, int priority) {
+  Thread* thread = thread::makeLooper(name, op, instance_);
+  if (priority)
+    thread->setPriority(priority);
+  thread->startThread();
+  threadList_->threads_.push_back(thread);
+  return thread;
+}
+
+void Threads::stop() {
+  Lock l(lock_);
+  threadList_->stop();
+}
+
+void Threads::clean() {
+  Lock l(lock_);
+  threadList_->clean();
+}
+
 void Threads::start() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
   start(&directory, "Directory", Priority::DIRECTORY);
@@ -118,7 +140,7 @@ void Threads::start() {
   start(&writeData, "writeData", Priority::WRITE_DATA);
   start(&updateData, "updateData", Priority::UPDATE_DATA);
   player()->timer()->setThread(start(&timer, "timer", Priority::TIMER));
-  BroadcastThread::instance()->startThread(Priority::BROADCAST);
+  //  callbackThread_ = startThread(
 }
 
 }  // namespace slow

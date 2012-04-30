@@ -5,7 +5,6 @@
 #include <set>
 
 #include "rec/util/HasLock.h"
-#include "rec/util/BroadcastThread.h"
 
 namespace rec {
 namespace util {

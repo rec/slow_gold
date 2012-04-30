@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="RzKm5fLNE" name="SlowGold">
+  <MAINGROUP id="LP0OnlOw4" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1051,10 +1051,6 @@
           <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="P90hwWX6W"
                 name="MergeBlockSet.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/util/BroadcastThread.cpp" id="kvooVur4t"
-              name="BroadcastThread.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/BroadcastThread.h" id="0eRkhhJFn"
-              name="BroadcastThread.h" resource="0"/>
         <GROUP id="87uOq32WV" name="cd">
           <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="4tz0vxRRf"
                 name="Album.cpp" resource="0"/>
@@ -1186,6 +1182,10 @@
                 name="Callback3.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Callback4.h" id="NlJWY0YtZ"
                 name="Callback4.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/thread/CallbackQueue.cpp"
+                id="F6MkZcDbd" name="CallbackQueue.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/CallbackQueue.h"
+                id="Spyv1aodG" name="CallbackQueue.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FileWriter.h" id="2UYvALWFC"
                 name="FileWriter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FunctionCallback.h"
@@ -1491,7 +1491,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="cqUfWTiFy" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Wes4nhU1k" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

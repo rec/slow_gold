@@ -1117,9 +1117,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet_test.cpp">
       <Filter>tests\rec\util\block</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\BroadcastThread.cpp">
-      <Filter>tests\rec\util</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp">
       <Filter>tests\rec\util\cd</Filter>
     </ClCompile>
@@ -1212,6 +1209,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp">
       <Filter>tests\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\thread\CallbackQueue.cpp">
+      <Filter>tests\rec\util\thread</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
       <Filter>tests\rec\util\thread</Filter>
@@ -3435,9 +3435,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h">
       <Filter>tests\rec\util\block</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\BroadcastThread.h">
-      <Filter>tests\rec\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h">
       <Filter>tests\rec\util\cd</Filter>
     </ClInclude>
@@ -3556,6 +3553,9 @@
       <Filter>tests\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback4.h">
+      <Filter>tests\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\CallbackQueue.h">
       <Filter>tests\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\FileWriter.h">

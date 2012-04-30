@@ -1075,9 +1075,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp">
       <Filter>SlowGold\rec\util\block</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\BroadcastThread.cpp">
-      <Filter>SlowGold\rec\util</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp">
       <Filter>SlowGold\rec\util\cd</Filter>
     </ClCompile>
@@ -1143,6 +1140,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp">
       <Filter>SlowGold\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\thread\CallbackQueue.cpp">
+      <Filter>SlowGold\rec\util\thread</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
       <Filter>SlowGold\rec\util\thread</Filter>
@@ -3351,9 +3351,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h">
       <Filter>SlowGold\rec\util\block</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\BroadcastThread.h">
-      <Filter>SlowGold\rec\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h">
       <Filter>SlowGold\rec\util\cd</Filter>
     </ClInclude>
@@ -3472,6 +3469,9 @@
       <Filter>SlowGold\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback4.h">
+      <Filter>SlowGold\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\CallbackQueue.h">
       <Filter>SlowGold\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\FileWriter.h">
