@@ -12,6 +12,7 @@
 #include "rec/slow/Threads.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
+#include "rec/util/thread/CallbackQueue.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/Directory.h"
 #include "rec/widget/tree/Root.h"
@@ -38,7 +39,7 @@ struct Period {
     WRITE_DATA = 1003,
     UPDATE_DATA = 51,
     TIMER = 101,
-    BROADCAST = 49,
+    CALLBACK_QUEUE = 49,
   };
 };
 
@@ -50,7 +51,7 @@ struct Priority {
     WRITE_DATA = 4,
     UPDATE_DATA = 4,
     TIMER = 4,
-    BROADCAST = 4,
+    CALLBACK_QUEUE = 4,
   };
 };
 
@@ -84,6 +85,11 @@ int timer(Instance* i) {
   return Period::TIMER;
 }
 
+int callbackThread(Instance* i) {
+  return i->threads_->runQueue();
+}
+
+
 }  // namespace
 
 struct Threads::ThreadList {
@@ -108,10 +114,24 @@ struct Threads::ThreadList {
   }
 
   vector<Thread*> threads_;
+  thread::CallbackQueue callbackQueue_;
+  Thread* callbackThread_;
 };
 
-Threads::Threads(Instance* i) : HasInstance(i), threadList_(new ThreadList) {}
+Threads::Threads(Instance* i)
+    : HasInstance(i), threads_(new ThreadList) {
+}
+
 Threads::~Threads() {}
+
+void Threads::queueCallback(void* owner, Callback* c) {
+  threads_->callbackQueue_.queueCallback(owner, c);
+  threads_->callbackThread_->notify();
+}
+
+void Threads::removeCallbacksFor(void* owner) {
+  threads_->callbackQueue_.removeCallbacksFor(owner);
+}
 
 template <typename Operator>
 Thread* Threads::start(Operator op, const String& name, int priority) {
@@ -119,19 +139,27 @@ Thread* Threads::start(Operator op, const String& name, int priority) {
   if (priority)
     thread->setPriority(priority);
   thread->startThread();
-  threadList_->threads_.push_back(thread);
+  threads_->threads_.push_back(thread);
   return thread;
 }
 
 void Threads::stop() {
   Lock l(lock_);
-  threadList_->stop();
+  threads_->stop();
 }
 
 void Threads::clean() {
   Lock l(lock_);
-  threadList_->clean();
+  threads_->clean();
 }
+
+int Threads::runQueue() {
+  if (!empty())
+    threads_->callbackQueue_.runOneCallback();
+  return empty() ? static_cast<int>(thread::YIELD) : Period::CALLBACK_QUEUE;
+}
+
+typedef int (Threads::*ThreadsMethod)();
 
 void Threads::start() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
@@ -139,8 +167,11 @@ void Threads::start() {
   start(&writeGui, "writeGUI", Priority::WRITE_GUI);
   start(&writeData, "writeData", Priority::WRITE_DATA);
   start(&updateData, "updateData", Priority::UPDATE_DATA);
+
   player()->timer()->setThread(start(&timer, "timer", Priority::TIMER));
-  //  callbackThread_ = startThread(
+
+  threads_->callbackThread_ =
+    start(&callbackThread, "Callback", Priority::CALLBACK_QUEUE);
 }
 
 }  // namespace slow

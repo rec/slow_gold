@@ -6,11 +6,12 @@
 #include "rec/util/thread/Looper.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/CallbackQueue.h"
+#include "rec/util/HasLock.h"
 
 namespace rec {
 namespace slow {
 
-class Threads : public HasInstance, public thread::CallbackQueue {
+class Threads : public HasInstance, public HasLock {
  public:
   static const int LOOP_TIME = 100;
 
@@ -19,9 +20,9 @@ class Threads : public HasInstance, public thread::CallbackQueue {
 
   void start();
   void clean();
-
-  void addCallbackToQueue(void* owner, Callback* c);
-  void removeCallbacksFromQueue(void* owner);
+  void queueCallback(void* owner, Callback* c);
+  void removeCallbacksFor(void* owner);
+  int runQueue();
 
  private:
   void stop();
@@ -30,7 +31,7 @@ class Threads : public HasInstance, public thread::CallbackQueue {
   Thread* start(Operator op, const String& name, int priority = 0);
 
   struct ThreadList;
-  ptr<ThreadList> threadList_;
+  ptr<ThreadList> threads_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Threads);
 };

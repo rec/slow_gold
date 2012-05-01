@@ -11,13 +11,11 @@ namespace thread {
 class CallbackQueue : public HasLock {
  public:
   CallbackQueue();
-  ~CallbackQueue();
+  virtual ~CallbackQueue();
 
-  void addCallback(void* owner, Callback* c);
+  void queueCallback(void* owner, Callback* c);
   void removeCallbacksFor(void* owner);
   bool empty() const;
-
- protected:
   void runOneCallback();
 
  private:

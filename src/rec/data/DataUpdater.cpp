@@ -19,31 +19,28 @@ void DataUpdater::reportChange(Data* data) {
 }
 
 bool DataUpdater::update() {
-  DataSet toWrite;
+  DataSet toUpdate;
   {
-    DataSet toUpdate;
-    Lock l(lock_);
-    {
-      Lock l2(updateLock_);
-      if (!updateThread_)
-        updateThread_ = Thread::getCurrentThread();
+    Lock l(updateLock_);
+    if (!updateThread_)
+      updateThread_ = Thread::getCurrentThread();
 
-      updateData_.swap(toUpdate);
-    }
-
-    if (toUpdate.empty())
-      return false;
-
-    int j = 0;
-    for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i, ++j) {
-      Data* data = *i;
-      if (data->update())
-        toWrite.insert(data);
-    }
-
-    if (toWrite.empty())
-        return false;
+    updateData_.swap(toUpdate);
   }
+
+  if (toUpdate.empty())
+    return false;
+
+  DataSet toWrite;
+  int j = 0;
+  for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i, ++j) {
+    Data* data = *i;
+    if (data->update())
+      toWrite.insert(data);
+  }
+
+  if (toWrite.empty())
+    return false;
 
   Lock l(writeLock_);
   writeData_.insert(toWrite.begin(), toWrite.end());
@@ -61,7 +58,7 @@ bool DataUpdater::hasUpdates() const {
 bool DataUpdater::write() {
   DataSet toWrite;
   {
-    Lock l2(writeLock_);
+    Lock l(writeLock_);
     if (!writeThread_)
       writeThread_ = Thread::getCurrentThread();
 

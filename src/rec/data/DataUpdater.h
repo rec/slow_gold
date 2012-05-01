@@ -24,10 +24,8 @@ class DataUpdater {
   void setMap(DataMap* m) { map_ = m; }
 
   bool hasUpdates() const;
-  const CriticalSection& lock() const { return lock_; }
 
  private:
-  CriticalSection lock_;
   CriticalSection updateLock_;
   CriticalSection writeLock_;
 

@@ -27,8 +27,9 @@ class WaveformModel {
   bool setViewport(const Viewport&);
   bool isEmpty() const { return !length(); }
   const block::BlockSet& selection() const { return selection_; }
-  const block::BlockSet& dirty() const { return dirty_; }
+  const block::BlockSet getAndClearDirty();
   Samples<44100> length() const { return viewport_.loop_points().length(); }
+  const Viewport& viewport() const { return viewport_; }
 
   void setDescription(const WaveformProto& d) { desc_ = d; }
   const WaveformProto& description() const { return desc_; }

@@ -16,7 +16,6 @@ class TickedDataSetter : public CommandDataSetter {
                    Listener<None>* changeListener,
                    const Command& command,
                    const data::Address& a);
-
   virtual ~TickedDataSetter() {}
 
   virtual void operator()(const data::Value&);

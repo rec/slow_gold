@@ -50,9 +50,7 @@ class Waveform : public Component,
   virtual void paint(Graphics&);
   virtual void operator()(const Mode&);
   virtual void operator()(const WaveformProto&);
-  virtual void operator()(const Viewport& vp) { setViewport(vp); }
-
-  void setViewport(const Viewport&);
+  virtual void operator()(const Viewport& vp);
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 
@@ -76,6 +74,7 @@ class Waveform : public Component,
 
  private:
   void layout();
+  void viewportChanged();
 
   void doClick(const juce::MouseEvent& e, int clickCount);
   void cursorDragged(int index, int x);

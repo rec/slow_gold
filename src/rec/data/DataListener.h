@@ -35,7 +35,6 @@ class DataListener : public Listener<const Proto&> {
     Adaptor(DataListener<Proto>* p) : UntypedDataListener(getTypeName<Proto>()),
                                       parent_(p) {
     }
-    virtual ~Adaptor() {}
 
     virtual void operator()(const Message& m) {
       Lock l(this->lock_);
@@ -44,10 +43,12 @@ class DataListener : public Listener<const Proto&> {
       else
         LOG(DFATAL) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
     }
+    virtual ~Adaptor() {}
 
    private:
     DataListener<Proto>* const parent_;
   };
+
 
   ptr<Adaptor> adaptor_;
 

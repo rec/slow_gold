@@ -4,6 +4,7 @@
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/util/block/Difference.h"
+#include "rec/util/block/MergeBlockSet.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Zoom.h"
 
@@ -68,17 +69,23 @@ Samples<44100> WaveformModel::zoomEnd() const {
   return zoom.has_end() ? Samples<44100>(zoom.end()) : Samples<44100>(length());
 }
 
+const block::BlockSet WaveformModel::getAndClearDirty() {
+  BlockSet result;
+  result.swap(dirty_);
+  return result;
+}
+
 bool WaveformModel::setViewport(const Viewport& vp) {
-  bool changed = !data::equals(vp.zoom(), viewport_.zoom());
+  Zoom z = viewport_.zoom();
   viewport_ = vp;
   BlockSet newSelection = rec::audio::getTimeSelection(vp.loop_points());
-  dirty_ = symmetricDifference(selection_, newSelection);
+  dirty_ = merge(dirty_, symmetricDifference(selection_, newSelection));
 
   selection_ = newSelection;
   int64 len = length();
   if (len)
     constrainZoom(viewport_.mutable_zoom(), len);
-  return changed;
+  return !data::equals(viewport_.zoom(), z);
 }
 
 void WaveformModel::layout(Component* waveform) {

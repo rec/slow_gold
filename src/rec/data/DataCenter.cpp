@@ -20,10 +20,6 @@ DataCenter::DataCenter()
 
 DataCenter::~DataCenter() {}
 
-const CriticalSection& DataCenter::lock() const {
-  return updater_->lock();
-}
-
 bool DataCenter::hasUpdates() const {
   return updater_->hasUpdates();
 }

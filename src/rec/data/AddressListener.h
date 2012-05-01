@@ -10,13 +10,13 @@ namespace rec {
 namespace data {
 
 class Address;
-class UntypedDataListener;
 
 class AddressListener : public Listener<const Value&> {
  public:
   AddressListener(const Address& a, const string& typeName,
                   Scope scope = FILE_SCOPE);
   virtual ~AddressListener();
+
   virtual void init() { init(scope_); }
 
   void init(Scope s);
@@ -33,7 +33,6 @@ class AddressListener : public Listener<const Value&> {
 
  private:
   struct UntypedListener;
-  friend struct UntypedListener;
 
   void receiveMessage(const Message&);
 
@@ -50,6 +49,7 @@ class GlobalAddressListener : public AddressListener {
   GlobalAddressListener(const Address& a, const string& tn)
       : AddressListener(a, tn, GLOBAL_SCOPE) {
   }
+  virtual ~GlobalAddressListener() {}
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GlobalAddressListener);

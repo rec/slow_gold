@@ -19,16 +19,16 @@ class DataImpl : public Data {
   const string toString() const;
   virtual const File getFile() const { Lock l(lock_); return file_; }
 
-  virtual void pushOnUndoStack(const Message& before);
-  virtual void reportChange();
-  virtual bool update();
-  virtual bool writeToFile();
-
+ private:
   virtual void addListener(Listener<const Message&>*);
   virtual void removeListener(Listener<const Message&>*);
   virtual const string& key() const { return key_; }
 
- private:
+  virtual bool update();
+  virtual void pushOnUndoStack(const Message& before);
+  virtual void reportChange();
+  virtual bool writeToFile();
+
   typedef std::set<Listener<const Message&>*> ListenerSet;
 
   ListenerSet recentListeners_;

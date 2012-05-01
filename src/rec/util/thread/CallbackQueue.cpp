@@ -35,7 +35,7 @@ CallbackQueue::CallbackQueue() : queue_(new Queue) {}
 CallbackQueue::~CallbackQueue() { DCHECK(empty()) << queue_->list_.size(); }
 bool CallbackQueue::empty() const { return queue_->list_.empty(); }
 
-void CallbackQueue::addCallback(void* owner, Callback* c) {
+void CallbackQueue::queueCallback(void* owner, Callback* c) {
   Lock l(lock_);
   queue_->list_.push_front(new OwnedCallback(owner, c));
 }

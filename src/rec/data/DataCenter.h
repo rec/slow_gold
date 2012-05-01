@@ -26,8 +26,6 @@ struct DataCenter {
   bool hasUpdates() const;
 
   void waitTillClear() const;
-
-  const CriticalSection& lock() const;
 };
 
 const DataCenter& getDataCenter();

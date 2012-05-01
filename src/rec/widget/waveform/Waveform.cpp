@@ -120,17 +120,23 @@ void Waveform::operator()(const WaveformProto& desc) {
   thread::callAsync(this, &Waveform::layout);
 }
 
-void Waveform::setViewport(const Viewport& viewport) {
-  const LoopPointList& loopPoints = viewport.loop_points();
-  bool result;
-  BlockSet dirty;
+void Waveform::operator()(const Viewport& vp) {
   {
     Lock l(lock_);
-    result = model_->setViewport(viewport);
-    dirty = model_->dirty();
+    model_->setViewport(vp);
+  }
+  thread::callAsync(this, &Waveform::viewportChanged);
+}
+
+void Waveform::viewportChanged() {
+  BlockSet dirty;
+  LoopPointList loopPoints;
+  {
+    Lock l(lock_);
+    dirty = model_->getAndClearDirty();
+    loopPoints = model_->viewport().loop_points();
   }
 
-  MessageManagerLock l;
   layout();
 
   if (!model_->isDraggingCursor())
@@ -141,7 +147,6 @@ void Waveform::setViewport(const Viewport& viewport) {
 
 void Waveform::adjustCursors(const LoopPointList& loopPoints,
                              const block::BlockSet& dirty) {
-  MessageManagerLock l;
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
     Samples<44100> time = loopPoints.loop_point(i).time();

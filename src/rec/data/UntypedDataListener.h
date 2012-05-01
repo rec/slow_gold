@@ -9,6 +9,10 @@
 namespace rec {
 namespace data {
 
+class AddressListener;
+class GlobalAddressListener;
+class UntypedGlobalDataListener;
+
 class UntypedDataListener : public Listener<const Message&> {
  public:
   explicit UntypedDataListener(const string& typeName);
@@ -30,6 +34,10 @@ class UntypedDataListener : public Listener<const Message&> {
 
   struct FileListener;
   friend struct FileListener;
+
+  friend class AddressListener;
+  friend class GlobalAddressListener;
+  friend class UntypedGlobalDataListener;
 
   const string typeName_;
   Data* data_;

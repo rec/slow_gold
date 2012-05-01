@@ -73,7 +73,7 @@ void CurrentFile::setFile(const VirtualFile& f) {
   currentTime()->setTime(0);
   currentTime()->jumpToTime(0);
   currentTime()->setViewport(viewport_);
-  components()->waveform_->setViewport(viewport_);
+  (*components()->waveform_)(viewport_);
 
   components()->setEnabled(!empty());
   components()->directoryTree_->refreshNode(oldFile);
