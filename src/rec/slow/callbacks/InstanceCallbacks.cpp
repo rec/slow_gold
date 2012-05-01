@@ -70,7 +70,6 @@ void nudgeVolumeUp(Instance* i) {
 }
 
 void clearLoops(Instance *i) {
-  DLOG(ERROR) << "Starting to clear";
   const VirtualFile& f = i->file();
   Viewport viewport;
   LoopPointList* loops = viewport.mutable_loop_points();
@@ -78,9 +77,8 @@ void clearLoops(Instance *i) {
   loop->set_selected(true);
   loop->set_time(0);
   loops->set_length(data::getProto<Viewport>(f).loop_points().length());
-  DLOG(ERROR) << "Starting to set data";
+
   data::setProto(viewport, f);
-  DLOG(ERROR) << "Data set";
 }
 
 void clearNavigator(Instance *) { data::setProto(VirtualFileList(), data::global()); }

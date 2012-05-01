@@ -75,14 +75,12 @@ void Loops::operator()(const Viewport& vp) {
 
 
 void Loops::setViewport(const Viewport& viewport) {
-  DLOG(ERROR) << "start";
   {
     Lock l(TableController::lock_);
     viewport_ = viewport;
   }
 
   thread::callAsync(this, &Loops::updateAndRepaint);
-  DLOG(ERROR) << "end";
 }
 
 static String getDisplayText(const Value& v, const TableColumn& col,

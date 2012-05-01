@@ -82,9 +82,7 @@ void Player::operator()(const StereoProto& s) {
 }
 
 void Player::operator()(const Viewport& viewport) {
-  DLOG(ERROR) << "start";
   selection_->setSelection(getTimeSelection(viewport.loop_points()));
-  DLOG(ERROR) << "end";
 }
 
 Samples<44100> Player::getSelectionLength() const {
