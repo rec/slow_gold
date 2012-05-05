@@ -20,21 +20,22 @@ class Loops : public TableController,
                  + data::Address("loop_point"));
   virtual ~Loops();
 
-  virtual Component* refreshComponentForCell(int rowNumber, int columnId,
-                                             bool isRowSelected,
-                                             Component* componentToUpdate);
-
   virtual void operator()(const widget::waveform::Viewport&);
   virtual int getNumRows();
   virtual Cuttable* cuttable() { return cuttable_.get(); }
   virtual void selectedRowsChanged(int lastRowSelected);
 
   void editViewport(const widget::waveform::Viewport&);
-  void setFieldValue(int row, int column, const String& text);
+  virtual void setFieldValue(int column, int row, const String& text);
+  virtual String displayText(int column, int row) const;
+  virtual String getCellTooltip(int column, int row) const;
 
  protected:
   virtual void update();
-  virtual String displayText(int col, int row) const;
+
+  data::Address getAddress(int col, int row) const {
+    return partAddress_ + data::Address(row) + columns_.column(col).address();
+  }
 
  private:
   void setViewport(const widget::waveform::Viewport&);

@@ -2,6 +2,7 @@
 #include "rec/data/Value.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/Copy.h"
+#include "rec/gui/SimpleLabel.h"
 
 namespace rec {
 namespace gui {
@@ -11,9 +12,6 @@ static const int CELL_MARGIN_HORIZONTAL = 2;
 
 static const juce::Colour SELECTED_COLOR(0xffefef80);
 static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
-
-using data::Address;
-using data::Value;
 
 TableController::TableController() : TableListBox("TableController") {}
 
@@ -27,13 +25,15 @@ void TableController::fillHeader(TableHeaderComponent* headers) {
   Lock l(lock_);
   for (int i = 0; i < columns_.column_size(); ++i)  {
     const TableColumn& col = columns_.column(i);
-    headers->addColumn(str(col.name()), i + 1, col.width(), col.minimum_width(),
-                       col.maximum_width(), col.property_flags());
+    int columnId = i + 1;  // Juce doesn't allow column IDs of 0, so add 1.
+    headers->addColumn(str(col.name()), columnId,
+                       col.width(), col.minimum_width(), col.maximum_width(),
+                       col.property_flags());
   }
 }
 
 void TableController::paintRowBackground(Graphics& g,
-                                        int /*rowNumber*/,
+                                        int /*row*/,
                                         int width, int height,
                                         bool rowIsSelected) {
   Lock l(lock_);
@@ -42,17 +42,18 @@ void TableController::paintRowBackground(Graphics& g,
 }
 
 void TableController::paintCell(Graphics& g,
-                               int rowNumber,
+                               int row,
                                int columnId,
                                int width, int height,
                                bool /*rowIsSelected*/) {
-  Lock l(lock_);
   g.setColour(juce::Colours::black);
-  if (columnId > columns_.column_size() || columnId <= 0) {
-    LOG(DFATAL) << "columnId " << columnId << " size " << columns_.column_size();
-  }
+  int column = columnId - 1;
 
-  String t = displayText(columnId - 1, rowNumber);
+  Lock l(lock_);
+  if (column >= columns_.column_size() || column < 0)
+    LOG(DFATAL) << "column " << column << ", size " << columns_.column_size();
+
+  String t = displayText(column, row);
   g.drawText(t, CELL_MARGIN_HORIZONTAL, CELL_MARGIN_VERTICAL,
              width - 2 * CELL_MARGIN_HORIZONTAL,
              height - 2 * CELL_MARGIN_VERTICAL, Justification::centred, true);
@@ -76,7 +77,48 @@ void TableController::resized() {
 
 
   juce::TableListBox::resized();
-  TableController::update();
+  update();
+}
+
+class TableLabel : public SimpleLabel {
+ public:
+  explicit TableLabel(TableController* table, int col, int row)
+      : SimpleLabel(""), table_(table), col_(col), row_(row) {
+    setEditable(true, false, false);
+    setJustificationType(Justification::centredLeft);
+  }
+
+  void setEditorBackground(const juce::Colour& c) {
+    setColour(juce::Label::backgroundColourId, c);
+  }
+
+  virtual void textEditorTextChanged(TextEditor&) {
+    table_->setFieldValue(col_, row_, getText(true));
+  }
+
+ private:
+  TableController* const table_;
+  const int col_;
+  const int row_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TableLabel);
+};
+
+Component* TableController::refreshComponentForCell(int row, int columnId,
+                                                    bool isRowSelected,
+                                                    Component* existing) {
+  int column = columnId - 1;  // To account for the 1 we added above.
+  TableLabel* text = dynamic_cast<TableLabel*>(existing);
+  if (!text) {
+    DCHECK(!existing);
+    text = new TableLabel(this, row, column);
+  }
+
+  text->setText(displayText(row, column), false);
+  text->setTooltip(getCellTooltip(row, column));
+  text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
+
+  return text;
 }
 
 }  // namespace gui

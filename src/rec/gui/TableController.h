@@ -15,22 +15,34 @@ class TableController : public TableListBoxModel, public TableListBox {
   void initialize(const TableColumnList& columns, const char* name);
 
   virtual void fillHeader(TableHeaderComponent* headers);
-  virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
-  virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
+  virtual void paintRowBackground(Graphics& g,
+                                  int row,
+                                  int width, int height,
+                                  bool isRowSelected);
+  virtual void paintCell(Graphics& g,
+                         int row, int column,
+                         int width, int height,
+                         bool isRowSelected);
 
   void updateAndRepaint() { update(); repaint(); }
   const TableColumnList& columns() { return columns_; }
   virtual void resized();
 
+  virtual Component* refreshComponentForCell(int row, int columnId,
+                                             bool isRowSelected,
+                                             Component* componentToUpdate);
+
+  virtual void setFieldValue(int row, int column, const String& text) = 0;
+  virtual String displayText(int col, int row) const = 0;
+
+  virtual String getCellTooltip(int row, int column) const = 0;
+
  protected:
   virtual void update() { updateContent(); }
-  virtual String displayText(int col, int row) const = 0;
 
   ptr<Message> message_;
   TableColumnList columns_;
   CriticalSection lock_;
-
-  data::Address address_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TableController);

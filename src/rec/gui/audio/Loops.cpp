@@ -82,52 +82,52 @@ void Loops::setViewport(const Viewport& viewport) {
   thread::callAsync(this, &Loops::updateAndRepaint);
 }
 
-static String getDisplayText(const Value& v, const TableColumn& col,
-                             Samples<44100> length, int sampleRate) {
-  switch (col.type()) {
+String Loops::displayText(int column, int row) const {
+  Address rowAddress = getAddress(column, row);
+  data::Value v;
+  string error = getMessageField(rowAddress, getProto(), &v);
+  if (!error.empty()) {
+    LOG(ERROR) << error << ",\n" << rowAddress.DebugString();
+    return Trans("(error)"); // TODO
+  }
+
+  Samples<44100> length = Samples<44100>(viewport_.loop_points().length());
+  switch (columns_.column(column).type()) {
    case TableColumn::STRING:  return str(v.string_f());
    case TableColumn::UINT32:  return String(v.uint32_f());
    case TableColumn::TIME:    return formatTime(Samples<44100>(v.int64_f()), length,
-                                                sampleRate, false, true, 0);
+                                                44100, false, true, 0);
    case TableColumn::DOUBLE:  return String(v.double_f());
    default:                   return "<unknown>";
   }
 }
 
-String Loops::displayText(int colIndex, int rowIndex) const {
-  const TableColumn& col = columns_.column(colIndex);
-  Address row = partAddress_ + Address(rowIndex) + col.address();
+void Loops::setFieldValue(int column, int row, const String& text) {
+  Lock l(TableController::lock_);
+  Address rowAddress = getAddress(column, row);
   data::Value value;
-  string error = getMessageField(row, getProto(), &value);
-  if (!error.empty()) {
-    LOG(ERROR) << error << ",\n" << row.DebugString();
-    return Trans("(error)"); // TODO
-  }
-
-  Samples<44100> length = Samples<44100>(viewport_.loop_points().length());
-  return getDisplayText(value, col, length, 44100);
+  string error = setMessageField(rowAddress, &viewport_, value);
+  if (error.empty())
+    setProto(viewport_);
+  else
+    LOG(ERROR) << error << ",\n" << rowAddress.DebugString();
 }
 
-void Loops::selectedRowsChanged(int /*lastRowSelected*/) {
-  Viewport viewport;
+void Loops::selectedRowsChanged(int) {
+  Lock l(TableController::lock_);
+
   bool changed = false;
-  {
-    Lock l(TableController::lock_);
-
-    juce::SparseSet<int> selected(getSelectedRows());
-
-    for (int i = 0; i < getNumRows(); ++i) {
-      LoopPoint* lp = viewport_.mutable_loop_points()->mutable_loop_point(i);
-      bool contains = selected.contains(i);
-      if (lp->selected() != contains) {
-        lp->set_selected(contains);
-        changed = true;
-      }
+  juce::SparseSet<int> selected(getSelectedRows());
+  for (int i = 0; i < getNumRows(); ++i) {
+    LoopPoint* lp = viewport_.mutable_loop_points()->mutable_loop_point(i);
+    bool contains = selected.contains(i);
+    if (lp->selected() != contains) {
+      lp->set_selected(contains);
+      changed = true;
     }
-    viewport = viewport_;
   }
   if (changed)
-    setProto(viewport);
+    setProto(viewport_);
 }
 
 void Loops::update() {
@@ -135,7 +135,7 @@ void Loops::update() {
 
   juce::SparseSet<int> sel;
   {
-    Lock l(TableController::lock_);
+    Lock l(TableController::lock_);  // TODO: simplify locking here?
     for (int i = 0; i < getNumRows(); ++i) {
       if (viewport_.loop_points().loop_point(i).selected())
         sel.addRange(juce::Range<int>(i, i + 1));
@@ -146,59 +146,9 @@ void Loops::update() {
     setSelectedRows(sel, false);
 }
 
-class LoopsSetterLabel : public SimpleLabel {
- public:
-  explicit LoopsSetterLabel(Loops* loops, int col, int row)
-      : SimpleLabel(""), loops_(loops), col_(col), row_(row) {
-    setEditable(true, false, false);
-    setJustificationType(Justification::centredLeft);
-  }
-
-  void setEditorBackground(const juce::Colour& c) {
-    setColour(juce::Label::backgroundColourId, c);
-  }
-
-  virtual void textEditorTextChanged(TextEditor&) {
-    loops_->setFieldValue(col_, row_, getText(true));
-  }
-
- private:
-  Loops* const loops_;
-  const int col_;
-  const int row_;
-
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LoopsSetterLabel);
-};
-
-void Loops::setFieldValue(int row, int column, const String& text) {
-  DCHECK(false);
-}
-
-Component* Loops::refreshComponentForCell(int row, int column,
-                                          bool isRowSelected,
-                                          Component* existing) {
-  if (!existing) {
-    if (column > columns().column_size()) {
-      LOG(DFATAL) << "Unexpected column: " << column
-                 << ", " << columns().column_size();
-    } else {
-      if (columns().column(column - 1).type() == TableColumn::STRING) {
-        ptr<LoopsSetterLabel> lst(new LoopsSetterLabel(this, row, column - 1));
-        lst->setText(displayText(row, column), false);
-        lst->setTooltip(Trans("Loop Point Name: Edit the Loop Point's name "
-                                  "by clicking here."));
-        existing = lst.transfer();
-      }
-    }
-  }
-  if (existing) {
-    LoopsSetterLabel* text = dynamic_cast<LoopsSetterLabel*>(existing);
-    if (text)
-      text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
-    else
-      LOG(DFATAL) << "Wrong component type!";
-  }
-  return existing;
+String Loops::getCellTooltip(int, int) const {
+  return Trans("Loop Point Name: Edit the Loop Point's name "
+               "by clicking here.");
 }
 
 void Loops::editViewport(const widget::waveform::Viewport& viewport) {
