@@ -372,6 +372,7 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc"/>
@@ -1555,6 +1556,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\DataMapImpl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataOps.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Destructable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\MessageMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrar.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.h"/>
@@ -1751,6 +1753,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\destruct_ptr.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h"/>
@@ -1817,6 +1820,7 @@
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h"/>
@@ -1922,6 +1926,7 @@
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_processors\juce_audio_processors.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\gui\juce_AudioThumbnail.h"/>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\gui\juce_AudioThumbnailBase.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\gui\juce_AudioThumbnailCache.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\gui\juce_MidiKeyboardComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\players\juce_AudioProcessorPlayer.h"/>

@@ -1285,6 +1285,9 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget_test.cpp">
       <Filter>tests\rec\widget</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc">
+      <Filter>tests\proto\rec\audio</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc">
       <Filter>tests\proto\rec\audio\source</Filter>
     </ClCompile>
@@ -2880,6 +2883,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h">
       <Filter>tests\rec\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Destructable.h">
+      <Filter>tests\rec\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\MessageMaker.h">
       <Filter>tests\rec\data</Filter>
     </ClInclude>
@@ -3468,6 +3474,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\destruct_ptr.h">
+      <Filter>tests\rec\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
@@ -3665,6 +3674,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h">
       <Filter>tests\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h">
+      <Filter>tests\proto\rec\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h">
       <Filter>tests\proto\rec\audio\source</Filter>
@@ -3979,6 +3991,9 @@
       <Filter>Juce Modules\juce_audio_utils\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\gui\juce_AudioThumbnail.h">
+      <Filter>Juce Modules\juce_audio_utils\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\gui\juce_AudioThumbnailBase.h">
       <Filter>Juce Modules\juce_audio_utils\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_audio_utils\gui\juce_AudioThumbnailCache.h">

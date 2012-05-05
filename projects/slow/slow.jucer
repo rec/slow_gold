@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="LP0OnlOw4" name="SlowGold">
+  <MAINGROUP id="O1pch5i5b" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -379,6 +379,8 @@
               name="DataUpdater.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataUpdater.h" id="XpdzAMd2J"
               name="DataUpdater.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/Destructable.h" id="EsdxbWU68"
+              name="Destructable.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/MessageMaker.h" id="YO6ErajNK"
               name="MessageMaker.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/MessageRegistrar.h" id="ucjleXvSE"
@@ -1097,6 +1099,8 @@
               name="Defaulter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="uweazAzJF"
               name="Defaulter.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/destruct_ptr.h" id="ne5Z4G5TM"
+              name="destruct_ptr.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="VXL4hmtV2"
               name="Exception.h" resource="0"/>
         <GROUP id="1paKC3S3A" name="file">
@@ -1314,6 +1318,10 @@
     <GROUP id="q8YJuYIeQ" name="proto">
       <GROUP id="VypJ7N0Vw" name="rec">
         <GROUP id="TbRxwjhvZ" name="audio">
+          <FILE compile="1" file="../../genfiles/proto/rec/audio/AudioSettings.pb.cc"
+                id="TLcvU0iOj" name="AudioSettings.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/audio/AudioSettings.pb.h"
+                id="eo6D5t1lw" name="AudioSettings.pb.h" resource="0"/>
           <GROUP id="V2pGmoMBL" name="source">
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Stereo.pb.cc"
                   id="zYLzVueTm" name="Stereo.pb.cc" resource="0"/>
@@ -1491,7 +1499,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Wes4nhU1k" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="1GzMtMAnO" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
