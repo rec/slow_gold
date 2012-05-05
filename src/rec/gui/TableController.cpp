@@ -111,11 +111,11 @@ Component* TableController::refreshComponentForCell(int row, int columnId,
   TableLabel* text = dynamic_cast<TableLabel*>(existing);
   if (!text) {
     DCHECK(!existing);
-    text = new TableLabel(this, row, column);
+    text = new TableLabel(this, column, row);
   }
 
-  text->setText(displayText(row, column), false);
-  text->setTooltip(getCellTooltip(row, column));
+  text->setText(displayText(column, row), false);
+  text->setTooltip(getCellTooltip(column, row));
   text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
 
   return text;
