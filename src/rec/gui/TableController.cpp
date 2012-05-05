@@ -50,11 +50,9 @@ void TableController::paintCell(Graphics& g,
   g.setColour(juce::Colours::black);
   if (columnId > columns_.column_size() || columnId <= 0) {
     LOG(DFATAL) << "columnId " << columnId << " size " << columns_.column_size();
-    return;
   }
 
-  const TableColumn& column = columns_.column(columnId - 1);
-  String t = displayText(column, rowNumber);
+  String t = displayText(columnId - 1, rowNumber);
   g.drawText(t, CELL_MARGIN_HORIZONTAL, CELL_MARGIN_VERTICAL,
              width - 2 * CELL_MARGIN_HORIZONTAL,
              height - 2 * CELL_MARGIN_VERTICAL, Justification::centred, true);

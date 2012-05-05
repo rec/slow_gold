@@ -6,7 +6,6 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/proto/FieldOps.h"
-#include "rec/gui/SetterLabel.h"
 #include "rec/gui/SetterText.h"
 #include "rec/gui/audio/LoopsCuttable.h"
 #include "rec/util/Defaulter.h"
@@ -95,7 +94,8 @@ static String getDisplayText(const Value& v, const TableColumn& col,
   }
 }
 
-String Loops::displayText(const TableColumn& col, int rowIndex) {
+String Loops::displayText(int colIndex, int rowIndex) const {
+  const TableColumn& col = columns_.column(colIndex);
   Address row = partAddress_ + Address(rowIndex) + col.address();
   data::Value value;
   string error = getMessageField(row, getProto(), &value);
@@ -146,36 +146,33 @@ void Loops::update() {
     setSelectedRows(sel, false);
 }
 
-using data::Address;
-
-class LoopsSetterLabel : public SetterLabel {
+class LoopsSetterLabel : public SimpleLabel {
  public:
-  explicit LoopsSetterLabel(int row, const TableColumn& col)
-      : SetterLabel("",
-                    getTypeName<Viewport>(),
-                    Address("loop_points") + "loop_point" +
-                    Address(row) + col.address()),
-        row_(row) {
+  explicit LoopsSetterLabel(Loops* loops, int col, int row)
+      : SimpleLabel(""), loops_(loops), col_(col), row_(row) {
     setEditable(true, false, false);
-    setFailOnError(false);
     setJustificationType(Justification::centredLeft);
   }
 
- protected:
-  virtual void operator()(const Message& m) {
-    // Juce takes some time to delete this item, and it might get an update
-    // at a point when it no longer points to a valid item in the LoopPointList.
-    if (const Viewport* vp = dynamic_cast<const Viewport*>(&m)) {
-      if (row_ < vp->loop_points().loop_point_size())
-        SetterLabel::operator()(m);
-    }
+  void setEditorBackground(const juce::Colour& c) {
+    setColour(juce::Label::backgroundColourId, c);
+  }
+
+  virtual void textEditorTextChanged(TextEditor&) {
+    loops_->setFieldValue(col_, row_, getText(true));
   }
 
  private:
-  int row_;
+  Loops* const loops_;
+  const int col_;
+  const int row_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(LoopsSetterLabel);
 };
+
+void Loops::setFieldValue(int row, int column, const String& text) {
+  DCHECK(false);
+}
 
 Component* Loops::refreshComponentForCell(int row, int column,
                                           bool isRowSelected,
@@ -185,12 +182,11 @@ Component* Loops::refreshComponentForCell(int row, int column,
       LOG(DFATAL) << "Unexpected column: " << column
                  << ", " << columns().column_size();
     } else {
-      const TableColumn& col = columns().column(column - 1);
-      if (col.type() == TableColumn::STRING) {
-        ptr<LoopsSetterLabel> lst(new LoopsSetterLabel(row, col));
+      if (columns().column(column - 1).type() == TableColumn::STRING) {
+        ptr<LoopsSetterLabel> lst(new LoopsSetterLabel(this, row, column - 1));
+        lst->setText(displayText(row, column), false);
         lst->setTooltip(Trans("Loop Point Name: Edit the Loop Point's name "
                                   "by clicking here."));
-        lst->init();
         existing = lst.transfer();
       }
     }

@@ -41,7 +41,6 @@ Trans NO_DOWNLOAD_FOUND("Your Version Of SlowGold Is Up-To-Date");
 Trans NO_DOWNLOAD_FOUND_FULL("Your version of SlowGold, %s, is up-to-date.");
 Trans OK("OK");
 
-
 static const int SELECTION_WIDTH_PORTION = 20;
 
 void aboutThisProgram(Instance* i) {

@@ -20,8 +20,9 @@ class Loops : public TableController,
                  + data::Address("loop_point"));
   virtual ~Loops();
 
-  virtual Component* refreshComponentForCell(int rowNumber, int columnId, bool isRowSelected,
-                                             Component* existingComponentToUpdate);
+  virtual Component* refreshComponentForCell(int rowNumber, int columnId,
+                                             bool isRowSelected,
+                                             Component* componentToUpdate);
 
   virtual void operator()(const widget::waveform::Viewport&);
   virtual int getNumRows();
@@ -29,10 +30,11 @@ class Loops : public TableController,
   virtual void selectedRowsChanged(int lastRowSelected);
 
   void editViewport(const widget::waveform::Viewport&);
+  void setFieldValue(int row, int column, const String& text);
 
  protected:
   virtual void update();
-  virtual String displayText(const TableColumn& col, int row);
+  virtual String displayText(int col, int row) const;
 
  private:
   void setViewport(const widget::waveform::Viewport&);

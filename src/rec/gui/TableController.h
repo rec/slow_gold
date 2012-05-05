@@ -24,7 +24,7 @@ class TableController : public TableListBoxModel, public TableListBox {
 
  protected:
   virtual void update() { updateContent(); }
-  virtual String displayText(const TableColumn& col, int row) = 0;
+  virtual String displayText(int col, int row) const = 0;
 
   ptr<Message> message_;
   TableColumnList columns_;
