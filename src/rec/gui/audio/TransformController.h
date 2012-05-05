@@ -3,6 +3,7 @@
 
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.h"
+#include "rec/audio/AudioSettings.pb.h"
 #include "rec/gui/DataSlider.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/gui/layout/Layout.h"
@@ -36,6 +37,7 @@ class TransformController : public Layout,
   DataSlider playbackSpeed_;
   DataSlider pitchScale_;
   DataSlider fineScale_;
+  DataSlider masterTune_;
 
   gui::SetterToggle enableButton_;
 

@@ -11,6 +11,7 @@ namespace audio {
 // Skin
 
 using rec::audio::Gain;
+using rec::audio::AudioSettings;
 using data::Address;
 
 namespace {
@@ -36,6 +37,8 @@ TransformController::TransformController()
                   Address("semitone_shift")),
       fineScale_(Trans("Tune"), getTypeName<Stretch>(),
                  Address("detune_cents")),
+      masterTune_(Trans("Master Tune"), getTypeName<AudioSettings>(),
+                  Address("master_tune"), "", "", GLOBAL_SCOPE),
       enableButton_(Trans("Transform"), getTypeName<Stretch>(),
                     Address("enabled")),
       leftPanel_("Left", VERTICAL),
@@ -43,15 +46,18 @@ TransformController::TransformController()
   playbackSpeed_.slider()->setRange(5.0, 200.0, 0.1);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 0.1);
+  masterTune_.slider()->setRange(-100.0, 100.0, 0.1);
 
   playbackSpeed_.slider()->setDetent(100.0f);
   playbackSpeed_.slider()->setDetentRadius(0.008f);  // TODO: Why so small?
   pitchScale_.slider()->setDetent(0.0f);
   fineScale_.slider()->setDetent(0.0f);
+  masterTune_.slider()->setDetent(0.0f);
 
   playbackSpeed_.slider()->setTextValueSuffix("%");
   pitchScale_.slider()->setTextValueSuffix(" semitones");
   fineScale_.slider()->setTextValueSuffix(" cents");
+  masterTune_.slider()->setTextValueSuffix(" cents");
 
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
@@ -83,7 +89,11 @@ TransformController::TransformController()
   enableButton_.setTooltip(
       Trans("Transform Enable Button: "
             "Disable or enable all sound transformations: "
-            "pitch, time and stereo processing."));
+            "pitch, time and stereo processing but not master tunen."));
+
+  masterTune_.setTooltip(
+      Trans("Master Tune Slider: "
+            "Master tune is a global detune over all tracks."));
 
   leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
   leftPanel_.addToLayout(&stereoComboBox_, COMBO_BOX_HEIGHT);
@@ -108,6 +118,7 @@ void TransformController::init() {
   pitchScale_.init();
   fineScale_.init();
   enableButton_.init();
+  masterTune_.init();
 }
 
 void TransformController::operator()(const Stretch& s) {
