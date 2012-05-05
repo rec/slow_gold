@@ -9,15 +9,17 @@ message GuiSettings {
 
     COUNT = 4;
   };
-  optional bool follow_cursor = 1 [default = true];
-  optional bool drop_adds_to_browser = 2 [default = true];
-  optional bool show_tooltips = 3 [default = false];
-  optional bool show_help_pane = 4 [default = true];
-  optional bool advanced_menus = 5 [default = false];
-  optional bool show_about_on_startup = 6 [default = true];
-  optional bool auto_check_for_updates = 7 [default = false];
-  optional bool use_tree_view_in_file_dialogs = 8 [default = false];
-  optional string last_directory = 9;
+  optional bool advanced_menus = 1 [default = false];
+  optional bool auto_check_for_updates = 2 [default = false];
+  optional bool drop_adds_to_browser = 3 [default = true];
+  optional bool follow_cursor = 4 [default = true];
+  optional bool show_about_on_startup = 5 [default = true];
+  optional bool show_help_pane = 6 [default = true];
+  optional bool show_master_tune = 7 [default = false];
+  optional bool show_tooltips = 8 [default = false];
+  optional bool use_tree_view_in_file_dialogs = 9 [default = false];
 
-  optional FileType file_type_for_save = 10 [default = AIFF];
+  optional string last_directory = 10;
+
+  optional FileType file_type_for_save = 11 [default = AIFF];
 };
