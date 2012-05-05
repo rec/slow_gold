@@ -213,10 +213,17 @@ class GuiSettings : public ::google::protobuf::Message {
   inline void set_last_directory(const char* value, size_t size);
   inline ::std::string* mutable_last_directory();
   
-  // optional .rec.slow.GuiSettings.FileType file_type_for_save = 11 [default = AIFF];
+  // optional double master_tune = 11;
+  inline bool has_master_tune() const;
+  inline void clear_master_tune();
+  static const int kMasterTuneFieldNumber = 11;
+  inline double master_tune() const;
+  inline void set_master_tune(double value);
+  
+  // optional .rec.slow.GuiSettings.FileType file_type_for_save = 12 [default = AIFF];
   inline bool has_file_type_for_save() const;
   inline void clear_file_type_for_save();
-  static const int kFileTypeForSaveFieldNumber = 11;
+  static const int kFileTypeForSaveFieldNumber = 12;
   inline ::rec::slow::GuiSettings_FileType file_type_for_save() const;
   inline void set_file_type_for_save(::rec::slow::GuiSettings_FileType value);
   
@@ -236,12 +243,13 @@ class GuiSettings : public ::google::protobuf::Message {
   bool use_tree_view_in_file_dialogs_;
   ::std::string* last_directory_;
   static const ::std::string _default_last_directory_;
+  double master_tune_;
   int file_type_for_save_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -450,20 +458,36 @@ inline ::std::string* GuiSettings::mutable_last_directory() {
   return last_directory_;
 }
 
-// optional .rec.slow.GuiSettings.FileType file_type_for_save = 11 [default = AIFF];
-inline bool GuiSettings::has_file_type_for_save() const {
+// optional double master_tune = 11;
+inline bool GuiSettings::has_master_tune() const {
   return _has_bit(10);
+}
+inline void GuiSettings::clear_master_tune() {
+  master_tune_ = 0;
+  _clear_bit(10);
+}
+inline double GuiSettings::master_tune() const {
+  return master_tune_;
+}
+inline void GuiSettings::set_master_tune(double value) {
+  _set_bit(10);
+  master_tune_ = value;
+}
+
+// optional .rec.slow.GuiSettings.FileType file_type_for_save = 12 [default = AIFF];
+inline bool GuiSettings::has_file_type_for_save() const {
+  return _has_bit(11);
 }
 inline void GuiSettings::clear_file_type_for_save() {
   file_type_for_save_ = 0;
-  _clear_bit(10);
+  _clear_bit(11);
 }
 inline ::rec::slow::GuiSettings_FileType GuiSettings::file_type_for_save() const {
   return static_cast< ::rec::slow::GuiSettings_FileType >(file_type_for_save_);
 }
 inline void GuiSettings::set_file_type_for_save(::rec::slow::GuiSettings_FileType value) {
   GOOGLE_DCHECK(::rec::slow::GuiSettings_FileType_IsValid(value));
-  _set_bit(10);
+  _set_bit(11);
   file_type_for_save_ = value;
 }
 

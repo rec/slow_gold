@@ -32,6 +32,8 @@ class Stretchy : public source::Wrappy {
     return stretch_;
   }
 
+  void setMasterTune(double detune);
+
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
   int64 scale(int64 x) const { return static_cast<int64>(timeScale_ * x); }
@@ -44,6 +46,7 @@ class Stretchy : public source::Wrappy {
   double timeScale_;
   bool bypass_;
   Stretch stretch_;
+  double detune_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
 };

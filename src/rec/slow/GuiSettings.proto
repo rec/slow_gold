@@ -21,5 +21,7 @@ message GuiSettings {
 
   optional string last_directory = 10;
 
-  optional FileType file_type_for_save = 11 [default = AIFF];
+  optional double master_tune = 11;  // TODO: create a proto for this.
+
+  optional FileType file_type_for_save = 12 [default = AIFF];
 };

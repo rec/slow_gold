@@ -18,6 +18,7 @@ class Implementation {
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo&) = 0;
   virtual void setStretch(const Stretch&) = 0;
+  virtual void setMasterTune(double detune) = 0;
 
  protected:
   float** getSourceSamples(int);

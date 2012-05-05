@@ -168,7 +168,7 @@ class Stretch : public ::google::protobuf::Message {
   inline bool enabled() const;
   inline void set_enabled(bool value);
   
-  // optional bool passthrough_when_disabled = 4 [default = true];
+  // optional bool passthrough_when_disabled = 4 [default = false];
   inline bool has_passthrough_when_disabled() const;
   inline void clear_passthrough_when_disabled();
   static const int kPassthroughWhenDisabledFieldNumber = 4;
@@ -397,12 +397,12 @@ inline void Stretch::set_enabled(bool value) {
   enabled_ = value;
 }
 
-// optional bool passthrough_when_disabled = 4 [default = true];
+// optional bool passthrough_when_disabled = 4 [default = false];
 inline bool Stretch::has_passthrough_when_disabled() const {
   return _has_bit(4);
 }
 inline void Stretch::clear_passthrough_when_disabled() {
-  passthrough_when_disabled_ = true;
+  passthrough_when_disabled_ = false;
   _clear_bit(4);
 }
 inline bool Stretch::passthrough_when_disabled() const {

@@ -30,7 +30,7 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
       "rec/slow/GuiSettings.proto");
   GOOGLE_CHECK(file != NULL);
   GuiSettings_descriptor_ = file->message_type(0);
-  static const int GuiSettings_offsets_[11] = {
+  static const int GuiSettings_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, advanced_menus_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, auto_check_for_updates_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, drop_adds_to_browser_),
@@ -41,6 +41,7 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_tooltips_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, use_tree_view_in_file_dialogs_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, last_directory_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, master_tune_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, file_type_for_save_),
   };
   GuiSettings_reflection_ =
@@ -85,7 +86,7 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\333"
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\360"
     "\003\n\013GuiSettings\022\035\n\016advanced_menus\030\001 \001(\010:\005"
     "false\022%\n\026auto_check_for_updates\030\002 \001(\010:\005f"
     "alse\022\"\n\024drop_adds_to_browser\030\003 \001(\010:\004true"
@@ -94,10 +95,11 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
     "pane\030\006 \001(\010:\004true\022\037\n\020show_master_tune\030\007 \001"
     "(\010:\005false\022\034\n\rshow_tooltips\030\010 \001(\010:\005false\022"
     ",\n\035use_tree_view_in_file_dialogs\030\t \001(\010:\005"
-    "false\022\026\n\016last_directory\030\n \001(\t\022@\n\022file_ty"
-    "pe_for_save\030\013 \001(\0162\036.rec.slow.GuiSettings"
-    ".FileType:\004AIFF\";\n\010FileType\022\010\n\004AIFF\020\000\022\010\n"
-    "\004FLAC\020\001\022\007\n\003OGG\020\002\022\007\n\003WAV\020\003\022\t\n\005COUNT\020\004", 516);
+    "false\022\026\n\016last_directory\030\n \001(\t\022\023\n\013master_"
+    "tune\030\013 \001(\001\022@\n\022file_type_for_save\030\014 \001(\0162\036"
+    ".rec.slow.GuiSettings.FileType:\004AIFF\";\n\010"
+    "FileType\022\010\n\004AIFF\020\000\022\010\n\004FLAC\020\001\022\007\n\003OGG\020\002\022\007\n"
+    "\003WAV\020\003\022\t\n\005COUNT\020\004", 537);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -154,6 +156,7 @@ const int GuiSettings::kShowMasterTuneFieldNumber;
 const int GuiSettings::kShowTooltipsFieldNumber;
 const int GuiSettings::kUseTreeViewInFileDialogsFieldNumber;
 const int GuiSettings::kLastDirectoryFieldNumber;
+const int GuiSettings::kMasterTuneFieldNumber;
 const int GuiSettings::kFileTypeForSaveFieldNumber;
 #endif  // !_MSC_VER
 
@@ -183,6 +186,7 @@ void GuiSettings::SharedCtor() {
   show_tooltips_ = false;
   use_tree_view_in_file_dialogs_ = false;
   last_directory_ = const_cast< ::std::string*>(&_default_last_directory_);
+  master_tune_ = 0;
   file_type_for_save_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -237,6 +241,7 @@ void GuiSettings::Clear() {
         last_directory_->clear();
       }
     }
+    master_tune_ = 0;
     file_type_for_save_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -405,12 +410,28 @@ bool GuiSettings::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(88)) goto parse_file_type_for_save;
+        if (input->ExpectTag(89)) goto parse_master_tune;
         break;
       }
       
-      // optional .rec.slow.GuiSettings.FileType file_type_for_save = 11 [default = AIFF];
+      // optional double master_tune = 11;
       case 11: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_master_tune:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &master_tune_)));
+          _set_bit(10);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(96)) goto parse_file_type_for_save;
+        break;
+      }
+      
+      // optional .rec.slow.GuiSettings.FileType file_type_for_save = 12 [default = AIFF];
+      case 12: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_file_type_for_save:
@@ -421,7 +442,7 @@ bool GuiSettings::MergePartialFromCodedStream(
           if (::rec::slow::GuiSettings_FileType_IsValid(value)) {
             set_file_type_for_save(static_cast< ::rec::slow::GuiSettings_FileType >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(11, value);
+            mutable_unknown_fields()->AddVarint(12, value);
           }
         } else {
           goto handle_uninterpreted;
@@ -502,10 +523,15 @@ void GuiSettings::SerializeWithCachedSizes(
       10, this->last_directory(), output);
   }
   
-  // optional .rec.slow.GuiSettings.FileType file_type_for_save = 11 [default = AIFF];
+  // optional double master_tune = 11;
   if (_has_bit(10)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(11, this->master_tune(), output);
+  }
+  
+  // optional .rec.slow.GuiSettings.FileType file_type_for_save = 12 [default = AIFF];
+  if (_has_bit(11)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      11, this->file_type_for_save(), output);
+      12, this->file_type_for_save(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -571,10 +597,15 @@ void GuiSettings::SerializeWithCachedSizes(
         10, this->last_directory(), target);
   }
   
-  // optional .rec.slow.GuiSettings.FileType file_type_for_save = 11 [default = AIFF];
+  // optional double master_tune = 11;
   if (_has_bit(10)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(11, this->master_tune(), target);
+  }
+  
+  // optional .rec.slow.GuiSettings.FileType file_type_for_save = 12 [default = AIFF];
+  if (_has_bit(11)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      11, this->file_type_for_save(), target);
+      12, this->file_type_for_save(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -642,7 +673,12 @@ int GuiSettings::ByteSize() const {
           this->last_directory());
     }
     
-    // optional .rec.slow.GuiSettings.FileType file_type_for_save = 11 [default = AIFF];
+    // optional double master_tune = 11;
+    if (has_master_tune()) {
+      total_size += 1 + 8;
+    }
+    
+    // optional .rec.slow.GuiSettings.FileType file_type_for_save = 12 [default = AIFF];
     if (has_file_type_for_save()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->file_type_for_save());
@@ -708,6 +744,9 @@ void GuiSettings::MergeFrom(const GuiSettings& from) {
       set_last_directory(from.last_directory());
     }
     if (from._has_bit(10)) {
+      set_master_tune(from.master_tune());
+    }
+    if (from._has_bit(11)) {
       set_file_type_for_save(from.file_type_for_save());
     }
   }
@@ -743,6 +782,7 @@ void GuiSettings::Swap(GuiSettings* other) {
     std::swap(show_tooltips_, other->show_tooltips_);
     std::swap(use_tree_view_in_file_dialogs_, other->use_tree_view_in_file_dialogs_);
     std::swap(last_directory_, other->last_directory_);
+    std::swap(master_tune_, other->master_tune_);
     std::swap(file_type_for_save_, other->file_type_for_save_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

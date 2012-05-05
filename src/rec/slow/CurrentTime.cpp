@@ -1,9 +1,11 @@
+#include "rec/slow/CurrentTime.h"
+
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Player.h"
+#include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/audio/util/Frame.h"
-#include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/widget/waveform/Zoom.h"
@@ -97,6 +99,7 @@ void CurrentTime::setViewport(const Viewport& viewport) {
 void CurrentTime::operator()(const GuiSettings& settings) {
   Lock l(lock());
   followCursor_ = settings.follow_cursor();
+  player()->stretchy()->setMasterTune(settings.master_tune());
 }
 
 void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) {

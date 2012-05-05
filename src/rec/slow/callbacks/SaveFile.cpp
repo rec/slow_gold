@@ -69,7 +69,7 @@ File getBaseFile(Instance* instance, const String& suffix,
       baseName += String::formatted(" @ %.1f%%", ts);
   }
 
-  double ps = audio::stretch::pitchSemitones(stretch);
+  double ps = audio::stretch::pitchSemitones(stretch, settings.master_tune());
   if (!near(ps, 0.0, 0.005)) {
     const Trans& sign = (ps > 0) ? UP : DOWN;
     ps = abs(ps);

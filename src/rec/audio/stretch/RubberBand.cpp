@@ -1,5 +1,4 @@
 #include "rec/audio/stretch/RubberBand.h"
-#include "rec/audio/stretch/Stretch.h"
 #include "rec/util/Math.h"
 
 #include "rubberband/RubberBandStretcher.h"
@@ -29,7 +28,7 @@ static const int DEATH_OPTIONS =
 static const int RATE = 44100;
 
 RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
-    : Implementation(source) {
+    : Implementation(source), detuneCents_(0.0) {
   CHECK_DDD(7134, 1893, int32, int16);
   setStretch(stretch);
 }
@@ -82,10 +81,11 @@ static const double EPSILON = 1e-6;
 
 void RubberBand::setStretch(const Stretch& stretch) {
   Lock l(lock_);
+  stretch_ = stretch;
 
   channels_ = stretch.channels();
   double tr = timeScale(stretch);
-  double ps = pitchScale(stretch);
+  double ps = pitchScale(stretch, detuneCents_);
 
   if (!stretcher_) {
     stretcher_.reset(new RubberBandStretcher(RATE, channels_, OPTIONS, tr, ps));
@@ -102,6 +102,12 @@ void RubberBand::setStretch(const Stretch& stretch) {
   }
   timeRatio_ = tr;
   pitchScale_ = ps;
+}
+
+void RubberBand::setMasterTune(double detune) {
+  Lock l(lock_);
+  detuneCents_ = detune;
+  setStretch(stretch_);
 }
 
 }  // namespace stretch

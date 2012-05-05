@@ -1,4 +1,5 @@
 #include "rec/audio/stretch/Stretchy.h"
+
 #include "rec/audio/stretch/RubberBand.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Implementation.h"
@@ -14,7 +15,8 @@ namespace audio {
 namespace stretch {
 
 Stretchy::Stretchy(Source* s) : Wrappy(s), strategy_(Stretch::NONE),
-                                channels_(2), timeScale_(1.0), bypass_(false) {
+                                channels_(2), timeScale_(1.0), bypass_(false),
+                                detune_(0.0) {
 }
 
 Stretchy::~Stretchy() {}
@@ -43,6 +45,13 @@ static Implementation* makeImplementation(Source* src, const Stretch& stretch) {
   }
 }
 
+void Stretchy::setMasterTune(double detune) {
+  Lock l(lock_);
+  detune_ = detune;
+  if (implementation_)
+    setMasterTune(detune_);
+}
+
 void Stretchy::setStretch(const stretch::Stretch& stretch) {
   Lock l(lock_);
   stretch_ = stretch;
@@ -50,17 +59,19 @@ void Stretchy::setStretch(const stretch::Stretch& stretch) {
 
   static const double DELTA = 0.00001;
   timeScale_ = stretch::timeScale(stretch);
+
+  // TODO: this "bypass" code is dodgy.
   bypass_ = stretch.passthrough_when_disabled() &&
     near(timeScale_, 1.0, DELTA) &&
-    near(stretch::pitchScale(stretch), 1.0, DELTA);
+    near(stretch::pitchScale(stretch, detune_), 1.0, DELTA);
 
   if (!bypass_) {
-    if (!implementation_ || strategy_ != stretch.strategy())
+    if (!implementation_ || strategy_ != stretch.strategy()) {
       implementation_.reset(makeImplementation(source(), stretch));
-    else if (implementation_)
+      implementation_->setMasterTune(detune_);
+    } else {
       implementation_->setStretch(stretch);
-
-    bypass_ = !implementation_;
+    }
   }
 
   if (bypass_)
