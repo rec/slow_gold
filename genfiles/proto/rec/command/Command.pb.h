@@ -52,6 +52,8 @@ enum Command_Type {
   Command_Type_CLOSE_FILE = 6,
   Command_Type_DIM_VOLUME_TOGGLE = 7,
   Command_Type_EJECT_CDS = 8,
+  Command_Type_EXPORT_SETTINGS = 75,
+  Command_Type_IMPORT_SETTINGS = 76,
   Command_Type_INVERT_LOOP_SELECTION = 9,
   Command_Type_JUMP = 10,
   Command_Type_JUMP_SELECTED = 11,
@@ -70,6 +72,7 @@ enum Command_Type {
   Command_Type_NUDGE_VOLUME_UP = 20,
   Command_Type_OPEN = 21,
   Command_Type_OPEN_MANUAL = 65,
+  Command_Type_OPEN_SLOWGOLD_DIRECTORY = 74,
   Command_Type_RECENT_FILES = 22,
   Command_Type_REDO = 23,
   Command_Type_REQUEST_SUPPORT = 66,
@@ -94,6 +97,7 @@ enum Command_Type {
   Command_Type_TOGGLE_SHOW_CURSOR_LABELS = 51,
   Command_Type_TOGGLE_SHOW_HELP_PANE = 49,
   Command_Type_TOGGLE_SHOW_LABELS_AT_TOP = 52,
+  Command_Type_TOGGLE_SHOW_MASTER_TUNE = 77,
   Command_Type_TOGGLE_SHOW_SELECTION_BUTTONS = 50,
   Command_Type_TOGGLE_SHOW_TIMES_AT_TOP = 53,
   Command_Type_TOGGLE_SHOW_TOOLTIPS = 48,
@@ -113,7 +117,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 73,
+  Command_Type_LAST_TYPE = 77,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -328,6 +332,8 @@ class Command : public ::google::protobuf::Message {
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
   static const Type DIM_VOLUME_TOGGLE = Command_Type_DIM_VOLUME_TOGGLE;
   static const Type EJECT_CDS = Command_Type_EJECT_CDS;
+  static const Type EXPORT_SETTINGS = Command_Type_EXPORT_SETTINGS;
+  static const Type IMPORT_SETTINGS = Command_Type_IMPORT_SETTINGS;
   static const Type INVERT_LOOP_SELECTION = Command_Type_INVERT_LOOP_SELECTION;
   static const Type JUMP = Command_Type_JUMP;
   static const Type JUMP_SELECTED = Command_Type_JUMP_SELECTED;
@@ -346,6 +352,7 @@ class Command : public ::google::protobuf::Message {
   static const Type NUDGE_VOLUME_UP = Command_Type_NUDGE_VOLUME_UP;
   static const Type OPEN = Command_Type_OPEN;
   static const Type OPEN_MANUAL = Command_Type_OPEN_MANUAL;
+  static const Type OPEN_SLOWGOLD_DIRECTORY = Command_Type_OPEN_SLOWGOLD_DIRECTORY;
   static const Type RECENT_FILES = Command_Type_RECENT_FILES;
   static const Type REDO = Command_Type_REDO;
   static const Type REQUEST_SUPPORT = Command_Type_REQUEST_SUPPORT;
@@ -370,6 +377,7 @@ class Command : public ::google::protobuf::Message {
   static const Type TOGGLE_SHOW_CURSOR_LABELS = Command_Type_TOGGLE_SHOW_CURSOR_LABELS;
   static const Type TOGGLE_SHOW_HELP_PANE = Command_Type_TOGGLE_SHOW_HELP_PANE;
   static const Type TOGGLE_SHOW_LABELS_AT_TOP = Command_Type_TOGGLE_SHOW_LABELS_AT_TOP;
+  static const Type TOGGLE_SHOW_MASTER_TUNE = Command_Type_TOGGLE_SHOW_MASTER_TUNE;
   static const Type TOGGLE_SHOW_SELECTION_BUTTONS = Command_Type_TOGGLE_SHOW_SELECTION_BUTTONS;
   static const Type TOGGLE_SHOW_TIMES_AT_TOP = Command_Type_TOGGLE_SHOW_TIMES_AT_TOP;
   static const Type TOGGLE_SHOW_TOOLTIPS = Command_Type_TOGGLE_SHOW_TOOLTIPS;

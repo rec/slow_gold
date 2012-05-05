@@ -26,7 +26,9 @@ message Command {
     DIM_VOLUME_TOGGLE = 7;
 
     EJECT_CDS = 8;
+    EXPORT_SETTINGS = 75;
 
+    IMPORT_SETTINGS = 76;
     INVERT_LOOP_SELECTION = 9;
 
     JUMP = 10;
@@ -50,6 +52,7 @@ message Command {
 
     OPEN = 21;
     OPEN_MANUAL = 65;
+    OPEN_SLOWGOLD_DIRECTORY = 74;
 
     RECENT_FILES = 22;
     REDO = 23;
@@ -79,6 +82,7 @@ message Command {
     TOGGLE_SHOW_CURSOR_LABELS = 51;
     TOGGLE_SHOW_HELP_PANE = 49;
     TOGGLE_SHOW_LABELS_AT_TOP = 52;
+    TOGGLE_SHOW_MASTER_TUNE = 77;
     TOGGLE_SHOW_SELECTION_BUTTONS = 50;
     TOGGLE_SHOW_TIMES_AT_TOP = 53;
     TOGGLE_SHOW_TOOLTIPS = 48;
@@ -103,7 +107,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 73;
+    LAST_TYPE = 77;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;
