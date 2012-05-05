@@ -167,6 +167,13 @@ command {
   }
 }
 command {
+  type: OPEN_SLOWGOLD_DIRECTORY
+  desc {
+    menu: "Open SlowGold Preferences Directory"
+    full: "Open the directory where all the SlowGold Preferences Files are located."
+  }
+}
+command {
   type: PASTE
   desc {
     menu: "Paste"

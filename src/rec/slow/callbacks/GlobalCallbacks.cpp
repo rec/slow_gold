@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 
+#include "rec/app/Files.h"
 #include "rec/base/Trans.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/ZipData.h"
@@ -72,6 +73,14 @@ void openManual() {
   }
 }
 
+void openSlowGoldDirectory() {
+  File f = app::getAppDirectory();
+  string typeName = VirtualFile::default_instance().GetTypeName();
+  File g = f.getChildFile(str(typeName));
+  // DLOG(INFO) << str(f) << "\n" << str(g);
+  g.revealToUser();
+}
+
 void requestSupport() {
   String key = randomKey();
   File f = data::zipData(key);
@@ -88,6 +97,7 @@ void requestSupport() {
       MAIL_DISCARD;
     URL url = MAILTO.withParameter("subject", subject).withParameter("body", body);
     url.launchInDefaultBrowser();
+    f.revealToUser();
   }
 }
 
@@ -113,8 +123,6 @@ void modeAddLoopPoint() {
   setMode(Mode::DRAW_LOOP_POINTS);
 }
 
-
-
 void whatsNewPage() {
   const String& vers = JUCEApplication::getInstance()->getApplicationVersion();
   URL(String::formatted(WHATS_NEW_URL, c_str(vers))).launchInDefaultBrowser();
@@ -134,6 +142,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::DEL, cutNoClipboard);
   addCallback(t, Command::EJECT_CDS, cd::ejectAll);
   addCallback(t, Command::OPEN_MANUAL, openManual);
+  addCallback(t, Command::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
   addCallback(t, Command::PASTE, pasteFromClipboard);
   addCallback(t, Command::REDO, redo);
   addCallback(t, Command::REQUEST_SUPPORT, requestSupport);

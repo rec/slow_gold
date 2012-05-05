@@ -76,6 +76,14 @@ void AdvancedMenuMaker::addTransportMenu() {
   addBank(Command::JUMP_SELECTED, Trans("Jump To Selected..."));
 }
 
+void AdvancedMenuMaker::addHelpMenu() {
+  BasicMenuMaker::addHelpMenu();
+  menu_.addSeparator();
+  add(Command::OPEN_SLOWGOLD_DIRECTORY);
+  add(Command::CHECK_FOR_UPDATES);
+  add(Command::TOGGLE_AUTOMATIC_UPDATES);
+}
+
 void AdvancedMenuMaker::addDisplayMenu() {
   add(Command::TOGGLE_GRID_DISPLAY);
   add(Command::TOGGLE_FILE_OPEN_TREE_DISPLAY);

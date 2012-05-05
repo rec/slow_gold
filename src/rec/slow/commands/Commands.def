@@ -22,6 +22,7 @@ command { type: NUDGE_VOLUME_DOWN category: "Audio"}
 command { type: NUDGE_VOLUME_UP category: "Audio"}
 command { type: OPEN category: "File"}
 command { type: OPEN_MANUAL category: "Help"}
+command { type: OPEN_SLOWGOLD_DIRECTORY category: "Help"}
 command { type: PASTE category: "Edit"}
 command { type: REDO category: "Edit"}
 command { type: RESET_GAIN_TO_UNITY category: "Audio"}

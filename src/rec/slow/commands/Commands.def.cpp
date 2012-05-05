@@ -32,6 +32,7 @@ Def<command::Commands> commands(
   "command { type: NUDGE_VOLUME_UP category: \"Audio\"}\n"
   "command { type: OPEN category: \"File\"}\n"
   "command { type: OPEN_MANUAL category: \"Help\"}\n"
+  "command { type: OPEN_SLOWGOLD_DIRECTORY category: \"Help\"}\n"
   "command { type: PASTE category: \"Edit\"}\n"
   "command { type: REDO category: \"Edit\"}\n"
   "command { type: RESET_GAIN_TO_UNITY category: \"Audio\"}\n"

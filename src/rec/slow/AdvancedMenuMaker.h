@@ -24,6 +24,7 @@ class AdvancedMenuMaker : public BasicMenuMaker {
   virtual void addSelectMenu();
   virtual void addTransportMenu();
   virtual void addDisplayMenu();
+  virtual void addHelpMenu();
   virtual bool addMenu(const String& menuName);
 
  private:
