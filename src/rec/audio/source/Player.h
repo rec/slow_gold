@@ -2,21 +2,19 @@
 #define __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
 
 #include "rec/audio/Audio.h"
+#include "rec/audio/AudioSettings.pb.h"
 #include "rec/audio/Device.h"
 #include "rec/audio/source/Level.h"
+#include "rec/audio/source/Selection.h"
+#include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Timer.h"
-#include "rec/audio/stretch/Stretch.pb.h"
+#include "rec/audio/stretch/Stretch.h"
+#include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/data/DataListener.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
-
-namespace audio { class Device; }
-namespace audio { namespace stretch { class Stretch; }}
-namespace audio { namespace stretch { class Stretchy; }}
-namespace audio { class Gain; }
-namespace widget { namespace waveform { class Viewport; }}
 
 namespace audio {
 namespace source {
@@ -33,6 +31,7 @@ class Player : public DataListener<Gain>,
                public DataListener<widget::waveform::Viewport>,
                public DataListener<StereoProto>,
                public DataListener<stretch::Stretch>,
+               public GlobalDataListener<audio::AudioSettings>,
                public Broadcaster<transport::State>,
                public juce::ChangeListener {
  public:
@@ -61,9 +60,10 @@ class Player : public DataListener<Gain>,
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
   virtual void operator()(const Gain&);
-  virtual void operator()(const widget::waveform::Viewport&);
   virtual void operator()(const StereoProto&);
+  virtual void operator()(const audio::AudioSettings&);
   virtual void operator()(const stretch::Stretch&);
+  virtual void operator()(const widget::waveform::Viewport&);
 
   void setGain(double);
 

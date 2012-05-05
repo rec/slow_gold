@@ -1,14 +1,5 @@
 #include "rec/audio/source/Player.h"
-#include "rec/audio/Audio.h"
-#include "rec/audio/Device.h"
 #include "rec/audio/source/Empty.h"
-#include "rec/audio/source/Level.h"
-#include "rec/audio/source/Selection.h"
-#include "rec/audio/source/Stereo.h"
-#include "rec/audio/source/Timer.h"
-#include "rec/audio/stretch/Stretch.h"
-#include "rec/audio/stretch/Stretchy.h"
-#include "rec/audio/util/Gain.h"
 #include "rec/util/Math.h"
 #include "rec/util/block/Block.h"
 
@@ -18,6 +9,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
+using namespace rec::audio;
 using namespace rec::audio::stretch;
 using namespace rec::audio::transport;
 using namespace rec::widget::waveform;
@@ -38,6 +30,7 @@ Player::~Player() {
 }
 
 void Player::init() {
+  DataListener<AudioSettings>::init();
   DataListener<Gain>::init();
   DataListener<StereoProto>::init();
   DataListener<Stretch>::init();
@@ -72,13 +65,17 @@ void Player::setSource(Source* source) {
   timer_->setSource(source);
 }
 
-void Player::operator()(const stretch::Stretch& stretch) {
-  level_.clear();
-  stretchy_->setStretch(stretch);
+void Player::operator()(const AudioSettings& settings) {
+  stretchy_->setMasterTune(settings.master_tune());
 }
 
 void Player::operator()(const StereoProto& s) {
   stereo_->setStereo(s);
+}
+
+void Player::operator()(const Stretch& stretch) {
+  level_.clear();
+  stretchy_->setStretch(stretch);
 }
 
 void Player::operator()(const Viewport& viewport) {

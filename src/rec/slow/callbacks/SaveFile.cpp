@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/SaveFile.h"
 
+#include "rec/audio/AudioSettings.pb.h"
 #include "rec/audio/format/Manager.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Player.h"
@@ -19,6 +20,8 @@ namespace slow {
 namespace {
 
 using namespace juce;
+using audio::AudioSettings;
+using namespace rec::audio::stretch;
 
 Trans FILE_SAVE_FAILED("Error During Save.");
 Trans FILE_SAVE_FAILED_FULL("There was an error saving your file %s.");
@@ -47,13 +50,11 @@ String removeTrailingZeroes(const String& s) {
 }
 
 File getBaseFile(Instance* instance, const String& suffix,
-                 const GuiSettings& settings) {
-  using namespace juce;
-  using namespace rec::audio::stretch;
-
+                 const GuiSettings& guiSettings,
+                 const AudioSettings& audioSettings) {
   File file;
-  if (settings.has_last_directory())
-    file = str(settings.last_directory());
+  if (guiSettings.has_last_directory())
+    file = str(guiSettings.last_directory());
   else
     file = File::getSpecialLocation(File::userMusicDirectory);
 
@@ -69,7 +70,8 @@ File getBaseFile(Instance* instance, const String& suffix,
       baseName += String::formatted(" @ %.1f%%", ts);
   }
 
-  double ps = audio::stretch::pitchSemitones(stretch, settings.master_tune());
+  double ps = audio::stretch::pitchSemitones(stretch,
+                                             audioSettings.master_tune());
   if (!near(ps, 0.0, 0.005)) {
     const Trans& sign = (ps > 0) ? UP : DOWN;
     ps = abs(ps);
@@ -102,14 +104,15 @@ File browseForFileToSaveTreeView(const File& startFile) {
 
 static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav"};
 
-File getSaveFile(Instance* instance, GuiSettings::FileType t) {
+File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   if (instance->empty())
     return File::nonexistent;
 
   String suffix = SUFFIXES[t];
   File file;
   GuiSettings settings = data::getGlobal<GuiSettings>();
-  File startFile = getBaseFile(instance, suffix, settings);
+  audio::AudioSettings audioSettings = data::getGlobal<audio::AudioSettings>();
+  File startFile = getBaseFile(instance, suffix, settings, audioSettings);
 
   while (true) {
     file = settings.use_tree_view_in_file_dialogs() ?
@@ -186,7 +189,8 @@ class SaveThread : public ThreadWithProgressWindow {
 
 void doSaveFile(Instance* instance, bool useSelection) {
   using namespace juce;
-  GuiSettings::FileType t = data::getGlobal<GuiSettings>().file_type_for_save();
+
+  AudioSettings::FileType t = data::getGlobal<AudioSettings>().file_type_for_save();
   File file = getSaveFile(instance, t);
   if (file != File::nonexistent) {
     ptr<audio::Source> s(instance->makeSource());

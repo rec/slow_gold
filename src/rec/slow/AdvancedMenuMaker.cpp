@@ -1,5 +1,6 @@
 #include "rec/slow/AdvancedMenuMaker.h"
 
+#include "rec/audio/AudioSettings.pb.h"
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/TargetManager.h"
@@ -45,11 +46,12 @@ void AdvancedMenuMaker::addFileMenu() {
   addIfNotEmpty(Command::SAVE_FILE_SELECTION);
 
   PopupMenu save;
-  int t = static_cast<int>(data::getGlobal<GuiSettings>().file_type_for_save());
+  int t = static_cast<int>(data::getGlobal<audio::AudioSettings>()
+                           .file_type_for_save());
   static const int TICKED = ApplicationCommandInfo::isTicked;
   static const char* NAMES[] = {"AIFF", "FLAC", "Ogg Vorbis", "WAV"};
   static const Command::Type COMMAND = Command::SET_SAVE_FORMAT;
-  for (int i = 0; i < GuiSettings::COUNT; ++i)
+  for (int i = 0; i < audio::AudioSettings::COUNT; ++i)
     addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
 
   menu_.addSubMenu(Trans("File Type For Save..."), save);

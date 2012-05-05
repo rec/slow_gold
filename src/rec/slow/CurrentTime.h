@@ -1,6 +1,7 @@
 #ifndef __REC_SLOW_CURRENTTIME__
 #define __REC_SLOW_CURRENTTIME__
 
+#include "rec/audio/AudioSettings.pb.h"
 #include "rec/base/Samples.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/slow/GuiSettings.pb.h"

@@ -1,0 +1,14 @@
+package rec.audio;
+
+message AudioSettings {
+  enum FileType {
+    AIFF = 0;
+    FLAC = 1;
+    OGG = 2;
+    WAV = 3;
+
+    COUNT = 4;
+  };
+  optional double master_tune = 1;
+  optional FileType file_type_for_save = 2 [default = AIFF];
+};

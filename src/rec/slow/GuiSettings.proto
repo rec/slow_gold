@@ -1,14 +1,6 @@
 package rec.slow;
 
 message GuiSettings {
-  enum FileType {
-    AIFF = 0;
-    FLAC = 1;
-    OGG = 2;
-    WAV = 3;
-
-    COUNT = 4;
-  };
   optional bool advanced_menus = 1 [default = false];
   optional bool auto_check_for_updates = 2 [default = false];
   optional bool drop_adds_to_browser = 3 [default = true];
@@ -18,10 +10,5 @@ message GuiSettings {
   optional bool show_master_tune = 7 [default = false];
   optional bool show_tooltips = 8 [default = false];
   optional bool use_tree_view_in_file_dialogs = 9 [default = false];
-
   optional string last_directory = 10;
-
-  optional double master_tune = 11;  // TODO: create a proto for this.
-
-  optional FileType file_type_for_save = 12 [default = AIFF];
 };

@@ -1,4 +1,6 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
+
+#include "rec/audio/AudioSettings.pb.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/CurrentFile.h"
@@ -100,8 +102,10 @@ void loadRecentFile(Instance* instance, int i) {
 }
 
 void setSaveFileType(Instance* instance, int i) {
-  GuiSettings settings = data::getGlobal<GuiSettings>();
-  settings.set_file_type_for_save(static_cast<GuiSettings::FileType>(i));
+  using audio::AudioSettings;
+
+  AudioSettings settings = data::getGlobal<AudioSettings>();
+  settings.set_file_type_for_save(static_cast<AudioSettings::FileType>(i));
   data::setGlobal(settings);
   instance->menus_->menuItemsChanged();
 }
@@ -125,7 +129,7 @@ void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
     addCallback(t, id, loadRecentFile, i, j);
   }
 
-  for (int j = 0; j < GuiSettings::COUNT; ++j) {
+  for (int j = 0; j < audio::AudioSettings::COUNT; ++j) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_SAVE_FORMAT);
     addCallback(t, id, setSaveFileType, i, j);
   }

@@ -99,7 +99,6 @@ void CurrentTime::setViewport(const Viewport& viewport) {
 void CurrentTime::operator()(const GuiSettings& settings) {
   Lock l(lock());
   followCursor_ = settings.follow_cursor();
-  player()->stretchy()->setMasterTune(settings.master_tune());
 }
 
 void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) {
