@@ -22,11 +22,17 @@ namespace tree {
 
 using namespace rec::gui;
 
-static const int ROOT_WAIT_TIME = 1000;
+namespace {
 
-static File getOpennessFile() {
+const int ROOT_WAIT_TIME = 1000;
+
+File getOpennessFile() {
   return app::getAppFile("TreeOpenness.xml");
 }
+
+const bool USE_OPENNESS_FILE = false;
+
+}  // namespace
 
 Root::Root(MenuBarModel* model, const NodeDesc& desc)
   : desc_(desc),
@@ -49,6 +55,9 @@ void Root::checkVolumes() {
 }
 
 static void restoreOpenness(Node* node, const XmlElement& xml) {
+  if (!USE_OPENNESS_FILE)
+    return;
+
   node->computeChildren();
   node->setOpen(true);
   forEachXmlChildElement(xml, child) {
@@ -65,7 +74,7 @@ static void restoreOpenness(Node* node, const XmlElement& xml) {
 }
 
 void Root::readOpenness() {
-  if (opennessStarted_)
+  if (!USE_OPENNESS_FILE || opennessStarted_)
     return;
 
   opennessStarted_ = true;
@@ -80,7 +89,7 @@ void Root::readOpenness() {
 }
 
 void Root::writeOpenness() {
-  if (opennessRead_) {
+  if (USE_OPENNESS_FILE && opennessRead_) {
     // TODO: only do this when the openness is actually changed!
     ptr<XmlElement> openness(tree_.getOpennessState(true));
     if (!(openness && openness->writeToFile(getOpennessFile(), "")))
