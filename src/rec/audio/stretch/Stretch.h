@@ -8,8 +8,8 @@ namespace audio {
 namespace stretch {
 
 double timeScale(const Stretch&);
-double pitchScale(const Stretch&);
-double pitchSemitones(const Stretch&);
+double pitchScale(const Stretch&, double detuneCents = 0.0);
+double pitchSemitones(const Stretch&, double detuneCents = 0.0);
 
 }  // namespace stretch
 }  // namespace audio
