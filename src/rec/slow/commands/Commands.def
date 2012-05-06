@@ -3,6 +3,8 @@ command { type: ADD_LOOP_POINT category: "Loops"}
 command { type: AUDIO_PREFERENCES category: "Audio"}
 command { type: CHECK_FOR_UPDATES category: "Help" }
 command { type: CLEAR_LOOPS category: "Loops" }
+command { type: CLEAR_ALL_SETTINGS category: "Loops" }
+command { type: CLEAR_SETTINGS_FOR_THIS_TRACK category: "Loops" }
 command { type: CLOSE_FILE category: "File"}
 command { type: COPY category: "Edit"}
 command { type: CUT category: "Edit"}

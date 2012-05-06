@@ -214,6 +214,14 @@ void checkForUpdates(Instance * i) {
   }
 }
 
+void clearAllSettings(Instance * i) {
+  DCHECK(false);
+}
+
+void clearSettingsForThisTrack(Instance * i) {
+  DCHECK(false);
+}
+
 }  // namespace
 
 using namespace rec::command;
@@ -227,6 +235,9 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
   addCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
+  addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings, i);
+  addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
+              clearSettingsForThisTrack, i);
   // addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
   addCallback(c, Command::CLOSE_FILE, closeFile, i);
   addCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);

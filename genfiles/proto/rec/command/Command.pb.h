@@ -46,8 +46,10 @@ enum Command_Type {
   Command_Type_ADD_LOOP_POINT = 1,
   Command_Type_AUDIO_PREFERENCES = 2,
   Command_Type_CHECK_FOR_UPDATES = 68,
-  Command_Type_CLEAR_NAVIGATOR = 3,
   Command_Type_CLEAR_LOOPS = 4,
+  Command_Type_CLEAR_NAVIGATOR = 3,
+  Command_Type_CLEAR_ALL_SETTINGS = 79,
+  Command_Type_CLEAR_SETTINGS_FOR_THIS_TRACK = 80,
   Command_Type_CLEAR_SAVED_FILE_DATA = 5,
   Command_Type_CLOSE_FILE = 6,
   Command_Type_DIM_VOLUME_TOGGLE = 7,
@@ -118,7 +120,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 78,
+  Command_Type_LAST_TYPE = 80,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -327,8 +329,10 @@ class Command : public ::google::protobuf::Message {
   static const Type ADD_LOOP_POINT = Command_Type_ADD_LOOP_POINT;
   static const Type AUDIO_PREFERENCES = Command_Type_AUDIO_PREFERENCES;
   static const Type CHECK_FOR_UPDATES = Command_Type_CHECK_FOR_UPDATES;
-  static const Type CLEAR_NAVIGATOR = Command_Type_CLEAR_NAVIGATOR;
   static const Type CLEAR_LOOPS = Command_Type_CLEAR_LOOPS;
+  static const Type CLEAR_NAVIGATOR = Command_Type_CLEAR_NAVIGATOR;
+  static const Type CLEAR_ALL_SETTINGS = Command_Type_CLEAR_ALL_SETTINGS;
+  static const Type CLEAR_SETTINGS_FOR_THIS_TRACK = Command_Type_CLEAR_SETTINGS_FOR_THIS_TRACK;
   static const Type CLEAR_SAVED_FILE_DATA = Command_Type_CLEAR_SAVED_FILE_DATA;
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
   static const Type DIM_VOLUME_TOGGLE = Command_Type_DIM_VOLUME_TOGGLE;

@@ -61,6 +61,10 @@ void AdvancedMenuMaker::addFileMenu() {
 
   add(Command::EXPORT_SETTINGS);
   add(Command::IMPORT_SETTINGS);
+#ifdef NEW_FEATURES
+  addIfNotEmpty(Command::CLEAR_SETTINGS_FOR_THIS_TRACK);
+  add(Command::CLEAR_ALL_SETTINGS);
+#endif
 }
 
 void AdvancedMenuMaker::addSelectMenu() {
@@ -86,6 +90,7 @@ void AdvancedMenuMaker::addTransportMenu() {
 
 void AdvancedMenuMaker::addHelpMenu() {
   BasicMenuMaker::addHelpMenu();
+
   menu_.addSeparator();
   add(Command::OPEN_SLOWGOLD_DIRECTORY);
   add(Command::CHECK_FOR_UPDATES);

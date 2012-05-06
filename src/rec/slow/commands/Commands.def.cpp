@@ -13,6 +13,8 @@ Def<command::Commands> commands(
   "command { type: AUDIO_PREFERENCES category: \"Audio\"}\n"
   "command { type: CHECK_FOR_UPDATES category: \"Help\" }\n"
   "command { type: CLEAR_LOOPS category: \"Loops\" }\n"
+  "command { type: CLEAR_ALL_SETTINGS category: \"Loops\" }\n"
+  "command { type: CLEAR_SETTINGS_FOR_THIS_TRACK category: \"Loops\" }\n"
   "command { type: CLOSE_FILE category: \"File\"}\n"
   "command { type: COPY category: \"Edit\"}\n"
   "command { type: CUT category: \"Edit\"}\n"

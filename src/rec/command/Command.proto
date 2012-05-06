@@ -18,8 +18,10 @@ message Command {
     AUDIO_PREFERENCES = 2;
 
     CHECK_FOR_UPDATES = 68;
-    CLEAR_NAVIGATOR = 3;
     CLEAR_LOOPS = 4;
+    CLEAR_NAVIGATOR = 3;
+    CLEAR_ALL_SETTINGS = 79;
+    CLEAR_SETTINGS_FOR_THIS_TRACK = 80;
     CLEAR_SAVED_FILE_DATA = 5;
     CLOSE_FILE = 6;
 
@@ -108,7 +110,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 78;
+    LAST_TYPE = 80;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;
