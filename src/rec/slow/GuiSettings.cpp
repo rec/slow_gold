@@ -30,7 +30,8 @@ File browseForFileToSaveTreeView(const String& msg, const File& startFile) {
 File browseForFileToSave(const String& msg, const File& startFile) {
   GuiSettings settings = data::getGlobal<GuiSettings>();
   return settings.use_tree_view_in_file_dialogs() ?
-    browseForFileToSaveTreeView(msg, startFile) : browseForFileToSave(msg, startFile);
+    browseForFileToSaveTreeView(msg, startFile) : 
+    browseForFileToSaveNoTreeView(msg, startFile);
 }
 
 }  // namespace slow
