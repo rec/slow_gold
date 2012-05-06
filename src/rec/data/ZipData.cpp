@@ -67,5 +67,9 @@ File zipData(const File& file) {
   return writeZipFile(builder, file);
 }
 
+bool unzipData(const File& file) {
+  return ZipFile(file).uncompressTo(app::getAppDirectory(), true);
+}
+
 }  // namespace data
 }  // namespace rec

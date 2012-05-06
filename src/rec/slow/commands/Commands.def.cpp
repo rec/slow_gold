@@ -22,6 +22,7 @@ Def<command::Commands> commands(
   "command { type: EXPORT_SETTINGS category: \"File\"}\n"
   "command { type: EJECT_CDS category: \"File\"}\n"
   "command { type: INVERT_LOOP_SELECTION category: \"Selection\" }\n"
+  "command { type: IMPORT_SETTINGS category: \"File\"}\n"
   "command { type: KEYBOARD_MAPPINGS category: \"File\"}\n"
   "command { type: MIDI_MAPPINGS category: \"File\"}\n"
   "command { type: MODE_DRAG category: \"Edit\"}\n"

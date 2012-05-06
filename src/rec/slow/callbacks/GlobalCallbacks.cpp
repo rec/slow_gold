@@ -39,6 +39,7 @@ Trans PLEASE_CONTACT("Please contact World Wide Woodshed support at");
 Trans PLEASE_MAIL("Please mail the file to %s and then you can throw it away.");
 Trans SUPPORTED("A Support Request Was Created On Your Desktop");
 Trans SELECT_EXPORT_FILE("Select A File To Save Exported Settings");
+Trans SELECT_IMPORT_FILE("Select A Zip File Containing Exported Settings");
 
 const String SUPPORT = "support@worldwidewoodshed.com";
 const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
@@ -118,7 +119,10 @@ void exportSettings() {
 }
 
 void importSettings() {
-  DCHECK(false);
+  File start = File::getSpecialLocation(File::userDesktopDirectory);
+  File file = browseForFile(SELECT_IMPORT_FILE, start, OPEN_FILE);
+  if (file != File::nonexistent)
+    data::unzipData(file);
 }
 
 void setMode(Mode::Action action) {
@@ -162,7 +166,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::DEL, cutNoClipboard);
   addCallback(t, Command::EJECT_CDS, cd::ejectAll);
   addCallback(t, Command::EXPORT_SETTINGS, exportSettings);
-  addCallback(t, Command::EXPORT_SETTINGS, importSettings);
+  addCallback(t, Command::IMPORT_SETTINGS, importSettings);
   addCallback(t, Command::OPEN_MANUAL, openManual);
   addCallback(t, Command::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
   addCallback(t, Command::PASTE, pasteFromClipboard);
@@ -185,6 +189,7 @@ void GlobalCallbacks::translateAll() {
   PLEASE_CONTACT.translate();
   PLEASE_MAIL.translate();
   SELECT_EXPORT_FILE.translate();
+  SELECT_IMPORT_FILE.translate();
   SUPPORTED.translate();
 }
 
