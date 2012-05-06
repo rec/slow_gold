@@ -22,10 +22,7 @@ OutlinedCursorLabel::OutlinedCursorLabel(Cursor *cursor)
 OutlinedCursorLabel::~OutlinedCursorLabel() {}
 
 void OutlinedCursorLabel::operator()(const WaveformProto& waveform) {
-  thread::callAsync(this, &OutlinedCursorLabel::showButtons, waveform);
-}
-
-void OutlinedCursorLabel::showButtons(WaveformProto waveform) {
+  MessageManagerLock l;
   showSelectionButtons_ = waveform.show_selection_buttons();
   if (showSelectionButtons_)
     addAndMakeVisible(&selectButton_);

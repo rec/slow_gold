@@ -29,8 +29,6 @@ class OutlinedCursorLabel : public gui::SimpleLabel,
 
   virtual void textEditorTextChanged(TextEditor&);
 
-  void showButtons(WaveformProto);
-
   virtual void editorShown(TextEditor*);
   virtual void editorAboutToBeHidden(TextEditor*);
 
