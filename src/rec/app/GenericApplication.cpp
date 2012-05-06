@@ -27,11 +27,6 @@ DownloadStatus GenericApplication::checkForUpdates() {
 }
 
 void GenericApplication::initialise(const String&) {
-#if JUCE_MAC
-  FLAGS_logtostderr = true;
-#else
-#endif
-
   // FLAGS_log_dir = str(File::getSpecialLocation(
   //     File::userApplicationDataDirectory).getChildFile("Logs"));
 

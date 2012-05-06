@@ -30,9 +30,8 @@ void addFiles(const File& root, Builder* builder, int cmp = COMPRESSION_LEVEL) {
 
   for (bool isDir; it.next(&isDir, NULL, NULL, NULL, NULL, NULL); ) {
     File f = it.getFile();
-    if (!isDir && mustZip(f)) {
+    if (!isDir && mustZip(f))
       builder->addFile(f, cmp, f.getRelativePathFrom(root));
-    }
   }
 }
 
