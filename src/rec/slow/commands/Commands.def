@@ -12,6 +12,7 @@ command { type: DIM_VOLUME_TOGGLE category: "Audio"}
 command { type: EXPORT_SETTINGS category: "File"}
 command { type: EJECT_CDS category: "File"}
 command { type: INVERT_LOOP_SELECTION category: "Selection" }
+command { type: IMPORT_SETTINGS category: "File"}
 command { type: KEYBOARD_MAPPINGS category: "File"}
 command { type: MIDI_MAPPINGS category: "File"}
 command { type: MODE_DRAG category: "Edit"}

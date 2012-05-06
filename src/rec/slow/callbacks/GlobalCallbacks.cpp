@@ -106,7 +106,7 @@ void requestSupport() {
 void exportSettings() {
   File start = File::getSpecialLocation(File::userDesktopDirectory).
     getChildFile("SlowGold Export.zip");
-  File file = browseForFileToSave(SELECT_EXPORT_FILE, start);
+  File file = browseForFile(SELECT_EXPORT_FILE, start, SAVE_FILE);
   if (file == File::nonexistent)
     return;
 
@@ -115,6 +115,10 @@ void exportSettings() {
     return;  // TODO: report error - very unlikely.
   else
     file.revealToUser();
+}
+
+void importSettings() {
+  DCHECK(false);
 }
 
 void setMode(Mode::Action action) {
@@ -158,6 +162,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::DEL, cutNoClipboard);
   addCallback(t, Command::EJECT_CDS, cd::ejectAll);
   addCallback(t, Command::EXPORT_SETTINGS, exportSettings);
+  addCallback(t, Command::EXPORT_SETTINGS, importSettings);
   addCallback(t, Command::OPEN_MANUAL, openManual);
   addCallback(t, Command::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
   addCallback(t, Command::PASTE, pasteFromClipboard);

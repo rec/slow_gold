@@ -6,7 +6,9 @@
 namespace rec {
 namespace slow {
 
-File browseForFileToSave(const String& msg, const File& startFile);
+enum SaveOrOpen {SAVE_FILE, OPEN_FILE};
+
+File browseForFile(const String& msg, const File& startFile, SaveOrOpen save);
 
 }  // namespace slow
 }  // namespace rec

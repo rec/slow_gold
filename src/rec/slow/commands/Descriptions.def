@@ -90,6 +90,13 @@ command {
   }
 }
 command {
+  type: IMPORT_SETTINGS
+  desc {
+    menu: "Import SlowGold Settings..."
+    full: "Import SlowGold Settings from a .zip file and merge with current settings."
+  }
+}
+command {
   type: INVERT_LOOP_SELECTION
   desc {
     menu: "Invert Selection"

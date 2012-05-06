@@ -10,13 +10,18 @@ using namespace juce;
 
 namespace {
 
-File browseForFileToSaveNoTreeView(const String& msg, const File& startFile) {
+File browseForFileNoTreeView(const String& msg, const File& startFile,
+                             SaveOrOpen save) {
   FileChooser c(msg, startFile);
-  return c.browseForFileToSave(true) ? c.getResult() : File::nonexistent;
+  bool success = (save == SAVE_FILE) ? c.browseForFileToSave(true) :
+    c.browseForFileToOpen();
+  return success ? c.getResult() : File::nonexistent;
 }
 
-File browseForFileToSaveTreeView(const String& msg, const File& startFile) {
-  int flags = FileBrowserComponent::saveMode +
+File browseForFileTreeView(const String& msg, const File& startFile,
+                           SaveOrOpen save) {
+  int flags = (save == SAVE_FILE ? FileBrowserComponent::saveMode :
+               FileBrowserComponent::openMode) +
     FileBrowserComponent::canSelectFiles +
     FileBrowserComponent::useTreeView;
 
@@ -27,11 +32,11 @@ File browseForFileToSaveTreeView(const String& msg, const File& startFile) {
 
 }
 
-File browseForFileToSave(const String& msg, const File& startFile) {
+File browseForFile(const String& msg, const File& startFile, SaveOrOpen save) {
   GuiSettings settings = data::getGlobal<GuiSettings>();
   return settings.use_tree_view_in_file_dialogs() ?
-    browseForFileToSaveTreeView(msg, startFile) : 
-    browseForFileToSaveNoTreeView(msg, startFile);
+    browseForFileTreeView(msg, startFile, save) :
+    browseForFileNoTreeView(msg, startFile, save);
 }
 
 }  // namespace slow

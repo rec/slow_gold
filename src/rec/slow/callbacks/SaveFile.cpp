@@ -100,7 +100,7 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   File startFile = getBaseFile(instance, suffix, settings, audioSettings);
 
   while (true) {
-    file = slow::browseForFileToSave(SELECT_SAVE_FILE, startFile);
+    file = slow::browseForFile(SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
     if (file == File::nonexistent)
       return file;
     if (file.getFileExtension() == suffix)

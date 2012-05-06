@@ -44,9 +44,6 @@ void AdvancedMenuMaker::addFileMenu() {
 
   menu_.addSeparator();
 
-  add(Command::EXPORT_SETTINGS);
-  menu_.addSeparator();
-
   addIfNotEmpty(Command::SAVE_FILE);
   addIfNotEmpty(Command::SAVE_FILE_SELECTION);
 
@@ -60,9 +57,10 @@ void AdvancedMenuMaker::addFileMenu() {
     addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
 
   menu_.addSubMenu(Trans("File Type For Save..."), save);
-
   menu_.addSeparator();
+
   add(Command::EXPORT_SETTINGS);
+  add(Command::IMPORT_SETTINGS);
 }
 
 void AdvancedMenuMaker::addSelectMenu() {
