@@ -24,96 +24,32 @@ DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
   }
 }
 
+#define CLONE() (*ptr<Message>(clone()))
+
 void DataImpl::pushOnUndoStack(const Message& before) {
-  undoStack_->push(this, before, *message_);
+  undoStack_->push(this, before, CLONE());
 }
 
 void DataImpl::reportChange() {
-  {
-    Lock l(lock_);
-    changed_ = true;
-  }
   dataUpdater_->reportChange(this);
 }
 
 const string DataImpl::toString() const {
+  Lock l(lock_);
   return getTypeName() + ": " + message_->ShortDebugString();
 }
 
 bool DataImpl::writeToFile() {
-  ptr<Message> m;
   if (isEmpty_) {
     LOG(DFATAL) << "Tried to write an empty value.";
     return false;
-  } else {
-    Lock l(lock_);
-    m.reset(clone(*message_));
   }
-  return copy::copy(*m, file_);
+  return copy::copy(CLONE(), file_);
 }
 
-void DataImpl::addListener(Listener<const Message&>* lis) {
-  {
-    Lock l(lock_);
-    Broadcaster<const Message&>::addListener(lis);
-    recentListeners_.insert(lis);
-  }
-  dataUpdater_->reportChange(this);
+void DataImpl::update() {
+  broadcast(CLONE());
 }
-
-void DataImpl::removeListener(Listener<const Message&>* lis) {
-  {
-    Lock l(lock_);
-    Broadcaster<const Message&>::removeListener(lis);
-    recentListeners_.erase(lis);
-  }
-  dataUpdater_->reportChange(this);
-}
-
-bool DataImpl::update() {
-  ptr<Message> m;
-  ListenerSet toUpdate;
-
-  bool changed;
-  {
-    Lock l(lock_);
-    changed = changed_;
-    changed_ = false;
-
-    if (isEmpty_ && changed) {
-      LOG(DFATAL) << "Tried to update an empty value: " << getTypeName();
-      return false;
-    }
-
-    if (changed)
-      recentListeners_.clear();
-
-    else if (!recentListeners_.empty())
-      toUpdate.swap(recentListeners_);
-
-    else
-      return false;
-
-    m.reset(clone(*message_));
-  }
-
-  if (changed) {
-    broadcast(*m);
-  } else {
-    for (ListenerSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i)
-      (**i)(*m);
-  }
-
-  return changed;
-}
-
-#if 0
-{
-  Lock l(outer_);
-
-}
-
-#endif
 
 }  // namespace data
 }  // namespace rec

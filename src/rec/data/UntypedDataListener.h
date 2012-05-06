@@ -24,25 +24,24 @@ class UntypedDataListener : public Listener<const Message&> {
   virtual void operator()(const Message& m) = 0;
   Data* getData() const;
   const string& typeName() const { return typeName_; }
-  bool isStarted() const { return started_; }
+  bool isInitialized() const { return initialized_; }
+  virtual void wasCleared() {}
+
+  void updateCallback();
 
  protected:
   CriticalSection lock_;
 
  private:
-  virtual void setData(const VirtualFile*);
+  bool setData(const VirtualFile*);
 
   struct FileListener;
   friend struct FileListener;
 
-  friend class AddressListener;
-  friend class GlobalAddressListener;
-  friend class UntypedGlobalDataListener;
-
   const string typeName_;
   Data* data_;
   ptr<FileListener> fileListener_;
-  bool started_;
+  bool initialized_;
   ptr<VirtualFile> fileName_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);

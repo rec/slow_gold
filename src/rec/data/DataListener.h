@@ -26,7 +26,12 @@ class DataListener : public Listener<const Proto&> {
   }
 
   void init(Scope scope) {
+    DLOG(INFO) << Proto::default_instance().GetTypeName();
     adaptor_->init(scope);
+  }
+
+  void updateCallback() {
+    adaptor_->updateCallback();
   }
 
  private:
@@ -48,7 +53,6 @@ class DataListener : public Listener<const Proto&> {
    private:
     DataListener<Proto>* const parent_;
   };
-
 
   ptr<Adaptor> adaptor_;
 

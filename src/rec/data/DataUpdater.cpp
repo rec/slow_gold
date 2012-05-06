@@ -6,72 +6,93 @@
 #include "rec/data/DataMap.h"
 #include "rec/data/DataOps.h"
 #include "rec/util/STL.h"
+#include "rec/util/HasLock.h"
 
 namespace rec {
 namespace data {
 
+class DataUpdater::DataSet : public HasLock {
+ public:
+  DataSet() : thread_(NULL) {}
+
+  typedef std::set<Data*> Set;
+
+  Set* transfer() {
+    Lock l(lock_);
+    if (!thread_)
+      thread_ = Thread::getCurrentThread();
+    return data_.transfer();
+  }
+
+  void insert(Data* data) {
+    Lock l(lock_);
+    if (!data_)
+      data_.reset(new Set);
+    data_->insert(data);
+    notify();
+  }
+
+  int insert(Set* s) {
+    if (!s)
+      return 0;
+    ptr<Set> del(s);
+    int size = s->size();
+    if (size) {
+      Lock l(lock_);
+      if (data_) {
+        data_->insert(s->begin(), s->end());
+      } else {
+        data_.reset(new Set);
+        s->swap(*data_);
+      }
+    }
+    return size;
+  }
+
+  bool hasUpdates() const {
+    Lock l(lock_);
+    return thread_ && data_ && !data_->empty();
+  }
+
+ private:
+  void notify() {
+    if (thread_)
+      thread_->notify();
+  }
+
+  ptr<Set> data_;
+  Thread* thread_;
+  CriticalSection lock_;
+
+};
+
+DataUpdater::DataUpdater()
+  : map_(NULL), update_(new DataSet), write_(new DataSet) {
+}
+
+DataUpdater::~DataUpdater() {}
+
 // A piece of data got new information!
 void DataUpdater::reportChange(Data* data) {
-  Lock l(updateLock_);
-  updateData_.insert(data);
-  if (updateThread_)
-    updateThread_->notify();
+  update_->insert(data);
 }
 
 bool DataUpdater::update() {
-  DataSet toUpdate;
-  {
-    Lock l(updateLock_);
-    if (!updateThread_)
-      updateThread_ = Thread::getCurrentThread();
-
-    updateData_.swap(toUpdate);
-  }
-
-  if (toUpdate.empty())
-    return false;
-
-  DataSet toWrite;
-  int j = 0;
-  for (DataSet::iterator i = toUpdate.begin(); i != toUpdate.end(); ++i, ++j) {
-    Data* data = *i;
-    if (data->update())
-      toWrite.insert(data);
-  }
-
-  if (toWrite.empty())
-    return false;
-
-  Lock l(writeLock_);
-  writeData_.insert(toWrite.begin(), toWrite.end());
-  if (writeThread_)
-    writeThread_->notify();
-
-  return true;
+  return write_->insert(update_->transfer());
 }
 
 bool DataUpdater::hasUpdates() const {
-  Lock l(updateLock_);
-  return updateThread_ && !updateData_.empty();
+  return update_->hasUpdates();
 }
 
 bool DataUpdater::write() {
-  DataSet toWrite;
-  {
-    Lock l(writeLock_);
-    if (!writeThread_)
-      writeThread_ = Thread::getCurrentThread();
-
-    if (writeData_.empty())
-      return false;
-
-    writeData_.swap(toWrite);
+  ptr<DataSet::Set> toWrite(write_->transfer());
+  if (toWrite) {
+    for (DataSet::Set::iterator i = toWrite->begin(); i != toWrite->end(); ++i)
+      (*i)->writeToFile();
   }
 
-  for (DataSet::iterator i = toWrite.begin(); i != toWrite.end(); ++i)
-    (*i)->writeToFile();
-
-  return true;
+  return toWrite && !toWrite->empty();
 }
 
 }  // namespace data

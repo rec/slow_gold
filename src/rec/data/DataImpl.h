@@ -20,18 +20,13 @@ class DataImpl : public Data {
   virtual const File getFile() const { Lock l(lock_); return file_; }
 
  private:
-  virtual void addListener(Listener<const Message&>*);
-  virtual void removeListener(Listener<const Message&>*);
   virtual const string& key() const { return key_; }
 
-  virtual bool update();
+  virtual void update();
   virtual void pushOnUndoStack(const Message& before);
   virtual void reportChange();
   virtual bool writeToFile();
 
-  typedef std::set<Listener<const Message&>*> ListenerSet;
-
-  ListenerSet recentListeners_;
   File file_;
   DataUpdater* dataUpdater_;
   UndoStack* undoStack_;

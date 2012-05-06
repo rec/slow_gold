@@ -37,7 +37,7 @@ uint32 SetterResizer::get() const {
 
 void SetterResizer::moved() {
   Lock l(lock_);
-  if (isStarted())
+  if (isInitialized())
     requestWrite();
 }
 
@@ -63,7 +63,7 @@ void SetterResizer::doSetValue(data::Value& v) {
 }
 
 void SetterResizer::doWriteGui() {
-  if (!isStarted())
+  if (!isInitialized())
     return;
 
   Lock l(lock_);

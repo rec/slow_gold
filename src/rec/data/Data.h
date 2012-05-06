@@ -22,8 +22,19 @@ class Data : public Broadcaster<const Message&> {
   virtual const File getFile() const = 0;
 
   bool isEmpty() const { return isEmpty_; }
-  const string& getTypeName() const { return util::getTypeName(*message_); }
+  const string& getTypeName() const {
+    Lock l(lock_);
+    return util::getTypeName(*message_);
+  }
   virtual const string& key() const = 0;
+
+  Message* clone() const {
+    Lock l(lock_);
+    return util::clone(*message_);
+  }
+
+ protected:
+  CriticalSection lock_;
 
  private:
   Data(bool e) : changed_(false), isEmpty_(e) {}
@@ -32,10 +43,9 @@ class Data : public Broadcaster<const Message&> {
   // Report a change to the protocol buffer.
   virtual void pushOnUndoStack(const Message& before) = 0;
   virtual void reportChange() = 0;
-  virtual bool update() = 0;
+  virtual void update() = 0;
   virtual bool writeToFile() = 0;
 
-  CriticalSection lock_;
   ptr<Message> message_;
 
   bool changed_;

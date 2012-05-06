@@ -15,8 +15,8 @@ class UndoStack;
 // to the file system.
 class DataUpdater {
  public:
-  DataUpdater() : updateThread_(NULL), writeThread_(NULL), map_(NULL) {}
-  ~DataUpdater() {}
+  DataUpdater();
+  ~DataUpdater();
 
   void reportChange(Data*);
   bool update();
@@ -26,17 +26,10 @@ class DataUpdater {
   bool hasUpdates() const;
 
  private:
-  CriticalSection updateLock_;
-  CriticalSection writeLock_;
-
-  Thread* updateThread_;
-  Thread* writeThread_;
-
-  typedef std::set<Data*> DataSet;
-
-  DataSet updateData_;
-  DataSet writeData_;
+  class DataSet;
   DataMap* map_;
+  ptr<DataSet> update_;
+  ptr<DataSet> write_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DataUpdater);
 };

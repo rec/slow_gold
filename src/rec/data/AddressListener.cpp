@@ -33,8 +33,8 @@ void AddressListener::init(Scope s) {
   untypedListener_->init(s);
 }
 
-bool AddressListener::isStarted() const {
-  return untypedListener_->isStarted();
+bool AddressListener::isInitialized() const {
+  return untypedListener_->isInitialized();
 }
 
 static void logError(const string& error, bool failOnError) {
