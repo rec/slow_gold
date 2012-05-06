@@ -29,15 +29,15 @@ command {
 command {
   type: CLEAR_ALL_SETTINGS
   desc {
-    menu: "Clear All Settings"
-    full: "Clear all SlowGold settings for all tracks that have ever been visited."
+    menu: "Clear All Settings And Quit"
+    full: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
   }
 }
 command {
   type: CLEAR_SETTINGS_FOR_THIS_TRACK
   desc {
-    menu: "Clear Settings For This Track"
-    full: "Clear all SlowGold settings for this track only."
+    menu: "Clear Settings For This Track And Quit"
+    full: "Clear all SlowGold settings for this track only and quit the program."
   }
 }
 command {

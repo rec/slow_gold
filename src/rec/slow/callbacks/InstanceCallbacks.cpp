@@ -41,6 +41,23 @@ namespace {
 Trans NO_DOWNLOAD_FOUND("Your Version Of SlowGold Is Up-To-Date");
 Trans NO_DOWNLOAD_FOUND_FULL("Your version of SlowGold, %s, is up-to-date.");
 Trans OK("OK");
+Trans CANCEL("Cancel");
+
+Trans CONFIRM_CLEAR_ALL_SETTINGS("Clearing All Settings");
+
+Trans CONFIRM_CLEAR_ALL_SETTINGS_FULL("Clearing *all* settings and quitting the "
+                                      "program.");
+
+Trans CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK("Clearing Settings For This Track.");
+
+Trans CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL("Clearing settings for this "
+                                                 "track only and quitting the "
+                                                 "program.");
+
+Trans CLEAR_FAILED("Unable To Clear Settings");
+
+Trans CLEAR_FAILED_FULL("Sorry, there was an error clearing the settings. "
+                        "Please report this to support@worldwidewoodshed.com.");
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
@@ -217,22 +234,32 @@ void checkForUpdates(Instance* i) {
   }
 }
 
-bool deleteRecursivelyAndQuit(Instance* i, const File& dir) {
+void deleteRecursivelyAndQuit(const File& dir, Instance* i,
+                              const String& title, const String& msg) {
+  if (!AlertWindow::showOkCancelBox(AlertWindow::InfoIcon, title, msg,
+                                    OK, CANCEL)) {
+    return;
+  }
   closeFile(i);
   bool success = dir.deleteRecursively();
-  if (success)
+  if (success) {
     i->window_->application()->quit();
-  else
-    LOG(DFATAL) << "Couldn't delete directory " << str(dir);
-  return success;
+  } else {
+    AlertWindow::showMessageBox(AlertWindow::WarningIcon, CLEAR_FAILED,
+                                CLEAR_FAILED_FULL);
+  }
 }
 
 void clearAllSettings(Instance* i) {
-  deleteRecursivelyAndQuit(i, app::getAppDirectory());
+  deleteRecursivelyAndQuit(app::getAppDirectory(), i,
+                           CONFIRM_CLEAR_ALL_SETTINGS,
+                           CONFIRM_CLEAR_ALL_SETTINGS_FULL);
 }
 
 void clearSettingsForThisTrack(Instance* i) {
-  deleteRecursivelyAndQuit(i, file::getShadowDirectory(i->file()));
+  deleteRecursivelyAndQuit(file::getShadowDirectory(i->file()), i,
+                           CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK,
+                           CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
 }
 
 }  // namespace
@@ -275,6 +302,12 @@ void InstanceCallbacks::translateAll() {
   NO_DOWNLOAD_FOUND.translate();
   NO_DOWNLOAD_FOUND_FULL.translate();
   OK.translate();
+  CONFIRM_CLEAR_ALL_SETTINGS.translate();
+  CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK.translate();
+  CONFIRM_CLEAR_ALL_SETTINGS_FULL.translate();
+  CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL.translate();
+  CLEAR_FAILED.translate();
+  CANCEL.translate();
 }
 
 }  // namespace slow
