@@ -1060,6 +1060,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\GuiListener.cpp">
       <Filter>tests\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\GuiSettings.cpp">
+      <Filter>tests\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp">
       <Filter>tests\rec\slow</Filter>
     </ClCompile>
@@ -3382,6 +3385,9 @@
       <Filter>tests\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\GuiListener.h">
+      <Filter>tests\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\GuiSettings.h">
       <Filter>tests\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h">

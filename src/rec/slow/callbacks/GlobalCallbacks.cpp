@@ -5,6 +5,7 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/ZipData.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
+#include "rec/slow/GuiSettings.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Undo.h"
@@ -37,6 +38,7 @@ Trans MAIL_SUBJECT("Support Request: %s");
 Trans PLEASE_CONTACT("Please contact World Wide Woodshed support at");
 Trans PLEASE_MAIL("Please mail the file to %s and then you can throw it away.");
 Trans SUPPORTED("A Support Request Was Created On Your Desktop");
+Trans SELECT_EXPORT_FILE("Select A File To Save Exported Settings");
 
 const String SUPPORT = "support@worldwidewoodshed.com";
 const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
@@ -101,6 +103,20 @@ void requestSupport() {
   }
 }
 
+void exportSettings() {
+  File start = File::getSpecialLocation(File::userDesktopDirectory).
+    getChildFile("SlowGold Export.zip");
+  File file = browseForFileToSave(SELECT_EXPORT_FILE, start);
+  if (file == File::nonexistent)
+    return;
+
+  file = data::zipData(file);
+  if (file == File::nonexistent)
+    return;  // TODO: report error - very unlikely.
+  else
+    file.revealToUser();
+}
+
 void setMode(Mode::Action action) {
   Mode mode;
   mode.set_click(action);
@@ -141,6 +157,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::CUT, cutToClipboard);
   addCallback(t, Command::DEL, cutNoClipboard);
   addCallback(t, Command::EJECT_CDS, cd::ejectAll);
+  addCallback(t, Command::EXPORT_SETTINGS, exportSettings);
   addCallback(t, Command::OPEN_MANUAL, openManual);
   addCallback(t, Command::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
   addCallback(t, Command::PASTE, pasteFromClipboard);
@@ -162,6 +179,7 @@ void GlobalCallbacks::translateAll() {
   MAIL_SUBJECT.translate();
   PLEASE_CONTACT.translate();
   PLEASE_MAIL.translate();
+  SELECT_EXPORT_FILE.translate();
   SUPPORTED.translate();
 }
 

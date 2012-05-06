@@ -9,6 +9,7 @@ command { type: CUT category: "Edit"}
 command { type: DEL category: "Edit"}
 command { type: DESELECT_ALL category: "Selection"}
 command { type: DIM_VOLUME_TOGGLE category: "Audio"}
+command { type: EXPORT_SETTINGS category: "File"}
 command { type: EJECT_CDS category: "File"}
 command { type: INVERT_LOOP_SELECTION category: "Selection" }
 command { type: KEYBOARD_MAPPINGS category: "File"}
@@ -26,7 +27,7 @@ command { type: OPEN_SLOWGOLD_DIRECTORY category: "Help"}
 command { type: PASTE category: "Edit"}
 command { type: REDO category: "Edit"}
 command { type: RESET_GAIN_TO_UNITY category: "Audio"}
-command { type: REQUEST_SUPPORT category: "Audio"}
+command { type: REQUEST_SUPPORT category: "Help"}
 command { type: SAVE_FILE category: "File"}
 command { type: SAVE_FILE_SELECTION category: "File"}
 command { type: SELECT_ALL category: "Transport"}

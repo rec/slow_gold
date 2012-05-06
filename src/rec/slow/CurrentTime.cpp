@@ -6,6 +6,8 @@
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/audio/util/Frame.h"
+#include "rec/gui/audio/TransformController.h"
+#include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/widget/waveform/Zoom.h"
@@ -97,8 +99,13 @@ void CurrentTime::setViewport(const Viewport& viewport) {
 }
 
 void CurrentTime::operator()(const GuiSettings& settings) {
-  Lock l(lock());
-  followCursor_ = settings.follow_cursor();
+  {
+    Lock l(lock());
+    followCursor_ = settings.follow_cursor();
+  }
+
+  bool show = settings.show_master_tune();
+  components()->transformController_->showMasterTune(show);
 }
 
 void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) {

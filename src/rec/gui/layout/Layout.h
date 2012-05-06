@@ -9,7 +9,8 @@
 namespace rec {
 namespace gui {
 
-class Layout : public Component, public SizeHintAccumulator,
+class Layout : public Component,
+               public SizeHintAccumulator,
                public SettableTooltipClient {
  public:
   static const int DEFAULT_MIN = 12;
@@ -31,10 +32,10 @@ class Layout : public Component, public SizeHintAccumulator,
 
   virtual void resized();
   StretchableLayoutManager* layoutManager() { return &layoutManager_; }
-
- protected:
+  void clear();
   virtual void layout();
 
+ protected:
   StretchableLayoutManager layoutManager_;
   std::vector<Component*> components_;
   Orientation orientation_;

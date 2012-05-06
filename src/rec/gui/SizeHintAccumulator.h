@@ -22,6 +22,12 @@ class SizeHintAccumulator : public HasSizeHints {
     size_[HasSizeHints::PREF].accumulate(pref);
   }
 
+  void clear() {
+    size_[HasSizeHints::MIN].clear();
+    size_[HasSizeHints::MAX].clear();
+    size_[HasSizeHints::PREF].clear();
+  }
+
  private:
   SizeAccumulator size_[HasSizeHints::LAST];
   const Orientation orientation_;

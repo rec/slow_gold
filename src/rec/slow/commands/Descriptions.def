@@ -76,6 +76,13 @@ command {
   }
 }
 command {
+  type: EXPORT_SETTINGS
+  desc {
+    menu: "Export SlowGold Settings..."
+    full: "Export all SlowGold Settings to a .zip file."
+  }
+}
+command {
   type: EJECT_CDS
   desc {
     menu: "Eject All"
@@ -290,6 +297,13 @@ command {
   desc {
     menu: "Show Loop Point Labels At Top"
     full: "Show the loop point labels at the top of the waveform display."
+  }
+}
+command {
+  type: TOGGLE_SHOW_MASTER_TUNE
+  desc {
+    menu: "Show Master Tune Slider"
+    full: "Show the Master Tune Slider in the Transform Panel."
   }
 }
 command {

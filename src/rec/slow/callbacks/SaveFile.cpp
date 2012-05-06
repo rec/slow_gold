@@ -9,6 +9,7 @@
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/base/Trans.h"
 #include "rec/audio/util/BufferFiller.h"
+#include "rec/slow/GuiSettings.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
@@ -86,22 +87,6 @@ File getBaseFile(Instance* instance, const String& suffix,
   return file.getChildFile(baseName + suffix);
 }
 
-File browseForFileToSave(const File& startFile) {
-  FileChooser c(SELECT_SAVE_FILE, startFile);
-  return c.browseForFileToSave(true) ? c.getResult() : File::nonexistent;
-}
-
-File browseForFileToSaveTreeView(const File& startFile) {
-  int flags = FileBrowserComponent::saveMode +
-    FileBrowserComponent::canSelectFiles +
-    FileBrowserComponent::useTreeView;
-
-  FileBrowserComponent fileBrowser(flags, startFile, NULL, NULL);
-  FileChooserDialogBox dialogBox(SELECT_SAVE_FILE, "", fileBrowser, true,
-                                 Colours::white);
-  return dialogBox.show() ? fileBrowser.getSelectedFile(0) : File::nonexistent;
-}
-
 static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav"};
 
 File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
@@ -115,8 +100,7 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   File startFile = getBaseFile(instance, suffix, settings, audioSettings);
 
   while (true) {
-    file = settings.use_tree_view_in_file_dialogs() ?
-      browseForFileToSaveTreeView(startFile) : browseForFileToSave(startFile);
+    file = slow::browseForFileToSave(SELECT_SAVE_FILE, startFile);
     if (file == File::nonexistent)
       return file;
     if (file.getFileExtension() == suffix)

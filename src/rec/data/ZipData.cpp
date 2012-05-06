@@ -21,10 +21,7 @@ bool mustZip(const File& f) {
 }
 
 File zipFileName(const String& name) {
-  String n = name;
-  if (!n.endsWith(".zip"))
-    n += ".zip";
-  return File::getSpecialLocation(File::userDesktopDirectory).getChildFile(n);
+  return File::getSpecialLocation(File::userDesktopDirectory).getChildFile(name);
 }
 
 void addFiles(const File& root, Builder* builder, int cmp = COMPRESSION_LEVEL) {
@@ -49,15 +46,25 @@ File writeZipFile(const Builder& builder, const String& name) {
   return File::nonexistent;
 }
 
+File writeZipFile(const Builder& builder, const File& file) {
+  File f = file.withFileExtension(".zip");
+  FileOutputStream output(f);
+  return builder.writeToStream(output, NULL) ? f : File::nonexistent;
+}
+
 }  // namespace
 
 File zipData(const String& name) {
+  return zipData(zipFileName(name));
+}
+
+File zipData(const File& file) {
   data::setGlobal(getSystemStats(), CANT_UNDO);
   Thread::sleep(1000);  // TODO: hack!
 
   Builder builder;
   addFiles(app::getAppDirectory(), &builder);
-  return writeZipFile(builder, name);
+  return writeZipFile(builder, file);
 }
 
 }  // namespace data

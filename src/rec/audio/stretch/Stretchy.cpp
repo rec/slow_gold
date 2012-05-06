@@ -49,7 +49,7 @@ void Stretchy::setMasterTune(double detune) {
   Lock l(lock_);
   detune_ = detune;
   if (implementation_)
-    setMasterTune(detune_);
+    implementation_->setMasterTune(detune_);
 }
 
 void Stretchy::setStretch(const stretch::Stretch& stretch) {

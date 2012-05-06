@@ -36,14 +36,24 @@ void Layout::resized() {
 }
 
 void Layout::layout() {
-  if (components_.size()) {
+  int width = getWidth();
+  int height = getHeight();
+  if (components_.size() && width && height) {
     layoutManager_.layOutComponents(&components_[0], components_.size(),
-                                    0, 0, getWidth(), getHeight(),
-                                    orientation_ == VERTICAL, 
+                                    0, 0, width, height,
+                                    orientation_ == VERTICAL,
 									resizeOtherDimension_);
     if (cache_)
       cache_->invalidateAll();
   }
+}
+
+void Layout::clear() {
+  SizeHintAccumulator::clear();
+  layoutManager_.clearAllItems();
+  components_.clear();
+  while (uint size = getNumChildComponents())
+    removeChildComponent(getChildComponent(size - 1));
 }
 
 }  // namespace gui

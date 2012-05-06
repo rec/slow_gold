@@ -42,6 +42,11 @@ void AdvancedMenuMaker::addEditMenu() {
 void AdvancedMenuMaker::addFileMenu() {
   BasicMenuMaker::addFileMenu();
 
+  menu_.addSeparator();
+
+  add(Command::EXPORT_SETTINGS);
+  menu_.addSeparator();
+
   addIfNotEmpty(Command::SAVE_FILE);
   addIfNotEmpty(Command::SAVE_FILE_SELECTION);
 
@@ -55,6 +60,9 @@ void AdvancedMenuMaker::addFileMenu() {
     addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
 
   menu_.addSubMenu(Trans("File Type For Save..."), save);
+
+  menu_.addSeparator();
+  add(Command::EXPORT_SETTINGS);
 }
 
 void AdvancedMenuMaker::addSelectMenu() {
@@ -88,17 +96,21 @@ void AdvancedMenuMaker::addHelpMenu() {
 
 void AdvancedMenuMaker::addDisplayMenu() {
   add(Command::TOGGLE_GRID_DISPLAY);
-  add(Command::TOGGLE_FILE_OPEN_TREE_DISPLAY);
   add(Command::TOGGLE_PARALLEL_WAVEFORMS);
   add(Command::TOGGLE_FOLLOW_CURSOR);
+  menu_.addSeparator();
   add(Command::TOGGLE_SHOW_SELECTION_BUTTONS);
   add(Command::TOGGLE_SHOW_CURSOR_LABELS);
+  menu_.addSeparator();
   add(Command::TOGGLE_SHOW_TIMES_AT_TOP);
   add(Command::TOGGLE_SHOW_LABELS_AT_TOP);
   add(Command::TOGGLE_COMMAND_BAR_AT_LEFT);
   add(Command::TOGGLE_COMMAND_BAR_AT_TOP);
   add(Command::TOGGLE_MODES_AT_LEFT);
   add(Command::TOGGLE_MODES_AT_TOP);
+  menu_.addSeparator();
+  add(Command::TOGGLE_FILE_OPEN_TREE_DISPLAY);
+  add(Command::TOGGLE_SHOW_MASTER_TUNE);
 }
 
 const StringArray AdvancedMenuMaker::getMenuBarNames() const {

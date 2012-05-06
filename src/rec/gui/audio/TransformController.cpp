@@ -1,4 +1,5 @@
 #include "rec/gui/audio/TransformController.h"
+
 #include "rec/util/thread/CallAsync.h"
 
 using namespace rec::audio::source;
@@ -21,6 +22,7 @@ enum Sides {
 };
 
 const int SLIDER_HEIGHT = 30;
+const int FINE_OFFSET = 7;
 const int LEFT_PANEL_WIDTH = 90;
 const int ENABLE_BUTTON_HEIGHT = 40;
 const int COMBO_BOX_HEIGHT = 30;
@@ -37,12 +39,14 @@ TransformController::TransformController()
                   Address("semitone_shift")),
       fineScale_(Trans("Tune"), getTypeName<Stretch>(),
                  Address("detune_cents")),
-      masterTune_(Trans("Master Tune"), getTypeName<AudioSettings>(),
+      masterTune_(Trans("Master"), getTypeName<AudioSettings>(),
                   Address("master_tune"), "", "", GLOBAL_SCOPE),
       enableButton_(Trans("Transform"), getTypeName<Stretch>(),
                     Address("enabled")),
       leftPanel_("Left", VERTICAL),
-      rightPanel_("Right", VERTICAL) {
+      rightPanel_("Right", VERTICAL),
+      showMasterTune_(true),
+      rightPanelCreated_(false) {
   playbackSpeed_.slider()->setRange(5.0, 200.0, 0.1);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 0.1);
@@ -100,12 +104,6 @@ TransformController::TransformController()
   leftPanel_.addToLayout(&leftPadding_);
 
   addToLayout(&leftPanel_, LEFT_PANEL_WIDTH);
-
-  rightPanel_.addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
-  rightPanel_.addToLayout(&pitchScale_, SLIDER_HEIGHT);
-  rightPanel_.addToLayout(&fineScale_, SLIDER_HEIGHT);
-  rightPanel_.addToLayout(&rightPadding_);
-
   addToLayout(&rightPanel_, 150, -1.0, 250);
 }
 
@@ -119,6 +117,27 @@ void TransformController::init() {
   fineScale_.init();
   enableButton_.init();
   masterTune_.init();
+}
+
+void TransformController::showMasterTune(bool show) {
+  if (!rightPanelCreated_ || showMasterTune_ != show) {
+    MessageManagerLock l;
+    showMasterTune_ = show;
+    if (rightPanelCreated_)
+      rightPanel_.clear();
+    else
+      rightPanelCreated_ = true;
+
+    int height = SLIDER_HEIGHT - (show ? FINE_OFFSET : 0);
+    rightPanel_.addToLayout(&playbackSpeed_, height);
+    rightPanel_.addToLayout(&pitchScale_, height);
+    rightPanel_.addToLayout(&fineScale_, height);
+
+    if (show)
+      rightPanel_.addToLayout(&masterTune_, height);
+    rightPanel_.addToLayout(&rightPadding_);
+    rightPanel_.layout();
+  }
 }
 
 void TransformController::operator()(const Stretch& s) {

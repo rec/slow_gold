@@ -8,6 +8,7 @@ namespace data {
 
 // Store all data to a zip file and return that file, or no file if we failed.
 File zipData(const String& name);
+File zipData(const File& file);
 
 }  // namespace data
 }  // namespace rec

@@ -8,7 +8,7 @@ namespace gui {
 
 class SizeAccumulator {
  public:
-  SizeAccumulator() : totalAbsolute_(0), totalRatio_(0.0) {}
+  SizeAccumulator() { clear(); }
 
   void accumulate(double size) {
     if (size >= 0.0) {
@@ -26,6 +26,11 @@ class SizeAccumulator {
     }
 
     return static_cast<int>(totalAbsolute_ / (1.0 - totalRatio_));
+  }
+
+  void clear() {
+    totalAbsolute_ = 0;
+    totalRatio_ = 0.0;
   }
 
  private:

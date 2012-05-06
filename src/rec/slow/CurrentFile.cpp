@@ -10,8 +10,6 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/RecentFiles.h"
-#include "rec/gui/audio/TransformController.h"
-#include "rec/gui/audio/TimeController.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentTime.h"

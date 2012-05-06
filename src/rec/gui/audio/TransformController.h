@@ -30,6 +30,7 @@ class TransformController : public Layout,
   virtual void operator()(const rec::audio::source::StereoProto&);
 
   virtual void comboBoxChanged(juce::ComboBox*);
+  void showMasterTune(bool);
 
  private:
   void setStretch(const rec::audio::stretch::Stretch&);
@@ -47,6 +48,9 @@ class TransformController : public Layout,
 
   Layout leftPadding_;
   Layout rightPadding_;
+
+  bool showMasterTune_;
+  bool rightPanelCreated_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransformController);
 };

@@ -90,6 +90,13 @@ command {
   category: "Display"
 }
 command {
+  type: TOGGLE_SHOW_MASTER_TUNE
+  is_global_setter: true
+  address { part: { name: "show_master_tune" } }
+  setter_type_name: "rec.slow.GuiSettings"
+  category: "Display"
+}
+command {
   type: TOGGLE_SHOW_TIMES_AT_TOP
   is_global_setter: true
   address { part: { name: "show_times_at_top" } }
