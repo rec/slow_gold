@@ -68,6 +68,10 @@ command {
   keypress: "command + o"
 }
 command {
+  type: OPEN_PREVIOUS_FILE
+  keypress: "command + r"
+}
+command {
   type: REDO
   keypress: "shift + command + z"
 }

@@ -72,6 +72,7 @@ enum Command_Type {
   Command_Type_NUDGE_VOLUME_UP = 20,
   Command_Type_OPEN = 21,
   Command_Type_OPEN_MANUAL = 65,
+  Command_Type_OPEN_PREVIOUS_FILE = 78,
   Command_Type_OPEN_SLOWGOLD_DIRECTORY = 74,
   Command_Type_RECENT_FILES = 22,
   Command_Type_REDO = 23,
@@ -117,7 +118,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 77,
+  Command_Type_LAST_TYPE = 78,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -352,6 +353,7 @@ class Command : public ::google::protobuf::Message {
   static const Type NUDGE_VOLUME_UP = Command_Type_NUDGE_VOLUME_UP;
   static const Type OPEN = Command_Type_OPEN;
   static const Type OPEN_MANUAL = Command_Type_OPEN_MANUAL;
+  static const Type OPEN_PREVIOUS_FILE = Command_Type_OPEN_PREVIOUS_FILE;
   static const Type OPEN_SLOWGOLD_DIRECTORY = Command_Type_OPEN_SLOWGOLD_DIRECTORY;
   static const Type RECENT_FILES = Command_Type_RECENT_FILES;
   static const Type REDO = Command_Type_REDO;

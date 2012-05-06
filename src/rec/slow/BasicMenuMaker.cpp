@@ -25,11 +25,15 @@ void BasicMenuMaker::addFileMenu() {
   add(Command::TOGGLE_ADVANCED_MENUS);
 
   std::vector<string> recent = rec::gui::getRecentFileNames();
+
+  menu_.addSeparator();
+  add(Command::OPEN_PREVIOUS_FILE, "", !recent.empty());
+
   PopupMenu submenu;
   for (uint i = 0; i < recent.size(); ++i)
     addRepeat(Command::RECENT_FILES, i, str(recent[i]), &submenu);
 
-  menu_.addSubMenu(Trans("Open recent"), submenu);
+  menu_.addSubMenu(Trans("Open recent"), submenu, !recent.empty());
 
 #if !JUCE_MAC
   add(Command::ABOUT_THIS_PROGRAM);

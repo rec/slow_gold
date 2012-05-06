@@ -1,6 +1,7 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 
 #include "rec/audio/AudioSettings.pb.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/CurrentFile.h"
@@ -110,6 +111,19 @@ void setSaveFileType(Instance* instance, int i) {
   instance->menus_->menuItemsChanged();
 }
 
+void openPreviousFile(Instance* i) {
+  gui::RecentFiles rf = data::getGlobal<gui::RecentFiles>();
+  int size = rf.file_size();
+  if (size) {
+    if (data::equals(rf.file(0).file(), i->file())) {
+      if (size > 1)
+        loadRecentFile(i, 1);
+    } else {
+      loadRecentFile(i, 0);
+    }
+  }
+}
+
 }  // namespace
 
 void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
@@ -133,6 +147,8 @@ void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_SAVE_FORMAT);
     addCallback(t, id, setSaveFileType, i, j);
   }
+
+  addCallback(t, Command::OPEN_PREVIOUS_FILE, openPreviousFile, i);
 }
 
 }  // namespace slow

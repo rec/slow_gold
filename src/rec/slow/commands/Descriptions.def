@@ -174,6 +174,13 @@ command {
   }
 }
 command {
+  type: OPEN_PREVIOUS_FILE
+  desc {
+    menu: "Re-Open Most Recent Closed File"
+    full: "Re-open the file that was most recently closed."
+  }
+}
+command {
   type: OPEN_MANUAL
   desc {
     menu: "Download SlowGold 8 User Manual"

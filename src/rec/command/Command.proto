@@ -52,6 +52,7 @@ message Command {
 
     OPEN = 21;
     OPEN_MANUAL = 65;
+    OPEN_PREVIOUS_FILE = 78;
     OPEN_SLOWGOLD_DIRECTORY = 74;
 
     RECENT_FILES = 22;
@@ -107,7 +108,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 77;
+    LAST_TYPE = 78;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;
