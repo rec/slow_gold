@@ -33,6 +33,7 @@ Trans RAN_OUT_OF_MEMORY_FULL("Your file was so large that the program "
 }
 
 using namespace rec::widget::waveform;
+using namespace juce;
 
 CurrentFile::CurrentFile(Instance* i) : HasInstance(i),
                                         initialized_(false),
@@ -98,6 +99,9 @@ int64 CurrentFile::getFileLength() {
   }
 
   if (hasStarted_) {
+    LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+    DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
+
     juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
                                       reader.errorTitle(),
                                       reader.errorDetails());

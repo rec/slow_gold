@@ -13,6 +13,8 @@ using juce::RelativeTime;
 using juce::Time;
 using juce::URL;
 
+using namespace juce;
+
 namespace {
 
 const Trans NEW_VERSION("A new version of SlowGold, %s, is available.");
@@ -89,6 +91,10 @@ String majorVersion(const String& version) {
 bool downloadNewVersion(const String& appName, const String& version,
                         const String& oldVersion) {
   String msg = String::formatted(NEW_VERSION, c_str(version));
+
+  LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+  DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
+
   bool ok = AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon, msg,
       msg + LIKE_TO_DOWNLOAD,

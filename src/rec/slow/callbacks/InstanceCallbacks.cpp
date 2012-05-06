@@ -38,21 +38,24 @@ using namespace rec::widget::waveform;
 namespace {
 // Skin
 
+
+static const bool QUIT_EVEN_IF_CLEAR_FAILS = false;
+
 Trans NO_DOWNLOAD_FOUND("Your Version Of SlowGold Is Up-To-Date");
 Trans NO_DOWNLOAD_FOUND_FULL("Your version of SlowGold, %s, is up-to-date.");
 Trans OK("OK");
 Trans CANCEL("Cancel");
 
-Trans CONFIRM_CLEAR_ALL_SETTINGS("Clearing All Settings");
+Trans CONFIRM_CLEAR_ALL_SETTINGS("Clearing All Settings For All Tracks");
 
-Trans CONFIRM_CLEAR_ALL_SETTINGS_FULL("Clearing *all* settings and quitting the "
-                                      "program.");
+Trans CONFIRM_CLEAR_ALL_SETTINGS_FULL("You want to clear *all* settings, and quit "
+                                      "SlowGold.  Is this OK?");
 
-Trans CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK("Clearing Settings For This Track.");
+Trans CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK("Clearing Settings For This Track Only");
 
-Trans CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL("Clearing settings for this "
-                                                 "track only and quitting the "
-                                                 "program.");
+Trans CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL("You want to clear settings for this "
+                                                 "track only, and quit the "
+                                                 "program.  Is this OK?");
 
 Trans CLEAR_FAILED("Unable To Clear Settings");
 
@@ -226,6 +229,9 @@ void toggleStartStop(Instance* i) {
 }
 
 void checkForUpdates(Instance* i) {
+  LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+  DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
+
   if (i->window_->application()->checkForUpdates() == app::DOWNLOAD_NOT_FOUND) {
     String msg = String::formatted(NO_DOWNLOAD_FOUND_FULL,
                                    c_str(i->window_->application()->version()));
@@ -236,13 +242,18 @@ void checkForUpdates(Instance* i) {
 
 void deleteRecursivelyAndQuit(const File& dir, Instance* i,
                               const String& title, const String& msg) {
+  LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+  DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
+
+  DLOG(INFO) << str(title);
+  DLOG(INFO) << str(msg);
   if (!AlertWindow::showOkCancelBox(AlertWindow::InfoIcon, title, msg,
                                     OK, CANCEL)) {
     return;
   }
   closeFile(i);
   bool success = dir.deleteRecursively();
-  if (success) {
+  if (QUIT_EVEN_IF_CLEAR_FAILS || success) {
     i->window_->application()->quit();
   } else {
     AlertWindow::showMessageBox(AlertWindow::WarningIcon, CLEAR_FAILED,

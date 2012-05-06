@@ -90,6 +90,9 @@ File getBaseFile(Instance* instance, const String& suffix,
 static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav"};
 
 File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
+  LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+  DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
+
   if (instance->empty())
     return File::nonexistent;
 

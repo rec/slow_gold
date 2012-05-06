@@ -47,6 +47,9 @@ const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
 using juce::AlertWindow;
 
 void alert(const String& title, const String& msg) {
+  LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+  DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
+
   AlertWindow::showMessageBox(AlertWindow::WarningIcon, title, msg,
                               CLICK_TO_CONTINUE);
 }
