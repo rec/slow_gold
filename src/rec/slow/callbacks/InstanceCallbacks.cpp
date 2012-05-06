@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 
+#include "rec/app/Files.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
@@ -191,21 +192,23 @@ void audioPreferences(Instance* i) {
 }
 
 void closeFile(Instance* i) {
-  (*i->currentFile_)(VirtualFile());
+  i->currentFile_->setFile(VirtualFile());
 }
 
 void open(Instance* i) {
   gui::dialog::openOneFile(i->currentFile_.get());
 }
 
-void quit(Instance* i) {}  // This is never used.
+void quit(Instance* i) {
+  i->window_->application()->quit();
+}
 
 void toggleStartStop(Instance* i) {
   if (!i->empty())
     i->player_->toggle();
 }
 
-void checkForUpdates(Instance * i) {
+void checkForUpdates(Instance* i) {
   if (i->window_->application()->checkForUpdates() == app::DOWNLOAD_NOT_FOUND) {
     String msg = String::formatted(NO_DOWNLOAD_FOUND_FULL,
                                    c_str(i->window_->application()->version()));
@@ -214,12 +217,22 @@ void checkForUpdates(Instance * i) {
   }
 }
 
-void clearAllSettings(Instance * i) {
-  DCHECK(false);
+bool deleteRecursivelyAndQuit(Instance* i, const File& dir) {
+  closeFile(i);
+  bool success = dir.deleteRecursively();
+  if (success)
+    i->window_->application()->quit();
+  else
+    LOG(DFATAL) << "Couldn't delete directory " << str(dir);
+  return success;
 }
 
-void clearSettingsForThisTrack(Instance * i) {
-  DCHECK(false);
+void clearAllSettings(Instance* i) {
+  deleteRecursivelyAndQuit(i, app::getAppDirectory());
+}
+
+void clearSettingsForThisTrack(Instance* i) {
+  deleteRecursivelyAndQuit(i, file::getShadowDirectory(i->file()));
 }
 
 }  // namespace
