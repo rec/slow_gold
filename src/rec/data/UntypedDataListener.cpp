@@ -6,12 +6,14 @@
 namespace rec {
 namespace data {
 
+static const bool AUTO_UPDATE = true;
+
 struct UntypedDataListener::FileListener : public Listener<const Message&> {
   FileListener(UntypedDataListener* parent) : parent_(parent) {}
 
   virtual void operator()(const Message& m) {
     if (const VirtualFile* vf = dynamic_cast<const VirtualFile*>(&m)) {
-      if (parent_->setData(file::empty(*vf) ? noData() : vf))
+      if (parent_->setData(file::empty(*vf) ? noData() : vf) && !AUTO_UPDATE)
         parent_->updateCallback();
     } else {
       LOG(DFATAL) << "Got the wrong update for the file listener: "
@@ -21,7 +23,6 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
 
   UntypedDataListener* const parent_;
 };
-
 
 UntypedDataListener::UntypedDataListener(const string& tn)
     : typeName_(tn), data_(NULL), initialized_(false) {
@@ -70,6 +71,9 @@ bool UntypedDataListener::setData(const VirtualFile* vf) {
     else
       wasCleared();
   }
+
+  if (AUTO_UPDATE)  // || data_)
+    updateCallback();
 
   return data_;
 }

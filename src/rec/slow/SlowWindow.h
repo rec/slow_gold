@@ -2,23 +2,18 @@
 #define __REC_SLOW_SLOWWINDOW__
 
 #include "rec/app/Window.h"
-#include "rec/util/Listener.h"
-#include "rec/music/Metadata.h"
 #include "rec/slow/HasInstance.h"
 
 namespace rec {
 
 namespace app { class GenericApplication; }
-namespace music { class Metadata; }
 
 namespace slow {
 
 class AppLayout;
 class Instance;
 
-class SlowWindow : public app::Window,
-                   public HasInstance,
-                   public data::DataListener<music::Metadata>  {
+class SlowWindow : public app::Window, public HasInstance  {
  public:
   explicit SlowWindow(app::GenericApplication*);
   virtual ~SlowWindow();
@@ -31,7 +26,6 @@ class SlowWindow : public app::Window,
   virtual void trashPreferences();
   void startAboutWindow();
   void stopAboutWindow();
-  virtual void operator()(const music::Metadata&);
   virtual void minimisationStateChanged(bool isNowMinimised);
 
  protected:

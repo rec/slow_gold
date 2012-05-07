@@ -10,8 +10,10 @@
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/CurrentFile.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
+#include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/thread/CallAsync.h"
@@ -32,14 +34,15 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
 }
 
 Components::Components(Instance* instance)
-    : manager_(instance->target_->targetManager()->commandManager()),
+    : HasInstance(instance),
+      manager_(target()->targetManager()->commandManager()),
       timeController_(new gui::audio::TimeController),
       loops_(new gui::audio::Loops()),
-      songData_(new gui::SongData(instance->menus_.get())),
+      songData_(new gui::SongData(menus())),
       transformController_(new gui::audio::TransformController),
       transportController_(
           new gui::audio::TransportController(timeController_.get())),
-      directoryTree_(new widget::tree::Root(instance->menus_.get())),
+      directoryTree_(new widget::tree::Root(menus())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
 	  commandBar_(new gui::audio::CommandBar) {
@@ -60,6 +63,7 @@ void Components::init() {
   waveform_->init();
   modeSelector_->init();
   mainPage_->init();
+  data::DataListener<music::Metadata>::init();
 }
 
 void Components::setEnabled(bool enabled) {
@@ -81,6 +85,18 @@ void Components::doSetEnabled(bool enabled) {
   enableAllDrawableButtons(modeSelector_.get(), enabled);
   enableAllDrawableButtons(commandBar_.get(), enabled);
 }
+
+void Components::operator()(const music::Metadata& md) {
+  String name = Trans("(no file loaded)");
+  if (currentFile() && !currentFile()->empty()) {
+    File file = data::DataListener<music::Metadata>::getData()->getFile();
+    name = str(music::getTitle(md, file.getParentDirectory()));
+  }
+
+  MessageManagerLock l;
+  window()->setName(name);
+}
+
 
 }  // namespace slow
 }  // namespace rec

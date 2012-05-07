@@ -26,7 +26,6 @@ class DataListener : public Listener<const Proto&> {
   }
 
   void init(Scope scope) {
-    DLOG(INFO) << Proto::default_instance().GetTypeName();
     adaptor_->init(scope);
   }
 

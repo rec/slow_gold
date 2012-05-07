@@ -1,7 +1,9 @@
 #ifndef __REC_SLOW_COMPONENTS__
 #define __REC_SLOW_COMPONENTS__
 
-#include "rec/base/base.h"
+#include "rec/music/Metadata.h"
+#include "rec/data/DataListener.h"
+#include "rec/slow/HasInstance.h"
 
 namespace rec {
 
@@ -22,13 +24,15 @@ namespace slow {
 class Instance;
 class MainPage;
 
-class Components {
-public:
+class Components : public HasInstance,
+                   public data::DataListener<music::Metadata> {
+ public:
   explicit Components(Instance*);
   ~Components();
 
-  void init();
+  virtual void init();
   void setEnabled(bool enabled);
+  virtual void operator()(const music::Metadata&);
 
   ApplicationCommandManager* manager_;
   ptr<gui::audio::TimeController> timeController_;
