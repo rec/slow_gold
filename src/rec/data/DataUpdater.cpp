@@ -33,9 +33,9 @@ class DataUpdater::DataSet : public HasLock {
   }
 
   int insert(Set* s) {
+    ptr<Set> del(s);
     if (!s)
       return 0;
-    ptr<Set> del(s);
     int size = s->size();
     if (size) {
       Lock l(lock_);
@@ -78,7 +78,14 @@ void DataUpdater::reportChange(Data* data) {
 }
 
 bool DataUpdater::update() {
-  return write_->insert(update_->transfer());
+  ptr<DataSet::Set> updates(update_->transfer());
+  if (!updates)
+    return false;
+  for (DataSet::Set::iterator i = updates->begin(); i != updates->end(); ++i)
+    (*i)->update();
+
+  write_->insert(updates.transfer());
+  return true;
 }
 
 bool DataUpdater::hasUpdates() const {

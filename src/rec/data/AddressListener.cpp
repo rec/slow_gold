@@ -60,6 +60,7 @@ const Value AddressListener::getValue() const {
 }
 
 void AddressListener::receiveMessage(const Message& m) {
+  // DLOG(INFO) << getTypeName(m) << ": " << m.ShortDebugString();
   if (getTypeName(m) == untypedListener_->typeName())
     (*this)(getValue(m));
   else

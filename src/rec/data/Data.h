@@ -37,6 +37,7 @@ class Data : public Broadcaster<const Message&> {
     Broadcaster<const Message&>::addListener(listener);
     (*listener)(*ptr<Message>(clone()));
   }
+  virtual void update() = 0;
 
  protected:
   CriticalSection lock_;
@@ -48,7 +49,6 @@ class Data : public Broadcaster<const Message&> {
   // Report a change to the protocol buffer.
   virtual void pushOnUndoStack(const Message& before) = 0;
   virtual void reportChange() = 0;
-  virtual void update() = 0;
   virtual bool writeToFile() = 0;
 
   ptr<Message> message_;

@@ -18,11 +18,11 @@ class DataImpl : public Data {
   virtual bool fileReadSuccess() const { return fileReadSuccess_; }
   const string toString() const;
   virtual const File getFile() const { Lock l(lock_); return file_; }
+  virtual void update();
 
  private:
   virtual const string& key() const { return key_; }
 
-  virtual void update();
   virtual void pushOnUndoStack(const Message& before);
   virtual void reportChange();
   virtual bool writeToFile();

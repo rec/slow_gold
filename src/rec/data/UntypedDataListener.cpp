@@ -40,6 +40,7 @@ void UntypedDataListener::init(Scope scope) {
 void UntypedDataListener::updateCallback() {
   Lock l(lock_);
   ptr<Message> msg(data_->clone());
+  // DLOG(INFO) << getTypeName(*msg) << ": " << msg->ShortDebugString();
   (*this)(*msg);
 }
 
@@ -54,7 +55,7 @@ void UntypedDataListener::setData(const VirtualFile* vf) {
   Data* newData = data::getData(typeName_, vf);
   Lock l(lock_);
   if (data_ == newData) {
-    LOG(DFATAL) << "Got the same file twice";
+    LOG(ERROR) << "Got the same file twice";
   } else {
     fileName_.reset(vf ? new VirtualFile(*vf) : NULL);
 
