@@ -10,29 +10,16 @@ static const bool AUTO_UPDATE = true;
 
 struct UntypedDataListener::FileListener : public Listener<const Message&> {
   FileListener(UntypedDataListener* parent) : parent_(parent) {}
-
-  virtual void operator()(const Message& m) {
-    if (const VirtualFile* vf = dynamic_cast<const VirtualFile*>(&m)) {
-      parent_->setData(file::empty(*vf) ? noData() : vf);
-      if (AUTO_UPDATE)
-        parent_->updateCallback();
-    } else {
-      LOG(DFATAL) << "Got the wrong update for the file listener: "
-                  << getTypeName(m);
-    }
-  }
-
+  virtual void operator()(const Message& m) { parent_->setData(m); }
   UntypedDataListener* const parent_;
 };
 
 UntypedDataListener::UntypedDataListener(const string& tn)
     : typeName_(tn), data_(NULL), initialized_(false) {
-  fileListener_.reset(new FileListener(this));
 }
 
 UntypedDataListener::~UntypedDataListener() {
-  DCHECK(initialized_) << "created a listener but never started it! "
-                       << typeName();
+  DCHECK(initialized_) << "never started listener for " << typeName();
 }
 
 void UntypedDataListener::init(Scope scope) {
@@ -42,7 +29,8 @@ void UntypedDataListener::init(Scope scope) {
   } else if (scope == GLOBAL_SCOPE) {
     setData(global());
   } else {
-    setData(noData());
+    if (!fileListener_)
+      fileListener_.reset(new FileListener(this));
     data::getData<VirtualFile>(global())->addListener(fileListener_.get());
   }
 
@@ -53,10 +41,16 @@ void UntypedDataListener::updateCallback() {
   Lock l(lock_);
   ptr<Message> msg(data_->clone());
   (*this)(*msg);
-  DLOG(INFO) << getTypeName(*msg) << ": " << msg->ShortDebugString();
 }
 
-bool UntypedDataListener::setData(const VirtualFile* vf) {
+void UntypedDataListener::setData(const Message& m) {
+  if (const VirtualFile* vf = dynamic_cast<const VirtualFile*>(&m))
+    setData(vf);
+  else
+    LOG(DFATAL) << "Got wrong update for FileListener: " << getTypeName(m);
+}
+
+void UntypedDataListener::setData(const VirtualFile* vf) {
   Data* newData = data::getData(typeName_, vf);
   Lock l(lock_);
   if (data_ == newData) {
@@ -74,12 +68,8 @@ bool UntypedDataListener::setData(const VirtualFile* vf) {
     else
       wasCleared();
 
-    if (AUTO_UPDATE)  // || data_)
-      updateCallback();
+    updateCallback();
   }
-
-
-  return data_;
 }
 
 Data* UntypedDataListener::getData() const {

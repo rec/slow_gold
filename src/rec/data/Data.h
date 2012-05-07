@@ -33,6 +33,11 @@ class Data : public Broadcaster<const Message&> {
     return util::clone(*message_);
   }
 
+  virtual void addListener(Listener<const Message&>* listener) {
+    Broadcaster<const Message&>::addListener(listener);
+    (*listener)(*ptr<Message>(clone()));
+  }
+
  protected:
   CriticalSection lock_;
 

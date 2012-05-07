@@ -26,14 +26,14 @@ class UntypedDataListener : public Listener<const Message&> {
   const string& typeName() const { return typeName_; }
   bool isInitialized() const { return initialized_; }
   virtual void wasCleared() {}
-
   void updateCallback();
 
  protected:
   CriticalSection lock_;
 
  private:
-  bool setData(const VirtualFile*);
+  void setData(const Message&);
+  void setData(const VirtualFile*);
 
   struct FileListener;
   friend struct FileListener;
