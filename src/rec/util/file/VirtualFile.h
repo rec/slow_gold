@@ -27,6 +27,10 @@ inline const string toString(const VirtualFile& f) {
   return str(getFullDisplayName(f));
 }
 
+inline const string toString(const VirtualFile* f) {
+  return f ? string("(no file)") : toString(*f);
+}
+
 bool compare(const VirtualFile& x, const VirtualFile& y);
 
 // TODO: conflicts with the idea of data::empty().

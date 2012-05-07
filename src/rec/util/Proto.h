@@ -22,6 +22,10 @@ inline Message* clone(const Message& m) {
   return p.transfer();
 }
 
+inline Message* clone(const Message* m) {
+  return m ? clone(*m) : NULL;
+}
+
 }  // namespace util
 }  // namespace rec
 

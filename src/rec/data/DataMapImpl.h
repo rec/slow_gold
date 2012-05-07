@@ -19,6 +19,7 @@ class DataMapImpl : public DataMap {
 
   virtual Data* getData(const string& typeName, const VirtualFile* vf);
   virtual void removeData(Data*);
+  virtual void updateAll();
 
  private:
   struct DataFile;

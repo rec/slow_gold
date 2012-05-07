@@ -30,7 +30,7 @@ class Data : public Broadcaster<const Message&> {
 
   Message* clone() const {
     Lock l(lock_);
-    return util::clone(*message_);
+    return util::clone(message_.get());
   }
 
   virtual void addListener(Listener<const Message&>* listener) {

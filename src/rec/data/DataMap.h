@@ -17,6 +17,7 @@ class DataMap {
   // if it's NULL then it represents empty data that is not stored to disk.
   virtual Data* getData(const string& typeName, const VirtualFile*) = 0;
   virtual void removeData(Data*) = 0;
+  virtual void updateAll() = 0;
 };
 
 }  // namespace data

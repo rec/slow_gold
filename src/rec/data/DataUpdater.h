@@ -9,6 +9,7 @@ namespace data {
 
 class Data;
 class DataMap;
+class DataSet;
 class UndoStack;
 
 // DataUpdater sends out updates to data clients and writes copies of the data
@@ -26,7 +27,6 @@ class DataUpdater {
   bool hasUpdates() const;
 
  private:
-  class DataSet;
   DataMap* map_;
   ptr<DataSet> update_;
   ptr<DataSet> write_;

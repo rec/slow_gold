@@ -17,10 +17,12 @@ const char* const EMPTY_DIRECTORY_NAME = "C:\\empty-empty-empty";
 const char* const EMPTY_DIRECTORY_NAME = "/empty-empty-empty";
 #endif
 
+File dataDirectory(const VirtualFile* vf) {
+  return vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
+}
+
 File dataFile(const VirtualFile* vf, const string& typeName) {
-  File directory = vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
-  File f = directory.getChildFile(str(typeName));
-  return f;
+  return dataDirectory(vf).getChildFile(str(typeName));
 }
 
 }  // namespace
@@ -70,6 +72,15 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
   return data;
 }
 
+void DataMapImpl::updateAll() {
+  Lock l(lock_);
+  for (Map::iterator i = map_.begin(); i != map_.end(); ++i)
+    i->second->data_->update();
+
+  // TODO:  we should just delete data for files that aren't in memory
+  // any more.
+}
+
 void DataMapImpl::removeData(Data* data) {
     // TODO: why doesn't this work?
   if (!false)
@@ -85,6 +96,8 @@ void DataMapImpl::removeData(Data* data) {
     LOG(DFATAL) << "Tried to remove a non-existent piece of data";
   }
 }
+
+
 
 }  // namespace data
 }  // namespace rec

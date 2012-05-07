@@ -10,7 +10,11 @@ static const bool AUTO_UPDATE = true;
 
 struct UntypedDataListener::FileListener : public Listener<const Message&> {
   FileListener(UntypedDataListener* parent) : parent_(parent) {}
-  virtual void operator()(const Message& m) { parent_->setData(m); }
+
+  virtual void operator()(const Message& m) {
+    parent_->setData(m);
+  }
+
   UntypedDataListener* const parent_;
 };
 
@@ -55,8 +59,10 @@ void UntypedDataListener::setData(const VirtualFile* vf) {
   Data* newData = data::getData(typeName_, vf);
   Lock l(lock_);
   if (data_ == newData) {
-    LOG(ERROR) << "Got the same file twice";
+    if (vf)
+      LOG(ERROR) << "Got the same file twice " << file::toString(*vf);
   } else {
+    DLOG(INFO) << "New file: " << file::toString(vf);
     fileName_.reset(vf ? new VirtualFile(*vf) : NULL);
 
     if (data_)

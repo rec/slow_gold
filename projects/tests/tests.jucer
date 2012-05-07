@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="jLdp70c9C" name="tests">
+  <MAINGROUP id="hCN6qe9YW" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -391,6 +391,10 @@
               name="DataOps.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataOps.h" id="CyVolz0bq"
               name="DataOps.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/DataSet.cpp" id="BTh4C0Zs5"
+              name="DataSet.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataSet.h" id="h32SdyIgZ"
+              name="DataSet.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/DataUpdater.cpp" id="G6Cr7QoqT"
               name="DataUpdater.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataUpdater.h" id="XpdzAMd2J"
@@ -1557,7 +1561,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="D93szxk8r" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="tSmqtCCHn" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

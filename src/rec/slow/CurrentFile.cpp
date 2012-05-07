@@ -49,6 +49,7 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::setFile(const VirtualFile& f) {
+  DLOG(INFO) << "Setting file to be " << file::toString(f);
   data::getDataCenter().waitTillClear();
 
   Lock l(instance_->lock_);
