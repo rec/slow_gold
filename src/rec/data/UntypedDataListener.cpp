@@ -13,7 +13,8 @@ struct UntypedDataListener::FileListener : public Listener<const Message&> {
 
   virtual void operator()(const Message& m) {
     if (const VirtualFile* vf = dynamic_cast<const VirtualFile*>(&m)) {
-      if (parent_->setData(file::empty(*vf) ? noData() : vf) && !AUTO_UPDATE)
+      parent_->setData(file::empty(*vf) ? noData() : vf);
+      if (AUTO_UPDATE)
         parent_->updateCallback();
     } else {
       LOG(DFATAL) << "Got the wrong update for the file listener: "
@@ -31,7 +32,7 @@ UntypedDataListener::UntypedDataListener(const string& tn)
 
 UntypedDataListener::~UntypedDataListener() {
   DCHECK(initialized_) << "created a listener but never started it! "
-                   << typeName();
+                       << typeName();
 }
 
 void UntypedDataListener::init(Scope scope) {
@@ -50,7 +51,9 @@ void UntypedDataListener::init(Scope scope) {
 
 void UntypedDataListener::updateCallback() {
   Lock l(lock_);
-  (*this)(*ptr<Message>(data_->clone()));
+  ptr<Message> msg(data_->clone());
+  (*this)(*msg);
+  DLOG(INFO) << getTypeName(*msg) << ": " << msg->ShortDebugString();
 }
 
 bool UntypedDataListener::setData(const VirtualFile* vf) {
@@ -70,10 +73,11 @@ bool UntypedDataListener::setData(const VirtualFile* vf) {
       data_->addListener(this);
     else
       wasCleared();
+
+    if (AUTO_UPDATE)  // || data_)
+      updateCallback();
   }
 
-  if (AUTO_UPDATE)  // || data_)
-    updateCallback();
 
   return data_;
 }
