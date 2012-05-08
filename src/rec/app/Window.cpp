@@ -4,7 +4,8 @@ namespace rec {
 namespace app {
 
 // Skin.
-static const int SLEEP_BEFORE_STARTUP = 500;
+static const int SLEEP_BEFORE_STARTUP = 0;
+static const int SLEEP_AFTER_STARTUP = 600;
 
 Window::Window(GenericApplication* application,
                const String& name,
@@ -31,20 +32,21 @@ void Window::initialise() {
 #endif
 
   setUsingNativeTitleBar(true);
-
-  Component* mp = getMainComponent();
-
-  setContentOwned(mp, false);
-  setVisible(true);
+  setContentOwned(getMainComponent(), false);
 }
 
 Window::~Window() {}
 
 void Window::startup() {
-  Thread::sleep(SLEEP_BEFORE_STARTUP);
-  // Yes, it's lame, but we need this so that our GUI has settled down...
+  if (SLEEP_BEFORE_STARTUP)
+    Thread::sleep(SLEEP_BEFORE_STARTUP);
+  // We used to need this so that our GUI has settled down...
   doStartup();
-  GuiWriteable::setWriteableAll(true);
+  setVisible(true);
+
+  if (SLEEP_AFTER_STARTUP)
+    Thread::sleep(SLEEP_AFTER_STARTUP);
+  doPostStartup();
 }
 
 void Window::shutdown() {

@@ -4,6 +4,7 @@
 #include "rec/app/GenericApplication.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/UndoStack.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/Geometry.h"
 #include "rec/slow/Components.h"
@@ -91,6 +92,11 @@ void SlowWindow::constructInstance() {
 void SlowWindow::doStartup() {
   instance_->startup();
 }
+
+void SlowWindow::doPostStartup() {
+  data::getDataCenter().undoStack()->setEnabled();
+}
+
 
 void SlowWindow::doShutdown() {
   instance_->reset();

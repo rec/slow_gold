@@ -148,6 +148,7 @@ void Instance::startup() {
     currentFile_->setDataFile(&vf);
     if (data::getGlobal<GuiSettings>().show_about_on_startup())
       window_->startAboutWindow();
+    window_->setVisible(true);
   }
 
   threads_->start();

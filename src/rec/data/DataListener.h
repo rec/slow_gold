@@ -20,16 +20,17 @@ class DataListener : public Listener<const Proto&> {
 
   virtual void operator()(const Proto&) = 0;
   Data* getData() const { return adaptor_->getData(); }
+
   const Proto getProto() const {
     if (Data* data = getData())
       return data::getProto<Proto>(data);
     else
       return Proto();
   }
-  
-  void setProto(const Proto& p) { 
+
+  void setProto(const Proto& p, Undoable undoable = CAN_UNDO) {
     if (Data* data = getData())
-      setWithData(data, p);
+      setWithData(data, p, undoable);
     else
       LOG(DFATAL) << "No data";
   }

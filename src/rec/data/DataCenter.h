@@ -25,6 +25,8 @@ struct DataCenter {
   void clearUndoes() const;
   bool hasUpdates() const;
 
+  UndoStack* undoStack() const { return undo_.get(); }
+
   void waitTillClear() const;
 };
 

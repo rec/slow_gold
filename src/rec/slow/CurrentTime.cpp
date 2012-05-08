@@ -57,7 +57,7 @@ void CurrentTime::setTime(Samples<44100> t) {
     zoom->set_begin(0);
 
   zoom->set_end(zoom->begin() + width);
-  DataListener<Viewport>::setProto(viewport);
+  DataListener<Viewport>::setProto(viewport, CANT_UNDO);
 }
 
 void CurrentTime::setViewport(const Viewport& viewport) {

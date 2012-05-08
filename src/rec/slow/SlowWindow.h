@@ -10,9 +10,6 @@ namespace app { class GenericApplication; }
 
 namespace slow {
 
-class AppLayout;
-class Instance;
-
 class SlowWindow : public app::Window, public HasInstance  {
  public:
   explicit SlowWindow(app::GenericApplication*);
@@ -28,6 +25,7 @@ class SlowWindow : public app::Window, public HasInstance  {
   void startAboutWindow();
   void stopAboutWindow();
   virtual void minimisationStateChanged(bool isNowMinimised);
+  virtual void doPostStartup();
 
  protected:
   virtual void doStartup();

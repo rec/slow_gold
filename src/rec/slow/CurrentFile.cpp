@@ -129,7 +129,7 @@ void CurrentFile::setViewport() {
   }
 
   viewport.mutable_loop_points()->set_length(length_);
-  data::setProto(viewport, file_.get());
+  data::setProto(viewport, file_.get(), CANT_UNDO);
 }
 
 void CurrentFile::translateAll() {

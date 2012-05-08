@@ -27,6 +27,7 @@ void GuiWriteable::writeAll() {
 }
 
 void GuiWriteable::setWriteableAll(bool writeable) {
+  DLOG(INFO) << "setWriteableAll " << (writeable ? "true" : "false");
   WriteableVector* v = getWriteableVector();
   for (WriteableVector::const_iterator i = v->begin(); i != v->end(); ++i)
     (*i)->setWriteable(writeable);
