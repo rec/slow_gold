@@ -36,7 +36,7 @@ class Data : public Broadcaster<const Message&> {
 
   virtual void addListener(Listener<const Message&>* listener) {
     Broadcaster<const Message&>::addListener(listener);
-    (*listener)(*ptr<Message>(clone()));
+    // (*listener)(*ptr<Message>(clone()));  // OH, DEAR!
   }
 
  protected:

@@ -49,7 +49,7 @@ void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
 
   std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
             CompareRecentFiles());
-  data::setGlobal(rf);
+  data::setGlobal(rf, CANT_UNDO);
 }
 
 static const int MAX_DEDUPE_COUNT = 2;

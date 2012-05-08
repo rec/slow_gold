@@ -23,6 +23,7 @@ class UntypedDataListener : public Listener<const Message&>,
   Data* getData() const { Lock l(lock_); return data_; }
 
   static void setGlobalDataFile(DataFile);
+  void updateCallback();
 
  protected:
   CriticalSection lock_;

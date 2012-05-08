@@ -46,7 +46,8 @@ enum TableColumn_Properties {
   TableColumn_Properties_SORTED_FORWARDS = 32,
   TableColumn_Properties_SORTED_BACKWARDS = 64,
   TableColumn_Properties_EDITABLE = 128,
-  TableColumn_Properties_DEFAULT = 143
+  TableColumn_Properties_DEFAULT = 143,
+  TableColumn_Properties_DEFAULT_NOT_EDITABLE = 15
 };
 bool TableColumn_Properties_IsValid(int value);
 const TableColumn_Properties TableColumn_Properties_Properties_MIN = TableColumn_Properties_VISIBLE;
@@ -148,6 +149,7 @@ class TableColumn : public ::google::protobuf::Message {
   static const Properties SORTED_BACKWARDS = TableColumn_Properties_SORTED_BACKWARDS;
   static const Properties EDITABLE = TableColumn_Properties_EDITABLE;
   static const Properties DEFAULT = TableColumn_Properties_DEFAULT;
+  static const Properties DEFAULT_NOT_EDITABLE = TableColumn_Properties_DEFAULT_NOT_EDITABLE;
   static inline bool Properties_IsValid(int value) {
     return TableColumn_Properties_IsValid(value);
   }

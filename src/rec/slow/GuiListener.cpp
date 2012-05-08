@@ -17,9 +17,8 @@ using namespace juce;
 
 static const int MS_TILL_TOOLTIP = 700;
 
-GuiListener::GuiListener(Instance* i) : HasInstance(i),
-                                        displayHelpPane_(false),
-                                        lastComponent_(NULL) {
+GuiListener::GuiListener(Instance* i)
+    : HasInstance(i), displayHelpPane_(false), lastComponent_(NULL) {
 }
 
 void GuiListener::operator()(const GuiSettings& settings) {

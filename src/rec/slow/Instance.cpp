@@ -6,7 +6,9 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
+#include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/UndoStack.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/LookAndFeel.h"
 #include "rec/gui/audio/CommandBar.h"
@@ -146,8 +148,6 @@ void Instance::startup() {
 
     window_->toFront(true);
     currentFile_->setDataFile(&vf);
-    if (data::getGlobal<GuiSettings>().show_about_on_startup())
-      window_->startAboutWindow();
     window_->setVisible(true);
   }
 
@@ -155,6 +155,13 @@ void Instance::startup() {
   Thread* timer = threads_->timerThread();
   components_->transportController_->timeController()->setThread(timer);
   player_->timer()->setThread(timer);
+}
+
+void Instance::postStartup() {
+  data::getDataCenter().undoStack()->setEnabled();
+  MessageManagerLock l;
+  if (data::getGlobal<GuiSettings>().show_about_on_startup())
+    window_->startAboutWindow();
 }
 
 const VirtualFile Instance::file() const {

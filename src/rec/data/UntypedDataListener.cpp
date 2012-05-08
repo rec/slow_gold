@@ -8,9 +8,18 @@ namespace data {
 
 namespace {
 
+struct FileBroadcaster {
+  Broadcaster<DataFile> listener_;
+  ptr<VirtualFile> file_;
+};
+
+FileBroadcaster* fileBroadcaster() {
+  static FileBroadcaster fb;
+  return &fb;
+}
+
 Broadcaster<DataFile>* fileListener() {
-  static Broadcaster<DataFile> listener;
-  return &listener;
+  return &(fileBroadcaster()->listener_);
 }
 
 }  // namespace
@@ -43,11 +52,27 @@ void UntypedDataListener::operator()(DataFile datafile) {
     data_->addListener(this);
     msg.reset(data_->clone());
   }
+
+  fileBroadcaster()->file_.reset(datafile ? new VirtualFile(*datafile) : NULL);
   (*this)(*msg);
 }
 
 void UntypedDataListener::setGlobalDataFile(DataFile datafile) {
   fileListener()->broadcast(datafile);
+}
+
+void UntypedDataListener::updateCallback() {
+  ptr<Message> m;
+  {
+    Lock l(lock_);
+    if (!data_) {
+      (*this)(fileBroadcaster()->file_.get());
+      DCHECK(data_);
+      return;
+    }
+    m.reset(data_->clone());
+  }
+  (*this)(*m);
 }
 
 }  // namespace data

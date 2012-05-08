@@ -25,6 +25,7 @@ class AddressListener : public Listener<const Value&> {
   const Address& address() const { return address_; }
 
   void setFailOnError(bool f) { failOnError_ = f; }
+  void updateCallback();
 
  private:
   struct UntypedListener;

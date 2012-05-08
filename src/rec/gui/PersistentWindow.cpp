@@ -90,7 +90,7 @@ void PersistentWindow::closeButtonPressed() {
 }
 
 void PersistentWindow::doWriteGui() {
-  setProto(position_);
+  setProto(position_, CANT_UNDO);
 }
 
 }  // namespace gui

@@ -27,6 +27,10 @@ AddressListener::AddressListener(const Address& a, const string& tn, Scope s)
 
 AddressListener::~AddressListener() {}
 
+void AddressListener::updateCallback() {
+  untypedListener_->updateCallback();
+}
+
 static void logError(const string& error, bool failOnError) {
   if (!error.empty()) {
     if (failOnError)

@@ -80,11 +80,16 @@ void TableController::resized() {
   update();
 }
 
+
+bool TableController::editable(int col) const {
+  return (columns_.column(col).property_flags() & TableColumn::EDITABLE);
+}
+
 class TableLabel : public SimpleLabel {
  public:
   explicit TableLabel(TableController* table, int col, int row)
       : SimpleLabel(""), table_(table), col_(col), row_(row) {
-    setEditable(true, false, false);
+    setEditable(table->editable(col), false, false);
     setJustificationType(Justification::centredLeft);
   }
 

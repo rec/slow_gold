@@ -8,7 +8,7 @@ namespace gui {
 
 class GuiWriteable {
  public:
-  GuiWriteable() : needsUpdate_(false), writeable_(false) { add(this); }
+  explicit GuiWriteable() : needsUpdate_(false), writeable_(false) { add(this); }
   virtual ~GuiWriteable() {}
 
   static void writeAll();

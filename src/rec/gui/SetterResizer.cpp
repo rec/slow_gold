@@ -61,7 +61,7 @@ void SetterResizer::doWriteGui() {
   Lock l(lock_);
   uint32 val = get();
   if (lastValue_ != val && val >= minValue_) {
-    setValue(val);
+    setValue(val, CANT_UNDO);
     lastValue_ = val;
   }
 }

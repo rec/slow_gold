@@ -37,6 +37,7 @@ Def<TableColumnList> dflt(
 "  name: \"Time\" "
 "  address { part { name: \"time\" } } "
 "  width: 50 "
+"  property_flags: DEFAULT_NOT_EDITABLE"
 "} "
 "column { "
 "  type: STRING "
@@ -114,6 +115,7 @@ void Loops::setFieldValue(int column, int row, const String& text) {
 }
 
 void Loops::selectedRowsChanged(int) {
+  DLOG(INFO) << "selectedRowsChanged";
   Lock l(TableController::lock_);
 
   bool changed = false;

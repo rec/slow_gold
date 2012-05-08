@@ -47,6 +47,7 @@ void Window::startup() {
   if (SLEEP_AFTER_STARTUP)
     Thread::sleep(SLEEP_AFTER_STARTUP);
   doPostStartup();
+  GuiWriteable::setWriteableAll(true);
 }
 
 void Window::shutdown() {

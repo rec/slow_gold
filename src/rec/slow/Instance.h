@@ -32,8 +32,9 @@ class Instance {
   ~Instance();
 
   void init();
-
   void startup();
+  void postStartup();
+
   const VirtualFile file() const;
   Samples<44100> time() const;
   Samples<44100> length() const;

@@ -14,6 +14,7 @@ message TableColumn {
     EDITABLE = 0x80;
 
     DEFAULT = 0x8F;
+    DEFAULT_NOT_EDITABLE = 0x0F;
     // DEFAULT = VISIBLE + RESIZABLE + DRAGGABLE + APPEARS_ON_COLUMN_MENU
     //   + EDITABLE
   };
