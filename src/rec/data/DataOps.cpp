@@ -5,7 +5,7 @@
 namespace rec {
 namespace data {
 
-Data* getData(const string& typeName, const VirtualFile* vf) {
+Data* getData(const string& typeName, DataFile vf) {
   return getDataCenter().map_->getData(typeName, vf);
 }
 

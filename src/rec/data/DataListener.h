@@ -13,20 +13,25 @@ class Data;
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
  public:
-  explicit DataListener() { adaptor_.reset(new Adaptor(this)); }
+  explicit DataListener(Scope scope = FILE_SCOPE) {
+    adaptor_.reset(new Adaptor(this, scope));
+  }
   virtual ~DataListener() {}
 
   virtual void operator()(const Proto&) = 0;
   Data* getData() const { return adaptor_->getData(); }
-  const Proto getProto() const { return data::getProto<Proto>(getData()); }
-  void setProto(const Proto& p) { setWithData(getData(), p); }
-
-  virtual void init() {
-    init(FILE_SCOPE);
+  const Proto getProto() const {
+    if (Data* data = getData())
+      return data::getProto<Proto>(data);
+    else
+      return Proto();
   }
-
-  void init(Scope scope) {
-    adaptor_->init(scope);
+  
+  void setProto(const Proto& p) { 
+    if (Data* data = getData())
+      setWithData(data, p);
+    else
+      LOG(DFATAL) << "No data";
   }
 
   void updateCallback() {
@@ -36,16 +41,15 @@ class DataListener : public Listener<const Proto&> {
  private:
   class Adaptor : public UntypedDataListener {
    public:
-    Adaptor(DataListener<Proto>* p) : UntypedDataListener(getTypeName<Proto>()),
-                                      parent_(p) {
+    Adaptor(DataListener<Proto>* p, Scope scope)
+        : UntypedDataListener(getTypeName<Proto>(), scope),
+          parent_(p) {
     }
 
     virtual void operator()(const Message& m) {
       Lock l(this->lock_);
-      if (const Proto* p = dynamic_cast<const Proto*>(&m)) {
+      if (const Proto* p = dynamic_cast<const Proto*>(&m))
         (*parent_)(*p);
-        // DLOG(INFO) << getTypeName(*p) << ": " << p->ShortDebugString();
-      }
       else
         LOG(DFATAL) << getTypeName(m) << " isn't type " << getTypeName<Proto>();
     }
@@ -63,12 +67,8 @@ class DataListener : public Listener<const Proto&> {
 template <typename Proto>
 class GlobalDataListener : public DataListener<Proto> {
  public:
-  GlobalDataListener() {}
+  GlobalDataListener() : DataListener<Proto>(GLOBAL_SCOPE) {}
   virtual ~GlobalDataListener() {}
-
-  virtual void init() {
-    DataListener<Proto>::init(GLOBAL_SCOPE);
-  }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(GlobalDataListener);

@@ -14,13 +14,6 @@ class SetterTextArea : public Layout {
   SetterTextArea(const String& name = String::empty) : Layout(name, VERTICAL) {}
   ~SetterTextArea() { stl::deletePointers(&components_); }
 
-  virtual void init() {
-    for (int i = 0; i < getNumChildComponents(); ++i) {
-      if (SetterText* st = dynamic_cast<SetterText*>(getChildComponent(i)))
-        st->init();
-    }
-  }
-
   SetterText* text(int i) {
     return static_cast<SetterText*>(components_[i]);
   }

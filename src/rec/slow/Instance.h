@@ -42,7 +42,7 @@ class Instance {
   bool empty() const;
   audio::Source* makeSource() const;
   void setProto(const Message&, Undoable undoable = CAN_UNDO);
-  void stopFilling() {
+  void reset() {
     fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
   }
 

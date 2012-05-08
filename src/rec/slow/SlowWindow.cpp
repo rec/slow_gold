@@ -80,8 +80,6 @@ void SlowWindow::init() {
   File appDir = app::getAppDirectory();
   deleteLogs(appDir);
   redirectLogs(appDir);
-
-  app::Window::init();
 }
 
 void SlowWindow::constructInstance() {
@@ -95,8 +93,7 @@ void SlowWindow::doStartup() {
 }
 
 void SlowWindow::doShutdown() {
-  instance_->stopFilling();
-
+  instance_->reset();
   instance_ = NULL;
   instanceDeleter_.reset();
 }

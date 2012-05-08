@@ -38,8 +38,6 @@ class Player : public DataListener<Gain>,
   Player(Device* d);
   virtual ~Player();
 
-  void init();
-
   void setState(transport::State state);
 
   void broadcastState();

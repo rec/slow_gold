@@ -6,8 +6,9 @@ namespace command {
 TickedDataSetter::TickedDataSetter(ApplicationCommandInfo* info,
                                    Listener<None>* changeListener,
                                    const Command& command,
-                                   const data::Address& addr)
-    : CommandDataSetter(info, changeListener, command, addr) {
+                                   const data::Address& addr,
+                                   Scope scope)
+    : CommandDataSetter(info, changeListener, command, addr, scope) {
 }
 
 void TickedDataSetter::operator()(const data::Value& v) {

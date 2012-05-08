@@ -27,8 +27,6 @@ class TransportController : public Layout,
   TransportController(TimeController*);
   virtual ~TransportController();
 
-  virtual void init();
-
   virtual void buttonClicked(juce::Button *button);
   virtual void operator()(rec::audio::transport::State);
   virtual void operator()(const rec::audio::Gain&);

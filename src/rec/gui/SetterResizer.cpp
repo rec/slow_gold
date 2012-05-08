@@ -37,8 +37,7 @@ uint32 SetterResizer::get() const {
 
 void SetterResizer::moved() {
   Lock l(lock_);
-  if (isInitialized())
-    requestWrite();
+  requestWrite();
 }
 
 void SetterResizer::paint(Graphics& g) {
@@ -63,9 +62,6 @@ void SetterResizer::doSetValue(data::Value& v) {
 }
 
 void SetterResizer::doWriteGui() {
-  if (!isInitialized())
-    return;
-
   Lock l(lock_);
   uint32 val = get();
   if (lastValue_ != val && val >= minValue_) {

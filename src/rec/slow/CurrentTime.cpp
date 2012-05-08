@@ -29,11 +29,6 @@ CurrentTime::CurrentTime(Instance* i)
       followCursor_(false) {
 }
 
-void CurrentTime::init() {
-  DataListener<widget::waveform::Viewport>::init();
-  GlobalDataListener<GuiSettings>::init();
-}
-
 void CurrentTime::setTime(Samples<44100> t) {
   Viewport viewport;
   {

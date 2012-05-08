@@ -42,11 +42,6 @@ MouseListener::MouseListener(Instance* i)
   w->addListener(this);
 }
 
-void MouseListener::init() {
-  DataListener<widget::waveform::Viewport>::init();
-  GlobalDataListener<Mode>::init();
-}
-
 namespace {
 
 typedef widget::waveform::OutlinedCursorLabel Label;

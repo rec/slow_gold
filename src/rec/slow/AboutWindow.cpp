@@ -66,15 +66,11 @@ class AboutPane : public Component {
     right_.append(t, font);
 
     addAndMakeVisible(&displayOnStartup_);
-    displayOnStartup_.setBounds(static_cast<int>(MARGIN), 
+    displayOnStartup_.setBounds(static_cast<int>(MARGIN),
 		                        HEIGHT - static_cast<int>(MARGIN) - BUTTON_HEIGHT,
                                 BUTTON_WIDTH, BUTTON_HEIGHT);
     setOpaque(true);
     displayOnStartup_.setInterceptsMouseClicks(true, true);
-  }
-
-  void init() {
-    displayOnStartup_.init();
   }
 
   void paint(Graphics& g) {
@@ -82,7 +78,7 @@ class AboutPane : public Component {
     g.setColour(Colours::red);
     g.drawRect(0, 0, WIDTH, HEIGHT);
     Rectangle<float> area(MARGIN, MARGIN,
-                          static_cast<float>(WIDTH - 2 * MARGIN), 
+                          static_cast<float>(WIDTH - 2 * MARGIN),
 						  static_cast<float>(HEIGHT - 2 * MARGIN));
     right_.draw(g, area);
     area.setY(area.getY() + OFFSET);
@@ -115,7 +111,6 @@ AboutWindow::AboutWindow(Component* parent,
   setAlpha(0.0f);
   parent_->addAndMakeVisible(this);
   aboutPane_->addMouseListener(this, false);
-  aboutPane_->init();
 }
 
 AboutWindow::~AboutWindow() {}

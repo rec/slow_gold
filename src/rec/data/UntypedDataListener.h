@@ -9,40 +9,28 @@
 namespace rec {
 namespace data {
 
-class AddressListener;
-class GlobalAddressListener;
-class UntypedGlobalDataListener;
-
-class UntypedDataListener : public Listener<const Message&> {
+class UntypedDataListener : public Listener<const Message&>,
+                            public DataFileListener {
  public:
-  explicit UntypedDataListener(const string& typeName);
+  explicit UntypedDataListener(const string& typeName,
+                               Scope scope = FILE_SCOPE);
   virtual ~UntypedDataListener();
 
-  void init(Scope);
-  virtual void init() { init(FILE_SCOPE); }
-
   virtual void operator()(const Message& m) = 0;
-  Data* getData() const;
+  virtual void operator()(DataFile);
+
   const string& typeName() const { return typeName_; }
-  bool isInitialized() const { return initialized_; }
-  virtual void wasCleared() {}
-  void updateCallback();
+  Data* getData() const { Lock l(lock_); return data_; }
+
+  static void setGlobalDataFile(DataFile);
 
  protected:
   CriticalSection lock_;
 
  private:
-  void setData(const Message&);
-  void setData(const VirtualFile*);
-
-  struct FileListener;
-  friend struct FileListener;
-
+  const Scope scope_;
   const string typeName_;
   Data* data_;
-  ptr<FileListener> fileListener_;
-  bool initialized_;
-  ptr<VirtualFile> fileName_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
 };
@@ -50,12 +38,7 @@ class UntypedDataListener : public Listener<const Message&> {
 class UntypedGlobalDataListener : public UntypedDataListener {
  public:
   explicit UntypedGlobalDataListener(const string& typeName)
-      :  UntypedDataListener(typeName) {
-  }
-  virtual ~UntypedGlobalDataListener() {}
-
-  virtual void init() {
-    UntypedDataListener::init(GLOBAL_SCOPE);
+      : UntypedDataListener(typeName, GLOBAL_SCOPE) {
   }
 
  private:

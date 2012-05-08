@@ -81,10 +81,6 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* t) {
 }
 
 void Waveform::init() {
-  DataListener<Viewport>::init();
-  GlobalDataListener<Mode>::init();
-  GlobalDataListener<WaveformProto>::init();
-
   painter_.reset(new WaveformPainter(this));
   timeCursor_.reset(makeTimeCursor(defaultTimeCursor(), this));
   timeCursor_->setTooltip(Trans("Playback Time Cursor: This follows the "

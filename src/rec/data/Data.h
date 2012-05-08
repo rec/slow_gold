@@ -3,6 +3,7 @@
 
 #include <google/protobuf/message.h>
 
+#include "rec/data/DataFile.h"
 #include "rec/util/Listener.h"
 #include "rec/util/Proto.h"
 #include "rec/util/file/VirtualFile.h"
@@ -37,7 +38,6 @@ class Data : public Broadcaster<const Message&> {
     Broadcaster<const Message&>::addListener(listener);
     (*listener)(*ptr<Message>(clone()));
   }
-  virtual void update() = 0;
 
  protected:
   CriticalSection lock_;
@@ -50,6 +50,7 @@ class Data : public Broadcaster<const Message&> {
   virtual void pushOnUndoStack(const Message& before) = 0;
   virtual void reportChange() = 0;
   virtual bool writeToFile() = 0;
+  virtual void update() = 0;
 
   ptr<Message> message_;
 
@@ -64,14 +65,14 @@ class Data : public Broadcaster<const Message&> {
   template <typename Proto> friend class Opener;
 };
 
-Data* getData(const string& typeName, const VirtualFile* vf);
+Data* getData(const string& typeName, DataFile vf);
 
 template <typename Proto>
-Data* getData(const VirtualFile* vf) {
+Data* getData(DataFile vf) {
   return getData(getTypeName<Proto>(), vf);
 }
 
-inline Data* getData(const Message& m, const VirtualFile* vf) {
+inline Data* getData(const Message& m, DataFile vf) {
   return getData(getTypeName(m), vf);
 }
 

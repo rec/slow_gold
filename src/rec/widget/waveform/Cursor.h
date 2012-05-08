@@ -76,8 +76,6 @@ class Cursor : public Component,
   bool showSelection_;
   WaveformProto waveDesc_;
 
-  ptr<GlobalDataListener<WaveformProto> > waveformListener_;
-
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Cursor);
 };
 

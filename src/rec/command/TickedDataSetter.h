@@ -15,7 +15,8 @@ class TickedDataSetter : public CommandDataSetter {
   TickedDataSetter(ApplicationCommandInfo* info,
                    Listener<None>* changeListener,
                    const Command& command,
-                   const data::Address& a);
+                   const data::Address& a,
+                   Scope scope);
   virtual ~TickedDataSetter() {}
 
   virtual void operator()(const data::Value&);

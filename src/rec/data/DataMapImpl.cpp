@@ -17,18 +17,18 @@ const char* const EMPTY_DIRECTORY_NAME = "C:\\empty-empty-empty";
 const char* const EMPTY_DIRECTORY_NAME = "/empty-empty-empty";
 #endif
 
-File dataDirectory(const VirtualFile* vf) {
+File dataDirectory(DataFile vf) {
   return vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
 }
 
-File dataFile(const VirtualFile* vf, const string& typeName) {
+File dataFile(DataFile vf, const string& typeName) {
   return dataDirectory(vf).getChildFile(str(typeName));
 }
 
 }  // namespace
 
-struct DataMapImpl::DataFile {
-  DataFile(Data* d, const File& f) : data_(d), file_(f) {}
+struct DataMapImpl::DataRecord {
+  DataRecord(Data* d, const File& f) : data_(d), file_(f) {}
 
   Data* data_;
   File file_;
@@ -45,7 +45,7 @@ DataMapImpl::~DataMapImpl() {
   }
 }
 
-Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
+Data* DataMapImpl::getData(const string& typeName, DataFile vf) {
   File file = dataFile(vf, typeName);
   string key = str(file);
 
@@ -67,7 +67,7 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile* vf) {
     return NULL;
   }
 
-  DataFile* df = new DataFile(data, file);
+  DataRecord* df = new DataRecord(data, file);
   map_.insert(i, make_pair(key, df));
   return data;
 }

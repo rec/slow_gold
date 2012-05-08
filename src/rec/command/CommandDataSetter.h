@@ -16,7 +16,8 @@ class CommandDataSetter : public data::AddressListener,
   explicit CommandDataSetter(ApplicationCommandInfo* info,
                              Listener<None>* changeListener,
                              const Command& command,
-                             const data::Address& addr);
+                             const data::Address& addr,
+                             Scope scope);
   virtual ~CommandDataSetter() {}
 
   virtual void operator()(const data::Value&);

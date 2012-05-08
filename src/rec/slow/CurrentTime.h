@@ -20,7 +20,6 @@ class CurrentTime : public HasInstance,
  public:
   explicit CurrentTime(Instance* i);
   virtual ~CurrentTime() {}
-  void init();
 
   void setTime(Samples<44100>);
   void setViewport(const widget::waveform::Viewport&);
@@ -38,7 +37,7 @@ class CurrentTime : public HasInstance,
   Samples<44100> requestedTime() const { Lock l(lock()); return requestedTime_; }
   void jumpToTime(Samples<44100> pos);
 
-  void clear() { Lock l(lock()); time_ = 0; }
+  void reset() { Lock l(lock()); time_ = 0; }
 
   const CriticalSection& lock() const { return instance_->lock_; }
 

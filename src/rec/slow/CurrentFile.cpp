@@ -6,6 +6,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/UntypedDataListener.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/DropFiles.h"
@@ -25,6 +26,8 @@
 namespace rec {
 namespace slow {
 
+using namespace rec::data;
+
 namespace {
 
 Trans RAN_OUT_OF_MEMORY("Ran Out Of Memory For Your File");
@@ -36,7 +39,6 @@ using namespace rec::widget::waveform;
 using namespace juce;
 
 CurrentFile::CurrentFile(Instance* i) : HasInstance(i),
-                                        initialized_(false),
                                         hasStarted_(false) {
 }
 
@@ -45,56 +47,53 @@ CurrentFile::~CurrentFile() {}
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (files.file_size() >= 1)
-    setFile(files.file(0));
+    setDataFile(&files.file(0));
 }
 
-void CurrentFile::setFile(const VirtualFile& f) {
+void CurrentFile::setDataFile(DataFile f) {
   DLOG(INFO) << "Setting file to be " << file::toString(f);
-  data::getDataCenter().waitTillClear();
 
-  Lock l(instance_->lock_);
-  if (!initialized_)
-    initialized_ = true;
-  else if (data::equals(f, file_))
-    return;
-
-  player()->reset();
-  instance_->stopFilling();
-
-  if (!empty())
-    gui::addRecentFile(file_, data::get<music::Metadata>(&file_));
-
-  VirtualFile oldFile = file_;
-  file_ = f;
-
-  length_ = getFileLength();
-  setViewport();
-
-  currentTime()->setTime(0);
-  currentTime()->jumpToTime(0);
-  currentTime()->setViewport(viewport_);
-  (*components()->waveform_)(viewport_);
-
-  components()->setEnabled(!empty());
-  components()->directoryTree_->refreshNode(oldFile);
-  components()->directoryTree_->refreshNode(file_);
-
-  menus()->menuItemsChanged();
-  if (!empty())
-    instance_->fillerThread_->startThread();
-
-  data::setGlobal(file_);
   data::getDataCenter().waitTillClear();
   data::getDataCenter().clearUndoes();
+  data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
+
+  player()->reset();
+  instance_->reset();
+  currentTime()->reset();
+
+  if (file_)
+    gui::addRecentFile(*file_, data::get<music::Metadata>(file_.get()));
+
+  ptr<VirtualFile> newFile(f ? new VirtualFile(*f) : NULL);
+  {
+    Lock l(instance_->lock_);
+    file_.swap(newFile);
+  }
+
+  length_ = getFileLength();
+
+  if (length_)
+    setViewport();
+
+  if (file_) {
+    instance_->fillerThread_->startThread();
+    components()->directoryTree_->refreshNode(*file_);
+  }
+  components()->setEnabled(file_);
+  if (newFile)
+    components()->directoryTree_->refreshNode(*newFile);
+
+  data::UntypedDataListener::setGlobalDataFile(f);
+  menus()->menuItemsChanged();
 }
 
 int64 CurrentFile::getFileLength() {
-  if (file::empty(file_))
+  if (!file_ || file::empty(*file_))
     return 0;
 
-  music::MusicFileReader reader(file_);
+  music::MusicFileReader reader(*file_);
   if (!reader.empty()) {
-    if (int64 len = bufferFiller()->setReader(file_, reader.transfer()))
+    if (int64 len = bufferFiller()->setReader(*file_, reader.transfer()))
       return len;
     reader.setError(RAN_OUT_OF_MEMORY, RAN_OUT_OF_MEMORY_FULL);
   }
@@ -108,55 +107,40 @@ int64 CurrentFile::getFileLength() {
                                       reader.errorDetails());
   }
 
-  file_.Clear();
+  file_->Clear();
   return 0;
 }
 
 void CurrentFile::setViewport() {
-  if (!length_) {
-    viewport_.Clear();
-    return;
-  }
-  viewport_ = data::getProto<Viewport>(&file_);
-  bool mustUpdate = false;
-  if (!viewport_.has_zoom()) {
-    mustUpdate = true;
+  Viewport viewport = data::getProto<Viewport>(file_.get());
 
-    Zoom* zoom = viewport_.mutable_zoom();
-    *zoom = data::getProto<Zoom>(&file_);
+  if (!viewport.has_zoom()) {
+    Zoom* zoom = viewport.mutable_zoom();
+    *zoom = data::getProto<Zoom>(file_.get());  // Legacy files.
     if (!zoom->has_begin())
       zoom->set_begin(0);
     if (!zoom->has_end())
       zoom->set_end(length_);
   }
 
-  if (!viewport_.has_loop_points()) {
-    mustUpdate = true;
-    LoopPointList* loops = viewport_.mutable_loop_points();
-    *loops = data::getProto<LoopPointList>(&file_);
-    if (loops->length() != length_)
-      loops->set_length(length_);
+  if (!viewport.has_loop_points()) {
+    LoopPointList* loops = viewport.mutable_loop_points();
+    *loops = data::getProto<LoopPointList>(file_.get());  // Legacy files.
     if (!loops->loop_point_size())
       loops->add_loop_point()->set_selected(true);
   }
 
-  if (length_ != viewport_.loop_points().length()) {
-    mustUpdate = true;
-    viewport_.mutable_loop_points()->set_length(length_);
-  }
-
-  if (!viewport_.loop_points().loop_point_size()) {
-    mustUpdate = true;
-    viewport_.mutable_loop_points()->add_loop_point()->set_selected(true);
-  }
-
-  if (mustUpdate)
-    data::setProto(viewport_, file_);
+  viewport.mutable_loop_points()->set_length(length_);
+  data::setProto(viewport, file_.get());
 }
 
 void CurrentFile::translateAll() {
   RAN_OUT_OF_MEMORY.translate();
   RAN_OUT_OF_MEMORY_FULL.translate();
+}
+
+const VirtualFile CurrentFile::file() const {
+  return file_ ? *file_ : VirtualFile();
 }
 
 }  // namespace slow

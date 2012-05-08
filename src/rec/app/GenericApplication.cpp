@@ -38,7 +38,6 @@ void GenericApplication::initialise(const String&) {
   if (initializer_)
     initializer_(this);
   window_.reset(createWindow());
-  window_->init();
   window_->initialise();
 
   thread::runInNewThread("startup thread",

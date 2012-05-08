@@ -9,8 +9,8 @@ namespace rec {
 namespace data {
 
 struct AddressListener::UntypedListener : public UntypedDataListener {
-  UntypedListener(AddressListener* p, const string& typeName)
-      : UntypedDataListener(typeName), parent_(p) {
+  UntypedListener(AddressListener* p, const string& typeName, Scope scope)
+      : UntypedDataListener(typeName, scope), parent_(p) {
     DCHECK_NE(typeName, getTypeName<VirtualFile>());
   }
   AddressListener* parent_;
@@ -21,21 +21,11 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
 };
 
 AddressListener::AddressListener(const Address& a, const string& tn, Scope s)
-    : address_(a),
-      failOnError_(true),
-      scope_(s) {
-  untypedListener_.reset(new UntypedListener(this, tn));
+    : address_(a), failOnError_(true) {
+  untypedListener_.reset(new UntypedListener(this, tn, s));
 }
 
 AddressListener::~AddressListener() {}
-
-void AddressListener::init(Scope s) {
-  untypedListener_->init(s);
-}
-
-bool AddressListener::isInitialized() const {
-  return untypedListener_->isInitialized();
-}
 
 static void logError(const string& error, bool failOnError) {
   if (!error.empty()) {

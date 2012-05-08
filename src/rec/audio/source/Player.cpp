@@ -29,14 +29,6 @@ Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
-void Player::init() {
-  DataListener<AudioSettings>::init();
-  DataListener<Gain>::init();
-  DataListener<StereoProto>::init();
-  DataListener<Stretch>::init();
-  DataListener<Viewport>::init();
-}
-
 Samples<44100> Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
 }

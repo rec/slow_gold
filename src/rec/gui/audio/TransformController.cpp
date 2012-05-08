@@ -109,16 +109,6 @@ TransformController::TransformController()
 
 TransformController::~TransformController() {}
 
-void TransformController::init() {
-  data::DataListener<rec::audio::source::StereoProto>::init();
-  data::DataListener<rec::audio::stretch::Stretch>::init();
-  playbackSpeed_.init();
-  pitchScale_.init();
-  fineScale_.init();
-  enableButton_.init();
-  masterTune_.init();
-}
-
 void TransformController::showMasterTune(bool show) {
   if (!rightPanelCreated_ || showMasterTune_ != show) {
     MessageManagerLock l;

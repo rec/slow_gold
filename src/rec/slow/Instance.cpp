@@ -82,12 +82,7 @@ void Instance::init() {
   fillerThread_.reset(new FillerThread(this));
   threads_.reset(new Threads(this));
 
-  menus_->init();
-  player_->init();
   components_->init();
-  currentTime_->init();
-  guiListener_->init();
-  mouseListener_->init();
 
   fillerThread_->setPriority(FILLER_PRIORITY);
 
@@ -127,8 +122,6 @@ void Instance::init() {
     setProto(mode);
   }
 #endif
-
-  threads_->start();
 }
 
 audio::Source* Instance::makeSource() const {
@@ -148,14 +141,16 @@ void Instance::startup() {
   MessageManagerLock l;
   window_->toFront(true);
   juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
-  currentFile_->setFile(data::getGlobal<VirtualFile>());
-  currentFile_->hasStarted();
+  VirtualFile vf = data::getGlobal<VirtualFile>();
+  currentFile_->setDataFile(&vf);
   if (data::getGlobal<GuiSettings>().show_about_on_startup())
     window_->startAboutWindow();
+
+  threads_->start();
 }
 
 const VirtualFile Instance::file() const {
-  return currentFile_->virtualFile();
+  return currentFile_->file();
 }
 
 void Instance::updateGui() {

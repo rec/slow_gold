@@ -149,14 +149,6 @@ MainPage::MainPage(Components* components)
 
 MainPage::~MainPage() {}
 
-void MainPage::init() {
-  navigationResizer_.init();
-  directoryResizer_.init();
-  metadataResizer_.init();
-  helpResizer_.init();
-  transformResizer_.init();
-}
-
 void MainPage::setTooltip(const String& tt) {
   String caption, body = tt;
   int pos = tt.indexOf(":");

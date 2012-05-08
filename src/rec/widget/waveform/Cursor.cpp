@@ -29,19 +29,6 @@ static const int GRID_TEXT_HEIGHT = 9;  // from Waveform.cpp
 namespace widget {
 namespace waveform {
 
-namespace {
-
-class WaveformListener : public GlobalDataListener<WaveformProto> {
- public:
-  WaveformListener(Cursor* parent) : parent_(parent) {}
-  virtual void operator()(const WaveformProto& p) { (*parent_)(p); }
-
- private:
-  Cursor* const parent_;
-};
-
-}
-
 Cursor::Cursor(const CursorProto& d, Waveform* w, int index)
     : Component("Cursor"),
       waveform_(w),
@@ -51,7 +38,6 @@ Cursor::Cursor(const CursorProto& d, Waveform* w, int index)
 }
 
 Cursor::~Cursor() {
-  waveformListener_.reset();
   waveform_->removeChildComponent(this);
   waveform_->removeChildComponent(caption_.get());
 }
@@ -60,10 +46,7 @@ void Cursor::init() {
   Lock l(lock());
 
   caption_.reset(new OutlinedCursorLabel(this));
-  caption_->init();
-
-  waveformListener_.reset(new WaveformListener(this));
-  waveformListener_->init();
+  (*caption_)(caption_->getProto());
 
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addAndMakeVisible(this, 0);

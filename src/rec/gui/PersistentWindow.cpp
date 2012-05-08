@@ -43,10 +43,11 @@ PersistentWindow::PersistentWindow(const String& name,
 
 PersistentWindow::~PersistentWindow() {}
 
+#if 0
 void PersistentWindow::init() {
-  data::GlobalDataListener<WindowPosition>::init();
   (*this)(getProto());
 }
+#endif
 
 void PersistentWindow::operator()(const WindowPosition& p) {
   MessageManagerLock l;  // TODO: is this needed?

@@ -54,16 +54,7 @@ Components::Components(Instance* instance)
 Components::~Components() {}
 
 void Components::init() {
-  directoryTree_->init();
-  timeController_->init();
-  loops_->init();
-  songData_->init();
-  transformController_->init();
-  transportController_->init();
   waveform_->init();
-  modeSelector_->init();
-  mainPage_->init();
-  data::DataListener<music::Metadata>::init();
 }
 
 void Components::setEnabled(bool enabled) {

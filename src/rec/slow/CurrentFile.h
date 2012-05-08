@@ -1,6 +1,7 @@
 #ifndef __REC_SLOW_METHODS_FILEMETHODS__
 #define __REC_SLOW_METHODS_FILEMETHODS__
 
+#include "rec/data/DataFile.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.pb.h"
@@ -21,15 +22,18 @@ class CurrentFile : public HasInstance,
 
   // Set the file and change the persistent data.
   virtual void operator()(const gui::DropFiles&);
-  virtual void operator()(const VirtualFile& vf) { setFile(vf); }
+  virtual void operator()(const VirtualFile& vf) { setDataFile(&vf); }
 
-  const VirtualFile virtualFile() const { Lock l(lock_); return file_; }
+  // const VirtualFile virtualFile() const { Lock l(lock_); return *file_; }
   const Samples<44100> length() const { Lock l(lock_); return length_; }
-  bool empty() const { return !length_; }
-  void setFile(const VirtualFile&);
+  bool empty() const { return !length(); }
+  void setDataFile(data::DataFile);
+  void setFile(const VirtualFile& vf) { setDataFile(&vf); }
   void hasStarted() { Lock l(lock_); hasStarted_ = true; }
   const CriticalSection& lock() const { return lock_; }
   static void translateAll();
+
+  const VirtualFile file() const;
 
  private:
   int64 getFileLength();
@@ -38,9 +42,8 @@ class CurrentFile : public HasInstance,
   CriticalSection lock_;
 
   widget::waveform::Viewport viewport_;
-  VirtualFile file_;
+  ptr<VirtualFile> file_;
   Samples<44100> length_;
-  bool initialized_;
   bool hasStarted_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 

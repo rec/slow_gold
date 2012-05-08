@@ -212,7 +212,7 @@ void audioPreferences(Instance* i) {
 }
 
 void closeFile(Instance* i) {
-  i->currentFile_->setFile(VirtualFile());
+  i->currentFile_->setDataFile(data::noData());
 }
 
 void open(Instance* i) {

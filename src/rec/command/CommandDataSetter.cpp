@@ -6,8 +6,9 @@ namespace command {
 CommandDataSetter::CommandDataSetter(ApplicationCommandInfo* info,
                                      Listener<None>* changeListener,
                                      const Command& command,
-                                     const data::Address& addr)
-    : AddressListener(addr, command.setter_type_name()),
+                                     const data::Address& addr,
+                                     Scope scope)
+    : AddressListener(addr, command.setter_type_name(), scope),
       info_(info),
       changeListener_(changeListener),
       command_(command),

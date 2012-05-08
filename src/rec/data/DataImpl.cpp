@@ -11,23 +11,14 @@ namespace data {
 DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
                    bool isEmpty, const string& key)
     : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s), key_(key) {
-  Lock l(lock_);
-
-  if (isEmpty) {
-    message_.reset(m);
-  } else {
-    ptr<Message> original(m);
+  ptr<Message> original(m);
+  fileReadSuccess_ = false;
+  if (!isEmpty) {
     message_.reset(m->New());
     fileReadSuccess_ = copy::copy(file_, message_.get());
-    if (!fileReadSuccess_)
-      message_.swap(original);
   }
-}
-
-#define CLONE() (*ptr<Message>(clone()))
-
-void DataImpl::pushOnUndoStack(const Message& before) {
-  undoStack_->push(this, before, CLONE());
+  if (!fileReadSuccess_)
+    message_.swap(original);
 }
 
 void DataImpl::reportChange() {
@@ -37,6 +28,12 @@ void DataImpl::reportChange() {
 const string DataImpl::toString() const {
   Lock l(lock_);
   return getTypeName() + ": " + message_->ShortDebugString();
+}
+
+#define CLONE() (*ptr<Message>(clone()))
+
+void DataImpl::pushOnUndoStack(const Message& before) {
+  undoStack_->push(this, before, CLONE());
 }
 
 bool DataImpl::writeToFile() {

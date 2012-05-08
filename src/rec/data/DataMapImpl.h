@@ -17,13 +17,13 @@ class DataMapImpl : public DataMap {
   explicit DataMapImpl(MessageMaker* m, DataMaker* d);
   virtual ~DataMapImpl();
 
-  virtual Data* getData(const string& typeName, const VirtualFile* vf);
+  virtual Data* getData(const string& typeName, DataFile vf);
   virtual void removeData(Data*);
   virtual void updateAll();
 
  private:
-  struct DataFile;
-  typedef std::map<string, DataFile*> Map;
+  struct DataRecord;
+  typedef std::map<string, DataRecord*> Map;
 
   MessageMaker* messageMaker_;
   DataMaker* dataMaker_;

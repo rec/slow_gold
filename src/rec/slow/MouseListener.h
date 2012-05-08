@@ -29,8 +29,6 @@ class MouseListener : public HasInstance,
   MouseListener(Instance* i);
   virtual ~MouseListener() {}
 
-  virtual void init();
-
   virtual void mouseDown(const MouseEvent&);
   virtual void mouseDrag(const MouseEvent&);
   virtual void mouseUp(const MouseEvent&);

@@ -16,7 +16,7 @@ using juce::XmlElement;
 
 namespace {
 
-const VirtualFile* getBindingFile() {
+data::DataFile getBindingFile() {
   static VirtualFile vf = file::toVirtualFile("KeyPresses");
   return &vf;
 }
@@ -54,7 +54,7 @@ void writeKeyboardBindingFile(XmlElement* element) {
 }
 
 XmlElement* readKeyboardBindingFile(const Commands& commands) {
-  const VirtualFile* f = getBindingFile();
+  data::DataFile f = getBindingFile();
   data::Data* d = data::getData<Commands>(f);
   return readKeyboardCommands(d->fileReadSuccess() ?
   	                          data::getProto<Commands>(d) : commands);
