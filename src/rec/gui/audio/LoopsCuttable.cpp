@@ -52,13 +52,13 @@ void LoopsCuttable::cut() {
 bool LoopsCuttable::paste(const string& s) {
   using rec::audio::addLoopPoints;
 
-  Viewport vp;
-  if (!yaml::read(s, &vp))
+  LoopPointList lpl;
+  if (!yaml::read(s, &lpl))
     return false;
 
   Viewport vp2 = loops_->getProto();
-  LoopPointList lpl = addLoopPoints(vp.loop_points(), vp2.loop_points());
-  vp2.mutable_loop_points()->CopyFrom(lpl);
+  LoopPointList lpl2 = addLoopPoints(lpl, vp2.loop_points());
+  vp2.mutable_loop_points()->CopyFrom(lpl2);
   loops_->editViewport(vp2);
   return true;
 }
