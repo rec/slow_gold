@@ -30,19 +30,25 @@ Samples<44100> TextComponent::getTime() const {
   return time_;
 }
 
-void TextComponent::setTime(Samples<44100> time) {
+bool TextComponent::setTime(Samples<44100> t) {
   Lock l(lock_);
-  time_ = time;
-  String timeDisplay = formatTime(time_, length_, 44100, description_.separator().flash());
-  if (timeDisplay != timeDisplay_) {
-    timeDisplay_ = timeDisplay;
-    thread::callAsync(this, &TextComponent::redisplay);
-  }
+  time_ = t;
+  bool flash = description_.separator().flash();
+  String timeDisplay = formatTime(time_, length_, 44100, flash);
+
+  bool res = (timeDisplay == timeDisplay_);
+  timeDisplay_ = timeDisplay;
+  return res;
 }
 
 void TextComponent::redisplay() {
-  Lock l(lock_);
-  setText(timeDisplay_, false);
+  String dis;
+  {
+    Lock l(lock_);
+    dis = timeDisplay_;
+  }
+
+  setText(dis, false);
 }
 
 }  // namespace time

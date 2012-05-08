@@ -61,6 +61,9 @@ int navigator(Instance* i) {
 }
 
 int writeGui(Instance* i) {
+  MessageManagerLock l(i->threads_->guiThread());
+  if (!l.lockWasGained())
+    return DONE;
   i->updateGui();
   return Period::WRITE_GUI;
 }
@@ -70,7 +73,10 @@ int writeData(Instance*) {
   return Period::WRITE_DATA;
 }
 
-int updateData(Instance*) {
+int updateData(Instance* i) {
+  MessageManagerLock l(i->threads_->updateThread());
+  if (!l.lockWasGained())
+    return DONE;
   data::getDataCenter().updater_->update();
   return Period::UPDATE_DATA;
 }
@@ -93,6 +99,7 @@ int callbackThread(Instance* i) {
 }  // namespace
 
 struct Threads::ThreadList {
+  ThreadList() : callbackThread_(NULL), guiThread_(NULL), updateThread_(NULL) {}
   ~ThreadList() {
     stop();
     stl::deletePointers(&threads_);
@@ -116,6 +123,9 @@ struct Threads::ThreadList {
   vector<Thread*> threads_;
   thread::CallbackQueue callbackQueue_;
   Thread* callbackThread_;
+  Thread* guiThread_;
+  Thread* timerThread_;
+  Thread* updateThread_;
 };
 
 Threads::Threads(Instance* i)
@@ -123,6 +133,18 @@ Threads::Threads(Instance* i)
 }
 
 Threads::~Threads() {}
+
+Thread* Threads::guiThread() {
+  return threads_->guiThread_;
+}
+
+Thread* Threads::updateThread() {
+  return threads_->updateThread_;
+}
+
+Thread* Threads::timerThread() {
+  return threads_->timerThread_;
+}
 
 void Threads::queueCallback(void* owner, Callback* c) {
   threads_->callbackQueue_.queueCallback(owner, c);
@@ -164,14 +186,16 @@ typedef int (Threads::*ThreadsMethod)();
 void Threads::start() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
   start(&directory, "Directory", Priority::DIRECTORY);
-  start(&writeGui, "writeGUI", Priority::WRITE_GUI);
   start(&writeData, "writeData", Priority::WRITE_DATA);
-  start(&updateData, "updateData", Priority::UPDATE_DATA);
 
-  player()->timer()->setThread(start(&timer, "timer", Priority::TIMER));
-
+  threads_->guiThread_ =
+    start(&writeGui, "writeGUI", Priority::WRITE_GUI);
+  threads_->updateThread_
+    = start(&updateData, "updateData", Priority::UPDATE_DATA);
   threads_->callbackThread_ =
     start(&callbackThread, "Callback", Priority::CALLBACK_QUEUE);
+  threads_->timerThread_ =
+    start(&timer, "timer", Priority::TIMER);
 }
 
 }  // namespace slow

@@ -44,8 +44,11 @@ void FillerThread::run() {
     if (threadShouldExit() || block::empty(b))
       return;
     setFillPositionOrJump();
-    thread::callAsync(components()->waveform_.get(),
-                      &Waveform::repaintBlock, b);
+    {
+      MessageManagerLock l(this);
+      if (l.lockWasGained())
+        components()->waveform_->repaintBlock(b);
+    }
     wait(FILLER_THREAD_WAIT);
   }
 }

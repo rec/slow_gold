@@ -52,8 +52,17 @@ void TimeController::operator()(Samples<44100> time) {
   Samples<44100> scaledTime = time;
   if (DISPLAY_SCALED_TIME)
     scaledTime = static_cast<uint64>(scaledTime / timeScale_);
-  songTime_(scaledTime);
-  songDial_(scaledTime);
+  if (songTime_.setTime(scaledTime)) {
+    MessageManagerLock l(thread());
+    if (l.lockWasGained())
+      songTime_.redisplay();
+  }
+
+  if (songDial_.setTime(scaledTime)) {
+    MessageManagerLock l(thread());
+    if (l.lockWasGained())
+      songTime_.repaint();
+  }
 }
 
 void TimeController::setLength(Samples<44100> len) {

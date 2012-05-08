@@ -20,7 +20,7 @@ class TextComponent : public gui::SimpleLabel,
   virtual void operator()(Samples<44100> time) { setTime(time); }
 
   Samples<44100> getTime() const;
-  void setTime(Samples<44100> time);
+  bool setTime(Samples<44100> time);
   void setLength(Samples<44100> len) { length_ = len; }
   void redisplay();
 

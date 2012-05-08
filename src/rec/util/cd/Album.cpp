@@ -143,9 +143,9 @@ Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
     AlbumList albums;
     String error = fillAlbums(off, &albums);
     if (error.length()) {
-      LOG(ERROR) << "CDDB gave us an error: " << error;
+      LOG(ERROR) << "freedb gave us an error: " << error;
     } else if (!albums.album_size()) {
-      LOG(ERROR) << "CDDB gave us no information";
+      // LOG(ERROR) << "freedb gave us no information";
     } else {
       album = albums.album(0);
       if (!copy::copy(album, &shadow))

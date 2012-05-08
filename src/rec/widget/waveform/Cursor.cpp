@@ -84,7 +84,7 @@ Samples<44100> Cursor::getTime() const {
 
 void Cursor::operator()(Samples<44100> time) {
   Lock l(lock());
-  if (!waveform_->isDraggingCursor())
+  if (!waveform_->isDraggingCursor()) 
     thread::callAsync(this, &Cursor::setTime, time);
 }
 
@@ -249,7 +249,7 @@ void Cursor::operator()(const WaveformProto& wp) {
   Lock l(lock());
 
   waveDesc_ = wp;
-  thread::callAsync(this, &Cursor::layout);
+  layout();
 }
 
 void Cursor::setTooltip(const String& t) {

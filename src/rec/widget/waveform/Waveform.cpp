@@ -113,7 +113,7 @@ void Waveform::operator()(const WaveformProto& desc) {
     Lock l(lock_);
     model_->setDescription(desc);
   }
-  thread::callAsync(this, &Waveform::layout);
+  layout();
 }
 
 void Waveform::operator()(const Viewport& vp) {
@@ -121,7 +121,7 @@ void Waveform::operator()(const Viewport& vp) {
     Lock l(lock_);
     model_->setViewport(vp);
   }
-  thread::callAsync(this, &Waveform::viewportChanged);
+  viewportChanged();
 }
 
 void Waveform::viewportChanged() {

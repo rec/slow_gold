@@ -32,11 +32,11 @@ class TransportController : public Layout,
   virtual void operator()(const rec::audio::Gain&);
 
   void setTransportState(rec::audio::transport::State state);
-  void setTime(Samples<44100> time) { time_ = time; }
 
   util::Listener<const rec::audio::LevelVector&>* levelListener() { return &levelMeter_; }
   void clearLevels();
   LevelMeter* levelMeter() { return &levelMeter_; }
+  TimeController* timeController() { return timeController_; }
 
  private:
   void setGain(rec::audio::Gain);
@@ -55,7 +55,6 @@ class TransportController : public Layout,
   gui::SetterToggle muteButton_;
 
   juce::Label filler_;
-  Samples<44100> time_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransportController);
 };

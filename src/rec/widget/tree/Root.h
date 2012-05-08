@@ -29,7 +29,6 @@ class Root : public Broadcaster<const VirtualFile&>,
   virtual void operator()(const VirtualFile&);
   virtual void operator()(const file::VirtualFileList&);
   virtual void mouseDoubleClick(const juce::MouseEvent& e);
-  void doAdd();
   void readOpenness();
 
   bool run();  // Update files in a background thread.

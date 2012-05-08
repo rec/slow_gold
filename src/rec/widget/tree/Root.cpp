@@ -114,10 +114,6 @@ void Root::refreshNode(const VirtualFile& f) {
 }
 
 void Root::mouseDoubleClick(const juce::MouseEvent&) {
-  thread::callAsync(this, &Root::doAdd);
-}
-
-void Root::doAdd() {
   if (addDialogOpen_ || !data::getProto<NavigatorConfig>(data::global()).allow_file_drop())
     return;
 

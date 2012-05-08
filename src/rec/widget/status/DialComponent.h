@@ -20,10 +20,11 @@ class DialComponent : public Component,
  public:
   explicit DialComponent(const Dial& desc);
 
-  virtual void operator()(Samples<44100>);
+  virtual void operator()(Samples<44100> t);
 
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
+  bool setTime(Samples<44100>);
 
   static const double PI;
   static const double REDRAW_ANGLE;

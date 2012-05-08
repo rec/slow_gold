@@ -27,7 +27,6 @@ void GuiListener::operator()(const GuiSettings& settings) {
     tooltipWindow_.reset();
 
   } else if (!tooltipWindow_) {
-    MessageManagerLock l;
     tooltipWindow_.reset(new TooltipWindow(NULL, MS_TILL_TOOLTIP));
   }
 
@@ -60,8 +59,7 @@ void GuiListener::update() {
 
   if (comp != lastComponent_) {
     lastComponent_ = comp;
-    String s = getTooltip(comp);
-    thread::callAsync(components()->mainPage_.get(), &MainPage::setTooltip, s);
+    components()->mainPage_->setTooltip(getTooltip(comp));
   }
 }
 

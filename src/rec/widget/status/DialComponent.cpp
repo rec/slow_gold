@@ -42,13 +42,18 @@ DialComponent::DialComponent(const Dial& desc)
 static const bool USE_CONTIGUOUS_SEGMENTS = true;
 
 void DialComponent::operator()(Samples<44100> time) {
+  if (setTime(time))
+    repaint();
+}
+
+bool DialComponent::setTime(Samples<44100> time) {
   {
     Lock l(lock_);
     if (false && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
-      return;
+      return false;  // TODO: why is this disabled.
 
     if (!loops_.has_length())
-      return;
+      return false;
 
     time_ = time;
     Range<Samples<44100> > range;
@@ -66,7 +71,7 @@ void DialComponent::operator()(Samples<44100> time) {
     if (range.size() < SMALLEST_TIME_CHANGE) {
       timeAngle_ = zeroAngle_ = 0.0;
       timeRatio_ = 1.0;
-      return;
+      return false;
     }
 
     double length = static_cast<double>(range.size());
@@ -76,13 +81,13 @@ void DialComponent::operator()(Samples<44100> time) {
     double timeAngle = zeroAngle + timeRatio_ * 2.0 * PI;
     if (fabs(timeAngle - timeAngle_) < REDRAW_ANGLE &&
         fabs(zeroAngle - zeroAngle_) < REDRAW_ANGLE) {
-      return;
+      return false;
     }
     zeroAngle_ = zeroAngle;
     timeAngle_ = timeAngle;
   }
 
-  thread::callAsync(this, &DialComponent::repaint);
+  return true;
 }
 
 void DialComponent::operator()(const waveform::Viewport& vp) {

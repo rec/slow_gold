@@ -31,7 +31,7 @@ SetterText::SetterText(const String& name,
 
 void SetterText::operator()(const data::Value& v) {
   if (v.has_string_f() && str(v.string_f()) != editor_.getText())
-    thread::callAsync(this, &SetterText::setEditorText, str(v.string_f()));
+    setEditorText(str(v.string_f()));
 }
 
 void SetterText::setTooltip(const String& newTooltip) {

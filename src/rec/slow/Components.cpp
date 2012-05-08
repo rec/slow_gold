@@ -58,10 +58,6 @@ void Components::init() {
 }
 
 void Components::setEnabled(bool enabled) {
-  thread::callAsync(this, &Components::doSetEnabled, enabled);
-}
-
-void Components::doSetEnabled(bool enabled) {
   timeController_->setEnabled(enabled);
   loops_->setEnabled(enabled);
   songData_->setEnabled(enabled);
@@ -84,7 +80,6 @@ void Components::operator()(const music::Metadata& md) {
     name = str(music::getTitle(md, file.getParentDirectory()));
   }
 
-  MessageManagerLock l;
   window()->setName(name);
 }
 

@@ -55,7 +55,7 @@ class DataSlider : public Layout,
   }
 
   virtual void operator()(const data::Value& v) {
-    thread::callAsync(this, &DataSlider::setSliderValue, v.double_f());
+    setSliderValue(v.double_f());
   }
 
   DetentSlider* slider() { return &slider_; }

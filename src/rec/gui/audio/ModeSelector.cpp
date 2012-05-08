@@ -80,7 +80,7 @@ void ModeSelector::operator()(const Mode& mode) {
     Lock l(lock_);
     mode_ = mode;
   }
-  thread::callAsync(this, &ModeSelector::setMode, mode.click());
+  setMode(mode.click());
 }
 
 void ModeSelector::setMode(Mode::Action action) {

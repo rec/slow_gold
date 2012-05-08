@@ -23,6 +23,9 @@ class Threads : public HasInstance, public HasLock {
   void queueCallback(void* owner, Callback* c);
   void removeCallbacksFor(void* owner);
   int runQueue();
+  Thread* guiThread();
+  Thread* timerThread();
+  Thread* updateThread();
 
  private:
   void stop();

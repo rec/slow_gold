@@ -54,7 +54,8 @@ class Node : public juce::TreeViewItem,
 
   void setProcessing(bool p) {
     processing_ = p;
-    thread::callAsync(this, &TreeViewItem::repaintItem);
+    MessageManagerLock l;
+    repaintItem();
   }
 
   mutable String name_;

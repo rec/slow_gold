@@ -52,7 +52,7 @@ class DropTarget : public Interface, public Parent {
   void setDraggingOver(bool d) {
     if (d != draggingOver_) {
       draggingOver_ = d;
-      thread::callAsync(this, &DropTarget::repaint);
+      repaint();
     }
   }
 

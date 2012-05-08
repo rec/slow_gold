@@ -48,10 +48,6 @@ class Components : public HasInstance,
   ptr<gui::audio::ModeSelector> modeSelector_;
   ptr<gui::audio::CommandBar> commandBar_;
   ptr<MainPage> mainPage_;
-
- private:
-  void doSetEnabled(bool enabled);
-
 };
 
 }  // namespace slow

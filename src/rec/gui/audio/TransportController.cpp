@@ -98,7 +98,7 @@ TransportController::~TransportController() {}
 using rec::audio::transport::State;
 
 void TransportController::operator()(State state) {
-  thread::callAsync(this, &TransportController::setTransportState, state);
+  setTransportState(state);
 }
 
 void TransportController::buttonClicked(juce::Button *button) {
@@ -131,7 +131,7 @@ void TransportController::setTransportState(rec::audio::transport::State state) 
 }
 
 void TransportController::operator()(const rec::audio::Gain& gain) {
-  thread::callAsync(this, &TransportController::setGain, gain);
+  setGain(gain);
 }
 
 void TransportController::setGain(rec::audio::Gain gain) {

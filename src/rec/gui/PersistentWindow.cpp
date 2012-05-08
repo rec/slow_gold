@@ -50,10 +50,9 @@ void PersistentWindow::init() {
 #endif
 
 void PersistentWindow::operator()(const WindowPosition& p) {
-  MessageManagerLock l;  // TODO: is this needed?
   position_ = p;
   String state = str(p.juce_position());
-  thread::callAsync(this, &PersistentWindow::setWindowState, state);
+  setWindowState(state);
 }
 
 void PersistentWindow::setWindowState(const String& state) {
@@ -71,13 +70,11 @@ void PersistentWindow::setWindowState(const String& state) {
 }
 
 void PersistentWindow::moved() {
-  MessageManagerLock l;  // TODO: is this needed?
   DocumentWindow::moved();
   writeData();
 }
 
 void PersistentWindow::resized() {
-  MessageManagerLock l;  // TODO: is this needed?
   DocumentWindow::resized();
   writeData();
 }
@@ -88,7 +85,6 @@ bool PersistentWindow::isFullScreenSize() const {
 }
 
 void PersistentWindow::writeData() {
-  MessageManagerLock l;
   if (isEnabled()) {
     position_.set_juce_position(str(getWindowStateAsString()));
     requestWrite();
@@ -100,7 +96,6 @@ void PersistentWindow::closeButtonPressed() {
 }
 
 void PersistentWindow::doWriteGui() {
-  MessageManagerLock l;
   setProto(position_);
 }
 

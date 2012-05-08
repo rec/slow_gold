@@ -139,16 +139,21 @@ Instance::~Instance() {
 void Instance::startup() {
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
-
-  MessageManagerLock l;
-  window_->toFront(true);
-  juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
   VirtualFile vf = data::getGlobal<VirtualFile>();
-  currentFile_->setDataFile(&vf);
-  if (data::getGlobal<GuiSettings>().show_about_on_startup())
-    window_->startAboutWindow();
+  {
+    MessageManagerLock l;
+    juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
+
+    window_->toFront(true);
+    currentFile_->setDataFile(&vf);
+    if (data::getGlobal<GuiSettings>().show_about_on_startup())
+      window_->startAboutWindow();
+  }
 
   threads_->start();
+  Thread* timer = threads_->timerThread();
+  components_->transportController_->timeController()->setThread(timer);
+  player_->timer()->setThread(timer);
 }
 
 const VirtualFile Instance::file() const {

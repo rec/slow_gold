@@ -117,7 +117,7 @@ AboutWindow::~AboutWindow() {}
 
 void AboutWindow::mouseDown(const MouseEvent&) {
   if (window())
-    thread::callAsync(window(), &SlowWindow::stopAboutWindow);
+    window()->stopAboutWindow();
 }
 
 void AboutWindow::translateAll() {

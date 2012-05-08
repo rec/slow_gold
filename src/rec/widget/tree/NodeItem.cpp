@@ -91,7 +91,7 @@ void Node::itemClicked(const MouseEvent& e) {
 
 void Node::refreshNode(const VirtualFile& f) {
   if (virtualFile_ == f) {
-    thread::callAsync(this, &juce::TreeViewItem::repaintItem);
+    repaintItem();
   } else {
     for (int i = 0; i < getNumSubItems(); ++i) {
       if (Node* node = dynamic_cast<Node*>(getSubItem(i)))

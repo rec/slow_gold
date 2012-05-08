@@ -72,14 +72,14 @@ void Loops::operator()(const Viewport& vp) {
   setViewport(vp);
 }
 
-
 void Loops::setViewport(const Viewport& viewport) {
   {
     Lock l(TableController::lock_);
     viewport_ = viewport;
   }
 
-  thread::callAsync(this, &Loops::updateAndRepaint);
+  update();
+  repaint();
 }
 
 String Loops::displayText(int column, int row) const {
@@ -87,7 +87,7 @@ String Loops::displayText(int column, int row) const {
   data::Value v;
   string error = getMessageField(rowAddress, getProto(), &v);
   if (!error.empty()) {
-    LOG(ERROR) << error << ",\n" << rowAddress.DebugString();
+    LOG(ERROR) << row << "," << column << ": " << error;
     return Trans("(error)"); // TODO
   }
 

@@ -111,7 +111,6 @@ TransformController::~TransformController() {}
 
 void TransformController::showMasterTune(bool show) {
   if (!rightPanelCreated_ || showMasterTune_ != show) {
-    MessageManagerLock l;
     showMasterTune_ = show;
     if (rightPanelCreated_)
       rightPanel_.clear();
@@ -131,7 +130,7 @@ void TransformController::showMasterTune(bool show) {
 }
 
 void TransformController::operator()(const Stretch& s) {
-  thread::callAsync(this, &TransformController::setStretch, s);
+  setStretch(s);
 }
 
 void TransformController::setStretch(const Stretch& s) {
@@ -146,8 +145,7 @@ void TransformController::operator()(const StereoProto& stereo) {
   if (stereo.type())
     sides = static_cast<Sides>(2 + stereo.side());
 
-  thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
-                    sides, true);
+  stereoComboBox_.setSelectedId(sides, true);
 }
 
 void TransformController::comboBoxChanged(juce::ComboBox* box) {

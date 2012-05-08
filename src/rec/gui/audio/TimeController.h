@@ -5,6 +5,7 @@
 #include "rec/base/Samples.h"
 #include "rec/data/Data.h"
 #include "rec/gui/layout/Layout.h"
+#include "rec/util/HasThread.h"
 #include "rec/widget/status/DialComponent.h"
 #include "rec/widget/status/TextComponent.h"
 
@@ -12,7 +13,8 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class TimeController : public Layout, public Listener< Samples<44100> > {
+class TimeController : public Layout, public Listener< Samples<44100> >,
+                       public HasThread {
  public:
   TimeController();
   virtual ~TimeController() {}
