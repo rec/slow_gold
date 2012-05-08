@@ -51,11 +51,8 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void CurrentFile::setDataFile(DataFile f) {
-  DLOG(INFO) << "Setting file to be " << file::toString(f);
-
   data::getDataCenter().waitTillClear();
   data::getDataCenter().clearUndoes();
-  data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
 
   player()->reset();
   instance_->reset();
@@ -83,7 +80,8 @@ void CurrentFile::setDataFile(DataFile f) {
   if (newFile)
     components()->directoryTree_->refreshNode(*newFile);
 
-  data::UntypedDataListener::setGlobalDataFile(f);
+  data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
+  data::UntypedDataListener::setGlobalDataFile(file_.get());
   menus()->menuItemsChanged();
 }
 
