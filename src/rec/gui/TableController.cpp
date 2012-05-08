@@ -116,12 +116,15 @@ Component* TableController::refreshComponentForCell(int row, int columnId,
   TableLabel* text = dynamic_cast<TableLabel*>(existing);
   if (!text) {
     DCHECK(!existing);
-    text = new TableLabel(this, column, row);
+    if (editable(column))
+      text = new TableLabel(this, column, row);
   }
 
-  text->setText(displayText(column, row), false);
-  text->setTooltip(getCellTooltip(column, row));
-  text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
+  if (text) {
+    text->setText(displayText(column, row), false);
+    text->setTooltip(getCellTooltip(column, row));
+    text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
+  }
 
   return text;
 }
