@@ -18,11 +18,12 @@ class SlowWindow : public app::Window, public HasInstance  {
   explicit SlowWindow(app::GenericApplication*);
   virtual ~SlowWindow();
 
+  virtual void init();
+
   virtual void paint(Graphics& g) {
     g.fillAll(juce::Colours::lightgrey);
   }
 
-  virtual void init();
   virtual void trashPreferences();
   void startAboutWindow();
   void stopAboutWindow();

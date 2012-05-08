@@ -67,6 +67,8 @@ Instance::Instance(SlowWindow* window) : window_(window) {
 }
 
 void Instance::init() {
+  window_->init();
+
   menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
   device_.reset(new audio::Device);
   currentFile_.reset(new CurrentFile(this));
