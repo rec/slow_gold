@@ -314,6 +314,13 @@ command {
   }
 }
 command {
+  type: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
+  desc {
+    menu: "Show About Window At Startup"
+    full: "Toggle whether we show the About Window every time we start up."
+  }
+}
+command {
   type: TOGGLE_SHOW_CURSOR_LABELS
   desc {
     menu: "Show Loop Point Labels"

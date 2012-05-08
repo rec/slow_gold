@@ -86,6 +86,7 @@ void AdvancedMenuMaker::addTransportMenu() {
 
 void AdvancedMenuMaker::addHelpMenu() {
   BasicMenuMaker::addHelpMenu();
+  add(Command::TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP);
 
   menu_.addSeparator();
   add(Command::CHECK_FOR_UPDATES);

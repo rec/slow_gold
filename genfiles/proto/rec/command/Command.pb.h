@@ -97,6 +97,7 @@ enum Command_Type {
   Command_Type_TOGGLE_PARALLEL_WAVEFORMS = 42,
   Command_Type_TOGGLE_PREFADER_LEVELS = 46,
   Command_Type_TOGGLE_SELECTION = 41,
+  Command_Type_TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP = 81,
   Command_Type_TOGGLE_SHOW_CURSOR_LABELS = 51,
   Command_Type_TOGGLE_SHOW_HELP_PANE = 49,
   Command_Type_TOGGLE_SHOW_LABELS_AT_TOP = 52,
@@ -120,7 +121,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 80,
+  Command_Type_LAST_TYPE = 81,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -380,6 +381,7 @@ class Command : public ::google::protobuf::Message {
   static const Type TOGGLE_PARALLEL_WAVEFORMS = Command_Type_TOGGLE_PARALLEL_WAVEFORMS;
   static const Type TOGGLE_PREFADER_LEVELS = Command_Type_TOGGLE_PREFADER_LEVELS;
   static const Type TOGGLE_SELECTION = Command_Type_TOGGLE_SELECTION;
+  static const Type TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP = Command_Type_TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP;
   static const Type TOGGLE_SHOW_CURSOR_LABELS = Command_Type_TOGGLE_SHOW_CURSOR_LABELS;
   static const Type TOGGLE_SHOW_HELP_PANE = Command_Type_TOGGLE_SHOW_HELP_PANE;
   static const Type TOGGLE_SHOW_LABELS_AT_TOP = Command_Type_TOGGLE_SHOW_LABELS_AT_TOP;

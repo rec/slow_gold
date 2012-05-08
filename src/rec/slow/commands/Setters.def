@@ -76,6 +76,13 @@ command {
   category: "Audio"
 }
 command {
+  type: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
+  is_global_setter: true
+  address { part: { name: "show_about_on_startup" } }
+  setter_type_name: "rec.slow.GuiSettings"
+  category: "Help"
+}
+command {
   type: TOGGLE_SHOW_CURSOR_LABELS
   is_global_setter: true
   address { part: { name: "show_cursor_labels" } }
