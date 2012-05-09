@@ -21,7 +21,7 @@ class SetterLabel : public SimpleLabel, public data::AddressListener {
     if (v.has_string_f()) {
       String s = str(v.string_f());
       if (s != getText(true))
-        setText(s, false);
+        thread::callAsync(this, &SetterLabel::setText, s, false);// setText(s, false);
     }
   }
 

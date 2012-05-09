@@ -83,7 +83,6 @@ void openSlowGoldDirectory() {
   File f = app::getAppDirectory();
   string typeName = VirtualFile::default_instance().GetTypeName();
   File g = f.getChildFile(str(typeName));
-  // DLOG(INFO) << str(f) << "\n" << str(g);
   g.revealToUser();
 }
 

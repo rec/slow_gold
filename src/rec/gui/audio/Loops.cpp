@@ -106,7 +106,7 @@ String Loops::displayText(int column, int row) const {
 void Loops::setFieldValue(int column, int row, const String& text) {
   Lock l(TableController::lock_);
   Address rowAddress = getAddress(column, row);
-  data::Value value;
+  data::Value value(str(text));
   string error = setMessageField(rowAddress, &viewport_, value);
   if (error.empty())
     setProto(viewport_);
@@ -115,7 +115,6 @@ void Loops::setFieldValue(int column, int row, const String& text) {
 }
 
 void Loops::selectedRowsChanged(int) {
-  DLOG(INFO) << "selectedRowsChanged";
   Lock l(TableController::lock_);
 
   bool changed = false;
@@ -133,19 +132,32 @@ void Loops::selectedRowsChanged(int) {
 }
 
 void Loops::update() {
-  TableController::update();
-
+  int rows;
+  int columns;
   juce::SparseSet<int> sel;
   {
     Lock l(TableController::lock_);  // TODO: simplify locking here?
-    for (int i = 0; i < getNumRows(); ++i) {
-      if (viewport_.loop_points().loop_point(i).selected())
-        sel.addRange(juce::Range<int>(i, i + 1));
+    rows = getNumRows();
+    columns = columns_.column_size();
+    for (int r = 0; r < rows; ++r) {
+      if (viewport_.loop_points().loop_point(r).selected())
+        sel.addRange(juce::Range<int>(r, r + 1));
+      for (int c = 0; c < columns; ++c) {
+        SimpleLabel* s = dynamic_cast<SimpleLabel*>(getCellComponent(c + 1, r));
+        if (s) {
+          String d = displayText(c, r);
+          String t = s->getText(true);
+          if (d != s->getText(true))
+            s->setText(d, false);
+        }
+      }
     }
   }
 
   if (sel != getSelectedRows())
     setSelectedRows(sel, false);
+
+  TableController::update();
 }
 
 String Loops::getCellTooltip(int, int) const {

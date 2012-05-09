@@ -101,6 +101,11 @@ class TableLabel : public SimpleLabel {
     table_->setFieldValue(col_, row_, getText(true));
   }
 
+  void setText(const String& s) {
+    if (s != getText(true))
+      SimpleLabel::setText(s, false);
+  }
+
  private:
   TableController* const table_;
   const int col_;
@@ -121,7 +126,7 @@ Component* TableController::refreshComponentForCell(int row, int columnId,
   }
 
   if (text) {
-    text->setText(displayText(column, row), false);
+    text->setText(displayText(column, row));
     text->setTooltip(getCellTooltip(column, row));
     text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
   }

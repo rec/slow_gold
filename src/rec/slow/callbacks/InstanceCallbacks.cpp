@@ -245,8 +245,6 @@ void deleteRecursivelyAndQuit(const File& dir, Instance* i,
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
-  DLOG(INFO) << str(title);
-  DLOG(INFO) << str(msg);
   if (!AlertWindow::showOkCancelBox(AlertWindow::InfoIcon, title, msg,
                                     OK, CANCEL)) {
     return;
