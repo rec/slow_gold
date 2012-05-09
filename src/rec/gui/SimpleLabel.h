@@ -18,6 +18,12 @@ class SimpleLabel : public juce::Label {
     setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
   }
 
+  void setTextIfChanged(const String& newText, bool b) {
+    if (newText != getText(true))
+        setText(newText, b);
+  }
+
+
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SimpleLabel);
 };

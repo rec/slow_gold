@@ -30,6 +30,8 @@ class Loops : public TableController,
   virtual String displayText(int column, int row) const;
   virtual String getCellTooltip(int column, int row) const;
 
+  virtual bool selected(int row) const;
+
  protected:
   virtual void update();
 

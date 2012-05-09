@@ -131,6 +131,12 @@ void Loops::selectedRowsChanged(int) {
     setProto(viewport_);
 }
 
+bool Loops::selected(int r) const {
+  Lock l(TableController::lock_);
+  const LoopPointList& lpl = viewport_.loop_points();
+  return r >= 0 && r < lpl.loop_point_size() && lpl.loop_point(r).selected();
+}
+
 void Loops::update() {
   int rows;
   int columns;
@@ -140,24 +146,18 @@ void Loops::update() {
     rows = getNumRows();
     columns = columns_.column_size();
     for (int r = 0; r < rows; ++r) {
-      if (viewport_.loop_points().loop_point(r).selected())
+      bool selected = viewport_.loop_points().loop_point(r).selected();
+      if (selected)
         sel.addRange(juce::Range<int>(r, r + 1));
-      for (int c = 0; c < columns; ++c) {
-        SimpleLabel* s = dynamic_cast<SimpleLabel*>(getCellComponent(c + 1, r));
-        if (s) {
-          String d = displayText(c, r);
-          String t = s->getText(true);
-          if (d != s->getText(true))
-            s->setText(d, false);
-        }
-      }
     }
   }
 
   if (sel != getSelectedRows())
     setSelectedRows(sel, false);
 
+  updateContent();
   TableController::update();
+  repaint();
 }
 
 String Loops::getCellTooltip(int, int) const {

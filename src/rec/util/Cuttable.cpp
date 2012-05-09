@@ -69,12 +69,10 @@ bool cutNoClipboard() {
   Cuttable* c = current();
   if (c->canCut()) {
     c->cut();
-    DLOG(INFO) << "yes!";
     return true;
   }
 
   beep();
-  DLOG(INFO) << "no!";
   return false;
 }
 

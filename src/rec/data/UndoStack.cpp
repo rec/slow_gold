@@ -54,8 +54,12 @@ UndoStack::~UndoStack() {
 void UndoStack::clear() {
   {
     Lock l(lock_);
+    if (!enabled_)
+      return;
+
     stl::deletePointers(&stack_);
     stack_.clear();
+    // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
   }
   broadcast(None());
 }
@@ -79,11 +83,13 @@ int UndoStack::popRedos() {
 void UndoStack::push(Data* e, const Message& before, const Message& after) {
   {
     Lock l(lock_);
-    if (enabled_) {
-      ptr<Entry> ue(new Entry(e, before, after));
-      if (popRedos() || !stack_.size() || !stack_.back()->mergeInto(ue.get()))
-        stack_.push_back(ue.transfer());
-    }
+    if (!enabled_)
+      return;
+
+    ptr<Entry> ue(new Entry(e, before, after));
+    if (popRedos() || !stack_.size() || !stack_.back()->mergeInto(ue.get()))
+      stack_.push_back(ue.transfer());
+    // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
   }
   broadcast(None());
 }
@@ -91,10 +97,11 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
 void UndoStack::undoOrRedo(bool isUndo) {
   {
     Lock l(lock_);
-    if (enabled_) {
-      int pos = stack_.size() - 1 - (isUndo ? undoes_++ : --undoes_);
-      stack_[pos]->undoOrRedo(isUndo);
-    }
+    if (!enabled_)
+      return;
+    int pos = stack_.size() - 1 - (isUndo ? undoes_++ : --undoes_);
+    stack_[pos]->undoOrRedo(isUndo);
+    // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
   }
 
   broadcast(None());

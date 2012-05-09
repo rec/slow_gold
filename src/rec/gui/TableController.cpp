@@ -33,11 +33,11 @@ void TableController::fillHeader(TableHeaderComponent* headers) {
 }
 
 void TableController::paintRowBackground(Graphics& g,
-                                        int /*row*/,
+                                        int row,
                                         int width, int height,
                                         bool rowIsSelected) {
   Lock l(lock_);
-  g.setColour(rowIsSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
+  g.setColour(selected(row) ? SELECTED_COLOR : UNSELECTED_COLOR);
   g.fillRect(0, 0, width, height);
 }
 
@@ -82,6 +82,7 @@ void TableController::resized() {
 
 
 bool TableController::editable(int col) const {
+  Lock l(lock_);
   return (columns_.column(col).property_flags() & TableColumn::EDITABLE);
 }
 
@@ -118,6 +119,7 @@ class TableLabel : public SimpleLabel {
 Component* TableController::refreshComponentForCell(int row, int columnId,
                                                     bool isRowSelected,
                                                     Component* existing) {
+  // TODO: why is isRowSelected wrong sometimes?
   int column = columnId - 1;  // To account for the 1 we added above.
   TableLabel* text = dynamic_cast<TableLabel*>(existing);
   if (!text) {
@@ -129,7 +131,8 @@ Component* TableController::refreshComponentForCell(int row, int columnId,
   if (text) {
     text->setText(displayText(column, row));
     text->setTooltip(getCellTooltip(column, row));
-    text->setEditorBackground(isRowSelected ? SELECTED_COLOR : UNSELECTED_COLOR);
+    text->setEditorBackground(selected(row) ? SELECTED_COLOR :
+                              UNSELECTED_COLOR);
   }
 
   return text;

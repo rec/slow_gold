@@ -72,18 +72,18 @@ void CurrentFile::setDataFile(DataFile f) {
   if (length_)
     setViewport();
 
-  if (file_) {
+  if (file_) 
     instance_->fillerThread_->startThread();
-    components()->directoryTree_->refreshNode(*file_);
-  } 
   {
     MessageManagerLock l;
+    if (file_) 
+      components()->directoryTree_->refreshNode(*file_);
+    if (newFile)
+      components()->directoryTree_->refreshNode(*newFile);
     components()->setEnabled(file_);
     data::UntypedDataListener::setGlobalDataFile(file_.get());
   }
   
-  if (newFile)
-    components()->directoryTree_->refreshNode(*newFile);
 
   data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
   menus()->menuItemsChanged();
