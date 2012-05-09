@@ -42,7 +42,6 @@ void Window::startup() {
     Thread::sleep(SLEEP_BEFORE_STARTUP);
   // We used to need this so that our GUI has settled down...
   doStartup();
-  setVisible(true);
 
   if (SLEEP_AFTER_STARTUP)
     Thread::sleep(SLEEP_AFTER_STARTUP);

@@ -148,9 +148,9 @@ void Instance::startup() {
 
     window_->toFront(true);
     currentFile_->setDataFile(&vf);
-    window_->setVisible(true);
   }
 
+  thread::callAsync(window_, &DocumentWindow::setVisible, true);
   threads_->start();
   Thread* timer = threads_->timerThread();
   components_->transportController_->timeController()->setThread(timer);

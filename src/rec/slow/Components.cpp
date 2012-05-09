@@ -78,7 +78,7 @@ void Components::operator()(const music::Metadata& md) {
     name = str(music::getTitle(md, file.getParentDirectory()));
   }
 
-  window()->setName(name);
+  thread::callAsync(window(), &SlowWindow::setName, name);
 }
 
 

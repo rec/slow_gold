@@ -6,7 +6,7 @@ namespace rec {
 
 using namespace juce;
 
-#ifdef DEBUG
+#if JUCE_DEBUG && JUCE_WINDOWS
 
 namespace {
 

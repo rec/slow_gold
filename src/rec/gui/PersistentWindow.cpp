@@ -46,7 +46,7 @@ PersistentWindow::~PersistentWindow() {}
 void PersistentWindow::operator()(const WindowPosition& p) {
   position_ = p;
   String state = str(p.juce_position());
-  setWindowState(state);
+  thread::callAsync(this, &PersistentWindow::setWindowState, state);
 }
 
 void PersistentWindow::setWindowState(const String& state) {
