@@ -5,7 +5,6 @@
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/icon/ZoomInCursor.svg.h"
 #include "rec/util/Defaulter.h"
-// #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/STL.h"

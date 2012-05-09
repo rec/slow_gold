@@ -18,7 +18,8 @@ using namespace juce;
 static const int MS_TILL_TOOLTIP = 700;
 
 GuiListener::GuiListener(Instance* i)
-    : HasInstance(i), displayHelpPane_(false), lastComponent_(NULL) {
+    : HasInstance(i), displayHelpPane_(false), lastComponent_(NULL),
+      lastFocus_(NULL) {
 }
 
 void GuiListener::operator()(const GuiSettings& settings) {
@@ -60,6 +61,14 @@ void GuiListener::update() {
     lastComponent_ = comp;
     components()->mainPage_->setTooltip(getTooltip(comp));
   }
+
+#if JUCE_DEBUG
+  comp = Component::getCurrentlyFocusedComponent();
+  if (comp != lastFocus_) {
+    // DLOG(INFO) << (comp ? str(comp->getName()) : string("(none)"));
+    lastFocus_ = comp;
+  }
+#endif
 }
 
 }  // namespace slow

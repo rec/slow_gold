@@ -88,7 +88,8 @@ bool TableController::editable(int col) const {
 class TableLabel : public SimpleLabel {
  public:
   explicit TableLabel(TableController* table, int col, int row)
-      : SimpleLabel(""), table_(table), col_(col), row_(row) {
+      : SimpleLabel("TableLabel " + String(col) + "-" + String(row)),
+        table_(table), col_(col), row_(row) {
     setEditable(table->editable(col), false, false);
     setJustificationType(Justification::centredLeft);
   }

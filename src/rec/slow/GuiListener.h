@@ -21,6 +21,7 @@ class GuiListener : public GlobalDataListener<GuiSettings>, public HasInstance {
   ptr<juce::TooltipWindow> tooltipWindow_;
   bool displayHelpPane_;
   Component* lastComponent_;
+  Component* lastFocus_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GuiListener);
 };

@@ -117,7 +117,6 @@ Def<command::Commands> keyPresses(
   "}\n"
   "command {\n"
   "  type: DEL\n"
-  "  keypress: \"backspace\"\n"
   "  keypress: \"delete\"\n"
   "}\n"
   "command {\n"
