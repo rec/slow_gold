@@ -2862,6 +2862,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h">
       <Filter>tests\rec\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\DataFile.h">
+      <Filter>tests\rec\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\DataImpl.h">
       <Filter>tests\rec\data</Filter>
     </ClInclude>
@@ -3511,6 +3514,9 @@
       <Filter>tests\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\HasLock.h">
+      <Filter>tests\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\HasThread.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Listener.h">

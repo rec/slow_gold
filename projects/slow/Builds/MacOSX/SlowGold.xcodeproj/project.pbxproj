@@ -443,6 +443,7 @@
 		16C7F7DD332443B07BD57124 /* KeyCommandMapEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeyCommandMapEditor.h; path = ../../../../src/rec/command/map/KeyCommandMapEditor.h; sourceTree = SOURCE_ROOT; };
 		16D310BA1F8C839C46970722 /* juce_AudioIODevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_AudioIODevice.cpp; path = ../../../../../juce/modules/juce_audio_devices/audio_io/juce_AudioIODevice.cpp; sourceTree = SOURCE_ROOT; };
 		16D7ACC65A6C6B6661981EAB /* StripLines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StripLines.h; path = ../../../../src/rec/util/cd/StripLines.h; sourceTree = SOURCE_ROOT; };
+		1713F6AA0634CD005475AE5E /* DataFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DataFile.h; path = ../../../../src/rec/data/DataFile.h; sourceTree = SOURCE_ROOT; };
 		17439683131ADA551F0F36F8 /* JumpForwardButtonDisabled.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = JumpForwardButtonDisabled.svg.cpp; path = ../../../../src/rec/gui/icon/JumpForwardButtonDisabled.svg.cpp; sourceTree = SOURCE_ROOT; };
 		174DBBB5396226B27AAD807D /* Callback2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback2.h; path = ../../../../src/rec/util/thread/Callback2.h; sourceTree = SOURCE_ROOT; };
 		175B28316001A00027998C06 /* BinaryData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
@@ -834,6 +835,7 @@
 		53ECC421A7607442C8ACF7B8 /* juce_MidiKeyboardComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_MidiKeyboardComponent.cpp; path = ../../../../../juce/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.cpp; sourceTree = SOURCE_ROOT; };
 		53FFE4C3BA4CAA9AD409F9EF /* MakeBufferedReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MakeBufferedReader.h; path = ../../../../src/rec/audio/util/MakeBufferedReader.h; sourceTree = SOURCE_ROOT; };
 		54353BEAF42C9B82C3EF44DE /* TypedOperations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TypedOperations.cpp; path = ../../../../src/rec/data/proto/TypedOperations.cpp; sourceTree = SOURCE_ROOT; };
+		543C3B4C458EDF8359A8041F /* HasThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HasThread.h; path = ../../../../src/rec/util/HasThread.h; sourceTree = SOURCE_ROOT; };
 		54AC925ED4B3D16513FD27FB /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = node.cpp; path = ../../../../src/rec/data/yaml/src/node.cpp; sourceTree = SOURCE_ROOT; };
 		55013D3C64329F1100A924B1 /* juce_android_FileChooser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_FileChooser.cpp; path = ../../../../../juce/modules/juce_gui_basics/native/juce_android_FileChooser.cpp; sourceTree = SOURCE_ROOT; };
 		5544771C0AF2C3DFCFE3579F /* juce_FileListComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_FileListComponent.h; path = ../../../../../juce/modules/juce_gui_basics/filebrowser/juce_FileListComponent.h; sourceTree = SOURCE_ROOT; };
@@ -852,7 +854,7 @@
 		5717827E485ECB356F536CAB /* juce_android_CameraDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_CameraDevice.cpp; path = ../../../../../juce/modules/juce_video/native/juce_android_CameraDevice.cpp; sourceTree = SOURCE_ROOT; };
 		5717DEB69D118F82FABED64D /* juce_ChangeListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ChangeListener.h; path = ../../../../../juce/modules/juce_events/broadcasters/juce_ChangeListener.h; sourceTree = SOURCE_ROOT; };
 		5743C7068DFB147AE0F83DA3 /* SetterResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterResizer.h; path = ../../../../src/rec/gui/SetterResizer.h; sourceTree = SOURCE_ROOT; };
-		57A179F92CC94E9DAF17FBF5 /* SlowGold 8.0.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8.0.1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57A179F92CC94E9DAF17FBF5 /* SlowGold 8.0.2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8.0.2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		580E722F4D575D7823A165A8 /* juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_audio_utils.mm; path = ../../../../../juce/modules/juce_audio_utils/juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
 		585B6DEEBA218C24E925C8AB /* juce_CharPointer_ASCII.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_CharPointer_ASCII.h; path = ../../../../../juce/modules/juce_core/text/juce_CharPointer_ASCII.h; sourceTree = SOURCE_ROOT; };
 		5865D2663DFD5F540E0D33CE /* scantag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scantag.h; path = ../../../../src/rec/data/yaml/src/scantag.h; sourceTree = SOURCE_ROOT; };
@@ -1997,6 +1999,16 @@
 			name = format;
 			sourceTree = "<group>";
 		};
+		107F9067483AC6C1731029B5 /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		124FEF630849CC543087B509 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -2104,7 +2116,7 @@
 		15D5B9524ABD37A7B5D2F73D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				57A179F92CC94E9DAF17FBF5 /* SlowGold 8.0.1.app */,
+				57A179F92CC94E9DAF17FBF5 /* SlowGold 8.0.2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2965,16 +2977,6 @@
 			name = misc;
 			sourceTree = "<group>";
 		};
-		7741DA705B572EB6CE4CEEE0 /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
-			sourceTree = "<group>";
-		};
 		7781AED4C6C54E0E5C48615C /* values */ = {
 			isa = PBXGroup;
 			children = (
@@ -3086,6 +3088,7 @@
 				47515E20811B826BDF862EE3 /* FormatTime.cpp */,
 				4E9494A6C04B7A86D01FA7E6 /* FormatTime.h */,
 				EC3904EE6793A1D0579BE8EE /* HasLock.h */,
+				543C3B4C458EDF8359A8041F /* HasThread.h */,
 				A0D48B97E349904DDCDD4873 /* Listener.h */,
 				E3CB781C89C44B60CADC8197 /* ListenerAdaptor.h */,
 				7F5E1BE254683F309EBCA0EB /* LockedState.h */,
@@ -3112,7 +3115,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7741DA705B572EB6CE4CEEE0 /* SlowGold */,
+				107F9067483AC6C1731029B5 /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3646,6 +3649,7 @@
 				1F2A66C87CA77C353DBE8C8A /* Data.h */,
 				64C7471725181FACB3444E3D /* DataCenter.cpp */,
 				CC8F815319BC8B590F6E8FE2 /* DataCenter.h */,
+				1713F6AA0634CD005475AE5E /* DataFile.h */,
 				0E73E69B3BF952F20EE3B0FB /* DataImpl.cpp */,
 				FECF232CB9FDF472DB4F2586 /* DataImpl.h */,
 				0CE348967DAB2587089B27AE /* DataListener.h */,
@@ -4676,7 +4680,7 @@
 			name = SlowGold;
 			productInstallPath = "$(HOME)/Applications";
 			productName = SlowGold;
-			productReference = 57A179F92CC94E9DAF17FBF5 /* SlowGold 8.0.1.app */;
+			productReference = 57A179F92CC94E9DAF17FBF5 /* SlowGold 8.0.2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -5121,7 +5125,7 @@
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PRODUCT_NAME = "SlowGold 8.0.1";
+				PRODUCT_NAME = "SlowGold 8.0.2";
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
 			};
@@ -5141,7 +5145,7 @@
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PRODUCT_NAME = "SlowGold 8.0.1-debug";
+				PRODUCT_NAME = "SlowGold 8.0.2-debug";
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
 			};

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="hCN6qe9YW" name="tests">
+  <MAINGROUP id="DHrD9H8mH" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -371,6 +371,8 @@
               name="DataCenter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataCenter.h" id="Sx1zkS7gm"
               name="DataCenter.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/DataFile.h" id="i80q4vXoU"
+              name="DataFile.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/DataImpl.cpp" id="MAnft7K0o"
               name="DataImpl.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataImpl.h" id="9T2kuIbje"
@@ -1181,6 +1183,8 @@
               name="FormatTime.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/HasLock.h" id="N13pVQA3v"
               name="HasLock.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/HasThread.h" id="uRfjL2ayb"
+              name="HasThread.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Listener.h" id="Daa1p48hu"
               name="Listener.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/ListenerAdaptor.h" id="Z6lAR895V"
@@ -1561,7 +1565,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="tSmqtCCHn" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="iWDaqAGlF" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
