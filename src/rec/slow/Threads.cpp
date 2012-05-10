@@ -28,7 +28,7 @@ using namespace rec::util::thread;
 
 namespace {
 
-const int THREAD_STOP_PERIOD = 2000;
+const int THREAD_STOP_PERIOD = 2500;
 const int BUFFER_FILL_CHUNK = 256;
 
 struct Period {
