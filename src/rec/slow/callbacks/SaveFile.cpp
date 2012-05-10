@@ -37,8 +37,8 @@ Trans OK("OK");
 Trans TRANSPOSE_ONE("one semitone %s");
 Trans TRANSPOSE_MANY("%s %s semitones");
 Trans CANCEL("Cancel");
-Trans CANT_CHANGE_SUFFIX("The file extension must be either .aiff, .flac, .ogg "
-                         "or .wav.");
+Trans CANT_CHANGE_SUFFIX("The file extension must be .aiff, .aif, .flac, .ogg, "
+                         ".wav or .wave.");
 
 // Skin
 const int COPY_UPDATE_SIZE = 2048;
@@ -67,9 +67,9 @@ File getBaseFile(Instance* instance, const String& suffix,
   if (!near(ts, 100.0, 0.05)) {
     int roundTs = static_cast<int>(ts);
     if (near(ts, roundTs, 0.05))
-      baseName += String::formatted(" @ %d%%", roundTs);
+      baseName += String::formatted(" at %d", roundTs);
     else
-      baseName += String::formatted(" @ %.1f%%", ts);
+      baseName += String::formatted(" at %.1f", ts);
   }
 
   double ps = audio::stretch::pitchSemitones(stretch,
@@ -88,7 +88,7 @@ File getBaseFile(Instance* instance, const String& suffix,
   return file.getChildFile(baseName + suffix);
 }
 
-static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav"};
+static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav", ".aif", ".wave"};
 
 static bool isLegalSuffix(const String& suffix) {
   for (uint i = 0; i < arraysize(SUFFIXES); ++i) {
