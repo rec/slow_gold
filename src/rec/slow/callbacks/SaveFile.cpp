@@ -7,6 +7,7 @@
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretchy.h"
 #include "rec/audio/util/BufferedReader.h"
+#include "rec/base/ArraySize.h"
 #include "rec/base/Trans.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/slow/GuiSettings.h"
@@ -36,8 +37,8 @@ Trans OK("OK");
 Trans TRANSPOSE_ONE("one semitone %s");
 Trans TRANSPOSE_MANY("%s %s semitones");
 Trans CANCEL("Cancel");
-Trans CANT_CHANGE_SUFFIX("The file extension must be %s - "
-                         "please don't change it.");
+Trans CANT_CHANGE_SUFFIX("The file extension must be either .aiff, .flac, .ogg "
+                         "or .wav.");
 
 // Skin
 const int COPY_UPDATE_SIZE = 2048;
@@ -89,6 +90,15 @@ File getBaseFile(Instance* instance, const String& suffix,
 
 static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav"};
 
+static bool isLegalSuffix(const String& suffix) {
+  for (uint i = 0; i < arraysize(SUFFIXES); ++i) {
+    if (suffix == SUFFIXES[i])
+      return true;
+  }
+  return false;
+}
+
+
 File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
@@ -106,10 +116,10 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
     file = slow::browseForFile(SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
     if (file == File::nonexistent)
       return file;
-    if (file.getFileExtension() == suffix)
+    if (isLegalSuffix(file.getFileExtension()))
       break;
-    String error = String::formatted(CANT_CHANGE_SUFFIX, c_str(suffix));
-    AlertWindow::showMessageBox(AlertWindow::InfoIcon, error, error, OK);
+    AlertWindow::showMessageBox(AlertWindow::InfoIcon, CANT_CHANGE_SUFFIX,
+                                CANT_CHANGE_SUFFIX, OK);
   }
 
   settings.set_last_directory(str(file.getParentDirectory()));
