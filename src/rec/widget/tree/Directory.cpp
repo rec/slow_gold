@@ -99,18 +99,24 @@ Directory::NodeSet Directory::processingChildren_;
 CriticalSection Directory::processingLock_;
 
 bool Directory::computeChildrenInBackground() {
+  Thread *t = Thread::getCurrentThread();
+  if (t && t->threadShouldExit())
+    return false;
+
   Node* node;
   bool result;
   {
     Lock l(processingLock_);
     NodeSet::const_iterator i = processingChildren_.begin();
-    if (i == processingChildren_.end())
+    if (i == processingChildren_.end() || (t && t->threadShouldExit()))
       return false;
 
     node = *i;
     processingChildren_.erase(i);
     result = processingChildren_.empty();
   }
+  if (t && t->threadShouldExit())
+    return false;
   node->computeChildren();
 
   return result;

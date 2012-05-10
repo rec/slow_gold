@@ -13,8 +13,6 @@ namespace slow {
 
 class Threads : public HasInstance, public HasLock {
  public:
-  static const int LOOP_TIME = 100;
-
   explicit Threads(Instance* i);
   ~Threads();
 
