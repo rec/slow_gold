@@ -41,7 +41,8 @@ void CurrentTime::setTime(Samples<44100> t) {
     zoomTime_ = t;
     viewport = viewport_;
   }
-  Zoom* zoom = viewport_.mutable_zoom();
+
+  Zoom* zoom = viewport.mutable_zoom();
   Samples<44100> end = zoom->has_end() ? Samples<44100>(zoom->end()) : length_;
   // Now compute an ideal zoom for this time.
   Samples<44100> width = end - zoom->begin();
