@@ -1,4 +1,3 @@
-
 (\
  cd $ROOT/rec &&\
  "$ROOT/rec/scripts/makeProtoFiles.sh" &&\
