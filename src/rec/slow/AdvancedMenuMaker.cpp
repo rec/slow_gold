@@ -61,6 +61,10 @@ void AdvancedMenuMaker::addFileMenu() {
 
   add(Command::EXPORT_SETTINGS);
   add(Command::IMPORT_SETTINGS);
+
+  menu_.addSeparator();
+  add(Command::KEYBOARD_MAPPINGS);
+  add(Command::MIDI_MAPPINGS);
 }
 
 void AdvancedMenuMaker::addSelectMenu() {

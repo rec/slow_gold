@@ -20,8 +20,6 @@ void BasicMenuMaker::addFileMenu() {
   menu_.addSeparator();
 
   // add(Command::CLEAR_NAVIGATOR);
-  add(Command::KEYBOARD_MAPPINGS);
-  add(Command::MIDI_MAPPINGS);
   add(Command::TOGGLE_ADVANCED_MENUS);
 
   std::vector<string> recent = rec::gui::getRecentFileNames();
