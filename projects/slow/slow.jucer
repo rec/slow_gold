@@ -21,7 +21,7 @@
       </CONFIGURATIONS>
     </XCODE_MAC>
     <VS2010 bigIcon="wiIhPYIwK" extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="
-            extraLinkerFlags=" ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT  /NODEFAULTLIB:LIBCMTD"
+            extraLinkerFlags=" ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT"
             juceFolder="../../../juce/modules" libraryType="1" smallIcon="k8EMdGWkD"
             targetFolder="Builds/VisualStudio2010">
       <CONFIGURATIONS>
@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="ummoQ66Dz" name="SlowGold">
+  <MAINGROUP id="BB0nVpPLJ" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1505,7 +1505,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="vB8tYn2ZK" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="yQLaWgEAB" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
