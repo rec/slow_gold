@@ -127,7 +127,6 @@
 		652E1712FB8F88AB6274AA7C /* AddLoopPointButtonPressed.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCDF90B1BBFBE08B83A4367A /* AddLoopPointButtonPressed.svg.cpp */; };
 		65C78423CE2F75E7625A7184 /* CallbackUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A4655DDCDAB44B21C78467 /* CallbackUtils.cpp */; };
 		660371033572E146E0095CCF /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3302C14F54E38BEFAA806B48 /* Window.cpp */; };
-		66212E2AB4FD425FE350E96F /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93065C347592BC1D640454E2 /* Status.cpp */; };
 		66C037849EC4CBB059E35E85 /* MakeBufferedReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09154A37C71BB69A7ACE2353 /* MakeBufferedReader.cpp */; };
 		681813F4E5F0ACD50CA9462E /* LookAndFeel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D301E2BF3F6647650525E8 /* LookAndFeel.cpp */; };
 		682BA92F8A69E579C80D3C72 /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9A0847AA2EC948C75D0919B /* Tags.cpp */; };
@@ -1195,7 +1194,6 @@
 		92A1AC7C59F74A2793DDC7ED /* juce_FillType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_FillType.h; path = ../../../../../juce/modules/juce_graphics/colour/juce_FillType.h; sourceTree = SOURCE_ROOT; };
 		92B424F4EFD5E3B7C8F89800 /* FunctionCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FunctionCallback.h; path = ../../../../src/rec/util/thread/FunctionCallback.h; sourceTree = SOURCE_ROOT; };
 		92FFBBBF13500E7E57B53277 /* scantoken.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = scantoken.cpp; path = ../../../../src/rec/data/yaml/src/scantoken.cpp; sourceTree = SOURCE_ROOT; };
-		93065C347592BC1D640454E2 /* Status.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Status.cpp; path = ../../../../src/rec/widget/status/Status.cpp; sourceTree = SOURCE_ROOT; };
 		93204D31CE9FD99440E4426B /* juce_MidiInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_MidiInput.h; path = ../../../../../juce/modules/juce_audio_devices/midi_io/juce_MidiInput.h; sourceTree = SOURCE_ROOT; };
 		935B32AB0BABE604ED3C71DA /* regex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = regex.cpp; path = ../../../../src/rec/data/yaml/src/regex.cpp; sourceTree = SOURCE_ROOT; };
 		93768F6FFB654FC04ED5642B /* juce_MessageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_MessageManager.h; path = ../../../../../juce/modules/juce_events/messages/juce_MessageManager.h; sourceTree = SOURCE_ROOT; };
@@ -1667,7 +1665,6 @@
 		E724060EB05CA2FDFC2B8DC9 /* juce_ArrowButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ArrowButton.h; path = ../../../../../juce/modules/juce_gui_basics/buttons/juce_ArrowButton.h; sourceTree = SOURCE_ROOT; };
 		E74FB92D853947D28944597C /* Repeated.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Repeated.def.h; path = ../../../../src/rec/slow/commands/Repeated.def.h; sourceTree = SOURCE_ROOT; };
 		E7E72746C0D6087A21106797 /* juce_Button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_Button.cpp; path = ../../../../../juce/modules/juce_gui_basics/buttons/juce_Button.cpp; sourceTree = SOURCE_ROOT; };
-		E80136A0A64D6D8E15983318 /* Status.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.h; path = ../../../../src/rec/widget/status/Status.h; sourceTree = SOURCE_ROOT; };
 		E8187A4E11EE8647A18DA59E /* FillSeries.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FillSeries.h; path = ../../../../src/rec/util/block/FillSeries.h; sourceTree = SOURCE_ROOT; };
 		E889CEF4A27F5C67F7FEE76F /* juce_RectanglePlacement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_RectanglePlacement.h; path = ../../../../../juce/modules/juce_graphics/placement/juce_RectanglePlacement.h; sourceTree = SOURCE_ROOT; };
 		E8C4AC039AC87ADD2C1FFA67 /* juce_mac_ObjCSuffix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_mac_ObjCSuffix.h; path = ../../../../../juce/modules/juce_core/native/juce_mac_ObjCSuffix.h; sourceTree = SOURCE_ROOT; };
@@ -1999,16 +1996,6 @@
 			name = format;
 			sourceTree = "<group>";
 		};
-		107F9067483AC6C1731029B5 /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
-			sourceTree = "<group>";
-		};
 		124FEF630849CC543087B509 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -2029,8 +2016,6 @@
 			children = (
 				1ED0B1F501AFDB94314F0A59 /* DialComponent.cpp */,
 				0FC97BC5F121B51F13CFF3A4 /* DialComponent.h */,
-				93065C347592BC1D640454E2 /* Status.cpp */,
-				E80136A0A64D6D8E15983318 /* Status.h */,
 				93AD7EC88811E158E196B6E4 /* TextComponent.cpp */,
 				D204E3BCAB8C95C0C780B854 /* TextComponent.h */,
 			);
@@ -3115,7 +3100,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				107F9067483AC6C1731029B5 /* SlowGold */,
+				E677880401B81B20BF05CFF1 /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -4105,6 +4090,16 @@
 			name = maths;
 			sourceTree = "<group>";
 		};
+		E677880401B81B20BF05CFF1 /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		E90110C84AA51FA026327766 /* gui */ = {
 			isa = PBXGroup;
 			children = (
@@ -4948,7 +4943,6 @@
 				9469416F4C991196202A8C45 /* Undo.cpp in Sources */,
 				5CE77E53E4494F9F8567C8BF /* RandomSelfInverseFunction.cpp in Sources */,
 				E9F71450CF1F964EFF82535F /* DialComponent.cpp in Sources */,
-				66212E2AB4FD425FE350E96F /* Status.cpp in Sources */,
 				431B05DFDF74B9B53ED890A3 /* TextComponent.cpp in Sources */,
 				59B11E13B4C370DF9E9E8577 /* CD.cpp in Sources */,
 				BCBB740AD75F356C0D3D4BE3 /* Directory.cpp in Sources */,

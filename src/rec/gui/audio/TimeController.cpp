@@ -61,7 +61,7 @@ void TimeController::operator()(Samples<44100> time) {
   if (songDial_.setTime(scaledTime)) {
     MessageManagerLock l(thread());
     if (l.lockWasGained())
-      songTime_.repaint();
+      songDial_.repaint();
   }
 }
 
