@@ -73,9 +73,14 @@ void TableController::resized() {
       width += lastWidth;
     }
   }
-  if (lastC)
-    header.setColumnWidth(lastC, std::max(10, lastWidth + getWidth() - width -
-                                          VERTICAL_SCROLL_WIDTH));
+
+  if (lastC) {
+    int newWidth = lastWidth + getWidth() - width;
+    if (getViewport()->getVerticalScrollBar()->isVisible())
+      newWidth -= getViewport()->getScrollBarThickness();
+
+    header.setColumnWidth(lastC, std::max(10, newWidth));
+  }
 
   juce::TableListBox::resized();
   update();

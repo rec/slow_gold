@@ -25,7 +25,7 @@ static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
 static const int PRELOAD = 10000;  // TODO:  duplicate code.
 
 CurrentTime::CurrentTime(Instance* i)
-    : HasInstance(i), time_(0), requestedTime_(-1), zoomTime_(0), length_(0),
+    : HasInstance(i), time_(0), requestedTime_(-1), length_(0),
       followCursor_(false) {
 }
 
@@ -34,21 +34,39 @@ void CurrentTime::setTime(Samples<44100> t) {
   {
     Lock l(lock());
     time_ = t;
+    viewport = viewport_;
 
-    if (!followCursor_ || llabs(t - zoomTime_) < MIN_ZOOM_TIME || !isPlaying())
+    if (!(followCursor_  && isPlaying()))
       return;
+  }
+  zoomToTime(t);
+}
 
-    zoomTime_ = t;
+static double conv(Samples<44100> s) { return s / 44100.0; }
+
+void CurrentTime::setViewportProto(const Viewport& viewport) {
+  DLOG(INFO) << viewport.zoom().ShortDebugString();
+  DataListener<Viewport>::setProto(viewport, CANT_UNDO);
+}
+
+void CurrentTime::zoomToTime(Samples<44100> t) {
+  DLOG(INFO) << "zooming to " << conv(t);
+  Viewport viewport;
+  {
+    Lock l(lock());
     viewport = viewport_;
   }
 
   Zoom* zoom = viewport.mutable_zoom();
+  Samples<44100> begin = zoom->begin();
   Samples<44100> end = zoom->has_end() ? Samples<44100>(zoom->end()) : length_;
+
   // Now compute an ideal zoom for this time.
-  Samples<44100> width = end - zoom->begin();
+  Samples<44100> width = end - begin;
   Samples<44100> off = static_cast<int64>(MIN_CURSOR_RATIO_CHANGE * width);
-  if (t >= zoom->begin() && t <= zoom->begin() + off)
+  if (t >= zoom->begin() && (t <= zoom->begin() + off))
     return;
+
   zoom->set_begin(t - static_cast<int64>(IDEAL_CURSOR_POSITION_RATIO * width));
 
   if (zoom->begin() + width > length_)
@@ -58,7 +76,7 @@ void CurrentTime::setTime(Samples<44100> t) {
     zoom->set_begin(0);
 
   zoom->set_end(zoom->begin() + width);
-  DataListener<Viewport>::setProto(viewport, CANT_UNDO);
+  setViewportProto(viewport);
 }
 
 void CurrentTime::setViewport(const Viewport& viewport) {
@@ -108,9 +126,9 @@ void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) 
   if (isTimeCursor) {
     jumpToTime(t);
   } else {
-    Viewport viewport(data::getProto<Viewport>(file()));
+    Viewport viewport(DataListener<Viewport>::getProto());
     viewport.mutable_loop_points()->mutable_loop_point(index)->set_time(t);
-    data::setProto(viewport, file());
+    setViewportProto(viewport);
   }
 }
 
@@ -124,16 +142,20 @@ void CurrentTime::jumpToTime(Samples<44100> time) {
 
     BufferedReader* reader = bufferFiller()->reader();
     requestedTime_ = time;
+    time_ = time;
     DCHECK(reader);  // TODO: remove
     if (reader && !reader->coversTime(time)) {
       reader->setNextFillPosition(time);
-      if (player()->state())
+      if (player()->state()) {
+        zoomToTime(time);
         return;
+      }
     }
     requestedTime_ = -1;
   }
 
 	player()->setNextReadPosition(time);
+  zoomToTime(time);
 }
 
 }  // namespace slow

@@ -40,14 +40,19 @@ class CurrentTime : public HasInstance,
   void reset() { Lock l(lock()); time_ = 0; }
 
   const CriticalSection& lock() const { return instance_->lock_; }
+  void zoomToCurrentTime() { zoomToTime(time()); }
+  void zoomToTime(Samples<44100>);
 
  private:
+  void zoomToCursor(Samples<44100> t);
+  void setViewportProto(const widget::waveform::Viewport&);
+
   block::BlockSet timeSelection_;
   Samples<44100> time_;
   Samples<44100> requestedTime_;
-  Samples<44100> zoomTime_;
   Samples<44100> length_;
   bool followCursor_;
+  bool isDragging_;
 
   widget::waveform::Viewport viewport_;
 
