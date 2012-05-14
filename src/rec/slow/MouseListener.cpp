@@ -67,7 +67,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
   if (currentFile()->empty())
     return;
 
-  data::getDataCenter().undoStack()->stopGroup();
+  data::getDataCenter().undoStack()->startGroup();
 
   Waveform* waveform = components()->waveform_.get();
   if (e.eventComponent == waveform)
