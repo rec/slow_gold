@@ -45,12 +45,10 @@ void CurrentTime::setTime(Samples<44100> t) {
 static double conv(Samples<44100> s) { return s / 44100.0; }
 
 void CurrentTime::setViewportProto(const Viewport& viewport) {
-  DLOG(INFO) << viewport.zoom().ShortDebugString();
   DataListener<Viewport>::setProto(viewport, CANT_UNDO);
 }
 
 void CurrentTime::zoomToTime(Samples<44100> t) {
-  DLOG(INFO) << "zooming to " << conv(t);
   Viewport viewport;
   {
     Lock l(lock());

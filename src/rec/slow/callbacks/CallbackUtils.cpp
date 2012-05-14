@@ -1,6 +1,7 @@
 #include "rec/slow/callbacks/CallbackUtils.h"
 
 #include "rec/data/DataOps.h"
+#include "rec/slow/CurrentTime.h"
 #include "rec/util/LoopPoint.h"
 
 namespace rec {
@@ -12,6 +13,7 @@ void loop(Instance* instance, LoopSnapshotFunction lsf, CommandIDEncoder pos) {
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
   instance->setProto(snapshot.viewport_);
+  instance->currentTime_->zoomToCurrentTime();
 }
 
 void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos) {
