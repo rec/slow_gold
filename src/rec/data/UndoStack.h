@@ -12,7 +12,7 @@ class Data;
 
 class UndoStack : public Broadcaster<None> {
  public:
-  explicit UndoStack(bool enabled = false) : undoes_(0), enabled_(enabled) {}
+  explicit UndoStack(bool e = false) : undoes_(0), enabled_(e), group_(false) {}
   ~UndoStack();
 
   void clear();
@@ -25,6 +25,8 @@ class UndoStack : public Broadcaster<None> {
   void undo();
   void redo();
   void setEnabled(bool e = true);
+  void startGroup() { Lock l(lock_); group_ = true; }
+  void stopGroup() { Lock l(lock_); group_ = false; }
 
  private:
   void undoOrRedo(bool isUndo);
@@ -37,6 +39,7 @@ class UndoStack : public Broadcaster<None> {
   juce::CriticalSection lock_;
   int undoes_;
   bool enabled_;
+  bool group_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(UndoStack);
 };

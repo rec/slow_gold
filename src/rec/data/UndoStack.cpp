@@ -13,8 +13,8 @@ namespace data {
 
 class UndoStack::Entry {
  public:
-  Entry(Data* d, const Message& b, const Message& a, int64 t = 0)
-      : data_(d), undo_(clone(b)), redo_(clone(a)), timestamp_(t) {
+  Entry(Data* d, const Message& undo, const Message& redo, int64 t = 0)
+      : data_(d), undo_(clone(undo)), redo_(clone(redo)), timestamp_(t) {
     if (!timestamp_)
       timestamp_ = juce::Time::currentTimeMillis();
     DCHECK(undo_);
@@ -22,21 +22,30 @@ class UndoStack::Entry {
   }
 
   static const uint64 MAX_GROUP_TIME = 2000;
-  static const bool GROUP_BY_TIME = true;
+  static const bool GROUP_BY_TIME = false;
 
   // Try to merge another entry into this one;  return true if successful.
   // If this method returns false then neither entry was changed.
-  bool mergeInto(UndoStack::Entry* ue) {
-    if (ue->data_ != data_ ||
-        GROUP_BY_TIME && !near(ue->timestamp_, timestamp_, MAX_GROUP_TIME))
-      return false;
+  bool mergeInto(UndoStack::Entry* ue, bool group) {
+    bool merge = mustMerge(*ue, group);
+    if (merge)
+      redo_.swap(ue->redo_);
 
-    redo_.swap(ue->redo_);
-    return true;
+    return merge;
   }
 
   void undoOrRedo(bool isUndo) {
     Opener<Message>(data_, CANT_UNDO)->CopyFrom(isUndo ? *undo_ : *redo_);
+  }
+
+  bool mustMerge(const UndoStack::Entry& entry, bool group) {
+    if (entry.data_ != data_)
+      return false;
+
+    if (GROUP_BY_TIME)
+      return near(entry.timestamp_, timestamp_, MAX_GROUP_TIME);
+
+    return group;
   }
 
   Data* data_;
@@ -59,9 +68,9 @@ void UndoStack::clear() {
 
     stl::deletePointers(&stack_);
     stack_.clear();
-    // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
   }
   broadcast(None());
+  // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
 }
 
 int UndoStack::popRedos() {
@@ -87,11 +96,13 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
       return;
 
     ptr<Entry> ue(new Entry(e, before, after));
-    if (popRedos() || !stack_.size() || !stack_.back()->mergeInto(ue.get()))
+    if (popRedos() || !stack_.size() ||
+        !stack_.back()->mergeInto(ue.get(), group_)) {
       stack_.push_back(ue.transfer());
-    // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
+    }
   }
   broadcast(None());
+  // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
 }
 
 void UndoStack::undoOrRedo(bool isUndo) {
@@ -101,10 +112,10 @@ void UndoStack::undoOrRedo(bool isUndo) {
       return;
     int pos = stack_.size() - 1 - (isUndo ? undoes_++ : --undoes_);
     stack_[pos]->undoOrRedo(isUndo);
-    // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
   }
 
   broadcast(None());
+  // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
 }
 
 void UndoStack::undo() {

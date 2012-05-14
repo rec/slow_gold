@@ -78,7 +78,7 @@ void AdvancedMenuMaker::addHelpMenu() {
   add(Command::TOGGLE_AUTOMATIC_UPDATES);
 
   menu_.addSeparator();
-  add(Command::OPEN_SLOWGOLD_DIRECTORY);
+  // add(Command::OPEN_SLOWGOLD_DIRECTORY);
   addIfNotEmpty(Command::CLEAR_SETTINGS_FOR_THIS_TRACK);
   add(Command::CLEAR_ALL_SETTINGS);
 }

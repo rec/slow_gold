@@ -4,6 +4,8 @@
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataCenter.h"
+#include "rec/data/UndoStack.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
@@ -60,6 +62,45 @@ void zoom(const Instance& instance, const MouseEvent& e,
 }
 
 }  // namespace
+
+void MouseListener::mouseDown(const MouseEvent& e) {
+  if (currentFile()->empty())
+    return;
+
+  data::getDataCenter().undoStack()->stopGroup();
+
+  Waveform* waveform = components()->waveform_.get();
+  if (e.eventComponent == waveform)
+    clickWaveform(e, waveform);
+
+  else if (Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent))
+    clickCursor(cursor);
+
+  else if (Label* label = dynamic_cast<Label*>(e.eventComponent))
+    clickCursor(label->getCursor());
+}
+
+void MouseListener::mouseDrag(const MouseEvent& e) {
+  if (currentFile()->empty())
+    return;
+
+  Waveform* waveform = components()->waveform_.get();
+  if (e.eventComponent == waveform)
+    dragWaveform(e, waveform);
+
+  else if (Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent))
+    dragCursor(e, cursor);
+
+  else if (Label* label = dynamic_cast<Label*>(e.eventComponent))
+    dragCursor(e, label->getCursor());
+}
+
+void MouseListener::mouseUp(const MouseEvent&) {
+  if (!currentFile()->empty())
+    components()->waveform_->setIsDraggingCursor(false);
+
+  data::getDataCenter().undoStack()->stopGroup();
+}
 
 Mode::Action MouseListener::getClickAction() {
   bool alt = dragMods_.isAltDown();
@@ -125,21 +166,6 @@ void MouseListener::clickWaveform(const MouseEvent& e, Waveform* waveform) {
   // TODO: check to make sure they don't change shift during the drag...
 }
 
-void MouseListener::mouseDown(const MouseEvent& e) {
-  if (currentFile()->empty())
-    return;
-
-  Waveform* waveform = components()->waveform_.get();
-  if (e.eventComponent == waveform)
-    clickWaveform(e, waveform);
-
-  else if (Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent))
-    clickCursor(cursor);
-
-  else if (Label* label = dynamic_cast<Label*>(e.eventComponent))
-    clickCursor(label->getCursor());
-}
-
 void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
   cursorDragStart_ = cursor->getX();
   if (cursor->isTimeCursor()) {
@@ -193,26 +219,6 @@ void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
     zoom->set_end(zoom->begin() + size);
     DataListener<widget::waveform::Viewport>::setProto(viewport);
   }
-}
-
-void MouseListener::mouseDrag(const MouseEvent& e) {
-  if (currentFile()->empty())
-    return;
-
-  Waveform* waveform = components()->waveform_.get();
-  if (e.eventComponent == waveform)
-    dragWaveform(e, waveform);
-
-  else if (Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent))
-    dragCursor(e, cursor);
-
-  else if (Label* label = dynamic_cast<Label*>(e.eventComponent))
-    dragCursor(e, label->getCursor());
-}
-
-void MouseListener::mouseUp(const MouseEvent&) {
-  if (!currentFile()->empty())
-    components()->waveform_->setIsDraggingCursor(false);
 }
 
 void MouseListener::toggleAddLoopPointMode() {
