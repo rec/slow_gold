@@ -1,7 +1,7 @@
 #ifndef __REC_MUSIC_CREATEMUSICFILEREADER__
 #define __REC_MUSIC_CREATEMUSICFILEREADER__
 
-#include "rec/base/base.h"
+#include "rec/base/Trans.h"
 
 namespace rec {
 namespace music {
@@ -29,6 +29,9 @@ class MusicFileReader {
   String errorTitle_;
   String errorDetails_;
 };
+
+extern Trans FILE_TOO_SMALL;
+extern Trans FILE_TOO_SMALL_FULL;
 
 }  // namespace music
 }  // namespace rec

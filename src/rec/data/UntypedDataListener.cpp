@@ -58,6 +58,7 @@ void UntypedDataListener::operator()(DataFile datafile) {
 }
 
 void UntypedDataListener::setGlobalDataFile(DataFile datafile) {
+  MessageManagerLock l;
   fileListener()->broadcast(datafile);
 }
 

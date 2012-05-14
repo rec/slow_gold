@@ -13,6 +13,8 @@ typedef PositionableAudioSource Source;
 
 typedef vector<float> LevelVector;
 
+const int MINIMUM_FILE_SIZE = 44100;
+
 namespace transport {
 
 enum State {STOPPED, RUNNING};

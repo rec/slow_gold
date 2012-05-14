@@ -1,6 +1,7 @@
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/cd/Album.h"
+#include "rec/audio/Audio.h"
 #include "rec/audio/format/Manager.h"
 #include "rec/base/Trans.h"
 #include "rec/music/Metadata.h"
@@ -11,6 +12,10 @@
 
 namespace rec {
 namespace music {
+
+Trans FILE_TOO_SMALL("Your File Was Too Small.");
+Trans FILE_TOO_SMALL_FULL("Sorry, the file you tried to %s"
+                          " has a length of less than one second.");
 
 namespace {
 
@@ -33,12 +38,6 @@ Trans WRONG_FORMAT("Either it wasn't in the right format, it's corrupted, or "
 Trans EMPTY_FILE("Your File Was Empty.");
 Trans EMPTY_FILE_FULL("Sorry, the file you tried to open, %s "
                       "has a length of zero.");
-
-Trans FILE_TOO_SMALL("Your File Was Too Small.");
-Trans FILE_TOO_SMALL_FULL("Sorry, the file you tried to open, %s"
-                          " has a length of less than five seconds.");
-
-const int MINIMUM_FILE_SIZE = 5 * 44100;
 
 using namespace rec::audio::format;
 
@@ -126,10 +125,10 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
       errorDetails_ = String::formatted(EMPTY_FILE_FULL,
                                         c_str(file::getFullDisplayName(file)));
       reader_.reset();
-    } else if (length < MINIMUM_FILE_SIZE) {
+    } else if (length < audio::MINIMUM_FILE_SIZE) {
       errorTitle_ = FILE_TOO_SMALL;
-      errorDetails_ = String::formatted(FILE_TOO_SMALL_FULL,
-                                        c_str(file::getFullDisplayName(file)));
+      String msg = "open, " + file::getFullDisplayName(file) + ", ";
+      errorDetails_ = String::formatted(FILE_TOO_SMALL_FULL, c_str(msg));
       reader_.reset();
     }
   }

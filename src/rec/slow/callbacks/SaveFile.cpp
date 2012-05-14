@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/SaveFile.h"
 
+#include "rec/audio/Audio.h"
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/audio/format/Manager.h"
 #include "rec/audio/source/Empty.h"
@@ -10,6 +11,7 @@
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/base/ArraySize.h"
 #include "rec/base/Trans.h"
+#include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/GuiSettings.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -38,8 +40,9 @@ Trans OK("OK");
 Trans TRANSPOSE_ONE("one semitone %s");
 Trans TRANSPOSE_MANY("%s %s semitones");
 Trans CANCEL("Cancel");
-Trans CANT_CHANGE_SUFFIX("The file extension must be .aiff, .aif, .flac, .ogg, "
+Trans BAD_SUFFIX("The file extension must be .aiff, .aif, .flac, .ogg, "
                          ".wav or .wave.");
+Trans CANT_OVERWRITE_SELF("You cannot overwrite the current file.");
 
 // Skin
 const int COPY_UPDATE_SIZE = 2048;
@@ -86,7 +89,7 @@ File getBaseFile(Instance* instance, const String& suffix,
       baseName += String::formatted(TRANSPOSE_MANY, c_str(sign), c_str(num));
   }
 
-  return file.getChildFile(baseName + suffix);
+  return file.getChildFile(baseName).withFileExtension(suffix);
 }
 
 static const char* SUFFIXES[] = {".aiff", ".flac", ".ogg", ".wav", ".aif", ".wave"};
@@ -118,15 +121,20 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
     if (file == File::nonexistent)
       return file;
     String newSuffix = file.getFileExtension();
-    if (isLegalSuffix(newSuffix))
+    if (!isLegalSuffix(newSuffix)) {
+      if (newSuffix == "" || newSuffix == ".")
+        file = file.withFileExtension(suffix);
+    }
+
+    String error;
+    if (!isLegalSuffix(file.getFileExtension()))
+      error = BAD_SUFFIX;
+    else if (file == file::getRealFile(instance->file()))
+      error = CANT_OVERWRITE_SELF;
+    else
       break;
 
-    if (newSuffix == "" || newSuffix == ".") {
-      file = file.withFileExtension(suffix);
-      break;
-    }
-    AlertWindow::showMessageBox(AlertWindow::InfoIcon, CANT_CHANGE_SUFFIX,
-                                CANT_CHANGE_SUFFIX, OK);
+    AlertWindow::showMessageBox(AlertWindow::InfoIcon, error, error, OK);
   }
 
   settings.set_last_directory(str(file.getParentDirectory()));
@@ -199,15 +207,24 @@ class SaveThread : public ThreadWithProgressWindow {
 
 void doSaveFile(Instance* instance, bool useSelection) {
   using namespace juce;
+  ptr<audio::Source> s(instance->makeSource());
+  s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
+
+  Samples<44100> len = useSelection ?
+    instance->player_->getSelectionLength() : Samples<44100>(s->getTotalLength());
+
+  if (len <= audio::MINIMUM_FILE_SIZE) {
+    // TODO: this code duplicates code in CreateMusicFileReader.
+    String e = String::formatted(music::FILE_TOO_SMALL_FULL, "save");
+    AlertWindow::showMessageBox(AlertWindow::InfoIcon, music::FILE_TOO_SMALL,
+                                e, OK);
+    return;
+  }
 
   AudioSettings::FileType t = data::getGlobal<AudioSettings>().file_type_for_save();
   File file = getSaveFile(instance, t);
   if (file != File::nonexistent) {
-    ptr<audio::Source> s(instance->makeSource());
-    s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
     String name = String::formatted(SAVING_FILE, c_str(file.getFileName()));
-    Samples<44100> len = useSelection ?
-      instance->player_->getSelectionLength() : Samples<44100>(s->getTotalLength());
     SaveThread(name, instance, file, s.transfer(), len).runThread();
   }
 }
@@ -235,7 +252,8 @@ void SaveFile::translateAll() {
   TRANSPOSE_ONE.translate();
   TRANSPOSE_MANY.translate();
   CANCEL.translate();
-  CANT_CHANGE_SUFFIX.translate();
+  BAD_SUFFIX.translate();
+  CANT_OVERWRITE_SELF.translate();
 }
 
 }  // namespace slow

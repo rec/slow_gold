@@ -76,7 +76,7 @@ void CurrentTime::zoomToTime(Samples<44100> t) {
 }
 
 void CurrentTime::setViewport(const Viewport& viewport) {
-  Samples<44100> time;
+  Samples<44100> time = 0;
   bool jump = true;
 
   {

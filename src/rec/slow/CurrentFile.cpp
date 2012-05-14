@@ -88,8 +88,6 @@ void CurrentFile::setDataFile(DataFile f) {
   if (length_)
     setViewport();
 
-  if (file_)
-    instance_->fillerThread_->startThread();
   {
     MessageManagerLock l;
     if (file_)
@@ -100,9 +98,12 @@ void CurrentFile::setDataFile(DataFile f) {
     data::UntypedDataListener::setGlobalDataFile(file_.get());
   }
 
-
   data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
+  data::UntypedDataListener::setGlobalDataFile(file_.get());
   menus()->menuItemsChanged();
+
+  if (file_)
+    instance_->fillerThread_->startThread();
 }
 
 int64 CurrentFile::getFileLength() {
