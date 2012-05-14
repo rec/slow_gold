@@ -98,7 +98,7 @@ class GuiSettings : public ::google::protobuf::Message {
   inline bool advanced_menus() const;
   inline void set_advanced_menus(bool value);
   
-  // optional bool auto_check_for_updates = 2 [default = false];
+  // optional bool auto_check_for_updates = 2 [default = true];
   inline bool has_auto_check_for_updates() const;
   inline void clear_auto_check_for_updates();
   static const int kAutoCheckForUpdatesFieldNumber = 2;
@@ -223,12 +223,12 @@ inline void GuiSettings::set_advanced_menus(bool value) {
   advanced_menus_ = value;
 }
 
-// optional bool auto_check_for_updates = 2 [default = false];
+// optional bool auto_check_for_updates = 2 [default = true];
 inline bool GuiSettings::has_auto_check_for_updates() const {
   return _has_bit(1);
 }
 inline void GuiSettings::clear_auto_check_for_updates() {
-  auto_check_for_updates_ = false;
+  auto_check_for_updates_ = true;
   _clear_bit(1);
 }
 inline bool GuiSettings::auto_check_for_updates() const {

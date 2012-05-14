@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="BB0nVpPLJ" name="SlowGold">
+  <MAINGROUP id="KTJy9gvjw" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1457,10 +1457,6 @@
           <FILE compile="0" file="../../genfiles/proto/rec/widget/Panes.pb.h"
                 id="5fH1Dx9m1" name="Panes.pb.h" resource="0"/>
           <GROUP id="eYZn0XoG9" name="status">
-            <FILE compile="1" file="../../genfiles/proto/rec/widget/status/Status.pb.cc"
-                  id="NgL0HVLld" name="Status.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/widget/status/Status.pb.h"
-                  id="cu9hDQ2V3" name="Status.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/widget/status/Time.pb.cc"
                   id="tQyGHnHx3" name="Time.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/widget/status/Time.pb.h"
@@ -1505,7 +1501,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="yQLaWgEAB" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="TdMOZS9GC" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

@@ -2,7 +2,7 @@ package rec.slow;
 
 message GuiSettings {
   optional bool advanced_menus = 1 [default = false];
-  optional bool auto_check_for_updates = 2 [default = false];
+  optional bool auto_check_for_updates = 2 [default = true];
   optional bool drop_adds_to_browser = 3 [default = true];
   optional bool follow_cursor = 4 [default = true];
   optional bool show_about_on_startup = 5 [default = true];

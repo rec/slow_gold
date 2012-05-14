@@ -82,16 +82,16 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\334"
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\333"
     "\002\n\013GuiSettings\022\035\n\016advanced_menus\030\001 \001(\010:\005"
-    "false\022%\n\026auto_check_for_updates\030\002 \001(\010:\005f"
-    "alse\022\"\n\024drop_adds_to_browser\030\003 \001(\010:\004true"
-    "\022\033\n\rfollow_cursor\030\004 \001(\010:\004true\022#\n\025show_ab"
-    "out_on_startup\030\005 \001(\010:\004true\022\034\n\016show_help_"
-    "pane\030\006 \001(\010:\004true\022\037\n\020show_master_tune\030\007 \001"
-    "(\010:\005false\022\034\n\rshow_tooltips\030\010 \001(\010:\005false\022"
-    ",\n\035use_tree_view_in_file_dialogs\030\t \001(\010:\005"
-    "false\022\026\n\016last_directory\030\n \001(\t", 389);
+    "false\022$\n\026auto_check_for_updates\030\002 \001(\010:\004t"
+    "rue\022\"\n\024drop_adds_to_browser\030\003 \001(\010:\004true\022"
+    "\033\n\rfollow_cursor\030\004 \001(\010:\004true\022#\n\025show_abo"
+    "ut_on_startup\030\005 \001(\010:\004true\022\034\n\016show_help_p"
+    "ane\030\006 \001(\010:\004true\022\037\n\020show_master_tune\030\007 \001("
+    "\010:\005false\022\034\n\rshow_tooltips\030\010 \001(\010:\005false\022,"
+    "\n\035use_tree_view_in_file_dialogs\030\t \001(\010:\005f"
+    "alse\022\026\n\016last_directory\030\n \001(\t", 388);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -140,7 +140,7 @@ GuiSettings::GuiSettings(const GuiSettings& from)
 void GuiSettings::SharedCtor() {
   _cached_size_ = 0;
   advanced_menus_ = false;
-  auto_check_for_updates_ = false;
+  auto_check_for_updates_ = true;
   drop_adds_to_browser_ = true;
   follow_cursor_ = true;
   show_about_on_startup_ = true;
@@ -187,7 +187,7 @@ GuiSettings* GuiSettings::New() const {
 void GuiSettings::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     advanced_menus_ = false;
-    auto_check_for_updates_ = false;
+    auto_check_for_updates_ = true;
     drop_adds_to_browser_ = true;
     follow_cursor_ = true;
     show_about_on_startup_ = true;
@@ -228,7 +228,7 @@ bool GuiSettings::MergePartialFromCodedStream(
         break;
       }
       
-      // optional bool auto_check_for_updates = 2 [default = false];
+      // optional bool auto_check_for_updates = 2 [default = true];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -396,7 +396,7 @@ void GuiSettings::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->advanced_menus(), output);
   }
   
-  // optional bool auto_check_for_updates = 2 [default = false];
+  // optional bool auto_check_for_updates = 2 [default = true];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->auto_check_for_updates(), output);
   }
@@ -458,7 +458,7 @@ void GuiSettings::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->advanced_menus(), target);
   }
   
-  // optional bool auto_check_for_updates = 2 [default = false];
+  // optional bool auto_check_for_updates = 2 [default = true];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->auto_check_for_updates(), target);
   }
@@ -524,7 +524,7 @@ int GuiSettings::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // optional bool auto_check_for_updates = 2 [default = false];
+    // optional bool auto_check_for_updates = 2 [default = true];
     if (has_auto_check_for_updates()) {
       total_size += 1 + 1;
     }
