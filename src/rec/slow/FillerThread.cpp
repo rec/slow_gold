@@ -32,7 +32,7 @@ void FillerThread::setFillPositionOrJump() {
       if (!fillList.empty())
         reader->setNextFillPosition(fillList.begin()->first);
       else
-        LOG(DFATAL) << "No fill list";
+        LOG(ERROR) << "No fill list";
     }
   }
 }

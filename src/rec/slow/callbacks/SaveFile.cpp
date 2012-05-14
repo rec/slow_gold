@@ -6,10 +6,11 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretchy.h"
+#include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/base/ArraySize.h"
 #include "rec/base/Trans.h"
-#include "rec/audio/util/BufferFiller.h"
+#include "rec/slow/CurrentFile.h"
 #include "rec/slow/GuiSettings.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
@@ -116,8 +117,14 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
     file = slow::browseForFile(SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
     if (file == File::nonexistent)
       return file;
-    if (isLegalSuffix(file.getFileExtension()))
+    String newSuffix = file.getFileExtension();
+    if (isLegalSuffix(newSuffix))
       break;
+
+    if (newSuffix == "" || newSuffix == ".") {
+      file = file.withFileExtension(suffix);
+      break;
+    }
     AlertWindow::showMessageBox(AlertWindow::InfoIcon, CANT_CHANGE_SUFFIX,
                                 CANT_CHANGE_SUFFIX, OK);
   }
@@ -146,11 +153,15 @@ class SaveThread : public ThreadWithProgressWindow {
       setProgress(buffer.filledPercent());
       Thread::sleep(100);
     }
+    if (writeFile())
+      instance_->currentFile_->setFile(file_);
+  }
 
+  bool writeFile() {
     ptr<AudioFormatWriter> writer(audio::format::createWriter(file_));
     if (!writer) {
       LOG(DFATAL) << "Couldn't create AudioFormatWriter for " << str(file_);
-      return;
+      return false;
     }
 
     setProgress(0.0);
@@ -171,8 +182,10 @@ class SaveThread : public ThreadWithProgressWindow {
                                          c_str(file_.getFileName()));
         AlertWindow::showMessageBox(AlertWindow::InfoIcon, FILE_SAVE_FAILED,
                                     error, OK);
+        return false;
       }
     }
+    return true;
   }
 
  private:
