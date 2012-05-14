@@ -42,8 +42,6 @@ void CurrentTime::setTime(Samples<44100> t) {
   zoomToTime(t);
 }
 
-static double conv(Samples<44100> s) { return s / 44100.0; }
-
 void CurrentTime::setViewportProto(const Viewport& viewport) {
   DataListener<Viewport>::setProto(viewport, CANT_UNDO);
 }

@@ -38,8 +38,7 @@ Trans RAN_OUT_OF_MEMORY_FULL("Your file was so large that the program "
 using namespace rec::widget::waveform;
 using namespace juce;
 
-CurrentFile::CurrentFile(Instance* i) : HasInstance(i),
-                                        hasStarted_(false) {
+CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {
 }
 
 CurrentFile::~CurrentFile() {}
@@ -48,6 +47,23 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (files.file_size() >= 1)
     setDataFile(&files.file(0));
+}
+
+void CurrentFile::setFile(const File& f) {
+  setVirtualFile(file::toVirtualFile(f));
+}
+
+void CurrentFile::operator()(const VirtualFile& vf) {
+  setDataFile(&vf);
+}
+
+const Samples<44100> CurrentFile::length() const {
+  Lock l(lock_);
+  return length_;
+}
+
+void CurrentFile::setVirtualFile(const VirtualFile& vf) {
+  setDataFile(&vf);
 }
 
 void CurrentFile::setDataFile(DataFile f) {
@@ -72,18 +88,18 @@ void CurrentFile::setDataFile(DataFile f) {
   if (length_)
     setViewport();
 
-  if (file_) 
+  if (file_)
     instance_->fillerThread_->startThread();
   {
     MessageManagerLock l;
-    if (file_) 
+    if (file_)
       components()->directoryTree_->refreshNode(*file_);
     if (newFile)
       components()->directoryTree_->refreshNode(*newFile);
     components()->setEnabled(file_);
     data::UntypedDataListener::setGlobalDataFile(file_.get());
   }
-  
+
 
   data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
   menus()->menuItemsChanged();
@@ -100,14 +116,12 @@ int64 CurrentFile::getFileLength() {
     reader.setError(RAN_OUT_OF_MEMORY, RAN_OUT_OF_MEMORY_FULL);
   }
 
-  if (hasStarted_) {
-    LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
-    DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
+  LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+  DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
-    juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
-                                      reader.errorTitle(),
-                                      reader.errorDetails());
-  }
+  juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
+                                    reader.errorTitle(),
+                                    reader.errorDetails());
 
   file_->Clear();
   return 0;

@@ -103,7 +103,7 @@ void loadRecentFile(Instance* instance, int i) {
 
   thread::runInNewThread("loadRecentFile", RECENT_FILE_THREAD_PRIORITY,
                          instance->currentFile_.get(),
-                         &CurrentFile::setFile,
+                         &CurrentFile::setVirtualFile,
                          rf.file(i).file());
 }
 

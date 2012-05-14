@@ -22,29 +22,27 @@ class CurrentFile : public HasInstance,
 
   // Set the file and change the persistent data.
   virtual void operator()(const gui::DropFiles&);
-  virtual void operator()(const VirtualFile& vf) { setDataFile(&vf); }
+  virtual void operator()(const VirtualFile& vf);
 
-  // const VirtualFile virtualFile() const { Lock l(lock_); return *file_; }
-  const Samples<44100> length() const { Lock l(lock_); return length_; }
+  const Samples<44100> length() const;
   bool empty() const { return !length(); }
   void setDataFile(data::DataFile);
-  void setFile(const VirtualFile& vf) { setDataFile(&vf); }
-  void hasStarted() { Lock l(lock_); hasStarted_ = true; }
-  const CriticalSection& lock() const { return lock_; }
+  void setVirtualFile(const VirtualFile&);
+  void setFile(const File&);
   static void translateAll();
-
   const VirtualFile file() const;
+
+  const CriticalSection& lock() { return lock_; }
 
  private:
   int64 getFileLength();
   void setViewport();
 
   CriticalSection lock_;
-
   widget::waveform::Viewport viewport_;
   ptr<VirtualFile> file_;
   Samples<44100> length_;
-  bool hasStarted_;
+
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 
   friend class Instance;
