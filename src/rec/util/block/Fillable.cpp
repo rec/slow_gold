@@ -51,6 +51,12 @@ bool Fillable::isFull() const {
   return (fullTo(filled_) == length_);
 }
 
+void Fillable::reset() {
+  Lock l(lock_);
+  filled_.clear();
+  position_ = 0;
+}
+
 int64 Fillable::fillNextBlock() {
   Lock l(lock_);
   if (isFull())

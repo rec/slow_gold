@@ -71,6 +71,7 @@ class Waveform : public Component,
   void setSelected(int index, bool selected);
   const WaveformModel& model() { return *model_; }
   static void translateAll();
+  void setLoading(bool loading);
 
  private:
   void layout();
@@ -88,6 +89,7 @@ class Waveform : public Component,
   ptr<Cursor> timeCursor_;
 
   juce::MouseCursor	zoomCursor_;
+  bool loading_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 

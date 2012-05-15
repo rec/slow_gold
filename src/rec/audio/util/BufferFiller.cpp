@@ -62,6 +62,10 @@ block::Block BufferFiller::fillOnce() {
   return block::makeBlock(pos, pos + filled);
 }
 
+void BufferFiller::reset() {
+  reader_->reset();
+}
+
 }  // namespace util
 }  // namespace audio
 }  // namespace rec

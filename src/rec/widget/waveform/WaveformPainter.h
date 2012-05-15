@@ -17,7 +17,7 @@ class WaveformModel;
 class WaveformPainter {
  public:
   WaveformPainter(Waveform* w);
-  void paint(Graphics&, const Range<Samples<44100> >&);
+  void paint(Graphics&, const Range<Samples<44100> >&, bool loading);
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
 

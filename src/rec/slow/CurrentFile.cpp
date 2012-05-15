@@ -18,6 +18,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
+#include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Viewport.pb.h"
@@ -83,11 +84,6 @@ void CurrentFile::setDataFile(DataFile f, bool showError) {
     file_.swap(newFile);
   }
 
-  length_ = getFileLength(showError);
-
-  if (length_)
-    setViewport();
-
   {
     MessageManagerLock l;
     if (file_)
@@ -95,8 +91,25 @@ void CurrentFile::setDataFile(DataFile f, bool showError) {
     if (newFile)
       components()->directoryTree_->refreshNode(*newFile);
     components()->setEnabled(file_);
+    components()->waveform_->setLoading(true);
+    components()->waveform_->repaint();
   }
 
+  if (false) {
+    thread::runInNewThread("CurrentFile loading", 5, this,
+                           &CurrentFile::continueLoading, showError);
+  } else {
+    continueLoading(showError);
+  }
+}
+
+void CurrentFile::continueLoading(bool showError) {
+  length_ = getFileLength(showError);
+
+  if (length_)
+    setViewport();
+
+  components()->waveform_->setLoading(false);
   data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
   data::UntypedDataListener::setGlobalDataFile(file_.get());
 

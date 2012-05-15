@@ -35,8 +35,9 @@ class CurrentFile : public HasInstance,
   const CriticalSection& lock() { return lock_; }
 
  private:
-  int64 getFileLength(bool showError = true);
+  int64 getFileLength(bool showError);
   void setViewport();
+  void continueLoading(bool showError);
 
   CriticalSection lock_;
   widget::waveform::Viewport viewport_;

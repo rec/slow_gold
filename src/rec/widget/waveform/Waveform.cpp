@@ -60,7 +60,8 @@ Waveform::Waveform(MenuBarModel* m)
     : Component("WaveformComponent"),
       model_(new WaveformModel),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
-                  ZOOM_CURSOR_Y_HOTSPOT) {
+                  ZOOM_CURSOR_Y_HOTSPOT),
+      loading_(false) {
   setName("Waveform");
   setTooltip(
       Trans("Waveform Window: "
@@ -79,6 +80,11 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* t) {
   painter_->setAudioThumbnail(t);
 }
 
+void Waveform::setLoading(bool loading) {
+  Lock l(lock_);
+  loading_ = loading;
+}
+
 void Waveform::init() {
   painter_.reset(new WaveformPainter(this));
   timeCursor_.reset(makeTimeCursor(defaultTimeCursor(), this));
@@ -93,7 +99,7 @@ const CursorProto& Waveform::defaultTimeCursor() {
 
 void Waveform::paint(Graphics& g) {
   Lock l(lock_);
-  painter_->paint(g, model_->getTimeRange());
+  painter_->paint(g, model_->getTimeRange(), loading_);
 }
 
 void Waveform::resized() {

@@ -8,6 +8,8 @@ static const int PRELOAD = 10000;  // TODO:  duplicate code.
 
 Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
   Lock l(lock_);
+  reset();
+
   if (!reader) {
     reader_.reset();
     return 0;
@@ -21,7 +23,6 @@ Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
 
   setLength(size);
   reader_.reset(reader);
-  filled_.clear();
   return size;
 }
 

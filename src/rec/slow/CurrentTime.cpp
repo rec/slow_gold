@@ -126,6 +126,16 @@ void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) 
   }
 }
 
+void CurrentTime::reset() {
+  {
+    Lock l(lock());
+    requestedTime_ = 0;
+  }
+
+  setTime(0);
+}
+
+
 void CurrentTime::jumpToTime(Samples<44100> time) {
   {
     Lock l(lock());

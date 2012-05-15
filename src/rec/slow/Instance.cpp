@@ -193,5 +193,10 @@ void Instance::setProto(const Message& m, Undoable undoable) {
    menus_->menuItemsChanged();
 }
 
+void Instance::reset() {
+  fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
+  bufferFiller_->reset();
+}
+
 }  // namespace slow
 }  // namespace rec

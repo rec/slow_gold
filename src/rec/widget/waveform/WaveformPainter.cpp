@@ -27,17 +27,20 @@ WaveformPainter::WaveformPainter(Waveform* w) :
     waveform_(w), thumbnail_(NULL), model_(w->model()) {
 }
 
-void WaveformPainter::paint(Graphics& g, const Range<Samples<44100> >& range) {
+void WaveformPainter::paint(Graphics& g, const Range<Samples<44100> >& range,
+                            bool loading) {
   Painter p(model_.description().widget(), &g);
-  if (model_.isEmpty() || !thumbnail_) {
-    g.setFont(14.0f);
-    g.drawFittedText("Drop a file here or double-click to open a new file",
-                     0, 0, waveform_->getWidth(),
-                     waveform_->getHeight(),
-                     juce::Justification::centred, 0);
-  } else {
-    drawWaveform(p, range);
-    drawGrid(g, range);
+  if (!loading) {
+    if (model_.isEmpty() || !thumbnail_) {
+      g.setFont(14.0f);
+      g.drawFittedText("Drop a file here or double-click to open a new file",
+                       0, 0, waveform_->getWidth(),
+                       waveform_->getHeight(),
+                       juce::Justification::centred, 0);
+    } else {
+      drawWaveform(p, range);
+      drawGrid(g, range);
+    }
   }
 }
 
