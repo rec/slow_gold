@@ -52,7 +52,7 @@ class JucerDomFile(dom_file.DomFile):
     maingroup = self.createFromDict('MAINGROUP', name, name=name)
     self.documentElement.replaceChild(maingroup, old)
 
-    for prefix, n2 in (('src', 'rec'), ('genfiles', 'proto')):
+    for prefix, n2 in (('src', 'rec'), ('genfiles', 'icon'), ('genfiles', 'proto')):
       self.createCPPFileGroup(maingroup, prefix, n2, '%s/rec' % self.root, name)
 
     maingroup.appendChild(self.createFile('Main.cpp', 'Main.cpp',

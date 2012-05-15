@@ -68,9 +68,6 @@
     <Filter Include="tests\rec\gui\audio">
       <UniqueIdentifier>{E8A52DE7-DF9B-548A-93EB-3AF8E859A912}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tests\rec\gui\icon">
-      <UniqueIdentifier>{3960C01C-EE8D-3041-13A9-125CB805D874}</UniqueIdentifier>
-    </Filter>
     <Filter Include="tests\rec\gui\layout">
       <UniqueIdentifier>{3DD7F10F-5938-6E4A-31E8-2A1BF2EDA767}</UniqueIdentifier>
     </Filter>
@@ -118,6 +115,18 @@
     </Filter>
     <Filter Include="tests\rec\widget\waveform">
       <UniqueIdentifier>{8E11E78F-4F84-DBD7-7170-2923EEF3245A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\icon">
+      <UniqueIdentifier>{9FAA0E18-29EF-480E-E17F-B62F1EB684CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\icon\rec">
+      <UniqueIdentifier>{7BD42751-3F41-686F-E7EA-BA77F4928396}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\icon\rec\gui">
+      <UniqueIdentifier>{BCCE81E8-59DF-D75C-D5AB-601E97642CD5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\icon\rec\gui\icon">
+      <UniqueIdentifier>{A4DBDC57-6BCB-4C2A-1734-52D39A2DAFBB}</UniqueIdentifier>
     </Filter>
     <Filter Include="tests\proto">
       <UniqueIdentifier>{1B8513C2-9355-8D35-EAD4-587E21FEE6AA}</UniqueIdentifier>
@@ -865,108 +874,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\GuiWriteable.cpp">
       <Filter>tests\rec\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonPressed.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointMode.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointModeDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DragMode.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DragModeDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonPressed.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonPressed.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderCloseButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomInCursor.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMoveDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\layout\Layout.cpp">
       <Filter>tests\rec\gui\layout</Filter>
     </ClCompile>
@@ -1284,6 +1191,108 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget_test.cpp">
       <Filter>tests\rec\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonPressed.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointMode.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointModeDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\DragMode.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\DragModeDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButtonDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButtonPressed.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButtonDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButtonPressed.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButtonDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButtonPressed.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\MacFolderCloseButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\MacFolderOpenButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\PlayButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\PlayButtonDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\SetTimeMode.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\SetTimeModeDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\StopButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\StopButtonDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomInCursor.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomMode.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomModeDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomMoveDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButtonDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButtonPressed.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButton.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
+      <Filter>tests\icon\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc">
       <Filter>tests\proto\rec\audio</Filter>
@@ -3165,111 +3174,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h">
       <Filter>tests\rec\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonPressed.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointMode.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointModeDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DragMode.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DragModeDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonPressed.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonPressed.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderCloseButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SlowGold.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomInCursor.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMoveDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h">
-      <Filter>tests\rec\gui\icon</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\IconButton.h">
       <Filter>tests\rec\gui</Filter>
     </ClInclude>
@@ -3680,6 +3584,111 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h">
       <Filter>tests\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonPressed.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointMode.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointModeDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\DragMode.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\DragModeDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButtonDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButtonPressed.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButtonDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButtonPressed.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButtonDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButtonPressed.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\MacFolderCloseButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\MacFolderOpenButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\PlayButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\PlayButtonDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\SetTimeMode.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\SetTimeModeDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\SlowGold.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\StopButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\StopButtonDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomInCursor.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomMode.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomModeDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomMoveDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButtonDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButtonPressed.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButton.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h">
+      <Filter>tests\icon\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h">
       <Filter>tests\proto\rec\audio</Filter>

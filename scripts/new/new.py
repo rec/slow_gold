@@ -7,6 +7,26 @@ import xml.dom.minidom
 
 import split
 
+USAGE_MESSAGE = """\
+new.py creates new C++ files from templates.
+
+You select which type of C++ files you want to create - your current choices are
+   h, class, cpp, def, test, svg and xml.
+
+Usage:
+
+  new [--proto=<protoname>] [--namespace=rec.foo.bar] <type> <filename>
+
+where
+  <type> is one of %s
+  <filename> is a path to the new file name base
+  --proto indicates the protocol buffer type and is a required argument
+    only if the type is 'def'
+  --namespace is an optional namespace, separated by dots - otherwise, the
+    namespace is computed automatically
+
+"""
+
 ROOT = '/Users/tom/Documents/development/rec/scripts/new/templates/'
 
 def cleanSvg(data):
@@ -42,26 +62,7 @@ GROUPS = {
               datatype='juce::XmlElement'),
   }
 
-USAGE = """\
-new.py creates new C++ files from templates.
-
-You select which type of C++ files you want to create - your current choices are
-   h, class, cpp, def, test, svg and xml.
-
-Usage:
-
-  new [--proto=<protoname>] <type> <filename>
-
-where
-  <type> is one of %s
-  <filename> is a path to the new file name base
-  --proto indicates the protocol buffer type and is a required argument
-    only if the type is 'def'
-  --namespace is an optional namespace, separated by dots - otherwise, the
-    namespace is computed automatically
-
-""" % ', '.join(GROUPS)
-
+USAGE = USAGE_MESSAGE % ', '.join(GROUPS)
 
 def usageError(success=False, error=None, usage=USAGE):
   if not success:

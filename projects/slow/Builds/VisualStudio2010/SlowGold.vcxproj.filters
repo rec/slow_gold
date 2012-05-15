@@ -68,9 +68,6 @@
     <Filter Include="SlowGold\rec\gui\audio">
       <UniqueIdentifier>{09F586C0-D6B8-6BC8-12DA-36353D0307AE}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SlowGold\rec\gui\icon">
-      <UniqueIdentifier>{311C3588-DF36-6A4E-FBF1-112607F279C4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SlowGold\rec\gui\layout">
       <UniqueIdentifier>{C8E3CEB5-965F-CCBA-0A1D-083C6F3D0DBF}</UniqueIdentifier>
     </Filter>
@@ -118,6 +115,18 @@
     </Filter>
     <Filter Include="SlowGold\rec\widget\waveform">
       <UniqueIdentifier>{98EEAA8F-75BF-39F8-89C0-391465C85496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\icon">
+      <UniqueIdentifier>{9C737972-CDC9-C90C-24A2-FAD32852220E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\icon\rec">
+      <UniqueIdentifier>{05D063A0-7E40-DE1E-C215-0EBFB3E9690C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\icon\rec\gui">
+      <UniqueIdentifier>{75FABBD7-E8BD-94DF-02A9-FB0616AE0A09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\icon\rec\gui\icon">
+      <UniqueIdentifier>{B22DC705-E2C4-6E79-5072-A06EA2574000}</UniqueIdentifier>
     </Filter>
     <Filter Include="SlowGold\proto">
       <UniqueIdentifier>{7A3F26EE-37F4-DA03-453A-6BBC250E9F0C}</UniqueIdentifier>
@@ -832,108 +841,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\GuiWriteable.cpp">
       <Filter>SlowGold\rec\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonPressed.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointMode.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AddLoopPointModeDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DragMode.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DragModeDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonPressed.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonPressed.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderCloseButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomInCursor.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomMoveDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\layout\Layout.cpp">
       <Filter>SlowGold\rec\gui\layout</Filter>
     </ClCompile>
@@ -1203,6 +1110,108 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp">
       <Filter>SlowGold\rec\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonPressed.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointMode.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointModeDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\DragMode.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\DragModeDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButtonDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButtonPressed.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButtonDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButtonPressed.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButtonDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButtonPressed.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\MacFolderCloseButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\MacFolderOpenButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\PlayButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\PlayButtonDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\SetTimeMode.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\SetTimeModeDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\StopButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\StopButtonDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomInCursor.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomMode.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomModeDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomMoveDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButtonDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButtonPressed.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButton.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc">
       <Filter>SlowGold\proto\rec\audio</Filter>
@@ -3081,111 +3090,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h">
       <Filter>SlowGold\rec\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointButtonPressed.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointMode.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AddLoopPointModeDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DragMode.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DragModeDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpBackButtonPressed.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpForwardButtonPressed.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\JumpToStartButtonPressed.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderCloseButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MacFolderOpenButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PlayButtonDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeMode.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SetTimeModeDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\SlowGold.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\StopButtonDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomInCursor.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMode.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomModeDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomMoveDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomOutButtonPressed.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButton.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h">
-      <Filter>SlowGold\rec\gui\icon</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\IconButton.h">
       <Filter>SlowGold\rec\gui</Filter>
     </ClInclude>
@@ -3596,6 +3500,111 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h">
       <Filter>SlowGold\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonPressed.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointMode.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointModeDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\DragMode.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\DragModeDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButtonDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpBackButtonPressed.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButtonDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpForwardButtonPressed.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButtonDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\JumpToStartButtonPressed.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\MacFolderCloseButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\MacFolderOpenButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\PlayButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\PlayButtonDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\SetTimeMode.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\SetTimeModeDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\SlowGold.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\StopButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\StopButtonDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomInCursor.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomMode.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomModeDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomMoveDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButtonDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomOutButtonPressed.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButton.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonDisabled.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h">
+      <Filter>SlowGold\icon\rec\gui\icon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h">
       <Filter>SlowGold\proto\rec\audio</Filter>
