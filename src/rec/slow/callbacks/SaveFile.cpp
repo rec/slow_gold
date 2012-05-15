@@ -261,6 +261,8 @@ Viewport getViewport(Instance* instance, bool useSelection,
     viewport = original;
 
   viewport.mutable_loop_points()->set_length(len);
+  viewport.mutable_zoom()->set_begin(0);
+  viewport.mutable_zoom()->set_end(len);
   return viewport;
 }
 

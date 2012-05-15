@@ -37,7 +37,7 @@ class CurrentTime : public HasInstance,
   Samples<44100> requestedTime() const { Lock l(lock()); return requestedTime_; }
   void jumpToTime(Samples<44100> pos);
 
-  void reset() { Lock l(lock()); time_ = 0; }
+  void reset() { setTime(0); }
 
   const CriticalSection& lock() const { return instance_->lock_; }
   void zoomToCurrentTime() { zoomToTime(time()); }

@@ -30,11 +30,9 @@ CurrentTime::CurrentTime(Instance* i)
 }
 
 void CurrentTime::setTime(Samples<44100> t) {
-  Viewport viewport;
   {
     Lock l(lock());
     time_ = t;
-    viewport = viewport_;
 
     if (!(followCursor_  && isPlaying()))
       return;
