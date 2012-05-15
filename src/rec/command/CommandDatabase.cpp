@@ -37,11 +37,18 @@ class CommandDatabase {
   }
 
   void fill() {
+    data_.addCallbacks(table_);
+
 #ifdef SINGLE_COMMAND_FILE
     fillFromCommands();
 #else
     fillFromTable();
+#if JUCE_DEBUG && JUCE_MAC
+    rawMergeAndPrint();
 #endif
+#endif
+    removeEmptiesAndFillCommandInfo();
+
   }
 
  private:
@@ -52,7 +59,7 @@ class CommandDatabase {
       const Command::Type t = cmd.type();
       if (cmd.has_start_index()) {
         int len = cmd.desc().menu_size();
-        DCHECK_EQ(len, cmd.desc().full_size());
+        DCHECK_EQ(len, cmd.desc().full_size()) << cmd.ShortDebugString();
         CommandID begin = CommandIDEncoder::toCommandID(cmd.start_index(), t);
         CommandID end = begin + len;
         for (CommandID i = begin; i != end; ++i) {
@@ -71,34 +78,27 @@ class CommandDatabase {
             }
             cr->command_.swap(newCmd);
           } else {
-            LOG(DFATAL) << "No repeated record for " << t;
+            LOG(DFATAL) << "No repeated record for " << commandName(t);
           }
         }
       } else {
-        if (CommandRecord* cr = table_->find(t, false))
-          cr->command_.reset(new Command(cmd));
-        else
-          LOG(DFATAL) << "No record for " << t;
+        CommandRecord* cr = table_->find(t, false);
+        if (!cr) {
+          LOG(ERROR) << "No record for " << commandName(t);
+          cr = table_->find(t, true);
+        }
+        cr->command_.reset(new Command(cmd));
       }
     }
   }
 
   void fillFromTable() {
-    data_.addCallbacks(table_);
-
     insertSingle();
     insertRepeated();
     insertSetters();
     mergeKeyPresses();
     mergeDescriptions();
-    removeEmptiesAndFillCommandInfo();
-
-#if JUCE_DEBUG && JUCE_MAC
-    rawMergeAndPrint();
-#endif
   }
-
-
 
 #if JUCE_MAC
   typedef std::map<CommandID, Command*, CompareCommandIds> Table;
@@ -323,25 +323,27 @@ class CommandDatabase {
   }
 
   void removeEmptiesAndFillCommandInfo() {
-    std::vector<CommandID> empties;
     CommandRecordTable::iterator i;
     for (i = table_->begin(); i != table_->end(); ++i) {
       CommandID id = i->first;
       CommandRecord* cr = i->second;
       if (!cr->command_)
+#ifdef SINGLE_COMMAND_FILE
+        LOG(ERROR) << "Command not in Command.def " << commandName(id);
+#else
         LOG(DFATAL) << "Command not in Command.def " << commandName(id);
+#endif
       else if (!cr->callback_)
+#ifdef SINGLE_COMMAND_FILE
+        LOG(ERROR) << "Empty callback " << commandName(id);
+#else
         LOG(DFATAL) << "Empty callback " << commandName(id);
+#endif
       else {
         fillOneCommandInfo(id, cr);
         continue;
       }
-
-      empties.push_back(id);
     }
-
-    for (uint i = 0; i < empties.size(); ++i)
-      table_->erase(empties[i]);
   }
 
 

@@ -41,7 +41,7 @@ void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   info = find(id)->info_;
 
   if (!info.shortName.isNotEmpty())
-    LOG(DFATAL) << "No name for " << commandName(id);
+    LOG(ERROR) << "No name for " << commandName(id);
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
@@ -104,8 +104,10 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
   else if (cr->setter_)
     info->shortName = str(cr->setter_->menuName());
 
-  if (!info->shortName.length())
-    LOG(DFATAL) << "No name for " << commandName(id);
+  if (!info->shortName.length()) {
+    LOG(ERROR) << "No name for " << commandName(id);
+    info->shortName = "(error)";
+  }
   info->setActive(enable);
   if (flags >= 0)
     info->flags = flags;
