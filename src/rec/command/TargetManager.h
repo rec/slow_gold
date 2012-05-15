@@ -61,8 +61,13 @@ class TargetManager : public ApplicationCommandTarget,
                       int flags = -1);
   CommandRecordTable* commandRecordTable() { return &table_; }
 
+  void setCommands(const Commands& commands) {
+    commands_ = commands;
+  }
+
  private:
   ptr<CommandData> commandData_;
+  Commands commands_;
 
   CommandRecord* find(CommandID);
   CommandRecordTable table_;

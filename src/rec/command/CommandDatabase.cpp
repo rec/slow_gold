@@ -11,11 +11,14 @@
 #include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
+// #define SINGLE_COMMAND_FILE
+
 namespace rec {
 namespace command {
 
 namespace {
 
+#ifdef JUCE_MAC
 struct CompareCommandIds {
   static string toString(CommandID x) {
     return Command::Type_Name(static_cast<Command::Type>(x));
@@ -25,15 +28,21 @@ struct CompareCommandIds {
     return toString(x) < toString(y);
   }
 };
-
+#endif
 
 class CommandDatabase {
  public:
-  CommandDatabase(CommandRecordTable* table, const CommandData& data)
-      : table_(table), data_(data) {
+  CommandDatabase(CommandRecordTable* table, const CommandData& data,
+                  const Commands& commands)
+      : table_(table), data_(data), commands_(commands) {
   }
 
   void fill() {
+#ifdef SINGLE_COMMAND_FILE
+
+#else
+    data_.addCallbacks(table_);
+
     insertSingle();
     insertRepeated();
     insertSetters();
@@ -42,6 +51,7 @@ class CommandDatabase {
     removeEmptiesAndFillCommandInfo();
 #if JUCE_MAC
     rawMergeAndPrint();
+#endif
 #endif
   }
 
@@ -293,6 +303,7 @@ class CommandDatabase {
 
   CommandRecordTable* table_;
   const CommandData& data_;
+  const Commands& commands_;
   Access access_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandDatabase);
@@ -300,9 +311,9 @@ class CommandDatabase {
 
 }  // namespace
 
-void fillCommandRecordTable(CommandRecordTable* table, const CommandData& data) {
-  data.addCallbacks(table);
-  CommandDatabase(table, data).fill();
+void fillCommandRecordTable(CommandRecordTable* table, const CommandData& data,
+                            const Commands& commands) {
+  CommandDatabase(table, data, commands).fill();
 }
 
 }  // namespace command
