@@ -59,7 +59,8 @@ const File getFileFromPath(File f, const Path& path, ConversionType conv) {
 
 const File getRootFile(const VirtualFile& v) {
   if (v.type() == VirtualFile::CD) {
-    CHECK(v.type() != VirtualFile::CD);
+    CHECK_NE(v.type(), VirtualFile::CD);
+    // TODO: come up with a better way to prevent this.
   }
 
   if (v.type() == VirtualFile::MUSIC) {

@@ -1,4 +1,6 @@
 #include "rec/widget/waveform/Zoom.h"
+
+#include "rec/audio/Audio.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/widget/waveform/Viewport.pb.h"
@@ -25,7 +27,7 @@ Zoom makeZoom(const Zoom& z, Samples<44100> length, Samples<44100> t,
   Samples<44100> b = zoom.begin();
   Samples<44100> e = zoom.has_end() ? zoom.end() : length.get();
 
-  if (k >= 1.0 || k * (e - b) >= MIN_ZOOM_TIME) {
+  if (k >= 1.0 || k * (e - b) >= audio::MINIMUM_FILE_SIZE) {
     int64 begin = static_cast<int64>(k * b + (1.0 - k) * t);
     int64 end = static_cast<int64>(k * e + (1.0 - k) * t);
     //DCHECK_LE(0, end) << k << ", "
@@ -58,7 +60,7 @@ void constrainZoom(Zoom* z, Samples<44100> length) {
   if (z->end() > length || !z->has_end())
     z->set_end(length);
 
-  Samples<44100> under = MIN_ZOOM_TIME - (z->end() - z->begin());
+  Samples<44100> under = audio::MINIMUM_FILE_SIZE - (z->end() - z->begin());
   if (under > 0) {
     Samples<44100> end = z->end() + under;
     if (end < length)

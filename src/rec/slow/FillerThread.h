@@ -9,7 +9,6 @@ namespace slow {
 class FillerThread : public HasInstance, public Thread {
  public:
   FillerThread(Instance* i) : HasInstance(i), Thread("Filler") {}
-
   virtual void run();
 
  private:

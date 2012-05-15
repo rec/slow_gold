@@ -91,7 +91,7 @@ void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
 }
 
 // TODO: this duplicates a value in the Repeated.def data file.
-static const int RECENT_MENU_REPEATS = 10;
+static const int RECENT_MENU_REPEATS = 32;
 static const int RECENT_FILE_THREAD_PRIORITY = 4;
 
 void loadRecentFile(Instance* instance, int i) {

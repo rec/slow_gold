@@ -9,8 +9,6 @@ namespace waveform {
 
 class Zoom;
 
-static const Samples<41000> MIN_ZOOM_TIME = 4 * 44100;
-
 // The factor of k indicates how much wider or narrower the displayed area will
 // be after the zoom.
 void zoomScale(const VirtualFile& f, Samples<44100> length, double k);

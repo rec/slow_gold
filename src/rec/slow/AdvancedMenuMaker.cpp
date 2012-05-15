@@ -77,10 +77,12 @@ void AdvancedMenuMaker::addHelpMenu() {
   add(Command::CHECK_FOR_UPDATES);
   add(Command::TOGGLE_AUTOMATIC_UPDATES);
 
+#ifdef SETTINGS_MENU_ITEMS
   menu_.addSeparator();
-  // add(Command::OPEN_SLOWGOLD_DIRECTORY);
+  add(Command::OPEN_SLOWGOLD_DIRECTORY);
   addIfNotEmpty(Command::CLEAR_SETTINGS_FOR_THIS_TRACK);
   add(Command::CLEAR_ALL_SETTINGS);
+#endif
 }
 
 void AdvancedMenuMaker::addDisplayMenu() {

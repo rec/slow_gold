@@ -12,6 +12,7 @@
 #include "rec/base/ArraySize.h"
 #include "rec/base/Trans.h"
 #include "rec/music/CreateMusicFileReader.h"
+#include "rec/music/Metadata.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/GuiSettings.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -19,6 +20,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/util/Math.h"
 #include "rec/util/block/Fillable.h"
+#include "rec/widget/waveform/Viewport.h"
 
 namespace rec {
 namespace slow {
@@ -27,6 +29,8 @@ namespace {
 using namespace juce;
 using audio::AudioSettings;
 using namespace rec::audio::stretch;
+using namespace rec::widget::waveform;
+
 
 Trans FILE_SAVE_FAILED("Error During Save.");
 Trans FILE_SAVE_FAILED_FULL("There was an error saving your file %s.");
@@ -114,7 +118,18 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   File file;
   GuiSettings settings = data::getGlobal<GuiSettings>();
   audio::AudioSettings audioSettings = data::getGlobal<audio::AudioSettings>();
+
   File startFile = getBaseFile(instance, suffix, settings, audioSettings);
+  VirtualFile vf = instance->file();
+  File baseFile;
+  if (vf.type() != VirtualFile::CD) {
+    baseFile = file::getRealFile(vf);
+    if (startFile == baseFile) {
+      String p = startFile.getFileNameWithoutExtension();
+      String s = startFile.getFileExtension();
+      startFile = startFile.getParentDirectory().getNonexistentChildFile(p, s);
+    }
+  }
 
   while (true) {
     file = slow::browseForFile(SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
@@ -129,7 +144,7 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
     String error;
     if (!isLegalSuffix(file.getFileExtension()))
       error = BAD_SUFFIX;
-    else if (file == file::getRealFile(instance->file()))
+    else if (file == baseFile)
       error = CANT_OVERWRITE_SELF;
     else
       break;
@@ -146,9 +161,11 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
 class SaveThread : public ThreadWithProgressWindow {
  public:
   SaveThread(const String& name, Instance* i, const File& f, audio::Source* s,
-             Samples<44100> length)
+             const Viewport& viewport)
       : ThreadWithProgressWindow(name, true, true),
-        instance_(i), file_(f), source_(s), length_(length) {
+        instance_(i), file_(f), source_(s),
+        viewport_(viewport),
+        length_(viewport.loop_points().length()) {
   }
   virtual ~SaveThread() {}
 
@@ -162,7 +179,7 @@ class SaveThread : public ThreadWithProgressWindow {
       Thread::sleep(100);
     }
     if (writeFile())
-      instance_->currentFile_->setFile(file_);
+      setFile();
   }
 
   bool writeFile() {
@@ -196,14 +213,56 @@ class SaveThread : public ThreadWithProgressWindow {
     return true;
   }
 
+  void setFile() {
+    const VirtualFile vf = instance_->currentFile_.get()->file();
+    const VirtualFile newVf = file::toVirtualFile(file_);
+    data::setProto(data::getProto<music::Metadata>(vf), &newVf, CANT_UNDO);
+    data::setProto(viewport_, &newVf, CANT_UNDO);
+    instance_->currentFile_->setFile(file_);
+  }
+
  private:
   Instance* const instance_;
   const File file_;
   ptr<audio::Source> source_;
+  const Viewport viewport_;
   const Samples<44100> length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SaveThread)
 };
+
+
+Viewport getViewport(Instance* instance, bool useSelection,
+                     Samples<44100> len) {
+  Viewport original = data::getProto<Viewport>(instance->currentFile_->file());
+  Viewport viewport;
+  if (useSelection) {
+    Samples<44100> start = 0;
+    const LoopPointList& lpl = original.loop_points();
+    uint size = lpl.loop_point_size();
+    for (uint i = 0; i < size; ++i) {
+      const LoopPoint& loop = lpl.loop_point(i);
+      if (loop.selected()) {
+        if (!start)
+          *viewport.mutable_zoom() = original.zoom();
+        LoopPoint* newLoop = viewport.mutable_loop_points()->add_loop_point();
+        newLoop->set_selected(true);
+        newLoop->set_time(start);
+        newLoop->set_name(loop.name());
+        if (i < (size - 1))
+          start += (lpl.loop_point(i + 1).time() - loop.time());
+        else
+          start = len;
+      }
+    }
+  }
+
+  if (!viewport.loop_points().loop_point_size())
+    viewport = original;
+
+  viewport.mutable_loop_points()->set_length(len);
+  return viewport;
+}
 
 void doSaveFile(Instance* instance, bool useSelection) {
   using namespace juce;
@@ -212,6 +271,7 @@ void doSaveFile(Instance* instance, bool useSelection) {
 
   Samples<44100> len = useSelection ?
     instance->player_->getSelectionLength() : Samples<44100>(s->getTotalLength());
+
 
   if (len <= audio::MINIMUM_FILE_SIZE) {
     // TODO: this code duplicates code in CreateMusicFileReader.
@@ -225,7 +285,8 @@ void doSaveFile(Instance* instance, bool useSelection) {
   File file = getSaveFile(instance, t);
   if (file != File::nonexistent) {
     String name = String::formatted(SAVING_FILE, c_str(file.getFileName()));
-    SaveThread(name, instance, file, s.transfer(), len).runThread();
+    Viewport viewport = getViewport(instance, useSelection, len);
+    SaveThread(name, instance, file, s.transfer(), viewport).runThread();
   }
 }
 

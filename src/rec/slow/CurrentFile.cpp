@@ -95,15 +95,14 @@ void CurrentFile::setDataFile(DataFile f) {
     if (newFile)
       components()->directoryTree_->refreshNode(*newFile);
     components()->setEnabled(file_);
-    data::UntypedDataListener::setGlobalDataFile(file_.get());
   }
 
   data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
   data::UntypedDataListener::setGlobalDataFile(file_.get());
-  menus()->menuItemsChanged();
 
   if (file_)
     instance_->fillerThread_->startThread();
+  menus()->menuItemsChanged();
 }
 
 int64 CurrentFile::getFileLength() {
