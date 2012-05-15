@@ -16,6 +16,17 @@ namespace command {
 
 namespace {
 
+struct CompareCommandIds {
+  static string toString(CommandID x) {
+    return Command::Type_Name(static_cast<Command::Type>(x));
+  }
+
+  bool operator()(CommandID x, CommandID y) {
+    return toString(x) < toString(y);
+  }
+};
+
+
 class CommandDatabase {
  public:
   CommandDatabase(CommandRecordTable* table, const CommandData& data)
@@ -36,7 +47,7 @@ class CommandDatabase {
 
  private:
 #if JUCE_MAC
-  typedef std::map<CommandID, Command*> Table;
+  typedef std::map<CommandID, Command*, CompareCommandIds> Table;
 
   void rawMerge(Table* table, Commands commands) {
     for (int i = 0; i < commands.command_size(); ++i) {
@@ -120,7 +131,7 @@ class CommandDatabase {
 
     const String menu = Trans(command.desc().menu_size() ?
                                   str(command.desc().menu(0)) : String());
-    const String full = Trans(str(command.desc().full()));
+    const String full = Trans(str(command.desc().full(0)));
 
     for (int i = 1; i < command.desc().menu_size(); ++i)
       Trans(str(command.desc().menu(i)));
@@ -138,7 +149,11 @@ class CommandDatabase {
         }
         Description* desc = cr->command_->mutable_desc();
         desc->add_menu(str(String::formatted(menu, CAP[i], "")));
-        desc->set_full(str(String::formatted(full, LOWER[i], "")));
+        string fl = str(String::formatted(full, LOWER[i], ""));
+        if (desc->full_size())
+          desc->set_full(0, fl);
+        else
+          desc->add_full(fl);
       }
     }
 
@@ -157,7 +172,11 @@ class CommandDatabase {
       const char* s = n.toUTF8();
       Description* desc = cr->command_->mutable_desc();
       desc->add_menu(str(String::formatted(menu, "", s)));
-      desc->set_full(str(String::formatted(full, "", s)));
+      string fl = str(String::formatted(full, "", s));
+      if (desc->full_size())
+        desc->set_full(0, fl);
+      else
+        desc->add_full(fl);
     }
   }
 
@@ -229,7 +248,7 @@ class CommandDatabase {
 
   void fillOneCommandInfo(CommandID id, CommandRecord* cr) {
     const Description& desc = cr->command_->desc();
-    String name = str(desc.full());
+    String name = str(desc.full(0));
     String category = str(cr->command_->category());
     bool hasInfo = desc.menu_size() && name.length();
 

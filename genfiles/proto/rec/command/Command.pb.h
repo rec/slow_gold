@@ -220,15 +220,21 @@ class Description : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& menu() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_menu();
   
-  // optional string full = 2;
-  inline bool has_full() const;
+  // repeated string full = 2;
+  inline int full_size() const;
   inline void clear_full();
   static const int kFullFieldNumber = 2;
-  inline const ::std::string& full() const;
-  inline void set_full(const ::std::string& value);
-  inline void set_full(const char* value);
-  inline void set_full(const char* value, size_t size);
-  inline ::std::string* mutable_full();
+  inline const ::std::string& full(int index) const;
+  inline ::std::string* mutable_full(int index);
+  inline void set_full(int index, const ::std::string& value);
+  inline void set_full(int index, const char* value);
+  inline void set_full(int index, const char* value, size_t size);
+  inline ::std::string* add_full();
+  inline void add_full(const ::std::string& value);
+  inline void add_full(const char* value);
+  inline void add_full(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& full() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_full();
   
   // optional string help = 3;
   inline bool has_help() const;
@@ -246,8 +252,7 @@ class Description : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::std::string> menu_;
-  ::std::string* full_;
-  static const ::std::string _default_full_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> full_;
   ::std::string* help_;
   static const ::std::string _default_help_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
@@ -905,46 +910,48 @@ Description::mutable_menu() {
   return &menu_;
 }
 
-// optional string full = 2;
-inline bool Description::has_full() const {
-  return _has_bit(1);
+// repeated string full = 2;
+inline int Description::full_size() const {
+  return full_.size();
 }
 inline void Description::clear_full() {
-  if (full_ != &_default_full_) {
-    full_->clear();
-  }
-  _clear_bit(1);
+  full_.Clear();
 }
-inline const ::std::string& Description::full() const {
-  return *full_;
+inline const ::std::string& Description::full(int index) const {
+  return full_.Get(index);
 }
-inline void Description::set_full(const ::std::string& value) {
-  _set_bit(1);
-  if (full_ == &_default_full_) {
-    full_ = new ::std::string;
-  }
-  full_->assign(value);
+inline ::std::string* Description::mutable_full(int index) {
+  return full_.Mutable(index);
 }
-inline void Description::set_full(const char* value) {
-  _set_bit(1);
-  if (full_ == &_default_full_) {
-    full_ = new ::std::string;
-  }
-  full_->assign(value);
+inline void Description::set_full(int index, const ::std::string& value) {
+  full_.Mutable(index)->assign(value);
 }
-inline void Description::set_full(const char* value, size_t size) {
-  _set_bit(1);
-  if (full_ == &_default_full_) {
-    full_ = new ::std::string;
-  }
-  full_->assign(reinterpret_cast<const char*>(value), size);
+inline void Description::set_full(int index, const char* value) {
+  full_.Mutable(index)->assign(value);
 }
-inline ::std::string* Description::mutable_full() {
-  _set_bit(1);
-  if (full_ == &_default_full_) {
-    full_ = new ::std::string;
-  }
+inline void Description::set_full(int index, const char* value, size_t size) {
+  full_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Description::add_full() {
+  return full_.Add();
+}
+inline void Description::add_full(const ::std::string& value) {
+  full_.Add()->assign(value);
+}
+inline void Description::add_full(const char* value) {
+  full_.Add()->assign(value);
+}
+inline void Description::add_full(const char* value, size_t size) {
+  full_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+Description::full() const {
   return full_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+Description::mutable_full() {
+  return &full_;
 }
 
 // optional string help = 3;

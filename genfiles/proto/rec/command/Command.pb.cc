@@ -178,7 +178,7 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"7\n\013Descri"
-    "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \001(\t\022\014\n\004hel"
+    "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \003(\t\022\014\n\004hel"
     "p\030\003 \001(\t\"\227\021\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
     "command.Command.Type\022\r\n\005index\030\002 \001(\021\022\023\n\013s"
     "tart_index\030\n \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004de"
@@ -263,7 +263,6 @@ struct StaticDescriptorInitializer_rec_2fcommand_2fCommand_2eproto {
 
 // ===================================================================
 
-const ::std::string Description::_default_full_;
 const ::std::string Description::_default_help_;
 #ifndef _MSC_VER
 const int Description::kMenuFieldNumber;
@@ -287,7 +286,6 @@ Description::Description(const Description& from)
 
 void Description::SharedCtor() {
   _cached_size_ = 0;
-  full_ = const_cast< ::std::string*>(&_default_full_);
   help_ = const_cast< ::std::string*>(&_default_help_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -297,9 +295,6 @@ Description::~Description() {
 }
 
 void Description::SharedDtor() {
-  if (full_ != &_default_full_) {
-    delete full_;
-  }
   if (help_ != &_default_help_) {
     delete help_;
   }
@@ -328,12 +323,7 @@ Description* Description::New() const {
 }
 
 void Description::Clear() {
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (_has_bit(1)) {
-      if (full_ != &_default_full_) {
-        full_->clear();
-      }
-    }
+  if (_has_bits_[2 / 32] & (0xffu << (2 % 32))) {
     if (_has_bit(2)) {
       if (help_ != &_default_help_) {
         help_->clear();
@@ -341,6 +331,7 @@ void Description::Clear() {
     }
   }
   menu_.Clear();
+  full_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -369,19 +360,20 @@ bool Description::MergePartialFromCodedStream(
         break;
       }
       
-      // optional string full = 2;
+      // repeated string full = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_full:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_full()));
+                input, this->add_full()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->full().data(), this->full().length(),
+            this->full(0).data(), this->full(0).length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(18)) goto parse_full;
         if (input->ExpectTag(26)) goto parse_help;
         break;
       }
@@ -430,13 +422,13 @@ void Description::SerializeWithCachedSizes(
       1, this->menu(i), output);
   }
   
-  // optional string full = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->full().data(), this->full().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
+  // repeated string full = 2;
+  for (int i = 0; i < this->full_size(); i++) {
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->full(i).data(), this->full(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->full(), output);
+      2, this->full(i), output);
   }
   
   // optional string help = 3;
@@ -465,14 +457,13 @@ void Description::SerializeWithCachedSizes(
       WriteStringToArray(1, this->menu(i), target);
   }
   
-  // optional string full = 2;
-  if (_has_bit(1)) {
+  // repeated string full = 2;
+  for (int i = 0; i < this->full_size(); i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->full().data(), this->full().length(),
+      this->full(i).data(), this->full(i).length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->full(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(2, this->full(i), target);
   }
   
   // optional string help = 3;
@@ -495,14 +486,7 @@ void Description::SerializeWithCachedSizes(
 int Description::ByteSize() const {
   int total_size = 0;
   
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // optional string full = 2;
-    if (has_full()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->full());
-    }
-    
+  if (_has_bits_[2 / 32] & (0xffu << (2 % 32))) {
     // optional string help = 3;
     if (has_help()) {
       total_size += 1 +
@@ -516,6 +500,13 @@ int Description::ByteSize() const {
   for (int i = 0; i < this->menu_size(); i++) {
     total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
       this->menu(i));
+  }
+  
+  // repeated string full = 2;
+  total_size += 1 * this->full_size();
+  for (int i = 0; i < this->full_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->full(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -544,10 +535,8 @@ void Description::MergeFrom(const ::google::protobuf::Message& from) {
 void Description::MergeFrom(const Description& from) {
   GOOGLE_CHECK_NE(&from, this);
   menu_.MergeFrom(from.menu_);
-  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (from._has_bit(1)) {
-      set_full(from.full());
-    }
+  full_.MergeFrom(from.full_);
+  if (from._has_bits_[2 / 32] & (0xffu << (2 % 32))) {
     if (from._has_bit(2)) {
       set_help(from.help());
     }
@@ -575,7 +564,7 @@ bool Description::IsInitialized() const {
 void Description::Swap(Description* other) {
   if (other != this) {
     menu_.Swap(&other->menu_);
-    std::swap(full_, other->full_);
+    full_.Swap(&other->full_);
     std::swap(help_, other->help_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

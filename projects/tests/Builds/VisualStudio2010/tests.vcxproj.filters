@@ -934,6 +934,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp">
       <Filter>tests\rec\slow\callbacks</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.cpp">
+      <Filter>tests\rec\slow\commands</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\Commands.def.cpp">
       <Filter>tests\rec\slow\commands</Filter>
     </ClCompile>
@@ -3257,6 +3260,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h">
       <Filter>tests\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.h">
+      <Filter>tests\rec\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\Commands.def.h">
       <Filter>tests\rec\slow\commands</Filter>

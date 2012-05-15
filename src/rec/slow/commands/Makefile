@@ -3,7 +3,8 @@ CPP_FILES=Commands.def.cpp \
  Descriptions.def.cpp \
  KeyPresses.def.cpp \
  Repeated.def.cpp \
- Setters.def.cpp
+ Setters.def.cpp \
+ AllCommands.def.cpp
 
 
 all: $(CPP_FILES)

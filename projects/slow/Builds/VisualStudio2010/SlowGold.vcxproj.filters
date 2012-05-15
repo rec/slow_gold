@@ -901,6 +901,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.cpp">
       <Filter>SlowGold\rec\slow\callbacks</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.cpp">
+      <Filter>SlowGold\rec\slow\commands</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\Commands.def.cpp">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </ClCompile>
@@ -3173,6 +3176,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SelectionCallbacks.h">
       <Filter>SlowGold\rec\slow\callbacks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.h">
+      <Filter>SlowGold\rec\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\Commands.def.h">
       <Filter>SlowGold\rec\slow\commands</Filter>

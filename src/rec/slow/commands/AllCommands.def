@@ -1,0 +1,994 @@
+command {
+  type: ABOUT_THIS_PROGRAM
+  category: "(None)"
+  desc {
+    menu: "About SlowGold 8"
+    full: "Bring up a window describing SlowGold 8."
+  }
+  keypress: "shift + ?"
+}
+command {
+  type: ADD_LOOP_POINT
+  category: "Loops"
+  desc {
+    menu: "Add Loop Point At Current Time"
+    full: "Add a loop point at the current time."
+  }
+  keypress: "l"
+  keypress: "command + l"
+}
+command {
+  type: AUDIO_PREFERENCES
+  category: "Audio"
+  desc {
+    menu: "Audio Preferences..."
+    full: "Open the Audio Preferences pane."
+  }
+  keypress: "command + ;"
+}
+command {
+  type: CHECK_FOR_UPDATES
+  category: "Help"
+  desc {
+    menu: "Check For Updates"
+    full: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
+  }
+}
+command {
+  type: CLEAR_ALL_SETTINGS
+  category: "Loops"
+  desc {
+    menu: "Clear All Settings And Quit"
+    full: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
+  }
+}
+command {
+  type: CLEAR_LOOPS
+  category: "Loops"
+  desc {
+    menu: "Clear Loops"
+    full: "Delete all loop points"
+  }
+  keypress: "command + b"
+}
+command {
+  type: CLEAR_SETTINGS_FOR_THIS_TRACK
+  category: "Loops"
+  desc {
+    menu: "Clear Settings For This Track And Quit"
+    full: "Clear all SlowGold settings for this track only and quit the program."
+  }
+}
+command {
+  type: CLOSE_FILE
+  category: "File"
+  desc {
+    menu: "Close"
+    full: "Close the current file"
+  }
+  keypress: "command + w"
+}
+command {
+  type: COPY
+  category: "Edit"
+  desc {
+    menu: "Copy"
+    full: "Copy the current selection to the clipboard."
+  }
+  keypress: "command + c"
+}
+command {
+  type: CUT
+  category: "Edit"
+  desc {
+    menu: "Cut"
+    full: "Copy the current selection to the clipboard and clear the selection."
+  }
+  keypress: "command + x"
+}
+command {
+  type: DEL
+  category: "Edit"
+  desc {
+    menu: "Delete"
+    full: "Delete the current selection without changing the clipboard."
+  }
+  keypress: "delete"
+}
+command {
+  type: DESELECT_ALL
+  category: "Selection"
+  desc {
+    menu: "Select None"
+    full: "Select none of the file"
+  }
+  keypress: "command + d"
+}
+command {
+  type: DIM_VOLUME_TOGGLE
+  category: "Audio"
+  desc {
+    menu: "Toggle audio dim"
+    full: "Toggle audio dim on and off."
+  }
+}
+command {
+  type: EJECT_CDS
+  category: "File"
+  desc {
+    menu: "Eject All"
+    full: "Eject all CDs and DVDs"
+  }
+  keypress: "command + e"
+}
+command {
+  type: EXPORT_SETTINGS
+  category: "File"
+  desc {
+    menu: "Export SlowGold Settings..."
+    full: "Export all SlowGold Settings to a .zip file."
+  }
+}
+command {
+  type: IMPORT_SETTINGS
+  category: "File"
+  desc {
+    menu: "Import SlowGold Settings..."
+    full: "Import SlowGold Settings from a .zip file and merge with current settings."
+  }
+}
+command {
+  type: INVERT_LOOP_SELECTION
+  category: "Selection"
+  desc {
+    menu: "Invert Selection"
+    full: "Unselect everything selected and vice-versa."
+  }
+  keypress: "command + i"
+}
+command {
+  type: JUMP
+  index: 9
+  category: "Transport"
+  desc {
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    menu: "Jump To%s Segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+    full: "Jump to the start of%s segment%s"
+  }
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: "1"
+  keypress: "2"
+  keypress: "3"
+  keypress: "4"
+  keypress: "5"
+  keypress: "6"
+  keypress: "7"
+  keypress: "8"
+  keypress: "9"
+  keypress: "0"
+  start_index: -5
+}
+command {
+  type: JUMP_SELECTED
+  index: 9
+  category: "Transport"
+  desc {
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    menu: "Jump To%s Selected Segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+    full: "Jump to the start of%s selected segment%s"
+  }
+  keypress: ""
+  keypress: "command + cursor left"
+  keypress: "cursor left"
+  keypress: "cursor right"
+  keypress: "command + cursor right"
+  keypress: "shift + !"
+  keypress: "shift + @"
+  keypress: "shift + #"
+  keypress: "shift + $"
+  keypress: "shift + %"
+  keypress: "shift + ^"
+  keypress: "shift + &"
+  keypress: "shift + *"
+  keypress: "shift + ("
+  keypress: "shift + )"
+  start_index: -5
+}
+command {
+  type: KEYBOARD_MAPPINGS
+  category: "File"
+  desc {
+    menu: "Edit Keyboard Mappings..."
+    full: "Edit keyboard mappings for commands."
+  }
+  keypress: "command + k"
+}
+command {
+  type: MIDI_MAPPINGS
+  category: "File"
+  desc {
+    menu: "Edit Midi Mappings..."
+    full: "Edit midi mappings for commands."
+  }
+  keypress: "command + m"
+}
+command {
+  type: MODE_ADD_LOOP_POINT
+  category: "Edit"
+  desc {
+    menu: "Add Loop Point Mode"
+    full: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
+  }
+  keypress: "option + a"
+}
+command {
+  type: MODE_DRAG
+  category: "Edit"
+  desc {
+    menu: "Drag Mode"
+    full: "Enter drag mode, where you can drag the waveform back and forth."
+  }
+  keypress: "option + d"
+}
+command {
+  type: MODE_SET_TIME
+  category: "Edit"
+  desc {
+    menu: "Set Time Mode"
+    full: "Enter Set Time Mode, where clicking in the waveform sets the time."
+  }
+  keypress: "option + t"
+}
+command {
+  type: MODE_ZOOM_IN
+  category: "Edit"
+  desc {
+    menu: "Zoom In Mode"
+    full: "Enter Zoom In Mode, where clicking on the waveform zooms in."
+  }
+  keypress: "option + z"
+}
+command {
+  type: MUTE_VOLUME_TOGGLE
+  category: "Audio"
+  desc {
+    menu: "Toggle audio mute"
+    full: "Toggle audio mute on and off."
+  }
+  keypress: "."
+}
+command {
+  type: NUDGE_VOLUME_DOWN
+  category: "Audio"
+  desc {
+    menu: "Nudge volume down"
+    full: "Nudge volume down by 2dB"
+  }
+  keypress: "cursor down"
+}
+command {
+  type: NUDGE_VOLUME_UP
+  category: "Audio"
+  desc {
+    menu: "Nudge volume up"
+    full: "Nudge volume up by 2dB"
+  }
+  keypress: "cursor up"
+}
+command {
+  type: OPEN
+  category: "File"
+  desc {
+    menu: "Open..."
+    full: "Open a dialog to select a new audio file for looping."
+  }
+  keypress: "command + o"
+}
+command {
+  type: OPEN_MANUAL
+  category: "Help"
+  desc {
+    menu: "Download SlowGold 8 User Manual"
+    full: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
+  }
+}
+command {
+  type: OPEN_PREVIOUS_FILE
+  category: "File"
+  desc {
+    menu: "Re-Open Most Recent Closed File"
+    full: "Re-open the file that was most recently closed."
+  }
+  keypress: "command + r"
+}
+command {
+  type: OPEN_SLOWGOLD_DIRECTORY
+  category: "Help"
+  desc {
+    menu: "Open SlowGold Preferences Directory"
+    full: "Open the directory where all the SlowGold Preferences Files are located."
+  }
+}
+command {
+  type: PASTE
+  category: "Edit"
+  desc {
+    menu: "Paste"
+    full: "Replace the current selection with a copy of the clipboard."
+  }
+  keypress: "command + v"
+}
+command {
+  type: QUIT
+  category: "(None)"
+  desc {
+    menu: "Quit"
+    full: "Quit SlowGold"
+  }
+  keypress: "command + q"
+}
+command {
+  type: RECENT_FILES
+  index: 32
+  category: "File"
+  desc {
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    menu: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+    full: "Recent file %s%s"
+  }
+  start_index: 0
+}
+command {
+  type: REDO
+  category: "Edit"
+  desc {
+    menu: "Redo"
+    full: "Redoes a previously undone command."
+  }
+  keypress: "shift + command + z"
+}
+command {
+  type: REQUEST_SUPPORT
+  category: "Help"
+  desc {
+    menu: "Request Technical Support"
+    full: "Make a request for technical support to World Wide Woodshed."
+  }
+}
+command {
+  type: RESET_GAIN_TO_UNITY
+  category: "Audio"
+  desc {
+    menu: "Reset Volume"
+    full: "Reset volume to 0 dB"
+  }
+}
+command {
+  type: SAVE_FILE
+  category: "File"
+  desc {
+    menu: "Save..."
+    full: "Save the full transformed file in the default save format."
+  }
+  keypress: "command + s"
+}
+command {
+  type: SAVE_FILE_SELECTION
+  category: "File"
+  desc {
+    menu: "Save Selection..."
+    full: "Save just the selected portion of the transformed file in the default save format."
+  }
+  keypress: "command + shift + s"
+}
+command {
+  type: SELECT
+  index: 10
+  category: "Selection"
+  desc {
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    menu: "Select%s Segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+    full: "Select%s segment%s"
+  }
+  start_index: -5
+}
+command {
+  type: SELECT_ALL
+  category: "Transport"
+  desc {
+    menu: "Select All"
+    full: "Select all of the file"
+  }
+  keypress: "command + a"
+}
+command {
+  type: SELECT_ONLY
+  index: -1
+  category: "Selection"
+  desc {
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    menu: "Select%s Segment%s Only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+    full: "Select%s segment%s only"
+  }
+  keypress: ""
+  keypress: "ctrl + command + cursor left"
+  keypress: "ctrl + cursor left"
+  keypress: "ctrl + cursor right"
+  keypress: "ctrl + command + cursor right"
+  start_index: -5
+}
+command {
+  type: SET_SAVE_FORMAT
+  index: 4
+  category: "(None)"
+  desc {
+    menu: "AIFF"
+    menu: "FLAC"
+    menu: "Ogg Vorbis"
+    menu: "WAV"
+    full: "..."
+  }
+  start_index: 0
+}
+command {
+  type: TOGGLE_ADVANCED_MENUS
+  category: "File"
+  desc {
+    menu: "Show Advanced Menus"
+    full: "Toggle show/hide of advanced menus."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "advanced_menus"
+    }
+  }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
+  type: TOGGLE_AUTOMATIC_UPDATES
+  category: "Help"
+  desc {
+    menu: "Enable Automatic Updates"
+    full: "Enable or disable automatic updates of SlowGold 8."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "auto_check_for_updates"
+    }
+  }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
+  type: TOGGLE_COMMAND_BAR_AT_LEFT
+  category: "Display"
+  desc {
+    menu: "Command Bar At Left Side"
+    full: "Lay the Command Bar out on the left side of the Waveform Display."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "command_bar_at_left"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_COMMAND_BAR_AT_TOP
+  category: "Display"
+  desc {
+    menu: "Command Bar At Top"
+    full: "Lay the Command Bar out on the top of the Waveform Display."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "command_bar_at_top"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_FILE_OPEN_TREE_DISPLAY
+  category: "Display"
+  desc {
+    menu: "Use Tree Display In File Save Dialog"
+    full: "Use Tree Display In File Save Dialog"
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "use_tree_view_in_file_dialogs"
+    }
+  }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
+  type: TOGGLE_FOLLOW_CURSOR
+  category: "Display"
+  desc {
+    menu: "Follow Cursor"
+    full: "Always keep the time cursor in the window."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "follow_cursor"
+    }
+  }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
+  type: TOGGLE_GRID_DISPLAY
+  category: "Display"
+  desc {
+    menu: "Show Time Gridlines"
+    full: "Toggle display of the time grid."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "show_grid"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_MODES_AT_LEFT
+  category: "Display"
+  desc {
+    menu: "Modes At Left Side"
+    full: "Lay the Modes display out on the left side of the Waveform Display."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "modes_at_left"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_MODES_AT_TOP
+  category: "Display"
+  desc {
+    menu: "Modes At Top"
+    full: "Lay the Modes display out on the top of the Waveform Display."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "modes_at_top"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_PARALLEL_WAVEFORMS
+  category: "Display"
+  desc {
+    menu: "Show Stacked Waveform"
+    full: "Toggle parallel/stacked waveform display."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "parallel_waveforms"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_PREFADER_LEVELS
+  category: "Audio"
+  desc {
+    menu: "Show Pre-Fader Levels"
+    full: "Toggle level display between pre- and post-fader."
+  }
+  is_setter: true
+  address {
+    part {
+      name: "prefader_levels"
+    }
+  }
+  setter_type_name: "rec.audio.Gain"
+}
+command {
+  type: TOGGLE_SELECTION
+  index: 9
+  category: "Selection"
+  desc {
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    menu: "Toggle%s Segment%s Selection"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+    full: "Toggle%s segment%s between selected and unselected"
+  }
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: "command + 2"
+  keypress: "command + 3"
+  keypress: "command + 4"
+  keypress: "command + 5"
+  keypress: "command + 6"
+  keypress: "command + 7"
+  keypress: "command + 8"
+  keypress: "command + 9"
+  keypress: "command + 0"
+  start_index: -5
+}
+command {
+  type: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
+  category: "Help"
+  desc {
+    menu: "Show About Window At Startup"
+    full: "Toggle whether we show the About Window every time we start up."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "show_about_on_startup"
+    }
+  }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
+  type: TOGGLE_SHOW_CURSOR_LABELS
+  category: "Display"
+  desc {
+    menu: "Show Loop Point Labels"
+    full: "Show draggable labels for the loop points on the waveform display."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "show_cursor_labels"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_SHOW_LABELS_AT_TOP
+  category: "Display"
+  desc {
+    menu: "Show Loop Point Labels At Top"
+    full: "Show the loop point labels at the top of the waveform display."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "show_labels_at_top"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_SHOW_MASTER_TUNE
+  category: "Display"
+  desc {
+    menu: "Show Master Tune Slider"
+    full: "Show the Master Tune Slider in the Transform Panel."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "show_master_tune"
+    }
+  }
+  setter_type_name: "rec.slow.GuiSettings"
+}
+command {
+  type: TOGGLE_SHOW_SELECTION_BUTTONS
+  category: "Display"
+  desc {
+    menu: "Show Loop Point Selection Buttons"
+    full: "Show help in help pane."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "show_selection_buttons"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_SHOW_TIMES_AT_TOP
+  category: "Display"
+  desc {
+    menu: "Show Grid Times At Top"
+    full: "Show the grid times for the grid at the top of the waveform display."
+  }
+  is_global_setter: true
+  address {
+    part {
+      name: "show_times_at_top"
+    }
+  }
+  setter_type_name: "rec.widget.waveform.WaveformProto"
+}
+command {
+  type: TOGGLE_START_STOP
+  category: "Transport"
+  desc {
+    menu: "Toggle Start/Stop"
+    full: "Start or pause"
+  }
+  keypress: "spacebar"
+  keypress: "return"
+}
+command {
+  type: TOGGLE_STRETCH_ENABLE
+  category: "Audio"
+  desc {
+    menu: "Enable Transforms"
+    full: "Toggle pitch, time and stereo transforms of the sound."
+  }
+  is_setter: true
+  address {
+    part {
+      name: "enabled"
+    }
+  }
+  setter_type_name: "rec.audio.stretch.Stretch"
+}
+command {
+  type: TOGGLE_WHOLE_SONG_LOOP
+  category: "Selection"
+  desc {
+    menu: "Loop This Segment"
+    full: "Toggle selection between the current segment and the whole song."
+  }
+  keypress: "command + t"
+}
+command {
+  type: UNDO
+  category: "Edit"
+  desc {
+    menu: "Undo"
+    full: "Undoes a previous command."
+  }
+  keypress: "command + z"
+}
+command {
+  type: UNSELECT
+  index: 10
+  category: "Selection"
+  desc {
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    menu: "Unselect%s Segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+    full: "Unselect%s segment%s"
+  }
+  start_index: -5
+}
+command {
+  type: WHATS_NEW_PAGE
+  category: "Help"
+  desc {
+    menu: "What\'s New In This Release?"
+    full: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
+  }
+}
+command {
+  type: ZOOM_OUT
+  category: "Audio"
+  desc {
+    menu: "Zoom Out"
+    full: "Zoom out."
+  }
+  keypress: "command + -"
+}
+command {
+  type: ZOOM_OUT_FULL
+  category: "Audio"
+  desc {
+    menu: "Zoom Out Completely"
+    full: "Zoom out as far as possible."
+  }
+  keypress: "command + shift + -"
+}
+command {
+  type: ZOOM_TO_SELECTION
+  category: "Audio"
+  desc {
+    menu: "Zoom To Selection"
+    full: "Zoom to selection."
+  }
+  keypress: "command  + \'"
+  keypress: "numpad *"
+}

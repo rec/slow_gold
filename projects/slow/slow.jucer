@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="CHXR6JCHo" name="SlowGold">
+  <MAINGROUP id="goy60SHuj" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -798,6 +798,10 @@
                 id="rkwjGmzgi" name="SelectionCallbacks.h" resource="0"/>
         </GROUP>
         <GROUP id="c0CwfeW14" name="commands">
+          <FILE compile="1" file="../../src/rec/slow/commands/AllCommands.def.cpp"
+                id="GV4j0xRrO" name="AllCommands.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/commands/AllCommands.def.h"
+                id="fURoLGDgI" name="AllCommands.def.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/commands/Commands.def.cpp"
                 id="H5NpoXf3y" name="Commands.def.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/commands/Commands.def.h"
@@ -1507,7 +1511,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="y0UoyaWFG" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="0csbmxPSM" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

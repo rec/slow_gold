@@ -30,7 +30,7 @@ XmlElement* readKeyboardCommands(const Commands& commands) {
       juce::XmlElement* mapping = element->createNewChildElement("MAPPING");
       mapping->setAttribute("commandId",
                             String::toHexString(CommandIDEncoder::toCommandID(cmd)));
-      mapping->setAttribute("description", str(cmd.desc().full()));
+      mapping->setAttribute("description", str(cmd.desc().full(0)));
       mapping->setAttribute("key", str(cmd.keypress(j)).toLowerCase());
     }
   }
