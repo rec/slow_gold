@@ -66,7 +66,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& vf) {
   setDataFile(&vf);
 }
 
-void CurrentFile::setDataFile(DataFile f) {
+void CurrentFile::setDataFile(DataFile f, bool showError) {
   data::getDataCenter().waitTillClear();
   data::getDataCenter().clearUndoes();
 
@@ -83,7 +83,7 @@ void CurrentFile::setDataFile(DataFile f) {
     file_.swap(newFile);
   }
 
-  length_ = getFileLength();
+  length_ = getFileLength(showError);
 
   if (length_)
     setViewport();
@@ -105,7 +105,7 @@ void CurrentFile::setDataFile(DataFile f) {
   menus()->menuItemsChanged();
 }
 
-int64 CurrentFile::getFileLength() {
+int64 CurrentFile::getFileLength(bool showError) {
   if (!file_ || file::empty(*file_))
     return 0;
 
@@ -119,9 +119,11 @@ int64 CurrentFile::getFileLength() {
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
-  juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
-                                    reader.errorTitle(),
-                                    reader.errorDetails());
+  if (showError) {
+    juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
+                                      reader.errorTitle(),
+                                      reader.errorDetails());
+  }
 
   file_->Clear();
   return 0;

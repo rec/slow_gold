@@ -147,7 +147,7 @@ void Instance::startup() {
     juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
 
     window_->toFront(true);
-    currentFile_->setDataFile(&vf);
+    currentFile_->setDataFile(&vf, false);
   }
 
   thread::callAsync(window_, &DocumentWindow::setVisible, true);

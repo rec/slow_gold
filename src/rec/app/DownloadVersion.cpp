@@ -134,7 +134,7 @@ bool checkForNewMajorVersion(const String& current, const String&,
   // so let's not do that. :-D
 
   if (cmp < 0)
-    DLOG(ERROR) << "Future Version number! " << current << ", " << *version;
+    LOG(ERROR) << "Future Version number! " << current << ", " << *version;
 
   return (cmp > 0);
 }

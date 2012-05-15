@@ -33,7 +33,7 @@ void write(FileOutputStream* output, const String& s) {
 }  // namespace
 
 void Trans::dumpAll() {
-  DLOG(INFO) << "Dumping translations " << translations()->size();
+  LOG(INFO) << "Dumping translations " << translations()->size();
 
   const TranslationSet& t = *translations();
   File file("/tmp/translations.txt");

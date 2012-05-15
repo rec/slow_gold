@@ -26,7 +26,7 @@ class CurrentFile : public HasInstance,
 
   const Samples<44100> length() const;
   bool empty() const { return !length(); }
-  void setDataFile(data::DataFile);
+  void setDataFile(data::DataFile, bool showError = true);
   void setVirtualFile(const VirtualFile&);
   void setFile(const File&);
   static void translateAll();
@@ -35,7 +35,7 @@ class CurrentFile : public HasInstance,
   const CriticalSection& lock() { return lock_; }
 
  private:
-  int64 getFileLength();
+  int64 getFileLength(bool showError = true);
   void setViewport();
 
   CriticalSection lock_;
