@@ -117,7 +117,7 @@ CommandRecord* TargetManager::find(CommandID id) {
 }
 
 void TargetManager::addCommands() {
-  fillCommandRecordTable(&table_, *commandData_, commands_);
+  fillCommandRecordTable(&table_, *commandData_);
   registerAllCommandsForTarget();
 }
 

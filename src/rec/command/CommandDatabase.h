@@ -9,8 +9,7 @@ namespace command {
 
 class CommandData;
 
-void fillCommandRecordTable(CommandRecordTable*, const CommandData&,
-                            const Commands&);
+void fillCommandRecordTable(CommandRecordTable*, const CommandData&);
 
 }  // namespace command
 }  // namespace rec

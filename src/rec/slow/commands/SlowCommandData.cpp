@@ -3,6 +3,7 @@
 #include "rec/slow/HasInstance.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/callbacks/Callbacks.h"
+#include "rec/slow/commands/AllCommands.def.h"
 #include "rec/slow/commands/Commands.def.h"
 #include "rec/slow/commands/Descriptions.def.h"
 #include "rec/slow/commands/KeyPresses.def.h"
@@ -26,6 +27,7 @@ class SlowCommandData : public CommandData, HasInstance {
   const Commands& keyPresses(const Access&) const { return *commands::keyPresses; }
   const Commands& repeated() const { return *commands::repeated; }
   const Commands& setters() const { return *commands::setters; }
+  const Commands& allCommands() const { return *commands::allCommands; }
 
   virtual void addCallbacks(command::CommandRecordTable* table) const {
     addSlowCallbacks(instance_, table);

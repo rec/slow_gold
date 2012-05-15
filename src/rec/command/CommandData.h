@@ -19,6 +19,7 @@ class CommandData {
   virtual const Commands& setters() const = 0;
   virtual const Commands& descriptions(const Access&) const = 0;
   virtual const Commands& keyPresses(const Access&) const = 0;
+  virtual const Commands& allCommands() const = 0;
 
   virtual void addCallbacks(CommandRecordTable*) const = 0;
   virtual Listener<None>* getMenuUpdateListener() const = 0;

@@ -32,15 +32,58 @@ struct CompareCommandIds {
 
 class CommandDatabase {
  public:
-  CommandDatabase(CommandRecordTable* table, const CommandData& data,
-                  const Commands& commands)
-      : table_(table), data_(data), commands_(commands) {
+  CommandDatabase(CommandRecordTable* table, const CommandData& data)
+      : table_(table), data_(data) {
   }
 
   void fill() {
 #ifdef SINGLE_COMMAND_FILE
-
+    fillFromCommands();
 #else
+    fillFromTable();
+#endif
+  }
+
+ private:
+  void fillFromCommands() {
+    const Commands& commands = data_.allCommands();
+    for (int i = 0; i < commands.command_size(); ++i) {
+      const Command& cmd = commands.command(i);
+      const Command::Type t = cmd.type();
+      if (cmd.has_start_index()) {
+        int len = cmd.desc().menu_size();
+        DCHECK_EQ(len, cmd.desc().full_size());
+        CommandID begin = CommandIDEncoder::toCommandID(cmd.start_index(), t);
+        CommandID end = begin + len;
+        for (CommandID i = begin; i != end; ++i) {
+          if (CommandRecord* cr = table_->find(i, false)) {
+            ptr<Command> newCmd(new Command);
+            newCmd->set_type(t);  // TODO:  is this right?!?
+            int index = i - begin;
+            newCmd->set_index(index);  // TODO:  is this right?!?
+            newCmd->set_category(cmd.category());
+            newCmd->mutable_desc()->add_menu(cmd.desc().menu(index));
+            newCmd->mutable_desc()->add_full(cmd.desc().full(index));
+            if (index < cmd.keypress_size()) {
+              const string& kp = cmd.keypress(index);
+              if (!kp.empty())
+                newCmd->add_keypress(kp);
+            }
+            cr->command_.swap(newCmd);
+          } else {
+            LOG(DFATAL) << "No repeated record for " << t;
+          }
+        }
+      } else {
+        if (CommandRecord* cr = table_->find(t, false))
+          cr->command_.reset(new Command(cmd));
+        else
+          LOG(DFATAL) << "No record for " << t;
+      }
+    }
+  }
+
+  void fillFromTable() {
     data_.addCallbacks(table_);
 
     insertSingle();
@@ -49,13 +92,14 @@ class CommandDatabase {
     mergeKeyPresses();
     mergeDescriptions();
     removeEmptiesAndFillCommandInfo();
-#if JUCE_MAC
+
+#if JUCE_DEBUG && JUCE_MAC
     rawMergeAndPrint();
-#endif
 #endif
   }
 
- private:
+
+
 #if JUCE_MAC
   typedef std::map<CommandID, Command*, CompareCommandIds> Table;
 
@@ -303,7 +347,6 @@ class CommandDatabase {
 
   CommandRecordTable* table_;
   const CommandData& data_;
-  const Commands& commands_;
   Access access_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandDatabase);
@@ -311,9 +354,8 @@ class CommandDatabase {
 
 }  // namespace
 
-void fillCommandRecordTable(CommandRecordTable* table, const CommandData& data,
-                            const Commands& commands) {
-  CommandDatabase(table, data, commands).fill();
+void fillCommandRecordTable(CommandRecordTable* table, const CommandData& data) {
+  CommandDatabase(table, data).fill();
 }
 
 }  // namespace command
