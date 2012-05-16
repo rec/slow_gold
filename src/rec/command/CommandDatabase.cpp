@@ -88,7 +88,7 @@ class CommandDatabase {
         ptr<Command> newCmd(new Command);
         newCmd->set_type(t);
         int index = i - begin;
-        newCmd->set_index(index);
+        newCmd->set_index(index + CommandIDEncoder::FIRST);
         newCmd->set_category(cmd.category());
         newCmd->mutable_desc()->add_menu(cmd.desc().menu(index));
         newCmd->mutable_desc()->add_full(cmd.desc().full(index));
@@ -97,7 +97,6 @@ class CommandDatabase {
             if (!kp.empty())
               newCmd->add_keypress(kp);
         }
-        // DLOG(INFO) << newCmd->ShortDebugString();
         cr->command_.swap(newCmd);
       } else {
         LOG(DFATAL) << "No repeated record for " << commandName(t);
