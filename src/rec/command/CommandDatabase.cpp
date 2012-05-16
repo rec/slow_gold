@@ -11,7 +11,7 @@
 #include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
-// #define SINGLE_COMMAND_FILE
+#define SINGLE_COMMAND_FILE
 
 namespace rec {
 namespace command {
@@ -54,40 +54,53 @@ class CommandDatabase {
  private:
   void fillFromCommands() {
     const Commands& commands = data_.allCommands();
-    for (int i = 0; i < commands.command_size(); ++i) {
-      const Command& cmd = commands.command(i);
-      const Command::Type t = cmd.type();
-      if (cmd.has_start_index()) {
-        int len = cmd.desc().menu_size();
-        DCHECK_EQ(len, cmd.desc().full_size()) << cmd.ShortDebugString();
-        CommandID begin = CommandIDEncoder::toCommandID(cmd.start_index(), t);
-        CommandID end = begin + len;
-        for (CommandID i = begin; i != end; ++i) {
-          if (CommandRecord* cr = table_->find(i, false)) {
-            ptr<Command> newCmd(new Command);
-            newCmd->set_type(t);  // TODO:  is this right?!?
-            int index = i - begin;
-            newCmd->set_index(index);  // TODO:  is this right?!?
-            newCmd->set_category(cmd.category());
-            newCmd->mutable_desc()->add_menu(cmd.desc().menu(index));
-            newCmd->mutable_desc()->add_full(cmd.desc().full(index));
-            if (index < cmd.keypress_size()) {
-              const string& kp = cmd.keypress(index);
-              if (!kp.empty())
-                newCmd->add_keypress(kp);
-            }
-            cr->command_.swap(newCmd);
-          } else {
-            LOG(DFATAL) << "No repeated record for " << commandName(t);
-          }
+    for (int i = 0; i < commands.command_size(); ++i)
+      fillOneCommand(commands.command(i));
+  }
+
+  void fillOneCommand(const Command& cmd) {
+    if (cmd.has_start_index())
+      fillRepeatingCommand(cmd);
+    else
+      fillSingleCommand(cmd);
+  }
+
+  void fillSingleCommand(const Command& cmd) {
+    const Command::Type t = cmd.type();
+    CommandRecord* cr = table_->find(t, false);
+    if (!cr) {
+      DCHECK(cmd.has_is_global_setter() || cmd.has_is_setter())
+        << cmd.ShortDebugString();
+      cr = table_->find(t, true);
+      addSetter(cmd, cr);
+    }
+    cr->command_.reset(new Command(cmd));
+  }
+
+  void fillRepeatingCommand(const Command& cmd) {
+    const Command::Type t = cmd.type();
+    int len = cmd.desc().menu_size();
+    DCHECK_EQ(len, cmd.desc().full_size()) << cmd.ShortDebugString();
+    CommandID begin = CommandIDEncoder::toCommandID(cmd.start_index(), t);
+    CommandID end = begin + len;
+    for (CommandID i = begin; i != end; ++i) {
+      if (CommandRecord* cr = table_->find(i, false)) {
+        ptr<Command> newCmd(new Command);
+        newCmd->set_type(t);  // TODO:  is this right?!?
+        int index = i - begin;
+        newCmd->set_index(index);  // TODO:  is this right?!?
+        newCmd->set_category(cmd.category());
+        newCmd->mutable_desc()->add_menu(cmd.desc().menu(index));
+        newCmd->mutable_desc()->add_full(cmd.desc().full(index));
+        if (index < cmd.keypress_size()) {
+          const string& kp = cmd.keypress(index);
+            if (!kp.empty())
+              newCmd->add_keypress(kp);
         }
+        // DLOG(INFO) << newCmd->ShortDebugString();
+        cr->command_.swap(newCmd);
       } else {
-        CommandRecord* cr = table_->find(t, false);
-        if (!cr) {
-          LOG(ERROR) << "No record for " << commandName(t);
-          cr = table_->find(t, true);
-        }
-        cr->command_.reset(new Command(cmd));
+        LOG(DFATAL) << "No repeated record for " << commandName(t);
       }
     }
   }
@@ -278,14 +291,17 @@ class CommandDatabase {
 
       cr->command_.reset(new Command(data_.setters().command(i)));
       const Command& c = *cr->command_;
-
-      const data::Address& a = c.address();
-      Listener<None>* ls = data_.getMenuUpdateListener();
-      Scope s = scope(c.is_global_setter());
-      cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, c, a, s));
-      cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
-                                                 &CommandItemSetter::execute));
+      addSetter(c, cr);
     }
+  }
+
+  void addSetter(const Command& c, CommandRecord* cr) {
+    const data::Address& a = c.address();
+    Listener<None>* ls = data_.getMenuUpdateListener();
+    Scope s = scope(c.is_global_setter());
+    cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, c, a, s));
+    cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
+                                               &CommandItemSetter::execute));
   }
 
   void mergeKeyPresses() {
