@@ -9,7 +9,7 @@ namespace icon {
 using juce::Drawable;
 
 // Created by the command line:
-// new src/rec/gui/icon/AddLoopPointButtonPressed.svg
+// new --namespace=rec.gui.icon --output=genfiles/icon/rec/gui/icon art/icon/AddLoopPointButtonPressed.svg
 
 Drawable* AddLoopPointButtonPressed::create() {
   static const char data[] = "<?xml version=\"1.0\" ?>\n"

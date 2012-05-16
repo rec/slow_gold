@@ -14,11 +14,6 @@ class CommandData {
   CommandData() {}
   virtual ~CommandData() {}
 
-  virtual const Commands& commands() const = 0;
-  virtual const Commands& repeated() const = 0;
-  virtual const Commands& setters() const = 0;
-  virtual const Commands& descriptions(const Access&) const = 0;
-  virtual const Commands& keyPresses(const Access&) const = 0;
   virtual const Commands& allCommands() const = 0;
 
   virtual void addCallbacks(CommandRecordTable*) const = 0;

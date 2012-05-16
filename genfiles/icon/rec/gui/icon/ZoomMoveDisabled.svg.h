@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_ICON_ZOOMMOVEDISABLED__
 #define __REC_GUI_ICON_ZOOMMOVEDISABLED__
 
-#include "rec/base/base.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace gui {

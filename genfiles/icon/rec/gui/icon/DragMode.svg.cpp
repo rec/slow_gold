@@ -9,7 +9,7 @@ namespace icon {
 using juce::Drawable;
 
 // Created by the command line:
-// new src/rec/gui/icon/DragMode.svg
+// new --namespace=rec.gui.icon --output=genfiles/icon/rec/gui/icon art/icon/DragMode.svg
 
 Drawable* DragMode::create() {
   static const char data[] = "<?xml version=\"1.0\" ?>\n"

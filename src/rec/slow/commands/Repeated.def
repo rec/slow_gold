@@ -1,8 +1,0 @@
-command { type: JUMP start_index: -5 index: 10 category: "Transport" }
-command { type: JUMP_SELECTED start_index: -5 index: 10 category: "Transport" }
-command { type: SELECT start_index: -5 index: 10 category: "Selection" }
-command { type: SELECT_ONLY start_index: -5 index: 10 category: "Selection" }
-command { type: TOGGLE_SELECTION start_index: -5 index: 10 category: "Selection" }
-command { type: UNSELECT start_index: -5 index: 10 category: "Selection" }
-command { type: RECENT_FILES start_index: 0 index: 32 category: "File" }
-command { type: SET_SAVE_FORMAT start_index: 0 index: 4 category: "(None)" }

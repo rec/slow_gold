@@ -91,18 +91,27 @@ def write(name, template, **context):
   with open(name, 'w') as out:
     out.write(template.format(**context))
 
-def createCppFiles(file, groupname, protoname, namespace, includes):
+def createCppFiles(file, groupname, protoname, namespace, includes, output):
   group = GROUPS.get(groupname, None)
   usageError(group, 'No group ' + groupname)
 
   name = os.path.abspath(file)
-  originalPath = name.split('/src/')[1].split('/')
-  classname = originalPath.pop()
+  splitPath = name.split('/src/')
+  if len(splitPath) > 1:
+    originalPath = splitPath.split('/')
+    classname = originalPath.pop()
+    if namespace:
+      path = namespace.split('.')
+    else:
+      path = originalPath
 
-  if namespace:
-    path = namespace.split('.')
+  elif not namespace:
+    raise Exception('Must specify a namespace if not in source tree')
+
   else:
-    path = originalPath
+    path = namespace.split('.')
+    originalPath = path
+    classname = name.split('/')[-1]
 
   if not path:
     path.insert(0, 'rec')
@@ -140,16 +149,18 @@ def createCppFiles(file, groupname, protoname, namespace, includes):
   context.update(header_file = '/'.join(originalPath + [header_file]))
   for suffix in group['files']:
     wsuffix = suffix.replace('.data.', '.%s.' % ft)
-    fullFile = file + wsuffix
-    with open(fullFile, 'w') as out:
+    outfile = file + wsuffix
+    if output:
+      outfile = output + '/' + outfile.split('/')[-1]
+    with open(outfile, 'w') as out:
       template = open(ROOT + suffix).read()
       out.write(template.format(**context))
-    print 'Written', fullFile
+    print 'Written', output
 
 def parseArgs(args):
   optlist, args = getopt.getopt(args, 'p:',
-                                ['proto=', 'namespace=', 'include='])
-  protoname, namespace = None, None
+                                ['proto=', 'namespace=', 'include=', 'output='])
+  protoname, namespace, output = None, None, None
   includes = []
   for name, value in optlist:
     if name == '-p' or name == '--proto':
@@ -157,6 +168,9 @@ def parseArgs(args):
 
     elif name == '-n' or name == '--namespace':
       namespace = value
+
+    elif name == '-o' or name == '--output':
+      output = value
 
     elif name == '--include':
       value = value.split('/')
@@ -171,7 +185,7 @@ def parseArgs(args):
     arg = args.pop(0).split('.')
     if len(arg) > 1:
       file = '.'.join(arg[0 : -1])
-      createCppFiles(file, arg[-1], protoname, namespace, includes)
+      createCppFiles(file, arg[-1], protoname, namespace, includes, output)
     else:
       usageError(args)  # Need at least one more argument
       createCppFiles(arg, args.pop(0), protoname)
