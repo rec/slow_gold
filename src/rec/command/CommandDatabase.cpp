@@ -86,9 +86,9 @@ class CommandDatabase {
     for (CommandID i = begin; i != end; ++i) {
       if (CommandRecord* cr = table_->find(i, false)) {
         ptr<Command> newCmd(new Command);
-        newCmd->set_type(t);  // TODO:  is this right?!?
+        newCmd->set_type(t);
         int index = i - begin;
-        newCmd->set_index(index);  // TODO:  is this right?!?
+        newCmd->set_index(index);
         newCmd->set_category(cmd.category());
         newCmd->mutable_desc()->add_menu(cmd.desc().menu(index));
         newCmd->mutable_desc()->add_full(cmd.desc().full(index));
