@@ -34,8 +34,9 @@ void BasicMenuMaker::addFileMenu() {
     addRepeat(Command::RECENT_FILES, i, str(recent[i]), &submenu);
 
   menu_.addSubMenu(Trans("Open recent"), submenu, !recent.empty());
-
   menu_.addSeparator();
+
+#ifndef SLOWGOLD_SAVE_DISABLED
   addIfNotEmpty(Command::SAVE_FILE);
   addIfNotEmpty(Command::SAVE_FILE_SELECTION);
 
@@ -50,6 +51,7 @@ void BasicMenuMaker::addFileMenu() {
 
   menu_.addSubMenu(Trans("File Type For Save..."), save);
   menu_.addSeparator();
+#endif
 
 #if !JUCE_MAC
   add(Command::ABOUT_THIS_PROGRAM);

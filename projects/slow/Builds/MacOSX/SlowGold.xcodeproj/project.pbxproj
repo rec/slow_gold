@@ -2539,6 +2539,17 @@
 			name = music;
 			sourceTree = "<group>";
 		};
+		467609A91721D1C8EC4E0500 /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		485B2012303499D6E6C882A3 /* yaml */ = {
 			isa = PBXGroup;
 			children = (
@@ -3107,7 +3118,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				F61B7A475304CD9A8D08944B /* SlowGold */,
+				467609A91721D1C8EC4E0500 /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -4257,17 +4268,6 @@
 				B723C97275C418DDE2CA3835 /* juce_audio_processors.h */,
 			);
 			name = juce_audio_processors;
-			sourceTree = "<group>";
-		};
-		F61B7A475304CD9A8D08944B /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		F6F269D144CCC28A35ABA4DA /* proto */ = {

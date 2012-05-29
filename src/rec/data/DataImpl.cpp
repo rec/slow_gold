@@ -15,10 +15,14 @@ DataImpl::DataImpl(Message *m, const File& file, DataUpdater* u, UndoStack* s,
     : Data(isEmpty), file_(file), dataUpdater_(u), undoStack_(s), key_(key) {
   ptr<Message> original(m);
   fileReadSuccess_ = false;
+
   if (!isEmpty) {
     message_.reset(m->New());
+#ifndef SLOWGOLD_SAVE_DISABLED
     fileReadSuccess_ = copy::copy(file_, message_.get());
+#endif
   }
+
   if (!fileReadSuccess_)
     message_.swap(original);
 }
@@ -39,11 +43,15 @@ void DataImpl::pushOnUndoStack(const Message& before) {
 }
 
 bool DataImpl::writeToFile() {
+#ifndef SLOWGOLD_SAVE_DISABLED
   if (isEmpty_) {
     LOG(DFATAL) << "Tried to write an empty value.";
     return false;
   }
   return copy::copy(CLONE(), file_);
+#else
+  return true;
+#endif
 }
 
 void DataImpl::update() {

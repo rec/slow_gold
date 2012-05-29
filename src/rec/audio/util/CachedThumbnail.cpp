@@ -40,6 +40,8 @@ void CachedThumbnail::write(const File& file) {
 void CachedThumbnail::read(const File& file, int64 sampleLength,
                            int channels, float sampleRate) {
   thumbnail_.reset(channels, sampleRate, sampleLength);  // TODO: hard-coded 44k?
+
+#ifndef SLOWGOLD_SAVE_DISABLED
   if (file.exists()) {
     ptr<juce::FileInputStream> out(file.createInputStream());
     if (out) {
@@ -51,6 +53,12 @@ void CachedThumbnail::read(const File& file, int64 sampleLength,
   } else {
     cacheWritten_ = false;
   }
+
+#else
+
+  cacheWritten_ = true;
+
+#endif
 }
 
 }  // namespace util

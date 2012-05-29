@@ -98,7 +98,7 @@ TransportController::~TransportController() {}
 using rec::audio::transport::State;
 
 void TransportController::operator()(State state) {
-  setTransportState(state);
+  thread::callAsync(this, &TransportController::setTransportState, state);
 }
 
 void TransportController::buttonClicked(juce::Button *button) {
