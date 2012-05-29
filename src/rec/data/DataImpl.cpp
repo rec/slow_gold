@@ -2,6 +2,8 @@
 
 #include "rec/data/DataImpl.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/DataUpdater.h"
+#include "rec/data/UndoStack.h"
 #include "rec/util/Copy.h"
 #include "rec/util/Proto.h"
 

@@ -3,11 +3,11 @@
 
 #include "rec/data/Data.h"
 #include "rec/data/DataMaker.h"
-#include "rec/data/DataUpdater.h"
-#include "rec/data/UndoStack.h"
 
 namespace rec {
 namespace data {
+
+class UndoStack;
 
 class DataImpl : public Data {
  public:

@@ -6,7 +6,6 @@ namespace rec {
 namespace util {
 
 using data::UndoStack;
-using data::DataUpdater;
 
 static UndoStack* undoStack() { return data::getDataCenter().undo_.get(); }
 

@@ -3,8 +3,8 @@
 
 #include <set>
 
+#include "rec/data/Data.h"
 #include "rec/util/HasLock.h"
-#include "rec/data/DataUpdater.h"
 
 namespace rec {
 namespace data {
