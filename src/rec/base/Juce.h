@@ -83,6 +83,8 @@ typedef juce::TextEditor TextEditor;
 typedef juce::Thread Thread;
 typedef juce::TreeView TreeView;
 
+typedef juce::WildcardFileFilter WildcardFileFilter;
+
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 
 inline string str(const String& s) {
