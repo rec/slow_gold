@@ -28,8 +28,12 @@ message Command {
     DIM_VOLUME_TOGGLE = 7;
 
     EJECT_CDS = 8;
+    EXPORT_KEYBOARD_MAPPINGS = 82;
+    EXPORT_MIDI_MAPPINGS = 83;
     EXPORT_SETTINGS = 75;
 
+    IMPORT_KEYBOARD_MAPPINGS = 84;
+    IMPORT_MIDI_MAPPINGS = 85;
     IMPORT_SETTINGS = 76;
     INVERT_LOOP_SELECTION = 9;
 
@@ -111,7 +115,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 81;
+    LAST_TYPE = 85;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

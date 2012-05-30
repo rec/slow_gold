@@ -54,7 +54,11 @@ enum Command_Type {
   Command_Type_CLOSE_FILE = 6,
   Command_Type_DIM_VOLUME_TOGGLE = 7,
   Command_Type_EJECT_CDS = 8,
+  Command_Type_EXPORT_KEYBOARD_MAPPINGS = 82,
+  Command_Type_EXPORT_MIDI_MAPPINGS = 83,
   Command_Type_EXPORT_SETTINGS = 75,
+  Command_Type_IMPORT_KEYBOARD_MAPPINGS = 84,
+  Command_Type_IMPORT_MIDI_MAPPINGS = 85,
   Command_Type_IMPORT_SETTINGS = 76,
   Command_Type_INVERT_LOOP_SELECTION = 9,
   Command_Type_JUMP = 10,
@@ -121,7 +125,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 81,
+  Command_Type_LAST_TYPE = 85,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -343,7 +347,11 @@ class Command : public ::google::protobuf::Message {
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
   static const Type DIM_VOLUME_TOGGLE = Command_Type_DIM_VOLUME_TOGGLE;
   static const Type EJECT_CDS = Command_Type_EJECT_CDS;
+  static const Type EXPORT_KEYBOARD_MAPPINGS = Command_Type_EXPORT_KEYBOARD_MAPPINGS;
+  static const Type EXPORT_MIDI_MAPPINGS = Command_Type_EXPORT_MIDI_MAPPINGS;
   static const Type EXPORT_SETTINGS = Command_Type_EXPORT_SETTINGS;
+  static const Type IMPORT_KEYBOARD_MAPPINGS = Command_Type_IMPORT_KEYBOARD_MAPPINGS;
+  static const Type IMPORT_MIDI_MAPPINGS = Command_Type_IMPORT_MIDI_MAPPINGS;
   static const Type IMPORT_SETTINGS = Command_Type_IMPORT_SETTINGS;
   static const Type INVERT_LOOP_SELECTION = Command_Type_INVERT_LOOP_SELECTION;
   static const Type JUMP = Command_Type_JUMP;

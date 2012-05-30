@@ -122,11 +122,43 @@ command {
   keypress: "command + e"
 }
 command {
+  type: EXPORT_KEYBOARD_MAPPINGS
+  category: "File"
+  desc {
+    menu: "Export Keyboard Command Mappings..."
+    full: "Export keyboard command mappings."
+  }
+}
+command {
+  type: EXPORT_MIDI_MAPPINGS
+  category: "File"
+  desc {
+    menu: "Export MIDI Command Mappings..."
+    full: "Export MIDI command mappings."
+  }
+}
+command {
   type: EXPORT_SETTINGS
   category: "File"
   desc {
     menu: "Export SlowGold Settings..."
     full: "Export all SlowGold Settings to a .zip file."
+  }
+}
+command {
+  type: IMPORT_KEYBOARD_MAPPINGS
+  category: "File"
+  desc {
+    menu: "Import Keyboard Command Mappings..."
+    full: "Import SlowGold keyboard command mappings."
+  }
+}
+command {
+  type: IMPORT_MIDI_MAPPINGS
+  category: "File"
+  desc {
+    menu: "Import MIDI Command Mappings"
+    full: "Import SlowGold MIDI command mappings."
   }
 }
 command {

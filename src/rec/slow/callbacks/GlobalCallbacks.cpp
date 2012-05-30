@@ -39,7 +39,11 @@ Trans PLEASE_CONTACT("Please contact World Wide Woodshed support at");
 Trans PLEASE_MAIL("Please mail the file to %s and then you can throw it away.");
 Trans SUPPORTED("A Support Request Was Created On Your Desktop");
 Trans SELECT_EXPORT_FILE("Select A File To Save Exported Settings");
+Trans SELECT_EXPORT_KEYBOARD_FILE("Select A File To Save Exported Keyboard Command Mappings");
+Trans SELECT_EXPORT_MIDI_FILE("Select A File To Save Exported MIDI Command Mappings");
 Trans SELECT_IMPORT_FILE("Select A Zip File Containing Exported Settings");
+Trans SELECT_IMPORT_KEYBOARD_FILE("Select A File Containing Keyboard Command Mappings");
+Trans SELECT_IMPORT_MIDI_FILE("Select A File Containing MIDI Command Mappings");
 
 const String SUPPORT = "support@worldwidewoodshed.com";
 const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
@@ -127,6 +131,18 @@ void importSettings() {
     data::unzipData(file);
 }
 
+void importKeyboardMappings() {
+}
+
+void importMidiMappings() {
+}
+
+void exportKeyboardMappings() {
+}
+
+void exportMidiMappings() {
+}
+
 void setMode(Mode::Action action) {
   Mode mode;
   mode.set_click(action);
@@ -167,7 +183,11 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::CUT, cutToClipboard);
   addCallback(t, Command::DEL, cutNoClipboard);
   addCallback(t, Command::EJECT_CDS, cd::ejectAll);
+  addCallback(t, Command::EXPORT_KEYBOARD_MAPPINGS, exportKeyboardMappings);
+  addCallback(t, Command::EXPORT_MIDI_MAPPINGS, exportMidiMappings);
   addCallback(t, Command::EXPORT_SETTINGS, exportSettings);
+  addCallback(t, Command::IMPORT_KEYBOARD_MAPPINGS, importKeyboardMappings);
+  addCallback(t, Command::IMPORT_MIDI_MAPPINGS, importMidiMappings);
   addCallback(t, Command::IMPORT_SETTINGS, importSettings);
   addCallback(t, Command::OPEN_MANUAL, openManual);
   addCallback(t, Command::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
@@ -191,7 +211,11 @@ void GlobalCallbacks::translateAll() {
   PLEASE_CONTACT.translate();
   PLEASE_MAIL.translate();
   SELECT_EXPORT_FILE.translate();
+  SELECT_EXPORT_KEYBOARD_FILE.translate();
+  SELECT_EXPORT_MIDI_FILE.translate();
   SELECT_IMPORT_FILE.translate();
+  SELECT_IMPORT_KEYBOARD_FILE.translate();
+  SELECT_IMPORT_MIDI_FILE.translate();
   SUPPORTED.translate();
 }
 

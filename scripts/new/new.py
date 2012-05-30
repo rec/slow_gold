@@ -98,7 +98,7 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
   name = os.path.abspath(file)
   splitPath = name.split('/src/')
   if len(splitPath) > 1:
-    originalPath = splitPath.split('/')
+    originalPath = splitPath[-1].split('/')
     classname = originalPath.pop()
     if namespace:
       path = namespace.split('.')
