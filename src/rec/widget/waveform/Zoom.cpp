@@ -19,13 +19,13 @@ double zoomFunction(double increment) {
   return pow(POWER, -increment);
 }
 
-Zoom makeZoom(const Zoom& z, Samples<44100> length, Samples<44100> t,
+Zoom makeZoom(const Zoom& z, SampleTime length, SampleTime t,
               double k) {
   k = zoomFunction(k * ZOOM_INCREMENT);
   // DCHECK_LE(z.begin(), z.end());
   Zoom zoom(z);
-  Samples<44100> b = zoom.begin();
-  Samples<44100> e = zoom.has_end() ? zoom.end() : length.get();
+  SampleTime b = zoom.begin();
+  SampleTime e = zoom.has_end() ? zoom.end() : length.get();
 
   if (k >= 1.0 || k * (e - b) >= audio::MINIMUM_FILE_SIZE) {
     int64 begin = static_cast<int64>(k * b + (1.0 - k) * t);
@@ -45,13 +45,13 @@ Zoom makeZoom(const Zoom& z, Samples<44100> length, Samples<44100> t,
   return zoom;
 }
 
-Zoom makeZoom(const Zoom& z, Samples<44100> length, double k) {
+Zoom makeZoom(const Zoom& z, SampleTime length, double k) {
   return makeZoom(z, length, (z.begin() + z.end()) / 2, k);
 }
 
 }  // namespace
 
-void constrainZoom(Zoom* z, Samples<44100> length) {
+void constrainZoom(Zoom* z, SampleTime length) {
   DCHECK(length);
 
   if (z->begin() < 0)
@@ -60,9 +60,9 @@ void constrainZoom(Zoom* z, Samples<44100> length) {
   if (z->end() > length || !z->has_end())
     z->set_end(length);
 
-  Samples<44100> under = audio::MINIMUM_FILE_SIZE - (z->end() - z->begin());
+  SampleTime under = audio::MINIMUM_FILE_SIZE - (z->end() - z->begin());
   if (under > 0) {
-    Samples<44100> end = z->end() + under;
+    SampleTime end = z->end() + under;
     if (end < length)
       z->set_end(end);
     else
@@ -70,27 +70,27 @@ void constrainZoom(Zoom* z, Samples<44100> length) {
   }
 }
 
-void zoomScaleAt(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k) {
+void zoomScaleAt(const VirtualFile& f, SampleTime length, SampleTime time, double k) {
   Viewport vp(data::getProto<Viewport>(&f));
   vp.mutable_zoom()->CopyFrom(makeZoom(vp.zoom(), length, time, k));
   data::setProto(vp, &f);
 }
 
-void zoomScale(const VirtualFile& f, Samples<44100> length, double k) {
+void zoomScale(const VirtualFile& f, SampleTime length, double k) {
   Viewport vp(data::getProto<Viewport>(&f));
   vp.mutable_zoom()->CopyFrom(makeZoom(vp.zoom(), length, k));
   data::setProto(vp, &f);
 }
 
-void zoomOutFull(const VirtualFile& f, Samples<44100> length) {
+void zoomOutFull(const VirtualFile& f, SampleTime length) {
   Viewport vp(data::getProto<Viewport>(&f));
   vp.mutable_zoom()->set_begin(0);
   vp.mutable_zoom()->set_end(length);
   data::setProto(vp, &f);
 }
 
-void zoomTo(const VirtualFile& f, Samples<44100> begin, Samples<44100> end,
-            Samples<44100> length) {
+void zoomTo(const VirtualFile& f, SampleTime begin, SampleTime end,
+            SampleTime length) {
   Viewport vp(data::getProto<Viewport>(&f));
   Zoom* zoom = vp.mutable_zoom();
   zoom->set_begin(begin);

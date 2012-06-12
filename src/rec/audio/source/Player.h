@@ -43,9 +43,9 @@ class Player : public DataListener<Gain>,
   void broadcastState();
   void toggle() { setState(invert(state())); }
 
-  void setNextReadPosition(const Samples<44100>&);
-  Samples<44100> getNextReadPosition();
-  Samples<44100> getTime() { return getNextReadPosition(); }
+  void setNextReadPosition(const SampleTime&);
+  SampleTime getNextReadPosition();
+  SampleTime getTime() { return getNextReadPosition(); }
 
   transport::State state() const;
   Device* device() { return device_; }
@@ -70,7 +70,7 @@ class Player : public DataListener<Gain>,
   // Stop the player and reset the position to 0.
   void reset();
 
-  Samples<44100> getSelectionLength() const;
+  SampleTime getSelectionLength() const;
 
  private:
   CriticalSection lock_;

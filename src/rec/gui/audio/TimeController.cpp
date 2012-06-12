@@ -48,8 +48,8 @@ void TimeController::operator()(const Stretch& stretch) {
   timeScale_ = timeScale(stretch);
 }
 
-void TimeController::operator()(Samples<44100> time) {
-  Samples<44100> scaledTime = time;
+void TimeController::operator()(SampleTime time) {
+  SampleTime scaledTime = time;
   if (DISPLAY_SCALED_TIME)
     scaledTime = static_cast<uint64>(scaledTime / timeScale_);
   if (songTime_.setTime(scaledTime)) {
@@ -65,7 +65,7 @@ void TimeController::operator()(Samples<44100> time) {
   }
 }
 
-void TimeController::setLength(Samples<44100> len) {
+void TimeController::setLength(SampleTime len) {
   songTime_.setLength(len);
 }
 

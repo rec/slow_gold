@@ -24,8 +24,8 @@ class HasInstance {
   SlowWindow* window() { return instance_->window_; }
 
   const VirtualFile file() const { return instance_->file(); }
-  Samples<44100> time() const { return instance_->time(); }
-  Samples<44100> length() const { return instance_->length(); }
+  SampleTime time() const { return instance_->time(); }
+  SampleTime length() const { return instance_->length(); }
   bool isPlaying() const { return instance_->isPlaying(); }
   bool empty() const { return instance_->empty(); }
   const CriticalSection& lock() const { return instance_->lock_; }

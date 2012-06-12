@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_UTIL_FRAME__
 #define __REC_AUDIO_UTIL_FRAME__
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/audio/Audio.h"
 
 namespace rec {
@@ -10,19 +10,19 @@ namespace audio {
 template <typename Frame>
 class Frames {
  public:
-  Frames(Samples<44100> length = 0)
+  Frames(SampleTime length = 0)
       : length_(-1), allocatedLength_(-1), frames_(NULL) {
         setLength(length);
   }
   ~Frames() { free(frames_); }
 
-  bool setLength(Samples<44100> length, bool mustReallocate = false);
-  Samples<44100> getAudioBlock(const Info& info, Samples<44100> offset) const;
+  bool setLength(SampleTime length, bool mustReallocate = false);
+  SampleTime getAudioBlock(const Info& info, SampleTime offset) const;
   Frame* frames() { return frames_; }
-  Samples<44100> length() const { return length_; }
+  SampleTime length() const { return length_; }
 
  private:
-  Samples<44100> length_, allocatedLength_;
+  SampleTime length_, allocatedLength_;
   Frame* frames_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Frames);

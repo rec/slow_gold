@@ -3,7 +3,7 @@
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/util/ConvertSample.h"
 #include "rec/audio/util/Frame.h"
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 
 namespace rec {
 namespace audio {
@@ -42,7 +42,7 @@ class BufferedReaderImpl : public BufferedReader {
       return 0;
     }
 
-    Samples<44100> size = std::min(block::getSize(b), blockSize_);
+    SampleTime size = std::min(block::getSize(b), blockSize_);
 
     int32** pointers = reader_->usesFloatingPointData ?
       reinterpret_cast<int32**>(floatBuffer_.pointers_) : intBuffer_.pointers_;

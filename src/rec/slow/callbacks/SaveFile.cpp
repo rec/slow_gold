@@ -194,7 +194,7 @@ class SaveThread : public ThreadWithProgressWindow {
     String name = file_.getFileName();
     setStatusMessage(String::formatted(SAVING_FILE, c_str(name)));
 
-    for (Samples<44100> toCopy = length_;
+    for (SampleTime toCopy = length_;
          !threadShouldExit() && toCopy > 0; toCopy -= COPY_UPDATE_SIZE) {
       if (writer->writeFromAudioSource(*source_,
                                         std::min(COPY_UPDATE_SIZE, toCopy.toInt()),
@@ -226,18 +226,18 @@ class SaveThread : public ThreadWithProgressWindow {
   const File file_;
   ptr<audio::Source> source_;
   const Viewport viewport_;
-  const Samples<44100> length_;
+  const SampleTime length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SaveThread)
 };
 
 
 Viewport getViewport(Instance* instance, bool useSelection,
-                     Samples<44100> len) {
+                     SampleTime len) {
   Viewport original = data::getProto<Viewport>(instance->currentFile_->file());
   Viewport viewport;
   if (useSelection) {
-    Samples<44100> start = 0;
+    SampleTime start = 0;
     const LoopPointList& lpl = original.loop_points();
     uint size = lpl.loop_point_size();
     for (uint i = 0; i < size; ++i) {
@@ -271,8 +271,8 @@ void doSaveFile(Instance* instance, bool useSelection) {
   ptr<audio::Source> s(instance->makeSource());
   s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
 
-  Samples<44100> len = useSelection ?
-    instance->player_->getSelectionLength() : Samples<44100>(s->getTotalLength());
+  SampleTime len = useSelection ?
+    instance->player_->getSelectionLength() : SampleTime(s->getTotalLength());
 
 
   if (len <= audio::MINIMUM_FILE_SIZE) {

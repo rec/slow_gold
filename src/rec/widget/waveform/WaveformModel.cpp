@@ -26,24 +26,24 @@ const int CURSOR_LABEL_HEIGHT = 20;
 
 }  // namespace
 
-Range<Samples<44100> > WaveformModel::getTimeRange() const {
+Range<SampleTime > WaveformModel::getTimeRange() const {
   const Zoom& zoom = viewport_.zoom();
-  Range<Samples<44100> > r;
+  Range<SampleTime > r;
   if (zoom.zoom_to_selection() && !selection_.empty()) {
-    r.begin_ = Samples<44100>(selection_.begin()->first);
-    r.end_ = Samples<44100>(selection_.rbegin()->second);
+    r.begin_ = SampleTime(selection_.begin()->first);
+    r.end_ = SampleTime(selection_.rbegin()->second);
     if (r.end_ == 0)
       r.end_ = zoomEnd();
 
-    r.begin_ = std::max<Samples<44100> >(r.begin_, 0);
-    r.end_ = std::min<Samples<44100> >(r.end_, zoomEnd());
+    r.begin_ = std::max<SampleTime >(r.begin_, 0);
+    r.end_ = std::min<SampleTime >(r.end_, zoomEnd());
   } else {
     r.begin_ = zoom.begin();
     r.end_= zoomEnd();
   }
 
   if (r.size() < SMALLEST_TIME_SAMPLES)
-    r = Range<Samples<44100> >(0, viewport_.loop_points().length());
+    r = Range<SampleTime >(0, viewport_.loop_points().length());
 
   if (r.size() < SMALLEST_TIME_SAMPLES)
     r.end_ = SMALLEST_TIME_SAMPLES;
@@ -51,11 +51,11 @@ Range<Samples<44100> > WaveformModel::getTimeRange() const {
   return r;
 }
 
-int WaveformModel::timeToX(Samples<44100> t) const {
+int WaveformModel::timeToX(SampleTime t) const {
   return static_cast<int>((t - getTimeRange().begin_) * pixelsPerSample());
 }
 
-Samples<44100> WaveformModel::xToTime(int x) const {
+SampleTime WaveformModel::xToTime(int x) const {
   return static_cast<int64>(getTimeRange().begin_.get() + x / pixelsPerSample());
 }
 
@@ -63,10 +63,10 @@ double WaveformModel::pixelsPerSample() const {
   return width_ / (1.0 * getTimeRange().size());
 }
 
-Samples<44100> WaveformModel::zoomEnd() const {
+SampleTime WaveformModel::zoomEnd() const {
   const Zoom& zoom = viewport_.zoom();
   // DCHECK(zoom.has_end());  // TODO
-  return zoom.has_end() ? Samples<44100>(zoom.end()) : Samples<44100>(length());
+  return zoom.has_end() ? SampleTime(zoom.end()) : SampleTime(length());
 }
 
 const block::BlockSet WaveformModel::getAndClearDirty() {

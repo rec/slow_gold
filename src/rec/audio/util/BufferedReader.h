@@ -13,13 +13,13 @@ class BufferedReader : public block::Fillable {
   BufferedReader() {}
   virtual ~BufferedReader() {}
 
-  Samples<44100> setReader(AudioFormatReader* reader);
+  SampleTime setReader(AudioFormatReader* reader);
 
   virtual Source* makeSource() const = 0;
   virtual bool setLength(int64 length) = 0;
   virtual block::Size doFillNextBlock(const block::Block& b) = 0;
 
-  bool coversTime(Samples<44100> time) const;
+  bool coversTime(SampleTime time) const;
 
  protected:
   ptr<AudioFormatReader> reader_;

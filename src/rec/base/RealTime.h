@@ -5,13 +5,13 @@
 
 namespace rec {
 
-template <int SAMPLES_PER_SEC> struct Samples;
+struct SampleTime;
 
 struct RealTime {
   RealTime() : time_(0) {}
   RealTime(double p) : time_(p) {}
   RealTime(float p) : time_(p) {}
-  RealTime(const Samples<44100>& pos);
+  RealTime(const SampleTime& pos);
 
   // We need this constructor so we can construct an "empty" RealTime(0).
   // Best to avoid using.

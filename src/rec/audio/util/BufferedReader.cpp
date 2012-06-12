@@ -6,7 +6,7 @@ namespace util {
 
 static const int PRELOAD = 10000;  // TODO:  duplicate code.
 
-Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
+SampleTime BufferedReader::setReader(AudioFormatReader* reader) {
   Lock l(lock_);
   reset();
 
@@ -15,7 +15,7 @@ Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
     return 0;
   }
 
-  Samples<44100> size = reader->lengthInSamples;
+  SampleTime size = reader->lengthInSamples;
   if (!setLength(size)) {
     LOG(ERROR) << "Ran out of memory, unable to set frame length";
     return 0;
@@ -34,7 +34,7 @@ Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
   return size;
 }
 
-bool BufferedReader::coversTime(Samples<44100> time) const {
+bool BufferedReader::coversTime(SampleTime time) const {
   return hasFilled(block::Block(time, time + PRELOAD));
 }
 

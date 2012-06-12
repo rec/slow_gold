@@ -2,13 +2,13 @@
 #define __REC_WIDGET_WAVEFORM_VIEWPORT__
 
 #include "rec/base/base.h"
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 
 namespace rec {
 namespace widget {
 namespace waveform {
 
-void addLoopPointToViewport(const VirtualFile& file, Samples<44100> time);
+void addLoopPointToViewport(const VirtualFile& file, SampleTime time);
 
 }  // namespace waveform
 }  // namespace widget

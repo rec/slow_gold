@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
 #include "rec/util/Mode.pb.h"

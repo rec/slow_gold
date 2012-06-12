@@ -44,6 +44,10 @@ struct SampleTime {
   static SampleTime getSamplesPerSecond();
   static void setSamplesPerSecond(SampleTime);
 
+  RealTime toRealTime() const {
+    return static_cast<double>(position_) / getSamplesPerSecond();
+  }
+
   SampleTime(RealTime time);
 
   // TODO: we shouldn't need this, but Juce sometimes wants ints.  Bug Jules!

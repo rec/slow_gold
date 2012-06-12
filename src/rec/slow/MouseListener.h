@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_MOUSELISTENER__
 #define __REC_SLOW_MOUSELISTENER__
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/Listener.h"
@@ -41,16 +41,16 @@ class MouseListener : public HasInstance,
  private:
   void clickWaveform(const MouseEvent&, widget::waveform::Waveform*);
   void dragWaveform(const MouseEvent&, widget::waveform::Waveform*);
-  void addLoopPoint(Samples<44100>);
+  void addLoopPoint(SampleTime);
   void clickCursor(widget::waveform::Cursor*);
   void dragCursor(const MouseEvent&, widget::waveform::Cursor*);
 
   Mode::Action getClickAction();
 
-  Samples<44100> waveformDragStart_;
+  SampleTime waveformDragStart_;
   int cursorDragStart_;
   ModifierKeys dragMods_;
-  Range<Samples<44100> > cursorRestrict_;
+  Range<SampleTime > cursorRestrict_;
   Mode mode_;
   Mode previousMode_;
 

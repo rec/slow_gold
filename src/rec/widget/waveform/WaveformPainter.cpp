@@ -27,7 +27,7 @@ WaveformPainter::WaveformPainter(Waveform* w) :
     waveform_(w), thumbnail_(NULL), model_(w->model()) {
 }
 
-void WaveformPainter::paint(Graphics& g, const Range<Samples<44100> >& range,
+void WaveformPainter::paint(Graphics& g, const Range<SampleTime >& range,
                             bool loading) {
   Painter p(model_.description().widget(), &g);
   if (!loading) {
@@ -45,12 +45,12 @@ void WaveformPainter::paint(Graphics& g, const Range<Samples<44100> >& range,
 }
 
 void WaveformPainter::drawWaveform(Painter& p,
-                                   const Range<Samples<44100> >& range) {
+                                   const Range<SampleTime >& range) {
   const BlockSet& selection = model_.selection();
   BlockSet::iterator i = selection.begin();
   Block r;
-  r.first = Samples<44100>(range.begin_);
-  r.second = Samples<44100>(range.end_);
+  r.first = SampleTime(range.begin_);
+  r.second = SampleTime(range.end_);
   const juce::Rectangle<int>& bounds = waveform_->getLocalBounds();
   int channels = thumbnail_->getNumChannels();
 
@@ -64,8 +64,8 @@ void WaveformPainter::drawWaveform(Painter& p,
     else if (i != selection.end())
       draw.second = i->first;
 
-    int x1 = model_.timeToX(Samples<44100>(draw.first));
-    int x2 = model_.timeToX(Samples<44100>(draw.second));
+    int x1 = model_.timeToX(SampleTime(draw.first));
+    int x2 = model_.timeToX(SampleTime(draw.second));
 
     juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
@@ -85,8 +85,8 @@ void WaveformPainter::drawWaveform(Painter& p,
   }
 }
 
-void WaveformPainter::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
-  Samples<44100> width = r.size();
+void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime >& r) {
+  SampleTime width = r.size();
   if (width < SMALLEST_TIME_SAMPLES) {
     LOG_FIRST_N(ERROR, 4) << "Nothing on screen! " << width;
     return;
@@ -121,7 +121,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<Samples<44100> >& r) {
   g.setFont(10);
 
   for (int i = b - 1; i <= e + 1; ++i) {
-    Samples<44100> time = static_cast<int64>(i * samples);
+    SampleTime time = static_cast<int64>(i * samples);
     int x = model_.timeToX(time);
 
     if (model_.description().show_grid()) {

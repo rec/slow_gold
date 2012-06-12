@@ -1,19 +1,19 @@
 #ifndef __REC_UTIL_FORMATTIME__
 #define __REC_UTIL_FORMATTIME__
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/util/Math.h"
 
 namespace rec {
 namespace util {
 
-inline const String formatTime(Samples<44100> time,
-                               Samples<44100> mTime,
+inline const String formatTime(SampleTime time,
+                               SampleTime mTime,
                                int sampleRate,
                                bool flash = false,
                                bool leadingZeros = true,
                                int decimals = 3) {
-  Samples<44100> maxTime = std::max(time, mTime);
+  SampleTime maxTime = std::max(time, mTime);
   bool displayHours = (maxTime >= 3600 * sampleRate);
 
   int frac = static_cast<int>(mod(time.get(), sampleRate));

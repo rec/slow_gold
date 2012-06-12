@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_WAVEFORM_WAVEFORMPAINTER__
 #define __REC_WIDGET_WAVEFORM_WAVEFORMPAINTER__
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/util/Range.h"
 
 namespace rec {
@@ -17,13 +17,13 @@ class WaveformModel;
 class WaveformPainter {
  public:
   WaveformPainter(Waveform* w);
-  void paint(Graphics&, const Range<Samples<44100> >&, bool loading);
+  void paint(Graphics&, const Range<SampleTime >&, bool loading);
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
 
  private:
-  void drawWaveform(Painter& g, const Range<Samples<44100> >&);
-  void drawGrid(Graphics& g, const Range<Samples<44100> >&);
+  void drawWaveform(Painter& g, const Range<SampleTime >&);
+  void drawGrid(Graphics& g, const Range<SampleTime >&);
 
   Waveform* waveform_;
   juce::AudioThumbnail* thumbnail_;

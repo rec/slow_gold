@@ -14,10 +14,10 @@ class WaveformModel {
  public:
   WaveformModel() : isDraggingCursor_(false) {}
 
-  util::Range<Samples<44100> > getTimeRange() const;
-  Samples<44100> xToTime(int x) const;
+  util::Range<SampleTime > getTimeRange() const;
+  SampleTime xToTime(int x) const;
   double pixelsPerSample() const;
-  int timeToX(Samples<44100> t) const;
+  int timeToX(SampleTime t) const;
 
   bool isDraggingCursor() const { return isDraggingCursor_; }
   void setIsDraggingCursor(bool b) { isDraggingCursor_ = b; }
@@ -28,7 +28,7 @@ class WaveformModel {
   bool isEmpty() const { return !length(); }
   const block::BlockSet& selection() const { return selection_; }
   const block::BlockSet getAndClearDirty();
-  Samples<44100> length() const { return viewport_.loop_points().length(); }
+  SampleTime length() const { return viewport_.loop_points().length(); }
   const Viewport& viewport() const { return viewport_; }
 
   void setDescription(const WaveformProto& d) { desc_ = d; }
@@ -36,7 +36,7 @@ class WaveformModel {
   void layout(Component* waveform);
 
  private:
-  Samples<44100> zoomEnd() const;
+  SampleTime zoomEnd() const;
 
   block::BlockSet selection_;
   block::BlockSet dirty_;

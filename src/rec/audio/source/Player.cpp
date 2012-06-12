@@ -29,11 +29,11 @@ Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
-Samples<44100> Player::getNextReadPosition() {
+SampleTime Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
 }
 
-void Player::setNextReadPosition(const Samples<44100>& time) {
+void Player::setNextReadPosition(const SampleTime& time) {
   selection_->setNextReadPosition(time);
 }
 
@@ -74,7 +74,7 @@ void Player::operator()(const Viewport& viewport) {
   selection_->setSelection(getTimeSelection(viewport.loop_points()));
 }
 
-Samples<44100> Player::getSelectionLength() const {
+SampleTime Player::getSelectionLength() const {
   double s = stretch::timeScale(stretchy_->getStretch());
   return static_cast<int64>(s * selection_->getCorrectTotalLength());
 }

@@ -11,7 +11,7 @@ class CachedThumbnail {
  public:
   CachedThumbnail();
 
-  void addBlock(Samples<44100> pos, const AudioSourceChannelInfo& info);
+  void addBlock(SampleTime pos, const AudioSourceChannelInfo& info);
   AudioThumbnail* thumbnail() { return &thumbnail_; }
   bool cacheWritten() const { return cacheWritten_; }
   void write(const File&);

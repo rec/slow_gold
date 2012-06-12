@@ -17,14 +17,14 @@ namespace waveform {
 class Cursor;
 
 Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,
-                   Samples<44100> time);
+                   SampleTime time);
 Cursor* makeTimeCursor(const CursorProto& cp, Waveform* w);
 
 class OutlinedCursorLabel;
 
 class Cursor : public Component,
                public SettableTooltipClient,
-               public Listener< Samples<44100> >,
+               public Listener<SampleTime>,
                public juce::Label::Listener {
  public:
   Cursor(const CursorProto& d, Waveform* w, int index);
@@ -32,7 +32,7 @@ class Cursor : public Component,
   virtual void init();
 
   virtual void operator()(const WaveformProto&);
-  virtual void operator()(Samples<44100> t);
+  virtual void operator()(SampleTime t);
 
   virtual void labelTextChanged(juce::Label*);
 
@@ -40,9 +40,9 @@ class Cursor : public Component,
   void setSelected(bool);
 
   void paint(Graphics& g);
-  Samples<44100> getTime() const;
-  bool setDragTime(Samples<44100> time);
-  void setTime(Samples<44100> time);
+  SampleTime getTime() const;
+  bool setDragTime(SampleTime time);
+  void setTime(SampleTime time);
   virtual void setTooltip(const String&);
 
   static const int TIME_CURSOR_INDEX = -1;
@@ -66,7 +66,7 @@ class Cursor : public Component,
   Waveform* const waveform_;
   const CriticalSection& lock() const { return waveform_->lock_; }
   CursorProto desc_;
-  Samples<44100> time_;
+  SampleTime time_;
   int index_;
   juce::Rectangle<int> bounds_;
   int dragX_;

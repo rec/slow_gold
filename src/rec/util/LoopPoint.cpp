@@ -3,24 +3,24 @@
 #include "rec/data/DataOps.h"
 #include "rec/util/Math.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 
 namespace rec {
 namespace audio {
 
 const block::BlockSet getTimeSelection(const LoopPointList& lpl) {
   block::BlockSet sel;
-  Samples<44100> length(lpl.length());
+  SampleTime length(lpl.length());
   int size = lpl.loop_point_size();
   for (int i = 0, j; i < size; ++i) {
     for (; i < size && !lpl.loop_point(i).selected(); ++i);
     for (j = i; j < size && lpl.loop_point(j).selected(); ++j);
     if (j != i) {
-      Samples<44100> begin = lpl.loop_point(i).time();
-      Samples<44100> endTime = length;
+      SampleTime begin = lpl.loop_point(i).time();
+      SampleTime endTime = length;
       if (j < size)
         endTime = lpl.loop_point(j).time();
-      Samples<44100> end = endTime;
+      SampleTime end = endTime;
       sel.insert(block::makeBlock(begin, end));
     }
     i = j;
@@ -32,13 +32,13 @@ const block::BlockSet getTimeSelection(const LoopPointList& lpl) {
   return sel;
 }
 
-bool isCloseTo(const LoopPointList& lpl, Samples<44100> t) {
+bool isCloseTo(const LoopPointList& lpl, SampleTime t) {
   DCHECK(lpl.has_length());
   for (int i = 0; i < lpl.loop_point_size(); ++i) {
-    if (Math<Samples<44100> >::near(t, lpl.loop_point(i).time(), CLOSE_LOOPS))
+    if (Math<SampleTime >::near(t, lpl.loop_point(i).time(), CLOSE_LOOPS))
       return true;
   }
-  return Math<Samples<44100> >::near(t, lpl.length(), CLOSE_LOOPS);
+  return Math<SampleTime >::near(t, lpl.length(), CLOSE_LOOPS);
 }
 
 LoopPointList getSelected(const LoopPointList& lpl, bool selected) {
@@ -74,10 +74,10 @@ LoopPointList addLoopPoints(const LoopPointList& x, const LoopPointList& y) {
     if (!(hasX || hasY))
       break;
 
-    Samples<44100> tx = hasX ? x.loop_point(i).time() : length;
-    Samples<44100> ty = hasY ? y.loop_point(j).time() : length;
+    SampleTime tx = hasX ? x.loop_point(i).time() : length;
+    SampleTime ty = hasY ? y.loop_point(j).time() : length;
 
-    bool isNear = Math<Samples<44100> >::near(tx, ty, CLOSE_LOOPS);
+    bool isNear = Math<SampleTime >::near(tx, ty, CLOSE_LOOPS);
 
     bool useX = (!hasY || isNear || tx < ty);
     const LoopPoint& lp = useX ? x.loop_point(i++) : y.loop_point(j++);
@@ -105,7 +105,7 @@ void sort(LoopPointList* lpl) {
             CompareLoopPoints());
 }
 
-LoopPointList addLoopPoint(const LoopPointList& lpl, Samples<44100> t) {
+LoopPointList addLoopPoint(const LoopPointList& lpl, SampleTime t) {
   LoopPointList oneSegment;
   LoopPoint* lp = oneSegment.add_loop_point();
   lp->set_time(t);
@@ -114,7 +114,7 @@ LoopPointList addLoopPoint(const LoopPointList& lpl, Samples<44100> t) {
   return audio::addLoopPoints(lpl, oneSegment);
 }
 
-void addLoopPointToData(const VirtualFile& file, Samples<44100> time) {
+void addLoopPointToData(const VirtualFile& file, SampleTime time) {
   LoopPointList lpl = data::getProto<LoopPointList>(&file);
   data::setProto(audio::addLoopPoint(lpl, time), &file);
 }
@@ -128,7 +128,7 @@ int getSelectionCount(const LoopPointList& lpl) {
   return count;
 }
 
-int getSegment(const LoopPointList& lpl, Samples<44100> time) {
+int getSegment(const LoopPointList& lpl, SampleTime time) {
   int size = lpl.loop_point_size();
   for (int i = 1; ; ++i) {
     if (i >= size || time < static_cast<int64>(lpl.loop_point(i).time()))
@@ -136,7 +136,7 @@ int getSegment(const LoopPointList& lpl, Samples<44100> time) {
   }
 }
 
-void toggleSelectionSegment(LoopPointList* lpl, Samples<44100> time) {
+void toggleSelectionSegment(LoopPointList* lpl, SampleTime time) {
   if (!(lpl && lpl->loop_point_size())) {
     LOG(DFATAL) << "no loops";
     return;
@@ -145,13 +145,13 @@ void toggleSelectionSegment(LoopPointList* lpl, Samples<44100> time) {
   lp->set_selected(!lp->selected());
 }
 
-Range<Samples<44100> > contiguousSelectionContaining(const LoopPointList& lpl,
-                                                     Samples<44100> time) {
+Range<SampleTime > contiguousSelectionContaining(const LoopPointList& lpl,
+                                                     SampleTime time) {
   int i = 1;
   int size = lpl.loop_point_size();
 
   for (; i < size && time >= static_cast<int64>(lpl.loop_point(i).time()); ++i);
-  Range<Samples<44100> > range;
+  Range<SampleTime > range;
   if (lpl.loop_point(i - 1).selected()) {
     range.begin_ = lpl.loop_point(i - 1).time();
     bool isLast = (i == lpl.loop_point_size());

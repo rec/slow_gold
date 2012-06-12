@@ -6,7 +6,7 @@ namespace rec {
 namespace audio {
 
 template <typename Frame>
-bool Frames<Frame>::setLength(Samples<44100> length, bool mustReallocate) {
+bool Frames<Frame>::setLength(SampleTime length, bool mustReallocate) {
   if (length != length_ && (mustReallocate || length > allocatedLength_)) {
     allocatedLength_ = length;
     size_t size = static_cast<size_t>(sizeof(Frame) * length);
@@ -26,7 +26,7 @@ bool Frames<Frame>::setLength(Samples<44100> length, bool mustReallocate) {
 
 template <typename Sample, int CHANNELS>
 void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
-                         Samples<44100> inOffset,
+                         SampleTime inOffset,
                          float **out, int outOffset,
                          int numSamples) {
   typedef InterleavedFrame<Sample, CHANNELS> Frame;
@@ -38,8 +38,8 @@ void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
 }
 
 template <typename Frame>
-Samples<44100> Frames<Frame>::getAudioBlock(const Info& info,
-                                            Samples<44100> offset) const {
+SampleTime Frames<Frame>::getAudioBlock(const Info& info,
+                                            SampleTime offset) const {
   int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
   float** out = info.buffer->getArrayOfChannels();
   DCHECK_GE(numSamples, 0) << info.numSamples << ", " << length_ << ", "  << offset;

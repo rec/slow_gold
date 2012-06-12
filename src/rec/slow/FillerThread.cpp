@@ -19,7 +19,7 @@ using namespace rec::widget::waveform;
 static const int FILLER_THREAD_WAIT = 5;
 
 void FillerThread::setFillPositionOrJump() {
-  Samples<44100> jump = currentTime()->requestedTime();
+  SampleTime jump = currentTime()->requestedTime();
   BufferedReader* reader = bufferFiller()->reader();
   if (jump >= 0) {
     if (reader->coversTime(jump))

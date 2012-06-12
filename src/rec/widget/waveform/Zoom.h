@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_WAVEFORM_ZOOM__
 #define __REC_WIDGET_WAVEFORM_ZOOM__
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 
 namespace rec {
 namespace widget {
@@ -11,13 +11,13 @@ class Zoom;
 
 // The factor of k indicates how much wider or narrower the displayed area will
 // be after the zoom.
-void zoomScale(const VirtualFile& f, Samples<44100> length, double k);
-void zoomScaleAt(const VirtualFile& f, Samples<44100> length, Samples<44100> time, double k);
-void zoomTo(const VirtualFile& f, Samples<44100> begin, Samples<44100> end,
-            Samples<44100> length);
-void zoomOutFull(const VirtualFile& f, Samples<44100> length);
+void zoomScale(const VirtualFile& f, SampleTime length, double k);
+void zoomScaleAt(const VirtualFile& f, SampleTime length, SampleTime time, double k);
+void zoomTo(const VirtualFile& f, SampleTime begin, SampleTime end,
+            SampleTime length);
+void zoomOutFull(const VirtualFile& f, SampleTime length);
 
-void constrainZoom(Zoom* z, Samples<44100> length);
+void constrainZoom(Zoom* z, SampleTime length);
 
 }  // namespace waveform
 }  // namespace widget

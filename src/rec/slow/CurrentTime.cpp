@@ -29,7 +29,7 @@ CurrentTime::CurrentTime(Instance* i)
       followCursor_(false) {
 }
 
-void CurrentTime::setTime(Samples<44100> t) {
+void CurrentTime::setTime(SampleTime t) {
   {
     Lock l(lock());
     time_ = t;
@@ -44,7 +44,7 @@ void CurrentTime::setViewportProto(const Viewport& viewport) {
   DataListener<Viewport>::setProto(viewport, CANT_UNDO);
 }
 
-void CurrentTime::zoomToTime(Samples<44100> t) {
+void CurrentTime::zoomToTime(SampleTime t) {
   Viewport viewport;
   {
     Lock l(lock());
@@ -52,12 +52,12 @@ void CurrentTime::zoomToTime(Samples<44100> t) {
   }
 
   Zoom* zoom = viewport.mutable_zoom();
-  Samples<44100> begin = zoom->begin();
-  Samples<44100> end = zoom->has_end() ? Samples<44100>(zoom->end()) : length_;
+  SampleTime begin = zoom->begin();
+  SampleTime end = zoom->has_end() ? SampleTime(zoom->end()) : length_;
 
   // Now compute an ideal zoom for this time.
-  Samples<44100> width = end - begin;
-  Samples<44100> off = static_cast<int64>(MIN_CURSOR_RATIO_CHANGE * width);
+  SampleTime width = end - begin;
+  SampleTime off = static_cast<int64>(MIN_CURSOR_RATIO_CHANGE * width);
   if (t >= zoom->begin() && (t <= zoom->begin() + off))
     return;
 
@@ -74,7 +74,7 @@ void CurrentTime::zoomToTime(Samples<44100> t) {
 }
 
 void CurrentTime::setViewport(const Viewport& viewport) {
-  Samples<44100> time = 0;
+  SampleTime time = 0;
   bool jump = true;
 
   {
@@ -116,7 +116,7 @@ void CurrentTime::operator()(const GuiSettings& settings) {
   components()->transformController_->showMasterTune(show);
 }
 
-void CurrentTime::setCursorTime(Samples<44100> t, int index, bool isTimeCursor) {
+void CurrentTime::setCursorTime(SampleTime t, int index, bool isTimeCursor) {
   if (isTimeCursor) {
     jumpToTime(t);
   } else {
@@ -136,7 +136,7 @@ void CurrentTime::reset() {
 }
 
 
-void CurrentTime::jumpToTime(Samples<44100> time) {
+void CurrentTime::jumpToTime(SampleTime time) {
   {
     Lock l(lock());
     if (isPlaying() &&

@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/util/Listener.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/widget/status/Time.pb.h"
@@ -14,21 +14,21 @@ namespace status {
 namespace time {
 
 class TextComponent : public gui::SimpleLabel,
-                      public Listener< Samples<44100> > {
+                      public Listener<SampleTime> {
  public:
   explicit TextComponent(const Text& desc = Text::default_instance());
-  virtual void operator()(Samples<44100> time) { setTime(time); }
+  virtual void operator()(SampleTime time) { setTime(time); }
 
-  Samples<44100> getTime() const;
-  bool setTime(Samples<44100> time);
-  void setLength(Samples<44100> len) { length_ = len; }
+  SampleTime getTime() const;
+  bool setTime(SampleTime time);
+  void setLength(SampleTime len) { length_ = len; }
   void redisplay();
 
  private:
   Text description_;
-  Samples<44100> time_;
+  SampleTime time_;
   String timeDisplay_;
-  Samples<44100> length_;
+  SampleTime length_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TextComponent);

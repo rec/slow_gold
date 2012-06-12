@@ -2,7 +2,7 @@
 
 #include "rec/gui/audio/Loops.h"
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/proto/FieldOps.h"
@@ -92,11 +92,11 @@ String Loops::displayText(int column, int row) const {
     return Trans("(error)"); // TODO
   }
 
-  Samples<44100> length = Samples<44100>(viewport_.loop_points().length());
+  SampleTime length = SampleTime(viewport_.loop_points().length());
   switch (columns_.column(column).type()) {
    case TableColumn::STRING:  return str(v.string_f());
    case TableColumn::UINT32:  return String(v.uint32_f());
-   case TableColumn::TIME:    return formatTime(Samples<44100>(v.int64_f()), length,
+   case TableColumn::TIME:    return formatTime(SampleTime(v.int64_f()), length,
                                                 44100, false, true, 0);
    case TableColumn::DOUBLE:  return String(v.double_f());
    default:                   return "<unknown>";

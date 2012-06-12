@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_STATUS_DIALCOMPONENT__
 #define __REC_WIDGET_STATUS_DIALCOMPONENT__
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
 #include "rec/util/Range.h"
@@ -14,17 +14,17 @@ namespace status {
 namespace time {
 
 class DialComponent : public Component,
-                      public Listener<Samples<44100> >,
+                      public Listener<SampleTime >,
                       public DataListener<waveform::Viewport>,
                       public SettableTooltipClient {
  public:
   explicit DialComponent(const Dial& desc);
 
-  virtual void operator()(Samples<44100> t);
+  virtual void operator()(SampleTime t);
 
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
-  bool setTime(Samples<44100>);
+  bool setTime(SampleTime);
 
   static const double PI;
   static const double REDRAW_ANGLE;
@@ -38,8 +38,8 @@ class DialComponent : public Component,
   CriticalSection lock_;
   Dial description_;
 
-  Samples<44100> time_;
-  Samples<44100> length_;
+  SampleTime time_;
+  SampleTime length_;
   double zeroAngle_;
   double timeAngle_;
   double timeRatio_;

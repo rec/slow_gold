@@ -24,7 +24,7 @@ class CurrentFile : public HasInstance,
   virtual void operator()(const gui::DropFiles&);
   virtual void operator()(const VirtualFile& vf);
 
-  const Samples<44100> length() const;
+  const SampleTime length() const;
   bool empty() const { return !length(); }
   void setDataFile(data::DataFile, bool showError = true);
   void setVirtualFile(const VirtualFile&);
@@ -42,7 +42,7 @@ class CurrentFile : public HasInstance,
   CriticalSection lock_;
   widget::waveform::Viewport viewport_;
   ptr<VirtualFile> file_;
-  Samples<44100> length_;
+  SampleTime length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 

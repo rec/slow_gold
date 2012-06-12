@@ -58,7 +58,7 @@ void CurrentFile::operator()(const VirtualFile& vf) {
   setDataFile(&vf);
 }
 
-const Samples<44100> CurrentFile::length() const {
+const SampleTime CurrentFile::length() const {
   Lock l(lock_);
   return length_;
 }

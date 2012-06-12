@@ -25,12 +25,12 @@ TextComponent::TextComponent(const Text& desc)
                        "seconds and millseconds."));
 }
 
-Samples<44100> TextComponent::getTime() const {
+SampleTime TextComponent::getTime() const {
   Lock l(lock_);
   return time_;
 }
 
-bool TextComponent::setTime(Samples<44100> t) {
+bool TextComponent::setTime(SampleTime t) {
   Lock l(lock_);
   time_ = t;
   bool flash = description_.separator().flash();

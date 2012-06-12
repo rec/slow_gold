@@ -6,15 +6,15 @@ namespace audio {
 namespace {
 
 int channels(const BufferTime& bt) { return bt.buffer_->getNumChannels(); }
-Samples<44100> size(const BufferTime& bt) { return bt.buffer_->getNumSamples(); }
-Samples<44100> remaining(const BufferTime& b) { return size(b) - b.time_; }
+SampleTime size(const BufferTime& bt) { return bt.buffer_->getNumSamples(); }
+SampleTime remaining(const BufferTime& b) { return size(b) - b.time_; }
 
 struct Copier {
-  Copier(const BufferTime& from, const BufferTime& to, Samples<44100> count)
+  Copier(const BufferTime& from, const BufferTime& to, SampleTime count)
       : from_(from), to_(to), count_(count) {
   }
 
-  Samples<44100> copy() const {
+  SampleTime copy() const {
     for (int ch = 0; ch < channels(to_); ++ch)
       copy(ch);
     return count_;
@@ -39,8 +39,8 @@ struct Copier {
   }
 
   void mix(int chanFrom, int chanTo) const {
-    Samples<44100> startFrom = from_.time_;
-    Samples<44100> startTo = to_.time_;
+    SampleTime startFrom = from_.time_;
+    SampleTime startTo = to_.time_;
     for (int c = 0; c < chanTo; ++c) {
       // This probably isn't right.
       int c1 = (chanFrom * c) / chanTo;
@@ -59,13 +59,13 @@ struct Copier {
 
   const BufferTime from_;
   const BufferTime to_;
-  const Samples<44100> count_;
+  const SampleTime count_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Copier);
 };
 
-Samples<44100> restrictCount(const BufferTime& bt, Samples<44100> count) {
-  Samples<44100> remains = remaining(bt);
+SampleTime restrictCount(const BufferTime& bt, SampleTime count) {
+  SampleTime remains = remaining(bt);
   if (count <= remains)
     return count;
 
@@ -74,34 +74,34 @@ Samples<44100> restrictCount(const BufferTime& bt, Samples<44100> count) {
 
 }  // namespace
 
-Samples<44100> copy(const BufferTime& from, const BufferTime& to, Samples<44100> cnt) {
+SampleTime copy(const BufferTime& from, const BufferTime& to, SampleTime cnt) {
   return Copier(from, to, restrictCount(from, restrictCount(to, cnt))).copy();
 }
 
 #if 0
 namespace {
 
-Samples<44100> copy(bool copyFirstToSecond,
-                const BufferTime& x, const BufferTime& y, Samples<44100> c) {
+SampleTime copy(bool copyFirstToSecond,
+                const BufferTime& x, const BufferTime& y, SampleTime c) {
   return copyFirstToSecond ? copy(x, y, c) : copy(y, x, c);
 }
 
-BufferTime add(const BufferTime& bt, Samples<44100> d) {
+BufferTime add(const BufferTime& bt, SampleTime d) {
   return BufferTime(bt.buffer_, bt.time_ + d);
 }
 
-BufferTime reset(const BufferTime& bt, Samples<44100> t = 0.0) {
+BufferTime reset(const BufferTime& bt, SampleTime t = 0.0) {
   return BufferTime(bt.buffer_, t);
 }
 
 }  // namespace
 
-Samples<44100> copyCircular(const BufferTime& circ, Samples<44100> size,
-                        const BufferTime& reg, Samples<44100> count,
+SampleTime copyCircular(const BufferTime& circ, SampleTime size,
+                        const BufferTime& reg, SampleTime count,
                         bool toReg) {
-  Samples<44100> available = (size - circ.time_);
-  Samples<44100> n = std::min(available, count);
-  Samples<44100> copied = copy(toReg, circ, reg, n);
+  SampleTime available = (size - circ.time_);
+  SampleTime n = std::min(available, count);
+  SampleTime copied = copy(toReg, circ, reg, n);
   if (n < count)
     copied += copy(toReg, reset(circ), add(reg, n), count - n);
 
@@ -114,17 +114,17 @@ Samples<44100> copyCircular(const BufferTime& circ, Samples<44100> size,
   return copied;
 }
 
-Samples<44100> copyFromCircular(const BufferTime& from, Samples<44100> fromSize,
-                            const BufferTime& to, Samples<44100> count) {
+SampleTime copyFromCircular(const BufferTime& from, SampleTime fromSize,
+                            const BufferTime& to, SampleTime count) {
   return copyCircular(from, fromSize, to, count, true);
 }
 
-Samples<44100> copyToCircular(const BufferTime& from, const BufferTime& to,
-                          Samples<44100> toSize, Samples<44100> count) {
+SampleTime copyToCircular(const BufferTime& from, const BufferTime& to,
+                          SampleTime toSize, SampleTime count) {
   return copyCircular(to, toSize, from, count, false);
 }
 
-void clear(const BufferTime& bt, Samples<44100> count) {
+void clear(const BufferTime& bt, SampleTime count) {
   if (count > 0)
     bt.buffer_->clear(bt.time_, count);
 }

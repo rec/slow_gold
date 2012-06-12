@@ -1,8 +1,7 @@
-#include "rec/base/Samples.h"
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 
 namespace rec {
 
-RealTime::RealTime(const Samples<44100>& pos) : time_(pos / 44100.0) {}
+RealTime::RealTime(const SampleTime& pos) : time_(pos.toRealTime()) {}
 
 }  // namespace rec

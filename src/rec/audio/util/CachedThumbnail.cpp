@@ -13,7 +13,7 @@ CachedThumbnail::CachedThumbnail()
         thumbnail_(COMPRESSION, *format::getAudioFormatManager(), cache_) {
 }
 
-void CachedThumbnail::addBlock(Samples<44100> pos, const Info& i) {
+void CachedThumbnail::addBlock(SampleTime pos, const Info& i) {
   Lock l(lock_);
   thumbnail_.addBlock(pos, *i.buffer, i.startSample, i.numSamples);
 }

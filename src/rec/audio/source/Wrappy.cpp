@@ -10,7 +10,7 @@ Wrappy::Wrappy(PositionableAudioSource* s) : position_(0), prepared_(false) {
   setSource(s);
 }
 
-Samples<44100> Wrappy::mod(Samples<44100> x) const {
+SampleTime Wrappy::mod(SampleTime x) const {
   Lock l(lock_);
   int64 length = getTotalLength();
   return length ? util::mod<int64>(x, length) : 0;

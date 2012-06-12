@@ -36,8 +36,8 @@ class Instance {
   void postStartup();
 
   const VirtualFile file() const;
-  Samples<44100> time() const;
-  Samples<44100> length() const;
+  SampleTime time() const;
+  SampleTime length() const;
   bool isPlaying() const;
   void updateGui();
   bool empty() const;

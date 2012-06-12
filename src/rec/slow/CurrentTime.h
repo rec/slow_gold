@@ -2,7 +2,7 @@
 #define __REC_SLOW_CURRENTTIME__
 
 #include "rec/audio/AudioSettings.pb.h"
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/block/Block.h"
@@ -16,41 +16,41 @@ namespace slow {
 class CurrentTime : public HasInstance,
                     public DataListener<widget::waveform::Viewport>,
                     public GlobalDataListener<GuiSettings>,
-                    public Listener< Samples<44100> > {
+                    public Listener<SampleTime> {
  public:
   explicit CurrentTime(Instance* i);
   virtual ~CurrentTime() {}
 
-  void setTime(Samples<44100>);
+  void setTime(SampleTime);
   void setViewport(const widget::waveform::Viewport&);
 
-  virtual void operator()(Samples<44100> t) { setTime(t); }
+  virtual void operator()(SampleTime t) { setTime(t); }
   virtual void operator()(const GuiSettings&);
   virtual void operator()(const widget::waveform::Viewport& vp) {
     setViewport(vp);
   }
 
-  void setCursorTime(Samples<44100> time, int index, bool isTimeCursor);
+  void setCursorTime(SampleTime time, int index, bool isTimeCursor);
   const block::BlockSet timeSelection() const { Lock l(lock()); return timeSelection_; }
-  Samples<44100> length() const { Lock l(lock()); return length_; }
-  Samples<44100> time() const { Lock l(lock()); return time_; }
-  Samples<44100> requestedTime() const { Lock l(lock()); return requestedTime_; }
-  void jumpToTime(Samples<44100> pos);
+  SampleTime length() const { Lock l(lock()); return length_; }
+  SampleTime time() const { Lock l(lock()); return time_; }
+  SampleTime requestedTime() const { Lock l(lock()); return requestedTime_; }
+  void jumpToTime(SampleTime pos);
 
   void reset();
 
   const CriticalSection& lock() const { return instance_->lock_; }
   void zoomToCurrentTime() { zoomToTime(time()); }
-  void zoomToTime(Samples<44100>);
+  void zoomToTime(SampleTime);
 
  private:
-  void zoomToCursor(Samples<44100> t);
+  void zoomToCursor(SampleTime t);
   void setViewportProto(const widget::waveform::Viewport&);
 
   block::BlockSet timeSelection_;
-  Samples<44100> time_;
-  Samples<44100> requestedTime_;
-  Samples<44100> length_;
+  SampleTime time_;
+  SampleTime requestedTime_;
+  SampleTime length_;
   bool followCursor_;
   bool isDragging_;
 

@@ -2,7 +2,7 @@
 #define __REC_GUI_APP_TIMECONTROLLER__
 
 #include "rec/audio/stretch/Stretch.pb.h"
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/data/Data.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/HasThread.h"
@@ -13,15 +13,15 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class TimeController : public Layout, public Listener< Samples<44100> >,
+class TimeController : public Layout, public Listener<SampleTime>,
                        public HasThread {
  public:
   TimeController();
   virtual ~TimeController() {}
 
   virtual void operator()(const rec::audio::stretch::Stretch&);
-  virtual void operator()(Samples<44100>);
-  void setLength(Samples<44100>);
+  virtual void operator()(SampleTime);
+  void setLength(SampleTime);
 
  private:
   CriticalSection lock_;

@@ -35,7 +35,7 @@ AudioThumbnail* BufferFiller::thumbnail() {
   return thumbnail_->thumbnail();
 }
 
-Samples<44100> BufferFiller::setReader(const VirtualFile& f,
+SampleTime BufferFiller::setReader(const VirtualFile& f,
                                        AudioFormatReader* reader) {
   Lock l(lock_);
   DCHECK(reader);

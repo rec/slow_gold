@@ -10,7 +10,7 @@ using namespace rec::util::block;
 
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
   BlockSet sel = selection();
-  Samples<44100> pos = getNextReadPosition();
+  SampleTime pos = getNextReadPosition();
   if (!sel.begin()->second) {
     clear(audioInfo);
     return;

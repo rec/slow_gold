@@ -1,6 +1,6 @@
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/audio/Audio.h"
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
@@ -15,7 +15,7 @@ namespace rec {
 
 // Skin
 
-static const Samples<44100> SMALLEST_TIME_SAMPLES = 10000;
+static const SampleTime SMALLEST_TIME_SAMPLES = 10000;
 static const int CAPTION_PADDING_INTERNAL = 10;
 static const int CAPTION_OFFSET = 10000;
 static const int CAPTION_PADDING = 2;
@@ -77,18 +77,18 @@ Component* Cursor::getCaption() {
   return caption_.get();
 }
 
-Samples<44100> Cursor::getTime() const {
+SampleTime Cursor::getTime() const {
   Lock l(lock());
   return time_;
 }
 
-void Cursor::operator()(Samples<44100> time) {
+void Cursor::operator()(SampleTime time) {
   Lock l(lock());
-  if (!waveform_->isDraggingCursor()) 
+  if (!waveform_->isDraggingCursor())
     thread::callAsync(this, &Cursor::setTime, time);
 }
 
-bool Cursor::setDragTime(Samples<44100> t) {
+bool Cursor::setDragTime(SampleTime t) {
   Lock l(lock());
 
   if (!isTimeCursor()) {
@@ -122,7 +122,7 @@ bool Cursor::setDragTime(Samples<44100> t) {
   return true;
 }
 
-void Cursor::setTime(Samples<44100> time) {
+void Cursor::setTime(SampleTime time) {
   {
     Lock l(lock());
     time_ = time;
@@ -259,7 +259,7 @@ void Cursor::setTooltip(const String& t) {
 }
 
 Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,
-                   Samples<44100> time) {
+                   SampleTime time) {
   ptr<Cursor> cursor(new Cursor(cp, w, index));
   cursor->init();
   cursor->setTime(time);

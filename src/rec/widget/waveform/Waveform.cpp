@@ -150,7 +150,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints,
                              const block::BlockSet& dirty) {
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
-    Samples<44100> time = loopPoints.loop_point(i).time();
+    SampleTime time = loopPoints.loop_point(i).time();
     Cursor* c;
     if (i < cursors_.size()) {
       c = cursors_[i];

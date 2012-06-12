@@ -9,7 +9,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Timer : public Wrappy, public Broadcaster<Samples<44100> > {
+class Timer : public Wrappy, public Broadcaster<SampleTime > {
  public:
   explicit Timer(PositionableAudioSource* s) : Wrappy(s), thread_(NULL) {}
 

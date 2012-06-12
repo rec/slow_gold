@@ -23,18 +23,18 @@ namespace {
 
 using namespace rec::widget::waveform;
 
-const Samples<44100> MAX_JUMP_TIME = 44100;
+const SampleTime MAX_JUMP_TIME = 44100;
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   Viewport viewport = data::getProto<Viewport>(snapshot->instance_->file());
   snapshot->viewport_.CopyFrom(viewport);
   snapshot->loops_ = snapshot->viewport_.mutable_loop_points();  // TODO: hacky!
-  Samples<44100> time = snapshot->loops_->loop_point(segment).time();
+  SampleTime time = snapshot->loops_->loop_point(segment).time();
   snapshot->instance_->currentTime_->jumpToTime(time);
 }
 
 void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
-  Samples<44100> time = snap->instance_->time();
+  SampleTime time = snap->instance_->time();
   int size = snap->loops_->loop_point_size();
   int segment = audio::getSegment(*snap->loops_, time);
   int p = pos.toIndex(segment, size);

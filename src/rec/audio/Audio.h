@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_AUDIO__
 #define __REC_AUDIO_AUDIO__
 
-#include "rec/base/Samples.h"
+#include "rec/base/SampleTime.h"
 #include "rec/util/Range.h"
 
 namespace rec {

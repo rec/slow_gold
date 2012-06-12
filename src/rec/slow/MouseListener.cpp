@@ -26,7 +26,7 @@ namespace slow {
 
 // Skin
 
-static const Samples<44100> DRAG_PAD = audio::CLOSE_LOOPS;
+static const SampleTime DRAG_PAD = audio::CLOSE_LOOPS;
 static const int DRAG_TWEAK = 5;
 static const double WHEEL_RATIO = 4.0;
 static const double SMALL_RATIO = 0.1;
@@ -48,13 +48,13 @@ namespace {
 
 typedef widget::waveform::OutlinedCursorLabel Label;
 
-void toggleSelectionSegment(const VirtualFile& file, Samples<44100> t) {
+void toggleSelectionSegment(const VirtualFile& file, SampleTime t) {
   data::Opener<Viewport> opener(data::getData<Viewport>(&file));
   audio::toggleSelectionSegment(opener.mutable_get()->mutable_loop_points(), t);
 }
 
 void zoom(const Instance& instance, const MouseEvent& e,
-          Samples<44100> time, double increment) {
+          SampleTime time, double increment) {
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
   widget::waveform::zoomScaleAt(instance.file(), instance.length(), time,
@@ -126,19 +126,19 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
   const Waveform& waveform = *components()->waveform_;
   const WaveformModel& model = components()->waveform_->model();
   if (e.event_->eventComponent == &waveform) {
-    Samples<44100> time = model.xToTime(e.event_->x);
+    SampleTime time = model.xToTime(e.event_->x);
     double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
     zoom(*instance_, *e.event_, time, inc);
   }
 }
 
-void MouseListener::addLoopPoint(Samples<44100> time) {
+void MouseListener::addLoopPoint(SampleTime time) {
   widget::waveform::addLoopPointToViewport(file(), time);
   toggleAddLoopPointMode();
 }
 
 void MouseListener::clickWaveform(const MouseEvent& e, Waveform* waveform) {
-  Samples<44100> time = waveform->model().xToTime(e.x);
+  SampleTime time = waveform->model().xToTime(e.x);
   dragMods_ = e.mods;
   Mode::Action action = getClickAction();
   if (action == Mode::DRAG)
@@ -187,7 +187,7 @@ void MouseListener::dragCursor(const MouseEvent& e,
   components()->waveform_->setIsDraggingCursor(true);
   if (!near(cursor->getTime(), 0, 44)) {
     int cursorX = e.getDistanceFromDragStartX() + cursorDragStart_ + DRAG_TWEAK;
-    Samples<44100> t = cursorRestrict_.restrict(model.xToTime(cursorX));
+    SampleTime t = cursorRestrict_.restrict(model.xToTime(cursorX));
     if (cursor->setDragTime(t)) {
       if (cursor->isTimeCursor()) {
         currentTime()->jumpToTime(t);
@@ -204,15 +204,15 @@ void MouseListener::dragCursor(const MouseEvent& e,
 void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
   Mode::Action action = getClickAction();
   if (action == Mode::DRAG) {
-    Samples<44100> dt = static_cast<int64>(e.getDistanceFromDragStartX() /
+    SampleTime dt = static_cast<int64>(e.getDistanceFromDragStartX() /
                                            waveform->model().pixelsPerSample());
     Viewport viewport(DataListener<Viewport>::getProto());
     Zoom* zoom = viewport.mutable_zoom();
-    Samples<44100> len = length();
-    Samples<44100> end = zoom->has_end() ? Samples<44100>(zoom->end()) : len;
-    Samples<44100> size = end - zoom->begin();
-    Samples<44100> begin = std::max(waveformDragStart_ - dt, Samples<44100>(0));
-    Samples<44100> e2 = std::min(len, begin + size);
+    SampleTime len = length();
+    SampleTime end = zoom->has_end() ? SampleTime(zoom->end()) : len;
+    SampleTime size = end - zoom->begin();
+    SampleTime begin = std::max(waveformDragStart_ - dt, SampleTime(0));
+    SampleTime e2 = std::min(len, begin + size);
     zoom->set_begin(e2 - size);
     zoom->set_end(end);
 

@@ -172,11 +172,11 @@ void Instance::updateGui() {
   guiListener_->update();
 }
 
-Samples<44100> Instance::length() const {
+SampleTime Instance::length() const {
   return currentFile_->length();
 }
 
-Samples<44100> Instance::time() const {
+SampleTime Instance::time() const {
   return currentTime_->time();
 }
 

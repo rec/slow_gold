@@ -8,9 +8,9 @@ namespace audio {
 
 struct BufferTime {
   Buffer* buffer_;
-  Samples<44100> time_;
+  SampleTime time_;
 
-  BufferTime(Buffer* b, Samples<44100> t) : buffer_(b), time_(t) {}
+  BufferTime(Buffer* b, SampleTime t) : buffer_(b), time_(t) {}
   BufferTime() {}
 
  private:
@@ -18,10 +18,10 @@ struct BufferTime {
 };
 
 // Returns the number of samples actually copied.
-Samples<44100> copy(const BufferTime& from, const BufferTime& to, Samples<44100> count);
+SampleTime copy(const BufferTime& from, const BufferTime& to, SampleTime count);
 
 // Clear samples.
-void clear(const BufferTime& bt, Samples<44100> c);
+void clear(const BufferTime& bt, SampleTime c);
 
 }  // namespace audio
 }  // namespace rec

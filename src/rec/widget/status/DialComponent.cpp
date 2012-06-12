@@ -26,7 +26,7 @@ static const double ALMOST_ZERO = 0.5 / 360.0;
 const double DialComponent::PI = 3.14159265358979323846264;
 const double DialComponent::REDRAW_ANGLE = 2.0 * DialComponent::PI * 0.001;
 const double SMALLEST_REAL_LENGTH = 0.1;
-const Samples<44100> SMALLEST_TIME_CHANGE = 44;
+const SampleTime SMALLEST_TIME_CHANGE = 44;
 
 DialComponent::DialComponent(const Dial& desc)
     : Component(str(desc.widget().name())),
@@ -41,12 +41,12 @@ DialComponent::DialComponent(const Dial& desc)
 
 static const bool USE_CONTIGUOUS_SEGMENTS = true;
 
-void DialComponent::operator()(Samples<44100> time) {
+void DialComponent::operator()(SampleTime time) {
   if (setTime(time))
     repaint();
 }
 
-bool DialComponent::setTime(Samples<44100> time) {
+bool DialComponent::setTime(SampleTime time) {
   {
     Lock l(lock_);
     if (false && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
@@ -56,7 +56,7 @@ bool DialComponent::setTime(Samples<44100> time) {
       return false;
 
     time_ = time;
-    Range<Samples<44100> > range;
+    Range<SampleTime > range;
 
     if (USE_CONTIGUOUS_SEGMENTS)
       range = audio::contiguousSelectionContaining(loops_, time);
