@@ -97,7 +97,7 @@ String Loops::displayText(int column, int row) const {
    case TableColumn::STRING:  return str(v.string_f());
    case TableColumn::UINT32:  return String(v.uint32_f());
    case TableColumn::TIME:    return formatTime(SampleTime(v.int64_f()), length,
-                                                44100, false, true, 0);
+                                                false, true, 0);
    case TableColumn::DOUBLE:  return String(v.double_f());
    default:                   return "<unknown>";
   }

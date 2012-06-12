@@ -35,10 +35,10 @@ const block::BlockSet getTimeSelection(const LoopPointList& lpl) {
 bool isCloseTo(const LoopPointList& lpl, SampleTime t) {
   DCHECK(lpl.has_length());
   for (int i = 0; i < lpl.loop_point_size(); ++i) {
-    if (Math<SampleTime >::near(t, lpl.loop_point(i).time(), CLOSE_LOOPS))
+    if (Math<SampleTime >::near(t, lpl.loop_point(i).time(), closeLoops()))
       return true;
   }
-  return Math<SampleTime >::near(t, lpl.length(), CLOSE_LOOPS);
+  return Math<SampleTime >::near(t, lpl.length(), closeLoops());
 }
 
 LoopPointList getSelected(const LoopPointList& lpl, bool selected) {
@@ -77,7 +77,7 @@ LoopPointList addLoopPoints(const LoopPointList& x, const LoopPointList& y) {
     SampleTime tx = hasX ? x.loop_point(i).time() : length;
     SampleTime ty = hasY ? y.loop_point(j).time() : length;
 
-    bool isNear = Math<SampleTime >::near(tx, ty, CLOSE_LOOPS);
+    bool isNear = Math<SampleTime >::near(tx, ty, closeLoops());
 
     bool useX = (!hasY || isNear || tx < ty);
     const LoopPoint& lp = useX ? x.loop_point(i++) : y.loop_point(j++);

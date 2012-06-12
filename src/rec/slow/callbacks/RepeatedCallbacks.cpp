@@ -23,7 +23,7 @@ namespace {
 
 using namespace rec::widget::waveform;
 
-const SampleTime MAX_JUMP_TIME = 44100;
+const RealTime MAX_JUMP_TIME = 1.0;
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   Viewport viewport = data::getProto<Viewport>(snapshot->instance_->file());
@@ -41,7 +41,8 @@ void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
 
   // Special case for "jump back";
   if (pos == command::CommandIDEncoder::PREVIOUS &&
-      (time - snap->loops_->loop_point(segment).time()) >= MAX_JUMP_TIME) {
+      (time - snap->loops_->loop_point(segment).time()) >=
+      SampleTime(MAX_JUMP_TIME)) {
     p = segment;
   }
 

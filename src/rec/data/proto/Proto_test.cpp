@@ -13,7 +13,7 @@ namespace data {
 
 TEST(Proto, Apply) {
   LoopPointList loop_point;
-  loop_point.add_loop_point()->set_time(23 * 44100);
+  loop_point.add_loop_point()->set_time(23);
 
   Address address;
   ASSERT_TRUE(fillFromDefault("part { name: \"loop_point\" } "
@@ -21,7 +21,7 @@ TEST(Proto, Apply) {
                               "part { name: \"time\"}", &address));
   Value v = getValue(address, loop_point);
   EXPECT_TRUE(v.has_uint32_f());
-  EXPECT_EQ(v.uint32_f(), 23.5);
+  EXPECT_EQ(v.uint32_f(), 23);
 }
 
 }  // namespace data

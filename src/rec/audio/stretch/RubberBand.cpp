@@ -25,8 +25,6 @@ static const int DEATH_OPTIONS =
   0
 ;
 
-static const int RATE = 44100;
-
 RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
     : Implementation(source), detuneCents_(0.0) {
   CHECK_DDD(7134, 1893, int32, int16);
@@ -63,11 +61,9 @@ void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     } else {
       float** input;
       int chunkSize = chunkSize_;
-      static bool USE_PUSH = true;
-      if (USE_PUSH) {
-        if (size_t required = stretcher_->getSamplesRequired())
-          chunkSize = required;
-      }
+      if (size_t required = stretcher_->getSamplesRequired())
+        chunkSize = required;
+
       {
         ScopedUnlock m(lock_);
         input = getSourceSamples(chunkSize);
@@ -88,7 +84,8 @@ void RubberBand::setStretch(const Stretch& stretch) {
   double ps = pitchScale(stretch, detuneCents_);
 
   if (!stretcher_) {
-    stretcher_.reset(new RubberBandStretcher(RATE, channels_, OPTIONS, tr, ps));
+    stretcher_.reset(new RubberBandStretcher(stretch.sample_rate(), channels_,
+                                             OPTIONS, tr, ps));
     chunkSize_ = stretch.chunk_size();
     maxProcessSize_ = stretch.max_process_size();
     stretcher_->setMaxProcessSize(maxProcessSize_);

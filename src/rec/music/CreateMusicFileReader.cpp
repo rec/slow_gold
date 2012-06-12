@@ -125,7 +125,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
       errorDetails_ = String::formatted(EMPTY_FILE_FULL,
                                         c_str(file::getFullDisplayName(file)));
       reader_.reset();
-    } else if (length < audio::MINIMUM_FILE_SIZE) {
+    } else if (length < audio::minimumFileSize()) {
       errorTitle_ = FILE_TOO_SMALL;
       String msg = "open, " + file::getFullDisplayName(file) + ", ";
       errorDetails_ = String::formatted(FILE_TOO_SMALL_FULL, c_str(msg));

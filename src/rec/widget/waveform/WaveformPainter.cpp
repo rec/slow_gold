@@ -69,8 +69,8 @@ void WaveformPainter::drawWaveform(Painter& p,
 
     juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
-    double first = static_cast<double>(draw.first) / 44100.0;
-    double second = static_cast<double>(draw.second) / 44100.0;
+    double first = RealTime(SampleTime(draw.first));
+    double second = RealTime(SampleTime(draw.second));
     if (model_.description().parallel_waveforms() ||
         model_.description().layout() == WaveformProto::PARALLEL) {
       for (int i = 0; i < channels; ++i) {
@@ -85,14 +85,14 @@ void WaveformPainter::drawWaveform(Painter& p,
   }
 }
 
-void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime >& r) {
+void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
   SampleTime width = r.size();
   if (width < SMALLEST_TIME_SAMPLES) {
     LOG_FIRST_N(ERROR, 4) << "Nothing on screen! " << width;
     return;
   }
-  double seconds = pow(10.0, floor(log10(width / 44100.0)));
-  double samples = seconds * 44100.0;
+  double seconds = pow(10.0, floor(log10(width.toRealTime())));
+  double samples = seconds * SampleTime::getSampleRate();
 
   int b = static_cast<int>(ceil(r.begin_ / samples));
   int e = static_cast<int>(r.end_ / samples);
@@ -103,7 +103,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime >& r) {
   else if (diff > 15)
     samples *= 5.0;
 
-  if (samples > 10.0 * 44100)
+  if (samples > SampleTime(10.0))
     samples *= 1.2;
 
   b = static_cast<int>(ceil(r.begin_ / samples));
@@ -111,11 +111,11 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime >& r) {
 
   float h = static_cast<float>(waveform_->getHeight());
   int decimals = 0;
-  if (samples < 0.01 * 44100.0)
+  if (samples < SampleTime(0.01))
     decimals = 3;
-  else if (samples < 0.1 * 44100.0)
+  else if (samples < SampleTime(0.1))
     decimals = 2;
-  else if (samples < 1 * 44100.0)
+  else if (samples < SampleTime(1.0))
     decimals = 1;
 
   g.setFont(10);
@@ -129,7 +129,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime >& r) {
       g.drawVerticalLine(x, 0, h);
     }
 
-    String s = formatTime(time, model_.length(), 44100, false, false, decimals);
+    String s = formatTime(time, model_.length(), false, false, decimals);
     g.setColour(juce::Colours::black);
     g.drawText(s, i ? x - GRID_TEXT_WIDTH / 2 : x - GRID_TEXT_WIDTH / 4,
                model_.description().show_times_at_top() ? GRID_TEXT_PAD :

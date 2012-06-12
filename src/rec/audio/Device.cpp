@@ -40,7 +40,7 @@ void Device::shutdown() {
 void Device::setSampleRateFromDevice() {
   AudioDeviceManager::AudioDeviceSetup setup;
   manager_.getAudioDeviceSetup(setup);
-  SampleTime rate = static_cast<int64>(setup.sampleRate);
+  int rate = static_cast<int>(setup.sampleRate);
   if (!rate) {
     // TODO: default rate?  see
     // http://www.rawmaterialsoftware.com/viewtopic.php?f=2&t=9359

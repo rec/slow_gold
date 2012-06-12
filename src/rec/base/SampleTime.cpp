@@ -6,7 +6,7 @@ namespace {
 
 struct SamplesPerSecond {
   CriticalSection lock_;
-  int64 sampleRate_;
+  int sampleRate_;
 };
 
 inline SamplesPerSecond* getSPS() {
@@ -16,18 +16,22 @@ inline SamplesPerSecond* getSPS() {
 
 }  // namespace
 
-int64 SampleTime::getSampleRate() {
+int SampleTime::getSampleRate() {
   Lock l(getSPS()->lock_);
   return getSPS()->sampleRate_;
 }
 
-void SampleTime::setSampleRate(int64 st) {
+void SampleTime::setSampleRate(int st) {
   Lock l(getSPS()->lock_);
   LOG(INFO) << "Setting sample rate to " << st;
   getSPS()->sampleRate_ = st;
 }
 
 SampleTime::SampleTime(RealTime t)
+    : position_(static_cast<int64>(getSampleRate() * t)) {
+}
+
+SampleTime::SampleTime(double t)
     : position_(static_cast<int64>(getSampleRate() * t)) {
 }
 

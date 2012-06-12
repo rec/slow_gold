@@ -13,7 +13,11 @@ typedef PositionableAudioSource Source;
 
 typedef vector<float> LevelVector;
 
-const int MINIMUM_FILE_SIZE = 44100;
+const RealTime MINIMUM_FILE_SIZE = 1.0;
+
+inline SampleTime minimumFileSize() {
+  return SampleTime(MINIMUM_FILE_SIZE);
+}
 
 namespace transport {
 

@@ -190,7 +190,7 @@ class SaveThread : public ThreadWithProgressWindow {
     }
 
     setProgress(0.0);
-    source_->prepareToPlay(COPY_BLOCK_SIZE, 44100.0);
+    source_->prepareToPlay(COPY_BLOCK_SIZE, SampleTime::getSampleRate());
     String name = file_.getFileName();
     setStatusMessage(String::formatted(SAVING_FILE, c_str(name)));
 
@@ -275,7 +275,7 @@ void doSaveFile(Instance* instance, bool useSelection) {
     instance->player_->getSelectionLength() : SampleTime(s->getTotalLength());
 
 
-  if (len <= audio::MINIMUM_FILE_SIZE) {
+  if (len <= audio::minimumFileSize()) {
     // TODO: this code duplicates code in CreateMusicFileReader.
     String e = String::formatted(music::FILE_TOO_SMALL_FULL, "save");
     AlertWindow::showMessageBox(AlertWindow::InfoIcon, music::FILE_TOO_SMALL,

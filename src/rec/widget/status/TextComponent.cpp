@@ -34,7 +34,7 @@ bool TextComponent::setTime(SampleTime t) {
   Lock l(lock_);
   time_ = t;
   bool flash = description_.separator().flash();
-  String timeDisplay = formatTime(time_, length_, 44100, flash);
+  String timeDisplay = formatTime(time_, length_, flash);
 
   bool res = (timeDisplay == timeDisplay_);
   timeDisplay_ = timeDisplay;

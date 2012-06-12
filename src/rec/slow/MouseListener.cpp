@@ -26,7 +26,6 @@ namespace slow {
 
 // Skin
 
-static const SampleTime DRAG_PAD = audio::CLOSE_LOOPS;
 static const int DRAG_TWEAK = 5;
 static const double WHEEL_RATIO = 4.0;
 static const double SMALL_RATIO = 0.1;
@@ -175,9 +174,11 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
     int i = cursor->index();
     Viewport vp = data::getProto<Viewport>(file());
     const LoopPointList& loops = vp.loop_points();
-    cursorRestrict_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) + DRAG_PAD;
-    cursorRestrict_.end_ = -DRAG_PAD + ((i >= loops.loop_point_size() - 1) ?
-                                        loops.length() : loops.loop_point(i + 1).time());
+    cursorRestrict_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) +
+      audio::closeLoops();
+    cursorRestrict_.end_ = ((i >= loops.loop_point_size() - 1) ?
+                            loops.length() : loops.loop_point(i + 1).time()) -
+     audio::closeLoops();
   }
 }
 

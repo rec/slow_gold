@@ -9,15 +9,16 @@ namespace util {
 
 inline const String formatTime(SampleTime time,
                                SampleTime mTime,
-                               int sampleRate,
                                bool flash = false,
                                bool leadingZeros = true,
                                int decimals = 3) {
   SampleTime maxTime = std::max(time, mTime);
+  int sampleRate = static_cast<int>(SampleTime::getSampleRate());
+
   bool displayHours = (maxTime >= 3600 * sampleRate);
 
   int frac = static_cast<int>(mod(time.get(), sampleRate));
-  int sec = static_cast<int>((time - frac).toRealTime(44100));
+  int sec = static_cast<int>((time - frac).toRealTime());
   double fraction = frac / (1.0 * sampleRate);
 
   int minutes = sec / 60;

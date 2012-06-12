@@ -21,7 +21,8 @@ class Timer : public Wrappy, public Broadcaster<SampleTime > {
 
   virtual void setNextReadPosition(int64 time) {
     DCHECK_GE(time, 0);
-    DCHECK_LE(time, 60 * 60 * 10 * 44100);
+    static RealTime TEN_HOURS(60 * 60 * 10.0);
+    DCHECK_LE(time, SampleTime(TEN_HOURS));
     Wrappy::setNextReadPosition(time);
     if (thread_)
       thread_->notify();

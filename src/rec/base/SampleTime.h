@@ -41,25 +41,21 @@ struct SampleTime {
     return static_cast<double>(position_) / static_cast<double>(sampleRate);
   }
 
-  static int64 getSampleRate();
-  static void setSampleRate(int64);
+  static int getSampleRate();
+  static void setSampleRate(int);
 
   RealTime toRealTime() const {
     return static_cast<double>(position_) / getSampleRate();
   }
 
-  SampleTime(RealTime time);
+  explicit SampleTime(RealTime time);
+  explicit SampleTime(double time);
 
   // TODO: we shouldn't need this, but Juce sometimes wants ints.  Bug Jules!
   int toInt() const { return static_cast<int>(position_); }
 
  private:
   int64 position_;
-
- private:
-  // Disallow these two constructors.
-  SampleTime(float time);
-  SampleTime(double time);
 
   JUCE_LEAK_DETECTOR(SampleTime);
 };

@@ -19,7 +19,9 @@ LoopPointList cutSelected(const LoopPointList& loops, bool selected);
 LoopPointList addLoopPoints(const LoopPointList&, const LoopPointList&);
 LoopPointList addLoopPoint(const LoopPointList&, SampleTime);
 
-static const SampleTime CLOSE_LOOPS = 44100 / 20;
+inline SampleTime closeLoops() {
+  return SampleTime(0.05);
+}
 
 void sort(LoopPointList*);
 
@@ -32,7 +34,7 @@ int getSegment(const LoopPointList&, SampleTime);
 void toggleSelectionSegment(LoopPointList*, SampleTime);
 
 Range<SampleTime > contiguousSelectionContaining(const LoopPointList&,
-                                                     SampleTime);
+                                                 SampleTime);
 
 }  // namespace audio
 }  // namespace rec

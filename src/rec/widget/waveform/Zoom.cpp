@@ -27,7 +27,7 @@ Zoom makeZoom(const Zoom& z, SampleTime length, SampleTime t,
   SampleTime b = zoom.begin();
   SampleTime e = zoom.has_end() ? zoom.end() : length.get();
 
-  if (k >= 1.0 || k * (e - b) >= audio::MINIMUM_FILE_SIZE) {
+  if (k >= 1.0 || k * (e - b) >= audio::minimumFileSize()) {
     int64 begin = static_cast<int64>(k * b + (1.0 - k) * t);
     int64 end = static_cast<int64>(k * e + (1.0 - k) * t);
     //DCHECK_LE(0, end) << k << ", "
@@ -60,7 +60,7 @@ void constrainZoom(Zoom* z, SampleTime length) {
   if (z->end() > length || !z->has_end())
     z->set_end(length);
 
-  SampleTime under = audio::MINIMUM_FILE_SIZE - (z->end() - z->begin());
+  SampleTime under = audio::minimumFileSize() - (z->end() - z->begin());
   if (under > 0) {
     SampleTime end = z->end() + under;
     if (end < length)
