@@ -84,8 +84,8 @@ void RubberBand::setStretch(const Stretch& stretch) {
   double ps = pitchScale(stretch, detuneCents_);
 
   if (!stretcher_) {
-    stretcher_.reset(new RubberBandStretcher(stretch.sample_rate(), channels_,
-                                             OPTIONS, tr, ps));
+    stretcher_.reset(new RubberBandStretcher(static_cast<size_t>(stretch.sample_rate()),
+                                             channels_, OPTIONS, tr, ps));
     chunkSize_ = stretch.chunk_size();
     maxProcessSize_ = stretch.max_process_size();
     stretcher_->setMaxProcessSize(maxProcessSize_);

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="o6AK9dhwL" name="tests">
+  <MAINGROUP id="PqWkvqOa5" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -125,6 +125,10 @@
                   id="UX2GqV2Co" name="RawFormatWriter.h" resource="0"/>
           </GROUP>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/audio/SampleRate.cpp" id="kMECgbzWD"
+              name="SampleRate.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/audio/SampleRate.h" id="zho8h94gX"
+              name="SampleRate.h" resource="0"/>
         <GROUP id="b8BqRCwS0" name="source">
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="INckdPuI1"
                 name="Empty.h" resource="0"/>
@@ -249,8 +253,6 @@
               name="RealTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/RealTime.h" id="F7kxwTmOD"
               name="RealTime.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/Samples.h" id="hanFz3Tdo"
-              name="Samples.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/base/SampleTime.cpp" id="hF2q87L4w"
               name="SampleTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/SampleTime.h" id="uOzgtvTXa"
@@ -1551,7 +1553,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="GuwpwnPAm" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="orlbZ1nQ9" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

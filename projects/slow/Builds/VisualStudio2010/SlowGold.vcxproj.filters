@@ -532,6 +532,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp">
       <Filter>SlowGold\rec\audio\format\raw</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\SampleRate.cpp">
+      <Filter>SlowGold\rec\audio</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp">
       <Filter>SlowGold\rec\audio\source</Filter>
     </ClCompile>
@@ -2571,6 +2574,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h">
       <Filter>SlowGold\rec\audio\format\raw</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\SampleRate.h">
+      <Filter>SlowGold\rec\audio</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h">
       <Filter>SlowGold\rec\audio\source</Filter>
     </ClInclude>
@@ -2677,9 +2683,6 @@
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h">
-      <Filter>SlowGold\rec\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\base\Samples.h">
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\SampleTime.h">
