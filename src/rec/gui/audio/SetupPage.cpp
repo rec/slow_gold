@@ -33,6 +33,7 @@ void SetupPage::show(Component* comp) {
                                       comp, juce::Colours::white, true);
 
   device_->saveState();
+  device_->setSamplesPerSecondFromDevice();
 }
 
 void SetupPage::translateAll() {

@@ -1,5 +1,7 @@
 #include "rec/audio/Device.h"
 #include "rec/app/Files.h"
+#include "rec/base/SampleTime.h"
+
 
 namespace rec {
 namespace audio {
@@ -19,6 +21,8 @@ Device::Device() {
   if (err.length())
     LOG(DFATAL) << "Couldn't initialize audio::Device, error " << str(err);
   setupPage_.reset(new SetupPage(this));
+
+  setSamplesPerSecondFromDevice();
 }
 
 void Device::saveState() {
@@ -31,6 +35,20 @@ void Device::saveState() {
 
 void Device::shutdown() {
   manager_.closeAudioDevice();
+}
+
+void Device::setSamplesPerSecondFromDevice() {
+  AudioDeviceManager::AudioDeviceSetup setup;
+  manager_.getAudioDeviceSetup(setup);
+  SampleTime rate = static_cast<int64>(setup.sampleRate);
+  if (!rate) {
+    // TODO: default rate?  see
+    // http://www.rawmaterialsoftware.com/viewtopic.php?f=2&t=9359
+    LOG(ERROR) << "Zero sampleRate: using default";
+    rate = 44100;
+  }
+
+  SampleTime::setSamplesPerSecond(rate);
 }
 
 }  // namespace audio

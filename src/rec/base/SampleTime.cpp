@@ -28,6 +28,7 @@ SampleTime SampleTime::getSamplesPerSecond() {
 
 void SampleTime::setSamplesPerSecond(SampleTime st) {
   Lock l(getSPS()->lock_);
+  LOG(INFO) << "Setting sample rate to " << st;
   getSPS()->samplesPerSecond_ = st;
 }
 
