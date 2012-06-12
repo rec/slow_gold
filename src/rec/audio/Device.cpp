@@ -1,4 +1,5 @@
 #include "rec/audio/Device.h"
+#include "rec/audio/SampleRate.h"
 #include "rec/app/Files.h"
 #include "rec/base/SampleTime.h"
 
@@ -48,7 +49,7 @@ void Device::setSampleRateFromDevice() {
     rate = 44100;
   }
 
-  SampleTime::setSampleRate(rate);
+  setSampleRate(rate);
 }
 
 }  // namespace audio

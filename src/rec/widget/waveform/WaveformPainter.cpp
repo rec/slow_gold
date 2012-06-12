@@ -1,5 +1,6 @@
 #include "rec/widget/waveform/WaveformPainter.h"
 
+#include "rec/audio/SampleRate.h"
 #include "rec/util/FormatTime.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -92,7 +93,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
     return;
   }
   double seconds = pow(10.0, floor(log10(width.toRealTime())));
-  double samples = seconds * SampleTime::getSampleRate();
+  double samples = seconds * audio::getSampleRate();
 
   int b = static_cast<int>(ceil(r.begin_ / samples));
   int e = static_cast<int>(r.end_ / samples);

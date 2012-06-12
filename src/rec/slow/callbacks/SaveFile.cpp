@@ -1,6 +1,7 @@
 #include "rec/slow/callbacks/SaveFile.h"
 
 #include "rec/audio/Audio.h"
+#include "rec/audio/SampleRate.h"
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/audio/format/Manager.h"
 #include "rec/audio/source/Empty.h"
@@ -190,7 +191,7 @@ class SaveThread : public ThreadWithProgressWindow {
     }
 
     setProgress(0.0);
-    source_->prepareToPlay(COPY_BLOCK_SIZE, SampleTime::getSampleRate());
+    source_->prepareToPlay(COPY_BLOCK_SIZE, audio::getSampleRate());
     String name = file_.getFileName();
     setStatusMessage(String::formatted(SAVING_FILE, c_str(name)));
 

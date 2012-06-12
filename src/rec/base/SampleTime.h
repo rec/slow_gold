@@ -37,16 +37,7 @@ struct SampleTime {
   operator int64() const { return position_; }
   int64 get() { return position_; }
 
-  RealTime toRealTime(int32 sampleRate) const {
-    return static_cast<double>(position_) / static_cast<double>(sampleRate);
-  }
-
-  static int getSampleRate();
-  static void setSampleRate(int);
-
-  RealTime toRealTime() const {
-    return static_cast<double>(position_) / getSampleRate();
-  }
+  RealTime toRealTime() const;
 
   explicit SampleTime(RealTime time);
   explicit SampleTime(double time);
