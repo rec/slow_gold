@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="2wgL5Bcd5" name="SlowGold">
+  <MAINGROUP id="XJw3BMPRU" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -235,6 +235,10 @@
               name="RealTime.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/Samples.h" id="hanFz3Tdo"
               name="Samples.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/base/SampleTime.cpp" id="0WMUXxzQE"
+              name="SampleTime.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/base/SampleTime.h" id="cyuT5PBiB"
+              name="SampleTime.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/scoped_array.h" id="3asMQNGV0"
               name="scoped_array.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/string_piece.h" id="nJykOkINX"
@@ -1491,7 +1495,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="XxmEl7uaO" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ecfjmpNqV" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

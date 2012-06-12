@@ -586,6 +586,9 @@
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
       <Filter>SlowGold\rec\base</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\base\SampleTime.cpp">
+      <Filter>SlowGold\rec\base</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp">
       <Filter>SlowGold\rec\base</Filter>
     </ClCompile>
@@ -2677,6 +2680,9 @@
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\Samples.h">
+      <Filter>SlowGold\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\SampleTime.h">
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h">

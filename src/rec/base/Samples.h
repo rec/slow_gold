@@ -2,6 +2,7 @@
 #define __REC_BASE_SAMPLES__
 
 #include "rec/base/RealTime.h"
+#include "rec/base/SampleTime.h"
 
 namespace rec {
 
@@ -42,16 +43,6 @@ struct Samples {
     return static_cast<double>(position_) / static_cast<double>(sampleRate);
   }
 
-
-#if 0
-  Samples(RealTime time) : position_(toSampleCount(time)) {}
-
-  template <typename Type>
-  static int64 toSampleCount(Type t) {
-    return static_cast<int64>(SAMPLES_PER_SEC * t);
-  }
-#endif
-
   // TODO: we shouldn't need this, but Juce sometimes wants ints.  Bug Jules!
   int toInt() const { return static_cast<int>(position_); }
 
@@ -62,7 +53,6 @@ struct Samples {
   // Disallow these two constructors.
   Samples(float time);
   Samples(double time);
-  Samples(RealTime time); // : position_(toSampleCount(time)) {}
 
   JUCE_LEAK_DETECTOR(Samples);
 };

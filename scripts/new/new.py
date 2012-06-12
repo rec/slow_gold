@@ -27,7 +27,7 @@ where
 
 """
 
-ROOT = '/Users/tom/Documents/development/rec/scripts/new/templates/'
+ROOT = '/development/rec/scripts/new/templates/'
 
 def cleanSvg(data):
   tagNames = set(['metadata', 'i:pgf'])

@@ -23,6 +23,14 @@ Samples<44100> BufferedReader::setReader(AudioFormatReader* reader) {
 
   setLength(size);
   reader_.reset(reader);
+  DLOG(INFO)
+    << " sampleRate: " << reader_->sampleRate
+    << " bitsPerSample: " << reader_->bitsPerSample
+    << " lengthInSamples: " << reader_->lengthInSamples
+    << " numChannels: " << reader_->numChannels
+    << " usesFloatingPointData: " << reader_->usesFloatingPointData
+    << " metadataValues: " << str(reader_->metadataValues.getDescription());
+
   return size;
 }
 

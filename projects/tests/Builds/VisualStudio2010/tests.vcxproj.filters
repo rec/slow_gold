@@ -607,6 +607,9 @@
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
       <Filter>tests\rec\base</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\base\SampleTime.cpp">
+      <Filter>tests\rec\base</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp">
       <Filter>tests\rec\base</Filter>
     </ClCompile>
@@ -2761,6 +2764,9 @@
       <Filter>tests\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\Samples.h">
+      <Filter>tests\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\SampleTime.h">
       <Filter>tests\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h">
