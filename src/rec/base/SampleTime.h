@@ -41,11 +41,11 @@ struct SampleTime {
     return static_cast<double>(position_) / static_cast<double>(sampleRate);
   }
 
-  static SampleTime getSamplesPerSecond();
-  static void setSamplesPerSecond(SampleTime);
+  static int64 getSampleRate();
+  static void setSampleRate(int64);
 
   RealTime toRealTime() const {
-    return static_cast<double>(position_) / getSamplesPerSecond();
+    return static_cast<double>(position_) / getSampleRate();
   }
 
   SampleTime(RealTime time);

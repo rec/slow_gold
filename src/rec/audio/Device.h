@@ -15,7 +15,7 @@ class Device {
   AudioDeviceManager manager_;
   ptr<SetupPage> setupPage_;
 
-  void setSamplesPerSecondFromDevice();
+  void setSampleRateFromDevice();
 
   void saveState();
   void shutdown();

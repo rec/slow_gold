@@ -1,5 +1,6 @@
 #include "rec/audio/format/Manager.h"
 #include "rec/audio/format/mpg123/Format.h"
+#include "rec/base/SampleTime.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {
@@ -46,8 +47,11 @@ AudioFormatWriter* createWriter(const File& f) {
   ptr<FileOutputStream> fos(new FileOutputStream(f));
   StringArray qualityOptions = fmt->getQualityOptions();
   int quality = std::max(0, qualityOptions.size() - 1);
+  int channels = 2;
+  double sampleRate = static_cast<double>(SampleTime::getSampleRate());
 
-  ptr<AudioFormatWriter> writer(fmt->createWriterFor(fos.transfer(), 44100.0, 2, 16,
+  ptr<AudioFormatWriter> writer(fmt->createWriterFor(fos.transfer(), sampleRate,
+                                                     channels, 16,
                                                      StringPairArray(),
                                                      quality));
   if (!writer)

@@ -22,7 +22,7 @@ Device::Device() {
     LOG(DFATAL) << "Couldn't initialize audio::Device, error " << str(err);
   setupPage_.reset(new SetupPage(this));
 
-  setSamplesPerSecondFromDevice();
+  setSampleRateFromDevice();
 }
 
 void Device::saveState() {
@@ -37,7 +37,7 @@ void Device::shutdown() {
   manager_.closeAudioDevice();
 }
 
-void Device::setSamplesPerSecondFromDevice() {
+void Device::setSampleRateFromDevice() {
   AudioDeviceManager::AudioDeviceSetup setup;
   manager_.getAudioDeviceSetup(setup);
   SampleTime rate = static_cast<int64>(setup.sampleRate);
@@ -48,7 +48,7 @@ void Device::setSamplesPerSecondFromDevice() {
     rate = 44100;
   }
 
-  SampleTime::setSamplesPerSecond(rate);
+  SampleTime::setSampleRate(rate);
 }
 
 }  // namespace audio
