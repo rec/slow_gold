@@ -10,6 +10,7 @@ namespace app {
 void setApplicationName(const String&);
 
 // Get the root directory to store files.
+File getCompanyDirectory();
 File getAppDirectory();
 File getAppFile(const String&);
 

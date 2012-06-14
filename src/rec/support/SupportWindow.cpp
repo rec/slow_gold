@@ -114,29 +114,15 @@ MenuBarModel* SupportWindow::getMenuBarModel() {
 }
 
 void SupportWindow::activeWindowStatusChanged() {
-  if (menus())
-    menus()->menuItemsChanged();
-  if (components())
-    components()->waveform_->repaint();
 }
 
 void SupportWindow::startAboutWindow() {
-  if (!aboutWindow_) {
-    aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
-                                       application()->name(),
-                                       application()->version()));
-  }
-  Desktop::getInstance().getAnimator().fadeIn(aboutWindow_.get(), FADE_IN_TIME);
 }
 
 void SupportWindow::stopAboutWindow() {
-  if (aboutWindow_)
-    Desktop::getInstance().getAnimator().fadeOut(aboutWindow_.get(), FADE_OUT_TIME);
 }
 
 void SupportWindow::minimisationStateChanged(bool isNowMinimised) {
-  if (!isNowMinimised)
-    components()->waveform_->repaint();
 }
 
 }  // namespace slow
@@ -159,4 +145,3 @@ void shutdown(app::GenericApplication*) {
 
 }  // namespace support
 }  // namespace rec
-

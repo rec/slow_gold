@@ -62,12 +62,12 @@ File zipData(const File& file) {
   Thread::sleep(1000);  // TODO: hack!
 
   Builder builder;
-  addFiles(app::getAppDirectory(), &builder);
+  addFiles(app::getCompanyDirectory(), &builder);
   return writeZipFile(builder, file);
 }
 
 bool unzipData(const File& file) {
-  return ZipFile(file).uncompressTo(app::getAppDirectory(), true);
+  return ZipFile(file).uncompressTo(app::getCompanyDirectory(), true);
 }
 
 }  // namespace data
