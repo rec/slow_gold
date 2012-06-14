@@ -57,7 +57,7 @@ class Waveform : public Component,
   const CursorList& getCursors() const { return cursors_; }
   CursorList* getCursorsMutable() { return &cursors_; }
 
-  virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
+  virtual void mouseWheelMove(const MouseEvent& e, const juce::MouseWheelDetails&);
   CriticalSection* lock() { return &lock_; }
   int getCursorX(uint index) const;
   void setCursorText(int index, const String& text);

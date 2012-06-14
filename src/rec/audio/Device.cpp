@@ -12,6 +12,7 @@ static File getDeviceFile() {
 }
 
 Device::Device() {
+  manager_.addChangeListener(this);
   ptr<juce::XmlElement> state;
 
   File f = getDeviceFile();
@@ -35,6 +36,7 @@ void Device::saveState() {
 }
 
 void Device::shutdown() {
+  manager_.removeChangeListener(this);
   manager_.closeAudioDevice();
 }
 
@@ -50,6 +52,10 @@ void Device::setSampleRateFromDevice() {
   }
 
   setSampleRate(rate);
+}
+
+void Device::changeListenerCallback(ChangeBroadcaster*) {
+  setSampleRateFromDevice();
 }
 
 }  // namespace audio

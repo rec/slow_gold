@@ -23,13 +23,17 @@ AudioFormatManager* getInstance() {
 
 }  // namespace
 
-AudioFormatManager* getAudioFormatManager() {
+AudioFormatManager* getReaderAudioFormatManager() {
   static ptr<AudioFormatManager> instance(getInstance());
   return instance.get();
 }
 
+AudioFormatManager* getWriterAudioFormatManager() {
+  return getReaderAudioFormatManager();
+}
+
 AudioFormatReader* createReader(const File& f) {
-  return getAudioFormatManager()->createReaderFor(f);
+  return getReaderAudioFormatManager()->createReaderFor(f);
 }
 
 AudioFormatReader* createReader(const String& f) {
@@ -38,7 +42,9 @@ AudioFormatReader* createReader(const String& f) {
 
 AudioFormatWriter* createWriter(const File& f) {
   const String ext = f.getFileExtension();
-  AudioFormat* fmt = getAudioFormatManager()->findFormatForFileExtension(ext);
+  AudioFormat* fmt = getWriterAudioFormatManager()->
+    findFormatForFileExtension(ext);
+
   if (!fmt) {
     LOG(ERROR) << "Unable to open file " << str(f);
     return NULL;

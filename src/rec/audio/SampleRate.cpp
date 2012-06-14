@@ -6,6 +6,8 @@ namespace audio {
 namespace {
 
 struct SamplesPerSecond {
+  SamplesPerSecond() : sampleRate_(44100) {}
+
   CriticalSection lock_;
   int sampleRate_;
   Broadcaster<int> sampleRateBroadcaster_;

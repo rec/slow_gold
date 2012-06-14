@@ -38,7 +38,7 @@ void Target::addCommands() {
 
 void Target::operator()(None) {
   if (window())
-    thread::callAsync(window(), &SlowWindow::stopAboutWindow);
+    thread::callAsync(window(), &app::Window::stopAboutWindow);
 }
 
 }  // namespace slow

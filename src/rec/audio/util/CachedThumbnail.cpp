@@ -11,7 +11,7 @@ static const int COMPRESSION = 256;
 CachedThumbnail::CachedThumbnail()
       : cacheWritten_(false),
         cache_(1),
-        thumbnail_(COMPRESSION, *format::getAudioFormatManager(), cache_) {
+        thumbnail_(COMPRESSION, *format::getReaderAudioFormatManager(), cache_) {
 }
 
 void CachedThumbnail::addBlock(SampleTime pos, const Info& i) {

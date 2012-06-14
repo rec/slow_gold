@@ -59,7 +59,6 @@ void Window::shutdown() {
   doShutdown();
 }
 
-
 }  // namespace app
 }  // namespace rec
 

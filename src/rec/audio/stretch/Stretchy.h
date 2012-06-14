@@ -33,6 +33,7 @@ class Stretchy : public source::Wrappy {
   }
 
   void setMasterTune(double detune);
+  void setSampleRate(int sampleRate);
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
@@ -47,6 +48,7 @@ class Stretchy : public source::Wrappy {
   bool bypass_;
   Stretch stretch_;
   double detune_;
+  int sampleRate_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
 };

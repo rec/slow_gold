@@ -6,7 +6,7 @@
 namespace rec {
 namespace audio {
 
-class Device {
+class Device : public juce::ChangeListener {
  public:
   typedef gui::audio::SetupPage SetupPage;
 
@@ -15,13 +15,16 @@ class Device {
   AudioDeviceManager manager_;
   ptr<SetupPage> setupPage_;
 
-  void setSampleRateFromDevice();
-
   void saveState();
   void shutdown();
 
+  virtual void changeListenerCallback(ChangeBroadcaster*);
+
  private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Device)};
+  void setSampleRateFromDevice();
+
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Device)
+};
 
 }  // namespace audio
 }  // namespace rec

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="PqWkvqOa5" name="tests">
+  <MAINGROUP id="es3cTdDXN" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -910,6 +910,12 @@
         <FILE compile="0" file="../../src/rec/slow/TranslateAll.h" id="khzL4JPxk"
               name="TranslateAll.h" resource="0"/>
       </GROUP>
+      <GROUP id="GVgd8VFBJ" name="support">
+        <FILE compile="1" file="../../src/rec/support/SupportWindow.cpp" id="gB0iEgc61"
+              name="SupportWindow.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/support/SupportWindow.h" id="8ASZNGFHv"
+              name="SupportWindow.h" resource="0"/>
+      </GROUP>
       <GROUP id="WJnE1pJSy" name="util">
         <FILE compile="1" file="../../src/rec/util/Binary.cpp" id="H5IKbBd1M"
               name="Binary.cpp" resource="0"/>
@@ -1553,7 +1559,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="orlbZ1nQ9" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="e916TMfpQ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

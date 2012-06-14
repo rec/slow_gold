@@ -33,6 +33,7 @@ class Player : public DataListener<Gain>,
                public DataListener<stretch::Stretch>,
                public GlobalDataListener<audio::AudioSettings>,
                public Broadcaster<transport::State>,
+               public Listener<int>,
                public juce::ChangeListener {
  public:
   Player(Device* d);
@@ -57,6 +58,7 @@ class Player : public DataListener<Gain>,
 
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
+  virtual void operator()(int sampleRate);
   virtual void operator()(const Gain&);
   virtual void operator()(const StereoProto&);
   virtual void operator()(const audio::AudioSettings&);

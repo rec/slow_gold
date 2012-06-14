@@ -1,5 +1,6 @@
 #include "rec/audio/stretch/Stretchy.h"
 
+#include "rec/audio/SampleRate.h"
 #include "rec/audio/stretch/RubberBand.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Implementation.h"
@@ -16,7 +17,8 @@ namespace stretch {
 
 Stretchy::Stretchy(Source* s) : Wrappy(s), strategy_(Stretch::NONE),
                                 channels_(2), timeScale_(1.0), bypass_(false),
-                                detune_(0.0) {
+                                detune_(0.0),
+                                sampleRate_(44100) {
 }
 
 Stretchy::~Stretchy() {}
@@ -52,6 +54,13 @@ void Stretchy::setMasterTune(double detune) {
     implementation_->setMasterTune(detune_);
 }
 
+void Stretchy::setSampleRate(int sampleRate) {
+  Lock l(lock_);
+  sampleRate_ = sampleRate;
+  if (implementation_)
+    implementation_->setMasterTune(sampleRate_);
+}
+
 void Stretchy::setStretch(const stretch::Stretch& stretch) {
   Lock l(lock_);
   stretch_ = stretch;
@@ -69,6 +78,7 @@ void Stretchy::setStretch(const stretch::Stretch& stretch) {
     if (!implementation_ || strategy_ != stretch.strategy()) {
       implementation_.reset(makeImplementation(source(), stretch));
       implementation_->setMasterTune(detune_);
+      implementation_->setSampleRate(sampleRate_);
     } else {
       implementation_->setStretch(stretch);
     }

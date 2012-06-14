@@ -206,11 +206,12 @@ void Waveform::layout() {
   repaint();
 }
 
-void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncrement) {
+void Waveform::mouseWheelMove(const MouseEvent& e,
+                              const juce::MouseWheelDetails& wheel) {
   MouseWheelEvent we;
   we.event_ = &e;
-  we.xIncrement_ = xIncrement;
-  we.yIncrement_ = yIncrement;
+  we.xIncrement_ = wheel.deltaX;
+  we.yIncrement_ = wheel.deltaY;
   Broadcaster<const MouseWheelEvent&>::broadcast(we);
 }
 

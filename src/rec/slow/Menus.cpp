@@ -27,11 +27,11 @@ MenuMaker* Menus::getMenuMaker() {
                        empty());
 }
 
-const StringArray Menus::getMenuBarNames() {
+StringArray Menus::getMenuBarNames() {
   return ptr<MenuMaker>(getMenuMaker())->getMenuBarNames();
 }
 
-const PopupMenu Menus::getMenuForIndex(int /*menuIndex*/, const String& menuName) {
+PopupMenu Menus::getMenuForIndex(int /*menuIndex*/, const String& menuName) {
   return ptr<MenuMaker>(getMenuMaker())->makeMenu(menuName);
 }
 

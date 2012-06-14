@@ -1,3 +1,4 @@
+#include "rec/audio/SampleRate.h"
 #include "rec/audio/stretch/RubberBand.h"
 #include "rec/util/Math.h"
 
@@ -27,6 +28,7 @@ static const int DEATH_OPTIONS =
 
 RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
     : Implementation(source), detuneCents_(0.0) {
+  setSampleRate(audio::getSampleRate());
   CHECK_DDD(7134, 1893, int32, int16);
   setStretch(stretch);
 }
@@ -84,8 +86,8 @@ void RubberBand::setStretch(const Stretch& stretch) {
   double ps = pitchScale(stretch, detuneCents_);
 
   if (!stretcher_) {
-    stretcher_.reset(new RubberBandStretcher(static_cast<size_t>(stretch.sample_rate()),
-                                             channels_, OPTIONS, tr, ps));
+    stretcher_.reset(new RubberBandStretcher(sampleRate_, channels_,
+                                             OPTIONS, tr, ps));
     chunkSize_ = stretch.chunk_size();
     maxProcessSize_ = stretch.max_process_size();
     stretcher_->setMaxProcessSize(maxProcessSize_);
@@ -104,6 +106,13 @@ void RubberBand::setStretch(const Stretch& stretch) {
 void RubberBand::setMasterTune(double detune) {
   Lock l(lock_);
   detuneCents_ = detune;
+  setStretch(stretch_);
+}
+
+void RubberBand::setSampleRate(int sampleRate) {
+  Lock l(lock_);
+  sampleRate_ = sampleRate;
+  stretcher_.reset();
   setStretch(stretch_);
 }
 

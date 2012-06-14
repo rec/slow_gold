@@ -1,6 +1,7 @@
 #ifndef __REC_SLOW_INSTANCE__
 #define __REC_SLOW_INSTANCE__
 
+#include "rec/app/Window.h"
 #include "rec/audio/Audio.h"
 #include "rec/util/thread/Trash.h"
 
@@ -28,7 +29,7 @@ class Threads;
 // application but in future there might be more than one.
 class Instance {
  public:
-  explicit Instance(SlowWindow* window);
+  explicit Instance(app::Window*);
   ~Instance();
 
   void init();
@@ -47,7 +48,7 @@ class Instance {
 
   static const int FILLER_THREAD_STOP_TIME = 60000;
 
-  SlowWindow* window_;
+  app::Window* window_;
   CriticalSection lock_;
 
   ptr<Menus> menus_;

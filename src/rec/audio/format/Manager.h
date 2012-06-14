@@ -7,7 +7,8 @@ namespace rec {
 namespace audio {
 namespace format {
 
-AudioFormatManager* getAudioFormatManager();
+AudioFormatManager* getReaderAudioFormatManager();
+AudioFormatManager* getWriterAudioFormatManager();
 
 AudioFormatReader* createReader(const File&);
 AudioFormatReader* createReader(const String&);

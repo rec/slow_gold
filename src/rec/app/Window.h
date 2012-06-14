@@ -31,6 +31,10 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   GenericApplication* application() { return application_; }
   PopupMenu* getAppleMenu() { return &menu_; }
 
+  virtual void stopAboutWindow() {}
+  virtual void startAboutWindow() {}
+  virtual void init() {}
+
  protected:
   virtual void constructInstance() = 0;
   virtual Component* getMainComponent() = 0;

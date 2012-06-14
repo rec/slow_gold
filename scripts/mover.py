@@ -1,5 +1,6 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 
+import getopt
 import glob
 import os
 import os.path
@@ -22,9 +23,10 @@ class Mover(object):
                (lambda path: r'\b%s\b' % path[-1]),
                ]
 
-  def __init__(self, fromFile, toFile):
+  def __init__(self, fromFile, toFile, copy):
     self.state = Mover.NONE
     self.fromFile, self.toFile = self.check(fromFile, toFile)
+    self.copy = copy
 
     fp = util.pathParts(self.fromFile)
     tp = util.pathParts(self.toFile)
@@ -56,11 +58,12 @@ class Mover(object):
 
   def move(self):
     tempFile = self.toFile + '.tmp'
-    util.run('git mv %s %s' % (self.fromFile, self.toFile))
-    if os.path.exists(self.fromFile):
-      util.run('mv -f %s %s' % (self.fromFile, self.toFile))
+    util.run('cp %s %s' % (self.fromFile, tempFile))
+    if not self.copy:
+      util.run('git mv %s %s' % (self.fromFile, self.toFile))
+      if os.path.exists(self.fromFile):
+        util.run('mv -f %s %s' % (self.fromFile, self.toFile))
 
-    util.run('cp %s %s' % (self.toFile, tempFile))
     with open(tempFile, 'r') as input:
       with open(self.toFile, 'w') as output:
         self.out = output
@@ -120,8 +123,16 @@ class Mover(object):
     elif self.state is Mover.END_NAME:
       self.endCache.append(line)
 
+def parseArgs(args):
+  optlist, args = getopt.getopt(args, 'c:', ['copy'])
+  for name, value in optlist:
+    if name == '-c' or name == '--copy':
+      return args, True
+
+  return args, False
 
 def move(args):
+  args, copy = parseArgs(args)
   to = args.pop()
   files = []
   for arg in args:
@@ -140,6 +151,6 @@ def move(args):
 
   else:
     for a in args:
-      Mover(a, to).move()
+      Mover(a, to, copy).move()
 
 move(sys.argv[1:])

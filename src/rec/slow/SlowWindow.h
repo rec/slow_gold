@@ -22,8 +22,8 @@ class SlowWindow : public app::Window, public HasInstance  {
   }
 
   virtual void trashPreferences();
-  void startAboutWindow();
-  void stopAboutWindow();
+  virtual void startAboutWindow();
+  virtual void stopAboutWindow();
   virtual void minimisationStateChanged(bool isNowMinimised);
   virtual void doPostStartup();
 

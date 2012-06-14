@@ -17,7 +17,7 @@ void processAudioFile(const File& in, const File& out,
   OutputStream* stream = out.createOutputStream();
   CHECK(stream) << "Couldn't create file " << str(out);
 
-  AudioFormat* f = format::getAudioFormatManager()->
+  AudioFormat* f = format::getWriterAudioFormatManager()->
     findFormatForFileExtension(out.getFileExtension());
   CHECK(f) << "Couldn't find format for file " << str(out);
 
@@ -45,7 +45,7 @@ SourceAndWriter makeSourceAndWriter(const File& in, const File& out) {
   OutputStream* stream = out.createOutputStream();
   CHECK(stream) << "Couldn't create file " << str(out);
 
-  AudioFormat* f = format::getAudioFormatManager()->
+  AudioFormat* f = format::getWriterAudioFormatManager()->
     findFormatForFileExtension(out.getFileExtension());
   CHECK(f) << "Couldn't find format for file " << str(out);
 

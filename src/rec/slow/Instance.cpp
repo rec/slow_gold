@@ -2,6 +2,7 @@
 
 #include "rec/app/GenericApplication.h"
 #include "rec/audio/Device.h"
+#include "rec/audio/SampleRate.h"
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/BufferFiller.h"
@@ -64,7 +65,7 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
 
 }  // namespace
 
-Instance::Instance(SlowWindow* window) : window_(window) {
+Instance::Instance(app::Window* window) : window_(window) {
   CHECK_DDD(51, 2193, int64, int32);
 }
 
@@ -92,6 +93,8 @@ void Instance::init() {
 
   target_->addCommands();
   player_->addListener(components_->transportController_.get());
+  audio::getSampleRateBroadcaster()->addListener(player_.get());
+
 	typedef gui::DropTarget<Waveform> DropWave;
   DropWave* waveform = dynamic_cast<DropWave*>(components_->waveform_.get());
   waveform->dropBroadcaster()->addListener(currentFile_.get());

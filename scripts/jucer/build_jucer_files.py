@@ -13,7 +13,7 @@ import sys
 
 import jucer
 
-DEFAULT_PROJECTS = 'command', 'slow', 'tests'
+DEFAULT_PROJECTS = 'command', 'slow', 'tests', 'support'
 
 def buildOne(name):
   root = os.getenv('ROOT')

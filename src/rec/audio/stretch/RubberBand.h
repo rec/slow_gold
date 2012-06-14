@@ -18,11 +18,13 @@ class RubberBand : public Implementation {
   virtual void setStretch(const Stretch&);
   virtual void setMasterTune(double detuneCents);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
+  virtual void setSampleRate(int sampleRate);
 
  private:
   CriticalSection lock_;
   ptr< ::RubberBand::RubberBandStretcher> stretcher_;
  	int channels_;
+  int sampleRate_;
   double timeRatio_;
   double pitchScale_;
   int chunkSize_;

@@ -10,7 +10,7 @@ namespace audio { class Device; }
 namespace gui {
 namespace audio {
 
-class SetupPage  : public Component {
+class SetupPage : public Component {
  public:
   explicit SetupPage(rec::audio::Device* device);
   void paint(Graphics& g);
