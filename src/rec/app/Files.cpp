@@ -30,4 +30,3 @@ File getAppFile(const String& name) {
 
 }  // namespace app
 }  // namespace rec
-

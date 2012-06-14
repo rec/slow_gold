@@ -7,6 +7,7 @@ namespace rec {
 namespace slow {
 
 void addGlobalCallbacks(command::CommandRecordTable* t);
+void requestSupport();
 
 struct GlobalCallbacks {
   static void translateAll();

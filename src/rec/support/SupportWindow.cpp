@@ -15,6 +15,7 @@
 #include "rec/slow/Menus.h"
 #include "rec/slow/RegisterProtos.h"
 #include "rec/slow/TranslateAll.h"
+#include "rec/slow/callbacks/GlobalCallbacks.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
@@ -131,9 +132,11 @@ namespace support {
 
 using namespace rec::data;
 
-void initialize(app::GenericApplication*) {
+void initialize(app::GenericApplication* app) {
+  slow::requestSupport();
   slow::registerProtos();
   slow::translateAll();
+  app->quit();
 }
 
 void shutdown(app::GenericApplication*) {

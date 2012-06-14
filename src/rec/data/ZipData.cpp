@@ -1,6 +1,7 @@
 #include "rec/data/ZipData.h"
 
 #include "rec/app/Files.h"
+#include "rec/util/Copy.h"
 #include "rec/data/DataOps.h"
 #include "rec/util/SystemStats.h"
 
@@ -58,8 +59,11 @@ File zipData(const String& name) {
 }
 
 File zipData(const File& file) {
-  data::setGlobal(getSystemStats(), CANT_UNDO);
-  Thread::sleep(1000);  // TODO: hack!
+  File stats = app::getCompanyDirectory().getChildFile("rec.util.SystemStats");
+  if (!copy::copy(getSystemStats(), stats))
+    LOG(ERROR) << "Couldn't write stats file " << str(stats);
+
+  Thread::sleep(2000);  // TODO: hack!
 
   Builder builder;
   addFiles(app::getCompanyDirectory(), &builder);

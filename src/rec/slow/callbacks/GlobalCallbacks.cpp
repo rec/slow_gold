@@ -90,26 +90,6 @@ void openSlowGoldDirectory() {
   g.revealToUser();
 }
 
-void requestSupport() {
-  String key = randomKey();
-  File f = data::zipData(key);
-  if (f == File::nonexistent) {
-    alert(CANT_SUPPORT, CANT_SUPPORT_FULL + String("\n") +
-          PLEASE_CONTACT + String("\n") + SUPPORT);
-  } else {
-    String fn = f.getFileName();
-    alert(SUPPORTED,
-          String::formatted(MAIL_CREATED, c_str(fn)) + "\n\n" +
-          String::formatted(PLEASE_MAIL, c_str(SUPPORT)));
-    String subject = String::formatted(MAIL_SUBJECT, c_str(key));
-    String body = String::formatted(MAIL_ATTACH, c_str(fn)) + String("\n\n") +
-      MAIL_DISCARD;
-    URL url = MAILTO.withParameter("subject", subject).withParameter("body", body);
-    url.launchInDefaultBrowser();
-    f.revealToUser();
-  }
-}
-
 void exportSettings() {
   File start = File::getSpecialLocation(File::userDesktopDirectory).
     getChildFile("SlowGold Export.zip");
@@ -217,6 +197,26 @@ void GlobalCallbacks::translateAll() {
   SELECT_IMPORT_KEYBOARD_FILE.translate();
   SELECT_IMPORT_MIDI_FILE.translate();
   SUPPORTED.translate();
+}
+
+void requestSupport() {
+  String key = randomKey();
+  File f = data::zipData(key);
+  if (f == File::nonexistent) {
+    alert(CANT_SUPPORT, CANT_SUPPORT_FULL + String("\n") +
+          PLEASE_CONTACT + String("\n") + SUPPORT);
+  } else {
+    String fn = f.getFileName();
+    alert(SUPPORTED,
+          String::formatted(MAIL_CREATED, c_str(fn)) + "\n\n" +
+          String::formatted(PLEASE_MAIL, c_str(SUPPORT)));
+    String subject = String::formatted(MAIL_SUBJECT, c_str(key));
+    String body = String::formatted(MAIL_ATTACH, c_str(fn)) + String("\n\n") +
+      MAIL_DISCARD;
+    URL url = MAILTO.withParameter("subject", subject).withParameter("body", body);
+    url.launchInDefaultBrowser();
+    f.revealToUser();
+  }
 }
 
 }  // namespace slow
