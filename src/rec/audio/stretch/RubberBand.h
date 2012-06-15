@@ -10,6 +10,8 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
+typedef ::RubberBand::RubberBandStretcher RubberBandStretcher;
+
 class RubberBand : public Implementation {
  public:
   RubberBand(PositionableAudioSource* source, const Stretch& stretch);
@@ -21,8 +23,10 @@ class RubberBand : public Implementation {
   virtual void setSampleRate(int sampleRate);
 
  private:
+  void stretchChanged();
+
   CriticalSection lock_;
-  ptr< ::RubberBand::RubberBandStretcher> stretcher_;
+  ptr<RubberBandStretcher> stretcher_;
  	int channels_;
   int sampleRate_;
   double timeRatio_;

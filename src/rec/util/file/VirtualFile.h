@@ -28,7 +28,7 @@ inline const string toString(const VirtualFile& f) {
 }
 
 inline const string toString(const VirtualFile* f) {
-  return f ? string("(no file)") : toString(*f);
+  return f ? toString(*f) : string("(no file)");
 }
 
 bool compare(const VirtualFile& x, const VirtualFile& y);

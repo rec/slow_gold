@@ -42,8 +42,7 @@ void UntypedDataListener::operator()(DataFile datafile) {
   {
     Lock l(lock_);
     if (data_ == newData) {
-      if (datafile)  // TODO: fix this condition...
-        LOG(ERROR) << "Got the same file twice " << file::toString(datafile);
+      LOG(ERROR) << "Got the same file twice " << file::toString(datafile);
       return;
     }
     if (data_)

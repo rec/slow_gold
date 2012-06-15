@@ -8,8 +8,6 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-using ::RubberBand::RubberBandStretcher;
-
 static const int OPTIONS =
   RubberBandStretcher::OptionPitchHighQuality +
   RubberBandStretcher::OptionProcessRealTime +
@@ -28,14 +26,21 @@ static const int DEATH_OPTIONS =
 
 RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
     : Implementation(source), detuneCents_(0.0) {
-  setSampleRate(audio::getSampleRate());
-  CHECK_DDD(7134, 1893, int32, int16);
+  sampleRate_ = audio::getSampleRate();
   setStretch(stretch);
+  CHECK_DDD(7134, 1893, int32, int16);
 }
 
 RubberBand::~RubberBand() {}
 
 void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
+  DLOG(INFO) << "RubberBand::getNextAudioBlock " << info.numSamples;
+  if (!stretcher_) {
+    LOG(ERROR) << "No stretcher!";
+    Lock l(lock_);
+    stretchChanged();
+  }
+
   for (int copied = 0; copied < info.numSamples; ) {
     Lock l(lock_);
     if (int available = stretcher_->available()) {
@@ -79,17 +84,22 @@ static const double EPSILON = 1e-6;
 
 void RubberBand::setStretch(const Stretch& stretch) {
   Lock l(lock_);
+  DLOG(INFO) << stretch_.ShortDebugString();
   stretch_ = stretch;
+  stretchChanged();
+}
 
-  channels_ = stretch.channels();
-  double tr = timeScale(stretch);
-  double ps = pitchScale(stretch, detuneCents_);
+void RubberBand::stretchChanged() {
+  channels_ = stretch_.channels();
+  double tr = timeScale(stretch_);
+  double ps = pitchScale(stretch_, detuneCents_);
 
   if (!stretcher_) {
+    DLOG(INFO) << "new stretcher";
     stretcher_.reset(new RubberBandStretcher(sampleRate_, channels_,
                                              OPTIONS, tr, ps));
-    chunkSize_ = stretch.chunk_size();
-    maxProcessSize_ = stretch.max_process_size();
+    chunkSize_ = stretch_.chunk_size();
+    maxProcessSize_ = stretch_.max_process_size();
     stretcher_->setMaxProcessSize(maxProcessSize_);
 
   } else if (near(tr, timeRatio_, EPSILON) && near(ps, pitchScale_, EPSILON)) {
@@ -105,15 +115,19 @@ void RubberBand::setStretch(const Stretch& stretch) {
 
 void RubberBand::setMasterTune(double detune) {
   Lock l(lock_);
-  detuneCents_ = detune;
-  setStretch(stretch_);
+  if (!near(detuneCents_, detune, EPSILON)) {
+    detuneCents_ = detune;
+    stretchChanged();
+  }
 }
 
 void RubberBand::setSampleRate(int sampleRate) {
   Lock l(lock_);
-  sampleRate_ = sampleRate;
-  stretcher_.reset();
-  setStretch(stretch_);
+  if (sampleRate != sampleRate_) {
+    sampleRate_ = sampleRate;
+    stretcher_.reset();
+    stretchChanged();
+  }
 }
 
 }  // namespace stretch

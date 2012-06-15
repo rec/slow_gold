@@ -24,7 +24,7 @@ Device::Device() {
     LOG(DFATAL) << "Couldn't initialize audio::Device, error " << str(err);
   setupPage_.reset(new SetupPage(this));
 
-  setSampleRateFromDevice();
+  //setSampleRateFromDevice();
 }
 
 void Device::saveState() {

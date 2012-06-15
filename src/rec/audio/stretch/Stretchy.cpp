@@ -58,7 +58,7 @@ void Stretchy::setSampleRate(int sampleRate) {
   Lock l(lock_);
   sampleRate_ = sampleRate;
   if (implementation_)
-    implementation_->setMasterTune(sampleRate_);
+    implementation_->setSampleRate(sampleRate_);
 }
 
 void Stretchy::setStretch(const stretch::Stretch& stretch) {
