@@ -18,6 +18,7 @@ class SupportWindow : public app::Window, public HasInstance  {
     g.fillAll(juce::Colours::lightgrey);
   }
 
+  virtual void startup() {}
   virtual void trashPreferences() {}
   virtual void startAboutWindow() {}
   virtual void stopAboutWindow() {}

@@ -71,31 +71,23 @@ void SupportWindow::init() {
 }
 
 void SupportWindow::constructInstance() {
-  instanceDeleter_.reset(new slow::Instance(this));
-  instance_ = instanceDeleter_.get();
-  instance_->init();
 }
 
 void SupportWindow::doStartup() {
-  instance_->startup();
 }
 
 void SupportWindow::doPostStartup() {
-  instance_->postStartup();
 }
 
 void SupportWindow::doShutdown() {
-  instance_->reset();
-  instance_ = NULL;
-  instanceDeleter_.reset();
 }
 
 Component* SupportWindow::getMainComponent() {
-  return components()->mainPage_->panel();
+  return NULL;
 }
 
 MenuBarModel* SupportWindow::getMenuBarModel() {
-  return menus();
+  return NULL;
 }
 
 
@@ -107,8 +99,6 @@ using namespace rec::data;
 
 void initialize(app::GenericApplication* app) {
   slow::requestSupport();
-  slow::registerProtos();
-  slow::translateAll();
   app->quit();
 }
 
