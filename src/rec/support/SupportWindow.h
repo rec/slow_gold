@@ -18,10 +18,9 @@ class SupportWindow : public app::Window, public HasInstance  {
     g.fillAll(juce::Colours::lightgrey);
   }
 
-  virtual void trashPreferences();
-  virtual void startAboutWindow();
-  virtual void stopAboutWindow();
-  virtual void minimisationStateChanged(bool isNowMinimised);
+  virtual void trashPreferences() {}
+  virtual void startAboutWindow() {}
+  virtual void stopAboutWindow() {}
   virtual void doPostStartup();
 
  protected:
@@ -31,11 +30,9 @@ class SupportWindow : public app::Window, public HasInstance  {
   virtual void constructInstance();
   virtual Component* getMainComponent();
   virtual MenuBarModel* getMenuBarModel();
-  virtual void activeWindowStatusChanged();
 
  private:
   ptr<Instance> instanceDeleter_;
-  ptr<Component> aboutWindow_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SupportWindow);
 };

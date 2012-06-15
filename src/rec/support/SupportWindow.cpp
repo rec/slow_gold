@@ -24,28 +24,15 @@
 namespace rec {
 namespace slow {
 
-namespace {
-
 using namespace juce;
-
-// Skin
-
-const int FADE_IN_TIME = 1500;
-const int FADE_OUT_TIME = 750;
-
-}
 
 SupportWindow::SupportWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", Colours::azure,
                   DocumentWindow::allButtons, true),
       HasInstance(NULL) {
-  bool check = data::getGlobal<GuiSettings>().auto_check_for_updates();
-  application->setAutoCheckForUpdates(check);
 }
 
-SupportWindow::~SupportWindow() {
-  aboutWindow_.reset();
-}
+SupportWindow::~SupportWindow() {}
 
 #define LOG_TO_STDERROR 1
 
@@ -103,9 +90,6 @@ void SupportWindow::doShutdown() {
   instanceDeleter_.reset();
 }
 
-void SupportWindow::trashPreferences() {
-}
-
 Component* SupportWindow::getMainComponent() {
   return components()->mainPage_->panel();
 }
@@ -114,17 +98,6 @@ MenuBarModel* SupportWindow::getMenuBarModel() {
   return menus();
 }
 
-void SupportWindow::activeWindowStatusChanged() {
-}
-
-void SupportWindow::startAboutWindow() {
-}
-
-void SupportWindow::stopAboutWindow() {
-}
-
-void SupportWindow::minimisationStateChanged(bool isNowMinimised) {
-}
 
 }  // namespace slow
 
