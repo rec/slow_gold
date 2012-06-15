@@ -1581,7 +1581,7 @@
 		D67A3F8B5EF32AD7E84DB5B1 /* Files.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Files.h; path = ../../../../src/rec/app/Files.h; sourceTree = SOURCE_ROOT; };
 		D6DCFA5A7FB18682BE438EA2 /* juce_win32_DirectWriteTypeface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_DirectWriteTypeface.cpp; path = ../../../../../juce/modules/juce_graphics/native/juce_win32_DirectWriteTypeface.cpp; sourceTree = SOURCE_ROOT; };
 		D6DFA3BEB5996316A53275EA /* juce_StretchableObjectResizer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_StretchableObjectResizer.cpp; path = ../../../../../juce/modules/juce_gui_basics/layout/juce_StretchableObjectResizer.cpp; sourceTree = SOURCE_ROOT; };
-		D721A7BA5E32865A83A474A5 /* RequestSupport 1.0.0-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RequestSupport 1.0.0-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D721A7BA5E32865A83A474A5 /* RequestSupport 1.0.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RequestSupport 1.0.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7595A866EE5AEBF13FDA09D /* SupportWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SupportWindow.h; path = ../../../../src/rec/support/SupportWindow.h; sourceTree = SOURCE_ROOT; };
 		D769EA9A45C52A0F7EE47C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		D78B6A3762E2D02D7DC5C270 /* juce_MenuBarModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_MenuBarModel.cpp; path = ../../../../../juce/modules/juce_gui_basics/menus/juce_MenuBarModel.cpp; sourceTree = SOURCE_ROOT; };
@@ -4061,7 +4061,7 @@
 		BF3BB999A577A20B0573E1EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D721A7BA5E32865A83A474A5 /* RequestSupport 1.0.0-debug.app */,
+				D721A7BA5E32865A83A474A5 /* RequestSupport 1.0.0.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4695,7 +4695,7 @@
 			name = RequestSupport;
 			productInstallPath = "$(HOME)/Applications";
 			productName = RequestSupport;
-			productReference = D721A7BA5E32865A83A474A5 /* RequestSupport 1.0.0-debug.app */;
+			productReference = D721A7BA5E32865A83A474A5 /* RequestSupport 1.0.0.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
