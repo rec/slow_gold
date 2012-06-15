@@ -12,25 +12,23 @@ class SupportWindow : public app::Window, public HasInstance  {
   explicit SupportWindow(app::GenericApplication*);
   virtual ~SupportWindow();
 
-  virtual void init();
+  virtual void init() {}
 
-  virtual void paint(Graphics& g) {
-    g.fillAll(juce::Colours::lightgrey);
-  }
+  virtual void paint(Graphics& g) {}
 
   virtual void startup() {}
   virtual void trashPreferences() {}
   virtual void startAboutWindow() {}
   virtual void stopAboutWindow() {}
-  virtual void doPostStartup();
+  virtual void doPostStartup() {}
 
  protected:
-  virtual void doStartup();
-  virtual void doShutdown();
+  virtual void doStartup() {}
+  virtual void doShutdown() {}
 
-  virtual void constructInstance();
-  virtual Component* getMainComponent();
-  virtual MenuBarModel* getMenuBarModel();
+  virtual void constructInstance() {}
+  virtual Component* getMainComponent() { return NULL; }
+  virtual MenuBarModel* getMenuBarModel() { return NULL; }
 
  private:
   ptr<Instance> instanceDeleter_;

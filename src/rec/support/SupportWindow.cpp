@@ -34,63 +34,6 @@ SupportWindow::SupportWindow(app::GenericApplication* application)
 
 SupportWindow::~SupportWindow() {}
 
-#define LOG_TO_STDERROR 1
-
-namespace {
-
-void deleteAll(const File& appDir, const String& pattern) {
-  DirectoryIterator iterator(appDir, false, pattern);
-  while (iterator.next())
-    iterator.getFile().deleteFile();
-}
-
-void deleteLogs(const File& appDir) {
-  deleteAll(appDir, "*.log.*");
-  deleteAll(appDir, "il.*");  // TODO: doesn't work.
-}
-
-void redirectLogs(const File& appDir) {
-#if LOG_TO_STDERROR && JUCE_DEBUG && JUCE_MAC
-  FLAGS_logtostderr = true;
-#else
-  for (google::LogSeverity s = google::INFO; s < google::NUM_SEVERITIES; s++) {
-    String logName = String(google::LogSeverityNames[s]) + ".log.";
-    string logFile = str(appDir.getChildFile(logName));
-    google::SetLogSymlink(s, "");
-    google::SetLogDestination(s, logFile.c_str());
-  }
-#endif
-}
-
-}  // namespace
-
-void SupportWindow::init() {
-  File appDir = app::getAppDirectory();
-  deleteLogs(appDir);
-  redirectLogs(appDir);
-}
-
-void SupportWindow::constructInstance() {
-}
-
-void SupportWindow::doStartup() {
-}
-
-void SupportWindow::doPostStartup() {
-}
-
-void SupportWindow::doShutdown() {
-}
-
-Component* SupportWindow::getMainComponent() {
-  return NULL;
-}
-
-MenuBarModel* SupportWindow::getMenuBarModel() {
-  return NULL;
-}
-
-
 }  // namespace slow
 
 namespace support {
@@ -102,12 +45,7 @@ void initialize(app::GenericApplication* app) {
   app->quit();
 }
 
-void shutdown(app::GenericApplication*) {
-#ifdef DEBUG
-  Trans::dumpAll();
-#endif
-  data::deleteDataCenter();
-}
+void shutdown(app::GenericApplication*) {}
 
 }  // namespace support
 }  // namespace rec
