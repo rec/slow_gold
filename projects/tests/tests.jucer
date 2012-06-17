@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="es3cTdDXN" name="tests">
+  <MAINGROUP id="coWDZeNJn" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -124,6 +124,10 @@
             <FILE compile="0" file="../../src/rec/audio/format/raw/RawFormatWriter.h"
                   id="UX2GqV2Co" name="RawFormatWriter.h" resource="0"/>
           </GROUP>
+          <FILE compile="1" file="../../src/rec/audio/format/RegisterFormats.cpp"
+                id="35KiTVy8v" name="RegisterFormats.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/format/RegisterFormats.h"
+                id="Fb4x63kIa" name="RegisterFormats.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/audio/SampleRate.cpp" id="kMECgbzWD"
               name="SampleRate.cpp" resource="0"/>
@@ -1559,7 +1563,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="e916TMfpQ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="axmhvWo5c" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

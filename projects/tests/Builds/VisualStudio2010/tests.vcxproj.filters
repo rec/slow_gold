@@ -547,6 +547,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp">
       <Filter>tests\rec\audio\format\raw</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\RegisterFormats.cpp">
+      <Filter>tests\rec\audio\format</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\SampleRate.cpp">
       <Filter>tests\rec\audio</Filter>
     </ClCompile>
@@ -2612,6 +2615,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h">
       <Filter>tests\rec\audio\format\raw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\RegisterFormats.h">
+      <Filter>tests\rec\audio\format</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\SampleRate.h">
       <Filter>tests\rec\audio</Filter>

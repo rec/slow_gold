@@ -1,6 +1,5 @@
 #include "rec/audio/SampleRate.h"
 #include "rec/audio/format/Manager.h"
-#include "rec/audio/format/mpg123/Format.h"
 #include "rec/base/SampleTime.h"
 #include "rec/util/file/VirtualFile.h"
 
@@ -8,28 +7,16 @@ namespace rec {
 namespace audio {
 namespace format {
 
-namespace {
-
 using namespace juce;
 
-AudioFormatManager* getInstance() {
-  format::mpg123::initializeOnce();
-  ptr<AudioFormatManager> afm(new AudioFormatManager());
-  // afm->registerFormat(new format::mpg123::Format(), false);
-  afm->registerBasicFormats();
-
-  return afm.transfer();
-}
-
-}  // namespace
-
 AudioFormatManager* getReaderAudioFormatManager() {
-  static ptr<AudioFormatManager> instance(getInstance());
+  static ptr<AudioFormatManager> instance(createAudioFormatManager(READ));
   return instance.get();
 }
 
 AudioFormatManager* getWriterAudioFormatManager() {
-  return getReaderAudioFormatManager();
+  static ptr<AudioFormatManager> instance(createAudioFormatManager(WRITE));
+  return instance.get();
 }
 
 AudioFormatReader* createReader(const File& f) {

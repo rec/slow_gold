@@ -54,7 +54,7 @@ void Stretchy::setMasterTune(double detune) {
     implementation_->setMasterTune(detune_);
 }
 
-void Stretchy::setSampleRate(int sampleRate) {
+void Stretchy::setSampleRate(SampleRate sampleRate) {
   Lock l(lock_);
   sampleRate_ = sampleRate;
   if (implementation_)

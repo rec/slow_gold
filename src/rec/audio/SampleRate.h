@@ -6,10 +6,22 @@
 namespace rec {
 namespace audio {
 
-int getSampleRate();
-void setSampleRate(int);
+struct SampleRate {
+  SampleRate() : rate_(0) {}
+  SampleRate(int r) : rate_(r) {}
+  operator int() const { return rate_; }
+  SampleRate& operator=(int r) { rate_ = r; return *this; }
+  SampleRate& operator=(SampleRate r) { rate_ = r.rate_; return *this; }
 
-Broadcaster<int>* getSampleRateBroadcaster();
+ private:
+  int rate_;
+};
+
+
+SampleRate getSampleRate();
+void setSampleRate(SampleRate);
+
+Broadcaster<SampleRate>* getSampleRateBroadcaster();
 
 
 }  // namespace audio

@@ -5,37 +5,37 @@ namespace audio {
 
 namespace {
 
-struct SamplesPerSecond {
-  SamplesPerSecond() : sampleRate_(44100) {}
+struct SampleRateSingleton {
+  SampleRateSingleton() : sampleRate_(44100) {}
 
   CriticalSection lock_;
-  int sampleRate_;
-  Broadcaster<int> sampleRateBroadcaster_;
+  SampleRate sampleRate_;
+  Broadcaster<SampleRate> broadcaster_;
 };
 
-inline SamplesPerSecond* getSPS() {
-  static SamplesPerSecond sps;
+inline SampleRateSingleton* getSRS() {
+  static SampleRateSingleton sps;
   return &sps;
 }
 
 }  // namespace
 
-int getSampleRate() {
-  Lock l(getSPS()->lock_);
-  return getSPS()->sampleRate_;
+SampleRate getSampleRate() {
+  Lock l(getSRS()->lock_);
+  return getSRS()->sampleRate_;
 }
 
-void setSampleRate(int st) {
+void setSampleRate(SampleRate st) {
   {
-    Lock l(getSPS()->lock_);
+    Lock l(getSRS()->lock_);
     LOG(INFO) << "Setting sample rate to " << st;
-    getSPS()->sampleRate_ = st;
+    getSRS()->sampleRate_ = st;
   }
   getSampleRateBroadcaster()->broadcast(st);
 }
 
-Broadcaster<int>* getSampleRateBroadcaster() {
-  return &getSPS()->sampleRateBroadcaster_;
+Broadcaster<SampleRate>* getSampleRateBroadcaster() {
+  return &getSRS()->broadcaster_;
 }
 
 }  // namespace audio

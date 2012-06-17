@@ -1,6 +1,7 @@
 #ifndef __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__
 #define __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__
 
+#include "rec/audio/SampleRate.h"
 #include "rec/audio/stretch/Implementation.h"
 #include "rec/audio/stretch/Stretch.h"
 
@@ -27,14 +28,18 @@ class RubberBand : public Implementation {
 
   CriticalSection lock_;
   ptr<RubberBandStretcher> stretcher_;
+
+  // TODO: this duplicates everything in strechy.h...!
  	int channels_;
   int sampleRate_;
   double timeRatio_;
   double pitchScale_;
-  int chunkSize_;
   int maxProcessSize_;
   double detuneCents_;
   Stretch stretch_;
+
+  int retrieve(int copied, const AudioSourceChannelInfo&);
+  void process();
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(RubberBand);
 };
