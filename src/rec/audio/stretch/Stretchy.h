@@ -5,6 +5,7 @@
 
 #include <vector>
 
+#include "rec/audio/SampleRate.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 
@@ -33,7 +34,7 @@ class Stretchy : public source::Wrappy {
   }
 
   void setMasterTune(double detune);
-  void setSampleRate(int sampleRate);
+  void setSampleRate(SampleRate sampleRate);
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
@@ -48,7 +49,7 @@ class Stretchy : public source::Wrappy {
   bool bypass_;
   Stretch stretch_;
   double detune_;
-  int sampleRate_;
+  SampleRate sampleRate_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
 };

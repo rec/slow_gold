@@ -34,7 +34,6 @@ RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
 RubberBand::~RubberBand() {}
 
 void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  DLOG(INFO) << "RubberBand::getNextAudioBlock " << info.numSamples;
   if (!stretcher_) {
     LOG(ERROR) << "No stretcher!";
     Lock l(lock_);
@@ -43,41 +42,49 @@ void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
   for (int copied = 0; copied < info.numSamples; ) {
     Lock l(lock_);
-    if (int available = stretcher_->available()) {
-      float** out = info.buffer->getArrayOfChannels();
-      int startSample = info.startSample + copied;
-
-      std::vector<float*> output(channels_);
-      for (int c = 0; c < channels_; ++c)
-        output[c] = out[c] + startSample;
-
-      int samples = std::min(info.numSamples - copied, available);
-      DCHECK(samples);
-
-      int retrieved = stretcher_->retrieve(&output[0], samples);
+    if (int retrieved = retrieve(copied, info))
       copied += retrieved;
-      if (retrieved < samples) {
-        if (!retrieved) {
-          LOG_FIRST_N(ERROR, 4) << "No samples after promising " << samples;
-          return;
-        } else {
-          LOG_FIRST_N(ERROR, 4) << "Not as many samples as promised: "
-                                << retrieved << " vs " << samples;
-        }
-      }
-    } else {
-      float** input;
-      int chunkSize = chunkSize_;
-      if (size_t required = stretcher_->getSamplesRequired())
-        chunkSize = required;
-
-      {
-        ScopedUnlock m(lock_);
-        input = getSourceSamples(chunkSize);
-      }
-      stretcher_->process(input, chunkSize, false);
-    }
+    else
+      process();
   }
+}
+
+int RubberBand::retrieve(int copied, const AudioSourceChannelInfo& info) {
+  int available = stretcher_->available();
+  if (!available)
+    return 0;
+
+  float** out = info.buffer->getArrayOfChannels();
+  int startSample = info.startSample + copied;
+
+  std::vector<float*> output(channels_);
+  for (int c = 0; c < channels_; ++c)
+    output[c] = out[c] + startSample;
+
+  int samples = std::min(info.numSamples - copied, available);
+  DCHECK(samples);
+
+  int retrieved = stretcher_->retrieve(&output[0], samples);
+  if (retrieved < samples) {
+    LOG_FIRST_N(ERROR, 4) << "Not enough: " << retrieved << " vs " << samples;
+  }
+  return retrieved;
+}
+
+void RubberBand::process() {
+  float** input;
+  int required = stretcher_->getSamplesRequired();
+  if (!required) {
+    DLOG(ERROR) << "required nothing!";
+    required = 512;
+  }
+
+  {
+    ScopedUnlock m(lock_);
+    input = getSourceSamples(required);
+  }
+
+  stretcher_->process(input, required, false);
 }
 
 static const double EPSILON = 1e-6;
@@ -95,10 +102,8 @@ void RubberBand::stretchChanged() {
   double ps = pitchScale(stretch_, detuneCents_);
 
   if (!stretcher_) {
-    DLOG(INFO) << "new stretcher";
     stretcher_.reset(new RubberBandStretcher(sampleRate_, channels_,
                                              OPTIONS, tr, ps));
-    chunkSize_ = stretch_.chunk_size();
     maxProcessSize_ = stretch_.max_process_size();
     stretcher_->setMaxProcessSize(maxProcessSize_);
 

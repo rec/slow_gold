@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_AUDIOFORMATMANAGER__
 #define __REC_AUDIO_AUDIOFORMATMANAGER__
 
-#include "rec/base/base.h"
+#include "rec/audio/format/RegisterFormats.h"
 
 namespace rec {
 namespace audio {

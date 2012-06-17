@@ -3,7 +3,6 @@
 #include "rec/app/Files.h"
 #include "rec/base/SampleTime.h"
 
-
 namespace rec {
 namespace audio {
 
@@ -13,8 +12,8 @@ static File getDeviceFile() {
 
 Device::Device() {
   manager_.addChangeListener(this);
-  ptr<juce::XmlElement> state;
 
+  ptr<juce::XmlElement> state;
   File f = getDeviceFile();
   if (f.exists())
     state.reset(juce::XmlDocument::parse(f));
@@ -22,9 +21,8 @@ Device::Device() {
   String err = manager_.initialise(0, 2, state.get(), true);
   if (err.length())
     LOG(DFATAL) << "Couldn't initialize audio::Device, error " << str(err);
-  setupPage_.reset(new SetupPage(this));
 
-  //setSampleRateFromDevice();
+  setupPage_.reset(new SetupPage(this));
 }
 
 void Device::saveState() {
@@ -40,22 +38,14 @@ void Device::shutdown() {
   manager_.closeAudioDevice();
 }
 
-void Device::setSampleRateFromDevice() {
+void Device::changeListenerCallback(ChangeBroadcaster*) {
   AudioDeviceManager::AudioDeviceSetup setup;
   manager_.getAudioDeviceSetup(setup);
-  int rate = static_cast<int>(setup.sampleRate);
-  if (!rate) {
-    // TODO: default rate?  see
-    // http://www.rawmaterialsoftware.com/viewtopic.php?f=2&t=9359
-    LOG(ERROR) << "Zero sampleRate: using default";
-    rate = 44100;
-  }
 
-  setSampleRate(rate);
-}
-
-void Device::changeListenerCallback(ChangeBroadcaster*) {
-  setSampleRateFromDevice();
+  if (int rate = static_cast<int>(setup.sampleRate))
+    setSampleRate(rate);
+  else
+    LOG(ERROR) << "Zero sampleRate";
 }
 
 }  // namespace audio

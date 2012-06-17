@@ -21,8 +21,6 @@ class Device : public juce::ChangeListener {
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
  private:
-  void setSampleRateFromDevice();
-
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Device)
 };
 

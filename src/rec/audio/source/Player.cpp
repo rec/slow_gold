@@ -65,7 +65,7 @@ void Player::operator()(const StereoProto& s) {
   stereo_->setStereo(s);
 }
 
-void Player::operator()(int sampleRate) {
+void Player::operator()(SampleRate sampleRate) {
   stretchy_->setSampleRate(sampleRate);
 }
 
