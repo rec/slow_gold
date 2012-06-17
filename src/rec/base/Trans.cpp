@@ -52,7 +52,7 @@ void Trans::dumpAll() {
 
 void Trans::translate() const {
   translated_.reset(new String(::juce::translate(original_)));
-#ifdef DEBUG
+#if JUCE_DEBUG && JUCE_MAC
   addTranslation(original_, hint_);
 #endif
 }

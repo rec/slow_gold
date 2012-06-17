@@ -147,7 +147,7 @@ void initialize(app::GenericApplication*) {
 }
 
 void shutdown(app::GenericApplication*) {
-#ifdef DEBUG
+#if JUCE_DEBUG && JUCE_MAC
   Trans::dumpAll();
 #endif
   data::deleteDataCenter();
