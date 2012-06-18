@@ -165,13 +165,13 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReaderImpl.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferFiller.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\SampleTime.cpp"/>
@@ -1494,6 +1494,7 @@
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\AudioFormatOutputDescription.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\Manager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h"/>
@@ -1524,6 +1525,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReaderImpl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferFiller.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h"/>
@@ -1531,7 +1533,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\base.h"/>

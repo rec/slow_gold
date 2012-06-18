@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="S9k7GwbE0" name="SlowGold">
+  <MAINGROUP id="wG5JJfmHu" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -66,6 +66,8 @@
         <FILE compile="0" file="../../src/rec/audio/Device.h" id="i4cdZKbW0"
               name="Device.h" resource="0"/>
         <GROUP id="S2Foy1vih" name="format">
+          <FILE compile="0" file="../../src/rec/audio/format/AudioFormatOutputDescription.h"
+                id="BtAXRGp6i" name="AudioFormatOutputDescription.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/format/Manager.cpp" id="mjSB2uVuQ"
                 name="Manager.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/format/Manager.h" id="GgAcCCZ0d"
@@ -176,6 +178,10 @@
                 id="EUOquSCTi" name="BufferedReader.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/BufferedReader.h"
                 id="C9x7me5SI" name="BufferedReader.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/BufferedReaderImpl.cpp"
+                id="hctYFH3oF" name="BufferedReaderImpl.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/BufferedReaderImpl.h"
+                id="CFlfK1Hgm" name="BufferedReaderImpl.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/BufferFiller.cpp"
                 id="XFzHmhd7A" name="BufferFiller.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/BufferFiller.h" id="hdbt4nh3h"
@@ -202,10 +208,6 @@
                 name="Gain.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Gain.h" id="91KIiQ8qN"
                 name="Gain.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/util/MakeBufferedReader.cpp"
-                id="5IVxm9aJ4" name="MakeBufferedReader.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/MakeBufferedReader.h"
-                id="KSlkZDKHC" name="MakeBufferedReader.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ProcessAudioFile.cpp"
                 id="JYlfsO3w8" name="ProcessAudioFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/ProcessAudioFile.h"
@@ -1507,7 +1509,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="eSd328SQ2" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="nox0M69Ow" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

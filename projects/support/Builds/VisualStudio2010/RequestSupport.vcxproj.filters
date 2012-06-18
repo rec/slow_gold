@@ -568,6 +568,9 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReaderImpl.cpp">
+      <Filter>RequestSupport\rec\audio\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferFiller.cpp">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClCompile>
@@ -584,9 +587,6 @@
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp">
-      <Filter>RequestSupport\rec\audio\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.cpp">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp">
@@ -2496,6 +2496,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h">
       <Filter>RequestSupport\rec\audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\AudioFormatOutputDescription.h">
+      <Filter>RequestSupport\rec\audio\format</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\Manager.h">
       <Filter>RequestSupport\rec\audio\format</Filter>
     </ClInclude>
@@ -2583,6 +2586,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReaderImpl.h">
+      <Filter>RequestSupport\rec\audio\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferFiller.h">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClInclude>
@@ -2602,9 +2608,6 @@
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h">
-      <Filter>RequestSupport\rec\audio\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.h">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h">

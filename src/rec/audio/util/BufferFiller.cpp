@@ -1,7 +1,7 @@
 #include "rec/audio/util/BufferFiller.h"
 
 #include "rec/audio/util/CachedThumbnail.h"
-#include "rec/audio/util/MakeBufferedReader.h"
+#include "rec/audio/util/BufferedReaderImpl.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/audio/util/BufferedReader.h"

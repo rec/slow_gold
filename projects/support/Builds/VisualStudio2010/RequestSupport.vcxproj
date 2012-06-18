@@ -37,12 +37,12 @@
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">RequestSupport 1</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">RequestSupport</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath);..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\debug\\static;..\\..\\..\\..\\..\\glog\\Debug;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug</LibraryPath>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">RequestSupport 8</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">RequestSupport</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath);..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\release\\static;..\\..\\..\\..\\..\\glog\\Release;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Release;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Release</LibraryPath>
   </PropertyGroup>
@@ -74,18 +74,18 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\RequestSupport 1.exe</OutputFile>
+      <OutputFile>$(OutDir)\RequestSupport.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\RequestSupport 1.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\RequestSupport.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalOptions>ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\RequestSupport 1.bsc</OutputFile>
+      <OutputFile>$(IntDir)\RequestSupport.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,11 +115,11 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\RequestSupport 8.exe</OutputFile>
+      <OutputFile>$(OutDir)\RequestSupport.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\RequestSupport 8.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\RequestSupport.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
@@ -128,7 +128,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\RequestSupport 8.bsc</OutputFile>
+      <OutputFile>$(IntDir)\RequestSupport.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -158,13 +158,13 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReaderImpl.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferFiller.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\SampleTime.cpp"/>
@@ -1467,6 +1467,7 @@
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Device.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\AudioFormatOutputDescription.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\Manager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h"/>
@@ -1496,6 +1497,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretchy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferedReaderImpl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferFiller.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h"/>
@@ -1503,7 +1505,6 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\MakeBufferedReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\base.h"/>

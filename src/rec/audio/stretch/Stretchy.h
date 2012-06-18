@@ -44,6 +44,8 @@ class Stretchy : public source::Wrappy {
 
   ptr<Implementation> implementation_;
   Stretch::Strategy strategy_;
+
+  // TODO: this is duplicated in RubberBand.h!
   int channels_;
   double timeScale_;
   bool bypass_;
