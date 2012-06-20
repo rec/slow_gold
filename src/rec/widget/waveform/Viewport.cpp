@@ -10,10 +10,10 @@ namespace widget {
 namespace waveform {
 
 void addLoopPointToViewport(const VirtualFile& file, SampleTime time) {
-  Viewport vp = data::getProto<Viewport>(&file);
+  Viewport vp = data::getProto<Viewport>(file);
   LoopPointList *lpl = vp.mutable_loop_points();
   *lpl = audio::addLoopPoint(*lpl, time);
-  data::setProto(vp, &file);
+  data::setProto(vp, file);
 }
 
 }  // namespace waveform

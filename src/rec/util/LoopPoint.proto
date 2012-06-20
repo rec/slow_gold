@@ -10,4 +10,5 @@ message LoopPoint {
 message LoopPointList {
   repeated LoopPoint loop_point = 1;
   optional int64 length = 2;
+  optional double sample_rate = 3;
 };

@@ -19,9 +19,9 @@ LoopPointList cutSelected(const LoopPointList& loops, bool selected);
 LoopPointList addLoopPoints(const LoopPointList&, const LoopPointList&);
 LoopPointList addLoopPoint(const LoopPointList&, SampleTime);
 
-inline SampleTime closeLoops() {
-  return SampleTime(0.05);
-}
+static const RealTime CLOSE_LOOPS = 0.05;
+
+// inline RealTime closeLoopsTime() { return RealTime(0.05); }
 
 void sort(LoopPointList*);
 

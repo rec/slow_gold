@@ -12,6 +12,12 @@ inline const VirtualFile& none() {
   return VirtualFile::default_instance();
 }
 
+inline const VirtualFile global() {
+  VirtualFile vf;
+  vf.set_type(VirtualFile::GLOBAL);
+  return vf;
+}
+
 const File getRealFile(const VirtualFile&);
 const File getShadowDirectory(const VirtualFile&);
 
@@ -32,9 +38,6 @@ inline const string toString(const VirtualFile* f) {
 }
 
 bool compare(const VirtualFile& x, const VirtualFile& y);
-
-// TODO: conflicts with the idea of data::empty().
-bool empty(const VirtualFile&);
 
 VirtualFile toVirtualFile(const File& file);
 VirtualFile toVirtualFile(const string& s);

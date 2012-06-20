@@ -7,6 +7,7 @@ message VirtualFile {
     MUSIC = 2;
     USER = 3;
     VOLUME = 4;
+    GLOBAL = 5;
   };
 
   enum Status {

@@ -47,7 +47,7 @@ CurrentFile::~CurrentFile() {}
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (files.file_size() >= 1)
-    setDataFile(&files.file(0));
+    setVirtualFile(files.file(0));
 }
 
 void CurrentFile::setFile(const File& f) {
@@ -55,7 +55,7 @@ void CurrentFile::setFile(const File& f) {
 }
 
 void CurrentFile::operator()(const VirtualFile& vf) {
-  setDataFile(&vf);
+  setVirtualFile(vf);
 }
 
 const SampleTime CurrentFile::length() const {
@@ -63,11 +63,7 @@ const SampleTime CurrentFile::length() const {
   return length_;
 }
 
-void CurrentFile::setVirtualFile(const VirtualFile& vf) {
-  setDataFile(&vf);
-}
-
-void CurrentFile::setDataFile(DataFile f, bool showError) {
+void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   data::getDataCenter().waitTillClear();
   data::getDataCenter().clearUndoes();
 
@@ -75,56 +71,51 @@ void CurrentFile::setDataFile(DataFile f, bool showError) {
   instance_->reset();
   currentTime()->reset();
 
-  if (file_)
-    gui::addRecentFile(*file_, data::get<music::Metadata>(file_.get()));
+  if (file_.path_size())
+    gui::addRecentFile(file_, data::getProto<music::Metadata>(file_));
 
-  ptr<VirtualFile> newFile(f ? new VirtualFile(*f) : NULL);
+  VirtualFile newFile = f;
   {
     Lock l(instance_->lock_);
-    file_.swap(newFile);
+    file_.Swap(&newFile);
   }
 
   {
     MessageManagerLock l;
-    if (file_)
-      components()->directoryTree_->refreshNode(*file_);
-    if (newFile)
-      components()->directoryTree_->refreshNode(*newFile);
-    components()->setEnabled(file_);
+
+    if (file_.path_size())
+      components()->directoryTree_->refreshNode(file_);
+
+    if (newFile.path_size())
+      components()->directoryTree_->refreshNode(newFile);
+
+    components()->setEnabled(file_.path_size());
     components()->waveform_->setLoading(true);
     components()->waveform_->repaint();
   }
 
-  if (false) {
-    thread::runInNewThread("CurrentFile loading", 5, this,
-                           &CurrentFile::continueLoading, showError);
-  } else {
-    continueLoading(showError);
-  }
-}
-
-void CurrentFile::continueLoading(bool showError) {
   length_ = getFileLength(showError);
 
   if (length_)
     setViewport();
 
   components()->waveform_->setLoading(false);
-  data::setGlobal(file_ ? *file_ : VirtualFile(), CANT_UNDO);
-  data::UntypedDataListener::setGlobalDataFile(file_.get());
+  data::setGlobal(file_, CANT_UNDO);
+  data::UntypedDataListener::setGlobalDataFile(file_);
 
-  if (file_)
+  if (file_.path_size())
     instance_->fillerThread_->startThread();
+
   menus()->menuItemsChanged();
 }
 
 int64 CurrentFile::getFileLength(bool showError) {
-  if (!file_ || file::empty(*file_))
+  if (!file_.path_size())
     return 0;
 
-  music::MusicFileReader reader(*file_);
+  music::MusicFileReader reader(file_);
   if (!reader.empty()) {
-    if (int64 len = bufferFiller()->setReader(*file_, reader.transfer()))
+    if (int64 len = bufferFiller()->setReader(file_, reader.transfer()))
       return len;
     reader.setError(RAN_OUT_OF_MEMORY, RAN_OUT_OF_MEMORY_FULL);
   }
@@ -138,16 +129,16 @@ int64 CurrentFile::getFileLength(bool showError) {
                                       reader.errorDetails());
   }
 
-  file_->Clear();
+  file_.Clear();
   return 0;
 }
 
 void CurrentFile::setViewport() {
-  Viewport viewport = data::getProto<Viewport>(file_.get());
+  Viewport viewport = data::getProto<Viewport>(file_);
 
   if (!viewport.has_zoom()) {
     Zoom* zoom = viewport.mutable_zoom();
-    *zoom = data::getProto<Zoom>(file_.get());  // Legacy files.
+    *zoom = data::getProto<Zoom>(file_);  // Legacy files.
     if (!zoom->has_begin())
       zoom->set_begin(0);
     if (!zoom->has_end())
@@ -156,13 +147,13 @@ void CurrentFile::setViewport() {
 
   if (!viewport.has_loop_points()) {
     LoopPointList* loops = viewport.mutable_loop_points();
-    *loops = data::getProto<LoopPointList>(file_.get());  // Legacy files.
+    *loops = data::getProto<LoopPointList>(file_);  // Legacy files.
     if (!loops->loop_point_size())
       loops->add_loop_point()->set_selected(true);
   }
 
   viewport.mutable_loop_points()->set_length(length_);
-  data::setProto(viewport, file_.get(), CANT_UNDO);
+  data::setProto(viewport, file_, CANT_UNDO);
 }
 
 void CurrentFile::translateAll() {
@@ -171,7 +162,7 @@ void CurrentFile::translateAll() {
 }
 
 const VirtualFile CurrentFile::file() const {
-  return file_ ? *file_ : VirtualFile();
+  return file_;
 }
 
 }  // namespace slow

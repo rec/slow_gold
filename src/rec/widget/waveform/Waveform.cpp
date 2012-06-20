@@ -61,7 +61,8 @@ Waveform::Waveform(MenuBarModel* m)
       model_(new WaveformModel),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT),
-      loading_(false) {
+      loading_(false),
+      sampleRate_(44100.0) {
   setName("Waveform");
   setTooltip(
       Trans("Waveform Window: "
@@ -99,7 +100,7 @@ const CursorProto& Waveform::defaultTimeCursor() {
 
 void Waveform::paint(Graphics& g) {
   Lock l(lock_);
-  painter_->paint(g, model_->getTimeRange(), loading_);
+  painter_->paint(g, model_->getTimeRange(), loading_, sampleRate_);
 }
 
 void Waveform::resized() {
@@ -127,6 +128,11 @@ void Waveform::operator()(const Viewport& vp) {
     model_->setViewport(vp);
   }
   viewportChanged();
+}
+
+void Waveform::setSampleRate(SampleRate rate) {
+  Lock l(lock_);
+  sampleRate_ = rate;
 }
 
 void Waveform::viewportChanged() {

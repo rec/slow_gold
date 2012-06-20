@@ -16,8 +16,6 @@ const double CENTS_PER_SEMITONE = 100.0;
 const double SEMITONE_LOG = SEMITONES_PER_OCTAVE / log(OCTAVE);
 const double MIN_DETUNE_DIFFERENCE = 0.05;
 
-}
-
 double timeScale(const Stretch& d) {
   if (!d.enabled() || d.time_disabled())
     return NO_SCALE;
@@ -46,6 +44,21 @@ double pitchScale(const Stretch& d, double detuneCents) {
 
 double pitchSemitones(const Stretch& d, double detuneCents) {
   return SEMITONE_LOG * log(pitchScale(d, detuneCents));
+}
+
+}  // namespace
+
+double timeScale(const StretchParameters& sp) {
+  return (sp.input_sample_rate() * timeScale(sp.stretch())) /
+    sp.output_sample_rate();
+}
+
+double pitchScale(const StretchParameters& sp) {
+  return pitchScale(sp.stretch(), sp.master_tune());
+}
+
+double pitchSemitones(const StretchParameters& sp) {
+  return pitchSemitones(sp.stretch(), sp.master_tune());
 }
 
 }  // namespace stretch

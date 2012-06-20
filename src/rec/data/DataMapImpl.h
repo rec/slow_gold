@@ -17,7 +17,7 @@ class DataMapImpl : public DataMap {
   explicit DataMapImpl(MessageMaker* m, DataMaker* d);
   virtual ~DataMapImpl();
 
-  virtual Data* getData(const string& typeName, DataFile vf);
+  virtual Data* getData(const string& typeName, const VirtualFile& vf);
   virtual void removeData(Data*);
   virtual void updateAll();
 

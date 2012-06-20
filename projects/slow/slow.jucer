@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="wG5JJfmHu" name="SlowGold">
+  <MAINGROUP id="88OT6XMc4" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -123,10 +123,10 @@
           <FILE compile="0" file="../../src/rec/audio/format/RegisterFormats.h"
                 id="mSYP9BK71" name="RegisterFormats.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/audio/SampleRate.cpp" id="m2yd6s9Nw"
-              name="SampleRate.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/audio/SampleRate.h" id="fLkOyEBpp"
-              name="SampleRate.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/audio/OutputSampleRate.cpp" id="I2e4iAsoZ"
+              name="OutputSampleRate.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/audio/OutputSampleRate.h" id="K7w7VpB03"
+              name="OutputSampleRate.h" resource="0"/>
         <GROUP id="b8BqRCwS0" name="source">
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="INckdPuI1"
                 name="Empty.h" resource="0"/>
@@ -239,12 +239,12 @@
               resource="0"/>
         <FILE compile="0" file="../../src/rec/base/ptr.h" id="AHZFSiAe4" name="ptr.h"
               resource="0"/>
-        <FILE compile="1" file="../../src/rec/base/RealTime.cpp" id="bk0C38BTS"
+        <FILE compile="1" file="../../src/rec/base/RealTime.cpp" id="v4eP92z4i"
               name="RealTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/RealTime.h" id="F7kxwTmOD"
               name="RealTime.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/base/SampleTime.cpp" id="0WMUXxzQE"
-              name="SampleTime.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/base/SampleRate.h" id="4KSdFqjeC"
+              name="SampleRate.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/SampleTime.h" id="cyuT5PBiB"
               name="SampleTime.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/scoped_array.h" id="3asMQNGV0"
@@ -365,8 +365,6 @@
               name="DataCenter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataCenter.h" id="Sx1zkS7gm"
               name="DataCenter.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/DataFile.h" id="di2qfdkZU"
-              name="DataFile.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/DataImpl.cpp" id="MAnft7K0o"
               name="DataImpl.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/DataImpl.h" id="9T2kuIbje"
@@ -1509,7 +1507,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="nox0M69Ow" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="UbiqN3vKs" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

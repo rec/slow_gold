@@ -3,6 +3,8 @@
 
 #include "rec/app/Window.h"
 #include "rec/audio/Audio.h"
+#include "rec/base/SampleRate.h"
+#include "rec/base/SampleTime.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
@@ -43,6 +45,7 @@ class Instance {
   void updateGui();
   bool empty() const;
   audio::Source* makeSource() const;
+  SampleRate getSourceSampleRate() const;
   void setProto(const Message&, Undoable undoable = CAN_UNDO);
   void reset();
 

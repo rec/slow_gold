@@ -42,11 +42,12 @@ enum VirtualFile_Type {
   VirtualFile_Type_CD = 1,
   VirtualFile_Type_MUSIC = 2,
   VirtualFile_Type_USER = 3,
-  VirtualFile_Type_VOLUME = 4
+  VirtualFile_Type_VOLUME = 4,
+  VirtualFile_Type_GLOBAL = 5
 };
 bool VirtualFile_Type_IsValid(int value);
 const VirtualFile_Type VirtualFile_Type_Type_MIN = VirtualFile_Type_NONE;
-const VirtualFile_Type VirtualFile_Type_Type_MAX = VirtualFile_Type_VOLUME;
+const VirtualFile_Type VirtualFile_Type_Type_MAX = VirtualFile_Type_GLOBAL;
 const int VirtualFile_Type_Type_ARRAYSIZE = VirtualFile_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* VirtualFile_Type_descriptor();
@@ -142,6 +143,7 @@ class VirtualFile : public ::google::protobuf::Message {
   static const Type MUSIC = VirtualFile_Type_MUSIC;
   static const Type USER = VirtualFile_Type_USER;
   static const Type VOLUME = VirtualFile_Type_VOLUME;
+  static const Type GLOBAL = VirtualFile_Type_GLOBAL;
   static inline bool Type_IsValid(int value) {
     return VirtualFile_Type_IsValid(value);
   }

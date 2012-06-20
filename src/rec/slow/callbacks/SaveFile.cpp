@@ -1,16 +1,17 @@
 #include "rec/slow/callbacks/SaveFile.h"
 
 #include "rec/audio/Audio.h"
-#include "rec/audio/SampleRate.h"
+#include "rec/audio/OutputSampleRate.h"
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/audio/format/Manager.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/stretch/Stretch.h"
-#include "rec/audio/stretch/Stretchy.h"
+#include "rec/audio/stretch/Implementation.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/base/ArraySize.h"
+#include "rec/base/SampleRate.h"
 #include "rec/base/Trans.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/music/Metadata.h"
@@ -70,7 +71,8 @@ File getBaseFile(Instance* instance, const String& suffix,
     file = File::getSpecialLocation(File::userMusicDirectory);
 
   String baseName = instance->window_->getName();
-  Stretch stretch = instance->player_->stretchy()->getStretch();
+  const StretchParameters stretch = instance->player_->stretchy()->
+    implementation()->stretch();
   double ts = 100.0 / audio::stretch::timeScale(stretch);
 
   if (!near(ts, 100.0, 0.05)) {
@@ -81,8 +83,7 @@ File getBaseFile(Instance* instance, const String& suffix,
       baseName += String::formatted(" at %.1f", ts);
   }
 
-  double ps = audio::stretch::pitchSemitones(stretch,
-                                             audioSettings.master_tune());
+  double ps = audio::stretch::pitchSemitones(stretch);
   if (!near(ps, 0.0, 0.005)) {
     const Trans& sign = (ps > 0) ? UP : DOWN;
     ps = abs(ps);
@@ -191,7 +192,7 @@ class SaveThread : public ThreadWithProgressWindow {
     }
 
     setProgress(0.0);
-    source_->prepareToPlay(COPY_BLOCK_SIZE, audio::getSampleRate());
+    source_->prepareToPlay(COPY_BLOCK_SIZE, audio::getOutputSampleRate());
     String name = file_.getFileName();
     setStatusMessage(String::formatted(SAVING_FILE, c_str(name)));
 
@@ -217,8 +218,8 @@ class SaveThread : public ThreadWithProgressWindow {
   void setFile() {
     const VirtualFile vf = instance_->currentFile_.get()->file();
     const VirtualFile newVf = file::toVirtualFile(file_);
-    data::setProto(data::getProto<music::Metadata>(vf), &newVf, CANT_UNDO);
-    data::setProto(viewport_, &newVf, CANT_UNDO);
+    data::setProto(data::getProto<music::Metadata>(vf), newVf, CANT_UNDO);
+    data::setProto(viewport_, newVf, CANT_UNDO);
     instance_->currentFile_->setFile(file_);
   }
 
@@ -275,8 +276,9 @@ void doSaveFile(Instance* instance, bool useSelection) {
   SampleTime len = useSelection ?
     instance->player_->getSelectionLength() : SampleTime(s->getTotalLength());
 
-
-  if (len <= audio::minimumFileSize()) {
+  SampleTime minSize = SampleTime(audio::MINIMUM_FILE_SIZE,
+                                  instance->getSourceSampleRate());
+  if (len <= minSize) {
     // TODO: this code duplicates code in CreateMusicFileReader.
     String e = String::formatted(music::FILE_TOO_SMALL_FULL, "save");
     AlertWindow::showMessageBox(AlertWindow::InfoIcon, music::FILE_TOO_SMALL,
@@ -284,7 +286,8 @@ void doSaveFile(Instance* instance, bool useSelection) {
     return;
   }
 
-  AudioSettings::FileType t = data::getGlobal<AudioSettings>().file_type_for_save();
+  AudioSettings::FileType t = data::getGlobal<AudioSettings>().
+    file_type_for_save();
   File file = getSaveFile(instance, t);
   if (file != File::nonexistent) {
     String name = String::formatted(SAVING_FILE, c_str(file.getFileName()));

@@ -58,11 +58,6 @@ const File getFileFromPath(File f, const Path& path, ConversionType conv) {
 }
 
 const File getRootFile(const VirtualFile& v) {
-  if (v.type() == VirtualFile::CD) {
-    CHECK_NE(v.type(), VirtualFile::CD);
-    // TODO: come up with a better way to prevent this.
-  }
-
   if (v.type() == VirtualFile::MUSIC) {
     DCHECK_EQ(v.volume_name(), "");
     return File::getSpecialLocation(File::userMusicDirectory);
@@ -84,7 +79,7 @@ const File getRootFile(const VirtualFile& v) {
 
 const File getShadowDirectory(const VirtualFile& vf) {
   const File appDir = app::getAppDirectory();
-  if (empty(vf))
+  if (!vf.path_size())
     return appDir;
 
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
@@ -97,6 +92,7 @@ const File getRealFile(const VirtualFile& file) {
 }
 
 const String getFilename(const VirtualFile& file) {
+  DLOG(INFO) << file.type();
   return file.path_size() ? str(file.path().end()[-1]) : String(Trans("<none>"));
 }
 
@@ -116,6 +112,12 @@ const String getDisplayName(const VirtualFile& file) {
     eraseVolumePrefix(&name, false);
     return name.empty() ? String(Trans("<Root>")) : str(name);
   }
+
+  if (type == VirtualFile::NONE)
+    return "<None>";
+
+  if (type == VirtualFile::GLOBAL)
+    return "<Global>";
 
   return "<Unknown Virtual>";
 }
@@ -155,10 +157,6 @@ bool compare(const VirtualFile& x, const VirtualFile& y) {
     if (y.path(i) < x.path(i))
       return false;
   }
-}
-
-bool empty(const VirtualFile& f) {
-  return !f.has_type();
 }
 
 VirtualFile toVirtualFile(const File& file) {

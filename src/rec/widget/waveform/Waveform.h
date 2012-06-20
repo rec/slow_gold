@@ -72,6 +72,7 @@ class Waveform : public Component,
   const WaveformModel& model() { return *model_; }
   static void translateAll();
   void setLoading(bool loading);
+  void setSampleRate(SampleRate);
 
  private:
   void layout();
@@ -90,6 +91,7 @@ class Waveform : public Component,
 
   juce::MouseCursor	zoomCursor_;
   bool loading_;
+  SampleRate sampleRate_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 

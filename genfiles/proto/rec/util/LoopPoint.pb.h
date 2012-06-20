@@ -232,6 +232,13 @@ class LoopPointList : public ::google::protobuf::Message {
   inline ::google::protobuf::int64 length() const;
   inline void set_length(::google::protobuf::int64 value);
   
+  // optional double sample_rate = 3;
+  inline bool has_sample_rate() const;
+  inline void clear_sample_rate();
+  static const int kSampleRateFieldNumber = 3;
+  inline double sample_rate() const;
+  inline void set_sample_rate(double value);
+  
   // @@protoc_insertion_point(class_scope:rec.util.LoopPointList)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -239,11 +246,12 @@ class LoopPointList : public ::google::protobuf::Message {
   
   ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint > loop_point_;
   ::google::protobuf::int64 length_;
+  double sample_rate_;
   friend void  protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fLoopPoint_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -425,6 +433,22 @@ inline ::google::protobuf::int64 LoopPointList::length() const {
 inline void LoopPointList::set_length(::google::protobuf::int64 value) {
   _set_bit(1);
   length_ = value;
+}
+
+// optional double sample_rate = 3;
+inline bool LoopPointList::has_sample_rate() const {
+  return _has_bit(2);
+}
+inline void LoopPointList::clear_sample_rate() {
+  sample_rate_ = 0;
+  _clear_bit(2);
+}
+inline double LoopPointList::sample_rate() const {
+  return sample_rate_;
+}
+inline void LoopPointList::set_sample_rate(double value) {
+  _set_bit(2);
+  sample_rate_ = value;
 }
 
 

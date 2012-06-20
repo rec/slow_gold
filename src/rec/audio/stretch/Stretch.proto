@@ -44,3 +44,10 @@ message Stretch {
   optional uint32 thread_priority = 18   [default = 4];
   optional uint32 max_process_size = 19 [default = 16364];
 };
+
+message StretchParameters {
+  optional Stretch stretch = 1;
+  optional double master_tune = 2;
+  optional double input_sample_rate = 3;
+  optional double output_sample_rate = 4;
+};

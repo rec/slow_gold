@@ -1,9 +1,8 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/source/Empty.h"
+#include "rec/audio/stretch/Implementation.h"
 #include "rec/util/Math.h"
 #include "rec/util/block/Block.h"
-
-// #include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace audio {
@@ -53,12 +52,13 @@ void Player::setState(State s) {
   }
 }
 
-void Player::setSource(Source* source) {
+void Player::setSource(Source* source, SampleRate inputSampleRate) {
   timer_->setSource(source);
+  stretchy_->implementation()->setInputSampleRate(inputSampleRate);
 }
 
 void Player::operator()(const AudioSettings& settings) {
-  stretchy_->setMasterTune(settings.master_tune());
+  stretchy_->implementation()->setMasterTune(settings.master_tune());
 }
 
 void Player::operator()(const StereoProto& s) {
@@ -66,12 +66,12 @@ void Player::operator()(const StereoProto& s) {
 }
 
 void Player::operator()(SampleRate sampleRate) {
-  stretchy_->setSampleRate(sampleRate);
+  stretchy_->implementation()->setOutputSampleRate(sampleRate);
 }
 
 void Player::operator()(const Stretch& stretch) {
   level_.clear();
-  stretchy_->setStretch(stretch);
+  stretchy_->implementation()->setStretch(stretch);
 }
 
 void Player::operator()(const Viewport& viewport) {
@@ -79,7 +79,7 @@ void Player::operator()(const Viewport& viewport) {
 }
 
 SampleTime Player::getSelectionLength() const {
-  double s = stretch::timeScale(stretchy_->getStretch());
+  double s = stretchy_->implementation()->timeScale();
   return static_cast<int64>(s * selection_->getCorrectTotalLength());
 }
 
@@ -113,11 +113,8 @@ Source* Player::makeSourceCopy(Source* s, bool useSelection) {
     source.reset(selection.transfer());
   }
 
-  ptr<Stretchy> stretchy(new Stretchy(source.transfer()));
-  stretchy->setStretch(stretchy_->getStretch());
+  ptr<Stretchy> stretchy(new Stretchy(source.transfer(), *stretchy_));
   source.reset(stretchy.transfer());
-
-  // TODO: we don't take into account the final "gain" slider.
   return source.transfer();
 }
 

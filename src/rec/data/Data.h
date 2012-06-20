@@ -3,7 +3,6 @@
 
 #include <google/protobuf/message.h>
 
-#include "rec/data/DataFile.h"
 #include "rec/util/Listener.h"
 #include "rec/util/Proto.h"
 #include "rec/util/file/VirtualFile.h"
@@ -65,14 +64,14 @@ class Data : public Broadcaster<const Message&> {
   template <typename Proto> friend class Opener;
 };
 
-Data* getData(const string& typeName, DataFile vf);
+Data* getData(const string& typeName, const VirtualFile& vf);
 
 template <typename Proto>
-Data* getData(DataFile vf) {
+Data* getData(const VirtualFile& vf) {
   return getData(getTypeName<Proto>(), vf);
 }
 
-inline Data* getData(const Message& m, DataFile vf) {
+inline Data* getData(const Message& m, const VirtualFile& vf) {
   return getData(getTypeName(m), vf);
 }
 

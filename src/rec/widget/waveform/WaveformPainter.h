@@ -17,7 +17,8 @@ class WaveformModel;
 class WaveformPainter {
  public:
   WaveformPainter(Waveform* w);
-  void paint(Graphics&, const Range<SampleTime >&, bool loading);
+  void paint(Graphics&, const Range<SampleTime >&, bool loading,
+             SampleRate rate);
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
 
@@ -28,6 +29,7 @@ class WaveformPainter {
   Waveform* waveform_;
   juce::AudioThumbnail* thumbnail_;
   const WaveformModel& model_;
+  SampleRate sampleRate_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformPainter);
 };

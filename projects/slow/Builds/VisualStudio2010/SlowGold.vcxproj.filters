@@ -538,7 +538,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\format\RegisterFormats.cpp">
       <Filter>SlowGold\rec\audio\format</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\SampleRate.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\audio\OutputSampleRate.cpp">
       <Filter>SlowGold\rec\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp">
@@ -593,9 +593,6 @@
       <Filter>SlowGold\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
-      <Filter>SlowGold\rec\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\base\SampleTime.cpp">
       <Filter>SlowGold\rec\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp">
@@ -2541,7 +2538,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\format\RegisterFormats.h">
       <Filter>SlowGold\rec\audio\format</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\SampleRate.h">
+    <ClInclude Include="..\..\..\..\src\rec\audio\OutputSampleRate.h">
       <Filter>SlowGold\rec\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h">
@@ -2652,6 +2649,9 @@
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h">
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\SampleRate.h">
+      <Filter>SlowGold\rec\base</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\SampleTime.h">
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
@@ -2743,9 +2743,6 @@
       <Filter>SlowGold\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h">
-      <Filter>SlowGold\rec\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\DataFile.h">
       <Filter>SlowGold\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\DataImpl.h">

@@ -35,6 +35,7 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
 
 void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
   SampleTime time = snap->instance_->time();
+
   int size = snap->loops_->loop_point_size();
   int segment = audio::getSegment(*snap->loops_, time);
   int p = pos.toIndex(segment, size);
@@ -42,7 +43,7 @@ void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
   // Special case for "jump back";
   if (pos == command::CommandIDEncoder::PREVIOUS &&
       (time - snap->loops_->loop_point(segment).time()) >=
-      SampleTime(MAX_JUMP_TIME)) {
+      SampleTime(MAX_JUMP_TIME, snap->loops_->sample_rate())) {
     p = segment;
   }
 

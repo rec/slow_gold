@@ -9,27 +9,17 @@ static const int PRELOAD = 10000;  // TODO:  duplicate code.
 SampleTime BufferedReader::setReader(AudioFormatReader* reader) {
   Lock l(lock_);
   reset();
+  reader_.reset(reader);
 
-  if (!reader) {
-    reader_.reset();
+  if (!reader_)
     return 0;
-  }
 
   SampleTime size = reader->lengthInSamples;
   if (!setLength(size)) {
     LOG(ERROR) << "Ran out of memory, unable to set frame length";
+    reader_.reset();
     return 0;
   }
-
-  setLength(size);
-  reader_.reset(reader);
-  DLOG(INFO)
-    << " sampleRate: " << reader_->sampleRate
-    << " bitsPerSample: " << reader_->bitsPerSample
-    << " lengthInSamples: " << reader_->lengthInSamples
-    << " numChannels: " << reader_->numChannels
-    << " usesFloatingPointData: " << reader_->usesFloatingPointData
-    << " metadataValues: " << str(reader_->metadataValues.getDescription());
 
   return size;
 }

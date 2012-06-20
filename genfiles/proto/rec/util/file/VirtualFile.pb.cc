@@ -105,17 +105,17 @@ void protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/util/file/VirtualFile.proto\022\rrec.u"
-    "til.file\"\314\002\n\013VirtualFile\0223\n\004type\030\001 \001(\0162\037"
+    "til.file\"\330\002\n\013VirtualFile\0223\n\004type\030\001 \001(\0162\037"
     ".rec.util.file.VirtualFile.Type:\004NONE\022\023\n"
     "\013volume_name\030\002 \001(\t\022\014\n\004path\030\003 \003(\t\0229\n\006stat"
     "us\030\004 \001(\0162!.rec.util.file.VirtualFile.Sta"
-    "tus:\006ONLINE\022\017\n\007cd_name\030\005 \001(\t\"9\n\004Type\022\010\n\004"
+    "tus:\006ONLINE\022\017\n\007cd_name\030\005 \001(\t\"E\n\004Type\022\010\n\004"
     "NONE\020\000\022\006\n\002CD\020\001\022\t\n\005MUSIC\020\002\022\010\n\004USER\020\003\022\n\n\006V"
-    "OLUME\020\004\"^\n\006Status\022\n\n\006ONLINE\020\001\022\013\n\007OFFLINE"
-    "\020\002\022\r\n\tDISK_OPEN\020\003\022\022\n\016WRITEABLE_DISK\020\004\022\013\n"
-    "\007NO_DISK\020\005\022\013\n\007UNKNOWN\020\006\";\n\017VirtualFileLi"
-    "st\022(\n\004file\030\001 \003(\0132\032.rec.util.file.Virtual"
-    "File", 444);
+    "OLUME\020\004\022\n\n\006GLOBAL\020\005\"^\n\006Status\022\n\n\006ONLINE\020"
+    "\001\022\013\n\007OFFLINE\020\002\022\r\n\tDISK_OPEN\020\003\022\022\n\016WRITEAB"
+    "LE_DISK\020\004\022\013\n\007NO_DISK\020\005\022\013\n\007UNKNOWN\020\006\";\n\017V"
+    "irtualFileList\022(\n\004file\030\001 \003(\0132\032.rec.util."
+    "file.VirtualFile", 456);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/file/VirtualFile.proto", &protobuf_RegisterTypes);
   VirtualFile::default_instance_ = new VirtualFile();
@@ -146,6 +146,7 @@ bool VirtualFile_Type_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
       return true;
     default:
       return false;
@@ -158,6 +159,7 @@ const VirtualFile_Type VirtualFile::CD;
 const VirtualFile_Type VirtualFile::MUSIC;
 const VirtualFile_Type VirtualFile::USER;
 const VirtualFile_Type VirtualFile::VOLUME;
+const VirtualFile_Type VirtualFile::GLOBAL;
 const VirtualFile_Type VirtualFile::Type_MIN;
 const VirtualFile_Type VirtualFile::Type_MAX;
 const int VirtualFile::Type_ARRAYSIZE;

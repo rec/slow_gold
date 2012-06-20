@@ -10,19 +10,19 @@ namespace rec {
 namespace data {
 
 class UntypedDataListener : public Listener<const Message&>,
-                            public DataFileListener {
+                            public Listener<const VirtualFile&> {
  public:
   explicit UntypedDataListener(const string& typeName,
                                Scope scope = FILE_SCOPE);
   virtual ~UntypedDataListener();
 
   virtual void operator()(const Message& m) = 0;
-  virtual void operator()(DataFile);
+  virtual void operator()(const VirtualFile&);
 
   const string& typeName() const { return typeName_; }
   Data* getData() const { Lock l(lock_); return data_; }
 
-  static void setGlobalDataFile(DataFile);
+  static void setGlobalDataFile(const VirtualFile&);
   void updateCallback();
 
  protected:

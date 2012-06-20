@@ -5,16 +5,15 @@ namespace util {
 
 const String formatTime(SampleTime time,
                         SampleTime mTime,
+                        SampleRate sampleRate,
                         bool flash,
                         bool leadingZeros,
                         int decimals) {
   SampleTime maxTime = std::max(time, mTime);
-  int sampleRate = static_cast<int>(audio::getSampleRate());
-
-  bool displayHours = (maxTime >= 3600 * sampleRate);
-
-  int frac = static_cast<int>(mod(time.get(), sampleRate));
-  int sec = static_cast<int>((time - frac).toRealTime());
+  bool displayHours = (maxTime >= SampleTime(3600.0, sampleRate));
+  SampleTime oneSecond(1.0, sampleRate);
+  SampleTime frac(mod(time, oneSecond));
+  int sec = static_cast<int>(RealTime(time - frac, sampleRate));
   double fraction = frac / (1.0 * sampleRate);
 
   int minutes = sec / 60;

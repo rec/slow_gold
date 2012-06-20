@@ -20,7 +20,9 @@ struct Math {
   //
   static Number mod(Number dividend, Number divisor) {
     Number modulo = dividend % divisor;
-    return (modulo < 0) ? (modulo + abs(divisor)) : modulo;
+    if (modulo < 0)
+      modulo += abs(divisor);
+    return modulo;
   }
 
   static Number absoluteDifference(Number x, Number y) {
@@ -35,7 +37,7 @@ template <typename Number>
 Number abs(Number x) { return Math<Number>::abs(x); }
 
 template <typename Number, typename N1>
-Number mod(Number p, N1 q) { return Math<Number>::mod(p, q); }
+Number mod(Number p, N1 q) { return Math<Number>::mod(p, Number(q)); }
 
 template <typename Number, typename N2, typename N3>
 Number near(Number x, N2 y, N3 diff) {

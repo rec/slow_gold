@@ -65,7 +65,7 @@ AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata)
 }  // namespace
 
 MusicFileReader::MusicFileReader(const VirtualFile& file) {
-  if (file::empty(file) || !file.path_size()) {
+  if (!file.path_size()) {
     errorTitle_ = String::formatted(CANT_CREATE_TRACK,
                                     file.ShortDebugString().c_str());
     errorDetails_ = errorTitle_;
@@ -74,7 +74,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
   }
 
   ptr<Metadata> metadata;
-  data::Data* d = data::getData<Metadata>(&file);
+  data::Data* d = data::getData<Metadata>(file);
   if (!d->fileReadSuccess())
     metadata.reset(new Metadata);
 
@@ -125,7 +125,8 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
       errorDetails_ = String::formatted(EMPTY_FILE_FULL,
                                         c_str(file::getFullDisplayName(file)));
       reader_.reset();
-    } else if (length < audio::minimumFileSize()) {
+    } else if (length < SampleTime(audio::MINIMUM_FILE_SIZE,
+                                   reader->sampleRate)) {
       errorTitle_ = FILE_TOO_SMALL;
       String msg = "open, " + file::getFullDisplayName(file) + ", ";
       errorDetails_ = String::formatted(FILE_TOO_SMALL_FULL, c_str(msg));

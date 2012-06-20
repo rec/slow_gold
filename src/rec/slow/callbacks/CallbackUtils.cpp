@@ -23,7 +23,6 @@ void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos)
   int size = loops->loop_point_size();
   int p = pos.toIndex(segment, size);
 
-
   bool multipleSelections = (audio::getSelectionCount(*snap.loops_) > 1);
 
   for (int i = 0; i < size; ++i) {

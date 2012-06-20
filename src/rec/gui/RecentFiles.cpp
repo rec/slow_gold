@@ -25,7 +25,7 @@ struct CompareRecentFiles {
 }  // namespace
 
 void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
-  if (empty(f) || f.type() == VirtualFile::CD)
+  if (f.type() == VirtualFile::NONE || f.type() == VirtualFile::CD)
     return;
 
   int64 timestamp = juce::Time::currentTimeMillis();

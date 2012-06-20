@@ -1,28 +1,45 @@
 #ifndef __REC_AUDIO_STRETCH_IMPLEMENTATION__
 #define __REC_AUDIO_STRETCH_IMPLEMENTATION__
 
-#include "rec/base/base.h"
+#include "rec/audio/Audio.h"
+#include "rec/audio/stretch/Stretch.h"
 
 namespace rec {
 namespace audio {
 namespace stretch {
 
-class Stretch;
-
 class Implementation {
  public:
   static const int INITIAL_BUFFER_SIZE = (1 << 14);
 
-  Implementation(PositionableAudioSource* s, int channels = 2);
+  explicit Implementation(Source* s,
+                          const StretchParameters& stretch =
+                          StretchParameters::default_instance());
   virtual ~Implementation() {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo&) = 0;
-  virtual void setStretch(const Stretch&) = 0;
-  virtual void setMasterTune(double detune) = 0;
-  virtual void setSampleRate(int sampleRate) = 0;
+
+  void setStretch(const Stretch&);
+  void setMasterTune(double);
+  void setInputSampleRate(SampleRate);
+  void setOutputSampleRate(SampleRate);
+
+  virtual bool canBypass() const = 0;
+  double timeScale() const;
+  double pitchScale() const;
+
+  const StretchParameters stretch() const {
+    Lock l(lock_);
+    return stretch_;
+  }
 
  protected:
+  virtual void stretchChanged() = 0;
+
   float** getSourceSamples(int);
+
+  CriticalSection lock_;
+  StretchParameters stretch_;
 
  private:
   PositionableAudioSource* source_;

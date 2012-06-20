@@ -20,6 +20,7 @@ class BufferedReader : public block::Fillable {
   virtual block::Size doFillNextBlock(const block::Block& b) = 0;
 
   bool coversTime(SampleTime time) const;
+  AudioFormatReader* reader() { return reader_.get(); }
 
  protected:
   ptr<AudioFormatReader> reader_;

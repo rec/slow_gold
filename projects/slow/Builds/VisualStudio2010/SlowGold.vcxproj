@@ -148,7 +148,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\RegisterFormats.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\audio\SampleRate.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\OutputSampleRate.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Selection.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
@@ -167,7 +167,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\base\SampleTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp"/>
@@ -1482,7 +1481,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\RegisterFormats.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\audio\SampleRate.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\OutputSampleRate.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\FrameSource.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Level.h"/>
@@ -1519,6 +1518,7 @@
     <ClInclude Include="..\..\..\..\src\rec\base\port.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ptr.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\SampleRate.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\SampleTime.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h"/>
@@ -1550,7 +1550,6 @@
     <ClInclude Include="..\..\..\..\src\rec\data\AddressListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\DataFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataImpl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataMaker.h"/>

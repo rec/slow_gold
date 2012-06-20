@@ -1,7 +1,7 @@
 #include "rec/audio/Device.h"
-#include "rec/audio/SampleRate.h"
+#include "rec/audio/OutputSampleRate.h"
+#include "rec/base/SampleRate.h"
 #include "rec/app/Files.h"
-#include "rec/base/SampleTime.h"
 
 namespace rec {
 namespace audio {
@@ -43,7 +43,7 @@ void Device::changeListenerCallback(ChangeBroadcaster*) {
   manager_.getAudioDeviceSetup(setup);
 
   if (int rate = static_cast<int>(setup.sampleRate))
-    setSampleRate(rate);
+    setOutputSampleRate(rate);
   else
     LOG(ERROR) << "Zero sampleRate";
 }

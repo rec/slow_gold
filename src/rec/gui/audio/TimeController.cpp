@@ -43,9 +43,9 @@ TimeController::TimeController()
   addToLayout(&filler_);
 }
 
-void TimeController::operator()(const Stretch& stretch) {
+void TimeController::setTimeScale(double scale) {
   Lock l(lock_);
-  timeScale_ = timeScale(stretch);
+  timeScale_ = scale;
 }
 
 void TimeController::operator()(SampleTime time) {

@@ -1,7 +1,8 @@
 #ifndef __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__
 #define __REC_AUDIO_STRETCH_RUBBERBANDSTRETCHY__
 
-#include "rec/audio/SampleRate.h"
+#include "rec/audio/Audio.h"
+#include "rec/base/SampleRate.h"
 #include "rec/audio/stretch/Implementation.h"
 #include "rec/audio/stretch/Stretch.h"
 
@@ -15,28 +16,22 @@ typedef ::RubberBand::RubberBandStretcher RubberBandStretcher;
 
 class RubberBand : public Implementation {
  public:
-  RubberBand(PositionableAudioSource* source, const Stretch& stretch);
+  explicit RubberBand(Source* source,
+                      const StretchParameters& stretch =
+                      StretchParameters::default_instance());
   virtual ~RubberBand();
 
-  virtual void setStretch(const Stretch&);
-  virtual void setMasterTune(double detuneCents);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
-  virtual void setSampleRate(int sampleRate);
+  virtual bool canBypass() const;
 
  private:
-  void stretchChanged();
+  virtual void stretchChanged();
 
-  CriticalSection lock_;
   ptr<RubberBandStretcher> stretcher_;
 
-  // TODO: this duplicates everything in strechy.h...!
- 	int channels_;
-  int sampleRate_;
-  double timeRatio_;
+  SampleRate outputSampleRate_;
+  double timeScale_;
   double pitchScale_;
-  int maxProcessSize_;
-  double detuneCents_;
-  Stretch stretch_;
 
   int retrieve(int copied, const AudioSourceChannelInfo&);
   void process();

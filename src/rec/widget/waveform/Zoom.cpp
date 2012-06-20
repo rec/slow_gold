@@ -19,15 +19,16 @@ double zoomFunction(double increment) {
   return pow(POWER, -increment);
 }
 
-Zoom makeZoom(const Zoom& z, SampleTime length, SampleTime t,
-              double k) {
+Zoom makeZoom(const Zoom& z, SampleTime length, SampleRate rate, double k,
+              SampleTime t) {
   k = zoomFunction(k * ZOOM_INCREMENT);
   // DCHECK_LE(z.begin(), z.end());
   Zoom zoom(z);
   SampleTime b = zoom.begin();
   SampleTime e = zoom.has_end() ? zoom.end() : length.get();
+  SampleTime min(audio::MINIMUM_FILE_SIZE, rate);
 
-  if (k >= 1.0 || k * (e - b) >= audio::minimumFileSize()) {
+  if (k >= 1.0 || k * (e - b) >= min) {
     int64 begin = static_cast<int64>(k * b + (1.0 - k) * t);
     int64 end = static_cast<int64>(k * e + (1.0 - k) * t);
     //DCHECK_LE(0, end) << k << ", "
@@ -40,18 +41,18 @@ Zoom makeZoom(const Zoom& z, SampleTime length, SampleTime t,
       zoom.set_end(length);
     }
   }
-  constrainZoom(&zoom, length);
+  constrainZoom(&zoom, length, rate);
 
   return zoom;
 }
 
-Zoom makeZoom(const Zoom& z, SampleTime length, double k) {
-  return makeZoom(z, length, (z.begin() + z.end()) / 2, k);
+Zoom zoomCenter(const Zoom& z, SampleTime length, SampleRate rate, double k) {
+  return makeZoom(z, length, rate, k, (z.begin() + z.end()) / 2);
 }
 
 }  // namespace
 
-void constrainZoom(Zoom* z, SampleTime length) {
+void constrainZoom(Zoom* z, SampleTime length, SampleRate rate) {
   DCHECK(length);
 
   if (z->begin() < 0)
@@ -60,7 +61,9 @@ void constrainZoom(Zoom* z, SampleTime length) {
   if (z->end() > length || !z->has_end())
     z->set_end(length);
 
-  SampleTime under = audio::minimumFileSize() - (z->end() - z->begin());
+  SampleTime under = SampleTime(audio::MINIMUM_FILE_SIZE, rate) -
+    (z->end() - z->begin());
+
   if (under > 0) {
     SampleTime end = z->end() + under;
     if (end < length)
@@ -70,34 +73,36 @@ void constrainZoom(Zoom* z, SampleTime length) {
   }
 }
 
-void zoomScaleAt(const VirtualFile& f, SampleTime length, SampleTime time, double k) {
-  Viewport vp(data::getProto<Viewport>(&f));
-  vp.mutable_zoom()->CopyFrom(makeZoom(vp.zoom(), length, time, k));
-  data::setProto(vp, &f);
+void zoomScaleAt(const VirtualFile& f, SampleTime length, SampleRate rate,
+                 double k, SampleTime time) {
+  Viewport vp(data::getProto<Viewport>(f));
+  vp.mutable_zoom()->CopyFrom(makeZoom(vp.zoom(), length, rate, k, time));
+  data::setProto(vp, f);
 }
 
-void zoomScale(const VirtualFile& f, SampleTime length, double k) {
-  Viewport vp(data::getProto<Viewport>(&f));
-  vp.mutable_zoom()->CopyFrom(makeZoom(vp.zoom(), length, k));
-  data::setProto(vp, &f);
+void zoomScale(const VirtualFile& f, SampleTime length, SampleRate rate,
+               double k) {
+  Viewport vp(data::getProto<Viewport>(f));
+  vp.mutable_zoom()->CopyFrom(zoomCenter(vp.zoom(), length, rate, k));
+  data::setProto(vp, f);
 }
 
 void zoomOutFull(const VirtualFile& f, SampleTime length) {
-  Viewport vp(data::getProto<Viewport>(&f));
+  Viewport vp(data::getProto<Viewport>(f));
   vp.mutable_zoom()->set_begin(0);
   vp.mutable_zoom()->set_end(length);
-  data::setProto(vp, &f);
+  data::setProto(vp, f);
 }
 
-void zoomTo(const VirtualFile& f, SampleTime begin, SampleTime end,
-            SampleTime length) {
-  Viewport vp(data::getProto<Viewport>(&f));
+void zoomTo(const VirtualFile& f, SampleTime length, SampleRate rate,
+            SampleTime begin, SampleTime end) {
+  Viewport vp(data::getProto<Viewport>(f));
   Zoom* zoom = vp.mutable_zoom();
   zoom->set_begin(begin);
   zoom->set_end(end);
 
-  constrainZoom(zoom, length);
-  data::setProto(vp, &f);
+  constrainZoom(zoom, length, rate);
+  data::setProto(vp, f);
 }
 
 }  // namespace waveform

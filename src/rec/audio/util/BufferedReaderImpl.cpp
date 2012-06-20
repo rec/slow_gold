@@ -30,7 +30,9 @@ block::Size BufferedReaderImpl<Sample, CHANNELS>::doFillNextBlock(
   int32** pointers = reader_->usesFloatingPointData ?
     reinterpret_cast<int32**>(floatBuffer_.pointers_) : intBuffer_.pointers_;
 
-  if (!reader_->read(pointers, CHANNELS, b.first, size.toInt(), false)) {
+  int readerChannels = reader_->numChannels;
+  int channels = std::min(CHANNELS, readerChannels);
+  if (!reader_->read(pointers, channels, b.first, size.toInt(), false)) {
     LOG(DFATAL) << "Reader failed to read!";
     return 0;
   }
@@ -39,11 +41,12 @@ block::Size BufferedReaderImpl<Sample, CHANNELS>::doFillNextBlock(
 
   for (int i = 0; i < size; ++i, ++frame) {
     for (int c = 0; c < CHANNELS; ++c) {
+      int cr = c % readerChannels;  // round-robin allocation.
       if (reader_->usesFloatingPointData) {
-        float sample = floatBuffer_.pointers_[c][i];
+        float sample = floatBuffer_.pointers_[cr][i];
         convertSample<float, Sample>(sample, &frame->sample_[c]);
       } else {
-        int32 sample = intBuffer_.pointers_[c][i];
+        int32 sample = intBuffer_.pointers_[cr][i];
         convertSample<int32, Sample>(sample, &frame->sample_[c]);
       }
     }

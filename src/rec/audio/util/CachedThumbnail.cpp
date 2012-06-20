@@ -1,4 +1,4 @@
-#include "rec/audio/SampleRate.h"
+#include "rec/base/SampleRate.h"
 #include "rec/audio/util/CachedThumbnail.h"
 #include "rec/audio/format/Manager.h"
 
@@ -38,8 +38,9 @@ void CachedThumbnail::write(const File& file) {
   }
 }
 
-void CachedThumbnail::read(const File& file, int64 sampleLength, int channels) {
-  thumbnail_.reset(channels, getSampleRate(), sampleLength);
+void CachedThumbnail::read(const File& file, SampleRate sampleRate,
+                           SampleTime sampleLength, int channels) {
+  thumbnail_.reset(channels, sampleRate, sampleLength);
 
 #ifndef SLOWGOLD_SAVE_DISABLED
   if (file.exists()) {

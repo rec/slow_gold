@@ -6,6 +6,13 @@ namespace rec {
 namespace audio {
 
 template <typename Frame>
+Frames<Frame>::Frames(SampleTime length)
+    : length_(-1), allocatedLength_(-1), frames_(NULL) {
+  setLength(length);
+}
+
+
+template <typename Frame>
 bool Frames<Frame>::setLength(SampleTime length, bool mustReallocate) {
   if (length != length_ && (mustReallocate || length > allocatedLength_)) {
     allocatedLength_ = length;

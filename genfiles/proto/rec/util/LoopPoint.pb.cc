@@ -50,9 +50,10 @@ void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoopPoint));
   LoopPointList_descriptor_ = file->message_type(1);
-  static const int LoopPointList_offsets_[2] = {
+  static const int LoopPointList_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPointList, loop_point_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPointList, length_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPointList, sample_rate_),
   };
   LoopPointList_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -101,9 +102,10 @@ void protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\030rec/util/LoopPoint.proto\022\010rec.util\"H\n\t"
     "LoopPoint\022\014\n\004time\030\001 \001(\003\022\020\n\010selected\030\002 \001("
-    "\010\022\014\n\004name\030\003 \001(\t\022\r\n\005notes\030\004 \001(\t\"H\n\rLoopPo"
+    "\010\022\014\n\004name\030\003 \001(\t\022\r\n\005notes\030\004 \001(\t\"]\n\rLoopPo"
     "intList\022\'\n\nloop_point\030\001 \003(\0132\023.rec.util.L"
-    "oopPoint\022\016\n\006length\030\002 \001(\003", 184);
+    "oopPoint\022\016\n\006length\030\002 \001(\003\022\023\n\013sample_rate\030"
+    "\003 \001(\001", 205);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/LoopPoint.proto", &protobuf_RegisterTypes);
   LoopPoint::default_instance_ = new LoopPoint();
@@ -487,6 +489,7 @@ void LoopPoint::Swap(LoopPoint* other) {
 #ifndef _MSC_VER
 const int LoopPointList::kLoopPointFieldNumber;
 const int LoopPointList::kLengthFieldNumber;
+const int LoopPointList::kSampleRateFieldNumber;
 #endif  // !_MSC_VER
 
 LoopPointList::LoopPointList()
@@ -506,6 +509,7 @@ LoopPointList::LoopPointList(const LoopPointList& from)
 void LoopPointList::SharedCtor() {
   _cached_size_ = 0;
   length_ = GOOGLE_LONGLONG(0);
+  sample_rate_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -541,6 +545,7 @@ LoopPointList* LoopPointList::New() const {
 void LoopPointList::Clear() {
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     length_ = GOOGLE_LONGLONG(0);
+    sample_rate_ = 0;
   }
   loop_point_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -580,6 +585,22 @@ bool LoopPointList::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(25)) goto parse_sample_rate;
+        break;
+      }
+      
+      // optional double sample_rate = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_sample_rate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &sample_rate_)));
+          _set_bit(2);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -613,6 +634,11 @@ void LoopPointList::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->length(), output);
   }
   
+  // optional double sample_rate = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->sample_rate(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -633,6 +659,11 @@ void LoopPointList::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->length(), target);
   }
   
+  // optional double sample_rate = 3;
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->sample_rate(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -649,6 +680,11 @@ int LoopPointList::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int64Size(
           this->length());
+    }
+    
+    // optional double sample_rate = 3;
+    if (has_sample_rate()) {
+      total_size += 1 + 8;
     }
     
   }
@@ -690,6 +726,9 @@ void LoopPointList::MergeFrom(const LoopPointList& from) {
     if (from._has_bit(1)) {
       set_length(from.length());
     }
+    if (from._has_bit(2)) {
+      set_sample_rate(from.sample_rate());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -715,6 +754,7 @@ void LoopPointList::Swap(LoopPointList* other) {
   if (other != this) {
     loop_point_.Swap(&other->loop_point_);
     std::swap(length_, other->length_);
+    std::swap(sample_rate_, other->sample_rate_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

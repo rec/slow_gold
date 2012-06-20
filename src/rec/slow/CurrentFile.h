@@ -1,7 +1,6 @@
 #ifndef __REC_SLOW_METHODS_FILEMETHODS__
 #define __REC_SLOW_METHODS_FILEMETHODS__
 
-#include "rec/data/DataFile.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.pb.h"
@@ -26,8 +25,7 @@ class CurrentFile : public HasInstance,
 
   const SampleTime length() const;
   bool empty() const { return !length(); }
-  void setDataFile(data::DataFile, bool showError = true);
-  void setVirtualFile(const VirtualFile&);
+  void setVirtualFile(const VirtualFile&, bool showError = true);
   void setFile(const File&);
   static void translateAll();
   const VirtualFile file() const;
@@ -41,7 +39,7 @@ class CurrentFile : public HasInstance,
 
   CriticalSection lock_;
   widget::waveform::Viewport viewport_;
-  ptr<VirtualFile> file_;
+  VirtualFile file_;
   SampleTime length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);

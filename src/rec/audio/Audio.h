@@ -1,7 +1,9 @@
 #ifndef __REC_AUDIO_AUDIO__
 #define __REC_AUDIO_AUDIO__
 
+#include "rec/base/RealTime.h"
 #include "rec/base/SampleTime.h"
+#include "rec/base/SampleRate.h"
 #include "rec/util/Range.h"
 
 namespace rec {
@@ -14,10 +16,6 @@ typedef PositionableAudioSource Source;
 typedef vector<float> LevelVector;
 
 const RealTime MINIMUM_FILE_SIZE = 1.0;
-
-inline SampleTime minimumFileSize() {
-  return SampleTime(MINIMUM_FILE_SIZE);
-}
 
 namespace transport {
 

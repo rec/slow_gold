@@ -2,11 +2,12 @@
 
 #include "rec/app/GenericApplication.h"
 #include "rec/audio/Device.h"
-#include "rec/audio/SampleRate.h"
+#include "rec/audio/OutputSampleRate.h"
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
+#include "rec/base/SampleRate.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/UndoStack.h"
@@ -93,7 +94,7 @@ void Instance::init() {
 
   target_->addCommands();
   player_->addListener(components_->transportController_.get());
-  audio::getSampleRateBroadcaster()->addListener(player_.get());
+  audio::getOutputSampleRateBroadcaster()->addListener(player_.get());
 
 	typedef gui::DropTarget<Waveform> DropWave;
   DropWave* waveform = dynamic_cast<DropWave*>(components_->waveform_.get());
@@ -113,7 +114,7 @@ void Instance::init() {
 
   player_->level()->addListener(components_->transportController_->levelListener());
 
-  player_->setSource(makeSource());
+  player_->setSource(makeSource(), getSourceSampleRate());
   components_->waveform_->setAudioThumbnail(bufferFiller_->thumbnail());
 
   window_->addListener(menus_.get());
@@ -144,13 +145,13 @@ Instance::~Instance() {
 void Instance::startup() {
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
-  VirtualFile vf = data::getGlobal<VirtualFile>();
+  const VirtualFile vf = data::getGlobal<VirtualFile>();
   {
     MessageManagerLock l;
     juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());
 
     window_->toFront(true);
-    currentFile_->setDataFile(&vf, false);
+    currentFile_->setVirtualFile(vf, false);
   }
 
   thread::callAsync(window_, &DocumentWindow::setVisible, true);
@@ -199,6 +200,10 @@ void Instance::setProto(const Message& m, Undoable undoable) {
 void Instance::reset() {
   fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
   bufferFiller_->reset();
+}
+
+SampleRate Instance::getSourceSampleRate() const {
+  return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
 }  // namespace slow

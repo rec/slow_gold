@@ -40,6 +40,7 @@ class DialComponent : public Component,
 
   SampleTime time_;
   SampleTime length_;
+
   double zeroAngle_;
   double timeAngle_;
   double timeRatio_;

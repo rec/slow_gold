@@ -58,7 +58,7 @@ class Player : public DataListener<Gain>,
 
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
-  virtual void operator()(SampleRate sampleRate);
+  virtual void operator()(SampleRate outputSampleRate);
   virtual void operator()(const Gain&);
   virtual void operator()(const StereoProto&);
   virtual void operator()(const audio::AudioSettings&);
@@ -66,7 +66,7 @@ class Player : public DataListener<Gain>,
   virtual void operator()(const widget::waveform::Viewport&);
 
   void setGain(double);
-  void setSource(Source*);
+  void setSource(Source*, SampleRate inputSampleRate);
 
   // Stop the player and reset the position to 0.
   void reset();

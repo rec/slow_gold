@@ -69,7 +69,8 @@ void aboutThisProgram(Instance* i) {
 }
 
 void addLoopPoint(Instance* i) {
-  widget::waveform::addLoopPointToViewport(i->file(), i->player_->getTime());
+  widget::waveform::addLoopPointToViewport(i->file(),
+                                           i->player_->getTime());
 }
 
 void nudgeVolumeDownOp(audio::Gain* gain) {
@@ -82,7 +83,8 @@ void nudgeVolumeDown(Instance* i) {
 }
 
 void nudgeVolumeUp(Instance* i) {
-  audio::Gain gain(data::getProto<audio::Gain>(i->file()));
+  audio::Gain gain;
+  data::fillProto(&gain, i->file());
   if (!(gain.dim() || gain.mute())) {
     gain.set_gain(gain.gain() + 1.0);
     data::setProto(gain, i->file());
@@ -90,18 +92,22 @@ void nudgeVolumeUp(Instance* i) {
 }
 
 void clearLoops(Instance *i) {
-  const VirtualFile& f = i->file();
   Viewport viewport;
+  data::fillProto(&viewport, i->file());
+
   LoopPointList* loops = viewport.mutable_loop_points();
+  loops->mutable_loop_point()->Clear();
+
   LoopPoint* loop = loops->add_loop_point();
   loop->set_selected(true);
   loop->set_time(0);
-  loops->set_length(data::getProto<Viewport>(f).loop_points().length());
 
-  data::setProto(viewport, f);
+  data::setProto(viewport, i->file());
 }
 
-void clearNavigator(Instance *) { data::setProto(VirtualFileList(), data::global()); }
+void clearNavigator(Instance *) {
+  data::setProto(VirtualFileList(), data::global());
+}
 
 void dimVolumeToggle(Instance* i) {
   audio::Gain gain(data::getProto<audio::Gain>(i->file()));
@@ -191,7 +197,8 @@ void treeUp(Instance*) {
 }
 
 void zoomOut(Instance* i) {
-  widget::waveform::zoomScale(i->file(), i->length(), -1.0);
+  widget::waveform::zoomScale(i->file(), i->length(),
+                              i->getSourceSampleRate(), -1.0);
 }
 
 void zoomOutFull(Instance* i) {
@@ -202,9 +209,10 @@ void zoomToSelection(Instance* i) {
   block::Block range = block::toBlock(i->currentTime_->timeSelection());
   int64 pad = block::getSize(range) / SELECTION_WIDTH_PORTION;
   widget::waveform::zoomTo(i->file(),
+                           i->length(),
+                           i->getSourceSampleRate(),
                            std::max(0LL, range.first - pad),
-                           std::min(i->length().get(), range.second + pad),
-                           i->length());
+                           std::min(i->length().get(), range.second + pad));
 }
 
 void audioPreferences(Instance* i) {
@@ -212,7 +220,7 @@ void audioPreferences(Instance* i) {
 }
 
 void closeFile(Instance* i) {
-  i->currentFile_->setDataFile(data::noData());
+  i->currentFile_->setVirtualFile(data::noData());
 }
 
 void open(Instance* i) {
@@ -270,6 +278,22 @@ void clearSettingsForThisTrack(Instance* i) {
                            CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK,
                            CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
 }
+
+#if 1
+template <typename Proto>
+void executeCallback(Instance* i, void (*protoFunction)(Proto*)) {
+  const VirtualFile vf = i->file();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto);
+  data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void addApplyCallback(CommandRecordTable* c, CommandID id, Instance* i,
+                      void (*protoFunction)(Proto*)) {
+  addCallback(c, id, &executeCallback<Proto>, i, protoFunction);
+}
+#endif
 
 }  // namespace
 

@@ -83,8 +83,10 @@ bool WaveformModel::setViewport(const Viewport& vp) {
 
   selection_ = newSelection;
   int64 len = length();
-  if (len)
-    constrainZoom(viewport_.mutable_zoom(), len);
+  if (len) {
+    constrainZoom(viewport_.mutable_zoom(), len,
+                  viewport_.loop_points().sample_rate());
+  }
   return !data::equals(viewport_.zoom(), z);
 }
 

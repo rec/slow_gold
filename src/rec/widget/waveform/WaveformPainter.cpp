@@ -1,6 +1,6 @@
 #include "rec/widget/waveform/WaveformPainter.h"
 
-#include "rec/audio/SampleRate.h"
+#include "rec/base/SampleRate.h"
 #include "rec/util/FormatTime.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -24,12 +24,13 @@ const int64 SMALLEST_TIME_SAMPLES = 10000;
 
 using namespace rec::util::block;
 
-WaveformPainter::WaveformPainter(Waveform* w) :
-    waveform_(w), thumbnail_(NULL), model_(w->model()) {
+WaveformPainter::WaveformPainter(Waveform* w)
+    : waveform_(w), thumbnail_(NULL), model_(w->model()){
 }
 
 void WaveformPainter::paint(Graphics& g, const Range<SampleTime >& range,
-                            bool loading) {
+                            bool loading, SampleRate rate) {
+  sampleRate_ = rate;
   Painter p(model_.description().widget(), &g);
   if (!loading) {
     if (model_.isEmpty() || !thumbnail_) {
@@ -46,7 +47,7 @@ void WaveformPainter::paint(Graphics& g, const Range<SampleTime >& range,
 }
 
 void WaveformPainter::drawWaveform(Painter& p,
-                                   const Range<SampleTime >& range) {
+                                   const Range<SampleTime>& range) {
   const BlockSet& selection = model_.selection();
   BlockSet::iterator i = selection.begin();
   Block r;
@@ -65,13 +66,13 @@ void WaveformPainter::drawWaveform(Painter& p,
     else if (i != selection.end())
       draw.second = i->first;
 
-    int x1 = model_.timeToX(SampleTime(draw.first));
-    int x2 = model_.timeToX(SampleTime(draw.second));
+    RealTime first(draw.first, sampleRate_);
+    RealTime second(draw.second, sampleRate_);
+    int x1 = model_.timeToX(draw.first);
+    int x2 = model_.timeToX(draw.second);
 
     juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
-    double first = RealTime(SampleTime(draw.first));
-    double second = RealTime(SampleTime(draw.second));
     if (model_.description().parallel_waveforms() ||
         model_.description().layout() == WaveformProto::PARALLEL) {
       for (int i = 0; i < channels; ++i) {
@@ -87,13 +88,13 @@ void WaveformPainter::drawWaveform(Painter& p,
 }
 
 void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
-  SampleTime width = r.size();
+  SampleTime width(r.size());
   if (width < SMALLEST_TIME_SAMPLES) {
     LOG_FIRST_N(ERROR, 4) << "Nothing on screen! " << width;
     return;
   }
-  double seconds = pow(10.0, floor(log10(width.toRealTime())));
-  double samples = seconds * audio::getSampleRate();
+  double seconds = pow(10.0, floor(log10(RealTime(width, sampleRate_))));
+  double samples = seconds * sampleRate_;
 
   int b = static_cast<int>(ceil(r.begin_ / samples));
   int e = static_cast<int>(r.end_ / samples);
@@ -104,7 +105,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
   else if (diff > 15)
     samples *= 5.0;
 
-  if (samples > SampleTime(10.0))
+  if (samples > SampleTime(10.0, sampleRate_))
     samples *= 1.2;
 
   b = static_cast<int>(ceil(r.begin_ / samples));
@@ -112,11 +113,11 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
 
   float h = static_cast<float>(waveform_->getHeight());
   int decimals = 0;
-  if (samples < SampleTime(0.01))
+  if (samples < SampleTime(0.01, sampleRate_))
     decimals = 3;
-  else if (samples < SampleTime(0.1))
+  else if (samples < SampleTime(0.1, sampleRate_))
     decimals = 2;
-  else if (samples < SampleTime(1.0))
+  else if (samples < SampleTime(1.0, sampleRate_))
     decimals = 1;
 
   g.setFont(10);

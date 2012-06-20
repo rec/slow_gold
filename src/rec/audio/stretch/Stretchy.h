@@ -5,9 +5,7 @@
 
 #include <vector>
 
-#include "rec/audio/SampleRate.h"
 #include "rec/audio/source/Wrappy.h"
-#include "rec/audio/stretch/Stretch.pb.h"
 
 namespace rec {
 namespace audio {
@@ -18,8 +16,8 @@ class Implementation;
 
 class Stretchy : public source::Wrappy {
  public:
-  Stretchy(Source* s);
-  void setStretch(const Stretch&);
+  explicit Stretchy(Source*);
+  explicit Stretchy(Source*, const Stretchy&);
 
   ~Stretchy();
 
@@ -28,30 +26,11 @@ class Stretchy : public source::Wrappy {
   virtual int64 getNextReadPosition() const;
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
 
-  Stretch getStretch() const {
-    Lock l(lock_);
-    return stretch_;
-  }
-
-  void setMasterTune(double detune);
-  void setSampleRate(SampleRate sampleRate);
+  Implementation* implementation() { return implementation_.get(); }
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
-  int64 scale(int64 x) const { return static_cast<int64>(timeScale_ * x); }
-
-  CriticalSection lock_;
-
   ptr<Implementation> implementation_;
-  Stretch::Strategy strategy_;
-
-  // TODO: this is duplicated in RubberBand.h!
-  int channels_;
-  double timeScale_;
-  bool bypass_;
-  Stretch stretch_;
-  double detune_;
-  SampleRate sampleRate_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Stretchy);
 };

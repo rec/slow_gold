@@ -36,12 +36,12 @@ AudioThumbnail* BufferFiller::thumbnail() {
 }
 
 SampleTime BufferFiller::setReader(const VirtualFile& f,
-                                       AudioFormatReader* reader) {
+                                   AudioFormatReader* reader) {
   Lock l(lock_);
   DCHECK(reader);
   DCHECK(reader->lengthInSamples);
   file_ = getShadowFile(f, FILENAME);
-  thumbnail_->read(file_, reader->lengthInSamples);
+  thumbnail_->read(file_, reader->sampleRate, reader->lengthInSamples);
   return reader_->setReader(reader);
 }
 
@@ -69,4 +69,3 @@ void BufferFiller::reset() {
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

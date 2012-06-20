@@ -9,8 +9,8 @@ namespace data {
 namespace {
 
 struct FileBroadcaster {
-  Broadcaster<DataFile> listener_;
-  ptr<VirtualFile> file_;
+  Broadcaster<const VirtualFile&> listener_;
+  VirtualFile file_;
 };
 
 FileBroadcaster* fileBroadcaster() {
@@ -18,7 +18,7 @@ FileBroadcaster* fileBroadcaster() {
   return &fb;
 }
 
-Broadcaster<DataFile>* fileListener() {
+Broadcaster<const VirtualFile&>* fileListener() {
   return &(fileBroadcaster()->listener_);
 }
 
@@ -31,7 +31,8 @@ UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
 
 UntypedDataListener::~UntypedDataListener() {}
 
-void UntypedDataListener::operator()(DataFile datafile) {
+void UntypedDataListener::operator()(const VirtualFile& df) {
+  VirtualFile datafile = df;
   if (scope_ == GLOBAL_SCOPE) {
     if (data_)
       return;
@@ -53,11 +54,11 @@ void UntypedDataListener::operator()(DataFile datafile) {
     msg.reset(data_->clone());
   }
 
-  fileBroadcaster()->file_.reset(datafile ? new VirtualFile(*datafile) : NULL);
+  fileBroadcaster()->file_ = datafile;
   (*this)(*msg);
 }
 
-void UntypedDataListener::setGlobalDataFile(DataFile datafile) {
+void UntypedDataListener::setGlobalDataFile(const VirtualFile& datafile) {
   MessageManagerLock l;
   fileListener()->broadcast(datafile);
 }
@@ -67,7 +68,7 @@ void UntypedDataListener::updateCallback() {
   {
     Lock l(lock_);
     if (!data_) {
-      (*this)(fileBroadcaster()->file_.get());
+      (*this)(fileBroadcaster()->file_);
       DCHECK(data_);
       return;
     }

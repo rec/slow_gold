@@ -1,4 +1,4 @@
-#include "rec/audio/SampleRate.h"
+#include "rec/base/SampleRate.h"
 #include "rec/audio/stretch/RubberBand.h"
 #include "rec/util/Math.h"
 
@@ -24,14 +24,23 @@ static const int DEATH_OPTIONS =
   0
 ;
 
-RubberBand::RubberBand(PositionableAudioSource* source, const Stretch& stretch)
-    : Implementation(source), detuneCents_(0.0) {
-  sampleRate_ = audio::getSampleRate();
-  setStretch(stretch);
+static const double EPSILON = 1e-6;
+
+RubberBand::RubberBand(Source* s, const StretchParameters& stretch)
+    : Implementation(s, stretch),
+      outputSampleRate_(0),
+      timeScale_(0.0),
+      pitchScale_(0.0) {
+  stretchChanged();
   CHECK_DDD(7134, 1893, int32, int16);
 }
 
 RubberBand::~RubberBand() {}
+
+bool RubberBand::canBypass() const {
+  Lock l(lock_);
+  return near(timeScale_, 1.0, EPSILON) && near(pitchScale_, 1.0, EPSILON);
+}
 
 void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   if (!stretcher_) {
@@ -49,6 +58,8 @@ void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   }
 }
 
+static const int CHANNELS = 2;
+
 int RubberBand::retrieve(int copied, const AudioSourceChannelInfo& info) {
   int available = stretcher_->available();
   if (!available)
@@ -57,8 +68,8 @@ int RubberBand::retrieve(int copied, const AudioSourceChannelInfo& info) {
   float** out = info.buffer->getArrayOfChannels();
   int startSample = info.startSample + copied;
 
-  std::vector<float*> output(channels_);
-  for (int c = 0; c < channels_; ++c)
+  std::vector<float*> output(2);
+  for (int c = 0; c < 2; ++c)
     output[c] = out[c] + startSample;
 
   int samples = std::min(info.numSamples - copied, available);
@@ -87,52 +98,23 @@ void RubberBand::process() {
   stretcher_->process(input, required, false);
 }
 
-static const double EPSILON = 1e-6;
-
-void RubberBand::setStretch(const Stretch& stretch) {
-  Lock l(lock_);
-  DLOG(INFO) << stretch_.ShortDebugString();
-  stretch_ = stretch;
-  stretchChanged();
-}
-
 void RubberBand::stretchChanged() {
-  channels_ = stretch_.channels();
-  double tr = timeScale(stretch_);
-  double ps = pitchScale(stretch_, detuneCents_);
+  double tr = timeScale();
+  double ps = pitchScale();
 
-  if (!stretcher_) {
-    stretcher_.reset(new RubberBandStretcher(sampleRate_, channels_,
-                                             OPTIONS, tr, ps));
-    maxProcessSize_ = stretch_.max_process_size();
-    stretcher_->setMaxProcessSize(maxProcessSize_);
-
-  } else if (near(tr, timeRatio_, EPSILON) && near(ps, pitchScale_, EPSILON)) {
+  if (!stretcher_ || outputSampleRate_ != stretch_.output_sample_rate()) {
+    outputSampleRate_ = stretch_.output_sample_rate();
+    size_t rate = static_cast<size_t>(outputSampleRate_);
+    stretcher_.reset(new RubberBandStretcher(rate, 2, OPTIONS, tr, ps));
+  } else if (near(tr, timeScale_, EPSILON) && near(ps, pitchScale_, EPSILON)) {
     return;
-
   } else {
     stretcher_->setTimeRatio(tr);
     stretcher_->setPitchScale(ps);
   }
-  timeRatio_ = tr;
+
+  timeScale_ = tr;
   pitchScale_ = ps;
-}
-
-void RubberBand::setMasterTune(double detune) {
-  Lock l(lock_);
-  if (!near(detuneCents_, detune, EPSILON)) {
-    detuneCents_ = detune;
-    stretchChanged();
-  }
-}
-
-void RubberBand::setSampleRate(int sampleRate) {
-  Lock l(lock_);
-  if (sampleRate != sampleRate_) {
-    sampleRate_ = sampleRate;
-    stretcher_.reset();
-    stretchChanged();
-  }
 }
 
 }  // namespace stretch

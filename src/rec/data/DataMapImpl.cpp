@@ -17,11 +17,11 @@ const char* const EMPTY_DIRECTORY_NAME = "C:\\empty-empty-empty";
 const char* const EMPTY_DIRECTORY_NAME = "/empty-empty-empty";
 #endif
 
-File dataDirectory(DataFile vf) {
-  return vf ? getShadowDirectory(*vf) : File(EMPTY_DIRECTORY_NAME);
+File dataDirectory(const VirtualFile& vf) {
+  return getShadowDirectory(vf);
 }
 
-File dataFile(DataFile vf, const string& typeName) {
+File dataFile(const VirtualFile& vf, const string& typeName) {
   return dataDirectory(vf).getChildFile(str(typeName));
 }
 
@@ -45,7 +45,7 @@ DataMapImpl::~DataMapImpl() {
   }
 }
 
-Data* DataMapImpl::getData(const string& typeName, DataFile vf) {
+Data* DataMapImpl::getData(const string& typeName, const VirtualFile& vf) {
   File file = dataFile(vf, typeName);
   string key = str(file);
 
@@ -61,7 +61,8 @@ Data* DataMapImpl::getData(const string& typeName, DataFile vf) {
   }
 
   DCHECK_EQ(typeName, getTypeName(*msg));
-  Data* data = dataMaker_->makeData(msg.transfer(), file, !vf, key);
+  bool isEmpty = (vf.type() == VirtualFile::NONE);
+  Data* data = dataMaker_->makeData(msg.transfer(), file, isEmpty, key);
   if (!data) {
     LOG(DFATAL) << "Unable to make data for " << typeName;
     return NULL;

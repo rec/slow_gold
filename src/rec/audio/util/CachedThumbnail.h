@@ -1,7 +1,9 @@
 #ifndef __REC_AUDIO_UTIL_CACHEDTHUMBNAIL__
 #define __REC_AUDIO_UTIL_CACHEDTHUMBNAIL__
 
+#include "rec/base/SampleRate.h"
 #include "rec/audio/Audio.h"
+#include "rec/base/SampleTime.h"
 
 namespace rec {
 namespace audio {
@@ -15,7 +17,7 @@ class CachedThumbnail {
   AudioThumbnail* thumbnail() { return &thumbnail_; }
   bool cacheWritten() const { return cacheWritten_; }
   void write(const File&);
-  void read(const File&, int64 sampleLength, int channels = 2);
+  void read(const File&, SampleRate rate, SampleTime sampleLength, int channels = 2);
 
  private:
   bool cacheWritten_;

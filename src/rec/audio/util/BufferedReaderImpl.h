@@ -24,17 +24,19 @@ struct SampleBuffer {
 template <typename Sample, int CHANNELS>
 class BufferedReaderImpl : public BufferedReader {
  public:
-  BufferedReaderImpl(int s);
+  BufferedReaderImpl(int blockSize);
   virtual ~BufferedReaderImpl() {}
 
   // Returns the length in samples, or 0 if there's an error.
   virtual block::Size doFillNextBlock(const block::Block& b);
-  typedef Frames<InterleavedFrame<Sample, CHANNELS> > FillableFrame;
+
+  typedef InterleavedFrame<Sample, CHANNELS> OneFrame;
+  typedef Frames<OneFrame> InterleavedFrames;
 
   virtual Source* makeSource() const;
   virtual bool setLength(int64 length);
 
-  const FillableFrame& frames() const { return frames_; }
+  const InterleavedFrames& frames() const { return frames_; }
 
  protected:
   virtual void onFilled() { reader_.reset(); }
@@ -43,7 +45,7 @@ class BufferedReaderImpl : public BufferedReader {
   CriticalSection lock_;
 
   const block::Size blockSize_;
-  FillableFrame frames_;
+  InterleavedFrames frames_;
 
   SampleBuffer<int32, CHANNELS> intBuffer_;
   SampleBuffer<float, CHANNELS> floatBuffer_;
@@ -59,4 +61,3 @@ BufferedReader* makeBufferedReader(int size = FILLABLE_FRAME_BLOCK_SIZE);
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
-

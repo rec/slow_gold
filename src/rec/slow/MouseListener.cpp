@@ -48,7 +48,7 @@ namespace {
 typedef widget::waveform::OutlinedCursorLabel Label;
 
 void toggleSelectionSegment(const VirtualFile& file, SampleTime t) {
-  data::Opener<Viewport> opener(data::getData<Viewport>(&file));
+  data::Opener<Viewport> opener(data::getData<Viewport>(file));
   audio::toggleSelectionSegment(opener.mutable_get()->mutable_loop_points(), t);
 }
 
@@ -56,8 +56,9 @@ void zoom(const Instance& instance, const MouseEvent& e,
           SampleTime time, double increment) {
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
-  widget::waveform::zoomScaleAt(instance.file(), instance.length(), time,
-                                s * increment);
+  widget::waveform::zoomScaleAt(instance.file(), instance.length(),
+                                instance.getSourceSampleRate(),
+                                s * increment, time);
 }
 
 }  // namespace
@@ -174,11 +175,12 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
     int i = cursor->index();
     Viewport vp = data::getProto<Viewport>(file());
     const LoopPointList& loops = vp.loop_points();
+    SampleTime closeLoops(audio::CLOSE_LOOPS, vp.loop_points().sample_rate());
     cursorRestrict_.begin_ = (i ? loops.loop_point(i - 1).time() : 0) +
-      audio::closeLoops();
+      closeLoops;
     cursorRestrict_.end_ = ((i >= loops.loop_point_size() - 1) ?
                             loops.length() : loops.loop_point(i + 1).time()) -
-     audio::closeLoops();
+      closeLoops;
   }
 }
 
