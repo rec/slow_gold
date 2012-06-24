@@ -139,11 +139,11 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     "t_time\030\021 \001(\005:\002-1\022\032\n\017thread_priority\030\022 \001("
     "\r:\0014\022\037\n\020max_process_size\030\023 \001(\r:\00516364\"E\n"
     "\010Strategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\n"
-    "RUBBERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003\"\214\001\n\021Stretch"
+    "RUBBERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003\"\232\001\n\021Stretch"
     "Parameters\022+\n\007stretch\030\001 \001(\0132\032.rec.audio."
-    "stretch.Stretch\022\023\n\013master_tune\030\002 \001(\001\022\031\n\021"
-    "input_sample_rate\030\003 \001(\001\022\032\n\022output_sample"
-    "_rate\030\004 \001(\001", 891);
+    "stretch.Stretch\022\023\n\013master_tune\030\002 \001(\001\022 \n\021"
+    "input_sample_rate\030\003 \001(\001:\00544100\022!\n\022output"
+    "_sample_rate\030\004 \001(\001:\00544100", 905);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -1179,8 +1179,8 @@ void StretchParameters::SharedCtor() {
   _cached_size_ = 0;
   stretch_ = NULL;
   master_tune_ = 0;
-  input_sample_rate_ = 0;
-  output_sample_rate_ = 0;
+  input_sample_rate_ = 44100;
+  output_sample_rate_ = 44100;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1220,8 +1220,8 @@ void StretchParameters::Clear() {
       if (stretch_ != NULL) stretch_->::rec::audio::stretch::Stretch::Clear();
     }
     master_tune_ = 0;
-    input_sample_rate_ = 0;
-    output_sample_rate_ = 0;
+    input_sample_rate_ = 44100;
+    output_sample_rate_ = 44100;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1262,7 +1262,7 @@ bool StretchParameters::MergePartialFromCodedStream(
         break;
       }
       
-      // optional double input_sample_rate = 3;
+      // optional double input_sample_rate = 3 [default = 44100];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
@@ -1278,7 +1278,7 @@ bool StretchParameters::MergePartialFromCodedStream(
         break;
       }
       
-      // optional double output_sample_rate = 4;
+      // optional double output_sample_rate = 4 [default = 44100];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
@@ -1323,12 +1323,12 @@ void StretchParameters::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->master_tune(), output);
   }
   
-  // optional double input_sample_rate = 3;
+  // optional double input_sample_rate = 3 [default = 44100];
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->input_sample_rate(), output);
   }
   
-  // optional double output_sample_rate = 4;
+  // optional double output_sample_rate = 4 [default = 44100];
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->output_sample_rate(), output);
   }
@@ -1353,12 +1353,12 @@ void StretchParameters::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->master_tune(), target);
   }
   
-  // optional double input_sample_rate = 3;
+  // optional double input_sample_rate = 3 [default = 44100];
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->input_sample_rate(), target);
   }
   
-  // optional double output_sample_rate = 4;
+  // optional double output_sample_rate = 4 [default = 44100];
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->output_sample_rate(), target);
   }
@@ -1386,12 +1386,12 @@ int StretchParameters::ByteSize() const {
       total_size += 1 + 8;
     }
     
-    // optional double input_sample_rate = 3;
+    // optional double input_sample_rate = 3 [default = 44100];
     if (has_input_sample_rate()) {
       total_size += 1 + 8;
     }
     
-    // optional double output_sample_rate = 4;
+    // optional double output_sample_rate = 4 [default = 44100];
     if (has_output_sample_rate()) {
       total_size += 1 + 8;
     }

@@ -15,28 +15,36 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-Stretchy::Stretchy(Source* s) : Wrappy(s), implementation_(new RubberBand(s)) {}
-
 Stretchy::Stretchy(Source* s, const Stretchy& stretchy)
     : Wrappy(s),
       implementation_(new RubberBand(s, stretchy.implementation_->stretch())) {
 }
 
+Stretchy::Stretchy(Source* s, SampleRate sampleRate)
+    : Wrappy(s) {
+  StretchParameters stretch;
+  stretch.set_output_sample_rate(sampleRate);
+  implementation_.reset(new RubberBand(s, stretch));
+}
+
 Stretchy::~Stretchy() {}
 
+double Stretchy::timeScale() const {
+  double ts = implementation_->timeScale();
+  DCHECK_GE(fabs(ts), 0.001);
+  return ts;
+}
+
 int64 Stretchy::getTotalLength() const {
-  return static_cast<int64>(source()->getTotalLength() *
-                            implementation_->timeScale());
+  return static_cast<int64>(source()->getTotalLength() * timeScale());
 }
 
 int64 Stretchy::getNextReadPosition() const {
-  return static_cast<int64>(source()->getNextReadPosition() *
-                            implementation_->timeScale());
+  return static_cast<int64>(source()->getNextReadPosition() * timeScale());
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
-  double timeScale = implementation_->timeScale();
-  source()->setNextReadPosition(static_cast<int64>(position / timeScale));
+  source()->setNextReadPosition(static_cast<int64>(position / timeScale()));
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {

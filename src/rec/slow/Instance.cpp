@@ -114,7 +114,7 @@ void Instance::init() {
 
   player_->level()->addListener(components_->transportController_->levelListener());
 
-  player_->setSource(makeSource(), getSourceSampleRate());
+  player_->setSource(makeSource());
   components_->waveform_->setAudioThumbnail(bufferFiller_->thumbnail());
 
   window_->addListener(menus_.get());

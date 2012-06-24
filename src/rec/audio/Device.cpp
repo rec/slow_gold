@@ -38,14 +38,14 @@ void Device::shutdown() {
   manager_.closeAudioDevice();
 }
 
-void Device::changeListenerCallback(ChangeBroadcaster*) {
+SampleRate Device::getSampleRate() const {
   AudioDeviceManager::AudioDeviceSetup setup;
   manager_.getAudioDeviceSetup(setup);
+  return setup.sampleRate;
+}
 
-  if (int rate = static_cast<int>(setup.sampleRate))
-    setOutputSampleRate(rate);
-  else
-    LOG(ERROR) << "Zero sampleRate";
+void Device::changeListenerCallback(ChangeBroadcaster*) {
+  setOutputSampleRate(getSampleRate());
 }
 
 }  // namespace audio

@@ -3,18 +3,10 @@
 namespace rec {
 namespace util {
 
-const String formatTime(SampleTime time,
-                        SampleTime mTime,
-                        SampleRate sampleRate,
-                        bool flash,
-                        bool leadingZeros,
-                        int decimals) {
-  SampleTime maxTime = std::max(time, mTime);
-  bool displayHours = (maxTime >= SampleTime(3600.0, sampleRate));
-  SampleTime oneSecond(1.0, sampleRate);
-  SampleTime frac(mod(time, oneSecond));
-  int sec = static_cast<int>(RealTime(time - frac, sampleRate));
-  double fraction = frac / (1.0 * sampleRate);
+String TimeFormat::format(RealTime time) const {
+  RealTime secR(round(time));
+  RealTime fraction(time - secR);
+  int sec = static_cast<int>(secR);
 
   int minutes = sec / 60;
   int hours = minutes / 60;
@@ -23,32 +15,32 @@ const String formatTime(SampleTime time,
 
   char buffer[64];
   char ch = ':';
-  if (flash && (sec & 1))
+  if (flash_ == FLASH && (sec & 1))
     ch = ' ';
 
 #if JUCE_MAC
-  if (displayHours) {
-    snprintf(buffer, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
+  if (displayHours_ == DISPLAY_HOURS) {
+    snprintf(buffer, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals_, sf);
   } else {
     minutes += 60 * hours;
-    const char* zero = (sec < 10 && decimals)  ? "0" : "";
-    if (leadingZeros) {
-      snprintf(buffer, 64, "%02d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+    const char* zero = (sec < 10 && decimals_)  ? "0" : "";
+    if (leadingZeros_ == LEADING_ZEROS) {
+      snprintf(buffer, 64, "%02d%c%s%02.*f", minutes, ch, zero, decimals_, sf);
     } else {
-      snprintf(buffer, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+      snprintf(buffer, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals_, sf);
     }
   }
 #else
 
-  if (displayHours) {
-    _snprintf_s(buffer, 64, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
+  if (displayHours_ == DISPLAY_HOURS) {
+    _snprintf_s(buffer, 64, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals_, sf);
   } else {
     minutes += 60 * hours;
-    const char* zero = (sec < 10 && decimals)  ? "0" : "";
-    if (leadingZeros) {
-      _snprintf_s(buffer, 64, 64, "%02d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+    const char* zero = (sec < 10 && decimals_)  ? "0" : "";
+    if (leadingZeros_ == LEADING_ZEROS) {
+      _snprintf_s(buffer, 64, 64, "%02d%c%s%02.*f", minutes, ch, zero, decimals_, sf);
     } else {
-      _snprintf_s(buffer, 64, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+      _snprintf_s(buffer, 64, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals_, sf);
     }
   }
 #endif

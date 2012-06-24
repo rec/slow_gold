@@ -105,6 +105,7 @@ void RubberBand::stretchChanged() {
   if (!stretcher_ || outputSampleRate_ != stretch_.output_sample_rate()) {
     outputSampleRate_ = stretch_.output_sample_rate();
     size_t rate = static_cast<size_t>(outputSampleRate_);
+    DCHECK(rate);
     stretcher_.reset(new RubberBandStretcher(rate, 2, OPTIONS, tr, ps));
   } else if (near(tr, timeScale_, EPSILON) && near(ps, pitchScale_, EPSILON)) {
     return;

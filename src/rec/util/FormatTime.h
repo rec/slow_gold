@@ -8,12 +8,40 @@
 namespace rec {
 namespace util {
 
-const String formatTime(SampleTime time,
-                        SampleTime mTime,
-                        SampleRate rate,
-                        bool flash = false,
-                        bool leadingZeros = true,
-                        int decimals = 3);
+struct TimeFormat {
+  enum Flash { NO_FLASH, FLASH };
+  enum LeadingZeros { NO_LEADING_ZEROS, LEADING_ZEROS };
+  enum DisplayHours { NO_DISPLAY_HOURS, DISPLAY_HOURS };
+
+  Flash flash_;
+  LeadingZeros leadingZeros_;
+  int decimals_;
+  DisplayHours displayHours_;
+
+  void setDisplayHours(RealTime maxTime) {
+  }
+
+  TimeFormat(Flash flash = NO_FLASH, LeadingZeros leadingZeros = LEADING_ZEROS,
+             int decimals = 3, DisplayHours displayHours = NO_DISPLAY_HOURS)
+      : flash_(flash),
+        leadingZeros_(leadingZeros),
+        decimals_(decimals),
+        displayHours_(displayHours) {
+  }
+
+  String format(RealTime) const;
+
+  String format(RealTime time, RealTime maxTime) {
+    bool hours = (std::max(time, maxTime) >= 3600.0);
+    displayHours_ = hours ? DISPLAY_HOURS : NO_DISPLAY_HOURS;
+    return format(time);
+  }
+
+  String format(SampleTime time, SampleTime maxTime, SampleRate rate) {
+    return format(RealTime(time, rate), RealTime(maxTime, rate));
+  }
+};
+
 
 }  // namespace util
 }  // namespace rec

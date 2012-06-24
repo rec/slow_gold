@@ -2,6 +2,7 @@
 #define __REC_AUDIO_DEVICE2__
 
 #include "rec/gui/audio/SetupPage.h"
+#include "rec/base/SampleRate.h"
 
 namespace rec {
 namespace audio {
@@ -12,13 +13,14 @@ class Device : public juce::ChangeListener {
 
   Device();
 
-  AudioDeviceManager manager_;
+  mutable AudioDeviceManager manager_;
   ptr<SetupPage> setupPage_;
 
   void saveState();
   void shutdown();
 
   virtual void changeListenerCallback(ChangeBroadcaster*);
+  SampleRate getSampleRate() const;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Device)

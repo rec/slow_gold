@@ -48,6 +48,6 @@ message Stretch {
 message StretchParameters {
   optional Stretch stretch = 1;
   optional double master_tune = 2;
-  optional double input_sample_rate = 3;
-  optional double output_sample_rate = 4;
+  optional double input_sample_rate = 3 [default = 44100];
+  optional double output_sample_rate = 4 [default = 44100];
 };

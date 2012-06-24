@@ -4,9 +4,11 @@
 #include <stdio.h>
 
 #include "rec/base/SampleTime.h"
+#include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/widget/status/Time.pb.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace widget {
@@ -14,6 +16,7 @@ namespace status {
 namespace time {
 
 class TextComponent : public gui::SimpleLabel,
+                      public DataListener<waveform::Viewport>,
                       public Listener<SampleTime> {
  public:
   explicit TextComponent(const Text& desc = Text::default_instance());
@@ -24,11 +27,15 @@ class TextComponent : public gui::SimpleLabel,
   void setLength(SampleTime len) { length_ = len; }
   void redisplay();
 
+ protected:
+  virtual void operator()(const waveform::Viewport&);
+
  private:
   Text description_;
   SampleTime time_;
   String timeDisplay_;
   SampleTime length_;
+  SampleRate sampleRate_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TextComponent);

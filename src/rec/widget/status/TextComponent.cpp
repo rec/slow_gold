@@ -18,7 +18,8 @@ namespace time {
 TextComponent::TextComponent(const Text& desc)
     : gui::SimpleLabel(str(desc.widget().name())),
       description_(desc),
-      length_(0) {
+      length_(0),
+      sampleRate_(44100.0) {
   setJustificationType(Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
   setTooltip(Trans("Time Display: Shows the current playback time in minutes, "
@@ -30,11 +31,17 @@ SampleTime TextComponent::getTime() const {
   return time_;
 }
 
+void TextComponent::operator()(const waveform::Viewport& vp) {
+  Lock l(lock_);
+  sampleRate_ = vp.loop_points().sample_rate();
+}
+
 bool TextComponent::setTime(SampleTime t) {
   Lock l(lock_);
   time_ = t;
-  bool flash = description_.separator().flash();
-  String timeDisplay = formatTime(time_, length_, flash);
+  bool f = description_.separator().flash();
+  TimeFormat tf(f ? TimeFormat::FLASH : TimeFormat::NO_FLASH);
+  String timeDisplay = tf.format(time_, length_, sampleRate_);
 
   bool res = (timeDisplay == timeDisplay_);
   timeDisplay_ = timeDisplay;

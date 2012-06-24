@@ -2,15 +2,16 @@
 
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/BufferFiller.h"
+#include "rec/audio/util/BufferedReader.h"
 #include "rec/command/Command.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/UntypedDataListener.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/gui/audio/Loops.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/gui/audio/Loops.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentTime.h"
@@ -20,8 +21,8 @@
 #include "rec/slow/Threads.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/Root.h"
-#include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Viewport.pb.h"
+#include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
@@ -68,7 +69,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   data::getDataCenter().clearUndoes();
 
   player()->reset();
-  instance_->reset();
+  instance_->reset();  // Stops the loading thread.
   currentTime()->reset();
 
   if (file_.path_size())
@@ -121,7 +122,6 @@ int64 CurrentFile::getFileLength(bool showError) {
   }
 
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
-  DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
   if (showError) {
     juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,
@@ -153,6 +153,8 @@ void CurrentFile::setViewport() {
   }
 
   viewport.mutable_loop_points()->set_length(length_);
+  viewport.mutable_loop_points()->set_sample_rate(bufferFiller()->reader()->
+                                                  reader()->sampleRate);
   data::setProto(viewport, file_, CANT_UNDO);
 }
 

@@ -13,6 +13,7 @@ struct SampleTime {
   SampleTime(int64 p) : position_(p) {}
   SampleTime(uint64 p) : position_(static_cast<int64>(p)) {}
   SampleTime(int p) : position_(p) {}
+  SampleTime(uint p) : position_(p) {}
   SampleTime(short p) : position_(p) {}
 
   SampleTime(RealTime t, SampleRate rate)

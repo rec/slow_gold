@@ -46,6 +46,7 @@ TimeController::TimeController()
 void TimeController::setTimeScale(double scale) {
   Lock l(lock_);
   timeScale_ = scale;
+
 }
 
 void TimeController::operator()(SampleTime time) {

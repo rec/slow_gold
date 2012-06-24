@@ -66,12 +66,13 @@ class Player : public DataListener<Gain>,
   virtual void operator()(const widget::waveform::Viewport&);
 
   void setGain(double);
-  void setSource(Source*, SampleRate inputSampleRate);
+  void setSource(Source*);
 
   // Stop the player and reset the position to 0.
   void reset();
 
   SampleTime getSelectionLength() const;
+  void setInputSampleRate(SampleRate);
 
  private:
   CriticalSection lock_;

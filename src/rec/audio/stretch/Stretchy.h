@@ -6,18 +6,20 @@
 #include <vector>
 
 #include "rec/audio/source/Wrappy.h"
+#include "rec/base/SampleRate.h"
 
 namespace rec {
 namespace audio {
 namespace stretch {
 
 class Stretch;
+class StretchParameters;
 class Implementation;
 
 class Stretchy : public source::Wrappy {
  public:
-  explicit Stretchy(Source*);
-  explicit Stretchy(Source*, const Stretchy&);
+  explicit Stretchy(Source*, SampleRate);
+  Stretchy(Source*, const Stretchy&);
 
   ~Stretchy();
 
@@ -29,6 +31,7 @@ class Stretchy : public source::Wrappy {
   Implementation* implementation() { return implementation_.get(); }
 
  private:
+  double timeScale() const;
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
   ptr<Implementation> implementation_;
 

@@ -396,14 +396,14 @@ class StretchParameters : public ::google::protobuf::Message {
   inline double master_tune() const;
   inline void set_master_tune(double value);
   
-  // optional double input_sample_rate = 3;
+  // optional double input_sample_rate = 3 [default = 44100];
   inline bool has_input_sample_rate() const;
   inline void clear_input_sample_rate();
   static const int kInputSampleRateFieldNumber = 3;
   inline double input_sample_rate() const;
   inline void set_input_sample_rate(double value);
   
-  // optional double output_sample_rate = 4;
+  // optional double output_sample_rate = 4 [default = 44100];
   inline bool has_output_sample_rate() const;
   inline void clear_output_sample_rate();
   static const int kOutputSampleRateFieldNumber = 4;
@@ -804,12 +804,12 @@ inline void StretchParameters::set_master_tune(double value) {
   master_tune_ = value;
 }
 
-// optional double input_sample_rate = 3;
+// optional double input_sample_rate = 3 [default = 44100];
 inline bool StretchParameters::has_input_sample_rate() const {
   return _has_bit(2);
 }
 inline void StretchParameters::clear_input_sample_rate() {
-  input_sample_rate_ = 0;
+  input_sample_rate_ = 44100;
   _clear_bit(2);
 }
 inline double StretchParameters::input_sample_rate() const {
@@ -820,12 +820,12 @@ inline void StretchParameters::set_input_sample_rate(double value) {
   input_sample_rate_ = value;
 }
 
-// optional double output_sample_rate = 4;
+// optional double output_sample_rate = 4 [default = 44100];
 inline bool StretchParameters::has_output_sample_rate() const {
   return _has_bit(3);
 }
 inline void StretchParameters::clear_output_sample_rate() {
-  output_sample_rate_ = 0;
+  output_sample_rate_ = 44100;
   _clear_bit(3);
 }
 inline double StretchParameters::output_sample_rate() const {

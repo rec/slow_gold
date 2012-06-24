@@ -131,7 +131,8 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
       g.drawVerticalLine(x, 0, h);
     }
 
-    String s = formatTime(time, model_.length(), false, false, decimals);
+    TimeFormat tf(TimeFormat::NO_FLASH, TimeFormat::NO_LEADING_ZEROS, decimals);
+    String s = tf.format(time, model_.length(), sampleRate_);
     g.setColour(juce::Colours::black);
     g.drawText(s, i ? x - GRID_TEXT_WIDTH / 2 : x - GRID_TEXT_WIDTH / 4,
                model_.description().show_times_at_top() ? GRID_TEXT_PAD :

@@ -92,13 +92,14 @@ String Loops::displayText(int column, int row) const {
     return Trans("(error)"); // TODO
   }
 
-  SampleTime length = SampleTime(viewport_.loop_points().length());
+  SampleTime len = SampleTime(viewport_.loop_points().length());
   switch (columns_.column(column).type()) {
    case TableColumn::STRING:  return str(v.string_f());
    case TableColumn::UINT32:  return String(v.uint32_f());
-   case TableColumn::TIME:    return formatTime(SampleTime(v.int64_f()), length,
-                                                false, true, 0);
    case TableColumn::DOUBLE:  return String(v.double_f());
+   case TableColumn::TIME:
+    return TimeFormat(TimeFormat::NO_FLASH, TimeFormat::LEADING_ZEROS, 0).
+      format(v.uint32_f(), len, viewport_.loop_points().sample_rate());
    default:                   return "<unknown>";
   }
 }

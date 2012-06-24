@@ -16,7 +16,8 @@ using namespace rec::widget::waveform;
 Player::Player(Device* d) : device_(d),
                             timer_(new Timer(NULL)),
                             selection_(new Selection(timer_)),
-                            stretchy_(new Stretchy(selection_)),
+                            stretchy_(new Stretchy(selection_,
+                                                   d->getSampleRate())),
                             stereo_(new Stereo(stretchy_)) {
   level_.setSource(stereo_);
   device_->manager_.addAudioCallback(&player_);
@@ -52,9 +53,12 @@ void Player::setState(State s) {
   }
 }
 
-void Player::setSource(Source* source, SampleRate inputSampleRate) {
+void Player::setSource(Source* source) {
   timer_->setSource(source);
-  stretchy_->implementation()->setInputSampleRate(inputSampleRate);
+}
+
+void Player::setInputSampleRate(SampleRate rate) {
+  stretchy_->implementation()->setInputSampleRate(rate);
 }
 
 void Player::operator()(const AudioSettings& settings) {
@@ -76,6 +80,7 @@ void Player::operator()(const Stretch& stretch) {
 
 void Player::operator()(const Viewport& viewport) {
   selection_->setSelection(getTimeSelection(viewport.loop_points()));
+  setInputSampleRate(viewport.loop_points().sample_rate());
 }
 
 SampleTime Player::getSelectionLength() const {
