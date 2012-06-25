@@ -9,32 +9,19 @@ namespace slow {
 
 class RegisterInstance : public app::RegisterProgram {
  public:
-  RegisterInstance() : app::RegisterProgram("RegisterInstance") {
-    setPriority(4);
-  }
+  RegisterInstance();
 
-  virtual Range<const char**> getEnvironmentVariables() const {
-    static const char* VARS[] = {
-      "foo",
-      "bar",
-    };
-    return Range<const char**>(VARS, VARS + arraysize(VARS));
-  }
+  virtual Range<const char**> getEnvironmentVariables() const;
 
-  virtual Range<const NamedFunction*> getNamedFunctions() const {
-    static const app::RegisterProgram::NamedFunction FUNCTIONS[] = {
-      { "baz", NULL },
-    };
-    return Range<const NamedFunction*>(FUNCTIONS,
-                                       FUNCTIONS + arraysize(FUNCTIONS));
-  }
+  virtual Range<const NamedFunction*> getNamedFunctions() const;
 
-  virtual String getBaseUrl() const {
-    return "http://slowgold.com/registration";
-  }
+  virtual String getBaseUrl() const;
+  virtual bool acceptResult(const String&) const;
+  virtual void interpretResult(const String&);
 
-  virtual int timeOut() const { return 1000; }
-  virtual void interpretResult(const String&) {}
+  static const int TIME_OUT = 1000;
+
+  virtual int timeOut() const { return TIME_OUT; }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterInstance);

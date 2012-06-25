@@ -21,6 +21,7 @@ class RegisterProgram : public Thread {
   virtual Range<const char**> getEnvironmentVariables() const = 0;
   virtual Range<const NamedFunction*> getNamedFunctions() const = 0;
   virtual String getBaseUrl() const = 0;
+  virtual bool acceptResult(const String&) const = 0;
   virtual void interpretResult(const String&) = 0;
   virtual int timeOut() const = 0;
   virtual URL::OpenStreamProgressCallback* progressCallback() const {

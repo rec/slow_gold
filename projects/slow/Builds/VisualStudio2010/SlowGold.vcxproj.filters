@@ -946,6 +946,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\RegisterInstance.cpp">
+      <Filter>SlowGold\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\RegisterProtos.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
@@ -2484,6 +2487,9 @@
     <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h">
       <Filter>SlowGold\rec\app</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\RegisterProgram.h">
+      <Filter>SlowGold\rec\app</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h">
       <Filter>SlowGold\rec\app</Filter>
     </ClInclude>
@@ -3181,6 +3187,9 @@
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">
+      <Filter>SlowGold\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\RegisterInstance.h">
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\RegisterProtos.h">

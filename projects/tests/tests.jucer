@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="IdQCVELwM" name="tests">
+  <MAINGROUP id="Ec7dN3Vbe" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -53,6 +53,8 @@
               name="GenericApplication.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/GenericApplication.h" id="DwrM53021"
               name="GenericApplication.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/app/RegisterProgram.h" id="cdBr2oI2W"
+              name="RegisterProgram.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/app/Window.cpp" id="sqqurIioN"
               name="Window.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/Window.h" id="kIETLxXxk"
@@ -893,6 +895,10 @@
               name="MouseListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MouseListener.h" id="GkvgN9kNF"
               name="MouseListener.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/RegisterInstance.cpp" id="hgCcirVX5"
+              name="RegisterInstance.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/RegisterInstance.h" id="nahFHPEO1"
+              name="RegisterInstance.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/RegisterProtos.cpp" id="6Egwa3zvs"
               name="RegisterProtos.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/RegisterProtos.h" id="a8RDtMV42"
@@ -1563,7 +1569,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="SvlM1lTav" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="qLFgIsiuI" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
