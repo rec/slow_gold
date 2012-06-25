@@ -135,6 +135,7 @@
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\app\RegisterInstance.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\Manager.cpp"/>
@@ -284,7 +285,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\MenuMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\RegisterInstance.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\RegisterProtos.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp"/>
@@ -1464,6 +1464,7 @@
     <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\Files.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\app\RegisterInstance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterProgram.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h"/>
@@ -1698,7 +1699,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\MenuMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\RegisterInstance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\RegisterProtos.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Target.h"/>

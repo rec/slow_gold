@@ -1,11 +1,11 @@
-#ifndef __REC_SLOW_REGISTERINSTANCE__
-#define __REC_SLOW_REGISTERINSTANCE__
+#ifndef __REC_APP_REGISTERINSTANCE__
+#define __REC_APP_REGISTERINSTANCE__
 
 #include "rec/app/RegisterProgram.h"
 #include "rec/base/ArraySize.h"
 
 namespace rec {
-namespace slow {
+namespace app {
 
 class RegisterInstance : public app::RegisterProgram {
  public:
@@ -27,7 +27,7 @@ class RegisterInstance : public app::RegisterProgram {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterInstance);
 };
 
-}  // namespace slow
+}  // namespace app
 }  // namespace rec
 
-#endif  // __REC_SLOW_REGISTERINSTANCE__
+#endif  // __REC_APP_REGISTERINSTANCE__

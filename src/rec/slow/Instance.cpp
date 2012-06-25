@@ -23,7 +23,7 @@
 #include "rec/slow/FillerThread.h"
 #include "rec/slow/GuiListener.h"
 #include "rec/slow/GuiSettings.pb.h"
-#include "rec/slow/RegisterInstance.h"
+#include "rec/app/RegisterInstance.h"
 #include "rec/slow/IsWholeSong.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
@@ -167,7 +167,7 @@ void Instance::postStartup() {
   const GuiSettings settings = data::getGlobal<GuiSettings>();
 
   if (false && !settings.registered())
-    thread::trash::run<RegisterInstance>();
+    thread::trash::run<app::RegisterInstance>();
 
   MessageManagerLock l;
   if (settings.show_about_on_startup())

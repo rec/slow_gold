@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="qAAOKxWxQ" name="RequestSupport">
+  <MAINGROUP id="A72xZx9qN" name="RequestSupport">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -53,6 +53,10 @@
               name="GenericApplication.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/GenericApplication.h" id="DwrM53021"
               name="GenericApplication.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/app/RegisterInstance.cpp" id="i1ALx8sY1"
+              name="RegisterInstance.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/app/RegisterInstance.h" id="T8cCYk30o"
+              name="RegisterInstance.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/RegisterProgram.h" id="QCRcJnHZS"
               name="RegisterProgram.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/app/Window.cpp" id="sqqurIioN"
@@ -871,10 +875,6 @@
               name="MouseListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MouseListener.h" id="GkvgN9kNF"
               name="MouseListener.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/RegisterInstance.cpp" id="JeZcPZHhA"
-              name="RegisterInstance.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/RegisterInstance.h" id="KZN4ioJ52"
-              name="RegisterInstance.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/RegisterProtos.cpp" id="6Egwa3zvs"
               name="RegisterProtos.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/RegisterProtos.h" id="a8RDtMV42"
@@ -1513,7 +1513,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="JflJ1te6S" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="zoeGksXHE" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

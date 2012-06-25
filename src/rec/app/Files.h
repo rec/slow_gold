@@ -8,6 +8,7 @@ namespace app {
 
 // Set the name of the application ("SlowGold").  You may only call this once.
 void setApplicationName(const String&);
+String getApplicationName();
 
 // Get the root directory to store files.
 File getCompanyDirectory();

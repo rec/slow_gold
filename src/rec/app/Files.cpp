@@ -15,6 +15,10 @@ void setApplicationName(const String& name) {
   applicationName = name;
 }
 
+String getApplicationName() {
+  return applicationName;
+}
+
 File getCompanyDirectory() {
   return File::getSpecialLocation(File::userApplicationDataDirectory).
     getChildFile(COMPANY_NAME);

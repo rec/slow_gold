@@ -499,6 +499,9 @@
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp">
       <Filter>RequestSupport\rec\app</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\RegisterInstance.cpp">
+      <Filter>RequestSupport\rec\app</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp">
       <Filter>RequestSupport\rec\app</Filter>
     </ClCompile>
@@ -944,9 +947,6 @@
       <Filter>RequestSupport\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
-      <Filter>RequestSupport\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\RegisterInstance.cpp">
       <Filter>RequestSupport\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\RegisterProtos.cpp">
@@ -2487,6 +2487,9 @@
     <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h">
       <Filter>RequestSupport\rec\app</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\RegisterInstance.h">
+      <Filter>RequestSupport\rec\app</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterProgram.h">
       <Filter>RequestSupport\rec\app</Filter>
     </ClInclude>
@@ -3187,9 +3190,6 @@
       <Filter>RequestSupport\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">
-      <Filter>RequestSupport\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\RegisterInstance.h">
       <Filter>RequestSupport\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\RegisterProtos.h">

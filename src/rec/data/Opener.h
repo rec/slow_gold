@@ -16,7 +16,7 @@ class Opener : public Reader<Proto> {
     before_.reset(clone(*this->proto_));
   }
 
-  Opener(VirtualFile* vf, Undoable undoable = CAN_UNDO)
+  Opener(const VirtualFile& vf, Undoable undoable = CAN_UNDO)
       : Reader<Proto>(vf),
         undoable_(undoable) {
     before_.reset(clone(*this->proto_));
