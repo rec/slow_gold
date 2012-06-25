@@ -164,6 +164,13 @@ class GuiSettings : public ::google::protobuf::Message {
   inline void set_last_directory(const char* value, size_t size);
   inline ::std::string* mutable_last_directory();
   
+  // optional bool registered = 11 [default = false];
+  inline bool has_registered() const;
+  inline void clear_registered();
+  static const int kRegisteredFieldNumber = 11;
+  inline bool registered() const;
+  inline void set_registered(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.slow.GuiSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -180,11 +187,12 @@ class GuiSettings : public ::google::protobuf::Message {
   bool use_tree_view_in_file_dialogs_;
   ::std::string* last_directory_;
   static const ::std::string _default_last_directory_;
+  bool registered_;
   friend void  protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fGuiSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -391,6 +399,22 @@ inline ::std::string* GuiSettings::mutable_last_directory() {
     last_directory_ = new ::std::string;
   }
   return last_directory_;
+}
+
+// optional bool registered = 11 [default = false];
+inline bool GuiSettings::has_registered() const {
+  return _has_bit(10);
+}
+inline void GuiSettings::clear_registered() {
+  registered_ = false;
+  _clear_bit(10);
+}
+inline bool GuiSettings::registered() const {
+  return registered_;
+}
+inline void GuiSettings::set_registered(bool value) {
+  _set_bit(10);
+  registered_ = value;
 }
 
 

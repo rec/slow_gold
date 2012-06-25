@@ -23,6 +23,7 @@
 #include "rec/slow/FillerThread.h"
 #include "rec/slow/GuiListener.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/RegisterInstance.h"
 #include "rec/slow/IsWholeSong.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
@@ -163,8 +164,13 @@ void Instance::startup() {
 
 void Instance::postStartup() {
   data::getDataCenter().undoStack()->setEnabled();
+  const GuiSettings settings = data::getGlobal<GuiSettings>();
+
+  if (false && !settings.registered())
+    thread::trash::run<RegisterInstance>();
+
   MessageManagerLock l;
-  if (data::getGlobal<GuiSettings>().show_about_on_startup())
+  if (settings.show_about_on_startup())
     window_->startAboutWindow();
 }
 

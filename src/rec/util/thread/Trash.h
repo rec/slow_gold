@@ -19,6 +19,9 @@ void discard(ptr<ThreadClass>* t) {
 }
 
 Thread* add(Thread* t);
+void run(Thread *t);
+template <typename T> void run() { run(new T); }
+
 
 void empty();
 void waitForAllThreadsToExit(int timeout);

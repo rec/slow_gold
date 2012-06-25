@@ -79,6 +79,7 @@ Trash* instance() {
 }  // namespace
 
 Thread* add(Thread* t) { instance()->add(t); return t; }
+void run(Thread* t) { t->startThread(); instance()->add(t); }
 void discard(Thread* t) { instance()->discard(t); }
 void empty() { instance()->empty(); }
 void waitForAllThreadsToExit(int t) { instance()->waitForAllThreadsToExit(t); }

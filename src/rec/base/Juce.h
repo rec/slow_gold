@@ -83,6 +83,7 @@ typedef juce::TextEditor TextEditor;
 typedef juce::Thread Thread;
 typedef juce::TreeView TreeView;
 
+typedef juce::URL URL;
 typedef juce::WildcardFileFilter WildcardFileFilter;
 
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;

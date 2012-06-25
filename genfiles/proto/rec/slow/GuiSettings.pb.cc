@@ -29,7 +29,7 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
       "rec/slow/GuiSettings.proto");
   GOOGLE_CHECK(file != NULL);
   GuiSettings_descriptor_ = file->message_type(0);
-  static const int GuiSettings_offsets_[10] = {
+  static const int GuiSettings_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, advanced_menus_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, auto_check_for_updates_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, drop_adds_to_browser_),
@@ -40,6 +40,7 @@ void protobuf_AssignDesc_rec_2fslow_2fGuiSettings_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, show_tooltips_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, use_tree_view_in_file_dialogs_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, last_directory_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuiSettings, registered_),
   };
   GuiSettings_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -82,7 +83,7 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\333"
+    "\n\032rec/slow/GuiSettings.proto\022\010rec.slow\"\366"
     "\002\n\013GuiSettings\022\035\n\016advanced_menus\030\001 \001(\010:\005"
     "false\022$\n\026auto_check_for_updates\030\002 \001(\010:\004t"
     "rue\022\"\n\024drop_adds_to_browser\030\003 \001(\010:\004true\022"
@@ -91,7 +92,8 @@ void protobuf_AddDesc_rec_2fslow_2fGuiSettings_2eproto() {
     "ane\030\006 \001(\010:\004true\022\037\n\020show_master_tune\030\007 \001("
     "\010:\005false\022\034\n\rshow_tooltips\030\010 \001(\010:\005false\022,"
     "\n\035use_tree_view_in_file_dialogs\030\t \001(\010:\005f"
-    "alse\022\026\n\016last_directory\030\n \001(\t", 388);
+    "alse\022\026\n\016last_directory\030\n \001(\t\022\031\n\nregister"
+    "ed\030\013 \001(\010:\005false", 415);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/GuiSettings.proto", &protobuf_RegisterTypes);
   GuiSettings::default_instance_ = new GuiSettings();
@@ -121,6 +123,7 @@ const int GuiSettings::kShowMasterTuneFieldNumber;
 const int GuiSettings::kShowTooltipsFieldNumber;
 const int GuiSettings::kUseTreeViewInFileDialogsFieldNumber;
 const int GuiSettings::kLastDirectoryFieldNumber;
+const int GuiSettings::kRegisteredFieldNumber;
 #endif  // !_MSC_VER
 
 GuiSettings::GuiSettings()
@@ -149,6 +152,7 @@ void GuiSettings::SharedCtor() {
   show_tooltips_ = false;
   use_tree_view_in_file_dialogs_ = false;
   last_directory_ = const_cast< ::std::string*>(&_default_last_directory_);
+  registered_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -202,6 +206,7 @@ void GuiSettings::Clear() {
         last_directory_->clear();
       }
     }
+    registered_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -369,6 +374,22 @@ bool GuiSettings::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(88)) goto parse_registered;
+        break;
+      }
+      
+      // optional bool registered = 11 [default = false];
+      case 11: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_registered:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &registered_)));
+          _set_bit(10);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -445,6 +466,11 @@ void GuiSettings::SerializeWithCachedSizes(
       10, this->last_directory(), output);
   }
   
+  // optional bool registered = 11 [default = false];
+  if (_has_bit(10)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(11, this->registered(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -506,6 +532,11 @@ void GuiSettings::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         10, this->last_directory(), target);
+  }
+  
+  // optional bool registered = 11 [default = false];
+  if (_has_bit(10)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(11, this->registered(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -573,6 +604,11 @@ int GuiSettings::ByteSize() const {
           this->last_directory());
     }
     
+    // optional bool registered = 11 [default = false];
+    if (has_registered()) {
+      total_size += 1 + 1;
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -632,6 +668,9 @@ void GuiSettings::MergeFrom(const GuiSettings& from) {
     if (from._has_bit(9)) {
       set_last_directory(from.last_directory());
     }
+    if (from._has_bit(10)) {
+      set_registered(from.registered());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -665,6 +704,7 @@ void GuiSettings::Swap(GuiSettings* other) {
     std::swap(show_tooltips_, other->show_tooltips_);
     std::swap(use_tree_view_in_file_dialogs_, other->use_tree_view_in_file_dialogs_);
     std::swap(last_directory_, other->last_directory_);
+    std::swap(registered_, other->registered_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

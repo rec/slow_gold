@@ -11,4 +11,5 @@ message GuiSettings {
   optional bool show_tooltips = 8 [default = false];
   optional bool use_tree_view_in_file_dialogs = 9 [default = false];
   optional string last_directory = 10;
+  optional bool registered = 11 [default = false];
 };
