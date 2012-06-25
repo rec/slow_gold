@@ -12,12 +12,9 @@ class RegisterInstance : public app::RegisterProgram {
   RegisterInstance();
 
   virtual Range<const char**> getEnvironmentVariables() const;
-
   virtual Range<const NamedFunction*> getNamedFunctions() const;
 
   virtual String getBaseUrl() const;
-  virtual bool acceptResult(const String&) const;
-  virtual void interpretResult(const String&);
 
   static const int TIME_OUT = 1000;
 

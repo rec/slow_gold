@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="RMtSabkmA" name="tests">
+  <MAINGROUP id="JpMkJtvEj" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -57,6 +57,8 @@
               name="RegisterInstance.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/RegisterInstance.h" id="IEA0PWvRs"
               name="RegisterInstance.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/app/RegisterProgram.cpp" id="58uOMNURw"
+              name="RegisterProgram.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/RegisterProgram.h" id="cdBr2oI2W"
               name="RegisterProgram.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/app/Window.cpp" id="sqqurIioN"
@@ -1569,7 +1571,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="brZK5szK1" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="FUgmKQWCs" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

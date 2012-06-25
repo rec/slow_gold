@@ -21,26 +21,14 @@ class RegisterProgram : public Thread {
   virtual Range<const char**> getEnvironmentVariables() const = 0;
   virtual Range<const NamedFunction*> getNamedFunctions() const = 0;
   virtual String getBaseUrl() const = 0;
-  virtual bool acceptResult(const String&) const = 0;
-  virtual void interpretResult(const String&) = 0;
+  virtual bool acceptResult(const String&) const;
+  virtual void onSuccess() {}
   virtual int timeOut() const = 0;
   virtual URL::OpenStreamProgressCallback* progressCallback() const {
     return NULL;
   }
 
-  virtual void run() {
-    URL url(getBaseUrl());
-    Range<const char**> r = getEnvironmentVariables();
-    for (const char** i = r.begin_; i != r.end_; ++i)
-      url = url.withParameter(*i, getenv(*i));
-
-    Range<const NamedFunction*> s = getNamedFunctions();
-    for (const NamedFunction* i = s.begin_; i != s.end_; ++i)
-      url = url.withParameter(i->name_, i->function_());
-    ptr<InputStream> stream(url.createInputStream(true, progressCallback(),
-                                                  this, "", timeOut()));
-    interpretResult(stream->readEntireStreamAsString());
-  }
+  virtual void run();
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterProgram);

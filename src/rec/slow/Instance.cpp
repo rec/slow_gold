@@ -33,6 +33,7 @@
 #include "rec/slow/Threads.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
+#include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
 
@@ -162,12 +163,22 @@ void Instance::startup() {
   player_->timer()->setThread(timer);
 }
 
+class RegisterSlow : public app::RegisterInstance {
+ public:
+  RegisterSlow() {}
+
+  virtual void onSuccess() {
+    data::Opener<GuiSettings> settings(data::global(), CANT_UNDO);
+    settings->set_registered(true);
+  }
+};
+
 void Instance::postStartup() {
   data::getDataCenter().undoStack()->setEnabled();
   const GuiSettings settings = data::getGlobal<GuiSettings>();
 
-  if (false && !settings.registered())
-    thread::trash::run<app::RegisterInstance>();
+  if (!settings.registered())
+    thread::trash::run<RegisterSlow>();
 
   MessageManagerLock l;
   if (settings.show_about_on_startup())
