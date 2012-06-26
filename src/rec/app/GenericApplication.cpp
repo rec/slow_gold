@@ -13,7 +13,7 @@ namespace app {
 GenericApplication::GenericApplication(ApplicationFunction i,
                                        ApplicationFunction s)
     : initializer_(i), shutdown_(s), disabled_(false),
-      autoCheckForUpdates_(false) {
+      autoCheckForUpdates_(true) {
 }
 
 GenericApplication::~GenericApplication() {}
@@ -30,14 +30,14 @@ void GenericApplication::initialise(const String&) {
   //     File::userApplicationDataDirectory).getChildFile("Logs"));
 
   setApplicationName(name());
-  if (autoCheckForUpdates() && checkForUpdates())
-    return;
 
   audio::format::mpg123::initializeOnce();
   if (initializer_)
     initializer_(this);
   window_.reset(createWindow());
   window_->initialise();
+  if (autoCheckForUpdates() && checkForUpdates())
+    return;
 
   thread::runInNewThread("startup thread",
                          STARTUP_THREAD_PRIORITY,

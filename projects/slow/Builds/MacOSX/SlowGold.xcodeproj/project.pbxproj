@@ -219,6 +219,7 @@
 		B296206F126FDBA3FDCAE13B /* Selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD06F42CA05EF79F39897BB1 /* Selection.cpp */; };
 		B2BE0E693719AC0E04202421 /* Cuttable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A91650EDCDCFC7EC8BC64E6D /* Cuttable.cpp */; };
 		B2C54D7BC5F5B9A23DE6613E /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8BB6A549AF315D712F63321 /* tag.cpp */; };
+		B3816ADDD2FA9BCB2CF79364 /* AppData.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7F1F0B9EC33328891FBBE31D /* AppData.pb.cc */; };
 		B3B44F601DBDB3C181F16009 /* AppLayout.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7110F2F28A01752761B0F270 /* AppLayout.pb.cc */; };
 		B3CECF3DE6C119481FA83426 /* JumpToStartButtonDisabled.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08C5F296E33374CE98F958E1 /* JumpToStartButtonDisabled.svg.cpp */; };
 		B3DB89F1EAE482EFE1424F7D /* ZoomOutButton.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1DD149924D24E74E9867D58E /* ZoomOutButton.svg.cpp */; };
@@ -1055,6 +1056,7 @@
 		7E3BEAC25FF6B2CD445B6E3D /* OutlinedCursorLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OutlinedCursorLabel.h; path = ../../../../src/rec/widget/waveform/OutlinedCursorLabel.h; sourceTree = SOURCE_ROOT; };
 		7E561366288B164FD864FC64 /* SampleRate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SampleRate.h; path = ../../../../src/rec/base/SampleRate.h; sourceTree = SOURCE_ROOT; };
 		7EEF013F9C6FA4B56354F3F5 /* juce_StretchableLayoutManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_StretchableLayoutManager.h; path = ../../../../../juce/modules/juce_gui_basics/layout/juce_StretchableLayoutManager.h; sourceTree = SOURCE_ROOT; };
+		7F1F0B9EC33328891FBBE31D /* AppData.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppData.pb.cc; path = ../../../../genfiles/proto/rec/app/AppData.pb.cc; sourceTree = SOURCE_ROOT; };
 		7F3225280B1A8AA5580F6CA0 /* ZoomInCursor.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZoomInCursor.svg.h; path = ../../../../genfiles/icon/rec/gui/icon/ZoomInCursor.svg.h; sourceTree = SOURCE_ROOT; };
 		7F5E1BE254683F309EBCA0EB /* LockedState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedState.h; path = ../../../../src/rec/util/LockedState.h; sourceTree = SOURCE_ROOT; };
 		7F661778CF859B0C4AF8CB78 /* juce_ArrowButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_ArrowButton.cpp; path = ../../../../../juce/modules/juce_gui_basics/buttons/juce_ArrowButton.cpp; sourceTree = SOURCE_ROOT; };
@@ -1281,6 +1283,7 @@
 		A1841327A667799AAC2061E2 /* juce_Thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_Thread.h; path = ../../../../../juce/modules/juce_core/threads/juce_Thread.h; sourceTree = SOURCE_ROOT; };
 		A1932D3FC53FA4BA41DF0AD8 /* juce_AudioIODevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_AudioIODevice.h; path = ../../../../../juce/modules/juce_audio_devices/audio_io/juce_AudioIODevice.h; sourceTree = SOURCE_ROOT; };
 		A1F63987FBBAD9E33BDFB3F7 /* WaveformPainter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformPainter.h; path = ../../../../src/rec/widget/waveform/WaveformPainter.h; sourceTree = SOURCE_ROOT; };
+		A20B054B4B7771BEA2207CE4 /* AppData.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppData.pb.h; path = ../../../../genfiles/proto/rec/app/AppData.pb.h; sourceTree = SOURCE_ROOT; };
 		A21E606D84ADD437A0198FE7 /* LockedFlag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedFlag.h; path = ../../../../src/rec/util/thread/LockedFlag.h; sourceTree = SOURCE_ROOT; };
 		A243ACCD0792F5375EB95F76 /* juce_android_OpenSL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_OpenSL.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_android_OpenSL.cpp; sourceTree = SOURCE_ROOT; };
 		A27103682A55815E0FBF2919 /* juce_module_info */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_module_info; path = ../../../../../juce/modules/juce_graphics/juce_module_info; sourceTree = SOURCE_ROOT; };
@@ -2119,6 +2122,17 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		21E6AEF30D1DB26AEA4A5455 /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		2481F6D1C08CA708991C7324 /* support */ = {
 			isa = PBXGroup;
 			children = (
@@ -2201,6 +2215,15 @@
 				21236F18EA7FBD7883E7F897 /* juce_ToolbarButton.h */,
 			);
 			name = buttons;
+			sourceTree = "<group>";
+		};
+		281B2CFD19C3F4D62043CD0C /* app */ = {
+			isa = PBXGroup;
+			children = (
+				7F1F0B9EC33328891FBBE31D /* AppData.pb.cc */,
+				A20B054B4B7771BEA2207CE4 /* AppData.pb.h */,
+			);
+			name = app;
 			sourceTree = "<group>";
 		};
 		29516E11B7CF1E2E66AEEF9C /* capture */ = {
@@ -3136,7 +3159,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BCB54C16C20A56E976CA13AE /* SlowGold */,
+				21E6AEF30D1DB26AEA4A5455 /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3470,6 +3493,7 @@
 		9F89C350520C76F8C4DCD3D5 /* rec */ = {
 			isa = PBXGroup;
 			children = (
+				281B2CFD19C3F4D62043CD0C /* app */,
 				BB6876EBCBF8E5E2CBB8D84C /* audio */,
 				3B76A2A8B3EDF4FF86D176F0 /* command */,
 				AA7F122867884F2B9327A2CD /* data */,
@@ -3861,17 +3885,6 @@
 				0DFA414AD608E845FF20A928 /* util */,
 			);
 			name = audio;
-			sourceTree = "<group>";
-		};
-		BCB54C16C20A56E976CA13AE /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		BE058408ADE877387B7268AD /* native */ = {
@@ -4993,6 +5006,7 @@
 				DC2B1B04DB8AB5055B5DF8ED /* ZoomToSelectionButton.svg.cpp in Sources */,
 				E8F38335952078B9EC224AD8 /* ZoomToSelectionButtonDisabled.svg.cpp in Sources */,
 				A8F94D8C2331174D74B6E16F /* ZoomToSelectionButtonPressed.svg.cpp in Sources */,
+				B3816ADDD2FA9BCB2CF79364 /* AppData.pb.cc in Sources */,
 				F1D8F29183D6B9DBB5A59382 /* AudioSettings.pb.cc in Sources */,
 				44FA0A5365B73C1181F3A892 /* Stereo.pb.cc in Sources */,
 				1C5F7A179FC283B1F7A8C2C3 /* Stretch.pb.cc in Sources */,

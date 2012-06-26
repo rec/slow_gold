@@ -137,6 +137,9 @@
     <Filter Include="RequestSupport\proto\rec">
       <UniqueIdentifier>{E6D7FC0D-A846-03AB-DEBF-E85FDCD832D7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RequestSupport\proto\rec\app">
+      <UniqueIdentifier>{B5A55DE5-0B0E-3422-D736-FE2E55E30F22}</UniqueIdentifier>
+    </Filter>
     <Filter Include="RequestSupport\proto\rec\audio">
       <UniqueIdentifier>{325DB030-45AD-74A2-10ED-5E49EF3A3071}</UniqueIdentifier>
     </Filter>
@@ -1212,6 +1215,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonPressed.svg.cpp">
       <Filter>RequestSupport\icon\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\AppData.pb.cc">
+      <Filter>RequestSupport\proto\rec\app</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc">
       <Filter>RequestSupport\proto\rec\audio</Filter>
@@ -3569,6 +3575,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\icon\rec\gui\icon\ZoomToSelectionButtonPressed.svg.h">
       <Filter>RequestSupport\icon\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\AppData.pb.h">
+      <Filter>RequestSupport\proto\rec\app</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h">
       <Filter>RequestSupport\proto\rec\audio</Filter>

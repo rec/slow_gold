@@ -287,6 +287,7 @@
 		DC2B1B04DB8AB5055B5DF8ED = { isa = PBXBuildFile; fileRef = 312B61FC3DAE862146104198; };
 		E8F38335952078B9EC224AD8 = { isa = PBXBuildFile; fileRef = 09EE7EC21416C42FF72B3FFF; };
 		A8F94D8C2331174D74B6E16F = { isa = PBXBuildFile; fileRef = B50E1EEFD87AF80DF37576A5; };
+		B3816ADDD2FA9BCB2CF79364 = { isa = PBXBuildFile; fileRef = 7F1F0B9EC33328891FBBE31D; };
 		F1D8F29183D6B9DBB5A59382 = { isa = PBXBuildFile; fileRef = D8EC75634C62AA9A3A850E43; };
 		44FA0A5365B73C1181F3A892 = { isa = PBXBuildFile; fileRef = 1D9F3E23B6A2131F8203E399; };
 		1C5F7A179FC283B1F7A8C2C3 = { isa = PBXBuildFile; fileRef = A9F5F463F116A1AADBC7101E; };
@@ -1088,6 +1089,7 @@
 		7E3BEAC25FF6B2CD445B6E3D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OutlinedCursorLabel.h; path = ../../../../src/rec/widget/waveform/OutlinedCursorLabel.h; sourceTree = "SOURCE_ROOT"; };
 		7E561366288B164FD864FC64 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SampleRate.h; path = ../../../../src/rec/base/SampleRate.h; sourceTree = "SOURCE_ROOT"; };
 		7EEF013F9C6FA4B56354F3F5 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_StretchableLayoutManager.h"; path = "../../../../../juce/modules/juce_gui_basics/layout/juce_StretchableLayoutManager.h"; sourceTree = "SOURCE_ROOT"; };
+		7F1F0B9EC33328891FBBE31D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppData.pb.cc; path = ../../../../genfiles/proto/rec/app/AppData.pb.cc; sourceTree = "SOURCE_ROOT"; };
 		7F3225280B1A8AA5580F6CA0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZoomInCursor.svg.h; path = ../../../../genfiles/icon/rec/gui/icon/ZoomInCursor.svg.h; sourceTree = "SOURCE_ROOT"; };
 		7F5E1BE254683F309EBCA0EB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedState.h; path = ../../../../src/rec/util/LockedState.h; sourceTree = "SOURCE_ROOT"; };
 		7F661778CF859B0C4AF8CB78 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ArrowButton.cpp"; path = "../../../../../juce/modules/juce_gui_basics/buttons/juce_ArrowButton.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -1319,6 +1321,7 @@
 		A1932D3FC53FA4BA41DF0AD8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_AudioIODevice.h"; path = "../../../../../juce/modules/juce_audio_devices/audio_io/juce_AudioIODevice.h"; sourceTree = "SOURCE_ROOT"; };
 		A1952CECA5E2E30802AE1021 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "FormatString_test.cpp"; path = "../../../../src/rec/util/FormatString_test.cpp"; sourceTree = "SOURCE_ROOT"; };
 		A1F63987FBBAD9E33BDFB3F7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformPainter.h; path = ../../../../src/rec/widget/waveform/WaveformPainter.h; sourceTree = "SOURCE_ROOT"; };
+		A20B054B4B7771BEA2207CE4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppData.pb.h; path = ../../../../genfiles/proto/rec/app/AppData.pb.h; sourceTree = "SOURCE_ROOT"; };
 		A21E606D84ADD437A0198FE7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedFlag.h; path = ../../../../src/rec/util/thread/LockedFlag.h; sourceTree = "SOURCE_ROOT"; };
 		A243ACCD0792F5375EB95F76 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_android_OpenSL.cpp"; path = "../../../../../juce/modules/juce_audio_devices/native/juce_android_OpenSL.cpp"; sourceTree = "SOURCE_ROOT"; };
 		A27103682A55815E0FBF2919 = { isa = PBXFileReference; lastKnownFileType = file; name = "juce_module_info"; path = "../../../../../juce/modules/juce_graphics/juce_module_info"; sourceTree = "SOURCE_ROOT"; };
@@ -2595,6 +2598,9 @@
 				D83803607444971A3A1742B3 ); name = rec; sourceTree = "<group>"; };
 		03659EBA29894A21CE72DED2 = { isa = PBXGroup; children = (
 				8B99EC979E7724E8A0EC4995 ); name = icon; sourceTree = "<group>"; };
+		A9F11465D77661663B8491A7 = { isa = PBXGroup; children = (
+				7F1F0B9EC33328891FBBE31D,
+				A20B054B4B7771BEA2207CE4 ); name = app; sourceTree = "<group>"; };
 		A7953ADE5C751C441F61FA5B = { isa = PBXGroup; children = (
 				1D9F3E23B6A2131F8203E399,
 				D0A2645A34246ED915285619 ); name = source; sourceTree = "<group>"; };
@@ -2694,6 +2700,7 @@
 				AC669C4ECEB1CDBE0CDCCF65,
 				35D72977B3AD45BE00082568 ); name = widget; sourceTree = "<group>"; };
 		9F89C350520C76F8C4DCD3D5 = { isa = PBXGroup; children = (
+				A9F11465D77661663B8491A7,
 				BB6876EBCBF8E5E2CBB8D84C,
 				3B76A2A8B3EDF4FF86D176F0,
 				AA7F122867884F2B9327A2CD,
@@ -2704,7 +2711,7 @@
 				8D702D0A6DE73B1230915BE1 ); name = rec; sourceTree = "<group>"; };
 		A374C7486F7AFC6EDED72C7F = { isa = PBXGroup; children = (
 				9F89C350520C76F8C4DCD3D5 ); name = proto; sourceTree = "<group>"; };
-		12D4502DD22336F4B002AE53 = { isa = PBXGroup; children = (
+		60B21A340A6BBA629F28927C = { isa = PBXGroup; children = (
 				8C5C75096A7B1FC71C209B64,
 				03659EBA29894A21CE72DED2,
 				A374C7486F7AFC6EDED72C7F,
@@ -3743,7 +3750,7 @@
 		15D5B9524ABD37A7B5D2F73D = { isa = PBXGroup; children = (
 				57A179F92CC94E9DAF17FBF5 ); name = Products; sourceTree = "<group>"; };
 		7D19445674B4E0F8BA4B6FDC = { isa = PBXGroup; children = (
-				12D4502DD22336F4B002AE53,
+				60B21A340A6BBA629F28927C,
 				FAD54DA50567E027AD0C5740,
 				BF92DDB8D6E2065CE205851B,
 				05C24AFFDB64894F0FC02514,
@@ -4157,6 +4164,7 @@
 				DC2B1B04DB8AB5055B5DF8ED,
 				E8F38335952078B9EC224AD8,
 				A8F94D8C2331174D74B6E16F,
+				B3816ADDD2FA9BCB2CF79364,
 				F1D8F29183D6B9DBB5A59382,
 				44FA0A5365B73C1181F3A892,
 				1C5F7A179FC283B1F7A8C2C3,

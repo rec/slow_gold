@@ -92,7 +92,6 @@ const File getRealFile(const VirtualFile& file) {
 }
 
 const String getFilename(const VirtualFile& file) {
-  DLOG(INFO) << file.type();
   return file.path_size() ? str(file.path().end()[-1]) : String(Trans("<none>"));
 }
 

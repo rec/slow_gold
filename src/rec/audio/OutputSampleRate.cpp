@@ -28,7 +28,6 @@ SampleRate getOutputSampleRate() {
 void setOutputSampleRate(SampleRate st) {
   {
     Lock l(outputRate()->lock_);
-    LOG(INFO) << "Setting sample rate to " << st;
     outputRate()->sampleRate_ = st;
   }
   getOutputSampleRateBroadcaster()->broadcast(st);

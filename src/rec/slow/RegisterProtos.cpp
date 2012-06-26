@@ -1,5 +1,6 @@
 #include "rec/slow/RegisterProtos.h"
 
+#include "rec/app/AppData.pb.h"
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/audio/source/Stereo.pb.h"
 #include "rec/audio/stretch/Stretch.pb.h"
@@ -28,6 +29,7 @@ void registerProtos() {
   using namespace rec::data;
   MessageRegistrar* r = getDataCenter().registry_.get();
 
+  registerClass<app::AppData>(r);
   registerClass<audio::AudioSettings>(r);
   registerClass<audio::Gain>(r);
   registerClass<audio::source::StereoProto>(r);

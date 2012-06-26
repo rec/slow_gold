@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="WkKkN69cw" name="SlowGold">
+  <MAINGROUP id="w5qk8CGgg" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1337,6 +1337,12 @@
     </GROUP>
     <GROUP id="q8YJuYIeQ" name="proto">
       <GROUP id="VypJ7N0Vw" name="rec">
+        <GROUP id="f7nAg3wel" name="app">
+          <FILE compile="1" file="../../genfiles/proto/rec/app/AppData.pb.cc"
+                id="hmWdtrbbk" name="AppData.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/app/AppData.pb.h"
+                id="uAjtQ0IEq" name="AppData.pb.h" resource="0"/>
+        </GROUP>
         <GROUP id="TbRxwjhvZ" name="audio">
           <FILE compile="1" file="../../genfiles/proto/rec/audio/AudioSettings.pb.cc"
                 id="TLcvU0iOj" name="AudioSettings.pb.cc" resource="0"/>
@@ -1515,7 +1521,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="O9IcESS4A" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="981X2krsj" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

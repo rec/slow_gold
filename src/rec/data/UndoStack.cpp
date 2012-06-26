@@ -70,7 +70,6 @@ void UndoStack::clear() {
     stack_.clear();
   }
   broadcast(None());
-  // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
 }
 
 int UndoStack::popRedos() {
@@ -102,7 +101,6 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
     }
   }
   broadcast(None());
-  // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
 }
 
 void UndoStack::undoOrRedo(bool isUndo) {
@@ -115,7 +113,6 @@ void UndoStack::undoOrRedo(bool isUndo) {
   }
 
   broadcast(None());
-  // DLOG(INFO) << stack_.size() << ", " << undoable() << ", " << undoes();
 }
 
 void UndoStack::undo() {
