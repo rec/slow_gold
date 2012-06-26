@@ -77,11 +77,11 @@ void protobuf_AddDesc_rec_2faudio_2fAudioSettings_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/audio/AudioSettings.proto\022\trec.aud"
-    "io\"\246\001\n\rAudioSettings\022\023\n\013master_tune\030\001 \001("
-    "\001\022C\n\022file_type_for_save\030\002 \001(\0162!.rec.audi"
-    "o.AudioSettings.FileType:\004AIFF\";\n\010FileTy"
-    "pe\022\010\n\004AIFF\020\000\022\010\n\004FLAC\020\001\022\007\n\003OGG\020\002\022\007\n\003WAV\020\003"
-    "\022\t\n\005COUNT\020\004", 211);
+    "io\"\245\001\n\rAudioSettings\022\023\n\013master_tune\030\001 \001("
+    "\001\022B\n\022file_type_for_save\030\002 \001(\0162!.rec.audi"
+    "o.AudioSettings.FileType:\003WAV\";\n\010FileTyp"
+    "e\022\010\n\004AIFF\020\000\022\010\n\004FLAC\020\001\022\007\n\003OGG\020\002\022\007\n\003WAV\020\003\022"
+    "\t\n\005COUNT\020\004", 210);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/AudioSettings.proto", &protobuf_RegisterTypes);
   AudioSettings::default_instance_ = new AudioSettings();
@@ -148,7 +148,7 @@ AudioSettings::AudioSettings(const AudioSettings& from)
 void AudioSettings::SharedCtor() {
   _cached_size_ = 0;
   master_tune_ = 0;
-  file_type_for_save_ = 0;
+  file_type_for_save_ = 3;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -184,7 +184,7 @@ AudioSettings* AudioSettings::New() const {
 void AudioSettings::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     master_tune_ = 0;
-    file_type_for_save_ = 0;
+    file_type_for_save_ = 3;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -211,7 +211,7 @@ bool AudioSettings::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = AIFF];
+      // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = WAV];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -255,7 +255,7 @@ void AudioSettings::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->master_tune(), output);
   }
   
-  // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = AIFF];
+  // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = WAV];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->file_type_for_save(), output);
@@ -274,7 +274,7 @@ void AudioSettings::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->master_tune(), target);
   }
   
-  // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = AIFF];
+  // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = WAV];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->file_type_for_save(), target);
@@ -296,7 +296,7 @@ int AudioSettings::ByteSize() const {
       total_size += 1 + 8;
     }
     
-    // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = AIFF];
+    // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = WAV];
     if (has_file_type_for_save()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->file_type_for_save());

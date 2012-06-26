@@ -147,7 +147,7 @@ class AudioSettings : public ::google::protobuf::Message {
   inline double master_tune() const;
   inline void set_master_tune(double value);
   
-  // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = AIFF];
+  // optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = WAV];
   inline bool has_file_type_for_save() const;
   inline void clear_file_type_for_save();
   static const int kFileTypeForSaveFieldNumber = 2;
@@ -204,12 +204,12 @@ inline void AudioSettings::set_master_tune(double value) {
   master_tune_ = value;
 }
 
-// optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = AIFF];
+// optional .rec.audio.AudioSettings.FileType file_type_for_save = 2 [default = WAV];
 inline bool AudioSettings::has_file_type_for_save() const {
   return _has_bit(1);
 }
 inline void AudioSettings::clear_file_type_for_save() {
-  file_type_for_save_ = 0;
+  file_type_for_save_ = 3;
   _clear_bit(1);
 }
 inline ::rec::audio::AudioSettings_FileType AudioSettings::file_type_for_save() const {
