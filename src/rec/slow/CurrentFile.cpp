@@ -40,8 +40,7 @@ Trans RAN_OUT_OF_MEMORY_FULL("Your file was so large that the program "
 using namespace rec::widget::waveform;
 using namespace juce;
 
-CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {
-}
+CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {}
 
 CurrentFile::~CurrentFile() {}
 
@@ -96,9 +95,10 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   }
 
   length_ = getFileLength(showError);
-
   if (length_)
     setViewport();
+  else
+    file_ = data::noData();
 
   components()->waveform_->setLoading(false);
   data::setGlobal(file_, CANT_UNDO);
