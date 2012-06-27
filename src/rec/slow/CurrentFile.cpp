@@ -82,14 +82,6 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
 
   {
     MessageManagerLock l;
-
-    if (file_.path_size())
-      components()->directoryTree_->refreshNode(file_);
-
-    if (newFile.path_size())
-      components()->directoryTree_->refreshNode(newFile);
-
-    components()->setEnabled(file_.path_size());
     components()->waveform_->setLoading(true);
     components()->waveform_->repaint();
   }
@@ -99,6 +91,21 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
     setViewport();
   else
     file_ = data::noData();
+
+  {
+    MessageManagerLock l;
+
+    if (length_ != 0)
+      components()->directoryTree_->refreshNode(file_);
+
+    if (newFile.path_size())
+      components()->directoryTree_->refreshNode(newFile);
+
+    components()->waveform_->setLoading(true);
+    components()->waveform_->repaint();
+
+    components()->setEnabled(length_ != 0);
+  }
 
   components()->waveform_->setLoading(false);
   data::setGlobal(file_, CANT_UNDO);

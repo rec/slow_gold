@@ -41,8 +41,6 @@ void TextComponent::operator()(const waveform::Viewport& vp) {
 bool TextComponent::setTime(SampleTime t) {
   bool res;
 
-  DLOG(INFO) << t;
-
   Lock l(lock_);
   time_ = t;
 

@@ -42,23 +42,22 @@ double pitchScale(const Stretch& d, double detuneCents) {
   return scale;
 }
 
-double pitchSemitones(const Stretch& d, double detuneCents) {
-  return SEMITONE_LOG * log(pitchScale(d, detuneCents));
+double sampleRateRatio(const StretchParameters& sp) {
+  return sp.output_sample_rate() / sp.input_sample_rate();
 }
 
 }  // namespace
 
 double timeScale(const StretchParameters& sp) {
-  return (sp.input_sample_rate() * timeScale(sp.stretch())) /
-    sp.output_sample_rate();
+  return timeScale(sp.stretch()) * sampleRateRatio(sp);
 }
 
 double pitchScale(const StretchParameters& sp) {
-  return pitchScale(sp.stretch(), sp.master_tune());
+  return pitchScale(sp.stretch(), sp.master_tune()) / sampleRateRatio(sp);
 }
 
 double pitchSemitones(const StretchParameters& sp) {
-  return pitchSemitones(sp.stretch(), sp.master_tune());
+  return SEMITONE_LOG * log(pitchScale(sp));
 }
 
 }  // namespace stretch
