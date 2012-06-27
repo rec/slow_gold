@@ -36,6 +36,8 @@ class TextComponent : public gui::SimpleLabel,
   String timeDisplay_;
   SampleTime length_;
   SampleRate sampleRate_;
+  bool empty_;
+
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TextComponent);

@@ -9,42 +9,20 @@ namespace rec {
 
 class Trans {
  public:
-  operator const String&() const {
-    if (!translated_)
-      translate();
-    return *translated_;
-  }
-
+  operator const String&() const;
   void translate() const;
 
-  Trans(const char* o) : original_(CharPointer_UTF8(o)) {
-    check(original_);
-  }
+  Trans(const char*);
+  Trans(const String& s);
 
-  Trans(const String& s) : original_(s) {
-    check(original_);
-  }
-
-  Trans(const char* o, const char* h)
-      : original_(CharPointer_UTF8(o)),
-        hint_(CharPointer_UTF8(h)) {
-    check(original_);
-    check(hint_);
-  }
+  Trans(const char* o, const char* hint);
 
 #ifdef DEBUG
   static void dumpAll();
 #endif
 
  private:
-  void check(const String& s) {
-    DCHECK_GT(s.length(), 0);
-    DCHECK(!s.containsChar('\n')) << str(s);
-    DCHECK(!s.containsChar('\r')) << str(s);
-    DCHECK(!s.containsChar('\t')) << str(s);
-    DCHECK(!isspace(s[0])) << str(s);
-    DCHECK(!isspace(s[s.length() - 1])) << str(s);
-  }
+  void check(const String& s);
 
   const String original_;
   const String hint_;

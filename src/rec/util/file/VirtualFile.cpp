@@ -109,7 +109,7 @@ const String getDisplayName(const VirtualFile& file) {
   if (type == VirtualFile::VOLUME || type == VirtualFile::CD) {
     string name = file.volume_name();
     eraseVolumePrefix(&name, false);
-    return name.empty() ? String(Trans("<Root>")) : str(name);
+    return name.empty() ? String(Trans("<Root>")) : str("/" + name);
   }
 
   if (type == VirtualFile::NONE)

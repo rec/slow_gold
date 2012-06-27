@@ -110,6 +110,7 @@ void RubberBand::stretchChanged() {
   } else if (near(tr, timeScale_, EPSILON) && near(ps, pitchScale_, EPSILON)) {
     return;
   } else {
+    DCHECK_GT(tr, 0.00001);
     stretcher_->setTimeRatio(tr);
     stretcher_->setPitchScale(ps);
   }

@@ -50,6 +50,37 @@ void Trans::dumpAll() {
 
 #endif  // DEBUG
 
+Trans::operator const String&() const {
+  if (!translated_)
+    translate();
+  return *translated_;
+}
+
+Trans::Trans(const char* o) : original_(CharPointer_UTF8(o)) {
+  check(original_);
+}
+
+Trans::Trans(const String& s) : original_(s) {
+  check(original_);
+}
+
+Trans::Trans(const char* o, const char* h)
+    : original_(CharPointer_UTF8(o)),
+      hint_(CharPointer_UTF8(h)) {
+  check(original_);
+  check(hint_);
+}
+
+void Trans::check(const String& s) {
+  DCHECK_GT(s.length(), 0);
+  // DCHECK(!s.containsChar('\n')) << str(s);
+  DCHECK(!s.containsChar('\r')) << str(s);
+  DCHECK(!s.containsChar('\t')) << str(s);
+  DCHECK(!isspace(s[0])) << str(s);
+  DCHECK(!isspace(s[s.length() - 1])) << str(s);
+}
+
+
 void Trans::translate() const {
   translated_.reset(new String(::juce::translate(original_)));
 #if JUCE_DEBUG && JUCE_MAC

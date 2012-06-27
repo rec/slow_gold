@@ -80,7 +80,8 @@ void Player::operator()(const Stretch& stretch) {
 
 void Player::operator()(const Viewport& viewport) {
   selection_->setSelection(getTimeSelection(viewport.loop_points()));
-  setInputSampleRate(viewport.loop_points().sample_rate());
+  if (viewport.loop_points().has_sample_rate())
+    setInputSampleRate(viewport.loop_points().sample_rate());
 }
 
 SampleTime Player::getSelectionLength() const {

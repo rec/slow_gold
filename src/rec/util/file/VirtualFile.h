@@ -33,10 +33,6 @@ inline const string toString(const VirtualFile& f) {
   return str(getFullDisplayName(f));
 }
 
-inline const string toString(const VirtualFile* f) {
-  return f ? toString(*f) : string("(no file)");
-}
-
 bool compare(const VirtualFile& x, const VirtualFile& y);
 
 VirtualFile toVirtualFile(const File& file);

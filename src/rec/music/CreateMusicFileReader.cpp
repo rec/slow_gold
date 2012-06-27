@@ -23,8 +23,10 @@ Trans CANT_CREATE_TRACK("Can't create track for %s.");
 Trans COULDNT_OPEN_TRACK("Couldn't Open CD Track.");
 Trans COULDNT_OPEN_TRACK_FULL("Couldn't open track on CD - perhaps you ejected it?");
 Trans ERROR_WAS("Error was");
-Trans FILE_NOT_EXIST("File Does Not Exist");
-Trans FILE_NOT_EXIST_FULL("Sorry, file %s does not exist.");
+Trans FILE_NOT_EXIST("Can't Find File");
+Trans FILE_NOT_EXIST_FULL("Sorry, we couldn't find the file %s.  Perhaps you "
+                          "deleted it, or perhaps it's on a drive that isn't "
+                          "currently mounted.\nThe full path was: %s");
 Trans CANT_READ_M4A("We Can't Read .m4a Files On Windows");
 Trans CANT_READ_M4A_FULL("Sorry, file %s is an .m4a file and we cano't yet "
                          "read these files on Windows: "
@@ -93,6 +95,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
       errorTitle_ = FILE_NOT_EXIST;
       errorDetails_ = String::formatted(
           FILE_NOT_EXIST_FULL,
+          c_str(file::getFilename(file)),
           c_str(file::getFullDisplayName(file)));
     } else {
       reader_.reset(createFileReader(file, metadata.get()));

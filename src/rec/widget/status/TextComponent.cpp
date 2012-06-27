@@ -19,7 +19,8 @@ TextComponent::TextComponent(const Text& desc)
     : gui::SimpleLabel(str(desc.widget().name())),
       description_(desc),
       length_(0),
-      sampleRate_(44100.0) {
+      sampleRate_(44100.0),
+      empty_(true) {
   setJustificationType(Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
   setTooltip(Trans("Time Display: Shows the current playback time in minutes, "
@@ -34,17 +35,28 @@ SampleTime TextComponent::getTime() const {
 void TextComponent::operator()(const waveform::Viewport& vp) {
   Lock l(lock_);
   sampleRate_ = vp.loop_points().sample_rate();
+  empty_ = !vp.loop_points().has_sample_rate();
 }
 
 bool TextComponent::setTime(SampleTime t) {
+  bool res;
+
+  DLOG(INFO) << t;
+
   Lock l(lock_);
   time_ = t;
-  bool f = description_.separator().flash();
-  TimeFormat tf(f ? TimeFormat::FLASH : TimeFormat::NO_FLASH);
-  String timeDisplay = tf.format(time_, length_, sampleRate_);
 
-  bool res = (timeDisplay == timeDisplay_);
-  timeDisplay_ = timeDisplay;
+  if (empty_) {
+    res = timeDisplay_ == "";
+    timeDisplay_ = "";
+  } else {
+    bool f = description_.separator().flash();
+    TimeFormat tf(f ? TimeFormat::FLASH : TimeFormat::NO_FLASH);
+    String timeDisplay = tf.format(time_, length_, sampleRate_);
+
+    res = (timeDisplay == timeDisplay_);
+    timeDisplay_ = timeDisplay;
+  }
   return res;
 }
 
