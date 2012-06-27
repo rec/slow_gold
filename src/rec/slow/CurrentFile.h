@@ -25,7 +25,7 @@ class CurrentFile : public HasInstance,
 
   const SampleTime length() const;
   bool empty() const { return !length(); }
-  void setVirtualFile(const VirtualFile&, bool showError = true);
+  void setVirtualFile(const VirtualFile&, bool showError);
   void setFile(const File&);
   static void translateAll();
   const VirtualFile file() const;
