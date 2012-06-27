@@ -34,7 +34,6 @@ Trans LOOP_POINT_TOOLTIP("Loop Point:  You can drag it around on the waveform, "
                          "or you can click on the label above and to the right "
                          "to edit its name.");
 
-
 static juce::Image getZoomCursor() {
   juce::Image img(juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT,
                   false);
@@ -61,8 +60,7 @@ Waveform::Waveform(MenuBarModel* m)
       model_(new WaveformModel),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,
                   ZOOM_CURSOR_Y_HOTSPOT),
-      loading_(false),
-      sampleRate_(44100.0) {
+      loading_(false) {
   setName("Waveform");
   setTooltip(
       Trans("Waveform Window: "
@@ -100,7 +98,7 @@ const CursorProto& Waveform::defaultTimeCursor() {
 
 void Waveform::paint(Graphics& g) {
   Lock l(lock_);
-  painter_->paint(g, model_->getTimeRange(), loading_, sampleRate_);
+  painter_->paint(g, model_->getTimeRange(), loading_);
 }
 
 void Waveform::resized() {
@@ -128,11 +126,6 @@ void Waveform::operator()(const Viewport& vp) {
     model_->setViewport(vp);
   }
   viewportChanged();
-}
-
-void Waveform::setSampleRate(SampleRate rate) {
-  Lock l(lock_);
-  sampleRate_ = rate;
 }
 
 void Waveform::viewportChanged() {

@@ -1,6 +1,5 @@
 #include "rec/widget/waveform/WaveformPainter.h"
 
-#include "rec/base/SampleRate.h"
 #include "rec/util/FormatTime.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -29,8 +28,7 @@ WaveformPainter::WaveformPainter(Waveform* w)
 }
 
 void WaveformPainter::paint(Graphics& g, const Range<SampleTime >& range,
-                            bool loading, SampleRate rate) {
-  sampleRate_ = rate;
+                            bool loading) {
   Painter p(model_.description().widget(), &g);
   if (!loading) {
     if (model_.isEmpty() || !thumbnail_) {
@@ -44,6 +42,10 @@ void WaveformPainter::paint(Graphics& g, const Range<SampleTime >& range,
       drawGrid(g, range);
     }
   }
+}
+
+SampleRate WaveformPainter::sampleRate() const {
+  return model_.viewport().loop_points().sample_rate();
 }
 
 void WaveformPainter::drawWaveform(Painter& p,
@@ -66,8 +68,8 @@ void WaveformPainter::drawWaveform(Painter& p,
     else if (i != selection.end())
       draw.second = i->first;
 
-    RealTime first(draw.first, sampleRate_);
-    RealTime second(draw.second, sampleRate_);
+    RealTime first(draw.first, sampleRate());
+    RealTime second(draw.second, sampleRate());
     int x1 = model_.timeToX(draw.first);
     int x2 = model_.timeToX(draw.second);
 
@@ -93,8 +95,8 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
     LOG_FIRST_N(ERROR, 4) << "Nothing on screen! " << width;
     return;
   }
-  double seconds = pow(10.0, floor(log10(RealTime(width, sampleRate_))));
-  double samples = seconds * sampleRate_;
+  double seconds = pow(10.0, floor(log10(RealTime(width, sampleRate()))));
+  double samples = seconds * sampleRate();
 
   int b = static_cast<int>(ceil(r.begin_ / samples));
   int e = static_cast<int>(r.end_ / samples);
@@ -105,7 +107,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
   else if (diff > 15)
     samples *= 5.0;
 
-  if (samples > SampleTime(10.0, sampleRate_))
+  if (samples > SampleTime(10.0, sampleRate()))
     samples *= 1.2;
 
   b = static_cast<int>(ceil(r.begin_ / samples));
@@ -113,11 +115,11 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
 
   float h = static_cast<float>(waveform_->getHeight());
   int decimals = 0;
-  if (samples < SampleTime(0.01, sampleRate_))
+  if (samples < SampleTime(0.01, sampleRate()))
     decimals = 3;
-  else if (samples < SampleTime(0.1, sampleRate_))
+  else if (samples < SampleTime(0.1, sampleRate()))
     decimals = 2;
-  else if (samples < SampleTime(1.0, sampleRate_))
+  else if (samples < SampleTime(1.0, sampleRate()))
     decimals = 1;
 
   g.setFont(10);
@@ -132,7 +134,7 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
     }
 
     TimeFormat tf(TimeFormat::NO_FLASH, TimeFormat::NO_LEADING_ZEROS, decimals);
-    String s = tf.format(time, model_.length(), sampleRate_);
+    String s = tf.format(time, model_.length(), sampleRate());
     g.setColour(juce::Colours::black);
     g.drawText(s, i ? x - GRID_TEXT_WIDTH / 2 : x - GRID_TEXT_WIDTH / 4,
                model_.description().show_times_at_top() ? GRID_TEXT_PAD :

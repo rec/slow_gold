@@ -43,7 +43,8 @@ bool isCloseTo(const LoopPointList& lpl, SampleTime t) {
 }
 
 LoopPointList getSelected(const LoopPointList& lpl, bool selected) {
-  LoopPointList result;
+  LoopPointList result = lpl;
+  result.mutable_loop_point()->Clear();
   result.set_length(lpl.length());
 
   for (int i = 0, size = lpl.loop_point_size(); i < size; ++i) {
@@ -65,9 +66,10 @@ LoopPointList cutSelected(const LoopPointList& loops, bool selected) {
 }
 
 LoopPointList addLoopPoints(const LoopPointList& x, const LoopPointList& y) {
-  DCHECK_EQ(x.sample_rate(), y.sample_rate());
-  SampleTime closeLoops(CLOSE_LOOPS, x.sample_rate());
   LoopPointList result;
+  DCHECK_EQ(x.sample_rate(), y.sample_rate());
+  result.set_sample_rate(x.sample_rate());
+  SampleTime closeLoops(CLOSE_LOOPS, x.sample_rate());
   uint64 length = std::max(x.length(), y.length());
   result.set_length(length);
 
@@ -109,7 +111,9 @@ void sort(LoopPointList* lpl) {
 }
 
 LoopPointList addLoopPoint(const LoopPointList& lpl, SampleTime t) {
-  LoopPointList oneSegment;
+  LoopPointList oneSegment = lpl;
+  oneSegment.mutable_loop_point()->Clear();
+
   LoopPoint* lp = oneSegment.add_loop_point();
   lp->set_time(t);
   lp->set_selected(lpl.loop_point(getSegment(lpl, t)).selected());

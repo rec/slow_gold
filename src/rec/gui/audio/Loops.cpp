@@ -99,7 +99,7 @@ String Loops::displayText(int column, int row) const {
    case TableColumn::DOUBLE:  return String(v.double_f());
    case TableColumn::TIME:
     return TimeFormat(TimeFormat::NO_FLASH, TimeFormat::LEADING_ZEROS, 0).
-      format(v.uint32_f(), len, viewport_.loop_points().sample_rate());
+      format(v.int64_f(), len, viewport_.loop_points().sample_rate());
    default:                   return "<unknown>";
   }
 }

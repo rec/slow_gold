@@ -91,7 +91,6 @@ class Waveform : public Component,
 
   juce::MouseCursor	zoomCursor_;
   bool loading_;
-  SampleRate sampleRate_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Waveform);
 
