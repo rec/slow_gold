@@ -5,7 +5,7 @@
 
 namespace rec {
 
-class SampleTime;
+struct SampleTime;
 
 struct RealTime {
   RealTime() : time_(0) {}
