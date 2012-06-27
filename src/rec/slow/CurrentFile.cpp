@@ -47,15 +47,15 @@ CurrentFile::~CurrentFile() {}
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (files.file_size() >= 1)
-    setVirtualFile(files.file(0));
+    setVirtualFile(files.file(0), true);
 }
 
 void CurrentFile::setFile(const File& f) {
-  setVirtualFile(file::toVirtualFile(f));
+  setVirtualFile(file::toVirtualFile(f), true);
 }
 
 void CurrentFile::operator()(const VirtualFile& vf) {
-  setVirtualFile(vf);
+  setVirtualFile(vf, true);
 }
 
 const SampleTime CurrentFile::length() const {
