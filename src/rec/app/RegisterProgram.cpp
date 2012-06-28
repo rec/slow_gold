@@ -5,6 +5,23 @@
 namespace rec {
 namespace app {
 
+namespace {
+
+inline String getEnv(const char* name) {
+#if JUCE_WINDOWS
+  static const int MAX_ENV = 1024;
+  char buffer[MAX_ENV];
+
+  int len = GetEnvironmentVariable(name, buffer, MAX_ENV);
+  return str(string(buffer, buffer + len));
+
+#else
+  return getenv(name);
+#endif
+}
+
+}  // namespace
+
 void RegisterProgram::run() {
   typedef std::map<String, String> StringMap;
 
