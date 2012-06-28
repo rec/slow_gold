@@ -4,7 +4,7 @@ namespace rec {
 namespace util {
 
 String TimeFormat::format(RealTime time) const {
-  RealTime secR(round(time));
+  RealTime secR(floor(time));
   RealTime fraction(time - secR);
   int sec = static_cast<int>(secR);
 

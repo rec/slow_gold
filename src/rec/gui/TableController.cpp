@@ -89,7 +89,7 @@ void TableController::resized() {
 
 bool TableController::editable(int col) const {
   Lock l(lock_);
-  return (columns_.column(col).property_flags() & TableColumn::EDITABLE);
+  return ((columns_.column(col).property_flags() & TableColumn::EDITABLE) != 0);
 }
 
 class TableLabel : public SimpleLabel {
