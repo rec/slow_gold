@@ -8,7 +8,7 @@ namespace app {
 namespace {
 
 inline String getEnv(const char* name) {
-#if JUCE_WINDOWS
+#if 0 && JUCE_WINDOWS
   static const int MAX_ENV = 1024;
   char buffer[MAX_ENV];
 
@@ -16,7 +16,8 @@ inline String getEnv(const char* name) {
   return str(string(buffer, buffer + len));
 
 #else
-  return getenv(name);
+  const char* res = getenv(name);
+  return String(res ? res : "");
 #endif
 }
 
