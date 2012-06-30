@@ -40,8 +40,12 @@ RegisterInstance::getNamedFunctions() const {
   return Range<const NamedFunction*>(FUNCS, FUNCS + arraysize(FUNCS));
 }
 
-String RegisterInstance::getBaseUrl() const {
-  return "http://slowgold.com/registration";
+StringArray RegisterInstance::getBaseUrls() const {
+  static const char* NAMES[] = {
+    "http://slowgold.com/registration",
+    "http://slowgold.w07.winhost.com/registration/",
+  };
+  return StringArray(NAMES, sizeof(NAMES));
 }
 
 }  // namespace app

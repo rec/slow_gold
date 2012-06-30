@@ -14,7 +14,7 @@ class RegisterInstance : public app::RegisterProgram {
   virtual Range<const char**> getEnvironmentVariables() const;
   virtual Range<const NamedFunction*> getNamedFunctions() const;
 
-  virtual String getBaseUrl() const;
+  virtual StringArray getBaseUrls() const;
 
   static const int TIME_OUT = 1000;
 

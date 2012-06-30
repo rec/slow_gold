@@ -20,7 +20,7 @@ class RegisterProgram : public Thread {
 
   virtual Range<const char**> getEnvironmentVariables() const = 0;
   virtual Range<const NamedFunction*> getNamedFunctions() const = 0;
-  virtual String getBaseUrl() const = 0;
+  virtual StringArray getBaseUrls() const = 0;
   virtual bool acceptResult(const String&) const;
   virtual void onSuccess() {}
   virtual int timeOut() const = 0;
@@ -31,6 +31,8 @@ class RegisterProgram : public Thread {
   virtual void run();
 
  private:
+  bool tryOneUrl(const String&);
+
   DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterProgram);
 };
 

@@ -24,9 +24,19 @@ inline String getEnv(const char* name) {
 }  // namespace
 
 void RegisterProgram::run() {
-  typedef std::map<String, String> StringMap;
+  StringArray urls = getBaseUrls();
+  for (int i = 0; i < urls.size(); ++i) {
+    if (tryOneUrl(urls[i])) {
+      onSuccess();
+      return;
+    }
+  }
 
-  URL url(getBaseUrl());
+  LOG(ERROR) << "Failed to register URLs: " << urls.joinIntoString(", ");
+}
+
+bool RegisterProgram::tryOneUrl(const String& urlName) {
+  URL url(urlName);
   Range<const char**> r = getEnvironmentVariables();
   for (const char** i = r.begin_; i != r.end_; ++i)
     url = url.withParameter(*i, getenv(*i));
@@ -37,10 +47,7 @@ void RegisterProgram::run() {
   ptr<InputStream> stream(url.createInputStream(true, progressCallback(),
                                                 this, "", timeOut(),
                                                 NULL));
-  if (acceptResult(stream->readEntireStreamAsString()))
-    onSuccess();
-  else
-    LOG(ERROR) << "Failed to register";
+  return acceptResult(stream->readEntireStreamAsString());
 }
 
 bool RegisterProgram::acceptResult(const String& result) const {
