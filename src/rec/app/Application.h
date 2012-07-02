@@ -13,7 +13,7 @@ class Application : public GenericApplication {
       : GenericApplication(init, shutdown) {
     google::InitGoogleLogging(str(name()).c_str());
 #if 0
-    google::SetVLOGLevel(".*", 2);
+    google::SetVLOGLevel("*", 2);
     VLOG(1) << 1;
     VLOG(2) << 2;
     VLOG(3) << 3;
