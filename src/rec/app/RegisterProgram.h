@@ -18,7 +18,7 @@ class RegisterProgram : public Thread {
   RegisterProgram(const String& name) : Thread(name) {}
   virtual ~RegisterProgram() {}
 
-  virtual Range<const char**> getEnvironmentVariables() const = 0;
+  virtual Range<const char* const*> getEnvironmentVariables() const = 0;
   virtual Range<const NamedFunction*> getNamedFunctions() const = 0;
   virtual StringArray getBaseUrls() const = 0;
   virtual bool acceptResult(const String&) const;

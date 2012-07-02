@@ -40,7 +40,6 @@ void CachedThumbnail::write(const File& file) {
 
 void CachedThumbnail::read(const File& file, SampleRate sampleRate,
                            SampleTime sampleLength, int channels) {
-  DLOG(INFO) << "rate " << sampleRate << ", " << sampleLength;
   thumbnail_.reset(channels, sampleRate, sampleLength);
 
 #ifndef SLOWGOLD_SAVE_DISABLED

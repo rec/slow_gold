@@ -14,15 +14,20 @@ String getVersion() {
   return JUCEApplication::getInstance()->getApplicationVersion();
 }
 
+const char* const VARS[] = {
+  "USERNAME",
+  "USERKEY",
+};
+
 const app::RegisterProgram::NamedFunction FUNCS[] = {
   { "timestamp", &getTimestamp },
   { "program", &getApplicationName },
   { "version", &getVersion },
 };
 
-const char* VARS[] = {
-  "USERNAME",
-  "USERKEY",
+const char* const URLS[] = {
+  "http://slowgold.com/registration/",
+  "http://slowgold.w07.winhost.com/registration/",
 };
 
 }  // namespace
@@ -31,8 +36,8 @@ RegisterInstance::RegisterInstance() : RegisterProgram("RegisterInstance") {
   setPriority(4);
 }
 
-Range<const char**> RegisterInstance::getEnvironmentVariables() const {
-  return Range<const char**>(VARS, VARS + arraysize(VARS));
+Range<const char* const*> RegisterInstance::getEnvironmentVariables() const {
+  return Range<const char* const*>(VARS, VARS + arraysize(VARS));
 }
 
 Range<const RegisterInstance::NamedFunction*>
@@ -41,11 +46,7 @@ RegisterInstance::getNamedFunctions() const {
 }
 
 StringArray RegisterInstance::getBaseUrls() const {
-  static const char* NAMES[] = {
-    "http://slowgold.com/registration",
-    "http://slowgold.w07.winhost.com/registration/",
-  };
-  return StringArray(NAMES, sizeof(NAMES));
+  return StringArray(URLS, sizeof(URLS));
 }
 
 }  // namespace app

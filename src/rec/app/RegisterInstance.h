@@ -11,7 +11,7 @@ class RegisterInstance : public app::RegisterProgram {
  public:
   RegisterInstance();
 
-  virtual Range<const char**> getEnvironmentVariables() const;
+  virtual Range<const char* const*> getEnvironmentVariables() const;
   virtual Range<const NamedFunction*> getNamedFunctions() const;
 
   virtual StringArray getBaseUrls() const;

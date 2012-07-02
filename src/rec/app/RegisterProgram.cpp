@@ -37,8 +37,8 @@ void RegisterProgram::run() {
 
 bool RegisterProgram::tryOneUrl(const String& urlName) {
   URL url(urlName);
-  Range<const char**> r = getEnvironmentVariables();
-  for (const char** i = r.begin_; i != r.end_; ++i)
+  Range<const char* const*> r = getEnvironmentVariables();
+  for (const char* const* i = r.begin_; i != r.end_; ++i)
     url = url.withParameter(*i, getenv(*i));
 
   Range<const NamedFunction*> s = getNamedFunctions();
@@ -47,7 +47,7 @@ bool RegisterProgram::tryOneUrl(const String& urlName) {
   ptr<InputStream> stream(url.createInputStream(true, progressCallback(),
                                                 this, "", timeOut(),
                                                 NULL));
-  return acceptResult(stream->readEntireStreamAsString());
+  return stream && acceptResult(stream->readEntireStreamAsString());
 }
 
 bool RegisterProgram::acceptResult(const String& result) const {
