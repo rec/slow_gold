@@ -39,20 +39,6 @@ void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i, X
 }
 
 template <typename Proto>
-void executeCallbackConditional(Instance* i, bool (*protoFunction)(Proto*)) {
-  const VirtualFile vf = i->file();
-  Proto proto(data::getProto<Proto>(vf));
-  if ((*protoFunction)(&proto))
-    data::setProto(proto, vf);
-}
-
-template <typename Proto>
-void addApplyCallback(CommandRecordTable* c, CommandID id,
-                      bool (*protoFunction)(Proto*), Instance* i) {
-  addCallback(c, id, &executeCallbackConditional<Proto>, i, protoFunction);
-}
-
-template <typename Proto>
 void executeCallback(Instance* i, void (*protoFunction)(Proto*)) {
   const VirtualFile vf = i->file();
   Proto proto(data::getProto<Proto>(vf));
@@ -60,10 +46,53 @@ void executeCallback(Instance* i, void (*protoFunction)(Proto*)) {
   data::setProto(proto, vf);
 }
 
+template <typename Proto, typename Type>
+void executeCallback2(Instance* i, void (*protoFunction)(Proto*, Type), Type x) {
+  const VirtualFile vf = i->file();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto, x);
+  data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void executeCallbackIf(Instance* i, bool (*protoFunction)(Proto*)) {
+  const VirtualFile vf = i->file();
+  Proto proto(data::getProto<Proto>(vf));
+  if ((*protoFunction)(&proto))
+    data::setProto(proto, vf);
+}
+
+template <typename Proto, typename Type>
+void executeCallbackIf2(Instance* i, bool (*protoFunction)(Proto*, Type),
+                        Type x) {
+  const VirtualFile vf = i->file();
+  Proto proto(data::getProto<Proto>(vf));
+  if ((*protoFunction)(&proto, x))
+    data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void addApplyCallback(CommandRecordTable* c, CommandID id,
+                      bool (*protoFunction)(Proto*), Instance* i) {
+  addCallback(c, id, &executeCallbackIf<Proto>, i, protoFunction);
+}
+
+template <typename Proto, typename Type>
+void addApplyCallback(CommandRecordTable* c, CommandID id,
+                      bool (*protoFunction)(Proto*, Type), Instance* i, Type t) {
+  addCallback(c, id, &executeCallbackIf2<Proto, Type>, i, protoFunction, t);
+}
+
 template <typename Proto>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
                       void (*protoFunction)(Proto*), Instance* i) {
   addCallback(c, id, &executeCallback<Proto>, i, protoFunction);
+}
+
+template <typename Proto, typename Type>
+void addApplyCallback(CommandRecordTable* c, CommandID id,
+                      void (*protoFunction)(Proto*, Type), Type t, Instance* i) {
+  addCallback(c, id, &executeCallback2<Proto, Type>, i, protoFunction, t);
 }
 
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
