@@ -23,7 +23,7 @@ enum Sides {
 
 const int SLIDER_HEIGHT = 30;
 const int FINE_OFFSET = 7;
-const int LEFT_PANEL_WIDTH = 90;
+const int LEFT_PANEL_WIDTH = 85;
 const int ENABLE_BUTTON_HEIGHT = 40;
 const int COMBO_BOX_HEIGHT = 30;
 
@@ -33,7 +33,7 @@ using rec::audio::stretch::Stretch;
 
 TransformController::TransformController()
     : Layout("TransformController", HORIZONTAL),
-      playbackSpeed_(Trans("Speed"), getTypeName<Stretch>(),
+      playbackSpeed_(Trans("Stretch"), getTypeName<Stretch>(),
                      Address("time_percent")),
       pitchScale_(Trans("Pitch"), getTypeName<Stretch>(),
                   Address("semitone_shift")),
@@ -41,8 +41,8 @@ TransformController::TransformController()
                  Address("detune_cents")),
       masterTune_(Trans("Master"), getTypeName<AudioSettings>(),
                   Address("master_tune"), "", "", GLOBAL_SCOPE),
-      enableButton_(Trans("Enable Transform"), getTypeName<Stretch>(),
-                    Address("enabled")),
+      enableButton_(Trans("   Enable"), getTypeName<Stretch>(),
+                    Address("time_enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL),
       showMasterTune_(true),
@@ -134,10 +134,15 @@ void TransformController::operator()(const Stretch& s) {
 }
 
 void TransformController::setStretch(const Stretch& s) {
-  playbackSpeed_.setEnabled(s.enabled() && s.time_enabled());
-  pitchScale_.setEnabled(s.enabled() && s.pitch_enabled());
-  fineScale_.setEnabled(s.enabled() && s.pitch_enabled());
-  stereoComboBox_.setEnabled(s.enabled());
+#ifdef USE_STRETCH_ENABLE
+  bool enabled = s.enabled();
+#else
+  bool enabled = true;
+#endif
+  playbackSpeed_.setEnabled(enabled && s.time_enabled());
+  pitchScale_.setEnabled(enabled && s.pitch_enabled());
+  fineScale_.setEnabled(enabled && s.pitch_enabled());
+  stereoComboBox_.setEnabled(enabled);
 }
 
 void TransformController::operator()(const StereoProto& stereo) {

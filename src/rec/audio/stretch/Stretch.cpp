@@ -17,26 +17,34 @@ const double SEMITONE_LOG = SEMITONES_PER_OCTAVE / log(OCTAVE);
 const double MIN_DETUNE_DIFFERENCE = 0.05;
 
 double timeScale(const Stretch& d) {
-  if (!(d.enabled() && d.time_enabled()))
-    return NO_SCALE;
-  return PERCENT / d.time_percent();
+#ifdef USE_STRETCH_ENABLE
+  bool enabled = d.enabled() && d.time_enabled();
+#else
+  bool enabled = d.time_enabled();
+#endif
+  return enabled ? (PERCENT / d.time_percent()) : NO_SCALE;
 }
 
 double pitchScale(const Stretch& d, double detuneCents) {
-  bool pitchEnabled = d.enabled() && d.pitch_enabled();
-  if (!pitchEnabled && near(detuneCents, 0.0, MIN_DETUNE_DIFFERENCE))
+#ifdef USE_STRETCH_ENABLE
+  bool enabled = d.enabled() && d.pitch_enabled();
+#else
+  bool enabled = d.pitch_enabled();
+#endif
+
+  if (!enabled && near(detuneCents, 0.0, MIN_DETUNE_DIFFERENCE))
     return NO_SCALE;
 
   double cents = detuneCents;
-  if (pitchEnabled)
+  if (enabled)
     cents += d.detune_cents();
 
   double semitones = cents / CENTS_PER_SEMITONE;
-  if (pitchEnabled)
+  if (enabled)
     semitones += d.semitone_shift();
 
   double scale = powl(OCTAVE, semitones / SEMITONES_PER_OCTAVE);
-  if (pitchEnabled)
+  if (enabled)
     scale *= d.pitch_scale();
 
   return scale;

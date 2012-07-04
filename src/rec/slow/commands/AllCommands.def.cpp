@@ -1027,7 +1027,7 @@ Def<command::Commands> allCommands(
   "  type: TOGGLE_STRETCH_ENABLE\n"
   "  category: \"Audio\"\n"
   "  desc {\n"
-  "    menu: \"Enable Time Stretch\"\n"
+  "    menu: \"Enable Stretch\"\n"
   "    full: \"Toggle between stretched and real-time playback.\"\n"
   "  }\n"
   "  is_setter: true\n"

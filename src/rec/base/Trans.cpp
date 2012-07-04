@@ -76,8 +76,8 @@ void Trans::check(const String& s) {
   // DCHECK(!s.containsChar('\n')) << str(s);
   DCHECK(!s.containsChar('\r')) << str(s);
   DCHECK(!s.containsChar('\t')) << str(s);
-  DCHECK(!isspace(s[0])) << str(s);
-  DCHECK(!isspace(s[s.length() - 1])) << str(s);
+  // DCHECK(!isspace(s[0])) << str(s);
+  // DCHECK(!isspace(s[s.length() - 1])) << str(s);
 }
 
 
