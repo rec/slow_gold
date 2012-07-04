@@ -110,7 +110,8 @@ template <>
 void MidiCommandMapEditor::keyChosen(int result, CommandMapEditButton* button)
 {
     MidiCommandEntryWindow* window = dynamic_cast<MidiCommandEntryWindow*>(button->getCommandEntryWindow());
-    if (result != 0 && button != nullptr && window != nullptr && window->lastKeyEntered_) {
+    if (result != 0 && button != nullptr && window != nullptr &&
+        window->lastKeyEntered_) {
         window->setVisible (false);
         window->owner()->setNewKey (button, window->lastKey_, false);
     }

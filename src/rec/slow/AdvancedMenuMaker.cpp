@@ -28,11 +28,11 @@ void AdvancedMenuMaker::addFileMenu() {
 
   menu_.addSeparator();
   add(Command::KEYBOARD_MAPPINGS);
-  add(Command::CLEAR_KEYBOARD_MAPPINGS);
+  // add(Command::CLEAR_KEYBOARD_MAPPINGS);
 
-  menu_.addSeparator();
+  //menu_.addSeparator();
   add(Command::MIDI_MAPPINGS);
-  add(Command::CLEAR_MIDI_MAPPINGS);
+  //  add(Command::CLEAR_MIDI_MAPPINGS);
 
   menu_.addSeparator();
   add(Command::EXPORT_SETTINGS);
