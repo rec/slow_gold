@@ -1,3 +1,4 @@
+#include <map>
 #include <set>
 
 #include "rec/command/KeyboardBindings.h"
@@ -21,13 +22,25 @@ const VirtualFile& getBindingFile() {
   return vf;
 }
 
-XmlElement* readKeyboardCommands(const Commands& commands) {
+XmlElement* readKeyboardCommands(const Commands& cmds, const Commands& lib) {
+  typedef std::map<int, const Command*> CommandMap;
+  CommandMap cmap;
+  for (int i = 0; i < lib.command_size(); ++i)
+    cmap[lib.command(i).type()] = &lib.command(i);
+
   ptr<XmlElement> element(new XmlElement("KEYMAPPINGS"));
-  for (int i = 0; i < commands.command_size(); ++i) {
-    const Command& cmd = commands.command(i);
-    DCHECK(cmd.desc().full_size()) << cmd.ShortDebugString();
-    DCHECK(cmd.desc().menu_size()) << cmd.ShortDebugString();
-    string desc = cmd.desc().full_size() ? cmd.desc().full(0) : cmd.desc().menu(0);
+  for (int i = 0; i < cmds.command_size(); ++i) {
+    const Command& cmd = cmds.command(i);
+    CommandMap::const_iterator i = cmap.find(cmd.type());
+    if (i == cmap.end()) {
+      LOG(DFATAL) << "Didn't find command " << cmd.ShortDebugString();
+      continue;
+    } else if (!i->second->desc().full_size()) {
+      LOG(DFATAL) << "Empty description " << cmd.ShortDebugString();
+      continue;
+    }
+
+    string desc = i->second->desc().full(0);
     // TODO:  is this correct for multiple key assignments?
     for (int j = 0; j < cmd.keypress_size(); ++j) {
       juce::XmlElement* mapping = element->createNewChildElement("MAPPING");
@@ -60,7 +73,8 @@ XmlElement* readKeyboardBindingFile(const Commands& commands) {
   const VirtualFile& f = getBindingFile();
   data::Data* d = data::getData<Commands>(f);
   return readKeyboardCommands(d->fileReadSuccess() ?
-  	                          data::getProto<Commands>(d) : commands);
+  	                          data::getProto<Commands>(d) : commands,
+                              commands);
 }
 
 }  // namespace

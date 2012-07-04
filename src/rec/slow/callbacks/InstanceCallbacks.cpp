@@ -80,15 +80,13 @@ bool nudgeVolume(Gain* gain, bool isInc) {
     return false;
 
   double inc = data::getGlobal<AudioSettings>().volume_nudge_db();
-  gain->set_gain(gain->gain() + isInc ? inc : -inc);
+  gain->set_gain(gain->gain() + (isInc ? inc : -inc));
   return true;
 }
 
 void nudgeSpeed(Stretch* stretch, bool isInc) {
-  double scale = 1.0 + data::getGlobal<AudioSettings>().speed_nudge_percent();
-  if (!isInc)
-    scale = 1.0 / scale;
-
+  double nudge = data::getGlobal<AudioSettings>().speed_nudge_percent() / 100.0;
+  double scale = isInc ? (1.0 + nudge) : 1.0 / (1.0 + nudge);
   stretch->set_time_percent(stretch->time_percent() * scale);
 }
 

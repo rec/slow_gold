@@ -1,3 +1,5 @@
+// TODO: we can just refactor this out, it doesn't do anything any more.
+
 #include "rec/slow/commands/SlowCommandData.h"
 #include "rec/command/CommandData.h"
 #include "rec/slow/HasInstance.h"
