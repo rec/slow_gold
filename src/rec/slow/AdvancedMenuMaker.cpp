@@ -27,13 +27,16 @@ void AdvancedMenuMaker::addFileMenu() {
   BasicMenuMaker::addFileMenu();
 
   menu_.addSeparator();
-  add(Command::EXPORT_SETTINGS);
-  add(Command::IMPORT_SETTINGS);
+  add(Command::KEYBOARD_MAPPINGS);
+  add(Command::CLEAR_KEYBOARD_MAPPINGS);
 
   menu_.addSeparator();
   add(Command::MIDI_MAPPINGS);
-  add(Command::KEYBOARD_MAPPINGS);
-  add(Command::CLEAR_KEYBOARD_MAPPINGS);
+  add(Command::CLEAR_MIDI_MAPPINGS);
+
+  menu_.addSeparator();
+  add(Command::EXPORT_SETTINGS);
+  add(Command::IMPORT_SETTINGS);
 }
 
 void AdvancedMenuMaker::addSelectMenu() {

@@ -76,7 +76,6 @@ Def<command::Commands> allCommands(
   "    menu: \"Clear MIDI Mappings\"\n"
   "    full: \"Clear all MIDI command mappings.\"\n"
   "  }\n"
-  "  keypress: \"command + b\"\n"
   "}\n"
   "command {\n"
   "  type: CLEAR_SETTINGS_FOR_THIS_TRACK\n"

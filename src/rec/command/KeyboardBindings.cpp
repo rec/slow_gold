@@ -95,7 +95,7 @@ void loadKeyboardBindings(TargetManager* target) {
 
 void clearKeyboardBindings(TargetManager* target) {
   const Commands& commands = target->commandRecordTable()->getCommands();
-  readKeyboardCommands(commands, commands);
+  ptr<juce::XmlElement>(readKeyboardCommands(commands, commands));
   saveKeyboardBindings(target->commandManager());
 }
 

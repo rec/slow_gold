@@ -23,8 +23,8 @@ enum Sides {
 
 const int SLIDER_HEIGHT = 30;
 const int FINE_OFFSET = 7;
-const int LEFT_PANEL_WIDTH = 85;
-const int ENABLE_BUTTON_HEIGHT = 40;
+const int LEFT_PANEL_WIDTH = 67;
+const int ENABLE_BUTTON_HEIGHT = 30;
 const int COMBO_BOX_HEIGHT = 30;
 
 }  // namespace
