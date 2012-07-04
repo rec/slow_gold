@@ -31,8 +31,9 @@ void AdvancedMenuMaker::addFileMenu() {
   add(Command::IMPORT_SETTINGS);
 
   menu_.addSeparator();
-  add(Command::KEYBOARD_MAPPINGS);
   add(Command::MIDI_MAPPINGS);
+  add(Command::KEYBOARD_MAPPINGS);
+  add(Command::CLEAR_KEYBOARD_MAPPINGS);
 }
 
 void AdvancedMenuMaker::addSelectMenu() {
@@ -54,6 +55,10 @@ void AdvancedMenuMaker::addTransportMenu() {
 
   addBank(Command::JUMP, Trans("Jump To..."));
   addBank(Command::JUMP_SELECTED, Trans("Jump To Selected..."));
+
+  menu_.addSeparator();
+  add(Command::NUDGE_BACKWARD);
+  add(Command::NUDGE_FORWARD);
 }
 
 void AdvancedMenuMaker::addHelpMenu() {

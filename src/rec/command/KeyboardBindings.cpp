@@ -17,7 +17,7 @@ using juce::XmlElement;
 
 namespace {
 
-const VirtualFile& getBindingFile() {
+const VirtualFile& getKeyboardBindingFile() {
   static VirtualFile vf = file::toVirtualFile("KeyPresses");
   return vf;
 }
@@ -66,11 +66,11 @@ void writeKeyboardBindingFile(XmlElement* element) {
     cr->command_->add_keypress(key);
   }
 
-  data::setProto(table.getCommands(), getBindingFile());
+  data::setProto(table.getCommands(), getKeyboardBindingFile());
 }
 
 XmlElement* readKeyboardBindingFile(const Commands& commands) {
-  const VirtualFile& f = getBindingFile();
+  const VirtualFile& f = getKeyboardBindingFile();
   data::Data* d = data::getData<Commands>(f);
   return readKeyboardCommands(d->fileReadSuccess() ?
   	                          data::getProto<Commands>(d) : commands,
@@ -91,6 +91,12 @@ void loadKeyboardBindings(TargetManager* target) {
   const CommandRecordTable& table = *target->commandRecordTable();
   ptr<juce::XmlElement> state(readKeyboardBindingFile(table.getCommands()));
   target->commandManager()->getKeyMappings()->restoreFromXml(*state);
+}
+
+void clearKeyboardBindings(TargetManager* target) {
+  const Commands& commands = target->commandRecordTable()->getCommands();
+  readKeyboardCommands(commands, commands);
+  saveKeyboardBindings(target->commandManager());
 }
 
 }  // namespace command

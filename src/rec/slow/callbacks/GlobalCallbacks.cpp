@@ -24,6 +24,7 @@ const String MANUAL = "SlowGoldManual.pdf";
 const String FULL_MANUAL = WOODSHED + MANUAL;
 const String WHATS_NEW_URL = WOODSHED + "%s/whats-new.html";
 
+Trans CANCEL("Cancel");
 Trans CANT_LOAD("Couldn't Load The SlowGold 8 User Manual");
 Trans CANT_LOAD_FULL("Sorry, couldn't load the SlowGold 8 user manual at");
 Trans CANT_SUPPORT("Couldn't Create A Support Request");
@@ -35,6 +36,7 @@ Trans MAIL_CREATED("A Support Request file named \"%s\" "
                    "was created on your desktop.");
 Trans MAIL_DISCARD("You can throw the file away once your email is sent.");
 Trans MAIL_SUBJECT("Support Request: %s");
+Trans OK("OK");
 Trans PLEASE_CONTACT("Please contact World Wide Woodshed support at");
 Trans PLEASE_MAIL("Please mail the file to %s and then you can throw it away.");
 Trans SUPPORTED("A Support Request Was Created On Your Desktop");
@@ -179,6 +181,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
 }
 
 void GlobalCallbacks::translateAll() {
+  CANCEL.translate();
   CANT_LOAD.translate();
   CANT_LOAD_FULL.translate();
   CANT_SUPPORT.translate();
@@ -188,6 +191,7 @@ void GlobalCallbacks::translateAll() {
   MAIL_CREATED.translate();
   MAIL_DISCARD.translate();
   MAIL_SUBJECT.translate();
+  OK.translate();
   PLEASE_CONTACT.translate();
   PLEASE_MAIL.translate();
   SELECT_EXPORT_FILE.translate();

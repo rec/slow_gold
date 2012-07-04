@@ -10,6 +10,7 @@ class TargetManager;
 
 void saveKeyboardBindings(ApplicationCommandManager*);
 void loadKeyboardBindings(TargetManager*);
+void clearKeyboardBindings(TargetManager*);
 
 }  // namespace command
 }  // namespace rec

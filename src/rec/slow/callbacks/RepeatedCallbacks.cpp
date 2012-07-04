@@ -7,6 +7,7 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/LoopSnapshot.h"
 #include "rec/slow/Menus.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/LoopPoint.h"
@@ -49,32 +50,6 @@ void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
 
   setTimeFromSegment(snap, p);
   snap->loops_->mutable_loop_point(p)->set_selected(true);
-}
-
-void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
-  vector<int> selected;
-  const LoopPointList& loops = *snap->loops_;
-  size_t s = 0;
-  bool found = false;
-  int selectedSegment = audio::getSegment(loops, snap->instance_->time());
-
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
-    if (!audio::getSelectionCount(loops) || loops.loop_point(i).selected()) {
-      if (i == selectedSegment) {
-        DCHECK(!found);
-        s = selected.size();
-        found = true;
-      }
-      selected.push_back(i);
-    }
-  }
-  int segment = 0;
-  if (found)
-    segment = selected[pos.toIndex(s, selected.size())];
-  else if (!selected.empty())
-    segment = selected[0];
-
-  setTimeFromSegment(snap, segment);
 }
 
 bool selectAdd(int index, int pos, bool sel, bool) { return sel || index == pos; }
@@ -131,6 +106,62 @@ void openPreviousFile(Instance* i) {
   }
 }
 
+void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
+  vector<int> selected;
+  const LoopPointList& loops = *snap->loops_;
+  size_t s = 0;
+  bool found = false;
+  int selectedSegment = audio::getSegment(loops, snap->instance_->time());
+
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
+    if (!audio::getSelectionCount(loops) || loops.loop_point(i).selected()) {
+      if (i == selectedSegment) {
+        DCHECK(!found);
+        s = selected.size();
+        found = true;
+      }
+      selected.push_back(i);
+    }
+  }
+  int segment = 0;
+  if (found)
+    segment = selected[pos.toIndex(s, selected.size())];
+  else if (!selected.empty())
+    segment = selected[0];
+
+  setTimeFromSegment(snap, segment);
+}
+
+void nudgeWithinSegment(Instance* i, const LoopPointList& selection, bool inc) {
+  SampleTime begin = selection.loop_point(0).time();
+  SampleTime end = selection.length();
+  SampleTime width = end - begin;
+  SampleRate rate = i->getSourceSampleRate();
+  SampleTime nudge(data::getGlobal<audio::AudioSettings>().time_nudge(), rate);
+  nudge = std::min(nudge, SampleTime(width / 2));
+  DLOG(INFO) << i->time() << ", " << selection.ShortDebugString();
+  SampleTime time = i->time() + inc ? nudge : - nudge;
+  DLOG(INFO) << time;
+  while (time < begin)
+    time += width;
+
+  while (time >= end)
+    time -= width;
+  DLOG(INFO) << time;
+  i->currentTime_->jumpToTime(time);
+}
+
+void nudgeTime(Instance* i, bool inc) {
+  LoopSnapshot s(i);
+  LoopPointList selection = audio::getSelected(*s.loops_, true);
+  if (!selection.loop_point_size())
+    selection = audio::getSelected(*s.loops_, false);
+  if (selection.loop_point_size() == 1)
+    nudgeWithinSegment(i, selection, inc);
+  else
+    jumpSelected(&s, inc ? CommandIDEncoder::NEXT : CommandIDEncoder::PREVIOUS);
+}
+
 }  // namespace
 
 void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
@@ -156,6 +187,9 @@ void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
   }
 
   addCallback(t, Command::OPEN_PREVIOUS_FILE, openPreviousFile, i);
+
+  addCallback(t, Command::NUDGE_BACKWARD, nudgeTime, i, false);
+  addCallback(t, Command::NUDGE_FORWARD, nudgeTime, i, true);
 }
 
 }  // namespace slow

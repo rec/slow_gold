@@ -23,6 +23,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
+#include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/SaveFile.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -44,6 +45,12 @@ Trans NO_DOWNLOAD_FOUND("Your Version Of SlowGold Is Up-To-Date");
 Trans NO_DOWNLOAD_FOUND_FULL("Your version of SlowGold, %s, is up-to-date.");
 Trans OK("OK");
 Trans CANCEL("Cancel");
+
+Trans CLEAR_KEYBOARD_MAPPINGS_TITLE("Clear Keyboard Mappings.");
+Trans CLEAR_KEYBOARD_MAPPINGS_FULL("Clear all keyboard mappings to factory "
+                                   "default?");
+Trans CLEAR_MIDI_MAPPINGS_TITLE("Clear MIDI Mappings.");
+Trans CLEAR_MIDI_MAPPINGS_FULL("Clear all MIDI mappings?");
 
 Trans CONFIRM_CLEAR_ALL_SETTINGS("Clearing All Settings For All Tracks");
 
@@ -76,7 +83,7 @@ using namespace rec::audio;
 using namespace rec::audio::stretch;
 
 bool nudgeVolume(Gain* gain, bool isInc) {
-  if (!(gain->dim() || gain->mute()))
+  if (gain->dim() || gain->mute())
     return false;
 
   double inc = data::getGlobal<AudioSettings>().volume_nudge_db();
@@ -96,40 +103,49 @@ bool nudgeVolumeUp(Gain* g) { return nudgeVolume(g, true); }
 void nudgeSpeedDown(Stretch* s) { nudgeSpeed(s, false); }
 void nudgeSpeedUp(Stretch* s) { nudgeSpeed(s, true); }
 
-void clearLoops(Instance *i) {
-  Viewport viewport;
-  data::fillProto(&viewport, i->file());
-
-  LoopPointList* loops = viewport.mutable_loop_points();
+void clearLoops(Viewport* viewport) {
+  LoopPointList* loops = viewport->mutable_loop_points();
   loops->mutable_loop_point()->Clear();
 
   LoopPoint* loop = loops->add_loop_point();
   loop->set_selected(true);
   loop->set_time(0);
-
-  data::setProto(viewport, i->file());
 }
 
-void clearNavigator(Instance *) {
-  data::setProto(VirtualFileList(), data::global());
+void clearKeyboardMappings(Instance* i) {
+  if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
+                                   CLEAR_KEYBOARD_MAPPINGS_TITLE,
+                                   CLEAR_KEYBOARD_MAPPINGS_FULL,
+                                   OK, CANCEL)) {
+    command::clearKeyboardBindings(i->target_->targetManager());
+
+  }
 }
 
-void dimVolumeToggle(Instance* i) {
-  Gain gain(data::getProto<Gain>(i->file()));
-  gain.set_dim(!gain.dim());
-  data::setProto(gain, i->file());
+
+void clearMidiMappings() {
+  if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
+                                   CLEAR_MIDI_MAPPINGS_TITLE,
+                                   CLEAR_MIDI_MAPPINGS_FULL,
+                                   OK, CANCEL)) {
+    data::setGlobal(command::CommandMapProto());
+  }
 }
 
-void muteVolumeToggle(Instance* i) {
-  Gain gain(data::getProto<Gain>(i->file()));
-  gain.set_mute(!gain.mute());
-  data::setProto(gain, i->file());
+void clearNavigator(VirtualFileList *vfl) {
+  vfl->Clear();
 }
 
-void resetGainToUnity(Instance* i) {
-  Gain gain(data::getProto<Gain>(i->file()));
-  gain.set_gain(0);
-  data::setProto(gain, i->file());
+void dimVolumeToggle(Gain* gain) {
+  gain->set_dim(!gain->dim());
+}
+
+void muteVolumeToggle(Gain* gain) {
+  gain->set_mute(!gain->mute());
+}
+
+void resetGainToUnity(Gain* gain) {
+  gain->set_gain(0);
 }
 
 void keyboardMappings(Instance* i) {
@@ -169,7 +185,6 @@ void midiMappings(Instance* i) {
                                       true, true, true);
   data::setProto(i->target_->midiCommandMap()->getProto(), data::global());
 }
-
 
 void nudgeBeginLeft(Instance*) {
 }
@@ -293,19 +308,21 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;
 
+  addCallback(c, Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
+  addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings, i);
   addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram, i);
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
-  addCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
+  addApplyCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
   addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings, i);
   addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack, i);
   // addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
   addCallback(c, Command::CLOSE_FILE, closeFile, i);
-  addCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
+  addApplyCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings, i);
-  addCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
+  addApplyCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
   addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolume, false, i);
   addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolume, true, i);
   addApplyCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeed, false, i);
@@ -313,7 +330,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
 
   addCallback(c, Command::OPEN, open, i);
   addCallback(c, Command::QUIT, quit, i);
-  addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
+  addApplyCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   addCallback(c, Command::SAVE_FILE, saveFile, i);
   addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection, i);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
@@ -327,6 +344,10 @@ void InstanceCallbacks::translateAll() {
   NO_DOWNLOAD_FOUND.translate();
   NO_DOWNLOAD_FOUND_FULL.translate();
   OK.translate();
+  CLEAR_KEYBOARD_MAPPINGS_TITLE.translate();
+  CLEAR_KEYBOARD_MAPPINGS_FULL.translate();
+  CLEAR_MIDI_MAPPINGS_TITLE.translate();
+  CLEAR_MIDI_MAPPINGS_FULL.translate();
   CONFIRM_CLEAR_ALL_SETTINGS.translate();
   CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK.translate();
   CONFIRM_CLEAR_ALL_SETTINGS_FULL.translate();

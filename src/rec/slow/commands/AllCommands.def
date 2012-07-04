@@ -52,6 +52,23 @@ command {
   keypress: "command + b"
 }
 command {
+  type: CLEAR_KEYBOARD_MAPPINGS
+  category: "File"
+  desc {
+    menu: "Clear Keyboard Mappings"
+    full: "Clear all keyboard command mappings to program default."
+  }
+}
+command {
+  type: CLEAR_MIDI_MAPPINGS
+  category: "File"
+  desc {
+    menu: "Clear MIDI Mappings"
+    full: "Clear all MIDI command mappings."
+  }
+  keypress: "command + b"
+}
+command {
   type: CLEAR_SETTINGS_FOR_THIS_TRACK
   category: "Loops"
   desc {
@@ -268,9 +285,9 @@ command {
     full: "Jump To Selected Segment 10"
   }
   keypress: "command + cursor left"
-  keypress: "cursor left"
   keypress: ""
-  keypress: "cursor right"
+  keypress: ""
+  keypress: ""
   keypress: "command + cursor right"
   keypress: "shift + !"
   keypress: "shift + @"
@@ -348,6 +365,24 @@ command {
   keypress: "."
 }
 command {
+  type: NUDGE_BACKWARD
+  category: "Audio"
+  desc {
+    menu: "Nudge Backward"
+    full: "Nudge Backward One Segment Or 10 Seconds"
+  }
+  keypress: "cursor left"
+}
+command {
+  type: NUDGE_FORWARD
+  category: "Audio"
+  desc {
+    menu: "Nudge Forward"
+    full: "Nudge Forward One Segment Or 10 Seconds"
+  }
+  keypress: "cursor right"
+}
+command {
   type: NUDGE_VOLUME_DOWN
   category: "Audio"
   desc {
@@ -372,6 +407,7 @@ command {
     menu: "Nudge speed down"
     full: "Nudge speed down"
   }
+  keypress: "_"
   keypress: "shift + _"
   keypress: "-"
 }
@@ -382,6 +418,7 @@ command {
     menu: "Nudge speed up"
     full: "Nudge speed up"
   }
+  keypress: "+"
   keypress: "shift + +"
   keypress: "="
 }

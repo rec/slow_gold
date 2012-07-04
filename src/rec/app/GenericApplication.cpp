@@ -4,6 +4,7 @@
 #include "rec/app/Window.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/gui/Dialog.h"
+#include "rec/gui/LookAndFeel.h"
 #include "rec/util/Undo.h"
 #include "rec/util/thread/MakeThread.h"
 
@@ -35,6 +36,8 @@ void GenericApplication::initialise(const String&) {
     initializer_(this);
   window_.reset(createWindow());
   window_->initialise();
+  gui::LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+
   if (autoCheckForUpdates() && checkForUpdates())
     return;
 

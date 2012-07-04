@@ -168,6 +168,13 @@ class AudioSettings : public ::google::protobuf::Message {
   inline double speed_nudge_percent() const;
   inline void set_speed_nudge_percent(double value);
   
+  // optional double time_nudge = 5 [default = 10];
+  inline bool has_time_nudge() const;
+  inline void clear_time_nudge();
+  static const int kTimeNudgeFieldNumber = 5;
+  inline double time_nudge() const;
+  inline void set_time_nudge(double value);
+  
   // @@protoc_insertion_point(class_scope:rec.audio.AudioSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -177,11 +184,12 @@ class AudioSettings : public ::google::protobuf::Message {
   int file_type_for_save_;
   double volume_nudge_db_;
   double speed_nudge_percent_;
+  double time_nudge_;
   friend void  protobuf_AddDesc_rec_2faudio_2fAudioSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fAudioSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fAudioSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -267,6 +275,22 @@ inline double AudioSettings::speed_nudge_percent() const {
 inline void AudioSettings::set_speed_nudge_percent(double value) {
   _set_bit(3);
   speed_nudge_percent_ = value;
+}
+
+// optional double time_nudge = 5 [default = 10];
+inline bool AudioSettings::has_time_nudge() const {
+  return _has_bit(4);
+}
+inline void AudioSettings::clear_time_nudge() {
+  time_nudge_ = 10;
+  _clear_bit(4);
+}
+inline double AudioSettings::time_nudge() const {
+  return time_nudge_;
+}
+inline void AudioSettings::set_time_nudge(double value) {
+  _set_bit(4);
+  time_nudge_ = value;
 }
 
 
