@@ -1,4 +1,6 @@
 #include "rec/command/map/CommandMap.h"
+#include "rec/command/CommandIDEncoder.h"
+#include "rec/command/Command.pb.h"
 
 namespace rec {
 namespace command {
@@ -8,7 +10,7 @@ void CommandMap::operator()(const CommandMapProto& commands) {
   toKeys_.clear();
   for (int i = 0; i < commands.entry_size(); ++i) {
     const CommandMapEntry& entry = commands.entry(i);
-    Command command = entry.command();
+    CommandType command = entry.command();
     for (int j = 0; j < entry.key_size(); ++j)
       add(entry.key(j), command);
   }
@@ -18,23 +20,30 @@ namespace {
 
 typedef CommandMap::KeyToCommand KeyToCommand;
 typedef CommandMap::Key Key;
-typedef CommandMap::Command Command;
+typedef CommandMap::CommandType CommandType;
 
 bool addKey(KeyToCommand* toCommand,
-            const Key& key, Command command) {
+            const Key& key, CommandType command) {
+  static const int RECENT = Command::RECENT_FILES;
+  static const int BEGIN = CommandIDEncoder::toCommandID(RECENT, 11);
+  static const int END = CommandIDEncoder::toCommandID(RECENT, 100);
+  DLOG(INFO) << CommandIDEncoder::commandIDName(command);
+  if (command >= BEGIN && command < END)
+    return false;
+
+  CommandIDEncoder enc = CommandIDEncoder::fromCommandID(command);
   bool exists = (toCommand->find(key) != toCommand->end());
 
   if (exists)
     beep();
   else
     (*toCommand)[key] = command;
-
   return !exists;
 }
 
 }  // namespace
 
-bool CommandMap::add(const Key& key, Command command) {
+bool CommandMap::add(const Key& key, CommandType command) {
   if (!addKey(&toCommand_, key, command))
     return false;
 
@@ -42,7 +51,7 @@ bool CommandMap::add(const Key& key, Command command) {
   return true;
 }
 
-bool CommandMap::add(const Key& key, Command command, uint index) {
+bool CommandMap::add(const Key& key, CommandType command, uint index) {
   if (!addKey(&toCommand_, key, command))
     return false;
 
@@ -72,18 +81,18 @@ bool CommandMap::invoke(const Key& key, ApplicationCommandManager* acm,
   return id && acm->invokeDirectly(id, async);
 }
 
-command::Command::Type CommandMap::getCommand(const string& key) const {
+CommandType CommandMap::getCommand(const string& key) const {
   KeyToCommand::const_iterator i = toCommand_.find(key);
   return (i == toCommand_.end()) ? command::Command::NONE : i->second;
 }
 
-const vector<CommandMap::Key>& CommandMap::getKeys(Command c) const {
+const vector<CommandMap::Key>& CommandMap::getKeys(CommandType c) const {
   CommandToKeys::const_iterator i = toKeys_.find(c);
   static vector<Key> empty;
   return (i != toKeys_.end()) ? i->second : empty;
 }
 
-void CommandMap::removeCommand(Command c, uint keyIndex) {
+void CommandMap::removeCommand(CommandType c, uint keyIndex) {
   typedef CommandToKeys::iterator iterator;
   iterator i = toKeys_.find(c);
   if (i == toKeys_.end()) {
@@ -98,7 +107,7 @@ void CommandMap::removeCommand(Command c, uint keyIndex) {
 
 void CommandMap::removeKey(const Key& key) {
   typedef CommandToKeys::iterator iterator;
-  if (Command c = getCommand(key)) {
+  if (CommandType c = getCommand(key)) {
     toCommand_.erase(key);
     iterator i = toKeys_.find(c);
     if (i == toKeys_.end()) {

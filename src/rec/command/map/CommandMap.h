@@ -12,7 +12,7 @@ namespace command {
 
 class CommandMap : public Listener<const CommandMapProto&> {
  public:
-  typedef command::Command::Type Command;
+  typedef command::Command::Type CommandType;
   typedef string Key;
 
   CommandMap() {}
@@ -21,20 +21,21 @@ class CommandMap : public Listener<const CommandMapProto&> {
   virtual void operator()(const CommandMapProto&);
   const CommandMapProto getProto() const;
 
-  Command getCommand(const Key&) const;
-  const vector<Key>& getKeys(Command) const;
+  CommandType getCommand(const Key&) const;
+  const vector<Key>& getKeys(CommandType) const;
 
   bool invoke(const Key&, ApplicationCommandManager*, bool async = false) const;
 
-  void removeCommand(Command command, uint keyIndex);
+  void removeCommand(CommandType command, uint keyIndex);
   void removeKey(const Key& key);
-  bool add(const Key& key, Command command);
-  bool add(const Key& key, Command command, uint index);
 
-  typedef std::map<Key, Command> KeyToCommand;
-  typedef std::map<Command, vector<Key> > CommandToKeys;
+  typedef std::map<Key, CommandType> KeyToCommand;
+  typedef std::map<CommandType, vector<Key> > CommandToKeys;
+
+  bool add(const Key& key, CommandType command, uint index);
 
  private:
+  bool add(const Key& key, CommandType command);
   KeyToCommand toCommand_;
   CommandToKeys toKeys_;
 

@@ -18,7 +18,8 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
   explicit MidiCommandEntryWindow(MidiCommandMapEditor* owner)
-  : CommandEntryWindow(WAITING),
+      : CommandEntryWindow(WAITING),
+        lastKeyEntered_(false),
         owner_(owner),
         mappings_(&owner->getMappings()) {
     listen(true);
@@ -31,6 +32,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
   virtual void operator()(const MidiMessage& msg) {
     if (msg.isNoteOn() || msg.isProgramChange() || msg.isController()) {
       lastKey_ = msg;
+      lastKeyEntered_ = true;
       thread::callAsync(this, &CommandEntryWindow::setMessage,
                         owner_->getKeyMessage(msg));
     }
@@ -40,6 +42,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
 
 	MidiCommandMapEditor* owner() { return owner_; }
   MidiMessage lastKey_;
+  bool lastKeyEntered_;
 
  private:
   MidiCommandMapEditor* owner_;
@@ -107,7 +110,7 @@ template <>
 void MidiCommandMapEditor::keyChosen(int result, CommandMapEditButton* button)
 {
     MidiCommandEntryWindow* window = dynamic_cast<MidiCommandEntryWindow*>(button->getCommandEntryWindow());
-    if (result != 0 && button != nullptr && window != nullptr) {
+    if (result != 0 && button != nullptr && window != nullptr && window->lastKeyEntered_) {
         window->setVisible (false);
         window->owner()->setNewKey (button, window->lastKey_, false);
     }
