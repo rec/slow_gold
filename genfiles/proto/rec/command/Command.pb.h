@@ -74,6 +74,8 @@ enum Command_Type {
   Command_Type_NUDGE_BEGIN_RIGHT = 16,
   Command_Type_NUDGE_END_LEFT = 17,
   Command_Type_NUDGE_END_RIGHT = 18,
+  Command_Type_NUDGE_SPEED_DOWN = 86,
+  Command_Type_NUDGE_SPEED_UP = 87,
   Command_Type_NUDGE_VOLUME_DOWN = 19,
   Command_Type_NUDGE_VOLUME_UP = 20,
   Command_Type_OPEN = 21,
@@ -125,7 +127,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 85,
+  Command_Type_LAST_TYPE = 87,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -367,6 +369,8 @@ class Command : public ::google::protobuf::Message {
   static const Type NUDGE_BEGIN_RIGHT = Command_Type_NUDGE_BEGIN_RIGHT;
   static const Type NUDGE_END_LEFT = Command_Type_NUDGE_END_LEFT;
   static const Type NUDGE_END_RIGHT = Command_Type_NUDGE_END_RIGHT;
+  static const Type NUDGE_SPEED_DOWN = Command_Type_NUDGE_SPEED_DOWN;
+  static const Type NUDGE_SPEED_UP = Command_Type_NUDGE_SPEED_UP;
   static const Type NUDGE_VOLUME_DOWN = Command_Type_NUDGE_VOLUME_DOWN;
   static const Type NUDGE_VOLUME_UP = Command_Type_NUDGE_VOLUME_UP;
   static const Type OPEN = Command_Type_OPEN;

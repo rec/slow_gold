@@ -38,7 +38,6 @@ using namespace rec::widget::waveform;
 namespace {
 // Skin
 
-
 static const bool QUIT_EVEN_IF_CLEAR_FAILS = false;
 
 Trans NO_DOWNLOAD_FOUND("Your Version Of SlowGold Is Up-To-Date");
@@ -64,6 +63,20 @@ Trans CLEAR_FAILED_FULL("Sorry, there was an error clearing the settings. "
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
+template <typename Proto>
+void executeCallback(Instance* i, void (*protoFunction)(Proto*)) {
+  const VirtualFile vf = i->file();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto);
+  data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void addApplyCallback(CommandRecordTable* c, CommandID id, Instance* i,
+                      void (*protoFunction)(Proto*)) {
+  addCallback(c, id, &executeCallback<Proto>, i, protoFunction);
+}
+
 void aboutThisProgram(Instance* i) {
   i->window_->startAboutWindow();
 }
@@ -78,9 +91,11 @@ void nudgeVolumeDownOp(audio::Gain* gain) {
     gain->set_gain(gain->gain() - 1.0);
 }
 
+#if 0
 void nudgeVolumeDown(Instance* i) {
   data::apply(nudgeVolumeDownOp, i->file());
 }
+#endif
 
 void nudgeVolumeUp(Instance* i) {
   audio::Gain gain;
@@ -89,6 +104,12 @@ void nudgeVolumeUp(Instance* i) {
     gain.set_gain(gain.gain() + 1.0);
     data::setProto(gain, i->file());
   }
+}
+
+void nudgeSpeedUp(Instance *i) {
+}
+
+void nudgeSpeedDown(Instance *i) {
 }
 
 void clearLoops(Instance *i) {
@@ -279,22 +300,6 @@ void clearSettingsForThisTrack(Instance* i) {
                            CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
 }
 
-#if 1
-template <typename Proto>
-void executeCallback(Instance* i, void (*protoFunction)(Proto*)) {
-  const VirtualFile vf = i->file();
-  Proto proto(data::getProto<Proto>(vf));
-  (*protoFunction)(&proto);
-  data::setProto(proto, vf);
-}
-
-template <typename Proto>
-void addApplyCallback(CommandRecordTable* c, CommandID id, Instance* i,
-                      void (*protoFunction)(Proto*)) {
-  addCallback(c, id, &executeCallback<Proto>, i, protoFunction);
-}
-#endif
-
 }  // namespace
 
 using namespace rec::command;
@@ -317,8 +322,11 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings, i);
   addCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
-  addCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
+  // addCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
+  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, i, nudgeVolumeDownOp);
   addCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
+  // addCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeedDown, i);
+  // addCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeedUp, i);
   addCallback(c, Command::OPEN, open, i);
   addCallback(c, Command::QUIT, quit, i);
   addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);

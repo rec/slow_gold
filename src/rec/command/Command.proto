@@ -53,6 +53,8 @@ message Command {
     NUDGE_BEGIN_RIGHT = 16;
     NUDGE_END_LEFT = 17;
     NUDGE_END_RIGHT = 18;
+    NUDGE_SPEED_DOWN = 86;
+    NUDGE_SPEED_UP = 87;
     NUDGE_VOLUME_DOWN = 19;
     NUDGE_VOLUME_UP = 20;
 
@@ -115,7 +117,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 85;
+    LAST_TYPE = 87;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

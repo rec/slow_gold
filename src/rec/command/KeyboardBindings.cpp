@@ -25,12 +25,15 @@ XmlElement* readKeyboardCommands(const Commands& commands) {
   ptr<XmlElement> element(new XmlElement("KEYMAPPINGS"));
   for (int i = 0; i < commands.command_size(); ++i) {
     const Command& cmd = commands.command(i);
+    DCHECK(cmd.desc().full_size()) << cmd.ShortDebugString();
+    DCHECK(cmd.desc().menu_size()) << cmd.ShortDebugString();
+    string desc = cmd.desc().full_size() ? cmd.desc().full(0) : cmd.desc().menu(0);
     // TODO:  is this correct for multiple key assignments?
     for (int j = 0; j < cmd.keypress_size(); ++j) {
       juce::XmlElement* mapping = element->createNewChildElement("MAPPING");
       mapping->setAttribute("commandId",
                             String::toHexString(CommandIDEncoder::toCommandID(cmd)));
-      mapping->setAttribute("description", str(cmd.desc().full(0)));
+      mapping->setAttribute("description", str(desc));
       mapping->setAttribute("key", str(cmd.keypress(j)).toLowerCase());
     }
   }
