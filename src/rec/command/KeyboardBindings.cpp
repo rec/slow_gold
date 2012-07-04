@@ -31,23 +31,23 @@ XmlElement* readKeyboardCommands(const Commands& cmds, const Commands& lib) {
   ptr<XmlElement> element(new XmlElement("KEYMAPPINGS"));
   for (int i = 0; i < cmds.command_size(); ++i) {
     const Command& cmd = cmds.command(i);
-    CommandMap::const_iterator i = cmap.find(cmd.type());
-    if (i == cmap.end()) {
+    CommandMap::const_iterator j = cmap.find(cmd.type());
+    if (j == cmap.end()) {
       LOG(DFATAL) << "Didn't find command " << cmd.ShortDebugString();
       continue;
-    } else if (!i->second->desc().full_size()) {
+    } else if (!j->second->desc().full_size()) {
       LOG(DFATAL) << "Empty description " << cmd.ShortDebugString();
       continue;
     }
 
-    string desc = i->second->desc().full(0);
+    string desc = j->second->desc().full(0);
     // TODO:  is this correct for multiple key assignments?
-    for (int j = 0; j < cmd.keypress_size(); ++j) {
+    for (int k = 0; k < cmd.keypress_size(); ++k) {
       juce::XmlElement* mapping = element->createNewChildElement("MAPPING");
       mapping->setAttribute("commandId",
                             String::toHexString(CommandIDEncoder::toCommandID(cmd)));
       mapping->setAttribute("description", str(desc));
-      mapping->setAttribute("key", str(cmd.keypress(j)).toLowerCase());
+      mapping->setAttribute("key", str(cmd.keypress(k)).toLowerCase());
     }
   }
   return element.transfer();
