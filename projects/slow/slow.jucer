@@ -12,12 +12,12 @@
                        headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="1" libraryPath="../../../../../build/Debug/glog/lib;../../../../../build/Debug/mpg123/lib;../../../../../build/Debug/protobuf/lib;../../../../externals/rubberband/osx/ipp/Debug/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Debug" optimisation="1" osxArchitecture="default" osxCompatibility="default"
-                       osxSDK="default" targetName="SlowGold 8.0.3-debug"/>
+                       osxSDK="default" targetName="SlowGold 8-debug"/>
         <CONFIGURATION customXcodeFlags="DEAD_CODE_STRIPPING = YES, GCC_AUTO_VECTORIZATION = YES, GCC_DEBUGGING_SYMBOLS = full, GCC_DYNAMIC_NO_PIC = YES, GCC_ENABLE_FIX_AND_CONTINUE = YES, GCC_ENABLE_SSE3_EXTENSIONS = YES, GCC_ENABLE_SSE41_EXTENSIONS = YES, GCC_ENABLE_SSE42_EXTENSIONS = YES, GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES, GCC_FAST_MATH = YES, GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES, GCC_UNROLL_LOOPS = YES, GCC_WARN_64_TO_32_BIT_CONVERSION = YES, GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES, GCC_WARN_ABOUT_MISSING_NEWLINE = YES, GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES, GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO, GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES, GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO, GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES, GCC_WARN_PROTOTYPE_CONVERSION = YES, GCC_WARN_SHADOW = NO, GCC_WARN_SIGN_COMPARE = YES, GCC_WARN_STRICT_SELECTOR_MATCH = YES, GCC_WARN_UNDECLARED_SELECTOR = YES, GCC_WARN_UNINITIALIZED_AUTOS = NO, GCC_WARN_UNKNOWN_PRAGMAS = YES, GCC_WARN_UNUSED_FUNCTION = YES, GCC_WARN_UNUSED_LABEL = YES, STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static"
                        headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Release/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="0" libraryPath="../../../../../build/Release/glog/lib;../../../../../build/Release/mpg123/lib;../../../../../build/Release/protobuf/lib;../../../../externals/rubberband/osx/ipp/Release/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Release" optimisation="2" osxArchitecture="default" osxCompatibility="default"
-                       osxSDK="default" targetName="SlowGold 8.0.3"/>
+                       osxSDK="default" targetName="SlowGold 8"/>
       </CONFIGURATIONS>
     </XCODE_MAC>
     <VS2010 bigIcon="wiIhPYIwK" extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="
@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="w5qk8CGgg" name="SlowGold">
+  <MAINGROUP id="vW5NN35VD" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1521,7 +1521,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="981X2krsj" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="aGsXFa8A2" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
