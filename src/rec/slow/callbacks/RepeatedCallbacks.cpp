@@ -139,15 +139,12 @@ void nudgeWithinSegment(Instance* i, const LoopPointList& selection, bool inc) {
   SampleRate rate = i->getSourceSampleRate();
   SampleTime nudge(data::getGlobal<audio::AudioSettings>().time_nudge(), rate);
   nudge = std::min(nudge, SampleTime(width / 2));
-  DLOG(INFO) << i->time() << ", " << selection.ShortDebugString();
-  SampleTime time = i->time() + inc ? nudge : - nudge;
-  DLOG(INFO) << time;
+  SampleTime time = i->time() + (inc ? nudge : - nudge);
   while (time < begin)
     time += width;
 
   while (time >= end)
     time -= width;
-  DLOG(INFO) << time;
   i->currentTime_->jumpToTime(time);
 }
 
