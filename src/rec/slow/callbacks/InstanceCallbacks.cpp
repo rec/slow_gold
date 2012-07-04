@@ -308,11 +308,10 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings, i);
   addCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
-  // addCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
-  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
-  addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
-  // addCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeedDown, i);
-  // addCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeedUp, i);
+  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolume, false, i);
+  addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolume, true, i);
+  addApplyCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeedDown, i);
+  addApplyCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeedUp, i);
   addCallback(c, Command::OPEN, open, i);
   addCallback(c, Command::QUIT, quit, i);
   addCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);

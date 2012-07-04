@@ -79,7 +79,7 @@ void addApplyCallback(CommandRecordTable* c, CommandID id,
 
 template <typename Proto, typename Type>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
-                      bool (*protoFunction)(Proto*, Type), Instance* i, Type t) {
+                      bool (*protoFunction)(Proto*, Type), Type t, Instance* i) {
   addCallback(c, id, &executeCallbackIf2<Proto, Type>, i, protoFunction, t);
 }
 
