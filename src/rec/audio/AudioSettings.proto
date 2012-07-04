@@ -11,4 +11,7 @@ message AudioSettings {
   };
   optional double master_tune = 1;
   optional FileType file_type_for_save = 2 [default = WAV];
+
+  optional double volume_nudge_db = 3 [default = 1.0];
+  optional double speed_nudge_percent = 4 [default = 10.0];
 };

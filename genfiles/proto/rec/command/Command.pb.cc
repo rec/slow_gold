@@ -179,14 +179,14 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"7\n\013Descri"
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \003(\t\022\014\n\004hel"
-    "p\030\003 \001(\t\"\261\022\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
+    "p\030\003 \001(\t\"\316\022\n\007Command\022\'\n\004type\030\001 \001(\0162\031.rec."
     "command.Command.Type\022\r\n\005index\030\002 \001(\021\022\023\n\013s"
     "tart_index\030\n \001(\021\022\020\n\010category\030\003 \001(\t\022&\n\004de"
     "sc\030\004 \001(\0132\030.rec.command.Description\022\020\n\010ke"
     "ypress\030\005 \003(\t\022\021\n\tis_setter\030\006 \001(\010\022\030\n\020is_gl"
     "obal_setter\030\007 \001(\010\022\'\n\007address\030\010 \001(\0132\026.rec"
     ".data.AddressProto\022\030\n\020setter_type_name\030\t"
-    " \001(\t\"\234\020\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_PR"
+    " \001(\t\"\271\020\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_PR"
     "OGRAM\020:\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PRE"
     "FERENCES\020\002\022\025\n\021CHECK_FOR_UPDATES\020D\022\017\n\013CLE"
     "AR_LOOPS\020\004\022\023\n\017CLEAR_NAVIGATOR\020\003\022\026\n\022CLEAR"
@@ -228,20 +228,21 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\035TOGGLE_SHOW_SELECTION_BUTTONS\0202\022\034\n\030TOGG"
     "LE_SHOW_TIMES_AT_TOP\0205\022\030\n\024TOGGLE_SHOW_TO"
     "OLTIPS\0200\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGL"
-    "E_STRETCH_ENABLE\020\035\022\032\n\026TOGGLE_WHOLE_SONG_"
-    "LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n"
-    "\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGH"
-    "T\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&"
-    "\022\022\n\016WHATS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOO"
-    "M_OUT\020(\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_SE"
-    "LECTION\020-\022\r\n\tLAST_TYPE\020W\022\t\n\004QUIT\020\201 \022\010\n\003D"
-    "EL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017"
-    "\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJU"
-    "CE_START\020\201 \022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020"
-    "\240\215\006\"1\n\010Commands\022%\n\007command\030\001 \003(\0132\024.rec.c"
-    "ommand.Command\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022"
-    "\r\n\005value\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001"
-    " \003(\0132\025.rec.command.KeyValue", 2627);
+    "E_STRETCH_ENABLE\020\035\022\033\n\027TOGGLE_TRANSFORM_E"
+    "NABLE\020X\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\036\022\016\n\nT"
+    "REE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_LEFT\020"
+    "!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007TREE"
+    "_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\022\n\016WHATS_N"
+    "EW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\021\n\r"
+    "ZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_SELECTION\020-\022\r"
+    "\n\tLAST_TYPE\020X\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CU"
+    "T\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_AL"
+    "L\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\201 "
+    "\022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Comm"
+    "ands\022%\n\007command\030\001 \003(\0132\024.rec.command.Comm"
+    "and\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 "
+    "\001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025.rec."
+    "command.KeyValue", 2656);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -679,6 +680,7 @@ bool Command_Type_IsValid(int value) {
     case 85:
     case 86:
     case 87:
+    case 88:
     case 4097:
     case 4098:
     case 4099:
@@ -766,6 +768,7 @@ const Command_Type Command::TOGGLE_SHOW_TIMES_AT_TOP;
 const Command_Type Command::TOGGLE_SHOW_TOOLTIPS;
 const Command_Type Command::TOGGLE_START_STOP;
 const Command_Type Command::TOGGLE_STRETCH_ENABLE;
+const Command_Type Command::TOGGLE_TRANSFORM_ENABLE;
 const Command_Type Command::TOGGLE_WHOLE_SONG_LOOP;
 const Command_Type Command::TREE_CLOSE;
 const Command_Type Command::TREE_DOWN;

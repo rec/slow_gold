@@ -36,8 +36,8 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   Stretch_descriptor_ = file->message_type(0);
   static const int Stretch_offsets_[20] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, strategy_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_disabled_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, pitch_disabled_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_enabled_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, pitch_enabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, enabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, passthrough_when_disabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_scale_),
@@ -123,27 +123,27 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\226\005\n\007Stretch\022A\n\010strategy\030\001 \001(\0162#.rec."
+    "oto\"\240\005\n\007Stretch\022A\n\010strategy\030\001 \001(\0162#.rec."
     "audio.stretch.Stretch.Strategy:\nRUBBERBA"
-    "ND\022\025\n\rtime_disabled\030\002 \001(\010\022\026\n\016pitch_disab"
-    "led\030\003 \001(\010\022\025\n\007enabled\030\024 \001(\010:\004true\022(\n\031pass"
-    "through_when_disabled\030\004 \001(\010:\005false\022\025\n\nti"
-    "me_scale\030\005 \001(\001:\0011\022\031\n\014time_percent\030\006 \001(\001:"
-    "\003100\022\032\n\013sample_rate\030\007 \001(\001:\00544100\022\023\n\010chan"
-    "nels\030\010 \001(\r:\0012\022\026\n\013pitch_scale\030\t \001(\001:\0011\022\026\n"
-    "\016semitone_shift\030\n \001(\001\022\024\n\014detune_cents\030\013 "
-    "\001(\001\022\023\n\005bands\030\014 \001(\r:\0042048\022\031\n\016filter_overl"
-    "ap\030\r \001(\r:\0011\022\030\n\nchunk_size\030\016 \001(\r:\0041024\022\033\n"
-    "\014prefill_size\030\017 \001(\r:\00515000\022$\n\025next_buffe"
-    "r_fill_size\030\020 \001(\r:\00515000\022\036\n\022inactive_wai"
-    "t_time\030\021 \001(\005:\002-1\022\032\n\017thread_priority\030\022 \001("
-    "\r:\0014\022\037\n\020max_process_size\030\023 \001(\r:\00516364\"E\n"
-    "\010Strategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\n"
-    "RUBBERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003\"\232\001\n\021Stretch"
-    "Parameters\022+\n\007stretch\030\001 \001(\0132\032.rec.audio."
-    "stretch.Stretch\022\023\n\013master_tune\030\002 \001(\001\022 \n\021"
-    "input_sample_rate\030\003 \001(\001:\00544100\022!\n\022output"
-    "_sample_rate\030\004 \001(\001:\00544100", 905);
+    "ND\022\032\n\014time_enabled\030\002 \001(\010:\004true\022\033\n\rpitch_"
+    "enabled\030\003 \001(\010:\004true\022\025\n\007enabled\030\024 \001(\010:\004tr"
+    "ue\022(\n\031passthrough_when_disabled\030\004 \001(\010:\005f"
+    "alse\022\025\n\ntime_scale\030\005 \001(\001:\0011\022\031\n\014time_perc"
+    "ent\030\006 \001(\001:\003100\022\032\n\013sample_rate\030\007 \001(\001:\005441"
+    "00\022\023\n\010channels\030\010 \001(\r:\0012\022\026\n\013pitch_scale\030\t"
+    " \001(\001:\0011\022\026\n\016semitone_shift\030\n \001(\001\022\024\n\014detun"
+    "e_cents\030\013 \001(\001\022\023\n\005bands\030\014 \001(\r:\0042048\022\031\n\016fi"
+    "lter_overlap\030\r \001(\r:\0011\022\030\n\nchunk_size\030\016 \001("
+    "\r:\0041024\022\033\n\014prefill_size\030\017 \001(\r:\00515000\022$\n\025"
+    "next_buffer_fill_size\030\020 \001(\r:\00515000\022\036\n\022in"
+    "active_wait_time\030\021 \001(\005:\002-1\022\032\n\017thread_pri"
+    "ority\030\022 \001(\r:\0014\022\037\n\020max_process_size\030\023 \001(\r"
+    ":\00516364\"E\n\010Strategy\022\010\n\004NONE\020\000\022\017\n\013AUDIO_M"
+    "AGIC\020\001\022\016\n\nRUBBERBAND\020\002\022\016\n\nSOUNDTOUCH\020\003\"\232"
+    "\001\n\021StretchParameters\022+\n\007stretch\030\001 \001(\0132\032."
+    "rec.audio.stretch.Stretch\022\023\n\013master_tune"
+    "\030\002 \001(\001\022 \n\021input_sample_rate\030\003 \001(\001:\00544100"
+    "\022!\n\022output_sample_rate\030\004 \001(\001:\00544100", 915);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -190,8 +190,8 @@ const int Stretch::Strategy_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int Stretch::kStrategyFieldNumber;
-const int Stretch::kTimeDisabledFieldNumber;
-const int Stretch::kPitchDisabledFieldNumber;
+const int Stretch::kTimeEnabledFieldNumber;
+const int Stretch::kPitchEnabledFieldNumber;
 const int Stretch::kEnabledFieldNumber;
 const int Stretch::kPassthroughWhenDisabledFieldNumber;
 const int Stretch::kTimeScaleFieldNumber;
@@ -228,8 +228,8 @@ Stretch::Stretch(const Stretch& from)
 void Stretch::SharedCtor() {
   _cached_size_ = 0;
   strategy_ = 2;
-  time_disabled_ = false;
-  pitch_disabled_ = false;
+  time_enabled_ = true;
+  pitch_enabled_ = true;
   enabled_ = true;
   passthrough_when_disabled_ = false;
   time_scale_ = 1;
@@ -282,8 +282,8 @@ Stretch* Stretch::New() const {
 void Stretch::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     strategy_ = 2;
-    time_disabled_ = false;
-    pitch_disabled_ = false;
+    time_enabled_ = true;
+    pitch_enabled_ = true;
     enabled_ = true;
     passthrough_when_disabled_ = false;
     time_scale_ = 1;
@@ -332,34 +332,34 @@ bool Stretch::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_time_disabled;
+        if (input->ExpectTag(16)) goto parse_time_enabled;
         break;
       }
       
-      // optional bool time_disabled = 2;
+      // optional bool time_enabled = 2 [default = true];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_time_disabled:
+         parse_time_enabled:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &time_disabled_)));
+                 input, &time_enabled_)));
           _set_bit(1);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_pitch_disabled;
+        if (input->ExpectTag(24)) goto parse_pitch_enabled;
         break;
       }
       
-      // optional bool pitch_disabled = 3;
+      // optional bool pitch_enabled = 3 [default = true];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_pitch_disabled:
+         parse_pitch_enabled:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &pitch_disabled_)));
+                 input, &pitch_enabled_)));
           _set_bit(2);
         } else {
           goto handle_uninterpreted;
@@ -664,14 +664,14 @@ void Stretch::SerializeWithCachedSizes(
       1, this->strategy(), output);
   }
   
-  // optional bool time_disabled = 2;
+  // optional bool time_enabled = 2 [default = true];
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->time_disabled(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->time_enabled(), output);
   }
   
-  // optional bool pitch_disabled = 3;
+  // optional bool pitch_enabled = 3 [default = true];
   if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->pitch_disabled(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->pitch_enabled(), output);
   }
   
   // optional bool passthrough_when_disabled = 4 [default = false];
@@ -773,14 +773,14 @@ void Stretch::SerializeWithCachedSizes(
       1, this->strategy(), target);
   }
   
-  // optional bool time_disabled = 2;
+  // optional bool time_enabled = 2 [default = true];
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->time_disabled(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->time_enabled(), target);
   }
   
-  // optional bool pitch_disabled = 3;
+  // optional bool pitch_enabled = 3 [default = true];
   if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->pitch_disabled(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->pitch_enabled(), target);
   }
   
   // optional bool passthrough_when_disabled = 4 [default = false];
@@ -885,13 +885,13 @@ int Stretch::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->strategy());
     }
     
-    // optional bool time_disabled = 2;
-    if (has_time_disabled()) {
+    // optional bool time_enabled = 2 [default = true];
+    if (has_time_enabled()) {
       total_size += 1 + 1;
     }
     
-    // optional bool pitch_disabled = 3;
-    if (has_pitch_disabled()) {
+    // optional bool pitch_enabled = 3 [default = true];
+    if (has_pitch_enabled()) {
       total_size += 1 + 1;
     }
     
@@ -1033,10 +1033,10 @@ void Stretch::MergeFrom(const Stretch& from) {
       set_strategy(from.strategy());
     }
     if (from._has_bit(1)) {
-      set_time_disabled(from.time_disabled());
+      set_time_enabled(from.time_enabled());
     }
     if (from._has_bit(2)) {
-      set_pitch_disabled(from.pitch_disabled());
+      set_pitch_enabled(from.pitch_enabled());
     }
     if (from._has_bit(3)) {
       set_enabled(from.enabled());
@@ -1117,8 +1117,8 @@ bool Stretch::IsInitialized() const {
 void Stretch::Swap(Stretch* other) {
   if (other != this) {
     std::swap(strategy_, other->strategy_);
-    std::swap(time_disabled_, other->time_disabled_);
-    std::swap(pitch_disabled_, other->pitch_disabled_);
+    std::swap(time_enabled_, other->time_enabled_);
+    std::swap(pitch_enabled_, other->pitch_enabled_);
     std::swap(enabled_, other->enabled_);
     std::swap(passthrough_when_disabled_, other->passthrough_when_disabled_);
     std::swap(time_scale_, other->time_scale_);

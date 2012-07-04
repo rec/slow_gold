@@ -18,7 +18,6 @@ class AdvancedMenuMaker : public BasicMenuMaker {
   virtual const StringArray getMenuBarNames() const;
 
  protected:
-  virtual void addAudioMenu();
   virtual void addEditMenu();
   virtual void addFileMenu();
   virtual void addSelectMenu();

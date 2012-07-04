@@ -1,4 +1,4 @@
-new := ~/Documents/development/rec/scripts/new/new.py
+new := /development/rec/scripts/new/new.py
 
 icons := $(wildcard art/icon/*.svg)
 icon_code := $(patsubst art/icon/%.svg, genfiles/icon/rec/gui/icon/%.svg.cpp, $(icons))
@@ -9,7 +9,7 @@ binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
 commands := $(wildcard src/rec/slow/commands/*.def)
 command_code := $(patsubst %.def, %.def.cpp, $(commands))
 
-ROOT := ~/Documents/development/rec
+ROOT := /development/rec
 
 genfiles/icon/rec/gui/icon/%.svg.cpp: art/icon/%.svg
 	$(new) --namespace=rec.gui.icon --output=genfiles/icon/rec/gui/icon $<

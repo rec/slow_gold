@@ -148,19 +148,19 @@ class Stretch : public ::google::protobuf::Message {
   inline ::rec::audio::stretch::Stretch_Strategy strategy() const;
   inline void set_strategy(::rec::audio::stretch::Stretch_Strategy value);
   
-  // optional bool time_disabled = 2;
-  inline bool has_time_disabled() const;
-  inline void clear_time_disabled();
-  static const int kTimeDisabledFieldNumber = 2;
-  inline bool time_disabled() const;
-  inline void set_time_disabled(bool value);
+  // optional bool time_enabled = 2 [default = true];
+  inline bool has_time_enabled() const;
+  inline void clear_time_enabled();
+  static const int kTimeEnabledFieldNumber = 2;
+  inline bool time_enabled() const;
+  inline void set_time_enabled(bool value);
   
-  // optional bool pitch_disabled = 3;
-  inline bool has_pitch_disabled() const;
-  inline void clear_pitch_disabled();
-  static const int kPitchDisabledFieldNumber = 3;
-  inline bool pitch_disabled() const;
-  inline void set_pitch_disabled(bool value);
+  // optional bool pitch_enabled = 3 [default = true];
+  inline bool has_pitch_enabled() const;
+  inline void clear_pitch_enabled();
+  static const int kPitchEnabledFieldNumber = 3;
+  inline bool pitch_enabled() const;
+  inline void set_pitch_enabled(bool value);
   
   // optional bool enabled = 20 [default = true];
   inline bool has_enabled() const;
@@ -287,8 +287,8 @@ class Stretch : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int strategy_;
-  bool time_disabled_;
-  bool pitch_disabled_;
+  bool time_enabled_;
+  bool pitch_enabled_;
   bool enabled_;
   bool passthrough_when_disabled_;
   double time_scale_;
@@ -463,36 +463,36 @@ inline void Stretch::set_strategy(::rec::audio::stretch::Stretch_Strategy value)
   strategy_ = value;
 }
 
-// optional bool time_disabled = 2;
-inline bool Stretch::has_time_disabled() const {
+// optional bool time_enabled = 2 [default = true];
+inline bool Stretch::has_time_enabled() const {
   return _has_bit(1);
 }
-inline void Stretch::clear_time_disabled() {
-  time_disabled_ = false;
+inline void Stretch::clear_time_enabled() {
+  time_enabled_ = true;
   _clear_bit(1);
 }
-inline bool Stretch::time_disabled() const {
-  return time_disabled_;
+inline bool Stretch::time_enabled() const {
+  return time_enabled_;
 }
-inline void Stretch::set_time_disabled(bool value) {
+inline void Stretch::set_time_enabled(bool value) {
   _set_bit(1);
-  time_disabled_ = value;
+  time_enabled_ = value;
 }
 
-// optional bool pitch_disabled = 3;
-inline bool Stretch::has_pitch_disabled() const {
+// optional bool pitch_enabled = 3 [default = true];
+inline bool Stretch::has_pitch_enabled() const {
   return _has_bit(2);
 }
-inline void Stretch::clear_pitch_disabled() {
-  pitch_disabled_ = false;
+inline void Stretch::clear_pitch_enabled() {
+  pitch_enabled_ = true;
   _clear_bit(2);
 }
-inline bool Stretch::pitch_disabled() const {
-  return pitch_disabled_;
+inline bool Stretch::pitch_enabled() const {
+  return pitch_enabled_;
 }
-inline void Stretch::set_pitch_disabled(bool value) {
+inline void Stretch::set_pitch_enabled(bool value) {
   _set_bit(2);
-  pitch_disabled_ = value;
+  pitch_enabled_ = value;
 }
 
 // optional bool enabled = 20 [default = true];

@@ -154,6 +154,20 @@ class AudioSettings : public ::google::protobuf::Message {
   inline ::rec::audio::AudioSettings_FileType file_type_for_save() const;
   inline void set_file_type_for_save(::rec::audio::AudioSettings_FileType value);
   
+  // optional double volume_nudge_db = 3 [default = 1];
+  inline bool has_volume_nudge_db() const;
+  inline void clear_volume_nudge_db();
+  static const int kVolumeNudgeDbFieldNumber = 3;
+  inline double volume_nudge_db() const;
+  inline void set_volume_nudge_db(double value);
+  
+  // optional double speed_nudge_percent = 4 [default = 10];
+  inline bool has_speed_nudge_percent() const;
+  inline void clear_speed_nudge_percent();
+  static const int kSpeedNudgePercentFieldNumber = 4;
+  inline double speed_nudge_percent() const;
+  inline void set_speed_nudge_percent(double value);
+  
   // @@protoc_insertion_point(class_scope:rec.audio.AudioSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -161,11 +175,13 @@ class AudioSettings : public ::google::protobuf::Message {
   
   double master_tune_;
   int file_type_for_save_;
+  double volume_nudge_db_;
+  double speed_nudge_percent_;
   friend void  protobuf_AddDesc_rec_2faudio_2fAudioSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fAudioSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fAudioSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -219,6 +235,38 @@ inline void AudioSettings::set_file_type_for_save(::rec::audio::AudioSettings_Fi
   GOOGLE_DCHECK(::rec::audio::AudioSettings_FileType_IsValid(value));
   _set_bit(1);
   file_type_for_save_ = value;
+}
+
+// optional double volume_nudge_db = 3 [default = 1];
+inline bool AudioSettings::has_volume_nudge_db() const {
+  return _has_bit(2);
+}
+inline void AudioSettings::clear_volume_nudge_db() {
+  volume_nudge_db_ = 1;
+  _clear_bit(2);
+}
+inline double AudioSettings::volume_nudge_db() const {
+  return volume_nudge_db_;
+}
+inline void AudioSettings::set_volume_nudge_db(double value) {
+  _set_bit(2);
+  volume_nudge_db_ = value;
+}
+
+// optional double speed_nudge_percent = 4 [default = 10];
+inline bool AudioSettings::has_speed_nudge_percent() const {
+  return _has_bit(3);
+}
+inline void AudioSettings::clear_speed_nudge_percent() {
+  speed_nudge_percent_ = 10;
+  _clear_bit(3);
+}
+inline double AudioSettings::speed_nudge_percent() const {
+  return speed_nudge_percent_;
+}
+inline void AudioSettings::set_speed_nudge_percent(double value) {
+  _set_bit(3);
+  speed_nudge_percent_ = value;
 }
 
 

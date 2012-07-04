@@ -63,20 +63,6 @@ Trans CLEAR_FAILED_FULL("Sorry, there was an error clearing the settings. "
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
-template <typename Proto>
-void executeCallback(Instance* i, void (*protoFunction)(Proto*)) {
-  const VirtualFile vf = i->file();
-  Proto proto(data::getProto<Proto>(vf));
-  (*protoFunction)(&proto);
-  data::setProto(proto, vf);
-}
-
-template <typename Proto>
-void addApplyCallback(CommandRecordTable* c, CommandID id, Instance* i,
-                      void (*protoFunction)(Proto*)) {
-  addCallback(c, id, &executeCallback<Proto>, i, protoFunction);
-}
-
 void aboutThisProgram(Instance* i) {
   i->window_->startAboutWindow();
 }
@@ -86,31 +72,31 @@ void addLoopPoint(Instance* i) {
                                            i->player_->getTime());
 }
 
-void nudgeVolumeDownOp(audio::Gain* gain) {
+using namespace rec::audio;
+using namespace rec::audio::stretch;
+
+bool nudgeVolume(Gain* gain, bool isInc) {
   if (!(gain->dim() || gain->mute()))
-    gain->set_gain(gain->gain() - 1.0);
+    return false;
+
+  double inc = data::getGlobal<AudioSettings>().volume_nudge_db();
+  gain->set_gain(gain->gain() + isInc ? inc : -inc);
+  return true;
 }
 
-#if 0
-void nudgeVolumeDown(Instance* i) {
-  data::apply(nudgeVolumeDownOp, i->file());
-}
-#endif
+void nudgeSpeed(Stretch* stretch, bool isInc) {
+  double scale = 1.0 + data::getGlobal<AudioSettings>().speed_nudge_percent();
+  if (!isInc)
+    scale = 1.0 / scale;
 
-void nudgeVolumeUp(Instance* i) {
-  audio::Gain gain;
-  data::fillProto(&gain, i->file());
-  if (!(gain.dim() || gain.mute())) {
-    gain.set_gain(gain.gain() + 1.0);
-    data::setProto(gain, i->file());
-  }
+  stretch->set_time_percent(stretch->time_percent() * scale);
 }
 
-void nudgeSpeedUp(Instance *i) {
-}
+bool nudgeVolumeDown(Gain* g) { return nudgeVolume(g, false); }
+bool nudgeVolumeUp(Gain* g) { return nudgeVolume(g, true); }
 
-void nudgeSpeedDown(Instance *i) {
-}
+void nudgeSpeedDown(Stretch* s) { nudgeSpeed(s, false); }
+void nudgeSpeedUp(Stretch* s) { nudgeSpeed(s, true); }
 
 void clearLoops(Instance *i) {
   Viewport viewport;
@@ -131,19 +117,19 @@ void clearNavigator(Instance *) {
 }
 
 void dimVolumeToggle(Instance* i) {
-  audio::Gain gain(data::getProto<audio::Gain>(i->file()));
+  Gain gain(data::getProto<Gain>(i->file()));
   gain.set_dim(!gain.dim());
   data::setProto(gain, i->file());
 }
 
 void muteVolumeToggle(Instance* i) {
-  audio::Gain gain(data::getProto<audio::Gain>(i->file()));
+  Gain gain(data::getProto<Gain>(i->file()));
   gain.set_mute(!gain.mute());
   data::setProto(gain, i->file());
 }
 
 void resetGainToUnity(Instance* i) {
-  audio::Gain gain(data::getProto<audio::Gain>(i->file()));
+  Gain gain(data::getProto<Gain>(i->file()));
   gain.set_gain(0);
   data::setProto(gain, i->file());
 }
@@ -323,8 +309,8 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings, i);
   addCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
   // addCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
-  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, i, nudgeVolumeDownOp);
-  addCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
+  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown, i);
+  addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp, i);
   // addCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeedDown, i);
   // addCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeedUp, i);
   addCallback(c, Command::OPEN, open, i);

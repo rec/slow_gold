@@ -30,9 +30,11 @@ void protobuf_AssignDesc_rec_2faudio_2fAudioSettings_2eproto() {
       "rec/audio/AudioSettings.proto");
   GOOGLE_CHECK(file != NULL);
   AudioSettings_descriptor_ = file->message_type(0);
-  static const int AudioSettings_offsets_[2] = {
+  static const int AudioSettings_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AudioSettings, master_tune_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AudioSettings, file_type_for_save_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AudioSettings, volume_nudge_db_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AudioSettings, speed_nudge_percent_),
   };
   AudioSettings_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -77,11 +79,12 @@ void protobuf_AddDesc_rec_2faudio_2fAudioSettings_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/audio/AudioSettings.proto\022\trec.aud"
-    "io\"\245\001\n\rAudioSettings\022\023\n\013master_tune\030\001 \001("
+    "io\"\342\001\n\rAudioSettings\022\023\n\013master_tune\030\001 \001("
     "\001\022B\n\022file_type_for_save\030\002 \001(\0162!.rec.audi"
-    "o.AudioSettings.FileType:\003WAV\";\n\010FileTyp"
-    "e\022\010\n\004AIFF\020\000\022\010\n\004FLAC\020\001\022\007\n\003OGG\020\002\022\007\n\003WAV\020\003\022"
-    "\t\n\005COUNT\020\004", 210);
+    "o.AudioSettings.FileType:\003WAV\022\032\n\017volume_"
+    "nudge_db\030\003 \001(\001:\0011\022\037\n\023speed_nudge_percent"
+    "\030\004 \001(\001:\00210\";\n\010FileType\022\010\n\004AIFF\020\000\022\010\n\004FLAC"
+    "\020\001\022\007\n\003OGG\020\002\022\007\n\003WAV\020\003\022\t\n\005COUNT\020\004", 271);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/AudioSettings.proto", &protobuf_RegisterTypes);
   AudioSettings::default_instance_ = new AudioSettings();
@@ -129,6 +132,8 @@ const int AudioSettings::FileType_ARRAYSIZE;
 #ifndef _MSC_VER
 const int AudioSettings::kMasterTuneFieldNumber;
 const int AudioSettings::kFileTypeForSaveFieldNumber;
+const int AudioSettings::kVolumeNudgeDbFieldNumber;
+const int AudioSettings::kSpeedNudgePercentFieldNumber;
 #endif  // !_MSC_VER
 
 AudioSettings::AudioSettings()
@@ -149,6 +154,8 @@ void AudioSettings::SharedCtor() {
   _cached_size_ = 0;
   master_tune_ = 0;
   file_type_for_save_ = 3;
+  volume_nudge_db_ = 1;
+  speed_nudge_percent_ = 10;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -185,6 +192,8 @@ void AudioSettings::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     master_tune_ = 0;
     file_type_for_save_ = 3;
+    volume_nudge_db_ = 1;
+    speed_nudge_percent_ = 10;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -228,6 +237,38 @@ bool AudioSettings::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(25)) goto parse_volume_nudge_db;
+        break;
+      }
+      
+      // optional double volume_nudge_db = 3 [default = 1];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_volume_nudge_db:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &volume_nudge_db_)));
+          _set_bit(2);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(33)) goto parse_speed_nudge_percent;
+        break;
+      }
+      
+      // optional double speed_nudge_percent = 4 [default = 10];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_speed_nudge_percent:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &speed_nudge_percent_)));
+          _set_bit(3);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -261,6 +302,16 @@ void AudioSettings::SerializeWithCachedSizes(
       2, this->file_type_for_save(), output);
   }
   
+  // optional double volume_nudge_db = 3 [default = 1];
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->volume_nudge_db(), output);
+  }
+  
+  // optional double speed_nudge_percent = 4 [default = 10];
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->speed_nudge_percent(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -278,6 +329,16 @@ void AudioSettings::SerializeWithCachedSizes(
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->file_type_for_save(), target);
+  }
+  
+  // optional double volume_nudge_db = 3 [default = 1];
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->volume_nudge_db(), target);
+  }
+  
+  // optional double speed_nudge_percent = 4 [default = 10];
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->speed_nudge_percent(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -300,6 +361,16 @@ int AudioSettings::ByteSize() const {
     if (has_file_type_for_save()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->file_type_for_save());
+    }
+    
+    // optional double volume_nudge_db = 3 [default = 1];
+    if (has_volume_nudge_db()) {
+      total_size += 1 + 8;
+    }
+    
+    // optional double speed_nudge_percent = 4 [default = 10];
+    if (has_speed_nudge_percent()) {
+      total_size += 1 + 8;
     }
     
   }
@@ -335,6 +406,12 @@ void AudioSettings::MergeFrom(const AudioSettings& from) {
     if (from._has_bit(1)) {
       set_file_type_for_save(from.file_type_for_save());
     }
+    if (from._has_bit(2)) {
+      set_volume_nudge_db(from.volume_nudge_db());
+    }
+    if (from._has_bit(3)) {
+      set_speed_nudge_percent(from.speed_nudge_percent());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -360,6 +437,8 @@ void AudioSettings::Swap(AudioSettings* other) {
   if (other != this) {
     std::swap(master_tune_, other->master_tune_);
     std::swap(file_type_for_save_, other->file_type_for_save_);
+    std::swap(volume_nudge_db_, other->volume_nudge_db_);
+    std::swap(speed_nudge_percent_, other->speed_nudge_percent_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -134,9 +134,9 @@ void TransformController::operator()(const Stretch& s) {
 }
 
 void TransformController::setStretch(const Stretch& s) {
-  playbackSpeed_.setEnabled(s.enabled());
-  pitchScale_.setEnabled(s.enabled());
-  fineScale_.setEnabled(s.enabled());
+  playbackSpeed_.setEnabled(s.enabled() && s.time_enabled());
+  pitchScale_.setEnabled(s.enabled() && s.pitch_enabled());
+  fineScale_.setEnabled(s.enabled() && s.pitch_enabled());
   stereoComboBox_.setEnabled(s.enabled());
 }
 

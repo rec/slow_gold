@@ -12,11 +12,12 @@ message Stretch {
   };
 
   optional Strategy strategy = 1        [default = RUBBERBAND];
-  optional bool time_disabled = 2;
-  optional bool pitch_disabled = 3;
+
+  optional bool time_enabled = 2        [default = true];
+  optional bool pitch_enabled = 3       [default = true];
   optional bool enabled = 20            [default = true];
   optional bool passthrough_when_disabled = 4 [default = false];
-  optional double time_scale = 5        [default = 1.0];
+
   optional double time_percent = 6      [default = 100.0];
   optional double sample_rate = 7       [default = 44100.0];
   optional uint32 channels = 8          [default = 2];

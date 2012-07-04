@@ -38,6 +38,34 @@ void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i, X
   addCallback(c, id, thread::functionCallback(f, i, x, y));
 }
 
+template <typename Proto>
+void executeCallbackConditional(Instance* i, bool (*protoFunction)(Proto*)) {
+  const VirtualFile vf = i->file();
+  Proto proto(data::getProto<Proto>(vf));
+  if ((*protoFunction)(&proto))
+    data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void addApplyCallback(CommandRecordTable* c, CommandID id,
+                      bool (*protoFunction)(Proto*), Instance* i) {
+  addCallback(c, id, &executeCallbackConditional<Proto>, i, protoFunction);
+}
+
+template <typename Proto>
+void executeCallback(Instance* i, void (*protoFunction)(Proto*)) {
+  const VirtualFile vf = i->file();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto);
+  data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void addApplyCallback(CommandRecordTable* c, CommandID id,
+                      void (*protoFunction)(Proto*), Instance* i) {
+  addCallback(c, id, &executeCallback<Proto>, i, protoFunction);
+}
+
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 

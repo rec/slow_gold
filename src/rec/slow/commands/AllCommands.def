@@ -110,7 +110,7 @@ command {
   desc {
     menu: "Toggle audio dim"
     full: "Toggle audio dim on and off."
-  }
+ }
 }
 command {
   type: EJECT_CDS
@@ -364,6 +364,26 @@ command {
     full: "Nudge volume up by 2dB"
   }
   keypress: "cursor up"
+}
+command {
+  type: NUDGE_SPEED_DOWN
+  category: "Audio"
+  desc {
+    menu: "Nudge speed down"
+    full: "Nudge speed down"
+  }
+  keypress: "shift + _"
+  keypress: "-"
+}
+command {
+  type: NUDGE_SPEED_UP
+  category: "Audio"
+  desc {
+    menu: "Nudge speed up"
+    full: "Nudge speed up"
+  }
+  keypress: "shift + +"
+  keypress: "="
 }
 command {
   type: OPEN
@@ -960,6 +980,22 @@ command {
   type: TOGGLE_STRETCH_ENABLE
   category: "Audio"
   desc {
+    menu: "Enable Time Stretch"
+    full: "Toggle between stretched and real-time playback."
+  }
+  is_setter: true
+  address {
+    part {
+      name: "time_enabled"
+    }
+  }
+  setter_type_name: "rec.audio.stretch.Stretch"
+  keypress: "s"
+}
+command {
+  type: TOGGLE_TRANSFORM_ENABLE
+  category: "Audio"
+  desc {
     menu: "Enable Transforms"
     full: "Toggle pitch, time and stereo transforms of the sound."
   }
@@ -978,7 +1014,7 @@ command {
     menu: "Loop This Segment"
     full: "Toggle selection between the current segment and the whole song."
   }
-  keypress: "command + t"
+  keypress: "w"
 }
 command {
   type: UNDO

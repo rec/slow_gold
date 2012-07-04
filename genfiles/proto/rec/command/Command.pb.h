@@ -113,6 +113,7 @@ enum Command_Type {
   Command_Type_TOGGLE_SHOW_TOOLTIPS = 48,
   Command_Type_TOGGLE_START_STOP = 28,
   Command_Type_TOGGLE_STRETCH_ENABLE = 29,
+  Command_Type_TOGGLE_TRANSFORM_ENABLE = 88,
   Command_Type_TOGGLE_WHOLE_SONG_LOOP = 30,
   Command_Type_TREE_CLOSE = 31,
   Command_Type_TREE_DOWN = 32,
@@ -127,7 +128,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 87,
+  Command_Type_LAST_TYPE = 88,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -408,6 +409,7 @@ class Command : public ::google::protobuf::Message {
   static const Type TOGGLE_SHOW_TOOLTIPS = Command_Type_TOGGLE_SHOW_TOOLTIPS;
   static const Type TOGGLE_START_STOP = Command_Type_TOGGLE_START_STOP;
   static const Type TOGGLE_STRETCH_ENABLE = Command_Type_TOGGLE_STRETCH_ENABLE;
+  static const Type TOGGLE_TRANSFORM_ENABLE = Command_Type_TOGGLE_TRANSFORM_ENABLE;
   static const Type TOGGLE_WHOLE_SONG_LOOP = Command_Type_TOGGLE_WHOLE_SONG_LOOP;
   static const Type TREE_CLOSE = Command_Type_TREE_CLOSE;
   static const Type TREE_DOWN = Command_Type_TREE_DOWN;

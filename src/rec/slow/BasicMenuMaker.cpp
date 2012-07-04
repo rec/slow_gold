@@ -74,7 +74,11 @@ void BasicMenuMaker::addAudioMenu() {
   addIfNotEmpty(Command::MUTE_VOLUME_TOGGLE);
   addIfNotEmpty(Command::NUDGE_VOLUME_UP);
   addIfNotEmpty(Command::NUDGE_VOLUME_DOWN);
+
+  menu_.addSeparator();
   addIfNotEmpty(Command::TOGGLE_STRETCH_ENABLE);
+  addIfNotEmpty(Command::NUDGE_SPEED_UP);
+  addIfNotEmpty(Command::NUDGE_SPEED_DOWN);
 
   menu_.addSeparator();
 

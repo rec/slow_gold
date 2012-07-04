@@ -17,13 +17,13 @@ const double SEMITONE_LOG = SEMITONES_PER_OCTAVE / log(OCTAVE);
 const double MIN_DETUNE_DIFFERENCE = 0.05;
 
 double timeScale(const Stretch& d) {
-  if (!d.enabled() || d.time_disabled())
+  if (!(d.enabled() && d.time_enabled()))
     return NO_SCALE;
-  return d.time_scale() * PERCENT / d.time_percent();
+  return PERCENT / d.time_percent();
 }
 
 double pitchScale(const Stretch& d, double detuneCents) {
-  bool pitchEnabled = d.enabled() && !d.pitch_disabled();
+  bool pitchEnabled = d.enabled() && d.pitch_enabled();
   if (!pitchEnabled && near(detuneCents, 0.0, MIN_DETUNE_DIFFERENCE))
     return NO_SCALE;
 

@@ -12,19 +12,6 @@ namespace slow {
 
 using namespace rec::command;
 
-void AdvancedMenuMaker::addAudioMenu() {
-  addIfNotEmpty(Command::MUTE_VOLUME_TOGGLE);
-  addIfNotEmpty(Command::DIM_VOLUME_TOGGLE);
-  addIfNotEmpty(Command::NUDGE_VOLUME_UP);
-  addIfNotEmpty(Command::NUDGE_VOLUME_DOWN);
-  addIfNotEmpty(Command::RESET_GAIN_TO_UNITY);
-  addIfNotEmpty(Command::TOGGLE_STRETCH_ENABLE);
-
-  menu_.addSeparator();
-
-  add(Command::AUDIO_PREFERENCES);
-}
-
 void AdvancedMenuMaker::addEditMenu() {
   BasicMenuMaker::addEditMenu();
 
