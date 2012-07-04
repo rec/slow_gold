@@ -70,6 +70,9 @@ class Instance {
   thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
 
+  static Instance* getInstance();
+  static const VirtualFile getInstanceFile();
+
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Instance);
 };

@@ -95,6 +95,58 @@ void addApplyCallback(CommandRecordTable* c, CommandID id,
   addCallback(c, id, &executeCallback2<Proto, Type>, i, protoFunction, t);
 }
 
+template <typename Functor, typename Proto>
+void execute1(Functor file, void (*protoFunction)(Proto*)) {
+  const VirtualFile vf = file();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto);
+  data::setProto(proto, vf);
+}
+
+template <typename Functor, typename Proto, typename Type>
+void execute2(Functor file, void (*protoFunction)(Proto*), Type t) {
+  const VirtualFile vf = file();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto, t);
+  data::setProto(proto, vf);
+}
+
+template <typename Functor, typename Proto>
+void executeIf1(Functor file, void (*protoFunction)(Proto*)) {
+  const VirtualFile vf = file();
+  Proto proto(data::getProto<Proto>(vf));
+  if ((*protoFunction)(&proto))
+    data::setProto(proto, vf);
+}
+
+template <typename Functor, typename Proto, typename Type>
+void executeIf2(Functor file, void (*protoFunction)(Proto*), Type t) {
+  const VirtualFile vf = file();
+  Proto proto(data::getProto<Proto>(vf));
+  if ((*protoFunction)(&proto, t))
+    data::setProto(proto, vf);
+}
+
+template <typename Functor, typename Proto>
+Callback* makeCallback(Functor file, void (*fn)(Proto*)) {
+  return thread::functionCallback(&execute1<Functor, Proto>, file, fn);
+}
+
+template <typename Functor, typename Proto>
+Callback* makeCallback(Functor file, bool (*fn)(Proto*)) {
+  return thread::functionCallback(&executeIf1<Functor, Proto>, file, fn);
+}
+
+template <typename Functor, typename Proto, typename Type>
+Callback* makeCallback(Functor file, void (*fn)(Proto*, Type t), Type t) {
+  return thread::functionCallback(&execute1<Functor, Proto>, file, fn, t);
+}
+
+template <typename Functor, typename Proto, typename Type>
+Callback* makeCallback(Functor file, bool (*fn)(Proto*, Type t), Type t) {
+  return thread::functionCallback(&executeIf1<Functor, Proto>, file, fn, t);
+}
+
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 

@@ -66,11 +66,21 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
   }
 };
 
+static Instance* INSTANCE = NULL;
+
 }  // namespace
 
 Instance::Instance(app::Window* window) : window_(window) {
   CHECK_DDD(51, 2193, int64, int32);
+  DCHECK(!INSTANCE);
+  INSTANCE = this;
 }
+
+// static
+Instance* Instance::getInstance() { return INSTANCE; };
+
+// static
+const VirtualFile Instance::getInstanceFile() { return INSTANCE->file(); };
 
 void Instance::init() {
   window_->init();
