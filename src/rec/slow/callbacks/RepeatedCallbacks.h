@@ -8,7 +8,7 @@ namespace rec {
 namespace slow {
 
 class Instance;
-class LoopSnapshot;
+struct LoopSnapshot;
 
 void addRepeatedCallbacks(command::CommandRecordTable*, Instance*, int repeat);
 
