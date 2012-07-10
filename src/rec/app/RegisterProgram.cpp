@@ -10,7 +10,7 @@ namespace {
 const bool USE_POSTDATA = false;
 const char* const EMPTY_PARAMETER = "NONE";
 
-#define USE_WINDOWS_GETENV 1
+#define USE_WINDOWS_GETENV 0
 
 inline String getEnv(const char* name, const String& dflt) {
 #if USE_WINDOWS_GETENV && JUCE_WINDOWS
