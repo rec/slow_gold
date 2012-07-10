@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="vW5NN35VD" name="SlowGold">
+  <MAINGROUP id="dXXiQRAD4" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1521,7 +1521,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="aGsXFa8A2" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="oIsa6wbiK" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
@@ -1542,5 +1542,6 @@
   </MODULES>
   <JUCEOPTIONS JUCE_PLUGINHOST_AU="disabled" JUCE_PLUGINHOST_VST="disabled"
                JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="enabled"
-               JUCE_USE_MP3AUDIOFORMAT="enabled" JUCE_USE_OGGVORBIS="enabled"/>
+               JUCE_USE_MP3AUDIOFORMAT="enabled" JUCE_USE_OGGVORBIS="enabled"
+               JUCE_USE_WINDOWS_MEDIA_FORMAT="enabled"/>
 </JUCERPROJECT>

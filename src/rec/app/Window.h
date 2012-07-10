@@ -27,7 +27,6 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual void focusOfChildComponentChanged(juce::Component::FocusChangeType) {
     broadcast(None());
   }
-  virtual void trashPreferences() {}
   GenericApplication* application() { return application_; }
   PopupMenu* getAppleMenu() { return &menu_; }
 

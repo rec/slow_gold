@@ -13,7 +13,7 @@ class Frames {
   Frames(SampleTime length = 0);
   ~Frames() { free(frames_); }
 
-  bool setLength(SampleTime length, bool mustReallocate = false);
+  bool setLength(SampleTime length);
   SampleTime getAudioBlock(const Info& info, SampleTime offset) const;
   Frame* frames() { return frames_; }
   SampleTime length() const { return length_; }

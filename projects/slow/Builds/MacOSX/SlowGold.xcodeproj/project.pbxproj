@@ -2143,6 +2143,17 @@
 			name = misc;
 			sourceTree = "<group>";
 		};
+		264A754B6E6518BE31CB842E /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		26BB8D49A2FDC4CE6BF4FA3E /* proto */ = {
 			isa = PBXGroup;
 			children = (
@@ -3148,7 +3159,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D017E9CEF6E24F885F7B892F /* SlowGold */,
+				264A754B6E6518BE31CB842E /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -4084,17 +4095,6 @@
 				A2FE788911201F8E198D6E25 /* RegisterFormats.h */,
 			);
 			name = format;
-			sourceTree = "<group>";
-		};
-		D017E9CEF6E24F885F7B892F /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		D0F36490D7E5C09C0C28571E /* code_editor */ = {

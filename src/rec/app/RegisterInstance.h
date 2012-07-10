@@ -13,6 +13,7 @@ class RegisterInstance : public app::RegisterProgram {
 
   virtual Range<const char* const*> getEnvironmentVariables() const;
   virtual Range<const NamedFunction*> getNamedFunctions() const;
+  virtual String resultMatcher() const;
 
   virtual StringArray getBaseUrls() const;
 

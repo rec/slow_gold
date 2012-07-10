@@ -36,7 +36,7 @@ Def<TableColumnList> dflt(
 "  type: TIME "
 "  name: \"Time\" "
 "  address { part { name: \"time\" } } "
-"  width: 50 "
+"  width: 60 "
 "  property_flags: DEFAULT_NOT_EDITABLE"
 "} "
 "column { "

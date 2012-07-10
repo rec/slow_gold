@@ -5,31 +5,7 @@
 namespace rec {
 namespace audio {
 
-template <typename Frame>
-Frames<Frame>::Frames(SampleTime length)
-    : length_(-1), allocatedLength_(-1), frames_(NULL) {
-  setLength(length);
-}
-
-
-template <typename Frame>
-bool Frames<Frame>::setLength(SampleTime length, bool mustReallocate) {
-  if (length != length_ && (mustReallocate || length > allocatedLength_)) {
-    allocatedLength_ = length;
-    size_t size = static_cast<size_t>(sizeof(Frame) * length);
-    void *f = realloc(frames_, size);
-    DCHECK(!size || f) << "Couldn't allocate " << size;
-
-    frames_ = reinterpret_cast<Frame*>(f);
-	  DCHECK(!size || frames_) << "Couldn't cast " << size;
-  }
-  bool success = !length || frames_;
-  if (!success)
-    LOG(DFATAL) << "Couldn't setLength: " << length << ", " << frames_;
-  length_ = length;
-
-  return success;
-}
+namespace {
 
 template <typename Sample, int CHANNELS>
 void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
@@ -44,9 +20,40 @@ void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
   }
 }
 
+}  // namespace
+
+template <typename Frame>
+Frames<Frame>::Frames(SampleTime length)
+    : length_(0), allocatedLength_(0), frames_(NULL) {
+  setLength(length);
+}
+
+
+template <typename Frame>
+bool Frames<Frame>::setLength(SampleTime length) {
+  if (length == length_)
+    return true;
+
+  if (length <= allocatedLength_) {
+    length_ = length;
+    return true;
+  }
+
+  size_t size = static_cast<size_t>(sizeof(Frame) * length);
+  if (void *f = realloc(frames_, size)) {
+    frames_ = reinterpret_cast<Frame*>(f);
+    allocatedLength_ = length_ = length;
+    return true;
+  } else {
+    LOG(ERROR) << "Unable to allocate " << length << " frames, "
+               << size << " bytes ";
+    return false;
+  }
+}
+
 template <typename Frame>
 SampleTime Frames<Frame>::getAudioBlock(const Info& info,
-                                            SampleTime offset) const {
+                                        SampleTime offset) const {
   int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
   float** out = info.buffer->getArrayOfChannels();
   DCHECK_GE(numSamples, 0) << info.numSamples << ", " << length_ << ", "  << offset;

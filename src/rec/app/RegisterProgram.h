@@ -22,6 +22,7 @@ class RegisterProgram : public Thread {
   virtual Range<const NamedFunction*> getNamedFunctions() const = 0;
   virtual StringArray getBaseUrls() const = 0;
   virtual bool acceptResult(const String&) const;
+  virtual String resultMatcher() const = 0;
   virtual void onSuccess() {}
   virtual int timeOut() const = 0;
   virtual URL::OpenStreamProgressCallback* progressCallback() const {

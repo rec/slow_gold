@@ -18,10 +18,6 @@ Window::Window(GenericApplication* application,
 
 void Window::initialise() {
   ModifierKeys keys = ModifierKeys::getCurrentModifiersRealtime();
-  if (keys.isCommandDown()) {
-    LOG(ERROR) << "Trashing your preferences files.";
-    trashPreferences();
-  }
   constructInstance();
 
 #if JUCE_MAC

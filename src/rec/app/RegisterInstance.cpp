@@ -6,6 +6,8 @@ namespace app {
 
 namespace {
 
+const char* const ACCEPTANCE = "SLOWGOLD-SUCCESS";
+
 String getTimestamp() {
   return String(juce::Time::currentTimeMillis());
 }
@@ -46,8 +48,13 @@ RegisterInstance::getNamedFunctions() const {
 }
 
 StringArray RegisterInstance::getBaseUrls() const {
-  return StringArray(URLS, sizeof(URLS));
+  return StringArray(URLS, arraysize(URLS));
 }
+
+String RegisterInstance::resultMatcher() const {
+  return ACCEPTANCE;
+}
+
 
 }  // namespace app
 }  // namespace rec

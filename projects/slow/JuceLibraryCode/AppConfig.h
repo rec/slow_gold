@@ -88,7 +88,7 @@
 #endif
 
 #ifndef    JUCE_USE_WINDOWS_MEDIA_FORMAT
- //#define JUCE_USE_WINDOWS_MEDIA_FORMAT
+ #define   JUCE_USE_WINDOWS_MEDIA_FORMAT 1
 #endif
 
 //==============================================================================
