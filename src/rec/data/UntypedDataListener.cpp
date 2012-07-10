@@ -43,7 +43,7 @@ void UntypedDataListener::operator()(const VirtualFile& df) {
   {
     Lock l(lock_);
     if (data_ == newData) {
-      LOG(ERROR) << "Got the same file twice " << file::toString(datafile);
+      // LOG(ERROR) << "Got the same file twice " << file::toString(datafile);
       return;
     }
     if (data_)

@@ -33,8 +33,7 @@ using namespace rec::data;
 namespace {
 
 Trans RAN_OUT_OF_MEMORY("Ran Out Of Memory For Your File");
-Trans RAN_OUT_OF_MEMORY_FULL("Your file was so large that the program "
-                             "ran out of memory.");
+Trans RAN_OUT_OF_MEMORY_FULL("Sorry, there wasn't enough memory for the file.");
 }
 
 using namespace rec::widget::waveform;

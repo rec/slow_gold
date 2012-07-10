@@ -7,6 +7,7 @@ namespace util {
 static const int PRELOAD = 10000;  // TODO:  duplicate code.
 
 SampleTime BufferedReader::setReader(AudioFormatReader* reader) {
+  DCHECK(reader);
   Lock l(lock_);
   reset();
   reader_.reset(reader);
@@ -15,13 +16,11 @@ SampleTime BufferedReader::setReader(AudioFormatReader* reader) {
     return 0;
 
   SampleTime size = reader->lengthInSamples;
-  if (!setLength(size)) {
-    LOG(ERROR) << "Ran out of memory, unable to set frame length";
-    reader_.reset();
-    return 0;
-  }
+  if (setLength(size))
+    return size;
 
-  return size;
+  reader_.reset();
+  return 0;
 }
 
 bool BufferedReader::coversTime(SampleTime time) const {
