@@ -31,20 +31,19 @@ void registerOptionalFormats(AudioFormatManager* afm) {
 }  // namespace
 
 void registerFormats(AudioFormatManager* afm, ReadWrite rw) {
-  registerOptionalFormats(afm);
-
 #if (JUCE_MAC || JUCE_IOS)
   if (rw == READ || JUCE_USE_COREAUDIO_WRITE)
     afm->registerFormat(new CoreAudioFormat(), false);
   else
+    registerSoftwareFormats(afm, rw);
 
 #elif JUCE_USE_WINDOWS_MEDIA_FORMAT
+  registerSoftwareFormats(afm, rw);
   if (rw == READ || JUCE_USE_WINDOWSMEDIA_WRITE)
     afm->registerFormat(new WindowsMediaAudioFormat(), false);
-  else
-
 #endif
-    registerSoftwareFormats(afm, rw);
+
+  registerOptionalFormats(afm);
 }
 
 AudioFormatManager* createAudioFormatManager(ReadWrite rw) {
