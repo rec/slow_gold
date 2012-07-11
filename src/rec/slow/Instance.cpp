@@ -1,6 +1,8 @@
 #include "rec/slow/Instance.h"
 
+#include "rec/app/AppSettings.pb.h"
 #include "rec/app/GenericApplication.h"
+#include "rec/app/RegisterInstance.h"
 #include "rec/audio/Device.h"
 #include "rec/audio/OutputSampleRate.h"
 #include "rec/audio/source/FrameSource.h"
@@ -22,8 +24,7 @@
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/FillerThread.h"
 #include "rec/slow/GuiListener.h"
-#include "rec/slow/GuiSettings.pb.h"
-#include "rec/app/RegisterInstance.h"
+#include "rec/slow/GuiSettings.h"
 #include "rec/slow/IsWholeSong.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
@@ -40,9 +41,10 @@
 namespace rec {
 namespace slow {
 
-using namespace rec::audio;
-using namespace rec::audio::util;
+using namespace rec::app;
 using namespace rec::audio::source;
+using namespace rec::audio::util;
+using namespace rec::audio;
 using namespace rec::widget::waveform;
 
 using gui::DialogLocker;
@@ -178,20 +180,19 @@ class RegisterSlow : public app::RegisterInstance {
   RegisterSlow() {}
 
   virtual void onSuccess() {
-    data::Opener<GuiSettings> settings(data::global(), CANT_UNDO);
+    data::Opener<AppSettings> settings(data::global(), CANT_UNDO);
     settings->set_registered(true);
   }
 };
 
 void Instance::postStartup() {
   data::getDataCenter().undoStack()->setEnabled();
-  const GuiSettings settings = data::getGlobal<GuiSettings>();
 
-  if (!settings.registered())
+  if (!data::getGlobal<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
 
   MessageManagerLock l;
-  if (settings.show_about_on_startup())
+  if (data::getGlobal<GuiSettings>().show_about_on_startup())
     window_->startAboutWindow();
 }
 

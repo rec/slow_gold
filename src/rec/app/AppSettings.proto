@@ -1,0 +1,6 @@
+package rec.app;
+
+message AppSettings {
+  optional int64 last_update_finished = 1;
+  optional bool registered = 2 [default = false];
+};

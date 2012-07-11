@@ -1,5 +1,5 @@
 #include "rec/app/DownloadVersion.h"
-#include "rec/app/AppData.pb.h"
+#include "rec/app/AppSettings.pb.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/app/Files.h"
 #include "rec/base/Trans.h"
@@ -39,7 +39,7 @@ const RelativeTime UPDATE(RelativeTime::days(1));
 bool isReadyForUpdate() {
   CHECK_DDD(1734, 1272, int32, int16);
 
-  int64 finished = data::getGlobal<AppData>().last_update_finished();
+  int64 finished = data::getGlobal<AppSettings>().last_update_finished();
   return (juce::Time::currentTimeMillis() - finished) > UPDATE.inMilliseconds();
 }
 
@@ -69,7 +69,7 @@ bool downloadNewVersion(const String& appName, const String& version,
   ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
 
   if (ok) {
-    AppData appData = data::getGlobal<AppData>();
+    AppSettings appData = data::getGlobal<AppSettings>();
     appData.set_last_update_finished(juce::Time::currentTimeMillis());
     data::setGlobal(appData);
   } else {
