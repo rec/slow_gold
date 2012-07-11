@@ -22,25 +22,33 @@ const int64 SMALLEST_TIME_SAMPLES = 10000;
 }  // namespace
 
 using namespace rec::util::block;
+using juce::Rectangle;
 
 WaveformPainter::WaveformPainter(Waveform* w)
     : waveform_(w), thumbnail_(NULL), model_(w->model()){
 }
 
-void WaveformPainter::paint(Graphics& g, const Range<SampleTime >& range,
-                            bool loading) {
-  Painter p(model_.description().widget(), &g);
-  if (!loading) {
-    if (model_.isEmpty() || !thumbnail_) {
-      g.setFont(14.0f);
-      g.drawFittedText("Drop a file here or double-click to open a new file",
-                       0, 0, waveform_->getWidth(),
-                       waveform_->getHeight(),
-                       juce::Justification::centred, 0);
-    } else {
-      drawWaveform(p, range);
-      drawGrid(g, range);
-    }
+WaveformPainter::~WaveformPainter() {}
+
+void WaveformPainter::drawEmpty(Graphics& g) {
+  g.setFont(14.0f);
+  g.drawFittedText("Drop a file here or double-click to open a new file",
+                   0, 0, waveform_->getWidth(),
+                   waveform_->getHeight(),
+                   juce::Justification::centred, 0);
+}
+
+void WaveformPainter::paint(Graphics& g, const Range<SampleTime>& range,
+                            bool isLoading) {
+  if (isLoading || model_.isEmpty() || !thumbnail_) {
+    drawEmpty(g);
+  } else {
+    painter_.reset(new Painter(model_.description().widget(), &g));
+    range_ = range;
+    bounds_ = waveform_->getLocalBounds();
+    drawWaveform();
+    drawGrid();
+    painter_.reset();
   }
 }
 
@@ -48,49 +56,46 @@ SampleRate WaveformPainter::sampleRate() const {
   return model_.viewport().loop_points().sample_rate();
 }
 
-void WaveformPainter::drawWaveform(Painter& p,
-                                   const Range<SampleTime>& range) {
-  const BlockSet& selection = model_.selection();
-  BlockSet::iterator i = selection.begin();
-  Block r;
-  r.first = SampleTime(range.begin_);
-  r.second = SampleTime(range.end_);
-  const juce::Rectangle<int>& bounds = waveform_->getLocalBounds();
-  int channels = thumbnail_->getNumChannels();
+void WaveformPainter::drawWaveform() {
+  Restorer restore(*painter());
 
-  while (getSize(r) > 0) {
-    for (; i != selection.end() && i->second <= r.first; ++i);
-    bool selected = (i != selection.end() && r.first >= i->first);
-    Block draw = r;
-    if (selected)
-      draw.second = i->second;
+  int y = bounds_.getY();
+  int height = bounds_.getHeight();
+  drawWaveform(true);
 
-    else if (i != selection.end())
-      draw.second = i->first;
+  BlockSet sel = model_.selection(true);
+  for (BlockSet::iterator i = sel.begin(); i != sel.end(); ++i)  {
+    int x = model_.timeToX(i->first);
+    int w = model_.timeToX(i->second) - x;
+    painter()->graphics()->excludeClipRegion(Rectangle<int>(x, y, w, height));
+  }
 
-    RealTime first(draw.first, sampleRate());
-    RealTime second(draw.second, sampleRate());
-    int x1 = model_.timeToX(draw.first);
-    int x2 = model_.timeToX(draw.second);
+  drawWaveform(false);
+}
 
-    juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
+static const int CHANNELS = 2; // TODO
 
-    if (model_.description().parallel_waveforms() ||
-        model_.description().layout() == WaveformProto::PARALLEL) {
-      for (int i = 0; i < channels; ++i) {
-        p.setColor(selected ? i + 1 : i + 1 + channels);
-        thumbnail_->drawChannel(*p.graphics(), b, first, second, i, 1.0f);
-      }
-    } else {
-      p.setColor(2 + (!selected) * 2);
-      thumbnail_->drawChannels(*p.graphics(), b, first, second, 1.0f);
+void WaveformPainter::drawWaveform(bool isSelected) {
+  Graphics& g = *painter()->graphics();
+  SampleRate rate(sampleRate());
+  RealTime begin(range_.begin_, rate);
+  RealTime end(range_.end_, rate);
+
+  if (model_.description().parallel_waveforms() ||
+      model_.description().layout() == WaveformProto::PARALLEL) {
+    for (int i = 0; i < CHANNELS; ++i) {
+      painter()->setColor(isSelected ? i + 1 : i + 1 + CHANNELS);
+      thumbnail_->drawChannel(g, bounds_, begin, end, i, 1.0f);
     }
-    r.first = draw.second;
+  } else {
+    painter()->setColor(2 + (!isSelected) * 2);
+    thumbnail_->drawChannels(g, bounds_, begin, end, 1.0f);
   }
 }
 
-void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
-  SampleTime width(r.size());
+void WaveformPainter::drawGrid() {
+  Graphics& g = *painter()->graphics();
+  SampleTime width(range_.size());
   if (width < SMALLEST_TIME_SAMPLES) {
     LOG_FIRST_N(ERROR, 4) << "Nothing on screen! " << width;
     return;
@@ -98,8 +103,8 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
   double seconds = pow(10.0, floor(log10(RealTime(width, sampleRate()))));
   double samples = seconds * sampleRate();
 
-  int b = static_cast<int>(ceil(r.begin_ / samples));
-  int e = static_cast<int>(r.end_ / samples);
+  int b = static_cast<int>(ceil(range_.begin_ / samples));
+  int e = static_cast<int>(range_.end_ / samples);
   int diff = e - b;
 
   if (diff <= 2)
@@ -110,8 +115,8 @@ void WaveformPainter::drawGrid(Graphics& g, const Range<SampleTime>& r) {
   if (samples > SampleTime(10.0, sampleRate()))
     samples *= 1.2;
 
-  b = static_cast<int>(ceil(r.begin_ / samples));
-  e = static_cast<int>(floor(r.end_ / samples));
+  b = static_cast<int>(ceil(range_.begin_ / samples));
+  e = static_cast<int>(floor(range_.end_ / samples));
 
   float h = static_cast<float>(waveform_->getHeight());
   int decimals = 0;

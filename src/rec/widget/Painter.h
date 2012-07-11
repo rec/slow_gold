@@ -25,7 +25,7 @@ class Painter {
   Painter(const Widget& widget, juce::Graphics* g,
           const StateColors* stateColors = NULL)
       : widget_(widget),
-        graphics_(g),
+        graphics_(*g),
         font_(g->getCurrentFont()),
         margin_(widget_.margin()),
         colors_(getColors(widget.state(), stateColors, widget.colors())) {
@@ -36,16 +36,16 @@ class Painter {
     g->setFont(font());
   }
 
-  ~Painter() { graphics_->setFont(font_); }
+  ~Painter() { graphics_.setFont(font_); }
 
   const Font font() const { return gui::getFont(widget_.font()); }
-  Graphics* graphics() { return graphics_; }
+  Graphics* graphics() { return &graphics_; }
 
   const gui::Colors& colors() const { return colors_; }
   const Colour colour(int i) const { return gui::color::get(colors_, i); }
-  void fillAll(ColorName n) { graphics_->fillAll(colour(n)); }
+  void fillAll(ColorName n) { graphics_.fillAll(colour(n)); }
 
-  void setColor(int i) const { graphics_->setColour(colour(i)); }
+  void setColor(int i) const { graphics_.setColour(colour(i)); }
 
   void setColor(ColorName n) const { setColor((int)n); }
 
@@ -53,16 +53,30 @@ class Painter {
     return c->getLocalBounds().reduced(margin_, margin_);
   }
 
+  operator Graphics&() { return graphics_; }
+
   int margin() const { return margin_; }
 
  private:
   const Widget& widget_;
-  juce::Graphics* const graphics_;
+  juce::Graphics& graphics_;
   juce::Font const font_;
   int margin_;
   const Colors& colors_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Painter);
+};
+
+class Restorer {
+ public:
+  Restorer(Graphics& g) : graphics_(g) { graphics_.saveState(); }
+  Restorer(Painter& p) : graphics_(*p.graphics()) { graphics_.saveState(); }
+  ~Restorer() { graphics_.restoreState(); }
+
+ private:
+  Graphics& graphics_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Restorer);
 };
 
 }  // namespace widget

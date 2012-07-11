@@ -27,6 +27,7 @@ bool addKey(KeyToCommand* toCommand,
   static const int RECENT = Command::RECENT_FILES;
   static const int BEGIN = CommandIDEncoder::toCommandID(RECENT, 11);
   static const int END = CommandIDEncoder::toCommandID(RECENT, 100);
+  // TODO:  Why isn't this ever called?!?!?
   DLOG(INFO) << CommandIDEncoder::commandIDName(command);
   if (command >= BEGIN && command < END)
     return false;

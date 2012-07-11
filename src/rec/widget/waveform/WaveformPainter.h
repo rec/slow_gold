@@ -18,19 +18,28 @@ class WaveformModel;
 class WaveformPainter {
  public:
   WaveformPainter(Waveform* w);
-  void paint(Graphics&, const Range<SampleTime >&, bool loading);
+  ~WaveformPainter();
+
+  void paint(Graphics&, const Range<SampleTime >&, bool isLoading);
 
   void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
 
  private:
   SampleRate sampleRate() const;
 
-  void drawWaveform(Painter& g, const Range<SampleTime >&);
-  void drawGrid(Graphics& g, const Range<SampleTime >&);
+  void drawWaveform();
+  void drawWaveform(bool isSelected);
+
+  void drawGrid();
+  void drawEmpty(Graphics& g);
+  Painter* painter() { return painter_.get(); }
 
   Waveform* waveform_;
   juce::AudioThumbnail* thumbnail_;
   const WaveformModel& model_;
+  Range<SampleTime> range_;
+  ptr<Painter> painter_;
+  juce::Rectangle<int> bounds_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(WaveformPainter);
 };

@@ -26,7 +26,7 @@ class WaveformModel {
   // Return true if we need to layout the Waveform.
   bool setViewport(const Viewport&);
   bool isEmpty() const { return !length(); }
-  const block::BlockSet& selection() const { return selection_; }
+  const block::BlockSet selection(bool isSelected) const;
   const block::BlockSet getAndClearDirty();
   SampleTime length() const { return viewport_.loop_points().length(); }
   const Viewport& viewport() const { return viewport_; }

@@ -141,6 +141,10 @@ void WaveformModel::layout(Component* waveform) {
   }
 }
 
+const block::BlockSet WaveformModel::selection(bool isSel) const {
+  return rec::audio::getTimeSelection(viewport_.loop_points(), isSel, true);
+}
+
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec
