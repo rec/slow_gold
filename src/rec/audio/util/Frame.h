@@ -7,6 +7,11 @@
 namespace rec {
 namespace audio {
 
+template <typename Sample, int CHANNELS>
+struct InterleavedFrame {
+  Sample sample_[CHANNELS];
+};
+
 template <typename Frame>
 class Frames {
  public:
@@ -23,30 +28,6 @@ class Frames {
   Frame* frames_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Frames);
-};
-
-template <typename Sample, int CHANNELS>
-struct InterleavedFrame {
-  Sample sample_[CHANNELS];
-};
-
-typedef InterleavedFrame<short, 2> CDFrame;
-typedef Frames<CDFrame> CDFrames;
-
-typedef InterleavedFrame<float, 2> FloatFrame;
-typedef Frames<FloatFrame> FloatFrames;
-
-
-template <typename Sample, int CHANNELS>
-struct ParallelFrame {
-  ParallelFrame() : channels_(CHANNELS), sample_(NULL) {}
-  ParallelFrame(Sample** sample) : channels_(CHANNELS), sample_(sample) {}
-
-  const int channels_;
-  Sample** sample_;
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(ParallelFrame);
 };
 
 }  // namespace data

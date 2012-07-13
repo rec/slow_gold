@@ -1021,6 +1021,15 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp">
       <Filter>RequestSupport\rec\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp">
+      <Filter>RequestSupport\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\DisplayFile.cpp">
+      <Filter>RequestSupport\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\FileType.cpp">
+      <Filter>RequestSupport\rec\util\file</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp">
       <Filter>RequestSupport\rec\util\file</Filter>
     </ClCompile>
@@ -1031,6 +1040,9 @@
       <Filter>RequestSupport\rec\util\file</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp">
+      <Filter>RequestSupport\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFileList.cpp">
       <Filter>RequestSupport\rec\util\file</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatString.cpp">
@@ -1227,6 +1239,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc">
       <Filter>RequestSupport\proto\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\BufferManager.pb.cc">
+      <Filter>RequestSupport\proto\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc">
       <Filter>RequestSupport\proto\rec\audio\util</Filter>
@@ -2607,6 +2622,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferFiller.h">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferManager.h">
+      <Filter>RequestSupport\rec\audio\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.h">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClInclude>
@@ -2620,6 +2638,9 @@
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h">
+      <Filter>RequestSupport\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\FrameArray.h">
       <Filter>RequestSupport\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h">
@@ -3276,6 +3297,15 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
       <Filter>RequestSupport\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h">
+      <Filter>RequestSupport\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\DisplayFile.h">
+      <Filter>RequestSupport\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\FileType.h">
+      <Filter>RequestSupport\rec\util\file</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h">
       <Filter>RequestSupport\rec\util\file</Filter>
     </ClInclude>
@@ -3286,6 +3316,9 @@
       <Filter>RequestSupport\rec\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h">
+      <Filter>RequestSupport\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFileList.h">
       <Filter>RequestSupport\rec\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h">
@@ -3587,6 +3620,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h">
       <Filter>RequestSupport\proto\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\BufferManager.pb.h">
+      <Filter>RequestSupport\proto\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h">
       <Filter>RequestSupport\proto\rec\audio\util</Filter>

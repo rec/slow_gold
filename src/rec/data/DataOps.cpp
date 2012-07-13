@@ -1,6 +1,7 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataMap.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace data {

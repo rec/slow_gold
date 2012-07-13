@@ -5,7 +5,6 @@
 
 #include "rec/util/Listener.h"
 #include "rec/util/Proto.h"
-#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace data {

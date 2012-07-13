@@ -8,6 +8,7 @@
 #include "rec/data/DataOps.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/util/STL.h"
+#include "rec/util/file/VirtualFile.pb.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {

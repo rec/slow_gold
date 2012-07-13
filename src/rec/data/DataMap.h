@@ -1,7 +1,7 @@
 #ifndef __REC_DATA_DATAMAP__
 #define __REC_DATA_DATAMAP__
 
-#include "rec/util/file/VirtualFile.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace data {

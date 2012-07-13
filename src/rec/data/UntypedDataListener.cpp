@@ -1,7 +1,7 @@
 #include "rec/data/UntypedDataListener.h"
 
 #include "rec/data/DataOps.h"
-#include "rec/util/file/VirtualFile.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace data {

@@ -19,6 +19,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Viewport.pb.h"

@@ -3,7 +3,9 @@
 #include "rec/app/Files.h"
 #include "rec/data/Data.h"
 #include "rec/gui/Color.h"
+#include "rec/util/file/CompareFile.h"
 #include "rec/util/file/GetVolumes.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/CD.h"
@@ -139,9 +141,9 @@ void Root::mergeNewIntoOld(file::VirtualFileList volumes) {
 
     if (!v1)
       root_.removeSubItem(j);
-    else if (!v2 || compare(*v1, *v2))
+    else if (!v2 || lessThan(*v1, *v2))
       addVolume(*v1, j++);
-    else if (compare(*v2, *v1))
+    else if (lessThan(*v2, *v1))
       root_.removeSubItem(j);
     else  // They're the same!
       j++;

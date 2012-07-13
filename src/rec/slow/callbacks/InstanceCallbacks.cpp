@@ -26,6 +26,7 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/SaveFile.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Viewport.h"
 #include "rec/widget/waveform/Zoom.h"

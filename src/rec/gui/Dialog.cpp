@@ -1,6 +1,7 @@
 #include "rec/gui/Dialog.h"
 #include "rec/util/file/Util.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/file/VirtualFileList.h"
 
 namespace rec {
 namespace gui {

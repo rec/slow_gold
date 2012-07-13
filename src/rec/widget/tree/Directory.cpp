@@ -5,6 +5,7 @@
 #include "rec/util/Compare.h"
 #include "rec/util/partition/Partition.h"
 #include "rec/util/file/Util.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/widget/tree/Shard.h"
 
 using namespace juce;

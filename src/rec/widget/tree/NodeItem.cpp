@@ -4,6 +4,8 @@
 #include "rec/data/proto/Equals.h"
 #include "rec/music/CleanName.h"
 #include "rec/widget/tree/NodeComponent.h"
+#include "rec/util/file/DisplayFile.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace widget {

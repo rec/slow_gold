@@ -1,7 +1,8 @@
 #ifndef __REC_GUI_DROPFILES__
 #define __REC_GUI_DROPFILES__
 
-#include "rec/util/file/VirtualFile.h"
+#include "rec/util/file/VirtualFile.pb.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace gui {

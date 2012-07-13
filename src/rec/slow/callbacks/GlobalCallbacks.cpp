@@ -9,6 +9,7 @@
 #include "rec/util/Cuttable.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Undo.h"
+#include "rec/util/file/VirtualFile.pb.h"
 #include "rec/util/cd/Eject.h"
 
 namespace rec {

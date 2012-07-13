@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="TjClaRVrm" name="tests">
+  <MAINGROUP id="muSipzW6P" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -210,6 +210,8 @@
                 id="yYmIf4cL1" name="BufferFiller.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/BufferFiller.h" id="bIRP5QUwx"
                 name="BufferFiller.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/BufferManager.h" id="z5fkWcbgR"
+                name="BufferManager.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/CachedThumbnail.cpp"
                 id="v4LMocqFO" name="CachedThumbnail.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/CachedThumbnail.h"
@@ -228,6 +230,8 @@
                 name="Frame.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Frame.h" id="nGp2UeWgU"
                 name="Frame.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/FrameArray.h" id="AqCBMc7QJ"
+                name="FrameArray.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/Gain.cpp" id="cdNuy3IvU"
                 name="Gain.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Gain.h" id="91KIiQ8qN"
@@ -1016,6 +1020,18 @@
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="VXL4hmtV2"
               name="Exception.h" resource="0"/>
         <GROUP id="1paKC3S3A" name="file">
+          <FILE compile="1" file="../../src/rec/util/file/CompareFile.cpp" id="0KJdFIABm"
+                name="CompareFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/CompareFile.h" id="JFWl383Un"
+                name="CompareFile.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/DisplayFile.cpp" id="tMaR1UCfD"
+                name="DisplayFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/DisplayFile.h" id="IvhE1FHni"
+                name="DisplayFile.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/FileType.cpp" id="HFhFswC3b"
+                name="FileType.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/FileType.h" id="Tj8zZhc9i"
+                name="FileType.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/file/GetVolumes.cpp" id="XlMEGFmTC"
                 name="GetVolumes.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/GetVolumes.h" id="sKt0BDgiR"
@@ -1036,6 +1052,10 @@
                 name="VirtualFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/VirtualFile.h" id="lOV4rtAJ7"
                 name="VirtualFile.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/VirtualFileList.cpp"
+                id="2FzF47vMA" name="VirtualFileList.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/VirtualFileList.h"
+                id="r0n2MdoZD" name="VirtualFileList.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/ZeroCopy.h" id="2G2AS8h7l"
                 name="ZeroCopy.h" resource="0"/>
         </GROUP>
@@ -1417,6 +1437,10 @@
                   id="AJLjVq8B7" name="Stretch.pb.h" resource="0"/>
           </GROUP>
           <GROUP id="pCOINKrnQ" name="util">
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/util/BufferManager.pb.cc"
+                  id="4yQOvlLFQ" name="BufferManager.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/util/BufferManager.pb.h"
+                  id="P6WGYQnCj" name="BufferManager.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/audio/util/Gain.pb.cc"
                   id="kqm8bPvOr" name="Gain.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/util/Gain.pb.h"
@@ -1577,7 +1601,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="6qrdoeFPS" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="UBr9Rp05I" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

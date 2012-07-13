@@ -9,6 +9,9 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/Value.h"
+#include "rec/util/file/VirtualFile.h"
+#include "rec/util/file/VirtualFile.pb.h"
+#include "rec/util/file/DisplayFile.h"
 
 namespace rec {
 namespace music {

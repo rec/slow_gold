@@ -2,6 +2,7 @@
 
 #include "rec/data/DataOps.h"
 #include "rec/slow/Instance.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace slow {

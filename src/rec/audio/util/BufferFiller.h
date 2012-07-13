@@ -3,7 +3,6 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/util/block/Block.h"
-#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace audio {

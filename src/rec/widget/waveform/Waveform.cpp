@@ -8,6 +8,7 @@
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/STL.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"

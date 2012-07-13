@@ -31,11 +31,10 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
       "rec/widget/waveform/Waveform.proto");
   GOOGLE_CHECK(file != NULL);
   WaveformProto_descriptor_ = file->message_type(0);
-  static const int WaveformProto_offsets_[22] = {
+  static const int WaveformProto_offsets_[21] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, cursor_thickness_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, source_samples_per_thumbnail_sample_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, thumbnail_cache_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, cursor_thread_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, tic_height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, subtic_height_),
@@ -104,28 +103,27 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "\n\"rec/widget/waveform/Waveform.proto\022\023re"
     "c.widget.waveform\032\023rec/gui/Color.proto\032\022"
     "rec/gui/Font.proto\032\027rec/widget/Widget.pr"
-    "oto\032\034rec/util/thread/Thread.proto\"\267\006\n\rWa"
+    "oto\032\034rec/util/thread/Thread.proto\"\233\006\n\rWa"
     "veformProto\022\"\n\006widget\030\001 \001(\0132\022.rec.widget"
     ".Widget\022\033\n\020cursor_thickness\030\002 \001(\r:\0011\0220\n#"
     "source_samples_per_thumbnail_sample\030\004 \001("
-    "\r:\003512\022\032\n\017thumbnail_cache\030\005 \001(\r:\0015\0229\n\rcu"
-    "rsor_thread\030\006 \001(\0132\".rec.util.thread.Thre"
-    "adDescription\022\025\n\ntic_height\030\010 \001(\r:\0018\022\030\n\r"
-    "subtic_height\030\t \001(\r:\0013\022\032\n\014use_captions\030\n"
-    " \001(\010:\004true\022\034\n\016tics_at_bottom\030\013 \001(\010:\004true"
-    "\022%\n\032selection_frame_in_seconds\030\014 \001(\001:\0015\022"
-    "\027\n\tshow_grid\030\r \001(\010:\004true\022!\n\022parallel_wav"
-    "eforms\030\016 \001(\010:\005false\022$\n\026show_names_in_wav"
-    "eform\030\017 \001(\010:\004true\0229\n\006layout\030\020 \001(\0162).rec."
-    "widget.waveform.WaveformProto.Layout\022$\n\026"
-    "show_selection_buttons\030\021 \001(\010:\004true\022 \n\022sh"
-    "ow_cursor_labels\030\022 \001(\010:\004true\022 \n\021show_tim"
-    "es_at_top\030\023 \001(\010:\005false\022 \n\022show_labels_at"
-    "_top\030\024 \001(\010:\004true\022\033\n\rmodes_at_left\030\025 \001(\010:"
-    "\004true\022\032\n\014modes_at_top\030\026 \001(\010:\004true\022!\n\023com"
-    "mand_bar_at_left\030\027 \001(\010:\004true\022 \n\022command_"
-    "bar_at_top\030\030 \001(\010:\004true\"#\n\006Layout\022\013\n\007STAC"
-    "KED\020\001\022\014\n\010PARALLEL\020\002", 979);
+    "\r:\003512\0229\n\rcursor_thread\030\006 \001(\0132\".rec.util"
+    ".thread.ThreadDescription\022\025\n\ntic_height\030"
+    "\010 \001(\r:\0018\022\030\n\rsubtic_height\030\t \001(\r:\0013\022\032\n\014us"
+    "e_captions\030\n \001(\010:\004true\022\034\n\016tics_at_bottom"
+    "\030\013 \001(\010:\004true\022%\n\032selection_frame_in_secon"
+    "ds\030\014 \001(\001:\0015\022\027\n\tshow_grid\030\r \001(\010:\004true\022!\n\022"
+    "parallel_waveforms\030\016 \001(\010:\005false\022$\n\026show_"
+    "names_in_waveform\030\017 \001(\010:\004true\0229\n\006layout\030"
+    "\020 \001(\0162).rec.widget.waveform.WaveformProt"
+    "o.Layout\022$\n\026show_selection_buttons\030\021 \001(\010"
+    ":\004true\022 \n\022show_cursor_labels\030\022 \001(\010:\004true"
+    "\022 \n\021show_times_at_top\030\023 \001(\010:\005false\022 \n\022sh"
+    "ow_labels_at_top\030\024 \001(\010:\004true\022\033\n\rmodes_at"
+    "_left\030\025 \001(\010:\004true\022\032\n\014modes_at_top\030\026 \001(\010:"
+    "\004true\022!\n\023command_bar_at_left\030\027 \001(\010:\004true"
+    "\022 \n\022command_bar_at_top\030\030 \001(\010:\004true\"#\n\006La"
+    "yout\022\013\n\007STACKED\020\001\022\014\n\010PARALLEL\020\002", 951);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Waveform.proto", &protobuf_RegisterTypes);
   WaveformProto::default_instance_ = new WaveformProto();
@@ -168,7 +166,6 @@ const int WaveformProto::Layout_ARRAYSIZE;
 const int WaveformProto::kWidgetFieldNumber;
 const int WaveformProto::kCursorThicknessFieldNumber;
 const int WaveformProto::kSourceSamplesPerThumbnailSampleFieldNumber;
-const int WaveformProto::kThumbnailCacheFieldNumber;
 const int WaveformProto::kCursorThreadFieldNumber;
 const int WaveformProto::kTicHeightFieldNumber;
 const int WaveformProto::kSubticHeightFieldNumber;
@@ -210,7 +207,6 @@ void WaveformProto::SharedCtor() {
   widget_ = NULL;
   cursor_thickness_ = 1u;
   source_samples_per_thumbnail_sample_ = 512u;
-  thumbnail_cache_ = 5u;
   cursor_thread_ = NULL;
   tic_height_ = 8u;
   subtic_height_ = 3u;
@@ -270,16 +266,15 @@ void WaveformProto::Clear() {
     }
     cursor_thickness_ = 1u;
     source_samples_per_thumbnail_sample_ = 512u;
-    thumbnail_cache_ = 5u;
-    if (_has_bit(4)) {
+    if (_has_bit(3)) {
       if (cursor_thread_ != NULL) cursor_thread_->::rec::util::thread::ThreadDescription::Clear();
     }
     tic_height_ = 8u;
     subtic_height_ = 3u;
     use_captions_ = true;
+    tics_at_bottom_ = true;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    tics_at_bottom_ = true;
     selection_frame_in_seconds_ = 5;
     show_grid_ = true;
     parallel_waveforms_ = false;
@@ -287,9 +282,9 @@ void WaveformProto::Clear() {
     layout_ = 1;
     show_selection_buttons_ = true;
     show_cursor_labels_ = true;
+    show_times_at_top_ = false;
   }
   if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
-    show_times_at_top_ = false;
     show_labels_at_top_ = true;
     modes_at_left_ = true;
     modes_at_top_ = true;
@@ -347,22 +342,6 @@ bool WaveformProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_thumbnail_cache;
-        break;
-      }
-      
-      // optional uint32 thumbnail_cache = 5 [default = 5];
-      case 5: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_thumbnail_cache:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &thumbnail_cache_)));
-          _set_bit(3);
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectTag(50)) goto parse_cursor_thread;
         break;
       }
@@ -389,7 +368,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &tic_height_)));
-          _set_bit(5);
+          _set_bit(4);
         } else {
           goto handle_uninterpreted;
         }
@@ -405,7 +384,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &subtic_height_)));
-          _set_bit(6);
+          _set_bit(5);
         } else {
           goto handle_uninterpreted;
         }
@@ -421,7 +400,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &use_captions_)));
-          _set_bit(7);
+          _set_bit(6);
         } else {
           goto handle_uninterpreted;
         }
@@ -437,7 +416,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &tics_at_bottom_)));
-          _set_bit(8);
+          _set_bit(7);
         } else {
           goto handle_uninterpreted;
         }
@@ -453,7 +432,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &selection_frame_in_seconds_)));
-          _set_bit(9);
+          _set_bit(8);
         } else {
           goto handle_uninterpreted;
         }
@@ -469,7 +448,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &show_grid_)));
-          _set_bit(10);
+          _set_bit(9);
         } else {
           goto handle_uninterpreted;
         }
@@ -485,7 +464,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &parallel_waveforms_)));
-          _set_bit(11);
+          _set_bit(10);
         } else {
           goto handle_uninterpreted;
         }
@@ -501,7 +480,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &show_names_in_waveform_)));
-          _set_bit(12);
+          _set_bit(11);
         } else {
           goto handle_uninterpreted;
         }
@@ -538,7 +517,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &show_selection_buttons_)));
-          _set_bit(14);
+          _set_bit(13);
         } else {
           goto handle_uninterpreted;
         }
@@ -554,7 +533,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &show_cursor_labels_)));
-          _set_bit(15);
+          _set_bit(14);
         } else {
           goto handle_uninterpreted;
         }
@@ -570,7 +549,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &show_times_at_top_)));
-          _set_bit(16);
+          _set_bit(15);
         } else {
           goto handle_uninterpreted;
         }
@@ -586,7 +565,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &show_labels_at_top_)));
-          _set_bit(17);
+          _set_bit(16);
         } else {
           goto handle_uninterpreted;
         }
@@ -602,7 +581,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &modes_at_left_)));
-          _set_bit(18);
+          _set_bit(17);
         } else {
           goto handle_uninterpreted;
         }
@@ -618,7 +597,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &modes_at_top_)));
-          _set_bit(19);
+          _set_bit(18);
         } else {
           goto handle_uninterpreted;
         }
@@ -634,7 +613,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &command_bar_at_left_)));
-          _set_bit(20);
+          _set_bit(19);
         } else {
           goto handle_uninterpreted;
         }
@@ -650,7 +629,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &command_bar_at_top_)));
-          _set_bit(21);
+          _set_bit(20);
         } else {
           goto handle_uninterpreted;
         }
@@ -692,100 +671,95 @@ void WaveformProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->source_samples_per_thumbnail_sample(), output);
   }
   
-  // optional uint32 thumbnail_cache = 5 [default = 5];
-  if (_has_bit(3)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->thumbnail_cache(), output);
-  }
-  
   // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
-  if (_has_bit(4)) {
+  if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, this->cursor_thread(), output);
   }
   
   // optional uint32 tic_height = 8 [default = 8];
-  if (_has_bit(5)) {
+  if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->tic_height(), output);
   }
   
   // optional uint32 subtic_height = 9 [default = 3];
-  if (_has_bit(6)) {
+  if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->subtic_height(), output);
   }
   
   // optional bool use_captions = 10 [default = true];
-  if (_has_bit(7)) {
+  if (_has_bit(6)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(10, this->use_captions(), output);
   }
   
   // optional bool tics_at_bottom = 11 [default = true];
-  if (_has_bit(8)) {
+  if (_has_bit(7)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(11, this->tics_at_bottom(), output);
   }
   
   // optional double selection_frame_in_seconds = 12 [default = 5];
-  if (_has_bit(9)) {
+  if (_has_bit(8)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(12, this->selection_frame_in_seconds(), output);
   }
   
   // optional bool show_grid = 13 [default = true];
-  if (_has_bit(10)) {
+  if (_has_bit(9)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(13, this->show_grid(), output);
   }
   
   // optional bool parallel_waveforms = 14 [default = false];
-  if (_has_bit(11)) {
+  if (_has_bit(10)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(14, this->parallel_waveforms(), output);
   }
   
   // optional bool show_names_in_waveform = 15 [default = true];
-  if (_has_bit(12)) {
+  if (_has_bit(11)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(15, this->show_names_in_waveform(), output);
   }
   
   // optional .rec.widget.waveform.WaveformProto.Layout layout = 16;
-  if (_has_bit(13)) {
+  if (_has_bit(12)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       16, this->layout(), output);
   }
   
   // optional bool show_selection_buttons = 17 [default = true];
-  if (_has_bit(14)) {
+  if (_has_bit(13)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(17, this->show_selection_buttons(), output);
   }
   
   // optional bool show_cursor_labels = 18 [default = true];
-  if (_has_bit(15)) {
+  if (_has_bit(14)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(18, this->show_cursor_labels(), output);
   }
   
   // optional bool show_times_at_top = 19 [default = false];
-  if (_has_bit(16)) {
+  if (_has_bit(15)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(19, this->show_times_at_top(), output);
   }
   
   // optional bool show_labels_at_top = 20 [default = true];
-  if (_has_bit(17)) {
+  if (_has_bit(16)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(20, this->show_labels_at_top(), output);
   }
   
   // optional bool modes_at_left = 21 [default = true];
-  if (_has_bit(18)) {
+  if (_has_bit(17)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(21, this->modes_at_left(), output);
   }
   
   // optional bool modes_at_top = 22 [default = true];
-  if (_has_bit(19)) {
+  if (_has_bit(18)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(22, this->modes_at_top(), output);
   }
   
   // optional bool command_bar_at_left = 23 [default = true];
-  if (_has_bit(20)) {
+  if (_has_bit(19)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(23, this->command_bar_at_left(), output);
   }
   
   // optional bool command_bar_at_top = 24 [default = true];
-  if (_has_bit(21)) {
+  if (_has_bit(20)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(24, this->command_bar_at_top(), output);
   }
   
@@ -814,101 +788,96 @@ void WaveformProto::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->source_samples_per_thumbnail_sample(), target);
   }
   
-  // optional uint32 thumbnail_cache = 5 [default = 5];
-  if (_has_bit(3)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->thumbnail_cache(), target);
-  }
-  
   // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
-  if (_has_bit(4)) {
+  if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         6, this->cursor_thread(), target);
   }
   
   // optional uint32 tic_height = 8 [default = 8];
-  if (_has_bit(5)) {
+  if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->tic_height(), target);
   }
   
   // optional uint32 subtic_height = 9 [default = 3];
-  if (_has_bit(6)) {
+  if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->subtic_height(), target);
   }
   
   // optional bool use_captions = 10 [default = true];
-  if (_has_bit(7)) {
+  if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(10, this->use_captions(), target);
   }
   
   // optional bool tics_at_bottom = 11 [default = true];
-  if (_has_bit(8)) {
+  if (_has_bit(7)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(11, this->tics_at_bottom(), target);
   }
   
   // optional double selection_frame_in_seconds = 12 [default = 5];
-  if (_has_bit(9)) {
+  if (_has_bit(8)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(12, this->selection_frame_in_seconds(), target);
   }
   
   // optional bool show_grid = 13 [default = true];
-  if (_has_bit(10)) {
+  if (_has_bit(9)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(13, this->show_grid(), target);
   }
   
   // optional bool parallel_waveforms = 14 [default = false];
-  if (_has_bit(11)) {
+  if (_has_bit(10)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(14, this->parallel_waveforms(), target);
   }
   
   // optional bool show_names_in_waveform = 15 [default = true];
-  if (_has_bit(12)) {
+  if (_has_bit(11)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(15, this->show_names_in_waveform(), target);
   }
   
   // optional .rec.widget.waveform.WaveformProto.Layout layout = 16;
-  if (_has_bit(13)) {
+  if (_has_bit(12)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       16, this->layout(), target);
   }
   
   // optional bool show_selection_buttons = 17 [default = true];
-  if (_has_bit(14)) {
+  if (_has_bit(13)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(17, this->show_selection_buttons(), target);
   }
   
   // optional bool show_cursor_labels = 18 [default = true];
-  if (_has_bit(15)) {
+  if (_has_bit(14)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(18, this->show_cursor_labels(), target);
   }
   
   // optional bool show_times_at_top = 19 [default = false];
-  if (_has_bit(16)) {
+  if (_has_bit(15)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(19, this->show_times_at_top(), target);
   }
   
   // optional bool show_labels_at_top = 20 [default = true];
-  if (_has_bit(17)) {
+  if (_has_bit(16)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(20, this->show_labels_at_top(), target);
   }
   
   // optional bool modes_at_left = 21 [default = true];
-  if (_has_bit(18)) {
+  if (_has_bit(17)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(21, this->modes_at_left(), target);
   }
   
   // optional bool modes_at_top = 22 [default = true];
-  if (_has_bit(19)) {
+  if (_has_bit(18)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(22, this->modes_at_top(), target);
   }
   
   // optional bool command_bar_at_left = 23 [default = true];
-  if (_has_bit(20)) {
+  if (_has_bit(19)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(23, this->command_bar_at_left(), target);
   }
   
   // optional bool command_bar_at_top = 24 [default = true];
-  if (_has_bit(21)) {
+  if (_has_bit(20)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(24, this->command_bar_at_top(), target);
   }
   
@@ -944,13 +913,6 @@ int WaveformProto::ByteSize() const {
           this->source_samples_per_thumbnail_sample());
     }
     
-    // optional uint32 thumbnail_cache = 5 [default = 5];
-    if (has_thumbnail_cache()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->thumbnail_cache());
-    }
-    
     // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
     if (has_cursor_thread()) {
       total_size += 1 +
@@ -977,13 +939,13 @@ int WaveformProto::ByteSize() const {
       total_size += 1 + 1;
     }
     
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional bool tics_at_bottom = 11 [default = true];
     if (has_tics_at_bottom()) {
       total_size += 1 + 1;
     }
     
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional double selection_frame_in_seconds = 12 [default = 5];
     if (has_selection_frame_in_seconds()) {
       total_size += 1 + 8;
@@ -1020,13 +982,13 @@ int WaveformProto::ByteSize() const {
       total_size += 2 + 1;
     }
     
-  }
-  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     // optional bool show_times_at_top = 19 [default = false];
     if (has_show_times_at_top()) {
       total_size += 2 + 1;
     }
     
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     // optional bool show_labels_at_top = 20 [default = true];
     if (has_show_labels_at_top()) {
       total_size += 2 + 1;
@@ -1089,64 +1051,61 @@ void WaveformProto::MergeFrom(const WaveformProto& from) {
       set_source_samples_per_thumbnail_sample(from.source_samples_per_thumbnail_sample());
     }
     if (from._has_bit(3)) {
-      set_thumbnail_cache(from.thumbnail_cache());
-    }
-    if (from._has_bit(4)) {
       mutable_cursor_thread()->::rec::util::thread::ThreadDescription::MergeFrom(from.cursor_thread());
     }
-    if (from._has_bit(5)) {
+    if (from._has_bit(4)) {
       set_tic_height(from.tic_height());
     }
-    if (from._has_bit(6)) {
+    if (from._has_bit(5)) {
       set_subtic_height(from.subtic_height());
     }
-    if (from._has_bit(7)) {
+    if (from._has_bit(6)) {
       set_use_captions(from.use_captions());
+    }
+    if (from._has_bit(7)) {
+      set_tics_at_bottom(from.tics_at_bottom());
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from._has_bit(8)) {
-      set_tics_at_bottom(from.tics_at_bottom());
-    }
-    if (from._has_bit(9)) {
       set_selection_frame_in_seconds(from.selection_frame_in_seconds());
     }
-    if (from._has_bit(10)) {
+    if (from._has_bit(9)) {
       set_show_grid(from.show_grid());
     }
-    if (from._has_bit(11)) {
+    if (from._has_bit(10)) {
       set_parallel_waveforms(from.parallel_waveforms());
     }
-    if (from._has_bit(12)) {
+    if (from._has_bit(11)) {
       set_show_names_in_waveform(from.show_names_in_waveform());
     }
-    if (from._has_bit(13)) {
+    if (from._has_bit(12)) {
       set_layout(from.layout());
     }
-    if (from._has_bit(14)) {
+    if (from._has_bit(13)) {
       set_show_selection_buttons(from.show_selection_buttons());
     }
-    if (from._has_bit(15)) {
+    if (from._has_bit(14)) {
       set_show_cursor_labels(from.show_cursor_labels());
+    }
+    if (from._has_bit(15)) {
+      set_show_times_at_top(from.show_times_at_top());
     }
   }
   if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from._has_bit(16)) {
-      set_show_times_at_top(from.show_times_at_top());
-    }
-    if (from._has_bit(17)) {
       set_show_labels_at_top(from.show_labels_at_top());
     }
-    if (from._has_bit(18)) {
+    if (from._has_bit(17)) {
       set_modes_at_left(from.modes_at_left());
     }
-    if (from._has_bit(19)) {
+    if (from._has_bit(18)) {
       set_modes_at_top(from.modes_at_top());
     }
-    if (from._has_bit(20)) {
+    if (from._has_bit(19)) {
       set_command_bar_at_left(from.command_bar_at_left());
     }
-    if (from._has_bit(21)) {
+    if (from._has_bit(20)) {
       set_command_bar_at_top(from.command_bar_at_top());
     }
   }
@@ -1175,7 +1134,6 @@ void WaveformProto::Swap(WaveformProto* other) {
     std::swap(widget_, other->widget_);
     std::swap(cursor_thickness_, other->cursor_thickness_);
     std::swap(source_samples_per_thumbnail_sample_, other->source_samples_per_thumbnail_sample_);
-    std::swap(thumbnail_cache_, other->thumbnail_cache_);
     std::swap(cursor_thread_, other->cursor_thread_);
     std::swap(tic_height_, other->tic_height_);
     std::swap(subtic_height_, other->subtic_height_);

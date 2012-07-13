@@ -3,7 +3,7 @@
 #include "rec/app/Files.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/cd/CDReader.h"
-#include "rec/util/file/VirtualFile.h"
+#include "rec/util/file/CompareFile.h"
 #include "rec/util/file/Util.h"
 
 using namespace juce;

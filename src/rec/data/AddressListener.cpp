@@ -4,6 +4,8 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/UntypedDataListener.h"
 #include "rec/data/proto/FieldOps.h"
+#include "rec/util/file/FileType.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace data {

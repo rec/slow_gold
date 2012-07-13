@@ -1,4 +1,7 @@
-new := /development/rec/scripts/new/new.py
+ROOT := /development/rec
+BUILD_ROOT := $(ROOT)/projects/slow/Builds/MacOSX
+
+new := $(ROOT)/scripts/new/new.py
 
 icons := $(wildcard art/icon/*.svg)
 icon_code := $(patsubst art/icon/%.svg, genfiles/icon/rec/gui/icon/%.svg.cpp, $(icons))
@@ -9,7 +12,26 @@ binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
 commands := $(wildcard src/rec/slow/commands/*.def)
 command_code := $(patsubst %.def, %.def.cpp, $(commands))
 
-ROOT := /development/rec
+all: code builddebug
+
+release: code builddebug buildrelease compress
+
+code: $(icon_code) $(binary_code) $(command_code)
+
+builddebug:
+	cd $(BUILD_ROOT) && xcodebuild -project "SlowGold.xcodeproj" -configuration Debug
+
+buildrelease:
+	cd $(BUILD_ROOT) && xcodebuild -project "SlowGold.xcodeproj" -configuration Release
+
+compress: builddebug buildrelease
+	cd $(BUILD_ROOT)/build/Release && zip -r $(BUILD_ROOT)/build/"SlowGold 8.zip" "SlowGold 8.app"
+	cd $(BUILD_ROOT)/build/Debug && zip -r $(BUILD_ROOT)/build/"SlowGold 8-debug.zip" "SlowGold 8-debug.app"
+
+.PHONY: build code all buildrelease builddebug compress
+
+clean:
+	rm $(icon_code) $(binary_code) $(command_code)
 
 genfiles/icon/rec/gui/icon/%.svg.cpp: art/icon/%.svg
 	$(new) --namespace=rec.gui.icon --output=genfiles/icon/rec/gui/icon $<
@@ -23,15 +45,3 @@ genfiles/icon/rec/gui/icon/%.svg.cpp: art/icon/%.svg
     --proto=command::Commands\
     $<
 
-
-all: code build
-
-code: $(icon_code) $(binary_code) $(command_code)
-
-.PHONY: build code all
-
-build:
-	cd /development/rec/projects/slow/Builds/MacOSX && xcodebuild -project "SlowGold.xcodeproj" -configuration Debug
-
-clean:
-	rm $(icon_code) $(binary_code) $(command_code)

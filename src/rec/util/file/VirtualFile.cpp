@@ -1,8 +1,9 @@
 #include <algorithm>
 
 #include "rec/util/file/VirtualFile.h"
-
 #include "rec/app/Files.h"
+#include "rec/base/Arraysize.h"
+#include "rec/util/file/FileType.h"
 #include "rec/util/file/Util.h"
 
 using namespace juce;
@@ -24,6 +25,8 @@ enum ConversionType {
   TO_SHADOW_FILE, TO_REAL_FILE
 };
 
+#if JUCE_WINDOWS
+
 void fixWindowsDriveLetters(String *p, ConversionType conv) {
   if (conv == TO_SHADOW_FILE) {
     if (p->endsWithChar(':'))
@@ -33,6 +36,8 @@ void fixWindowsDriveLetters(String *p, ConversionType conv) {
       *p += ':';
   }
 }
+
+#endif
 
 const File getRootFile(const String &s) {
 #if JUCE_MAC
@@ -57,24 +62,6 @@ const File getFileFromPath(File f, const Path& path, ConversionType conv) {
   return f;
 }
 
-const File getRootFile(const VirtualFile& v) {
-  if (v.type() == VirtualFile::MUSIC) {
-    DCHECK_EQ(v.volume_name(), "");
-    return File::getSpecialLocation(File::userMusicDirectory);
-  }
-
-  if (v.type() == VirtualFile::VOLUME)
-    return v.volume_name().empty() ? File() : File(str(v.volume_name()));
-
-  if (v.type() == VirtualFile::USER) {
-    DCHECK_EQ(v.volume_name(), "");
-    return File::getSpecialLocation(File::userHomeDirectory);
-  }
-
-  DCHECK(false) << v.type();
-  return File();
-}
-
 }  // namespace
 
 const File getShadowDirectory(const VirtualFile& vf) {
@@ -88,74 +75,8 @@ const File getShadowDirectory(const VirtualFile& vf) {
 }
 
 const File getRealFile(const VirtualFile& file) {
-  return getFileFromPath(getRootFile(file), file.path(), TO_REAL_FILE);
-}
-
-const String getFilename(const VirtualFile& file) {
-  return file.path_size() ? str(file.path().end()[-1]) : String(Trans("<none>"));
-}
-
-const String getDisplayName(const VirtualFile& file) {
-  VirtualFile::Type type = file.type();
-  if (int size = file.path_size())
-    return str(file.path(size - 1));
-
-  if (type == VirtualFile::MUSIC)
-    return Trans("<Music>");
-
-  if (type == VirtualFile::USER)
-    return Trans("<User>");
-
-  if (type == VirtualFile::VOLUME || type == VirtualFile::CD) {
-    string name = file.volume_name();
-    eraseVolumePrefix(&name, false);
-    return name.empty() ? String(Trans("<Root>")) : str("/" + name);
-  }
-
-  if (type == VirtualFile::NONE)
-    return "<None>";
-
-  if (type == VirtualFile::GLOBAL)
-    return "<Global>";
-
-  return "<Unknown Virtual>";
-}
-
-const String getFullDisplayName(const VirtualFile& file) {
-  String result = getDisplayName(file) + ":";
-  for (int i = 0; i < file.path_size(); ++i)
-    result += str(file.path(i) + "/");
-  return result;
-}
-
-bool compare(const VirtualFile& x, const VirtualFile& y) {
-  if (x.type() < y.type())
-    return true;
-
-  if (x.type() > y.type())
-    return false;
-
-  if (x.volume_name() < y.volume_name())
-    return true;
-
-  if (x.volume_name() > y.volume_name())
-    return false;
-
-  for (int i = 0; ; i++) {
-    bool xDone = (i >= x.path_size());
-    bool yDone = (i >= y.path_size());
-    if (xDone)
-      return !yDone;
-
-    if (yDone)
-      return false;
-
-    if (x.path(i) < y.path(i))
-      return true;
-
-    if (y.path(i) < x.path(i))
-      return false;
-  }
+  return getFileFromPath(getFileTypeDirectory(file.type()), file.path(),
+                         TO_REAL_FILE);
 }
 
 VirtualFile toVirtualFile(const File& file) {
@@ -165,6 +86,7 @@ VirtualFile toVirtualFile(const File& file) {
   File f = file, p = file.getParentDirectory();
   for (; f != p; f = p, p = f.getParentDirectory())
     vf.add_path(str(f.getFileName()));
+
   string lastName = str(f.getFileName());
   if (lastName.size())
     vf.add_path(lastName);
@@ -189,6 +111,11 @@ VirtualFile toVirtualFile(const File& file) {
   return vf;
 }
 
+#if 0
+VirtualFile toCompactVirtualFile(const File& file) {
+}
+#endif
+
 VirtualFile toVirtualFile(const string& s) {
   VirtualFile f;
   f.set_type(VirtualFile::VOLUME);
@@ -196,28 +123,8 @@ VirtualFile toVirtualFile(const string& s) {
   return f;
 };
 
-namespace {
-
-template <typename Collection>
-VirtualFileList toVirtualFileListHelper(const Collection& infiles) {
-  VirtualFileList files;
-  for (int i = 0; i < infiles.size(); ++i)
-    files.add_file()->CopyFrom(file::toVirtualFile(infiles[i]));
-  return files;
-}
-
-}  // namespace
-
-VirtualFileList toVirtualFileList(const StringArray& files) {
-  return toVirtualFileListHelper(files);
-}
-
-VirtualFileList toVirtualFileList(const juce::Array<File>& files) {
-  return toVirtualFileListHelper(files);
-}
-
-void sort(VirtualFileList* v) {
-  std::sort(v->mutable_file()->begin(), v->mutable_file()->end(), compare);
+const File getShadowFile(const VirtualFile& pr, const String& child) {
+  return getShadowDirectory(pr).getChildFile(child);
 }
 
 }  // namespace file

@@ -160,13 +160,6 @@ class WaveformProto : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 source_samples_per_thumbnail_sample() const;
   inline void set_source_samples_per_thumbnail_sample(::google::protobuf::uint32 value);
   
-  // optional uint32 thumbnail_cache = 5 [default = 5];
-  inline bool has_thumbnail_cache() const;
-  inline void clear_thumbnail_cache();
-  static const int kThumbnailCacheFieldNumber = 5;
-  inline ::google::protobuf::uint32 thumbnail_cache() const;
-  inline void set_thumbnail_cache(::google::protobuf::uint32 value);
-  
   // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
   inline bool has_cursor_thread() const;
   inline void clear_cursor_thread();
@@ -301,7 +294,6 @@ class WaveformProto : public ::google::protobuf::Message {
   ::rec::widget::Widget* widget_;
   ::google::protobuf::uint32 cursor_thickness_;
   ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;
-  ::google::protobuf::uint32 thumbnail_cache_;
   ::rec::util::thread::ThreadDescription* cursor_thread_;
   ::google::protobuf::uint32 tic_height_;
   ::google::protobuf::uint32 subtic_height_;
@@ -324,7 +316,7 @@ class WaveformProto : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(22 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(21 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -396,309 +388,293 @@ inline void WaveformProto::set_source_samples_per_thumbnail_sample(::google::pro
   source_samples_per_thumbnail_sample_ = value;
 }
 
-// optional uint32 thumbnail_cache = 5 [default = 5];
-inline bool WaveformProto::has_thumbnail_cache() const {
-  return _has_bit(3);
-}
-inline void WaveformProto::clear_thumbnail_cache() {
-  thumbnail_cache_ = 5u;
-  _clear_bit(3);
-}
-inline ::google::protobuf::uint32 WaveformProto::thumbnail_cache() const {
-  return thumbnail_cache_;
-}
-inline void WaveformProto::set_thumbnail_cache(::google::protobuf::uint32 value) {
-  _set_bit(3);
-  thumbnail_cache_ = value;
-}
-
 // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
 inline bool WaveformProto::has_cursor_thread() const {
-  return _has_bit(4);
+  return _has_bit(3);
 }
 inline void WaveformProto::clear_cursor_thread() {
   if (cursor_thread_ != NULL) cursor_thread_->::rec::util::thread::ThreadDescription::Clear();
-  _clear_bit(4);
+  _clear_bit(3);
 }
 inline const ::rec::util::thread::ThreadDescription& WaveformProto::cursor_thread() const {
   return cursor_thread_ != NULL ? *cursor_thread_ : *default_instance_->cursor_thread_;
 }
 inline ::rec::util::thread::ThreadDescription* WaveformProto::mutable_cursor_thread() {
-  _set_bit(4);
+  _set_bit(3);
   if (cursor_thread_ == NULL) cursor_thread_ = new ::rec::util::thread::ThreadDescription;
   return cursor_thread_;
 }
 
 // optional uint32 tic_height = 8 [default = 8];
 inline bool WaveformProto::has_tic_height() const {
-  return _has_bit(5);
+  return _has_bit(4);
 }
 inline void WaveformProto::clear_tic_height() {
   tic_height_ = 8u;
-  _clear_bit(5);
+  _clear_bit(4);
 }
 inline ::google::protobuf::uint32 WaveformProto::tic_height() const {
   return tic_height_;
 }
 inline void WaveformProto::set_tic_height(::google::protobuf::uint32 value) {
-  _set_bit(5);
+  _set_bit(4);
   tic_height_ = value;
 }
 
 // optional uint32 subtic_height = 9 [default = 3];
 inline bool WaveformProto::has_subtic_height() const {
-  return _has_bit(6);
+  return _has_bit(5);
 }
 inline void WaveformProto::clear_subtic_height() {
   subtic_height_ = 3u;
-  _clear_bit(6);
+  _clear_bit(5);
 }
 inline ::google::protobuf::uint32 WaveformProto::subtic_height() const {
   return subtic_height_;
 }
 inline void WaveformProto::set_subtic_height(::google::protobuf::uint32 value) {
-  _set_bit(6);
+  _set_bit(5);
   subtic_height_ = value;
 }
 
 // optional bool use_captions = 10 [default = true];
 inline bool WaveformProto::has_use_captions() const {
-  return _has_bit(7);
+  return _has_bit(6);
 }
 inline void WaveformProto::clear_use_captions() {
   use_captions_ = true;
-  _clear_bit(7);
+  _clear_bit(6);
 }
 inline bool WaveformProto::use_captions() const {
   return use_captions_;
 }
 inline void WaveformProto::set_use_captions(bool value) {
-  _set_bit(7);
+  _set_bit(6);
   use_captions_ = value;
 }
 
 // optional bool tics_at_bottom = 11 [default = true];
 inline bool WaveformProto::has_tics_at_bottom() const {
-  return _has_bit(8);
+  return _has_bit(7);
 }
 inline void WaveformProto::clear_tics_at_bottom() {
   tics_at_bottom_ = true;
-  _clear_bit(8);
+  _clear_bit(7);
 }
 inline bool WaveformProto::tics_at_bottom() const {
   return tics_at_bottom_;
 }
 inline void WaveformProto::set_tics_at_bottom(bool value) {
-  _set_bit(8);
+  _set_bit(7);
   tics_at_bottom_ = value;
 }
 
 // optional double selection_frame_in_seconds = 12 [default = 5];
 inline bool WaveformProto::has_selection_frame_in_seconds() const {
-  return _has_bit(9);
+  return _has_bit(8);
 }
 inline void WaveformProto::clear_selection_frame_in_seconds() {
   selection_frame_in_seconds_ = 5;
-  _clear_bit(9);
+  _clear_bit(8);
 }
 inline double WaveformProto::selection_frame_in_seconds() const {
   return selection_frame_in_seconds_;
 }
 inline void WaveformProto::set_selection_frame_in_seconds(double value) {
-  _set_bit(9);
+  _set_bit(8);
   selection_frame_in_seconds_ = value;
 }
 
 // optional bool show_grid = 13 [default = true];
 inline bool WaveformProto::has_show_grid() const {
-  return _has_bit(10);
+  return _has_bit(9);
 }
 inline void WaveformProto::clear_show_grid() {
   show_grid_ = true;
-  _clear_bit(10);
+  _clear_bit(9);
 }
 inline bool WaveformProto::show_grid() const {
   return show_grid_;
 }
 inline void WaveformProto::set_show_grid(bool value) {
-  _set_bit(10);
+  _set_bit(9);
   show_grid_ = value;
 }
 
 // optional bool parallel_waveforms = 14 [default = false];
 inline bool WaveformProto::has_parallel_waveforms() const {
-  return _has_bit(11);
+  return _has_bit(10);
 }
 inline void WaveformProto::clear_parallel_waveforms() {
   parallel_waveforms_ = false;
-  _clear_bit(11);
+  _clear_bit(10);
 }
 inline bool WaveformProto::parallel_waveforms() const {
   return parallel_waveforms_;
 }
 inline void WaveformProto::set_parallel_waveforms(bool value) {
-  _set_bit(11);
+  _set_bit(10);
   parallel_waveforms_ = value;
 }
 
 // optional bool show_names_in_waveform = 15 [default = true];
 inline bool WaveformProto::has_show_names_in_waveform() const {
-  return _has_bit(12);
+  return _has_bit(11);
 }
 inline void WaveformProto::clear_show_names_in_waveform() {
   show_names_in_waveform_ = true;
-  _clear_bit(12);
+  _clear_bit(11);
 }
 inline bool WaveformProto::show_names_in_waveform() const {
   return show_names_in_waveform_;
 }
 inline void WaveformProto::set_show_names_in_waveform(bool value) {
-  _set_bit(12);
+  _set_bit(11);
   show_names_in_waveform_ = value;
 }
 
 // optional .rec.widget.waveform.WaveformProto.Layout layout = 16;
 inline bool WaveformProto::has_layout() const {
-  return _has_bit(13);
+  return _has_bit(12);
 }
 inline void WaveformProto::clear_layout() {
   layout_ = 1;
-  _clear_bit(13);
+  _clear_bit(12);
 }
 inline ::rec::widget::waveform::WaveformProto_Layout WaveformProto::layout() const {
   return static_cast< ::rec::widget::waveform::WaveformProto_Layout >(layout_);
 }
 inline void WaveformProto::set_layout(::rec::widget::waveform::WaveformProto_Layout value) {
   GOOGLE_DCHECK(::rec::widget::waveform::WaveformProto_Layout_IsValid(value));
-  _set_bit(13);
+  _set_bit(12);
   layout_ = value;
 }
 
 // optional bool show_selection_buttons = 17 [default = true];
 inline bool WaveformProto::has_show_selection_buttons() const {
-  return _has_bit(14);
+  return _has_bit(13);
 }
 inline void WaveformProto::clear_show_selection_buttons() {
   show_selection_buttons_ = true;
-  _clear_bit(14);
+  _clear_bit(13);
 }
 inline bool WaveformProto::show_selection_buttons() const {
   return show_selection_buttons_;
 }
 inline void WaveformProto::set_show_selection_buttons(bool value) {
-  _set_bit(14);
+  _set_bit(13);
   show_selection_buttons_ = value;
 }
 
 // optional bool show_cursor_labels = 18 [default = true];
 inline bool WaveformProto::has_show_cursor_labels() const {
-  return _has_bit(15);
+  return _has_bit(14);
 }
 inline void WaveformProto::clear_show_cursor_labels() {
   show_cursor_labels_ = true;
-  _clear_bit(15);
+  _clear_bit(14);
 }
 inline bool WaveformProto::show_cursor_labels() const {
   return show_cursor_labels_;
 }
 inline void WaveformProto::set_show_cursor_labels(bool value) {
-  _set_bit(15);
+  _set_bit(14);
   show_cursor_labels_ = value;
 }
 
 // optional bool show_times_at_top = 19 [default = false];
 inline bool WaveformProto::has_show_times_at_top() const {
-  return _has_bit(16);
+  return _has_bit(15);
 }
 inline void WaveformProto::clear_show_times_at_top() {
   show_times_at_top_ = false;
-  _clear_bit(16);
+  _clear_bit(15);
 }
 inline bool WaveformProto::show_times_at_top() const {
   return show_times_at_top_;
 }
 inline void WaveformProto::set_show_times_at_top(bool value) {
-  _set_bit(16);
+  _set_bit(15);
   show_times_at_top_ = value;
 }
 
 // optional bool show_labels_at_top = 20 [default = true];
 inline bool WaveformProto::has_show_labels_at_top() const {
-  return _has_bit(17);
+  return _has_bit(16);
 }
 inline void WaveformProto::clear_show_labels_at_top() {
   show_labels_at_top_ = true;
-  _clear_bit(17);
+  _clear_bit(16);
 }
 inline bool WaveformProto::show_labels_at_top() const {
   return show_labels_at_top_;
 }
 inline void WaveformProto::set_show_labels_at_top(bool value) {
-  _set_bit(17);
+  _set_bit(16);
   show_labels_at_top_ = value;
 }
 
 // optional bool modes_at_left = 21 [default = true];
 inline bool WaveformProto::has_modes_at_left() const {
-  return _has_bit(18);
+  return _has_bit(17);
 }
 inline void WaveformProto::clear_modes_at_left() {
   modes_at_left_ = true;
-  _clear_bit(18);
+  _clear_bit(17);
 }
 inline bool WaveformProto::modes_at_left() const {
   return modes_at_left_;
 }
 inline void WaveformProto::set_modes_at_left(bool value) {
-  _set_bit(18);
+  _set_bit(17);
   modes_at_left_ = value;
 }
 
 // optional bool modes_at_top = 22 [default = true];
 inline bool WaveformProto::has_modes_at_top() const {
-  return _has_bit(19);
+  return _has_bit(18);
 }
 inline void WaveformProto::clear_modes_at_top() {
   modes_at_top_ = true;
-  _clear_bit(19);
+  _clear_bit(18);
 }
 inline bool WaveformProto::modes_at_top() const {
   return modes_at_top_;
 }
 inline void WaveformProto::set_modes_at_top(bool value) {
-  _set_bit(19);
+  _set_bit(18);
   modes_at_top_ = value;
 }
 
 // optional bool command_bar_at_left = 23 [default = true];
 inline bool WaveformProto::has_command_bar_at_left() const {
-  return _has_bit(20);
+  return _has_bit(19);
 }
 inline void WaveformProto::clear_command_bar_at_left() {
   command_bar_at_left_ = true;
-  _clear_bit(20);
+  _clear_bit(19);
 }
 inline bool WaveformProto::command_bar_at_left() const {
   return command_bar_at_left_;
 }
 inline void WaveformProto::set_command_bar_at_left(bool value) {
-  _set_bit(20);
+  _set_bit(19);
   command_bar_at_left_ = value;
 }
 
 // optional bool command_bar_at_top = 24 [default = true];
 inline bool WaveformProto::has_command_bar_at_top() const {
-  return _has_bit(21);
+  return _has_bit(20);
 }
 inline void WaveformProto::clear_command_bar_at_top() {
   command_bar_at_top_ = true;
-  _clear_bit(21);
+  _clear_bit(20);
 }
 inline bool WaveformProto::command_bar_at_top() const {
   return command_bar_at_top_;
 }
 inline void WaveformProto::set_command_bar_at_top(bool value) {
-  _set_bit(21);
+  _set_bit(20);
   command_bar_at_top_ = value;
 }
 

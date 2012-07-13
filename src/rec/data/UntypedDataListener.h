@@ -4,7 +4,6 @@
 #include "rec/data/Data.h"
 #include "rec/data/Value.h"
 #include "rec/util/Listener.h"
-#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace data {

@@ -61,8 +61,24 @@ SampleTime Frames<Frame>::getAudioBlock(const Info& info,
   return numSamples;
 }
 
-template class Frames<CDFrame>;
-template class Frames<FloatFrame>;
+template class Frames< InterleavedFrame<short, 2> >;
+template class Frames< InterleavedFrame<float, 2> >;
+
+
+#if 0
+
+template <typename Sample, int CHANNELS>
+struct ParallelFrame {
+  ParallelFrame() : channels_(CHANNELS), sample_(NULL) {}
+  ParallelFrame(Sample** sample) : channels_(CHANNELS), sample_(sample) {}
+
+  const int channels_;
+  Sample** sample_;
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(ParallelFrame);
+};
+#endif
 
 }  // namespace audio
 }  // namespace rec

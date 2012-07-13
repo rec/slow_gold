@@ -21,6 +21,7 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/util/Math.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/block/Fillable.h"
 #include "rec/widget/waveform/Viewport.h"
 

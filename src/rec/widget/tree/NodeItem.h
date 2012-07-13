@@ -3,15 +3,12 @@
 
 #include <set>
 
-#include "rec/base/base.h"
 #include "rec/gui/Font.h"
 #include "rec/util/Listener.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/Node.pb.h"
-#include "rec/util/file/VirtualFile.h"
-
-#include "JuceLibraryCode/JuceHeader.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace widget {

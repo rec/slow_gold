@@ -1072,6 +1072,15 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp">
       <Filter>tests\rec\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp">
+      <Filter>tests\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\DisplayFile.cpp">
+      <Filter>tests\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\FileType.cpp">
+      <Filter>tests\rec\util\file</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp">
       <Filter>tests\rec\util\file</Filter>
     </ClCompile>
@@ -1088,6 +1097,9 @@
       <Filter>tests\rec\util\file</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp">
+      <Filter>tests\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFileList.cpp">
       <Filter>tests\rec\util\file</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatString.cpp">
@@ -1308,6 +1320,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc">
       <Filter>tests\proto\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\BufferManager.pb.cc">
+      <Filter>tests\proto\rec\audio\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc">
       <Filter>tests\proto\rec\audio\util</Filter>
@@ -2691,6 +2706,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferFiller.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\BufferManager.h">
+      <Filter>tests\rec\audio\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
@@ -2704,6 +2722,9 @@
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h">
+      <Filter>tests\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\FrameArray.h">
       <Filter>tests\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h">
@@ -3360,6 +3381,15 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h">
+      <Filter>tests\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\DisplayFile.h">
+      <Filter>tests\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\FileType.h">
+      <Filter>tests\rec\util\file</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h">
       <Filter>tests\rec\util\file</Filter>
     </ClInclude>
@@ -3370,6 +3400,9 @@
       <Filter>tests\rec\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h">
+      <Filter>tests\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFileList.h">
       <Filter>tests\rec\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h">
@@ -3671,6 +3704,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h">
       <Filter>tests\proto\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\BufferManager.pb.h">
+      <Filter>tests\proto\rec\audio\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h">
       <Filter>tests\proto\rec\audio\util</Filter>

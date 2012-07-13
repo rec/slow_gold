@@ -8,6 +8,10 @@ message VirtualFile {
     USER = 3;
     VOLUME = 4;
     GLOBAL = 5;
+    DESKTOP = 6;
+    DOCUMENTS = 7;
+    MOVIES = 8;
+    LAST = 8;
   };
 
   enum Status {

@@ -5,6 +5,7 @@
 #include "rec/data/MessageMaker.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace data {
