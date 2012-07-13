@@ -18,12 +18,8 @@ const char* const EMPTY_DIRECTORY_NAME = "C:\\empty-empty-empty";
 const char* const EMPTY_DIRECTORY_NAME = "/empty-empty-empty";
 #endif
 
-File dataDirectory(const VirtualFile& vf) {
-  return getShadowDirectory(vf);
-}
-
 File dataFile(const VirtualFile& vf, const string& typeName) {
-  return dataDirectory(vf).getChildFile(str(typeName));
+  return getShadowDirectory(vf).getChildFile(str(typeName));
 }
 
 }  // namespace

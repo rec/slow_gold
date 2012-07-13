@@ -130,7 +130,7 @@ juce::Component* Node::createItemComponent() {
 static const char* const VISITED_FILE = "Visited.touch";
 
 File Node::getVisitedFile() const {
-  return getShadowDirectory(virtualFile_).getChildFile(VISITED_FILE);
+  return getShadowFile(virtualFile_, VISITED_FILE);
 }
 
 bool Node::isCurrent() const {
