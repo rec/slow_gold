@@ -59,7 +59,7 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata,
 }
 
 AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata) {
-  ptr<AudioFormatReader> reader(createReader(getRealFile(file)));
+  ptr<AudioFormatReader> reader(createReader(toRealFile(file)));
   if (metadata && reader)
     *metadata = music::getMetadata(reader->metadataValues);
 
@@ -93,7 +93,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
                           + error);
     }
   } else {
-    File f = getRealFile(file);
+    File f = toRealFile(file);
     if (!f.existsAsFile()) {
       errorTitle_ = FILE_NOT_EXIST;
       errorDetails_ = String::formatted(

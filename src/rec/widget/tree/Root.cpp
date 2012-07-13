@@ -156,7 +156,7 @@ void Root::addVolume(const VirtualFile& volume, int insertAt) {
 
   if (volume.type() == VirtualFile::CD)
     directory.reset(new CD(desc_, volume));
-  else if (getRealFile(volume).isDirectory())
+  else if (toRealFile(volume).isDirectory())
     directory.reset(new Directory(desc_, volume));
   else
     directory.reset(new Node(desc_, volume));

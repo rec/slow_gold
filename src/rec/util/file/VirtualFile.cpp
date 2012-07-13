@@ -74,12 +74,12 @@ const File getShadowDirectory(const VirtualFile& vf) {
   return getFileFromPath(f, vf.path(), TO_SHADOW_FILE);
 }
 
-const File getRealFile(const VirtualFile& file) {
+const File toRealFile(const VirtualFile& file) {
   return getFileFromPath(getFileTypeDirectory(file.type()), file.path(),
                          TO_REAL_FILE);
 }
 
-VirtualFile toVirtualFile(const File& file) {
+const VirtualFile toVirtualFile(const File& file) {
   VirtualFile vf;
   vf.set_type(VirtualFile::VOLUME);
 
@@ -115,13 +115,6 @@ VirtualFile toVirtualFile(const File& file) {
 VirtualFile toCompactVirtualFile(const File& file) {
 }
 #endif
-
-VirtualFile toVirtualFile(const string& s) {
-  VirtualFile f;
-  f.set_type(VirtualFile::VOLUME);
-  f.add_path(s);
-  return f;
-};
 
 const File getShadowFile(const VirtualFile& pr, const String& child) {
   return getShadowDirectory(pr).getChildFile(child);

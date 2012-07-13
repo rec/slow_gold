@@ -126,7 +126,7 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   VirtualFile vf = instance->file();
   File baseFile;
   if (vf.type() != VirtualFile::CD) {
-    baseFile = file::getRealFile(vf);
+    baseFile = file::toRealFile(vf);
     if (startFile == baseFile) {
       String p = startFile.getFileNameWithoutExtension();
       String s = startFile.getFileExtension();

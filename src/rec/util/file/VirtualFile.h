@@ -8,13 +8,11 @@ namespace rec {
 namespace util {
 namespace file {
 
-const File getRealFile(const VirtualFile&);
 const File getShadowDirectory(const VirtualFile&);
+const File getShadowFile(const VirtualFile&, const String& child);
 
-const File getShadowFile(const VirtualFile& pr, const String& child);
-
-VirtualFile toVirtualFile(const File& file);
-VirtualFile toVirtualFile(const string& s);
+const VirtualFile toVirtualFile(const File&);
+const File toRealFile(const VirtualFile&);
 
 }  // namespace file
 }  // namespace util

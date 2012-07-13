@@ -8,8 +8,9 @@ namespace rec {
 namespace util {
 namespace file {
 
-const File getFileTypeDirectory(VirtualFile::Type);
+const File& getFileTypeDirectory(VirtualFile::Type);
 const char* getFileTypeName(VirtualFile::Type);
+VirtualFile::Type getFileType(const File&);
 
 }  // namespace file
 }  // namespace util

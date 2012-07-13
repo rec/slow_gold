@@ -18,8 +18,15 @@ using juce::XmlElement;
 
 namespace {
 
+VirtualFile toVirtualFile(const string& s) {
+  VirtualFile f;
+  f.set_type(VirtualFile::VOLUME);
+  f.add_path(s);
+  return f;
+};
+
 const VirtualFile& getKeyboardBindingFile() {
-  static VirtualFile vf = file::toVirtualFile("KeyPresses");
+  static VirtualFile vf = toVirtualFile("KeyPresses");
   return vf;
 }
 
