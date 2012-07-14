@@ -3,6 +3,7 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/app/Files.h"
 #include "rec/base/Arraysize.h"
+#include "rec/util/ReverseProto.h"
 #include "rec/util/file/FileType.h"
 #include "rec/util/file/Util.h"
 
@@ -17,16 +18,11 @@ namespace {
 
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
-inline String fixPathElement(const String& s) {
-  return s.replace(":", "-");
-}
-
 enum ConversionType {
   TO_SHADOW_FILE, TO_REAL_FILE
 };
 
 #if JUCE_WINDOWS
-
 void fixWindowsDriveLetters(String *p, ConversionType conv) {
   if (conv == TO_SHADOW_FILE) {
     if (p->endsWithChar(':'))
@@ -36,7 +32,6 @@ void fixWindowsDriveLetters(String *p, ConversionType conv) {
       *p += ':';
   }
 }
-
 #endif
 
 const File getRootFile(const String &s) {
@@ -61,6 +56,19 @@ const File getFileFromPath(File f, const Path& path, ConversionType conv) {
 
   return f;
 }
+
+#if JUCE_MAC
+void fixMacVirtualDirectories(VirtualFile* vf) {
+  int last = vf->path_size() - 1;
+  const string& root = vf->path(last);
+
+  if (root == "Virtuals" && last != 0) {
+    vf->set_volume_name(vf->path(last - 1));
+    vf->mutable_path()->RemoveLast();
+    vf->mutable_path()->RemoveLast();
+  }
+}
+#endif
 
 }  // namespace
 
@@ -91,30 +99,45 @@ const VirtualFile toVirtualFile(const File& file) {
   if (lastName.size())
     vf.add_path(lastName);
 
-
 #if JUCE_MAC
-  int last = vf.path_size() - 1;
-  const string& root = vf.path(last);
-
-  if (root == "Virtuals" && last != 0) {
-    vf.set_volume_name(vf.path(last - 1));
-    vf.mutable_path()->RemoveLast();
-    vf.mutable_path()->RemoveLast();
-  }
-
-  // TODO: CD things here (what does this mean?)
+  fixMacVirtualDirectories(&vf);
 #endif
 
-  for (int i = 0; i < vf.path_size() / 2; ++i)
-    vf.mutable_path()->SwapElements(i, vf.path_size() - i - 1);
-
+  reverseProto(vf.mutable_path());
   return vf;
 }
 
-#if 0
 VirtualFile toCompactVirtualFile(const File& file) {
-}
+  VirtualFile vf;
+  File parent;
+  VirtualFile::Type type = getFileType(file);
+  if (type) {
+    vf.set_type(type);
+    parent = getFileTypeDirectory(type);
+    DCHECK(parent != File::nonexistent);
+  } else {
+    vf.set_type(VirtualFile::VOLUME);
+  }
+
+  File f = file, p = f;
+  for (; f != parent && f != (p = p.getParentDirectory()); f = p)
+    vf.add_path(str(f.getFileName()));
+
+#if JUCE_WINDOWS
+  if (!type) {
+    string lastName = str(f.getFileName());
+    if (lastName.size()) {
+      fixWindowsDriveLetters(&lastName, TO_SHADOW_FILE);
+      vf.add_path(lastName);
+    }
+  }
+#elif JUCE_MAC
+  fixMacVirtualDirectories(&vf);
 #endif
+
+  reverseProto(vf.mutable_path());
+  return vf;
+}
 
 const File getShadowFile(const VirtualFile& pr, const String& child) {
   return getShadowDirectory(pr).getChildFile(child);
