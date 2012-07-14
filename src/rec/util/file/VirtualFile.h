@@ -9,8 +9,9 @@ namespace util {
 namespace file {
 
 const File getShadowDirectory(const VirtualFile&);
-const File getShadowFile(const VirtualFile&, const String& child);
 
+const VirtualFile toCompactVirtualFile(const File&);
+const VirtualFile toOriginalVirtualFile(const File&);
 const VirtualFile toVirtualFile(const File&);
 const File toRealFile(const VirtualFile&);
 

@@ -10,20 +10,6 @@
 namespace rec {
 namespace data {
 
-namespace {
-
-#if JUCE_WINDOWS
-const char* const EMPTY_DIRECTORY_NAME = "C:\\empty-empty-empty";
-#else
-const char* const EMPTY_DIRECTORY_NAME = "/empty-empty-empty";
-#endif
-
-File dataFile(const VirtualFile& vf, const string& typeName) {
-  return getShadowDirectory(vf).getChildFile(str(typeName));
-}
-
-}  // namespace
-
 struct DataMapImpl::DataRecord {
   DataRecord(Data* d, const File& f) : data_(d), file_(f) {}
 
@@ -43,7 +29,7 @@ DataMapImpl::~DataMapImpl() {
 }
 
 Data* DataMapImpl::getData(const string& typeName, const VirtualFile& vf) {
-  File file = dataFile(vf, typeName);
+  File file = getShadowDirectory(vf).getChildFile(str(typeName));
   string key = str(file);
 
   Lock l(lock_);

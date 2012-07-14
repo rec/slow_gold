@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="muSipzW6P" name="tests">
+  <MAINGROUP id="6iIMEzOsH" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1044,6 +1044,10 @@
                 name="LogFile.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/file/LogFile_test.cpp" id="kp0PKwWwO"
                 name="LogFile_test.cpp" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/MoveDirectories.cpp"
+                id="fyqIc2VPT" name="MoveDirectories.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/MoveDirectories.h"
+                id="fMZghR1xp" name="MoveDirectories.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/file/Util.cpp" id="sgV7ybSEK"
                 name="Util.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/Util.h" id="f9YREu0l8"
@@ -1109,6 +1113,8 @@
               name="Range.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Range_test.cpp" id="2N8RNRcek"
               name="Range_test.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/ReverseProto.h" id="b6WEUI5cT"
+              name="ReverseProto.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="KH3XIw3uH" name="STL.h"
               resource="0"/>
         <FILE compile="1" file="../../src/rec/util/SystemStats.cpp" id="QsF7bAzjO"
@@ -1601,7 +1607,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="UBr9Rp05I" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="cCL8uSiIz" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

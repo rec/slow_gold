@@ -1,4 +1,5 @@
 #include "rec/util/file/FileType.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace util {
@@ -36,6 +37,45 @@ const TypeMap& map() {
   return map;
 }
 
+File getShadow(Type type) {
+  VirtualFile vf;
+  vf.set_type(type);
+  return file::getShadowDirectory(vf);
+}
+
+static const bool ENABLE_MOVE = false;
+
+void moveTypeDirectory(Type type, const File& special) {
+  File target = getShadow(type);
+  VirtualFile sourcevf = file::toOriginalVirtualFile(special);
+  File source = file::getShadowDirectory(sourcevf);
+  if (!source.exists())
+    return;
+
+  if (ENABLE_MOVE) {
+    if (!source.moveFileTo(target))
+      LOG(ERROR) << "Couldn't move file " << str(source) << " to " << str(target);
+  } else {
+    DLOG(INFO) << "Move " << str(source) << " to " << str(target);
+  }
+}
+
+void moveGlobalFiles() {
+  File target = getShadow(VirtualFile::GLOBAL);
+  juce::DirectoryIterator it(target.getParentDirectory(), false, "*",
+                             File::findFiles);
+  while (it.next()) {
+    File f = it.getFile();
+    File targetFile(target.getChildFile(f.getFileName()));
+    if (ENABLE_MOVE) {
+      if (!f.moveFileTo(targetFile))
+        LOG(ERROR) << "Couldn't move file " << str(f) << " to " << str(target);
+    } else {
+      DLOG(INFO) << "Moving " << str(f) << " to " << str(targetFile);
+    }
+  }
+}
+
 }  // namespace
 
 const File& getFileTypeDirectory(Type type) {
@@ -56,13 +96,10 @@ Type getFileType(const File& f) {
   return VirtualFile::NONE;
 }
 
-static void moveDirectory(Type type, const File& directory) {
-
-}
-
 void moveOldAbsoluteDirectoriesToTypeRelative() {
   for (TypeMap::const_iterator i = map().begin(); i != map().end(); ++i)
-    moveDirectory(i->first, i->second.first);
+    moveTypeDirectory(i->first, i->second.first);
+  moveGlobalFiles();
 }
 
 }  // namespace file

@@ -1036,6 +1036,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\MoveDirectories.cpp">
+      <Filter>SlowGold\rec\util\file</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClCompile>
@@ -3312,6 +3315,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\MoveDirectories.h">
+      <Filter>SlowGold\rec\util\file</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClInclude>
@@ -3364,6 +3370,9 @@
       <Filter>SlowGold\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h">
+      <Filter>SlowGold\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\ReverseProto.h">
       <Filter>SlowGold\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h">

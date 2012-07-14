@@ -1093,6 +1093,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile_test.cpp">
       <Filter>tests\rec\util\file</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\MoveDirectories.cpp">
+      <Filter>tests\rec\util\file</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp">
       <Filter>tests\rec\util\file</Filter>
     </ClCompile>
@@ -3396,6 +3399,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h">
       <Filter>tests\rec\util\file</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\MoveDirectories.h">
+      <Filter>tests\rec\util\file</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h">
       <Filter>tests\rec\util\file</Filter>
     </ClInclude>
@@ -3448,6 +3454,9 @@
       <Filter>tests\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h">
+      <Filter>tests\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\ReverseProto.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h">

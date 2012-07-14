@@ -74,9 +74,6 @@ void fixMacVirtualDirectories(VirtualFile* vf) {
 
 const File getShadowDirectory(const VirtualFile& vf) {
   const File appDir = app::getAppDirectory();
-  if (!vf.path_size())
-    return appDir;
-
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
   File f = app::getAppFile(name).getChildFile(str(vf.volume_name()));
   return getFileFromPath(f, vf.path(), TO_SHADOW_FILE);
@@ -87,7 +84,7 @@ const File toRealFile(const VirtualFile& file) {
                          TO_REAL_FILE);
 }
 
-static VirtualFile toCompactVirtualFile(const File& file) {
+const VirtualFile toCompactVirtualFile(const File& file) {
   VirtualFile vf;
   File parent;
   VirtualFile::Type type = getFileType(file);
@@ -119,7 +116,7 @@ static VirtualFile toCompactVirtualFile(const File& file) {
   return vf;
 }
 
-const VirtualFile toVirtualFile(const File& file) {
+const VirtualFile toOriginalVirtualFile(const File& file) {
   VirtualFile vf;
   vf.set_type(VirtualFile::VOLUME);
 
@@ -136,12 +133,12 @@ const VirtualFile toVirtualFile(const File& file) {
 #endif
 
   reverseProto(vf.mutable_path());
-  DLOG(INFO) << toCompactVirtualFile(file).ShortDebugString();
   return vf;
 }
 
-const File getShadowFile(const VirtualFile& pr, const String& child) {
-  return getShadowDirectory(pr).getChildFile(child);
+const VirtualFile toVirtualFile(const File& file) {
+  DLOG(INFO) << toCompactVirtualFile(file).ShortDebugString();
+  return toOriginalVirtualFile(file);
 }
 
 }  // namespace file

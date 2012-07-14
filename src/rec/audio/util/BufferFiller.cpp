@@ -40,7 +40,7 @@ SampleTime BufferFiller::setReader(const VirtualFile& f,
   Lock l(lock_);
   DCHECK(reader);
   DCHECK(reader->lengthInSamples);
-  file_ = getShadowFile(f, FILENAME);
+  file_ = getShadowDirectory(f).getChildFile(FILENAME);
   thumbnail_->read(file_, reader->sampleRate, reader->lengthInSamples);
   return reader_->setReader(reader);
 }

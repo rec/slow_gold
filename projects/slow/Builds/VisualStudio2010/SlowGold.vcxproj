@@ -313,6 +313,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\FileType.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\MoveDirectories.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFileList.cpp"/>
@@ -1738,6 +1739,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\file\FileType.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\MoveDirectories.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFileList.h"/>
@@ -1756,6 +1758,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Platform.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Proto.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Range.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\ReverseProto.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\SystemStats.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\TestData.h"/>

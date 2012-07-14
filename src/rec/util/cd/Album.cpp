@@ -138,7 +138,7 @@ static String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
 // TODO:  this should use the persistence layer!!
 Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
   Album album;
-  File shadow = getShadowFile(file, "album");
+  File shadow = getShadowDirectory(file).getChildFile("album");
   if (!copy::copy(shadow, &album)) {
     AlbumList albums;
     String error = fillAlbums(off, &albums);

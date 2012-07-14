@@ -142,6 +142,7 @@ void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
 using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
+  // TODO:  logging doesn't work if called in this routine...
   registerProtos();
   translateAll();
 }

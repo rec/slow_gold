@@ -34,6 +34,7 @@
 #include "rec/slow/Threads.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
+#include "rec/util/file/FileType.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -157,6 +158,8 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
+  file::moveOldAbsoluteDirectoriesToTypeRelative();
+
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
   const VirtualFile vf = data::getGlobal<VirtualFile>();

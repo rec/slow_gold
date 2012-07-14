@@ -236,6 +236,7 @@
 		BCBA8225676D6F6B798DF320 /* Value.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = ECACB642D481A97ECFE43E87 /* Value.pb.cc */; };
 		BCBB740AD75F356C0D3D4BE3 /* Directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4585738D1F8EA58A32077580 /* Directory.cpp */; };
 		BEACD892FA661A8C29D9D42E /* StopButtonDisabled.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDB79C118D8B4AE58E6E4C /* StopButtonDisabled.svg.cpp */; };
+		BFD966433EBC3D2D5F828C4C /* MoveDirectories.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7D6D512E3330D8F04768A40 /* MoveDirectories.cpp */; };
 		C039D485D3D531F3B97138C2 /* SetterText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47924A0FD221EF38D5E66B4E /* SetterText.cpp */; };
 		C0FBBC3219CB24ECF3548738 /* Components.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBE7B9FF67949B764B464ED9 /* Components.cpp */; };
 		C16E8F2789A57B0F31107642 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F864FFC33389C619E81C359D /* Player.cpp */; };
@@ -352,6 +353,7 @@
 		05A4655DDCDAB44B21C78467 /* CallbackUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CallbackUtils.cpp; path = ../../../../src/rec/slow/callbacks/CallbackUtils.cpp; sourceTree = SOURCE_ROOT; };
 		060068070DB3512B3A057EA9 /* juce_win32_AudioCDReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_AudioCDReader.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_win32_AudioCDReader.cpp; sourceTree = SOURCE_ROOT; };
 		061EA947B19BC6A1D054169C /* juce_RelativeTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_RelativeTime.h; path = ../../../../../juce/modules/juce_core/time/juce_RelativeTime.h; sourceTree = SOURCE_ROOT; };
+		0654CEA6482CE88EFE35E9E7 /* MoveDirectories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MoveDirectories.h; path = ../../../../src/rec/util/file/MoveDirectories.h; sourceTree = SOURCE_ROOT; };
 		06641BB89531B5D33286B9AE /* GenericApplication.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GenericApplication.cpp; path = ../../../../src/rec/app/GenericApplication.cpp; sourceTree = SOURCE_ROOT; };
 		06CFE90AEF7A716594C570A4 /* FileType.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FileType.cpp; path = ../../../../src/rec/util/file/FileType.cpp; sourceTree = SOURCE_ROOT; };
 		06D520677E64BE979EFA4598 /* Widget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Widget.h; path = ../../../../src/rec/widget/Widget.h; sourceTree = SOURCE_ROOT; };
@@ -529,6 +531,7 @@
 		218BB1EE71C8C52552BAFC1A /* ostream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ostream.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/ostream.h"; sourceTree = SOURCE_ROOT; };
 		21C30FC775968B12DEB46A1A /* AddLoopPointButton.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AddLoopPointButton.svg.cpp; path = ../../../../genfiles/icon/rec/gui/icon/AddLoopPointButton.svg.cpp; sourceTree = SOURCE_ROOT; };
 		21E90BEE8F75064A6C972671 /* juce_ScrollBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_ScrollBar.cpp; path = ../../../../../juce/modules/juce_gui_basics/layout/juce_ScrollBar.cpp; sourceTree = SOURCE_ROOT; };
+		2269DD3242E9DFEA92797FD4 /* ReverseProto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReverseProto.h; path = ../../../../src/rec/util/ReverseProto.h; sourceTree = SOURCE_ROOT; };
 		22F49BD8EF917AA9C6CC6A2E /* juce_win32_Registry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_Registry.cpp; path = ../../../../../juce/modules/juce_core/native/juce_win32_Registry.cpp; sourceTree = SOURCE_ROOT; };
 		23400EDE0A1C58F96C589B54 /* ptr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ptr.h; path = ../../../../src/rec/base/ptr.h; sourceTree = SOURCE_ROOT; };
 		2344DE7F9FFDDB8C9DE28DAA /* Waveform.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Waveform.pb.cc; path = ../../../../genfiles/proto/rec/widget/waveform/Waveform.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -1608,6 +1611,7 @@
 		D751E28B6229A71B8EBF0645 /* juce_MessageListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_MessageListener.h; path = ../../../../../juce/modules/juce_events/messages/juce_MessageListener.h; sourceTree = SOURCE_ROOT; };
 		D75C66314484903351D0CCF1 /* juce_DialogWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_DialogWindow.h; path = ../../../../../juce/modules/juce_gui_basics/windows/juce_DialogWindow.h; sourceTree = SOURCE_ROOT; };
 		D7C5AF07827EF65F8275BBB1 /* emitterutils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = emitterutils.h; path = ../../../../src/rec/data/yaml/src/emitterutils.h; sourceTree = SOURCE_ROOT; };
+		D7D6D512E3330D8F04768A40 /* MoveDirectories.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MoveDirectories.cpp; path = ../../../../src/rec/util/file/MoveDirectories.cpp; sourceTree = SOURCE_ROOT; };
 		D801245EDDCA6F8F8497D58A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../../../src/rec/binary/icon.png; sourceTree = SOURCE_ROOT; };
 		D801674C7CF1F8F8DADF1603 /* juce_MemoryOutputStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_MemoryOutputStream.cpp; path = ../../../../../juce/modules/juce_core/streams/juce_MemoryOutputStream.cpp; sourceTree = SOURCE_ROOT; };
 		D817588FDBD2549B9ED83077 /* juce_FileInputStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_FileInputStream.cpp; path = ../../../../../juce/modules/juce_core/files/juce_FileInputStream.cpp; sourceTree = SOURCE_ROOT; };
@@ -3154,6 +3158,7 @@
 				52CB03DCB9EC37E2A0D51DAE /* Proto.cpp */,
 				5C8FE9EF2B7AF94F5B9FF270 /* Proto.h */,
 				39E1837E02045ACDA7CC0B21 /* Range.h */,
+				2269DD3242E9DFEA92797FD4 /* ReverseProto.h */,
 				BDA83B75FF6DA5FED019BB2B /* STL.h */,
 				70EE5B7A5DF6ACD006E8C049 /* SystemStats.cpp */,
 				426C493916F0B9ABB4DFCA85 /* SystemStats.h */,
@@ -3169,7 +3174,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C35D8521BECA30C7DECFA23B /* SlowGold */,
+				F7DE5DDC6A0891C8A2C51509 /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3424,6 +3429,8 @@
 				3354E92ECE213903ED2FBE0E /* GetVolumes.h */,
 				538ED6817B0081470E929015 /* LogFile.cpp */,
 				762266ED745EE23E84BAAB3A /* LogFile.h */,
+				D7D6D512E3330D8F04768A40 /* MoveDirectories.cpp */,
+				0654CEA6482CE88EFE35E9E7 /* MoveDirectories.h */,
 				13F75FCF684280C38505D637 /* Util.cpp */,
 				4A2528C499E985550928DD2D /* Util.h */,
 				3CA7D89A40346AE728D9D567 /* VirtualFile.cpp */,
@@ -4017,17 +4024,6 @@
 			name = native;
 			sourceTree = "<group>";
 		};
-		C35D8521BECA30C7DECFA23B /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
-			sourceTree = "<group>";
-		};
 		C692EA9BCB539E3E3836C84A /* playback */ = {
 			isa = PBXGroup;
 			children = (
@@ -4424,6 +4420,17 @@
 				CEC03E491754BF9F7D8647CE /* yaml.h */,
 			);
 			name = "yaml-cpp";
+			sourceTree = "<group>";
+		};
+		F7DE5DDC6A0891C8A2C51509 /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		F9284B51B53749E1C197BB2A /* format */ = {
@@ -4975,6 +4982,7 @@
 				E2A4A729B95173DC010ED00D /* FileType.cpp in Sources */,
 				D218B642E1AFCAE5B2B195F9 /* GetVolumes.cpp in Sources */,
 				78796B4287AD5085C6BC130B /* LogFile.cpp in Sources */,
+				BFD966433EBC3D2D5F828C4C /* MoveDirectories.cpp in Sources */,
 				8091044CE4D2EB0F003BE657 /* Util.cpp in Sources */,
 				540F75E2FEC46790673CE9CD /* VirtualFile.cpp in Sources */,
 				1011A0F7F6D00BEAA3D80370 /* VirtualFileList.cpp in Sources */,
