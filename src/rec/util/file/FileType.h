@@ -12,6 +12,8 @@ const File& getFileTypeDirectory(VirtualFile::Type);
 const char* getFileTypeName(VirtualFile::Type);
 VirtualFile::Type getFileType(const File&);
 
+void moveOldAbsoluteDirectoriesToTypeRelative();
+
 }  // namespace file
 }  // namespace util
 }  // namespace rec

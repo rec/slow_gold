@@ -110,8 +110,8 @@ void protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto() {
     "\013volume_name\030\002 \001(\t\022\014\n\004path\030\003 \003(\t\0229\n\006stat"
     "us\030\004 \001(\0162!.rec.util.file.VirtualFile.Sta"
     "tus:\006ONLINE\022\017\n\007cd_name\030\005 \001(\t\"w\n\004Type\022\010\n\004"
-    "NONE\020\000\022\006\n\002CD\020\001\022\t\n\005MUSIC\020\002\022\010\n\004USER\020\003\022\n\n\006V"
-    "OLUME\020\004\022\n\n\006GLOBAL\020\005\022\013\n\007DESKTOP\020\006\022\r\n\tDOCU"
+    "NONE\020\000\022\n\n\006VOLUME\020\001\022\006\n\002CD\020\002\022\n\n\006GLOBAL\020\003\022\010"
+    "\n\004USER\020\004\022\013\n\007DESKTOP\020\005\022\t\n\005MUSIC\020\006\022\r\n\tDOCU"
     "MENTS\020\007\022\n\n\006MOVIES\020\010\022\010\n\004LAST\020\010\"^\n\006Status\022"
     "\n\n\006ONLINE\020\001\022\013\n\007OFFLINE\020\002\022\r\n\tDISK_OPEN\020\003\022"
     "\022\n\016WRITEABLE_DISK\020\004\022\013\n\007NO_DISK\020\005\022\013\n\007UNKN"
@@ -159,12 +159,12 @@ bool VirtualFile_Type_IsValid(int value) {
 
 #ifndef _MSC_VER
 const VirtualFile_Type VirtualFile::NONE;
-const VirtualFile_Type VirtualFile::CD;
-const VirtualFile_Type VirtualFile::MUSIC;
-const VirtualFile_Type VirtualFile::USER;
 const VirtualFile_Type VirtualFile::VOLUME;
+const VirtualFile_Type VirtualFile::CD;
 const VirtualFile_Type VirtualFile::GLOBAL;
+const VirtualFile_Type VirtualFile::USER;
 const VirtualFile_Type VirtualFile::DESKTOP;
+const VirtualFile_Type VirtualFile::MUSIC;
 const VirtualFile_Type VirtualFile::DOCUMENTS;
 const VirtualFile_Type VirtualFile::MOVIES;
 const VirtualFile_Type VirtualFile::LAST;

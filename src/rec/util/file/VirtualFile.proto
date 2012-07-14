@@ -3,12 +3,12 @@ package rec.util.file;
 message VirtualFile {
   enum Type {
     NONE = 0;
-    CD = 1;
-    MUSIC = 2;
-    USER = 3;
-    VOLUME = 4;
-    GLOBAL = 5;
-    DESKTOP = 6;
+    VOLUME = 1;
+    CD = 2;
+    GLOBAL = 3;
+    USER = 4;
+    DESKTOP = 5;
+    MUSIC = 6;
     DOCUMENTS = 7;
     MOVIES = 8;
     LAST = 8;

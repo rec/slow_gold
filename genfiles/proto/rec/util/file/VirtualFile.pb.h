@@ -39,12 +39,12 @@ class VirtualFileList;
 
 enum VirtualFile_Type {
   VirtualFile_Type_NONE = 0,
-  VirtualFile_Type_CD = 1,
-  VirtualFile_Type_MUSIC = 2,
-  VirtualFile_Type_USER = 3,
-  VirtualFile_Type_VOLUME = 4,
-  VirtualFile_Type_GLOBAL = 5,
-  VirtualFile_Type_DESKTOP = 6,
+  VirtualFile_Type_VOLUME = 1,
+  VirtualFile_Type_CD = 2,
+  VirtualFile_Type_GLOBAL = 3,
+  VirtualFile_Type_USER = 4,
+  VirtualFile_Type_DESKTOP = 5,
+  VirtualFile_Type_MUSIC = 6,
   VirtualFile_Type_DOCUMENTS = 7,
   VirtualFile_Type_MOVIES = 8,
   VirtualFile_Type_LAST = 8
@@ -143,12 +143,12 @@ class VirtualFile : public ::google::protobuf::Message {
   
   typedef VirtualFile_Type Type;
   static const Type NONE = VirtualFile_Type_NONE;
-  static const Type CD = VirtualFile_Type_CD;
-  static const Type MUSIC = VirtualFile_Type_MUSIC;
-  static const Type USER = VirtualFile_Type_USER;
   static const Type VOLUME = VirtualFile_Type_VOLUME;
+  static const Type CD = VirtualFile_Type_CD;
   static const Type GLOBAL = VirtualFile_Type_GLOBAL;
+  static const Type USER = VirtualFile_Type_USER;
   static const Type DESKTOP = VirtualFile_Type_DESKTOP;
+  static const Type MUSIC = VirtualFile_Type_MUSIC;
   static const Type DOCUMENTS = VirtualFile_Type_DOCUMENTS;
   static const Type MOVIES = VirtualFile_Type_MOVIES;
   static const Type LAST = VirtualFile_Type_LAST;

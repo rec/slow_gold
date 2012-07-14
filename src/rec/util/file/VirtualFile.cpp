@@ -87,27 +87,7 @@ const File toRealFile(const VirtualFile& file) {
                          TO_REAL_FILE);
 }
 
-const VirtualFile toVirtualFile(const File& file) {
-  VirtualFile vf;
-  vf.set_type(VirtualFile::VOLUME);
-
-  File f = file, p = file.getParentDirectory();
-  for (; f != p; f = p, p = f.getParentDirectory())
-    vf.add_path(str(f.getFileName()));
-
-  string lastName = str(f.getFileName());
-  if (lastName.size())
-    vf.add_path(lastName);
-
-#if JUCE_MAC
-  fixMacVirtualDirectories(&vf);
-#endif
-
-  reverseProto(vf.mutable_path());
-  return vf;
-}
-
-VirtualFile toCompactVirtualFile(const File& file) {
+static VirtualFile toCompactVirtualFile(const File& file) {
   VirtualFile vf;
   File parent;
   VirtualFile::Type type = getFileType(file);
@@ -136,6 +116,27 @@ VirtualFile toCompactVirtualFile(const File& file) {
 #endif
 
   reverseProto(vf.mutable_path());
+  return vf;
+}
+
+const VirtualFile toVirtualFile(const File& file) {
+  VirtualFile vf;
+  vf.set_type(VirtualFile::VOLUME);
+
+  File f = file, p = file.getParentDirectory();
+  for (; f != p; f = p, p = f.getParentDirectory())
+    vf.add_path(str(f.getFileName()));
+
+  string lastName = str(f.getFileName());
+  if (lastName.size())
+    vf.add_path(lastName);
+
+#if JUCE_MAC
+  fixMacVirtualDirectories(&vf);
+#endif
+
+  reverseProto(vf.mutable_path());
+  DLOG(INFO) << toCompactVirtualFile(file).ShortDebugString();
   return vf;
 }
 
