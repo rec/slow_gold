@@ -43,7 +43,7 @@ File getShadow(Type type) {
   return file::getShadowDirectory(vf);
 }
 
-static const bool ENABLE_MOVE = false;
+static const bool ENABLE_MOVE = true;
 
 void moveTypeDirectory(Type type, const File& special) {
   File target = getShadow(type);
