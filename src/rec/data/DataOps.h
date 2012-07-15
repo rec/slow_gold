@@ -16,8 +16,6 @@ const Proto getProto(const VirtualFile& vf);
 
 Message* cloneMessage(Data*);
 
-inline Message* newMessage(Data* data) { return cloneMessage(data); }
-
 void setWithData(Data*, const Message&, Undoable undoable = CAN_UNDO);
 
 // The virtual file for global data (not attached to any specific file).
@@ -36,11 +34,6 @@ inline void setGlobal(const Message& m, Undoable undoable = CAN_UNDO) {
   setProto(m, global(), undoable);
 }
 
-template <typename Proto>
-void apply(void (*function)(Proto*), const VirtualFile&);
-
-template <typename Proto, typename Functor>
-void apply(Functor functor, const VirtualFile&);
 
 //
 //
@@ -72,26 +65,6 @@ const Proto getProto(Data* data) {
 template <typename Proto>
 const Proto getProto(const VirtualFile& vf) {
   return getProto<Proto>(getData(getTypeName<Proto>(), vf));
-}
-
-template <typename Proto>
-void apply(void (*function)(Proto*), const VirtualFile& vf) {
-  function(Opener<Proto>(getData(getTypeName<Proto>(), vf)).mutable_get());
-}
-
-template <typename Proto, typename Functor>
-void apply(Functor functor, const VirtualFile& vf) {
-  functor(Opener<Proto>(getData(getTypeName<Proto>(), vf)).mutable_get());
-}
-
-template <typename Proto>
-bool applyToData(bool (*function)(Proto*), Data* data) {
-  return function(Opener<Proto>(data).mutable_get());
-}
-
-template <typename Proto, typename Functor>
-bool applyToData(Functor functor, Data* data) {
-  return functor(Opener<Proto>(data).mutable_get());
 }
 
 }  // namespace data
