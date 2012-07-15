@@ -62,6 +62,7 @@ void moveTypeDirectory(Type type, const File& special) {
 
 void moveGlobalFiles() {
   File target = getShadow(VirtualFile::GLOBAL);
+  LOG(ERROR) << str(target);
   juce::DirectoryIterator it(target.getParentDirectory(), false, "*",
                              File::findFiles);
   while (it.next()) {

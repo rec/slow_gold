@@ -46,7 +46,7 @@ void Cursor::init() {
   Lock l(lock());
 
   caption_.reset(new OutlinedCursorLabel(this));
-  (*caption_)(caption_->getProto());
+  (*caption_)(caption_->getDataValue());
 
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addAndMakeVisible(this, 0);
@@ -109,7 +109,7 @@ bool Cursor::setDragTime(SampleTime t) {
       cursors[index_] = cursors[next];
       cursors[next] = this;
 
-      Viewport viewport = waveform_->DataListener<Viewport>::getProto();
+      Viewport viewport = waveform_->DataListener<Viewport>::getDataValue();
       LoopPointList* lpl = viewport.mutable_loop_points();
       lpl->mutable_loop_point(index_)->set_time(t);
       lpl->mutable_loop_point()->SwapElements(index_, next);

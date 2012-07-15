@@ -13,6 +13,7 @@ const File getShadowDirectory(const VirtualFile&);
 const VirtualFile toCompactVirtualFile(const File&);
 const VirtualFile toOriginalVirtualFile(const File&);
 const VirtualFile toVirtualFile(const File&);
+
 const File toRealFile(const VirtualFile&);
 
 }  // namespace file

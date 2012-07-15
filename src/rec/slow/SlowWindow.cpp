@@ -16,6 +16,7 @@
 #include "rec/slow/RegisterProtos.h"
 #include "rec/slow/TranslateAll.h"
 #include "rec/util/Defaulter.h"
+#include "rec/util/file/FileType.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -83,6 +84,8 @@ void SlowWindow::init() {
 }
 
 void SlowWindow::constructInstance() {
+  file::moveOldAbsoluteDirectoriesToTypeRelative();
+
   instanceDeleter_.reset(new slow::Instance(this));
   instance_ = instanceDeleter_.get();
   instance_->init();

@@ -8,7 +8,7 @@ namespace slow {
 
 class IsWholeSong {
  public:
-  enum WholeSong { ONE_SEGMENT, WHOLE_SONG, SONG_IS_ONE_SEGMENT };
+  enum WholeSong { SONG_IS_ONE_SEGMENT, ONE_SEGMENT, WHOLE_SONG };
   virtual WholeSong isWholeSong() const = 0;
   virtual ~IsWholeSong() {}
 };

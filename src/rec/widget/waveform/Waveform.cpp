@@ -220,7 +220,7 @@ int Waveform::getCursorX(uint index) const {
 }
 
 void Waveform::setCursorText(int index, const String& text) {
-  Viewport viewport = DataListener<Viewport>::getProto();
+  Viewport viewport = DataListener<Viewport>::getDataValue();
   LoopPointList* lpl = viewport.mutable_loop_points();
   DCHECK_GE(index,  0);
   DCHECK_LT(index, lpl->loop_point_size());
@@ -255,7 +255,7 @@ void Waveform::setIsDraggingCursor(bool d) {
 }
 
 void Waveform::setSelected(int index, bool selected) {
-  Viewport viewport = DataListener<Viewport>::getProto();
+  Viewport viewport = DataListener<Viewport>::getDataValue();
   LoopPointList* lpl = viewport.mutable_loop_points();
   if (index < 0 || index >= lpl->loop_point_size()) {
     LOG(DFATAL) << "Bad index " << index << ", " << lpl->loop_point_size();

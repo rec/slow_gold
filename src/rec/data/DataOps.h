@@ -1,6 +1,7 @@
 #ifndef __REC_DATA_DATAOPS__
 #define __REC_DATA_DATAOPS__
 
+#include "rec/data/Data.h"
 #include "rec/data/Opener.h"
 #include "rec/util/Proto.h"
 
@@ -11,7 +12,7 @@ template <typename Proto>
 const Proto getProto(Data*);
 
 template <typename Proto>
-void fillProto(Proto*, Data*);
+const Proto getProto(const VirtualFile& vf);
 
 Message* cloneMessage(Data*);
 
@@ -27,12 +28,6 @@ const VirtualFile& noData();
 
 void setProto(const Message& m, const VirtualFile& vf,
               Undoable undoable = CAN_UNDO);
-
-template <typename Proto>
-void fillProto(Proto* p, const VirtualFile& vf);
-
-template <typename Proto>
-const Proto getProto(const VirtualFile& vf);
 
 template <typename Proto>
 const Proto getGlobal() { return getProto<Proto>(global()); }
@@ -68,20 +63,10 @@ inline void setProto(const Message& m, const VirtualFile& vf, Undoable undoable)
 }
 
 template <typename Proto>
-void fillProto(Proto* proto, Data* data) {
-  proto->CopyFrom(*Reader<Proto>(data));
-}
-
-template <typename Proto>
-void fillProto(Proto* p, const VirtualFile& vf) {
-  fillProto(p, getData(getTypeName<Proto>(), vf));
-}
-
-template <typename Proto>
 const Proto getProto(Data* data) {
-  Proto p;
-  fillProto(&p, data);
-  return p;
+  Proto proto;
+  proto.CopyFrom(*Reader<Proto>(data));
+  return proto;
 }
 
 template <typename Proto>

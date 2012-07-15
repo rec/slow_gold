@@ -142,7 +142,7 @@ void MouseListener::clickWaveform(const MouseEvent& e, Waveform* waveform) {
   dragMods_ = e.mods;
   Mode::Action action = getClickAction();
   if (action == Mode::DRAG)
-    waveformDragStart_ = DataListener<Viewport>::getProto().zoom().begin();
+    waveformDragStart_ = DataListener<Viewport>::getDataValue().zoom().begin();
 
   else if (action == Mode::DRAW_LOOP_POINTS)
     addLoopPoint(time);
@@ -209,7 +209,7 @@ void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
   if (action == Mode::DRAG) {
     SampleTime dt = static_cast<int64>(e.getDistanceFromDragStartX() /
                                            waveform->model().pixelsPerSample());
-    Viewport viewport(DataListener<Viewport>::getProto());
+    Viewport viewport(DataListener<Viewport>::getDataValue());
     Zoom* zoom = viewport.mutable_zoom();
     SampleTime len = length();
     SampleTime end = zoom->has_end() ? SampleTime(zoom->end()) : len;

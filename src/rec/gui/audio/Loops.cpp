@@ -86,7 +86,7 @@ void Loops::setViewport(const Viewport& viewport) {
 String Loops::displayText(int column, int row) const {
   Address rowAddress = getAddress(column, row);
   data::Value v;
-  string error = getMessageField(rowAddress, getProto(), &v);
+  string error = getMessageField(rowAddress, getDataValue(), &v);
   if (!error.empty()) {
     LOG(ERROR) << row << "," << column << ": " << error;
     return Trans("(error)"); // TODO

@@ -28,7 +28,7 @@ class NameToProto {
     add(&Proto::default_instance());
   }
 
-  const Message* getProto(const string& name) {
+  const Message* newProtoFromName(const string& name) {
     Lock l(lock_);
     NameToProtoMap::iterator i = map_.find(name);
     if (i == map_.end()) {

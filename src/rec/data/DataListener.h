@@ -21,7 +21,7 @@ class DataListener : public Listener<const Proto&> {
   virtual void operator()(const Proto&) = 0;
   Data* getData() const { return adaptor_->getData(); }
 
-  const Proto getProto() const {
+  const Proto getDataValue() const {
     if (Data* data = getData())
       return data::getProto<Proto>(data);
     else

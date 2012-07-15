@@ -18,7 +18,7 @@ const LoopPointList getSelected(const LoopPointList& lpl, bool sel) {
 }
 
 const LoopPointList getSelected(const Loops& loops, bool sel) {
-  return getSelected(loops.getProto().loop_points(), sel);
+  return getSelected(loops.getDataValue().loop_points(), sel);
 }
 
 }  // namespace
@@ -43,7 +43,7 @@ bool LoopsCuttable::canCut() const {
 }
 
 void LoopsCuttable::cut() {
-  Viewport vp = loops_->getProto();
+  Viewport vp = loops_->getDataValue();
   LoopPointList lpl = rec::audio::cutSelected(vp.loop_points(), true);
   vp.mutable_loop_points()->CopyFrom(lpl);
   loops_->editViewport(vp);
@@ -56,7 +56,7 @@ bool LoopsCuttable::paste(const string& s) {
   if (!yaml::read(s, &lpl))
     return false;
 
-  Viewport vp2 = loops_->getProto();
+  Viewport vp2 = loops_->getDataValue();
   LoopPointList lpl2 = addLoopPoints(lpl, vp2.loop_points());
   vp2.mutable_loop_points()->CopyFrom(lpl2);
   loops_->setProto(vp2);

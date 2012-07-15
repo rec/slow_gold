@@ -35,6 +35,7 @@
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
 #include "rec/util/file/FileType.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -62,6 +63,9 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
   IsWholeSongInstance(Instance* i) : HasInstance(i) {}
 
   virtual IsWholeSong::WholeSong isWholeSong() const {
+    if (empty())
+      return SONG_IS_ONE_SEGMENT;
+
     LoopPointList lpl = data::getProto<Viewport>(file()).loop_points();
     return (lpl.loop_point_size() <= 1) ? IsWholeSong::SONG_IS_ONE_SEGMENT :
       (audio::getSelectionCount(lpl) == 1) ? IsWholeSong::ONE_SEGMENT :
@@ -158,11 +162,18 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  file::moveOldAbsoluteDirectoriesToTypeRelative();
-
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
-  const VirtualFile vf = data::getGlobal<VirtualFile>();
+  VirtualFile vf = data::getGlobal<VirtualFile>();
+  if (vf.type() != VirtualFile::NONE) {
+    DLOG(INFO) << "Before " << vf.ShortDebugString();
+    File shadow = file::getShadowDirectory(vf);
+    DLOG(INFO) << "During " << str(shadow);
+    vf = file::toCompactVirtualFile(shadow);
+    DLOG(INFO) << "After " << vf.ShortDebugString();
+  }
+  data::setGlobal(vf);
+
   {
     MessageManagerLock l;
     juce::LookAndFeel::setDefaultLookAndFeel(lookAndFeel_.get());

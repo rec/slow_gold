@@ -120,7 +120,7 @@ void CurrentTime::setCursorTime(SampleTime t, int index, bool isTimeCursor) {
   if (isTimeCursor) {
     jumpToTime(t);
   } else {
-    Viewport viewport(DataListener<Viewport>::getProto());
+    Viewport viewport(DataListener<Viewport>::getDataValue());
     viewport.mutable_loop_points()->mutable_loop_point(index)->set_time(t);
     setViewportProto(viewport);
   }
