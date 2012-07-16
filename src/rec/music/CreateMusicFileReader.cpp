@@ -141,7 +141,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
   }
 
   if (reader_ && metadata && (*metadata != music::Metadata::default_instance()))
-    data::setWithData(d, *metadata, CANT_UNDO);
+    data::setProto(*metadata, d, CANT_UNDO);
 }
 
 void MusicFileReader::translateAll() {

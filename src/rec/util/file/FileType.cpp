@@ -38,9 +38,7 @@ const TypeMap& map() {
 }
 
 File getShadow(Type type) {
-  VirtualFile vf;
-  vf.set_type(type);
-  return file::getShadowDirectory(vf);
+  return file::getShadowDirectory(makeVirtualFile(type));
 }
 
 static const bool ENABLE_MOVE = true;

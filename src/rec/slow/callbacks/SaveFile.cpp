@@ -119,8 +119,8 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
 
   String suffix = SUFFIXES[t];
   File file;
-  GuiSettings settings = data::getGlobal<GuiSettings>();
-  audio::AudioSettings audioSettings = data::getGlobal<audio::AudioSettings>();
+  GuiSettings settings = data::getProto<GuiSettings>();
+  audio::AudioSettings audioSettings = data::getProto<audio::AudioSettings>();
 
   File startFile = getBaseFile(instance, suffix, settings, audioSettings);
   VirtualFile vf = instance->file();
@@ -156,7 +156,7 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   }
 
   settings.set_last_directory(str(file.getParentDirectory()));
-  data::setGlobal(settings);
+  data::setProto(settings);
 
   return file;
 }
@@ -287,7 +287,7 @@ void doSaveFile(Instance* instance, bool useSelection) {
     return;
   }
 
-  AudioSettings::FileType t = data::getGlobal<AudioSettings>().
+  AudioSettings::FileType t = data::getProto<AudioSettings>().
     file_type_for_save();
   File file = getSaveFile(instance, t);
   if (file != File::nonexistent) {

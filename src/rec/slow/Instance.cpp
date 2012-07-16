@@ -143,7 +143,7 @@ void Instance::init() {
 
 #ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK
   // TODO: move this elsewhere.
-  Mode mode = data::getGlobal<Mode>();
+  Mode mode = data::getProto<Mode>();
   if (mode.click() == Mode::DRAW_LOOP_POINTS) {
     mode.clear_click();
     setProto(mode);
@@ -164,7 +164,7 @@ Instance::~Instance() {
 void Instance::startup() {
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
-  VirtualFile vf = data::getGlobal<VirtualFile>();
+  VirtualFile vf = data::getProto<VirtualFile>();
   if (vf.type() != VirtualFile::NONE) {
     DLOG(INFO) << "Before " << vf.ShortDebugString();
     File shadow = file::getShadowDirectory(vf);
@@ -172,7 +172,7 @@ void Instance::startup() {
     vf = file::toCompactVirtualFile(shadow);
     DLOG(INFO) << "After " << vf.ShortDebugString();
   }
-  data::setGlobal(vf);
+  data::setProto(vf);
 
   {
     MessageManagerLock l;
@@ -202,11 +202,11 @@ class RegisterSlow : public app::RegisterInstance {
 void Instance::postStartup() {
   data::getDataCenter().undoStack()->setEnabled();
 
-  if (!data::getGlobal<AppSettings>().registered())
+  if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
 
   MessageManagerLock l;
-  if (data::getGlobal<GuiSettings>().show_about_on_startup())
+  if (data::getProto<GuiSettings>().show_about_on_startup())
     window_->startAboutWindow();
 }
 

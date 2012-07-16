@@ -30,7 +30,7 @@ class DataListener : public Listener<const Proto&> {
 
   void setProto(const Proto& p, Undoable undoable = CAN_UNDO) {
     if (Data* data = getData())
-      setWithData(data, p, undoable);
+      data::setProto(p, data, undoable);
     else
       LOG(DFATAL) << "No data";
   }

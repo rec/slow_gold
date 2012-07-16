@@ -108,7 +108,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   }
 
   components()->waveform_->setLoading(false);
-  data::setGlobal(file_, CANT_UNDO);
+  data::setProto(file_, CANT_UNDO);
   data::UntypedDataListener::setGlobalDataFile(file_);
 
   if (file_.path_size())

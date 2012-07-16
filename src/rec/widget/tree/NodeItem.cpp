@@ -134,7 +134,7 @@ File Node::getVisitedFile() const {
 }
 
 bool Node::isCurrent() const {
-  return (virtualFile_ == data::getGlobal<VirtualFile>());
+  return (virtualFile_ == data::getProto<VirtualFile>());
 }
 
 }  // namespace tree

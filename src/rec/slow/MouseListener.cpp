@@ -5,6 +5,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataCenter.h"
+#include "rec/data/Opener.h"
 #include "rec/data/UndoStack.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/slow/Components.h"

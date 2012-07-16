@@ -87,13 +87,13 @@ bool nudgeVolume(Gain* gain, bool isInc) {
   if (gain->dim() || gain->mute())
     return false;
 
-  double inc = data::getGlobal<AudioSettings>().volume_nudge_db();
+  double inc = data::getProto<AudioSettings>().volume_nudge_db();
   gain->set_gain(gain->gain() + (isInc ? inc : -inc));
   return true;
 }
 
 void nudgeSpeed(Stretch* stretch, bool isInc) {
-  double nudge = data::getGlobal<AudioSettings>().speed_nudge_percent() / 100.0;
+  double nudge = data::getProto<AudioSettings>().speed_nudge_percent() / 100.0;
   double scale = isInc ? (1.0 + nudge) : 1.0 / (1.0 + nudge);
   stretch->set_time_percent(stretch->time_percent() * scale);
 }
@@ -129,7 +129,7 @@ void clearMidiMappings() {
                                    CLEAR_MIDI_MAPPINGS_TITLE,
                                    CLEAR_MIDI_MAPPINGS_FULL,
                                    OK, CANCEL)) {
-    data::setGlobal(command::CommandMapProto());
+    data::setProto(command::CommandMapProto());
   }
 }
 

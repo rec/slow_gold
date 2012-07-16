@@ -39,7 +39,7 @@ SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", Colours::azure,
                   DocumentWindow::allButtons, true),
       HasInstance(NULL) {
-  bool check = data::getGlobal<GuiSettings>().auto_check_for_updates();
+  bool check = data::getProto<GuiSettings>().auto_check_for_updates();
   application->setAutoCheckForUpdates(check);
 }
 

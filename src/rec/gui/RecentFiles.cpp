@@ -29,7 +29,7 @@ void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
     return;
 
   int64 timestamp = juce::Time::currentTimeMillis();
-  RecentFiles rf = data::getGlobal<RecentFiles>();
+  RecentFiles rf = data::getProto<RecentFiles>();
   RecentFile* r = NULL;
   for (int i = 0; i < rf.file_size(); ++i) {
     const RecentFile& file = rf.file(i);
@@ -49,7 +49,7 @@ void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
 
   std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
             CompareRecentFiles());
-  data::setGlobal(rf, CANT_UNDO);
+  data::setProto(rf, CANT_UNDO);
 }
 
 static const int MAX_DEDUPE_COUNT = 2;
@@ -57,7 +57,7 @@ static const int MAX_DEDUPE_COUNT = 2;
 std::vector<string> getRecentFileNames() {
   typedef std::vector<string> StrList;
 
-  RecentFiles rf = data::getGlobal<RecentFiles>();
+  RecentFiles rf = data::getProto<RecentFiles>();
   StrList results(rf.file_size());
   for (int i = 0; i < rf.file_size(); ++i)
     results[i] = music::getTitle(rf.file(i).metadata(), rf.file(i).file());

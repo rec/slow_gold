@@ -8,6 +8,8 @@ namespace rec {
 namespace util {
 namespace file {
 
+const VirtualFile makeVirtualFile(VirtualFile::Type);
+
 const File getShadowDirectory(const VirtualFile&);
 
 const VirtualFile toCompactVirtualFile(const File&);

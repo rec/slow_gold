@@ -19,7 +19,7 @@ TreeViewDropAll::TreeViewDropAll(MenuBarModel* m) {
 }
 
 bool TreeViewDropAll::isTreeDrop(const Component* c) const {
-  return (c == this) && data::getGlobal<NavigatorConfig>().allow_file_drop();
+  return (c == this) && data::getProto<NavigatorConfig>().allow_file_drop();
 }
 
 void TreeViewDropAll::paint(Graphics& g) {
@@ -94,7 +94,7 @@ bool TreeViewDropAll::paste(const string& s) {
   VirtualFileList files;
   bool read = yaml::read(s, &files);
   if (read) {
-    files.MergeFrom(data::getGlobal<VirtualFileList>());
+    files.MergeFrom(data::getProto<VirtualFileList>());
     data::set(files);
   }
   return read;

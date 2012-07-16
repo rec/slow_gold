@@ -72,7 +72,7 @@ static const int RECENT_MENU_REPEATS = 32;
 static const int RECENT_FILE_THREAD_PRIORITY = 4;
 
 void loadRecentFile(Instance* instance, int i) {
-  gui::RecentFiles rf = data::getGlobal<gui::RecentFiles>();
+  gui::RecentFiles rf = data::getProto<gui::RecentFiles>();
   if (i < 0 || i >= rf.file_size()) {
     LOG(DFATAL) << "Can't load recent, i=" << i << ", size=" << rf.file_size();
     return;
@@ -87,14 +87,14 @@ void loadRecentFile(Instance* instance, int i) {
 void setSaveFileType(Instance* instance, int i) {
   using audio::AudioSettings;
 
-  AudioSettings settings = data::getGlobal<AudioSettings>();
+  AudioSettings settings = data::getProto<AudioSettings>();
   settings.set_file_type_for_save(static_cast<AudioSettings::FileType>(i));
-  data::setGlobal(settings);
+  data::setProto(settings);
   instance->menus_->menuItemsChanged();
 }
 
 void openPreviousFile(Instance* i) {
-  gui::RecentFiles rf = data::getGlobal<gui::RecentFiles>();
+  gui::RecentFiles rf = data::getProto<gui::RecentFiles>();
   int size = rf.file_size();
   if (size) {
     if (data::equals(rf.file(0).file(), i->file())) {
@@ -137,7 +137,7 @@ void nudgeWithinSegment(Instance* i, const LoopPointList& selection, bool inc) {
   SampleTime end = selection.length();
   SampleTime width = end - begin;
   SampleRate rate = i->getSourceSampleRate();
-  SampleTime nudge(data::getGlobal<audio::AudioSettings>().time_nudge(), rate);
+  SampleTime nudge(data::getProto<audio::AudioSettings>().time_nudge(), rate);
   nudge = std::min(nudge, SampleTime(width / 2));
   SampleTime time = i->time() + (inc ? nudge : - nudge);
   while (time < begin)

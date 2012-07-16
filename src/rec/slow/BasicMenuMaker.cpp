@@ -41,7 +41,7 @@ void BasicMenuMaker::addFileMenu() {
   addIfNotEmpty(Command::SAVE_FILE_SELECTION);
 
   PopupMenu save;
-  int t = static_cast<int>(data::getGlobal<audio::AudioSettings>()
+  int t = static_cast<int>(data::getProto<audio::AudioSettings>()
                            .file_type_for_save());
   static const int TICKED = ApplicationCommandInfo::isTicked;
   static const char* NAMES[] = {"AIFF", "FLAC", "Ogg Vorbis", "WAV"};

@@ -72,6 +72,12 @@ void fixMacVirtualDirectories(VirtualFile* vf) {
 
 }  // namespace
 
+const VirtualFile makeVirtualFile(VirtualFile::Type type) {
+  VirtualFile vf;
+  vf.set_type(type);
+  return vf;
+}
+
 const File getShadowDirectory(const VirtualFile& vf) {
   DCHECK_NE(vf.type(), VirtualFile::NONE);
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
@@ -85,11 +91,9 @@ const File toRealFile(const VirtualFile& file) {
 }
 
 const VirtualFile toCompactVirtualFile(const File& file) {
-  VirtualFile vf;
   File parent;
-  VirtualFile::Type type = getFileType(file);
-  if (type) {
-    vf.set_type(type);
+  VirtualFile vf = makeVirtualFile(getFileType(file));
+  if (VirtualFile::Type type = vf.type()) {
     parent = getFileTypeDirectory(type);
     DCHECK(parent != File::nonexistent);
   } else {
@@ -117,8 +121,7 @@ const VirtualFile toCompactVirtualFile(const File& file) {
 }
 
 const VirtualFile toOriginalVirtualFile(const File& file) {
-  VirtualFile vf;
-  vf.set_type(VirtualFile::VOLUME);
+  VirtualFile vf = makeVirtualFile(VirtualFile::VOLUME);
 
   File f = file, p = file.getParentDirectory();
   for (; f != p; f = p, p = f.getParentDirectory())

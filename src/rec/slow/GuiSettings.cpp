@@ -36,7 +36,7 @@ File browseForFileTreeView(const String& msg, const File& startFile,
 
 File browseForFile(const String& msg, const File& startFile, SaveOrOpen save,
                    const String& filter) {
-  GuiSettings settings = data::getGlobal<GuiSettings>();
+  GuiSettings settings = data::getProto<GuiSettings>();
   return settings.use_tree_view_in_file_dialogs() ?
     browseForFileTreeView(msg, startFile, save, filter) :
     browseForFileNoTreeView(msg, startFile, save, filter);

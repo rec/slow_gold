@@ -19,8 +19,7 @@ using juce::XmlElement;
 namespace {
 
 VirtualFile toVirtualFile(const string& s) {
-  VirtualFile f;
-  f.set_type(VirtualFile::VOLUME);
+  VirtualFile f(file::makeVirtualFile(VirtualFile::VOLUME);
   f.add_path(s);
   return f;
 };

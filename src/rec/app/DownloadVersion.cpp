@@ -39,7 +39,7 @@ const RelativeTime UPDATE(RelativeTime::days(1));
 bool isReadyForUpdate() {
   CHECK_DDD(1734, 1272, int32, int16);
 
-  int64 finished = data::getGlobal<AppSettings>().last_update_finished();
+  int64 finished = data::getProto<AppSettings>().last_update_finished();
   return (juce::Time::currentTimeMillis() - finished) > UPDATE.inMilliseconds();
 }
 
@@ -69,9 +69,9 @@ bool downloadNewVersion(const String& appName, const String& version,
   ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
 
   if (ok) {
-    AppSettings appData = data::getGlobal<AppSettings>();
+    AppSettings appData = data::getProto<AppSettings>();
     appData.set_last_update_finished(juce::Time::currentTimeMillis());
-    data::setGlobal(appData);
+    data::setProto(appData);
   } else {
     String error = String::formatted(COULDNT_UPDATE, c_str(version));
     AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,

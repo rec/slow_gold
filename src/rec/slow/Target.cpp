@@ -22,7 +22,7 @@ Target::Target(Instance* i)
       midiCommandMap_(new command::MidiCommandMap(manager_.commandManager())) {
   i->window_->addKeyListener(manager_.commandManager()->getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
-  (*midiCommandMap_)(data::getGlobal<command::CommandMapProto>());
+  (*midiCommandMap_)(data::getProto<command::CommandMapProto>());
   manager_.addListener(this);
 }
 
