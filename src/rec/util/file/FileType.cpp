@@ -91,7 +91,7 @@ const char* getFileTypeName(Type type) {
 }
 
 Type getFileType(const File& f) {
-  for (TypeMap::const_iterator i = map().begin(); i != map().begin(); ++i) {
+  for (TypeMap::const_iterator i = map().begin(); i != map().end(); ++i) {
     if (f.isAChildOf(i->second.first))
       return i->first;
   }
