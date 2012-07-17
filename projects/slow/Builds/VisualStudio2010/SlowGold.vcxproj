@@ -314,6 +314,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\MoveDirectories.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\MoveFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFileList.cpp"/>
@@ -1561,6 +1562,7 @@
     <ClInclude Include="..\..\..\..\src\rec\command\TickedDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\AddressListener.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Apply.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataCenter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataImpl.h"/>
@@ -1740,6 +1742,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\MoveDirectories.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\MoveFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFileList.h"/>

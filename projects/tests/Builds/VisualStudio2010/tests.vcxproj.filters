@@ -1096,6 +1096,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\MoveDirectories.cpp">
       <Filter>tests\rec\util\file</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\MoveFile.cpp">
+      <Filter>tests\rec\util\file</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp">
       <Filter>tests\rec\util\file</Filter>
     </ClCompile>
@@ -2865,6 +2868,9 @@
     <ClInclude Include="..\..\..\..\src\rec\data\AddressListener.h">
       <Filter>tests\rec\data</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Apply.h">
+      <Filter>tests\rec\data</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
       <Filter>tests\rec\data</Filter>
     </ClInclude>
@@ -3400,6 +3406,9 @@
       <Filter>tests\rec\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\MoveDirectories.h">
+      <Filter>tests\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\MoveFile.h">
       <Filter>tests\rec\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h">

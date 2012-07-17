@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="6iIMEzOsH" name="tests">
+  <MAINGROUP id="kYcB33iwl" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -389,6 +389,8 @@
               name="AddressListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/AddressListener.h" id="H1sg5YWfL"
               name="AddressListener.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/Apply.h" id="WSRqIlyiS"
+              name="Apply.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Data.h" id="Oe2UXRcgJ" name="Data.h"
               resource="0"/>
         <FILE compile="1" file="../../src/rec/data/DataCenter.cpp" id="yAocElhbx"
@@ -1048,6 +1050,10 @@
                 id="fyqIc2VPT" name="MoveDirectories.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/MoveDirectories.h"
                 id="fMZghR1xp" name="MoveDirectories.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/MoveFile.cpp" id="et38nyxaF"
+                name="MoveFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/MoveFile.h" id="e19IAjdIL"
+                name="MoveFile.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/file/Util.cpp" id="sgV7ybSEK"
                 name="Util.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/Util.h" id="f9YREu0l8"
@@ -1607,7 +1613,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="cCL8uSiIz" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="R0Jio0G2X" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
