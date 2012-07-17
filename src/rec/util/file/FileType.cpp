@@ -60,10 +60,15 @@ void moveTypeDirectory(Type type, const File& special) {
 
 void moveGlobalFiles() {
   File target = getShadow(VirtualFile::GLOBAL);
-  LOG(ERROR) << str(target);
-  juce::DirectoryIterator it(target.getParentDirectory(), false, "*",
-                             File::findFiles);
-  while (it.next()) {
+  if (!target.exists()) {
+    if (!target.createDirectory()) {
+      LOG(DFATAL) << "Couldn't create global directory";
+      return;
+    }
+  }
+
+  File appDir = target.getParentDirectory();
+  for (DirectoryIterator it(appDir, false, "*", File::findFiles); it.next(); ) {
     File f = it.getFile();
     File targetFile(target.getChildFile(f.getFileName()));
     if (ENABLE_MOVE) {

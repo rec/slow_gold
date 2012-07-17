@@ -171,8 +171,8 @@ void Instance::startup() {
     DLOG(INFO) << "During " << str(shadow);
     vf = file::toVirtualFile(shadow);
     DLOG(INFO) << "After " << vf.ShortDebugString();
+    data::setProto(vf);
   }
-  data::setProto(vf);
 
   {
     MessageManagerLock l;

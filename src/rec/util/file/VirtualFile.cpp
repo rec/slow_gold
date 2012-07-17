@@ -28,7 +28,7 @@ void readVolumeName(const File& f, VirtualFile* vf) {
     vf->set_volume(removeColon(s));
 
 #elif JUCE_MAC
-  DCHECK(f.getFileName().length());
+  DCHECK(!f.getFileName().length());
   if (last && root == "Volumes") {
     vf->set_volume_name(vf->path(last - 1));
     vf->mutable_path()->RemoveLast();
