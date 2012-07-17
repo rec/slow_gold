@@ -8,15 +8,21 @@ namespace rec {
 namespace util {
 namespace file {
 
-const VirtualFile makeVirtualFile(VirtualFile::Type);
+// Converts a file on the file system to a virtual file reference, which might
+// be relative to one of the special directories.
+const VirtualFile toVirtualFile(const File&, bool useSpecial = true);
 
+// The inverse of toVirtualFile.
+const File toRealFile(const VirtualFile&);
+
+// Given a VirtualFile, return the actual directory that shadows it.
 const File getShadowDirectory(const VirtualFile&);
 
-const VirtualFile toCompactVirtualFile(const File&);
-const VirtualFile toOriginalVirtualFile(const File&);
-const VirtualFile toVirtualFile(const File&);
-
-const File toRealFile(const VirtualFile&);
+inline const VirtualFile makeVirtualFile(VirtualFile::Type type) {
+  VirtualFile vf;
+  vf.set_type(type);
+  return vf;
+}
 
 }  // namespace file
 }  // namespace util

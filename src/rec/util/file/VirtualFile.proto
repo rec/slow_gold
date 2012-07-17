@@ -13,6 +13,7 @@ message VirtualFile {
     MOVIES = 8;
     LAST = 8;
   };
+  // TODO: Type is a poor choice of name, come up with a better one.
 
   enum Status {
     ONLINE = 1;
@@ -25,6 +26,10 @@ message VirtualFile {
 
   optional Type type = 1 [default = NONE];
   optional string volume_name = 2;
+  // On Windows, volume_name is C: or D: - on the Mac, it's empty if we're on
+  // the root volume, or "foo" if we're on a mounted disk or directory looking
+  // like /Volumes/foo.
+
   repeated string path = 3;
   optional Status status = 4 [default = ONLINE];
   optional string cd_name = 5;

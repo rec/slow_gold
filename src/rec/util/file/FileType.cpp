@@ -45,7 +45,7 @@ static const bool ENABLE_MOVE = true;
 
 void moveTypeDirectory(Type type, const File& special) {
   File target = getShadow(type);
-  VirtualFile sourcevf = file::toOriginalVirtualFile(special);
+  VirtualFile sourcevf = file::toVirtualFile(special, false);
   File source = file::getShadowDirectory(sourcevf);
   if (!source.exists())
     return;
@@ -92,7 +92,7 @@ Type getFileType(const File& f) {
     if (f.isAChildOf(i->second.first))
       return i->first;
   }
-  return VirtualFile::NONE;
+  return VirtualFile::VOLUME;
 }
 
 void moveOldAbsoluteDirectoriesToTypeRelative() {

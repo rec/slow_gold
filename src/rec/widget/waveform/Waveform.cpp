@@ -3,6 +3,7 @@
 #include "rec/gui/Geometry.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
+#include "rec/gui/Dialog.h"
 #include "rec/gui/icon/ZoomInCursor.svg.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
@@ -14,6 +15,9 @@
 #include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/WaveformModel.h"
 #include "rec/widget/waveform/WaveformPainter.h"
+
+#include "rec/slow/Instance.h"  // TODO: remove this!
+#include "rec/slow/CurrentFile.h"  // TODO: remove this!
 
 namespace rec {
 namespace widget {
@@ -267,6 +271,11 @@ void Waveform::setSelected(int index, bool selected) {
 
 void Waveform::translateAll() {
   LOOP_POINT_TOOLTIP.translate();
+}
+
+// TODO: get rid of dependency on Slow!
+void Waveform::mouseDoubleClick(const MouseEvent&) {
+  gui::dialog::openOneFile(slow::Instance::getInstance()->currentFile_.get());
 }
 
 }  // namespace waveform

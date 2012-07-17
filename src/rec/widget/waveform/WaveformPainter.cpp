@@ -31,6 +31,7 @@ WaveformPainter::WaveformPainter(Waveform* w)
 WaveformPainter::~WaveformPainter() {}
 
 void WaveformPainter::drawEmpty(Graphics& g) {
+  g.fillAll(juce::Colours::white);
   g.setFont(14.0f);
   g.drawFittedText("Drop a file here or double-click to open a new file",
                    0, 0, waveform_->getWidth(),

@@ -3,6 +3,7 @@
 #include "rec/data/DataMap.h"
 #include "rec/data/Opener.h"
 #include "rec/util/file/VirtualFile.pb.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace data {

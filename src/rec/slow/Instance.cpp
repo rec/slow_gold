@@ -169,7 +169,7 @@ void Instance::startup() {
     DLOG(INFO) << "Before " << vf.ShortDebugString();
     File shadow = file::getShadowDirectory(vf);
     DLOG(INFO) << "During " << str(shadow);
-    vf = file::toCompactVirtualFile(shadow);
+    vf = file::toVirtualFile(shadow);
     DLOG(INFO) << "After " << vf.ShortDebugString();
   }
   data::setProto(vf);

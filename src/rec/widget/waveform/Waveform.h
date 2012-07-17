@@ -41,6 +41,8 @@ class Waveform : public Component,
   virtual ~Waveform();
   void init();
 
+  virtual void mouseDoubleClick(const MouseEvent&);
+
   static const CursorProto& defaultTimeCursor();
 
   void setAudioThumbnail(juce::AudioThumbnail*);
