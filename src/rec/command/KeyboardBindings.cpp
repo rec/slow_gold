@@ -20,8 +20,8 @@ namespace {
 
 VirtualFile makeKeyboardVirtualFile() {
   VirtualFile f;
-  f.set_type(VirtualFile::VOLUME);
-  f.add_path("KeyPresses");
+  f.set_type(VirtualFile::GLOBAL);
+  f.add_path("KeyboardBinding");
   return f;
 };
 

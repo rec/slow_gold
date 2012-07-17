@@ -7,6 +7,9 @@ namespace file {
 
 namespace {
 
+const char* const OLD_KEYBOARD_NAME = "KeyPresses";
+const char* const NEW_KEYBOARD_NAME = "KeyboardBinding";
+
 typedef VirtualFile::Type Type;
 
 struct Compare {
@@ -41,59 +44,46 @@ File getShadow(Type type) {
   return file::getShadowDirectory(makeVirtualFile(type));
 }
 
+void mkdir(const File& f) {
+  if (!f.exists()) {
+    if (!f.createDirectory())
+      LOG(DFATAL) << "Can't create directory " << str(f);
+  }
+}
+
 static const bool ENABLE_MOVE = true;
 
-void moveTypeDirectory(Type type, const File& special) {
-  File target = getShadow(type);
-  VirtualFile sourcevf = file::toVirtualFile(special, false);
-  File source = file::getShadowDirectory(sourcevf);
-  if (!source.exists())
-    return;
-
-  if (ENABLE_MOVE) {
-    if (!source.moveFileTo(target))
-      LOG(ERROR) << "Couldn't move file " << str(source) << " to " << str(target);
+void doMove(const File& source, const File& target) {
+  if (source.exists()) {
+    if (ENABLE_MOVE) {
+      if (!source.moveFileTo(target))
+        LOG(ERROR) << "Couldn't move file " << str(source) << " to " << str(target);
+    }
+    DLOG(INFO) << "Move " << str(source) << " to " << str(target);
   }
-  DLOG(INFO) << "Move " << str(source) << " to " << str(target);
+}
+
+void moveTypeDirectory(Type type, const File& special) {
+  VirtualFile sourcevf = file::toVirtualFile(special, false);
+  doMove(file::getShadowDirectory(sourcevf), getShadow(type));
 }
 
 void moveGlobalFiles() {
   File target = getShadow(VirtualFile::GLOBAL);
-  if (!target.exists()) {
-    if (!target.createDirectory()) {
-      LOG(DFATAL) << "Couldn't create global directory";
-      return;
-    }
-  }
+  mkdir(target);
 
   File appDir = target.getParentDirectory();
   for (DirectoryIterator it(appDir, false, "*", File::findFiles); it.next(); ) {
-    File f = it.getFile();
+    File f(it.getFile());
     File targetFile(target.getChildFile(f.getFileName()));
-    if (ENABLE_MOVE) {
-      if (!f.moveFileTo(targetFile))
-        LOG(ERROR) << "Couldn't move file " << str(f) << " to " << str(target);
-    }
-    DLOG(INFO) << "Moving " << str(f) << " to " << str(targetFile);
+    doMove(f, targetFile);
   }
 }
 
-#if JUCE_MAC
-void moveVolumeFiles() {
-  File volFile = getShadow(VirtualFile::VOLUME);
-  File f = volFile.getChildFile("Volumes");
-  if (f.exists()) {
-    for (DirectoryIterator it(f, false, "*", File::findFilesAndDirectories); it.next(); ) {
-      File f = it.getFile();
-      File targetFile(volFile.getChildFile(f.getFileName()));
-      if (ENABLE_MOVE) {
-        if (!f.moveFileTo(targetFile))
-          LOG(ERROR) << "Couldn't move file " << str(f) << " to " << str(targetFile);
-      }
-    }
-  }
+void moveKeyboardFile() {
+  File f = getShadow(VirtualFile::VOLUME).getChildFile(OLD_KEYBOARD_NAME);
+  doMove(f, getShadow(VirtualFile::GLOBAL).getChildFile(NEW_KEYBOARD_NAME));
 }
-#endif
 
 }  // namespace
 
@@ -119,9 +109,7 @@ void moveOldAbsoluteDirectoriesToTypeRelative() {
   for (TypeMap::const_iterator i = map().begin(); i != map().end(); ++i)
     moveTypeDirectory(i->first, i->second.first);
   moveGlobalFiles();
-#if JUCE_MAC
-  moveVolumeFiles();
-#endif
+  moveKeyboardFile();
 }
 
 }  // namespace file
