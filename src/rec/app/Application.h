@@ -12,7 +12,10 @@ class Application : public GenericApplication {
   Application(ApplicationFunction init, ApplicationFunction shutdown)
       : GenericApplication(init, shutdown) {
     google::InitGoogleLogging(str(name()).c_str());
-
+#if JUCE_DEBUG && JUCE_MAC
+    FLAGS_logtostderr = true;
+#endif
+    LOG(INFO) << "Logging initialized";
 #if 0
     google::SetVLOGLevel("*", 2);
     VLOG(1) << 1;

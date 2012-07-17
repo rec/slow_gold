@@ -78,6 +78,28 @@ void moveGlobalFiles() {
   }
 }
 
+#if JUCE_MAC
+void moveVolumeFiles() {
+  File volFile = getShadow(VirtualFile::VOLUME);
+  File f = volFile.getChildFile("Volumes");
+  DLOG(INFO) << str(f);
+  if (f.exists()) {
+    for (DirectoryIterator it(f, false, "*", File::findFilesAndDirectories); it.next(); ) {
+      File f = it.getFile();
+      File targetFile(volFile.getChildFile(f.getFileName()));
+      if (ENABLE_MOVE) {
+        if (!f.moveFileTo(targetFile))
+          LOG(ERROR) << "Couldn't move file " << str(f) << " to " << str(targetFile);
+      }
+      DLOG(INFO) << "Moving " << str(f) << " to " << str(targetFile);
+    }
+  } else {
+    DLOG(INFO) << "Oops";
+  }
+}
+
+#endif
+
 }  // namespace
 
 const File& getFileTypeDirectory(Type type) {
@@ -102,6 +124,9 @@ void moveOldAbsoluteDirectoriesToTypeRelative() {
   for (TypeMap::const_iterator i = map().begin(); i != map().end(); ++i)
     moveTypeDirectory(i->first, i->second.first);
   moveGlobalFiles();
+#if JUCE_MAC
+  moveVolumeFiles();
+#endif
 }
 
 }  // namespace file
