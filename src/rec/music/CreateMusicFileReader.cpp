@@ -52,9 +52,12 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata,
   String filename = str(file.volume_name());
   if (metadata) {
     ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename, error));
-    if (cdr)
-      *metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
+    if (cdr) {
+      Album album = cd::getCachedAlbum(file, cdr->getTrackOffsets());
+      *metadata = rec::music::getTrack(album, track);
+    }
   }
+
   return cd::createCDTrackReader(filename, track);
 }
 
@@ -65,7 +68,6 @@ AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata)
 
   return reader.transfer();
 }
-
 
 }  // namespace
 

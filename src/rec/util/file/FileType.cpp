@@ -82,7 +82,6 @@ void moveGlobalFiles() {
 void moveVolumeFiles() {
   File volFile = getShadow(VirtualFile::VOLUME);
   File f = volFile.getChildFile("Volumes");
-  DLOG(INFO) << str(f);
   if (f.exists()) {
     for (DirectoryIterator it(f, false, "*", File::findFilesAndDirectories); it.next(); ) {
       File f = it.getFile();
@@ -91,13 +90,9 @@ void moveVolumeFiles() {
         if (!f.moveFileTo(targetFile))
           LOG(ERROR) << "Couldn't move file " << str(f) << " to " << str(targetFile);
       }
-      DLOG(INFO) << "Moving " << str(f) << " to " << str(targetFile);
     }
-  } else {
-    DLOG(INFO) << "Oops";
   }
 }
-
 #endif
 
 }  // namespace

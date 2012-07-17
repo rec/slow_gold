@@ -15,7 +15,11 @@ CommandMapEditorMappingItem* CommandMapCategoryItem::createItemComponent(
 }
 
 void CommandMapCategoryItem::paintItem(Graphics& g, int width, int height) {
-  g.setFont (height * 0.6f, Font::bold);
+  Font f = g.getCurrentFont();
+  f.setHeight(height * 0.6f);
+  f.setTypefaceStyle("bold");
+
+  g.setFont (f);
   g.setColour (owner.findColour (CommandMapEditor::textColourId));
 
   g.drawText (categoryName,
