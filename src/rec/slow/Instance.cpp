@@ -165,14 +165,8 @@ void Instance::startup() {
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
   VirtualFile vf = data::getProto<VirtualFile>();
-  if (vf.type() != VirtualFile::NONE) {
-    DLOG(INFO) << "Before " << vf.ShortDebugString();
-    File real = file::toRealFile(vf);
-    DLOG(INFO) << "During " << str(real);
-    vf = file::toVirtualFile(real);
-    DLOG(INFO) << "After " << vf.ShortDebugString();
-    data::setProto(vf);
-  }
+  if (vf.type() != VirtualFile::NONE)
+    data::setProto(file::toVirtualFile(file::toRealFile(vf)));
 
   {
     MessageManagerLock l;

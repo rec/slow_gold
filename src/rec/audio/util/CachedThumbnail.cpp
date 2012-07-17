@@ -41,7 +41,6 @@ void CachedThumbnail::write(const File& file) {
 void CachedThumbnail::read(const File& file, SampleRate sampleRate,
                            SampleTime sampleLength, int channels) {
   thumbnail_.reset(channels, sampleRate, sampleLength);
-  DLOG(INFO) << str(file);
 
 #ifndef SLOWGOLD_SAVE_DISABLED
   if (file.exists()) {

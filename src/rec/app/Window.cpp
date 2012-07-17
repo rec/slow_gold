@@ -17,7 +17,6 @@ Window::Window(GenericApplication* application,
 }
 
 void Window::initialise() {
-  ModifierKeys keys = ModifierKeys::getCurrentModifiersRealtime();
   constructInstance();
 
 #if JUCE_MAC

@@ -31,6 +31,7 @@ void GenericApplication::initialise(const String&) {
   //     File::userApplicationDataDirectory).getChildFile("Logs"));
 
   setApplicationName(name());
+
   audio::format::mpg123::initializeOnce();
   if (initializer_)
     initializer_(this);

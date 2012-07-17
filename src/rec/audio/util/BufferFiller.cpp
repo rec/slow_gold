@@ -39,7 +39,6 @@ SampleTime BufferFiller::setReader(const VirtualFile& f,
                                    AudioFormatReader* reader) {
   Lock l(lock_);
   DCHECK(reader);
-  DLOG(INFO) << f.ShortDebugString();
   DCHECK(reader->lengthInSamples);
   file_ = getShadowDirectory(f).getChildFile(FILENAME);
   thumbnail_->read(file_, reader->sampleRate, reader->lengthInSamples);

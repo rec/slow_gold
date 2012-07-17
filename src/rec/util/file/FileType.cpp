@@ -53,9 +53,8 @@ void moveTypeDirectory(Type type, const File& special) {
   if (ENABLE_MOVE) {
     if (!source.moveFileTo(target))
       LOG(ERROR) << "Couldn't move file " << str(source) << " to " << str(target);
-  } else {
-    DLOG(INFO) << "Move " << str(source) << " to " << str(target);
   }
+  DLOG(INFO) << "Move " << str(source) << " to " << str(target);
 }
 
 void moveGlobalFiles() {
@@ -74,9 +73,8 @@ void moveGlobalFiles() {
     if (ENABLE_MOVE) {
       if (!f.moveFileTo(targetFile))
         LOG(ERROR) << "Couldn't move file " << str(f) << " to " << str(target);
-    } else {
-      DLOG(INFO) << "Moving " << str(f) << " to " << str(targetFile);
     }
+    DLOG(INFO) << "Moving " << str(f) << " to " << str(targetFile);
   }
 }
 

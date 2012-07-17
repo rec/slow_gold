@@ -84,8 +84,6 @@ void SlowWindow::init() {
 }
 
 void SlowWindow::constructInstance() {
-  file::moveOldAbsoluteDirectoriesToTypeRelative();
-
   instanceDeleter_.reset(new slow::Instance(this));
   instance_ = instanceDeleter_.get();
   instance_->init();
@@ -145,6 +143,8 @@ void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
 using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
+  // TODO:  logging doesn't work if called in this routine...
+  file::moveOldAbsoluteDirectoriesToTypeRelative();
   registerProtos();
   translateAll();
 }
