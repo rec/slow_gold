@@ -24,9 +24,9 @@ inline const VirtualFile makeVirtualFile(VirtualFile::Type type) {
   return vf;
 }
 
-const int MAX_WINDOWS_DIRECTORY_SIZE = 260;
-const int MAX_FILENANE_LENGTH = 60;
-const int MAX_SHADOW_DIRECTORY_LENGTH =
+const uint MAX_WINDOWS_DIRECTORY_SIZE = 260;
+const uint MAX_FILENANE_LENGTH = 60;
+const uint MAX_SHADOW_DIRECTORY_LENGTH =
   MAX_WINDOWS_DIRECTORY_SIZE - MAX_FILENANE_LENGTH;
 
 }  // namespace file

@@ -16,16 +16,22 @@ namespace file {
 
 namespace {
 
+#if JUCE_WINDOWS
+String removeColon(const String& p) {
+  return p.endsWithChar(':') ? p.dropLastCharacters(1) : p;
+}
+#endif
+
 void readVolumeName(const File& f, VirtualFile* vf) {
   int last = vf->path_size() - 1;
   const string& root = vf->path(last);
 
 #if JUCE_WINDOWS
   String s = f.getFileName();
-  if (s.empty())
-    LOG(DFATAL) << "Empty " << vf->ShortDebugString() << ", " << str(f);
+  if (!s.length())
+    LOG(DFATAL) << "Empty " << vf->ShortDebugString();
   else
-    vf->set_volume(removeColon(s));
+    vf->set_volume_name(str(removeColon(s)));
 
 #elif JUCE_MAC
   DCHECK(!f.getFileName().length());

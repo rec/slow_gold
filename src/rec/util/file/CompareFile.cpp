@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "rec/util/file/CompareFile.h"
 #include "rec/util/file/VirtualFile.pb.h"
 
