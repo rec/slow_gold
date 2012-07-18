@@ -17,7 +17,7 @@ def randomKey(length):
 
 
 if __name__ == '__main__':
-  first = 10
+  first = 12
   second = 0
   count = 1
   if len(sys.argv) > 1:
