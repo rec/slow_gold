@@ -3,6 +3,7 @@
 #include "rec/data/MessageRegistrarAndMaker.h"
 #include "rec/util/Proto.h"
 #include "rec/util/STL.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace data {
@@ -33,6 +34,7 @@ MessageRegistrarAndMaker::~MessageRegistrarAndMaker() {
 
 void MessageRegistrarAndMaker::registerInstance(const Message& m, bool copy) {
   const string& typeName = getTypeName(m);
+  DCHECK_LT(typeName.size(), file::MAX_FILENANE_LENGTH);
   Registry::iterator i = registry_.find(typeName);
   if (i != registry_.end()) {
     LOG(DFATAL) << "Tried to register the same type twice: " << typeName;

@@ -37,11 +37,6 @@ void readVolumeName(const File& f, VirtualFile* vf) {
 #endif
 }
 
-const int MAX_WINDOWS_DIRECTORY_SIZE = 260;
-const int MAX_FILENANE_LENGTH = 60;
-const int MAX_SHADOW_DIRECTORY_LENGTH =
-  MAX_WINDOWS_DIRECTORY_SIZE - MAX_FILENANE_LENGTH;
-
 static File getRoot(const VirtualFile& vf) {
   VirtualFile::Type type = vf.type();
   if (type != VirtualFile::VOLUME)
