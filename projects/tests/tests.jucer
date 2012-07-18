@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="kYcB33iwl" name="tests">
+  <MAINGROUP id="SlqL4yens" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1079,6 +1079,10 @@
               name="FormatTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="PBRyregJE"
               name="FormatTime.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/GetEnv.cpp" id="N0V0rBmbH"
+              name="GetEnv.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/GetEnv.h" id="b9SotsyuC"
+              name="GetEnv.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/HasLock.h" id="N13pVQA3v"
               name="HasLock.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/HasThread.h" id="uRfjL2ayb"
@@ -1613,7 +1617,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="R0Jio0G2X" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="rxd8aXjZT" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

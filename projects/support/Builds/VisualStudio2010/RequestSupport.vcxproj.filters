@@ -1057,6 +1057,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp">
       <Filter>RequestSupport\rec\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\GetEnv.cpp">
+      <Filter>RequestSupport\rec\util</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp">
       <Filter>RequestSupport\rec\util</Filter>
     </ClCompile>
@@ -3343,6 +3346,9 @@
       <Filter>RequestSupport\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h">
+      <Filter>RequestSupport\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\GetEnv.h">
       <Filter>RequestSupport\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\HasLock.h">
