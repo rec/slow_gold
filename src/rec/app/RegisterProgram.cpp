@@ -1,7 +1,6 @@
 #include <map>
 
 #include "rec/app/RegisterProgram.h"
-#include "rec/util/GetEnv.h"
 
 namespace rec {
 namespace app {
@@ -10,6 +9,10 @@ namespace {
 
 const bool USE_POSTDATA = false;
 const char* const EMPTY_PARAMETER = "NONE";
+
+String getEnv(const String& name, const String& defaultValue) {
+  return juce::SystemStats::getEnvironmentVariable(name, defaultValue);
+}
 
 }  // namespace
 
