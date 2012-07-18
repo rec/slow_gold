@@ -70,7 +70,7 @@ const File getShadowDirectory(const VirtualFile& vf) {
     len += (vf.path(i).size() + 1);  // Include one for the path separator.
 
   // Skip path entries until we're short enough.
-  int i = 0;
+  uint i = 0;
   for (; len > MAX_SHADOW_DIRECTORY_LENGTH && i < vf.path_size(); ++i)
     len -= (vf.path(i).size() + 1);
 

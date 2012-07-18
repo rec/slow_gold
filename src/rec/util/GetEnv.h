@@ -8,7 +8,6 @@ namespace util {
 
 String getEnv(const char* name, const String& dflt);
 
-
 }  // namespace util
 }  // namespace rec
 

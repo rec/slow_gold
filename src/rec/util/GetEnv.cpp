@@ -11,7 +11,7 @@ namespace util {
 
 #define USE_WINDOWS_GETENV 0
 
-inline String getEnv(const char* name, const String& dflt) {
+String getEnv(const char* name, const String& dflt) {
 #if USE_WINDOWS_GETENV && JUCE_WINDOWS
   static const int MAX_ENV = 1024;
   char buffer[MAX_ENV];
