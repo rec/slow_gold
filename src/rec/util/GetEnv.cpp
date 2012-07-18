@@ -9,7 +9,7 @@
 namespace rec {
 namespace util {
 
-#define USE_WINDOWS_GETENV 0
+#define USE_WINDOWS_GETENV 1
 
 String getEnv(const char* name, const String& dflt) {
 #if USE_WINDOWS_GETENV && JUCE_WINDOWS
