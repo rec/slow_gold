@@ -5,7 +5,7 @@ import re
 import sys
 
 VOWELS = re.compile('([aeiou]+)')
-WORD = re.compile('\W+')
+WORD = re.compile('[^a-zA-Z]')
 
 class Accum(object):
   def __init__(self):
@@ -72,7 +72,7 @@ class Distribution(object):
   def addSentences(self, sentences):
     for s in sentences:
       for word in WORD.split(s):
-        parts = filter(None, VOWELS.split(word))
+        parts = filter(None, VOWELS.split(word.lower()))
         if parts:
           self.addWordParts(parts)
 
@@ -102,7 +102,9 @@ class Distribution(object):
 
 if __name__ == '__main__':
   d = Distribution()
-  d.addSentences(sys.argv[1:])
+  f = sys.argv[1]
+  print f
+  d.addSentences(open(f, 'r'))
   print d
 
   for i in xrange(20):
