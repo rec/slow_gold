@@ -28,8 +28,7 @@ const app::RegisterProgram::NamedFunction FUNCS[] = {
 };
 
 const char* const URLS[] = {
-  "http://slowgold.com/registration/",
-  "http://slowgold.w07.winhost.com/registration/",
+  "http://woodshedadmin.com/registration/",
 };
 
 }  // namespace
