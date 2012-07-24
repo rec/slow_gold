@@ -119,6 +119,13 @@ class BufferManagerDesc : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 chunk_size() const;
   inline void set_chunk_size(::google::protobuf::uint32 value);
   
+  // optional uint32 min_preload_size = 5 [default = 1024];
+  inline bool has_min_preload_size() const;
+  inline void clear_min_preload_size();
+  static const int kMinPreloadSizeFieldNumber = 5;
+  inline ::google::protobuf::uint32 min_preload_size() const;
+  inline void set_min_preload_size(::google::protobuf::uint32 value);
+  
   // @@protoc_insertion_point(class_scope:rec.audio.BufferManagerDesc)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -128,11 +135,12 @@ class BufferManagerDesc : public ::google::protobuf::Message {
   double reallocate_shrinkage_;
   ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;
   ::google::protobuf::uint32 chunk_size_;
+  ::google::protobuf::uint32 min_preload_size_;
   friend void  protobuf_AddDesc_rec_2faudio_2futil_2fBufferManager_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2futil_2fBufferManager_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2futil_2fBufferManager_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -217,6 +225,22 @@ inline ::google::protobuf::uint32 BufferManagerDesc::chunk_size() const {
 inline void BufferManagerDesc::set_chunk_size(::google::protobuf::uint32 value) {
   _set_bit(3);
   chunk_size_ = value;
+}
+
+// optional uint32 min_preload_size = 5 [default = 1024];
+inline bool BufferManagerDesc::has_min_preload_size() const {
+  return _has_bit(4);
+}
+inline void BufferManagerDesc::clear_min_preload_size() {
+  min_preload_size_ = 1024u;
+  _clear_bit(4);
+}
+inline ::google::protobuf::uint32 BufferManagerDesc::min_preload_size() const {
+  return min_preload_size_;
+}
+inline void BufferManagerDesc::set_min_preload_size(::google::protobuf::uint32 value) {
+  _set_bit(4);
+  min_preload_size_ = value;
 }
 
 

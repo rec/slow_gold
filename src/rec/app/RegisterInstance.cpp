@@ -54,7 +54,5 @@ String RegisterInstance::resultMatcher() const {
   return ACCEPTANCE;
 }
 
-
 }  // namespace app
 }  // namespace rec
-

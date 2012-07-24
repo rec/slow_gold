@@ -2,7 +2,6 @@
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/stretch/Implementation.h"
 #include "rec/util/Math.h"
-#include "rec/util/block/Block.h"
 
 namespace rec {
 namespace audio {

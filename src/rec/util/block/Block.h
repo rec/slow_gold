@@ -79,7 +79,6 @@ inline Size getSize(const BlockSet& set) {
   return size;
 }
 
-
 inline bool isBlock(const BlockSet& set, const Block& block) {
   return (set.size() == 1) && (*set.begin() == block);
 }

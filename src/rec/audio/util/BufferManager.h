@@ -14,25 +14,36 @@
 namespace rec {
 namespace audio {
 
-template <typename Frame>
-  vector<Frame> frames_;
+template <typename Frame> vector<Frame> frames_;
 
 class TimeMap {
  public:
   TimeMap() : enabled_(false) {}
 
   void add(SampleTime from, SampleTime to, SampleTime length) {
-    from_[-from] = Range(to, to + length);
-    to_[-to] = Range(from, from + length);
+    from_[from] = Range(to, to + length);
+    to_[to] = Range(from, from + length);
   }
 
  private:
   typedef Range<SampleTime> TimeRange;
-  typedef std::map<SampleTime, TimeRange> RangeMap;
+  class Compare {
+    bool operator()(const TimeRange& x, const TimeRange& y) { return x > y; }
+  };
+
+  typedef std::map<SampleTime, TimeRange, Compare> RangeMap;
 
   static SampleTime get(const RangeMap& map, SampleTime time) {
-    Map::const_iterator i = map_->lower_bound(-time);
-
+    // Get the first element with a start time not less than the given time.
+    Map::const_iterator i = map_->lower_bound(time);
+    if (i != map_->end()) {
+      SampleTime diff = time - i->first;
+      DCHECK_GE(diff, 0);
+      SampleTime length = i->second.size();
+      if (diff < length)
+        return i->second.begin_ + diff;
+    }
+    return -1;
   }
 
   RangeMap from_;
@@ -40,11 +51,26 @@ class TimeMap {
   bool enabled_;
 };
 
-
+// Services I need:
+// requestTime
+// fillOnce
+// fillBuffer
 class BufferManager {
  public:
   BufferManager();
 
+  void requestTime(SampleTime time) {
+    Lock l(requestLock_);
+    requestedTime_ = time;
+  }
+
+  void fillOnce() {
+  }
+
+  void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) {
+  }
+
+ private:
   ptr<Source> source_;
   LoopPointList loopPoints_;
 
@@ -56,6 +82,7 @@ class BufferManager {
   Thumbnail thumbnail_;
 
   CriticalSection lock_;
+  CriticalSection requestLock_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(BufferManager);
 };

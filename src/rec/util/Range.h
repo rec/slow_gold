@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/base/base.h"
+#include "rec/util/block/Block.h"
 
 namespace rec {
 namespace util {
@@ -18,9 +18,16 @@ struct Range {
   Range(Type b, Type e) : begin_(b), end_(e) {}
 
   typedef std::set<Range> Set;
+  typedef std::vector<Range> Vector;
+
   Range(const Set& s) : begin_(s.empty() ? Type(0) : s.begin()->begin_),
                         end_(s.empty() ? Type(0) : s.rbegin()->end_) {
   }
+
+  Range(const Vector& s) : begin_(s.empty() ? Type(0) : s.front()->begin_),
+                           end_(s.empty() ? Type(0) : s.back()->end_) {
+  }
+
 
   void clear() { begin_ = end_ = Type(0); }
   Type size() const { return end_ - begin_; }
@@ -76,6 +83,13 @@ struct Range {
     return ranges;
   }
 
+  Type compare(const Range<Type>& that) {
+    if (Type d = this->begin_ - that->begin_)
+      return d;
+    else
+      return this->end_ - that->end_;
+  }
+
   const String toString() const {
     return String(begin_) + "-" + String(end_);
   }
@@ -83,6 +97,45 @@ struct Range {
  private:
   JUCE_LEAK_DETECTOR(Range);
 };
+
+template <typename Container, typename Type>
+bool contains(const Container& c, Type x) {
+  for (typename Container::const_iterator i = c.begin(); i != c.end(); ++i) {
+    if (i->contains(x))
+      return true;
+  }
+
+  return false;
+}
+
+template <typename Container, typename Type>
+Type doCompareOrdered(const Container& x, const Container& y) {
+  BlockSet::const_iterator i = x.begin();
+  BlockSet::const_iterator j = y.begin();
+
+  for (;;) {
+    if (i == x.end())
+      return (j == y.end()) ? 0 : -1;
+
+    if (j == y.end())
+      return 1;
+
+    if (Size c = compare(*i++, *j++))
+      return c;
+  }
+}
+
+template <typename Type>
+Type compareOrdered(const Range<Type>::Set& x, const Range<Type>::Set& y) {
+  return doCompareOrdered<Range<Type>::Set, Type>(x, y);
+}
+
+template <typename Type>
+Type compareOrdered(const Range<Type>::Vector& x,
+                    const Range<Type>::Vector& y) {
+  return doCompareOrdered<Range<Type>::Vector, Type>(x, y);
+}
+
 
 }  // namespace util
 }  // namespace rec

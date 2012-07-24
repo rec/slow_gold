@@ -29,11 +29,12 @@ void protobuf_AssignDesc_rec_2faudio_2futil_2fBufferManager_2eproto() {
       "rec/audio/util/BufferManager.proto");
   GOOGLE_CHECK(file != NULL);
   BufferManagerDesc_descriptor_ = file->message_type(0);
-  static const int BufferManagerDesc_offsets_[4] = {
+  static const int BufferManagerDesc_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BufferManagerDesc, max_size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BufferManagerDesc, reallocate_shrinkage_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BufferManagerDesc, source_samples_per_thumbnail_sample_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BufferManagerDesc, chunk_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BufferManagerDesc, min_preload_size_),
   };
   BufferManagerDesc_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -77,10 +78,11 @@ void protobuf_AddDesc_rec_2faudio_2futil_2fBufferManager_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\"rec/audio/util/BufferManager.proto\022\tre"
-    "c.audio\"\223\001\n\021BufferManagerDesc\022\020\n\010max_siz"
+    "c.audio\"\263\001\n\021BufferManagerDesc\022\020\n\010max_siz"
     "e\030\001 \001(\004\022!\n\024reallocate_shrinkage\030\002 \001(\001:\0030"
     ".9\0220\n#source_samples_per_thumbnail_sampl"
-    "e\030\003 \001(\r:\003512\022\027\n\nchunk_size\030\004 \001(\r:\003512", 197);
+    "e\030\003 \001(\r:\003512\022\027\n\nchunk_size\030\004 \001(\r:\003512\022\036\n"
+    "\020min_preload_size\030\005 \001(\r:\0041024", 229);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/util/BufferManager.proto", &protobuf_RegisterTypes);
   BufferManagerDesc::default_instance_ = new BufferManagerDesc();
@@ -103,6 +105,7 @@ const int BufferManagerDesc::kMaxSizeFieldNumber;
 const int BufferManagerDesc::kReallocateShrinkageFieldNumber;
 const int BufferManagerDesc::kSourceSamplesPerThumbnailSampleFieldNumber;
 const int BufferManagerDesc::kChunkSizeFieldNumber;
+const int BufferManagerDesc::kMinPreloadSizeFieldNumber;
 #endif  // !_MSC_VER
 
 BufferManagerDesc::BufferManagerDesc()
@@ -125,6 +128,7 @@ void BufferManagerDesc::SharedCtor() {
   reallocate_shrinkage_ = 0.9;
   source_samples_per_thumbnail_sample_ = 512u;
   chunk_size_ = 512u;
+  min_preload_size_ = 1024u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -163,6 +167,7 @@ void BufferManagerDesc::Clear() {
     reallocate_shrinkage_ = 0.9;
     source_samples_per_thumbnail_sample_ = 512u;
     chunk_size_ = 512u;
+    min_preload_size_ = 1024u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -233,6 +238,22 @@ bool BufferManagerDesc::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(40)) goto parse_min_preload_size;
+        break;
+      }
+      
+      // optional uint32 min_preload_size = 5 [default = 1024];
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_min_preload_size:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &min_preload_size_)));
+          _set_bit(4);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -275,6 +296,11 @@ void BufferManagerDesc::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->chunk_size(), output);
   }
   
+  // optional uint32 min_preload_size = 5 [default = 1024];
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->min_preload_size(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -301,6 +327,11 @@ void BufferManagerDesc::SerializeWithCachedSizes(
   // optional uint32 chunk_size = 4 [default = 512];
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->chunk_size(), target);
+  }
+  
+  // optional uint32 min_preload_size = 5 [default = 1024];
+  if (_has_bit(4)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->min_preload_size(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -338,6 +369,13 @@ int BufferManagerDesc::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->chunk_size());
+    }
+    
+    // optional uint32 min_preload_size = 5 [default = 1024];
+    if (has_min_preload_size()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->min_preload_size());
     }
     
   }
@@ -379,6 +417,9 @@ void BufferManagerDesc::MergeFrom(const BufferManagerDesc& from) {
     if (from._has_bit(3)) {
       set_chunk_size(from.chunk_size());
     }
+    if (from._has_bit(4)) {
+      set_min_preload_size(from.min_preload_size());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -406,6 +447,7 @@ void BufferManagerDesc::Swap(BufferManagerDesc* other) {
     std::swap(reallocate_shrinkage_, other->reallocate_shrinkage_);
     std::swap(source_samples_per_thumbnail_sample_, other->source_samples_per_thumbnail_sample_);
     std::swap(chunk_size_, other->chunk_size_);
+    std::swap(min_preload_size_, other->min_preload_size_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

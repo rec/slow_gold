@@ -5,4 +5,5 @@ message BufferManagerDesc {
   optional double reallocate_shrinkage = 2 [default = 0.9];
   optional uint32 source_samples_per_thumbnail_sample = 3 [default = 512];
   optional uint32 chunk_size = 4 [default = 512];
+  optional uint32 min_preload_size = 5 [default = 1024];
 };
