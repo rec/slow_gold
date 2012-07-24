@@ -9,9 +9,21 @@
 namespace rec {
 namespace audio {
 
+typedef Range<SampleTime> SampleTimeRange;
+typedef SampleTimeRange::Set SampleTimeSet;
+typedef SampleTimeRange::Vector SampleTimeVector;
+
 const block::BlockSet getTimeSelection(const LoopPointList&,
                                        bool isSelected = true,
                                        bool allowEmpty = false);
+
+const SampleTimeSet getTimeSelectionSet(const LoopPointList&,
+                                        bool isSelected = true,
+                                        bool allowEmpty = false);
+
+const SampleTimeSet getTimeSelectionVector(const LoopPointList&,
+                                           bool isSelected = true,
+                                           bool allowEmpty = false);
 
 bool isCloseTo(const LoopPointList&, SampleTime);
 
