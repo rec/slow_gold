@@ -33,12 +33,6 @@ struct Range {
   Type size() const { return end_ - begin_; }
   bool empty() const { return !size(); }
 
-  bool contains(Type t) const {
-    return (begin_ != end_) && (begin_ < end_ ?
-                                (begin_ <= t) && (t < end_) :
-                                (begin_ <= t) || (t < end_));
-  }
-
   Type restrict(Type x) const {
     return (x < begin_) ? begin_ : (x > end_) ? end_ : x;
   }
@@ -98,10 +92,18 @@ struct Range {
   JUCE_LEAK_DETECTOR(Range);
 };
 
+template <typename Type>
+bool contains(const Range<Type>& r, Type t) {
+  // TODO: wait - do ranges wrap around...??
+  return (r.begin_ != r.end_) && (r.begin_ < r.end_ ?
+                                  (r.begin_ <= t) && (r.t < r.end_) :
+                                  (r.begin_ <= t) || (r.t < r.end_));
+}
+
 template <typename Container, typename Type>
 bool contains(const Container& c, Type x) {
   for (typename Container::const_iterator i = c.begin(); i != c.end(); ++i) {
-    if (i->contains(x))
+    if (contains(*i, x))
       return true;
   }
 
@@ -110,8 +112,8 @@ bool contains(const Container& c, Type x) {
 
 template <typename Container, typename Type>
 Type doCompareOrdered(const Container& x, const Container& y) {
-  BlockSet::const_iterator i = x.begin();
-  BlockSet::const_iterator j = y.begin();
+  typename Container::const_iterator i = x.begin();
+  typename Container::const_iterator j = y.begin();
 
   for (;;) {
     if (i == x.end())
@@ -126,16 +128,16 @@ Type doCompareOrdered(const Container& x, const Container& y) {
 }
 
 template <typename Type>
-Type compareOrdered(const Range<Type>::Set& x, const Range<Type>::Set& y) {
+Type compareOrdered(const typename Range<Type>::Set& x,
+                    const typename Range<Type>::Set& y) {
   return doCompareOrdered<Range<Type>::Set, Type>(x, y);
 }
 
 template <typename Type>
-Type compareOrdered(const Range<Type>::Vector& x,
-                    const Range<Type>::Vector& y) {
+Type compareOrdered(const typename Range<Type>::Vector& x,
+                    const typename Range<Type>::Vector& y) {
   return doCompareOrdered<Range<Type>::Vector, Type>(x, y);
 }
-
 
 }  // namespace util
 }  // namespace rec
