@@ -2,8 +2,9 @@
 #define __REC_UTIL_RANGE__
 
 #include <set>
+#include <vector>
 
-#include "rec/util/block/Block.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace util {
@@ -14,31 +15,14 @@ struct Range {
   Type end_;
 
   Range() { clear(); }
-  Range(Type b) : begin_(b), end_(b + 1) {}
-  Range(Type b, Type e) : begin_(b), end_(e) {}
+  Range(Type b, Type e) : begin_(b), end_(e) { DCHECK_LE(b, e); }
 
   typedef std::set<Range> Set;
   typedef std::vector<Range> Vector;
 
-  Range(const Set& s) : begin_(s.empty() ? Type(0) : s.begin()->begin_),
-                        end_(s.empty() ? Type(0) : s.rbegin()->end_) {
-  }
-
-  Range(const Vector& s) : begin_(s.empty() ? Type(0) : s.front()->begin_),
-                           end_(s.empty() ? Type(0) : s.back()->end_) {
-  }
-
-
   void clear() { begin_ = end_ = Type(0); }
   Type size() const { return end_ - begin_; }
   bool empty() const { return !size(); }
-
-  Type restrict(Type x) const {
-    return (x < begin_) ? begin_ : (x > end_) ? end_ : x;
-  }
-
-  Type toY(Type x, Type ySize) const { return ySize * (x - begin_) / size(); }
-  Type toX(Type y, Type ySize) const { return begin_ + (y * size()) / ySize; }
 
   bool operator<(const Range& x) const {
     return begin_ < x.begin_ || (begin_ == x.begin_ && end_ < x.end_);
@@ -53,37 +37,6 @@ struct Range {
     return begin_ == x.begin_ && end_ == x.end_;
   }
 
-  Range<Type> reversed() const { return Range<Type>(end_, begin_); }
-
-  Range<Type> inverse(Type capacity) const {
-    Range<Type> r((end_ < capacity) ? end_ : end_ - capacity, begin_);
-    if (r.begin_ >= capacity)
-      r.begin_ -= capacity;
-
-    if (r.begin_ > r.end_)
-      r.end_ += capacity;
-
-    return r;
-  }
-
-  vector<Range<Type> > split(Type capacity) {
-    vector<Range<Type> > ranges;
-    if (end_ <= capacity) {
-      ranges.push_back(*this);
-    } else {
-      ranges.push_back(Range<Type>(begin_, capacity));
-      ranges.push_back(Range<Type>(capacity, end_));
-    }
-    return ranges;
-  }
-
-  Type compare(const Range<Type>& that) {
-    if (Type d = this->begin_ - that->begin_)
-      return d;
-    else
-      return this->end_ - that->end_;
-  }
-
   const String toString() const {
     return String(begin_) + "-" + String(end_);
   }
@@ -93,11 +46,44 @@ struct Range {
 };
 
 template <typename Type>
+Type toY(const Range<Type>& r, Type x, Type ySize) {
+  return ySize * (x - r.begin_) / r.size();
+}
+
+template <typename Type>
+Type toX(const Range<Type>& r, Type y, Type ySize) {
+  return r.begin_ + (y * r.size()) / ySize;
+}
+
+template <typename Type>
+Type compare(const Range<Type>& x, const Range<Type>& y) {
+  if (Type d = x.begin_ - y.begin_)
+    return d;
+  else
+    return x.end_ - y.end_;
+}
+
+template <typename Type>
+typename Range<Type>::Vector split(const Range<Type>& range,
+                                   Type capacity) {
+  typename Range<Type>::Vector ranges;
+  if (range.end_ <= capacity) {
+    ranges.push_back(range);
+  } else {
+    ranges.push_back(Range<Type>(range.begin_, capacity));
+    ranges.push_back(Range<Type>(capacity, range.end_));
+  }
+  return ranges;
+}
+
+template <typename Type>
+Type restrict(const Range<Type>& r, Type x) {
+  return (x < r.begin_) ? r.begin_ : (x > r.end_) ? r.end_ : x;
+}
+
+template <typename Type>
 bool contains(const Range<Type>& r, Type t) {
-  // TODO: wait - do ranges wrap around...??
-  return (r.begin_ != r.end_) && (r.begin_ < r.end_ ?
-                                  (r.begin_ <= t) && (r.t < r.end_) :
-                                  (r.begin_ <= t) || (r.t < r.end_));
+  return r.begin_ <= t && t < r.end_;
 }
 
 template <typename Container, typename Type>
@@ -137,6 +123,24 @@ template <typename Type>
 Type compareOrdered(const typename Range<Type>::Vector& x,
                     const typename Range<Type>::Vector& y) {
   return doCompareOrdered<Range<Type>::Vector, Type>(x, y);
+}
+
+template <typename Container, typename Type>
+Range<Type> doMakeRange(const Container& c) {
+  return Range<Type>(c.empty() ? Type(0) : c.begin()->begin_,
+                     c.empty() ? Type(0) : c.rbegin()->end_);
+}
+
+template <typename Type>
+Range<Type> makeRange(const typename Range<Type>::Set& x,
+                      const typename Range<Type>::Set& y) {
+  return doMakeRange<Range<Type>::Set, Type>(x, y);
+}
+
+template <typename Type>
+Range<Type> makeRange(const typename Range<Type>::Vector& x,
+                      const typename Range<Type>::Vector& y) {
+  return doMakeRange<Range<Type>::Vector, Type>(x, y);
 }
 
 }  // namespace util

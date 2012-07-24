@@ -7,7 +7,7 @@
 #include "rec/gui/icon/ZoomInCursor.svg.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"

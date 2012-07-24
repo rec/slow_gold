@@ -4,7 +4,7 @@
 #include "rec/base/RealTime.h"
 #include "rec/base/SampleTime.h"
 #include "rec/base/SampleRate.h"
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 
 namespace rec {
 namespace audio {

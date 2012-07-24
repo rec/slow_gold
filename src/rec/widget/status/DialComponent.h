@@ -4,7 +4,7 @@
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 #include "rec/widget/status/Time.pb.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 

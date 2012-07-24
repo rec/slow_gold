@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 #include "rec/util/Compare.h"
 
 namespace rec {

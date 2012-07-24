@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 
 namespace rec {
 namespace util {

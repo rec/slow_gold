@@ -4,7 +4,7 @@
 #include <algorithm>
 
 #include "rec/widget/tree/NodeItem.h"
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/util/partition/Partition.h"
 

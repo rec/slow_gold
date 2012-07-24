@@ -3,7 +3,7 @@
 
 #include "rec/base/SampleTime.h"
 #include "rec/util/Mode.pb.h"
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 #include "rec/util/Listener.h"
 #include "rec/data/DataListener.h"
 #include "rec/slow/HasInstance.h"

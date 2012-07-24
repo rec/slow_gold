@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_CIRCULAR__
 #define __REC_UTIL_CIRCULAR__
 
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 
 namespace rec {
 namespace util {

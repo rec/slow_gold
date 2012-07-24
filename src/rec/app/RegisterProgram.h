@@ -1,7 +1,7 @@
 #ifndef __REC_APP_REGISTERPROGRAM__
 #define __REC_APP_REGISTERPROGRAM__
 
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 
 namespace rec {
 namespace app {

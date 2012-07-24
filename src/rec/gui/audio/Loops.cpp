@@ -12,7 +12,7 @@
 #include "rec/util/FormatTime.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {

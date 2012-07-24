@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 
 namespace rec {
 namespace util {

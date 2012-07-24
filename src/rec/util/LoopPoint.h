@@ -4,7 +4,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/block/Block.h"
-#include "rec/util/Range.h"
+#include "rec/util/range/Range.h"
 
 namespace rec {
 namespace audio {

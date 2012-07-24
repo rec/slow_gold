@@ -191,7 +191,7 @@ void MouseListener::dragCursor(const MouseEvent& e,
   components()->waveform_->setIsDraggingCursor(true);
   if (!near(cursor->getTime(), 0, 44)) {
     int cursorX = e.getDistanceFromDragStartX() + cursorDragStart_ + DRAG_TWEAK;
-    SampleTime t = cursorRestrict_.restrict(model.xToTime(cursorX));
+    SampleTime t = restrict(cursorRestrict_, model.xToTime(cursorX));
     if (cursor->setDragTime(t)) {
       if (cursor->isTimeCursor()) {
         currentTime()->jumpToTime(t);
