@@ -14,6 +14,7 @@
 #include "rec/slow/Target.h"
 #include "rec/util/Math.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/range/Restrict.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/OutlinedCursorLabel.h"
