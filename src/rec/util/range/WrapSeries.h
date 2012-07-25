@@ -27,7 +27,7 @@ Container fillSeries(const Container& sel, Type pos, Type len, FillWrapping w) {
       DCHECK(size > 0); //  << sel; // TODO
       if (size <= 0)
         break;
-      insert(&result, Range<Type>(pos, pos + size));
+      insertRange(&result, Range<Type>(pos, pos + size));
       len -= size;
     }
   }

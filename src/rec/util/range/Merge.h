@@ -20,7 +20,7 @@ Container merge(const Container& x, const Container& y) {
     if (prev && intersects(*prev, next)) {
       prev->end_ = next.end_;
     } else {
-      insert(&result, next);
+      insertRange(&result, next);
       prev = const_cast<Range<Type>*>(&*result.rbegin());
     }
   }
@@ -31,7 +31,7 @@ Container merge(const Container& x, const Container& y) {
 template <typename Type, typename Container>
 Container merge(const Container& x, const Range<Type>& y) {
   Container c;
-  insert(&c, y);
+  insertRange(&c, y);
   return merge<Type, Container>(x, c);
 }
 

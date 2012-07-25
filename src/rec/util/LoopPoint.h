@@ -22,10 +22,6 @@ const block::BlockSet getTimeSelection(const LoopPointList&,
                                        bool isSelected = true,
                                        bool allowEmpty = false);
 
-const SampleRangeSet getTimeSelectionSet(const LoopPointList&,
-                                        bool isSelected = true,
-                                        bool allowEmpty = false);
-
 const SampleRangeVector getTimeSelectionVector(const LoopPointList&,
                                               bool isSelected = true,
                                               bool allowEmpty = false);
