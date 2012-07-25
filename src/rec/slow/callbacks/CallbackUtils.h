@@ -2,10 +2,11 @@
 #define __REC_COMMAND_CALLBACK_UTILS__
 
 #include "rec/command/Command.h"
-#include "rec/util/thread/FunctionCallback.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/LoopSnapshot.h"
-#include "rec/command/CommandIDEncoder.h"
+#include "rec/util/LoopPoint.h"
+#include "rec/util/thread/FunctionCallback.h"
 
 namespace rec {
 namespace slow {

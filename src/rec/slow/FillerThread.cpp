@@ -5,6 +5,7 @@
 #include "rec/audio/source/Selection.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/Components.h"
+#include "rec/util/block/Block.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/FillSeries.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -26,7 +27,8 @@ void FillerThread::setFillPositionOrJump() {
       currentTime()->jumpToTime(jump);
   } else {
     // Find the first moment in the selection after "time" that needs to be filled.
-    BlockSet fill = difference(currentTime()->timeSelection(), reader->filled());
+    BlockSet sel = convertToBlockSet<SampleTime>(currentTime()->timeSelection());
+    BlockSet fill = difference(sel, reader->filled());
     if (!fill.empty()) {
       BlockList fillList = fillSeries(fill, currentTime()->time(), length());
       if (!fillList.empty())

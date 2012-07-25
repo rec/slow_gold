@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "rec/base/base.h"
+#include "rec/util/range/Range.h"
 
 namespace rec {
 namespace util {
@@ -145,6 +146,21 @@ inline std::ostream& operator<<(std::ostream& os, const BlockSet& b) {
 
 inline std::ostream& operator<<(std::ostream& os, const BlockList& b) {
   return print(os, b);
+}
+
+template <typename Type>
+Block makeBlock(const Range<Type>& range) {
+  return Block(range.begin_, range.end_);
+}
+
+template <typename Type>
+BlockSet convertToBlockSet(const typename Range<Type>::Vector& v) {
+  BlockSet res;
+  typename Range<Type>::Vector::const_iterator i;
+  for (i = v.begin(); i != v.end(); ++i)
+    res.insert(makeBlock(*i));
+
+  return res;
 }
 
 }  // namespace block

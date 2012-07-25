@@ -21,6 +21,11 @@ bool contains(const Container& c, Type x) {
   return false;
 }
 
+template <typename Type>
+bool intersects(const Range<Type>& x, const Range<Type>& y) {
+  return contains(x, y.begin_) || contains(y, x.begin_);
+}
+
 }  // namespace util
 }  // namespace rec
 

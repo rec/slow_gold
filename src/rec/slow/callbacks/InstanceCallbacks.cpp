@@ -27,6 +27,7 @@
 #include "rec/slow/callbacks/SaveFile.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/range/MakeRange.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Viewport.h"
 #include "rec/widget/waveform/Zoom.h"
@@ -227,13 +228,14 @@ void zoomOutFull(Instance* i) {
 }
 
 void zoomToSelection(Instance* i) {
-  block::Block range = block::toBlock(i->currentTime_->timeSelection());
-  int64 pad = block::getSize(range) / SELECTION_WIDTH_PORTION;
+  SampleTimeRange range = rec::util::makeRange<SampleTime>(i->currentTime_->timeSelection());
+  SampleTime pad(range.size() / SELECTION_WIDTH_PORTION);
+  SampleTime len(i->length().get());
   widget::waveform::zoomTo(i->file(),
                            i->length(),
                            i->getSourceSampleRate(),
-                           std::max(0LL, range.first - pad),
-                           std::min(i->length().get(), range.second + pad));
+                           std::max(SampleTime(0), range.begin_ - pad),
+                           std::min(len, range.end_ + pad));
 }
 
 void audioPreferences(Instance* i) {

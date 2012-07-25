@@ -10,6 +10,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/range/Contains.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
@@ -83,19 +84,19 @@ void CurrentTime::setViewport(const Viewport& viewport) {
     const LoopPointList& loops = viewport_.loop_points();
     length_ = loops.length();
     if (loops.has_length()) {
-      timeSelection_ = audio::getTimeSelection(loops);
+      timeSelection_ = audio::getTimeSelectionVector(loops);
       if (!timeSelection_.empty()) {
-        block::BlockSet::const_iterator i = timeSelection_.begin();
+        SampleTimeVector::const_iterator i = timeSelection_.begin();
         for (; i != timeSelection_.end(); ++i) {
-          if (time_ < i->second) {
-            if (time_ < i->first)
-              time = i->first;
+          if (time_ < i->end_) {
+            if (time_ < i->begin_)
+              time = i->begin_;
             else
               jump = false;
             break;
           }
         }
-        time = timeSelection_.begin()->first;
+        time = timeSelection_.begin()->begin_;
       }
     } else {
       timeSelection_.clear();
@@ -135,12 +136,11 @@ void CurrentTime::reset() {
   setTime(0);
 }
 
-
 void CurrentTime::jumpToTime(SampleTime time) {
   {
     Lock l(lock());
     if (isPlaying() &&
-        !(timeSelection_.empty() || block::contains(timeSelection_, time))) {
+        !(timeSelection_.empty() || contains(timeSelection_, time))) {
       return;
     }
 

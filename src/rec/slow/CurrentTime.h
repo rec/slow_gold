@@ -3,11 +3,12 @@
 
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/base/SampleTime.h"
-#include "rec/slow/HasInstance.h"
-#include "rec/slow/GuiSettings.pb.h"
-#include "rec/util/block/Block.h"
 #include "rec/data/DataListener.h"
+#include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/HasInstance.h"
 #include "rec/util/Listener.h"
+#include "rec/util/LoopPoint.h"
+#include "rec/util/range/Range.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
@@ -31,7 +32,11 @@ class CurrentTime : public HasInstance,
   }
 
   void setCursorTime(SampleTime time, int index, bool isTimeCursor);
-  const block::BlockSet timeSelection() const { Lock l(lock()); return timeSelection_; }
+  const SampleTimeVector timeSelection() const {
+    Lock l(lock());
+    return timeSelection_;
+  }
+
   SampleTime length() const { Lock l(lock()); return length_; }
   SampleTime time() const { Lock l(lock()); return time_; }
   SampleTime requestedTime() const { Lock l(lock()); return requestedTime_; }
@@ -47,7 +52,7 @@ class CurrentTime : public HasInstance,
   void zoomToCursor(SampleTime t);
   void setViewportProto(const widget::waveform::Viewport&);
 
-  block::BlockSet timeSelection_;
+  SampleTimeVector timeSelection_;
   SampleTime time_;
   SampleTime requestedTime_;
   SampleTime length_;

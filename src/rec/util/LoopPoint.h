@@ -7,11 +7,16 @@
 #include "rec/util/range/Range.h"
 
 namespace rec {
-namespace audio {
+
+namespace util {
 
 typedef Range<SampleTime> SampleTimeRange;
 typedef SampleTimeRange::Set SampleTimeSet;
 typedef SampleTimeRange::Vector SampleTimeVector;
+
+}  // namespace util
+
+namespace audio {
 
 const block::BlockSet getTimeSelection(const LoopPointList&,
                                        bool isSelected = true,

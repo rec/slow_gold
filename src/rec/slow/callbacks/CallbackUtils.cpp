@@ -2,7 +2,6 @@
 
 #include "rec/data/DataOps.h"
 #include "rec/slow/CurrentTime.h"
-#include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace slow {
