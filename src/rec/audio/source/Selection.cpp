@@ -1,26 +1,25 @@
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/util/Clear.h"
-#include "rec/util/block/FillSeries.h"
+#include "rec/util/range/WrapSeries.h"
+#include "rec/util/range/MakeRange.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-using namespace rec::util::block;
-
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
-  BlockSet sel = selection();
+  SampleTimeVector sel = selection();
   SampleTime pos = getNextReadPosition();
-  if (!sel.begin()->second) {
+  if (!sel.begin()->end_) {
     clear(audioInfo);
     return;
   }
   AudioSourceChannelInfo info = audioInfo;
-  BlockList blocks = wrapSeries(sel, pos, info.numSamples);
+  SampleTimeVector blocks = fillSeries(sel, pos, SampleTime(info.numSamples), WRAP);
 
-  for (BlockList::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
-    setNextReadPosition(i->first);
-    info.numSamples = static_cast<int>(getSize(*i));
+  for (SampleTimeVector::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
+    setNextReadPosition(i->begin_);
+    info.numSamples = static_cast<int>(i->size());
     Wrappy::getNextAudioBlock(info);
     info.startSample += info.numSamples;
   }
@@ -37,7 +36,7 @@ int64 Selection::getTotalLength() const {
 
 int64 Selection::getCorrectTotalLength() const {
   Lock l(lock_);
-  return block::getSize(selection_);
+  return makeRange<SampleTime>(selection_).size();
 }
 
 }  // namespace source

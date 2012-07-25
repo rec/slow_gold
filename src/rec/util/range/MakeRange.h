@@ -13,15 +13,13 @@ Range<Type> doMakeRange(const Container& c) {
 }
 
 template <typename Type>
-Range<Type> makeRange(const typename Range<Type>::Set& x,
-                      const typename Range<Type>::Set& y) {
-  return doMakeRange<Range<Type>::Set, Type>(x, y);
+Range<Type> makeRange(const typename Range<Type>::Set& x) {
+  return doMakeRange<typename Range<Type>::Set, Type>(x);
 }
 
 template <typename Type>
-Range<Type> makeRange(const typename Range<Type>::Vector& x,
-                      const typename Range<Type>::Vector& y) {
-  return doMakeRange<Range<Type>::Vector, Type>(x, y);
+Range<Type> makeRange(const typename Range<Type>::Vector& x) {
+  return doMakeRange<typename Range<Type>::Vector, Type>(x);
 }
 
 }  // namespace util

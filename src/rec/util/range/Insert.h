@@ -7,12 +7,12 @@ namespace rec {
 namespace util {
 
 template <typename Type>
-void insert(Range<Type>::Set* container, const Range<Type>& range) {
+void insert(typename Range<Type>::Set* container, const Range<Type>& range) {
   container->insert(range);
 }
 
 template <typename Type>
-void insert(Range<Type>::Vector* container, const Range<Type>& range) {
+void insert(typename Range<Type>::Vector* container, const Range<Type>& range) {
   container->push_back(range);
 }
 

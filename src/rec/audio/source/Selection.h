@@ -5,7 +5,6 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/data/DataListener.h"
-#include "rec/util/block/Block.h"
 
 namespace rec {
 namespace audio {
@@ -20,12 +19,12 @@ class Selection : public Wrappy {
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
-  virtual void setSelection(const block::BlockSet& s) {
+  virtual void setSelection(const SampleTimeVector& s) {
     Lock l(lock_);
     selection_ = s;
   }
 
-  const block::BlockSet selection() const {
+  const SampleTimeVector selection() const {
     Lock l(lock_);
     return selection_;
   }
@@ -34,7 +33,7 @@ class Selection : public Wrappy {
   virtual int64 getCorrectTotalLength() const;
 
  private:
-  block::BlockSet selection_;
+  SampleTimeVector selection_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Selection);
 };

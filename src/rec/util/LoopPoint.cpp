@@ -3,10 +3,53 @@
 #include "rec/data/DataOps.h"
 #include "rec/util/Math.h"
 #include "rec/util/LoopPoint.h"
+#include "rec/util/range/Insert.h"
 #include "rec/base/SampleTime.h"
 
 namespace rec {
 namespace audio {
+
+template <typename Container>
+void fillTimeSelection(Container* sel,
+                       const LoopPointList& lpl,
+                       bool isSelected,
+                       bool allowEmpty) {
+  SampleTime length(lpl.length());
+  int size = lpl.loop_point_size();
+  for (int i = 0, j; i < size; ++i) {
+    for (; i < size && (isSelected != lpl.loop_point(i).selected()); ++i);
+    for (j = i; j < size && (isSelected == lpl.loop_point(j).selected()); ++j);
+    if (j != i) {
+      SampleTime begin = lpl.loop_point(i).time();
+      SampleTime endTime = length;
+      if (j < size)
+        endTime = lpl.loop_point(j).time();
+      SampleTime end = endTime;
+      insert(sel, SampleTimeRange(begin, end));
+    }
+    i = j;
+  }
+
+  if (!allowEmpty && sel->empty())
+    insert(sel, SampleTimeRange(0, length));
+}
+
+
+const SampleTimeVector getTimeSelectionVector(const LoopPointList& lpl,
+                                              bool isSelected,
+                                              bool allowEmpty) {
+  SampleTimeVector sel;
+  fillTimeSelection(&sel, lpl, isSelected, allowEmpty);
+  return sel;
+}
+
+const SampleTimeSet getTimeSelectionSet(const LoopPointList& lpl,
+                                        bool isSelected,
+                                        bool allowEmpty) {
+  SampleTimeSet sel;
+  fillTimeSelection(&sel, lpl, isSelected, allowEmpty);
+  return sel;
+}
 
 const block::BlockSet getTimeSelection(const LoopPointList& lpl,
                                        bool isSelected,

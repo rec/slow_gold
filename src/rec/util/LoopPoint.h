@@ -21,9 +21,9 @@ const SampleTimeSet getTimeSelectionSet(const LoopPointList&,
                                         bool isSelected = true,
                                         bool allowEmpty = false);
 
-const SampleTimeSet getTimeSelectionVector(const LoopPointList&,
-                                           bool isSelected = true,
-                                           bool allowEmpty = false);
+const SampleTimeVector getTimeSelectionVector(const LoopPointList&,
+                                              bool isSelected = true,
+                                              bool allowEmpty = false);
 
 bool isCloseTo(const LoopPointList&, SampleTime);
 
