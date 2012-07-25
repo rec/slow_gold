@@ -10,7 +10,6 @@ namespace rec {
 namespace audio {
 namespace util {
 
-using namespace rec::util::block;
 using namespace rec::widget::waveform;
 
 const int PARAMETER_WAIT = 1000;

@@ -36,7 +36,6 @@ static const double BIG_RATIO = 2.0;
 using namespace rec::audio;
 using namespace rec::gui::audio;
 using namespace rec::widget::waveform;
-using namespace rec::util::block;
 
 MouseListener::MouseListener(Instance* i)
     : HasInstance(i), waveformDragStart_(0) {

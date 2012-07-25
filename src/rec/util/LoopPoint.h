@@ -4,17 +4,9 @@
 #include "rec/audio/Audio.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/range/Range.h"
+#include "rec/util/range/SampleRange.h"
 
 namespace rec {
-
-namespace util {
-
-typedef Range<SampleTime> SampleRange;
-typedef SampleRange::Set SampleRangeSet;
-typedef SampleRange::Vector SampleRangeVector;
-
-}  // namespace util
-
 namespace audio {
 
 const SampleRangeVector getTimeSelection(const LoopPointList&,

@@ -21,7 +21,6 @@ const int64 SMALLEST_TIME_SAMPLES = 10000;
 
 }  // namespace
 
-using namespace rec::util::block;
 using juce::Rectangle;
 
 WaveformPainter::WaveformPainter(Waveform* w)

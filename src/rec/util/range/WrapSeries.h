@@ -9,7 +9,7 @@ namespace util {
 
 enum FillWrapping { STOP_AT_END, WRAP };
 
-template <typename Container, typename Type>
+template <typename Type, typename Container>
 Container fillSeries(const Container& sel, Type pos, Type len, FillWrapping w) {
   Container result;
   if (len && !sel.empty()) {
