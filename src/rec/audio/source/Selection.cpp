@@ -28,7 +28,7 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
 int64 Selection::getTotalLength() const {
   Lock l(lock_);
 #ifdef CORRECT_SIZE_CALCULATIONS
-  return block::getSize(selection_);
+  return getCorrectTotalLength();
 #else
   return Wrappy::getTotalLength();
 #endif

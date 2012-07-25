@@ -22,7 +22,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/util/Math.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/util/block/Fillable.h"
+#include "rec/util/range/Fillable.h"
 #include "rec/widget/waveform/Viewport.h"
 
 namespace rec {
@@ -173,7 +173,7 @@ class SaveThread : public ThreadWithProgressWindow {
   virtual ~SaveThread() {}
 
   virtual void run() {
-    const block::Fillable& buffer = *instance_->bufferFiller_->reader();
+    const Fillable& buffer = *instance_->bufferFiller_->reader();
 
     setProgress(0.0);
     setStatusMessage(FINISHING_LOADING);

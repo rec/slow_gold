@@ -1,4 +1,4 @@
-#include "rec/util/block/Fillable.h"
+#include "rec/util/range/Fillable.h"
 
 #include "rec/util/range/Difference.h"
 #include "rec/util/range/FullTo.h"
@@ -6,7 +6,6 @@
 
 namespace rec {
 namespace util {
-namespace block {
 
 void Fillable::setNextFillPosition(SampleTime position) {
   DCHECK_GE(position, 0);
@@ -85,7 +84,6 @@ SampleTime Fillable::fillNextBlock() {
   return 0;
 }
 
-}  // namespace block
 }  // namespace util
 }  // namespace rec
 

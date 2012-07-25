@@ -2,13 +2,13 @@
 #define __REC_AUDIO_UTIL_BUFFEREDREADER__
 
 #include "rec/audio/Audio.h"
-#include "rec/util/block/Fillable.h"
+#include "rec/util/range/Fillable.h"
 
 namespace rec {
 namespace audio {
 namespace util {
 
-class BufferedReader : public block::Fillable {
+class BufferedReader : public Fillable {
  public:
   BufferedReader() {}
   virtual ~BufferedReader() {}

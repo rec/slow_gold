@@ -294,7 +294,6 @@
     <ClCompile Include="..\..\..\..\src\rec\support\SupportWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\Fillable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp"/>
@@ -324,6 +323,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Proto.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\range\Fillable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\CallbackQueue.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
@@ -1720,7 +1720,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h"/>
@@ -1760,7 +1759,19 @@
     <ClInclude Include="..\..\..\..\src\rec\util\partition\Partition.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Platform.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Proto.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\Range.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Compare.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Contains.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Convert.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Difference.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Fillable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\FullTo.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Insert.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\MakeRange.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Merge.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Range.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Restrict.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Split.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\WrapSeries.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\ReverseProto.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\SystemStats.h"/>

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="jdDmHdZJr" name="SlowGold">
+  <MAINGROUP id="lhiZlELsb" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -922,10 +922,6 @@
                 name="Difference.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/block/Difference.h" id="RqjEchYNd"
                 name="Difference.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/Fillable.cpp" id="jAJBesA9q"
-                name="Fillable.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/block/Fillable.h" id="anVrTcP7s"
-                name="Fillable.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/block/FillSeries.cpp" id="CsoVMsPGQ"
                 name="FillSeries.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/block/FillSeries.h" id="f0B33taET"
@@ -1069,8 +1065,36 @@
               name="Proto.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Proto.h" id="fucSOVg4a"
               name="Proto.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Range.h" id="gJMciM9xN"
-              name="Range.h" resource="0"/>
+        <GROUP id="HsYwL8ZnN" name="range">
+          <FILE compile="0" file="../../src/rec/util/range/Compare.h" id="1qRiZ7xx7"
+                name="Compare.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Contains.h" id="GFFDRkY0B"
+                name="Contains.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Convert.h" id="byZ7qmME6"
+                name="Convert.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Difference.h" id="BVDbIj2jC"
+                name="Difference.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/range/Fillable.cpp" id="R5I5jp0u5"
+                name="Fillable.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Fillable.h" id="UEQUzA1z0"
+                name="Fillable.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/FullTo.h" id="gzM73ptlR"
+                name="FullTo.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Insert.h" id="XZ9vlSeT4"
+                name="Insert.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/MakeRange.h" id="xWR9z3vaW"
+                name="MakeRange.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Merge.h" id="7nKpCSevm"
+                name="Merge.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Range.h" id="8S58WhFwi"
+                name="Range.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Restrict.h" id="hfN4OVis8"
+                name="Restrict.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Split.h" id="KtZpn2pES"
+                name="Split.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/WrapSeries.h" id="PqmGw4aaW"
+                name="WrapSeries.h" resource="0"/>
+        </GROUP>
         <FILE compile="0" file="../../src/rec/util/ReverseProto.h" id="usAGwiiZl"
               name="ReverseProto.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="KH3XIw3uH" name="STL.h"
@@ -1557,7 +1581,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ijxLjiU4s" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="XG2n57Okb" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

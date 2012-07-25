@@ -1,11 +1,10 @@
-#ifndef __REC_UTIL_BLOCK_FILLABLE__
-#define __REC_UTIL_BLOCK_FILLABLE__
+#ifndef __REC_UTIL_RANGE_FILLABLE__
+#define __REC_UTIL_RANGE_FILLABLE__
 
 #include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace util {
-namespace block {
 
 class Fillable {
  public:
@@ -43,8 +42,7 @@ class Fillable {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Fillable);
 };
 
-}  // namespace block
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_BLOCK_FILLABLE__
+#endif  // __REC_UTIL_RANGE_FILLABLE__

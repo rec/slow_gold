@@ -4,7 +4,6 @@
 #include "rec/app/GenericApplication.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
-#include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/base/Trans.h"
 #include "rec/command/KeyboardBindings.h"
