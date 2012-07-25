@@ -10,9 +10,9 @@ namespace rec {
 
 namespace util {
 
-typedef Range<SampleTime> SampleTimeRange;
-typedef SampleTimeRange::Set SampleTimeSet;
-typedef SampleTimeRange::Vector SampleTimeVector;
+typedef Range<SampleTime> SampleRange;
+typedef SampleRange::Set SampleRangeSet;
+typedef SampleRange::Vector SampleRangeVector;
 
 }  // namespace util
 
@@ -22,11 +22,11 @@ const block::BlockSet getTimeSelection(const LoopPointList&,
                                        bool isSelected = true,
                                        bool allowEmpty = false);
 
-const SampleTimeSet getTimeSelectionSet(const LoopPointList&,
+const SampleRangeSet getTimeSelectionSet(const LoopPointList&,
                                         bool isSelected = true,
                                         bool allowEmpty = false);
 
-const SampleTimeVector getTimeSelectionVector(const LoopPointList&,
+const SampleRangeVector getTimeSelectionVector(const LoopPointList&,
                                               bool isSelected = true,
                                               bool allowEmpty = false);
 

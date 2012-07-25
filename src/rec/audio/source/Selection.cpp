@@ -8,16 +8,16 @@ namespace audio {
 namespace source {
 
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
-  SampleTimeVector sel = selection();
+  SampleRangeVector sel = selection();
   SampleTime pos = getNextReadPosition();
   if (!sel.begin()->end_) {
     clear(audioInfo);
     return;
   }
   AudioSourceChannelInfo info = audioInfo;
-  SampleTimeVector blocks = fillSeries(sel, pos, SampleTime(info.numSamples), WRAP);
+  SampleRangeVector blocks = fillSeries(sel, pos, SampleTime(info.numSamples), WRAP);
 
-  for (SampleTimeVector::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
+  for (SampleRangeVector::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
     setNextReadPosition(i->begin_);
     info.numSamples = static_cast<int>(i->size());
     Wrappy::getNextAudioBlock(info);

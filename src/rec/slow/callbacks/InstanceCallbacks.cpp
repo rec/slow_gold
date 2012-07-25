@@ -228,7 +228,7 @@ void zoomOutFull(Instance* i) {
 }
 
 void zoomToSelection(Instance* i) {
-  SampleTimeRange range = rec::util::makeRange<SampleTime>(i->currentTime_->timeSelection());
+  SampleRange range = rec::util::makeRange<SampleTime>(i->currentTime_->timeSelection());
   SampleTime pad(range.size() / SELECTION_WIDTH_PORTION);
   SampleTime len(i->length().get());
   widget::waveform::zoomTo(i->file(),

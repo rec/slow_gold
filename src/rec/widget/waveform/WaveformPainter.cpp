@@ -64,10 +64,10 @@ void WaveformPainter::drawWaveform() {
   int height = bounds_.getHeight();
   drawWaveform(true);
 
-  BlockSet sel = model_.selection(true);
-  for (BlockSet::iterator i = sel.begin(); i != sel.end(); ++i)  {
-    int x = model_.timeToX(i->first);
-    int w = model_.timeToX(i->second) - x;
+  SampleRangeVector sel = model_.selection(true);
+  for (SampleRangeVector::iterator i = sel.begin(); i != sel.end(); ++i)  {
+    int x = model_.timeToX(i->begin_);
+    int w = model_.timeToX(i->end_) - x;
     painter()->graphics()->excludeClipRegion(Rectangle<int>(x, y, w, height));
   }
 

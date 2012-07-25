@@ -32,7 +32,7 @@ class CurrentTime : public HasInstance,
   }
 
   void setCursorTime(SampleTime time, int index, bool isTimeCursor);
-  const SampleTimeVector timeSelection() const {
+  const SampleRangeVector timeSelection() const {
     Lock l(lock());
     return timeSelection_;
   }
@@ -52,7 +52,7 @@ class CurrentTime : public HasInstance,
   void zoomToCursor(SampleTime t);
   void setViewportProto(const widget::waveform::Viewport&);
 
-  SampleTimeVector timeSelection_;
+  SampleRangeVector timeSelection_;
   SampleTime time_;
   SampleTime requestedTime_;
   SampleTime length_;

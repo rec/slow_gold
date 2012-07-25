@@ -141,8 +141,8 @@ void WaveformModel::layout(Component* waveform) {
   }
 }
 
-const block::BlockSet WaveformModel::selection(bool isSel) const {
-  return rec::audio::getTimeSelection(viewport_.loop_points(), isSel, true);
+const SampleRangeVector WaveformModel::selection(bool isSel) const {
+  return rec::audio::getTimeSelectionVector(viewport_.loop_points(), isSel, true);
 }
 
 }  // namespace waveform

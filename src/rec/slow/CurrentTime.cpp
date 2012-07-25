@@ -86,7 +86,7 @@ void CurrentTime::setViewport(const Viewport& viewport) {
     if (loops.has_length()) {
       timeSelection_ = audio::getTimeSelectionVector(loops);
       if (!timeSelection_.empty()) {
-        SampleTimeVector::const_iterator i = timeSelection_.begin();
+        SampleRangeVector::const_iterator i = timeSelection_.begin();
         for (; i != timeSelection_.end(); ++i) {
           if (time_ < i->end_) {
             if (time_ < i->begin_)

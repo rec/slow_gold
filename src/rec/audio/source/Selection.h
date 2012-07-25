@@ -19,12 +19,12 @@ class Selection : public Wrappy {
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
-  virtual void setSelection(const SampleTimeVector& s) {
+  virtual void setSelection(const SampleRangeVector& s) {
     Lock l(lock_);
     selection_ = s;
   }
 
-  const SampleTimeVector selection() const {
+  const SampleRangeVector selection() const {
     Lock l(lock_);
     return selection_;
   }
@@ -33,7 +33,7 @@ class Selection : public Wrappy {
   virtual int64 getCorrectTotalLength() const;
 
  private:
-  SampleTimeVector selection_;
+  SampleRangeVector selection_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Selection);
 };

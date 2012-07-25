@@ -3,6 +3,7 @@
 
 #include "rec/util/LoopPoint.h"
 #include "rec/util/block/Block.h"
+#include "rec/util/range/Range.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
@@ -26,7 +27,6 @@ class WaveformModel {
   // Return true if we need to layout the Waveform.
   bool setViewport(const Viewport&);
   bool isEmpty() const { return !length(); }
-  const block::BlockSet selection(bool isSelected) const;
   const block::BlockSet getAndClearDirty();
   SampleTime length() const { return viewport_.loop_points().length(); }
   const Viewport& viewport() const { return viewport_; }
@@ -34,8 +34,10 @@ class WaveformModel {
   void setDescription(const WaveformProto& d) { desc_ = d; }
   const WaveformProto& description() const { return desc_; }
   void layout(Component* waveform);
+  const SampleRangeVector selection(bool isSelected) const;
 
  private:
+
   SampleTime zoomEnd() const;
 
   block::BlockSet selection_;
