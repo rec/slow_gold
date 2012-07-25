@@ -76,7 +76,7 @@ const SampleRangeVector WaveformModel::getAndClearDirty() {
 bool WaveformModel::setViewport(const Viewport& vp) {
   Zoom z = viewport_.zoom();
   viewport_ = vp;
-  SampleRangeVector newSel = rec::audio::getTimeSelectionVector(vp.loop_points());
+  SampleRangeVector newSel = rec::audio::getTimeSelection(vp.loop_points());
   SampleRangeVector newSel2 = symmetricDifference<SampleTime>(selection_, newSel);
   dirty_ = merge<SampleTime>(dirty_, newSel2);
 
@@ -141,7 +141,7 @@ void WaveformModel::layout(Component* waveform) {
 }
 
 const SampleRangeVector WaveformModel::selection(bool isSel) const {
-  return rec::audio::getTimeSelectionVector(viewport_.loop_points(), isSel, true);
+  return rec::audio::getTimeSelection(viewport_.loop_points(), isSel, true);
 }
 
 }  // namespace waveform

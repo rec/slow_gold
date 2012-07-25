@@ -78,7 +78,7 @@ void Player::operator()(const Stretch& stretch) {
 }
 
 void Player::operator()(const Viewport& viewport) {
-  selection_->setSelection(getTimeSelectionVector(viewport.loop_points()));
+  selection_->setSelection(getTimeSelection(viewport.loop_points()));
   if (viewport.loop_points().has_sample_rate())
     setInputSampleRate(viewport.loop_points().sample_rate());
 }

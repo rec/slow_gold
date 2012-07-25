@@ -35,37 +35,11 @@ void fillTimeSelection(Container* sel,
 }
 
 
-const SampleRangeVector getTimeSelectionVector(const LoopPointList& lpl,
+const SampleRangeVector getTimeSelection(const LoopPointList& lpl,
                                               bool isSelected,
                                               bool allowEmpty) {
   SampleRangeVector sel;
   fillTimeSelection(&sel, lpl, isSelected, allowEmpty);
-  return sel;
-}
-
-const block::BlockSet getTimeSelection(const LoopPointList& lpl,
-                                       bool isSelected,
-                                       bool allowEmpty) {
-  block::BlockSet sel;
-  SampleTime length(lpl.length());
-  int size = lpl.loop_point_size();
-  for (int i = 0, j; i < size; ++i) {
-    for (; i < size && (isSelected != lpl.loop_point(i).selected()); ++i);
-    for (j = i; j < size && (isSelected == lpl.loop_point(j).selected()); ++j);
-    if (j != i) {
-      SampleTime begin = lpl.loop_point(i).time();
-      SampleTime endTime = length;
-      if (j < size)
-        endTime = lpl.loop_point(j).time();
-      SampleTime end = endTime;
-      sel.insert(block::makeBlock(begin, end));
-    }
-    i = j;
-  }
-
-  if (!allowEmpty && sel.empty())
-    sel.insert(block::makeBlock(0, length));
-
   return sel;
 }
 

@@ -3,7 +3,6 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/util/LoopPoint.pb.h"
-#include "rec/util/block/Block.h"
 #include "rec/util/range/Range.h"
 
 namespace rec {
@@ -18,11 +17,7 @@ typedef SampleRange::Vector SampleRangeVector;
 
 namespace audio {
 
-const block::BlockSet getTimeSelection(const LoopPointList&,
-                                       bool isSelected = true,
-                                       bool allowEmpty = false);
-
-const SampleRangeVector getTimeSelectionVector(const LoopPointList&,
+const SampleRangeVector getTimeSelection(const LoopPointList&,
                                               bool isSelected = true,
                                               bool allowEmpty = false);
 

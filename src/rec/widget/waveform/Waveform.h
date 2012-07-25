@@ -9,7 +9,6 @@
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/range/Range.h"
-#include "rec/util/block/Block.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
