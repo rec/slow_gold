@@ -12,7 +12,7 @@ template <typename Type, typename Container>
 Container merge(const Container& x, const Container& y) {
   Range<Type>* prev = NULL;
   Container result;
-  Container::const_iterator i = x.begin(), j = y.begin();
+  typename Container::const_iterator i = x.begin(), j = y.begin();
 
   while (i != x.end() || j != y.end()) {
     bool useX = (j == y.end()) || (i != x.end() && *i < *j);
@@ -32,7 +32,7 @@ template <typename Type, typename Container>
 Container merge(const Container& x, const Range<Type>& y) {
   Container c;
   insert(&c, y);
-  return merge(x, c);
+  return merge<Type, Container>(x, c);
 }
 
 }  // namespace util

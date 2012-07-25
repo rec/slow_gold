@@ -10,9 +10,9 @@ namespace util {
 
 template <typename Sample, int CHANNELS>
 struct SampleBuffer {
-  SampleBuffer(int sampleCount) {
+  SampleBuffer(SampleTime sampleCount) {
     for (int i = 0; i < CHANNELS; ++i) {
-      buffer_[i].resize(sampleCount);
+      buffer_[i].resize(static_cast<int>(sampleCount));
       pointers_[i] = &buffer_[i][0];
     }
   }
@@ -24,11 +24,11 @@ struct SampleBuffer {
 template <typename Sample, int CHANNELS>
 class BufferedReaderImpl : public BufferedReader {
  public:
-  BufferedReaderImpl(int blockSize);
+  BufferedReaderImpl(SampleTime blockSize);
   virtual ~BufferedReaderImpl() {}
 
   // Returns the length in samples, or 0 if there's an error.
-  virtual block::Size doFillNextBlock(const block::Block& b);
+  virtual SampleTime doFillNextBlock(const SampleRange& b);
 
   typedef InterleavedFrame<Sample, CHANNELS> OneFrame;
   typedef Frames<OneFrame> InterleavedFrames;
@@ -44,7 +44,7 @@ class BufferedReaderImpl : public BufferedReader {
  private:
   CriticalSection lock_;
 
-  const block::Size blockSize_;
+  const SampleTime blockSize_;
   InterleavedFrames frames_;
 
   SampleBuffer<int32, CHANNELS> intBuffer_;

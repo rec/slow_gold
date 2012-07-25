@@ -17,7 +17,7 @@ class BufferedReader : public block::Fillable {
 
   virtual Source* makeSource() const = 0;
   virtual bool setLength(int64 length) = 0;
-  virtual block::Size doFillNextBlock(const block::Block& b) = 0;
+  virtual SampleTime doFillNextBlock(const SampleRange&) = 0;
 
   bool coversTime(SampleTime time) const;
   AudioFormatReader* reader() { return reader_.get(); }

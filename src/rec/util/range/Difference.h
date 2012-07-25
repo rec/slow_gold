@@ -1,68 +1,73 @@
 #ifndef __REC_UTIL_DIFFERENCE__
 #define __REC_UTIL_DIFFERENCE__
 
-#include "rec/base/base.h"
+#include "rec/util/range/Insert.h"
+#include "rec/util/range/Range.h"
 
 namespace rec {
 namespace util {
 
-template <typename Container, typename Type>
-Container difference(const Block& block, const Container& s) {
+template <typename Type, typename Container>
+Container difference(const Range<Type>& block, const Container& s) {
   Container diff;
-  Block b = block;
-  iterator i;
-  for (i = s.begin(); i != s.end() && getSize(b) && b.second > i->first; ++i) {
-    if (b.first < i->second) {
-      if (b.first < i->first) {
-        diff.insert(Block(b.first, i->first));
-        b.first = i->first;
+  SampleRange b = block;
+  typename Container::const_iterator i;
+  for (i = s.begin(); i != s.end() && b.size() && b.end_ > i->begin_; ++i) {
+    if (b.begin_ < i->end_) {
+      if (b.begin_ < i->begin_) {
+        insert(&diff, SampleRange(b.begin_, i->begin_));
+        b.begin_ = i->begin_;
       }
 
-      if (b.second > i->first) {
-        if (b.second <= i->second)
-          b.second = i->second;
+      if (b.end_ > i->begin_) {
+        if (b.end_ <= i->end_)
+          b.end_ = i->end_;
       }
-      b.first = i->second;
+      b.begin_ = i->end_;
     }
   }
 
-  if (getSize(b) > 0)
-    diff.insert(b);
+  if (b.size() > 0)
+    insert(&diff, b);
 
   return diff;
 }
 
+template <typename Type, typename Container>
+SampleRange firstEmptyRangeAfter(const Container& s, int64 pos, int64 length) {
+  Container diff = difference(SampleRange(pos, length), s);
+  if (diff.empty())
+    diff = difference(SampleRange(0, pos), s);
+
+  return diff.empty() ? SampleRange(pos, pos) : *diff.begin();
+}
+
+#if 0
 template <typename Container, typename Type>
 Container difference(const Container& x, const Container& y) {
   Container result;
   for (iterator i = x.begin(), j = y.begin(); i != x.end(); ++i) {
-    for (; j != y.end() && j->second <= i->first; ++j);
-    Block b = *i;
-    for (; j != y.end() && j->first < i->second; ++j) {
-      if (i->first < j->first)
-        result.insert(Block(b.first, j->first));
-      b.first = j->second;
+    for (; j != y.end() && j->end_ <= i->begin_; ++j);
+    SampleRange b = *i;
+    for (; j != y.end() && j->begin_ < i->end_; ++j) {
+      if (i->begin_ < j->begin_)
+        result.insert(SampleRange(b.begin_, j->begin_));
+      b.begin_ = j->end_;
     }
-    if (getSize(b) > 0)
+    if (b.size()) > 0)
       result.insert(b);
   }
 
   return result;
 }
 
-template <typename Container, typename Type>
-Block firstEmptyBlockAfter(const Container& s, int64 pos, int64 length) {
-  Container diff = difference(Block(pos, length), s);
-  if (diff.empty())
-    diff = difference(Block(0, pos), s);
-
-  return diff.empty() ? Block(pos, pos) : *diff.begin();
-}
 
 template <typename Container, typename Type>
 Container symmetricDifference(const Container& x, const Container& y) {
   return merge(difference(x, y), difference(y, x));
 }
+
+#endif
 
 }  // namespace util
 }  // namespace rec

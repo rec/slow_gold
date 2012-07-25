@@ -10,14 +10,14 @@ namespace audio {
 namespace util {
 
 template <typename Sample, int CHANNELS>
-BufferedReaderImpl<Sample, CHANNELS>::BufferedReaderImpl(int s)
+BufferedReaderImpl<Sample, CHANNELS>::BufferedReaderImpl(SampleTime s)
     : blockSize_(s), intBuffer_(s), floatBuffer_(s) {
   CHECK_DDD(194, 439, int64, int64);
 }
 
 template <typename Sample, int CHANNELS>
-block::Size BufferedReaderImpl<Sample, CHANNELS>::doFillNextBlock(
-    const block::Block& b) {
+SampleTime BufferedReaderImpl<Sample, CHANNELS>::doFillNextBlock(
+    const SampleRange& b) {
   Lock l(lock_);
 
   if (!reader_) {
@@ -25,19 +25,20 @@ block::Size BufferedReaderImpl<Sample, CHANNELS>::doFillNextBlock(
     return 0;
   }
 
-  SampleTime size = std::min(block::getSize(b), blockSize_);
+  SampleTime size = std::min(b.size(), blockSize_);
 
   int32** pointers = reader_->usesFloatingPointData ?
     reinterpret_cast<int32**>(floatBuffer_.pointers_) : intBuffer_.pointers_;
 
   int readerChannels = reader_->numChannels;
   int channels = std::min(CHANNELS, readerChannels);
-  if (!reader_->read(pointers, channels, b.first, size.toInt(), false)) {
+  if (!reader_->read(pointers, channels, b.begin_, size.toInt(), false)) {
     LOG(DFATAL) << "Reader failed to read!";
     return 0;
   }
 
-  InterleavedFrame<Sample, CHANNELS>* frame = frames_.frames() + b.first;
+  InterleavedFrame<Sample, CHANNELS>* frame = frames_.frames() +
+    static_cast<int>(b.begin_);  // TODO: why?
 
   for (int i = 0; i < size; ++i, ++frame) {
     for (int c = 0; c < CHANNELS; ++c) {

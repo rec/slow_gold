@@ -24,7 +24,7 @@ SampleTime BufferedReader::setReader(AudioFormatReader* reader) {
 }
 
 bool BufferedReader::coversTime(SampleTime time) const {
-  return hasFilled(block::Block(time, time + PRELOAD));
+  return hasFilled(SampleRange(time, time + PRELOAD));
 }
 
 }  // namespace util

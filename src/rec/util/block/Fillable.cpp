@@ -1,54 +1,55 @@
 #include "rec/util/block/Fillable.h"
 
-#include "rec/util/block/Difference.h"
-#include "rec/util/block/MergeBlockSet.h"
+#include "rec/util/range/Difference.h"
+#include "rec/util/range/FullTo.h"
+#include "rec/util/range/Merge.h"
 
 namespace rec {
 namespace util {
 namespace block {
 
-void Fillable::setNextFillPosition(int64 position) {
+void Fillable::setNextFillPosition(SampleTime position) {
   DCHECK_GE(position, 0);
   DCHECK_LT(position, length_);
   Lock l(lock_);
-  position_ = juce::jmin(length_, juce::jmax(position, 0LL));
+  position_ = juce::jmin(length_, juce::jmax(position, SampleTime(0)));
 }
 
-void Fillable::setLength(int64 length) {
+void Fillable::setLength(SampleTime length) {
   Lock l(lock_);
   length_ = length;
 }
 
-int64 Fillable::length() const {
+SampleTime Fillable::length() const {
   Lock l(lock_);
   return length_;
 }
 
-int64 Fillable::position() const {
+SampleTime Fillable::position() const {
   Lock l(lock_);
   return position_;
 }
 
 double Fillable::filledPercent() const {
   Lock l(lock_);
-  return static_cast<double>(getSize(filled_)) / length_;
+  return static_cast<double>(filled_.size()) / length_;
 }
 
-bool Fillable::hasFilled(const Block& b) const {
+bool Fillable::hasFilled(const SampleRange& b) const {
   Lock l(lock_);
   if (isFull())
     return true;
 
-  if (b.second <= length_)
-    return difference(b, filled_).empty();
+  if (b.end_ <= length_)
+    return difference<SampleTime>(b, filled_).empty();
 
-  return hasFilled(Block(b.first, length_)) &&
-    hasFilled(Block(0, b.second - length_));
+  return hasFilled(SampleRange(b.begin_, length_)) &&
+    hasFilled(SampleRange(0, b.end_ - length_));
 }
 
 bool Fillable::isFull() const {
   Lock l(lock_);
-  return (fullTo(filled_) == length_);
+  return (util::fullTo<SampleTime>(filled_) == length_);
 }
 
 void Fillable::reset() {
@@ -57,21 +58,21 @@ void Fillable::reset() {
   position_ = 0;
 }
 
-int64 Fillable::fillNextBlock() {
+SampleTime Fillable::fillNextBlock() {
   Lock l(lock_);
   if (isFull())
     return 0;
 
-  Block block = firstEmptyBlockAfter(filled_, position_, length_);
+  SampleRange range = firstEmptyRangeAfter<SampleTime>(filled_, position_, length_);
 
-  if (getSize(block) <= 0) {
-    LOG(DFATAL) << "Getting an empty block";
+  if (range.size() <= 0) {
+    LOG(DFATAL) << "Getting an empty range";
     return 0;
   }
 
-  if (int64 size = doFillNextBlock(block)) {
-    block.second = block.first + size;
-    merge(block, &filled_);
+  if (SampleTime size = doFillNextBlock(range)) {
+    range.end_ = range.begin_ + size;
+    filled_ = merge<SampleTime>(filled_, range);
     if (isFull())
       onFilled();
     position_ += size;
@@ -80,7 +81,7 @@ int64 Fillable::fillNextBlock() {
     return size;
   }
 
-  LOG(DFATAL) << "Couldn't fill block";
+  LOG(DFATAL) << "Couldn't fill range";
   return 0;
 }
 

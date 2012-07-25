@@ -28,7 +28,8 @@ void FillerThread::setFillPositionOrJump() {
   } else {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet sel = convertToBlockSet<SampleTime>(currentTime()->timeSelection());
-    BlockSet fill = difference(sel, reader->filled());
+    BlockSet readerFilled = convertToBlockSet<SampleTime>(reader->filled());
+    BlockSet fill = difference(sel, readerFilled);
     if (!fill.empty()) {
       BlockList fillList = fillSeries(fill, currentTime()->time(), length());
       if (!fillList.empty())
