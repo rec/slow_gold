@@ -7,10 +7,15 @@ namespace rec {
 namespace util {
 
 template <typename Type>
-void insertRange(typename Range<Type>::Vector* c, const Range<Type>& range) {
-  DCHECK_GT(range.size(), 0);
-  c->push_back(range);
+void insertAtEndAndMerge(typename Range<Type>::Vector* c, const Range<Type>& range) {
+  if (c->empty() || c->back().end_ < range.begin_) {
+    c->push_back(range);
+  } else {
+    DCHECK_LE(c->back().begin_, range.begin_);
+    c->back().end_ = range.end_;
+  }
 }
+
 
 }  // namespace util
 }  // namespace rec

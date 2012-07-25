@@ -25,13 +25,13 @@ void fillTimeSelection(Container* sel,
       if (j < size)
         endTime = lpl.loop_point(j).time();
       SampleTime end = endTime;
-      insertRange(sel, SampleRange(begin, end));
+      insertAtEndAndMerge(sel, SampleRange(begin, end));
     }
     i = j;
   }
 
   if (!allowEmpty && sel->empty())
-    insertRange(sel, SampleRange(0, length));
+    insertAtEndAndMerge(sel, SampleRange(0, length));
 }
 
 

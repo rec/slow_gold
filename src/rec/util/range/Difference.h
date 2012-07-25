@@ -16,7 +16,7 @@ Container difference(const Range<Type>& block, const Container& s) {
   for (i = s.begin(); i != s.end() && b.size() && b.end_ > i->begin_; ++i) {
     if (b.begin_ < i->end_) {
       if (b.begin_ < i->begin_) {
-        insertRange(&diff, SampleRange(b.begin_, i->begin_));
+        insertAtEndAndMerge(&diff, SampleRange(b.begin_, i->begin_));
         b.begin_ = i->begin_;
       }
 
@@ -29,7 +29,7 @@ Container difference(const Range<Type>& block, const Container& s) {
   }
 
   if (b.size() > 0)
-    insertRange(&diff, b);
+    insertAtEndAndMerge(&diff, b);
 
   return diff;
 }
@@ -60,11 +60,11 @@ Container difference(const Container& x, const Container& y) {
     Range<Type> b = *i;
     for (; j != y.end() && j->begin_ < i->end_; ++j) {
       if (i->begin_ < j->begin_)
-        insertRange(&result, SampleRange(b.begin_, j->begin_));
+        insertAtEndAndMerge(&result, SampleRange(b.begin_, j->begin_));
       b.begin_ = j->end_;
     }
     if (b.size() > 0)
-      insertRange(&result, b);
+      insertAtEndAndMerge(&result, b);
   }
 
   return result;
