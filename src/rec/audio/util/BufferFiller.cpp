@@ -45,8 +45,8 @@ SampleTime BufferFiller::setReader(const VirtualFile& f,
   return reader_->setReader(reader);
 }
 
-block::Block BufferFiller::fillOnce() {
-  int64 pos = reader_->position();
+SampleRange BufferFiller::fillOnce() {
+  SampleTime pos(reader_->position());
   int filled = static_cast<int>(reader_->fillNextBlock());
 
   if (filled) {
@@ -59,7 +59,7 @@ block::Block BufferFiller::fillOnce() {
     thumbnail_->write(file_);
   }
 
-  return block::makeBlock(pos, pos + filled);
+  return SampleRange(pos, pos + filled);
 }
 
 void BufferFiller::reset() {

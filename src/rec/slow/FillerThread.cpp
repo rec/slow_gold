@@ -43,14 +43,14 @@ void FillerThread::setFillPositionOrJump() {
 void FillerThread::run() {
   setFillPositionOrJump();
   while (true) {
-    Block b = bufferFiller()->fillOnce();
-    if (threadShouldExit() || block::empty(b))
+    SampleRange b = bufferFiller()->fillOnce();
+    if (threadShouldExit() || b.empty())
       return;
     setFillPositionOrJump();
     {
       MessageManagerLock l(this);
       if (l.lockWasGained())
-        components()->waveform_->repaintBlock(b);
+        components()->waveform_->repaintRange(b);
     }
     wait(FILLER_THREAD_WAIT);
   }

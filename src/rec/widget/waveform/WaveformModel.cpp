@@ -3,16 +3,14 @@
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
-#include "rec/util/block/Difference.h"
-#include "rec/util/block/MergeBlockSet.h"
+#include "rec/util/range/Difference.h"
+#include "rec/util/range/Merge.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
 namespace widget {
 namespace waveform {
-
-using namespace rec::util::block;
 
 namespace {
 
@@ -30,8 +28,8 @@ Range<SampleTime > WaveformModel::getTimeRange() const {
   const Zoom& zoom = viewport_.zoom();
   Range<SampleTime > r;
   if (zoom.zoom_to_selection() && !selection_.empty()) {
-    r.begin_ = SampleTime(selection_.begin()->first);
-    r.end_ = SampleTime(selection_.rbegin()->second);
+    r.begin_ = SampleTime(selection_.begin()->begin_);
+    r.end_ = SampleTime(selection_.rbegin()->end_);
     if (r.end_ == 0)
       r.end_ = zoomEnd();
 
@@ -69,8 +67,8 @@ SampleTime WaveformModel::zoomEnd() const {
   return zoom.has_end() ? SampleTime(zoom.end()) : SampleTime(length());
 }
 
-const block::BlockSet WaveformModel::getAndClearDirty() {
-  BlockSet result;
+const SampleRangeVector WaveformModel::getAndClearDirty() {
+  SampleRangeVector result;
   result.swap(dirty_);
   return result;
 }
@@ -78,10 +76,11 @@ const block::BlockSet WaveformModel::getAndClearDirty() {
 bool WaveformModel::setViewport(const Viewport& vp) {
   Zoom z = viewport_.zoom();
   viewport_ = vp;
-  BlockSet newSelection = rec::audio::getTimeSelection(vp.loop_points());
-  dirty_ = merge(dirty_, symmetricDifference(selection_, newSelection));
+  SampleRangeVector newSel = rec::audio::getTimeSelectionVector(vp.loop_points());
+  SampleRangeVector newSel2 = symmetricDifference<SampleTime>(selection_, newSel);
+  dirty_ = merge<SampleTime>(dirty_, newSel2);
 
-  selection_ = newSelection;
+  selection_ = newSel;
   int64 len = length();
   if (len) {
     constrainZoom(viewport_.mutable_zoom(), len,

@@ -2,7 +2,6 @@
 #define __REC_WIDGET_WAVEFORM_WAVEFORMMODEL__
 
 #include "rec/util/LoopPoint.h"
-#include "rec/util/block/Block.h"
 #include "rec/util/range/Range.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
@@ -27,7 +26,7 @@ class WaveformModel {
   // Return true if we need to layout the Waveform.
   bool setViewport(const Viewport&);
   bool isEmpty() const { return !length(); }
-  const block::BlockSet getAndClearDirty();
+  const SampleRangeVector getAndClearDirty();
   SampleTime length() const { return viewport_.loop_points().length(); }
   const Viewport& viewport() const { return viewport_; }
 
@@ -40,8 +39,8 @@ class WaveformModel {
 
   SampleTime zoomEnd() const;
 
-  block::BlockSet selection_;
-  block::BlockSet dirty_;
+  SampleRangeVector selection_;
+  SampleRangeVector dirty_;
   Viewport viewport_;
   bool isDraggingCursor_;
   int width_;

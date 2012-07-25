@@ -114,7 +114,7 @@ bool Cursor::setDragTime(SampleTime t) {
       lpl->mutable_loop_point(index_)->set_time(t);
       lpl->mutable_loop_point()->SwapElements(index_, next);
       waveform_->DataListener<Viewport>::setProto(viewport);
-      waveform_->adjustCursors(*lpl, block::BlockSet());
+      waveform_->adjustCursors(*lpl, SampleRangeVector());
     }
   }
 

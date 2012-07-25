@@ -8,11 +8,13 @@ namespace util {
 
 template <typename Type>
 void insert(typename Range<Type>::Set* container, const Range<Type>& range) {
+  DCHECK_GT(range.size(), 0);
   container->insert(range);
 }
 
 template <typename Type>
 void insert(typename Range<Type>::Vector* container, const Range<Type>& range) {
+  DCHECK_GT(range.size(), 0);
   container->push_back(range);
 }
 

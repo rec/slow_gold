@@ -2,7 +2,7 @@
 #define __REC_AUDIO_UTIL_BUFFERFILLER__
 
 #include "rec/audio/Audio.h"
-#include "rec/util/block/Block.h"
+#include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace audio {
@@ -16,7 +16,7 @@ class BufferFiller {
   BufferFiller();
   virtual ~BufferFiller();
 
-  block::Block fillOnce();
+  SampleRange fillOnce();
   bool isFull() const;
   SampleTime setReader(const VirtualFile& file, AudioFormatReader* r);
   audio::util::BufferedReader* reader() { return reader_.get(); }

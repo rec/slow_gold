@@ -25,8 +25,6 @@ namespace waveform {
 
 namespace {
 
-using namespace rec::util::block;
-
 // Skin
 
 const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
@@ -134,7 +132,7 @@ void Waveform::operator()(const Viewport& vp) {
 }
 
 void Waveform::viewportChanged() {
-  BlockSet dirty;
+  SampleRangeVector dirty;
   LoopPointList loopPoints;
   {
     Lock l(lock_);
@@ -147,11 +145,11 @@ void Waveform::viewportChanged() {
   if (!model_->isDraggingCursor())
     adjustCursors(loopPoints, dirty);
   else if (!dirty.empty())
-    repaintBlocks(dirty);
+    repaintRanges(dirty);
 }
 
 void Waveform::adjustCursors(const LoopPointList& loopPoints,
-                             const block::BlockSet& dirty) {
+                             const SampleRangeVector& dirty) {
   uint size = loopPoints.loop_point_size();
   for (uint i = 0; i < size; ++i) {
     SampleTime time = loopPoints.loop_point(i).time();
@@ -178,7 +176,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints,
     cursors_.pop_back();
   }
 
-  repaintBlocks(dirty);
+  repaintRanges(dirty);
 }
 
 static const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
@@ -235,10 +233,10 @@ void Waveform::setCursorText(int index, const String& text) {
   DataListener<Viewport>::setProto(viewport);
 }
 
-void Waveform::repaintBlock(Block b) {
-  int x1 = model_->timeToX(b.first);
+void Waveform::repaintRange(const SampleRange& r) {
+  int x1 = model_->timeToX(r.begin_);
   if (x1 < getWidth()) {
-    int x2 = model_->timeToX(b.second);
+    int x2 = model_->timeToX(r.end_);
     if (x2 >= 0) {
       x1 = std::max(0, x1);
       x2 = std::min(x2, getWidth());
@@ -248,9 +246,9 @@ void Waveform::repaintBlock(Block b) {
   }
 }
 
-void Waveform::repaintBlocks(const BlockSet& b) {
-  for (BlockSet::const_iterator i = b.begin(); i != b.end(); ++i)
-    repaintBlock(*i);
+void Waveform::repaintRanges(const SampleRangeVector& b) {
+  for (SampleRangeVector::const_iterator i = b.begin(); i != b.end(); ++i)
+    repaintRange(*i);
 }
 
 void Waveform::setIsDraggingCursor(bool d) {

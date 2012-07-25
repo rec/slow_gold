@@ -20,9 +20,10 @@ BlockList fill(const BlockSet& sel, Size pos, Size len, bool wrap) {
         pos = std::max(pos, i->first);
       }
       Size size = std::min(len, i->second - pos);
-      DCHECK(size > 0) << sel;
-      if (size <= 0)
-        break;
+      if (size <= 0) {
+        LOG_FIRST_N(ERROR, 4) << "Duped gaps";
+        continue;
+      }
       result.push_back(makeBlock(pos, pos + size));
       len -= size;
     }

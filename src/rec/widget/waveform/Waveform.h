@@ -6,6 +6,7 @@
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/range/Range.h"
 #include "rec/util/block/Block.h"
@@ -64,11 +65,11 @@ class Waveform : public Component,
   void setCursorText(int index, const String& text);
   void setIsDraggingCursor(bool d);
   bool isDraggingCursor() const;
-  void repaintBlock(block::Block);
-  void repaintBlocks(const block::BlockSet&);
+  void repaintRange(const SampleRange&);
+  void repaintRanges(const SampleRangeVector&);
 
   void adjustCursors(const LoopPointList& loopPoints,
-                     const block::BlockSet& dirty);
+                     const SampleRangeVector& dirty);
   void setSelected(int index, bool selected);
   const WaveformModel& model() { return *model_; }
   static void translateAll();
