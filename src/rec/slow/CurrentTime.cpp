@@ -139,10 +139,8 @@ void CurrentTime::reset() {
 void CurrentTime::jumpToTime(SampleTime time) {
   {
     Lock l(lock());
-    if (isPlaying() &&
-        !(timeSelection_.empty() || contains(timeSelection_, time))) {
+    if (empty() || !(timeSelection_.empty() || contains(timeSelection_, time)))
       return;
-    }
 
     BufferedReader* reader = bufferFiller()->reader();
     requestedTime_ = time;
