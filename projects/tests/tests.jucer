@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="O16N87wfm" name="tests">
+  <MAINGROUP id="lllOYuWLp" name="tests">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -939,28 +939,6 @@
               name="Binary.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Binary.h" id="bhw5QnpV4"
               name="Binary.h" resource="0"/>
-        <GROUP id="L7IMpEiv5" name="block">
-          <FILE compile="0" file="../../src/rec/util/block/Block.h" id="zEbr4585s"
-                name="Block.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/Difference.cpp" id="lTrEr7gCT"
-                name="Difference.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/block/Difference.h" id="RqjEchYNd"
-                name="Difference.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/Difference_test.cpp"
-                id="ZOCbIJwwl" name="Difference_test.cpp" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/FillSeries.cpp" id="CsoVMsPGQ"
-                name="FillSeries.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/block/FillSeries.h" id="f0B33taET"
-                name="FillSeries.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/FillSeries_test.cpp"
-                id="56LduPkJl" name="FillSeries_test.cpp" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet.cpp"
-                id="b5KJkBweQ" name="MergeBlockSet.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="P90hwWX6W"
-                name="MergeBlockSet.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet_test.cpp"
-                id="i4ML427Lz" name="MergeBlockSet_test.cpp" resource="0"/>
-        </GROUP>
         <GROUP id="87uOq32WV" name="cd">
           <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="4tz0vxRRf"
                 name="Album.cpp" resource="0"/>
@@ -1075,6 +1053,10 @@
               name="FormatTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="PBRyregJE"
               name="FormatTime.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/GetEnv.cpp" id="VfkVJc6Nt"
+              name="GetEnv.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/GetEnv.h" id="oNrAWzVDC"
+              name="GetEnv.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/HasLock.h" id="N13pVQA3v"
               name="HasLock.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/HasThread.h" id="uRfjL2ayb"
@@ -1138,6 +1120,8 @@
                 name="Range_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/Restrict.h" id="UDT94ui7w"
                 name="Restrict.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/SampleRange.h" id="u1N4l7sMv"
+                name="SampleRange.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/Split.h" id="QUO5zg70E"
                 name="Split.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/WrapSeries.h" id="6DFiR1NSY"
@@ -1637,7 +1621,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="BCeZ8ZXq3" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="LrIKLIKY1" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

@@ -293,9 +293,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\TranslateAll.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\support\SupportWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\CDReader.cpp"/>
@@ -319,6 +316,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFileList.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatString.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\GetEnv.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
@@ -1718,10 +1716,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\TranslateAll.h"/>
     <ClInclude Include="..\..\..\..\src\rec\support\SupportWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\CDReader.h"/>
@@ -1748,6 +1742,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\FormatString.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\GetEnv.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\HasLock.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\HasThread.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Listener.h"/>
@@ -1770,6 +1765,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\range\Merge.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Range.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Restrict.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\SampleRange.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Split.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\WrapSeries.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\ReverseProto.h"/>

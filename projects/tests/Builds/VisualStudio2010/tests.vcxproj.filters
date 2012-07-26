@@ -89,9 +89,6 @@
     <Filter Include="tests\rec\util">
       <UniqueIdentifier>{D5BF9AC3-8045-2075-BBC3-3017DB7BF5DB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tests\rec\util\block">
-      <UniqueIdentifier>{43DDE940-CF39-E145-D697-D88C3BD49B1F}</UniqueIdentifier>
-    </Filter>
     <Filter Include="tests\rec\util\cd">
       <UniqueIdentifier>{699F8D07-7F4F-6778-4B78-E6DF7EF79291}</UniqueIdentifier>
     </Filter>
@@ -1012,24 +1009,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp">
       <Filter>tests\rec\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp">
-      <Filter>tests\rec\util\block</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\Difference_test.cpp">
-      <Filter>tests\rec\util\block</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp">
-      <Filter>tests\rec\util\block</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries_test.cpp">
-      <Filter>tests\rec\util\block</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp">
-      <Filter>tests\rec\util\block</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet_test.cpp">
-      <Filter>tests\rec\util\block</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp">
       <Filter>tests\rec\util\cd</Filter>
     </ClCompile>
@@ -1115,6 +1094,9 @@
       <Filter>tests\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp">
+      <Filter>tests\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\GetEnv.cpp">
       <Filter>tests\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp">
@@ -3339,18 +3321,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h">
-      <Filter>tests\rec\util\block</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h">
-      <Filter>tests\rec\util\block</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h">
-      <Filter>tests\rec\util\block</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h">
-      <Filter>tests\rec\util\block</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h">
       <Filter>tests\rec\util\cd</Filter>
     </ClInclude>
@@ -3429,6 +3399,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\GetEnv.h">
+      <Filter>tests\rec\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\HasLock.h">
       <Filter>tests\rec\util</Filter>
     </ClInclude>
@@ -3493,6 +3466,9 @@
       <Filter>tests\rec\util\range</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Restrict.h">
+      <Filter>tests\rec\util\range</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\SampleRange.h">
       <Filter>tests\rec\util\range</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Split.h">

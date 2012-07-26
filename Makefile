@@ -24,9 +24,13 @@ builddebug:
 buildrelease:
 	cd $(BUILD_ROOT) && xcodebuild -project "SlowGold.xcodeproj" -configuration Release
 
-compress: builddebug buildrelease
-	cd $(BUILD_ROOT)/build/Release && zip -r $(BUILD_ROOT)/build/"SlowGold 8.zip" "SlowGold 8.app"
+compress: compressrelease compressdebug
+
+compressdebug: builddebug
 	cd $(BUILD_ROOT)/build/Debug && zip -r $(BUILD_ROOT)/build/"SlowGold 8-debug.zip" "SlowGold 8-debug.app"
+
+compressrelease: buildrelease
+	cd $(BUILD_ROOT)/build/Release && zip -r $(BUILD_ROOT)/build/"SlowGold 8.zip" "SlowGold 8.app"
 
 .PHONY: build code all buildrelease builddebug compress
 

@@ -89,9 +89,6 @@
     <Filter Include="RequestSupport\rec\util">
       <UniqueIdentifier>{A8BF1B96-FD2F-E155-4952-FD44D034A42B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RequestSupport\rec\util\block">
-      <UniqueIdentifier>{D33CAD83-94B6-C8D9-0DD4-30CE2E52C9BC}</UniqueIdentifier>
-    </Filter>
     <Filter Include="RequestSupport\rec\util\cd">
       <UniqueIdentifier>{E849AB67-F796-DBEA-0CDC-39F6B3F69CD3}</UniqueIdentifier>
     </Filter>
@@ -979,15 +976,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp">
       <Filter>RequestSupport\rec\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp">
-      <Filter>RequestSupport\rec\util\block</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp">
-      <Filter>RequestSupport\rec\util\block</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp">
-      <Filter>RequestSupport\rec\util\block</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp">
       <Filter>RequestSupport\rec\util\cd</Filter>
     </ClCompile>
@@ -1055,6 +1043,9 @@
       <Filter>RequestSupport\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp">
+      <Filter>RequestSupport\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\GetEnv.cpp">
       <Filter>RequestSupport\rec\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp">
@@ -3255,18 +3246,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">
       <Filter>RequestSupport\rec\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h">
-      <Filter>RequestSupport\rec\util\block</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h">
-      <Filter>RequestSupport\rec\util\block</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h">
-      <Filter>RequestSupport\rec\util\block</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h">
-      <Filter>RequestSupport\rec\util\block</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h">
       <Filter>RequestSupport\rec\util\cd</Filter>
     </ClInclude>
@@ -3345,6 +3324,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h">
       <Filter>RequestSupport\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\GetEnv.h">
+      <Filter>RequestSupport\rec\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\HasLock.h">
       <Filter>RequestSupport\rec\util</Filter>
     </ClInclude>
@@ -3409,6 +3391,9 @@
       <Filter>RequestSupport\rec\util\range</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Restrict.h">
+      <Filter>RequestSupport\rec\util\range</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\SampleRange.h">
       <Filter>RequestSupport\rec\util\range</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Split.h">

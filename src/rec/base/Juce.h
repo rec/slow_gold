@@ -39,7 +39,6 @@ typedef juce::Component Component;
 typedef juce::DocumentWindow DocumentWindow;
 typedef juce::DirectoryIterator DirectoryIterator;
 typedef juce::Drawable Drawable;
-// typedef juce::DrawableButton DrawableButton;
 
 typedef juce::File File;
 typedef juce::FileChooser FileChooser;
@@ -76,6 +75,7 @@ typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
 typedef juce::String String;
 typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
+typedef juce::SystemStats SystemStats;
 
 typedef juce::TableHeaderComponent TableHeaderComponent;
 typedef juce::TableListBox TableListBox;

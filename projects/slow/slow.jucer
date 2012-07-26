@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="kkqFSlR2E" name="SlowGold">
+  <MAINGROUP id="vsd48gpOo" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -915,22 +915,6 @@
               name="Binary.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Binary.h" id="bhw5QnpV4"
               name="Binary.h" resource="0"/>
-        <GROUP id="L7IMpEiv5" name="block">
-          <FILE compile="0" file="../../src/rec/util/block/Block.h" id="zEbr4585s"
-                name="Block.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/Difference.cpp" id="lTrEr7gCT"
-                name="Difference.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/block/Difference.h" id="RqjEchYNd"
-                name="Difference.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/FillSeries.cpp" id="CsoVMsPGQ"
-                name="FillSeries.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/block/FillSeries.h" id="f0B33taET"
-                name="FillSeries.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet.cpp"
-                id="b5KJkBweQ" name="MergeBlockSet.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="P90hwWX6W"
-                name="MergeBlockSet.h" resource="0"/>
-        </GROUP>
         <GROUP id="87uOq32WV" name="cd">
           <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="4tz0vxRRf"
                 name="Album.cpp" resource="0"/>
@@ -1033,6 +1017,10 @@
               name="FormatTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="PBRyregJE"
               name="FormatTime.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/GetEnv.cpp" id="WfJ2mpcz9"
+              name="GetEnv.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/GetEnv.h" id="O3lwJhWt1"
+              name="GetEnv.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/HasLock.h" id="sITGH6KUD"
               name="HasLock.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/HasThread.h" id="nz47yHUqW"
@@ -1090,6 +1078,8 @@
                 name="Range.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/Restrict.h" id="hfN4OVis8"
                 name="Restrict.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/SampleRange.h" id="ONxe7wV0t"
+                name="SampleRange.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/Split.h" id="KtZpn2pES"
                 name="Split.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/WrapSeries.h" id="PqmGw4aaW"
@@ -1581,7 +1571,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="zg5HQu1U8" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="P3O8tDSLy" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

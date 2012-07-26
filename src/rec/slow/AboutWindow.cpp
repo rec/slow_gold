@@ -4,6 +4,7 @@
 #include "rec/gui/SetterToggle.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/SlowWindow.h"
+#include "rec/util/GetEnv.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -15,7 +16,7 @@ namespace {
 
 Trans DISPLAY_ON_STARTUP("Display this window on startup");
 Trans DRAG_AUDIO("Drag audio files onto the waveform.");
-Trans CD_AUTOMATIC("CDs will automatically appear in the top-left when you "
+Trans CD_AUTOMATIC("CDs will automatically appear at the top-left when you "
                    "insert them.");
 Trans PRESS_SPACE("Press the space bar to start and stop playback.");
 Trans DRAG_SPEED("Drag the Speed slider to slow down or speed up.");
@@ -23,6 +24,8 @@ Trans CREATE_LOOPS("Create loop points by pressing the L key.");
 Trans DOWNLOAD_MANUAL("Download the manual from the Help menu for many more "
                       "commands.");
 Trans COPYRIGHT("Copyright © %d");
+Trans REGISTERED_TO("Registered to: ");
+Trans UNREGISTERED("Not Registered!");
 
 using namespace juce;
 
@@ -63,8 +66,13 @@ class AboutPane : public Component {
 
     left_.append(s, font);
     String t = name + " " + versionNumber + "\nWorld Wide Woodshed Software\n" +
-      String::formatted(COPYRIGHT, 2012);
+      String::formatted(COPYRIGHT, 2012) + String("\n");
     right_.append(t, font);
+
+    String user = getEnv("USERNAME", "");
+    String reg = user.isEmpty() ? String(UNREGISTERED) :
+      (String("\n") + REGISTERED_TO + user);
+    right_.append(reg, font);
 
     addAndMakeVisible(&displayOnStartup_);
     displayOnStartup_.setBounds(MARGINI, HEIGHT - MARGINI - BUTTON_HEIGHT,
@@ -121,14 +129,16 @@ void AboutWindow::mouseDown(const MouseEvent&) {
 }
 
 void AboutWindow::translateAll() {
-  DISPLAY_ON_STARTUP.translate();
-  DRAG_AUDIO.translate();
   CD_AUTOMATIC.translate();
-  PRESS_SPACE.translate();
-  DRAG_SPEED.translate();
-  CREATE_LOOPS.translate();
-  DOWNLOAD_MANUAL.translate();
   COPYRIGHT.translate();
+  CREATE_LOOPS.translate();
+  DISPLAY_ON_STARTUP.translate();
+  DOWNLOAD_MANUAL.translate();
+  DRAG_AUDIO.translate();
+  DRAG_SPEED.translate();
+  PRESS_SPACE.translate();
+  REGISTERED_TO.translate();
+  UNREGISTERED.translate();
 }
 
 }  // namespace slow

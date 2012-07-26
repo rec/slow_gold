@@ -1,6 +1,7 @@
 #include <map>
 
 #include "rec/app/RegisterProgram.h"
+#include "rec/util/GetEnv.h"
 
 namespace rec {
 namespace app {
@@ -9,10 +10,6 @@ namespace {
 
 const bool USE_POSTDATA = false;
 const char* const EMPTY_PARAMETER = "NONE";
-
-String getEnv(const String& name, const String& defaultValue) {
-  return juce::SystemStats::getEnvironmentVariable(name, defaultValue);
-}
 
 }  // namespace
 
@@ -32,7 +29,7 @@ bool RegisterProgram::tryOneUrl(const String& urlName) {
   URL url(urlName);
   Range<const char* const*> r = getEnvironmentVariables();
   for (const char* const* i = r.begin_; i != r.end_; ++i)
-    url = url.withParameter(*i, getEnv(*i, EMPTY_PARAMETER));
+    url = url.withParameter(*i, getEnv(*i));
 
   Range<const NamedFunction*> s = getNamedFunctions();
   for (const NamedFunction* i = s.begin_; i != s.end_; ++i)
