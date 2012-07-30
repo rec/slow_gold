@@ -29,7 +29,8 @@ Trans ERROR_WAS("Error was");
 Trans FILE_NOT_EXIST("Can't Find File");
 Trans FILE_NOT_EXIST_FULL("Sorry, we couldn't find the file %s.  Perhaps you "
                           "deleted it, or perhaps it's on a drive that isn't "
-                          "currently mounted.\nThe full path was: %s");
+                          "currently mounted.");
+Trans THE_FULL_PATH("The full path was: %s");
 Trans CANT_READ_M4A("We Can't Read .m4a Files On Windows");
 Trans CANT_READ_M4A_FULL("Sorry, file %s is an .m4a file and we cano't yet "
                          "read these files on Windows: "
@@ -99,7 +100,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
     if (!f.existsAsFile()) {
       errorTitle_ = FILE_NOT_EXIST;
       errorDetails_ = String::formatted(
-          FILE_NOT_EXIST_FULL,
+          FILE_NOT_EXIST_FULL + String("\n") + THE_FULL_PATH,
           c_str(file::getFilename(file)),
           c_str(file::getFullDisplayName(file)));
     } else {
@@ -153,6 +154,7 @@ void MusicFileReader::translateAll() {
   ERROR_WAS.translate();
   FILE_NOT_EXIST.translate();
   FILE_NOT_EXIST_FULL.translate();
+  THE_FULL_PATH.translate();
   CANT_READ_M4A.translate();
   CANT_READ_M4A_FULL.translate();
   COULDNT_OPEN_FILE.translate();

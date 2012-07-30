@@ -73,7 +73,7 @@ Trans::Trans(const char* o, const char* h)
 
 void Trans::check(const String& s) {
   DCHECK_GT(s.length(), 0);
-  // DCHECK(!s.containsChar('\n')) << str(s);
+  DCHECK(!s.containsChar('\n')) << str(s);
   DCHECK(!s.containsChar('\r')) << str(s);
   DCHECK(!s.containsChar('\t')) << str(s);
   // DCHECK(!isspace(s[0])) << str(s);
