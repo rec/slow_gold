@@ -355,6 +355,7 @@ void InstanceCallbacks::translateAll() {
   CONFIRM_CLEAR_ALL_SETTINGS_FULL.translate();
   CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL.translate();
   CLEAR_FAILED.translate();
+  CLEAR_FAILED_FULL.translate();
   CANCEL.translate();
 }
 

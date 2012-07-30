@@ -10,6 +10,12 @@ using namespace juce;
 
 namespace {
 
+struct CompareString {
+  bool operator()(const String& x, const String& y) {
+    return x.compareIgnoreCase(y);
+  }
+};
+
 typedef std::pair<String, String> StringPair;
 typedef std::set<StringPair> TranslationSet;
 
@@ -30,22 +36,38 @@ void write(FileOutputStream* output, const String& s) {
   output->writeText(s, false, false);
 }
 
+using namespace juce;
+
+var* getVariantFromTranslations(const TranslationSet& tr) {
+  ptr<var> v(new var);
+  for (TranslationSet::const_iterator i = tr.begin(); i != tr.end(); ++i) {
+    var v2;
+    v2.append(i->first);
+    if (!i->second.isEmpty())
+      v2.append(i->second);
+    v->append(v2);
+  }
+  return v.transfer();
+}
+
 }  // namespace
+
+Trans::~Trans() {
+#if JUCE_DEBUG && JUCE_MAC
+  using namespace std;
+  if (!translated_)
+    cerr << "Didn't xlate \"" << original_ << "\", " << hint_ << "\n" << flush;
+#endif
+}
 
 void Trans::dumpAll() {
   LOG(INFO) << "Dumping translations " << translations()->size();
 
-  const TranslationSet& t = *translations();
   File file("/tmp/translations.txt");
   file.deleteFile();
   juce::FileOutputStream output(file);
-  for (TranslationSet::const_iterator i = t.begin(); i != t.end(); ++i) {
-    write(&output, "- [\"");
-    write(&output, i->first);
-    write(&output, "\", \"");
-    write(&output, i->second);
-    write(&output, "\"]\n");
-  }
+  ptr<var> v(getVariantFromTranslations(*translations()));
+  JSON::writeToStream(output, *v);
 }
 
 #endif  // DEBUG

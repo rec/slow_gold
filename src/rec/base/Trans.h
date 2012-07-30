@@ -13,9 +13,10 @@ class Trans {
   void translate() const;
 
   Trans(const char*);
-  Trans(const String& s);
+  Trans(const String&);
 
   Trans(const char* o, const char* hint);
+  ~Trans();
 
 #ifdef DEBUG
   static void dumpAll();

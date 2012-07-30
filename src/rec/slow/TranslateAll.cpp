@@ -45,6 +45,7 @@ void translateAll() {
 
   music::MusicFileReader::translateAll();
 
+  util::cd::CDReader::translateAll();
   widget::tree::CD::translateAll();
   widget::tree::TreeViewDropAll::translateAll();
   widget::waveform::Waveform::translateAll();
