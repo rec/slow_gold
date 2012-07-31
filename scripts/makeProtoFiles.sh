@@ -14,4 +14,5 @@ find "$SRC_ROOT" -name \*.proto |\
  xargs "$INSTALL_DIR/bin/protoc"\
    -I"$SRC_ROOT"\
    -I"$ROOT/build/$CONFIG/protobuf/include"\
-   --cpp_out="$PROTO_ROOT"
+   --cpp_out="$PROTO_ROOT" \
+   --python_out="$PROTO_ROOT"

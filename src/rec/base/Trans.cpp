@@ -3,62 +3,21 @@
 #include "rec/util/Copy.h"
 #include "rec/base/Trans.pb.h"
 
-namespace rec {
-
-Trans::Trans(const char* original) : string_(new TranslatedString) {
-  string_->set_original(original);
-  check(string_->original());
-}
-
-Trans::Trans(const char* original, const char* file, int line)
-    : string_(new TranslatedString) {
-  string_->set_original(original);
-  string_->set_file(file);
-  string_->set_line(line);
-  check(string_->original());
-}
-
-Trans::Trans(const String& original, const char* file, int line)
-    : string_(new TranslatedString) {
-  string_->set_original(str(original));
-  string_->set_file(file);
-  string_->set_line(line);
-  check(string_->original());
-}
-
-Trans::Trans(const char* original, const char* hint, const char* file, int line)
-    : string_(new TranslatedString) {
-  string_->set_original(original);
-  string_->set_file(file);
-  string_->set_line(line);
-  string_->set_hint(hint);
-  check(string_->original());
-  check(string_->hint());
-}
-
-Trans::~Trans() {
-#if JUCE_DEBUG && JUCE_MAC
-  using namespace std;
-  if (string_->translation().empty())
-    cerr << "Didn't translate " << string_->ShortDebugString();
-#endif
-}
-
-void Trans::check(const string& st) {
-  String s = str(st);
-  DCHECK_GT(s.length(), 0);
-  DCHECK(!s.containsChar('\n')) << str(s);
-  DCHECK(!s.containsChar('\r')) << str(s);
-  DCHECK(!s.containsChar('\t')) << str(s);
-  DCHECK(!isspace(s[0])) << str(s);
-  DCHECK(!isspace(s[s.length() - 1])) << str(s);
-}
-
 using namespace juce;
+
+namespace rec {
 
 #if JUCE_DEBUG && JUCE_MAC
 
 namespace {
+
+string cleanFile(const String& file) {
+  String f = file;
+  int i = file.indexOf("/src/rec/");
+  if (i >= 0)
+    f = f.substring(i + 5);
+  return str(f);
+}
 
 struct Compare {
   bool operator()(const TranslatedString& x, const TranslatedString& y) const {
@@ -102,12 +61,60 @@ void Trans::dumpAll() {
 
 #endif  // DEBUG
 
+Trans::Trans(const char* original) : string_(new TranslatedString) {
+  string_->set_original(original);
+  check(string_->original());
+}
+
+Trans::Trans(const char* original, const char* file, int line)
+    : string_(new TranslatedString) {
+  string_->set_original(original);
+  string_->set_file(cleanFile(file));
+  string_->set_line(line);
+  check(string_->original());
+}
+
+Trans::Trans(const String& original, const char* file, int line)
+    : string_(new TranslatedString) {
+  string_->set_original(str(original));
+  string_->set_file(cleanFile(file));
+  string_->set_line(line);
+  check(string_->original());
+}
+
+Trans::Trans(const char* original, const char* hint, const char* file, int line)
+    : string_(new TranslatedString) {
+  string_->set_original(original);
+  string_->set_file(cleanFile(file));
+  string_->set_line(line);
+  string_->set_hint(hint);
+  check(string_->original());
+  check(string_->hint());
+}
+
+Trans::~Trans() {
+#if JUCE_DEBUG && JUCE_MAC
+  using namespace std;
+  if (string_->translation().empty())
+    cerr << "Didn't translate " << string_->ShortDebugString();
+#endif
+}
+
+void Trans::check(const string& st) {
+  String s = str(st);
+  DCHECK_GT(s.length(), 0);
+  DCHECK(!s.containsChar('\n')) << str(s);
+  DCHECK(!s.containsChar('\r')) << str(s);
+  DCHECK(!s.containsChar('\t')) << str(s);
+  DCHECK(!isspace(s[0])) << str(s);
+  DCHECK(!isspace(s[s.length() - 1])) << str(s);
+}
+
 Trans::operator String() const {
   if (!string_->has_translation())
     translate();
   return str(string_->translation());
 }
-
 
 void Trans::translate() const {
   String s(str(string_->original()));
