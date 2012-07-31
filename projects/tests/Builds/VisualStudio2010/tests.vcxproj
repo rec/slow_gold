@@ -37,12 +37,12 @@
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SlowGold 8</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">tests</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath);..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\debug\\static;..\\..\\..\\..\\..\\glog\\Debug;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug</LibraryPath>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SlowGold 8</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">tests</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath);..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\release\\static;..\\..\\..\\..\\..\\glog\\Release;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Release;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Release</LibraryPath>
   </PropertyGroup>
@@ -57,7 +57,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -74,18 +74,18 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\SlowGold 8.exe</OutputFile>
+      <OutputFile>$(OutDir)\tests.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\SlowGold 8.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\tests.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalOptions>ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT  /NODEFAULTLIB:LIBCMTD %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\SlowGold 8.bsc</OutputFile>
+      <OutputFile>$(IntDir)\tests.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -98,7 +98,7 @@
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -115,20 +115,20 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\SlowGold 8.exe</OutputFile>
+      <OutputFile>$(OutDir)\tests.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\SlowGold 8.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\tests.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalOptions>ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT  /NODEFAULTLIB:LIBCMTD %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\SlowGold 8.bsc</OutputFile>
+      <OutputFile>$(IntDir)\tests.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -138,15 +138,19 @@
     <ClCompile Include="..\..\..\..\src\rec\app\RegisterInstance.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\RegisterProgram.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\Audio_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\Manager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CleanGenre.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Format.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Reader_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\RegisterFormats.cpp"/>
@@ -154,11 +158,14 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Selection.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\TestSource_test.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Testy_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Implementation.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\RubberBand.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretchy_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferedReaderImpl.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\BufferFiller.cpp"/>
@@ -177,6 +184,7 @@
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapCategoryItem.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditButton.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditor.cpp"/>
@@ -199,9 +207,11 @@
     <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\MessageField.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Proto_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedOperations.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedTyper.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\UndoStack.cpp"/>
@@ -238,6 +248,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\stream.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\tag.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\Yaml_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\ZipData.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\CommandBar.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp"/>
@@ -294,12 +305,15 @@
     <ClCompile Include="..\..\..\..\src\rec\support\SupportWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Album_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\CDReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Eject.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\juce_AudioCDReader_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Socket.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\StripLines_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
@@ -308,25 +322,34 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\DisplayFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\FileType.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\MoveDirectories.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\MoveFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFileList.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatString.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\FormatString_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\GetEnv.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\Mathy_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Proto.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\range\Fillable.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\range\Range_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\CallbackQueue.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\unused\Circular_test.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\unused\DelegateToList_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\unused\RandomSelfInverseFunction_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\status\TextComponent.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\tree\CD.cpp"/>
@@ -343,6 +366,7 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\WaveformPainter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\Widget_test.cpp"/>
     <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButton.svg.cpp"/>
     <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonDisabled.svg.cpp"/>
     <ClCompile Include="..\..\..\..\genfiles\icon\rec\gui\icon\AddLoopPointButtonPressed.svg.cpp"/>
@@ -1499,6 +1523,7 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Player.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Selection.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Stereo.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\TestSource_test.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Testy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Timer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h"/>

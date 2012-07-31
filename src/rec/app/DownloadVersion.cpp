@@ -19,12 +19,12 @@ using namespace juce;
 
 namespace {
 
-const Trans NEW_VERSION("A new version of SlowGold, %s, is available.");
-const Trans LIKE_TO_DOWNLOAD("Would you like to download it?");
-const Trans DOWNLOAD_AND_QUIT("Download new version and quit this older one.");
-const Trans RUN_THIS_OLDER_VERSION("Run this older version (%s).");
-const Trans COULDNT_UPDATE("Couldn't update to version %s");
-const Trans CLICK_TO_CONTINUE("Click to continue.");
+TRTR(NEW_VERSION, "A new version of SlowGold, %s, is available.");
+TRTR(LIKE_TO_DOWNLOAD, "Would you like to download it?");
+TRTR(DOWNLOAD_AND_QUIT, "Download new version and quit this older one.");
+TRTR(RUN_THIS_OLDER_VERSION, "Run this older version (%s).");
+TRTR(COULDNT_UPDATE, "Couldn't update to version %s");
+TRTR(CLICK_TO_CONTINUE, "Click to continue.");
 
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const URL VERSION_FILE(WOODSHED + "currentversion/");

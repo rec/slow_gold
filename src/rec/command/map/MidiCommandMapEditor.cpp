@@ -11,8 +11,8 @@ namespace command {
 
 namespace {
 
-Trans WAITING("Waiting for a MIDI note, program change or controller...");
-Trans MIDI("MIDI");
+TRTR(WAITING, "Waiting for a MIDI note, program change or controller...");
+TRTR(MIDI, "MIDI");
 
 class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {

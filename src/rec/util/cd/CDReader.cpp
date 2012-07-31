@@ -10,8 +10,8 @@ namespace cd {
 
 namespace {
 
-Trans NO_AVAILBLE("No available CDs.");
-Trans TRIED_TO_READ("Tried to read CD, id=%s, names=%s");
+TRTR(NO_AVAILBLE, "No available CDs.");
+TRTR(TRIED_TO_READ, "Tried to read CD, id=%s, names=%s");
 
 }  // namespace
 

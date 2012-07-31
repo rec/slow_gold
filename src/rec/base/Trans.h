@@ -7,31 +7,37 @@
 
 namespace rec {
 
+class TranslatedString;
+
 class Trans {
  public:
-  operator const String&() const;
+  operator String() const;
   void translate() const;
 
-  Trans(const char*);
-  Trans(const String&);
-
-  Trans(const char* o, const char* hint);
+  explicit Trans(const char*);  // DEPRECATED
+  Trans(const char*, const char* file, int line);
+  Trans(const String&, const char* file, int line);
+  Trans(const char* o, const char* hint, const char* file, int line);
   ~Trans();
 
-#ifdef DEBUG
-  static void dumpAll();
-#endif
-
  private:
-  void check(const String& s);
+  ptr<TranslatedString> string_;
 
-  const String original_;
-  const String hint_;
-
-  mutable ptr<String> translated_;
+  void check(const string& s);
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Trans);
+
+#ifdef DEBUG
+ public:
+  static void dumpAll();
+#endif
 };
+
+#define TRTR(NAME, TEXT)                      \
+  const Trans NAME(TEXT, __FILE__, __LINE__)
+
+#define TRTR2(NAME, TEXT, HINT)                \
+  const Trans NAME(TEXT, HINT, __FILE__, __LINE__)
 
 #if JUCE_WINDOWS
 

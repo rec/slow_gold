@@ -9,8 +9,8 @@ namespace tree {
 
 namespace {
 
-Trans UNKNOWN_CD("<Unknown CD>");
-Trans UNKNOWN_CD_FULL("Unknown CD: ID = 0x");
+TRTR(UNKNOWN_CD, "<Unknown CD>");
+TRTR(UNKNOWN_CD_FULL, "Unknown CD: ID = 0x");
 
 }  // namespace
 

@@ -10,7 +10,7 @@
 namespace rec {
 namespace command {
 
-static Trans RESET_TO_DEFAULTS("reset to defaults");
+static TRTR(RESET_TO_DEFAULTS, "reset to defaults");
 
 //==============================================================================
 CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,

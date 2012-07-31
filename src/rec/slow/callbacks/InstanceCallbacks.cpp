@@ -42,31 +42,31 @@ namespace {
 
 static const bool QUIT_EVEN_IF_CLEAR_FAILS = false;
 
-Trans NO_DOWNLOAD_FOUND("Your Version Of SlowGold Is Up-To-Date");
-Trans NO_DOWNLOAD_FOUND_FULL("Your version of SlowGold, %s, is up-to-date.");
-Trans OK("OK");
-Trans CANCEL("Cancel");
+TRTR(NO_DOWNLOAD_FOUND, "Your Version Of SlowGold Is Up-To-Date");
+TRTR(NO_DOWNLOAD_FOUND_FULL, "Your version of SlowGold, %s, is up-to-date.");
+TRTR(OK, "OK");
+TRTR(CANCEL, "Cancel");
 
-Trans CLEAR_KEYBOARD_MAPPINGS_TITLE("Clear Keyboard Mappings.");
-Trans CLEAR_KEYBOARD_MAPPINGS_FULL("Clear all keyboard mappings to factory "
+TRTR(CLEAR_KEYBOARD_MAPPINGS_TITLE, "Clear Keyboard Mappings.");
+TRTR(CLEAR_KEYBOARD_MAPPINGS_FULL, "Clear all keyboard mappings to factory "
                                    "default?");
-Trans CLEAR_MIDI_MAPPINGS_TITLE("Clear MIDI Mappings.");
-Trans CLEAR_MIDI_MAPPINGS_FULL("Clear all MIDI mappings?");
+TRTR(CLEAR_MIDI_MAPPINGS_TITLE, "Clear MIDI Mappings.");
+TRTR(CLEAR_MIDI_MAPPINGS_FULL, "Clear all MIDI mappings?");
 
-Trans CONFIRM_CLEAR_ALL_SETTINGS("Clearing All Settings For All Tracks");
+TRTR(CONFIRM_CLEAR_ALL_SETTINGS, "Clearing All Settings For All Tracks");
 
-Trans CONFIRM_CLEAR_ALL_SETTINGS_FULL("You want to clear *all* settings, and quit "
+TRTR(CONFIRM_CLEAR_ALL_SETTINGS_FULL, "You want to clear *all* settings, and quit "
                                       "SlowGold.  Is this OK?");
 
-Trans CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK("Clearing Settings For This Track Only");
+TRTR(CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK, "Clearing Settings For This Track Only");
 
-Trans CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL("You want to clear settings for this "
+TRTR(CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL, "You want to clear settings for this "
                                                  "track only, and quit the "
                                                  "program.  Is this OK?");
 
-Trans CLEAR_FAILED("Unable To Clear Settings");
+TRTR(CLEAR_FAILED, "Unable To Clear Settings");
 
-Trans CLEAR_FAILED_FULL("Sorry, there was an error clearing the settings. "
+TRTR(CLEAR_FAILED_FULL, "Sorry, there was an error clearing the settings. "
                         "Please report this to support@worldwidewoodshed.com.");
 
 static const int SELECTION_WIDTH_PORTION = 20;

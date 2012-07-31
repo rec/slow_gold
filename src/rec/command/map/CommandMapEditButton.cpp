@@ -5,10 +5,10 @@
 namespace rec {
 namespace command {
 
-Trans ADD_NEW_KEY_MAPPING("adds a new key-mapping");
-Trans CHANGE_KEY_MAPPING("click to change this key-mapping");
-Trans CHANGE_COMMAND_MAPPING("Change this command mapping");
-Trans REMOVE_COMMAND_MAPPING("Remove this command mapping");
+TRTR(ADD_NEW_KEY_MAPPING, "adds a new key-mapping");
+TRTR(CHANGE_KEY_MAPPING, "click to change this key-mapping");
+TRTR(CHANGE_COMMAND_MAPPING, "Change this command mapping");
+TRTR(REMOVE_COMMAND_MAPPING, "Remove this command mapping");
 
 CommandMapEditButton::CommandMapEditButton(CommandMapEditor& owner_,
                                            const CommandID commandID_,

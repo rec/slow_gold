@@ -7,8 +7,8 @@ namespace command {
 
 namespace {
 
-Trans PRESS_A_KEY("Please press a key combination now...");
-Trans KEY("Key");
+TRTR(PRESS_A_KEY, "Please press a key combination now...");
+TRTR(KEY, "Key");
 
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:

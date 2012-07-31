@@ -35,21 +35,21 @@ using namespace rec::audio::stretch;
 using namespace rec::widget::waveform;
 
 
-Trans FILE_SAVE_FAILED("Error During Save.");
-Trans FILE_SAVE_FAILED_FULL("There was an error saving your file %s.");
-Trans FINISHING_LOADING("Finishing loading audio from disk.");
-Trans SAVING_FILE("Saving File %s.");
-Trans SELECT_SAVE_FILE("Choose File To Save to");
-Trans DOWN("down");
-Trans UP("up");
-Trans OK("OK");
+TRTR(FILE_SAVE_FAILED, "Error During Save.");
+TRTR(FILE_SAVE_FAILED_FULL, "There was an error saving your file %s.");
+TRTR(FINISHING_LOADING, "Finishing loading audio from disk.");
+TRTR(SAVING_FILE, "Saving File %s.");
+TRTR(SELECT_SAVE_FILE, "Choose File To Save to");
+TRTR(DOWN, "down");
+TRTR(UP, "up");
+TRTR(OK, "OK");
 
-Trans TRANSPOSE_ONE("one semitone %s");
-Trans TRANSPOSE_MANY("%s %s semitones");
-Trans CANCEL("Cancel");
-Trans BAD_SUFFIX("The file extension must be .aiff, .aif, .flac, .ogg, "
+TRTR(TRANSPOSE_ONE, "one semitone %s");
+TRTR(TRANSPOSE_MANY, "%s %s semitones");
+TRTR(CANCEL, "Cancel");
+TRTR(BAD_SUFFIX, "The file extension must be .aiff, .aif, .flac, .ogg, "
                          ".wav or .wave.");
-Trans CANT_OVERWRITE_SELF("You cannot overwrite the current file.");
+TRTR(CANT_OVERWRITE_SELF, "You cannot overwrite the current file.");
 
 // Skin
 const int COPY_UPDATE_SIZE = 2048;

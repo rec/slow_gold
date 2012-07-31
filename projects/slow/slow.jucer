@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="vsd48gpOo" name="SlowGold">
+  <MAINGROUP id="en4jLfCYn" name="SlowGold">
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1417,6 +1417,12 @@
                   id="cDwIsaD5w" name="Gain.pb.h" resource="0"/>
           </GROUP>
         </GROUP>
+        <GROUP id="sXsjRrLih" name="base">
+          <FILE compile="1" file="../../genfiles/proto/rec/base/Trans.pb.cc"
+                id="gbyagT63d" name="Trans.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/base/Trans.pb.h" id="l1hdwFbU3"
+                name="Trans.pb.h" resource="0"/>
+        </GROUP>
         <GROUP id="d1juoj8lz" name="command">
           <FILE compile="1" file="../../genfiles/proto/rec/command/Access.pb.cc"
                 id="u992IBg4f" name="Access.pb.cc" resource="0"/>
@@ -1571,7 +1577,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="P3O8tDSLy" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="PFg1UcL1y" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

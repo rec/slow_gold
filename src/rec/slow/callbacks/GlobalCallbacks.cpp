@@ -25,28 +25,28 @@ const String MANUAL = "SlowGoldManual.pdf";
 const String FULL_MANUAL = WOODSHED + MANUAL;
 const String WHATS_NEW_URL = WOODSHED + "%s/whats-new.html";
 
-Trans CANCEL("Cancel");
-Trans CANT_LOAD("Couldn't Load The SlowGold 8 User Manual");
-Trans CANT_LOAD_FULL("Sorry, couldn't load the SlowGold 8 user manual at");
-Trans CANT_SUPPORT("Couldn't Create A Support Request");
-Trans CANT_SUPPORT_FULL("Sorry, we were unable to create a support request.");
-Trans CLICK_TO_CONTINUE("Click to continue.");
-Trans MAIL_ATTACH("Please attach the file on your desktop named %s to this "
+TRTR(CANCEL, "Cancel");
+TRTR(CANT_LOAD, "Couldn't Load The SlowGold 8 User Manual");
+TRTR(CANT_LOAD_FULL, "Sorry, couldn't load the SlowGold 8 user manual at");
+TRTR(CANT_SUPPORT, "Couldn't Create A Support Request");
+TRTR(CANT_SUPPORT_FULL, "Sorry, we were unable to create a support request.");
+TRTR(CLICK_TO_CONTINUE, "Click to continue.");
+TRTR(MAIL_ATTACH, "Please attach the file on your desktop named %s to this "
                   "email and send it to us!");
-Trans MAIL_CREATED("A Support Request file named \"%s\" "
+TRTR(MAIL_CREATED, "A Support Request file named \"%s\" "
                    "was created on your desktop.");
-Trans MAIL_DISCARD("You can throw the file away once your email is sent.");
-Trans MAIL_SUBJECT("Support Request: %s");
-Trans OK("OK");
-Trans PLEASE_CONTACT("Please contact World Wide Woodshed support at");
-Trans PLEASE_MAIL("Please mail the file to %s and then you can throw it away.");
-Trans SUPPORTED("A Support Request Was Created On Your Desktop");
-Trans SELECT_EXPORT_FILE("Select A File To Save Exported Settings");
-Trans SELECT_EXPORT_KEYBOARD_FILE("Select A File To Save Exported Keyboard Command Mappings");
-Trans SELECT_EXPORT_MIDI_FILE("Select A File To Save Exported MIDI Command Mappings");
-Trans SELECT_IMPORT_FILE("Select A Zip File Containing Exported Settings");
-Trans SELECT_IMPORT_KEYBOARD_FILE("Select A File Containing Keyboard Command Mappings");
-Trans SELECT_IMPORT_MIDI_FILE("Select A File Containing MIDI Command Mappings");
+TRTR(MAIL_DISCARD, "You can throw the file away once your email is sent.");
+TRTR(MAIL_SUBJECT, "Support Request: %s");
+TRTR(OK, "OK");
+TRTR(PLEASE_CONTACT, "Please contact World Wide Woodshed support at");
+TRTR(PLEASE_MAIL, "Please mail the file to %s and then you can throw it away.");
+TRTR(SUPPORTED, "A Support Request Was Created On Your Desktop");
+TRTR(SELECT_EXPORT_FILE, "Select A File To Save Exported Settings");
+TRTR(SELECT_EXPORT_KEYBOARD_FILE, "Select A File To Save Exported Keyboard Command Mappings");
+TRTR(SELECT_EXPORT_MIDI_FILE, "Select A File To Save Exported MIDI Command Mappings");
+TRTR(SELECT_IMPORT_FILE, "Select A Zip File Containing Exported Settings");
+TRTR(SELECT_IMPORT_KEYBOARD_FILE, "Select A File Containing Keyboard Command Mappings");
+TRTR(SELECT_IMPORT_MIDI_FILE, "Select A File Containing MIDI Command Mappings");
 
 const String SUPPORT = "support@worldwidewoodshed.com";
 const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));

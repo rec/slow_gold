@@ -33,7 +33,7 @@ const int ZOOM_CURSOR_Y_HOTSPOT = 8;
 const int ZOOM_CURSOR_WIDTH = 24;
 const int ZOOM_CURSOR_HEIGHT = 24;
 
-Trans LOOP_POINT_TOOLTIP("Loop Point:  You can drag it around on the waveform, "
+TRTR(LOOP_POINT_TOOLTIP, "Loop Point:  You can drag it around on the waveform, "
                          "or you can click on the label above and to the right "
                          "to edit its name.");
 

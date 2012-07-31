@@ -12,7 +12,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{54E572EB-7C47-A06B-4364-03ADCE232E73}</ProjectGuid>
+    <ProjectGuid>{05F5E4BA-7B8C-D94E-89EB-AB58035AD98B}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -37,12 +37,12 @@
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SlowGold 8</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">RequestSupport</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(LibraryPath);..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\debug\\static;..\\..\\..\\..\\..\\glog\\Debug;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug</LibraryPath>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SlowGold 8</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">RequestSupport</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(LibraryPath);..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\release\\static;..\\..\\..\\..\\..\\glog\\Release;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Release;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Release</LibraryPath>
   </PropertyGroup>
@@ -74,18 +74,18 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\SlowGold 8.exe</OutputFile>
+      <OutputFile>$(OutDir)\RequestSupport.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\SlowGold 8.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\RequestSupport.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalOptions>ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\SlowGold 8.bsc</OutputFile>
+      <OutputFile>$(IntDir)\RequestSupport.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,11 +115,11 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\SlowGold 8.exe</OutputFile>
+      <OutputFile>$(OutDir)\RequestSupport.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\SlowGold 8.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\RequestSupport.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
@@ -128,7 +128,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\SlowGold 8.bsc</OutputFile>
+      <OutputFile>$(IntDir)\RequestSupport.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -10,10 +10,10 @@ String midiNoteName(const MidiMessage& msg) {
   return MidiMessage::getMidiNoteName(msg.getNoteNumber(), true, true, 3);
 }
 
-Trans AS("as");
-Trans SYSEX("sysex");
-Trans NOTE_OFF("%s off");
-Trans PC("pc %d");
+TRTR(AS, "as");
+TRTR(SYSEX, "sysex");
+TRTR(NOTE_OFF, "%s off");
+TRTR(PC, "pc %d");
 
 }  // namespace
 

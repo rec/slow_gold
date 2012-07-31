@@ -41,7 +41,7 @@ TransformController::TransformController()
                  Address("detune_cents")),
       masterTune_(Trans("Master"), getTypeName<AudioSettings>(),
                   Address("master_tune"), "", "", GLOBAL_SCOPE),
-      enableButton_(Trans("   Enable"), getTypeName<Stretch>(),
+      enableButton_(String("   ") + Trans("Enable"), getTypeName<Stretch>(),
                     Address("time_enabled")),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL),

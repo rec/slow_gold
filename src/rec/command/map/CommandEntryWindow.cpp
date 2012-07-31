@@ -6,9 +6,9 @@ namespace command {
 
 namespace {
 
-Trans NEW_COMMAND_MAPPING("New command mapping");
-Trans OK("OK");
-Trans CANCEL("Cancel");
+TRTR(NEW_COMMAND_MAPPING, "New command mapping");
+TRTR(OK, "OK");
+TRTR(CANCEL, "Cancel");
 
 }  // namespace
 

@@ -8,7 +8,7 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-static Trans SET_AUDIO_PREFERENCES("Set Audio Preferences");
+static TRTR(SET_AUDIO_PREFERENCES, "Set Audio Preferences");
 
 SetupPage::SetupPage(rec::audio::Device* dev)
     : deviceSelector_(dev->manager_, 0, 0, 2, 2, true, false, true, true),

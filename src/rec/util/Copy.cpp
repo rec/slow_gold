@@ -98,6 +98,7 @@ bool file(const File &file, string *s, Style /* readable */) {
 }
 
 bool file(const string &from, const File &to, Style /* readable */) {
+  // TODO: replace with File::replaceWithText.
   try {
     if (!to.getParentDirectory().createDirectory()) {
       LOG(DFATAL) << "Couldn't create directory for " << str(to);

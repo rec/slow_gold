@@ -16,33 +16,33 @@
 namespace rec {
 namespace music {
 
-Trans FILE_TOO_SMALL("Your File Was Too Small.");
-Trans FILE_TOO_SMALL_FULL("Sorry, the file you tried to %s"
+TRTR(FILE_TOO_SMALL, "Your File Was Too Small.");
+TRTR(FILE_TOO_SMALL_FULL, "Sorry, the file you tried to %s"
                           " has a length of less than one second.");
 
 namespace {
 
-Trans CANT_CREATE_TRACK("Can't create track for %s.");
-Trans COULDNT_OPEN_TRACK("Couldn't Open CD Track.");
-Trans COULDNT_OPEN_TRACK_FULL("Couldn't open track on CD - perhaps you ejected it?");
-Trans ERROR_WAS("Error was");
-Trans FILE_NOT_EXIST("Can't Find File");
-Trans FILE_NOT_EXIST_FULL("Sorry, we couldn't find the file %s.  Perhaps you "
+TRTR(CANT_CREATE_TRACK, "Can't create track for %s.");
+TRTR(COULDNT_OPEN_TRACK, "Couldn't Open CD Track.");
+TRTR(COULDNT_OPEN_TRACK_FULL, "Couldn't open track on CD - perhaps you ejected it?");
+TRTR(ERROR_WAS, "Error was");
+TRTR(FILE_NOT_EXIST, "Can't Find File");
+TRTR(FILE_NOT_EXIST_FULL, "Sorry, we couldn't find the file %s.  Perhaps you "
                           "deleted it, or perhaps it's on a drive that isn't "
                           "currently mounted.");
-Trans THE_FULL_PATH("The full path was: %s");
-Trans CANT_READ_M4A("We Can't Read .m4a Files On Windows");
-Trans CANT_READ_M4A_FULL("Sorry, file %s is an .m4a file and we cano't yet "
+TRTR(THE_FULL_PATH, "The full path was: %s");
+TRTR(CANT_READ_M4A, "We Can't Read .m4a Files On Windows");
+TRTR(CANT_READ_M4A_FULL, "Sorry, file %s is an .m4a file and we cano't yet "
                          "read these files on Windows: "
                          " please convert it to mp3 using iTunes.");
 
-Trans COULDNT_OPEN_FILE("Couldn't Open Your File.");
-Trans COULDNT_OPEN_FILE_FULL("Sorry, the program couldn't open your file %s.");
-Trans WRONG_FORMAT("Either it wasn't in the right format, it's corrupted, or "
+TRTR(COULDNT_OPEN_FILE, "Couldn't Open Your File.");
+TRTR(COULDNT_OPEN_FILE_FULL, "Sorry, the program couldn't open your file %s.");
+TRTR(WRONG_FORMAT, "Either it wasn't in the right format, it's corrupted, or "
                    "the programmer made a mistake.");
 
-Trans EMPTY_FILE("Your File Was Empty.");
-Trans EMPTY_FILE_FULL("Sorry, the file you tried to open, %s "
+TRTR(EMPTY_FILE, "Your File Was Empty.");
+TRTR(EMPTY_FILE_FULL, "Sorry, the file you tried to open, %s "
                       "has a length of zero.");
 
 using namespace rec::audio::format;

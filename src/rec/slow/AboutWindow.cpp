@@ -14,18 +14,18 @@ namespace {
 
 // Skin
 
-Trans DISPLAY_ON_STARTUP("Display this window on startup");
-Trans DRAG_AUDIO("Drag audio files onto the waveform.");
-Trans CD_AUTOMATIC("CDs will automatically appear at the top-left when you "
+TRTR(DISPLAY_ON_STARTUP, "Display this window on startup");
+TRTR(DRAG_AUDIO, "Drag audio files onto the waveform.");
+TRTR(CD_AUTOMATIC, "CDs will automatically appear at the top-left when you "
                    "insert them.");
-Trans PRESS_SPACE("Press the space bar to start and stop playback.");
-Trans DRAG_SPEED("Drag the Speed slider to slow down or speed up.");
-Trans CREATE_LOOPS("Create loop points by pressing the L key.");
-Trans DOWNLOAD_MANUAL("Download the manual from the Help menu for many more "
+TRTR(PRESS_SPACE, "Press the space bar to start and stop playback.");
+TRTR(DRAG_SPEED, "Drag the Speed slider to slow down or speed up.");
+TRTR(CREATE_LOOPS, "Create loop points by pressing the L key.");
+TRTR(DOWNLOAD_MANUAL, "Download the manual from the Help menu for many more "
                       "commands.");
-Trans COPYRIGHT("Copyright © %d");
-Trans REGISTERED_TO("Registered to: ");
-Trans UNREGISTERED("Not Registered!");
+TRTR(COPYRIGHT, "Copyright © %d");
+TRTR(REGISTERED_TO, "Registered to:");
+TRTR(UNREGISTERED, "Not Registered!");
 
 using namespace juce;
 
@@ -71,7 +71,7 @@ class AboutPane : public Component {
 
     String user = getEnv("USERNAME", "");
     String reg = user.isEmpty() ? String(UNREGISTERED) :
-      (String("\n") + REGISTERED_TO + user);
+      (String("\n") + REGISTERED_TO + String(" ") + user);
     right_.append(reg, font);
 
     addAndMakeVisible(&displayOnStartup_);

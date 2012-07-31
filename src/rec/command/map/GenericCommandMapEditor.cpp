@@ -6,12 +6,12 @@ namespace command {
 
 namespace {
 
-Trans CHANGE_KEY_MAPPING("Change key-mapping");
-Trans THIS_KEY_ASSIGNED("This key is already assigned to the command");
-Trans WANT_TO_REASSIGN("Do you want to re-assign it to this new command instead?");
-Trans REASSIGN("Re-assign");
-Trans CANCEL("Cancel");
-Trans CURRENTLY_ASSIGNED("Currently assigned to");
+TRTR(CHANGE_KEY_MAPPING, "Change key-mapping");
+TRTR(THIS_KEY_ASSIGNED, "This key is already assigned to the command");
+TRTR(WANT_TO_REASSIGN, "Do you want to re-assign it to this new command instead?");
+TRTR(REASSIGN, "Re-assign");
+TRTR(CANCEL, "Cancel");
+TRTR(CURRENTLY_ASSIGNED, "Currently assigned to");
 
 }  // namespace;
 

@@ -30,8 +30,8 @@ class MusicFileReader {
   String errorDetails_;
 };
 
-extern Trans FILE_TOO_SMALL;
-extern Trans FILE_TOO_SMALL_FULL;
+extern const Trans FILE_TOO_SMALL;
+extern const Trans FILE_TOO_SMALL_FULL;
 
 }  // namespace music
 }  // namespace rec
