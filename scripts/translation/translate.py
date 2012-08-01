@@ -5,22 +5,14 @@ import sys
 sys.path.append('/development/rec/genfiles/proto/rec/base')
 sys.path.append('/development/rec/scripts/jucer')
 
+import proto
+
 from google.protobuf import text_format
 from Trans_pb2 import TranslatedStrings, TranslationUpdate
 from odict import OrderedDict
 
-USAGE = """Usage: translate oldfile newfile"""
-
-def utf8(x):
-  return unicode(x, 'utf-8');
-
-def readProto(proto, file):
-  t = proto()
-  text_format.Merge(utf8(open(file, 'r').read()), t)
-  return t
-
 def readStringDictionary(file):
-  t = readProto(TranslatedStrings, file)
+  t = proto.read(TranslatedStrings, file)
   return OrderedDict(((s.original, s.hint), s) for s in t.str)
 
 def mergeTranslation(oldfile, newfile):
@@ -41,7 +33,7 @@ def mergeTranslation(oldfile, newfile):
 def readNewTranslations(oldfile, newfile):
   update = mergeTranslation(oldfile, newfile)
   print '*** LEAVING ***'
-  text_format.PrintMessage(update.leaving, sys.stdout)
+  proto.write(update.leaving)
 
   result = TranslatedStrings()
   result.str.MergeFrom(update.unchanged.str)
@@ -51,7 +43,7 @@ def readNewTranslations(oldfile, newfile):
     if s.hint:
       msg = '%s [%s]' % (msg, s.hint)
     print msg,
-    tr = utf8(raw_input()).strip()
+    tr = proto.decode(raw_input()).strip()
     if tr:
       t = result.str.add()
       t.CopyFrom(s)
@@ -61,22 +53,11 @@ def readNewTranslations(oldfile, newfile):
 PRINT_LINE_NUMBERS = False
 
 def printCurrentTranslation(oldfile):
-  old = readProto(TranslatedStrings, oldfile)
+  old = proto.read(TranslatedStrings, oldfile)
   for i, x in enumerate(old.str):
-    s = x.original.encode('utf-8')
+    s = proto.encode(x.original)
     if PRINT_LINE_NUMBERS:
       print '%d: %s' % (i, s)
     else:
       print s
-
-if __name__ == '__main__':
-  if len(sys.argv) is 2:
-    printCurrentTranslation(sys.argv[1])
-
-  elif len(sys.argv) is 3:
-    t = readNewTranslations(*sys.argv[1:])
-    text_format.PrintMessage(t, sys.stdout)
-
-  else:
-    print USAGE
 

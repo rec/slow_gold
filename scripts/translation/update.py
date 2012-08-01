@@ -2,15 +2,14 @@
 
 import sys
 
+import proto
 import translate
 
 USAGE = """Usage: update oldfile newfile"""
 
 if __name__ == '__main__':
   if len(sys.argv) is 3:
-    t = translate.readNewTranslations(*sys.argv[1:])
-    text_format.PrintMessage(t, sys.stdout)
-
+    proto.write(translate.readNewTranslations(*sys.argv[1:]))
   else:
     print USAGE
 

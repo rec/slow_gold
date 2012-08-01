@@ -11,6 +11,9 @@ namespace rec {
 
 namespace {
 
+const char* const TRANSLATION_FILE =
+  "/development/rec/text/rec.TranslatedStrings.en";
+
 string cleanFile(const String& file) {
   String f = file;
   int i = file.indexOf("/src/rec/");
@@ -54,7 +57,7 @@ TranslatedStrings getTranslatedStrings(const TranslationSet& tr) {
 
 void Trans::dumpAll() {
   LOG(INFO) << "Dumping translations " << translations()->size();
-  File file("/tmp/translations.txt");
+  File file(TRANSLATION_FILE);
   TranslatedStrings strings = getTranslatedStrings(*translations());
   copy::copy(strings, &file);
 }

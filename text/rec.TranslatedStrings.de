@@ -1,0 +1,936 @@
+str {
+  original: "% S% s Halbt\366ne"
+  translation: "%s %s semitones"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 48
+}
+str {
+  original: "% S aus"
+  translation: "%s off"
+  file: "rec/command/map/MidiName.cpp"
+  line: 15
+}
+str {
+  original: "(Keine Datei geladen)"
+  translation: "(no file loaded)"
+}
+str {
+  original: "(Keine)"
+  translation: "(None)"
+  file: "rec/command/map/CommandMapTopLevelItem.cpp"
+  line: 12
+}
+str {
+  original: "<Unknown CD>"
+  translation: "<Unknown CD>"
+  file: "rec/widget/tree/CD.cpp"
+  line: 12
+}
+str {
+  original: "Eine neue Version von SlowGold,% s, ist verf\374gbar."
+  translation: "A new version of SlowGold, %s, is available."
+  file: "rec/app/DownloadVersion.cpp"
+  line: 22
+}
+str {
+  original: "Ein Support Request-Datei namens \"% s\" wurde auf dem Desktop erstellt."
+  translation: "A Support Request file named \"%s\" was created on your desktop."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 37
+}
+str {
+  original: "Eine Support-Anfrage wurde auf dem Desktop erstellt"
+  translation: "A Support Request Was Created On Your Desktop"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 43
+}
+str {
+  original: "F\374gen Loop Point Button: F\374gen Sie einen Loop-Punkt an der aktuellen Uhrzeit."
+  translation: "Add Loop Point Button: Add a loop point at the current time."
+}
+str {
+  original: "F\374gen Sie Loop-Punkt-Modus: Klick auf die Wellenform erzeugt eine Schleife Punkt."
+  translation: "Add loop point mode: clicking on the waveform creates a loop point."
+}
+str {
+  original: "f\374gt einen neuen Schl\374ssel-Mapping"
+  translation: "adds a new key-mapping"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 8
+}
+str {
+  original: "Album"
+  translation: "Album"
+}
+str {
+  original: "Album: Der Name des Albums ist dieser Track aus."
+  translation: "Album Name: The name of the album this track is from."
+}
+str {
+  original: "Album Jahr: Das Jahr, dass diese Strecke aufgezeichnet wurde."
+  translation: "Album Year: The year that that this track was recorded."
+}
+str {
+  original: "Sind Sie sicher, dass Sie alle wichtigen Mappings auf die Werkseinstellungen zur\374cksetzen?"
+  translation: "Are you sure you want to reset all the key mappings to their default state?"
+  file: "rec/command/map/CommandMapTopLevelItem.cpp"
+  line: 10
+}
+str {
+  original: "K\374nstler"
+  translation: "Artist"
+}
+str {
+  original: "K\374nstlername: Der K\374nstler oder Musiker, die dieses bestimmte Spur gemacht."
+  translation: "Artist Name: The artist or musician who made this specific track."
+}
+str {
+  original: "als"
+  translation: "as"
+  file: "rec/command/map/MidiName.cpp"
+  line: 13
+}
+str {
+  original: "Audio-"
+  translation: "Audio"
+}
+str {
+  original: "Kann keine Spur f\374r% s."
+  translation: "Can\'t create track for %s."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 25
+}
+str {
+  original: "Datei wurde nicht gefunden"
+  translation: "Can\'t Find File"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 29
+}
+str {
+  original: "Stornieren"
+  translation: "Cancel"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 28
+}
+str {
+  original: "CD-Fenster: Alle CDs, die Sie in Ihr CD-Laufwerke werden hier angezeigt."
+  translation: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
+}
+str {
+  original: "CDs werden automatisch in der oberen linken Seite angezeigt, wenn Sie sie einsetzen."
+  translation: "CDs will automatically appear at the top-left when you insert them."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 20
+}
+str {
+  original: "\304ndern Sie Schl\374ssel-Mapping"
+  translation: "Change key-mapping"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 9
+}
+str {
+  original: "\304ndern Sie diesen Befehl Mapping"
+  translation: "Change this command mapping"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 10
+}
+str {
+  original: "W\344hlen Sie Datei Um zu sparen"
+  translation: "Choose File To Save to"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 42
+}
+str {
+  original: "L\366schen Sie alle Tastaturbelegungen auf die Werkseinstellungen?"
+  translation: "Clear all keyboard mappings to factory default?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 52
+}
+str {
+  original: "L\366schen Sie alle MIDI-Mappings?"
+  translation: "Clear all MIDI mappings?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 54
+}
+str {
+  original: "Klare Tastatureinstellungen."
+  translation: "Clear Keyboard Mappings."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 50
+}
+str {
+  original: "Deaktivieren Sie MIDI-Mappings."
+  translation: "Clear MIDI Mappings."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 53
+}
+str {
+  original: "L\366schen aller Einstellungen f\374r alle Spuren"
+  translation: "Clearing All Settings For All Tracks"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 56
+}
+str {
+  original: "Clearing-Einstellungen f\374r diese Strecke nur"
+  translation: "Clearing Settings For This Track Only"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 61
+}
+str {
+  original: "Klicken Sie, um diesen Schl\374ssel-Mapping \344ndern"
+  translation: "click to change this key-mapping"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 9
+}
+str {
+  original: "Klicken Sie, um fortzufahren."
+  translation: "Click to continue."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 33
+}
+str {
+  original: "Copyright \251% d"
+  translation: "Copyright \251 %d"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 26
+}
+str {
+  original: "Konnte keine Support-Anfrage"
+  translation: "Couldn\'t Create A Support Request"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 31
+}
+str {
+  original: "Konnte nicht geladen werden SlowGold 8 Benutzerhandbuch"
+  translation: "Couldn\'t Load The SlowGold 8 User Manual"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 29
+}
+str {
+  original: "Konnte nicht ge\366ffnet werden CD-Titel."
+  translation: "Couldn\'t Open CD Track."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 26
+}
+str {
+  original: "Konnte nicht ge\366ffnet Track auf CD - vielleicht haben Sie es ausgegeben?"
+  translation: "Couldn\'t open track on CD - perhaps you ejected it?"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 27
+}
+str {
+  original: "Konnte nicht \366ffnen Sie Ihre Datei."
+  translation: "Couldn\'t Open Your File."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 39
+}
+str {
+  original: "Konnte nicht mit Version% s aktualisieren"
+  translation: "Couldn\'t update to version %s"
+  file: "rec/app/DownloadVersion.cpp"
+  line: 26
+}
+str {
+  original: "Erstellen Loop-Punkte, indem Sie die L-Taste."
+  translation: "Create loop points by pressing the L key."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 23
+}
+str {
+  original: "Derzeit zugewiesen"
+  translation: "Currently assigned to"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 14
+}
+str {
+  original: "Anzeige"
+  translation: "Display"
+}
+str {
+  original: "Letzte Fenster beim Start"
+  translation: "Display this window on startup"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 17
+}
+str {
+  original: "Wollen Sie neu zuweisen es zu diesem neuen Befehl statt?"
+  translation: "Do you want to re-assign it to this new command instead?"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 11
+}
+str {
+  original: "nach unten"
+  translation: "down"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 43
+}
+str {
+  original: "Laden Sie die neue Version, und beenden Sie diese \344ltere."
+  translation: "Download new version and quit this older one."
+  file: "rec/app/DownloadVersion.cpp"
+  line: 24
+}
+str {
+  original: "Laden Sie das Handbuch im Hilfe-Men\374 f\374r viele weitere Befehle."
+  translation: "Download the manual from the Help menu for many more commands."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 25
+}
+str {
+  original: "Ziehen Sie die Audiodateien auf der Wellenform."
+  translation: "Drag audio files onto the waveform."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 18
+}
+str {
+  original: "Drag-Modus: Mit der Maus die Wellenform hin und her ziehen"
+  translation: "Drag Mode: Use the mouse to drag the waveform back and forth"
+}
+str {
+  original: "Ziehen Sie den Schieberegler Geschwindigkeit zu verlangsamen oder zu beschleunigen."
+  translation: "Drag the Speed slider to slow down or speed up."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 22
+}
+str {
+  original: "Bearbeiten"
+  translation: "Edit"
+}
+str {
+  original: "Entweder war es nicht im richtigen Format, es ist besch\344digt, oder der Programmierer einen Fehler gemacht."
+  translation: "Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 42
+}
+str {
+  original: "Erm\366glichen"
+  translation: "Enable"
+}
+str {
+  original: "Fehler beim Speichern."
+  translation: "Error During Save."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 38
+}
+str {
+  original: "Fehler war"
+  translation: "Error was"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 28
+}
+str {
+  original: "Datei"
+  translation: "File"
+}
+str {
+  original: "Dateityp f\374r Save ..."
+  translation: "File Type For Save..."
+}
+str {
+  original: "Finishing Laden von Audio von der Festplatte."
+  translation: "Finishing loading audio from disk."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 40
+}
+str {
+  original: "Genre"
+  translation: "Genre"
+}
+str {
+  original: "Hilfe"
+  translation: "Help"
+}
+str {
+  original: "Helfen Panel: Zeigt die Hilfe \374ber alles, was sich der Mauszeiger \374ber."
+  translation: "Help Panel: Shows help about whatever the mouse is over."
+}
+str {
+  original: "Zur\374ckspringen"
+  translation: "Jump Back"
+}
+str {
+  original: "Jump Back Button: Gehe zum Anfang des n\344chsten Segments."
+  translation: "Jump Back Button: Jump to the start of the next segment."
+}
+str {
+  original: "Vorspringen"
+  translation: "Jump Forward"
+}
+str {
+  original: "Gehe Vorw\344rts-Taste: Springen Sie zum Anfang des n\344chsten Segments."
+  translation: "Jump Forward Button: Jump to the start of the next segment."
+}
+str {
+  original: "Gehe zu gew\344hlt ..."
+  translation: "Jump To Selected..."
+}
+str {
+  original: "Gehe zu starten"
+  translation: "Jump to start"
+}
+str {
+  original: "Jump to Start-Button: Springen Sie zum Anfang des Titels."
+  translation: "Jump To Start Button: Jump to the start of the track."
+}
+str {
+  original: "Gehe zu ..."
+  translation: "Jump To..."
+}
+str {
+  original: "Schl\374ssel"
+  translation: "Key"
+  file: "rec/command/map/KeyCommandMapEditor.cpp"
+  line: 11
+}
+str {
+  original: "L + R"
+  translation: "L + R"
+}
+str {
+  original: "Links"
+  translation: "Left"
+}
+str {
+  original: "Level Meter: Zeigt die Lautst\344rke, in RMS dB."
+  translation: "Level Meter: Display the sound intensity, in RMS dB."
+}
+str {
+  original: "Level-Slider: Erh\366hen oder senken Sie die Lautst\344rke in dB."
+  translation: "Level Slider: Raise or lower the sound intensity, in dB."
+}
+str {
+  original: "Schleife gesamte Spur"
+  translation: "Loop Entire Track"
+}
+str {
+  original: "Loop-Punkt-Liste: Sie k\366nnen ausw\344hlen, bearbeiten und Loop-Punkte hier."
+  translation: "Loop Point List: You can select and edit loop points here."
+}
+str {
+  original: "Loop Point Name: Bearbeiten Sie den Loop-Punkt den Namen indem Sie hier klicken."
+  translation: "Loop Point Name: Edit the Loop Point\'s name by clicking here."
+}
+str {
+  original: "Loop-Punkt: Sie k\366nnen es ziehen um auf der Wellenform, oder Sie k\366nnen auf dem Etikett oben klicken und nach rechts, um ihren Namen zu bearbeiten."
+  translation: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
+  file: "rec/widget/waveform/Waveform.cpp"
+  line: 38
+}
+str {
+  original: "Diese Loop-Segment"
+  translation: "Loop This Segment"
+}
+str {
+  original: "Master"
+  translation: "Master"
+}
+str {
+  original: "Master Tune Slider: Master tune ist eine globale Verstimmung \374ber alle Spuren."
+  translation: "Master Tune Slider: Master tune is a global detune over all tracks."
+}
+str {
+  original: "MIDI"
+  translation: "MIDI"
+  file: "rec/command/map/MidiCommandMapEditor.cpp"
+  line: 15
+}
+str {
+  original: "Stumm"
+  translation: "Mute"
+}
+str {
+  original: "Mute Button: Stumm oder Ton der Ton."
+  translation: "Mute Button: Mute or unmute the sound."
+}
+str {
+  original: "Name"
+  translation: "Name"
+}
+str {
+  original: "Neuer Befehl Mapping"
+  translation: "New command mapping"
+  file: "rec/command/map/CommandEntryWindow.cpp"
+  line: 9
+}
+str {
+  original: "Keine CDs erh\344ltlich."
+  translation: "No available CDs."
+  file: "rec/util/cd/CDReader.cpp"
+  line: 13
+}
+str {
+  original: "Nicht registriert!"
+  translation: "Not Registered!"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 28
+}
+str {
+  original: "Hinweise"
+  translation: "Notes"
+}
+str {
+  original: "Anzahl"
+  translation: "Number"
+}
+str {
+  original: "OK"
+  translation: "OK"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 40
+}
+str {
+  original: "einen Halbton% s"
+  translation: "one semitone %s"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 47
+}
+str {
+  original: "\326ffnen Sie den letzten"
+  translation: "Open recent"
+}
+str {
+  original: "PC% d"
+  translation: "pc %d"
+  file: "rec/command/map/MidiName.cpp"
+  line: 16
+}
+str {
+  original: "Pech"
+  translation: "Pitch"
+}
+str {
+  original: "Die Wiedergabe Feinabstimmungsregler: Fine Tune Schleife nach oben oder unten in der Tonh\366he, in Cent (1/100 eines Halbtons) gemessen."
+  translation: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
+}
+str {
+  original: "Playback Speed-Slider: Steuert, wie schnell die Schleife abgespielt wird: H\366here Zahlen bedeuten die Schleife abgespielt schneller."
+  translation: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
+}
+str {
+  original: "Wiedergabezeit Cursor: Das ergibt sich die aktuelle Uhrzeit w\344hrend der Wiedergabe. Sie k\366nnen auch es rund um die aktuelle Wiedergabe-Zeit einzustellen."
+  translation: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
+}
+str {
+  original: "Die Wiedergabe Tuning Slider: Grob Loop-Wiedergabe nach oben und unten in der Tonh\366he in Halbt\366nen gemessen."
+  translation: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
+}
+str {
+  original: "Bitte f\374gen Sie die Datei auf Ihrem Desktop mit dem Namen% s, um diese E-Mail und senden Sie es uns!"
+  translation: "Please attach the file on your desktop named %s to this email and send it to us!"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 35
+}
+str {
+  original: "Bitte kontaktieren World Wide Woodshed Unterst\374tzung bei"
+  translation: "Please contact World Wide Woodshed support at"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 41
+}
+str {
+  original: "Bitte senden Sie die Datei in% s und dann kannst du es wegwerfen."
+  translation: "Please mail the file to %s and then you can throw it away."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 42
+}
+str {
+  original: "Bitte dr\374cken Sie eine Tastenkombination jetzt ..."
+  translation: "Please press a key combination now..."
+  file: "rec/command/map/KeyCommandMapEditor.cpp"
+  line: 10
+}
+str {
+  original: "Dr\374cken Sie die Leertaste zum Starten und Stoppen der Wiedergabe."
+  translation: "Press the space bar to start and stop playback."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 21
+}
+str {
+  original: "Nicht gen\374gend Arbeitsspeicher f\374r Ihre Datei"
+  translation: "Ran Out Of Memory For Your File"
+  file: "rec/slow/CurrentFile.cpp"
+  line: 36
+}
+str {
+  original: "Neu zuweisen"
+  translation: "Re-assign"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 12
+}
+str {
+  original: "Registriert f\374r:"
+  translation: "Registered to:"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 27
+}
+str {
+  original: "Entfernen Sie diesen Befehl Mapping"
+  translation: "Remove this command mapping"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 11
+}
+str {
+  original: "Zur\374cksetzen"
+  translation: "Reset"
+  file: "rec/command/map/CommandMapTopLevelItem.cpp"
+  line: 11
+}
+str {
+  original: "Reset auf Standardwerte"
+  translation: "reset to defaults"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 13
+}
+str {
+  original: "Rechts"
+  translation: "Right"
+}
+str {
+  original: "F\374hren Sie diese \344ltere Version (% s)."
+  translation: "Run this older version (%s)."
+  file: "rec/app/DownloadVersion.cpp"
+  line: 25
+}
+str {
+  original: "Speichern der Datei% s."
+  translation: "Saving File %s."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 41
+}
+str {
+  original: "W\344hlen"
+  translation: "Select"
+}
+str {
+  original: "W\344hlen Sie eine Datei mit Tastaturk\374rzel"
+  translation: "Select A File Containing Keyboard Command Mappings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 48
+}
+str {
+  original: "W\344hlen Sie eine Datei mit MIDI-Befehl Mappings"
+  translation: "Select A File Containing MIDI Command Mappings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 49
+}
+str {
+  original: "W\344hlen Sie eine Datei exportiert Tastaturk\374rzel speichern"
+  translation: "Select A File To Save Exported Keyboard Command Mappings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 45
+}
+str {
+  original: "W\344hlen Sie eine Datei exportierte MIDI-Mappings Befehl Speichern"
+  translation: "Select A File To Save Exported MIDI Command Mappings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 46
+}
+str {
+  original: "W\344hlen Sie eine Datei exportierten Einstellungen speichern"
+  translation: "Select A File To Save Exported Settings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 44
+}
+str {
+  original: "W\344hlen Sie eine ZIP-Datei exportierten Einstellungen"
+  translation: "Select A Zip File Containing Exported Settings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 47
+}
+str {
+  original: "W\344hlen Sie Nur ..."
+  translation: "Select Only..."
+}
+str {
+  original: "W\344hlen Sie ..."
+  translation: "Select..."
+}
+str {
+  original: "Stellen Sie Audio-Voreinstellungen"
+  translation: "Set Audio Preferences"
+  file: "rec/gui/audio/SetupPage.cpp"
+  line: 11
+}
+str {
+  original: "Aktuelle Zeit einstellen Mode: Mit einem Klick in der Wellenform stellt die aktuelle Zeit."
+  translation: "Set Current Time Mode: Clicking in the waveform sets the current time."
+}
+str {
+  original: "Leider konnte nicht geladen werden SlowGold 8 Bedienungsanleitung an"
+  translation: "Sorry, couldn\'t load the SlowGold 8 user manual at"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 30
+}
+str {
+  original: "Leider ist der Datei% s ein m4a-Datei und wir cano\'t noch lesen Sie diese Dateien unter Windows:. Bitte wandeln sie in MP3 mit iTunes."
+  translation: "Sorry, file %s is an .m4a file and we cano\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 37
+}
+str {
+  original: "Sorry, die Datei, die Sie versuchten,% s hat eine L\344nge von weniger als einer Sekunde."
+  translation: "Sorry, the file you tried to %s has a length of less than one second."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 21
+}
+str {
+  original: "Sorry, die Datei, die Sie zu \366ffnen versucht,% s eine L\344nge von Null."
+  translation: "Sorry, the file you tried to open, %s has a length of zero."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 46
+}
+str {
+  original: "Leider konnte das Programm nicht \366ffnen Sie die Datei% s."
+  translation: "Sorry, the program couldn\'t open your file %s."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 40
+}
+str {
+  original: "Sorry, es war ein Fehler L\366schen der Einstellungen. Bitte melden Sie dies support@worldwidewoodshed.com."
+  translation: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 70
+}
+str {
+  original: "Sorry, es war nicht genug Speicher f\374r die Datei."
+  translation: "Sorry, there wasn\'t enough memory for the file."
+  file: "rec/slow/CurrentFile.cpp"
+  line: 37
+}
+str {
+  original: "Leider konnten wir nicht finden die Datei% s. Vielleicht hast du sie gel\366scht, oder vielleicht ist es auf einem Laufwerk, das derzeit nicht angebracht."
+  translation: "Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 32
+}
+str {
+  original: "Leider konnten wir eine Support-Anfrage zu erstellen."
+  translation: "Sorry, we were unable to create a support request."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 32
+}
+str {
+  original: "Start / Stopp"
+  translation: "Start/stop"
+}
+str {
+  original: "Start / Stop-Taste: Schaltet zwischen Pause und Wiedergabe."
+  translation: "Start/Stop Button: Toggle between pause and play."
+}
+str {
+  original: "Stereo"
+  translation: "Stereo"
+}
+str {
+  original: "Stereo-Bearbeitung Men\374: W\344hlen Sie zwischen dem Original-Stereo, nur der linke Kanal, genau der richtige Kanal, oder eine Mono-Mix beider Kan\344le."
+  translation: "Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
+}
+str {
+  original: "Strecken"
+  translation: "Stretch"
+}
+str {
+  original: "Support Anfrage:% s"
+  translation: "Support Request: %s"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 39
+}
+str {
+  original: "Sysex"
+  translation: "sysex"
+  file: "rec/command/map/MidiName.cpp"
+  line: 14
+}
+str {
+  original: "Die Dateiendung muss. AIFF,. Aif,. Flac,. Ogg,. Wav oder. Welle."
+  translation: "The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 51
+}
+str {
+  original: "Der vollst\344ndige Pfad war:% s"
+  translation: "The full path was: %s"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 33
+}
+str {
+  original: "Es gab einen Fehler beim Speichern der Datei% s."
+  translation: "There was an error saving your file %s."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 39
+}
+str {
+  original: "Dieser Schl\374ssel ist bereits dem Befehl zugewiesen"
+  translation: "This key is already assigned to the command"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 10
+}
+str {
+  original: "Zeit"
+  translation: "Time"
+}
+str {
+  original: "Time Display: Zeigt die aktuelle Spielzeit in Minuten, Sekunden und millseconds."
+  translation: "Time Display: Shows the current playback time in minutes, seconds and millseconds."
+}
+str {
+  original: "Umschalten ..."
+  translation: "Toggle..."
+}
+str {
+  original: "Verfolgen"
+  translation: "Track"
+}
+str {
+  original: "Hinweise zu den Titeln: Sie k\366nnen Ihre Notizen geben Sie hier."
+  translation: "Track Notes: You can enter your notes here."
+}
+str {
+  original: "Track Number: Das Album Track-Nummer f\374r diese Spur"
+  translation: "Track Number: The album track number for this track"
+}
+str {
+  original: "Track-Tags: Tags, die diesen Song zu kategorisieren."
+  translation: "Track tags: Tags that categorize this track."
+}
+str {
+  original: "Track title: Der Name dieser Strecke."
+  translation: "Track Title: The name of this track."
+}
+str {
+  original: "Verwandeln Sie Aktivieren-Button: Deaktivieren oder Aktivieren Sie alle Sound-Transformationen: Tonh\366he, Zeit-und Stereo-Bearbeitung, aber nicht Meister tunen."
+  translation: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
+}
+str {
+  original: "Transport"
+  translation: "Transport"
+}
+str {
+  original: "Wurde versucht, auf CD zu lesen, id =% s, names =% s"
+  translation: "Tried to read CD, id=%s, names=%s"
+  file: "rec/util/cd/CDReader.cpp"
+  line: 14
+}
+str {
+  original: "Melodie"
+  translation: "Tune"
+}
+str {
+  original: "Einstellungen konnten nicht l\366schen"
+  translation: "Unable To Clear Settings"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 67
+}
+str {
+  original: "Unbekannte CD: ID = 0x"
+  translation: "Unknown CD: ID = 0x"
+  file: "rec/widget/tree/CD.cpp"
+  line: 13
+}
+str {
+  original: "Deaktivieren Sie ..."
+  translation: "Unselect..."
+}
+str {
+  original: "oben"
+  translation: "up"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 44
+}
+str {
+  original: "Volumen"
+  translation: "Volume"
+}
+str {
+  original: "Warten auf eine MIDI-Note, Programmwechsel oder Controller ..."
+  translation: "Waiting for a MIDI note, program change or controller..."
+  file: "rec/command/map/MidiCommandMapEditor.cpp"
+  line: 14
+}
+str {
+  original: "Waveform-Fenster: Sie k\366nnen Dateien von Ihrem Desktop oder Ihrem Musik-Player hier ziehen. Wenn Ihre Maus ein Rad hat, nutzen, um die Wellenform zu vergr\366\337ern."
+  translation: "Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform."
+}
+str {
+  original: "Wir k\366nnen nicht lesen. M4a-Dateien unter Windows"
+  translation: "We Can\'t Read .m4a Files On Windows"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 34
+}
+str {
+  original: "M\366chten Sie es herunterladen?"
+  translation: "Would you like to download it?"
+  file: "rec/app/DownloadVersion.cpp"
+  line: 23
+}
+str {
+  original: "Jahr"
+  translation: "Year"
+}
+str {
+  original: "Sie k\366nnen die Datei wegwerfen einmal Ihre E-Mail gesendet wird."
+  translation: "You can throw the file away once your email is sent."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 38
+}
+str {
+  original: "Sie k\366nnen nicht \374berschreiben die aktuelle Datei."
+  translation: "You cannot overwrite the current file."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 52
+}
+str {
+  original: "Sie wollen * alle * Einstellungen zu l\366schen, und beenden Sie SlowGold. Ist das OK?"
+  translation: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 59
+}
+str {
+  original: "Sie m\366chten die Einstellungen f\374r diese Strecke nur zu l\366schen, und das Programm beenden. Ist das OK?"
+  translation: "You want to clear settings for this track only, and quit the program.  Is this OK?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 65
+}
+str {
+  original: "Ihre Datei war leer."
+  translation: "Your File Was Empty."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 44
+}
+str {
+  original: "Ihre Datei zu klein war."
+  translation: "Your File Was Too Small."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 19
+}
+str {
+  original: "Ihre Version von SlowGold ist up-to-Date"
+  translation: "Your Version Of SlowGold Is Up-To-Date"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 45
+}
+str {
+  original: "Ihre Version von SlowGold,% s, ist up-to-date."
+  translation: "Your version of SlowGold, %s, is up-to-date."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 46
+}
+str {
+  original: "Zoomen: Ein Klick auf die Wellenform zoomt auf diesen Punkt."
+  translation: "Zoom Mode: Clicking on the waveform zooms in on that point."
+}
+str {
+  original: "Zoom out"
+  translation: "Zoom out"
+}
+str {
+  original: "Voll verkleinern Button: Zoom der Wellenform ganz heraus."
+  translation: "Zoom Out Full Button: Zoom the waveform all the way out."
+}
+str {
+  original: "Zoomen auf Auswahl"
+  translation: "Zoom To Selection"
+}
+str {
+  original: "Auswahl zoomen Button: Vergr\366\337ern oder verkleinern, so dass die ganze Auswahl passt die Wellenform."
+  translation: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
+}
