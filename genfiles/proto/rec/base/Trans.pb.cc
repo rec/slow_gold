@@ -20,6 +20,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* TranslatedStrings_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   TranslatedStrings_reflection_ = NULL;
+const ::google::protobuf::Descriptor* TranslationUpdate_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  TranslationUpdate_reflection_ = NULL;
 
 }  // namespace
 
@@ -65,6 +68,23 @@ void protobuf_AssignDesc_rec_2fbase_2fTrans_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TranslatedStrings));
+  TranslationUpdate_descriptor_ = file->message_type(2);
+  static const int TranslationUpdate_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, unchanged_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, leaving_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, entering_),
+  };
+  TranslationUpdate_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      TranslationUpdate_descriptor_,
+      TranslationUpdate::default_instance_,
+      TranslationUpdate_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(TranslationUpdate));
 }
 
 namespace {
@@ -81,6 +101,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     TranslatedString_descriptor_, &TranslatedString::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     TranslatedStrings_descriptor_, &TranslatedStrings::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    TranslationUpdate_descriptor_, &TranslationUpdate::default_instance());
 }
 
 }  // namespace
@@ -90,6 +112,8 @@ void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto() {
   delete TranslatedString_reflection_;
   delete TranslatedStrings::default_instance_;
   delete TranslatedStrings_reflection_;
+  delete TranslationUpdate::default_instance_;
+  delete TranslationUpdate_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fbase_2fTrans_2eproto() {
@@ -103,13 +127,19 @@ void protobuf_AddDesc_rec_2fbase_2fTrans_2eproto() {
     "dString\022\020\n\010original\030\001 \001(\t\022\023\n\013translation"
     "\030\002 \001(\t\022\014\n\004hint\030\003 \001(\t\022\014\n\004file\030\004 \001(\t\022\014\n\004li"
     "ne\030\005 \001(\r\022\r\n\005index\030\006 \001(\r\"7\n\021TranslatedStr"
-    "ings\022\"\n\003str\030\001 \003(\0132\025.rec.TranslatedString", 200);
+    "ings\022\"\n\003str\030\001 \003(\0132\025.rec.TranslatedString"
+    "\"\221\001\n\021TranslationUpdate\022)\n\tunchanged\030\001 \001("
+    "\0132\026.rec.TranslatedStrings\022\'\n\007leaving\030\002 \001"
+    "(\0132\026.rec.TranslatedStrings\022(\n\010entering\030\003"
+    " \001(\0132\026.rec.TranslatedStrings", 348);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/base/Trans.proto", &protobuf_RegisterTypes);
   TranslatedString::default_instance_ = new TranslatedString();
   TranslatedStrings::default_instance_ = new TranslatedStrings();
+  TranslationUpdate::default_instance_ = new TranslationUpdate();
   TranslatedString::default_instance_->InitAsDefaultInstance();
   TranslatedStrings::default_instance_->InitAsDefaultInstance();
+  TranslationUpdate::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto);
 }
 
@@ -798,6 +828,308 @@ void TranslatedStrings::Swap(TranslatedStrings* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = TranslatedStrings_descriptor_;
   metadata.reflection = TranslatedStrings_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int TranslationUpdate::kUnchangedFieldNumber;
+const int TranslationUpdate::kLeavingFieldNumber;
+const int TranslationUpdate::kEnteringFieldNumber;
+#endif  // !_MSC_VER
+
+TranslationUpdate::TranslationUpdate()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void TranslationUpdate::InitAsDefaultInstance() {
+  unchanged_ = const_cast< ::rec::TranslatedStrings*>(&::rec::TranslatedStrings::default_instance());
+  leaving_ = const_cast< ::rec::TranslatedStrings*>(&::rec::TranslatedStrings::default_instance());
+  entering_ = const_cast< ::rec::TranslatedStrings*>(&::rec::TranslatedStrings::default_instance());
+}
+
+TranslationUpdate::TranslationUpdate(const TranslationUpdate& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void TranslationUpdate::SharedCtor() {
+  _cached_size_ = 0;
+  unchanged_ = NULL;
+  leaving_ = NULL;
+  entering_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+TranslationUpdate::~TranslationUpdate() {
+  SharedDtor();
+}
+
+void TranslationUpdate::SharedDtor() {
+  if (this != default_instance_) {
+    delete unchanged_;
+    delete leaving_;
+    delete entering_;
+  }
+}
+
+void TranslationUpdate::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* TranslationUpdate::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return TranslationUpdate_descriptor_;
+}
+
+const TranslationUpdate& TranslationUpdate::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fbase_2fTrans_2eproto();  return *default_instance_;
+}
+
+TranslationUpdate* TranslationUpdate::default_instance_ = NULL;
+
+TranslationUpdate* TranslationUpdate::New() const {
+  return new TranslationUpdate;
+}
+
+void TranslationUpdate::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (_has_bit(0)) {
+      if (unchanged_ != NULL) unchanged_->::rec::TranslatedStrings::Clear();
+    }
+    if (_has_bit(1)) {
+      if (leaving_ != NULL) leaving_->::rec::TranslatedStrings::Clear();
+    }
+    if (_has_bit(2)) {
+      if (entering_ != NULL) entering_->::rec::TranslatedStrings::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool TranslationUpdate::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .rec.TranslatedStrings unchanged = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_unchanged()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_leaving;
+        break;
+      }
+      
+      // optional .rec.TranslatedStrings leaving = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_leaving:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_leaving()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_entering;
+        break;
+      }
+      
+      // optional .rec.TranslatedStrings entering = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_entering:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_entering()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void TranslationUpdate::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .rec.TranslatedStrings unchanged = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->unchanged(), output);
+  }
+  
+  // optional .rec.TranslatedStrings leaving = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->leaving(), output);
+  }
+  
+  // optional .rec.TranslatedStrings entering = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->entering(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* TranslationUpdate::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .rec.TranslatedStrings unchanged = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->unchanged(), target);
+  }
+  
+  // optional .rec.TranslatedStrings leaving = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->leaving(), target);
+  }
+  
+  // optional .rec.TranslatedStrings entering = 3;
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->entering(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int TranslationUpdate::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.TranslatedStrings unchanged = 1;
+    if (has_unchanged()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->unchanged());
+    }
+    
+    // optional .rec.TranslatedStrings leaving = 2;
+    if (has_leaving()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->leaving());
+    }
+    
+    // optional .rec.TranslatedStrings entering = 3;
+    if (has_entering()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->entering());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void TranslationUpdate::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const TranslationUpdate* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const TranslationUpdate*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void TranslationUpdate::MergeFrom(const TranslationUpdate& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      mutable_unchanged()->::rec::TranslatedStrings::MergeFrom(from.unchanged());
+    }
+    if (from._has_bit(1)) {
+      mutable_leaving()->::rec::TranslatedStrings::MergeFrom(from.leaving());
+    }
+    if (from._has_bit(2)) {
+      mutable_entering()->::rec::TranslatedStrings::MergeFrom(from.entering());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void TranslationUpdate::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TranslationUpdate::CopyFrom(const TranslationUpdate& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TranslationUpdate::IsInitialized() const {
+  
+  return true;
+}
+
+void TranslationUpdate::Swap(TranslationUpdate* other) {
+  if (other != this) {
+    std::swap(unchanged_, other->unchanged_);
+    std::swap(leaving_, other->leaving_);
+    std::swap(entering_, other->entering_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata TranslationUpdate::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = TranslationUpdate_descriptor_;
+  metadata.reflection = TranslationUpdate_reflection_;
   return metadata;
 }
 

@@ -34,6 +34,7 @@ void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
 
 class TranslatedString;
 class TranslatedStrings;
+class TranslationUpdate;
 
 // ===================================================================
 
@@ -274,6 +275,111 @@ class TranslatedStrings : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static TranslatedStrings* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class TranslationUpdate : public ::google::protobuf::Message {
+ public:
+  TranslationUpdate();
+  virtual ~TranslationUpdate();
+  
+  TranslationUpdate(const TranslationUpdate& from);
+  
+  inline TranslationUpdate& operator=(const TranslationUpdate& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TranslationUpdate& default_instance();
+  
+  void Swap(TranslationUpdate* other);
+  
+  // implements Message ----------------------------------------------
+  
+  TranslationUpdate* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TranslationUpdate& from);
+  void MergeFrom(const TranslationUpdate& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional .rec.TranslatedStrings unchanged = 1;
+  inline bool has_unchanged() const;
+  inline void clear_unchanged();
+  static const int kUnchangedFieldNumber = 1;
+  inline const ::rec::TranslatedStrings& unchanged() const;
+  inline ::rec::TranslatedStrings* mutable_unchanged();
+  
+  // optional .rec.TranslatedStrings leaving = 2;
+  inline bool has_leaving() const;
+  inline void clear_leaving();
+  static const int kLeavingFieldNumber = 2;
+  inline const ::rec::TranslatedStrings& leaving() const;
+  inline ::rec::TranslatedStrings* mutable_leaving();
+  
+  // optional .rec.TranslatedStrings entering = 3;
+  inline bool has_entering() const;
+  inline void clear_entering();
+  static const int kEnteringFieldNumber = 3;
+  inline const ::rec::TranslatedStrings& entering() const;
+  inline ::rec::TranslatedStrings* mutable_entering();
+  
+  // @@protoc_insertion_point(class_scope:rec.TranslationUpdate)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::rec::TranslatedStrings* unchanged_;
+  ::rec::TranslatedStrings* leaving_;
+  ::rec::TranslatedStrings* entering_;
+  friend void  protobuf_AddDesc_rec_2fbase_2fTrans_2eproto();
+  friend void protobuf_AssignDesc_rec_2fbase_2fTrans_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static TranslationUpdate* default_instance_;
+};
 // ===================================================================
 
 
@@ -508,6 +614,61 @@ TranslatedStrings::str() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::TranslatedString >*
 TranslatedStrings::mutable_str() {
   return &str_;
+}
+
+// -------------------------------------------------------------------
+
+// TranslationUpdate
+
+// optional .rec.TranslatedStrings unchanged = 1;
+inline bool TranslationUpdate::has_unchanged() const {
+  return _has_bit(0);
+}
+inline void TranslationUpdate::clear_unchanged() {
+  if (unchanged_ != NULL) unchanged_->::rec::TranslatedStrings::Clear();
+  _clear_bit(0);
+}
+inline const ::rec::TranslatedStrings& TranslationUpdate::unchanged() const {
+  return unchanged_ != NULL ? *unchanged_ : *default_instance_->unchanged_;
+}
+inline ::rec::TranslatedStrings* TranslationUpdate::mutable_unchanged() {
+  _set_bit(0);
+  if (unchanged_ == NULL) unchanged_ = new ::rec::TranslatedStrings;
+  return unchanged_;
+}
+
+// optional .rec.TranslatedStrings leaving = 2;
+inline bool TranslationUpdate::has_leaving() const {
+  return _has_bit(1);
+}
+inline void TranslationUpdate::clear_leaving() {
+  if (leaving_ != NULL) leaving_->::rec::TranslatedStrings::Clear();
+  _clear_bit(1);
+}
+inline const ::rec::TranslatedStrings& TranslationUpdate::leaving() const {
+  return leaving_ != NULL ? *leaving_ : *default_instance_->leaving_;
+}
+inline ::rec::TranslatedStrings* TranslationUpdate::mutable_leaving() {
+  _set_bit(1);
+  if (leaving_ == NULL) leaving_ = new ::rec::TranslatedStrings;
+  return leaving_;
+}
+
+// optional .rec.TranslatedStrings entering = 3;
+inline bool TranslationUpdate::has_entering() const {
+  return _has_bit(2);
+}
+inline void TranslationUpdate::clear_entering() {
+  if (entering_ != NULL) entering_->::rec::TranslatedStrings::Clear();
+  _clear_bit(2);
+}
+inline const ::rec::TranslatedStrings& TranslationUpdate::entering() const {
+  return entering_ != NULL ? *entering_ : *default_instance_->entering_;
+}
+inline ::rec::TranslatedStrings* TranslationUpdate::mutable_entering() {
+  _set_bit(2);
+  if (entering_ == NULL) entering_ = new ::rec::TranslatedStrings;
+  return entering_;
 }
 
 

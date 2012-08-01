@@ -10,7 +10,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='rec/base/Trans.proto',
   package='rec',
-  serialized_pb='\n\x14rec/base/Trans.proto\x12\x03rec\"r\n\x10TranslatedString\x12\x10\n\x08original\x18\x01 \x01(\t\x12\x13\n\x0btranslation\x18\x02 \x01(\t\x12\x0c\n\x04hint\x18\x03 \x01(\t\x12\x0c\n\x04\x66ile\x18\x04 \x01(\t\x12\x0c\n\x04line\x18\x05 \x01(\r\x12\r\n\x05index\x18\x06 \x01(\r\"7\n\x11TranslatedStrings\x12\"\n\x03str\x18\x01 \x03(\x0b\x32\x15.rec.TranslatedString')
+  serialized_pb='\n\x14rec/base/Trans.proto\x12\x03rec\"r\n\x10TranslatedString\x12\x10\n\x08original\x18\x01 \x01(\t\x12\x13\n\x0btranslation\x18\x02 \x01(\t\x12\x0c\n\x04hint\x18\x03 \x01(\t\x12\x0c\n\x04\x66ile\x18\x04 \x01(\t\x12\x0c\n\x04line\x18\x05 \x01(\r\x12\r\n\x05index\x18\x06 \x01(\r\"7\n\x11TranslatedStrings\x12\"\n\x03str\x18\x01 \x03(\x0b\x32\x15.rec.TranslatedString\"\x91\x01\n\x11TranslationUpdate\x12)\n\tunchanged\x18\x01 \x01(\x0b\x32\x16.rec.TranslatedStrings\x12\'\n\x07leaving\x18\x02 \x01(\x0b\x32\x16.rec.TranslatedStrings\x12(\n\x08\x65ntering\x18\x03 \x01(\x0b\x32\x16.rec.TranslatedStrings')
 
 
 
@@ -106,7 +106,52 @@ _TRANSLATEDSTRINGS = descriptor.Descriptor(
 )
 
 
+_TRANSLATIONUPDATE = descriptor.Descriptor(
+  name='TranslationUpdate',
+  full_name='rec.TranslationUpdate',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    descriptor.FieldDescriptor(
+      name='unchanged', full_name='rec.TranslationUpdate.unchanged', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='leaving', full_name='rec.TranslationUpdate.leaving', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='entering', full_name='rec.TranslationUpdate.entering', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=203,
+  serialized_end=348,
+)
+
+
 _TRANSLATEDSTRINGS.fields_by_name['str'].message_type = _TRANSLATEDSTRING
+_TRANSLATIONUPDATE.fields_by_name['unchanged'].message_type = _TRANSLATEDSTRINGS
+_TRANSLATIONUPDATE.fields_by_name['leaving'].message_type = _TRANSLATEDSTRINGS
+_TRANSLATIONUPDATE.fields_by_name['entering'].message_type = _TRANSLATEDSTRINGS
 
 class TranslatedString(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
@@ -119,5 +164,11 @@ class TranslatedStrings(message.Message):
   DESCRIPTOR = _TRANSLATEDSTRINGS
   
   # @@protoc_insertion_point(class_scope:rec.TranslatedStrings)
+
+class TranslationUpdate(message.Message):
+  __metaclass__ = reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _TRANSLATIONUPDATE
+  
+  # @@protoc_insertion_point(class_scope:rec.TranslationUpdate)
 
 # @@protoc_insertion_point(module_scope)
