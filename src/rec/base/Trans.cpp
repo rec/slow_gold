@@ -46,7 +46,8 @@ void write(FileOutputStream* output, const String& s) {
   output->writeText(s, false, false);
 }
 
-TranslatedStrings getTranslatedStrings(const TranslationSet& tr) {
+TranslatedStrings getTranslatedStrings() {
+  const TranslationSet& tr = *translations();
   TranslatedStrings strings;
   for (TranslationSet::const_iterator i = tr.begin(); i != tr.end(); ++i)
     strings.add_str()->CopyFrom(*i);
@@ -57,9 +58,7 @@ TranslatedStrings getTranslatedStrings(const TranslationSet& tr) {
 
 void Trans::dumpAll() {
   LOG(INFO) << "Dumping translations " << translations()->size();
-  File file(TRANSLATION_FILE);
-  TranslatedStrings strings = getTranslatedStrings(*translations());
-  copy::copy(strings, &file);
+  copy::copy(getTranslatedStrings(), File(TRANSLATION_FILE));
 }
 
 #endif  // DEBUG
