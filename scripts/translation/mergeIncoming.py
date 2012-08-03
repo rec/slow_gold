@@ -29,7 +29,7 @@ def writeNew(old, new):
       newValue = value
       result.max_index += 1
       newValue.index = result.max_index
-      newValue.ClearField('translation')
+      # newValue.ClearField('translation')
 
     result.str.add().CopyFrom(newValue)
 
