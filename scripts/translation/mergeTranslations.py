@@ -60,7 +60,7 @@ def mergeOne(root, lang):
 
   newTranslated = mergeOriginal(english, translated, newTranslationLines)
   # print newTranslationLines.dict
-  translate.ProtoFile(root=root, lang=lang, prefix='new-').write(newTranslated)
+  translated.write(newTranslated)
 
   newRemoved = mergeRemoved(english, translated, newTranslationLines)
   removed = translate.ProtoFile(root=root, lang=lang, prefix='removed-')
