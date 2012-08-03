@@ -16,6 +16,10 @@ LANGUAGES = 'de', 'en', 'es', 'fr', 'id'
 PROTO_FILE = 'rec.TranslatedStrings'
 TEXT_FILE = 'translated.txt'
 
+def splitLine(s):
+  pos = s.find('.')
+  return int(s[0:pos]), s[pos + 1:]
+
 
 def toStringDictionary(t):
   return OrderedDict(((s.original, s.hint), s) for s in t.str)
@@ -26,11 +30,11 @@ class File(object):
     path = root[0] if root else DEFAULT_ROOT_DIRECTORY
     self.filename = '/'.join([path, lang, baseFile])
     self.strings = None
+    self.dict = None
 
 class ProtoFile(File):
   def __init__(self, prefix='', **kwds):
     File.__init__(self, prefix + PROTO_FILE, **kwds)
-    self.dict = None
 
   def read(self):
     self.strings = proto.read(TranslatedStrings, self.filename)
@@ -46,6 +50,7 @@ class TextFile(File):
 
   def read(self):
     self.strings = open(self.filename, 'r').readLines()
+    self.dict = dict(splitLine(s) for s in self.strings)
 
   def write(self, lines):
     f = open(self.filename, 'w').writelines('%s\n' % i for i in lines)
