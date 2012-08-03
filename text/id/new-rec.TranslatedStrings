@@ -1,1119 +1,1119 @@
 str {
   original: "%s %s semitones"
-  translation: " %s %s semitones\n"
+  translation: "% S% s semitone\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 48
   index: 1
 }
 str {
   original: "%s off"
-  translation: " %s off\n"
+  translation: "% S off\n"
   file: "rec/command/map/MidiName.cpp"
   line: 15
   index: 2
 }
 str {
   original: "(no file loaded)"
-  translation: " (no file loaded)\n"
+  translation: "(File tidak dimuat)\n"
   index: 3
 }
 str {
   original: "(None)"
-  translation: " (None)\n"
+  translation: "(Tidak Ada)\n"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 12
   index: 4
 }
 str {
   original: "<Unknown CD>"
-  translation: " <Unknown CD>\n"
+  translation: "<Unknown CD>\n"
   file: "rec/widget/tree/CD.cpp"
   line: 12
   index: 5
 }
 str {
   original: "A new version of SlowGold, %s, is available."
-  translation: " A new version of SlowGold, %s, is available.\n"
+  translation: "Sebuah versi baru dari SlowGold,% s, tersedia.\n"
   file: "rec/app/DownloadVersion.cpp"
   line: 22
   index: 6
 }
 str {
   original: "A Support Request file named \"%s\" was created on your desktop."
-  translation: " A Support Request file named \"%s\" was created on your desktop.\n"
+  translation: "Sebuah Permintaan Dukungan file bernama \"% s\" diciptakan pada desktop Anda.\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 37
   index: 7
 }
 str {
   original: "A Support Request Was Created On Your Desktop"
-  translation: " A Support Request Was Created On Your Desktop\n"
+  translation: "Sebuah Permintaan Dukungan Apakah Created On Desktop Anda\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 43
   index: 8
 }
 str {
   original: "Add Loop Point Button: Add a loop point at the current time."
-  translation: " Add Loop Point Button: Add a loop point at the current time.\n"
+  translation: "Tambahkan Tombol Ulangi Point: Menambah tempat loop di waktu sekarang.\n"
   index: 9
 }
 str {
   original: "Add loop point mode: clicking on the waveform creates a loop point."
-  translation: " Add loop point mode: clicking on the waveform creates a loop point.\n"
+  translation: "Tambahkan modus lingkaran titik: mengklik gelombang membuat suatu titik loop.\n"
   index: 10
 }
 str {
   original: "adds a new key-mapping"
-  translation: " adds a new key-mapping\n"
+  translation: "menambahkan kunci pemetaan baru\n"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 8
   index: 11
 }
 str {
   original: "Album"
-  translation: " Album\n"
+  translation: "Album\n"
   index: 12
 }
 str {
   original: "Album Name: The name of the album this track is from."
-  translation: " Album Name: The name of the album this track is from.\n"
+  translation: "Nama Album: nama album lagu ini dari.\n"
   index: 13
 }
 str {
   original: "Album Year: The year that that this track was recorded."
-  translation: " Album Year: The year that that this track was recorded.\n"
+  translation: "Tahun Album: tahun itu bahwa lagu ini direkam.\n"
   index: 14
 }
 str {
   original: "Are you sure you want to reset all the key mappings to their default state?"
-  translation: " Are you sure you want to reset all the key mappings to their default state?\n"
+  translation: "Anda yakin ingin mengatur ulang semua pemetaan kunci untuk keadaan standar?\n"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 10
   index: 15
 }
 str {
   original: "Artist"
-  translation: " Artist\n"
+  translation: "Artis\n"
   index: 16
 }
 str {
   original: "Artist Name: The artist or musician who made this specific track."
-  translation: " Artist Name: The artist or musician who made this specific track.\n"
+  translation: "Nama Artist: artis atau musisi yang telah membuat lagu tertentu.\n"
   index: 17
 }
 str {
   original: "as"
-  translation: " as\n"
+  translation: "sebagai\n"
   file: "rec/command/map/MidiName.cpp"
   line: 13
   index: 18
 }
 str {
   original: "Audio"
-  translation: " Audio\n"
+  translation: "Audio\n"
   index: 19
 }
 str {
   original: "Can\'t create track for %s."
-  translation: " Can\'t create track for %s.\n"
+  translation: "Tidak bisa membuat lagu untuk% s.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 25
   index: 20
 }
 str {
   original: "Can\'t Find File"
-  translation: " Can\'t Find File\n"
+  translation: "Tidak Dapat Menemukan Berkas\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 29
   index: 21
 }
 str {
   original: "Cancel"
-  translation: " Cancel\n"
+  translation: "Membatalkan\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 28
   index: 22
 }
 str {
   original: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
-  translation: " CD Window:  Any CDs that you have in your computer\'s CD drives will appear here.\n"
+  translation: "CD Window: Setiap CD yang Anda miliki dalam CD drive komputer Anda akan muncul di sini.\n"
   index: 23
 }
 str {
   original: "CDs will automatically appear at the top-left when you insert them."
-  translation: " CDs will automatically appear at the top-left when you insert them.\n"
+  translation: "CD secara otomatis akan muncul di bagian atas-kiri ketika Anda memasukkan mereka.\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 20
   index: 24
 }
 str {
   original: "Change key-mapping"
-  translation: " Change key-mapping\n"
+  translation: "Mengubah kunci-pemetaan\n"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 9
   index: 25
 }
 str {
   original: "Change this command mapping"
-  translation: " Change this command mapping\n"
+  translation: "Ubah pemetaan perintah\n"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 10
   index: 26
 }
 str {
   original: "Choose File To Save to"
-  translation: " Choose File To Save to\n"
+  translation: "Pilih File Untuk Simpan\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 42
   index: 27
 }
 str {
   original: "Clear all keyboard mappings to factory default?"
-  translation: " Clear all keyboard mappings to factory default?\n"
+  translation: "Hapus semua pemetaan keyboard untuk standar pabrik?\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 52
   index: 28
 }
 str {
   original: "Clear all MIDI mappings?"
-  translation: " Clear all MIDI mappings?\n"
+  translation: "Hapus semua pemetaan MIDI?\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 54
   index: 29
 }
 str {
   original: "Clear Keyboard Mappings."
-  translation: " Clear Keyboard Mappings.\n"
+  translation: "Keyboard pemetaan yang jelas.\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 50
   index: 30
 }
 str {
   original: "Clear MIDI Mappings."
-  translation: " Clear MIDI Mappings.\n"
+  translation: "Kosongkan pemetaan MIDI.\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 53
   index: 31
 }
 str {
   original: "Clearing All Settings For All Tracks"
-  translation: " Clearing All Settings For All Tracks\n"
+  translation: "Kliring Semua Pengaturan Untuk Semua Trek\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 56
   index: 32
 }
 str {
   original: "Clearing Settings For This Track Only"
-  translation: " Clearing Settings For This Track Only\n"
+  translation: "Kliring Pengaturan Untuk Lagu Ini Hanya\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 61
   index: 33
 }
 str {
   original: "click to change this key-mapping"
-  translation: " click to change this key-mapping\n"
+  translation: "klik untuk mengubah kunci-pemetaan\n"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 9
   index: 34
 }
 str {
   original: "Click to continue."
-  translation: " Click to continue.\n"
+  translation: "Klik untuk melanjutkan.\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 33
   index: 35
 }
 str {
   original: "Copyright \302\251 %d"
-  translation: " Copyright \302\251 %d\n"
+  translation: "Copyright \302\251% d\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 26
   index: 36
 }
 str {
   original: "Couldn\'t Create A Support Request"
-  translation: " Couldn\'t Create A Support Request\n"
+  translation: "Tidak dapat Membuat Permintaan Dukungan\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 31
   index: 37
 }
 str {
   original: "Couldn\'t Load The SlowGold 8 User Manual"
-  translation: " Couldn\'t Load The SlowGold 8 User Manual\n"
+  translation: "Tidak dapat Load Pedoman 8 User SlowGold\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 29
   index: 38
 }
 str {
   original: "Couldn\'t Open CD Track."
-  translation: " Couldn\'t Open CD Track.\n"
+  translation: "Tidak dapat Buka Jalur CD.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 26
   index: 39
 }
 str {
   original: "Couldn\'t open track on CD - perhaps you ejected it?"
-  translation: " Couldn\'t open track on CD - perhaps you ejected it?\n"
+  translation: "Tidak dapat membuka trek pada CD - mungkin Anda dikeluarkan itu?\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 27
   index: 40
 }
 str {
   original: "Couldn\'t Open Your File."
-  translation: " Couldn\'t Open Your File.\n"
+  translation: "Tidak dapat Buka File Anda.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 39
   index: 41
 }
 str {
   original: "Couldn\'t update to version %s"
-  translation: " Couldn\'t update to version %s\n"
+  translation: "Tidak bisa update ke versi% s\n"
   file: "rec/app/DownloadVersion.cpp"
   line: 26
   index: 42
 }
 str {
   original: "Create loop points by pressing the L key."
-  translation: " Create loop points by pressing the L key.\n"
+  translation: "Buat poin loop dengan menekan tombol L.\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 23
   index: 43
 }
 str {
   original: "Currently assigned to"
-  translation: " Currently assigned to\n"
+  translation: "Saat ini ditugaskan untuk\n"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 14
   index: 44
 }
 str {
   original: "Display"
-  translation: " Display\n"
+  translation: "Tampilan\n"
   index: 45
 }
 str {
   original: "Display this window on startup"
-  translation: " Display this window on startup\n"
+  translation: "Tampilkan jendela ini pada startup\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 17
   index: 46
 }
 str {
   original: "Do you want to re-assign it to this new command instead?"
-  translation: " Do you want to re-assign it to this new command instead?\n"
+  translation: "Apakah Anda ingin kembali menetapkan ke perintah baru, bukan?\n"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 11
   index: 47
 }
 str {
   original: "down"
-  translation: " down\n"
+  translation: "turun\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 43
   index: 48
 }
 str {
   original: "Download new version and quit this older one."
-  translation: " Download new version and quit this older one.\n"
+  translation: "Download versi baru dan berhenti yang satu lebih tua.\n"
   file: "rec/app/DownloadVersion.cpp"
   line: 24
   index: 49
 }
 str {
   original: "Download the manual from the Help menu for many more commands."
-  translation: " Download the manual from the Help menu for many more commands.\n"
+  translation: "Download manual dari menu Help untuk perintah banyak lagi.\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 25
   index: 50
 }
 str {
   original: "Drag audio files onto the waveform."
-  translation: " Drag audio files onto the waveform.\n"
+  translation: "Drag file audio ke bentuk gelombang.\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 18
   index: 51
 }
 str {
   original: "Drag Mode: Use the mouse to drag the waveform back and forth"
-  translation: " Drag Mode: Use the mouse to drag the waveform back and forth\n"
+  translation: "Drag Mode: Gunakan mouse untuk menyeret bentuk gelombang bolak-balik\n"
   index: 52
 }
 str {
   original: "Drag the Speed slider to slow down or speed up."
-  translation: " Drag the Speed slider to slow down or speed up.\n"
+  translation: "Tarik slider Kecepatan untuk memperlambat atau mempercepat.\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 22
   index: 53
 }
 str {
   original: "Edit"
-  translation: " Edit\n"
+  translation: "Mengedit\n"
   index: 54
 }
 str {
   original: "Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake."
-  translation: " Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake.\n"
+  translation: "Entah itu tidak dalam format yang tepat, itu rusak, atau programmer melakukan kesalahan.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 42
   index: 55
 }
 str {
   original: "Enable"
-  translation: " Enable\n"
+  translation: "Memungkinkan\n"
   index: 56
 }
 str {
   original: "Error During Save."
-  translation: " Error During Save.\n"
+  translation: "Kesalahan Selama Simpan.\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 38
   index: 57
 }
 str {
   original: "Error was"
-  translation: " Error was\n"
+  translation: "Kesalahan adalah\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 28
   index: 58
 }
 str {
   original: "File"
-  translation: " File\n"
+  translation: "Berkas\n"
   index: 59
 }
 str {
   original: "File Type For Save..."
-  translation: " File Type For Save...\n"
+  translation: "File Type Untuk Simpan ...\n"
   index: 60
 }
 str {
   original: "Finishing loading audio from disk."
-  translation: " Finishing loading audio from disk.\n"
+  translation: "Finishing pemuatan audio dari disk.\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 40
   index: 61
 }
 str {
   original: "Genre"
-  translation: " Genre\n"
+  translation: "Aliran\n"
   index: 62
 }
 str {
   original: "Help"
-  translation: " Help\n"
+  translation: "Membantu\n"
   index: 63
 }
 str {
   original: "Help Panel: Shows help about whatever the mouse is over."
-  translation: " Help Panel: Shows help about whatever the mouse is over.\n"
+  translation: "Bantuan Panel: Menampilkan bantuan tentang apapun mouse di atas.\n"
   index: 64
 }
 str {
   original: "Jump Back"
-  translation: " Jump Back\n"
+  translation: "Lompat Kembali\n"
   index: 65
 }
 str {
   original: "Jump Back Button: Jump to the start of the next segment."
-  translation: " Jump Back Button: Jump to the start of the next segment.\n"
+  translation: "Lompat Tombol Kembali: Lompat ke awal segmen berikutnya.\n"
   index: 66
 }
 str {
   original: "Jump Forward"
-  translation: " Jump Forward\n"
+  translation: "Lompat ke Depan\n"
   index: 67
 }
 str {
   original: "Jump Forward Button: Jump to the start of the next segment."
-  translation: " Jump Forward Button: Jump to the start of the next segment.\n"
+  translation: "Lompat Teruskan Tombol: Lompat ke awal segmen berikutnya.\n"
   index: 68
 }
 str {
   original: "Jump To Selected..."
-  translation: " Jump To Selected...\n"
+  translation: "Jump To Terpilih ...\n"
   index: 69
 }
 str {
   original: "Jump to start"
-  translation: " Jump to start\n"
+  translation: "Lompat untuk memulai\n"
   index: 70
 }
 str {
   original: "Jump To Start Button: Jump to the start of the track."
-  translation: " Jump To Start Button: Jump to the start of the track.\n"
+  translation: "Jump To Start Button: Lompat ke awal trek.\n"
   index: 71
 }
 str {
   original: "Jump To..."
-  translation: " Jump To...\n"
+  translation: "Jump To ...\n"
   index: 72
 }
 str {
   original: "Key"
-  translation: " Key\n"
+  translation: "Kunci\n"
   file: "rec/command/map/KeyCommandMapEditor.cpp"
   line: 11
   index: 73
 }
 str {
   original: "L + R"
-  translation: " L + R\n"
+  translation: "L + R\n"
   index: 74
 }
 str {
   original: "Left"
-  translation: " Left\n"
+  translation: "Kiri\n"
   index: 75
 }
 str {
   original: "Level Meter: Display the sound intensity, in RMS dB."
-  translation: " Level Meter: Display the sound intensity, in RMS dB.\n"
+  translation: "Level Meter: Menampilkan intensitas suara, dalam RMS dB.\n"
   index: 76
 }
 str {
   original: "Level Slider: Raise or lower the sound intensity, in dB."
-  translation: " Level Slider: Raise or lower the sound intensity, in dB.\n"
+  translation: "Tingkat Slider: Meningkatkan atau menurunkan intensitas suara, dalam dB.\n"
   index: 77
 }
 str {
   original: "Loop Entire Track"
-  translation: " Loop Entire Track\n"
+  translation: "Seluruh lingkaran Jalur\n"
   index: 78
 }
 str {
   original: "Loop Point List: You can select and edit loop points here."
-  translation: " Loop Point List: You can select and edit loop points here.\n"
+  translation: "Lingkaran Titik Daftar: Anda dapat memilih dan mengedit poin loop di sini.\n"
   index: 79
 }
 str {
   original: "Loop Point Name: Edit the Loop Point\'s name by clicking here."
-  translation: " Loop Point Name: Edit the Loop Point\'s name by clicking here.\n"
+  translation: "Ulangi Point Name: Edit nama Point loop dengan mengklik di sini.\n"
   index: 80
 }
 str {
   original: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
-  translation: " Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name.\n"
+  translation: "Titik Loop: Anda dapat menarik sekitar pada gelombang, atau Anda dapat mengklik pada label di atas dan di sebelah kanan untuk mengedit namanya.\n"
   file: "rec/widget/waveform/Waveform.cpp"
   line: 38
   index: 81
 }
 str {
   original: "Loop This Segment"
-  translation: " Loop This Segment\n"
+  translation: "Lingkaran Segmen ini\n"
   index: 82
 }
 str {
   original: "Master"
-  translation: " Master\n"
+  translation: "Menguasai\n"
   index: 83
 }
 str {
   original: "Master Tune Slider: Master tune is a global detune over all tracks."
-  translation: " Master Tune Slider: Master tune is a global detune over all tracks.\n"
+  translation: "Guru Tune Slider: lagu Master adalah detune global selama semua trek.\n"
   index: 84
 }
 str {
   original: "MIDI"
-  translation: " MIDI\n"
+  translation: "MIDI\n"
   file: "rec/command/map/MidiCommandMapEditor.cpp"
   line: 15
   index: 85
 }
 str {
   original: "Mute"
-  translation: " Mute\n"
+  translation: "Bisu\n"
   index: 86
 }
 str {
   original: "Mute Button: Mute or unmute the sound."
-  translation: " Mute Button: Mute or unmute the sound.\n"
+  translation: "Tombol Mute: Diam atau unmute suara.\n"
   index: 87
 }
 str {
   original: "Name"
-  translation: " Name\n"
+  translation: "Nama\n"
   index: 88
 }
 str {
   original: "New command mapping"
-  translation: " New command mapping\n"
+  translation: "Baru perintah pemetaan\n"
   file: "rec/command/map/CommandEntryWindow.cpp"
   line: 9
   index: 89
 }
 str {
   original: "No available CDs."
-  translation: " No available CDs.\n"
+  translation: "Tidak ada CD yang tersedia.\n"
   file: "rec/util/cd/CDReader.cpp"
   line: 13
   index: 90
 }
 str {
   original: "Not Registered!"
-  translation: " Not Registered!\n"
+  translation: "Tidak Terdaftar!\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 28
   index: 91
 }
 str {
   original: "Notes"
-  translation: " Notes\n"
+  translation: "Catatan\n"
   index: 92
 }
 str {
   original: "Number"
-  translation: " Number\n"
+  translation: "Jumlah\n"
   index: 93
 }
 str {
   original: "OK"
-  translation: " OK\n"
+  translation: "Oke\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 40
   index: 94
 }
 str {
   original: "one semitone %s"
-  translation: " one semitone %s\n"
+  translation: "satu semitone% s\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 47
   index: 95
 }
 str {
   original: "Open recent"
-  translation: " Open recent\n"
+  translation: "Buka terakhir\n"
   index: 96
 }
 str {
   original: "pc %d"
-  translation: " pc %d\n"
+  translation: "pc% d\n"
   file: "rec/command/map/MidiName.cpp"
   line: 16
   index: 97
 }
 str {
   original: "Pitch"
-  translation: " Pitch\n"
+  translation: "Nada\n"
   index: 98
 }
 str {
   original: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
-  translation: " Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone).\n"
+  translation: "Putar Slider Fine Tuning: lagu lingkaran Rupa atas atau bawah di lapangan, diukur dalam sen (1/100 dari semitone a).\n"
   index: 99
 }
 str {
   original: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
-  translation: " Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster.\n"
+  translation: "Kecepatan Slider Playback: Kontrol seberapa cepat loop memutar ulang: jumlah yang lebih berarti loop memutar kembali lebih cepat.\n"
   index: 100
 }
 str {
   original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
-  translation: " Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time.\n"
+  translation: "Putar kursor Waktu: ini mengikuti waktu saat ini selama pemutaran. Anda juga dapat drag mengatur waktu pemutaran saat ini.\n"
   index: 101
 }
 str {
   original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
-  translation: " Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones.\n"
+  translation: "Putar Tuning Slider: pemutaran lingkaran kasar atas dan ke bawah di lapangan, yang diukur dalam semitone.\n"
   index: 102
 }
 str {
   original: "Please attach the file on your desktop named %s to this email and send it to us!"
-  translation: " Please attach the file on your desktop named %s to this email and send it to us!\n"
+  translation: "Tolong lampirkan file di% s desktop Anda bernama email ini dan kirim pada kami!\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 35
   index: 103
 }
 str {
   original: "Please contact World Wide Woodshed support at"
-  translation: " Please contact World Wide Woodshed support at\n"
+  translation: "Silahkan hubungi dukungan Dunia Woodshed Wide\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 41
   index: 104
 }
 str {
   original: "Please mail the file to %s and then you can throw it away."
-  translation: " Please mail the file to %s and then you can throw it away.\n"
+  translation: "Silahkan mail file ke% s dan kemudian Anda dapat membuangnya.\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 42
   index: 105
 }
 str {
   original: "Please press a key combination now..."
-  translation: " Please press a key combination now...\n"
+  translation: "Silahkan tekan kombinasi tombol sekarang ...\n"
   file: "rec/command/map/KeyCommandMapEditor.cpp"
   line: 10
   index: 106
 }
 str {
   original: "Press the space bar to start and stop playback."
-  translation: " Press the space bar to start and stop playback.\n"
+  translation: "Tekan space bar untuk memulai dan menghentikan pemutaran.\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 21
   index: 107
 }
 str {
   original: "Ran Out Of Memory For Your File"
-  translation: " Ran Out Of Memory For Your File\n"
+  translation: "Ran Out Of Memory Untuk File Anda\n"
   file: "rec/slow/CurrentFile.cpp"
   line: 36
   index: 108
 }
 str {
   original: "Re-assign"
-  translation: " Re-assign\n"
+  translation: "Kembali menetapkan\n"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 12
   index: 109
 }
 str {
   original: "Registered to:"
-  translation: " Registered to:\n"
+  translation: "Terdaftar ke:\n"
   file: "rec/slow/AboutWindow.cpp"
   line: 27
   index: 110
 }
 str {
   original: "Remove this command mapping"
-  translation: " Remove this command mapping\n"
+  translation: "Menghapus pemetaan perintah\n"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 11
   index: 111
 }
 str {
   original: "Reset"
-  translation: " Reset\n"
+  translation: "Atur Ulang\n"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 11
   index: 112
 }
 str {
   original: "reset to defaults"
-  translation: " reset to defaults\n"
+  translation: "reset ke default\n"
   file: "rec/command/map/CommandMapEditor.cpp"
   line: 13
   index: 113
 }
 str {
   original: "Right"
-  translation: " Right\n"
+  translation: "Tepat\n"
   index: 114
 }
 str {
   original: "Run this older version (%s)."
-  translation: " Run this older version (%s).\n"
+  translation: "Jalankan versi yang lebih tua (% s).\n"
   file: "rec/app/DownloadVersion.cpp"
   line: 25
   index: 115
 }
 str {
   original: "Saving File %s."
-  translation: " Saving File %s.\n"
+  translation: "Menyimpan file% s.\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 41
   index: 116
 }
 str {
   original: "Select"
-  translation: " Select\n"
+  translation: "Memilih\n"
   index: 117
 }
 str {
   original: "Select A File Containing Keyboard Command Mappings"
-  translation: " Select A File Containing Keyboard Command Mappings\n"
+  translation: "Pilih File Mengandung pemetaan Keyboard Command\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 48
   index: 118
 }
 str {
   original: "Select A File Containing MIDI Command Mappings"
-  translation: " Select A File Containing MIDI Command Mappings\n"
+  translation: "Pilih File Mengandung pemetaan Komando MIDI\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 49
   index: 119
 }
 str {
   original: "Select A File To Save Exported Keyboard Command Mappings"
-  translation: " Select A File To Save Exported Keyboard Command Mappings\n"
+  translation: "Pilih File Sebuah Untuk Simpan pemetaan Keyboard Command Ekspor\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 45
   index: 120
 }
 str {
   original: "Select A File To Save Exported MIDI Command Mappings"
-  translation: " Select A File To Save Exported MIDI Command Mappings\n"
+  translation: "Pilih File Sebuah Untuk Simpan Ekspor pemetaan Komando MIDI\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 46
   index: 121
 }
 str {
   original: "Select A File To Save Exported Settings"
-  translation: " Select A File To Save Exported Settings\n"
+  translation: "Pilih Sebuah File Untuk Simpan Pengaturan Ekspor\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 44
   index: 122
 }
 str {
   original: "Select A Zip File Containing Exported Settings"
-  translation: " Select A Zip File Containing Exported Settings\n"
+  translation: "Pilih File Zip Berisi Pengaturan Ekspor\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 47
   index: 123
 }
 str {
   original: "Select Only..."
-  translation: " Select Only...\n"
+  translation: "Pilih Hanya ...\n"
   index: 124
 }
 str {
   original: "Select..."
-  translation: " Select...\n"
+  translation: "Pilih ...\n"
   index: 125
 }
 str {
   original: "Set Audio Preferences"
-  translation: " Set Audio Preferences\n"
+  translation: "Set Preferences Audio\n"
   file: "rec/gui/audio/SetupPage.cpp"
   line: 11
   index: 126
 }
 str {
   original: "Set Current Time Mode: Clicking in the waveform sets the current time."
-  translation: " Set Current Time Mode: Clicking in the waveform sets the current time.\n"
+  translation: "Mengatur Mode Current Time: Mengklik dalam bentuk gelombang menetapkan waktu saat ini.\n"
   index: 127
 }
 str {
   original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
-  translation: " Sorry, couldn\'t load the SlowGold 8 user manual at\n"
+  translation: "Maaf, tidak dapat memuat manual 8 pengguna SlowGold di\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 30
   index: 128
 }
 str {
   original: "Sorry, file %s is an .m4a file and we cano\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
-  translation: " Sorry, file %s is an .m4a file and we cano\'t yet read these files on Windows:  please convert it to mp3 using iTunes.\n"
+  translation: "Maaf, file% s adalah m4a file dan kita belum cano\'t membaca file-file pada Windows:. Silahkan mengubahnya menjadi mp3 menggunakan iTunes.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 37
   index: 129
 }
 str {
   original: "Sorry, the file you tried to %s has a length of less than one second."
-  translation: " Sorry, the file you tried to %s has a length of less than one second.\n"
+  translation: "Maaf, file Anda mencoba untuk% s memiliki panjang kurang dari satu detik.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 21
   index: 130
 }
 str {
   original: "Sorry, the file you tried to open, %s has a length of zero."
-  translation: " Sorry, the file you tried to open, %s has a length of zero.\n"
+  translation: "Maaf, file Anda mencoba untuk membuka,% s memiliki panjang nol.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 46
   index: 131
 }
 str {
   original: "Sorry, the program couldn\'t open your file %s."
-  translation: " Sorry, the program couldn\'t open your file %s.\n"
+  translation: "Maaf, program ini tidak dapat membuka file% s Anda.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 40
   index: 132
 }
 str {
   original: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
-  translation: " Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com.\n"
+  translation: "Maaf, ada kesalahan kliring pengaturan. Silakan laporkan hal ini ke support@worldwidewoodshed.com.\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 70
   index: 133
 }
 str {
   original: "Sorry, there wasn\'t enough memory for the file."
-  translation: " Sorry, there wasn\'t enough memory for the file.\n"
+  translation: "Maaf, tidak ada cukup memori untuk file.\n"
   file: "rec/slow/CurrentFile.cpp"
   line: 37
   index: 134
 }
 str {
   original: "Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted."
-  translation: " Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted.\n"
+  translation: "Maaf, kami tidak bisa menemukan% s file. Mungkin Anda dihapus, atau mungkin itu pada drive yang saat ini tidak dipasang.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 32
   index: 135
 }
 str {
   original: "Sorry, we were unable to create a support request."
-  translation: " Sorry, we were unable to create a support request.\n"
+  translation: "Maaf, kami tidak dapat membuat permintaan dukungan.\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 32
   index: 136
 }
 str {
   original: "Start/stop"
-  translation: " Start/stop\n"
+  translation: "Start / stop\n"
   index: 137
 }
 str {
   original: "Start/Stop Button: Toggle between pause and play."
-  translation: " Start/Stop Button: Toggle between pause and play.\n"
+  translation: "Start / Stop Button: Beralih di antara jeda dan bermain.\n"
   index: 138
 }
 str {
   original: "Stereo"
-  translation: " Stereo\n"
+  translation: "Stereo\n"
   index: 139
 }
 str {
   original: "Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
-  translation: " Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels.\n"
+  translation: "Buka Menu Pengolahan Stereo: Pilih antara stereo asli, hanya saluran kiri, hanya saluran yang tepat, atau campuran mono kedua saluran.\n"
   index: 140
 }
 str {
   original: "Stretch"
-  translation: " Stretch\n"
+  translation: "Meregang\n"
   index: 141
 }
 str {
   original: "Support Request: %s"
-  translation: " Support Request: %s\n"
+  translation: "Permintaan Dukungan:% s\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 39
   index: 142
 }
 str {
   original: "sysex"
-  translation: " sysex\n"
+  translation: "sysex\n"
   file: "rec/command/map/MidiName.cpp"
   line: 14
   index: 143
 }
 str {
   original: "The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave."
-  translation: " The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave.\n"
+  translation: "Ekstensi file harus. Aiff, AIF,.. Flac, ogg,.. Wav atau. Gelombang.\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 51
   index: 144
 }
 str {
   original: "The full path was: %s"
-  translation: " The full path was: %s\n"
+  translation: "Path lengkap adalah:% s\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 33
   index: 145
 }
 str {
   original: "There was an error saving your file %s."
-  translation: " There was an error saving your file %s.\n"
+  translation: "Terjadi kesalahan saat menyimpan file% s Anda.\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 39
   index: 146
 }
 str {
   original: "This key is already assigned to the command"
-  translation: " This key is already assigned to the command\n"
+  translation: "Kunci ini sudah ditugaskan untuk perintah\n"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 10
   index: 147
 }
 str {
   original: "Time"
-  translation: " Time\n"
+  translation: "Waktu\n"
   index: 148
 }
 str {
   original: "Time Display: Shows the current playback time in minutes, seconds and millseconds."
-  translation: " Time Display: Shows the current playback time in minutes, seconds and millseconds.\n"
+  translation: "Waktu Tampilan: Menampilkan waktu pemutaran saat ini dalam menit, detik dan millseconds.\n"
   index: 149
 }
 str {
   original: "Toggle..."
-  translation: " Toggle...\n"
+  translation: "Beralih ...\n"
   index: 150
 }
 str {
   original: "Track"
-  translation: " Track\n"
+  translation: "Melacak\n"
   index: 151
 }
 str {
   original: "Track Notes: You can enter your notes here."
-  translation: " Track Notes: You can enter your notes here.\n"
+  translation: "Melacak Catatan: Anda dapat memasukkan catatan Anda di sini.\n"
   index: 152
 }
 str {
   original: "Track Number: The album track number for this track"
-  translation: " Track Number: The album track number for this track\n"
+  translation: "Melacak Nomor: Jumlah lagu album untuk lagu ini\n"
   index: 153
 }
 str {
   original: "Track tags: Tags that categorize this track."
-  translation: " Track tags: Tags that categorize this track.\n"
+  translation: "Tag Track: Tags yang mengkategorikan trek ini.\n"
   index: 154
 }
 str {
   original: "Track Title: The name of this track."
-  translation: " Track Title: The name of this track.\n"
+  translation: "Melacak Judul: Nama trek ini.\n"
   index: 155
 }
 str {
   original: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
-  translation: " Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen.\n"
+  translation: "Transform Aktifkan Tombol: Menonaktifkan atau mengaktifkan transformasi semua suara: pitch, waktu dan pengolahan stereo tapi tidak menguasai tunen.\n"
   index: 156
 }
 str {
   original: "Transport"
-  translation: " Transport\n"
+  translation: "Transportasi\n"
   index: 157
 }
 str {
   original: "Tried to read CD, id=%s, names=%s"
-  translation: " Tried to read CD, id=%s, names=%s\n"
+  translation: "Mencoba untuk membaca CD, id =% s,% s nama =\n"
   file: "rec/util/cd/CDReader.cpp"
   line: 14
   index: 158
 }
 str {
   original: "Tune"
-  translation: " Tune\n"
+  translation: "Lagu\n"
   index: 159
 }
 str {
   original: "Unable To Clear Settings"
-  translation: " Unable To Clear Settings\n"
+  translation: "Tidak Untuk Batal Pengaturan\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 67
   index: 160
 }
 str {
   original: "Unknown CD: ID = 0x"
-  translation: " Unknown CD: ID = 0x\n"
+  translation: "Diketahui CD: ID = 0x\n"
   file: "rec/widget/tree/CD.cpp"
   line: 13
   index: 161
 }
 str {
   original: "Unselect..."
-  translation: " Unselect...\n"
+  translation: "Hapus ...\n"
   index: 162
 }
 str {
   original: "up"
-  translation: " up\n"
+  translation: "naik\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 44
   index: 163
 }
 str {
   original: "Volume"
-  translation: " Volume\n"
+  translation: "Volume\n"
   index: 164
 }
 str {
   original: "Waiting for a MIDI note, program change or controller..."
-  translation: " Waiting for a MIDI note, program change or controller...\n"
+  translation: "Menunggu catatan MIDI, program perubahan atau controller ...\n"
   file: "rec/command/map/MidiCommandMapEditor.cpp"
   line: 14
   index: 165
 }
 str {
   original: "Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform."
-  translation: " Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform.\n"
+  translation: "Bentuk gelombang Jendela: Anda bisa menggeret file dari desktop atau pemutar musik Anda di sini. Jika mouse dilengkapi roda, menggunakannya untuk memperbesar bentuk gelombang.\n"
   index: 166
 }
 str {
   original: "We Can\'t Read .m4a Files On Windows"
-  translation: " We Can\'t Read .m4a Files On Windows\n"
+  translation: "Kita tidak bisa Baca File m4a Pada Windows.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 34
   index: 167
 }
 str {
   original: "Would you like to download it?"
-  translation: " Would you like to download it?\n"
+  translation: "Apakah Anda ingin mendownloadnya?\n"
   file: "rec/app/DownloadVersion.cpp"
   line: 23
   index: 168
 }
 str {
   original: "Year"
-  translation: " Year\n"
+  translation: "Tahun\n"
   index: 169
 }
 str {
   original: "You can throw the file away once your email is sent."
-  translation: " You can throw the file away once your email is sent.\n"
+  translation: "Anda dapat membuang file jauh sekali email Anda telah dikirim.\n"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 38
   index: 170
 }
 str {
   original: "You cannot overwrite the current file."
-  translation: " You cannot overwrite the current file.\n"
+  translation: "Anda tidak dapat menimpa file saat ini.\n"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 52
   index: 171
 }
 str {
   original: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
-  translation: " You want to clear *all* settings, and quit SlowGold.  Is this OK?\n"
+  translation: "Anda ingin menghapus * semua * pengaturan, dan berhenti SlowGold. Apakah hal ini?\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 59
   index: 172
 }
 str {
   original: "You want to clear settings for this track only, and quit the program.  Is this OK?"
-  translation: " You want to clear settings for this track only, and quit the program.  Is this OK?\n"
+  translation: "Anda ingin menghapus pengaturan untuk trek ini saja, dan berhenti program. Apakah hal ini?\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 65
   index: 173
 }
 str {
   original: "Your File Was Empty."
-  translation: " Your File Was Empty.\n"
+  translation: "File Anda Apakah Kosong.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 44
   index: 174
 }
 str {
   original: "Your File Was Too Small."
-  translation: " Your File Was Too Small.\n"
+  translation: "File Anda Apakah Terlalu Kecil.\n"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 19
   index: 175
 }
 str {
   original: "Your Version Of SlowGold Is Up-To-Date"
-  translation: " Your Version Of SlowGold Is Up-To-Date\n"
+  translation: "Versi Anda Dari SlowGold Apakah Up-To-Date\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 45
   index: 176
 }
 str {
   original: "Your version of SlowGold, %s, is up-to-date."
-  translation: " Your version of SlowGold, %s, is up-to-date.\n"
+  translation: "Versi SlowGold,% s, up-to-date.\n"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 46
   index: 177
 }
 str {
   original: "Zoom Mode: Clicking on the waveform zooms in on that point."
-  translation: " Zoom Mode: Clicking on the waveform zooms in on that point.\n"
+  translation: "Zoom Mode: Mengklik membesarkan gelombang dalam pada saat itu.\n"
   index: 178
 }
 str {
   original: "Zoom out"
-  translation: " Zoom out\n"
+  translation: "Perkecil\n"
   index: 179
 }
 str {
   original: "Zoom Out Full Button: Zoom the waveform all the way out."
-  translation: " Zoom Out Full Button: Zoom the waveform all the way out.\n"
+  translation: "Tombol Zoom Out Lengkap: Zoom gelombang semua jalan keluar.\n"
   index: 180
 }
 str {
   original: "Zoom To Selection"
-  translation: " Zoom To Selection\n"
+  translation: "Zoom Untuk Seleksi\n"
   index: 181
 }
 str {
   original: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
-  translation: " Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform.\n"
+  translation: "Zoom Untuk Tombol Seleksi: Memperbesar atau memperkecil tampilan sehingga seluruh pilihan sesuai bentuk gelombang.\n"
   index: 182
 }
 max_index: 182

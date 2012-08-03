@@ -16,6 +16,7 @@ def read(proto, file):
   try:
     f = open(file, 'r').read()
   except:
+    print "Couldn't read file", file
     pass
 
   text_format.Merge(decode(f), t)

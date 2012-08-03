@@ -22,23 +22,23 @@ def fixStrings(s):
 
 def mergeRemoved(english, translated, newTranslation):
   result = translate.TranslatedStrings()
-  result.max_index = english.max_index
+  result.max_index = english.strings.max_index
 
   for k, v in translated.dict.iteritems():
     if k not in english.dict:
-      result.strings.add()->CopyFrom(value)
+      result.str.add().CopyFrom(value)
   return result
 
 def mergeOriginal(english, translated, newTranslation):
   result = translate.TranslatedStrings()
-  result.max_index = english.max_index
+  result.max_index = english.strings.max_index
 
   for k, v in english.dict.iteritems():
-    resultString = result.strings.add()
+    resultString = result.str.add()
     new = newTranslation.dict.get(v.index, None)
     resultString.CopyFrom(v)
     if new:
-      resultString.translation = proto.encode(new)
+      resultString.translation = proto.decode(new)
     else:
       old = translated.dict.get(k, None)
       if old:
@@ -55,23 +55,24 @@ def mergeOne(root, lang):
   translated = translate.ProtoFile(root=root, lang=lang)
   translated.read()
 
-  newTranslationLines = translate.TextFile(root=root, lang=lang, prefix='un')
+  newTranslationLines = translate.TextFile(root=root, lang=lang)
   newTranslationLines.read()
 
   newTranslated = mergeOriginal(english, translated, newTranslationLines)
-  english.write(newTranslated)
+  # print newTranslationLines.dict
+  translate.ProtoFile(root=root, lang=lang, prefix='new-').write(newTranslated)
 
-  newRemoved = mergeRemoved(english, translated, newTranslation)
+  newRemoved = mergeRemoved(english, translated, newTranslationLines)
   removed = translate.ProtoFile(root=root, lang=lang, prefix='removed-')
   removed.write(newRemoved)
 
 def mergeTranslations(root):
   for lang in translate.LANGUAGES:
     if lang != 'en':
-      mergeOne(root, lang):
+      mergeOne(root, lang)
 
 if __name__ == '__main__':
-  if len(sys.argv) is 3:
+  if len(sys.argv) < 3:
     mt = mergeTranslations(sys.argv[1:])
 
   else:

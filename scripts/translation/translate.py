@@ -17,9 +17,13 @@ PROTO_FILE = 'rec.TranslatedStrings'
 TEXT_FILE = 'translated.txt'
 
 def splitLine(s):
-  pos = s.find('.')
-  return int(s[0:pos]), s[pos + 1:]
-
+  pos = s.find(' ')
+  line = s[pos + 1:]
+  if pos < 1:
+    print '!!!', s
+  if s[pos - 1] is '.':
+    pos -= 1
+  return int(s[0:pos]), line
 
 def toStringDictionary(t):
   return OrderedDict(((s.original, s.hint), s) for s in t.str)
@@ -49,7 +53,7 @@ class TextFile(File):
     File.__init__(self, prefix + TEXT_FILE, **kwds)
 
   def read(self):
-    self.strings = open(self.filename, 'r').readLines()
+    self.strings = open(self.filename, 'r').readlines()
     self.dict = dict(splitLine(s) for s in self.strings)
 
   def write(self, lines):
