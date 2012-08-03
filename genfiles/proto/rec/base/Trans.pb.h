@@ -249,17 +249,25 @@ class TranslatedStrings : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::TranslatedString >*
       mutable_str();
   
+  // optional uint32 max_index = 2;
+  inline bool has_max_index() const;
+  inline void clear_max_index();
+  static const int kMaxIndexFieldNumber = 2;
+  inline ::google::protobuf::uint32 max_index() const;
+  inline void set_max_index(::google::protobuf::uint32 value);
+  
   // @@protoc_insertion_point(class_scope:rec.TranslatedStrings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::TranslatedString > str_;
+  ::google::protobuf::uint32 max_index_;
   friend void  protobuf_AddDesc_rec_2fbase_2fTrans_2eproto();
   friend void protobuf_AssignDesc_rec_2fbase_2fTrans_2eproto();
   friend void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -614,6 +622,22 @@ TranslatedStrings::str() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::TranslatedString >*
 TranslatedStrings::mutable_str() {
   return &str_;
+}
+
+// optional uint32 max_index = 2;
+inline bool TranslatedStrings::has_max_index() const {
+  return _has_bit(1);
+}
+inline void TranslatedStrings::clear_max_index() {
+  max_index_ = 0u;
+  _clear_bit(1);
+}
+inline ::google::protobuf::uint32 TranslatedStrings::max_index() const {
+  return max_index_;
+}
+inline void TranslatedStrings::set_max_index(::google::protobuf::uint32 value) {
+  _set_bit(1);
+  max_index_ = value;
 }
 
 // -------------------------------------------------------------------

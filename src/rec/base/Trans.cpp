@@ -12,7 +12,7 @@ namespace rec {
 namespace {
 
 const char* const TRANSLATION_FILE =
-  "/development/rec/text/rec.TranslatedStrings.en";
+  "/development/rec/text/en/incoming-rec.TranslatedStrings";
 
 string cleanFile(const String& file) {
   String f = file;

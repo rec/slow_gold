@@ -18,7 +18,7 @@ class NameToProto {
     const string& name = getName(*message);
     NameToProtoMap::iterator i = map_.find(name);
     if (i == map_.end())
-      map_.insert(i, make_pair(name, message));
+      DCEmap_.insert(i, make_pair(name, message));
     else if (i->second != message)
       LOG(DFATAL) << "re-registering " << name;
   }

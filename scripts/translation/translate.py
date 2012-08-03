@@ -8,16 +8,52 @@ sys.path.append('/development/rec/scripts/jucer')
 import proto
 
 from google.protobuf import text_format
-from Trans_pb2 import TranslatedStrings, TranslationUpdate
+from Trans_pb2 import TranslatedString, TranslatedStrings, TranslationUpdate
 from odict import OrderedDict
+
+DEFAULT_ROOT_DIRECTORY = '/development/rec/text'
+LANGUAGES = 'de', 'en', 'es', 'fr', 'id'
+PROTO_FILE = 'rec.TranslatedStrings'
+TEXT_FILE = 'translated.txt'
+
+class File(object):
+  def __init__(self, baseFile, lang='en', root=[]):
+    path = root[0] if root else DEFAULT_ROOT_DIRECTORY
+    self.file = '/'.join([path, lang, baseFile])
+    self.strings = None
+
+class ProtoFile(File):
+  def __init__(self, prefix='', **kwds):
+    File.__init__(self, prefix + PROTO_FILE, **kwds)
+    self.dict = None
+
+  def read(self):
+    self.strings = proto.read(TranslatedStrings, self.file)
+    self.dict = toStringDictionary(self.strings)
+
+  def write(self, value):
+    proto.write(value, open(self.file, 'w'))
+
+
+class TextFile(File):
+  def __init__(self, prefix='', **kwds):
+    File.__init__(self, prefix + TEXT_FILE, **kwds)
+
+  def read(self):
+    self.strings = open(self.file, 'r').readLines()
+
+  def write(self, value):
+    raise Exception('Can only write protos')
 
 
 def readStrings(file):
   return proto.read(TranslatedStrings, file)
 
-def readStringDictionary(file):
-  t = readStrings(file)
+def toStringDictionary(t):
   return OrderedDict(((s.original, s.hint), s) for s in t.str)
+
+def readStringDictionary(file):
+  return toStringDictionary(readStrings(file))
 
 def mergeTranslation(oldfile, newfile):
   old = readStringDictionary(oldfile)
@@ -35,24 +71,9 @@ def mergeTranslation(oldfile, newfile):
   return update
 
 def stringName(s):
-  msg = '%s: ' % s.original
+  msg = s.original
+  if s.index:
+    msg = '%d. %s' % msg
   if s.hint:
     msg = '%s [%s]' % (msg, s.hint)
   return proto.encode(msg)
-
-def readNewTranslations(oldfile, newfile):
-  update = mergeTranslation(oldfile, newfile)
-  print '*** LEAVING ***'
-  proto.write(update.leaving)
-
-  result = TranslatedStrings()
-  result.str.MergeFrom(update.unchanged.str)
-
-  for s in update.entering.str:
-    print stringName(s),
-    tr = proto.input()
-    if tr:
-      t = result.str.add()
-      t.CopyFrom(s)
-      t.translation = tr
-  return result

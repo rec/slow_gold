@@ -54,8 +54,9 @@ void protobuf_AssignDesc_rec_2fbase_2fTrans_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TranslatedString));
   TranslatedStrings_descriptor_ = file->message_type(1);
-  static const int TranslatedStrings_offsets_[1] = {
+  static const int TranslatedStrings_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslatedStrings, str_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslatedStrings, max_index_),
   };
   TranslatedStrings_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -126,12 +127,13 @@ void protobuf_AddDesc_rec_2fbase_2fTrans_2eproto() {
     "\n\024rec/base/Trans.proto\022\003rec\"r\n\020Translate"
     "dString\022\020\n\010original\030\001 \001(\t\022\023\n\013translation"
     "\030\002 \001(\t\022\014\n\004hint\030\003 \001(\t\022\014\n\004file\030\004 \001(\t\022\014\n\004li"
-    "ne\030\005 \001(\r\022\r\n\005index\030\006 \001(\r\"7\n\021TranslatedStr"
+    "ne\030\005 \001(\r\022\r\n\005index\030\006 \001(\r\"J\n\021TranslatedStr"
     "ings\022\"\n\003str\030\001 \003(\0132\025.rec.TranslatedString"
-    "\"\221\001\n\021TranslationUpdate\022)\n\tunchanged\030\001 \001("
-    "\0132\026.rec.TranslatedStrings\022\'\n\007leaving\030\002 \001"
-    "(\0132\026.rec.TranslatedStrings\022(\n\010entering\030\003"
-    " \001(\0132\026.rec.TranslatedStrings", 348);
+    "\022\021\n\tmax_index\030\002 \001(\r\"\221\001\n\021TranslationUpdat"
+    "e\022)\n\tunchanged\030\001 \001(\0132\026.rec.TranslatedStr"
+    "ings\022\'\n\007leaving\030\002 \001(\0132\026.rec.TranslatedSt"
+    "rings\022(\n\010entering\030\003 \001(\0132\026.rec.Translated"
+    "Strings", 367);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/base/Trans.proto", &protobuf_RegisterTypes);
   TranslatedString::default_instance_ = new TranslatedString();
@@ -634,6 +636,7 @@ void TranslatedString::Swap(TranslatedString* other) {
 
 #ifndef _MSC_VER
 const int TranslatedStrings::kStrFieldNumber;
+const int TranslatedStrings::kMaxIndexFieldNumber;
 #endif  // !_MSC_VER
 
 TranslatedStrings::TranslatedStrings()
@@ -652,6 +655,7 @@ TranslatedStrings::TranslatedStrings(const TranslatedStrings& from)
 
 void TranslatedStrings::SharedCtor() {
   _cached_size_ = 0;
+  max_index_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -685,6 +689,9 @@ TranslatedStrings* TranslatedStrings::New() const {
 }
 
 void TranslatedStrings::Clear() {
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    max_index_ = 0u;
+  }
   str_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -707,6 +714,22 @@ bool TranslatedStrings::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_str;
+        if (input->ExpectTag(16)) goto parse_max_index;
+        break;
+      }
+      
+      // optional uint32 max_index = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_max_index:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &max_index_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -735,6 +758,11 @@ void TranslatedStrings::SerializeWithCachedSizes(
       1, this->str(i), output);
   }
   
+  // optional uint32 max_index = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->max_index(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -750,6 +778,11 @@ void TranslatedStrings::SerializeWithCachedSizes(
         1, this->str(i), target);
   }
   
+  // optional uint32 max_index = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->max_index(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -760,6 +793,15 @@ void TranslatedStrings::SerializeWithCachedSizes(
 int TranslatedStrings::ByteSize() const {
   int total_size = 0;
   
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    // optional uint32 max_index = 2;
+    if (has_max_index()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->max_index());
+    }
+    
+  }
   // repeated .rec.TranslatedString str = 1;
   total_size += 1 * this->str_size();
   for (int i = 0; i < this->str_size(); i++) {
@@ -794,6 +836,11 @@ void TranslatedStrings::MergeFrom(const ::google::protobuf::Message& from) {
 void TranslatedStrings::MergeFrom(const TranslatedStrings& from) {
   GOOGLE_CHECK_NE(&from, this);
   str_.MergeFrom(from.str_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from._has_bit(1)) {
+      set_max_index(from.max_index());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -817,6 +864,7 @@ bool TranslatedStrings::IsInitialized() const {
 void TranslatedStrings::Swap(TranslatedStrings* other) {
   if (other != this) {
     str_.Swap(&other->str_);
+    std::swap(max_index_, other->max_index_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
