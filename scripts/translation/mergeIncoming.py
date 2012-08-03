@@ -35,7 +35,7 @@ def writeNew(old, new):
 
   old.write(result)
 
-def mergeIncoming(*root):
+def mergeIncoming(root):
   old = translate.ProtoFile(root=root)
   new = translate.ProtoFile(prefix='incoming-', root=root)
   old.read()
@@ -47,7 +47,7 @@ def mergeIncoming(*root):
 
 if __name__ == '__main__':
   if len(sys.argv) <= 2:
-    mergeIncoming(*sys.argv[1:])
+    mergeIncoming(sys.argv[1:])
   else:
     print USAGE
 

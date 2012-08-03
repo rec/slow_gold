@@ -12,7 +12,13 @@ def encode(x):
 
 def read(proto, file):
   t = proto()
-  text_format.Merge(decode(open(file, 'r').read()), t)
+  f = ''
+  try:
+    f = open(file, 'r').read()
+  except:
+    pass
+
+  text_format.Merge(decode(f), t)
   return t
 
 def write(p, out=sys.stdout):
