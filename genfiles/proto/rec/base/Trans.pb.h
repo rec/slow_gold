@@ -34,30 +34,7 @@ void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
 
 class TranslatedString;
 class TranslatedStrings;
-class Internationalization;
 
-enum Internationalization_Language {
-  Internationalization_Language_DE = 1,
-  Internationalization_Language_EN = 2,
-  Internationalization_Language_ES = 3,
-  Internationalization_Language_FR = 4,
-  Internationalization_Language_ID = 5
-};
-bool Internationalization_Language_IsValid(int value);
-const Internationalization_Language Internationalization_Language_Language_MIN = Internationalization_Language_DE;
-const Internationalization_Language Internationalization_Language_Language_MAX = Internationalization_Language_ID;
-const int Internationalization_Language_Language_ARRAYSIZE = Internationalization_Language_Language_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* Internationalization_Language_descriptor();
-inline const ::std::string& Internationalization_Language_Name(Internationalization_Language value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    Internationalization_Language_descriptor(), value);
-}
-inline bool Internationalization_Language_Parse(
-    const ::std::string& name, Internationalization_Language* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Internationalization_Language>(
-    Internationalization_Language_descriptor(), name, value);
-}
 // ===================================================================
 
 class TranslatedString : public ::google::protobuf::Message {
@@ -304,122 +281,6 @@ class TranslatedStrings : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static TranslatedStrings* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class Internationalization : public ::google::protobuf::Message {
- public:
-  Internationalization();
-  virtual ~Internationalization();
-  
-  Internationalization(const Internationalization& from);
-  
-  inline Internationalization& operator=(const Internationalization& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Internationalization& default_instance();
-  
-  void Swap(Internationalization* other);
-  
-  // implements Message ----------------------------------------------
-  
-  Internationalization* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Internationalization& from);
-  void MergeFrom(const Internationalization& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  typedef Internationalization_Language Language;
-  static const Language DE = Internationalization_Language_DE;
-  static const Language EN = Internationalization_Language_EN;
-  static const Language ES = Internationalization_Language_ES;
-  static const Language FR = Internationalization_Language_FR;
-  static const Language ID = Internationalization_Language_ID;
-  static inline bool Language_IsValid(int value) {
-    return Internationalization_Language_IsValid(value);
-  }
-  static const Language Language_MIN =
-    Internationalization_Language_Language_MIN;
-  static const Language Language_MAX =
-    Internationalization_Language_Language_MAX;
-  static const int Language_ARRAYSIZE =
-    Internationalization_Language_Language_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  Language_descriptor() {
-    return Internationalization_Language_descriptor();
-  }
-  static inline const ::std::string& Language_Name(Language value) {
-    return Internationalization_Language_Name(value);
-  }
-  static inline bool Language_Parse(const ::std::string& name,
-      Language* value) {
-    return Internationalization_Language_Parse(name, value);
-  }
-  
-  // accessors -------------------------------------------------------
-  
-  // optional .rec.Internationalization.Language lang = 1 [default = EN];
-  inline bool has_lang() const;
-  inline void clear_lang();
-  static const int kLangFieldNumber = 1;
-  inline ::rec::Internationalization_Language lang() const;
-  inline void set_lang(::rec::Internationalization_Language value);
-  
-  // @@protoc_insertion_point(class_scope:rec.Internationalization)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  int lang_;
-  friend void  protobuf_AddDesc_rec_2fbase_2fTrans_2eproto();
-  friend void protobuf_AssignDesc_rec_2fbase_2fTrans_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static Internationalization* default_instance_;
 };
 // ===================================================================
 
@@ -673,27 +534,6 @@ inline void TranslatedStrings::set_max_index(::google::protobuf::uint32 value) {
   max_index_ = value;
 }
 
-// -------------------------------------------------------------------
-
-// Internationalization
-
-// optional .rec.Internationalization.Language lang = 1 [default = EN];
-inline bool Internationalization::has_lang() const {
-  return _has_bit(0);
-}
-inline void Internationalization::clear_lang() {
-  lang_ = 2;
-  _clear_bit(0);
-}
-inline ::rec::Internationalization_Language Internationalization::lang() const {
-  return static_cast< ::rec::Internationalization_Language >(lang_);
-}
-inline void Internationalization::set_lang(::rec::Internationalization_Language value) {
-  GOOGLE_DCHECK(::rec::Internationalization_Language_IsValid(value));
-  _set_bit(0);
-  lang_ = value;
-}
-
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -703,10 +543,6 @@ inline void Internationalization::set_lang(::rec::Internationalization_Language 
 namespace google {
 namespace protobuf {
 
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::Internationalization_Language>() {
-  return ::rec::Internationalization_Language_descriptor();
-}
 
 }  // namespace google
 }  // namespace protobuf

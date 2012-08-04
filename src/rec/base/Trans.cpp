@@ -63,14 +63,17 @@ void Trans::dumpAll() {
 
 #endif  // DEBUG
 
-Trans::Trans(const char* original) : string_(new TranslatedString) {
+Trans::Trans(const char* original)
+    : string_(new TranslatedString),
+      language_(Internationalization::EN) {
   string_->set_original(original);
   check(string_->original());
   computeHash();
 }
 
 Trans::Trans(const char* original, const char* file, int line)
-    : string_(new TranslatedString) {
+    : string_(new TranslatedString),
+      language_(Internationalization::EN) {
   string_->set_original(original);
   string_->set_file(cleanFile(file));
   string_->set_line(line);
@@ -79,7 +82,8 @@ Trans::Trans(const char* original, const char* file, int line)
 }
 
 Trans::Trans(const String& original, const char* file, int line)
-    : string_(new TranslatedString) {
+    : string_(new TranslatedString),
+      language_(Internationalization::EN) {
   string_->set_original(str(original));
   string_->set_file(cleanFile(file));
   string_->set_line(line);
@@ -88,7 +92,8 @@ Trans::Trans(const String& original, const char* file, int line)
 }
 
 Trans::Trans(const char* original, const char* hint, const char* file, int line)
-    : string_(new TranslatedString) {
+    : string_(new TranslatedString),
+      language_(Internationalization::EN) {
   string_->set_original(original);
   string_->set_file(cleanFile(file));
   string_->set_line(line);

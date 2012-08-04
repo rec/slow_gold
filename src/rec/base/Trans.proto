@@ -13,14 +13,3 @@ message TranslatedStrings {
   repeated TranslatedString str = 1;
   optional uint32 max_index = 2;
 };
-
-message Internationalization {
-  enum Language {
-    DE = 1;
-    EN = 2;
-    ES = 3;
-    FR = 4;
-    ID = 5;
-  };
-  optional Language lang = 1 [default = EN];
-};

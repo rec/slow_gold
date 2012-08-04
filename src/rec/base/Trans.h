@@ -4,10 +4,13 @@
 #include <vector>
 
 #include "rec/base/base.h"
+#include "rec/base/Internationalization.pb.h"
 
 namespace rec {
 
 class TranslatedString;
+
+typedef Internationalization::Language Language;
 
 class Trans {
  public:
@@ -24,6 +27,9 @@ class Trans {
   ptr<TranslatedString> string_;
   string hash_;
   CriticalSection lock_;
+  bool translationRegistered_;
+
+  Language language_;
 
   void check(const string& s);
   void computeHash();

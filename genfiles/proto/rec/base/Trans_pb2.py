@@ -10,42 +10,9 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='rec/base/Trans.proto',
   package='rec',
-  serialized_pb='\n\x14rec/base/Trans.proto\x12\x03rec\"r\n\x10TranslatedString\x12\x10\n\x08original\x18\x01 \x01(\t\x12\x13\n\x0btranslation\x18\x02 \x01(\t\x12\x0c\n\x04hint\x18\x03 \x01(\t\x12\x0c\n\x04\x66ile\x18\x04 \x01(\t\x12\x0c\n\x04line\x18\x05 \x01(\r\x12\r\n\x05index\x18\x06 \x01(\r\"J\n\x11TranslatedStrings\x12\"\n\x03str\x18\x01 \x03(\x0b\x32\x15.rec.TranslatedString\x12\x11\n\tmax_index\x18\x02 \x01(\r\"\x80\x01\n\x14Internationalization\x12\x34\n\x04lang\x18\x01 \x01(\x0e\x32\".rec.Internationalization.Language:\x02\x45N\"2\n\x08Language\x12\x06\n\x02\x44\x45\x10\x01\x12\x06\n\x02\x45N\x10\x02\x12\x06\n\x02\x45S\x10\x03\x12\x06\n\x02\x46R\x10\x04\x12\x06\n\x02ID\x10\x05')
+  serialized_pb='\n\x14rec/base/Trans.proto\x12\x03rec\"r\n\x10TranslatedString\x12\x10\n\x08original\x18\x01 \x01(\t\x12\x13\n\x0btranslation\x18\x02 \x01(\t\x12\x0c\n\x04hint\x18\x03 \x01(\t\x12\x0c\n\x04\x66ile\x18\x04 \x01(\t\x12\x0c\n\x04line\x18\x05 \x01(\r\x12\r\n\x05index\x18\x06 \x01(\r\"J\n\x11TranslatedStrings\x12\"\n\x03str\x18\x01 \x03(\x0b\x32\x15.rec.TranslatedString\x12\x11\n\tmax_index\x18\x02 \x01(\r')
 
 
-
-_INTERNATIONALIZATION_LANGUAGE = descriptor.EnumDescriptor(
-  name='Language',
-  full_name='rec.Internationalization.Language',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    descriptor.EnumValueDescriptor(
-      name='DE', index=0, number=1,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='EN', index=1, number=2,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='ES', index=2, number=3,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='FR', index=3, number=4,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='ID', index=4, number=5,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=300,
-  serialized_end=350,
-)
 
 
 _TRANSLATEDSTRING = descriptor.Descriptor(
@@ -146,38 +113,7 @@ _TRANSLATEDSTRINGS = descriptor.Descriptor(
 )
 
 
-_INTERNATIONALIZATION = descriptor.Descriptor(
-  name='Internationalization',
-  full_name='rec.Internationalization',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='lang', full_name='rec.Internationalization.lang', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=True, default_value=2,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _INTERNATIONALIZATION_LANGUAGE,
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=222,
-  serialized_end=350,
-)
-
-
 _TRANSLATEDSTRINGS.fields_by_name['str'].message_type = _TRANSLATEDSTRING
-_INTERNATIONALIZATION.fields_by_name['lang'].enum_type = _INTERNATIONALIZATION_LANGUAGE
-_INTERNATIONALIZATION_LANGUAGE.containing_type = _INTERNATIONALIZATION;
 
 class TranslatedString(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
@@ -190,11 +126,5 @@ class TranslatedStrings(message.Message):
   DESCRIPTOR = _TRANSLATEDSTRINGS
   
   # @@protoc_insertion_point(class_scope:rec.TranslatedStrings)
-
-class Internationalization(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _INTERNATIONALIZATION
-  
-  # @@protoc_insertion_point(class_scope:rec.Internationalization)
 
 # @@protoc_insertion_point(module_scope)
