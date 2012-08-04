@@ -36,7 +36,7 @@ void SetupPage::show(Component* comp) {
 }
 
 void SetupPage::registerAllTranslations() {
-  SET_AUDIO_PREFERENCES.translate();
+  SET_AUDIO_PREFERENCES.registerTranslation();
 }
 
 }  // namespace audio

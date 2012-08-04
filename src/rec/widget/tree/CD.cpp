@@ -63,8 +63,8 @@ void CD::computeChildren() {
 }
 
 void CD::registerAllTranslations() {
-  UNKNOWN_CD.translate();
-  UNKNOWN_CD_FULL.translate();
+  UNKNOWN_CD.registerTranslation();
+  UNKNOWN_CD_FULL.registerTranslation();
 }
 
 }  // namespace tree

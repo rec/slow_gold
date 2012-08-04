@@ -268,7 +268,7 @@ void Waveform::setSelected(int index, bool selected) {
 }
 
 void Waveform::registerAllTranslations() {
-  LOOP_POINT_TOOLTIP.translate();
+  LOOP_POINT_TOOLTIP.registerTranslation();
 }
 
 // TODO: get rid of dependency on Slow!

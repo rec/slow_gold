@@ -61,10 +61,10 @@ void CommandMapTopLevelItem::buttonClicked (Button*)
 }
 
 void CommandMapTopLevelItem::registerAllTranslations() {
-  RESET_TO_DEFAULTS.translate();
-  SURE_YOU_RESET.translate();
-  RESET.translate();
-  NONE.translate();
+  RESET_TO_DEFAULTS.registerTranslation();
+  SURE_YOU_RESET.registerTranslation();
+  RESET.registerTranslation();
+  NONE.registerTranslation();
 }
 
 }  // namespace command

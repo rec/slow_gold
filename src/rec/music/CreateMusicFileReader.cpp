@@ -148,22 +148,22 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
 }
 
 void MusicFileReader::registerAllTranslations() {
-  CANT_CREATE_TRACK.translate();
-  COULDNT_OPEN_TRACK.translate();
-  COULDNT_OPEN_TRACK_FULL.translate();
-  ERROR_WAS.translate();
-  FILE_NOT_EXIST.translate();
-  FILE_NOT_EXIST_FULL.translate();
-  THE_FULL_PATH.translate();
-  CANT_READ_M4A.translate();
-  CANT_READ_M4A_FULL.translate();
-  COULDNT_OPEN_FILE.translate();
-  COULDNT_OPEN_FILE_FULL.translate();
-  WRONG_FORMAT.translate();
-  EMPTY_FILE.translate();
-  EMPTY_FILE_FULL.translate();
-  FILE_TOO_SMALL.translate();
-  FILE_TOO_SMALL_FULL.translate();
+  CANT_CREATE_TRACK.registerTranslation();
+  COULDNT_OPEN_TRACK.registerTranslation();
+  COULDNT_OPEN_TRACK_FULL.registerTranslation();
+  ERROR_WAS.registerTranslation();
+  FILE_NOT_EXIST.registerTranslation();
+  FILE_NOT_EXIST_FULL.registerTranslation();
+  THE_FULL_PATH.registerTranslation();
+  CANT_READ_M4A.registerTranslation();
+  CANT_READ_M4A_FULL.registerTranslation();
+  COULDNT_OPEN_FILE.registerTranslation();
+  COULDNT_OPEN_FILE_FULL.registerTranslation();
+  WRONG_FORMAT.registerTranslation();
+  EMPTY_FILE.registerTranslation();
+  EMPTY_FILE_FULL.registerTranslation();
+  FILE_TOO_SMALL.registerTranslation();
+  FILE_TOO_SMALL_FULL.registerTranslation();
 }
 
 }  // namespace music

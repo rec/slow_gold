@@ -42,10 +42,10 @@ String midiName(const MidiMessage& m) {
 }
 
 void MidiName::registerAllTranslations() {
-  AS.translate();
-  SYSEX.translate();
-  NOTE_OFF.translate();
-  PC.translate();
+  AS.registerTranslation();
+  SYSEX.registerTranslation();
+  NOTE_OFF.registerTranslation();
+  PC.registerTranslation();
 }
 
 }  // namespace command

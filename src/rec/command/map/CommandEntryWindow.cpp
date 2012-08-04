@@ -28,9 +28,9 @@ CommandEntryWindow::CommandEntryWindow(const String& caption)
 }
 
 void CommandEntryWindow::registerAllTranslations() {
-  NEW_COMMAND_MAPPING.translate();
-  OK.translate();
-  CANCEL.translate();
+  NEW_COMMAND_MAPPING.registerTranslation();
+  OK.registerTranslation();
+  CANCEL.registerTranslation();
 }
 
 }  // namespace command

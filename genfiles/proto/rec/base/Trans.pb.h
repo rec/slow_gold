@@ -34,8 +34,30 @@ void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
 
 class TranslatedString;
 class TranslatedStrings;
-class Language;
+class Internationalization;
 
+enum Internationalization_Language {
+  Internationalization_Language_DE = 1,
+  Internationalization_Language_EN = 2,
+  Internationalization_Language_ES = 3,
+  Internationalization_Language_FR = 4,
+  Internationalization_Language_ID = 5
+};
+bool Internationalization_Language_IsValid(int value);
+const Internationalization_Language Internationalization_Language_Language_MIN = Internationalization_Language_DE;
+const Internationalization_Language Internationalization_Language_Language_MAX = Internationalization_Language_ID;
+const int Internationalization_Language_Language_ARRAYSIZE = Internationalization_Language_Language_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Internationalization_Language_descriptor();
+inline const ::std::string& Internationalization_Language_Name(Internationalization_Language value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Internationalization_Language_descriptor(), value);
+}
+inline bool Internationalization_Language_Parse(
+    const ::std::string& name, Internationalization_Language* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Internationalization_Language>(
+    Internationalization_Language_descriptor(), name, value);
+}
 // ===================================================================
 
 class TranslatedString : public ::google::protobuf::Message {
@@ -285,14 +307,14 @@ class TranslatedStrings : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Language : public ::google::protobuf::Message {
+class Internationalization : public ::google::protobuf::Message {
  public:
-  Language();
-  virtual ~Language();
+  Internationalization();
+  virtual ~Internationalization();
   
-  Language(const Language& from);
+  Internationalization(const Internationalization& from);
   
-  inline Language& operator=(const Language& from) {
+  inline Internationalization& operator=(const Internationalization& from) {
     CopyFrom(from);
     return *this;
   }
@@ -306,17 +328,17 @@ class Language : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Language& default_instance();
+  static const Internationalization& default_instance();
   
-  void Swap(Language* other);
+  void Swap(Internationalization* other);
   
   // implements Message ----------------------------------------------
   
-  Language* New() const;
+  Internationalization* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Language& from);
-  void MergeFrom(const Language& from);
+  void CopyFrom(const Internationalization& from);
+  void MergeFrom(const Internationalization& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -337,25 +359,48 @@ class Language : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
+  typedef Internationalization_Language Language;
+  static const Language DE = Internationalization_Language_DE;
+  static const Language EN = Internationalization_Language_EN;
+  static const Language ES = Internationalization_Language_ES;
+  static const Language FR = Internationalization_Language_FR;
+  static const Language ID = Internationalization_Language_ID;
+  static inline bool Language_IsValid(int value) {
+    return Internationalization_Language_IsValid(value);
+  }
+  static const Language Language_MIN =
+    Internationalization_Language_Language_MIN;
+  static const Language Language_MAX =
+    Internationalization_Language_Language_MAX;
+  static const int Language_ARRAYSIZE =
+    Internationalization_Language_Language_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Language_descriptor() {
+    return Internationalization_Language_descriptor();
+  }
+  static inline const ::std::string& Language_Name(Language value) {
+    return Internationalization_Language_Name(value);
+  }
+  static inline bool Language_Parse(const ::std::string& name,
+      Language* value) {
+    return Internationalization_Language_Parse(name, value);
+  }
+  
   // accessors -------------------------------------------------------
   
-  // optional string lang = 1 [default = "en"];
+  // optional .rec.Internationalization.Language lang = 1 [default = EN];
   inline bool has_lang() const;
   inline void clear_lang();
   static const int kLangFieldNumber = 1;
-  inline const ::std::string& lang() const;
-  inline void set_lang(const ::std::string& value);
-  inline void set_lang(const char* value);
-  inline void set_lang(const char* value, size_t size);
-  inline ::std::string* mutable_lang();
+  inline ::rec::Internationalization_Language lang() const;
+  inline void set_lang(::rec::Internationalization_Language value);
   
-  // @@protoc_insertion_point(class_scope:rec.Language)
+  // @@protoc_insertion_point(class_scope:rec.Internationalization)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::std::string* lang_;
-  static const ::std::string _default_lang_;
+  int lang_;
   friend void  protobuf_AddDesc_rec_2fbase_2fTrans_2eproto();
   friend void protobuf_AssignDesc_rec_2fbase_2fTrans_2eproto();
   friend void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
@@ -374,7 +419,7 @@ class Language : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static Language* default_instance_;
+  static Internationalization* default_instance_;
 };
 // ===================================================================
 
@@ -630,48 +675,23 @@ inline void TranslatedStrings::set_max_index(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
-// Language
+// Internationalization
 
-// optional string lang = 1 [default = "en"];
-inline bool Language::has_lang() const {
+// optional .rec.Internationalization.Language lang = 1 [default = EN];
+inline bool Internationalization::has_lang() const {
   return _has_bit(0);
 }
-inline void Language::clear_lang() {
-  if (lang_ != &_default_lang_) {
-    lang_->assign(_default_lang_);
-  }
+inline void Internationalization::clear_lang() {
+  lang_ = 2;
   _clear_bit(0);
 }
-inline const ::std::string& Language::lang() const {
-  return *lang_;
+inline ::rec::Internationalization_Language Internationalization::lang() const {
+  return static_cast< ::rec::Internationalization_Language >(lang_);
 }
-inline void Language::set_lang(const ::std::string& value) {
+inline void Internationalization::set_lang(::rec::Internationalization_Language value) {
+  GOOGLE_DCHECK(::rec::Internationalization_Language_IsValid(value));
   _set_bit(0);
-  if (lang_ == &_default_lang_) {
-    lang_ = new ::std::string;
-  }
-  lang_->assign(value);
-}
-inline void Language::set_lang(const char* value) {
-  _set_bit(0);
-  if (lang_ == &_default_lang_) {
-    lang_ = new ::std::string;
-  }
-  lang_->assign(value);
-}
-inline void Language::set_lang(const char* value, size_t size) {
-  _set_bit(0);
-  if (lang_ == &_default_lang_) {
-    lang_ = new ::std::string;
-  }
-  lang_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Language::mutable_lang() {
-  _set_bit(0);
-  if (lang_ == &_default_lang_) {
-    lang_ = new ::std::string(_default_lang_);
-  }
-  return lang_;
+  lang_ = value;
 }
 
 
@@ -683,6 +703,10 @@ inline ::std::string* Language::mutable_lang() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::Internationalization_Language>() {
+  return ::rec::Internationalization_Language_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

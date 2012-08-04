@@ -120,12 +120,12 @@ DownloadStatus downloadNewVersionIfNeeded(const String& version,
 }
 
 void DownloadVersion::registerAllTranslations() {
-  NEW_VERSION.translate();
-  LIKE_TO_DOWNLOAD.translate();
-  DOWNLOAD_AND_QUIT.translate();
-  RUN_THIS_OLDER_VERSION.translate();
-  COULDNT_UPDATE.translate();
-  CLICK_TO_CONTINUE.translate();
+  NEW_VERSION.registerTranslation();
+  LIKE_TO_DOWNLOAD.registerTranslation();
+  DOWNLOAD_AND_QUIT.registerTranslation();
+  RUN_THIS_OLDER_VERSION.registerTranslation();
+  COULDNT_UPDATE.registerTranslation();
+  CLICK_TO_CONTINUE.registerTranslation();
 }
 
 }  // namespace app

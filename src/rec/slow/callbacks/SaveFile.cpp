@@ -309,19 +309,19 @@ void saveFileSelection(Instance* instance) {
 }
 
 void SaveFile::registerAllTranslations() {
-  FILE_SAVE_FAILED.translate();
-  FILE_SAVE_FAILED_FULL.translate();
-  FINISHING_LOADING.translate();
-  SAVING_FILE.translate();
-  SELECT_SAVE_FILE.translate();
-  OK.translate();
-  DOWN.translate();
-  UP.translate();
-  TRANSPOSE_ONE.translate();
-  TRANSPOSE_MANY.translate();
-  CANCEL.translate();
-  BAD_SUFFIX.translate();
-  CANT_OVERWRITE_SELF.translate();
+  FILE_SAVE_FAILED.registerTranslation();
+  FILE_SAVE_FAILED_FULL.registerTranslation();
+  FINISHING_LOADING.registerTranslation();
+  SAVING_FILE.registerTranslation();
+  SELECT_SAVE_FILE.registerTranslation();
+  OK.registerTranslation();
+  DOWN.registerTranslation();
+  UP.registerTranslation();
+  TRANSPOSE_ONE.registerTranslation();
+  TRANSPOSE_MANY.registerTranslation();
+  CANCEL.registerTranslation();
+  BAD_SUFFIX.registerTranslation();
+  CANT_OVERWRITE_SELF.registerTranslation();
 }
 
 }  // namespace slow

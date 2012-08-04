@@ -86,7 +86,7 @@ bool CommandMapEditor::isCommandReadOnly (const CommandID commandID)
 }
 
 void CommandMapEditor::registerAllTranslations() {
-  RESET_TO_DEFAULTS.translate();
+  RESET_TO_DEFAULTS.registerTranslation();
 }
 
 }  // namespace command

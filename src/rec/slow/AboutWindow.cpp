@@ -129,16 +129,16 @@ void AboutWindow::mouseDown(const MouseEvent&) {
 }
 
 void AboutWindow::registerAllTranslations() {
-  CD_AUTOMATIC.translate();
-  COPYRIGHT.translate();
-  CREATE_LOOPS.translate();
-  DISPLAY_ON_STARTUP.translate();
-  DOWNLOAD_MANUAL.translate();
-  DRAG_AUDIO.translate();
-  DRAG_SPEED.translate();
-  PRESS_SPACE.translate();
-  REGISTERED_TO.translate();
-  UNREGISTERED.translate();
+  CD_AUTOMATIC.registerTranslation();
+  COPYRIGHT.registerTranslation();
+  CREATE_LOOPS.registerTranslation();
+  DISPLAY_ON_STARTUP.registerTranslation();
+  DOWNLOAD_MANUAL.registerTranslation();
+  DRAG_AUDIO.registerTranslation();
+  DRAG_SPEED.registerTranslation();
+  PRESS_SPACE.registerTranslation();
+  REGISTERED_TO.registerTranslation();
+  UNREGISTERED.registerTranslation();
 }
 
 }  // namespace slow

@@ -166,8 +166,8 @@ void CurrentFile::setViewport() {
 }
 
 void CurrentFile::registerAllTranslations() {
-  RAN_OUT_OF_MEMORY.translate();
-  RAN_OUT_OF_MEMORY_FULL.translate();
+  RAN_OUT_OF_MEMORY.registerTranslation();
+  RAN_OUT_OF_MEMORY_FULL.registerTranslation();
 }
 
 const VirtualFile CurrentFile::file() const {

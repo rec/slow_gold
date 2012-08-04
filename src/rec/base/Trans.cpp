@@ -38,7 +38,7 @@ TranslationSet* translations() {
   return &s;
 }
 
-void addTranslation(const TranslatedString& s) {
+void registerTranslation(const TranslatedString& s) {
   translations()->insert(s);
 }
 
@@ -122,16 +122,16 @@ void Trans::check(const string& st) {
 
 Trans::operator String() const {
   if (!string_->has_translation())
-    translate();
+   registerTranslation();
   return str(string_->translation());
 }
 
-void Trans::translate() const {
+void Trans::registerTranslation() const {
   String s(str(string_->original()));
   string_->set_translation(str(juce::translate(s)));
 
 #if JUCE_DEBUG && JUCE_MAC
-  addTranslation(*string_);
+  rec::registerTranslation(*string_);
 #endif
 }
 

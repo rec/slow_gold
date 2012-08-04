@@ -112,8 +112,8 @@ String getCDKey(AudioCDReader* reader) {
 }
 
 void CDReader::registerAllTranslations() {
-  NO_AVAILBLE.translate();
-  TRIED_TO_READ.translate();
+  NO_AVAILBLE.registerTranslation();
+  TRIED_TO_READ.registerTranslation();
 }
 
 }  // namespace cd

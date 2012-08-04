@@ -343,20 +343,20 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
 }
 
 void InstanceCallbacks::registerAllTranslations() {
-  NO_DOWNLOAD_FOUND.translate();
-  NO_DOWNLOAD_FOUND_FULL.translate();
-  OK.translate();
-  CLEAR_KEYBOARD_MAPPINGS_TITLE.translate();
-  CLEAR_KEYBOARD_MAPPINGS_FULL.translate();
-  CLEAR_MIDI_MAPPINGS_TITLE.translate();
-  CLEAR_MIDI_MAPPINGS_FULL.translate();
-  CONFIRM_CLEAR_ALL_SETTINGS.translate();
-  CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK.translate();
-  CONFIRM_CLEAR_ALL_SETTINGS_FULL.translate();
-  CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL.translate();
-  CLEAR_FAILED.translate();
-  CLEAR_FAILED_FULL.translate();
-  CANCEL.translate();
+  NO_DOWNLOAD_FOUND.registerTranslation();
+  NO_DOWNLOAD_FOUND_FULL.registerTranslation();
+  OK.registerTranslation();
+  CLEAR_KEYBOARD_MAPPINGS_TITLE.registerTranslation();
+  CLEAR_KEYBOARD_MAPPINGS_FULL.registerTranslation();
+  CLEAR_MIDI_MAPPINGS_TITLE.registerTranslation();
+  CLEAR_MIDI_MAPPINGS_FULL.registerTranslation();
+  CONFIRM_CLEAR_ALL_SETTINGS.registerTranslation();
+  CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK.registerTranslation();
+  CONFIRM_CLEAR_ALL_SETTINGS_FULL.registerTranslation();
+  CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL.registerTranslation();
+  CLEAR_FAILED.registerTranslation();
+  CLEAR_FAILED_FULL.registerTranslation();
+  CANCEL.registerTranslation();
 }
 
 }  // namespace slow

@@ -29,12 +29,12 @@ String currentlyAssignedTo(const String& commandName) {
 }
 
 void CommandMapEditorTranslation::registerAllTranslations() {
-  CHANGE_KEY_MAPPING.translate();
-  THIS_KEY_ASSIGNED.translate();
-  WANT_TO_REASSIGN.translate();
-  REASSIGN.translate();
-  CANCEL.translate();
-  CURRENTLY_ASSIGNED.translate();
+  CHANGE_KEY_MAPPING.registerTranslation();
+  THIS_KEY_ASSIGNED.registerTranslation();
+  WANT_TO_REASSIGN.registerTranslation();
+  REASSIGN.registerTranslation();
+  CANCEL.registerTranslation();
+  CURRENTLY_ASSIGNED.registerTranslation();
 }
 
 }  // namespace command

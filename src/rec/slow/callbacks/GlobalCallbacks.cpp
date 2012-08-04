@@ -182,26 +182,26 @@ void addGlobalCallbacks(CommandRecordTable* t) {
 }
 
 void GlobalCallbacks::registerAllTranslations() {
-  CANCEL.translate();
-  CANT_LOAD.translate();
-  CANT_LOAD_FULL.translate();
-  CANT_SUPPORT.translate();
-  CANT_SUPPORT_FULL.translate();
-  CLICK_TO_CONTINUE.translate();
-  MAIL_ATTACH.translate();
-  MAIL_CREATED.translate();
-  MAIL_DISCARD.translate();
-  MAIL_SUBJECT.translate();
-  OK.translate();
-  PLEASE_CONTACT.translate();
-  PLEASE_MAIL.translate();
-  SELECT_EXPORT_FILE.translate();
-  SELECT_EXPORT_KEYBOARD_FILE.translate();
-  SELECT_EXPORT_MIDI_FILE.translate();
-  SELECT_IMPORT_FILE.translate();
-  SELECT_IMPORT_KEYBOARD_FILE.translate();
-  SELECT_IMPORT_MIDI_FILE.translate();
-  SUPPORTED.translate();
+  CANCEL.registerTranslation();
+  CANT_LOAD.registerTranslation();
+  CANT_LOAD_FULL.registerTranslation();
+  CANT_SUPPORT.registerTranslation();
+  CANT_SUPPORT_FULL.registerTranslation();
+  CLICK_TO_CONTINUE.registerTranslation();
+  MAIL_ATTACH.registerTranslation();
+  MAIL_CREATED.registerTranslation();
+  MAIL_DISCARD.registerTranslation();
+  MAIL_SUBJECT.registerTranslation();
+  OK.registerTranslation();
+  PLEASE_CONTACT.registerTranslation();
+  PLEASE_MAIL.registerTranslation();
+  SELECT_EXPORT_FILE.registerTranslation();
+  SELECT_EXPORT_KEYBOARD_FILE.registerTranslation();
+  SELECT_EXPORT_MIDI_FILE.registerTranslation();
+  SELECT_IMPORT_FILE.registerTranslation();
+  SELECT_IMPORT_KEYBOARD_FILE.registerTranslation();
+  SELECT_IMPORT_MIDI_FILE.registerTranslation();
+  SUPPORTED.registerTranslation();
 }
 
 void requestSupport() {

@@ -12,7 +12,7 @@ class TranslatedString;
 class Trans {
  public:
   operator String() const;
-  void translate() const;
+  void registerTranslation() const;
 
   explicit Trans(const char*);  // DEPRECATED
   Trans(const char*, const char* file, int line);
@@ -23,6 +23,7 @@ class Trans {
  private:
   ptr<TranslatedString> string_;
   string hash_;
+  CriticalSection lock_;
 
   void check(const string& s);
   void computeHash();

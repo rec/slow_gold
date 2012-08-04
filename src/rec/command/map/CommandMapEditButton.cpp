@@ -81,10 +81,10 @@ void CommandMapEditButton::fitToContent (const int h) noexcept
 }
 
 void CommandMapEditButton::registerAllTranslations() {
-  ADD_NEW_KEY_MAPPING.translate();
-  CHANGE_KEY_MAPPING.translate();
-  CHANGE_COMMAND_MAPPING.translate();
-  REMOVE_COMMAND_MAPPING.translate();
+  ADD_NEW_KEY_MAPPING.registerTranslation();
+  CHANGE_KEY_MAPPING.registerTranslation();
+  CHANGE_COMMAND_MAPPING.registerTranslation();
+  REMOVE_COMMAND_MAPPING.registerTranslation();
 }
 
 }  // namespace command

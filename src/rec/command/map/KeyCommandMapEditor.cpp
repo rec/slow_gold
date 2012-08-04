@@ -99,8 +99,8 @@ void KeyCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton*
 }
 
 void KeyCommandMapEditorTranslator::registerAllTranslations() {
-  PRESS_A_KEY.translate();
-  KEY.translate();
+  PRESS_A_KEY.registerTranslation();
+  KEY.registerTranslation();
 }
 
 }  // namespace command

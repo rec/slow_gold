@@ -131,8 +131,8 @@ void MidiCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton
 }
 
 void MidiCommandMapEditorTranslator::registerAllTranslations() {
-  WAITING.translate();
-  MIDI.translate();
+  WAITING.registerTranslation();
+  MIDI.registerTranslation();
 }
 
 }  // namespace command
