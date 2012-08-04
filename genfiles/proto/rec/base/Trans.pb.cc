@@ -20,9 +20,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* TranslatedStrings_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   TranslatedStrings_reflection_ = NULL;
-const ::google::protobuf::Descriptor* TranslationUpdate_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Language_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  TranslationUpdate_reflection_ = NULL;
+  Language_reflection_ = NULL;
 
 }  // namespace
 
@@ -69,23 +69,21 @@ void protobuf_AssignDesc_rec_2fbase_2fTrans_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TranslatedStrings));
-  TranslationUpdate_descriptor_ = file->message_type(2);
-  static const int TranslationUpdate_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, unchanged_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, leaving_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, entering_),
+  Language_descriptor_ = file->message_type(2);
+  static const int Language_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Language, lang_),
   };
-  TranslationUpdate_reflection_ =
+  Language_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      TranslationUpdate_descriptor_,
-      TranslationUpdate::default_instance_,
-      TranslationUpdate_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TranslationUpdate, _unknown_fields_),
+      Language_descriptor_,
+      Language::default_instance_,
+      Language_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Language, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Language, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(TranslationUpdate));
+      sizeof(Language));
 }
 
 namespace {
@@ -103,7 +101,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     TranslatedStrings_descriptor_, &TranslatedStrings::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    TranslationUpdate_descriptor_, &TranslationUpdate::default_instance());
+    Language_descriptor_, &Language::default_instance());
 }
 
 }  // namespace
@@ -113,8 +111,8 @@ void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto() {
   delete TranslatedString_reflection_;
   delete TranslatedStrings::default_instance_;
   delete TranslatedStrings_reflection_;
-  delete TranslationUpdate::default_instance_;
-  delete TranslationUpdate_reflection_;
+  delete Language::default_instance_;
+  delete Language_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fbase_2fTrans_2eproto() {
@@ -129,19 +127,16 @@ void protobuf_AddDesc_rec_2fbase_2fTrans_2eproto() {
     "\030\002 \001(\t\022\014\n\004hint\030\003 \001(\t\022\014\n\004file\030\004 \001(\t\022\014\n\004li"
     "ne\030\005 \001(\r\022\r\n\005index\030\006 \001(\r\"J\n\021TranslatedStr"
     "ings\022\"\n\003str\030\001 \003(\0132\025.rec.TranslatedString"
-    "\022\021\n\tmax_index\030\002 \001(\r\"\221\001\n\021TranslationUpdat"
-    "e\022)\n\tunchanged\030\001 \001(\0132\026.rec.TranslatedStr"
-    "ings\022\'\n\007leaving\030\002 \001(\0132\026.rec.TranslatedSt"
-    "rings\022(\n\010entering\030\003 \001(\0132\026.rec.Translated"
-    "Strings", 367);
+    "\022\021\n\tmax_index\030\002 \001(\r\"\034\n\010Language\022\020\n\004lang\030"
+    "\001 \001(\t:\002en", 249);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/base/Trans.proto", &protobuf_RegisterTypes);
   TranslatedString::default_instance_ = new TranslatedString();
   TranslatedStrings::default_instance_ = new TranslatedStrings();
-  TranslationUpdate::default_instance_ = new TranslationUpdate();
+  Language::default_instance_ = new Language();
   TranslatedString::default_instance_->InitAsDefaultInstance();
   TranslatedStrings::default_instance_->InitAsDefaultInstance();
-  TranslationUpdate::default_instance_->InitAsDefaultInstance();
+  Language::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto);
 }
 
@@ -882,125 +877,90 @@ void TranslatedStrings::Swap(TranslatedStrings* other) {
 
 // ===================================================================
 
+const ::std::string Language::_default_lang_("en");
 #ifndef _MSC_VER
-const int TranslationUpdate::kUnchangedFieldNumber;
-const int TranslationUpdate::kLeavingFieldNumber;
-const int TranslationUpdate::kEnteringFieldNumber;
+const int Language::kLangFieldNumber;
 #endif  // !_MSC_VER
 
-TranslationUpdate::TranslationUpdate()
+Language::Language()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void TranslationUpdate::InitAsDefaultInstance() {
-  unchanged_ = const_cast< ::rec::TranslatedStrings*>(&::rec::TranslatedStrings::default_instance());
-  leaving_ = const_cast< ::rec::TranslatedStrings*>(&::rec::TranslatedStrings::default_instance());
-  entering_ = const_cast< ::rec::TranslatedStrings*>(&::rec::TranslatedStrings::default_instance());
+void Language::InitAsDefaultInstance() {
 }
 
-TranslationUpdate::TranslationUpdate(const TranslationUpdate& from)
+Language::Language(const Language& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void TranslationUpdate::SharedCtor() {
+void Language::SharedCtor() {
   _cached_size_ = 0;
-  unchanged_ = NULL;
-  leaving_ = NULL;
-  entering_ = NULL;
+  lang_ = const_cast< ::std::string*>(&_default_lang_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-TranslationUpdate::~TranslationUpdate() {
+Language::~Language() {
   SharedDtor();
 }
 
-void TranslationUpdate::SharedDtor() {
+void Language::SharedDtor() {
+  if (lang_ != &_default_lang_) {
+    delete lang_;
+  }
   if (this != default_instance_) {
-    delete unchanged_;
-    delete leaving_;
-    delete entering_;
   }
 }
 
-void TranslationUpdate::SetCachedSize(int size) const {
+void Language::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* TranslationUpdate::descriptor() {
+const ::google::protobuf::Descriptor* Language::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return TranslationUpdate_descriptor_;
+  return Language_descriptor_;
 }
 
-const TranslationUpdate& TranslationUpdate::default_instance() {
+const Language& Language::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fbase_2fTrans_2eproto();  return *default_instance_;
 }
 
-TranslationUpdate* TranslationUpdate::default_instance_ = NULL;
+Language* Language::default_instance_ = NULL;
 
-TranslationUpdate* TranslationUpdate::New() const {
-  return new TranslationUpdate;
+Language* Language::New() const {
+  return new Language;
 }
 
-void TranslationUpdate::Clear() {
+void Language::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (unchanged_ != NULL) unchanged_->::rec::TranslatedStrings::Clear();
-    }
-    if (_has_bit(1)) {
-      if (leaving_ != NULL) leaving_->::rec::TranslatedStrings::Clear();
-    }
-    if (_has_bit(2)) {
-      if (entering_ != NULL) entering_->::rec::TranslatedStrings::Clear();
+      if (lang_ != &_default_lang_) {
+        lang_->assign(_default_lang_);
+      }
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool TranslationUpdate::MergePartialFromCodedStream(
+bool Language::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.TranslatedStrings unchanged = 1;
+      // optional string lang = 1 [default = "en"];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_unchanged()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_leaving;
-        break;
-      }
-      
-      // optional .rec.TranslatedStrings leaving = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_leaving:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_leaving()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_entering;
-        break;
-      }
-      
-      // optional .rec.TranslatedStrings entering = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_entering:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_entering()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_lang()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->lang().data(), this->lang().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -1024,24 +984,15 @@ bool TranslationUpdate::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void TranslationUpdate::SerializeWithCachedSizes(
+void Language::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.TranslatedStrings unchanged = 1;
+  // optional string lang = 1 [default = "en"];
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->unchanged(), output);
-  }
-  
-  // optional .rec.TranslatedStrings leaving = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->leaving(), output);
-  }
-  
-  // optional .rec.TranslatedStrings entering = 3;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->entering(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->lang().data(), this->lang().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->lang(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1050,27 +1001,16 @@ void TranslationUpdate::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* TranslationUpdate::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Language::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.TranslatedStrings unchanged = 1;
+  // optional string lang = 1 [default = "en"];
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->unchanged(), target);
-  }
-  
-  // optional .rec.TranslatedStrings leaving = 2;
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->leaving(), target);
-  }
-  
-  // optional .rec.TranslatedStrings entering = 3;
-  if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->entering(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->lang().data(), this->lang().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->lang(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1080,29 +1020,15 @@ void TranslationUpdate::SerializeWithCachedSizes(
   return target;
 }
 
-int TranslationUpdate::ByteSize() const {
+int Language::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.TranslatedStrings unchanged = 1;
-    if (has_unchanged()) {
+    // optional string lang = 1 [default = "en"];
+    if (has_lang()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->unchanged());
-    }
-    
-    // optional .rec.TranslatedStrings leaving = 2;
-    if (has_leaving()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->leaving());
-    }
-    
-    // optional .rec.TranslatedStrings entering = 3;
-    if (has_entering()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->entering());
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->lang());
     }
     
   }
@@ -1117,10 +1043,10 @@ int TranslationUpdate::ByteSize() const {
   return total_size;
 }
 
-void TranslationUpdate::MergeFrom(const ::google::protobuf::Message& from) {
+void Language::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const TranslationUpdate* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const TranslationUpdate*>(
+  const Language* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Language*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1129,55 +1055,47 @@ void TranslationUpdate::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void TranslationUpdate::MergeFrom(const TranslationUpdate& from) {
+void Language::MergeFrom(const Language& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_unchanged()->::rec::TranslatedStrings::MergeFrom(from.unchanged());
-    }
-    if (from._has_bit(1)) {
-      mutable_leaving()->::rec::TranslatedStrings::MergeFrom(from.leaving());
-    }
-    if (from._has_bit(2)) {
-      mutable_entering()->::rec::TranslatedStrings::MergeFrom(from.entering());
+      set_lang(from.lang());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void TranslationUpdate::CopyFrom(const ::google::protobuf::Message& from) {
+void Language::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void TranslationUpdate::CopyFrom(const TranslationUpdate& from) {
+void Language::CopyFrom(const Language& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TranslationUpdate::IsInitialized() const {
+bool Language::IsInitialized() const {
   
   return true;
 }
 
-void TranslationUpdate::Swap(TranslationUpdate* other) {
+void Language::Swap(Language* other) {
   if (other != this) {
-    std::swap(unchanged_, other->unchanged_);
-    std::swap(leaving_, other->leaving_);
-    std::swap(entering_, other->entering_);
+    std::swap(lang_, other->lang_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata TranslationUpdate::GetMetadata() const {
+::google::protobuf::Metadata Language::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = TranslationUpdate_descriptor_;
-  metadata.reflection = TranslationUpdate_reflection_;
+  metadata.descriptor = Language_descriptor_;
+  metadata.reflection = Language_reflection_;
   return metadata;
 }
 

@@ -5,6 +5,15 @@
     <Filter Include="tests">
       <UniqueIdentifier>{D925F530-9EB1-D126-CFE3-F96BFF616D50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tests\translation">
+      <UniqueIdentifier>{ED90B31F-DC78-DA14-0445-83D90822EAAF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\translation\rec">
+      <UniqueIdentifier>{54D798C3-9DAA-53CE-DE16-C34FBE0C8DAC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\translation\rec\translation">
+      <UniqueIdentifier>{C866E62D-AC45-101B-7B4B-BC89B51050A5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="tests\rec">
       <UniqueIdentifier>{98AB35F3-0F68-51AD-DF31-23E1A1D989E0}</UniqueIdentifier>
     </Filter>
@@ -496,6 +505,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\de-TranslatedStrings.def.cpp">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\en-TranslatedStrings.def.cpp">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\es-TranslatedStrings.def.cpp">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\fr-TranslatedStrings.def.cpp">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\id-TranslatedStrings.def.cpp">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp">
       <Filter>tests\rec\app</Filter>
     </ClCompile>
@@ -2577,6 +2601,21 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\de-TranslatedStrings.def.h">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\en-TranslatedStrings.def.h">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\es-TranslatedStrings.def.h">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\fr-TranslatedStrings.def.h">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\id-TranslatedStrings.def.h">
+      <Filter>tests\translation\rec\translation</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\Application.h">
       <Filter>tests\rec\app</Filter>
     </ClInclude>

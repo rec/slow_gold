@@ -36,7 +36,33 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="JPAe1fT5j" name="RequestSupport">
+  <MAINGROUP id="ej4ztCXbZ" name="RequestSupport">
+    <GROUP id="IpfTZMMtW" name="translation">
+      <GROUP id="AFgdjleUb" name="rec">
+        <GROUP id="777NaKkQk" name="translation">
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/de-TranslatedStrings.def.cpp"
+                id="J2OjCRgCb" name="de-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/de-TranslatedStrings.def.h"
+                id="vT4TWGTBe" name="de-TranslatedStrings.def.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/en-TranslatedStrings.def.cpp"
+                id="FYAm1XYaI" name="en-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/en-TranslatedStrings.def.h"
+                id="KcSUuVbVM" name="en-TranslatedStrings.def.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/es-TranslatedStrings.def.cpp"
+                id="NIpzIHLkC" name="es-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/es-TranslatedStrings.def.h"
+                id="ylX059ZNQ" name="es-TranslatedStrings.def.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/fr-TranslatedStrings.def.cpp"
+                id="HnTzgBqXr" name="fr-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/fr-TranslatedStrings.def.h"
+                id="EpUlYf8vx" name="fr-TranslatedStrings.def.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/id-TranslatedStrings.def.cpp"
+                id="Rsgse4vOp" name="id-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/id-TranslatedStrings.def.h"
+                id="dG6VrJoRf" name="id-TranslatedStrings.def.h" resource="0"/>
+        </GROUP>
+      </GROUP>
+    </GROUP>
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1577,7 +1603,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="1HO5Er0QD" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="WTH2XHU8T" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

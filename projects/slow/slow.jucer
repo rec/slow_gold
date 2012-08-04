@@ -9,12 +9,12 @@
                targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION customXcodeFlags="DEAD_CODE_STRIPPING = YES, GCC_AUTO_VECTORIZATION = YES, GCC_DEBUGGING_SYMBOLS = full, GCC_DYNAMIC_NO_PIC = YES, GCC_ENABLE_FIX_AND_CONTINUE = YES, GCC_ENABLE_SSE3_EXTENSIONS = YES, GCC_ENABLE_SSE41_EXTENSIONS = YES, GCC_ENABLE_SSE42_EXTENSIONS = YES, GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES, GCC_FAST_MATH = YES, GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES, GCC_UNROLL_LOOPS = YES, GCC_WARN_64_TO_32_BIT_CONVERSION = YES, GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES, GCC_WARN_ABOUT_MISSING_NEWLINE = YES, GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES, GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO, GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES, GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO, GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES, GCC_WARN_PROTOTYPE_CONVERSION = YES, GCC_WARN_SHADOW = NO, GCC_WARN_SIGN_COMPARE = YES, GCC_WARN_STRICT_SELECTOR_MATCH = YES, GCC_WARN_UNDECLARED_SELECTOR = YES, GCC_WARN_UNINITIALIZED_AUTOS = NO, GCC_WARN_UNKNOWN_PRAGMAS = YES, GCC_WARN_UNUSED_FUNCTION = YES, GCC_WARN_UNUSED_LABEL = YES, STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static"
-                       headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
+                       headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="1" libraryPath="../../../../../build/Debug/glog/lib;../../../../../build/Debug/mpg123/lib;../../../../../build/Debug/protobuf/lib;../../../../externals/rubberband/osx/ipp/Debug/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Debug" optimisation="1" osxArchitecture="default" osxCompatibility="default"
                        osxSDK="default" targetName="SlowGold 8-debug"/>
         <CONFIGURATION customXcodeFlags="DEAD_CODE_STRIPPING = YES, GCC_AUTO_VECTORIZATION = YES, GCC_DEBUGGING_SYMBOLS = full, GCC_DYNAMIC_NO_PIC = YES, GCC_ENABLE_FIX_AND_CONTINUE = YES, GCC_ENABLE_SSE3_EXTENSIONS = YES, GCC_ENABLE_SSE41_EXTENSIONS = YES, GCC_ENABLE_SSE42_EXTENSIONS = YES, GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES, GCC_FAST_MATH = YES, GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES, GCC_UNROLL_LOOPS = YES, GCC_WARN_64_TO_32_BIT_CONVERSION = YES, GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES, GCC_WARN_ABOUT_MISSING_NEWLINE = YES, GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES, GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO, GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES, GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO, GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES, GCC_WARN_PROTOTYPE_CONVERSION = YES, GCC_WARN_SHADOW = NO, GCC_WARN_SIGN_COMPARE = YES, GCC_WARN_STRICT_SELECTOR_MATCH = YES, GCC_WARN_UNDECLARED_SELECTOR = YES, GCC_WARN_UNINITIALIZED_AUTOS = NO, GCC_WARN_UNKNOWN_PRAGMAS = YES, GCC_WARN_UNUSED_FUNCTION = YES, GCC_WARN_UNUSED_LABEL = YES, STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static"
-                       headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Release/mpg123;../../../../../build/Debug/protobuf/include;../.."
+                       headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Release/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="0" libraryPath="../../../../../build/Release/glog/lib;../../../../../build/Release/mpg123/lib;../../../../../build/Release/protobuf/lib;../../../../externals/rubberband/osx/ipp/Release/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Release" optimisation="2" osxArchitecture="default" osxCompatibility="default"
                        osxSDK="default" targetName="SlowGold 8"/>
@@ -36,7 +36,33 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="ZbWxFCenY" name="SlowGold">
+  <MAINGROUP id="s6vkqU0yJ" name="SlowGold">
+    <GROUP id="CU4q5NJyc" name="translation">
+      <GROUP id="hACuQqfue" name="rec">
+        <GROUP id="nfxIfhCQ6" name="translation">
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/de-TranslatedStrings.def.cpp"
+                id="dVWLY0N8Q" name="de-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/de-TranslatedStrings.def.h"
+                id="lQlh2o1Si" name="de-TranslatedStrings.def.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/en-TranslatedStrings.def.cpp"
+                id="G2CmMztqk" name="en-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/en-TranslatedStrings.def.h"
+                id="yt9aYEn81" name="en-TranslatedStrings.def.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/es-TranslatedStrings.def.cpp"
+                id="aY5ltuwAT" name="es-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/es-TranslatedStrings.def.h"
+                id="kqnuV3Rcf" name="es-TranslatedStrings.def.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/fr-TranslatedStrings.def.cpp"
+                id="s9cDSLrWi" name="fr-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/fr-TranslatedStrings.def.h"
+                id="aOH0S3Giv" name="fr-TranslatedStrings.def.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/translation/rec/translation/id-TranslatedStrings.def.cpp"
+                id="P1dvAbQ3P" name="id-TranslatedStrings.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../genfiles/translation/rec/translation/id-TranslatedStrings.def.h"
+                id="JcSKQUvee" name="id-TranslatedStrings.def.h" resource="0"/>
+        </GROUP>
+      </GROUP>
+    </GROUP>
     <GROUP id="tJoSFk6Uv" name="rec">
       <GROUP id="tvyme6C2O" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="EJdaWTjrC"
@@ -1577,7 +1603,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="9PyVpNZ4W" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="PTzEdocdD" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

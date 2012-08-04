@@ -34,7 +34,7 @@ void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
 
 class TranslatedString;
 class TranslatedStrings;
-class TranslationUpdate;
+class Language;
 
 // ===================================================================
 
@@ -285,14 +285,14 @@ class TranslatedStrings : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class TranslationUpdate : public ::google::protobuf::Message {
+class Language : public ::google::protobuf::Message {
  public:
-  TranslationUpdate();
-  virtual ~TranslationUpdate();
+  Language();
+  virtual ~Language();
   
-  TranslationUpdate(const TranslationUpdate& from);
+  Language(const Language& from);
   
-  inline TranslationUpdate& operator=(const TranslationUpdate& from) {
+  inline Language& operator=(const Language& from) {
     CopyFrom(from);
     return *this;
   }
@@ -306,17 +306,17 @@ class TranslationUpdate : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const TranslationUpdate& default_instance();
+  static const Language& default_instance();
   
-  void Swap(TranslationUpdate* other);
+  void Swap(Language* other);
   
   // implements Message ----------------------------------------------
   
-  TranslationUpdate* New() const;
+  Language* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const TranslationUpdate& from);
-  void MergeFrom(const TranslationUpdate& from);
+  void CopyFrom(const Language& from);
+  void MergeFrom(const Language& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -339,40 +339,28 @@ class TranslationUpdate : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.TranslatedStrings unchanged = 1;
-  inline bool has_unchanged() const;
-  inline void clear_unchanged();
-  static const int kUnchangedFieldNumber = 1;
-  inline const ::rec::TranslatedStrings& unchanged() const;
-  inline ::rec::TranslatedStrings* mutable_unchanged();
+  // optional string lang = 1 [default = "en"];
+  inline bool has_lang() const;
+  inline void clear_lang();
+  static const int kLangFieldNumber = 1;
+  inline const ::std::string& lang() const;
+  inline void set_lang(const ::std::string& value);
+  inline void set_lang(const char* value);
+  inline void set_lang(const char* value, size_t size);
+  inline ::std::string* mutable_lang();
   
-  // optional .rec.TranslatedStrings leaving = 2;
-  inline bool has_leaving() const;
-  inline void clear_leaving();
-  static const int kLeavingFieldNumber = 2;
-  inline const ::rec::TranslatedStrings& leaving() const;
-  inline ::rec::TranslatedStrings* mutable_leaving();
-  
-  // optional .rec.TranslatedStrings entering = 3;
-  inline bool has_entering() const;
-  inline void clear_entering();
-  static const int kEnteringFieldNumber = 3;
-  inline const ::rec::TranslatedStrings& entering() const;
-  inline ::rec::TranslatedStrings* mutable_entering();
-  
-  // @@protoc_insertion_point(class_scope:rec.TranslationUpdate)
+  // @@protoc_insertion_point(class_scope:rec.Language)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::TranslatedStrings* unchanged_;
-  ::rec::TranslatedStrings* leaving_;
-  ::rec::TranslatedStrings* entering_;
+  ::std::string* lang_;
+  static const ::std::string _default_lang_;
   friend void  protobuf_AddDesc_rec_2fbase_2fTrans_2eproto();
   friend void protobuf_AssignDesc_rec_2fbase_2fTrans_2eproto();
   friend void protobuf_ShutdownFile_rec_2fbase_2fTrans_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -386,7 +374,7 @@ class TranslationUpdate : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static TranslationUpdate* default_instance_;
+  static Language* default_instance_;
 };
 // ===================================================================
 
@@ -642,57 +630,48 @@ inline void TranslatedStrings::set_max_index(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
-// TranslationUpdate
+// Language
 
-// optional .rec.TranslatedStrings unchanged = 1;
-inline bool TranslationUpdate::has_unchanged() const {
+// optional string lang = 1 [default = "en"];
+inline bool Language::has_lang() const {
   return _has_bit(0);
 }
-inline void TranslationUpdate::clear_unchanged() {
-  if (unchanged_ != NULL) unchanged_->::rec::TranslatedStrings::Clear();
+inline void Language::clear_lang() {
+  if (lang_ != &_default_lang_) {
+    lang_->assign(_default_lang_);
+  }
   _clear_bit(0);
 }
-inline const ::rec::TranslatedStrings& TranslationUpdate::unchanged() const {
-  return unchanged_ != NULL ? *unchanged_ : *default_instance_->unchanged_;
+inline const ::std::string& Language::lang() const {
+  return *lang_;
 }
-inline ::rec::TranslatedStrings* TranslationUpdate::mutable_unchanged() {
+inline void Language::set_lang(const ::std::string& value) {
   _set_bit(0);
-  if (unchanged_ == NULL) unchanged_ = new ::rec::TranslatedStrings;
-  return unchanged_;
+  if (lang_ == &_default_lang_) {
+    lang_ = new ::std::string;
+  }
+  lang_->assign(value);
 }
-
-// optional .rec.TranslatedStrings leaving = 2;
-inline bool TranslationUpdate::has_leaving() const {
-  return _has_bit(1);
+inline void Language::set_lang(const char* value) {
+  _set_bit(0);
+  if (lang_ == &_default_lang_) {
+    lang_ = new ::std::string;
+  }
+  lang_->assign(value);
 }
-inline void TranslationUpdate::clear_leaving() {
-  if (leaving_ != NULL) leaving_->::rec::TranslatedStrings::Clear();
-  _clear_bit(1);
+inline void Language::set_lang(const char* value, size_t size) {
+  _set_bit(0);
+  if (lang_ == &_default_lang_) {
+    lang_ = new ::std::string;
+  }
+  lang_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline const ::rec::TranslatedStrings& TranslationUpdate::leaving() const {
-  return leaving_ != NULL ? *leaving_ : *default_instance_->leaving_;
-}
-inline ::rec::TranslatedStrings* TranslationUpdate::mutable_leaving() {
-  _set_bit(1);
-  if (leaving_ == NULL) leaving_ = new ::rec::TranslatedStrings;
-  return leaving_;
-}
-
-// optional .rec.TranslatedStrings entering = 3;
-inline bool TranslationUpdate::has_entering() const {
-  return _has_bit(2);
-}
-inline void TranslationUpdate::clear_entering() {
-  if (entering_ != NULL) entering_->::rec::TranslatedStrings::Clear();
-  _clear_bit(2);
-}
-inline const ::rec::TranslatedStrings& TranslationUpdate::entering() const {
-  return entering_ != NULL ? *entering_ : *default_instance_->entering_;
-}
-inline ::rec::TranslatedStrings* TranslationUpdate::mutable_entering() {
-  _set_bit(2);
-  if (entering_ == NULL) entering_ = new ::rec::TranslatedStrings;
-  return entering_;
+inline ::std::string* Language::mutable_lang() {
+  _set_bit(0);
+  if (lang_ == &_default_lang_) {
+    lang_ = new ::std::string(_default_lang_);
+  }
+  return lang_;
 }
 
 

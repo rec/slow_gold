@@ -14,6 +14,8 @@ import filetree
 
 RANDOMIZE_IDS = not True
 
+FILE_GROUPS = ('genfiles', 'translation'), ('src', 'rec'), ('genfiles', 'icon'), ('genfiles', 'proto')
+
 class JucerDomFile(dom_file.DomFile):
   def __init__(self, filename, is_test, root):
     dom_file.DomFile.__init__(self, filename)
@@ -52,7 +54,7 @@ class JucerDomFile(dom_file.DomFile):
     maingroup = self.createFromDict('MAINGROUP', name, name=name)
     self.documentElement.replaceChild(maingroup, old)
 
-    for prefix, n2 in (('src', 'rec'), ('genfiles', 'icon'), ('genfiles', 'proto')):
+    for prefix, n2 in (FILE_GROUPS):
       self.createCPPFileGroup(maingroup, prefix, n2, '%s/rec' % self.root, name)
 
     maingroup.appendChild(self.createFile('Main.cpp', 'Main.cpp',

@@ -1,1119 +1,1119 @@
 str {
   original: "%s %s semitones"
-  translation: "% S% s semitonos\n"
+  translation: "%s %s demi-tons"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 48
   index: 1
 }
 str {
   original: "%s off"
-  translation: "% S fuera de\n"
+  translation: "%s hors"
   file: "rec/command/map/MidiName.cpp"
   line: 15
   index: 2
 }
 str {
   original: "(no file loaded)"
-  translation: "(No hay ning\303\272n archivo cargado)\n"
+  translation: "(Pas de fichier charg\303\251)"
   index: 3
 }
 str {
   original: "(None)"
-  translation: "(Ninguno)\n"
+  translation: "(Aucun)"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 12
   index: 4
 }
 str {
   original: "<Unknown CD>"
-  translation: "<Unknown CD>\n"
+  translation: "<unknown CD>"
   file: "rec/widget/tree/CD.cpp"
   line: 12
   index: 5
 }
 str {
   original: "A new version of SlowGold, %s, is available."
-  translation: "Una nueva versi\303\263n de SlowGold,% s, se encuentra disponible.\n"
+  translation: "Une nouvelle version de SlowGold, %s, est disponible."
   file: "rec/app/DownloadVersion.cpp"
   line: 22
   index: 6
 }
 str {
   original: "A Support Request file named \"%s\" was created on your desktop."
-  translation: "Un archivo de solicitud de soporte t\303\251cnico llamado \"% s\" fue creado en el escritorio.\n"
+  translation: "Un fichier de demande d\'assistance nomm\303\251e \"%s\" a \303\251t\303\251 cr\303\251\303\251 sur votre bureau."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 37
   index: 7
 }
 str {
   original: "A Support Request Was Created On Your Desktop"
-  translation: "Una solicitud se apoy\303\263 en el escritorio\n"
+  translation: "Une demande soutien a \303\251t\303\251 cr\303\251\303\251 sur votre bureau"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 43
   index: 8
 }
 str {
   original: "Add Loop Point Button: Add a loop point at the current time."
-  translation: "A\303\261adir bot\303\263n del punto de bucle: A\303\261adir un punto de bucle en el momento actual.\n"
+  translation: "Ajouter un bouton de point de boucle: Ajouter un point de boucle \303\240 l\'heure actuelle."
   index: 9
 }
 str {
   original: "Add loop point mode: clicking on the waveform creates a loop point."
-  translation: "A\303\261adir el modo de bucle punto: hacer clic en la forma de onda se crea un punto de bucle.\n"
+  translation: "Ajout d\'un mode point de boucle: en cliquant sur la forme d\'onde cr\303\251e un point de boucle."
   index: 10
 }
 str {
   original: "adds a new key-mapping"
-  translation: "a\303\261ade una nueva clave de asignaci\303\263n de\n"
+  translation: "ajoute une nouvelle cl\303\251 de mappage"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 8
   index: 11
 }
 str {
   original: "Album"
-  translation: "\303\201lbum\n"
+  translation: "Album"
   index: 12
 }
 str {
   original: "Album Name: The name of the album this track is from."
-  translation: "Nombre del \303\241lbum: El nombre del \303\241lbum de esta pista es de.\n"
+  translation: "Nom de l\'album: Le nom de l\'album \303\240 partir de cette piste est."
   index: 13
 }
 str {
   original: "Album Year: The year that that this track was recorded."
-  translation: "A\303\261o Album: El a\303\261o en que que esta canci\303\263n fue grabada.\n"
+  translation: "Ann\303\251e Album: L\'ann\303\251e qui que ce titre a \303\251t\303\251 enregistr\303\251."
   index: 14
 }
 str {
   original: "Are you sure you want to reset all the key mappings to their default state?"
-  translation: "\302\277Seguro de que desea restablecer todos las asignaciones de teclas a su estado predeterminado?\n"
+  translation: "Etes-vous s\303\273r de vouloir effacer tous les mappages de touches \303\240 leur \303\251tat par d\303\251faut?"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 10
   index: 15
 }
 str {
   original: "Artist"
-  translation: "Artista\n"
+  translation: "Artiste"
   index: 16
 }
 str {
   original: "Artist Name: The artist or musician who made this specific track."
-  translation: "Nombre del artista: el artista o m\303\272sico que hizo esta pista espec\303\255fica.\n"
+  translation: "Nom de l\'artiste: L\'artiste ou le musicien qui a fait cette piste sp\303\251cifique."
   index: 17
 }
 str {
   original: "as"
-  translation: "como\n"
+  translation: "comme"
   file: "rec/command/map/MidiName.cpp"
   line: 13
   index: 18
 }
 str {
   original: "Audio"
-  translation: "Audio\n"
+  translation: "Audio"
   index: 19
 }
 str {
   original: "Can\'t create track for %s."
-  translation: "No se puede crear la pista para% s.\n"
+  translation: "Impossible de cr\303\251er la bonne voie pour %s."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 25
   index: 20
 }
 str {
   original: "Can\'t Find File"
-  translation: "No se puede encontrar el archivo\n"
+  translation: "Impossible de trouver le fichier"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 29
   index: 21
 }
 str {
   original: "Cancel"
-  translation: "Cancelar\n"
+  translation: "Annuler"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 28
   index: 22
 }
 str {
   original: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
-  translation: "Ventana del CD: Los CDs que tienes en las unidades de CD de su computadora aparecer\303\241 aqu\303\255.\n"
+  translation: "Fen\303\252tre CD: Les CD que vous avez dans les lecteurs de CD de votre ordinateur appara\303\256tra ici."
   index: 23
 }
 str {
   original: "CDs will automatically appear at the top-left when you insert them."
-  translation: "CD aparecer\303\241 autom\303\241ticamente en la parte superior izquierda cuando se insertan.\n"
+  translation: "CD appara\303\256t automatiquement en haut \303\240 gauche lorsque vous les ins\303\251rez."
   file: "rec/slow/AboutWindow.cpp"
   line: 20
   index: 24
 }
 str {
   original: "Change key-mapping"
-  translation: "Cambiar la clave de asignaci\303\263n de\n"
+  translation: "Modifier la cl\303\251 de la cartographie"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 9
   index: 25
 }
 str {
   original: "Change this command mapping"
-  translation: "Cambiar esta asignaci\303\263n de comandos\n"
+  translation: "Modifiez cette cartographie de commande"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 10
   index: 26
 }
 str {
   original: "Choose File To Save to"
-  translation: "Elegir archivo para guardar en\n"
+  translation: "Choisissez Fichier pour enregistrer \303\240"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 42
   index: 27
 }
 str {
   original: "Clear all keyboard mappings to factory default?"
-  translation: "Borrar todas las asignaciones de teclado por defecto de f\303\241brica?\n"
+  translation: "Effacer tous les mappages clavier par d\303\251faut d\'usine?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 52
   index: 28
 }
 str {
   original: "Clear all MIDI mappings?"
-  translation: "Borrar todas las asignaciones MIDI?\n"
+  translation: "Effacer tous les mappages MIDI?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 54
   index: 29
 }
 str {
   original: "Clear Keyboard Mappings."
-  translation: "Asignaciones claras de teclado.\n"
+  translation: "Mappages clavier clair."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 50
   index: 30
 }
 str {
   original: "Clear MIDI Mappings."
-  translation: "Borrar las asignaciones MIDI.\n"
+  translation: "Effacer Mappages MIDI."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 53
   index: 31
 }
 str {
   original: "Clearing All Settings For All Tracks"
-  translation: "Borrar todos los ajustes para todas las pistas\n"
+  translation: "Effacement de tous les param\303\250tres pour toutes les pistes"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 56
   index: 32
 }
 str {
   original: "Clearing Settings For This Track Only"
-  translation: "Configuraci\303\263n de coordinadores de esa \303\272nica pista\n"
+  translation: "Param\303\250tres de centraliser cette seule piste"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 61
   index: 33
 }
 str {
   original: "click to change this key-mapping"
-  translation: "haga clic para cambiar esta clave de asignaci\303\263n de\n"
+  translation: "cliquer pour modifier cette cl\303\251 de cartographie"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 9
   index: 34
 }
 str {
   original: "Click to continue."
-  translation: "Haga clic para continuar.\n"
+  translation: "Cliquez pour continuer."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 33
   index: 35
 }
 str {
   original: "Copyright \302\251 %d"
-  translation: "Copyright \302\251% d\n"
+  translation: "Copyright \302\251 %d"
   file: "rec/slow/AboutWindow.cpp"
   line: 26
   index: 36
 }
 str {
   original: "Couldn\'t Create A Support Request"
-  translation: "No se puede crear una petici\303\263n de soporte\n"
+  translation: "Impossible de cr\303\251er une demande de soutien"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 31
   index: 37
 }
 str {
   original: "Couldn\'t Load The SlowGold 8 User Manual"
-  translation: "No se puede cargar el SlowGold 8 Manual del usuario\n"
+  translation: "Impossible de charger le SlowGold 8 Manuel de l\'utilisateur"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 29
   index: 38
 }
 str {
   original: "Couldn\'t Open CD Track."
-  translation: "No se pudo abrir la pista del CD.\n"
+  translation: "Impossible d\'ouvrir une piste de CD."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 26
   index: 39
 }
 str {
   original: "Couldn\'t open track on CD - perhaps you ejected it?"
-  translation: "No se pudo abrir la pista en el CD - tal vez usted lo expulsa?\n"
+  translation: "Impossible d\'ouvrir la voie sur CD - peut-\303\252tre vous \303\251ject\303\251?"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 27
   index: 40
 }
 str {
   original: "Couldn\'t Open Your File."
-  translation: "No se pudo abrir el archivo.\n"
+  translation: "Impossible d\'ouvrir votre fichier."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 39
   index: 41
 }
 str {
   original: "Couldn\'t update to version %s"
-  translation: "No se puede actualizar a la versi\303\263n% s\n"
+  translation: "Impossible de mettre \303\240 jour vers la version %s"
   file: "rec/app/DownloadVersion.cpp"
   line: 26
   index: 42
 }
 str {
   original: "Create loop points by pressing the L key."
-  translation: "Crear puntos de bucle pulsando la tecla L.\n"
+  translation: "Cr\303\251er des points de boucle en appuyant sur la touche L."
   file: "rec/slow/AboutWindow.cpp"
   line: 23
   index: 43
 }
 str {
   original: "Currently assigned to"
-  translation: "Actualmente asignado a\n"
+  translation: "Actuellement affect\303\251 \303\240"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 14
   index: 44
 }
 str {
   original: "Display"
-  translation: "Mostrar\n"
+  translation: "Afficher"
   index: 45
 }
 str {
   original: "Display this window on startup"
-  translation: "Mostrar esta ventana en el inicio\n"
+  translation: "Afficher cette fen\303\252tre au d\303\251marrage"
   file: "rec/slow/AboutWindow.cpp"
   line: 17
   index: 46
 }
 str {
   original: "Do you want to re-assign it to this new command instead?"
-  translation: "\302\277Quieres volver a asignar a este nuevo comando en su lugar?\n"
+  translation: "Voulez-vous le r\303\251-attribuer \303\240 cette nouvelle commande \303\240 la place?"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 11
   index: 47
 }
 str {
   original: "down"
-  translation: "hacia abajo\n"
+  translation: "vers le bas"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 43
   index: 48
 }
 str {
   original: "Download new version and quit this older one."
-  translation: "Descargue la versi\303\263n nueva y salir de esta edad.\n"
+  translation: "T\303\251l\303\251charger la nouvelle version et quitter cette ancienne."
   file: "rec/app/DownloadVersion.cpp"
   line: 24
   index: 49
 }
 str {
   original: "Download the manual from the Help menu for many more commands."
-  translation: "Descarga el manual desde el men\303\272 de ayuda para muchos m\303\241s comandos.\n"
+  translation: "T\303\251l\303\251charger le manuel \303\240 partir du menu Aide pour les commandes beaucoup plus."
   file: "rec/slow/AboutWindow.cpp"
   line: 25
   index: 50
 }
 str {
   original: "Drag audio files onto the waveform."
-  translation: "Arrastre los archivos de audio en la forma de onda.\n"
+  translation: "Faites glisser les fichiers audio sur la forme d\'onde."
   file: "rec/slow/AboutWindow.cpp"
   line: 18
   index: 51
 }
 str {
   original: "Drag Mode: Use the mouse to drag the waveform back and forth"
-  translation: "Arrastre Modo: Utiliza el rat\303\263n para arrastrar la forma de onda de ida y vuelta\n"
+  translation: "Faites glisser Mode: Utilisez la souris pour faire glisser la forme d\'onde d\'avant en arri\303\250re"
   index: 52
 }
 str {
   original: "Drag the Speed slider to slow down or speed up."
-  translation: "Arrastre el regulador de velocidad para frenar o acelerar.\n"
+  translation: "Faites glisser le curseur Vitesse de ralentir ou d\'acc\303\251l\303\251rer."
   file: "rec/slow/AboutWindow.cpp"
   line: 22
   index: 53
 }
 str {
   original: "Edit"
-  translation: "Editar\n"
+  translation: "\303\211diter"
   index: 54
 }
 str {
   original: "Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake."
-  translation: "O no fue en el formato correcto, que est\303\241 da\303\261ado, o el programador ha cometido un error.\n"
+  translation: "Soit il n\'\303\251tait pas dans le bon format, il est corrompu, ou le programmeur a fait une erreur."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 42
   index: 55
 }
 str {
   original: "Enable"
-  translation: "Permitir\n"
+  translation: "Permettre"
   index: 56
 }
 str {
   original: "Error During Save."
-  translation: "Error al guardar.\n"
+  translation: "Erreur pendant l\'enregistrement."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 38
   index: 57
 }
 str {
   original: "Error was"
-  translation: "Error fue\n"
+  translation: "L\'erreur \303\251tait"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 28
   index: 58
 }
 str {
   original: "File"
-  translation: "Expediente\n"
+  translation: "Dossier"
   index: 59
 }
 str {
   original: "File Type For Save..."
-  translation: "Tipo de Archivo Para Save ...\n"
+  translation: "Type de fichier Pour Sauver ..."
   index: 60
 }
 str {
   original: "Finishing loading audio from disk."
-  translation: "Acabado de carga de audio desde el disco.\n"
+  translation: "Audio de chargement de finition \303\240 partir du disque."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 40
   index: 61
 }
 str {
   original: "Genre"
-  translation: "G\303\251nero\n"
+  translation: "Genre"
   index: 62
 }
 str {
   original: "Help"
-  translation: "Ayuda\n"
+  translation: "Aider"
   index: 63
 }
 str {
   original: "Help Panel: Shows help about whatever the mouse is over."
-  translation: "Ayuda Panel: Muestra ayuda sobre lo que el rat\303\263n est\303\241 sobre.\n"
+  translation: "Aide Panneau: Affiche l\'aide sur ce que la souris est sur."
   index: 64
 }
 str {
   original: "Jump Back"
-  translation: "Jump Back\n"
+  translation: "Aller Retour"
   index: 65
 }
 str {
   original: "Jump Back Button: Jump to the start of the next segment."
-  translation: "Jump Back Button: Ir al inicio del siguiente segmento.\n"
+  translation: "Aller Retour Bouton: Aller au d\303\251but du prochain segment."
   index: 66
 }
 str {
   original: "Jump Forward"
-  translation: "Ir hacia adelante\n"
+  translation: "Aller Forward"
   index: 67
 }
 str {
   original: "Jump Forward Button: Jump to the start of the next segment."
-  translation: "Ir hacia adelante Bot\303\263n: Ir al inicio del siguiente segmento.\n"
+  translation: "Aller Touche d\'avance: Aller au d\303\251but du prochain segment."
   index: 68
 }
 str {
   original: "Jump To Selected..."
-  translation: "Ir al seleccionado ...\n"
+  translation: "Atteindre s\303\251lectionn\303\251 ..."
   index: 69
 }
 str {
   original: "Jump to start"
-  translation: "Ir al inicio\n"
+  translation: "Aller au d\303\251but"
   index: 70
 }
 str {
   original: "Jump To Start Button: Jump to the start of the track."
-  translation: "Ir al Bot\303\263n de Arranque: Ir al inicio de la pista.\n"
+  translation: "Aller au d\303\251but Bouton: Aller au d\303\251but de la piste."
   index: 71
 }
 str {
   original: "Jump To..."
-  translation: "Ir a ...\n"
+  translation: "Aller \303\240 ..."
   index: 72
 }
 str {
   original: "Key"
-  translation: "Clave\n"
+  translation: "Cl\303\251"
   file: "rec/command/map/KeyCommandMapEditor.cpp"
   line: 11
   index: 73
 }
 str {
   original: "L + R"
-  translation: "L + R\n"
+  translation: "L + R"
   index: 74
 }
 str {
   original: "Left"
-  translation: "Izquierda\n"
+  translation: "Gauche"
   index: 75
 }
 str {
   original: "Level Meter: Display the sound intensity, in RMS dB."
-  translation: "Medidor de nivel: Muestra la intensidad del sonido, en dB RMS.\n"
+  translation: "Level Meter: Afficher l\'intensit\303\251 sonore, en dB RMS."
   index: 76
 }
 str {
   original: "Level Slider: Raise or lower the sound intensity, in dB."
-  translation: "Regulador de nivel: Subir o bajar la intensidad del sonido, en dB.\n"
+  translation: "Curseur Niveau: Augmenter ou diminuer l\'intensit\303\251 sonore, en dB."
   index: 77
 }
 str {
   original: "Loop Entire Track"
-  translation: "Bucle completo de pistas\n"
+  translation: "Suivi boucle enti\303\250re"
   index: 78
 }
 str {
   original: "Loop Point List: You can select and edit loop points here."
-  translation: "Lista de Puntos de lazo: Puede seleccionar y editar puntos de bucle aqu\303\255.\n"
+  translation: "Liste des points Loop: Vous pouvez s\303\251lectionner et modifier les points de boucle ici."
   index: 79
 }
 str {
   original: "Loop Point Name: Edit the Loop Point\'s name by clicking here."
-  translation: "Nombre del punto de bucle: Edite el nombre del punto de bucle haciendo clic aqu\303\255.\n"
+  translation: "Nom du point Loop: Modifier le nom du point de boucle en cliquant ici."
   index: 80
 }
 str {
   original: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
-  translation: "Punto de bucle: se puede arrastrar en la forma de onda, o puede hacer clic en la etiqueta por encima y hacia la derecha para editar su nombre.\n"
+  translation: "Point de boucle: Vous pouvez le faire glisser sur la forme d\'onde, ou vous pouvez cliquer sur l\'\303\251tiquette ci-dessus et \303\240 le droit de modifier son nom."
   file: "rec/widget/waveform/Waveform.cpp"
   line: 38
   index: 81
 }
 str {
   original: "Loop This Segment"
-  translation: "Este segmento de bucle\n"
+  translation: "Ce segment de boucle"
   index: 82
 }
 str {
   original: "Master"
-  translation: "Maestro\n"
+  translation: "Ma\303\256tre"
   index: 83
 }
 str {
   original: "Master Tune Slider: Master tune is a global detune over all tracks."
-  translation: "Deslizador Tune Master: Master Tune es una desafinaci\303\263n global sobre todas las pistas.\n"
+  translation: "Curseur Master Tune: Master Tune est un d\303\251saccordage mondiale sur toutes les pistes."
   index: 84
 }
 str {
   original: "MIDI"
-  translation: "MIDI\n"
+  translation: "MIDI"
   file: "rec/command/map/MidiCommandMapEditor.cpp"
   line: 15
   index: 85
 }
 str {
   original: "Mute"
-  translation: "Silencio\n"
+  translation: "Muet"
   index: 86
 }
 str {
   original: "Mute Button: Mute or unmute the sound."
-  translation: "Bot\303\263n Mute: Silenciar o activar el sonido.\n"
+  translation: "Bouton Mute: Silence ou d\303\251sactive le son."
   index: 87
 }
 str {
   original: "Name"
-  translation: "Nombre\n"
+  translation: "Nom"
   index: 88
 }
 str {
   original: "New command mapping"
-  translation: "Nuevo comando de asignaci\303\263n\n"
+  translation: "Nouvelle commande de cartographie"
   file: "rec/command/map/CommandEntryWindow.cpp"
   line: 9
   index: 89
 }
 str {
   original: "No available CDs."
-  translation: "No hay CDs disponibles.\n"
+  translation: "Pas de CD disponibles."
   file: "rec/util/cd/CDReader.cpp"
   line: 13
   index: 90
 }
 str {
   original: "Not Registered!"
-  translation: "No est\303\241 registrado!\n"
+  translation: "Pas encore inscrit!"
   file: "rec/slow/AboutWindow.cpp"
   line: 28
   index: 91
 }
 str {
   original: "Notes"
-  translation: "Notas\n"
+  translation: "Remarques"
   index: 92
 }
 str {
   original: "Number"
-  translation: "N\303\272mero\n"
+  translation: "Nombre"
   index: 93
 }
 str {
   original: "OK"
-  translation: "Aceptar\n"
+  translation: "OK"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 40
   index: 94
 }
 str {
   original: "one semitone %s"
-  translation: "un semitono% s\n"
+  translation: "une demi-ton %s"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 47
   index: 95
 }
 str {
   original: "Open recent"
-  translation: "Abrir reciente\n"
+  translation: "Ouvrez r\303\251cente"
   index: 96
 }
 str {
   original: "pc %d"
-  translation: "pc de% d\n"
+  translation: "% pc d"
   file: "rec/command/map/MidiName.cpp"
   line: 16
   index: 97
 }
 str {
   original: "Pitch"
-  translation: "Campo\n"
+  translation: "Pas"
   index: 98
 }
 str {
   original: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
-  translation: "Deslizador del reproductor de Sinton\303\255a Fina: lazo de ajuste fino arriba o hacia abajo en el terreno de juego, medido en centavos (1/100 de semitono).\n"
+  translation: "Lecture Curseur Fine Tuning: boucle Fine tune haut ou le bas de la hauteur, mesur\303\251e en cents (1/100 d\'un demi-ton)."
   index: 99
 }
 str {
   original: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
-  translation: "Deslizador Velocidad de reproducci\303\263n: controla la rapidez con el bucle: Reproduce los n\303\272meros m\303\241s altos significa que el bucle se reproduce m\303\241s r\303\241pido.\n"
+  translation: "Curseur vitesse de lecture: Contr\303\264le la vitesse de la boucle est lue: la hausse des chiffres ne signifient pas la boucle est lue plus rapidement."
   index: 100
 }
 str {
   original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
-  translation: "Cursor Tiempo de reproducci\303\263n: Esto sigue a la hora actual durante la reproducci\303\263n. Tambi\303\251n se puede arrastrar para ajustar el tiempo de reproducci\303\263n actual.\n"
+  translation: "Curseur Temps de lecture: Ce qui suit l\'heure actuelle en cours de lecture. Vous pouvez \303\251galement faire glisser autour de r\303\251gler le temps de lecture en cours."
   index: 101
 }
 str {
   original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
-  translation: "Reproducci\303\263n de control deslizante de ajuste: la reproducci\303\263n en bucle grueso arriba y hacia abajo en el terreno de juego, medido en semitonos.\n"
+  translation: "Curseur de r\303\251glage de lecture: la lecture en boucle grossier de haut en bas de la hauteur, mesur\303\251e en demi-tons."
   index: 102
 }
 str {
   original: "Please attach the file on your desktop named %s to this email and send it to us!"
-  translation: "Por favor, adjunte el archivo en el escritorio% s nombre a este correo electr\303\263nico y enviarlo a nosotros!\n"
+  translation: "S\'il vous pla\303\256t joindre le fichier sur votre bureau nomm\303\251 %s \303\240 cet e-mail et envoyez-le nous!"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 35
   index: 103
 }
 str {
   original: "Please contact World Wide Woodshed support at"
-  translation: "Por favor, p\303\263ngase en contacto con el apoyo del Mundo Woodshed Wide\n"
+  translation: "S\'il vous pla\303\256t contacter le support Woodshed World Wide"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 41
   index: 104
 }
 str {
   original: "Please mail the file to %s and then you can throw it away."
-  translation: "Favor de enviar el archivo a% s, y entonces se puede tirar a la basura.\n"
+  translation: "S\'il vous pla\303\256t envoyer le fichier \303\240 %s et puis vous pouvez le jeter."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 42
   index: 105
 }
 str {
   original: "Please press a key combination now..."
-  translation: "Por favor, presione una combinaci\303\263n de teclas ahora ...\n"
+  translation: "S\'il vous pla\303\256t appuyez sur une combinaison de touches maintenant ..."
   file: "rec/command/map/KeyCommandMapEditor.cpp"
   line: 10
   index: 106
 }
 str {
   original: "Press the space bar to start and stop playback."
-  translation: "Pulse la barra espaciadora para iniciar y detener la reproducci\303\263n.\n"
+  translation: "Appuyez sur la barre d\'espace pour d\303\251marrer et arr\303\252ter la lecture."
   file: "rec/slow/AboutWindow.cpp"
   line: 21
   index: 107
 }
 str {
   original: "Ran Out Of Memory For Your File"
-  translation: "Se qued\303\263 sin memoria para el archivo\n"
+  translation: "Ran Out Of Memory Pour votre dossier"
   file: "rec/slow/CurrentFile.cpp"
   line: 36
   index: 108
 }
 str {
   original: "Re-assign"
-  translation: "Vuelva a asignar\n"
+  translation: "R\303\251affecter"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 12
   index: 109
 }
 str {
   original: "Registered to:"
-  translation: "Registrado a:\n"
+  translation: "Enregistr\303\251 \303\240:"
   file: "rec/slow/AboutWindow.cpp"
   line: 27
   index: 110
 }
 str {
   original: "Remove this command mapping"
-  translation: "Eliminar esta asignaci\303\263n de comandos\n"
+  translation: "Supprimer cette cartographie de commande"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 11
   index: 111
 }
 str {
   original: "Reset"
-  translation: "Reajustar\n"
+  translation: "Remettre"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 11
   index: 112
 }
 str {
   original: "reset to defaults"
-  translation: "restablecer los valores predeterminados\n"
+  translation: "r\303\251initialiser les valeurs par d\303\251faut"
   file: "rec/command/map/CommandMapEditor.cpp"
   line: 13
   index: 113
 }
 str {
   original: "Right"
-  translation: "Derecho\n"
+  translation: "Droit"
   index: 114
 }
 str {
   original: "Run this older version (%s)."
-  translation: "Ejecute esta versi\303\263n anterior (% s).\n"
+  translation: "Ex\303\251cutez cette ancienne version (%s)."
   file: "rec/app/DownloadVersion.cpp"
   line: 25
   index: 115
 }
 str {
   original: "Saving File %s."
-  translation: "Guardar archivo% s.\n"
+  translation: "Sauvegarde du fichier %s."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 41
   index: 116
 }
 str {
   original: "Select"
-  translation: "Seleccionar\n"
+  translation: "S\303\251lectionner"
   index: 117
 }
 str {
   original: "Select A File Containing Keyboard Command Mappings"
-  translation: "Seleccione un archivo que contiene las asignaciones de teclado de comandos\n"
+  translation: "S\303\251lectionnez un fichier contenant des mappages de commande du clavier"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 48
   index: 118
 }
 str {
   original: "Select A File Containing MIDI Command Mappings"
-  translation: "Seleccione un archivo que contiene las asignaciones MIDI de comandos\n"
+  translation: "S\303\251lectionnez un fichier contenant des mappages de commande MIDI"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 49
   index: 119
 }
 str {
   original: "Select A File To Save Exported Keyboard Command Mappings"
-  translation: "Seleccione un archivo para guardar exportados comando Asignaciones de teclado\n"
+  translation: "S\303\251lectionnez un fichier pour enregistrer export\303\251s Mappages de commande du clavier"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 45
   index: 120
 }
 str {
   original: "Select A File To Save Exported MIDI Command Mappings"
-  translation: "Seleccione un archivo para guardar las asignaciones de comandos MIDI exportados\n"
+  translation: "S\303\251lectionnez un fichier pour enregistrer export\303\251s Mappages de commande MIDI"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 46
   index: 121
 }
 str {
   original: "Select A File To Save Exported Settings"
-  translation: "Seleccione un archivo para guardar configuraciones exportadas\n"
+  translation: "S\303\251lectionnez un fichier pour enregistrer des param\303\250tres export\303\251s"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 44
   index: 122
 }
 str {
   original: "Select A Zip File Containing Exported Settings"
-  translation: "Seleccione un archivo ZIP que contiene configuraci\303\263n exportada\n"
+  translation: "S\303\251lectionnez un fichier Zip contenant des param\303\250tres export\303\251s"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 47
   index: 123
 }
 str {
   original: "Select Only..."
-  translation: "Seleccione S\303\263lo ...\n"
+  translation: "S\303\251lectionnez seulement ..."
   index: 124
 }
 str {
   original: "Select..."
-  translation: "Seleccione ...\n"
+  translation: "S\303\251lectionnez ..."
   index: 125
 }
 str {
   original: "Set Audio Preferences"
-  translation: "Establecer las preferencias de audio\n"
+  translation: "D\303\251finir les pr\303\251f\303\251rences audio"
   file: "rec/gui/audio/SetupPage.cpp"
   line: 11
   index: 126
 }
 str {
   original: "Set Current Time Mode: Clicking in the waveform sets the current time."
-  translation: "Establecer modo de hora actual: Al hacer clic en la forma de onda ajusta la hora actual.\n"
+  translation: "R\303\251gler le mode Heure actuelle: en cliquant sur la forme d\'onde fixe l\'heure actuelle."
   index: 127
 }
 str {
   original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
-  translation: "Lo sentimos, no pudo cargar el SlowGold 8 manual de usuario en\n"
+  translation: "D\303\251sol\303\251, n\'a pas pu charger la SlowGold 8 Manuel utilisateur \303\240"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 30
   index: 128
 }
 str {
   original: "Sorry, file %s is an .m4a file and we cano\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
-  translation: "Lo sentimos, el archivo% s es un archivo m4a y que sin embargo cano\'t leer estos archivos en Windows:. Por favor, convertirlo a MP3 con iTunes.\n"
+  translation: "D\303\251sol\303\251, le fichier %s est un fichier m4a et nous cano\'t encore lire ces fichiers sur Windows:. S\'il vous pla\303\256t de le convertir en mp3 avec iTunes."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 37
   index: 129
 }
 str {
   original: "Sorry, the file you tried to %s has a length of less than one second."
-  translation: "Lo sentimos, el archivo que trata de% s tiene una longitud de menos de un segundo.\n"
+  translation: "D\303\251sol\303\251, le fichier que vous essay\303\251 de %s a une longueur de moins d\'une seconde."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 21
   index: 130
 }
 str {
   original: "Sorry, the file you tried to open, %s has a length of zero."
-  translation: "Lo sentimos, el archivo que ha intentado abrir,% s tiene una longitud de cero.\n"
+  translation: "D\303\251sol\303\251, le fichier que vous avez essay\303\251 d\'ouvrir, %s a une longueur de z\303\251ro."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 46
   index: 131
 }
 str {
   original: "Sorry, the program couldn\'t open your file %s."
-  translation: "Lo sentimos, el programa no pudo abrir el fichero% s.\n"
+  translation: "D\303\251sol\303\251, le programme n\'a pas pu ouvrir votre fichier %s."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 40
   index: 132
 }
 str {
   original: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
-  translation: "Lo sentimos, no fue un error eliminar la configuraci\303\263n. Por favor, avisa a support@worldwidewoodshed.com.\n"
+  translation: "D\303\251sol\303\251, il n\'y avait une erreur de compensation des param\303\250tres. S\'il vous pla\303\256t signaler \303\240 support@worldwidewoodshed.com."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 70
   index: 133
 }
 str {
   original: "Sorry, there wasn\'t enough memory for the file."
-  translation: "Lo sentimos, no hab\303\255a suficiente memoria para el archivo.\n"
+  translation: "D\303\251sol\303\251, il n\'y avait pas assez de m\303\251moire pour le fichier."
   file: "rec/slow/CurrentFile.cpp"
   line: 37
   index: 134
 }
 str {
   original: "Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted."
-  translation: "Lo sentimos, no hemos podido encontrar el archivo% s. Tal vez usted lo borr\303\263, o tal vez est\303\241 en una unidad que no est\303\241 montado.\n"
+  translation: "D\303\251sol\303\251, nous n\'avons pas pu trouver le fichier %s. Peut-\303\252tre vous l\'avez supprim\303\251, ou c\'est peut-\303\252tre sur un lecteur qui n\'est pas mont\303\251."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 32
   index: 135
 }
 str {
   original: "Sorry, we were unable to create a support request."
-  translation: "Lo sentimos, no hemos podido crear una solicitud de apoyo.\n"
+  translation: "D\303\251sol\303\251, nous n\'avons pas pu cr\303\251er une demande de soutien."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 32
   index: 136
 }
 str {
   original: "Start/stop"
-  translation: "De arranque / parada\n"
+  translation: "Marche / arr\303\252t"
   index: 137
 }
 str {
   original: "Start/Stop Button: Toggle between pause and play."
-  translation: "Start / Stop: Permite alternar entre pausa y reproducci\303\263n.\n"
+  translation: "Start / Stop: Basculer entre pause et la lecture."
   index: 138
 }
 str {
   original: "Stereo"
-  translation: "Est\303\251reo\n"
+  translation: "St\303\251r\303\251o"
   index: 139
 }
 str {
   original: "Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
-  translation: "Men\303\272 de procesamiento est\303\251reo: Elija entre el equipo de m\303\272sica original, s\303\263lo el canal izquierdo, s\303\263lo el canal derecho, o una mezcla mono de ambos canales.\n"
+  translation: "Menu de traitement st\303\251r\303\251o: Choisissez entre le st\303\251r\303\251o d\'origine, juste le canal gauche, la voie droite, ou un m\303\251lange des deux canaux mono."
   index: 140
 }
 str {
   original: "Stretch"
-  translation: "Estirar\n"
+  translation: "S\'\303\251tirer"
   index: 141
 }
 str {
   original: "Support Request: %s"
-  translation: "Soporte de pedidos:% s\n"
+  translation: "Demande de soutien: %s"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 39
   index: 142
 }
 str {
   original: "sysex"
-  translation: "SysEx\n"
+  translation: "sysex"
   file: "rec/command/map/MidiName.cpp"
   line: 14
   index: 143
 }
 str {
   original: "The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave."
-  translation: "La extensi\303\263n del archivo debe ser. AIFF,. Aif,. Flac,. Ogg,. Wav o. De onda.\n"
+  translation: "L\'extension du fichier doit \303\252tre. Aiff,. Aif,. Flac,. Ogg,. Wav ou. D\'onde."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 51
   index: 144
 }
 str {
   original: "The full path was: %s"
-  translation: "La ruta completa es:% s\n"
+  translation: "Le chemin d\'acc\303\250s complet \303\251tait: %s"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 33
   index: 145
 }
 str {
   original: "There was an error saving your file %s."
-  translation: "Hubo un error al guardar el archivo% s.\n"
+  translation: "Il y avait une erreur d\'enregistrer votre fichier %s."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 39
   index: 146
 }
 str {
   original: "This key is already assigned to the command"
-  translation: "Esta clave ya est\303\241 asignada a la orden\n"
+  translation: "Cette cl\303\251 est d\303\251j\303\240 affect\303\251 \303\240 la commande"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 10
   index: 147
 }
 str {
   original: "Time"
-  translation: "Tiempo\n"
+  translation: "Temps"
   index: 148
 }
 str {
   original: "Time Display: Shows the current playback time in minutes, seconds and millseconds."
-  translation: "Visualizaci\303\263n de tiempo: Muestra el tiempo de reproducci\303\263n actual en minutos, segundos y millseconds.\n"
+  translation: "Affichage de l\'heure: Indique le temps de lecture en cours en minutes, secondes et millseconds."
   index: 149
 }
 str {
   original: "Toggle..."
-  translation: "Activar ...\n"
+  translation: "Basculer ..."
   index: 150
 }
 str {
   original: "Track"
-  translation: "Rastrear\n"
+  translation: "Suivre"
   index: 151
 }
 str {
   original: "Track Notes: You can enter your notes here."
-  translation: "Seguimiento de Notas: Se pueden introducir las notas aqu\303\255.\n"
+  translation: "Suivre Notes: Vous pouvez entrer vos notes ici."
   index: 152
 }
 str {
   original: "Track Number: The album track number for this track"
-  translation: "Pista N\303\272mero: El n\303\272mero de pista \303\241lbum para esta pista\n"
+  translation: "Suivre Nombre: Le nombre piste de l\'album pour cette piste"
   index: 153
 }
 str {
   original: "Track tags: Tags that categorize this track."
-  translation: "Etiquetas de la pista: Las etiquetas que categorizan esta pista.\n"
+  translation: "Balises de piste: Mots-cl\303\251s qui cat\303\251gorisent cette piste."
   index: 154
 }
 str {
   original: "Track Title: The name of this track."
-  translation: "Track T\303\255tulo: El nombre de esta pista.\n"
+  translation: "Suivre Titre: Le nom de cette piste."
   index: 155
 }
 str {
   original: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
-  translation: "Transformar el bot\303\263n Activar: Activa o desactiva todas las transformaciones de sonido: tono, tiempo y procesamiento est\303\251reo, pero no tunen maestro.\n"
+  translation: "Transformez Activer Bouton: Activer ou d\303\251sactiver toutes les transformations sonores: la hauteur, de temps et de traitement en st\303\251r\303\251o, mais pas le ma\303\256tre Tunen."
   index: 156
 }
 str {
   original: "Transport"
-  translation: "Transporte\n"
+  translation: "Transports"
   index: 157
 }
 str {
   original: "Tried to read CD, id=%s, names=%s"
-  translation: "Trat\303\251 de leer discos CD, id =% s, los nombres =% s\n"
+  translation: "J\'ai essay\303\251 de lire les CD, id = %s, les noms = %s"
   file: "rec/util/cd/CDReader.cpp"
   line: 14
   index: 158
 }
 str {
   original: "Tune"
-  translation: "Melod\303\255a\n"
+  translation: "M\303\251lodie"
   index: 159
 }
 str {
   original: "Unable To Clear Settings"
-  translation: "No se puede borrar la configuraci\303\263n\n"
+  translation: "Impossible pour effacer les param\303\250tres"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 67
   index: 160
 }
 str {
   original: "Unknown CD: ID = 0x"
-  translation: "Desconocido CD: ID = 0x\n"
+  translation: "CD inconnu: ID = 0x"
   file: "rec/widget/tree/CD.cpp"
   line: 13
   index: 161
 }
 str {
   original: "Unselect..."
-  translation: "Elija ...\n"
+  translation: "D\303\251s\303\251lectionner ..."
   index: 162
 }
 str {
   original: "up"
-  translation: "hasta\n"
+  translation: "jusqu\'\303\240"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 44
   index: 163
 }
 str {
   original: "Volume"
-  translation: "Volumen\n"
+  translation: "Volume"
   index: 164
 }
 str {
   original: "Waiting for a MIDI note, program change or controller..."
-  translation: "En espera de una nota MIDI, cambio de programa o un controlador de ...\n"
+  translation: "En attente d\'une note MIDI, changement de programme ou d\'un contr\303\264leur ..."
   file: "rec/command/map/MidiCommandMapEditor.cpp"
   line: 14
   index: 165
 }
 str {
   original: "Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform."
-  translation: "Forma de onda de la ventana: Puede arrastrar archivos desde el escritorio o en tu reproductor de m\303\272sica aqu\303\255. Si su mouse tiene una rueda, lo utilizan para ampliar la forma de onda.\n"
+  translation: "Waveform Window: Vous pouvez faire glisser des fichiers depuis votre ordinateur ou votre lecteur de musique ici. Si votre souris poss\303\250de une molette, utilisez-le pour zoomer la forme d\'onde."
   index: 166
 }
 str {
   original: "We Can\'t Read .m4a Files On Windows"
-  translation: "No podemos leer. M4a en Windows\n"
+  translation: "Nous ne pouvons lire. Fichiers m4a Sous Windows"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 34
   index: 167
 }
 str {
   original: "Would you like to download it?"
-  translation: "\302\277Te gustar\303\255a que lo descargue?\n"
+  translation: "Aimeriez-vous pour le t\303\251l\303\251charger?"
   file: "rec/app/DownloadVersion.cpp"
   line: 23
   index: 168
 }
 str {
   original: "Year"
-  translation: "A\303\261o\n"
+  translation: "Ann\303\251e"
   index: 169
 }
 str {
   original: "You can throw the file away once your email is sent."
-  translation: "Usted puede lanzar el archivo de desaparecer una vez que ha enviado un correo.\n"
+  translation: "Vous pouvez jeter le fichier de suite une fois que votre email est envoy\303\251."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 38
   index: 170
 }
 str {
   original: "You cannot overwrite the current file."
-  translation: "No se puede sobrescribir el archivo actual.\n"
+  translation: "Vous ne pouvez pas \303\251craser le fichier actuel."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 52
   index: 171
 }
 str {
   original: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
-  translation: "Desea borrar * todos * los ajustes y salir SlowGold. \302\277Est\303\241 bien?\n"
+  translation: "Vous voulez effacer * tous * les param\303\250tres, et de quitter SlowGold. Est-ce OK?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 59
   index: 172
 }
 str {
   original: "You want to clear settings for this track only, and quit the program.  Is this OK?"
-  translation: "Desea borrar la configuraci\303\263n de esta \303\272nica pista y salir del programa. \302\277Est\303\241 bien?\n"
+  translation: "Vous voulez effacer les param\303\250tres pour cette seule piste, et quitter le programme. Est-ce OK?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 65
   index: 173
 }
 str {
   original: "Your File Was Empty."
-  translation: "El archivo estaba vac\303\255o.\n"
+  translation: "Votre dossier \303\251tait vide."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 44
   index: 174
 }
 str {
   original: "Your File Was Too Small."
-  translation: "El archivo era demasiado peque\303\261o.\n"
+  translation: "Votre fichier est trop petite."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 19
   index: 175
 }
 str {
   original: "Your Version Of SlowGold Is Up-To-Date"
-  translation: "Su versi\303\263n de SlowGold Is Up-To-Date\n"
+  translation: "Votre version de SlowGold Is Up-To-Date"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 45
   index: 176
 }
 str {
   original: "Your version of SlowGold, %s, is up-to-date."
-  translation: "Su versi\303\263n de SlowGold,% s, est\303\241 al d\303\255a.\n"
+  translation: "Votre version de SlowGold, %s, est mis \303\240 jour."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 46
   index: 177
 }
 str {
   original: "Zoom Mode: Clicking on the waveform zooms in on that point."
-  translation: "Modo Zoom: Al hacer clic en el zoom de forma de onda en en ese punto.\n"
+  translation: "Mode Zoom: En cliquant sur les zooms de forme d\'onde dans sur ce point."
   index: 178
 }
 str {
   original: "Zoom out"
-  translation: "Alejar\n"
+  translation: "Zoom arri\303\250re"
   index: 179
 }
 str {
   original: "Zoom Out Full Button: Zoom the waveform all the way out."
-  translation: "Bot\303\263n Alejar del todo: el zoom de la forma de onda todo el camino.\n"
+  translation: "Bouton Zoom arri\303\250re complet: Zoom la forme d\'onde tout le chemin."
   index: 180
 }
 str {
   original: "Zoom To Selection"
-  translation: "Acercar la selecci\303\263n\n"
+  translation: "Zoom sur la s\303\251lection"
   index: 181
 }
 str {
   original: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
-  translation: "Zoom Para bot\303\263n de selecci\303\263n: Acercar o alejar para toda la selecci\303\263n se ajusta a la forma de onda.\n"
+  translation: "Zoom Pour Bouton de s\303\251lection: zoom avant ou arri\303\250re de sorte que la s\303\251lection enti\303\250re correspond \303\240 la forme d\'onde."
   index: 182
 }
 max_index: 182

@@ -16,6 +16,7 @@ FIXES = (
   )
 
 def fixStrings(s):
+  s = proto.decode(s.strip())
   for f in FIXES:
     s = s.replace(*f);
   return s
@@ -38,7 +39,7 @@ def mergeOriginal(english, translated, newTranslation):
     new = newTranslation.dict.get(v.index, None)
     resultString.CopyFrom(v)
     if new:
-      resultString.translation = proto.decode(new)
+      resultString.translation = fixStrings(new)
     else:
       old = translated.dict.get(k, None)
       if old:

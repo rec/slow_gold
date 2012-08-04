@@ -73,17 +73,17 @@ def usageError(success=False, error=None, usage=USAGE):
     print usage
     raise ValueError
 
-def convertToCCode(data, convertNewLines=True):
-  nl = convertNewLines and '\\n"\n  "' or ' "\n"'
-  # end = convertNewLines and '\n' or ' '
-  end = ' '
-  data = '"%s%s"' % (data.replace(chr(13), '').
-                      replace('"', '\\"').
-                      replace('\n', nl), end)
-  res = ''.join(split.splitLargeLines(data.split('\n')))
+def escapeInput(data):
+  nl = '\\n"\n  "'
+  return (data.replace(chr(13), '').
+          replace('\\', '\\\\').
+          replace('"', '\\"').
+          replace('\n', nl))
 
-  if not (convertNewLines or res[-1].isspace()):
-    res += ' '
+def convertToCCode(data):
+  data = '"%s "' % escapeInput(data)
+  res = ''.join(split.splitLargeLines(data.split('\n')))
+  res += ' '
 
   return res
 
@@ -91,10 +91,10 @@ def write(name, template, **context):
   with open(name, 'w') as out:
     out.write(template.format(**context))
 
-def createCppFiles(file, groupname, protoname, namespace, includes, output):
-  group = GROUPS.get(groupname, None)
-  usageError(group, 'No group ' + groupname)
+def fixClassname(c):
+  return c.replace('-', '')
 
+def computePaths(file, namespace):
   name = os.path.abspath(file)
   splitPath = name.split('/src/')
   if len(splitPath) > 1:
@@ -116,11 +116,18 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
   if not path:
     path.insert(0, 'rec')
 
+  return name, path, originalPath, classname
+
+def createCppFiles(file, groupname, protoname, namespace, includes, output):
+  group = GROUPS.get(groupname, None)
+  usageError(group, 'No group ' + groupname)
+
+  name, path, originalPath, classname = computePaths(file, namespace)
   context = dict(
-    classname=classname,
+    classname=fixClassname(classname),
     commandline=' '.join(['new'] + sys.argv[1:]),
     filename='%s.%s' % (os.path.split(name)[1], groupname),
-    guard='__%s__' % '_'.join(s.upper() for s in path + [classname]),
+    guard='__%s__' % '_'.join(s.upper() for s in path + [fixClassname(classname)]),
     includes='\n'.join(includes),
     namespace='\n'.join('namespace %s {' % p for p in path),
     namespace_end='\n'.join('}  // namespace %s' % p for p in reversed(path)),
@@ -132,14 +139,14 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
     isDef = (datatype == 'def')
     if isDef:
       usageError(protoname, 'No --proto flag set')
-      context['classname'] = classname[0].lower() + classname[1:]
+      context['classname'] = fixClassname(classname[0].lower() + classname[1:])
 
     ft = group['filetype']
     datafile = '%s.%s' % (file, ft)
     data = open(datafile).read()
     if group.has_key('process'):
       data = group['process'](data)
-    data = convertToCCode(data, True or not isDef)
+    data = convertToCCode(data)
     context.update(data=data, datatype=datatype)
     header_file = '%s.%s.h' % (classname, ft)
   else:
@@ -147,6 +154,7 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
     ft = ''
 
   context.update(header_file = '/'.join(originalPath + [header_file]))
+
   for suffix in group['files']:
     wsuffix = suffix.replace('.data.', '.%s.' % ft)
     outfile = file + wsuffix
@@ -159,8 +167,9 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
 
 def parseArgs(args):
   optlist, args = getopt.getopt(args, 'p:',
-                                ['proto=', 'namespace=', 'include=', 'output='])
-  protoname, namespace, output = None, None, None
+                                ['proto=', 'namespace=', 'include=', 'output=',
+                                 'group='])
+  protoname, namespace, output, group = None, None, None, None
   includes = []
   for name, value in optlist:
     if name == '-p' or name == '--proto':
@@ -171,6 +180,9 @@ def parseArgs(args):
 
     elif name == '-o' or name == '--output':
       output = value
+
+    elif name == '-g' or name == '--group':
+      group = value
 
     elif name == '--include':
       value = value.split('/')
@@ -185,10 +197,11 @@ def parseArgs(args):
     arg = args.pop(0).split('.')
     if len(arg) > 1:
       file = '.'.join(arg[0 : -1])
-      createCppFiles(file, arg[-1], protoname, namespace, includes, output)
+      group = group or arg[-1]
+      createCppFiles(file, group, protoname, namespace, includes, output)
     else:
       usageError(args)  # Need at least one more argument
-      createCppFiles(arg, args.pop(0), protoname)
+      createCppFiles(arg, group, args.pop(0), protoname)
 
 if __name__ == "__main__":
   parseArgs(sys.argv[1:])

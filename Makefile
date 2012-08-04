@@ -4,19 +4,20 @@ BUILD_ROOT := $(ROOT)/projects/slow/Builds/MacOSX
 new := $(ROOT)/scripts/new/new.py
 
 icons := $(wildcard art/icon/*.svg)
-icon_code := $(patsubst art/icon/%.svg, genfiles/icon/rec/gui/icon/%.svg.cpp, $(icons))
-
 binaries := $(wildcard src/rec/command/*.xml)
-binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
-
 commands := $(wildcard src/rec/slow/commands/*.def)
+translations := $(wildcard text/??-TranslatedStrings.def)
+
+icon_code := $(patsubst art/icon/%.svg, genfiles/icon/rec/gui/icon/%.svg.cpp, $(icons))
+binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
 command_code := $(patsubst %.def, %.def.cpp, $(commands))
+translation_code := $(patsubst text/%-TranslatedStrings.def, genfiles/translations/rec/translation/%-TranslatedStrings.def.cpp, $(translations))
 
 all: code builddebug
 
 release: code builddebug buildrelease compress
 
-code: $(icon_code) $(binary_code) $(command_code)
+code: $(icon_code) $(binary_code) $(command_code) $(translation_code)
 
 builddebug:
 	cd $(BUILD_ROOT) && xcodebuild -project "SlowGold.xcodeproj" -configuration Debug
@@ -40,12 +41,19 @@ clean:
 genfiles/icon/rec/gui/icon/%.svg.cpp: art/icon/%.svg
 	$(new) --namespace=rec.gui.icon --output=genfiles/icon/rec/gui/icon $<
 
+genfiles/translations/rec/translation/%-TranslatedStrings.def.cpp: text/%-TranslatedStrings.def
+	$(new)\
+    --include=base/Trans.pb \
+    --proto=TranslatedStrings \
+    --namespace=rec.translation \
+    --output=genfiles/translation/rec/translation \
+    $<
+
 %.xml.cpp: %.xml
 	$(new) $<
 
 %.def.cpp: %.def
 	$(new)\
-    --include=command/Command\
-    --proto=command::Commands\
+    --include=command/Command \
+    --proto=command::Commands \
     $<
-

@@ -14,8 +14,6 @@ message TranslatedStrings {
   optional uint32 max_index = 2;
 };
 
-message TranslationUpdate {
-  optional TranslatedStrings unchanged = 1;
-  optional TranslatedStrings leaving = 2;
-  optional TranslatedStrings entering = 3;
+message Language {
+  optional string lang = 1 [default = 'en'];
 };

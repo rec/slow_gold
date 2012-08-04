@@ -5,6 +5,15 @@
     <Filter Include="RequestSupport">
       <UniqueIdentifier>{1C105019-1F9C-1772-BFA8-88B946115291}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RequestSupport\translation">
+      <UniqueIdentifier>{01CC86D2-BA87-C657-6989-5A0B3A54FA1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RequestSupport\translation\rec">
+      <UniqueIdentifier>{A4FB3992-5776-EDCD-1674-EA8B83DEEFDE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RequestSupport\translation\rec\translation">
+      <UniqueIdentifier>{1BFD38E5-E6F7-1BB8-6B46-91B35057F584}</UniqueIdentifier>
+    </Filter>
     <Filter Include="RequestSupport\rec">
       <UniqueIdentifier>{2FE084B8-5988-59CF-B847-F1691C6C8D68}</UniqueIdentifier>
     </Filter>
@@ -496,6 +505,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\de-TranslatedStrings.def.cpp">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\en-TranslatedStrings.def.cpp">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\es-TranslatedStrings.def.cpp">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\fr-TranslatedStrings.def.cpp">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\id-TranslatedStrings.def.cpp">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp">
       <Filter>RequestSupport\rec\app</Filter>
     </ClCompile>
@@ -2505,6 +2529,21 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\de-TranslatedStrings.def.h">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\en-TranslatedStrings.def.h">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\es-TranslatedStrings.def.h">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\fr-TranslatedStrings.def.h">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\id-TranslatedStrings.def.h">
+      <Filter>RequestSupport\translation\rec\translation</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\Application.h">
       <Filter>RequestSupport\rec\app</Filter>
     </ClInclude>
