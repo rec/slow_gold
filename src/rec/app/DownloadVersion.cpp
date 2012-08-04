@@ -119,7 +119,7 @@ DownloadStatus downloadNewVersionIfNeeded(const String& version,
     DOWNLOAD_CANCELLED_OR_FAILED;
 }
 
-void DownloadVersion::translateAll() {
+void DownloadVersion::registerAllTranslations() {
   NEW_VERSION.translate();
   LIKE_TO_DOWNLOAD.translate();
   DOWNLOAD_AND_QUIT.translate();

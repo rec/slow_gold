@@ -39,7 +39,7 @@ int getAudioTrackIndex(const AudioCDReader& reader, int track);
 String getCDKey(AudioCDReader* reader);
 
 struct CDReader {
-  static void translateAll();
+  static void registerAllTranslations();
 };
 
 }  // Namespace cd

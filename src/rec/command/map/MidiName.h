@@ -9,7 +9,7 @@ namespace command {
 String midiName(const MidiMessage& msg);
 
 struct MidiName {
-  static void translateAll();
+  static void registerAllTranslations();
 };
 
 }  // namespace command

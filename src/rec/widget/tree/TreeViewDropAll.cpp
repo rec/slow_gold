@@ -102,7 +102,7 @@ bool TreeViewDropAll::paste(const string& s) {
 
 #endif
 
-void TreeViewDropAll::translateAll() {
+void TreeViewDropAll::registerAllTranslations() {
 }
 
 }  // namespace tree

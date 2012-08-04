@@ -147,7 +147,7 @@ MusicFileReader::MusicFileReader(const VirtualFile& file) {
     data::setProto(*metadata, d, CANT_UNDO);
 }
 
-void MusicFileReader::translateAll() {
+void MusicFileReader::registerAllTranslations() {
   CANT_CREATE_TRACK.translate();
   COULDNT_OPEN_TRACK.translate();
   COULDNT_OPEN_TRACK_FULL.translate();

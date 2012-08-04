@@ -22,8 +22,10 @@ class Trans {
 
  private:
   ptr<TranslatedString> string_;
+  string hash_;
 
   void check(const string& s);
+  void computeHash();
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Trans);
 

@@ -62,7 +62,7 @@ void CD::computeChildren() {
   setOpen(true);
 }
 
-void CD::translateAll() {
+void CD::registerAllTranslations() {
   UNKNOWN_CD.translate();
   UNKNOWN_CD_FULL.translate();
 }

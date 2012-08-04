@@ -10,7 +10,7 @@ namespace command {
 typedef GenericCommandMapEditor<MidiCommandMap, MidiMessage> MidiCommandMapEditor;
 
 struct MidiCommandMapEditorTranslator {
-  static void translateAll();
+  static void registerAllTranslations();
 };
 
 }  // namespace command

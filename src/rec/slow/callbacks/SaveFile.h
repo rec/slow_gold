@@ -12,7 +12,7 @@ void saveFile(Instance* instance);
 void saveFileSelection(Instance* instance);
 
 struct SaveFile {
-  static void translateAll();
+  static void registerAllTranslations();
 };
 
 

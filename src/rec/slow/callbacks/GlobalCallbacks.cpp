@@ -181,7 +181,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::WHATS_NEW_PAGE, whatsNewPage);
 }
 
-void GlobalCallbacks::translateAll() {
+void GlobalCallbacks::registerAllTranslations() {
   CANCEL.translate();
   CANT_LOAD.translate();
   CANT_LOAD_FULL.translate();

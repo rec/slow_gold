@@ -9,7 +9,7 @@ namespace command {
 typedef GenericCommandMapEditor<KeyPressMappingSet, juce::KeyPress> KeyCommandMapEditor;
 
 struct KeyCommandMapEditorTranslator {
-  static void translateAll();
+  static void registerAllTranslations();
 };
 
 }  // namespace command

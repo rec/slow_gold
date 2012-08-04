@@ -17,7 +17,7 @@ DownloadStatus downloadNewVersionIfNeeded(const String& version,
                                           const String& name);
 
 struct DownloadVersion {
-  static void translateAll();
+  static void registerAllTranslations();
 };
 
 }  // namespace app

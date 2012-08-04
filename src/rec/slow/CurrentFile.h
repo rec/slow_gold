@@ -27,7 +27,7 @@ class CurrentFile : public HasInstance,
   bool empty() const { return !length(); }
   void setVirtualFile(const VirtualFile&, bool showError);
   void setFile(const File&);
-  static void translateAll();
+  static void registerAllTranslations();
   const VirtualFile file() const;
 
   const CriticalSection& lock() { return lock_; }

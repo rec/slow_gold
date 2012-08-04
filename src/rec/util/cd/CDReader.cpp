@@ -111,7 +111,7 @@ String getCDKey(AudioCDReader* reader) {
     (String::toHexString(c) + "-" + String::toHexString(r)).toUpperCase();
 }
 
-void CDReader::translateAll() {
+void CDReader::registerAllTranslations() {
   NO_AVAILBLE.translate();
   TRIED_TO_READ.translate();
 }

@@ -66,6 +66,7 @@ void Trans::dumpAll() {
 Trans::Trans(const char* original) : string_(new TranslatedString) {
   string_->set_original(original);
   check(string_->original());
+  computeHash();
 }
 
 Trans::Trans(const char* original, const char* file, int line)
@@ -74,6 +75,7 @@ Trans::Trans(const char* original, const char* file, int line)
   string_->set_file(cleanFile(file));
   string_->set_line(line);
   check(string_->original());
+  computeHash();
 }
 
 Trans::Trans(const String& original, const char* file, int line)
@@ -82,6 +84,7 @@ Trans::Trans(const String& original, const char* file, int line)
   string_->set_file(cleanFile(file));
   string_->set_line(line);
   check(string_->original());
+  computeHash();
 }
 
 Trans::Trans(const char* original, const char* hint, const char* file, int line)
@@ -92,6 +95,11 @@ Trans::Trans(const char* original, const char* hint, const char* file, int line)
   string_->set_hint(hint);
   check(string_->original());
   check(string_->hint());
+  computeHash();
+}
+
+void Trans::computeHash() {
+  hash_ = string_->original() + "###" + string_->hint();
 }
 
 Trans::~Trans() {
@@ -128,4 +136,3 @@ void Trans::translate() const {
 }
 
 }  // namespace rec
-

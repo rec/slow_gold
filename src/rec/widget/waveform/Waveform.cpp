@@ -267,7 +267,7 @@ void Waveform::setSelected(int index, bool selected) {
   DataListener<Viewport>::setProto(viewport);
 }
 
-void Waveform::translateAll() {
+void Waveform::registerAllTranslations() {
   LOOP_POINT_TOOLTIP.translate();
 }
 

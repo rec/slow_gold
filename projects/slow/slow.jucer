@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="s6vkqU0yJ" name="SlowGold">
+  <MAINGROUP id="6CMtBEHy0" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -909,6 +909,10 @@
               name="MouseListener.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MouseListener.h" id="GkvgN9kNF"
               name="MouseListener.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/RegisterAllTranslations.cpp"
+              id="BZsEdelaf" name="RegisterAllTranslations.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/RegisterAllTranslations.h"
+              id="2jvPw04gr" name="RegisterAllTranslations.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/RegisterProtos.cpp" id="6Egwa3zvs"
               name="RegisterProtos.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/RegisterProtos.h" id="a8RDtMV42"
@@ -925,16 +929,16 @@
               name="Threads.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Threads.h" id="T7jk37oov"
               name="Threads.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/TranslateAll.cpp" id="yLgIYYSsq"
-              name="TranslateAll.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/TranslateAll.h" id="khzL4JPxk"
-              name="TranslateAll.h" resource="0"/>
       </GROUP>
       <GROUP id="9KgXHos5p" name="support">
         <FILE compile="1" file="../../src/rec/support/SupportWindow.cpp" id="ABP0chzrz"
               name="SupportWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/support/SupportWindow.h" id="j9xbDHQul"
               name="SupportWindow.h" resource="0"/>
+      </GROUP>
+      <GROUP id="YNxfFAQDT" name="translation">
+        <FILE compile="0" file="../../src/rec/translation/TranslationTables.h"
+              id="Xp0lLIQ0c" name="TranslationTables.h" resource="0"/>
       </GROUP>
       <GROUP id="WJnE1pJSy" name="util">
         <FILE compile="1" file="../../src/rec/util/Binary.cpp" id="H5IKbBd1M"
@@ -1603,7 +1607,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="PTzEdocdD" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="HWzfgYWJr" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

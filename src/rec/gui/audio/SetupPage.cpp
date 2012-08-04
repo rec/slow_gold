@@ -35,7 +35,7 @@ void SetupPage::show(Component* comp) {
   device_->saveState();
 }
 
-void SetupPage::translateAll() {
+void SetupPage::registerAllTranslations() {
   SET_AUDIO_PREFERENCES.translate();
 }
 

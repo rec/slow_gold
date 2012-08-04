@@ -130,7 +130,7 @@ void MidiCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton
      }
 }
 
-void MidiCommandMapEditorTranslator::translateAll() {
+void MidiCommandMapEditorTranslator::registerAllTranslations() {
   WAITING.translate();
   MIDI.translate();
 }

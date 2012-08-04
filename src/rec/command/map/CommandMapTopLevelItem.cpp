@@ -60,7 +60,7 @@ void CommandMapTopLevelItem::buttonClicked (Button*)
       ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));
 }
 
-void CommandMapTopLevelItem::translateAll() {
+void CommandMapTopLevelItem::registerAllTranslations() {
   RESET_TO_DEFAULTS.translate();
   SURE_YOU_RESET.translate();
   RESET.translate();

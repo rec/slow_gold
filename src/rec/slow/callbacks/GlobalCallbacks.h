@@ -10,7 +10,7 @@ void addGlobalCallbacks(command::CommandRecordTable* t);
 void requestSupport();
 
 struct GlobalCallbacks {
-  static void translateAll();
+  static void registerAllTranslations();
 };
 
 }  // namespace slow

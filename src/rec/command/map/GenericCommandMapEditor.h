@@ -15,7 +15,7 @@ bool showCommandMapBox(const String& command,
 String currentlyAssignedTo(const String& commandName);
 
 struct CommandMapEditorTranslation {
-  static void translateAll();
+  static void registerAllTranslations();
 };
 
 template <typename MappingSet, typename Key>

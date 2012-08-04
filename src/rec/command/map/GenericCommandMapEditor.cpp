@@ -28,7 +28,7 @@ String currentlyAssignedTo(const String& commandName) {
   return str("\n\n(" + CURRENTLY_ASSIGNED + " \"" + commandName + "\")");
 }
 
-void CommandMapEditorTranslation::translateAll() {
+void CommandMapEditorTranslation::registerAllTranslations() {
   CHANGE_KEY_MAPPING.translate();
   THIS_KEY_ASSIGNED.translate();
   WANT_TO_REASSIGN.translate();

@@ -95,6 +95,9 @@
     <Filter Include="RequestSupport\rec\support">
       <UniqueIdentifier>{292E48E9-1213-F187-5BCB-C8E17F132E2B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RequestSupport\rec\translation">
+      <UniqueIdentifier>{488896FB-CFF8-3E32-ED43-CE6FC5908AE0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="RequestSupport\rec\util">
       <UniqueIdentifier>{A8BF1B96-FD2F-E155-4952-FD44D034A42B}</UniqueIdentifier>
     </Filter>
@@ -982,6 +985,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
       <Filter>RequestSupport\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\RegisterAllTranslations.cpp">
+      <Filter>RequestSupport\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\RegisterProtos.cpp">
       <Filter>RequestSupport\rec\slow</Filter>
     </ClCompile>
@@ -992,9 +998,6 @@
       <Filter>RequestSupport\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
-      <Filter>RequestSupport\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\TranslateAll.cpp">
       <Filter>RequestSupport\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\support\SupportWindow.cpp">
@@ -3270,6 +3273,9 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">
       <Filter>RequestSupport\rec\slow</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\RegisterAllTranslations.h">
+      <Filter>RequestSupport\rec\slow</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\RegisterProtos.h">
       <Filter>RequestSupport\rec\slow</Filter>
     </ClInclude>
@@ -3282,11 +3288,11 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
       <Filter>RequestSupport\rec\slow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\TranslateAll.h">
-      <Filter>RequestSupport\rec\slow</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\support\SupportWindow.h">
       <Filter>RequestSupport\rec\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\translation\TranslationTables.h">
+      <Filter>RequestSupport\rec\translation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">
       <Filter>RequestSupport\rec\util</Filter>

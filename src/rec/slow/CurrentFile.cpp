@@ -165,7 +165,7 @@ void CurrentFile::setViewport() {
   data::setProto(viewport, file_, CANT_UNDO);
 }
 
-void CurrentFile::translateAll() {
+void CurrentFile::registerAllTranslations() {
   RAN_OUT_OF_MEMORY.translate();
   RAN_OUT_OF_MEMORY_FULL.translate();
 }

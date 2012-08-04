@@ -128,7 +128,7 @@ void AboutWindow::mouseDown(const MouseEvent&) {
     window()->stopAboutWindow();
 }
 
-void AboutWindow::translateAll() {
+void AboutWindow::registerAllTranslations() {
   CD_AUTOMATIC.translate();
   COPYRIGHT.translate();
   CREATE_LOOPS.translate();

@@ -98,7 +98,7 @@ void KeyCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton*
      }
 }
 
-void KeyCommandMapEditorTranslator::translateAll() {
+void KeyCommandMapEditorTranslator::registerAllTranslations() {
   PRESS_A_KEY.translate();
   KEY.translate();
 }

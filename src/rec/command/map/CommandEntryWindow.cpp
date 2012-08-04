@@ -27,7 +27,7 @@ CommandEntryWindow::CommandEntryWindow(const String& caption)
   grabKeyboardFocus();
 }
 
-void CommandEntryWindow::translateAll() {
+void CommandEntryWindow::registerAllTranslations() {
   NEW_COMMAND_MAPPING.translate();
   OK.translate();
   CANCEL.translate();

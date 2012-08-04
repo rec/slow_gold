@@ -72,7 +72,7 @@ public:
     /** @internal */
     void resized();
 
-    static void translateAll();
+    static void registerAllTranslations();
 
 protected:
     ApplicationCommandManager& commandManager;

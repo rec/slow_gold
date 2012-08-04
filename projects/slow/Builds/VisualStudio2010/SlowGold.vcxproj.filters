@@ -95,6 +95,9 @@
     <Filter Include="SlowGold\rec\support">
       <UniqueIdentifier>{A7DDAAB4-1EC7-1D84-8706-6775EA879766}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\rec\translation">
+      <UniqueIdentifier>{A7E16DE2-FF97-0C5C-F2CE-BB3FCA744039}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\rec\util">
       <UniqueIdentifier>{AB97C84D-F93E-4E3D-487A-D66451F7955F}</UniqueIdentifier>
     </Filter>
@@ -982,6 +985,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\RegisterAllTranslations.cpp">
+      <Filter>SlowGold\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\RegisterProtos.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
@@ -992,9 +998,6 @@
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
-      <Filter>SlowGold\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\TranslateAll.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\support\SupportWindow.cpp">
@@ -3270,6 +3273,9 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\RegisterAllTranslations.h">
+      <Filter>SlowGold\rec\slow</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\RegisterProtos.h">
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
@@ -3282,11 +3288,11 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\TranslateAll.h">
-      <Filter>SlowGold\rec\slow</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\support\SupportWindow.h">
       <Filter>SlowGold\rec\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\translation\TranslationTables.h">
+      <Filter>SlowGold\rec\translation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">
       <Filter>SlowGold\rec\util</Filter>

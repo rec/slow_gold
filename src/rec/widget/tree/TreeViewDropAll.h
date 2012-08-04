@@ -34,7 +34,7 @@ class TreeViewDropAll : public TreeViewDropTarget
   const string cuttableName() const { return "Navigator"; }
 #endif
 
-  static void translateAll();
+  static void registerAllTranslations();
 
  private:
   ptr<Drawable> slowGoldIcon_;

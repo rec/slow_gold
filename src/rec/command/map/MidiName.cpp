@@ -41,7 +41,7 @@ String midiName(const MidiMessage& m) {
   return "?";
 }
 
-void MidiName::translateAll() {
+void MidiName::registerAllTranslations() {
   AS.translate();
   SYSEX.translate();
   NOTE_OFF.translate();

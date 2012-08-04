@@ -342,7 +342,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates, i);
 }
 
-void InstanceCallbacks::translateAll() {
+void InstanceCallbacks::registerAllTranslations() {
   NO_DOWNLOAD_FOUND.translate();
   NO_DOWNLOAD_FOUND_FULL.translate();
   OK.translate();

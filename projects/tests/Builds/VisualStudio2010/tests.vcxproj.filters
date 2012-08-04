@@ -95,6 +95,9 @@
     <Filter Include="tests\rec\support">
       <UniqueIdentifier>{4D27BEAE-D579-E010-87A9-514C32D8D18D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tests\rec\translation">
+      <UniqueIdentifier>{3EFC0ABF-92BB-1E55-75EE-2E7BA0150795}</UniqueIdentifier>
+    </Filter>
     <Filter Include="tests\rec\util">
       <UniqueIdentifier>{D5BF9AC3-8045-2075-BBC3-3017DB7BF5DB}</UniqueIdentifier>
     </Filter>
@@ -1015,6 +1018,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
       <Filter>tests\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\RegisterAllTranslations.cpp">
+      <Filter>tests\rec\slow</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\RegisterProtos.cpp">
       <Filter>tests\rec\slow</Filter>
     </ClCompile>
@@ -1025,9 +1031,6 @@
       <Filter>tests\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
-      <Filter>tests\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\TranslateAll.cpp">
       <Filter>tests\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\support\SupportWindow.cpp">
@@ -3345,6 +3348,9 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">
       <Filter>tests\rec\slow</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\RegisterAllTranslations.h">
+      <Filter>tests\rec\slow</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\RegisterProtos.h">
       <Filter>tests\rec\slow</Filter>
     </ClInclude>
@@ -3357,11 +3363,11 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
       <Filter>tests\rec\slow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\TranslateAll.h">
-      <Filter>tests\rec\slow</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\support\SupportWindow.h">
       <Filter>tests\rec\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\translation\TranslationTables.h">
+      <Filter>tests\rec\translation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">
       <Filter>tests\rec\util</Filter>

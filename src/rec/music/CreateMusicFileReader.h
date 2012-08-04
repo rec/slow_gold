@@ -22,7 +22,7 @@ class MusicFileReader {
     errorDetails_ = details;
   }
 
-  static void translateAll();
+  static void registerAllTranslations();
 
  private:
   ptr<AudioFormatReader> reader_;

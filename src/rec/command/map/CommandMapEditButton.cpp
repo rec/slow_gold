@@ -80,7 +80,7 @@ void CommandMapEditButton::fitToContent (const int h) noexcept
     }
 }
 
-void CommandMapEditButton::translateAll() {
+void CommandMapEditButton::registerAllTranslations() {
   ADD_NEW_KEY_MAPPING.translate();
   CHANGE_KEY_MAPPING.translate();
   CHANGE_COMMAND_MAPPING.translate();

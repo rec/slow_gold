@@ -85,7 +85,7 @@ bool CommandMapEditor::isCommandReadOnly (const CommandID commandID)
     return ci != nullptr && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor) != 0;
 }
 
-void CommandMapEditor::translateAll() {
+void CommandMapEditor::registerAllTranslations() {
   RESET_TO_DEFAULTS.translate();
 }
 

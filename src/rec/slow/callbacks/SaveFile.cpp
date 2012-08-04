@@ -308,7 +308,7 @@ void saveFileSelection(Instance* instance) {
   doSaveFile(instance, true);
 }
 
-void SaveFile::translateAll() {
+void SaveFile::registerAllTranslations() {
   FILE_SAVE_FAILED.translate();
   FILE_SAVE_FAILED_FULL.translate();
   FINISHING_LOADING.translate();
