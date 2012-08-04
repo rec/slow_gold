@@ -1003,6 +1003,9 @@
     <ClCompile Include="..\..\..\..\src\rec\support\SupportWindow.cpp">
       <Filter>SlowGold\rec\support</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\translation\TranslationTables.cpp">
+      <Filter>SlowGold\rec\translation</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp">
       <Filter>SlowGold\rec\util</Filter>
     </ClCompile>
@@ -1275,6 +1278,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc">
       <Filter>SlowGold\proto\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\base\Internationalization.pb.cc">
+      <Filter>SlowGold\proto\rec\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\base\Trans.pb.cc">
       <Filter>SlowGold\proto\rec\base</Filter>
@@ -3716,6 +3722,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h">
       <Filter>SlowGold\proto\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\base\Internationalization.pb.h">
+      <Filter>SlowGold\proto\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\base\Trans.pb.h">
       <Filter>SlowGold\proto\rec\base</Filter>

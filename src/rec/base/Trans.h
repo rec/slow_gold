@@ -25,14 +25,11 @@ class Trans {
 
  private:
   ptr<TranslatedString> string_;
-  string hash_;
-  CriticalSection lock_;
-  bool translationRegistered_;
-
+  mutable bool translationRegistered_;
   Language language_;
+  CriticalSection lock_;
 
   void check(const string& s);
-  void computeHash();
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Trans);
 

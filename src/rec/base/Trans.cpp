@@ -65,47 +65,43 @@ void Trans::dumpAll() {
 
 Trans::Trans(const char* original)
     : string_(new TranslatedString),
-      language_(Internationalization::EN) {
+      translationRegistered_(false),
+      language_(Internationalization::NONE) {
   string_->set_original(original);
   check(string_->original());
-  computeHash();
 }
 
 Trans::Trans(const char* original, const char* file, int line)
     : string_(new TranslatedString),
-      language_(Internationalization::EN) {
+      translationRegistered_(false),
+      language_(Internationalization::NONE) {
   string_->set_original(original);
   string_->set_file(cleanFile(file));
   string_->set_line(line);
   check(string_->original());
-  computeHash();
 }
 
 Trans::Trans(const String& original, const char* file, int line)
     : string_(new TranslatedString),
-      language_(Internationalization::EN) {
+      translationRegistered_(false),
+      language_(Internationalization::NONE) {
   string_->set_original(str(original));
   string_->set_file(cleanFile(file));
   string_->set_line(line);
   check(string_->original());
-  computeHash();
 }
 
 Trans::Trans(const char* original, const char* hint, const char* file, int line)
     : string_(new TranslatedString),
-      language_(Internationalization::EN) {
+      translationRegistered_(false),
+      language_(Internationalization::NONE) {
   string_->set_original(original);
   string_->set_file(cleanFile(file));
   string_->set_line(line);
   string_->set_hint(hint);
   check(string_->original());
   check(string_->hint());
-  computeHash();
-}
-
-void Trans::computeHash() {
-  hash_ = string_->original() + "###" + string_->hint();
-}
+ }
 
 Trans::~Trans() {
 #if JUCE_DEBUG && JUCE_MAC
@@ -126,18 +122,18 @@ void Trans::check(const string& st) {
 }
 
 Trans::operator String() const {
-  if (!string_->has_translation())
-   registerTranslation();
-  return str(string_->translation());
+  registerTranslation();
+  return str(string_->original());
 }
 
 void Trans::registerTranslation() const {
-  String s(str(string_->original()));
-  string_->set_translation(str(juce::translate(s)));
-
+  Lock l(lock_);
+  if (!translationRegistered_) {
+    translationRegistered_ = true;
 #if JUCE_DEBUG && JUCE_MAC
-  rec::registerTranslation(*string_);
+    rec::registerTranslation(*string_);
 #endif
+  }
 }
 
 }  // namespace rec

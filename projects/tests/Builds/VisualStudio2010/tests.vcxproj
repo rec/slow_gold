@@ -308,6 +308,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\support\SupportWindow.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\translation\TranslationTables.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Binary.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\cd\Album_test.cpp"/>
@@ -412,6 +413,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\BufferManager.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\base\Internationalization.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\base\Trans.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc"/>
@@ -1893,6 +1895,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\BufferManager.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\base\Internationalization.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\base\Trans.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.h"/>
