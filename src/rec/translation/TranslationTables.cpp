@@ -17,7 +17,7 @@ namespace {
 
 typedef std::map<string, string> StringMap;
 
-string makeHash(const TranslatedString s) {
+string makeHash(const TranslatedString& s) {
   return s.original() + "###" + s.hint();
 }
 
@@ -33,6 +33,7 @@ StringMap* makeStringMap(const TranslatedStrings& ts) {
 
 struct Translations {
   Translations() : maps_(Internat::LAST + 1) {
+    maps_[Internat::NONE] = NULL;
     maps_[Internat::DE] = makeStringMap(*deTranslatedStrings);
     maps_[Internat::EN] = makeStringMap(*enTranslatedStrings);
     maps_[Internat::ES] = makeStringMap(*esTranslatedStrings);
@@ -45,7 +46,7 @@ struct Translations {
   Maps maps_;
 };
 
-const Translations& translation() {
+const Translations& translations() {
   static Translations tr;
   return tr;
 }
@@ -57,14 +58,21 @@ const CriticalSection& lock() {
 
 }  // namespace
 
-
 Language getLanguage() {
   Lock l(lock());
   return data::getProto<Internat>().language();
 };
 
-string translate(const TranslatedString& translation) {
-  return string();
+string translate(const TranslatedString& original) {
+  Lock l(lock());
+  Language lang = getLanguage();
+  if (const StringMap* map = translations().maps_[lang]) {
+    StringMap::const_iterator i = map->find(makeHash(original));
+    if (i != map->end())
+      return i->second;
+  }
+
+  return original.original();
 }
 
 }  // namespace translation
