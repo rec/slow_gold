@@ -6,13 +6,43 @@
 #include "rec/command/TargetManager.h"
 #include "rec/data/DataOps.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/translation/TranslationTables.h"
 #include "rec/util/Cuttable.h"
+#include "rec/util/STL.h"
 #include "rec/util/Undo.h"
 
 namespace rec {
 namespace slow {
 
 using namespace rec::command;
+
+namespace {
+
+class LangNames {
+ public:
+  LangNames() {
+    trans_.push_back(NULL);
+    trans_.push_back(new Trans("German"));
+    trans_.push_back(new Trans("English"));
+    trans_.push_back(new Trans("Spanish"));
+    trans_.push_back(new Trans("French"));
+    trans_.push_back(new Trans("Indonesian"));
+  }
+  ~LangNames() { stl::deletePointers(&trans_); }
+
+  const Trans& getName(int lang) const { return *(trans_[lang]); }
+
+ private:
+  typedef std::vector<Trans*> TransVector;
+  TransVector trans_;
+};
+
+const Trans& langName(int lang) {
+  static LangNames names;
+  return names.getName(lang);
+}
+
+}  // namespace
 
 void BasicMenuMaker::addFileMenu() {
   add(Command::OPEN);
@@ -53,7 +83,20 @@ void BasicMenuMaker::addFileMenu() {
   menu_.addSeparator();
 #endif
 
+  Language lang = translation::getLanguage();
+  PopupMenu langMenu;
+
+  addRepeat(Command::SET_LANGUAGE, lang, String(langName(lang)), &langMenu, TICKED);
+
+  for (int i = Internat::FIRST; i <= Internat::LAST; ++i) {
+    if (i != lang)
+      addRepeat(Command::SET_LANGUAGE, i, String(langName(i)), &langMenu, TICKED);
+  }
+  menu_.addSubMenu(Trans("Language"), langMenu);
+
 #if !JUCE_MAC
+  menu_.addSeparator();
+
   add(Command::ABOUT_THIS_PROGRAM);
   add(Command::QUIT);
 #endif

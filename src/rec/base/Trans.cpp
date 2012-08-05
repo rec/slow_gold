@@ -133,6 +133,7 @@ void Trans::registerTranslation() const {
 #if JUCE_DEBUG && JUCE_MAC
     rec::registerTranslation(*string_);
 #endif
+    string_->set_translation(string_->original());
   }
 }
 

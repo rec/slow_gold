@@ -10,7 +10,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='rec/command/Command.proto',
   package='rec.command',
-  serialized_pb='\n\x19rec/command/Command.proto\x12\x0brec.command\x1a\x1crec/data/proto/Address.proto\"7\n\x0b\x44\x65scription\x12\x0c\n\x04menu\x18\x01 \x03(\t\x12\x0c\n\x04\x66ull\x18\x02 \x03(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"\xab\x13\n\x07\x43ommand\x12\'\n\x04type\x18\x01 \x01(\x0e\x32\x19.rec.command.Command.Type\x12\r\n\x05index\x18\x02 \x01(\x11\x12\x13\n\x0bstart_index\x18\n \x01(\x11\x12\x10\n\x08\x63\x61tegory\x18\x03 \x01(\t\x12&\n\x04\x64\x65sc\x18\x04 \x01(\x0b\x32\x18.rec.command.Description\x12\x10\n\x08keypress\x18\x05 \x03(\t\x12\x11\n\tis_setter\x18\x06 \x01(\x08\x12\x18\n\x10is_global_setter\x18\x07 \x01(\x08\x12\'\n\x07\x61\x64\x64ress\x18\x08 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x18\n\x10setter_type_name\x18\t \x01(\t\"\x96\x11\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\x16\n\x12\x41\x42OUT_THIS_PROGRAM\x10:\x12\x12\n\x0e\x41\x44\x44_LOOP_POINT\x10\x01\x12\x15\n\x11\x41UDIO_PREFERENCES\x10\x02\x12\x15\n\x11\x43HECK_FOR_UPDATES\x10\x44\x12\x1b\n\x17\x43LEAR_KEYBOARD_MAPPINGS\x10[\x12\x17\n\x13\x43LEAR_MIDI_MAPPINGS\x10\\\x12\x0f\n\x0b\x43LEAR_LOOPS\x10\x04\x12\x13\n\x0f\x43LEAR_NAVIGATOR\x10\x03\x12\x16\n\x12\x43LEAR_ALL_SETTINGS\x10O\x12!\n\x1d\x43LEAR_SETTINGS_FOR_THIS_TRACK\x10P\x12\x19\n\x15\x43LEAR_SAVED_FILE_DATA\x10\x05\x12\x0e\n\nCLOSE_FILE\x10\x06\x12\x15\n\x11\x44IM_VOLUME_TOGGLE\x10\x07\x12\r\n\tEJECT_CDS\x10\x08\x12\x1c\n\x18\x45XPORT_KEYBOARD_MAPPINGS\x10R\x12\x18\n\x14\x45XPORT_MIDI_MAPPINGS\x10S\x12\x13\n\x0f\x45XPORT_SETTINGS\x10K\x12\x1c\n\x18IMPORT_KEYBOARD_MAPPINGS\x10T\x12\x18\n\x14IMPORT_MIDI_MAPPINGS\x10U\x12\x13\n\x0fIMPORT_SETTINGS\x10L\x12\x19\n\x15INVERT_LOOP_SELECTION\x10\t\x12\x08\n\x04JUMP\x10\n\x12\x11\n\rJUMP_SELECTED\x10\x0b\x12\x15\n\x11KEYBOARD_MAPPINGS\x10\x0c\x12\x11\n\rMIDI_MAPPINGS\x10\r\x12\x17\n\x13MODE_ADD_LOOP_POINT\x10?\x12\r\n\tMODE_DRAG\x10<\x12\x11\n\rMODE_SET_TIME\x10=\x12\x10\n\x0cMODE_ZOOM_IN\x10>\x12\x16\n\x12MUTE_VOLUME_TOGGLE\x10\x0e\x12\x12\n\x0eNUDGE_BACKWARD\x10Y\x12\x11\n\rNUDGE_FORWARD\x10Z\x12\x14\n\x10NUDGE_BEGIN_LEFT\x10\x0f\x12\x15\n\x11NUDGE_BEGIN_RIGHT\x10\x10\x12\x12\n\x0eNUDGE_END_LEFT\x10\x11\x12\x13\n\x0fNUDGE_END_RIGHT\x10\x12\x12\x14\n\x10NUDGE_SPEED_DOWN\x10V\x12\x12\n\x0eNUDGE_SPEED_UP\x10W\x12\x15\n\x11NUDGE_VOLUME_DOWN\x10\x13\x12\x13\n\x0fNUDGE_VOLUME_UP\x10\x14\x12\x08\n\x04OPEN\x10\x15\x12\x0f\n\x0bOPEN_MANUAL\x10\x41\x12\x16\n\x12OPEN_PREVIOUS_FILE\x10N\x12\x1b\n\x17OPEN_SLOWGOLD_DIRECTORY\x10J\x12\x10\n\x0cRECENT_FILES\x10\x16\x12\x08\n\x04REDO\x10\x17\x12\x13\n\x0fREQUEST_SUPPORT\x10\x42\x12\x17\n\x13RESET_GAIN_TO_UNITY\x10\x18\x12\r\n\tSAVE_FILE\x10\x45\x12\x17\n\x13SAVE_FILE_SELECTION\x10\x46\x12\n\n\x06SELECT\x10\x19\x12\x0f\n\x0bSELECT_ONLY\x10\x1a\x12\x13\n\x0fSET_SAVE_FORMAT\x10G\x12\x19\n\x15TOGGLE_ADVANCED_MENUS\x10;\x12\x1c\n\x18TOGGLE_AUTOMATIC_UPDATES\x10\x43\x12\x18\n\x14TOGGLE_FOLLOW_CURSOR\x10+\x12\x17\n\x13TOGGLE_GRID_DISPLAY\x10\x1b\x12\x1e\n\x1aTOGGLE_COMMAND_BAR_AT_LEFT\x10\x36\x12\x1d\n\x19TOGGLE_COMMAND_BAR_AT_TOP\x10\x37\x12!\n\x1dTOGGLE_FILE_OPEN_TREE_DISPLAY\x10H\x12\x18\n\x14TOGGLE_MODES_AT_LEFT\x10\x38\x12\x17\n\x13TOGGLE_MODES_AT_TOP\x10\x39\x12\x1d\n\x19TOGGLE_PARALLEL_WAVEFORMS\x10*\x12\x1a\n\x16TOGGLE_PREFADER_LEVELS\x10.\x12\x14\n\x10TOGGLE_SELECTION\x10)\x12\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\x10Q\x12\x1d\n\x19TOGGLE_SHOW_CURSOR_LABELS\x10\x33\x12\x19\n\x15TOGGLE_SHOW_HELP_PANE\x10\x31\x12\x1d\n\x19TOGGLE_SHOW_LABELS_AT_TOP\x10\x34\x12\x1b\n\x17TOGGLE_SHOW_MASTER_TUNE\x10M\x12!\n\x1dTOGGLE_SHOW_SELECTION_BUTTONS\x10\x32\x12\x1c\n\x18TOGGLE_SHOW_TIMES_AT_TOP\x10\x35\x12\x18\n\x14TOGGLE_SHOW_TOOLTIPS\x10\x30\x12\x15\n\x11TOGGLE_START_STOP\x10\x1c\x12\x19\n\x15TOGGLE_STRETCH_ENABLE\x10\x1d\x12\x1b\n\x17TOGGLE_TRANSFORM_ENABLE\x10X\x12\x1a\n\x16TOGGLE_WHOLE_SONG_LOOP\x10\x1e\x12\x0e\n\nTREE_CLOSE\x10\x1f\x12\r\n\tTREE_DOWN\x10 \x12\r\n\tTREE_LEFT\x10!\x12\r\n\tTREE_OPEN\x10\"\x12\x0e\n\nTREE_RIGHT\x10#\x12\x0b\n\x07TREE_UP\x10$\x12\x08\n\x04UNDO\x10%\x12\x0c\n\x08UNSELECT\x10&\x12\x12\n\x0eWHATS_NEW_PAGE\x10I\x12\x0b\n\x07ZOOM_IN\x10\'\x12\x0c\n\x08ZOOM_OUT\x10(\x12\x11\n\rZOOM_OUT_FULL\x10@\x12\x15\n\x11ZOOM_TO_SELECTION\x10-\x12\r\n\tLAST_TYPE\x10\\\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \x12\x0f\n\nJUCE_START\x10\x81 \x12\r\n\x08JUCE_END\x10\x87 \x12\x0f\n\tBANK_SIZE\x10\xa0\x8d\x06\"1\n\x08\x43ommands\x12%\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x14.rec.command.Command\"&\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"3\n\x07Mapping\x12(\n\tkey_value\x18\x01 \x03(\x0b\x32\x15.rec.command.KeyValue')
+  serialized_pb='\n\x19rec/command/Command.proto\x12\x0brec.command\x1a\x1crec/data/proto/Address.proto\"7\n\x0b\x44\x65scription\x12\x0c\n\x04menu\x18\x01 \x03(\t\x12\x0c\n\x04\x66ull\x18\x02 \x03(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"\xbd\x13\n\x07\x43ommand\x12\'\n\x04type\x18\x01 \x01(\x0e\x32\x19.rec.command.Command.Type\x12\r\n\x05index\x18\x02 \x01(\x11\x12\x13\n\x0bstart_index\x18\n \x01(\x11\x12\x10\n\x08\x63\x61tegory\x18\x03 \x01(\t\x12&\n\x04\x64\x65sc\x18\x04 \x01(\x0b\x32\x18.rec.command.Description\x12\x10\n\x08keypress\x18\x05 \x03(\t\x12\x11\n\tis_setter\x18\x06 \x01(\x08\x12\x18\n\x10is_global_setter\x18\x07 \x01(\x08\x12\'\n\x07\x61\x64\x64ress\x18\x08 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x18\n\x10setter_type_name\x18\t \x01(\t\"\xa8\x11\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\x16\n\x12\x41\x42OUT_THIS_PROGRAM\x10:\x12\x12\n\x0e\x41\x44\x44_LOOP_POINT\x10\x01\x12\x15\n\x11\x41UDIO_PREFERENCES\x10\x02\x12\x15\n\x11\x43HECK_FOR_UPDATES\x10\x44\x12\x1b\n\x17\x43LEAR_KEYBOARD_MAPPINGS\x10[\x12\x17\n\x13\x43LEAR_MIDI_MAPPINGS\x10\\\x12\x0f\n\x0b\x43LEAR_LOOPS\x10\x04\x12\x13\n\x0f\x43LEAR_NAVIGATOR\x10\x03\x12\x16\n\x12\x43LEAR_ALL_SETTINGS\x10O\x12!\n\x1d\x43LEAR_SETTINGS_FOR_THIS_TRACK\x10P\x12\x19\n\x15\x43LEAR_SAVED_FILE_DATA\x10\x05\x12\x0e\n\nCLOSE_FILE\x10\x06\x12\x15\n\x11\x44IM_VOLUME_TOGGLE\x10\x07\x12\r\n\tEJECT_CDS\x10\x08\x12\x1c\n\x18\x45XPORT_KEYBOARD_MAPPINGS\x10R\x12\x18\n\x14\x45XPORT_MIDI_MAPPINGS\x10S\x12\x13\n\x0f\x45XPORT_SETTINGS\x10K\x12\x1c\n\x18IMPORT_KEYBOARD_MAPPINGS\x10T\x12\x18\n\x14IMPORT_MIDI_MAPPINGS\x10U\x12\x13\n\x0fIMPORT_SETTINGS\x10L\x12\x19\n\x15INVERT_LOOP_SELECTION\x10\t\x12\x08\n\x04JUMP\x10\n\x12\x11\n\rJUMP_SELECTED\x10\x0b\x12\x15\n\x11KEYBOARD_MAPPINGS\x10\x0c\x12\x11\n\rMIDI_MAPPINGS\x10\r\x12\x17\n\x13MODE_ADD_LOOP_POINT\x10?\x12\r\n\tMODE_DRAG\x10<\x12\x11\n\rMODE_SET_TIME\x10=\x12\x10\n\x0cMODE_ZOOM_IN\x10>\x12\x16\n\x12MUTE_VOLUME_TOGGLE\x10\x0e\x12\x12\n\x0eNUDGE_BACKWARD\x10Y\x12\x11\n\rNUDGE_FORWARD\x10Z\x12\x14\n\x10NUDGE_BEGIN_LEFT\x10\x0f\x12\x15\n\x11NUDGE_BEGIN_RIGHT\x10\x10\x12\x12\n\x0eNUDGE_END_LEFT\x10\x11\x12\x13\n\x0fNUDGE_END_RIGHT\x10\x12\x12\x14\n\x10NUDGE_SPEED_DOWN\x10V\x12\x12\n\x0eNUDGE_SPEED_UP\x10W\x12\x15\n\x11NUDGE_VOLUME_DOWN\x10\x13\x12\x13\n\x0fNUDGE_VOLUME_UP\x10\x14\x12\x08\n\x04OPEN\x10\x15\x12\x0f\n\x0bOPEN_MANUAL\x10\x41\x12\x16\n\x12OPEN_PREVIOUS_FILE\x10N\x12\x1b\n\x17OPEN_SLOWGOLD_DIRECTORY\x10J\x12\x10\n\x0cRECENT_FILES\x10\x16\x12\x08\n\x04REDO\x10\x17\x12\x13\n\x0fREQUEST_SUPPORT\x10\x42\x12\x17\n\x13RESET_GAIN_TO_UNITY\x10\x18\x12\r\n\tSAVE_FILE\x10\x45\x12\x17\n\x13SAVE_FILE_SELECTION\x10\x46\x12\n\n\x06SELECT\x10\x19\x12\x0f\n\x0bSELECT_ONLY\x10\x1a\x12\x10\n\x0cSET_LANGUAGE\x10]\x12\x13\n\x0fSET_SAVE_FORMAT\x10G\x12\x19\n\x15TOGGLE_ADVANCED_MENUS\x10;\x12\x1c\n\x18TOGGLE_AUTOMATIC_UPDATES\x10\x43\x12\x18\n\x14TOGGLE_FOLLOW_CURSOR\x10+\x12\x17\n\x13TOGGLE_GRID_DISPLAY\x10\x1b\x12\x1e\n\x1aTOGGLE_COMMAND_BAR_AT_LEFT\x10\x36\x12\x1d\n\x19TOGGLE_COMMAND_BAR_AT_TOP\x10\x37\x12!\n\x1dTOGGLE_FILE_OPEN_TREE_DISPLAY\x10H\x12\x18\n\x14TOGGLE_MODES_AT_LEFT\x10\x38\x12\x17\n\x13TOGGLE_MODES_AT_TOP\x10\x39\x12\x1d\n\x19TOGGLE_PARALLEL_WAVEFORMS\x10*\x12\x1a\n\x16TOGGLE_PREFADER_LEVELS\x10.\x12\x14\n\x10TOGGLE_SELECTION\x10)\x12\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\x10Q\x12\x1d\n\x19TOGGLE_SHOW_CURSOR_LABELS\x10\x33\x12\x19\n\x15TOGGLE_SHOW_HELP_PANE\x10\x31\x12\x1d\n\x19TOGGLE_SHOW_LABELS_AT_TOP\x10\x34\x12\x1b\n\x17TOGGLE_SHOW_MASTER_TUNE\x10M\x12!\n\x1dTOGGLE_SHOW_SELECTION_BUTTONS\x10\x32\x12\x1c\n\x18TOGGLE_SHOW_TIMES_AT_TOP\x10\x35\x12\x18\n\x14TOGGLE_SHOW_TOOLTIPS\x10\x30\x12\x15\n\x11TOGGLE_START_STOP\x10\x1c\x12\x19\n\x15TOGGLE_STRETCH_ENABLE\x10\x1d\x12\x1b\n\x17TOGGLE_TRANSFORM_ENABLE\x10X\x12\x1a\n\x16TOGGLE_WHOLE_SONG_LOOP\x10\x1e\x12\x0e\n\nTREE_CLOSE\x10\x1f\x12\r\n\tTREE_DOWN\x10 \x12\r\n\tTREE_LEFT\x10!\x12\r\n\tTREE_OPEN\x10\"\x12\x0e\n\nTREE_RIGHT\x10#\x12\x0b\n\x07TREE_UP\x10$\x12\x08\n\x04UNDO\x10%\x12\x0c\n\x08UNSELECT\x10&\x12\x12\n\x0eWHATS_NEW_PAGE\x10I\x12\x0b\n\x07ZOOM_IN\x10\'\x12\x0c\n\x08ZOOM_OUT\x10(\x12\x11\n\rZOOM_OUT_FULL\x10@\x12\x15\n\x11ZOOM_TO_SELECTION\x10-\x12\r\n\tLAST_TYPE\x10]\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \x12\x0f\n\nJUCE_START\x10\x81 \x12\r\n\x08JUCE_END\x10\x87 \x12\x0f\n\tBANK_SIZE\x10\xa0\x8d\x06\"1\n\x08\x43ommands\x12%\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x14.rec.command.Command\"&\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"3\n\x07Mapping\x12(\n\tkey_value\x18\x01 \x03(\x0b\x32\x15.rec.command.KeyValue')
 
 
 
@@ -233,206 +233,210 @@ _COMMAND_TYPE = descriptor.EnumDescriptor(
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='SET_SAVE_FORMAT', index=53, number=71,
+      name='SET_LANGUAGE', index=53, number=93,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_ADVANCED_MENUS', index=54, number=59,
+      name='SET_SAVE_FORMAT', index=54, number=71,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_AUTOMATIC_UPDATES', index=55, number=67,
+      name='TOGGLE_ADVANCED_MENUS', index=55, number=59,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_FOLLOW_CURSOR', index=56, number=43,
+      name='TOGGLE_AUTOMATIC_UPDATES', index=56, number=67,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_GRID_DISPLAY', index=57, number=27,
+      name='TOGGLE_FOLLOW_CURSOR', index=57, number=43,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_COMMAND_BAR_AT_LEFT', index=58, number=54,
+      name='TOGGLE_GRID_DISPLAY', index=58, number=27,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_COMMAND_BAR_AT_TOP', index=59, number=55,
+      name='TOGGLE_COMMAND_BAR_AT_LEFT', index=59, number=54,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_FILE_OPEN_TREE_DISPLAY', index=60, number=72,
+      name='TOGGLE_COMMAND_BAR_AT_TOP', index=60, number=55,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_MODES_AT_LEFT', index=61, number=56,
+      name='TOGGLE_FILE_OPEN_TREE_DISPLAY', index=61, number=72,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_MODES_AT_TOP', index=62, number=57,
+      name='TOGGLE_MODES_AT_LEFT', index=62, number=56,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_PARALLEL_WAVEFORMS', index=63, number=42,
+      name='TOGGLE_MODES_AT_TOP', index=63, number=57,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_PREFADER_LEVELS', index=64, number=46,
+      name='TOGGLE_PARALLEL_WAVEFORMS', index=64, number=42,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SELECTION', index=65, number=41,
+      name='TOGGLE_PREFADER_LEVELS', index=65, number=46,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP', index=66, number=81,
+      name='TOGGLE_SELECTION', index=66, number=41,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SHOW_CURSOR_LABELS', index=67, number=51,
+      name='TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP', index=67, number=81,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SHOW_HELP_PANE', index=68, number=49,
+      name='TOGGLE_SHOW_CURSOR_LABELS', index=68, number=51,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SHOW_LABELS_AT_TOP', index=69, number=52,
+      name='TOGGLE_SHOW_HELP_PANE', index=69, number=49,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SHOW_MASTER_TUNE', index=70, number=77,
+      name='TOGGLE_SHOW_LABELS_AT_TOP', index=70, number=52,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SHOW_SELECTION_BUTTONS', index=71, number=50,
+      name='TOGGLE_SHOW_MASTER_TUNE', index=71, number=77,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SHOW_TIMES_AT_TOP', index=72, number=53,
+      name='TOGGLE_SHOW_SELECTION_BUTTONS', index=72, number=50,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_SHOW_TOOLTIPS', index=73, number=48,
+      name='TOGGLE_SHOW_TIMES_AT_TOP', index=73, number=53,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_START_STOP', index=74, number=28,
+      name='TOGGLE_SHOW_TOOLTIPS', index=74, number=48,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_STRETCH_ENABLE', index=75, number=29,
+      name='TOGGLE_START_STOP', index=75, number=28,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_TRANSFORM_ENABLE', index=76, number=88,
+      name='TOGGLE_STRETCH_ENABLE', index=76, number=29,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TOGGLE_WHOLE_SONG_LOOP', index=77, number=30,
+      name='TOGGLE_TRANSFORM_ENABLE', index=77, number=88,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TREE_CLOSE', index=78, number=31,
+      name='TOGGLE_WHOLE_SONG_LOOP', index=78, number=30,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TREE_DOWN', index=79, number=32,
+      name='TREE_CLOSE', index=79, number=31,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TREE_LEFT', index=80, number=33,
+      name='TREE_DOWN', index=80, number=32,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TREE_OPEN', index=81, number=34,
+      name='TREE_LEFT', index=81, number=33,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TREE_RIGHT', index=82, number=35,
+      name='TREE_OPEN', index=82, number=34,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='TREE_UP', index=83, number=36,
+      name='TREE_RIGHT', index=83, number=35,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='UNDO', index=84, number=37,
+      name='TREE_UP', index=84, number=36,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='UNSELECT', index=85, number=38,
+      name='UNDO', index=85, number=37,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='WHATS_NEW_PAGE', index=86, number=73,
+      name='UNSELECT', index=86, number=38,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='ZOOM_IN', index=87, number=39,
+      name='WHATS_NEW_PAGE', index=87, number=73,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='ZOOM_OUT', index=88, number=40,
+      name='ZOOM_IN', index=88, number=39,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='ZOOM_OUT_FULL', index=89, number=64,
+      name='ZOOM_OUT', index=89, number=40,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='ZOOM_TO_SELECTION', index=90, number=45,
+      name='ZOOM_OUT_FULL', index=90, number=64,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='LAST_TYPE', index=91, number=92,
+      name='ZOOM_TO_SELECTION', index=91, number=45,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='QUIT', index=92, number=4097,
+      name='LAST_TYPE', index=92, number=93,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='DEL', index=93, number=4098,
+      name='QUIT', index=93, number=4097,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='CUT', index=94, number=4099,
+      name='DEL', index=94, number=4098,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='COPY', index=95, number=4100,
+      name='CUT', index=95, number=4099,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='PASTE', index=96, number=4101,
+      name='COPY', index=96, number=4100,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='SELECT_ALL', index=97, number=4102,
+      name='PASTE', index=97, number=4101,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='DESELECT_ALL', index=98, number=4103,
+      name='SELECT_ALL', index=98, number=4102,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='JUCE_START', index=99, number=4097,
+      name='DESELECT_ALL', index=99, number=4103,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='JUCE_END', index=100, number=4103,
+      name='JUCE_START', index=100, number=4097,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='BANK_SIZE', index=101, number=100000,
+      name='JUCE_END', index=101, number=4103,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='BANK_SIZE', index=102, number=100000,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=407,
-  serialized_end=2605,
+  serialized_end=2623,
 )
 
 
@@ -566,7 +570,7 @@ _COMMAND = descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=130,
-  serialized_end=2605,
+  serialized_end=2623,
 )
 
 
@@ -593,8 +597,8 @@ _COMMANDS = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2607,
-  serialized_end=2656,
+  serialized_start=2625,
+  serialized_end=2674,
 )
 
 
@@ -628,8 +632,8 @@ _KEYVALUE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2658,
-  serialized_end=2696,
+  serialized_start=2676,
+  serialized_end=2714,
 )
 
 
@@ -656,8 +660,8 @@ _MAPPING = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2698,
-  serialized_end=2749,
+  serialized_start=2716,
+  serialized_end=2767,
 )
 
 import rec.data.proto.Address_pb2
