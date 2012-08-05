@@ -4,13 +4,13 @@
 #include <vector>
 
 #include "rec/base/base.h"
-#include "rec/base/Internat.pb.h"
+#include "rec/app/AppSettings.pb.h"
 
 namespace rec {
 
 class TranslatedString;
 
-typedef Internat::Language Language;
+typedef app::AppSettings::Language Language;
 
 class Trans {
  public:

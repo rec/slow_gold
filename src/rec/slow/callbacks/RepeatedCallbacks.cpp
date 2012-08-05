@@ -94,7 +94,7 @@ void setSaveFileType(Instance* instance, int i) {
 }
 
 void setLanguage(Instance* instance, int i) {
-  Internat inter = data::getProto<Internat>();
+  app::AppSettings inter = data::getProto<app::AppSettings>();
   inter.set_language(static_cast<Language>(i));
   data::setProto(inter);
   instance->menus_->menuItemsChanged();
@@ -191,7 +191,7 @@ void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
     addCallback(t, id, setSaveFileType, i, j);
   }
 
-  for (int j = 0; j <= Internat::LAST; ++j) {
+  for (int j = 0; j <= app::AppSettings::LAST; ++j) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_LANGUAGE);
     addCallback(t, id, setLanguage, i, j);
   }

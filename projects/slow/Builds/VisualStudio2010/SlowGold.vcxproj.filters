@@ -32,6 +32,9 @@
     <Filter Include="SlowGold\rec\audio\format\raw">
       <UniqueIdentifier>{4E2C7E6D-1301-7722-F6D6-935067502152}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\rec\audio\infinite">
+      <UniqueIdentifier>{8E2645A0-5959-ECA0-8944-EF3BEBEA093B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\rec\audio\source">
       <UniqueIdentifier>{36D99129-917D-09BD-B8CF-A4F579D3E24B}</UniqueIdentifier>
     </Filter>
@@ -1278,9 +1281,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc">
       <Filter>SlowGold\proto\rec\audio\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\base\Internat.pb.cc">
-      <Filter>SlowGold\proto\rec\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\base\Trans.pb.cc">
       <Filter>SlowGold\proto\rec\base</Filter>
@@ -2625,6 +2625,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\format\RegisterFormats.h">
       <Filter>SlowGold\rec\audio\format</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\infinite\Infinite.h">
+      <Filter>SlowGold\rec\audio\infinite</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\OutputSampleRate.h">
       <Filter>SlowGold\rec\audio</Filter>
     </ClInclude>
@@ -3722,9 +3725,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h">
       <Filter>SlowGold\proto\rec\audio\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\base\Internat.pb.h">
-      <Filter>SlowGold\proto\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\base\Trans.pb.h">
       <Filter>SlowGold\proto\rec\base</Filter>

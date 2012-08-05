@@ -10,9 +10,54 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='rec/app/AppSettings.proto',
   package='rec.app',
-  serialized_pb='\n\x19rec/app/AppSettings.proto\x12\x07rec.app\"F\n\x0b\x41ppSettings\x12\x1c\n\x14last_update_finished\x18\x01 \x01(\x03\x12\x19\n\nregistered\x18\x02 \x01(\x08:\x05\x66\x61lse')
+  serialized_pb='\n\x19rec/app/AppSettings.proto\x12\x07rec.app\"\xce\x01\n\x0b\x41ppSettings\x12\x1c\n\x14last_update_finished\x18\x01 \x01(\x03\x12\x19\n\nregistered\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\x33\n\x08language\x18\x03 \x01(\x0e\x32\x1d.rec.app.AppSettings.Language:\x02\x45N\"Q\n\x08Language\x12\x08\n\x04NONE\x10\x00\x12\x06\n\x02\x44\x45\x10\x01\x12\x06\n\x02\x45N\x10\x02\x12\x06\n\x02\x45S\x10\x03\x12\x06\n\x02\x46R\x10\x04\x12\x06\n\x02ID\x10\x05\x12\t\n\x05\x46IRST\x10\x01\x12\x08\n\x04LAST\x10\x05')
 
 
+
+_APPSETTINGS_LANGUAGE = descriptor.EnumDescriptor(
+  name='Language',
+  full_name='rec.app.AppSettings.Language',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    descriptor.EnumValueDescriptor(
+      name='NONE', index=0, number=0,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='DE', index=1, number=1,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='EN', index=2, number=2,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='ES', index=3, number=3,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='FR', index=4, number=4,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='ID', index=5, number=5,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='FIRST', index=6, number=1,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='LAST', index=7, number=5,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=164,
+  serialized_end=245,
+)
 
 
 _APPSETTINGS = descriptor.Descriptor(
@@ -36,20 +81,30 @@ _APPSETTINGS = descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    descriptor.FieldDescriptor(
+      name='language', full_name='rec.app.AppSettings.language', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=True, default_value=2,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
+    _APPSETTINGS_LANGUAGE,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=38,
-  serialized_end=108,
+  serialized_start=39,
+  serialized_end=245,
 )
 
 
+_APPSETTINGS.fields_by_name['language'].enum_type = _APPSETTINGS_LANGUAGE
+_APPSETTINGS_LANGUAGE.containing_type = _APPSETTINGS;
 
 class AppSettings(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType

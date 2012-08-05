@@ -88,7 +88,7 @@ void BasicMenuMaker::addFileMenu() {
 
   addRepeat(Command::SET_LANGUAGE, lang, String(langName(lang)), &langMenu, TICKED);
 
-  for (int i = Internat::FIRST; i <= Internat::LAST; ++i) {
+  for (int i = app::AppSettings::FIRST; i <= app::AppSettings::LAST; ++i) {
     if (i != lang)
       addRepeat(Command::SET_LANGUAGE, i, String(langName(i)), &langMenu, 0);
   }

@@ -32,13 +32,13 @@ StringMap* makeStringMap(const TranslatedStrings& ts) {
 }
 
 struct Translations {
-  Translations() : maps_(Internat::LAST + 1) {
-    maps_[Internat::NONE] = NULL;
-    maps_[Internat::DE] = makeStringMap(*deTranslatedStrings);
-    maps_[Internat::EN] = makeStringMap(*enTranslatedStrings);
-    maps_[Internat::ES] = makeStringMap(*esTranslatedStrings);
-    maps_[Internat::FR] = makeStringMap(*frTranslatedStrings);
-    maps_[Internat::ID] = makeStringMap(*idTranslatedStrings);
+  Translations() : maps_(app::AppSettings::LAST + 1) {
+    maps_[app::AppSettings::NONE] = NULL;
+    maps_[app::AppSettings::DE] = makeStringMap(*deTranslatedStrings);
+    maps_[app::AppSettings::EN] = makeStringMap(*enTranslatedStrings);
+    maps_[app::AppSettings::ES] = makeStringMap(*esTranslatedStrings);
+    maps_[app::AppSettings::FR] = makeStringMap(*frTranslatedStrings);
+    maps_[app::AppSettings::ID] = makeStringMap(*idTranslatedStrings);
   }
   ~Translations() { stl::deletePointers(&maps_); }
 
@@ -60,7 +60,7 @@ const CriticalSection& lock() {
 
 Language getLanguage() {
   Lock l(lock());
-  return data::getProto<Internat>().language();
+  return data::getProto<app::AppSettings>().language();
 };
 
 string translate(const TranslatedString& original) {

@@ -5,7 +5,6 @@
 #include "rec/audio/source/Stereo.pb.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.pb.h"
-#include "rec/base/Internat.pb.h"
 #include "rec/base/Trans.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
@@ -31,7 +30,6 @@ void registerProtos() {
   using namespace rec::data;
   MessageRegistrar* r = getDataCenter().registry_.get();
 
-  registerClass<Internat>(r);
   registerClass<app::AppSettings>(r);
   registerClass<audio::AudioSettings>(r);
   registerClass<audio::Gain>(r);

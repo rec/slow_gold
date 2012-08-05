@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="6O9StZndD" name="tests">
+  <MAINGROUP id="p4vprOqUa" name="tests">
     <GROUP id="ocE5Pk5Qc" name="translation">
       <GROUP id="7r2GPkWu5" name="rec">
         <GROUP id="8Z5TPFp3V" name="translation">
@@ -164,6 +164,10 @@
                 id="35KiTVy8v" name="RegisterFormats.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/format/RegisterFormats.h"
                 id="Fb4x63kIa" name="RegisterFormats.h" resource="0"/>
+        </GROUP>
+        <GROUP id="LLIhIWKld" name="infinite">
+          <FILE compile="0" file="../../src/rec/audio/infinite/Infinite.h" id="u0n4yYvfk"
+                name="Infinite.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/audio/OutputSampleRate.cpp" id="nRllk5Qjb"
               name="OutputSampleRate.cpp" resource="0"/>
@@ -1500,10 +1504,6 @@
           </GROUP>
         </GROUP>
         <GROUP id="iMYIZWDU1" name="base">
-          <FILE compile="1" file="../../genfiles/proto/rec/base/Internat.pb.cc"
-                id="c9Ahvc965" name="Internat.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/base/Internat.pb.h"
-                id="TcoQjCK7n" name="Internat.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/base/Trans.pb.cc"
                 id="3LOYcptuw" name="Trans.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/base/Trans.pb.h" id="dN7QJzDSR"
@@ -1663,7 +1663,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="AsMdQc3md" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="HvK889IXR" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

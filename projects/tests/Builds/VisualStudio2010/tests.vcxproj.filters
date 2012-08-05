@@ -32,6 +32,9 @@
     <Filter Include="tests\rec\audio\format\raw">
       <UniqueIdentifier>{4B68BB49-85E8-2FE6-7EF3-38B5F079D4D2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tests\rec\audio\infinite">
+      <UniqueIdentifier>{A009F134-D524-5ED0-E045-7CB024BEFA43}</UniqueIdentifier>
+    </Filter>
     <Filter Include="tests\rec\audio\source">
       <UniqueIdentifier>{A3ED9359-5676-5799-595E-42768C90AD30}</UniqueIdentifier>
     </Filter>
@@ -1350,9 +1353,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc">
       <Filter>tests\proto\rec\audio\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\base\Internat.pb.cc">
-      <Filter>tests\proto\rec\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\base\Trans.pb.cc">
       <Filter>tests\proto\rec\base</Filter>
@@ -2697,6 +2697,9 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\format\RegisterFormats.h">
       <Filter>tests\rec\audio\format</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\infinite\Infinite.h">
+      <Filter>tests\rec\audio\infinite</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\OutputSampleRate.h">
       <Filter>tests\rec\audio</Filter>
     </ClInclude>
@@ -3797,9 +3800,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h">
       <Filter>tests\proto\rec\audio\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\base\Internat.pb.h">
-      <Filter>tests\proto\rec\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\base\Trans.pb.h">
       <Filter>tests\proto\rec\base</Filter>

@@ -35,6 +35,31 @@ void protobuf_ShutdownFile_rec_2fapp_2fAppSettings_2eproto();
 
 class AppSettings;
 
+enum AppSettings_Language {
+  AppSettings_Language_NONE = 0,
+  AppSettings_Language_DE = 1,
+  AppSettings_Language_EN = 2,
+  AppSettings_Language_ES = 3,
+  AppSettings_Language_FR = 4,
+  AppSettings_Language_ID = 5,
+  AppSettings_Language_FIRST = 1,
+  AppSettings_Language_LAST = 5
+};
+bool AppSettings_Language_IsValid(int value);
+const AppSettings_Language AppSettings_Language_Language_MIN = AppSettings_Language_NONE;
+const AppSettings_Language AppSettings_Language_Language_MAX = AppSettings_Language_ID;
+const int AppSettings_Language_Language_ARRAYSIZE = AppSettings_Language_Language_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* AppSettings_Language_descriptor();
+inline const ::std::string& AppSettings_Language_Name(AppSettings_Language value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    AppSettings_Language_descriptor(), value);
+}
+inline bool AppSettings_Language_Parse(
+    const ::std::string& name, AppSettings_Language* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AppSettings_Language>(
+    AppSettings_Language_descriptor(), name, value);
+}
 // ===================================================================
 
 class AppSettings : public ::google::protobuf::Message {
@@ -89,6 +114,36 @@ class AppSettings : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
+  typedef AppSettings_Language Language;
+  static const Language NONE = AppSettings_Language_NONE;
+  static const Language DE = AppSettings_Language_DE;
+  static const Language EN = AppSettings_Language_EN;
+  static const Language ES = AppSettings_Language_ES;
+  static const Language FR = AppSettings_Language_FR;
+  static const Language ID = AppSettings_Language_ID;
+  static const Language FIRST = AppSettings_Language_FIRST;
+  static const Language LAST = AppSettings_Language_LAST;
+  static inline bool Language_IsValid(int value) {
+    return AppSettings_Language_IsValid(value);
+  }
+  static const Language Language_MIN =
+    AppSettings_Language_Language_MIN;
+  static const Language Language_MAX =
+    AppSettings_Language_Language_MAX;
+  static const int Language_ARRAYSIZE =
+    AppSettings_Language_Language_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Language_descriptor() {
+    return AppSettings_Language_descriptor();
+  }
+  static inline const ::std::string& Language_Name(Language value) {
+    return AppSettings_Language_Name(value);
+  }
+  static inline bool Language_Parse(const ::std::string& name,
+      Language* value) {
+    return AppSettings_Language_Parse(name, value);
+  }
+  
   // accessors -------------------------------------------------------
   
   // optional int64 last_update_finished = 1;
@@ -105,6 +160,13 @@ class AppSettings : public ::google::protobuf::Message {
   inline bool registered() const;
   inline void set_registered(bool value);
   
+  // optional .rec.app.AppSettings.Language language = 3 [default = EN];
+  inline bool has_language() const;
+  inline void clear_language();
+  static const int kLanguageFieldNumber = 3;
+  inline ::rec::app::AppSettings_Language language() const;
+  inline void set_language(::rec::app::AppSettings_Language value);
+  
   // @@protoc_insertion_point(class_scope:rec.app.AppSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -112,11 +174,12 @@ class AppSettings : public ::google::protobuf::Message {
   
   ::google::protobuf::int64 last_update_finished_;
   bool registered_;
+  int language_;
   friend void  protobuf_AddDesc_rec_2fapp_2fAppSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fapp_2fAppSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fapp_2fAppSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -171,6 +234,23 @@ inline void AppSettings::set_registered(bool value) {
   registered_ = value;
 }
 
+// optional .rec.app.AppSettings.Language language = 3 [default = EN];
+inline bool AppSettings::has_language() const {
+  return _has_bit(2);
+}
+inline void AppSettings::clear_language() {
+  language_ = 2;
+  _clear_bit(2);
+}
+inline ::rec::app::AppSettings_Language AppSettings::language() const {
+  return static_cast< ::rec::app::AppSettings_Language >(language_);
+}
+inline void AppSettings::set_language(::rec::app::AppSettings_Language value) {
+  GOOGLE_DCHECK(::rec::app::AppSettings_Language_IsValid(value));
+  _set_bit(2);
+  language_ = value;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -181,6 +261,10 @@ inline void AppSettings::set_registered(bool value) {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::app::AppSettings_Language>() {
+  return ::rec::app::AppSettings_Language_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf
