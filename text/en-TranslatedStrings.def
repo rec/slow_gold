@@ -1,1119 +1,2013 @@
 str {
   original: "%s %s semitones"
-  translation: "%s %s semitones"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 48
   index: 1
 }
 str {
   original: "%s off"
-  translation: "%s off"
   file: "rec/command/map/MidiName.cpp"
   line: 15
   index: 2
 }
 str {
   original: "(no file loaded)"
-  translation: "(no file loaded)"
   index: 3
 }
 str {
   original: "(None)"
-  translation: "(None)"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 12
   index: 4
 }
 str {
-  original: "<Unknown CD>"
-  translation: "<Unknown CD>"
-  file: "rec/widget/tree/CD.cpp"
-  line: 12
+  original: "..."
   index: 5
 }
 str {
-  original: "A new version of SlowGold, %s, is available."
-  translation: "A new version of SlowGold, %s, is available."
-  file: "rec/app/DownloadVersion.cpp"
-  line: 22
+  original: "<Unknown CD>"
+  file: "rec/widget/tree/CD.cpp"
+  line: 12
   index: 6
 }
 str {
-  original: "A Support Request file named \"%s\" was created on your desktop."
-  translation: "A Support Request file named \"%s\" was created on your desktop."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 37
+  original: "A new version of SlowGold, %s, is available."
+  file: "rec/app/DownloadVersion.cpp"
+  line: 22
   index: 7
 }
 str {
-  original: "A Support Request Was Created On Your Desktop"
-  translation: "A Support Request Was Created On Your Desktop"
+  original: "A Support Request file named \"%s\" was created on your desktop."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 43
+  line: 37
   index: 8
 }
 str {
-  original: "Add Loop Point Button: Add a loop point at the current time."
-  translation: "Add Loop Point Button: Add a loop point at the current time."
+  original: "A Support Request Was Created On Your Desktop"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 43
   index: 9
 }
 str {
-  original: "Add loop point mode: clicking on the waveform creates a loop point."
-  translation: "Add loop point mode: clicking on the waveform creates a loop point."
+  original: "About SlowGold 8"
   index: 10
 }
 str {
-  original: "adds a new key-mapping"
-  translation: "adds a new key-mapping"
-  file: "rec/command/map/CommandMapEditButton.cpp"
-  line: 8
+  original: "Add a loop point at the current time."
   index: 11
 }
 str {
-  original: "Album"
-  translation: "Album"
+  original: "Add Loop Point At Current Time"
   index: 12
 }
 str {
-  original: "Album Name: The name of the album this track is from."
-  translation: "Album Name: The name of the album this track is from."
+  original: "Add Loop Point Button: Add a loop point at the current time."
   index: 13
 }
 str {
-  original: "Album Year: The year that that this track was recorded."
-  translation: "Album Year: The year that that this track was recorded."
+  original: "Add Loop Point Mode"
   index: 14
 }
 str {
-  original: "Are you sure you want to reset all the key mappings to their default state?"
-  translation: "Are you sure you want to reset all the key mappings to their default state?"
-  file: "rec/command/map/CommandMapTopLevelItem.cpp"
-  line: 10
+  original: "Add loop point mode: clicking on the waveform creates a loop point."
   index: 15
 }
 str {
-  original: "Artist"
-  translation: "Artist"
+  original: "adds a new key-mapping"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 8
   index: 16
 }
 str {
-  original: "Artist Name: The artist or musician who made this specific track."
-  translation: "Artist Name: The artist or musician who made this specific track."
+  original: "AIFF"
   index: 17
 }
 str {
-  original: "as"
-  translation: "as"
-  file: "rec/command/map/MidiName.cpp"
-  line: 13
+  original: "Album"
   index: 18
 }
 str {
-  original: "Audio"
-  translation: "Audio"
+  original: "Album Name: The name of the album this track is from."
   index: 19
 }
 str {
-  original: "Can\'t create track for %s."
-  translation: "Can\'t create track for %s."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 25
+  original: "Album Year: The year that that this track was recorded."
   index: 20
 }
 str {
-  original: "Can\'t Find File"
-  translation: "Can\'t Find File"
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 29
+  original: "Always keep the time cursor in the window."
   index: 21
 }
 str {
-  original: "Cancel"
-  translation: "Cancel"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 28
+  original: "Are you sure you want to reset all the key mappings to their default state?"
+  file: "rec/command/map/CommandMapTopLevelItem.cpp"
+  line: 10
   index: 22
 }
 str {
-  original: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
-  translation: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
+  original: "Artist"
   index: 23
 }
 str {
-  original: "CDs will automatically appear at the top-left when you insert them."
-  translation: "CDs will automatically appear at the top-left when you insert them."
-  file: "rec/slow/AboutWindow.cpp"
-  line: 20
+  original: "Artist Name: The artist or musician who made this specific track."
   index: 24
 }
 str {
-  original: "Change key-mapping"
-  translation: "Change key-mapping"
-  file: "rec/command/map/GenericCommandMapEditor.cpp"
-  line: 9
+  original: "as"
+  file: "rec/command/map/MidiName.cpp"
+  line: 13
   index: 25
 }
 str {
-  original: "Change this command mapping"
-  translation: "Change this command mapping"
-  file: "rec/command/map/CommandMapEditButton.cpp"
-  line: 10
+  original: "Audio"
   index: 26
 }
 str {
-  original: "Choose File To Save to"
-  translation: "Choose File To Save to"
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 42
+  original: "Audio Preferences..."
   index: 27
 }
 str {
-  original: "Clear all keyboard mappings to factory default?"
-  translation: "Clear all keyboard mappings to factory default?"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 52
+  original: "Bring up a window describing SlowGold 8."
   index: 28
 }
 str {
-  original: "Clear all MIDI mappings?"
-  translation: "Clear all MIDI mappings?"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 54
+  original: "Can\'t create track for %s."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 25
   index: 29
 }
 str {
-  original: "Clear Keyboard Mappings."
-  translation: "Clear Keyboard Mappings."
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 50
+  original: "Can\'t Find File"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 29
   index: 30
 }
 str {
-  original: "Clear MIDI Mappings."
-  translation: "Clear MIDI Mappings."
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 53
+  original: "Cancel"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 28
   index: 31
 }
 str {
-  original: "Clearing All Settings For All Tracks"
-  translation: "Clearing All Settings For All Tracks"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 56
+  original: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
   index: 32
 }
 str {
-  original: "Clearing Settings For This Track Only"
-  translation: "Clearing Settings For This Track Only"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 61
+  original: "CDs will automatically appear at the top-left when you insert them."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 20
   index: 33
 }
 str {
-  original: "click to change this key-mapping"
-  translation: "click to change this key-mapping"
-  file: "rec/command/map/CommandMapEditButton.cpp"
+  original: "Change key-mapping"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 9
   index: 34
 }
 str {
-  original: "Click to continue."
-  translation: "Click to continue."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 33
+  original: "Change this command mapping"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 10
   index: 35
 }
 str {
-  original: "Copyright \302\251 %d"
-  translation: "Copyright \302\251 %d"
-  file: "rec/slow/AboutWindow.cpp"
-  line: 26
+  original: "Check For Updates"
   index: 36
 }
 str {
-  original: "Couldn\'t Create A Support Request"
-  translation: "Couldn\'t Create A Support Request"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 31
+  original: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
   index: 37
 }
 str {
-  original: "Couldn\'t Load The SlowGold 8 User Manual"
-  translation: "Couldn\'t Load The SlowGold 8 User Manual"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 29
+  original: "Choose File To Save to"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 42
   index: 38
 }
 str {
-  original: "Couldn\'t Open CD Track."
-  translation: "Couldn\'t Open CD Track."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 26
+  original: "Clear all keyboard command mappings to program default."
   index: 39
 }
 str {
-  original: "Couldn\'t open track on CD - perhaps you ejected it?"
-  translation: "Couldn\'t open track on CD - perhaps you ejected it?"
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 27
+  original: "Clear all keyboard mappings to factory default?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 52
   index: 40
 }
 str {
-  original: "Couldn\'t Open Your File."
-  translation: "Couldn\'t Open Your File."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 39
+  original: "Clear all MIDI command mappings."
   index: 41
 }
 str {
-  original: "Couldn\'t update to version %s"
-  translation: "Couldn\'t update to version %s"
-  file: "rec/app/DownloadVersion.cpp"
-  line: 26
+  original: "Clear all MIDI mappings?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 54
   index: 42
 }
 str {
-  original: "Create loop points by pressing the L key."
-  translation: "Create loop points by pressing the L key."
-  file: "rec/slow/AboutWindow.cpp"
-  line: 23
+  original: "Clear All Settings And Quit"
   index: 43
 }
 str {
-  original: "Currently assigned to"
-  translation: "Currently assigned to"
-  file: "rec/command/map/GenericCommandMapEditor.cpp"
-  line: 14
+  original: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
   index: 44
 }
 str {
-  original: "Display"
-  translation: "Display"
+  original: "Clear all SlowGold settings for this track only and quit the program."
   index: 45
 }
 str {
-  original: "Display this window on startup"
-  translation: "Display this window on startup"
-  file: "rec/slow/AboutWindow.cpp"
-  line: 17
+  original: "Clear Keyboard Mappings"
   index: 46
 }
 str {
-  original: "Do you want to re-assign it to this new command instead?"
-  translation: "Do you want to re-assign it to this new command instead?"
-  file: "rec/command/map/GenericCommandMapEditor.cpp"
-  line: 11
+  original: "Clear Keyboard Mappings."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 50
   index: 47
 }
 str {
-  original: "down"
-  translation: "down"
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 43
+  original: "Clear Loops"
   index: 48
 }
 str {
-  original: "Download new version and quit this older one."
-  translation: "Download new version and quit this older one."
-  file: "rec/app/DownloadVersion.cpp"
-  line: 24
+  original: "Clear MIDI Mappings"
   index: 49
 }
 str {
-  original: "Download the manual from the Help menu for many more commands."
-  translation: "Download the manual from the Help menu for many more commands."
-  file: "rec/slow/AboutWindow.cpp"
-  line: 25
+  original: "Clear MIDI Mappings."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 53
   index: 50
 }
 str {
-  original: "Drag audio files onto the waveform."
-  translation: "Drag audio files onto the waveform."
-  file: "rec/slow/AboutWindow.cpp"
-  line: 18
+  original: "Clear Settings For This Track And Quit"
   index: 51
 }
 str {
-  original: "Drag Mode: Use the mouse to drag the waveform back and forth"
-  translation: "Drag Mode: Use the mouse to drag the waveform back and forth"
+  original: "Clearing All Settings For All Tracks"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 56
   index: 52
 }
 str {
-  original: "Drag the Speed slider to slow down or speed up."
-  translation: "Drag the Speed slider to slow down or speed up."
-  file: "rec/slow/AboutWindow.cpp"
-  line: 22
+  original: "Clearing Settings For This Track Only"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 61
   index: 53
 }
 str {
-  original: "Edit"
-  translation: "Edit"
+  original: "click to change this key-mapping"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 9
   index: 54
 }
 str {
-  original: "Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake."
-  translation: "Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 42
+  original: "Click to continue."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 33
   index: 55
 }
 str {
-  original: "Enable"
-  translation: "Enable"
+  original: "Close"
   index: 56
 }
 str {
-  original: "Error During Save."
-  translation: "Error During Save."
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 38
+  original: "Close the current file"
   index: 57
 }
 str {
-  original: "Error was"
-  translation: "Error was"
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 28
+  original: "Command Bar At Left Side"
   index: 58
 }
 str {
-  original: "File"
-  translation: "File"
+  original: "Command Bar At Top"
   index: 59
 }
 str {
-  original: "File Type For Save..."
-  translation: "File Type For Save..."
+  original: "Copy"
   index: 60
 }
 str {
-  original: "Finishing loading audio from disk."
-  translation: "Finishing loading audio from disk."
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 40
+  original: "Copy the current selection to the clipboard and clear the selection."
   index: 61
 }
 str {
-  original: "Genre"
-  translation: "Genre"
+  original: "Copy the current selection to the clipboard."
   index: 62
 }
 str {
-  original: "Help"
-  translation: "Help"
+  original: "Copyright \302\251 %d"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 26
   index: 63
 }
 str {
-  original: "Help Panel: Shows help about whatever the mouse is over."
-  translation: "Help Panel: Shows help about whatever the mouse is over."
+  original: "Couldn\'t Create A Support Request"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 31
   index: 64
 }
 str {
-  original: "Jump Back"
-  translation: "Jump Back"
+  original: "Couldn\'t Load The SlowGold 8 User Manual"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 29
   index: 65
 }
 str {
-  original: "Jump Back Button: Jump to the start of the next segment."
-  translation: "Jump Back Button: Jump to the start of the next segment."
+  original: "Couldn\'t Open CD Track."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 26
   index: 66
 }
 str {
-  original: "Jump Forward"
-  translation: "Jump Forward"
+  original: "Couldn\'t open track on CD - perhaps you ejected it?"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 27
   index: 67
 }
 str {
-  original: "Jump Forward Button: Jump to the start of the next segment."
-  translation: "Jump Forward Button: Jump to the start of the next segment."
+  original: "Couldn\'t Open Your File."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 39
   index: 68
 }
 str {
-  original: "Jump To Selected..."
-  translation: "Jump To Selected..."
+  original: "Couldn\'t update to version %s"
+  file: "rec/app/DownloadVersion.cpp"
+  line: 26
   index: 69
 }
 str {
-  original: "Jump to start"
-  translation: "Jump to start"
+  original: "Create loop points by pressing the L key."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 23
   index: 70
 }
 str {
-  original: "Jump To Start Button: Jump to the start of the track."
-  translation: "Jump To Start Button: Jump to the start of the track."
+  original: "Currently assigned to"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 14
   index: 71
 }
 str {
-  original: "Jump To..."
-  translation: "Jump To..."
+  original: "Cut"
   index: 72
 }
 str {
-  original: "Key"
-  translation: "Key"
-  file: "rec/command/map/KeyCommandMapEditor.cpp"
-  line: 11
+  original: "Delete"
   index: 73
 }
 str {
-  original: "L + R"
-  translation: "L + R"
+  original: "Delete all loop points"
   index: 74
 }
 str {
-  original: "Left"
-  translation: "Left"
+  original: "Delete the current selection without changing the clipboard."
   index: 75
 }
 str {
-  original: "Level Meter: Display the sound intensity, in RMS dB."
-  translation: "Level Meter: Display the sound intensity, in RMS dB."
+  original: "Display"
   index: 76
 }
 str {
-  original: "Level Slider: Raise or lower the sound intensity, in dB."
-  translation: "Level Slider: Raise or lower the sound intensity, in dB."
+  original: "Display this window on startup"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 17
   index: 77
 }
 str {
-  original: "Loop Entire Track"
-  translation: "Loop Entire Track"
+  original: "Do you want to re-assign it to this new command instead?"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 11
   index: 78
 }
 str {
-  original: "Loop Point List: You can select and edit loop points here."
-  translation: "Loop Point List: You can select and edit loop points here."
+  original: "down"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 43
   index: 79
 }
 str {
-  original: "Loop Point Name: Edit the Loop Point\'s name by clicking here."
-  translation: "Loop Point Name: Edit the Loop Point\'s name by clicking here."
+  original: "Download new version and quit this older one."
+  file: "rec/app/DownloadVersion.cpp"
+  line: 24
   index: 80
 }
 str {
-  original: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
-  translation: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
-  file: "rec/widget/waveform/Waveform.cpp"
-  line: 38
+  original: "Download SlowGold 8 User Manual"
   index: 81
 }
 str {
-  original: "Loop This Segment"
-  translation: "Loop This Segment"
+  original: "Download the manual from the Help menu for many more commands."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 25
   index: 82
 }
 str {
-  original: "Master"
-  translation: "Master"
+  original: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
   index: 83
 }
 str {
-  original: "Master Tune Slider: Master tune is a global detune over all tracks."
-  translation: "Master Tune Slider: Master tune is a global detune over all tracks."
+  original: "Drag audio files onto the waveform."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 18
   index: 84
 }
 str {
-  original: "MIDI"
-  translation: "MIDI"
-  file: "rec/command/map/MidiCommandMapEditor.cpp"
-  line: 15
+  original: "Drag Mode"
   index: 85
 }
 str {
-  original: "Mute"
-  translation: "Mute"
+  original: "Drag Mode: Use the mouse to drag the waveform back and forth"
   index: 86
 }
 str {
-  original: "Mute Button: Mute or unmute the sound."
-  translation: "Mute Button: Mute or unmute the sound."
+  original: "Drag the Speed slider to slow down or speed up."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 22
   index: 87
 }
 str {
-  original: "Name"
-  translation: "Name"
+  original: "Edit"
   index: 88
 }
 str {
-  original: "New command mapping"
-  translation: "New command mapping"
-  file: "rec/command/map/CommandEntryWindow.cpp"
-  line: 9
+  original: "Edit keyboard mappings for commands."
   index: 89
 }
 str {
-  original: "No available CDs."
-  translation: "No available CDs."
-  file: "rec/util/cd/CDReader.cpp"
-  line: 13
+  original: "Edit Keyboard Mappings..."
   index: 90
 }
 str {
-  original: "Not Registered!"
-  translation: "Not Registered!"
-  file: "rec/slow/AboutWindow.cpp"
-  line: 28
+  original: "Edit midi mappings for commands."
   index: 91
 }
 str {
-  original: "Notes"
-  translation: "Notes"
+  original: "Edit Midi Mappings..."
   index: 92
 }
 str {
-  original: "Number"
-  translation: "Number"
+  original: "Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 42
   index: 93
 }
 str {
-  original: "OK"
-  translation: "OK"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 40
+  original: "Eject All"
   index: 94
 }
 str {
-  original: "one semitone %s"
-  translation: "one semitone %s"
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 47
+  original: "Eject all CDs and DVDs"
   index: 95
 }
 str {
-  original: "Open recent"
-  translation: "Open recent"
+  original: "Enable"
   index: 96
 }
 str {
-  original: "pc %d"
-  translation: "pc %d"
-  file: "rec/command/map/MidiName.cpp"
-  line: 16
+  original: "Enable Automatic Updates"
   index: 97
 }
 str {
-  original: "Pitch"
-  translation: "Pitch"
+  original: "Enable or disable automatic updates of SlowGold 8."
   index: 98
 }
 str {
-  original: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
-  translation: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
+  original: "Enable Stretch"
   index: 99
 }
 str {
-  original: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
-  translation: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
+  original: "Enable Transforms"
   index: 100
 }
 str {
-  original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
-  translation: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
+  original: "English"
   index: 101
 }
 str {
-  original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
-  translation: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
+  original: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
   index: 102
 }
 str {
-  original: "Please attach the file on your desktop named %s to this email and send it to us!"
-  translation: "Please attach the file on your desktop named %s to this email and send it to us!"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 35
+  original: "Enter drag mode, where you can drag the waveform back and forth."
   index: 103
 }
 str {
-  original: "Please contact World Wide Woodshed support at"
-  translation: "Please contact World Wide Woodshed support at"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 41
+  original: "Enter Set Time Mode, where clicking in the waveform sets the time."
   index: 104
 }
 str {
-  original: "Please mail the file to %s and then you can throw it away."
-  translation: "Please mail the file to %s and then you can throw it away."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 42
+  original: "Enter Zoom In Mode, where clicking on the waveform zooms in."
   index: 105
 }
 str {
-  original: "Please press a key combination now..."
-  translation: "Please press a key combination now..."
-  file: "rec/command/map/KeyCommandMapEditor.cpp"
-  line: 10
+  original: "Error During Save."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 38
   index: 106
 }
 str {
-  original: "Press the space bar to start and stop playback."
-  translation: "Press the space bar to start and stop playback."
-  file: "rec/slow/AboutWindow.cpp"
-  line: 21
+  original: "Error was"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 28
   index: 107
 }
 str {
-  original: "Ran Out Of Memory For Your File"
-  translation: "Ran Out Of Memory For Your File"
-  file: "rec/slow/CurrentFile.cpp"
-  line: 36
+  original: "Export all SlowGold Settings to a .zip file."
   index: 108
 }
 str {
-  original: "Re-assign"
-  translation: "Re-assign"
-  file: "rec/command/map/GenericCommandMapEditor.cpp"
-  line: 12
+  original: "Export keyboard command mappings."
   index: 109
 }
 str {
-  original: "Registered to:"
-  translation: "Registered to:"
-  file: "rec/slow/AboutWindow.cpp"
-  line: 27
+  original: "Export Keyboard Command Mappings..."
   index: 110
 }
 str {
-  original: "Remove this command mapping"
-  translation: "Remove this command mapping"
-  file: "rec/command/map/CommandMapEditButton.cpp"
-  line: 11
+  original: "Export MIDI command mappings."
   index: 111
 }
 str {
-  original: "Reset"
-  translation: "Reset"
-  file: "rec/command/map/CommandMapTopLevelItem.cpp"
-  line: 11
+  original: "Export MIDI Command Mappings..."
   index: 112
 }
 str {
-  original: "reset to defaults"
-  translation: "reset to defaults"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 13
+  original: "Export SlowGold Settings..."
   index: 113
 }
 str {
-  original: "Right"
-  translation: "Right"
+  original: "File"
   index: 114
 }
 str {
-  original: "Run this older version (%s)."
-  translation: "Run this older version (%s)."
-  file: "rec/app/DownloadVersion.cpp"
-  line: 25
+  original: "File Type For Save..."
   index: 115
 }
 str {
-  original: "Saving File %s."
-  translation: "Saving File %s."
+  original: "Finishing loading audio from disk."
   file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 41
+  line: 40
   index: 116
 }
 str {
-  original: "Select"
-  translation: "Select"
+  original: "FLAC"
   index: 117
 }
 str {
-  original: "Select A File Containing Keyboard Command Mappings"
-  translation: "Select A File Containing Keyboard Command Mappings"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 48
+  original: "Follow Cursor"
   index: 118
 }
 str {
-  original: "Select A File Containing MIDI Command Mappings"
-  translation: "Select A File Containing MIDI Command Mappings"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 49
+  original: "French"
   index: 119
 }
 str {
-  original: "Select A File To Save Exported Keyboard Command Mappings"
-  translation: "Select A File To Save Exported Keyboard Command Mappings"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 45
+  original: "Genre"
   index: 120
 }
 str {
-  original: "Select A File To Save Exported MIDI Command Mappings"
-  translation: "Select A File To Save Exported MIDI Command Mappings"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 46
+  original: "German"
   index: 121
 }
 str {
-  original: "Select A File To Save Exported Settings"
-  translation: "Select A File To Save Exported Settings"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 44
+  original: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
   index: 122
 }
 str {
-  original: "Select A Zip File Containing Exported Settings"
-  translation: "Select A Zip File Containing Exported Settings"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 47
+  original: "Help"
   index: 123
 }
 str {
-  original: "Select Only..."
-  translation: "Select Only..."
+  original: "Help Panel: Shows help about whatever the mouse is over."
   index: 124
 }
 str {
-  original: "Select..."
-  translation: "Select..."
+  original: "Import Keyboard Command Mappings..."
   index: 125
 }
 str {
-  original: "Set Audio Preferences"
-  translation: "Set Audio Preferences"
-  file: "rec/gui/audio/SetupPage.cpp"
-  line: 11
+  original: "Import MIDI Command Mappings"
   index: 126
 }
 str {
-  original: "Set Current Time Mode: Clicking in the waveform sets the current time."
-  translation: "Set Current Time Mode: Clicking in the waveform sets the current time."
+  original: "Import SlowGold keyboard command mappings."
   index: 127
 }
 str {
-  original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
-  translation: "Sorry, couldn\'t load the SlowGold 8 user manual at"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 30
+  original: "Import SlowGold MIDI command mappings."
   index: 128
 }
 str {
-  original: "Sorry, file %s is an .m4a file and we cano\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
-  translation: "Sorry, file %s is an .m4a file and we cano\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 37
+  original: "Import SlowGold Settings from a .zip file and merge with current settings."
   index: 129
 }
 str {
-  original: "Sorry, the file you tried to %s has a length of less than one second."
-  translation: "Sorry, the file you tried to %s has a length of less than one second."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 21
+  original: "Import SlowGold Settings..."
   index: 130
 }
 str {
-  original: "Sorry, the file you tried to open, %s has a length of zero."
-  translation: "Sorry, the file you tried to open, %s has a length of zero."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 46
+  original: "Indonesian"
   index: 131
 }
 str {
-  original: "Sorry, the program couldn\'t open your file %s."
-  translation: "Sorry, the program couldn\'t open your file %s."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 40
+  original: "Invert Selection"
   index: 132
 }
 str {
-  original: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
-  translation: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 70
+  original: "Jump Back"
   index: 133
 }
 str {
-  original: "Sorry, there wasn\'t enough memory for the file."
-  translation: "Sorry, there wasn\'t enough memory for the file."
-  file: "rec/slow/CurrentFile.cpp"
-  line: 37
+  original: "Jump Back Button: Jump to the start of the next segment."
   index: 134
 }
 str {
-  original: "Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted."
-  translation: "Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 32
+  original: "Jump Forward"
   index: 135
 }
 str {
-  original: "Sorry, we were unable to create a support request."
-  translation: "Sorry, we were unable to create a support request."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 32
+  original: "Jump Forward Button: Jump to the start of the next segment."
   index: 136
 }
 str {
-  original: "Start/stop"
-  translation: "Start/stop"
+  original: "Jump To Current Segment"
   index: 137
 }
 str {
-  original: "Start/Stop Button: Toggle between pause and play."
-  translation: "Start/Stop Button: Toggle between pause and play."
+  original: "Jump To Current Selected Segment"
   index: 138
 }
 str {
-  original: "Stereo"
-  translation: "Stereo"
+  original: "Jump To First Segment"
   index: 139
 }
 str {
-  original: "Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
-  translation: "Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
+  original: "Jump To First Selected Segment"
   index: 140
 }
 str {
-  original: "Stretch"
-  translation: "Stretch"
+  original: "Jump To Last Segment"
   index: 141
 }
 str {
-  original: "Support Request: %s"
-  translation: "Support Request: %s"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 39
+  original: "Jump To Last Selected Segment"
   index: 142
 }
 str {
-  original: "sysex"
-  translation: "sysex"
-  file: "rec/command/map/MidiName.cpp"
-  line: 14
+  original: "Jump To Next Segment"
   index: 143
 }
 str {
-  original: "The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave."
-  translation: "The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave."
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 51
+  original: "Jump To Next Selected Segment"
   index: 144
 }
 str {
-  original: "The full path was: %s"
-  translation: "The full path was: %s"
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 33
+  original: "Jump To Previous Segment"
   index: 145
 }
 str {
-  original: "There was an error saving your file %s."
-  translation: "There was an error saving your file %s."
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 39
+  original: "Jump To Previous Selected Segment"
   index: 146
 }
 str {
-  original: "This key is already assigned to the command"
-  translation: "This key is already assigned to the command"
-  file: "rec/command/map/GenericCommandMapEditor.cpp"
-  line: 10
+  original: "Jump To Segment 1"
   index: 147
 }
 str {
-  original: "Time"
-  translation: "Time"
+  original: "Jump To Segment 10"
   index: 148
 }
 str {
-  original: "Time Display: Shows the current playback time in minutes, seconds and millseconds."
-  translation: "Time Display: Shows the current playback time in minutes, seconds and millseconds."
+  original: "Jump To Segment 2"
   index: 149
 }
 str {
-  original: "Toggle..."
-  translation: "Toggle..."
+  original: "Jump To Segment 3"
   index: 150
 }
 str {
-  original: "Track"
-  translation: "Track"
+  original: "Jump To Segment 4"
   index: 151
 }
 str {
-  original: "Track Notes: You can enter your notes here."
-  translation: "Track Notes: You can enter your notes here."
+  original: "Jump To Segment 5"
   index: 152
 }
 str {
-  original: "Track Number: The album track number for this track"
-  translation: "Track Number: The album track number for this track"
+  original: "Jump To Segment 6"
   index: 153
 }
 str {
-  original: "Track tags: Tags that categorize this track."
-  translation: "Track tags: Tags that categorize this track."
+  original: "Jump To Segment 7"
   index: 154
 }
 str {
-  original: "Track Title: The name of this track."
-  translation: "Track Title: The name of this track."
+  original: "Jump To Segment 8"
   index: 155
 }
 str {
-  original: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
-  translation: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
+  original: "Jump To Segment 9"
   index: 156
 }
 str {
-  original: "Transport"
-  translation: "Transport"
+  original: "Jump To Selected Segment 1"
   index: 157
 }
 str {
-  original: "Tried to read CD, id=%s, names=%s"
-  translation: "Tried to read CD, id=%s, names=%s"
-  file: "rec/util/cd/CDReader.cpp"
-  line: 14
+  original: "Jump To Selected Segment 10"
   index: 158
 }
 str {
-  original: "Tune"
-  translation: "Tune"
+  original: "Jump To Selected Segment 2"
   index: 159
 }
 str {
-  original: "Unable To Clear Settings"
-  translation: "Unable To Clear Settings"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 67
+  original: "Jump To Selected Segment 3"
   index: 160
 }
 str {
-  original: "Unknown CD: ID = 0x"
-  translation: "Unknown CD: ID = 0x"
-  file: "rec/widget/tree/CD.cpp"
-  line: 13
+  original: "Jump To Selected Segment 4"
   index: 161
 }
 str {
-  original: "Unselect..."
-  translation: "Unselect..."
+  original: "Jump To Selected Segment 5"
   index: 162
 }
 str {
-  original: "up"
-  translation: "up"
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 44
+  original: "Jump To Selected Segment 6"
   index: 163
 }
 str {
-  original: "Volume"
-  translation: "Volume"
+  original: "Jump To Selected Segment 7"
   index: 164
 }
 str {
-  original: "Waiting for a MIDI note, program change or controller..."
-  translation: "Waiting for a MIDI note, program change or controller..."
-  file: "rec/command/map/MidiCommandMapEditor.cpp"
-  line: 14
+  original: "Jump To Selected Segment 8"
   index: 165
 }
 str {
-  original: "Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform."
-  translation: "Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform."
+  original: "Jump To Selected Segment 9"
   index: 166
 }
 str {
-  original: "We Can\'t Read .m4a Files On Windows"
-  translation: "We Can\'t Read .m4a Files On Windows"
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 34
+  original: "Jump To Selected..."
   index: 167
 }
 str {
-  original: "Would you like to download it?"
-  translation: "Would you like to download it?"
-  file: "rec/app/DownloadVersion.cpp"
-  line: 23
+  original: "Jump to start"
   index: 168
 }
 str {
-  original: "Year"
-  translation: "Year"
+  original: "Jump To Start Button: Jump to the start of the track."
   index: 169
 }
 str {
-  original: "You can throw the file away once your email is sent."
-  translation: "You can throw the file away once your email is sent."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 38
+  original: "Jump to the start of segment 1."
   index: 170
 }
 str {
-  original: "You cannot overwrite the current file."
-  translation: "You cannot overwrite the current file."
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 52
+  original: "Jump to the start of segment 10."
   index: 171
 }
 str {
-  original: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
-  translation: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 59
+  original: "Jump to the start of segment 2."
   index: 172
 }
 str {
-  original: "You want to clear settings for this track only, and quit the program.  Is this OK?"
-  translation: "You want to clear settings for this track only, and quit the program.  Is this OK?"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 65
+  original: "Jump to the start of segment 3."
   index: 173
 }
 str {
-  original: "Your File Was Empty."
-  translation: "Your File Was Empty."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 44
+  original: "Jump to the start of segment 4."
   index: 174
 }
 str {
-  original: "Your File Was Too Small."
-  translation: "Your File Was Too Small."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 19
+  original: "Jump to the start of segment 5."
   index: 175
 }
 str {
-  original: "Your Version Of SlowGold Is Up-To-Date"
-  translation: "Your Version Of SlowGold Is Up-To-Date"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 45
+  original: "Jump to the start of segment 6."
   index: 176
 }
 str {
-  original: "Your version of SlowGold, %s, is up-to-date."
-  translation: "Your version of SlowGold, %s, is up-to-date."
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 46
+  original: "Jump to the start of segment 7."
   index: 177
 }
 str {
-  original: "Zoom Mode: Clicking on the waveform zooms in on that point."
-  translation: "Zoom Mode: Clicking on the waveform zooms in on that point."
+  original: "Jump to the start of segment 8."
   index: 178
 }
 str {
-  original: "Zoom out"
-  translation: "Zoom out"
+  original: "Jump to the start of segment 9."
   index: 179
 }
 str {
-  original: "Zoom Out Full Button: Zoom the waveform all the way out."
-  translation: "Zoom Out Full Button: Zoom the waveform all the way out."
+  original: "Jump to the start of the current segment."
   index: 180
 }
 str {
-  original: "Zoom To Selection"
-  translation: "Zoom To Selection"
+  original: "Jump to the start of the first segment."
   index: 181
 }
 str {
-  original: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
-  translation: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
+  original: "Jump to the start of the last segment."
   index: 182
 }
-max_index: 182
+str {
+  original: "Jump to the start of the next segment."
+  index: 183
+}
+str {
+  original: "Jump to the start of the previous segment."
+  index: 184
+}
+str {
+  original: "Jump To..."
+  index: 185
+}
+str {
+  original: "Key"
+  file: "rec/command/map/KeyCommandMapEditor.cpp"
+  line: 11
+  index: 186
+}
+str {
+  original: "L + R"
+  index: 187
+}
+str {
+  original: "Language"
+  index: 188
+}
+str {
+  original: "Lay the Command Bar out on the left side of the Waveform Display."
+  index: 189
+}
+str {
+  original: "Lay the Command Bar out on the top of the Waveform Display."
+  index: 190
+}
+str {
+  original: "Lay the Modes display out on the left side of the Waveform Display."
+  index: 191
+}
+str {
+  original: "Lay the Modes display out on the top of the Waveform Display."
+  index: 192
+}
+str {
+  original: "Left"
+  index: 193
+}
+str {
+  original: "Level Meter: Display the sound intensity, in RMS dB."
+  index: 194
+}
+str {
+  original: "Level Slider: Raise or lower the sound intensity, in dB."
+  index: 195
+}
+str {
+  original: "Loop Entire Track"
+  index: 196
+}
+str {
+  original: "Loop Point List: You can select and edit loop points here."
+  index: 197
+}
+str {
+  original: "Loop Point Name: Edit the Loop Point\'s name by clicking here."
+  index: 198
+}
+str {
+  original: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
+  file: "rec/widget/waveform/Waveform.cpp"
+  line: 38
+  index: 199
+}
+str {
+  original: "Loop This Segment"
+  index: 200
+}
+str {
+  original: "Make a request for technical support to World Wide Woodshed."
+  index: 201
+}
+str {
+  original: "Master"
+  index: 202
+}
+str {
+  original: "Master Tune Slider: Master tune is a global detune over all tracks."
+  index: 203
+}
+str {
+  original: "MIDI"
+  file: "rec/command/map/MidiCommandMapEditor.cpp"
+  line: 15
+  index: 204
+}
+str {
+  original: "Modes At Left Side"
+  index: 205
+}
+str {
+  original: "Modes At Top"
+  index: 206
+}
+str {
+  original: "Mute"
+  index: 207
+}
+str {
+  original: "Mute Button: Mute or unmute the sound."
+  index: 208
+}
+str {
+  original: "Name"
+  index: 209
+}
+str {
+  original: "New command mapping"
+  file: "rec/command/map/CommandEntryWindow.cpp"
+  line: 9
+  index: 210
+}
+str {
+  original: "No available CDs."
+  file: "rec/util/cd/CDReader.cpp"
+  line: 13
+  index: 211
+}
+str {
+  original: "Not Registered!"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 28
+  index: 212
+}
+str {
+  original: "Notes"
+  index: 213
+}
+str {
+  original: "Nudge Backward"
+  index: 214
+}
+str {
+  original: "Nudge Backward One Segment Or 10 Seconds"
+  index: 215
+}
+str {
+  original: "Nudge Forward"
+  index: 216
+}
+str {
+  original: "Nudge Forward One Segment Or 10 Seconds"
+  index: 217
+}
+str {
+  original: "Nudge speed down"
+  index: 218
+}
+str {
+  original: "Nudge speed up"
+  index: 219
+}
+str {
+  original: "Nudge volume down"
+  index: 220
+}
+str {
+  original: "Nudge volume down by 2dB"
+  index: 221
+}
+str {
+  original: "Nudge volume up"
+  index: 222
+}
+str {
+  original: "Nudge volume up by 2dB"
+  index: 223
+}
+str {
+  original: "Number"
+  index: 224
+}
+str {
+  original: "Ogg Vorbis"
+  index: 225
+}
+str {
+  original: "OK"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 40
+  index: 226
+}
+str {
+  original: "one semitone %s"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 47
+  index: 227
+}
+str {
+  original: "Open a dialog to select a new audio file for looping."
+  index: 228
+}
+str {
+  original: "Open recent"
+  index: 229
+}
+str {
+  original: "Open SlowGold Preferences Directory"
+  index: 230
+}
+str {
+  original: "Open the Audio Preferences pane."
+  index: 231
+}
+str {
+  original: "Open the directory where all the SlowGold Preferences Files are located."
+  index: 232
+}
+str {
+  original: "Open..."
+  index: 233
+}
+str {
+  original: "Paste"
+  index: 234
+}
+str {
+  original: "pc %d"
+  file: "rec/command/map/MidiName.cpp"
+  line: 16
+  index: 235
+}
+str {
+  original: "Pitch"
+  index: 236
+}
+str {
+  original: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
+  index: 237
+}
+str {
+  original: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
+  index: 238
+}
+str {
+  original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
+  index: 239
+}
+str {
+  original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
+  index: 240
+}
+str {
+  original: "Please attach the file on your desktop named %s to this email and send it to us!"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 35
+  index: 241
+}
+str {
+  original: "Please contact World Wide Woodshed support at"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 41
+  index: 242
+}
+str {
+  original: "Please mail the file to %s and then you can throw it away."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 42
+  index: 243
+}
+str {
+  original: "Please press a key combination now..."
+  file: "rec/command/map/KeyCommandMapEditor.cpp"
+  line: 10
+  index: 244
+}
+str {
+  original: "Press the space bar to start and stop playback."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 21
+  index: 245
+}
+str {
+  original: "Quit"
+  index: 246
+}
+str {
+  original: "Quit SlowGold"
+  index: 247
+}
+str {
+  original: "Ran Out Of Memory For Your File"
+  file: "rec/slow/CurrentFile.cpp"
+  line: 36
+  index: 248
+}
+str {
+  original: "Re-assign"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 12
+  index: 249
+}
+str {
+  original: "Re-Open Most Recent Closed File"
+  index: 250
+}
+str {
+  original: "Re-open the file that was most recently closed."
+  index: 251
+}
+str {
+  original: "Recent file"
+  index: 252
+}
+str {
+  original: "Recent file 1"
+  index: 253
+}
+str {
+  original: "Recent file 10"
+  index: 254
+}
+str {
+  original: "Recent file 2"
+  index: 255
+}
+str {
+  original: "Recent file 3"
+  index: 256
+}
+str {
+  original: "Recent file 4"
+  index: 257
+}
+str {
+  original: "Recent file 5"
+  index: 258
+}
+str {
+  original: "Recent file 6"
+  index: 259
+}
+str {
+  original: "Recent file 7"
+  index: 260
+}
+str {
+  original: "Recent file 8"
+  index: 261
+}
+str {
+  original: "Recent file 9"
+  index: 262
+}
+str {
+  original: "Redo"
+  index: 263
+}
+str {
+  original: "Redoes a previously undone command."
+  index: 264
+}
+str {
+  original: "Registered to:"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 27
+  index: 265
+}
+str {
+  original: "Remove this command mapping"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 11
+  index: 266
+}
+str {
+  original: "Replace the current selection with a copy of the clipboard."
+  index: 267
+}
+str {
+  original: "Request Technical Support"
+  index: 268
+}
+str {
+  original: "Reset"
+  file: "rec/command/map/CommandMapTopLevelItem.cpp"
+  line: 11
+  index: 269
+}
+str {
+  original: "reset to defaults"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 13
+  index: 270
+}
+str {
+  original: "Reset Volume"
+  index: 271
+}
+str {
+  original: "Reset volume to 0 dB"
+  index: 272
+}
+str {
+  original: "Right"
+  index: 273
+}
+str {
+  original: "Run this older version (%s)."
+  file: "rec/app/DownloadVersion.cpp"
+  line: 25
+  index: 274
+}
+str {
+  original: "Save just the selected portion of the transformed file in the default save format."
+  index: 275
+}
+str {
+  original: "Save Selection..."
+  index: 276
+}
+str {
+  original: "Save the full transformed file in the default save format."
+  index: 277
+}
+str {
+  original: "Save..."
+  index: 278
+}
+str {
+  original: "Saving File %s."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 41
+  index: 279
+}
+str {
+  original: "Select"
+  index: 280
+}
+str {
+  original: "Select A File Containing Keyboard Command Mappings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 48
+  index: 281
+}
+str {
+  original: "Select A File Containing MIDI Command Mappings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 49
+  index: 282
+}
+str {
+  original: "Select A File To Save Exported Keyboard Command Mappings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 45
+  index: 283
+}
+str {
+  original: "Select A File To Save Exported MIDI Command Mappings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 46
+  index: 284
+}
+str {
+  original: "Select A File To Save Exported Settings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 44
+  index: 285
+}
+str {
+  original: "Select A Zip File Containing Exported Settings"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 47
+  index: 286
+}
+str {
+  original: "Select All"
+  index: 287
+}
+str {
+  original: "Select all of the file"
+  index: 288
+}
+str {
+  original: "Select Current Segment"
+  index: 289
+}
+str {
+  original: "Select Current Segment Only"
+  index: 290
+}
+str {
+  original: "Select First Segment"
+  index: 291
+}
+str {
+  original: "Select First Segment Only"
+  index: 292
+}
+str {
+  original: "Select Last Segment"
+  index: 293
+}
+str {
+  original: "Select Last Segment Only"
+  index: 294
+}
+str {
+  original: "Select Next Segment"
+  index: 295
+}
+str {
+  original: "Select Next Segment Only"
+  index: 296
+}
+str {
+  original: "Select None"
+  index: 297
+}
+str {
+  original: "Select none of the file"
+  index: 298
+}
+str {
+  original: "Select Only..."
+  index: 299
+}
+str {
+  original: "Select Previous Segment"
+  index: 300
+}
+str {
+  original: "Select Previous Segment Only"
+  index: 301
+}
+str {
+  original: "Select Segment 1"
+  index: 302
+}
+str {
+  original: "Select Segment 1 Only"
+  index: 303
+}
+str {
+  original: "Select Segment 10"
+  index: 304
+}
+str {
+  original: "Select Segment 10 Only"
+  index: 305
+}
+str {
+  original: "Select Segment 2"
+  index: 306
+}
+str {
+  original: "Select Segment 2 Only"
+  index: 307
+}
+str {
+  original: "Select Segment 3"
+  index: 308
+}
+str {
+  original: "Select Segment 3 Only"
+  index: 309
+}
+str {
+  original: "Select Segment 4"
+  index: 310
+}
+str {
+  original: "Select Segment 4 Only"
+  index: 311
+}
+str {
+  original: "Select Segment 5"
+  index: 312
+}
+str {
+  original: "Select Segment 5 Only"
+  index: 313
+}
+str {
+  original: "Select Segment 6"
+  index: 314
+}
+str {
+  original: "Select Segment 6 Only"
+  index: 315
+}
+str {
+  original: "Select Segment 7"
+  index: 316
+}
+str {
+  original: "Select Segment 7 Only"
+  index: 317
+}
+str {
+  original: "Select Segment 8"
+  index: 318
+}
+str {
+  original: "Select Segment 8 Only"
+  index: 319
+}
+str {
+  original: "Select Segment 9"
+  index: 320
+}
+str {
+  original: "Select Segment 9 Only"
+  index: 321
+}
+str {
+  original: "Select..."
+  index: 322
+}
+str {
+  original: "Set Audio Preferences"
+  file: "rec/gui/audio/SetupPage.cpp"
+  line: 11
+  index: 323
+}
+str {
+  original: "Set Current Time Mode: Clicking in the waveform sets the current time."
+  index: 324
+}
+str {
+  original: "Set Time Mode"
+  index: 325
+}
+str {
+  original: "Show About Window At Startup"
+  index: 326
+}
+str {
+  original: "Show Advanced Menus"
+  index: 327
+}
+str {
+  original: "Show draggable labels for the loop points on the waveform display."
+  index: 328
+}
+str {
+  original: "Show Grid Times At Top"
+  index: 329
+}
+str {
+  original: "Show help in help pane."
+  index: 330
+}
+str {
+  original: "Show Loop Point Labels"
+  index: 331
+}
+str {
+  original: "Show Loop Point Labels At Top"
+  index: 332
+}
+str {
+  original: "Show Loop Point Selection Buttons"
+  index: 333
+}
+str {
+  original: "Show Master Tune Slider"
+  index: 334
+}
+str {
+  original: "Show Pre-Fader Levels"
+  index: 335
+}
+str {
+  original: "Show Stacked Waveform"
+  index: 336
+}
+str {
+  original: "Show the grid times for the grid at the top of the waveform display."
+  index: 337
+}
+str {
+  original: "Show the loop point labels at the top of the waveform display."
+  index: 338
+}
+str {
+  original: "Show the Master Tune Slider in the Transform Panel."
+  index: 339
+}
+str {
+  original: "Show Time Gridlines"
+  index: 340
+}
+str {
+  original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 30
+  index: 341
+}
+str {
+  original: "Sorry, file %s is an .m4a file and we cano\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 37
+  index: 342
+}
+str {
+  original: "Sorry, the file you tried to %s has a length of less than one second."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 21
+  index: 343
+}
+str {
+  original: "Sorry, the file you tried to open, %s has a length of zero."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 46
+  index: 344
+}
+str {
+  original: "Sorry, the program couldn\'t open your file %s."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 40
+  index: 345
+}
+str {
+  original: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 70
+  index: 346
+}
+str {
+  original: "Sorry, there wasn\'t enough memory for the file."
+  file: "rec/slow/CurrentFile.cpp"
+  line: 37
+  index: 347
+}
+str {
+  original: "Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 32
+  index: 348
+}
+str {
+  original: "Sorry, we were unable to create a support request."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 32
+  index: 349
+}
+str {
+  original: "Spanish"
+  index: 350
+}
+str {
+  original: "Start or pause"
+  index: 351
+}
+str {
+  original: "Start/stop"
+  index: 352
+}
+str {
+  original: "Start/Stop Button: Toggle between pause and play."
+  index: 353
+}
+str {
+  original: "Stereo"
+  index: 354
+}
+str {
+  original: "Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
+  index: 355
+}
+str {
+  original: "Stretch"
+  index: 356
+}
+str {
+  original: "Support Request: %s"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 39
+  index: 357
+}
+str {
+  original: "sysex"
+  file: "rec/command/map/MidiName.cpp"
+  line: 14
+  index: 358
+}
+str {
+  original: "The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 51
+  index: 359
+}
+str {
+  original: "The full path was: %s"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 33
+  index: 360
+}
+str {
+  original: "There was an error saving your file %s."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 39
+  index: 361
+}
+str {
+  original: "This key is already assigned to the command"
+  file: "rec/command/map/GenericCommandMapEditor.cpp"
+  line: 10
+  index: 362
+}
+str {
+  original: "Time"
+  index: 363
+}
+str {
+  original: "Time Display: Shows the current playback time in minutes, seconds and millseconds."
+  index: 364
+}
+str {
+  original: "Toggle audio dim"
+  index: 365
+}
+str {
+  original: "Toggle audio dim on and off."
+  index: 366
+}
+str {
+  original: "Toggle audio mute"
+  index: 367
+}
+str {
+  original: "Toggle audio mute on and off."
+  index: 368
+}
+str {
+  original: "Toggle between stretched and real-time playback."
+  index: 369
+}
+str {
+  original: "Toggle Current Segment Selection"
+  index: 370
+}
+str {
+  original: "Toggle display of the time grid."
+  index: 371
+}
+str {
+  original: "Toggle First Segment Selection"
+  index: 372
+}
+str {
+  original: "Toggle Last Segment Selection"
+  index: 373
+}
+str {
+  original: "Toggle level display between pre- and post-fader."
+  index: 374
+}
+str {
+  original: "Toggle Next Segment Selection"
+  index: 375
+}
+str {
+  original: "Toggle parallel/stacked waveform display."
+  index: 376
+}
+str {
+  original: "Toggle pitch, time and stereo transforms of the sound."
+  index: 377
+}
+str {
+  original: "Toggle Previous Segment Selection"
+  index: 378
+}
+str {
+  original: "Toggle Segment Selection 1"
+  index: 379
+}
+str {
+  original: "Toggle Segment Selection 10"
+  index: 380
+}
+str {
+  original: "Toggle Segment Selection 2"
+  index: 381
+}
+str {
+  original: "Toggle Segment Selection 3"
+  index: 382
+}
+str {
+  original: "Toggle Segment Selection 4"
+  index: 383
+}
+str {
+  original: "Toggle Segment Selection 5"
+  index: 384
+}
+str {
+  original: "Toggle Segment Selection 6"
+  index: 385
+}
+str {
+  original: "Toggle Segment Selection 7"
+  index: 386
+}
+str {
+  original: "Toggle Segment Selection 8"
+  index: 387
+}
+str {
+  original: "Toggle Segment Selection 9"
+  index: 388
+}
+str {
+  original: "Toggle selection between the current segment and the whole song."
+  index: 389
+}
+str {
+  original: "Toggle show/hide of advanced menus."
+  index: 390
+}
+str {
+  original: "Toggle Start/Stop"
+  index: 391
+}
+str {
+  original: "Toggle whether we show the About Window every time we start up."
+  index: 392
+}
+str {
+  original: "Toggle..."
+  index: 393
+}
+str {
+  original: "Track"
+  index: 394
+}
+str {
+  original: "Track Notes: You can enter your notes here."
+  index: 395
+}
+str {
+  original: "Track Number: The album track number for this track"
+  index: 396
+}
+str {
+  original: "Track tags: Tags that categorize this track."
+  index: 397
+}
+str {
+  original: "Track Title: The name of this track."
+  index: 398
+}
+str {
+  original: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
+  index: 399
+}
+str {
+  original: "Transport"
+  index: 400
+}
+str {
+  original: "Tried to read CD, id=%s, names=%s"
+  file: "rec/util/cd/CDReader.cpp"
+  line: 14
+  index: 401
+}
+str {
+  original: "Tune"
+  index: 402
+}
+str {
+  original: "Unable To Clear Settings"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 67
+  index: 403
+}
+str {
+  original: "Undo"
+  index: 404
+}
+str {
+  original: "Undoes a previous command."
+  index: 405
+}
+str {
+  original: "Unknown CD: ID = 0x"
+  file: "rec/widget/tree/CD.cpp"
+  line: 13
+  index: 406
+}
+str {
+  original: "Unselect Current Segment"
+  index: 407
+}
+str {
+  original: "Unselect everything selected and vice-versa."
+  index: 408
+}
+str {
+  original: "Unselect First Segment"
+  index: 409
+}
+str {
+  original: "Unselect Last Segment"
+  index: 410
+}
+str {
+  original: "Unselect Next Segment"
+  index: 411
+}
+str {
+  original: "Unselect Previous Segment"
+  index: 412
+}
+str {
+  original: "Unselect Segment 1"
+  index: 413
+}
+str {
+  original: "Unselect Segment 10"
+  index: 414
+}
+str {
+  original: "Unselect Segment 2"
+  index: 415
+}
+str {
+  original: "Unselect Segment 3"
+  index: 416
+}
+str {
+  original: "Unselect Segment 4"
+  index: 417
+}
+str {
+  original: "Unselect Segment 5"
+  index: 418
+}
+str {
+  original: "Unselect Segment 6"
+  index: 419
+}
+str {
+  original: "Unselect Segment 7"
+  index: 420
+}
+str {
+  original: "Unselect Segment 8"
+  index: 421
+}
+str {
+  original: "Unselect Segment 9"
+  index: 422
+}
+str {
+  original: "Unselect..."
+  index: 423
+}
+str {
+  original: "up"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 44
+  index: 424
+}
+str {
+  original: "Use Tree Display In File Save Dialog"
+  index: 425
+}
+str {
+  original: "Volume"
+  index: 426
+}
+str {
+  original: "Waiting for a MIDI note, program change or controller..."
+  file: "rec/command/map/MidiCommandMapEditor.cpp"
+  line: 14
+  index: 427
+}
+str {
+  original: "WAV"
+  index: 428
+}
+str {
+  original: "Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform."
+  index: 429
+}
+str {
+  original: "We Can\'t Read .m4a Files On Windows"
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 34
+  index: 430
+}
+str {
+  original: "What\'s New In This Release?"
+  index: 431
+}
+str {
+  original: "Would you like to download it?"
+  file: "rec/app/DownloadVersion.cpp"
+  line: 23
+  index: 432
+}
+str {
+  original: "Year"
+  index: 433
+}
+str {
+  original: "You can throw the file away once your email is sent."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 38
+  index: 434
+}
+str {
+  original: "You cannot overwrite the current file."
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 52
+  index: 435
+}
+str {
+  original: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 59
+  index: 436
+}
+str {
+  original: "You want to clear settings for this track only, and quit the program.  Is this OK?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 65
+  index: 437
+}
+str {
+  original: "Your File Was Empty."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 44
+  index: 438
+}
+str {
+  original: "Your File Was Too Small."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 19
+  index: 439
+}
+str {
+  original: "Your Version Of SlowGold Is Up-To-Date"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 45
+  index: 440
+}
+str {
+  original: "Your version of SlowGold, %s, is up-to-date."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 46
+  index: 441
+}
+str {
+  original: "Zoom In Mode"
+  index: 442
+}
+str {
+  original: "Zoom Mode: Clicking on the waveform zooms in on that point."
+  index: 443
+}
+str {
+  original: "Zoom out"
+  index: 444
+}
+str {
+  original: "Zoom out as far as possible."
+  index: 445
+}
+str {
+  original: "Zoom Out Completely"
+  index: 446
+}
+str {
+  original: "Zoom Out Full Button: Zoom the waveform all the way out."
+  index: 447
+}
+str {
+  original: "Zoom out."
+  index: 448
+}
+str {
+  original: "Zoom To Selection"
+  index: 449
+}
+str {
+  original: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
+  index: 450
+}
+str {
+  original: "Zoom to selection."
+  index: 451
+}
+max_index: 451

@@ -144,7 +144,6 @@ using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
   // TODO:  logging doesn't work if called in this routine...
-  std::cerr << "here!!!!\n";
   file::moveOldAbsoluteDirectoriesToTypeRelative();
   registerProtos();
   registerAllTranslations();

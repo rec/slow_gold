@@ -17,6 +17,9 @@ str {
   line: 12
 }
 str {
+  original: "..."
+}
+str {
   original: "<Unknown CD>"
   file: "rec/widget/tree/CD.cpp"
   line: 12
@@ -37,7 +40,19 @@ str {
   line: 43
 }
 str {
+  original: "About SlowGold 8"
+}
+str {
+  original: "Add a loop point at the current time."
+}
+str {
+  original: "Add Loop Point At Current Time"
+}
+str {
   original: "Add Loop Point Button: Add a loop point at the current time."
+}
+str {
+  original: "Add Loop Point Mode"
 }
 str {
   original: "Add loop point mode: clicking on the waveform creates a loop point."
@@ -48,6 +63,9 @@ str {
   line: 8
 }
 str {
+  original: "AIFF"
+}
+str {
   original: "Album"
 }
 str {
@@ -55,6 +73,9 @@ str {
 }
 str {
   original: "Album Year: The year that that this track was recorded."
+}
+str {
+  original: "Always keep the time cursor in the window."
 }
 str {
   original: "Are you sure you want to reset all the key mappings to their default state?"
@@ -74,6 +95,12 @@ str {
 }
 str {
   original: "Audio"
+}
+str {
+  original: "Audio Preferences..."
+}
+str {
+  original: "Bring up a window describing SlowGold 8."
 }
 str {
   original: "Can\'t create track for %s."
@@ -109,9 +136,18 @@ str {
   line: 10
 }
 str {
+  original: "Check For Updates"
+}
+str {
+  original: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
+}
+str {
   original: "Choose File To Save to"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 42
+}
+str {
+  original: "Clear all keyboard command mappings to program default."
 }
 str {
   original: "Clear all keyboard mappings to factory default?"
@@ -119,9 +155,24 @@ str {
   line: 52
 }
 str {
+  original: "Clear all MIDI command mappings."
+}
+str {
   original: "Clear all MIDI mappings?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 54
+}
+str {
+  original: "Clear All Settings And Quit"
+}
+str {
+  original: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
+}
+str {
+  original: "Clear all SlowGold settings for this track only and quit the program."
+}
+str {
+  original: "Clear Keyboard Mappings"
 }
 str {
   original: "Clear Keyboard Mappings."
@@ -129,9 +180,18 @@ str {
   line: 50
 }
 str {
+  original: "Clear Loops"
+}
+str {
+  original: "Clear MIDI Mappings"
+}
+str {
   original: "Clear MIDI Mappings."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 53
+}
+str {
+  original: "Clear Settings For This Track And Quit"
 }
 str {
   original: "Clearing All Settings For All Tracks"
@@ -152,6 +212,27 @@ str {
   original: "Click to continue."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 33
+}
+str {
+  original: "Close"
+}
+str {
+  original: "Close the current file"
+}
+str {
+  original: "Command Bar At Left Side"
+}
+str {
+  original: "Command Bar At Top"
+}
+str {
+  original: "Copy"
+}
+str {
+  original: "Copy the current selection to the clipboard and clear the selection."
+}
+str {
+  original: "Copy the current selection to the clipboard."
 }
 str {
   original: "Copyright \302\251 %d"
@@ -199,6 +280,21 @@ str {
   line: 14
 }
 str {
+  original: "Cut"
+}
+str {
+  original: "Delete"
+}
+str {
+  original: "Delete all loop points"
+}
+str {
+  original: "Delete the current selection without changing the clipboard."
+}
+str {
+  original: "Display"
+}
+str {
   original: "Display this window on startup"
   file: "rec/slow/AboutWindow.cpp"
   line: 17
@@ -219,14 +315,23 @@ str {
   line: 24
 }
 str {
+  original: "Download SlowGold 8 User Manual"
+}
+str {
   original: "Download the manual from the Help menu for many more commands."
   file: "rec/slow/AboutWindow.cpp"
   line: 25
 }
 str {
+  original: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
+}
+str {
   original: "Drag audio files onto the waveform."
   file: "rec/slow/AboutWindow.cpp"
   line: 18
+}
+str {
+  original: "Drag Mode"
 }
 str {
   original: "Drag Mode: Use the mouse to drag the waveform back and forth"
@@ -240,15 +345,57 @@ str {
   original: "Edit"
 }
 str {
+  original: "Edit keyboard mappings for commands."
+}
+str {
+  original: "Edit Keyboard Mappings..."
+}
+str {
+  original: "Edit midi mappings for commands."
+}
+str {
+  original: "Edit Midi Mappings..."
+}
+str {
   original: "Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 42
 }
 str {
+  original: "Eject All"
+}
+str {
+  original: "Eject all CDs and DVDs"
+}
+str {
   original: "Enable"
 }
 str {
+  original: "Enable Automatic Updates"
+}
+str {
+  original: "Enable or disable automatic updates of SlowGold 8."
+}
+str {
+  original: "Enable Stretch"
+}
+str {
+  original: "Enable Transforms"
+}
+str {
   original: "English"
+}
+str {
+  original: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
+}
+str {
+  original: "Enter drag mode, where you can drag the waveform back and forth."
+}
+str {
+  original: "Enter Set Time Mode, where clicking in the waveform sets the time."
+}
+str {
+  original: "Enter Zoom In Mode, where clicking on the waveform zooms in."
 }
 str {
   original: "Error During Save."
@@ -259,6 +406,24 @@ str {
   original: "Error was"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 28
+}
+str {
+  original: "Export all SlowGold Settings to a .zip file."
+}
+str {
+  original: "Export keyboard command mappings."
+}
+str {
+  original: "Export Keyboard Command Mappings..."
+}
+str {
+  original: "Export MIDI command mappings."
+}
+str {
+  original: "Export MIDI Command Mappings..."
+}
+str {
+  original: "Export SlowGold Settings..."
 }
 str {
   original: "File"
@@ -272,6 +437,12 @@ str {
   line: 40
 }
 str {
+  original: "FLAC"
+}
+str {
+  original: "Follow Cursor"
+}
+str {
   original: "French"
 }
 str {
@@ -281,13 +452,37 @@ str {
   original: "German"
 }
 str {
+  original: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
+}
+str {
   original: "Help"
 }
 str {
   original: "Help Panel: Shows help about whatever the mouse is over."
 }
 str {
+  original: "Import Keyboard Command Mappings..."
+}
+str {
+  original: "Import MIDI Command Mappings"
+}
+str {
+  original: "Import SlowGold keyboard command mappings."
+}
+str {
+  original: "Import SlowGold MIDI command mappings."
+}
+str {
+  original: "Import SlowGold Settings from a .zip file and merge with current settings."
+}
+str {
+  original: "Import SlowGold Settings..."
+}
+str {
   original: "Indonesian"
+}
+str {
+  original: "Invert Selection"
 }
 str {
   original: "Jump Back"
@@ -302,10 +497,151 @@ str {
   original: "Jump Forward Button: Jump to the start of the next segment."
 }
 str {
+  original: "Jump To Current Segment"
+}
+str {
+  original: "Jump To Current Selected Segment"
+}
+str {
+  original: "Jump To First Segment"
+}
+str {
+  original: "Jump To First Selected Segment"
+}
+str {
+  original: "Jump To Last Segment"
+}
+str {
+  original: "Jump To Last Selected Segment"
+}
+str {
+  original: "Jump To Next Segment"
+}
+str {
+  original: "Jump To Next Selected Segment"
+}
+str {
+  original: "Jump To Previous Segment"
+}
+str {
+  original: "Jump To Previous Selected Segment"
+}
+str {
+  original: "Jump To Segment 1"
+}
+str {
+  original: "Jump To Segment 10"
+}
+str {
+  original: "Jump To Segment 2"
+}
+str {
+  original: "Jump To Segment 3"
+}
+str {
+  original: "Jump To Segment 4"
+}
+str {
+  original: "Jump To Segment 5"
+}
+str {
+  original: "Jump To Segment 6"
+}
+str {
+  original: "Jump To Segment 7"
+}
+str {
+  original: "Jump To Segment 8"
+}
+str {
+  original: "Jump To Segment 9"
+}
+str {
+  original: "Jump To Selected Segment 1"
+}
+str {
+  original: "Jump To Selected Segment 10"
+}
+str {
+  original: "Jump To Selected Segment 2"
+}
+str {
+  original: "Jump To Selected Segment 3"
+}
+str {
+  original: "Jump To Selected Segment 4"
+}
+str {
+  original: "Jump To Selected Segment 5"
+}
+str {
+  original: "Jump To Selected Segment 6"
+}
+str {
+  original: "Jump To Selected Segment 7"
+}
+str {
+  original: "Jump To Selected Segment 8"
+}
+str {
+  original: "Jump To Selected Segment 9"
+}
+str {
+  original: "Jump To Selected..."
+}
+str {
   original: "Jump to start"
 }
 str {
   original: "Jump To Start Button: Jump to the start of the track."
+}
+str {
+  original: "Jump to the start of segment 1."
+}
+str {
+  original: "Jump to the start of segment 10."
+}
+str {
+  original: "Jump to the start of segment 2."
+}
+str {
+  original: "Jump to the start of segment 3."
+}
+str {
+  original: "Jump to the start of segment 4."
+}
+str {
+  original: "Jump to the start of segment 5."
+}
+str {
+  original: "Jump to the start of segment 6."
+}
+str {
+  original: "Jump to the start of segment 7."
+}
+str {
+  original: "Jump to the start of segment 8."
+}
+str {
+  original: "Jump to the start of segment 9."
+}
+str {
+  original: "Jump to the start of the current segment."
+}
+str {
+  original: "Jump to the start of the first segment."
+}
+str {
+  original: "Jump to the start of the last segment."
+}
+str {
+  original: "Jump to the start of the next segment."
+}
+str {
+  original: "Jump to the start of the previous segment."
+}
+str {
+  original: "Jump To..."
 }
 str {
   original: "Key"
@@ -317,6 +653,18 @@ str {
 }
 str {
   original: "Language"
+}
+str {
+  original: "Lay the Command Bar out on the left side of the Waveform Display."
+}
+str {
+  original: "Lay the Command Bar out on the top of the Waveform Display."
+}
+str {
+  original: "Lay the Modes display out on the left side of the Waveform Display."
+}
+str {
+  original: "Lay the Modes display out on the top of the Waveform Display."
 }
 str {
   original: "Left"
@@ -345,6 +693,9 @@ str {
   original: "Loop This Segment"
 }
 str {
+  original: "Make a request for technical support to World Wide Woodshed."
+}
+str {
   original: "Master"
 }
 str {
@@ -354,6 +705,12 @@ str {
   original: "MIDI"
   file: "rec/command/map/MidiCommandMapEditor.cpp"
   line: 15
+}
+str {
+  original: "Modes At Left Side"
+}
+str {
+  original: "Modes At Top"
 }
 str {
   original: "Mute"
@@ -383,7 +740,40 @@ str {
   original: "Notes"
 }
 str {
+  original: "Nudge Backward"
+}
+str {
+  original: "Nudge Backward One Segment Or 10 Seconds"
+}
+str {
+  original: "Nudge Forward"
+}
+str {
+  original: "Nudge Forward One Segment Or 10 Seconds"
+}
+str {
+  original: "Nudge speed down"
+}
+str {
+  original: "Nudge speed up"
+}
+str {
+  original: "Nudge volume down"
+}
+str {
+  original: "Nudge volume down by 2dB"
+}
+str {
+  original: "Nudge volume up"
+}
+str {
+  original: "Nudge volume up by 2dB"
+}
+str {
   original: "Number"
+}
+str {
+  original: "Ogg Vorbis"
 }
 str {
   original: "OK"
@@ -396,7 +786,25 @@ str {
   line: 47
 }
 str {
+  original: "Open a dialog to select a new audio file for looping."
+}
+str {
   original: "Open recent"
+}
+str {
+  original: "Open SlowGold Preferences Directory"
+}
+str {
+  original: "Open the Audio Preferences pane."
+}
+str {
+  original: "Open the directory where all the SlowGold Preferences Files are located."
+}
+str {
+  original: "Open..."
+}
+str {
+  original: "Paste"
 }
 str {
   original: "pc %d"
@@ -444,6 +852,12 @@ str {
   line: 21
 }
 str {
+  original: "Quit"
+}
+str {
+  original: "Quit SlowGold"
+}
+str {
   original: "Ran Out Of Memory For Your File"
   file: "rec/slow/CurrentFile.cpp"
   line: 36
@@ -452,6 +866,51 @@ str {
   original: "Re-assign"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 12
+}
+str {
+  original: "Re-Open Most Recent Closed File"
+}
+str {
+  original: "Re-open the file that was most recently closed."
+}
+str {
+  original: "Recent file"
+}
+str {
+  original: "Recent file 1"
+}
+str {
+  original: "Recent file 10"
+}
+str {
+  original: "Recent file 2"
+}
+str {
+  original: "Recent file 3"
+}
+str {
+  original: "Recent file 4"
+}
+str {
+  original: "Recent file 5"
+}
+str {
+  original: "Recent file 6"
+}
+str {
+  original: "Recent file 7"
+}
+str {
+  original: "Recent file 8"
+}
+str {
+  original: "Recent file 9"
+}
+str {
+  original: "Redo"
+}
+str {
+  original: "Redoes a previously undone command."
 }
 str {
   original: "Registered to:"
@@ -464,6 +923,12 @@ str {
   line: 11
 }
 str {
+  original: "Replace the current selection with a copy of the clipboard."
+}
+str {
+  original: "Request Technical Support"
+}
+str {
   original: "Reset"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 11
@@ -474,12 +939,30 @@ str {
   line: 13
 }
 str {
+  original: "Reset Volume"
+}
+str {
+  original: "Reset volume to 0 dB"
+}
+str {
   original: "Right"
 }
 str {
   original: "Run this older version (%s)."
   file: "rec/app/DownloadVersion.cpp"
   line: 25
+}
+str {
+  original: "Save just the selected portion of the transformed file in the default save format."
+}
+str {
+  original: "Save Selection..."
+}
+str {
+  original: "Save the full transformed file in the default save format."
+}
+str {
+  original: "Save..."
 }
 str {
   original: "Saving File %s."
@@ -520,12 +1003,168 @@ str {
   line: 47
 }
 str {
+  original: "Select All"
+}
+str {
+  original: "Select all of the file"
+}
+str {
+  original: "Select Current Segment"
+}
+str {
+  original: "Select Current Segment Only"
+}
+str {
+  original: "Select First Segment"
+}
+str {
+  original: "Select First Segment Only"
+}
+str {
+  original: "Select Last Segment"
+}
+str {
+  original: "Select Last Segment Only"
+}
+str {
+  original: "Select Next Segment"
+}
+str {
+  original: "Select Next Segment Only"
+}
+str {
+  original: "Select None"
+}
+str {
+  original: "Select none of the file"
+}
+str {
+  original: "Select Only..."
+}
+str {
+  original: "Select Previous Segment"
+}
+str {
+  original: "Select Previous Segment Only"
+}
+str {
+  original: "Select Segment 1"
+}
+str {
+  original: "Select Segment 1 Only"
+}
+str {
+  original: "Select Segment 10"
+}
+str {
+  original: "Select Segment 10 Only"
+}
+str {
+  original: "Select Segment 2"
+}
+str {
+  original: "Select Segment 2 Only"
+}
+str {
+  original: "Select Segment 3"
+}
+str {
+  original: "Select Segment 3 Only"
+}
+str {
+  original: "Select Segment 4"
+}
+str {
+  original: "Select Segment 4 Only"
+}
+str {
+  original: "Select Segment 5"
+}
+str {
+  original: "Select Segment 5 Only"
+}
+str {
+  original: "Select Segment 6"
+}
+str {
+  original: "Select Segment 6 Only"
+}
+str {
+  original: "Select Segment 7"
+}
+str {
+  original: "Select Segment 7 Only"
+}
+str {
+  original: "Select Segment 8"
+}
+str {
+  original: "Select Segment 8 Only"
+}
+str {
+  original: "Select Segment 9"
+}
+str {
+  original: "Select Segment 9 Only"
+}
+str {
+  original: "Select..."
+}
+str {
   original: "Set Audio Preferences"
   file: "rec/gui/audio/SetupPage.cpp"
   line: 11
 }
 str {
   original: "Set Current Time Mode: Clicking in the waveform sets the current time."
+}
+str {
+  original: "Set Time Mode"
+}
+str {
+  original: "Show About Window At Startup"
+}
+str {
+  original: "Show Advanced Menus"
+}
+str {
+  original: "Show draggable labels for the loop points on the waveform display."
+}
+str {
+  original: "Show Grid Times At Top"
+}
+str {
+  original: "Show help in help pane."
+}
+str {
+  original: "Show Loop Point Labels"
+}
+str {
+  original: "Show Loop Point Labels At Top"
+}
+str {
+  original: "Show Loop Point Selection Buttons"
+}
+str {
+  original: "Show Master Tune Slider"
+}
+str {
+  original: "Show Pre-Fader Levels"
+}
+str {
+  original: "Show Stacked Waveform"
+}
+str {
+  original: "Show the grid times for the grid at the top of the waveform display."
+}
+str {
+  original: "Show the loop point labels at the top of the waveform display."
+}
+str {
+  original: "Show the Master Tune Slider in the Transform Panel."
+}
+str {
+  original: "Show Time Gridlines"
 }
 str {
   original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
@@ -574,6 +1213,9 @@ str {
 }
 str {
   original: "Spanish"
+}
+str {
+  original: "Start or pause"
 }
 str {
   original: "Start/stop"
@@ -627,6 +1269,93 @@ str {
   original: "Time Display: Shows the current playback time in minutes, seconds and millseconds."
 }
 str {
+  original: "Toggle audio dim"
+}
+str {
+  original: "Toggle audio dim on and off."
+}
+str {
+  original: "Toggle audio mute"
+}
+str {
+  original: "Toggle audio mute on and off."
+}
+str {
+  original: "Toggle between stretched and real-time playback."
+}
+str {
+  original: "Toggle Current Segment Selection"
+}
+str {
+  original: "Toggle display of the time grid."
+}
+str {
+  original: "Toggle First Segment Selection"
+}
+str {
+  original: "Toggle Last Segment Selection"
+}
+str {
+  original: "Toggle level display between pre- and post-fader."
+}
+str {
+  original: "Toggle Next Segment Selection"
+}
+str {
+  original: "Toggle parallel/stacked waveform display."
+}
+str {
+  original: "Toggle pitch, time and stereo transforms of the sound."
+}
+str {
+  original: "Toggle Previous Segment Selection"
+}
+str {
+  original: "Toggle Segment Selection 1"
+}
+str {
+  original: "Toggle Segment Selection 10"
+}
+str {
+  original: "Toggle Segment Selection 2"
+}
+str {
+  original: "Toggle Segment Selection 3"
+}
+str {
+  original: "Toggle Segment Selection 4"
+}
+str {
+  original: "Toggle Segment Selection 5"
+}
+str {
+  original: "Toggle Segment Selection 6"
+}
+str {
+  original: "Toggle Segment Selection 7"
+}
+str {
+  original: "Toggle Segment Selection 8"
+}
+str {
+  original: "Toggle Segment Selection 9"
+}
+str {
+  original: "Toggle selection between the current segment and the whole song."
+}
+str {
+  original: "Toggle show/hide of advanced menus."
+}
+str {
+  original: "Toggle Start/Stop"
+}
+str {
+  original: "Toggle whether we show the About Window every time we start up."
+}
+str {
+  original: "Toggle..."
+}
+str {
   original: "Track"
 }
 str {
@@ -661,14 +1390,74 @@ str {
   line: 67
 }
 str {
+  original: "Undo"
+}
+str {
+  original: "Undoes a previous command."
+}
+str {
   original: "Unknown CD: ID = 0x"
   file: "rec/widget/tree/CD.cpp"
   line: 13
 }
 str {
+  original: "Unselect Current Segment"
+}
+str {
+  original: "Unselect everything selected and vice-versa."
+}
+str {
+  original: "Unselect First Segment"
+}
+str {
+  original: "Unselect Last Segment"
+}
+str {
+  original: "Unselect Next Segment"
+}
+str {
+  original: "Unselect Previous Segment"
+}
+str {
+  original: "Unselect Segment 1"
+}
+str {
+  original: "Unselect Segment 10"
+}
+str {
+  original: "Unselect Segment 2"
+}
+str {
+  original: "Unselect Segment 3"
+}
+str {
+  original: "Unselect Segment 4"
+}
+str {
+  original: "Unselect Segment 5"
+}
+str {
+  original: "Unselect Segment 6"
+}
+str {
+  original: "Unselect Segment 7"
+}
+str {
+  original: "Unselect Segment 8"
+}
+str {
+  original: "Unselect Segment 9"
+}
+str {
+  original: "Unselect..."
+}
+str {
   original: "up"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 44
+}
+str {
+  original: "Use Tree Display In File Save Dialog"
 }
 str {
   original: "Volume"
@@ -679,12 +1468,18 @@ str {
   line: 14
 }
 str {
+  original: "WAV"
+}
+str {
   original: "Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform."
 }
 str {
   original: "We Can\'t Read .m4a Files On Windows"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 34
+}
+str {
+  original: "What\'s New In This Release?"
 }
 str {
   original: "Would you like to download it?"
@@ -735,17 +1530,32 @@ str {
   line: 46
 }
 str {
+  original: "Zoom In Mode"
+}
+str {
   original: "Zoom Mode: Clicking on the waveform zooms in on that point."
 }
 str {
   original: "Zoom out"
 }
 str {
+  original: "Zoom out as far as possible."
+}
+str {
+  original: "Zoom Out Completely"
+}
+str {
   original: "Zoom Out Full Button: Zoom the waveform all the way out."
+}
+str {
+  original: "Zoom out."
 }
 str {
   original: "Zoom To Selection"
 }
 str {
   original: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
+}
+str {
+  original: "Zoom to selection."
 }

@@ -1,4 +1,5 @@
 #include "rec/command/CommandDataSetter.h"
+#include "rec/base/Trans.h"
 
 namespace rec {
 namespace command {
@@ -33,7 +34,8 @@ void CommandDataSetter::execute() {
 
 string CommandDataSetter::menuName() const {
   Lock l(lock_);
-  return menuName_;
+  String s = Trans(menuName_);
+  return str(s);
 }
 
 }  // namespace command

@@ -33,15 +33,13 @@ class CommandDatabase {
  private:
   void fillFromCommands() {
     const Commands& commands = data_.allCommands();
-    for (int i = 0; i < commands.command_size(); ++i)
-      fillOneCommand(commands.command(i));
-  }
-
-  void fillOneCommand(const Command& cmd) {
-    if (cmd.has_start_index())
-      fillRepeatingCommand(cmd);
-    else
-      fillSingleCommand(cmd);
+    for (int i = 0; i < commands.command_size(); ++i) {
+      const Command& cmd = commands.command(i);
+      if (cmd.has_start_index())
+        fillRepeatingCommand(cmd);
+      else
+        fillSingleCommand(cmd);
+    }
   }
 
   void fillSingleCommand(const Command& cmd) {
@@ -94,7 +92,7 @@ class CommandDatabase {
 
   void fillOneCommandInfo(CommandID id, CommandRecord* cr) {
     const Description& desc = cr->command_->desc();
-    String name = str(desc.full(0));
+    String name = Trans(desc.full(0));
     String category = str(cr->command_->category());
     bool hasInfo = desc.menu_size() && name.length();
 
@@ -105,7 +103,7 @@ class CommandDatabase {
         flags += ApplicationCommandInfo::hiddenFromKeyEditor;
       }
 
-      cr->info_.setInfo(str(desc.menu(0)), name, category, flags);
+      cr->info_.setInfo(Trans(desc.menu(0)), name, category, flags);
     } else {
       LOG(DFATAL) << "No command " << commandName(id)
                  << ", " << desc.menu_size()

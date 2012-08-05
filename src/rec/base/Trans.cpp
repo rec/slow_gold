@@ -64,7 +64,7 @@ void Trans::dumpAll() {
 
 #endif  // DEBUG
 
-Trans::Trans(const char* original)
+Trans::Trans(const string& original)
     : string_(new TranslatedString),
       translationRegistered_(false),
       language_(app::AppSettings::NONE) {
