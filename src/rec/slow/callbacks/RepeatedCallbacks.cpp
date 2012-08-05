@@ -93,6 +93,14 @@ void setSaveFileType(Instance* instance, int i) {
   instance->menus_->menuItemsChanged();
 }
 
+void setLanguage(Instance* instance, int i) {
+  Internat inter = data::getProto<Internat>();
+  inter.set_language(static_cast<Language>(i));
+  data::setProto(inter);
+  instance->menus_->menuItemsChanged();
+}
+
+
 void openPreviousFile(Instance* i) {
   gui::RecentFiles rf = data::getProto<gui::RecentFiles>();
   int size = rf.file_size();
@@ -182,6 +190,12 @@ void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_SAVE_FORMAT);
     addCallback(t, id, setSaveFileType, i, j);
   }
+
+  for (int j = 0; j <= Internat::LAST; ++j) {
+    CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_LANGUAGE);
+    addCallback(t, id, setLanguage, i, j);
+  }
+
 
   addCallback(t, Command::OPEN_PREVIOUS_FILE, openPreviousFile, i);
 

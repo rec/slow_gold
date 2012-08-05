@@ -12,7 +12,7 @@ namespace rec {
 namespace {
 
 const char* const TRANSLATION_FILE =
-  "/development/rec/text/en-incoming-rec.TranslatedStrings.def";
+  "/development/rec/text/en-incoming-TranslatedStrings.def";
 
 string cleanFile(const String& file) {
   String f = file;
@@ -107,7 +107,7 @@ Trans::~Trans() {
 #if JUCE_DEBUG && JUCE_MAC
   using namespace std;
   if (string_->translation().empty())
-    cerr << "Didn't translate " << string_->ShortDebugString();
+    cerr << "Didn't translate " << string_->ShortDebugString() << std::endl << std::flush;
 #endif
 }
 

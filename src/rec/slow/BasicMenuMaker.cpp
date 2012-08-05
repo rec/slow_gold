@@ -90,7 +90,7 @@ void BasicMenuMaker::addFileMenu() {
 
   for (int i = Internat::FIRST; i <= Internat::LAST; ++i) {
     if (i != lang)
-      addRepeat(Command::SET_LANGUAGE, i, String(langName(i)), &langMenu, TICKED);
+      addRepeat(Command::SET_LANGUAGE, i, String(langName(i)), &langMenu, 0);
   }
   menu_.addSubMenu(Trans("Language"), langMenu);
 

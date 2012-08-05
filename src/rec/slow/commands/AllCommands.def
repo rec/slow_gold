@@ -695,6 +695,26 @@ command {
   start_index: 0
 }
 command {
+  type: SET_LANGUAGE
+  index: 5
+  category: "(None)"
+  desc {
+    menu: "(None)"
+    menu: "German"
+    menu: "English"
+    menu: "Spanish"
+    menu: "French"
+    menu: "Indonesian"
+    full: "..."
+    full: "..."
+    full: "..."
+    full: "..."
+    full: "..."
+    full: "..."
+  }
+  start_index: 0
+}
+command {
   type: TOGGLE_ADVANCED_MENUS
   category: "File"
   desc {

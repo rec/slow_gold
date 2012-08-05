@@ -55,4 +55,3 @@ Message* MessageRegistrarAndMaker::makeMessage(const string& typeName) {
 
 }  // namespace data
 }  // namespace rec
-
