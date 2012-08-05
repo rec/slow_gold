@@ -12,5 +12,5 @@ message Internat {
     FIRST = 1;
     LAST = 5;
   };
-  optional Language lang = 1 [default = EN];
+  optional Language language = 1 [default = EN];
 };

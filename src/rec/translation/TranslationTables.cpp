@@ -2,6 +2,7 @@
 
 #include "rec/translation/TranslationTables.h"
 
+#include "rec/data/DataOps.h"
 #include "rec/translation/de-TranslatedStrings.def.h"
 #include "rec/translation/en-TranslatedStrings.def.h"
 #include "rec/translation/es-TranslatedStrings.def.h"
@@ -54,21 +55,13 @@ const CriticalSection& lock() {
   return l;
 }
 
-Language LANGUAGE = Internat::EN;
-
 }  // namespace
 
 
-void setLanguage(Language lang) {
-  Lock l(lock());
-  LANGUAGE = lang;
-};
-
 Language getLanguage() {
   Lock l(lock());
-  return LANGUAGE;
+  return data::getProto<Internat>().language();
 };
-
 
 string translate(const TranslatedString& translation) {
   return string();
