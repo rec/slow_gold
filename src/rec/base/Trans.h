@@ -4,13 +4,13 @@
 #include <vector>
 
 #include "rec/base/base.h"
-#include "rec/base/Internationalization.pb.h"
+#include "rec/base/Internat.pb.h"
 
 namespace rec {
 
 class TranslatedString;
 
-typedef Internationalization::Language Language;
+typedef Internat::Language Language;
 
 class Trans {
  public:

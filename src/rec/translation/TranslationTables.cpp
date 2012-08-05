@@ -3,9 +3,11 @@
 #include "rec/translation/TranslationTables.h"
 
 #include "rec/translation/de-TranslatedStrings.def.h"
+#include "rec/translation/en-TranslatedStrings.def.h"
 #include "rec/translation/es-TranslatedStrings.def.h"
 #include "rec/translation/fr-TranslatedStrings.def.h"
 #include "rec/translation/id-TranslatedStrings.def.h"
+#include "rec/util/STL.h"
 
 namespace rec {
 namespace translation {
@@ -29,14 +31,14 @@ StringMap* makeStringMap(const TranslatedStrings& ts) {
 }
 
 struct Translations {
-  Translations() : maps_(rec::Language::LAST + 1, NULL) {
-    maps_[Language::DE] = makeStringMap(*deTranslatedStrings);
-    maps_[Language::EN] = makeStringMap(*enTranslatedStrings);
-    maps_[Language::ES] = makeStringMap(*esTranslatedStrings);
-    maps_[Language::FR] = makeStringMap(*frTranslatedStrings);
-    maps_[Language::ID] = makeStringMap(*idTranslatedStrings);
+  Translations() : maps_(Internat::LAST + 1) {
+    maps_[Internat::DE] = makeStringMap(*deTranslatedStrings);
+    maps_[Internat::EN] = makeStringMap(*enTranslatedStrings);
+    maps_[Internat::ES] = makeStringMap(*esTranslatedStrings);
+    maps_[Internat::FR] = makeStringMap(*frTranslatedStrings);
+    maps_[Internat::ID] = makeStringMap(*idTranslatedStrings);
   }
-  ~Translations() { stl::deletePointers(&map_); }
+  ~Translations() { stl::deletePointers(&maps_); }
 
   typedef std::vector<StringMap*> Maps;
   Maps maps_;
@@ -52,18 +54,18 @@ const CriticalSection& lock() {
   return l;
 }
 
-Language LANGUAGE = Language::ENGLISH;
+Language LANGUAGE = Internat::EN;
 
 }  // namespace
 
 
 void setLanguage(Language lang) {
-  ScopedLock l(lock());
+  Lock l(lock());
   LANGUAGE = lang;
 };
 
 Language getLanguage() {
-  ScopedLock l(lock());
+  Lock l(lock());
   return LANGUAGE;
 };
 

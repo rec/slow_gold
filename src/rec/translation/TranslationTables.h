@@ -8,7 +8,7 @@ namespace rec {
 namespace translation {
 
 string translate(const TranslatedString& translation);
-void setLanguage(Language);
+void setLanguage(Internat::Language);
 Language getLanguage();
 
 
