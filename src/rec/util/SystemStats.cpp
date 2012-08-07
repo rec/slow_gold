@@ -12,9 +12,6 @@ SystemStats getSystemStats() {
   ss.set_operating_system_name(str(SS::getOperatingSystemName()));
 
   ss.set_is_operating_system_64_bit(SS::isOperatingSystem64Bit());
-#if JUCE_MAC
-  ss.set_osx_minor_version_number(SS::getOSXMinorVersionNumber());
-#endif
   ss.set_logon_name(str(SS::getLogonName()));
   ss.set_full_user_name(str(SS::getFullUserName()));
   ss.set_computer_name(str(SS::getComputerName()));
