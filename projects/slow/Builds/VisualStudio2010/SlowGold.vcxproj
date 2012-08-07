@@ -57,7 +57,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -98,7 +98,7 @@
     </Midl>
     <ClCompile>
       <Optimization>MinSpace</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -1154,6 +1154,9 @@
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_ComponentMovementWatcher.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_ConcertinaPanel.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_GroupComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -2206,6 +2209,7 @@
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_ComponentBoundsConstrainer.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_ComponentBuilder.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_ComponentMovementWatcher.h"/>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_ConcertinaPanel.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_GroupComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_MultiDocumentPanel.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_basics\layout\juce_ResizableBorderComponent.h"/>

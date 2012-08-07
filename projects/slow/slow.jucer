@@ -4,9 +4,10 @@
               id="NSu8BB" jucerVersion="3.0.0" name="SlowGold" projectType="guiapp"
               version="8.0.3">
   <EXPORTFORMATS>
-    <XCODE_MAC bigIcon="wiIhPYIwK" extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
+    <XCODE_MAC bigIcon="wiIhPYIwK" documentExtensions=".mp3, .aiff, .wav, .mp4, .aif"
+               extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
                juceFolder="../../../juce/modules" objCExtraSuffix="jeMWW9" smallIcon="k8EMdGWkD"
-               targetFolder="Builds/MacOSX" documentExtensions=".mp3, .aiff, .wav, .mp4, .aif">
+               targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION customXcodeFlags="DEAD_CODE_STRIPPING = YES, GCC_AUTO_VECTORIZATION = YES, GCC_DEBUGGING_SYMBOLS = full, GCC_DYNAMIC_NO_PIC = YES, GCC_ENABLE_FIX_AND_CONTINUE = YES, GCC_ENABLE_SSE3_EXTENSIONS = YES, GCC_ENABLE_SSE41_EXTENSIONS = YES, GCC_ENABLE_SSE42_EXTENSIONS = YES, GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES, GCC_FAST_MATH = YES, GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES, GCC_UNROLL_LOOPS = YES, GCC_WARN_64_TO_32_BIT_CONVERSION = YES, GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES, GCC_WARN_ABOUT_MISSING_NEWLINE = YES, GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES, GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO, GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES, GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO, GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES, GCC_WARN_PROTOTYPE_CONVERSION = YES, GCC_WARN_SHADOW = NO, GCC_WARN_SIGN_COMPARE = YES, GCC_WARN_STRICT_SELECTOR_MATCH = YES, GCC_WARN_UNDECLARED_SELECTOR = YES, GCC_WARN_UNINITIALIZED_AUTOS = NO, GCC_WARN_UNKNOWN_PRAGMAS = YES, GCC_WARN_UNUSED_FUNCTION = YES, GCC_WARN_UNUSED_LABEL = YES, STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static"
                        headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
@@ -25,18 +26,18 @@
             juceFolder="../../../juce/modules" libraryType="1" smallIcon="k8EMdGWkD"
             targetFolder="Builds/VisualStudio2010">
       <CONFIGURATIONS>
-        <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
+        <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="1" libraryPath="..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\debug\\static;..\\..\\..\\..\\..\\glog\\Debug;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug "
                        name="Debug" optimisation="1" targetName="SlowGold 8" winArchitecture="32-bit"
                        winWarningLevel="3"/>
-        <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
+        <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                        isDebug="0" libraryPath=";..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\release\\static;..\\..\\..\\..\\..\\glog\\Release;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Release;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Release"
                        name="Release" optimisation="2" targetName="SlowGold 8" winArchitecture="32-bit"
                        winWarningLevel="3"/>
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="pzjIqeEVQ" name="SlowGold">
+  <MAINGROUP id="mLCl6dwQ2" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -1613,7 +1614,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="WIze0FnhS" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="BNzwjDSCS" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
