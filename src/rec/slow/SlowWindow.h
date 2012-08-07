@@ -26,6 +26,9 @@ class SlowWindow : public app::Window, public HasInstance  {
   virtual void stopAboutWindow();
   virtual void minimisationStateChanged(bool isNowMinimised);
   virtual void doPostStartup();
+  virtual void anotherInstanceStarted(const String& s) {
+    DLOG(INFO) << str(s);
+  }
 
  protected:
   virtual void doStartup();

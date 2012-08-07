@@ -8,12 +8,7 @@ using namespace juce;
 
 namespace rec {
 
-#if JUCE_DEBUG && JUCE_MAC
-
 namespace {
-
-const char* const TRANSLATION_FILE =
-  "/development/rec/text/en-incoming-TranslatedStrings.def";
 
 string cleanFile(const String& file) {
   String f = file;
@@ -22,6 +17,11 @@ string cleanFile(const String& file) {
     f = f.substring(i + 5);
   return str(f);
 }
+
+#if JUCE_DEBUG && JUCE_MAC
+
+const char* const TRANSLATION_FILE =
+  "/development/rec/text/en-incoming-TranslatedStrings.def";
 
 struct Compare {
   bool operator()(const TranslatedString& x, const TranslatedString& y) const {
@@ -55,7 +55,11 @@ TranslatedStrings getTranslatedStrings() {
   return strings;
 }
 
+#endif  // DEBUG
+
 }  // namespace
+
+#if JUCE_DEBUG && JUCE_MAC
 
 void Trans::dumpAll() {
   LOG(INFO) << "Dumping translations " << translations()->size();
@@ -63,6 +67,7 @@ void Trans::dumpAll() {
 }
 
 #endif  // DEBUG
+
 
 Trans::Trans(const string& original)
     : string_(new TranslatedString),

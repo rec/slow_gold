@@ -21,5 +21,38 @@
     <string>8.0.3</string>
     <key>NSHumanReadableCopyright</key>
     <string></string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>CFBundleDocumentTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>mp3</string>
+        </array>
+        <key>CFBundleTypeName</key>
+        <string>mp3</string>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>NSPersistentStoreTypeKey</key>
+        <string>XML</string>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>aiff</string>
+        </array>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>wav</string>
+        </array>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>mp4</string>
+        </array>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>aif</string>
+        </array>
+      </dict>
+    </array>
   </dict>
 </plist>

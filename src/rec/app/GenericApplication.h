@@ -30,7 +30,7 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   virtual const String getApplicationName()    { return name(); }
   virtual const String getApplicationVersion() { return version(); }
   virtual bool moreThanOneInstanceAllowed()    { return false; }
-  virtual void anotherInstanceStarted(const String&) {}
+  virtual void anotherInstanceStarted(const String& s);
   virtual void systemRequestedQuit();
 
   virtual void operator()(bool disabled) { Lock l(lock_); disabled_ = disabled; }

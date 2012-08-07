@@ -254,8 +254,9 @@ void Cursor::operator()(const WaveformProto& wp) {
 
 void Cursor::setTooltip(const String& t) {
   SettableTooltipClient::setTooltip(t);
-  caption_->setTooltip("Loop Point Name: Edit the Loop Point's name "
-                       "by clicking here.");
+  // TODO: this text is duplicated in Loops.cpp.
+  caption_->setTooltip(Trans("Loop Point Name: Edit the Loop Point's name "
+                             "by clicking here."));
 }
 
 Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,

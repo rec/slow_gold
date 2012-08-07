@@ -34,6 +34,8 @@ class Window : public gui::PersistentWindow, public Broadcaster<None> {
   virtual void startAboutWindow() {}
   virtual void init() {}
 
+  virtual void anotherInstanceStarted(const String& s) {}
+
  protected:
   virtual void constructInstance() = 0;
   virtual Component* getMainComponent() = 0;

@@ -162,6 +162,7 @@ void Loops::update() {
 }
 
 String Loops::getCellTooltip(int, int) const {
+  // TODO: this text is duplicated in Loops.cpp.
   return Trans("Loop Point Name: Edit the Loop Point's name "
                "by clicking here.");
 }

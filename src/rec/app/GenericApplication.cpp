@@ -70,5 +70,9 @@ void GenericApplication::systemRequestedQuit() {
     JUCEApplication::systemRequestedQuit();
 }
 
+void GenericApplication::anotherInstanceStarted(const String& s) {
+  window_->anotherInstanceStarted(s);
+}
+
 }  // namespace app
 }  // namespace rec
