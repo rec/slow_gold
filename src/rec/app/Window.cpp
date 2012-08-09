@@ -33,6 +33,7 @@ void Window::initialise() {
 Window::~Window() {}
 
 void Window::startup() {
+  LOG(INFO) << "Window starting up";
   if (SLEEP_BEFORE_STARTUP)
     Thread::sleep(SLEEP_BEFORE_STARTUP);
   // We used to need this so that our GUI has settled down...
@@ -40,8 +41,12 @@ void Window::startup() {
 
   if (SLEEP_AFTER_STARTUP)
     Thread::sleep(SLEEP_AFTER_STARTUP);
+
+  LOG(INFO) << "After starting up";
   doPostStartup();
+  LOG(INFO) << "After post startup up";
   GuiWriteable::setWriteableAll(true);
+  LOG(INFO) << "startup finished";
 }
 
 void Window::shutdown() {

@@ -122,12 +122,14 @@ void SlowWindow::activeWindowStatusChanged() {
 }
 
 void SlowWindow::startAboutWindow() {
+  LOG(INFO) << "Slow::startAboutWindow";
   if (!aboutWindow_) {
     aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
                                        application()->name(),
                                        application()->version()));
   }
   Desktop::getInstance().getAnimator().fadeIn(aboutWindow_.get(), FADE_IN_TIME);
+  LOG(INFO) << "Slow::finished";
 }
 
 void SlowWindow::stopAboutWindow() {
@@ -143,10 +145,13 @@ void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
 using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
+  LOG(INFO) << "SlowWindow::initialize";
   // TODO:  logging doesn't work if called in this routine...
   file::moveOldAbsoluteDirectoriesToTypeRelative();
+  LOG(INFO) << "Registering protos";
   registerProtos();
   registerAllTranslations();
+  LOG(INFO) << "done initialize";
 }
 
 void shutdown(app::GenericApplication*) {

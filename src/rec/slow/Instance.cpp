@@ -162,14 +162,21 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
+  LOG(INFO) << "Instance::startip";
+
   addUndoListener(menus_.get());
   menus_->menuItemsChanged();
+
+  LOG(INFO) << "Finished creating the menus";
+
   VirtualFile vf = data::getProto<VirtualFile>();
   if (vf.type() != VirtualFile::NONE) {
     File f = file::toRealFile(vf);
     vf = file::toVirtualFile(f);
     data::setProto(vf);
   }
+
+  LOG(INFO) << "Finished setting the file as data";
 
   {
     MessageManagerLock l;
@@ -179,11 +186,15 @@ void Instance::startup() {
     currentFile_->setVirtualFile(vf, false);
   }
 
+  LOG(INFO) << "Finished look and feel/settings file";
+
   thread::callAsync(window_, &DocumentWindow::setVisible, true);
   threads_->start();
   Thread* timer = threads_->timerThread();
   components_->transportController_->timeController()->setThread(timer);
   player_->timer()->setThread(timer);
+
+  LOG(INFO) << "Finished Instance::startup!";
 }
 
 class RegisterSlow : public app::RegisterInstance {
@@ -197,14 +208,22 @@ class RegisterSlow : public app::RegisterInstance {
 };
 
 void Instance::postStartup() {
+  LOG(INFO) << "Instance::postStartup!";
+
   data::getDataCenter().undoStack()->setEnabled();
+  LOG(INFO) << "got data center!";
 
   if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
 
+  LOG(INFO) << "registered";
+
   MessageManagerLock l;
   if (data::getProto<GuiSettings>().show_about_on_startup())
     window_->startAboutWindow();
+
+  LOG(INFO) << "Instance::postStartup finished";
+
 }
 
 const VirtualFile Instance::file() const {
