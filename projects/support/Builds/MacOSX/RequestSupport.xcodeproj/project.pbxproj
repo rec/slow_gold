@@ -2733,7 +2733,7 @@
 				CB4148A2791353AB799B4025 ); name = rec; sourceTree = "<group>"; };
 		A3D408C31BDEB204328C06F3 = { isa = PBXGroup; children = (
 				06E3BC1C2A376F403D2E27BE ); name = proto; sourceTree = "<group>"; };
-		A2AD137FB421EE91AA95F4A3 = { isa = PBXGroup; children = (
+		743EA76761B2693BC58E054B = { isa = PBXGroup; children = (
 				7870D4C63C2957B7CFCC5248,
 				0B640DBB96224BFC8B64DCE3,
 				DAC062F8DCD6BD6CB46FB308,
@@ -3775,14 +3775,14 @@
 		BF3BB999A577A20B0573E1EF = { isa = PBXGroup; children = (
 				D721A7BA5E32865A83A474A5 ); name = Products; sourceTree = "<group>"; };
 		0F16E5908A520CBC36857740 = { isa = PBXGroup; children = (
-				A2AD137FB421EE91AA95F4A3,
+				743EA76761B2693BC58E054B,
 				F83CB11FA700A3478F956BD8,
 				C250690202C4069AA623CCA6,
 				8DE6A67E2D245FB30F1571D3,
 				9BE1812C54D2DE372F650AA3,
 				BF3BB999A577A20B0573E1EF ); name = Source; sourceTree = "<group>"; };
 		319A9742F0635C9D651B370F = { isa = XCBuildConfiguration; buildSettings = {
-				HEADER_SEARCH_PATHS = "../../JuceLibraryCode ../../../../../rec/externals/rubberband/src ../../../../../rec/src ../../../../../rec/genfiles/icon ../../../../../rec/genfiles/proto ../../../../../juce ../../../../../rec/src/rec/data/yaml/include ../../../../../build/Debug/glog/include ../../../../../build/Debug/gtest/include ../../../../../build/Debug/mpg123 ../../../../../build/Debug/protobuf/include ../.. $(inherited)";
+				HEADER_SEARCH_PATHS = "../../JuceLibraryCode ../../../../../rec/externals/rubberband/src ../../../../../rec/src ../../../../../rec/genfiles/icon ../../../../../rec/genfiles/proto ../../../../../rec/genfiles/translation ../../../../../juce ../../../../../rec/src/rec/data/yaml/include ../../../../../build/Debug/glog/include ../../../../../build/Debug/gtest/include ../../../../../build/Debug/mpg123 ../../../../../build/Debug/protobuf/include ../.. $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3832,7 +3832,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static; }; name = Debug; };
 		4987972547533E1C7BCB6AC4 = { isa = XCBuildConfiguration; buildSettings = {
-				HEADER_SEARCH_PATHS = "../../JuceLibraryCode ../../../../../rec/externals/rubberband/src ../../../../../rec/src ../../../../../rec/genfiles/icon ../../../../../rec/genfiles/proto ../../../../../juce ../../../../../rec/src/rec/data/yaml/include ../../../../../build/Debug/glog/include ../../../../../build/Release/mpg123 ../../../../../build/Debug/protobuf/include ../.. $(inherited)";
+				HEADER_SEARCH_PATHS = "../../JuceLibraryCode ../../../../../rec/externals/rubberband/src ../../../../../rec/src ../../../../../rec/genfiles/icon ../../../../../rec/genfiles/proto ../../../../../rec/genfiles/translation ../../../../../juce ../../../../../rec/src/rec/data/yaml/include ../../../../../build/Debug/glog/include ../../../../../build/Release/mpg123 ../../../../../build/Debug/protobuf/include ../.. $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
