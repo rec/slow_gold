@@ -13,4 +13,14 @@
 #define NEW_FEATURES
 #endif
 
+namespace rec {
+
+inline void doLog(const String& s) {
+  File f = File::getSpecialLocation(File::userDesktopDirectory).
+    getChildFile("SlowGold.log");
+  f.appendText(s);
+};
+
+}  // namespace
+
 #endif

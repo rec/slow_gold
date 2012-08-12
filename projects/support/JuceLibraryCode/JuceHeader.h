@@ -39,8 +39,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "RequestSupport";
-    const char* const  versionString  = "8.0.3";
-    const int          versionNumber  = 0x80003;
+    const char* const  versionString  = "8.0.4";
+    const int          versionNumber  = 0x80004;
 }
 
 #endif   // __APPHEADERFILE_NSDF3U8B__
