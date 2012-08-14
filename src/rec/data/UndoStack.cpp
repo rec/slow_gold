@@ -21,7 +21,7 @@ class UndoStack::Entry {
     DCHECK(redo_);
   }
 
-  static const uint64 MAX_GROUP_TIME = 2000;
+  static const int64 MAX_GROUP_TIME = 2000;
   static const bool GROUP_BY_TIME = false;
 
   // Try to merge another entry into this one;  return true if successful.

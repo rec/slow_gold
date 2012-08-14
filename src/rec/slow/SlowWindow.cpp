@@ -145,13 +145,18 @@ void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
 using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
-  LOG(INFO) << "SlowWindow::initialize";
+  doLog("in initialize\n");
+  // LOG(INFO) << "SlowWindow::initialize";
   // TODO:  logging doesn't work if called in this routine...
+  doLog("moving directories\n");
   file::moveOldAbsoluteDirectoriesToTypeRelative();
-  LOG(INFO) << "Registering protos";
+  // LOG(INFO) << "Registering protos";
+  doLog("registering protos\n");
   registerProtos();
+  doLog("registering translations\n");
   registerAllTranslations();
-  LOG(INFO) << "done initialize";
+  doLog("all done initialize\n");
+  // LOG(INFO) << "done initialize";
 }
 
 void shutdown(app::GenericApplication*) {

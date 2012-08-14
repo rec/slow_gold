@@ -15,7 +15,6 @@ Translation problems!
    * No GUI items change.
 
 Missing:
-  * Resizer text  DONE.
+  * Resizer text  NOT DONE.
   * Loop Point Name help and text.  DONE.
   * Everything in the "Display" menu.
-

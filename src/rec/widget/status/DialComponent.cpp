@@ -111,9 +111,9 @@ void DialComponent::paint(Graphics& g) {
   }
 
   path.addPieSegment(static_cast<float>(bounds.getX()),
-	                 static_cast<float>(bounds.getY()),
+                     static_cast<float>(bounds.getY()),
                      static_cast<float>(bounds.getWidth()),
-					 static_cast<float>(bounds.getHeight()),
+                     static_cast<float>(bounds.getHeight()),
                      static_cast<float>(zeroAngle_),
                      static_cast<float>(timeAngle_), 0.0f);
 

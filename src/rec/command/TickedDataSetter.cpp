@@ -25,7 +25,7 @@ void TickedDataSetter::execute() {
 
 string TickedDataSetter::menuName() const {
   Lock l(lock_);
-  return command_.desc().menu(0);
+  return str(Trans(command_.desc().menu(0)));
 }
 
 }  // namespace command
