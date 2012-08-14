@@ -11,7 +11,9 @@ class Application : public GenericApplication {
  public:
   Application(ApplicationFunction init, ApplicationFunction shutdown)
       : GenericApplication(init, shutdown) {
+    doLog("About to initialize logging\n");
     google::InitGoogleLogging(str(name()).c_str());
+    doLog("logging done\n");
 #if JUCE_DEBUG && JUCE_MAC
     FLAGS_logtostderr = true;
 #endif

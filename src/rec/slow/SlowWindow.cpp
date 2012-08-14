@@ -84,8 +84,11 @@ void SlowWindow::init() {
 }
 
 void SlowWindow::constructInstance() {
+  doLog("in constructInstance\n");
   instanceDeleter_.reset(new slow::Instance(this));
+  doLog("instance constructed\n");
   instance_ = instanceDeleter_.get();
+  doLog("initializing instance\n");
   instance_->init();
 }
 

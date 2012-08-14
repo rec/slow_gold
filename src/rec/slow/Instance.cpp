@@ -78,9 +78,12 @@ static Instance* INSTANCE = NULL;
 }  // namespace
 
 Instance::Instance(app::Window* window) : window_(window) {
+  doLog("Instance::Instance\n");
+
   CHECK_DDD(51, 2193, int64, int32);
   DCHECK(!INSTANCE);
   INSTANCE = this;
+  doLog("Instance::Instance done!\n");
 }
 
 // static
@@ -90,23 +93,43 @@ Instance* Instance::getInstance() { return INSTANCE; };
 const VirtualFile Instance::getInstanceFile() { return INSTANCE->file(); };
 
 void Instance::init() {
+  doLog("window init\n");
   window_->init();
 
+  doLog("menus init\n");
   menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
+
+  doLog("device init\n");
   device_.reset(new audio::Device);
+
+  doLog("CurrentFile\n");
   currentFile_.reset(new CurrentFile(this));
+
+  doLog("Player\n");
   player_.reset(new audio::source::Player(device_.get()));
+
+  doLog("Components\n");
   components_.reset(new Components(this));
+
+  doLog("Target\n");
   target_.reset(new Target(this));
+
+  doLog("CurrentTime\n");
   currentTime_.reset(new CurrentTime(this));
+
+  doLog("BufferFiller\n");
   bufferFiller_.reset(new BufferFiller);
+
+  doLog("LookAndFeel\n");
   lookAndFeel_.reset(new gui::LookAndFeel);
 
+  doLog("MouseListener\n");
   mouseListener_.reset(new MouseListener(this));
   guiListener_.reset(new GuiListener(this));
   fillerThread_.reset(new FillerThread(this));
   threads_.reset(new Threads(this));
 
+  doLog("Components::init\n");
   components_->init();
 
   fillerThread_->setPriority(FILLER_PRIORITY);
@@ -149,6 +172,7 @@ void Instance::init() {
     setProto(mode);
   }
 #endif
+  doLog("end Instance::init\n");
 }
 
 audio::Source* Instance::makeSource() const {
