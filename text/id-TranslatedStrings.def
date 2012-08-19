@@ -14,12 +14,12 @@ str {
 }
 str {
   original: "(no file loaded)"
-  translation: "(File tidak dimuat)"
+  translation: "(Tidak ada file dimuat)"
   index: 3
 }
 str {
   original: "(None)"
-  translation: "(Tidak Ada)"
+  translation: "(Tidak ada)"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 12
   index: 4
@@ -38,7 +38,7 @@ str {
 }
 str {
   original: "A new version of SlowGold, %s, is available."
-  translation: "Sebuah versi baru dari SlowGold, %s, tersedia."
+  translation: "Sebuah versi baru dari SlowGold, s%, tersedia."
   file: "rec/app/DownloadVersion.cpp"
   line: 22
   index: 7
@@ -52,7 +52,7 @@ str {
 }
 str {
   original: "A Support Request Was Created On Your Desktop"
-  translation: "Sebuah Permintaan Dukungan Apakah Created On Desktop Anda"
+  translation: "Sebuah Permintaan Dukungan Apakah Dibuat Pada Desktop Anda"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 43
   index: 9
@@ -64,32 +64,32 @@ str {
 }
 str {
   original: "Add a loop point at the current time."
-  translation: "Tambahkan titik loop di waktu sekarang."
+  translation: "Tambahkan titik lingkaran pada waktu saat ini."
   index: 11
 }
 str {
   original: "Add Loop Point At Current Time"
-  translation: "Tambahkan Titik loop Pada Current Time"
+  translation: "Tambahkan titik loop Pada Waktu Saat Ini"
   index: 12
 }
 str {
   original: "Add Loop Point Button: Add a loop point at the current time."
-  translation: "Tambahkan Tombol Ulangi Point: Menambah tempat loop di waktu sekarang."
+  translation: "Tambahkan Tombol loop Point: Tambahkan titik lingkaran pada waktu saat ini."
   index: 13
 }
 str {
   original: "Add Loop Point Mode"
-  translation: "Tambahkan mode loop Titik"
+  translation: "Tambahkan Modus loop Titik"
   index: 14
 }
 str {
   original: "Add loop point mode: clicking on the waveform creates a loop point."
-  translation: "Tambahkan modus lingkaran titik: mengklik gelombang membuat suatu titik loop."
+  translation: "Tambahkan modus lingkaran titik: mengklik gelombang menciptakan titik lingkaran."
   index: 15
 }
 str {
   original: "adds a new key-mapping"
-  translation: "menambahkan kunci pemetaan baru"
+  translation: "menambahkan kunci pemetaan-baru"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 8
   index: 16
@@ -106,12 +106,12 @@ str {
 }
 str {
   original: "Album Name: The name of the album this track is from."
-  translation: "Nama Album: nama album lagu ini dari."
+  translation: "Nama Album: Nama album lagu ini adalah dari."
   index: 19
 }
 str {
   original: "Album Year: The year that that this track was recorded."
-  translation: "Tahun Album: tahun itu bahwa lagu ini direkam."
+  translation: "Tahun Album: Tahun bahwa lagu ini direkam."
   index: 20
 }
 str {
@@ -121,7 +121,7 @@ str {
 }
 str {
   original: "Are you sure you want to reset all the key mappings to their default state?"
-  translation: "Anda yakin ingin mengatur ulang semua pemetaan kunci untuk keadaan standar?"
+  translation: "Apakah Anda yakin ingin me-reset semua pemetaan kunci untuk keadaan standar?"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 10
   index: 22
@@ -133,7 +133,7 @@ str {
 }
 str {
   original: "Artist Name: The artist or musician who made this specific track."
-  translation: "Nama Artist: artis atau musisi yang telah membuat lagu tertentu."
+  translation: "Nama Artist: The artis atau musisi yang membuat lagu ini khusus."
   index: 24
 }
 str {
@@ -150,17 +150,17 @@ str {
 }
 str {
   original: "Audio Preferences..."
-  translation: "Audio Preferences ..."
+  translation: "Audio Preferensi ..."
   index: 27
 }
 str {
   original: "Bring up a window describing SlowGold 8."
-  translation: "Memunculkan jendela yang menjelaskan SlowGold 8."
+  translation: "Memunculkan jendela menggambarkan SlowGold 8."
   index: 28
 }
 str {
   original: "Can\'t create track for %s."
-  translation: "Tidak bisa membuat lagu untuk %s."
+  translation: "Tidak dapat membuat jalur untuk %s."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 25
   index: 29
@@ -181,7 +181,7 @@ str {
 }
 str {
   original: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
-  translation: "CD Window: Setiap CD yang Anda miliki dalam CD drive komputer Anda akan muncul di sini."
+  translation: "CD Jendela: Setiap CD yang Anda miliki dalam drive CD komputer Anda akan muncul di sini."
   index: 32
 }
 str {
@@ -192,735 +192,735 @@ str {
   index: 33
 }
 str {
+  original: "cents"
+  translation: "sen"
+  index: 34
+}
+str {
   original: "Change key-mapping"
   translation: "Mengubah kunci-pemetaan"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 9
-  index: 34
-}
-str {
-  original: "Change this command mapping"
-  translation: "Ubah pemetaan perintah"
-  file: "rec/command/map/CommandMapEditButton.cpp"
-  line: 10
   index: 35
 }
 str {
-  original: "Check For Updates"
-  translation: "Periksa Untuk Pembaruan"
+  original: "Change this command mapping"
+  translation: "Perubahan ini pemetaan perintah"
+  file: "rec/command/map/CommandMapEditButton.cpp"
+  line: 10
   index: 36
 }
 str {
-  original: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
-  translation: "Periksa situs World Wide untuk Woodshed upgrade ke SlowGold 8."
+  original: "Check For Updates"
+  translation: "Periksa Untuk Update"
   index: 37
 }
 str {
-  original: "Choose File To Save to"
-  translation: "Pilih File Untuk Simpan"
-  file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 42
+  original: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
+  translation: "Periksa situs World Wide Woodshed upgrade ke SlowGold 8."
   index: 38
 }
 str {
-  original: "Clear all keyboard command mappings to program default."
-  translation: "Kosongkan pemetaan perintah keyboard ke default semua program."
+  original: "Choose File To Save to"
+  translation: "Pilih File Untuk Simpan ke"
+  file: "rec/slow/callbacks/SaveFile.cpp"
+  line: 42
   index: 39
 }
 str {
+  original: "Clear all keyboard command mappings to program default."
+  translation: "Jelas pemetaan keyboard perintah semua program default."
+  index: 40
+}
+str {
   original: "Clear all keyboard mappings to factory default?"
-  translation: "Hapus semua pemetaan keyboard untuk standar pabrik?"
+  translation: "Hapus semua pemetaan keyboard ke default pabrik?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 52
-  index: 40
+  index: 41
 }
 str {
   original: "Clear all MIDI command mappings."
   translation: "Hapus semua pemetaan perintah MIDI."
-  index: 41
+  index: 42
 }
 str {
   original: "Clear all MIDI mappings?"
   translation: "Hapus semua pemetaan MIDI?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 54
-  index: 42
+  index: 43
 }
 str {
   original: "Clear All Settings And Quit"
   translation: "Batal Semua Pengaturan Dan Keluar"
-  index: 43
-}
-str {
-  original: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
-  translation: "Menghapus semua pengaturan SlowGold untuk semua trek yang sudah pernah dikunjungi dan keluar program."
   index: 44
 }
 str {
-  original: "Clear all SlowGold settings for this track only and quit the program."
-  translation: "Menghapus semua pengaturan SlowGold untuk lagu ini hanya berhenti dan program."
+  original: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
+  translation: "Menghapus semua pengaturan SlowGold untuk semua trek yang pernah dikunjungi dan keluar dari program."
   index: 45
+}
+str {
+  original: "Clear all SlowGold settings for this track only and quit the program."
+  translation: "Menghapus semua pengaturan SlowGold untuk lagu ini saja dan keluar dari program."
+  index: 46
 }
 str {
   original: "Clear Keyboard Mappings"
   translation: "Jelas Keyboard pemetaan"
-  index: 46
+  index: 47
 }
 str {
   original: "Clear Keyboard Mappings."
-  translation: "Keyboard pemetaan yang jelas."
+  translation: "Pemetaan Keyboard jelas."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 50
-  index: 47
+  index: 48
 }
 str {
   original: "Clear Loops"
   translation: "Jelas Loops"
-  index: 48
+  index: 49
 }
 str {
   original: "Clear MIDI Mappings"
   translation: "Jelas MIDI pemetaan"
-  index: 49
-}
-str {
-  original: "Clear MIDI Mappings."
-  translation: "Kosongkan pemetaan MIDI."
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 53
   index: 50
 }
 str {
-  original: "Clear Settings For This Track And Quit"
-  translation: "Batal Pengaturan Untuk Jalur ini Dan Keluar"
+  original: "Clear MIDI Mappings."
+  translation: "Jelas Pemetaan MIDI."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 53
   index: 51
+}
+str {
+  original: "Clear Settings For This Track And Quit"
+  translation: "Pengaturan Untuk menghapus trek ini Dan Keluar"
+  index: 52
 }
 str {
   original: "Clearing All Settings For All Tracks"
   translation: "Kliring Semua Pengaturan Untuk Semua Trek"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 56
-  index: 52
+  index: 53
 }
 str {
   original: "Clearing Settings For This Track Only"
-  translation: "Kliring Pengaturan Untuk Lagu Ini Hanya"
+  translation: "Kliring Pengaturan Untuk Jalur ini Hanya"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 61
-  index: 53
+  index: 54
 }
 str {
   original: "click to change this key-mapping"
   translation: "klik untuk mengubah kunci-pemetaan"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 9
-  index: 54
+  index: 55
 }
 str {
   original: "Click to continue."
   translation: "Klik untuk melanjutkan."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 33
-  index: 55
+  index: 56
 }
 str {
   original: "Close"
   translation: "Menutup"
-  index: 56
+  index: 57
 }
 str {
   original: "Close the current file"
   translation: "Tutup file saat ini"
-  index: 57
+  index: 58
 }
 str {
   original: "Command Bar At Left Side"
   translation: "Command Bar Pada Sisi Kiri"
-  index: 58
+  index: 59
 }
 str {
   original: "Command Bar At Top"
   translation: "Command Bar Pada Top"
-  index: 59
-}
-str {
-  original: "Copy"
-  translation: "Salin"
   index: 60
 }
 str {
-  original: "Copy the current selection to the clipboard and clear the selection."
-  translation: "Salin pilihan saat ke clipboard dan menghapus pilihan."
+  original: "Copy"
+  translation: "Kopi"
   index: 61
 }
 str {
-  original: "Copy the current selection to the clipboard."
-  translation: "Salin pilihan saat ke clipboard."
+  original: "Copy the current selection to the clipboard and clear the selection."
+  translation: "Kopi pilihan saat ini ke clipboard dan menghapus seleksi."
   index: 62
 }
 str {
-  original: "Copyright \302\251 %d"
-  translation: "Copyright \302\251 %d"
-  file: "rec/slow/AboutWindow.cpp"
-  line: 26
+  original: "Copy the current selection to the clipboard."
+  translation: "Kopi pilihan saat ini ke clipboard."
   index: 63
 }
 str {
-  original: "Couldn\'t Create A Support Request"
-  translation: "Tidak dapat Membuat Permintaan Dukungan"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 31
+  original: "Copyright \302\251 %d"
+  translation: "Hak Cipta \302\251 %d"
+  file: "rec/slow/AboutWindow.cpp"
+  line: 26
   index: 64
 }
 str {
+  original: "Couldn\'t Create A Support Request"
+  translation: "Tidak dapat Buat Sebuah Permintaan Dukungan"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 31
+  index: 65
+}
+str {
   original: "Couldn\'t Load The SlowGold 8 User Manual"
-  translation: "Tidak dapat Load Pedoman 8 User SlowGold"
+  translation: "Tidak bisa Load Pedoman 8 Pengguna SlowGold"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 29
-  index: 65
+  index: 66
 }
 str {
   original: "Couldn\'t Open CD Track."
   translation: "Tidak dapat Buka Jalur CD."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 26
-  index: 66
+  index: 67
 }
 str {
   original: "Couldn\'t open track on CD - perhaps you ejected it?"
-  translation: "Tidak dapat membuka trek pada CD - mungkin Anda dikeluarkan itu?"
+  translation: "Tidak bisa membuka trek pada CD - mungkin Anda dikeluarkan itu?"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 27
-  index: 67
+  index: 68
 }
 str {
   original: "Couldn\'t Open Your File."
   translation: "Tidak dapat Buka File Anda."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 39
-  index: 68
-}
-str {
-  original: "Couldn\'t update to version %s"
-  translation: "Tidak bisa update ke versi %s"
-  file: "rec/app/DownloadVersion.cpp"
-  line: 26
   index: 69
 }
 str {
-  original: "Create loop points by pressing the L key."
-  translation: "Buat poin loop dengan menekan tombol L."
-  file: "rec/slow/AboutWindow.cpp"
-  line: 23
+  original: "Couldn\'t update to version %s"
+  translation: "Tidak dapat memperbarui ke versi %s"
+  file: "rec/app/DownloadVersion.cpp"
+  line: 26
   index: 70
 }
 str {
+  original: "Create loop points by pressing the L key."
+  translation: "Buat poin lingkaran dengan menekan tombol L."
+  file: "rec/slow/AboutWindow.cpp"
+  line: 23
+  index: 71
+}
+str {
   original: "Currently assigned to"
-  translation: "Saat ini ditugaskan untuk"
+  translation: "Saat ditugaskan untuk"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 14
-  index: 71
+  index: 72
 }
 str {
   original: "Cut"
   translation: "Memotong"
-  index: 72
+  index: 73
 }
 str {
   original: "Delete"
   translation: "Hapus"
-  index: 73
+  index: 74
 }
 str {
   original: "Delete all loop points"
-  translation: "Hapus semua poin loop"
-  index: 74
+  translation: "Hapus semua titik lingkaran"
+  index: 75
 }
 str {
   original: "Delete the current selection without changing the clipboard."
   translation: "Hapus pilihan saat ini tanpa mengubah clipboard."
-  index: 75
-}
-str {
-  original: "Display"
-  translation: "Tampilan"
   index: 76
 }
 str {
+  original: "Die Wiedergabe Feinabstimmungsregler: Fine Tune Schleife nach oben oder unten in der Tonh\303\266he, in Cent (1/100 eines Halbtons) gemessen."
+  translation: "Die Wiedergabe Feinabstimmungsregler: Tune Schleife Baik nach oben oder unten in der Tonh\303\266he, di Cent (1/100 eines Halbtons) gemessen."
+  index: 77
+}
+str {
+  original: "Die Wiedergabe Tuning Slider: Grob Loop-Wiedergabe nach oben und unten in der Tonh\303\266he in Halbt\303\266nen gemessen."
+  translation: "Die Wiedergabe Slider Tuning: Grob Loop-Wiedergabe nach oben und unten in der Tonh\303\266he di Halbt\303\266nen gemessen."
+  index: 78
+}
+str {
   original: "Display this window on startup"
-  translation: "Tampilkan jendela ini pada startup"
+  translation: "Tampilan jendela ini pada startup"
   file: "rec/slow/AboutWindow.cpp"
   line: 17
-  index: 77
+  index: 79
 }
 str {
   original: "Do you want to re-assign it to this new command instead?"
   translation: "Apakah Anda ingin kembali menetapkan ke perintah baru, bukan?"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 11
-  index: 78
+  index: 80
 }
 str {
   original: "down"
   translation: "turun"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 43
-  index: 79
+  index: 81
 }
 str {
   original: "Download new version and quit this older one."
-  translation: "Download versi baru dan berhenti yang satu lebih tua."
+  translation: "Mendownload versi baru dan berhenti satu ini lebih tua."
   file: "rec/app/DownloadVersion.cpp"
   line: 24
-  index: 80
+  index: 82
 }
 str {
   original: "Download SlowGold 8 User Manual"
-  translation: "Ambil SlowGold 8 User Manual"
-  index: 81
+  translation: "Unduh SlowGold 8 User Manual"
+  index: 83
 }
 str {
   original: "Download the manual from the Help menu for many more commands."
   translation: "Download manual dari menu Help untuk perintah banyak lagi."
   file: "rec/slow/AboutWindow.cpp"
   line: 25
-  index: 82
+  index: 84
 }
 str {
   original: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
-  translation: "Download panduan pengguna SlowGold 8 dari situs Woodshed World Wide."
-  index: 83
+  translation: "Ambil manual 8 pengguna SlowGold dari situs Woodshed World Wide."
+  index: 85
 }
 str {
   original: "Drag audio files onto the waveform."
   translation: "Drag file audio ke bentuk gelombang."
   file: "rec/slow/AboutWindow.cpp"
   line: 18
-  index: 84
+  index: 86
 }
 str {
   original: "Drag Mode"
-  translation: "Drag mode"
-  index: 85
+  translation: "Tarik Modus"
+  index: 87
 }
 str {
   original: "Drag Mode: Use the mouse to drag the waveform back and forth"
-  translation: "Drag Mode: Gunakan mouse untuk menyeret bentuk gelombang bolak-balik"
-  index: 86
+  translation: "Tarik Mode: Gunakan mouse untuk menyeret gelombang bolak-balik"
+  index: 88
 }
 str {
   original: "Drag the Speed slider to slow down or speed up."
   translation: "Tarik slider Kecepatan untuk memperlambat atau mempercepat."
   file: "rec/slow/AboutWindow.cpp"
   line: 22
-  index: 87
+  index: 89
 }
 str {
   original: "Edit"
   translation: "Mengedit"
-  index: 88
+  index: 90
 }
 str {
   original: "Edit keyboard mappings for commands."
   translation: "Mengedit pemetaan keyboard untuk perintah."
-  index: 89
+  index: 91
 }
 str {
   original: "Edit Keyboard Mappings..."
-  translation: "Mengedit pemetaan Keyboard ..."
-  index: 90
+  translation: "Mengedit Pemetaan Keyboard ..."
+  index: 92
 }
 str {
   original: "Edit midi mappings for commands."
   translation: "Mengedit pemetaan midi untuk perintah."
-  index: 91
+  index: 93
 }
 str {
   original: "Edit Midi Mappings..."
-  translation: "Mengedit pemetaan Midi ..."
-  index: 92
+  translation: "Mengedit Pemetaan Midi ..."
+  index: 94
 }
 str {
   original: "Either it wasn\'t in the right format, it\'s corrupted, or the programmer made a mistake."
   translation: "Entah itu tidak dalam format yang tepat, itu rusak, atau programmer melakukan kesalahan."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 42
-  index: 93
+  index: 95
 }
 str {
   original: "Eject All"
-  translation: "Mengeluarkan Semua"
-  index: 94
+  translation: "Keluarkan Semua"
+  index: 96
 }
 str {
   original: "Eject all CDs and DVDs"
   translation: "Mengeluarkan semua CD dan DVD"
-  index: 95
-}
-str {
-  original: "Enable"
-  translation: "Memungkinkan"
-  index: 96
+  index: 97
 }
 str {
   original: "Enable Automatic Updates"
-  translation: "Aktifkan Pembaruan Otomatis"
-  index: 97
+  translation: "Aktifkan Automatic Updates"
+  index: 98
 }
 str {
   original: "Enable or disable automatic updates of SlowGold 8."
   translation: "Mengaktifkan atau menonaktifkan update otomatis SlowGold 8."
-  index: 98
+  index: 99
 }
 str {
   original: "Enable Stretch"
   translation: "Aktifkan Regangkan"
-  index: 99
+  index: 100
 }
 str {
   original: "Enable Transforms"
   translation: "Aktifkan Mentransformasi"
-  index: 100
+  index: 101
 }
 str {
   original: "English"
   translation: "Inggris"
-  index: 101
+  index: 102
 }
 str {
   original: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
-  translation: "Masukkan Tambahkan loop mode Point, dimana gelombang mengklik menambahkan Point loop di lokasi itu."
-  index: 102
+  translation: "Masukkan Tambahkan loop Point Mode, di mana mengklik gelombang menambahkan Point loop di lokasi itu."
+  index: 103
 }
 str {
   original: "Enter drag mode, where you can drag the waveform back and forth."
   translation: "Masukkan tarik mode, di mana Anda dapat menarik gelombang bolak-balik."
-  index: 103
+  index: 104
 }
 str {
   original: "Enter Set Time Mode, where clicking in the waveform sets the time."
   translation: "Masukkan Mengatur Mode Waktu, di mana mengklik dalam bentuk gelombang set waktu."
-  index: 104
+  index: 105
 }
 str {
   original: "Enter Zoom In Mode, where clicking on the waveform zooms in."
   translation: "Masukkan Zoom In Mode, di mana mengklik membesarkan gelombang masuk"
-  index: 105
+  index: 106
 }
 str {
   original: "Error During Save."
   translation: "Kesalahan Selama Simpan."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 38
-  index: 106
+  index: 107
 }
 str {
   original: "Error was"
   translation: "Kesalahan adalah"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 28
-  index: 107
+  index: 108
 }
 str {
   original: "Export all SlowGold Settings to a .zip file."
   translation: "Ekspor semua Pengaturan SlowGold ke file. Zip."
-  index: 108
-}
-str {
-  original: "Export keyboard command mappings."
-  translation: "Ekspor pemetaan perintah keyboard."
   index: 109
 }
 str {
-  original: "Export Keyboard Command Mappings..."
-  translation: "Ekspor pemetaan Keyboard Command ..."
+  original: "Export keyboard command mappings."
+  translation: "Ekspor pemetaan keyboard perintah."
   index: 110
+}
+str {
+  original: "Export Keyboard Command Mappings..."
+  translation: "Ekspor Pemetaan Keyboard Command ..."
+  index: 111
 }
 str {
   original: "Export MIDI command mappings."
   translation: "Ekspor pemetaan perintah MIDI."
-  index: 111
+  index: 112
 }
 str {
   original: "Export MIDI Command Mappings..."
-  translation: "Ekspor pemetaan Komando MIDI ..."
-  index: 112
+  translation: "Ekspor Pemetaan Command MIDI ..."
+  index: 113
 }
 str {
   original: "Export SlowGold Settings..."
   translation: "Ekspor Pengaturan SlowGold ..."
-  index: 113
+  index: 114
 }
 str {
   original: "File"
   translation: "Berkas"
-  index: 114
+  index: 115
 }
 str {
   original: "File Type For Save..."
-  translation: "File Type Untuk Simpan ..."
-  index: 115
+  translation: "File Type For Simpan ..."
+  index: 116
 }
 str {
   original: "Finishing loading audio from disk."
   translation: "Finishing pemuatan audio dari disk."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 40
-  index: 116
+  index: 117
 }
 str {
   original: "FLAC"
   translation: "FLAC"
-  index: 117
+  index: 118
 }
 str {
   original: "Follow Cursor"
-  translation: "Ikuti Kursor"
-  index: 118
+  translation: "Ikuti Cursor"
+  index: 119
 }
 str {
   original: "French"
   translation: "Perancis"
-  index: 119
+  index: 120
 }
 str {
   original: "Genre"
   translation: "Aliran"
-  index: 120
+  index: 121
 }
 str {
   original: "German"
   translation: "Jerman"
-  index: 121
+  index: 122
 }
 str {
   original: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
-  translation: "Pergi ke halaman Web yang memberitahu anda apa fitur baru dan perbaikan bug di rilis Anda jalankan."
-  index: 122
+  translation: "Pergi ke halaman web yang memberitahu Anda apa fitur baru dan perbaikan bug dalam rilis yang Anda jalankan."
+  index: 123
 }
 str {
   original: "Help"
   translation: "Membantu"
-  index: 123
-}
-str {
-  original: "Help Panel: Shows help about whatever the mouse is over."
-  translation: "Bantuan Panel: Menampilkan bantuan tentang apapun mouse di atas."
   index: 124
 }
 str {
-  original: "Import Keyboard Command Mappings..."
-  translation: "Perintah Keyboard pemetaan Impor ..."
+  original: "Help Panel: Shows help about whatever the mouse is over."
+  translation: "Bantuan Panel: Menunjukkan bantuan tentang apa pun mouse di atas."
   index: 125
 }
 str {
-  original: "Import MIDI Command Mappings"
-  translation: "Impor pemetaan Komando MIDI"
+  original: "Import Keyboard Command Mappings..."
+  translation: "Command Keyboard Pemetaan Impor ..."
   index: 126
 }
 str {
-  original: "Import SlowGold keyboard command mappings."
-  translation: "Impor pemetaan perintah keyboard SlowGold."
+  original: "Import MIDI Command Mappings"
+  translation: "Impor Pemetaan Command MIDI"
   index: 127
+}
+str {
+  original: "Import SlowGold keyboard command mappings."
+  translation: "Impor pemetaan keyboard perintah SlowGold."
+  index: 128
 }
 str {
   original: "Import SlowGold MIDI command mappings."
   translation: "Impor pemetaan SlowGold perintah MIDI."
-  index: 128
+  index: 129
 }
 str {
   original: "Import SlowGold Settings from a .zip file and merge with current settings."
   translation: "Impor Pengaturan SlowGold dari file zip. Dan bergabung dengan pengaturan saat ini."
-  index: 129
+  index: 130
 }
 str {
   original: "Import SlowGold Settings..."
-  translation: "Impor Pengaturan SlowGold ..."
-  index: 130
+  translation: "Impor Setelan SlowGold ..."
+  index: 131
 }
 str {
   original: "Indonesian"
   translation: "Indonesia"
-  index: 131
+  index: 132
 }
 str {
   original: "Invert Selection"
-  translation: "Invert Selection"
-  index: 132
+  translation: "Balikkan Seleksi"
+  index: 133
 }
 str {
   original: "Jump Back"
   translation: "Lompat Kembali"
-  index: 133
-}
-str {
-  original: "Jump Back Button: Jump to the start of the next segment."
-  translation: "Lompat Tombol Kembali: Lompat ke awal segmen berikutnya."
   index: 134
 }
 str {
-  original: "Jump Forward"
-  translation: "Lompat ke Depan"
+  original: "Jump Back Button: Jump to the start of the next segment."
+  translation: "Lompat Tombol Kembali: Langsung ke awal segmen berikutnya."
   index: 135
 }
 str {
-  original: "Jump Forward Button: Jump to the start of the next segment."
-  translation: "Lompat Teruskan Tombol: Lompat ke awal segmen berikutnya."
+  original: "Jump Forward"
+  translation: "Lompat Teruskan"
   index: 136
 }
 str {
-  original: "Jump To Current Segment"
-  translation: "Jump To Segmen Lancar"
+  original: "Jump Forward Button: Jump to the start of the next segment."
+  translation: "Lompat Teruskan Tombol: Langsung ke awal segmen berikutnya."
   index: 137
 }
 str {
-  original: "Jump To Current Selected Segment"
-  translation: "Jump To Segmen Terpilih Lancar"
+  original: "Jump To Current Segment"
+  translation: "Lompat Untuk Segmen Lancar"
   index: 138
 }
 str {
-  original: "Jump To First Segment"
-  translation: "Jump To Segmen Pertama"
+  original: "Jump To Current Selected Segment"
+  translation: "Lompat Untuk Segmen Terpilih Lancar"
   index: 139
 }
 str {
-  original: "Jump To First Selected Segment"
-  translation: "Jump To Segmen Terpilih Pertama"
+  original: "Jump To First Segment"
+  translation: "Lompat Untuk Segmen Pertama"
   index: 140
 }
 str {
-  original: "Jump To Last Segment"
-  translation: "Jump To Segmen terakhir"
+  original: "Jump To First Selected Segment"
+  translation: "Lompat Untuk Segmen Terpilih Pertama"
   index: 141
 }
 str {
-  original: "Jump To Last Selected Segment"
-  translation: "Jump To Segmen Terpilih terakhir"
+  original: "Jump To Last Segment"
+  translation: "Lompat Untuk Segmen terakhir"
   index: 142
 }
 str {
-  original: "Jump To Next Segment"
-  translation: "Jump To Segmen Berikutnya"
+  original: "Jump To Last Selected Segment"
+  translation: "Lompat Untuk Segmen terakhir Dipilih"
   index: 143
 }
 str {
-  original: "Jump To Next Selected Segment"
-  translation: "Jump To Segmen Terpilih Berikutnya"
+  original: "Jump To Next Segment"
+  translation: "Lompat Untuk Segmen Selanjutnya"
   index: 144
 }
 str {
-  original: "Jump To Previous Segment"
-  translation: "Jump To Segmen Sebelumnya"
+  original: "Jump To Next Selected Segment"
+  translation: "Lompat Untuk Segmen Terpilih Selanjutnya"
   index: 145
 }
 str {
-  original: "Jump To Previous Selected Segment"
-  translation: "Jump To Segmen Terpilih Sebelumnya"
+  original: "Jump To Previous Segment"
+  translation: "Lompat Untuk Segmen Sebelumnya"
   index: 146
 }
 str {
-  original: "Jump To Segment 1"
-  translation: "Jump To Segmen 1"
+  original: "Jump To Previous Selected Segment"
+  translation: "Lompat Untuk Segmen Terpilih Sebelumnya"
   index: 147
 }
 str {
-  original: "Jump To Segment 10"
-  translation: "Jump To Segmen 10"
+  original: "Jump To Segment 1"
+  translation: "Lompat Untuk Segmen 1"
   index: 148
 }
 str {
-  original: "Jump To Segment 2"
-  translation: "Jump To Segmen 2"
+  original: "Jump To Segment 10"
+  translation: "Lompat Untuk Segmen 10"
   index: 149
 }
 str {
-  original: "Jump To Segment 3"
-  translation: "Jump To Segmen 3"
+  original: "Jump To Segment 2"
+  translation: "Lompat Untuk Segmen 2"
   index: 150
 }
 str {
-  original: "Jump To Segment 4"
-  translation: "Jump To Segmen 4"
+  original: "Jump To Segment 3"
+  translation: "Lompat Untuk Segmen 3"
   index: 151
 }
 str {
-  original: "Jump To Segment 5"
-  translation: "Jump To Segmen 5"
+  original: "Jump To Segment 4"
+  translation: "Lompat Untuk Segmen 4"
   index: 152
 }
 str {
-  original: "Jump To Segment 6"
-  translation: "Jump To Segmen 6"
+  original: "Jump To Segment 5"
+  translation: "Lompat Untuk Segmen 5"
   index: 153
 }
 str {
-  original: "Jump To Segment 7"
-  translation: "Jump To Segmen 7"
+  original: "Jump To Segment 6"
+  translation: "Lompat Untuk Segmen 6"
   index: 154
 }
 str {
-  original: "Jump To Segment 8"
-  translation: "Jump To Segmen 8"
+  original: "Jump To Segment 7"
+  translation: "Lompat Untuk Segmen 7"
   index: 155
 }
 str {
-  original: "Jump To Segment 9"
-  translation: "Jump To Segmen 9"
+  original: "Jump To Segment 8"
+  translation: "Lompat Untuk Segmen 8"
   index: 156
 }
 str {
-  original: "Jump To Selected Segment 1"
-  translation: "Jump To Segmen Terpilih 1"
+  original: "Jump To Segment 9"
+  translation: "Lompat Untuk Segmen 9"
   index: 157
 }
 str {
-  original: "Jump To Selected Segment 10"
-  translation: "Jump To Segmen Terpilih 10"
+  original: "Jump To Selected Segment 1"
+  translation: "Lompat Untuk Segmen Dipilih 1"
   index: 158
 }
 str {
-  original: "Jump To Selected Segment 2"
-  translation: "Jump To Segmen Terpilih 2"
+  original: "Jump To Selected Segment 10"
+  translation: "Lompat Untuk Segmen Dipilih 10"
   index: 159
 }
 str {
-  original: "Jump To Selected Segment 3"
-  translation: "Jump To Segmen Terpilih 3"
+  original: "Jump To Selected Segment 2"
+  translation: "Lompat Untuk Segmen Dipilih 2"
   index: 160
 }
 str {
-  original: "Jump To Selected Segment 4"
-  translation: "Jump To Segmen Terpilih 4"
+  original: "Jump To Selected Segment 3"
+  translation: "Lompat Untuk Segmen Dipilih 3"
   index: 161
 }
 str {
-  original: "Jump To Selected Segment 5"
-  translation: "Jump To Segmen Terpilih 5"
+  original: "Jump To Selected Segment 4"
+  translation: "Lompat Untuk Segmen Dipilih 4"
   index: 162
 }
 str {
-  original: "Jump To Selected Segment 6"
-  translation: "Jump To Segmen Terpilih 6"
+  original: "Jump To Selected Segment 5"
+  translation: "Lompat Untuk Segmen Dipilih 5"
   index: 163
 }
 str {
-  original: "Jump To Selected Segment 7"
-  translation: "Jump To Segmen Terpilih 7"
+  original: "Jump To Selected Segment 6"
+  translation: "Lompat Untuk Segmen Dipilih 6"
   index: 164
 }
 str {
-  original: "Jump To Selected Segment 8"
-  translation: "Jump To Segmen Terpilih 8"
+  original: "Jump To Selected Segment 7"
+  translation: "Lompat Untuk Segmen Dipilih 7"
   index: 165
 }
 str {
-  original: "Jump To Selected Segment 9"
-  translation: "Jump To Segmen Terpilih 9"
+  original: "Jump To Selected Segment 8"
+  translation: "Lompat Untuk Segmen Dipilih 8"
   index: 166
 }
 str {
-  original: "Jump To Selected..."
-  translation: "Jump To Terpilih ..."
+  original: "Jump To Selected Segment 9"
+  translation: "Lompat Untuk Segmen Dipilih 9"
   index: 167
 }
 str {
@@ -930,27 +930,27 @@ str {
 }
 str {
   original: "Jump To Start Button: Jump to the start of the track."
-  translation: "Jump To Start Button: Lompat ke awal trek."
+  translation: "Langsung Untuk Start Button: Langsung ke awal trek."
   index: 169
 }
 str {
   original: "Jump to the start of segment 1."
-  translation: "Lompat ke awal dari segmen 1."
+  translation: "Lompat ke awal segmen 1."
   index: 170
 }
 str {
   original: "Jump to the start of segment 10."
-  translation: "Lompat ke awal dari segmen 10."
+  translation: "Lompat ke awal segmen 10."
   index: 171
 }
 str {
   original: "Jump to the start of segment 2."
-  translation: "Lompat ke awal dari segmen 2."
+  translation: "Lompat ke awal segmen 2."
   index: 172
 }
 str {
   original: "Jump to the start of segment 3."
-  translation: "Lompat ke awal dari segmen 3."
+  translation: "Lompat ke awal segmen 3."
   index: 173
 }
 str {
@@ -960,7 +960,7 @@ str {
 }
 str {
   original: "Jump to the start of segment 5."
-  translation: "Lompat ke awal segmen 5."
+  translation: "Lompat ke awal dari segmen 5."
   index: 175
 }
 str {
@@ -970,7 +970,7 @@ str {
 }
 str {
   original: "Jump to the start of segment 7."
-  translation: "Lompat ke awal dari segmen 7."
+  translation: "Lompat ke awal segmen 7."
   index: 177
 }
 str {
@@ -985,7 +985,7 @@ str {
 }
 str {
   original: "Jump to the start of the current segment."
-  translation: "Lompat ke awal dari segmen saat ini."
+  translation: "Lompat ke awal segmen saat ini."
   index: 180
 }
 str {
@@ -1000,7 +1000,7 @@ str {
 }
 str {
   original: "Jump to the start of the next segment."
-  translation: "Lompat ke awal segmen berikutnya."
+  translation: "Langsung ke awal segmen berikutnya."
   index: 183
 }
 str {
@@ -1009,60 +1009,60 @@ str {
   index: 184
 }
 str {
-  original: "Jump To..."
-  translation: "Jump To ..."
-  index: 185
-}
-str {
   original: "Key"
   translation: "Kunci"
   file: "rec/command/map/KeyCommandMapEditor.cpp"
   line: 11
-  index: 186
+  index: 185
 }
 str {
   original: "L + R"
   translation: "L + R"
-  index: 187
+  index: 186
 }
 str {
   original: "Language"
   translation: "Bahasa"
-  index: 188
+  index: 187
 }
 str {
   original: "Lay the Command Bar out on the left side of the Waveform Display."
-  translation: "Lay Command Bar keluar di sisi kiri Tampilan Bentuk gelombang."
-  index: 189
+  translation: "Lay Command Bar di sisi kiri Tampilan Oktaf."
+  index: 188
 }
 str {
   original: "Lay the Command Bar out on the top of the Waveform Display."
-  translation: "Lay Command Bar keluar pada bagian atas Tampilan Bentuk gelombang."
-  index: 190
+  translation: "Lay Command Bar keluar di atas Tampilan Oktaf."
+  index: 189
 }
 str {
   original: "Lay the Modes display out on the left side of the Waveform Display."
-  translation: "Lay Mode menampilkan keluar di sisi kiri Tampilan Bentuk gelombang."
-  index: 191
+  translation: "Lay Modus tampilan keluar di sisi kiri Tampilan Oktaf."
+  index: 190
 }
 str {
   original: "Lay the Modes display out on the top of the Waveform Display."
-  translation: "Lay Mode menampilkan keluar di bagian atas Tampilan Bentuk gelombang."
-  index: 192
+  translation: "Lay Modus tampilan keluar di atas Tampilan Oktaf."
+  index: 191
 }
 str {
   original: "Left"
   translation: "Kiri"
-  index: 193
+  index: 192
 }
 str {
   original: "Level Meter: Display the sound intensity, in RMS dB."
-  translation: "Level Meter: Menampilkan intensitas suara, dalam RMS dB."
-  index: 194
+  translation: "Level Meter: Tampilan intensitas suara, di RMS dB."
+  index: 193
 }
 str {
   original: "Level Slider: Raise or lower the sound intensity, in dB."
-  translation: "Tingkat Slider: Meningkatkan atau menurunkan intensitas suara, dalam dB."
+  translation: "Tingkat Slider: Naikkan atau menurunkan intensitas suara, dalam dB."
+  index: 194
+}
+str {
+  original: "Level-Slider: Erh\303\266hen oder senken Sie die Lautst\303\244rke in dB."
+  translation: "Tingkat-Slider: Erh\303\266hen oder SENKEN Sie die Lautst\303\244rke dalam dB."
   index: 195
 }
 str {
@@ -1072,17 +1072,17 @@ str {
 }
 str {
   original: "Loop Point List: You can select and edit loop points here."
-  translation: "Lingkaran Titik Daftar: Anda dapat memilih dan mengedit poin loop di sini."
+  translation: "Lingkaran Titik Daftar: Anda dapat memilih dan mengedit jalur lingkaran di sini."
   index: 197
 }
 str {
   original: "Loop Point Name: Edit the Loop Point\'s name by clicking here."
-  translation: "Ulangi Point Name: Edit nama Point loop dengan mengklik di sini."
+  translation: "Lingkaran Titik Nama: Edit nama Point loop ini dengan mengklik di sini."
   index: 198
 }
 str {
   original: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
-  translation: "Titik Loop: Anda dapat menarik sekitar pada gelombang, atau Anda dapat mengklik pada label di atas dan di sebelah kanan untuk mengedit namanya."
+  translation: "Titik Loop: Anda dapat menarik sekitar pada bentuk gelombang, atau Anda dapat mengklik pada label di atas dan ke kanan untuk mengedit namanya."
   file: "rec/widget/waveform/Waveform.cpp"
   line: 38
   index: 199
@@ -1094,7 +1094,7 @@ str {
 }
 str {
   original: "Make a request for technical support to World Wide Woodshed."
-  translation: "Membuat permintaan untuk dukungan teknis untuk Woodshed World Wide."
+  translation: "Membuat permintaan dukungan teknis untuk Woodshed World Wide."
   index: 201
 }
 str {
@@ -1104,1197 +1104,1197 @@ str {
 }
 str {
   original: "Master Tune Slider: Master tune is a global detune over all tracks."
-  translation: "Guru Tune Slider: lagu Master adalah detune global selama semua trek."
+  translation: "Guru Tune Slider: lagu Guru adalah detune global atas semua trek."
   index: 203
+}
+str {
+  original: "Master Tune Slider: Master tune ist eine globale Verstimmung \303\274ber alle Spuren."
+  translation: "Guru Tune Slider: Guru lagu ist eine globale Verstimmung \303\274ber Spuren alle."
+  index: 204
 }
 str {
   original: "MIDI"
   translation: "MIDI"
   file: "rec/command/map/MidiCommandMapEditor.cpp"
   line: 15
-  index: 204
+  index: 205
 }
 str {
   original: "Modes At Left Side"
   translation: "Mode Pada Sisi Kiri"
-  index: 205
+  index: 206
 }
 str {
   original: "Modes At Top"
   translation: "Mode Pada Top"
-  index: 206
-}
-str {
-  original: "Mute"
-  translation: "Bisu"
   index: 207
 }
 str {
-  original: "Mute Button: Mute or unmute the sound."
-  translation: "Tombol Mute: Diam atau unmute suara."
+  original: "Mute"
+  translation: "Mute"
   index: 208
+}
+str {
+  original: "Mute Button: Mute or unmute the sound."
+  translation: "Tombol Mute: Mute atau unmute suara."
+  index: 209
 }
 str {
   original: "Name"
   translation: "Nama"
-  index: 209
+  index: 210
 }
 str {
   original: "New command mapping"
-  translation: "Baru perintah pemetaan"
+  translation: "New perintah pemetaan"
   file: "rec/command/map/CommandEntryWindow.cpp"
   line: 9
-  index: 210
+  index: 211
 }
 str {
   original: "No available CDs."
   translation: "Tidak ada CD yang tersedia."
   file: "rec/util/cd/CDReader.cpp"
   line: 13
-  index: 211
+  index: 212
 }
 str {
   original: "Not Registered!"
   translation: "Tidak Terdaftar!"
   file: "rec/slow/AboutWindow.cpp"
   line: 28
-  index: 212
+  index: 213
 }
 str {
   original: "Notes"
   translation: "Catatan"
-  index: 213
+  index: 214
 }
 str {
   original: "Nudge Backward"
   translation: "Sikut Mundur"
-  index: 214
+  index: 215
 }
 str {
   original: "Nudge Backward One Segment Or 10 Seconds"
   translation: "Sikut Mundur Satu Segmen Atau 10 Detik"
-  index: 215
+  index: 216
 }
 str {
   original: "Nudge Forward"
   translation: "Sikut Teruskan"
-  index: 216
+  index: 217
 }
 str {
   original: "Nudge Forward One Segment Or 10 Seconds"
   translation: "Sikut Maju Satu Segmen Atau 10 Detik"
-  index: 217
+  index: 218
 }
 str {
   original: "Nudge speed down"
   translation: "Sikut kecepatan turun"
-  index: 218
+  index: 219
 }
 str {
   original: "Nudge speed up"
   translation: "Sikut mempercepat"
-  index: 219
-}
-str {
-  original: "Nudge volume down"
-  translation: "Sikut volume bawah"
   index: 220
 }
 str {
-  original: "Nudge volume down by 2dB"
-  translation: "Sikut volume bawah oleh 2dB"
+  original: "Nudge volume down"
+  translation: "Sikut volume turun"
   index: 221
 }
 str {
-  original: "Nudge volume up"
-  translation: "Sikut volume atas"
+  original: "Nudge volume down by 2dB"
+  translation: "Sikut volume turun oleh 2dB"
   index: 222
 }
 str {
-  original: "Nudge volume up by 2dB"
-  translation: "Sikut volume atas dengan 2dB"
+  original: "Nudge volume up"
+  translation: "Sikut volume naik"
   index: 223
 }
 str {
-  original: "Number"
-  translation: "Jumlah"
+  original: "Nudge volume up by 2dB"
+  translation: "Sikut volume naik oleh 2dB"
   index: 224
+}
+str {
+  original: "Number"
+  translation: "Nomor"
+  index: 225
 }
 str {
   original: "Ogg Vorbis"
   translation: "Ogg Vorbis"
-  index: 225
+  index: 226
 }
 str {
   original: "OK"
   translation: "Oke"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 40
-  index: 226
+  index: 227
 }
 str {
   original: "one semitone %s"
   translation: "satu semitone %s"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 47
-  index: 227
+  index: 228
 }
 str {
   original: "Open a dialog to select a new audio file for looping."
-  translation: "Buka dialog untuk memilih file audio baru untuk melakukan perulangan."
-  index: 228
+  translation: "Membuka dialog untuk memilih file audio baru untuk perulangan."
+  index: 229
 }
 str {
   original: "Open recent"
   translation: "Buka terakhir"
-  index: 229
+  index: 230
 }
 str {
   original: "Open SlowGold Preferences Directory"
   translation: "Buka SlowGold Direktori Preferensi"
-  index: 230
+  index: 231
 }
 str {
   original: "Open the Audio Preferences pane."
   translation: "Buka panel Preferensi Audio."
-  index: 231
+  index: 232
 }
 str {
   original: "Open the directory where all the SlowGold Preferences Files are located."
-  translation: "Buka direktori di mana semua SlowGold Preferensi Files berada."
-  index: 232
+  translation: "Buka direktori dimana semua SlowGold Preferensi File berada."
+  index: 233
 }
 str {
   original: "Open..."
   translation: "Buka ..."
-  index: 233
+  index: 234
 }
 str {
   original: "Paste"
-  translation: "Pasta"
-  index: 234
+  translation: "Menempelkan"
+  index: 235
 }
 str {
   original: "pc %d"
   translation: "pc %d"
   file: "rec/command/map/MidiName.cpp"
   line: 16
-  index: 235
+  index: 236
 }
 str {
   original: "Pitch"
   translation: "Nada"
-  index: 236
-}
-str {
-  original: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
-  translation: "Putar Slider Fine Tuning: lagu lingkaran Rupa atas atau bawah di lapangan, diukur dalam sen (1/100 dari semitone a)."
   index: 237
 }
 str {
-  original: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
-  translation: "Kecepatan Slider Playback: Kontrol seberapa cepat loop memutar ulang: jumlah yang lebih berarti loop memutar kembali lebih cepat."
+  original: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
+  translation: "Pemutaran Slider Fine Tuning: lagu lingkaran Baik naik atau turun di lapangan, diukur dalam sen (1/100 dari semitone a)."
   index: 238
 }
 str {
-  original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
-  translation: "Putar kursor Waktu: ini mengikuti waktu saat ini selama pemutaran. Anda juga dapat drag mengatur waktu pemutaran saat ini."
+  original: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
+  translation: "Kecepatan Slider Playback: Kontrol seberapa cepat loop memainkan kembali: nomor yang lebih tinggi berarti loop memainkan kembali lebih cepat."
   index: 239
 }
 str {
-  original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
-  translation: "Putar Tuning Slider: pemutaran lingkaran kasar atas dan ke bawah di lapangan, yang diukur dalam semitone."
+  original: "Playback Speed-Slider: Steuert, wie schnell die Schleife abgespielt wird: H\303\266here Zahlen bedeuten die Schleife abgespielt schneller."
+  translation: "Playback Speed-Slider: Steuert, wie schnell die Schleife abgespielt wird: H\303\266here Zahlen bedeuten die Schleife abgespielt schneller."
   index: 240
 }
 str {
-  original: "Please attach the file on your desktop named %s to this email and send it to us!"
-  translation: "Tolong lampirkan file di %s desktop Anda bernama email ini dan kirim pada kami!"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 35
+  original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
+  translation: "Playback Kursor Waktu: Ini mengikuti waktu saat ini selama pemutaran. Anda juga dapat drag untuk mengatur waktu pemutaran saat ini."
   index: 241
 }
 str {
-  original: "Please contact World Wide Woodshed support at"
-  translation: "Silahkan hubungi dukungan Dunia Woodshed Wide"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 41
+  original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
+  translation: "Playback Tuning Slider: pemutaran lingkaran kasar naik dan turun di lapangan, diukur dalam semitone."
   index: 242
 }
 str {
-  original: "Please mail the file to %s and then you can throw it away."
-  translation: "Silahkan mail file ke %s dan kemudian Anda dapat membuangnya."
+  original: "Please attach the file on your desktop named %s to this email and send it to us!"
+  translation: "Silakan melampirkan file pada %s desktop Anda bernama email ini dan kirimkan kepada kami!"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 42
+  line: 35
   index: 243
 }
 str {
-  original: "Please press a key combination now..."
-  translation: "Silahkan tekan kombinasi tombol sekarang ..."
-  file: "rec/command/map/KeyCommandMapEditor.cpp"
-  line: 10
+  original: "Please contact World Wide Woodshed support at"
+  translation: "Silakan hubungi dukungan Dunia Woodshed lebar di"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 41
   index: 244
 }
 str {
+  original: "Please mail the file to %s and then you can throw it away."
+  translation: "Silakan mail file ke %s dan kemudian Anda dapat membuangnya."
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 42
+  index: 245
+}
+str {
+  original: "Please press a key combination now..."
+  translation: "Silakan tekan kombinasi tombol sekarang ..."
+  file: "rec/command/map/KeyCommandMapEditor.cpp"
+  line: 10
+  index: 246
+}
+str {
   original: "Press the space bar to start and stop playback."
-  translation: "Tekan space bar untuk memulai dan menghentikan pemutaran."
+  translation: "Tekan spasi untuk memulai dan menghentikan pemutaran."
   file: "rec/slow/AboutWindow.cpp"
   line: 21
-  index: 245
+  index: 247
 }
 str {
   original: "Quit"
   translation: "Berhenti"
-  index: 246
+  index: 248
 }
 str {
   original: "Quit SlowGold"
   translation: "Keluar SlowGold"
-  index: 247
+  index: 249
 }
 str {
   original: "Ran Out Of Memory For Your File"
   translation: "Ran Out Of Memory Untuk File Anda"
   file: "rec/slow/CurrentFile.cpp"
   line: 36
-  index: 248
+  index: 250
 }
 str {
   original: "Re-assign"
   translation: "Kembali menetapkan"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 12
-  index: 249
+  index: 251
 }
 str {
   original: "Re-Open Most Recent Closed File"
   translation: "Re-Open Terbaru Tertutup Berkas"
-  index: 250
+  index: 252
 }
 str {
   original: "Re-open the file that was most recently closed."
-  translation: "Membuka kembali file yang paling terakhir ditutup."
-  index: 251
+  translation: "Membuka kembali file yang paling baru-baru ini ditutup."
+  index: 253
 }
 str {
   original: "Recent file"
   translation: "Terakhir berkas"
-  index: 252
+  index: 254
 }
 str {
   original: "Recent file 1"
   translation: "Terakhir file 1"
-  index: 253
+  index: 255
 }
 str {
   original: "Recent file 10"
-  translation: "Terakhir file 10"
-  index: 254
+  translation: "File terakhir 10"
+  index: 256
 }
 str {
   original: "Recent file 2"
   translation: "Terakhir file 2"
-  index: 255
+  index: 257
 }
 str {
   original: "Recent file 3"
   translation: "Terakhir file 3"
-  index: 256
+  index: 258
 }
 str {
   original: "Recent file 4"
   translation: "Terakhir file 4"
-  index: 257
+  index: 259
 }
 str {
   original: "Recent file 5"
   translation: "Terakhir file 5"
-  index: 258
-}
-str {
-  original: "Recent file 6"
-  translation: "Terakhir berkas 6"
-  index: 259
-}
-str {
-  original: "Recent file 7"
-  translation: "Terakhir berkas 7"
   index: 260
 }
 str {
-  original: "Recent file 8"
-  translation: "Terakhir berkas 8"
+  original: "Recent file 6"
+  translation: "File terakhir 6"
   index: 261
 }
 str {
-  original: "Recent file 9"
-  translation: "Terakhir berkas 9"
+  original: "Recent file 7"
+  translation: "File terbaru 7"
   index: 262
+}
+str {
+  original: "Recent file 8"
+  translation: "File terakhir 8"
+  index: 263
+}
+str {
+  original: "Recent file 9"
+  translation: "File terakhir 9"
+  index: 264
 }
 str {
   original: "Redo"
   translation: "Redo"
-  index: 263
+  index: 265
 }
 str {
   original: "Redoes a previously undone command."
   translation: "Menjalankan ulang perintah sebelumnya dibatalkan."
-  index: 264
+  index: 266
 }
 str {
   original: "Registered to:"
   translation: "Terdaftar ke:"
   file: "rec/slow/AboutWindow.cpp"
   line: 27
-  index: 265
+  index: 267
 }
 str {
   original: "Remove this command mapping"
-  translation: "Menghapus pemetaan perintah"
+  translation: "Hapus ini pemetaan perintah"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 11
-  index: 266
+  index: 268
 }
 str {
   original: "Replace the current selection with a copy of the clipboard."
   translation: "Ganti pilihan saat ini dengan salinan clipboard."
-  index: 267
-}
-str {
-  original: "Request Technical Support"
-  translation: "Meminta Dukungan Teknis"
-  index: 268
-}
-str {
-  original: "Reset"
-  translation: "Atur Ulang"
-  file: "rec/command/map/CommandMapTopLevelItem.cpp"
-  line: 11
   index: 269
 }
 str {
-  original: "reset to defaults"
-  translation: "reset ke default"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 13
+  original: "Request Technical Support"
+  translation: "Minta Dukungan Teknis"
   index: 270
 }
 str {
-  original: "Reset Volume"
-  translation: "Volume ulang"
+  original: "Reset"
+  translation: "Atur ulang"
+  file: "rec/command/map/CommandMapTopLevelItem.cpp"
+  line: 11
   index: 271
 }
 str {
-  original: "Reset volume to 0 dB"
-  translation: "Mengatur ulang volume ke 0 dB"
+  original: "reset to defaults"
+  translation: "mengembalikan ke default"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 13
   index: 272
+}
+str {
+  original: "Reset Volume"
+  translation: "Atur Volume"
+  index: 273
+}
+str {
+  original: "Reset volume to 0 dB"
+  translation: "Atur volume ke 0 dB"
+  index: 274
+}
+str {
+  original: "Resizer: You can drag this resizer around to change the screen layout."
+  translation: "Resizer: Anda dapat menarik resizer ini sekitar untuk mengubah tata letak layar."
+  index: 275
 }
 str {
   original: "Right"
   translation: "Tepat"
-  index: 273
-}
-str {
-  original: "Run this older version (%s)."
-  translation: "Jalankan versi yang lebih tua (%s)."
-  file: "rec/app/DownloadVersion.cpp"
-  line: 25
-  index: 274
-}
-str {
-  original: "Save just the selected portion of the transformed file in the default save format."
-  translation: "Simpan hanya bagian yang dipilih dari file berubah di default save format."
-  index: 275
-}
-str {
-  original: "Save Selection..."
-  translation: "Save Selection ..."
   index: 276
 }
 str {
-  original: "Save the full transformed file in the default save format."
-  translation: "Simpan file berubah penuh di default save format."
+  original: "Run this older version (%s)."
+  translation: "Jalankan ini versi lama (%s)."
+  file: "rec/app/DownloadVersion.cpp"
+  line: 25
   index: 277
+}
+str {
+  original: "Save just the selected portion of the transformed file in the default save format."
+  translation: "Simpan hanya bagian yang dipilih dari file diubah di default menyimpan format."
+  index: 278
+}
+str {
+  original: "Save Selection..."
+  translation: "Simpan Seleksi ..."
+  index: 279
+}
+str {
+  original: "Save the full transformed file in the default save format."
+  translation: "Simpan file berubah penuh di default menyimpan format."
+  index: 280
 }
 str {
   original: "Save..."
   translation: "Simpan ..."
-  index: 278
+  index: 281
 }
 str {
   original: "Saving File %s."
   translation: "Menyimpan file %s."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 41
-  index: 279
+  index: 282
 }
 str {
   original: "Select"
   translation: "Memilih"
-  index: 280
-}
-str {
-  original: "Select A File Containing Keyboard Command Mappings"
-  translation: "Pilih File Mengandung pemetaan Keyboard Command"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 48
-  index: 281
-}
-str {
-  original: "Select A File Containing MIDI Command Mappings"
-  translation: "Pilih File Mengandung pemetaan Komando MIDI"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 49
-  index: 282
-}
-str {
-  original: "Select A File To Save Exported Keyboard Command Mappings"
-  translation: "Pilih File Sebuah Untuk Simpan pemetaan Keyboard Command Ekspor"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 45
   index: 283
 }
 str {
+  original: "Select A File Containing Keyboard Command Mappings"
+  translation: "Pilih Sebuah File Mengandung Pemetaan Keyboard Command"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 48
+  index: 284
+}
+str {
+  original: "Select A File Containing MIDI Command Mappings"
+  translation: "Pilih Sebuah File Mengandung Pemetaan Command MIDI"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 49
+  index: 285
+}
+str {
+  original: "Select A File To Save Exported Keyboard Command Mappings"
+  translation: "Pilih File A Untuk Simpan Pemetaan Keyboard Command Diekspor"
+  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
+  line: 45
+  index: 286
+}
+str {
   original: "Select A File To Save Exported MIDI Command Mappings"
-  translation: "Pilih File Sebuah Untuk Simpan Ekspor pemetaan Komando MIDI"
+  translation: "Pilih File A Untuk Simpan Ekspor Pemetaan Command MIDI"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 46
-  index: 284
+  index: 287
 }
 str {
   original: "Select A File To Save Exported Settings"
   translation: "Pilih Sebuah File Untuk Simpan Pengaturan Ekspor"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 44
-  index: 285
+  index: 288
 }
 str {
   original: "Select A Zip File Containing Exported Settings"
-  translation: "Pilih File Zip Berisi Pengaturan Ekspor"
+  translation: "Pilih Sebuah File Zip Mengandung Pengaturan Ekspor"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 47
-  index: 286
+  index: 289
 }
 str {
   original: "Select All"
   translation: "Pilih Semua"
-  index: 287
+  index: 290
 }
 str {
   original: "Select all of the file"
   translation: "Pilih semua file"
-  index: 288
+  index: 291
 }
 str {
   original: "Select Current Segment"
   translation: "Pilih Segmen Lancar"
-  index: 289
+  index: 292
 }
 str {
   original: "Select Current Segment Only"
-  translation: "Pilih Segmen Sekarang Hanya"
-  index: 290
+  translation: "Pilih Segmen Lancar Hanya"
+  index: 293
 }
 str {
   original: "Select First Segment"
   translation: "Pilih Segmen Pertama"
-  index: 291
+  index: 294
 }
 str {
   original: "Select First Segment Only"
   translation: "Pilih Segmen Pertama Hanya"
-  index: 292
+  index: 295
 }
 str {
   original: "Select Last Segment"
   translation: "Pilih Segmen terakhir"
-  index: 293
+  index: 296
 }
 str {
   original: "Select Last Segment Only"
   translation: "Pilih Segmen terakhir Hanya"
-  index: 294
+  index: 297
 }
 str {
   original: "Select Next Segment"
-  translation: "Pilih Segmen Berikutnya"
-  index: 295
+  translation: "Pilih Segmen Selanjutnya"
+  index: 298
 }
 str {
   original: "Select Next Segment Only"
   translation: "Pilih Segmen Berikutnya Hanya"
-  index: 296
+  index: 299
 }
 str {
   original: "Select None"
   translation: "Pilih Kosong"
-  index: 297
+  index: 300
 }
 str {
   original: "Select none of the file"
-  translation: "Pilih satu pun dari file"
-  index: 298
-}
-str {
-  original: "Select Only..."
-  translation: "Pilih Hanya ..."
-  index: 299
+  translation: "Pilih ada file"
+  index: 301
 }
 str {
   original: "Select Previous Segment"
   translation: "Pilih Segmen Sebelumnya"
-  index: 300
+  index: 302
 }
 str {
   original: "Select Previous Segment Only"
   translation: "Pilih Segmen Sebelumnya Hanya"
-  index: 301
+  index: 303
 }
 str {
   original: "Select Segment 1"
   translation: "Pilih Segmen 1"
-  index: 302
+  index: 304
 }
 str {
   original: "Select Segment 1 Only"
   translation: "Pilih Segmen 1 Hanya"
-  index: 303
+  index: 305
 }
 str {
   original: "Select Segment 10"
   translation: "Pilih Segmen 10"
-  index: 304
+  index: 306
 }
 str {
   original: "Select Segment 10 Only"
   translation: "Pilih Segmen 10 Hanya"
-  index: 305
+  index: 307
 }
 str {
   original: "Select Segment 2"
   translation: "Pilih Segmen 2"
-  index: 306
+  index: 308
 }
 str {
   original: "Select Segment 2 Only"
   translation: "Pilih Segmen 2 Hanya"
-  index: 307
+  index: 309
 }
 str {
   original: "Select Segment 3"
   translation: "Pilih Segmen 3"
-  index: 308
+  index: 310
 }
 str {
   original: "Select Segment 3 Only"
   translation: "Pilih Segmen 3 Hanya"
-  index: 309
+  index: 311
 }
 str {
   original: "Select Segment 4"
   translation: "Pilih Segmen 4"
-  index: 310
+  index: 312
 }
 str {
   original: "Select Segment 4 Only"
   translation: "Pilih Segmen 4 Hanya"
-  index: 311
+  index: 313
 }
 str {
   original: "Select Segment 5"
   translation: "Pilih Segmen 5"
-  index: 312
+  index: 314
 }
 str {
   original: "Select Segment 5 Only"
   translation: "Pilih Segmen 5 Hanya"
-  index: 313
+  index: 315
 }
 str {
   original: "Select Segment 6"
   translation: "Pilih Segmen 6"
-  index: 314
+  index: 316
 }
 str {
   original: "Select Segment 6 Only"
   translation: "Pilih Segmen 6 Hanya"
-  index: 315
+  index: 317
 }
 str {
   original: "Select Segment 7"
   translation: "Pilih Segmen 7"
-  index: 316
+  index: 318
 }
 str {
   original: "Select Segment 7 Only"
   translation: "Pilih Segmen 7 Hanya"
-  index: 317
+  index: 319
 }
 str {
   original: "Select Segment 8"
   translation: "Pilih Segmen 8"
-  index: 318
+  index: 320
 }
 str {
   original: "Select Segment 8 Only"
   translation: "Pilih Segmen 8 Hanya"
-  index: 319
+  index: 321
 }
 str {
   original: "Select Segment 9"
   translation: "Pilih Segmen 9"
-  index: 320
+  index: 322
 }
 str {
   original: "Select Segment 9 Only"
   translation: "Pilih Segmen 9 Hanya"
-  index: 321
-}
-str {
-  original: "Select..."
-  translation: "Pilih ..."
-  index: 322
-}
-str {
-  original: "Set Audio Preferences"
-  translation: "Set Preferences Audio"
-  file: "rec/gui/audio/SetupPage.cpp"
-  line: 11
   index: 323
 }
 str {
-  original: "Set Current Time Mode: Clicking in the waveform sets the current time."
-  translation: "Mengatur Mode Current Time: Mengklik dalam bentuk gelombang menetapkan waktu saat ini."
+  original: "semitones"
+  translation: "semitone"
   index: 324
 }
 str {
-  original: "Set Time Mode"
-  translation: "Mengatur Mode Waktu"
+  original: "Set Audio Preferences"
+  translation: "Mengatur Preferensi Audio"
+  file: "rec/gui/audio/SetupPage.cpp"
+  line: 11
   index: 325
+}
+str {
+  original: "Set Current Time Mode: Clicking in the waveform sets the current time."
+  translation: "Mengatur mode Current Time: Mengklik dalam bentuk gelombang menetapkan waktu saat ini."
+  index: 326
+}
+str {
+  original: "Set Time Mode"
+  translation: "Set Modus Waktu"
+  index: 327
 }
 str {
   original: "Show About Window At Startup"
   translation: "Tampilkan Tentang Jendela Pada Startup"
-  index: 326
+  index: 328
 }
 str {
   original: "Show Advanced Menus"
   translation: "Tampilkan Menu Lanjutan"
-  index: 327
-}
-str {
-  original: "Show draggable labels for the loop points on the waveform display."
-  translation: "Tampilkan label draggable untuk poin loop pada tampilan bentuk gelombang."
-  index: 328
-}
-str {
-  original: "Show Grid Times At Top"
-  translation: "Tampilkan Times, Grid Pada Top"
   index: 329
 }
 str {
-  original: "Show help in help pane."
-  translation: "Tampilkan membantu dalam panel bantuan."
+  original: "Show draggable labels for the loop points on the waveform display."
+  translation: "Tampilkan label draggable untuk titik lingkaran pada tampilan bentuk gelombang."
   index: 330
 }
 str {
-  original: "Show Loop Point Labels"
-  translation: "Tampilkan Label loop Titik"
+  original: "Show Grid Times At Top"
+  translation: "Tampilkan Waktu Grid Pada Top"
   index: 331
 }
 str {
-  original: "Show Loop Point Labels At Top"
-  translation: "Tampilkan Label Ulangi Titik Pada Top"
+  original: "Show help in help pane."
+  translation: "Tampilkan membantu dalam pane bantuan."
   index: 332
+}
+str {
+  original: "Show Loop Point Labels"
+  translation: "Tampilkan Label The Loop Titik"
+  index: 333
+}
+str {
+  original: "Show Loop Point Labels At Top"
+  translation: "Tampilkan Label loop Titik Pada Top"
+  index: 334
 }
 str {
   original: "Show Loop Point Selection Buttons"
   translation: "Tampilkan Tombol Titik loop Seleksi"
-  index: 333
+  index: 335
 }
 str {
   original: "Show Master Tune Slider"
   translation: "Tampilkan Slider Guru Tune"
-  index: 334
-}
-str {
-  original: "Show Pre-Fader Levels"
-  translation: "Tampilkan Pra-Fader Tingkat"
-  index: 335
-}
-str {
-  original: "Show Stacked Waveform"
-  translation: "Tampilkan Stacked Bentuk gelombang"
   index: 336
 }
 str {
-  original: "Show the grid times for the grid at the top of the waveform display."
-  translation: "Tampilkan kali grid untuk jaringan di bagian atas tampilan bentuk gelombang."
+  original: "Show Pre-Fader Levels"
+  translation: "Tampilkan Pre-Fader Tingkat"
   index: 337
+}
+str {
+  original: "Show Stacked Waveform"
+  translation: "Tampilkan Stacked Gelombang"
+  index: 338
+}
+str {
+  original: "Show the grid times for the grid at the top of the waveform display."
+  translation: "Tampilkan kali grid untuk grid di bagian atas layar gelombang."
+  index: 339
 }
 str {
   original: "Show the loop point labels at the top of the waveform display."
   translation: "Tampilkan label lingkaran titik di bagian atas tampilan bentuk gelombang."
-  index: 338
+  index: 340
 }
 str {
   original: "Show the Master Tune Slider in the Transform Panel."
-  translation: "Tampilkan Slider Guru Tune pada Panel Transform."
-  index: 339
+  translation: "Tampilkan Slider Guru Tune dalam Panel Transform."
+  index: 341
 }
 str {
   original: "Show Time Gridlines"
   translation: "Tampilkan Gridlines Waktu"
-  index: 340
+  index: 342
 }
 str {
   original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
-  translation: "Maaf, tidak dapat memuat manual 8 pengguna SlowGold di"
+  translation: "Maaf, tidak bisa memuat 8 manual pengguna SlowGold di"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 30
-  index: 341
+  index: 343
 }
 str {
   original: "Sorry, file %s is an .m4a file and we cano\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
   translation: "Maaf, file %s adalah m4a file dan kita belum cano\'t membaca file-file pada Windows:. Silahkan mengubahnya menjadi mp3 menggunakan iTunes."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 37
-  index: 342
-}
-str {
-  original: "Sorry, the file you tried to %s has a length of less than one second."
-  translation: "Maaf, file Anda mencoba untuk %s memiliki panjang kurang dari satu detik."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 21
-  index: 343
-}
-str {
-  original: "Sorry, the file you tried to open, %s has a length of zero."
-  translation: "Maaf, file Anda mencoba untuk membuka, %s memiliki panjang nol."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 46
   index: 344
 }
 str {
-  original: "Sorry, the program couldn\'t open your file %s."
-  translation: "Maaf, program ini tidak dapat membuka file %s Anda."
+  original: "Sorry, the file you tried to %s has a length of less than one second."
+  translation: "Maaf, file yang Anda mencoba untuk %s memiliki panjang kurang dari satu detik."
   file: "rec/music/CreateMusicFileReader.cpp"
-  line: 40
+  line: 21
   index: 345
 }
 str {
+  original: "Sorry, the file you tried to open, %s has a length of zero."
+  translation: "Maaf, file yang Anda mencoba untuk membuka, %s memiliki panjang nol."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 46
+  index: 346
+}
+str {
+  original: "Sorry, the program couldn\'t open your file %s."
+  translation: "Maaf, program ini tidak dapat membuka berkas %s Anda."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 40
+  index: 347
+}
+str {
   original: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
-  translation: "Maaf, ada kesalahan kliring pengaturan. Silakan laporkan hal ini ke support@worldwidewoodshed.com."
+  translation: "Maaf, ada kesalahan kliring pengaturan. Silakan laporkan hal ini kepada support@worldwidewoodshed.com."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 70
-  index: 346
+  index: 348
 }
 str {
   original: "Sorry, there wasn\'t enough memory for the file."
   translation: "Maaf, tidak ada cukup memori untuk file."
   file: "rec/slow/CurrentFile.cpp"
   line: 37
-  index: 347
+  index: 349
 }
 str {
   original: "Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted."
   translation: "Maaf, kami tidak bisa menemukan %s file. Mungkin Anda dihapus, atau mungkin itu pada drive yang saat ini tidak dipasang."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 32
-  index: 348
+  index: 350
 }
 str {
   original: "Sorry, we were unable to create a support request."
   translation: "Maaf, kami tidak dapat membuat permintaan dukungan."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 32
-  index: 349
+  index: 351
 }
 str {
   original: "Spanish"
   translation: "Spanyol"
-  index: 350
+  index: 352
 }
 str {
   original: "Start or pause"
-  translation: "Start atau jeda"
-  index: 351
+  translation: "Mulai atau jeda"
+  index: 353
 }
 str {
   original: "Start/stop"
   translation: "Start / stop"
-  index: 352
+  index: 354
 }
 str {
   original: "Start/Stop Button: Toggle between pause and play."
   translation: "Start / Stop Button: Beralih di antara jeda dan bermain."
-  index: 353
+  index: 355
 }
 str {
   original: "Stereo"
   translation: "Stereo"
-  index: 354
+  index: 356
 }
 str {
   original: "Stereo Processing Menu:  Choose between the original stereo, just the left channel, just the right channel, or a mono mix of both channels."
-  translation: "Buka Menu Pengolahan Stereo: Pilih antara stereo asli, hanya saluran kiri, hanya saluran yang tepat, atau campuran mono kedua saluran."
-  index: 355
+  translation: "Menu Pengolahan stereo: Pilih antara stereo asli, hanya saluran kiri, hanya saluran yang tepat, atau campuran dari kedua saluran mono."
+  index: 357
 }
 str {
   original: "Stretch"
   translation: "Meregang"
-  index: 356
+  index: 358
 }
 str {
   original: "Support Request: %s"
   translation: "Permintaan Dukungan: %s"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 39
-  index: 357
+  index: 359
 }
 str {
   original: "sysex"
-  translation: "sysex"
+  translation: "SysEx"
   file: "rec/command/map/MidiName.cpp"
   line: 14
-  index: 358
+  index: 360
 }
 str {
   original: "The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave."
-  translation: "Ekstensi file harus. Aiff, AIF,.. Flac, ogg,.. Wav atau. Gelombang."
+  translation: "Ekstensi file harus. Aiff, aif,.. Flac, ogg,.. Wav atau. Gelombang."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 51
-  index: 359
+  index: 361
 }
 str {
   original: "The full path was: %s"
   translation: "Path lengkap adalah: %s"
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 33
-  index: 360
+  index: 362
 }
 str {
   original: "There was an error saving your file %s."
-  translation: "Terjadi kesalahan saat menyimpan file %s Anda."
+  translation: "Ada kesalahan menyimpan file %s Anda."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 39
-  index: 361
+  index: 363
 }
 str {
   original: "This key is already assigned to the command"
   translation: "Kunci ini sudah ditugaskan untuk perintah"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 10
-  index: 362
+  index: 364
 }
 str {
   original: "Time"
   translation: "Waktu"
-  index: 363
+  index: 365
 }
 str {
   original: "Time Display: Shows the current playback time in minutes, seconds and millseconds."
-  translation: "Waktu Tampilan: Menampilkan waktu pemutaran saat ini dalam menit, detik dan millseconds."
-  index: 364
+  translation: "Waktu Tampilan: Menunjukkan waktu pemutaran saat ini di menit, detik dan millseconds."
+  index: 366
 }
 str {
   original: "Toggle audio dim"
   translation: "Beralih audio yang redup"
-  index: 365
+  index: 367
 }
 str {
   original: "Toggle audio dim on and off."
   translation: "Beralih pada redup audio dan off."
-  index: 366
+  index: 368
 }
 str {
   original: "Toggle audio mute"
-  translation: "Beralih audio yang bisu"
-  index: 367
+  translation: "Beralih bisu"
+  index: 369
 }
 str {
   original: "Toggle audio mute on and off."
-  translation: "Audio yang beralih menonaktifkan dan mematikan."
-  index: 368
+  translation: "Audio yang beralih bisu dan mematikan."
+  index: 370
 }
 str {
   original: "Toggle between stretched and real-time playback."
   translation: "Beralih antara pemutaran membentang dan real-time."
-  index: 369
+  index: 371
 }
 str {
   original: "Toggle Current Segment Selection"
   translation: "Beralih Seleksi Segmen Lancar"
-  index: 370
+  index: 372
 }
 str {
   original: "Toggle display of the time grid."
   translation: "Beralih tampilan grid waktu."
-  index: 371
+  index: 373
 }
 str {
   original: "Toggle First Segment Selection"
   translation: "Beralih Seleksi Segmen Pertama"
-  index: 372
+  index: 374
 }
 str {
   original: "Toggle Last Segment Selection"
-  translation: "Beralih Seleksi Segmen terakhir"
-  index: 373
+  translation: "Beralih Segmen Seleksi terakhir"
+  index: 375
 }
 str {
   original: "Toggle level display between pre- and post-fader."
   translation: "Tingkat beralih tampilan antara pra-dan pasca-fader."
-  index: 374
+  index: 376
 }
 str {
   original: "Toggle Next Segment Selection"
-  translation: "Beralih Seleksi Segmen Berikutnya"
-  index: 375
+  translation: "Beralih Segmen Seleksi Selanjutnya"
+  index: 377
 }
 str {
   original: "Toggle parallel/stacked waveform display."
-  translation: "Beralih paralel / ditumpuk bentuk gelombang tampilan."
-  index: 376
+  translation: "Beralih paralel / ditumpuk gelombang layar."
+  index: 378
 }
 str {
   original: "Toggle pitch, time and stereo transforms of the sound."
   translation: "Lapangan waktu, beralih dan stereo mengubah suara."
-  index: 377
+  index: 379
 }
 str {
   original: "Toggle Previous Segment Selection"
   translation: "Beralih Seleksi Segmen Sebelumnya"
-  index: 378
+  index: 380
 }
 str {
   original: "Toggle Segment Selection 1"
   translation: "Segmen beralih Seleksi 1"
-  index: 379
+  index: 381
 }
 str {
   original: "Toggle Segment Selection 10"
   translation: "Segmen beralih Seleksi 10"
-  index: 380
+  index: 382
 }
 str {
   original: "Toggle Segment Selection 2"
   translation: "Segmen beralih Seleksi 2"
-  index: 381
+  index: 383
 }
 str {
   original: "Toggle Segment Selection 3"
   translation: "Segmen beralih Seleksi 3"
-  index: 382
+  index: 384
 }
 str {
   original: "Toggle Segment Selection 4"
   translation: "Segmen beralih Seleksi 4"
-  index: 383
+  index: 385
 }
 str {
   original: "Toggle Segment Selection 5"
   translation: "Segmen beralih Seleksi 5"
-  index: 384
+  index: 386
 }
 str {
   original: "Toggle Segment Selection 6"
   translation: "Segmen beralih Seleksi 6"
-  index: 385
+  index: 387
 }
 str {
   original: "Toggle Segment Selection 7"
   translation: "Segmen beralih Seleksi 7"
-  index: 386
+  index: 388
 }
 str {
   original: "Toggle Segment Selection 8"
   translation: "Segmen beralih Seleksi 8"
-  index: 387
+  index: 389
 }
 str {
   original: "Toggle Segment Selection 9"
   translation: "Segmen beralih Seleksi 9"
-  index: 388
+  index: 390
 }
 str {
   original: "Toggle selection between the current segment and the whole song."
   translation: "Mengganti pilihan antara segmen saat ini dan seluruh lagu."
-  index: 389
+  index: 391
 }
 str {
   original: "Toggle show/hide of advanced menus."
-  translation: "Beralih menampilkan / menyembunyikan menu maju."
-  index: 390
+  translation: "Beralih menampilkan / menyembunyikan menu canggih."
+  index: 392
 }
 str {
   original: "Toggle Start/Stop"
   translation: "Beralih Start / Stop"
-  index: 391
-}
-str {
-  original: "Toggle whether we show the About Window every time we start up."
-  translation: "Beralih apakah kita menunjukkan Window Tentang setiap kali kita memulai."
-  index: 392
-}
-str {
-  original: "Toggle..."
-  translation: "Beralih ..."
   index: 393
 }
 str {
-  original: "Track"
-  translation: "Melacak"
+  original: "Toggle whether we show the About Window every time we start up."
+  translation: "Beralih apakah kita menunjukkan Jendela Tentang setiap kali kita start up."
   index: 394
 }
 str {
-  original: "Track Notes: You can enter your notes here."
-  translation: "Melacak Catatan: Anda dapat memasukkan catatan Anda di sini."
+  original: "Track"
+  translation: "Jalur"
   index: 395
 }
 str {
-  original: "Track Number: The album track number for this track"
-  translation: "Melacak Nomor: Jumlah lagu album untuk lagu ini"
+  original: "Track Notes: You can enter your notes here."
+  translation: "Lacak Catatan: Anda dapat memasukkan catatan Anda di sini."
   index: 396
 }
 str {
-  original: "Track tags: Tags that categorize this track."
-  translation: "Tag Track: Tags yang mengkategorikan trek ini."
+  original: "Track Number: The album track number for this track"
+  translation: "Lacak Nomor: Nomor track album untuk lagu ini"
   index: 397
 }
 str {
-  original: "Track Title: The name of this track."
-  translation: "Melacak Judul: Nama trek ini."
+  original: "Track tags: Tags that categorize this track."
+  translation: "Tag track: Tags yang mengkategorikan lagu ini."
   index: 398
 }
 str {
-  original: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
-  translation: "Transform Aktifkan Tombol: Menonaktifkan atau mengaktifkan transformasi semua suara: pitch, waktu dan pengolahan stereo tapi tidak menguasai tunen."
+  original: "Track Title: The name of this track."
+  translation: "Lacak Judul: Nama trek ini."
   index: 399
+}
+str {
+  original: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
+  translation: "Transform Aktifkan Tombol: Nonaktifkan atau mengaktifkan transformasi semua suara: pitch, waktu dan pengolahan stereo tetapi tidak menguasai tunen."
+  index: 400
 }
 str {
   original: "Transport"
   translation: "Transportasi"
-  index: 400
+  index: 401
 }
 str {
   original: "Tried to read CD, id=%s, names=%s"
-  translation: "Mencoba untuk membaca CD, id = %s, %s nama ="
+  translation: "Mencoba untuk membaca CD, id = %s, nama = %s"
   file: "rec/util/cd/CDReader.cpp"
   line: 14
-  index: 401
+  index: 402
 }
 str {
   original: "Tune"
   translation: "Lagu"
-  index: 402
+  index: 403
 }
 str {
   original: "Unable To Clear Settings"
-  translation: "Tidak Untuk Batal Pengaturan"
+  translation: "Tidak Untuk Bersihkan Pengaturan"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 67
-  index: 403
+  index: 404
 }
 str {
   original: "Undo"
   translation: "Merusak"
-  index: 404
+  index: 405
 }
 str {
   original: "Undoes a previous command."
-  translation: "Membatalkan perintah sebelumnya."
-  index: 405
+  translation: "Undoes perintah sebelumnya."
+  index: 406
 }
 str {
   original: "Unknown CD: ID = 0x"
   translation: "Diketahui CD: ID = 0x"
   file: "rec/widget/tree/CD.cpp"
   line: 13
-  index: 406
-}
-str {
-  original: "Unselect Current Segment"
-  translation: "Sekarang hapus Segmen"
   index: 407
 }
 str {
-  original: "Unselect everything selected and vice-versa."
-  translation: "Semuanya batalkan dipilih dan sebaliknya."
+  original: "Unselect Current Segment"
+  translation: "Unselect Saat Segmen"
   index: 408
+}
+str {
+  original: "Unselect everything selected and vice-versa."
+  translation: "Semuanya unselect dipilih dan sebaliknya."
+  index: 409
 }
 str {
   original: "Unselect First Segment"
   translation: "Unselect Pertama Segmen"
-  index: 409
+  index: 410
 }
 str {
   original: "Unselect Last Segment"
   translation: "Unselect terakhir Segmen"
-  index: 410
-}
-str {
-  original: "Unselect Next Segment"
-  translation: "Unselect Berikutnya Segmen"
   index: 411
 }
 str {
-  original: "Unselect Previous Segment"
-  translation: "Batalkan Sebelumnya Segmen"
+  original: "Unselect Next Segment"
+  translation: "Unselect Selanjutnya Segmen"
   index: 412
 }
 str {
-  original: "Unselect Segment 1"
-  translation: "Unselect Segmen 1"
+  original: "Unselect Previous Segment"
+  translation: "Unselect Sebelumnya Segmen"
   index: 413
 }
 str {
-  original: "Unselect Segment 10"
-  translation: "Unselect Segmen 10"
+  original: "Unselect Segment 1"
+  translation: "Batalkan Segmen 1"
   index: 414
 }
 str {
-  original: "Unselect Segment 2"
-  translation: "Unselect Segmen 2"
+  original: "Unselect Segment 10"
+  translation: "Batalkan Segmen 10"
   index: 415
 }
 str {
-  original: "Unselect Segment 3"
-  translation: "Unselect Segmen 3"
+  original: "Unselect Segment 2"
+  translation: "Batalkan Segmen 2"
   index: 416
 }
 str {
-  original: "Unselect Segment 4"
-  translation: "Unselect Segmen 4"
+  original: "Unselect Segment 3"
+  translation: "Batalkan Segmen 3"
   index: 417
 }
 str {
-  original: "Unselect Segment 5"
-  translation: "Unselect Segmen 5"
+  original: "Unselect Segment 4"
+  translation: "Batalkan Segmen 4"
   index: 418
 }
 str {
-  original: "Unselect Segment 6"
-  translation: "Unselect Segmen 6"
+  original: "Unselect Segment 5"
+  translation: "Batalkan Segmen 5"
   index: 419
 }
 str {
-  original: "Unselect Segment 7"
-  translation: "Unselect Segmen 7"
+  original: "Unselect Segment 6"
+  translation: "Batalkan Segmen 6"
   index: 420
 }
 str {
-  original: "Unselect Segment 8"
-  translation: "Unselect Segmen 8"
+  original: "Unselect Segment 7"
+  translation: "Batalkan Segmen 7"
   index: 421
 }
 str {
-  original: "Unselect Segment 9"
-  translation: "Unselect Segmen 9"
+  original: "Unselect Segment 8"
+  translation: "Batalkan Segmen 8"
   index: 422
 }
 str {
-  original: "Unselect..."
-  translation: "Hapus ..."
+  original: "Unselect Segment 9"
+  translation: "Batalkan Segmen 9"
   index: 423
 }
 str {
@@ -2315,150 +2315,155 @@ str {
   index: 426
 }
 str {
+  original: "Volumen"
+  translation: "Volumen"
+  index: 427
+}
+str {
   original: "Waiting for a MIDI note, program change or controller..."
   translation: "Menunggu catatan MIDI, program perubahan atau controller ..."
   file: "rec/command/map/MidiCommandMapEditor.cpp"
   line: 14
-  index: 427
+  index: 428
 }
 str {
   original: "WAV"
   translation: "WAV"
-  index: 428
+  index: 429
 }
 str {
   original: "Waveform Window: You can drag files from your desktop or your music player here. If your mouse has a wheel, use it to zoom the waveform."
-  translation: "Bentuk gelombang Jendela: Anda bisa menggeret file dari desktop atau pemutar musik Anda di sini. Jika mouse dilengkapi roda, menggunakannya untuk memperbesar bentuk gelombang."
-  index: 429
+  translation: "Bentuk gelombang Jendela: Anda dapat menarik file dari desktop atau pemutar musik Anda di sini. Jika mouse dilengkapi roda, menggunakannya untuk memperbesar gelombang."
+  index: 430
 }
 str {
   original: "We Can\'t Read .m4a Files On Windows"
   translation: "Kita tidak bisa Baca File m4a Pada Windows."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 34
-  index: 430
-}
-str {
-  original: "What\'s New In This Release?"
-  translation: "Apa yang Baru Dalam rilis ini?"
   index: 431
 }
 str {
+  original: "What\'s New In This Release?"
+  translation: "Apa yang Baru di Release ini?"
+  index: 432
+}
+str {
   original: "Would you like to download it?"
-  translation: "Apakah Anda ingin mendownloadnya?"
+  translation: "Apakah Anda ingin men-download itu?"
   file: "rec/app/DownloadVersion.cpp"
   line: 23
-  index: 432
+  index: 433
 }
 str {
   original: "Year"
   translation: "Tahun"
-  index: 433
+  index: 434
 }
 str {
   original: "You can throw the file away once your email is sent."
-  translation: "Anda dapat membuang file jauh sekali email Anda telah dikirim."
+  translation: "Anda dapat membuang file hilang setelah email Anda dikirim."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 38
-  index: 434
+  index: 435
 }
 str {
   original: "You cannot overwrite the current file."
   translation: "Anda tidak dapat menimpa file saat ini."
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 52
-  index: 435
-}
-str {
-  original: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
-  translation: "Anda ingin menghapus * semua * pengaturan, dan berhenti SlowGold. Apakah hal ini?"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 59
   index: 436
 }
 str {
+  original: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
+  translation: "Anda ingin menghapus semua * * pengaturan, dan berhenti SlowGold. Apakah hal ini?"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 59
+  index: 437
+}
+str {
   original: "You want to clear settings for this track only, and quit the program.  Is this OK?"
-  translation: "Anda ingin menghapus pengaturan untuk trek ini saja, dan berhenti program. Apakah hal ini?"
+  translation: "Anda ingin menghapus pengaturan untuk jalur ini saja, dan keluar dari program. Apakah hal ini?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
   line: 65
-  index: 437
+  index: 438
 }
 str {
   original: "Your File Was Empty."
   translation: "File Anda Apakah Kosong."
   file: "rec/music/CreateMusicFileReader.cpp"
   line: 44
-  index: 438
-}
-str {
-  original: "Your File Was Too Small."
-  translation: "File Anda Apakah Terlalu Kecil."
-  file: "rec/music/CreateMusicFileReader.cpp"
-  line: 19
   index: 439
 }
 str {
-  original: "Your Version Of SlowGold Is Up-To-Date"
-  translation: "Versi Anda Dari SlowGold Apakah Up-To-Date"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 45
+  original: "Your File Was Too Small."
+  translation: "Berkas Anda Apakah Terlalu Kecil."
+  file: "rec/music/CreateMusicFileReader.cpp"
+  line: 19
   index: 440
 }
 str {
-  original: "Your version of SlowGold, %s, is up-to-date."
-  translation: "Versi SlowGold, %s, up-to-date."
+  original: "Your Version Of SlowGold Is Up-To-Date"
+  translation: "Versi Anda Of SlowGold Pengelola Up-To-Date"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 46
+  line: 45
   index: 441
 }
 str {
-  original: "Zoom In Mode"
-  translation: "Zoom Mode"
+  original: "Your version of SlowGold, %s, is up-to-date."
+  translation: "Versi SlowGold, s%, adalah up-to-date."
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 46
   index: 442
 }
 str {
-  original: "Zoom Mode: Clicking on the waveform zooms in on that point."
-  translation: "Zoom Mode: Mengklik membesarkan gelombang dalam pada saat itu."
+  original: "Zoom In Mode"
+  translation: "Zoom Dalam Mode"
   index: 443
+}
+str {
+  original: "Zoom Mode: Clicking on the waveform zooms in on that point."
+  translation: "Zoom Mode: Mengklik pada membesarkan gelombang dalam pada saat itu."
+  index: 444
 }
 str {
   original: "Zoom out"
   translation: "Perkecil"
-  index: 444
+  index: 445
 }
 str {
   original: "Zoom out as far as possible."
   translation: "Perkecil sejauh mungkin."
-  index: 445
-}
-str {
-  original: "Zoom Out Completely"
-  translation: "Zoom Out Sepenuhnya"
   index: 446
 }
 str {
-  original: "Zoom Out Full Button: Zoom the waveform all the way out."
-  translation: "Tombol Zoom Out Lengkap: Zoom gelombang semua jalan keluar."
+  original: "Zoom Out Completely"
+  translation: "Zoom Out Completely"
   index: 447
+}
+str {
+  original: "Zoom Out Full Button: Zoom the waveform all the way out."
+  translation: "Zoom Out Tombol Kendali: Zoom gelombang sepanjang jalan keluar."
+  index: 448
 }
 str {
   original: "Zoom out."
   translation: "Perkecil."
-  index: 448
+  index: 449
 }
 str {
   original: "Zoom To Selection"
   translation: "Zoom Untuk Seleksi"
-  index: 449
+  index: 450
 }
 str {
   original: "Zoom To Selection Button: Zoom in or out so the whole selection fits the waveform."
   translation: "Zoom Untuk Tombol Seleksi: Memperbesar atau memperkecil tampilan sehingga seluruh pilihan sesuai bentuk gelombang."
-  index: 450
+  index: 451
 }
 str {
   original: "Zoom to selection."
-  translation: "Zoom untuk seleksi."
-  index: 451
+  translation: "Zoom seleksi."
+  index: 452
 }
-max_index: 451
+max_index: 452

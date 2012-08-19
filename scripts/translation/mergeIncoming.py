@@ -15,7 +15,7 @@ def writeRemoved(old, new):
 
   for key, value in old.dict.iteritems():
     if key not in new.dict:
-      removed.str.add.CopyFrom(value)
+      removed.str.add().CopyFrom(value)
 
   translate.ProtoFile(prefix='removed-').write(removed)
 
