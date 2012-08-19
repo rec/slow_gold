@@ -12,17 +12,28 @@ using namespace rec::audio::stretch;
 using namespace rec::audio::transport;
 using namespace rec::widget::waveform;
 
-Player::Player(Device* d) : device_(d),
-                            timer_(new Timer(NULL)),
-                            selection_(new Selection(timer_)),
-                            stretchy_(new Stretchy(selection_,
-                                                   d->getSampleRate())),
-                            stereo_(new Stereo(stretchy_)) {
+Player::Player(Device* d) : device_(d) {}
+
+void Player::init() {
+  doLog("Player::init\n");
+  doLog("Timer::init\n");
+  timer_ = new Timer(NULL);
+  doLog("Selection::init\n");
+  selection_ = new Selection(timer_);
+  doLog("Stretchy::init\n");
+  stretchy_ = new Stretchy(selection_, device_->getSampleRate());
+  doLog("Stereo::init\n");
+  stereo_ = new Stereo(stretchy_);
+  doLog("level setting\n");
   level_.setSource(stereo_);
+  doLog("adding callback\n");
   device_->manager_.addAudioCallback(&player_);
+  doLog("Setting source\n");
   transportSource_.setSource(&level_);
+  doLog("setting transport source\n");
   player_.setSource(&transportSource_);
 }
+
 
 Player::~Player() {
   transportSource_.setSource(NULL);

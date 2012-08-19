@@ -78,12 +78,9 @@ static Instance* INSTANCE = NULL;
 }  // namespace
 
 Instance::Instance(app::Window* window) : window_(window) {
-  doLog("Instance::Instance\n");
-
   CHECK_DDD(51, 2193, int64, int32);
   DCHECK(!INSTANCE);
   INSTANCE = this;
-  doLog("Instance::Instance done!\n");
 }
 
 // static
@@ -93,20 +90,16 @@ Instance* Instance::getInstance() { return INSTANCE; };
 const VirtualFile Instance::getInstanceFile() { return INSTANCE->file(); };
 
 void Instance::init() {
-  doLog("window init\n");
   window_->init();
-
-  doLog("menus init\n");
   menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
-
-  doLog("device init\n");
   device_.reset(new audio::Device);
-
-  doLog("CurrentFile\n");
   currentFile_.reset(new CurrentFile(this));
 
   doLog("Player\n");
   player_.reset(new audio::source::Player(device_.get()));
+
+  doLog("Player initialize\n");
+  player_->init();
 
   doLog("Components\n");
   components_.reset(new Components(this));

@@ -15,7 +15,6 @@ GenericApplication::GenericApplication(ApplicationFunction i,
                                        ApplicationFunction s)
     : initializer_(i), shutdown_(s), disabled_(false),
       autoCheckForUpdates_(true) {
-  doLog("GenericApplication::GenericApplication\n");
 }
 
 GenericApplication::~GenericApplication() {}
@@ -25,12 +24,9 @@ void GenericApplication::initialise(const String&) {
 
   setApplicationName(name());
 
-  doLog("initializing mpg123\n");
   audio::format::mpg123::initializeOnce();
-  doLog("running initializer\n");
   if (initializer_)
     initializer_(this);
-  doLog("creating window\n");
   window_.reset(createWindow());
   doLog("running window initializer\n");
   window_->initialise();

@@ -37,6 +37,8 @@ class Player : public DataListener<Gain>,
                public juce::ChangeListener {
  public:
   Player(Device* d);
+
+  void init();
   virtual ~Player();
 
   void setState(transport::State state);
