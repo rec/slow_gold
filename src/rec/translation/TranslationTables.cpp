@@ -66,15 +66,16 @@ Language getLanguage() {
 string translate(const TranslatedString& original) {
   Lock l(lock());
   Language lang = getLanguage();
-  if (lang != app::AppSettings::EN) {
-    if (const StringMap* map = translations().maps_[lang]) {
-      StringMap::const_iterator i = map->find(makeHash(original));
-      if (i != map->end())
-        return i->second;
-    }
+  if (lang == app::AppSettings::EN || lang == app::AppSettings::NONE)
+    return original.original();
+
+  if (const StringMap* map = translations().maps_[lang]) {
+    StringMap::const_iterator i = map->find(makeHash(original));
+    if (i != map->end())
+      return i->second;
   }
 
-  return original.original();
+  return "***";
 }
 
 }  // namespace translation

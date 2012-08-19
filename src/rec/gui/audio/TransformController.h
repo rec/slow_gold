@@ -18,7 +18,8 @@ namespace audio {
 class TransformController : public Layout,
                             public juce::ComboBox::Listener,
                             public data::DataListener<rec::audio::source::StereoProto>,
-                            public data::DataListener<rec::audio::stretch::Stretch> {
+                            public data::DataListener<rec::audio::stretch::Stretch>,
+                            public data::GlobalDataListener<app::AppSettings> {
  public:
   TransformController();
   virtual ~TransformController();
@@ -27,6 +28,7 @@ class TransformController : public Layout,
 
   virtual void operator()(const rec::audio::stretch::Stretch&);
   virtual void operator()(const rec::audio::source::StereoProto&);
+  virtual void operator()(const app::AppSettings&);
 
   virtual void comboBoxChanged(juce::ComboBox*);
   void showMasterTune(bool);

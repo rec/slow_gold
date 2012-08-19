@@ -23,8 +23,6 @@ TextComponent::TextComponent(const Text& desc)
       empty_(true) {
   setJustificationType(Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
-  setTooltip(Trans("Time Display: Shows the current playback time in minutes, "
-                       "seconds and millseconds."));
 }
 
 SampleTime TextComponent::getTime() const {
@@ -36,6 +34,12 @@ void TextComponent::operator()(const waveform::Viewport& vp) {
   Lock l(lock_);
   sampleRate_ = vp.loop_points().sample_rate();
   empty_ = !vp.loop_points().has_sample_rate();
+}
+
+void TextComponent::operator()(const app::AppSettings& settings) {
+  Lock l(lock_);
+  setTooltip(Trans("Time Display: Shows the current playback time in minutes, "
+                   "seconds and millseconds."));
 }
 
 bool TextComponent::setTime(SampleTime t) {

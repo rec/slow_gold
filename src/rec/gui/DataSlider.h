@@ -1,6 +1,7 @@
 #ifndef __REC_GUI_DATASLIDER__
 #define __REC_GUI_DATASLIDER__
 
+#include "rec/app/AppSettings.pb.h"
 #include "rec/data/Address.h"
 #include "rec/data/AddressListener.h"
 #include "rec/data/DataListener.h"
@@ -16,38 +17,33 @@ namespace gui {
 
 class DataSlider : public Layout,
                    public data::AddressListener,
+                   public data::GlobalDataListener<app::AppSettings>,
                    public juce::Slider::Listener {
  public:
   DataSlider(const String& name,
              const string& typeName,
              const data::Address& address,
-             const String& caption = String::empty,
-             const String& tip = String::empty,
              Scope scope = FILE_SCOPE)
-    : Layout(name, HORIZONTAL, true),
-      data::AddressListener(address, typeName, scope),
-      slider_(name),
-      caption_(caption) {
+      : Layout(name, HORIZONTAL, true),
+        data::AddressListener(address, typeName, scope),
+        slider_(name),
+        caption_(name),
+        name_(name) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
 
     // TODO: constants
     slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 16);
 
-    const String& cap = caption.length() ? caption : name;
-    slider_.setTooltip(tip.length() ? tip : cap);
     slider_.addListener(this);
 
-    caption_.setText(cap, false);
     // TODO: constants
     addToLayout(&caption_, 45);
     addToLayout(&slider_, 0, -1.0, -1.0);
   }
 
-  void setTooltip(const String& s) {
-    slider_.setTooltip(s);
-    caption_.setTooltip(s);
-    SettableTooltipClient::setTooltip(s);
-    slider_.sendLookAndFeelChange();
+  void setTooltip(const String& t) {
+    tooltip_ = t;
+    (*this)(app::AppSettings());
   }
 
   virtual void sliderValueChanged(Slider*) {
@@ -58,6 +54,18 @@ class DataSlider : public Layout,
     setSliderValue(v.double_f());
   }
 
+  virtual void operator()(const app::AppSettings&) {
+    String s = Trans(str(name_));
+    caption_.setText(s, true);
+
+    String t = Trans(str(tooltip_));
+    slider_.setTooltip(t);
+    caption_.setTooltip(t);
+    SettableTooltipClient::setTooltip(t);
+
+    slider_.sendLookAndFeelChange();
+  }
+
   DetentSlider* slider() { return &slider_; }
 
  protected:
@@ -65,6 +73,9 @@ class DataSlider : public Layout,
 
   DetentSlider slider_;
   SimpleLabel caption_;
+
+  String name_;
+  String tooltip_;
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(DataSlider);

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 
+#include "rec/app/AppSettings.pb.h"
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
@@ -16,6 +17,7 @@ namespace status {
 namespace time {
 
 class TextComponent : public gui::SimpleLabel,
+                      public GlobalDataListener<app::AppSettings>,
                       public DataListener<waveform::Viewport>,
                       public Listener<SampleTime> {
  public:
@@ -29,6 +31,7 @@ class TextComponent : public gui::SimpleLabel,
 
  protected:
   virtual void operator()(const waveform::Viewport&);
+  virtual void operator()(const app::AppSettings&);
 
  private:
   Text description_;

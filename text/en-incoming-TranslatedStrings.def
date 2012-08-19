@@ -126,6 +126,9 @@ str {
   line: 20
 }
 str {
+  original: "cents"
+}
+str {
   original: "Change key-mapping"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
   line: 9
@@ -292,6 +295,12 @@ str {
   original: "Delete the current selection without changing the clipboard."
 }
 str {
+  original: "Die Wiedergabe Feinabstimmungsregler: Fine Tune Schleife nach oben oder unten in der Tonh\303\266he, in Cent (1/100 eines Halbtons) gemessen."
+}
+str {
+  original: "Die Wiedergabe Tuning Slider: Grob Loop-Wiedergabe nach oben und unten in der Tonh\303\266he in Halbt\303\266nen gemessen."
+}
+str {
   original: "Display"
 }
 str {
@@ -366,9 +375,6 @@ str {
 }
 str {
   original: "Eject all CDs and DVDs"
-}
-str {
-  original: "Enable"
 }
 str {
   original: "Enable Automatic Updates"
@@ -702,6 +708,9 @@ str {
   original: "Master Tune Slider: Master tune is a global detune over all tracks."
 }
 str {
+  original: "Master Tune Slider: Master tune ist eine globale Verstimmung \303\274ber alle Spuren."
+}
+str {
   original: "MIDI"
   file: "rec/command/map/MidiCommandMapEditor.cpp"
   line: 15
@@ -819,6 +828,9 @@ str {
 }
 str {
   original: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
+}
+str {
+  original: "Playback Speed-Slider: Steuert, wie schnell die Schleife abgespielt wird: H\303\266here Zahlen bedeuten die Schleife abgespielt schneller."
 }
 str {
   original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
@@ -1112,6 +1124,9 @@ str {
 }
 str {
   original: "Select..."
+}
+str {
+  original: "semitones"
 }
 str {
   original: "Set Audio Preferences"

@@ -33,16 +33,12 @@ using rec::audio::stretch::Stretch;
 
 TransformController::TransformController()
     : Layout("TransformController", HORIZONTAL),
-      playbackSpeed_(Trans("Stretch"), getTypeName<Stretch>(),
-                     Address("time_percent")),
-      pitchScale_(Trans("Pitch"), getTypeName<Stretch>(),
-                  Address("semitone_shift")),
-      fineScale_(Trans("Tune"), getTypeName<Stretch>(),
-                 Address("detune_cents")),
-      masterTune_(Trans("Master"), getTypeName<AudioSettings>(),
-                  Address("master_tune"), "", "", GLOBAL_SCOPE),
-      enableButton_(String("   ") + Trans("Enable"), getTypeName<Stretch>(),
-                    Address("time_enabled")),
+      playbackSpeed_("Stretch", getTypeName<Stretch>(), "time_percent"),
+      pitchScale_("Pitch", getTypeName<Stretch>(), "semitone_shift"),
+      fineScale_("Tune", getTypeName<Stretch>(), "detune_cents"),
+      masterTune_("Master", getTypeName<AudioSettings>(), "master_tune",
+                  GLOBAL_SCOPE),
+      enableButton_("Enable", getTypeName<Stretch>(), "time_enabled"),
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL),
       showMasterTune_(true),
@@ -59,45 +55,10 @@ TransformController::TransformController()
   masterTune_.slider()->setDetent(0.0f);
 
   playbackSpeed_.slider()->setTextValueSuffix("%");
-  pitchScale_.slider()->setTextValueSuffix(" semitones");
-  fineScale_.slider()->setTextValueSuffix(" cents");
-  masterTune_.slider()->setTextValueSuffix(" cents");
 
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
-  stereoComboBox_.setTextWhenNothingSelected(Trans("Stereo"));
-  stereoComboBox_.setTextWhenNoChoicesAvailable(Trans("Stereo"));
-  stereoComboBox_.addItem(Trans("Stereo"), STEREO);
-  stereoComboBox_.addItem(Trans("Left"), LEFT);
-  stereoComboBox_.addItem(Trans("Right"), RIGHT);
-  stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
   stereoComboBox_.addListener(this);
-
-  playbackSpeed_.setTooltip(
-      Trans("Playback Speed Slider: "
-            "Controls how fast the loop plays back: "
-            "higher numbers mean the loop plays back faster."));
-  pitchScale_.setTooltip(
-      Trans("Playback Tuning Slider: "
-            "Coarse loop playback up and down in pitch, "
-            "measured in semitones."));
-  fineScale_.setTooltip(
-      Trans("Playback Fine Tuning Slider: "
-            "Fine tune loop up or down in pitch, measured in "
-            "cents (1/100 of a semitone)."));
-  stereoComboBox_.setTooltip(
-      Trans("Stereo Processing Menu:  Choose between the "
-            "original stereo, just the left channel, "
-            "just the right channel, "
-            "or a mono mix of both channels."));
-  enableButton_.setTooltip(
-      Trans("Transform Enable Button: "
-            "Disable or enable all sound transformations: "
-            "pitch, time and stereo processing but not master tunen."));
-
-  masterTune_.setTooltip(
-      Trans("Master Tune Slider: "
-            "Master tune is a global detune over all tracks."));
 
   leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
   leftPanel_.addToLayout(&stereoComboBox_, COMBO_BOX_HEIGHT);
@@ -133,6 +94,46 @@ void TransformController::operator()(const Stretch& s) {
   setStretch(s);
 }
 
+void TransformController::operator()(const app::AppSettings&) {
+  playbackSpeed_.setTooltip(
+      Trans("Playback Speed Slider: "
+            "Controls how fast the loop plays back: "
+            "higher numbers mean the loop plays back faster."));
+  pitchScale_.setTooltip(
+      Trans("Playback Tuning Slider: "
+            "Coarse loop playback up and down in pitch, "
+            "measured in semitones."));
+  fineScale_.setTooltip(
+      Trans("Playback Fine Tuning Slider: "
+            "Fine tune loop up or down in pitch, measured in "
+            "cents (1/100 of a semitone)."));
+  stereoComboBox_.setTooltip(
+      Trans("Stereo Processing Menu:  Choose between the "
+            "original stereo, just the left channel, "
+            "just the right channel, "
+            "or a mono mix of both channels."));
+  enableButton_.setTooltip(
+      Trans("Transform Enable Button: "
+            "Disable or enable all sound transformations: "
+            "pitch, time and stereo processing but not master tunen."));
+
+  masterTune_.setTooltip(
+      Trans("Master Tune Slider: "
+            "Master tune is a global detune over all tracks."));
+
+  pitchScale_.slider()->setTextValueSuffix(String(" ") + Trans("semitones"));
+  fineScale_.slider()->setTextValueSuffix(String(" ") + Trans("cents"));
+  masterTune_.slider()->setTextValueSuffix(String(" ") + Trans("cents"));
+
+  stereoComboBox_.clear();
+  stereoComboBox_.setTextWhenNothingSelected(Trans("Stereo"));
+  stereoComboBox_.setTextWhenNoChoicesAvailable(Trans("Stereo"));
+  stereoComboBox_.addItem(Trans("Stereo"), STEREO);
+  stereoComboBox_.addItem(Trans("Left"), LEFT);
+  stereoComboBox_.addItem(Trans("Right"), RIGHT);
+  stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
+}
+
 void TransformController::setStretch(const Stretch& s) {
 #ifdef USE_STRETCH_ENABLE
   bool enabled = s.enabled();
@@ -155,13 +156,15 @@ void TransformController::operator()(const StereoProto& stereo) {
 
 void TransformController::comboBoxChanged(juce::ComboBox* box) {
   if (box == &stereoComboBox_) {
-    Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
-    StereoProto stereo;
-    if (sides != STEREO) {
-      stereo.set_type(StereoProto::SINGLE);
-      stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
+    if (int id = stereoComboBox_.getSelectedId()) {
+      Sides sides = static_cast<Sides>(id);
+      StereoProto stereo;
+      if (sides != STEREO) {
+        stereo.set_type(StereoProto::SINGLE);
+        stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
+      }
+      DataListener<StereoProto>::setProto(stereo);
     }
-    DataListener<StereoProto>::setProto(stereo);
   }
 }
 
