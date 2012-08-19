@@ -30,10 +30,11 @@ void protobuf_AssignDesc_rec_2fapp_2fAppSettings_2eproto() {
       "rec/app/AppSettings.proto");
   GOOGLE_CHECK(file != NULL);
   AppSettings_descriptor_ = file->message_type(0);
-  static const int AppSettings_offsets_[3] = {
+  static const int AppSettings_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AppSettings, last_update_finished_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AppSettings, registered_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AppSettings, language_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AppSettings, windows_registered_),
   };
   AppSettings_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -77,13 +78,13 @@ void protobuf_AddDesc_rec_2fapp_2fAppSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\031rec/app/AppSettings.proto\022\007rec.app\"\316\001\n"
+    "\n\031rec/app/AppSettings.proto\022\007rec.app\"\361\001\n"
     "\013AppSettings\022\034\n\024last_update_finished\030\001 \001"
     "(\003\022\031\n\nregistered\030\002 \001(\010:\005false\0223\n\010languag"
     "e\030\003 \001(\0162\035.rec.app.AppSettings.Language:\002"
-    "EN\"Q\n\010Language\022\010\n\004NONE\020\000\022\006\n\002DE\020\001\022\006\n\002EN\020\002"
-    "\022\006\n\002ES\020\003\022\006\n\002FR\020\004\022\006\n\002ID\020\005\022\t\n\005FIRST\020\001\022\010\n\004L"
-    "AST\020\005", 245);
+    "EN\022!\n\022windows_registered\030\004 \001(\010:\005false\"Q\n"
+    "\010Language\022\010\n\004NONE\020\000\022\006\n\002DE\020\001\022\006\n\002EN\020\002\022\006\n\002E"
+    "S\020\003\022\006\n\002FR\020\004\022\006\n\002ID\020\005\022\t\n\005FIRST\020\001\022\010\n\004LAST\020\005", 280);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/app/AppSettings.proto", &protobuf_RegisterTypes);
   AppSettings::default_instance_ = new AppSettings();
@@ -136,6 +137,7 @@ const int AppSettings::Language_ARRAYSIZE;
 const int AppSettings::kLastUpdateFinishedFieldNumber;
 const int AppSettings::kRegisteredFieldNumber;
 const int AppSettings::kLanguageFieldNumber;
+const int AppSettings::kWindowsRegisteredFieldNumber;
 #endif  // !_MSC_VER
 
 AppSettings::AppSettings()
@@ -157,6 +159,7 @@ void AppSettings::SharedCtor() {
   last_update_finished_ = GOOGLE_LONGLONG(0);
   registered_ = false;
   language_ = 2;
+  windows_registered_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -194,6 +197,7 @@ void AppSettings::Clear() {
     last_update_finished_ = GOOGLE_LONGLONG(0);
     registered_ = false;
     language_ = 2;
+    windows_registered_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -253,6 +257,22 @@ bool AppSettings::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(32)) goto parse_windows_registered;
+        break;
+      }
+      
+      // optional bool windows_registered = 4 [default = false];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_windows_registered:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &windows_registered_)));
+          _set_bit(3);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -291,6 +311,11 @@ void AppSettings::SerializeWithCachedSizes(
       3, this->language(), output);
   }
   
+  // optional bool windows_registered = 4 [default = false];
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->windows_registered(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -313,6 +338,11 @@ void AppSettings::SerializeWithCachedSizes(
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       3, this->language(), target);
+  }
+  
+  // optional bool windows_registered = 4 [default = false];
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->windows_registered(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -342,6 +372,11 @@ int AppSettings::ByteSize() const {
     if (has_language()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->language());
+    }
+    
+    // optional bool windows_registered = 4 [default = false];
+    if (has_windows_registered()) {
+      total_size += 1 + 1;
     }
     
   }
@@ -380,6 +415,9 @@ void AppSettings::MergeFrom(const AppSettings& from) {
     if (from._has_bit(2)) {
       set_language(from.language());
     }
+    if (from._has_bit(3)) {
+      set_windows_registered(from.windows_registered());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -406,6 +444,7 @@ void AppSettings::Swap(AppSettings* other) {
     std::swap(last_update_finished_, other->last_update_finished_);
     std::swap(registered_, other->registered_);
     std::swap(language_, other->language_);
+    std::swap(windows_registered_, other->windows_registered_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

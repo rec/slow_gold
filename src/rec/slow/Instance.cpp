@@ -221,6 +221,19 @@ class RegisterSlow : public app::RegisterInstance {
   virtual void onSuccess() {
     data::Opener<AppSettings> settings(data::global(), CANT_UNDO);
     settings->set_registered(true);
+#if JUCE_WINDOWS
+    if (!settings->windows_registered()) {
+      File exe = File::getSpecialLocation(File::currentExecutableFile);
+      juce::WindowsRegistry::registerFileAssociation(
+          ".wshed",
+          "woodshed",
+          "Files for World-Wide Woodshed documents",
+          exe.getFullPathName(),
+          0,
+          false);
+      settings_->set_windows_registered(true);
+    }
+#endif  // JUCE_WINDOWS
   }
 };
 

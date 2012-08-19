@@ -16,4 +16,5 @@ message AppSettings {
   optional int64 last_update_finished = 1;
   optional bool registered = 2 [default = false];
   optional Language language = 3 [default = EN];
+  optional bool windows_registered = 4 [default = false];
 };

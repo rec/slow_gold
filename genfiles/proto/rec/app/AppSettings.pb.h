@@ -167,6 +167,13 @@ class AppSettings : public ::google::protobuf::Message {
   inline ::rec::app::AppSettings_Language language() const;
   inline void set_language(::rec::app::AppSettings_Language value);
   
+  // optional bool windows_registered = 4 [default = false];
+  inline bool has_windows_registered() const;
+  inline void clear_windows_registered();
+  static const int kWindowsRegisteredFieldNumber = 4;
+  inline bool windows_registered() const;
+  inline void set_windows_registered(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.app.AppSettings)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -175,11 +182,12 @@ class AppSettings : public ::google::protobuf::Message {
   ::google::protobuf::int64 last_update_finished_;
   bool registered_;
   int language_;
+  bool windows_registered_;
   friend void  protobuf_AddDesc_rec_2fapp_2fAppSettings_2eproto();
   friend void protobuf_AssignDesc_rec_2fapp_2fAppSettings_2eproto();
   friend void protobuf_ShutdownFile_rec_2fapp_2fAppSettings_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -249,6 +257,22 @@ inline void AppSettings::set_language(::rec::app::AppSettings_Language value) {
   GOOGLE_DCHECK(::rec::app::AppSettings_Language_IsValid(value));
   _set_bit(2);
   language_ = value;
+}
+
+// optional bool windows_registered = 4 [default = false];
+inline bool AppSettings::has_windows_registered() const {
+  return _has_bit(3);
+}
+inline void AppSettings::clear_windows_registered() {
+  windows_registered_ = false;
+  _clear_bit(3);
+}
+inline bool AppSettings::windows_registered() const {
+  return windows_registered_;
+}
+inline void AppSettings::set_windows_registered(bool value) {
+  _set_bit(3);
+  windows_registered_ = value;
 }
 
 
