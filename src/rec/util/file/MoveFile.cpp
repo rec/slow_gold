@@ -24,7 +24,7 @@ void mkdir(const File& f) {
   }
 }
 
-void doMove(const File& source, const File& target) {
+void moveFile(const File& source, const File& target) {
   if (source.exists()) {
     if (ENABLE_MOVE) {
       if (!source.moveFileTo(target))
@@ -38,24 +38,32 @@ void doMove(const File& source, const File& target) {
 
 void moveTypeDirectory(Type type, const File& special) {
   VirtualFile sourcevf = file::toVirtualFile(special, false);
-  doMove(file::getShadowDirectory(sourcevf), getShadow(type));
+  moveFile(file::getShadowDirectory(sourcevf), getShadow(type));
 }
 
 void moveGlobalFiles() {
   File target = getShadow(VirtualFile::GLOBAL);
   mkdir(target);
 
+  // Remove log files that shouldn't be in this directory.
+  for (DirectoryIterator it(target, false, "*.log.*", File::findFiles); it.next(); ) {
+    if (!it.getFile().deleteFile())
+      LOG(ERROR) << "Couldn't remove " << str(it.getFile());
+  }
+
+  // Move non-log files that should be there.
   File appDir = target.getParentDirectory();
   for (DirectoryIterator it(appDir, false, "*", File::findFiles); it.next(); ) {
     File f(it.getFile());
-    File targetFile(target.getChildFile(f.getFileName()));
-    doMove(f, targetFile);
+    String name = f.getFileName();
+    if (!name.contains(".log."))
+      moveFile(f, target.getChildFile(name));
   }
 }
 
 void moveKeyboardFile() {
   File f = getShadow(VirtualFile::VOLUME).getChildFile(OLD_KEYBOARD_NAME);
-  doMove(f, getShadow(VirtualFile::GLOBAL).getChildFile(NEW_KEYBOARD_NAME));
+  moveFile(f, getShadow(VirtualFile::GLOBAL).getChildFile(NEW_KEYBOARD_NAME));
 }
 
 }  // namespace file

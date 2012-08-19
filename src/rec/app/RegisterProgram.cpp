@@ -16,13 +16,16 @@ const char* const EMPTY_PARAMETER = "NONE";
 void RegisterProgram::run() {
   StringArray urls = getBaseUrls();
   for (int i = 0; i < urls.size(); ++i) {
-    if (tryOneUrl(urls[i])) {
+    const String& url(urls[i]);
+    if (tryOneUrl(url)) {
       onSuccess();
+      LOG(INFO) << "Registered the program at " << str(url);
       return;
     }
   }
 
-  LOG(ERROR) << "Failed to register any URLs.";
+  LOG(ERROR) << "Failed to register any URLs from list "
+             << str(urls.joinIntoString(", "));
 }
 
 bool RegisterProgram::tryOneUrl(const String& urlName) {

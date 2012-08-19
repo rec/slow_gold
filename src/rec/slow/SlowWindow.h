@@ -21,14 +21,11 @@ class SlowWindow : public app::Window, public HasInstance  {
     g.fillAll(juce::Colours::lightgrey);
   }
 
-  virtual void trashPreferences();
   virtual void startAboutWindow();
   virtual void stopAboutWindow();
   virtual void minimisationStateChanged(bool isNowMinimised);
   virtual void doPostStartup();
-  virtual void anotherInstanceStarted(const String& s) {
-    DLOG(INFO) << str(s);
-  }
+  virtual void anotherInstanceStarted(const String&);
 
  protected:
   virtual void doStartup();
@@ -42,6 +39,10 @@ class SlowWindow : public app::Window, public HasInstance  {
  private:
   ptr<Instance> instanceDeleter_;
   ptr<Component> aboutWindow_;
+  bool startupFinished_;
+  String startupFile_;
+
+  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowWindow);
 };

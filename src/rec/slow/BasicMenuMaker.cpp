@@ -83,6 +83,7 @@ void BasicMenuMaker::addFileMenu() {
   menu_.addSeparator();
 #endif
 
+#ifdef NEW_FEATURES
   Language lang = translation::getLanguage();
   PopupMenu langMenu;
 
@@ -93,6 +94,7 @@ void BasicMenuMaker::addFileMenu() {
       addRepeat(Command::SET_LANGUAGE, i, String(langName(i)), &langMenu, 0);
   }
   menu_.addSubMenu(Trans("Language"), langMenu);
+#endif
 
 #if !JUCE_MAC
   menu_.addSeparator();

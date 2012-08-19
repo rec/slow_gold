@@ -9,6 +9,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
+#include "rec/base/Arraysize.h"
 #include "rec/base/SampleRate.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
@@ -73,7 +74,47 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
   }
 };
 
-static Instance* INSTANCE = NULL;
+Instance* INSTANCE = NULL;
+
+#if JUCE_WINDOWS
+
+struct FileAssociation {
+  String extension_, symbolicName_, fullName_;
+  void registerExtension(const String& exe) {
+    juce::WindowsRegistry::registerFileAssociation(
+        extension_, symbolicName_, fullName_, exe, 0, false);
+  }
+};
+
+FileAssociation FILES[] = {
+  { ".aif", "aiff", "Audio IFF files" },
+  { ".aiff", "aiff", "Audio IFF files" },
+  { ".mp3", "mp3", "MP3 files" },
+  { ".wav", "wave", "Microsoft WAVE documents" },
+  { ".wave", "wave", "Microsoft WAVE documents" },
+  { ".wshed", "woodshed", "World-Wide Woodshed SlowGold 8 documents" }
+};
+
+#endif  // JUCE_WINDOWS
+
+class RegisterSlow : public app::RegisterInstance {
+ public:
+  RegisterSlow() {}
+
+  virtual void onSuccess() {
+    data::Opener<AppSettings> settings(data::global(), CANT_UNDO);
+    settings->set_registered(true);
+#if JUCE_WINDOWS
+    if (!settings->windows_registered()) {
+      String exe = File::getSpecialLocation(File::currentExecutableFile).
+        getFullPathName();
+      for (int i = 0; i < arraysize(FILES); ++i)
+        FILES[i].registerExtension(exe);
+      settings_->set_windows_registered(true);
+    }
+#endif  // JUCE_WINDOWS
+  }
+};
 
 }  // namespace
 
@@ -213,29 +254,6 @@ void Instance::startup() {
 
   LOG(INFO) << "Finished Instance::startup!";
 }
-
-class RegisterSlow : public app::RegisterInstance {
- public:
-  RegisterSlow() {}
-
-  virtual void onSuccess() {
-    data::Opener<AppSettings> settings(data::global(), CANT_UNDO);
-    settings->set_registered(true);
-#if JUCE_WINDOWS
-    if (!settings->windows_registered()) {
-      File exe = File::getSpecialLocation(File::currentExecutableFile);
-      juce::WindowsRegistry::registerFileAssociation(
-          ".wshed",
-          "woodshed",
-          "Files for World-Wide Woodshed documents",
-          exe.getFullPathName(),
-          0,
-          false);
-      settings_->set_windows_registered(true);
-    }
-#endif  // JUCE_WINDOWS
-  }
-};
 
 void Instance::postStartup() {
   LOG(INFO) << "Instance::postStartup!";

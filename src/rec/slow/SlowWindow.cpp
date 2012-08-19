@@ -26,30 +26,14 @@ namespace slow {
 
 namespace {
 
+#define LOG_TO_STDERROR 1
+
 using namespace juce;
 
 // Skin
 
 const int FADE_IN_TIME = 1500;
 const int FADE_OUT_TIME = 750;
-
-}
-
-SlowWindow::SlowWindow(app::GenericApplication* application)
-    : app::Window(application, "SlowGold", Colours::azure,
-                  DocumentWindow::allButtons, true),
-      HasInstance(NULL) {
-  bool check = data::getProto<GuiSettings>().auto_check_for_updates();
-  application->setAutoCheckForUpdates(check);
-}
-
-SlowWindow::~SlowWindow() {
-  aboutWindow_.reset();
-}
-
-#define LOG_TO_STDERROR 1
-
-namespace {
 
 void deleteAll(const File& appDir, const String& pattern) {
   DirectoryIterator iterator(appDir, false, pattern);
@@ -75,7 +59,21 @@ void redirectLogs(const File& appDir) {
 #endif
 }
 
-}  // namespace
+}
+
+SlowWindow::SlowWindow(app::GenericApplication* application)
+    : app::Window(application, "SlowGold", Colours::azure,
+                  DocumentWindow::allButtons, true),
+      HasInstance(NULL),
+      startupFinished_(false) {
+  bool check = data::getProto<GuiSettings>().auto_check_for_updates();
+  application->setAutoCheckForUpdates(check);
+}
+
+SlowWindow::~SlowWindow() {
+  aboutWindow_.reset();
+}
+
 
 void SlowWindow::init() {
   File appDir = app::getAppDirectory();
@@ -97,7 +95,12 @@ void SlowWindow::doStartup() {
 }
 
 void SlowWindow::doPostStartup() {
+  Lock l(lock_);
+
   instance_->postStartup();
+  startupFinished_ = true;
+  if (startupFile_.length())
+    currentFile()->setFile(startupFile_);
 }
 
 void SlowWindow::doShutdown() {
@@ -106,7 +109,13 @@ void SlowWindow::doShutdown() {
   instanceDeleter_.reset();
 }
 
-void SlowWindow::trashPreferences() {
+void SlowWindow::anotherInstanceStarted(const String& f) {
+  Lock l(lock_);
+  String file = f.trimCharactersAtEnd("\"").trimCharactersAtStart("\"");
+  if (startupFinished_)
+    currentFile()->setFile(file);
+  else
+    startupFile_ = file;
 }
 
 Component* SlowWindow::getMainComponent() {
