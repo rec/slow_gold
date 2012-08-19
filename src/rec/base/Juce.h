@@ -96,8 +96,13 @@ inline string str(const String& s) {
 inline String str(const string& s) {
   const char* p = s.c_str();
   size_t size = s.size();
-  return CharPointer_UTF8::isValidString(p, size) ?
-    String::fromUTF8(p, size) : "(badly encoded string)";
+  bool valid = CharPointer_UTF8::isValidString(p, size);
+  if (!valid) {
+    LOG(ERROR) << "Badly encoded string |" << s << "| " << s.size();
+    LOG(ERROR) << s[0] << ", " << s[1];
+    valid = true;
+  }
+  return valid ? String::fromUTF8(p, size) : "(badly encoded string)";
 }
 
 inline string str(const File& f) {

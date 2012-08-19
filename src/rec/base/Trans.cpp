@@ -130,7 +130,6 @@ void Trans::check(const string& st) {
 Trans::operator String() const {
   registerTranslation();
   string s = translation::translate(*string_);
-  DLOG(INFO) << s.size();
   return str(s);
 }
 

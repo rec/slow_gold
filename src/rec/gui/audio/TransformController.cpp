@@ -17,10 +17,6 @@ using data::Address;
 
 namespace {
 
-enum Sides {
-  STEREO = 1, LEFT, RIGHT, LEFT_PLUS_RIGHT
-};
-
 const int SLIDER_HEIGHT = 30;
 const int FINE_OFFSET = 7;
 const int LEFT_PANEL_WIDTH = 67;
@@ -42,7 +38,8 @@ TransformController::TransformController()
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL),
       showMasterTune_(true),
-      rightPanelCreated_(false) {
+      rightPanelCreated_(false),
+      sides_(STEREO) {
   playbackSpeed_.slider()->setRange(5.0, 200.0, 0.1);
   pitchScale_.slider()->setRange(-24.0, 24.0, 1.0);
   fineScale_.slider()->setRange(-50.0, 50.0, 0.1);
@@ -132,6 +129,7 @@ void TransformController::operator()(const app::AppSettings&) {
   stereoComboBox_.addItem(Trans("Left"), LEFT);
   stereoComboBox_.addItem(Trans("Right"), RIGHT);
   stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
+  stereoComboBox_.setSelectedId(sides_, true);
 }
 
 void TransformController::setStretch(const Stretch& s) {
@@ -147,11 +145,11 @@ void TransformController::setStretch(const Stretch& s) {
 }
 
 void TransformController::operator()(const StereoProto& stereo) {
-  Sides sides = STEREO;
+  sides_ = STEREO;
   if (stereo.type())
-    sides = static_cast<Sides>(2 + stereo.side());
+    sides_ = static_cast<Sides>(2 + stereo.side());
 
-  stereoComboBox_.setSelectedId(sides, true);
+  stereoComboBox_.setSelectedId(sides_, true);
 }
 
 void TransformController::comboBoxChanged(juce::ComboBox* box) {

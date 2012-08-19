@@ -34,6 +34,10 @@ class TransformController : public Layout,
   void showMasterTune(bool);
 
  private:
+  enum Sides {
+    STEREO = 1, LEFT, RIGHT, LEFT_PLUS_RIGHT
+  };
+
   void setStretch(const rec::audio::stretch::Stretch&);
 
   DataSlider playbackSpeed_;
@@ -52,6 +56,7 @@ class TransformController : public Layout,
 
   bool showMasterTune_;
   bool rightPanelCreated_;
+  Sides sides_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TransformController);
 };
