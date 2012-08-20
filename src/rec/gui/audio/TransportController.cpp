@@ -38,12 +38,17 @@ TransportController::TransportController(TimeController* timeController)
       timeController_(timeController),
       buttonsLayout_("Buttons", HORIZONTAL),
       gainLayout_("Gain", HORIZONTAL),
-      startStopButton_(Trans("Start/stop"),
-                       juce::DrawableButton::ImageFitted),
-      jumpToStartButton_(Trans("Jump to start"),
+      startStopButton_("Start/stop", "Start/Stop Button: Toggle between pause"
+                       " and play.", juce::DrawableButton::ImageFitted),
+      jumpToStartButton_("Jump to start", "Jump Forward Button: "
+                         "Jump to the start of the next segment.",
                          juce::DrawableButton::ImageFitted),
-      jumpBackButton_(Trans("Jump Back"), juce::DrawableButton::ImageFitted),
-      jumpForwardButton_(Trans("Jump Forward"), juce::DrawableButton::ImageFitted),
+      jumpBackButton_("Jump Back", "Jump Back Button: "
+                      "Jump to the start of the next segment.",
+                      juce::DrawableButton::ImageFitted),
+      jumpForwardButton_("Jump Forward", "Jump To Start Button: "
+                         "Jump to the start of the track.",
+                         juce::DrawableButton::ImageFitted),
       level_(Trans("Volume"), getTypeName<Gain>(), data::Address("gain")),
       muteButton_(Trans("Mute"), getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
@@ -79,15 +84,9 @@ TransportController::TransportController(TimeController* timeController)
   addToLayout(&buttonsLayout_, ICON_SIZE);
   addToLayout(&gainLayout_, ICON_SIZE);
   addToLayout(&levelMeter_, 20);
+}
 
-  startStopButton_.setTooltip(Trans("Start/Stop Button: "
-                                    "Toggle between pause and play."));
-  jumpForwardButton_.setTooltip(Trans("Jump Forward Button: "
-                                      "Jump to the start of the next segment."));
-  jumpBackButton_.setTooltip(Trans("Jump Back Button: "
-                                   "Jump to the start of the next segment."));
-  jumpToStartButton_.setTooltip(Trans("Jump To Start Button: "
-                                      "Jump to the start of the track."));
+void TransportController::languageChanged() {
   levelMeter_.setTooltip(Trans("Level Meter: Display the sound intensity, in RMS dB."));
   level_.setTooltip(Trans("Level Slider: Raise or lower the sound intensity, in dB."));
   muteButton_.setTooltip(Trans("Mute Button: Mute or unmute the sound."));

@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="9rab4Pwu7" name="tests">
+  <MAINGROUP id="OwZQnIjgH" name="tests">
     <GROUP id="ocE5Pk5Qc" name="translation">
       <GROUP id="7r2GPkWu5" name="rec">
         <GROUP id="8Z5TPFp3V" name="translation">
@@ -779,6 +779,10 @@
               name="HasSizeHints.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/IconButton.h" id="9K9vVZKwW"
               name="IconButton.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/LanguageButton.cpp" id="50GMWgdPs"
+              name="LanguageButton.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/LanguageButton.h" id="FzNGnG1TO"
+              name="LanguageButton.h" resource="0"/>
         <GROUP id="F80Xy64wQ" name="layout">
           <FILE compile="1" file="../../src/rec/gui/layout/Layout.cpp" id="uQRlcVVck"
                 name="Layout.cpp" resource="0"/>
@@ -1669,7 +1673,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="VEegMT5tS" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="b2fXT0sr0" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

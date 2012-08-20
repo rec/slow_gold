@@ -1,9 +1,11 @@
 #ifndef __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 #define __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 
+#include "rec/app/LanguageListener.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
 #include "rec/command/Command.pb.h"
+#include "rec/gui/LanguageButton.h"
 #include "rec/gui/DataSlider.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/gui/audio/LevelMeter.h"
@@ -19,6 +21,7 @@ class TimeController;
 // A GUI component with three drawable buttons that broadcasts commands from
 // those buttons.
 class TransportController : public Layout,
+                            public app::LanguageListener,
                             public juce::ButtonListener,
                             public DataListener<rec::audio::Gain>,
                             public Listener<rec::audio::transport::State>,
@@ -30,6 +33,8 @@ class TransportController : public Layout,
   virtual void buttonClicked(juce::Button *button);
   virtual void operator()(rec::audio::transport::State);
   virtual void operator()(const rec::audio::Gain&);
+
+  virtual void languageChanged();
 
   void setTransportState(rec::audio::transport::State state);
 
@@ -46,10 +51,10 @@ class TransportController : public Layout,
   Layout buttonsLayout_;
   Layout gainLayout_;
 
-  DrawableButton startStopButton_;
-  DrawableButton jumpToStartButton_;
-  DrawableButton jumpBackButton_;
-  DrawableButton jumpForwardButton_;
+  LanguageButton startStopButton_;
+  LanguageButton jumpToStartButton_;
+  LanguageButton jumpBackButton_;
+  LanguageButton jumpForwardButton_;
   LevelMeter levelMeter_;
   DataSlider level_;
   gui::SetterToggle muteButton_;
