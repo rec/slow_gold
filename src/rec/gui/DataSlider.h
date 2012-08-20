@@ -23,49 +23,13 @@ class DataSlider : public Layout,
   DataSlider(const String& name,
              const string& typeName,
              const data::Address& address,
-             Scope scope = FILE_SCOPE)
-      : Layout(name, HORIZONTAL, true),
-        data::AddressListener(address, typeName, scope),
-        slider_(name),
-        caption_(name),
-        name_(name) {
-    slider_.setSliderStyle(Slider::LinearHorizontal);
+             Scope scope = FILE_SCOPE);
 
-    // TODO: constants
-    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 16);
+  void setTooltip(const String&);
 
-    slider_.addListener(this);
-
-    // TODO: constants
-    addToLayout(&caption_, 45);
-    addToLayout(&slider_, 0, -1.0, -1.0);
-  }
-
-  void setTooltip(const String& t) {
-    tooltip_ = t;
-    (*this)(app::AppSettings());
-  }
-
-  virtual void sliderValueChanged(Slider*) {
-    setValue(slider_.getValue());
-  }
-
-  virtual void operator()(const data::Value& v) {
-    setSliderValue(v.double_f());
-  }
-
-  virtual void languageChanged() {
-    String s = Trans(str(name_));
-    caption_.setText(s, true);
-
-    String t = Trans(str(tooltip_));
-    slider_.setTooltip(t);
-    caption_.setTooltip(t);
-    SettableTooltipClient::setTooltip(t);
-
-    slider_.sendLookAndFeelChange();
-  }
-
+  virtual void sliderValueChanged(Slider*);
+  virtual void operator()(const data::Value&);
+  virtual void languageChanged();
   DetentSlider* slider() { return &slider_; }
 
  protected:
