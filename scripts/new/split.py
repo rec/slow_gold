@@ -1,11 +1,13 @@
 #!/usr/bin/python
 
+LINE_LENGTH = 78;
+
 def split_suffix(filename, suffixes):
   for s in suffixes:
     if filename.endswith(s):
       return filename.split(s)[0], s
 
-def maxSplit(s, splitters=' /;,', lineLength=120):
+def maxSplit(s, splitters=' /;,', lineLength=LINE_LENGTH):
   s = s[0 : lineLength]
   finds = [i for i in map(s.rfind, splitters) if i >= 0]
 
@@ -14,7 +16,7 @@ def maxSplit(s, splitters=' /;,', lineLength=120):
 
   return -1
 
-def splitLargeLines(lines, lineLength=120, maxLineLength=16380):
+def splitLargeLines(lines, lineLength=LINE_LENGTH, maxLineLength=16380):
   for i, l in enumerate(lines):
     while len(l) > lineLength:
       loc = maxSplit(l)

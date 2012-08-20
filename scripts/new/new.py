@@ -60,9 +60,11 @@ GROUPS = {
   'xml': dict(files=['.data.h', '.data.cpp'],
               filetype='xml',
               datatype='juce::XmlElement'),
-  }
+}
 
 USAGE = USAGE_MESSAGE % ', '.join(GROUPS)
+
+MAX_LINES = 500
 
 def usageError(success=False, error=None, usage=USAGE):
   if not success:
@@ -81,11 +83,15 @@ def escapeInput(data):
           replace('\n', nl))
 
 def convertToCCode(data):
-  data = '"%s "' % escapeInput(data)
-  res = ''.join(split.splitLargeLines(data.split('\n')))
-  res += ' '
-
-  return res
+  data = split.splitLargeLines('"%s "' % escapeInput(data).split('\n'))
+  if len(data) <= MAX_LINES:
+    return ''.join(data) + ' '
+  else:
+    res = []
+    while data:
+      res.append(''.join(data[0:MAX_LINES]))
+      data = data[MAX_LINES:]
+    return 'string(' + ') + string('.join(data) + ')'
 
 def write(name, template, **context):
   with open(name, 'w') as out:
