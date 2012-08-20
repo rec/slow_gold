@@ -4,6 +4,7 @@ namespace rec {
 namespace gui {
 
 DataSlider::DataSlider(const String& name,
+                       const String& tooltip,
                        const string& typeName,
                        const data::Address& address,
                        Scope scope)
@@ -11,7 +12,8 @@ DataSlider::DataSlider(const String& name,
       data::AddressListener(address, typeName, scope),
       slider_(name),
       caption_(name),
-      name_(name) {
+      name_(name),
+      tooltip_(tooltip) {
   slider_.setSliderStyle(Slider::LinearHorizontal);
 
   // TODO: constants
@@ -22,11 +24,6 @@ DataSlider::DataSlider(const String& name,
   // TODO: constants
   addToLayout(&caption_, 45);
   addToLayout(&slider_, 0, -1.0, -1.0);
-}
-
-void DataSlider::setTooltip(const String& t) {
-  tooltip_ = t;
-  languageChanged();
 }
 
 void DataSlider::sliderValueChanged(Slider*) {

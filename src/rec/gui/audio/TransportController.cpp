@@ -46,7 +46,8 @@ TransportController::TransportController(TimeController* timeController)
                       "Jump to the start of the next segment."),
       jumpForwardButton_("Jump Forward", "Jump To Start Button: "
                          "Jump to the start of the track."),
-      level_(Trans("Volume"), getTypeName<Gain>(), data::Address("gain")),
+      level_("Volume", "Volume Slider: Raise or lower the sound intensity, in dB.",
+             getTypeName<Gain>(), data::Address("gain")),
       muteButton_(Trans("Mute"), getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
@@ -85,7 +86,6 @@ TransportController::TransportController(TimeController* timeController)
 
 void TransportController::languageChanged() {
   levelMeter_.setTooltip(Trans("Level Meter: Display the sound intensity, in RMS dB."));
-  level_.setTooltip(Trans("Level Slider: Raise or lower the sound intensity, in dB."));
   muteButton_.setTooltip(Trans("Mute Button: Mute or unmute the sound."));
 }
 

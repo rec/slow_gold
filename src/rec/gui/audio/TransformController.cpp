@@ -29,12 +29,29 @@ using rec::audio::stretch::Stretch;
 
 TransformController::TransformController()
     : Layout("TransformController", HORIZONTAL),
-      playbackSpeed_("Stretch", getTypeName<Stretch>(), "time_percent"),
-      pitchScale_("Pitch", getTypeName<Stretch>(), "semitone_shift"),
-      fineScale_("Tune", getTypeName<Stretch>(), "detune_cents"),
-      masterTune_("Master", getTypeName<AudioSettings>(), "master_tune",
+
+      playbackSpeed_("Stretch", "Playback Speed Slider: "
+                     "Controls how fast the loop plays back: "
+                     "higher numbers mean the loop plays back faster.",
+                     getTypeName<Stretch>(), "time_percent"),
+
+      pitchScale_("Pitch", "Playback Tuning Slider: "
+                  "Coarse loop playback up and down in pitch, "
+                  "measured in semitones.",
+                  getTypeName<Stretch>(), "semitone_shift"),
+
+      fineScale_("Tune", "Playback Fine Tuning Slider: "
+                 "Fine tune loop up or down in pitch, measured in "
+                 "cents (1/100 of a semitone).",
+                 getTypeName<Stretch>(), "detune_cents"),
+
+      masterTune_("Master", "Master Tune Slider: "
+                  "Master tune is a global detune over all tracks.",
+                  getTypeName<AudioSettings>(), "master_tune",
                   GLOBAL_SCOPE),
+
       enableButton_("Enable", getTypeName<Stretch>(), "time_enabled"),
+
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL),
       showMasterTune_(true),
@@ -92,31 +109,16 @@ void TransformController::operator()(const Stretch& s) {
 }
 
 void TransformController::languageChanged() {
-  playbackSpeed_.setTooltip(
-      Trans("Playback Speed Slider: "
-            "Controls how fast the loop plays back: "
-            "higher numbers mean the loop plays back faster."));
-  pitchScale_.setTooltip(
-      Trans("Playback Tuning Slider: "
-            "Coarse loop playback up and down in pitch, "
-            "measured in semitones."));
-  fineScale_.setTooltip(
-      Trans("Playback Fine Tuning Slider: "
-            "Fine tune loop up or down in pitch, measured in "
-            "cents (1/100 of a semitone)."));
   stereoComboBox_.setTooltip(
       Trans("Stereo Processing Menu:  Choose between the "
-            "original stereo, just the left channel, "
-            "just the right channel, "
-            "or a mono mix of both channels."));
-  enableButton_.setTooltip(
-      Trans("Transform Enable Button: "
-            "Disable or enable all sound transformations: "
-            "pitch, time and stereo processing but not master tunen."));
+                  "original stereo, just the left channel, "
+                  "just the right channel, "
+                  "or a mono mix of both channels."));
 
-  masterTune_.setTooltip(
-      Trans("Master Tune Slider: "
-            "Master tune is a global detune over all tracks."));
+  enableButton_.setTooltip(Trans(
+      "Transform Enable Button: "
+      "Disable or enable all sound transformations: "
+      "pitch, time and stereo processing but not master tune."));
 
   pitchScale_.slider()->setTextValueSuffix(String(" ") + Trans("semitones"));
   fineScale_.slider()->setTextValueSuffix(String(" ") + Trans("cents"));

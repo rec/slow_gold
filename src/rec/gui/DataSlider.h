@@ -21,15 +21,15 @@ class DataSlider : public Layout,
                    public juce::Slider::Listener {
  public:
   DataSlider(const String& name,
+             const String& tooltip,
              const string& typeName,
              const data::Address& address,
              Scope scope = FILE_SCOPE);
 
-  void setTooltip(const String&);
-
   virtual void sliderValueChanged(Slider*);
   virtual void operator()(const data::Value&);
   virtual void languageChanged();
+
   DetentSlider* slider() { return &slider_; }
 
  protected:
