@@ -75,6 +75,7 @@ string translate(const TranslatedString& original) {
       return i->second;
   }
 
+  LOG(ERROR) << "Couldn't translate " << str(original.original());
   return "***";
 }
 

@@ -20,11 +20,13 @@ Stretchy::Stretchy(Source* s, const Stretchy& stretchy)
       implementation_(new RubberBand(s, stretchy.implementation_->stretch())) {
 }
 
-Stretchy::Stretchy(Source* s, SampleRate sampleRate)
-    : Wrappy(s) {
+Stretchy::Stretchy(Source* s) : Wrappy(s) {}
+
+void Stretchy::init(SampleRate sampleRate) {
   StretchParameters stretch;
   stretch.set_output_sample_rate(sampleRate);
-  implementation_.reset(new RubberBand(s, stretch));
+  implementation_.reset(new RubberBand(source_.get(), stretch));
+  implementation_->init();
 }
 
 Stretchy::~Stretchy() {}

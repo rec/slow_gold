@@ -20,8 +20,10 @@ void Player::init() {
   timer_ = new Timer(NULL);
   doLog("Selection::init\n");
   selection_ = new Selection(timer_);
+  doLog("Stretchy::Stretchy\n");
+  stretchy_ = new Stretchy(selection_);
   doLog("Stretchy::init\n");
-  stretchy_ = new Stretchy(selection_, device_->getSampleRate());
+  stretchy_->init(device_->getSampleRate());
   doLog("Stereo::init\n");
   stereo_ = new Stereo(stretchy_);
   doLog("level setting\n");

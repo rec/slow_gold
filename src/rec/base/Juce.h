@@ -100,10 +100,12 @@ inline String str(const string& s) {
   if (!valid) {
     LOG(ERROR) << "Badly encoded string |" << s << "| " << s.size();
     LOG(ERROR) << s[0] << ", " << s[1];
-    valid = true;
   }
   return valid ? String::fromUTF8(p, size) : "(badly encoded string)";
 }
+
+inline String str(const char* s) { return str(string(s)); }
+
 
 inline string str(const File& f) {
   return str(f.getFullPathName());

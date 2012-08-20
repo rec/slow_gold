@@ -24,6 +24,8 @@ class RubberBand : public Implementation {
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
   virtual bool canBypass() const;
 
+  virtual void init();
+
  private:
   virtual void stretchChanged();
 

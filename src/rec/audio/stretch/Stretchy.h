@@ -18,8 +18,10 @@ class Implementation;
 
 class Stretchy : public source::Wrappy {
  public:
-  explicit Stretchy(Source*, SampleRate);
+  explicit Stretchy(Source*);
   Stretchy(Source*, const Stretchy&);
+
+  void init(SampleRate);
 
   ~Stretchy();
 

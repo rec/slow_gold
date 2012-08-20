@@ -3,6 +3,7 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/stretch/Stretch.h"
+#include "rec/base/SampleRate.h"
 
 namespace rec {
 namespace audio {
@@ -18,6 +19,7 @@ class Implementation {
   virtual ~Implementation() {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo&) = 0;
+  virtual void init() = 0;
 
   void setStretch(const Stretch&);
   void setMasterTune(double);
