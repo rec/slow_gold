@@ -39,16 +39,13 @@ TransportController::TransportController(TimeController* timeController)
       buttonsLayout_("Buttons", HORIZONTAL),
       gainLayout_("Gain", HORIZONTAL),
       startStopButton_("Start/stop", "Start/Stop Button: Toggle between pause"
-                       " and play.", juce::DrawableButton::ImageFitted),
+                       " and play."),
       jumpToStartButton_("Jump to start", "Jump Forward Button: "
-                         "Jump to the start of the next segment.",
-                         juce::DrawableButton::ImageFitted),
+                         "Jump to the start of the next segment."),
       jumpBackButton_("Jump Back", "Jump Back Button: "
-                      "Jump to the start of the next segment.",
-                      juce::DrawableButton::ImageFitted),
+                      "Jump to the start of the next segment."),
       jumpForwardButton_("Jump Forward", "Jump To Start Button: "
-                         "Jump to the start of the track.",
-                         juce::DrawableButton::ImageFitted),
+                         "Jump to the start of the track."),
       level_(Trans("Volume"), getTypeName<Gain>(), data::Address("gain")),
       muteButton_(Trans("Mute"), getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
