@@ -26,15 +26,12 @@ const int COMMAND_BAR_PAD = -5;
 CommandBar::CommandBar()
     : Layout("CommandBar", HORIZONTAL),
       addLoopPoint_("CreateNow", "Add Loop Point Button: "
-                    "Add a loop point at the current time.",
-                    DrawableButton::ImageFitted),
+                    "Add a loop point at the current time."),
       zoomOutFull_("ZoomOutFull", "Zoom Out Full Button: "
-                   "Zoom the waveform all the way out.",
-                   DrawableButton::ImageFitted),
+                   "Zoom the waveform all the way out."),
       zoomToSelection_("ZoomToSelection", "Zoom To Selection Button: "
                        "Zoom in or out so the whole selection "
-                       "fits the waveform.",
-                       DrawableButton::ImageFitted) {
+                       "fits the waveform.") {
   using namespace rec::gui::icon;
 
   addLoopPoint_.addListener(this);

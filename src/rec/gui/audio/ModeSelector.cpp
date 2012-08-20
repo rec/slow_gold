@@ -27,7 +27,7 @@ namespace audio {
 
 namespace {
 
-void setImage(ModeSelector* selector, DrawableButton* b, Mode::Action action) {
+void setImage(ModeSelector* selector, LanguageButton* b, Mode::Action action) {
   b->addListener(selector);
   selector->addToLayout(b);
   (*selector->buttonMap())[action] = b;
@@ -41,10 +41,14 @@ enum Sides {
 
 ModeSelector::ModeSelector()
     : Layout("ModeSelector", HORIZONTAL),
-      drag_("Drag", DrawableButton::ImageFitted),
-      setTime_("setTime", DrawableButton::ImageFitted),
-      zoomIn_("zoomIn", DrawableButton::ImageFitted),
-      addLoopPointClick_("CreateClick", DrawableButton::ImageFitted) {
+      drag_("Drag", "Drag Mode: Use the mouse to drag the waveform back "
+            "and forth"),
+      setTime_("setTime", "Set Current Time Mode: Clicking in the waveform "
+               "sets the current time."),
+      zoomIn_("zoomIn", "Zoom Mode: Clicking on the waveform zooms in on "
+              "that point."),
+      addLoopPointClick_("CreateClick", "Add loop point mode: clicking on the "
+                         "waveform creates a loop point.") {
   using namespace rec::gui::icon;
 
   SET_BUTTON_IMAGES2(&drag_, DragMode);
@@ -63,7 +67,7 @@ ModeSelector::ModeSelector()
   setBounds(0, 0, minSize_.getX(), minSize_.getY());
 }
 
-DrawableButton* ModeSelector::getButton(Mode::Action action) {
+LanguageButton* ModeSelector::getButton(Mode::Action action) {
   ButtonMap::iterator i = buttons_.find(action);
   return (i == buttons_.end()) ? NULL : i->second;
 }
@@ -74,17 +78,6 @@ void ModeSelector::operator()(const Mode& mode) {
     mode_ = mode;
   }
   setMode(mode.click());
-}
-
-void ModeSelector::languageChanged() {
-  drag_.setTooltip(Trans("Drag Mode: Use the mouse to drag the waveform back "
-                         "and forth"));
-  setTime_.setTooltip(Trans("Set Current Time Mode: Clicking in the waveform "
-                            "sets the current time."));
-  zoomIn_.setTooltip(Trans("Zoom Mode: Clicking on the waveform zooms in on "
-                           "that point."));
-  addLoopPointClick_.setTooltip(Trans("Add loop point mode: clicking on the "
-                                      "waveform creates a loop point."));
 }
 
 void ModeSelector::setMode(Mode::Action action) {

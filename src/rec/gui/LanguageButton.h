@@ -9,7 +9,7 @@ namespace gui {
 class LanguageButton : public DrawableButton, app::LanguageListener {
  public:
   LanguageButton(const String& name, const String& tooltip,
-                 DrawableButton::ButtonStyle);
+                 DrawableButton::ButtonStyle s = DrawableButton::ImageFitted);
 
   virtual void languageChanged();
 
