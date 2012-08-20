@@ -59,7 +59,6 @@ Loops::Loops(const TableColumnList* desc,
   initialize(tcl, "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
-  setTooltip(Trans("Loop Point List: You can select and edit loop points here."));
 }
 
 Loops::~Loops() {}
@@ -71,6 +70,10 @@ int Loops::getNumRows() {
 
 void Loops::operator()(const Viewport& vp) {
   setViewport(vp);
+}
+
+void Loops::operator()(const app::AppSettings&) {
+  setTooltip(Trans("Loop Point List: You can select and edit loop points here."));
 }
 
 void Loops::setViewport(const Viewport& viewport) {
