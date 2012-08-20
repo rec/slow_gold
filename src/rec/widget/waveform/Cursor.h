@@ -3,6 +3,7 @@
 
 #include <set>
 
+#include "rec/app/LanguageListener.h"
 #include "rec/audio/Audio.h"
 #include "rec/gui/Geometry.h"
 #include "rec/util/Listener.h"
@@ -25,6 +26,7 @@ class OutlinedCursorLabel;
 class Cursor : public Component,
                public SettableTooltipClient,
                public Listener<SampleTime>,
+               public app::LanguageListener,
                public juce::Label::Listener {
  public:
   Cursor(const CursorProto& d, Waveform* w, int index);
@@ -33,6 +35,7 @@ class Cursor : public Component,
 
   virtual void operator()(const WaveformProto&);
   virtual void operator()(SampleTime t);
+  virtual void languageChanged();
 
   virtual void labelTextChanged(juce::Label*);
 

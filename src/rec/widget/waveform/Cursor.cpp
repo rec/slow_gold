@@ -42,6 +42,15 @@ Cursor::~Cursor() {
   waveform_->removeChildComponent(caption_.get());
 }
 
+void Cursor::languageChanged() {
+  setTooltip(Trans(isTimeCursor() ? "Playback Time Cursor: This follows the "
+                   "current time during playback. You can also drag it "
+                   "around to set the current playback time." :
+                   "Loop Point:  You can drag it around on the waveform, "
+                   "or you can click on the label above and to the right "
+                   "to edit its name."));
+}
+
 void Cursor::init() {
   Lock l(lock());
 

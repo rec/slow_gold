@@ -4,6 +4,7 @@
 #include <set>
 
 #include "rec/base/SampleTime.h"
+#include "rec/app/LanguageListener.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
 #include "rec/util/LoopPoint.h"
@@ -32,6 +33,7 @@ typedef vector<Cursor*> CursorList;
 class Waveform : public Component,
                  public SettableTooltipClient,
                  public DataListener<Viewport>,
+                 public app::LanguageListener,
                  public GlobalDataListener<Mode>,
                  public GlobalDataListener<WaveformProto>,
                  public Broadcaster<const MouseWheelEvent&>,
@@ -52,6 +54,8 @@ class Waveform : public Component,
   virtual void operator()(const Mode&);
   virtual void operator()(const WaveformProto&);
   virtual void operator()(const Viewport& vp);
+
+  virtual void languageChanged();
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 

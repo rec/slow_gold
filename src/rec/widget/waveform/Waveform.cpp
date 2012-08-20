@@ -65,13 +65,16 @@ Waveform::Waveform(MenuBarModel* m)
                   ZOOM_CURSOR_Y_HOTSPOT),
       loading_(false) {
   setName("Waveform");
+
+  setOpaque(true);
+  setBufferedToImage(true);
+}
+
+void Waveform::languageChanged() {
   setTooltip(
       Trans("Waveform Window: "
             "You can drag files from your desktop or your music player here. "
             "If your mouse has a wheel, use it to zoom the waveform."));
-
-  setOpaque(true);
-  setBufferedToImage(true);
 }
 
 Waveform::~Waveform() {
@@ -90,9 +93,6 @@ void Waveform::setLoading(bool loading) {
 void Waveform::init() {
   painter_.reset(new WaveformPainter(this));
   timeCursor_.reset(makeTimeCursor(defaultTimeCursor(), this));
-  timeCursor_->setTooltip(Trans("Playback Time Cursor: This follows the "
-                                "current time during playback. You can also drag it "
-                                "around to set the current playback time."));
 }
 
 const CursorProto& Waveform::defaultTimeCursor() {
@@ -158,9 +158,6 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints,
       c = cursors_[i];
     } else {
       c = makeCursor(*defaultDesc, this, i, time);
-      c->setTooltip(Trans("Loop Point:  You can drag it around on the waveform, "
-                          "or you can click on the label above and to the right "
-                          "to edit its name."));
       cursors_.push_back(c);
     }
     c->setTime(time);
