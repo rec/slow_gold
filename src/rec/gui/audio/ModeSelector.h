@@ -14,6 +14,7 @@ namespace audio {
 
 class ModeSelector : public Layout,
                      public juce::Button::Listener,
+                     public GlobalDataListener<app::AppSettings>,
                      public GlobalDataListener<Mode> {
  public:
   ModeSelector();
@@ -22,6 +23,7 @@ class ModeSelector : public Layout,
   virtual void buttonClicked(juce::Button* button);
   virtual bool isOpaque() const { return true; }
 
+  virtual void operator()(const app::AppSettings&);
   virtual void operator()(const Mode&);
   DrawableButton* getButton(Mode::Action);
 
@@ -29,6 +31,8 @@ class ModeSelector : public Layout,
   ButtonMap* buttonMap() { return &buttons_; }
 
   virtual juce::Point<int> getMinSize() const { return minSize_; }
+
+  using DataListener<Mode>::setProto;
 
  private:
   void setMode(Mode::Action);

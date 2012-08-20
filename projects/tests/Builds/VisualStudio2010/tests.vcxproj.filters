@@ -535,6 +535,9 @@
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp">
       <Filter>tests\rec\app</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\LanguageClient.cpp">
+      <Filter>tests\rec\app</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\app\RegisterInstance.cpp">
       <Filter>tests\rec\app</Filter>
     </ClCompile>
@@ -2641,6 +2644,9 @@
       <Filter>tests\rec\app</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h">
+      <Filter>tests\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\LanguageClient.h">
       <Filter>tests\rec\app</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterInstance.h">

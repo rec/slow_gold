@@ -12,7 +12,7 @@ namespace audio {
 
 class CommandBar : public Layout,
                    public Broadcaster<CommandID>,
-                   public data::GlobalDataListener<app::AppSettings>,
+                   public GlobalDataListener<app::AppSettings>,
                    public juce::Button::Listener {
  public:
   CommandBar();
