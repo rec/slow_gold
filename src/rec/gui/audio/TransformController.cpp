@@ -91,7 +91,7 @@ void TransformController::operator()(const Stretch& s) {
   setStretch(s);
 }
 
-void TransformController::operator()(const app::AppSettings&) {
+void TransformController::languageChanged() {
   playbackSpeed_.setTooltip(
       Trans("Playback Speed Slider: "
             "Controls how fast the loop plays back: "

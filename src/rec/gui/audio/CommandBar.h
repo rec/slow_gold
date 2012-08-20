@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_AUDIO_COMMANDBAR__
 #define __REC_GUI_AUDIO_COMMANDBAR__
 
-#include "rec/app/AppSettings.pb.h"
+#include "rec/app/LanguageListener.h"
 #include "rec/command/Command.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/data/DataListener.h"
@@ -12,14 +12,14 @@ namespace audio {
 
 class CommandBar : public Layout,
                    public Broadcaster<CommandID>,
-                   public GlobalDataListener<app::AppSettings>,
+                   public app::LanguageListener,
                    public juce::Button::Listener {
  public:
   CommandBar();
   virtual ~CommandBar() {}
 
   virtual void buttonClicked(juce::Button*);
-  virtual void operator()(const app::AppSettings&);
+  virtual void languageChanged();
 
  private:
   DrawableButton addLoopPoint_;

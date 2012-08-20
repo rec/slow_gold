@@ -50,7 +50,7 @@ CommandBar::CommandBar()
   // setImage<Pencil>(this, &drawLoopPoints_, Mode::DRAW_LOOP_POINTS);
 }
 
-void CommandBar::operator()(const app::AppSettings&) {
+void CommandBar::languageChanged() {
   addLoopPoint_.setTooltip(Trans("Add Loop Point Button: "
                                      "Add a loop point at the current time."));
   zoomOutFull_.setTooltip(Trans("Zoom Out Full Button: "

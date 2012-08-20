@@ -36,7 +36,7 @@ void TextComponent::operator()(const waveform::Viewport& vp) {
   empty_ = !vp.loop_points().has_sample_rate();
 }
 
-void TextComponent::operator()(const app::AppSettings& settings) {
+void TextComponent::languageChanged() {
   Lock l(lock_);
   setTooltip(Trans("Time Display: Shows the current playback time in minutes, "
                    "seconds and millseconds."));

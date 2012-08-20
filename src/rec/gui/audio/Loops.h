@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_AUDIO_LOOPS__
 #define __REC_GUI_AUDIO_LOOPS__
 
-#include "rec/app/AppSettings.pb.h"
+#include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
 #include "rec/data/DataListener.h"
 #include "rec/gui/TableController.h"
@@ -14,7 +14,7 @@ namespace audio {
 
 class Loops : public TableController,
               public DataListener<widget::waveform::Viewport>,
-              public GlobalDataListener<app::AppSettings>,
+              public app::LanguageListener,
               public HasCuttable {
  public:
   explicit Loops(const TableColumnList* desc = NULL,
@@ -23,7 +23,7 @@ class Loops : public TableController,
   virtual ~Loops();
 
   virtual void operator()(const widget::waveform::Viewport&);
-  virtual void operator()(const app::AppSettings&);
+  virtual void languageChanged();
   virtual int getNumRows();
   virtual Cuttable* cuttable() { return cuttable_.get(); }
   virtual void selectedRowsChanged(int lastRowSelected);
@@ -34,9 +34,6 @@ class Loops : public TableController,
   virtual String getCellTooltip(int column, int row) const;
 
   virtual bool selected(int row) const;
-
-  using DataListener<widget::waveform::Viewport>::getDataValue;
-  using DataListener<widget::waveform::Viewport>::setProto;
 
  protected:
   virtual void update();

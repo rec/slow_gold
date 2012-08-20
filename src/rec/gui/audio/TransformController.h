@@ -1,6 +1,7 @@
 #ifndef __REC_GUI_AUDIO_TRANSFORMCONTROLLER__
 #define __REC_GUI_AUDIO_TRANSFORMCONTROLLER__
 
+#include "rec/app/LanguageListener.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/audio/AudioSettings.pb.h"
@@ -16,10 +17,10 @@ namespace gui {
 namespace audio {
 
 class TransformController : public Layout,
-                            public juce::ComboBox::Listener,
                             public data::DataListener<rec::audio::source::StereoProto>,
                             public data::DataListener<rec::audio::stretch::Stretch>,
-                            public data::GlobalDataListener<app::AppSettings> {
+                            public app::LanguageListener,
+                            public juce::ComboBox::Listener {
  public:
   TransformController();
   virtual ~TransformController();
@@ -28,7 +29,7 @@ class TransformController : public Layout,
 
   virtual void operator()(const rec::audio::stretch::Stretch&);
   virtual void operator()(const rec::audio::source::StereoProto&);
-  virtual void operator()(const app::AppSettings&);
+  virtual void languageChanged();
 
   virtual void comboBoxChanged(juce::ComboBox*);
   void showMasterTune(bool);

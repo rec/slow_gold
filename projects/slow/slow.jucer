@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="MmI9HKn4F" name="SlowGold">
+  <MAINGROUP id="Ex3CgnfET" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -80,10 +80,10 @@
               name="GenericApplication.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/GenericApplication.h" id="DwrM53021"
               name="GenericApplication.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/app/LanguageClient.cpp" id="NHspARLlC"
-              name="LanguageClient.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/app/LanguageClient.h" id="qBMlz5c5Q"
-              name="LanguageClient.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/app/LanguageListener.cpp" id="86t6a8Jom"
+              name="LanguageListener.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/app/LanguageListener.h" id="0bCJWjz2r"
+              name="LanguageListener.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/app/RegisterInstance.cpp" id="6czIp7E2e"
               name="RegisterInstance.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/RegisterInstance.h" id="6b1K1cgEO"
@@ -1618,7 +1618,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="vBIIZPJPf" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="5ojPK1zEn" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

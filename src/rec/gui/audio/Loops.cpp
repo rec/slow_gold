@@ -72,7 +72,7 @@ void Loops::operator()(const Viewport& vp) {
   setViewport(vp);
 }
 
-void Loops::operator()(const app::AppSettings&) {
+void Loops::languageChanged() {
   setTooltip(Trans("Loop Point List: You can select and edit loop points here."));
 }
 

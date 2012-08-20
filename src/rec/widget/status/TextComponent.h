@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#include "rec/app/AppSettings.pb.h"
+#include "rec/app/LanguageListener.h"
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
 #include "rec/util/Listener.h"
@@ -17,7 +17,7 @@ namespace status {
 namespace time {
 
 class TextComponent : public gui::SimpleLabel,
-                      public GlobalDataListener<app::AppSettings>,
+                      public app::LanguageListener,
                       public DataListener<waveform::Viewport>,
                       public Listener<SampleTime> {
  public:
@@ -28,10 +28,10 @@ class TextComponent : public gui::SimpleLabel,
   bool setTime(SampleTime time);
   void setLength(SampleTime len) { length_ = len; }
   void redisplay();
+  virtual void languageChanged();
 
  protected:
   virtual void operator()(const waveform::Viewport&);
-  virtual void operator()(const app::AppSettings&);
 
  private:
   Text description_;

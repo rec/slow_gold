@@ -3,6 +3,7 @@
 
 #include <map>
 
+#include "rec/app/LanguageListener.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/gui/HasSizeHints.h"
 #include "rec/data/DataListener.h"
@@ -13,9 +14,9 @@ namespace gui {
 namespace audio {
 
 class ModeSelector : public Layout,
-                     public juce::Button::Listener,
-                     public GlobalDataListener<app::AppSettings>,
-                     public GlobalDataListener<Mode> {
+                     public GlobalDataListener<Mode>,
+                     public app::LanguageListener,
+                     public juce::Button::Listener {
  public:
   ModeSelector();
   virtual ~ModeSelector() {}
@@ -23,7 +24,7 @@ class ModeSelector : public Layout,
   virtual void buttonClicked(juce::Button* button);
   virtual bool isOpaque() const { return true; }
 
-  virtual void operator()(const app::AppSettings&);
+  virtual void languageChanged();
   virtual void operator()(const Mode&);
   DrawableButton* getButton(Mode::Action);
 
@@ -31,8 +32,6 @@ class ModeSelector : public Layout,
   ButtonMap* buttonMap() { return &buttons_; }
 
   virtual juce::Point<int> getMinSize() const { return minSize_; }
-
-  using DataListener<Mode>::setProto;
 
  private:
   void setMode(Mode::Action);

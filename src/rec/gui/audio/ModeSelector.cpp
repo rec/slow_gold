@@ -76,7 +76,7 @@ void ModeSelector::operator()(const Mode& mode) {
   setMode(mode.click());
 }
 
-void ModeSelector::operator()(const app::AppSettings&) {
+void ModeSelector::languageChanged() {
   drag_.setTooltip(Trans("Drag Mode: Use the mouse to drag the waveform back "
                          "and forth"));
   setTime_.setTooltip(Trans("Set Current Time Mode: Clicking in the waveform "

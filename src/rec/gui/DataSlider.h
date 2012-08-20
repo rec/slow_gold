@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_DATASLIDER__
 #define __REC_GUI_DATASLIDER__
 
-#include "rec/app/AppSettings.pb.h"
+#include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
 #include "rec/data/AddressListener.h"
 #include "rec/data/DataListener.h"
@@ -17,7 +17,7 @@ namespace gui {
 
 class DataSlider : public Layout,
                    public data::AddressListener,
-                   public data::GlobalDataListener<app::AppSettings>,
+                   public app::LanguageListener,
                    public juce::Slider::Listener {
  public:
   DataSlider(const String& name,
@@ -54,7 +54,7 @@ class DataSlider : public Layout,
     setSliderValue(v.double_f());
   }
 
-  virtual void operator()(const app::AppSettings&) {
+  virtual void languageChanged() {
     String s = Trans(str(name_));
     caption_.setText(s, true);
 
