@@ -83,15 +83,43 @@ def escapeInput(data):
           replace('\n', nl))
 
 def convertToCCode(data):
-  data = split.splitLargeLines('"%s "' % escapeInput(data).split('\n'))
+  data = '"%s "' % escapeInput(data)
+  res = ''.join(split.splitLargeLines(data.split('\n')))
+  if len(res) < 65536:
+    return res + ' '
+
+  r2 = res.split('\n')
+  r3 = []
+  while r2:
+    r3.append('\n'.join(r2[0:MAX_LINES]))
+    r2 = r2[MAX_LINES:]
+  return 'string(' + ')\n + string('.join(r3) + ')'
+
+def printRes(res):
+  print "***\n***\n***\n***\n"
+  for r in res:
+    print '\n!'
+    for s in r:
+      print ' ', s,
+  print "\n\n***\n***\n***\n***"
+
+
+def convertToCCodeNew(data):
+  data = '"%s "' % escapeInput(data)
+  data = list(split.splitLargeLines(data.split('\n')))
   if len(data) <= MAX_LINES:
     return ''.join(data) + ' '
   else:
     res = []
+    res2 = []
     while data:
       res.append(''.join(data[0:MAX_LINES]))
+      res2.append(data[0:MAX_LINES])
       data = data[MAX_LINES:]
-    return 'string(' + ') + string('.join(data) + ')'
+    print "***\n***\n***\n***\n"
+    printRes(res2)
+    print "***\n***\n***\n***\n"
+    return 'string(' + '")\n + string("'.join(res) + ')'
 
 def write(name, template, **context):
   with open(name, 'w') as out:
