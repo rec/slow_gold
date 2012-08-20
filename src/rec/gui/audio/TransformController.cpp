@@ -50,7 +50,10 @@ TransformController::TransformController()
                   getTypeName<AudioSettings>(), "master_tune",
                   GLOBAL_SCOPE),
 
-      enableButton_("Enable", getTypeName<Stretch>(), "time_enabled"),
+      enableButton_("Enable",       "Transform Enable Button: "
+                    "Disable or enable all sound transformations: "
+                    "pitch, time and stereo processing but not master tune.",
+                    getTypeName<Stretch>(), "time_enabled"),
 
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL),
@@ -115,22 +118,20 @@ void TransformController::languageChanged() {
                   "just the right channel, "
                   "or a mono mix of both channels."));
 
-  enableButton_.setTooltip(Trans(
-      "Transform Enable Button: "
-      "Disable or enable all sound transformations: "
-      "pitch, time and stereo processing but not master tune."));
-
   pitchScale_.slider()->setTextValueSuffix(String(" ") + Trans("semitones"));
   fineScale_.slider()->setTextValueSuffix(String(" ") + Trans("cents"));
   masterTune_.slider()->setTextValueSuffix(String(" ") + Trans("cents"));
 
   stereoComboBox_.clear();
+
   stereoComboBox_.setTextWhenNothingSelected(Trans("Stereo"));
   stereoComboBox_.setTextWhenNoChoicesAvailable(Trans("Stereo"));
+
   stereoComboBox_.addItem(Trans("Stereo"), STEREO);
   stereoComboBox_.addItem(Trans("Left"), LEFT);
   stereoComboBox_.addItem(Trans("Right"), RIGHT);
   stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
+
   stereoComboBox_.setSelectedId(sides_, true);
 }
 

@@ -14,12 +14,19 @@ const float LevelMeter::SCALE_UP_METER = 2.0f;
 static const float GAP_WIDTH = 2.0f;
 static const int SEGMENT_COUNT = 32;
 
-LevelMeter::LevelMeter(bool horiz, bool rms, int margin)
-    : horizontal_(horiz),
+LevelMeter::LevelMeter(const string& name, const string& tooltip,
+                       bool horiz, bool rms, int margin)
+    : Component(str(name)),
+      tooltip_(tooltip),
+      horizontal_(horiz),
       rms_(rms),
       gain_(1.0f),
       margin_(margin),
       preFaderLevels_(false) {
+}
+
+void LevelMeter::languageChanged() {
+  setTooltip(Trans(tooltip_));
 }
 
 void LevelMeter::operator()(const rec::audio::LevelVector& levels) {

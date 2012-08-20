@@ -15,6 +15,8 @@ namespace {
 // Skin
 
 TRTR(DISPLAY_ON_STARTUP, "Display this window on startup");
+TRTR(DISPLAY_ON_STARTUP_TOOLTIP, "Turn this box on if you want About Slow "
+     "Gold to appear on startup.");
 TRTR(DRAG_AUDIO, "Drag audio files onto the waveform.");
 TRTR(CD_AUTOMATIC, "CDs will automatically appear at the top-left when you "
                    "insert them.");
@@ -42,7 +44,8 @@ const int BUTTON_WIDTH = 250;
 class AboutPane : public Component {
  public:
   AboutPane(const String& name, const String& versionNumber)
-      : displayOnStartup_(DISPLAY_ON_STARTUP,
+      : displayOnStartup_(str(DISPLAY_ON_STARTUP),
+                          str(DISPLAY_ON_STARTUP_TOOLTIP),
                           getTypeName<GuiSettings>(),
                           data::Address("show_about_on_startup"),
                           GLOBAL_SCOPE) {

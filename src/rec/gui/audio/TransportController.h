@@ -1,7 +1,6 @@
 #ifndef __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 #define __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 
-#include "rec/app/LanguageListener.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
 #include "rec/command/Command.pb.h"
@@ -21,7 +20,6 @@ class TimeController;
 // A GUI component with three drawable buttons that broadcasts commands from
 // those buttons.
 class TransportController : public Layout,
-                            public app::LanguageListener,
                             public juce::ButtonListener,
                             public DataListener<rec::audio::Gain>,
                             public Listener<rec::audio::transport::State>,
@@ -33,8 +31,6 @@ class TransportController : public Layout,
   virtual void buttonClicked(juce::Button *button);
   virtual void operator()(rec::audio::transport::State);
   virtual void operator()(const rec::audio::Gain&);
-
-  virtual void languageChanged();
 
   void setTransportState(rec::audio::transport::State state);
 

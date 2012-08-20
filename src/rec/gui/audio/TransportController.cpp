@@ -46,9 +46,12 @@ TransportController::TransportController(TimeController* timeController)
                       "Jump to the start of the next segment."),
       jumpForwardButton_("Jump Forward", "Jump To Start Button: "
                          "Jump to the start of the track."),
-      level_("Volume", "Volume Slider: Raise or lower the sound intensity, in dB.",
-             getTypeName<Gain>(), data::Address("gain")),
-      muteButton_(Trans("Mute"), getTypeName<Gain>(), data::Address("mute")) {
+      levelMeter_("LevelMeter", "Level Meter: RMS intensity for left and "
+                  "right tracks."),
+      level_("Volume", "Volume Slider: Raise or lower the sound intensity, "
+             "in dB.", getTypeName<Gain>(), data::Address("gain")),
+      muteButton_("Mute", "Mute Button: Mute or unmute the sound.",
+                  getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
   using namespace rec::gui::icon;
@@ -82,11 +85,6 @@ TransportController::TransportController(TimeController* timeController)
   addToLayout(&buttonsLayout_, ICON_SIZE);
   addToLayout(&gainLayout_, ICON_SIZE);
   addToLayout(&levelMeter_, 20);
-}
-
-void TransportController::languageChanged() {
-  levelMeter_.setTooltip(Trans("Level Meter: Display the sound intensity, in RMS dB."));
-  muteButton_.setTooltip(Trans("Mute Button: Mute or unmute the sound."));
 }
 
 TransportController::~TransportController() {}
