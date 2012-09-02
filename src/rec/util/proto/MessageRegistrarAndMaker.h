@@ -14,7 +14,7 @@ class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
   MessageRegistrarAndMaker() {}
   virtual ~MessageRegistrarAndMaker();
 
-  virtual Message* makeMessage(const string& typeName);
+  virtual Message* makeMessage(const string& typeName) const;
 
   virtual void registerInstance(const Message& m, bool copy = true);
 

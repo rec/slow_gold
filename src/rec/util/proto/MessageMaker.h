@@ -11,7 +11,7 @@ class MessageMaker {
   MessageMaker() {}
   virtual ~MessageMaker() {}
 
-  virtual Message* makeMessage(const string& typeName) = 0;
+  virtual Message* makeMessage(const string& typeName) const = 0;
 };
 
 }  // namespace util

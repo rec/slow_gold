@@ -13,7 +13,7 @@ class MessageRegistrarAndMaker::Entry {
   Entry(const Message& m, bool c) { initialize(m, c); }
   Entry(const Entry& e) { initialize(*e.message_, e.copyFrom_); }
 
-  Message* makeMessage() { return Entry(*this).message_.transfer(); }
+  Message* makeMessage() const { return Entry(*this).message_.transfer(); }
 
  private:
   void initialize(const Message& m, bool c) {
@@ -44,8 +44,8 @@ void MessageRegistrarAndMaker::registerInstance(const Message& m, bool copy) {
   registry_.insert(i, std::make_pair(typeName, new Entry(m, copy)));
 }
 
-Message* MessageRegistrarAndMaker::makeMessage(const string& typeName) {
-  Registry::iterator i = registry_.find(typeName);
+Message* MessageRegistrarAndMaker::makeMessage(const string& typeName) const {
+  Registry::const_iterator i = registry_.find(typeName);
   if (i != registry_.end())
     return i->second->makeMessage();
 

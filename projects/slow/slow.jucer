@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="09cO8bUTa" name="SlowGold">
+  <MAINGROUP id="YInSTkfce" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -1101,6 +1101,10 @@
                 name="Proto.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/proto/Proto.h" id="2GXJyNgRy"
                 name="Proto.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/proto/ReadProtoFile.cpp"
+                id="ElcwrLA2Q" name="ReadProtoFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/proto/ReadProtoFile.h" id="PpjMQQi5L"
+                name="ReadProtoFile.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/proto/Reverse.h" id="mjmJuYZmH"
                 name="Reverse.h" resource="0"/>
         </GROUP>
@@ -1626,7 +1630,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="d4gmVOQnR" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="o5kVZ46mK" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
