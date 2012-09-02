@@ -62,9 +62,9 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
-      <AssemblerListingLocation>$(IntDir)\</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(IntDir)\</ProgramDataBaseFileName>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -74,18 +74,18 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\tests.exe</OutputFile>
+      <OutputFile>.\Debug\tests.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\tests.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>.\Debug\tests.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalOptions>ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT  /NODEFAULTLIB:LIBCMTD %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\tests.bsc</OutputFile>
+      <OutputFile>.\Debug\tests.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -97,15 +97,15 @@
       <HeaderFileName/>
     </Midl>
     <ClCompile>
-      <Optimization>MinSpace</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
-      <AssemblerListingLocation>$(IntDir)\</AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)\</ObjectFileName>
-      <ProgramDataBaseFileName>$(IntDir)\</ProgramDataBaseFileName>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -115,11 +115,11 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(OutDir)\tests.exe</OutputFile>
+      <OutputFile>.\Release\tests.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(IntDir)\tests.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>.\Release\tests.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <OptimizeReferences>true</OptimizeReferences>
@@ -128,7 +128,7 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(IntDir)\tests.bsc</OutputFile>
+      <OutputFile>.\Release\tests.bsc</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -326,7 +326,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\DisplayFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\FileType.cpp"/>
@@ -348,7 +347,8 @@
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition_test.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\Proto.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\proto\Defaulter.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\proto\Proto.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\range\Fillable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\range\Range_test.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp"/>
@@ -1776,7 +1776,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Compare.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\destruct_ptr.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h"/>
@@ -1803,7 +1802,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\partition\Convertors.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\partition\Partition.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Platform.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\Proto.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\proto\Defaulter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\proto\Proto.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\proto\Reverse.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Compare.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Contains.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Convert.h"/>
@@ -1818,7 +1819,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\range\SampleRange.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Split.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\WrapSeries.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\ReverseProto.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\STL.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\SystemStats.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\TestData.h"/>
@@ -2316,6 +2316,7 @@
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\code_editor\juce_CodeEditorComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\code_editor\juce_CodeTokeniser.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\code_editor\juce_CPlusPlusCodeTokeniser.h"/>
+    <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\code_editor\juce_CPlusPlusCodeTokeniserFunctions.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\documents\juce_FileBasedDocument.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\embedding\juce_ActiveXControlComponent.h"/>
     <ClInclude Include="..\..\..\..\..\juce\modules\juce_gui_extra\embedding\juce_NSViewComponent.h"/>
@@ -2362,22 +2363,6 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\src\rec\binary\big-icon.png"/>
-    <None Include="..\..\..\..\src\rec\binary\icon.png"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_audio_basics\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_audio_devices\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_audio_formats\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_audio_processors\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_audio_utils\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_core\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_cryptography\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_data_structures\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_events\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_graphics\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_gui_basics\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_gui_extra\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_opengl\juce_module_info"/>
-    <None Include="..\..\..\..\..\juce\modules\juce_video\juce_module_info"/>
     <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>

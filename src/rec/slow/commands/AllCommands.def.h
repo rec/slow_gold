@@ -5,7 +5,7 @@
 // new --include=command/Command --proto=command::Commands src/rec/slow/commands/AllCommands.def
 
 #include "rec/command/Command.h"
-#include "rec/util/Defaulter.h"
+#include "rec/util/proto/Defaulter.h"
 
 namespace rec {
 namespace slow {

@@ -5,7 +5,7 @@
 // new --include=base/Trans.pb --proto=TranslatedStrings --namespace=rec.translation --output=genfiles/translation/rec/translation text/id-TranslatedStrings.def
 
 #include "rec/base/Trans.pb.h"
-#include "rec/util/Defaulter.h"
+#include "rec/util/proto/Defaulter.h"
 
 namespace rec {
 namespace translation {

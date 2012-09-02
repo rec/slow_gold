@@ -3,7 +3,7 @@
 
 #include "rec/data/Data.h"
 #include "rec/data/Opener.h"
-#include "rec/util/Proto.h"
+#include "rec/util/proto/Proto.h"
 
 namespace rec {
 namespace data {

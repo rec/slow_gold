@@ -3,7 +3,7 @@
 
 #include "rec/data/DataOps.h"
 #include "rec/data/UntypedDataListener.h"
-#include "rec/util/Proto.h"
+#include "rec/util/proto/Proto.h"
 
 namespace rec {
 namespace data {

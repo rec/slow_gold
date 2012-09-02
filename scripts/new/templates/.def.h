@@ -5,7 +5,7 @@
 // {commandline}
 
 {includes}
-#include "rec/util/Defaulter.h"
+#include "rec/util/proto/Defaulter.h"
 
 {namespace}
 

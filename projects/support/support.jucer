@@ -36,7 +36,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="ZfxCM4Zyn" name="RequestSupport">
+  <MAINGROUP id="4Pe2sWQIm" name="RequestSupport">
     <GROUP id="IpfTZMMtW" name="translation">
       <GROUP id="AFgdjleUb" name="rec">
         <GROUP id="777NaKkQk" name="translation">
@@ -1003,10 +1003,6 @@
               name="Cuttable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="bfwzJgzFp"
               name="Cuttable.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/Defaulter.cpp" id="NDsZZXbQy"
-              name="Defaulter.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="uweazAzJF"
-              name="Defaulter.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/destruct_ptr.h" id="ne5Z4G5TM"
               name="destruct_ptr.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="VXL4hmtV2"
@@ -1095,10 +1091,18 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Platform.h" id="hjuw4yimz"
               name="Platform.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/Proto.cpp" id="z6hEVydwO"
-              name="Proto.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Proto.h" id="fucSOVg4a"
-              name="Proto.h" resource="0"/>
+        <GROUP id="1SaRNFMCX" name="proto">
+          <FILE compile="1" file="../../src/rec/util/proto/Defaulter.cpp" id="hglH8XOwq"
+                name="Defaulter.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/proto/Defaulter.h" id="ckhEqUGjC"
+                name="Defaulter.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/proto/Proto.cpp" id="A6XFtrgAn"
+                name="Proto.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/proto/Proto.h" id="iROpDhpTU"
+                name="Proto.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/proto/Reverse.h" id="IliwVaekP"
+                name="Reverse.h" resource="0"/>
+        </GROUP>
         <GROUP id="zXiGZImsP" name="range">
           <FILE compile="0" file="../../src/rec/util/range/Compare.h" id="pvcPlM3li"
                 name="Compare.h" resource="0"/>
@@ -1131,8 +1135,6 @@
           <FILE compile="0" file="../../src/rec/util/range/WrapSeries.h" id="DttwZhDON"
                 name="WrapSeries.h" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/util/ReverseProto.h" id="Uch60Xn62"
-              name="ReverseProto.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="KH3XIw3uH" name="STL.h"
               resource="0"/>
         <FILE compile="1" file="../../src/rec/util/SystemStats.cpp" id="QsF7bAzjO"
@@ -1623,7 +1625,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="7ZWx0rkQG" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="58ZdqsJGt" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

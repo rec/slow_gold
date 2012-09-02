@@ -3,7 +3,7 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/app/Files.h"
 #include "rec/base/Arraysize.h"
-#include "rec/util/ReverseProto.h"
+#include "rec/util/proto/Reverse.h"
 #include "rec/util/file/FileType.h"
 #include "rec/util/file/Util.h"
 

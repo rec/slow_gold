@@ -15,7 +15,7 @@
 #include "rec/slow/Menus.h"
 #include "rec/slow/RegisterProtos.h"
 #include "rec/slow/RegisterAllTranslations.h"
-#include "rec/util/Defaulter.h"
+#include "rec/util/proto/Defaulter.h"
 #include "rec/util/file/FileType.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"

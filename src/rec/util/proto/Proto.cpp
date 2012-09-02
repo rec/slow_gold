@@ -1,6 +1,6 @@
 #include <google/protobuf/descriptor.h>
 
-#include "rec/util/Proto.h"
+#include "rec/util/proto/Proto.h"
 
 namespace rec {
 namespace util {

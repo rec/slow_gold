@@ -8,7 +8,7 @@
 #include "rec/data/proto/FieldOps.h"
 #include "rec/gui/SetterText.h"
 #include "rec/gui/audio/LoopsCuttable.h"
-#include "rec/util/Defaulter.h"
+#include "rec/util/proto/Defaulter.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"

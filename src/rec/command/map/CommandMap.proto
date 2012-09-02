@@ -8,5 +8,11 @@ message CommandMapEntry {
 };
 
 message CommandMapProto {
-  repeated CommandMapEntry entry = 1;
+  enum Type {
+    KEYBOARD = 0;
+    MIDI = 1;
+  };
+
+  optional Type type = 1;
+  repeated CommandMapEntry entry = 2;
 };

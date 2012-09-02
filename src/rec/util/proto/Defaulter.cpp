@@ -1,6 +1,6 @@
 #include <google/protobuf/text_format.h>
 
-#include "rec/util/Defaulter.h"
+#include "rec/util/proto/Defaulter.h"
 #include "rec/util/Copy.h"
 
 namespace rec {

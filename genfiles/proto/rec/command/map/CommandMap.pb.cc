@@ -21,6 +21,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CommandMapProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CommandMapProto_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* CommandMapProto_Type_descriptor_ = NULL;
 
 }  // namespace
 
@@ -48,7 +49,8 @@ void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CommandMapEntry));
   CommandMapProto_descriptor_ = file->message_type(1);
-  static const int CommandMapProto_offsets_[1] = {
+  static const int CommandMapProto_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapProto, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapProto, entry_),
   };
   CommandMapProto_reflection_ =
@@ -62,6 +64,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CommandMapProto));
+  CommandMapProto_Type_descriptor_ = CommandMapProto_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -100,9 +103,11 @@ void protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
     "\n rec/command/map/CommandMap.proto\022\013rec."
     "command\032\031rec/command/Command.proto\"J\n\017Co"
     "mmandMapEntry\022*\n\007command\030\001 \001(\0162\031.rec.com"
-    "mand.Command.Type\022\013\n\003key\030\002 \003(\014\">\n\017Comman"
-    "dMapProto\022+\n\005entry\030\001 \003(\0132\034.rec.command.C"
-    "ommandMapEntry", 214);
+    "mand.Command.Type\022\013\n\003key\030\002 \003(\014\"\217\001\n\017Comma"
+    "ndMapProto\022/\n\004type\030\001 \001(\0162!.rec.command.C"
+    "ommandMapProto.Type\022+\n\005entry\030\002 \003(\0132\034.rec"
+    ".command.CommandMapEntry\"\036\n\004Type\022\014\n\010KEYB"
+    "OARD\020\000\022\010\n\004MIDI\020\001", 296);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/map/CommandMap.proto", &protobuf_RegisterTypes);
   CommandMapEntry::default_instance_ = new CommandMapEntry();
@@ -373,7 +378,29 @@ void CommandMapEntry::Swap(CommandMapEntry* other) {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* CommandMapProto_Type_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CommandMapProto_Type_descriptor_;
+}
+bool CommandMapProto_Type_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
 #ifndef _MSC_VER
+const CommandMapProto_Type CommandMapProto::KEYBOARD;
+const CommandMapProto_Type CommandMapProto::MIDI;
+const CommandMapProto_Type CommandMapProto::Type_MIN;
+const CommandMapProto_Type CommandMapProto::Type_MAX;
+const int CommandMapProto::Type_ARRAYSIZE;
+#endif  // _MSC_VER
+#ifndef _MSC_VER
+const int CommandMapProto::kTypeFieldNumber;
 const int CommandMapProto::kEntryFieldNumber;
 #endif  // !_MSC_VER
 
@@ -393,6 +420,7 @@ CommandMapProto::CommandMapProto(const CommandMapProto& from)
 
 void CommandMapProto::SharedCtor() {
   _cached_size_ = 0;
+  type_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -426,6 +454,9 @@ CommandMapProto* CommandMapProto::New() const {
 }
 
 void CommandMapProto::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    type_ = 0;
+  }
   entry_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -437,8 +468,28 @@ bool CommandMapProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.command.CommandMapEntry entry = 1;
+      // optional .rec.command.CommandMapProto.Type type = 1;
       case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::command::CommandMapProto_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::command::CommandMapProto_Type >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_entry;
+        break;
+      }
+      
+      // repeated .rec.command.CommandMapEntry entry = 2;
+      case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_entry:
@@ -447,7 +498,7 @@ bool CommandMapProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(10)) goto parse_entry;
+        if (input->ExpectTag(18)) goto parse_entry;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -470,10 +521,16 @@ bool CommandMapProto::MergePartialFromCodedStream(
 
 void CommandMapProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.command.CommandMapEntry entry = 1;
+  // optional .rec.command.CommandMapProto.Type type = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->type(), output);
+  }
+  
+  // repeated .rec.command.CommandMapEntry entry = 2;
   for (int i = 0; i < this->entry_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->entry(i), output);
+      2, this->entry(i), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -484,11 +541,17 @@ void CommandMapProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* CommandMapProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.command.CommandMapEntry entry = 1;
+  // optional .rec.command.CommandMapProto.Type type = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->type(), target);
+  }
+  
+  // repeated .rec.command.CommandMapEntry entry = 2;
   for (int i = 0; i < this->entry_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->entry(i), target);
+        2, this->entry(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -501,7 +564,15 @@ void CommandMapProto::SerializeWithCachedSizes(
 int CommandMapProto::ByteSize() const {
   int total_size = 0;
   
-  // repeated .rec.command.CommandMapEntry entry = 1;
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.command.CommandMapProto.Type type = 1;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+    }
+    
+  }
+  // repeated .rec.command.CommandMapEntry entry = 2;
   total_size += 1 * this->entry_size();
   for (int i = 0; i < this->entry_size(); i++) {
     total_size +=
@@ -535,6 +606,11 @@ void CommandMapProto::MergeFrom(const ::google::protobuf::Message& from) {
 void CommandMapProto::MergeFrom(const CommandMapProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   entry_.MergeFrom(from.entry_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      set_type(from.type());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -557,6 +633,7 @@ bool CommandMapProto::IsInitialized() const {
 
 void CommandMapProto::Swap(CommandMapProto* other) {
   if (other != this) {
+    std::swap(type_, other->type_);
     entry_.Swap(&other->entry_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

@@ -4,7 +4,7 @@
 #include <google/protobuf/message.h>
 
 #include "rec/data/Data.h"
-#include "rec/util/Proto.h"
+#include "rec/util/proto/Proto.h"
 
 namespace rec {
 namespace data {

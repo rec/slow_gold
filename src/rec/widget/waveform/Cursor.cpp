@@ -4,7 +4,7 @@
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
-#include "rec/util/Proto.h"
+#include "rec/util/proto/Proto.h"
 #include "rec/widget/waveform/OutlinedCursorLabel.h"
 #include "rec/widget/waveform/WaveformModel.h"
 

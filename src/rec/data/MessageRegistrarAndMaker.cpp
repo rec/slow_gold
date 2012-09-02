@@ -1,7 +1,7 @@
 #include <google/protobuf/message.h>
 
 #include "rec/data/MessageRegistrarAndMaker.h"
-#include "rec/util/Proto.h"
+#include "rec/util/proto/Proto.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 

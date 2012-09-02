@@ -6,9 +6,9 @@
  mkdir -p "$ICON_MAC" "$ICON_WINDOWS" &&\
 \
  $ROOT/rec/scripts/runJucer.sh slow &&\
- $ROOT/rec/scripts/runJucer.sh tests &&\
- $ROOT/rec/scripts/runJucer.sh support
 )
 
+# $ROOT/rec/scripts/runJucer.sh tests &&\
+# $ROOT/rec/scripts/runJucer.sh support
 # $ROOT/rec/scripts/runJucer.sh tests &&\
 # $ROOT/rec/scripts/runJucer.sh command \

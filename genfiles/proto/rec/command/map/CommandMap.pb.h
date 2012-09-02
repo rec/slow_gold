@@ -37,6 +37,25 @@ void protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto();
 class CommandMapEntry;
 class CommandMapProto;
 
+enum CommandMapProto_Type {
+  CommandMapProto_Type_KEYBOARD = 0,
+  CommandMapProto_Type_MIDI = 1
+};
+bool CommandMapProto_Type_IsValid(int value);
+const CommandMapProto_Type CommandMapProto_Type_Type_MIN = CommandMapProto_Type_KEYBOARD;
+const CommandMapProto_Type CommandMapProto_Type_Type_MAX = CommandMapProto_Type_MIDI;
+const int CommandMapProto_Type_Type_ARRAYSIZE = CommandMapProto_Type_Type_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* CommandMapProto_Type_descriptor();
+inline const ::std::string& CommandMapProto_Type_Name(CommandMapProto_Type value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    CommandMapProto_Type_descriptor(), value);
+}
+inline bool CommandMapProto_Type_Parse(
+    const ::std::string& name, CommandMapProto_Type* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<CommandMapProto_Type>(
+    CommandMapProto_Type_descriptor(), name, value);
+}
 // ===================================================================
 
 class CommandMapEntry : public ::google::protobuf::Message {
@@ -197,12 +216,43 @@ class CommandMapProto : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
+  typedef CommandMapProto_Type Type;
+  static const Type KEYBOARD = CommandMapProto_Type_KEYBOARD;
+  static const Type MIDI = CommandMapProto_Type_MIDI;
+  static inline bool Type_IsValid(int value) {
+    return CommandMapProto_Type_IsValid(value);
+  }
+  static const Type Type_MIN =
+    CommandMapProto_Type_Type_MIN;
+  static const Type Type_MAX =
+    CommandMapProto_Type_Type_MAX;
+  static const int Type_ARRAYSIZE =
+    CommandMapProto_Type_Type_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Type_descriptor() {
+    return CommandMapProto_Type_descriptor();
+  }
+  static inline const ::std::string& Type_Name(Type value) {
+    return CommandMapProto_Type_Name(value);
+  }
+  static inline bool Type_Parse(const ::std::string& name,
+      Type* value) {
+    return CommandMapProto_Type_Parse(name, value);
+  }
+  
   // accessors -------------------------------------------------------
   
-  // repeated .rec.command.CommandMapEntry entry = 1;
+  // optional .rec.command.CommandMapProto.Type type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::rec::command::CommandMapProto_Type type() const;
+  inline void set_type(::rec::command::CommandMapProto_Type value);
+  
+  // repeated .rec.command.CommandMapEntry entry = 2;
   inline int entry_size() const;
   inline void clear_entry();
-  static const int kEntryFieldNumber = 1;
+  static const int kEntryFieldNumber = 2;
   inline const ::rec::command::CommandMapEntry& entry(int index) const;
   inline ::rec::command::CommandMapEntry* mutable_entry(int index);
   inline ::rec::command::CommandMapEntry* add_entry();
@@ -216,12 +266,13 @@ class CommandMapProto : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
+  int type_;
   ::google::protobuf::RepeatedPtrField< ::rec::command::CommandMapEntry > entry_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -309,7 +360,24 @@ CommandMapEntry::mutable_key() {
 
 // CommandMapProto
 
-// repeated .rec.command.CommandMapEntry entry = 1;
+// optional .rec.command.CommandMapProto.Type type = 1;
+inline bool CommandMapProto::has_type() const {
+  return _has_bit(0);
+}
+inline void CommandMapProto::clear_type() {
+  type_ = 0;
+  _clear_bit(0);
+}
+inline ::rec::command::CommandMapProto_Type CommandMapProto::type() const {
+  return static_cast< ::rec::command::CommandMapProto_Type >(type_);
+}
+inline void CommandMapProto::set_type(::rec::command::CommandMapProto_Type value) {
+  GOOGLE_DCHECK(::rec::command::CommandMapProto_Type_IsValid(value));
+  _set_bit(0);
+  type_ = value;
+}
+
+// repeated .rec.command.CommandMapEntry entry = 2;
 inline int CommandMapProto::entry_size() const {
   return entry_.size();
 }
@@ -344,6 +412,10 @@ CommandMapProto::mutable_entry() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::CommandMapProto_Type>() {
+  return ::rec::command::CommandMapProto_Type_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

@@ -5,7 +5,7 @@
 #include "rec/data/DataUpdater.h"
 #include "rec/data/UndoStack.h"
 #include "rec/util/Copy.h"
-#include "rec/util/Proto.h"
+#include "rec/util/proto/Proto.h"
 
 namespace rec {
 namespace data {
