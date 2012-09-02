@@ -37,10 +37,12 @@ class SlowWindow : public app::Window, public HasInstance  {
   virtual void activeWindowStatusChanged();
 
  private:
+  void gotoNextFile();
+
   ptr<Instance> instanceDeleter_;
   ptr<Component> aboutWindow_;
   bool startupFinished_;
-  String startupFile_;
+  File nextFile_;
 
   CriticalSection lock_;
 

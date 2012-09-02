@@ -5,6 +5,8 @@
 
 namespace rec {
 
+namespace util { class MessageMaker; }
+namespace util { class MessageRegistrar; }
 namespace util { class MessageRegistrarAndMaker; }
 
 namespace data {
@@ -30,6 +32,9 @@ struct DataCenter {
   UndoStack* undoStack() const { return undo_.get(); }
 
   void waitTillClear() const;
+
+  const MessageRegistrar& getMessageRegistrar() const;
+  const MessageMaker& getMessageMaker() const;
 };
 
 const DataCenter& getDataCenter();

@@ -34,6 +34,15 @@ void DataCenter::waitTillClear() const {
     Thread::sleep(10);
 }
 
+
+const MessageRegistrar& DataCenter::getMessageRegistrar() const {
+  return *registry_;
+}
+
+const MessageMaker& DataCenter::getMessageMaker() const {
+  return *registry_;
+}
+
 static DataCenter** getDC() {
   static DataCenter* dataCenter = new DataCenter;
   return &dataCenter;

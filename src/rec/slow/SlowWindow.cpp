@@ -16,6 +16,7 @@
 #include "rec/slow/RegisterProtos.h"
 #include "rec/slow/RegisterAllTranslations.h"
 #include "rec/util/proto/Defaulter.h"
+#include "rec/util/proto/ReadProtoFile.h"
 #include "rec/util/file/FileType.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
@@ -30,10 +31,10 @@ namespace {
 
 using namespace juce;
 
-// Skin
-
 const int FADE_IN_TIME = 1500;
 const int FADE_OUT_TIME = 750;
+
+const char WOODSHED_SUFFIX[] = "wshed";
 
 void deleteAll(const File& appDir, const String& pattern) {
   DirectoryIterator iterator(appDir, false, pattern);
@@ -94,13 +95,28 @@ void SlowWindow::doStartup() {
   instance_->startup();
 }
 
+void SlowWindow::gotoNextFile() {
+  if (nextFile_ != File::nonexistent) {
+    if (nextFile_.hasFileExtension(WOODSHED_SUFFIX)) {
+      const MessageMaker& maker = data::getDataCenter().getMessageMaker();
+      ptr<Message> msg(readProtoFile(nextFile_, maker));
+      if (msg) {
+        LOG(INFO) << "Reading file " << str(nextFile_);
+      } else {
+        LOG(DFATAL) << "Couldn't read woodshed file " << str(nextFile_);
+      }
+    } else {
+      currentFile()->setFile(nextFile_);
+    }
+  }
+}
+
 void SlowWindow::doPostStartup() {
   Lock l(lock_);
 
   instance_->postStartup();
   startupFinished_ = true;
-  if (startupFile_.length())
-    currentFile()->setFile(startupFile_);
+  gotoNextFile();
 }
 
 void SlowWindow::doShutdown() {
@@ -111,11 +127,11 @@ void SlowWindow::doShutdown() {
 
 void SlowWindow::anotherInstanceStarted(const String& f) {
   Lock l(lock_);
-  String file = f.trimCharactersAtEnd("\"").trimCharactersAtStart("\"");
+
+  nextFile_ = File(f.trimCharactersAtEnd("\"").
+                   trimCharactersAtStart("\""));
   if (startupFinished_)
-    currentFile()->setFile(file);
-  else
-    startupFile_ = file;
+    gotoNextFile();
 }
 
 Component* SlowWindow::getMainComponent() {
@@ -134,19 +150,19 @@ void SlowWindow::activeWindowStatusChanged() {
 }
 
 void SlowWindow::startAboutWindow() {
-  LOG(INFO) << "Slow::startAboutWindow";
   if (!aboutWindow_) {
     aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
                                        application()->name(),
                                        application()->version()));
   }
   Desktop::getInstance().getAnimator().fadeIn(aboutWindow_.get(), FADE_IN_TIME);
-  LOG(INFO) << "Slow::finished";
 }
 
 void SlowWindow::stopAboutWindow() {
-  if (aboutWindow_)
-    Desktop::getInstance().getAnimator().fadeOut(aboutWindow_.get(), FADE_OUT_TIME);
+  if (aboutWindow_) {
+    Desktop::getInstance().getAnimator().fadeOut(aboutWindow_.get(),
+                                                 FADE_OUT_TIME);
+  }
 }
 
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
