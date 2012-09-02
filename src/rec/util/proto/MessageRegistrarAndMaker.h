@@ -1,13 +1,13 @@
-#ifndef __REC_DATA_MESSAGEREGISTRARANDMAKER__
-#define __REC_DATA_MESSAGEREGISTRARANDMAKER__
+#ifndef __REC_UTIL_MESSAGEREGISTRARANDMAKER__
+#define __REC_UTIL_MESSAGEREGISTRARANDMAKER__
 
 #include <map>
 
-#include "rec/data/MessageMaker.h"
-#include "rec/data/MessageRegistrar.h"
+#include "rec/util/proto/MessageMaker.h"
+#include "rec/util/proto/MessageRegistrar.h"
 
 namespace rec {
-namespace data {
+namespace util {
 
 class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
  public:
@@ -27,7 +27,7 @@ class MessageRegistrarAndMaker : public MessageRegistrar, public MessageMaker {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(MessageRegistrarAndMaker);
 };
 
-}  // namespace data
+}  // namespace util
 }  // namespace rec
 
-#endif  // __REC_DATA_MESSAGEREGISTRARANDMAKER__
+#endif  // __REC_UTIL_MESSAGEREGISTRARANDMAKER__

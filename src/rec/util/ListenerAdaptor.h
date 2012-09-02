@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_LISTENERADAPTOR__
 #define __REC_UTIL_LISTENERADAPTOR__
 
-#include "rec/util/MessageListener.h"
+#include "rec/util/proto/MessageListener.h"
 
 namespace rec {
 namespace util {

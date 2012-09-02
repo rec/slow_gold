@@ -4,12 +4,14 @@
 #include "rec/base/base.h"
 
 namespace rec {
+
+namespace util { class MessageRegistrarAndMaker; }
+
 namespace data {
 
 class DataMaker;
 class DataMap;
 class DataUpdater;
-class MessageRegistrarAndMaker;
 class UndoStack;
 
 struct DataCenter {

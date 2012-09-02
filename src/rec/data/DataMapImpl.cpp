@@ -2,10 +2,10 @@
 
 #include "rec/data/Data.h"
 #include "rec/data/DataMaker.h"
-#include "rec/data/MessageMaker.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/file/VirtualFile.pb.h"
+#include "rec/util/proto/MessageMaker.h"
 
 namespace rec {
 namespace data {

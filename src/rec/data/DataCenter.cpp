@@ -3,8 +3,8 @@
 #include "rec/data/DataMakerImpl.h"
 #include "rec/data/DataMapImpl.h"
 #include "rec/data/DataUpdater.h"
-#include "rec/data/MessageRegistrarAndMaker.h"
 #include "rec/data/UndoStack.h"
+#include "rec/util/proto/MessageRegistrarAndMaker.h"
 
 namespace rec {
 namespace data {

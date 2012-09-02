@@ -203,7 +203,6 @@
     <ClCompile Include="..\..\..\..\src\rec\data\DataOps.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataSet.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataUpdater.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp"/>
@@ -329,6 +328,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\proto\Defaulter.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\proto\MessageRegistrarAndMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\proto\Proto.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\range\Fillable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp"/>
@@ -1596,9 +1596,6 @@
     <ClInclude Include="..\..\..\..\src\rec\data\DataSet.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Destructable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\MessageMaker.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrar.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\data\MessageRegistrarAndMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Opener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h"/>
@@ -1778,6 +1775,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\partition\Partition.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Platform.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\proto\Defaulter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\proto\MessageMaker.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\proto\MessageRegistrar.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\proto\MessageRegistrarAndMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\proto\Proto.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\proto\Reverse.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Compare.h"/>

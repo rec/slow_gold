@@ -4,7 +4,7 @@
 #include "rec/base/base.h"
 
 namespace rec {
-namespace data {
+namespace util {
 
 class MessageMaker {
  public:
@@ -14,7 +14,7 @@ class MessageMaker {
   virtual Message* makeMessage(const string& typeName) = 0;
 };
 
-}  // namespace data
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_DATA_MESSAGEMAKER__

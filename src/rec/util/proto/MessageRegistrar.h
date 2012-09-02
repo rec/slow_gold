@@ -4,7 +4,7 @@
 #include "rec/base/base.h"
 
 namespace rec {
-namespace data {
+namespace util {
 
 class MessageRegistrar {
  public:
@@ -22,7 +22,7 @@ void registerClass(MessageRegistrar* registrar) {
   registrar->registerInstance(Class::default_instance(), false);
 }
 
-}  // namespace data
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_DATA_MESSAGEREGISTRAR__

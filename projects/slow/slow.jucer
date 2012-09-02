@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="jtJXkYspU" name="SlowGold">
+  <MAINGROUP id="09cO8bUTa" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -444,14 +444,6 @@
               name="DataUpdater.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Destructable.h" id="EsdxbWU68"
               name="Destructable.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/MessageMaker.h" id="YO6ErajNK"
-              name="MessageMaker.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/MessageRegistrar.h" id="ucjleXvSE"
-              name="MessageRegistrar.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/data/MessageRegistrarAndMaker.cpp"
-              id="SudjRffM0" name="MessageRegistrarAndMaker.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/MessageRegistrarAndMaker.h"
-              id="WAZsYF9gK" name="MessageRegistrarAndMaker.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Opener.h" id="Cr2YsIdsV"
               name="Opener.h" resource="0"/>
         <GROUP id="78xhrLZr7" name="proto">
@@ -1097,6 +1089,14 @@
                 name="Defaulter.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/proto/Defaulter.h" id="92JHyF6B3"
                 name="Defaulter.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/proto/MessageMaker.h" id="zET3Po9KI"
+                name="MessageMaker.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/proto/MessageRegistrar.h"
+                id="XBfy07IlR" name="MessageRegistrar.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/proto/MessageRegistrarAndMaker.cpp"
+                id="nHLRNSviY" name="MessageRegistrarAndMaker.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/proto/MessageRegistrarAndMaker.h"
+                id="SzSJWvNRm" name="MessageRegistrarAndMaker.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/proto/Proto.cpp" id="kxdai2zQh"
                 name="Proto.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/proto/Proto.h" id="2GXJyNgRy"
@@ -1626,7 +1626,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ZMi39moQx" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="d4gmVOQnR" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

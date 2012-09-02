@@ -1,12 +1,12 @@
 #include <google/protobuf/message.h>
 
-#include "rec/data/MessageRegistrarAndMaker.h"
-#include "rec/util/proto/Proto.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/proto/MessageRegistrarAndMaker.h"
+#include "rec/util/proto/Proto.h"
 
 namespace rec {
-namespace data {
+namespace util {
 
 class MessageRegistrarAndMaker::Entry {
  public:
@@ -53,5 +53,5 @@ Message* MessageRegistrarAndMaker::makeMessage(const string& typeName) {
   return NULL;
 }
 
-}  // namespace data
+}  // namespace util
 }  // namespace rec

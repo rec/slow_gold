@@ -6,11 +6,13 @@
 #include "rec/data/DataMap.h"
 
 namespace rec {
+
+namespace util { class MessageMaker; }
+
 namespace data {
 
 class Data;
 class DataMaker;
-class MessageMaker;
 
 class DataMapImpl : public DataMap {
  public:
