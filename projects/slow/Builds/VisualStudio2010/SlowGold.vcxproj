@@ -410,6 +410,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc"/>
@@ -1900,6 +1901,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h"/>

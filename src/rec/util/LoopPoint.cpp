@@ -3,7 +3,7 @@
 #include "rec/data/DataOps.h"
 #include "rec/util/Math.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/range/Insert.h"
+#include "rec/util/range/Merge.h"
 #include "rec/base/SampleTime.h"
 
 namespace rec {
@@ -25,13 +25,13 @@ void fillTimeSelection(Container* sel,
       if (j < size)
         endTime = lpl.loop_point(j).time();
       SampleTime end = endTime;
-      insertAtEndAndMerge(sel, SampleRange(begin, end));
+      mergeAtEnd(sel, SampleRange(begin, end));
     }
     i = j;
   }
 
   if (!allowEmpty && sel->empty())
-    insertAtEndAndMerge(sel, SampleRange(0, length));
+    mergeAtEnd(sel, SampleRange(0, length));
 }
 
 

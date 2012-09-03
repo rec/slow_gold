@@ -31,9 +31,8 @@ void FillerThread::setFillPositionOrJump() {
     SampleRangeVector readerFilled = reader->filled();
     SampleRangeVector fill = difference<SampleTime>(sel, readerFilled);
     if (!fill.empty()) {
-      SampleRangeVector fillList = fillSeries<SampleTime>(fill,
-                                                          currentTime()->time(),
-                                                          length(), STOP_AT_END);
+      SampleTime time = currentTime()->time();
+      SampleRangeVector fillList = getUnfilledBlocks(fill, time, length(), STOP_AT_END);
       if (!fillList.empty())
         reader->setNextFillPosition(fillList.begin()->begin_);
       else

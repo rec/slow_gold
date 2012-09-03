@@ -7,17 +7,20 @@ namespace rec {
 namespace audio {
 namespace source {
 
-void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
+void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& ai) {
   SampleRangeVector sel = selection();
   SampleTime pos = getNextReadPosition();
   if (!sel.begin()->end_) {
-    clear(audioInfo);
+    clear(ai);
     return;
   }
-  AudioSourceChannelInfo info = audioInfo;
-  SampleRangeVector blocks = fillSeries(sel, pos, SampleTime(info.numSamples), WRAP);
+  AudioSourceChannelInfo info = ai;
+  SampleRangeVector blocks = getUnfilledBlocks(sel, pos,
+                                               SampleTime(info.numSamples),
+                                               WRAP);
 
-  for (SampleRangeVector::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
+  for (SampleRangeVector::const_iterator i = blocks.begin(); i != blocks.end();
+       ++i) {
     setNextReadPosition(i->begin_);
     info.numSamples = static_cast<int>(i->size());
     Wrappy::getNextAudioBlock(info);

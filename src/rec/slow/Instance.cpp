@@ -13,6 +13,7 @@
 #include "rec/base/SampleRate.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/Opener.h"
 #include "rec/data/UndoStack.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/LookAndFeel.h"

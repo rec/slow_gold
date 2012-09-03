@@ -2,6 +2,7 @@
 
 #include "rec/data/Address.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/Opener.h"
 #include "rec/data/UntypedDataListener.h"
 #include "rec/data/proto/FieldOps.h"
 #include "rec/util/file/FileType.h"

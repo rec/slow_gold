@@ -2,11 +2,18 @@
 #define __REC_UTIL_MERGE__
 
 #include "rec/util/range/Contains.h"
-#include "rec/util/range/Insert.h"
 #include "rec/util/range/Range.h"
 
 namespace rec {
 namespace util {
+
+template <typename Type>
+void mergeAtEnd(typename Range<Type>::Vector* c, const Range<Type>& r) {
+  if (c->empty() || c->back().end_ < r.begin_ || c->back().begin_ > r.begin_)
+    c->push_back(r);
+  else
+    c->back().end_ = r.end_;
+}
 
 template <typename Type, typename Container>
 Container merge(const Container& x, const Container& y) {
@@ -20,7 +27,7 @@ Container merge(const Container& x, const Container& y) {
     if (prev && intersects(*prev, next)) {
       prev->end_ = next.end_;
     } else {
-      insertAtEndAndMerge(&result, next);
+      mergeAtEnd(&result, next);
       prev = const_cast<Range<Type>*>(&*result.rbegin());
     }
   }
@@ -31,7 +38,7 @@ Container merge(const Container& x, const Container& y) {
 template <typename Type, typename Container>
 Container merge(const Container& x, const Range<Type>& y) {
   Container c;
-  insertAtEndAndMerge(&c, y);
+  mergeAtEnd(&c, y);
   return merge<Type, Container>(x, c);
 }
 

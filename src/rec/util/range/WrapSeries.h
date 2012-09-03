@@ -2,7 +2,7 @@
 #define __REC_UTIL_WRAPSERIES__
 
 #include "rec/util/range/Range.h"
-#include "rec/util/range/Insert.h"
+#include "rec/util/range/Merge.h"
 
 namespace rec {
 namespace util {
@@ -10,15 +10,15 @@ namespace util {
 enum FillWrapping { STOP_AT_END, WRAP };
 
 template <typename Type, typename Container>
-Container fillSeries(const Container& sel, Type pos, Type len, FillWrapping w) {
+Container getUnfilledBlocks(const Container& selection, Type pos, Type len, FillWrapping w) {
   Container result;
-  if (len && !sel.empty()) {
-    typename Container::const_iterator i = sel.begin();
-    for (; i != sel.end() && (i->end_ <= pos); ++i);
+  if (len && !selection.empty()) {
+    typename Container::const_iterator i = selection.begin();
+    for (; i != selection.end() && (i->end_ <= pos); ++i);
 
-    for (uint j = 0; len > 0 && (w == WRAP || j < sel.size()); ++i, ++j) {
-      if (i == sel.end()) {
-        i = sel.begin();
+    for (uint j = 0; len > 0 && (w == WRAP || j < selection.size()); ++i, ++j) {
+      if (i == selection.end()) {
+        i = selection.begin();
         pos = i->begin_;
       } else {
         pos = std::max(pos, i->begin_);
@@ -27,7 +27,7 @@ Container fillSeries(const Container& sel, Type pos, Type len, FillWrapping w) {
       DCHECK(size > 0); //  << sel; // TODO
       if (size <= 0)
         break;
-      insertAtEndAndMerge(&result, Range<Type>(pos, pos + size));
+      mergeAtEnd(&result, Range<Type>(pos, pos + size));
       len -= size;
     }
   }

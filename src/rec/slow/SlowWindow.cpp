@@ -11,6 +11,7 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/LegacyDatabase.pb.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/RegisterProtos.h"
@@ -100,11 +101,12 @@ void SlowWindow::gotoNextFile() {
     if (nextFile_.hasFileExtension(WOODSHED_SUFFIX)) {
       const MessageMaker& maker = data::getDataCenter().getMessageMaker();
       ptr<Message> msg(readProtoFile(nextFile_, maker));
-      if (msg) {
-        LOG(INFO) << "Reading file " << str(nextFile_);
-      } else {
+      if (!msg)
         LOG(DFATAL) << "Couldn't read woodshed file " << str(nextFile_);
-      }
+      else if (const LegacyDatabase* db = dynamic_cast<LegacyDatabase*>(msg.get()))
+        data::setProto(*db, data::global());
+      else
+        LOG(DFATAL) << "Database type" << getTypeName(*msg);
     } else {
       currentFile()->setFile(nextFile_);
     }
@@ -145,6 +147,7 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
 void SlowWindow::activeWindowStatusChanged() {
   if (menus())
     menus()->menuItemsChanged();
+
   if (components())
     components()->waveform_->repaint();
 }

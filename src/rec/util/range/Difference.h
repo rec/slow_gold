@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_DIFFERENCE__
 #define __REC_UTIL_DIFFERENCE__
 
-#include "rec/util/range/Insert.h"
+#include "rec/util/range/Merge.h"
 #include "rec/util/range/Range.h"
 #include "rec/util/range/Merge.h"
 
@@ -16,7 +16,7 @@ Container difference(const Range<Type>& block, const Container& s) {
   for (i = s.begin(); i != s.end() && b.size() && b.end_ > i->begin_; ++i) {
     if (b.begin_ < i->end_) {
       if (b.begin_ < i->begin_) {
-        insertAtEndAndMerge(&diff, SampleRange(b.begin_, i->begin_));
+        mergeAtEnd(&diff, SampleRange(b.begin_, i->begin_));
         b.begin_ = i->begin_;
       }
 
@@ -29,7 +29,7 @@ Container difference(const Range<Type>& block, const Container& s) {
   }
 
   if (b.size() > 0)
-    insertAtEndAndMerge(&diff, b);
+    mergeAtEnd(&diff, b);
 
   return diff;
 }
@@ -60,11 +60,11 @@ Container difference(const Container& x, const Container& y) {
     Range<Type> b = *i;
     for (; j != y.end() && j->begin_ < i->end_; ++j) {
       if (i->begin_ < j->begin_)
-        insertAtEndAndMerge(&result, SampleRange(b.begin_, j->begin_));
+        mergeAtEnd(&result, SampleRange(b.begin_, j->begin_));
       b.begin_ = j->end_;
     }
     if (b.size() > 0)
-      insertAtEndAndMerge(&result, b);
+      mergeAtEnd(&result, b);
   }
 
   return result;

@@ -2,7 +2,6 @@
 #define __REC_DATA_APPLY__
 
 #include "rec/data/Data.h"
-#include "rec/data/Opener.h"
 #include "rec/util/proto/Proto.h"
 
 namespace rec {

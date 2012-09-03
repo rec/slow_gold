@@ -4,7 +4,7 @@
 #include <set>
 #include <vector>
 
-#include "rec/base/base.h"
+#include "rec/util/STL.h"
 
 namespace rec {
 namespace util {
@@ -44,6 +44,22 @@ struct Range {
  private:
   JUCE_LEAK_DETECTOR(Range);
 };
+
+template <typename Type>
+Range<Type> makeRange(Type begin, Type end) {
+  return Range<Type>(begin, end);
+}
+
+template <typename Type, typename Selection>
+void insertRange(const Range<Type>& range, Selection *selection) {
+  if (!range.empty())
+    stl::insert(range, selection);
+}
+
+template <typename Type, typename Selection>
+void insertRange(Type begin, Type end, Selection *selection) {
+  insertRange(makeRange(begin, end), selection);
+}
 
 }  // namespace util
 }  // namespace rec

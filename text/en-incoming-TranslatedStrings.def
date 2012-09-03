@@ -123,7 +123,7 @@ str {
 str {
   original: "CDs will automatically appear at the top-left when you insert them."
   file: "rec/slow/AboutWindow.cpp"
-  line: 20
+  line: 22
 }
 str {
   original: "cents"
@@ -240,7 +240,7 @@ str {
 str {
   original: "Copyright \302\251 %d"
   file: "rec/slow/AboutWindow.cpp"
-  line: 26
+  line: 28
 }
 str {
   original: "Couldn\'t Create A Support Request"
@@ -275,7 +275,7 @@ str {
 str {
   original: "Create loop points by pressing the L key."
   file: "rec/slow/AboutWindow.cpp"
-  line: 23
+  line: 25
 }
 str {
   original: "Currently assigned to"
@@ -323,7 +323,7 @@ str {
 str {
   original: "Download the manual from the Help menu for many more commands."
   file: "rec/slow/AboutWindow.cpp"
-  line: 25
+  line: 27
 }
 str {
   original: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
@@ -331,7 +331,7 @@ str {
 str {
   original: "Drag audio files onto the waveform."
   file: "rec/slow/AboutWindow.cpp"
-  line: 18
+  line: 20
 }
 str {
   original: "Drag Mode"
@@ -342,7 +342,7 @@ str {
 str {
   original: "Drag the Speed slider to slow down or speed up."
   file: "rec/slow/AboutWindow.cpp"
-  line: 22
+  line: 24
 }
 str {
   original: "Edit"
@@ -369,6 +369,9 @@ str {
 }
 str {
   original: "Eject all CDs and DVDs"
+}
+str {
+  original: "Enable"
 }
 str {
   original: "Enable Automatic Updates"
@@ -661,10 +664,7 @@ str {
   original: "Left"
 }
 str {
-  original: "Level Meter: Display the sound intensity, in RMS dB."
-}
-str {
-  original: "Level Slider: Raise or lower the sound intensity, in dB."
+  original: "Level Meter: RMS intensity for left and right tracks."
 }
 str {
   original: "Loop Entire Track"
@@ -691,9 +691,6 @@ str {
 }
 str {
   original: "Master Tune Slider: Master tune is a global detune over all tracks."
-}
-str {
-  original: "Master Tune Slider: Master tune ist eine globale Verstimmung \303\274ber alle Spuren."
 }
 str {
   original: "MIDI"
@@ -728,7 +725,7 @@ str {
 str {
   original: "Not Registered!"
   file: "rec/slow/AboutWindow.cpp"
-  line: 28
+  line: 30
 }
 str {
   original: "Notes"
@@ -809,25 +806,16 @@ str {
   original: "Pitch"
 }
 str {
-  original: "Playback Fine Tuning Slider: Feinabstimmung Schleife nach oben oder unten in der Tonh\303\266he in Cent (1/100 eines Halbtons) gemessen."
-}
-str {
   original: "Playback Fine Tuning Slider: Fine tune loop up or down in pitch, measured in cents (1/100 of a semitone)."
 }
 str {
   original: "Playback Speed Slider: Controls how fast the loop plays back: higher numbers mean the loop plays back faster."
 }
 str {
-  original: "Playback Speed-Slider: Steuert, wie schnell die Schleife wiedergegeben: h\303\266here Zahlen bedeuten die Schleife abgespielt schneller."
-}
-str {
   original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
 }
 str {
   original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
-}
-str {
-  original: "Playback Tuning Slider: Coarse Loop-Wiedergabe nach oben und unten in der Tonh\303\266he in Halbt\303\266nen gemessen."
 }
 str {
   original: "Please attach the file on your desktop named %s to this email and send it to us!"
@@ -852,7 +840,7 @@ str {
 str {
   original: "Press the space bar to start and stop playback."
   file: "rec/slow/AboutWindow.cpp"
-  line: 21
+  line: 23
 }
 str {
   original: "Quit"
@@ -918,7 +906,7 @@ str {
 str {
   original: "Registered to:"
   file: "rec/slow/AboutWindow.cpp"
-  line: 27
+  line: 29
 }
 str {
   original: "Remove this command mapping"
@@ -1239,9 +1227,6 @@ str {
   original: "Stretch"
 }
 str {
-  original: "Stufe Slider: Erh\303\266hen oder senken Sie die Lautst\303\244rke in dB."
-}
-str {
   original: "Support Request: %s"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
   line: 39
@@ -1380,7 +1365,7 @@ str {
   original: "Track Title: The name of this track."
 }
 str {
-  original: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tunen."
+  original: "Transform Enable Button: Disable or enable all sound transformations: pitch, time and stereo processing but not master tune."
 }
 str {
   original: "Transport"
@@ -1472,7 +1457,7 @@ str {
   original: "Volume"
 }
 str {
-  original: "Volumen"
+  original: "Volume Slider: Raise or lower the sound intensity, in dB."
 }
 str {
   original: "Waiting for a MIDI note, program change or controller..."
