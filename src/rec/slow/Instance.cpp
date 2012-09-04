@@ -111,7 +111,7 @@ class RegisterSlow : public app::RegisterInstance {
         getFullPathName();
       for (int i = 0; i < arraysize(FILES); ++i)
         FILES[i].registerExtension(exe);
-      settings_->set_windows_registered(true);
+      settings->set_windows_registered(true);
     }
 #endif  // JUCE_WINDOWS
   }

@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "rec/audio/Audio.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
