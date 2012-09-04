@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="JykNzRQZ6" name="SlowGold">
+  <MAINGROUP id="kLXcG9UcL" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -1111,6 +1111,10 @@
         <GROUP id="HsYwL8ZnN" name="range">
           <FILE compile="0" file="../../src/rec/util/range/Compare.h" id="1qRiZ7xx7"
                 name="Compare.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Complement.h" id="FIsxmtnsv"
+                name="Complement.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Concat.h" id="3eb5VbMCc"
+                name="Concat.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/Contains.h" id="GFFDRkY0B"
                 name="Contains.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/Convert.h" id="byZ7qmME6"
@@ -1123,8 +1127,6 @@
                 name="Fillable.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/FullTo.h" id="gzM73ptlR"
                 name="FullTo.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/range/Insert.h" id="XZ9vlSeT4"
-                name="Insert.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/MakeRange.h" id="xWR9z3vaW"
                 name="MakeRange.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/Merge.h" id="7nKpCSevm"
@@ -1135,6 +1137,8 @@
                 name="Restrict.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/SampleRange.h" id="ONxe7wV0t"
                 name="SampleRange.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/range/Slice.h" id="HDf4uQIGs"
+                name="Slice.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/Split.h" id="KtZpn2pES"
                 name="Split.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/range/WrapSeries.h" id="PqmGw4aaW"
@@ -1634,7 +1638,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="XnZkmbIgC" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Cj74dpW7M" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

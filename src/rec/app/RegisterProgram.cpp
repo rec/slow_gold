@@ -41,12 +41,16 @@ bool RegisterProgram::tryOneUrl(const String& urlName) {
                                                 progressCallback(),
                                                 this, "", timeOut(),
                                                 NULL));
-  if (!stream)
+  if (!stream) {
     LOG(ERROR) << "Couldn't create input stream for URL " << url.toString(true);
-  else if (acceptResult(stream->readEntireStreamAsString()))
+    return false;
+  }
+  String result = stream->readEntireStreamAsString();
+  if (acceptResult(result))
     return true;
-  else
-    LOG(ERROR) << "Didn't accept result for URL " << url.toString(true);
+
+  LOG(ERROR) << "Didn't accept result for URL " << url.toString(true);
+  LOG(ERROR) << "Result: \n " << str(result);
 
   return false;
 }

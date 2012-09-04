@@ -34,7 +34,6 @@ using audio::AudioSettings;
 using namespace rec::audio::stretch;
 using namespace rec::widget::waveform;
 
-
 TRTR(FILE_SAVE_FAILED, "Error During Save.");
 TRTR(FILE_SAVE_FAILED_FULL, "There was an error saving your file %s.");
 TRTR(FINISHING_LOADING, "Finishing loading audio from disk.");
@@ -96,6 +95,7 @@ File getBaseFile(Instance* instance, const String& suffix,
       baseName += String::formatted(TRANSPOSE_MANY, c_str(sign), c_str(num));
   }
 
+  baseName = File::createLegalFileName(baseName);
   return file.getChildFile(baseName).withFileExtension(suffix);
 }
 
@@ -122,7 +122,8 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   GuiSettings settings = data::getProto<GuiSettings>();
   audio::AudioSettings audioSettings = data::getProto<audio::AudioSettings>();
 
-  File startFile = getBaseFile(instance, suffix, settings, audioSettings);
+
+  File startFile(getBaseFile(instance, suffix, settings, audioSettings));
   VirtualFile vf = instance->file();
   File baseFile;
   if (vf.type() != VirtualFile::CD) {
@@ -136,6 +137,8 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
 
   while (true) {
     file = slow::browseForFile(SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
+    file = File(File::createLegalPathName(file.getFullPathName()));
+
     if (file == File::nonexistent)
       return file;
     String newSuffix = file.getFileExtension();

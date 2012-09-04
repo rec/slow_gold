@@ -3507,6 +3507,12 @@
     <ClInclude Include="..\..\..\..\src\rec\util\range\Compare.h">
       <Filter>SlowGold\rec\util\range</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Complement.h">
+      <Filter>SlowGold\rec\util\range</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Concat.h">
+      <Filter>SlowGold\rec\util\range</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Contains.h">
       <Filter>SlowGold\rec\util\range</Filter>
     </ClInclude>
@@ -3522,9 +3528,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\range\FullTo.h">
       <Filter>SlowGold\rec\util\range</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\range\Insert.h">
-      <Filter>SlowGold\rec\util\range</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\MakeRange.h">
       <Filter>SlowGold\rec\util\range</Filter>
     </ClInclude>
@@ -3538,6 +3541,9 @@
       <Filter>SlowGold\rec\util\range</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\SampleRange.h">
+      <Filter>SlowGold\rec\util\range</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\range\Slice.h">
       <Filter>SlowGold\rec\util\range</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Split.h">

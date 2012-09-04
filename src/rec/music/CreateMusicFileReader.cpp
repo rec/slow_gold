@@ -32,7 +32,7 @@ TRTR(FILE_NOT_EXIST_FULL, "Sorry, we couldn't find the file %s.  Perhaps you "
                           "currently mounted.");
 TRTR(THE_FULL_PATH, "The full path was: %s");
 TRTR(CANT_READ_M4A, "We Can't Read .m4a Files On Windows");
-TRTR(CANT_READ_M4A_FULL, "Sorry, file %s is an .m4a file and we cano't yet "
+TRTR(CANT_READ_M4A_FULL, "Sorry, file %s is an .m4a file and we can't yet "
                          "read these files on Windows: "
                          " please convert it to mp3 using iTunes.");
 
