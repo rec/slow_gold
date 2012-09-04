@@ -136,6 +136,7 @@ void AboutWindow::registerAllTranslations() {
   COPYRIGHT.registerTranslation();
   CREATE_LOOPS.registerTranslation();
   DISPLAY_ON_STARTUP.registerTranslation();
+  DISPLAY_ON_STARTUP_TOOLTIP.registerTranslation();
   DOWNLOAD_MANUAL.registerTranslation();
   DRAG_AUDIO.registerTranslation();
   DRAG_SPEED.registerTranslation();
