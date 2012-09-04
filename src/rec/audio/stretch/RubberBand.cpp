@@ -31,9 +31,9 @@ RubberBand::RubberBand(Source* s, const StretchParameters& stretch)
       outputSampleRate_(0),
       timeScale_(0.0),
       pitchScale_(0.0) {
-  doLog("RubberBand::RubberBand\n");
+  doLog("RubberBand::RubberBand");
   CHECK_DDD(7134, 1893, int32, int16);
-  doLog("RubberBand::RubberBand done\n");
+  doLog("RubberBand::RubberBand done");
 }
 
 RubberBand::~RubberBand() {}
@@ -44,9 +44,9 @@ bool RubberBand::canBypass() const {
 }
 
 void RubberBand::init() {
-  doLog("RubberBand::init\n");
+  doLog("RubberBand::init");
   stretchChanged();
-  doLog("RubberBand::init done\n");
+  doLog("RubberBand::init done");
 }
 
 void RubberBand::getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -106,7 +106,7 @@ void RubberBand::process() {
 }
 
 void RubberBand::stretchChanged() {
-  doLog("RubberBand::stretchChanged\n");
+  doLog("RubberBand::stretchChanged");
   double tr = timeScale();
   double ps = pitchScale();
 
@@ -114,9 +114,11 @@ void RubberBand::stretchChanged() {
     outputSampleRate_ = stretch_.output_sample_rate();
     size_t rate = static_cast<size_t>(outputSampleRate_);
     DCHECK(rate);
-    doLog("RubberBandStretcher::RubberBandStretcher\n");
+    doLog(String("RubberBandStretcher::RubberBandStretcher ") +
+          String(outputSampleRate_) +
+          ", " + String(tr) + ", " + String(ps));
     stretcher_.reset(new RubberBandStretcher(rate, 2, OPTIONS, tr, ps));
-    doLog("RubberBandStretcher::RubberBandStretcher done\n");
+    doLog("RubberBandStretcher::RubberBandStretcher done");
 
   } else if (near(tr, timeScale_, EPSILON) && near(ps, pitchScale_, EPSILON)) {
     return;
@@ -129,7 +131,7 @@ void RubberBand::stretchChanged() {
 
   timeScale_ = tr;
   pitchScale_ = ps;
-  doLog("RubberBand::stretchChanged done\n");
+  doLog("RubberBand::stretchChanged done");
 }
 
 }  // namespace stretch

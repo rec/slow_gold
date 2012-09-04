@@ -20,7 +20,7 @@ GenericApplication::GenericApplication(ApplicationFunction i,
 GenericApplication::~GenericApplication() {}
 
 void GenericApplication::initialise(const String&) {
-  doLog("GenericApplication::initialise\n");
+  doLog("GenericApplication::initialise");
 
   setApplicationName(name());
 
@@ -28,21 +28,21 @@ void GenericApplication::initialise(const String&) {
   if (initializer_)
     initializer_(this);
   window_.reset(createWindow());
-  doLog("running window initializer\n");
+  doLog("running window initializer");
   window_->initialise();
-  doLog("setting look and feel\n");
+  doLog("setting look and feel");
   gui::LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
 
-  doLog("checking for updates\n");
+  doLog("checking for updates");
   if (autoCheckForUpdates() && checkForUpdates())
     return;
 
-  doLog("running startup thread\n");
+  doLog("running startup thread");
   thread::runInNewThread("startup thread",
                          STARTUP_THREAD_PRIORITY,
                          window_.get(),
                          &Window::startup);
-  doLog("initialise finished\n");
+  doLog("initialise finished");
   LOG(INFO) << name() << ": initialise finished.";
 
   // FLAGS_log_dir = str(File::getSpecialLocation(

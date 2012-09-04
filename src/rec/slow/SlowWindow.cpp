@@ -84,11 +84,11 @@ void SlowWindow::init() {
 }
 
 void SlowWindow::constructInstance() {
-  doLog("in constructInstance\n");
+  doLog("in constructInstance");
   instanceDeleter_.reset(new slow::Instance(this));
-  doLog("instance constructed\n");
+  doLog("instance constructed");
   instance_ = instanceDeleter_.get();
-  doLog("initializing instance\n");
+  doLog("initializing instance");
   instance_->init();
 }
 
@@ -176,17 +176,17 @@ void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
 using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
-  doLog("in initialize\n");
+  doLog("in initialize");
   // LOG(INFO) << "SlowWindow::initialize";
   // TODO:  logging doesn't work if called in this routine...
-  doLog("moving directories\n");
+  doLog("moving directories");
   file::moveOldAbsoluteDirectoriesToTypeRelative();
   // LOG(INFO) << "Registering protos";
-  doLog("registering protos\n");
+  doLog("registering protos");
   registerProtos();
-  doLog("registering translations\n");
+  doLog("registering translations");
   registerAllTranslations();
-  doLog("all done initialize\n");
+  doLog("all done initialize");
   // LOG(INFO) << "done initialize";
 }
 
