@@ -4025,7 +4025,9 @@ int main() {
 	Note that the string must be in quotation marks if it contains any spaces.
 */
 
-#ifdef STDMAIN
+#define stricmp strcasecmp
+
+#ifndef NO_STDMAIN
 int main(int argc, char *argv[]) {
 	char username[512]="", privatekey[512]="", keystring[512]="", parsedargs[10][512];
 	unsigned short otherinfo[5]={0,0,0,0,0};
