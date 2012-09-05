@@ -122,7 +122,6 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   GuiSettings settings = data::getProto<GuiSettings>();
   audio::AudioSettings audioSettings = data::getProto<audio::AudioSettings>();
 
-
   File startFile(getBaseFile(instance, suffix, settings, audioSettings));
   VirtualFile vf = instance->file();
   File baseFile;
@@ -137,7 +136,6 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
 
   while (true) {
     file = slow::browseForFile(SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
-    file = File(File::createLegalPathName(file.getFullPathName()));
 
     if (file == File::nonexistent)
       return file;
