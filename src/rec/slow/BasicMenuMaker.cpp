@@ -57,7 +57,7 @@ void BasicMenuMaker::addFileMenu() {
   std::vector<string> recent = rec::gui::getRecentFileNames();
 
   menu_.addSeparator();
-  addFull(Command::OPEN_PREVIOUS_FILE, "", !recent.empty());
+  addEnabled(Command::OPEN_PREVIOUS_FILE, !recent.empty());
 
   PopupMenu submenu;
   for (uint i = 0; i < recent.size(); ++i)
@@ -137,15 +137,18 @@ void BasicMenuMaker::addSelectMenu() {
 
   switch (isWholeSong_.isWholeSong()) {
    case IsWholeSong::ONE_SEGMENT:
-    addFull(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), !empty_);
+    addEnabledName(Command::TOGGLE_WHOLE_SONG_LOOP, !empty_,
+                   Trans("Loop Entire Track"));
     break;
 
    case IsWholeSong::WHOLE_SONG:
-    addFull(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop This Segment"), !empty_);
+    addEnabledName(Command::TOGGLE_WHOLE_SONG_LOOP, !empty_,
+                   Trans("Loop This Segment"));
     break;
 
    case IsWholeSong::SONG_IS_ONE_SEGMENT:
-    addFull(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), false);
+    addEnabledName(Command::TOGGLE_WHOLE_SONG_LOOP, false,
+                   Trans("Loop Entire Track"));
     break;
   }
   addEnabled(Command::ZOOM_TO_SELECTION, !empty_);

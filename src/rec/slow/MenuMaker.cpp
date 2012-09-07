@@ -42,11 +42,16 @@ void MenuMaker::addRepeat(Command::Type command,
 }
 
 void MenuMaker::addSimpleRepeat(Command::Type command, int slot, PopupMenu* m) {
-  addFull(CommandIDEncoder::toCommandID(slot, command), "", !empty_, m, 0);
+  addFull(CommandIDEncoder::toCommandID(slot, command), "", !empty_, m,
+          DEFAULT_FLAGS);  // Was 0!!
 }
 
 void MenuMaker::addEnabled(Command::Type command, bool enabled) {
-  addFull(command, "", enabled);
+  addEnabledName(command, enabled, String::empty);
+}
+
+void MenuMaker::addEnabledName(Command::Type cmd, bool enable, const String& name) {
+  addFull(cmd, name, enable, NULL, DEFAULT_FLAGS);
 }
 
 void MenuMaker::addBank(Command::Type command, const String& name) {

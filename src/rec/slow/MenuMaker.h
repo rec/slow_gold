@@ -27,22 +27,15 @@ class MenuMaker {
   virtual const StringArray getMenuBarNames() const = 0;
 
  protected:
+  static const int DEFAULT_FLAGS = -1;
+
   void addBasic(CommandID id);
 
-#if 1
-  void addFull(CommandID id,
-               const String& name = String::empty,
-               bool enabled = true,
-               PopupMenu* m = NULL,
-               int flags = -1);
-#else
   void addFull(CommandID id,
                const String& name,
                bool enabled,
                PopupMenu* m,
                int flags);
-#endif
-
   void addRepeat(command::Command::Type command,
                  int slot,
                  const String& name = String::empty,
@@ -54,6 +47,8 @@ class MenuMaker {
   virtual bool addMenu(const String& menuName) = 0;
 
   void addEnabled(command::Command::Type command, bool enable);
+  void addEnabledName(command::Command::Type command, bool enable, const String& name);
+
   void addBank(command::Command::Type command, const String& name);
 
   PopupMenu menu_;
