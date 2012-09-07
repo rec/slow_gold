@@ -28,7 +28,7 @@ class CommandDatabase {
   void fill() {
     data_.addCallbacks(table_);
     fillFromCommands();
-    removeEmptiesAndFillCommandInfo();
+    fillCommandInfo();
   }
 
  private:
@@ -50,7 +50,12 @@ class CommandDatabase {
       DCHECK(cmd.has_is_global_setter() || cmd.has_is_setter())
         << cmd.ShortDebugString();
       cr = table_->find(t, true);
-      addSetter(cmd, cr);
+      const data::Address& a = cmd.address();
+      Listener<None>* ls = data_.getMenuUpdateListener();
+      Scope s = scope(cmd.is_global_setter());
+      cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, cmd, a, s));
+      cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
+                                                 &CommandItemSetter::execute));
     }
     cr->command_.reset(new Command(cmd));
   }
@@ -82,49 +87,32 @@ class CommandDatabase {
     }
   }
 
-  void addSetter(const Command& c, CommandRecord* cr) {
-    const data::Address& a = c.address();
-    Listener<None>* ls = data_.getMenuUpdateListener();
-    Scope s = scope(c.is_global_setter());
-    cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, c, a, s));
-    cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
-                                               &CommandItemSetter::execute));
-  }
-
-  void fillOneCommandInfo(CommandID id, CommandRecord* cr) {
-    const Description& desc = cr->command_->desc();
-    String name = Trans(desc.full(0));
-    String category = str(cr->command_->category());
-    bool hasInfo = desc.menu_size() && name.length();
-
-    if (hasInfo) {
-      int flags = 0;
-      if (category == "" || category == "(None)") {
-        DCHECK_NE(category, "");
-        flags += ApplicationCommandInfo::hiddenFromKeyEditor;
-      }
-
-      cr->info_.setInfo(Trans(desc.menu(0)), name, category, flags);
-    } else {
-      LOG(DFATAL) << "No command " << commandName(id)
-                 << ", " << desc.menu_size()
-                 << ", " << name.length()
-                 << cr->command_->ShortDebugString();
-    }
-  }
-
-  void removeEmptiesAndFillCommandInfo() {
+  void fillCommandInfo() {
     CommandRecordTable::iterator i;
     for (i = table_->begin(); i != table_->end(); ++i) {
       CommandID id = i->first;
       CommandRecord* cr = i->second;
-      if (!cr->command_)
-        LOG(DFATAL) << "Command not in Command.def " << commandName(id);
-      else if (!cr->callback_)
+      if (!cr->callback_)
         LOG(DFATAL) << "Empty callback " << commandName(id);
-      else {
-        fillOneCommandInfo(id, cr);
-        continue;
+
+      const Description& desc = cr->command_->desc();
+      String name = Trans(desc.full(0));
+      String category = str(cr->command_->category());
+      bool hasInfo = desc.menu_size() && name.length();
+
+      if (hasInfo) {
+        int flags = 0;
+        if (category == "" || category == "(None)") {
+          DCHECK_NE(category, "");
+          flags += ApplicationCommandInfo::hiddenFromKeyEditor;
+        }
+
+        cr->info_.setInfo(Trans(desc.menu(0)), name, category, flags);
+      } else {
+        LOG(DFATAL) << "No command " << commandName(id)
+                   << ", " << desc.menu_size()
+                   << ", " << name.length()
+                   << cr->command_->ShortDebugString();
       }
     }
   }
