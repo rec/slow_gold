@@ -45,10 +45,6 @@ void MenuMaker::addEnabled(Command::Type command, bool enabled) {
   add(command, "", enabled);
 }
 
-void MenuMaker::addIfNotEmpty(Command::Type command) {
-  addEnabled(command, !empty_);
-}
-
 void MenuMaker::addBank(Command::Type command, const String& name) {
   PopupMenu sub;
   for (int i = command::CommandIDEncoder::FIRST; i < SLOT_COUNT; ++i) {

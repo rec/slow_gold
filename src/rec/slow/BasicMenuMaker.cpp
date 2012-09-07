@@ -46,7 +46,7 @@ const Trans& langName(int lang) {
 
 void BasicMenuMaker::addFileMenu() {
   add(Command::OPEN);
-  addIfNotEmpty(Command::CLOSE_FILE);
+  addEnabled(Command::CLOSE_FILE, !empty_);
   add(Command::EJECT_CDS);
 
   menu_.addSeparator();
@@ -67,8 +67,8 @@ void BasicMenuMaker::addFileMenu() {
   menu_.addSeparator();
 
 #ifndef SLOWGOLD_SAVE_DISABLED
-  addIfNotEmpty(Command::SAVE_FILE);
-  addIfNotEmpty(Command::SAVE_FILE_SELECTION);
+  addEnabled(Command::SAVE_FILE, !empty_);
+  addEnabled(Command::SAVE_FILE_SELECTION, !empty_);
 
   PopupMenu save;
   int t = static_cast<int>(data::getProto<audio::AudioSettings>()
@@ -116,14 +116,14 @@ void BasicMenuMaker::addEditMenu() {
 }
 
 void BasicMenuMaker::addAudioMenu() {
-  addIfNotEmpty(Command::MUTE_VOLUME_TOGGLE);
-  addIfNotEmpty(Command::NUDGE_VOLUME_UP);
-  addIfNotEmpty(Command::NUDGE_VOLUME_DOWN);
+  addEnabled(Command::MUTE_VOLUME_TOGGLE, !empty_);
+  addEnabled(Command::NUDGE_VOLUME_UP, !empty_);
+  addEnabled(Command::NUDGE_VOLUME_DOWN, !empty_);
 
   menu_.addSeparator();
-  addIfNotEmpty(Command::TOGGLE_STRETCH_ENABLE);
-  addIfNotEmpty(Command::NUDGE_SPEED_UP);
-  addIfNotEmpty(Command::NUDGE_SPEED_DOWN);
+  addEnabled(Command::TOGGLE_STRETCH_ENABLE, !empty_);
+  addEnabled(Command::NUDGE_SPEED_UP, !empty_);
+  addEnabled(Command::NUDGE_SPEED_DOWN, !empty_);
 
   menu_.addSeparator();
 
@@ -131,9 +131,9 @@ void BasicMenuMaker::addAudioMenu() {
 }
 
 void BasicMenuMaker::addSelectMenu() {
-  addIfNotEmpty(Command::SELECT_ALL);
-  addIfNotEmpty(Command::DESELECT_ALL);
-  addIfNotEmpty(Command::INVERT_LOOP_SELECTION);
+  addEnabled(Command::SELECT_ALL, !empty_);
+  addEnabled(Command::DESELECT_ALL, !empty_);
+  addEnabled(Command::INVERT_LOOP_SELECTION, !empty_);
 
   switch (isWholeSong_.isWholeSong()) {
    case IsWholeSong::ONE_SEGMENT:
@@ -148,13 +148,13 @@ void BasicMenuMaker::addSelectMenu() {
     add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), false);
     break;
   }
-  addIfNotEmpty(Command::ZOOM_TO_SELECTION);
+  addEnabled(Command::ZOOM_TO_SELECTION, !empty_);
 }
 
 void BasicMenuMaker::addTransportMenu() {
-  addIfNotEmpty(Command::TOGGLE_START_STOP);
-  addIfNotEmpty(Command::ADD_LOOP_POINT);
-  addIfNotEmpty(Command::CLEAR_LOOPS);
+  addEnabled(Command::TOGGLE_START_STOP, !empty_);
+  addEnabled(Command::ADD_LOOP_POINT, !empty_);
+  addEnabled(Command::CLEAR_LOOPS, !empty_);
 }
 
 void BasicMenuMaker::addHelpMenu() {

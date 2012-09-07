@@ -43,7 +43,6 @@ class MenuMaker {
 
   virtual bool addMenu(const String& menuName) = 0;
 
-  void addIfNotEmpty(command::Command::Type command);
   void addEnabled(command::Command::Type command, bool enable);
   void addBank(command::Command::Type command, const String& name);
 

@@ -17,10 +17,10 @@ void AdvancedMenuMaker::addEditMenu() {
 
   menu_.addSeparator();
 
-  addIfNotEmpty(Command::MODE_SET_TIME);
-  addIfNotEmpty(Command::MODE_DRAG);
-  addIfNotEmpty(Command::MODE_ADD_LOOP_POINT);
-  addIfNotEmpty(Command::MODE_ZOOM_IN);
+  addEnabled(Command::MODE_SET_TIME, !empty_);
+  addEnabled(Command::MODE_DRAG, !empty_);
+  addEnabled(Command::MODE_ADD_LOOP_POINT, !empty_);
+  addEnabled(Command::MODE_ZOOM_IN, !empty_);
 }
 
 void AdvancedMenuMaker::addFileMenu() {
@@ -52,7 +52,7 @@ void AdvancedMenuMaker::addSelectMenu() {
 
 void AdvancedMenuMaker::addTransportMenu() {
   BasicMenuMaker::addTransportMenu();
-  addIfNotEmpty(Command::TOGGLE_PREFADER_LEVELS);
+  addEnabled(Command::TOGGLE_PREFADER_LEVELS, !empty_);
 
   menu_.addSeparator();
 
@@ -75,7 +75,7 @@ void AdvancedMenuMaker::addHelpMenu() {
 #ifdef SETTINGS_MENU_ITEMS
   menu_.addSeparator();
   add(Command::OPEN_SLOWGOLD_DIRECTORY);
-  addIfNotEmpty(Command::CLEAR_SETTINGS_FOR_THIS_TRACK);
+  addEnabled(Command::CLEAR_SETTINGS_FOR_THIS_TRACK, !empty_);
   add(Command::CLEAR_ALL_SETTINGS);
 #endif
 }
