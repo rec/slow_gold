@@ -17,12 +17,20 @@ namespace {
 
 class CommandTarget : public ApplicationCommandTarget {
  public:
-  explicit CommandTarget(TargetManager* tm) : targetManager_(tm) {}
+  explicit CommandTarget(TargetManager* tm, CommandRecordTable* table,
+                         ApplicationCommandManager* acm)
+      : targetManager_(tm), table_(table), commandManager_(acm) {
+  }
 
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
 
   virtual void getAllCommands(juce::Array<CommandID>& commands) {
-    targetManager_->getAllCommands(commands);
+    commands.clear();
+    CommandRecordTable::const_iterator i;
+    for (i = table_->begin(); i != table_->end(); ++i) {
+      if (i->second->callback_)
+        commands.add(i->first);
+    }
   }
 
   virtual void getCommandInfo(CommandID commandID, ApplicationCommandInfo& res) {
@@ -35,6 +43,8 @@ class CommandTarget : public ApplicationCommandTarget {
 
  private:
   TargetManager* const targetManager_;
+  CommandRecordTable* const table_;
+  ApplicationCommandManager* const commandManager_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandTarget);
 };
@@ -42,10 +52,10 @@ class CommandTarget : public ApplicationCommandTarget {
 }
 
 TargetManager::TargetManager(CommandData* commandData)
-    : commandData_(commandData),
-      lastInvocation_(0),
+    : lastInvocation_(0),
       disabled_(false),
-      target_(new CommandTarget(this)) {
+      commandData_(commandData),
+      target_(new CommandTarget(this, &table_, &commandManager_)) {
   commandManager_.setFirstCommandTarget(target_.get());
 }
 
@@ -54,15 +64,6 @@ TargetManager:: ~TargetManager() {}
 void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(target_.get());
   loadKeyboardBindings(this);
-}
-
-void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
-  commands.clear();
-  CommandRecordTable::const_iterator i;
-  for (i = table_.begin(); i != table_.end(); ++i) {
-    if (i->second->callback_)
-      commands.add(i->first);
-  }
 }
 
 void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {

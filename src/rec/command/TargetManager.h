@@ -41,7 +41,6 @@ class TargetManager : // public ApplicationCommandTarget,
 
   virtual void operator()(bool d) { Lock l(lock_); disabled_ = d; }
 
-  virtual void getAllCommands(juce::Array<CommandID>&);
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
   virtual bool perform(const InvocationInfo&);
 
@@ -63,13 +62,14 @@ class TargetManager : // public ApplicationCommandTarget,
  private:
   CommandRecord* find(CommandID);
 
-  ptr<CommandData> commandData_;
   CommandRecordTable table_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;
   InvocationInfo lastInvocation_;
   bool disabled_;
+
+  ptr<CommandData> commandData_;
   ptr<ApplicationCommandTarget> target_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TargetManager);
