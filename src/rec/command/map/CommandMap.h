@@ -24,7 +24,7 @@ class CommandMap : public Listener<const CommandMapProto&> {
   CommandType getCommand(const Key&) const;
   const vector<Key>& getKeys(CommandType) const;
 
-  bool invoke(const Key&, ApplicationCommandManager*, bool async = false) const;
+  bool invokeAsync(const Key&, ApplicationCommandManager*) const;
 
   void removeCommand(CommandType command, uint keyIndex);
   void removeKey(const Key& key);

@@ -17,9 +17,8 @@ namespace {
 
 class CommandTarget : public ApplicationCommandTarget {
  public:
-  explicit CommandTarget(TargetManager* tm, CommandRecordTable* table,
-                         ApplicationCommandManager* acm)
-      : targetManager_(tm), table_(table), commandManager_(acm) {
+  explicit CommandTarget(TargetManager* tm, CommandRecordTable* table)
+      : targetManager_(tm), table_(table) {
   }
 
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
@@ -47,7 +46,6 @@ class CommandTarget : public ApplicationCommandTarget {
  private:
   TargetManager* const targetManager_;
   CommandRecordTable* const table_;
-  ApplicationCommandManager* const commandManager_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandTarget);
 };
@@ -58,7 +56,7 @@ TargetManager::TargetManager(CommandData* commandData)
     : lastInvocation_(0),
       disabled_(false),
       commandData_(commandData),
-      target_(new CommandTarget(this, &table_, &commandManager_)) {
+      target_(new CommandTarget(this, &table_)) {
   commandManager_.setFirstCommandTarget(target_.get());
 }
 

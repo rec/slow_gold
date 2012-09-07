@@ -76,10 +76,10 @@ const CommandMapProto CommandMap::getProto() const {
   return commands;
 }
 
-bool CommandMap::invoke(const Key& key, ApplicationCommandManager* acm,
-                        bool async) const {
+bool CommandMap::invokeAsync(const Key& key,
+                             ApplicationCommandManager* acm) const {
   CommandID id = getCommand(key);
-  return id && acm->invokeDirectly(id, async);
+  return id && acm->invokeDirectly(id, true);
 }
 
 CommandType CommandMap::getCommand(const string& key) const {

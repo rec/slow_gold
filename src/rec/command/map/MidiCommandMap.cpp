@@ -22,7 +22,7 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
   if (listener)
     (*listener)(msg);
   else
-    invoke(toBytes(msg), manager_, true);
+    invokeAsync(toBytes(msg), manager_);
 }
 
 void MidiCommandMap::requestOneMessage(Listener<const juce::MidiMessage&>* lt) {

@@ -15,8 +15,7 @@ namespace command {
 
 // An implementation of ApplicationCommandTargetManager that lets you register commands
 // with a callback.
-class TargetManager : // public ApplicationCommandTarget,
-                      public Listener<CommandID>,
+class TargetManager : public Listener<CommandID>,
                       public Listener<bool>,
                       public Broadcaster<None> {
  public:
@@ -44,6 +43,7 @@ class TargetManager : // public ApplicationCommandTarget,
   virtual bool perform(const InvocationInfo&);
 
   InvocationInfo lastInvocation() const;
+
   void addCallback(CommandID id,
                    Callback* cb,
                    const String& name,
