@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 
 import sys
 
@@ -9,7 +9,7 @@ USAGE = """Usage: extractUntranslated.py [rootfile]"""
 PRINT_LINE_NUMBERS = False
 PRINT_TRANSLATION = False
 
-def extractOne(lang, root):
+def extractOneLanguage(lang, root):
   original = translate.ProtoFile(root=root)
   original.read()
 
@@ -27,10 +27,10 @@ def extractOne(lang, root):
 def extractUntranslated(root):
   for lang in translate.LANGUAGES:
     if lang != 'en':
-      extractOne(lang, root)
+      extractOneLanguage(lang, root)
 
 if __name__ == '__main__':
-  if len(sys.argv) < 3:
+  if len(sys.argv) <= 2:
     extractUntranslated(sys.argv[1:])
   else:
     print USAGE

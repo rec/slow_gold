@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 
 import sys
 
@@ -21,7 +21,7 @@ def writeRemoved(old, new):
 
 def writeNew(old, new):
   result = translate.TranslatedStrings()
-  result.max_index = old.strings.max_index
+  result.max_index = old.strings.max_index or 1  # start at 2
 
   for key, value in new.dict.iteritems():
     newValue = old.dict.get(key, None)
