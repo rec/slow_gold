@@ -15,7 +15,7 @@ namespace command {
 
 // An implementation of ApplicationCommandTargetManager that lets you register commands
 // with a callback.
-class TargetManager : public ApplicationCommandTarget,
+class TargetManager : // public ApplicationCommandTarget,
                       public Listener<CommandID>,
                       public Listener<bool>,
                       public Broadcaster<None> {
@@ -41,15 +41,13 @@ class TargetManager : public ApplicationCommandTarget,
 
   virtual void operator()(bool d) { Lock l(lock_); disabled_ = d; }
 
-  // ApplicationCommandTarget virtual methods.
-  virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
-
   virtual void getAllCommands(juce::Array<CommandID>&);
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
   virtual bool perform(const InvocationInfo&);
 
   InvocationInfo lastInvocation() const;
-  void addCallback(CommandID id, Callback* cb,
+  void addCallback(CommandID id,
+                   Callback* cb,
                    const String& name,
                    const String& category,
                    const String& desc);
@@ -60,17 +58,19 @@ class TargetManager : public ApplicationCommandTarget,
                       const String& name = String::empty,
                       int flags = -1);
   CommandRecordTable* commandRecordTable() { return &table_; }
+  ApplicationCommandTarget* target() { return target_.get(); }
 
  private:
-  ptr<CommandData> commandData_;
-
   CommandRecord* find(CommandID);
+
+  ptr<CommandData> commandData_;
   CommandRecordTable table_;
 
   ApplicationCommandManager commandManager_;
   CriticalSection lock_;
   InvocationInfo lastInvocation_;
   bool disabled_;
+  ptr<ApplicationCommandTarget> target_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TargetManager);
 };

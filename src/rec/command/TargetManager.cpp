@@ -13,17 +13,46 @@
 namespace rec {
 namespace command {
 
+namespace {
+
+class CommandTarget : public ApplicationCommandTarget {
+ public:
+  explicit CommandTarget(TargetManager* tm) : targetManager_(tm) {}
+
+  virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
+
+  virtual void getAllCommands(juce::Array<CommandID>& commands) {
+    targetManager_->getAllCommands(commands);
+  }
+
+  virtual void getCommandInfo(CommandID commandID, ApplicationCommandInfo& res) {
+    return targetManager_->getCommandInfo(commandID, res);
+  }
+
+  virtual bool perform (const InvocationInfo& info) {
+    return targetManager_->perform(info);
+  }
+
+ private:
+  TargetManager* const targetManager_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandTarget);
+};
+
+}
+
 TargetManager::TargetManager(CommandData* commandData)
     : commandData_(commandData),
       lastInvocation_(0),
-      disabled_(false) {
-  commandManager_.setFirstCommandTarget(this);
+      disabled_(false),
+      target_(new CommandTarget(this)) {
+  commandManager_.setFirstCommandTarget(target_.get());
 }
 
 TargetManager:: ~TargetManager() {}
 
 void TargetManager::registerAllCommandsForTarget() {
-  commandManager_.registerAllCommandsForTarget(this);
+  commandManager_.registerAllCommandsForTarget(target_.get());
   loadKeyboardBindings(this);
 }
 
@@ -66,7 +95,8 @@ InvocationInfo TargetManager::lastInvocation() const {
   return lastInvocation_;
 }
 
-void TargetManager::addCallback(CommandID id, Callback* cb,
+void TargetManager::addCallback(CommandID id,
+                                Callback* cb,
                                 const String& name,
                                 const String& category,
                                 const String& desc) {
@@ -111,6 +141,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
   info->setActive(enable);
   if (flags >= 0)
     info->flags = flags;
+
   menu->addCommandItem(commandManager(), id);
 }
 

@@ -36,20 +36,19 @@ class MenuMaker {
                bool enabled,
                PopupMenu* m,
                int flags);
-  void addRepeat(command::Command::Type command,
+  void addRepeat(command::Command::Type,
                  int slot,
                  const String& name = String::empty,
                  PopupMenu* m = NULL,
                  int flags = -1);
 
-  void addSimpleRepeat(command::Command::Type command, int slot, PopupMenu*);
+  void addSimpleRepeat(command::Command::Type, int slot, PopupMenu*);
 
   virtual bool addMenu(const String& menuName) = 0;
 
-  void addEnabled(command::Command::Type command, bool enable);
-  void addEnabledName(command::Command::Type command, bool enable, const String& name);
-
-  void addBank(command::Command::Type command, const String& name);
+  void addEnabled(command::Command::Type, bool enable);
+  void addEnabledName(command::Command::Type, bool enable, const String& name);
+  void addBank(command::Command::Type, const String& name);
 
   PopupMenu menu_;
   const IsWholeSong& isWholeSong_;
