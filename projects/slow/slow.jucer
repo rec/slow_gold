@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="kLXcG9UcL" name="SlowGold">
+  <MAINGROUP id="4Bn9HGmru" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -312,8 +312,6 @@
               name="icon.png" resource="1"/>
       </GROUP>
       <GROUP id="fY5oQLUxc" name="command">
-        <FILE compile="1" file="../../src/rec/command/Command.cpp" id="wa0Zy93Qr"
-              name="Command.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/Command.h" id="uZ0DILjP9"
               name="Command.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandData.h" id="BFt89p1eA"
@@ -332,6 +330,10 @@
               name="CommandIDEncoder.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
               id="NmcYKaszX" name="CommandItemSetter.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/CommandRecordTable.cpp"
+              id="11iH4S5cn" name="CommandRecordTable.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandRecordTable.h"
+              id="6HMpUxIKB" name="CommandRecordTable.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
               id="INV4v9Oxx" name="KeyboardBindings.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="ZxTlCYmLe"
@@ -1638,7 +1640,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Cj74dpW7M" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="RBuI7moH3" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

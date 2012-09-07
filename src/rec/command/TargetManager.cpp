@@ -4,6 +4,7 @@
 #include "rec/command/Command.h"
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/command/KeyboardBindings.h"
 #include "rec/data/Data.h"
 #include "rec/util/STL.h"

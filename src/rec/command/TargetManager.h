@@ -5,6 +5,7 @@
 
 #include "rec/command/Command.h"
 #include "rec/command/CommandData.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandItemSetter.h"
 #include "rec/util/STL.h"
 #include "rec/util/Listener.h"

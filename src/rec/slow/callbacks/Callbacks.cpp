@@ -5,6 +5,9 @@
 #include "rec/slow/callbacks/SelectionCallbacks.h"
 
 namespace rec {
+
+namespace command { class CommandRecordTable; }
+
 namespace slow {
 
 using command::CommandRecordTable;

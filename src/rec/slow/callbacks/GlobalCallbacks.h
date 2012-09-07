@@ -1,9 +1,12 @@
 #ifndef __REC_SLOW_GLOBALCOMMANDS__
 #define __REC_SLOW_GLOBALCOMMANDS__
 
-#include "rec/command/Command.h"
+#include "rec/base/base.h"
 
 namespace rec {
+
+namespace command { class CommandRecordTable; }
+
 namespace slow {
 
 void addGlobalCallbacks(command::CommandRecordTable* t);

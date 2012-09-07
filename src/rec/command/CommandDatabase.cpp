@@ -6,6 +6,7 @@
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandDataSetter.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
 #include "rec/util/thread/MakeCallback.h"

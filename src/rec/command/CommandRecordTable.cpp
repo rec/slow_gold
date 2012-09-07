@@ -1,7 +1,8 @@
-#include "rec/command/Command.h"
+#include "rec/command/CommandRecordTable.h"
 
 #include "rec/command/Access.pb.h"
 #include "rec/command/CommandDatabase.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/data/Data.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/util/STL.h"
@@ -19,7 +20,7 @@ void CommandRecordTable::writeTable() const {
   out.deleteFile();
 
   Commands commands;
-  for (const_iterator i = begin(); i != end(); ++i)
+  for (const_iterator i = table_.begin(); i != table_.end(); ++i)
     commands.add_command()->CopyFrom(*i->second->command_);
 
   String res = str(commands.DebugString());

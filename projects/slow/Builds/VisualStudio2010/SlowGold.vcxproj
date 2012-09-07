@@ -176,10 +176,10 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDataSetter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandRecordTable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp"/>
@@ -1567,6 +1567,7 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandIDEncoder.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandRecordTable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h"/>

@@ -8,6 +8,7 @@ namespace rec {
 namespace command {
 
 class Access;
+class CommandRecordTable;
 
 class CommandData {
  public:
