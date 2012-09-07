@@ -29,6 +29,10 @@ void MenuMaker::addFull(CommandID id,
   targetManager_->addCommandItem(m ? m : &menu_, id, enabled, name, flags);
 }
 
+void MenuMaker::addBasic(CommandID id) {
+  addFull(id, String::empty, true, NULL, -1);
+}
+
 void MenuMaker::addRepeat(Command::Type command,
                           int slot,
                           const String& name,

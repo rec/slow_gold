@@ -27,16 +27,16 @@ void AdvancedMenuMaker::addFileMenu() {
   BasicMenuMaker::addFileMenu();
 
   menu_.addSeparator();
-  addFull(Command::KEYBOARD_MAPPINGS);
-  // addFull(Command::CLEAR_KEYBOARD_MAPPINGS);
+  addBasic(Command::KEYBOARD_MAPPINGS);
+  // addBasic(Command::CLEAR_KEYBOARD_MAPPINGS);
 
   //menu_.addSeparator();
-  addFull(Command::MIDI_MAPPINGS);
-  //  addFull(Command::CLEAR_MIDI_MAPPINGS);
+  addBasic(Command::MIDI_MAPPINGS);
+  //  addBasic(Command::CLEAR_MIDI_MAPPINGS);
 
   menu_.addSeparator();
-  addFull(Command::EXPORT_SETTINGS);
-  addFull(Command::IMPORT_SETTINGS);
+  addBasic(Command::EXPORT_SETTINGS);
+  addBasic(Command::IMPORT_SETTINGS);
 }
 
 void AdvancedMenuMaker::addSelectMenu() {
@@ -60,43 +60,43 @@ void AdvancedMenuMaker::addTransportMenu() {
   addBank(Command::JUMP_SELECTED, Trans("Jump To Selected..."));
 
   menu_.addSeparator();
-  addFull(Command::NUDGE_BACKWARD);
-  addFull(Command::NUDGE_FORWARD);
+  addBasic(Command::NUDGE_BACKWARD);
+  addBasic(Command::NUDGE_FORWARD);
 }
 
 void AdvancedMenuMaker::addHelpMenu() {
   BasicMenuMaker::addHelpMenu();
-  addFull(Command::TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP);
+  addBasic(Command::TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP);
 
   menu_.addSeparator();
-  addFull(Command::CHECK_FOR_UPDATES);
-  addFull(Command::TOGGLE_AUTOMATIC_UPDATES);
+  addBasic(Command::CHECK_FOR_UPDATES);
+  addBasic(Command::TOGGLE_AUTOMATIC_UPDATES);
 
 #ifdef SETTINGS_MENU_ITEMS
   menu_.addSeparator();
-  addFull(Command::OPEN_SLOWGOLD_DIRECTORY);
+  addBasic(Command::OPEN_SLOWGOLD_DIRECTORY);
   addEnabled(Command::CLEAR_SETTINGS_FOR_THIS_TRACK, !empty_);
-  addFull(Command::CLEAR_ALL_SETTINGS);
+  addBasic(Command::CLEAR_ALL_SETTINGS);
 #endif
 }
 
 void AdvancedMenuMaker::addDisplayMenu() {
-  addFull(Command::TOGGLE_GRID_DISPLAY);
-  addFull(Command::TOGGLE_PARALLEL_WAVEFORMS);
-  addFull(Command::TOGGLE_FOLLOW_CURSOR);
+  addBasic(Command::TOGGLE_GRID_DISPLAY);
+  addBasic(Command::TOGGLE_PARALLEL_WAVEFORMS);
+  addBasic(Command::TOGGLE_FOLLOW_CURSOR);
   menu_.addSeparator();
-  addFull(Command::TOGGLE_SHOW_SELECTION_BUTTONS);
-  addFull(Command::TOGGLE_SHOW_CURSOR_LABELS);
+  addBasic(Command::TOGGLE_SHOW_SELECTION_BUTTONS);
+  addBasic(Command::TOGGLE_SHOW_CURSOR_LABELS);
   menu_.addSeparator();
-  addFull(Command::TOGGLE_SHOW_TIMES_AT_TOP);
-  addFull(Command::TOGGLE_SHOW_LABELS_AT_TOP);
-  addFull(Command::TOGGLE_COMMAND_BAR_AT_LEFT);
-  addFull(Command::TOGGLE_COMMAND_BAR_AT_TOP);
-  addFull(Command::TOGGLE_MODES_AT_LEFT);
-  addFull(Command::TOGGLE_MODES_AT_TOP);
+  addBasic(Command::TOGGLE_SHOW_TIMES_AT_TOP);
+  addBasic(Command::TOGGLE_SHOW_LABELS_AT_TOP);
+  addBasic(Command::TOGGLE_COMMAND_BAR_AT_LEFT);
+  addBasic(Command::TOGGLE_COMMAND_BAR_AT_TOP);
+  addBasic(Command::TOGGLE_MODES_AT_LEFT);
+  addBasic(Command::TOGGLE_MODES_AT_TOP);
   menu_.addSeparator();
-  addFull(Command::TOGGLE_FILE_OPEN_TREE_DISPLAY);
-  addFull(Command::TOGGLE_SHOW_MASTER_TUNE);
+  addBasic(Command::TOGGLE_FILE_OPEN_TREE_DISPLAY);
+  addBasic(Command::TOGGLE_SHOW_MASTER_TUNE);
 }
 
 const StringArray AdvancedMenuMaker::getMenuBarNames() const {

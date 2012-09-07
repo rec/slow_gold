@@ -45,14 +45,14 @@ const Trans& langName(int lang) {
 }  // namespace
 
 void BasicMenuMaker::addFileMenu() {
-  addFull(Command::OPEN);
+  addBasic(Command::OPEN);
   addEnabled(Command::CLOSE_FILE, !empty_);
-  addFull(Command::EJECT_CDS);
+  addBasic(Command::EJECT_CDS);
 
   menu_.addSeparator();
 
-  // addFull(Command::CLEAR_NAVIGATOR);
-  addFull(Command::TOGGLE_ADVANCED_MENUS);
+  // addBasic(Command::CLEAR_NAVIGATOR);
+  addBasic(Command::TOGGLE_ADVANCED_MENUS);
 
   std::vector<string> recent = rec::gui::getRecentFileNames();
 
@@ -99,8 +99,8 @@ void BasicMenuMaker::addFileMenu() {
 #if !JUCE_MAC
   menu_.addSeparator();
 
-  addFull(Command::ABOUT_THIS_PROGRAM);
-  addFull(Command::QUIT);
+  addBasic(Command::ABOUT_THIS_PROGRAM);
+  addBasic(Command::QUIT);
 #endif
 }
 
@@ -127,7 +127,7 @@ void BasicMenuMaker::addAudioMenu() {
 
   menu_.addSeparator();
 
-  addFull(Command::AUDIO_PREFERENCES);
+  addBasic(Command::AUDIO_PREFERENCES);
 }
 
 void BasicMenuMaker::addSelectMenu() {
@@ -158,9 +158,9 @@ void BasicMenuMaker::addTransportMenu() {
 }
 
 void BasicMenuMaker::addHelpMenu() {
-  addFull(Command::OPEN_MANUAL);
-  addFull(Command::REQUEST_SUPPORT);
-  addFull(Command::WHATS_NEW_PAGE);
+  addBasic(Command::OPEN_MANUAL);
+  addBasic(Command::REQUEST_SUPPORT);
+  addBasic(Command::WHATS_NEW_PAGE);
 }
 
 const StringArray BasicMenuMaker::getMenuBarNames() const {
