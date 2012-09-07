@@ -45,19 +45,19 @@ const Trans& langName(int lang) {
 }  // namespace
 
 void BasicMenuMaker::addFileMenu() {
-  add(Command::OPEN);
+  addFull(Command::OPEN);
   addEnabled(Command::CLOSE_FILE, !empty_);
-  add(Command::EJECT_CDS);
+  addFull(Command::EJECT_CDS);
 
   menu_.addSeparator();
 
-  // add(Command::CLEAR_NAVIGATOR);
-  add(Command::TOGGLE_ADVANCED_MENUS);
+  // addFull(Command::CLEAR_NAVIGATOR);
+  addFull(Command::TOGGLE_ADVANCED_MENUS);
 
   std::vector<string> recent = rec::gui::getRecentFileNames();
 
   menu_.addSeparator();
-  add(Command::OPEN_PREVIOUS_FILE, "", !recent.empty());
+  addFull(Command::OPEN_PREVIOUS_FILE, "", !recent.empty());
 
   PopupMenu submenu;
   for (uint i = 0; i < recent.size(); ++i)
@@ -99,8 +99,8 @@ void BasicMenuMaker::addFileMenu() {
 #if !JUCE_MAC
   menu_.addSeparator();
 
-  add(Command::ABOUT_THIS_PROGRAM);
-  add(Command::QUIT);
+  addFull(Command::ABOUT_THIS_PROGRAM);
+  addFull(Command::QUIT);
 #endif
 }
 
@@ -127,7 +127,7 @@ void BasicMenuMaker::addAudioMenu() {
 
   menu_.addSeparator();
 
-  add(Command::AUDIO_PREFERENCES);
+  addFull(Command::AUDIO_PREFERENCES);
 }
 
 void BasicMenuMaker::addSelectMenu() {
@@ -137,15 +137,15 @@ void BasicMenuMaker::addSelectMenu() {
 
   switch (isWholeSong_.isWholeSong()) {
    case IsWholeSong::ONE_SEGMENT:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), !empty_);
+    addFull(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), !empty_);
     break;
 
    case IsWholeSong::WHOLE_SONG:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop This Segment"), !empty_);
+    addFull(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop This Segment"), !empty_);
     break;
 
    case IsWholeSong::SONG_IS_ONE_SEGMENT:
-    add(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), false);
+    addFull(Command::TOGGLE_WHOLE_SONG_LOOP, Trans("Loop Entire Track"), false);
     break;
   }
   addEnabled(Command::ZOOM_TO_SELECTION, !empty_);
@@ -158,9 +158,9 @@ void BasicMenuMaker::addTransportMenu() {
 }
 
 void BasicMenuMaker::addHelpMenu() {
-  add(Command::OPEN_MANUAL);
-  add(Command::REQUEST_SUPPORT);
-  add(Command::WHATS_NEW_PAGE);
+  addFull(Command::OPEN_MANUAL);
+  addFull(Command::REQUEST_SUPPORT);
+  addFull(Command::WHATS_NEW_PAGE);
 }
 
 const StringArray BasicMenuMaker::getMenuBarNames() const {
