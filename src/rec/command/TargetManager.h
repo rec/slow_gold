@@ -41,7 +41,6 @@ class TargetManager : // public ApplicationCommandTarget,
 
   virtual void operator()(bool d) { Lock l(lock_); disabled_ = d; }
 
-  virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
   virtual bool perform(const InvocationInfo&);
 
   InvocationInfo lastInvocation() const;
@@ -58,9 +57,9 @@ class TargetManager : // public ApplicationCommandTarget,
                       int flags = -1);
   CommandRecordTable* commandRecordTable() { return &table_; }
   ApplicationCommandTarget* target() { return target_.get(); }
+  CommandRecord* find(CommandID);
 
  private:
-  CommandRecord* find(CommandID);
 
   CommandRecordTable table_;
 

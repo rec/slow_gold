@@ -33,8 +33,11 @@ class CommandTarget : public ApplicationCommandTarget {
     }
   }
 
-  virtual void getCommandInfo(CommandID commandID, ApplicationCommandInfo& res) {
-    return targetManager_->getCommandInfo(commandID, res);
+  virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
+    info = targetManager_->find(id)->info_;
+
+    if (!info.shortName.isNotEmpty())
+      LOG(ERROR) << "No name for " << commandName(id);
   }
 
   virtual bool perform (const InvocationInfo& info) {
@@ -64,14 +67,6 @@ TargetManager:: ~TargetManager() {}
 void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(target_.get());
   loadKeyboardBindings(this);
-}
-
-void TargetManager::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-  Lock l(lock_);
-  info = find(id)->info_;
-
-  if (!info.shortName.isNotEmpty())
-    LOG(ERROR) << "No name for " << commandName(id);
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
@@ -147,6 +142,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
 }
 
 CommandRecord* TargetManager::find(CommandID id) {
+  Lock l(lock_);
   return table_.find(id);
 }
 
