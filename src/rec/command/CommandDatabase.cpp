@@ -89,7 +89,7 @@ class CommandDatabase {
   }
 
   void fillCommandInfo() {
-    CommandRecordTable::iterator i;
+    CommandRecordTable::const_iterator i;
     for (i = table_->begin(); i != table_->end(); ++i) {
       CommandID id = i->first;
       CommandRecord* cr = i->second;

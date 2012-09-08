@@ -17,20 +17,14 @@ class CommandRecordTable {
 
   typedef std::map<CommandID, CommandRecord*> Table;
 
-  typedef Table::iterator iterator;
   typedef Table::const_iterator const_iterator;
 
   CommandRecord* find(CommandID id, bool create = true);
 
-  void erase(CommandID id) {
-    Lock l(lock_);
-    table_.erase(id);
-  }
-
+  void erase(CommandID);
   const Commands getCommands() const;
+  void getAllCommands(juce::Array<CommandID>*);
 
-  iterator begin() { return table_.begin(); }
-  iterator end() { return table_.end(); }
   const_iterator begin() const { return table_.begin(); }
   const_iterator end() const { return table_.end(); }
 

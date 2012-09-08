@@ -25,12 +25,7 @@ class CommandTarget : public ApplicationCommandTarget {
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
 
   virtual void getAllCommands(juce::Array<CommandID>& commands) {
-    commands.clear();
-    CommandRecordTable::const_iterator i;
-    for (i = table_->begin(); i != table_->end(); ++i) {
-      if (i->second->callback_)
-        commands.add(i->first);
-    }
+    table_->getAllCommands(&commands);
   }
 
   virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
