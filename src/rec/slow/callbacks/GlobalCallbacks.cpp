@@ -6,6 +6,7 @@
 #include "rec/data/ZipData.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/GuiSettings.h"
+#include "rec/support/RequestSupport.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Undo.h"
@@ -28,25 +29,17 @@ const String WHATS_NEW_URL = WOODSHED + "%s/whats-new.html";
 TRTR(CANCEL, "Cancel");
 TRTR(CANT_LOAD, "Couldn't Load The SlowGold 8 User Manual");
 TRTR(CANT_LOAD_FULL, "Sorry, couldn't load the SlowGold 8 user manual at");
-TRTR(CANT_SUPPORT, "Couldn't Create A Support Request");
-TRTR(CANT_SUPPORT_FULL, "Sorry, we were unable to create a support request.");
 TRTR(CLICK_TO_CONTINUE, "Click to continue.");
-TRTR(MAIL_ATTACH, "Please attach the file on your desktop named %s to this "
-                  "email and send it to us!");
-TRTR(MAIL_CREATED, "A Support Request file named \"%s\" "
-                   "was created on your desktop.");
-TRTR(MAIL_DISCARD, "You can throw the file away once your email is sent.");
-TRTR(MAIL_SUBJECT, "Support Request: %s");
 TRTR(OK, "OK");
-TRTR(PLEASE_CONTACT, "Please contact World Wide Woodshed support at");
-TRTR(PLEASE_MAIL, "Please mail the file to %s and then you can throw it away.");
-TRTR(SUPPORTED, "A Support Request Was Created On Your Desktop");
 TRTR(SELECT_EXPORT_FILE, "Select A File To Save Exported Settings");
 TRTR(SELECT_EXPORT_KEYBOARD_FILE, "Select A File To Save Exported Keyboard Command Mappings");
 TRTR(SELECT_EXPORT_MIDI_FILE, "Select A File To Save Exported MIDI Command Mappings");
 TRTR(SELECT_IMPORT_FILE, "Select A Zip File Containing Exported Settings");
 TRTR(SELECT_IMPORT_KEYBOARD_FILE, "Select A File Containing Keyboard Command Mappings");
 TRTR(SELECT_IMPORT_MIDI_FILE, "Select A File Containing MIDI Command Mappings");
+
+// TODO: these three duplicated in RequestSupport.cpp
+TRTR(PLEASE_CONTACT, "Please contact World Wide Woodshed support at");
 
 const String SUPPORT = "support@worldwidewoodshed.com";
 const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
@@ -59,23 +52,6 @@ void alert(const String& title, const String& msg) {
 
   AlertWindow::showMessageBox(AlertWindow::WarningIcon, title, msg,
                               CLICK_TO_CONTINUE);
-}
-
-const char* const VOWELS = "aeiouy";
-const char* const CONSONANTS = "bdfgjlmnprsvwxz";
-const char* const LETTERS[] = {VOWELS, CONSONANTS};
-const uint32 LENGTHS[] = {strlen(VOWELS), strlen(CONSONANTS)};
-
-const int LENGTH = 10;
-
-String randomKey(int length = LENGTH) {
-  String s;
-  Random random;
-  int index = random.nextInt(2);
-  for (int i = 0; i < length; ++i, index = 1 - index)
-    s += LETTERS[index][random.nextInt(LENGTHS[index])];
-
-  return s;
 }
 
 void openManual() {
@@ -176,7 +152,7 @@ void addGlobalCallbacks(CommandRecordTable* t) {
   addCallback(t, Command::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
   addCallback(t, Command::PASTE, pasteFromClipboard);
   addCallback(t, Command::REDO, redo);
-  addCallback(t, Command::REQUEST_SUPPORT, requestSupport);
+  addCallback(t, Command::REQUEST_SUPPORT, support::requestSupport);
   addCallback(t, Command::UNDO, undo);
   addCallback(t, Command::WHATS_NEW_PAGE, whatsNewPage);
 }
@@ -185,43 +161,15 @@ void GlobalCallbacks::registerAllTranslations() {
   CANCEL.registerTranslation();
   CANT_LOAD.registerTranslation();
   CANT_LOAD_FULL.registerTranslation();
-  CANT_SUPPORT.registerTranslation();
-  CANT_SUPPORT_FULL.registerTranslation();
   CLICK_TO_CONTINUE.registerTranslation();
-  MAIL_ATTACH.registerTranslation();
-  MAIL_CREATED.registerTranslation();
-  MAIL_DISCARD.registerTranslation();
-  MAIL_SUBJECT.registerTranslation();
-  OK.registerTranslation();
   PLEASE_CONTACT.registerTranslation();
-  PLEASE_MAIL.registerTranslation();
+  OK.registerTranslation();
   SELECT_EXPORT_FILE.registerTranslation();
   SELECT_EXPORT_KEYBOARD_FILE.registerTranslation();
   SELECT_EXPORT_MIDI_FILE.registerTranslation();
   SELECT_IMPORT_FILE.registerTranslation();
   SELECT_IMPORT_KEYBOARD_FILE.registerTranslation();
   SELECT_IMPORT_MIDI_FILE.registerTranslation();
-  SUPPORTED.registerTranslation();
-}
-
-void requestSupport() {
-  String key = randomKey();
-  File f = data::zipData(key);
-  if (f == File::nonexistent) {
-    alert(CANT_SUPPORT, CANT_SUPPORT_FULL + String("\n") +
-          PLEASE_CONTACT + String("\n") + SUPPORT);
-  } else {
-    String fn = f.getFileName();
-    alert(SUPPORTED,
-          String::formatted(MAIL_CREATED, c_str(fn)) + "\n\n" +
-          String::formatted(PLEASE_MAIL, c_str(SUPPORT)));
-    String subject = String::formatted(MAIL_SUBJECT, c_str(key));
-    String body = String::formatted(MAIL_ATTACH, c_str(fn)) + String("\n\n") +
-      MAIL_DISCARD;
-    URL url = MAILTO.withParameter("subject", subject).withParameter("body", body);
-    url.launchInDefaultBrowser();
-    f.revealToUser();
-  }
 }
 
 }  // namespace slow

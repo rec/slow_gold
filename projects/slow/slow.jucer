@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="4Bn9HGmru" name="SlowGold">
+  <MAINGROUP id="c0pm9naRH" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -940,6 +940,10 @@
               name="Threads.h" resource="0"/>
       </GROUP>
       <GROUP id="9KgXHos5p" name="support">
+        <FILE compile="1" file="../../src/rec/support/RequestSupport.cpp" id="0JYVDThV2"
+              name="RequestSupport.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/support/RequestSupport.h" id="qJGrijsrm"
+              name="RequestSupport.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/support/SupportWindow.cpp" id="ABP0chzrz"
               name="SupportWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/support/SupportWindow.h" id="j9xbDHQul"
@@ -1640,7 +1644,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="RBuI7moH3" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="FGby5WYsA" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

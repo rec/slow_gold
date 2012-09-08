@@ -3,6 +3,7 @@
 #include "rec/app/Files.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/slow/callbacks/GlobalCallbacks.h"
+#include "rec/support/RequestSupport.h"
 
 namespace rec {
 namespace slow {
@@ -24,7 +25,7 @@ namespace support {
 using namespace rec::data;
 
 void initialize(app::GenericApplication* app) {
-  slow::requestSupport();
+  requestSupport();
   app->quit();
 }
 

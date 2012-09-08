@@ -15,6 +15,7 @@
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 #include "rec/slow/callbacks/SaveFile.h"
+#include "rec/support/RequestSupport.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/widget/tree/CD.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
@@ -45,6 +46,7 @@ void registerAllTranslations() {
 
   music::MusicFileReader::registerAllTranslations();
 
+  support::RequestSupport::registerAllTranslations();
   util::cd::CDReader::registerAllTranslations();
   widget::tree::CD::registerAllTranslations();
   widget::tree::TreeViewDropAll::registerAllTranslations();
