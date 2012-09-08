@@ -14,7 +14,7 @@ using command::CommandRecordTable;
 
 void addSlowCallbacks(Instance* i, CommandRecordTable* table, int repeat) {
   addGlobalCallbacks(table);
-  addInstanceCallbacks(table, i);
+  addInstanceCallbacks(table);
   addSelectionCallbacks(table, i);
   addRepeatedCallbacks(table, i, repeat);
 }

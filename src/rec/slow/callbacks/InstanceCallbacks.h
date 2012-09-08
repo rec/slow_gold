@@ -11,7 +11,7 @@ namespace slow {
 
 class Instance;
 
-void addInstanceCallbacks(command::CommandRecordTable*, Instance*);
+void addInstanceCallbacks(command::CommandRecordTable*);
 
 struct InstanceCallbacks {
   static void registerAllTranslations();

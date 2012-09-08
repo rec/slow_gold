@@ -186,6 +186,13 @@ void addCallbackNoInstance(CommandRecordTable* c, CommandID id, Function f, X x)
   addCallback(c, id, thread::functionCallback(f, x));
 }
 
+#if 0
+template <typename Function, typename X, typename Y>
+void addCallbackNoInstance(CommandRecordTable* c, CommandID id, Function f, X x, Y y) {
+  addCallback(c, id, thread::functionCallback(f, x, y));
+}
+#endif
+
 template <typename Proto>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
@@ -193,6 +200,12 @@ void addApplyCallback(CommandRecordTable* c, CommandID id,
                         protoFunction);
 }
 
+template <typename Proto>
+void addApplyCallback(CommandRecordTable* c, CommandID id,
+                      bool (*protoFunction)(Proto*)) {
+  addCallbackNoInstance(c, id, &executeCallbackIfNoInstance<Proto>,
+                        protoFunction);
+}
 
 }  // namespace slow
 }  // namespace rec

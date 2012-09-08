@@ -320,7 +320,7 @@ void clearSettingsForThisTrack() {
 
 using namespace rec::command;
 
-void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
+void addInstanceCallbacks(CommandRecordTable* c) {
   using namespace rec::gui;
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;
@@ -334,20 +334,20 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings);
   addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack);
-  // addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
+  // addApplyCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator);
   addCallback(c, Command::CLOSE_FILE, closeFile);
-  addApplyCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
+  addApplyCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle);
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings);
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings);
-  addApplyCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
-  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolume, false, i);
-  addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolume, true, i);
-  addApplyCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeed, false, i);
-  addApplyCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeed, true, i);
+  addApplyCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle);
+  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown);
+  addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp);
+  addApplyCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeedDown);
+  addApplyCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeedUp);
 
   addCallback(c, Command::OPEN, open);
   addCallback(c, Command::QUIT, quit);
-  addApplyCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
+  addApplyCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity);
   addCallback(c, Command::SAVE_FILE, saveFile);
   addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop);
