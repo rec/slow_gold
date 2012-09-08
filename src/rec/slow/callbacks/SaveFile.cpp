@@ -301,12 +301,12 @@ void doSaveFile(Instance* instance, bool useSelection) {
 }  // namespace
 
 
-void saveFile(Instance* instance) {
-  doSaveFile(instance, false);
+void saveFile() {
+  doSaveFile(Instance::getInstance(), false);
 }
 
-void saveFileSelection(Instance* instance) {
-  doSaveFile(instance, true);
+void saveFileSelection() {
+  doSaveFile(Instance::getInstance(), true);
 }
 
 void SaveFile::registerAllTranslations() {

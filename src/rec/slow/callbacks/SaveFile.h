@@ -8,8 +8,8 @@ namespace slow {
 
 class Instance;
 
-void saveFile(Instance* instance);
-void saveFileSelection(Instance* instance);
+void saveFile();
+void saveFileSelection();
 
 struct SaveFile {
   static void registerAllTranslations();

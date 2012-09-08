@@ -154,6 +154,45 @@ typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
 void loop(Instance*, LoopSnapshotFunction, CommandIDEncoder);
 void select(Instance*, SelectorFunction, CommandIDEncoder);
+void loopNoInstance(LoopSnapshotFunction, CommandIDEncoder);
+void selectNoInstance(SelectorFunction, CommandIDEncoder);
+
+template <typename Proto>
+void executeCallbackNoInstance(void (*protoFunction)(Proto*)) {
+  const VirtualFile vf = Instance::getInstanceFile();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto);
+  data::setProto(proto, vf);
+}
+
+template <typename Proto, typename Type>
+void executeCallback2NoInstance(void (*protoFunction)(Proto*, Type), Type x) {
+  const VirtualFile vf = Instance::getInstanceFile();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto, x);
+  data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
+  const VirtualFile vf = Instance::getInstanceFile();
+  Proto proto(data::getProto<Proto>(vf));
+  if ((*protoFunction)(&proto))
+    data::setProto(proto, vf);
+}
+
+template <typename Function, typename X>
+void addCallbackNoInstance(CommandRecordTable* c, CommandID id, Function f, X x) {
+  addCallback(c, id, thread::functionCallback(f, x));
+}
+
+template <typename Proto>
+void addApplyCallback(CommandRecordTable* c, CommandID id,
+                      void (*protoFunction)(Proto*)) {
+  addCallbackNoInstance(c, id, &executeCallbackNoInstance<Proto>,
+                        protoFunction);
+}
+
 
 }  // namespace slow
 }  // namespace rec

@@ -330,7 +330,7 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram);
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences);
-  addApplyCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
+  addApplyCallback(c, Command::CLEAR_LOOPS, clearLoops);
   addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings);
   addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack);
@@ -348,8 +348,8 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::OPEN, open);
   addCallback(c, Command::QUIT, quit);
   addApplyCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
-  addCallback(c, Command::SAVE_FILE, saveFile, i);
-  addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection, i);
+  addCallback(c, Command::SAVE_FILE, saveFile);
+  addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop);
   addCallback(c, Command::ZOOM_OUT, zoomOut);
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull);

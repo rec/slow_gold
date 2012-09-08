@@ -31,5 +31,14 @@ void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos)
   instance->setProto(snap.viewport_);
 }
 
+
+void loopNoInstance(LoopSnapshotFunction lsf, CommandIDEncoder pos) {
+  loop(Instance::getInstance(), lsf, pos);
+}
+
+void selectNoInstance(SelectorFunction selector, CommandIDEncoder pos) {
+  select(Instance::getInstance(), selector, pos);
+}
+
 }  // namespace slow
 }  // namespace rec
