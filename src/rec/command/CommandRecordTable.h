@@ -21,7 +21,12 @@ class CommandRecordTable {
   typedef Table::const_iterator const_iterator;
 
   CommandRecord* find(CommandID id, bool create = true);
-  void erase(CommandID id) { table_.erase(id); }
+
+  void erase(CommandID id) {
+    Lock l(lock_);
+    table_.erase(id);
+  }
+
   const Commands getCommands() const;
 
   iterator begin() { return table_.begin(); }
@@ -30,6 +35,7 @@ class CommandRecordTable {
   const_iterator end() const { return table_.end(); }
 
  private:
+  CriticalSection lock_;
   Table table_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecordTable);

@@ -15,6 +15,7 @@ CommandRecordTable::~CommandRecordTable() {
 }
 
 CommandRecord* CommandRecordTable::find(CommandID id, bool create) {
+  Lock l(lock_);
   CHECK(id != CommandIDEncoder::toCommandID(Command::JUMP, 10) || !create);
   CommandRecordTable::iterator i = table_.find(id);
   if (i != table_.end())
@@ -29,6 +30,7 @@ CommandRecord* CommandRecordTable::find(CommandID id, bool create) {
 }
 
 const Commands CommandRecordTable::getCommands() const {
+  Lock l(lock_);
   Commands commands;
   CommandRecordTable::const_iterator i;
   for (i = table_.begin(); i != table_.end(); ++i) {
@@ -37,13 +39,6 @@ const Commands CommandRecordTable::getCommands() const {
   }
   return commands;
 }
-
-string commandName(CommandID id) {
-  return CommandIDEncoder::commandIDName(id);
-}
-
-const CommandID JUMP_TO_FIRST =
-  CommandIDEncoder::toCommandID(CommandIDEncoder::FIRST, Command::JUMP);
 
 }  // namespace command
 }  // namespace rec

@@ -37,7 +37,7 @@ class CommandTarget : public ApplicationCommandTarget {
     info = targetManager_->find(id)->info_;
 
     if (!info.shortName.isNotEmpty())
-      LOG(ERROR) << "No name for " << commandName(id);
+      LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
   }
 
   virtual bool perform (const InvocationInfo& info) {
@@ -97,7 +97,7 @@ void TargetManager::addCallback(CommandID id,
                                 const String& desc) {
   ptr<Callback> callback(cb);
   if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
-    LOG(DFATAL) << "Can't add " << commandName(id)
+    LOG(DFATAL) << "Can't add " << CommandIDEncoder::commandIDName(id)
                << ", " << name << ", " << desc;
     return;
   }
@@ -110,7 +110,7 @@ void TargetManager::addCallback(CommandID id,
 
   CommandRecord* cr = find(id);
   if (cr->callback_)
-    LOG(DFATAL) << "Added command twice: " << commandName(id);
+    LOG(DFATAL) << "Add command twice: " << CommandIDEncoder::commandIDName(id);
 
   cr->callback_.reset(callback.transfer());
 }
@@ -130,7 +130,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     info->shortName = str(cr->setter_->menuName());
 
   if (!info->shortName.length()) {
-    LOG(ERROR) << "No name for " << commandName(id);
+    LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
     info->shortName = "(error)";
   }
   info->setActive(enable);

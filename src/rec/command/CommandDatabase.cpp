@@ -82,7 +82,8 @@ class CommandDatabase {
         }
         cr->command_.swap(newCmd);
       } else {
-        LOG(DFATAL) << "No repeated record for " << commandName(t);
+        LOG(DFATAL) << "No repeated record for "
+                    << CommandIDEncoder::commandIDName(t);
       }
     }
   }
@@ -93,7 +94,7 @@ class CommandDatabase {
       CommandID id = i->first;
       CommandRecord* cr = i->second;
       if (!cr->callback_)
-        LOG(DFATAL) << "Empty callback " << commandName(id);
+        LOG(DFATAL) << "Empty callback " << CommandIDEncoder::commandIDName(id);
 
       const Description& desc = cr->command_->desc();
       String name = Trans(desc.full(0));
@@ -109,7 +110,7 @@ class CommandDatabase {
 
         cr->info_.setInfo(Trans(desc.menu(0)), name, category, flags);
       } else {
-        LOG(DFATAL) << "No command " << commandName(id)
+        LOG(DFATAL) << "No command " << CommandIDEncoder::commandIDName(id)
                    << ", " << desc.menu_size()
                    << ", " << name.length()
                    << cr->command_->ShortDebugString();

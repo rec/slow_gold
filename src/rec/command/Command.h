@@ -21,10 +21,6 @@ struct CommandRecord {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecord);
 };
 
-string commandName(CommandID);
-
-extern const CommandID JUMP_TO_FIRST;
-
 }  // namespace command
 }  // namespace rec
 

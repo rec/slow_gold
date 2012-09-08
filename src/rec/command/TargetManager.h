@@ -5,10 +5,11 @@
 
 #include "rec/command/Command.h"
 #include "rec/command/CommandData.h"
-#include "rec/command/CommandRecordTable.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandItemSetter.h"
-#include "rec/util/STL.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/util/Listener.h"
+#include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
@@ -36,7 +37,7 @@ class TargetManager : public Listener<CommandID>,
 
   virtual void operator()(CommandID id) {
     if (!invokeDirectly(id))
-      LOG(DFATAL) << "Failed to invoke " << command::commandName(id);
+      LOG(DFATAL) << "Failed to invoke " << CommandIDEncoder::commandIDName(id);
   }
 
   virtual void operator()(bool d) { Lock l(lock_); disabled_ = d; }
