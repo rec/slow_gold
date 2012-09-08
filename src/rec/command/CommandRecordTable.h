@@ -24,9 +24,7 @@ class CommandRecordTable {
   void erase(CommandID);
   const Commands getCommands() const;
   void getAllCommands(juce::Array<CommandID>*);
-
-  const_iterator begin() const { return table_.begin(); }
-  const_iterator end() const { return table_.end(); }
+  void fillCommandInfo();
 
  private:
   CriticalSection lock_;
