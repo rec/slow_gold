@@ -71,11 +71,12 @@ TRTR(CLEAR_FAILED_FULL, "Sorry, there was an error clearing the settings. "
 
 static const int SELECTION_WIDTH_PORTION = 20;
 
-void aboutThisProgram(Instance* i) {
-  i->window_->startAboutWindow();
+void aboutThisProgram() {
+  Instance::getInstance()->window_->startAboutWindow();
 }
 
-void addLoopPoint(Instance* i) {
+void addLoopPoint() {
+  Instance* i = Instance::getInstance();
   widget::waveform::addLoopPointToViewport(i->file(),
                                            i->player_->getTime());
 }
@@ -113,11 +114,12 @@ void clearLoops(Viewport* viewport) {
   loop->set_time(0);
 }
 
-void clearKeyboardMappings(Instance* i) {
+void clearKeyboardMappings() {
   if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
                                    CLEAR_KEYBOARD_MAPPINGS_TITLE,
                                    CLEAR_KEYBOARD_MAPPINGS_FULL,
                                    OK, CANCEL)) {
+    Instance* i = Instance::getInstance();
     command::clearKeyboardBindings(i->target_->targetManager());
 
   }
@@ -311,9 +313,9 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   using rec::audio::source::Player;
 
   addCallback(c, Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
-  addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings, i);
-  addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram, i);
-  addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint, i);
+  addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
+  addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram);
+  addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
   addApplyCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
   addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings, i);
