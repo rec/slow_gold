@@ -151,7 +151,8 @@ void resetGainToUnity(Gain* gain) {
   gain->set_gain(0);
 }
 
-void keyboardMappings(Instance* i) {
+void keyboardMappings() {
+  Instance* i = Instance::getInstance();
   gui::DialogLocker l;
   if (!l.isLocked()) {
     beep();
@@ -170,7 +171,8 @@ void keyboardMappings(Instance* i) {
   command::saveKeyboardBindings(manager);
 }
 
-void midiMappings(Instance* i) {
+void midiMappings() {
+  Instance* i = Instance::getInstance();
   gui::DialogLocker l;
   if (!l.isLocked()) {
     beep();
@@ -219,16 +221,19 @@ void treeRight(Instance*) {
 void treeUp(Instance*) {
 }
 
-void zoomOut(Instance* i) {
+void zoomOut() {
+  Instance* i = Instance::getInstance();
   widget::waveform::zoomScale(i->file(), i->length(),
                               i->getSourceSampleRate(), -1.0);
 }
 
-void zoomOutFull(Instance* i) {
+void zoomOutFull() {
+  Instance* i = Instance::getInstance();
   widget::waveform::zoomOutFull(i->file(), i->length());
 }
 
-void zoomToSelection(Instance* i) {
+void zoomToSelection() {
+  Instance* i = Instance::getInstance();
   SampleRange range = rec::util::makeRange<SampleTime>(i->currentTime_->timeSelection());
   SampleTime pad(range.size() / SELECTION_WIDTH_PORTION);
   SampleTime len(i->length().get());
@@ -239,28 +244,34 @@ void zoomToSelection(Instance* i) {
                            std::min(len, range.end_ + pad));
 }
 
-void audioPreferences(Instance* i) {
+void audioPreferences() {
+  Instance* i = Instance::getInstance();
   i->device_->setupPage_->show(i->components_->mainPage_->panel());
 }
 
-void closeFile(Instance* i) {
+void closeFile() {
+  Instance* i = Instance::getInstance();
   i->currentFile_->setVirtualFile(data::noData(), false);
 }
 
-void open(Instance* i) {
+void open() {
+  Instance* i = Instance::getInstance();
   gui::dialog::openOneFile(i->currentFile_.get());
 }
 
-void quit(Instance* i) {
+void quit() {
+  Instance* i = Instance::getInstance();
   i->window_->application()->quit();
 }
 
-void toggleStartStop(Instance* i) {
+void toggleStartStop() {
+  Instance* i = Instance::getInstance();
   if (!i->empty())
     i->player_->toggle();
 }
 
-void checkForUpdates(Instance* i) {
+void checkForUpdates() {
+  Instance* i = Instance::getInstance();
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
@@ -281,7 +292,7 @@ void deleteRecursivelyAndQuit(const File& dir, Instance* i,
                                     OK, CANCEL)) {
     return;
   }
-  closeFile(i);
+  closeFile();
   bool success = dir.deleteRecursively();
   if (QUIT_EVEN_IF_CLEAR_FAILS || success) {
     i->window_->application()->quit();
@@ -291,13 +302,15 @@ void deleteRecursivelyAndQuit(const File& dir, Instance* i,
   }
 }
 
-void clearAllSettings(Instance* i) {
+void clearAllSettings() {
+  Instance* i = Instance::getInstance();
   deleteRecursivelyAndQuit(app::getAppDirectory(), i,
                            CONFIRM_CLEAR_ALL_SETTINGS,
                            CONFIRM_CLEAR_ALL_SETTINGS_FULL);
 }
 
-void clearSettingsForThisTrack(Instance* i) {
+void clearSettingsForThisTrack() {
+  Instance* i = Instance::getInstance();
   deleteRecursivelyAndQuit(file::getShadowDirectory(i->file()), i,
                            CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK,
                            CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
@@ -316,32 +329,32 @@ void addInstanceCallbacks(CommandRecordTable* c, Instance* i) {
   addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
   addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram);
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint);
-  addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences, i);
+  addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences);
   addApplyCallback(c, Command::CLEAR_LOOPS, clearLoops, i);
-  addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings, i);
+  addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings);
   addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
-              clearSettingsForThisTrack, i);
+              clearSettingsForThisTrack);
   // addCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator, i);
-  addCallback(c, Command::CLOSE_FILE, closeFile, i);
+  addCallback(c, Command::CLOSE_FILE, closeFile);
   addApplyCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle, i);
-  addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings, i);
-  addCallback(c, Command::MIDI_MAPPINGS, midiMappings, i);
+  addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings);
+  addCallback(c, Command::MIDI_MAPPINGS, midiMappings);
   addApplyCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle, i);
   addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolume, false, i);
   addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolume, true, i);
   addApplyCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeed, false, i);
   addApplyCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeed, true, i);
 
-  addCallback(c, Command::OPEN, open, i);
-  addCallback(c, Command::QUIT, quit, i);
+  addCallback(c, Command::OPEN, open);
+  addCallback(c, Command::QUIT, quit);
   addApplyCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity, i);
   addCallback(c, Command::SAVE_FILE, saveFile, i);
   addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection, i);
-  addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop, i);
-  addCallback(c, Command::ZOOM_OUT, zoomOut, i);
-  addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull, i);
-  addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection, i);
-  addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates, i);
+  addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop);
+  addCallback(c, Command::ZOOM_OUT, zoomOut);
+  addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull);
+  addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection);
+  addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates);
 }
 
 void InstanceCallbacks::registerAllTranslations() {
