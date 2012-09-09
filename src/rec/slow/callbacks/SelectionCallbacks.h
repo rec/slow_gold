@@ -9,9 +9,7 @@ namespace command { class CommandRecordTable; }
 
 namespace slow {
 
-class Instance;
-
-void addSelectionCallbacks(command::CommandRecordTable*, Instance*);
+void addSelectionCallbacks(command::CommandRecordTable*);
 
 }  // namespace slow
 }  // namespace rec

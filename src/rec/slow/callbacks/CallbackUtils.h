@@ -165,6 +165,7 @@ void executeCallbackNoInstance(void (*protoFunction)(Proto*)) {
   data::setProto(proto, vf);
 }
 
+#if 0
 template <typename Proto, typename Type>
 void executeCallback2NoInstance(void (*protoFunction)(Proto*, Type), Type x) {
   const VirtualFile vf = Instance::getInstanceFile();
@@ -172,6 +173,7 @@ void executeCallback2NoInstance(void (*protoFunction)(Proto*, Type), Type x) {
   (*protoFunction)(&proto, x);
   data::setProto(proto, vf);
 }
+#endif
 
 template <typename Proto>
 void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
@@ -186,12 +188,10 @@ void addCallbackNoInstance(CommandRecordTable* c, CommandID id, Function f, X x)
   addCallback(c, id, thread::functionCallback(f, x));
 }
 
-#if 0
 template <typename Function, typename X, typename Y>
 void addCallbackNoInstance(CommandRecordTable* c, CommandID id, Function f, X x, Y y) {
   addCallback(c, id, thread::functionCallback(f, x, y));
 }
-#endif
 
 template <typename Proto>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
