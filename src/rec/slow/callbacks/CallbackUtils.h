@@ -122,14 +122,6 @@ Callback* makeCallback(Functor file, bool (*fn)(Proto*, Type t), Type t) {
   return thread::functionCB(&executeIf1<Functor, Proto>, file, fn, t);
 }
 
-typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
-typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
-
-void loopInstance(Instance*, LoopSnapshotFunction, CommandIDEncoder);
-void selectInstance(Instance*, SelectorFunction, CommandIDEncoder);
-void loopNoInstance(LoopSnapshotFunction, CommandIDEncoder);
-void selectNoInstance(SelectorFunction, CommandIDEncoder);
-
 }  // namespace slow
 }  // namespace rec
 
