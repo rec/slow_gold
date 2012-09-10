@@ -35,6 +35,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
 void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
 
 class Description;
+class Setter;
 class Command;
 class Commands;
 class KeyValue;
@@ -289,6 +290,115 @@ class Description : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class Setter : public ::google::protobuf::Message {
+ public:
+  Setter();
+  virtual ~Setter();
+  
+  Setter(const Setter& from);
+  
+  inline Setter& operator=(const Setter& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Setter& default_instance();
+  
+  void Swap(Setter* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Setter* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Setter& from);
+  void MergeFrom(const Setter& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional bool is_global = 1 [default = true];
+  inline bool has_is_global() const;
+  inline void clear_is_global();
+  static const int kIsGlobalFieldNumber = 1;
+  inline bool is_global() const;
+  inline void set_is_global(bool value);
+  
+  // optional .rec.data.AddressProto address = 2;
+  inline bool has_address() const;
+  inline void clear_address();
+  static const int kAddressFieldNumber = 2;
+  inline const ::rec::data::AddressProto& address() const;
+  inline ::rec::data::AddressProto* mutable_address();
+  
+  // optional string type_name = 3;
+  inline bool has_type_name() const;
+  inline void clear_type_name();
+  static const int kTypeNameFieldNumber = 3;
+  inline const ::std::string& type_name() const;
+  inline void set_type_name(const ::std::string& value);
+  inline void set_type_name(const char* value);
+  inline void set_type_name(const char* value, size_t size);
+  inline ::std::string* mutable_type_name();
+  
+  // @@protoc_insertion_point(class_scope:rec.command.Setter)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  bool is_global_;
+  ::rec::data::AddressProto* address_;
+  ::std::string* type_name_;
+  static const ::std::string _default_type_name_;
+  friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
+  friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static Setter* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class Command : public ::google::protobuf::Message {
  public:
   Command();
@@ -522,36 +632,12 @@ class Command : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& keypress() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_keypress();
   
-  // optional bool is_setter = 6;
-  inline bool has_is_setter() const;
-  inline void clear_is_setter();
-  static const int kIsSetterFieldNumber = 6;
-  inline bool is_setter() const;
-  inline void set_is_setter(bool value);
-  
-  // optional bool is_global_setter = 7;
-  inline bool has_is_global_setter() const;
-  inline void clear_is_global_setter();
-  static const int kIsGlobalSetterFieldNumber = 7;
-  inline bool is_global_setter() const;
-  inline void set_is_global_setter(bool value);
-  
-  // optional .rec.data.AddressProto address = 8;
-  inline bool has_address() const;
-  inline void clear_address();
-  static const int kAddressFieldNumber = 8;
-  inline const ::rec::data::AddressProto& address() const;
-  inline ::rec::data::AddressProto* mutable_address();
-  
-  // optional string setter_type_name = 9;
-  inline bool has_setter_type_name() const;
-  inline void clear_setter_type_name();
-  static const int kSetterTypeNameFieldNumber = 9;
-  inline const ::std::string& setter_type_name() const;
-  inline void set_setter_type_name(const ::std::string& value);
-  inline void set_setter_type_name(const char* value);
-  inline void set_setter_type_name(const char* value, size_t size);
-  inline ::std::string* mutable_setter_type_name();
+  // optional .rec.command.Setter setter = 6;
+  inline bool has_setter() const;
+  inline void clear_setter();
+  static const int kSetterFieldNumber = 6;
+  inline const ::rec::command::Setter& setter() const;
+  inline ::rec::command::Setter* mutable_setter();
   
   // @@protoc_insertion_point(class_scope:rec.command.Command)
  private:
@@ -565,16 +651,12 @@ class Command : public ::google::protobuf::Message {
   static const ::std::string _default_category_;
   ::rec::command::Description* desc_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
-  bool is_setter_;
-  bool is_global_setter_;
-  ::rec::data::AddressProto* address_;
-  ::std::string* setter_type_name_;
-  static const ::std::string _default_setter_type_name_;
+  ::rec::command::Setter* setter_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -1022,6 +1104,85 @@ inline ::std::string* Description::mutable_help() {
 
 // -------------------------------------------------------------------
 
+// Setter
+
+// optional bool is_global = 1 [default = true];
+inline bool Setter::has_is_global() const {
+  return _has_bit(0);
+}
+inline void Setter::clear_is_global() {
+  is_global_ = true;
+  _clear_bit(0);
+}
+inline bool Setter::is_global() const {
+  return is_global_;
+}
+inline void Setter::set_is_global(bool value) {
+  _set_bit(0);
+  is_global_ = value;
+}
+
+// optional .rec.data.AddressProto address = 2;
+inline bool Setter::has_address() const {
+  return _has_bit(1);
+}
+inline void Setter::clear_address() {
+  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+  _clear_bit(1);
+}
+inline const ::rec::data::AddressProto& Setter::address() const {
+  return address_ != NULL ? *address_ : *default_instance_->address_;
+}
+inline ::rec::data::AddressProto* Setter::mutable_address() {
+  _set_bit(1);
+  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
+  return address_;
+}
+
+// optional string type_name = 3;
+inline bool Setter::has_type_name() const {
+  return _has_bit(2);
+}
+inline void Setter::clear_type_name() {
+  if (type_name_ != &_default_type_name_) {
+    type_name_->clear();
+  }
+  _clear_bit(2);
+}
+inline const ::std::string& Setter::type_name() const {
+  return *type_name_;
+}
+inline void Setter::set_type_name(const ::std::string& value) {
+  _set_bit(2);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void Setter::set_type_name(const char* value) {
+  _set_bit(2);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void Setter::set_type_name(const char* value, size_t size) {
+  _set_bit(2);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Setter::mutable_type_name() {
+  _set_bit(2);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  return type_name_;
+}
+
+// -------------------------------------------------------------------
+
 // Command
 
 // optional .rec.command.Command.Type type = 1;
@@ -1176,95 +1337,21 @@ Command::mutable_keypress() {
   return &keypress_;
 }
 
-// optional bool is_setter = 6;
-inline bool Command::has_is_setter() const {
+// optional .rec.command.Setter setter = 6;
+inline bool Command::has_setter() const {
   return _has_bit(6);
 }
-inline void Command::clear_is_setter() {
-  is_setter_ = false;
+inline void Command::clear_setter() {
+  if (setter_ != NULL) setter_->::rec::command::Setter::Clear();
   _clear_bit(6);
 }
-inline bool Command::is_setter() const {
-  return is_setter_;
+inline const ::rec::command::Setter& Command::setter() const {
+  return setter_ != NULL ? *setter_ : *default_instance_->setter_;
 }
-inline void Command::set_is_setter(bool value) {
+inline ::rec::command::Setter* Command::mutable_setter() {
   _set_bit(6);
-  is_setter_ = value;
-}
-
-// optional bool is_global_setter = 7;
-inline bool Command::has_is_global_setter() const {
-  return _has_bit(7);
-}
-inline void Command::clear_is_global_setter() {
-  is_global_setter_ = false;
-  _clear_bit(7);
-}
-inline bool Command::is_global_setter() const {
-  return is_global_setter_;
-}
-inline void Command::set_is_global_setter(bool value) {
-  _set_bit(7);
-  is_global_setter_ = value;
-}
-
-// optional .rec.data.AddressProto address = 8;
-inline bool Command::has_address() const {
-  return _has_bit(8);
-}
-inline void Command::clear_address() {
-  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-  _clear_bit(8);
-}
-inline const ::rec::data::AddressProto& Command::address() const {
-  return address_ != NULL ? *address_ : *default_instance_->address_;
-}
-inline ::rec::data::AddressProto* Command::mutable_address() {
-  _set_bit(8);
-  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
-  return address_;
-}
-
-// optional string setter_type_name = 9;
-inline bool Command::has_setter_type_name() const {
-  return _has_bit(9);
-}
-inline void Command::clear_setter_type_name() {
-  if (setter_type_name_ != &_default_setter_type_name_) {
-    setter_type_name_->clear();
-  }
-  _clear_bit(9);
-}
-inline const ::std::string& Command::setter_type_name() const {
-  return *setter_type_name_;
-}
-inline void Command::set_setter_type_name(const ::std::string& value) {
-  _set_bit(9);
-  if (setter_type_name_ == &_default_setter_type_name_) {
-    setter_type_name_ = new ::std::string;
-  }
-  setter_type_name_->assign(value);
-}
-inline void Command::set_setter_type_name(const char* value) {
-  _set_bit(9);
-  if (setter_type_name_ == &_default_setter_type_name_) {
-    setter_type_name_ = new ::std::string;
-  }
-  setter_type_name_->assign(value);
-}
-inline void Command::set_setter_type_name(const char* value, size_t size) {
-  _set_bit(9);
-  if (setter_type_name_ == &_default_setter_type_name_) {
-    setter_type_name_ = new ::std::string;
-  }
-  setter_type_name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Command::mutable_setter_type_name() {
-  _set_bit(9);
-  if (setter_type_name_ == &_default_setter_type_name_) {
-    setter_type_name_ = new ::std::string;
-  }
-  return setter_type_name_;
+  if (setter_ == NULL) setter_ = new ::rec::command::Setter;
+  return setter_;
 }
 
 // -------------------------------------------------------------------

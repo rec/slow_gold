@@ -47,12 +47,11 @@ class CommandDatabase {
     const Command::Type t = cmd.type();
     CommandRecord* cr = table_->find(t, false);
     if (!cr) {
-      DCHECK(cmd.has_is_global_setter() || cmd.has_is_setter())
-        << cmd.ShortDebugString();
+      DCHECK(cmd.has_setter()) << cmd.ShortDebugString();
       cr = table_->find(t, true);
-      const data::Address& a = cmd.address();
+      const data::Address& a = cmd.setter().address();
       Listener<None>* ls = data_.getMenuUpdateListener();
-      Scope s = scope(cmd.is_global_setter());
+      Scope s = scope(cmd.setter().is_global());
       cr->setter_.reset(new TickedDataSetter(&cr->info_, ls, cmd, a, s));
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                  &CommandItemSetter::execute));

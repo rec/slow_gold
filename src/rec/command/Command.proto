@@ -8,6 +8,12 @@ message Description {
   optional string help = 3;  // Full help text for the command.
 };
 
+message Setter {
+  optional bool is_global = 1 [default = true];
+  optional data.AddressProto address = 2;
+  optional string type_name = 3;
+};
+
 // A list of commands that the user can issue.
 message Command {
   enum Type {
@@ -149,10 +155,7 @@ message Command {
   optional Description desc = 4;  // Localized descriptions.
   repeated string keypress = 5;   // In Juce keyboard format.
 
-  optional bool is_setter = 6;
-  optional bool is_global_setter = 7;
-  optional data.AddressProto address = 8;
-  optional string setter_type_name = 9;
+  optional Setter setter = 6;
 };
 
 message Commands {

@@ -9,7 +9,7 @@ CommandDataSetter::CommandDataSetter(ApplicationCommandInfo* info,
                                      const Command& command,
                                      const data::Address& addr,
                                      Scope scope)
-    : AddressListener(addr, command.setter_type_name(), scope),
+    : AddressListener(addr, command.setter().type_name(), scope),
       info_(info),
       changeListener_(changeListener),
       command_(command),

@@ -721,13 +721,14 @@ command {
     menu: "Show Advanced Menus"
     full: "Toggle show/hide of advanced menus."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "advanced_menus"
+  setter {
+    address {
+      part {
+        name: "advanced_menus"
+      }
     }
+    type_name: "rec.slow.GuiSettings"
   }
-  setter_type_name: "rec.slow.GuiSettings"
 }
 command {
   type: TOGGLE_AUTOMATIC_UPDATES
@@ -736,13 +737,14 @@ command {
     menu: "Enable Automatic Updates"
     full: "Enable or disable automatic updates of SlowGold 8."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "auto_check_for_updates"
+  setter {
+    address {
+      part {
+        name: "auto_check_for_updates"
+      }
     }
+    type_name: "rec.slow.GuiSettings"
   }
-  setter_type_name: "rec.slow.GuiSettings"
 }
 command {
   type: TOGGLE_COMMAND_BAR_AT_LEFT
@@ -751,13 +753,14 @@ command {
     menu: "Command Bar At Left Side"
     full: "Lay the Command Bar out on the left side of the Waveform Display."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "command_bar_at_left"
+  setter {
+    address {
+      part {
+        name: "command_bar_at_left"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_COMMAND_BAR_AT_TOP
@@ -766,13 +769,14 @@ command {
     menu: "Command Bar At Top"
     full: "Lay the Command Bar out on the top of the Waveform Display."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "command_bar_at_top"
+  setter {
+    address {
+      part {
+        name: "command_bar_at_top"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_FILE_OPEN_TREE_DISPLAY
@@ -781,13 +785,14 @@ command {
     menu: "Use Tree Display In File Save Dialog"
     full: "Use Tree Display In File Save Dialog"
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "use_tree_view_in_file_dialogs"
+  setter {
+    address {
+      part {
+        name: "use_tree_view_in_file_dialogs"
+      }
     }
+    type_name: "rec.slow.GuiSettings"
   }
-  setter_type_name: "rec.slow.GuiSettings"
 }
 command {
   type: TOGGLE_FOLLOW_CURSOR
@@ -796,13 +801,14 @@ command {
     menu: "Follow Cursor"
     full: "Always keep the time cursor in the window."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "follow_cursor"
+  setter {
+    address {
+      part {
+        name: "follow_cursor"
+      }
     }
+    type_name: "rec.slow.GuiSettings"
   }
-  setter_type_name: "rec.slow.GuiSettings"
 }
 command {
   type: TOGGLE_GRID_DISPLAY
@@ -811,13 +817,14 @@ command {
     menu: "Show Time Gridlines"
     full: "Toggle display of the time grid."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "show_grid"
+  setter {
+    address {
+      part {
+        name: "show_grid"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_MODES_AT_LEFT
@@ -826,13 +833,14 @@ command {
     menu: "Modes At Left Side"
     full: "Lay the Modes display out on the left side of the Waveform Display."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "modes_at_left"
+  setter {
+    address {
+      part {
+        name: "modes_at_left"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_MODES_AT_TOP
@@ -841,13 +849,14 @@ command {
     menu: "Modes At Top"
     full: "Lay the Modes display out on the top of the Waveform Display."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "modes_at_top"
+  setter {
+    address {
+      part {
+        name: "modes_at_top"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_PARALLEL_WAVEFORMS
@@ -856,13 +865,14 @@ command {
     menu: "Show Stacked Waveform"
     full: "Toggle parallel/stacked waveform display."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "parallel_waveforms"
+  setter {
+    address {
+      part {
+        name: "parallel_waveforms"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_PREFADER_LEVELS
@@ -871,13 +881,15 @@ command {
     menu: "Show Pre-Fader Levels"
     full: "Toggle level display between pre- and post-fader."
   }
-  is_setter: true
-  address {
-    part {
-      name: "prefader_levels"
+  setter {
+    is_global: false
+    address {
+      part {
+        name: "prefader_levels"
+      }
     }
+    type_name: "rec.audio.Gain"
   }
-  setter_type_name: "rec.audio.Gain"
 }
 command {
   type: TOGGLE_SELECTION
@@ -939,13 +951,14 @@ command {
     menu: "Show About Window At Startup"
     full: "Toggle whether we show the About Window every time we start up."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "show_about_on_startup"
+  setter {
+    address {
+      part {
+        name: "show_about_on_startup"
+      }
     }
+    type_name: "rec.slow.GuiSettings"
   }
-  setter_type_name: "rec.slow.GuiSettings"
 }
 command {
   type: TOGGLE_SHOW_CURSOR_LABELS
@@ -954,13 +967,14 @@ command {
     menu: "Show Loop Point Labels"
     full: "Show draggable labels for the loop points on the waveform display."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "show_cursor_labels"
+  setter {
+    address {
+      part {
+        name: "show_cursor_labels"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_SHOW_LABELS_AT_TOP
@@ -969,13 +983,14 @@ command {
     menu: "Show Loop Point Labels At Top"
     full: "Show the loop point labels at the top of the waveform display."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "show_labels_at_top"
+  setter {
+    address {
+      part {
+        name: "show_labels_at_top"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_SHOW_MASTER_TUNE
@@ -984,13 +999,14 @@ command {
     menu: "Show Master Tune Slider"
     full: "Show the Master Tune Slider in the Transform Panel."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "show_master_tune"
+  setter {
+    address {
+      part {
+        name: "show_master_tune"
+      }
     }
+    type_name: "rec.slow.GuiSettings"
   }
-  setter_type_name: "rec.slow.GuiSettings"
 }
 command {
   type: TOGGLE_SHOW_SELECTION_BUTTONS
@@ -999,13 +1015,14 @@ command {
     menu: "Show Loop Point Selection Buttons"
     full: "Show help in help pane."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "show_selection_buttons"
+  setter {
+    address {
+      part {
+        name: "show_selection_buttons"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_SHOW_TIMES_AT_TOP
@@ -1014,13 +1031,14 @@ command {
     menu: "Show Grid Times At Top"
     full: "Show the grid times for the grid at the top of the waveform display."
   }
-  is_global_setter: true
-  address {
-    part {
-      name: "show_times_at_top"
+  setter {
+    address {
+      part {
+        name: "show_times_at_top"
+      }
     }
+    type_name: "rec.widget.waveform.WaveformProto"
   }
-  setter_type_name: "rec.widget.waveform.WaveformProto"
 }
 command {
   type: TOGGLE_START_STOP
@@ -1039,13 +1057,15 @@ command {
     menu: "Enable Stretch"
     full: "Toggle between stretched and real-time playback."
   }
-  is_setter: true
-  address {
-    part {
-      name: "time_enabled"
+  setter {
+    is_global: false
+    address {
+      part {
+        name: "time_enabled"
+      }
     }
+    type_name: "rec.audio.stretch.Stretch"
   }
-  setter_type_name: "rec.audio.stretch.Stretch"
   keypress: "s"
 }
 command {
@@ -1055,13 +1075,15 @@ command {
     menu: "Enable Transforms"
     full: "Toggle pitch, time and stereo transforms of the sound."
   }
-  is_setter: true
-  address {
-    part {
-      name: "enabled"
+  setter {
+    is_global: false
+    address {
+      part {
+        name: "enabled"
+      }
     }
+    type_name: "rec.audio.stretch.Stretch"
   }
-  setter_type_name: "rec.audio.stretch.Stretch"
 }
 command {
   type: TOGGLE_WHOLE_SONG_LOOP

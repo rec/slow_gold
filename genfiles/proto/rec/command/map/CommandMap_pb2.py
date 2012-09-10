@@ -10,9 +10,30 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='rec/command/map/CommandMap.proto',
   package='rec.command',
-  serialized_pb='\n rec/command/map/CommandMap.proto\x12\x0brec.command\x1a\x19rec/command/Command.proto\"J\n\x0f\x43ommandMapEntry\x12*\n\x07\x63ommand\x18\x01 \x01(\x0e\x32\x19.rec.command.Command.Type\x12\x0b\n\x03key\x18\x02 \x03(\x0c\">\n\x0f\x43ommandMapProto\x12+\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x1c.rec.command.CommandMapEntry')
+  serialized_pb='\n rec/command/map/CommandMap.proto\x12\x0brec.command\x1a\x19rec/command/Command.proto\"J\n\x0f\x43ommandMapEntry\x12*\n\x07\x63ommand\x18\x01 \x01(\x0e\x32\x19.rec.command.Command.Type\x12\x0b\n\x03key\x18\x02 \x03(\x0c\"\x8f\x01\n\x0f\x43ommandMapProto\x12/\n\x04type\x18\x01 \x01(\x0e\x32!.rec.command.CommandMapProto.Type\x12+\n\x05\x65ntry\x18\x02 \x03(\x0b\x32\x1c.rec.command.CommandMapEntry\"\x1e\n\x04Type\x12\x0c\n\x08KEYBOARD\x10\x00\x12\x08\n\x04MIDI\x10\x01')
 
 
+
+_COMMANDMAPPROTO_TYPE = descriptor.EnumDescriptor(
+  name='Type',
+  full_name='rec.command.CommandMapProto.Type',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    descriptor.EnumValueDescriptor(
+      name='KEYBOARD', index=0, number=0,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='MIDI', index=1, number=1,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=266,
+  serialized_end=296,
+)
 
 
 _COMMANDMAPENTRY = descriptor.Descriptor(
@@ -58,8 +79,15 @@ _COMMANDMAPPROTO = descriptor.Descriptor(
   containing_type=None,
   fields=[
     descriptor.FieldDescriptor(
-      name='entry', full_name='rec.command.CommandMapProto.entry', index=0,
-      number=1, type=11, cpp_type=10, label=3,
+      name='type', full_name='rec.command.CommandMapProto.type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='entry', full_name='rec.command.CommandMapProto.entry', index=1,
+      number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -69,18 +97,21 @@ _COMMANDMAPPROTO = descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
+    _COMMANDMAPPROTO_TYPE,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=152,
-  serialized_end=214,
+  serialized_start=153,
+  serialized_end=296,
 )
 
 import rec.command.Command_pb2
 
 _COMMANDMAPENTRY.fields_by_name['command'].enum_type = rec.command.Command_pb2._COMMAND_TYPE
+_COMMANDMAPPROTO.fields_by_name['type'].enum_type = _COMMANDMAPPROTO_TYPE
 _COMMANDMAPPROTO.fields_by_name['entry'].message_type = _COMMANDMAPENTRY
+_COMMANDMAPPROTO_TYPE.containing_type = _COMMANDMAPPROTO;
 
 class CommandMapEntry(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
