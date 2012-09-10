@@ -139,7 +139,8 @@ void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
   setTimeFromSegment(snap, segment);
 }
 
-void nudgeWithinSegment(Instance* i, const LoopPointList& selection, bool inc) {
+void nudgeWithinSegment(Instance*, const LoopPointList& selection, bool inc) {
+  Instance* i = Instance::getInstance();
   SampleTime begin = selection.loop_point(0).time();
   SampleTime end = selection.length();
   SampleTime width = end - begin;
@@ -155,7 +156,8 @@ void nudgeWithinSegment(Instance* i, const LoopPointList& selection, bool inc) {
   i->currentTime_->jumpToTime(time);
 }
 
-void nudgeTime(Instance* i, bool inc) {
+void nudgeTime(Instance*, bool inc) {
+  Instance* i = Instance::getInstance();
   LoopSnapshot s(i);
   LoopPointList selection = audio::getSelected(*s.loops_, true);
   if (!selection.loop_point_size())
@@ -168,7 +170,8 @@ void nudgeTime(Instance* i, bool inc) {
 
 }  // namespace
 
-void addRepeatedCallbacks(CommandRecordTable* t, Instance* i, int repeat) {
+void addRepeatedCallbacks(CommandRecordTable* t, int repeat) {
+  Instance* i = Instance::getInstance();
   for (int j = CommandIDEncoder::FIRST; j < repeat; ++j) {
   	CommandIDEncoder pos(j);
     addCallback(t, Command::SELECT, pos, selectAdd, i);

@@ -12,11 +12,11 @@ namespace slow {
 
 using command::CommandRecordTable;
 
-void addSlowCallbacks(Instance* i, CommandRecordTable* table, int repeat) {
+void addSlowCallbacks(CommandRecordTable* table, int repeat) {
   addGlobalCallbacks(table);
   addInstanceCallbacks(table);
   addSelectionCallbacks(table);
-  addRepeatedCallbacks(table, i, repeat);
+  addRepeatedCallbacks(table, repeat);
 }
 
 }  // namespace slow

@@ -9,11 +9,9 @@ namespace command { class CommandRecordTable; }
 
 namespace slow {
 
-class Instance;
-
 static const int REPEATED_COUNT = 10;
 
-void addSlowCallbacks(Instance*, command::CommandRecordTable*,
+void addSlowCallbacks(command::CommandRecordTable*,
                       int repeat = REPEATED_COUNT);
 
 }  // namespace slow

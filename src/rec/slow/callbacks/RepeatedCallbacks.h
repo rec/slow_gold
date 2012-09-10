@@ -12,7 +12,7 @@ namespace slow {
 class Instance;
 struct LoopSnapshot;
 
-void addRepeatedCallbacks(command::CommandRecordTable*, Instance*, int repeat);
+void addRepeatedCallbacks(command::CommandRecordTable*, int repeat);
 
 }  // namespace slow
 }  // namespace rec
