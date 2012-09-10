@@ -17,7 +17,7 @@ typedef command::CommandRecordTable CommandRecordTable;
 typedef command::CommandIDEncoder CommandIDEncoder;
 
 inline void addCallback(CommandRecordTable* c, CommandID id, Callback* cb) {
-  c->find(id)->callback_.reset(cb);
+  c->addCallback(id, cb);
 }
 
 template <typename Function>

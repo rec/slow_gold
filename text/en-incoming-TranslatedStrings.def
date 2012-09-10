@@ -31,13 +31,13 @@ str {
 }
 str {
   original: "A Support Request file named \"%s\" was created on your desktop."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 37
+  file: "rec/support/RequestSupport.cpp"
+  line: 18
 }
 str {
   original: "A Support Request Was Created On Your Desktop"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 43
+  file: "rec/support/RequestSupport.cpp"
+  line: 23
 }
 str {
   original: "About SlowGold 8"
@@ -115,7 +115,7 @@ str {
 str {
   original: "Cancel"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 28
+  line: 29
 }
 str {
   original: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
@@ -214,7 +214,7 @@ str {
 str {
   original: "Click to continue."
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 33
+  line: 32
 }
 str {
   original: "Close"
@@ -244,13 +244,13 @@ str {
 }
 str {
   original: "Couldn\'t Create A Support Request"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 31
+  file: "rec/support/RequestSupport.cpp"
+  line: 13
 }
 str {
   original: "Couldn\'t Load The SlowGold 8 User Manual"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 29
+  line: 30
 }
 str {
   original: "Couldn\'t Open CD Track."
@@ -769,7 +769,7 @@ str {
 str {
   original: "OK"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 40
+  line: 33
 }
 str {
   original: "one semitone %s"
@@ -819,18 +819,18 @@ str {
 }
 str {
   original: "Please attach the file on your desktop named %s to this email and send it to us!"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 35
+  file: "rec/support/RequestSupport.cpp"
+  line: 16
 }
 str {
   original: "Please contact World Wide Woodshed support at"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 41
+  line: 42
 }
 str {
   original: "Please mail the file to %s and then you can throw it away."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 42
+  file: "rec/support/RequestSupport.cpp"
+  line: 22
 }
 str {
   original: "Please press a key combination now..."
@@ -969,32 +969,32 @@ str {
 str {
   original: "Select A File Containing Keyboard Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 48
+  line: 38
 }
 str {
   original: "Select A File Containing MIDI Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 49
+  line: 39
 }
 str {
   original: "Select A File To Save Exported Keyboard Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 45
+  line: 35
 }
 str {
   original: "Select A File To Save Exported MIDI Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 46
+  line: 36
 }
 str {
   original: "Select A File To Save Exported Settings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 44
+  line: 34
 }
 str {
   original: "Select A Zip File Containing Exported Settings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 47
+  line: 37
 }
 str {
   original: "Select All"
@@ -1166,7 +1166,7 @@ str {
 str {
   original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 30
+  line: 31
 }
 str {
   original: "Sorry, file %s is an .m4a file and we can\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
@@ -1205,8 +1205,8 @@ str {
 }
 str {
   original: "Sorry, we were unable to create a support request."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 32
+  file: "rec/support/RequestSupport.cpp"
+  line: 14
 }
 str {
   original: "Spanish"
@@ -1228,8 +1228,8 @@ str {
 }
 str {
   original: "Support Request: %s"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 39
+  file: "rec/support/RequestSupport.cpp"
+  line: 20
 }
 str {
   original: "sysex"
@@ -1493,8 +1493,8 @@ str {
 }
 str {
   original: "You can throw the file away once your email is sent."
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 38
+  file: "rec/support/RequestSupport.cpp"
+  line: 19
 }
 str {
   original: "You cannot overwrite the current file."
