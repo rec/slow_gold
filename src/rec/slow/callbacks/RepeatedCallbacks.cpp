@@ -206,8 +206,7 @@ void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
   setTimeFromSegment(snap, segment);
 }
 
-void nudgeWithinSegment(Instance*, const LoopPointList& selection, bool inc) {
-  Instance* i = Instance::getInstance();
+void nudgeWithinSegment(Instance* i, const LoopPointList& selection, bool inc) {
   SampleTime begin = selection.loop_point(0).time();
   SampleTime end = selection.length();
   SampleTime width = end - begin;
@@ -229,6 +228,7 @@ void nudgeTime(bool inc) {
   LoopPointList selection = audio::getSelected(*s.loops_, true);
   if (!selection.loop_point_size())
     selection = audio::getSelected(*s.loops_, false);
+
   if (selection.loop_point_size() == 1)
     nudgeWithinSegment(i, selection, inc);
   else
