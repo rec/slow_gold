@@ -2,7 +2,6 @@
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
-#include "rec/slow/callbacks/SelectionCallbacks.h"
 
 namespace rec {
 
