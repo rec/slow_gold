@@ -223,7 +223,7 @@ void nudgeWithinSegment(Instance*, const LoopPointList& selection, bool inc) {
   i->currentTime_->jumpToTime(time);
 }
 
-void nudgeTime(Instance*, bool inc) {
+void nudgeTime(bool inc) {
   Instance* i = Instance::getInstance();
   LoopSnapshot s(i);
   LoopPointList selection = audio::getSelected(*s.loops_, true);
@@ -265,11 +265,9 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat) {
     addCallback(t, id, setLanguage, i, j);
   }
 
-
   addCallback(t, Command::OPEN_PREVIOUS_FILE, openPreviousFile);
-
-  addCallback(t, Command::NUDGE_BACKWARD, nudgeTime, i, false);
-  addCallback(t, Command::NUDGE_FORWARD, nudgeTime, i, true);
+  addCallback(t, Command::NUDGE_BACKWARD, nudgeTime, false);
+  addCallback(t, Command::NUDGE_FORWARD, nudgeTime, true);
 }
 
 }  // namespace slow
