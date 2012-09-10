@@ -12,10 +12,7 @@
 namespace rec {
 namespace slow {
 
-class Instance;
 using command::CallbackTable;
-using command::CommandRecordTable;
-using command::CommandIDEncoder;
 
 template <typename Function>
 void addCallback(CallbackTable* c, CommandID id, Function f) {

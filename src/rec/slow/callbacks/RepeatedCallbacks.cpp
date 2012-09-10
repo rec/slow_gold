@@ -31,6 +31,11 @@ void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x, Y
   c->addCallback(id, thread::functionCB(f, i, x, y));
 }
 
+template <typename Function, typename X>
+void addCallback(CallbackTable* c, CommandID id, Function f, X x) {
+  c->addCallback(id, thread::functionCB(f, x));
+}
+
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
@@ -145,13 +150,13 @@ void loadRecentFile(Instance* instance, int i) {
                          rf.file(i).file(), true);
 }
 
-void setSaveFileType(Instance* instance, int i) {
+void setSaveFileType(int i) {
   using audio::AudioSettings;
 
   AudioSettings settings = data::getProto<AudioSettings>();
   settings.set_file_type_for_save(static_cast<AudioSettings::FileType>(i));
   data::setProto(settings);
-  instance->menus_->menuItemsChanged();
+  Instance::getInstance()->menus_->menuItemsChanged();
 }
 
 void setLanguage(Instance* instance, int i) {
@@ -161,15 +166,16 @@ void setLanguage(Instance* instance, int i) {
   instance->menus_->menuItemsChanged();
 }
 
-void openPreviousFile(Instance* i) {
+void openPreviousFile() {
+
   gui::RecentFiles rf = data::getProto<gui::RecentFiles>();
   int size = rf.file_size();
   if (size) {
-    if (data::equals(rf.file(0).file(), i->file())) {
+    if (data::equals(rf.file(0).file(), Instance::getInstanceFile())) {
       if (size > 1)
-        loadRecentFile(i, 1);
+        loadRecentFile(Instance::getInstance(), 1);
     } else {
-      loadRecentFile(i, 0);
+      loadRecentFile(Instance::getInstance(), 0);
     }
   }
 }
@@ -251,7 +257,7 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat) {
 
   for (int j = 0; j < audio::AudioSettings::COUNT; ++j) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_SAVE_FORMAT);
-    addCallback(t, id, setSaveFileType, i, j);
+    addCallback(t, id, setSaveFileType, j);
   }
 
   for (int j = 0; j <= app::AppSettings::LAST; ++j) {
@@ -260,7 +266,7 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat) {
   }
 
 
-  addCallback(t, Command::OPEN_PREVIOUS_FILE, openPreviousFile, i);
+  addCallback(t, Command::OPEN_PREVIOUS_FILE, openPreviousFile);
 
   addCallback(t, Command::NUDGE_BACKWARD, nudgeTime, i, false);
   addCallback(t, Command::NUDGE_FORWARD, nudgeTime, i, true);
