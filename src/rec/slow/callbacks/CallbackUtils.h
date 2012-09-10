@@ -22,21 +22,6 @@ void addCallback(CallbackTable* c, CommandID id, Function f) {
   c->addCallback(id, thread::functionCB(f));
 }
 
-template <typename Function>
-void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i) {
-  c->addCallback(id, thread::functionCB(f, i));
-}
-
-template <typename Function, typename X>
-void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x) {
-  c->addCallback(id, thread::functionCB(f, i, x));
-}
-
-template <typename Function, typename X, typename Y>
-void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x, Y y) {
-  c->addCallback(id, thread::functionCB(f, i, x, y));
-}
-
 }  // namespace slow
 }  // namespace rec
 

@@ -21,6 +21,16 @@ namespace slow {
 
 namespace {
 
+template <typename Function>
+void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i) {
+  c->addCallback(id, thread::functionCB(f, i));
+}
+
+template <typename Function, typename X, typename Y>
+void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x, Y y) {
+  c->addCallback(id, thread::functionCB(f, i, x, y));
+}
+
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
@@ -74,9 +84,8 @@ void selectX(SelectorFunction selector, CommandIDEncoder pos) {
   instance->setProto(snap.viewport_);
 }
 
-
 template <typename Function, typename X, typename Y>
-void addCallbackX(CallbackTable* c, CommandID id, Function f, X x, Y y) {
+void addCallback(CallbackTable* c, CommandID id, Function f, X x, Y y) {
   c->addCallback(id, thread::functionCB(f, x, y));
 }
 
@@ -91,10 +100,10 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 
 void addSelectionCallbacks(command::CallbackTable* t) {
 	static const CommandIDEncoder noPos(CommandIDEncoder::CURRENT);
-  addCallbackX(t, Command::DESELECT_ALL, selectX, deselectAll, noPos);
-  addCallbackX(t, Command::SELECT_ALL, selectX, selectAll, noPos);
-  addCallbackX(t, Command::INVERT_LOOP_SELECTION, selectX, invertLoopSelection, noPos);
-  addCallbackX(t, Command::TOGGLE_WHOLE_SONG_LOOP, selectX, toggleWholeSongLoop, noPos);
+  addCallback(t, Command::DESELECT_ALL, selectX, deselectAll, noPos);
+  addCallback(t, Command::SELECT_ALL, selectX, selectAll, noPos);
+  addCallback(t, Command::INVERT_LOOP_SELECTION, selectX, invertLoopSelection, noPos);
+  addCallback(t, Command::TOGGLE_WHOLE_SONG_LOOP, selectX, toggleWholeSongLoop, noPos);
 }
 
 namespace {
