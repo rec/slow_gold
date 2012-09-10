@@ -79,5 +79,12 @@ void CommandRecordTable::fillCommandInfo() {
   }
 }
 
+void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
+  CommandRecord* cr = find(id, true);
+  if (cr->callback_)
+    LOG(DFATAL) << "Repeated callback " << CommandIDEncoder::commandIDName(id);
+  cr->callback_.reset(cb);
+}
+
 }  // namespace command
 }  // namespace rec
