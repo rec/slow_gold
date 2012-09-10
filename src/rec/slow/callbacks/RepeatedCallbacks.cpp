@@ -67,23 +67,6 @@ void selectInstance(Instance* instance, SelectorFunction selector, CommandIDEnco
   selectNoInstance(selector, pos);
 }
 
-void selectX(SelectorFunction selector, CommandIDEncoder pos) {
-  Instance* instance = Instance::getInstance();
-  LoopSnapshot snap(instance);
-  LoopPointList* loops = snap.loops_;
-  int segment = audio::getSegment(*loops, snap.instance_->time());
-  int size = loops->loop_point_size();
-  int p = pos.toIndex(segment, size);
-
-  bool multipleSelections = (audio::getSelectionCount(*snap.loops_) > 1);
-
-  for (int i = 0; i < size; ++i) {
-    LoopPoint* lp = loops->mutable_loop_point(i);
-    lp->set_selected(selector(i, p, lp->selected(), multipleSelections));
-  }
-  instance->setProto(snap.viewport_);
-}
-
 template <typename Function, typename X, typename Y>
 void addCallback(CallbackTable* c, CommandID id, Function f, X x, Y y) {
   c->addCallback(id, thread::functionCB(f, x, y));
@@ -100,10 +83,10 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 
 void addSelectionCallbacks(command::CallbackTable* t) {
 	static const CommandIDEncoder noPos(CommandIDEncoder::CURRENT);
-  addCallback(t, Command::DESELECT_ALL, selectX, deselectAll, noPos);
-  addCallback(t, Command::SELECT_ALL, selectX, selectAll, noPos);
-  addCallback(t, Command::INVERT_LOOP_SELECTION, selectX, invertLoopSelection, noPos);
-  addCallback(t, Command::TOGGLE_WHOLE_SONG_LOOP, selectX, toggleWholeSongLoop, noPos);
+  addCallback(t, Command::DESELECT_ALL, selectNoInstance, deselectAll, noPos);
+  addCallback(t, Command::SELECT_ALL, selectNoInstance, selectAll, noPos);
+  addCallback(t, Command::INVERT_LOOP_SELECTION, selectNoInstance, invertLoopSelection, noPos);
+  addCallback(t, Command::TOGGLE_WHOLE_SONG_LOOP, selectNoInstance, toggleWholeSongLoop, noPos);
 }
 
 namespace {
