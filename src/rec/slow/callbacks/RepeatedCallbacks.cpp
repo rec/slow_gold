@@ -58,14 +58,26 @@ bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); 
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
 void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
-         SelectorFunction f, Instance* i) {
+                 SelectorFunction f, Instance* i) {
   addCallback(c, position.toCommandID(type), select, i, f, position);
 }
 
 void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
-         LoopSnapshotFunction f, Instance* i) {
+                 LoopSnapshotFunction f, Instance* i) {
   addCallback(c, position.toCommandID(type), loop, i, f, position);
 }
+
+#if 0
+void addCallbackNoInstance(CommandRecordTable* c, int32 type, CommandIDEncoder position,
+                           SelectorFunction f) {
+  addCallbackNoInstance(c, position.toCommandID(type), selectNoInstance, f, position);
+}
+
+void addCallbackNoInstance(CommandRecordTable* c, int32 type, CommandIDEncoder position,
+                           LoopSnapshotFunction f) {
+  addCallbackNoInstance(c, position.toCommandID(type), loopNoInstance, f, position);
+}
+#endif
 
 // TODO: this duplicates a value in the Repeated.def data file.
 static const int RECENT_MENU_REPEATS = 32;
@@ -99,7 +111,6 @@ void setLanguage(Instance* instance, int i) {
   data::setProto(inter);
   instance->menus_->menuItemsChanged();
 }
-
 
 void openPreviousFile(Instance* i) {
   gui::RecentFiles rf = data::getProto<gui::RecentFiles>();

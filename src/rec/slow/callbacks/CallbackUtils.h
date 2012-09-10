@@ -73,30 +73,6 @@ void executeCallbackIf2(Instance* i, bool (*protoFunction)(Proto*, Type),
     data::setProto(proto, vf);
 }
 
-template <typename Proto>
-void addApplyCallback(CommandRecordTable* c, CommandID id,
-                      bool (*protoFunction)(Proto*), Instance* i) {
-  addCallback(c, id, &executeCallbackIf<Proto>, i, protoFunction);
-}
-
-template <typename Proto, typename Type>
-void addApplyCallback(CommandRecordTable* c, CommandID id,
-                      bool (*protoFunction)(Proto*, Type), Type t, Instance* i) {
-  addCallback(c, id, &executeCallbackIf2<Proto, Type>, i, protoFunction, t);
-}
-
-template <typename Proto>
-void addApplyCallback(CommandRecordTable* c, CommandID id,
-                      void (*protoFunction)(Proto*), Instance* i) {
-  addCallback(c, id, &executeCallback<Proto>, i, protoFunction);
-}
-
-template <typename Proto, typename Type>
-void addApplyCallback(CommandRecordTable* c, CommandID id,
-                      void (*protoFunction)(Proto*, Type), Type t, Instance* i) {
-  addCallback(c, id, &executeCallback2<Proto, Type>, i, protoFunction, t);
-}
-
 template <typename Functor, typename Proto>
 void execute1(Functor file, void (*protoFunction)(Proto*)) {
   const VirtualFile vf = file();
@@ -164,16 +140,6 @@ void executeCallbackNoInstance(void (*protoFunction)(Proto*)) {
   (*protoFunction)(&proto);
   data::setProto(proto, vf);
 }
-
-#if 0
-template <typename Proto, typename Type>
-void executeCallback2NoInstance(void (*protoFunction)(Proto*, Type), Type x) {
-  const VirtualFile vf = Instance::getInstanceFile();
-  Proto proto(data::getProto<Proto>(vf));
-  (*protoFunction)(&proto, x);
-  data::setProto(proto, vf);
-}
-#endif
 
 template <typename Proto>
 void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
