@@ -13,30 +13,27 @@ namespace rec {
 namespace slow {
 
 class Instance;
-typedef command::CommandRecordTable CommandRecordTable;
-typedef command::CommandIDEncoder CommandIDEncoder;
-
-inline void addCallback(CommandRecordTable* c, CommandID id, Callback* cb) {
-  c->addCallback(id, cb);
-}
+using command::CallbackTable;
+using command::CommandRecordTable;
+using command::CommandIDEncoder;
 
 template <typename Function>
-void addCallback(CommandRecordTable* c, CommandID id, Function f) {
+void addCallback(CallbackTable* c, CommandID id, Function f) {
   c->addCallback(id, thread::functionCallback(f));
 }
 
 template <typename Function>
-void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i) {
+void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i) {
   c->addCallback(id, thread::functionCallback(f, i));
 }
 
 template <typename Function, typename X>
-void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i, X x) {
+void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x) {
   c->addCallback(id, thread::functionCallback(f, i, x));
 }
 
 template <typename Function, typename X, typename Y>
-void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i, X x, Y y) {
+void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x, Y y) {
   c->addCallback(id, thread::functionCallback(f, i, x, y));
 }
 
@@ -150,7 +147,7 @@ void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
 }
 
 template <typename Proto>
-void addApplyCallback(CommandRecordTable* c, CommandID id,
+void addApplyCallback(CallbackTable* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
   c->addCallback(id,
                  thread::functionCallback(&executeCallbackNoInstance<Proto>,
@@ -158,7 +155,7 @@ void addApplyCallback(CommandRecordTable* c, CommandID id,
 }
 
 template <typename Proto>
-void addApplyCallback(CommandRecordTable* c, CommandID id,
+void addApplyCallback(CallbackTable* c, CommandID id,
                       bool (*protoFunction)(Proto*)) {
   c->addCallback(id,
                  thread::functionCallback(&executeCallbackIfNoInstance<Proto>,
