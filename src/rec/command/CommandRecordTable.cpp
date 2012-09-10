@@ -49,11 +49,6 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
   }
 }
 
-void CommandRecordTable::erase(CommandID id) {
-  Lock l(lock_);
-  table_.erase(id);
-}
-
 void CommandRecordTable::fillCommandInfo() {
   Table::const_iterator i;
   for (i = table_.begin(); i != table_.end(); ++i) {

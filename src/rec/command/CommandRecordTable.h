@@ -16,12 +16,10 @@ class CommandRecordTable {
   CommandRecordTable() {}
   ~CommandRecordTable();
 
-  CommandRecord* find(CommandID id, bool create = true);
-
-  void erase(CommandID);
   const Commands getCommands() const;
   void getAllCommands(juce::Array<CommandID>*);
   void fillCommandInfo();
+  CommandRecord* find(CommandID id, bool create = true);
 
  private:
   typedef std::map<CommandID, Callback*> CallbackTable;
