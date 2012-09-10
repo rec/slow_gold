@@ -6,8 +6,6 @@
 namespace rec {
 namespace slow {
 
-typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
-
 void loop(Instance* instance, LoopSnapshotFunction lsf, CommandIDEncoder pos) {
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);

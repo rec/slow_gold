@@ -154,11 +154,6 @@ void addCallbackNoInstance(CommandRecordTable* c, CommandID id, Function f, X x)
   addCallback(c, id, thread::functionCallback(f, x));
 }
 
-template <typename Function, typename X, typename Y>
-void addCallbackNoInstance(CommandRecordTable* c, CommandID id, Function f, X x, Y y) {
-  addCallback(c, id, thread::functionCallback(f, x, y));
-}
-
 template <typename Proto>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
