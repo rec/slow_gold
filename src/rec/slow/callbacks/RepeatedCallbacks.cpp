@@ -124,12 +124,12 @@ bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); 
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
 void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
-                 SelectorFunction f, Instance* i) {
+                 SelectorFunction f) {
   addCallback(c, position.toCommandID(type), select, f, position);
 }
 
 void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
-                 LoopSnapshotFunction f, Instance* i) {
+                 LoopSnapshotFunction f) {
   addCallback(c, position.toCommandID(type), loop, f, position);
 }
 
@@ -205,7 +205,8 @@ void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
   setTimeFromSegment(snap, segment);
 }
 
-void nudgeWithinSegment(Instance* i, const LoopPointList& selection, bool inc) {
+void nudgeWithinSegment(const LoopPointList& selection, bool inc) {
+  Instance* i = Instance::getInstance();
   SampleTime begin = selection.loop_point(0).time();
   SampleTime end = selection.length();
   SampleTime width = end - begin;
@@ -222,14 +223,13 @@ void nudgeWithinSegment(Instance* i, const LoopPointList& selection, bool inc) {
 }
 
 void nudgeTime(bool inc) {
-  Instance* i = Instance::getInstance();
-  LoopSnapshot s(i);
+  LoopSnapshot s(Instance::getInstance());
   LoopPointList selection = audio::getSelected(*s.loops_, true);
   if (!selection.loop_point_size())
     selection = audio::getSelected(*s.loops_, false);
 
   if (selection.loop_point_size() == 1)
-    nudgeWithinSegment(i, selection, inc);
+    nudgeWithinSegment(selection, inc);
   else
     jumpSelected(&s, inc ? CommandIDEncoder::NEXT : CommandIDEncoder::PREVIOUS);
 }
@@ -240,13 +240,13 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat) {
   Instance* i = Instance::getInstance();
   for (int j = CommandIDEncoder::FIRST; j < repeat; ++j) {
   	CommandIDEncoder pos(j);
-    addCallback(t, Command::SELECT, pos, selectAdd, i);
-    addCallback(t, Command::SELECT_ONLY, pos, selectOnly, i);
-    addCallback(t, Command::TOGGLE_SELECTION, pos, toggle, i);
-    addCallback(t, Command::UNSELECT, pos, unselect, i);
+    addCallback(t, Command::SELECT, pos, selectAdd);
+    addCallback(t, Command::SELECT_ONLY, pos, selectOnly);
+    addCallback(t, Command::TOGGLE_SELECTION, pos, toggle);
+    addCallback(t, Command::UNSELECT, pos, unselect);
 
-    addCallback(t, Command::JUMP_SELECTED, pos, jumpSelected, i);
-    addCallback(t, Command::JUMP, pos, jump, i);
+    addCallback(t, Command::JUMP_SELECTED, pos, jumpSelected);
+    addCallback(t, Command::JUMP, pos, jump);
   }
 
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j) {
