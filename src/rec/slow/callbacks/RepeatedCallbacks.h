@@ -9,10 +9,8 @@ namespace command { class CommandRecordTable; }
 
 namespace slow {
 
-class Instance;
-struct LoopSnapshot;
-
 void addRepeatedCallbacks(command::CommandRecordTable*, int repeat);
+void addSelectionCallbacks(command::CommandRecordTable*);
 
 }  // namespace slow
 }  // namespace rec
