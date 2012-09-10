@@ -1,6 +1,7 @@
 #include "rec/slow/callbacks/Callbacks.h"
 
 #include "rec/command/CallbackTable.h"
+#include "rec/slow/callbacks/ApplyCallbacks.h"
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
@@ -13,6 +14,7 @@ using command::CallbackTable;
 void addSlowCallbacks(CallbackTable* table, int repeat) {
   addGlobalCallbacks(table);
   addInstanceCallbacks(table);
+  addApplyCallbacks(table);
   addSelectionCallbacks(table);
   addRepeatedCallbacks(table, repeat);
 }

@@ -272,6 +272,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\AboutWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\BasicMenuMaker.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp"/>
@@ -1561,6 +1562,7 @@
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\Trans.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CallbackTable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h"/>
@@ -1710,6 +1712,7 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\BasicMenuMaker.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h"/>

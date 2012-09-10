@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="AXTNqkNi5" name="SlowGold">
+  <MAINGROUP id="qnNo7xqb6" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -312,6 +312,8 @@
               name="icon.png" resource="1"/>
       </GROUP>
       <GROUP id="fY5oQLUxc" name="command">
+        <FILE compile="0" file="../../src/rec/command/CallbackTable.h" id="fLIF3J9EZ"
+              name="CallbackTable.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/Command.h" id="uZ0DILjP9"
               name="Command.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandData.h" id="BFt89p1eA"
@@ -827,6 +829,10 @@
         <FILE compile="0" file="../../src/rec/slow/BasicMenuMaker.h" id="2psFDA5UL"
               name="BasicMenuMaker.h" resource="0"/>
         <GROUP id="7F8UQVrIh" name="callbacks">
+          <FILE compile="1" file="../../src/rec/slow/callbacks/ApplyCallbacks.cpp"
+                id="ETTmNKGfQ" name="ApplyCallbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/ApplyCallbacks.h"
+                id="GmUScaKVo" name="ApplyCallbacks.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/callbacks/Callbacks.cpp"
                 id="QiBjfjTfq" name="Callbacks.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/Callbacks.h" id="stB4B9r2u"
@@ -1640,7 +1646,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="r3x2jlFY8" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="2OfVTc6mh" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

@@ -940,6 +940,9 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\BasicMenuMaker.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.cpp">
+      <Filter>SlowGold\rec\slow\callbacks</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp">
       <Filter>SlowGold\rec\slow\callbacks</Filter>
     </ClCompile>
@@ -2838,6 +2841,9 @@
     <ClInclude Include="..\..\..\..\src\rec\base\types.h">
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CallbackTable.h">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
@@ -3284,6 +3290,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\BasicMenuMaker.h">
       <Filter>SlowGold\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.h">
+      <Filter>SlowGold\rec\slow\callbacks</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h">
       <Filter>SlowGold\rec\slow\callbacks</Filter>
