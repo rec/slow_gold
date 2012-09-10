@@ -1,6 +1,7 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 
 #include "rec/audio/AudioSettings.pb.h"
+#include "rec/command/CallbackTable.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
@@ -38,8 +39,8 @@ void selectX(SelectorFunction selector, CommandIDEncoder pos) {
 }
 
 template <typename Function, typename X, typename Y>
-void addCallbackX(CommandRecordTable* c, CommandID id, Function f, X x, Y y) {
-  addCallback(c, id, thread::functionCallback(f, x, y));
+void addCallbackX(CallbackTable* c, CommandID id, Function f, X x, Y y) {
+  addCallback(c, id, thread::functionCB(f, x, y));
 }
 
 bool selectAll(int, int, bool, bool) { return true; }
@@ -51,7 +52,7 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 
 }  // namespace
 
-void addSelectionCallbacks(command::CommandRecordTable* t) {
+void addSelectionCallbacks(command::CallbackTable* t) {
 	static const CommandIDEncoder noPos(CommandIDEncoder::CURRENT);
   addCallbackX(t, Command::DESELECT_ALL, selectX, deselectAll, noPos);
   addCallbackX(t, Command::SELECT_ALL, selectX, selectAll, noPos);
@@ -96,12 +97,12 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
+void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
                  SelectorFunction f, Instance* i) {
   addCallback(c, position.toCommandID(type), selectInstance, i, f, position);
 }
 
-void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
+void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
                  LoopSnapshotFunction f, Instance* i) {
   addCallback(c, position.toCommandID(type), loopInstance, i, f, position);
 }
@@ -209,7 +210,7 @@ void nudgeTime(Instance*, bool inc) {
 
 }  // namespace
 
-void addRepeatedCallbacks(CommandRecordTable* t, int repeat) {
+void addRepeatedCallbacks(CallbackTable* t, int repeat) {
   Instance* i = Instance::getInstance();
   for (int j = CommandIDEncoder::FIRST; j < repeat; ++j) {
   	CommandIDEncoder pos(j);

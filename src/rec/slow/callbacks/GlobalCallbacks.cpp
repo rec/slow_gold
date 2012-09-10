@@ -133,7 +133,7 @@ void whatsNewPage() {
 
 using command::Command;
 
-void addGlobalCallbacks(CommandRecordTable* t) {
+void addGlobalCallbacks(CallbackTable* t) {
   addCallback(t, Command::MODE_ADD_LOOP_POINT, modeAddLoopPoint);
   addCallback(t, Command::MODE_DRAG, modeDrag);
   addCallback(t, Command::MODE_SET_TIME, modeSetTime);

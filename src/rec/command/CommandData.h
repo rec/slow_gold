@@ -8,7 +8,7 @@ namespace rec {
 namespace command {
 
 class Access;
-class CommandRecordTable;
+class CallbackTable;
 
 class CommandData {
  public:
@@ -17,7 +17,7 @@ class CommandData {
 
   virtual const Commands& allCommands() const = 0;
 
-  virtual void addCallbacks(CommandRecordTable*) const = 0;
+  virtual void addCallbacks(CallbackTable*) const = 0;
   virtual Listener<None>* getMenuUpdateListener() const = 0;
 };
 }

@@ -5,11 +5,11 @@
 
 namespace rec {
 
-namespace command { class CommandRecordTable; }
+namespace command { class CallbackTable; }
 
 namespace slow {
 
-void addGlobalCallbacks(command::CommandRecordTable* t);
+void addGlobalCallbacks(command::CallbackTable* t);
 void requestSupport();
 
 struct GlobalCallbacks {

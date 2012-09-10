@@ -19,22 +19,22 @@ using command::CommandIDEncoder;
 
 template <typename Function>
 void addCallback(CallbackTable* c, CommandID id, Function f) {
-  c->addCallback(id, thread::functionCallback(f));
+  c->addCallback(id, thread::functionCB(f));
 }
 
 template <typename Function>
 void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i) {
-  c->addCallback(id, thread::functionCallback(f, i));
+  c->addCallback(id, thread::functionCB(f, i));
 }
 
 template <typename Function, typename X>
 void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x) {
-  c->addCallback(id, thread::functionCallback(f, i, x));
+  c->addCallback(id, thread::functionCB(f, i, x));
 }
 
 template <typename Function, typename X, typename Y>
 void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x, Y y) {
-  c->addCallback(id, thread::functionCallback(f, i, x, y));
+  c->addCallback(id, thread::functionCB(f, i, x, y));
 }
 
 template <typename Proto>
@@ -104,22 +104,22 @@ void executeIf2(Functor file, void (*protoFunction)(Proto*), Type t) {
 
 template <typename Functor, typename Proto>
 Callback* makeCallback(Functor file, void (*fn)(Proto*)) {
-  return thread::functionCallback(&execute1<Functor, Proto>, file, fn);
+  return thread::functionCB(&execute1<Functor, Proto>, file, fn);
 }
 
 template <typename Functor, typename Proto>
 Callback* makeCallback(Functor file, bool (*fn)(Proto*)) {
-  return thread::functionCallback(&executeIf1<Functor, Proto>, file, fn);
+  return thread::functionCB(&executeIf1<Functor, Proto>, file, fn);
 }
 
 template <typename Functor, typename Proto, typename Type>
 Callback* makeCallback(Functor file, void (*fn)(Proto*, Type t), Type t) {
-  return thread::functionCallback(&execute1<Functor, Proto>, file, fn, t);
+  return thread::functionCB(&execute1<Functor, Proto>, file, fn, t);
 }
 
 template <typename Functor, typename Proto, typename Type>
 Callback* makeCallback(Functor file, bool (*fn)(Proto*, Type t), Type t) {
-  return thread::functionCallback(&executeIf1<Functor, Proto>, file, fn, t);
+  return thread::functionCB(&executeIf1<Functor, Proto>, file, fn, t);
 }
 
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
@@ -150,7 +150,7 @@ template <typename Proto>
 void addApplyCallback(CallbackTable* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
   c->addCallback(id,
-                 thread::functionCallback(&executeCallbackNoInstance<Proto>,
+                 thread::functionCB(&executeCallbackNoInstance<Proto>,
                                           protoFunction));
 }
 
@@ -158,7 +158,7 @@ template <typename Proto>
 void addApplyCallback(CallbackTable* c, CommandID id,
                       bool (*protoFunction)(Proto*)) {
   c->addCallback(id,
-                 thread::functionCallback(&executeCallbackIfNoInstance<Proto>,
+                 thread::functionCB(&executeCallbackIfNoInstance<Proto>,
                                           protoFunction));
 }
 

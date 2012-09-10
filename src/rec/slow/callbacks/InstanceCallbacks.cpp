@@ -320,7 +320,7 @@ void clearSettingsForThisTrack() {
 
 using namespace rec::command;
 
-void addInstanceCallbacks(CommandRecordTable* c) {
+void addInstanceCallbacks(CallbackTable* c) {
   using namespace rec::gui;
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;

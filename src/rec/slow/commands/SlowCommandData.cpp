@@ -20,7 +20,7 @@ class SlowCommandData : public CommandData {
   explicit SlowCommandData(Instance* i) : update_(i->menus_.get()) {}
   const Commands& allCommands() const { return *commands::allCommands; }
 
-  virtual void addCallbacks(command::CommandRecordTable* table) const {
+  virtual void addCallbacks(command::CallbackTable* table) const {
     addSlowCallbacks(table);
   }
 
