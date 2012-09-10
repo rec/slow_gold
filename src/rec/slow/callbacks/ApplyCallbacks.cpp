@@ -24,7 +24,7 @@ using command::Command;
 using widget::waveform::Viewport;
 
 template <typename Proto>
-void executeCallbackNoInstance(void (*protoFunction)(Proto*)) {
+void executeCallback(void (*protoFunction)(Proto*)) {
   const VirtualFile vf = Instance::getInstanceFile();
   Proto proto(data::getProto<Proto>(vf));
   (*protoFunction)(&proto);
@@ -32,7 +32,7 @@ void executeCallbackNoInstance(void (*protoFunction)(Proto*)) {
 }
 
 template <typename Proto>
-void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
+void executeCallbackIf(bool (*protoFunction)(Proto*)) {
   const VirtualFile vf = Instance::getInstanceFile();
   Proto proto(data::getProto<Proto>(vf));
   if ((*protoFunction)(&proto))
@@ -43,16 +43,16 @@ template <typename Proto>
 void addApplyCallback(CallbackTable* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
   c->addCallback(id,
-                 thread::functionCB(&executeCallbackNoInstance<Proto>,
-                                          protoFunction));
+                 thread::functionCB(&executeCallback<Proto>,
+                                    protoFunction));
 }
 
 template <typename Proto>
 void addApplyCallback(CallbackTable* c, CommandID id,
                       bool (*protoFunction)(Proto*)) {
   c->addCallback(id,
-                 thread::functionCB(&executeCallbackIfNoInstance<Proto>,
-                                          protoFunction));
+                 thread::functionCB(&executeCallbackIf<Proto>,
+                                    protoFunction));
 }
 
 void clearLoops(Viewport* viewport) {
