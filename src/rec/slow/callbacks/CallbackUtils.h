@@ -22,22 +22,22 @@ inline void addCallback(CommandRecordTable* c, CommandID id, Callback* cb) {
 
 template <typename Function>
 void addCallback(CommandRecordTable* c, CommandID id, Function f) {
-  addCallback(c, id, thread::functionCallback(f));
+  c->addCallback(id, thread::functionCallback(f));
 }
 
 template <typename Function>
 void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i) {
-  addCallback(c, id, thread::functionCallback(f, i));
+  c->addCallback(id, thread::functionCallback(f, i));
 }
 
 template <typename Function, typename X>
 void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i, X x) {
-  addCallback(c, id, thread::functionCallback(f, i, x));
+  c->addCallback(id, thread::functionCallback(f, i, x));
 }
 
 template <typename Function, typename X, typename Y>
 void addCallback(CommandRecordTable* c, CommandID id, Function f, Instance* i, X x, Y y) {
-  addCallback(c, id, thread::functionCallback(f, i, x, y));
+  c->addCallback(id, thread::functionCallback(f, i, x, y));
 }
 
 template <typename Proto>
@@ -152,17 +152,17 @@ void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
 template <typename Proto>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
-  addCallback(c, id,
-              thread::functionCallback(&executeCallbackNoInstance<Proto>,
-                                       protoFunction));
+  c->addCallback(id,
+                 thread::functionCallback(&executeCallbackNoInstance<Proto>,
+                                          protoFunction));
 }
 
 template <typename Proto>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
                       bool (*protoFunction)(Proto*)) {
-  addCallback(c, id,
-              thread::functionCallback(&executeCallbackIfNoInstance<Proto>,
-                                       protoFunction));
+  c->addCallback(id,
+                 thread::functionCallback(&executeCallbackIfNoInstance<Proto>,
+                                          protoFunction));
 }
 
 }  // namespace slow
