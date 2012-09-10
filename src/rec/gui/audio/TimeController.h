@@ -1,9 +1,7 @@
 #ifndef __REC_GUI_APP_TIMECONTROLLER__
 #define __REC_GUI_APP_TIMECONTROLLER__
 
-#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/base/SampleTime.h"
-#include "rec/data/Data.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/HasThread.h"
 #include "rec/widget/status/DialComponent.h"

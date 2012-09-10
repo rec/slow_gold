@@ -1,26 +1,32 @@
 #ifndef __REC_GUI_SONGDATA__
 #define __REC_GUI_SONGDATA__
 
+#include "rec/app/LanguageListener.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataListener.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/gui/SetterTextArea.h"
 #include "rec/music/Metadata.h"
 #include "rec/util/Cuttable.h"
-#include "rec/data/DataListener.h"
 
 namespace rec {
 namespace gui {
 
-class SongData : public SetterTextArea,
+class SongData : public app::LanguageListener,
+                 public SetterTextArea,
                  public Cuttable,
                  public UntypedDataListener {
  public:
   typedef data::Address Address;
 
   explicit SongData(MenuBarModel*)
-    : UntypedDataListener(getTypeName<music::Metadata>()) {
-    const string& typeName = getTypeName<music::Metadata>();
+      : UntypedDataListener(getTypeName<music::Metadata>()) {
     setName("SongData");
+  }
+
+  virtual void languageChanged() {
+    clear(true);
+    const string& typeName = getTypeName<music::Metadata>();
     add(Trans("Track"), typeName,
         Address("track_title"),
         Trans("Track Title: The name of this track."));
@@ -43,6 +49,7 @@ class SongData : public SetterTextArea,
         Address("notes"),
         Trans("Track Notes: You can enter your notes here."))->
         editor()->setMultiLine(true, true);
+    resized();
   }
 
   virtual void operator()(const Message&) {}
@@ -51,6 +58,7 @@ class SongData : public SetterTextArea,
   virtual bool canPaste(const string&) const { return false; }
   virtual bool paste(const string&) { return false; }
   virtual const string cuttableName() const { return "SongData"; }
+
   virtual string copy() const {
     return yaml::write(*ptr<Message>(data::cloneMessage(getData())));
   }

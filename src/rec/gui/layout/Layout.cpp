@@ -47,12 +47,16 @@ void Layout::layout() {
   }
 }
 
-void Layout::clear() {
+void Layout::clear(bool free) {
   SizeHintAccumulator::clear();
   layoutManager_.clearAllItems();
   components_.clear();
-  while (uint size = getNumChildComponents())
-    removeChildComponent(getChildComponent(size - 1));
+  while (uint size = getNumChildComponents()) {
+    Component* c = getChildComponent(size - 1);
+    removeChildComponent(c);
+    if (free)
+      delete c;
+  }
 }
 
 }  // namespace gui

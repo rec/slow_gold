@@ -21,11 +21,6 @@ namespace slow {
 
 namespace {
 
-template <typename Function, typename X>
-void addCallback(CallbackTable* c, CommandID id, Function f, X x) {
-  c->addCallback(id, thread::functionCB(f, x));
-}
-
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
@@ -197,6 +192,7 @@ void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
 
 void nudgeWithinSegment(const LoopPointList& selection, bool inc) {
   Instance* i = Instance::getInstance();
+
   SampleTime begin = selection.loop_point(0).time();
   SampleTime end = selection.length();
   SampleTime width = end - begin;

@@ -19,6 +19,11 @@ void addCallback(CallbackTable* c, CommandID id, Function f) {
   c->addCallback(id, thread::functionCB(f));
 }
 
+template <typename Function, typename X>
+void addCallback(CallbackTable* c, CommandID id, Function f, X x) {
+  c->addCallback(id, thread::functionCB(f, x));
+}
+
 }  // namespace slow
 }  // namespace rec
 

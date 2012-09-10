@@ -32,8 +32,8 @@ class Layout : public Component,
 
   virtual void resized();
   StretchableLayoutManager* layoutManager() { return &layoutManager_; }
-  void clear();
   virtual void layout();
+  void clear(bool free = false);
 
  protected:
   StretchableLayoutManager layoutManager_;
