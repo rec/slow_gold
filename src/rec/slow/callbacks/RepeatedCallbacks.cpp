@@ -21,16 +21,6 @@ namespace slow {
 
 namespace {
 
-template <typename Function>
-void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i) {
-  c->addCallback(id, thread::functionCB(f, i));
-}
-
-template <typename Function, typename X, typename Y>
-void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x, Y y) {
-  c->addCallback(id, thread::functionCB(f, i, x, y));
-}
-
 template <typename Function, typename X>
 void addCallback(CallbackTable* c, CommandID id, Function f, X x) {
   c->addCallback(id, thread::functionCB(f, x));
@@ -137,7 +127,7 @@ void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
 static const int RECENT_MENU_REPEATS = 32;
 static const int RECENT_FILE_THREAD_PRIORITY = 4;
 
-void loadRecentFile(Instance* instance, int i) {
+void loadRecentFile(int i) {
   gui::RecentFiles rf = data::getProto<gui::RecentFiles>();
   if (i < 0 || i >= rf.file_size()) {
     LOG(DFATAL) << "Can't load recent, i=" << i << ", size=" << rf.file_size();
@@ -145,7 +135,7 @@ void loadRecentFile(Instance* instance, int i) {
   }
 
   thread::runInNewThread("loadRecentFile", RECENT_FILE_THREAD_PRIORITY,
-                         instance->currentFile_.get(),
+                         Instance::getInstance()->currentFile_.get(),
                          &CurrentFile::setVirtualFile,
                          rf.file(i).file(), true);
 }
@@ -172,9 +162,9 @@ void openPreviousFile() {
   if (size) {
     if (data::equals(rf.file(0).file(), Instance::getInstanceFile())) {
       if (size > 1)
-        loadRecentFile(Instance::getInstance(), 1);
+        loadRecentFile(1);
     } else {
-      loadRecentFile(Instance::getInstance(), 0);
+      loadRecentFile(0);
     }
   }
 }
@@ -237,7 +227,6 @@ void nudgeTime(bool inc) {
 }  // namespace
 
 void addRepeatedCallbacks(CallbackTable* t, int repeat) {
-  Instance* i = Instance::getInstance();
   for (int j = CommandIDEncoder::FIRST; j < repeat; ++j) {
   	CommandIDEncoder pos(j);
     addCallback(t, Command::SELECT, pos, selectAdd);
@@ -251,7 +240,7 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat) {
 
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::RECENT_FILES);
-    addCallback(t, id, loadRecentFile, i, j);
+    addCallback(t, id, loadRecentFile, j);
   }
 
   for (int j = 0; j < audio::AudioSettings::COUNT; ++j) {
