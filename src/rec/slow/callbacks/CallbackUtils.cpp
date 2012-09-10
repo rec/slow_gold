@@ -6,14 +6,24 @@
 namespace rec {
 namespace slow {
 
-void loop(Instance* instance, LoopSnapshotFunction lsf, CommandIDEncoder pos) {
+void loopInstance(Instance* instance, LoopSnapshotFunction lsf, CommandIDEncoder pos) {
+  loopNoInstance(lsf, pos);
+}
+
+void selectInstance(Instance* instance, SelectorFunction selector, CommandIDEncoder pos) {
+  selectNoInstance(selector, pos);
+}
+
+void loopNoInstance(LoopSnapshotFunction lsf, CommandIDEncoder pos) {
+  Instance* instance = Instance::getInstance();
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
   instance->setProto(snapshot.viewport_);
   instance->currentTime_->zoomToCurrentTime();
 }
 
-void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos) {
+void selectNoInstance(SelectorFunction selector, CommandIDEncoder pos) {
+  Instance* instance = Instance::getInstance();
   LoopSnapshot snap(instance);
   LoopPointList* loops = snap.loops_;
   int segment = audio::getSegment(*loops, snap.instance_->time());
@@ -27,15 +37,6 @@ void select(Instance* instance, SelectorFunction selector, CommandIDEncoder pos)
     lp->set_selected(selector(i, p, lp->selected(), multipleSelections));
   }
   instance->setProto(snap.viewport_);
-}
-
-
-void loopNoInstance(LoopSnapshotFunction lsf, CommandIDEncoder pos) {
-  loop(Instance::getInstance(), lsf, pos);
-}
-
-void selectNoInstance(SelectorFunction selector, CommandIDEncoder pos) {
-  select(Instance::getInstance(), selector, pos);
 }
 
 }  // namespace slow

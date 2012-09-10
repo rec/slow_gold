@@ -128,8 +128,8 @@ Callback* makeCallback(Functor file, bool (*fn)(Proto*, Type t), Type t) {
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
-void loop(Instance*, LoopSnapshotFunction, CommandIDEncoder);
-void select(Instance*, SelectorFunction, CommandIDEncoder);
+void loopInstance(Instance*, LoopSnapshotFunction, CommandIDEncoder);
+void selectInstance(Instance*, SelectorFunction, CommandIDEncoder);
 void loopNoInstance(LoopSnapshotFunction, CommandIDEncoder);
 void selectNoInstance(SelectorFunction, CommandIDEncoder);
 
@@ -149,23 +149,20 @@ void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
     data::setProto(proto, vf);
 }
 
-template <typename Function, typename X>
-void addCallbackNoInstance(CommandRecordTable* c, CommandID id, Function f, X x) {
-  addCallback(c, id, thread::functionCallback(f, x));
-}
-
 template <typename Proto>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
-  addCallbackNoInstance(c, id, &executeCallbackNoInstance<Proto>,
-                        protoFunction);
+  addCallback(c, id,
+              thread::functionCallback(&executeCallbackNoInstance<Proto>,
+                                       protoFunction));
 }
 
 template <typename Proto>
 void addApplyCallback(CommandRecordTable* c, CommandID id,
                       bool (*protoFunction)(Proto*)) {
-  addCallbackNoInstance(c, id, &executeCallbackIfNoInstance<Proto>,
-                        protoFunction);
+  addCallback(c, id,
+              thread::functionCallback(&executeCallbackIfNoInstance<Proto>,
+                                       protoFunction));
 }
 
 }  // namespace slow

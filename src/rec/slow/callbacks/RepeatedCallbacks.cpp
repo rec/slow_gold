@@ -59,12 +59,12 @@ bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; 
 
 void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
                  SelectorFunction f, Instance* i) {
-  addCallback(c, position.toCommandID(type), select, i, f, position);
+  addCallback(c, position.toCommandID(type), selectInstance, i, f, position);
 }
 
 void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
                  LoopSnapshotFunction f, Instance* i) {
-  addCallback(c, position.toCommandID(type), loop, i, f, position);
+  addCallback(c, position.toCommandID(type), loopInstance, i, f, position);
 }
 
 // TODO: this duplicates a value in the Repeated.def data file.
