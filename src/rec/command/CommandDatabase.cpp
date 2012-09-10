@@ -19,6 +19,29 @@ namespace command {
 
 namespace {
 
+Command* indexCommand(const Command& cmd, int index) {
+  ptr<Command> command(new Command);
+  command->set_type(cmd.type());
+  command->set_index(index + CommandIDEncoder::FIRST);
+  command->set_category(cmd.category());
+  if (cmd.desc().menu_size() > index)
+    command->mutable_desc()->add_menu(cmd.desc().menu(index));
+  else
+    DCHECK_GT(cmd.desc().menu_size(), index);
+  if (cmd.desc().full_size() > index)
+    command->mutable_desc()->add_full(cmd.desc().full(index));
+  else
+    DCHECK_GT(cmd.desc().full_size(), index);
+
+  if (index < cmd.keypress_size()) {
+    const string& kp = cmd.keypress(index);
+      if (!kp.empty())
+        command->add_keypress(kp);
+  }
+  return command.transfer();
+}
+
+
 class CommandDatabase {
  public:
   CommandDatabase(CommandRecordTable* table, const CommandData& data)
@@ -66,24 +89,10 @@ class CommandDatabase {
     CommandID begin = CommandIDEncoder::toCommandID(cmd.start_index(), t);
     CommandID end = begin + len;
     for (CommandID i = begin; i != end; ++i) {
-      if (CommandRecord* cr = table_->find(i, false)) {
-        ptr<Command> newCmd(new Command);
-        newCmd->set_type(t);
-        int index = i - begin;
-        newCmd->set_index(index + CommandIDEncoder::FIRST);
-        newCmd->set_category(cmd.category());
-        newCmd->mutable_desc()->add_menu(cmd.desc().menu(index));
-        newCmd->mutable_desc()->add_full(cmd.desc().full(index));
-        if (index < cmd.keypress_size()) {
-          const string& kp = cmd.keypress(index);
-            if (!kp.empty())
-              newCmd->add_keypress(kp);
-        }
-        cr->command_.swap(newCmd);
-      } else {
-        LOG(DFATAL) << "No repeated record for "
-                    << CommandIDEncoder::commandIDName(t);
-      }
+      if (CommandRecord* cr = table_->find(i, false))
+        cr->command_.reset(indexCommand(cmd, i - begin));
+      else
+        LOG(DFATAL) << "No repeat for " << CommandIDEncoder::commandIDName(t);
     }
   }
 
