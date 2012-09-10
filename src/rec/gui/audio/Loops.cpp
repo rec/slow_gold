@@ -53,12 +53,13 @@ Loops::Loops(const TableColumnList* desc,
              const Address& partAddress)
     : partAddress_(partAddress) {
   cuttable_.reset(new LoopsCuttable(this));
-  TableColumnList tcl = dflt.get(desc);
+  setMultipleSelectionEnabled(true);
+
+  TableColumnList tcl = dflt.get(NULL);
   tcl.mutable_column(0)->set_name(str(Trans("Time")));
   tcl.mutable_column(1)->set_name(str(Trans("Name")));
   initialize(tcl, "Loops");
   fillHeader(&getHeader());
-  setMultipleSelectionEnabled(true);
 }
 
 Loops::~Loops() {}
@@ -74,6 +75,9 @@ void Loops::operator()(const Viewport& vp) {
 
 void Loops::languageChanged() {
   setTooltip(Trans("Loop Point List: You can select and edit loop points here."));
+  TableHeaderComponent& header = getHeader();
+  header.setColumnName(1, Trans("Time"));
+  header.setColumnName(2, Trans("Name"));
 }
 
 void Loops::setViewport(const Viewport& viewport) {

@@ -38,8 +38,8 @@ void fillTimeSelection(Container* sel,
 
 
 const SampleRangeVector getTimeSelection(const LoopPointList& lpl,
-                                              bool isSelected,
-                                              bool allowEmpty) {
+                                         bool isSelected,
+                                         bool allowEmpty) {
   SampleRangeVector sel;
   fillTimeSelection(&sel, lpl, isSelected, allowEmpty);
   return sel;
@@ -165,8 +165,8 @@ void toggleSelectionSegment(LoopPointList* lpl, SampleTime time) {
   lp->set_selected(!lp->selected());
 }
 
-Range<SampleTime > contiguousSelectionContaining(const LoopPointList& lpl,
-                                                 SampleTime time) {
+Range<SampleTime> contiguousSelectionContaining(const LoopPointList& lpl,
+                                                SampleTime time) {
   int i = 1;
   int size = lpl.loop_point_size();
 
