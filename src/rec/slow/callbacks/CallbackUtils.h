@@ -130,38 +130,6 @@ void selectInstance(Instance*, SelectorFunction, CommandIDEncoder);
 void loopNoInstance(LoopSnapshotFunction, CommandIDEncoder);
 void selectNoInstance(SelectorFunction, CommandIDEncoder);
 
-template <typename Proto>
-void executeCallbackNoInstance(void (*protoFunction)(Proto*)) {
-  const VirtualFile vf = Instance::getInstanceFile();
-  Proto proto(data::getProto<Proto>(vf));
-  (*protoFunction)(&proto);
-  data::setProto(proto, vf);
-}
-
-template <typename Proto>
-void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
-  const VirtualFile vf = Instance::getInstanceFile();
-  Proto proto(data::getProto<Proto>(vf));
-  if ((*protoFunction)(&proto))
-    data::setProto(proto, vf);
-}
-
-template <typename Proto>
-void addApplyCallback(CallbackTable* c, CommandID id,
-                      void (*protoFunction)(Proto*)) {
-  c->addCallback(id,
-                 thread::functionCB(&executeCallbackNoInstance<Proto>,
-                                          protoFunction));
-}
-
-template <typename Proto>
-void addApplyCallback(CallbackTable* c, CommandID id,
-                      bool (*protoFunction)(Proto*)) {
-  c->addCallback(id,
-                 thread::functionCB(&executeCallbackIfNoInstance<Proto>,
-                                          protoFunction));
-}
-
 }  // namespace slow
 }  // namespace rec
 

@@ -316,6 +316,38 @@ void clearSettingsForThisTrack() {
                            CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
 }
 
+template <typename Proto>
+void executeCallbackNoInstance(void (*protoFunction)(Proto*)) {
+  const VirtualFile vf = Instance::getInstanceFile();
+  Proto proto(data::getProto<Proto>(vf));
+  (*protoFunction)(&proto);
+  data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void executeCallbackIfNoInstance(bool (*protoFunction)(Proto*)) {
+  const VirtualFile vf = Instance::getInstanceFile();
+  Proto proto(data::getProto<Proto>(vf));
+  if ((*protoFunction)(&proto))
+    data::setProto(proto, vf);
+}
+
+template <typename Proto>
+void addApplyCallback(CallbackTable* c, CommandID id,
+                      void (*protoFunction)(Proto*)) {
+  c->addCallback(id,
+                 thread::functionCB(&executeCallbackNoInstance<Proto>,
+                                          protoFunction));
+}
+
+template <typename Proto>
+void addApplyCallback(CallbackTable* c, CommandID id,
+                      bool (*protoFunction)(Proto*)) {
+  c->addCallback(id,
+                 thread::functionCB(&executeCallbackIfNoInstance<Proto>,
+                                          protoFunction));
+}
+
 }  // namespace
 
 using namespace rec::command;
@@ -330,24 +362,16 @@ void addInstanceCallbacks(CallbackTable* c) {
   addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram);
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences);
-  addApplyCallback(c, Command::CLEAR_LOOPS, clearLoops);
   addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings);
   addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack);
   // addApplyCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator);
   addCallback(c, Command::CLOSE_FILE, closeFile);
-  addApplyCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle);
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings);
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings);
-  addApplyCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle);
-  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown);
-  addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp);
-  addApplyCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeedDown);
-  addApplyCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeedUp);
 
   addCallback(c, Command::OPEN, open);
   addCallback(c, Command::QUIT, quit);
-  addApplyCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity);
   addCallback(c, Command::SAVE_FILE, saveFile);
   addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop);
@@ -355,6 +379,15 @@ void addInstanceCallbacks(CallbackTable* c) {
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull);
   addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection);
   addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates);
+
+  addApplyCallback(c, Command::CLEAR_LOOPS, clearLoops);
+  addApplyCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle);
+  addApplyCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle);
+  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown);
+  addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp);
+  addApplyCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeedDown);
+  addApplyCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeedUp);
+  addApplyCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity);
 }
 
 void InstanceCallbacks::registerAllTranslations() {

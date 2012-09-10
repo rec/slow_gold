@@ -38,9 +38,10 @@ void selectX(SelectorFunction selector, CommandIDEncoder pos) {
   instance->setProto(snap.viewport_);
 }
 
+
 template <typename Function, typename X, typename Y>
 void addCallbackX(CallbackTable* c, CommandID id, Function f, X x, Y y) {
-  addCallback(c, id, thread::functionCB(f, x, y));
+  c->addCallback(id, thread::functionCB(f, x, y));
 }
 
 bool selectAll(int, int, bool, bool) { return true; }
