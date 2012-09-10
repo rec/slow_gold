@@ -34,7 +34,7 @@ void addCallback(CallbackTable* c, CommandID id, Function f, Instance* i, X x, Y
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
-void loopNoInstance(LoopSnapshotFunction lsf, CommandIDEncoder pos) {
+void loop(LoopSnapshotFunction lsf, CommandIDEncoder pos) {
   Instance* instance = Instance::getInstance();
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
@@ -42,7 +42,7 @@ void loopNoInstance(LoopSnapshotFunction lsf, CommandIDEncoder pos) {
   instance->currentTime_->zoomToCurrentTime();
 }
 
-void selectNoInstance(SelectorFunction selector, CommandIDEncoder pos) {
+void select(SelectorFunction selector, CommandIDEncoder pos) {
   Instance* instance = Instance::getInstance();
   LoopSnapshot snap(instance);
   LoopPointList* loops = snap.loops_;
@@ -57,14 +57,6 @@ void selectNoInstance(SelectorFunction selector, CommandIDEncoder pos) {
     lp->set_selected(selector(i, p, lp->selected(), multipleSelections));
   }
   instance->setProto(snap.viewport_);
-}
-
-void loopInstance(Instance* instance, LoopSnapshotFunction lsf, CommandIDEncoder pos) {
-  loopNoInstance(lsf, pos);
-}
-
-void selectInstance(Instance* instance, SelectorFunction selector, CommandIDEncoder pos) {
-  selectNoInstance(selector, pos);
 }
 
 template <typename Function, typename X, typename Y>
@@ -83,10 +75,10 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 
 void addSelectionCallbacks(command::CallbackTable* t) {
 	static const CommandIDEncoder noPos(CommandIDEncoder::CURRENT);
-  addCallback(t, Command::DESELECT_ALL, selectNoInstance, deselectAll, noPos);
-  addCallback(t, Command::SELECT_ALL, selectNoInstance, selectAll, noPos);
-  addCallback(t, Command::INVERT_LOOP_SELECTION, selectNoInstance, invertLoopSelection, noPos);
-  addCallback(t, Command::TOGGLE_WHOLE_SONG_LOOP, selectNoInstance, toggleWholeSongLoop, noPos);
+  addCallback(t, Command::DESELECT_ALL, select, deselectAll, noPos);
+  addCallback(t, Command::SELECT_ALL, select, selectAll, noPos);
+  addCallback(t, Command::INVERT_LOOP_SELECTION, select, invertLoopSelection, noPos);
+  addCallback(t, Command::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop, noPos);
 }
 
 namespace {
@@ -128,12 +120,12 @@ bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; 
 
 void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
                  SelectorFunction f, Instance* i) {
-  addCallback(c, position.toCommandID(type), selectInstance, i, f, position);
+  addCallback(c, position.toCommandID(type), select, f, position);
 }
 
 void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
                  LoopSnapshotFunction f, Instance* i) {
-  addCallback(c, position.toCommandID(type), loopInstance, i, f, position);
+  addCallback(c, position.toCommandID(type), loop, f, position);
 }
 
 // TODO: this duplicates a value in the Repeated.def data file.
