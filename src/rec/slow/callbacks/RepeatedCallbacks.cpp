@@ -67,18 +67,6 @@ void addCallback(CommandRecordTable* c, int32 type, CommandIDEncoder position,
   addCallback(c, position.toCommandID(type), loop, i, f, position);
 }
 
-#if 0
-void addCallbackNoInstance(CommandRecordTable* c, int32 type, CommandIDEncoder position,
-                           SelectorFunction f) {
-  addCallbackNoInstance(c, position.toCommandID(type), selectNoInstance, f, position);
-}
-
-void addCallbackNoInstance(CommandRecordTable* c, int32 type, CommandIDEncoder position,
-                           LoopSnapshotFunction f) {
-  addCallbackNoInstance(c, position.toCommandID(type), loopNoInstance, f, position);
-}
-#endif
-
 // TODO: this duplicates a value in the Repeated.def data file.
 static const int RECENT_MENU_REPEATS = 32;
 static const int RECENT_FILE_THREAD_PRIORITY = 4;
