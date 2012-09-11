@@ -3,7 +3,7 @@
 
 #include <map>
 
-#include "rec/command/Command.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandItemSetter.h"

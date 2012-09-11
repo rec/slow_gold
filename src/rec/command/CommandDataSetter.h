@@ -1,7 +1,7 @@
 #ifndef __REC_COMMAND_COMMANDDATASETTER__
 #define __REC_COMMAND_COMMANDDATASETTER__
 
-#include "rec/command/Command.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/data/Address.h"
 #include "rec/data/AddressListener.h"

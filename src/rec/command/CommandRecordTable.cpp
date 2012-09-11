@@ -51,31 +51,32 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
 
 void CommandRecordTable::fillCommandInfo() {
   Table::const_iterator i;
-  for (i = table_.begin(); i != table_.end(); ++i) {
-    CommandID id = i->first;
-    CommandRecord* cr = i->second;
-    if (!cr->callback_)
-      LOG(DFATAL) << "Empty callback " << CommandIDEncoder::commandIDName(id);
+  for (i = table_.begin(); i != table_.end(); ++i)
+    fillCommandInfo(i->first, i->second);
+}
 
-    const Description& desc = cr->command_->desc();
-    String name = Trans(desc.full(0));
-    String category = str(cr->command_->category());
-    bool hasInfo = desc.menu_size() && name.length();
+void CommandRecordTable::fillCommandInfo(CommandID id, CommandRecord* cr) {
+  if (!cr->callback_)
+    LOG(DFATAL) << "Empty callback " << CommandIDEncoder::commandIDName(id);
 
-    if (hasInfo) {
-      int flags = 0;
-      if (category == "" || category == "(None)") {
-        DCHECK_NE(category, "");
-        flags += ApplicationCommandInfo::hiddenFromKeyEditor;
-      }
+  const Description& desc = cr->command_->desc();
+  String name = Trans(desc.full(0));
+  String category = str(cr->command_->category());
+  bool hasInfo = desc.menu_size() && name.length();
 
-      cr->info_.setInfo(Trans(desc.menu(0)), name, category, flags);
-    } else {
-      LOG(DFATAL) << "No command " << CommandIDEncoder::commandIDName(id)
-                 << ", " << desc.menu_size()
-                 << ", " << name.length()
-                 << cr->command_->ShortDebugString();
+  if (hasInfo) {
+    int flags = 0;
+    if (category == "" || category == "(None)") {
+      DCHECK_NE(category, "");
+      flags += ApplicationCommandInfo::hiddenFromKeyEditor;
     }
+
+    cr->info_.setInfo(Trans(desc.menu(0)), name, category, flags);
+  } else {
+    LOG(DFATAL) << "No command " << CommandIDEncoder::commandIDName(id)
+               << ", " << desc.menu_size()
+               << ", " << name.length()
+               << cr->command_->ShortDebugString();
   }
 }
 

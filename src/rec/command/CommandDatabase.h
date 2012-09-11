@@ -1,7 +1,7 @@
 #ifndef __REC_COMMAND_COMMANDDATABASE__
 #define __REC_COMMAND_COMMANDDATABASE__
 
-#include "rec/command/Command.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/util/Listener.h"
 
 namespace rec {

@@ -1,6 +1,6 @@
 #include "rec/gui/audio/TransportController.h"
 
-#include "rec/command/Command.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/gui/IconButton.h"
 #include "rec/gui/audio/TimeController.h"

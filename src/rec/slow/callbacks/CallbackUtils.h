@@ -1,7 +1,7 @@
 #ifndef __REC_COMMAND_CALLBACK_UTILS__
 #define __REC_COMMAND_CALLBACK_UTILS__
 
-#include "rec/command/Command.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/slow/Instance.h"

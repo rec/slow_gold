@@ -4,7 +4,7 @@
 // Created by the command line:
 // new --include=command/Command --proto=command::Commands src/rec/slow/commands/AllCommands.def
 
-#include "rec/command/Command.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/util/proto/Defaulter.h"
 
 namespace rec {

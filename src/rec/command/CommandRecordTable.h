@@ -22,6 +22,8 @@ class CommandRecordTable : public CallbackTable {
   virtual void addCallback(CommandID id, Callback* cb);
 
  private:
+  static void fillCommandInfo(CommandID, CommandRecord*);
+
   typedef std::map<CommandID, CommandRecord*> Table;
   typedef Table::const_iterator const_iterator;
 

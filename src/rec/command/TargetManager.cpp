@@ -1,7 +1,7 @@
 #include "rec/command/TargetManager.h"
 
 #include "rec/app/Files.h"
-#include "rec/command/Command.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandRecordTable.h"
