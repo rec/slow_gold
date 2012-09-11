@@ -51,7 +51,6 @@ Cursor::~Cursor() {
 }
 
 void Cursor::languageChanged() {
-  DLOG(INFO) << "Cursor::languageChanged " << isTimeCursor();
   setTooltip(isTimeCursor() ? TIME_CURSOR_TOOLTIP: LOOP_POINT_TOOLTIP);
 }
 

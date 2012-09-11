@@ -55,6 +55,7 @@ class CommandDatabase {
       cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
                                                  &CommandItemSetter::execute));
     }
+    DCHECK(!cr->command_) << cr->command_->ShortDebugString();
     cr->command_.reset(new Command(cmd));
   }
 
@@ -65,10 +66,12 @@ class CommandDatabase {
     CommandID begin = CommandIDEncoder::toCommandID(cmd.start_index(), t);
     CommandID end = begin + len;
     for (CommandID i = begin; i != end; ++i) {
-      if (CommandRecord* cr = table_->find(i, false))
+      if (CommandRecord* cr = table_->find(i, false)) {
+        DCHECK(!cr->command_) << cr->command_->ShortDebugString();
         cr->command_.reset(indexCommand(cmd, i - begin));
-      else
+      } else {
         LOG(DFATAL) << "No repeat for " << CommandIDEncoder::commandIDName(t);
+      }
     }
   }
 
