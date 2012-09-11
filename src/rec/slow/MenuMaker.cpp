@@ -6,13 +6,16 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/AdvancedMenuMaker.h"
 #include "rec/slow/BasicMenuMaker.h"
+#include "rec/slow/Instance.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace slow {
 
 using namespace rec::command;
+using widget::waveform::Viewport;
 
 const PopupMenu MenuMaker::makeMenu(const String& name) {
   Lock l(lock_);
@@ -55,8 +58,15 @@ void MenuMaker::addEnabledName(Command::Type cmd, bool enable, const String& nam
 }
 
 void MenuMaker::addBank(Command::Type command, const String& name) {
+  int lastSlot = SLOT_COUNT;
+
+  if (!Instance::getInstance()->empty()) {
+    lastSlot = std::min(data::getProto<Viewport>(Instance::getInstanceFile()).
+                   loop_points().loop_point_size(), lastSlot);
+  }
+
   PopupMenu sub;
-  for (int i = command::CommandIDEncoder::FIRST; i < SLOT_COUNT; ++i) {
+  for (int i = command::CommandIDEncoder::FIRST; i < lastSlot; ++i) {
     if (i == 0)
       sub.addSeparator();
     addSimpleRepeat(command, i, &sub);
