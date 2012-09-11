@@ -38,6 +38,10 @@ void select(SelectorFunction selector, CommandIDEncoder pos) {
   LoopPointList* loops = snap.loops_;
   int segment = audio::getSegment(*loops, snap.instance_->time());
   int size = loops->loop_point_size();
+  if (pos.getPosition() >= size) {
+    beep();
+    return;
+  }
   int p = pos.toIndex(segment, size);
 
   bool multipleSelections = (audio::getSelectionCount(*snap.loops_) > 1);
@@ -89,6 +93,10 @@ void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
   SampleTime time = snap->instance_->time();
 
   int size = snap->loops_->loop_point_size();
+  if (pos.getPosition() >= size) {
+    beep();
+    return;
+  }
   int segment = audio::getSegment(*snap->loops_, time);
   int p = pos.toIndex(segment, size);
 
@@ -182,10 +190,15 @@ void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
     }
   }
   int segment = 0;
-  if (found)
+  if (found) {
+    if (s >= selected.size()) {
+      beep();
+      return;
+    }
     segment = selected[pos.toIndex(s, selected.size())];
-  else if (!selected.empty())
+  } else if (!selected.empty()) {
     segment = selected[0];
+  }
 
   setTimeFromSegment(snap, segment);
 }

@@ -33,6 +33,7 @@ class CommandIDEncoder {
   static int toCommandID(const Command&);
 
   operator int32() const { return position_; }
+  int32 getPosition() const { return position_; }
 
  private:
   int32 position_;
