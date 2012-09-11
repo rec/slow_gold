@@ -13,8 +13,7 @@ namespace command {
 class CommandDataSetter : public data::AddressListener,
                           public CommandItemSetter {
  public:
-  explicit CommandDataSetter(ApplicationCommandInfo* info,
-                             Listener<None>* changeListener,
+  explicit CommandDataSetter(Listener<None>* changeListener,
                              const Command& command,
                              const data::Address& addr,
                              Scope scope);
@@ -27,7 +26,6 @@ class CommandDataSetter : public data::AddressListener,
  protected:
   CriticalSection lock_;
 
-  ApplicationCommandInfo* info_;
   Listener<None>* changeListener_;
   const Command& command_;
   string menuName_;

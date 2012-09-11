@@ -29,7 +29,7 @@ class CommandTarget : public ApplicationCommandTarget {
   }
 
   virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-    info = targetManager_->find(id)->info_;
+    info = *targetManager_->find(id)->getInfo();
 
     if (!info.shortName.isNotEmpty())
       LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
@@ -111,13 +111,13 @@ void TargetManager::addCallback(CommandID id,
 }
 
 ApplicationCommandInfo* TargetManager::getInfo(CommandID id) {
-  return &find(id)->info_;
+  return find(id)->getInfo();
 }
 
 void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name, int flags) {
   CommandRecord* cr = find(id);
-  ApplicationCommandInfo* info = &cr->info_;
+  ApplicationCommandInfo* info = cr->getInfo();
 
   if (name.length())
     info->shortName = name;

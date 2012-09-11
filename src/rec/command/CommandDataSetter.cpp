@@ -4,13 +4,11 @@
 namespace rec {
 namespace command {
 
-CommandDataSetter::CommandDataSetter(ApplicationCommandInfo* info,
-                                     Listener<None>* changeListener,
+CommandDataSetter::CommandDataSetter(Listener<None>* changeListener,
                                      const Command& command,
                                      const data::Address& addr,
                                      Scope scope)
     : AddressListener(addr, command.setter().type_name(), scope),
-      info_(info),
       changeListener_(changeListener),
       command_(command),
       menuName_("none") {

@@ -8,7 +8,8 @@ TickedDataSetter::TickedDataSetter(ApplicationCommandInfo* info,
                                    const Command& command,
                                    const data::Address& addr,
                                    Scope scope)
-    : CommandDataSetter(info, changeListener, command, addr, scope) {
+    : CommandDataSetter(changeListener, command, addr, scope),
+      info_(info) {
 }
 
 void TickedDataSetter::operator()(const data::Value& v) {

@@ -6,8 +6,13 @@ namespace command {
 
 void CommandRecord::fillInfo() {
   CommandID id = info_.commandID;
+#if 0  
   if (!callback_)
     LOG(DFATAL) << "Empty callback " << CommandIDEncoder::commandIDName(id);
+#endif
+
+	if (!command_)
+  	return;
 
   const Description& desc = command_->desc();
   String name = Trans(desc.full(0));
