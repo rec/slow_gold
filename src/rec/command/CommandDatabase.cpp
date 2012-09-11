@@ -6,41 +6,17 @@
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandDataSetter.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
 #include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 
-// #define OLD_COMMAND_FILE
-
 namespace rec {
 namespace command {
 
 namespace {
-
-Command* indexCommand(const Command& cmd, int index) {
-  ptr<Command> command(new Command);
-  command->set_type(cmd.type());
-  command->set_index(index + CommandIDEncoder::FIRST);
-  command->set_category(cmd.category());
-  if (cmd.desc().menu_size() > index)
-    command->mutable_desc()->add_menu(cmd.desc().menu(index));
-  else
-    DCHECK_GT(cmd.desc().menu_size(), index);
-  if (cmd.desc().full_size() > index)
-    command->mutable_desc()->add_full(cmd.desc().full(index));
-  else
-    DCHECK_GT(cmd.desc().full_size(), index);
-
-  if (index < cmd.keypress_size()) {
-    const string& kp = cmd.keypress(index);
-      if (!kp.empty())
-        command->add_keypress(kp);
-  }
-  return command.transfer();
-}
-
 
 class CommandDatabase {
  public:

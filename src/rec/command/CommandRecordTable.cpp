@@ -52,32 +52,7 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
 void CommandRecordTable::fillCommandInfo() {
   Table::const_iterator i;
   for (i = table_.begin(); i != table_.end(); ++i)
-    fillCommandInfo(i->first, i->second);
-}
-
-void CommandRecordTable::fillCommandInfo(CommandID id, CommandRecord* cr) {
-  if (!cr->callback_)
-    LOG(DFATAL) << "Empty callback " << CommandIDEncoder::commandIDName(id);
-
-  const Description& desc = cr->command_->desc();
-  String name = Trans(desc.full(0));
-  String category = str(cr->command_->category());
-  bool hasInfo = desc.menu_size() && name.length();
-
-  if (hasInfo) {
-    int flags = 0;
-    if (category == "" || category == "(None)") {
-      DCHECK_NE(category, "");
-      flags += ApplicationCommandInfo::hiddenFromKeyEditor;
-    }
-
-    cr->info_.setInfo(Trans(desc.menu(0)), name, category, flags);
-  } else {
-    LOG(DFATAL) << "No command " << CommandIDEncoder::commandIDName(id)
-               << ", " << desc.menu_size()
-               << ", " << name.length()
-               << cr->command_->ShortDebugString();
-  }
+    i->second->fillInfo();
 }
 
 void CommandRecordTable::addCallback(CommandID id, Callback* cb) {

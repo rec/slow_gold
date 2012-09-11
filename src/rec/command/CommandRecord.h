@@ -17,9 +17,13 @@ struct CommandRecord {
   ptr<CommandItemSetter> setter_;
   ApplicationCommandInfo info_;
 
+  void fillInfo();
+
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecord);
 };
+
+Command* indexCommand(const Command& cmd, int index);
 
 }  // namespace command
 }  // namespace rec
