@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="SmDwzAtpn" name="SlowGold">
+  <MAINGROUP id="jWb0RuQyB" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -314,8 +314,6 @@
       <GROUP id="fY5oQLUxc" name="command">
         <FILE compile="0" file="../../src/rec/command/CallbackTable.h" id="fLIF3J9EZ"
               name="CallbackTable.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/Command.h" id="uZ0DILjP9"
-              name="Command.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandData.h" id="BFt89p1eA"
               name="CommandData.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandDatabase.cpp"
@@ -332,6 +330,10 @@
               name="CommandIDEncoder.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
               id="NmcYKaszX" name="CommandItemSetter.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/CommandRecord.cpp" id="FYqqO49Ep"
+              name="CommandRecord.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandRecord.h" id="dhVxElZVF"
+              name="CommandRecord.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandRecordTable.cpp"
               id="11iH4S5cn" name="CommandRecordTable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandRecordTable.h"
@@ -1644,7 +1646,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="56g6SRsWO" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="1IYe3yodf" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

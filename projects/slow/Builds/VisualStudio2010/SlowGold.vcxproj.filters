@@ -661,6 +661,9 @@
     <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandRecord.cpp">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandRecordTable.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
@@ -2841,9 +2844,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CallbackTable.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
-      <Filter>SlowGold\rec\command</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
@@ -2857,6 +2857,9 @@
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandRecord.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandRecordTable.h">
