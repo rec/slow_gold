@@ -75,7 +75,6 @@ class Waveform : public Component,
                      const SampleRangeVector& dirty);
   void setSelected(int index, bool selected);
   const WaveformModel& model() { return *model_; }
-  static void registerAllTranslations();
   void setLoading(bool loading);
   void setSampleRate(SampleRate);
 

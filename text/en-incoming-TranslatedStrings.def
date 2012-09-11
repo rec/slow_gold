@@ -677,8 +677,8 @@ str {
 }
 str {
   original: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
-  file: "rec/widget/waveform/Waveform.cpp"
-  line: 38
+  file: "rec/widget/waveform/Cursor.cpp"
+  line: 34
 }
 str {
   original: "Loop This Segment"
@@ -813,6 +813,8 @@ str {
 }
 str {
   original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
+  file: "rec/widget/waveform/Cursor.cpp"
+  line: 30
 }
 str {
   original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."

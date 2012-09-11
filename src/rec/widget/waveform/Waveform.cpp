@@ -33,10 +33,6 @@ const int ZOOM_CURSOR_Y_HOTSPOT = 8;
 const int ZOOM_CURSOR_WIDTH = 24;
 const int ZOOM_CURSOR_HEIGHT = 24;
 
-TRTR(LOOP_POINT_TOOLTIP, "Loop Point:  You can drag it around on the waveform, "
-                         "or you can click on the label above and to the right "
-                         "to edit its name.");
-
 static juce::Image getZoomCursor() {
   juce::Image img(juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT,
                   false);
@@ -262,10 +258,6 @@ void Waveform::setSelected(int index, bool selected) {
   }
   lpl->mutable_loop_point(index)->set_selected(selected);
   DataListener<Viewport>::setProto(viewport);
-}
-
-void Waveform::registerAllTranslations() {
-  LOOP_POINT_TOOLTIP.registerTranslation();
 }
 
 // TODO: get rid of dependency on Slow!

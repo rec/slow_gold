@@ -19,7 +19,7 @@
 #include "rec/util/cd/CDReader.h"
 #include "rec/widget/tree/CD.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
-#include "rec/widget/waveform/Waveform.h"
+#include "rec/widget/waveform/Cursor.h"
 
 namespace rec {
 namespace slow {
@@ -50,7 +50,7 @@ void registerAllTranslations() {
   util::cd::CDReader::registerAllTranslations();
   widget::tree::CD::registerAllTranslations();
   widget::tree::TreeViewDropAll::registerAllTranslations();
-  widget::waveform::Waveform::registerAllTranslations();
+  widget::waveform::Cursor::registerAllTranslations();
 }
 
 }  // namespace slow
