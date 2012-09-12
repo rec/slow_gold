@@ -20,6 +20,9 @@ TRAN(LOOP_POINT_TOOLTIP, "Loop Point:  You can drag it around on the waveform, "
                          "or you can click on the label above and to the right "
                          "to edit its name.");
 
+TRAN(LOOP_POINT_CAPTION, "Loop Point Name: Edit the Loop Point's name "
+     "by clicking here.");
+
 namespace rec {
 
 static const SampleTime SMALLEST_TIME_SAMPLES = 10000;
@@ -51,6 +54,7 @@ Cursor::~Cursor() {
 
 void Cursor::languageChanged() {
   setTooltip(isTimeCursor() ? t_TIME_CURSOR_TOOLTIP: t_LOOP_POINT_TOOLTIP);
+  caption_->setTooltip(t_LOOP_POINT_CAPTION);
 }
 
 void Cursor::init() {
@@ -261,13 +265,6 @@ void Cursor::operator()(const WaveformProto& wp) {
 
   waveDesc_ = wp;
   layout();
-}
-
-void Cursor::setTooltip(const String& t) {
-  SettableTooltipClient::setTooltip(t);
-  // TODO: this text is duplicated in Loops.cpp.
-  caption_->setTooltip(Trans("Loop Point Name: Edit the Loop Point's name "
-                             "by clicking here."));
 }
 
 Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,

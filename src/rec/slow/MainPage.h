@@ -29,6 +29,8 @@ class MainPage : public app::LanguageListener {
   virtual void languageChanged();
 
  private:
+  Components* components_;
+
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
   ptr<gui::Layout> mainPanel_;
 

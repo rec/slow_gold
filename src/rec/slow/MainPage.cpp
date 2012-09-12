@@ -23,6 +23,9 @@ using namespace juce;
 TRAN(HELP_PANEL_HELP,
      "Help Panel: Shows help about whatever the mouse is over.");
 
+TRAN(CD_WINDOW, "CD Window:  Any CDs that you have in "
+     "your computer's CD drives will appear here.");
+
 namespace rec {
 namespace slow {
 
@@ -78,7 +81,8 @@ class MainPanel : public gui::Layout {
 }  // namespace
 
 MainPage::MainPage(Components* components)
-    : mainPanel_(new MainPanel),
+    : components_(components),
+      mainPanel_(new MainPanel),
       navigationPanel_("Navigation"),
       playbackPanel_("Playback"),
       helpPanel_("Help", VERTICAL),
@@ -107,9 +111,6 @@ MainPage::MainPage(Components* components)
   add(mainPanel_.get(), &playbackPanel_, MIN_PLAYBACK_PANEL);
 
   // Navigation panel.
-  components->directoryTree_->treeView()->setTooltip(
-      Trans("CD Window:  Any CDs that you have in "
-                "your computer's CD drives will appear here."));
   add(&navigationPanel_, components->directoryTree_->treeView(), MIN_DIRECTORY, -1.0, -0.2);
   add(&navigationPanel_, &directoryResizer_, MIN_RESIZER);
   add(&navigationPanel_, components->songData_, MIN_SONG_DATA, -1.0, -0.30);
@@ -145,8 +146,8 @@ void MainPage::languageChanged() {
   helpBody_.setTooltip(t_HELP_PANEL_HELP);
   helpPanel_.setTooltip(t_HELP_PANEL_HELP);
   helpCaption_.setTooltip(t_HELP_PANEL_HELP);
+  components_->directoryTree_->treeView()->setTooltip(t_CD_WINDOW);
 }
-
 
 MainPage::~MainPage() {}
 

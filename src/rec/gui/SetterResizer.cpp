@@ -5,6 +5,9 @@
 #include "rec/data/Value.h"
 #include "rec/util/thread/CallAsync.h"
 
+TRAN(RESIZER_HELP, "Resizer: "
+     "You can drag this resizer around to change the screen layout.");
+
 namespace rec {
 namespace gui {
 
@@ -25,10 +28,13 @@ SetterResizer::SetterResizer(const string& typeName,
     address_(address),
     needsWrite_(false),
     lastValue_(NO_VALUE) {
-  setTooltip(Trans("Resizer: "
-                   "You can drag this resizer around to change the screen layout."));
   setWriteable(true);
 }
+
+void SetterResizer::languageChanged() {
+  setTooltip(t_RESIZER_HELP);
+}
+
 
 uint32 SetterResizer::get() const {
   bool isVertical = (layout_->orientation() == VERTICAL);

@@ -46,7 +46,6 @@ class Cursor : public Component,
   SampleTime getTime() const;
   bool setDragTime(SampleTime time);
   void setTime(SampleTime time);
-  virtual void setTooltip(const String&);
 
   static const int TIME_CURSOR_INDEX = -1;
 

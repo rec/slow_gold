@@ -1,6 +1,7 @@
 #ifndef __REC_GUI_SETTERRESIZER__
 #define __REC_GUI_SETTERRESIZER__
 
+#include "rec/app/LanguageListener.h"
 #include "rec/data/Address.h"
 #include "rec/data/AddressListener.h"
 #include "rec/gui/GuiWriteable.h"
@@ -13,7 +14,8 @@ namespace data { class Data; }
 
 namespace gui {
 
-class SetterResizer : public StretchableLayoutResizerBar,
+class SetterResizer : public app::LanguageListener,
+                      public StretchableLayoutResizerBar,
                       public SettableTooltipClient,
                       public data::GlobalAddressListener,
                       public GuiWriteable {
@@ -27,6 +29,7 @@ class SetterResizer : public StretchableLayoutResizerBar,
   virtual void operator()(const data::Value&);
   virtual void moved();
   virtual void paint(Graphics& g);
+  virtual void languageChanged();
 
  protected:
   virtual void doWriteGui();

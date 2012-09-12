@@ -71,6 +71,10 @@ void Waveform::languageChanged() {
       Trans("Waveform Window: "
             "You can drag files from your desktop or your music player here. "
             "If your mouse has a wheel, use it to zoom the waveform."));
+
+  // TODO: Why do I need this?!
+  for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
+    (*i)->languageChanged();
 }
 
 Waveform::~Waveform() {
