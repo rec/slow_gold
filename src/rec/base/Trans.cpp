@@ -72,7 +72,6 @@ void Trans::dumpAll() {
 
 Trans::Trans(const string& original)
     : string_(new TranslatedString),
-      translationRegistered_(false),
       language_(app::AppSettings::NONE) {
   string_->set_original(original);
   check(string_->original());
@@ -81,7 +80,6 @@ Trans::Trans(const string& original)
 
 Trans::Trans(const char* original, const char* file, int line)
     : string_(new TranslatedString),
-      translationRegistered_(false),
       language_(app::AppSettings::NONE) {
   string_->set_original(original);
   string_->set_file(cleanFile(file));
@@ -92,7 +90,6 @@ Trans::Trans(const char* original, const char* file, int line)
 
 Trans::Trans(const String& original, const char* file, int line)
     : string_(new TranslatedString),
-      translationRegistered_(false),
       language_(app::AppSettings::NONE) {
   string_->set_original(str(original));
   string_->set_file(cleanFile(file));
@@ -103,7 +100,6 @@ Trans::Trans(const String& original, const char* file, int line)
 
 Trans::Trans(const char* original, const char* hint, const char* file, int line)
     : string_(new TranslatedString),
-      translationRegistered_(false),
       language_(app::AppSettings::NONE) {
   string_->set_original(original);
   string_->set_file(cleanFile(file));
@@ -139,14 +135,10 @@ Trans::operator String() const {
 }
 
 void Trans::registerTranslation() const {
-  Lock l(lock_);
-  if (!translationRegistered_) {
-    translationRegistered_ = true;
 #if JUCE_DEBUG && JUCE_MAC
-    rec::registerTranslation(*string_);
+  rec::registerTranslation(*string_);
 #endif
-    string_->set_translation(string_->original());
-  }
+  string_->set_translation(string_->original());
 }
 
 }  // namespace rec

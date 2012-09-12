@@ -26,9 +26,7 @@ class Trans {
 
  private:
   ptr<TranslatedString> string_;
-  mutable bool translationRegistered_;
   Language language_;
-  CriticalSection lock_;
 
   void check(const string& s);
 
