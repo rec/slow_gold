@@ -7,27 +7,27 @@
 #include "rec/util/GetEnv.h"
 #include "rec/util/thread/CallAsync.h"
 
+TRAN(DISPLAY_ON_STARTUP, "Display this window on startup");
+TRAN(DISPLAY_ON_STARTUP_TOOLTIP, "Turn this box on if you want About Slow "
+       "Gold to appear on startup.");
+TRAN(DRAG_AUDIO, "Drag audio files onto the waveform.");
+TRAN(CD_AUTOMATIC, "CDs will automatically appear at the top-left when you "
+       "insert them.");
+TRAN(PRESS_SPACE, "Press the space bar to start and stop playback.");
+TRAN(DRAG_SPEED, "Drag the Speed slider to slow down or speed up.");
+TRAN(CREATE_LOOPS, "Create loop points by pressing the L key.");
+TRAN(DOWNLOAD_MANUAL, "Download the manual from the Help menu for many more "
+       "commands.");
+TRAN(COPYRIGHT, "Copyright © %d");
+TRAN(REGISTERED_TO, "Registered to:");
+TRAN(UNREGISTERED, "Not Registered!");
+
 namespace rec {
 namespace slow {
 
 namespace {
 
 // Skin
-
-TRTR(DISPLAY_ON_STARTUP, "Display this window on startup");
-TRTR(DISPLAY_ON_STARTUP_TOOLTIP, "Turn this box on if you want About Slow "
-     "Gold to appear on startup.");
-TRTR(DRAG_AUDIO, "Drag audio files onto the waveform.");
-TRTR(CD_AUTOMATIC, "CDs will automatically appear at the top-left when you "
-                   "insert them.");
-TRTR(PRESS_SPACE, "Press the space bar to start and stop playback.");
-TRTR(DRAG_SPEED, "Drag the Speed slider to slow down or speed up.");
-TRTR(CREATE_LOOPS, "Create loop points by pressing the L key.");
-TRTR(DOWNLOAD_MANUAL, "Download the manual from the Help menu for many more "
-                      "commands.");
-TRTR(COPYRIGHT, "Copyright © %d");
-TRTR(REGISTERED_TO, "Registered to:");
-TRTR(UNREGISTERED, "Not Registered!");
 
 using namespace juce;
 
@@ -44,8 +44,8 @@ const int BUTTON_WIDTH = 250;
 class AboutPane : public Component {
  public:
   AboutPane(const String& name, const String& versionNumber)
-      : displayOnStartup_(str(DISPLAY_ON_STARTUP),
-                          str(DISPLAY_ON_STARTUP_TOOLTIP),
+      : displayOnStartup_(str(t_DISPLAY_ON_STARTUP),
+                          str(t_DISPLAY_ON_STARTUP_TOOLTIP),
                           getTypeName<GuiSettings>(),
                           data::Address("show_about_on_startup"),
                           GLOBAL_SCOPE) {
@@ -60,21 +60,21 @@ class AboutPane : public Component {
 
     Font font("Ariel", 20, 0);
     String s =
-      str("* " + DRAG_AUDIO + "\n" +
-          "* " + CD_AUTOMATIC + "\n" +
-          "* " + PRESS_SPACE + "\n" +
-          "* " + DRAG_SPEED + "\n" +
-          "* " + CREATE_LOOPS + "\n" +
-          "* " + DOWNLOAD_MANUAL + "\n");
+      str("* " + t_DRAG_AUDIO + "\n" +
+          "* " + t_CD_AUTOMATIC + "\n" +
+          "* " + t_PRESS_SPACE + "\n" +
+          "* " + t_DRAG_SPEED + "\n" +
+          "* " + t_CREATE_LOOPS + "\n" +
+          "* " + t_DOWNLOAD_MANUAL + "\n");
 
     left_.append(s, font);
     String t = name + " " + versionNumber + "\nWorld Wide Woodshed Software\n" +
-      String::formatted(COPYRIGHT, 2012) + String("\n");
+      String::formatted(t_COPYRIGHT, 2012) + String("\n");
     right_.append(t, font);
 
     String user = getEnv("USERNAME", "");
-    String reg = user.isEmpty() ? String(UNREGISTERED) :
-      (String("\n") + REGISTERED_TO + String(" ") + user);
+    String reg = user.isEmpty() ? String(t_UNREGISTERED) :
+      (String("\n") + t_REGISTERED_TO + String(" ") + user);
     right_.append(reg, font);
 
     addAndMakeVisible(&displayOnStartup_);
@@ -132,6 +132,7 @@ void AboutWindow::mouseDown(const MouseEvent&) {
 }
 
 void AboutWindow::registerAllTranslations() {
+#if 0
   CD_AUTOMATIC.registerTranslation();
   COPYRIGHT.registerTranslation();
   CREATE_LOOPS.registerTranslation();
@@ -143,6 +144,7 @@ void AboutWindow::registerAllTranslations() {
   PRESS_SPACE.registerTranslation();
   REGISTERED_TO.registerTranslation();
   UNREGISTERED.registerTranslation();
+#endif
 }
 
 }  // namespace slow
