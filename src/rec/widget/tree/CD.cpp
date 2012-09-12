@@ -3,19 +3,15 @@
 #include "rec/base/Trans.h"
 #include "rec/util/cd/Album.h"
 
+TRAN(UNKNOWN_CD, "<Unknown CD>");
+TRAN(UNKNOWN_CD_FULL, "Unknown CD: ID = 0x");
+
 namespace rec {
 namespace widget {
 namespace tree {
 
-namespace {
-
-TRTR(UNKNOWN_CD, "<Unknown CD>");
-TRTR(UNKNOWN_CD_FULL, "Unknown CD: ID = 0x");
-
-}  // namespace
-
 void CD::computeChildren() {
-  name_ = UNKNOWN_CD;
+  name_ = t_UNKNOWN_CD;
   std::vector<string> tracks;
 
   const string& cdKey = virtualFile_.volume_name();
@@ -28,7 +24,7 @@ void CD::computeChildren() {
       for (int i = 0; i < audioTracks; ++i)
         tracks.push_back(str(String(i + 1)));
 
-      name_ = UNKNOWN_CD_FULL +
+      name_ = t_UNKNOWN_CD_FULL +
         cd::getCDKey(reader.get()).upToFirstOccurrenceOf("-", false, false);
 
     } else {
@@ -60,11 +56,6 @@ void CD::computeChildren() {
 
   MessageManagerLock l;
   setOpen(true);
-}
-
-void CD::registerAllTranslations() {
-  UNKNOWN_CD.registerTranslation();
-  UNKNOWN_CD_FULL.registerTranslation();
 }
 
 }  // namespace tree

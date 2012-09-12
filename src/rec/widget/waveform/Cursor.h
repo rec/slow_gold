@@ -62,7 +62,6 @@ class Cursor : public Component,
   void resizeCaption();
   void selectButtonPressed(bool);
   Component* getCaption();
-  static void registerAllTranslations();
 
  private:
   void layoutCaption();

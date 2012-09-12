@@ -4,16 +4,12 @@
 
 using namespace juce;
 
+TRAN(NO_AVAILBLE, "No available CDs.");
+TRAN(TRIED_TO_READ, "Tried to read CD, id=%s, names=%s");
+
 namespace rec {
 namespace util {
 namespace cd {
-
-namespace {
-
-TRTR(NO_AVAILBLE, "No available CDs.");
-TRTR(TRIED_TO_READ, "Tried to read CD, id=%s, names=%s");
-
-}  // namespace
 
 AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
   String e;
@@ -24,7 +20,7 @@ AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
   StringArray names = AudioCDReader::getAvailableCDNames();
   int size = names.size();
   if (!size) {
-    (*error) = NO_AVAILBLE;
+    (*error) = t_NO_AVAILBLE;
     return NULL;
   }
 
@@ -41,7 +37,7 @@ AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
     }
   }
   LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
-  (*error) = String::formatted(TRIED_TO_READ, c_str(String(id)), c_str(*error));
+  (*error) = String::formatted(t_TRIED_TO_READ, c_str(String(id)), c_str(*error));
   return NULL;
 }
 
@@ -109,11 +105,6 @@ String getCDKey(AudioCDReader* reader) {
   int c = reader->getCDDBId();
   return (c == 0x2000001 || r == 0) ? String("") :
     (String::toHexString(c) + "-" + String::toHexString(r)).toUpperCase();
-}
-
-void CDReader::registerAllTranslations() {
-  NO_AVAILBLE.registerTranslation();
-  TRIED_TO_READ.registerTranslation();
 }
 
 }  // namespace cd

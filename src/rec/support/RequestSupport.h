@@ -8,11 +8,6 @@ namespace support {
 
 void requestSupport();
 
-struct RequestSupport {
-  static void registerAllTranslations();
-};
-
-
 }  // namespace support
 }  // namespace rec
 

@@ -10,8 +10,6 @@ class CommandEntryWindow  : public juce::AlertWindow {
  public:
   CommandEntryWindow(const String& caption);
 
-  static void registerAllTranslations();
-
  private:
   JUCE_DECLARE_NON_COPYABLE (CommandEntryWindow);
 };

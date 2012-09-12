@@ -2,18 +2,18 @@
 #include "rec/command/map/CommandMapItemComponent.h"
 #include "rec/base/Trans.h"
 
+TRAN(PRESS_A_KEY, "Please press a key combination now...");
+TRAN(KEY, "Key");
+
 namespace rec {
 namespace command {
 
 namespace {
 
-TRTR(PRESS_A_KEY, "Please press a key combination now...");
-TRTR(KEY, "Key");
-
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:
     KeyCommandEntryWindow(KeyCommandMapEditor& owner_)
-      : CommandEntryWindow(PRESS_A_KEY), owner(owner_) {
+      : CommandEntryWindow(t_PRESS_A_KEY), owner(owner_) {
     }
 
     bool keyPressed (const KeyPress& key)
@@ -35,7 +35,7 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
 }  // namespace
 
 template <>
-const String KeyCommandMapEditor::name() { return KEY; }
+const String KeyCommandMapEditor::name() { return t_KEY; }
 
 template <>
 const String KeyCommandMapEditor::getDescription(const KeyPress& key) {
@@ -96,11 +96,6 @@ void KeyCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton*
          KeyCommandMapEditor* editor = dynamic_cast<KeyCommandMapEditor*>(&button->getOwner());
          editor->setNewKey (button, key, true);
      }
-}
-
-void KeyCommandMapEditorTranslator::registerAllTranslations() {
-  PRESS_A_KEY.registerTranslation();
-  KEY.registerTranslation();
 }
 
 }  // namespace command

@@ -7,15 +7,15 @@
 #include "rec/command/map/CommandEntryWindow.h"
 #include "rec/command/map/CommandMapItemComponent.h"
 
+TRAN(RESET_TO_DEFAULTS, "reset to defaults");
+
 namespace rec {
 namespace command {
-
-static TRTR(RESET_TO_DEFAULTS, "reset to defaults");
 
 //==============================================================================
 CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
                                    ChangeBroadcaster& b)
-    : commandManager(manager), broadcaster(b), resetButton (RESET_TO_DEFAULTS) {
+    : commandManager(manager), broadcaster(b), resetButton (t_RESET_TO_DEFAULTS) {
 }
 
 void CommandMapEditor::initialize(const bool showResetToDefaultButton) {
@@ -83,10 +83,6 @@ bool CommandMapEditor::isCommandReadOnly (const CommandID commandID)
     const ApplicationCommandInfo* const ci = commandManager.getCommandForID (commandID);
 
     return ci != nullptr && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor) != 0;
-}
-
-void CommandMapEditor::registerAllTranslations() {
-  RESET_TO_DEFAULTS.registerTranslation();
 }
 
 }  // namespace command

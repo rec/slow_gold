@@ -131,22 +131,6 @@ void AboutWindow::mouseDown(const MouseEvent&) {
     window()->stopAboutWindow();
 }
 
-void AboutWindow::registerAllTranslations() {
-#if 0
-  CD_AUTOMATIC.registerTranslation();
-  COPYRIGHT.registerTranslation();
-  CREATE_LOOPS.registerTranslation();
-  DISPLAY_ON_STARTUP.registerTranslation();
-  DISPLAY_ON_STARTUP_TOOLTIP.registerTranslation();
-  DOWNLOAD_MANUAL.registerTranslation();
-  DRAG_AUDIO.registerTranslation();
-  DRAG_SPEED.registerTranslation();
-  PRESS_SPACE.registerTranslation();
-  REGISTERED_TO.registerTranslation();
-  UNREGISTERED.registerTranslation();
-#endif
-}
-
 }  // namespace slow
 }  // namespace rec
 

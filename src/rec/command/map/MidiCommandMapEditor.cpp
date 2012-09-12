@@ -6,19 +6,19 @@
 #include "rec/util/Listener.h"
 #include "rec/util/thread/CallAsync.h"
 
+TRAN(WAITING, "Waiting for a MIDI note, program change or controller...");
+TRAN(MIDI, "MIDI");
+
 namespace rec {
 namespace command {
 
 namespace {
 
-TRTR(WAITING, "Waiting for a MIDI note, program change or controller...");
-TRTR(MIDI, "MIDI");
-
 class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
   explicit MidiCommandEntryWindow(MidiCommandMapEditor* owner)
-      : CommandEntryWindow(WAITING),
+      : CommandEntryWindow(t_WAITING),
         lastKeyEntered_(false),
         owner_(owner),
         mappings_(&owner->getMappings()) {
@@ -55,7 +55,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
 
 template <>
 const String MidiCommandMapEditor::name() {
-  return MIDI;
+  return t_MIDI;
 }
 
 template <>
@@ -128,11 +128,6 @@ void MidiCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton
          MidiCommandMapEditor* editor = dynamic_cast<MidiCommandMapEditor*>(&button->getOwner());
          editor->setNewKey (button, key, true);
      }
-}
-
-void MidiCommandMapEditorTranslator::registerAllTranslations() {
-  WAITING.registerTranslation();
-  MIDI.registerTranslation();
 }
 
 }  // namespace command

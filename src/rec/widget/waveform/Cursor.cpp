@@ -12,6 +12,14 @@
 using namespace rec::gui;
 using namespace rec::gui::color;
 
+TRAN(TIME_CURSOR_TOOLTIP, "Playback Time Cursor: This follows the current time "
+     "during playback. You can also drag it around to set the current playback "
+     "time.");
+
+TRAN(LOOP_POINT_TOOLTIP, "Loop Point:  You can drag it around on the waveform, "
+                         "or you can click on the label above and to the right "
+                         "to edit its name.");
+
 namespace rec {
 
 static const SampleTime SMALLEST_TIME_SAMPLES = 10000;
@@ -24,15 +32,6 @@ static const int REMAINS_FUDGE = 8;
 static const int SELECTION_BUTTON_PADDING = -2;
 
 static const int GRID_TEXT_HEIGHT = 9;  // from Waveform.cpp
-
-TRTR(TIME_CURSOR_TOOLTIP, "Playback Time Cursor: This follows the current time "
-     "during playback. You can also drag it around to set the current playback "
-     "time.");
-
-TRTR(LOOP_POINT_TOOLTIP, "Loop Point:  You can drag it around on the waveform, "
-                         "or you can click on the label above and to the right "
-                         "to edit its name.");
-// TODO: duplicated in Waveform.cpp
 
 namespace widget {
 namespace waveform {
@@ -51,7 +50,7 @@ Cursor::~Cursor() {
 }
 
 void Cursor::languageChanged() {
-  setTooltip(isTimeCursor() ? TIME_CURSOR_TOOLTIP: LOOP_POINT_TOOLTIP);
+  setTooltip(isTimeCursor() ? t_TIME_CURSOR_TOOLTIP: t_LOOP_POINT_TOOLTIP);
 }
 
 void Cursor::init() {
@@ -283,11 +282,6 @@ Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,
 
 Cursor* makeTimeCursor(const CursorProto& cp, Waveform* w) {
   return makeCursor(cp, w, Cursor::TIME_CURSOR_INDEX, 0);
-}
-
-void Cursor::registerAllTranslations() {
-  LOOP_POINT_TOOLTIP.registerTranslation();
-  TIME_CURSOR_TOOLTIP.registerTranslation();
 }
 
 }  // namespace waveform

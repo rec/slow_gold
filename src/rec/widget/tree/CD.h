@@ -17,8 +17,6 @@ class CD : public Directory {
   virtual int minPartition() const { return 100; }
   virtual void computeChildren();
 
-  static void registerAllTranslations();
-
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CD);
 };

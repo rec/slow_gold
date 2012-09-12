@@ -7,6 +7,13 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 
+TRAN(NEW_VERSION, "A new version of SlowGold, %s, is available.");
+TRAN(LIKE_TO_DOWNLOAD, "Would you like to download it?");
+TRAN(DOWNLOAD_AND_QUIT, "Download new version and quit this older one.");
+TRAN(RUN_THIS_OLDER_VERSION, "Run this older version (%s).");
+TRAN(COULDNT_UPDATE, "Couldn't update to version %s");
+TRAN(CLICK_TO_CONTINUE, "Click to continue.");
+
 namespace rec {
 namespace app {
 
@@ -18,13 +25,6 @@ using juce::URL;
 using namespace juce;
 
 namespace {
-
-TRTR(NEW_VERSION, "A new version of SlowGold, %s, is available.");
-TRTR(LIKE_TO_DOWNLOAD, "Would you like to download it?");
-TRTR(DOWNLOAD_AND_QUIT, "Download new version and quit this older one.");
-TRTR(RUN_THIS_OLDER_VERSION, "Run this older version (%s).");
-TRTR(COULDNT_UPDATE, "Couldn't update to version %s");
-TRTR(CLICK_TO_CONTINUE, "Click to continue.");
 
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const URL VERSION_FILE(WOODSHED + "currentversion/");
@@ -52,14 +52,14 @@ String getVersion() {
 
 bool downloadNewVersion(const String& appName, const String& version,
                         const String& oldVersion) {
-  String msg = String::formatted(NEW_VERSION, c_str(version));
+  String msg = String::formatted(t_NEW_VERSION, c_str(version));
 
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
   bool ok = AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon, msg,
-      msg + LIKE_TO_DOWNLOAD,
-      DOWNLOAD_AND_QUIT,
-      String::formatted(RUN_THIS_OLDER_VERSION, c_str(oldVersion)));
+      msg + t_LIKE_TO_DOWNLOAD,
+      t_DOWNLOAD_AND_QUIT,
+      String::formatted(t_RUN_THIS_OLDER_VERSION, c_str(oldVersion)));
 
   if (!ok) {
     LOG(INFO) << "New version download cancelled";
@@ -73,9 +73,9 @@ bool downloadNewVersion(const String& appName, const String& version,
     appData.set_last_update_finished(juce::Time::currentTimeMillis());
     data::setProto(appData);
   } else {
-    String error = String::formatted(COULDNT_UPDATE, c_str(version));
+    String error = String::formatted(t_COULDNT_UPDATE, c_str(version));
     AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
-                                CLICK_TO_CONTINUE);
+                                t_CLICK_TO_CONTINUE);
   }
 
   return ok;
@@ -117,15 +117,6 @@ DownloadStatus downloadNewVersionIfNeeded(const String& version,
 
   return downloadNewVersion(name, newVersion, version) ? DOWNLOAD_SUCCEEDED :
     DOWNLOAD_CANCELLED_OR_FAILED;
-}
-
-void DownloadVersion::registerAllTranslations() {
-  NEW_VERSION.registerTranslation();
-  LIKE_TO_DOWNLOAD.registerTranslation();
-  DOWNLOAD_AND_QUIT.registerTranslation();
-  RUN_THIS_OLDER_VERSION.registerTranslation();
-  COULDNT_UPDATE.registerTranslation();
-  CLICK_TO_CONTINUE.registerTranslation();
 }
 
 }  // namespace app

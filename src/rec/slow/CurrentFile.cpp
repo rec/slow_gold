@@ -26,17 +26,13 @@
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Zoom.h"
 
+TRAN(RAN_OUT_OF_MEMORY, "Ran Out Of Memory For Your File");
+TRAN(RAN_OUT_OF_MEMORY_FULL, "Sorry, there wasn't enough memory for the file.");
+
 namespace rec {
 namespace slow {
 
 using namespace rec::data;
-
-namespace {
-
-TRTR(RAN_OUT_OF_MEMORY, "Ran Out Of Memory For Your File");
-TRTR(RAN_OUT_OF_MEMORY_FULL, "Sorry, there wasn't enough memory for the file.");
-}
-
 using namespace rec::widget::waveform;
 using namespace juce;
 
@@ -125,7 +121,7 @@ int64 CurrentFile::getFileLength(bool showError) {
   if (!reader.empty()) {
     if (int64 len = bufferFiller()->setReader(file_, reader.transfer()))
       return len;
-    reader.setError(RAN_OUT_OF_MEMORY, RAN_OUT_OF_MEMORY_FULL);
+    reader.setError(t_RAN_OUT_OF_MEMORY, t_RAN_OUT_OF_MEMORY_FULL);
   }
 
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
@@ -163,11 +159,6 @@ void CurrentFile::setViewport() {
   viewport.mutable_loop_points()->set_sample_rate(bufferFiller()->reader()->
                                                   reader()->sampleRate);
   data::setProto(viewport, file_, CANT_UNDO);
-}
-
-void CurrentFile::registerAllTranslations() {
-  RAN_OUT_OF_MEMORY.registerTranslation();
-  RAN_OUT_OF_MEMORY_FULL.registerTranslation();
 }
 
 const VirtualFile CurrentFile::file() const {

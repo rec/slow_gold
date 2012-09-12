@@ -3,6 +3,9 @@
 
 #include "rec/base/Trans.h"
 
+extern const rec::Trans t_FILE_TOO_SMALL;
+extern const rec::Trans t_FILE_TOO_SMALL_FULL;
+
 namespace rec {
 namespace music {
 
@@ -22,16 +25,11 @@ class MusicFileReader {
     errorDetails_ = details;
   }
 
-  static void registerAllTranslations();
-
  private:
   ptr<AudioFormatReader> reader_;
   String errorTitle_;
   String errorDetails_;
 };
-
-extern const Trans FILE_TOO_SMALL;
-extern const Trans FILE_TOO_SMALL_FULL;
 
 }  // namespace music
 }  // namespace rec

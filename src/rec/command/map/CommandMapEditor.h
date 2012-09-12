@@ -72,8 +72,6 @@ public:
     /** @internal */
     void resized();
 
-    static void registerAllTranslations();
-
 protected:
     ApplicationCommandManager& commandManager;
     ChangeBroadcaster& broadcaster;

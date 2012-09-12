@@ -4,11 +4,11 @@
 #include "rec/base/Trans.h"
 #include "rec/gui/Dialog.h"
 
+TRAN(SET_AUDIO_PREFERENCES, "Set Audio Preferences");
+
 namespace rec {
 namespace gui {
 namespace audio {
-
-static TRTR(SET_AUDIO_PREFERENCES, "Set Audio Preferences");
 
 SetupPage::SetupPage(rec::audio::Device* dev)
     : deviceSelector_(dev->manager_, 0, 0, 2, 2, true, false, true, true),
@@ -29,14 +29,10 @@ void SetupPage::show(Component* comp) {
     return;
 
   locker.setModalComponent(comp);
-  juce::DialogWindow::showModalDialog(SET_AUDIO_PREFERENCES, this,
+  juce::DialogWindow::showModalDialog(t_SET_AUDIO_PREFERENCES, this,
                                       comp, juce::Colours::white, true);
 
   device_->saveState();
-}
-
-void SetupPage::registerAllTranslations() {
-  SET_AUDIO_PREFERENCES.registerTranslation();
 }
 
 }  // namespace audio

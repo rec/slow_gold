@@ -12,10 +12,6 @@ namespace slow {
 void addGlobalCallbacks(command::CallbackTable* t);
 void requestSupport();
 
-struct GlobalCallbacks {
-  static void registerAllTranslations();
-};
-
 }  // namespace slow
 }  // namespace rec
 

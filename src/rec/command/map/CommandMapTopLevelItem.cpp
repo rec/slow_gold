@@ -1,16 +1,13 @@
 #include "rec/command/map/CommandMapTopLevelItem.h"
 #include "rec/base/Trans.h"
 
+TRAN(RESET_TO_DEFAULTS, "Reset to defaults");
+TRAN(SURE_YOU_RESET, "Are you sure you want to reset all the key mappings to their default state?");
+TRAN(RESET, "Reset");
+TRAN(NONE, "(None)");
+
 namespace rec {
 namespace command {
-
-namespace {
-
-TRTR(RESET_TO_DEFAULTS, "Reset to defaults");
-TRTR(SURE_YOU_RESET, "Are you sure you want to reset all the key mappings to their default state?");
-TRTR(RESET, "Reset");
-TRTR(NONE, "(None)");
-}
 
 CommandMapTopLevelItem::CommandMapTopLevelItem(CommandMapEditor& owner_)
     : owner (owner_) {
@@ -40,7 +37,7 @@ void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
 
       if (count > 0)
           addSubItem (new CommandMapCategoryItem(owner, cat));
-      else if (cat != NONE) {
+      else if (cat != t_NONE) {
         LOG(DFATAL) << "Nothing in category " << str(cat)
                    << ", " << commands.size();
       }
@@ -52,19 +49,12 @@ void CommandMapTopLevelItem::buttonClicked (Button*)
 {
   AlertWindow::showOkCancelBox(
       AlertWindow::QuestionIcon,
-      RESET_TO_DEFAULTS,
-      SURE_YOU_RESET,
-      RESET,
+      t_RESET_TO_DEFAULTS,
+      t_SURE_YOU_RESET,
+      t_RESET,
       String::empty,
       &owner,
       ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));
-}
-
-void CommandMapTopLevelItem::registerAllTranslations() {
-  RESET_TO_DEFAULTS.registerTranslation();
-  SURE_YOU_RESET.registerTranslation();
-  RESET.registerTranslation();
-  NONE.registerTranslation();
 }
 
 }  // namespace command

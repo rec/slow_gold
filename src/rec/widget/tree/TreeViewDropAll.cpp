@@ -102,9 +102,6 @@ bool TreeViewDropAll::paste(const string& s) {
 
 #endif
 
-void TreeViewDropAll::registerAllTranslations() {
-}
-
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec

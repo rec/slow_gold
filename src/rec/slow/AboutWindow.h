@@ -18,7 +18,6 @@ class AboutWindow : public Component, public HasInstance {
 
   ~AboutWindow();
   virtual void mouseDown(const MouseEvent&);
-  static void registerAllTranslations();
 
  private:
   Component* parent_;

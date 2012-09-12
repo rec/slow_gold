@@ -11,10 +11,6 @@ namespace slow {
 
 void addInstanceCallbacks(command::CallbackTable*);
 
-struct InstanceCallbacks {
-  static void registerAllTranslations();
-};
-
 }  // namespace slow
 }  // namespace rec
 

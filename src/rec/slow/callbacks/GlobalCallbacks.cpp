@@ -13,6 +13,21 @@
 #include "rec/util/file/VirtualFile.pb.h"
 #include "rec/util/cd/Eject.h"
 
+TRAN(CANCEL, "Cancel");
+TRAN(CANT_LOAD, "Couldn't Load The SlowGold 8 User Manual");
+TRAN(CANT_LOAD_FULL, "Sorry, couldn't load the SlowGold 8 user manual at");
+TRAN(CLICK_TO_CONTINUE, "Click to continue.");
+TRAN(OK, "OK");
+TRAN(SELECT_EXPORT_FILE, "Select A File To Save Exported Settings");
+TRAN(SELECT_EXPORT_KEYBOARD_FILE, "Select A File To Save Exported Keyboard Command Mappings");
+TRAN(SELECT_EXPORT_MIDI_FILE, "Select A File To Save Exported MIDI Command Mappings");
+TRAN(SELECT_IMPORT_FILE, "Select A Zip File Containing Exported Settings");
+TRAN(SELECT_IMPORT_KEYBOARD_FILE, "Select A File Containing Keyboard Command Mappings");
+TRAN(SELECT_IMPORT_MIDI_FILE, "Select A File Containing MIDI Command Mappings");
+
+// TODO: these three are duplicated in RequestSupport.cpp
+TRAN(PLEASE_CONTACT, "Please contact World Wide Woodshed support at");
+
 namespace rec {
 namespace slow {
 
@@ -26,21 +41,6 @@ const String MANUAL = "SlowGoldManual.pdf";
 const String FULL_MANUAL = WOODSHED + MANUAL;
 const String WHATS_NEW_URL = WOODSHED + "%s/whats-new.html";
 
-TRTR(CANCEL, "Cancel");
-TRTR(CANT_LOAD, "Couldn't Load The SlowGold 8 User Manual");
-TRTR(CANT_LOAD_FULL, "Sorry, couldn't load the SlowGold 8 user manual at");
-TRTR(CLICK_TO_CONTINUE, "Click to continue.");
-TRTR(OK, "OK");
-TRTR(SELECT_EXPORT_FILE, "Select A File To Save Exported Settings");
-TRTR(SELECT_EXPORT_KEYBOARD_FILE, "Select A File To Save Exported Keyboard Command Mappings");
-TRTR(SELECT_EXPORT_MIDI_FILE, "Select A File To Save Exported MIDI Command Mappings");
-TRTR(SELECT_IMPORT_FILE, "Select A Zip File Containing Exported Settings");
-TRTR(SELECT_IMPORT_KEYBOARD_FILE, "Select A File Containing Keyboard Command Mappings");
-TRTR(SELECT_IMPORT_MIDI_FILE, "Select A File Containing MIDI Command Mappings");
-
-// TODO: these three duplicated in RequestSupport.cpp
-TRTR(PLEASE_CONTACT, "Please contact World Wide Woodshed support at");
-
 const String SUPPORT = "support@worldwidewoodshed.com";
 const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
 
@@ -51,14 +51,14 @@ void alert(const String& title, const String& msg) {
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
   AlertWindow::showMessageBox(AlertWindow::WarningIcon, title, msg,
-                              CLICK_TO_CONTINUE);
+                              t_CLICK_TO_CONTINUE);
 }
 
 void openManual() {
   bool ok = juce::URL(FULL_MANUAL).launchInDefaultBrowser();
   if (!ok) {
-    String m = CANT_LOAD_FULL + String(" ") + WOODSHED + "\n\n";
-    alert(CANT_LOAD, m + PLEASE_CONTACT + "\n" + SUPPORT);
+    String m = t_CANT_LOAD_FULL + String(" ") + WOODSHED + "\n\n";
+    alert(t_CANT_LOAD, m + t_PLEASE_CONTACT + "\n" + SUPPORT);
   }
 }
 
@@ -72,7 +72,7 @@ void openSlowGoldDirectory() {
 void exportSettings() {
   File start = File::getSpecialLocation(File::userDesktopDirectory).
     getChildFile("SlowGold Export.zip");
-  File file = browseForFile(SELECT_EXPORT_FILE, start, SAVE_FILE);
+  File file = browseForFile(t_SELECT_EXPORT_FILE, start, SAVE_FILE);
   if (file == File::nonexistent)
     return;
 
@@ -85,7 +85,7 @@ void exportSettings() {
 
 void importSettings() {
   File start = File::getSpecialLocation(File::userDesktopDirectory);
-  File file = browseForFile(SELECT_IMPORT_FILE, start, OPEN_FILE);
+  File file = browseForFile(t_SELECT_IMPORT_FILE, start, OPEN_FILE);
   if (file != File::nonexistent)
     data::unzipData(file);
 }
@@ -157,20 +157,6 @@ void addGlobalCallbacks(CallbackTable* t) {
   addCallback(t, Command::WHATS_NEW_PAGE, whatsNewPage);
 }
 
-void GlobalCallbacks::registerAllTranslations() {
-  CANCEL.registerTranslation();
-  CANT_LOAD.registerTranslation();
-  CANT_LOAD_FULL.registerTranslation();
-  CLICK_TO_CONTINUE.registerTranslation();
-  PLEASE_CONTACT.registerTranslation();
-  OK.registerTranslation();
-  SELECT_EXPORT_FILE.registerTranslation();
-  SELECT_EXPORT_KEYBOARD_FILE.registerTranslation();
-  SELECT_EXPORT_MIDI_FILE.registerTranslation();
-  SELECT_IMPORT_FILE.registerTranslation();
-  SELECT_IMPORT_KEYBOARD_FILE.registerTranslation();
-  SELECT_IMPORT_MIDI_FILE.registerTranslation();
-}
 
 }  // namespace slow
 }  // namespace rec

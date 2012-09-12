@@ -30,6 +30,33 @@
 #include "rec/widget/waveform/Viewport.h"
 #include "rec/widget/waveform/Zoom.h"
 
+TRAN(NO_DOWNLOAD_FOUND, "Your Version Of SlowGold Is Up-To-Date");
+TRAN(NO_DOWNLOAD_FOUND_FULL, "Your version of SlowGold, %s, is up-to-date.");
+TRAN(OK, "OK");
+TRAN(CANCEL, "Cancel");
+
+TRAN(CLEAR_KEYBOARD_MAPPINGS_TITLE, "Clear Keyboard Mappings.");
+TRAN(CLEAR_KEYBOARD_MAPPINGS_FULL, "Clear all keyboard mappings to factory "
+                                   "default?");
+TRAN(CLEAR_MIDI_MAPPINGS_TITLE, "Clear MIDI Mappings.");
+TRAN(CLEAR_MIDI_MAPPINGS_FULL, "Clear all MIDI mappings?");
+
+TRAN(CONFIRM_CLEAR_ALL_SETTINGS, "Clearing All Settings For All Tracks");
+
+TRAN(CONFIRM_CLEAR_ALL_SETTINGS_FULL, "You want to clear *all* settings, and quit "
+                                      "SlowGold.  Is this OK?");
+
+TRAN(CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK, "Clearing Settings For This Track Only");
+
+TRAN(CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL, "You want to clear settings for this "
+                                                 "track only, and quit the "
+                                                 "program.  Is this OK?");
+
+TRAN(CLEAR_FAILED, "Unable To Clear Settings");
+
+TRAN(CLEAR_FAILED_FULL, "Sorry, there was an error clearing the settings. "
+                        "Please report this to support@worldwidewoodshed.com.");
+
 namespace rec {
 namespace slow {
 
@@ -37,38 +64,10 @@ using namespace rec::audio::util;
 using namespace rec::widget::waveform;
 
 namespace {
-// Skin
 
-static const bool QUIT_EVEN_IF_CLEAR_FAILS = false;
+const bool QUIT_EVEN_IF_CLEAR_FAILS = false;
 
-TRTR(NO_DOWNLOAD_FOUND, "Your Version Of SlowGold Is Up-To-Date");
-TRTR(NO_DOWNLOAD_FOUND_FULL, "Your version of SlowGold, %s, is up-to-date.");
-TRTR(OK, "OK");
-TRTR(CANCEL, "Cancel");
-
-TRTR(CLEAR_KEYBOARD_MAPPINGS_TITLE, "Clear Keyboard Mappings.");
-TRTR(CLEAR_KEYBOARD_MAPPINGS_FULL, "Clear all keyboard mappings to factory "
-                                   "default?");
-TRTR(CLEAR_MIDI_MAPPINGS_TITLE, "Clear MIDI Mappings.");
-TRTR(CLEAR_MIDI_MAPPINGS_FULL, "Clear all MIDI mappings?");
-
-TRTR(CONFIRM_CLEAR_ALL_SETTINGS, "Clearing All Settings For All Tracks");
-
-TRTR(CONFIRM_CLEAR_ALL_SETTINGS_FULL, "You want to clear *all* settings, and quit "
-                                      "SlowGold.  Is this OK?");
-
-TRTR(CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK, "Clearing Settings For This Track Only");
-
-TRTR(CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL, "You want to clear settings for this "
-                                                 "track only, and quit the "
-                                                 "program.  Is this OK?");
-
-TRTR(CLEAR_FAILED, "Unable To Clear Settings");
-
-TRTR(CLEAR_FAILED_FULL, "Sorry, there was an error clearing the settings. "
-                        "Please report this to support@worldwidewoodshed.com.");
-
-static const int SELECTION_WIDTH_PORTION = 20;
+const int SELECTION_WIDTH_PORTION = 20;
 
 void aboutThisProgram() {
   Instance::getInstance()->window_->startAboutWindow();
@@ -83,9 +82,9 @@ void addLoopPoint() {
 
 void clearKeyboardMappings() {
   if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
-                                   CLEAR_KEYBOARD_MAPPINGS_TITLE,
-                                   CLEAR_KEYBOARD_MAPPINGS_FULL,
-                                   OK, CANCEL)) {
+                                   t_CLEAR_KEYBOARD_MAPPINGS_TITLE,
+                                   t_CLEAR_KEYBOARD_MAPPINGS_FULL,
+                                   t_OK, t_CANCEL)) {
     Instance* i = Instance::getInstance();
     command::clearKeyboardBindings(i->target_->targetManager());
 
@@ -95,9 +94,9 @@ void clearKeyboardMappings() {
 
 void clearMidiMappings() {
   if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
-                                   CLEAR_MIDI_MAPPINGS_TITLE,
-                                   CLEAR_MIDI_MAPPINGS_FULL,
-                                   OK, CANCEL)) {
+                                   t_CLEAR_MIDI_MAPPINGS_TITLE,
+                                   t_CLEAR_MIDI_MAPPINGS_FULL,
+                                   t_OK, t_CANCEL)) {
     data::setProto(command::CommandMapProto());
   }
 }
@@ -201,10 +200,10 @@ void checkForUpdates() {
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
   if (i->window_->application()->checkForUpdates() == app::DOWNLOAD_NOT_FOUND) {
-    String msg = String::formatted(NO_DOWNLOAD_FOUND_FULL,
+    String msg = String::formatted(t_NO_DOWNLOAD_FOUND_FULL,
                                    c_str(i->window_->application()->version()));
-    AlertWindow::showMessageBox(AlertWindow::InfoIcon, NO_DOWNLOAD_FOUND,
-                                msg, OK);
+    AlertWindow::showMessageBox(AlertWindow::InfoIcon, t_NO_DOWNLOAD_FOUND,
+                                msg, t_OK);
   }
 }
 
@@ -214,7 +213,7 @@ void deleteRecursivelyAndQuit(const File& dir, Instance* i,
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
   if (!AlertWindow::showOkCancelBox(AlertWindow::InfoIcon, title, msg,
-                                    OK, CANCEL)) {
+                                    t_OK, t_CANCEL)) {
     return;
   }
   closeFile();
@@ -222,23 +221,23 @@ void deleteRecursivelyAndQuit(const File& dir, Instance* i,
   if (QUIT_EVEN_IF_CLEAR_FAILS || success) {
     i->window_->application()->quit();
   } else {
-    AlertWindow::showMessageBox(AlertWindow::WarningIcon, CLEAR_FAILED,
-                                CLEAR_FAILED_FULL);
+    AlertWindow::showMessageBox(AlertWindow::WarningIcon, t_CLEAR_FAILED,
+                                t_CLEAR_FAILED_FULL);
   }
 }
 
 void clearAllSettings() {
   Instance* i = Instance::getInstance();
   deleteRecursivelyAndQuit(app::getAppDirectory(), i,
-                           CONFIRM_CLEAR_ALL_SETTINGS,
-                           CONFIRM_CLEAR_ALL_SETTINGS_FULL);
+                           t_CONFIRM_CLEAR_ALL_SETTINGS,
+                           t_CONFIRM_CLEAR_ALL_SETTINGS_FULL);
 }
 
 void clearSettingsForThisTrack() {
   Instance* i = Instance::getInstance();
   deleteRecursivelyAndQuit(file::getShadowDirectory(i->file()), i,
-                           CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK,
-                           CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
+                           t_CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK,
+                           t_CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
 }
 
 }  // namespace
@@ -272,23 +271,6 @@ void addInstanceCallbacks(CallbackTable* c) {
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull);
   addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection);
   addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates);
-}
-
-void InstanceCallbacks::registerAllTranslations() {
-  NO_DOWNLOAD_FOUND.registerTranslation();
-  NO_DOWNLOAD_FOUND_FULL.registerTranslation();
-  OK.registerTranslation();
-  CLEAR_KEYBOARD_MAPPINGS_TITLE.registerTranslation();
-  CLEAR_KEYBOARD_MAPPINGS_FULL.registerTranslation();
-  CLEAR_MIDI_MAPPINGS_TITLE.registerTranslation();
-  CLEAR_MIDI_MAPPINGS_FULL.registerTranslation();
-  CONFIRM_CLEAR_ALL_SETTINGS.registerTranslation();
-  CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK.registerTranslation();
-  CONFIRM_CLEAR_ALL_SETTINGS_FULL.registerTranslation();
-  CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL.registerTranslation();
-  CLEAR_FAILED.registerTranslation();
-  CLEAR_FAILED_FULL.registerTranslation();
-  CANCEL.registerTranslation();
 }
 
 }  // namespace slow

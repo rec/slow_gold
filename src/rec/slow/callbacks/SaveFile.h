@@ -11,11 +11,6 @@ class Instance;
 void saveFile();
 void saveFileSelection();
 
-struct SaveFile {
-  static void registerAllTranslations();
-};
-
-
 }  // namespace slow
 }  // namespace rec
 

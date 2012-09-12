@@ -1,6 +1,11 @@
 #include "rec/command/map/MidiName.h"
 #include "rec/base/Trans.h"
 
+TRAN(AS, "as");
+TRAN(SYSEX, "sysex");
+TRAN(NOTE_OFF, "%s off");
+TRAN(PC, "pc %d");
+
 namespace rec {
 namespace command {
 
@@ -10,28 +15,23 @@ String midiNoteName(const MidiMessage& msg) {
   return MidiMessage::getMidiNoteName(msg.getNoteNumber(), true, true, 3);
 }
 
-TRTR(AS, "as");
-TRTR(SYSEX, "sysex");
-TRTR(NOTE_OFF, "%s off");
-TRTR(PC, "pc %d");
-
 }  // namespace
 
 String midiName(const MidiMessage& m) {
   if (m.isActiveSense())
-    return AS;
+    return t_AS;
 
   if (m.isSysEx())
-    return SYSEX;
+    return t_SYSEX;
 
   if (m.isNoteOn())
     return midiNoteName(m);
 
   if (m.isNoteOff())
-    return String::formatted(NOTE_OFF, c_str(midiNoteName(m)));
+    return String::formatted(t_NOTE_OFF, c_str(midiNoteName(m)));
 
   if (m.isProgramChange())
-    return String::formatted(PC, m.getProgramChangeNumber());
+    return String::formatted(t_PC, m.getProgramChangeNumber());
 
   if (m.isController()) {
     return MidiMessage::getControllerName(m.getControllerNumber()) +
@@ -39,13 +39,6 @@ String midiName(const MidiMessage& m) {
   }
 
   return "?";
-}
-
-void MidiName::registerAllTranslations() {
-  AS.registerTranslation();
-  SYSEX.registerTranslation();
-  NOTE_OFF.registerTranslation();
-  PC.registerTranslation();
 }
 
 }  // namespace command

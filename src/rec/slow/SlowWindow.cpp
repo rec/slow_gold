@@ -15,7 +15,6 @@
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/RegisterProtos.h"
-#include "rec/slow/RegisterAllTranslations.h"
 #include "rec/util/proto/Defaulter.h"
 #include "rec/util/proto/ReadProtoFile.h"
 #include "rec/util/file/FileType.h"
@@ -185,7 +184,6 @@ void initialize(app::GenericApplication*) {
   doLog("registering protos");
   registerProtos();
   doLog("registering translations");
-  registerAllTranslations();
   doLog("all done initialize");
   // LOG(INFO) << "done initialize";
 }

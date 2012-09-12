@@ -25,6 +25,22 @@
 #include "rec/util/range/Fillable.h"
 #include "rec/widget/waveform/Viewport.h"
 
+TRAN(FILE_SAVE_FAILED, "Error During Save.");
+TRAN(FILE_SAVE_FAILED_FULL, "There was an error saving your file %s.");
+TRAN(FINISHING_LOADING, "Finishing loading audio from disk.");
+TRAN(SAVING_FILE, "Saving File %s.");
+TRAN(SELECT_SAVE_FILE, "Choose File To Save to");
+TRAN(DOWN, "down");
+TRAN(UP, "up");
+TRAN(OK, "OK");
+
+TRAN(TRANSPOSE_ONE, "one semitone %s");
+TRAN(TRANSPOSE_MANY, "%s %s semitones");
+TRAN(CANCEL, "Cancel");
+TRAN(BAD_SUFFIX, "The file extension must be .aiff, .aif, .flac, .ogg, "
+                         ".wav or .wave.");
+TRAN(CANT_OVERWRITE_SELF, "You cannot overwrite the current file.");
+
 namespace rec {
 namespace slow {
 namespace {
@@ -34,23 +50,6 @@ using audio::AudioSettings;
 using namespace rec::audio::stretch;
 using namespace rec::widget::waveform;
 
-TRTR(FILE_SAVE_FAILED, "Error During Save.");
-TRTR(FILE_SAVE_FAILED_FULL, "There was an error saving your file %s.");
-TRTR(FINISHING_LOADING, "Finishing loading audio from disk.");
-TRTR(SAVING_FILE, "Saving File %s.");
-TRTR(SELECT_SAVE_FILE, "Choose File To Save to");
-TRTR(DOWN, "down");
-TRTR(UP, "up");
-TRTR(OK, "OK");
-
-TRTR(TRANSPOSE_ONE, "one semitone %s");
-TRTR(TRANSPOSE_MANY, "%s %s semitones");
-TRTR(CANCEL, "Cancel");
-TRTR(BAD_SUFFIX, "The file extension must be .aiff, .aif, .flac, .ogg, "
-                         ".wav or .wave.");
-TRTR(CANT_OVERWRITE_SELF, "You cannot overwrite the current file.");
-
-// Skin
 const int COPY_UPDATE_SIZE = 2048;
 const int COPY_BLOCK_SIZE = 2048;
 
@@ -85,14 +84,14 @@ File getBaseFile(Instance* instance, const String& suffix,
 
   double ps = audio::stretch::pitchSemitones(stretch);
   if (!near(ps, 0.0, 0.005)) {
-    const Trans& sign = (ps > 0) ? UP : DOWN;
+    const Trans& sign = (ps > 0) ? t_UP : t_DOWN;
     ps = abs(ps);
     String num = removeTrailingZeroes(String::formatted("%.3f", ps));
     baseName += ", ";
     if (num == "1")
-      baseName += String::formatted(TRANSPOSE_ONE, c_str(sign));
+      baseName += String::formatted(t_TRANSPOSE_ONE, c_str(sign));
     else
-      baseName += String::formatted(TRANSPOSE_MANY, c_str(sign), c_str(num));
+      baseName += String::formatted(t_TRANSPOSE_MANY, c_str(sign), c_str(num));
   }
 
   baseName = File::createLegalFileName(baseName);
@@ -135,7 +134,7 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
   }
 
   while (true) {
-    file = slow::browseForFile(SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
+    file = slow::browseForFile(t_SELECT_SAVE_FILE, startFile, slow::SAVE_FILE);
 
     if (file == File::nonexistent)
       return file;
@@ -147,13 +146,13 @@ File getSaveFile(Instance* instance, audio::AudioSettings::FileType t) {
 
     String error;
     if (!isLegalSuffix(file.getFileExtension()))
-      error = BAD_SUFFIX;
+      error = t_BAD_SUFFIX;
     else if (file == baseFile)
-      error = CANT_OVERWRITE_SELF;
+      error = t_CANT_OVERWRITE_SELF;
     else
       break;
 
-    AlertWindow::showMessageBox(AlertWindow::InfoIcon, error, error, OK);
+    AlertWindow::showMessageBox(AlertWindow::InfoIcon, error, error, t_OK);
   }
 
   settings.set_last_directory(str(file.getParentDirectory()));
@@ -177,7 +176,7 @@ class SaveThread : public ThreadWithProgressWindow {
     const Fillable& buffer = *instance_->bufferFiller_->reader();
 
     setProgress(0.0);
-    setStatusMessage(FINISHING_LOADING);
+    setStatusMessage(t_FINISHING_LOADING);
     while (!(threadShouldExit() || buffer.isFull())) {
       setProgress(buffer.filledPercent());
       Thread::sleep(100);
@@ -196,7 +195,7 @@ class SaveThread : public ThreadWithProgressWindow {
     setProgress(0.0);
     source_->prepareToPlay(COPY_BLOCK_SIZE, audio::getOutputSampleRate());
     String name = file_.getFileName();
-    setStatusMessage(String::formatted(SAVING_FILE, c_str(name)));
+    setStatusMessage(String::formatted(t_SAVING_FILE, c_str(name)));
 
     for (SampleTime toCopy = length_;
          !threadShouldExit() && toCopy > 0; toCopy -= COPY_UPDATE_SIZE) {
@@ -207,10 +206,10 @@ class SaveThread : public ThreadWithProgressWindow {
       } else {
         writer.reset();
         file_.deleteFile();
-        String error = String::formatted(FILE_SAVE_FAILED_FULL,
+        String error = String::formatted(t_FILE_SAVE_FAILED_FULL,
                                          c_str(file_.getFileName()));
-        AlertWindow::showMessageBox(AlertWindow::InfoIcon, FILE_SAVE_FAILED,
-                                    error, OK);
+        AlertWindow::showMessageBox(AlertWindow::InfoIcon, t_FILE_SAVE_FAILED,
+                                    error, t_OK);
         return false;
       }
     }
@@ -282,9 +281,9 @@ void doSaveFile(Instance* instance, bool useSelection) {
                                   instance->getSourceSampleRate());
   if (len <= minSize) {
     // TODO: this code duplicates code in CreateMusicFileReader.
-    String e = String::formatted(music::FILE_TOO_SMALL_FULL, "save");
-    AlertWindow::showMessageBox(AlertWindow::InfoIcon, music::FILE_TOO_SMALL,
-                                e, OK);
+    String e = String::formatted(t_FILE_TOO_SMALL_FULL, "save");
+    AlertWindow::showMessageBox(AlertWindow::InfoIcon, t_FILE_TOO_SMALL,
+                                e, t_OK);
     return;
   }
 
@@ -292,7 +291,7 @@ void doSaveFile(Instance* instance, bool useSelection) {
     file_type_for_save();
   File file = getSaveFile(instance, t);
   if (file != File::nonexistent) {
-    String name = String::formatted(SAVING_FILE, c_str(file.getFileName()));
+    String name = String::formatted(t_SAVING_FILE, c_str(file.getFileName()));
     Viewport viewport = getViewport(instance, useSelection, len);
     SaveThread(name, instance, file, s.transfer(), viewport).runThread();
   }
@@ -307,22 +306,6 @@ void saveFile() {
 
 void saveFileSelection() {
   doSaveFile(Instance::getInstance(), true);
-}
-
-void SaveFile::registerAllTranslations() {
-  FILE_SAVE_FAILED.registerTranslation();
-  FILE_SAVE_FAILED_FULL.registerTranslation();
-  FINISHING_LOADING.registerTranslation();
-  SAVING_FILE.registerTranslation();
-  SELECT_SAVE_FILE.registerTranslation();
-  OK.registerTranslation();
-  DOWN.registerTranslation();
-  UP.registerTranslation();
-  TRANSPOSE_ONE.registerTranslation();
-  TRANSPOSE_MANY.registerTranslation();
-  CANCEL.registerTranslation();
-  BAD_SUFFIX.registerTranslation();
-  CANT_OVERWRITE_SELF.registerTranslation();
 }
 
 }  // namespace slow

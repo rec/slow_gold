@@ -14,10 +14,6 @@ bool showCommandMapBox(const String& command,
 
 String currentlyAssignedTo(const String& commandName);
 
-struct CommandMapEditorTranslation {
-  static void registerAllTranslations();
-};
-
 template <typename MappingSet, typename Key>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:

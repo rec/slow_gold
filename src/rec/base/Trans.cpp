@@ -35,23 +35,13 @@ struct Compare {
 typedef std::set<TranslatedString, Compare> TranslationSet;
 typedef std::vector<TranslatedString> TranslationList;
 
-TranslationSet* translations() {
-  static TranslationSet s;
-  return &s;
-}
-
 TranslationList* translationList() {
   static TranslationList s;
   return &s;
 }
 
 void registerTranslation(const TranslatedString& s) {
-#if 0
-	TranslationSet* ts = translations();
-  ts->insert(s);
-#else
   translationList()->push_back(s);
-#endif
 }
 
 void write(FileOutputStream* output, const String& s) {
@@ -60,6 +50,7 @@ void write(FileOutputStream* output, const String& s) {
 
 TranslatedStrings getTranslatedStrings() {
   TranslationSet ts(translationList()->begin(), translationList()->end());
+  LOG(INFO) << "Dumping translations " << ts.size();
   TranslatedStrings strings;
   for (TranslationSet::const_iterator i = ts.begin(); i != ts.end(); ++i)
     strings.add_str()->CopyFrom(*i);
@@ -73,7 +64,6 @@ TranslatedStrings getTranslatedStrings() {
 #if JUCE_DEBUG && JUCE_MAC
 
 void Trans::dumpAll() {
-  LOG(INFO) << "Dumping translations " << translations()->size();
   copy::copy(getTranslatedStrings(), File(TRANSLATION_FILE));
 }
 
