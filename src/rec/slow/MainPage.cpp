@@ -20,10 +20,11 @@
 
 using namespace juce;
 
+TRAN(HELP_PANEL_HELP,
+     "Help Panel: Shows help about whatever the mouse is over.");
+
 namespace rec {
 namespace slow {
-
-// Skin
 
 using namespace rec::widget::waveform;
 using data::Address;
@@ -116,11 +117,6 @@ MainPage::MainPage(Components* components)
   add(&navigationPanel_, components->loops_.get(), MIN_LOOPS, -1.0, -0.3);
 
   // Playback panel.
-  String helpHelp =
-    Trans("Help Panel: Shows help about whatever the mouse is over.");
-  helpPanel_.setTooltip(helpHelp);
-
-  helpCaption_.setTooltip(helpHelp);
   helpCaption_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
   helpCaption_.setJustificationType(Justification::centred);
   Font font = helpCaption_.getFont();
@@ -130,7 +126,6 @@ MainPage::MainPage(Components* components)
   font.setHeight(font.getHeight() + 3);
   helpCaption_.setFont(font);
 
-  helpBody_.setTooltip(helpHelp);
   helpBody_.setColour(juce::Label::textColourId, juce::Colours::darkgreen);
   helpBody_.setJustificationType(Justification::topLeft);
 
@@ -145,6 +140,13 @@ MainPage::MainPage(Components* components)
   add(&playbackPanel_, components->transportController_.get(),
       MIN_TRANSPORT_PANEL, -1.0, -0.20);
 }
+
+void MainPage::languageChanged() {
+  helpBody_.setTooltip(t_HELP_PANEL_HELP);
+  helpPanel_.setTooltip(t_HELP_PANEL_HELP);
+  helpCaption_.setTooltip(t_HELP_PANEL_HELP);
+}
+
 
 MainPage::~MainPage() {}
 

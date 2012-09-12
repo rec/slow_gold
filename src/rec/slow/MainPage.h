@@ -4,6 +4,7 @@
 #include <set>
 #include <vector>
 
+#include "rec/app/LanguageListener.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/SimpleLabel.h"
@@ -17,7 +18,7 @@ namespace slow { class Components; }
 
 namespace slow {
 
-class MainPage {
+class MainPage : public app::LanguageListener {
  public:
   MainPage(Components*);
   virtual ~MainPage();
@@ -25,6 +26,7 @@ class MainPage {
   gui::Layout* panel() { return mainPanel_.get(); }
   void setTooltip(const String&);
   void setEnabled(bool);
+  virtual void languageChanged();
 
  private:
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
