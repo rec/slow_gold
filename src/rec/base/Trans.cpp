@@ -33,14 +33,25 @@ struct Compare {
 };
 
 typedef std::set<TranslatedString, Compare> TranslationSet;
+typedef std::vector<TranslatedString> TranslationList;
 
 TranslationSet* translations() {
   static TranslationSet s;
   return &s;
 }
 
+TranslationList* translationList() {
+  static TranslationList s;
+  return &s;
+}
+
 void registerTranslation(const TranslatedString& s) {
-  translations()->insert(s);
+#if 0
+	TranslationSet* ts = translations();
+  ts->insert(s);
+#else
+  translationList()->push_back(s);
+#endif
 }
 
 void write(FileOutputStream* output, const String& s) {
@@ -48,9 +59,9 @@ void write(FileOutputStream* output, const String& s) {
 }
 
 TranslatedStrings getTranslatedStrings() {
-  const TranslationSet& tr = *translations();
+  TranslationSet ts(translationList()->begin(), translationList()->end());
   TranslatedStrings strings;
-  for (TranslationSet::const_iterator i = tr.begin(); i != tr.end(); ++i)
+  for (TranslationSet::const_iterator i = ts.begin(); i != ts.end(); ++i)
     strings.add_str()->CopyFrom(*i);
   return strings;
 }
@@ -75,6 +86,7 @@ Trans::Trans(const string& original)
       language_(app::AppSettings::NONE) {
   string_->set_original(original);
   check(string_->original());
+  registerTranslation();
 }
 
 Trans::Trans(const char* original, const char* file, int line)
@@ -85,6 +97,7 @@ Trans::Trans(const char* original, const char* file, int line)
   string_->set_file(cleanFile(file));
   string_->set_line(line);
   check(string_->original());
+  registerTranslation();
 }
 
 Trans::Trans(const String& original, const char* file, int line)
@@ -95,6 +108,7 @@ Trans::Trans(const String& original, const char* file, int line)
   string_->set_file(cleanFile(file));
   string_->set_line(line);
   check(string_->original());
+  registerTranslation();
 }
 
 Trans::Trans(const char* original, const char* hint, const char* file, int line)
@@ -107,6 +121,7 @@ Trans::Trans(const char* original, const char* hint, const char* file, int line)
   string_->set_hint(hint);
   check(string_->original());
   check(string_->hint());
+  registerTranslation();
  }
 
 Trans::~Trans() {

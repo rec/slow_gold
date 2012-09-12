@@ -14,14 +14,15 @@ typedef app::AppSettings::Language Language;
 
 class Trans {
  public:
-  operator String() const;
-  void registerTranslation() const;
-
   explicit Trans(const string&);  // DEPRECATED
   Trans(const char*, const char* file, int line);
   Trans(const String&, const char* file, int line);
   Trans(const char* o, const char* hint, const char* file, int line);
+
   ~Trans();
+
+  operator String() const;
+  void registerTranslation() const;
 
  private:
   ptr<TranslatedString> string_;
