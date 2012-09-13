@@ -2,7 +2,7 @@
 
 <JUCERPROJECT bundleIdentifier="recs.to" defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
               id="NSu8BB" jucerVersion="3.0.0" name="SlowGold" projectType="guiapp"
-              version="8.0.4">
+              version="8.0.2">
   <EXPORTFORMATS>
     <XCODE_MAC bigIcon="wiIhPYIwK" documentExtensions=".aif, .aiff, .m4a, .mp3, .mp4, .wav, .wave, .wshed"
                extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
@@ -37,7 +37,7 @@
       </CONFIGURATIONS>
     </VS2010>
   </EXPORTFORMATS>
-  <MAINGROUP id="AQnE2CrVm" name="SlowGold">
+  <MAINGROUP id="plESCo7mW" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -1642,7 +1642,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="GZcx293F6" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="bEdbhQvo0" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

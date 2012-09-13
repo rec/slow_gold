@@ -13,8 +13,8 @@ enum DownloadStatus {
 };
 
 // Returns true if a new version was downloaded.
-DownloadStatus downloadNewVersionIfNeeded(const String& version,
-                                          const String& name);
+void downloadNewVersionIfNeeded(const String& version, const String& name);
+bool downloadNewVersionIfNeededBlocking();
 
 }  // namespace app
 }  // namespace rec

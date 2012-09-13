@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/InstanceCallbacks.h"
 
+#include "rec/app/DownloadVersion.h"
 #include "rec/app/Files.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/audio/Audio.h"
@@ -199,7 +200,7 @@ void checkForUpdates() {
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
-  if (i->window_->application()->checkForUpdates() == app::DOWNLOAD_NOT_FOUND) {
+  if (!app::downloadNewVersionIfNeededBlocking()) {
     String msg = String::formatted(t_NO_DOWNLOAD_FOUND_FULL,
                                    c_str(i->window_->application()->version()));
     AlertWindow::showMessageBox(AlertWindow::InfoIcon, t_NO_DOWNLOAD_FOUND,

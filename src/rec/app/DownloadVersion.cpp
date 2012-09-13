@@ -31,7 +31,8 @@ const URL VERSION_FILE(WOODSHED + "currentversion/");
 const String LAST_UPDATE_FILE("LastUpdate.txt");
 const String MUST_UPDATE_FILE("MustUpdate.txt");
 
-const int VERSION_TIMEOUT = 10000000;
+// TODO: this is duplicated elsewhere.
+const int VERSION_TIMEOUT = 2000;
 
 const RelativeTime UPDATE(RelativeTime::days(1));
 // const RelativeTime UPDATE(1);  // 1 second for testing.
@@ -50,73 +51,103 @@ String getVersion() {
   return stream->readEntireStreamAsString();
 }
 
-bool downloadNewVersion(const String& appName, const String& version,
-                        const String& oldVersion) {
-  String msg = String::formatted(t_NEW_VERSION, c_str(version));
+class DownloadThread : public Thread {
+ public:
+  DownloadThread(const String& version, const String& name)
+      : Thread("DownloadThread"), version_(version), name_(name) {
+  }
 
-  LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
-  bool ok = AlertWindow::showOkCancelBox(
-      AlertWindow::WarningIcon, msg,
-      msg + t_LIKE_TO_DOWNLOAD,
-      t_DOWNLOAD_AND_QUIT,
-      String::formatted(t_RUN_THIS_OLDER_VERSION, c_str(oldVersion)));
+  virtual ~DownloadThread() {
+    LOG(INFO) << "Deleting " << this;
+  }
 
-  if (!ok) {
-    LOG(INFO) << "New version download cancelled";
+  virtual void run() {
+    checkForUpdates();
+  }
+
+  bool checkForUpdates() {
+    bool isNew = checkForNewMajorVersion();
+
+    if (!isNew) {
+      LOG(INFO) << "Current: "  << version_ << " new: " << newVersion_;
+    } else if (downloadNewVersion() && false) {
+      LOG(INFO) << "Quitting because we downloaded " << newVersion_;
+      JUCEApplication::quit();
+      return true;
+    }
+
     return false;
   }
 
-  ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
+ private:
+  bool checkForNewMajorVersion() {
+    if (!isReadyForUpdate())
+      return false;
 
-  if (ok) {
-    AppSettings appData = data::getProto<AppSettings>();
-    appData.set_last_update_finished(juce::Time::currentTimeMillis());
-    data::setProto(appData);
-  } else {
-    String error = String::formatted(t_COULDNT_UPDATE, c_str(version));
-    AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
-                                t_CLICK_TO_CONTINUE);
+    String versionAndOverride = getVersion();
+    StringArray vArray;
+    vArray.addTokens(versionAndOverride, false);
+    if (!vArray.size()) {
+      LOG(ERROR) << "No version at all!";
+      return false;
+    }
+
+    newVersion_ = vArray[0];
+    if (!newVersion_.length()) {
+      LOG(DFATAL) << "No version file!";
+      return false;
+    }
+
+    return ((vArray.size() == 1) ? newVersion_ : vArray[1]) > version_;
   }
 
-  return ok;
-}
+  bool downloadNewVersion() const {
+    String msg = String::formatted(t_NEW_VERSION, c_str(newVersion_));
 
-bool checkForNewMajorVersion(const String& currentVersion, const String& name,
-                             String* version) {
-  if (!isReadyForUpdate())
-    return false;
+    LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+    bool ok = AlertWindow::showOkCancelBox(
+        AlertWindow::WarningIcon, msg,
+        msg + t_LIKE_TO_DOWNLOAD,
+        t_DOWNLOAD_AND_QUIT,
+        String::formatted(t_RUN_THIS_OLDER_VERSION, c_str(version_)));
 
-  String versionAndOverride = getVersion();
-  StringArray vArray;
-  vArray.addTokens(versionAndOverride, false);
-  if (!vArray.size()) {
-    LOG(ERROR) << "No version at all!";
-    return false;
+    if (!ok) {
+      LOG(INFO) << "New version download cancelled";
+      return false;
+    }
+
+    ok = URL(WOODSHED + name_ + "." + newVersion_).launchInDefaultBrowser();
+
+    if (ok) {
+      AppSettings appData = data::getProto<AppSettings>();
+      appData.set_last_update_finished(juce::Time::currentTimeMillis());
+      data::setProto(appData);
+    } else {
+      String error = String::formatted(t_COULDNT_UPDATE, c_str(newVersion_));
+      AlertWindow::showMessageBox(AlertWindow::WarningIcon, error, error,
+                                  t_CLICK_TO_CONTINUE);
+    }
+
+    return ok;
   }
 
-  (*version) = vArray[0];
-  if (!version->length()) {
-    LOG(DFATAL) << "No version file!";
-    return false;
-  }
-
-  return ((vArray.size() == 1) ? *version : vArray[1]) > currentVersion;
-}
+  const String version_;
+  const String name_;
+  String newVersion_;
+};
 
 }  // namespace
 
-DownloadStatus downloadNewVersionIfNeeded(const String& version,
-                                          const String& name) {
-  String newVersion;
-  bool isNew = checkForNewMajorVersion(version, name, &newVersion);
+void downloadNewVersionIfNeeded(const String& version,
+                                const String& name) {
+  thread::trash::run(new DownloadThread(version, name));
+}
 
-  if (!isNew) {
-    LOG(INFO) << "Current: "  << version << " new: " << newVersion;
-    return DOWNLOAD_NOT_FOUND;
-  }
-
-  return downloadNewVersion(name, newVersion, version) ? DOWNLOAD_SUCCEEDED :
-    DOWNLOAD_CANCELLED_OR_FAILED;
+bool downloadNewVersionIfNeededBlocking() {
+  JUCEApplication* app = JUCEApplication::getInstance();
+  const String& version = app->getApplicationVersion();
+  const String& name = app->getApplicationName();
+  return DownloadThread(version, name).checkForUpdates();
 }
 
 }  // namespace app

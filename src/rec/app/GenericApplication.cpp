@@ -34,8 +34,8 @@ void GenericApplication::initialise(const String&) {
   gui::LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
 
   doLog("checking for updates");
-  if (autoCheckForUpdates() && checkForUpdates())
-    return;
+  if (autoCheckForUpdates())
+    downloadNewVersionIfNeeded(version(), name());
 
   doLog("running startup thread");
   thread::runInNewThread("startup thread",
@@ -47,13 +47,6 @@ void GenericApplication::initialise(const String&) {
 
   // FLAGS_log_dir = str(File::getSpecialLocation(
   //     File::userApplicationDataDirectory).getChildFile("Logs"));
-}
-
-DownloadStatus GenericApplication::checkForUpdates() {
-  DownloadStatus newVersion = downloadNewVersionIfNeeded(version(), name());
-  if (newVersion == DOWNLOAD_SUCCEEDED)
-    quit();
-  return newVersion;
 }
 
 void GenericApplication::shutdown() {

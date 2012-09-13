@@ -2072,6 +2072,18 @@
 			name = app;
 			sourceTree = "<group>";
 		};
+		0FE620917D94BCDDAC881B4E /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				00EC1EAD27F9AD98F67EF1BB /* translation */,
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		1027248FB39121BE3C60B852 /* format */ = {
 			isa = PBXGroup;
 			children = (
@@ -3308,7 +3320,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				E92383AADFC856B79BA5C263 /* SlowGold */,
+				0FE620917D94BCDDAC881B4E /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -4330,18 +4342,6 @@
 				D280A8F93D158E2EAF02AC10 /* juce_MidiKeyboardComponent.h */,
 			);
 			name = gui;
-			sourceTree = "<group>";
-		};
-		E92383AADFC856B79BA5C263 /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				00EC1EAD27F9AD98F67EF1BB /* translation */,
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		EBE9A7ADBBB15BD4E28C901A /* filebrowser */ = {
