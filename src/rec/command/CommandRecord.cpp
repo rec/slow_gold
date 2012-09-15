@@ -19,10 +19,12 @@ void CommandRecord::fillInfo() {
 
   if (hasInfo) {
     int flags = 0;
-    if (category == "" || category == "(None)") {
-      DCHECK_NE(category, "");
+    DCHECK_NE(category, "");
+    if (category == "(None)")
       flags += ApplicationCommandInfo::hiddenFromKeyEditor;
-    }
+
+    if (info_.flags & ApplicationCommandInfo::isTicked)
+      flags += ApplicationCommandInfo::isTicked;
 
     info_.setInfo(Trans(desc.menu(0)), name, category, flags);
   } else {
