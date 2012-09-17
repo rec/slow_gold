@@ -67,6 +67,7 @@ enum Command_Type {
   Command_Type_JUMP = 10,
   Command_Type_JUMP_SELECTED = 11,
   Command_Type_KEYBOARD_MAPPINGS = 12,
+  Command_Type_LOOP_NEXT_SEGMENT = 94,
   Command_Type_MIDI_MAPPINGS = 13,
   Command_Type_MODE_ADD_LOOP_POINT = 63,
   Command_Type_MODE_DRAG = 60,
@@ -134,7 +135,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 93,
+  Command_Type_LAST_TYPE = 94,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -477,6 +478,7 @@ class Command : public ::google::protobuf::Message {
   static const Type JUMP = Command_Type_JUMP;
   static const Type JUMP_SELECTED = Command_Type_JUMP_SELECTED;
   static const Type KEYBOARD_MAPPINGS = Command_Type_KEYBOARD_MAPPINGS;
+  static const Type LOOP_NEXT_SEGMENT = Command_Type_LOOP_NEXT_SEGMENT;
   static const Type MIDI_MAPPINGS = Command_Type_MIDI_MAPPINGS;
   static const Type MODE_ADD_LOOP_POINT = Command_Type_MODE_ADD_LOOP_POINT;
   static const Type MODE_DRAG = Command_Type_MODE_DRAG;

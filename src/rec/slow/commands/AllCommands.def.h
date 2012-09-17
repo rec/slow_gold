@@ -2,9 +2,9 @@
 #define __REC_SLOW_COMMANDS_ALLCOMMANDS__
 
 // Created by the command line:
-// new --include=command/Command --proto=command::Commands src/rec/slow/commands/AllCommands.def
+// new --include=command/Command.pb --proto=command::Commands src/rec/slow/commands/AllCommands.def
 
-#include "rec/command/CommandRecord.h"
+#include "rec/command/Command.pb.h"
 #include "rec/util/proto/Defaulter.h"
 
 namespace rec {

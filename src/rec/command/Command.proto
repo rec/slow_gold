@@ -50,6 +50,8 @@ message Command {
 
     KEYBOARD_MAPPINGS = 12;
 
+    LOOP_NEXT_SEGMENT = 94;
+
     MIDI_MAPPINGS = 13;
     MODE_ADD_LOOP_POINT = 63;
     MODE_DRAG = 60;
@@ -129,7 +131,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 93;
+    LAST_TYPE = 94;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

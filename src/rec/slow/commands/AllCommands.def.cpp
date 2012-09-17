@@ -1,7 +1,7 @@
 #include "rec/slow/commands/AllCommands.def.h"
 
 // Created by the command line:
-// new --include=command/Command --proto=command::Commands src/rec/slow/commands/AllCommands.def
+// new --include=command/Command.pb --proto=command::Commands src/rec/slow/commands/AllCommands.def
 
 namespace rec {
 namespace slow {
@@ -315,6 +315,15 @@ Def<command::Commands> allCommands(
   "  keypress: \"shift + (\"\n"
   "  keypress: \"shift + )\"\n"
   "  start_index: -5\n"
+  "}\n"
+  "command {\n"
+  "  type: LOOP_NEXT_SEGMENT\n"
+  "  category: \"Loops\"\n"
+  "  desc {\n"
+  "    menu: \"Loop Next Segment\"\n"
+  "    full: \"Finish the current segment, then start looping the next "
+  "segment.\"\n"
+  "  }\n"
   "}\n"
   "command {\n"
   "  type: KEYBOARD_MAPPINGS\n"

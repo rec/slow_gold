@@ -135,6 +135,12 @@ void BasicMenuMaker::addSelectMenu() {
   addEnabled(Command::DESELECT_ALL, !empty_);
   addEnabled(Command::INVERT_LOOP_SELECTION, !empty_);
 
+#ifdef NEW_FEATURES
+  menu_.addSeparator();
+  addEnabled(Command::LOOP_NEXT_SEGMENT, !empty_);
+#endif
+
+
   switch (isWholeSong_.isWholeSong()) {
    case IsWholeSong::ONE_SEGMENT:
     addEnabledName(Command::TOGGLE_WHOLE_SONG_LOOP, !empty_,
@@ -151,6 +157,11 @@ void BasicMenuMaker::addSelectMenu() {
                    Trans("Loop Entire Track"));
     break;
   }
+
+#ifdef NEW_FEATURES
+  menu_.addSeparator();
+#endif
+
   addEnabled(Command::ZOOM_TO_SELECTION, !empty_);
 }
 

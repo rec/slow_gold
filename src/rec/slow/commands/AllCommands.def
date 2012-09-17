@@ -301,6 +301,14 @@ command {
   start_index: -5
 }
 command {
+  type: LOOP_NEXT_SEGMENT
+  category: "Loops"
+  desc {
+    menu: "Loop Next Segment"
+    full: "Finish the current segment, then start looping the next segment."
+  }
+}
+command {
   type: KEYBOARD_MAPPINGS
   category: "File"
   desc {

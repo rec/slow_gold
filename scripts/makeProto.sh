@@ -13,9 +13,9 @@ PROTO_ROOT="$ROOT/rec/genfiles/proto"
    -I \"$INSTALL_DIR/include\" \
    --cpp_out=\"$PROTO_ROOT\" \
    --python_out=\"$PROTO_ROOT\" \
-   \"$SRC_ROOT\"/$1"
+   \"$SRC_ROOT\"/$@"
 
-echo "Creating $1"
+echo "Creating $@"
 
 $INSTALL_DIR/bin/protoc \
   -I "$SRC_ROOT"\

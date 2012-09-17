@@ -233,6 +233,9 @@ void nudgeTime(bool inc) {
     jumpSelected(&s, inc ? CommandIDEncoder::NEXT : CommandIDEncoder::PREVIOUS);
 }
 
+void loopNextSegment() {
+}
+
 }  // namespace
 
 void addRepeatedCallbacks(CallbackTable* t, int repeat) {
@@ -246,6 +249,8 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat) {
     addCallback(t, Command::JUMP_SELECTED, pos, jumpSelected);
     addCallback(t, Command::JUMP, pos, jump);
   }
+
+  addCallback(t, Command::LOOP_NEXT_SEGMENT, loopNextSegment);
 
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j) {
     CommandID id = CommandIDEncoder::toCommandID(j, Command::RECENT_FILES);

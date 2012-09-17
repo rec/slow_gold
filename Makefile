@@ -54,6 +54,6 @@ genfiles/translations/rec/translation/%-TranslatedStrings.def.cpp: text/%-Transl
 
 %.def.cpp: %.def
 	$(new)\
-    --include=command/Command \
+    --include=command/Command.pb \
     --proto=command::Commands \
     $<
