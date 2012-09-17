@@ -27,6 +27,8 @@ using namespace juce;
 namespace {
 
 const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
+const String WOODSHED_PC_URL = WOODSHED + "SlowGold8Setup.exe";
+
 const URL VERSION_FILE(WOODSHED + "currentversion/");
 const String LAST_UPDATE_FILE("LastUpdate.txt");
 const String MUST_UPDATE_FILE("MustUpdate.txt");
@@ -48,7 +50,7 @@ String getVersion() {
   ptr<InputStream> stream(VERSION_FILE.createInputStream(false, NULL, NULL, "",
                                                          VERSION_TIMEOUT));
 
-  return stream->readEntireStreamAsString();
+  return stream ? stream->readEntireStreamAsString() : String("");
 }
 
 class DownloadThread : public Thread {
@@ -85,6 +87,10 @@ class DownloadThread : public Thread {
       return false;
 
     String versionAndOverride = getVersion();
+    if (!versionAndOverride.length()) {
+      LOG(ERROR) << "No version file! (1)";
+      return false;
+    }
     StringArray vArray;
     vArray.addTokens(versionAndOverride, false);
     if (!vArray.size()) {
@@ -94,7 +100,7 @@ class DownloadThread : public Thread {
 
     newVersion_ = vArray[0];
     if (!newVersion_.length()) {
-      LOG(DFATAL) << "No version file!";
+      LOG(ERROR) << "No version file! (2)";
       return false;
     }
 
@@ -116,7 +122,13 @@ class DownloadThread : public Thread {
       return false;
     }
 
-    ok = URL(WOODSHED + name_ + "." + newVersion_).launchInDefaultBrowser();
+#if JUCE_MAC
+    String urlName = WOODSHED + name_ + "." + newVersion_;
+#else
+    String urlName = WOODSHED_PC_URL;
+#endif
+
+    ok = URL(urlName).launchInDefaultBrowser();
 
     if (ok) {
       AppSettings appData = data::getProto<AppSettings>();
