@@ -3,6 +3,7 @@
 #include "rec/slow/MainPage.h"
 
 #include "rec/base/ArraySize.h"
+#include "rec/base/DropDead.h"
 #include "rec/data/Address.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/gui/SongData.h"

@@ -10,6 +10,7 @@
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/base/Arraysize.h"
+#include "rec/base/DropDead.h"
 #include "rec/base/SampleRate.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
@@ -121,6 +122,7 @@ class RegisterSlow : public app::RegisterInstance {
 
 Instance::Instance(app::Window* window) : window_(window) {
   CHECK_DDD(51, 2193, int64, int32);
+  logDropDead();
   DCHECK(!INSTANCE);
   INSTANCE = this;
 }

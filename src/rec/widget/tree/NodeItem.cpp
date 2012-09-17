@@ -1,4 +1,6 @@
 #include "rec/widget/tree/NodeItem.h"
+
+#include "rec/base/DropDead.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"

@@ -1,12 +1,14 @@
 #ifndef __REC_BASE_BASE__
 
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "rec/base/BaseNoJuce.h"  // defines the guards here!
 
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/Juce.h"
 #include "rec/base/ptr.h"
 #include "rec/base/Trans.h"
-#include "rec/base/DropDead.h"
 
 // New features that we don't release are protected with NEW_FEATURES.
 #ifdef DEBUG

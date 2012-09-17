@@ -1,8 +1,7 @@
 #ifndef __REC_BASE_DROPDEAD__
 #define __REC_BASE_DROPDEAD__
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "rec/base/base.h"
 
 namespace rec {
 
@@ -85,6 +84,17 @@ void checkDDD(Number1 year, Number1 month, Number1 day) {
 #define CHECK_DDD(I, J, M, N) while (0)
 
 #endif
+
+inline void logDropDead() {
+#ifdef DROP_DEAD_DATE
+  static const int DATES[] = {DROP_DEAD_DATE};
+  LOG(ERROR) << "*** WARNING: This version expires on "
+             << DATES[0]  << "/"
+             << DATES[1]  << "/"
+             << DATES[2]  << "/ ***";
+#endif
+}
+
 
 }  // namespace rec
 

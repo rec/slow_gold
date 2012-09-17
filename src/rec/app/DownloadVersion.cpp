@@ -2,6 +2,7 @@
 #include "rec/app/AppSettings.pb.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/app/Files.h"
+#include "rec/base/DropDead.h"
 #include "rec/base/Trans.h"
 #include "rec/data/DataOps.h"
 #include "rec/util/file/VirtualFile.h"

@@ -1,3 +1,4 @@
+#include "rec/base/DropDead.h"
 #include "rec/base/SampleRate.h"
 #include "rec/audio/stretch/RubberBand.h"
 #include "rec/util/Math.h"

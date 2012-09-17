@@ -3,6 +3,7 @@
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/util/ConvertSample.h"
 #include "rec/audio/util/Frame.h"
+#include "rec/base/DropDead.h"
 #include "rec/base/SampleTime.h"
 
 namespace rec {
