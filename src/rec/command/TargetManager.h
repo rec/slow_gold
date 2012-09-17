@@ -52,7 +52,6 @@ class TargetManager : public Listener<CommandID>,
                    const String& category,
                    const String& desc);
 
-  ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
   void addCommandItem(PopupMenu*, CommandID, bool enable = true,
                       const String& name = String::empty,
@@ -62,7 +61,6 @@ class TargetManager : public Listener<CommandID>,
   CommandRecord* find(CommandID);
 
  private:
-
   CommandRecordTable table_;
 
   ApplicationCommandManager commandManager_;

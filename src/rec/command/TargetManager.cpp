@@ -110,10 +110,6 @@ void TargetManager::addCallback(CommandID id,
   cr->callback_.reset(callback.transfer());
 }
 
-ApplicationCommandInfo* TargetManager::getInfo(CommandID id) {
-  return find(id)->getInfo();
-}
-
 void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name, int flags) {
   CommandRecord* cr = find(id);
