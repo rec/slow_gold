@@ -27,7 +27,6 @@ class CommandDatabase {
   void fill() {
     data_.addCallbacks(table_);
     fillFromCommands();
-    table_->fillCommandInfo();
   }
 
  private:

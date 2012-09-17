@@ -47,6 +47,57 @@ const Trans& langName(int lang) {
   return *(LANG_NAMES[lang]);
 }
 
+const int TICKED = ApplicationCommandInfo::isTicked;
+
+void addRecentFileSubmenu(MenuMaker* maker) {
+  std::vector<string> recent = rec::gui::getRecentFileNames();
+
+  maker->addSeparator();
+  maker->addEnabled(Command::OPEN_PREVIOUS_FILE, !recent.empty());
+
+  PopupMenu submenu;
+  for (uint i = 0; i < recent.size(); ++i)
+    maker->addRepeat(Command::RECENT_FILES, i, str(recent[i]), &submenu);
+
+  maker->menu()->addSubMenu(t_OPEN_RECENT, submenu, !recent.empty());
+  maker->addSeparator();
+}
+
+void addSaveMenuEntries(MenuMaker* maker) {
+#ifndef SLOWGOLD_SAVE_DISABLED
+  maker->addEnabled(Command::SAVE_FILE, !maker->empty());
+  maker->addEnabled(Command::SAVE_FILE_SELECTION, !maker->empty());
+
+  PopupMenu save;
+  int t = static_cast<int>(data::getProto<audio::AudioSettings>()
+                           .file_type_for_save());
+  static const char* NAMES[] = {"AIFF", "FLAC", "Ogg Vorbis", "WAV"};
+  static const Command::Type COMMAND = Command::SET_SAVE_FORMAT;
+  for (int i = 0; i < audio::AudioSettings::COUNT; ++i)
+    maker->addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
+
+  maker->menu()->addSubMenu(t_FILE_TYPE_FOR_SAVE, save);
+  maker->addSeparator();
+#endif
+}
+
+void addLanguageSubmenu(MenuMaker* maker) {
+#ifdef NEW_FEATURES
+  Language lang = translation::getLanguage();
+  PopupMenu menu;
+
+  maker->addRepeat(Command::SET_LANGUAGE, lang, String(langName(lang)),
+                   &menu, TICKED);
+
+  for (int i = app::AppSettings::FIRST; i <= app::AppSettings::LAST; ++i) {
+    if (i != lang)
+      maker->addRepeat(Command::SET_LANGUAGE, i, String(langName(i)), &menu, 0);
+  }
+  maker->menu()->addSubMenu(t_LANGUAGE, menu);
+#endif
+
+}
+
 }  // namespace
 
 void BasicMenuMaker::addFileMenu() {
@@ -54,55 +105,17 @@ void BasicMenuMaker::addFileMenu() {
   addEnabled(Command::CLOSE_FILE, !empty_);
   addBasic(Command::EJECT_CDS);
 
-  menu_.addSeparator();
+  addSeparator();
 
   // addBasic(Command::CLEAR_NAVIGATOR);
   addBasic(Command::TOGGLE_ADVANCED_MENUS);
 
-  std::vector<string> recent = rec::gui::getRecentFileNames();
-
-  menu_.addSeparator();
-  addEnabled(Command::OPEN_PREVIOUS_FILE, !recent.empty());
-
-  PopupMenu submenu;
-  for (uint i = 0; i < recent.size(); ++i)
-    addRepeat(Command::RECENT_FILES, i, str(recent[i]), &submenu);
-
-  menu_.addSubMenu(t_OPEN_RECENT, submenu, !recent.empty());
-  menu_.addSeparator();
-
-#ifndef SLOWGOLD_SAVE_DISABLED
-  addEnabled(Command::SAVE_FILE, !empty_);
-  addEnabled(Command::SAVE_FILE_SELECTION, !empty_);
-
-  PopupMenu save;
-  int t = static_cast<int>(data::getProto<audio::AudioSettings>()
-                           .file_type_for_save());
-  static const int TICKED = ApplicationCommandInfo::isTicked;
-  static const char* NAMES[] = {"AIFF", "FLAC", "Ogg Vorbis", "WAV"};
-  static const Command::Type COMMAND = Command::SET_SAVE_FORMAT;
-  for (int i = 0; i < audio::AudioSettings::COUNT; ++i)
-    addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
-
-  menu_.addSubMenu(t_FILE_TYPE_FOR_SAVE, save);
-  menu_.addSeparator();
-#endif
-
-#ifdef NEW_FEATURES
-  Language lang = translation::getLanguage();
-  PopupMenu langMenu;
-
-  addRepeat(Command::SET_LANGUAGE, lang, String(langName(lang)), &langMenu, TICKED);
-
-  for (int i = app::AppSettings::FIRST; i <= app::AppSettings::LAST; ++i) {
-    if (i != lang)
-      addRepeat(Command::SET_LANGUAGE, i, String(langName(i)), &langMenu, 0);
-  }
-  menu_.addSubMenu(t_LANGUAGE, langMenu);
-#endif
+  addRecentFileSubmenu(this);
+  addSaveMenuEntries(this);
+  addLanguageSubmenu(this);
 
 #if !JUCE_MAC
-  menu_.addSeparator();
+  addSeparator();
 
   addBasic(Command::ABOUT_THIS_PROGRAM);
   addBasic(Command::QUIT);
@@ -113,7 +126,7 @@ void BasicMenuMaker::addEditMenu() {
   addEnabled(Command::UNDO, canUndo());
   addEnabled(Command::REDO, canRedo());
 
-  menu_.addSeparator();
+  addSeparator();
 
   addEnabled(Command::CUT, canCut());
   addEnabled(Command::COPY, canCopy());
@@ -125,12 +138,12 @@ void BasicMenuMaker::addAudioMenu() {
   addEnabled(Command::NUDGE_VOLUME_UP, !empty_);
   addEnabled(Command::NUDGE_VOLUME_DOWN, !empty_);
 
-  menu_.addSeparator();
+  addSeparator();
   addEnabled(Command::TOGGLE_STRETCH_ENABLE, !empty_);
   addEnabled(Command::NUDGE_SPEED_UP, !empty_);
   addEnabled(Command::NUDGE_SPEED_DOWN, !empty_);
 
-  menu_.addSeparator();
+  addSeparator();
 
   addBasic(Command::AUDIO_PREFERENCES);
 }
@@ -141,7 +154,7 @@ void BasicMenuMaker::addSelectMenu() {
   addEnabled(Command::INVERT_LOOP_SELECTION, !empty_);
 
 #ifdef NEW_FEATURES
-  menu_.addSeparator();
+  addSeparator();
   addEnabled(Command::LOOP_NEXT_SEGMENT, !empty_);
 #endif
 
@@ -163,7 +176,7 @@ void BasicMenuMaker::addSelectMenu() {
   }
 
 #ifdef NEW_FEATURES
-  menu_.addSeparator();
+  addSeparator();
 #endif
 
   addEnabled(Command::ZOOM_TO_SELECTION, !empty_);

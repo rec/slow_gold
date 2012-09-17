@@ -49,12 +49,6 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
   }
 }
 
-void CommandRecordTable::fillCommandInfo() {
-  Table::const_iterator i;
-  for (i = table_.begin(); i != table_.end(); ++i)
-    i->second->fillInfo();
-}
-
 void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
   CommandRecord* cr = find(id, true);
   if (cr->callback_)

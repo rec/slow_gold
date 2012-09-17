@@ -15,7 +15,7 @@ using namespace rec::command;
 void AdvancedMenuMaker::addEditMenu() {
   BasicMenuMaker::addEditMenu();
 
-  menu_.addSeparator();
+  addSeparator();
 
   addEnabled(Command::MODE_SET_TIME, !empty_);
   addEnabled(Command::MODE_DRAG, !empty_);
@@ -26,15 +26,15 @@ void AdvancedMenuMaker::addEditMenu() {
 void AdvancedMenuMaker::addFileMenu() {
   BasicMenuMaker::addFileMenu();
 
-  menu_.addSeparator();
+  addSeparator();
   addBasic(Command::KEYBOARD_MAPPINGS);
   // addBasic(Command::CLEAR_KEYBOARD_MAPPINGS);
 
-  //menu_.addSeparator();
+  //addSeparator();
   addBasic(Command::MIDI_MAPPINGS);
   //  addBasic(Command::CLEAR_MIDI_MAPPINGS);
 
-  menu_.addSeparator();
+  addSeparator();
   addBasic(Command::EXPORT_SETTINGS);
   addBasic(Command::IMPORT_SETTINGS);
 }
@@ -42,7 +42,7 @@ void AdvancedMenuMaker::addFileMenu() {
 void AdvancedMenuMaker::addSelectMenu() {
   BasicMenuMaker::addSelectMenu();
 
-  menu_.addSeparator();
+  addSeparator();
 
   addBank(Command::SELECT, Trans("Select..."));
   addBank(Command::SELECT_ONLY, Trans("Select Only..."));
@@ -54,12 +54,12 @@ void AdvancedMenuMaker::addTransportMenu() {
   BasicMenuMaker::addTransportMenu();
   addEnabled(Command::TOGGLE_PREFADER_LEVELS, !empty_);
 
-  menu_.addSeparator();
+  addSeparator();
 
   addBank(Command::JUMP, Trans("Jump To..."));
   addBank(Command::JUMP_SELECTED, Trans("Jump To Selected..."));
 
-  menu_.addSeparator();
+  addSeparator();
   addBasic(Command::NUDGE_BACKWARD);
   addBasic(Command::NUDGE_FORWARD);
 }
@@ -68,12 +68,12 @@ void AdvancedMenuMaker::addHelpMenu() {
   BasicMenuMaker::addHelpMenu();
   addBasic(Command::TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP);
 
-  menu_.addSeparator();
+  addSeparator();
   addBasic(Command::CHECK_FOR_UPDATES);
   addBasic(Command::TOGGLE_AUTOMATIC_UPDATES);
 
 #ifdef SETTINGS_MENU_ITEMS
-  menu_.addSeparator();
+  addSeparator();
   addBasic(Command::OPEN_SLOWGOLD_DIRECTORY);
   addEnabled(Command::CLEAR_SETTINGS_FOR_THIS_TRACK, !empty_);
   addBasic(Command::CLEAR_ALL_SETTINGS);
@@ -84,17 +84,17 @@ void AdvancedMenuMaker::addDisplayMenu() {
   addBasic(Command::TOGGLE_GRID_DISPLAY);
   addBasic(Command::TOGGLE_PARALLEL_WAVEFORMS);
   addBasic(Command::TOGGLE_FOLLOW_CURSOR);
-  menu_.addSeparator();
+  addSeparator();
   addBasic(Command::TOGGLE_SHOW_SELECTION_BUTTONS);
   addBasic(Command::TOGGLE_SHOW_CURSOR_LABELS);
-  menu_.addSeparator();
+  addSeparator();
   addBasic(Command::TOGGLE_SHOW_TIMES_AT_TOP);
   addBasic(Command::TOGGLE_SHOW_LABELS_AT_TOP);
   addBasic(Command::TOGGLE_COMMAND_BAR_AT_LEFT);
   addBasic(Command::TOGGLE_COMMAND_BAR_AT_TOP);
   addBasic(Command::TOGGLE_MODES_AT_LEFT);
   addBasic(Command::TOGGLE_MODES_AT_TOP);
-  menu_.addSeparator();
+  addSeparator();
   addBasic(Command::TOGGLE_FILE_OPEN_TREE_DISPLAY);
   addBasic(Command::TOGGLE_SHOW_MASTER_TUNE);
 }

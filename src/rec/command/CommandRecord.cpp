@@ -4,6 +4,11 @@
 namespace rec {
 namespace command {
 
+ApplicationCommandInfo* CommandRecord::getInfo() {
+  fillInfo();
+  return &info_;
+}
+
 void CommandRecord::fillInfo() {
 	if (!command_)
   	return;
@@ -26,6 +31,7 @@ void CommandRecord::fillInfo() {
     if (info_.flags & ApplicationCommandInfo::isTicked)
       flags += ApplicationCommandInfo::isTicked;
 
+    // Hack to deal with RECENT_FILES translation issues.
     info_.setInfo(Trans(desc.menu(0)), name, category, flags);
   } else {
     LOG(DFATAL) << "No command " << CommandIDEncoder::commandIDName(id)
