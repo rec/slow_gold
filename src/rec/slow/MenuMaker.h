@@ -29,6 +29,7 @@ class MenuMaker {
   PopupMenu* menu() { return &menu_; }
 
   void addSeparator() { menu_.addSeparator(); }
+
   void addEnabled(command::Command::Type, bool enable);
   void addRepeat(command::Command::Type,
                  int slot,
@@ -36,17 +37,11 @@ class MenuMaker {
                  PopupMenu* m = NULL,
                  int flags = -1);
 
-
  protected:
   static const int DEFAULT_FLAGS = -1;
 
   void addBasic(CommandID id);
 
-  void addFull(CommandID id,
-               const String& name,
-               bool enabled,
-               PopupMenu* m,
-               int flags);
   void addSimpleRepeat(command::Command::Type, int slot, PopupMenu*);
 
   virtual bool addMenu(const String& menuName) = 0;
@@ -59,6 +54,12 @@ class MenuMaker {
   const bool empty_;
 
  private:
+  void addFull(CommandID id,
+               const String& name,
+               bool enabled,
+               PopupMenu* m,
+               int flags);
+
   command::TargetManager* targetManager_;
   CriticalSection lock_;
 

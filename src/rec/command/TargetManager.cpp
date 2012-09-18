@@ -128,7 +128,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
   if (flags >= 0)
     info->flags = flags;
 
-  menu->addCommandItem(commandManager(), id);
+   menu->addCommandItem(commandManager(), id);
 }
 
 CommandRecord* TargetManager::find(CommandID id) {

@@ -28,12 +28,12 @@ CommandIDEncoder CommandIDEncoder::fromCommandID(CommandID id) {
 
 // static
 string CommandIDEncoder::commandIDName(CommandID id) {
+  Command::Type type = getType(id);
   string res;
 
   int body = id / Command::BANK_SIZE;
   int remains = id % Command::BANK_SIZE;
 
-  Command::Type type = static_cast<Command::Type>(body ? body : remains);
   int position = body ? remains : 0;
 
   string name;
@@ -60,6 +60,11 @@ string CommandIDEncoder::commandIDName(CommandID id) {
   return name; //  + " " + str(String(id));
 }
 
+// static
+bool CommandIDEncoder::isA(int32 id, Command::Type type) {
+  return type == getType(id);
+}
+
 int CommandIDEncoder::toCommandID(const Command& cmd) {
   return cmd.has_index() ? toCommandID(cmd.index(), cmd.type()) : cmd.type();
 }
@@ -70,6 +75,13 @@ void CommandIDEncoder::fillCommandFromId(CommandID id, Command* command) {
     id /= Command::BANK_SIZE;
   }
   command->set_type(static_cast<Command::Type>(id));
+}
+
+Command::Type CommandIDEncoder::getType(CommandID id) {
+  int body = id / Command::BANK_SIZE;
+  int remains = id % Command::BANK_SIZE;
+
+  return static_cast<Command::Type>(body ? body : remains);
 }
 
 }  // namespace command

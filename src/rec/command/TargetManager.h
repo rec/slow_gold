@@ -53,9 +53,11 @@ class TargetManager : public Listener<CommandID>,
                    const String& desc);
 
   ApplicationCommandManager* commandManager() { return &commandManager_; }
-  void addCommandItem(PopupMenu*, CommandID, bool enable = true,
-                      const String& name = String::empty,
-                      int flags = -1);
+  void addCommandItem(PopupMenu*,
+                      CommandID,
+                      bool enable,
+                      const String& name,
+                      int flags);
   CommandRecordTable* commandRecordTable() { return &table_; }
   ApplicationCommandTarget* target() { return target_.get(); }
   CommandRecord* find(CommandID);
