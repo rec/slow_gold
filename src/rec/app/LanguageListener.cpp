@@ -19,7 +19,10 @@ class LanguageListener::Updater : public GlobalDataListener<AppSettings> {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Updater);
 };
 
-LanguageListener::LanguageListener() : updater_(new Updater(this)) {}
+LanguageListener::LanguageListener() {
+  updater_.reset(new Updater(this));
+}
+
 LanguageListener::~LanguageListener() {}
 
 }  // namespace app
