@@ -18,9 +18,9 @@ void CommandRecord::fillInfo() {
     LOG(DFATAL) << "Empty callback " << CommandIDEncoder::commandIDName(id);
 
   const Description& desc = command_->desc();
-  String name = Trans(desc.full(0));
+  String fullName = Trans(desc.full(0));
   String category = str(command_->category());
-  bool hasInfo = desc.menu_size() && name.length();
+  bool hasInfo = desc.menu_size() && fullName.length();
 
   if (hasInfo) {
     int flags = 0;
@@ -32,11 +32,19 @@ void CommandRecord::fillInfo() {
       flags += ApplicationCommandInfo::isTicked;
 
     // Hack to deal with RECENT_FILES translation issues.
-    info_.setInfo(Trans(desc.menu(0)), name, category, flags);
+    // TODO: fix this - and why isn't needed for the language menu?
+    String name = Trans(desc.menu(0));
+    if (info_.shortName.length()) {
+      Command::Type t = CommandIDEncoder::getType(id);
+      if (t == Command::TOGGLE_WHOLE_SONG_LOOP || t == Command::RECENT_FILES)
+        name = info_.shortName;
+    }
+
+    info_.setInfo(name, fullName, category, flags);
   } else {
     LOG(DFATAL) << "No command " << CommandIDEncoder::commandIDName(id)
                << ", " << desc.menu_size()
-               << ", " << name.length()
+               << ", " << fullName.length()
                << command_->ShortDebugString();
   }
 }
