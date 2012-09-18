@@ -8,7 +8,8 @@ namespace rec {
 namespace command {
 
 class CommandData;
-class CommandRecordTable;
+
+struct CommandRecordTable;
 
 void fillCommandRecordTable(CommandRecordTable*, const CommandData&);
 

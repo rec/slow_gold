@@ -8,7 +8,7 @@
 namespace rec {
 namespace command {
 
-class CommandRecord;
+struct CommandRecord;
 
 class CommandRecordTable : public CallbackTable {
  public:

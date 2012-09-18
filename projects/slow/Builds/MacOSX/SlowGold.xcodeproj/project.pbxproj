@@ -892,7 +892,7 @@
 		5717827E485ECB356F536CAB /* juce_android_CameraDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_CameraDevice.cpp; path = ../../../../../juce/modules/juce_video/native/juce_android_CameraDevice.cpp; sourceTree = SOURCE_ROOT; };
 		5717DEB69D118F82FABED64D /* juce_ChangeListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ChangeListener.h; path = ../../../../../juce/modules/juce_events/broadcasters/juce_ChangeListener.h; sourceTree = SOURCE_ROOT; };
 		5743C7068DFB147AE0F83DA3 /* SetterResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterResizer.h; path = ../../../../src/rec/gui/SetterResizer.h; sourceTree = SOURCE_ROOT; };
-		57A179F92CC94E9DAF17FBF5 /* SlowGold 8-debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8-debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57A179F92CC94E9DAF17FBF5 /* SlowGold 8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowGold 8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A66523591260B80942946D /* SupportWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SupportWindow.cpp; path = ../../../../src/rec/support/SupportWindow.cpp; sourceTree = SOURCE_ROOT; };
 		580E722F4D575D7823A165A8 /* juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_audio_utils.mm; path = ../../../../../juce/modules/juce_audio_utils/juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
 		585B6DEEBA218C24E925C8AB /* juce_CharPointer_ASCII.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_CharPointer_ASCII.h; path = ../../../../../juce/modules/juce_core/text/juce_CharPointer_ASCII.h; sourceTree = SOURCE_ROOT; };
@@ -2120,7 +2120,7 @@
 		15D5B9524ABD37A7B5D2F73D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				57A179F92CC94E9DAF17FBF5 /* SlowGold 8-debug.app */,
+				57A179F92CC94E9DAF17FBF5 /* SlowGold 8.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4911,7 +4911,7 @@
 			name = SlowGold;
 			productInstallPath = "$(HOME)/Applications";
 			productName = SlowGold;
-			productReference = 57A179F92CC94E9DAF17FBF5 /* SlowGold 8-debug.app */;
+			productReference = 57A179F92CC94E9DAF17FBF5 /* SlowGold 8.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
