@@ -192,6 +192,7 @@ void Cursor::layoutCaption() {
   int y = waveDesc_.show_labels_at_top() ? dy :
     (getHeight() - dy - captionHeight);
   int x = getX() + desc().component_width() + CAPTION_X_OFFSET;
+
   caption_->setBounds(x, y, std::min(captionWidth_, remains), captionHeight);
 
   if (!isTimeCursor()) {
@@ -267,6 +268,7 @@ void Cursor::operator()(const WaveformProto& wp) {
 
   waveDesc_ = wp;
   layout();
+  layoutCaption();
 }
 
 Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,

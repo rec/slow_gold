@@ -20,7 +20,7 @@ const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
 const int GRID_TEXT_HEIGHT = 9;  // ALSO IN WaveformPainter!
 const int MODE_SELECTOR_OFFSET = 5;
 const int COMMAND_BAR_OFFSET = -2;
-const int CURSOR_LABEL_HEIGHT = 20;
+const int CURSOR_LABEL_HEIGHT = 22;
 
 }  // namespace
 
@@ -100,6 +100,7 @@ void WaveformModel::layout(Component* waveform) {
     Component* c = waveform->getChildComponent(i);
     if (Cursor* cursor = dynamic_cast<Cursor*>(c)) {
       cursor->layout();
+      cursor->layoutCaption();
     } else {
       if (!cb)
         cb = dynamic_cast<CommandBar*>(c);

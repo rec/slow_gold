@@ -60,10 +60,6 @@ class DownloadThread : public Thread {
       : Thread("DownloadThread"), version_(version), name_(name) {
   }
 
-  virtual ~DownloadThread() {
-    LOG(INFO) << "Deleting " << this;
-  }
-
   virtual void run() {
     checkForUpdates();
   }

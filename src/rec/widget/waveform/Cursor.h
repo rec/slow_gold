@@ -5,6 +5,7 @@
 
 #include "rec/app/LanguageListener.h"
 #include "rec/audio/Audio.h"
+#include "rec/data/DataListener.h"
 #include "rec/gui/Geometry.h"
 #include "rec/util/Listener.h"
 #include "rec/widget/Painter.h"
@@ -26,6 +27,7 @@ class OutlinedCursorLabel;
 class Cursor : public Component,
                public SettableTooltipClient,
                public Listener<SampleTime>,
+               public GlobalDataListener<WaveformProto>,
                public app::LanguageListener,
                public juce::Label::Listener {
  public:
@@ -61,9 +63,9 @@ class Cursor : public Component,
   void resizeCaption();
   void selectButtonPressed(bool);
   Component* getCaption();
+  void layoutCaption();
 
  private:
-  void layoutCaption();
 
   Waveform* const waveform_;
   const CriticalSection& lock() const { return waveform_->lock_; }
