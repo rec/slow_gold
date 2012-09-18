@@ -24,16 +24,33 @@ static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
 static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
 
 static const int PRELOAD = 10000;  // TODO:  duplicate code.
+static const int NO_SEGMENT = -1;
 
 CurrentTime::CurrentTime(Instance* i)
-    : HasInstance(i), time_(0), requestedTime_(-1), length_(0),
-      followCursor_(false) {
+    : HasInstance(i),
+      time_(0),
+      requestedTime_(-1),
+      length_(0),
+      followCursor_(false),
+      loopingSegment_(NO_SEGMENT) {
 }
 
 void CurrentTime::setTime(SampleTime t) {
   {
     Lock l(lock());
     time_ = t;
+
+    if (loopingSegment_ > NO_SEGMENT) {
+      uint current = audio::getSegment(viewport_.loop_points(), time());
+      if (static_cast<int>(current) == loopingSegment_) {
+        LoopPointList* lpl = viewport_.mutable_loop_points();
+        uint size = lpl->loop_point_size();
+        for (uint i = 0; i < size; ++i)
+          lpl->mutable_loop_point(i)->set_selected(i == current);
+        setViewportProto(viewport_);
+        loopingSegment_ = NO_SEGMENT;
+      }
+    }
 
     if (!(followCursor_  && isPlaying()))
       return;
@@ -158,6 +175,11 @@ void CurrentTime::jumpToTime(SampleTime time) {
 
 	player()->setNextReadPosition(time);
   zoomToTime(time);
+}
+
+void CurrentTime::setLoopingSegment(int segment) {
+  Lock l(lock());
+  loopingSegment_ = segment;
 }
 
 }  // namespace slow

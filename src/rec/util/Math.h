@@ -44,8 +44,6 @@ Number near(Number x, N2 y, N3 diff) {
   return Math<Number>::near(x, y, diff);
 }
 
-
-
 inline int isinf( float arg ) {
 #if !_MSC_VER
 	return std::isinf(arg);

@@ -95,7 +95,6 @@ void addLanguageSubmenu(MenuMaker* maker) {
   }
   maker->menu()->addSubMenu(t_LANGUAGE, menu);
 #endif
-
 }
 
 }  // namespace
@@ -139,6 +138,7 @@ void BasicMenuMaker::addAudioMenu() {
   addEnabled(Command::NUDGE_VOLUME_DOWN, !empty_);
 
   addSeparator();
+
   addEnabled(Command::TOGGLE_STRETCH_ENABLE, !empty_);
   addEnabled(Command::NUDGE_SPEED_UP, !empty_);
   addEnabled(Command::NUDGE_SPEED_DOWN, !empty_);

@@ -41,6 +41,7 @@ class CurrentTime : public HasInstance,
   SampleTime time() const { Lock l(lock()); return time_; }
   SampleTime requestedTime() const { Lock l(lock()); return requestedTime_; }
   void jumpToTime(SampleTime pos);
+  void setLoopingSegment(int);
 
   void reset();
 
@@ -58,6 +59,7 @@ class CurrentTime : public HasInstance,
   SampleTime length_;
   bool followCursor_;
   bool isDragging_;
+  int loopingSegment_;
 
   widget::waveform::Viewport viewport_;
 

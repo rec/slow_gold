@@ -4,22 +4,26 @@
 #include "rec/command/CallbackTable.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.pb.h"
-#include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/LoopSnapshot.h"
 #include "rec/slow/Menus.h"
-#include "rec/util/thread/MakeThread.h"
+#include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/util/LoopPoint.h"
-
-using namespace std;
-using namespace rec::command;
+#include "rec/util/Math.h"
+#include "rec/util/thread/MakeThread.h"
+#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
 namespace slow {
 
 namespace {
+
+using namespace std;
+using namespace rec::command;
+
+using widget::waveform::Viewport;
 
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
@@ -234,6 +238,22 @@ void nudgeTime(bool inc) {
 }
 
 void loopNextSegment() {
+  Instance* instance = Instance::getInstance();
+  VirtualFile vf = instance->file();
+  Viewport vp(data::getProto<Viewport>(vf));
+  LoopPointList* lpl = vp.mutable_loop_points();
+  uint size = lpl->loop_point_size();
+  if (size <= 1) {
+    beep();
+    return;
+  }
+  uint selected = audio::getSegment(*lpl, instance->time());
+  uint next = mod(selected + 1, size);
+  for (uint i = 0; i < size; ++i)
+    lpl->mutable_loop_point(i)->set_selected(i == selected || i == next);
+
+  data::setProto(vp, vf);
+  instance->currentTime_->setLoopingSegment(next);
 }
 
 }  // namespace
