@@ -247,13 +247,20 @@ void loopNextSegment() {
     beep();
     return;
   }
+
+  bool isPlaying = instance->isPlaying();
   uint selected = audio::getSegment(*lpl, instance->time());
   uint next = mod(selected + 1, size);
   for (uint i = 0; i < size; ++i)
-    lpl->mutable_loop_point(i)->set_selected(i == selected || i == next);
+    lpl->mutable_loop_point(i)->set_selected(false);
+
+  lpl->mutable_loop_point(next)->set_selected(true);
+  if (isPlaying) {
+    lpl->mutable_loop_point(selected)->set_selected(true);
+    instance->currentTime_->setLoopingSegment(next);
+  }
 
   data::setProto(vp, vf);
-  instance->currentTime_->setLoopingSegment(next);
 }
 
 }  // namespace

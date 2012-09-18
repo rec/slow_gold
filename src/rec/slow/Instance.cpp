@@ -173,6 +173,7 @@ void Instance::init() {
 
   target_->addCommands();
   player_->addListener(components_->transportController_.get());
+  player_->addListener(currentTime_.get());
   audio::getOutputSampleRateBroadcaster()->addListener(player_.get());
 
 	typedef gui::DropTarget<Waveform> DropWave;

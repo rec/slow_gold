@@ -1,6 +1,7 @@
 #ifndef __REC_SLOW_CURRENTTIME__
 #define __REC_SLOW_CURRENTTIME__
 
+#include "rec/audio/Audio.h"
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
@@ -17,7 +18,8 @@ namespace slow {
 class CurrentTime : public HasInstance,
                     public DataListener<widget::waveform::Viewport>,
                     public GlobalDataListener<GuiSettings>,
-                    public Listener<SampleTime> {
+                    public Listener<SampleTime>,
+                    public Listener<audio::transport::State> {
  public:
   explicit CurrentTime(Instance* i);
   virtual ~CurrentTime() {}
@@ -25,11 +27,13 @@ class CurrentTime : public HasInstance,
   void setTime(SampleTime);
   void setViewport(const widget::waveform::Viewport&);
 
+  virtual void operator()(audio::transport::State);
   virtual void operator()(SampleTime t) { setTime(t); }
   virtual void operator()(const GuiSettings&);
   virtual void operator()(const widget::waveform::Viewport& vp) {
     setViewport(vp);
   }
+
 
   void setCursorTime(SampleTime time, int index, bool isTimeCursor);
   const SampleRangeVector timeSelection() const {

@@ -182,6 +182,11 @@ void CurrentTime::setLoopingSegment(int segment) {
   loopingSegment_ = segment;
 }
 
+void CurrentTime::operator()(audio::transport::State s) {
+  if (s == audio::transport::STOPPED)
+    setLoopingSegment(NO_SEGMENT);
+}
+
 }  // namespace slow
 }  // namespace rec
 
