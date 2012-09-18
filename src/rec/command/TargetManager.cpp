@@ -51,8 +51,8 @@ class CommandTarget : public ApplicationCommandTarget {
 TargetManager::TargetManager(CommandData* commandData)
     : lastInvocation_(0),
       disabled_(false),
-      commandData_(commandData),
-      target_(new CommandTarget(this, &table_)) {
+      commandData_(commandData) {
+  target_.reset(new CommandTarget(this, &table_));
   commandManager_.setFirstCommandTarget(target_.get());
 }
 
