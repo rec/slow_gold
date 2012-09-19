@@ -13,7 +13,7 @@ namespace audio {
 // Skin
 
 static const int TEXT_WIDTH = 100;
-static const int DIAL_WIDTH = 100;
+static const int DIAL_WIDTH = 45;
 
 using namespace juce;
 using namespace rec::widget::status::time;

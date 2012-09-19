@@ -12,6 +12,14 @@ namespace rec {
 namespace util {
 
 template <typename Number>
+bool isNegative(Number n) { return n < 0; }
+
+inline bool isNegative(unsigned char) { return false; }
+inline bool isNegative(unsigned short) { return false; }
+inline bool isNegative(unsigned long) { return false; }
+inline bool isNegative(unsigned long long) { return false; }
+
+template <typename Number>
 struct Math {
   static Number abs(Number x) { return (x < 0) ? -x : x; }
 
@@ -20,7 +28,7 @@ struct Math {
   //
   static Number mod(Number dividend, Number divisor) {
     Number modulo = dividend % divisor;
-    if (modulo < 0)
+    if (isNegative(modulo))
       modulo += abs(divisor);
     return modulo;
   }
