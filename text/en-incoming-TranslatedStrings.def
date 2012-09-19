@@ -159,7 +159,7 @@ str {
 str {
   original: "Clear all keyboard mappings to factory default?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 41
+  line: 42
 }
 str {
   original: "Clear all MIDI command mappings."
@@ -167,7 +167,7 @@ str {
 str {
   original: "Clear all MIDI mappings?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 43
+  line: 44
 }
 str {
   original: "Clear All Settings And Quit"
@@ -184,7 +184,7 @@ str {
 str {
   original: "Clear Keyboard Mappings."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 39
+  line: 40
 }
 str {
   original: "Clear Loops"
@@ -195,7 +195,7 @@ str {
 str {
   original: "Clear MIDI Mappings."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 42
+  line: 43
 }
 str {
   original: "Clear Settings For This Track And Quit"
@@ -203,12 +203,12 @@ str {
 str {
   original: "Clearing All Settings For All Tracks"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 45
+  line: 46
 }
 str {
   original: "Clearing Settings For This Track Only"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 50
+  line: 51
 }
 str {
   original: "click to change this key-mapping"
@@ -234,6 +234,12 @@ str {
 }
 str {
   original: "Copy"
+}
+str {
+  original: "Copy All Loop Points"
+}
+str {
+  original: "Copy both selected and unselected loop points to the clipboard."
 }
 str {
   original: "Copy the current selection to the clipboard and clear the selection."
@@ -836,6 +842,9 @@ str {
   original: "Paste"
 }
 str {
+  original: "Paste Over Loop Points"
+}
+str {
   original: "pc %d"
   file: "rec/command/map/MidiName.cpp"
   line: 7
@@ -952,6 +961,9 @@ str {
   original: "Remove this command mapping"
   file: "rec/command/map/CommandMapEditButton.cpp"
   line: 8
+}
+str {
+  original: "Replace all loop points with the loop points on the clipboard."
 }
 str {
   original: "Replace the current selection with a copy of the clipboard."
@@ -1235,7 +1247,7 @@ str {
 str {
   original: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 59
+  line: 60
 }
 str {
   original: "Sorry, there wasn\'t enough memory for the file."
@@ -1434,7 +1446,7 @@ str {
 str {
   original: "Unable To Clear Settings"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 56
+  line: 57
 }
 str {
   original: "Undo"
@@ -1552,12 +1564,12 @@ str {
 str {
   original: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 48
+  line: 49
 }
 str {
   original: "You want to clear settings for this track only, and quit the program.  Is this OK?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 54
+  line: 55
 }
 str {
   original: "Your File Was Empty."
@@ -1572,12 +1584,12 @@ str {
 str {
   original: "Your Version Of SlowGold Is Up-To-Date"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 34
+  line: 35
 }
 str {
   original: "Your version of SlowGold, %s, is up-to-date."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 35
+  line: 36
 }
 str {
   original: "Zoom In Mode"

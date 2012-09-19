@@ -55,6 +55,7 @@ enum Command_Type {
   Command_Type_CLEAR_SETTINGS_FOR_THIS_TRACK = 80,
   Command_Type_CLEAR_SAVED_FILE_DATA = 5,
   Command_Type_CLOSE_FILE = 6,
+  Command_Type_COPY_ALL_LOOP_POINTS = 95,
   Command_Type_DIM_VOLUME_TOGGLE = 7,
   Command_Type_EJECT_CDS = 8,
   Command_Type_EXPORT_KEYBOARD_MAPPINGS = 82,
@@ -88,6 +89,7 @@ enum Command_Type {
   Command_Type_OPEN_MANUAL = 65,
   Command_Type_OPEN_PREVIOUS_FILE = 78,
   Command_Type_OPEN_SLOWGOLD_DIRECTORY = 74,
+  Command_Type_PASTE_OVER_LOOP_POINTS = 96,
   Command_Type_RECENT_FILES = 22,
   Command_Type_REDO = 23,
   Command_Type_REQUEST_SUPPORT = 66,
@@ -135,7 +137,7 @@ enum Command_Type {
   Command_Type_ZOOM_OUT = 40,
   Command_Type_ZOOM_OUT_FULL = 64,
   Command_Type_ZOOM_TO_SELECTION = 45,
-  Command_Type_LAST_TYPE = 94,
+  Command_Type_LAST_TYPE = 96,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -466,6 +468,7 @@ class Command : public ::google::protobuf::Message {
   static const Type CLEAR_SETTINGS_FOR_THIS_TRACK = Command_Type_CLEAR_SETTINGS_FOR_THIS_TRACK;
   static const Type CLEAR_SAVED_FILE_DATA = Command_Type_CLEAR_SAVED_FILE_DATA;
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
+  static const Type COPY_ALL_LOOP_POINTS = Command_Type_COPY_ALL_LOOP_POINTS;
   static const Type DIM_VOLUME_TOGGLE = Command_Type_DIM_VOLUME_TOGGLE;
   static const Type EJECT_CDS = Command_Type_EJECT_CDS;
   static const Type EXPORT_KEYBOARD_MAPPINGS = Command_Type_EXPORT_KEYBOARD_MAPPINGS;
@@ -499,6 +502,7 @@ class Command : public ::google::protobuf::Message {
   static const Type OPEN_MANUAL = Command_Type_OPEN_MANUAL;
   static const Type OPEN_PREVIOUS_FILE = Command_Type_OPEN_PREVIOUS_FILE;
   static const Type OPEN_SLOWGOLD_DIRECTORY = Command_Type_OPEN_SLOWGOLD_DIRECTORY;
+  static const Type PASTE_OVER_LOOP_POINTS = Command_Type_PASTE_OVER_LOOP_POINTS;
   static const Type RECENT_FILES = Command_Type_RECENT_FILES;
   static const Type REDO = Command_Type_REDO;
   static const Type REQUEST_SUPPORT = Command_Type_REQUEST_SUPPORT;

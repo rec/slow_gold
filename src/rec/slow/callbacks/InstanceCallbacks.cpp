@@ -11,6 +11,7 @@
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/yaml/Yaml.h"
 #include "rec/gui/Dialog.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/audio/SetupPage.h"
@@ -61,6 +62,7 @@ TRAN(CLEAR_FAILED_FULL, "Sorry, there was an error clearing the settings. "
 namespace rec {
 namespace slow {
 
+using namespace juce;
 using namespace rec::audio::util;
 using namespace rec::widget::waveform;
 
@@ -241,6 +243,35 @@ void clearSettingsForThisTrack() {
                            t_CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
 }
 
+void copyAllLoopPoints() {
+  Viewport vp = data::getProto<Viewport>(Instance::getInstanceFile());
+  string clipboard = yaml::write(vp.loop_points());
+  SystemClipboard::copyTextToClipboard(str(clipboard));
+}
+
+void pasteOverLoopPoints() {
+  string clipboard(str(SystemClipboard::getTextFromClipboard()));
+  LoopPointList lpl;
+  if (!yaml::read(clipboard, &lpl)) {
+    beep();
+    return;
+  }
+  const VirtualFile& vf = Instance::getInstanceFile();
+  Viewport vp = data::getProto<Viewport>(vf);
+  int64 length = vp.loop_points().length();
+  google::protobuf::RepeatedPtrField<LoopPoint>* lp = vp.mutable_loop_points()->
+    mutable_loop_point();
+  lp->Clear();
+  for (int i = 0; i < lpl.loop_point_size(); ++i) {
+    const LoopPoint& point = lpl.loop_point(i);
+    if (point.time() >= length)
+      break;
+    lp->Add()->CopyFrom(point);
+  }
+
+  data::setProto(vp, vf);
+}
+
 }  // namespace
 
 using namespace rec::command;
@@ -250,28 +281,36 @@ void addInstanceCallbacks(CallbackTable* c) {
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;
 
-  addCallback(c, Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
-  addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
   addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram);
   addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint);
   addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences);
+
+  addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates);
   addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings);
+  addCallback(c, Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
+  addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
+
   addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack);
   // addApplyCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator);
   addCallback(c, Command::CLOSE_FILE, closeFile);
+  addCallback(c, Command::COPY_ALL_LOOP_POINTS, copyAllLoopPoints);
+
   addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings);
   addCallback(c, Command::MIDI_MAPPINGS, midiMappings);
 
   addCallback(c, Command::OPEN, open);
+
+  addCallback(c, Command::PASTE_OVER_LOOP_POINTS, pasteOverLoopPoints);
+
   addCallback(c, Command::QUIT, quit);
+
   addCallback(c, Command::SAVE_FILE, saveFile);
   addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection);
   addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop);
   addCallback(c, Command::ZOOM_OUT, zoomOut);
   addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull);
   addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection);
-  addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates);
 }
 
 }  // namespace slow

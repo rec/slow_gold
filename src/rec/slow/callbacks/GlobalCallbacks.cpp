@@ -129,7 +129,7 @@ void whatsNewPage() {
   URL(String::formatted(WHATS_NEW_URL, c_str(vers))).launchInDefaultBrowser();
 }
 
-}
+}  // namespace
 
 using command::Command;
 
