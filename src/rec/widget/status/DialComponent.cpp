@@ -47,45 +47,48 @@ void DialComponent::operator()(SampleTime time) {
 }
 
 bool DialComponent::setTime(SampleTime time) {
-  {
-    Lock l(lock_);
-    if (false && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
-      return false;  // TODO: why is this disabled.
+  Lock l(lock_);
+  if (false && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
+    return false;  // TODO: why is this disabled.
 
-    if (!loops_.has_length())
-      return false;
+  if (!loops_.has_length())
+    return false;
 
-    time_ = time;
-    Range<SampleTime > range;
+  time_ = time;
+  Range<SampleTime > range;
 
-    if (USE_CONTIGUOUS_SEGMENTS)
-      range = audio::contiguousSelectionContaining(loops_, time);
+  if (USE_CONTIGUOUS_SEGMENTS)
+    range = audio::contiguousSelectionContaining(loops_, time);
 
-    if (range.size() < SMALLEST_TIME_CHANGE) {
-      int seg = audio::getSegment(loops_, time);
-      bool atEnd = (seg == loops_.loop_point_size() - 1);
-      range.begin_ = loops_.loop_point(seg).time();
-      range.end_ = atEnd ? loops_.length() : loops_.loop_point(seg + 1).time();
-    }
-
-    if (range.size() < SMALLEST_TIME_CHANGE) {
-      timeAngle_ = zeroAngle_ = 0.0;
-      timeRatio_ = 1.0;
-      return false;
-    }
-
-    double length = static_cast<double>(range.size());
-    double zeroAngle = description_.zero_point() * 2.0 * PI;
-
-    timeRatio_ = std::max(0.0, std::min(1.0, (time_ - range.begin_) / length));
-    double timeAngle = zeroAngle + timeRatio_ * 2.0 * PI;
-    if (fabs(timeAngle - timeAngle_) < REDRAW_ANGLE &&
-        fabs(zeroAngle - zeroAngle_) < REDRAW_ANGLE) {
-      return false;
-    }
-    zeroAngle_ = zeroAngle;
-    timeAngle_ = timeAngle;
+  if (range.size() < SMALLEST_TIME_CHANGE) {
+    int seg = audio::getSegment(loops_, time);
+    bool atEnd = (seg == loops_.loop_point_size() - 1);
+    range.begin_ = loops_.loop_point(seg).time();
+    range.end_ = atEnd ? loops_.length() : loops_.loop_point(seg + 1).time();
   }
+
+  if (range.size() < SMALLEST_TIME_CHANGE) {
+    LOG(ERROR) << "Setting the time too small!";
+    timeAngle_ = zeroAngle_ = 0.0;
+    timeRatio_ = 1.0;
+    return false;
+  }
+
+  double length = static_cast<double>(range.size());
+  double zeroAngle = description_.zero_point() * 2.0 * PI;
+
+  timeRatio_ = std::min(1.0, (time_ - range.begin_) / length);
+  if (timeRatio_ < 0.0) {
+    LOG(DFATAL) << "Negative time ratio " << timeRatio_;
+    timeRatio_ = 0.0;
+  }
+  double timeAngle = zeroAngle + timeRatio_ * 2.0 * PI;
+  if (fabs(timeAngle - timeAngle_) < REDRAW_ANGLE &&
+      fabs(zeroAngle - zeroAngle_) < REDRAW_ANGLE) {
+    return false;
+  }
+  zeroAngle_ = zeroAngle;
+  timeAngle_ = timeAngle;
 
   return true;
 }
@@ -93,7 +96,8 @@ bool DialComponent::setTime(SampleTime time) {
 void DialComponent::operator()(const waveform::Viewport& vp) {
   Lock l(lock_);
   loops_ = vp.loop_points();
-  timeAngle_ = zeroAngle_ = 0.0;
+  setTime(time_);
+  repaint();
 }
 
 void DialComponent::paint(Graphics& g) {

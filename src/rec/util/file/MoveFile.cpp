@@ -30,7 +30,7 @@ void moveFile(const File& source, const File& target) {
       if (!source.moveFileTo(target))
         LOG(ERROR) << "Couldn't move file " << str(source) << " to " << str(target);
     }
-    DLOG(INFO) << "Move " << str(source) << " to " << str(target);
+    LOG(INFO) << "Move " << str(source) << " to " << str(target);
   }
 }
 
