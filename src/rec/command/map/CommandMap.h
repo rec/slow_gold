@@ -10,7 +10,7 @@
 namespace rec {
 namespace command {
 
-class CommandMap : public Listener<const CommandMapProto&> {
+class CommandMap {
  public:
   typedef command::Command::Type CommandType;
   typedef string Key;
@@ -18,7 +18,8 @@ class CommandMap : public Listener<const CommandMapProto&> {
   CommandMap() {}
   virtual ~CommandMap() {}
 
-  virtual void operator()(const CommandMapProto&);
+  void addCommands(const CommandMapProto&);
+
   const CommandMapProto getProto() const;
 
   CommandType getCommand(const Key&) const;

@@ -11,7 +11,7 @@ class CommandEntryWindow  : public juce::AlertWindow {
   CommandEntryWindow(const String& caption);
 
  private:
-  JUCE_DECLARE_NON_COPYABLE (CommandEntryWindow);
+  JUCE_DECLARE_NON_COPYABLE(CommandEntryWindow);
 };
 
 }  // namespace command

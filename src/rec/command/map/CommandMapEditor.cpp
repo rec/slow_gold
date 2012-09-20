@@ -12,77 +12,75 @@ TRAN(RESET_TO_DEFAULTS, "reset to defaults");
 namespace rec {
 namespace command {
 
-//==============================================================================
+namespace {
+
+const int BUTTON_HEIGHT = 20;
+const int BUTTON_PADDING = 8;
+const int TOP_RIGHT_PADDING = 6;
+
+}
+
 CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
                                    ChangeBroadcaster& b)
-    : commandManager(manager), broadcaster(b), resetButton (t_RESET_TO_DEFAULTS) {
+    : commandManager(manager), broadcaster(b),
+      resetButton (t_RESET_TO_DEFAULTS) {
 }
 
 void CommandMapEditor::initialize(const bool showResetToDefaultButton) {
-    treeItem = new CommandMapTopLevelItem(*this);
+  treeItem = new CommandMapTopLevelItem(*this);
 
-    if (showResetToDefaultButton)
-    {
-        addAndMakeVisible (&resetButton);
-        resetButton.addListener (treeItem);
-    }
+  if (showResetToDefaultButton) {
+    addAndMakeVisible (&resetButton);
+    resetButton.addListener (treeItem);
+  }
 
-    addAndMakeVisible (&tree);
-    tree.setColour (TreeView::backgroundColourId, findColour (backgroundColourId));
-    tree.setRootItemVisible (false);
-    tree.setDefaultOpenness (false);
-    tree.setRootItem (treeItem);
+  addAndMakeVisible (&tree);
+  tree.setColour (TreeView::backgroundColourId, findColour (backgroundColourId));
+  tree.setRootItemVisible (false);
+  tree.setDefaultOpenness (false);
+  tree.setRootItem (treeItem);
 }
 
-CommandMapEditor::~CommandMapEditor()
-{
-    tree.setRootItem (nullptr);
+CommandMapEditor::~CommandMapEditor() {
+  tree.setRootItem(NULL);
 }
 
 //==============================================================================
 void CommandMapEditor::setColours (const Colour& mainBackground,
-                                            const Colour& textColour)
-{
-    setColour (backgroundColourId, mainBackground);
-    setColour (textColourId, textColour);
-    tree.setColour (TreeView::backgroundColourId, mainBackground);
+                                   const Colour& textColour) {
+  setColour (backgroundColourId, mainBackground);
+  setColour (textColourId, textColour);
+  tree.setColour (TreeView::backgroundColourId, mainBackground);
 }
 
-void CommandMapEditor::parentHierarchyChanged()
-{
-    treeItem->changeListenerCallback (nullptr);
+void CommandMapEditor::parentHierarchyChanged() {
+  treeItem->changeListenerCallback(NULL);
 }
 
-void CommandMapEditor::resized()
-{
-    int h = getHeight();
+void CommandMapEditor::resized() {
+  int h = getHeight();
 
-    if (resetButton.isVisible())
-    {
-        const int buttonHeight = 20;
-        h -= buttonHeight + 8;
-        int x = getWidth() - 8;
+  if (resetButton.isVisible()) {
+    h -= BUTTON_HEIGHT + BUTTON_PADDING;
+    int x = getWidth() - BUTTON_PADDING;
 
-        resetButton.changeWidthToFitText (buttonHeight);
-        resetButton.setTopRightPosition (x, h + 6);
-    }
+    resetButton.changeWidthToFitText(BUTTON_HEIGHT);
+    resetButton.setTopRightPosition(x, h + TOP_RIGHT_PADDING);
+  }
 
-    tree.setBounds (0, 0, getWidth(), h);
+  tree.setBounds(0, 0, getWidth(), h);
 }
 
 //==============================================================================
-bool CommandMapEditor::shouldCommandBeIncluded (const CommandID commandID)
-{
-    const ApplicationCommandInfo* const ci = commandManager.getCommandForID (commandID);
+bool CommandMapEditor::shouldCommandBeIncluded(const CommandID id) {
+  const ApplicationCommandInfo* const ci = commandManager.getCommandForID(id);
 
-    return ci != nullptr && (ci->flags & ApplicationCommandInfo::hiddenFromKeyEditor) == 0;
+  return ci && !(ci->flags & ApplicationCommandInfo::hiddenFromKeyEditor);
 }
 
-bool CommandMapEditor::isCommandReadOnly (const CommandID commandID)
-{
-    const ApplicationCommandInfo* const ci = commandManager.getCommandForID (commandID);
-
-    return ci != nullptr && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor) != 0;
+bool CommandMapEditor::isCommandReadOnly(const CommandID id) {
+  const ApplicationCommandInfo* const ci = commandManager.getCommandForID(id);
+  return ci && !(ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor);
 }
 
 }  // namespace command

@@ -5,7 +5,7 @@
 namespace rec {
 namespace command {
 
-void CommandMap::operator()(const CommandMapProto& commands) {
+void CommandMap::addCommands(const CommandMapProto& commands) {
   toCommand_.clear();
   toKeys_.clear();
   for (int i = 0; i < commands.entry_size(); ++i) {
@@ -27,7 +27,7 @@ bool addKey(KeyToCommand* toCommand,
   static const int RECENT = Command::RECENT_FILES;
   static const int BEGIN = CommandIDEncoder::toCommandID(RECENT, 11);
   static const int END = CommandIDEncoder::toCommandID(RECENT, 100);
-  // TODO:  Why isn't this ever called?!?!?
+
   DLOG(INFO) << CommandIDEncoder::commandIDName(command);
   if (command >= BEGIN && command < END)
     return false;
@@ -94,8 +94,7 @@ const vector<CommandMap::Key>& CommandMap::getKeys(CommandType c) const {
 }
 
 void CommandMap::removeCommand(CommandType c, uint keyIndex) {
-  typedef CommandToKeys::iterator iterator;
-  iterator i = toKeys_.find(c);
+  CommandToKeys::iterator i = toKeys_.find(c);
   if (i == toKeys_.end()) {
     LOG(DFATAL) << "Couldn't remove message";
   } else if (i->second.size() <= keyIndex) {
@@ -107,10 +106,9 @@ void CommandMap::removeCommand(CommandType c, uint keyIndex) {
 }
 
 void CommandMap::removeKey(const Key& key) {
-  typedef CommandToKeys::iterator iterator;
   if (CommandType c = getCommand(key)) {
     toCommand_.erase(key);
-    iterator i = toKeys_.find(c);
+    CommandToKeys::iterator i = toKeys_.find(c);
     if (i == toKeys_.end()) {
       LOG(DFATAL) << "Couldn't remove message";
     } else {
