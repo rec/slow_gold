@@ -12,13 +12,13 @@ class CommandMapEditorMappingItem;
 //==============================================================================
 class CommandMapCategoryItem  : public TreeViewItem
 {
-public:
-  CommandMapCategoryItem (CommandMapEditor& owner_, const String& name);
+ public:
+  CommandMapCategoryItem (CommandMapEditor& owner, const String& name);
   virtual CommandMapEditorMappingItem* createItemComponent(CommandID cmd) const;
 
-  virtual String getUniqueName() const          { return categoryName + "_cat"; }
-  virtual bool mightContainSubItems()                 { return true; }
-  virtual int getItemHeight() const                   { return 28; }
+  virtual String getUniqueName() const { return categoryName + "_cat"; }
+  virtual bool mightContainSubItems() { return true; }
+  virtual int getItemHeight() const { return 28; }
 
   virtual void paintItem(Graphics& g, int width, int height);
   virtual void itemOpennessChanged(bool isNowOpen);
@@ -27,7 +27,7 @@ public:
   CommandMapEditor& owner;
   String categoryName;
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapCategoryItem);
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CommandMapCategoryItem);
 };
 
 

@@ -154,6 +154,11 @@ str {
   line: 32
 }
 str {
+  original: "Clear all assignments."
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 11
+}
+str {
   original: "Clear all keyboard command mappings to program default."
 }
 str {
@@ -700,6 +705,11 @@ str {
   original: "Level Meter: RMS intensity for left and right tracks."
 }
 str {
+  original: "Load assignments from file."
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 13
+}
+str {
   original: "Loop Entire Track"
   file: "rec/slow/BasicMenuMaker.cpp"
   line: 25
@@ -977,9 +987,14 @@ str {
   line: 6
 }
 str {
-  original: "reset to defaults"
+  original: "Reset to default settings."
   file: "rec/command/map/CommandMapEditor.cpp"
   line: 10
+}
+str {
+  original: "Reset to defaults"
+  file: "rec/command/map/CommandMapTopLevelItem.cpp"
+  line: 4
 }
 str {
   original: "Reset Volume"
@@ -999,6 +1014,11 @@ str {
   original: "Run this older version (%s)."
   file: "rec/app/DownloadVersion.cpp"
   line: 14
+}
+str {
+  original: "Save current assignments to file."
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 12
 }
 str {
   original: "Save just the selected portion of the transformed file in the default save format."

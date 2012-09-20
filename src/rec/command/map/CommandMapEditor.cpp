@@ -7,7 +7,10 @@
 #include "rec/command/map/CommandEntryWindow.h"
 #include "rec/command/map/CommandMapItemComponent.h"
 
-TRAN(RESET_TO_DEFAULTS, "reset to defaults");
+TRAN(RESET_TO_DEFAULTS, "Reset to default settings.");
+TRAN(CLEAR_EDITOR, "Clear all assignments.");
+TRAN(SAVE_EDITOR, "Save current assignments to file.");
+TRAN(LOAD_EDITOR, "Load assignments from file.");
 
 namespace rec {
 namespace command {
@@ -23,34 +26,36 @@ const int TOP_RIGHT_PADDING = 6;
 CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
                                    ChangeBroadcaster& b)
     : commandManager(manager), broadcaster(b),
-      resetButton (t_RESET_TO_DEFAULTS) {
+      resetButton(t_RESET_TO_DEFAULTS),
+      clearButton(t_CLEAR_EDITOR),
+      saveButton(t_SAVE_EDITOR),
+      loadButton(t_LOAD_EDITOR) {
 }
 
 void CommandMapEditor::initialize(const bool showResetToDefaultButton) {
   treeItem = new CommandMapTopLevelItem(*this);
 
   if (showResetToDefaultButton) {
-    addAndMakeVisible (&resetButton);
-    resetButton.addListener (treeItem);
+    addAndMakeVisible(&resetButton);
+    resetButton.addListener(treeItem);
   }
 
-  addAndMakeVisible (&tree);
-  tree.setColour (TreeView::backgroundColourId, findColour (backgroundColourId));
-  tree.setRootItemVisible (false);
-  tree.setDefaultOpenness (false);
-  tree.setRootItem (treeItem);
+  addAndMakeVisible(&tree);
+  tree.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
+  tree.setRootItemVisible(false);
+  tree.setDefaultOpenness(false);
+  tree.setRootItem(treeItem);
 }
 
 CommandMapEditor::~CommandMapEditor() {
   tree.setRootItem(NULL);
 }
 
-//==============================================================================
-void CommandMapEditor::setColours (const Colour& mainBackground,
+void CommandMapEditor::setColours(const Colour& mainBackground,
                                    const Colour& textColour) {
-  setColour (backgroundColourId, mainBackground);
-  setColour (textColourId, textColour);
-  tree.setColour (TreeView::backgroundColourId, mainBackground);
+  setColour(backgroundColourId, mainBackground);
+  setColour(textColourId, textColour);
+  tree.setColour(TreeView::backgroundColourId, mainBackground);
 }
 
 void CommandMapEditor::parentHierarchyChanged() {

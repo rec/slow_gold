@@ -18,8 +18,10 @@ template <typename MappingSet, typename Key>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
   GenericCommandMapEditor(ApplicationCommandManager& manager, MappingSet& m)
-    : CommandMapEditor(manager, m), mappings(m) {
+    : CommandMapEditor(manager, m), mappings_(m) {
   }
+
+  MappingSet& getMappings() { return mappings_; }
 
   // You must implement these separately for any actual instantiation of this class.
   static const String getDescription(const Key&);
@@ -32,7 +34,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
   void removeKey(const Key&);
   void addKey(CommandID, const Key&, int keyIndex);
   void removeKey(CommandID, int keyNum);
-  const Array <Key> getKeys(CommandID);
+  const Array<Key> getKeys(CommandID);
   CommandEntryWindow* newWindow();
 
   const String getKeyMessage(const Key& key) {
@@ -41,37 +43,32 @@ class GenericCommandMapEditor : public CommandMapEditor {
 
     if (previousCommand) {
       String pn = getCommandManager().getNameOfCommand(previousCommand);
-    message += currentlyAssignedTo(pn);
+      message += currentlyAssignedTo(pn);
     }
     return message;
   }
 
-  void setNewKey (CommandMapEditButton* button, const Key& newKey, bool dontAskUser)
-  {
-      if (isValid(newKey))
-      {
-        const CommandID previousCommand = getCommand(newKey);
+  void setNewKey(CommandMapEditButton* button, const Key& newKey, bool dontAskUser) {
+    if (isValid(newKey)) {
+      const CommandID previousCommand = getCommand(newKey);
 
-          if (previousCommand == 0 || dontAskUser)
-          {
-              removeKey (newKey);
+      if (previousCommand == 0 || dontAskUser) {
+        removeKey (newKey);
 
-              if (button->keyNum >= 0)
-                removeKey (button->commandID, button->keyNum);
+        if (button->keyNum >= 0)
+          removeKey (button->commandID, button->keyNum);
 
-              addKey(button->commandID, newKey, button->keyNum);
-          }
-          else
-          {
-            showCommandMapBox(commandManager.getNameOfCommand (previousCommand),
-                              this,
-                              ModalCallbackFunction::forComponent(GenericCommandMapEditor<MappingSet, Key>::assignNewKeyCallback,
-                                                                  button, Key (newKey)));
-          }
+        addKey(button->commandID, newKey, button->keyNum);
+      } else {
+        showCommandMapBox(commandManager.getNameOfCommand (previousCommand),
+                          this,
+                          ModalCallbackFunction::forComponent(
+                              GenericCommandMapEditor<MappingSet, Key>::assignNewKeyCallback,
+                              button,
+                              Key(newKey)));
       }
+    }
   }
-
-  MappingSet& getMappings() { return mappings; }
 
   virtual const String getDescriptionForKey(const Key& key) const {
     return getDescription(key);
@@ -99,7 +96,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
   static const int MAX_NUM_ASSIGNMENTS = 3;
 
  private:
-  MappingSet& mappings;
+  MappingSet& mappings_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GenericCommandMapEditor);
 };

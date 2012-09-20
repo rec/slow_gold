@@ -4,43 +4,56 @@
 namespace rec {
 namespace command {
 
+namespace {
+
+const float HEIGHT_RATIO = 0.7f;
+const int TEXT_X_MARGIN = 4;
+const int TEXT_X_OFFSET = 1;
+const int TEXT_X_TOTAL = TEXT_X_MARGIN + TEXT_X_OFFSET;
+const int TEXT_WIDTH_MAX = 40;
+const int TEXT_Y_MARGIN = 1;
+
+}  // namespace
+
 CommandMapItemComponent::CommandMapItemComponent(CommandMapEditor& owner_,
                                                  const CommandID commandID_)
     : commandID (commandID_), owner(owner_) {
   setInterceptsMouseClicks (false, true);
-
   owner.addChildren(this);
 }
 
-void CommandMapItemComponent::addButton(const String& desc, const int index, const bool isReadOnly)
-{
-  CommandMapEditButton* const b = new CommandMapEditButton(owner, commandID, desc, index);
+void CommandMapItemComponent::addButton(const String& desc, int index,
+                                        bool isReadOnly) {
+  CommandMapEditButton* const b = new CommandMapEditButton(owner, commandID,
+                                                           desc, index);
   buttons.add (b);
 
-  b->setEnabled (! isReadOnly);
-  b->setVisible (buttons.size() <= (int) maxNumAssignments);
-  addChildComponent (b);
+  b->setEnabled(!isReadOnly);
+  b->setVisible(buttons.size() <= (int) maxNumAssignments);
+  addChildComponent(b);
 }
 
 void CommandMapItemComponent::paint(Graphics& g) {
-  g.setFont (getHeight() * 0.7f);
-  g.setColour (findColour (CommandMapEditor::textColourId));
+  g.setFont(getHeight() * HEIGHT_RATIO);
+  g.setColour(findColour(CommandMapEditor::textColourId));
 
-  g.drawFittedText (owner.getCommandManager().getNameOfCommand (commandID),
-                    4, 0, jmax (40, getChildComponent (0)->getX() - 5), getHeight(),
-                    Justification::centredLeft, true);
+  g.drawFittedText(owner.getCommandManager().getNameOfCommand(commandID),
+                   TEXT_X_MARGIN, 0,
+                   jmax(TEXT_WIDTH_MAX,
+                        getChildComponent(0)->getX() - TEXT_X_TOTAL),
+                   getHeight(),
+                   Justification::centredLeft, true);
 }
 
 void CommandMapItemComponent::resized() {
-  int x = getWidth() - 4;
+  int x = getWidth() - TEXT_X_MARGIN;
 
-  for (int i = buttons.size(); --i >= 0;)
-  {
-      CommandMapEditButton* const b = buttons.getUnchecked(i);
+  for (int i = buttons.size(); --i >= 0;) {
+    CommandMapEditButton* const b = buttons.getUnchecked(i);
 
-      b->fitToContent (getHeight() - 2);
-      b->setTopRightPosition (x, 1);
-      x = b->getX() - 5;
+    b->fitToContent(getHeight() - 2 * TEXT_Y_MARGIN);
+    b->setTopRightPosition(x, TEXT_Y_MARGIN);
+    x = b->getX() - TEXT_X_TOTAL;
   }
 }
 

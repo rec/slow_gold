@@ -9,17 +9,17 @@ namespace command {
 class CommandMapTopLevelItem : public TreeViewItem,
                                public ChangeListener,
                                public ButtonListener {
-public:
-  explicit CommandMapTopLevelItem (CommandMapEditor&);
+ public:
+  explicit CommandMapTopLevelItem(CommandMapEditor&);
   ~CommandMapTopLevelItem();
 
-    bool mightContainSubItems()       { return true; }
-    String getUniqueName() const      { return "keys"; }
+  bool mightContainSubItems()       { return true; }
+  String getUniqueName() const      { return "keys"; }
 
-  void changeListenerCallback (ChangeBroadcaster*);
+  void changeListenerCallback(ChangeBroadcaster*);
   static void resetToDefaultsCallback(int result, CommandMapEditor* owner) {}
 
-  void buttonClicked (Button*);
+  virtual void buttonClicked(Button*);
 
  protected:
   CommandMapEditor& owner;

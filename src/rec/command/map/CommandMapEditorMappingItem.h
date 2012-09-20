@@ -6,29 +6,25 @@
 namespace rec {
 namespace command {
 
-//==============================================================================
-class CommandMapEditorMappingItem  : public TreeViewItem
-{
-public:
-    CommandMapEditorMappingItem (CommandMapEditor& owner_, const CommandID commandID_)
-        : owner (owner_), commandID (commandID_)
-    {
-    }
+class CommandMapEditorMappingItem  : public TreeViewItem {
+ public:
+  CommandMapEditorMappingItem (CommandMapEditor& owner_, const CommandID commandID_)
+      : owner (owner_), commandID (commandID_) {
+  }
 
-    String getUniqueName() const          { return String ((int) commandID) + "_id"; }
-    bool mightContainSubItems()                 { return false; }
-    int getItemHeight() const                   { return 20; }
+  String getUniqueName() const { return String ((int) commandID) + "_id"; }
+  bool mightContainSubItems() { return false; }
+  int getItemHeight() const { return 20; }
 
-    Component* createItemComponent()
-    {
-        return new CommandMapItemComponent(owner, commandID);
-    }
+  Component* createItemComponent() {
+    return new CommandMapItemComponent(owner, commandID);
+  }
 
-private:
-    CommandMapEditor& owner;
-    const CommandID commandID;
+ private:
+  CommandMapEditor& owner;
+  const CommandID commandID;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapEditorMappingItem);
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapEditorMappingItem);
 };
 
 }  // namespace command

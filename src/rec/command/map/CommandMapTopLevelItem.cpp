@@ -25,23 +25,21 @@ void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
 
   const StringArray categories (owner.getCommandManager().getCommandCategories());
 
-  for (int i = 0; i < categories.size(); ++i)
-  {
-      const String& cat = categories[i];
-      const Array <CommandID> commands (owner.getCommandManager().getCommandsInCategory (cat));
-      int count = 0;
+  for (int i = 0; i < categories.size(); ++i) {
+    const String& cat = categories[i];
+    const Array <CommandID> commands (owner.getCommandManager().getCommandsInCategory (cat));
+    int count = 0;
 
-      for (int j = 0; j < commands.size(); ++j)
-          if (owner.shouldCommandBeIncluded (commands[j]))
-              ++count;
+    for (int j = 0; j < commands.size(); ++j)
+      if (owner.shouldCommandBeIncluded (commands[j]))
+        ++count;
 
-      if (count > 0)
-          addSubItem (new CommandMapCategoryItem(owner, cat));
-      else if (cat != t_NONE) {
-        LOG(DFATAL) << "Nothing in category " << str(cat)
-                   << ", " << commands.size();
-      }
-
+    if (count > 0) {
+      addSubItem (new CommandMapCategoryItem(owner, cat));
+    } else if (cat != t_NONE) {
+      LOG(DFATAL) << "Nothing in category " << str(cat)
+                  << ", " << commands.size();
+    }
   }
 }
 
@@ -54,7 +52,7 @@ void CommandMapTopLevelItem::buttonClicked (Button*)
       t_RESET,
       String::empty,
       &owner,
-      ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));
+      ModalCallbackFunction::forComponent(resetToDefaultsCallback, &owner));
 }
 
 }  // namespace command

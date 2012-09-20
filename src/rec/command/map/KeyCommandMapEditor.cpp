@@ -12,24 +12,18 @@ namespace {
 
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:
-    KeyCommandEntryWindow(KeyCommandMapEditor& owner_)
+  KeyCommandEntryWindow(KeyCommandMapEditor& owner_)
       : CommandEntryWindow(t_PRESS_A_KEY), owner(owner_) {
-    }
+  }
 
-    bool keyPressed (const KeyPress& key)
-    {
-        lastKey_ = key;
-        setMessage(owner.getKeyMessage(key));
-        return true;
-    }
-#if 0
-    bool keyStateChanged (bool)
-    {
-        return true;
-    }
-#endif
-    KeyPress lastKey_;
-    KeyCommandMapEditor& owner;
+  bool keyPressed(const KeyPress& key) {
+    lastKey_ = key;
+    setMessage(owner.getKeyMessage(key));
+    return true;
+  }
+
+  KeyPress lastKey_;
+  KeyCommandMapEditor& owner;
 };
 
 }  // namespace
@@ -44,12 +38,12 @@ const String KeyCommandMapEditor::getDescription(const KeyPress& key) {
 
 template <>
 void KeyCommandMapEditor::removeKey(CommandID command, int keyNum) {
-  mappings.removeKeyPress(command, keyNum);
+  mappings_.removeKeyPress(command, keyNum);
 }
 
 template <>
 const Array<KeyPress> KeyCommandMapEditor::getKeys(CommandID cmd) {
-  return mappings.getKeyPressesAssignedToCommand(cmd);
+  return mappings_.getKeyPressesAssignedToCommand(cmd);
 }
 
 template <>
@@ -59,17 +53,18 @@ bool KeyCommandMapEditor::isValid(const KeyPress& key) {
 
 template <>
 CommandID KeyCommandMapEditor::getCommand(const KeyPress& key) {
-  return mappings.findCommandForKeyPress (key);
+  return mappings_.findCommandForKeyPress (key);
 }
 
 template <>
 void KeyCommandMapEditor::removeKey(const KeyPress& key) {
-  mappings.removeKeyPress (key);
+  mappings_.removeKeyPress (key);
 }
 
 template <>
-void KeyCommandMapEditor::addKey(CommandID cmd, const KeyPress& key, int keyIndex) {
-  mappings.addKeyPress(cmd, key, keyIndex);
+void KeyCommandMapEditor::addKey(CommandID cmd, const KeyPress& key,
+                                 int keyIndex) {
+  mappings_.addKeyPress(cmd, key, keyIndex);
 }
 
 template <>
@@ -78,24 +73,27 @@ CommandEntryWindow* KeyCommandMapEditor::newWindow() {
 }
 
 template <>
-void KeyCommandMapEditor::keyChosen (int result, CommandMapEditButton* button)
-{
-    KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(button->getCommandEntryWindow());
-    if (result != 0 && button != nullptr && window != nullptr)
-    {
-        window->setVisible (false);
-        window->owner.setNewKey (button, window->lastKey_, false);
-    }
+void KeyCommandMapEditor::keyChosen(int result,
+                                    CommandMapEditButton* button) {
+  KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(
+      button->getCommandEntryWindow());
+  if (result != 0 && button != nullptr && window != nullptr) {
+    window->setVisible (false);
+    window->owner.setNewKey (button, window->lastKey_, false);
+  }
 
-    button->setCommandEntryWindow();
+  button->setCommandEntryWindow();
 }
 
 template <>
-void KeyCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton* button, KeyPress key) {
-     if (result != 0 && button != nullptr) {
-         KeyCommandMapEditor* editor = dynamic_cast<KeyCommandMapEditor*>(&button->getOwner());
-         editor->setNewKey (button, key, true);
-     }
+void KeyCommandMapEditor::assignNewKeyCallback(int result,
+                                               CommandMapEditButton* button,
+                                               KeyPress key) {
+  if (result != 0 && button != nullptr) {
+    KeyCommandMapEditor* editor = dynamic_cast<KeyCommandMapEditor*>(
+        &button->getOwner());
+    editor->setNewKey(button, key, true);
+  }
 }
 
 }  // namespace command
