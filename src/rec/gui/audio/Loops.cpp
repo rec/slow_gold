@@ -15,6 +15,10 @@
 #include "rec/util/range/Range.h"
 #include "rec/util/thread/CallAsync.h"
 
+// TODO: remove this dependency.
+#include "rec/slow/Instance.h"
+#include "rec/audio/source/Player.h"
+
 namespace rec {
 namespace gui {
 namespace audio {
@@ -137,6 +141,14 @@ void Loops::selectedRowsChanged(int) {
   }
   if (changed)
     setProto(viewport_);
+}
+
+void Loops::cellDoubleClicked(int rowNumber, int, const MouseEvent&) {
+  LoopPointList* lpl = viewport_.mutable_loop_points();
+  for (int i = 0; i < lpl->loop_point_size(); ++i)
+    lpl->mutable_loop_point(i)->set_selected(i == rowNumber);
+  setProto(viewport_);
+  slow::Instance::getInstance()->player_->start();
 }
 
 bool Loops::selected(int r) const {

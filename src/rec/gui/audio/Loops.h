@@ -32,6 +32,8 @@ class Loops : public TableController,
   virtual void setFieldValue(int column, int row, const String& text);
   virtual String displayText(int column, int row) const;
   virtual String getCellTooltip(int column, int row) const;
+  virtual void cellDoubleClicked(int rowNumber, int columnId,
+                                 const MouseEvent&);
 
   virtual bool selected(int row) const;
 

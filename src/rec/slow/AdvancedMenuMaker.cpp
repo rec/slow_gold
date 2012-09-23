@@ -15,12 +15,10 @@ using namespace rec::command;
 void AdvancedMenuMaker::addEditMenu() {
   BasicMenuMaker::addEditMenu();
 
-#ifdef NEW_FEATURES
   addSeparator();
 
   addEnabled(Command::COPY_ALL_LOOP_POINTS, !empty_);
   addEnabled(Command::PASTE_OVER_LOOP_POINTS, !empty_);
-#endif
 
   addSeparator();
 

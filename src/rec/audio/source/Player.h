@@ -45,6 +45,7 @@ class Player : public DataListener<Gain>,
 
   void broadcastState();
   void toggle() { setState(invert(state())); }
+  void start() { setState(transport::RUNNING); }
 
   void setNextReadPosition(const SampleTime&);
   SampleTime getNextReadPosition();

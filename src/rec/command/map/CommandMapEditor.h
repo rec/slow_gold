@@ -56,6 +56,8 @@ class JUCE_API CommandMapEditor : public Component {
   virtual void resized();
 
  protected:
+  void addButton(TextButton*);
+
   ApplicationCommandManager& commandManager;
   ChangeBroadcaster& broadcaster;
   TreeView tree;

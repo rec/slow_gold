@@ -7,10 +7,10 @@
 #include "rec/command/map/CommandEntryWindow.h"
 #include "rec/command/map/CommandMapItemComponent.h"
 
-TRAN(RESET_TO_DEFAULTS, "Reset to default settings.");
-TRAN(CLEAR_EDITOR, "Clear all assignments.");
-TRAN(SAVE_EDITOR, "Save current assignments to file.");
-TRAN(LOAD_EDITOR, "Load assignments from file.");
+TRAN(RESET_TO_DEFAULTS, "Reset to default");
+TRAN(CLEAR_EDITOR, "Clear all");
+TRAN(SAVE_EDITOR, "Save");
+TRAN(LOAD_EDITOR, "Load");
 
 namespace rec {
 namespace command {
@@ -18,7 +18,8 @@ namespace command {
 namespace {
 
 const int BUTTON_HEIGHT = 20;
-const int BUTTON_PADDING = 8;
+const int BUTTON_X_PADDING = 8;
+const int BUTTON_Y_PADDING = 8;
 const int TOP_RIGHT_PADDING = 6;
 
 }
@@ -32,12 +33,21 @@ CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
       loadButton(t_LOAD_EDITOR) {
 }
 
+void CommandMapEditor::addButton(TextButton* button) {
+  addAndMakeVisible(button);
+  button->addListener(treeItem);
+}
+
 void CommandMapEditor::initialize(const bool showResetToDefaultButton) {
   treeItem = new CommandMapTopLevelItem(*this);
 
   if (showResetToDefaultButton) {
-    addAndMakeVisible(&resetButton);
-    resetButton.addListener(treeItem);
+    addButton(&resetButton);
+#if 0
+    addButton(&clearButton);
+    addButton(&saveButton);
+    addButton(&loadButton);
+#endif
   }
 
   addAndMakeVisible(&tree);
@@ -66,8 +76,8 @@ void CommandMapEditor::resized() {
   int h = getHeight();
 
   if (resetButton.isVisible()) {
-    h -= BUTTON_HEIGHT + BUTTON_PADDING;
-    int x = getWidth() - BUTTON_PADDING;
+    h -= BUTTON_HEIGHT + BUTTON_Y_PADDING;
+    int x = getWidth() - BUTTON_X_PADDING;
 
     resetButton.changeWidthToFitText(BUTTON_HEIGHT);
     resetButton.setTopRightPosition(x, h + TOP_RIGHT_PADDING);
