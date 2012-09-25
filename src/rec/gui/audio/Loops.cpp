@@ -19,6 +19,11 @@
 #include "rec/slow/Instance.h"
 #include "rec/audio/source/Player.h"
 
+// TODO: this text is duplicated in Loops.cpp.
+
+TRAN(LOOP_POINT_NAME_HELP, "Loop Point Name: Edit the Loop Point's name "
+     "by clicking here.");
+
 namespace rec {
 namespace gui {
 namespace audio {
@@ -181,9 +186,7 @@ void Loops::update() {
 }
 
 String Loops::getCellTooltip(int, int) const {
-  // TODO: this text is duplicated in Loops.cpp.
-  return Trans("Loop Point Name: Edit the Loop Point's name "
-               "by clicking here.");
+  return t_LOOP_POINT_NAME_HELP;
 }
 
 void Loops::editViewport(const widget::waveform::Viewport& viewport) {
