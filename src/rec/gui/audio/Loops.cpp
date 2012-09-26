@@ -179,7 +179,6 @@ void Loops::update() {
 
   if (sel != getSelectedRows())
     setSelectedRows(sel, false);
-
   updateContent();
   TableController::update();
   repaint();

@@ -36,8 +36,23 @@
                        winWarningLevel="3"/>
       </CONFIGURATIONS>
     </VS2010>
+    <VS2012 bigIcon="wiIhPYIwK" extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="
+            extraLinkerFlags=" ippacemerged.lib ippacmerged.lib ippcorel.lib ippsemerged.lib ippsmerged.lib ippsremerged.lib ippsrmerged.lib  rubberband-library.lib libglog_static.lib libmpg123.lib  libprotobuf.lib  /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd /NODEFAULTLIB:MSVCRT"
+            juceFolder="../../../juce/modules" libraryType="1" smallIcon="k8EMdGWkD"
+            targetFolder="Builds/VisualStudio2012">
+      <CONFIGURATIONS>
+        <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
+                       isDebug="1" libraryPath="..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\debug\\static;..\\..\\..\\..\\..\\glog\\Debug;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug "
+                       name="Debug" optimisation="1" targetName="SlowGold 8" winArchitecture="32-bit"
+                       winWarningLevel="3"/>
+        <CONFIGURATION generateManifest="1" headerPath="c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
+                       isDebug="0" libraryPath=";..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\common;..\\..\\..\\..\\externals\\rubberband\\win32\\ipp\\release\\static;..\\..\\..\\..\\..\\glog\\Release;..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Release;..\\..\\..\\..\\..\\protobuf\\vsprojects\\Release"
+                       name="Release" optimisation="2" targetName="SlowGold 8" winArchitecture="32-bit"
+                       winWarningLevel="3"/>
+      </CONFIGURATIONS>
+    </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="EnzVYTNpp" name="SlowGold">
+  <MAINGROUP id="kZjhXWWRG" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -1642,7 +1657,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="KorkVcR0q" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="sRwXnhe3U" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

@@ -114,11 +114,11 @@ class TableLabel : public SimpleLabel {
       SimpleLabel::setText(s, false);
   }
 
- private:
   TableController* const table_;
-  const int col_;
-  const int row_;
+  int col_;
+  int row_;
 
+ private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TableLabel);
 };
 
@@ -130,16 +130,21 @@ Component* TableController::refreshComponentForCell(int row, int columnId,
   TableLabel* text = dynamic_cast<TableLabel*>(existing);
   if (!text) {
     DCHECK(!existing);
-    if (editable(column))
-      text = new TableLabel(this, column, row);
+    if (!editable(column))
+      return NULL;
+    text = new TableLabel(this, column, row);
+  } else {
+    text->col_ = column;
+    text->row_ = row;
+    DCHECK_EQ(column, text->col_);
+    DCHECK_EQ(row, text->row_);
   }
 
-  if (text) {
-    text->setText(displayText(column, row));
-    text->setTooltip(getCellTooltip(column, row));
-    text->setEditorBackground(selected(row) ? SELECTED_COLOR :
+  String s = displayText(column, row);
+  text->setText(s);
+  text->setTooltip(getCellTooltip(column, row));
+  text->setEditorBackground(selected(row) ? SELECTED_COLOR :
                               UNSELECTED_COLOR);
-  }
 
   return text;
 }
