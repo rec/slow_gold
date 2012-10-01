@@ -1,6 +1,7 @@
 #include "rec/command/map/CommandMapEditor.h"
 
 #include "rec/base/Trans.h"
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/map/CommandMapEditButton.h"
 #include "rec/command/map/CommandMapEditorMappingItem.h"
 #include "rec/command/map/CommandMapTopLevelItem.h"
@@ -95,7 +96,8 @@ bool CommandMapEditor::shouldCommandBeIncluded(const CommandID id) {
 
 bool CommandMapEditor::isCommandReadOnly(const CommandID id) {
   const ApplicationCommandInfo* const ci = commandManager.getCommandForID(id);
-  return ci && !(ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor);
+  DCHECK(ci);
+  return ci && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor);
 }
 
 }  // namespace command

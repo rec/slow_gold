@@ -43,8 +43,7 @@ void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
   }
 }
 
-void CommandMapTopLevelItem::buttonClicked (Button*)
-{
+void CommandMapTopLevelItem::buttonClicked (Button*) {
   AlertWindow::showOkCancelBox(
       AlertWindow::QuestionIcon,
       t_RESET_TO_DEFAULTS,
