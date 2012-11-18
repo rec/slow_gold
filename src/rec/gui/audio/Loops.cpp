@@ -178,7 +178,7 @@ void Loops::update() {
   }
 
   if (sel != getSelectedRows())
-    setSelectedRows(sel, false);
+    setSelectedRows(sel, juce::dontSendNotification);
   updateContent();
   TableController::update();
   repaint();

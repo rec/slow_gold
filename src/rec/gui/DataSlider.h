@@ -33,7 +33,9 @@ class DataSlider : public Layout,
   DetentSlider* slider() { return &slider_; }
 
  protected:
-  void setSliderValue(double value) { slider_.setValue(value, false); }
+  void setSliderValue(double value) {
+    slider_.setValue(value, juce::dontSendNotification);
+  }
 
   DetentSlider slider_;
   SimpleLabel caption_;

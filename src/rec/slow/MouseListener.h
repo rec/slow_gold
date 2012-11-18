@@ -53,6 +53,7 @@ class MouseListener : public HasInstance,
   Range<SampleTime > cursorRestrict_;
   Mode mode_;
   Mode previousMode_;
+  bool groupingUndoEvents_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MouseListener);
 };

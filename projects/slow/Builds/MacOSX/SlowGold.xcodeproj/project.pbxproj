@@ -1804,6 +1804,7 @@
 		F123E264145CD4EF1A17D1F1 /* juce_LookAndFeel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_LookAndFeel.cpp; path = ../../../../../juce/modules/juce_gui_basics/lookandfeel/juce_LookAndFeel.cpp; sourceTree = SOURCE_ROOT; };
 		F12B522844051A408EFD0886 /* BasicMenuMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BasicMenuMaker.h; path = ../../../../src/rec/slow/BasicMenuMaker.h; sourceTree = SOURCE_ROOT; };
 		F1A62FEBDB6E1BA6693089CB /* ApplyCallbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ApplyCallbacks.cpp; path = ../../../../src/rec/slow/callbacks/ApplyCallbacks.cpp; sourceTree = SOURCE_ROOT; };
+		F1D6A6E1409AF234C691235D /* juce_NotificationType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_NotificationType.h; path = ../../../../../juce/modules/juce_events/messages/juce_NotificationType.h; sourceTree = SOURCE_ROOT; };
 		F1DBBE19A6FB4129F0479A45 /* juce_MenuBarComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_MenuBarComponent.cpp; path = ../../../../../juce/modules/juce_gui_basics/menus/juce_MenuBarComponent.cpp; sourceTree = SOURCE_ROOT; };
 		F1E9DF115E159E00F6546A6B /* juce_win32_DirectSound.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_DirectSound.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_win32_DirectSound.cpp; sourceTree = SOURCE_ROOT; };
 		F222A149E88783B0E70A5558 /* SetterText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterText.h; path = ../../../../src/rec/gui/SetterText.h; sourceTree = SOURCE_ROOT; };
@@ -3944,6 +3945,7 @@
 				D751E28B6229A71B8EBF0645 /* juce_MessageListener.h */,
 				87E18E21DD0DCD0998109589 /* juce_MessageManager.cpp */,
 				93768F6FFB654FC04ED5642B /* juce_MessageManager.h */,
+				F1D6A6E1409AF234C691235D /* juce_NotificationType.h */,
 			);
 			name = messages;
 			sourceTree = "<group>";

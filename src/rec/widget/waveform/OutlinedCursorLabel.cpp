@@ -1,5 +1,7 @@
 #include "rec/widget/waveform/OutlinedCursorLabel.h"
 
+#include "rec/data/DataCenter.h"
+#include "rec/data/UndoStack.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -69,12 +71,16 @@ void OutlinedCursorLabel::textEditorTextChanged(TextEditor& e) {
   cursor_->setText(e.getText());
 }
 
+static const bool FIX = true;
+
 void OutlinedCursorLabel::editorShown(TextEditor*) {
   if (showSelectionButtons_)
     removeChildComponent(&selectButton_);
+  data::getDataCenter().undoStack()->startGroup();
 }
 
 void OutlinedCursorLabel::editorAboutToBeHidden(TextEditor*) {
+  data::getDataCenter().undoStack()->stopGroup();
   if (showSelectionButtons_)
     addAndMakeVisible(&selectButton_);
 }

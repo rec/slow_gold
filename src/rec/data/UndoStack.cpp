@@ -134,5 +134,17 @@ void UndoStack::setEnabled(bool e) {
   enabled_ = e;
 }
 
+void UndoStack::startGroup() {
+  Lock l(lock_);
+  group_ = true;
+  DLOG(INFO) << "group on";
+}
+
+void UndoStack::stopGroup() {
+  Lock l(lock_);
+  group_ = false;
+  DLOG(INFO) << "group off";
+}
+
 }  // namespace data
 }  // namespace rec

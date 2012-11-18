@@ -25,8 +25,8 @@ class UndoStack : public Broadcaster<None> {
   void undo();
   void redo();
   void setEnabled(bool e = true);
-  void startGroup() { Lock l(lock_); group_ = true; }
-  void stopGroup() { Lock l(lock_); group_ = false; }
+  void startGroup();
+  void stopGroup();
 
  private:
   void undoOrRedo(bool isUndo);

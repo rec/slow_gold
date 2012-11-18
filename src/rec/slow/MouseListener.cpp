@@ -38,7 +38,7 @@ using namespace rec::gui::audio;
 using namespace rec::widget::waveform;
 
 MouseListener::MouseListener(Instance* i)
-    : HasInstance(i), waveformDragStart_(0) {
+    : HasInstance(i), waveformDragStart_(0), groupingUndoEvents_(false) {
   components()->waveform_->addMouseListener(this, true);
   Broadcaster<const MouseWheelEvent&> *w = components()->waveform_.get();
   w->addListener(this);
@@ -68,11 +68,12 @@ void MouseListener::mouseDown(const MouseEvent& e) {
   if (currentFile()->empty())
     return;
 
-  data::getDataCenter().undoStack()->startGroup();
-
   Waveform* waveform = components()->waveform_.get();
-  if (e.eventComponent == waveform)
+  if (e.eventComponent == waveform) {
+    data::getDataCenter().undoStack()->startGroup();
+    groupingUndoEvents_ = true;
     clickWaveform(e, waveform);
+  }
 
   else if (Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent))
     clickCursor(cursor);
@@ -100,7 +101,8 @@ void MouseListener::mouseUp(const MouseEvent&) {
   if (!currentFile()->empty())
     components()->waveform_->setIsDraggingCursor(false);
 
-  data::getDataCenter().undoStack()->stopGroup();
+  if (groupingUndoEvents_)
+    data::getDataCenter().undoStack()->stopGroup();
 }
 
 Mode::Action MouseListener::getClickAction() {
