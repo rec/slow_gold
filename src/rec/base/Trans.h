@@ -38,12 +38,6 @@ class Trans {
 #endif
 };
 
-#define TRTR(NAME, TEXT)                      \
-  const Trans NAME(TEXT, __FILE__, __LINE__)
-
-#define TRTR2(NAME, TEXT, HINT)                \
-  const Trans NAME(TEXT, HINT, __FILE__, __LINE__)
-
 #define TRAN(NAME, TEXT)                      \
   const rec::Trans t_ ## NAME(TEXT, __FILE__, __LINE__)
 

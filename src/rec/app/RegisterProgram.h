@@ -15,7 +15,8 @@ class RegisterProgram : public Thread {
     StringFunction function_;
   };
 
-  RegisterProgram(const String& name) : Thread(name) {}
+  explicit RegisterProgram(const String& name) : Thread(name) {}
+
   virtual ~RegisterProgram() {}
 
   virtual Range<const char* const*> getEnvironmentVariables() const = 0;

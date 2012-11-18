@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "rec/audio/OutputSampleRate.h"
 #include "rec/audio/format/Manager.h"
 #include "rec/base/SampleRate.h"

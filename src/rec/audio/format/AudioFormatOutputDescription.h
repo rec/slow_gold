@@ -3,14 +3,13 @@
 
 namespace juce {
 
-struct AudioFormatOutputDescription
-{
-    unsigned int channels;
-    int bitsPerSample;
-    int sampleRate;
+struct AudioFormatOutputDescription {
+  unsigned int channels;
+  int bitsPerSample;
+  int sampleRate;
 
-    String encoderName;       // The name of the output encoder:  mp3, wav, aiff, etc.
-    StringPair encoderHints;  // Name/value pairs which might be meaningful to the encoder.
+  String encoderName;       // name of the output encoder:  mp3, wav, aiff, etc.
+  StringPair encoderHints;  // Name/value pairs which might be meaningful to the encoder.
 };
 
 #if 0

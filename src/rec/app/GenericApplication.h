@@ -13,7 +13,7 @@ namespace app {
 class GenericApplication;
 class Window;
 
-typedef void (*ApplicationFunction)(GenericApplication*);
+typedef void (*ApplicationFunction)(GenericApplication* app);
 
 class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
  public:
@@ -33,7 +33,10 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   virtual void anotherInstanceStarted(const String& s);
   virtual void systemRequestedQuit();
 
-  virtual void operator()(bool disabled) { Lock l(lock_); disabled_ = disabled; }
+  virtual void operator()(bool disabled) {
+    Lock l(lock_);
+    disabled_ = disabled;
+  }
 
   const String version() const { return ProjectInfo::versionString; }
   const String name() const { return ProjectInfo::projectName; }

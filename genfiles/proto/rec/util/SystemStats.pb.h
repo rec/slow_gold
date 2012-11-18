@@ -91,133 +91,143 @@ class SystemStats : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional string juce_version = 1;
+  // optional string slow_version = 1;
+  inline bool has_slow_version() const;
+  inline void clear_slow_version();
+  static const int kSlowVersionFieldNumber = 1;
+  inline const ::std::string& slow_version() const;
+  inline void set_slow_version(const ::std::string& value);
+  inline void set_slow_version(const char* value);
+  inline void set_slow_version(const char* value, size_t size);
+  inline ::std::string* mutable_slow_version();
+  
+  // optional string juce_version = 2;
   inline bool has_juce_version() const;
   inline void clear_juce_version();
-  static const int kJuceVersionFieldNumber = 1;
+  static const int kJuceVersionFieldNumber = 2;
   inline const ::std::string& juce_version() const;
   inline void set_juce_version(const ::std::string& value);
   inline void set_juce_version(const char* value);
   inline void set_juce_version(const char* value, size_t size);
   inline ::std::string* mutable_juce_version();
   
-  // optional uint32 operating_system_type = 2;
+  // optional uint32 operating_system_type = 3;
   inline bool has_operating_system_type() const;
   inline void clear_operating_system_type();
-  static const int kOperatingSystemTypeFieldNumber = 2;
+  static const int kOperatingSystemTypeFieldNumber = 3;
   inline ::google::protobuf::uint32 operating_system_type() const;
   inline void set_operating_system_type(::google::protobuf::uint32 value);
   
-  // optional string operating_system_name = 3;
+  // optional string operating_system_name = 4;
   inline bool has_operating_system_name() const;
   inline void clear_operating_system_name();
-  static const int kOperatingSystemNameFieldNumber = 3;
+  static const int kOperatingSystemNameFieldNumber = 4;
   inline const ::std::string& operating_system_name() const;
   inline void set_operating_system_name(const ::std::string& value);
   inline void set_operating_system_name(const char* value);
   inline void set_operating_system_name(const char* value, size_t size);
   inline ::std::string* mutable_operating_system_name();
   
-  // optional bool is_operating_system_64_bit = 4;
+  // optional bool is_operating_system_64_bit = 5;
   inline bool has_is_operating_system_64_bit() const;
   inline void clear_is_operating_system_64_bit();
-  static const int kIsOperatingSystem64BitFieldNumber = 4;
+  static const int kIsOperatingSystem64BitFieldNumber = 5;
   inline bool is_operating_system_64_bit() const;
   inline void set_is_operating_system_64_bit(bool value);
   
-  // optional uint32 osx_minor_version_number = 5;
+  // optional uint32 osx_minor_version_number = 6;
   inline bool has_osx_minor_version_number() const;
   inline void clear_osx_minor_version_number();
-  static const int kOsxMinorVersionNumberFieldNumber = 5;
+  static const int kOsxMinorVersionNumberFieldNumber = 6;
   inline ::google::protobuf::uint32 osx_minor_version_number() const;
   inline void set_osx_minor_version_number(::google::protobuf::uint32 value);
   
-  // optional string logon_name = 6;
+  // optional string logon_name = 7;
   inline bool has_logon_name() const;
   inline void clear_logon_name();
-  static const int kLogonNameFieldNumber = 6;
+  static const int kLogonNameFieldNumber = 7;
   inline const ::std::string& logon_name() const;
   inline void set_logon_name(const ::std::string& value);
   inline void set_logon_name(const char* value);
   inline void set_logon_name(const char* value, size_t size);
   inline ::std::string* mutable_logon_name();
   
-  // optional string full_user_name = 7;
+  // optional string full_user_name = 8;
   inline bool has_full_user_name() const;
   inline void clear_full_user_name();
-  static const int kFullUserNameFieldNumber = 7;
+  static const int kFullUserNameFieldNumber = 8;
   inline const ::std::string& full_user_name() const;
   inline void set_full_user_name(const ::std::string& value);
   inline void set_full_user_name(const char* value);
   inline void set_full_user_name(const char* value, size_t size);
   inline ::std::string* mutable_full_user_name();
   
-  // optional string computer_name = 8;
+  // optional string computer_name = 9;
   inline bool has_computer_name() const;
   inline void clear_computer_name();
-  static const int kComputerNameFieldNumber = 8;
+  static const int kComputerNameFieldNumber = 9;
   inline const ::std::string& computer_name() const;
   inline void set_computer_name(const ::std::string& value);
   inline void set_computer_name(const char* value);
   inline void set_computer_name(const char* value, size_t size);
   inline ::std::string* mutable_computer_name();
   
-  // optional uint32 num_cpus = 9;
+  // optional uint32 num_cpus = 10;
   inline bool has_num_cpus() const;
   inline void clear_num_cpus();
-  static const int kNumCpusFieldNumber = 9;
+  static const int kNumCpusFieldNumber = 10;
   inline ::google::protobuf::uint32 num_cpus() const;
   inline void set_num_cpus(::google::protobuf::uint32 value);
   
-  // optional uint32 cpu_speed_in_megahertz = 10;
+  // optional uint32 cpu_speed_in_megahertz = 11;
   inline bool has_cpu_speed_in_megahertz() const;
   inline void clear_cpu_speed_in_megahertz();
-  static const int kCpuSpeedInMegahertzFieldNumber = 10;
+  static const int kCpuSpeedInMegahertzFieldNumber = 11;
   inline ::google::protobuf::uint32 cpu_speed_in_megahertz() const;
   inline void set_cpu_speed_in_megahertz(::google::protobuf::uint32 value);
   
-  // optional string cpu_vendor = 11;
+  // optional string cpu_vendor = 12;
   inline bool has_cpu_vendor() const;
   inline void clear_cpu_vendor();
-  static const int kCpuVendorFieldNumber = 11;
+  static const int kCpuVendorFieldNumber = 12;
   inline const ::std::string& cpu_vendor() const;
   inline void set_cpu_vendor(const ::std::string& value);
   inline void set_cpu_vendor(const char* value);
   inline void set_cpu_vendor(const char* value, size_t size);
   inline ::std::string* mutable_cpu_vendor();
   
-  // optional bool has_mmx = 12;
+  // optional bool has_mmx = 13;
   inline bool has_has_mmx() const;
   inline void clear_has_mmx();
-  static const int kHasMmxFieldNumber = 12;
+  static const int kHasMmxFieldNumber = 13;
   inline bool has_mmx() const;
   inline void set_has_mmx(bool value);
   
-  // optional bool has_sse = 13;
+  // optional bool has_sse = 14;
   inline bool has_has_sse() const;
   inline void clear_has_sse();
-  static const int kHasSseFieldNumber = 13;
+  static const int kHasSseFieldNumber = 14;
   inline bool has_sse() const;
   inline void set_has_sse(bool value);
   
-  // optional bool has_sse2 = 14;
+  // optional bool has_sse2 = 15;
   inline bool has_has_sse2() const;
   inline void clear_has_sse2();
-  static const int kHasSse2FieldNumber = 14;
+  static const int kHasSse2FieldNumber = 15;
   inline bool has_sse2() const;
   inline void set_has_sse2(bool value);
   
-  // optional bool has_3dnow = 15;
+  // optional bool has_3dnow = 16;
   inline bool has_has_3dnow() const;
   inline void clear_has_3dnow();
-  static const int kHas3DnowFieldNumber = 15;
+  static const int kHas3DnowFieldNumber = 16;
   inline bool has_3dnow() const;
   inline void set_has_3dnow(bool value);
   
-  // optional uint32 memory_size_in_megabytes = 16;
+  // optional uint32 memory_size_in_megabytes = 17;
   inline bool has_memory_size_in_megabytes() const;
   inline void clear_memory_size_in_megabytes();
-  static const int kMemorySizeInMegabytesFieldNumber = 16;
+  static const int kMemorySizeInMegabytesFieldNumber = 17;
   inline ::google::protobuf::uint32 memory_size_in_megabytes() const;
   inline void set_memory_size_in_megabytes(::google::protobuf::uint32 value);
   
@@ -226,6 +236,8 @@ class SystemStats : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
+  ::std::string* slow_version_;
+  static const ::std::string _default_slow_version_;
   ::std::string* juce_version_;
   static const ::std::string _default_juce_version_;
   ::google::protobuf::uint32 operating_system_type_;
@@ -252,7 +264,7 @@ class SystemStats : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2futil_2fSystemStats_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fSystemStats_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(16 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(17 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -275,415 +287,457 @@ class SystemStats : public ::google::protobuf::Message {
 
 // SystemStats
 
-// optional string juce_version = 1;
-inline bool SystemStats::has_juce_version() const {
+// optional string slow_version = 1;
+inline bool SystemStats::has_slow_version() const {
   return _has_bit(0);
+}
+inline void SystemStats::clear_slow_version() {
+  if (slow_version_ != &_default_slow_version_) {
+    slow_version_->clear();
+  }
+  _clear_bit(0);
+}
+inline const ::std::string& SystemStats::slow_version() const {
+  return *slow_version_;
+}
+inline void SystemStats::set_slow_version(const ::std::string& value) {
+  _set_bit(0);
+  if (slow_version_ == &_default_slow_version_) {
+    slow_version_ = new ::std::string;
+  }
+  slow_version_->assign(value);
+}
+inline void SystemStats::set_slow_version(const char* value) {
+  _set_bit(0);
+  if (slow_version_ == &_default_slow_version_) {
+    slow_version_ = new ::std::string;
+  }
+  slow_version_->assign(value);
+}
+inline void SystemStats::set_slow_version(const char* value, size_t size) {
+  _set_bit(0);
+  if (slow_version_ == &_default_slow_version_) {
+    slow_version_ = new ::std::string;
+  }
+  slow_version_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SystemStats::mutable_slow_version() {
+  _set_bit(0);
+  if (slow_version_ == &_default_slow_version_) {
+    slow_version_ = new ::std::string;
+  }
+  return slow_version_;
+}
+
+// optional string juce_version = 2;
+inline bool SystemStats::has_juce_version() const {
+  return _has_bit(1);
 }
 inline void SystemStats::clear_juce_version() {
   if (juce_version_ != &_default_juce_version_) {
     juce_version_->clear();
   }
-  _clear_bit(0);
+  _clear_bit(1);
 }
 inline const ::std::string& SystemStats::juce_version() const {
   return *juce_version_;
 }
 inline void SystemStats::set_juce_version(const ::std::string& value) {
-  _set_bit(0);
+  _set_bit(1);
   if (juce_version_ == &_default_juce_version_) {
     juce_version_ = new ::std::string;
   }
   juce_version_->assign(value);
 }
 inline void SystemStats::set_juce_version(const char* value) {
-  _set_bit(0);
+  _set_bit(1);
   if (juce_version_ == &_default_juce_version_) {
     juce_version_ = new ::std::string;
   }
   juce_version_->assign(value);
 }
 inline void SystemStats::set_juce_version(const char* value, size_t size) {
-  _set_bit(0);
+  _set_bit(1);
   if (juce_version_ == &_default_juce_version_) {
     juce_version_ = new ::std::string;
   }
   juce_version_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* SystemStats::mutable_juce_version() {
-  _set_bit(0);
+  _set_bit(1);
   if (juce_version_ == &_default_juce_version_) {
     juce_version_ = new ::std::string;
   }
   return juce_version_;
 }
 
-// optional uint32 operating_system_type = 2;
+// optional uint32 operating_system_type = 3;
 inline bool SystemStats::has_operating_system_type() const {
-  return _has_bit(1);
+  return _has_bit(2);
 }
 inline void SystemStats::clear_operating_system_type() {
   operating_system_type_ = 0u;
-  _clear_bit(1);
+  _clear_bit(2);
 }
 inline ::google::protobuf::uint32 SystemStats::operating_system_type() const {
   return operating_system_type_;
 }
 inline void SystemStats::set_operating_system_type(::google::protobuf::uint32 value) {
-  _set_bit(1);
+  _set_bit(2);
   operating_system_type_ = value;
 }
 
-// optional string operating_system_name = 3;
+// optional string operating_system_name = 4;
 inline bool SystemStats::has_operating_system_name() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void SystemStats::clear_operating_system_name() {
   if (operating_system_name_ != &_default_operating_system_name_) {
     operating_system_name_->clear();
   }
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline const ::std::string& SystemStats::operating_system_name() const {
   return *operating_system_name_;
 }
 inline void SystemStats::set_operating_system_name(const ::std::string& value) {
-  _set_bit(2);
+  _set_bit(3);
   if (operating_system_name_ == &_default_operating_system_name_) {
     operating_system_name_ = new ::std::string;
   }
   operating_system_name_->assign(value);
 }
 inline void SystemStats::set_operating_system_name(const char* value) {
-  _set_bit(2);
+  _set_bit(3);
   if (operating_system_name_ == &_default_operating_system_name_) {
     operating_system_name_ = new ::std::string;
   }
   operating_system_name_->assign(value);
 }
 inline void SystemStats::set_operating_system_name(const char* value, size_t size) {
-  _set_bit(2);
+  _set_bit(3);
   if (operating_system_name_ == &_default_operating_system_name_) {
     operating_system_name_ = new ::std::string;
   }
   operating_system_name_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* SystemStats::mutable_operating_system_name() {
-  _set_bit(2);
+  _set_bit(3);
   if (operating_system_name_ == &_default_operating_system_name_) {
     operating_system_name_ = new ::std::string;
   }
   return operating_system_name_;
 }
 
-// optional bool is_operating_system_64_bit = 4;
+// optional bool is_operating_system_64_bit = 5;
 inline bool SystemStats::has_is_operating_system_64_bit() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void SystemStats::clear_is_operating_system_64_bit() {
   is_operating_system_64_bit_ = false;
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline bool SystemStats::is_operating_system_64_bit() const {
   return is_operating_system_64_bit_;
 }
 inline void SystemStats::set_is_operating_system_64_bit(bool value) {
-  _set_bit(3);
+  _set_bit(4);
   is_operating_system_64_bit_ = value;
 }
 
-// optional uint32 osx_minor_version_number = 5;
+// optional uint32 osx_minor_version_number = 6;
 inline bool SystemStats::has_osx_minor_version_number() const {
-  return _has_bit(4);
+  return _has_bit(5);
 }
 inline void SystemStats::clear_osx_minor_version_number() {
   osx_minor_version_number_ = 0u;
-  _clear_bit(4);
+  _clear_bit(5);
 }
 inline ::google::protobuf::uint32 SystemStats::osx_minor_version_number() const {
   return osx_minor_version_number_;
 }
 inline void SystemStats::set_osx_minor_version_number(::google::protobuf::uint32 value) {
-  _set_bit(4);
+  _set_bit(5);
   osx_minor_version_number_ = value;
 }
 
-// optional string logon_name = 6;
+// optional string logon_name = 7;
 inline bool SystemStats::has_logon_name() const {
-  return _has_bit(5);
+  return _has_bit(6);
 }
 inline void SystemStats::clear_logon_name() {
   if (logon_name_ != &_default_logon_name_) {
     logon_name_->clear();
   }
-  _clear_bit(5);
+  _clear_bit(6);
 }
 inline const ::std::string& SystemStats::logon_name() const {
   return *logon_name_;
 }
 inline void SystemStats::set_logon_name(const ::std::string& value) {
-  _set_bit(5);
+  _set_bit(6);
   if (logon_name_ == &_default_logon_name_) {
     logon_name_ = new ::std::string;
   }
   logon_name_->assign(value);
 }
 inline void SystemStats::set_logon_name(const char* value) {
-  _set_bit(5);
+  _set_bit(6);
   if (logon_name_ == &_default_logon_name_) {
     logon_name_ = new ::std::string;
   }
   logon_name_->assign(value);
 }
 inline void SystemStats::set_logon_name(const char* value, size_t size) {
-  _set_bit(5);
+  _set_bit(6);
   if (logon_name_ == &_default_logon_name_) {
     logon_name_ = new ::std::string;
   }
   logon_name_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* SystemStats::mutable_logon_name() {
-  _set_bit(5);
+  _set_bit(6);
   if (logon_name_ == &_default_logon_name_) {
     logon_name_ = new ::std::string;
   }
   return logon_name_;
 }
 
-// optional string full_user_name = 7;
+// optional string full_user_name = 8;
 inline bool SystemStats::has_full_user_name() const {
-  return _has_bit(6);
+  return _has_bit(7);
 }
 inline void SystemStats::clear_full_user_name() {
   if (full_user_name_ != &_default_full_user_name_) {
     full_user_name_->clear();
   }
-  _clear_bit(6);
+  _clear_bit(7);
 }
 inline const ::std::string& SystemStats::full_user_name() const {
   return *full_user_name_;
 }
 inline void SystemStats::set_full_user_name(const ::std::string& value) {
-  _set_bit(6);
+  _set_bit(7);
   if (full_user_name_ == &_default_full_user_name_) {
     full_user_name_ = new ::std::string;
   }
   full_user_name_->assign(value);
 }
 inline void SystemStats::set_full_user_name(const char* value) {
-  _set_bit(6);
+  _set_bit(7);
   if (full_user_name_ == &_default_full_user_name_) {
     full_user_name_ = new ::std::string;
   }
   full_user_name_->assign(value);
 }
 inline void SystemStats::set_full_user_name(const char* value, size_t size) {
-  _set_bit(6);
+  _set_bit(7);
   if (full_user_name_ == &_default_full_user_name_) {
     full_user_name_ = new ::std::string;
   }
   full_user_name_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* SystemStats::mutable_full_user_name() {
-  _set_bit(6);
+  _set_bit(7);
   if (full_user_name_ == &_default_full_user_name_) {
     full_user_name_ = new ::std::string;
   }
   return full_user_name_;
 }
 
-// optional string computer_name = 8;
+// optional string computer_name = 9;
 inline bool SystemStats::has_computer_name() const {
-  return _has_bit(7);
+  return _has_bit(8);
 }
 inline void SystemStats::clear_computer_name() {
   if (computer_name_ != &_default_computer_name_) {
     computer_name_->clear();
   }
-  _clear_bit(7);
+  _clear_bit(8);
 }
 inline const ::std::string& SystemStats::computer_name() const {
   return *computer_name_;
 }
 inline void SystemStats::set_computer_name(const ::std::string& value) {
-  _set_bit(7);
+  _set_bit(8);
   if (computer_name_ == &_default_computer_name_) {
     computer_name_ = new ::std::string;
   }
   computer_name_->assign(value);
 }
 inline void SystemStats::set_computer_name(const char* value) {
-  _set_bit(7);
+  _set_bit(8);
   if (computer_name_ == &_default_computer_name_) {
     computer_name_ = new ::std::string;
   }
   computer_name_->assign(value);
 }
 inline void SystemStats::set_computer_name(const char* value, size_t size) {
-  _set_bit(7);
+  _set_bit(8);
   if (computer_name_ == &_default_computer_name_) {
     computer_name_ = new ::std::string;
   }
   computer_name_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* SystemStats::mutable_computer_name() {
-  _set_bit(7);
+  _set_bit(8);
   if (computer_name_ == &_default_computer_name_) {
     computer_name_ = new ::std::string;
   }
   return computer_name_;
 }
 
-// optional uint32 num_cpus = 9;
+// optional uint32 num_cpus = 10;
 inline bool SystemStats::has_num_cpus() const {
-  return _has_bit(8);
+  return _has_bit(9);
 }
 inline void SystemStats::clear_num_cpus() {
   num_cpus_ = 0u;
-  _clear_bit(8);
+  _clear_bit(9);
 }
 inline ::google::protobuf::uint32 SystemStats::num_cpus() const {
   return num_cpus_;
 }
 inline void SystemStats::set_num_cpus(::google::protobuf::uint32 value) {
-  _set_bit(8);
+  _set_bit(9);
   num_cpus_ = value;
 }
 
-// optional uint32 cpu_speed_in_megahertz = 10;
+// optional uint32 cpu_speed_in_megahertz = 11;
 inline bool SystemStats::has_cpu_speed_in_megahertz() const {
-  return _has_bit(9);
+  return _has_bit(10);
 }
 inline void SystemStats::clear_cpu_speed_in_megahertz() {
   cpu_speed_in_megahertz_ = 0u;
-  _clear_bit(9);
+  _clear_bit(10);
 }
 inline ::google::protobuf::uint32 SystemStats::cpu_speed_in_megahertz() const {
   return cpu_speed_in_megahertz_;
 }
 inline void SystemStats::set_cpu_speed_in_megahertz(::google::protobuf::uint32 value) {
-  _set_bit(9);
+  _set_bit(10);
   cpu_speed_in_megahertz_ = value;
 }
 
-// optional string cpu_vendor = 11;
+// optional string cpu_vendor = 12;
 inline bool SystemStats::has_cpu_vendor() const {
-  return _has_bit(10);
+  return _has_bit(11);
 }
 inline void SystemStats::clear_cpu_vendor() {
   if (cpu_vendor_ != &_default_cpu_vendor_) {
     cpu_vendor_->clear();
   }
-  _clear_bit(10);
+  _clear_bit(11);
 }
 inline const ::std::string& SystemStats::cpu_vendor() const {
   return *cpu_vendor_;
 }
 inline void SystemStats::set_cpu_vendor(const ::std::string& value) {
-  _set_bit(10);
+  _set_bit(11);
   if (cpu_vendor_ == &_default_cpu_vendor_) {
     cpu_vendor_ = new ::std::string;
   }
   cpu_vendor_->assign(value);
 }
 inline void SystemStats::set_cpu_vendor(const char* value) {
-  _set_bit(10);
+  _set_bit(11);
   if (cpu_vendor_ == &_default_cpu_vendor_) {
     cpu_vendor_ = new ::std::string;
   }
   cpu_vendor_->assign(value);
 }
 inline void SystemStats::set_cpu_vendor(const char* value, size_t size) {
-  _set_bit(10);
+  _set_bit(11);
   if (cpu_vendor_ == &_default_cpu_vendor_) {
     cpu_vendor_ = new ::std::string;
   }
   cpu_vendor_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* SystemStats::mutable_cpu_vendor() {
-  _set_bit(10);
+  _set_bit(11);
   if (cpu_vendor_ == &_default_cpu_vendor_) {
     cpu_vendor_ = new ::std::string;
   }
   return cpu_vendor_;
 }
 
-// optional bool has_mmx = 12;
+// optional bool has_mmx = 13;
 inline bool SystemStats::has_has_mmx() const {
-  return _has_bit(11);
+  return _has_bit(12);
 }
 inline void SystemStats::clear_has_mmx() {
   has_mmx_ = false;
-  _clear_bit(11);
+  _clear_bit(12);
 }
 inline bool SystemStats::has_mmx() const {
   return has_mmx_;
 }
 inline void SystemStats::set_has_mmx(bool value) {
-  _set_bit(11);
+  _set_bit(12);
   has_mmx_ = value;
 }
 
-// optional bool has_sse = 13;
+// optional bool has_sse = 14;
 inline bool SystemStats::has_has_sse() const {
-  return _has_bit(12);
+  return _has_bit(13);
 }
 inline void SystemStats::clear_has_sse() {
   has_sse_ = false;
-  _clear_bit(12);
+  _clear_bit(13);
 }
 inline bool SystemStats::has_sse() const {
   return has_sse_;
 }
 inline void SystemStats::set_has_sse(bool value) {
-  _set_bit(12);
+  _set_bit(13);
   has_sse_ = value;
 }
 
-// optional bool has_sse2 = 14;
+// optional bool has_sse2 = 15;
 inline bool SystemStats::has_has_sse2() const {
-  return _has_bit(13);
+  return _has_bit(14);
 }
 inline void SystemStats::clear_has_sse2() {
   has_sse2_ = false;
-  _clear_bit(13);
+  _clear_bit(14);
 }
 inline bool SystemStats::has_sse2() const {
   return has_sse2_;
 }
 inline void SystemStats::set_has_sse2(bool value) {
-  _set_bit(13);
+  _set_bit(14);
   has_sse2_ = value;
 }
 
-// optional bool has_3dnow = 15;
+// optional bool has_3dnow = 16;
 inline bool SystemStats::has_has_3dnow() const {
-  return _has_bit(14);
+  return _has_bit(15);
 }
 inline void SystemStats::clear_has_3dnow() {
   has_3dnow_ = false;
-  _clear_bit(14);
+  _clear_bit(15);
 }
 inline bool SystemStats::has_3dnow() const {
   return has_3dnow_;
 }
 inline void SystemStats::set_has_3dnow(bool value) {
-  _set_bit(14);
+  _set_bit(15);
   has_3dnow_ = value;
 }
 
-// optional uint32 memory_size_in_megabytes = 16;
+// optional uint32 memory_size_in_megabytes = 17;
 inline bool SystemStats::has_memory_size_in_megabytes() const {
-  return _has_bit(15);
+  return _has_bit(16);
 }
 inline void SystemStats::clear_memory_size_in_megabytes() {
   memory_size_in_megabytes_ = 0u;
-  _clear_bit(15);
+  _clear_bit(16);
 }
 inline ::google::protobuf::uint32 SystemStats::memory_size_in_megabytes() const {
   return memory_size_in_megabytes_;
 }
 inline void SystemStats::set_memory_size_in_megabytes(::google::protobuf::uint32 value) {
-  _set_bit(15);
+  _set_bit(16);
   memory_size_in_megabytes_ = value;
 }
 

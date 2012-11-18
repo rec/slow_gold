@@ -7,6 +7,8 @@ SystemStats getSystemStats() {
   typedef juce::SystemStats SS;
 
   SystemStats ss;
+  ss.set_slow_version(str(juce::JUCEApplication::getInstance()->
+                          getApplicationVersion()));
   ss.set_juce_version(str(SS::getJUCEVersion()));
   ss.set_operating_system_type(SS::getOperatingSystemType());
   ss.set_operating_system_name(str(SS::getOperatingSystemName()));

@@ -53,16 +53,16 @@ template<> int Copy<unsigned int,   int>::cast(unsigned int x)   { return int(in
 
 Copier getCopier(int encoding) {
   switch (encoding) {
-   case MPG123_ENC_FLOAT_32:     return &Copy<float,  float>::copy;
+   case MPG123_ENC_FLOAT_32:     return &Copy<float, float>::copy;
    case MPG123_ENC_FLOAT_64:     return &Copy<double, float>::copy;
 
-   case MPG123_ENC_SIGNED_16:    return &Copy<short,  int>::copy;
-   case MPG123_ENC_SIGNED_32:    return &Copy<int,    int>::copy;
-   case MPG123_ENC_SIGNED_8:     return &Copy<char,   int>::copy;
+   case MPG123_ENC_SIGNED_16:    return &Copy<short, int>::copy;
+   case MPG123_ENC_SIGNED_32:    return &Copy<int, int>::copy;
+   case MPG123_ENC_SIGNED_8:     return &Copy<char, int>::copy;
 
    case MPG123_ENC_UNSIGNED_16:  return &Copy<ushort, int>::copy;
-   case MPG123_ENC_UNSIGNED_32:  return &Copy<uint,   int>::copy;
-   case MPG123_ENC_UNSIGNED_8:   return &Copy<uchar,  int>::copy;
+   case MPG123_ENC_UNSIGNED_32:  return &Copy<uint, int>::copy;
+   case MPG123_ENC_UNSIGNED_8:   return &Copy<uchar, int>::copy;
 
    default: return NULL;
   }

@@ -14,7 +14,7 @@ then
      -I \"$INSTALL_DIR/include\" \
      --cpp_out=\"$PROTO_ROOT\" \
      --python_out=\"$PROTO_ROOT\" \
-     \"$SRC_ROOT\"/$@"
+     /$@"
   echo "Creating $@"
 fi
 

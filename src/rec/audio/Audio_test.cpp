@@ -9,7 +9,7 @@ namespace audio {
 
 TEST(Audio, Convert) {
   for (int i = -32768; i <= 32767; ++i) {
-    short s = i, s2;
+    int16 s = i, s2;
     float f;
     convertSample(s, &f);
     convertSample(f, &s2);
