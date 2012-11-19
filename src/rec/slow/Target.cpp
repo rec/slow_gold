@@ -20,27 +20,12 @@ namespace rec {
 namespace slow {
 
 bool Target::perform(const InvocationInfo& invocation) {
-	if (invocation.commandID != Command::ABOUT_THIS_PROGRAM) {
-    if (window())
-      thread::callAsync(window(), &app::Window::stopAboutWindow);
-  }
+  CommandID id = invocation.commandID;
+	if (id != Command::ABOUT_THIS_PROGRAM && window())
+    thread::callAsync(window(), &app::Window::stopAboutWindow);
 
   Lock l(lock_);
-  if (enabled_ == DISABLE)
-    return true;
-
-  CommandID id = invocation.commandID;
-  CommandRecord* cr = commandRecordTable()->find(id);
-  if (!cr) {
-    LOG(DFATAL) << "No get record for " << CommandIDEncoder::commandIDName(id);
-    return false;
-  }
-
-  if (!cr->callback_)
-    return false;
-
-  (*(cr->callback_))();
-  return true;
+  return (enable_ == DISABLE) || commandRecordTable()->perform(id);
 }
 
 void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
@@ -71,9 +56,9 @@ void Target::operator()(CommandID id) {
     LOG(DFATAL) << "Failed to invoke " << CommandIDEncoder::commandIDName(id);
 }
 
-void Target::operator()(Enable enabled) {
+void Target::operator()(Enable enable) {
   Lock l(lock_);
-  enabled_ = enabled;
+  enable_ = enable;
 }
 
 }  // namespace slow

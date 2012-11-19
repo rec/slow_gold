@@ -19,7 +19,7 @@ class Target : public HasInstance,
                public Listener<Enable>,
                public Listener<CommandID> {
  public:
-  explicit Target(Instance* i) : HasInstance(i), enabled_(ENABLE) {}
+  explicit Target(Instance* i) : HasInstance(i), enable_(ENABLE) {}
   virtual ~Target() {}
 
   virtual void operator()(CommandID);
@@ -35,7 +35,7 @@ class Target : public HasInstance,
 
  private:
   CriticalSection lock_;
-  Enable enabled_;
+  Enable enable_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Target);
 };

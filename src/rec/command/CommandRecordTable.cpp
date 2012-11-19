@@ -59,5 +59,22 @@ void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
   create(id)->callback_.reset(cb);
 }
 
+bool CommandRecordTable::perform(CommandID id) {
+  CommandRecord* cr = find(id);
+  if (!cr) {
+    LOG(DFATAL) << "No record for " << CommandIDEncoder::commandIDName(id);
+    return false;
+  }
+
+  if (!cr->callback_) {
+    LOG(DFATAL) << "No callback for " << CommandIDEncoder::commandIDName(id);
+    return false;
+  }
+
+  (*(cr->callback_))();
+  return true;
+
+}
+
 }  // namespace command
 }  // namespace rec

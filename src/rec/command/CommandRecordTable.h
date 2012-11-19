@@ -17,9 +17,10 @@ class CommandRecordTable : public CallbackTable {
 
   const Commands getCommands() const;
   void getAllCommands(juce::Array<CommandID>*);
-  CommandRecord* find(CommandID id);
-  CommandRecord* create(CommandID id);
-  virtual void addCallback(CommandID id, Callback* cb);
+  CommandRecord* find(CommandID);
+  CommandRecord* create(CommandID);
+  bool perform(CommandID);
+  virtual void addCallback(CommandID, Callback*);
 
  private:
   typedef std::map<CommandID, CommandRecord*> Table;
