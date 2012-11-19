@@ -10,6 +10,7 @@
 namespace rec {
 
 namespace audio { class Device; }
+namespace command { class CommandRecordTable; }
 namespace command { class MidiCommandMap; }
 namespace audio { namespace source { class Player; }}
 namespace audio { namespace util { class BufferFiller; }}
@@ -71,6 +72,7 @@ class Instance {
   thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
+  ptr<command::CommandRecordTable> commandRecordTable_;
 
   static Instance* getInstance();
   static const VirtualFile getInstanceFile();

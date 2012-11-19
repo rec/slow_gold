@@ -41,6 +41,7 @@ const Commands CommandRecordTable::getCommands() const {
 }
 
 void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
+  Lock l(lock_);
   commands->clear();
   Table::const_iterator i;
   for (i = table_.begin(); i != table_.end(); ++i) {
@@ -50,6 +51,8 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
 }
 
 void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
+  Lock l(lock_);
+
   CommandRecord* cr = find(id, true);
   if (cr->callback_)
     LOG(DFATAL) << "Repeated callback " << CommandIDEncoder::commandIDName(id);

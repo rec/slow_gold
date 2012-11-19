@@ -107,7 +107,6 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
       stack_.push_back(ue.transfer());
     }
   }
-  LOG(INFO) << stack_.size() << ", " << undoes_;
   broadcast(None());
 }
 

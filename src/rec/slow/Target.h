@@ -2,7 +2,6 @@
 #define __REC_SLOW_SLOWTARGET__
 
 #include "rec/command/CommandRecord.h"
-#include "rec/command/CommandRecordTable.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/Listener.h"
 
@@ -10,6 +9,7 @@ namespace rec {
 
 namespace command { class CommandData; }
 namespace command { class CommandTarget; }
+namespace command { class CommandRecordTable; }
 
 namespace slow {
 
@@ -24,10 +24,12 @@ class Target : public HasInstance,
   explicit Target(Instance* instance);
   virtual ~Target();
 
-  const command::CommandRecordTable& commandRecordTable() const {
-    return table_;
+ private:
+  command::CommandRecordTable* table() const {
+    return instance_->commandRecordTable_.get();
   }
 
+ public:
   ApplicationCommandManager* applicationCommandManager() {
     return &commandManager_;
   }
@@ -55,10 +57,8 @@ class Target : public HasInstance,
 
   command::CommandRecord* find(CommandID);
 
-
  private:
   ApplicationCommandManager commandManager_;
-  command::CommandRecordTable table_;
   ptr<ApplicationCommandTarget> target_;
   ptr<command::CommandData> commandData_;
 

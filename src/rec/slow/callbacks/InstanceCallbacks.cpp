@@ -89,7 +89,7 @@ void clearKeyboardMappings() {
                                    t_CLEAR_KEYBOARD_MAPPINGS_FULL,
                                    t_OK, t_CANCEL)) {
     Instance* i = Instance::getInstance();
-    command::clearKeyboardBindings(i->target_->commandRecordTable(),
+    command::clearKeyboardBindings(*i->commandRecordTable_,
                                    i->target_->applicationCommandManager());
 
   }

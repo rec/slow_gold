@@ -4,6 +4,7 @@
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandTarget.h"
 #include "rec/command/KeyboardBindings.h"
 #include "rec/command/map/MidiCommandMap.h"
@@ -22,7 +23,7 @@ namespace slow {
 Target::Target(Instance* i)
     : HasInstance(i),
       disabled_(false) {
-  target_.reset(new CommandTarget(this, &table_));
+  target_.reset(new CommandTarget(this, i->commandRecordTable_.get()));
   commandData_.reset(slow::createSlowCommandData(i));
   commandManager_.setFirstCommandTarget(target_.get());
   i->window_->addKeyListener(commandManager_.getKeyMappings());
@@ -33,9 +34,9 @@ Target::Target(Instance* i)
 Target::~Target() {}
 
 void Target::addCommands() {
-  command::fillCommandRecordTable(&table_, *commandData_);
+  command::fillCommandRecordTable(table(), *commandData_);
   commandManager_.registerAllCommandsForTarget(target_.get());
-  loadKeyboardBindings(table_, &commandManager_);
+  loadKeyboardBindings(*table(), &commandManager_);
   window()->getAppleMenu()->addCommandItem(&commandManager_,
                                            Command::ABOUT_THIS_PROGRAM);
 }
@@ -111,7 +112,7 @@ void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
 
 command::CommandRecord* Target::find(CommandID id) {
   Lock l(lock_);
-  return table_.find(id);
+  return table()->find(id);
 }
 
 void Target::operator()(CommandID id) {
