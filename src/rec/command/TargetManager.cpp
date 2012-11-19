@@ -17,14 +17,15 @@ namespace command {
 
 TargetManager::TargetManager(CommandData* commandData,
                              ApplicationCommandManager* commandManager,
-                             CommandRecordTable* table)
+                             CommandRecordTable* table,
+                             ApplicationCommandTarget* target)
     : lastInvocation_(0),
       disabled_(false),
       commandData_(commandData),
       commandManager_(commandManager),
-      table_(table) {
-  target_.reset(new CommandTarget(this, table_));
-  commandManager_->setFirstCommandTarget(target_.get());
+      table_(table),
+      target_(target) {
+  commandManager_->setFirstCommandTarget(target_);
 }
 
 TargetManager:: ~TargetManager() {}
@@ -106,7 +107,7 @@ CommandRecord* TargetManager::find(CommandID id) {
 
 void TargetManager::addCommands() {
   fillCommandRecordTable(table_, *commandData_);
-  commandManager_->registerAllCommandsForTarget(target_.get());
+  commandManager_->registerAllCommandsForTarget(target_);
   loadKeyboardBindings(this);
 }
 

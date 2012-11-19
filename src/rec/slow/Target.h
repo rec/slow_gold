@@ -6,6 +6,7 @@
 
 namespace rec {
 
+namespace command { class CommandTarget; }
 namespace command { class MidiCommandMap; }
 namespace command { class TargetManager; }
 
@@ -33,6 +34,7 @@ class Target : public HasInstance, public Listener<None> {
   command::CommandRecordTable table_;
   ptr<command::TargetManager> targetManager_;
   ptr<command::MidiCommandMap> midiCommandMap_;
+  ptr<ApplicationCommandTarget> target_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Target);
 };

@@ -3,6 +3,7 @@
 #include "rec/audio/Device.h"
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/CommandTarget.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/command/TargetManager.h"
 #include "rec/data/DataOps.h"
@@ -19,10 +20,13 @@ namespace slow {
 
 Target::Target(Instance* i)
     : HasInstance(i),
-      targetManager_(new command::TargetManager(slow::createSlowCommandData(i),
-                                                &commandManager_,
-                                                &table_)),
       midiCommandMap_(new command::MidiCommandMap(&commandManager_)) {
+  target_.reset(new CommandTarget(this, &table_));
+  targetManager_.reset(
+      new command::TargetManager(slow::createSlowCommandData(i),
+                                 &commandManager_,
+                                 &table_,
+                                 target_.get()));
   i->window_->addKeyListener(commandManager_.getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());

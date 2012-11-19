@@ -3,14 +3,15 @@
 
 #include "rec/command/CommandRecord.h"
 #include "rec/command/TargetManager.h"
+#include "rec/slow/Target.h"
 
 namespace rec {
 namespace command {
 
 class CommandTarget : public ApplicationCommandTarget {
  public:
-  explicit CommandTarget(TargetManager* tm, CommandRecordTable* table)
-      : targetManager_(tm), table_(table) {
+  explicit CommandTarget(slow::Target* tm, CommandRecordTable* table)
+      : target_(tm), table_(table) {
   }
 
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
@@ -20,7 +21,7 @@ class CommandTarget : public ApplicationCommandTarget {
   }
 
   virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-    info = *targetManager_->find(id)->getInfo();
+    info = *target_->targetManager()->find(id)->getInfo();
 
     if (!info.shortName.isNotEmpty())
       LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
@@ -29,11 +30,11 @@ class CommandTarget : public ApplicationCommandTarget {
   }
 
   virtual bool perform(const InvocationInfo& info) {
-    return targetManager_->perform(info);
+    return target_->targetManager()->perform(info);
   }
 
  private:
-  TargetManager* const targetManager_;
+  slow::Target* const target_;
   CommandRecordTable* const table_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandTarget);

@@ -21,7 +21,8 @@ class TargetManager : public Listener<CommandID>,
                       public Listener<bool>,
                       public Broadcaster<None> {
  public:
-  TargetManager(CommandData*, ApplicationCommandManager*, CommandRecordTable*);
+  TargetManager(CommandData*, ApplicationCommandManager*, CommandRecordTable*,
+                ApplicationCommandTarget*);
   virtual ~TargetManager();
 
   void addCommands();
@@ -54,7 +55,7 @@ class TargetManager : public Listener<CommandID>,
                       const String& name,
                       int flags);
   CommandRecordTable* commandRecordTable() { return table_; }
-  ApplicationCommandTarget* target() { return target_.get(); }
+  ApplicationCommandTarget* target() { return target_; }
   CommandRecord* find(CommandID);
 
  private:
@@ -66,7 +67,7 @@ class TargetManager : public Listener<CommandID>,
   ApplicationCommandManager* commandManager_;
   CommandRecordTable* table_;
 
-  ptr<ApplicationCommandTarget> target_;
+  ApplicationCommandTarget* target_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TargetManager);
 };
