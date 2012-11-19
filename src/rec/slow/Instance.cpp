@@ -13,6 +13,7 @@
 #include "rec/base/DropDead.h"
 #include "rec/base/SampleRate.h"
 #include "rec/data/DataCenter.h"
+#include "rec/command/map/MidiCommandMap.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/Opener.h"
 #include "rec/data/UndoStack.h"
@@ -139,34 +140,25 @@ void Instance::init() {
   device_.reset(new audio::Device);
   currentFile_.reset(new CurrentFile(this));
 
-  doLog("Player");
   player_.reset(new audio::source::Player(device_.get()));
 
-  doLog("Player initialize");
   player_->init();
-
-  doLog("Components");
   components_.reset(new Components(this));
-
-  doLog("Target");
   target_.reset(new Target(this));
-
-  doLog("CurrentTime");
   currentTime_.reset(new CurrentTime(this));
-
-  doLog("BufferFiller");
   bufferFiller_.reset(new BufferFiller);
-
-  doLog("LookAndFeel");
   lookAndFeel_.reset(new gui::LookAndFeel);
-
-  doLog("MouseListener");
   mouseListener_.reset(new MouseListener(this));
   guiListener_.reset(new GuiListener(this));
   fillerThread_.reset(new FillerThread(this));
+  midiCommandMap_.reset(new command::MidiCommandMap(
+       target_->applicationCommandManager()));
+
+  device_->manager_.addMidiInputCallback("", midiCommandMap_.get());
+  midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
+
   threads_.reset(new Threads(this));
 
-  doLog("Components::init");
   components_->init();
 
   fillerThread_->setPriority(FILLER_PRIORITY);
@@ -218,6 +210,7 @@ audio::Source* Instance::makeSource() const {
 }
 
 Instance::~Instance() {
+  device_->manager_.removeMidiInputCallback("", midiCommandMap_.get());
   player_->setState(audio::transport::STOPPED);
   device_->shutdown();
   threads_.reset();

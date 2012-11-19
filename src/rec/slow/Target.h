@@ -10,7 +10,6 @@ namespace rec {
 
 namespace command { class CommandData; }
 namespace command { class CommandTarget; }
-namespace command { class MidiCommandMap; }
 
 namespace slow {
 
@@ -25,13 +24,15 @@ class Target : public HasInstance,
   explicit Target(Instance* instance);
   virtual ~Target();
 
-  command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
   const command::CommandRecordTable& commandRecordTable() const {
     return table_;
   }
+
   ApplicationCommandManager* applicationCommandManager() {
     return &commandManager_;
   }
+
+ public:
   void addCommands();
 
   virtual void operator()(None);
@@ -58,7 +59,6 @@ class Target : public HasInstance,
  private:
   ApplicationCommandManager commandManager_;
   command::CommandRecordTable table_;
-  ptr<command::MidiCommandMap> midiCommandMap_;
   ptr<ApplicationCommandTarget> target_;
   ptr<command::CommandData> commandData_;
 

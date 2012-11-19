@@ -138,7 +138,7 @@ void midiMappings() {
   }
 
   ApplicationCommandManager* manager = i->target_->applicationCommandManager();
-  command::MidiCommandMapEditor comp(*manager, *i->target_->midiCommandMap());
+  command::MidiCommandMapEditor comp(*manager, *i->midiCommandMap_);
   comp.initialize(true);
   comp.setBounds(0, 0, 500, 1000);
 
@@ -146,7 +146,7 @@ void midiMappings() {
   juce::DialogWindow::showModalDialog(Trans("Select MIDI mappings"),
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
-  data::setProto(i->target_->midiCommandMap()->getProto(), data::global());
+  data::setProto(i->midiCommandMap_->getProto(), data::global());
 }
 
 void zoomOut() {

@@ -6,7 +6,7 @@
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandTarget.h"
 #include "rec/command/KeyboardBindings.h"
-#include "rec/command/map/MidiCommandMapEditor.h"
+#include "rec/command/map/MidiCommandMap.h"
 #include "rec/data/DataOps.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/SlowWindow.h"
@@ -21,20 +21,16 @@ namespace slow {
 
 Target::Target(Instance* i)
     : HasInstance(i),
-      midiCommandMap_(new command::MidiCommandMap(&commandManager_)),
       disabled_(false) {
   target_.reset(new CommandTarget(this, &table_));
   commandData_.reset(slow::createSlowCommandData(i));
   commandManager_.setFirstCommandTarget(target_.get());
   i->window_->addKeyListener(commandManager_.getKeyMappings());
-  device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
-  midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
+
   this->addListener(this);  // TODO: do I need this?!
 }
 
-Target::~Target() {
-  device()->manager_.removeMidiInputCallback("", midiCommandMap_.get());
-}
+Target::~Target() {}
 
 void Target::addCommands() {
   command::fillCommandRecordTable(&table_, *commandData_);
