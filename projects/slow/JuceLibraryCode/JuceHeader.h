@@ -39,8 +39,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "SlowGold";
-    const char* const  versionString  = "8.0.4";
-    const int          versionNumber  = 0x80004;
+    const char* const  versionString  = "8.0.5";
+    const int          versionNumber  = 0x80005;
 }
 
 #endif   // __APPHEADERFILE_NSU8BB__
