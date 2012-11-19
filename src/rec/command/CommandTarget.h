@@ -28,7 +28,7 @@ class CommandTarget : public ApplicationCommandTarget {
       DLOG(INFO) << CommandIDEncoder::commandIDName(id) << " DISABLED";
   }
 
-  virtual bool perform (const InvocationInfo& info) {
+  virtual bool perform(const InvocationInfo& info) {
     return targetManager_->perform(info);
   }
 

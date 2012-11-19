@@ -116,7 +116,7 @@ void keyboardMappings() {
     return;
   }
 
-  ApplicationCommandManager* manager = i->target_->targetManager()->commandManager();
+  ApplicationCommandManager* manager = i->target_->applicationCommandManager();
   command::KeyCommandMapEditor comp(*manager, *manager->getKeyMappings());
   comp.initialize(true);
   comp.setBounds(0, 0, 500, 1000);
@@ -136,7 +136,7 @@ void midiMappings() {
     return;
   }
 
-  ApplicationCommandManager* manager = i->target_->targetManager()->commandManager();
+  ApplicationCommandManager* manager = i->target_->applicationCommandManager();
   command::MidiCommandMapEditor comp(*manager, *i->target_->midiCommandMap());
   comp.initialize(true);
   comp.setBounds(0, 0, 500, 1000);
