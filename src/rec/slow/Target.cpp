@@ -2,11 +2,9 @@
 
 #include "rec/audio/Device.h"
 #include "rec/command/CommandData.h"
-#include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandTarget.h"
-#include "rec/command/KeyboardBindings.h"
 #include "rec/command/map/MidiCommandMap.h"
 #include "rec/data/DataOps.h"
 #include "rec/slow/Menus.h"
@@ -29,15 +27,6 @@ Target::Target(Instance* i) : HasInstance(i), disabled_(false) {
 }
 
 Target::~Target() {}
-
-void Target::addCommands() {
-  command::fillCommandRecordTable(commandRecordTable(), *commandData());
-  applicationCommandManager()->registerAllCommandsForTarget(
-      applicationCommandTarget());
-  loadKeyboardBindings(*commandRecordTable(), applicationCommandManager());
-  window()->getAppleMenu()->addCommandItem(applicationCommandManager(),
-                                           Command::ABOUT_THIS_PROGRAM);
-}
 
 void Target::operator()(None) {
   if (window())

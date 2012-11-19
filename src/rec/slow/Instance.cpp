@@ -14,9 +14,12 @@
 #include "rec/base/SampleRate.h"
 #include "rec/data/DataCenter.h"
 #include "rec/command/map/MidiCommandMap.h"
+#include "rec/command/Command.pb.h"
 #include "rec/command/CommandData.h"
+#include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandTarget.h"
+#include "rec/command/KeyboardBindings.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/Opener.h"
 #include "rec/data/UndoStack.h"
@@ -171,7 +174,13 @@ void Instance::init() {
 
   fillerThread_->setPriority(FILLER_PRIORITY);
 
-  target_->addCommands();
+  command::fillCommandRecordTable(commandRecordTable_.get(), *commandData_);
+  applicationCommandManager_.registerAllCommandsForTarget(
+      applicationCommandTarget_.get());
+  loadKeyboardBindings(*commandRecordTable_.get(), &applicationCommandManager_);
+  window_->getAppleMenu()->addCommandItem(&applicationCommandManager_,
+                                          command::Command::ABOUT_THIS_PROGRAM);
+
   player_->addListener(components_->transportController_.get());
   player_->addListener(currentTime_.get());
   audio::getOutputSampleRateBroadcaster()->addListener(player_.get());
@@ -210,7 +219,6 @@ void Instance::init() {
     setProto(mode);
   }
 #endif
-  doLog("end Instance::init");
 }
 
 audio::Source* Instance::makeSource() const {

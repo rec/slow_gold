@@ -24,8 +24,6 @@ class Target : public HasInstance,
   explicit Target(Instance* instance);
   virtual ~Target();
 
-  void addCommands();
-
   virtual void operator()(None);
   virtual void operator()(CommandID);
   virtual void operator()(bool);
