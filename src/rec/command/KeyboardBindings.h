@@ -6,11 +6,14 @@
 namespace rec {
 namespace command {
 
+class CommandRecordTable;
 class TargetManager;
 
 void saveKeyboardBindings(ApplicationCommandManager*);
-void loadKeyboardBindings(TargetManager*);
-void clearKeyboardBindings(TargetManager*);
+void loadKeyboardBindings(const CommandRecordTable&,
+                          ApplicationCommandManager*);
+void clearKeyboardBindings(const CommandRecordTable&,
+                          ApplicationCommandManager*);
 
 }  // namespace command
 }  // namespace rec

@@ -41,7 +41,7 @@ Target::~Target() {
 void Target::addCommands() {
   command::fillCommandRecordTable(&table_, *commandData_);
   commandManager_.registerAllCommandsForTarget(target_.get());
-  loadKeyboardBindings(targetManager_.get());
+  loadKeyboardBindings(table_, &commandManager_);
   window()->getAppleMenu()->addCommandItem(&commandManager_,
                                            Command::ABOUT_THIS_PROGRAM);
 }

@@ -15,8 +15,6 @@
 namespace rec {
 namespace command {
 
-// An implementation of ApplicationCommandTargetManager that lets you register commands
-// with a callback.
 class TargetManager : public Listener<CommandID>,
                       public Listener<bool>,
                       public Broadcaster<None> {
@@ -34,7 +32,10 @@ class TargetManager : public Listener<CommandID>,
       LOG(DFATAL) << "Failed to invoke " << CommandIDEncoder::commandIDName(id);
   }
 
-  virtual void operator()(bool d) { Lock l(lock_); disabled_ = d; }
+  virtual void operator()(bool d) {
+    Lock l(lock_);
+    disabled_ = d;
+  }
 
   virtual bool perform(const InvocationInfo&);
 
@@ -46,14 +47,14 @@ class TargetManager : public Listener<CommandID>,
                    const String& category,
                    const String& desc);
 
-  ApplicationCommandManager* commandManager() { return commandManager_; }
   void addCommandItem(PopupMenu*,
                       CommandID,
                       bool enable,
                       const String& name,
                       int flags);
-  CommandRecordTable* commandRecordTable() { return table_; }
-  ApplicationCommandTarget* target() { return target_; }
+  // CommandRecordTable* commandRecordTable() { return table_; }
+  // ApplicationCommandTarget* target() { return target_; }
+  // ApplicationCommandManager* commandManager() { return commandManager_; }
   CommandRecord* find(CommandID);
 
  private:
@@ -64,7 +65,6 @@ class TargetManager : public Listener<CommandID>,
   CommandData* commandData_;
   ApplicationCommandManager* commandManager_;
   CommandRecordTable* table_;
-
   ApplicationCommandTarget* target_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TargetManager);

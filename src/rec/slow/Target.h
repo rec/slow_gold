@@ -22,7 +22,9 @@ class Target : public HasInstance, public Listener<None> {
 
   command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
   command::TargetManager* targetManager() { return targetManager_.get(); }
-
+  const command::CommandRecordTable& commandRecordTable() const {
+    return table_;
+  }
   ApplicationCommandManager* applicationCommandManager() {
     return &commandManager_;
   }

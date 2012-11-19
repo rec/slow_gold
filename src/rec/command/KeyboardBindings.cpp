@@ -95,16 +95,17 @@ void saveKeyboardBindings(ApplicationCommandManager* commandManager) {
     writeKeyboardBindingFile(state.get());
 }
 
-void loadKeyboardBindings(TargetManager* target) {
-  const CommandRecordTable& table = *target->commandRecordTable();
+void loadKeyboardBindings(const CommandRecordTable& table,
+                          ApplicationCommandManager* commandManager) {
   ptr<juce::XmlElement> state(readKeyboardBindingFile(table.getCommands()));
-  target->commandManager()->getKeyMappings()->restoreFromXml(*state);
+  commandManager->getKeyMappings()->restoreFromXml(*state);
 }
 
-void clearKeyboardBindings(TargetManager* target) {
-  const Commands& commands = target->commandRecordTable()->getCommands();
+void clearKeyboardBindings(const CommandRecordTable& table,
+                          ApplicationCommandManager* commandManager) {
+  const Commands& commands = table.getCommands();
   ptr<juce::XmlElement>(readKeyboardCommands(commands, commands));
-  saveKeyboardBindings(target->commandManager());
+  saveKeyboardBindings(commandManager);
 }
 
 }  // namespace command
