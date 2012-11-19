@@ -15,8 +15,7 @@ namespace command {
 
 TargetManager::TargetManager(ApplicationCommandManager* commandManager,
                              CommandRecordTable* table)
-    : lastInvocation_(0),
-      disabled_(false),
+    : disabled_(false),
       commandManager_(commandManager),
       table_(table) {
 }
@@ -35,14 +34,8 @@ bool TargetManager::perform(const InvocationInfo& invocation) {
   if (!cr->callback_)
     return false;
 
-  lastInvocation_ = invocation;
   (*(cr->callback_))();
   return true;
-}
-
-InvocationInfo TargetManager::lastInvocation() const {
-  Lock l(lock_);
-  return lastInvocation_;
 }
 
 void TargetManager::addCallback(CommandID id,

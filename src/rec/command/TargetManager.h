@@ -38,10 +38,6 @@ class TargetManager : public Listener<CommandID>,
 
   virtual bool perform(const InvocationInfo&);
 
- private:
- public:
-  InvocationInfo lastInvocation() const;
-
   void addCallback(CommandID id,
                    Callback* cb,
                    const String& name,
@@ -58,7 +54,6 @@ class TargetManager : public Listener<CommandID>,
 
  private:
   CriticalSection lock_;
-  InvocationInfo lastInvocation_;
   bool disabled_;
 
   CommandData* commandData_;
