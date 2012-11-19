@@ -35,8 +35,8 @@ Target::~Target() {
 
 void Target::addCommands() {
   targetManager_->addCommands();
-  window()->getAppleMenu()->addCommandItem(targetManager_->commandManager(),
-                                             Command::ABOUT_THIS_PROGRAM);
+  window()->getAppleMenu()->addCommandItem(&commandManager_,
+                                           Command::ABOUT_THIS_PROGRAM);
 }
 
 void Target::operator()(None) {
