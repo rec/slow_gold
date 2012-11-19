@@ -4,6 +4,7 @@
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
+#include "rec/command/TargetManager.h"
 #include "rec/data/DataOps.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/SlowWindow.h"
@@ -18,12 +19,14 @@ namespace slow {
 
 Target::Target(Instance* i)
     : HasInstance(i),
-      manager_(slow::createSlowCommandData(i)),
-      midiCommandMap_(new command::MidiCommandMap(manager_.commandManager())) {
-  i->window_->addKeyListener(manager_.commandManager()->getKeyMappings());
+      targetManager_(
+          new command::TargetManager(slow::createSlowCommandData(i))),
+      midiCommandMap_(
+          new command::MidiCommandMap(targetManager_->commandManager())) {
+  i->window_->addKeyListener(targetManager_->commandManager()->getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
-  manager_.addListener(this);
+  targetManager_->addListener(this);
 }
 
 Target::~Target() {
@@ -31,14 +34,18 @@ Target::~Target() {
 }
 
 void Target::addCommands() {
-  manager_.addCommands();
-  window()->getAppleMenu()->addCommandItem(manager_.commandManager(),
+  targetManager_->addCommands();
+  window()->getAppleMenu()->addCommandItem(targetManager_->commandManager(),
                                              Command::ABOUT_THIS_PROGRAM);
 }
 
 void Target::operator()(None) {
   if (window())
     thread::callAsync(window(), &app::Window::stopAboutWindow);
+}
+
+ApplicationCommandManager* Target::applicationCommandManager() {
+  return targetManager_->commandManager();
 }
 
 }  // namespace slow

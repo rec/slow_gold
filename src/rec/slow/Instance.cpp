@@ -12,6 +12,7 @@
 #include "rec/base/Arraysize.h"
 #include "rec/base/DropDead.h"
 #include "rec/base/SampleRate.h"
+#include "rec/command/TargetManager.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/Opener.h"

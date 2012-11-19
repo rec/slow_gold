@@ -2,11 +2,11 @@
 #define __REC_SLOW_SLOWTARGET__
 
 #include "rec/slow/HasInstance.h"
-#include "rec/command/TargetManager.h"
 
 namespace rec {
 
 namespace command { class MidiCommandMap; }
+namespace command { class TargetManager; }
 
 namespace slow {
 
@@ -18,17 +18,15 @@ class Target : public HasInstance, public Listener<None> {
   virtual ~Target();
 
   command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
-  command::TargetManager* targetManager() { return &manager_; }
+  command::TargetManager* targetManager() { return targetManager_.get(); }
 
-  ApplicationCommandManager* applicationCommandManager() {
-    return manager_.commandManager();
-  }
+  ApplicationCommandManager* applicationCommandManager();
   void addCommands();
 
   virtual void operator()(None);
 
  private:
-  command::TargetManager manager_;
+  ptr<command::TargetManager> targetManager_;
   ptr<command::MidiCommandMap> midiCommandMap_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Target);
