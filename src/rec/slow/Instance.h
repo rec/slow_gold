@@ -74,6 +74,7 @@ class Instance {
   ptr<command::MidiCommandMap> midiCommandMap_;
   ptr<command::CommandRecordTable> commandRecordTable_;
   ptr<ApplicationCommandTarget> applicationCommandTarget_;
+  ApplicationCommandManager applicationCommandManager_;
 
   static Instance* getInstance();
   static const VirtualFile getInstanceFile();

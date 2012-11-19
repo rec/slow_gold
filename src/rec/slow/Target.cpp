@@ -20,12 +20,11 @@ using namespace rec::command;
 namespace rec {
 namespace slow {
 
-Target::Target(Instance* i)
-    : HasInstance(i),
-      disabled_(false) {
+Target::Target(Instance* i) : HasInstance(i), disabled_(false) {
   commandData_.reset(slow::createSlowCommandData(i));
-  commandManager_.setFirstCommandTarget(applicationCommandTarget());
-  i->window_->addKeyListener(commandManager_.getKeyMappings());
+  applicationCommandManager()->setFirstCommandTarget(
+      applicationCommandTarget());
+  i->window_->addKeyListener(applicationCommandManager()->getKeyMappings());
 
   this->addListener(this);  // TODO: do I need this?!
 }
@@ -34,9 +33,10 @@ Target::~Target() {}
 
 void Target::addCommands() {
   command::fillCommandRecordTable(commandRecordTable(), *commandData_);
-  commandManager_.registerAllCommandsForTarget(applicationCommandTarget());
-  loadKeyboardBindings(*commandRecordTable(), &commandManager_);
-  window()->getAppleMenu()->addCommandItem(&commandManager_,
+  applicationCommandManager()->registerAllCommandsForTarget(
+      applicationCommandTarget());
+  loadKeyboardBindings(*commandRecordTable(), applicationCommandManager());
+  window()->getAppleMenu()->addCommandItem(applicationCommandManager(),
                                            Command::ABOUT_THIS_PROGRAM);
 }
 
@@ -106,11 +106,11 @@ void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     DLOG(INFO) << CommandIDEncoder::commandIDName(id);
 
   info->setActive(enable);
-  menu->addCommandItem(&commandManager_, id);
+  menu->addCommandItem(applicationCommandManager(), id);
 }
 
 void Target::operator()(CommandID id) {
-  if (!commandManager_.invokeDirectly(id, false))
+  if (!applicationCommandManager()->invokeDirectly(id, false))
     LOG(DFATAL) << "Failed to invoke " << CommandIDEncoder::commandIDName(id);
 }
 

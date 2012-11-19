@@ -24,10 +24,6 @@ class Target : public HasInstance,
   explicit Target(Instance* instance);
   virtual ~Target();
 
-  ApplicationCommandManager* applicationCommandManager() {
-    return &commandManager_;
-  }
-
   void addCommands();
 
   virtual void operator()(None);
@@ -49,7 +45,6 @@ class Target : public HasInstance,
                       int flags);
 
  private:
-  ApplicationCommandManager commandManager_;
   ptr<command::CommandData> commandData_;
 
   CriticalSection lock_;

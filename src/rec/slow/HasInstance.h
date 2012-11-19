@@ -28,6 +28,9 @@ class HasInstance {
   ApplicationCommandTarget* applicationCommandTarget() {
     return instance_->applicationCommandTarget_.get();
   }
+  ApplicationCommandManager* applicationCommandManager() {
+    return &instance_->applicationCommandManager_;
+  }
 
   const VirtualFile file() const { return instance_->file(); }
   SampleTime time() const { return instance_->time(); }
