@@ -14,7 +14,7 @@ CommandRecordTable::~CommandRecordTable() {
   stl::deleteMapPointers(&table_);
 }
 
-CommandRecord* CommandRecordTable::findDontCreate(CommandID id) {
+CommandRecord* CommandRecordTable::find(CommandID id) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
   return (i != table_.end()) ? i->second : NULL;
@@ -23,6 +23,7 @@ CommandRecord* CommandRecordTable::findDontCreate(CommandID id) {
 CommandRecord* CommandRecordTable::findOrCreate(CommandID id) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
+  DLOG(INFO) << (i != table_.end() ? "find" : "create");
   return (i != table_.end()) ? i->second : create(id);
 }
 

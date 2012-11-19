@@ -29,8 +29,13 @@ bool Target::perform(const InvocationInfo& invocation) {
   if (enabled_ == DISABLE)
     return true;
 
-  // TODO: should we really be creating items here?
-  CommandRecord* cr = commandRecordTable()->findOrCreate(invocation.commandID);
+  CommandID id = invocation.commandID;
+  CommandRecord* cr = commandRecordTable()->find(id);
+  if (!cr) {
+    LOG(DFATAL) << "No get record for " << CommandIDEncoder::commandIDName(id);
+    return false;
+  }
+
   if (!cr->callback_)
     return false;
 
@@ -38,34 +43,9 @@ bool Target::perform(const InvocationInfo& invocation) {
   return true;
 }
 
-void Target::addCallback(CommandID id,
-                         Callback* cb,
-                         const String& name,
-                         const String& category,
-                         const String& desc) {
-  ptr<Callback> callback(cb);
-  if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
-    LOG(DFATAL) << "Can't add " << CommandIDEncoder::commandIDName(id)
-               << ", " << name << ", " << desc;
-    return;
-  }
-
-  ApplicationCommandInfo info(id);
-  int flags = 0;
-  if (category == "" || category == "(None)")
-    flags += ApplicationCommandInfo::hiddenFromKeyEditor;
-  info.setInfo(name, desc, category, flags);
-
-  CommandRecord* cr = commandRecordTable()->findOrCreate(id);
-  if (cr->callback_)
-    LOG(DFATAL) << "Add command twice: " << CommandIDEncoder::commandIDName(id);
-
-  cr->callback_.reset(callback.transfer());
-}
-
 void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                             const String& name, int flags) {
-  CommandRecord* cr = commandRecordTable()->findOrCreate(id);
+  CommandRecord* cr = commandRecordTable()->create(id);
   ApplicationCommandInfo* info = cr->getInfo();
 
   if (name.length())

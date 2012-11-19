@@ -27,14 +27,6 @@ class Target : public HasInstance,
 
   virtual bool perform(const InvocationInfo&);
 
-  // static
-  void addCallback(CommandID id,
-                   Callback* cb,
-                   const String& name,
-                   const String& category,
-                   const String& desc);
-
-  // static
   void addCommandItem(PopupMenu*,
                       CommandID,
                       bool enable,

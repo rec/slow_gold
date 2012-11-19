@@ -43,10 +43,10 @@ class CommandDatabase {
 
   void fillSingleCommand(const Command& cmd) {
     const Command::Type t = cmd.type();
-    CommandRecord* cr = table_->findDontCreate(t);
+    CommandRecord* cr = table_->find(t);
     if (!cr) {
       DCHECK(cmd.has_setter()) << cmd.ShortDebugString();
-      cr = table_->findOrCreate(t);  // TODO: this could just be create
+      cr = table_->create(t);
       const data::Address& a = cmd.setter().address();
       Listener<None>* ls = data_.getMenuUpdateListener();
       Scope s = scope(cmd.setter().is_global());
@@ -65,7 +65,7 @@ class CommandDatabase {
     CommandID begin = CommandIDEncoder::toCommandID(cmd.start_index(), t);
     CommandID end = begin + len;
     for (CommandID i = begin; i != end; ++i) {
-      if (CommandRecord* cr = table_->findDontCreate(i)) {
+      if (CommandRecord* cr = table_->find(i)) {
         DCHECK(!cr->command_) << cr->command_->ShortDebugString();
         cr->command_.reset(indexCommand(cmd, i - begin));
       } else {
