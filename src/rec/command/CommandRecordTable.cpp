@@ -14,15 +14,17 @@ CommandRecordTable::~CommandRecordTable() {
   stl::deleteMapPointers(&table_);
 }
 
-CommandRecord* CommandRecordTable::find(CommandID id, bool create) {
+CommandRecord* CommandRecordTable::findOrCreate(CommandID id) {
   Lock l(lock_);
-  CHECK(id != CommandIDEncoder::toCommandID(Command::JUMP, 10) || !create);
+  Table::iterator i = table_.find(id);
+  return (i != table_.end()) ? i->second : NULL;
+}
+
+CommandRecord* CommandRecordTable::findDontCreate(CommandID id) {
+  Lock l(lock_);
   Table::iterator i = table_.find(id);
   if (i != table_.end())
     return i->second;
-
-  if (!create)
-    return NULL;
 
   ptr<CommandRecord> rec(new CommandRecord(id));
   table_.insert(i, std::make_pair(id, rec.get()));
@@ -53,7 +55,7 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
 void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
   Lock l(lock_);
 
-  CommandRecord* cr = find(id, true);
+  CommandRecord* cr = findOrCreate(id);
   if (cr->callback_)
     LOG(DFATAL) << "Repeated callback " << CommandIDEncoder::commandIDName(id);
   cr->callback_.reset(cb);

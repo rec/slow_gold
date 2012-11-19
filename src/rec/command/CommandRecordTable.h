@@ -17,7 +17,8 @@ class CommandRecordTable : public CallbackTable {
 
   const Commands getCommands() const;
   void getAllCommands(juce::Array<CommandID>*);
-  CommandRecord* find(CommandID id, bool create = true);
+  CommandRecord* findOrCreate(CommandID id);
+  CommandRecord* findDontCreate(CommandID id);
   virtual void addCallback(CommandID id, Callback* cb);
 
  private:

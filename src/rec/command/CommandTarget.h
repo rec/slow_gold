@@ -21,7 +21,8 @@ class CommandTarget : public ApplicationCommandTarget,
   }
 
   virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-    info = *commandRecordTable()->find(id)->getInfo();
+    // TODO: should we really be creating items here?
+    info = *commandRecordTable()->findOrCreate(id)->getInfo();
 
     if (!info.shortName.isNotEmpty())
       LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
