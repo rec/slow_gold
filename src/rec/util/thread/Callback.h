@@ -1,7 +1,7 @@
 #ifndef __REC_THREAD_CALLBACK__
 #define __REC_THREAD_CALLBACK__
 
-#include "rec/base/base.h"
+#include "rec/util/Deletable.h"
 
 namespace rec {
 namespace util {
@@ -9,7 +9,7 @@ namespace thread {
 namespace callback {
 
 // A generic callback.
-class Callback {
+class Callback : public Deletable {
  public:
   Callback() {}
   virtual ~Callback() {}

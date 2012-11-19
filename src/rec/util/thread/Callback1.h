@@ -29,7 +29,9 @@ class Callback1 : public Callback {
 template <typename Type, typename Method, typename Value>
 class CallbackBool1 : public Callback {
  public:
-  CallbackBool1(Type* o, Method m, Value v) : object_(o), method_(m), value_(v) {}
+  CallbackBool1(Type* o, Method m, Value v)
+      : object_(o), method_(m), value_(v) {
+  }
 
   virtual bool operator()() { return (object_->*method_)(); }
 
@@ -44,8 +46,7 @@ class CallbackBool1 : public Callback {
 template <typename Functor, typename Value>
 class CallbackFunc1 : public Callback {
  public:
-  CallbackFunc1(Functor f, Value v) : functor_(f), value_(v) {
-  }
+  CallbackFunc1(Functor f, Value v) : functor_(f), value_(v) {}
 
   virtual bool operator()() { (*functor_)(value_); return true; }
 

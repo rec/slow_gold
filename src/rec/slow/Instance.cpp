@@ -164,11 +164,15 @@ void Instance::init() {
   fillerThread_.reset(new FillerThread(this));
   midiCommandMap_.reset(new command::MidiCommandMap(
        target_->applicationCommandManager()));
+  threads_.reset(new Threads(this));
 
   device_->manager_.addMidiInputCallback("", midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
 
-  threads_.reset(new Threads(this));
+  applicationCommandManager_.setFirstCommandTarget(
+      applicationCommandTarget_.get());
+  window_->addKeyListener(applicationCommandManager_.getKeyMappings());
+  target_->addListener(target_.get());  // TODO: why is this needed!
 
   components_->init();
 

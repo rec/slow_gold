@@ -12,21 +12,12 @@
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/SlowCommandData.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/MethodListener.h"
 
 using namespace rec::command;
 
 namespace rec {
 namespace slow {
-
-Target::Target(Instance* i) : HasInstance(i), disabled_(false) {
-  applicationCommandManager()->setFirstCommandTarget(
-      applicationCommandTarget());
-  i->window_->addKeyListener(applicationCommandManager()->getKeyMappings());
-
-  this->addListener(this);  // TODO: do I need this?!
-}
-
-Target::~Target() {}
 
 void Target::operator()(None) {
   if (window())
@@ -50,10 +41,10 @@ bool Target::perform(const InvocationInfo& invocation) {
 }
 
 void Target::addCallback(CommandID id,
-                                Callback* cb,
-                                const String& name,
-                                const String& category,
-                                const String& desc) {
+                         Callback* cb,
+                         const String& name,
+                         const String& category,
+                         const String& desc) {
   ptr<Callback> callback(cb);
   if (!(category.isNotEmpty() && name.isNotEmpty() && desc.isNotEmpty())) {
     LOG(DFATAL) << "Can't add " << CommandIDEncoder::commandIDName(id)
@@ -106,7 +97,6 @@ void Target::operator()(bool d) {
   Lock l(lock_);
   disabled_ = d;
 }
-
 
 }  // namespace slow
 }  // namespace rec

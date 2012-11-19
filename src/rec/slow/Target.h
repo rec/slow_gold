@@ -21,8 +21,8 @@ class Target : public HasInstance,
                public Listener<bool>,
                public Broadcaster<None> {
  public:
-  explicit Target(Instance* instance);
-  virtual ~Target();
+  explicit Target(Instance* i) : HasInstance(i), disabled_(false) {}
+  virtual ~Target() {}
 
   virtual void operator()(None);
   virtual void operator()(CommandID);
