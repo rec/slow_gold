@@ -2,7 +2,6 @@
 #define __REC_COMMAND_COMMANDTARGET__
 
 #include "rec/command/CommandRecord.h"
-#include "rec/command/TargetManager.h"
 #include "rec/slow/Target.h"
 
 namespace rec {
@@ -21,7 +20,7 @@ class CommandTarget : public ApplicationCommandTarget {
   }
 
   virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-    info = *target_->targetManager()->find(id)->getInfo();
+    info = *target_->find(id)->getInfo();
 
     if (!info.shortName.isNotEmpty())
       LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);

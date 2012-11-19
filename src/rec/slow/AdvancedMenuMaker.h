@@ -6,11 +6,11 @@
 namespace rec {
 namespace slow {
 
+class Target;
+
 class AdvancedMenuMaker : public BasicMenuMaker {
  public:
-  AdvancedMenuMaker(command::TargetManager* t,
-                    const IsWholeSong& isWholeSong,
-                    bool empty)
+  AdvancedMenuMaker(Target* t, const IsWholeSong& isWholeSong, bool empty)
       : BasicMenuMaker(t, isWholeSong, empty) {
   }
   virtual ~AdvancedMenuMaker() {}

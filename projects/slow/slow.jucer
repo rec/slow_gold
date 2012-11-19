@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="kZjhXWWRG" name="SlowGold">
+  <MAINGROUP id="PvnQbCpd4" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -353,6 +353,8 @@
               id="11iH4S5cn" name="CommandRecordTable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandRecordTable.h"
               id="6HMpUxIKB" name="CommandRecordTable.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandTarget.h" id="vt3fCImsy"
+              name="CommandTarget.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
               id="INV4v9Oxx" name="KeyboardBindings.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="ZxTlCYmLe"
@@ -409,10 +411,6 @@
           <FILE compile="0" file="../../src/rec/command/map/MidiName.h" id="3AUUninBZ"
                 name="MidiName.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/command/TargetManager.cpp" id="pQCKWClIP"
-              name="TargetManager.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/TargetManager.h" id="C71hhfNMc"
-              name="TargetManager.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/TickedDataSetter.cpp"
               id="AzVxUdsvt" name="TickedDataSetter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TickedDataSetter.h" id="EutDOap3h"
@@ -1657,7 +1655,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="sRwXnhe3U" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="vqYvY3QJ4" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

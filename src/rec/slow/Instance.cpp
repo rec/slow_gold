@@ -12,7 +12,6 @@
 #include "rec/base/Arraysize.h"
 #include "rec/base/DropDead.h"
 #include "rec/base/SampleRate.h"
-#include "rec/command/TargetManager.h"
 #include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/Opener.h"
@@ -186,8 +185,8 @@ void Instance::init() {
   root->addListener(currentFile_.get());
   // components_->mainPage_->dropBroadcaster()->addListener(currentFile_.get());
 
-  components_->transportController_->addListener(target_->targetManager());
-  components_->commandBar_->addListener(target_->targetManager());
+  components_->transportController_->addListener(target_.get());
+  components_->commandBar_->addListener(target_.get());
 
   player_->timer()->addListener(components_->timeController_.get());
   player_->timer()->addListener(waveform->timeCursor());
@@ -200,7 +199,7 @@ void Instance::init() {
 
   window_->addListener(menus_.get());
 
-  DialogLocker::getDisableBroadcaster()->addListener(target_->targetManager());
+  DialogLocker::getDisableBroadcaster()->addListener(target_.get());
   DialogLocker::getDisableBroadcaster()->addListener(window_->application());
 
 #ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK

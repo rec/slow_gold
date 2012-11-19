@@ -7,7 +7,6 @@ namespace rec {
 namespace command {
 
 class CommandRecordTable;
-class TargetManager;
 
 void saveKeyboardBindings(ApplicationCommandManager*);
 void loadKeyboardBindings(const CommandRecordTable&,

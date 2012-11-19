@@ -2,11 +2,11 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandIDEncoder.h"
-#include "rec/command/TargetManager.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/AdvancedMenuMaker.h"
 #include "rec/slow/BasicMenuMaker.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/Target.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 #include "rec/widget/waveform/Viewport.pb.h"
@@ -29,7 +29,7 @@ void MenuMaker::addFull(CommandID id,
                         bool enabled,
                         PopupMenu* m,
                         int flags) {
-  targetManager_->addCommandItem(m ? m : &menu_, id, enabled, name, flags);
+  target_->addCommandItem(m ? m : &menu_, id, enabled, name, flags);
 }
 
 void MenuMaker::addBasic(CommandID id) {
@@ -75,7 +75,7 @@ void MenuMaker::addBank(Command::Type command, const String& name) {
   menu_.addSubMenu(name, sub, !empty_);
 }
 
-MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
+MenuMaker* makeMenuMaker(slow::Target* tm, bool isAdvanced,
                          const IsWholeSong& isWholeSong, bool empty) {
   if (isAdvanced)
     return new AdvancedMenuMaker(tm, isWholeSong, empty);

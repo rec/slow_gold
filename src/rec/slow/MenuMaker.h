@@ -8,18 +8,16 @@
 
 namespace rec {
 
-namespace command { class TargetManager; }
-
 namespace slow {
+
+class Target;
 
 class MenuMaker {
  public:
   static const int SLOT_COUNT = 10;
 
-  MenuMaker(command::TargetManager* t,
-            const IsWholeSong& isWholeSong,
-            bool empty)
-      : isWholeSong_(isWholeSong), empty_(empty), targetManager_(t) {
+  MenuMaker(Target* t, const IsWholeSong& isWholeSong, bool empty)
+      : isWholeSong_(isWholeSong), empty_(empty), target_(t) {
   }
   virtual ~MenuMaker() {}
 
@@ -60,13 +58,13 @@ class MenuMaker {
                PopupMenu* m,
                int flags);
 
-  command::TargetManager* targetManager_;
+  Target* target_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MenuMaker);
 };
 
-MenuMaker* makeMenuMaker(command::TargetManager* tm, bool isAdvanced,
+MenuMaker* makeMenuMaker(Target* tm, bool isAdvanced,
                          const IsWholeSong&, bool empty);
 
 }  // namespace slow

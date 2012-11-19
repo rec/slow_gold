@@ -706,9 +706,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp">
-      <Filter>SlowGold\rec\command</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\TickedDataSetter.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
@@ -2862,6 +2859,9 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandRecordTable.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandTarget.h">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
@@ -2903,9 +2903,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiName.h">
       <Filter>SlowGold\rec\command\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h">
-      <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\TickedDataSetter.h">
       <Filter>SlowGold\rec\command</Filter>

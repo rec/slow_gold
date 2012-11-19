@@ -3,7 +3,7 @@
 
 #include "rec/command/KeyboardBindings.h"
 #include "rec/command/CommandRecord.h"
-#include "rec/command/TargetManager.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/command/CommandIDEncoder.h"

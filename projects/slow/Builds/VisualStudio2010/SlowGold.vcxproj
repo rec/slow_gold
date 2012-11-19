@@ -194,7 +194,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\TickedDataSetter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\AddressListener.cpp"/>
@@ -1569,6 +1568,7 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandRecord.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandRecordTable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandTarget.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h"/>
@@ -1583,7 +1583,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMap.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiName.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\TickedDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\AddressListener.h"/>
