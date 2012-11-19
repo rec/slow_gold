@@ -10,6 +10,7 @@
 namespace rec {
 
 namespace audio { class Device; }
+namespace command { class CommandData; }
 namespace command { class CommandRecordTable; }
 namespace command { class MidiCommandMap; }
 namespace audio { namespace source { class Player; }}
@@ -75,6 +76,7 @@ class Instance {
   ptr<command::CommandRecordTable> commandRecordTable_;
   ptr<ApplicationCommandTarget> applicationCommandTarget_;
   ApplicationCommandManager applicationCommandManager_;
+  ptr<command::CommandData> commandData_;
 
   static Instance* getInstance();
   static const VirtualFile getInstanceFile();

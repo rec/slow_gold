@@ -45,8 +45,6 @@ class Target : public HasInstance,
                       int flags);
 
  private:
-  ptr<command::CommandData> commandData_;
-
   CriticalSection lock_;
   bool disabled_;
 

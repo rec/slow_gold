@@ -31,6 +31,9 @@ class HasInstance {
   ApplicationCommandManager* applicationCommandManager() {
     return &instance_->applicationCommandManager_;
   }
+  command::CommandData* commandData() {
+    return instance_->commandData_.get();
+  }
 
   const VirtualFile file() const { return instance_->file(); }
   SampleTime time() const { return instance_->time(); }

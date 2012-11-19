@@ -14,6 +14,7 @@
 #include "rec/base/SampleRate.h"
 #include "rec/data/DataCenter.h"
 #include "rec/command/map/MidiCommandMap.h"
+#include "rec/command/CommandData.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandTarget.h"
 #include "rec/data/DataOps.h"
@@ -38,6 +39,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
+#include "rec/slow/commands/SlowCommandData.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
 #include "rec/util/file/FileType.h"
@@ -148,6 +150,8 @@ void Instance::init() {
   components_.reset(new Components(this));
   commandRecordTable_.reset(new command::CommandRecordTable);
   applicationCommandTarget_.reset(new command::CommandTarget(this));
+  commandData_.reset(slow::createSlowCommandData(this));
+
   target_.reset(new Target(this));
   currentTime_.reset(new CurrentTime(this));
   bufferFiller_.reset(new BufferFiller);

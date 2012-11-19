@@ -21,7 +21,6 @@ namespace rec {
 namespace slow {
 
 Target::Target(Instance* i) : HasInstance(i), disabled_(false) {
-  commandData_.reset(slow::createSlowCommandData(i));
   applicationCommandManager()->setFirstCommandTarget(
       applicationCommandTarget());
   i->window_->addKeyListener(applicationCommandManager()->getKeyMappings());
@@ -32,7 +31,7 @@ Target::Target(Instance* i) : HasInstance(i), disabled_(false) {
 Target::~Target() {}
 
 void Target::addCommands() {
-  command::fillCommandRecordTable(commandRecordTable(), *commandData_);
+  command::fillCommandRecordTable(commandRecordTable(), *commandData());
   applicationCommandManager()->registerAllCommandsForTarget(
       applicationCommandTarget());
   loadKeyboardBindings(*commandRecordTable(), applicationCommandManager());
