@@ -20,12 +20,15 @@ class Target : public HasInstance, public Listener<None> {
   command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
   command::TargetManager* targetManager() { return targetManager_.get(); }
 
-  ApplicationCommandManager* applicationCommandManager();
+  ApplicationCommandManager* applicationCommandManager() {
+    return &commandManager_;
+  }
   void addCommands();
 
   virtual void operator()(None);
 
  private:
+  ApplicationCommandManager commandManager_;
   ptr<command::TargetManager> targetManager_;
   ptr<command::MidiCommandMap> midiCommandMap_;
 

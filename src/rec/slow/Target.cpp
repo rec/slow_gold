@@ -20,10 +20,10 @@ namespace slow {
 Target::Target(Instance* i)
     : HasInstance(i),
       targetManager_(
-          new command::TargetManager(slow::createSlowCommandData(i))),
-      midiCommandMap_(
-          new command::MidiCommandMap(targetManager_->commandManager())) {
-  i->window_->addKeyListener(targetManager_->commandManager()->getKeyMappings());
+                     new command::TargetManager(slow::createSlowCommandData(i),
+                                                &commandManager_)),
+      midiCommandMap_(new command::MidiCommandMap(&commandManager_)) {
+  i->window_->addKeyListener(commandManager_.getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
   targetManager_->addListener(this);
@@ -42,10 +42,6 @@ void Target::addCommands() {
 void Target::operator()(None) {
   if (window())
     thread::callAsync(window(), &app::Window::stopAboutWindow);
-}
-
-ApplicationCommandManager* Target::applicationCommandManager() {
-  return targetManager_->commandManager();
 }
 
 }  // namespace slow

@@ -15,12 +15,14 @@
 namespace rec {
 namespace command {
 
-TargetManager::TargetManager(CommandData* commandData)
+TargetManager::TargetManager(CommandData* commandData,
+                             ApplicationCommandManager* commandManager)
     : lastInvocation_(0),
       disabled_(false),
-      commandData_(commandData) {
+      commandData_(commandData),
+      commandManager_(commandManager) {
   target_.reset(new CommandTarget(this, &table_));
-  commandManager_.setFirstCommandTarget(target_.get());
+  commandManager_->setFirstCommandTarget(target_.get());
 }
 
 TargetManager:: ~TargetManager() {}
@@ -92,7 +94,7 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     DLOG(INFO) << CommandIDEncoder::commandIDName(id);
 
   info->setActive(enable);
-  menu->addCommandItem(&commandManager_, id);
+  menu->addCommandItem(commandManager_, id);
 }
 
 CommandRecord* TargetManager::find(CommandID id) {
@@ -102,7 +104,7 @@ CommandRecord* TargetManager::find(CommandID id) {
 
 void TargetManager::addCommands() {
   fillCommandRecordTable(&table_, *commandData_);
-  commandManager_.registerAllCommandsForTarget(target_.get());
+  commandManager_->registerAllCommandsForTarget(target_.get());
   loadKeyboardBindings(this);
 }
 

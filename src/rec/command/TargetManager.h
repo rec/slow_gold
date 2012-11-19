@@ -21,13 +21,13 @@ class TargetManager : public Listener<CommandID>,
                       public Listener<bool>,
                       public Broadcaster<None> {
  public:
-  explicit TargetManager(CommandData*);
+  TargetManager(CommandData*, ApplicationCommandManager*);
   virtual ~TargetManager();
 
   void addCommands();
 
   bool invokeDirectly(CommandID commandID, bool asynchronously) {
-    return commandManager_.invokeDirectly(commandID, asynchronously);
+    return commandManager_->invokeDirectly(commandID, asynchronously);
   }
 
   virtual void operator()(CommandID id) {
@@ -47,7 +47,7 @@ class TargetManager : public Listener<CommandID>,
                    const String& category,
                    const String& desc);
 
-  ApplicationCommandManager* commandManager() { return &commandManager_; }
+  ApplicationCommandManager* commandManager() { return commandManager_; }
   void addCommandItem(PopupMenu*,
                       CommandID,
                       bool enable,
@@ -60,12 +60,12 @@ class TargetManager : public Listener<CommandID>,
  private:
   CommandRecordTable table_;
 
-  ApplicationCommandManager commandManager_;
   CriticalSection lock_;
   InvocationInfo lastInvocation_;
   bool disabled_;
 
   ptr<CommandData> commandData_;
+  ApplicationCommandManager* commandManager_;
   ptr<ApplicationCommandTarget> target_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TargetManager);
