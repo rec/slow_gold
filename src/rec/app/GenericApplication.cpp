@@ -13,7 +13,7 @@ namespace app {
 
 GenericApplication::GenericApplication(ApplicationFunction i,
                                        ApplicationFunction s)
-    : initializer_(i), shutdown_(s), disabled_(false),
+    : initializer_(i), shutdown_(s), enable_(ENABLE),
       autoCheckForUpdates_(true) {
 }
 
@@ -66,7 +66,7 @@ void GenericApplication::shutdown() {
 }
 
 void GenericApplication::systemRequestedQuit() {
-  if (!disabled_)
+  if (enable_ == ENABLE)
     JUCEApplication::systemRequestedQuit();
 }
 

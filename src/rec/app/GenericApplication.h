@@ -15,7 +15,8 @@ class Window;
 
 typedef void (*ApplicationFunction)(GenericApplication* app);
 
-class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
+class GenericApplication : public Listener<Enable>,
+                           public juce::JUCEApplication {
  public:
   static const int STARTUP_THREAD_PRIORITY = 4;
 
@@ -33,9 +34,9 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   virtual void anotherInstanceStarted(const String& s);
   virtual void systemRequestedQuit();
 
-  virtual void operator()(bool disabled) {
+  virtual void operator()(Enable enable) {
     Lock l(lock_);
-    disabled_ = disabled;
+    enable_ = enable;
   }
 
   const String version() const { return ProjectInfo::versionString; }
@@ -48,7 +49,7 @@ class GenericApplication : public Listener<bool>, public juce::JUCEApplication {
   ApplicationFunction shutdown_;
   ptr<Window> window_;
   thread_ptr<Thread> startupThread_;
-  bool disabled_;
+  Enable enable_;
   bool autoCheckForUpdates_;
   CriticalSection lock_;
 

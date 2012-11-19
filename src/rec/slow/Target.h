@@ -16,14 +16,14 @@ namespace slow {
 class Instance;
 
 class Target : public HasInstance,
-               public Listener<CommandID>,
-               public Listener<bool> {
+               public Listener<Enable>,
+               public Listener<CommandID> {
  public:
-  explicit Target(Instance* i) : HasInstance(i), disabled_(false) {}
+  explicit Target(Instance* i) : HasInstance(i), enabled_(ENABLE) {}
   virtual ~Target() {}
 
   virtual void operator()(CommandID);
-  virtual void operator()(bool);
+  virtual void operator()(Enable);
 
   virtual bool perform(const InvocationInfo&);
 
@@ -41,7 +41,7 @@ class Target : public HasInstance,
 
  private:
   CriticalSection lock_;
-  bool disabled_;
+  Enable enabled_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Target);
 };

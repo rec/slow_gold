@@ -26,7 +26,7 @@ bool Target::perform(const InvocationInfo& invocation) {
   }
 
   Lock l(lock_);
-  if (disabled_)
+  if (enabled_ == DISABLE)
     return true;
 
   CommandRecord* cr = commandRecordTable()->find(invocation.commandID);
@@ -90,9 +90,9 @@ void Target::operator()(CommandID id) {
     LOG(DFATAL) << "Failed to invoke " << CommandIDEncoder::commandIDName(id);
 }
 
-void Target::operator()(bool d) {
+void Target::operator()(Enable enabled) {
   Lock l(lock_);
-  disabled_ = d;
+  enabled_ = enabled;
 }
 
 }  // namespace slow

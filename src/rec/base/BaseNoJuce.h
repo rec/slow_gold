@@ -32,6 +32,7 @@ enum Endianness { LITTLE_END, BIG_END };
 enum Orientation {HORIZONTAL, VERTICAL};
 enum Undoable { CANT_UNDO, CAN_UNDO };
 enum Scope { FILE_SCOPE, GLOBAL_SCOPE };
+enum Enable { DISABLE, ENABLE };
 
 inline Scope scope(bool global) { return global ? GLOBAL_SCOPE : FILE_SCOPE; }
 

@@ -30,7 +30,7 @@ ModalKiller* modalKiller = NULL;
 }  // namespace
 
 DialogLocker::DialogLocker() {
-  getDisableBroadcaster()->broadcast(true);
+  getDisableBroadcaster()->broadcast(DISABLE);
   Lock l(lock);
 
   locked_ = !openDialogOpen;
@@ -47,11 +47,11 @@ DialogLocker::~DialogLocker() {
       modal = NULL;
     }
   }
-  getDisableBroadcaster()->broadcast(false);
+  getDisableBroadcaster()->broadcast(ENABLE);
 }
 
-Broadcaster<bool>* DialogLocker::getDisableBroadcaster() {
-  static Broadcaster<bool> disabler;
+Broadcaster<Enable>* DialogLocker::getDisableBroadcaster() {
+  static Broadcaster<Enable> disabler;
   return &disabler;
 }
 
