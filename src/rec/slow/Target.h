@@ -1,6 +1,7 @@
 #ifndef __REC_SLOW_SLOWTARGET__
 #define __REC_SLOW_SLOWTARGET__
 
+#include "rec/command/CommandRecordTable.h"
 #include "rec/slow/HasInstance.h"
 
 namespace rec {
@@ -29,6 +30,7 @@ class Target : public HasInstance, public Listener<None> {
 
  private:
   ApplicationCommandManager commandManager_;
+  command::CommandRecordTable table_;
   ptr<command::TargetManager> targetManager_;
   ptr<command::MidiCommandMap> midiCommandMap_;
 

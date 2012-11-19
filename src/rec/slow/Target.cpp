@@ -19,9 +19,9 @@ namespace slow {
 
 Target::Target(Instance* i)
     : HasInstance(i),
-      targetManager_(
-                     new command::TargetManager(slow::createSlowCommandData(i),
-                                                &commandManager_)),
+      targetManager_(new command::TargetManager(slow::createSlowCommandData(i),
+                                                &commandManager_,
+                                                &table_)),
       midiCommandMap_(new command::MidiCommandMap(&commandManager_)) {
   i->window_->addKeyListener(commandManager_.getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());

@@ -21,7 +21,7 @@ class TargetManager : public Listener<CommandID>,
                       public Listener<bool>,
                       public Broadcaster<None> {
  public:
-  TargetManager(CommandData*, ApplicationCommandManager*);
+  TargetManager(CommandData*, ApplicationCommandManager*, CommandRecordTable*);
   virtual ~TargetManager();
 
   void addCommands();
@@ -53,19 +53,19 @@ class TargetManager : public Listener<CommandID>,
                       bool enable,
                       const String& name,
                       int flags);
-  CommandRecordTable* commandRecordTable() { return &table_; }
+  CommandRecordTable* commandRecordTable() { return table_; }
   ApplicationCommandTarget* target() { return target_.get(); }
   CommandRecord* find(CommandID);
 
  private:
-  CommandRecordTable table_;
-
   CriticalSection lock_;
   InvocationInfo lastInvocation_;
   bool disabled_;
 
   ptr<CommandData> commandData_;
   ApplicationCommandManager* commandManager_;
+  CommandRecordTable* table_;
+
   ptr<ApplicationCommandTarget> target_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TargetManager);

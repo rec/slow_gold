@@ -16,12 +16,14 @@ namespace rec {
 namespace command {
 
 TargetManager::TargetManager(CommandData* commandData,
-                             ApplicationCommandManager* commandManager)
+                             ApplicationCommandManager* commandManager,
+                             CommandRecordTable* table)
     : lastInvocation_(0),
       disabled_(false),
       commandData_(commandData),
-      commandManager_(commandManager) {
-  target_.reset(new CommandTarget(this, &table_));
+      commandManager_(commandManager),
+      table_(table) {
+  target_.reset(new CommandTarget(this, table_));
   commandManager_->setFirstCommandTarget(target_.get());
 }
 
@@ -99,11 +101,11 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
 
 CommandRecord* TargetManager::find(CommandID id) {
   Lock l(lock_);
-  return table_.find(id);
+  return table_->find(id);
 }
 
 void TargetManager::addCommands() {
-  fillCommandRecordTable(&table_, *commandData_);
+  fillCommandRecordTable(table_, *commandData_);
   commandManager_->registerAllCommandsForTarget(target_.get());
   loadKeyboardBindings(this);
 }
