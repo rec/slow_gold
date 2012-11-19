@@ -10,7 +10,7 @@ namespace util {
 
 class Deletable {
  public:
-  Deletable();
+  Deletable() {}
   virtual ~Deletable() {}
 
  private:
