@@ -22,6 +22,9 @@ class HasInstance {
   CurrentTime* currentTime() { return instance_->currentTime_.get(); }
   Menus* menus() { return instance_->menus_.get(); }
   app::Window* window() { return instance_->window_; }
+  command::CommandRecordTable* commandRecordTable() {
+    return instance_->commandRecordTable_.get();
+  }
 
   const VirtualFile file() const { return instance_->file(); }
   SampleTime time() const { return instance_->time(); }

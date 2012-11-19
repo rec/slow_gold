@@ -23,7 +23,7 @@ namespace slow {
 Target::Target(Instance* i)
     : HasInstance(i),
       disabled_(false) {
-  target_.reset(new CommandTarget(this, i->commandRecordTable_.get()));
+  target_.reset(new CommandTarget(i));
   commandData_.reset(slow::createSlowCommandData(i));
   commandManager_.setFirstCommandTarget(target_.get());
   i->window_->addKeyListener(commandManager_.getKeyMappings());
