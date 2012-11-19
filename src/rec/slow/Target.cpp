@@ -106,7 +106,7 @@ void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
   }
   if (flags >= 0)
     info->flags = flags;
-  if (!enable)
+  if (false && !enable)
     DLOG(INFO) << CommandIDEncoder::commandIDName(id);
 
   info->setActive(enable);

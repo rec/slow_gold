@@ -38,6 +38,7 @@ class TableController : public TableListBoxModel, public TableListBox {
   virtual String getCellTooltip(int row, int column) const = 0;
   bool editable(int col) const;
   virtual bool selected(int row) const = 0;
+  virtual void setEditing(bool) {}
 
  protected:
   virtual void update() { updateContent(); }

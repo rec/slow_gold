@@ -4,6 +4,8 @@
 
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataOps.h"
+#include "rec/data/DataCenter.h"
+#include "rec/data/UndoStack.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/proto/FieldOps.h"
 #include "rec/gui/SetterText.h"
@@ -192,6 +194,14 @@ void Loops::editViewport(const widget::waveform::Viewport& viewport) {
   setViewport(viewport);
   updateContent();
   setProto(viewport);
+}
+
+void Loops::setEditing(bool editing) {
+  data::UndoStack* stack = data::getDataCenter().undoStack();
+  if (editing)
+    stack->startGroup();
+  else
+    stack->stopGroup();
 }
 
 }  // namespace audio

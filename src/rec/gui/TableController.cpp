@@ -114,6 +114,14 @@ class TableLabel : public SimpleLabel {
       SimpleLabel::setText(s, false);
   }
 
+  virtual void editorShown(TextEditor*) {
+    table_->setEditing(true);
+  }
+
+  virtual void editorAboutToBeHidden(TextEditor*) {
+    table_->setEditing(false);
+  }
+
   TableController* const table_;
   int col_;
   int row_;

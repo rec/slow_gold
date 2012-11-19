@@ -36,6 +36,7 @@ class Loops : public TableController,
                                  const MouseEvent&);
 
   virtual bool selected(int row) const;
+  virtual void setEditing(bool);
 
  protected:
   virtual void update();

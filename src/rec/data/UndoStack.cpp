@@ -118,7 +118,6 @@ void UndoStack::undoOrRedo(bool isUndo) {
       return;
     int pos = stack_.size() - 1 - (isUndo ? undoes_++ : --undoes_);
     stack_[pos]->undoOrRedo(isUndo);
-    LOG(INFO) << stack_.size() << ", " << undoes_;
   }
 
   broadcast(None());
