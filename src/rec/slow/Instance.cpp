@@ -172,7 +172,6 @@ void Instance::init() {
   applicationCommandManager_.setFirstCommandTarget(
       applicationCommandTarget_.get());
   window_->addKeyListener(applicationCommandManager_.getKeyMappings());
-  target_->addListener(target_.get());  // TODO: why is this needed!
 
   components_->init();
 

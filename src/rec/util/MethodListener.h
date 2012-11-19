@@ -29,6 +29,16 @@ Listener<Type>* methodListener(
   return new MethodListener<Object, Type>(object, method);
 }
 
+template <typename Object, typename Type>
+Listener<Type>* addMethodListener(
+    Broadcaster<Type>* broadcaster,
+    Object* object,
+    typename MethodListener<Object, Type>::Method method) {
+  Listener<Type>* listener = methodListener(object, method);
+  broadcaster->addListener(listener);
+  return listener;
+}
+
 }  // namespace util
 }  // namespace rec
 

@@ -19,14 +19,11 @@ using namespace rec::command;
 namespace rec {
 namespace slow {
 
-void Target::operator()(None) {
-  if (window())
-    thread::callAsync(window(), &app::Window::stopAboutWindow);
-}
-
 bool Target::perform(const InvocationInfo& invocation) {
-	if (invocation.commandID != Command::ABOUT_THIS_PROGRAM)
-    broadcast(None());
+	if (invocation.commandID != Command::ABOUT_THIS_PROGRAM) {
+    if (window())
+      thread::callAsync(window(), &app::Window::stopAboutWindow);
+  }
 
   Lock l(lock_);
   if (disabled_)

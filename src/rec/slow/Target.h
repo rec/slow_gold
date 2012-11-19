@@ -16,15 +16,12 @@ namespace slow {
 class Instance;
 
 class Target : public HasInstance,
-               public Listener<None>,
                public Listener<CommandID>,
-               public Listener<bool>,
-               public Broadcaster<None> {
+               public Listener<bool> {
  public:
   explicit Target(Instance* i) : HasInstance(i), disabled_(false) {}
   virtual ~Target() {}
 
-  virtual void operator()(None);
   virtual void operator()(CommandID);
   virtual void operator()(bool);
 
