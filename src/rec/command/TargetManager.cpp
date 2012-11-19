@@ -5,6 +5,7 @@
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/command/CommandTarget.h"
 #include "rec/command/KeyboardBindings.h"
 #include "rec/data/Data.h"
 #include "rec/util/STL.h"
@@ -13,40 +14,6 @@
 
 namespace rec {
 namespace command {
-
-namespace {
-
-class CommandTarget : public ApplicationCommandTarget {
- public:
-  explicit CommandTarget(TargetManager* tm, CommandRecordTable* table)
-      : targetManager_(tm), table_(table) {
-  }
-
-  virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
-
-  virtual void getAllCommands(juce::Array<CommandID>& commands) {
-    table_->getAllCommands(&commands);
-  }
-
-  virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-    info = *targetManager_->find(id)->getInfo();
-
-    if (!info.shortName.isNotEmpty())
-      LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
-  }
-
-  virtual bool perform (const InvocationInfo& info) {
-    return targetManager_->perform(info);
-  }
-
- private:
-  TargetManager* const targetManager_;
-  CommandRecordTable* const table_;
-
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandTarget);
-};
-
-}
 
 TargetManager::TargetManager(CommandData* commandData)
     : lastInvocation_(0),
@@ -124,11 +91,13 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
     LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
     info->shortName = "(error)";
   }
-  info->setActive(enable);
   if (flags >= 0)
     info->flags = flags;
+  if (!enable)
+    DLOG(INFO) << CommandIDEncoder::commandIDName(id);
 
-   menu->addCommandItem(commandManager(), id);
+  info->setActive(enable);
+  menu->addCommandItem(&commandManager_, id);
 }
 
 CommandRecord* TargetManager::find(CommandID id) {

@@ -18,10 +18,12 @@
 namespace rec {
 
 inline void doLog(const String& s) {
+#ifdef DEBUG
   File f = File::getSpecialLocation(File::userDesktopDirectory).
     getChildFile("SlowGold.log");
   f.appendText(s);
   f.appendText("\n");
+#endif
 };
 
 }  // namespace

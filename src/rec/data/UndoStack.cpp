@@ -5,6 +5,7 @@
 #include "rec/data/Value.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/util/Math.h"
+#include "rec/util/proto/Proto.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/LogFile.h"
 
@@ -19,6 +20,7 @@ class UndoStack::Entry {
       timestamp_ = juce::Time::currentTimeMillis();
     DCHECK(undo_);
     DCHECK(redo_);
+    DCHECK_EQ(getTypeName(*undo_), getTypeName(*redo_));
   }
 
   static const int64 MAX_GROUP_TIME = 2000;
@@ -46,6 +48,11 @@ class UndoStack::Entry {
       return near(entry.timestamp_, timestamp_, MAX_GROUP_TIME);
 
     return group;
+  }
+
+  void log() const {
+    DLOG(INFO) << "Undo: " << getTypeName(*undo_);
+    // DLOG(INFO) << "Redo: " << getTypeName(*redo_);
   }
 
   Data* data_;
@@ -100,6 +107,7 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
       stack_.push_back(ue.transfer());
     }
   }
+  LOG(INFO) << stack_.size() << ", " << undoes_;
   broadcast(None());
 }
 
@@ -110,6 +118,7 @@ void UndoStack::undoOrRedo(bool isUndo) {
       return;
     int pos = stack_.size() - 1 - (isUndo ? undoes_++ : --undoes_);
     stack_[pos]->undoOrRedo(isUndo);
+    LOG(INFO) << stack_.size() << ", " << undoes_;
   }
 
   broadcast(None());
@@ -137,13 +146,11 @@ void UndoStack::setEnabled(bool e) {
 void UndoStack::startGroup() {
   Lock l(lock_);
   group_ = true;
-  DLOG(INFO) << "group on";
 }
 
 void UndoStack::stopGroup() {
   Lock l(lock_);
   group_ = false;
-  DLOG(INFO) << "group off";
 }
 
 }  // namespace data

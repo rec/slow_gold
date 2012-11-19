@@ -76,7 +76,7 @@ string translate(const TranslatedString& original) {
   }
 
   LOG(ERROR) << "Couldn't translate " << str(original.original());
-  return "***";
+  return original.original();
 }
 
 }  // namespace translation

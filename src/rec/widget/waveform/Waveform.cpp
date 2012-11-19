@@ -226,8 +226,13 @@ void Waveform::setCursorText(int index, const String& text) {
 
   if (index < 0 || index >= lpl->loop_point_size())
     return;
-  lpl->mutable_loop_point(index)->set_name(str(text));
-  DataListener<Viewport>::setProto(viewport);
+
+  LoopPoint* loopPoint = lpl->mutable_loop_point(index);
+  string t = str(text);
+  if (loopPoint->name() != t) {
+    loopPoint->set_name(str(text));
+    DataListener<Viewport>::setProto(viewport);
+  }
 }
 
 void Waveform::repaintRange(const SampleRange& r) {

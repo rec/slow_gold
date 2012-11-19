@@ -77,6 +77,11 @@ TransformController::TransformController()
   stereoComboBox_.setJustificationType(Justification::centredLeft);
   stereoComboBox_.addListener(this);
 
+  stereoComboBox_.addItem(Trans("Stereo"), STEREO);
+  stereoComboBox_.addItem(Trans("Left"), LEFT);
+  stereoComboBox_.addItem(Trans("Right"), RIGHT);
+  stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
+
   leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
   leftPanel_.addToLayout(&stereoComboBox_, COMBO_BOX_HEIGHT);
   leftPanel_.addToLayout(&leftPadding_);
@@ -122,15 +127,13 @@ void TransformController::languageChanged() {
   fineScale_.slider()->setTextValueSuffix(String(" ") + Trans("cents"));
   masterTune_.slider()->setTextValueSuffix(String(" ") + Trans("cents"));
 
-  stereoComboBox_.clear();
-
   stereoComboBox_.setTextWhenNothingSelected(Trans("Stereo"));
   stereoComboBox_.setTextWhenNoChoicesAvailable(Trans("Stereo"));
 
-  stereoComboBox_.addItem(Trans("Stereo"), STEREO);
-  stereoComboBox_.addItem(Trans("Left"), LEFT);
-  stereoComboBox_.addItem(Trans("Right"), RIGHT);
-  stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
+  stereoComboBox_.changeItemText(STEREO, Trans("Stereo"));
+  stereoComboBox_.changeItemText(LEFT, Trans("Left"));
+  stereoComboBox_.changeItemText(RIGHT, Trans("Right"));
+  stereoComboBox_.changeItemText(LEFT_PLUS_RIGHT, Trans("L + R"));
 
   stereoComboBox_.setSelectedId(sides_, true);
 }

@@ -24,8 +24,10 @@ void RegisterProgram::run() {
     }
   }
 
+#ifndef DEBUG
   LOG(ERROR) << "Failed to register any URLs from list "
              << str(urls.joinIntoString(", "));
+#endif
 }
 
 bool RegisterProgram::tryOneUrl(const String& urlName) {
@@ -49,8 +51,10 @@ bool RegisterProgram::tryOneUrl(const String& urlName) {
   if (acceptResult(result))
     return true;
 
+#ifndef DEBUG
   LOG(ERROR) << "Didn't accept result for URL " << url.toString(true);
   LOG(ERROR) << "Result: \n " << str(result);
+#endif
 
   return false;
 }
