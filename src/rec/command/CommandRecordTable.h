@@ -21,6 +21,7 @@ class CommandRecordTable : public CallbackTable {
   CommandRecord* create(CommandID);
   bool perform(CommandID);
   virtual void addCallback(CommandID, Callback*);
+  void fillCommandInfo(CommandID, const String& name, int flags, Enable);
 
  private:
   typedef std::map<CommandID, CommandRecord*> Table;

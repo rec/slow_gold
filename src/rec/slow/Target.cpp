@@ -30,24 +30,8 @@ bool Target::perform(const InvocationInfo& invocation) {
 
 void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                             const String& name, int flags) {
-  CommandRecord* cr = commandRecordTable()->find(id);
-  ApplicationCommandInfo* info = cr->getInfo();
-
-  if (name.length())
-    info->shortName = name;
-  else if (cr->setter_)
-    info->shortName = str(cr->setter_->menuName());
-
-  if (!info->shortName.length()) {
-    LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
-    info->shortName = "(error)";
-  }
-  if (flags >= 0)
-    info->flags = flags;
-  if (false && !enable)
-    DLOG(INFO) << CommandIDEncoder::commandIDName(id);
-
-  info->setActive(enable);
+  commandRecordTable()->fillCommandInfo(id, name, flags,
+                                        enable ? ENABLE : DISABLE);
   menu->addCommandItem(applicationCommandManager(), id);
 }
 

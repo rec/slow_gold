@@ -61,19 +61,44 @@ void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
 
 bool CommandRecordTable::perform(CommandID id) {
   CommandRecord* cr = find(id);
-  if (!cr) {
+  bool success = false;
+  if (!cr)
     LOG(DFATAL) << "No record for " << CommandIDEncoder::commandIDName(id);
-    return false;
-  }
-
-  if (!cr->callback_) {
+  else if (!cr->callback_)
     LOG(DFATAL) << "No callback for " << CommandIDEncoder::commandIDName(id);
-    return false;
+  else
+    success = true;
+
+  if (success)
+    (*(cr->callback_))();
+
+  return success;
+}
+
+void CommandRecordTable::fillCommandInfo(CommandID id, const String& name,
+                                         int flags, Enable enable) {
+  CommandRecord* cr = find(id);
+  if (!cr) {
+    LOG(DFATAL) << "no info for " << CommandIDEncoder::commandIDName(id);
+    return;
   }
+  ApplicationCommandInfo* info = cr->getInfo();
 
-  (*(cr->callback_))();
-  return true;
+  if (name.length())
+    info->shortName = name;
+  else if (cr->setter_)
+    info->shortName = str(cr->setter_->menuName());
 
+  if (!info->shortName.length()) {
+    LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
+    info->shortName = "(error)";
+  }
+  if (flags >= 0)
+    info->flags = flags;
+  if (false && !enable)
+    DLOG(INFO) << CommandIDEncoder::commandIDName(id);
+
+  info->setActive(enable == ENABLE);
 }
 
 }  // namespace command
