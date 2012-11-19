@@ -22,12 +22,8 @@ class TargetManager : public Listener<CommandID>,
   TargetManager(ApplicationCommandManager*, CommandRecordTable*);
   virtual ~TargetManager();
 
-  bool invokeDirectly(CommandID commandID, bool asynchronously) {
-    return commandManager_->invokeDirectly(commandID, asynchronously);
-  }
-
   virtual void operator()(CommandID id) {
-    if (!invokeDirectly(id, false))
+    if (!commandManager_->invokeDirectly(id, false))
       LOG(DFATAL) << "Failed to invoke " << CommandIDEncoder::commandIDName(id);
   }
 
@@ -56,10 +52,8 @@ class TargetManager : public Listener<CommandID>,
   CriticalSection lock_;
   bool disabled_;
 
-  CommandData* commandData_;
   ApplicationCommandManager* commandManager_;
   CommandRecordTable* table_;
-  ApplicationCommandTarget* target_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TargetManager);
 };
