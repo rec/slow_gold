@@ -38,6 +38,8 @@ class TargetManager : public Listener<CommandID>,
 
   virtual bool perform(const InvocationInfo&);
 
+ private:
+ public:
   InvocationInfo lastInvocation() const;
 
   void addCallback(CommandID id,

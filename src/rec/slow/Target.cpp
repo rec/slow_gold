@@ -49,6 +49,11 @@ void Target::operator()(None) {
     thread::callAsync(window(), &app::Window::stopAboutWindow);
 }
 
+bool Target::perform(const InvocationInfo& info) {
+  return targetManager_->perform(info);
+}
+
+
 }  // namespace slow
 }  // namespace rec
 

@@ -31,6 +31,7 @@ class Target : public HasInstance, public Listener<None> {
   void addCommands();
 
   virtual void operator()(None);
+  bool perform(const InvocationInfo&);
 
  private:
   ApplicationCommandManager commandManager_;

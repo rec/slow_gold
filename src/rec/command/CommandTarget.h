@@ -30,7 +30,7 @@ class CommandTarget : public ApplicationCommandTarget {
   }
 
   virtual bool perform(const InvocationInfo& info) {
-    return target_->targetManager()->perform(info);
+    return target_->perform(info);
   }
 
  private:
