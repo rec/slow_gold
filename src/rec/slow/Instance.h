@@ -73,6 +73,7 @@ class Instance {
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
   ptr<command::CommandRecordTable> commandRecordTable_;
+  ptr<ApplicationCommandTarget> applicationCommandTarget_;
 
   static Instance* getInstance();
   static const VirtualFile getInstanceFile();

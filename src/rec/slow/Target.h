@@ -49,14 +49,7 @@ class Target : public HasInstance,
                       int flags);
 
  private:
-  command::CommandRecord* find(CommandID);
-
-  command::CommandRecordTable* table() const {
-    return instance_->commandRecordTable_.get();
-  }
-
   ApplicationCommandManager commandManager_;
-  ptr<ApplicationCommandTarget> target_;
   ptr<command::CommandData> commandData_;
 
   CriticalSection lock_;

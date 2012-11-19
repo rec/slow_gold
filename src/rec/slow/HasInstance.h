@@ -25,6 +25,9 @@ class HasInstance {
   command::CommandRecordTable* commandRecordTable() {
     return instance_->commandRecordTable_.get();
   }
+  ApplicationCommandTarget* applicationCommandTarget() {
+    return instance_->applicationCommandTarget_.get();
+  }
 
   const VirtualFile file() const { return instance_->file(); }
   SampleTime time() const { return instance_->time(); }

@@ -15,6 +15,7 @@
 #include "rec/data/DataCenter.h"
 #include "rec/command/map/MidiCommandMap.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/command/CommandTarget.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/Opener.h"
 #include "rec/data/UndoStack.h"
@@ -146,6 +147,7 @@ void Instance::init() {
   player_->init();
   components_.reset(new Components(this));
   commandRecordTable_.reset(new command::CommandRecordTable);
+  applicationCommandTarget_.reset(new command::CommandTarget(this));
   target_.reset(new Target(this));
   currentTime_.reset(new CurrentTime(this));
   bufferFiller_.reset(new BufferFiller);

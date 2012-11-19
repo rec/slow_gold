@@ -1,8 +1,10 @@
 #ifndef __REC_COMMAND_COMMANDTARGET__
 #define __REC_COMMAND_COMMANDTARGET__
 
+#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/slow/Target.h"
 #include "rec/slow/HasInstance.h"
 
 namespace rec {
@@ -23,6 +25,7 @@ class CommandTarget : public ApplicationCommandTarget,
 
     if (!info.shortName.isNotEmpty())
       LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
+
     if ((info.flags & ApplicationCommandInfo::isDisabled))
       DLOG(INFO) << CommandIDEncoder::commandIDName(id) << " DISABLED";
   }

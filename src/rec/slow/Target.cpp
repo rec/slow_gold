@@ -23,9 +23,8 @@ namespace slow {
 Target::Target(Instance* i)
     : HasInstance(i),
       disabled_(false) {
-  target_.reset(new CommandTarget(i));
   commandData_.reset(slow::createSlowCommandData(i));
-  commandManager_.setFirstCommandTarget(target_.get());
+  commandManager_.setFirstCommandTarget(applicationCommandTarget());
   i->window_->addKeyListener(commandManager_.getKeyMappings());
 
   this->addListener(this);  // TODO: do I need this?!
@@ -34,9 +33,9 @@ Target::Target(Instance* i)
 Target::~Target() {}
 
 void Target::addCommands() {
-  command::fillCommandRecordTable(table(), *commandData_);
-  commandManager_.registerAllCommandsForTarget(target_.get());
-  loadKeyboardBindings(*table(), &commandManager_);
+  command::fillCommandRecordTable(commandRecordTable(), *commandData_);
+  commandManager_.registerAllCommandsForTarget(applicationCommandTarget());
+  loadKeyboardBindings(*commandRecordTable(), &commandManager_);
   window()->getAppleMenu()->addCommandItem(&commandManager_,
                                            Command::ABOUT_THIS_PROGRAM);
 }
@@ -54,7 +53,7 @@ bool Target::perform(const InvocationInfo& invocation) {
   if (disabled_)
     return true;
 
-  CommandRecord* cr = find(invocation.commandID);
+  CommandRecord* cr = commandRecordTable()->find(invocation.commandID);
   if (!cr->callback_)
     return false;
 
@@ -80,7 +79,7 @@ void Target::addCallback(CommandID id,
     flags += ApplicationCommandInfo::hiddenFromKeyEditor;
   info.setInfo(name, desc, category, flags);
 
-  CommandRecord* cr = find(id);
+  CommandRecord* cr = commandRecordTable()->find(id);
   if (cr->callback_)
     LOG(DFATAL) << "Add command twice: " << CommandIDEncoder::commandIDName(id);
 
@@ -89,7 +88,7 @@ void Target::addCallback(CommandID id,
 
 void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
                                    const String& name, int flags) {
-  CommandRecord* cr = find(id);
+  CommandRecord* cr = commandRecordTable()->find(id);
   ApplicationCommandInfo* info = cr->getInfo();
 
   if (name.length())
@@ -108,11 +107,6 @@ void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
 
   info->setActive(enable);
   menu->addCommandItem(&commandManager_, id);
-}
-
-command::CommandRecord* Target::find(CommandID id) {
-  Lock l(lock_);
-  return table()->find(id);
 }
 
 void Target::operator()(CommandID id) {
