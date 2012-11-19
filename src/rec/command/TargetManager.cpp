@@ -14,14 +14,11 @@ namespace rec {
 namespace command {
 
 TargetManager::TargetManager(ApplicationCommandManager* commandManager,
-                             CommandRecordTable* table,
-                             ApplicationCommandTarget* target)
+                             CommandRecordTable* table)
     : lastInvocation_(0),
       disabled_(false),
       commandManager_(commandManager),
-      table_(table),
-      target_(target) {
-  commandManager_->setFirstCommandTarget(target_);
+      table_(table) {
 }
 
 TargetManager:: ~TargetManager() {}

@@ -24,10 +24,8 @@ Target::Target(Instance* i)
       midiCommandMap_(new command::MidiCommandMap(&commandManager_)) {
   target_.reset(new CommandTarget(this, &table_));
   commandData_.reset(slow::createSlowCommandData(i));
-  targetManager_.reset(
-      new command::TargetManager(&commandManager_,
-                                 &table_,
-                                 target_.get()));
+  commandManager_.setFirstCommandTarget(target_.get());
+  targetManager_.reset(new command::TargetManager(&commandManager_, &table_));
   i->window_->addKeyListener(commandManager_.getKeyMappings());
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());

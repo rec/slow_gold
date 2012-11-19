@@ -19,8 +19,7 @@ class TargetManager : public Listener<CommandID>,
                       public Listener<bool>,
                       public Broadcaster<None> {
  public:
-  TargetManager(ApplicationCommandManager*, CommandRecordTable*,
-                ApplicationCommandTarget*);
+  TargetManager(ApplicationCommandManager*, CommandRecordTable*);
   virtual ~TargetManager();
 
   bool invokeDirectly(CommandID commandID, bool asynchronously) {
@@ -52,9 +51,7 @@ class TargetManager : public Listener<CommandID>,
                       bool enable,
                       const String& name,
                       int flags);
-  // CommandRecordTable* commandRecordTable() { return table_; }
-  // ApplicationCommandTarget* target() { return target_; }
-  // ApplicationCommandManager* commandManager() { return commandManager_; }
+
   CommandRecord* find(CommandID);
 
  private:
