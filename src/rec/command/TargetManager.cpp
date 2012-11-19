@@ -25,11 +25,6 @@ TargetManager::TargetManager(CommandData* commandData)
 
 TargetManager:: ~TargetManager() {}
 
-void TargetManager::registerAllCommandsForTarget() {
-  commandManager_.registerAllCommandsForTarget(target_.get());
-  loadKeyboardBindings(this);
-}
-
 bool TargetManager::perform(const InvocationInfo& invocation) {
 	if (invocation.commandID != Command::ABOUT_THIS_PROGRAM)
     broadcast(None());
@@ -107,7 +102,8 @@ CommandRecord* TargetManager::find(CommandID id) {
 
 void TargetManager::addCommands() {
   fillCommandRecordTable(&table_, *commandData_);
-  registerAllCommandsForTarget();
+  commandManager_.registerAllCommandsForTarget(target_.get());
+  loadKeyboardBindings(this);
 }
 
 }  // namespace command

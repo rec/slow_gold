@@ -26,17 +26,12 @@ class TargetManager : public Listener<CommandID>,
 
   void addCommands();
 
-  void registerAllCommandsForTarget();
-  void setApplicationCommandManagerToWatch(MenuBarModel* model) {
-    model->setApplicationCommandManagerToWatch(&commandManager_);
-  }
-
-  bool invokeDirectly(CommandID commandID, bool asynchronously = false) {
+  bool invokeDirectly(CommandID commandID, bool asynchronously) {
     return commandManager_.invokeDirectly(commandID, asynchronously);
   }
 
   virtual void operator()(CommandID id) {
-    if (!invokeDirectly(id))
+    if (!invokeDirectly(id, false))
       LOG(DFATAL) << "Failed to invoke " << CommandIDEncoder::commandIDName(id);
   }
 
