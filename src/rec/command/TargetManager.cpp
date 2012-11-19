@@ -2,11 +2,9 @@
 
 #include "rec/app/Files.h"
 #include "rec/command/CommandRecord.h"
-#include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandTarget.h"
-#include "rec/command/KeyboardBindings.h"
 #include "rec/data/Data.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
@@ -15,13 +13,11 @@
 namespace rec {
 namespace command {
 
-TargetManager::TargetManager(CommandData* commandData,
-                             ApplicationCommandManager* commandManager,
+TargetManager::TargetManager(ApplicationCommandManager* commandManager,
                              CommandRecordTable* table,
                              ApplicationCommandTarget* target)
     : lastInvocation_(0),
       disabled_(false),
-      commandData_(commandData),
       commandManager_(commandManager),
       table_(table),
       target_(target) {
@@ -103,12 +99,6 @@ void TargetManager::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
 CommandRecord* TargetManager::find(CommandID id) {
   Lock l(lock_);
   return table_->find(id);
-}
-
-void TargetManager::addCommands() {
-  fillCommandRecordTable(table_, *commandData_);
-  commandManager_->registerAllCommandsForTarget(target_);
-  loadKeyboardBindings(this);
 }
 
 }  // namespace command

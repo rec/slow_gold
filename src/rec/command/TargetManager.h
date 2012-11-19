@@ -21,11 +21,9 @@ class TargetManager : public Listener<CommandID>,
                       public Listener<bool>,
                       public Broadcaster<None> {
  public:
-  TargetManager(CommandData*, ApplicationCommandManager*, CommandRecordTable*,
+  TargetManager(ApplicationCommandManager*, CommandRecordTable*,
                 ApplicationCommandTarget*);
   virtual ~TargetManager();
-
-  void addCommands();
 
   bool invokeDirectly(CommandID commandID, bool asynchronously) {
     return commandManager_->invokeDirectly(commandID, asynchronously);
@@ -63,7 +61,7 @@ class TargetManager : public Listener<CommandID>,
   InvocationInfo lastInvocation_;
   bool disabled_;
 
-  ptr<CommandData> commandData_;
+  CommandData* commandData_;
   ApplicationCommandManager* commandManager_;
   CommandRecordTable* table_;
 

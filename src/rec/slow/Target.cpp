@@ -4,6 +4,7 @@
 #include "rec/command/CommandDatabase.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandTarget.h"
+#include "rec/command/KeyboardBindings.h"
 #include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/command/TargetManager.h"
 #include "rec/data/DataOps.h"
@@ -22,9 +23,9 @@ Target::Target(Instance* i)
     : HasInstance(i),
       midiCommandMap_(new command::MidiCommandMap(&commandManager_)) {
   target_.reset(new CommandTarget(this, &table_));
+  commandData_.reset(slow::createSlowCommandData(i));
   targetManager_.reset(
-      new command::TargetManager(slow::createSlowCommandData(i),
-                                 &commandManager_,
+      new command::TargetManager(&commandManager_,
                                  &table_,
                                  target_.get()));
   i->window_->addKeyListener(commandManager_.getKeyMappings());
@@ -38,7 +39,9 @@ Target::~Target() {
 }
 
 void Target::addCommands() {
-  targetManager_->addCommands();
+  command::fillCommandRecordTable(&table_, *commandData_);
+  commandManager_.registerAllCommandsForTarget(target_.get());
+  loadKeyboardBindings(targetManager_.get());
   window()->getAppleMenu()->addCommandItem(&commandManager_,
                                            Command::ABOUT_THIS_PROGRAM);
 }
