@@ -14,17 +14,25 @@ CommandRecordTable::~CommandRecordTable() {
   stl::deleteMapPointers(&table_);
 }
 
-CommandRecord* CommandRecordTable::findOrCreate(CommandID id) {
+CommandRecord* CommandRecordTable::findDontCreate(CommandID id) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
   return (i != table_.end()) ? i->second : NULL;
 }
 
-CommandRecord* CommandRecordTable::findDontCreate(CommandID id) {
+CommandRecord* CommandRecordTable::findOrCreate(CommandID id) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
-  if (i != table_.end())
+  return (i != table_.end()) ? i->second : create(id);
+}
+
+CommandRecord* CommandRecordTable::create(CommandID id) {
+  Lock l(lock_);
+  Table::iterator i = table_.find(id);
+  if (i != table_.end()) {
+    LOG(DFATAL) << CommandIDEncoder::commandIDName(id) << " already exists.";
     return i->second;
+  }
 
   ptr<CommandRecord> rec(new CommandRecord(id));
   table_.insert(i, std::make_pair(id, rec.get()));
