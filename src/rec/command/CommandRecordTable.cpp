@@ -20,13 +20,6 @@ CommandRecord* CommandRecordTable::find(CommandID id) {
   return (i != table_.end()) ? i->second : NULL;
 }
 
-CommandRecord* CommandRecordTable::findOrCreate(CommandID id) {
-  Lock l(lock_);
-  Table::iterator i = table_.find(id);
-  DLOG(INFO) << (i != table_.end() ? "find" : "create");
-  return (i != table_.end()) ? i->second : create(id);
-}
-
 CommandRecord* CommandRecordTable::create(CommandID id) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
@@ -63,11 +56,7 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
 
 void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
   Lock l(lock_);
-
-  CommandRecord* cr = findOrCreate(id);
-  if (cr->callback_)
-    LOG(DFATAL) << "Repeated callback " << CommandIDEncoder::commandIDName(id);
-  cr->callback_.reset(cb);
+  create(id)->callback_.reset(cb);
 }
 
 }  // namespace command
