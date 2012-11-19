@@ -24,17 +24,10 @@ class Target : public HasInstance,
   explicit Target(Instance* instance);
   virtual ~Target();
 
- private:
-  command::CommandRecordTable* table() const {
-    return instance_->commandRecordTable_.get();
-  }
-
- public:
   ApplicationCommandManager* applicationCommandManager() {
     return &commandManager_;
   }
 
- public:
   void addCommands();
 
   virtual void operator()(None);
@@ -55,9 +48,13 @@ class Target : public HasInstance,
                       const String& name,
                       int flags);
 
+ private:
   command::CommandRecord* find(CommandID);
 
- private:
+  command::CommandRecordTable* table() const {
+    return instance_->commandRecordTable_.get();
+  }
+
   ApplicationCommandManager commandManager_;
   ptr<ApplicationCommandTarget> target_;
   ptr<command::CommandData> commandData_;

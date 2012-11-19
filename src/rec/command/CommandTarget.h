@@ -20,7 +20,7 @@ class CommandTarget : public ApplicationCommandTarget {
   }
 
   virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-    info = *target_->find(id)->getInfo();
+    info = *table_->find(id)->getInfo();
 
     if (!info.shortName.isNotEmpty())
       LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
