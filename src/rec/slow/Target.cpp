@@ -28,13 +28,6 @@ bool Target::perform(const InvocationInfo& invocation) {
   return (enable_ == DISABLE) || commandRecordTable()->perform(id);
 }
 
-void Target::addCommandItem(PopupMenu* menu, CommandID id, Enable enable,
-                            const String& name, int flags) {
-  commandRecordTable()->fillCommandInfo(id, name, flags, enable);
-  command::CommandRecord* cr = commandRecordTable()->find(id);
-  menu->addCommandItem(applicationCommandManager(), id);
-}
-
 void Target::operator()(CommandID id) {
   if (!applicationCommandManager()->invokeDirectly(id, false))
     LOG(DFATAL) << "Failed to invoke " << CommandIDEncoder::commandIDName(id);

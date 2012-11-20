@@ -6,14 +6,7 @@
 #include "rec/util/Listener.h"
 
 namespace rec {
-
-namespace command { class CommandData; }
-namespace command { class CommandTarget; }
-namespace command { class CommandRecordTable; }
-
 namespace slow {
-
-class Instance;
 
 class Target : public HasInstance,
                public Listener<Enable>,
@@ -26,9 +19,6 @@ class Target : public HasInstance,
   virtual void operator()(Enable);
 
   virtual bool perform(const InvocationInfo&);
-
-  void addCommandItem(PopupMenu*, CommandID, Enable, const String& name,
-                      int flags);
 
  private:
   CriticalSection lock_;

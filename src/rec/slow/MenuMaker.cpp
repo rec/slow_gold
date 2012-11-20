@@ -2,6 +2,7 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/AdvancedMenuMaker.h"
 #include "rec/slow/BasicMenuMaker.h"
@@ -30,8 +31,10 @@ void MenuMaker::addFull(CommandID id,
                         Enable enable,
                         PopupMenu* m,
                         int flags) {
-  target_->addCommandItem(m ? m : &menu_, id, enable, name, flags);
+  commandRecordTable()->fillCommandInfo(id, name, flags, enable);
+  (m ? m : &menu_)->addCommandItem(applicationCommandManager(), id);
 }
+
 
 void MenuMaker::addBasic(CommandID id) {
   addFull(id, String::empty, ENABLE, NULL, -1);
@@ -77,12 +80,12 @@ void MenuMaker::addBank(Command::Type command, const String& name) {
   menu_.addSubMenu(name, sub, !empty_);
 }
 
-MenuMaker* makeMenuMaker(slow::Target* tm, bool isAdvanced,
+MenuMaker* makeMenuMaker(slow::Instance* instance, bool isAdvanced,
                          const IsWholeSong& isWholeSong, bool empty) {
   if (isAdvanced)
-    return new AdvancedMenuMaker(tm, isWholeSong, empty);
+    return new AdvancedMenuMaker(instance, isWholeSong, empty);
   else
-    return new BasicMenuMaker(tm, isWholeSong, empty);
+    return new BasicMenuMaker(instance, isWholeSong, empty);
 }
 
 }  // namespace slow

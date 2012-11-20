@@ -10,8 +10,8 @@ class Target;
 
 class AdvancedMenuMaker : public BasicMenuMaker {
  public:
-  AdvancedMenuMaker(Target* t, const IsWholeSong& isWholeSong, bool empty)
-      : BasicMenuMaker(t, isWholeSong, empty) {
+  AdvancedMenuMaker(Instance* i, const IsWholeSong& isWholeSong, bool empty)
+      : BasicMenuMaker(i, isWholeSong, empty) {
   }
   virtual ~AdvancedMenuMaker() {}
 

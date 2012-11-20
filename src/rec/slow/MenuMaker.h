@@ -4,20 +4,25 @@
 #include "rec/base/base.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/slow/IsWholeSong.h"
+#include "rec/slow/HasInstance.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
 
+namespace command { class CommandRecordTable; }
+
 namespace slow {
 
-class Target;
+class Instance;
 
-class MenuMaker {
+class MenuMaker : public HasInstance {
  public:
   static const int SLOT_COUNT = 10;
 
-  MenuMaker(Target* t, const IsWholeSong& isWholeSong, bool empty)
-      : isWholeSong_(isWholeSong), empty_(empty), target_(t) {
+  MenuMaker(Instance* i,
+            const IsWholeSong& isWholeSong,
+            bool empty)
+      : HasInstance(i), isWholeSong_(isWholeSong), empty_(empty) {
   }
   virtual ~MenuMaker() {}
 
@@ -65,13 +70,12 @@ class MenuMaker {
                PopupMenu* m,
                int flags);
 
-  Target* target_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MenuMaker);
 };
 
-MenuMaker* makeMenuMaker(Target* tm, bool isAdvanced,
+MenuMaker* makeMenuMaker(Instance*, bool isAdvanced,
                          const IsWholeSong&, bool empty);
 
 }  // namespace slow

@@ -11,8 +11,8 @@ class Target;
 
 class BasicMenuMaker : public MenuMaker {
  public:
-  BasicMenuMaker(Target* t, const IsWholeSong& isWholeSong, bool empty)
-      : MenuMaker(t, isWholeSong, empty) {
+  BasicMenuMaker(slow::Instance* i, const IsWholeSong& isWholeSong, bool empty)
+      : MenuMaker(i, isWholeSong, empty) {
   }
   virtual ~BasicMenuMaker() {}
 
