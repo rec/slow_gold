@@ -14,9 +14,6 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
     Lock l(lock_);
     listener = listener_;
     listener_ = NULL;
-
-    // if (!(enable_ || listener))
-      // return;
   }
 
   if (listener)

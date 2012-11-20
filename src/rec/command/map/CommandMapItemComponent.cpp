@@ -15,21 +15,21 @@ const int TEXT_Y_MARGIN = 1;
 
 }  // namespace
 
-CommandMapItemComponent::CommandMapItemComponent(CommandMapEditor& owner_,
-                                                 const CommandID commandID_)
-    : commandID (commandID_), owner(owner_) {
+CommandMapItemComponent::CommandMapItemComponent(CommandMapEditor& owner,
+                                                 const CommandID commandID)
+    : commandID_(commandID), owner_(owner) {
   setInterceptsMouseClicks (false, true);
   owner.addChildren(this);
 }
 
 void CommandMapItemComponent::addButton(const String& desc, int index,
                                         bool isReadOnly) {
-  CommandMapEditButton* const b = new CommandMapEditButton(owner, commandID,
+  CommandMapEditButton* const b = new CommandMapEditButton(owner_, commandID_,
                                                            desc, index);
-  buttons.add (b);
+  buttons_.add (b);
 
   b->setEnabled(!isReadOnly);
-  b->setVisible(buttons.size() <= (int) maxNumAssignments);
+  b->setVisible(buttons_.size() <= (int) maxNumAssignments);
   addChildComponent(b);
 }
 
@@ -37,7 +37,7 @@ void CommandMapItemComponent::paint(Graphics& g) {
   g.setFont(getHeight() * HEIGHT_RATIO);
   g.setColour(findColour(CommandMapEditor::textColourId));
 
-  g.drawFittedText(owner.getCommandManager().getNameOfCommand(commandID),
+  g.drawFittedText(owner_.getCommandManager().getNameOfCommand(commandID_),
                    TEXT_X_MARGIN, 0,
                    jmax(TEXT_WIDTH_MAX,
                         getChildComponent(0)->getX() - TEXT_X_TOTAL),
@@ -48,8 +48,8 @@ void CommandMapItemComponent::paint(Graphics& g) {
 void CommandMapItemComponent::resized() {
   int x = getWidth() - TEXT_X_MARGIN;
 
-  for (int i = buttons.size(); --i >= 0;) {
-    CommandMapEditButton* const b = buttons.getUnchecked(i);
+  for (int i = buttons_.size(); --i >= 0;) {
+    CommandMapEditButton* const b = buttons_.getUnchecked(i);
 
     b->fitToContent(getHeight() - 2 * TEXT_Y_MARGIN);
     b->setTopRightPosition(x, TEXT_Y_MARGIN);

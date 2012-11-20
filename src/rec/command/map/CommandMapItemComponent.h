@@ -8,16 +8,16 @@ namespace command {
 
 class CommandMapItemComponent  : public Component {
  public:
-  CommandMapItemComponent(CommandMapEditor& owner, CommandID);
+  CommandMapItemComponent(CommandMapEditor&, CommandID);
   void addButton(const String& desc, const int index, const bool isReadOnly);
   void paint(Graphics&);
   void resized();
 
-  const CommandID commandID;
+  const CommandID commandID_;
 
  private:
-  CommandMapEditor& owner;
-  OwnedArray<CommandMapEditButton> buttons;
+  CommandMapEditor& owner_;
+  OwnedArray<CommandMapEditButton> buttons_;
 
   enum { maxNumAssignments = 3 };
 };

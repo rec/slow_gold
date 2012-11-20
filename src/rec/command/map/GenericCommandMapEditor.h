@@ -85,7 +85,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
   }
 
   virtual void addChildren(CommandMapItemComponent* comp) {
-    CommandID command = comp->commandID;
+    CommandID command = comp->commandID_;
     const bool isReadOnly = isCommandReadOnly(command);
     const Array<Key> keys(getKeys(command));
     for (int i = 0; i < jmin ((int) MAX_NUM_ASSIGNMENTS, keys.size()); ++i)

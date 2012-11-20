@@ -11,10 +11,11 @@ class MidiCommandMap : public CommandMap,
                        public ChangeBroadcaster {
  public:
   MidiCommandMap(ApplicationCommandManager* m);
-  virtual void handleIncomingMidiMessage(juce::MidiInput*, const juce::MidiMessage&);
+  virtual void handleIncomingMidiMessage(juce::MidiInput*,
+                                         const juce::MidiMessage&);
   void requestOneMessage(Listener<const juce::MidiMessage&>* lst);
   void setEnable(bool e);
-  virtual void changeListenerCallback (ChangeBroadcaster*) {}
+  virtual void changeListenerCallback(ChangeBroadcaster*) {}
   const string toBytes(const MidiMessage& msg);
 
  private:
