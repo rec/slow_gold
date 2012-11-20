@@ -23,19 +23,20 @@ void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
   const OpennessRestorer openness (*this);
   clearSubItems();
 
-  const StringArray categories (owner.getCommandManager().getCommandCategories());
+  const StringArray categories(owner.getCommandManager().getCommandCategories());
 
   for (int i = 0; i < categories.size(); ++i) {
     const String& cat = categories[i];
-    const Array <CommandID> commands (owner.getCommandManager().getCommandsInCategory (cat));
+    const Array<CommandID> commands(owner.getCommandManager().
+                                    getCommandsInCategory(cat));
     int count = 0;
 
     for (int j = 0; j < commands.size(); ++j)
-      if (owner.shouldCommandBeIncluded (commands[j]))
+      if (owner.shouldCommandBeIncluded(commands[j]))
         ++count;
 
     if (count > 0) {
-      addSubItem (new CommandMapCategoryItem(owner, cat));
+      addSubItem(new CommandMapCategoryItem(owner, cat));
     } else if (cat != t_NONE) {
       LOG(DFATAL) << "Nothing in category " << str(cat)
                   << ", " << commands.size();

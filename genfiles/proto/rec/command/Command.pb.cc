@@ -28,12 +28,6 @@ const ::google::protobuf::EnumDescriptor* Command_Type_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* Commands_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Commands_reflection_ = NULL;
-const ::google::protobuf::Descriptor* KeyValue_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  KeyValue_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Mapping_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Mapping_reflection_ = NULL;
 
 }  // namespace
 
@@ -79,7 +73,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Setter));
   Command_descriptor_ = file->message_type(2);
-  static const int Command_offsets_[7] = {
+  static const int Command_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, start_index_),
@@ -87,6 +81,8 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, desc_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, keypress_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, setter_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, flags_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, disable_on_feature_),
   };
   Command_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -115,37 +111,6 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Commands));
-  KeyValue_descriptor_ = file->message_type(4);
-  static const int KeyValue_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyValue, key_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyValue, value_),
-  };
-  KeyValue_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      KeyValue_descriptor_,
-      KeyValue::default_instance_,
-      KeyValue_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyValue, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyValue, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(KeyValue));
-  Mapping_descriptor_ = file->message_type(5);
-  static const int Mapping_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mapping, key_value_),
-  };
-  Mapping_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Mapping_descriptor_,
-      Mapping::default_instance_,
-      Mapping_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mapping, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mapping, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Mapping));
 }
 
 namespace {
@@ -166,10 +131,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
     Command_descriptor_, &Command::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Commands_descriptor_, &Commands::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    KeyValue_descriptor_, &KeyValue::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Mapping_descriptor_, &Mapping::default_instance());
 }
 
 }  // namespace
@@ -183,10 +144,6 @@ void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto() {
   delete Command_reflection_;
   delete Commands::default_instance_;
   delete Commands_reflection_;
-  delete KeyValue::default_instance_;
-  delete KeyValue_reflection_;
-  delete Mapping::default_instance_;
-  delete Mapping_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
@@ -202,87 +159,82 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \003(\t\022\014\n\004hel"
     "p\030\003 \001(\t\"]\n\006Setter\022\027\n\tis_global\030\001 \001(\010:\004tr"
     "ue\022\'\n\007address\030\002 \001(\0132\026.rec.data.AddressPr"
-    "oto\022\021\n\ttype_name\030\003 \001(\t\"\273\023\n\007Command\022\'\n\004ty"
+    "oto\022\021\n\ttype_name\030\003 \001(\t\"\346\023\n\007Command\022\'\n\004ty"
     "pe\030\001 \001(\0162\031.rec.command.Command.Type\022\r\n\005i"
-    "ndex\030\002 \001(\021\022\023\n\013start_index\030\n \001(\021\022\014\n\004menu\030"
-    "\003 \001(\t\022&\n\004desc\030\004 \001(\0132\030.rec.command.Descri"
-    "ption\022\020\n\010keypress\030\005 \003(\t\022#\n\006setter\030\006 \001(\0132"
-    "\023.rec.command.Setter\"\365\021\n\004Type\022\010\n\004NONE\020\000\022"
-    "\026\n\022ABOUT_THIS_PROGRAM\020:\022\022\n\016ADD_LOOP_POIN"
-    "T\020\001\022\025\n\021AUDIO_PREFERENCES\020\002\022\025\n\021CHECK_FOR_"
-    "UPDATES\020D\022\033\n\027CLEAR_KEYBOARD_MAPPINGS\020[\022\027"
-    "\n\023CLEAR_MIDI_MAPPINGS\020\\\022\017\n\013CLEAR_LOOPS\020\004"
-    "\022\023\n\017CLEAR_NAVIGATOR\020\003\022\026\n\022CLEAR_ALL_SETTI"
-    "NGS\020O\022!\n\035CLEAR_SETTINGS_FOR_THIS_TRACK\020P"
-    "\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLOSE_FIL"
-    "E\020\006\022\030\n\024COPY_ALL_LOOP_POINTS\020_\022\025\n\021DIM_VOL"
-    "UME_TOGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022\034\n\030EXPORT_KE"
-    "YBOARD_MAPPINGS\020R\022\030\n\024EXPORT_MIDI_MAPPING"
-    "S\020S\022\023\n\017EXPORT_SETTINGS\020K\022\034\n\030IMPORT_KEYBO"
-    "ARD_MAPPINGS\020T\022\030\n\024IMPORT_MIDI_MAPPINGS\020U"
-    "\022\023\n\017IMPORT_SETTINGS\020L\022\031\n\025INVERT_LOOP_SEL"
-    "ECTION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020\013\022\025\n"
-    "\021KEYBOARD_MAPPINGS\020\014\022\025\n\021LOOP_NEXT_SEGMEN"
-    "T\020^\022\021\n\rMIDI_MAPPINGS\020\r\022\027\n\023MODE_ADD_LOOP_"
-    "POINT\020?\022\r\n\tMODE_DRAG\020<\022\021\n\rMODE_SET_TIME\020"
-    "=\022\020\n\014MODE_ZOOM_IN\020>\022\026\n\022MUTE_VOLUME_TOGGL"
-    "E\020\016\022\022\n\016NUDGE_BACKWARD\020Y\022\021\n\rNUDGE_FORWARD"
-    "\020Z\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021NUDGE_BEGIN_"
-    "RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022\023\n\017NUDGE_END"
-    "_RIGHT\020\022\022\024\n\020NUDGE_SPEED_DOWN\020V\022\022\n\016NUDGE_"
-    "SPEED_UP\020W\022\025\n\021NUDGE_VOLUME_DOWN\020\023\022\023\n\017NUD"
-    "GE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\017\n\013OPEN_MANUAL\020"
-    "A\022\026\n\022OPEN_PREVIOUS_FILE\020N\022\033\n\027OPEN_SLOWGO"
-    "LD_DIRECTORY\020J\022\032\n\026PASTE_OVER_LOOP_POINTS"
-    "\020`\022\020\n\014RECENT_FILES\020\026\022\010\n\004REDO\020\027\022\023\n\017REQUES"
-    "T_SUPPORT\020B\022\027\n\023RESET_GAIN_TO_UNITY\020\030\022\r\n\t"
-    "SAVE_FILE\020E\022\027\n\023SAVE_FILE_SELECTION\020F\022\n\n\006"
-    "SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\020\n\014SET_LANGUAG"
-    "E\020]\022\023\n\017SET_SAVE_FORMAT\020G\022\031\n\025TOGGLE_ADVAN"
-    "CED_MENUS\020;\022\034\n\030TOGGLE_AUTOMATIC_UPDATES\020"
-    "C\022\030\n\024TOGGLE_FOLLOW_CURSOR\020+\022\027\n\023TOGGLE_GR"
-    "ID_DISPLAY\020\033\022\036\n\032TOGGLE_COMMAND_BAR_AT_LE"
-    "FT\0206\022\035\n\031TOGGLE_COMMAND_BAR_AT_TOP\0207\022!\n\035T"
-    "OGGLE_FILE_OPEN_TREE_DISPLAY\020H\022\030\n\024TOGGLE"
-    "_MODES_AT_LEFT\0208\022\027\n\023TOGGLE_MODES_AT_TOP\020"
-    "9\022\035\n\031TOGGLE_PARALLEL_WAVEFORMS\020*\022\032\n\026TOGG"
-    "LE_PREFADER_LEVELS\020.\022\024\n\020TOGGLE_SELECTION"
-    "\020)\022\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTU"
-    "P\020Q\022\035\n\031TOGGLE_SHOW_CURSOR_LABELS\0203\022\031\n\025TO"
-    "GGLE_SHOW_HELP_PANE\0201\022\035\n\031TOGGLE_SHOW_LAB"
-    "ELS_AT_TOP\0204\022\033\n\027TOGGLE_SHOW_MASTER_TUNE\020"
-    "M\022!\n\035TOGGLE_SHOW_SELECTION_BUTTONS\0202\022\034\n\030"
-    "TOGGLE_SHOW_TIMES_AT_TOP\0205\022\030\n\024TOGGLE_SHO"
-    "W_TOOLTIPS\0200\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025T"
-    "OGGLE_STRETCH_ENABLE\020\035\022\033\n\027TOGGLE_TRANSFO"
-    "RM_ENABLE\020X\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\036\022"
-    "\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_L"
-    "EFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007"
-    "TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\022\n\016WHA"
-    "TS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020("
-    "\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_SELECTION"
-    "\020-\022\r\n\tLAST_TYPE\020`\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010"
-    "\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELEC"
-    "T_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_STAR"
-    "T\020\201 \022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010"
-    "Commands\022%\n\007command\030\001 \003(\0132\024.rec.command."
-    "Command\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005valu"
-    "e\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025."
-    "rec.command.KeyValue", 2860);
+    "ndex\030\002 \001(\021\022\023\n\013start_index\030\003 \001(\021\022\014\n\004menu\030"
+    "\004 \001(\t\022&\n\004desc\030\005 \001(\0132\030.rec.command.Descri"
+    "ption\022\020\n\010keypress\030\006 \003(\t\022#\n\006setter\030\007 \001(\0132"
+    "\023.rec.command.Setter\022\r\n\005flags\030\010 \001(\r\022\032\n\022d"
+    "isable_on_feature\030\t \003(\t\"\365\021\n\004Type\022\010\n\004NONE"
+    "\020\000\022\026\n\022ABOUT_THIS_PROGRAM\020:\022\022\n\016ADD_LOOP_P"
+    "OINT\020\001\022\025\n\021AUDIO_PREFERENCES\020\002\022\025\n\021CHECK_F"
+    "OR_UPDATES\020D\022\033\n\027CLEAR_KEYBOARD_MAPPINGS\020"
+    "[\022\027\n\023CLEAR_MIDI_MAPPINGS\020\\\022\017\n\013CLEAR_LOOP"
+    "S\020\004\022\023\n\017CLEAR_NAVIGATOR\020\003\022\026\n\022CLEAR_ALL_SE"
+    "TTINGS\020O\022!\n\035CLEAR_SETTINGS_FOR_THIS_TRAC"
+    "K\020P\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLOSE_"
+    "FILE\020\006\022\030\n\024COPY_ALL_LOOP_POINTS\020_\022\025\n\021DIM_"
+    "VOLUME_TOGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022\034\n\030EXPORT"
+    "_KEYBOARD_MAPPINGS\020R\022\030\n\024EXPORT_MIDI_MAPP"
+    "INGS\020S\022\023\n\017EXPORT_SETTINGS\020K\022\034\n\030IMPORT_KE"
+    "YBOARD_MAPPINGS\020T\022\030\n\024IMPORT_MIDI_MAPPING"
+    "S\020U\022\023\n\017IMPORT_SETTINGS\020L\022\031\n\025INVERT_LOOP_"
+    "SELECTION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020\013"
+    "\022\025\n\021KEYBOARD_MAPPINGS\020\014\022\025\n\021LOOP_NEXT_SEG"
+    "MENT\020^\022\021\n\rMIDI_MAPPINGS\020\r\022\027\n\023MODE_ADD_LO"
+    "OP_POINT\020?\022\r\n\tMODE_DRAG\020<\022\021\n\rMODE_SET_TI"
+    "ME\020=\022\020\n\014MODE_ZOOM_IN\020>\022\026\n\022MUTE_VOLUME_TO"
+    "GGLE\020\016\022\022\n\016NUDGE_BACKWARD\020Y\022\021\n\rNUDGE_FORW"
+    "ARD\020Z\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021NUDGE_BEG"
+    "IN_RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022\023\n\017NUDGE_"
+    "END_RIGHT\020\022\022\024\n\020NUDGE_SPEED_DOWN\020V\022\022\n\016NUD"
+    "GE_SPEED_UP\020W\022\025\n\021NUDGE_VOLUME_DOWN\020\023\022\023\n\017"
+    "NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\017\n\013OPEN_MANU"
+    "AL\020A\022\026\n\022OPEN_PREVIOUS_FILE\020N\022\033\n\027OPEN_SLO"
+    "WGOLD_DIRECTORY\020J\022\032\n\026PASTE_OVER_LOOP_POI"
+    "NTS\020`\022\020\n\014RECENT_FILES\020\026\022\010\n\004REDO\020\027\022\023\n\017REQ"
+    "UEST_SUPPORT\020B\022\027\n\023RESET_GAIN_TO_UNITY\020\030\022"
+    "\r\n\tSAVE_FILE\020E\022\027\n\023SAVE_FILE_SELECTION\020F\022"
+    "\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\020\n\014SET_LANG"
+    "UAGE\020]\022\023\n\017SET_SAVE_FORMAT\020G\022\031\n\025TOGGLE_AD"
+    "VANCED_MENUS\020;\022\034\n\030TOGGLE_AUTOMATIC_UPDAT"
+    "ES\020C\022\030\n\024TOGGLE_FOLLOW_CURSOR\020+\022\027\n\023TOGGLE"
+    "_GRID_DISPLAY\020\033\022\036\n\032TOGGLE_COMMAND_BAR_AT"
+    "_LEFT\0206\022\035\n\031TOGGLE_COMMAND_BAR_AT_TOP\0207\022!"
+    "\n\035TOGGLE_FILE_OPEN_TREE_DISPLAY\020H\022\030\n\024TOG"
+    "GLE_MODES_AT_LEFT\0208\022\027\n\023TOGGLE_MODES_AT_T"
+    "OP\0209\022\035\n\031TOGGLE_PARALLEL_WAVEFORMS\020*\022\032\n\026T"
+    "OGGLE_PREFADER_LEVELS\020.\022\024\n\020TOGGLE_SELECT"
+    "ION\020)\022\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STA"
+    "RTUP\020Q\022\035\n\031TOGGLE_SHOW_CURSOR_LABELS\0203\022\031\n"
+    "\025TOGGLE_SHOW_HELP_PANE\0201\022\035\n\031TOGGLE_SHOW_"
+    "LABELS_AT_TOP\0204\022\033\n\027TOGGLE_SHOW_MASTER_TU"
+    "NE\020M\022!\n\035TOGGLE_SHOW_SELECTION_BUTTONS\0202\022"
+    "\034\n\030TOGGLE_SHOW_TIMES_AT_TOP\0205\022\030\n\024TOGGLE_"
+    "SHOW_TOOLTIPS\0200\022\025\n\021TOGGLE_START_STOP\020\034\022\031"
+    "\n\025TOGGLE_STRETCH_ENABLE\020\035\022\033\n\027TOGGLE_TRAN"
+    "SFORM_ENABLE\020X\022\032\n\026TOGGLE_WHOLE_SONG_LOOP"
+    "\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTRE"
+    "E_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022"
+    "\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\022\n\016"
+    "WHATS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OU"
+    "T\020(\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_SELECT"
+    "ION\020-\022\r\n\tLAST_TYPE\020`\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202"
+    " \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSE"
+    "LECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_S"
+    "TART\020\201 \022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\""
+    "1\n\010Commands\022%\n\007command\030\001 \003(\0132\024.rec.comma"
+    "nd.Command", 2810);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
   Setter::default_instance_ = new Setter();
   Command::default_instance_ = new Command();
   Commands::default_instance_ = new Commands();
-  KeyValue::default_instance_ = new KeyValue();
-  Mapping::default_instance_ = new Mapping();
   Description::default_instance_->InitAsDefaultInstance();
   Setter::default_instance_->InitAsDefaultInstance();
   Command::default_instance_->InitAsDefaultInstance();
   Commands::default_instance_->InitAsDefaultInstance();
-  KeyValue::default_instance_->InitAsDefaultInstance();
-  Mapping::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto);
 }
 
@@ -1159,6 +1111,8 @@ const int Command::kMenuFieldNumber;
 const int Command::kDescFieldNumber;
 const int Command::kKeypressFieldNumber;
 const int Command::kSetterFieldNumber;
+const int Command::kFlagsFieldNumber;
+const int Command::kDisableOnFeatureFieldNumber;
 #endif  // !_MSC_VER
 
 Command::Command()
@@ -1185,6 +1139,7 @@ void Command::SharedCtor() {
   menu_ = const_cast< ::std::string*>(&_default_menu_);
   desc_ = NULL;
   setter_ = NULL;
+  flags_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1238,8 +1193,10 @@ void Command::Clear() {
     if (_has_bit(6)) {
       if (setter_ != NULL) setter_->::rec::command::Setter::Clear();
     }
+    flags_ = 0u;
   }
   keypress_.Clear();
+  disable_on_feature_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1282,12 +1239,28 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_menu;
+        if (input->ExpectTag(24)) goto parse_start_index;
         break;
       }
       
-      // optional string menu = 3;
+      // optional sint32 start_index = 3;
       case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_start_index:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &start_index_)));
+          _set_bit(2);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_menu;
+        break;
+      }
+      
+      // optional string menu = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_menu:
@@ -1299,12 +1272,12 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_desc;
+        if (input->ExpectTag(42)) goto parse_desc;
         break;
       }
       
-      // optional .rec.command.Description desc = 4;
-      case 4: {
+      // optional .rec.command.Description desc = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_desc:
@@ -1313,12 +1286,12 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_keypress;
+        if (input->ExpectTag(50)) goto parse_keypress;
         break;
       }
       
-      // repeated string keypress = 5;
-      case 5: {
+      // repeated string keypress = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_keypress:
@@ -1330,13 +1303,13 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_keypress;
-        if (input->ExpectTag(50)) goto parse_setter;
+        if (input->ExpectTag(50)) goto parse_keypress;
+        if (input->ExpectTag(58)) goto parse_setter;
         break;
       }
       
-      // optional .rec.command.Setter setter = 6;
-      case 6: {
+      // optional .rec.command.Setter setter = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_setter:
@@ -1345,22 +1318,40 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(80)) goto parse_start_index;
+        if (input->ExpectTag(64)) goto parse_flags;
         break;
       }
       
-      // optional sint32 start_index = 10;
-      case 10: {
+      // optional uint32 flags = 8;
+      case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_start_index:
+         parse_flags:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &start_index_)));
-          _set_bit(2);
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &flags_)));
+          _set_bit(7);
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(74)) goto parse_disable_on_feature;
+        break;
+      }
+      
+      // repeated string disable_on_feature = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_disable_on_feature:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_disable_on_feature()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->disable_on_feature(0).data(), this->disable_on_feature(0).length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_disable_on_feature;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1394,39 +1385,53 @@ void Command::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->index(), output);
   }
   
-  // optional string menu = 3;
+  // optional sint32 start_index = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->start_index(), output);
+  }
+  
+  // optional string menu = 4;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->menu().data(), this->menu().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->menu(), output);
+      4, this->menu(), output);
   }
   
-  // optional .rec.command.Description desc = 4;
+  // optional .rec.command.Description desc = 5;
   if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->desc(), output);
+      5, this->desc(), output);
   }
   
-  // repeated string keypress = 5;
+  // repeated string keypress = 6;
   for (int i = 0; i < this->keypress_size(); i++) {
   ::google::protobuf::internal::WireFormat::VerifyUTF8String(
     this->keypress(i).data(), this->keypress(i).length(),
     ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      5, this->keypress(i), output);
+      6, this->keypress(i), output);
   }
   
-  // optional .rec.command.Setter setter = 6;
+  // optional .rec.command.Setter setter = 7;
   if (_has_bit(6)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->setter(), output);
+      7, this->setter(), output);
   }
   
-  // optional sint32 start_index = 10;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(10, this->start_index(), output);
+  // optional uint32 flags = 8;
+  if (_has_bit(7)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->flags(), output);
+  }
+  
+  // repeated string disable_on_feature = 9;
+  for (int i = 0; i < this->disable_on_feature_size(); i++) {
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->disable_on_feature(i).data(), this->disable_on_feature(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      9, this->disable_on_feature(i), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1448,42 +1453,56 @@ void Command::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->index(), target);
   }
   
-  // optional string menu = 3;
+  // optional sint32 start_index = 3;
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->start_index(), target);
+  }
+  
+  // optional string menu = 4;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->menu().data(), this->menu().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->menu(), target);
+        4, this->menu(), target);
   }
   
-  // optional .rec.command.Description desc = 4;
+  // optional .rec.command.Description desc = 5;
   if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->desc(), target);
+        5, this->desc(), target);
   }
   
-  // repeated string keypress = 5;
+  // repeated string keypress = 6;
   for (int i = 0; i < this->keypress_size(); i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->keypress(i).data(), this->keypress(i).length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(5, this->keypress(i), target);
+      WriteStringToArray(6, this->keypress(i), target);
   }
   
-  // optional .rec.command.Setter setter = 6;
+  // optional .rec.command.Setter setter = 7;
   if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->setter(), target);
+        7, this->setter(), target);
   }
   
-  // optional sint32 start_index = 10;
-  if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(10, this->start_index(), target);
+  // optional uint32 flags = 8;
+  if (_has_bit(7)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->flags(), target);
+  }
+  
+  // repeated string disable_on_feature = 9;
+  for (int i = 0; i < this->disable_on_feature_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->disable_on_feature(i).data(), this->disable_on_feature(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(9, this->disable_on_feature(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1510,40 +1529,54 @@ int Command::ByteSize() const {
           this->index());
     }
     
-    // optional sint32 start_index = 10;
+    // optional sint32 start_index = 3;
     if (has_start_index()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::SInt32Size(
           this->start_index());
     }
     
-    // optional string menu = 3;
+    // optional string menu = 4;
     if (has_menu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->menu());
     }
     
-    // optional .rec.command.Description desc = 4;
+    // optional .rec.command.Description desc = 5;
     if (has_desc()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->desc());
     }
     
-    // optional .rec.command.Setter setter = 6;
+    // optional .rec.command.Setter setter = 7;
     if (has_setter()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->setter());
     }
     
+    // optional uint32 flags = 8;
+    if (has_flags()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->flags());
+    }
+    
   }
-  // repeated string keypress = 5;
+  // repeated string keypress = 6;
   total_size += 1 * this->keypress_size();
   for (int i = 0; i < this->keypress_size(); i++) {
     total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
       this->keypress(i));
+  }
+  
+  // repeated string disable_on_feature = 9;
+  total_size += 1 * this->disable_on_feature_size();
+  for (int i = 0; i < this->disable_on_feature_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->disable_on_feature(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -1572,6 +1605,7 @@ void Command::MergeFrom(const ::google::protobuf::Message& from) {
 void Command::MergeFrom(const Command& from) {
   GOOGLE_CHECK_NE(&from, this);
   keypress_.MergeFrom(from.keypress_);
+  disable_on_feature_.MergeFrom(from.disable_on_feature_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
       set_type(from.type());
@@ -1590,6 +1624,9 @@ void Command::MergeFrom(const Command& from) {
     }
     if (from._has_bit(6)) {
       mutable_setter()->::rec::command::Setter::MergeFrom(from.setter());
+    }
+    if (from._has_bit(7)) {
+      set_flags(from.flags());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1621,6 +1658,8 @@ void Command::Swap(Command* other) {
     std::swap(desc_, other->desc_);
     keypress_.Swap(&other->keypress_);
     std::swap(setter_, other->setter_);
+    std::swap(flags_, other->flags_);
+    disable_on_feature_.Swap(&other->disable_on_feature_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1834,491 +1873,6 @@ void Commands::Swap(Commands* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = Commands_descriptor_;
   metadata.reflection = Commands_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-const ::std::string KeyValue::_default_key_;
-const ::std::string KeyValue::_default_value_;
-#ifndef _MSC_VER
-const int KeyValue::kKeyFieldNumber;
-const int KeyValue::kValueFieldNumber;
-#endif  // !_MSC_VER
-
-KeyValue::KeyValue()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void KeyValue::InitAsDefaultInstance() {
-}
-
-KeyValue::KeyValue(const KeyValue& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void KeyValue::SharedCtor() {
-  _cached_size_ = 0;
-  key_ = const_cast< ::std::string*>(&_default_key_);
-  value_ = const_cast< ::std::string*>(&_default_value_);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-KeyValue::~KeyValue() {
-  SharedDtor();
-}
-
-void KeyValue::SharedDtor() {
-  if (key_ != &_default_key_) {
-    delete key_;
-  }
-  if (value_ != &_default_value_) {
-    delete value_;
-  }
-  if (this != default_instance_) {
-  }
-}
-
-void KeyValue::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* KeyValue::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return KeyValue_descriptor_;
-}
-
-const KeyValue& KeyValue::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();  return *default_instance_;
-}
-
-KeyValue* KeyValue::default_instance_ = NULL;
-
-KeyValue* KeyValue::New() const {
-  return new KeyValue;
-}
-
-void KeyValue::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (_has_bit(0)) {
-      if (key_ != &_default_key_) {
-        key_->clear();
-      }
-    }
-    if (_has_bit(1)) {
-      if (value_ != &_default_value_) {
-        value_->clear();
-      }
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool KeyValue::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string key = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_key()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->key().data(), this->key().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_value;
-        break;
-      }
-      
-      // optional string value = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_value:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_value()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->value().data(), this->value().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void KeyValue::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string key = 1;
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->key().data(), this->key().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->key(), output);
-  }
-  
-  // optional string value = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->value().data(), this->value().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->value(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* KeyValue::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional string key = 1;
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->key().data(), this->key().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->key(), target);
-  }
-  
-  // optional string value = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->value().data(), this->value().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->value(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int KeyValue::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string key = 1;
-    if (has_key()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->key());
-    }
-    
-    // optional string value = 2;
-    if (has_value()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->value());
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void KeyValue::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const KeyValue* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const KeyValue*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void KeyValue::MergeFrom(const KeyValue& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
-      set_key(from.key());
-    }
-    if (from._has_bit(1)) {
-      set_value(from.value());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void KeyValue::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void KeyValue::CopyFrom(const KeyValue& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool KeyValue::IsInitialized() const {
-  
-  return true;
-}
-
-void KeyValue::Swap(KeyValue* other) {
-  if (other != this) {
-    std::swap(key_, other->key_);
-    std::swap(value_, other->value_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata KeyValue::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = KeyValue_descriptor_;
-  metadata.reflection = KeyValue_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int Mapping::kKeyValueFieldNumber;
-#endif  // !_MSC_VER
-
-Mapping::Mapping()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Mapping::InitAsDefaultInstance() {
-}
-
-Mapping::Mapping(const Mapping& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Mapping::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Mapping::~Mapping() {
-  SharedDtor();
-}
-
-void Mapping::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void Mapping::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Mapping::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Mapping_descriptor_;
-}
-
-const Mapping& Mapping::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();  return *default_instance_;
-}
-
-Mapping* Mapping::default_instance_ = NULL;
-
-Mapping* Mapping::New() const {
-  return new Mapping;
-}
-
-void Mapping::Clear() {
-  key_value_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Mapping::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.command.KeyValue key_value = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_key_value:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_key_value()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(10)) goto parse_key_value;
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void Mapping::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.command.KeyValue key_value = 1;
-  for (int i = 0; i < this->key_value_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->key_value(i), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* Mapping::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // repeated .rec.command.KeyValue key_value = 1;
-  for (int i = 0; i < this->key_value_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->key_value(i), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Mapping::ByteSize() const {
-  int total_size = 0;
-  
-  // repeated .rec.command.KeyValue key_value = 1;
-  total_size += 1 * this->key_value_size();
-  for (int i = 0; i < this->key_value_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->key_value(i));
-  }
-  
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Mapping::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Mapping* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Mapping*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Mapping::MergeFrom(const Mapping& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  key_value_.MergeFrom(from.key_value_);
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Mapping::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Mapping::CopyFrom(const Mapping& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Mapping::IsInitialized() const {
-  
-  return true;
-}
-
-void Mapping::Swap(Mapping* other) {
-  if (other != this) {
-    key_value_.Swap(&other->key_value_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Mapping::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Mapping_descriptor_;
-  metadata.reflection = Mapping_reflection_;
   return metadata;
 }
 

@@ -38,8 +38,6 @@ class Description;
 class Setter;
 class Command;
 class Commands;
-class KeyValue;
-class Mapping;
 
 enum Command_Type {
   Command_Type_NONE = 0,
@@ -598,34 +596,34 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 index() const;
   inline void set_index(::google::protobuf::int32 value);
   
-  // optional sint32 start_index = 10;
+  // optional sint32 start_index = 3;
   inline bool has_start_index() const;
   inline void clear_start_index();
-  static const int kStartIndexFieldNumber = 10;
+  static const int kStartIndexFieldNumber = 3;
   inline ::google::protobuf::int32 start_index() const;
   inline void set_start_index(::google::protobuf::int32 value);
   
-  // optional string menu = 3;
+  // optional string menu = 4;
   inline bool has_menu() const;
   inline void clear_menu();
-  static const int kMenuFieldNumber = 3;
+  static const int kMenuFieldNumber = 4;
   inline const ::std::string& menu() const;
   inline void set_menu(const ::std::string& value);
   inline void set_menu(const char* value);
   inline void set_menu(const char* value, size_t size);
   inline ::std::string* mutable_menu();
   
-  // optional .rec.command.Description desc = 4;
+  // optional .rec.command.Description desc = 5;
   inline bool has_desc() const;
   inline void clear_desc();
-  static const int kDescFieldNumber = 4;
+  static const int kDescFieldNumber = 5;
   inline const ::rec::command::Description& desc() const;
   inline ::rec::command::Description* mutable_desc();
   
-  // repeated string keypress = 5;
+  // repeated string keypress = 6;
   inline int keypress_size() const;
   inline void clear_keypress();
-  static const int kKeypressFieldNumber = 5;
+  static const int kKeypressFieldNumber = 6;
   inline const ::std::string& keypress(int index) const;
   inline ::std::string* mutable_keypress(int index);
   inline void set_keypress(int index, const ::std::string& value);
@@ -638,12 +636,35 @@ class Command : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& keypress() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_keypress();
   
-  // optional .rec.command.Setter setter = 6;
+  // optional .rec.command.Setter setter = 7;
   inline bool has_setter() const;
   inline void clear_setter();
-  static const int kSetterFieldNumber = 6;
+  static const int kSetterFieldNumber = 7;
   inline const ::rec::command::Setter& setter() const;
   inline ::rec::command::Setter* mutable_setter();
+  
+  // optional uint32 flags = 8;
+  inline bool has_flags() const;
+  inline void clear_flags();
+  static const int kFlagsFieldNumber = 8;
+  inline ::google::protobuf::uint32 flags() const;
+  inline void set_flags(::google::protobuf::uint32 value);
+  
+  // repeated string disable_on_feature = 9;
+  inline int disable_on_feature_size() const;
+  inline void clear_disable_on_feature();
+  static const int kDisableOnFeatureFieldNumber = 9;
+  inline const ::std::string& disable_on_feature(int index) const;
+  inline ::std::string* mutable_disable_on_feature(int index);
+  inline void set_disable_on_feature(int index, const ::std::string& value);
+  inline void set_disable_on_feature(int index, const char* value);
+  inline void set_disable_on_feature(int index, const char* value, size_t size);
+  inline ::std::string* add_disable_on_feature();
+  inline void add_disable_on_feature(const ::std::string& value);
+  inline void add_disable_on_feature(const char* value);
+  inline void add_disable_on_feature(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& disable_on_feature() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_disable_on_feature();
   
   // @@protoc_insertion_point(class_scope:rec.command.Command)
  private:
@@ -658,11 +679,13 @@ class Command : public ::google::protobuf::Message {
   ::rec::command::Description* desc_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
+  ::google::protobuf::uint32 flags_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> disable_on_feature_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -771,205 +794,6 @@ class Commands : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static Commands* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class KeyValue : public ::google::protobuf::Message {
- public:
-  KeyValue();
-  virtual ~KeyValue();
-  
-  KeyValue(const KeyValue& from);
-  
-  inline KeyValue& operator=(const KeyValue& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const KeyValue& default_instance();
-  
-  void Swap(KeyValue* other);
-  
-  // implements Message ----------------------------------------------
-  
-  KeyValue* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const KeyValue& from);
-  void MergeFrom(const KeyValue& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // optional string key = 1;
-  inline bool has_key() const;
-  inline void clear_key();
-  static const int kKeyFieldNumber = 1;
-  inline const ::std::string& key() const;
-  inline void set_key(const ::std::string& value);
-  inline void set_key(const char* value);
-  inline void set_key(const char* value, size_t size);
-  inline ::std::string* mutable_key();
-  
-  // optional string value = 2;
-  inline bool has_value() const;
-  inline void clear_value();
-  static const int kValueFieldNumber = 2;
-  inline const ::std::string& value() const;
-  inline void set_value(const ::std::string& value);
-  inline void set_value(const char* value);
-  inline void set_value(const char* value, size_t size);
-  inline ::std::string* mutable_value();
-  
-  // @@protoc_insertion_point(class_scope:rec.command.KeyValue)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  ::std::string* key_;
-  static const ::std::string _default_key_;
-  ::std::string* value_;
-  static const ::std::string _default_value_;
-  friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
-  friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static KeyValue* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class Mapping : public ::google::protobuf::Message {
- public:
-  Mapping();
-  virtual ~Mapping();
-  
-  Mapping(const Mapping& from);
-  
-  inline Mapping& operator=(const Mapping& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Mapping& default_instance();
-  
-  void Swap(Mapping* other);
-  
-  // implements Message ----------------------------------------------
-  
-  Mapping* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Mapping& from);
-  void MergeFrom(const Mapping& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // repeated .rec.command.KeyValue key_value = 1;
-  inline int key_value_size() const;
-  inline void clear_key_value();
-  static const int kKeyValueFieldNumber = 1;
-  inline const ::rec::command::KeyValue& key_value(int index) const;
-  inline ::rec::command::KeyValue* mutable_key_value(int index);
-  inline ::rec::command::KeyValue* add_key_value();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::command::KeyValue >&
-      key_value() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::command::KeyValue >*
-      mutable_key_value();
-  
-  // @@protoc_insertion_point(class_scope:rec.command.Mapping)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  ::google::protobuf::RepeatedPtrField< ::rec::command::KeyValue > key_value_;
-  friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
-  friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static Mapping* default_instance_;
 };
 // ===================================================================
 
@@ -1224,7 +1048,7 @@ inline void Command::set_index(::google::protobuf::int32 value) {
   index_ = value;
 }
 
-// optional sint32 start_index = 10;
+// optional sint32 start_index = 3;
 inline bool Command::has_start_index() const {
   return _has_bit(2);
 }
@@ -1240,7 +1064,7 @@ inline void Command::set_start_index(::google::protobuf::int32 value) {
   start_index_ = value;
 }
 
-// optional string menu = 3;
+// optional string menu = 4;
 inline bool Command::has_menu() const {
   return _has_bit(3);
 }
@@ -1282,7 +1106,7 @@ inline ::std::string* Command::mutable_menu() {
   return menu_;
 }
 
-// optional .rec.command.Description desc = 4;
+// optional .rec.command.Description desc = 5;
 inline bool Command::has_desc() const {
   return _has_bit(4);
 }
@@ -1299,7 +1123,7 @@ inline ::rec::command::Description* Command::mutable_desc() {
   return desc_;
 }
 
-// repeated string keypress = 5;
+// repeated string keypress = 6;
 inline int Command::keypress_size() const {
   return keypress_.size();
 }
@@ -1343,7 +1167,7 @@ Command::mutable_keypress() {
   return &keypress_;
 }
 
-// optional .rec.command.Setter setter = 6;
+// optional .rec.command.Setter setter = 7;
 inline bool Command::has_setter() const {
   return _has_bit(6);
 }
@@ -1358,6 +1182,66 @@ inline ::rec::command::Setter* Command::mutable_setter() {
   _set_bit(6);
   if (setter_ == NULL) setter_ = new ::rec::command::Setter;
   return setter_;
+}
+
+// optional uint32 flags = 8;
+inline bool Command::has_flags() const {
+  return _has_bit(7);
+}
+inline void Command::clear_flags() {
+  flags_ = 0u;
+  _clear_bit(7);
+}
+inline ::google::protobuf::uint32 Command::flags() const {
+  return flags_;
+}
+inline void Command::set_flags(::google::protobuf::uint32 value) {
+  _set_bit(7);
+  flags_ = value;
+}
+
+// repeated string disable_on_feature = 9;
+inline int Command::disable_on_feature_size() const {
+  return disable_on_feature_.size();
+}
+inline void Command::clear_disable_on_feature() {
+  disable_on_feature_.Clear();
+}
+inline const ::std::string& Command::disable_on_feature(int index) const {
+  return disable_on_feature_.Get(index);
+}
+inline ::std::string* Command::mutable_disable_on_feature(int index) {
+  return disable_on_feature_.Mutable(index);
+}
+inline void Command::set_disable_on_feature(int index, const ::std::string& value) {
+  disable_on_feature_.Mutable(index)->assign(value);
+}
+inline void Command::set_disable_on_feature(int index, const char* value) {
+  disable_on_feature_.Mutable(index)->assign(value);
+}
+inline void Command::set_disable_on_feature(int index, const char* value, size_t size) {
+  disable_on_feature_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::add_disable_on_feature() {
+  return disable_on_feature_.Add();
+}
+inline void Command::add_disable_on_feature(const ::std::string& value) {
+  disable_on_feature_.Add()->assign(value);
+}
+inline void Command::add_disable_on_feature(const char* value) {
+  disable_on_feature_.Add()->assign(value);
+}
+inline void Command::add_disable_on_feature(const char* value, size_t size) {
+  disable_on_feature_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+Command::disable_on_feature() const {
+  return disable_on_feature_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+Command::mutable_disable_on_feature() {
+  return &disable_on_feature_;
 }
 
 // -------------------------------------------------------------------
@@ -1387,123 +1271,6 @@ Commands::command() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::command::Command >*
 Commands::mutable_command() {
   return &command_;
-}
-
-// -------------------------------------------------------------------
-
-// KeyValue
-
-// optional string key = 1;
-inline bool KeyValue::has_key() const {
-  return _has_bit(0);
-}
-inline void KeyValue::clear_key() {
-  if (key_ != &_default_key_) {
-    key_->clear();
-  }
-  _clear_bit(0);
-}
-inline const ::std::string& KeyValue::key() const {
-  return *key_;
-}
-inline void KeyValue::set_key(const ::std::string& value) {
-  _set_bit(0);
-  if (key_ == &_default_key_) {
-    key_ = new ::std::string;
-  }
-  key_->assign(value);
-}
-inline void KeyValue::set_key(const char* value) {
-  _set_bit(0);
-  if (key_ == &_default_key_) {
-    key_ = new ::std::string;
-  }
-  key_->assign(value);
-}
-inline void KeyValue::set_key(const char* value, size_t size) {
-  _set_bit(0);
-  if (key_ == &_default_key_) {
-    key_ = new ::std::string;
-  }
-  key_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* KeyValue::mutable_key() {
-  _set_bit(0);
-  if (key_ == &_default_key_) {
-    key_ = new ::std::string;
-  }
-  return key_;
-}
-
-// optional string value = 2;
-inline bool KeyValue::has_value() const {
-  return _has_bit(1);
-}
-inline void KeyValue::clear_value() {
-  if (value_ != &_default_value_) {
-    value_->clear();
-  }
-  _clear_bit(1);
-}
-inline const ::std::string& KeyValue::value() const {
-  return *value_;
-}
-inline void KeyValue::set_value(const ::std::string& value) {
-  _set_bit(1);
-  if (value_ == &_default_value_) {
-    value_ = new ::std::string;
-  }
-  value_->assign(value);
-}
-inline void KeyValue::set_value(const char* value) {
-  _set_bit(1);
-  if (value_ == &_default_value_) {
-    value_ = new ::std::string;
-  }
-  value_->assign(value);
-}
-inline void KeyValue::set_value(const char* value, size_t size) {
-  _set_bit(1);
-  if (value_ == &_default_value_) {
-    value_ = new ::std::string;
-  }
-  value_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* KeyValue::mutable_value() {
-  _set_bit(1);
-  if (value_ == &_default_value_) {
-    value_ = new ::std::string;
-  }
-  return value_;
-}
-
-// -------------------------------------------------------------------
-
-// Mapping
-
-// repeated .rec.command.KeyValue key_value = 1;
-inline int Mapping::key_value_size() const {
-  return key_value_.size();
-}
-inline void Mapping::clear_key_value() {
-  key_value_.Clear();
-}
-inline const ::rec::command::KeyValue& Mapping::key_value(int index) const {
-  return key_value_.Get(index);
-}
-inline ::rec::command::KeyValue* Mapping::mutable_key_value(int index) {
-  return key_value_.Mutable(index);
-}
-inline ::rec::command::KeyValue* Mapping::add_key_value() {
-  return key_value_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::rec::command::KeyValue >&
-Mapping::key_value() const {
-  return key_value_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::rec::command::KeyValue >*
-Mapping::mutable_key_value() {
-  return &key_value_;
 }
 
 

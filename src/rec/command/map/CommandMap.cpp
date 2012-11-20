@@ -5,6 +5,25 @@
 namespace rec {
 namespace command {
 
+bool CommandMap::addKey(const Key& key, CommandType command) {
+  static const int RECENT = Command::RECENT_FILES;
+  static const int BEGIN = CommandIDEncoder::toCommandID(RECENT, 11);
+  static const int END = CommandIDEncoder::toCommandID(RECENT, 100);
+
+  // DLOG(INFO) << CommandIDEncoder::commandIDName(command);
+  if (command >= BEGIN && command < END)
+    return false;
+
+  CommandIDEncoder enc = CommandIDEncoder::fromCommandID(command);
+  bool exists = (toCommand_.find(key) != toCommand_.end());
+
+  if (exists)
+    beep();
+  else
+    toCommand_[key] = command;
+  return !exists;
+}
+
 void CommandMap::addCommands(const CommandMapProto& commands) {
   toCommand_.clear();
   toKeys_.clear();
@@ -16,44 +35,16 @@ void CommandMap::addCommands(const CommandMapProto& commands) {
   }
 }
 
-namespace {
-
-typedef CommandMap::KeyToCommand KeyToCommand;
-typedef CommandMap::Key Key;
-typedef CommandMap::CommandType CommandType;
-
-bool addKey(KeyToCommand* toCommand,
-            const Key& key, CommandType command) {
-  static const int RECENT = Command::RECENT_FILES;
-  static const int BEGIN = CommandIDEncoder::toCommandID(RECENT, 11);
-  static const int END = CommandIDEncoder::toCommandID(RECENT, 100);
-
-  DLOG(INFO) << CommandIDEncoder::commandIDName(command);
-  if (command >= BEGIN && command < END)
-    return false;
-
-  CommandIDEncoder enc = CommandIDEncoder::fromCommandID(command);
-  bool exists = (toCommand->find(key) != toCommand->end());
-
-  if (exists)
-    beep();
-  else
-    (*toCommand)[key] = command;
-  return !exists;
-}
-
-}  // namespace
-
 bool CommandMap::add(const Key& key, CommandType command) {
-  if (!addKey(&toCommand_, key, command))
+  if (!addKey(key, command))
     return false;
 
   toKeys_[command].push_back(key);
   return true;
 }
 
-bool CommandMap::add(const Key& key, CommandType command, uint index) {
-  if (!addKey(&toCommand_, key, command))
+bool CommandMap::addAtIndex(const Key& key, CommandType command, uint index) {
+  if (!addKey(key, command))
     return false;
 
   toKeys_[command][index] = key;
@@ -79,10 +70,10 @@ const CommandMapProto CommandMap::getProto() const {
 bool CommandMap::invokeAsync(const Key& key,
                              ApplicationCommandManager* acm) const {
   CommandID id = getCommand(key);
-  return id && acm->invokeDirectly(id, true);
+  return (id != command::Command::NONE) && acm->invokeDirectly(id, true);
 }
 
-CommandType CommandMap::getCommand(const string& key) const {
+CommandMap::CommandType CommandMap::getCommand(const string& key) const {
   KeyToCommand::const_iterator i = toCommand_.find(key);
   return (i == toCommand_.end()) ? command::Command::NONE : i->second;
 }

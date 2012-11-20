@@ -101,8 +101,10 @@ void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
 }
 
 template <>
-void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key, int keyIndex) {
-  mappings_.add(mappings_.toBytes(key), static_cast<Command::Type>(cmd), keyIndex);
+void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key,
+                                  int keyIndex) {
+  mappings_.addAtIndex(mappings_.toBytes(key), static_cast<Command::Type>(cmd),
+                       keyIndex);
   mappings_.sendChangeMessage();
 }
 

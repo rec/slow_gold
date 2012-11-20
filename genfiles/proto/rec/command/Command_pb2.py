@@ -10,7 +10,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='rec/command/Command.proto',
   package='rec.command',
-  serialized_pb='\n\x19rec/command/Command.proto\x12\x0brec.command\x1a\x1crec/data/proto/Address.proto\"7\n\x0b\x44\x65scription\x12\x0c\n\x04menu\x18\x01 \x03(\t\x12\x0c\n\x04\x66ull\x18\x02 \x03(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"]\n\x06Setter\x12\x17\n\tis_global\x18\x01 \x01(\x08:\x04true\x12\'\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x11\n\ttype_name\x18\x03 \x01(\t\"\xbb\x13\n\x07\x43ommand\x12\'\n\x04type\x18\x01 \x01(\x0e\x32\x19.rec.command.Command.Type\x12\r\n\x05index\x18\x02 \x01(\x11\x12\x13\n\x0bstart_index\x18\n \x01(\x11\x12\x0c\n\x04menu\x18\x03 \x01(\t\x12&\n\x04\x64\x65sc\x18\x04 \x01(\x0b\x32\x18.rec.command.Description\x12\x10\n\x08keypress\x18\x05 \x03(\t\x12#\n\x06setter\x18\x06 \x01(\x0b\x32\x13.rec.command.Setter\"\xf5\x11\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\x16\n\x12\x41\x42OUT_THIS_PROGRAM\x10:\x12\x12\n\x0e\x41\x44\x44_LOOP_POINT\x10\x01\x12\x15\n\x11\x41UDIO_PREFERENCES\x10\x02\x12\x15\n\x11\x43HECK_FOR_UPDATES\x10\x44\x12\x1b\n\x17\x43LEAR_KEYBOARD_MAPPINGS\x10[\x12\x17\n\x13\x43LEAR_MIDI_MAPPINGS\x10\\\x12\x0f\n\x0b\x43LEAR_LOOPS\x10\x04\x12\x13\n\x0f\x43LEAR_NAVIGATOR\x10\x03\x12\x16\n\x12\x43LEAR_ALL_SETTINGS\x10O\x12!\n\x1d\x43LEAR_SETTINGS_FOR_THIS_TRACK\x10P\x12\x19\n\x15\x43LEAR_SAVED_FILE_DATA\x10\x05\x12\x0e\n\nCLOSE_FILE\x10\x06\x12\x18\n\x14\x43OPY_ALL_LOOP_POINTS\x10_\x12\x15\n\x11\x44IM_VOLUME_TOGGLE\x10\x07\x12\r\n\tEJECT_CDS\x10\x08\x12\x1c\n\x18\x45XPORT_KEYBOARD_MAPPINGS\x10R\x12\x18\n\x14\x45XPORT_MIDI_MAPPINGS\x10S\x12\x13\n\x0f\x45XPORT_SETTINGS\x10K\x12\x1c\n\x18IMPORT_KEYBOARD_MAPPINGS\x10T\x12\x18\n\x14IMPORT_MIDI_MAPPINGS\x10U\x12\x13\n\x0fIMPORT_SETTINGS\x10L\x12\x19\n\x15INVERT_LOOP_SELECTION\x10\t\x12\x08\n\x04JUMP\x10\n\x12\x11\n\rJUMP_SELECTED\x10\x0b\x12\x15\n\x11KEYBOARD_MAPPINGS\x10\x0c\x12\x15\n\x11LOOP_NEXT_SEGMENT\x10^\x12\x11\n\rMIDI_MAPPINGS\x10\r\x12\x17\n\x13MODE_ADD_LOOP_POINT\x10?\x12\r\n\tMODE_DRAG\x10<\x12\x11\n\rMODE_SET_TIME\x10=\x12\x10\n\x0cMODE_ZOOM_IN\x10>\x12\x16\n\x12MUTE_VOLUME_TOGGLE\x10\x0e\x12\x12\n\x0eNUDGE_BACKWARD\x10Y\x12\x11\n\rNUDGE_FORWARD\x10Z\x12\x14\n\x10NUDGE_BEGIN_LEFT\x10\x0f\x12\x15\n\x11NUDGE_BEGIN_RIGHT\x10\x10\x12\x12\n\x0eNUDGE_END_LEFT\x10\x11\x12\x13\n\x0fNUDGE_END_RIGHT\x10\x12\x12\x14\n\x10NUDGE_SPEED_DOWN\x10V\x12\x12\n\x0eNUDGE_SPEED_UP\x10W\x12\x15\n\x11NUDGE_VOLUME_DOWN\x10\x13\x12\x13\n\x0fNUDGE_VOLUME_UP\x10\x14\x12\x08\n\x04OPEN\x10\x15\x12\x0f\n\x0bOPEN_MANUAL\x10\x41\x12\x16\n\x12OPEN_PREVIOUS_FILE\x10N\x12\x1b\n\x17OPEN_SLOWGOLD_DIRECTORY\x10J\x12\x1a\n\x16PASTE_OVER_LOOP_POINTS\x10`\x12\x10\n\x0cRECENT_FILES\x10\x16\x12\x08\n\x04REDO\x10\x17\x12\x13\n\x0fREQUEST_SUPPORT\x10\x42\x12\x17\n\x13RESET_GAIN_TO_UNITY\x10\x18\x12\r\n\tSAVE_FILE\x10\x45\x12\x17\n\x13SAVE_FILE_SELECTION\x10\x46\x12\n\n\x06SELECT\x10\x19\x12\x0f\n\x0bSELECT_ONLY\x10\x1a\x12\x10\n\x0cSET_LANGUAGE\x10]\x12\x13\n\x0fSET_SAVE_FORMAT\x10G\x12\x19\n\x15TOGGLE_ADVANCED_MENUS\x10;\x12\x1c\n\x18TOGGLE_AUTOMATIC_UPDATES\x10\x43\x12\x18\n\x14TOGGLE_FOLLOW_CURSOR\x10+\x12\x17\n\x13TOGGLE_GRID_DISPLAY\x10\x1b\x12\x1e\n\x1aTOGGLE_COMMAND_BAR_AT_LEFT\x10\x36\x12\x1d\n\x19TOGGLE_COMMAND_BAR_AT_TOP\x10\x37\x12!\n\x1dTOGGLE_FILE_OPEN_TREE_DISPLAY\x10H\x12\x18\n\x14TOGGLE_MODES_AT_LEFT\x10\x38\x12\x17\n\x13TOGGLE_MODES_AT_TOP\x10\x39\x12\x1d\n\x19TOGGLE_PARALLEL_WAVEFORMS\x10*\x12\x1a\n\x16TOGGLE_PREFADER_LEVELS\x10.\x12\x14\n\x10TOGGLE_SELECTION\x10)\x12\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\x10Q\x12\x1d\n\x19TOGGLE_SHOW_CURSOR_LABELS\x10\x33\x12\x19\n\x15TOGGLE_SHOW_HELP_PANE\x10\x31\x12\x1d\n\x19TOGGLE_SHOW_LABELS_AT_TOP\x10\x34\x12\x1b\n\x17TOGGLE_SHOW_MASTER_TUNE\x10M\x12!\n\x1dTOGGLE_SHOW_SELECTION_BUTTONS\x10\x32\x12\x1c\n\x18TOGGLE_SHOW_TIMES_AT_TOP\x10\x35\x12\x18\n\x14TOGGLE_SHOW_TOOLTIPS\x10\x30\x12\x15\n\x11TOGGLE_START_STOP\x10\x1c\x12\x19\n\x15TOGGLE_STRETCH_ENABLE\x10\x1d\x12\x1b\n\x17TOGGLE_TRANSFORM_ENABLE\x10X\x12\x1a\n\x16TOGGLE_WHOLE_SONG_LOOP\x10\x1e\x12\x0e\n\nTREE_CLOSE\x10\x1f\x12\r\n\tTREE_DOWN\x10 \x12\r\n\tTREE_LEFT\x10!\x12\r\n\tTREE_OPEN\x10\"\x12\x0e\n\nTREE_RIGHT\x10#\x12\x0b\n\x07TREE_UP\x10$\x12\x08\n\x04UNDO\x10%\x12\x0c\n\x08UNSELECT\x10&\x12\x12\n\x0eWHATS_NEW_PAGE\x10I\x12\x0b\n\x07ZOOM_IN\x10\'\x12\x0c\n\x08ZOOM_OUT\x10(\x12\x11\n\rZOOM_OUT_FULL\x10@\x12\x15\n\x11ZOOM_TO_SELECTION\x10-\x12\r\n\tLAST_TYPE\x10`\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \x12\x0f\n\nJUCE_START\x10\x81 \x12\r\n\x08JUCE_END\x10\x87 \x12\x0f\n\tBANK_SIZE\x10\xa0\x8d\x06\"1\n\x08\x43ommands\x12%\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x14.rec.command.Command\"&\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"3\n\x07Mapping\x12(\n\tkey_value\x18\x01 \x03(\x0b\x32\x15.rec.command.KeyValue')
+  serialized_pb='\n\x19rec/command/Command.proto\x12\x0brec.command\x1a\x1crec/data/proto/Address.proto\"7\n\x0b\x44\x65scription\x12\x0c\n\x04menu\x18\x01 \x03(\t\x12\x0c\n\x04\x66ull\x18\x02 \x03(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"]\n\x06Setter\x12\x17\n\tis_global\x18\x01 \x01(\x08:\x04true\x12\'\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x11\n\ttype_name\x18\x03 \x01(\t\"\xe6\x13\n\x07\x43ommand\x12\'\n\x04type\x18\x01 \x01(\x0e\x32\x19.rec.command.Command.Type\x12\r\n\x05index\x18\x02 \x01(\x11\x12\x13\n\x0bstart_index\x18\x03 \x01(\x11\x12\x0c\n\x04menu\x18\x04 \x01(\t\x12&\n\x04\x64\x65sc\x18\x05 \x01(\x0b\x32\x18.rec.command.Description\x12\x10\n\x08keypress\x18\x06 \x03(\t\x12#\n\x06setter\x18\x07 \x01(\x0b\x32\x13.rec.command.Setter\x12\r\n\x05\x66lags\x18\x08 \x01(\r\x12\x1a\n\x12\x64isable_on_feature\x18\t \x03(\t\"\xf5\x11\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\x16\n\x12\x41\x42OUT_THIS_PROGRAM\x10:\x12\x12\n\x0e\x41\x44\x44_LOOP_POINT\x10\x01\x12\x15\n\x11\x41UDIO_PREFERENCES\x10\x02\x12\x15\n\x11\x43HECK_FOR_UPDATES\x10\x44\x12\x1b\n\x17\x43LEAR_KEYBOARD_MAPPINGS\x10[\x12\x17\n\x13\x43LEAR_MIDI_MAPPINGS\x10\\\x12\x0f\n\x0b\x43LEAR_LOOPS\x10\x04\x12\x13\n\x0f\x43LEAR_NAVIGATOR\x10\x03\x12\x16\n\x12\x43LEAR_ALL_SETTINGS\x10O\x12!\n\x1d\x43LEAR_SETTINGS_FOR_THIS_TRACK\x10P\x12\x19\n\x15\x43LEAR_SAVED_FILE_DATA\x10\x05\x12\x0e\n\nCLOSE_FILE\x10\x06\x12\x18\n\x14\x43OPY_ALL_LOOP_POINTS\x10_\x12\x15\n\x11\x44IM_VOLUME_TOGGLE\x10\x07\x12\r\n\tEJECT_CDS\x10\x08\x12\x1c\n\x18\x45XPORT_KEYBOARD_MAPPINGS\x10R\x12\x18\n\x14\x45XPORT_MIDI_MAPPINGS\x10S\x12\x13\n\x0f\x45XPORT_SETTINGS\x10K\x12\x1c\n\x18IMPORT_KEYBOARD_MAPPINGS\x10T\x12\x18\n\x14IMPORT_MIDI_MAPPINGS\x10U\x12\x13\n\x0fIMPORT_SETTINGS\x10L\x12\x19\n\x15INVERT_LOOP_SELECTION\x10\t\x12\x08\n\x04JUMP\x10\n\x12\x11\n\rJUMP_SELECTED\x10\x0b\x12\x15\n\x11KEYBOARD_MAPPINGS\x10\x0c\x12\x15\n\x11LOOP_NEXT_SEGMENT\x10^\x12\x11\n\rMIDI_MAPPINGS\x10\r\x12\x17\n\x13MODE_ADD_LOOP_POINT\x10?\x12\r\n\tMODE_DRAG\x10<\x12\x11\n\rMODE_SET_TIME\x10=\x12\x10\n\x0cMODE_ZOOM_IN\x10>\x12\x16\n\x12MUTE_VOLUME_TOGGLE\x10\x0e\x12\x12\n\x0eNUDGE_BACKWARD\x10Y\x12\x11\n\rNUDGE_FORWARD\x10Z\x12\x14\n\x10NUDGE_BEGIN_LEFT\x10\x0f\x12\x15\n\x11NUDGE_BEGIN_RIGHT\x10\x10\x12\x12\n\x0eNUDGE_END_LEFT\x10\x11\x12\x13\n\x0fNUDGE_END_RIGHT\x10\x12\x12\x14\n\x10NUDGE_SPEED_DOWN\x10V\x12\x12\n\x0eNUDGE_SPEED_UP\x10W\x12\x15\n\x11NUDGE_VOLUME_DOWN\x10\x13\x12\x13\n\x0fNUDGE_VOLUME_UP\x10\x14\x12\x08\n\x04OPEN\x10\x15\x12\x0f\n\x0bOPEN_MANUAL\x10\x41\x12\x16\n\x12OPEN_PREVIOUS_FILE\x10N\x12\x1b\n\x17OPEN_SLOWGOLD_DIRECTORY\x10J\x12\x1a\n\x16PASTE_OVER_LOOP_POINTS\x10`\x12\x10\n\x0cRECENT_FILES\x10\x16\x12\x08\n\x04REDO\x10\x17\x12\x13\n\x0fREQUEST_SUPPORT\x10\x42\x12\x17\n\x13RESET_GAIN_TO_UNITY\x10\x18\x12\r\n\tSAVE_FILE\x10\x45\x12\x17\n\x13SAVE_FILE_SELECTION\x10\x46\x12\n\n\x06SELECT\x10\x19\x12\x0f\n\x0bSELECT_ONLY\x10\x1a\x12\x10\n\x0cSET_LANGUAGE\x10]\x12\x13\n\x0fSET_SAVE_FORMAT\x10G\x12\x19\n\x15TOGGLE_ADVANCED_MENUS\x10;\x12\x1c\n\x18TOGGLE_AUTOMATIC_UPDATES\x10\x43\x12\x18\n\x14TOGGLE_FOLLOW_CURSOR\x10+\x12\x17\n\x13TOGGLE_GRID_DISPLAY\x10\x1b\x12\x1e\n\x1aTOGGLE_COMMAND_BAR_AT_LEFT\x10\x36\x12\x1d\n\x19TOGGLE_COMMAND_BAR_AT_TOP\x10\x37\x12!\n\x1dTOGGLE_FILE_OPEN_TREE_DISPLAY\x10H\x12\x18\n\x14TOGGLE_MODES_AT_LEFT\x10\x38\x12\x17\n\x13TOGGLE_MODES_AT_TOP\x10\x39\x12\x1d\n\x19TOGGLE_PARALLEL_WAVEFORMS\x10*\x12\x1a\n\x16TOGGLE_PREFADER_LEVELS\x10.\x12\x14\n\x10TOGGLE_SELECTION\x10)\x12\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\x10Q\x12\x1d\n\x19TOGGLE_SHOW_CURSOR_LABELS\x10\x33\x12\x19\n\x15TOGGLE_SHOW_HELP_PANE\x10\x31\x12\x1d\n\x19TOGGLE_SHOW_LABELS_AT_TOP\x10\x34\x12\x1b\n\x17TOGGLE_SHOW_MASTER_TUNE\x10M\x12!\n\x1dTOGGLE_SHOW_SELECTION_BUTTONS\x10\x32\x12\x1c\n\x18TOGGLE_SHOW_TIMES_AT_TOP\x10\x35\x12\x18\n\x14TOGGLE_SHOW_TOOLTIPS\x10\x30\x12\x15\n\x11TOGGLE_START_STOP\x10\x1c\x12\x19\n\x15TOGGLE_STRETCH_ENABLE\x10\x1d\x12\x1b\n\x17TOGGLE_TRANSFORM_ENABLE\x10X\x12\x1a\n\x16TOGGLE_WHOLE_SONG_LOOP\x10\x1e\x12\x0e\n\nTREE_CLOSE\x10\x1f\x12\r\n\tTREE_DOWN\x10 \x12\r\n\tTREE_LEFT\x10!\x12\r\n\tTREE_OPEN\x10\"\x12\x0e\n\nTREE_RIGHT\x10#\x12\x0b\n\x07TREE_UP\x10$\x12\x08\n\x04UNDO\x10%\x12\x0c\n\x08UNSELECT\x10&\x12\x12\n\x0eWHATS_NEW_PAGE\x10I\x12\x0b\n\x07ZOOM_IN\x10\'\x12\x0c\n\x08ZOOM_OUT\x10(\x12\x11\n\rZOOM_OUT_FULL\x10@\x12\x15\n\x11ZOOM_TO_SELECTION\x10-\x12\r\n\tLAST_TYPE\x10`\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \x12\x0f\n\nJUCE_START\x10\x81 \x12\r\n\x08JUCE_END\x10\x87 \x12\x0f\n\tBANK_SIZE\x10\xa0\x8d\x06\"1\n\x08\x43ommands\x12%\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x14.rec.command.Command')
 
 
 
@@ -447,8 +447,8 @@ _COMMAND_TYPE = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=423,
-  serialized_end=2716,
+  serialized_start=466,
+  serialized_end=2759,
 )
 
 
@@ -559,36 +559,50 @@ _COMMAND = descriptor.Descriptor(
       options=None),
     descriptor.FieldDescriptor(
       name='start_index', full_name='rec.command.Command.start_index', index=2,
-      number=10, type=17, cpp_type=1, label=1,
+      number=3, type=17, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
       name='menu', full_name='rec.command.Command.menu', index=3,
-      number=3, type=9, cpp_type=9, label=1,
+      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
       name='desc', full_name='rec.command.Command.desc', index=4,
-      number=4, type=11, cpp_type=10, label=1,
+      number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
       name='keypress', full_name='rec.command.Command.keypress', index=5,
-      number=5, type=9, cpp_type=9, label=3,
+      number=6, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
       name='setter', full_name='rec.command.Command.setter', index=6,
-      number=6, type=11, cpp_type=10, label=1,
+      number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='flags', full_name='rec.command.Command.flags', index=7,
+      number=8, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='disable_on_feature', full_name='rec.command.Command.disable_on_feature', index=8,
+      number=9, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -603,7 +617,7 @@ _COMMAND = descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=225,
-  serialized_end=2716,
+  serialized_end=2759,
 )
 
 
@@ -630,71 +644,8 @@ _COMMANDS = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2718,
-  serialized_end=2767,
-)
-
-
-_KEYVALUE = descriptor.Descriptor(
-  name='KeyValue',
-  full_name='rec.command.KeyValue',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='key', full_name='rec.command.KeyValue.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    descriptor.FieldDescriptor(
-      name='value', full_name='rec.command.KeyValue.value', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=2769,
-  serialized_end=2807,
-)
-
-
-_MAPPING = descriptor.Descriptor(
-  name='Mapping',
-  full_name='rec.command.Mapping',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='key_value', full_name='rec.command.Mapping.key_value', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=2809,
-  serialized_end=2860,
+  serialized_start=2761,
+  serialized_end=2810,
 )
 
 import rec.data.proto.Address_pb2
@@ -705,7 +656,6 @@ _COMMAND.fields_by_name['desc'].message_type = _DESCRIPTION
 _COMMAND.fields_by_name['setter'].message_type = _SETTER
 _COMMAND_TYPE.containing_type = _COMMAND;
 _COMMANDS.fields_by_name['command'].message_type = _COMMAND
-_MAPPING.fields_by_name['key_value'].message_type = _KEYVALUE
 
 class Description(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
@@ -730,17 +680,5 @@ class Commands(message.Message):
   DESCRIPTOR = _COMMANDS
   
   # @@protoc_insertion_point(class_scope:rec.command.Commands)
-
-class KeyValue(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _KEYVALUE
-  
-  # @@protoc_insertion_point(class_scope:rec.command.KeyValue)
-
-class Mapping(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _MAPPING
-  
-  # @@protoc_insertion_point(class_scope:rec.command.Mapping)
 
 # @@protoc_insertion_point(module_scope)

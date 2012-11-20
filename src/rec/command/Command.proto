@@ -153,24 +153,17 @@ message Command {
 
   optional Type type = 1;
   optional sint32 index = 2;  // For repeating commands.
-  optional sint32 start_index = 10;  // For repeating commands.
+  optional sint32 start_index = 3;  // For repeating commands.
 
-  optional string menu = 3;  // English language name of the menu it's in.
-  optional Description desc = 4;  // Localized descriptions.
-  repeated string keypress = 5;   // In Juce keyboard format.
+  optional string menu = 4;  // English language name of the menu it's in.
+  optional Description desc = 5;  // Localized descriptions.
+  repeated string keypress = 6;   // In Juce keyboard format.
 
-  optional Setter setter = 6;
+  optional Setter setter = 7;
+  optional uint32 flags = 8;
+  repeated string disable_on_feature = 9;
 };
 
 message Commands {
   repeated Command command = 1;
-};
-
-message KeyValue {
-  optional string key = 1;
-  optional string value = 2;
-};
-
-message Mapping {
-  repeated KeyValue key_value = 1;
 };
