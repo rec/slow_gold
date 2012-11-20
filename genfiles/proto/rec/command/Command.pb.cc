@@ -83,7 +83,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, start_index_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, category_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, menu_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, desc_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, keypress_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, setter_),
@@ -202,73 +202,73 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \003(\t\022\014\n\004hel"
     "p\030\003 \001(\t\"]\n\006Setter\022\027\n\tis_global\030\001 \001(\010:\004tr"
     "ue\022\'\n\007address\030\002 \001(\0132\026.rec.data.AddressPr"
-    "oto\022\021\n\ttype_name\030\003 \001(\t\"\277\023\n\007Command\022\'\n\004ty"
+    "oto\022\021\n\ttype_name\030\003 \001(\t\"\273\023\n\007Command\022\'\n\004ty"
     "pe\030\001 \001(\0162\031.rec.command.Command.Type\022\r\n\005i"
-    "ndex\030\002 \001(\021\022\023\n\013start_index\030\n \001(\021\022\020\n\010categ"
-    "ory\030\003 \001(\t\022&\n\004desc\030\004 \001(\0132\030.rec.command.De"
-    "scription\022\020\n\010keypress\030\005 \003(\t\022#\n\006setter\030\006 "
-    "\001(\0132\023.rec.command.Setter\"\365\021\n\004Type\022\010\n\004NON"
-    "E\020\000\022\026\n\022ABOUT_THIS_PROGRAM\020:\022\022\n\016ADD_LOOP_"
-    "POINT\020\001\022\025\n\021AUDIO_PREFERENCES\020\002\022\025\n\021CHECK_"
-    "FOR_UPDATES\020D\022\033\n\027CLEAR_KEYBOARD_MAPPINGS"
-    "\020[\022\027\n\023CLEAR_MIDI_MAPPINGS\020\\\022\017\n\013CLEAR_LOO"
-    "PS\020\004\022\023\n\017CLEAR_NAVIGATOR\020\003\022\026\n\022CLEAR_ALL_S"
-    "ETTINGS\020O\022!\n\035CLEAR_SETTINGS_FOR_THIS_TRA"
-    "CK\020P\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLOSE"
-    "_FILE\020\006\022\030\n\024COPY_ALL_LOOP_POINTS\020_\022\025\n\021DIM"
-    "_VOLUME_TOGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022\034\n\030EXPOR"
-    "T_KEYBOARD_MAPPINGS\020R\022\030\n\024EXPORT_MIDI_MAP"
-    "PINGS\020S\022\023\n\017EXPORT_SETTINGS\020K\022\034\n\030IMPORT_K"
-    "EYBOARD_MAPPINGS\020T\022\030\n\024IMPORT_MIDI_MAPPIN"
-    "GS\020U\022\023\n\017IMPORT_SETTINGS\020L\022\031\n\025INVERT_LOOP"
-    "_SELECTION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020"
-    "\013\022\025\n\021KEYBOARD_MAPPINGS\020\014\022\025\n\021LOOP_NEXT_SE"
-    "GMENT\020^\022\021\n\rMIDI_MAPPINGS\020\r\022\027\n\023MODE_ADD_L"
-    "OOP_POINT\020?\022\r\n\tMODE_DRAG\020<\022\021\n\rMODE_SET_T"
-    "IME\020=\022\020\n\014MODE_ZOOM_IN\020>\022\026\n\022MUTE_VOLUME_T"
-    "OGGLE\020\016\022\022\n\016NUDGE_BACKWARD\020Y\022\021\n\rNUDGE_FOR"
-    "WARD\020Z\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021NUDGE_BE"
-    "GIN_RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022\023\n\017NUDGE"
-    "_END_RIGHT\020\022\022\024\n\020NUDGE_SPEED_DOWN\020V\022\022\n\016NU"
-    "DGE_SPEED_UP\020W\022\025\n\021NUDGE_VOLUME_DOWN\020\023\022\023\n"
-    "\017NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\017\n\013OPEN_MAN"
-    "UAL\020A\022\026\n\022OPEN_PREVIOUS_FILE\020N\022\033\n\027OPEN_SL"
-    "OWGOLD_DIRECTORY\020J\022\032\n\026PASTE_OVER_LOOP_PO"
-    "INTS\020`\022\020\n\014RECENT_FILES\020\026\022\010\n\004REDO\020\027\022\023\n\017RE"
-    "QUEST_SUPPORT\020B\022\027\n\023RESET_GAIN_TO_UNITY\020\030"
-    "\022\r\n\tSAVE_FILE\020E\022\027\n\023SAVE_FILE_SELECTION\020F"
-    "\022\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\020\n\014SET_LAN"
-    "GUAGE\020]\022\023\n\017SET_SAVE_FORMAT\020G\022\031\n\025TOGGLE_A"
-    "DVANCED_MENUS\020;\022\034\n\030TOGGLE_AUTOMATIC_UPDA"
-    "TES\020C\022\030\n\024TOGGLE_FOLLOW_CURSOR\020+\022\027\n\023TOGGL"
-    "E_GRID_DISPLAY\020\033\022\036\n\032TOGGLE_COMMAND_BAR_A"
-    "T_LEFT\0206\022\035\n\031TOGGLE_COMMAND_BAR_AT_TOP\0207\022"
-    "!\n\035TOGGLE_FILE_OPEN_TREE_DISPLAY\020H\022\030\n\024TO"
-    "GGLE_MODES_AT_LEFT\0208\022\027\n\023TOGGLE_MODES_AT_"
-    "TOP\0209\022\035\n\031TOGGLE_PARALLEL_WAVEFORMS\020*\022\032\n\026"
-    "TOGGLE_PREFADER_LEVELS\020.\022\024\n\020TOGGLE_SELEC"
-    "TION\020)\022\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_ST"
-    "ARTUP\020Q\022\035\n\031TOGGLE_SHOW_CURSOR_LABELS\0203\022\031"
-    "\n\025TOGGLE_SHOW_HELP_PANE\0201\022\035\n\031TOGGLE_SHOW"
-    "_LABELS_AT_TOP\0204\022\033\n\027TOGGLE_SHOW_MASTER_T"
-    "UNE\020M\022!\n\035TOGGLE_SHOW_SELECTION_BUTTONS\0202"
-    "\022\034\n\030TOGGLE_SHOW_TIMES_AT_TOP\0205\022\030\n\024TOGGLE"
-    "_SHOW_TOOLTIPS\0200\022\025\n\021TOGGLE_START_STOP\020\034\022"
-    "\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\033\n\027TOGGLE_TRA"
-    "NSFORM_ENABLE\020X\022\032\n\026TOGGLE_WHOLE_SONG_LOO"
-    "P\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTR"
-    "EE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#"
-    "\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\022\n"
-    "\016WHATS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_O"
-    "UT\020(\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_SELEC"
-    "TION\020-\022\r\n\tLAST_TYPE\020`\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020"
-    "\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nS"
-    "ELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_"
-    "START\020\201 \022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006"
-    "\"1\n\010Commands\022%\n\007command\030\001 \003(\0132\024.rec.comm"
-    "and.Command\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005"
-    "value\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003("
-    "\0132\025.rec.command.KeyValue", 2864);
+    "ndex\030\002 \001(\021\022\023\n\013start_index\030\n \001(\021\022\014\n\004menu\030"
+    "\003 \001(\t\022&\n\004desc\030\004 \001(\0132\030.rec.command.Descri"
+    "ption\022\020\n\010keypress\030\005 \003(\t\022#\n\006setter\030\006 \001(\0132"
+    "\023.rec.command.Setter\"\365\021\n\004Type\022\010\n\004NONE\020\000\022"
+    "\026\n\022ABOUT_THIS_PROGRAM\020:\022\022\n\016ADD_LOOP_POIN"
+    "T\020\001\022\025\n\021AUDIO_PREFERENCES\020\002\022\025\n\021CHECK_FOR_"
+    "UPDATES\020D\022\033\n\027CLEAR_KEYBOARD_MAPPINGS\020[\022\027"
+    "\n\023CLEAR_MIDI_MAPPINGS\020\\\022\017\n\013CLEAR_LOOPS\020\004"
+    "\022\023\n\017CLEAR_NAVIGATOR\020\003\022\026\n\022CLEAR_ALL_SETTI"
+    "NGS\020O\022!\n\035CLEAR_SETTINGS_FOR_THIS_TRACK\020P"
+    "\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLOSE_FIL"
+    "E\020\006\022\030\n\024COPY_ALL_LOOP_POINTS\020_\022\025\n\021DIM_VOL"
+    "UME_TOGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022\034\n\030EXPORT_KE"
+    "YBOARD_MAPPINGS\020R\022\030\n\024EXPORT_MIDI_MAPPING"
+    "S\020S\022\023\n\017EXPORT_SETTINGS\020K\022\034\n\030IMPORT_KEYBO"
+    "ARD_MAPPINGS\020T\022\030\n\024IMPORT_MIDI_MAPPINGS\020U"
+    "\022\023\n\017IMPORT_SETTINGS\020L\022\031\n\025INVERT_LOOP_SEL"
+    "ECTION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJUMP_SELECTED\020\013\022\025\n"
+    "\021KEYBOARD_MAPPINGS\020\014\022\025\n\021LOOP_NEXT_SEGMEN"
+    "T\020^\022\021\n\rMIDI_MAPPINGS\020\r\022\027\n\023MODE_ADD_LOOP_"
+    "POINT\020?\022\r\n\tMODE_DRAG\020<\022\021\n\rMODE_SET_TIME\020"
+    "=\022\020\n\014MODE_ZOOM_IN\020>\022\026\n\022MUTE_VOLUME_TOGGL"
+    "E\020\016\022\022\n\016NUDGE_BACKWARD\020Y\022\021\n\rNUDGE_FORWARD"
+    "\020Z\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021NUDGE_BEGIN_"
+    "RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022\023\n\017NUDGE_END"
+    "_RIGHT\020\022\022\024\n\020NUDGE_SPEED_DOWN\020V\022\022\n\016NUDGE_"
+    "SPEED_UP\020W\022\025\n\021NUDGE_VOLUME_DOWN\020\023\022\023\n\017NUD"
+    "GE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\017\n\013OPEN_MANUAL\020"
+    "A\022\026\n\022OPEN_PREVIOUS_FILE\020N\022\033\n\027OPEN_SLOWGO"
+    "LD_DIRECTORY\020J\022\032\n\026PASTE_OVER_LOOP_POINTS"
+    "\020`\022\020\n\014RECENT_FILES\020\026\022\010\n\004REDO\020\027\022\023\n\017REQUES"
+    "T_SUPPORT\020B\022\027\n\023RESET_GAIN_TO_UNITY\020\030\022\r\n\t"
+    "SAVE_FILE\020E\022\027\n\023SAVE_FILE_SELECTION\020F\022\n\n\006"
+    "SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\020\n\014SET_LANGUAG"
+    "E\020]\022\023\n\017SET_SAVE_FORMAT\020G\022\031\n\025TOGGLE_ADVAN"
+    "CED_MENUS\020;\022\034\n\030TOGGLE_AUTOMATIC_UPDATES\020"
+    "C\022\030\n\024TOGGLE_FOLLOW_CURSOR\020+\022\027\n\023TOGGLE_GR"
+    "ID_DISPLAY\020\033\022\036\n\032TOGGLE_COMMAND_BAR_AT_LE"
+    "FT\0206\022\035\n\031TOGGLE_COMMAND_BAR_AT_TOP\0207\022!\n\035T"
+    "OGGLE_FILE_OPEN_TREE_DISPLAY\020H\022\030\n\024TOGGLE"
+    "_MODES_AT_LEFT\0208\022\027\n\023TOGGLE_MODES_AT_TOP\020"
+    "9\022\035\n\031TOGGLE_PARALLEL_WAVEFORMS\020*\022\032\n\026TOGG"
+    "LE_PREFADER_LEVELS\020.\022\024\n\020TOGGLE_SELECTION"
+    "\020)\022\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTU"
+    "P\020Q\022\035\n\031TOGGLE_SHOW_CURSOR_LABELS\0203\022\031\n\025TO"
+    "GGLE_SHOW_HELP_PANE\0201\022\035\n\031TOGGLE_SHOW_LAB"
+    "ELS_AT_TOP\0204\022\033\n\027TOGGLE_SHOW_MASTER_TUNE\020"
+    "M\022!\n\035TOGGLE_SHOW_SELECTION_BUTTONS\0202\022\034\n\030"
+    "TOGGLE_SHOW_TIMES_AT_TOP\0205\022\030\n\024TOGGLE_SHO"
+    "W_TOOLTIPS\0200\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025T"
+    "OGGLE_STRETCH_ENABLE\020\035\022\033\n\027TOGGLE_TRANSFO"
+    "RM_ENABLE\020X\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\036\022"
+    "\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_L"
+    "EFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007"
+    "TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\022\n\016WHA"
+    "TS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020("
+    "\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_SELECTION"
+    "\020-\022\r\n\tLAST_TYPE\020`\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010"
+    "\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELEC"
+    "T_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_STAR"
+    "T\020\201 \022\r\n\010JUCE_END\020\207 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010"
+    "Commands\022%\n\007command\030\001 \003(\0132\024.rec.command."
+    "Command\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005valu"
+    "e\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025."
+    "rec.command.KeyValue", 2860);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -1150,12 +1150,12 @@ const Command_Type Command::Type_MIN;
 const Command_Type Command::Type_MAX;
 const int Command::Type_ARRAYSIZE;
 #endif  // _MSC_VER
-const ::std::string Command::_default_category_;
+const ::std::string Command::_default_menu_;
 #ifndef _MSC_VER
 const int Command::kTypeFieldNumber;
 const int Command::kIndexFieldNumber;
 const int Command::kStartIndexFieldNumber;
-const int Command::kCategoryFieldNumber;
+const int Command::kMenuFieldNumber;
 const int Command::kDescFieldNumber;
 const int Command::kKeypressFieldNumber;
 const int Command::kSetterFieldNumber;
@@ -1182,7 +1182,7 @@ void Command::SharedCtor() {
   type_ = 0;
   index_ = 0;
   start_index_ = 0;
-  category_ = const_cast< ::std::string*>(&_default_category_);
+  menu_ = const_cast< ::std::string*>(&_default_menu_);
   desc_ = NULL;
   setter_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1193,8 +1193,8 @@ Command::~Command() {
 }
 
 void Command::SharedDtor() {
-  if (category_ != &_default_category_) {
-    delete category_;
+  if (menu_ != &_default_menu_) {
+    delete menu_;
   }
   if (this != default_instance_) {
     delete desc_;
@@ -1228,8 +1228,8 @@ void Command::Clear() {
     index_ = 0;
     start_index_ = 0;
     if (_has_bit(3)) {
-      if (category_ != &_default_category_) {
-        category_->clear();
+      if (menu_ != &_default_menu_) {
+        menu_->clear();
       }
     }
     if (_has_bit(4)) {
@@ -1282,19 +1282,19 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_category;
+        if (input->ExpectTag(26)) goto parse_menu;
         break;
       }
       
-      // optional string category = 3;
+      // optional string menu = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_category:
+         parse_menu:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_category()));
+                input, this->mutable_menu()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->category().data(), this->category().length(),
+            this->menu().data(), this->menu().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -1394,13 +1394,13 @@ void Command::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->index(), output);
   }
   
-  // optional string category = 3;
+  // optional string menu = 3;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->category().data(), this->category().length(),
+      this->menu().data(), this->menu().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->category(), output);
+      3, this->menu(), output);
   }
   
   // optional .rec.command.Description desc = 4;
@@ -1448,14 +1448,14 @@ void Command::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->index(), target);
   }
   
-  // optional string category = 3;
+  // optional string menu = 3;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->category().data(), this->category().length(),
+      this->menu().data(), this->menu().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->category(), target);
+        3, this->menu(), target);
   }
   
   // optional .rec.command.Description desc = 4;
@@ -1517,11 +1517,11 @@ int Command::ByteSize() const {
           this->start_index());
     }
     
-    // optional string category = 3;
-    if (has_category()) {
+    // optional string menu = 3;
+    if (has_menu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->category());
+          this->menu());
     }
     
     // optional .rec.command.Description desc = 4;
@@ -1583,7 +1583,7 @@ void Command::MergeFrom(const Command& from) {
       set_start_index(from.start_index());
     }
     if (from._has_bit(3)) {
-      set_category(from.category());
+      set_menu(from.menu());
     }
     if (from._has_bit(4)) {
       mutable_desc()->::rec::command::Description::MergeFrom(from.desc());
@@ -1617,7 +1617,7 @@ void Command::Swap(Command* other) {
     std::swap(type_, other->type_);
     std::swap(index_, other->index_);
     std::swap(start_index_, other->start_index_);
-    std::swap(category_, other->category_);
+    std::swap(menu_, other->menu_);
     std::swap(desc_, other->desc_);
     keypress_.Swap(&other->keypress_);
     std::swap(setter_, other->setter_);

@@ -605,15 +605,15 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 start_index() const;
   inline void set_start_index(::google::protobuf::int32 value);
   
-  // optional string category = 3;
-  inline bool has_category() const;
-  inline void clear_category();
-  static const int kCategoryFieldNumber = 3;
-  inline const ::std::string& category() const;
-  inline void set_category(const ::std::string& value);
-  inline void set_category(const char* value);
-  inline void set_category(const char* value, size_t size);
-  inline ::std::string* mutable_category();
+  // optional string menu = 3;
+  inline bool has_menu() const;
+  inline void clear_menu();
+  static const int kMenuFieldNumber = 3;
+  inline const ::std::string& menu() const;
+  inline void set_menu(const ::std::string& value);
+  inline void set_menu(const char* value);
+  inline void set_menu(const char* value, size_t size);
+  inline ::std::string* mutable_menu();
   
   // optional .rec.command.Description desc = 4;
   inline bool has_desc() const;
@@ -653,8 +653,8 @@ class Command : public ::google::protobuf::Message {
   int type_;
   ::google::protobuf::int32 index_;
   ::google::protobuf::int32 start_index_;
-  ::std::string* category_;
-  static const ::std::string _default_category_;
+  ::std::string* menu_;
+  static const ::std::string _default_menu_;
   ::rec::command::Description* desc_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
@@ -1240,46 +1240,46 @@ inline void Command::set_start_index(::google::protobuf::int32 value) {
   start_index_ = value;
 }
 
-// optional string category = 3;
-inline bool Command::has_category() const {
+// optional string menu = 3;
+inline bool Command::has_menu() const {
   return _has_bit(3);
 }
-inline void Command::clear_category() {
-  if (category_ != &_default_category_) {
-    category_->clear();
+inline void Command::clear_menu() {
+  if (menu_ != &_default_menu_) {
+    menu_->clear();
   }
   _clear_bit(3);
 }
-inline const ::std::string& Command::category() const {
-  return *category_;
+inline const ::std::string& Command::menu() const {
+  return *menu_;
 }
-inline void Command::set_category(const ::std::string& value) {
+inline void Command::set_menu(const ::std::string& value) {
   _set_bit(3);
-  if (category_ == &_default_category_) {
-    category_ = new ::std::string;
+  if (menu_ == &_default_menu_) {
+    menu_ = new ::std::string;
   }
-  category_->assign(value);
+  menu_->assign(value);
 }
-inline void Command::set_category(const char* value) {
+inline void Command::set_menu(const char* value) {
   _set_bit(3);
-  if (category_ == &_default_category_) {
-    category_ = new ::std::string;
+  if (menu_ == &_default_menu_) {
+    menu_ = new ::std::string;
   }
-  category_->assign(value);
+  menu_->assign(value);
 }
-inline void Command::set_category(const char* value, size_t size) {
+inline void Command::set_menu(const char* value, size_t size) {
   _set_bit(3);
-  if (category_ == &_default_category_) {
-    category_ = new ::std::string;
+  if (menu_ == &_default_menu_) {
+    menu_ = new ::std::string;
   }
-  category_->assign(reinterpret_cast<const char*>(value), size);
+  menu_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Command::mutable_category() {
+inline ::std::string* Command::mutable_menu() {
   _set_bit(3);
-  if (category_ == &_default_category_) {
-    category_ = new ::std::string;
+  if (menu_ == &_default_menu_) {
+    menu_ = new ::std::string;
   }
-  return category_;
+  return menu_;
 }
 
 // optional .rec.command.Description desc = 4;

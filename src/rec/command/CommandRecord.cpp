@@ -14,13 +14,12 @@ void CommandRecord::fillInfo() {
 
   const Description& desc = command_->desc();
   String fullName = Trans(desc.full(0));
-  String category = str(command_->category());
+  String menu = str(command_->menu());
   bool hasInfo = desc.menu_size() && fullName.length();
 
   if (hasInfo) {
     int flags = 0;
-    DCHECK_NE(category, "");
-    if (category == "(None)")
+    if (menu == "" || menu == "(None)")
       flags += ApplicationCommandInfo::hiddenFromKeyEditor;
 
     if (info_.flags & ApplicationCommandInfo::isTicked)
@@ -35,7 +34,7 @@ void CommandRecord::fillInfo() {
         name = info_.shortName;
     }
 
-    info_.setInfo(name, fullName, category, flags);
+    info_.setInfo(name, fullName, menu, flags);
   } else {
     LOG(DFATAL) << "No command " << CommandIDEncoder::commandIDName(id)
                << ", " << desc.menu_size()
@@ -48,7 +47,7 @@ Command* indexCommand(const Command& cmd, int index) {
   ptr<Command> command(new Command);
   command->set_type(cmd.type());
   command->set_index(index + CommandIDEncoder::FIRST);
-  command->set_category(cmd.category());
+  command->set_menu(cmd.menu());
   if (cmd.desc().menu_size() > index)
     command->mutable_desc()->add_menu(cmd.desc().menu(index));
   else
