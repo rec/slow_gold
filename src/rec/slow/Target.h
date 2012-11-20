@@ -9,8 +9,8 @@ namespace rec {
 namespace slow {
 
 class Target : public HasInstance,
-               public Listener<Enable>,
-               public Listener<CommandID> {
+               public Listener<CommandID>,
+               public Listener<Enable> {
  public:
   explicit Target(Instance* i) : HasInstance(i), enable_(ENABLE) {}
   virtual ~Target() {}
