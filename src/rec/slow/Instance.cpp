@@ -16,7 +16,7 @@
 #include "rec/command/map/MidiCommandMap.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/CommandData.h"
-#include "rec/command/CommandDatabase.h"
+#include "rec/command/FillCommandRecordTable.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandTarget.h"
 #include "rec/command/KeyboardBindings.h"

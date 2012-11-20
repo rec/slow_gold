@@ -1,7 +1,7 @@
 #include "rec/command/CommandRecordTable.h"
 
 #include "rec/command/Access.pb.h"
-#include "rec/command/CommandDatabase.h"
+#include "rec/command/FillCommandRecordTable.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/data/Data.h"
 #include "rec/command/CommandIDEncoder.h"
@@ -60,6 +60,7 @@ void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
 }
 
 bool CommandRecordTable::perform(CommandID id) {
+  Lock l(lock_);
   CommandRecord* cr = find(id);
   bool success = false;
   if (!cr)
@@ -77,6 +78,7 @@ bool CommandRecordTable::perform(CommandID id) {
 
 void CommandRecordTable::fillCommandInfo(CommandID id, const String& name,
                                          int flags, Enable enable) {
+  Lock l(lock_);
   CommandRecord* cr = find(id);
   if (!cr) {
     LOG(DFATAL) << "no info for " << CommandIDEncoder::commandIDName(id);
@@ -95,10 +97,12 @@ void CommandRecordTable::fillCommandInfo(CommandID id, const String& name,
   }
   if (flags >= 0)
     info->flags = flags;
-  if (false && !enable)
-    DLOG(INFO) << CommandIDEncoder::commandIDName(id);
 
   info->setActive(enable == ENABLE);
+  if (enable != ENABLE) {
+    DLOG(INFO) << CommandIDEncoder::commandIDName(id) << ", "
+               << info << ", " << info->flags;
+  }
 }
 
 }  // namespace command

@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="pq1mzlHsF" name="SlowGold">
+  <MAINGROUP id="Y725jFDVa" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -355,6 +355,10 @@
               id="6HMpUxIKB" name="CommandRecordTable.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandTarget.h" id="vt3fCImsy"
               name="CommandTarget.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/FillCommandRecordTable.cpp"
+              id="l6IoAUQHh" name="FillCommandRecordTable.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/FillCommandRecordTable.h"
+              id="SgC063F7X" name="FillCommandRecordTable.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
               id="INV4v9Oxx" name="KeyboardBindings.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="ZxTlCYmLe"
@@ -1013,6 +1017,10 @@
               name="Cuttable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="bfwzJgzFp"
               name="Cuttable.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Deletable.h" id="rPtSTAJFS"
+              name="Deletable.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/DeletableSet.h" id="nLdc43M5Q"
+              name="DeletableSet.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/destruct_ptr.h" id="ne5Z4G5TM"
               name="destruct_ptr.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="VXL4hmtV2"
@@ -1089,6 +1097,8 @@
               name="LoopPoint.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Math.h" id="N3UYQjAxO" name="Math.h"
               resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/MethodListener.h" id="Hcw5fDURG"
+              name="MethodListener.h" resource="0"/>
         <GROUP id="PFjDiGjAL" name="partition">
           <FILE compile="1" file="../../src/rec/util/partition/Convertors.cpp"
                 id="dzzWB6USN" name="Convertors.cpp" resource="0"/>
@@ -1655,7 +1665,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="mcRGoALCh" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ORTaNB6PZ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

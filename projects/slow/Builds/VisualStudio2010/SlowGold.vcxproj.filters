@@ -661,6 +661,9 @@
     <ClCompile Include="..\..\..\..\src\rec\command\CommandRecordTable.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\FillCommandRecordTable.cpp">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
@@ -2814,6 +2817,9 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandTarget.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\FillCommandRecordTable.h">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
@@ -3360,6 +3366,12 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h">
       <Filter>SlowGold\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Deletable.h">
+      <Filter>SlowGold\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\DeletableSet.h">
+      <Filter>SlowGold\rec\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\destruct_ptr.h">
       <Filter>SlowGold\rec\util</Filter>
     </ClInclude>
@@ -3427,6 +3439,9 @@
       <Filter>SlowGold\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Math.h">
+      <Filter>SlowGold\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\MethodListener.h">
       <Filter>SlowGold\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\partition\Convertors.h">

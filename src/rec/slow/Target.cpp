@@ -31,6 +31,13 @@ bool Target::perform(const InvocationInfo& invocation) {
 void Target::addCommandItem(PopupMenu* menu, CommandID id, Enable enable,
                             const String& name, int flags) {
   commandRecordTable()->fillCommandInfo(id, name, flags, enable);
+  command::CommandRecord* cr = commandRecordTable()->find(id);
+  if (!enable) {
+    DLOG(INFO) << CommandIDEncoder::commandIDName(id) << ", "
+               << cr->getInfo() << ", "
+               << cr->getInfo()->flags;
+  }
+
   menu->addCommandItem(applicationCommandManager(), id);
 }
 
