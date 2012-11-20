@@ -15,16 +15,16 @@ const int TEXT_Y_MARGIN = 1;
 
 }  // namespace
 
-CommandMapItemComponent::CommandMapItemComponent(CommandMapEditor& owner,
+CommandMapItemComponent::CommandMapItemComponent(CommandMapEditor* owner,
                                                  const CommandID commandID)
     : commandID_(commandID), owner_(owner) {
   setInterceptsMouseClicks (false, true);
-  owner.addChildren(this);
+  owner->addChildren(this);
 }
 
 void CommandMapItemComponent::addButton(const String& desc, int index,
                                         bool isReadOnly) {
-  CommandMapEditButton* const b = new CommandMapEditButton(owner_, commandID_,
+  CommandMapEditButton* const b = new CommandMapEditButton(*owner_, commandID_,
                                                            desc, index);
   buttons_.add (b);
 
@@ -37,7 +37,7 @@ void CommandMapItemComponent::paint(Graphics& g) {
   g.setFont(getHeight() * HEIGHT_RATIO);
   g.setColour(findColour(CommandMapEditor::textColourId));
 
-  g.drawFittedText(owner_.getCommandManager().getNameOfCommand(commandID_),
+  g.drawFittedText(owner_->getCommandManager().getNameOfCommand(commandID_),
                    TEXT_X_MARGIN, 0,
                    jmax(TEXT_WIDTH_MAX,
                         getChildComponent(0)->getX() - TEXT_X_TOTAL),

@@ -17,7 +17,7 @@ class CommandMapEditorMappingItem  : public TreeViewItem {
   int getItemHeight() const { return 20; }
 
   Component* createItemComponent() {
-    return new CommandMapItemComponent(owner, commandID);
+    return new CommandMapItemComponent(&owner, commandID);
   }
 
  private:
