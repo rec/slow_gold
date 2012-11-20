@@ -19,6 +19,7 @@ using widget::waveform::Viewport;
 
 const PopupMenu MenuMaker::makeMenu(const String& name) {
   Lock l(lock_);
+
   menu_.clear();
   addMenu(name);
   return menu_;
@@ -26,14 +27,14 @@ const PopupMenu MenuMaker::makeMenu(const String& name) {
 
 void MenuMaker::addFull(CommandID id,
                         const String& name,
-                        bool enabled,
+                        Enable enable,
                         PopupMenu* m,
                         int flags) {
-  target_->addCommandItem(m ? m : &menu_, id, enabled, name, flags);
+  target_->addCommandItem(m ? m : &menu_, id, enable, name, flags);
 }
 
 void MenuMaker::addBasic(CommandID id) {
-  addFull(id, String::empty, true, NULL, -1);
+  addFull(id, String::empty, ENABLE, NULL, -1);
 }
 
 void MenuMaker::addRepeat(Command::Type command,
@@ -41,19 +42,20 @@ void MenuMaker::addRepeat(Command::Type command,
                           const String& name,
                           PopupMenu* m,
                           int flags) {
-  addFull(CommandIDEncoder::toCommandID(slot, command), name, true, m, flags);
+  addFull(CommandIDEncoder::toCommandID(slot, command), name, ENABLE, m, flags);
 }
 
 void MenuMaker::addSimpleRepeat(Command::Type command, int slot, PopupMenu* m) {
-  addFull(CommandIDEncoder::toCommandID(slot, command), "", !empty_, m,
-          DEFAULT_FLAGS);  // Was 0!!
+  addFull(CommandIDEncoder::toCommandID(slot, command), "",
+          empty_ ? DISABLE : ENABLE, m, DEFAULT_FLAGS);  // Was 0!!
 }
 
-void MenuMaker::addEnabled(Command::Type command, bool enabled) {
-  addEnabledName(command, enabled, String::empty);
+void MenuMaker::addEnabled(Command::Type command, Enable enable) {
+  addEnabledName(command, enable, String::empty);
 }
 
-void MenuMaker::addEnabledName(Command::Type cmd, bool enable, const String& name) {
+void MenuMaker::addEnabledName(Command::Type cmd, Enable enable,
+                               const String& name) {
   addFull(cmd, name, enable, NULL, DEFAULT_FLAGS);
 }
 

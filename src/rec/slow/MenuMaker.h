@@ -28,7 +28,11 @@ class MenuMaker {
 
   void addSeparator() { menu_.addSeparator(); }
 
-  void addEnabled(command::Command::Type, bool enable);
+  void addEnabled(command::Command::Type, Enable);
+  void addEnabled(command::Command::Type t, bool enable) {
+    addEnabled(t, enable ? ENABLE : DISABLE);
+  }
+
   void addRepeat(command::Command::Type,
                  int slot,
                  const String& name = String::empty,
@@ -44,7 +48,10 @@ class MenuMaker {
 
   virtual bool addMenu(const String& menuName) = 0;
 
-  void addEnabledName(command::Command::Type, bool enable, const String& name);
+  void addEnabledName(command::Command::Type, Enable, const String& name);
+  void addEnabledName(command::Command::Type t, bool en, const String& name) {
+    addEnabledName(t, en ? ENABLE : DISABLE, name);
+  }
   void addBank(command::Command::Type, const String& name);
 
   PopupMenu menu_;
@@ -54,7 +61,7 @@ class MenuMaker {
  private:
   void addFull(CommandID id,
                const String& name,
-               bool enabled,
+               Enable,
                PopupMenu* m,
                int flags);
 

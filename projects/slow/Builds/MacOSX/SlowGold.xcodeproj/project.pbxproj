@@ -124,6 +124,7 @@
 		5CE77E53E4494F9F8567C8BF /* RandomSelfInverseFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33DEF143E238759A5A86C8A7 /* RandomSelfInverseFunction.cpp */; };
 		5DA42F498A3AB877E088004E /* WriteYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15CE4B99C046364CB01B3D2A /* WriteYaml.cpp */; };
 		5DCAC04381C6B5403F1A11BE /* TickedDataSetter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33C939E299E307E87F8A3CB5 /* TickedDataSetter.cpp */; };
+		602B3339EC819999198E0839 /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = BDE5B76E2DA9D1630F1C1AC3 /* RecentFilesMenuTemplate.nib */; };
 		610E241BCA49251C21D302F3 /* GuiSettings.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2AC73BCA090D8A1DB4B4C4A5 /* GuiSettings.pb.cc */; };
 		6183B99DC3B5770D9619E164 /* AddressListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7642D0D714A73274CCAF74B2 /* AddressListener.cpp */; };
 		61869FFF6D39F21EF6171E8A /* Metadata.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 33A7CE0CDDC85C64455FC794 /* Metadata.pb.cc */; };
@@ -1493,6 +1494,7 @@
 		BD77D88F344F812E310EEA5B /* StopButton.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StopButton.svg.cpp; path = ../../../../genfiles/icon/rec/gui/icon/StopButton.svg.cpp; sourceTree = SOURCE_ROOT; };
 		BDA83B75FF6DA5FED019BB2B /* STL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = STL.h; path = ../../../../src/rec/util/STL.h; sourceTree = SOURCE_ROOT; };
 		BDBA8098FF02993E49B4DA53 /* HasInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HasInstance.h; path = ../../../../src/rec/slow/HasInstance.h; sourceTree = SOURCE_ROOT; };
+		BDE5B76E2DA9D1630F1C1AC3 /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		BE125D4C64F6A987756EEF97 /* juce_CustomTypeface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_CustomTypeface.h; path = ../../../../../juce/modules/juce_graphics/fonts/juce_CustomTypeface.h; sourceTree = SOURCE_ROOT; };
 		BE3A342BB50C53EE2A861D38 /* juce_FileTreeComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_FileTreeComponent.cpp; path = ../../../../../juce/modules/juce_gui_basics/filebrowser/juce_FileTreeComponent.cpp; sourceTree = SOURCE_ROOT; };
 		BEAB4407D9E8FFA33514FBC8 /* juce_win32_QuickTimeMovieComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_QuickTimeMovieComponent.cpp; path = ../../../../../juce/modules/juce_video/native/juce_win32_QuickTimeMovieComponent.cpp; sourceTree = SOURCE_ROOT; };
@@ -1993,6 +1995,7 @@
 			isa = PBXGroup;
 			children = (
 				7438E70B06C55782C849220B /* Info.plist */,
+				BDE5B76E2DA9D1630F1C1AC3 /* RecentFilesMenuTemplate.nib */,
 				AC12A72D9D263885F500466D /* Icon.icns */,
 			);
 			name = Resources;
@@ -4918,6 +4921,9 @@
 /* Begin PBXProject section */
 		B6E058BF1C68CB806340553B /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+			};
 			buildConfigurationList = C0B5A359FE7FBF6FAE66FCA1 /* Build configuration list for PBXProject "SlowGold" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -4942,6 +4948,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602B3339EC819999198E0839 /* RecentFilesMenuTemplate.nib in Resources */,
 				D1656AA086B7135380C6BB3A /* Icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5272,6 +5279,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_DEBUGGING_SYMBOLS = full;
@@ -5288,7 +5296,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_ObjCExtraSuffix=jeMWW9",
 					DONT_SET_USING_JUCE_NAMESPACE,
 					JUCE_DONT_DEFINE_MACRO,
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -5354,7 +5361,6 @@
 					"-lippsrmerged",
 				);
 				SDKROOT_ppc = macosx10.5;
-				SRCROOT = ../..;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 			};
 			name = Release;
@@ -5403,6 +5409,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_AUTO_VECTORIZATION = YES;
@@ -5419,7 +5426,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_ObjCExtraSuffix=jeMWW9",
 					DONT_SET_USING_JUCE_NAMESPACE,
 					JUCE_DONT_DEFINE_MACRO,
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -5486,7 +5492,6 @@
 					"-lippsrmerged",
 				);
 				SDKROOT_ppc = macosx10.5;
-				SRCROOT = ../..;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 			};
 			name = Debug;

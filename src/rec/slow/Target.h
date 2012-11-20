@@ -27,10 +27,7 @@ class Target : public HasInstance,
 
   virtual bool perform(const InvocationInfo&);
 
-  void addCommandItem(PopupMenu*,
-                      CommandID,
-                      bool enable,
-                      const String& name,
+  void addCommandItem(PopupMenu*, CommandID, Enable, const String& name,
                       int flags);
 
  private:

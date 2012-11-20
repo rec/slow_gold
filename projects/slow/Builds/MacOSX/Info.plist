@@ -5,31 +5,24 @@
   <dict>
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
-
     <key>CFBundleIconFile</key>
     <string>Icon.icns</string>
-
     <key>CFBundleIdentifier</key>
     <string>recs.to</string>
-
     <key>CFBundleName</key>
     <string>SlowGold</string>
-
     <key>CFBundlePackageType</key>
     <string>APPL</string>
-
     <key>CFBundleSignature</key>
     <string>????</string>
-
     <key>CFBundleShortVersionString</key>
-    <string>8.0.4</string>
-
+    <string>8.0.5</string>
     <key>CFBundleVersion</key>
-    <string>8.0.4</string>
-
+    <string>8.0.5</string>
     <key>NSHumanReadableCopyright</key>
     <string></string>
-
+    <key>NSHighResolutionCapable</key>
+    <true/>
     <key>CFBundleDocumentTypes</key>
     <array>
       <dict>
@@ -44,7 +37,8 @@
           <string>wave</string>
           <string>wshed</string>
         </array>
-
+        <key>CFBundleTypeName</key>
+        <string>aif</string>
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>NSPersistentStoreTypeKey</key>

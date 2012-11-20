@@ -28,10 +28,9 @@ bool Target::perform(const InvocationInfo& invocation) {
   return (enable_ == DISABLE) || commandRecordTable()->perform(id);
 }
 
-void Target::addCommandItem(PopupMenu* menu, CommandID id, bool enable,
+void Target::addCommandItem(PopupMenu* menu, CommandID id, Enable enable,
                             const String& name, int flags) {
-  commandRecordTable()->fillCommandInfo(id, name, flags,
-                                        enable ? ENABLE : DISABLE);
+  commandRecordTable()->fillCommandInfo(id, name, flags, enable);
   menu->addCommandItem(applicationCommandManager(), id);
 }
 
