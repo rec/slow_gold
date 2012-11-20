@@ -9,25 +9,25 @@ namespace command {
 
 class CommandMapEditorMappingItem;
 
-//==============================================================================
-class CommandMapCategoryItem  : public TreeViewItem
-{
+class CommandMapCategoryItem  : public TreeViewItem {
  public:
-  CommandMapCategoryItem (CommandMapEditor& owner, const String& name);
+  CommandMapCategoryItem(CommandMapEditor& owner, const String& name);
   virtual CommandMapEditorMappingItem* createItemComponent(CommandID cmd) const;
 
-  virtual String getUniqueName() const { return categoryName + "_cat"; }
+  virtual String getUniqueName() const { return categoryName_ + "_cat"; }
   virtual bool mightContainSubItems() { return true; }
-  virtual int getItemHeight() const { return 28; }
+  virtual int getItemHeight() const { return CATEGORY_HEIGHT; }
 
   virtual void paintItem(Graphics& g, int width, int height);
   virtual void itemOpennessChanged(bool isNowOpen);
 
- private:
-  CommandMapEditor& owner;
-  String categoryName;
+  static const int CATEGORY_HEIGHT = 28;
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CommandMapCategoryItem);
+ private:
+  CommandMapEditor& owner_;
+  String categoryName_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandMapCategoryItem);
 };
 
 

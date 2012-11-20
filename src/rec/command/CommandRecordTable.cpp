@@ -20,11 +20,12 @@ CommandRecord* CommandRecordTable::find(CommandID id) {
   return (i != table_.end()) ? i->second : NULL;
 }
 
-CommandRecord* CommandRecordTable::create(CommandID id) {
+CommandRecord* CommandRecordTable::create(CommandID id, bool allowDupes) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
   if (i != table_.end()) {
-    LOG(DFATAL) << CommandIDEncoder::commandIDName(id) << " already exists.";
+    if (!allowDupes)
+      LOG(DFATAL) << CommandIDEncoder::commandIDName(id) << " already exists.";
     return i->second;
   }
 
