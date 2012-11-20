@@ -6,23 +6,23 @@
 namespace rec {
 namespace command {
 
-class CommandMapEditorMappingItem  : public TreeViewItem {
+class CommandMapEditorMappingItem : public TreeViewItem {
  public:
-  CommandMapEditorMappingItem (CommandMapEditor& owner_, const CommandID commandID_)
-      : owner (owner_), commandID (commandID_) {
+  CommandMapEditorMappingItem(CommandMapEditor* owner, CommandID commandID)
+      : owner_(owner), commandID_(commandID) {
   }
 
-  String getUniqueName() const { return String ((int) commandID) + "_id"; }
+  String getUniqueName() const { return String ((int) commandID_) + "_id"; }
   bool mightContainSubItems() { return false; }
   int getItemHeight() const { return 20; }
 
   Component* createItemComponent() {
-    return new CommandMapItemComponent(&owner, commandID);
+    return new CommandMapItemComponent(owner_, commandID_);
   }
 
  private:
-  CommandMapEditor& owner;
-  const CommandID commandID;
+  CommandMapEditor* owner_;
+  const CommandID commandID_;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapEditorMappingItem);
 };

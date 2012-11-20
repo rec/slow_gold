@@ -11,7 +11,7 @@ class CommandMapEditorMappingItem;
 
 class CommandMapCategoryItem  : public TreeViewItem {
  public:
-  CommandMapCategoryItem(CommandMapEditor& owner, const String& name);
+  CommandMapCategoryItem(CommandMapEditor* owner, const String& name);
   virtual CommandMapEditorMappingItem* createItemComponent(CommandID cmd) const;
 
   virtual String getUniqueName() const { return categoryName_ + "_cat"; }
@@ -24,7 +24,7 @@ class CommandMapCategoryItem  : public TreeViewItem {
   static const int CATEGORY_HEIGHT = 28;
 
  private:
-  CommandMapEditor& owner_;
+  CommandMapEditor* owner_;
   String categoryName_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandMapCategoryItem);

@@ -36,7 +36,7 @@ void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
         ++count;
 
     if (count > 0) {
-      addSubItem(new CommandMapCategoryItem(owner, cat));
+      addSubItem(new CommandMapCategoryItem(&owner, cat));
     } else if (cat != t_NONE) {
       LOG(DFATAL) << "Nothing in category " << str(cat)
                   << ", " << commands.size();

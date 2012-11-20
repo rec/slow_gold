@@ -4,7 +4,7 @@
 namespace rec {
 namespace command {
 
-CommandMapCategoryItem::CommandMapCategoryItem(CommandMapEditor& owner,
+CommandMapCategoryItem::CommandMapCategoryItem(CommandMapEditor* owner,
                                                const String& name)
     : owner_(owner), categoryName_(name) {
 }
@@ -20,7 +20,7 @@ void CommandMapCategoryItem::paintItem(Graphics& g, int width, int height) {
   f.setTypefaceStyle("bold");
 
   g.setFont(f);
-  g.setColour(owner_.findColour(CommandMapEditor::textColourId));
+  g.setColour(owner_->findColour(CommandMapEditor::textColourId));
 
   g.drawText(categoryName_,
              2, 0, width - 2, height,
@@ -31,11 +31,11 @@ void CommandMapCategoryItem::itemOpennessChanged(bool isNowOpen) {
   if (!isNowOpen) {
     clearSubItems();
   } else if (getNumSubItems() == 0) {
-    Array<CommandID> commands(owner_.getCommandManager().
+    Array<CommandID> commands(owner_->getCommandManager().
                               getCommandsInCategory(categoryName_));
 
     for (int i = 0; i < commands.size(); ++i) {
-      if (owner_.shouldCommandBeIncluded(commands[i]))
+      if (owner_->shouldCommandBeIncluded(commands[i]))
         addSubItem(createItemComponent(commands[i]));  // TODO: why?
     }
   }
