@@ -31,6 +31,8 @@ void CommandDatabase::fill() {
     else
       fillSingleCommand(cmd);
   }
+
+  table_->fillAllCommands();
 }
 
 void CommandDatabase::fillSingleCommand(const Command& cmd) {

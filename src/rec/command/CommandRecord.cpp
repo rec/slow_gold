@@ -4,11 +4,6 @@
 namespace rec {
 namespace command {
 
-ApplicationCommandInfo* CommandRecord::getInfo() {
-  fillInfo();
-  return &info_;
-}
-
 void CommandRecord::fillInfo() {
 	if (!command_)
   	return;

@@ -31,9 +31,6 @@ class CommandTarget : public ApplicationCommandTarget,
 
     if (!info.shortName.isNotEmpty())
       LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
-
-    if ((info.flags & ApplicationCommandInfo::isDisabled))
-      DLOG(INFO) << CommandIDEncoder::commandIDName(id) << " DISABLED";
   }
 
   virtual bool perform(const InvocationInfo& info) {

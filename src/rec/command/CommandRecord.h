@@ -16,11 +16,10 @@ struct CommandRecord {
   ptr<Callback> callback_;
   ptr<CommandItemSetter> setter_;
 
-  ApplicationCommandInfo* getInfo();
-
- private:
+  ApplicationCommandInfo* getInfo() { return &info_; }
   void fillInfo();
 
+ private:
   ApplicationCommandInfo info_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecord);

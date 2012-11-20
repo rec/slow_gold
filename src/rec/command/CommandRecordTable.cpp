@@ -99,10 +99,11 @@ void CommandRecordTable::fillCommandInfo(CommandID id, const String& name,
     info->flags = flags;
 
   info->setActive(enable == ENABLE);
-  if (enable != ENABLE) {
-    DLOG(INFO) << CommandIDEncoder::commandIDName(id) << ", "
-               << info << ", " << info->flags;
-  }
+}
+
+void CommandRecordTable::fillAllCommands() {
+  for (Table::iterator i = table_.begin(); i != table_.end(); ++i)
+    i->second->fillInfo();
 }
 
 }  // namespace command
