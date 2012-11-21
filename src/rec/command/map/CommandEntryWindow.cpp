@@ -16,7 +16,7 @@ CommandEntryWindow::CommandEntryWindow(const String& caption)
   // Probably not needed in the general case but no harm...
   // (avoid return + escape keys getting processed by the buttons..)
   for (int i = getNumChildComponents(); --i >= 0;)
-    getChildComponent (i)->setWantsKeyboardFocus(false);
+    getChildComponent(i)->setWantsKeyboardFocus(false);
 
   setWantsKeyboardFocus(true);
   grabKeyboardFocus();

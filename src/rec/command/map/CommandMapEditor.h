@@ -37,19 +37,9 @@ class JUCE_API CommandMapEditor : public Component {
 
   ApplicationCommandManager& getCommandManager() { return commandManager; }
   ChangeBroadcaster& getChangeBroadcaster() { return broadcaster; }
-
-  /** A set of colour IDs to use to change the colour of various aspects of the editor.
-
-      These constants can be used either via the Component::setColour(), or LookAndFeel::setColour()
-      methods.
-
-      To change the colours of the menu that pops up
-
-      @see Component::setColour, Component::findColour, LookAndFeel::setColour, LookAndFeel::findColour
-  */
   enum ColourIds {
-    backgroundColourId  = 0x100ad00,    /**< The background colour to fill the editor background. */
-    textColourId        = 0x100ad01,    /**< The colour for the text. */
+    backgroundColourId  = 0x100ad00,
+    textColourId        = 0x100ad01,
   };
 
   virtual void parentHierarchyChanged();
@@ -70,7 +60,6 @@ class JUCE_API CommandMapEditor : public Component {
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CommandMapEditor);
 };
-
 
 }  // namespace command
 }  // namespace rec

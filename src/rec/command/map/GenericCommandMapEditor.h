@@ -48,15 +48,16 @@ class GenericCommandMapEditor : public CommandMapEditor {
     return message;
   }
 
-  void setNewKey(CommandMapEditButton* button, const Key& newKey, bool dontAskUser) {
+  void setNewKey(CommandMapEditButton* button, const Key& newKey,
+                 bool dontAskUser) {
     if (isValid(newKey)) {
       const CommandID previousCommand = getCommand(newKey);
 
       if (previousCommand == 0 || dontAskUser) {
-        removeKey (newKey);
+        removeKey(newKey);
 
         if (button->keyNum >= 0)
-          removeKey (button->commandID, button->keyNum);
+          removeKey(button->commandID, button->keyNum);
 
         addKey(button->commandID, newKey, button->keyNum);
       } else {
@@ -89,9 +90,9 @@ class GenericCommandMapEditor : public CommandMapEditor {
     CommandID command = comp->commandID_;
     const bool isReadOnly = isCommandReadOnly(command);
     const Array<Key> keys(getKeys(command));
-    for (int i = 0; i < jmin ((int) MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
-      comp->addButton (getDescriptionForKey (keys.getReference (i)), i, isReadOnly);
-    comp->addButton (String::empty, -1, isReadOnly);
+    for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
+      comp->addButton(getDescriptionForKey(keys.getReference(i)), i, isReadOnly);
+    comp->addButton(String::empty, -1, isReadOnly);
   }
 
   static const int MAX_NUM_ASSIGNMENTS = 3;

@@ -20,7 +20,7 @@ CommandMapTopLevelItem::~CommandMapTopLevelItem() {
 }
 
 void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
-  const OpennessRestorer openness (*this);
+  const OpennessRestorer openness(*this);
   clearSubItems();
 
   const StringArray categories(owner.getCommandManager().getCommandCategories());

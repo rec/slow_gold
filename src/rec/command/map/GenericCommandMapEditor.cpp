@@ -16,7 +16,8 @@ bool showCommandMapBox(const String& command, Component* comp,
   return AlertWindow::showOkCancelBox(
       AlertWindow::WarningIcon,
       t_CHANGE_KEY_MAPPING,
-      str(t_THIS_KEY_ASSIGNED + " \"" + command + "\"\n\n" + t_WANT_TO_REASSIGN),
+      str(t_THIS_KEY_ASSIGNED + " \"" + command +
+          "\"\n\n" + t_WANT_TO_REASSIGN),
       t_REASSIGN, t_CANCEL, comp, cb);
 }
 

@@ -1,6 +1,7 @@
 #include "rec/command/map/CommandMapEditor.h"
 
 #include "rec/base/Trans.h"
+#include "rec/command/Command.pb.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/map/CommandMapEditButton.h"
 #include "rec/command/map/CommandMapEditorMappingItem.h"
@@ -87,10 +88,15 @@ void CommandMapEditor::resized() {
   tree.setBounds(0, 0, getWidth(), h);
 }
 
-//==============================================================================
-bool CommandMapEditor::shouldCommandBeIncluded(const CommandID id) {
-  const ApplicationCommandInfo* const ci = commandManager.getCommandForID(id);
+static const int RECENT = Command::RECENT_FILES;
+static const int BEGIN = CommandIDEncoder::toCommandID(10, RECENT);
+static const int END = CommandIDEncoder::toCommandID(100, RECENT);
 
+bool CommandMapEditor::shouldCommandBeIncluded(const CommandID id) {
+  if (true && id >= BEGIN && id <= END)
+    return false;
+
+  const ApplicationCommandInfo* const ci = commandManager.getCommandForID(id);
   return ci && !(ci->flags & ApplicationCommandInfo::hiddenFromKeyEditor);
 }
 
