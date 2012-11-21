@@ -271,7 +271,9 @@ void Waveform::setSelected(int index, bool selected) {
 
 // TODO: get rid of dependency on Slow!
 void Waveform::mouseDoubleClick(const MouseEvent&) {
-  gui::dialog::openOneFile(slow::Instance::getInstance()->currentFile_.get());
+  slow::Instance* instance = slow::Instance::getInstance();
+  if (instance->empty())
+    gui::dialog::openOneFile(instance->currentFile_.get());
 }
 
 }  // namespace waveform
