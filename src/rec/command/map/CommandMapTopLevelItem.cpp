@@ -44,17 +44,6 @@ void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
   }
 }
 
-void CommandMapTopLevelItem::reset() {
-  AlertWindow::showOkCancelBox(
-      AlertWindow::QuestionIcon,
-      t_RESET_TO_DEFAULTS,
-      t_SURE_YOU_RESET,
-      t_RESET,
-      String::empty,
-      &owner,
-      ModalCallbackFunction::forComponent(resetToDefaultsCallback, &owner));
-}
-
 }  // namespace command
 }  // namespace rec
 

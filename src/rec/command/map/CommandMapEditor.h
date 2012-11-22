@@ -13,7 +13,7 @@ class CommandMapTopLevelItem;
 class CommandMapItemComponent;
 class CommandEntryWindow;
 
-class JUCE_API CommandMapEditor : public Component, public ButtonListener {
+class CommandMapEditor : public Component, public ButtonListener {
  public:
   CommandMapEditor(ApplicationCommandManager& commandManager,
                    ChangeBroadcaster& broadcaster);
@@ -42,7 +42,14 @@ class JUCE_API CommandMapEditor : public Component, public ButtonListener {
   };
 
   virtual void parentHierarchyChanged();
+
+  // Callbacks from the buttons.
   virtual void resized();
+  virtual void reset() {}
+  virtual void clear() {}
+  virtual void exportSetting() {}
+  virtual void import() {}
+  virtual void ok() {}
 
  protected:
   void addButton(TextButton*);

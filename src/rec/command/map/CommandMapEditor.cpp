@@ -127,16 +127,28 @@ bool CommandMapEditor::isCommandReadOnly(const CommandID id) {
 
 void CommandMapEditor::buttonClicked(Button* button) {
   if (button == &resetButton_)
-    treeItem_->reset();
-  if (button == &clearButton_)
-    treeItem_->clear();
-  if (button == &exportButton_)
-    treeItem_->exportSetting();
-  if (button == &importButton_)
-    treeItem_->import();
-  if (button == &okButton_)
-    treeItem_->ok();
+    reset();
+  else if (button == &clearButton_)
+    clear();
+  else if (button == &exportButton_)
+    exportSetting();
+  else if (button == &importButton_)
+    import();
+  else if (button == &okButton_)
+    ok();
 }
 
+#if 0
+void CommandMapTopLevelItem::reset() {
+  AlertWindow::showOkCancelBox(
+      AlertWindow::QuestionIcon,
+      t_RESET_TO_DEFAULTS,
+      t_SURE_YOU_RESET,
+      t_RESET,
+      String::empty,
+      &owner,
+      ModalCallbackFunction::forComponent(resetToDefaultsCallback, &owner));
+}
+#endif
 }  // namespace command
 }  // namespace rec

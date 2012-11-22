@@ -18,12 +18,6 @@ class CommandMapTopLevelItem : public TreeViewItem,
   void changeListenerCallback(ChangeBroadcaster*);
   static void resetToDefaultsCallback(int result, CommandMapEditor* owner) {}
 
-  void reset();
-  void clear() {}
-  void exportSetting() {}
-  void import() {}
-  void ok() {}
-
  protected:
   CommandMapEditor& owner;
 };
