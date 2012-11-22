@@ -16,7 +16,6 @@ class CommandMapTopLevelItem : public TreeViewItem,
   String getUniqueName() const      { return "keys"; }
 
   void changeListenerCallback(ChangeBroadcaster*);
-  static void resetToDefaultsCallback(int result, CommandMapEditor* owner) {}
 
  protected:
   CommandMapEditor& owner;

@@ -139,6 +139,8 @@ void CommandMapEditor::buttonClicked(Button* button) {
 }
 
 #if 0
+  static void resetToDefaultsCallback(int result, CommandMapEditor* owner) {}
+
 void CommandMapTopLevelItem::reset() {
   AlertWindow::showOkCancelBox(
       AlertWindow::QuestionIcon,
