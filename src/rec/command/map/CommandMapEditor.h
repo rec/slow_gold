@@ -18,7 +18,7 @@ class JUCE_API CommandMapEditor : public Component {
   CommandMapEditor(ApplicationCommandManager& commandManager,
                    ChangeBroadcaster& broadcaster);
 
-  void initialize(bool showResetToDefaultButton);
+  void initialize();
 
   virtual void addButton(CommandMapEditButton* button) = 0;
   virtual void removeButton(CommandMapEditButton* button) = 0;
@@ -53,8 +53,9 @@ class JUCE_API CommandMapEditor : public Component {
   TreeView tree;
   TextButton resetButton;
   TextButton clearButton;
-  TextButton saveButton;
-  TextButton loadButton;
+  TextButton exportButton;
+  TextButton importButton;
+  TextButton okButton;
 
   ScopedPointer<CommandMapTopLevelItem> treeItem;
 

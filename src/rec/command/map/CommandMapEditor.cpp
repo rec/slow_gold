@@ -1,5 +1,8 @@
+#include <math.h>
+
 #include "rec/command/map/CommandMapEditor.h"
 
+#include "rec/base/ArraySize.h"
 #include "rec/base/Trans.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/CommandIDEncoder.h"
@@ -9,10 +12,11 @@
 #include "rec/command/map/CommandEntryWindow.h"
 #include "rec/command/map/CommandMapItemComponent.h"
 
-TRAN(RESET_TO_DEFAULTS, "Reset to default");
-TRAN(CLEAR_EDITOR, "Clear all");
-TRAN(SAVE_EDITOR, "Save");
-TRAN(LOAD_EDITOR, "Load");
+TRAN(RESET_TO_DEFAULTS, "Reset To Factory Default");
+TRAN(OK_EDITOR, "OK");
+TRAN(CLEAR_EDITOR, "Clear Changes");
+TRAN(EXPORT_EDITOR, "Export...");
+TRAN(IMPORT_EDITOR, "Import...");
 
 namespace rec {
 namespace command {
@@ -20,9 +24,9 @@ namespace command {
 namespace {
 
 const int BUTTON_HEIGHT = 20;
-const int BUTTON_X_PADDING = 8;
+const double MAX_BUTTON_PADDING = 8.0;
 const int BUTTON_Y_PADDING = 8;
-const int TOP_RIGHT_PADDING = 6;
+const int TOP_RIGHT_PADDING = 10;
 
 }
 
@@ -31,8 +35,9 @@ CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
     : commandManager(manager), broadcaster(b),
       resetButton(t_RESET_TO_DEFAULTS),
       clearButton(t_CLEAR_EDITOR),
-      saveButton(t_SAVE_EDITOR),
-      loadButton(t_LOAD_EDITOR) {
+      exportButton(t_EXPORT_EDITOR),
+      importButton(t_IMPORT_EDITOR),
+      okButton(t_OK_EDITOR) {
 }
 
 void CommandMapEditor::addButton(TextButton* button) {
@@ -40,17 +45,14 @@ void CommandMapEditor::addButton(TextButton* button) {
   button->addListener(treeItem);
 }
 
-void CommandMapEditor::initialize(const bool showResetToDefaultButton) {
+void CommandMapEditor::initialize() {
   treeItem = new CommandMapTopLevelItem(*this);
 
-  if (showResetToDefaultButton) {
-    addButton(&resetButton);
-#if 0
-    addButton(&clearButton);
-    addButton(&saveButton);
-    addButton(&loadButton);
-#endif
-  }
+  addButton(&resetButton);
+  addButton(&clearButton);
+  addButton(&exportButton);
+  addButton(&importButton);
+  addButton(&okButton);
 
   addAndMakeVisible(&tree);
   tree.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
@@ -75,17 +77,34 @@ void CommandMapEditor::parentHierarchyChanged() {
 }
 
 void CommandMapEditor::resized() {
-  int h = getHeight();
+  int h = getHeight(), w = getWidth();
 
-  if (resetButton.isVisible()) {
-    h -= BUTTON_HEIGHT + BUTTON_Y_PADDING;
-    int x = getWidth() - BUTTON_X_PADDING;
+  TextButton* button[] = {
+    &resetButton,
+    &importButton,
+    &exportButton,
+    &clearButton,
+    &okButton,
+  };
 
-    resetButton.changeWidthToFitText(BUTTON_HEIGHT);
-    resetButton.setTopRightPosition(x, h + TOP_RIGHT_PADDING);
+  double totalWidth = 0.0;
+  for (uint i = 0; i < arraysize(button); ++i) {
+    button[i]->changeWidthToFitText(BUTTON_HEIGHT);
+    totalWidth += button[i]->getWidth();
   }
 
-  tree.setBounds(0, 0, getWidth(), h);
+  double padCount = arraysize(button) + 1;
+  double padding = juce::jmin((w - totalWidth) / padCount, MAX_BUTTON_PADDING);
+  double consumed = totalWidth + padCount * padding;
+  double x = juce::jmax(padding + (w - consumed) / 2, 0.0);
+  int buttonY = h - TOP_RIGHT_PADDING - BUTTON_HEIGHT;
+
+  for (uint i = 0; i < arraysize(button); ++i) {
+    button[i]->setTopLeftPosition(lround(x), buttonY);
+    x += (button[i]->getWidth() + padding);
+  }
+
+  tree.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT);
 }
 
 static const int RECENT = Command::RECENT_FILES;
@@ -93,7 +112,7 @@ static const int BEGIN = CommandIDEncoder::toCommandID(10, RECENT);
 static const int END = CommandIDEncoder::toCommandID(100, RECENT);
 
 bool CommandMapEditor::shouldCommandBeIncluded(const CommandID id) {
-  if (true && id >= BEGIN && id <= END)
+  if (id >= BEGIN && id <= END)
     return false;
 
   const ApplicationCommandInfo* const ci = commandManager.getCommandForID(id);
