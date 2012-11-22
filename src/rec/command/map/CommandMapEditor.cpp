@@ -32,33 +32,33 @@ const int TOP_RIGHT_PADDING = 10;
 
 CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
                                    ChangeBroadcaster& b)
-    : commandManager(manager), broadcaster(b),
-      resetButton(t_RESET_TO_DEFAULTS),
-      clearButton(t_CLEAR_EDITOR),
-      exportButton(t_EXPORT_EDITOR),
-      importButton(t_IMPORT_EDITOR),
-      okButton(t_OK_EDITOR) {
+    : commandManager_(manager), broadcaster_(b),
+      resetButton_(t_RESET_TO_DEFAULTS),
+      clearButton_(t_CLEAR_EDITOR),
+      exportButton_(t_EXPORT_EDITOR),
+      importButton_(t_IMPORT_EDITOR),
+      okButton_(t_OK_EDITOR) {
 }
 
 void CommandMapEditor::addButton(TextButton* button) {
   addAndMakeVisible(button);
-  button->addListener(treeItem);
+  // button->addListener(treeItem_);
 }
 
 void CommandMapEditor::initialize() {
-  treeItem = new CommandMapTopLevelItem(*this);
+  treeItem_.reset(new CommandMapTopLevelItem(*this));
 
-  addButton(&resetButton);
-  addButton(&clearButton);
-  addButton(&exportButton);
-  addButton(&importButton);
-  addButton(&okButton);
+  addButton(&resetButton_);
+  addButton(&clearButton_);
+  addButton(&exportButton_);
+  addButton(&importButton_);
+  addButton(&okButton_);
 
   addAndMakeVisible(&tree);
   tree.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
   tree.setRootItemVisible(false);
   tree.setDefaultOpenness(false);
-  tree.setRootItem(treeItem);
+  tree.setRootItem(treeItem_.get());
 }
 
 CommandMapEditor::~CommandMapEditor() {
@@ -73,18 +73,18 @@ void CommandMapEditor::setColours(const Colour& mainBackground,
 }
 
 void CommandMapEditor::parentHierarchyChanged() {
-  treeItem->changeListenerCallback(NULL);
+  treeItem_->changeListenerCallback(NULL);
 }
 
 void CommandMapEditor::resized() {
   int h = getHeight(), w = getWidth();
 
   TextButton* button[] = {
-    &resetButton,
-    &importButton,
-    &exportButton,
-    &clearButton,
-    &okButton,
+    &resetButton_,
+    &importButton_,
+    &exportButton_,
+    &clearButton_,
+    &okButton_,
   };
 
   double totalWidth = 0.0;
@@ -115,14 +115,27 @@ bool CommandMapEditor::shouldCommandBeIncluded(const CommandID id) {
   if (id >= BEGIN && id <= END)
     return false;
 
-  const ApplicationCommandInfo* const ci = commandManager.getCommandForID(id);
+  const ApplicationCommandInfo* const ci = commandManager_.getCommandForID(id);
   return ci && !(ci->flags & ApplicationCommandInfo::hiddenFromKeyEditor);
 }
 
 bool CommandMapEditor::isCommandReadOnly(const CommandID id) {
-  const ApplicationCommandInfo* const ci = commandManager.getCommandForID(id);
+  const ApplicationCommandInfo* const ci = commandManager_.getCommandForID(id);
   DCHECK(ci);
   return ci && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor);
+}
+
+void CommandMapEditor::buttonClicked(Button* button) {
+  if (button == &resetButton_)
+    treeItem_->reset();
+  if (button == &clearButton_)
+    treeItem_->clear();
+  if (button == &exportButton_)
+    treeItem_->exportSetting();
+  if (button == &importButton_)
+    treeItem_->import();
+  if (button == &okButton_)
+    treeItem_->ok();
 }
 
 }  // namespace command

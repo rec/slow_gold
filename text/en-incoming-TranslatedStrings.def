@@ -94,6 +94,16 @@ str {
   line: 4
 }
 str {
+  original: "Attach Commands To Keystrokes"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 62
+}
+str {
+  original: "Attach Commands To MIDI events"
+  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
+  line: 63
+}
+str {
   original: "Audio"
   file: "rec/slow/BasicMenuMaker.cpp"
   line: 30
@@ -1095,9 +1105,6 @@ str {
 }
 str {
   original: "Select Last Segment Only"
-}
-str {
-  original: "Select MIDI mappings"
 }
 str {
   original: "Select Next Segment"

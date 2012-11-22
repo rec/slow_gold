@@ -7,8 +7,7 @@ namespace rec {
 namespace command {
 
 class CommandMapTopLevelItem : public TreeViewItem,
-                               public ChangeListener,
-                               public ButtonListener {
+                               public ChangeListener {
  public:
   explicit CommandMapTopLevelItem(CommandMapEditor&);
   ~CommandMapTopLevelItem();
@@ -19,7 +18,11 @@ class CommandMapTopLevelItem : public TreeViewItem,
   void changeListenerCallback(ChangeBroadcaster*);
   static void resetToDefaultsCallback(int result, CommandMapEditor* owner) {}
 
-  virtual void buttonClicked(Button*);
+  void reset();
+  void clear() {}
+  void exportSetting() {}
+  void import() {}
+  void ok() {}
 
  protected:
   CommandMapEditor& owner;

@@ -61,7 +61,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
 
         addKey(button->commandID, newKey, button->keyNum);
       } else {
-        showCommandMapBox(commandManager.getNameOfCommand (previousCommand),
+        showCommandMapBox(commandManager_.getNameOfCommand(previousCommand),
                           this,
                           ModalCallbackFunction::forComponent(
                               GenericCommandMapEditor<MappingSet,

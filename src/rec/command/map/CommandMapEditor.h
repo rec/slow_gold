@@ -13,21 +13,20 @@ class CommandMapTopLevelItem;
 class CommandMapItemComponent;
 class CommandEntryWindow;
 
-class JUCE_API CommandMapEditor : public Component {
+class JUCE_API CommandMapEditor : public Component, public ButtonListener {
  public:
   CommandMapEditor(ApplicationCommandManager& commandManager,
                    ChangeBroadcaster& broadcaster);
+  virtual ~CommandMapEditor();
 
   void initialize();
 
   virtual void addButton(CommandMapEditButton* button) = 0;
   virtual void removeButton(CommandMapEditButton* button) = 0;
   virtual void addChildren(CommandMapItemComponent* comp) = 0;
+  virtual void buttonClicked(Button* button);
 
   virtual CommandEntryWindow* newWindow() = 0;
-
-  /** Destructor. */
-  virtual ~CommandMapEditor();
 
   void setColours(const Colour& mainBackground,
                   const Colour& textColour);
@@ -35,8 +34,8 @@ class JUCE_API CommandMapEditor : public Component {
   virtual bool shouldCommandBeIncluded(CommandID commandID);
   virtual bool isCommandReadOnly(CommandID commandID);
 
-  ApplicationCommandManager& getCommandManager() { return commandManager; }
-  ChangeBroadcaster& getChangeBroadcaster() { return broadcaster; }
+  ApplicationCommandManager& getCommandManager() { return commandManager_; }
+  ChangeBroadcaster& getChangeBroadcaster() { return broadcaster_; }
   enum ColourIds {
     backgroundColourId  = 0x100ad00,
     textColourId        = 0x100ad01,
@@ -48,16 +47,16 @@ class JUCE_API CommandMapEditor : public Component {
  protected:
   void addButton(TextButton*);
 
-  ApplicationCommandManager& commandManager;
-  ChangeBroadcaster& broadcaster;
+  ApplicationCommandManager& commandManager_;
+  ChangeBroadcaster& broadcaster_;
   TreeView tree;
-  TextButton resetButton;
-  TextButton clearButton;
-  TextButton exportButton;
-  TextButton importButton;
-  TextButton okButton;
+  TextButton resetButton_;
+  TextButton clearButton_;
+  TextButton exportButton_;
+  TextButton importButton_;
+  TextButton okButton_;
 
-  ScopedPointer<CommandMapTopLevelItem> treeItem;
+  ptr<CommandMapTopLevelItem> treeItem_;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CommandMapEditor);
 };
