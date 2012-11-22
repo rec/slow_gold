@@ -59,6 +59,9 @@ TRAN(CLEAR_FAILED, "Unable To Clear Settings");
 TRAN(CLEAR_FAILED_FULL, "Sorry, there was an error clearing the settings. "
                         "Please report this to support@worldwidewoodshed.com.");
 
+TRAN(KEYBOARD_EDITOR_TITLE, "Attach Commands To Keystrokes");
+TRAN(MIDI_EDITOR_TITLE, "Attach Commands To MIDI events");
+
 namespace rec {
 namespace slow {
 
@@ -69,8 +72,9 @@ using namespace rec::widget::waveform;
 namespace {
 
 const bool QUIT_EVEN_IF_CLEAR_FAILS = false;
-
 const int SELECTION_WIDTH_PORTION = 20;
+const int EDITOR_WIDTH = 500;
+const int EDITOR_HEIGHT = 800;
 
 void aboutThisProgram() {
   Instance::getInstance()->window_->startAboutWindow();
@@ -109,44 +113,37 @@ void clearNavigator(VirtualFileList *vfl) {
   vfl->Clear();
 }
 
-void keyboardMappings() {
-  Instance* i = Instance::getInstance();
+static bool displayEditorWindow(command::CommandMapEditor* comp,
+                                const String& title) {
   gui::DialogLocker l;
   if (!l.isLocked()) {
     beep();
-    return;
+    return false;
   }
 
+  comp->initialize();
+  comp->setBounds(0, 0, EDITOR_WIDTH, EDITOR_HEIGHT);
+
+  l.setModalComponent(comp);
+  juce::DialogWindow::showModalDialog(title, comp, NULL, juce::Colours::white,
+                                      true, true, true);
+  return true;
+}
+
+void keyboardMappings() {
+  Instance* i = Instance::getInstance();
   ApplicationCommandManager* manager = i->target_->applicationCommandManager();
   command::KeyCommandMapEditor comp(*manager, *manager->getKeyMappings());
-  comp.initialize();
-  comp.setBounds(0, 0, 500, 1000);
-
-  l.setModalComponent(&comp);
-  juce::DialogWindow::showModalDialog(Trans("Select keyboard mappings"),
-                                      &comp, NULL, juce::Colours::white,
-                                      true, true, true);
-  command::saveKeyboardBindings(manager);
+  if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE))
+    command::saveKeyboardBindings(manager);
 }
 
 void midiMappings() {
   Instance* i = Instance::getInstance();
-  gui::DialogLocker l;
-  if (!l.isLocked()) {
-    beep();
-    return;
-  }
-
   ApplicationCommandManager* manager = i->target_->applicationCommandManager();
   command::MidiCommandMapEditor comp(*manager, *i->midiCommandMap_);
-  comp.initialize();
-  comp.setBounds(0, 0, 500, 1000);
-
-  l.setModalComponent(&comp);
-  juce::DialogWindow::showModalDialog(Trans("Select MIDI mappings"),
-                                      &comp, NULL, juce::Colours::white,
-                                      true, true, true);
-  data::setProto(i->midiCommandMap_->getProto(), data::global());
+  if (displayEditorWindow(&comp, t_MIDI_EDITOR_TITLE))
+    data::setProto(i->midiCommandMap_->getProto(), data::global());
 }
 
 void zoomOut() {

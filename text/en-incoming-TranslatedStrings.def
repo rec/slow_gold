@@ -179,6 +179,11 @@ str {
   original: "Clear all SlowGold settings for this track only and quit the program."
 }
 str {
+  original: "Clear Changes"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 17
+}
+str {
   original: "Clear Keyboard Mappings"
 }
 str {
@@ -443,9 +448,9 @@ str {
   original: "Export SlowGold Settings..."
 }
 str {
-  original: "Factory default"
+  original: "Export..."
   file: "rec/command/map/CommandMapEditor.cpp"
-  line: 15
+  line: 18
 }
 str {
   original: "File"
@@ -514,6 +519,11 @@ str {
 }
 str {
   original: "Import SlowGold Settings..."
+}
+str {
+  original: "Import..."
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 19
 }
 str {
   original: "Indonesian"
@@ -703,11 +713,6 @@ str {
 }
 str {
   original: "Level Meter: RMS intensity for left and right tracks."
-}
-str {
-  original: "Load"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 18
 }
 str {
   original: "Loop Entire Track"
@@ -983,13 +988,18 @@ str {
 }
 str {
   original: "Reset"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 16
+  file: "rec/command/map/CommandMapTopLevelItem.cpp"
+  line: 6
 }
 str {
   original: "Reset to defaults"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
   line: 4
+}
+str {
+  original: "Reset To Factory Default"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 15
 }
 str {
   original: "Reset Volume"
@@ -1009,11 +1019,6 @@ str {
   original: "Run this older version (%s)."
   file: "rec/app/DownloadVersion.cpp"
   line: 14
-}
-str {
-  original: "Save"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 17
 }
 str {
   original: "Save just the selected portion of the transformed file in the default save format."
