@@ -3,6 +3,7 @@
 
 #include "rec/command/map/GenericCommandMapEditor.h"
 #include "rec/command/map/MidiCommandMap.h"
+#include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {
