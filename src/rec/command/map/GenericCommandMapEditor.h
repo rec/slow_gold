@@ -114,6 +114,19 @@ addChildren(CommandMapItemComponent* comp) {
   comp->addButton(String::empty, -1, isReadOnly);
 }
 
+template <typename MappingSet, typename Key>
+const String GenericCommandMapEditor<MappingSet, Key>::
+getKeyMessage(const Key& key) {
+  String message(name() + ": " + getDescription(key));
+  const CommandID previousCommand = getCommand(key);
+  if (previousCommand) {
+    String pn = getCommandManager().getNameOfCommand(previousCommand);
+    message += currentlyAssignedTo(pn);
+  }
+
+  return message;
+}
+
 }  // namespace command
 }  // namespace rec
 
