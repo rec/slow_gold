@@ -104,7 +104,7 @@ void CommandMapEditor::resized() {
     x += (button[i]->getWidth() + padding);
   }
 
-  tree.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT);
+  tree.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT - 2 * TOP_RIGHT_PADDING);
 }
 
 static const int RECENT = Command::RECENT_FILES;
