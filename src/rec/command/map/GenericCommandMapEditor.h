@@ -56,13 +56,10 @@ setNewKey(CommandMapEditButton* button, const Key& newKey,
                bool dontAskUser) {
   if (isValid(newKey)) {
     const CommandID previousCommand = getCommand(newKey);
-
     if (previousCommand == 0 || dontAskUser) {
       removeKey(newKey);
-
       if (button->keyNum >= 0)
         removeKey(button->commandID, button->keyNum);
-
       addKey(button->commandID, newKey, button->keyNum);
     } else {
       showCommandMapBox(commandManager_.getNameOfCommand(previousCommand),

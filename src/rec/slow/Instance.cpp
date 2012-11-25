@@ -177,7 +177,7 @@ void Instance::init() {
 
   fillerThread_->setPriority(FILLER_PRIORITY);
 
-  command::fillCommandRecordTable(commandRecordTable_.get(), *commandData_);
+  command::fillCommandRecordTable(*commandData_, commandRecordTable_.get());
   applicationCommandManager_.registerAllCommandsForTarget(
       applicationCommandTarget_.get());
   loadKeyboardBindings(*commandRecordTable_.get(), &applicationCommandManager_);

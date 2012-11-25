@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="Y725jFDVa" name="SlowGold">
+  <MAINGROUP id="4w2jzgYvi" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -331,10 +331,6 @@
               name="CallbackTable.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandData.h" id="BFt89p1eA"
               name="CommandData.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/CommandDatabase.cpp"
-              id="QsHhzDAT8" name="CommandDatabase.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandDatabase.h" id="SoCw1aqsk"
-              name="CommandDatabase.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandDataSetter.cpp"
               id="cXlOA4kdN" name="CommandDataSetter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandDataSetter.h"
@@ -398,6 +394,8 @@
                 id="cxmdVh3wo" name="GenericCommandMapEditor.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/GenericCommandMapEditor.h"
                 id="Qyy7FKpRS" name="GenericCommandMapEditor.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/Key.h" id="I5vMVH5Wi"
+                name="Key.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/command/map/KeyCommandMapEditor.cpp"
                 id="JuLX7ntU1" name="KeyCommandMapEditor.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/KeyCommandMapEditor.h"
@@ -1665,7 +1663,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ORTaNB6PZ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="g5kTcT2Y7" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

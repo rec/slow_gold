@@ -646,9 +646,6 @@
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp">
       <Filter>SlowGold\rec\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandDatabase.cpp">
-      <Filter>SlowGold\rec\command</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDataSetter.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
@@ -2796,9 +2793,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandDatabase.h">
-      <Filter>SlowGold\rec\command</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
@@ -2848,6 +2842,9 @@
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\map\GenericCommandMapEditor.h">
+      <Filter>SlowGold\rec\command\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\map\Key.h">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.h">

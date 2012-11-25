@@ -42,9 +42,9 @@ class CommandMapEditor : public Component, public ButtonListener {
   };
 
   virtual void parentHierarchyChanged();
+  virtual void resized();
 
   // Callbacks from the buttons.
-  virtual void resized();
   virtual void reset() {}
   virtual void clear() {}
   virtual void exportSetting() {}
