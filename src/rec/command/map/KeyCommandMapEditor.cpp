@@ -33,7 +33,7 @@ const String KeyCommandMapEditor::name() { return t_KEY; }
 
 template <>
 const String KeyCommandMapEditor::getDescription(const KeyPress& key) {
-  return key.getTextDescription();
+  return key.getTextDescriptionWithIcons();
 }
 
 template <>
