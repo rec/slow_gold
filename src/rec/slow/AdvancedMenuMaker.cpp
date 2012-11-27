@@ -3,7 +3,6 @@
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/slow/GuiSettings.pb.h"
-#include "rec/slow/Target.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 

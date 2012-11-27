@@ -21,7 +21,6 @@
 #include "rec/slow/MainPage.h"
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
-#include "rec/slow/Target.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/SaveFile.h"
@@ -86,7 +85,6 @@ void addLoopPoint() {
                                            i->player_->getTime());
 }
 
-
 void clearKeyboardMappings() {
   if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
                                    t_CLEAR_KEYBOARD_MAPPINGS_TITLE,
@@ -94,7 +92,7 @@ void clearKeyboardMappings() {
                                    t_OK, t_CANCEL)) {
     Instance* i = Instance::getInstance();
     command::clearKeyboardBindings(*i->commandRecordTable_,
-                                   i->target_->applicationCommandManager());
+                                   &i->applicationCommandManager_);
 
   }
 }
@@ -132,7 +130,7 @@ static bool displayEditorWindow(command::CommandMapEditor* comp,
 
 void keyboardMappings() {
   Instance* i = Instance::getInstance();
-  ApplicationCommandManager* manager = i->target_->applicationCommandManager();
+  ApplicationCommandManager* manager = &i->applicationCommandManager_;
   command::KeyCommandMapEditor comp(*manager, *manager->getKeyMappings());
   if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE))
     command::saveKeyboardBindings(manager);
@@ -140,7 +138,7 @@ void keyboardMappings() {
 
 void midiMappings() {
   Instance* i = Instance::getInstance();
-  ApplicationCommandManager* manager = i->target_->applicationCommandManager();
+  ApplicationCommandManager* manager = &i->applicationCommandManager_;
   command::MidiCommandMapEditor comp(*manager, *i->midiCommandMap_);
   if (displayEditorWindow(&comp, t_MIDI_EDITOR_TITLE))
     data::setProto(i->midiCommandMap_->getProto(), data::global());

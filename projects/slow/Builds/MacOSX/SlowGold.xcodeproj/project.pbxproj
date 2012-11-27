@@ -143,7 +143,6 @@
 		6986723044012EF1205DD576 /* CurrentFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCA020CB532BE8B0DA8A298 /* CurrentFile.cpp */; };
 		6A23CE298A6266E4335D0D7E /* GenericApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 06641BB89531B5D33286B9AE /* GenericApplication.cpp */; };
 		6A2A99BCEC00549959CB6A2A /* CommandRecordTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD995F3B97449AF5E61CE9A2 /* CommandRecordTable.cpp */; };
-		6B7AA17A062A3244F69CEF4C /* Target.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D76A7268ED445EA51117664 /* Target.cpp */; };
 		6B895BEF4069523E7C07C9EE /* juce_gui_extra.mm in Sources */ = {isa = PBXBuildFile; fileRef = F91F6FEE7F5C854461676A9B /* juce_gui_extra.mm */; };
 		6C860D0F49D5048424A41E20 /* SetTimeModeDisabled.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 638A671768E97FE27E63E92F /* SetTimeModeDisabled.svg.cpp */; };
 		6E139B127C100FF99349F2C2 /* parserstate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7170E00159B1F1B5DBBBA5A /* parserstate.cpp */; };
@@ -426,7 +425,6 @@
 		0FA2C8518CDCCAC67E2F669C /* juce_TreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_TreeView.h; path = ../../../../../juce/modules/juce_gui_basics/widgets/juce_TreeView.h; sourceTree = SOURCE_ROOT; };
 		0FC97BC5F121B51F13CFF3A4 /* DialComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DialComponent.h; path = ../../../../src/rec/widget/status/DialComponent.h; sourceTree = SOURCE_ROOT; };
 		10564B6BAA3ECFAEFAA4E231 /* juce_GraphicsContext.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_GraphicsContext.cpp; path = ../../../../../juce/modules/juce_graphics/contexts/juce_GraphicsContext.cpp; sourceTree = SOURCE_ROOT; };
-		105DF6B33A52352D3AF94919 /* Target.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Target.h; path = ../../../../src/rec/slow/Target.h; sourceTree = SOURCE_ROOT; };
 		10E07CF29A33DA3B9997DD06 /* FieldOps.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FieldOps.cpp; path = ../../../../src/rec/data/proto/FieldOps.cpp; sourceTree = SOURCE_ROOT; };
 		1122764927908D76F8D77337 /* juce_PluginDirectoryScanner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_PluginDirectoryScanner.cpp; path = ../../../../../juce/modules/juce_audio_processors/scanning/juce_PluginDirectoryScanner.cpp; sourceTree = SOURCE_ROOT; };
 		1127E47E919346A706F135EF /* juce_PropertyComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_PropertyComponent.cpp; path = ../../../../../juce/modules/juce_gui_basics/properties/juce_PropertyComponent.cpp; sourceTree = SOURCE_ROOT; };
@@ -1307,7 +1305,6 @@
 		9D00FE6722A48A42C78FE19F /* CommandMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandMap.cpp; path = ../../../../src/rec/command/map/CommandMap.cpp; sourceTree = SOURCE_ROOT; };
 		9D5CD8EA54E2A5E9452C52CF /* juce_Label.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_Label.cpp; path = ../../../../../juce/modules/juce_gui_basics/widgets/juce_Label.cpp; sourceTree = SOURCE_ROOT; };
 		9D68C5F971359F7802C9DBE3 /* juce_AudioSubsectionReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_AudioSubsectionReader.cpp; path = ../../../../../juce/modules/juce_audio_formats/format/juce_AudioSubsectionReader.cpp; sourceTree = SOURCE_ROOT; };
-		9D76A7268ED445EA51117664 /* Target.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Target.cpp; path = ../../../../src/rec/slow/Target.cpp; sourceTree = SOURCE_ROOT; };
 		9D84D4A86A4F1C26AA01A984 /* Convertors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Convertors.h; path = ../../../../src/rec/util/partition/Convertors.h; sourceTree = SOURCE_ROOT; };
 		9D9EC0429FDE38896F471322 /* NavigatorConfig.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NavigatorConfig.pb.cc; path = ../../../../genfiles/proto/rec/widget/tree/NavigatorConfig.pb.cc; sourceTree = SOURCE_ROOT; };
 		9DF98B2C6ECE79FA2E625B4D /* WaveformModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaveformModel.h; path = ../../../../src/rec/widget/waveform/WaveformModel.h; sourceTree = SOURCE_ROOT; };
@@ -2362,6 +2359,18 @@
 			name = lookandfeel;
 			sourceTree = "<group>";
 		};
+		3148D7E4145C3430C6BF409A /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				00EC1EAD27F9AD98F67EF1BB /* translation */,
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		31ABE6B5A407EBC591B72ED2 /* threads */ = {
 			isa = PBXGroup;
 			children = (
@@ -2769,18 +2778,6 @@
 				E0FC82E9F6F49406CCBE67F6 /* Switcher.h */,
 			);
 			name = unused;
-			sourceTree = "<group>";
-		};
-		4C4232B6E320B45B821D7231 /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				00EC1EAD27F9AD98F67EF1BB /* translation */,
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		4C8267105C2A573BD638121D /* menus */ = {
@@ -3331,7 +3328,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				4C4232B6E320B45B821D7231 /* SlowGold */,
+				3148D7E4145C3430C6BF409A /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3418,8 +3415,6 @@
 				9E3CA24E259ADD03D3B43D0A /* RegisterProtos.h */,
 				E16E890C678DB828F6A96001 /* SlowWindow.cpp */,
 				3EF4E8F641C6078AAF22E0CE /* SlowWindow.h */,
-				9D76A7268ED445EA51117664 /* Target.cpp */,
-				105DF6B33A52352D3AF94919 /* Target.h */,
 				2AFA83DA1B2DE4145F71EFFB /* Threads.cpp */,
 				81C87A8AFCFD644B9F88D69A /* Threads.h */,
 			);
@@ -5134,7 +5129,6 @@
 				DB4D6D08D41D56FB2F4C0D85 /* MouseListener.cpp in Sources */,
 				32C994DBBE23B0470D7DDBE2 /* RegisterProtos.cpp in Sources */,
 				DBE8D40AB2A66EA7EAD9FE9E /* SlowWindow.cpp in Sources */,
-				6B7AA17A062A3244F69CEF4C /* Target.cpp in Sources */,
 				44EFAD664BAD7376A8B861F7 /* Threads.cpp in Sources */,
 				1B1AC2BCBFD416058C104210 /* RequestSupport.cpp in Sources */,
 				45E2CCBFD038F3AD74A37D27 /* SupportWindow.cpp in Sources */,

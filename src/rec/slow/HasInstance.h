@@ -14,7 +14,6 @@ class HasInstance {
 
   audio::util::BufferFiller* bufferFiller() { return instance_->bufferFiller_.get(); }
   Components* components() { return instance_->components_.get(); }
-  Target* target() { return instance_->target_.get(); }
   Threads* threads() { return instance_->threads_.get(); }
   audio::source::Player* player() { return instance_->player_.get(); }
   audio::Device* device() { return instance_->device_.get(); }
@@ -25,7 +24,7 @@ class HasInstance {
   command::CommandRecordTable* commandRecordTable() {
     return instance_->commandRecordTable_.get();
   }
-  ApplicationCommandTarget* applicationCommandTarget() {
+  command::CommandTarget* applicationCommandTarget() {
     return instance_->applicationCommandTarget_.get();
   }
   ApplicationCommandManager* applicationCommandManager() {

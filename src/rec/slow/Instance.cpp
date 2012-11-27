@@ -40,7 +40,6 @@
 #include "rec/slow/Menus.h"
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
-#include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 #include "rec/slow/commands/SlowCommandData.h"
 #include "rec/util/LoopPoint.h"
@@ -136,10 +135,14 @@ Instance::Instance(app::Window* window) : window_(window) {
 }
 
 // static
-Instance* Instance::getInstance() { return INSTANCE; };
+Instance* Instance::getInstance() {
+  return INSTANCE;
+}
 
 // static
-const VirtualFile Instance::getInstanceFile() { return INSTANCE->file(); };
+const VirtualFile Instance::getInstanceFile() {
+  return INSTANCE->file();
+}
 
 void Instance::init() {
   window_->init();
@@ -155,7 +158,6 @@ void Instance::init() {
   applicationCommandTarget_.reset(new command::CommandTarget(this));
   commandData_.reset(slow::createSlowCommandData(this));
 
-  target_.reset(new Target(this));
   currentTime_.reset(new CurrentTime(this));
   bufferFiller_.reset(new BufferFiller);
   lookAndFeel_.reset(new gui::LookAndFeel);
@@ -163,7 +165,7 @@ void Instance::init() {
   guiListener_.reset(new GuiListener(this));
   fillerThread_.reset(new FillerThread(this));
   midiCommandMap_.reset(new command::MidiCommandMap(
-       target_->applicationCommandManager()));
+      &applicationCommandManager_));
   threads_.reset(new Threads(this));
 
   device_->manager_.addMidiInputCallback("", midiCommandMap_.get());
@@ -197,8 +199,8 @@ void Instance::init() {
   root->addListener(currentFile_.get());
   // components_->mainPage_->dropBroadcaster()->addListener(currentFile_.get());
 
-  components_->transportController_->addListener(target_.get());
-  components_->commandBar_->addListener(target_.get());
+  components_->transportController_->addListener(applicationCommandTarget_.get());
+  components_->commandBar_->addListener(applicationCommandTarget_.get());
 
   player_->timer()->addListener(components_->timeController_.get());
   player_->timer()->addListener(waveform->timeCursor());
@@ -211,7 +213,8 @@ void Instance::init() {
 
   window_->addListener(menus_.get());
 
-  DialogLocker::getDisableBroadcaster()->addListener(target_.get());
+  DialogLocker::getDisableBroadcaster()->addListener(
+    applicationCommandTarget_.get());
   DialogLocker::getDisableBroadcaster()->addListener(window_->application());
 
 #ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK

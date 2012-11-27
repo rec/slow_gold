@@ -7,8 +7,6 @@
 namespace rec {
 namespace slow {
 
-class Target;
-
 class BasicMenuMaker : public MenuMaker {
  public:
   BasicMenuMaker(slow::Instance* i, const IsWholeSong& isWholeSong, bool empty)

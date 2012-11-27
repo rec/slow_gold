@@ -12,6 +12,7 @@ namespace rec {
 namespace audio { class Device; }
 namespace command { class CommandData; }
 namespace command { class CommandRecordTable; }
+namespace command { class CommandTarget; }
 namespace command { class MidiCommandMap; }
 namespace audio { namespace source { class Player; }}
 namespace audio { namespace util { class BufferFiller; }}
@@ -27,7 +28,6 @@ class GuiListener;
 class Menus;
 class MouseListener;
 class SlowWindow;
-class Target;
 class Threads;
 
 // A single instance of the Slow program.  Right now there's only one per
@@ -66,7 +66,6 @@ class Instance {
   ptr<Components> components_;
   ptr<CurrentTime> currentTime_;
 
-  ptr<Target> target_;
   ptr<MouseListener> mouseListener_;
   ptr<GuiListener> guiListener_;
   ptr<Threads> threads_;
@@ -75,7 +74,7 @@ class Instance {
   ptr<command::MidiCommandMap> midiCommandMap_;
 
   ptr<command::CommandRecordTable> commandRecordTable_;
-  ptr<ApplicationCommandTarget> applicationCommandTarget_;
+  ptr<command::CommandTarget> applicationCommandTarget_;
   ApplicationCommandManager applicationCommandManager_;
   ptr<command::CommandData> commandData_;
 

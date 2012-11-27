@@ -6,8 +6,6 @@
 namespace rec {
 namespace slow {
 
-class Target;
-
 class AdvancedMenuMaker : public BasicMenuMaker {
  public:
   AdvancedMenuMaker(Instance* i, const IsWholeSong& isWholeSong, bool empty)

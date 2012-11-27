@@ -5,20 +5,28 @@
 // this application.
 
 #include "rec/slow/HasInstance.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace command {
 
-class CommandTarget : public ApplicationCommandTarget,
-                      public slow::HasInstance {
+class CommandTarget : public slow::HasInstance,
+                      public ApplicationCommandTarget,
+                      public Listener<CommandID>,
+                      public Listener<Enable> {
  public:
-  CommandTarget(slow::Instance* i) : slow::HasInstance(i) {}
+  CommandTarget(slow::Instance* i) : slow::HasInstance(i), enable_(ENABLE) {}
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
 
   virtual void getAllCommands(juce::Array<CommandID>&);
-
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
   virtual bool perform(const InvocationInfo&);
+
+  virtual void operator()(CommandID);
+  virtual void operator()(Enable);
+
+  CriticalSection lock_;
+  Enable enable_;
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandTarget);
