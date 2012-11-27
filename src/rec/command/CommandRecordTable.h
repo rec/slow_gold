@@ -15,12 +15,15 @@ class CommandRecordTable : public CallbackTable {
   CommandRecordTable() {}
   ~CommandRecordTable();
 
+  virtual void addCallback(CommandID, Callback*);
+
   const Commands getCommands() const;
   void getAllCommands(juce::Array<CommandID>*);
   CommandRecord* find(CommandID);
-  CommandRecord* create(CommandID, bool allowDupes = false);
+  CommandRecord* create(CommandID);
+  CommandRecord* findOrCreate(CommandID);
+
   bool perform(CommandID);
-  virtual void addCallback(CommandID, Callback*);
   void fillAllCommands();
   void fillCommandInfo(CommandID, const String& name, int flags, Enable);
 

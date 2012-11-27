@@ -1,6 +1,9 @@
 #ifndef __REC_COMMAND_COMMANDTARGET__
 #define __REC_COMMAND_COMMANDTARGET__
 
+// CommandTarget is the implementation of Juce's ApplicationCommandTarget for
+// this application.
+
 #include "rec/slow/HasInstance.h"
 
 namespace rec {

@@ -65,7 +65,7 @@ void writeKeyboardBindingFile(XmlElement* element) {
   CommandRecordTable table;
   forEachXmlChildElement(*element, mapping) {
     CommandID id = mapping->getStringAttribute("commandId").getHexValue32();
-    CommandRecord* cr = table.create(id, true);
+    CommandRecord* cr = table.findOrCreate(id);
     string key = str(mapping->getStringAttribute("key").toLowerCase());
     if (!cr->command_) {
       cr->command_.reset(new Command);

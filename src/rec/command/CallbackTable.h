@@ -9,8 +9,9 @@ namespace command {
 class CallbackTable {
  public:
   CallbackTable() {}
-  virtual void addCallback(CommandID id, Callback* cb) = 0;
   virtual ~CallbackTable() {}
+
+  virtual void addCallback(CommandID, Callback*) = 0;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CallbackTable);
