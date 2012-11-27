@@ -275,6 +275,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\BasicMenuMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\CommandEditors.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
@@ -1714,6 +1715,7 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\Callbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CallbackUtils.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\CommandEditors.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\GlobalCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>

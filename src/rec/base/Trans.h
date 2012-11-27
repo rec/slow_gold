@@ -60,5 +60,6 @@ inline const char* c_str(const Trans& s) {
 
 }  // namespace rec
 
+extern const rec::Trans t_OK, t_CANCEL;
 
 #endif  // __REC_BASE_TRANSLATEDSTRING__

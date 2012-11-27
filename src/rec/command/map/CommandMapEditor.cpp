@@ -13,7 +13,6 @@
 #include "rec/command/map/CommandMapItemComponent.h"
 
 TRAN(RESET_TO_DEFAULTS, "Reset To Factory Default");
-TRAN(OK_EDITOR, "OK");
 TRAN(CLEAR_EDITOR, "Clear Changes");
 TRAN(EXPORT_EDITOR, "Export...");
 TRAN(IMPORT_EDITOR, "Import...");
@@ -37,7 +36,7 @@ CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
       clearButton_(t_CLEAR_EDITOR),
       exportButton_(t_EXPORT_EDITOR),
       importButton_(t_IMPORT_EDITOR),
-      okButton_(t_OK_EDITOR) {
+      okButton_(t_OK) {
 }
 
 void CommandMapEditor::addButton(TextButton* button) {

@@ -6,6 +6,9 @@
 
 using namespace juce;
 
+TRAN(OK, "OK");
+TRAN(CANCEL, "Cancel");
+
 namespace rec {
 
 namespace {

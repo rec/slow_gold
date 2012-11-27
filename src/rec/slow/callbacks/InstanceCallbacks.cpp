@@ -6,9 +6,6 @@
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
 #include "rec/base/Trans.h"
-#include "rec/command/KeyboardBindings.h"
-#include "rec/command/map/KeyCommandMapEditor.h"
-#include "rec/command/map/MidiCommandMapEditor.h"
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/yaml/Yaml.h"
@@ -22,6 +19,7 @@
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
+#include "rec/slow/callbacks/CommandEditors.h"
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/SaveFile.h"
 #include "rec/util/LoopPoint.h"
@@ -33,14 +31,6 @@
 
 TRAN(NO_DOWNLOAD_FOUND, "Your Version Of SlowGold Is Up-To-Date");
 TRAN(NO_DOWNLOAD_FOUND_FULL, "Your version of SlowGold, %s, is up-to-date.");
-TRAN(OK, "OK");
-TRAN(CANCEL, "Cancel");
-
-TRAN(CLEAR_KEYBOARD_MAPPINGS_TITLE, "Clear Keyboard Mappings.");
-TRAN(CLEAR_KEYBOARD_MAPPINGS_FULL, "Clear all keyboard mappings to factory "
-                                   "default?");
-TRAN(CLEAR_MIDI_MAPPINGS_TITLE, "Clear MIDI Mappings.");
-TRAN(CLEAR_MIDI_MAPPINGS_FULL, "Clear all MIDI mappings?");
 
 TRAN(CONFIRM_CLEAR_ALL_SETTINGS, "Clearing All Settings For All Tracks");
 
@@ -58,9 +48,6 @@ TRAN(CLEAR_FAILED, "Unable To Clear Settings");
 TRAN(CLEAR_FAILED_FULL, "Sorry, there was an error clearing the settings. "
                         "Please report this to support@worldwidewoodshed.com.");
 
-TRAN(KEYBOARD_EDITOR_TITLE, "Attach Commands To Keystrokes");
-TRAN(MIDI_EDITOR_TITLE, "Attach Commands To MIDI events");
-
 namespace rec {
 namespace slow {
 
@@ -72,8 +59,6 @@ namespace {
 
 const bool QUIT_EVEN_IF_CLEAR_FAILS = false;
 const int SELECTION_WIDTH_PORTION = 20;
-const int EDITOR_WIDTH = 500;
-const int EDITOR_HEIGHT = 800;
 
 void aboutThisProgram() {
   Instance::getInstance()->window_->startAboutWindow();
@@ -85,64 +70,10 @@ void addLoopPoint() {
                                            i->player_->getTime());
 }
 
-void clearKeyboardMappings() {
-  if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
-                                   t_CLEAR_KEYBOARD_MAPPINGS_TITLE,
-                                   t_CLEAR_KEYBOARD_MAPPINGS_FULL,
-                                   t_OK, t_CANCEL)) {
-    Instance* i = Instance::getInstance();
-    command::clearKeyboardBindings(*i->commandRecordTable_,
-                                   &i->applicationCommandManager_);
-
-  }
-}
-
-
-void clearMidiMappings() {
-  if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
-                                   t_CLEAR_MIDI_MAPPINGS_TITLE,
-                                   t_CLEAR_MIDI_MAPPINGS_FULL,
-                                   t_OK, t_CANCEL)) {
-    data::setProto(command::CommandMapProto());
-  }
-}
-
 void clearNavigator(VirtualFileList *vfl) {
   vfl->Clear();
 }
 
-static bool displayEditorWindow(command::CommandMapEditor* comp,
-                                const String& title) {
-  gui::DialogLocker l;
-  if (!l.isLocked()) {
-    beep();
-    return false;
-  }
-
-  comp->initialize();
-  comp->setBounds(0, 0, EDITOR_WIDTH, EDITOR_HEIGHT);
-
-  l.setModalComponent(comp);
-  juce::DialogWindow::showModalDialog(title, comp, NULL, juce::Colours::white,
-                                      true, true, true);
-  return true;
-}
-
-void keyboardMappings() {
-  Instance* i = Instance::getInstance();
-  ApplicationCommandManager* manager = &i->applicationCommandManager_;
-  command::KeyCommandMapEditor comp(*manager, *manager->getKeyMappings());
-  if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE))
-    command::saveKeyboardBindings(manager);
-}
-
-void midiMappings() {
-  Instance* i = Instance::getInstance();
-  ApplicationCommandManager* manager = &i->applicationCommandManager_;
-  command::MidiCommandMapEditor comp(*manager, *i->midiCommandMap_);
-  if (displayEditorWindow(&comp, t_MIDI_EDITOR_TITLE))
-    data::setProto(i->midiCommandMap_->getProto(), data::global());
-}
 
 void zoomOut() {
   Instance* i = Instance::getInstance();

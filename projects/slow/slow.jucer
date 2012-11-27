@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="JP42NNLLg" name="SlowGold">
+  <MAINGROUP id="7N9gY0bcO" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -858,6 +858,10 @@
                 name="Callbacks.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/CallbackUtils.h"
                 id="QQ70t4VFF" name="CallbackUtils.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/callbacks/CommandEditors.cpp"
+                id="MOWmuGnnK" name="CommandEditors.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/CommandEditors.h"
+                id="5i6Xmx53X" name="CommandEditors.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/callbacks/GlobalCallbacks.cpp"
                 id="tkA7N3sF5" name="GlobalCallbacks.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/GlobalCallbacks.h"
@@ -1661,7 +1665,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="sIjtXzfQo" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="YYebkuoT8" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

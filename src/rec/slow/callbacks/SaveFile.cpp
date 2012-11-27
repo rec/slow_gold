@@ -32,11 +32,9 @@ TRAN(SAVING_FILE, "Saving File %s.");
 TRAN(SELECT_SAVE_FILE, "Choose File To Save to");
 TRAN(DOWN, "down");
 TRAN(UP, "up");
-TRAN(OK, "OK");
 
 TRAN(TRANSPOSE_ONE, "one semitone %s");
 TRAN(TRANSPOSE_MANY, "%s %s semitones");
-TRAN(CANCEL, "Cancel");
 TRAN(BAD_SUFFIX, "The file extension must be .aiff, .aif, .flac, .ogg, "
                          ".wav or .wave.");
 TRAN(CANT_OVERWRITE_SELF, "You cannot overwrite the current file.");

@@ -2,8 +2,6 @@
 #include "rec/base/Trans.h"
 
 TRAN(NEW_COMMAND_MAPPING, "New command mapping");
-TRAN(OK, "OK");
-TRAN(CANCEL, "Cancel");
 
 namespace rec {
 namespace command {

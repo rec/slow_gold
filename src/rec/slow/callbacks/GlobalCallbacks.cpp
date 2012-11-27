@@ -13,11 +13,9 @@
 #include "rec/util/file/VirtualFile.pb.h"
 #include "rec/util/cd/Eject.h"
 
-TRAN(CANCEL, "Cancel");
 TRAN(CANT_LOAD, "Couldn't Load The SlowGold 8 User Manual");
 TRAN(CANT_LOAD_FULL, "Sorry, couldn't load the SlowGold 8 user manual at");
 TRAN(CLICK_TO_CONTINUE, "Click to continue.");
-TRAN(OK, "OK");
 TRAN(SELECT_EXPORT_FILE, "Select A File To Save Exported Settings");
 TRAN(SELECT_EXPORT_KEYBOARD_FILE, "Select A File To Save Exported Keyboard Command Mappings");
 TRAN(SELECT_EXPORT_MIDI_FILE, "Select A File To Save Exported MIDI Command Mappings");

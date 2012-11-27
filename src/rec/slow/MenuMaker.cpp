@@ -54,7 +54,6 @@ void MenuMaker::addFull(CommandID id,
   (m ? m : &menu_)->addCommandItem(applicationCommandManager(), id);
 }
 
-
 void MenuMaker::addBasic(CommandID id) {
   addFull(id, String::empty, ENABLE, NULL, -1);
 }

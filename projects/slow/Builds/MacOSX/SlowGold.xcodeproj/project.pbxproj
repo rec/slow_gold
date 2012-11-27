@@ -103,6 +103,7 @@
 		48ED07E5A62F78E913D20B99 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FF770E0C1BAE7FFDEF651D /* IOKit.framework */; };
 		4A643D1B47C996C842F04451 /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35B5D42A96E201AA8BD6C258 /* Widget.cpp */; };
 		4AA392A150B505CBACC2226F /* TranslationTables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA921FEFEF6987E427D006E3 /* TranslationTables.cpp */; };
+		4AE868F159228C260987826B /* CommandEditors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0FCBC807FE7E68A2AB49182 /* CommandEditors.cpp */; };
 		4B8A0434894F5D5D19E95F84 /* FillCommandRecordTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5143B8805B9661BF155BA713 /* FillCommandRecordTable.cpp */; };
 		4DE09C25448505A23CACCAB7 /* juce_cryptography.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6182A29D4C2F968C2DF9310C /* juce_cryptography.mm */; };
 		4FA0B18000B8F950E683C887 /* ZoomInCursor.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF6AF3DADC49CBF0988D6793 /* ZoomInCursor.svg.cpp */; };
@@ -775,6 +776,7 @@
 		450153952DF1AA9EF13118D6 /* juce_ReadWriteLock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_ReadWriteLock.cpp; path = ../../../../../juce/modules/juce_core/threads/juce_ReadWriteLock.cpp; sourceTree = SOURCE_ROOT; };
 		450655BB95705DDAFF369529 /* CommandMapEditorMappingItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapEditorMappingItem.h; path = ../../../../src/rec/command/map/CommandMapEditorMappingItem.h; sourceTree = SOURCE_ROOT; };
 		450C02A2D8564263A4DAA83C /* juce_GZIPDecompressorInputStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_GZIPDecompressorInputStream.cpp; path = ../../../../../juce/modules/juce_core/zip/juce_GZIPDecompressorInputStream.cpp; sourceTree = SOURCE_ROOT; };
+		452FDDC02C7AD0958999341D /* CommandEditors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandEditors.h; path = ../../../../src/rec/slow/callbacks/CommandEditors.h; sourceTree = SOURCE_ROOT; };
 		456F266AF9B75C74E74D4465 /* juce_mac_Strings.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_mac_Strings.mm; path = ../../../../../juce/modules/juce_core/native/juce_mac_Strings.mm; sourceTree = SOURCE_ROOT; };
 		4577C124BE0EE685AEC4188B /* juce_ChangeBroadcaster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_ChangeBroadcaster.cpp; path = ../../../../../juce/modules/juce_events/broadcasters/juce_ChangeBroadcaster.cpp; sourceTree = SOURCE_ROOT; };
 		457A1E30D1DD98E2B2820CB7 /* juce_video.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_video.h; path = ../../../../../juce/modules/juce_video/juce_video.h; sourceTree = SOURCE_ROOT; };
@@ -1801,6 +1803,7 @@
 		F0B99DF69DE6ABF928323F18 /* juce_OpenGLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OpenGLContext.h; path = ../../../../../juce/modules/juce_opengl/opengl/juce_OpenGLContext.h; sourceTree = SOURCE_ROOT; };
 		F0BE856CB8569D730B407A73 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
 		F0F5FF199B9A2AB463518E3D /* juce_win32_Midi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_Midi.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_win32_Midi.cpp; sourceTree = SOURCE_ROOT; };
+		F0FCBC807FE7E68A2AB49182 /* CommandEditors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandEditors.cpp; path = ../../../../src/rec/slow/callbacks/CommandEditors.cpp; sourceTree = SOURCE_ROOT; };
 		F100DE5626E97904C7F06156 /* RepeatedCallbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RepeatedCallbacks.cpp; path = ../../../../src/rec/slow/callbacks/RepeatedCallbacks.cpp; sourceTree = SOURCE_ROOT; };
 		F10586642017D48A6244B727 /* juce_NamedPipe.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_NamedPipe.cpp; path = ../../../../../juce/modules/juce_core/network/juce_NamedPipe.cpp; sourceTree = SOURCE_ROOT; };
 		F10D78534C57ED131FB08FFA /* juce_LinkedListPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_LinkedListPointer.h; path = ../../../../../juce/modules/juce_core/containers/juce_LinkedListPointer.h; sourceTree = SOURCE_ROOT; };
@@ -2333,6 +2336,18 @@
 			name = app;
 			sourceTree = "<group>";
 		};
+		28C0521DA99E02482D1970F6 /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				00EC1EAD27F9AD98F67EF1BB /* translation */,
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		29516E11B7CF1E2E66AEEF9C /* capture */ = {
 			isa = PBXGroup;
 			children = (
@@ -2357,18 +2372,6 @@
 				317E55F1E505016061DDD009 /* juce_LookAndFeel.h */,
 			);
 			name = lookandfeel;
-			sourceTree = "<group>";
-		};
-		3148D7E4145C3430C6BF409A /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				00EC1EAD27F9AD98F67EF1BB /* translation */,
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		31ABE6B5A407EBC591B72ED2 /* threads */ = {
@@ -3328,7 +3331,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				3148D7E4145C3430C6BF409A /* SlowGold */,
+				28C0521DA99E02482D1970F6 /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3801,6 +3804,8 @@
 				4F4C7D8EAB14808A7C97970A /* Callbacks.cpp */,
 				65A30949EC11CD701D3BC478 /* Callbacks.h */,
 				621679B9B1ECC52A2118924C /* CallbackUtils.h */,
+				F0FCBC807FE7E68A2AB49182 /* CommandEditors.cpp */,
+				452FDDC02C7AD0958999341D /* CommandEditors.h */,
 				8BA729B65E2DFBAB8AD848DF /* GlobalCallbacks.cpp */,
 				87E9F2488E0FAA5127B256C0 /* GlobalCallbacks.h */,
 				8530A742391E3CEC878252F0 /* InstanceCallbacks.cpp */,
@@ -5109,6 +5114,7 @@
 				99AE763A1FD54DF2B92F482B /* BasicMenuMaker.cpp in Sources */,
 				80222F4E85C8F7198BBE3CCF /* ApplyCallbacks.cpp in Sources */,
 				92728F57C025A2D1045A3EDD /* Callbacks.cpp in Sources */,
+				4AE868F159228C260987826B /* CommandEditors.cpp in Sources */,
 				5A38456A7212DE777C9F5813 /* GlobalCallbacks.cpp in Sources */,
 				1D98673309738F2BBFE3CDE8 /* InstanceCallbacks.cpp in Sources */,
 				1464CCB825B9960FE03590AD /* RepeatedCallbacks.cpp in Sources */,
