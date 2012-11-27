@@ -42,8 +42,12 @@ void KeyCommandMapEditor::removeKey(CommandID command, int keyNum) {
 }
 
 template <>
-const Array<KeyPress> KeyCommandMapEditor::getKeys(CommandID cmd) {
-  return mappings_.getKeyPressesAssignedToCommand(cmd);
+KeyCommandMapEditor::KeyArray* KeyCommandMapEditor::getKeys(CommandID cmd) {
+  const Array<KeyPress>& kp = mappings_.getKeyPressesAssignedToCommand(cmd);
+  ptr<KeyArray> keyArray(new KeyArray);
+  for (int i = 0; i < kp.size(); ++i)
+    keyArray->add(new KeyPress(kp[i]));
+  return keyArray.transfer();
 }
 
 template <>

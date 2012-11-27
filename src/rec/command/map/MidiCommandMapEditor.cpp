@@ -80,13 +80,13 @@ CommandEntryWindow* MidiCommandMapEditor::newWindow() {
 }
 
 template <>
-const Array<MidiMessage> MidiCommandMapEditor::getKeys(CommandID cmd) {
-  Array<MidiMessage> result;
-  const vector<string> keys = mappings_.getKeys(static_cast<Command::Type>(cmd));
+MidiCommandMapEditor::KeyArray* MidiCommandMapEditor::getKeys(CommandID c) {
+  ptr<KeyArray> result(new KeyArray);
+  const vector<string> keys = mappings_.getKeys(static_cast<Command::Type>(c));
   for (vector<string>::const_iterator i = keys.begin(); i != keys.end(); ++i)
-    result.add(MidiMessage(i->data(), i->size()));
+    result->add(new MidiMessage(i->data(), i->size()));
 
-  return result;
+  return result.transfer();
 }
 
 template <>

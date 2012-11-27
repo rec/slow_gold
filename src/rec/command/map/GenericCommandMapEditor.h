@@ -4,6 +4,7 @@
 #include "rec/command/map/CommandMapEditor.h"
 #include "rec/command/map/CommandMapEditButton.h"
 #include "rec/command/map/CommandMapEditorMappingItem.h"
+#include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {
@@ -31,7 +32,9 @@ class GenericCommandMapEditor : public CommandMapEditor {
   void removeKey(const Key&);
   void addKey(CommandID, const Key&, int keyIndex);
   void removeKey(CommandID, int keyNum);
-  const Array<Key> getKeys(CommandID);
+
+  typedef juce::OwnedArray<Key> KeyArray;
+  KeyArray* getKeys(CommandID);
   CommandEntryWindow* newWindow();
 
   const String getKeyMessage(const Key& key);
@@ -105,9 +108,9 @@ void GenericCommandMapEditor<MappingSet, Key>::
 addChildren(CommandMapItemComponent* comp) {
   CommandID command = comp->commandID_;
   const bool isReadOnly = isCommandReadOnly(command);
-  const Array<Key> keys(getKeys(command));
-  for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
-    comp->addButton(getDescriptionForKey(keys.getReference(i)), i, isReadOnly);
+  ptr<KeyArray> keys(getKeys(command));
+  for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys->size()); ++i)
+    comp->addButton(getDescriptionForKey(*((*keys)[i])), i, isReadOnly);
   comp->addButton(String::empty, -1, isReadOnly);
 }
 

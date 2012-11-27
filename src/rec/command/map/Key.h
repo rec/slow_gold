@@ -12,39 +12,22 @@ class KeyBase {
   KeyBase() {}
   virtual ~KeyBase() {}
   virtual String name() const = 0;
-  virtual KeyBase& operator=(const KeyBase&) = 0;
 
  private:
   JUCE_LEAK_DETECTOR(KeyBase);
 };
 
+typedef juce::OwnedArray<KeyBase> KeyArray;
+
 template <typename Type>
 class Key : public KeyBase {
  public:
-  Key() {}
+  Key(const Type& key) : key_(key) {}
   virtual ~Key() {}
-
-  Key(const KeyBase& ck) { (*this) = ck; }
-  Key(const Type& t) { (*this) = t; }
-
   virtual String name() const;
 
-  KeyBase& operator=(const Type& t) {
-    key_ = t;
-    return *this;
-  }
-
-  virtual KeyBase& operator=(const KeyBase& other) {
-    if (const Key<Type>* that = dynamic_cast<const Key<Type>*>(&other))
-      key_ = that->key_;
-    else
-      LOG(DFATAL) << "Tried to assign wrong type to key";
-
-    return *this;
-  }
-
  private:
-  Type key_;
+  const Type key_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Key);
 };
