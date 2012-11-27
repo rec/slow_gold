@@ -48,7 +48,10 @@ void fillRepeatingCommand(CommandRecordTable* table, const Command& cmd) {
   }
 }
 
-void fill(const CommandData& data, CommandRecordTable* table) {
+}  // namespace
+
+void fillCommandRecordTable(const CommandData& data,
+                            CommandRecordTable* table) {
   data.addCallbacks(table);
   const Commands& commands = data.allCommands();
   for (int i = 0; i < commands.command_size(); ++i) {
@@ -58,15 +61,7 @@ void fill(const CommandData& data, CommandRecordTable* table) {
     else
       fillSingleCommand(data, table, cmd);
   }
-
   table->fillAllCommands();
-}
-
-}  // namespace
-
-void fillCommandRecordTable(const CommandData& data,
-                            CommandRecordTable* table) {
-  fill(data, table);
 }
 
 }  // namespace command

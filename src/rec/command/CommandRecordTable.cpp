@@ -12,9 +12,9 @@ CommandRecordTable::~CommandRecordTable() {
   stl::deleteMapPointers(&table_);
 }
 
-CommandRecord* CommandRecordTable::find(CommandID id) {
+CommandRecord* CommandRecordTable::find(CommandID id) const {
   Lock l(lock_);
-  Table::iterator i = table_.find(id);
+  Table::const_iterator i = table_.find(id);
   return (i != table_.end()) ? i->second : NULL;
 }
 
@@ -48,36 +48,19 @@ const Commands CommandRecordTable::getCommands() const {
   return commands;
 }
 
-void CommandRecordTable::getAllCommands(juce::Array<CommandID>* commands) {
+void CommandRecordTable::getAllCommands(juce::Array<CommandID>* cmds) const {
   Lock l(lock_);
-  commands->clear();
+  cmds->clear();
   Table::const_iterator i;
   for (i = table_.begin(); i != table_.end(); ++i) {
     if (i->second->callback_)
-      commands->add(i->first);
+      cmds->add(i->first);
   }
 }
 
 void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
   Lock l(lock_);
   create(id)->callback_.reset(cb);
-}
-
-bool CommandRecordTable::perform(CommandID id) {
-  Lock l(lock_);
-  CommandRecord* cr = find(id);
-  bool success = false;
-  if (!cr)
-    LOG(DFATAL) << "No record for " << CommandIDEncoder::commandIDName(id);
-  else if (!cr->callback_)
-    LOG(DFATAL) << "No callback for " << CommandIDEncoder::commandIDName(id);
-  else
-    success = true;
-
-  if (success)
-    (*(cr->callback_))();
-
-  return success;
 }
 
 void CommandRecordTable::fillCommandInfo(CommandID id, const String& name,

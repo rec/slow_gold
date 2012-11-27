@@ -17,17 +17,14 @@ class CommandRecordTable : public CallbackTable {
 
   virtual void addCallback(CommandID, Callback*);
 
-  CommandRecord* find(CommandID);
+  CommandRecord* find(CommandID) const;
   CommandRecord* create(CommandID);
   CommandRecord* findOrCreate(CommandID);
 
   const Commands getCommands() const;
 
-  void getAllCommands(juce::Array<CommandID>*);
-
-  bool perform(CommandID);
+  void getAllCommands(juce::Array<CommandID>*) const;
   void fillAllCommands();
-
   void fillCommandInfo(CommandID, const String& name, int flags, Enable);
 
  private:

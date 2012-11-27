@@ -13,6 +13,7 @@ void CommandTarget::getAllCommands(juce::Array<CommandID>& commands) {
 }
 
 void CommandTarget::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
+  Lock l(lock_);
   CommandRecord* cr = commandRecordTable()->find(id);
   if (!cr) {
     LOG(DFATAL) << "Couldn't get command info for id "
@@ -34,7 +35,19 @@ bool CommandTarget::perform(const InvocationInfo& invocation) {
 	if (id != Command::ABOUT_THIS_PROGRAM && window())
     thread::callAsync(window(), &app::Window::stopAboutWindow);
 
-  return (enable_ == DISABLE) || commandRecordTable()->perform(id);
+  CommandRecord* cr = commandRecordTable()->find(id);
+  bool success = false;
+  if (!cr)
+    LOG(DFATAL) << "No record for " << CommandIDEncoder::commandIDName(id);
+  else if (!cr->callback_)
+    LOG(DFATAL) << "No callback for " << CommandIDEncoder::commandIDName(id);
+  else
+    success = true;
+
+  if (success)
+    (*(cr->callback_))();
+
+  return success;
 }
 
 void CommandTarget::operator()(CommandID id) {
