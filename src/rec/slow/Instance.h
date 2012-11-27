@@ -73,6 +73,7 @@ class Instance {
   thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
+
   ptr<command::CommandRecordTable> commandRecordTable_;
   ptr<ApplicationCommandTarget> applicationCommandTarget_;
   ApplicationCommandManager applicationCommandManager_;

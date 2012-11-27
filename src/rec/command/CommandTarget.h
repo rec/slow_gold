@@ -1,10 +1,6 @@
 #ifndef __REC_COMMAND_COMMANDTARGET__
 #define __REC_COMMAND_COMMANDTARGET__
 
-#include "rec/command/CommandIDEncoder.h"
-#include "rec/command/CommandRecord.h"
-#include "rec/command/CommandRecordTable.h"
-#include "rec/slow/Target.h"
 #include "rec/slow/HasInstance.h"
 
 namespace rec {
@@ -16,26 +12,10 @@ class CommandTarget : public ApplicationCommandTarget,
   CommandTarget(slow::Instance* i) : slow::HasInstance(i) {}
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
 
-  virtual void getAllCommands(juce::Array<CommandID>& commands) {
-    commandRecordTable()->getAllCommands(&commands);
-  }
+  virtual void getAllCommands(juce::Array<CommandID>&);
 
-  virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-    CommandRecord* cr = commandRecordTable()->find(id);
-    if (!cr) {
-      LOG(DFATAL) << "Couldn't get command info for id "
-                  << CommandIDEncoder::commandIDName(id);
-      return;
-    }
-    info = *(cr->getInfo());
-
-    if (!info.shortName.isNotEmpty())
-      LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
-  }
-
-  virtual bool perform(const InvocationInfo& info) {
-    return instance_->target_->perform(info);
-  }
+  virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
+  virtual bool perform(const InvocationInfo&);
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(CommandTarget);

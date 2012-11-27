@@ -109,6 +109,7 @@
 		5098146B8C206177E56683BA /* CommandRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5316764959BCF8E5374D60 /* CommandRecord.cpp */; };
 		5175830BC9670F524B09F2B5 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86A18D99841C1BC07D0F0A19 /* Waveform.cpp */; };
 		51F3BCA9AA8791941ABB4592 /* KeyboardBindings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05736AFA69C327AC098B98AE /* KeyboardBindings.cpp */; };
+		52CAC8AF4A69DEAA011B7601 /* CommandTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CAF0682F3259AA7B3DC12462 /* CommandTarget.cpp */; };
 		52F595A0FA0A0E6E54163B1E /* SetupPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB668280EFCAF9BE600922D9 /* SetupPage.cpp */; };
 		540C0572BC9C9B7AD316B8E9 /* singledocparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1556467D039C0A486CAA1934 /* singledocparser.cpp */; };
 		540F75E2FEC46790673CE9CD /* VirtualFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CA7D89A40346AE728D9D567 /* VirtualFile.cpp */; };
@@ -1567,6 +1568,7 @@
 		CA8313386F7BEF9A5DC18269 /* CopySamples.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CopySamples.cpp; path = ../../../../src/rec/audio/util/CopySamples.cpp; sourceTree = SOURCE_ROOT; };
 		CAA9BE5EAAFFE69C36F7633C /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tags.h; path = ../../../../src/rec/audio/format/mpg123/Tags.h; sourceTree = SOURCE_ROOT; };
 		CAD806C8F2CA473059AFF73C /* juce_FileSearchPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_FileSearchPath.h; path = ../../../../../juce/modules/juce_core/files/juce_FileSearchPath.h; sourceTree = SOURCE_ROOT; };
+		CAF0682F3259AA7B3DC12462 /* CommandTarget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandTarget.cpp; path = ../../../../src/rec/command/CommandTarget.cpp; sourceTree = SOURCE_ROOT; };
 		CAFF404473885E88E59D16B5 /* Panes.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Panes.pb.cc; path = ../../../../genfiles/proto/rec/widget/Panes.pb.cc; sourceTree = SOURCE_ROOT; };
 		CB056E1365A02DEFF36C58B4 /* juce_OptionalScopedPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OptionalScopedPointer.h; path = ../../../../../juce/modules/juce_core/memory/juce_OptionalScopedPointer.h; sourceTree = SOURCE_ROOT; };
 		CB074B0123FF849EC65F66B0 /* Circular.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Circular.h; path = ../../../../src/rec/util/unused/Circular.h; sourceTree = SOURCE_ROOT; };
@@ -2769,6 +2771,18 @@
 			name = unused;
 			sourceTree = "<group>";
 		};
+		4C4232B6E320B45B821D7231 /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				00EC1EAD27F9AD98F67EF1BB /* translation */,
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
+			sourceTree = "<group>";
+		};
 		4C8267105C2A573BD638121D /* menus */ = {
 			isa = PBXGroup;
 			children = (
@@ -3317,7 +3331,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D2914011E094162107E3D6D6 /* SlowGold */,
+				4C4232B6E320B45B821D7231 /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3524,6 +3538,7 @@
 				DEC7377559D6605EC22C0290 /* CommandRecord.h */,
 				DD995F3B97449AF5E61CE9A2 /* CommandRecordTable.cpp */,
 				4BEAE18BF2FD43A3CFE1CED6 /* CommandRecordTable.h */,
+				CAF0682F3259AA7B3DC12462 /* CommandTarget.cpp */,
 				3E2DA47213E567173871A2EB /* CommandTarget.h */,
 				5143B8805B9661BF155BA713 /* FillCommandRecordTable.cpp */,
 				4D186B51C5A057C46AFA2EAD /* FillCommandRecordTable.h */,
@@ -4303,18 +4318,6 @@
 			name = app_properties;
 			sourceTree = "<group>";
 		};
-		D2914011E094162107E3D6D6 /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				00EC1EAD27F9AD98F67EF1BB /* translation */,
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
-			sourceTree = "<group>";
-		};
 		D36A5B291D689E533BAA03AE /* include */ = {
 			isa = PBXGroup;
 			children = (
@@ -5016,6 +5019,7 @@
 				4765B1D52F41CF15653E6B59 /* CommandIDEncoder.cpp in Sources */,
 				5098146B8C206177E56683BA /* CommandRecord.cpp in Sources */,
 				6A2A99BCEC00549959CB6A2A /* CommandRecordTable.cpp in Sources */,
+				52CAC8AF4A69DEAA011B7601 /* CommandTarget.cpp in Sources */,
 				4B8A0434894F5D5D19E95F84 /* FillCommandRecordTable.cpp in Sources */,
 				51F3BCA9AA8791941ABB4592 /* KeyboardBindings.cpp in Sources */,
 				5A086DA4168C531C0DA4DF86 /* CommandEntryWindow.cpp in Sources */,
