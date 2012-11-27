@@ -1,10 +1,8 @@
 #include "rec/command/CommandRecordTable.h"
 
-#include "rec/command/Access.pb.h"
-#include "rec/command/FillCommandRecordTable.h"
-#include "rec/command/CommandRecordTable.h"
-#include "rec/data/Data.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/CommandRecord.h"
+#include "rec/data/Data.h"
 #include "rec/util/STL.h"
 
 namespace rec {
