@@ -2,6 +2,7 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/AdvancedMenuMaker.h"
@@ -30,7 +31,26 @@ void MenuMaker::addFull(CommandID id,
                         Enable enable,
                         PopupMenu* m,
                         int flags) {
-  commandRecordTable()->fillCommandInfo(id, name, flags, enable);
+  CommandRecord* cr = commandRecordTable()->find(id);
+  if (!cr) {
+    LOG(DFATAL) << "no info for " << CommandIDEncoder::commandIDName(id);
+    return;
+  }
+  ApplicationCommandInfo* info = cr->getInfo();
+
+  if (name.length())
+    info->shortName = name;
+  else if (cr->setter_)
+    info->shortName = str(cr->setter_->menuName());
+
+  if (!info->shortName.length()) {
+    LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
+    info->shortName = "(error)";
+  }
+  if (flags >= 0)
+    info->flags = flags;
+
+  info->setActive(enable == ENABLE);
   (m ? m : &menu_)->addCommandItem(applicationCommandManager(), id);
 }
 

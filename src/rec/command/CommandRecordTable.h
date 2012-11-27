@@ -17,19 +17,19 @@ class CommandRecordTable : public CallbackTable {
 
   virtual void addCallback(CommandID, Callback*);
 
-  CommandRecord* find(CommandID) const;
-  CommandRecord* create(CommandID);
-  CommandRecord* findOrCreate(CommandID);
+  CommandRecord* find(CommandID id) { return locate(id, true, false); }
+  CommandRecord* create(CommandID id) { return locate(id, false, true); }
+  CommandRecord* findOrCreate(CommandID id) { return locate(id, false, false); }
 
   const Commands getCommands() const;
 
-  void getAllCommands(juce::Array<CommandID>*) const;
   void fillAllCommands();
-  void fillCommandInfo(CommandID, const String& name, int flags, Enable);
+  void getAllCommands(juce::Array<CommandID>*) const;
 
  private:
+  CommandRecord* locate(CommandID id, bool mustExist, bool mustCreate);
+
   typedef std::map<CommandID, CommandRecord*> Table;
-  typedef Table::const_iterator const_iterator;
 
   CriticalSection lock_;
   Table table_;

@@ -12,29 +12,21 @@ CommandRecordTable::~CommandRecordTable() {
   stl::deleteMapPointers(&table_);
 }
 
-CommandRecord* CommandRecordTable::find(CommandID id) const {
-  Lock l(lock_);
-  Table::const_iterator i = table_.find(id);
-  return (i != table_.end()) ? i->second : NULL;
-}
-
-CommandRecord* CommandRecordTable::create(CommandID id) {
+CommandRecord* CommandRecordTable::locate(CommandID id, bool mustExist,
+                                          bool mustCreate) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
   if (i != table_.end()) {
-    LOG(DFATAL) << CommandIDEncoder::commandIDName(id) << " already exists.";
+    if (mustCreate)
+      LOG(DFATAL) << CommandIDEncoder::commandIDName(id) << " already exists.";
     return i->second;
   }
+  if (mustExist)
+    return NULL;
 
   ptr<CommandRecord> rec(new CommandRecord(id));
   table_.insert(i, std::make_pair(id, rec.get()));
   return rec.transfer();
-}
-
-CommandRecord* CommandRecordTable::findOrCreate(CommandID id) {
-  Lock l(lock_);
-  Table::iterator i = table_.find(id);
-  return (i == table_.end()) ? create(id) : i->second;
 }
 
 const Commands CommandRecordTable::getCommands() const {
@@ -61,31 +53,6 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* cmds) const {
 void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
   Lock l(lock_);
   create(id)->callback_.reset(cb);
-}
-
-void CommandRecordTable::fillCommandInfo(CommandID id, const String& name,
-                                         int flags, Enable enable) {
-  Lock l(lock_);
-  CommandRecord* cr = find(id);
-  if (!cr) {
-    LOG(DFATAL) << "no info for " << CommandIDEncoder::commandIDName(id);
-    return;
-  }
-  ApplicationCommandInfo* info = cr->getInfo();
-
-  if (name.length())
-    info->shortName = name;
-  else if (cr->setter_)
-    info->shortName = str(cr->setter_->menuName());
-
-  if (!info->shortName.length()) {
-    LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
-    info->shortName = "(error)";
-  }
-  if (flags >= 0)
-    info->flags = flags;
-
-  info->setActive(enable == ENABLE);
 }
 
 void CommandRecordTable::fillAllCommands() {
