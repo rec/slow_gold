@@ -18,7 +18,7 @@ String currentlyAssignedTo(const String& commandName);
 template <typename MappingSet>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
-  GenericCommandMapEditor(ApplicationCommandManager&, MappingSet&);
+  GenericCommandMapEditor(ApplicationCommandManager&, MappingSet*);
 
   // You must implement these separately for any actual instantiation of this class.
   static const String getDescription(const KeyBase&);
@@ -46,7 +46,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
   static const int MAX_NUM_ASSIGNMENTS = 3;
 
  private:
-  MappingSet& mappings_;
+  MappingSet* mappings_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GenericCommandMapEditor);
 };
@@ -74,10 +74,9 @@ setNewKey(CommandMapEditButton* button, const KeyBase& newKey, bool dontAskUser)
 
 template <typename MappingSet>
 GenericCommandMapEditor<MappingSet>::
-GenericCommandMapEditor(ApplicationCommandManager& manager, MappingSet& m)
-    : CommandMapEditor(manager, m), mappings_(m) {
+GenericCommandMapEditor(ApplicationCommandManager& manager, MappingSet* m)
+    : CommandMapEditor(manager, *m), mappings_(m) {
 }
-
 
 template <typename MappingSet>
 const String GenericCommandMapEditor<MappingSet>::

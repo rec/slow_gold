@@ -49,12 +49,12 @@ const String KeyCommandMapEditor::getDescription(const KeyBase& key) {
 
 template <>
 void KeyCommandMapEditor::removeKey(CommandID command, int keyNum) {
-  mappings_.removeKeyPress(command, keyNum);
+  mappings_->removeKeyPress(command, keyNum);
 }
 
 template <>
 KeyCommandMapEditor::KeyArray* KeyCommandMapEditor::getKeys(CommandID cmd) {
-  const Array<KeyPress>& kp = mappings_.getKeyPressesAssignedToCommand(cmd);
+  const Array<KeyPress>& kp = mappings_->getKeyPressesAssignedToCommand(cmd);
   ptr<KeyArray> keyArray(new KeyArray);
   for (int i = 0; i < kp.size(); ++i)
     keyArray->add(new Key<KeyPress>(KeyPress(kp[i])));
@@ -70,7 +70,7 @@ bool KeyCommandMapEditor::isValid(const KeyBase& key) {
 template <>
 CommandID KeyCommandMapEditor::getCommand(const KeyBase& key) {
   if (const KeyPress* k = cast(key))
-    return mappings_.findCommandForKeyPress(*k);
+    return mappings_->findCommandForKeyPress(*k);
   else
     return 0;
 }
@@ -78,14 +78,14 @@ CommandID KeyCommandMapEditor::getCommand(const KeyBase& key) {
 template <>
 void KeyCommandMapEditor::removeKey(const KeyBase& key) {
   if (const KeyPress* k = cast(key))
-    mappings_.removeKeyPress(*k);
+    mappings_->removeKeyPress(*k);
 }
 
 template <>
 void KeyCommandMapEditor::addKey(CommandID cmd, const KeyBase& key,
                                  int keyIndex) {
   if (const KeyPress* k = cast(key))
-    mappings_.addKeyPress(cmd, *k, keyIndex);
+    mappings_->addKeyPress(cmd, *k, keyIndex);
 }
 
 template <>

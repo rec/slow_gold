@@ -65,8 +65,8 @@ const String MidiCommandMapEditor::getDescription(const KeyBase& key) {
 
 template <>
 void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
-  mappings_.removeCommand(static_cast<Command::Type>(command), keyNum);
-  mappings_.sendChangeMessage();
+  mappings_->removeCommand(static_cast<Command::Type>(command), keyNum);
+  mappings_->sendChangeMessage();
 }
 
 template <>
@@ -76,13 +76,13 @@ bool MidiCommandMapEditor::isValid(const KeyBase&) {
 
 template <>
 CommandEntryWindow* MidiCommandMapEditor::newWindow() {
-  return new MidiCommandEntryWindow(this, &mappings_);
+  return new MidiCommandEntryWindow(this, mappings_);
 }
 
 template <>
 MidiCommandMapEditor::KeyArray* MidiCommandMapEditor::getKeys(CommandID c) {
   ptr<KeyArray> result(new KeyArray);
-  const vector<string> keys = mappings_.getKeys(static_cast<Command::Type>(c));
+  const vector<string> keys = mappings_->getKeys(static_cast<Command::Type>(c));
   for (vector<string>::const_iterator i = keys.begin(); i != keys.end(); ++i)
     result->add(makeKey(MidiMessage(i->data(), i->size())));
 
@@ -91,20 +91,20 @@ MidiCommandMapEditor::KeyArray* MidiCommandMapEditor::getKeys(CommandID c) {
 
 template <>
 CommandID MidiCommandMapEditor::getCommand(const KeyBase& key) {
-  return static_cast<CommandID>(mappings_.getCommand(toBytes(key)));
+  return static_cast<CommandID>(mappings_->getCommand(toBytes(key)));
 }
 
 template <>
 void MidiCommandMapEditor::removeKey(const KeyBase& key) {
-  mappings_.removeKey(toBytes(key));
-  mappings_.sendChangeMessage();
+  mappings_->removeKey(toBytes(key));
+  mappings_->sendChangeMessage();
 }
 
 template <>
 void MidiCommandMapEditor::addKey(CommandID cmd, const KeyBase& key,
                                   int keyIndex) {
-  mappings_.addAtIndex(toBytes(key), static_cast<Command::Type>(cmd), keyIndex);
-  mappings_.sendChangeMessage();
+  mappings_->addAtIndex(toBytes(key), static_cast<Command::Type>(cmd), keyIndex);
+  mappings_->sendChangeMessage();
 }
 
 template <>
