@@ -19,7 +19,6 @@ template <typename MappingSet>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
   GenericCommandMapEditor(ApplicationCommandManager&, MappingSet&);
-  MappingSet& getMappings() { return mappings_; }
 
   // You must implement these separately for any actual instantiation of this class.
   static const String getDescription(const KeyBase&);

@@ -17,11 +17,11 @@ namespace {
 class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
-  explicit MidiCommandEntryWindow(MidiCommandMapEditor* owner)
+  MidiCommandEntryWindow(MidiCommandMapEditor* owner, MidiCommandMap* mappings)
       : CommandEntryWindow(t_WAITING),
         lastKeyEntered_(false),
         owner_(owner),
-        mappings_(&owner->getMappings()) {
+        mappings_(mappings) {
     listen(true);
   }
 
@@ -76,7 +76,7 @@ bool MidiCommandMapEditor::isValid(const KeyBase&) {
 
 template <>
 CommandEntryWindow* MidiCommandMapEditor::newWindow() {
-  return new MidiCommandEntryWindow(this);
+  return new MidiCommandEntryWindow(this, &mappings_);
 }
 
 template <>
