@@ -15,31 +15,31 @@ bool showCommandMapBox(const String& command,
 
 String currentlyAssignedTo(const String& commandName);
 
-template <typename MappingSet, typename Key>
+template <typename MappingSet>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
   GenericCommandMapEditor(ApplicationCommandManager&, MappingSet&);
   MappingSet& getMappings() { return mappings_; }
 
   // You must implement these separately for any actual instantiation of this class.
-  static const String getDescription(const Key&);
-  static bool isValid(const Key&);
+  static const String getDescription(const KeyBase&);
+  static bool isValid(const KeyBase&);
   static const String name();
-  static void assignNewKeyCallback(int result, CommandMapEditButton*, const Key*);
+  static void assignNewKeyCallback(int result, CommandMapEditButton*, const KeyBase*);
   static void keyChosen(int result, CommandMapEditButton*);
 
-  CommandID getCommand(const Key&);
-  void removeKey(const Key&);
-  void addKey(CommandID, const Key&, int keyIndex);
+  CommandID getCommand(const KeyBase&);
+  void removeKey(const KeyBase&);
+  void addKey(CommandID, const KeyBase&, int keyIndex);
   void removeKey(CommandID, int keyNum);
 
-  typedef juce::OwnedArray<Key> KeyArray;
+  typedef juce::OwnedArray<KeyBase> KeyArray;
   KeyArray* getKeys(CommandID);
   CommandEntryWindow* newWindow();
 
-  const String getKeyMessage(const Key& key);
-  void setNewKey(CommandMapEditButton*, const Key&, bool dontAskUser);
-  virtual const String getDescriptionForKey(const Key& key) const;
+  const String getKeyMessage(const KeyBase& key);
+  void setNewKey(CommandMapEditButton*, const KeyBase&, bool dontAskUser);
+  virtual const String getDescriptionForKey(const KeyBase& key) const;
   virtual void addButton(CommandMapEditButton* b);
   virtual void removeButton(CommandMapEditButton* button);
   virtual void addChildren(CommandMapItemComponent* comp);
@@ -52,11 +52,9 @@ class GenericCommandMapEditor : public CommandMapEditor {
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GenericCommandMapEditor);
 };
 
-
-template <typename MappingSet, typename Key>
-void GenericCommandMapEditor<MappingSet, Key>::
-setNewKey(CommandMapEditButton* button, const Key& newKey,
-               bool dontAskUser) {
+template <typename MappingSet>
+void GenericCommandMapEditor<MappingSet>::
+setNewKey(CommandMapEditButton* button, const KeyBase& newKey, bool dontAskUser) {
   if (isValid(newKey)) {
     const CommandID previousCommand = getCommand(newKey);
     if (previousCommand == 0 || dontAskUser) {
@@ -68,43 +66,42 @@ setNewKey(CommandMapEditButton* button, const Key& newKey,
       showCommandMapBox(commandManager_.getNameOfCommand(previousCommand),
                         this,
                         ModalCallbackFunction::forComponent(
-                            GenericCommandMapEditor<MappingSet,
-                            Key>::assignNewKeyCallback,
-                            button,
-                            &newKey));
+                            GenericCommandMapEditor<MappingSet>::
+                            assignNewKeyCallback,
+                            button, &newKey));
     }
   }
 }
 
-template <typename MappingSet, typename Key>
-GenericCommandMapEditor<MappingSet, Key>::
+template <typename MappingSet>
+GenericCommandMapEditor<MappingSet>::
 GenericCommandMapEditor(ApplicationCommandManager& manager, MappingSet& m)
     : CommandMapEditor(manager, m), mappings_(m) {
 }
 
 
-template <typename MappingSet, typename Key>
-const String GenericCommandMapEditor<MappingSet, Key>::
-getDescriptionForKey(const Key& key) const {
+template <typename MappingSet>
+const String GenericCommandMapEditor<MappingSet>::
+getDescriptionForKey(const KeyBase& key) const {
   return getDescription(key);
 }
 
-template <typename MappingSet, typename Key>
-void GenericCommandMapEditor<MappingSet, Key>::
+template <typename MappingSet>
+void GenericCommandMapEditor<MappingSet>::
 addButton(CommandMapEditButton* b) {
   CommandEntryWindow* w = newWindow();
   b->setCommandEntryWindow(w);
   w->enterModalState(true, ModalCallbackFunction::forComponent(keyChosen, b));
 }
 
-template <typename MappingSet, typename Key>
-void GenericCommandMapEditor<MappingSet, Key>::
+template <typename MappingSet>
+void GenericCommandMapEditor<MappingSet>::
 removeButton(CommandMapEditButton* button) {
   removeKey(button->commandID, button->keyNum);
 }
 
-template <typename MappingSet, typename Key>
-void GenericCommandMapEditor<MappingSet, Key>::
+template <typename MappingSet>
+void GenericCommandMapEditor<MappingSet>::
 addChildren(CommandMapItemComponent* comp) {
   CommandID command = comp->commandID_;
   const bool isReadOnly = isCommandReadOnly(command);
@@ -114,9 +111,9 @@ addChildren(CommandMapItemComponent* comp) {
   comp->addButton(String::empty, -1, isReadOnly);
 }
 
-template <typename MappingSet, typename Key>
-const String GenericCommandMapEditor<MappingSet, Key>::
-getKeyMessage(const Key& key) {
+template <typename MappingSet>
+const String GenericCommandMapEditor<MappingSet>::
+getKeyMessage(const KeyBase& key) {
   String message(name() + ": " + getDescription(key));
   const CommandID previousCommand = getCommand(key);
   if (previousCommand) {

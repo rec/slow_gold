@@ -8,7 +8,7 @@
 namespace rec {
 namespace command {
 
-typedef GenericCommandMapEditor<MidiCommandMap, KeyBase> MidiCommandMapEditor;
+typedef GenericCommandMapEditor<MidiCommandMap> MidiCommandMapEditor;
 
 }  // namespace command
 }  // namespace rec
