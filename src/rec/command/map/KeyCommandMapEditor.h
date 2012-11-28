@@ -2,11 +2,12 @@
 #define __REC_COMMAND_KEYCOMMANDMAPEDITOR__
 
 #include "rec/command/map/GenericCommandMapEditor.h"
+#include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {
 
-typedef GenericCommandMapEditor<KeyPressMappingSet, juce::KeyPress> KeyCommandMapEditor;
+typedef GenericCommandMapEditor<KeyPressMappingSet, KeyBase> KeyCommandMapEditor;
 
 }  // namespace command
 }  // namespace rec
