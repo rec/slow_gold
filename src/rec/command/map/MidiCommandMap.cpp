@@ -27,11 +27,6 @@ void MidiCommandMap::requestOneMessage(Listener<const juce::MidiMessage&>* lt) {
   listener_ = lt;
 }
 
-void MidiCommandMap::setEnable(bool e) {
-  Lock l(lock_);
-  enable_ = e;
-}
-
 const string toBytes(const MidiMessage& msg) {
   string r = str(msg);
   if (msg.isNoteOn())

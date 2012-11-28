@@ -10,7 +10,7 @@
 namespace rec {
 namespace command {
 
-class CommandMap {
+class CommandMap : public ChangeBroadcaster {
  public:
   typedef command::Command::Type CommandType;
   typedef vector<string> KeyVector;
