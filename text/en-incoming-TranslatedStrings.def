@@ -1,7 +1,7 @@
 str {
   original: "%s %s semitones"
   file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 38
+  line: 37
 }
 str {
   original: "%s off"
@@ -95,18 +95,18 @@ str {
 }
 str {
   original: "Attach Commands To Keystrokes"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 62
+  file: "rec/slow/callbacks/CommandEditors.cpp"
+  line: 17
 }
 str {
   original: "Attach Commands To MIDI events"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 63
+  file: "rec/slow/callbacks/CommandEditors.cpp"
+  line: 18
 }
 str {
   original: "Audio"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 30
+  line: 29
 }
 str {
   original: "Audio Preferences..."
@@ -126,8 +126,8 @@ str {
 }
 str {
   original: "Cancel"
-  file: "rec/command/map/CommandEntryWindow.cpp"
-  line: 6
+  file: "rec/base/Trans.cpp"
+  line: 10
 }
 str {
   original: "CD Window:  Any CDs that you have in your computer\'s CD drives will appear here."
@@ -168,16 +168,16 @@ str {
 }
 str {
   original: "Clear all keyboard mappings to factory default?"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 42
+  file: "rec/slow/callbacks/CommandEditors.cpp"
+  line: 13
 }
 str {
   original: "Clear all MIDI command mappings."
 }
 str {
   original: "Clear all MIDI mappings?"
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 44
+  file: "rec/slow/callbacks/CommandEditors.cpp"
+  line: 15
 }
 str {
   original: "Clear All Settings And Quit"
@@ -191,15 +191,15 @@ str {
 str {
   original: "Clear Changes"
   file: "rec/command/map/CommandMapEditor.cpp"
-  line: 17
+  line: 16
 }
 str {
   original: "Clear Keyboard Mappings"
 }
 str {
   original: "Clear Keyboard Mappings."
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 40
+  file: "rec/slow/callbacks/CommandEditors.cpp"
+  line: 11
 }
 str {
   original: "Clear Loops"
@@ -209,8 +209,8 @@ str {
 }
 str {
   original: "Clear MIDI Mappings."
-  file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 43
+  file: "rec/slow/callbacks/CommandEditors.cpp"
+  line: 14
 }
 str {
   original: "Clear Settings For This Track And Quit"
@@ -218,12 +218,12 @@ str {
 str {
   original: "Clearing All Settings For All Tracks"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 46
+  line: 35
 }
 str {
   original: "Clearing Settings For This Track Only"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 51
+  line: 40
 }
 str {
   original: "click to change this key-mapping"
@@ -275,7 +275,7 @@ str {
 str {
   original: "Couldn\'t Load The SlowGold 8 User Manual"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 17
+  line: 16
 }
 str {
   original: "Couldn\'t Open CD Track."
@@ -305,7 +305,7 @@ str {
 str {
   original: "Currently assigned to"
   file: "rec/command/map/GenericCommandMapEditor.cpp"
-  line: 9
+  line: 8
 }
 str {
   original: "Cut"
@@ -372,7 +372,7 @@ str {
 str {
   original: "Edit"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 29
+  line: 28
 }
 str {
   original: "Edit keyboard mappings for commands."
@@ -415,7 +415,7 @@ str {
 str {
   original: "English"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 16
+  line: 15
 }
 str {
   original: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
@@ -460,17 +460,17 @@ str {
 str {
   original: "Export..."
   file: "rec/command/map/CommandMapEditor.cpp"
-  line: 18
+  line: 17
 }
 str {
   original: "File"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 28
+  line: 27
 }
 str {
   original: "File Type For Save..."
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 23
+  line: 22
 }
 str {
   original: "Finish the current segment, then start looping the next segment."
@@ -489,7 +489,7 @@ str {
 str {
   original: "French"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 17
+  line: 16
 }
 str {
   original: "Genre"
@@ -497,7 +497,7 @@ str {
 str {
   original: "German"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 18
+  line: 17
 }
 str {
   original: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
@@ -505,7 +505,7 @@ str {
 str {
   original: "Help"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 33
+  line: 32
 }
 str {
   original: "Help Panel: Shows help about whatever the mouse is over."
@@ -533,12 +533,12 @@ str {
 str {
   original: "Import..."
   file: "rec/command/map/CommandMapEditor.cpp"
-  line: 19
+  line: 18
 }
 str {
   original: "Indonesian"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 19
+  line: 18
 }
 str {
   original: "Invert Selection"
@@ -704,7 +704,7 @@ str {
 str {
   original: "Language"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 14
+  line: 13
 }
 str {
   original: "Lay the Command Bar out on the left side of the Waveform Display."
@@ -727,7 +727,7 @@ str {
 str {
   original: "Loop Entire Track"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 25
+  line: 24
 }
 str {
   original: "Loop Next Segment"
@@ -748,7 +748,7 @@ str {
 str {
   original: "Loop This Segment"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 26
+  line: 25
 }
 str {
   original: "Make a request for technical support to World Wide Woodshed."
@@ -835,13 +835,13 @@ str {
 }
 str {
   original: "OK"
-  file: "rec/command/map/CommandEntryWindow.cpp"
-  line: 5
+  file: "rec/base/Trans.cpp"
+  line: 9
 }
 str {
   original: "one semitone %s"
   file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 37
+  line: 36
 }
 str {
   original: "Open a dialog to select a new audio file for looping."
@@ -849,7 +849,7 @@ str {
 str {
   original: "Open recent"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 22
+  line: 21
 }
 str {
   original: "Open SlowGold Preferences Directory"
@@ -899,7 +899,7 @@ str {
 str {
   original: "Please contact World Wide Woodshed support at"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 29
+  line: 27
 }
 str {
   original: "Please mail the file to %s and then you can throw it away."
@@ -925,7 +925,7 @@ str {
 str {
   original: "Ran Out Of Memory For Your File"
   file: "rec/slow/CurrentFile.cpp"
-  line: 29
+  line: 28
 }
 str {
   original: "Re-assign"
@@ -1050,37 +1050,37 @@ str {
 str {
   original: "Select"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 32
+  line: 31
 }
 str {
   original: "Select A File Containing Keyboard Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 25
+  line: 23
 }
 str {
   original: "Select A File Containing MIDI Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 26
+  line: 24
 }
 str {
   original: "Select A File To Save Exported Keyboard Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 22
+  line: 20
 }
 str {
   original: "Select A File To Save Exported MIDI Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 23
+  line: 21
 }
 str {
   original: "Select A File To Save Exported Settings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 21
+  line: 19
 }
 str {
   original: "Select A Zip File Containing Exported Settings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 24
+  line: 22
 }
 str {
   original: "Select All"
@@ -1252,7 +1252,7 @@ str {
 str {
   original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 18
+  line: 17
 }
 str {
   original: "Sorry, file %s is an .m4a file and we can\'t yet read these files on Windows:  please convert it to mp3 using iTunes."
@@ -1277,12 +1277,12 @@ str {
 str {
   original: "Sorry, there was an error clearing the settings. Please report this to support@worldwidewoodshed.com."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 60
+  line: 49
 }
 str {
   original: "Sorry, there wasn\'t enough memory for the file."
   file: "rec/slow/CurrentFile.cpp"
-  line: 30
+  line: 29
 }
 str {
   original: "Sorry, we couldn\'t find the file %s.  Perhaps you deleted it, or perhaps it\'s on a drive that isn\'t currently mounted."
@@ -1297,7 +1297,7 @@ str {
 str {
   original: "Spanish"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 20
+  line: 19
 }
 str {
   original: "Start or pause"
@@ -1327,7 +1327,7 @@ str {
 str {
   original: "The file extension must be .aiff, .aif, .flac, .ogg, .wav or .wave."
   file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 41
+  line: 39
 }
 str {
   original: "The full path was: %s"
@@ -1458,7 +1458,7 @@ str {
 str {
   original: "Transport"
   file: "rec/slow/BasicMenuMaker.cpp"
-  line: 31
+  line: 30
 }
 str {
   original: "Tried to read CD, id=%s, names=%s"
@@ -1476,7 +1476,7 @@ str {
 str {
   original: "Unable To Clear Settings"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 57
+  line: 46
 }
 str {
   original: "Undo"
@@ -1589,17 +1589,17 @@ str {
 str {
   original: "You cannot overwrite the current file."
   file: "rec/slow/callbacks/SaveFile.cpp"
-  line: 42
+  line: 40
 }
 str {
   original: "You want to clear *all* settings, and quit SlowGold.  Is this OK?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 49
+  line: 38
 }
 str {
   original: "You want to clear settings for this track only, and quit the program.  Is this OK?"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 55
+  line: 44
 }
 str {
   original: "Your File Was Empty."
@@ -1614,12 +1614,12 @@ str {
 str {
   original: "Your Version Of SlowGold Is Up-To-Date"
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 35
+  line: 32
 }
 str {
   original: "Your version of SlowGold, %s, is up-to-date."
   file: "rec/slow/callbacks/InstanceCallbacks.cpp"
-  line: 36
+  line: 33
 }
 str {
   original: "Zoom In Mode"

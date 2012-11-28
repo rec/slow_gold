@@ -2,6 +2,7 @@
 #define __REC_COMMAND_MIDICOMMANDMAP__
 
 #include "rec/command/map/CommandMap.h"
+#include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {
@@ -16,7 +17,6 @@ class MidiCommandMap : public CommandMap,
   void requestOneMessage(Listener<const juce::MidiMessage&>* lst);
   void setEnable(bool e);
   virtual void changeListenerCallback(ChangeBroadcaster*) {}
-  const string toBytes(const MidiMessage& msg);
 
  private:
   CriticalSection lock_;
@@ -26,6 +26,9 @@ class MidiCommandMap : public CommandMap,
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandMap);
 };
+
+const string toBytes(const MidiMessage&);
+const string toBytes(const KeyBase&);
 
 }  // namespace command
 }  // namespace rec

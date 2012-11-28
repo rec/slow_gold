@@ -5,7 +5,6 @@
 
 namespace rec {
 namespace command {
-namespace map {
 
 class KeyBase {
  public:
@@ -22,14 +21,17 @@ typedef juce::OwnedArray<KeyBase> KeyArray;
 template <typename Type>
 class Key : public KeyBase {
  public:
+  Key(const Key<Type>& that) : key_(that.key_) {}
   Key(const Type& key) : key_(key) {}
   virtual ~Key() {}
+  const Type& key() const { return key_; }
+
   virtual String name() const;
 
  private:
   const Type key_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Key);
+  JUCE_LEAK_DETECTOR(Key);
 };
 
 template <>
@@ -38,7 +40,7 @@ inline String Key<MidiMessage>::name() const {
 }
 
 template <>
-inline String Key<KeyPress>::name() const {
+inline String Key<juce::KeyPress>::name() const {
   return key_.getTextDescription();
 }
 
@@ -47,7 +49,6 @@ KeyBase* makeKey(const Type& t) {
   return new Key<Type>(t);
 }
 
-}  // namespace map
 }  // namespace command
 }  // namespace rec
 

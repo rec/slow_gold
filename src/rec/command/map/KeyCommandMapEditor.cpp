@@ -92,11 +92,11 @@ void KeyCommandMapEditor::keyChosen(int result,
 template <>
 void KeyCommandMapEditor::assignNewKeyCallback(int result,
                                                CommandMapEditButton* button,
-                                               KeyPress key) {
+                                               const KeyPress* key) {
   if (result != 0 && button != nullptr) {
     KeyCommandMapEditor* editor = dynamic_cast<KeyCommandMapEditor*>(
         &button->getOwner());
-    editor->setNewKey(button, key, true);
+    editor->setNewKey(button, *key, true);
   }
 }
 

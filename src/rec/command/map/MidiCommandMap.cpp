@@ -32,7 +32,7 @@ void MidiCommandMap::setEnable(bool e) {
   enable_ = e;
 }
 
-const string MidiCommandMap::toBytes(const MidiMessage& msg) {
+const string toBytes(const MidiMessage& msg) {
   string r = str(msg);
   if (msg.isNoteOn())
     r[2] = 127;
@@ -41,6 +41,15 @@ const string MidiCommandMap::toBytes(const MidiMessage& msg) {
     r[2] = (r[2] < 64) ? 0 : 127;
 
   return r;
+}
+
+const string toBytes(const KeyBase& key) {
+  const Key<MidiMessage>* mm = dynamic_cast<const Key<MidiMessage>*>(&key);
+  string result;
+  if (mm)
+    result = toBytes(*mm);
+  else
+    LOG(DFATAL) << "Couldn't convert KeyBase to Midi bytes";
 }
 
 }  // namespace command

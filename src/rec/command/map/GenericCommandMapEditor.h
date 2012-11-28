@@ -25,7 +25,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
   static const String getDescription(const Key&);
   static bool isValid(const Key&);
   static const String name();
-  static void assignNewKeyCallback(int result, CommandMapEditButton*, Key);
+  static void assignNewKeyCallback(int result, CommandMapEditButton*, const Key*);
   static void keyChosen(int result, CommandMapEditButton*);
 
   CommandID getCommand(const Key&);
@@ -71,7 +71,7 @@ setNewKey(CommandMapEditButton* button, const Key& newKey,
                             GenericCommandMapEditor<MappingSet,
                             Key>::assignNewKeyCallback,
                             button,
-                            Key(newKey)));
+                            &newKey));
     }
   }
 }

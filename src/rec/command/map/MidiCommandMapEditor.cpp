@@ -34,7 +34,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
       lastKey_ = msg;
       lastKeyEntered_ = true;
       thread::callAsync(this, &CommandEntryWindow::setMessage,
-                        owner_->getKeyMessage(msg));
+                        owner_->getKeyMessage(Key<MidiMessage>(msg)));
     }
 
     mappings_->requestOneMessage(this);
@@ -59,8 +59,8 @@ const String MidiCommandMapEditor::name() {
 }
 
 template <>
-const String MidiCommandMapEditor::getDescription(const MidiMessage& key) {
-  return midiName(key);
+const String MidiCommandMapEditor::getDescription(const KeyBase& key) {
+  return key.name();
 }
 
 template <>
@@ -70,7 +70,7 @@ void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
 }
 
 template <>
-bool MidiCommandMapEditor::isValid(const MidiMessage&) {
+bool MidiCommandMapEditor::isValid(const KeyBase&) {
   return true;
 }
 
@@ -84,27 +84,26 @@ MidiCommandMapEditor::KeyArray* MidiCommandMapEditor::getKeys(CommandID c) {
   ptr<KeyArray> result(new KeyArray);
   const vector<string> keys = mappings_.getKeys(static_cast<Command::Type>(c));
   for (vector<string>::const_iterator i = keys.begin(); i != keys.end(); ++i)
-    result->add(new MidiMessage(i->data(), i->size()));
+    result->add(makeKey(MidiMessage(i->data(), i->size())));
 
   return result.transfer();
 }
 
 template <>
-CommandID MidiCommandMapEditor::getCommand(const MidiMessage& key) {
-  return static_cast<CommandID>(mappings_.getCommand(mappings_.toBytes(key)));
+CommandID MidiCommandMapEditor::getCommand(const KeyBase& key) {
+  return static_cast<CommandID>(mappings_.getCommand(toBytes(key)));
 }
 
 template <>
-void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
-  mappings_.removeKey(mappings_.toBytes(key));
+void MidiCommandMapEditor::removeKey(const KeyBase& key) {
+  mappings_.removeKey(toBytes(key));
   mappings_.sendChangeMessage();
 }
 
 template <>
-void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key,
+void MidiCommandMapEditor::addKey(CommandID cmd, const KeyBase& key,
                                   int keyIndex) {
-  mappings_.addAtIndex(mappings_.toBytes(key), static_cast<Command::Type>(cmd),
-                       keyIndex);
+  mappings_.addAtIndex(toBytes(key), static_cast<Command::Type>(cmd), keyIndex);
   mappings_.sendChangeMessage();
 }
 
@@ -114,7 +113,7 @@ void MidiCommandMapEditor::keyChosen(int result, CommandMapEditButton* button) {
       button->getCommandEntryWindow());
   if (result && button && window && window->lastKeyEntered_) {
     window->setVisible (false);
-    window->owner()->setNewKey (button, window->lastKey_, false);
+    window->owner()->setNewKey(button, Key<MidiMessage>(window->lastKey_), false);
   }
   if (window)
     window->listen(false);
@@ -126,10 +125,10 @@ void MidiCommandMapEditor::keyChosen(int result, CommandMapEditButton* button) {
 template <>
 void MidiCommandMapEditor::assignNewKeyCallback(int result,
                                                 CommandMapEditButton* button,
-                                                MidiMessage key) {
+                                                const KeyBase* key) {
   if (result && button) {
     MidiCommandMapEditor* editor = dynamic_cast<MidiCommandMapEditor*>(&button->getOwner());
-    editor->setNewKey (button, key, true);
+    editor->setNewKey(button, *key, true);
   }
 }
 
