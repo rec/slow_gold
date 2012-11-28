@@ -15,8 +15,8 @@ class CommandEntryWindow;
 
 class CommandMapEditor : public Component, public ButtonListener {
  public:
-  CommandMapEditor(ApplicationCommandManager& commandManager,
-                   ChangeBroadcaster& broadcaster);
+  CommandMapEditor(ApplicationCommandManager* commandManager,
+                   ChangeBroadcaster* broadcaster);
   virtual ~CommandMapEditor();
 
   void initialize();
@@ -34,8 +34,9 @@ class CommandMapEditor : public Component, public ButtonListener {
   virtual bool shouldCommandBeIncluded(CommandID commandID);
   virtual bool isCommandReadOnly(CommandID commandID);
 
-  ApplicationCommandManager& getCommandManager() { return commandManager_; }
-  ChangeBroadcaster& getChangeBroadcaster() { return broadcaster_; }
+  ApplicationCommandManager* getCommandManager() { return commandManager_; }
+  ChangeBroadcaster* getChangeBroadcaster() { return broadcaster_; }
+
   enum ColourIds {
     backgroundColourId  = 0x100ad00,
     textColourId        = 0x100ad01,
@@ -54,8 +55,8 @@ class CommandMapEditor : public Component, public ButtonListener {
  protected:
   void addButton(TextButton*);
 
-  ApplicationCommandManager& commandManager_;
-  ChangeBroadcaster& broadcaster_;
+  ApplicationCommandManager* commandManager_;
+  ChangeBroadcaster* broadcaster_;
   TreeView tree;
   TextButton resetButton_;
   TextButton clearButton_;

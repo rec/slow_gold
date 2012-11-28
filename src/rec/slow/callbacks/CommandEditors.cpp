@@ -69,7 +69,7 @@ void clearMidiMappings() {
 void keyboardMappings() {
   Instance* i = Instance::getInstance();
   ApplicationCommandManager* manager = &i->applicationCommandManager_;
-  command::KeyCommandMapEditor comp(*manager, manager->getKeyMappings());
+  command::KeyCommandMapEditor comp(manager, manager->getKeyMappings());
   if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE))
     command::saveKeyboardBindings(manager);
 }
@@ -77,7 +77,7 @@ void keyboardMappings() {
 void midiMappings() {
   Instance* i = Instance::getInstance();
   ApplicationCommandManager* manager = &i->applicationCommandManager_;
-  command::MidiCommandMapEditor comp(*manager, i->midiCommandMap_.get());
+  command::MidiCommandMapEditor comp(manager, i->midiCommandMap_.get());
   if (displayEditorWindow(&comp, t_MIDI_EDITOR_TITLE))
     data::setProto(i->midiCommandMap_->getProto(), data::global());
 }

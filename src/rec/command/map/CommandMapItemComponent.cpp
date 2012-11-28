@@ -37,7 +37,7 @@ void CommandMapItemComponent::paint(Graphics& g) {
   g.setFont(getHeight() * HEIGHT_RATIO);
   g.setColour(findColour(CommandMapEditor::textColourId));
 
-  g.drawFittedText(owner_->getCommandManager().getNameOfCommand(commandID_),
+  g.drawFittedText(owner_->getCommandManager()->getNameOfCommand(commandID_),
                    TEXT_X_MARGIN, 0,
                    jmax(TEXT_WIDTH_MAX,
                         getChildComponent(0)->getX() - TEXT_X_TOTAL),

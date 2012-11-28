@@ -12,22 +12,22 @@ namespace command {
 CommandMapTopLevelItem::CommandMapTopLevelItem(CommandMapEditor& owner_)
     : owner (owner_) {
   setLinesDrawnForSubItems (false);
-  owner.getChangeBroadcaster().addChangeListener (this);
+  owner.getChangeBroadcaster()->addChangeListener(this);
 }
 
 CommandMapTopLevelItem::~CommandMapTopLevelItem() {
-  owner.getChangeBroadcaster().removeChangeListener (this);
+  owner.getChangeBroadcaster()->removeChangeListener(this);
 }
 
 void CommandMapTopLevelItem::changeListenerCallback(ChangeBroadcaster*) {
   const OpennessRestorer openness(*this);
   clearSubItems();
 
-  const StringArray categories(owner.getCommandManager().getCommandCategories());
+  const StringArray categories(owner.getCommandManager()->getCommandCategories());
 
   for (int i = 0; i < categories.size(); ++i) {
     const String& cat = categories[i];
-    const Array<CommandID> commands(owner.getCommandManager().
+    const Array<CommandID> commands(owner.getCommandManager()->
                                     getCommandsInCategory(cat));
     int count = 0;
 

@@ -29,8 +29,8 @@ const int TOP_RIGHT_PADDING = 10;
 
 }
 
-CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
-                                   ChangeBroadcaster& b)
+CommandMapEditor::CommandMapEditor(ApplicationCommandManager* manager,
+                                   ChangeBroadcaster* b)
     : commandManager_(manager), broadcaster_(b),
       resetButton_(t_RESET_TO_DEFAULTS),
       clearButton_(t_CLEAR_EDITOR),
@@ -114,12 +114,12 @@ bool CommandMapEditor::shouldCommandBeIncluded(const CommandID id) {
   if (id >= BEGIN && id <= END)
     return false;
 
-  const ApplicationCommandInfo* const ci = commandManager_.getCommandForID(id);
+  const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
   return ci && !(ci->flags & ApplicationCommandInfo::hiddenFromKeyEditor);
 }
 
 bool CommandMapEditor::isCommandReadOnly(const CommandID id) {
-  const ApplicationCommandInfo* const ci = commandManager_.getCommandForID(id);
+  const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
   DCHECK(ci);
   return ci && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor);
 }

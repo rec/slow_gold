@@ -18,7 +18,7 @@ String currentlyAssignedTo(const String& commandName);
 template <typename MappingSet>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
-  GenericCommandMapEditor(ApplicationCommandManager&, MappingSet*);
+  GenericCommandMapEditor(ApplicationCommandManager*, MappingSet*);
 
   // You must implement these separately for any actual instantiation of this class.
   static const String getDescription(const KeyBase&);
@@ -62,7 +62,7 @@ setNewKey(CommandMapEditButton* button, const KeyBase& newKey, bool dontAskUser)
         removeKey(button->commandID, button->keyNum);
       addKey(button->commandID, newKey, button->keyNum);
     } else {
-      showCommandMapBox(commandManager_.getNameOfCommand(previousCommand),
+      showCommandMapBox(commandManager_->getNameOfCommand(previousCommand),
                         this,
                         ModalCallbackFunction::forComponent(
                             GenericCommandMapEditor<MappingSet>::
@@ -74,8 +74,8 @@ setNewKey(CommandMapEditButton* button, const KeyBase& newKey, bool dontAskUser)
 
 template <typename MappingSet>
 GenericCommandMapEditor<MappingSet>::
-GenericCommandMapEditor(ApplicationCommandManager& manager, MappingSet* m)
-    : CommandMapEditor(manager, *m), mappings_(m) {
+GenericCommandMapEditor(ApplicationCommandManager* manager, MappingSet* m)
+    : CommandMapEditor(manager, m), mappings_(m) {
 }
 
 template <typename MappingSet>
@@ -115,7 +115,7 @@ getKeyMessage(const KeyBase& key) {
   String message(name() + ": " + getDescription(key));
   const CommandID previousCommand = getCommand(key);
   if (previousCommand) {
-    String pn = getCommandManager().getNameOfCommand(previousCommand);
+    String pn = getCommandManager()->getNameOfCommand(previousCommand);
     message += currentlyAssignedTo(pn);
   }
 

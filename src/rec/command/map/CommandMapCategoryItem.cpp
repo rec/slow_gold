@@ -31,7 +31,7 @@ void CommandMapCategoryItem::itemOpennessChanged(bool isNowOpen) {
   if (!isNowOpen) {
     clearSubItems();
   } else if (getNumSubItems() == 0) {
-    Array<CommandID> commands(owner_->getCommandManager().
+    Array<CommandID> commands(owner_->getCommandManager()->
                               getCommandsInCategory(categoryName_));
 
     for (int i = 0; i < commands.size(); ++i) {
