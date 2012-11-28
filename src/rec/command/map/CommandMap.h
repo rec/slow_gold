@@ -13,8 +13,7 @@ namespace command {
 class CommandMap {
  public:
   typedef command::Command::Type CommandType;
-  typedef string Key;
-  typedef vector<Key> KeyVector;
+  typedef vector<string> KeyVector;
 
   CommandMap() {}
   virtual ~CommandMap() {}
@@ -23,21 +22,21 @@ class CommandMap {
 
   const CommandMapProto getProto() const;
 
-  CommandType getCommand(const Key&) const;
+  CommandType getCommand(const string&) const;
   const KeyVector& getKeys(CommandType) const;
 
-  bool invokeAsync(const Key&, ApplicationCommandManager*) const;
+  bool invokeAsync(const string&, ApplicationCommandManager*) const;
 
   void removeCommand(CommandType command, uint keyIndex);
-  void removeKey(const Key& key);
+  void removeKey(const string& key);
 
-  bool addAtIndex(const Key& key, CommandType command, uint index);
+  bool addAtIndex(const string& key, CommandType command, uint index);
 
  private:
-  bool add(const Key& key, CommandType command);
-  bool addKey(const Key& key, CommandType command);
+  bool add(const string& key, CommandType command);
+  bool addKey(const string& key, CommandType command);
 
-  typedef std::map<Key, CommandType> KeyToCommand;
+  typedef std::map<string, CommandType> KeyToCommand;
   typedef std::map<CommandType, KeyVector> CommandToKeys;
 
   KeyToCommand toCommand_;

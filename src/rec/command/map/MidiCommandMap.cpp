@@ -50,6 +50,7 @@ const string toBytes(const KeyBase& key) {
     result = toBytes(*mm);
   else
     LOG(DFATAL) << "Couldn't convert KeyBase to Midi bytes";
+  return result;
 }
 
 }  // namespace command
