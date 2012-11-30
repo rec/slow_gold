@@ -9,16 +9,16 @@ namespace command {
 class CommandMapTopLevelItem : public TreeViewItem,
                                public ChangeListener {
  public:
-  explicit CommandMapTopLevelItem(CommandMapEditor&);
+  explicit CommandMapTopLevelItem(CommandMapEditor*);
   ~CommandMapTopLevelItem();
 
-  bool mightContainSubItems()       { return true; }
-  String getUniqueName() const      { return "keys"; }
+  bool mightContainSubItems() { return true; }
+  String getUniqueName() const { return "keys"; }
 
   void changeListenerCallback(ChangeBroadcaster*);
 
  protected:
-  CommandMapEditor& owner;
+  CommandMapEditor* owner_;
 };
 
 }  // namespace command

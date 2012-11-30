@@ -103,6 +103,7 @@ void MidiCommandMapEditor::removeKey(const KeyBase& key) {
 template <>
 void MidiCommandMapEditor::addKey(CommandID cmd, const KeyBase& key,
                                   int keyIndex) {
+  DLOG(INFO) << "adding key " << cmd << ", " << keyIndex;
   Command::Type c = static_cast<Command::Type>(cmd);
   if (keyIndex >= 0)
     mappings_->addAtIndex(toBytes(key), c, keyIndex);

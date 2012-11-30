@@ -14,7 +14,7 @@ str {
 str {
   original: "(None)"
   file: "rec/command/map/CommandMapTopLevelItem.cpp"
-  line: 7
+  line: 4
 }
 str {
   original: "..."
@@ -78,9 +78,14 @@ str {
   original: "Always keep the time cursor in the window."
 }
 str {
-  original: "Are you sure you want to reset all the key mappings to their default state?"
-  file: "rec/command/map/CommandMapTopLevelItem.cpp"
-  line: 5
+  original: "Are you sure you want to clear all your changes?"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 22
+}
+str {
+  original: "Are you sure you want to reset all the command assignments to their default state?"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 21
 }
 str {
   original: "Artist"
@@ -159,6 +164,11 @@ str {
   original: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
 }
 str {
+  original: "Choose A New File For Export"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 24
+}
+str {
   original: "Choose File To Save to"
   file: "rec/slow/callbacks/SaveFile.cpp"
   line: 32
@@ -191,7 +201,7 @@ str {
 str {
   original: "Clear Changes"
   file: "rec/command/map/CommandMapEditor.cpp"
-  line: 16
+  line: 17
 }
 str {
   original: "Clear Keyboard Mappings"
@@ -460,7 +470,7 @@ str {
 str {
   original: "Export..."
   file: "rec/command/map/CommandMapEditor.cpp"
-  line: 17
+  line: 18
 }
 str {
   original: "File"
@@ -533,7 +543,7 @@ str {
 str {
   original: "Import..."
   file: "rec/command/map/CommandMapEditor.cpp"
-  line: 18
+  line: 19
 }
 str {
   original: "Indonesian"
@@ -847,6 +857,11 @@ str {
   original: "Open a dialog to select a new audio file for looping."
 }
 str {
+  original: "Open A File For Import"
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 25
+}
+str {
   original: "Open recent"
   file: "rec/slow/BasicMenuMaker.cpp"
   line: 21
@@ -998,18 +1013,13 @@ str {
 }
 str {
   original: "Reset"
-  file: "rec/command/map/CommandMapTopLevelItem.cpp"
-  line: 6
-}
-str {
-  original: "Reset to defaults"
-  file: "rec/command/map/CommandMapTopLevelItem.cpp"
-  line: 4
+  file: "rec/command/map/CommandMapEditor.cpp"
+  line: 23
 }
 str {
   original: "Reset To Factory Default"
   file: "rec/command/map/CommandMapEditor.cpp"
-  line: 15
+  line: 16
 }
 str {
   original: "Reset Volume"

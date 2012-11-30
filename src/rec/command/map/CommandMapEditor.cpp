@@ -68,7 +68,7 @@ void CommandMapEditor::initialize() {
 void CommandMapEditor::resetTreeItem() {
   if (treeItem_)
     tree.setRootItem(NULL);
-  treeItem_.reset(new CommandMapTopLevelItem(*this));
+  treeItem_.reset(new CommandMapTopLevelItem(this));
   tree.setRootItem(treeItem_.get());
 }
 
