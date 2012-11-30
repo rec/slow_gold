@@ -23,6 +23,7 @@ TRAN(SURE_YOU_CLEAR, "Are you sure you want to clear all your changes?");
 TRAN(RESET, "Reset");
 TRAN(CHOOSE_EXPORT_FILE, "Choose A New File For Export");
 TRAN(CHOOSE_IMPORT_FILE, "Open A File For Import");
+TRAN(CURRENTLY_ASSIGNED, "Currently assigned to");
 
 namespace rec {
 namespace command {
@@ -33,6 +34,10 @@ const int BUTTON_HEIGHT = 20;
 const double MAX_BUTTON_PADDING = 8.0;
 const int BUTTON_Y_PADDING = 8;
 const int TOP_RIGHT_PADDING = 10;
+
+String currentlyAssignedTo(const String& commandName) {
+  return str("\n\n(" + t_CURRENTLY_ASSIGNED + " \"" + commandName + "\")");
+}
 
 }
 
@@ -212,6 +217,17 @@ void CommandMapEditor::clearButton() {
       t_CANCEL,
       this,
       ModalCallbackFunction::forComponent(clearCallback, this));
+}
+
+const String CommandMapEditor::getKeyMessage(const string& key) {
+  String message(name() + ": " + getDescription(key));
+  const CommandID previousCommand = getCommand(key);
+  if (previousCommand) {
+    String pn = getCommandManager()->getNameOfCommand(previousCommand);
+    message += currentlyAssignedTo(pn);
+  }
+
+  return message;
 }
 
 

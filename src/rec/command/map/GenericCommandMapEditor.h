@@ -24,7 +24,6 @@ class GenericCommandMapEditor : public CommandMapEditor {
   static void assignNewKeyCallback(int result, CommandMapEditButton*, const string*);
   static void keyChosen(int result, CommandMapEditButton*);
 
-  CommandID getCommand(const string&);
   void removeKey(const string&);
   void addKey(CommandID, const string&, int keyIndex);
   void removeKey(CommandID, int keyNum);
@@ -33,7 +32,6 @@ class GenericCommandMapEditor : public CommandMapEditor {
   KeyArray getKeys(CommandID);
   CommandEntryWindow* newWindow();
 
-  const String getKeyMessage(const string& key);
   void setNewKey(CommandMapEditButton*, const string&, bool dontAskUser);
   virtual const String getDescriptionForKey(const string& key) const;
   virtual void addButton(CommandMapEditButton* b);
@@ -42,9 +40,10 @@ class GenericCommandMapEditor : public CommandMapEditor {
 
   static const int MAX_NUM_ASSIGNMENTS = 3;
 
- private:
+ protected:
   MappingSet* mappings_;
 
+ private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GenericCommandMapEditor);
 };
 
@@ -105,19 +104,6 @@ addChildren(CommandMapItemComponent* comp) {
   for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
     comp->addButton(getDescriptionForKey(keys[i]), i, isReadOnly);
   comp->addButton(String::empty, -1, isReadOnly);
-}
-
-template <typename MappingSet>
-const String GenericCommandMapEditor<MappingSet>::
-getKeyMessage(const string& key) {
-  String message(name() + ": " + getDescription(key));
-  const CommandID previousCommand = getCommand(key);
-  if (previousCommand) {
-    String pn = getCommandManager()->getNameOfCommand(previousCommand);
-    message += currentlyAssignedTo(pn);
-  }
-
-  return message;
 }
 
 }  // namespace command

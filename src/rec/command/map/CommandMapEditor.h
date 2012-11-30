@@ -30,6 +30,7 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;
   virtual const String getDescription(const string&) const = 0;
+  virtual CommandID getCommand(const string&) = 0;
 
   virtual void doReset() {}
   virtual void doClear() {}
@@ -37,7 +38,7 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual void doImport(const File&) {}
 
   virtual CommandEntryWindow* newWindow() = 0;
-
+  const String getKeyMessage(const string& key);
 
   virtual void buttonClicked(Button* button);
 

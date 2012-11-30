@@ -42,6 +42,10 @@ const String KeyCommandMapEditor::getDescription(const string& key) const {
   return keyPressFromString(key).getTextDescriptionWithIcons();
 }
 
+CommandID KeyCommandMapEditor::getCommand(const string& key) {
+  return mappings_->findCommandForKeyPress(keyPressFromString(key));
+}
+
 template <>
 void KeyCommandMapEditorBase::removeKey(CommandID command, int keyNum) {
   mappings_->removeKeyPress(command, keyNum);
@@ -54,11 +58,6 @@ KeyCommandMapEditorBase::KeyArray KeyCommandMapEditorBase::getKeys(CommandID cmd
   for (int i = 0; i < kp.size(); ++i)
     keyArray.add(toString(kp[i]));
   return keyArray;
-}
-
-template <>
-CommandID KeyCommandMapEditorBase::getCommand(const string& key) {
-  return mappings_->findCommandForKeyPress(keyPressFromString(key));
 }
 
 template <>

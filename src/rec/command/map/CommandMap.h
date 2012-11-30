@@ -17,7 +17,6 @@ class CommandMap : public ChangeBroadcaster {
 
   CommandMap() {}
   virtual ~CommandMap() {}
-
   void addCommands(const CommandMapProto&);
 
   const CommandMapProto getProto() const;

@@ -62,6 +62,10 @@ const String MidiCommandMapEditor::getDescription(const string& key) const {
   return midiName(midiFromString(key));
 }
 
+CommandID MidiCommandMapEditor::getCommand(const string& key) {
+  return static_cast<CommandID>(mappings_->getCommand(key));
+}
+
 template <>
 void MidiCommandMapEditorBase::removeKey(CommandID command, int keyNum) {
   mappings_->removeCommand(static_cast<Command::Type>(command), keyNum);
@@ -81,11 +85,6 @@ MidiCommandMapEditorBase::KeyArray MidiCommandMapEditorBase::getKeys(CommandID c
   for (uint i = 0; i < keys.size(); ++i)
     result[i] = keys[i];
   return result;
-}
-
-template <>
-CommandID MidiCommandMapEditorBase::getCommand(const string& key) {
-  return static_cast<CommandID>(mappings_->getCommand(key));
 }
 
 template <>
