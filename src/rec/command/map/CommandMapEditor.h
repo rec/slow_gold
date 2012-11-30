@@ -28,6 +28,7 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual void removeButton(CommandMapEditButton* button) = 0;
   virtual void addChildren(CommandMapItemComponent* comp) = 0;
   virtual const String name() const = 0;
+  virtual bool isValid(const string&) const = 0;
 
   virtual void doReset() {}
   virtual void doClear() {}

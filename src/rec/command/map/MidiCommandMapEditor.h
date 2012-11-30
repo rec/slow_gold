@@ -18,6 +18,7 @@ class MidiCommandMapEditor : public MidiCommandMapEditorBase {
   }
 
   virtual const String name() const;
+  virtual bool isValid(const string&) const { return true; }
 
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandMapEditor);

@@ -34,6 +34,10 @@ const String KeyCommandMapEditor::name() const {
   return t_KEY;
 }
 
+bool KeyCommandMapEditor::isValid(const string& key) const {
+  return keyPressFromString(key).isValid();
+}
+
 template <>
 const String KeyCommandMapEditorBase::getDescription(const string& key) {
   return keyPressFromString(key).getTextDescriptionWithIcons();
@@ -54,11 +58,6 @@ KeyCommandMapEditorBase::KeyArray KeyCommandMapEditorBase::getKeys(CommandID cmd
 }
 
 template <>
-bool KeyCommandMapEditorBase::isValid(const string& key) {
-  return keyPressFromString(key).isValid();
-}
-
-template <>
 CommandID KeyCommandMapEditorBase::getCommand(const string& key) {
   return mappings_->findCommandForKeyPress(keyPressFromString(key));
 }
@@ -70,7 +69,7 @@ void KeyCommandMapEditorBase::removeKey(const string& key) {
 
 template <>
 void KeyCommandMapEditorBase::addKey(CommandID cmd, const string& key,
-                                 int keyIndex) {
+                                     int keyIndex) {
   mappings_->addKeyPress(cmd, keyPressFromString(key), keyIndex);
 }
 
@@ -81,7 +80,7 @@ CommandEntryWindow* KeyCommandMapEditorBase::newWindow() {
 
 template <>
 void KeyCommandMapEditorBase::keyChosen(int result,
-                                    CommandMapEditButton* button) {
+                                        CommandMapEditButton* button) {
   KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(
       button->getCommandEntryWindow());
   if (result && button && window) {

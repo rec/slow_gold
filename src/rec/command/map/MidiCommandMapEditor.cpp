@@ -70,11 +70,6 @@ void MidiCommandMapEditorBase::removeKey(CommandID command, int keyNum) {
 }
 
 template <>
-bool MidiCommandMapEditorBase::isValid(const string&) {
-  return true;
-}
-
-template <>
 CommandEntryWindow* MidiCommandMapEditorBase::newWindow() {
   return new MidiCommandEntryWindow(this, mappings_);
 }
