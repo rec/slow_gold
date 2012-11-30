@@ -8,7 +8,18 @@
 namespace rec {
 namespace command {
 
-typedef GenericCommandMapEditor<MidiCommandMap> MidiCommandMapEditor;
+typedef GenericCommandMapEditor<MidiCommandMap> MidiCommandMapEditorBase;
+
+class MidiCommandMapEditor : public MidiCommandMapEditorBase {
+ public:
+  typedef GenericCommandMapEditor<MidiCommandMap> Super;
+  MidiCommandMapEditor(ApplicationCommandManager* acm, MidiCommandMap* mcm)
+      : Super(acm, mcm) {
+  }
+
+ private:
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandMapEditor);
+};
 
 }  // namespace command
 }  // namespace rec

@@ -18,7 +18,7 @@ namespace {
 class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
-  MidiCommandEntryWindow(MidiCommandMapEditor* owner, MidiCommandMap* mappings)
+  MidiCommandEntryWindow(MidiCommandMapEditorBase* owner, MidiCommandMap* mappings)
       : CommandEntryWindow(t_WAITING),
         lastKeyEntered_(false),
         owner_(owner),
@@ -41,12 +41,12 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
     mappings_->requestOneMessage(this);
   }
 
-	MidiCommandMapEditor* owner() { return owner_; }
+	MidiCommandMapEditorBase* owner() { return owner_; }
   MidiMessage lastKey_;
   bool lastKeyEntered_;
 
  private:
-  MidiCommandMapEditor* owner_;
+  MidiCommandMapEditorBase* owner_;
   MidiCommandMap* mappings_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandEntryWindow);
@@ -55,33 +55,33 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
 }  // namespace
 
 template <>
-const String MidiCommandMapEditor::name() {
+const String MidiCommandMapEditorBase::name() {
   return t_MIDI;
 }
 
 template <>
-const String MidiCommandMapEditor::getDescription(const string& key) {
+const String MidiCommandMapEditorBase::getDescription(const string& key) {
   return midiName(midiFromString(key));
 }
 
 template <>
-void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
+void MidiCommandMapEditorBase::removeKey(CommandID command, int keyNum) {
   mappings_->removeCommand(static_cast<Command::Type>(command), keyNum);
   mappings_->sendChangeMessage();
 }
 
 template <>
-bool MidiCommandMapEditor::isValid(const string&) {
+bool MidiCommandMapEditorBase::isValid(const string&) {
   return true;
 }
 
 template <>
-CommandEntryWindow* MidiCommandMapEditor::newWindow() {
+CommandEntryWindow* MidiCommandMapEditorBase::newWindow() {
   return new MidiCommandEntryWindow(this, mappings_);
 }
 
 template <>
-MidiCommandMapEditor::KeyArray MidiCommandMapEditor::getKeys(CommandID c) {
+MidiCommandMapEditorBase::KeyArray MidiCommandMapEditorBase::getKeys(CommandID c) {
   vector<string> keys(mappings_->getKeys(static_cast<Command::Type>(c)));
   KeyArray result;
 
@@ -91,18 +91,18 @@ MidiCommandMapEditor::KeyArray MidiCommandMapEditor::getKeys(CommandID c) {
 }
 
 template <>
-CommandID MidiCommandMapEditor::getCommand(const string& key) {
+CommandID MidiCommandMapEditorBase::getCommand(const string& key) {
   return static_cast<CommandID>(mappings_->getCommand(key));
 }
 
 template <>
-void MidiCommandMapEditor::removeKey(const string& key) {
+void MidiCommandMapEditorBase::removeKey(const string& key) {
   mappings_->removeKey(key);
   mappings_->sendChangeMessage();
 }
 
 template <>
-void MidiCommandMapEditor::addKey(CommandID cmd, const string& key,
+void MidiCommandMapEditorBase::addKey(CommandID cmd, const string& key,
                                   int keyIndex) {
   DLOG(INFO) << "adding key " << cmd << ", " << keyIndex;
   Command::Type c = static_cast<Command::Type>(cmd);
@@ -112,7 +112,7 @@ void MidiCommandMapEditor::addKey(CommandID cmd, const string& key,
 }
 
 template <>
-void MidiCommandMapEditor::keyChosen(int result, CommandMapEditButton* button) {
+void MidiCommandMapEditorBase::keyChosen(int result, CommandMapEditButton* button) {
   MidiCommandEntryWindow* window = dynamic_cast<MidiCommandEntryWindow*>(
       button->getCommandEntryWindow());
   if (result && button && window && window->lastKeyEntered_) {
@@ -127,11 +127,11 @@ void MidiCommandMapEditor::keyChosen(int result, CommandMapEditButton* button) {
 
 
 template <>
-void MidiCommandMapEditor::assignNewKeyCallback(int result,
+void MidiCommandMapEditorBase::assignNewKeyCallback(int result,
                                                 CommandMapEditButton* button,
                                                 const string* key) {
   if (result && button) {
-    MidiCommandMapEditor* editor = dynamic_cast<MidiCommandMapEditor*>(&button->getOwner());
+    MidiCommandMapEditorBase* editor = dynamic_cast<MidiCommandMapEditorBase*>(&button->getOwner());
     editor->setNewKey(button, *key, true);
   }
 }
