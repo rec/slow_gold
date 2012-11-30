@@ -38,8 +38,7 @@ bool KeyCommandMapEditor::isValid(const string& key) const {
   return keyPressFromString(key).isValid();
 }
 
-template <>
-const String KeyCommandMapEditorBase::getDescription(const string& key) {
+const String KeyCommandMapEditor::getDescription(const string& key) const {
   return keyPressFromString(key).getTextDescriptionWithIcons();
 }
 

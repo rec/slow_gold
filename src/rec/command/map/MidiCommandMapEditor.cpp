@@ -58,8 +58,7 @@ const String MidiCommandMapEditor::name() const {
   return t_MIDI;
 }
 
-template <>
-const String MidiCommandMapEditorBase::getDescription(const string& key) {
+const String MidiCommandMapEditor::getDescription(const string& key) const {
   return midiName(midiFromString(key));
 }
 
