@@ -54,6 +54,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
 template <typename MappingSet>
 void GenericCommandMapEditor<MappingSet>::
 setNewKey(CommandMapEditButton* button, const KeyBase& newKey, bool dontAskUser) {
+  DLOG(INFO) << "adding new key";
   if (isValid(newKey)) {
     const CommandID previousCommand = getCommand(newKey);
     if (previousCommand == 0 || dontAskUser) {

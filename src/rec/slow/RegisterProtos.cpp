@@ -10,6 +10,7 @@
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/data/DataCenter.h"
 #include "rec/gui/RecentFiles.pb.h"
+#include "rec/gui/DialogFiles.pb.h"
 #include "rec/gui/WindowPosition.pb.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -39,6 +40,7 @@ void registerProtos() {
   registerClass<command::Commands>(r);
   registerClass<gui::RecentFiles>(r);
   registerClass<gui::WindowPosition>(r);
+  registerClass<gui::DialogFiles>(r);
   registerClass<music::Metadata>(r);
   registerClass<slow::AppLayout>(r);
   registerClass<slow::GuiSettings>(r);
