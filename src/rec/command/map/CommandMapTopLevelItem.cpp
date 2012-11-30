@@ -1,9 +1,6 @@
 #include "rec/command/map/CommandMapTopLevelItem.h"
 #include "rec/base/Trans.h"
 
-TRAN(RESET_TO_DEFAULTS, "Reset to defaults");
-TRAN(SURE_YOU_RESET, "Are you sure you want to reset all the key mappings to their default state?");
-TRAN(RESET, "Reset");
 TRAN(NONE, "(None)");
 
 namespace rec {

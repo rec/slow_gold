@@ -16,6 +16,10 @@ TRAN(RESET_TO_DEFAULTS, "Reset To Factory Default");
 TRAN(CLEAR_EDITOR, "Clear Changes");
 TRAN(EXPORT_EDITOR, "Export...");
 TRAN(IMPORT_EDITOR, "Import...");
+TRAN(SURE_YOU_RESET, "Are you sure you want to reset all the command "
+     "assignments to their default state?");
+TRAN(SURE_YOU_CLEAR, "Are you sure you want to clear all your changes?");
+TRAN(RESET, "Reset");
 
 namespace rec {
 namespace command {
@@ -127,18 +131,18 @@ bool CommandMapEditor::isCommandReadOnly(const CommandID id) {
 void CommandMapEditor::buttonClicked(Button* button) {
   DLOG(INFO) << "button clicked";
   if (button == &resetButton_)
-    reset();
+    resetButton();
   else if (button == &clearButton_)
-    clear();
+    clearButton();
   else if (button == &exportButton_)
-    exportSetting();
+    exportButton();
   else if (button == &importButton_)
-    import();
+    importButton();
   else if (button == &okButton_)
-    ok();
+    okButton();
 }
 
-void CommandMapEditor::ok() {
+void CommandMapEditor::okButton() {
   using namespace juce;
   if (DocumentWindow* dw = dynamic_cast<DocumentWindow*>(getParentComponent()))
     dw->closeButtonPressed();
@@ -146,19 +150,44 @@ void CommandMapEditor::ok() {
     LOG(DFATAL) << "Parent window wasn't a document window!";
 }
 
-#if 0
-  static void resetToDefaultsCallback(int result, CommandMapEditor* owner) {}
+void CommandMapEditor::exportButton() {
+}
 
-void CommandMapTopLevelItem::reset() {
+void CommandMapEditor::importButton() {
+}
+
+static void resetCallback(int result, CommandMapEditor* owner) {
+  if (result)
+    owner->doReset();
+}
+
+static void clearCallback(int result, CommandMapEditor* owner) {
+  if (result)
+    owner->doClear();
+}
+
+void CommandMapEditor::resetButton() {
   AlertWindow::showOkCancelBox(
       AlertWindow::QuestionIcon,
       t_RESET_TO_DEFAULTS,
       t_SURE_YOU_RESET,
       t_RESET,
-      String::empty,
-      &owner,
-      ModalCallbackFunction::forComponent(resetToDefaultsCallback, &owner));
+      t_CANCEL,
+      this,
+      ModalCallbackFunction::forComponent(resetCallback, this));
 }
-#endif
+
+void CommandMapEditor::clearButton() {
+  AlertWindow::showOkCancelBox(
+      AlertWindow::QuestionIcon,
+      t_CLEAR_EDITOR,
+      t_SURE_YOU_CLEAR,
+      t_CLEAR_EDITOR,
+      t_CANCEL,
+      this,
+      ModalCallbackFunction::forComponent(clearCallback, this));
+}
+
+
 }  // namespace command
 }  // namespace rec

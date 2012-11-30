@@ -21,6 +21,9 @@ class DialogLocker {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(DialogLocker);
 };
 
+File getDirectoryForDialog(const string& dialogName);
+void setDirectoryForDialog(const string& dialogName, const File& directory);
+
 namespace dialog {
 
 typedef bool (*FileChooserFunction)(FileChooser*);
@@ -29,14 +32,18 @@ inline bool browseForFileToOpen(FileChooser* fc) {
   return fc->browseForFileToOpen();
 }
 
+inline bool browseForFileToSave(FileChooser* fc) {
+  return fc->browseForFileToSave(true);
+}
+
 template <typename FileList>
 bool openVirtualFile(Listener<const FileList&>* listener,
+                     const string& dialogName,
                      const String& title,
                      const String& patterns,
-                     FileChooserFunction function = &browseForFileToOpen,
-                     const File& initial = File::nonexistent);
+                     FileChooserFunction function = &browseForFileToOpen);
 
-bool openOneFile(Listener<const VirtualFile&>* listener);
+bool openOneAudioFile(Listener<const VirtualFile&>* listener);
 
 void shutdownDialog();
 

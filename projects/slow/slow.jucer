@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="7N9gY0bcO" name="SlowGold">
+  <MAINGROUP id="wZNhLiD28" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -1548,6 +1548,10 @@
                 name="Color.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Color.pb.h" id="YPqPudTGj"
                 name="Color.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/gui/DialogFiles.pb.cc"
+                id="9o12RSNlZ" name="DialogFiles.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/gui/DialogFiles.pb.h"
+                id="jkEmchXQa" name="DialogFiles.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/Font.pb.cc" id="oIhucDqLe"
                 name="Font.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Font.pb.h" id="X0lLhQQBa"
@@ -1665,7 +1669,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="YYebkuoT8" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="WQt9y958J" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

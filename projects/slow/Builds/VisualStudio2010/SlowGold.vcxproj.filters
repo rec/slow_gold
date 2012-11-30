@@ -1324,6 +1324,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\DialogFiles.pb.cc">
+      <Filter>SlowGold\proto\rec\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClCompile>
@@ -3808,6 +3811,9 @@
       <Filter>SlowGold\proto\rec\data\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.h">
+      <Filter>SlowGold\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\DialogFiles.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h">

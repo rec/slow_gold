@@ -110,7 +110,7 @@ void closeFile() {
 
 void open() {
   Instance* i = Instance::getInstance();
-  gui::dialog::openOneFile(i->currentFile_.get());
+  gui::dialog::openOneAudioFile(i->currentFile_.get());
 }
 
 void quit() {

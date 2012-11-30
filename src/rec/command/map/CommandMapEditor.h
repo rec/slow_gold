@@ -45,12 +45,17 @@ class CommandMapEditor : public Component, public ButtonListener {
   virtual void parentHierarchyChanged();
   virtual void resized();
 
+  virtual void doReset() {}
+  virtual void doClear() {}
+  virtual void doExport() {}
+  virtual void doImport() {}
+
   // Callbacks from the buttons.
-  virtual void reset() {}
-  virtual void clear() {}
-  virtual void exportSetting() {}
-  virtual void import() {}
-  virtual void ok();
+  void resetButton();
+  virtual void clearButton();
+  virtual void exportButton();
+  virtual void importButton();
+  void okButton();
 
  protected:
   void addButton(TextButton*);

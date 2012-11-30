@@ -214,6 +214,7 @@
 		9EE3A4CE706D65F5FF72DBD8 /* juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 48914CDDADAC1917DED24DED /* juce_gui_basics.mm */; };
 		9F5041C6240BFA6051A8F95F /* scantoken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92FFBBBF13500E7E57B53277 /* scantoken.cpp */; };
 		A025494398BA4FE0BBEAF01D /* CommandDataSetter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 179F9B3777E33C14D1835269 /* CommandDataSetter.cpp */; };
+		A12CD8A62AB4A0B53EFE2C37 /* DialogFiles.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 80519C9163A335032BD19884 /* DialogFiles.pb.cc */; };
 		A2A2537EC82C0809EB95497E /* CommandMapItemComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8177DEAFB9F42219967818DD /* CommandMapItemComponent.cpp */; };
 		A2E759E08657FE4F37262791 /* Convertors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76D7FE5873C8CD56E0E5992C /* Convertors.cpp */; };
 		A39077BC9D85E1E477BB217A /* AppSettings.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 23BA1FF4D7F71BB2522F33D3 /* AppSettings.pb.cc */; };
@@ -1119,6 +1120,7 @@
 		8005CA808CE0D1FA2BEFF63B /* juce_win32_Fonts.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_Fonts.cpp; path = ../../../../../juce/modules/juce_graphics/native/juce_win32_Fonts.cpp; sourceTree = SOURCE_ROOT; };
 		80233EA1259D9282E4E1E02A /* juce_android_Misc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_Misc.cpp; path = ../../../../../juce/modules/juce_core/native/juce_android_Misc.cpp; sourceTree = SOURCE_ROOT; };
 		8025E30BAE5D11E58046BA78 /* juce_DynamicObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_DynamicObject.h; path = ../../../../../juce/modules/juce_core/containers/juce_DynamicObject.h; sourceTree = SOURCE_ROOT; };
+		80519C9163A335032BD19884 /* DialogFiles.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DialogFiles.pb.cc; path = ../../../../genfiles/proto/rec/gui/DialogFiles.pb.cc; sourceTree = SOURCE_ROOT; };
 		8054064E5022AE846F15A464 /* Stretch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretch.h; path = ../../../../src/rec/audio/stretch/Stretch.h; sourceTree = SOURCE_ROOT; };
 		814FCBBB2DC13D141BEC2265 /* es-TranslatedStrings.def.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "es-TranslatedStrings.def.cpp"; path = "../../../../genfiles/translation/rec/translation/es-TranslatedStrings.def.cpp"; sourceTree = SOURCE_ROOT; };
 		816E31A003C07FED3CEF0EC7 /* stringsource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stringsource.h; path = ../../../../src/rec/data/yaml/src/stringsource.h; sourceTree = SOURCE_ROOT; };
@@ -1802,6 +1804,7 @@
 		F0946443927CEB56D8461343 /* juce_ButtonPropertyComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ButtonPropertyComponent.h; path = ../../../../../juce/modules/juce_gui_basics/properties/juce_ButtonPropertyComponent.h; sourceTree = SOURCE_ROOT; };
 		F0B99DF69DE6ABF928323F18 /* juce_OpenGLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OpenGLContext.h; path = ../../../../../juce/modules/juce_opengl/opengl/juce_OpenGLContext.h; sourceTree = SOURCE_ROOT; };
 		F0BE856CB8569D730B407A73 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
+		F0DBE9E4985A64BA1BD999E3 /* DialogFiles.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DialogFiles.pb.h; path = ../../../../genfiles/proto/rec/gui/DialogFiles.pb.h; sourceTree = SOURCE_ROOT; };
 		F0F5FF199B9A2AB463518E3D /* juce_win32_Midi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_win32_Midi.cpp; path = ../../../../../juce/modules/juce_audio_devices/native/juce_win32_Midi.cpp; sourceTree = SOURCE_ROOT; };
 		F0FCBC807FE7E68A2AB49182 /* CommandEditors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandEditors.cpp; path = ../../../../src/rec/slow/callbacks/CommandEditors.cpp; sourceTree = SOURCE_ROOT; };
 		F100DE5626E97904C7F06156 /* RepeatedCallbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RepeatedCallbacks.cpp; path = ../../../../src/rec/slow/callbacks/RepeatedCallbacks.cpp; sourceTree = SOURCE_ROOT; };
@@ -2334,18 +2337,6 @@
 				0DC5FB2451162BE85596CF56 /* AppSettings.pb.h */,
 			);
 			name = app;
-			sourceTree = "<group>";
-		};
-		28C0521DA99E02482D1970F6 /* SlowGold */ = {
-			isa = PBXGroup;
-			children = (
-				00EC1EAD27F9AD98F67EF1BB /* translation */,
-				8C5C75096A7B1FC71C209B64 /* rec */,
-				189216F6ED0DFE593970D3B5 /* icon */,
-				A374C7486F7AFC6EDED72C7F /* proto */,
-				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
-			);
-			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		29516E11B7CF1E2E66AEEF9C /* capture */ = {
@@ -3331,7 +3322,7 @@
 		7D19445674B4E0F8BA4B6FDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				28C0521DA99E02482D1970F6 /* SlowGold */,
+				BCADAB7AE06810375170132B /* SlowGold */,
 				FAD54DA50567E027AD0C5740 /* Juce Modules */,
 				BF92DDB8D6E2065CE205851B /* Juce Library Code */,
 				05C24AFFDB64894F0FC02514 /* Resources */,
@@ -3624,6 +3615,8 @@
 			children = (
 				DCB3D4ACFE8C84408FDBAB6A /* Color.pb.cc */,
 				8807608C46DC0DC0C03E664D /* Color.pb.h */,
+				80519C9163A335032BD19884 /* DialogFiles.pb.cc */,
+				F0DBE9E4985A64BA1BD999E3 /* DialogFiles.pb.h */,
 				89CD4F18B84EF4CECF2EDD94 /* Font.pb.cc */,
 				DE3B5C35AC285155EA24110F /* Font.pb.h */,
 				C084637937A901026F39BB26 /* Geometry.pb.cc */,
@@ -4096,6 +4089,18 @@
 				0DFA414AD608E845FF20A928 /* util */,
 			);
 			name = audio;
+			sourceTree = "<group>";
+		};
+		BCADAB7AE06810375170132B /* SlowGold */ = {
+			isa = PBXGroup;
+			children = (
+				00EC1EAD27F9AD98F67EF1BB /* translation */,
+				8C5C75096A7B1FC71C209B64 /* rec */,
+				189216F6ED0DFE593970D3B5 /* icon */,
+				A374C7486F7AFC6EDED72C7F /* proto */,
+				6AC3598B7BB4FD56696B2837 /* Main.cpp */,
+			);
+			name = SlowGold;
 			sourceTree = "<group>";
 		};
 		BE058408ADE877387B7268AD /* native */ = {
@@ -5241,6 +5246,7 @@
 				26E216F955C3373E50119679 /* TestData.pb.cc in Sources */,
 				BCBA8225676D6F6B798DF320 /* Value.pb.cc in Sources */,
 				3E7533CBC30D59F42C35DC86 /* Color.pb.cc in Sources */,
+				A12CD8A62AB4A0B53EFE2C37 /* DialogFiles.pb.cc in Sources */,
 				259090295D8BAC02A0F5C4D0 /* Font.pb.cc in Sources */,
 				776D4CAE51A749B65DE71AD2 /* Geometry.pb.cc in Sources */,
 				61D1F1F671A1218384192ECE /* RecentFiles.pb.cc in Sources */,

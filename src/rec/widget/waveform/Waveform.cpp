@@ -273,7 +273,7 @@ void Waveform::setSelected(int index, bool selected) {
 void Waveform::mouseDoubleClick(const MouseEvent&) {
   slow::Instance* instance = slow::Instance::getInstance();
   if (instance->empty())
-    gui::dialog::openOneFile(instance->currentFile_.get());
+    gui::dialog::openOneAudioFile(instance->currentFile_.get());
 }
 
 }  // namespace waveform
