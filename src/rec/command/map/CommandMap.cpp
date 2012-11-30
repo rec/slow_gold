@@ -43,7 +43,10 @@ bool CommandMap::add(const string& key, CommandType command) {
   return true;
 }
 
-bool CommandMap::addAtIndex(const string& key, CommandType command, uint index) {
+bool CommandMap::addAtIndex(const string& key, CommandType command, int index) {
+  if (index < 0)
+    add(key, command);
+
   if (!addKey(key, command))
     return false;
 
@@ -111,8 +114,6 @@ void CommandMap::removeKey(const string& key) {
       }
     }
     LOG(DFATAL) << "Couldn't erase key " << key;
-  } else {
-    LOG(DFATAL) << "Couldn't find key " << key;
   }
 }
 

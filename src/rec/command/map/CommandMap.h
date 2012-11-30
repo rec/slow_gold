@@ -30,7 +30,7 @@ class CommandMap : public ChangeBroadcaster {
   void removeCommand(CommandType command, uint keyIndex);
   void removeKey(const string& key);
 
-  bool addAtIndex(const string& key, CommandType command, uint index);
+  bool addAtIndex(const string& key, CommandType command, int index);
 
  private:
   bool add(const string& key, CommandType command);

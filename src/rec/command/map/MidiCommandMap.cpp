@@ -29,7 +29,9 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
 #ifdef FAKE_MIDI
 static void fakeMidi(MidiCommandMap* mcm) {
   Thread::sleep(2000);
-  mcm->handleIncomingMidiMessage(NULL, MidiMessage(1, 10, 64));
+  mcm->handleIncomingMidiMessage(NULL,
+                                 MidiMessage::noteOn(1, 10,
+                                                     static_cast<uint8>(64)));
 }
 #endif
 
@@ -56,7 +58,7 @@ const string toBytes(const KeyBase& key) {
   const Key<MidiMessage>* mm = dynamic_cast<const Key<MidiMessage>*>(&key);
   string result;
   if (mm)
-    result = toBytes(*mm);
+    result = toBytes(mm->key());
   else
     LOG(DFATAL) << "Couldn't convert KeyBase to Midi bytes";
   return result;
