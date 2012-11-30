@@ -30,8 +30,9 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
 
 }  // namespace
 
-template <>
-const String KeyCommandMapEditorBase::name() { return t_KEY; }
+const String KeyCommandMapEditor::name() const {
+  return t_KEY;
+}
 
 template <>
 const String KeyCommandMapEditorBase::getDescription(const string& key) {

@@ -54,8 +54,7 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
 
 }  // namespace
 
-template <>
-const String MidiCommandMapEditorBase::name() {
+const String MidiCommandMapEditor::name() const {
   return t_MIDI;
 }
 

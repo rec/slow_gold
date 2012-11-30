@@ -27,9 +27,17 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual void addButton(CommandMapEditButton* button) = 0;
   virtual void removeButton(CommandMapEditButton* button) = 0;
   virtual void addChildren(CommandMapItemComponent* comp) = 0;
-  virtual void buttonClicked(Button* button);
+  virtual const String name() const = 0;
+
+  virtual void doReset() {}
+  virtual void doClear() {}
+  virtual void doExport(const File&) {}
+  virtual void doImport(const File&) {}
 
   virtual CommandEntryWindow* newWindow() = 0;
+
+
+  virtual void buttonClicked(Button* button);
 
   void setColours(const Colour& mainBackground,
                   const Colour& textColour);
@@ -48,16 +56,11 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual void parentHierarchyChanged();
   virtual void resized();
 
-  virtual void doReset() {}
-  virtual void doClear() {}
-  virtual void doExport(const File&) {}
-  virtual void doImport(const File&) {}
-
   // Callbacks from the buttons.
   void resetButton();
-  virtual void clearButton();
-  virtual void exportButton();
-  virtual void importButton();
+  void clearButton();
+  void exportButton();
+  void importButton();
   void okButton();
   void resetTreeItem();
 

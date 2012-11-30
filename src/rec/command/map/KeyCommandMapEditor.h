@@ -16,6 +16,8 @@ class KeyCommandMapEditor : public KeyCommandMapEditorBase {
       : Super(acm, mcm) {
   }
 
+  virtual const String name() const;
+
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(KeyCommandMapEditor);
 };
