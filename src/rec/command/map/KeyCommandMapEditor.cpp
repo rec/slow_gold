@@ -1,6 +1,8 @@
 #include "rec/command/map/KeyCommandMapEditor.h"
-#include "rec/command/map/CommandMapItemComponent.h"
+
 #include "rec/base/Trans.h"
+#include "rec/command/map/Key.h"
+#include "rec/command/map/CommandMapItemComponent.h"
 
 TRAN(PRESS_A_KEY, "Please press a key combination now...");
 TRAN(KEY, "Key");
@@ -18,7 +20,7 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
 
   bool keyPressed(const KeyPress& key) {
     lastKey_ = key;
-    setMessage(owner.getKeyMessage(Key<KeyPress>(key)));
+    setMessage(owner.getKeyMessage(toString(key)));
     return true;
   }
 
@@ -26,25 +28,14 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
   KeyCommandMapEditor& owner;
 };
 
-const KeyPress* cast(const KeyBase& key) {
-  if (const Key<KeyPress>* kp = dynamic_cast<const Key<KeyPress>*>(&key))
-    return &(kp->key());
-  LOG(DFATAL) << "Couldn't understand key";
-  return NULL;
-}
-
 }  // namespace
 
 template <>
 const String KeyCommandMapEditor::name() { return t_KEY; }
 
 template <>
-const String KeyCommandMapEditor::getDescription(const KeyBase& key) {
-  String result;
-  if (const KeyPress* k = cast(key))
-    result = k->getTextDescriptionWithIcons();
-
-  return result;
+const String KeyCommandMapEditor::getDescription(const string& key) {
+  return keyPressFromString(key).getTextDescriptionWithIcons();
 }
 
 template <>
@@ -53,39 +44,33 @@ void KeyCommandMapEditor::removeKey(CommandID command, int keyNum) {
 }
 
 template <>
-KeyCommandMapEditor::KeyArray* KeyCommandMapEditor::getKeys(CommandID cmd) {
+KeyCommandMapEditor::KeyArray KeyCommandMapEditor::getKeys(CommandID cmd) {
   const Array<KeyPress>& kp = mappings_->getKeyPressesAssignedToCommand(cmd);
-  ptr<KeyArray> keyArray(new KeyArray);
+  KeyArray keyArray;
   for (int i = 0; i < kp.size(); ++i)
-    keyArray->add(new Key<KeyPress>(KeyPress(kp[i])));
-  return keyArray.transfer();
+    keyArray.add(toString(kp[i]));
+  return keyArray;
 }
 
 template <>
-bool KeyCommandMapEditor::isValid(const KeyBase& key) {
-  const KeyPress* k = cast(key);
-  return k && k->isValid();
+bool KeyCommandMapEditor::isValid(const string& key) {
+  return keyPressFromString(key).isValid();
 }
 
 template <>
-CommandID KeyCommandMapEditor::getCommand(const KeyBase& key) {
-  if (const KeyPress* k = cast(key))
-    return mappings_->findCommandForKeyPress(*k);
-  else
-    return 0;
+CommandID KeyCommandMapEditor::getCommand(const string& key) {
+  return mappings_->findCommandForKeyPress(keyPressFromString(key));
 }
 
 template <>
-void KeyCommandMapEditor::removeKey(const KeyBase& key) {
-  if (const KeyPress* k = cast(key))
-    mappings_->removeKeyPress(*k);
+void KeyCommandMapEditor::removeKey(const string& key) {
+  mappings_->removeKeyPress(keyPressFromString(key));
 }
 
 template <>
-void KeyCommandMapEditor::addKey(CommandID cmd, const KeyBase& key,
+void KeyCommandMapEditor::addKey(CommandID cmd, const string& key,
                                  int keyIndex) {
-  if (const KeyPress* k = cast(key))
-    mappings_->addKeyPress(cmd, *k, keyIndex);
+  mappings_->addKeyPress(cmd, keyPressFromString(key), keyIndex);
 }
 
 template <>
@@ -98,9 +83,9 @@ void KeyCommandMapEditor::keyChosen(int result,
                                     CommandMapEditButton* button) {
   KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(
       button->getCommandEntryWindow());
-  if (result != 0 && button != nullptr && window != nullptr) {
-    window->setVisible (false);
-    window->owner.setNewKey (button, Key<KeyPress>(window->lastKey_), false);
+  if (result && button && window) {
+    window->setVisible(false);
+    window->owner.setNewKey(button, toString(window->lastKey_), false);
   }
 
   button->setCommandEntryWindow();
@@ -109,7 +94,7 @@ void KeyCommandMapEditor::keyChosen(int result,
 template <>
 void KeyCommandMapEditor::assignNewKeyCallback(int result,
                                                CommandMapEditButton* button,
-                                               const KeyBase* key) {
+                                               const string* key) {
   if (result && button) {
     KeyCommandMapEditor* editor = dynamic_cast<KeyCommandMapEditor*>(
         &button->getOwner());

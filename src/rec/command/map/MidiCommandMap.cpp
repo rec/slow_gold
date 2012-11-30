@@ -23,7 +23,7 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
   if (listener)
     (*listener)(msg);
   else
-    invokeAsync(toBytes(msg), manager_);
+    invokeAsync(toString(msg), manager_);
 }
 
 #ifdef FAKE_MIDI
@@ -41,27 +41,6 @@ void MidiCommandMap::requestOneMessage(Listener<const juce::MidiMessage&>* lt) {
 #ifdef FAKE_MIDI
   thread::runInNewThread("midi", 5, thread::functionCB(&fakeMidi, this));
 #endif
-}
-
-const string toBytes(const MidiMessage& msg) {
-  string r = str(msg);
-  if (msg.isNoteOn())
-    r[2] = 127;
-
-  if (msg.isController())
-    r[2] = (r[2] < 64) ? 0 : 127;
-
-  return r;
-}
-
-const string toBytes(const KeyBase& key) {
-  const Key<MidiMessage>* mm = dynamic_cast<const Key<MidiMessage>*>(&key);
-  string result;
-  if (mm)
-    result = toBytes(mm->key());
-  else
-    LOG(DFATAL) << "Couldn't convert KeyBase to Midi bytes";
-  return result;
 }
 
 }  // namespace command

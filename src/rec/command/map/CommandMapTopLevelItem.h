@@ -6,8 +6,7 @@
 namespace rec {
 namespace command {
 
-class CommandMapTopLevelItem : public TreeViewItem,
-                               public ChangeListener {
+class CommandMapTopLevelItem : public TreeViewItem, public ChangeListener {
  public:
   explicit CommandMapTopLevelItem(CommandMapEditor*);
   ~CommandMapTopLevelItem();

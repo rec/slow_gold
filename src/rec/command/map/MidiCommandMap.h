@@ -23,9 +23,6 @@ class MidiCommandMap : public CommandMap,
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandMap);
 };
 
-const string toBytes(const MidiMessage&);
-const string toBytes(const KeyBase&);
-
 }  // namespace command
 }  // namespace rec
 

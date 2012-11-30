@@ -10,7 +10,6 @@ bool CommandMap::addKey(const string& key, CommandType command) {
   static const int BEGIN = CommandIDEncoder::toCommandID(RECENT, 11);
   static const int END = CommandIDEncoder::toCommandID(RECENT, 100);
 
-  // DLOG(INFO) << CommandIDEncoder::commandIDName(command);
   if (command >= BEGIN && command < END)
     return false;
 

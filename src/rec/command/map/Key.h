@@ -6,6 +6,52 @@
 namespace rec {
 namespace command {
 
+#if 1
+typedef string KeyBase;
+
+template <typename Type> string toString(const Type&);
+
+template <>
+inline string toString(const MidiMessage& msg) {
+  string r = str(msg);
+  if (msg.isNoteOn())
+    r[2] = 127;
+
+  if (msg.isController())
+    r[2] = (r[2] < 64) ? 0 : 127;
+
+  return r;
+}
+
+template <>
+inline string toString(const KeyPress& kp) {
+  return str(kp.getTextDescription());
+}
+
+template <typename Type> void fromString(const string&, Type*);
+
+
+inline MidiMessage midiFromString(const string& s) {
+  return MidiMessage(s.data(), s.size());
+}
+
+inline KeyPress keyPressFromString(const string& s) {
+  return KeyPress::createFromDescription(str(s));
+}
+
+
+template <>
+inline void fromString(const string& s, KeyPress* kp) {
+  (*kp) = keyPressFromString(s);
+}
+
+template <>
+inline void fromString(const string& s, MidiMessage* mm) {
+  (*mm) = midiFromString(s);
+}
+
+#else
+
 class KeyBase {
  public:
   KeyBase() {}
@@ -49,6 +95,7 @@ KeyBase* makeKey(const Type& t) {
   return new Key<Type>(t);
 }
 
+#endif
 }  // namespace command
 }  // namespace rec
 

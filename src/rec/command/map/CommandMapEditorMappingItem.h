@@ -12,7 +12,7 @@ class CommandMapEditorMappingItem : public TreeViewItem {
       : owner_(owner), commandID_(commandID) {
   }
 
-  String getUniqueName() const { return String ((int) commandID_) + "_id"; }
+  String getUniqueName() const { return String((int) commandID_) + "_id"; }
   bool mightContainSubItems() { return false; }
   int getItemHeight() const { return 20; }
 

@@ -21,24 +21,24 @@ class GenericCommandMapEditor : public CommandMapEditor {
   GenericCommandMapEditor(ApplicationCommandManager*, MappingSet*);
 
   // You must implement these separately for any actual instantiation of this class.
-  static const String getDescription(const KeyBase&);
-  static bool isValid(const KeyBase&);
+  static const String getDescription(const string&);
+  static bool isValid(const string&);
   static const String name();
-  static void assignNewKeyCallback(int result, CommandMapEditButton*, const KeyBase*);
+  static void assignNewKeyCallback(int result, CommandMapEditButton*, const string*);
   static void keyChosen(int result, CommandMapEditButton*);
 
-  CommandID getCommand(const KeyBase&);
-  void removeKey(const KeyBase&);
-  void addKey(CommandID, const KeyBase&, int keyIndex);
+  CommandID getCommand(const string&);
+  void removeKey(const string&);
+  void addKey(CommandID, const string&, int keyIndex);
   void removeKey(CommandID, int keyNum);
 
-  typedef juce::OwnedArray<KeyBase> KeyArray;
-  KeyArray* getKeys(CommandID);
+  typedef juce::Array<string> KeyArray;
+  KeyArray getKeys(CommandID);
   CommandEntryWindow* newWindow();
 
-  const String getKeyMessage(const KeyBase& key);
-  void setNewKey(CommandMapEditButton*, const KeyBase&, bool dontAskUser);
-  virtual const String getDescriptionForKey(const KeyBase& key) const;
+  const String getKeyMessage(const string& key);
+  void setNewKey(CommandMapEditButton*, const string&, bool dontAskUser);
+  virtual const String getDescriptionForKey(const string& key) const;
   virtual void addButton(CommandMapEditButton* b);
   virtual void removeButton(CommandMapEditButton* button);
   virtual void addChildren(CommandMapItemComponent* comp);
@@ -53,7 +53,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
 
 template <typename MappingSet>
 void GenericCommandMapEditor<MappingSet>::
-setNewKey(CommandMapEditButton* button, const KeyBase& newKey, bool dontAskUser) {
+setNewKey(CommandMapEditButton* button, const string& newKey, bool dontAskUser) {
   DLOG(INFO) << "adding new key";
   if (isValid(newKey)) {
     const CommandID previousCommand = getCommand(newKey);
@@ -81,7 +81,7 @@ GenericCommandMapEditor(ApplicationCommandManager* manager, MappingSet* m)
 
 template <typename MappingSet>
 const String GenericCommandMapEditor<MappingSet>::
-getDescriptionForKey(const KeyBase& key) const {
+getDescriptionForKey(const string& key) const {
   return getDescription(key);
 }
 
@@ -104,15 +104,15 @@ void GenericCommandMapEditor<MappingSet>::
 addChildren(CommandMapItemComponent* comp) {
   CommandID command = comp->commandID_;
   const bool isReadOnly = isCommandReadOnly(command);
-  ptr<KeyArray> keys(getKeys(command));
-  for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys->size()); ++i)
-    comp->addButton(getDescriptionForKey(*((*keys)[i])), i, isReadOnly);
+  KeyArray keys = getKeys(command);
+  for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
+    comp->addButton(getDescriptionForKey(keys[i]), i, isReadOnly);
   comp->addButton(String::empty, -1, isReadOnly);
 }
 
 template <typename MappingSet>
 const String GenericCommandMapEditor<MappingSet>::
-getKeyMessage(const KeyBase& key) {
+getKeyMessage(const string& key) {
   String message(name() + ": " + getDescription(key));
   const CommandID previousCommand = getCommand(key);
   if (previousCommand) {
