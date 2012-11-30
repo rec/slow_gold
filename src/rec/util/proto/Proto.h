@@ -9,7 +9,7 @@ namespace rec {
 namespace util {
 
 template <typename Proto>
-string getTypeName() {
+const string getTypeName() {
   return Proto::default_instance().GetTypeName();
 }
 

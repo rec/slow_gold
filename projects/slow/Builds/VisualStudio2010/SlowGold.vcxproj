@@ -330,7 +330,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\proto\Defaulter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\proto\MessageRegistrarAndMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\proto\Proto.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\util\proto\ReadProtoFile.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\proto\ProtoFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\range\Fillable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\SystemStats.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\CallbackQueue.cpp"/>
@@ -1788,7 +1788,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\proto\MessageRegistrar.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\proto\MessageRegistrarAndMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\proto\Proto.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\proto\ReadProtoFile.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\proto\ProtoFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\proto\Reverse.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Compare.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\range\Complement.h"/>

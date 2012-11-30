@@ -16,7 +16,7 @@
 #include "rec/slow/Menus.h"
 #include "rec/slow/RegisterProtos.h"
 #include "rec/util/proto/Defaulter.h"
-#include "rec/util/proto/ReadProtoFile.h"
+#include "rec/util/proto/ProtoFile.h"
 #include "rec/util/file/FileType.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
@@ -34,7 +34,7 @@ using namespace juce;
 const int FADE_IN_TIME = 1500;
 const int FADE_OUT_TIME = 750;
 
-const char WOODSHED_SUFFIX[] = "wshed";
+const char WOODSHED_SUFFIX[] = "slow";
 
 void deleteAll(const File& appDir, const String& pattern) {
   DirectoryIterator iterator(appDir, false, pattern);

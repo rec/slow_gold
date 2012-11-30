@@ -101,7 +101,7 @@ FileAssociation FILES[] = {
   { ".mp3", "mp3", "MP3 files" },
   { ".wav", "wave", "Microsoft WAVE documents" },
   { ".wave", "wave", "Microsoft WAVE documents" },
-  { ".wshed", "woodshed", "World-Wide Woodshed SlowGold 8 documents" }
+  { ".slow", "SlowGold", "World-Wide Woodshed SlowGold 8 documents" }
 };
 
 #endif  // JUCE_WINDOWS
