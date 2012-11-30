@@ -1,0 +1,10 @@
+package rec.gui;
+
+message DialogFile {
+  optional string dialog_name = 1;
+  optional string file_name = 2;
+};
+
+message DialogFiles {
+  repeated DialogFile dialog_file = 1;
+};
