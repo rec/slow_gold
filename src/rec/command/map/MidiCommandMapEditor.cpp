@@ -66,9 +66,22 @@ CommandID MidiCommandMapEditor::getCommand(const string& key) {
   return static_cast<CommandID>(mappings_->getCommand(key));
 }
 
-template <>
-void MidiCommandMapEditorBase::removeKey(CommandID command, int keyNum) {
+void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
   mappings_->removeCommand(static_cast<Command::Type>(command), keyNum);
+  mappings_->sendChangeMessage();
+}
+
+void MidiCommandMapEditor::removeKey(const string& key) {
+  mappings_->removeKey(key);
+  mappings_->sendChangeMessage();
+}
+
+void MidiCommandMapEditor::addKey(CommandID cmd, const string& key,
+                                  int keyIndex) {
+  DLOG(INFO) << "adding key " << cmd << ", " << keyIndex;
+  Command::Type c = static_cast<Command::Type>(cmd);
+  if (keyIndex >= 0)
+    mappings_->addAtIndex(key, c, keyIndex);
   mappings_->sendChangeMessage();
 }
 
@@ -85,22 +98,6 @@ MidiCommandMapEditorBase::KeyArray MidiCommandMapEditorBase::getKeys(CommandID c
   for (uint i = 0; i < keys.size(); ++i)
     result[i] = keys[i];
   return result;
-}
-
-template <>
-void MidiCommandMapEditorBase::removeKey(const string& key) {
-  mappings_->removeKey(key);
-  mappings_->sendChangeMessage();
-}
-
-template <>
-void MidiCommandMapEditorBase::addKey(CommandID cmd, const string& key,
-                                  int keyIndex) {
-  DLOG(INFO) << "adding key " << cmd << ", " << keyIndex;
-  Command::Type c = static_cast<Command::Type>(cmd);
-  if (keyIndex >= 0)
-    mappings_->addAtIndex(key, c, keyIndex);
-  mappings_->sendChangeMessage();
 }
 
 template <>

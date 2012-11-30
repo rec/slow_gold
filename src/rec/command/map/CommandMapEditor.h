@@ -31,6 +31,9 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual bool isValid(const string&) const = 0;
   virtual const String getDescription(const string&) const = 0;
   virtual CommandID getCommand(const string&) = 0;
+  virtual void removeKey(CommandID, int keyNum) = 0;
+  virtual void removeKey(const string&) = 0;
+  virtual void addKey(CommandID, const string&, int keyIndex) = 0;
 
   virtual void doReset() {}
   virtual void doClear() {}

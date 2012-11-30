@@ -21,6 +21,10 @@ class KeyCommandMapEditor : public KeyCommandMapEditorBase {
   virtual const String getDescription(const string&) const;
   virtual CommandID getCommand(const string&);
 
+  virtual void removeKey(CommandID, int keyNum);
+  virtual void removeKey(const string&);
+  virtual void addKey(CommandID, const string&, int keyIndex);
+
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(KeyCommandMapEditor);
 };

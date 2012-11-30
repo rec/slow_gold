@@ -24,10 +24,6 @@ class GenericCommandMapEditor : public CommandMapEditor {
   static void assignNewKeyCallback(int result, CommandMapEditButton*, const string*);
   static void keyChosen(int result, CommandMapEditButton*);
 
-  void removeKey(const string&);
-  void addKey(CommandID, const string&, int keyIndex);
-  void removeKey(CommandID, int keyNum);
-
   typedef juce::Array<string> KeyArray;
   KeyArray getKeys(CommandID);
   CommandEntryWindow* newWindow();

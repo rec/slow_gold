@@ -46,8 +46,15 @@ CommandID KeyCommandMapEditor::getCommand(const string& key) {
   return mappings_->findCommandForKeyPress(keyPressFromString(key));
 }
 
-template <>
-void KeyCommandMapEditorBase::removeKey(CommandID command, int keyNum) {
+void KeyCommandMapEditor::removeKey(const string& key) {
+  mappings_->removeKeyPress(keyPressFromString(key));
+}
+
+void KeyCommandMapEditor::addKey(CommandID cmd, const string& key, int index) {
+  mappings_->addKeyPress(cmd, keyPressFromString(key), index);
+}
+
+void KeyCommandMapEditor::removeKey(CommandID command, int keyNum) {
   mappings_->removeKeyPress(command, keyNum);
 }
 
@@ -58,17 +65,6 @@ KeyCommandMapEditorBase::KeyArray KeyCommandMapEditorBase::getKeys(CommandID cmd
   for (int i = 0; i < kp.size(); ++i)
     keyArray.add(toString(kp[i]));
   return keyArray;
-}
-
-template <>
-void KeyCommandMapEditorBase::removeKey(const string& key) {
-  mappings_->removeKeyPress(keyPressFromString(key));
-}
-
-template <>
-void KeyCommandMapEditorBase::addKey(CommandID cmd, const string& key,
-                                     int keyIndex) {
-  mappings_->addKeyPress(cmd, keyPressFromString(key), keyIndex);
 }
 
 template <>
