@@ -41,7 +41,7 @@ CommandMapEditor::CommandMapEditor(ApplicationCommandManager* manager,
 
 void CommandMapEditor::addButton(TextButton* button) {
   addAndMakeVisible(button);
-  // button->addListener(treeItem_);
+  button->addListener(this);
 }
 
 void CommandMapEditor::initialize() {
@@ -125,6 +125,7 @@ bool CommandMapEditor::isCommandReadOnly(const CommandID id) {
 }
 
 void CommandMapEditor::buttonClicked(Button* button) {
+  DLOG(INFO) << "button clicked";
   if (button == &resetButton_)
     reset();
   else if (button == &clearButton_)
@@ -135,6 +136,14 @@ void CommandMapEditor::buttonClicked(Button* button) {
     import();
   else if (button == &okButton_)
     ok();
+}
+
+void CommandMapEditor::ok() {
+  using namespace juce;
+  if (DocumentWindow* dw = dynamic_cast<DocumentWindow*>(getParentComponent()))
+    dw->closeButtonPressed();
+  else
+    LOG(DFATAL) << "Parent window wasn't a document window!";
 }
 
 #if 0

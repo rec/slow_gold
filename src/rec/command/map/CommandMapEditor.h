@@ -50,7 +50,7 @@ class CommandMapEditor : public Component, public ButtonListener {
   virtual void clear() {}
   virtual void exportSetting() {}
   virtual void import() {}
-  virtual void ok() {}
+  virtual void ok();
 
  protected:
   void addButton(TextButton*);
