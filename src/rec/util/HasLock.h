@@ -9,7 +9,7 @@ namespace util {
 class HasLock {
  public:
   HasLock() {}
-  const CriticalSection& lock() const { return lock_;}
+  const CriticalSection& lock() const { return lock_; }
 
  protected:
   CriticalSection lock_;

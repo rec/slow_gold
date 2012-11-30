@@ -1,7 +1,8 @@
 #ifndef __REC_COMMAND_COMMANDMAPEDITOR__
 #define __REC_COMMAND_COMMANDMAPEDITOR__
 
-#include "rec/base/base.h"
+#include "rec/util/Deletable.h"
+#include "rec/util/Listener.h"
 
 using namespace juce;
 
@@ -13,13 +14,15 @@ class CommandMapTopLevelItem;
 class CommandMapItemComponent;
 class CommandEntryWindow;
 
-class CommandMapEditor : public Component, public ButtonListener {
+class CommandMapEditor : public Component, public ButtonListener,
+                         Listener<const File&> {
  public:
   CommandMapEditor(ApplicationCommandManager* commandManager,
                    ChangeBroadcaster* broadcaster);
   virtual ~CommandMapEditor();
 
   void initialize();
+  virtual void operator()(const File&);
 
   virtual void addButton(CommandMapEditButton* button) = 0;
   virtual void removeButton(CommandMapEditButton* button) = 0;
@@ -47,8 +50,8 @@ class CommandMapEditor : public Component, public ButtonListener {
 
   virtual void doReset() {}
   virtual void doClear() {}
-  virtual void doExport() {}
-  virtual void doImport() {}
+  virtual void doExport(const File&) {}
+  virtual void doImport(const File&) {}
 
   // Callbacks from the buttons.
   void resetButton();
@@ -56,6 +59,7 @@ class CommandMapEditor : public Component, public ButtonListener {
   virtual void exportButton();
   virtual void importButton();
   void okButton();
+  void resetTreeItem();
 
  protected:
   void addButton(TextButton*);
@@ -70,6 +74,7 @@ class CommandMapEditor : public Component, public ButtonListener {
   TextButton okButton_;
 
   ptr<CommandMapTopLevelItem> treeItem_;
+  bool expectingExport_;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CommandMapEditor);
 };

@@ -43,6 +43,15 @@ bool openVirtualFile(Listener<const FileList&>* listener,
                      const String& patterns,
                      FileChooserFunction function = &browseForFileToOpen);
 
+template <typename FileList>
+bool saveVirtualFile(Listener<const FileList&>* listener,
+                     const string& dialogName,
+                     const String& title,
+                     const String& patterns) {
+  return openVirtualFile(listener, dialogName, title, patterns,
+                         &browseForFileToSave);
+}
+
 bool openOneAudioFile(Listener<const VirtualFile&>* listener);
 
 void shutdownDialog();

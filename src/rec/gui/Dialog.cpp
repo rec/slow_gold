@@ -137,11 +137,16 @@ bool openOneAudioFile(Listener<const VirtualFile&>* listener) {
                          file::audioFilePatterns());
 }
 
-
 void shutdownDialog() {
   delete modal;
   modal = NULL;
 }
+
+template bool openVirtualFile(Listener<const File&>* listener,
+                              const string& dialogName,
+                              const String& title,
+                              const String& patterns,
+                              FileChooserFunction function);
 
 }  // namespace dialog
 }  // namespace gui

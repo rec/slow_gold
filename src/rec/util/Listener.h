@@ -4,6 +4,7 @@
 #include <map>
 #include <set>
 
+#include "rec/util/Deletable.h"
 #include "rec/util/HasLock.h"
 
 namespace rec {
@@ -12,7 +13,7 @@ namespace util {
 template <typename Type> class Broadcaster;
 
 template <typename Type>
-class Listener : public HasLock {
+class Listener : public HasLock, public Deletable {
  public:
   typedef std::set<Broadcaster<Type>*> BroadcasterSet;
   typedef typename BroadcasterSet::iterator iterator;
@@ -40,7 +41,7 @@ class Listener : public HasLock {
 // Broadcast updates of type Type to a set of Listener<Type>.
 //
 template <typename Type>
-class Broadcaster {
+class Broadcaster : public Deletable {
  public:
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;

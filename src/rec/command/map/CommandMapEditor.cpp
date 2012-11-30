@@ -11,6 +11,7 @@
 #include "rec/command/map/CommandMapTopLevelItem.h"
 #include "rec/command/map/CommandEntryWindow.h"
 #include "rec/command/map/CommandMapItemComponent.h"
+#include "rec/gui/Dialog.h"
 
 TRAN(RESET_TO_DEFAULTS, "Reset To Factory Default");
 TRAN(CLEAR_EDITOR, "Clear Changes");
@@ -20,6 +21,8 @@ TRAN(SURE_YOU_RESET, "Are you sure you want to reset all the command "
      "assignments to their default state?");
 TRAN(SURE_YOU_CLEAR, "Are you sure you want to clear all your changes?");
 TRAN(RESET, "Reset");
+TRAN(CHOOSE_EXPORT_FILE, "Choose A New File For Export");
+TRAN(CHOOSE_IMPORT_FILE, "Open A File For Import");
 
 namespace rec {
 namespace command {
@@ -49,8 +52,6 @@ void CommandMapEditor::addButton(TextButton* button) {
 }
 
 void CommandMapEditor::initialize() {
-  treeItem_.reset(new CommandMapTopLevelItem(*this));
-
   addButton(&resetButton_);
   addButton(&clearButton_);
   addButton(&exportButton_);
@@ -61,6 +62,13 @@ void CommandMapEditor::initialize() {
   tree.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
   tree.setRootItemVisible(false);
   tree.setDefaultOpenness(false);
+  resetTreeItem();
+}
+
+void CommandMapEditor::resetTreeItem() {
+  if (treeItem_)
+    tree.setRootItem(NULL);
+  treeItem_.reset(new CommandMapTopLevelItem(*this));
   tree.setRootItem(treeItem_.get());
 }
 
@@ -129,7 +137,6 @@ bool CommandMapEditor::isCommandReadOnly(const CommandID id) {
 }
 
 void CommandMapEditor::buttonClicked(Button* button) {
-  DLOG(INFO) << "button clicked";
   if (button == &resetButton_)
     resetButton();
   else if (button == &clearButton_)
@@ -150,20 +157,39 @@ void CommandMapEditor::okButton() {
     LOG(DFATAL) << "Parent window wasn't a document window!";
 }
 
+using namespace rec::gui::dialog;
+
 void CommandMapEditor::exportButton() {
+  expectingExport_ = true;
+  saveVirtualFile(this, "import export", t_CHOOSE_EXPORT_FILE, "*.slow");
 }
 
 void CommandMapEditor::importButton() {
+  expectingExport_ = false;
+  saveVirtualFile(this, "import export", t_CHOOSE_IMPORT_FILE, "*.slow");
+}
+
+void CommandMapEditor::operator()(const File& f) {
+  if (expectingExport_) {
+    doExport(f);
+  } else {
+    doImport(f);
+    resetTreeItem();
+  }
 }
 
 static void resetCallback(int result, CommandMapEditor* owner) {
-  if (result)
+  if (result) {
     owner->doReset();
+    owner->resetTreeItem();
+  }
 }
 
 static void clearCallback(int result, CommandMapEditor* owner) {
-  if (result)
+  if (result) {
     owner->doClear();
+    owner->resetTreeItem();
+  }
 }
 
 void CommandMapEditor::resetButton() {

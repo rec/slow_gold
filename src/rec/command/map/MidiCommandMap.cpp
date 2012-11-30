@@ -1,4 +1,8 @@
 #include "rec/command/map/MidiCommandMap.h"
+#include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/FunctionCallback.h"
+
+#define FAKE_MIDI
 
 namespace rec {
 namespace command {
@@ -22,9 +26,19 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
     invokeAsync(toBytes(msg), manager_);
 }
 
+#ifdef FAKE_MIDI
+static void fakeMidi(MidiCommandMap* mcm) {
+  Thread::sleep(2000);
+  mcm->handleIncomingMidiMessage(NULL, MidiMessage(1, 10, 64));
+}
+#endif
+
 void MidiCommandMap::requestOneMessage(Listener<const juce::MidiMessage&>* lt) {
   Lock l(lock_);
   listener_ = lt;
+#ifdef FAKE_MIDI
+  thread::runInNewThread("midi", 5, thread::functionCB(&fakeMidi, this));
+#endif
 }
 
 const string toBytes(const MidiMessage& msg) {
