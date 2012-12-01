@@ -3,6 +3,7 @@
 #include "rec/audio/Device.h"
 #include "rec/base/Trans.h"
 #include "rec/command/Command.pb.h"
+#include "rec/command/map/CommandEntryWindow.h"
 #include "rec/command/map/MidiName.h"
 #include "rec/util/Listener.h"
 #include "rec/util/thread/CallAsync.h"
@@ -18,7 +19,7 @@ namespace {
 class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
-  MidiCommandEntryWindow(MidiCommandMapEditorBase* owner, MidiCommandMap* mappings)
+  MidiCommandEntryWindow(MidiCommandMapEditor* owner, MidiCommandMap* mappings)
       : CommandEntryWindow(t_WAITING, owner),
         lastKeyEntered_(false),
         owner_(owner),
@@ -43,12 +44,12 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
     mappings_->requestOneMessage(this);
   }
 
-	MidiCommandMapEditorBase* owner() { return owner_; }
+	MidiCommandMapEditor* owner() { return owner_; }
   MidiMessage lastKey_;
   bool lastKeyEntered_;
 
  private:
-  MidiCommandMapEditorBase* owner_;
+  MidiCommandMapEditor* owner_;
   MidiCommandMap* mappings_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandEntryWindow);
@@ -99,34 +100,6 @@ CommandMapEditor::KeyArray MidiCommandMapEditor::getKeys(CommandID c) {
     result[i] = keys[i];
   return result;
 }
-
-#if 0
-template <>
-void MidiCommandMapEditorBase::keyChosen(int result, CommandMapEditButton* button) {
-  MidiCommandEntryWindow* window = dynamic_cast<MidiCommandEntryWindow*>(
-      button->getCommandEntryWindow());
-  if (result && button && window && window->lastKeyEntered_) {
-    window->setVisible (false);
-    window->owner()->setNewKey(button, toString(window->lastKey_), false);
-  }
-  if (window)
-    window->listen(false);
-
-  button->setCommandEntryWindow();
-}
-
-
-template <>
-void MidiCommandMapEditorBase::assignNewKeyCallback(int result,
-                                                CommandMapEditButton* button,
-                                                const string* key) {
-  if (result && button) {
-    MidiCommandMapEditorBase* editor = dynamic_cast<MidiCommandMapEditorBase*>(&button->getOwner());
-    editor->setNewKey(button, *key, true);
-  }
-}
-
-#endif
 
 }  // namespace command
 }  // namespace rec

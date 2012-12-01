@@ -2,6 +2,7 @@
 
 #include "rec/base/Trans.h"
 #include "rec/command/map/Key.h"
+#include "rec/command/map/CommandEntryWindow.h"
 #include "rec/command/map/CommandMapItemComponent.h"
 
 TRAN(PRESS_A_KEY, "Please press a key combination now...");
@@ -14,20 +15,20 @@ namespace {
 
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:
-  KeyCommandEntryWindow(KeyCommandMapEditorBase& owner_)
-    : CommandEntryWindow(t_PRESS_A_KEY, &owner_), owner(owner_) {
+  KeyCommandEntryWindow(KeyCommandMapEditor* owner)
+    : CommandEntryWindow(t_PRESS_A_KEY, owner), owner_(owner) {
   }
 
   bool keyPressed(const KeyPress& key) {
     lastKey_ = key;
-    setMessage(owner.getKeyMessage(toString(key)));
+    setMessage(owner_->getKeyMessage(toString(key)));
     return true;
   }
 
   virtual const string lastKey() const { return toString(lastKey_); }
 
   KeyPress lastKey_;
-  KeyCommandMapEditorBase& owner;
+  KeyCommandMapEditor* owner_;
 };
 
 }  // namespace
@@ -69,35 +70,8 @@ CommandMapEditor::KeyArray KeyCommandMapEditor::getKeys(CommandID cmd) {
 }
 
 CommandEntryWindow* KeyCommandMapEditor::newWindow() {
-  return new KeyCommandEntryWindow(*this);
+  return new KeyCommandEntryWindow(this);
 }
-
-#if 0
-template <>
-void KeyCommandMapEditorBase::keyChosen(int result,
-                                        CommandMapEditButton* button) {
-  KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(
-      button->getCommandEntryWindow());
-  if (result && button && window) {
-    window->setVisible(false);
-    window->owner.setNewKey(button, toString(window->lastKey_), false);
-  }
-
-  button->setCommandEntryWindow();
-}
-
-template <>
-void KeyCommandMapEditorBase::assignNewKeyCallback(int result,
-                                               CommandMapEditButton* button,
-                                               const string* key) {
-  if (result && button) {
-    KeyCommandMapEditorBase* editor = dynamic_cast<KeyCommandMapEditorBase*>(
-        &button->getOwner());
-    editor->setNewKey(button, *key, true);
-  }
-}
-
-#endif
 
 }  // namespace command
 }  // namespace rec

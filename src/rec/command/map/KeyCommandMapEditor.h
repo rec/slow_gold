@@ -1,19 +1,16 @@
 #ifndef __REC_COMMAND_KEYCOMMANDMAPEDITOR__
 #define __REC_COMMAND_KEYCOMMANDMAPEDITOR__
 
-#include "rec/command/map/GenericCommandMapEditor.h"
+#include "rec/command/map/CommandMapEditor.h"
 #include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {
 
-typedef GenericCommandMapEditor<KeyPressMappingSet> KeyCommandMapEditorBase;
-
-class KeyCommandMapEditor : public KeyCommandMapEditorBase {
+class KeyCommandMapEditor : public CommandMapEditor {
  public:
-  typedef GenericCommandMapEditor<KeyPressMappingSet> Super;
   KeyCommandMapEditor(ApplicationCommandManager* acm, KeyPressMappingSet* mcm)
-      : Super(acm, mcm) {
+      : CommandMapEditor(acm, mcm), mappings_(mcm) {
   }
 
   virtual const String name() const;
@@ -29,6 +26,8 @@ class KeyCommandMapEditor : public KeyCommandMapEditorBase {
   virtual CommandEntryWindow* newWindow();
 
  private:
+  KeyPressMappingSet* mappings_;
+
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(KeyCommandMapEditor);
 };
 
