@@ -25,7 +25,6 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual void operator()(const File&);
 
   virtual void addButton(CommandMapEditButton* button) = 0;
-  virtual void removeButton(CommandMapEditButton* button) = 0;
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;
   virtual const String getDescription(const string&) const = 0;
@@ -40,6 +39,8 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual const String getKeyMessage(const string&);
 
   void addChildren(CommandMapItemComponent*);
+  void removeButton(CommandMapEditButton*);
+
   virtual void doReset() {}
   virtual void doClear() {}
   virtual void doExport(const File&) {}

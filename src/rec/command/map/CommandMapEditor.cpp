@@ -239,5 +239,10 @@ void CommandMapEditor::addChildren(CommandMapItemComponent* comp) {
   comp->addButton(String::empty, -1, isReadOnly);
 }
 
+void CommandMapEditor::removeButton(CommandMapEditButton* button) {
+  removeKey(button->commandID, button->keyNum);
+}
+
+
 }  // namespace command
 }  // namespace rec

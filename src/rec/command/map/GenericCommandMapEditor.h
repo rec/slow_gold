@@ -26,7 +26,6 @@ class GenericCommandMapEditor : public CommandMapEditor {
 
   void setNewKey(CommandMapEditButton*, const string&, bool dontAskUser);
   virtual void addButton(CommandMapEditButton* b);
-  virtual void removeButton(CommandMapEditButton* button);
 
  protected:
   MappingSet* mappings_;
@@ -69,12 +68,6 @@ addButton(CommandMapEditButton* b) {
   CommandEntryWindow* w = newWindow();
   b->setCommandEntryWindow(w);
   w->enterModalState(true, ModalCallbackFunction::forComponent(keyChosen, b));
-}
-
-template <typename MappingSet>
-void GenericCommandMapEditor<MappingSet>::
-removeButton(CommandMapEditButton* button) {
-  removeKey(button->commandID, button->keyNum);
 }
 
 }  // namespace command
