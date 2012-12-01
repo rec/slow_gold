@@ -25,6 +25,9 @@ class MidiCommandMapEditor : public MidiCommandMapEditorBase {
   virtual void removeKey(const string&);
   virtual void addKey(CommandID, const string&, int keyIndex);
 
+  virtual CommandMapEditor::KeyArray getKeys(CommandID);
+  virtual CommandEntryWindow* newWindow();
+
  private:
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MidiCommandMapEditor);
 };

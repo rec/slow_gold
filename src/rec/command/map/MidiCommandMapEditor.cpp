@@ -85,13 +85,11 @@ void MidiCommandMapEditor::addKey(CommandID cmd, const string& key,
   mappings_->sendChangeMessage();
 }
 
-template <>
-CommandEntryWindow* MidiCommandMapEditorBase::newWindow() {
+CommandEntryWindow* MidiCommandMapEditor::newWindow() {
   return new MidiCommandEntryWindow(this, mappings_);
 }
 
-template <>
-MidiCommandMapEditorBase::KeyArray MidiCommandMapEditorBase::getKeys(CommandID c) {
+CommandMapEditor::KeyArray MidiCommandMapEditor::getKeys(CommandID c) {
   vector<string> keys(mappings_->getKeys(static_cast<Command::Type>(c)));
   KeyArray result;
 

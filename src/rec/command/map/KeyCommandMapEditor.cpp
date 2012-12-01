@@ -58,8 +58,7 @@ void KeyCommandMapEditor::removeKey(CommandID command, int keyNum) {
   mappings_->removeKeyPress(command, keyNum);
 }
 
-template <>
-KeyCommandMapEditorBase::KeyArray KeyCommandMapEditorBase::getKeys(CommandID cmd) {
+CommandMapEditor::KeyArray KeyCommandMapEditor::getKeys(CommandID cmd) {
   const Array<KeyPress>& kp = mappings_->getKeyPressesAssignedToCommand(cmd);
   KeyArray keyArray;
   for (int i = 0; i < kp.size(); ++i)
@@ -67,8 +66,7 @@ KeyCommandMapEditorBase::KeyArray KeyCommandMapEditorBase::getKeys(CommandID cmd
   return keyArray;
 }
 
-template <>
-CommandEntryWindow* KeyCommandMapEditorBase::newWindow() {
+CommandEntryWindow* KeyCommandMapEditor::newWindow() {
   return new KeyCommandEntryWindow(*this);
 }
 

@@ -35,13 +35,15 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual void removeKey(const string&) = 0;
   virtual void addKey(CommandID, const string&, int keyIndex) = 0;
 
+  typedef juce::Array<string> KeyArray;
+  virtual KeyArray getKeys(CommandID) = 0;
+  virtual CommandEntryWindow* newWindow() = 0;
+  virtual const String getKeyMessage(const string&);
+
   virtual void doReset() {}
   virtual void doClear() {}
   virtual void doExport(const File&) {}
   virtual void doImport(const File&) {}
-
-  virtual CommandEntryWindow* newWindow() = 0;
-  const String getKeyMessage(const string& key);
 
   virtual void buttonClicked(Button* button);
 
