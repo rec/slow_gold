@@ -1,9 +1,12 @@
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/Command.pb.h"
+#include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {
+
+using namespace juce;
 
 bool CommandMap::addKey(const string& key, CommandType command) {
   static const int RECENT = Command::RECENT_FILES;
@@ -113,6 +116,16 @@ void CommandMap::removeKey(const string& key) {
       }
     }
     LOG(DFATAL) << "Couldn't erase key " << key;
+  }
+}
+
+void fillKeyPressMappingSet(const CommandMapProto& commandMap,
+                            KeyPressMappingSet* mappings) {
+  mappings->clearAllKeyPresses();
+  for (int i = 0; i < commandMap.entry_size(); ++i) {
+    const CommandMapEntry& m = commandMap.entry(i);
+    for (int j = 0; j < m.key_size(); ++j)
+      mappings->addKeyPress(m.command(), keyPressFromString(m.key(j)));
   }
 }
 

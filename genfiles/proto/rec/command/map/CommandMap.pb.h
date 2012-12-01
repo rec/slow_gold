@@ -36,26 +36,9 @@ void protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto();
 
 class CommandMapEntry;
 class CommandMapProto;
+class KeyStrokeCommandMapProto;
+class MidiCommandMapProto;
 
-enum CommandMapProto_Type {
-  CommandMapProto_Type_KEYBOARD = 0,
-  CommandMapProto_Type_MIDI = 1
-};
-bool CommandMapProto_Type_IsValid(int value);
-const CommandMapProto_Type CommandMapProto_Type_Type_MIN = CommandMapProto_Type_KEYBOARD;
-const CommandMapProto_Type CommandMapProto_Type_Type_MAX = CommandMapProto_Type_MIDI;
-const int CommandMapProto_Type_Type_ARRAYSIZE = CommandMapProto_Type_Type_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* CommandMapProto_Type_descriptor();
-inline const ::std::string& CommandMapProto_Type_Name(CommandMapProto_Type value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    CommandMapProto_Type_descriptor(), value);
-}
-inline bool CommandMapProto_Type_Parse(
-    const ::std::string& name, CommandMapProto_Type* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<CommandMapProto_Type>(
-    CommandMapProto_Type_descriptor(), name, value);
-}
 // ===================================================================
 
 class CommandMapEntry : public ::google::protobuf::Message {
@@ -216,43 +199,12 @@ class CommandMapProto : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef CommandMapProto_Type Type;
-  static const Type KEYBOARD = CommandMapProto_Type_KEYBOARD;
-  static const Type MIDI = CommandMapProto_Type_MIDI;
-  static inline bool Type_IsValid(int value) {
-    return CommandMapProto_Type_IsValid(value);
-  }
-  static const Type Type_MIN =
-    CommandMapProto_Type_Type_MIN;
-  static const Type Type_MAX =
-    CommandMapProto_Type_Type_MAX;
-  static const int Type_ARRAYSIZE =
-    CommandMapProto_Type_Type_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  Type_descriptor() {
-    return CommandMapProto_Type_descriptor();
-  }
-  static inline const ::std::string& Type_Name(Type value) {
-    return CommandMapProto_Type_Name(value);
-  }
-  static inline bool Type_Parse(const ::std::string& name,
-      Type* value) {
-    return CommandMapProto_Type_Parse(name, value);
-  }
-  
   // accessors -------------------------------------------------------
   
-  // optional .rec.command.CommandMapProto.Type type = 1;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::rec::command::CommandMapProto_Type type() const;
-  inline void set_type(::rec::command::CommandMapProto_Type value);
-  
-  // repeated .rec.command.CommandMapEntry entry = 2;
+  // repeated .rec.command.CommandMapEntry entry = 1;
   inline int entry_size() const;
   inline void clear_entry();
-  static const int kEntryFieldNumber = 2;
+  static const int kEntryFieldNumber = 1;
   inline const ::rec::command::CommandMapEntry& entry(int index) const;
   inline ::rec::command::CommandMapEntry* mutable_entry(int index);
   inline ::rec::command::CommandMapEntry* add_entry();
@@ -266,13 +218,12 @@ class CommandMapProto : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  int type_;
   ::google::protobuf::RepeatedPtrField< ::rec::command::CommandMapEntry > entry_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -287,6 +238,184 @@ class CommandMapProto : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static CommandMapProto* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class KeyStrokeCommandMapProto : public ::google::protobuf::Message {
+ public:
+  KeyStrokeCommandMapProto();
+  virtual ~KeyStrokeCommandMapProto();
+  
+  KeyStrokeCommandMapProto(const KeyStrokeCommandMapProto& from);
+  
+  inline KeyStrokeCommandMapProto& operator=(const KeyStrokeCommandMapProto& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const KeyStrokeCommandMapProto& default_instance();
+  
+  void Swap(KeyStrokeCommandMapProto* other);
+  
+  // implements Message ----------------------------------------------
+  
+  KeyStrokeCommandMapProto* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const KeyStrokeCommandMapProto& from);
+  void MergeFrom(const KeyStrokeCommandMapProto& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional .rec.command.CommandMapProto map = 1;
+  inline bool has_map() const;
+  inline void clear_map();
+  static const int kMapFieldNumber = 1;
+  inline const ::rec::command::CommandMapProto& map() const;
+  inline ::rec::command::CommandMapProto* mutable_map();
+  
+  // @@protoc_insertion_point(class_scope:rec.command.KeyStrokeCommandMapProto)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::rec::command::CommandMapProto* map_;
+  friend void  protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
+  friend void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static KeyStrokeCommandMapProto* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class MidiCommandMapProto : public ::google::protobuf::Message {
+ public:
+  MidiCommandMapProto();
+  virtual ~MidiCommandMapProto();
+  
+  MidiCommandMapProto(const MidiCommandMapProto& from);
+  
+  inline MidiCommandMapProto& operator=(const MidiCommandMapProto& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MidiCommandMapProto& default_instance();
+  
+  void Swap(MidiCommandMapProto* other);
+  
+  // implements Message ----------------------------------------------
+  
+  MidiCommandMapProto* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MidiCommandMapProto& from);
+  void MergeFrom(const MidiCommandMapProto& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional .rec.command.CommandMapProto map = 1;
+  inline bool has_map() const;
+  inline void clear_map();
+  static const int kMapFieldNumber = 1;
+  inline const ::rec::command::CommandMapProto& map() const;
+  inline ::rec::command::CommandMapProto* mutable_map();
+  
+  // @@protoc_insertion_point(class_scope:rec.command.MidiCommandMapProto)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::rec::command::CommandMapProto* map_;
+  friend void  protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
+  friend void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static MidiCommandMapProto* default_instance_;
 };
 // ===================================================================
 
@@ -360,24 +489,7 @@ CommandMapEntry::mutable_key() {
 
 // CommandMapProto
 
-// optional .rec.command.CommandMapProto.Type type = 1;
-inline bool CommandMapProto::has_type() const {
-  return _has_bit(0);
-}
-inline void CommandMapProto::clear_type() {
-  type_ = 0;
-  _clear_bit(0);
-}
-inline ::rec::command::CommandMapProto_Type CommandMapProto::type() const {
-  return static_cast< ::rec::command::CommandMapProto_Type >(type_);
-}
-inline void CommandMapProto::set_type(::rec::command::CommandMapProto_Type value) {
-  GOOGLE_DCHECK(::rec::command::CommandMapProto_Type_IsValid(value));
-  _set_bit(0);
-  type_ = value;
-}
-
-// repeated .rec.command.CommandMapEntry entry = 2;
+// repeated .rec.command.CommandMapEntry entry = 1;
 inline int CommandMapProto::entry_size() const {
   return entry_.size();
 }
@@ -402,6 +514,48 @@ CommandMapProto::mutable_entry() {
   return &entry_;
 }
 
+// -------------------------------------------------------------------
+
+// KeyStrokeCommandMapProto
+
+// optional .rec.command.CommandMapProto map = 1;
+inline bool KeyStrokeCommandMapProto::has_map() const {
+  return _has_bit(0);
+}
+inline void KeyStrokeCommandMapProto::clear_map() {
+  if (map_ != NULL) map_->::rec::command::CommandMapProto::Clear();
+  _clear_bit(0);
+}
+inline const ::rec::command::CommandMapProto& KeyStrokeCommandMapProto::map() const {
+  return map_ != NULL ? *map_ : *default_instance_->map_;
+}
+inline ::rec::command::CommandMapProto* KeyStrokeCommandMapProto::mutable_map() {
+  _set_bit(0);
+  if (map_ == NULL) map_ = new ::rec::command::CommandMapProto;
+  return map_;
+}
+
+// -------------------------------------------------------------------
+
+// MidiCommandMapProto
+
+// optional .rec.command.CommandMapProto map = 1;
+inline bool MidiCommandMapProto::has_map() const {
+  return _has_bit(0);
+}
+inline void MidiCommandMapProto::clear_map() {
+  if (map_ != NULL) map_->::rec::command::CommandMapProto::Clear();
+  _clear_bit(0);
+}
+inline const ::rec::command::CommandMapProto& MidiCommandMapProto::map() const {
+  return map_ != NULL ? *map_ : *default_instance_->map_;
+}
+inline ::rec::command::CommandMapProto* MidiCommandMapProto::mutable_map() {
+  _set_bit(0);
+  if (map_ == NULL) map_ = new ::rec::command::CommandMapProto;
+  return map_;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -412,10 +566,6 @@ CommandMapProto::mutable_entry() {
 namespace google {
 namespace protobuf {
 
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::CommandMapProto_Type>() {
-  return ::rec::command::CommandMapProto_Type_descriptor();
-}
 
 }  // namespace google
 }  // namespace protobuf

@@ -8,11 +8,13 @@ message CommandMapEntry {
 };
 
 message CommandMapProto {
-  enum Type {
-    KEYBOARD = 0;
-    MIDI = 1;
-  };
+  repeated CommandMapEntry entry = 1;
+};
 
-  optional Type type = 1;
-  repeated CommandMapEntry entry = 2;
+message KeyStrokeCommandMapProto {
+  optional CommandMapProto map = 1;
+};
+
+message MidiCommandMapProto {
+  optional CommandMapProto map = 1;
 };

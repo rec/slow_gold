@@ -21,7 +21,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CommandMapProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CommandMapProto_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* CommandMapProto_Type_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* KeyStrokeCommandMapProto_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  KeyStrokeCommandMapProto_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MidiCommandMapProto_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MidiCommandMapProto_reflection_ = NULL;
 
 }  // namespace
 
@@ -49,8 +54,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CommandMapEntry));
   CommandMapProto_descriptor_ = file->message_type(1);
-  static const int CommandMapProto_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapProto, type_),
+  static const int CommandMapProto_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapProto, entry_),
   };
   CommandMapProto_reflection_ =
@@ -64,7 +68,36 @@ void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CommandMapProto));
-  CommandMapProto_Type_descriptor_ = CommandMapProto_descriptor_->enum_type(0);
+  KeyStrokeCommandMapProto_descriptor_ = file->message_type(2);
+  static const int KeyStrokeCommandMapProto_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyStrokeCommandMapProto, map_),
+  };
+  KeyStrokeCommandMapProto_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      KeyStrokeCommandMapProto_descriptor_,
+      KeyStrokeCommandMapProto::default_instance_,
+      KeyStrokeCommandMapProto_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyStrokeCommandMapProto, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(KeyStrokeCommandMapProto, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(KeyStrokeCommandMapProto));
+  MidiCommandMapProto_descriptor_ = file->message_type(3);
+  static const int MidiCommandMapProto_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MidiCommandMapProto, map_),
+  };
+  MidiCommandMapProto_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      MidiCommandMapProto_descriptor_,
+      MidiCommandMapProto::default_instance_,
+      MidiCommandMapProto_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MidiCommandMapProto, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MidiCommandMapProto, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(MidiCommandMapProto));
 }
 
 namespace {
@@ -81,6 +114,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
     CommandMapEntry_descriptor_, &CommandMapEntry::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CommandMapProto_descriptor_, &CommandMapProto::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    KeyStrokeCommandMapProto_descriptor_, &KeyStrokeCommandMapProto::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    MidiCommandMapProto_descriptor_, &MidiCommandMapProto::default_instance());
 }
 
 }  // namespace
@@ -90,6 +127,10 @@ void protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
   delete CommandMapEntry_reflection_;
   delete CommandMapProto::default_instance_;
   delete CommandMapProto_reflection_;
+  delete KeyStrokeCommandMapProto::default_instance_;
+  delete KeyStrokeCommandMapProto_reflection_;
+  delete MidiCommandMapProto::default_instance_;
+  delete MidiCommandMapProto_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
@@ -103,17 +144,22 @@ void protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
     "\n rec/command/map/CommandMap.proto\022\013rec."
     "command\032\031rec/command/Command.proto\"J\n\017Co"
     "mmandMapEntry\022*\n\007command\030\001 \001(\0162\031.rec.com"
-    "mand.Command.Type\022\013\n\003key\030\002 \003(\014\"\217\001\n\017Comma"
-    "ndMapProto\022/\n\004type\030\001 \001(\0162!.rec.command.C"
-    "ommandMapProto.Type\022+\n\005entry\030\002 \003(\0132\034.rec"
-    ".command.CommandMapEntry\"\036\n\004Type\022\014\n\010KEYB"
-    "OARD\020\000\022\010\n\004MIDI\020\001", 296);
+    "mand.Command.Type\022\013\n\003key\030\002 \003(\014\">\n\017Comman"
+    "dMapProto\022+\n\005entry\030\001 \003(\0132\034.rec.command.C"
+    "ommandMapEntry\"E\n\030KeyStrokeCommandMapPro"
+    "to\022)\n\003map\030\001 \001(\0132\034.rec.command.CommandMap"
+    "Proto\"@\n\023MidiCommandMapProto\022)\n\003map\030\001 \001("
+    "\0132\034.rec.command.CommandMapProto", 351);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/map/CommandMap.proto", &protobuf_RegisterTypes);
   CommandMapEntry::default_instance_ = new CommandMapEntry();
   CommandMapProto::default_instance_ = new CommandMapProto();
+  KeyStrokeCommandMapProto::default_instance_ = new KeyStrokeCommandMapProto();
+  MidiCommandMapProto::default_instance_ = new MidiCommandMapProto();
   CommandMapEntry::default_instance_->InitAsDefaultInstance();
   CommandMapProto::default_instance_->InitAsDefaultInstance();
+  KeyStrokeCommandMapProto::default_instance_->InitAsDefaultInstance();
+  MidiCommandMapProto::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto);
 }
 
@@ -378,29 +424,7 @@ void CommandMapEntry::Swap(CommandMapEntry* other) {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* CommandMapProto_Type_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return CommandMapProto_Type_descriptor_;
-}
-bool CommandMapProto_Type_IsValid(int value) {
-  switch(value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
 #ifndef _MSC_VER
-const CommandMapProto_Type CommandMapProto::KEYBOARD;
-const CommandMapProto_Type CommandMapProto::MIDI;
-const CommandMapProto_Type CommandMapProto::Type_MIN;
-const CommandMapProto_Type CommandMapProto::Type_MAX;
-const int CommandMapProto::Type_ARRAYSIZE;
-#endif  // _MSC_VER
-#ifndef _MSC_VER
-const int CommandMapProto::kTypeFieldNumber;
 const int CommandMapProto::kEntryFieldNumber;
 #endif  // !_MSC_VER
 
@@ -420,7 +444,6 @@ CommandMapProto::CommandMapProto(const CommandMapProto& from)
 
 void CommandMapProto::SharedCtor() {
   _cached_size_ = 0;
-  type_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -454,9 +477,6 @@ CommandMapProto* CommandMapProto::New() const {
 }
 
 void CommandMapProto::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    type_ = 0;
-  }
   entry_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -468,28 +488,8 @@ bool CommandMapProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.command.CommandMapProto.Type type = 1;
+      // repeated .rec.command.CommandMapEntry entry = 1;
       case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::rec::command::CommandMapProto_Type_IsValid(value)) {
-            set_type(static_cast< ::rec::command::CommandMapProto_Type >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(1, value);
-          }
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_entry;
-        break;
-      }
-      
-      // repeated .rec.command.CommandMapEntry entry = 2;
-      case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_entry:
@@ -498,7 +498,7 @@ bool CommandMapProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_entry;
+        if (input->ExpectTag(10)) goto parse_entry;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -521,16 +521,10 @@ bool CommandMapProto::MergePartialFromCodedStream(
 
 void CommandMapProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.command.CommandMapProto.Type type = 1;
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->type(), output);
-  }
-  
-  // repeated .rec.command.CommandMapEntry entry = 2;
+  // repeated .rec.command.CommandMapEntry entry = 1;
   for (int i = 0; i < this->entry_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->entry(i), output);
+      1, this->entry(i), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -541,17 +535,11 @@ void CommandMapProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* CommandMapProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.command.CommandMapProto.Type type = 1;
-  if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->type(), target);
-  }
-  
-  // repeated .rec.command.CommandMapEntry entry = 2;
+  // repeated .rec.command.CommandMapEntry entry = 1;
   for (int i = 0; i < this->entry_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->entry(i), target);
+        1, this->entry(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -564,15 +552,7 @@ void CommandMapProto::SerializeWithCachedSizes(
 int CommandMapProto::ByteSize() const {
   int total_size = 0;
   
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.command.CommandMapProto.Type type = 1;
-    if (has_type()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
-    }
-    
-  }
-  // repeated .rec.command.CommandMapEntry entry = 2;
+  // repeated .rec.command.CommandMapEntry entry = 1;
   total_size += 1 * this->entry_size();
   for (int i = 0; i < this->entry_size(); i++) {
     total_size +=
@@ -606,11 +586,6 @@ void CommandMapProto::MergeFrom(const ::google::protobuf::Message& from) {
 void CommandMapProto::MergeFrom(const CommandMapProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   entry_.MergeFrom(from.entry_);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
-      set_type(from.type());
-    }
-  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -633,7 +608,6 @@ bool CommandMapProto::IsInitialized() const {
 
 void CommandMapProto::Swap(CommandMapProto* other) {
   if (other != this) {
-    std::swap(type_, other->type_);
     entry_.Swap(&other->entry_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -646,6 +620,430 @@ void CommandMapProto::Swap(CommandMapProto* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = CommandMapProto_descriptor_;
   metadata.reflection = CommandMapProto_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int KeyStrokeCommandMapProto::kMapFieldNumber;
+#endif  // !_MSC_VER
+
+KeyStrokeCommandMapProto::KeyStrokeCommandMapProto()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void KeyStrokeCommandMapProto::InitAsDefaultInstance() {
+  map_ = const_cast< ::rec::command::CommandMapProto*>(&::rec::command::CommandMapProto::default_instance());
+}
+
+KeyStrokeCommandMapProto::KeyStrokeCommandMapProto(const KeyStrokeCommandMapProto& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void KeyStrokeCommandMapProto::SharedCtor() {
+  _cached_size_ = 0;
+  map_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+KeyStrokeCommandMapProto::~KeyStrokeCommandMapProto() {
+  SharedDtor();
+}
+
+void KeyStrokeCommandMapProto::SharedDtor() {
+  if (this != default_instance_) {
+    delete map_;
+  }
+}
+
+void KeyStrokeCommandMapProto::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* KeyStrokeCommandMapProto::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return KeyStrokeCommandMapProto_descriptor_;
+}
+
+const KeyStrokeCommandMapProto& KeyStrokeCommandMapProto::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();  return *default_instance_;
+}
+
+KeyStrokeCommandMapProto* KeyStrokeCommandMapProto::default_instance_ = NULL;
+
+KeyStrokeCommandMapProto* KeyStrokeCommandMapProto::New() const {
+  return new KeyStrokeCommandMapProto;
+}
+
+void KeyStrokeCommandMapProto::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (_has_bit(0)) {
+      if (map_ != NULL) map_->::rec::command::CommandMapProto::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool KeyStrokeCommandMapProto::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .rec.command.CommandMapProto map = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_map()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void KeyStrokeCommandMapProto::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .rec.command.CommandMapProto map = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->map(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* KeyStrokeCommandMapProto::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .rec.command.CommandMapProto map = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->map(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int KeyStrokeCommandMapProto::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.command.CommandMapProto map = 1;
+    if (has_map()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->map());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void KeyStrokeCommandMapProto::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const KeyStrokeCommandMapProto* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const KeyStrokeCommandMapProto*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void KeyStrokeCommandMapProto::MergeFrom(const KeyStrokeCommandMapProto& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      mutable_map()->::rec::command::CommandMapProto::MergeFrom(from.map());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void KeyStrokeCommandMapProto::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void KeyStrokeCommandMapProto::CopyFrom(const KeyStrokeCommandMapProto& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool KeyStrokeCommandMapProto::IsInitialized() const {
+  
+  return true;
+}
+
+void KeyStrokeCommandMapProto::Swap(KeyStrokeCommandMapProto* other) {
+  if (other != this) {
+    std::swap(map_, other->map_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata KeyStrokeCommandMapProto::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = KeyStrokeCommandMapProto_descriptor_;
+  metadata.reflection = KeyStrokeCommandMapProto_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MidiCommandMapProto::kMapFieldNumber;
+#endif  // !_MSC_VER
+
+MidiCommandMapProto::MidiCommandMapProto()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void MidiCommandMapProto::InitAsDefaultInstance() {
+  map_ = const_cast< ::rec::command::CommandMapProto*>(&::rec::command::CommandMapProto::default_instance());
+}
+
+MidiCommandMapProto::MidiCommandMapProto(const MidiCommandMapProto& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void MidiCommandMapProto::SharedCtor() {
+  _cached_size_ = 0;
+  map_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MidiCommandMapProto::~MidiCommandMapProto() {
+  SharedDtor();
+}
+
+void MidiCommandMapProto::SharedDtor() {
+  if (this != default_instance_) {
+    delete map_;
+  }
+}
+
+void MidiCommandMapProto::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MidiCommandMapProto::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MidiCommandMapProto_descriptor_;
+}
+
+const MidiCommandMapProto& MidiCommandMapProto::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();  return *default_instance_;
+}
+
+MidiCommandMapProto* MidiCommandMapProto::default_instance_ = NULL;
+
+MidiCommandMapProto* MidiCommandMapProto::New() const {
+  return new MidiCommandMapProto;
+}
+
+void MidiCommandMapProto::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (_has_bit(0)) {
+      if (map_ != NULL) map_->::rec::command::CommandMapProto::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool MidiCommandMapProto::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .rec.command.CommandMapProto map = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_map()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void MidiCommandMapProto::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .rec.command.CommandMapProto map = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->map(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* MidiCommandMapProto::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .rec.command.CommandMapProto map = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->map(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int MidiCommandMapProto::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.command.CommandMapProto map = 1;
+    if (has_map()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->map());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MidiCommandMapProto::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const MidiCommandMapProto* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MidiCommandMapProto*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MidiCommandMapProto::MergeFrom(const MidiCommandMapProto& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      mutable_map()->::rec::command::CommandMapProto::MergeFrom(from.map());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void MidiCommandMapProto::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MidiCommandMapProto::CopyFrom(const MidiCommandMapProto& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MidiCommandMapProto::IsInitialized() const {
+  
+  return true;
+}
+
+void MidiCommandMapProto::Swap(MidiCommandMapProto* other) {
+  if (other != this) {
+    std::swap(map_, other->map_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata MidiCommandMapProto::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MidiCommandMapProto_descriptor_;
+  metadata.reflection = MidiCommandMapProto_reflection_;
   return metadata;
 }
 
