@@ -25,7 +25,6 @@ class GenericCommandMapEditor : public CommandMapEditor {
   static void keyChosen(int result, CommandMapEditButton*);
 
   void setNewKey(CommandMapEditButton*, const string&, bool dontAskUser);
-  virtual const String getDescriptionForKey(const string& key) const;
   virtual void addButton(CommandMapEditButton* b);
   virtual void removeButton(CommandMapEditButton* button);
   virtual void addChildren(CommandMapItemComponent* comp);
@@ -68,12 +67,6 @@ GenericCommandMapEditor(ApplicationCommandManager* manager, MappingSet* m)
 }
 
 template <typename MappingSet>
-const String GenericCommandMapEditor<MappingSet>::
-getDescriptionForKey(const string& key) const {
-  return getDescription(key);
-}
-
-template <typename MappingSet>
 void GenericCommandMapEditor<MappingSet>::
 addButton(CommandMapEditButton* b) {
   CommandEntryWindow* w = newWindow();
@@ -94,7 +87,7 @@ addChildren(CommandMapItemComponent* comp) {
   const bool isReadOnly = isCommandReadOnly(command);
   KeyArray keys = getKeys(command);
   for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
-    comp->addButton(getDescriptionForKey(keys[i]), i, isReadOnly);
+    comp->addButton(getDescription(keys[i]), i, isReadOnly);
   comp->addButton(String::empty, -1, isReadOnly);
 }
 
