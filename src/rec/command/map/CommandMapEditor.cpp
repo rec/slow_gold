@@ -67,10 +67,13 @@ void assignNewKeyCallback(int result, CommandMapEditButton* button,
 
 void keyChosen(int result, CommandMapEditButton* button) {
   CommandEntryWindow* window = button->getCommandEntryWindow();
-  if (result && button && window) {
+  if (result && button && window && window->lastKeyEntered()) {
     window->setVisible(false);
     window->editor()->setNewKey(button, window->lastKey(), false);
   }
+
+  if (window)
+    window->listen(false);
 
   button->setCommandEntryWindow();
 }
@@ -299,62 +302,6 @@ void CommandMapEditor::addButton(CommandMapEditButton* b) {
   b->setCommandEntryWindow(w);
   w->enterModalState(true, ModalCallbackFunction::forComponent(keyChosen, b));
 }
-
-
-#if 0
-template <>
-void MidiCommandMapEditorBase::keyChosen(int result, CommandMapEditButton* button) {
-  MidiCommandEntryWindow* window = dynamic_cast<MidiCommandEntryWindow*>(
-      button->getCommandEntryWindow());
-  if (result && button && window && window->lastKeyEntered_) {
-    window->setVisible (false);
-    window->owner()->setNewKey(button, toString(window->lastKey_), false);
-  }
-  if (window)
-    window->listen(false);
-
-  button->setCommandEntryWindow();
-}
-
-
-template <>
-void MidiCommandMapEditorBase::assignNewKeyCallback(int result,
-                                                CommandMapEditButton* button,
-                                                const string* key) {
-  if (result && button) {
-    MidiCommandMapEditorBase* editor = dynamic_cast<MidiCommandMapEditorBase*>(&button->getOwner());
-    editor->setNewKey(button, *key, true);
-  }
-}
-
-#endif
-
-#if 0
-template <>
-void KeyCommandMapEditorBase::keyChosen(int result,
-                                        CommandMapEditButton* button) {
-  KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(
-      button->getCommandEntryWindow());
-  if (result && button && window) {
-    window->setVisible(false);
-    window->owner.setNewKey(button, toString(window->lastKey_), false);
-  }
-
-  button->setCommandEntryWindow();
-}
-
-template <>
-void KeyCommandMapEditorBase::assignNewKeyCallback(int result,
-                                               CommandMapEditButton* button,
-                                               const string* key) {
-  if (result && button) {
-    KeyCommandMapEditorBase* editor = dynamic_cast<KeyCommandMapEditorBase*>(
-        &button->getOwner());
-    editor->setNewKey(button, *key, true);
-  }
-}
-
-#endif
 
 }  // namespace command
 }  // namespace rec

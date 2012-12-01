@@ -24,12 +24,14 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
         lastKeyEntered_(false),
         owner_(owner),
         mappings_(mappings) {
-    listen(true);
+    lastKeyEntered_ = false;
+    doListen(true);
   }
 
   virtual const string lastKey() const { return toString(lastKey_); }
 
-  void listen(bool on) { mappings_->requestOneMessage(on ? this : NULL); }
+  virtual void listen(bool on) { doListen(on); }
+  void doListen(bool on) { mappings_->requestOneMessage(on ? this : NULL); }
 
   virtual ~MidiCommandEntryWindow() { listen(false); }
 

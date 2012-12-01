@@ -9,6 +9,7 @@ namespace command {
 CommandEntryWindow::CommandEntryWindow(const String& caption,
                                        CommandMapEditor* editor)
     : AlertWindow (t_NEW_COMMAND_MAPPING, caption, AlertWindow::NoIcon),
+      lastKeyEntered_(true),
       editor_(editor) {
   addButton(t_OK, 1);
   addButton(t_CANCEL, 0);
