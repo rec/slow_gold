@@ -248,8 +248,10 @@ void CommandMapEditor::removeButton(CommandMapEditButton* button) {
   removeKey(button->commandID, button->keyNum);
 }
 
-static void doAssignNewKeyCallback(int result, CommandMapEditButton*,
-                                   const string*) {
+static void doAssignNewKeyCallback(int result, CommandMapEditButton* button,
+                                   const string* key) {
+  if (result && button)
+    button->getOwner().doSetNewKey(button, *key, true);
 }
 
 static void doKeyChosen(int result, CommandMapEditButton*) {
