@@ -9,12 +9,6 @@
 namespace rec {
 namespace command {
 
-bool showCommandMapBox(const String& command,
-                       Component* associatedComponent,
-                       ModalComponentManager::Callback* callback);
-
-String currentlyAssignedTo(const String& commandName);
-
 template <typename MappingSet>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:

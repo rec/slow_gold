@@ -25,6 +25,11 @@ TRAN(CHOOSE_EXPORT_FILE, "Choose A New File For Export");
 TRAN(CHOOSE_IMPORT_FILE, "Open A File For Import");
 TRAN(CURRENTLY_ASSIGNED, "Currently assigned to");
 
+TRAN(CHANGE_KEY_MAPPING, "Change key-mapping");
+TRAN(THIS_KEY_ASSIGNED, "This key is already assigned to the command");
+TRAN(WANT_TO_REASSIGN, "Do you want to re-assign it to this new command instead?");
+TRAN(REASSIGN, "Re-assign");
+
 namespace rec {
 namespace command {
 
@@ -241,6 +246,48 @@ void CommandMapEditor::addChildren(CommandMapItemComponent* comp) {
 
 void CommandMapEditor::removeButton(CommandMapEditButton* button) {
   removeKey(button->commandID, button->keyNum);
+}
+
+static void doAssignNewKeyCallback(int result, CommandMapEditButton*,
+                                   const string*) {
+}
+
+static void doKeyChosen(int result, CommandMapEditButton*) {
+}
+
+void CommandMapEditor::doSetNewKey(CommandMapEditButton* button, const string& newKey,
+                                   bool dontAskUser) {
+  DLOG(INFO) << "adding new key";
+  if (isValid(newKey)) {
+    const CommandID previousCommand = getCommand(newKey);
+    if (previousCommand == 0 || dontAskUser) {
+      removeKey(newKey);
+      if (button->keyNum >= 0)
+        removeKey(button->commandID, button->keyNum);
+      addKey(button->commandID, newKey, button->keyNum);
+    } else {
+      showCommandMapBox(commandManager_->getNameOfCommand(previousCommand),
+                        this,
+                        ModalCallbackFunction::forComponent(
+                            doAssignNewKeyCallback, button, &newKey));
+    }
+  }
+}
+
+void CommandMapEditor::doAddButton(CommandMapEditButton* b) {
+  CommandEntryWindow* w = newWindow();
+  b->setCommandEntryWindow(w);
+  w->enterModalState(true, ModalCallbackFunction::forComponent(doKeyChosen, b));
+}
+
+bool showCommandMapBox(const String& command, Component* comp,
+                       ModalComponentManager::Callback* cb) {
+  return AlertWindow::showOkCancelBox(
+      AlertWindow::WarningIcon,
+      t_CHANGE_KEY_MAPPING,
+      str(t_THIS_KEY_ASSIGNED + " \"" + command +
+          "\"\n\n" + t_WANT_TO_REASSIGN),
+      t_REASSIGN, t_CANCEL, comp, cb);
 }
 
 

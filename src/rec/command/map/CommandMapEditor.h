@@ -41,6 +41,10 @@ class CommandMapEditor : public Component, public ButtonListener,
   void addChildren(CommandMapItemComponent*);
   void removeButton(CommandMapEditButton*);
 
+  void doSetNewKey(CommandMapEditButton* button, const string& newKey,
+                   bool dontAskUser);
+  void doAddButton(CommandMapEditButton* b);
+
   virtual void doReset() {}
   virtual void doClear() {}
   virtual void doExport(const File&) {}
@@ -92,6 +96,10 @@ class CommandMapEditor : public Component, public ButtonListener,
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CommandMapEditor);
 };
+
+bool showCommandMapBox(const String& command,
+                       Component* associatedComponent,
+                       ModalComponentManager::Callback* callback);
 
 }  // namespace command
 }  // namespace rec
