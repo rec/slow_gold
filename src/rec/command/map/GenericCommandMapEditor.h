@@ -27,9 +27,6 @@ class GenericCommandMapEditor : public CommandMapEditor {
   void setNewKey(CommandMapEditButton*, const string&, bool dontAskUser);
   virtual void addButton(CommandMapEditButton* b);
   virtual void removeButton(CommandMapEditButton* button);
-  virtual void addChildren(CommandMapItemComponent* comp);
-
-  static const int MAX_NUM_ASSIGNMENTS = 3;
 
  protected:
   MappingSet* mappings_;
@@ -78,17 +75,6 @@ template <typename MappingSet>
 void GenericCommandMapEditor<MappingSet>::
 removeButton(CommandMapEditButton* button) {
   removeKey(button->commandID, button->keyNum);
-}
-
-template <typename MappingSet>
-void GenericCommandMapEditor<MappingSet>::
-addChildren(CommandMapItemComponent* comp) {
-  CommandID command = comp->commandID_;
-  const bool isReadOnly = isCommandReadOnly(command);
-  KeyArray keys = getKeys(command);
-  for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
-    comp->addButton(getDescription(keys[i]), i, isReadOnly);
-  comp->addButton(String::empty, -1, isReadOnly);
 }
 
 }  // namespace command

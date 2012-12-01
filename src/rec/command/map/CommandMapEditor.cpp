@@ -230,6 +230,14 @@ const String CommandMapEditor::getKeyMessage(const string& key) {
   return message;
 }
 
+void CommandMapEditor::addChildren(CommandMapItemComponent* comp) {
+  CommandID command = comp->commandID_;
+  const bool isReadOnly = isCommandReadOnly(command);
+  KeyArray keys = getKeys(command);
+  for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
+    comp->addButton(getDescription(keys[i]), i, isReadOnly);
+  comp->addButton(String::empty, -1, isReadOnly);
+}
 
 }  // namespace command
 }  // namespace rec

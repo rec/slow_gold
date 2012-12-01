@@ -26,7 +26,6 @@ class CommandMapEditor : public Component, public ButtonListener,
 
   virtual void addButton(CommandMapEditButton* button) = 0;
   virtual void removeButton(CommandMapEditButton* button) = 0;
-  virtual void addChildren(CommandMapItemComponent* comp) = 0;
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;
   virtual const String getDescription(const string&) const = 0;
@@ -40,6 +39,7 @@ class CommandMapEditor : public Component, public ButtonListener,
   virtual CommandEntryWindow* newWindow() = 0;
   virtual const String getKeyMessage(const string&);
 
+  void addChildren(CommandMapItemComponent*);
   virtual void doReset() {}
   virtual void doClear() {}
   virtual void doExport(const File&) {}
@@ -60,6 +60,8 @@ class CommandMapEditor : public Component, public ButtonListener,
     backgroundColourId  = 0x100ad00,
     textColourId        = 0x100ad01,
   };
+
+  static const int MAX_NUM_ASSIGNMENTS = 3;
 
   virtual void parentHierarchyChanged();
   virtual void resized();
