@@ -60,7 +60,7 @@ void addTextButton(CommandMapEditor* editor, TextButton* button) {
 }
 
 void assignNewKeyCallback(int result, CommandMapEditButton* button,
-                                   const string* key) {
+                          const string* key) {
   if (result && button)
     button->getOwner().setNewKey(button, *key, true);
 }

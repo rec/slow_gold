@@ -15,20 +15,16 @@ namespace {
 
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:
-  KeyCommandEntryWindow(KeyCommandMapEditor* owner)
-    : CommandEntryWindow(t_PRESS_A_KEY, owner), owner_(owner) {
+  explicit KeyCommandEntryWindow(KeyCommandMapEditor* owner)
+    : CommandEntryWindow(t_PRESS_A_KEY, owner) {
   }
 
   bool keyPressed(const KeyPress& key) {
-    lastKey_ = key;
-    setMessage(owner_->getKeyMessage(toString(key)));
+    setLastKey(toString(key));
     return true;
   }
 
-  virtual const string lastKey() const { return toString(lastKey_); }
-
-  KeyPress lastKey_;
-  KeyCommandMapEditor* owner_;
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(KeyCommandEntryWindow);
 };
 
 }  // namespace

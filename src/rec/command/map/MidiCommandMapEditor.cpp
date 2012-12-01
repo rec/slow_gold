@@ -21,14 +21,11 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
  public:
   MidiCommandEntryWindow(MidiCommandMapEditor* owner, MidiCommandMap* mappings)
       : CommandEntryWindow(t_WAITING, owner),
-        lastKeyEntered_(false),
         owner_(owner),
         mappings_(mappings) {
     lastKeyEntered_ = false;
     doListen(true);
   }
-
-  virtual const string lastKey() const { return toString(lastKey_); }
 
   virtual void listen(bool on) { doListen(on); }
   void doListen(bool on) { mappings_->requestOneMessage(on ? this : NULL); }
@@ -36,19 +33,13 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
   virtual ~MidiCommandEntryWindow() { listen(false); }
 
   virtual void operator()(const MidiMessage& msg) {
-    if (msg.isNoteOn() || msg.isProgramChange() || msg.isController()) {
-      lastKey_ = msg;
-      lastKeyEntered_ = true;
-      thread::callAsync(this, &CommandEntryWindow::setMessage,
-                        owner_->getKeyMessage(toString(msg)));
-    }
+    if (msg.isNoteOn() || msg.isProgramChange() || msg.isController())
+      setLastKey(toString(msg));
 
     mappings_->requestOneMessage(this);
   }
 
 	MidiCommandMapEditor* owner() { return owner_; }
-  MidiMessage lastKey_;
-  bool lastKeyEntered_;
 
  private:
   MidiCommandMapEditor* owner_;

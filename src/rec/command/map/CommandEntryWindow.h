@@ -12,12 +12,15 @@ class CommandEntryWindow  : public juce::AlertWindow {
  public:
   CommandEntryWindow(const String& caption, CommandMapEditor* editor);
 	CommandMapEditor* editor() { return editor_; }
-  virtual const string lastKey() const = 0;
+  const string lastKey() const { return lastKey_; }
   virtual void listen(bool on) {}
   bool lastKeyEntered() const { return lastKeyEntered_; }
 
  protected:
+  void setLastKey(const string&);
+
   bool lastKeyEntered_;
+  string lastKey_;
 
  private:
   CommandMapEditor* editor_;

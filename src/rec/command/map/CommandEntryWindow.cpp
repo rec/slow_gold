@@ -1,5 +1,8 @@
 #include "rec/command/map/CommandEntryWindow.h"
+
 #include "rec/base/Trans.h"
+#include "rec/command/map/CommandMapEditor.h"
+#include "rec/util/thread/CallAsync.h"
 
 TRAN(NEW_COMMAND_MAPPING, "New command mapping");
 
@@ -21,6 +24,13 @@ CommandEntryWindow::CommandEntryWindow(const String& caption,
 
   setWantsKeyboardFocus(true);
   grabKeyboardFocus();
+}
+
+void CommandEntryWindow::setLastKey(const string& key) {
+  lastKey_ = key;
+  lastKeyEntered_ = true;
+  String msg = editor_->getKeyMessage(key);
+  thread::callAsync(this, &CommandEntryWindow::setMessage, msg);
 }
 
 }  // namespace command
