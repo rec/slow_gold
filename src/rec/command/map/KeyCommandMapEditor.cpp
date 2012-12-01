@@ -72,6 +72,7 @@ CommandEntryWindow* KeyCommandMapEditor::newWindow() {
   return new KeyCommandEntryWindow(*this);
 }
 
+#if 0
 template <>
 void KeyCommandMapEditorBase::keyChosen(int result,
                                         CommandMapEditButton* button) {
@@ -95,6 +96,8 @@ void KeyCommandMapEditorBase::assignNewKeyCallback(int result,
     editor->setNewKey(button, *key, true);
   }
 }
+
+#endif
 
 }  // namespace command
 }  // namespace rec

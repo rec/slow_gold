@@ -100,6 +100,7 @@ CommandMapEditor::KeyArray MidiCommandMapEditor::getKeys(CommandID c) {
   return result;
 }
 
+#if 0
 template <>
 void MidiCommandMapEditorBase::keyChosen(int result, CommandMapEditButton* button) {
   MidiCommandEntryWindow* window = dynamic_cast<MidiCommandEntryWindow*>(
@@ -124,6 +125,8 @@ void MidiCommandMapEditorBase::assignNewKeyCallback(int result,
     editor->setNewKey(button, *key, true);
   }
 }
+
+#endif
 
 }  // namespace command
 }  // namespace rec

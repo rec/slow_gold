@@ -24,7 +24,6 @@ class CommandMapEditor : public Component, public ButtonListener,
   void initialize();
   virtual void operator()(const File&);
 
-  virtual void addButton(CommandMapEditButton* button) = 0;
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;
   virtual const String getDescription(const string&) const = 0;
@@ -41,9 +40,9 @@ class CommandMapEditor : public Component, public ButtonListener,
   void addChildren(CommandMapItemComponent*);
   void removeButton(CommandMapEditButton*);
 
-  void doSetNewKey(CommandMapEditButton* button, const string& newKey,
+  void setNewKey(CommandMapEditButton* button, const string& newKey,
                    bool dontAskUser);
-  void doAddButton(CommandMapEditButton* b);
+  void addButton(CommandMapEditButton* b);
 
   virtual void doReset() {}
   virtual void doClear() {}
@@ -80,8 +79,6 @@ class CommandMapEditor : public Component, public ButtonListener,
   void resetTreeItem();
 
  protected:
-  void addButton(TextButton*);
-
   ApplicationCommandManager* commandManager_;
   ChangeBroadcaster* broadcaster_;
   TreeView tree;
@@ -96,10 +93,6 @@ class CommandMapEditor : public Component, public ButtonListener,
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CommandMapEditor);
 };
-
-bool showCommandMapBox(const String& command,
-                       Component* associatedComponent,
-                       ModalComponentManager::Callback* callback);
 
 }  // namespace command
 }  // namespace rec

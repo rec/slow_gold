@@ -32,8 +32,13 @@ void CommandMapEditButton::paintButton(Graphics& g, bool, bool) {
                                           String::empty);
 }
 
-void CommandMapEditButton::addCommand() { owner.addButton(this); }
-void CommandMapEditButton::removeCommand() { owner.removeButton(this); }
+void CommandMapEditButton::addCommand() {
+  owner.addButton(this);
+}
+
+void CommandMapEditButton::removeCommand() {
+  owner.removeButton(this);
+}
 
 void CommandMapEditButton::menuCallback(int result,
                                         CommandMapEditButton* button) {

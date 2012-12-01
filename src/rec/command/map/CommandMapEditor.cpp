@@ -44,6 +44,21 @@ String currentlyAssignedTo(const String& commandName) {
   return str("\n\n(" + t_CURRENTLY_ASSIGNED + " \"" + commandName + "\")");
 }
 
+bool showCommandMapBox(const String& command, Component* comp,
+                       ModalComponentManager::Callback* cb) {
+  return AlertWindow::showOkCancelBox(
+      AlertWindow::WarningIcon,
+      t_CHANGE_KEY_MAPPING,
+      str(t_THIS_KEY_ASSIGNED + " \"" + command +
+          "\"\n\n" + t_WANT_TO_REASSIGN),
+      t_REASSIGN, t_CANCEL, comp, cb);
+}
+
+void addTextButton(CommandMapEditor* editor, TextButton* button) {
+  editor->addAndMakeVisible(button);
+  button->addListener(editor);
+}
+
 }
 
 CommandMapEditor::CommandMapEditor(ApplicationCommandManager* manager,
@@ -56,17 +71,12 @@ CommandMapEditor::CommandMapEditor(ApplicationCommandManager* manager,
       okButton_(t_OK) {
 }
 
-void CommandMapEditor::addButton(TextButton* button) {
-  addAndMakeVisible(button);
-  button->addListener(this);
-}
-
 void CommandMapEditor::initialize() {
-  addButton(&resetButton_);
-  addButton(&clearButton_);
-  addButton(&exportButton_);
-  addButton(&importButton_);
-  addButton(&okButton_);
+  addTextButton(this, &resetButton_);
+  addTextButton(this, &clearButton_);
+  addTextButton(this, &exportButton_);
+  addTextButton(this, &importButton_);
+  addTextButton(this, &okButton_);
 
   addAndMakeVisible(&tree);
   tree.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
@@ -248,24 +258,24 @@ void CommandMapEditor::removeButton(CommandMapEditButton* button) {
   removeKey(button->commandID, button->keyNum);
 }
 
-static void doAssignNewKeyCallback(int result, CommandMapEditButton* button,
+static void assignNewKeyCallback(int result, CommandMapEditButton* button,
                                    const string* key) {
   if (result && button)
-    button->getOwner().doSetNewKey(button, *key, true);
+    button->getOwner().setNewKey(button, *key, true);
 }
 
-static void doKeyChosen(int result, CommandMapEditButton* button) {
+static void keyChosen(int result, CommandMapEditButton* button) {
   CommandEntryWindow* window = button->getCommandEntryWindow();
   if (result && button && window) {
     window->setVisible(false);
-    window->editor()->doSetNewKey(button, window->lastKey(), false);
+    window->editor()->setNewKey(button, window->lastKey(), false);
   }
 
   button->setCommandEntryWindow();
 }
 
-void CommandMapEditor::doSetNewKey(CommandMapEditButton* button, const string& newKey,
-                                   bool dontAskUser) {
+void CommandMapEditor::setNewKey(CommandMapEditButton* button, const string& newKey,
+                                 bool dontAskUser) {
   DLOG(INFO) << "adding new key";
   if (isValid(newKey)) {
     const CommandID previousCommand = getCommand(newKey);
@@ -278,27 +288,16 @@ void CommandMapEditor::doSetNewKey(CommandMapEditButton* button, const string& n
       showCommandMapBox(commandManager_->getNameOfCommand(previousCommand),
                         this,
                         ModalCallbackFunction::forComponent(
-                            doAssignNewKeyCallback, button, &newKey));
+                            assignNewKeyCallback, button, &newKey));
     }
   }
 }
 
-void CommandMapEditor::doAddButton(CommandMapEditButton* b) {
+void CommandMapEditor::addButton(CommandMapEditButton* b) {
   CommandEntryWindow* w = newWindow();
   b->setCommandEntryWindow(w);
-  w->enterModalState(true, ModalCallbackFunction::forComponent(doKeyChosen, b));
+  w->enterModalState(true, ModalCallbackFunction::forComponent(keyChosen, b));
 }
-
-bool showCommandMapBox(const String& command, Component* comp,
-                       ModalComponentManager::Callback* cb) {
-  return AlertWindow::showOkCancelBox(
-      AlertWindow::WarningIcon,
-      t_CHANGE_KEY_MAPPING,
-      str(t_THIS_KEY_ASSIGNED + " \"" + command +
-          "\"\n\n" + t_WANT_TO_REASSIGN),
-      t_REASSIGN, t_CANCEL, comp, cb);
-}
-
 
 }  // namespace command
 }  // namespace rec
