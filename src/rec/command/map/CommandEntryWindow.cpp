@@ -6,8 +6,10 @@ TRAN(NEW_COMMAND_MAPPING, "New command mapping");
 namespace rec {
 namespace command {
 
-CommandEntryWindow::CommandEntryWindow(const String& caption)
-    : AlertWindow (t_NEW_COMMAND_MAPPING, caption, AlertWindow::NoIcon) {
+CommandEntryWindow::CommandEntryWindow(const String& caption,
+                                       CommandMapEditor* editor)
+    : AlertWindow (t_NEW_COMMAND_MAPPING, caption, AlertWindow::NoIcon),
+      editor_(editor) {
   addButton(t_OK, 1);
   addButton(t_CANCEL, 0);
 

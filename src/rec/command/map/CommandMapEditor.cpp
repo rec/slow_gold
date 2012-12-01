@@ -254,7 +254,14 @@ static void doAssignNewKeyCallback(int result, CommandMapEditButton* button,
     button->getOwner().doSetNewKey(button, *key, true);
 }
 
-static void doKeyChosen(int result, CommandMapEditButton*) {
+static void doKeyChosen(int result, CommandMapEditButton* button) {
+  CommandEntryWindow* window = button->getCommandEntryWindow();
+  if (result && button && window) {
+    window->setVisible(false);
+    window->editor()->doSetNewKey(button, window->lastKey(), false);
+  }
+
+  button->setCommandEntryWindow();
 }
 
 void CommandMapEditor::doSetNewKey(CommandMapEditButton* button, const string& newKey,

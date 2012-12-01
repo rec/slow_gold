@@ -15,7 +15,7 @@ namespace {
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:
   KeyCommandEntryWindow(KeyCommandMapEditorBase& owner_)
-      : CommandEntryWindow(t_PRESS_A_KEY), owner(owner_) {
+    : CommandEntryWindow(t_PRESS_A_KEY, &owner_), owner(owner_) {
   }
 
   bool keyPressed(const KeyPress& key) {
@@ -23,6 +23,8 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
     setMessage(owner.getKeyMessage(toString(key)));
     return true;
   }
+
+  virtual const string lastKey() const { return toString(lastKey_); }
 
   KeyPress lastKey_;
   KeyCommandMapEditorBase& owner;

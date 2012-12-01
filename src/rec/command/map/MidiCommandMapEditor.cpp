@@ -19,12 +19,14 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
                                public Listener<const MidiMessage&> {
  public:
   MidiCommandEntryWindow(MidiCommandMapEditorBase* owner, MidiCommandMap* mappings)
-      : CommandEntryWindow(t_WAITING),
+      : CommandEntryWindow(t_WAITING, owner),
         lastKeyEntered_(false),
         owner_(owner),
         mappings_(mappings) {
     listen(true);
   }
+
+  virtual const string lastKey() const { return toString(lastKey_); }
 
   void listen(bool on) { mappings_->requestOneMessage(on ? this : NULL); }
 
