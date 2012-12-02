@@ -1,18 +1,18 @@
 #ifndef __REC_COMMAND_COMMANDMAPEDITBUTTON__
 #define __REC_COMMAND_COMMANDMAPEDITBUTTON__
 
-#include "rec/command/map/EntryWindow.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace command {
 
-class Editor;
+class EditButton;
 
-class EditButton  : public juce::Button {
+typedef std::pair<int, EditButton*> MenuCallback;
+
+class EditButton : public juce::Button, public Broadcaster<MenuCallback> {
  public:
-  EditButton(Editor& editor_, const CommandID commandID_,
-                       const String& keyName,
-                       const int keyNum_);
+  EditButton(CommandID commandID_, const String& keyName, int keyNum_);
   void paintButton(Graphics& g, bool /*isOver*/, bool /*isDown*/);
   void clicked();
 
@@ -21,11 +21,7 @@ class EditButton  : public juce::Button {
   const CommandID commandID;
   const int keyNum;
 
-  Editor& getEditor() { return editor; }
-
  private:
-  Editor& editor;
-
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EditButton);
 };
 

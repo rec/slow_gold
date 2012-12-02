@@ -1,7 +1,6 @@
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/Command.pb.h"
-#include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {

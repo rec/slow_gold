@@ -13,6 +13,21 @@ TRAN(MIDI, "MIDI");
 namespace rec {
 namespace command {
 
+namespace {
+
+string toString(const MidiMessage& msg) {
+  string r = str(msg);
+  if (msg.isNoteOn())
+    r[2] = 127;
+
+  if (msg.isController())
+    r[2] = (r[2] < 64) ? 0 : 127;
+
+  return r;
+}
+
+}  // namespace
+
 const String MidiEditor::name() const {
   return t_MIDI;
 }
@@ -22,15 +37,15 @@ const String MidiEditor::getDescription(const string& key) const {
 }
 
 void MidiEditor::operator()(const MidiMessage& m) {
-  if (commandEntryWindow() &&
+  if (entryWindow_ &&
       (m.isNoteOn() || m.isProgramChange() || m.isController())) {
     setKey(toString(m));
   }
 }
-EntryWindow* MidiEditor::newWindow() {
-  return new EntryWindow(t_WAITING, this);
-}
 
+const String MidiEditor::getWindowTitle() const {
+  return t_WAITING;
+}
 
 }  // namespace command
 }  // namespace rec

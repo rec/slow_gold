@@ -7,9 +7,8 @@
 #include "rec/command/Command.pb.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/map/EditButton.h"
-#include "rec/command/map/MapItem.h"
-#include "rec/command/map/EntryWindow.h"
 #include "rec/command/map/MapItemComponent.h"
+#include "rec/command/map/Items.h"
 #include "rec/gui/Dialog.h"
 
 TRAN(RESET_TO_DEFAULTS, "Reset To Factory Default");
@@ -28,38 +27,12 @@ TRAN(CHANGE_KEY_MAPPING, "Change key-mapping");
 TRAN(THIS_KEY_ASSIGNED, "This key is already assigned to the command");
 TRAN(WANT_TO_REASSIGN, "Do you want to re-assign it to this new command instead?");
 TRAN(REASSIGN, "Re-assign");
+TRAN(NEW_COMMAND_MAPPING, "New command mapping");
 
 namespace rec {
 namespace command {
 
 namespace {
-
-class TopLevelItem : public TreeViewItem, public ChangeListener {
- public:
-  TopLevelItem(Editor* editor) : editor_(editor) {
-    setLinesDrawnForSubItems(false);
-    editor_->getChangeBroadcaster()->addChangeListener(this);
-  }
-
-  ~TopLevelItem() {
-    editor_->getChangeBroadcaster()->removeChangeListener(this);
-  }
-
-  void changeListenerCallback(ChangeBroadcaster*) {
-    DLOG(INFO) << "TODO: changeListenerCallback";
-  }
-
-  bool mightContainSubItems() { return true; }
-  String getUniqueName() const { return "keys"; }
-
-  void changeListenerCallback(ChangeBroadcaster*);
-
- protected:
-  Editor* editor_;
-
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TopLevelItem);
-};
-
 
 const int BUTTON_HEIGHT = 20;
 const double MAX_BUTTON_PADDING = 8.0;
@@ -99,8 +72,7 @@ Editor::Editor(ApplicationCommandManager* manager,
       clearButton_(t_CLEAR_EDITOR),
       exportButton_(t_EXPORT_EDITOR),
       importButton_(t_IMPORT_EDITOR),
-      okButton_(t_OK),
-      commandMapEditButton_(NULL) {
+      okButton_(t_OK) {
 }
 
 void Editor::initialize() {
@@ -117,22 +89,31 @@ void Editor::initialize() {
   resetTreeItem();
 }
 
-void Editor::resetTreeItem() {
-  if (topLevelItem_)
-    tree.setRootItem(NULL);
-  topLevelItem_.reset(new TopLevelItem(this));
-  tree.setRootItem(topLevelItem_.get());
-}
-
-Editor::~Editor() {
-  tree.setRootItem(NULL);
-}
+Editor::~Editor() {}
 
 void Editor::setColours(const Colour& mainBackground,
                                    const Colour& textColour) {
   setColour(backgroundColourId, mainBackground);
   setColour(textColourId, textColour);
   tree.setColour(TreeView::backgroundColourId, mainBackground);
+}
+
+juce::AlertWindow* Editor::newWindow() {
+  ptr<juce::AlertWindow> window(new juce::AlertWindow(t_NEW_COMMAND_MAPPING,
+                                                      getWindowTitle(),
+                                                      AlertWindow::NoIcon));
+
+  window->addButton(t_OK, 1);
+  window->addButton(t_CANCEL, 0);
+
+  // Probably not needed in the general case but no harm...
+  // (avoid return + escape keys getting processed by the buttons..)
+  for (int i = window->getNumChildComponents(); --i >= 0;)
+    window->getChildComponent(i)->setWantsKeyboardFocus(false);
+
+  window->setWantsKeyboardFocus(true);
+  window->grabKeyboardFocus();
+  return window.transfer();
 }
 
 void Editor::parentHierarchyChanged() {
@@ -170,12 +151,9 @@ void Editor::resized() {
   tree.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT - 2 * TOP_RIGHT_PADDING);
 }
 
-static TopLevelItem* createTopLevelItem(ApplicationCommandManager* acm,
-                                        Editor* editor) {
-}
-
 void Editor::fillTopLevelItem() {
-  topLevelItem_.reset(new TopLevelItem);
+  topLevelItem_.reset(new ItemParent("top"));
+  topLevelItem_->setLinesDrawnForSubItems(false);
 
   StringArray categories(acm->getCommandCategories());
   categories.sort(false);
@@ -184,7 +162,7 @@ void Editor::fillTopLevelItem() {
     const String& cat = categories[i];
     const Array<CommandID> commands(acm->getCommandsInCategory(cat));
     const Array<CommandID> goodCommands;
-    TreeView* categoryItem = NULL;
+    TreeViewItem* categoryItem = NULL;
 
     for (int j = commands.size() - 1; j >= 0; ++j) {
       CommandID id = commands[j];
@@ -196,9 +174,9 @@ void Editor::fillTopLevelItem() {
             categoryItem = new CategoryItem(this, cat);
             topLevelItem_->addSubItem(categoryItem);
           }
-          ptr<MapItem> mapItem(new MapItem(this, id));
-          mapItemMap_[id] = mapItem.get();
-          categoryItem->addSubItem(mapItem.transfer());
+          MapItem* mapItem(new MapItem(this, id));
+          categoryItem->addSubItem(mapItem);
+          mapItemMap_[id] = mapItem;
         }
       }
     }
@@ -306,12 +284,11 @@ void Editor::addChildren(MapItemComponent* comp) {
   const bool isReadOnly = isCommandReadOnly(command);
   KeyArray keys = getKeys(command);
   for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
-    comp->addButton(getDescription(keys[i]), i, isReadOnly);
-  comp->addButton(String::empty, -1, isReadOnly);
+    comp->createEditButton(getDescription(keys[i]), i, isReadOnly);
+  comp->createEditButton(String::empty, -1, isReadOnly);
 }
 
-void Editor::assignNewKey(EditButton* button,
-                                    const string& key) {
+void Editor::assignNewKey(EditButton* button, const string& key) {
   removeKey(key);
   if (button->keyNum >= 0)
     removeKey(button->commandID, button->keyNum);
@@ -341,8 +318,8 @@ void Editor::setNewKey(EditButton* button,
 
 void Editor::keyChosen(EditButton* button) {
   setNewKey(button, key_);
-  if (commandEntryWindow_)
-    commandEntryWindow_.reset();
+  if (entryWindow_)
+    entryWindow_.reset();
 }
 
 static void keyChosen(int result, EditButton* button) {
@@ -353,8 +330,8 @@ static void keyChosen(int result, EditButton* button) {
 void Editor::buttonMenuCallback(int result,
                                           EditButton* button) {
   if (result == 1) {
-    commandEntryWindow_.reset(newWindow());
-    commandEntryWindow_->enterModalState(true,
+    entryWindow_.reset(newWindow());
+    entryWindow_->enterModalState(true,
         ModalCallbackFunction::forComponent(keyChosen, button));
   } else if (result == 2) {
     removeKey(button->commandID, button->keyNum);
@@ -363,9 +340,9 @@ void Editor::buttonMenuCallback(int result,
 
 void Editor::setKey(const string& key) {
   key_ = key;
-  if (commandEntryWindow_) {
+  if (entryWindow_) {
     String msg = getKeyMessage(key);
-    thread::callAsync(commandEntryWindow_.get(),
+    thread::callAsync(entryWindow_.get(),
                       &EntryWindow::setMessage, msg);
   } else {
     LOG(DFATAL) << "Tried to set last key with no window up";

@@ -3,7 +3,6 @@
 
 #include "rec/command/map/Editor.h"
 #include "rec/command/map/MidiCommandMap.h"
-#include "rec/command/map/Key.h"
 #include "rec/util/Listener.h"
 
 namespace rec {
@@ -19,8 +18,8 @@ class MidiEditor : public Editor,
   virtual const String name() const;
   virtual bool isValid(const string&) const { return true; }
   virtual const String getDescription(const string&) const;
-  virtual void operator()(const MidiMessage& msg) {
-  virtual EntryWindow* newWindow();
+  virtual void operator()(const MidiMessage& msg);
+  virtual String getWindowTitle() const;
 
  private:
   MidiCommandMap* mappings_;

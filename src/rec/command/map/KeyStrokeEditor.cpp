@@ -1,7 +1,6 @@
 #include "rec/command/map/KeyStrokeEditor.h"
 
 #include "rec/base/Trans.h"
-#include "rec/command/map/Key.h"
 #include "rec/command/map/EntryWindow.h"
 #include "rec/command/map/MapItemComponent.h"
 
@@ -12,6 +11,11 @@ namespace rec {
 namespace command {
 
 namespace {
+
+string toString(const KeyPress& kp) {
+  return str(kp.getTextDescription());
+}
+
 
 class KeyEntryWindow : public EntryWindow {
  public:
@@ -45,9 +49,14 @@ const String KeyStrokeEditor::getDescription(const string& key) const {
   return keyPressFromString(key).getTextDescriptionWithIcons();
 }
 
+const String MidiEditor::getWindowTitle() const {
+  return t_PRESS_A_KEY;
+}
+
 EntryWindow* KeyStrokeEditor::newWindow() {
-  ptr<EntryWindow> w(new EntryWindow(t_PRESS_A_KEY, this));
-  w->addKeyListener(this);
+  ptr<juce::AlertWindow> window(Editor::newWindow());
+  window->addKeyListener(this);
+  return window.transfer();
 }
 
 bool KeyEntryWindow::keyPressed(const KeyPress& kp) {

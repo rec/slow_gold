@@ -2,13 +2,11 @@
 #define __REC_COMMAND_KEYCOMMANDMAPEDITOR__
 
 #include "rec/command/map/Editor.h"
-#include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {
 
-class KeyStrokeEditor : public Editor,
-                            public juce::KeyListener {
+class KeyStrokeEditor : public Editor, public juce::KeyListener {
  public:
   KeyStrokeEditor(ApplicationCommandManager* acm, KeyPressMappingSet* mcm)
       : Editor(acm, mcm), mappings_(mcm) {
@@ -17,8 +15,9 @@ class KeyStrokeEditor : public Editor,
   virtual const String name() const;
   virtual bool isValid(const string&) const;
   virtual const String getDescription(const string&) const;
-  virtual EntryWindow* newWindow();
   virtual bool keyPressed(const KeyPress&);
+  virtual String getWindowTitle() const;
+  virtual juce::AlertWindow* newWindow();
 
  private:
   KeyPressMappingSet* mappings_;

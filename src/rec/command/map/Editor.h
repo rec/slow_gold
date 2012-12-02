@@ -13,7 +13,6 @@ class CommandMap;
 class EditButton;
 class TopLevelItem;
 class MapItemComponent;
-class EntryWindow;
 
 class Editor : public Component, public ButtonListener,
                public Listener<const File&> {
@@ -33,7 +32,7 @@ class Editor : public Component, public ButtonListener,
 
   typedef juce::Array<string> KeyArray;
   virtual KeyArray getKeys(CommandID) = 0;
-  virtual EntryWindow* newWindow() = 0;
+  virtual const String getWindowTitle() const = 0;
   virtual const String getKeyMessage(const string&);
 
   virtual CommandID getCommand(const string&);
@@ -45,6 +44,8 @@ class Editor : public Component, public ButtonListener,
 
   void setNewKey(EditButton* button, const string& newKey,
                  bool dontAskUser);
+
+  juce::AlertWindow* newWindow();
 
   virtual void doReset() {}
   virtual void doClear() {}
@@ -78,11 +79,9 @@ class Editor : public Component, public ButtonListener,
   void exportButton();
   void importButton();
   void okButton();
-  void resetTreeItem();
 
   void setKey(const string&);
 
-  EntryWindow* commandEntryWindow() { return commandEntryWindow_.get(); }
   void assignNewKey(EditButton* button, const string& key);
 
  protected:
@@ -99,7 +98,7 @@ class Editor : public Component, public ButtonListener,
   TextButton importButton_;
   TextButton okButton_;
 
-  ptr<EntryWindow> commandEntryWindow_;
+  ptr<juce::AlertWindow> entryWindow_;
   EditButton* lastEditButton_;
 
   ptr<TopLevelItem> topLevelItem_;

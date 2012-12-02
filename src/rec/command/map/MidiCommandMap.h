@@ -2,7 +2,6 @@
 #define __REC_COMMAND_MIDICOMMANDMAP__
 
 #include "rec/command/map/CommandMap.h"
-#include "rec/command/map/Key.h"
 
 namespace rec {
 namespace command {
