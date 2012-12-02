@@ -15,16 +15,16 @@ const int TEXT_Y_MARGIN = 1;
 
 }  // namespace
 
-MapItemComponent::MapItemComponent(Editor* owner,
+MapItemComponent::MapItemComponent(Editor* editor,
                                                  const CommandID commandID)
-    : commandID_(commandID), owner_(owner) {
+    : commandID_(commandID), editor_(editor) {
   setInterceptsMouseClicks (false, true);
-  owner->addChildren(this);
+  editor->addChildren(this);
 }
 
 void MapItemComponent::addButton(const String& desc, int index,
                                         bool isReadOnly) {
-  EditButton* const b = new EditButton(*owner_, commandID_,
+  EditButton* const b = new EditButton(*editor_, commandID_,
                                                            desc, index);
   buttons_.add (b);
 
@@ -37,7 +37,7 @@ void MapItemComponent::paint(Graphics& g) {
   g.setFont(getHeight() * HEIGHT_RATIO);
   g.setColour(findColour(Editor::textColourId));
 
-  g.drawFittedText(owner_->getCommandManager()->getNameOfCommand(commandID_),
+  g.drawFittedText(editor_->getCommandManager()->getNameOfCommand(commandID_),
                    TEXT_X_MARGIN, 0,
                    jmax(TEXT_WIDTH_MAX,
                         getChildComponent(0)->getX() - TEXT_X_TOTAL),

@@ -8,8 +8,8 @@ namespace command {
 
 class MapItem : public TreeViewItem {
  public:
-  MapItem(Editor* owner, CommandID commandID)
-      : owner_(owner), commandID_(commandID) {
+  MapItem(Editor* editor, CommandID commandID)
+      : editor_(editor), commandID_(commandID) {
   }
 
   String getUniqueName() const { return String((int) commandID_) + "_id"; }
@@ -17,11 +17,11 @@ class MapItem : public TreeViewItem {
   int getItemHeight() const { return 20; }
 
   Component* createItemComponent() {
-    return new MapItemComponent(owner_, commandID_);
+    return new MapItemComponent(editor_, commandID_);
   }
 
  private:
-  Editor* owner_;
+  Editor* editor_;
   const CommandID commandID_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MapItem);

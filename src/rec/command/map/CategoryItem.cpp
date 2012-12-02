@@ -14,8 +14,7 @@ const int PADDING = 2;
 
 }  // namespace
 
-CategoryItem::CategoryItem(Editor* editor,
-                                               const String& name)
+CategoryItem::CategoryItem(Editor* editor, const String& name)
     : editor_(editor), categoryName_(name) {
 }
 
@@ -30,19 +29,6 @@ void CategoryItem::paintItem(Graphics& g, int width, int height) {
   g.drawText(categoryName_,
              PADDING, 0, width - PADDING, height,
              Justification::centredLeft, true);
-}
-
-void CategoryItem::itemOpennessChanged(bool isNowOpen) {
-  if (!isNowOpen) {
-    clearSubItems();
-  } else if (getNumSubItems() == 0) {
-    Array<CommandID> commands(editor_->getCommandManager()->
-                              getCommandsInCategory(categoryName_));
-
-    for (int i = 0; i < commands.size(); ++i) {
-      if (editor_->shouldCommandBeIncluded(commands[i]))
-        addSubItem(new MapItem(editor_, commands[i])))
-  }
 }
 
 }  // namespace command

@@ -86,8 +86,11 @@ class Editor : public Component, public ButtonListener,
   void assignNewKey(EditButton* button, const string& key);
 
  protected:
+  typedef map<CommandID, MapItem*> MapItemMap;
+
   ApplicationCommandManager* commandManager_;
   CommandMap* commandMap_;
+  MapItemMap mapItemMap_;
 
   TreeView tree;
   TextButton resetButton_;
@@ -99,7 +102,7 @@ class Editor : public Component, public ButtonListener,
   ptr<EntryWindow> commandEntryWindow_;
   EditButton* lastEditButton_;
 
-  ptr<TopLevelItem> treeItem_;
+  ptr<TopLevelItem> topLevelItem_;
   bool expectingExport_;
 
   string key_;

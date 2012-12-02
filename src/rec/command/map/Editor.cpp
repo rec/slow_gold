@@ -8,7 +8,6 @@
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/map/EditButton.h"
 #include "rec/command/map/MapItem.h"
-#include "rec/command/map/TopLevelItem.h"
 #include "rec/command/map/EntryWindow.h"
 #include "rec/command/map/MapItemComponent.h"
 #include "rec/gui/Dialog.h"
@@ -35,6 +34,33 @@ namespace command {
 
 namespace {
 
+class TopLevelItem : public TreeViewItem, public ChangeListener {
+ public:
+  TopLevelItem(Editor* editor) : editor_(editor) {
+    setLinesDrawnForSubItems(false);
+    editor_->getChangeBroadcaster()->addChangeListener(this);
+  }
+
+  ~TopLevelItem() {
+    editor_->getChangeBroadcaster()->removeChangeListener(this);
+  }
+
+  void changeListenerCallback(ChangeBroadcaster*) {
+    DLOG(INFO) << "TODO: changeListenerCallback";
+  }
+
+  bool mightContainSubItems() { return true; }
+  String getUniqueName() const { return "keys"; }
+
+  void changeListenerCallback(ChangeBroadcaster*);
+
+ protected:
+  Editor* editor_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TopLevelItem);
+};
+
+
 const int BUTTON_HEIGHT = 20;
 const double MAX_BUTTON_PADDING = 8.0;
 const int BUTTON_Y_PADDING = 8;
@@ -57,29 +83,6 @@ bool showCommandMapBox(const String& command, Component* comp,
 void addTextButton(Editor* editor, TextButton* button) {
   editor->addAndMakeVisible(button);
   button->addListener(editor);
-}
-
-static void fillTopLevelItem(Editor* editor, juce::TreeView* top) {
-  StringArray categories(editor->getCommandManager()->getCommandCategories());
-  categories.sort(false);
-
-  for (int i = 0; i < categories.size(); ++i) {
-    const String& cat = categories[i];
-    const Array<CommandID> commands(editor->getCommandManager()->
-                                    getCommandsInCategory(cat));
-    int count = 0;
-
-    for (int j = 0; j < commands.size(); ++j)
-      if (editor->shouldCommandBeIncluded(commands[j]))
-        ++count;
-
-    if (count > 0) {
-      top->addSubItem(new CategoryItem(editor, cat));
-    } else if (cat != t_NONE) {
-      LOG(DFATAL) << "Nothing in category " << str(cat)
-                  << ", " << commands.size();
-    }
-  }
 }
 
 const int RECENT = Command::RECENT_FILES;
@@ -115,10 +118,10 @@ void Editor::initialize() {
 }
 
 void Editor::resetTreeItem() {
-  if (treeItem_)
+  if (topLevelItem_)
     tree.setRootItem(NULL);
-  treeItem_.reset(new TopLevelItem(this));
-  tree.setRootItem(treeItem_.get());
+  topLevelItem_.reset(new TopLevelItem(this));
+  tree.setRootItem(topLevelItem_.get());
 }
 
 Editor::~Editor() {
@@ -133,7 +136,7 @@ void Editor::setColours(const Colour& mainBackground,
 }
 
 void Editor::parentHierarchyChanged() {
-  treeItem_->changeListenerCallback(NULL);
+  topLevelItem_->changeListenerCallback(NULL);
 }
 
 void Editor::resized() {
@@ -167,13 +170,41 @@ void Editor::resized() {
   tree.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT - 2 * TOP_RIGHT_PADDING);
 }
 
-bool Editor::shouldCommandBeIncluded(const CommandID id) {
-  if (id >= BEGIN && id <= END)
-    return false;
-
-  const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
-  return ci && !(ci->flags & ApplicationCommandInfo::hiddenFromKeyEditor);
+static TopLevelItem* createTopLevelItem(ApplicationCommandManager* acm,
+                                        Editor* editor) {
 }
+
+void Editor::fillTopLevelItem() {
+  topLevelItem_.reset(new TopLevelItem);
+
+  StringArray categories(acm->getCommandCategories());
+  categories.sort(false);
+
+  for (int i = 0; i < categories.size(); ++i) {
+    const String& cat = categories[i];
+    const Array<CommandID> commands(acm->getCommandsInCategory(cat));
+    const Array<CommandID> goodCommands;
+    TreeView* categoryItem = NULL;
+
+    for (int j = commands.size() - 1; j >= 0; ++j) {
+      CommandID id = commands[j];
+      if (id >= BEGIN && id <= END)
+        continue;
+      if (const ApplicationCommandInfo* const info = acm->getCommandForID(id)) {
+        if (!(info->flags & ApplicationCommandInfo::hiddenFromKeyEditor)) {
+          if (!categoryItem) {
+            categoryItem = new CategoryItem(this, cat);
+            topLevelItem_->addSubItem(categoryItem);
+          }
+          ptr<MapItem> mapItem(new MapItem(this, id));
+          mapItemMap_[id] = mapItem.get();
+          categoryItem->addSubItem(mapItem.transfer());
+        }
+      }
+    }
+  }
+}
+
 
 bool Editor::isCommandReadOnly(const CommandID id) {
   const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
@@ -223,17 +254,17 @@ void Editor::operator()(const File& f) {
   }
 }
 
-static void resetCallback(int result, Editor* owner) {
+static void resetCallback(int result, Editor* editor) {
   if (result) {
-    owner->doReset();
-    owner->resetTreeItem();
+    editor->doReset();
+    editor->resetTreeItem();
   }
 }
 
-static void clearCallback(int result, Editor* owner) {
+static void clearCallback(int result, Editor* editor) {
   if (result) {
-    owner->doClear();
-    owner->resetTreeItem();
+    editor->doClear();
+    editor->resetTreeItem();
   }
 }
 
@@ -290,7 +321,7 @@ void Editor::assignNewKey(EditButton* button,
 static void assignNewKeyCallback(int result, Editor* button,
                                  const string key) {
   if (result)
-    button->getOwner().assignNewKey(button, key);
+    button->getEditor().assignNewKey(button, key);
 }
 
 void Editor::setNewKey(EditButton* button,
@@ -316,7 +347,7 @@ void Editor::keyChosen(EditButton* button) {
 
 static void keyChosen(int result, EditButton* button) {
   if (result)
-    button->getOwner()->keyChosen(button);
+    button->getEditor()->keyChosen(button);
 }
 
 void Editor::buttonMenuCallback(int result,

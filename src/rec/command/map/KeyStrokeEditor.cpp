@@ -15,8 +15,8 @@ namespace {
 
 class KeyEntryWindow : public EntryWindow {
  public:
-  explicit KeyEntryWindow(KeyStrokeEditor* owner)
-    : EntryWindow(t_PRESS_A_KEY, owner) {
+  explicit KeyEntryWindow(KeyStrokeEditor* editor)
+    : EntryWindow(t_PRESS_A_KEY, editor) {
   }
 
   bool keyPressed(const KeyPress& key) {

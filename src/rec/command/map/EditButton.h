@@ -10,7 +10,7 @@ class Editor;
 
 class EditButton  : public juce::Button {
  public:
-  EditButton(Editor& owner_, const CommandID commandID_,
+  EditButton(Editor& editor_, const CommandID commandID_,
                        const String& keyName,
                        const int keyNum_);
   void paintButton(Graphics& g, bool /*isOver*/, bool /*isDown*/);
@@ -21,10 +21,10 @@ class EditButton  : public juce::Button {
   const CommandID commandID;
   const int keyNum;
 
-  Editor& getOwner() { return owner; }
+  Editor& getEditor() { return editor; }
 
  private:
-  Editor& owner;
+  Editor& editor;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EditButton);
 };

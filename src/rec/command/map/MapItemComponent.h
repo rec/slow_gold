@@ -16,7 +16,7 @@ class MapItemComponent  : public Component {
   const CommandID commandID_;
 
  private:
-  Editor* const owner_;
+  Editor* const editor_;
   OwnedArray<EditButton> buttons_;
 
   enum { maxNumAssignments = 3 };
