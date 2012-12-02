@@ -3,8 +3,8 @@
 #include "rec/base/Trans.h"
 
 #include "rec/command/KeyboardBindings.h"
-#include "rec/command/map/KeyCommandMapEditor.h"
-#include "rec/command/map/MidiCommandMapEditor.h"
+#include "rec/command/map/KeyStrokeEditor.h"
+#include "rec/command/map/MidiEditor.h"
 #include "rec/gui/Dialog.h"
 #include "rec/slow/Instance.h"
 
@@ -25,7 +25,7 @@ namespace {
 const int EDITOR_WIDTH = 500;
 const int EDITOR_HEIGHT = 800;
 
-bool displayEditorWindow(command::CommandMapEditor* comp,
+bool displayEditorWindow(command::Editor* comp,
                          const String& title) {
   gui::DialogLocker l;
   if (!l.isLocked()) {
@@ -56,7 +56,6 @@ void clearKeyboardMappings() {
   }
 }
 
-
 void clearMidiMappings() {
   if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
                                    t_CLEAR_MIDI_MAPPINGS_TITLE,
@@ -69,7 +68,7 @@ void clearMidiMappings() {
 void keyboardMappings() {
   Instance* i = Instance::getInstance();
   ApplicationCommandManager* manager = &i->applicationCommandManager_;
-  command::KeyCommandMapEditor comp(manager, manager->getKeyMappings());
+  command::KeyStrokeEditor comp(manager, manager->getKeyMappings());
   if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE))
     command::saveKeyboardBindings(manager);
 }
@@ -77,7 +76,7 @@ void keyboardMappings() {
 void midiMappings() {
   Instance* i = Instance::getInstance();
   ApplicationCommandManager* manager = &i->applicationCommandManager_;
-  command::MidiCommandMapEditor comp(manager, i->midiCommandMap_.get());
+  command::MidiEditor comp(manager, i->midiCommandMap_.get());
   if (displayEditorWindow(&comp, t_MIDI_EDITOR_TITLE))
     data::setProto(i->midiCommandMap_->getProto(), data::global());
 }

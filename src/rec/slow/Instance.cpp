@@ -168,7 +168,7 @@ void Instance::init() {
       &applicationCommandManager_));
   threads_.reset(new Threads(this));
 
-  device_->manager_.addMidiInputCallback("", midiCommandMap_.get());
+  device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
 
   applicationCommandManager_.setFirstCommandTarget(
