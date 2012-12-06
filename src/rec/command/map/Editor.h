@@ -1,8 +1,11 @@
 #ifndef __REC_COMMAND_COMMANDMAPEDITOR__
 #define __REC_COMMAND_COMMANDMAPEDITOR__
 
+#include <map>
+
 #include "rec/util/Deletable.h"
 #include "rec/util/Listener.h"
+#include "rec/command/map/EditButton.h"
 
 using namespace juce;
 
@@ -11,17 +14,21 @@ namespace command {
 
 class CommandMap;
 class EditButton;
-class TopLevelItem;
+class MapItem;
 class MapItemComponent;
+class TopLevelItem;
 
-class Editor : public Component, public ButtonListener,
-               public Listener<const File&> {
+class Editor : public Component,
+               public ButtonListener,
+               public Listener<const File&>,
+               public Listener<const MenuCallback&> {
  public:
   Editor(ApplicationCommandManager*, CommandMap*);
   virtual ~Editor();
 
   void initialize();
   virtual void operator()(const File&);
+  virtual void operator()(const MenuCallback&) {}  // TODO:
 
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;
@@ -85,7 +92,7 @@ class Editor : public Component, public ButtonListener,
   void assignNewKey(EditButton* button, const string& key);
 
  protected:
-  typedef map<CommandID, MapItem*> MapItemMap;
+  typedef std::map<CommandID, MapItem*> MapItemMap;
 
   ApplicationCommandManager* commandManager_;
   CommandMap* commandMap_;
@@ -108,6 +115,18 @@ class Editor : public Component, public ButtonListener,
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Editor);
 };
+
+inline string toString(const KeyPress& kp) {
+  return str(kp.getTextDescription());
+}
+
+inline KeyPress keyPressFromString(const string& s) {
+  return KeyPress::createFromDescription(str(s));
+}
+
+inline MidiMessage midiFromString(const string& s) {
+  return MidiMessage(s.data(), s.size());
+}
 
 }  // namespace command
 }  // namespace rec

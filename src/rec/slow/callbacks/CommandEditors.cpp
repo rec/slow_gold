@@ -44,6 +44,7 @@ bool displayEditorWindow(command::Editor* comp,
 
 }  // namespace
 
+#if 0
 void clearKeyboardMappings() {
   if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
                                    t_CLEAR_KEYBOARD_MAPPINGS_TITLE,
@@ -65,13 +66,23 @@ void clearMidiMappings() {
   }
 }
 
+#endif
+
+using namespace rec::data;
+
 void keyboardMappings() {
   Instance* i = Instance::getInstance();
   ApplicationCommandManager* manager = &i->applicationCommandManager_;
+  KeyStrokeCommandMapProto map = getProto<KeyStrokeCommandMapProto>(global());
+  CommandMap commandMap;
+  commandMap.addCommands(map.map());
 
-  command::KeyStrokeEditor comp(manager, manager->getKeyMappings());
-  if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE))
-    command::saveKeyboardBindings(manager);
+  command::KeyStrokeEditor comp(manager, &commandMap);
+  if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE)) {
+    *(map.mutable_map()) = commandMap.getCommand();
+    setProto(map, global());
+    command::loadKeyboardBindings(manager);
+  }
 }
 
 void midiMappings() {

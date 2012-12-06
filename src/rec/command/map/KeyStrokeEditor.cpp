@@ -12,11 +12,6 @@ namespace command {
 
 namespace {
 
-string toString(const KeyPress& kp) {
-  return str(kp.getTextDescription());
-}
-
-
 class KeyEntryWindow : public EntryWindow {
  public:
   explicit KeyEntryWindow(KeyStrokeEditor* editor)

@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="CxTc0VjQF" name="SlowGold">
+  <MAINGROUP id="CgOwrvUqT" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -357,6 +357,8 @@
               id="l6IoAUQHh" name="FillCommandRecordTable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/FillCommandRecordTable.h"
               id="SgC063F7X" name="FillCommandRecordTable.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
+              id="lVWINCrp6" name="KeyboardBindings.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="ZxTlCYmLe"
               name="KeyboardBindings.h" resource="0"/>
         <GROUP id="ZOQbo0KNJ" name="map">
@@ -862,6 +864,10 @@
                 id="GV4j0xRrO" name="AllCommands.def.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/commands/AllCommands.def.h"
                 id="fURoLGDgI" name="AllCommands.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/commands/KeyStrokeMap.def.cpp"
+                id="tXcWOiX6B" name="KeyStrokeMap.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/commands/KeyStrokeMap.def.h"
+                id="6dImyk1Jh" name="KeyStrokeMap.def.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/commands/SlowCommandData.cpp"
                 id="3BxhM9H9Q" name="SlowCommandData.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/commands/SlowCommandData.h"
@@ -1655,7 +1661,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Maw6TPtc6" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="viwTqQ8Qd" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

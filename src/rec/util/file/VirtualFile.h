@@ -21,12 +21,12 @@ inline const VirtualFile makeVirtualFile(VirtualFile::Type type) {
   return vf;
 }
 
-inline File getShadowDirectory(Type type) {
-  return getShadowDirectory(makeVirtualFile(type));
-}
-
 // Given a VirtualFile, return the actual directory that shadows it.
 const File getShadowDirectory(const VirtualFile&);
+
+inline File getShadowDirectory(VirtualFile::Type type) {
+  return getShadowDirectory(makeVirtualFile(type));
+}
 
 const uint MAX_WINDOWS_DIRECTORY_SIZE = 260;
 const uint MAX_FILENANE_LENGTH = 60;

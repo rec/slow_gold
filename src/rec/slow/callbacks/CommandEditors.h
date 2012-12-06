@@ -6,8 +6,11 @@
 namespace rec {
 namespace slow {
 
+#if 0
 void clearKeyboardMappings();
 void clearMidiMappings();
+#endif
+
 void keyboardMappings();
 void midiMappings();
 

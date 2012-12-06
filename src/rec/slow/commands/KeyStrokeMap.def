@@ -1,0 +1,241 @@
+entry {
+  type: ABOUT_THIS_PROGRAM
+  keypress: "shift + ?"
+}
+entry {
+  type: ADD_LOOP_POINT
+  keypress: "l"
+  keypress: "command + l"
+}
+entry {
+  type: AUDIO_PREFERENCES
+  keypress: "command + ;"
+}
+entry {
+  type: CLEAR_LOOPS
+  keypress: "command + b"
+}
+entry {
+  type: CLOSE_FILE
+  keypress: "command + w"
+}
+entry {
+  type: COPY
+  keypress: "command + c"
+}
+entry {
+  type: COPY_ALL_LOOP_POINTS
+  keypress: "command + c"
+}
+entry {
+  type: CUT
+  keypress: "command + x"
+}
+entry {
+  type: DEL
+  keypress: "delete"
+}
+entry {
+  type: DESELECT_ALL
+  keypress: "command + d"
+}
+entry {
+  type: EJECT_CDS
+  keypress: "command + e"
+}
+entry {
+  type: INVERT_LOOP_SELECTION
+  keypress: "command + i"
+}
+entry {
+  type: JUMP
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: "1"
+  keypress: "2"
+  keypress: "3"
+  keypress: "4"
+  keypress: "5"
+  keypress: "6"
+  keypress: "7"
+  keypress: "8"
+  keypress: "9"
+  keypress: "0"
+  start_index: -5
+}
+entry {
+  type: JUMP_SELECTED
+  keypress: "command + cursor left"
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: "command + cursor right"
+  keypress: "shift + !"
+  keypress: "shift + @"
+  keypress: "shift + #"
+  keypress: "shift + $"
+  keypress: "shift + %"
+  keypress: "shift + ^"
+  keypress: "shift + &"
+  keypress: "shift + *"
+  keypress: "shift + ("
+  keypress: "shift + )"
+  start_index: -5
+}
+entry {
+  type: LOOP_NEXT_SEGMENT
+  keypress: "n"
+}
+entry {
+  type: KEYBOARD_MAPPINGS
+  keypress: "command + k"
+}
+entry {
+  type: MIDI_MAPPINGS
+  keypress: "command + m"
+}
+entry {
+  type: MODE_ADD_LOOP_POINT
+  keypress: "option + a"
+}
+entry {
+  type: MODE_DRAG
+  keypress: "option + d"
+}
+entry {
+  type: MODE_SET_TIME
+  keypress: "option + t"
+}
+entry {
+  type: MODE_ZOOM_IN
+  keypress: "option + z"
+}
+entry {
+  type: MUTE_VOLUME_TOGGLE
+  keypress: "."
+}
+entry {
+  type: NUDGE_BACKWARD
+  keypress: "cursor left"
+}
+entry {
+  type: NUDGE_FORWARD
+  keypress: "cursor right"
+}
+entry {
+  type: NUDGE_VOLUME_DOWN
+  keypress: "cursor down"
+}
+entry {
+  type: NUDGE_VOLUME_UP
+  keypress: "cursor up"
+}
+entry {
+  type: NUDGE_SPEED_DOWN
+  keypress: "_"
+  keypress: "shift + _"
+  keypress: "-"
+}
+entry {
+  type: NUDGE_SPEED_UP
+  keypress: "+"
+  keypress: "shift + +"
+  keypress: "="
+}
+entry {
+  type: OPEN
+  keypress: "command + o"
+}
+entry {
+  type: OPEN_PREVIOUS_FILE
+  keypress: "command + r"
+}
+entry {
+  type: PASTE
+  keypress: "command + v"
+}
+entry {
+  type: PASTE_OVER_LOOP_POINTS
+  keypress: "command + v"
+}
+entry {
+  type: QUIT
+  keypress: "command + q"
+}
+entry {
+  type: REDO
+  keypress: "shift + command + z"
+}
+entry {
+  type: SAVE_FILE
+  keypress: "command + s"
+}
+entry {
+  type: SAVE_FILE_SELECTION
+  keypress: "command + shift + s"
+}
+entry {
+  type: SELECT_ALL
+  keypress: "command + a"
+}
+entry {
+  type: SELECT_ONLY
+  keypress: "ctrl + command + cursor left"
+  keypress: "ctrl + cursor left"
+  keypress: ""
+  keypress: "ctrl + cursor right"
+  keypress: "ctrl + command + cursor right"
+  start_index: -5
+}
+entry {
+  type: TOGGLE_SELECTION
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: ""
+  keypress: "command + 1"
+  keypress: "command + 2"
+  keypress: "command + 3"
+  keypress: "command + 4"
+  keypress: "command + 5"
+  keypress: "command + 6"
+  keypress: "command + 7"
+  keypress: "command + 8"
+  keypress: "command + 9"
+  keypress: "command + 0"
+  start_index: -5
+}
+entry {
+  type: TOGGLE_START_STOP
+  keypress: "spacebar"
+  keypress: "return"
+}
+entry {
+  type: TOGGLE_STRETCH_ENABLE
+  keypress: "s"
+}
+entry {
+  type: TOGGLE_WHOLE_SONG_LOOP
+  keypress: "w"
+}
+entry {
+  type: UNDO
+  keypress: "command + z"
+}
+entry {
+  type: ZOOM_OUT
+  keypress: "command + -"
+}
+entry {
+  type: ZOOM_OUT_FULL
+  keypress: "command + shift + -"
+}
+entry {
+  type: ZOOM_TO_SELECTION
+  keypress: "command  + \'"
+  keypress: "numpad *"
+}

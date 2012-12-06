@@ -664,6 +664,9 @@
     <ClCompile Include="..\..\..\..\src\rec\command\FillCommandRecordTable.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
@@ -944,6 +947,9 @@
       <Filter>SlowGold\rec\slow\callbacks</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.cpp">
+      <Filter>SlowGold\rec\slow\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def.cpp">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp">
@@ -3244,6 +3250,9 @@
       <Filter>SlowGold\rec\slow\callbacks</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.h">
+      <Filter>SlowGold\rec\slow\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def.h">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h">

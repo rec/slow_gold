@@ -1,16 +1,32 @@
 #include "rec/command/KeyboardBindings.h"
 
 #include "rec/command/map/CommandMap.h"
+#include "rec/command/map/Editor.h"
 #include "rec/data/DataOps.h"
 
 namespace rec {
 namespace command {
 
 using namespace juce;
+using namespace rec::data;
+
+namespace {
+
+void fillKeyPressMappingSet(const CommandMapProto& commandMap,
+                            KeyPressMappingSet* mappings) {
+  mappings->clearAllKeyPresses();
+  for (int i = 0; i < commandMap.entry_size(); ++i) {
+    const CommandMapEntry& m = commandMap.entry(i);
+    for (int j = 0; j < m.key_size(); ++j)
+      mappings->addKeyPress(m.command(), keyPressFromString(m.key(j)));
+  }
+}
+
+}
 
 void loadKeyboardBindings(ApplicationCommandManager* commandManager) {
-  fillKeyPressMappingSet(data::getProto<KeyStrokeCommandMapProto>(global()).map(),
-                         commandManager->getKeyMappings()))
+  fillKeyPressMappingSet(getProto<KeyStrokeCommandMapProto>(global()).map(),
+                         commandManager->getKeyMappings());
 }
 
 void saveKeyboardBindings(const CommandMapProto& map) {

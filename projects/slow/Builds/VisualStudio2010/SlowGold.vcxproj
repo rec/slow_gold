@@ -182,6 +182,7 @@
     <ClCompile Include="..\..\..\..\src\rec\command\CommandRecordTable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandTarget.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\FillCommandRecordTable.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\EditButton.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\Editor.cpp"/>
@@ -276,6 +277,7 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
@@ -1713,6 +1715,7 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>

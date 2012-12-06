@@ -44,8 +44,6 @@ class CommandMap : public ChangeBroadcaster {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandMap);
 };
 
-void fillKeyPressMappingSet(const CommandMapProto&, juce::KeyPressMappingSet*);
-
 }  // namespace command
 }  // namespace rec
 
