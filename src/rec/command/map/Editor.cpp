@@ -171,24 +171,28 @@ void Editor::fillTopLevelItem() {
 
     for (int j = commands.size() - 1; j >= 0; ++j) {
       CommandID id = commands[j];
-      if (id >= BEGIN && id <= END)
+      if (!shouldCommandBeIncluded(id))
         continue;
-      if (const ApplicationCommandInfo* info =
-          commandManager_->getCommandForID(id)) {
-        if (!(info->flags & ApplicationCommandInfo::hiddenFromKeyEditor)) {
-          if (!categoryItem) {
-            categoryItem = new CategoryItem(cat, this);
-            topLevelItem_->addSubItem(categoryItem);
-          }
-          MapItem* mapItem(new MapItem(this, id, info->shortName));
-          categoryItem->addSubItem(mapItem);
-          mapItemMap_[id] = mapItem;
-        }
+      const ApplicationCommandInfo* info = commandManager_->getCommandForID(id);
+      if (!categoryItem) {
+        categoryItem = new CategoryItem(cat, this);
+        topLevelItem_->addSubItem(categoryItem);
       }
+      MapItem* mapItem(new MapItem(this, id, info->shortName));
+      categoryItem->addSubItem(mapItem);
+      mapItemMap_[id] = mapItem;
     }
   }
 }
 
+
+bool Editor::shouldCommandBeIncluded(const CommandID id) {
+  if (id >= BEGIN && id <= END)
+    return false;
+
+  const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
+  return ci && !(ci->flags & ApplicationCommandInfo::hiddenFromKeyEditor);
+}
 
 bool Editor::isCommandReadOnly(const CommandID id) {
   const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);

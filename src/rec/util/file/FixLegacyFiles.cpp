@@ -32,12 +32,15 @@ void portKeyboardFile() {
         Command::Type type = command.type();
         if (command.has_start_index()) {
           int32 index = command.start_index();
-          for (int j = 0; j < command.keypress_size(); ++j, ++index)
-            newEntry(type, str(command.keypress(j)), &keyMap)->set_index(index);
-
+          for (int j = 0; j < command.keypress_size(); ++j, ++index) {
+            CommandMapEntry* entry = newEntry(type, &keyMap);
+            entry->set_index(index);
+            entry->add_key(command.keypress(j));
+          }
         } else {
-          for (int j = 0; j < command.keypress_size(); ++j, ++)
-            newEntry(type, command.keypress(j), &keyMap);
+          CommandMapEntry* entry = newEntry(type, &keyMap);
+          for (int j = 0; j < command.keypress_size(); ++j)
+            entry->add_key(command.keypress(j));
         }
       }
       data::setProto(keyMap, data::global());

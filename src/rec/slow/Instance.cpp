@@ -182,7 +182,7 @@ void Instance::init() {
   command::fillCommandRecordTable(*commandData_, commandRecordTable_.get());
   applicationCommandManager_.registerAllCommandsForTarget(
       applicationCommandTarget_.get());
-  loadKeyboardBindings(&applicationCommandManager_);
+  command::loadKeyboardBindings(&applicationCommandManager_);
   window_->getAppleMenu()->addCommandItem(&applicationCommandManager_,
                                           command::Command::ABOUT_THIS_PROGRAM);
 
