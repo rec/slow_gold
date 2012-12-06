@@ -1,8 +1,9 @@
 #include "rec/util/file/FixLegacyFiles.h"
 
-#include "rec/command/CommandMap.pb.h"
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/map/CommandMap.pb.h"
 #include "rec/data/DataOps.h"
+#include "rec/util/Copy.h"
 #include "rec/util/file/MoveFile.h"
 #include "rec/util/file/TypeMap.h"
 
@@ -14,11 +15,9 @@ namespace {
 
 using namespace rec::command;
 
-CommandMapEntry* newEntry(Command::Type type, const String& key,
-                          KeyStrokeCommandMapProto* keyMap) {
-  CommandMapEntry* entry = keyMap->add_entry();
+CommandMapEntry* newEntry(Command::Type type, KeyStrokeCommandMapProto* map) {
+  CommandMapEntry* entry = map->mutable_map()->add_entry();
   entry->set_command(type);
-  entry->set_key(str(key));
   return entry;
 }
 
@@ -33,8 +32,8 @@ void portKeyboardFile() {
         Command::Type type = command.type();
         if (command.has_start_index()) {
           int32 index = command.start_index();
-          for (int j = 0; j < command.keypress_size(); ++j, ++)
-            newEntry(type, command.keypress(j), &keyMap)->set_index(index);
+          for (int j = 0; j < command.keypress_size(); ++j, ++index)
+            newEntry(type, str(command.keypress(j)), &keyMap)->set_index(index);
 
         } else {
           for (int j = 0; j < command.keypress_size(); ++j, ++)
@@ -47,8 +46,6 @@ void portKeyboardFile() {
   }
 }
 
-}
-
 void moveOldAbsoluteDirectoriesToTypeRelative() {
   const TypeMap& map = getTypeMap();
   for (TypeMap::const_iterator i = map.begin(); i != map.end(); ++i)
@@ -56,6 +53,8 @@ void moveOldAbsoluteDirectoriesToTypeRelative() {
   moveGlobalFiles();
   moveKeyboardFile();
 }
+
+}  // namespace
 
 void fixLegacyFiles() {
   moveOldAbsoluteDirectoriesToTypeRelative();

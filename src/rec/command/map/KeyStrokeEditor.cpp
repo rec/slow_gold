@@ -1,8 +1,7 @@
 #include "rec/command/map/KeyStrokeEditor.h"
 
 #include "rec/base/Trans.h"
-#include "rec/command/map/EntryWindow.h"
-#include "rec/command/map/MapItemComponent.h"
+#include "rec/command/map/Items.h"
 
 TRAN(PRESS_A_KEY, "Please press a key combination now...");
 TRAN(KEY, "Key");
@@ -10,29 +9,11 @@ TRAN(KEY, "Key");
 namespace rec {
 namespace command {
 
-namespace {
-
-class KeyEntryWindow : public EntryWindow {
- public:
-  explicit KeyEntryWindow(KeyStrokeEditor* editor)
-    : EntryWindow(t_PRESS_A_KEY, editor) {
-  }
-
-  bool keyPressed(const KeyPress& key) {
-    editor()->setKey(toString(key));
-    return true;
-  }
-
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(KeyEntryWindow);
-};
-
-}  // namespace
-
 const String KeyStrokeEditor::name() const {
   return t_KEY;
 }
 
-const String KeyStrokeEditor::dialogTitle() const {
+const String KeyStrokeEditor::getWindowTitle() const {
   return t_PRESS_A_KEY;
 }
 
@@ -44,18 +25,15 @@ const String KeyStrokeEditor::getDescription(const string& key) const {
   return keyPressFromString(key).getTextDescriptionWithIcons();
 }
 
-const String MidiEditor::getWindowTitle() const {
-  return t_PRESS_A_KEY;
-}
-
-EntryWindow* KeyStrokeEditor::newWindow() {
+juce::AlertWindow* KeyStrokeEditor::newWindow() {
   ptr<juce::AlertWindow> window(Editor::newWindow());
   window->addKeyListener(this);
   return window.transfer();
 }
 
-bool KeyEntryWindow::keyPressed(const KeyPress& kp) {
+bool KeyStrokeEditor::keyPressed(const KeyPress& kp, Component*) {
   setKey(toString(kp));
+  return true;
 }
 
 }  // namespace command

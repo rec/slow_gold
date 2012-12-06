@@ -1,5 +1,5 @@
-#ifndef __REC_COMMAND_COMMANDMAPEDITOR__
-#define __REC_COMMAND_COMMANDMAPEDITOR__
+#ifndef __REC_COMMAND_MAP_EDITOR__
+#define __REC_COMMAND_MAP_EDITOR__
 
 #include <map>
 
@@ -16,29 +16,27 @@ class CommandMap;
 class EditButton;
 class MapItem;
 class MapItemComponent;
-class TopLevelItem;
 
 class Editor : public Component,
-               public ButtonListener,
-               public Listener<const File&>,
-               public Listener<const MenuCallback&> {
+               //               public ButtonListener,
+               public Listener<const File&> {
  public:
   Editor(ApplicationCommandManager*, CommandMap*);
   virtual ~Editor();
 
   void initialize();
   virtual void operator()(const File&);
-  virtual void operator()(const MenuCallback&) {}  // TODO:
+  void menuCallback(int result, EditButton*) {}  // TODO:
 
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;
   virtual const String getDescription(const string&) const = 0;
-  virtual void removeKey(CommandID, int keyNum) = 0;
-  virtual void removeKey(const string&) = 0;
-  virtual void addKey(CommandID, const string&, int keyIndex) = 0;
+  virtual void removeKeyAtIndex(CommandID, int keyNum);
+  virtual void removeKey(const string&);
+  virtual void addKey(CommandID, const string&, int keyIndex);
 
   typedef juce::Array<string> KeyArray;
-  virtual KeyArray getKeys(CommandID) = 0;
+  virtual KeyArray getKeys(CommandID);
   virtual const String getWindowTitle() const = 0;
   virtual const String getKeyMessage(const string&);
 
@@ -49,8 +47,7 @@ class Editor : public Component,
   void removeButton(EditButton*);
   void buttonMenuCallback(int result, EditButton*);
 
-  void setNewKey(EditButton* button, const string& newKey,
-                 bool dontAskUser);
+  void setNewKey(EditButton* button, const string& newKey);
 
   juce::AlertWindow* newWindow();
 
@@ -68,7 +65,7 @@ class Editor : public Component,
   virtual bool isCommandReadOnly(CommandID commandID);
 
   ApplicationCommandManager* getCommandManager() { return commandManager_; }
-  ChangeBroadcaster* getChangeBroadcaster() { return commandMap_; }
+  ChangeBroadcaster* getChangeBroadcaster();
 
   enum ColourIds {
     backgroundColourId  = 0x100ad00,
@@ -88,11 +85,17 @@ class Editor : public Component,
   void okButton();
 
   void setKey(const string&);
+  void keyChosen(EditButton* button);
 
   void assignNewKey(EditButton* button, const string& key);
 
  protected:
+  ptr<juce::AlertWindow> entryWindow_;
+
+ private:
   typedef std::map<CommandID, MapItem*> MapItemMap;
+
+  void fillTopLevelItem();
 
   ApplicationCommandManager* commandManager_;
   CommandMap* commandMap_;
@@ -105,10 +108,9 @@ class Editor : public Component,
   TextButton importButton_;
   TextButton okButton_;
 
-  ptr<juce::AlertWindow> entryWindow_;
   EditButton* lastEditButton_;
 
-  ptr<TopLevelItem> topLevelItem_;
+  ptr<juce::TreeViewItem> topLevelItem_;
   bool expectingExport_;
 
   string key_;
@@ -131,4 +133,4 @@ inline MidiMessage midiFromString(const string& s) {
 }  // namespace command
 }  // namespace rec
 
-#endif  // __REC_COMMAND_COMMANDMAPEDITOR__
+#endif  // __REC_COMMAND_MAP_EDITOR__

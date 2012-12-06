@@ -4,7 +4,6 @@
 
 namespace rec {
 namespace command {
-namespace map {
 
 namespace {
 
@@ -40,7 +39,6 @@ MapItem::MapItem(Editor* editor, CommandID id, const String& name)
 
 Component* MapItem::createItemComponent() {
   ptr<Component> c(new MapItemComponent(id_, name_));
-  c->addListener(editor_);
   return c.transfer();
 }
 
@@ -50,12 +48,11 @@ MapItemComponent::MapItemComponent(CommandID commandID, const String& name)
   // editor->addChildren(this); // TODO
 }
 
-MapItemComponent:;~MapItemComponent() {
-}
+MapItemComponent::~MapItemComponent() {}
 
 void MapItemComponent::createEditButton(const String& desc, int index,
-                                        bool isReadOnly) {
-  EditButton* const b = new EditButton(commandID_, desc, index);
+                                        bool isReadOnly, Editor* editor) {
+  EditButton* const b = new EditButton(editor, commandID_, desc, index);
   buttons_.add(b);
 
   b->setEnabled(!isReadOnly);
@@ -88,6 +85,5 @@ void MapItemComponent::resized() {
   }
 }
 
-}  // namespace map
 }  // namespace command
 }  // namespace rec

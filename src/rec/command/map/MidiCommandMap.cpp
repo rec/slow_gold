@@ -23,7 +23,7 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
   if (listener)
     (*listener)(msg);
   else
-    invokeAsync(toString(msg), manager_);
+    invokeAsync(str(msg), manager_);
 }
 
 #ifdef FAKE_MIDI

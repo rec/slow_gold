@@ -7,9 +7,10 @@
 #include "rec/command/Command.pb.h"
 #include "rec/command/CommandIDEncoder.h"
 #include "rec/command/map/EditButton.h"
-#include "rec/command/map/MapItemComponent.h"
+#include "rec/command/map/CommandMap.h"
 #include "rec/command/map/Items.h"
 #include "rec/gui/Dialog.h"
+#include "rec/util/thread/CallAsync.h"
 
 TRAN(RESET_TO_DEFAULTS, "Reset To Factory Default");
 TRAN(CLEAR_EDITOR, "Clear Changes");
@@ -31,6 +32,8 @@ TRAN(NEW_COMMAND_MAPPING, "New command mapping");
 
 namespace rec {
 namespace command {
+
+using namespace juce;
 
 namespace {
 
@@ -55,7 +58,6 @@ bool showCommandMapBox(const String& command, Component* comp,
 
 void addTextButton(Editor* editor, TextButton* button) {
   editor->addAndMakeVisible(button);
-  button->addListener(editor);
 }
 
 const int RECENT = Command::RECENT_FILES;
@@ -82,11 +84,13 @@ void Editor::initialize() {
   addTextButton(this, &importButton_);
   addTextButton(this, &okButton_);
 
+  fillTopLevelItem();
+
   addAndMakeVisible(&tree);
   tree.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
   tree.setRootItemVisible(false);
   tree.setDefaultOpenness(false);
-  resetTreeItem();
+
 }
 
 Editor::~Editor() {}
@@ -117,7 +121,7 @@ juce::AlertWindow* Editor::newWindow() {
 }
 
 void Editor::parentHierarchyChanged() {
-  topLevelItem_->changeListenerCallback(NULL);
+  // topLevelItem_->changeListenerCallback(NULL); // TODO
 }
 
 void Editor::resized() {
@@ -152,15 +156,16 @@ void Editor::resized() {
 }
 
 void Editor::fillTopLevelItem() {
-  topLevelItem_.reset(new ItemParent("top"));
+  topLevelItem_.reset(new Item("top", "", true));
   topLevelItem_->setLinesDrawnForSubItems(false);
 
-  StringArray categories(acm->getCommandCategories());
+  StringArray categories(commandManager_->getCommandCategories());
   categories.sort(false);
 
   for (int i = 0; i < categories.size(); ++i) {
     const String& cat = categories[i];
-    const Array<CommandID> commands(acm->getCommandsInCategory(cat));
+    const Array<CommandID> commands(
+        commandManager_->getCommandsInCategory(cat));
     const Array<CommandID> goodCommands;
     TreeViewItem* categoryItem = NULL;
 
@@ -168,13 +173,14 @@ void Editor::fillTopLevelItem() {
       CommandID id = commands[j];
       if (id >= BEGIN && id <= END)
         continue;
-      if (const ApplicationCommandInfo* const info = acm->getCommandForID(id)) {
+      if (const ApplicationCommandInfo* info =
+          commandManager_->getCommandForID(id)) {
         if (!(info->flags & ApplicationCommandInfo::hiddenFromKeyEditor)) {
           if (!categoryItem) {
-            categoryItem = new CategoryItem(this, cat);
+            categoryItem = new CategoryItem(cat, this);
             topLevelItem_->addSubItem(categoryItem);
           }
-          MapItem* mapItem(new MapItem(this, id));
+          MapItem* mapItem(new MapItem(this, id, info->shortName));
           categoryItem->addSubItem(mapItem);
           mapItemMap_[id] = mapItem;
         }
@@ -215,12 +221,14 @@ using namespace rec::gui::dialog;
 
 void Editor::exportButton() {
   expectingExport_ = true;
-  saveVirtualFile(this, "import export", t_CHOOSE_EXPORT_FILE, "*.slow");
+  gui::dialog::saveVirtualFile(this, "import export", t_CHOOSE_EXPORT_FILE,
+                               "*.slow");
 }
 
 void Editor::importButton() {
   expectingExport_ = false;
-  saveVirtualFile(this, "import export", t_CHOOSE_IMPORT_FILE, "*.slow");
+  gui::dialog::saveVirtualFile(this, "import export", t_CHOOSE_IMPORT_FILE,
+                               "*.slow");
 }
 
 void Editor::operator()(const File& f) {
@@ -228,21 +236,21 @@ void Editor::operator()(const File& f) {
     doExport(f);
   } else {
     doImport(f);
-    resetTreeItem();
+    // TODO: resetTreeItem();
   }
 }
 
 static void resetCallback(int result, Editor* editor) {
   if (result) {
     editor->doReset();
-    editor->resetTreeItem();
+    // editor->resetTreeItem(); // TODO
   }
 }
 
 static void clearCallback(int result, Editor* editor) {
   if (result) {
     editor->doClear();
-    editor->resetTreeItem();
+    // editor->resetTreeItem(); // TODO
   }
 }
 
@@ -284,27 +292,25 @@ void Editor::addChildren(MapItemComponent* comp) {
   const bool isReadOnly = isCommandReadOnly(command);
   KeyArray keys = getKeys(command);
   for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
-    comp->createEditButton(getDescription(keys[i]), i, isReadOnly);
-  comp->createEditButton(String::empty, -1, isReadOnly);
+    comp->createEditButton(getDescription(keys[i]), i, isReadOnly, this);
+  comp->createEditButton(String::empty, -1, isReadOnly, this);
 }
 
 void Editor::assignNewKey(EditButton* button, const string& key) {
   removeKey(key);
   if (button->keyNum >= 0)
-    removeKey(button->commandID, button->keyNum);
+    removeKeyAtIndex(button->commandID, button->keyNum);
   addKey(button->commandID, key, button->keyNum);
 }
 
-static void assignNewKeyCallback(int result, Editor* button,
-                                 const string key) {
+static void assignNewKeyCallback(int result, EditButton* button, const string key) {
   if (result)
-    button->getEditor().assignNewKey(button, key);
+    button->getEditor()->assignNewKey(button, key);
 }
 
-void Editor::setNewKey(EditButton* button,
-                                 const string& key) {
+void Editor::setNewKey(EditButton* button, const string& key) {
   if (isValid(key)) {
-    const CommandID previousCommand = getCommand(newKey);
+    const CommandID previousCommand = getCommand(key);
     if (previousCommand == 0) {
       assignNewKey(button, key);
     } else {
@@ -322,19 +328,18 @@ void Editor::keyChosen(EditButton* button) {
     entryWindow_.reset();
 }
 
-static void keyChosen(int result, EditButton* button) {
+static void keyChosenCallback(int result, EditButton* button) {
   if (result)
     button->getEditor()->keyChosen(button);
 }
 
-void Editor::buttonMenuCallback(int result,
-                                          EditButton* button) {
+void Editor::buttonMenuCallback(int result, EditButton* button) {
   if (result == 1) {
     entryWindow_.reset(newWindow());
     entryWindow_->enterModalState(true,
-        ModalCallbackFunction::forComponent(keyChosen, button));
+        ModalCallbackFunction::forComponent(keyChosenCallback, button));
   } else if (result == 2) {
-    removeKey(button->commandID, button->keyNum);
+    removeKeyAtIndex(button->commandID, button->keyNum);
   }
 }
 
@@ -342,37 +347,40 @@ void Editor::setKey(const string& key) {
   key_ = key;
   if (entryWindow_) {
     String msg = getKeyMessage(key);
-    thread::callAsync(entryWindow_.get(),
-                      &EntryWindow::setMessage, msg);
+    thread::callAsync(entryWindow_.get(), &AlertWindow::setMessage, msg);
   } else {
     LOG(DFATAL) << "Tried to set last key with no window up";
   }
 }
 
 CommandID Editor::getCommand(const string& key) {
-  return static_cast<CommandID>(mappings_->getCommand(key));
+  return static_cast<CommandID>(commandMap_->getCommand(key));
+}
+
+ChangeBroadcaster* Editor::getChangeBroadcaster() {
+  return commandMap_;
 }
 
 void Editor::removeKeyAtIndex(CommandID command, int keyNum) {
-  mappings_->removeCommand(static_cast<Command::Type>(command), keyNum);
-  mappings_->sendChangeMessage();
+  commandMap_->removeCommand(static_cast<Command::Type>(command), keyNum);
+  commandMap_->sendChangeMessage();
 }
 
 void Editor::removeKey(const string& key) {
-  mappings_->removeKey(key);
-  mappings_->sendChangeMessage();
+  commandMap_->removeKey(key);
+  commandMap_->sendChangeMessage();
 }
 
 void Editor::addKey(CommandID cmd, const string& key, int keyIndex) {
   DLOG(INFO) << "adding key " << cmd << ", " << keyIndex;
   Command::Type c = static_cast<Command::Type>(cmd);
   if (keyIndex >= 0)
-    mappings_->addAtIndex(key, c, keyIndex);
-  mappings_->sendChangeMessage();
+    commandMap_->addAtIndex(key, c, keyIndex);
+  commandMap_->sendChangeMessage();
 }
 
 Editor::KeyArray Editor::getKeys(CommandID c) {
-  vector<string> keys(mappings_->getKeys(static_cast<Command::Type>(c)));
+  vector<string> keys(commandMap_->getKeys(static_cast<Command::Type>(c)));
   KeyArray result;
 
   for (uint i = 0; i < keys.size(); ++i)

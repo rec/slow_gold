@@ -9,14 +9,14 @@ namespace command {
 class KeyStrokeEditor : public Editor, public juce::KeyListener {
  public:
   KeyStrokeEditor(ApplicationCommandManager* acm, CommandMap* mcm)
-      : Editor(acm, mcm), mappings_(mcm) {
+      : Editor(acm, mcm) {
   }
 
   virtual const String name() const;
   virtual bool isValid(const string&) const;
   virtual const String getDescription(const string&) const;
-  virtual bool keyPressed(const KeyPress&);
-  virtual String getWindowTitle() const;
+  virtual bool keyPressed(const KeyPress&, Component*);
+  virtual const String getWindowTitle() const;
   virtual juce::AlertWindow* newWindow();
 
  private:

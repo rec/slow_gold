@@ -3,6 +3,7 @@
 #include "rec/base/Trans.h"
 
 #include "rec/command/KeyboardBindings.h"
+#include "rec/command/map/CommandMap.pb.h"
 #include "rec/command/map/KeyStrokeEditor.h"
 #include "rec/command/map/MidiEditor.h"
 #include "rec/gui/Dialog.h"
@@ -69,6 +70,7 @@ void clearMidiMappings() {
 #endif
 
 using namespace rec::data;
+using namespace rec::command;
 
 void keyboardMappings() {
   Instance* i = Instance::getInstance();
@@ -79,7 +81,7 @@ void keyboardMappings() {
 
   command::KeyStrokeEditor comp(manager, &commandMap);
   if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE)) {
-    *(map.mutable_map()) = commandMap.getCommand();
+    *(map.mutable_map()) = commandMap.getProto();
     setProto(map, global());
     command::loadKeyboardBindings(manager);
   }

@@ -43,11 +43,10 @@ bool openVirtualFile(Listener<const FileList&>* listener,
                      const String& patterns,
                      FileChooserFunction function = &browseForFileToOpen);
 
-template <typename FileList>
-bool saveVirtualFile(Listener<const FileList&>* listener,
-                     const string& dialogName,
-                     const String& title,
-                     const String& patterns) {
+inline bool saveVirtualFile(Listener<const File&>* listener,
+                            const string& dialogName,
+                            const String& title,
+                            const String& patterns) {
   return openVirtualFile(listener, dialogName, title, patterns,
                          &browseForFileToSave);
 }

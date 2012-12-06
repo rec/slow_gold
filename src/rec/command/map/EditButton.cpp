@@ -10,10 +10,12 @@ TRAN(REMOVE_COMMAND_MAPPING, "Remove this command mapping");
 namespace rec {
 namespace command {
 
-EditButton::EditButton(CommandID commandID_, String& keyName, int keyNum_)
+EditButton::EditButton(Editor* editor, CommandID commandID_,
+                       const String& keyName, int keyNum_)
     : juce::Button(keyName),
       commandID(commandID_),
-      keyNum(keyNum_)
+      keyNum(keyNum_),
+      editor_(editor)
 {
   setWantsKeyboardFocus(false);
   setTriggeredOnMouseDown(keyNum >= 0);
@@ -29,7 +31,7 @@ void EditButton::paintButton(Graphics& g, bool, bool) {
 }
 
 static void menuCallback(int result, EditButton* button) {
-  button->broadcast(std::make_pair(result, button));
+  button->getEditor()->menuCallback(result, button);
 }
 
 void EditButton::clicked() {
@@ -43,7 +45,7 @@ void EditButton::clicked() {
     m.showMenuAsync(PopupMenu::Options(),
                     ModalCallbackFunction::forComponent(menuCallback, this));
   } else {
-    addCommand();  // + button pressed..
+    // addCommand();  // + button pressed..  // TODO:
   }
 }
 

@@ -5,7 +5,6 @@
 
 namespace rec {
 namespace command {
-namespace map {
 
 class EditButton;
 class Editor;
@@ -56,7 +55,8 @@ class MapItemComponent  : public Component {
  public:
   MapItemComponent(CommandID, const String& name);
   ~MapItemComponent();
-  void createEditButton(const String& desc, int index, bool isReadOnly);
+  void createEditButton(const String& desc, int index, bool isReadOnly,
+                        Editor*);
   void paint(Graphics&);
   void resized();
 
@@ -67,7 +67,6 @@ class MapItemComponent  : public Component {
   juce::OwnedArray<EditButton> buttons_;
 };
 
-}  // namespace map
 }  // namespace command
 }  // namespace rec
 
