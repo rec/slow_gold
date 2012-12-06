@@ -9,12 +9,12 @@ namespace {
 
 typedef VirtualFile::Type Type;
 
-const char* const OLD_KEYBOARD_NAME = "KeyPresses";
-const char* const NEW_KEYBOARD_NAME = "KeyboardBinding";
+const char* const OLD_KEYBOARD = "KeyPresses";
+const char* const NEW_KEYBOARD = "KeyboardBinding";
 const bool ENABLE_MOVE = true;
 
 File getShadow(Type type) {
-  return file::getShadowDirectory(makeVirtualFile(type));
+  return getShadowDirectory(makeVirtualFile(type));
 }
 
 void mkdir(const File& f) {
@@ -61,9 +61,17 @@ void moveGlobalFiles() {
   }
 }
 
+File keyboardFile() {
+  return getShadowDirectory(VirtualFile::GLOBAL).getChildFile(NEW_KEYBOARD);
+}
+
 void moveKeyboardFile() {
-  File f = getShadow(VirtualFile::VOLUME).getChildFile(OLD_KEYBOARD_NAME);
-  moveFile(f, getShadow(VirtualFile::GLOBAL).getChildFile(NEW_KEYBOARD_NAME));
+  File f = getShadowDirectory(VirtualFile::VOLUME).getChildFile(OLD_KEYBOARD);
+  moveFile(f, keyboardFile());
+}
+
+const char* keyboardFileName() {
+  return NEW_KEYBOARD;
 }
 
 }  // namespace file

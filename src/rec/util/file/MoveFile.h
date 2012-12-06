@@ -11,6 +11,8 @@ namespace file {
 void moveTypeDirectory(VirtualFile::Type type, const File& special);
 void moveGlobalFiles();
 void moveKeyboardFile();
+File keyboardFile();
+const char* keyboardFileName();
 
 }  // namespace file
 }  // namespace util

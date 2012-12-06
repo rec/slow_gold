@@ -664,37 +664,25 @@
     <ClCompile Include="..\..\..\..\src\rec\command\FillCommandRecordTable.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp">
-      <Filter>SlowGold\rec\command</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.cpp">
-      <Filter>SlowGold\rec\command\map</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapCategoryItem.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\command\map\EditButton.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditButton.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\command\map\Editor.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapEditor.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\command\map\Items.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapItemComponent.cpp">
-      <Filter>SlowGold\rec\command\map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMapTopLevelItem.cpp">
-      <Filter>SlowGold\rec\command\map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\command\map\KeyStrokeEditor.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMap.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\command\map\MidiEditor.cpp">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp">
@@ -1057,6 +1045,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\FileType.cpp">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\FixLegacyFiles.cpp">
+      <Filter>SlowGold\rec\util\file</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClCompile>
@@ -1067,6 +1058,9 @@
       <Filter>SlowGold\rec\util\file</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\MoveFile.cpp">
+      <Filter>SlowGold\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\TypeMap.cpp">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp">
@@ -2820,40 +2814,25 @@
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandEntryWindow.h">
-      <Filter>SlowGold\rec\command\map</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapCategoryItem.h">
+    <ClInclude Include="..\..\..\..\src\rec\command\map\EditButton.h">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditButton.h">
+    <ClInclude Include="..\..\..\..\src\rec\command\map\Editor.h">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditor.h">
+    <ClInclude Include="..\..\..\..\src\rec\command\map\Items.h">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapEditorMappingItem.h">
-      <Filter>SlowGold\rec\command\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapItemComponent.h">
-      <Filter>SlowGold\rec\command\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMapTopLevelItem.h">
-      <Filter>SlowGold\rec\command\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\Key.h">
-      <Filter>SlowGold\rec\command\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\KeyCommandMapEditor.h">
+    <ClInclude Include="..\..\..\..\src\rec\command\map\KeyStrokeEditor.h">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMap.h">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMapEditor.h">
+    <ClInclude Include="..\..\..\..\src\rec\command\map\MidiEditor.h">
       <Filter>SlowGold\rec\command\map</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiName.h">
@@ -3384,6 +3363,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\file\FileType.h">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\FixLegacyFiles.h">
+      <Filter>SlowGold\rec\util\file</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClInclude>
@@ -3394,6 +3376,9 @@
       <Filter>SlowGold\rec\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\MoveFile.h">
+      <Filter>SlowGold\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\TypeMap.h">
       <Filter>SlowGold\rec\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h">

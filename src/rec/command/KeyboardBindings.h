@@ -6,13 +6,10 @@
 namespace rec {
 namespace command {
 
-class CommandRecordTable;
+class CommandMapProto;
 
-void saveKeyboardBindings(ApplicationCommandManager*);
-void loadKeyboardBindings(const CommandRecordTable&,
-                          ApplicationCommandManager*);
-void clearKeyboardBindings(const CommandRecordTable&,
-                          ApplicationCommandManager*);
+void loadKeyboardBindings(ApplicationCommandManager*);
+void saveKeyboardBindings(const CommandMapProto&);
 
 }  // namespace command
 }  // namespace rec

@@ -102,10 +102,17 @@ class CommandMapEntry : public ::google::protobuf::Message {
   inline ::rec::command::Command_Type command() const;
   inline void set_command(::rec::command::Command_Type value);
   
-  // repeated bytes key = 2;
+  // optional uint32 start_index = 2;
+  inline bool has_start_index() const;
+  inline void clear_start_index();
+  static const int kStartIndexFieldNumber = 2;
+  inline ::google::protobuf::uint32 start_index() const;
+  inline void set_start_index(::google::protobuf::uint32 value);
+  
+  // repeated bytes key = 3;
   inline int key_size() const;
   inline void clear_key();
-  static const int kKeyFieldNumber = 2;
+  static const int kKeyFieldNumber = 3;
   inline const ::std::string& key(int index) const;
   inline ::std::string* mutable_key(int index);
   inline void set_key(int index, const ::std::string& value);
@@ -124,12 +131,13 @@ class CommandMapEntry : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int command_;
+  ::google::protobuf::uint32 start_index_;
   ::google::protobuf::RepeatedPtrField< ::std::string> key_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -441,7 +449,23 @@ inline void CommandMapEntry::set_command(::rec::command::Command_Type value) {
   command_ = value;
 }
 
-// repeated bytes key = 2;
+// optional uint32 start_index = 2;
+inline bool CommandMapEntry::has_start_index() const {
+  return _has_bit(1);
+}
+inline void CommandMapEntry::clear_start_index() {
+  start_index_ = 0u;
+  _clear_bit(1);
+}
+inline ::google::protobuf::uint32 CommandMapEntry::start_index() const {
+  return start_index_;
+}
+inline void CommandMapEntry::set_start_index(::google::protobuf::uint32 value) {
+  _set_bit(1);
+  start_index_ = value;
+}
+
+// repeated bytes key = 3;
 inline int CommandMapEntry::key_size() const {
   return key_.size();
 }

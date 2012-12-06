@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="UNpoY3Vdq" name="SlowGold">
+  <MAINGROUP id="CxTc0VjQF" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -357,55 +357,37 @@
               id="l6IoAUQHh" name="FillCommandRecordTable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/FillCommandRecordTable.h"
               id="SgC063F7X" name="FillCommandRecordTable.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
-              id="INV4v9Oxx" name="KeyboardBindings.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="ZxTlCYmLe"
               name="KeyboardBindings.h" resource="0"/>
         <GROUP id="ZOQbo0KNJ" name="map">
-          <FILE compile="1" file="../../src/rec/command/map/CommandEntryWindow.cpp"
-                id="fP4yONplC" name="CommandEntryWindow.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/CommandEntryWindow.h"
-                id="0qUfzbWOI" name="CommandEntryWindow.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/command/map/CommandMap.cpp" id="8aEOhrFRI"
                 name="CommandMap.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/CommandMap.h" id="SMFh4nzCo"
                 name="CommandMap.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/map/CommandMapCategoryItem.cpp"
-                id="5E3frf8Uy" name="CommandMapCategoryItem.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/CommandMapCategoryItem.h"
-                id="1Eat4NS6K" name="CommandMapCategoryItem.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/map/CommandMapEditButton.cpp"
-                id="Ho6AsnrNo" name="CommandMapEditButton.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/CommandMapEditButton.h"
-                id="TJf93LWTW" name="CommandMapEditButton.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/map/CommandMapEditor.cpp"
-                id="oh0KlUAIQ" name="CommandMapEditor.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/CommandMapEditor.h"
-                id="uXbXXdZxt" name="CommandMapEditor.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/CommandMapEditorMappingItem.h"
-                id="36v4Qo3c6" name="CommandMapEditorMappingItem.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/map/CommandMapItemComponent.cpp"
-                id="pJSAZvSy8" name="CommandMapItemComponent.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/CommandMapItemComponent.h"
-                id="p5s56MLvp" name="CommandMapItemComponent.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/map/CommandMapTopLevelItem.cpp"
-                id="NCegxexrl" name="CommandMapTopLevelItem.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/CommandMapTopLevelItem.h"
-                id="VVE8iiqDI" name="CommandMapTopLevelItem.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/Key.h" id="I5vMVH5Wi"
-                name="Key.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/map/KeyCommandMapEditor.cpp"
-                id="JuLX7ntU1" name="KeyCommandMapEditor.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/KeyCommandMapEditor.h"
-                id="Fyb1Lnnge" name="KeyCommandMapEditor.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/EditButton.cpp" id="39IFhsOzr"
+                name="EditButton.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/EditButton.h" id="V3Y7gxTPy"
+                name="EditButton.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/Editor.cpp" id="0jkxJ9f8F"
+                name="Editor.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/Editor.h" id="UqfGQ2hJt"
+                name="Editor.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/Items.cpp" id="qgsZ6nB4w"
+                name="Items.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/Items.h" id="9CC5HUxic"
+                name="Items.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/KeyStrokeEditor.cpp"
+                id="N6xsyAbO6" name="KeyStrokeEditor.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/KeyStrokeEditor.h"
+                id="z6SiS4Kaf" name="KeyStrokeEditor.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/command/map/MidiCommandMap.cpp"
                 id="L5VDPaDZJ" name="MidiCommandMap.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/MidiCommandMap.h"
                 id="O6bs9bMWq" name="MidiCommandMap.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/command/map/MidiCommandMapEditor.cpp"
-                id="mnmbU35oM" name="MidiCommandMapEditor.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/command/map/MidiCommandMapEditor.h"
-                id="k8fs3le9y" name="MidiCommandMapEditor.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/map/MidiEditor.cpp" id="DlJyBMFhb"
+                name="MidiEditor.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/map/MidiEditor.h" id="65DpGZGsu"
+                name="MidiEditor.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/command/map/MidiName.cpp" id="JEROzJidu"
                 name="MidiName.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/command/map/MidiName.h" id="3AUUninBZ"
@@ -1034,6 +1016,10 @@
                 name="FileType.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/FileType.h" id="uCEshhUsG"
                 name="FileType.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/FixLegacyFiles.cpp"
+                id="npwoITaE4" name="FixLegacyFiles.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/FixLegacyFiles.h" id="ZGTSsKyBw"
+                name="FixLegacyFiles.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/file/GetVolumes.cpp" id="XlMEGFmTC"
                 name="GetVolumes.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/GetVolumes.h" id="sKt0BDgiR"
@@ -1050,6 +1036,10 @@
                 name="MoveFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/MoveFile.h" id="z6VkFSoQs"
                 name="MoveFile.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/TypeMap.cpp" id="p0AkzJNQz"
+                name="TypeMap.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/TypeMap.h" id="gtr0m20g0"
+                name="TypeMap.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/file/Util.cpp" id="sgV7ybSEK"
                 name="Util.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/Util.h" id="f9YREu0l8"
@@ -1665,7 +1655,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="uTfcwpaFi" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Maw6TPtc6" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

@@ -68,6 +68,7 @@ void clearMidiMappings() {
 void keyboardMappings() {
   Instance* i = Instance::getInstance();
   ApplicationCommandManager* manager = &i->applicationCommandManager_;
+
   command::KeyStrokeEditor comp(manager, manager->getKeyMappings());
   if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE))
     command::saveKeyboardBindings(manager);

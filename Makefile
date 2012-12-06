@@ -5,19 +5,21 @@ new := $(ROOT)/scripts/new/new.py
 
 icons := $(wildcard art/icon/*.svg)
 binaries := $(wildcard src/rec/command/*.xml)
-commands := $(wildcard src/rec/slow/commands/*.def)
+commands := src/rec/slow/commands/AllCommands.def
+keystrokes := src/rec/slow/commands/KeyStrokeMap.def
 translations := $(wildcard text/??-TranslatedStrings.def)
 
 icon_code := $(patsubst art/icon/%.svg, genfiles/icon/rec/gui/icon/%.svg.cpp, $(icons))
 binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
 command_code := $(patsubst %.def, %.def.cpp, $(commands))
+keystroke_code := $(patsubst %.def, %.def.cpp, $(keystrokes))
 translation_code := $(patsubst text/%-TranslatedStrings.def, genfiles/translations/rec/translation/%-TranslatedStrings.def.cpp, $(translations))
 
 all: code builddebug
 
 release: code builddebug buildrelease compress
 
-code: $(icon_code) $(binary_code) $(command_code) $(translation_code)
+code: $(icon_code) $(binary_code) $(command_code) $(keystroke_code) $(translation_code)
 
 builddebug:
 	cd $(BUILD_ROOT) && xcodebuild -project "SlowGold.xcodeproj" -configuration Debug
@@ -52,8 +54,14 @@ genfiles/translations/rec/translation/%-TranslatedStrings.def.cpp: text/%-Transl
 %.xml.cpp: %.xml
 	$(new) $<
 
-%.def.cpp: %.def
+src/rec/slow/commands/AllCommands.def.cpp: src/rec/slow/commands/AllCommands.def
 	$(new)\
     --include=command/Command.pb \
     --proto=command::Commands \
+    $<
+
+src/rec/slow/commands/KeyStrokeMap.def.cpp: src/rec/slow/commands/KeyStrokeMap.def
+	$(new)\
+    --include=command/map/CommandMap.pb \
+    --proto=command::KeyStrokeCommandMapProto \
     $<

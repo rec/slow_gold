@@ -57,11 +57,14 @@ Command* indexCommand(const Command& cmd, int index) {
   else
     DCHECK_GT(cmd.desc().full_size(), index);
 
+#ifdef OLD_KEYPRESS
   if (index < cmd.keypress_size()) {
     const string& kp = cmd.keypress(index);
       if (!kp.empty())
         command->add_keypress(kp);
   }
+#endif
+
   return command.transfer();
 }
 

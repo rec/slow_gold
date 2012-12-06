@@ -5,7 +5,6 @@ command {
     menu: "About SlowGold 8"
     full: "Bring up a window describing SlowGold 8."
   }
-  keypress: "shift + ?"
 }
 command {
   type: ADD_LOOP_POINT
@@ -14,8 +13,6 @@ command {
     menu: "Add Loop Point At Current Time"
     full: "Add a loop point at the current time."
   }
-  keypress: "l"
-  keypress: "command + l"
 }
 command {
   type: AUDIO_PREFERENCES
@@ -24,7 +21,6 @@ command {
     menu: "Audio Preferences..."
     full: "Open the Audio Preferences pane."
   }
-  keypress: "command + ;"
 }
 command {
   type: CHECK_FOR_UPDATES
@@ -49,7 +45,6 @@ command {
     menu: "Clear Loops"
     full: "Delete all loop points"
   }
-  keypress: "command + b"
 }
 command {
   type: CLEAR_KEYBOARD_MAPPINGS
@@ -82,7 +77,6 @@ command {
     menu: "Close"
     full: "Close the current file"
   }
-  keypress: "command + w"
 }
 command {
   type: COPY
@@ -91,7 +85,6 @@ command {
     menu: "Copy"
     full: "Copy the current selection to the clipboard."
   }
-  keypress: "command + c"
 }
 command {
   type: COPY_ALL_LOOP_POINTS
@@ -100,7 +93,6 @@ command {
     menu: "Copy All Loop Points"
     full: "Copy both selected and unselected loop points to the clipboard."
   }
-  keypress: "command + c"
 }
 command {
   type: CUT
@@ -109,7 +101,6 @@ command {
     menu: "Cut"
     full: "Copy the current selection to the clipboard and clear the selection."
   }
-  keypress: "command + x"
 }
 command {
   type: DEL
@@ -118,7 +109,6 @@ command {
     menu: "Delete"
     full: "Delete the current selection without changing the clipboard."
   }
-  keypress: "delete"
 }
 command {
   type: DESELECT_ALL
@@ -127,7 +117,6 @@ command {
     menu: "Select None"
     full: "Select none of the file"
   }
-  keypress: "command + d"
 }
 command {
   type: DIM_VOLUME_TOGGLE
@@ -144,7 +133,6 @@ command {
     menu: "Eject All"
     full: "Eject all CDs and DVDs"
   }
-  keypress: "command + e"
 }
 command {
   type: EXPORT_KEYBOARD_MAPPINGS
@@ -201,7 +189,6 @@ command {
     menu: "Invert Selection"
     full: "Unselect everything selected and vice-versa."
   }
-  keypress: "command + i"
 }
 command {
   type: JUMP
@@ -239,21 +226,6 @@ command {
     full: "Jump to the start of segment 9."
     full: "Jump to the start of segment 10."
   }
-  keypress: ""
-  keypress: ""
-  keypress: ""
-  keypress: ""
-  keypress: ""
-  keypress: "1"
-  keypress: "2"
-  keypress: "3"
-  keypress: "4"
-  keypress: "5"
-  keypress: "6"
-  keypress: "7"
-  keypress: "8"
-  keypress: "9"
-  keypress: "0"
   start_index: -5
 }
 command {
@@ -292,21 +264,6 @@ command {
     full: "Jump To Selected Segment 9"
     full: "Jump To Selected Segment 10"
   }
-  keypress: "command + cursor left"
-  keypress: ""
-  keypress: ""
-  keypress: ""
-  keypress: "command + cursor right"
-  keypress: "shift + !"
-  keypress: "shift + @"
-  keypress: "shift + #"
-  keypress: "shift + $"
-  keypress: "shift + %"
-  keypress: "shift + ^"
-  keypress: "shift + &"
-  keypress: "shift + *"
-  keypress: "shift + ("
-  keypress: "shift + )"
   start_index: -5
 }
 command {
@@ -316,7 +273,6 @@ command {
     menu: "Loop Next Segment"
     full: "Finish the current segment, then start looping the next segment."
   }
-  keypress: "n"
 }
 command {
   type: KEYBOARD_MAPPINGS
@@ -325,7 +281,6 @@ command {
     menu: "Edit Keyboard Mappings..."
     full: "Edit keyboard mappings for commands."
   }
-  keypress: "command + k"
 }
 command {
   type: MIDI_MAPPINGS
@@ -334,7 +289,6 @@ command {
     menu: "Edit Midi Mappings..."
     full: "Edit midi mappings for commands."
   }
-  keypress: "command + m"
 }
 command {
   type: MODE_ADD_LOOP_POINT
@@ -343,7 +297,6 @@ command {
     menu: "Add Loop Point Mode"
     full: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
   }
-  keypress: "option + a"
 }
 command {
   type: MODE_DRAG
@@ -352,7 +305,6 @@ command {
     menu: "Drag Mode"
     full: "Enter drag mode, where you can drag the waveform back and forth."
   }
-  keypress: "option + d"
 }
 command {
   type: MODE_SET_TIME
@@ -361,7 +313,6 @@ command {
     menu: "Set Time Mode"
     full: "Enter Set Time Mode, where clicking in the waveform sets the time."
   }
-  keypress: "option + t"
 }
 command {
   type: MODE_ZOOM_IN
@@ -370,7 +321,6 @@ command {
     menu: "Zoom In Mode"
     full: "Enter Zoom In Mode, where clicking on the waveform zooms in."
   }
-  keypress: "option + z"
 }
 command {
   type: MUTE_VOLUME_TOGGLE
@@ -379,7 +329,6 @@ command {
     menu: "Toggle audio mute"
     full: "Toggle audio mute on and off."
   }
-  keypress: "."
 }
 command {
   type: NUDGE_BACKWARD
@@ -388,7 +337,6 @@ command {
     menu: "Nudge Backward"
     full: "Nudge Backward One Segment Or 10 Seconds"
   }
-  keypress: "cursor left"
 }
 command {
   type: NUDGE_FORWARD
@@ -397,7 +345,6 @@ command {
     menu: "Nudge Forward"
     full: "Nudge Forward One Segment Or 10 Seconds"
   }
-  keypress: "cursor right"
 }
 command {
   type: NUDGE_VOLUME_DOWN
@@ -406,7 +353,6 @@ command {
     menu: "Nudge volume down"
     full: "Nudge volume down by 2dB"
   }
-  keypress: "cursor down"
 }
 command {
   type: NUDGE_VOLUME_UP
@@ -415,7 +361,6 @@ command {
     menu: "Nudge volume up"
     full: "Nudge volume up by 2dB"
   }
-  keypress: "cursor up"
 }
 command {
   type: NUDGE_SPEED_DOWN
@@ -424,9 +369,6 @@ command {
     menu: "Nudge speed down"
     full: "Nudge speed down"
   }
-  keypress: "_"
-  keypress: "shift + _"
-  keypress: "-"
 }
 command {
   type: NUDGE_SPEED_UP
@@ -435,9 +377,6 @@ command {
     menu: "Nudge speed up"
     full: "Nudge speed up"
   }
-  keypress: "+"
-  keypress: "shift + +"
-  keypress: "="
 }
 command {
   type: OPEN
@@ -446,7 +385,6 @@ command {
     menu: "Open..."
     full: "Open a dialog to select a new audio file for looping."
   }
-  keypress: "command + o"
 }
 command {
   type: OPEN_MANUAL
@@ -463,7 +401,6 @@ command {
     menu: "Re-Open Most Recent Closed File"
     full: "Re-open the file that was most recently closed."
   }
-  keypress: "command + r"
 }
 command {
   type: OPEN_SLOWGOLD_DIRECTORY
@@ -480,7 +417,6 @@ command {
     menu: "Paste"
     full: "Replace the current selection with a copy of the clipboard."
   }
-  keypress: "command + v"
 }
 command {
   type: PASTE_OVER_LOOP_POINTS
@@ -489,7 +425,6 @@ command {
     menu: "Paste Over Loop Points"
     full: "Replace all loop points with the loop points on the clipboard."
   }
-  keypress: "command + v"
 }
 command {
   type: QUIT
@@ -498,7 +433,6 @@ command {
     menu: "Quit"
     full: "Quit SlowGold"
   }
-  keypress: "command + q"
 }
 command {
   type: RECENT_FILES
@@ -579,7 +513,6 @@ command {
     menu: "Redo"
     full: "Redoes a previously undone command."
   }
-  keypress: "shift + command + z"
 }
 command {
   type: REQUEST_SUPPORT
@@ -604,7 +537,6 @@ command {
     menu: "Save..."
     full: "Save the full transformed file in the default save format."
   }
-  keypress: "command + s"
 }
 command {
   type: SAVE_FILE_SELECTION
@@ -613,7 +545,6 @@ command {
     menu: "Save Selection..."
     full: "Save just the selected portion of the transformed file in the default save format."
   }
-  keypress: "command + shift + s"
 }
 command {
   type: SELECT
@@ -660,7 +591,6 @@ command {
     menu: "Select All"
     full: "Select all of the file"
   }
-  keypress: "command + a"
 }
 command {
   type: SELECT_ONLY
@@ -698,11 +628,6 @@ command {
     full: "Select Segment 9 Only"
     full: "Select Segment 10 Only"
   }
-  keypress: "ctrl + command + cursor left"
-  keypress: "ctrl + cursor left"
-  keypress: ""
-  keypress: "ctrl + cursor right"
-  keypress: "ctrl + command + cursor right"
   start_index: -5
 }
 command {
@@ -954,21 +879,6 @@ command {
     full: "Toggle Segment Selection 9"
     full: "Toggle Segment Selection 10"
   }
-  keypress: ""
-  keypress: ""
-  keypress: ""
-  keypress: ""
-  keypress: ""
-  keypress: "command + 1"
-  keypress: "command + 2"
-  keypress: "command + 3"
-  keypress: "command + 4"
-  keypress: "command + 5"
-  keypress: "command + 6"
-  keypress: "command + 7"
-  keypress: "command + 8"
-  keypress: "command + 9"
-  keypress: "command + 0"
   start_index: -5
 }
 command {
@@ -1074,8 +984,6 @@ command {
     menu: "Toggle Start/Stop"
     full: "Start or pause"
   }
-  keypress: "spacebar"
-  keypress: "return"
 }
 command {
   type: TOGGLE_STRETCH_ENABLE
@@ -1093,7 +1001,6 @@ command {
     }
     type_name: "rec.audio.stretch.Stretch"
   }
-  keypress: "s"
 }
 command {
   type: TOGGLE_TRANSFORM_ENABLE
@@ -1119,7 +1026,6 @@ command {
     menu: "Loop This Segment"
     full: "Toggle selection between the current segment and the whole song."
   }
-  keypress: "w"
 }
 command {
   type: UNDO
@@ -1128,7 +1034,6 @@ command {
     menu: "Undo"
     full: "Undoes a previous command."
   }
-  keypress: "command + z"
 }
 command {
   type: UNSELECT
@@ -1183,7 +1088,6 @@ command {
     menu: "Zoom Out"
     full: "Zoom out."
   }
-  keypress: "command + -"
 }
 command {
   type: ZOOM_OUT_FULL
@@ -1192,7 +1096,6 @@ command {
     menu: "Zoom Out Completely"
     full: "Zoom out as far as possible."
   }
-  keypress: "command + shift + -"
 }
 command {
   type: ZOOM_TO_SELECTION
@@ -1201,6 +1104,4 @@ command {
     menu: "Zoom To Selection"
     full: "Zoom to selection."
   }
-  keypress: "command  + \'"
-  keypress: "numpad *"
 }

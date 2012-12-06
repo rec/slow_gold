@@ -4,7 +4,8 @@ package rec.command;
 
 message CommandMapEntry {
   optional Command.Type command = 1;
-  repeated bytes key = 2;
+  optional uint32 start_index = 2;
+  repeated bytes key = 3;
 };
 
 message CommandMapProto {

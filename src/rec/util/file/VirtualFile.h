@@ -15,14 +15,18 @@ const VirtualFile toVirtualFile(const File&, bool useSpecial = true);
 // The inverse of toVirtualFile.
 const File toRealFile(const VirtualFile&);
 
-// Given a VirtualFile, return the actual directory that shadows it.
-const File getShadowDirectory(const VirtualFile&);
-
 inline const VirtualFile makeVirtualFile(VirtualFile::Type type) {
   VirtualFile vf;
   vf.set_type(type);
   return vf;
 }
+
+inline File getShadowDirectory(Type type) {
+  return getShadowDirectory(makeVirtualFile(type));
+}
+
+// Given a VirtualFile, return the actual directory that shadows it.
+const File getShadowDirectory(const VirtualFile&);
 
 const uint MAX_WINDOWS_DIRECTORY_SIZE = 260;
 const uint MAX_FILENANE_LENGTH = 60;

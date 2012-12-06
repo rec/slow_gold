@@ -2,12 +2,12 @@
 
 #include "rec/app/Files.h"
 #include "rec/app/GenericApplication.h"
-#include "rec/data/DataOps.h"
 #include "rec/data/DataCenter.h"
+#include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/Geometry.h"
-#include "rec/slow/Components.h"
 #include "rec/slow/AboutWindow.h"
+#include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
@@ -15,9 +15,9 @@
 #include "rec/slow/MainPage.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/RegisterProtos.h"
+#include "rec/util/file/FixLegacyFiles.h"
 #include "rec/util/proto/Defaulter.h"
 #include "rec/util/proto/ProtoFile.h"
-#include "rec/util/file/FileType.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -179,7 +179,7 @@ void initialize(app::GenericApplication*) {
   // LOG(INFO) << "SlowWindow::initialize";
   // TODO:  logging doesn't work if called in this routine...
   doLog("moving directories");
-  file::moveOldAbsoluteDirectoriesToTypeRelative();
+  file::fixLegacyFiles();
   // LOG(INFO) << "Registering protos";
   doLog("registering protos");
   registerProtos();

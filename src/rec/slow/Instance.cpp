@@ -19,7 +19,6 @@
 #include "rec/command/FillCommandRecordTable.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/command/CommandTarget.h"
-#include "rec/command/KeyboardBindings.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/Opener.h"
 #include "rec/data/UndoStack.h"
@@ -182,7 +181,7 @@ void Instance::init() {
   command::fillCommandRecordTable(*commandData_, commandRecordTable_.get());
   applicationCommandManager_.registerAllCommandsForTarget(
       applicationCommandTarget_.get());
-  loadKeyboardBindings(*commandRecordTable_.get(), &applicationCommandManager_);
+  loadKeyboardBindings(&applicationCommandManager_);
   window_->getAppleMenu()->addCommandItem(&applicationCommandManager_,
                                           command::Command::ABOUT_THIS_PROGRAM);
 

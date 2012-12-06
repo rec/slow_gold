@@ -8,7 +8,7 @@ namespace command {
 
 class KeyStrokeEditor : public Editor, public juce::KeyListener {
  public:
-  KeyStrokeEditor(ApplicationCommandManager* acm, KeyPressMappingSet* mcm)
+  KeyStrokeEditor(ApplicationCommandManager* acm, CommandMap* mcm)
       : Editor(acm, mcm), mappings_(mcm) {
   }
 
@@ -20,8 +20,6 @@ class KeyStrokeEditor : public Editor, public juce::KeyListener {
   virtual juce::AlertWindow* newWindow();
 
  private:
-  KeyPressMappingSet* mappings_;
-
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(KeyStrokeEditor);
 };
 
