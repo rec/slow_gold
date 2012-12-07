@@ -21,6 +21,7 @@ class Data : public Broadcaster<const Message&> {
   virtual const File getFile() const = 0;
 
   bool isEmpty() const { return isEmpty_; }
+
   const string& getTypeName() const {
     Lock l(lock_);
     return util::getTypeName(*message_);
@@ -41,7 +42,7 @@ class Data : public Broadcaster<const Message&> {
   CriticalSection lock_;
 
  private:
-  Data(bool e) : changed_(false), isEmpty_(e) {}
+  Data(bool isEmpty) : changed_(false), isEmpty_(isEmpty) {}
   virtual ~Data() {}
 
   // Report a change to the protocol buffer.

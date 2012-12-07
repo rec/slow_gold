@@ -1,5 +1,6 @@
 #include "rec/command/KeyboardBindings.h"
 
+#include "rec/slow/commands/KeyStrokeMap.def.h"
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/map/Editor.h"
 #include "rec/data/DataOps.h"
@@ -22,10 +23,18 @@ void fillKeyPressMappingSet(const CommandMapProto& commandMap,
   }
 }
 
+}  // namespace
+
+CommandMapProto getKeyboardBindings() {
+  data::Data* d = data::getData<KeyStrokeCommandMapProto>(data::global());
+  if (d->fileReadSuccess())
+    return getProto<KeyStrokeCommandMapProto>(d).map();
+  else
+    return slow::commands::keyStrokeMap.get().map();
 }
 
 void loadKeyboardBindings(ApplicationCommandManager* commandManager) {
-  fillKeyPressMappingSet(getProto<KeyStrokeCommandMapProto>(global()).map(),
+  fillKeyPressMappingSet(getKeyboardBindings(),
                          commandManager->getKeyMappings());
 }
 
