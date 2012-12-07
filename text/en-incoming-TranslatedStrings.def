@@ -13,8 +13,6 @@ str {
 }
 str {
   original: "(None)"
-  file: "rec/command/map/CommandMapTopLevelItem.cpp"
-  line: 4
 }
 str {
   original: "..."
@@ -59,7 +57,7 @@ str {
 }
 str {
   original: "adds a new key-mapping"
-  file: "rec/command/map/CommandMapEditButton.cpp"
+  file: "rec/command/map/EditButton.cpp"
   line: 5
 }
 str {
@@ -79,13 +77,13 @@ str {
 }
 str {
   original: "Are you sure you want to clear all your changes?"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 22
+  file: "rec/command/map/Editor.cpp"
+  line: 21
 }
 str {
   original: "Are you sure you want to reset all the command assignments to their default state?"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 21
+  file: "rec/command/map/Editor.cpp"
+  line: 20
 }
 str {
   original: "Artist"
@@ -101,12 +99,12 @@ str {
 str {
   original: "Attach Commands To Keystrokes"
   file: "rec/slow/callbacks/CommandEditors.cpp"
-  line: 17
+  line: 18
 }
 str {
   original: "Attach Commands To MIDI events"
   file: "rec/slow/callbacks/CommandEditors.cpp"
-  line: 18
+  line: 19
 }
 str {
   original: "Audio"
@@ -149,12 +147,12 @@ str {
 }
 str {
   original: "Change key-mapping"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 28
+  file: "rec/command/map/Editor.cpp"
+  line: 27
 }
 str {
   original: "Change this command mapping"
-  file: "rec/command/map/CommandMapEditButton.cpp"
+  file: "rec/command/map/EditButton.cpp"
   line: 7
 }
 str {
@@ -165,8 +163,8 @@ str {
 }
 str {
   original: "Choose A New File For Export"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 24
+  file: "rec/command/map/Editor.cpp"
+  line: 23
 }
 str {
   original: "Choose File To Save to"
@@ -179,7 +177,7 @@ str {
 str {
   original: "Clear all keyboard mappings to factory default?"
   file: "rec/slow/callbacks/CommandEditors.cpp"
-  line: 13
+  line: 14
 }
 str {
   original: "Clear all MIDI command mappings."
@@ -187,7 +185,7 @@ str {
 str {
   original: "Clear all MIDI mappings?"
   file: "rec/slow/callbacks/CommandEditors.cpp"
-  line: 15
+  line: 16
 }
 str {
   original: "Clear All Settings And Quit"
@@ -200,8 +198,8 @@ str {
 }
 str {
   original: "Clear Changes"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 17
+  file: "rec/command/map/Editor.cpp"
+  line: 16
 }
 str {
   original: "Clear Keyboard Mappings"
@@ -209,7 +207,7 @@ str {
 str {
   original: "Clear Keyboard Mappings."
   file: "rec/slow/callbacks/CommandEditors.cpp"
-  line: 11
+  line: 12
 }
 str {
   original: "Clear Loops"
@@ -220,7 +218,7 @@ str {
 str {
   original: "Clear MIDI Mappings."
   file: "rec/slow/callbacks/CommandEditors.cpp"
-  line: 14
+  line: 15
 }
 str {
   original: "Clear Settings For This Track And Quit"
@@ -237,7 +235,7 @@ str {
 }
 str {
   original: "click to change this key-mapping"
-  file: "rec/command/map/CommandMapEditButton.cpp"
+  file: "rec/command/map/EditButton.cpp"
   line: 6
 }
 str {
@@ -314,8 +312,8 @@ str {
 }
 str {
   original: "Currently assigned to"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 26
+  file: "rec/command/map/Editor.cpp"
+  line: 25
 }
 str {
   original: "Cut"
@@ -339,8 +337,8 @@ str {
 }
 str {
   original: "Do you want to re-assign it to this new command instead?"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 30
+  file: "rec/command/map/Editor.cpp"
+  line: 29
 }
 str {
   original: "down"
@@ -469,8 +467,8 @@ str {
 }
 str {
   original: "Export..."
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 18
+  file: "rec/command/map/Editor.cpp"
+  line: 17
 }
 str {
   original: "File"
@@ -542,8 +540,8 @@ str {
 }
 str {
   original: "Import..."
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 19
+  file: "rec/command/map/Editor.cpp"
+  line: 18
 }
 str {
   original: "Indonesian"
@@ -705,8 +703,8 @@ str {
 }
 str {
   original: "Key"
-  file: "rec/command/map/KeyCommandMapEditor.cpp"
-  line: 9
+  file: "rec/command/map/KeyStrokeEditor.cpp"
+  line: 7
 }
 str {
   original: "L + R"
@@ -771,8 +769,8 @@ str {
 }
 str {
   original: "MIDI"
-  file: "rec/command/map/MidiCommandMapEditor.cpp"
-  line: 12
+  file: "rec/command/map/MidiEditor.cpp"
+  line: 10
 }
 str {
   original: "Modes At Left Side"
@@ -791,8 +789,8 @@ str {
 }
 str {
   original: "New command mapping"
-  file: "rec/command/map/CommandEntryWindow.cpp"
-  line: 7
+  file: "rec/command/map/Editor.cpp"
+  line: 31
 }
 str {
   original: "No available CDs."
@@ -858,8 +856,8 @@ str {
 }
 str {
   original: "Open A File For Import"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 25
+  file: "rec/command/map/Editor.cpp"
+  line: 24
 }
 str {
   original: "Open recent"
@@ -923,8 +921,8 @@ str {
 }
 str {
   original: "Please press a key combination now..."
-  file: "rec/command/map/KeyCommandMapEditor.cpp"
-  line: 8
+  file: "rec/command/map/KeyStrokeEditor.cpp"
+  line: 6
 }
 str {
   original: "Press the space bar to start and stop playback."
@@ -944,8 +942,8 @@ str {
 }
 str {
   original: "Re-assign"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 31
+  file: "rec/command/map/Editor.cpp"
+  line: 30
 }
 str {
   original: "Re-Open Most Recent Closed File"
@@ -999,7 +997,7 @@ str {
 }
 str {
   original: "Remove this command mapping"
-  file: "rec/command/map/CommandMapEditButton.cpp"
+  file: "rec/command/map/EditButton.cpp"
   line: 8
 }
 str {
@@ -1013,13 +1011,13 @@ str {
 }
 str {
   original: "Reset"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 23
+  file: "rec/command/map/Editor.cpp"
+  line: 22
 }
 str {
   original: "Reset To Factory Default"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 16
+  file: "rec/command/map/Editor.cpp"
+  line: 15
 }
 str {
   original: "Reset Volume"
@@ -1351,8 +1349,8 @@ str {
 }
 str {
   original: "This key is already assigned to the command"
-  file: "rec/command/map/CommandMapEditor.cpp"
-  line: 29
+  file: "rec/command/map/Editor.cpp"
+  line: 28
 }
 str {
   original: "Time"
@@ -1566,8 +1564,8 @@ str {
 }
 str {
   original: "Waiting for a MIDI note, program change or controller..."
-  file: "rec/command/map/MidiCommandMapEditor.cpp"
-  line: 11
+  file: "rec/command/map/MidiEditor.cpp"
+  line: 9
 }
 str {
   original: "WAV"

@@ -176,13 +176,13 @@ using namespace rec::data;
 
 void initialize(app::GenericApplication*) {
   doLog("in initialize");
+  // LOG(INFO) << "Registering protos";
+  doLog("registering protos");
+  registerProtos();
   // LOG(INFO) << "SlowWindow::initialize";
   // TODO:  logging doesn't work if called in this routine...
   doLog("moving directories");
   file::fixLegacyFiles();
-  // LOG(INFO) << "Registering protos";
-  doLog("registering protos");
-  registerProtos();
   doLog("registering translations");
   doLog("all done initialize");
   // LOG(INFO) << "done initialize";

@@ -37,7 +37,8 @@ void registerProtos() {
   registerClass<audio::source::StereoProto>(r);
   registerClass<audio::stretch::Stretch>(r);
   registerClass<command::CommandMapProto>(r);
-  registerClass<command::CommandMapProto>(r);
+  registerClass<command::KeyStrokeCommandMapProto>(r);
+  registerClass<command::MidiCommandMapProto>(r);
   registerClass<command::Commands>(r);
   registerClass<gui::RecentFiles>(r);
   registerClass<gui::WindowPosition>(r);

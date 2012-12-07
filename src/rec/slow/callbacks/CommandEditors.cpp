@@ -45,16 +45,16 @@ bool displayEditorWindow(command::Editor* comp,
 
 }  // namespace
 
-#if 0
 void clearKeyboardMappings() {
   if (AlertWindow::showOkCancelBox(AlertWindow::InfoIcon,
                                    t_CLEAR_KEYBOARD_MAPPINGS_TITLE,
                                    t_CLEAR_KEYBOARD_MAPPINGS_FULL,
                                    t_OK, t_CANCEL)) {
+#if 0
     Instance* i = Instance::getInstance();
     command::clearKeyboardBindings(*i->commandRecordTable_,
                                    &i->applicationCommandManager_);
-
+#endif
   }
 }
 
@@ -63,11 +63,9 @@ void clearMidiMappings() {
                                    t_CLEAR_MIDI_MAPPINGS_TITLE,
                                    t_CLEAR_MIDI_MAPPINGS_FULL,
                                    t_OK, t_CANCEL)) {
-    data::setProto(command::CommandMapProto());
+    data::setProto(command::MidiCommandMapProto(), data::global());
   }
 }
-
-#endif
 
 using namespace rec::data;
 using namespace rec::command;

@@ -102,12 +102,12 @@ class CommandMapEntry : public ::google::protobuf::Message {
   inline ::rec::command::Command_Type command() const;
   inline void set_command(::rec::command::Command_Type value);
   
-  // optional uint32 index = 2;
+  // optional int32 index = 2;
   inline bool has_index() const;
   inline void clear_index();
   static const int kIndexFieldNumber = 2;
-  inline ::google::protobuf::uint32 index() const;
-  inline void set_index(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 index() const;
+  inline void set_index(::google::protobuf::int32 value);
   
   // repeated bytes key = 3;
   inline int key_size() const;
@@ -131,7 +131,7 @@ class CommandMapEntry : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int command_;
-  ::google::protobuf::uint32 index_;
+  ::google::protobuf::int32 index_;
   ::google::protobuf::RepeatedPtrField< ::std::string> key_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
@@ -449,18 +449,18 @@ inline void CommandMapEntry::set_command(::rec::command::Command_Type value) {
   command_ = value;
 }
 
-// optional uint32 index = 2;
+// optional int32 index = 2;
 inline bool CommandMapEntry::has_index() const {
   return _has_bit(1);
 }
 inline void CommandMapEntry::clear_index() {
-  index_ = 0u;
+  index_ = 0;
   _clear_bit(1);
 }
-inline ::google::protobuf::uint32 CommandMapEntry::index() const {
+inline ::google::protobuf::int32 CommandMapEntry::index() const {
   return index_;
 }
-inline void CommandMapEntry::set_index(::google::protobuf::uint32 value) {
+inline void CommandMapEntry::set_index(::google::protobuf::int32 value) {
   _set_bit(1);
   index_ = value;
 }

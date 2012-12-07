@@ -1,6 +1,7 @@
 #include "rec/util/file/FixLegacyFiles.h"
 
 #include "rec/command/CommandIDEncoder.h"
+#include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/data/DataOps.h"
 #include "rec/util/Copy.h"
@@ -22,10 +23,12 @@ CommandMapEntry* newEntry(Command::Type type, KeyStrokeCommandMapProto* map) {
 }
 
 void portKeyboardFile() {
-  File f = keyboardFile();
+  File f = keyboardFile().getChildFile(str(getTypeName<Commands>()));
   if (f.exists()) {
     Commands commands;
-    if (copy::copy(f, &commands)) {
+    bool copied = copy::copy(f, &commands);
+    DCHECK(copied) << str(f);
+    if (copied) {
       KeyStrokeCommandMapProto keyMap;
       for (int i = 0; i < commands.command_size(); ++i) {
         const Command& command = commands.command(i);
@@ -44,8 +47,12 @@ void portKeyboardFile() {
         }
       }
       data::setProto(keyMap, data::global());
-      f.deleteFile();
-   }
+      File parent = f.getParentDirectory();
+      bool deleted = f.deleteFile();
+      DCHECK(deleted) << str(f);
+      deleted = parent.deleteFile();
+      DCHECK(deleted) << str(parent);
+    }
   }
 }
 
