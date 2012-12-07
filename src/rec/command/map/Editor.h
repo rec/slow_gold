@@ -101,7 +101,7 @@ class Editor : public Component,
   CommandMap* commandMap_;
   MapItemMap mapItemMap_;
 
-  TreeView tree;
+  TreeView tree_;
   TextButton resetButton_;
   TextButton clearButton_;
   TextButton exportButton_;

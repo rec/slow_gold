@@ -86,10 +86,10 @@ void Editor::initialize() {
 
   fillTopLevelItem();
 
-  addAndMakeVisible(&tree);
-  tree.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
-  tree.setRootItemVisible(false);
-  tree.setDefaultOpenness(false);
+  addAndMakeVisible(&tree_);
+  tree_.setColour(TreeView::backgroundColourId, findColour(backgroundColourId));
+  tree_.setRootItemVisible(false);
+  tree_.setDefaultOpenness(false);
 
 }
 
@@ -99,7 +99,7 @@ void Editor::setColours(const Colour& mainBackground,
                                    const Colour& textColour) {
   setColour(backgroundColourId, mainBackground);
   setColour(textColourId, textColour);
-  tree.setColour(TreeView::backgroundColourId, mainBackground);
+  tree_.setColour(TreeView::backgroundColourId, mainBackground);
 }
 
 juce::AlertWindow* Editor::newWindow() {
@@ -152,12 +152,13 @@ void Editor::resized() {
     x += (button[i]->getWidth() + padding);
   }
 
-  tree.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT - 2 * TOP_RIGHT_PADDING);
+  tree_.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT - 2 * TOP_RIGHT_PADDING);
 }
 
 void Editor::fillTopLevelItem() {
   topLevelItem_.reset(new Item("top", "", true));
   topLevelItem_->setLinesDrawnForSubItems(false);
+  tree_.setRootItem(topLevelItem_.get());
 
   StringArray categories(commandManager_->getCommandCategories());
   categories.sort(false);
@@ -169,7 +170,7 @@ void Editor::fillTopLevelItem() {
     const Array<CommandID> goodCommands;
     TreeViewItem* categoryItem = NULL;
 
-    for (int j = commands.size() - 1; j >= 0; ++j) {
+    for (int j = commands.size() - 1; j >= 0; --j) {
       CommandID id = commands[j];
       if (!shouldCommandBeIncluded(id))
         continue;
