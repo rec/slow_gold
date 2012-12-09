@@ -186,19 +186,19 @@ void Editor::fillTopLevelItem() {
   }
 }
 
+bool Editor::commandHasFlags(CommandID id, int flags) const {
+  const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
+  DCHECK(ci);
+  return ci && (ci->flags & flags);
+}
 
 bool Editor::shouldCommandBeIncluded(const CommandID id) {
-  if (id >= BEGIN && id <= END)
-    return false;
-
-  const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
-  return ci && !(ci->flags & ApplicationCommandInfo::hiddenFromKeyEditor);
+  return !((id >= BEGIN && id <= END) ||
+           commandHasFlags(id, ApplicationCommandInfo::hiddenFromKeyEditor));
 }
 
 bool Editor::isCommandReadOnly(const CommandID id) {
-  const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
-  DCHECK(ci);
-  return ci && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor);
+  return commandHasFlags(id, ApplicationCommandInfo::readOnlyInKeyEditor);
 }
 
 void Editor::buttonClicked(Button* button) {
@@ -297,8 +297,8 @@ void Editor::addChildren(MapItemComponent* comp) {
   const bool isReadOnly = isCommandReadOnly(command);
   KeyArray keys = getKeys(command);
   for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
-    comp->createEditButton(getDescription(keys[i]), i, isReadOnly, this);
-  comp->createEditButton(String::empty, -1, isReadOnly, this);
+    comp->createEditButton(getDescription(keys[i]), i, isReadOnly);
+  comp->createEditButton(String::empty, -1, isReadOnly);
 }
 
 void Editor::assignNewKey(EditButton* button, const string& key) {

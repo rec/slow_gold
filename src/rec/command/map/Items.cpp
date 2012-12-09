@@ -38,21 +38,22 @@ MapItem::MapItem(Editor* editor, CommandID id, const String& name)
 }
 
 Component* MapItem::createItemComponent() {
-  ptr<Component> c(new MapItemComponent(id_, name_));
+  ptr<Component> c(new MapItemComponent(editor_, id_, name_));
   return c.transfer();
 }
 
-MapItemComponent::MapItemComponent(CommandID commandID, const String& name)
-    : commandID_(commandID), name_(name) {
-  setInterceptsMouseClicks (false, true);
-  // editor->addChildren(this); // TODO
+MapItemComponent::MapItemComponent(Editor* editor, CommandID commandID,
+                                   const String& name)
+    : commandID_(commandID), name_(name), editor_(editor) {
+  setInterceptsMouseClicks(false, true);
+  editor->addChildren(this);
 }
 
 MapItemComponent::~MapItemComponent() {}
 
 void MapItemComponent::createEditButton(const String& desc, int index,
-                                        bool isReadOnly, Editor* editor) {
-  EditButton* const b = new EditButton(editor, commandID_, desc, index);
+                                        bool isReadOnly) {
+  EditButton* const b = new EditButton(editor_, commandID_, desc, index);
   buttons_.add(b);
 
   b->setEnabled(!isReadOnly);

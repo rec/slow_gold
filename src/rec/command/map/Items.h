@@ -53,10 +53,9 @@ class MapItem : public Item {
 
 class MapItemComponent  : public Component {
  public:
-  MapItemComponent(CommandID, const String& name);
+  MapItemComponent(Editor* editor, CommandID, const String& name);
   ~MapItemComponent();
-  void createEditButton(const String& desc, int index, bool isReadOnly,
-                        Editor*);
+  void createEditButton(const String& desc, int index, bool isReadOnly);
   void paint(Graphics&);
   void resized();
 
@@ -64,6 +63,7 @@ class MapItemComponent  : public Component {
 
  private:
   String name_;
+  Editor* editor_;
   juce::OwnedArray<EditButton> buttons_;
 };
 

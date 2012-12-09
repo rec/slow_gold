@@ -96,6 +96,7 @@ class Editor : public Component,
   typedef std::map<CommandID, MapItem*> MapItemMap;
 
   void fillTopLevelItem();
+  bool commandHasFlags(CommandID, int flags) const;
 
   ApplicationCommandManager* commandManager_;
   CommandMap* commandMap_;
