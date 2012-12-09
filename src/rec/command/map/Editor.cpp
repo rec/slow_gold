@@ -1,5 +1,7 @@
 #include <math.h>
 
+#include <algorithm>
+
 #include "rec/command/map/Editor.h"
 
 #include "rec/base/ArraySize.h"
@@ -155,6 +157,26 @@ void Editor::resized() {
   tree_.setBounds(0, 0, getWidth(), h - BUTTON_HEIGHT - 2 * TOP_RIGHT_PADDING);
 }
 
+namespace {
+
+struct CompareCommands {
+  explicit CompareCommands(ApplicationCommandManager* manager = NULL)
+      : manager_(manager) {
+  }
+
+  bool operator()(const CommandID& x, const CommandID& y) const {
+    return name(x) > name(y);
+  }
+
+  String name(CommandID id) const {
+    const ApplicationCommandInfo* info = manager_->getCommandForID(id);
+    return info ? info->shortName : String("");
+  }
+  ApplicationCommandManager *manager_;
+};
+
+}  // namespace
+
 void Editor::fillTopLevelItem() {
   topLevelItem_.reset(new Item("top", "", true));
   topLevelItem_->setLinesDrawnForSubItems(false);
@@ -165,9 +187,9 @@ void Editor::fillTopLevelItem() {
 
   for (int i = 0; i < categories.size(); ++i) {
     const String& cat = categories[i];
-    const Array<CommandID> commands(
-        commandManager_->getCommandsInCategory(cat));
-    const Array<CommandID> goodCommands;
+    Array<CommandID> commands(commandManager_->getCommandsInCategory(cat));
+    std::sort(commands.begin(), commands.end(),
+              CompareCommands(commandManager_));
     TreeViewItem* categoryItem = NULL;
 
     for (int j = commands.size() - 1; j >= 0; --j) {
