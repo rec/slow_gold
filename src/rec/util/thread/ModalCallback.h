@@ -33,7 +33,7 @@ class ModalCallback1 : public ModalCallback {
   virtual ~ModalCallback1() {}
 
   virtual void modalStateFinished(int returnValue) {
-    (object_->*method_)(returnValue, value_);
+    (object_->*method_)(value_, returnValue);
     return true;
   }
 
@@ -48,14 +48,13 @@ class ModalCallback1 : public ModalCallback {
 template <typename Type, typename Method, typename Value1, typename Value2>
 class ModalCallback2 : public ModalCallback {
  public:
-  ModalCallback2(Type* o, Method m, Value v1, Value v2)
+  ModalCallback2(Type* o, Method m, Value1 v1, Value2 v2)
       : object_(o), method_(m), v1_(v1), v2_(v2) {
   }
   virtual ~ModalCallback2() {}
 
   virtual void modalStateFinished(int returnValue) {
-    (object_->*method_)(returnValue, v1_, v2_);
-    return true;
+    (object_->*method_)(v1_, v2_, returnValue);
   }
 
  private:
@@ -88,7 +87,7 @@ class ModalPointer1 : public ModalCallback {
   ModalPointer1(Operator op, Type value) : operator_(op), value_(value) {}
   virtual ~ModalPointer1() {}
   virtual void modalStateFinished(int returnValue) {
-    (*operator_)(returnValue, value_);
+    (*operator_)(value_, returnValue);
   }
 
  private:

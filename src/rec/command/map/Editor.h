@@ -87,7 +87,7 @@ class Editor : public Component,
   void setKey(const string&);
   void keyChosen(EditButton* button);
 
-  void assignNewKey(EditButton* button, const string& key);
+  void assignNewKey(EditButton* button, const string& key, int enable = 1);
   bool wasChanged() const { return wasChanged_; }
 
  protected:

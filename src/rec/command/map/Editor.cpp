@@ -337,17 +337,14 @@ void Editor::addChildren(MapItemComponent* comp) {
   comp->createEditButton(String::empty, -1, isReadOnly);
 }
 
-void Editor::assignNewKey(EditButton* button, const string& key) {
-  removeKey(key);
-  if (button->keyNum >= 0)
-    removeKeyAtIndex(button->commandID, button->keyNum);
-  addKey(button->commandID, key, button->keyNum);
-  wasChanged_ = true;
-}
-
-static void assignNewKeyCallback(int result, EditButton* button, const string key) {
-  if (result)
-    button->getEditor()->assignNewKey(button, key);
+void Editor::assignNewKey(EditButton* button, const string& key, int result) {
+  if (result) {
+    removeKey(key);
+    if (button->keyNum >= 0)
+      removeKeyAtIndex(button->commandID, button->keyNum);
+    addKey(button->commandID, key, button->keyNum);
+    wasChanged_ = true;
+  }
 }
 
 void Editor::setNewKey(EditButton* button, const string& key) {
@@ -358,8 +355,8 @@ void Editor::setNewKey(EditButton* button, const string& key) {
     } else {
       showCommandMapBox(commandManager_->getNameOfCommand(previousCommand),
                         this,
-                        ModalCallbackFunction::forComponent(
-                            assignNewKeyCallback, button, key));
+                        thread::modalCallback(this, &Editor::assignNewKey,
+                                              button, key));
     }
   }
 }
