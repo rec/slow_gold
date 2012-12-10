@@ -45,6 +45,28 @@ class ModalCallback1 : public ModalCallback {
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(ModalCallback1);
 };
 
+template <typename Type, typename Method, typename Value1, typename Value2>
+class ModalCallback2 : public ModalCallback {
+ public:
+  ModalCallback2(Type* o, Method m, Value v1, Value v2)
+      : object_(o), method_(m), v1_(v1), v2_(v2) {
+  }
+  virtual ~ModalCallback2() {}
+
+  virtual void modalStateFinished(int returnValue) {
+    (object_->*method_)(returnValue, v1_, v2_);
+    return true;
+  }
+
+ private:
+  Type* object_;
+  Method method_;
+  Value1 v1_;
+  Value2 v2_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(ModalCallback2);
+};
+
 template <typename Operator>
 class ModalPointer0 : public ModalCallback {
  public:
@@ -84,6 +106,11 @@ ModalCallback* modalCallback(Type* o, Method m) {
 template <typename Type, typename Method, typename Value>
 ModalCallback* modalCallback(Type* o, Method m, Value v) {
   return new ModalCallback1<Type, Method, Value>(o, m, v);
+}
+
+template <typename Type, typename Method, typename Value1, typename Value2>
+ModalCallback* modalCallback(Type* o, Method m, Value1 v1, Value2 v2) {
+  return new ModalCallback2<Type, Method, Value1, Value2>(o, m, v1, v2);
 }
 
 template <typename Operator>
