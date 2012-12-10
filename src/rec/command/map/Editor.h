@@ -51,14 +51,14 @@ class Editor : public Component,
 
   juce::AlertWindow* newWindow();
 
-  virtual void doReset() {
+  virtual void doReset() {  // TODO
     wasChanged_ = false;
   }
-  virtual void doClear() {
+  virtual void doClear() {  // TODO
     wasChanged_ = false;
   }
-  virtual void doExport(const File&) {}
-  virtual void doImport(const File&) {
+  virtual void doExport(const File&) {}  // TODO
+  virtual void doImport(const File&) {  // TODO
     wasChanged_ = false;
   }
 

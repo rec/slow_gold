@@ -13,6 +13,7 @@
 #include "rec/command/map/Items.h"
 #include "rec/gui/Dialog.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/thread/ModalCallback.h"
 
 TRAN(RESET_TO_DEFAULTS, "Reset To Factory Default");
 TRAN(CLEAR_EDITOR, "Clear Changes");
