@@ -51,10 +51,16 @@ class Editor : public Component,
 
   juce::AlertWindow* newWindow();
 
-  virtual void doReset() {}
-  virtual void doClear() {}
+  virtual void doReset() {
+    wasChanged_ = false;
+  }
+  virtual void doClear() {
+    wasChanged_ = false;
+  }
   virtual void doExport(const File&) {}
-  virtual void doImport(const File&) {}
+  virtual void doImport(const File&) {
+    wasChanged_ = false;
+  }
 
   virtual void buttonClicked(Button* button);
 
@@ -88,6 +94,7 @@ class Editor : public Component,
   void keyChosen(EditButton* button);
 
   void assignNewKey(EditButton* button, const string& key);
+  bool wasChanged() const { return wasChanged_; }
 
  protected:
   ptr<juce::AlertWindow> entryWindow_;
@@ -115,6 +122,7 @@ class Editor : public Component,
   bool expectingExport_;
 
   string key_;
+  bool wasChanged_;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Editor);
 };

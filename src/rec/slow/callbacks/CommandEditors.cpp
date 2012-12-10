@@ -26,7 +26,7 @@ namespace {
 const int EDITOR_WIDTH = 500;
 const int EDITOR_HEIGHT = 800;
 
-bool displayEditorWindow(command::Editor* comp,
+bool displayEditorWindow(command::Editor* editor,
                          const String& title) {
   gui::DialogLocker l;
   if (!l.isLocked()) {
@@ -34,13 +34,13 @@ bool displayEditorWindow(command::Editor* comp,
     return false;
   }
 
-  comp->initialize();
-  comp->setBounds(0, 0, EDITOR_WIDTH, EDITOR_HEIGHT);
+  editor->initialize();
+  editor->setBounds(0, 0, EDITOR_WIDTH, EDITOR_HEIGHT);
 
-  l.setModalComponent(comp);
-  juce::DialogWindow::showModalDialog(title, comp, NULL, juce::Colours::white,
+  l.setModalComponent(editor);
+  juce::DialogWindow::showModalDialog(title, editor, NULL, juce::Colours::white,
                                       true, true, true);
-  return true;
+  return editor->wasChanged();
 }
 
 }  // namespace
@@ -50,6 +50,7 @@ void clearKeyboardMappings() {
                                    t_CLEAR_KEYBOARD_MAPPINGS_TITLE,
                                    t_CLEAR_KEYBOARD_MAPPINGS_FULL,
                                    t_OK, t_CANCEL)) {
+    // TODO
 #if 0
     Instance* i = Instance::getInstance();
     command::clearKeyboardBindings(*i->commandRecordTable_,
@@ -73,12 +74,12 @@ using namespace rec::command;
 void keyboardMappings() {
   Instance* i = Instance::getInstance();
   ApplicationCommandManager* manager = &i->applicationCommandManager_;
-  KeyStrokeCommandMapProto map = getProto<KeyStrokeCommandMapProto>(global());
   CommandMap commandMap;
-  commandMap.addCommands(map.map());
+  commandMap.addCommands(getKeyboardBindings());
 
   command::KeyStrokeEditor comp(manager, &commandMap);
   if (displayEditorWindow(&comp, t_KEYBOARD_EDITOR_TITLE)) {
+    KeyStrokeCommandMapProto map;
     *(map.mutable_map()) = commandMap.getProto();
     setProto(map, global());
     command::loadKeyboardBindings(manager);

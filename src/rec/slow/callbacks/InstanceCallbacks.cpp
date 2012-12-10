@@ -214,8 +214,8 @@ void addInstanceCallbacks(CallbackTable* c) {
 
   addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates);
   addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings);
-  addCallback(c, Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);  // TODO
-   addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);  // TODO
+  addCallback(c, Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
+  addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
 
   addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack);

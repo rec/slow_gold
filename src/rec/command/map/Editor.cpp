@@ -76,7 +76,8 @@ Editor::Editor(ApplicationCommandManager* manager,
       clearButton_(t_CLEAR_EDITOR),
       exportButton_(t_EXPORT_EDITOR),
       importButton_(t_IMPORT_EDITOR),
-      okButton_(t_OK) {
+      okButton_(t_OK),
+      wasChanged_(false) {
 }
 
 void Editor::initialize() {
@@ -250,12 +251,15 @@ void Editor::exportButton() {
   expectingExport_ = true;
   gui::dialog::saveVirtualFile(this, "import export", t_CHOOSE_EXPORT_FILE,
                                "*.slow");
+
+  // TODO: one of these must be wrong.
 }
 
 void Editor::importButton() {
   expectingExport_ = false;
   gui::dialog::saveVirtualFile(this, "import export", t_CHOOSE_IMPORT_FILE,
                                "*.slow");
+  wasChanged_ = false;
 }
 
 void Editor::operator()(const File& f) {
@@ -328,6 +332,7 @@ void Editor::assignNewKey(EditButton* button, const string& key) {
   if (button->keyNum >= 0)
     removeKeyAtIndex(button->commandID, button->keyNum);
   addKey(button->commandID, key, button->keyNum);
+  wasChanged_ = true;
 }
 
 static void assignNewKeyCallback(int result, EditButton* button, const string key) {
@@ -391,6 +396,7 @@ ChangeBroadcaster* Editor::getChangeBroadcaster() {
 void Editor::removeKeyAtIndex(CommandID command, int keyNum) {
   commandMap_->removeCommand(static_cast<Command::Type>(command), keyNum);
   commandMap_->sendChangeMessage();
+  wasChanged_ = true;
 }
 
 void Editor::removeKey(const string& key) {
@@ -404,6 +410,7 @@ void Editor::addKey(CommandID cmd, const string& key, int keyIndex) {
   if (keyIndex >= 0)
     commandMap_->addAtIndex(key, c, keyIndex);
   commandMap_->sendChangeMessage();
+  wasChanged_ = true;
 }
 
 Editor::KeyArray Editor::getKeys(CommandID c) {
