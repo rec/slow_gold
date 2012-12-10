@@ -18,7 +18,7 @@ class MapItem;
 class MapItemComponent;
 
 class Editor : public Component,
-               //               public ButtonListener,
+               public ButtonListener,
                public Listener<const File&> {
  public:
   Editor(ApplicationCommandManager*, CommandMap*);
@@ -51,16 +51,10 @@ class Editor : public Component,
 
   juce::AlertWindow* newWindow();
 
-  virtual void doReset() {  // TODO
-    wasChanged_ = false;
-  }
-  virtual void doClear() {  // TODO
-    wasChanged_ = false;
-  }
-  virtual void doExport(const File&) {}  // TODO
-  virtual void doImport(const File&) {  // TODO
-    wasChanged_ = false;
-  }
+  virtual void reset(int returnValue);
+  virtual void clear(int returnValue);
+  virtual void exportToFile(const File&);
+  virtual void importFromFile(const File&);
 
   virtual void buttonClicked(Button* button);
 

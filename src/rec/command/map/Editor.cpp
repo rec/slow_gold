@@ -225,6 +225,7 @@ bool Editor::isCommandReadOnly(const CommandID id) {
   return commandHasFlags(id, ApplicationCommandInfo::readOnlyInKeyEditor);
 }
 
+// TODO: this isn't hooked in.
 void Editor::buttonClicked(Button* button) {
   if (button == &resetButton_)
     resetButton();
@@ -264,25 +265,33 @@ void Editor::importButton() {
 }
 
 void Editor::operator()(const File& f) {
-  if (expectingExport_) {
-    doExport(f);
-  } else {
-    doImport(f);
-    // TODO: resetTreeItem();
-  }
+  if (expectingExport_)
+    exportToFile(f);
+  else
+    importFromFile(f);
 }
 
-static void resetCallback(int result, Editor* editor) {
-  if (result) {
-    editor->doReset();
-    // editor->resetTreeItem(); // TODO
-  }
+void Editor::exportToFile(const File&) {
+  // TODO
 }
 
-static void clearCallback(int result, Editor* editor) {
-  if (result) {
-    editor->doClear();
-    // editor->resetTreeItem(); // TODO
+void Editor::importFromFile(const File&) {
+  // TODO
+  wasChanged_ = false;
+}
+
+
+
+void Editor::reset(int returnValue) {
+  if (returnValue) {
+    // TODO
+    wasChanged_ = false;
+  }
+}
+void Editor::clear(int returnValue) {
+  if (returnValue) {
+    // TODO
+    wasChanged_ = false;
   }
 }
 
@@ -294,7 +303,7 @@ void Editor::resetButton() {
       t_RESET,
       t_CANCEL,
       this,
-      ModalCallbackFunction::forComponent(resetCallback, this));
+      thread::modalCallback(this, &Editor::reset));
 }
 
 void Editor::clearButton() {
@@ -305,7 +314,7 @@ void Editor::clearButton() {
       t_CLEAR_EDITOR,
       t_CANCEL,
       this,
-      ModalCallbackFunction::forComponent(clearCallback, this));
+      thread::modalCallback(this, &Editor::clear));
 }
 
 const String Editor::getKeyMessage(const string& key) {
