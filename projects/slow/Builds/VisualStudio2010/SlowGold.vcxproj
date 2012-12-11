@@ -178,6 +178,7 @@
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandDataSetter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandName.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandRecord.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandRecordTable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandTarget.cpp"/>
@@ -1566,6 +1567,7 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandIDEncoder.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandName.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandRecord.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandRecordTable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandTarget.h"/>
@@ -1819,6 +1821,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Looper.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeCallback.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeThread.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\ModalCallback.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Pointer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h"/>

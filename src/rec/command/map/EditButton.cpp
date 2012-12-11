@@ -1,6 +1,8 @@
 #include "rec/command/map/EditButton.h"
+
 #include "rec/base/Trans.h"
 #include "rec/command/map/Editor.h"
+#include "rec/util/thread/ModalCallback.h"
 
 TRAN(ADD_NEW_KEY_MAPPING, "adds a new key-mapping");
 TRAN(CHANGE_KEY_MAPPING, "click to change this key-mapping");
@@ -10,13 +12,12 @@ TRAN(REMOVE_COMMAND_MAPPING, "Remove this command mapping");
 namespace rec {
 namespace command {
 
-EditButton::EditButton(Editor* editor, CommandID commandID_,
-                       const String& keyName, int keyNum_)
+EditButton::EditButton(Editor* editor, CommandID commandID,
+                       const String& keyName, int keyNum)
     : juce::Button(keyName),
-      commandID(commandID_),
-      keyNum(keyNum_),
-      editor_(editor)
-{
+      commandID_(commandID),
+      keyNum_(keyNum),
+      editor_(editor) {
   setWantsKeyboardFocus(false);
   setTriggeredOnMouseDown(keyNum >= 0);
 
@@ -26,16 +27,12 @@ EditButton::EditButton(Editor* editor, CommandID commandID_,
 void EditButton::paintButton(Graphics& g, bool, bool) {
   getLookAndFeel().drawKeymapChangeButton(g, getWidth(), getHeight(),
                                           *this,
-                                          (keyNum >= 0) ? getName() :
+                                          (keyNum_ >= 0) ? getName() :
                                           String::empty);
 }
 
-static void menuCallback(int result, EditButton* button) {
-  button->getEditor()->menuCallback(result, button);
-}
-
 void EditButton::clicked() {
-  if (keyNum >= 0) {
+  if (keyNum_ >= 0) {
     // existing key clicked..
     PopupMenu m;
     m.addItem(1, t_CHANGE_COMMAND_MAPPING);
@@ -43,14 +40,16 @@ void EditButton::clicked() {
     m.addItem(2, t_REMOVE_COMMAND_MAPPING);
 
     m.showMenuAsync(PopupMenu::Options(),
-                    ModalCallbackFunction::forComponent(menuCallback, this));
+                    thread::modalCallback(editor_, &Editor::buttonMenuCallback,
+                                          this));
+
   } else {
     // addCommand();  // + button pressed..  // TODO:
   }
 }
 
 void EditButton::fitToContent(const int h) noexcept {
-  if (keyNum < 0) {
+  if (keyNum_ < 0) {
     setSize(h, h);
   } else {
     Font f(h * 0.6f);

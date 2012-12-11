@@ -36,6 +36,15 @@ void CommandMap::addCommands(const CommandMapProto& commands) {
   }
 }
 
+void CommandMap::dump() const {
+  CommandToKeys::const_iterator i;
+  for (i = toKeys_.begin(); i != toKeys_.end(); ++i) {
+    DLOG(INFO) << CommandIDEncoder::commandIDName(i->first);
+    for (uint j = 0; j != i->second.size(); ++j)
+      DLOG(INFO) << i->second[j];
+  }
+}
+
 bool CommandMap::add(const string& key, CommandType command) {
   if (!addKey(key, command))
     return false;

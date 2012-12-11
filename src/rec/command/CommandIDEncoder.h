@@ -42,7 +42,6 @@ class CommandIDEncoder {
   int32 position_;
 };
 
-
 }  // namespace command
 }  // namespace rec
 

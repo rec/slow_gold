@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="aaevWqoOJ" name="SlowGold">
+  <MAINGROUP id="L209PAMmY" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -341,6 +341,10 @@
               name="CommandIDEncoder.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
               id="NmcYKaszX" name="CommandItemSetter.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/CommandName.cpp" id="Bl8s5RQMR"
+              name="CommandName.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandName.h" id="paBh8V06t"
+              name="CommandName.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandRecord.cpp" id="FYqqO49Ep"
               name="CommandRecord.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandRecord.h" id="dhVxElZVF"
@@ -1202,6 +1206,8 @@
                 name="MakeCallback.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/MakeThread.h" id="W0wg65CIj"
                 name="MakeThread.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/ModalCallback.h"
+                id="w7bULqjBr" name="ModalCallback.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Pointer.h" id="9i4UWXKeb"
                 name="Pointer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Result.h" id="TT30DSJrZ"
@@ -1661,7 +1667,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2etXlXIuo" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="thnWoMUjh" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

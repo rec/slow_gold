@@ -34,6 +34,7 @@ class CommandMap : public ChangeBroadcaster {
  private:
   bool add(const string& key, CommandType command);
   bool addKey(const string& key, CommandType command);
+  void dump() const;
 
   typedef std::map<string, CommandType> KeyToCommand;
   typedef std::map<CommandType, KeyVector> CommandToKeys;

@@ -13,16 +13,16 @@ typedef std::pair<int, EditButton*> MenuCallback;
 
 class EditButton : public juce::Button {
  public:
-  EditButton(Editor* editor, CommandID commandID_, const String& keyName,
-             int keyNum_);
+  EditButton(Editor* editor, CommandID commandID, const String& keyName,
+             int keyNum);
   void paintButton(Graphics& g, bool /*isOver*/, bool /*isDown*/);
   void clicked();
 
   void fitToContent (const int h) noexcept;
   Editor* getEditor() { return editor_; }
 
-  const CommandID commandID;
-  const int keyNum;
+  const CommandID commandID_;
+  const int keyNum_;
 
  private:
   Editor* const editor_;

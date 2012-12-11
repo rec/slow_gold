@@ -26,7 +26,6 @@ class Editor : public Component,
 
   void initialize();
   virtual void operator()(const File&);
-  void menuCallback(int result, EditButton*) {}  // TODO:
 
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;

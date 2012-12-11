@@ -652,6 +652,9 @@
     <ClCompile Include="..\..\..\..\src\rec\command\CommandIDEncoder.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandName.cpp">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandRecord.cpp">
       <Filter>SlowGold\rec\command</Filter>
     </ClCompile>
@@ -2805,6 +2808,9 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandName.h">
+      <Filter>SlowGold\rec\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandRecord.h">
       <Filter>SlowGold\rec\command</Filter>
     </ClInclude>
@@ -3562,6 +3568,9 @@
       <Filter>SlowGold\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeThread.h">
+      <Filter>SlowGold\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\ModalCallback.h">
       <Filter>SlowGold\rec\util\thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Pointer.h">

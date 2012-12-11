@@ -69,8 +69,7 @@ const int END = CommandIDEncoder::toCommandID(100, RECENT);
 
 }
 
-Editor::Editor(ApplicationCommandManager* manager,
-                                   CommandMap* map)
+Editor::Editor(ApplicationCommandManager* manager, CommandMap* map)
     : commandManager_(manager),
       commandMap_(map),
       resetButton_(t_RESET_TO_DEFAULTS),
@@ -339,9 +338,9 @@ void Editor::addChildren(MapItemComponent* comp) {
 void Editor::assignNewKey(EditButton* button, const string& key, int result) {
   if (result) {
     removeKey(key);
-    if (button->keyNum >= 0)
-      removeKeyAtIndex(button->commandID, button->keyNum);
-    addKey(button->commandID, key, button->keyNum);
+    if (button->keyNum_ >= 0)
+      removeKeyAtIndex(button->commandID_, button->keyNum_);
+    addKey(button->commandID_, key, button->keyNum_);
     wasChanged_ = true;
   }
 }
@@ -375,7 +374,7 @@ void Editor::buttonMenuCallback(EditButton* button, int result) {
         this, &Editor::keyChosen, button));
 
   } else if (result == 2) {
-    removeKeyAtIndex(button->commandID, button->keyNum);
+    removeKeyAtIndex(button->commandID_, button->keyNum_);
   }
 }
 
@@ -418,11 +417,12 @@ void Editor::addKey(CommandID cmd, const string& key, int keyIndex) {
 }
 
 Editor::KeyArray Editor::getKeys(CommandID c) {
+  // TODO: needs to take the index into account...
   vector<string> keys(commandMap_->getKeys(static_cast<Command::Type>(c)));
   KeyArray result;
 
-  for (uint i = 0; i < keys.size(); ++i)
-    result[i] = keys[i];
+  for (uint i = 0; i != keys.size(); ++i)
+    result.add(keys[i]);
   return result;
 }
 
