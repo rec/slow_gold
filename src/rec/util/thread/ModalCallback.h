@@ -34,7 +34,6 @@ class ModalCallback1 : public ModalCallback {
 
   virtual void modalStateFinished(int returnValue) {
     (object_->*method_)(value_, returnValue);
-    return true;
   }
 
  private:

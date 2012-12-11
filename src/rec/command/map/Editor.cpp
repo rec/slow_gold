@@ -281,7 +281,6 @@ void Editor::importFromFile(const File&) {
 }
 
 
-
 void Editor::reset(int returnValue) {
   if (returnValue) {
     // TODO
@@ -361,22 +360,20 @@ void Editor::setNewKey(EditButton* button, const string& key) {
   }
 }
 
-void Editor::keyChosen(EditButton* button) {
-  setNewKey(button, key_);
-  if (entryWindow_)
-    entryWindow_.reset();
+void Editor::keyChosen(EditButton* button, int result) {
+  if (result) {
+    setNewKey(button, key_);
+    if (entryWindow_)
+      entryWindow_.reset();
+  }
 }
 
-static void keyChosenCallback(int result, EditButton* button) {
-  if (result)
-    button->getEditor()->keyChosen(button);
-}
-
-void Editor::buttonMenuCallback(int result, EditButton* button) {
+void Editor::buttonMenuCallback(EditButton* button, int result) {
   if (result == 1) {
     entryWindow_.reset(newWindow());
-    entryWindow_->enterModalState(true,
-        ModalCallbackFunction::forComponent(keyChosenCallback, button));
+    entryWindow_->enterModalState(true, thread::modalCallback(
+        this, &Editor::keyChosen, button));
+
   } else if (result == 2) {
     removeKeyAtIndex(button->commandID, button->keyNum);
   }

@@ -45,7 +45,7 @@ class Editor : public Component,
 
   void addButton(EditButton* b);
   void removeButton(EditButton*);
-  void buttonMenuCallback(int result, EditButton*);
+  void buttonMenuCallback(EditButton*, int result);
 
   void setNewKey(EditButton* button, const string& newKey);
 
@@ -85,9 +85,9 @@ class Editor : public Component,
   void okButton();
 
   void setKey(const string&);
-  void keyChosen(EditButton* button);
+  void keyChosen(EditButton* button, int result);
 
-  void assignNewKey(EditButton* button, const string& key, int enable = 1);
+  void assignNewKey(EditButton* button, const string& key, int result = 1);
   bool wasChanged() const { return wasChanged_; }
 
  protected:

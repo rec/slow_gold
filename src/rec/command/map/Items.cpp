@@ -65,7 +65,6 @@ void MapItemComponent::paint(Graphics& g) {
   g.setFont(getHeight() * HEIGHT_RATIO);
   g.setColour(findColour(Editor::textColourId));
 
-  // editor_->getCommandManager()->getNameOfCommand(commandID_), // TODO
   g.drawFittedText(name_,
                    TEXT_X_MARGIN, 0,
                    jmax(TEXT_WIDTH_MAX,
