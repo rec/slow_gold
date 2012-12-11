@@ -1,6 +1,5 @@
 #include "rec/util/file/FixLegacyFiles.h"
 
-#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/data/DataOps.h"

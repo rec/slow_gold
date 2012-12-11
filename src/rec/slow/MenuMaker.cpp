@@ -1,7 +1,6 @@
 #include "rec/slow/MenuMaker.h"
 
 #include "rec/base/ArraySize.h"
-#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/gui/RecentFiles.h"
@@ -26,14 +25,14 @@ const PopupMenu MenuMaker::makeMenu(const String& name) {
   return menu_;
 }
 
-void MenuMaker::addFull(CommandID id,
+void MenuMaker::addFull(command::ID id,
                         const String& name,
                         Enable enable,
                         PopupMenu* m,
                         int flags) {
   CommandRecord* cr = commandRecordTable()->find(id);
   if (!cr) {
-    LOG(DFATAL) << "no info for " << CommandIDEncoder::commandIDName(id);
+    LOG(DFATAL) << "no info for " << id;
     return;
   }
   ApplicationCommandInfo* info = cr->getInfo();
@@ -44,7 +43,7 @@ void MenuMaker::addFull(CommandID id,
     info->shortName = str(cr->setter_->menuName());
 
   if (!info->shortName.length()) {
-    LOG(ERROR) << "No name for " << CommandIDEncoder::commandIDName(id);
+    LOG(ERROR) << "No name for " << id;
     info->shortName = "(error)";
   }
   if (flags >= 0)
@@ -54,8 +53,8 @@ void MenuMaker::addFull(CommandID id,
   (m ? m : &menu_)->addCommandItem(applicationCommandManager(), id);
 }
 
-void MenuMaker::addBasic(CommandID id) {
-  addFull(id, String::empty, ENABLE, NULL, -1);
+void MenuMaker::addBasic(command::ID commandName) {
+  addFull(commandName, String::empty, ENABLE, NULL, -1);
 }
 
 void MenuMaker::addRepeat(Command::Type command,
@@ -63,11 +62,11 @@ void MenuMaker::addRepeat(Command::Type command,
                           const String& name,
                           PopupMenu* m,
                           int flags) {
-  addFull(CommandIDEncoder::toCommandID(slot, command), name, ENABLE, m, flags);
+  addFull(command::ID(command, slot), name, ENABLE, m, flags);
 }
 
 void MenuMaker::addSimpleRepeat(Command::Type command, int slot, PopupMenu* m) {
-  addFull(CommandIDEncoder::toCommandID(slot, command), "",
+  addFull(command::ID(command, slot), "",
           empty_ ? DISABLE : ENABLE, m, DEFAULT_FLAGS);  // Was 0!!
 }
 
@@ -89,7 +88,7 @@ void MenuMaker::addBank(Command::Type command, const String& name) {
   }
 
   PopupMenu sub;
-  for (int i = command::CommandIDEncoder::FIRST; i < lastSlot; ++i) {
+  for (int i = command::ID::FIRST; i < lastSlot; ++i) {
     if (i == 0)
       sub.addSeparator();
     addSimpleRepeat(command, i, &sub);

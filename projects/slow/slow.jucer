@@ -52,7 +52,7 @@
       </CONFIGURATIONS>
     </VS2012>
   </EXPORTFORMATS>
-  <MAINGROUP id="L209PAMmY" name="SlowGold">
+  <MAINGROUP id="pd6hmOhne" name="SlowGold">
     <GROUP id="CU4q5NJyc" name="translation">
       <GROUP id="hACuQqfue" name="rec">
         <GROUP id="nfxIfhCQ6" name="translation">
@@ -341,10 +341,6 @@
               name="CommandIDEncoder.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandItemSetter.h"
               id="NmcYKaszX" name="CommandItemSetter.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/CommandName.cpp" id="Bl8s5RQMR"
-              name="CommandName.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandName.h" id="paBh8V06t"
-              name="CommandName.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandRecord.cpp" id="FYqqO49Ep"
               name="CommandRecord.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandRecord.h" id="dhVxElZVF"
@@ -361,6 +357,10 @@
               id="l6IoAUQHh" name="FillCommandRecordTable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/FillCommandRecordTable.h"
               id="SgC063F7X" name="FillCommandRecordTable.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/ID.cpp" id="43jJJy6VX"
+              name="ID.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/ID.h" id="WYGYRyFmb"
+              name="ID.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/KeyboardBindings.cpp"
               id="lVWINCrp6" name="KeyboardBindings.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/KeyboardBindings.h" id="ZxTlCYmLe"
@@ -1667,7 +1667,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="thnWoMUjh" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="IjQi0G0YW" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>

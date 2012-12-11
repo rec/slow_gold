@@ -2,7 +2,7 @@
 #define __REC_SLOW_MENUMAKER__
 
 #include "rec/base/base.h"
-#include "rec/command/CommandIDEncoder.h"
+#include "rec/command/ID.h"
 #include "rec/slow/IsWholeSong.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/thread/Callback.h"
@@ -47,7 +47,7 @@ class MenuMaker : public HasInstance {
  protected:
   static const int DEFAULT_FLAGS = -1;
 
-  void addBasic(CommandID id);
+  void addBasic(command::ID id);
 
   void addSimpleRepeat(command::Command::Type, int slot, PopupMenu*);
 
@@ -64,7 +64,7 @@ class MenuMaker : public HasInstance {
   const bool empty_;
 
  private:
-  void addFull(CommandID id,
+  void addFull(command::ID id,
                const String& name,
                Enable,
                PopupMenu* m,
