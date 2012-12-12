@@ -41,6 +41,12 @@ class ID {
   JUCE_LEAK_DETECTOR(ID);
 };
 
+inline std::ostream& operator<<(std::ostream& os, const ID& id)
+{
+  os << id.name();
+  return os;
+}
+
 }  // namespace command
 }  // namespace rec
 
