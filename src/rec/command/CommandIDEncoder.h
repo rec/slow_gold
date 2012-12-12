@@ -21,17 +21,13 @@ class CommandIDEncoder {
 
   CommandID toCommandID(int32 type);
 
-  static CommandID toCommandID(int32 position, int32 type) {
-    return CommandIDEncoder(position).toCommandID(type);
-  }
-
-  static void fillCommandFromId(CommandID, Command*);
-
-  static CommandIDEncoder fromCommandID(CommandID);
-  static int toCommandID(const Command&);
-
   int32 position_;
 };
+
+int toCommandID(const Command&);
+void fillCommandFromId(CommandID, Command*);
+CommandIDEncoder fromCommandID(CommandID);
+CommandID toCommandID(int32 position, int32 type);
 
 }  // namespace command
 }  // namespace rec
