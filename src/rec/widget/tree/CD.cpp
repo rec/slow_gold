@@ -46,7 +46,7 @@ void CD::computeChildren() {
   string* path = vf.add_path();
   for (uint32 i = 0; i < tracks.size(); ++i) {
     *path = str(String(i + 1));
-    ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));  // TODO
+    ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));
     node->addListener(this);
 
     MessageManagerLock l;

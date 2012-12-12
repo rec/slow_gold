@@ -73,7 +73,7 @@ void WaveformPainter::drawWaveform() {
   drawWaveform(false);
 }
 
-static const int CHANNELS = 2; // TODO
+static const int CHANNELS = 2;
 
 void WaveformPainter::drawWaveform(bool isSelected) {
   Graphics& g = *painter()->graphics();

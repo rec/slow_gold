@@ -37,7 +37,6 @@ class Directory : public Node, public Listener<const VirtualFile&> {
   void resetChildren();
   static String getPrefix(const File& f, int letters);
 
-  // TODO:  change this choice of data structure.
   FileArray *children_;
   Range<int> range_;
 

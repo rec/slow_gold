@@ -134,7 +134,7 @@ bool Cursor::setDragTime(SampleTime t) {
     }
   }
 
-  setTime(t);  // TODO: is this right?
+  setTime(t);
   return true;
 }
 

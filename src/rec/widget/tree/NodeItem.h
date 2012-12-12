@@ -39,8 +39,7 @@ class Node : public juce::TreeViewItem,
 
   const gui::Rectangle bounds() const;
 
-  const VirtualFile& file() const { return virtualFile_; }
-  const VirtualFile& virtualFile() const { return virtualFile_; }  // TODO
+  const VirtualFile& virtualFile() const { return virtualFile_; }
   VirtualFile::Type type() const { return virtualFile_.type(); }
   virtual void computeChildren() {}
   bool topSelection() const { return topSelection_ && topLevel_; }

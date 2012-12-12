@@ -18,7 +18,7 @@ void deletePointers(Iterator begin, Iterator end) {
 template <typename Container>
 void deletePointers(Container* c) {
   deletePointers(c->begin(), c->end());
-  c->clear();  // TODO: This should move to clear().
+  c->clear();
 }
 
 template <typename Iterator>
@@ -30,7 +30,7 @@ void deleteMapPointers(Iterator begin, Iterator end) {
 template <typename Container>
 void deleteMapPointers(Container* c) {
   deleteMapPointers(c->begin(), c->end());
-  c->clear();  // TODO:  this should move to clear()
+  c->clear();
 }
 
 template <typename Container>

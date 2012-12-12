@@ -13,7 +13,6 @@ message VirtualFile {
     MOVIES = 8;
     LAST = 8;
   };
-  // TODO: Type is a poor choice of name, come up with a better one.
 
   enum Status {
     ONLINE = 1;

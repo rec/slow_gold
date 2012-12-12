@@ -24,7 +24,7 @@ Container getUnfilledBlocks(const Container& selection, Type pos, Type len, Fill
         pos = std::max(pos, i->begin_);
       }
       Type size = std::min(len, Type(i->end_ - pos));
-      DCHECK(size > 0); //  << sel; // TODO
+      DCHECK(size > 0);
       if (size <= 0)
         break;
       mergeAtEnd(&result, Range<Type>(pos, pos + size));

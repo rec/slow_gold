@@ -1,31 +1,28 @@
 #include "rec/widget/waveform/Waveform.h"
 
+#include "rec/gui/Dialog.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
-#include "rec/gui/Dialog.h"
 #include "rec/gui/icon/ZoomInCursor.svg.h"
-#include "rec/util/proto/Defaulter.h"
+#include "rec/slow/CurrentFile.h"
+#include "rec/slow/Instance.h"
 #include "rec/util/Math.h"
-#include "rec/util/range/Range.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/proto/Defaulter.h"
+#include "rec/util/range/Range.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/WaveformModel.h"
 #include "rec/widget/waveform/WaveformPainter.h"
 
-#include "rec/slow/Instance.h"  // TODO: remove this!
-#include "rec/slow/CurrentFile.h"  // TODO: remove this!
-
 namespace rec {
 namespace widget {
 namespace waveform {
 
 namespace {
-
-// Skin
 
 const int64 SMALLEST_TIME_SAMPLES = 10000;  // ALSO!
 const int ZOOM_CURSOR_X_HOTSPOT = 8;
@@ -72,7 +69,7 @@ void Waveform::languageChanged() {
             "You can drag files from your desktop or your music player here. "
             "If your mouse has a wheel, use it to zoom the waveform."));
 
-  // TODO: Why do I need this?!
+  // Why do I need this - they should update on their own?
   for (CursorList::iterator i = cursors_.begin(); i != cursors_.end(); ++i)
     (*i)->languageChanged();
 }
@@ -269,7 +266,6 @@ void Waveform::setSelected(int index, bool selected) {
   DataListener<Viewport>::setProto(viewport);
 }
 
-// TODO: get rid of dependency on Slow!
 void Waveform::mouseDoubleClick(const MouseEvent&) {
   slow::Instance* instance = slow::Instance::getInstance();
   if (instance->empty())

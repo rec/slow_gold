@@ -46,10 +46,12 @@ void DialComponent::operator()(SampleTime time) {
     repaint();
 }
 
+static bool SMALLEST_CHANGE_ENABLED = false;
+
 bool DialComponent::setTime(SampleTime time) {
   Lock l(lock_);
-  if (false && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
-    return false;  // TODO: why is this disabled.
+  if (SMALLEST_CHANGE_ENABLED && near<int64>(time, time_, SMALLEST_TIME_CHANGE))
+    return false;
 
   if (!loops_.has_length())
     return false;

@@ -21,7 +21,6 @@ enum ColorName {
 
 class Painter {
  public:
-  // TODO: move this enum to Color.proto.
   Painter(const Widget& widget, juce::Graphics* g,
           const StateColors* stateColors = NULL)
       : widget_(widget),

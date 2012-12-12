@@ -20,7 +20,7 @@ void add(ShardArray* shards, const String& name, const Range<int>& range) {
 template <typename Coll>
 void simplePartition(const Coll& col, const Range<int>& r, ShardArray* shards) {
   for (int i = r.begin_; i != r.end_; ++i)
-    add(shards, getName(col[i]), Range<int>(i, i + 1));  // TODO:  what's this?
+    add(shards, getName(col[i]), Range<int>(i, i + 1));
 }
 
 template <typename Coll>

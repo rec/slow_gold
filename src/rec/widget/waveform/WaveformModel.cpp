@@ -63,7 +63,6 @@ double WaveformModel::pixelsPerSample() const {
 
 SampleTime WaveformModel::zoomEnd() const {
   const Zoom& zoom = viewport_.zoom();
-  // DCHECK(zoom.has_end());  // TODO
   return zoom.has_end() ? SampleTime(zoom.end()) : SampleTime(length());
 }
 

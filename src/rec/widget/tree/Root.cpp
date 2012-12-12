@@ -92,7 +92,6 @@ void Root::readOpenness() {
 
 void Root::writeOpenness() {
   if (USE_OPENNESS_FILE && opennessRead_) {
-    // TODO: only do this when the openness is actually changed!
     ptr<XmlElement> openness(tree_.getOpennessState(true));
     if (!(openness && openness->writeToFile(getOpennessFile(), "")))
       LOG(DFATAL) << "Couldn't write openness file";
@@ -108,7 +107,7 @@ void Root::operator()(const VirtualFile& file) {
 void Root::operator()(const VirtualFileList& volumes) {
   Lock l(lock_);
   volumes_ = volumes;
-  // notify();  // TODO!
+  // notify();  // Why has this gone?
 }
 
 void Root::refreshNode(const VirtualFile& f) {
