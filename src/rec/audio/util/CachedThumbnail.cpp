@@ -25,10 +25,8 @@ void CachedThumbnail::write(const File& file) {
     return;
 
   cacheWritten_ = true;
-  if (!thumbnail_.getTotalLength()) {
-    // TODO: fix this.
-    LOG(ERROR) << "writing empty cache";
-  } else {
+  DCHECK(thumbnail_.getTotalLength());
+  if (thumbnail_.getTotalLength()) {
     file.getParentDirectory().createDirectory();
     ptr<juce::FileOutputStream> out(file.createOutputStream());
     if (!out)

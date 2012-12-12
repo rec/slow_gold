@@ -19,8 +19,6 @@
 typedef signed char         schar;
 typedef signed char         int8;
 typedef short               int16;
-// TODO(mbelshe) Remove these type guards.  These are
-//               temporary to avoid conflicts with npapi.h.
 #ifndef _INT32
 #define _INT32
 typedef int                 int32;
@@ -42,8 +40,6 @@ typedef long long           int64;
 
 typedef unsigned char      uint8;
 typedef unsigned short     uint16;
-// TODO(mbelshe) Remove these type guards.  These are
-//               temporary to avoid conflicts with npapi.h.
 #ifndef _UINT32
 #define _UINT32
 typedef unsigned int       uint32;

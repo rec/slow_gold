@@ -11,7 +11,6 @@ namespace app {
 
 class GenericApplication;
 
-// TODO: move this into rec/app
 class Window : public gui::PersistentWindow, public Broadcaster<None> {
  public:
   Window(GenericApplication* application,

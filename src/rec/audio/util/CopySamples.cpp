@@ -33,7 +33,6 @@ struct Copier {
   }
 
   void copy(int f, int t) const {
-    // TODO: bug Jules
     to_.buffer_->copyFrom(f, to_.time_.toInt(), *from_.buffer_, t,
                           from_.time_.toInt(), count_.toInt());
   }

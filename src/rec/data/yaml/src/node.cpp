@@ -44,7 +44,7 @@ namespace YAML
 		m_referenced = false;
 		m_tag.clear();
 	}
-	
+
 	std::auto_ptr<Node> Node::Clone() const
 	{
 		std::auto_ptr<Node> pNode(new Node);
@@ -69,11 +69,11 @@ namespace YAML
 				eventHandler.OnAlias(m_mark, am.LookupAnchor(*pOther));
 				return;
 			}
-			
+
 			am.RegisterReference(*this);
 			anchor = am.LookupAnchor(*this);
 		}
-		
+
 		if(m_pContent)
 			m_pContent->EmitEvents(am, eventHandler, m_mark, GetTag(), anchor);
 		else
@@ -130,19 +130,19 @@ namespace YAML
 
 	void Node::SetData(const std::string& data)
 	{
-		assert(m_pContent); // TODO: throw
+		assert(m_pContent);
 		m_pContent->SetData(data);
 	}
 
 	void Node::Append(std::auto_ptr<Node> pNode)
 	{
-		assert(m_pContent); // TODO: throw
+		assert(m_pContent);
 		m_pContent->Append(pNode);
 	}
-	
+
 	void Node::Insert(std::auto_ptr<Node> pKey, std::auto_ptr<Node> pValue)
 	{
-		assert(m_pContent); // TODO: throw
+		assert(m_pContent);
 		m_pContent->Insert(pKey, pValue);
 	}
 
@@ -197,7 +197,7 @@ namespace YAML
 	{
 		if(!m_pContent)
 			return 0;
-		
+
 		return m_pContent->GetNode(i);
 	}
 
@@ -210,7 +210,7 @@ namespace YAML
 				s = "";
 			return true;
 		}
-		
+
 		return m_pContent->GetScalar(s);
 	}
 

@@ -34,11 +34,7 @@ const URL VERSION_FILE(WOODSHED + "currentversion/");
 const String LAST_UPDATE_FILE("LastUpdate.txt");
 const String MUST_UPDATE_FILE("MustUpdate.txt");
 
-// TODO: this is duplicated elsewhere.
-const int VERSION_TIMEOUT = 2000;
-
 const RelativeTime UPDATE(RelativeTime::days(1));
-// const RelativeTime UPDATE(1);  // 1 second for testing.
 
 bool isReadyForUpdate() {
   CHECK_DDD(1734, 1272, int32, int16);
@@ -49,7 +45,7 @@ bool isReadyForUpdate() {
 
 String getVersion() {
   ptr<InputStream> stream(VERSION_FILE.createInputStream(false, NULL, NULL, "",
-                                                         VERSION_TIMEOUT));
+                                                         SOCKET_TIMEOUT_MS));
 
   return stream ? stream->readEntireStreamAsString() : String("");
 }

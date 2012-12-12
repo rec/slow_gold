@@ -30,7 +30,8 @@ void DataCenter::clearUndoes() const {
 }
 
 void DataCenter::waitTillClear() const {
-  // while (hasUpdates())  // TODO: sometimes this used to loop forever...
+  // When this was a while loop, it sometimes looped forever...!
+  if (hasUpdates())
     Thread::sleep(10);
 }
 

@@ -60,14 +60,12 @@ void DataMapImpl::updateAll() {
   Lock l(lock_);
   for (Map::iterator i = map_.begin(); i != map_.end(); ++i)
     i->second->data_->update();
-
-  // TODO:  we should just delete data for files that aren't in memory
-  // any more.
 }
 
+static bool ENABLE_DELETIONS = false;
+
 void DataMapImpl::removeData(Data* data) {
-    // TODO: why doesn't this work?
-  if (!false)
+  if (!ENABLE_DELETIONS)
     return;
 
   Lock l(lock_);

@@ -5,10 +5,6 @@
 #include "rec/audio/format/mpg123/NewHandle.h"
 #include "rec/audio/format/mpg123/Format.h"
 
-// #pragma GCC diagnostic ignored "-Wshorten-64-to-32"
-// TODO: why doesn't this work?  see
-// http://gcc.gnu.org/onlinedocs/gcc/Diagnostic-Pragmas.html
-
 using namespace juce;
 
 namespace rec {

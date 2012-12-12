@@ -2,29 +2,23 @@
 
 #include "rec/gui/audio/Loops.h"
 
+#include "rec/audio/source/Player.h"
 #include "rec/base/SampleTime.h"
-#include "rec/data/DataOps.h"
 #include "rec/data/DataCenter.h"
+#include "rec/data/DataOps.h"
 #include "rec/data/UndoStack.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/proto/FieldOps.h"
 #include "rec/gui/SetterText.h"
 #include "rec/gui/audio/LoopsCuttable.h"
-#include "rec/util/proto/Defaulter.h"
+#include "rec/slow/Instance.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
+#include "rec/util/proto/Defaulter.h"
 #include "rec/util/range/Range.h"
 #include "rec/util/thread/CallAsync.h"
-
-// TODO: remove this dependency.
-#include "rec/slow/Instance.h"
-#include "rec/audio/source/Player.h"
-
-// TODO: this text is duplicated in Loops.cpp.
-
-TRAN(LOOP_POINT_NAME_HELP, "Loop Point Name: Edit the Loop Point's name "
-     "by clicking here.");
+#include "rec/widget/waveform/Cursor.h"
 
 namespace rec {
 namespace gui {
@@ -187,7 +181,7 @@ void Loops::update() {
 }
 
 String Loops::getCellTooltip(int, int) const {
-  return t_LOOP_POINT_NAME_HELP;
+  return t_LOOP_POINT_CAPTION;
 }
 
 void Loops::editViewport(const widget::waveform::Viewport& viewport) {

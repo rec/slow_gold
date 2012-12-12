@@ -40,7 +40,6 @@ namespace YAML
 			case NAMED_HANDLE:
 				return directives.TranslateTagHandle("!" + handle + "!") + value;
 			case NON_SPECIFIC:
-				// TODO:
 				return "!";
 			default:
 				assert(false);

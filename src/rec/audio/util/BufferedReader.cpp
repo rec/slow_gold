@@ -4,7 +4,7 @@ namespace rec {
 namespace audio {
 namespace util {
 
-static const int PRELOAD = 10000;  // TODO:  duplicate code.
+static const int PRELOAD = 10000;
 
 SampleTime BufferedReader::setReader(AudioFormatReader* reader) {
   DCHECK(reader);

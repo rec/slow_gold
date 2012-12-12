@@ -44,6 +44,10 @@ class Trans {
 #define TRAN2(NAME, TEXT)                      \
   const rec::Trans t_ ## NAME(TEXT, HINT, __FILE__, __LINE__)
 
+#define TRAN_EX(NAME)                           \
+  extern const rec::Trans t_ ## NAME
+
+
 #if JUCE_WINDOWS
 
 inline const wchar_t* c_str(const Trans& s) {

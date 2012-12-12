@@ -23,7 +23,6 @@ using namespace rec::widget::waveform;
 static const double IDEAL_CURSOR_POSITION_RATIO = 0.05;
 static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
 
-static const int PRELOAD = 10000;  // TODO:  duplicate code.
 static const int NO_SEGMENT = -1;
 
 CurrentTime::CurrentTime(Instance* i)

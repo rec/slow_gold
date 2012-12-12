@@ -5,12 +5,15 @@
 
 #include "rec/app/LanguageListener.h"
 #include "rec/audio/Audio.h"
+#include "rec/base/Trans.h"
 #include "rec/data/DataListener.h"
 #include "rec/gui/Geometry.h"
 #include "rec/util/Listener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.h"
+
+TRAN_EX(LOOP_POINT_CAPTION);
 
 namespace rec {
 namespace widget {

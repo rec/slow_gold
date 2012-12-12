@@ -39,7 +39,8 @@ SampleTime BufferedReaderImpl<Sample, CHANNELS>::doFillNextBlock(
   }
 
   InterleavedFrame<Sample, CHANNELS>* frame = frames_.frames() +
-    static_cast<int>(b.begin_);  // TODO: why?
+    static_cast<int>(b.begin_);
+  // I'm not sure why that cast is necessary...
 
   for (int i = 0; i < size; ++i, ++frame) {
     for (int c = 0; c < CHANNELS; ++c) {

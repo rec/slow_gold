@@ -15,18 +15,18 @@ namespace YAML
 		m_newIdentityByOldIdentity.insert(std::make_pair(pIdentity, &node));
 		m_anchorByIdentity.insert(std::make_pair(&node, _CreateNewAnchor()));
 	}
-	
+
 	const Node *AliasManager::LookupReference(const Node& node) const
 	{
 		const Node *pIdentity = node.Identity();
 		return _LookupReference(*pIdentity);
 	}
-	
+
 	anchor_t AliasManager::LookupAnchor(const Node& node) const
 	{
 		AnchorByIdentity::const_iterator it = m_anchorByIdentity.find(&node);
 		if(it == m_anchorByIdentity.end())
-			assert(false); // TODO: throw
+			assert(false);
 		return it->second;
 	}
 
@@ -37,7 +37,7 @@ namespace YAML
 			return 0;
 		return it->second;
 	}
-	
+
 	anchor_t AliasManager::_CreateNewAnchor()
 	{
 		return ++m_curAnchor;

@@ -17,9 +17,7 @@ class RegisterInstance : public app::RegisterProgram {
 
   virtual StringArray getBaseUrls() const;
 
-  static const int TIME_OUT = 2000;
-
-  virtual int timeOut() const { return TIME_OUT; }
+  virtual int timeOut() const { return SOCKET_TIMEOUT_MS; }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(RegisterInstance);

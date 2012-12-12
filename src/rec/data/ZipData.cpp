@@ -63,7 +63,8 @@ File zipData(const File& file) {
   if (!copy::copy(getSystemStats(), stats))
     LOG(ERROR) << "Couldn't write stats file " << str(stats);
 
-  Thread::sleep(2000);  // TODO: hack!
+  Thread::sleep(2000);
+  // TODO: wait until the SystemStats file appears - sleep() is a hack.
 
   Builder builder;
   addFiles(app::getCompanyDirectory(), &builder);

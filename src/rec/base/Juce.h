@@ -126,7 +126,6 @@ inline const string operator+(const string& s, const String& t) {
 }
 
 inline const string str(const MidiMessage& msg) {
-  // TODO: ugh.
   return string(reinterpret_cast<const char*>(msg.getRawData()),
                 msg.getRawDataSize());
 }

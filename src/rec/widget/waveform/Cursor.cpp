@@ -3,7 +3,6 @@
 #include "rec/audio/Audio.h"
 #include "rec/base/SampleTime.h"
 #include "rec/base/DropDead.h"
-#include "rec/base/Trans.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
