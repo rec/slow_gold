@@ -28,10 +28,6 @@ class SetterTextArea : public Layout {
     return text;
   }
 
-  virtual void repaint() {  // TODO: remove this?
-    Layout::repaint();
-  }
-
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SetterTextArea);
 };

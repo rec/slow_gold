@@ -101,7 +101,7 @@ String Loops::displayText(int column, int row) const {
   string error = getMessageField(rowAddress, getDataValue(), &v);
   if (!error.empty()) {
     LOG(ERROR) << row << "," << column << ": " << error;
-    return Trans("(error)"); // TODO
+    return Trans("(error)");
   }
 
   SampleTime len = SampleTime(viewport_.loop_points().length());
@@ -163,7 +163,7 @@ void Loops::update() {
   int columns;
   juce::SparseSet<int> sel;
   {
-    Lock l(TableController::lock_);  // TODO: simplify locking here?
+    Lock l(TableController::lock_);  // Perhaps simplify locking here?
     rows = getNumRows();
     columns = columns_.column_size();
     for (int r = 0; r < rows; ++r) {

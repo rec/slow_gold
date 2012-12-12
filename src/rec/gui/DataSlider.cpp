@@ -15,13 +15,9 @@ DataSlider::DataSlider(const String& name,
       name_(name),
       tooltip_(tooltip) {
   slider_.setSliderStyle(Slider::LinearHorizontal);
-
-  // TODO: constants
   slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 16);
-
   slider_.addListener(this);
 
-  // TODO: constants
   addToLayout(&caption_, 45);
   addToLayout(&slider_, 0, -1.0, -1.0);
 }

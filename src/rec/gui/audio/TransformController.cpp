@@ -66,7 +66,8 @@ TransformController::TransformController()
   masterTune_.slider()->setRange(-100.0, 100.0, 0.1);
 
   playbackSpeed_.slider()->setDetent(100.0f);
-  playbackSpeed_.slider()->setDetentRadius(0.008f);  // TODO: Why so small?
+  // I don't understand why we need such a small radius.
+  playbackSpeed_.slider()->setDetentRadius(0.008f);
   pitchScale_.slider()->setDetent(0.0f);
   fineScale_.slider()->setDetent(0.0f);
   masterTune_.slider()->setDetent(0.0f);
