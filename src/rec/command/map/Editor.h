@@ -60,7 +60,6 @@ class Editor : public Component,
   void setColours(const Colour& mainBackground,
                   const Colour& textColour);
 
-  bool commandHasFlags(ID id, int flags) const;
 
   ApplicationCommandManager* getCommandManager() { return commandManager_; }
   ChangeBroadcaster* getChangeBroadcaster();
@@ -92,10 +91,10 @@ class Editor : public Component,
   ptr<juce::AlertWindow> entryWindow_;
 
  private:
-  typedef std::map<CommandID, MapItem*> MapItemMap;
+  typedef std::map<ID, MapItem*> MapItemMap;
 
   void fillTopLevelItem();
-  bool commandHasFlags(CommandID, int flags) const;
+  bool commandHasFlags(ID, int flags) const;
 
   ApplicationCommandManager* commandManager_;
   CommandMap* commandMap_;
