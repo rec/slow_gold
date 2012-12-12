@@ -50,18 +50,13 @@ string CommandIDEncoder::commandIDName(CommandID id) {
   return name; //  + " " + str(String(id));
 }
 
-// static
-bool CommandIDEncoder::isA(int32 id, Command::Type type) {
-  return type == getType(id);
-}
-
 int CommandIDEncoder::toCommandID(const Command& cmd) {
   return cmd.has_index() ? toCommandID(cmd.index(), cmd.type()) : cmd.type();
 }
 
 void CommandIDEncoder::fillCommandFromId(CommandID id, Command* command) {
   if (id >= Command::BANK_SIZE) {
-    command->set_index(fromCommandID(id));
+    command->set_index(fromCommandID(id).position_);
     id /= Command::BANK_SIZE;
   }
   command->set_type(static_cast<Command::Type>(id));
