@@ -29,12 +29,8 @@ class CommandIDEncoder {
 
   static CommandIDEncoder fromCommandID(CommandID);
   static Command::Type getType(CommandID);
-  static string commandIDName(CommandID);
   static int toCommandID(const Command&);
 
-  int32 getPosition() const { return position_; }
-
- private:
   int32 position_;
 };
 

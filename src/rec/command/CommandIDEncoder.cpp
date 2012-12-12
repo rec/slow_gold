@@ -16,40 +16,6 @@ CommandIDEncoder CommandIDEncoder::fromCommandID(CommandID id) {
   return CommandIDEncoder((id < SIZE) ? CURRENT : mod(id, SIZE) + FIRST);
 }
 
-// static
-string CommandIDEncoder::commandIDName(CommandID id) {
-  Command::Type type = getType(id);
-  string res;
-
-  int body = id / Command::BANK_SIZE;
-  int remains = id % Command::BANK_SIZE;
-
-  int position = body ? remains : 0;
-
-  string name;
-  if (type <= Command::LAST_TYPE ||
-      (type >= Command::JUCE_START && type <= Command::JUCE_END)) {
-    name = Command::Type_Name(type);
-  } else {
-    name = "Bad id " + str(String(type));
-    DCHECK(false) << name;
-  }
-
-  if (body) {
-    name += ": ";
-
-    switch (position + FIRST) {
-     case FIRST: name += "FIRST"; break;
-     case PREVIOUS: name += "PREVIOUS"; break;
-     case CURRENT: name += "CURRENT"; break;
-     case NEXT: name += "NEXT"; break;
-     case LAST: name += "LAST"; break;
-     default: name += str(String(position + FIRST)); break;
-    }
-  }
-  return name; //  + " " + str(String(id));
-}
-
 int CommandIDEncoder::toCommandID(const Command& cmd) {
   return cmd.has_index() ? toCommandID(cmd.index(), cmd.type()) : cmd.type();
 }
