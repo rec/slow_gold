@@ -9,6 +9,11 @@ ID::ID(int command, int index)
     : command_(CommandIDEncoder::toCommandID(index, command)) {
 }
 
+ID::ID(const Command& command) : command_(command.type()) {
+  if (command.has_start_index())
+    command_ = CommandIDEncoder::toCommandID(command.start_index(), command_);
+}
+
 const ID::Type ID::type() const {
   return CommandIDEncoder::getType(command_);
 }

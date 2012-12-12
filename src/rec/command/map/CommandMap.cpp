@@ -1,5 +1,4 @@
 #include "rec/command/map/CommandMap.h"
-#include "rec/command/CommandIDEncoder.h"
 
 namespace rec {
 namespace command {
@@ -39,7 +38,7 @@ void CommandMap::addCommands(const CommandMapProto& commands) {
 void CommandMap::dump() const {
   CommandToKeys::const_iterator i;
   for (i = toKeys_.begin(); i != toKeys_.end(); ++i) {
-    DLOG(INFO) << CommandIDEncoder::commandIDName(i->first);
+    DLOG(INFO) << i->first;
     for (uint j = 0; j != i->second.size(); ++j)
       DLOG(INFO) << i->second[j];
   }
@@ -83,7 +82,7 @@ const CommandMapProto CommandMap::getProto() const {
 
 bool CommandMap::invokeAsync(const string& key,
                              ApplicationCommandManager* acm) const {
-  CommandID id = getCommand(key);
+  ID id = getCommand(key);
   return (id != command::Command::NONE) && acm->invokeDirectly(id, true);
 }
 

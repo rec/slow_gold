@@ -2,9 +2,9 @@
 
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandDataSetter.h"
-#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/command/ID.h"
 #include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
 #include "rec/util/thread/MakeCallback.h"
@@ -33,17 +33,16 @@ void fillSingleCommand(const CommandData& data, CommandRecordTable* table,
 }
 
 void fillRepeatingCommand(CommandRecordTable* table, const Command& cmd) {
-  const Command::Type t = cmd.type();
   int len = cmd.desc().menu_size();
   DCHECK_EQ(len, cmd.desc().full_size()) << cmd.ShortDebugString();
-  CommandID begin = CommandIDEncoder::toCommandID(cmd.start_index(), t);
-  CommandID end = begin + len;
-  for (CommandID i = begin; i != end; ++i) {
+  ID begin = ID(cmd.type(), cmd.start_index());
+  ID end = begin + len;
+  for (ID i = begin; i != end; ++i) {
     if (CommandRecord* cr = table->find(i)) {
       DCHECK(!cr->command_) << cr->command_->ShortDebugString();
       cr->command_.reset(indexCommand(cmd, i - begin));
     } else {
-      LOG(DFATAL) << "No repeat for " << CommandIDEncoder::commandIDName(t);
+      LOG(DFATAL) << "No repeat for " << i;
     }
   }
 }

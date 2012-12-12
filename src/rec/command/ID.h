@@ -19,6 +19,7 @@ class ID {
   ID() {}
   ID(CommandID command) : command_(command) {}
   ID(CommandID command, int index);
+  ID(const Command&);
 
   operator CommandID() const { return command_; }
 
@@ -42,6 +43,20 @@ class ID {
   bool operator<=(const int32& x) const { return command_ <= x; }
 
   bool operator!() const { return !command_; }
+  ID& operator++() { ++command_; return *this; }
+  ID& operator--() { --command_; return *this; }
+
+  ID operator++(int) {
+    ID ret(*this);
+    ++command_;
+    return ret;
+  }
+
+  ID operator--(int) {
+    ID ret(*this);
+    --command_;
+    return ret;
+  }
 
  private:
   CommandID command_;
