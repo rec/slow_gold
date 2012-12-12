@@ -39,13 +39,13 @@ class Trans {
 };
 
 #define TRAN(NAME, TEXT)                      \
-  const rec::Trans t_ ## NAME(TEXT, __FILE__, __LINE__)
+  const ::rec::Trans t_ ## NAME(TEXT, __FILE__, __LINE__)
 
 #define TRAN2(NAME, TEXT)                      \
-  const rec::Trans t_ ## NAME(TEXT, HINT, __FILE__, __LINE__)
+  const ::rec::Trans t_ ## NAME(TEXT, HINT, __FILE__, __LINE__)
 
-#define TRAN_EX(NAME)                           \
-  extern const rec::Trans t_ ## NAME
+#define TRAN_EXTERNAL(NAME)                     \
+  extern const ::rec::Trans t_ ## NAME
 
 
 #if JUCE_WINDOWS

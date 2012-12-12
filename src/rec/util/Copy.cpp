@@ -85,7 +85,6 @@ bool file(const File &file, string *s, Style /* readable */) {
     if (!in)
       return false;
     uint length = static_cast<uint>(in->getTotalLength());
-    // TODO: deal with long buffers.
     s->resize(length);
     int bytesRead = in->read((void*)s->data(), length);
     LOG_IF(ERROR, bytesRead < 0) << "negative bytes read.";
@@ -98,7 +97,7 @@ bool file(const File &file, string *s, Style /* readable */) {
 }
 
 bool file(const string &from, const File &to, Style /* readable */) {
-  // TODO: replace with File::replaceWithText.
+  // This could be replaced with File::replaceWithText.
   try {
     if (!to.getParentDirectory().createDirectory()) {
       LOG(DFATAL) << "Couldn't create directory for " << str(to);
@@ -128,7 +127,7 @@ bool file(const string &from, const File &to, Style /* readable */) {
 
   } catch (...) {
     LOG(DFATAL) << "We got an exception";
-    // TODO: log this exception here.
+    // We could also log this exception here.
   }
   return false;
 }

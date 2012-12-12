@@ -10,7 +10,7 @@ namespace cd {
 static const int BUFFER_SIZE = 4096;
 
 void writeSocket(Socket* sock, const String& s) {
-  // TODO: unneeded copy
+  // There's an extra copy here that could be removed.
   int w = sock->write(str(s).c_str(), s.length());
   if (w != s.length()) {
     throw Exception(string("Wrote ") + String(w) + " of " + String(s.length()) + " chars.");

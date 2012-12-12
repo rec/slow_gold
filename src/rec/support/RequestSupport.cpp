@@ -42,8 +42,6 @@ String randomKey(int length = LENGTH) {
   return s;
 }
 
-// TODO: duplicated from GlobalCallbacks.cpp
-
 TRAN(CLICK_TO_CONTINUE, "Click to continue.");
 
 void alert(const String& title, const String& msg) {

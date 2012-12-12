@@ -3,7 +3,7 @@
 
 #include "rec/base/Trans.h"
 
-TRAN_EX(PLEASE_CONTACT);
+TRAN_EXTERNAL(PLEASE_CONTACT);
 
 namespace rec {
 namespace support {

@@ -42,9 +42,10 @@ void deleteAll(const File& appDir, const String& pattern) {
     iterator.getFile().deleteFile();
 }
 
+// TODO: deleteLogs doesn't work.
 void deleteLogs(const File& appDir) {
   deleteAll(appDir, "*.log.*");
-  deleteAll(appDir, "il.*");  // TODO: doesn't work.
+  deleteAll(appDir, "il.*");
 }
 
 void redirectLogs(const File& appDir) {
@@ -180,7 +181,6 @@ void initialize(app::GenericApplication*) {
   doLog("registering protos");
   registerProtos();
   // LOG(INFO) << "SlowWindow::initialize";
-  // TODO:  logging doesn't work if called in this routine...
   doLog("moving directories");
   file::fixLegacyFiles();
   doLog("registering translations");

@@ -218,7 +218,6 @@ void Instance::init() {
   DialogLocker::getDisableBroadcaster()->addListener(window_->application());
 
 #ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK
-  // TODO: move this elsewhere.
   Mode mode = data::getProto<Mode>();
   if (mode.click() == Mode::DRAW_LOOP_POINTS) {
     mode.clear_click();

@@ -161,7 +161,6 @@ void CurrentTime::jumpToTime(SampleTime time) {
     BufferedReader* reader = bufferFiller()->reader();
     requestedTime_ = time;
     time_ = time;
-    DCHECK(reader);  // TODO: remove
     if (reader && !reader->coversTime(time)) {
       reader->setNextFillPosition(time);
       if (player()->state()) {

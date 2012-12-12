@@ -3,8 +3,8 @@
 
 #include "rec/base/Trans.h"
 
-extern const rec::Trans t_FILE_TOO_SMALL;
-extern const rec::Trans t_FILE_TOO_SMALL_FULL;
+TRAN_EXTERNAL(FILE_TOO_SMALL);
+TRAN_EXTERNAL(FILE_TOO_SMALL_FULL);
 
 namespace rec {
 namespace music {

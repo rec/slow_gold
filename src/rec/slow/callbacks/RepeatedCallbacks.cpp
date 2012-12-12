@@ -100,7 +100,7 @@ const RealTime MAX_JUMP_TIME = 1.0;
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   Viewport viewport = data::getProto<Viewport>(snapshot->instance_->file());
   snapshot->viewport_.CopyFrom(viewport);
-  snapshot->loops_ = snapshot->viewport_.mutable_loop_points();  // TODO: hacky!
+  snapshot->loops_ = snapshot->viewport_.mutable_loop_points();
   SampleTime time = snapshot->loops_->loop_point(segment).time();
   snapshot->instance_->currentTime_->jumpToTime(time);
 }
@@ -132,18 +132,7 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-// TODO: get rid of these two.
-void addCallback(CallbackTable* c, int32 type, int32 position,
-                 SelectorFunction f) {
-  addCallback(c, ID(type, position), select, f, position);
-}
-
-void addCallback(CallbackTable* c, int32 type, int32 position,
-                 LoopSnapshotFunction f) {
-  addCallback(c, ID(type, position), loop, f, position);
-}
-
-// TODO: this duplicates a value in the Repeated.def data file.
+// This constant must be consistent with AllCommands.def.
 static const int RECENT_MENU_REPEATS = 32;
 static const int RECENT_FILE_THREAD_PRIORITY = 4;
 
@@ -274,6 +263,16 @@ void loopNextSegment() {
   }
 
   data::setProto(vp, vf);
+}
+
+void addCallback(CallbackTable* c, int32 type, int32 position,
+                 SelectorFunction f) {
+  addCallback(c, ID(type, position), select, f, position);
+}
+
+void addCallback(CallbackTable* c, int32 type, int32 position,
+                 LoopSnapshotFunction f) {
+  addCallback(c, ID(type, position), loop, f, position);
 }
 
 }  // namespace

@@ -40,7 +40,7 @@ class InputImpl : public InputBase {
     uint64 size;
     string s;
 
-    // TODO: deal with very long strings.
+    // This won't handle extremely long strings.
     return coded_.ReadVarint64(&size) &&
       coded_.ReadString(&s, static_cast<int>(size)) &&
       copy::copy(s, message, style_);

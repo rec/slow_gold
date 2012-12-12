@@ -13,7 +13,7 @@
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.h"
 
-TRAN_EX(LOOP_POINT_CAPTION);
+TRAN_EXTERNAL(LOOP_POINT_CAPTION);
 
 namespace rec {
 namespace widget {
