@@ -4,13 +4,14 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/CommandItemSetter.h"
+#include "rec/command/ID.h"
 #include "rec/util/Listener.h"
 
 namespace rec {
 namespace command {
 
 struct CommandRecord {
-  explicit CommandRecord(CommandID id) : info_(id) {}
+  explicit CommandRecord(ID id) : info_(id) {}
 
   ptr<Command> command_;
   ptr<Callback> callback_;
