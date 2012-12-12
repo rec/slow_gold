@@ -339,8 +339,8 @@ void Editor::assignNewKey(EditButton* button, const string& key, int result) {
   if (result) {
     removeKey(key);
     if (button->keyNum_ >= 0)
-      removeKeyAtIndex(button->commandID_, button->keyNum_);
-    addKey(button->commandID_, key, button->keyNum_);
+      removeKeyAtIndex(button->id_, button->keyNum_);
+    addKey(button->id_, key, button->keyNum_);
     wasChanged_ = true;
   }
 }
@@ -374,7 +374,7 @@ void Editor::buttonMenuCallback(EditButton* button, int result) {
         this, &Editor::keyChosen, button));
 
   } else if (result == 2) {
-    removeKeyAtIndex(button->commandID_, button->keyNum_);
+    removeKeyAtIndex(button->id_, button->keyNum_);
   }
 }
 
