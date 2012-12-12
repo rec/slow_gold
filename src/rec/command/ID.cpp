@@ -1,46 +1,25 @@
 #include "rec/command/ID.h"
 
-#include "rec/command/CommandIDEncoder.h"
 #include "rec/util/Math.h"
 
 namespace rec {
 namespace command {
 
-// namespace {
+namespace {
 
 const int SIZE = Command::BANK_SIZE;
 
-CommandIDEncoder fromCommandID(CommandID id) {
-  static const int SIZE = Command::BANK_SIZE;
-  return CommandIDEncoder((id < SIZE) ? CommandIDEncoder::CURRENT :
-                          mod(id, SIZE) + CommandIDEncoder::FIRST);
+int32 toID(int32 position, int32 type) {
+  return (type * SIZE) + (position - ID::FIRST);
 }
 
-int toCommandID(const Command& cmd) {
-  return cmd.has_index() ? toCommandID(cmd.index(), cmd.type()) : cmd.type();
-}
+}  // namespace
 
-void fillCommandFromId(CommandID id, Command* command) {
-  if (id >= Command::BANK_SIZE) {
-    command->set_index(fromCommandID(id).position_);
-    id /= Command::BANK_SIZE;
-  }
-  command->set_type(static_cast<Command::Type>(id));
-}
-
-CommandID toCommandID(int32 position, int32 type) {
-  return CommandIDEncoder(position).toCommandID(type);
-}
-
-// }  // namespace
-
-ID::ID(int command, int index)
-    : command_(toCommandID(index, command)) {
-}
+ID::ID(int command, int index) : command_(toID(index, command)) {}
 
 ID::ID(const Command& command) : command_(command.type()) {
   if (command.has_start_index())
-    command_ = toCommandID(command.start_index(), command_);
+    command_ = toID(command.start_index(), command_);
 }
 
 const ID::Type ID::type() const {
