@@ -28,7 +28,6 @@ class CommandIDEncoder {
   static void fillCommandFromId(CommandID, Command*);
 
   static CommandIDEncoder fromCommandID(CommandID);
-  static Command::Type getType(CommandID);
   static int toCommandID(const Command&);
 
   int32 position_;

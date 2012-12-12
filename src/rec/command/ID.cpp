@@ -15,7 +15,10 @@ ID::ID(const Command& command) : command_(command.type()) {
 }
 
 const ID::Type ID::type() const {
-  return CommandIDEncoder::getType(command_);
+  int body = command_ / Command::BANK_SIZE;
+  int remains = command_ % Command::BANK_SIZE;
+
+  return static_cast<Command::Type>(body ? body : remains);
 }
 
 const int ID::index() const {

@@ -28,13 +28,6 @@ void CommandIDEncoder::fillCommandFromId(CommandID id, Command* command) {
   command->set_type(static_cast<Command::Type>(id));
 }
 
-Command::Type CommandIDEncoder::getType(CommandID id) {
-  int body = id / Command::BANK_SIZE;
-  int remains = id % Command::BANK_SIZE;
-
-  return static_cast<Command::Type>(body ? body : remains);
-}
-
 }  // namespace command
 }  // namespace rec
 
