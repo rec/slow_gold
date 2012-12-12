@@ -2,7 +2,6 @@
 
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/base/ArraySize.h"
-#include "rec/command/CommandIDEncoder.h"
 #include "rec/data/DataOps.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/translation/TranslationTables.h"

@@ -7,7 +7,7 @@
 #include "rec/base/ArraySize.h"
 #include "rec/base/Trans.h"
 #include "rec/command/Command.pb.h"
-#include "rec/command/CommandIDEncoder.h"
+#include "rec/command/ID.h"
 #include "rec/command/map/EditButton.h"
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/map/Items.h"
@@ -63,9 +63,9 @@ void addTextButton(Editor* editor, TextButton* button) {
   editor->addAndMakeVisible(button);
 }
 
-const int RECENT = Command::RECENT_FILES;
-const int BEGIN = CommandIDEncoder::toCommandID(10, RECENT);
-const int END = CommandIDEncoder::toCommandID(100, RECENT);
+const ID RECENT(Command::RECENT_FILES);
+const ID BEGIN(RECENT, 10);
+const ID END(RECENT, 100);
 
 }
 

@@ -1,7 +1,7 @@
 #include "rec/gui/audio/TransportController.h"
 
 #include "rec/command/CommandRecord.h"
-#include "rec/command/CommandIDEncoder.h"
+#include "rec/command/ID.h"
 #include "rec/gui/IconButton.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/icon/JumpBackButton.svg.h"
@@ -98,25 +98,17 @@ void TransportController::operator()(State state) {
 void TransportController::buttonClicked(juce::Button *button) {
   using namespace rec::command;
 
-  static const CommandID JUMP_BACK =
-    CommandIDEncoder::toCommandID(CommandIDEncoder::PREVIOUS, Command::JUMP);
-  static const CommandID JUMP_FORWARD =
-    CommandIDEncoder::toCommandID(CommandIDEncoder::NEXT, Command::JUMP);
-  static const CommandID JUMP_TO_FIRST =
-    CommandIDEncoder::toCommandID(CommandIDEncoder::FIRST, Command::JUMP);
-
-
   if (button == &startStopButton_)
     broadcast(Command::TOGGLE_START_STOP);
 
   else if (button == &jumpToStartButton_)
-    broadcast(JUMP_TO_FIRST);
+    broadcast(ID(Command::JUMP, ID::FIRST));
 
   else if (button == &jumpBackButton_)
-    broadcast(JUMP_BACK);
+    broadcast(ID(Command::JUMP, ID::PREVIOUS));
 
   else if (button == &jumpForwardButton_)
-    broadcast(JUMP_FORWARD);
+    broadcast(ID(Command::JUMP, ID::NEXT));
 
   else
     LOG(DFATAL) << "Unknown button " << button;
