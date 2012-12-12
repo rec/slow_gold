@@ -23,12 +23,22 @@ namespace {
 using namespace std;
 using namespace rec::command;
 
+int toIndex(int position, int32 segment, int32 size) {
+  int pos = (position == ID::FIRST) ? 0 :
+    (position == ID::PREVIOUS) ? segment - 1 :
+    (position == ID::CURRENT) ? segment :
+    (position == ID::NEXT) ? segment + 1 :
+    (position == ID::LAST) ? size - 1 :
+    position;
+  return mod(pos, size);
+}
+
 using widget::waveform::Viewport;
 
-typedef void (*LoopSnapshotFunction)(LoopSnapshot*, CommandIDEncoder);
+typedef void (*LoopSnapshotFunction)(LoopSnapshot*, int32);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
-void loop(LoopSnapshotFunction lsf, CommandIDEncoder pos) {
+void loop(LoopSnapshotFunction lsf, int32 pos) {
   Instance* instance = Instance::getInstance();
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
@@ -36,17 +46,17 @@ void loop(LoopSnapshotFunction lsf, CommandIDEncoder pos) {
   instance->currentTime_->zoomToCurrentTime();
 }
 
-void select(SelectorFunction selector, CommandIDEncoder pos) {
+void select(SelectorFunction selector, int32 pos) {
   Instance* instance = Instance::getInstance();
   LoopSnapshot snap(instance);
   LoopPointList* loops = snap.loops_;
   int segment = audio::getSegment(*loops, snap.instance_->time());
   int size = loops->loop_point_size();
-  if (pos.getPosition() >= size) {
+  if (pos >= size) {
     beep();
     return;
   }
-  int p = pos.toIndex(segment, size);
+  int p = toIndex(pos, segment, size);
 
   bool multipleSelections = (audio::getSelectionCount(*snap.loops_) > 1);
 
@@ -72,11 +82,12 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 }  // namespace
 
 void addSelectionCallbacks(command::CallbackTable* t) {
-	static const CommandIDEncoder noPos(CommandIDEncoder::CURRENT);
-  addCallback(t, Command::DESELECT_ALL, select, deselectAll, noPos);
-  addCallback(t, Command::SELECT_ALL, select, selectAll, noPos);
-  addCallback(t, Command::INVERT_LOOP_SELECTION, select, invertLoopSelection, noPos);
-  addCallback(t, Command::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop, noPos);
+  addCallback(t, Command::DESELECT_ALL, select, deselectAll, ID::CURRENT);
+  addCallback(t, Command::SELECT_ALL, select, selectAll, ID::CURRENT);
+  addCallback(t, Command::INVERT_LOOP_SELECTION, select, invertLoopSelection,
+              ID::CURRENT);
+  addCallback(t, Command::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop,
+              ID::CURRENT);
 }
 
 namespace {
@@ -93,19 +104,19 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   snapshot->instance_->currentTime_->jumpToTime(time);
 }
 
-void jump(LoopSnapshot* snap, CommandIDEncoder pos) {
+void jump(LoopSnapshot* snap, int32 pos) {
   SampleTime time = snap->instance_->time();
 
   int size = snap->loops_->loop_point_size();
-  if (pos.getPosition() >= size) {
+  if (pos >= size) {
     beep();
     return;
   }
   int segment = audio::getSegment(*snap->loops_, time);
-  int p = pos.toIndex(segment, size);
+  int p = toIndex(pos, segment, size);
 
   // Special case for "jump back";
-  if (pos == command::CommandIDEncoder::PREVIOUS &&
+  if (pos == ID::PREVIOUS &&
       (time - snap->loops_->loop_point(segment).time()) >=
       SampleTime(MAX_JUMP_TIME, snap->loops_->sample_rate())) {
     p = segment;
@@ -120,14 +131,15 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
+// TODO: get rid of these two.
+void addCallback(CallbackTable* c, int32 type, int32 position,
                  SelectorFunction f) {
-  addCallback(c, position.toCommandID(type), select, f, position);
+  addCallback(c, ID(type, position), select, f, position);
 }
 
-void addCallback(CallbackTable* c, int32 type, CommandIDEncoder position,
+void addCallback(CallbackTable* c, int32 type, int32 position,
                  LoopSnapshotFunction f) {
-  addCallback(c, position.toCommandID(type), loop, f, position);
+  addCallback(c, ID(type, position), loop, f, position);
 }
 
 // TODO: this duplicates a value in the Repeated.def data file.
@@ -176,7 +188,7 @@ void openPreviousFile() {
   }
 }
 
-void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
+void jumpSelected(LoopSnapshot* snap, int32 pos) {
   vector<int> selected;
   const LoopPointList& loops = *snap->loops_;
   size_t s = 0;
@@ -199,7 +211,7 @@ void jumpSelected(LoopSnapshot* snap, CommandIDEncoder pos) {
       beep();
       return;
     }
-    segment = selected[pos.toIndex(s, selected.size())];
+    segment = selected[toIndex(pos, s, selected.size())];
   } else if (!selected.empty()) {
     segment = selected[0];
   }
@@ -234,7 +246,7 @@ void nudgeTime(bool inc) {
   if (selection.loop_point_size() == 1)
     nudgeWithinSegment(selection, inc);
   else
-    jumpSelected(&s, inc ? CommandIDEncoder::NEXT : CommandIDEncoder::PREVIOUS);
+    jumpSelected(&s, inc ? ID::NEXT : ID::PREVIOUS);
 }
 
 void loopNextSegment() {
@@ -266,8 +278,8 @@ void loopNextSegment() {
 }  // namespace
 
 void addRepeatedCallbacks(CallbackTable* t, int repeat) {
-  for (int j = CommandIDEncoder::FIRST; j < repeat; ++j) {
-  	CommandIDEncoder pos(j);
+  for (int j = ID::FIRST; j < repeat; ++j) {
+  	int32 pos(j);
     addCallback(t, Command::SELECT, pos, selectAdd);
     addCallback(t, Command::SELECT_ONLY, pos, selectOnly);
     addCallback(t, Command::TOGGLE_SELECTION, pos, toggle);
@@ -279,20 +291,14 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat) {
 
   addCallback(t, Command::LOOP_NEXT_SEGMENT, loopNextSegment);
 
-  for (int j = 0; j < RECENT_MENU_REPEATS; ++j) {
-    CommandID id = CommandIDEncoder::toCommandID(j, Command::RECENT_FILES);
-    addCallback(t, id, loadRecentFile, j);
-  }
+  for (int j = 0; j < RECENT_MENU_REPEATS; ++j)
+    addCallback(t, ID(Command::RECENT_FILES, j), loadRecentFile, j);
 
-  for (int j = 0; j < audio::AudioSettings::COUNT; ++j) {
-    CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_SAVE_FORMAT);
-    addCallback(t, id, setSaveFileType, j);
-  }
+  for (int j = 0; j < audio::AudioSettings::COUNT; ++j)
+    addCallback(t, ID(Command::SET_SAVE_FORMAT, j), setSaveFileType, j);
 
-  for (int j = 0; j <= app::AppSettings::LAST; ++j) {
-    CommandID id = CommandIDEncoder::toCommandID(j, Command::SET_LANGUAGE);
-    addCallback(t, id, setLanguage, j);
-  }
+  for (int j = 0; j <= app::AppSettings::LAST; ++j)
+    addCallback(t, ID(Command::SET_LANGUAGE, j), setLanguage, j);
 
   addCallback(t, Command::OPEN_PREVIOUS_FILE, openPreviousFile);
   addCallback(t, Command::NUDGE_BACKWARD, nudgeTime, false);

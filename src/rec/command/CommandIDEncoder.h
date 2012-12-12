@@ -19,7 +19,6 @@ class CommandIDEncoder {
   CommandIDEncoder(int32 p) : position_(p) {}
   CommandIDEncoder(Special p) : position_(p) {}
 
-  int32 toIndex(int32 segment, int32 size);
   CommandID toCommandID(int32 type);
 
   static CommandID toCommandID(int32 position, int32 type) {
