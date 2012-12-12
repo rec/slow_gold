@@ -2,6 +2,7 @@
 
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/command/CallbackTable.h"
+#include "rec/command/ID.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/slow/CurrentFile.h"
@@ -68,7 +69,7 @@ void select(SelectorFunction selector, int32 pos) {
 }
 
 template <typename Function, typename X, typename Y>
-void addCallback(CallbackTable* c, CommandID id, Function f, X x, Y y) {
+void addCallback(CallbackTable* c, command::ID id, Function f, X x, Y y) {
   c->addCallback(id, thread::functionCB(f, x, y));
 }
 

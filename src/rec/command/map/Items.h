@@ -1,7 +1,7 @@
 #ifndef __REC_COMMAND_MAP_ITEMS__
 #define __REC_COMMAND_MAP_ITEMS__
 
-#include "rec/base/base.h"
+#include "rec/command/ID.h"
 
 namespace rec {
 namespace command {
@@ -38,7 +38,7 @@ class CategoryItem : public Item {
 
 class MapItem : public Item {
  public:
-  MapItem(Editor*, CommandID, const String& name);
+  MapItem(Editor*, ID, const String& name);
   int getItemHeight() const { return HEIGHT; }
 
   Component* createItemComponent();
@@ -46,20 +46,20 @@ class MapItem : public Item {
  private:
   static const int HEIGHT = 20;
   Editor* const editor_;
-  const CommandID id_;
+  const ID id_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MapItem);
 };
 
 class MapItemComponent  : public Component {
  public:
-  MapItemComponent(Editor* editor, CommandID, const String& name);
+  MapItemComponent(Editor* editor, ID, const String& name);
   ~MapItemComponent();
   void createEditButton(const String& desc, int index, bool isReadOnly);
   void paint(Graphics&);
   void resized();
 
-  const CommandID commandID_;
+  const ID commandID_;
 
  private:
   String name_;

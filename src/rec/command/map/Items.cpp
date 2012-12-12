@@ -33,7 +33,7 @@ void CategoryItem::paintItem(Graphics& g, int width, int height) {
              Justification::centredLeft, true);
 }
 
-MapItem::MapItem(Editor* editor, CommandID id, const String& name)
+MapItem::MapItem(Editor* editor, ID id, const String& name)
     : Item(name, "_id", false), editor_(editor), id_(id) {
 }
 
@@ -42,7 +42,7 @@ Component* MapItem::createItemComponent() {
   return c.transfer();
 }
 
-MapItemComponent::MapItemComponent(Editor* editor, CommandID commandID,
+MapItemComponent::MapItemComponent(Editor* editor, ID commandID,
                                    const String& name)
     : commandID_(commandID), name_(name), editor_(editor) {
   setInterceptsMouseClicks(false, true);

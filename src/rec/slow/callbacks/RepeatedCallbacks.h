@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_REPEATEDCALLBACKS__
 #define __REC_SLOW_REPEATEDCALLBACKS__
 
-#include "rec/command/CommandIDEncoder.h"
+#include "rec/base/base.h"
 
 namespace rec {
 
