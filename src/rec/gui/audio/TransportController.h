@@ -4,6 +4,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
 #include "rec/command/Command.pb.h"
+#include "rec/command/ID.h"
 #include "rec/gui/LanguageButton.h"
 #include "rec/gui/DataSlider.h"
 #include "rec/gui/SetterToggle.h"
@@ -23,7 +24,7 @@ class TransportController : public Layout,
                             public juce::ButtonListener,
                             public DataListener<rec::audio::Gain>,
                             public Listener<rec::audio::transport::State>,
-                            public Broadcaster<CommandID> {
+                            public Broadcaster<command::ID> {
  public:
   TransportController(TimeController*);
   virtual ~TransportController();

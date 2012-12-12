@@ -2,6 +2,7 @@
 #define __REC_GUI_AUDIO_COMMANDBAR__
 
 #include "rec/command/CommandRecord.h"
+#include "rec/command/ID.h"
 #include "rec/gui/LanguageButton.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/data/DataListener.h"
@@ -11,7 +12,7 @@ namespace gui {
 namespace audio {
 
 class CommandBar : public Layout,
-                   public Broadcaster<CommandID>,
+                   public Broadcaster<command::ID>,
                    public juce::Button::Listener {
  public:
   CommandBar();
