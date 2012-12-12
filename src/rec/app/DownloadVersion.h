@@ -16,6 +16,8 @@ enum DownloadStatus {
 void downloadNewVersionIfNeeded(const String& version, const String& name);
 bool downloadNewVersionIfNeededBlocking();
 
+extern const String WOODSHED;
+
 }  // namespace app
 }  // namespace rec
 

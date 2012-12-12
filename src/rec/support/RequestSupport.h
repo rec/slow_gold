@@ -1,7 +1,9 @@
 #ifndef __REC_SUPPORT_REQUESTSUPPORT__
 #define __REC_SUPPORT_REQUESTSUPPORT__
 
-#include "rec/base/base.h"
+#include "rec/base/Trans.h"
+
+TRAN_EX(PLEASE_CONTACT);
 
 namespace rec {
 namespace support {

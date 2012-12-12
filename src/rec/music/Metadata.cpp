@@ -27,10 +27,12 @@ Metadata getMetadata(const StringPairArray& metadata) {
     else if (k == "TDRC") t.set_year(v);
     else if (k == "TIT2") t.set_track_title(v);
     else if (k == "TPE1") t.set_artist(v);
-    else if (k == "TPE2") t.set_artist(v);  // TODO: difference?!
+    else if (k == "TPE2") t.set_artist(v);
     else if (k == "TRCK") t.set_track_number(v);
   }
   return t;
+
+  // What's the difference between TPE1 and TPE2?
 }
 
 string getTitle(const Metadata& md) {

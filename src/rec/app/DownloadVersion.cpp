@@ -25,9 +25,10 @@ using juce::URL;
 
 using namespace juce;
 
+const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
+
 namespace {
 
-const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const String WOODSHED_PC_URL = WOODSHED + "SlowGold8Setup.exe";
 
 const URL VERSION_FILE(WOODSHED + "currentversion/");

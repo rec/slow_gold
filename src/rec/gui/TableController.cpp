@@ -16,8 +16,9 @@ static const juce::Colour UNSELECTED_COLOR = juce::Colours::white;
 
 TableController::TableController() : TableListBox("TableController") {}
 
-// TODO: can we put this back into the constructor now?
 void TableController::initialize(const TableColumnList& c, const char* name) {
+  // This can't be part of the constructor, because the constructor might want
+  // to create the TableColumnList.
   columns_ = c;
   setName(name);
 }
@@ -133,7 +134,6 @@ class TableLabel : public SimpleLabel {
 Component* TableController::refreshComponentForCell(int row, int columnId,
                                                     bool isRowSelected,
                                                     Component* existing) {
-  // TODO: why is isRowSelected wrong sometimes?
   int column = columnId - 1;  // To account for the 1 we added above.
   TableLabel* text = dynamic_cast<TableLabel*>(existing);
   if (!text) {

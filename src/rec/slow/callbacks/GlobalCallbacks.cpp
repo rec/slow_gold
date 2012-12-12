@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 
+#include "rec/app/DownloadVersion.h"
 #include "rec/app/Files.h"
 #include "rec/base/Trans.h"
 #include "rec/data/DataOps.h"
@@ -23,9 +24,6 @@ TRAN(SELECT_IMPORT_FILE, "Select A Zip File Containing Exported Settings");
 TRAN(SELECT_IMPORT_KEYBOARD_FILE, "Select A File Containing Keyboard Command Mappings");
 TRAN(SELECT_IMPORT_MIDI_FILE, "Select A File Containing MIDI Command Mappings");
 
-// TODO: these three are duplicated in RequestSupport.cpp
-TRAN(PLEASE_CONTACT, "Please contact World Wide Woodshed support at");
-
 namespace rec {
 namespace slow {
 
@@ -34,10 +32,9 @@ namespace {
 using namespace juce;
 
 // TODO: this is duplicated in DownloadVersion
-const String WOODSHED("http://www.worldwidewoodshed.com/slowgold/");
 const String MANUAL = "SlowGoldManual.pdf";
-const String FULL_MANUAL = WOODSHED + MANUAL;
-const String WHATS_NEW_URL = WOODSHED + "%s/whats-new.html";
+const String FULL_MANUAL = app::WOODSHED + MANUAL;
+const String WHATS_NEW_URL = app::WOODSHED + "%s/whats-new.html";
 
 const String SUPPORT = "support@worldwidewoodshed.com";
 const URL MAILTO("mailto:" + URL::addEscapeChars(SUPPORT, true));
@@ -55,7 +52,7 @@ void alert(const String& title, const String& msg) {
 void openManual() {
   bool ok = juce::URL(FULL_MANUAL).launchInDefaultBrowser();
   if (!ok) {
-    String m = t_CANT_LOAD_FULL + String(" ") + WOODSHED + "\n\n";
+    String m = t_CANT_LOAD_FULL + String(" ") + app::WOODSHED + "\n\n";
     alert(t_CANT_LOAD, m + t_PLEASE_CONTACT + "\n" + SUPPORT);
   }
 }
