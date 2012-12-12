@@ -1,27 +1,27 @@
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/CommandIDEncoder.h"
-#include "rec/command/Command.pb.h"
 
 namespace rec {
 namespace command {
 
 using namespace juce;
 
-bool CommandMap::addKey(const string& key, CommandType command) {
-  static const int RECENT = Command::RECENT_FILES;
-  static const int BEGIN = CommandIDEncoder::toCommandID(RECENT, 11);
-  static const int END = CommandIDEncoder::toCommandID(RECENT, 100);
+bool CommandMap::addKey(const string& key, ID command) {
+  static const ID RECENT = Command::RECENT_FILES;
+  static const ID BEGIN(RECENT, 11);
+  static const ID END(RECENT, 100);
 
-  if (command >= BEGIN && command < END)
+  if (command >= BEGIN && command < END) {
+    DCHECK_EQ(command, 0);
     return false;
+  }
 
-  CommandIDEncoder enc = CommandIDEncoder::fromCommandID(command);
   bool exists = (toCommand_.find(key) != toCommand_.end());
-
   if (exists)
     beep();
   else
     toCommand_[key] = command;
+
   return !exists;
 }
 
@@ -30,7 +30,7 @@ void CommandMap::addCommands(const CommandMapProto& commands) {
   toKeys_.clear();
   for (int i = 0; i < commands.entry_size(); ++i) {
     const CommandMapEntry& entry = commands.entry(i);
-    CommandType command = entry.command();
+    ID command = entry.command();
     for (int j = 0; j < entry.key_size(); ++j)
       add(entry.key(j), command);
   }
@@ -45,7 +45,7 @@ void CommandMap::dump() const {
   }
 }
 
-bool CommandMap::add(const string& key, CommandType command) {
+bool CommandMap::add(const string& key, ID command) {
   if (!addKey(key, command))
     return false;
 
@@ -53,7 +53,7 @@ bool CommandMap::add(const string& key, CommandType command) {
   return true;
 }
 
-bool CommandMap::addAtIndex(const string& key, CommandType command, int index) {
+bool CommandMap::addAtIndex(const string& key, ID command, int index) {
   if (index < 0)
     add(key, command);
 
@@ -70,7 +70,8 @@ const CommandMapProto CommandMap::getProto() const {
   for (i = toKeys_.begin(); i != toKeys_.end(); ++i) {
     if (!i->second.empty()) {
       CommandMapEntry* entry = commands.add_entry();
-      entry->set_command(i->first);
+      entry->set_command(i->first.type());
+      entry->set_index(i->first.index());
       KeyVector::const_iterator j;
       for (j = i->second.begin(); j != i->second.end(); ++j)
         entry->add_key(*j);
@@ -86,18 +87,18 @@ bool CommandMap::invokeAsync(const string& key,
   return (id != command::Command::NONE) && acm->invokeDirectly(id, true);
 }
 
-CommandMap::CommandType CommandMap::getCommand(const string& key) const {
+ID CommandMap::getCommand(const string& key) const {
   KeyToCommand::const_iterator i = toCommand_.find(key);
   return (i == toCommand_.end()) ? command::Command::NONE : i->second;
 }
 
-const CommandMap::KeyVector& CommandMap::getKeys(CommandType c) const {
+const CommandMap::KeyVector& CommandMap::getKeys(ID c) const {
   CommandToKeys::const_iterator i = toKeys_.find(c);
   static const KeyVector empty;
   return (i != toKeys_.end()) ? i->second : empty;
 }
 
-void CommandMap::removeCommand(CommandType c, uint keyIndex) {
+void CommandMap::removeCommand(ID c, uint keyIndex) {
   CommandToKeys::iterator i = toKeys_.find(c);
   if (i == toKeys_.end()) {
     LOG(DFATAL) << "Couldn't remove message";
@@ -110,7 +111,7 @@ void CommandMap::removeCommand(CommandType c, uint keyIndex) {
 }
 
 void CommandMap::removeKey(const string& key) {
-  if (CommandType c = getCommand(key)) {
+  if (ID c = getCommand(key)) {
     toCommand_.erase(key);
     CommandToKeys::iterator i = toKeys_.find(c);
     if (i == toKeys_.end()) {

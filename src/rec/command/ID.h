@@ -33,6 +33,14 @@ class ID {
   bool operator>=(const ID& x) const { return command_ >= x.command_; }
   bool operator<(const ID& x) const { return command_ < x.command_; }
   bool operator<=(const ID& x) const { return command_ <= x.command_; }
+
+  bool operator==(const int32& x) const { return command_ == x; }
+  bool operator!=(const int32& x) const { return command_ != x; }
+  bool operator>(const int32& x) const { return command_ > x; }
+  bool operator>=(const int32& x) const { return command_ >= x; }
+  bool operator<(const int32& x) const { return command_ < x; }
+  bool operator<=(const int32& x) const { return command_ <= x; }
+
   bool operator!() const { return !command_; }
 
  private:
