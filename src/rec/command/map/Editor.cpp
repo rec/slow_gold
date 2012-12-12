@@ -165,11 +165,11 @@ struct CompareCommands {
       : manager_(manager) {
   }
 
-  bool operator()(const CommandID& x, const CommandID& y) const {
+  bool operator()(const ID& x, const ID& y) const {
     return name(x) > name(y);
   }
 
-  String name(CommandID id) const {
+  String name(ID id) const {
     const ApplicationCommandInfo* info = manager_->getCommandForID(id);
     return info ? info->shortName : String("");
   }
@@ -194,9 +194,11 @@ void Editor::fillTopLevelItem() {
     TreeViewItem* categoryItem = NULL;
 
     for (int j = commands.size() - 1; j >= 0; --j) {
-      CommandID id = commands[j];
-      if (!shouldCommandBeIncluded(id))
+      ID id = commands[j];
+      if ((id >= BEGIN && id <= END) ||
+          commandHasFlags(id, ApplicationCommandInfo::hiddenFromKeyEditor)) {
         continue;
+      }
       const ApplicationCommandInfo* info = commandManager_->getCommandForID(id);
       if (!categoryItem) {
         categoryItem = new CategoryItem(cat, this);
@@ -209,19 +211,10 @@ void Editor::fillTopLevelItem() {
   }
 }
 
-bool Editor::commandHasFlags(CommandID id, int flags) const {
+bool Editor::commandHasFlags(ID id, int flags) const {
   const ApplicationCommandInfo* const ci = commandManager_->getCommandForID(id);
   DCHECK(ci);
   return ci && (ci->flags & flags);
-}
-
-bool Editor::shouldCommandBeIncluded(const CommandID id) {
-  return !((id >= BEGIN && id <= END) ||
-           commandHasFlags(id, ApplicationCommandInfo::hiddenFromKeyEditor));
-}
-
-bool Editor::isCommandReadOnly(const CommandID id) {
-  return commandHasFlags(id, ApplicationCommandInfo::readOnlyInKeyEditor);
 }
 
 // TODO: this isn't hooked in.
@@ -317,7 +310,7 @@ void Editor::clearButton() {
 
 const String Editor::getKeyMessage(const string& key) {
   String message(name() + ": " + getDescription(key));
-  const CommandID previousCommand = getCommand(key);
+  const ID previousCommand = getCommand(key);
   if (previousCommand) {
     String pn = getCommandManager()->getNameOfCommand(previousCommand);
     message += currentlyAssignedTo(pn);
@@ -327,9 +320,10 @@ const String Editor::getKeyMessage(const string& key) {
 }
 
 void Editor::addChildren(MapItemComponent* comp) {
-  CommandID command = comp->commandID_;
-  const bool isReadOnly = isCommandReadOnly(command);
-  KeyArray keys = getKeys(command);
+  ID id = comp->commandID_;
+  bool isReadOnly = commandHasFlags(
+     id, ApplicationCommandInfo::readOnlyInKeyEditor);
+  KeyArray keys = getKeys(id);
   for (int i = 0; i < jmin(MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
     comp->createEditButton(getDescription(keys[i]), i, isReadOnly);
   comp->createEditButton(String::empty, -1, isReadOnly);
@@ -347,7 +341,7 @@ void Editor::assignNewKey(EditButton* button, const string& key, int result) {
 
 void Editor::setNewKey(EditButton* button, const string& key) {
   if (isValid(key)) {
-    const CommandID previousCommand = getCommand(key);
+    const ID previousCommand = getCommand(key);
     if (previousCommand == 0) {
       assignNewKey(button, key);
     } else {
@@ -388,16 +382,16 @@ void Editor::setKey(const string& key) {
   }
 }
 
-CommandID Editor::getCommand(const string& key) {
-  return static_cast<CommandID>(commandMap_->getCommand(key));
+ID Editor::getCommand(const string& key) {
+  return ID(commandMap_->getCommand(key));
 }
 
 ChangeBroadcaster* Editor::getChangeBroadcaster() {
   return commandMap_;
 }
 
-void Editor::removeKeyAtIndex(CommandID command, int keyNum) {
-  commandMap_->removeCommand(static_cast<Command::Type>(command), keyNum);
+void Editor::removeKeyAtIndex(ID id, int keyNum) {
+  commandMap_->removeCommand(id, keyNum);
   commandMap_->sendChangeMessage();
   wasChanged_ = true;
 }
@@ -407,18 +401,17 @@ void Editor::removeKey(const string& key) {
   commandMap_->sendChangeMessage();
 }
 
-void Editor::addKey(CommandID cmd, const string& key, int keyIndex) {
+void Editor::addKey(ID cmd, const string& key, int keyIndex) {
   DLOG(INFO) << "adding key " << cmd << ", " << keyIndex;
-  Command::Type c = static_cast<Command::Type>(cmd);
   if (keyIndex >= 0)
-    commandMap_->addAtIndex(key, c, keyIndex);
+    commandMap_->addAtIndex(key, cmd, keyIndex);
   commandMap_->sendChangeMessage();
   wasChanged_ = true;
 }
 
-Editor::KeyArray Editor::getKeys(CommandID c) {
+Editor::KeyArray Editor::getKeys(ID id) {
   // TODO: needs to take the index into account...
-  vector<string> keys(commandMap_->getKeys(static_cast<Command::Type>(c)));
+  vector<string> keys(commandMap_->getKeys(id));
   KeyArray result;
 
   for (uint i = 0; i != keys.size(); ++i)

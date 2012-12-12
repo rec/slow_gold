@@ -30,16 +30,16 @@ class Editor : public Component,
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;
   virtual const String getDescription(const string&) const = 0;
-  virtual void removeKeyAtIndex(CommandID, int keyNum);
+  virtual void removeKeyAtIndex(ID, int keyNum);
   virtual void removeKey(const string&);
-  virtual void addKey(CommandID, const string&, int keyIndex);
+  virtual void addKey(ID, const string&, int keyIndex);
 
   typedef juce::Array<string> KeyArray;
-  virtual KeyArray getKeys(CommandID);
+  virtual KeyArray getKeys(ID);
   virtual const String getWindowTitle() const = 0;
   virtual const String getKeyMessage(const string&);
 
-  virtual CommandID getCommand(const string&);
+  virtual ID getCommand(const string&);
   void addChildren(MapItemComponent*);
 
   void addButton(EditButton* b);
@@ -60,8 +60,7 @@ class Editor : public Component,
   void setColours(const Colour& mainBackground,
                   const Colour& textColour);
 
-  virtual bool shouldCommandBeIncluded(CommandID commandID);
-  virtual bool isCommandReadOnly(CommandID commandID);
+  bool commandHasFlags(ID id, int flags) const;
 
   ApplicationCommandManager* getCommandManager() { return commandManager_; }
   ChangeBroadcaster* getChangeBroadcaster();
