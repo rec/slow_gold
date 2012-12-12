@@ -1,6 +1,5 @@
 #include "rec/command/CommandRecordTable.h"
 
-#include "rec/command/CommandIDEncoder.h"
 #include "rec/command/CommandRecord.h"
 #include "rec/data/Data.h"
 #include "rec/util/STL.h"
@@ -12,13 +11,13 @@ CommandRecordTable::~CommandRecordTable() {
   stl::deleteMapPointers(&table_);
 }
 
-CommandRecord* CommandRecordTable::locate(CommandID id, bool mustExist,
+CommandRecord* CommandRecordTable::locate(ID id, bool mustExist,
                                           bool mustCreate) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
   if (i != table_.end()) {
     if (mustCreate)
-      LOG(DFATAL) << CommandIDEncoder::commandIDName(id) << " already exists.";
+      LOG(DFATAL) << id << " already exists.";
     return i->second;
   }
   if (mustExist)
@@ -50,7 +49,7 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* cmds) const {
   }
 }
 
-void CommandRecordTable::addCallback(CommandID id, Callback* cb) {
+void CommandRecordTable::addCallback(ID id, Callback* cb) {
   Lock l(lock_);
   create(id)->callback_.reset(cb);
 }
