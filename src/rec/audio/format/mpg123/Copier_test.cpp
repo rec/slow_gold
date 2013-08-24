@@ -7,7 +7,7 @@ namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
-  
+
 typedef unsigned char uchar;
 
 template <typename In, typename Out>
@@ -15,7 +15,7 @@ void testCopier(int encoding, Out mult = 1, Out offset = 0) {
   In samples[3][2] = {{1, 0x11}, {2, 0x12}, {3, 0x13}};
   Out destBase[2][3];
   Out* dest[2] = {destBase[0], destBase[1]};
-  getCopier(encoding)(reinterpret_cast<int**>(dest), 2, 0, samples[0], 2, 3);
+  getCopier(encoding)(static_cast<int**>(dest), 2, 0, samples[0], 2, 3);
 
   for (int c = 0; c < 2; ++c) {
     for (int s = 0; s < 3; ++s) {

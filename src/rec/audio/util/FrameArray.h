@@ -19,7 +19,7 @@ struct FrameArray {
       void *f = realloc(frames_, size);
       if (!f)
         return false;
-      frames_ = reinterpret_cast<Frame*>(f);
+      frames_ = static_cast<Frame*>(f);
       allocatedLength_ = newLength;
     }
     return true;

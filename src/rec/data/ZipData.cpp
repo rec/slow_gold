@@ -36,6 +36,8 @@ void addFiles(const File& root, Builder* builder, int cmp = COMPRESSION_LEVEL) {
   }
 }
 
+#ifdef SHOULD_REMOVE
+    
 File writeZipFile(const Builder& builder, const String& name) {
   File f = zipFileName(name);
   FileOutputStream output(f);
@@ -45,6 +47,7 @@ File writeZipFile(const Builder& builder, const String& name) {
   LOG(ERROR) << "Couldn't write to " << str(f);
   return File::nonexistent;
 }
+#endif
 
 File writeZipFile(const Builder& builder, const File& file) {
   File f = file.withFileExtension(".zip");

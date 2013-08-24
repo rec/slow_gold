@@ -84,6 +84,7 @@ typedef std::vector<const FieldDescriptor*> FieldVector;
 static const unsigned int MAX_FIELD_COUNT = 5;
 static const int MAX_ARRAY_COUNT = 8;
 
+#ifdef SHOULD_REMOVE
 bool isSmall(const Message& m) {
   FieldVector fields;
   m.GetReflection()->ListFields(m, &fields);
@@ -99,6 +100,7 @@ bool isSmall(const Message& m) {
   }
   return true;
 }
+#endif
 
 YAML::Emitter& write(YAML::Emitter& out, const Message& m) {
   FieldVector fields;

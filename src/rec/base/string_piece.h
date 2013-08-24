@@ -68,7 +68,7 @@ class StringPiece {
     length_ = str ? strlen(str) : 0;
   }
   void set(const void* data, size_type len) {
-    ptr_ = reinterpret_cast<const char*>(data);
+    ptr_ = static_cast<const char*>(data);
     length_ = len;
   }
 

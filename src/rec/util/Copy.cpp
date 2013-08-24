@@ -71,9 +71,11 @@ bool proto(const Message& f, Message* t, Style /* readable */) {
   }
 }
 
+#ifdef REMOVE_UNUSED
 bool file(const File &f, File *t, Style /* readable */) {
   return f.copyFileTo(*t);
 }
+#endif
 
 bool file(const File &f, const File& t, Style /* readable */) {
   return f.copyFileTo(t);

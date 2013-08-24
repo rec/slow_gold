@@ -16,12 +16,13 @@ bool isNegative(Number n) { return n < 0; }
 
 inline bool isNegative(unsigned char) { return false; }
 inline bool isNegative(unsigned short) { return false; }
+inline bool isNegative(unsigned int) { return false; }
 inline bool isNegative(unsigned long) { return false; }
 inline bool isNegative(unsigned long long) { return false; }
 
 template <typename Number>
 struct Math {
-  static Number abs(Number x) { return (x < 0) ? -x : x; }
+  static Number abs(Number x) { return isNegative(x) ? -x : x; }
 
   // A arithmetic modulus function that's always non-negative.
   // See http://en.wikipedia.org/wiki/Modulo_operation#cite_note-0

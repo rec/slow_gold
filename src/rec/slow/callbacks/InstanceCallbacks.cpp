@@ -70,10 +70,11 @@ void addLoopPoint() {
                                            i->player_->getTime());
 }
 
+#ifdef SHOULD_REMOVE
 void clearNavigator(VirtualFileList *vfl) {
   vfl->Clear();
 }
-
+#endif
 
 void zoomOut() {
   Instance* i = Instance::getInstance();

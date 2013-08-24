@@ -41,7 +41,7 @@ bool Frames<Frame>::setLength(SampleTime length) {
 
   size_t size = static_cast<size_t>(sizeof(Frame) * length);
   if (void *f = realloc(frames_, size)) {
-    frames_ = reinterpret_cast<Frame*>(f);
+    frames_ = static_cast<Frame*>(f);
     allocatedLength_ = length_ = length;
     return true;
   } else {

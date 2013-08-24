@@ -18,12 +18,12 @@ namespace mpg123 {
 namespace {
 
 ssize_t read(void *inputStream, void *buf, size_t nbytes) {
-  return reinterpret_cast<InputStream*>(inputStream)->read(buf, nbytes);
+  return static_cast<InputStream*>(inputStream)->read(buf, nbytes);
 }
 
 off_t seek(void *inputStream, off_t off, int whence) {
   int64 offset = off;
-  InputStream* in = reinterpret_cast<InputStream*>(inputStream);
+  InputStream* in = static_cast<InputStream*>(inputStream);
 
   if (whence == SEEK_CUR)
     offset += in->getPosition();

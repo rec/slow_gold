@@ -22,11 +22,12 @@ string readSocket(Socket* sock, int timeout) {
 
   int error = sock->waitUntilReady(true, timeout);
   if (error <= 0)
-    throw Exception("Socket wait error " + error);
+    throw Exception("Socket wait error " + String(error));
+
 
   int read = sock->read(buffer, BUFFER_SIZE, false);
   if (read <= 0)
-    throw Exception("Socket read error " + read);
+    throw Exception("Socket read error " + String(read));
 
   return string(buffer, read);
 }

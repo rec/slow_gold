@@ -25,6 +25,7 @@ bool DataCenter::hasUpdates() const {
 }
 
 void DataCenter::clearUndoes() const {
+  // TODO: get rid of this const_cast
   UndoStack* undo = const_cast<UndoStack*>(undo_.get());
   undo->clear();
 }
