@@ -32,7 +32,7 @@ void DataSlider::operator()(const data::Value& v) {
 
 void DataSlider::languageChanged() {
   String s = Trans(str(name_));
-  caption_.setText(s, true);
+  caption_.setText(s, juce::sendNotification);
 
   String t = Trans(str(tooltip_));
   slider_.setTooltip(t);

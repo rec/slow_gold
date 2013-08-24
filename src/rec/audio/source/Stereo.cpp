@@ -67,7 +67,6 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
     else if (type == StereoProto::CENTER_ELIMINATION_MONO)
       b.copyFrom(otherSide, 0, b, side, 0, n);
-
   }
 }
 

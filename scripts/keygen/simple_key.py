@@ -3,16 +3,35 @@
 import random
 import sys
 
-import badwords
-
 VOWELS = 'aeiou'
 CONSONANTS = 'bdfgklmnprstvz'
 LETTERS = VOWELS, CONSONANTS
 CAPITALIZE = True
 BAD_INITIALS = ['l', 'i']
 
+BADWORDS = (
+  'dago',
+  'fag',
+  'fuk',
+  'gag',
+  'gip',
+  'kok',
+  'kul',
+  'kun',
+  'nig',
+  'pak',
+  'pus',
+  'tit',
+  'wop',
+  )
+
+def containsBadPart(word):
+  for w in BADWORDS:
+    if w in word:
+      return True
+
 def isBad(key):
-  return badwords.isBad(key) or (key[0] == BAD_INITIALS[CAPITALIZE])
+  return containsBadPart(key) or (key[0] == BAD_INITIALS[CAPITALIZE])
 
 def firstIndex():
   return random.randrange(len(VOWELS) + len(CONSONANTS)) >= len(VOWELS)

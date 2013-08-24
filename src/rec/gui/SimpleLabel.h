@@ -18,9 +18,9 @@ class SimpleLabel : public juce::Label {
     setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
   }
 
-  void setTextIfChanged(const String& newText, bool b) {
+  void setTextIfChanged(const String& newText, juce::NotificationType t) {
     if (newText != getText(true))
-        setText(newText, b);
+        setText(newText, t);
   }
 
 

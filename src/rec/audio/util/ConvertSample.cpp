@@ -5,14 +5,7 @@ namespace audio {
 
 namespace {
 
-#if JUCE_MAC
-long long enum
-#else
-
-#pragma warning(disable: 4480)
-enum : long long
-#endif
-{
+enum : long long {
   bit8 = 0x100LL,
   bit16 = bit8 * bit8,
   bit24 = bit8 * bit16,

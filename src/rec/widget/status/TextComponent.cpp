@@ -69,7 +69,7 @@ void TextComponent::redisplay() {
     dis = timeDisplay_;
   }
 
-  setText(dis, false);
+  setText(dis, juce::dontSendNotification);
 }
 
 }  // namespace time

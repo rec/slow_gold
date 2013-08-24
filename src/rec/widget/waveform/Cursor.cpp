@@ -234,7 +234,7 @@ void Cursor::paint(Graphics& g) {
 void Cursor::setCaption(const String& cap) {
   if (!caption_->isBeingEdited()) {
     String c = cap.length() ? cap : String("---");
-    caption_->setText(c, false);
+    caption_->setText(c, juce::dontSendNotification);
   }
   resizeCaption();
 }

@@ -159,8 +159,8 @@ void MainPage::setTooltip(const String& tt) {
     caption = tt.substring(0, pos).trim();
     body = tt.substring(pos + 1).trim();
   }
-  helpCaption_.setText(caption, false);
-  helpBody_.setText(body, false);
+  helpCaption_.setText(caption, juce::dontSendNotification);
+  helpBody_.setText(body, juce::dontSendNotification);
 }
 
 void MainPage::setEnabled(bool enabled) {

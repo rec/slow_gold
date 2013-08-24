@@ -3,6 +3,7 @@
 BADWORDS = (
   'dago',
   'fag',
+  'fuk',
   'gag',
   'gip',
   'kok',

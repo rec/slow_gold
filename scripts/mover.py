@@ -9,7 +9,6 @@ import sys
 
 import util
 
-
 class Mover(object):
   NONE, START, BODY, END_NAME, END_GUARD, END = range(6)
 
@@ -23,13 +22,19 @@ class Mover(object):
                (lambda path: r'\b%s\b' % path[-1]),
                ]
 
-  def __init__(self, fromFile, toFile, copy):
+  def __init__(self, fromFile, toFile, namespace, copy):
     self.state = Mover.NONE
     self.fromFile, self.toFile = self.check(fromFile, toFile)
+    self.namespace = namespace
     self.copy = copy
 
-    fp = util.pathParts(self.fromFile)
-    tp = util.pathParts(self.toFile)
+    if namespace:
+      namespace = namespace.split('/')
+      fp = namespace + [os.path.basename(self.fromFile)]
+      tp = namespace + [os.path.basename(self.toFile)]
+    else:
+      fp = util.pathParts(self.fromFile)
+      tp = util.pathParts(self.toFile)
     names = tp[:-1]
     self.reps = [[f(fp), f(tp).replace(r'\b', '')] for f in Mover.FUNCTIONS]
 
@@ -124,15 +129,21 @@ class Mover(object):
       self.endCache.append(line)
 
 def parseArgs(args):
-  optlist, args = getopt.getopt(args, 'c:', ['copy'])
+  optlist, args = getopt.getopt(args, 'cn:', ['copy', 'namespace='])
+  namespace = None
+  for name, value in optlist:
+    if name == '-n' or name == '--namespace':
+      namespace = value
+      break
+
   for name, value in optlist:
     if name == '-c' or name == '--copy':
-      return args, True
+      return args, namespace, True
 
-  return args, False
+  return args, namespace, False
 
 def move(args):
-  args, copy = parseArgs(args)
+  args, namespace, copy = parseArgs(args)
   to = args.pop()
   files = []
   for arg in args:
@@ -151,6 +162,6 @@ def move(args):
 
   else:
     for a in args:
-      Mover(a, to, copy).move()
+      Mover(a, to, namespace, copy).move()
 
 move(sys.argv[1:])

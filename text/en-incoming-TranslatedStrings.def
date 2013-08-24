@@ -283,7 +283,7 @@ str {
 str {
   original: "Couldn\'t Load The SlowGold 8 User Manual"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 16
+  line: 17
 }
 str {
   original: "Couldn\'t Open CD Track."
@@ -745,13 +745,13 @@ str {
 }
 str {
   original: "Loop Point Name: Edit the Loop Point\'s name by clicking here."
-  file: "rec/gui/audio/Loops.cpp"
-  line: 27
+  file: "rec/widget/waveform/Cursor.cpp"
+  line: 25
 }
 str {
   original: "Loop Point:  You can drag it around on the waveform, or you can click on the label above and to the right to edit its name."
   file: "rec/widget/waveform/Cursor.cpp"
-  line: 23
+  line: 22
 }
 str {
   original: "Loop This Segment"
@@ -899,7 +899,7 @@ str {
 str {
   original: "Playback Time Cursor: This follows the current time during playback. You can also drag it around to set the current playback time."
   file: "rec/widget/waveform/Cursor.cpp"
-  line: 19
+  line: 18
 }
 str {
   original: "Playback Tuning Slider: Coarse loop playback up and down in pitch, measured in semitones."
@@ -911,8 +911,8 @@ str {
 }
 str {
   original: "Please contact World Wide Woodshed support at"
-  file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 27
+  file: "rec/support/RequestSupport.cpp"
+  line: 14
 }
 str {
   original: "Please mail the file to %s and then you can throw it away."
@@ -1063,32 +1063,32 @@ str {
 str {
   original: "Select A File Containing Keyboard Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 23
+  line: 24
 }
 str {
   original: "Select A File Containing MIDI Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 24
+  line: 25
 }
 str {
   original: "Select A File To Save Exported Keyboard Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 20
+  line: 21
 }
 str {
   original: "Select A File To Save Exported MIDI Command Mappings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 21
+  line: 22
 }
 str {
   original: "Select A File To Save Exported Settings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 19
+  line: 20
 }
 str {
   original: "Select A Zip File Containing Exported Settings"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 22
+  line: 23
 }
 str {
   original: "Select All"
@@ -1260,7 +1260,7 @@ str {
 str {
   original: "Sorry, couldn\'t load the SlowGold 8 user manual at"
   file: "rec/slow/callbacks/GlobalCallbacks.cpp"
-  line: 17
+  line: 18
 }
 str {
   original: "Sorry, file %s is an .m4a file and we can\'t yet read these files on Windows:  please convert it to mp3 using iTunes."

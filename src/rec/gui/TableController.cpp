@@ -112,7 +112,7 @@ class TableLabel : public SimpleLabel {
 
   void setText(const String& s) {
     if (s != getText(true))
-      SimpleLabel::setText(s, false);
+      SimpleLabel::setText(s, juce::dontSendNotification);
   }
 
   virtual void editorShown(TextEditor*) {

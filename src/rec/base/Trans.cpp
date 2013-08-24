@@ -47,9 +47,12 @@ void registerTranslation(const TranslatedString& s) {
   translationList()->push_back(s);
 }
 
+#if 0
 void write(FileOutputStream* output, const String& s) {
   output->writeText(s, false, false);
 }
+#endif
+
 
 TranslatedStrings getTranslatedStrings() {
   TranslationSet ts(translationList()->begin(), translationList()->end());

@@ -4,7 +4,6 @@
 #include "rec/audio/format/Manager.h"
 #include "rec/base/SampleRate.h"
 #include "rec/base/SampleTime.h"
-#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace audio {

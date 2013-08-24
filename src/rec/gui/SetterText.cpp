@@ -21,7 +21,7 @@ SetterText::SetterText(const String& name,
   setTooltip(tip.length() ? tip : cap);
 
   if (useCaption) {
-    caption_.setText(cap, false);
+    caption_.setText(cap, juce::dontSendNotification);
     addToLayout(&caption_, CAPTION_SIZE);
   }
   addToLayout(&editor_);

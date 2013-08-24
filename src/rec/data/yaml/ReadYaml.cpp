@@ -117,6 +117,7 @@ bool read(const string& from, Message* to) {
     if (!parser.GetNextDocument(node))
       return false;
   } catch (...) {
+    LOG(ERROR) << "Unknown error";
     return false;
   }
 
@@ -140,8 +141,13 @@ bool read(const string& from, Message* to) {
     }
   }
 
-  if (parser.GetNextDocument(node)) {
-    LOG(ERROR) << "More than one document in file";
+  try {
+    if (parser.GetNextDocument(node)) {
+      LOG(ERROR) << "More than one document in file";
+      return false;
+    }
+  } catch (...) {
+    LOG(ERROR) << "Unknown error 2";
     return false;
   }
 

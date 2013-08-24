@@ -59,7 +59,6 @@ static File getRoot(const VirtualFile& vf) {
 }  // namespace
 
 const File getShadowDirectory(const VirtualFile& vf) {
-  DCHECK_NE(vf.type(), VirtualFile::NONE);
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
   File f = app::getAppFile(name);
   if (vf.volume_name().size())
