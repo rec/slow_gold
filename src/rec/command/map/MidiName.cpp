@@ -17,6 +17,17 @@ String midiNoteName(const MidiMessage& msg) {
 
 }  // namespace
 
+const string midiToString(const MidiMessage& msg) {
+  auto size = msg.getRawDataSize();
+  auto data = msg.getRawData();
+  string s(size + 1, 0);
+  for (auto i = 0; i < size; ++i)
+    s[i] = static_cast<char>(data[i]);
+
+  return s;
+  // return string(reinterpret_cast<const char*>(msg.getRawData()), size);
+}
+
 String midiName(const MidiMessage& m) {
   if (m.isActiveSense())
     return t_AS;

@@ -1,8 +1,9 @@
 #include "rec/command/map/MidiCommandMap.h"
+#include "rec/command/map/MidiName.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/FunctionCallback.h"
 
-#define FAKE_MIDI
+// #define FAKE_MIDI
 
 namespace rec {
 namespace command {
@@ -23,7 +24,7 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
   if (listener)
     (*listener)(msg);
   else
-    invokeAsync(str(msg), manager_);
+    invokeAsync(midiToString(msg), manager_);
 }
 
 #ifdef FAKE_MIDI

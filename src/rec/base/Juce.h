@@ -125,11 +125,6 @@ inline const string operator+(const string& s, const String& t) {
   return s + str(t);
 }
 
-inline const string str(const MidiMessage& msg) {
-  return string(reinterpret_cast<const char*>(msg.getRawData()),
-                msg.getRawDataSize());
-}
-
 #if JUCE_WINDOWS
 
 inline const wchar_t* c_str(const String& s) {

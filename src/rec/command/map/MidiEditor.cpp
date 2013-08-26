@@ -15,7 +15,7 @@ namespace command {
 namespace {
 
 string toString(const MidiMessage& msg) {
-  string r = str(msg);
+  string r = midiToString(msg);
   if (msg.isNoteOn())
     r[2] = 127;
 
