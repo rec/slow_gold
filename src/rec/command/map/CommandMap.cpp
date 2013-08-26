@@ -27,11 +27,10 @@ bool CommandMap::addKey(const string& key, ID command) {
 void CommandMap::addCommands(const CommandMapProto& commands) {
   toCommand_.clear();
   toKeys_.clear();
-  for (int i = 0; i < commands.entry_size(); ++i) {
-    const CommandMapEntry& entry = commands.entry(i);
+  for (auto& entry: commands.entry()) {
     ID command = entry.command();
-    for (int j = 0; j < entry.key_size(); ++j)
-      add(entry.key(j), command);
+    for (auto& key: entry.key())
+      add(key, command);
   }
 }
 
