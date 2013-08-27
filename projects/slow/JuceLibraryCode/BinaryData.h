@@ -105,62 +105,20 @@ namespace BinaryData
     extern const char*   ZoomToSelectionButtonPressed_svg;
     const int            ZoomToSelectionButtonPressed_svgSize = 22883;
 
-    extern const char*   deremovedTranslatedStrings_def;
-    const int            deremovedTranslatedStrings_defSize = 15;
-
-    extern const char*   detranslated_txt;
-    const int            detranslated_txtSize = 19020;
-
     extern const char*   deTranslatedStrings_def;
     const int            deTranslatedStrings_defSize = 62004;
-
-    extern const char*   deuntranslated_txt;
-    const int            deuntranslated_txtSize = 0;
-
-    extern const char*   enincomingTranslatedStrings_def;
-    const int            enincomingTranslatedStrings_defSize = 32049;
-
-    extern const char*   enremovedTranslatedStrings_def;
-    const int            enremovedTranslatedStrings_defSize = 15;
 
     extern const char*   enTranslatedStrings_def;
     const int            enTranslatedStrings_defSize = 36046;
 
-    extern const char*   esremovedTranslatedStrings_def;
-    const int            esremovedTranslatedStrings_defSize = 15;
-
-    extern const char*   estranslated_txt;
-    const int            estranslated_txtSize = 19677;
-
     extern const char*   esTranslatedStrings_def;
     const int            esTranslatedStrings_defSize = 62451;
-
-    extern const char*   esuntranslated_txt;
-    const int            esuntranslated_txtSize = 0;
-
-    extern const char*   frremovedTranslatedStrings_def;
-    const int            frremovedTranslatedStrings_defSize = 15;
-
-    extern const char*   frtranslated_txt;
-    const int            frtranslated_txtSize = 20532;
 
     extern const char*   frTranslatedStrings_def;
     const int            frTranslatedStrings_defSize = 65188;
 
-    extern const char*   fruntranslated_txt;
-    const int            fruntranslated_txtSize = 0;
-
-    extern const char*   idremovedTranslatedStrings_def;
-    const int            idremovedTranslatedStrings_defSize = 15;
-
-    extern const char*   idtranslated_txt;
-    const int            idtranslated_txtSize = 17634;
-
     extern const char*   idTranslatedStrings_def;
     const int            idTranslatedStrings_defSize = 59202;
-
-    extern const char*   iduntranslated_txt;
-    const int            iduntranslated_txtSize = 0;
 
     extern const char*   bigicon_png;
     const int            bigicon_pngSize = 67899;
