@@ -5,6 +5,15 @@
     <Filter Include="SlowGold">
       <UniqueIdentifier>{26E1E827-DE71-50E8-2653-89C23AFD4CD9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\art">
+      <UniqueIdentifier>{53A38853-9E35-DE6E-300A-F86978E53447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\art\icon">
+      <UniqueIdentifier>{A4542DDF-B13F-4FD7-C978-8A317A9AD1D3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\text">
+      <UniqueIdentifier>{BF567733-6247-74DE-90B5-7C01284FD1C7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\translation">
       <UniqueIdentifier>{A74D3B73-0C95-0B61-65AA-8A0C6696CBB7}</UniqueIdentifier>
     </Filter>
@@ -5201,6 +5210,162 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\art\icon\AddLoopPointButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\AddLoopPointButtonDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\AddLoopPointButtonPressed.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\AddLoopPointMode.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\AddLoopPointModeDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\DragMode.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\DragModeDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpBackButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpBackButtonDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpBackButtonPressed.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpForwardButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpForwardButtonDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpForwardButtonPressed.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpToStartButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpToStartButtonDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\JumpToStartButtonPressed.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\MacFolderCloseButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\MacFolderOpenButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\PlayButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\PlayButtonDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\SetTimeMode.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\SetTimeModeDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\StopButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\StopButtonDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomInCursor.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomMode.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomMoveDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomOutButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomOutButtonDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomOutButtonPressed.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomToSelectionButton.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomToSelectionButtonDisabled.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\art\icon\ZoomToSelectionButtonPressed.svg">
+      <Filter>SlowGold\art\icon</Filter>
+    </None>
+    <None Include="..\..\text\de-removed-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\de-translated.txt">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\de-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\de-untranslated.txt">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\en-incoming-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\en-removed-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\en-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\es-removed-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\es-translated.txt">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\es-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\es-untranslated.txt">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\fr-removed-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\fr-translated.txt">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\fr-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\fr-untranslated.txt">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\id-removed-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\id-translated.txt">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\id-TranslatedStrings.def">
+      <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\text\id-untranslated.txt">
+      <Filter>SlowGold\text</Filter>
+    </None>
     <None Include="..\..\..\..\src\rec\binary\big-icon.png">
       <Filter>SlowGold\rec\binary</Filter>
     </None>
