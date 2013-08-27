@@ -1,0 +1,11 @@
+prefix=/development/rec/externals/mac/mpg123
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libmpg123
+Description: An optimised MPEG Audio decoder
+Requires: 
+Version: 1.15.4
+Libs: -L${libdir} -lmpg123 
+Cflags: -I${includedir} 
