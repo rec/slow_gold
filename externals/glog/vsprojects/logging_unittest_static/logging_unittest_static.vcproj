@@ -2,10 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="libglog"
-	ProjectGUID="{34BD04BD-BC1D-4BFC-AAFC-ED02D9E960F1}"
-	RootNamespace="libglog"
-	Keyword="Win32Proj"
+	Name="logging_unittest_static"
+	ProjectGUID="{9B239B45-84A9-4E06-AC46-8E220CD43974}"
+	RootNamespace="logging_unittest_static"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -20,9 +19,8 @@
 			Name="Debug|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="4"
-			UseOfMFC="1"
-			CharacterSet="1"
+			ConfigurationType="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -43,11 +41,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src\windows"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBGLOG_EXPORTS"
+				PreprocessorDefinitions="GOOGLE_GLOG_DLL_DECL="
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
+				RuntimeLibrary="3"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -61,10 +58,15 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				GenerateDebugInformation="true"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -76,6 +78,9 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -83,8 +88,8 @@
 			Name="Release|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="2"
-			CharacterSet="1"
+			ConfigurationType="1"
+			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -107,10 +112,9 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="..\..\src\windows"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;LIBGLOG_EXPORTS"
+				PreprocessorDefinitions="GOOGLE_GLOG_DLL_DECL="
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -125,9 +129,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				LinkIncremental="1"
 				GenerateDebugInformation="true"
-				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
@@ -159,78 +161,18 @@
 	</References>
 	<Files>
 		<Filter
-			Name="Source Files"
-			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			Name="Header Files"
 			>
 			<File
-				RelativePath="..\..\src\logging.cc"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\windows\port.cc"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\raw_logging.cc"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\utilities.cc"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\vlog_is_on.cc"
+				RelativePath="..\..\src\googletest.h"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			Name="Source Files"
 			>
 			<File
-				RelativePath="..\..\src\base\commandlineflags.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\windows\config.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\base\googleinit.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\windows\glog\log_severity.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\windows\glog\logging.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\base\mutex.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\windows\port.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\windows\glog\raw_logging.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\windows\glog\stl_logging.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\utilities.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\windows\glog\vlog_is_on.h"
+				RelativePath="..\..\src\logging_unittest.cc"
 				>
 			</File>
 		</Filter>
