@@ -47,8 +47,8 @@ string ID::name() const {
   int position = body ? remains : 0;
 
   string name;
-  if (t <= Command::LAST_TYPE ||
-      (t >= Command::JUCE_START && t <= Command::JUCE_END)) {
+  if (t < Command::FIRST_FREE_TYPE ||
+      (t > Command::JUCE_START && t < Command::JUCE_END)) {
     name = Command::Type_Name(t);
   } else {
     name = "Bad id " + str(String(t));

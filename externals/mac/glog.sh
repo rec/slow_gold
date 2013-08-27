@@ -1,0 +1,1 @@
+./configure --enable-static --enable-shared=no CXXFLAGS="-arch i386" --prefix=/development/rec/externals/mac/glog

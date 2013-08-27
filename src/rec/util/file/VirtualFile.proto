@@ -12,6 +12,8 @@ message VirtualFile {
     DOCUMENTS = 7;
     MOVIES = 8;
     LAST = 8;
+
+    option allow_alias = true;
   };
 
   enum Status {

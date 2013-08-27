@@ -3,7 +3,6 @@ CONFIG=debug
 
 source "$ROOT/rec/scripts/variables.sh"
 
-
 SRC_ROOT="$ROOT/rec/src"
 PROTO_ROOT="$ROOT/rec/genfiles/proto"
 
@@ -18,7 +17,7 @@ then
   echo "Creating $@"
 fi
 
-$INSTALL_DIR/bin/protoc \
+$ROOT/rec/externals/mac/protobuf/bin/protoc \
   -I "$SRC_ROOT"\
   -I "$INSTALL_DIR/include" \
   --python_out="$PROTO_ROOT" \

@@ -134,7 +134,7 @@ message Command {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    LAST_TYPE = 96;
+    FIRST_FREE_TYPE = 97;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;
@@ -145,8 +145,8 @@ message Command {
     SELECT_ALL = 0x1006;
     DESELECT_ALL = 0x1007;
 
-    JUCE_START = 0x1001;
-    JUCE_END = 0x1007;
+    JUCE_START = 0x1000;
+    JUCE_END = 0x1008;
 
     BANK_SIZE = 100000;
   };

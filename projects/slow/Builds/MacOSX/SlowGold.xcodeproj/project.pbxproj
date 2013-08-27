@@ -3949,7 +3949,7 @@
 				4E44B90C2F5628CB766F0DC0,
 				15D5B9524ABD37A7B5D2F73D ); name = Source; sourceTree = "<group>"; };
 		FC65B520F8F44B20337604A6 = { isa = XCBuildConfiguration; buildSettings = {
-				HEADER_SEARCH_PATHS = "../../JuceLibraryCode ../../../../../rec/externals/rubberband/src ../../../../../rec/src ../../../../../rec/genfiles/icon ../../../../../rec/genfiles/proto ../../../../../rec/genfiles/translation ../../../../../juce ../../../../../rec/src/rec/data/yaml/include ../../../../externals/mac/glog/include ../../../../../build/Debug/gtest/include ../../../../externals/mac/mpg123 ../../../../../build/Debug/protobuf/include ../.. $(inherited)";
+				HEADER_SEARCH_PATHS = "../../JuceLibraryCode ../../../../../rec/externals/rubberband/src ../../../../../rec/src ../../../../../rec/genfiles/icon ../../../../../rec/genfiles/proto ../../../../../rec/genfiles/translation ../../../../../juce ../../../../../rec/src/rec/data/yaml/include ../../../../externals/mac/glog/include ../../../../../build/Debug/gtest/include ../../../../externals/mac/mpg123 ../../../../externals/mac/protobuf/include ../.. $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				OTHER_CPLUSPLUSFLAGS = "-wfour-char-constants";
@@ -3962,7 +3962,7 @@
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				OTHER_LDFLAGS = "-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged";
-				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../../build/Debug/protobuf/lib\"", "\"../../../../externals/rubberband/osx/ipp/Debug/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
+				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/rubberband/osx/ipp/Debug/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
 				ONLY_ACTIVE_ARCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3974,7 +3974,7 @@
 				"JUCE_USE_VDSP_FRAMEWORK=0",
 				"JUCER_XCODE_MAC_F6D2F4CF=1"); }; name = Debug; };
 		00DCC89C07C7BE87577135F3 = { isa = XCBuildConfiguration; buildSettings = {
-				HEADER_SEARCH_PATHS = "../../JuceLibraryCode ../../../../../rec/externals/rubberband/src ../../../../../rec/src ../../../../../rec/genfiles/icon ../../../../../rec/genfiles/proto ../../../../../rec/genfiles/translation ../../../../../juce ../../../../../rec/src/rec/data/yaml/include ../../../../externals/mac/glog/include ../../../../externals/mac/mpg123 ../../../../../build/Debug/protobuf/include ../.. $(inherited)";
+				HEADER_SEARCH_PATHS = "../../JuceLibraryCode ../../../../../rec/externals/rubberband/src ../../../../../rec/src ../../../../../rec/genfiles/icon ../../../../../rec/genfiles/proto ../../../../../rec/genfiles/translation ../../../../../juce ../../../../../rec/src/rec/data/yaml/include ../../../../externals/mac/glog/include ../../../../externals/mac/mpg123 ../../../../externals/mac/protobuf/include ../.. $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Info.plist;
 				OTHER_CPLUSPLUSFLAGS = "-wfour-char-constants";
@@ -3987,7 +3987,7 @@
 				CLANG_LINK_OBJC_RUNTIME = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				OTHER_LDFLAGS = "-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged";
-				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../../build/Release/protobuf/lib\"", "\"../../../../externals/rubberband/osx/ipp/Release/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
+				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/rubberband/osx/ipp/Release/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
