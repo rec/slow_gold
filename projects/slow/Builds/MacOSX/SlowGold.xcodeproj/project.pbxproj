@@ -144,6 +144,7 @@
 		08A0F8C0F75B0190B861B741 = { isa = PBXBuildFile; fileRef = 1C3DC6EF6522C10F8CB50089; };
 		61C2A7A2E0CE2D6CDD3A4EC4 = { isa = PBXBuildFile; fileRef = 9A7BB1B7D34B25D31D852A05; };
 		EBC592B6DA121B559AE31DDF = { isa = PBXBuildFile; fileRef = 02B665CEAE78ECB718FE354B; };
+		0F7D7E4517E9D89D4C8FC50B = { isa = PBXBuildFile; fileRef = F96A1003CDF7FF622B4F4AD1; };
 		3F1E1790DA34640B97A96958 = { isa = PBXBuildFile; fileRef = E5110ACBDA85391F91F748CD; };
 		3993AFB1C0200AD228DD372E = { isa = PBXBuildFile; fileRef = B524B46C6135812738601231; };
 		681813F4E5F0ACD50CA9462E = { isa = PBXBuildFile; fileRef = 78D301E2BF3F6647650525E8; };
@@ -1909,6 +1910,7 @@
 		F8D8A432400C15FDFFF52EC7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CleanName.cpp; path = ../../../../src/rec/music/CleanName.cpp; sourceTree = "SOURCE_ROOT"; };
 		F8F4990045F1E65358C4E891 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Manager.h; path = ../../../../src/rec/audio/format/Manager.h; sourceTree = "SOURCE_ROOT"; };
 		F92E0959497083000939169D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_android_Messaging.cpp"; path = "../../JuceLibraryCode/modules/juce_events/native/juce_android_Messaging.cpp"; sourceTree = "SOURCE_ROOT"; };
+		F96A1003CDF7FF622B4F4AD1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IconButton.cpp; path = ../../../../src/rec/gui/IconButton.cpp; sourceTree = "SOURCE_ROOT"; };
 		F978176299CB156FA39DA1FF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_win32_ComSmartPtr.h"; path = "../../JuceLibraryCode/modules/juce_core/native/juce_win32_ComSmartPtr.h"; sourceTree = "SOURCE_ROOT"; };
 		F97AC3CE9B65089C42CF7CBA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_LinkedListPointer.h"; path = "../../JuceLibraryCode/modules/juce_core/containers/juce_LinkedListPointer.h"; sourceTree = "SOURCE_ROOT"; };
 		F9A0847AA2EC948C75D0919B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Tags.cpp; path = ../../../../src/rec/audio/format/mpg123/Tags.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -2372,6 +2374,7 @@
 				02B665CEAE78ECB718FE354B,
 				77E3F9B9D6AB77BAF500A2BD,
 				41BF90655A10BE6E9B6EC681,
+				F96A1003CDF7FF622B4F4AD1,
 				F4D16B436D4BE8CF4C0ECB1D,
 				E5110ACBDA85391F91F748CD,
 				D882907D0557E67120D6B564,
@@ -4160,6 +4163,7 @@
 				08A0F8C0F75B0190B861B741,
 				61C2A7A2E0CE2D6CDD3A4EC4,
 				EBC592B6DA121B559AE31DDF,
+				0F7D7E4517E9D89D4C8FC50B,
 				3F1E1790DA34640B97A96958,
 				3993AFB1C0200AD228DD372E,
 				681813F4E5F0ACD50CA9462E,

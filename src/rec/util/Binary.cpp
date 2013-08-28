@@ -75,6 +75,10 @@ string binaryString(const char* resourceName) {
   return string(resource, size);
 }
 
+template Drawable* juceBinary<Drawable>(const char*);
+template String* juceBinary<String>(const char*);
+template XmlElement* juceBinary<XmlElement>(const char*);
+
 }  // namespace util
 }  // namespace rec
 

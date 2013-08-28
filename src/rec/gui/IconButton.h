@@ -6,11 +6,6 @@
 namespace rec {
 namespace gui {
 
-template <typename Normal>
-void setButtonImages(DrawableButton* b) {
-  b->setImages(ptr<Drawable>(Normal::create()).get());
-}
-
 template <typename Normal, typename Disabled>
 void setButtonImages(DrawableButton* b) {
   b->setImages(ptr<Drawable>(Normal::create()).get(),
@@ -26,6 +21,11 @@ void setButtonImages(DrawableButton* b) {
                ptr<Drawable>(Pressed::create()).get(),
                ptr<Drawable>(Disabled::create()).get());
 }
+
+void setButtonImages(DrawableButton* b, const char* normal,
+                     const char* disabled);
+void setButtonImages(DrawableButton* b, const char* normal,
+                     const char* disabled, const char* pressed);
 
 #define SET_BUTTON_IMAGES2(B, NORMAL) \
   setButtonImages<NORMAL, NORMAL ## Disabled>(B)
