@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_ICONBUTTON__
 #define __REC_GUI_ICONBUTTON__
 
-#include "rec/base/base.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace gui {
@@ -22,16 +22,21 @@ void setButtonImages(DrawableButton* b) {
                ptr<Drawable>(Disabled::create()).get());
 }
 
-void setButtonImages(DrawableButton* b, const char* normal,
-                     const char* disabled);
-void setButtonImages(DrawableButton* b, const char* normal,
-                     const char* disabled, const char* pressed);
+void setButtonImages(DrawableButton* b, const string& normal,
+                     const string& disabled);
+void setButtonImages(DrawableButton* b, const string& normal,
+                     const string& disabled, const string& pressed);
 
 #define SET_BUTTON_IMAGES2(B, NORMAL) \
-  setButtonImages<NORMAL, NORMAL ## Disabled>(B)
+  setButtonImages(B,                                    \
+                  BINARY_DATA_STRING(NORMAL ## _svg),   \
+                  BINARY_DATA_STRING(NORMAL ## Disabled_svg))
 
 #define SET_BUTTON_IMAGES3(B, NORMAL) \
-  setButtonImages<NORMAL, NORMAL ## Disabled, NORMAL ## Pressed>(B)
+  setButtonImages(B,                                          \
+                  BINARY_DATA_STRING(NORMAL ## _svg),         \
+                  BINARY_DATA_STRING(NORMAL ## Disabled_svg), \
+                  BINARY_DATA_STRING(NORMAL ## Pressed_svg))
 
 }  // namespace gui
 }  // namespace rec

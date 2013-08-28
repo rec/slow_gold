@@ -24,25 +24,22 @@ struct BinaryOrFile {
   MemoryBlock memory_;
 };
 
-template <typename Type>
-Type* construct(const char* data, int length);
-
-template <>
-String* construct(const char* data, int length) {
-  return new String(juce::CharPointer_UTF8(data), length);
-}
-
-template <>
-Drawable* construct(const char* data, int length) {
-  return Drawable::createFromImageData(data, length);
-}
-
-template <>
-XmlElement* construct(const char* data, int length) {
-  return XmlDocument::parse(*ptr<String>(construct<String>(data, length)));
-}
-
 }  // namespace
+
+template <>
+String* construct(const string& s) {
+  return new String(str(s));
+}
+
+template <>
+Drawable* construct(const string& s) {
+  return Drawable::createFromImageData(s.data(), s.size());
+}
+
+template <>
+XmlElement* construct(const string& s) {
+  return XmlDocument::parse(str(s));
+}
 
 template <>
 String* createBinary(const char* data, size_t len, const string& filename) {
@@ -61,23 +58,6 @@ XmlElement* createBinary(const char* data, size_t len, const string& filename) {
   BinaryOrFile b(data, len, filename);
   return XmlDocument::parse(*ptr<String>(createBinary<String>(b.data_, b.length_)));
 }
-
-template <typename Type>
-Type* juceBinary(const char* resourceName) {
-  int size;
-  const char* resource = BinaryData::getNamedResource(resourceName, size);
-  return construct<Type>(resource, size);
-}
-
-string binaryString(const char* resourceName) {
-  int size;
-  const char* resource = BinaryData::getNamedResource(resourceName, size);
-  return string(resource, size);
-}
-
-template Drawable* juceBinary<Drawable>(const char*);
-template String* juceBinary<String>(const char*);
-template XmlElement* juceBinary<XmlElement>(const char*);
 
 }  // namespace util
 }  // namespace rec

@@ -10,8 +10,13 @@ template <typename Type>
 Type* createBinary(const char* data, size_t len, const string& filename = "");
 
 template <typename Type>
-Type* juceBinary(const char* resourceName);
-string binaryString(const char* resourceName);
+Type* construct(const string&);
+
+#define BINARY_DATA_STRING(NAME) \
+  string(BinaryData::NAME, BinaryData::NAME ## Size)
+
+#define BINARY_DATA(NAME, TYPE) \
+  construct<TYPE>(BINARY_DATA_STRING(NAME))
 
 }  // namespace util
 }  // namespace rec

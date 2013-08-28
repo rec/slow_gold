@@ -84,8 +84,8 @@ namespace BinaryData
     extern const char*   ZoomMode_svg;
     const int            ZoomMode_svgSize = 19762;
 
-    extern const char*   ZoomMoveDisabled_svg;
-    const int            ZoomMoveDisabled_svgSize = 30124;
+    extern const char*   ZoomModeDisabled_svg;
+    const int            ZoomModeDisabled_svgSize = 30124;
 
     extern const char*   ZoomOutButton_svg;
     const int            ZoomOutButton_svgSize = 39902;

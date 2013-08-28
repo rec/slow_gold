@@ -22,7 +22,8 @@ class Def {
 
 template <typename Proto>
 class DefBinary : public Def<Proto> {
-  explicit DefBinary(const char* rname) : Def<Proto>(binaryString(rname)) {}
+  explicit DefBinary(const char* resource, int length)
+      : Def<Proto>(string(resource, length)) {}
 };
 
 }  // namespace util

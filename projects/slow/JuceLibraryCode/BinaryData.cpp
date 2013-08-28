@@ -3958,8 +3958,8 @@ static const unsigned char temp_3516a39b[] =
 
 const char* ZoomMode_svg = (const char*) temp_3516a39b;
 
-//================== ZoomMoveDisabled.svg ==================
-static const unsigned char temp_41eecc65[] =
+//================== ZoomModeDisabled.svg ==================
+static const unsigned char temp_60569f37[] =
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<!-- Generator: Adobe Illustrator 11 Build 196, SVG Export Plug-In . SVG Version: 6.0.0 Build 78)  -->\n"
 "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"    \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\" [\n"
@@ -4279,7 +4279,7 @@ static const unsigned char temp_41eecc65[] =
 "\t\t</g>\n"
 "\t</svg>\n";
 
-const char* ZoomMoveDisabled_svg = (const char*) temp_41eecc65;
+const char* ZoomModeDisabled_svg = (const char*) temp_60569f37;
 
 //================== ZoomOutButton.svg ==================
 static const unsigned char temp_db620cd4[] =
@@ -11510,7 +11510,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x6fe0fe35:  numBytes = 14201; return StopButtonDisabled_svg;
         case 0x685b7c93:  numBytes = 17598; return ZoomInCursor_svg;
         case 0x2f87f6db:  numBytes = 19762; return ZoomMode_svg;
-        case 0x038e7ea5:  numBytes = 30124; return ZoomMoveDisabled_svg;
+        case 0x21f65177:  numBytes = 30124; return ZoomModeDisabled_svg;
         case 0x6dffc892:  numBytes = 39902; return ZoomOutButton_svg;
         case 0xd4f87c2e:  numBytes = 39634; return ZoomOutButtonDisabled_svg;
         case 0x9c61d11a:  numBytes = 39707; return ZoomOutButtonPressed_svg;
