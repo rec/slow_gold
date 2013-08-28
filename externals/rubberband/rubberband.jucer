@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="FTwPgi" name="rubberband" projectType="library" version="1.0.0"
+              bundleIdentifier="com.slowgold" jucerVersion="3.1.0">
+  <MAINGROUP id="wgLhJP" name="rubberband">
+    <GROUP id="{B4F55F32-0A77-E4BB-4001-5088C310E5CD}" name="src">
+      <GROUP id="{EEAD925E-44E7-8049-7B37-B90B0531A1CF}" name="base">
+        <FILE id="RVaCnR" name="Profiler.cpp" compile="1" resource="0" file="src/src/base/Profiler.cpp"/>
+        <FILE id="v26KE0" name="Profiler.h" compile="0" resource="0" file="src/src/base/Profiler.h"/>
+        <FILE id="XnrljA" name="RingBuffer.h" compile="0" resource="0" file="src/src/base/RingBuffer.h"/>
+        <FILE id="Opo7Ni" name="Scavenger.h" compile="0" resource="0" file="src/src/base/Scavenger.h"/>
+      </GROUP>
+      <GROUP id="{DB4F7066-A6FC-21A8-A27E-5C4387BBCBE2}" name="dsp">
+        <FILE id="krnQqE" name="AudioCurveCalculator.cpp" compile="1" resource="0"
+              file="src/src/dsp/AudioCurveCalculator.cpp"/>
+        <FILE id="XkdZvA" name="AudioCurveCalculator.h" compile="0" resource="0"
+              file="src/src/dsp/AudioCurveCalculator.h"/>
+        <FILE id="P5iFvu" name="CompoundAudioCurve.cpp" compile="1" resource="0"
+              file="src/src/dsp/CompoundAudioCurve.cpp"/>
+        <FILE id="QYPh0s" name="CompoundAudioCurve.h" compile="0" resource="0"
+              file="src/src/dsp/CompoundAudioCurve.h"/>
+        <FILE id="LOsxlr" name="ConstantAudioCurve.cpp" compile="1" resource="0"
+              file="src/src/dsp/ConstantAudioCurve.cpp"/>
+        <FILE id="QkJX67" name="ConstantAudioCurve.h" compile="0" resource="0"
+              file="src/src/dsp/ConstantAudioCurve.h"/>
+        <FILE id="R2jbNO" name="FFT.cpp" compile="1" resource="0" file="src/src/dsp/FFT.cpp"/>
+        <FILE id="kv5bxP" name="FFT.h" compile="0" resource="0" file="src/src/dsp/FFT.h"/>
+        <FILE id="s8R9Mt" name="HighFrequencyAudioCurve.cpp" compile="1" resource="0"
+              file="src/src/dsp/HighFrequencyAudioCurve.cpp"/>
+        <FILE id="CpGfvu" name="HighFrequencyAudioCurve.h" compile="0" resource="0"
+              file="src/src/dsp/HighFrequencyAudioCurve.h"/>
+        <FILE id="o94X0j" name="MovingMedian.h" compile="0" resource="0" file="src/src/dsp/MovingMedian.h"/>
+        <FILE id="zq1cSs" name="PercussiveAudioCurve.cpp" compile="1" resource="0"
+              file="src/src/dsp/PercussiveAudioCurve.cpp"/>
+        <FILE id="V2lP3m" name="PercussiveAudioCurve.h" compile="0" resource="0"
+              file="src/src/dsp/PercussiveAudioCurve.h"/>
+        <FILE id="h4lc9s" name="Resampler.cpp" compile="1" resource="0" file="src/src/dsp/Resampler.cpp"/>
+        <FILE id="Dujvx6" name="Resampler.h" compile="0" resource="0" file="src/src/dsp/Resampler.h"/>
+        <FILE id="l6IFFV" name="SampleFilter.h" compile="0" resource="0" file="src/src/dsp/SampleFilter.h"/>
+        <FILE id="jUUfyD" name="SilentAudioCurve.cpp" compile="1" resource="0"
+              file="src/src/dsp/SilentAudioCurve.cpp"/>
+        <FILE id="PiCwHi" name="SilentAudioCurve.h" compile="0" resource="0"
+              file="src/src/dsp/SilentAudioCurve.h"/>
+        <FILE id="phFYT1" name="SincWindow.h" compile="0" resource="0" file="src/src/dsp/SincWindow.h"/>
+        <FILE id="cgHWqI" name="SpectralDifferenceAudioCurve.cpp" compile="1"
+              resource="0" file="src/src/dsp/SpectralDifferenceAudioCurve.cpp"/>
+        <FILE id="PHUSgu" name="SpectralDifferenceAudioCurve.h" compile="0"
+              resource="0" file="src/src/dsp/SpectralDifferenceAudioCurve.h"/>
+        <FILE id="vmtMJU" name="Window.cpp" compile="1" resource="0" file="src/src/dsp/Window.cpp"/>
+        <FILE id="GBwgpp" name="Window.h" compile="0" resource="0" file="src/src/dsp/Window.h"/>
+      </GROUP>
+      <GROUP id="{B26FBA6E-33BD-4FDF-BC08-51967013E07B}" name="float_cast">
+        <FILE id="qdKHSg" name="float_cast.h" compile="0" resource="0" file="src/src/float_cast/float_cast.h"/>
+      </GROUP>
+      <GROUP id="{9B86064B-6A53-B187-B2CC-3A2603B1FFC1}" name="kissfft">
+        <FILE id="eooBZR" name="_kiss_fft_guts.h" compile="0" resource="0"
+              file="src/src/kissfft/_kiss_fft_guts.h"/>
+        <FILE id="XPHdjh" name="COPYING" compile="0" resource="1" file="src/src/kissfft/COPYING"/>
+        <FILE id="KehfXw" name="kiss_fft.c" compile="1" resource="0" file="src/src/kissfft/kiss_fft.c"/>
+        <FILE id="umt27g" name="kiss_fft.h" compile="0" resource="0" file="src/src/kissfft/kiss_fft.h"/>
+        <FILE id="rQ1cZV" name="kiss_fftr.c" compile="1" resource="0" file="src/src/kissfft/kiss_fftr.c"/>
+        <FILE id="im6WbO" name="kiss_fftr.h" compile="0" resource="0" file="src/src/kissfft/kiss_fftr.h"/>
+      </GROUP>
+      <FILE id="xNCPvU" name="rubberband-c.cpp" compile="1" resource="0"
+            file="src/src/rubberband-c.cpp"/>
+      <FILE id="CxxEYg" name="RubberBandStretcher.cpp" compile="1" resource="0"
+            file="src/src/RubberBandStretcher.cpp"/>
+      <GROUP id="{F5A28A11-4092-034D-D07A-476153DF0E68}" name="speex">
+        <FILE id="N71zdL" name="COPYING" compile="0" resource="1" file="src/src/speex/COPYING"/>
+        <FILE id="rbzXaK" name="resample.c" compile="1" resource="0" file="src/src/speex/resample.c"/>
+        <FILE id="QOXWN4" name="speex_resampler.h" compile="0" resource="0"
+              file="src/src/speex/speex_resampler.h"/>
+      </GROUP>
+      <FILE id="r7Rn0N" name="StretchCalculator.cpp" compile="1" resource="0"
+            file="src/src/StretchCalculator.cpp"/>
+      <FILE id="ifiKAs" name="StretchCalculator.h" compile="0" resource="0"
+            file="src/src/StretchCalculator.h"/>
+      <FILE id="BASBz3" name="StretcherChannelData.cpp" compile="1" resource="0"
+            file="src/src/StretcherChannelData.cpp"/>
+      <FILE id="fVrXao" name="StretcherChannelData.h" compile="0" resource="0"
+            file="src/src/StretcherChannelData.h"/>
+      <FILE id="e3bmhQ" name="StretcherImpl.cpp" compile="1" resource="0"
+            file="src/src/StretcherImpl.cpp"/>
+      <FILE id="DB2c2g" name="StretcherImpl.h" compile="0" resource="0" file="src/src/StretcherImpl.h"/>
+      <FILE id="jmVmNY" name="StretcherProcess.cpp" compile="1" resource="0"
+            file="src/src/StretcherProcess.cpp"/>
+      <GROUP id="{A536CFFB-074D-C781-BFD0-2B3ADDCC96FA}" name="system">
+        <FILE id="G4loWn" name="Allocators.cpp" compile="1" resource="0" file="src/src/system/Allocators.cpp"/>
+        <FILE id="udRDn2" name="Allocators.h" compile="0" resource="0" file="src/src/system/Allocators.h"/>
+        <FILE id="iX7omM" name="sysutils.cpp" compile="1" resource="0" file="src/src/system/sysutils.cpp"/>
+        <FILE id="qJ5EmX" name="sysutils.h" compile="0" resource="0" file="src/src/system/sysutils.h"/>
+        <FILE id="BT4n8q" name="Thread.cpp" compile="1" resource="0" file="src/src/system/Thread.cpp"/>
+        <FILE id="luIfIs" name="Thread.h" compile="0" resource="0" file="src/src/system/Thread.h"/>
+        <FILE id="W8dAJH" name="VectorOps.h" compile="0" resource="0" file="src/src/system/VectorOps.h"/>
+        <FILE id="L4Gkuh" name="VectorOpsComplex.cpp" compile="1" resource="0"
+              file="src/src/system/VectorOpsComplex.cpp"/>
+        <FILE id="IpuFGB" name="VectorOpsComplex.h" compile="0" resource="0"
+              file="src/src/system/VectorOpsComplex.h"/>
+      </GROUP>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+  </MODULES>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" juceFolder="../../../../juce/modules"
+               extraDefs="USE_SPEEX HAVE_VDSP USE_PTHREADS">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="rubberband" headerPath="/development/rec/externals/rubberband/src/src"
+                       cppLibType="libc++"/>
+        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="0" optimisation="2" targetName="rubberband" headerPath="/development/rec/externals/rubberband/src/src"
+                       cppLibType="libc++"/>
+      </CONFIGURATIONS>
+    </XCODE_MAC>
+    <VS2012 targetFolder="Builds/VisualStudio2012" juceFolder="../../../juce/modules">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="rubberband"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="rubberband"/>
+      </CONFIGURATIONS>
+    </VS2012>
+  </EXPORTFORMATS>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>

@@ -883,16 +883,16 @@ D_Speex::setRatio(float ratio)
     // float.  Let's do that.
 
     unsigned int big = 272408136U; 
-    unsigned int denom = 1, num = 1;
+    unsigned int num = 1, denom = 1;
 
     if (ratio < 1.f) {
-        denom = big;
-        double dnum = double(big) * double(ratio);
-        num = (unsigned int)dnum;
-    } else if (ratio > 1.f) {
         num = big;
-        double ddenom = double(big) / double(ratio);
+        double ddenom = double(big) * double(ratio);
         denom = (unsigned int)ddenom;
+    } else if (ratio > 1.f) {
+        denom = big;
+        double dnum = double(big) / double(ratio);
+        num = (unsigned int)dnum;
     }
     
     if (m_debugLevel > 1) {
@@ -902,10 +902,10 @@ D_Speex::setRatio(float ratio)
     }
     
     int err = speex_resampler_set_rate_frac
-        (m_resampler, denom, num, 48000, 48000);
+        (m_resampler, num, denom, 48000, 48000);
     //!!! check err
     
-    speex_resampler_get_ratio(m_resampler, &denom, &num);
+    speex_resampler_get_ratio(m_resampler, &num, &denom);
     
     if (m_debugLevel > 1) {
         std::cerr << "D_Speex: Desired ratio " << ratio << ", got ratio "

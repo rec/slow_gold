@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="rubberband">
+      <UniqueIdentifier>{A6581BA1-841F-BB6B-F106-A7C8FF34B6EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rubberband\src">
+      <UniqueIdentifier>{40CD566E-D51F-3B5A-AB9F-320AE61FC4F7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rubberband\src\base">
+      <UniqueIdentifier>{C20DB06A-F436-EA75-B30E-6C33987F6346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rubberband\src\dsp">
+      <UniqueIdentifier>{D6646D0C-8D66-6996-3B86-1F6A1D891E11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rubberband\src\float_cast">
+      <UniqueIdentifier>{7B5D2FB3-3DFE-A94C-1FD9-505ADE27216E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rubberband\src\kissfft">
+      <UniqueIdentifier>{BF7D94B2-A938-A047-C32A-F5C78AD0E3F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rubberband\src\speex">
+      <UniqueIdentifier>{0F0AD59B-256F-E82D-300A-80B0712239F5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rubberband\src\system">
+      <UniqueIdentifier>{5128E60D-9072-C8BB-729B-94FC298312CD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Library Code">
+      <UniqueIdentifier>{8B4D1BAA-6DB4-CAEC-A0FA-271F354D5C61}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\src\base\Profiler.cpp">
+      <Filter>rubberband\src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\AudioCurveCalculator.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\CompoundAudioCurve.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\ConstantAudioCurve.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\FFT.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\HighFrequencyAudioCurve.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\PercussiveAudioCurve.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\Resampler.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\SilentAudioCurve.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\SpectralDifferenceAudioCurve.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\dsp\Window.cpp">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\kissfft\kiss_fft.c">
+      <Filter>rubberband\src\kissfft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\kissfft\kiss_fftr.c">
+      <Filter>rubberband\src\kissfft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\rubberband-c.cpp">
+      <Filter>rubberband\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\RubberBandStretcher.cpp">
+      <Filter>rubberband\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\speex\resample.c">
+      <Filter>rubberband\src\speex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\StretchCalculator.cpp">
+      <Filter>rubberband\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\StretcherChannelData.cpp">
+      <Filter>rubberband\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\StretcherImpl.cpp">
+      <Filter>rubberband\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\StretcherProcess.cpp">
+      <Filter>rubberband\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\system\Allocators.cpp">
+      <Filter>rubberband\src\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\system\sysutils.cpp">
+      <Filter>rubberband\src\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\system\Thread.cpp">
+      <Filter>rubberband\src\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\src\system\VectorOpsComplex.cpp">
+      <Filter>rubberband\src\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\src\base\Profiler.h">
+      <Filter>rubberband\src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\base\RingBuffer.h">
+      <Filter>rubberband\src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\base\Scavenger.h">
+      <Filter>rubberband\src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\AudioCurveCalculator.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\CompoundAudioCurve.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\ConstantAudioCurve.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\FFT.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\HighFrequencyAudioCurve.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\MovingMedian.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\PercussiveAudioCurve.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\Resampler.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\SampleFilter.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\SilentAudioCurve.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\SincWindow.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\SpectralDifferenceAudioCurve.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\dsp\Window.h">
+      <Filter>rubberband\src\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\float_cast\float_cast.h">
+      <Filter>rubberband\src\float_cast</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\kissfft\_kiss_fft_guts.h">
+      <Filter>rubberband\src\kissfft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\kissfft\kiss_fft.h">
+      <Filter>rubberband\src\kissfft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\kissfft\kiss_fftr.h">
+      <Filter>rubberband\src\kissfft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\speex\speex_resampler.h">
+      <Filter>rubberband\src\speex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\StretchCalculator.h">
+      <Filter>rubberband\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\StretcherChannelData.h">
+      <Filter>rubberband\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\StretcherImpl.h">
+      <Filter>rubberband\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\system\Allocators.h">
+      <Filter>rubberband\src\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\system\sysutils.h">
+      <Filter>rubberband\src\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\system\Thread.h">
+      <Filter>rubberband\src\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\system\VectorOps.h">
+      <Filter>rubberband\src\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\src\system\VectorOpsComplex.h">
+      <Filter>rubberband\src\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\src\kissfft\COPYING">
+      <Filter>rubberband\src\kissfft</Filter>
+    </None>
+    <None Include="..\..\src\src\speex\COPYING">
+      <Filter>rubberband\src\speex</Filter>
+    </None>
+  </ItemGroup>
+</Project>

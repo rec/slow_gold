@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{19E96617-277D-DF2F-4A34-DB0BDB23A344}</ProjectGuid>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"
+            Label="LocalAppDataPlatform"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">rubberband</TargetName>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">rubberband</TargetName>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <HeaderFileName/>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_LIB;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2012_78A501F=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader/>
+      <AssemblerListingLocation>$(IntDir)\</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)\</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)\rubberband.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)\rubberband.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <LargeAddressAware>true</LargeAddressAware>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(IntDir)\rubberband.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <HeaderFileName/>
+    </Midl>
+    <ClCompile>
+      <Optimization>MinSpace</Optimization>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_LIB;WIN32;_WINDOWS;NDEBUG;JUCER_VS2012_78A501F=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader/>
+      <AssemblerListingLocation>$(IntDir)\</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)\</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)\</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)\rubberband.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)\rubberband.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LargeAddressAware>true</LargeAddressAware>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(IntDir)\rubberband.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\src\base\Profiler.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\AudioCurveCalculator.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\CompoundAudioCurve.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\ConstantAudioCurve.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\FFT.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\HighFrequencyAudioCurve.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\PercussiveAudioCurve.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\Resampler.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\SilentAudioCurve.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\SpectralDifferenceAudioCurve.cpp"/>
+    <ClCompile Include="..\..\src\src\dsp\Window.cpp"/>
+    <ClCompile Include="..\..\src\src\kissfft\kiss_fft.c"/>
+    <ClCompile Include="..\..\src\src\kissfft\kiss_fftr.c"/>
+    <ClCompile Include="..\..\src\src\rubberband-c.cpp"/>
+    <ClCompile Include="..\..\src\src\RubberBandStretcher.cpp"/>
+    <ClCompile Include="..\..\src\src\speex\resample.c"/>
+    <ClCompile Include="..\..\src\src\StretchCalculator.cpp"/>
+    <ClCompile Include="..\..\src\src\StretcherChannelData.cpp"/>
+    <ClCompile Include="..\..\src\src\StretcherImpl.cpp"/>
+    <ClCompile Include="..\..\src\src\StretcherProcess.cpp"/>
+    <ClCompile Include="..\..\src\src\system\Allocators.cpp"/>
+    <ClCompile Include="..\..\src\src\system\sysutils.cpp"/>
+    <ClCompile Include="..\..\src\src\system\Thread.cpp"/>
+    <ClCompile Include="..\..\src\src\system\VectorOpsComplex.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\src\base\Profiler.h"/>
+    <ClInclude Include="..\..\src\src\base\RingBuffer.h"/>
+    <ClInclude Include="..\..\src\src\base\Scavenger.h"/>
+    <ClInclude Include="..\..\src\src\dsp\AudioCurveCalculator.h"/>
+    <ClInclude Include="..\..\src\src\dsp\CompoundAudioCurve.h"/>
+    <ClInclude Include="..\..\src\src\dsp\ConstantAudioCurve.h"/>
+    <ClInclude Include="..\..\src\src\dsp\FFT.h"/>
+    <ClInclude Include="..\..\src\src\dsp\HighFrequencyAudioCurve.h"/>
+    <ClInclude Include="..\..\src\src\dsp\MovingMedian.h"/>
+    <ClInclude Include="..\..\src\src\dsp\PercussiveAudioCurve.h"/>
+    <ClInclude Include="..\..\src\src\dsp\Resampler.h"/>
+    <ClInclude Include="..\..\src\src\dsp\SampleFilter.h"/>
+    <ClInclude Include="..\..\src\src\dsp\SilentAudioCurve.h"/>
+    <ClInclude Include="..\..\src\src\dsp\SincWindow.h"/>
+    <ClInclude Include="..\..\src\src\dsp\SpectralDifferenceAudioCurve.h"/>
+    <ClInclude Include="..\..\src\src\dsp\Window.h"/>
+    <ClInclude Include="..\..\src\src\float_cast\float_cast.h"/>
+    <ClInclude Include="..\..\src\src\kissfft\_kiss_fft_guts.h"/>
+    <ClInclude Include="..\..\src\src\kissfft\kiss_fft.h"/>
+    <ClInclude Include="..\..\src\src\kissfft\kiss_fftr.h"/>
+    <ClInclude Include="..\..\src\src\speex\speex_resampler.h"/>
+    <ClInclude Include="..\..\src\src\StretchCalculator.h"/>
+    <ClInclude Include="..\..\src\src\StretcherChannelData.h"/>
+    <ClInclude Include="..\..\src\src\StretcherImpl.h"/>
+    <ClInclude Include="..\..\src\src\system\Allocators.h"/>
+    <ClInclude Include="..\..\src\src\system\sysutils.h"/>
+    <ClInclude Include="..\..\src\src\system\Thread.h"/>
+    <ClInclude Include="..\..\src\src\system\VectorOps.h"/>
+    <ClInclude Include="..\..\src\src\system\VectorOpsComplex.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\src\kissfft\COPYING"/>
+    <None Include="..\..\src\src\speex\COPYING"/>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

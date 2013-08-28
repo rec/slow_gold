@@ -45,10 +45,8 @@ RubberBandStretcher::Impl::ChannelData::construct(const std::set<size_t> &sizes,
                                                   size_t initialFftSize,
                                                   size_t outbufSize)
 {
-    size_t maxSize = initialWindowSize * 2;
+    size_t maxSize = initialWindowSize;
     if (initialFftSize > maxSize) maxSize = initialFftSize;
-
-//    std::cerr << "ChannelData::construct: initialWindowSize = " << initialWindowSize << ", initialFftSize = " << initialFftSize << ", outbufSize = " << outbufSize << std::endl;
 
     // std::set is ordered by value
     std::set<size_t>::const_iterator i = sizes.end();
@@ -60,7 +58,7 @@ RubberBandStretcher::Impl::ChannelData::construct(const std::set<size_t> &sizes,
     // max possible size of the real "half" of freq data
     size_t realSize = maxSize / 2 + 1;
 
-//    std::cerr << "ChannelData::construct([" << sizes.size() << "], " << maxSize << ", " << realSize << ", " << outbufSize << ")" << std::endl;
+//    std::cerr << "ChannelData::construct([" << sizes.size() << "], " << maxSize << ", " << outbufSize << ")" << std::endl;
     
     if (outbufSize < maxSize) outbufSize = maxSize;
 
@@ -110,9 +108,7 @@ void
 RubberBandStretcher::Impl::ChannelData::setSizes(size_t windowSize,
                                                  size_t fftSize)
 {
-//    std::cerr << "ChannelData::setSizes: windowSize = " << windowSize << ", fftSize = " << fftSize << std::endl;
-
-    size_t maxSize = 2 * std::max(windowSize, fftSize);
+    size_t maxSize = std::max(windowSize, fftSize);
     size_t realSize = maxSize / 2 + 1;
     size_t oldMax = inbuf->getSize();
     size_t oldReal = oldMax / 2 + 1;

@@ -14,6 +14,8 @@ cd glog
  && make clean\
  && make install\
  && make clean
+
+rm -Rf .deps
 cd ..
 
 cd mpg123
@@ -29,6 +31,8 @@ cd mpg123
  && make clean\
  && make install\
  && make clean
+
+rm -Rf src/.deps
 cd ..
 
 cd protobuf
@@ -40,4 +44,6 @@ cd protobuf
  && make clean\
  && make install\
  && make clean
+
+rm -Rf src/.deps
 cd ..
