@@ -69,6 +69,12 @@ Type* juceBinary(const char* resourceName) {
   return construct<Type>(resource, size);
 }
 
+string binaryString(const char* resourceName) {
+  int size;
+  const char* resource = BinaryData::getNamedResource(resourceName, size);
+  return string(resource, size);
+}
+
 }  // namespace util
 }  // namespace rec
 

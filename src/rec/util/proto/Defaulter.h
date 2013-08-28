@@ -2,6 +2,7 @@
 #define __REC_UTIL_DEFAULTER__
 
 #include "rec/base/base.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace util {
@@ -19,6 +20,10 @@ class Def {
   Proto proto_;
 };
 
+template <typename Proto>
+class DefBinary : public Def<Proto> {
+  explicit DefBinary(const char* rname) : Def<Proto>(binaryString(rname)) {}
+};
 
 }  // namespace util
 }  // namespace rec
