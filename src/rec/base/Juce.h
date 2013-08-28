@@ -92,22 +92,14 @@ typedef juce::WildcardFileFilter WildcardFileFilter;
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 
 inline string str(const String& s) {
-  return string(s.toUTF8());
+  return s.toStdString();
 }
 
 inline String str(const string& s) {
-  const char* p = s.c_str();
-  size_t size = s.size();
-  bool valid = CharPointer_UTF8::isValidString(p, size);
-  if (!valid) {
-    LOG(ERROR) << "Badly encoded string |" << s << "| " << s.size();
-    LOG(ERROR) << s[0] << ", " << s[1];
-  }
-  return valid ? String::fromUTF8(p, size) : "(badly encoded string)";
+  return String(s);
 }
 
 inline String str(const char* s) { return str(string(s)); }
-
 
 inline string str(const File& f) {
   return str(f.getFullPathName());
