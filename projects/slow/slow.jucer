@@ -19,11 +19,11 @@
         <CONFIGURATION customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../../build/Debug/gtest/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../.."
                        isDebug="1" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/rubberband/osx/ipp/Debug/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Debug" optimisation="1" osxArchitecture="default" osxCompatibility="default"
-                       osxSDK="default" targetName="SlowGold 8-debug"/>
+                       osxSDK="default" targetName="SlowGold 8-debug" cppLibType="libc++"/>
         <CONFIGURATION customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../.."
                        isDebug="0" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/rubberband/osx/ipp/Release/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Release" optimisation="2" osxArchitecture="default" osxCompatibility="default"
-                       osxSDK="default" targetName="SlowGold 8"/>
+                       osxSDK="default" targetName="SlowGold 8" cppLibType="libc++"/>
       </CONFIGURATIONS>
     </XCODE_MAC>
     <VS2010 bigIcon="wiIhPYIwK" extraCompilerFlags="/D GOOGLE_GLOG_DLL_DECL= /D GFLAGS_DLL_DECLARE_FLAG= /D GFLAGS_DLL_DEFINE_FLAG="

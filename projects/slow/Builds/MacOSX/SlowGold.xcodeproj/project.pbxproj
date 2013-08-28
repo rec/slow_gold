@@ -3783,6 +3783,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_LINK_OBJC_RUNTIME = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				OTHER_LDFLAGS = "-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/rubberband/osx/ipp/Debug/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");
@@ -3808,6 +3809,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_LINK_OBJC_RUNTIME = NO;
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				OTHER_LDFLAGS = "-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged";
 				LIBRARY_SEARCH_PATHS = ("$(inherited)", "\"../../../../externals/mac/glog/lib\"", "\"../../../../externals/mac/mpg123/lib\"", "\"../../../../externals/mac/protobuf/lib\"", "\"../../../../externals/rubberband/osx/ipp/Release/i386\"", "\"../../../../externals/rubberband/osx/ipp/common\"");

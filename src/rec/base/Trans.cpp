@@ -1,3 +1,4 @@
+#include <memory>
 #include <set>
 
 #include "rec/util/Copy.h"
@@ -8,6 +9,8 @@ using namespace juce;
 
 TRAN(OK, "OK");
 TRAN(CANCEL, "Cancel");
+
+std::unique_ptr<int> foo;
 
 namespace rec {
 

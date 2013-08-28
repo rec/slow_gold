@@ -371,7 +371,7 @@ CPPFLAGS =
 CXX = clang++
 CXXCPP = clang++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -arch i386 -O2
+CXXFLAGS = -arch i386 -O2 -std=c++11 -stdlib=libc++
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
