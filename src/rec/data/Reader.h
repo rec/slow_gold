@@ -24,7 +24,7 @@ class Reader {
   }
 
   Message* cloneMessage() const {
-    return proto_ ? clone(*proto_) : NULL;
+    return proto_ ? clone(*proto_) : nullptr;
   }
 
  protected:

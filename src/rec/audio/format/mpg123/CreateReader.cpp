@@ -38,7 +38,7 @@ Error createReader(InputStream* in,
                    AudioFormatReader** reader,
                    OutputFormat* begin,
                    OutputFormat* end) {
-  mpg123_handle *mh = NULL;
+  mpg123_handle *mh = nullptr;
 
   long sampleRate;
   int numChannels, encoding;

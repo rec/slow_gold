@@ -27,7 +27,7 @@ class RegisterProgram : public Thread {
   virtual void onSuccess() {}
   virtual int timeOut() const = 0;
   virtual URL::OpenStreamProgressCallback* progressCallback() const {
-    return NULL;
+    return nullptr;
   }
 
   virtual void run();

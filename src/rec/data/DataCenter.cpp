@@ -52,7 +52,7 @@ static DataCenter** getDC() {
 
 void deleteDataCenter() {
   delete *getDC();
-  *getDC() = NULL;
+  *getDC() = nullptr;
 }
 
 const DataCenter& getDataCenter() {

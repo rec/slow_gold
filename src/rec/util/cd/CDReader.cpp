@@ -21,7 +21,7 @@ AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
   int size = names.size();
   if (!size) {
     (*error) = t_NO_AVAILBLE;
-    return NULL;
+    return nullptr;
   }
 
   for (int i = 0; i < size; ++i) {
@@ -38,7 +38,7 @@ AudioCDReader* getAudioCDReader(const String& cdKey, String* error) {
   }
   LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
   (*error) = String::formatted(t_TRIED_TO_READ, c_str(String(id)), c_str(*error));
-  return NULL;
+  return nullptr;
 }
 
 AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track) {
@@ -46,7 +46,7 @@ AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track) {
   int trackIndex = getAudioTrackIndex(*r, track);
   if (trackIndex == -1) {
     LOG(DFATAL) << "No track " << track << " in " << reader->getCDDBId();
-    return NULL;
+    return nullptr;
   }
 
   int begin = r->getPositionOfTrackStart(trackIndex);
@@ -60,7 +60,7 @@ AudioFormatReader* createCDTrackReader(const String& cdKey, int track) {
     return createCDTrackReader(reader.transfer(), track);
 
   LOG(ERROR) << "Couldn't create reader for " << cdKey;
-  return NULL;
+  return nullptr;
 }
 
 int getAudioTrackIndex(const AudioCDReader& reader, int audioTrack) {

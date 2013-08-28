@@ -17,7 +17,7 @@ namespace tree {
 class Node : public juce::TreeViewItem,
              public Broadcaster<const VirtualFile&> {
  public:
-  Node(const NodeDesc& d, const VirtualFile& vf, const char* name = NULL);
+  Node(const NodeDesc& d, const VirtualFile& vf, const char* name = nullptr);
 
   virtual void requestChildren() {}
 

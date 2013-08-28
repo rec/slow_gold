@@ -13,7 +13,7 @@ using namespace juce;
 SupportWindow::SupportWindow(app::GenericApplication* application)
     : app::Window(application, "SupportRequest", Colours::azure,
                   DocumentWindow::allButtons, true),
-      HasInstance(NULL) {
+      HasInstance(nullptr) {
 }
 
 SupportWindow::~SupportWindow() {}

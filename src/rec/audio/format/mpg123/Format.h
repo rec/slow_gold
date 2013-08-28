@@ -24,7 +24,7 @@ class Format : public juce::AudioFormat {
                                                    int /* bitsPerSample */,
                                                    const StringPairArray& /* meta */,
                                                    int /* quality */) {
-    return NULL;
+    return nullptr;
   }
 
   juce::Array<int> getPossibleSampleRates();

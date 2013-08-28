@@ -66,7 +66,7 @@ void redirectLogs(const File& appDir) {
 SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", Colours::azure,
                   DocumentWindow::allButtons, true),
-      HasInstance(NULL),
+      HasInstance(nullptr),
       startupFinished_(false) {
   bool check = data::getProto<GuiSettings>().auto_check_for_updates();
   application->setAutoCheckForUpdates(check);
@@ -123,7 +123,7 @@ void SlowWindow::doPostStartup() {
 
 void SlowWindow::doShutdown() {
   instance_->reset();
-  instance_ = NULL;
+  instance_ = nullptr;
   instanceDeleter_.reset();
 }
 

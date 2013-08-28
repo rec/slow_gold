@@ -79,7 +79,7 @@ MessageField createMessageField(const Address& address, const Message& msg) {
   MessageField field;
   field.message_ = const_cast<Message*>(&msg);
   field.index_ = -1;
-  field.field_ = NULL;
+  field.field_ = nullptr;
   field.type_ = MessageField::SINGLE;
 
   for (int i = 0; field.message_ && i < address.part_size(); ++i) {

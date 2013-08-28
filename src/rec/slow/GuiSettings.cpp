@@ -27,7 +27,7 @@ File browseForFileTreeView(const String& msg, const File& startFile,
 
   WildcardFileFilter wildFilter(filter, "", "");
 
-  FileBrowserComponent fileBrowser(flags, startFile, &wildFilter, NULL);
+  FileBrowserComponent fileBrowser(flags, startFile, &wildFilter, nullptr);
   FileChooserDialogBox dialogBox(msg, "", fileBrowser, true, Colours::white);
   return dialogBox.show() ? fileBrowser.getSelectedFile(0) : File::nonexistent;
 }

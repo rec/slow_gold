@@ -17,7 +17,7 @@ class CommandTarget : public slow::HasInstance,
                       public Listener<Enable> {
  public:
   CommandTarget(slow::Instance* i) : slow::HasInstance(i), enable_(ENABLE) {}
-  virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
+  virtual ApplicationCommandTarget* getNextCommandTarget() { return nullptr; }
 
   virtual void getAllCommands(juce::Array<CommandID>&);
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);

@@ -11,7 +11,7 @@ Layout::Layout(const String& name,
       SizeHintAccumulator(o),
       orientation_(o),
       resizeOtherDimension_(resizeOther),
-      cache_(NULL) {
+      cache_(nullptr) {
 }
 
 void Layout::addToLayout(Component* c) {

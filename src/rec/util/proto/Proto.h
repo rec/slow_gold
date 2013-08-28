@@ -23,7 +23,7 @@ inline Message* clone(const Message& m) {
 }
 
 inline Message* clone(const Message* m) {
-  return m ? clone(*m) : NULL;
+  return m ? clone(*m) : nullptr;
 }
 
 }  // namespace util

@@ -41,7 +41,7 @@ class MenuMaker : public HasInstance {
   void addRepeat(command::Command::Type,
                  int slot,
                  const String& name = String::empty,
-                 PopupMenu* m = NULL,
+                 PopupMenu* m = nullptr,
                  int flags = -1);
 
  protected:

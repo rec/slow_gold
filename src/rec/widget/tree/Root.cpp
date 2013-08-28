@@ -134,9 +134,9 @@ void Root::mouseDoubleClick(const juce::MouseEvent&) {
 
 void Root::mergeNewIntoOld(file::VirtualFileList volumes) {
   for (int i = 0, j = 0; i < volumes.file_size() || j < getNumNodes(); ++i) {
-    const VirtualFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : NULL;
-    const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;
-    const VirtualFile* v2 = n ? &(n->virtualFile()) : NULL;
+    const VirtualFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : nullptr;
+    const Node* n = (j < getNumNodes()) ? getNode(j) : nullptr;
+    const VirtualFile* v2 = n ? &(n->virtualFile()) : nullptr;
 
     if (!v1)
       root_.removeSubItem(j);

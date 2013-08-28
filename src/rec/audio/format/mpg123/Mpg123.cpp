@@ -53,7 +53,7 @@ void exitOnce() {
 }
 
 StringArray getMp3FileExtensions() {
-  static const char* const extensions[] = {".mp3", ".mp2", ".mp1", NULL};
+  static const char* const extensions[] = {".mp3", ".mp2", ".mp1", nullptr};
   return StringArray(extensions);
 }
 

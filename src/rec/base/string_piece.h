@@ -38,9 +38,9 @@ class StringPiece {
   // We provide non-explicit singleton constructors so users can pass
   // in a "const char*" or a "string" wherever a "StringPiece" is
   // expected.
-  StringPiece() : ptr_(NULL), length_(0) { }
+  StringPiece() : ptr_(nullptr), length_(0) { }
   StringPiece(const char* str)
-    : ptr_(str), length_((str == NULL) ? 0 : strlen(str)) { }
+    : ptr_(str), length_((str == nullptr) ? 0 : strlen(str)) { }
   StringPiece(const std::string& str)
     : ptr_(str.data()), length_(str.size()) { }
   StringPiece(const char* offset, size_type len)
@@ -56,7 +56,7 @@ class StringPiece {
   bool empty() const { return length_ == 0; }
 
   void clear() {
-    ptr_ = NULL;
+    ptr_ = nullptr;
     length_ = 0;
   }
   void set(const char* data, size_type len) {
@@ -102,7 +102,7 @@ class StringPiece {
   }
 
   std::string as_string() const {
-    // string doesn't like to take a NULL pointer even with a 0 size.
+    // string doesn't like to take a nullptr pointer even with a 0 size.
     return std::string(!empty() ? data() : "", size());
   }
 

@@ -11,7 +11,7 @@ namespace data {
 
 class DataSet : public HasLock {
  public:
-  DataSet() : thread_(NULL) {}
+  DataSet() : thread_(nullptr) {}
 
   typedef std::set<Data*> Set;
   Set* transfer();

@@ -29,7 +29,7 @@ void addFiles(const File& root, Builder* builder, int cmp = COMPRESSION_LEVEL) {
   int toFind = File::findFilesAndDirectories + File::ignoreHiddenFiles;
   DirectoryIterator it(root, true, "*", toFind);
 
-  for (bool isDir; it.next(&isDir, NULL, NULL, NULL, NULL, NULL); ) {
+  for (bool isDir; it.next(&isDir, nullptr, nullptr, nullptr, nullptr, nullptr); ) {
     File f = it.getFile();
     if (!isDir && mustZip(f))
       builder->addFile(f, cmp, f.getRelativePathFrom(root));
@@ -37,11 +37,11 @@ void addFiles(const File& root, Builder* builder, int cmp = COMPRESSION_LEVEL) {
 }
 
 #ifdef SHOULD_REMOVE
-    
+
 File writeZipFile(const Builder& builder, const String& name) {
   File f = zipFileName(name);
   FileOutputStream output(f);
-  if (builder.writeToStream(output, NULL))
+  if (builder.writeToStream(output, nullptr))
     return f;
 
   LOG(ERROR) << "Couldn't write to " << str(f);
@@ -52,7 +52,7 @@ File writeZipFile(const Builder& builder, const String& name) {
 File writeZipFile(const Builder& builder, const File& file) {
   File f = file.withFileExtension(".zip");
   FileOutputStream output(f);
-  return builder.writeToStream(output, NULL) ? f : File::nonexistent;
+  return builder.writeToStream(output, nullptr) ? f : File::nonexistent;
 }
 
 }  // namespace

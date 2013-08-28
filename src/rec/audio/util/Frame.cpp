@@ -24,7 +24,7 @@ void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
 
 template <typename Frame>
 Frames<Frame>::Frames(SampleTime length)
-    : length_(0), allocatedLength_(0), frames_(NULL) {
+    : length_(0), allocatedLength_(0), frames_(nullptr) {
   setLength(length);
 }
 
@@ -69,7 +69,7 @@ template class Frames< InterleavedFrame<float, 2> >;
 
 template <typename Sample, int CHANNELS>
 struct ParallelFrame {
-  ParallelFrame() : channels_(CHANNELS), sample_(NULL) {}
+  ParallelFrame() : channels_(CHANNELS), sample_(nullptr) {}
   ParallelFrame(Sample** sample) : channels_(CHANNELS), sample_(sample) {}
 
   const int channels_;

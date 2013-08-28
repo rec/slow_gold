@@ -50,7 +50,7 @@ Message* MessageRegistrarAndMaker::makeMessage(const string& typeName) const {
     return i->second->makeMessage();
 
   LOG(DFATAL) << "Couldn't find data type " << typeName;
-  return NULL;
+  return nullptr;
 }
 
 }  // namespace util

@@ -39,7 +39,7 @@ class Waveform : public Component,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&> {
  public:
-  Waveform(MenuBarModel* model = NULL);
+  Waveform(MenuBarModel* model = nullptr);
   virtual ~Waveform();
   void init();
 

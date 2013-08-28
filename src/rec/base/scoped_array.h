@@ -9,7 +9,7 @@
 // with new [] and the destructor deletes objects with delete [].
 //
 // As with scoped_ptr<C>, a scoped_array<C> either points to an object
-// or is NULL.  A scoped_array<C> owns the object that it points to.
+// or is nullptr.  A scoped_array<C> owns the object that it points to.
 //
 // Size: sizeof(scoped_array<C>) == sizeof(C*)
 template <class C>
@@ -19,13 +19,13 @@ class scoped_array {
   // The element type
   typedef C element_type;
 
-  // Constructor.  Defaults to intializing with NULL.
+  // Constructor.  Defaults to intializing with nullptr.
   // There is no way to create an uninitialized scoped_array.
   // The input parameter must be allocated with new [].
-  explicit scoped_array(C* p = NULL) : array_(p) { }
+  explicit scoped_array(C* p = nullptr) : array_(p) { }
 
   // Destructor.  If there is a C object, delete it.
-  // We don't need to test ptr_ == NULL because C++ does that for us.
+  // We don't need to test ptr_ == nullptr because C++ does that for us.
   ~scoped_array() {
     enum { type_must_be_complete = sizeof(C) };
     delete[] array_;
@@ -34,7 +34,7 @@ class scoped_array {
   // Reset.  Deletes the current owned object, if any.
   // Then takes ownership of a new object, if given.
   // this->reset(this->get()) works.
-  void reset(C* p = NULL) {
+  void reset(C* p = nullptr) {
     if (p != array_) {
       enum { type_must_be_complete = sizeof(C) };
       delete[] array_;
@@ -46,12 +46,12 @@ class scoped_array {
   // Will DCHECK() if there is no current object, or index i is negative.
   C& operator[](std::ptrdiff_t i) const {
     DCHECK(i >= 0);
-    DCHECK(array_ != NULL);
+    DCHECK(array_ != nullptr);
     return array_[i];
   }
 
   // Get a pointer to the zeroth element of the current object.
-  // If there is no current object, return NULL.
+  // If there is no current object, return nullptr.
   C* get() const {
     return array_;
   }
@@ -71,12 +71,12 @@ class scoped_array {
 
   // Release an array.
   // The return value is the current pointer held by this object.
-  // If this object holds a NULL pointer, the return value is NULL.
-  // After this operation, this object will hold a NULL pointer,
+  // If this object holds a nullptr pointer, the return value is nullptr.
+  // After this operation, this object will hold a nullptr pointer,
   // and will not own the object any more.
   C* release() {
     C* retVal = array_;
-    array_ = NULL;
+    array_ = nullptr;
     return retVal;
   }
 

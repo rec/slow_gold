@@ -16,7 +16,7 @@ namespace tree {
 Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
     : desc_(d),
       virtualFile_(vf),
-      icon_(NULL),
+      icon_(nullptr),
       font_(gui::getFont(desc_.widget().font())),
       topSelection_(false),
       topLevel_(false),

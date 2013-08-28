@@ -33,7 +33,7 @@ StringMap* makeStringMap(const TranslatedStrings& ts) {
 
 struct Translations {
   Translations() : maps_(app::AppSettings::LAST + 1) {
-    maps_[app::AppSettings::NONE] = NULL;
+    maps_[app::AppSettings::NONE] = nullptr;
     maps_[app::AppSettings::DE] = makeStringMap(*deTranslatedStrings);
     maps_[app::AppSettings::EN] = makeStringMap(*enTranslatedStrings);
     maps_[app::AppSettings::ES] = makeStringMap(*esTranslatedStrings);

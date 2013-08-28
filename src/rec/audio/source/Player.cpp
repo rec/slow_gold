@@ -17,7 +17,7 @@ Player::Player(Device* d) : device_(d) {}
 void Player::init() {
   doLog("Player::init");
   doLog("Timer::init");
-  timer_ = new Timer(NULL);
+  timer_ = new Timer(nullptr);
   doLog("Selection::init");
   selection_ = new Selection(timer_);
   doLog("Stretchy::Stretchy");
@@ -38,7 +38,7 @@ void Player::init() {
 
 
 Player::~Player() {
-  transportSource_.setSource(NULL);
+  transportSource_.setSource(nullptr);
 }
 
 SampleTime Player::getNextReadPosition() {

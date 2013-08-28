@@ -25,7 +25,7 @@ Broadcaster<const VirtualFile&>* fileListener() {
 }  // namespace
 
 UntypedDataListener::UntypedDataListener(const string& tn, Scope scope)
-    : scope_(scope), typeName_(tn), data_(NULL) {
+    : scope_(scope), typeName_(tn), data_(nullptr) {
   fileListener()->addListener(this);
 }
 

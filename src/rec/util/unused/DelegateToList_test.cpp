@@ -24,7 +24,7 @@ TEST(DelegateToList, All) {
   c3.set_margin(5);
   c4.set_transparent(false);
 
-  Widget* begin[] = {&c1, &c2, NULL, &c2, &c3, &c4};
+  Widget* begin[] = {&c1, &c2, nullptr, &c2, &c3, &c4};
   Widget** end = begin + arraysize(begin);
 
   const Colors& colors = delegateToList(&Widget::colors,

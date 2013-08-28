@@ -139,7 +139,7 @@ Component* TableController::refreshComponentForCell(int row, int columnId,
   if (!text) {
     DCHECK(!existing);
     if (!editable(column))
-      return NULL;
+      return nullptr;
     text = new TableLabel(this, column, row);
   } else {
     text->col_ = column;

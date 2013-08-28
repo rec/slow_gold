@@ -41,11 +41,11 @@ off_t seek(void *inputStream, off_t off, int whence) {
 
 Error newHandle(InputStream* in, mpg123_handle** result) {
   Error e;
-  mpg123_handle* mh = NULL;
+  mpg123_handle* mh = nullptr;
 
   if (!(e = initializeOnce()) &&
-      (mh = mpg123_new(NULL, &e)) &&
-      !(e = mpg123_replace_reader_handle(mh, read, seek, NULL)) &&
+      (mh = mpg123_new(nullptr, &e)) &&
+      !(e = mpg123_replace_reader_handle(mh, read, seek, nullptr)) &&
       !(e = mpg123_open_handle(mh, in)))
     *result = mh;
 

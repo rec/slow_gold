@@ -7,7 +7,7 @@ void setButtonImages(DrawableButton* b, const string& normal,
                      const string& disabled) {
   ptr<Drawable> n(construct<Drawable>(normal));
   ptr<Drawable> d(construct<Drawable>(disabled));
-  b->setImages(n.get(), NULL, NULL, d.get());
+  b->setImages(n.get(), nullptr, nullptr, d.get());
 }
 
 void setButtonImages(DrawableButton* b, const string& normal,
@@ -15,7 +15,7 @@ void setButtonImages(DrawableButton* b, const string& normal,
   ptr<Drawable> n(construct<Drawable>(normal));
   ptr<Drawable> d(construct<Drawable>(disabled));
   ptr<Drawable> p(construct<Drawable>(pressed));
-  b->setImages(n.get(), NULL, p.get(), d.get());
+  b->setImages(n.get(), nullptr, p.get(), d.get());
 }
 
 void setButtonImagesAlternate(DrawableButton* b, const string& normal,
@@ -23,7 +23,7 @@ void setButtonImagesAlternate(DrawableButton* b, const string& normal,
   ptr<Drawable> n(construct<Drawable>(normal));
   ptr<Drawable> d(construct<Drawable>(disabled));
   ptr<Drawable> a(construct<Drawable>(alternate));
-  b->setImages(n.get(), NULL, NULL, d.get(), a.get());
+  b->setImages(n.get(), nullptr, nullptr, d.get(), a.get());
 }
 
 

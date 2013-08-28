@@ -13,7 +13,7 @@ Format::~Format() {}
 
 AudioFormatReader* Format::createReaderFor(InputStream* sourceStream,
                                            bool deleteStreamIfOpeningFails) {
-  AudioFormatReader* reader = NULL;
+  AudioFormatReader* reader = nullptr;
   if (Error e = createReader(sourceStream, &reader)) {
     std::cerr << "mpg123 create error:" << mpg123_plain_strerror(e) << "\n";
     if (deleteStreamIfOpeningFails)

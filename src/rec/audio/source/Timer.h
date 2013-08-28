@@ -11,7 +11,7 @@ namespace source {
 
 class Timer : public Wrappy, public Broadcaster<SampleTime > {
  public:
-  explicit Timer(PositionableAudioSource* s) : Wrappy(s), thread_(NULL) {}
+  explicit Timer(PositionableAudioSource* s) : Wrappy(s), thread_(nullptr) {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     Wrappy::getNextAudioBlock(i);

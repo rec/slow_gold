@@ -13,7 +13,7 @@ namespace rec {
 namespace data {
 
 DataUpdater::DataUpdater()
-  : map_(NULL), update_(new DataSet), write_(new DataSet) {
+  : map_(nullptr), update_(new DataSet), write_(new DataSet) {
 }
 
 DataUpdater::~DataUpdater() {}

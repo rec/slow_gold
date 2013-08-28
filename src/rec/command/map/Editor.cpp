@@ -124,7 +124,7 @@ juce::AlertWindow* Editor::newWindow() {
 }
 
 void Editor::parentHierarchyChanged() {
-  // topLevelItem_->changeListenerCallback(NULL); // TODO
+  // topLevelItem_->changeListenerCallback(nullptr); // TODO
 }
 
 void Editor::resized() {
@@ -161,7 +161,7 @@ void Editor::resized() {
 namespace {
 
 struct CompareCommands {
-  explicit CompareCommands(ApplicationCommandManager* manager = NULL)
+  explicit CompareCommands(ApplicationCommandManager* manager = nullptr)
       : manager_(manager) {
   }
 
@@ -191,7 +191,7 @@ void Editor::fillTopLevelItem() {
     Array<CommandID> commands(commandManager_->getCommandsInCategory(cat));
     std::sort(commands.begin(), commands.end(),
               CompareCommands(commandManager_));
-    TreeViewItem* categoryItem = NULL;
+    TreeViewItem* categoryItem = nullptr;
 
     for (int j = commands.size() - 1; j >= 0; --j) {
       ID id = commands[j];

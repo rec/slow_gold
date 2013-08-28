@@ -10,7 +10,7 @@ namespace slow {
 
 class HasInstance {
  public:
-  explicit HasInstance(Instance* i = NULL) : instance_(i) {}
+  explicit HasInstance(Instance* i = nullptr) : instance_(i) {}
 
   audio::util::BufferFiller* bufferFiller() { return instance_->bufferFiller_.get(); }
   Components* components() { return instance_->components_.get(); }

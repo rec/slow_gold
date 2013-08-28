@@ -17,7 +17,7 @@ void mergeAtEnd(typename Range<Type>::Vector* c, const Range<Type>& r) {
 
 template <typename Type, typename Container>
 Container merge(const Container& x, const Container& y) {
-  Range<Type>* prev = NULL;
+  Range<Type>* prev = nullptr;
   Container result;
   typename Container::const_iterator i = x.begin(), j = y.begin();
 

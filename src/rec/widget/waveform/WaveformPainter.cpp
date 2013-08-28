@@ -24,7 +24,7 @@ const int64 SMALLEST_TIME_SAMPLES = 10000;
 using juce::Rectangle;
 
 WaveformPainter::WaveformPainter(Waveform* w)
-    : waveform_(w), thumbnail_(NULL), model_(w->model()){
+    : waveform_(w), thumbnail_(nullptr), model_(w->model()){
 }
 
 WaveformPainter::~WaveformPainter() {}

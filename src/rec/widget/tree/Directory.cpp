@@ -18,7 +18,7 @@ namespace tree {
 
 Directory::Directory(const NodeDesc& d, const VirtualFile& vf)
     : Node(d, vf),
-      children_(NULL),
+      children_(nullptr),
       isOpen_(false),
       childrenRequested_(false),
       childrenStarted_(false) {

@@ -38,7 +38,7 @@ bool displayEditorWindow(command::Editor* editor,
   editor->setBounds(0, 0, EDITOR_WIDTH, EDITOR_HEIGHT);
 
   l.setModalComponent(editor);
-  juce::DialogWindow::showModalDialog(title, editor, NULL, juce::Colours::white,
+  juce::DialogWindow::showModalDialog(title, editor, nullptr, juce::Colours::white,
                                       true, true, true);
   return editor->wasChanged();
 }

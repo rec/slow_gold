@@ -17,7 +17,7 @@ class Loops : public TableController,
               public app::LanguageListener,
               public HasCuttable {
  public:
-  explicit Loops(const TableColumnList* desc = NULL,
+  explicit Loops(const TableColumnList* desc = nullptr,
                  const data::Address& partAddress = data::Address("loop_points")
                  + data::Address("loop_point"));
   virtual ~Loops();

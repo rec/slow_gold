@@ -45,7 +45,7 @@ bool isReadyForUpdate() {
 }
 
 String getVersion() {
-  ptr<InputStream> stream(VERSION_FILE.createInputStream(false, NULL, NULL, "",
+  ptr<InputStream> stream(VERSION_FILE.createInputStream(false, nullptr, nullptr, "",
                                                          SOCKET_TIMEOUT_MS));
 
   return stream ? stream->readEntireStreamAsString() : String("");

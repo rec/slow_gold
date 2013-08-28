@@ -22,7 +22,7 @@ enum ColorName {
 class Painter {
  public:
   Painter(const Widget& widget, juce::Graphics* g,
-          const StateColors* stateColors = NULL)
+          const StateColors* stateColors = nullptr)
       : widget_(widget),
         graphics_(*g),
         font_(g->getCurrentFont()),

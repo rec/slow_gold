@@ -36,7 +36,7 @@ AudioFormatWriter* createWriter(const File& f) {
 
   if (!fmt) {
     LOG(ERROR) << "Unable to open file " << str(f);
-    return NULL;
+    return nullptr;
   }
 
   f.deleteFile();

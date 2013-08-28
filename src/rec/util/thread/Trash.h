@@ -38,7 +38,7 @@ public:
 
   ~thread_ptr() { reset(); }
 
-  void reset(Type* p = NULL) {
+  void reset(Type* p = nullptr) {
     if (p != this->get()) {
       thread::trash::discard(this->transfer());
       ptr<Type>::reset(p);

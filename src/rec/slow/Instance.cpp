@@ -83,7 +83,7 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
   }
 };
 
-Instance* INSTANCE = NULL;
+Instance* INSTANCE = nullptr;
 
 #if JUCE_WINDOWS
 

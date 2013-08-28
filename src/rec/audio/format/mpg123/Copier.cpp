@@ -64,7 +64,7 @@ Copier getCopier(int encoding) {
    case MPG123_ENC_UNSIGNED_32:  return &Copy<uint, int>::copy;
    case MPG123_ENC_UNSIGNED_8:   return &Copy<uchar, int>::copy;
 
-   default: return NULL;
+   default: return nullptr;
   }
 }
 

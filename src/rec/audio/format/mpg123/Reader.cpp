@@ -16,7 +16,7 @@ Reader::Reader(InputStream* in, const String& formatName, mpg123_handle* mh,
                Copier copier)
   : AudioFormatReader(in, formatName),
     mh_(mh),
-    buffer_(NULL),
+    buffer_(nullptr),
     size_(0),
     allocated_(0),
     copier_(copier) {

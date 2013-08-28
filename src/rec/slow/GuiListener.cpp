@@ -15,8 +15,8 @@ using namespace juce;
 static const int MS_TILL_TOOLTIP = 700;
 
 GuiListener::GuiListener(Instance* i)
-    : HasInstance(i), displayHelpPane_(false), lastComponent_(NULL),
-      lastFocus_(NULL) {
+    : HasInstance(i), displayHelpPane_(false), lastComponent_(nullptr),
+      lastFocus_(nullptr) {
 }
 
 void GuiListener::operator()(const GuiSettings& settings) {
@@ -24,7 +24,7 @@ void GuiListener::operator()(const GuiSettings& settings) {
     tooltipWindow_.reset();
 
   } else if (!tooltipWindow_) {
-    tooltipWindow_.reset(new TooltipWindow(NULL, MS_TILL_TOOLTIP));
+    tooltipWindow_.reset(new TooltipWindow(nullptr, MS_TILL_TOOLTIP));
   }
 
   Lock l(lock_);

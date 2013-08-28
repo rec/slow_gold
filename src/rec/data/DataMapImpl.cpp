@@ -40,7 +40,7 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile& vf) {
   ptr<Message> msg(messageMaker_->makeMessage(typeName));
   if (!msg) {
     LOG(DFATAL) << "Unable to make messages for " << typeName;
-    return NULL;
+    return nullptr;
   }
 
   DCHECK_EQ(typeName, getTypeName(*msg));
@@ -48,7 +48,7 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile& vf) {
   Data* data = dataMaker_->makeData(msg.transfer(), file, isEmpty, key);
   if (!data) {
     LOG(DFATAL) << "Unable to make data for " << typeName;
-    return NULL;
+    return nullptr;
   }
 
   DataRecord* df = new DataRecord(data, file);

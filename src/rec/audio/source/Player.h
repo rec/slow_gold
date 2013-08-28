@@ -26,7 +26,7 @@ class StereoProto;
 // Plays an original master source!
 // Player has the following source chain:
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
-// where the stretchy component will be NULL if no stretch has been requested.
+// where the stretchy component will be nullptr if no stretch has been requested.
 class Player : public DataListener<Gain>,
                public DataListener<widget::waveform::Viewport>,
                public DataListener<StereoProto>,

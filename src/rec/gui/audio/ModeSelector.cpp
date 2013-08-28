@@ -58,7 +58,7 @@ ModeSelector::ModeSelector()
 
 LanguageButton* ModeSelector::getButton(Mode::Action action) {
   ButtonMap::iterator i = buttons_.find(action);
-  return (i == buttons_.end()) ? NULL : i->second;
+  return (i == buttons_.end()) ? nullptr : i->second;
 }
 
 void ModeSelector::operator()(const Mode& mode) {

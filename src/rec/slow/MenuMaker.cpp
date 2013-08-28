@@ -54,7 +54,7 @@ void MenuMaker::addFull(command::ID id,
 }
 
 void MenuMaker::addBasic(command::ID commandName) {
-  addFull(commandName, String::empty, ENABLE, NULL, -1);
+  addFull(commandName, String::empty, ENABLE, nullptr, -1);
 }
 
 void MenuMaker::addRepeat(Command::Type command,
@@ -76,7 +76,7 @@ void MenuMaker::addEnabled(Command::Type command, Enable enable) {
 
 void MenuMaker::addEnabledName(Command::Type cmd, Enable enable,
                                const String& name) {
-  addFull(cmd, name, enable, NULL, DEFAULT_FLAGS);
+  addFull(cmd, name, enable, nullptr, DEFAULT_FLAGS);
 }
 
 void MenuMaker::addBank(Command::Type command, const String& name) {

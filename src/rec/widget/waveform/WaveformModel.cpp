@@ -91,8 +91,8 @@ bool WaveformModel::setViewport(const Viewport& vp) {
 void WaveformModel::layout(Component* waveform) {
   using namespace rec::gui::audio;
 
-  CommandBar* cb = NULL;
-  ModeSelector* ms = NULL;
+  CommandBar* cb = nullptr;
+  ModeSelector* ms = nullptr;
   int w = waveform->getWidth(), h = waveform->getHeight();
 
   for (int i = 0; i < waveform->getNumChildComponents(); ++i) {

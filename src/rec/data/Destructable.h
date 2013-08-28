@@ -13,7 +13,7 @@ class destruct_ptr<Type> {
 
   ~destruct_ptr() { destroy(); }
 
-  void reset(Type* p = NULL) {
+  void reset(Type* p = nullptr) {
     if (p != p_) {
       destroy();
       p_ = p;
@@ -27,7 +27,7 @@ class destruct_ptr<Type> {
 
   Type* transfer() {
     Type* p = p_;
-    p_ = NULL;
+    p_ = nullptr;
     return p;
   }
 
@@ -39,7 +39,7 @@ class destruct_ptr<Type> {
     this->p_ = tmp;
   }
 
-  operator bool() const { return p_ != NULL; }
+  operator bool() const { return p_ != nullptr; }
   bool operator!() const { return !p_; }
 
  private:

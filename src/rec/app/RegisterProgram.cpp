@@ -42,7 +42,7 @@ bool RegisterProgram::tryOneUrl(const String& urlName) {
   ptr<InputStream> stream(url.createInputStream(USE_POSTDATA,
                                                 progressCallback(),
                                                 this, "", timeOut(),
-                                                NULL));
+                                                nullptr));
   if (!stream) {
     LOG(ERROR) << "Couldn't create input stream for URL " << url.toString(true);
     return false;

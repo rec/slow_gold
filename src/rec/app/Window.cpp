@@ -22,7 +22,7 @@ void Window::initialise() {
 
 #if JUCE_MAC
   juce::MenuBarModel::setMacMainMenu(getMenuBarModel(), &menu_);
-  setMenuBar(NULL);
+  setMenuBar(nullptr);
 #else
   setMenuBar(getMenuBarModel());
 #endif
@@ -50,9 +50,9 @@ void Window::shutdown() {
   GuiWriteable::setWriteableAll(false);
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
     // Why isn't this in GenericApplication?
-  MenuBarModel::setMacMainMenu(NULL);
+  MenuBarModel::setMacMainMenu(nullptr);
 #endif
-  setMenuBar(NULL);
+  setMenuBar(nullptr);
   doShutdown();
 }
 

@@ -21,7 +21,7 @@ CommandRecord* CommandRecordTable::locate(ID id, bool mustExist,
     return i->second;
   }
   if (mustExist)
-    return NULL;
+    return nullptr;
 
   ptr<CommandRecord> rec(new CommandRecord(id));
   table_.insert(i, std::make_pair(id, rec.get()));

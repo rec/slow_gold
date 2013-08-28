@@ -14,7 +14,7 @@ namespace {
 
 CriticalSection lock;
 bool openDialogOpen = false;
-Component* modal = NULL;
+Component* modal = nullptr;
 
 class ModalKiller : public juce::DeletedAtShutdown {
  public:
@@ -24,12 +24,12 @@ class ModalKiller : public juce::DeletedAtShutdown {
       modal->exitModalState(0);
       Thread::sleep(1000);
       delete modal;
-      modal = NULL;
+      modal = nullptr;
     }
   }
 };
 
-ModalKiller* modalKiller = NULL;
+ModalKiller* modalKiller = nullptr;
 
 }  // namespace
 
@@ -74,7 +74,7 @@ DialogLocker::~DialogLocker() {
     Lock l(lock);
     if (locked_) {
       openDialogOpen = false;
-      modal = NULL;
+      modal = nullptr;
     }
   }
   getDisableBroadcaster()->broadcast(ENABLE);
@@ -139,7 +139,7 @@ bool openOneAudioFile(Listener<const VirtualFile&>* listener) {
 
 void shutdownDialog() {
   delete modal;
-  modal = NULL;
+  modal = nullptr;
 }
 
 template bool openVirtualFile(Listener<const File&>* listener,

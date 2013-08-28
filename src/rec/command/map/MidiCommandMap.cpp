@@ -9,7 +9,7 @@ namespace rec {
 namespace command {
 
 MidiCommandMap::MidiCommandMap(ApplicationCommandManager* m)
-    : manager_(m), listener_(NULL), enable_(true) {
+    : manager_(m), listener_(nullptr), enable_(true) {
 }
 
 void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
@@ -18,7 +18,7 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
   {
     Lock l(lock_);
     listener = listener_;
-    listener_ = NULL;
+    listener_ = nullptr;
   }
 
   if (listener)
@@ -30,7 +30,7 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
 #ifdef FAKE_MIDI
 static void fakeMidi(MidiCommandMap* mcm) {
   Thread::sleep(2000);
-  mcm->handleIncomingMidiMessage(NULL,
+  mcm->handleIncomingMidiMessage(nullptr,
                                  MidiMessage::noteOn(1, 10,
                                                      static_cast<uint8>(64)));
 }

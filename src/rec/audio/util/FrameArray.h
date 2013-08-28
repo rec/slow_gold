@@ -11,7 +11,7 @@ struct FrameArray {
   SampleTime length_, allocatedLength_;
   Frame* frames_;
 
-  FrameArray() : length_(0), allocatedLength_(0), frames_(NULL) {}
+  FrameArray() : length_(0), allocatedLength_(0), frames_(nullptr) {}
 
   bool reallocate(SampleTime newLength) {
     if (newLength > allocatedLength_) {
@@ -27,7 +27,7 @@ struct FrameArray {
 
   bool deallocate() {
     free(frames_);
-    frames_ = NULL;
+    frames_ = nullptr;
   }
 };
 

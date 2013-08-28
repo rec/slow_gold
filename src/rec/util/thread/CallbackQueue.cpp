@@ -12,7 +12,7 @@ namespace {
 const int THREAD_SLEEP = 50;
 
 struct HasOwner {
-  explicit HasOwner(void* owner = NULL) : owner_(owner) {}
+  explicit HasOwner(void* owner = nullptr) : owner_(owner) {}
   bool operator()(const HasOwner* that) { return owner_ == that->owner_; }
   void* owner_;
 };

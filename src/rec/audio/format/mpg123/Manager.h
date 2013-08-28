@@ -20,7 +20,7 @@ class Format : public AudioFormat {
 
   virtual AudioFormatReader* createReaderFor(InputStream* sourceStream,
                                              bool deleteStreamIfOpeningFails) {
-    AudioFormatReader* reader = NULL;
+    AudioFormatReader* reader = nullptr;
     if (Error e = createReader(sourceStream, &reader)) {
       std::cerr << "mpg123 create error:" << mpg123_plain_strerror(e) << "\n";
       if (deleteStreamIfOpeningFails)
@@ -36,7 +36,7 @@ class Format : public AudioFormat {
                                              int bitsPerSample,
                                              const StringPairArray& metadata,
                                              int qualityOptionIndex) {
-    return NULL;
+    return nullptr;
   }
 
   virtual const Array<int> getPossibleSampleRates() { return getSampleRates(); }

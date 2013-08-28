@@ -30,7 +30,7 @@ void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
 
   int64 timestamp = juce::Time::currentTimeMillis();
   RecentFiles rf = data::getProto<RecentFiles>();
-  RecentFile* r = NULL;
+  RecentFile* r = nullptr;
   for (int i = 0; i < rf.file_size(); ++i) {
     const RecentFile& file = rf.file(i);
     if (file.file() == f) {

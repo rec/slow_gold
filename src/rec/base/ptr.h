@@ -14,7 +14,7 @@ class ptr {
 
   ~ptr() { delete p_; }
 
-  void reset(Type* p = NULL) {
+  void reset(Type* p = nullptr) {
     if (p != p_) {
       delete p_;
       p_ = p;
@@ -28,7 +28,7 @@ class ptr {
 
   Type* transfer() {
     Type* p = p_;
-    p_ = NULL;
+    p_ = nullptr;
     return p;
   }
 
@@ -40,7 +40,7 @@ class ptr {
     this->p_ = tmp;
   }
 
-  operator bool() const { return p_ != NULL; }
+  operator bool() const { return p_ != nullptr; }
   bool operator!() const { return !p_; }
 
  private:

@@ -80,10 +80,10 @@ namespace YAML
 
 		return false;
 	}
-	
+
 	bool Convert(const std::string& input, _Null& /*output*/)
 	{
-		return input.empty() || input == "~" || input == "null" || input == "Null" || input == "NULL";
+		return input.empty() || input == "~" || input == "null" || input == "Null" || input == "nullptr";
 	}
 }
 

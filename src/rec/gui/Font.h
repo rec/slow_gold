@@ -56,7 +56,7 @@ inline const juce::Font getFont(const FontDesc* font) {
 
 template <typename Proto>
 juce::Font getFont(const Proto& proto) {
-  return getFont(proto.has_font() ? &proto.font() : NULL);
+  return getFont(proto.has_font() ? &proto.font() : nullptr);
 }
 
 }  // namespace gui

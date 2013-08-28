@@ -33,7 +33,7 @@ class NameToProto {
     NameToProtoMap::iterator i = map_.find(name);
     if (i == map_.end()) {
       LOG(DFATAL) << "Couldn't get proto for " << name;
-      return NULL;
+      return nullptr;
     }
     return i->second;
   }

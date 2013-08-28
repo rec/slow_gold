@@ -99,7 +99,7 @@ int callbackThread(Instance* i) {
 }  // namespace
 
 struct Threads::ThreadList {
-  ThreadList() : callbackThread_(NULL), guiThread_(NULL), updateThread_(NULL) {}
+  ThreadList() : callbackThread_(nullptr), guiThread_(nullptr), updateThread_(nullptr) {}
   ~ThreadList() {
     stop();
     stl::deletePointers(&threads_);

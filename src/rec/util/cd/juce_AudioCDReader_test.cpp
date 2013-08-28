@@ -59,7 +59,7 @@ const int CDDB_ID = 0x8a08ca0b;
 
 TEST(AudioCDReaderHelper, getTrackOffsets) {
   Array<int> offsets;
-  EXPECT_STREQ(NULL, getTrackOffsets(File("../../../../data"), &offsets));
+  EXPECT_STREQ(nullptr, getTrackOffsets(File("../../../../data"), &offsets));
 
   EXPECT_EQ(offsets.size(), TRACK_COUNT + 1);
 
@@ -70,7 +70,7 @@ TEST(AudioCDReaderHelper, getTrackOffsets) {
 #if 0
 TEST(AudioCDReaderHelper, CDDBIdComputation) {
   int id;
-  EXPECT_STREQ(NULL, getCDDBId(File("../../../../data"), &id));
+  EXPECT_STREQ(nullptr, getCDDBId(File("../../../../data"), &id));
   EXPECT_EQ(CDDB_ID, id) << std::hex << CDDB_ID << ", " << id
                          << "\n" << std::dec;
 }

@@ -17,11 +17,11 @@ namespace cd {
 // getAudioTrackCount(reader, 1) returns 2 (because track 1 is data), and
 // getAudioTrackCount(reader, 3) returns 5
 
-// Return a new AudioCDReader for the CD with the given CDDB id, or NULL if no
-// such CD exists in a CD drive.  If error is non-NULL and there is an error,
+// Return a new AudioCDReader for the CD with the given CDDB id, or nullptr if no
+// such CD exists in a CD drive.  If error is non-nullptr and there is an error,
 // store the error message into the string.
 AudioCDReader* getAudioCDReader(const String& cdKey,
-                                String* error = NULL);
+                                String* error = nullptr);
 
 // Return a new AudioFormatReader for an audio cd track by audio track index.
 AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track);
