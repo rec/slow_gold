@@ -341,10 +341,10 @@ CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
 CPPFLAGS = 
-CXX = g++
-CXXCPP = g++ -E
+CXX = clang++
+CXXCPP = clang++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -arch i386
+CXXFLAGS = -arch i386 -O2
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -413,7 +413,7 @@ abs_top_builddir = /development/rec/externals/glog
 abs_top_srcdir = /development/rec/externals/glog
 ac_ct_AR = ar
 ac_ct_CC = gcc
-ac_ct_CXX = g++
+ac_ct_CXX = 
 ac_ct_DUMPBIN = 
 ac_cv___attribute___noinline = __attribute__ ((noinline))
 ac_cv___attribute___noreturn = __attribute__ ((noreturn))

@@ -1,5 +1,5 @@
-feature.lo feature.o: feature.c mpg123lib_intern.h ../../src/config.h \
-  intsym.h compat.h /usr/include/stdlib.h /usr/include/Availability.h \
+feature.lo: feature.c mpg123lib_intern.h ../../src/config.h intsym.h \
+  compat.h /usr/include/stdlib.h /usr/include/Availability.h \
   /usr/include/AvailabilityInternal.h /usr/include/_types.h \
   /usr/include/sys/_types.h /usr/include/sys/cdefs.h \
   /usr/include/sys/_symbol_aliasing.h \
@@ -14,23 +14,19 @@ feature.lo feature.o: feature.c mpg123lib_intern.h ../../src/config.h \
   /usr/include/libkern/_OSByteOrder.h \
   /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h \
   /usr/include/machine/types.h /usr/include/i386/types.h \
-  /usr/include/i386/_types.h /usr/include/stdio.h \
-  /usr/include/secure/_stdio.h /usr/include/secure/_common.h \
-  /usr/include/math.h /usr/include/signal.h /usr/include/unistd.h \
-  /usr/include/sys/unistd.h /usr/include/sys/select.h \
-  /usr/include/sys/_select.h /usr/include/sys/types.h \
-  /usr/include/inttypes.h /usr/include/stdint.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h \
-  /Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h \
-  /Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h \
-  /usr/include/limits.h /usr/include/machine/limits.h \
-  /usr/include/i386/limits.h /usr/include/i386/_limits.h \
-  /usr/include/sys/syslimits.h /usr/include/string.h \
-  /usr/include/strings.h /usr/include/secure/_string.h \
-  /usr/include/sys/time.h /usr/include/time.h /usr/include/_structs.h \
-  mpg123.h true.h optimize.h decode.h parse.h frame.h id3.h icy.h \
-  reader.h index.h synths.h
+  /usr/include/stdio.h /usr/include/secure/_stdio.h \
+  /usr/include/secure/_common.h /usr/include/math.h \
+  /usr/include/signal.h /usr/include/unistd.h /usr/include/sys/unistd.h \
+  /usr/include/sys/select.h /usr/include/sys/_select.h \
+  /usr/include/sys/types.h /usr/include/inttypes.h \
+  /usr/bin/../lib/clang/4.2/include/stdint.h /usr/include/stdint.h \
+  /usr/bin/../lib/clang/4.2/include/limits.h /usr/include/limits.h \
+  /usr/include/machine/limits.h /usr/include/i386/limits.h \
+  /usr/include/i386/_limits.h /usr/include/sys/syslimits.h \
+  /usr/include/string.h /usr/include/strings.h \
+  /usr/include/secure/_string.h /usr/include/sys/time.h \
+  /usr/include/time.h /usr/include/_structs.h mpg123.h true.h optimize.h \
+  decode.h parse.h frame.h id3.h icy.h reader.h index.h synths.h
 
 mpg123lib_intern.h:
 
@@ -96,8 +92,6 @@ compat.h:
 
 /usr/include/i386/types.h:
 
-/usr/include/i386/_types.h:
-
 /usr/include/stdio.h:
 
 /usr/include/secure/_stdio.h:
@@ -120,15 +114,11 @@ compat.h:
 
 /usr/include/inttypes.h:
 
+/usr/bin/../lib/clang/4.2/include/stdint.h:
+
 /usr/include/stdint.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h:
-
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h:
-
-/Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h:
-
-/Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h:
+/usr/bin/../lib/clang/4.2/include/limits.h:
 
 /usr/include/limits.h:
 

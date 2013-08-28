@@ -1,4 +1,4 @@
-plugin.pb.lo plugin.pb.o: google/protobuf/compiler/plugin.pb.cc \
+plugin.pb.lo: google/protobuf/compiler/plugin.pb.cc \
   google/protobuf/compiler/plugin.pb.h /usr/include/c++/4.2.1/string \
   /usr/include/c++/4.2.1/bits/c++config.h \
   /usr/include/c++/4.2.1/bits/os_defines.h /usr/include/unistd.h \
@@ -13,18 +13,14 @@ plugin.pb.lo plugin.pb.o: google/protobuf/compiler/plugin.pb.cc \
   /usr/include/c++/4.2.1/bits/stringfwd.h \
   /usr/include/c++/4.2.1/bits/char_traits.h \
   /usr/include/c++/4.2.1/cstring /usr/include/c++/4.2.1/cstddef \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stddef.h \
-  /usr/include/string.h /usr/include/strings.h \
-  /usr/include/c++/4.2.1/bits/stl_algobase.h \
+  /usr/bin/../lib/clang/4.2/include/stddef.h /usr/include/string.h \
+  /usr/include/strings.h /usr/include/c++/4.2.1/bits/stl_algobase.h \
   /usr/include/c++/4.2.1/climits \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h \
-  /Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h \
-  /Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h \
-  /usr/include/limits.h /usr/include/machine/limits.h \
-  /usr/include/i386/limits.h /usr/include/i386/_limits.h \
-  /usr/include/sys/syslimits.h /usr/include/c++/4.2.1/cstdlib \
-  /usr/include/stdlib.h /usr/include/sys/wait.h /usr/include/sys/signal.h \
+  /usr/bin/../lib/clang/4.2/include/limits.h /usr/include/limits.h \
+  /usr/include/machine/limits.h /usr/include/i386/limits.h \
+  /usr/include/i386/_limits.h /usr/include/sys/syslimits.h \
+  /usr/include/c++/4.2.1/cstdlib /usr/include/stdlib.h \
+  /usr/include/sys/wait.h /usr/include/sys/signal.h \
   /usr/include/machine/signal.h /usr/include/i386/signal.h \
   /usr/include/i386/_structs.h /usr/include/machine/_structs.h \
   /usr/include/mach/i386/_structs.h /usr/include/sys/resource.h \
@@ -32,12 +28,11 @@ plugin.pb.lo plugin.pb.o: google/protobuf/compiler/plugin.pb.cc \
   /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h \
   /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h \
   /usr/include/machine/types.h /usr/include/i386/types.h \
-  /usr/include/i386/_types.h /usr/include/c++/4.2.1/iosfwd \
-  /usr/include/c++/4.2.1/bits/c++locale.h /usr/include/c++/4.2.1/clocale \
-  /usr/include/locale.h /usr/include/_locale.h \
-  /usr/include/c++/4.2.1/cstdio /usr/include/stdio.h \
-  /usr/include/c++/4.2.1/cstdarg \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stdarg.h \
+  /usr/include/c++/4.2.1/iosfwd /usr/include/c++/4.2.1/bits/c++locale.h \
+  /usr/include/c++/4.2.1/clocale /usr/include/locale.h \
+  /usr/include/_locale.h /usr/include/c++/4.2.1/cstdio \
+  /usr/include/stdio.h /usr/include/c++/4.2.1/cstdarg \
+  /usr/bin/../lib/clang/4.2/include/stdarg.h \
   /usr/include/c++/4.2.1/bits/c++io.h /usr/include/c++/4.2.1/bits/gthr.h \
   /usr/include/c++/4.2.1/bits/gthr-default.h /usr/include/pthread.h \
   /usr/include/pthread_impl.h /usr/include/sched.h /usr/include/time.h \
@@ -45,12 +40,13 @@ plugin.pb.lo plugin.pb.o: google/protobuf/compiler/plugin.pb.cc \
   /usr/include/ctype.h /usr/include/runetype.h \
   /usr/include/c++/4.2.1/bits/postypes.h /usr/include/c++/4.2.1/cwchar \
   /usr/include/c++/4.2.1/ctime /usr/include/wchar.h \
-  /usr/include/_wctype.h /usr/include/stdint.h \
-  /usr/include/c++/4.2.1/bits/functexcept.h \
+  /usr/include/_wctype.h /usr/bin/../lib/clang/4.2/include/stdint.h \
+  /usr/include/stdint.h /usr/include/c++/4.2.1/bits/functexcept.h \
   /usr/include/c++/4.2.1/exception_defines.h \
   /usr/include/c++/4.2.1/bits/stl_pair.h \
   /usr/include/c++/4.2.1/bits/cpp_type_traits.h \
-  /usr/include/c++/4.2.1/ext/type_traits.h /usr/include/c++/4.2.1/utility \
+  /usr/include/c++/4.2.1/ext/type_traits.h \
+  /usr/include/c++/4.2.1/utility \
   /usr/include/c++/4.2.1/bits/stl_relops.h \
   /usr/include/c++/4.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/4.2.1/bits/stl_iterator_base_funcs.h \
@@ -70,7 +66,8 @@ plugin.pb.lo plugin.pb.o: google/protobuf/compiler/plugin.pb.cc \
   /usr/include/c++/4.2.1/bits/basic_string.h \
   /usr/include/c++/4.2.1/ext/atomicity.h \
   /usr/include/c++/4.2.1/bits/atomic_word.h \
-  /usr/include/c++/4.2.1/algorithm /usr/include/c++/4.2.1/bits/stl_algo.h \
+  /usr/include/c++/4.2.1/algorithm \
+  /usr/include/c++/4.2.1/bits/stl_algo.h \
   /usr/include/c++/4.2.1/bits/stl_heap.h \
   /usr/include/c++/4.2.1/bits/stl_tempbuf.h \
   /usr/include/c++/4.2.1/bits/basic_string.tcc \
@@ -112,7 +109,7 @@ plugin.pb.lo plugin.pb.o: google/protobuf/compiler/plugin.pb.cc \
   google/protobuf/stubs/platform_macros.h \
   google/protobuf/stubs/atomicops_internals_macosx.h \
   /usr/include/libkern/OSAtomic.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stdbool.h \
+  /usr/bin/../lib/clang/4.2/include/stdbool.h \
   google/protobuf/stubs/atomicops_internals_atomicword_compat.h \
   google/protobuf/io/coded_stream.h /usr/include/sys/param.h \
   /usr/include/sys/types.h /usr/include/machine/param.h \
@@ -120,8 +117,7 @@ plugin.pb.lo plugin.pb.o: google/protobuf/compiler/plugin.pb.cc \
   google/protobuf/wire_format_lite_inl.h \
   google/protobuf/wire_format_lite.h \
   google/protobuf/generated_message_reflection.h \
-  google/protobuf/reflection_ops.h google/protobuf/wire_format.h \
-  google/protobuf/descriptor.pb.h
+  google/protobuf/reflection_ops.h google/protobuf/wire_format.h
 
 google/protobuf/compiler/plugin.pb.h:
 
@@ -171,7 +167,7 @@ google/protobuf/compiler/plugin.pb.h:
 
 /usr/include/c++/4.2.1/cstddef:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stddef.h:
+/usr/bin/../lib/clang/4.2/include/stddef.h:
 
 /usr/include/string.h:
 
@@ -181,13 +177,7 @@ google/protobuf/compiler/plugin.pb.h:
 
 /usr/include/c++/4.2.1/climits:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h:
-
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h:
-
-/Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h:
-
-/Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h:
+/usr/bin/../lib/clang/4.2/include/limits.h:
 
 /usr/include/limits.h:
 
@@ -235,8 +225,6 @@ google/protobuf/compiler/plugin.pb.h:
 
 /usr/include/i386/types.h:
 
-/usr/include/i386/_types.h:
-
 /usr/include/c++/4.2.1/iosfwd:
 
 /usr/include/c++/4.2.1/bits/c++locale.h:
@@ -253,7 +241,7 @@ google/protobuf/compiler/plugin.pb.h:
 
 /usr/include/c++/4.2.1/cstdarg:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stdarg.h:
+/usr/bin/../lib/clang/4.2/include/stdarg.h:
 
 /usr/include/c++/4.2.1/bits/c++io.h:
 
@@ -286,6 +274,8 @@ google/protobuf/compiler/plugin.pb.h:
 /usr/include/wchar.h:
 
 /usr/include/_wctype.h:
+
+/usr/bin/../lib/clang/4.2/include/stdint.h:
 
 /usr/include/stdint.h:
 
@@ -457,7 +447,7 @@ google/protobuf/stubs/atomicops_internals_macosx.h:
 
 /usr/include/libkern/OSAtomic.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stdbool.h:
+/usr/bin/../lib/clang/4.2/include/stdbool.h:
 
 google/protobuf/stubs/atomicops_internals_atomicword_compat.h:
 
@@ -482,5 +472,3 @@ google/protobuf/generated_message_reflection.h:
 google/protobuf/reflection_ops.h:
 
 google/protobuf/wire_format.h:
-
-google/protobuf/descriptor.pb.h:

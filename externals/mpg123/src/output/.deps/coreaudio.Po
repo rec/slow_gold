@@ -1,9 +1,9 @@
-coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
-  ../../src/config.h ../../src/libmpg123/compat.h ../../src/config.h \
-  ../../src/libmpg123/intsym.h /usr/include/stdlib.h \
-  /usr/include/Availability.h /usr/include/AvailabilityInternal.h \
-  /usr/include/_types.h /usr/include/sys/_types.h \
-  /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h \
+coreaudio.o: coreaudio.c ../../src/mpg123app.h ../../src/config.h \
+  ../../src/libmpg123/compat.h ../../src/libmpg123/intsym.h \
+  /usr/include/stdlib.h /usr/include/Availability.h \
+  /usr/include/AvailabilityInternal.h /usr/include/_types.h \
+  /usr/include/sys/_types.h /usr/include/sys/cdefs.h \
+  /usr/include/sys/_symbol_aliasing.h \
   /usr/include/sys/_posix_availability.h /usr/include/machine/_types.h \
   /usr/include/i386/_types.h /usr/include/sys/wait.h \
   /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h \
@@ -15,38 +15,34 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
   /usr/include/libkern/_OSByteOrder.h \
   /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h \
   /usr/include/machine/types.h /usr/include/i386/types.h \
-  /usr/include/i386/_types.h /usr/include/stdio.h \
-  /usr/include/secure/_stdio.h /usr/include/secure/_common.h \
-  /usr/include/math.h /usr/include/signal.h /usr/include/unistd.h \
-  /usr/include/sys/unistd.h /usr/include/sys/select.h \
-  /usr/include/sys/_select.h /usr/include/sys/types.h \
-  /usr/include/inttypes.h /usr/include/stdint.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h \
-  /Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h \
-  /Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h \
-  /usr/include/limits.h /usr/include/machine/limits.h \
-  /usr/include/i386/limits.h /usr/include/i386/_limits.h \
-  /usr/include/sys/syslimits.h /usr/include/string.h \
-  /usr/include/strings.h /usr/include/secure/_string.h \
-  /usr/include/sys/time.h /usr/include/time.h /usr/include/_structs.h \
-  ../../src/xfermem.h ../../src/httpget.h ../../src/libmpg123/mpg123.h \
-  ../../src/audio.h ../../src/module.h ../../src/local.h \
+  /usr/include/stdio.h /usr/include/secure/_stdio.h \
+  /usr/include/secure/_common.h /usr/include/math.h \
+  /usr/include/signal.h /usr/include/unistd.h /usr/include/sys/unistd.h \
+  /usr/include/sys/select.h /usr/include/sys/_select.h \
+  /usr/include/sys/types.h /usr/include/inttypes.h \
+  /usr/bin/../lib/clang/4.2/include/stdint.h /usr/include/stdint.h \
+  /usr/bin/../lib/clang/4.2/include/limits.h /usr/include/limits.h \
+  /usr/include/machine/limits.h /usr/include/i386/limits.h \
+  /usr/include/i386/_limits.h /usr/include/sys/syslimits.h \
+  /usr/include/string.h /usr/include/strings.h \
+  /usr/include/secure/_string.h /usr/include/sys/time.h \
+  /usr/include/time.h /usr/include/_structs.h ../../src/xfermem.h \
+  ../../src/httpget.h ../../src/libmpg123/mpg123.h ../../src/audio.h \
+  ../../src/module.h ../../src/local.h \
   /System/Library/Frameworks/CoreServices.framework/Headers/CoreServices.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/AE.framework/Headers/AE.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/CarbonCore.h \
   /System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stdarg.h \
-  /usr/include/assert.h /usr/include/ctype.h /usr/include/runetype.h \
-  /usr/include/errno.h /usr/include/sys/errno.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/float.h \
+  /usr/bin/../lib/clang/4.2/include/stdarg.h /usr/include/assert.h \
+  /usr/include/ctype.h /usr/include/runetype.h /usr/include/errno.h \
+  /usr/include/sys/errno.h /usr/bin/../lib/clang/4.2/include/float.h \
   /usr/include/locale.h /usr/include/_locale.h /usr/include/setjmp.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stddef.h \
+  /usr/bin/../lib/clang/4.2/include/stddef.h \
+  /usr/bin/../lib/clang/4.2/include/stdbool.h \
   /System/Library/Frameworks/CoreFoundation.framework/Headers/CFBase.h \
-  /usr/include/TargetConditionals.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stdbool.h \
-  /usr/include/Block.h /usr/include/AvailabilityMacros.h \
-  /usr/include/MacTypes.h /usr/include/ConditionalMacros.h \
+  /usr/include/TargetConditionals.h /usr/include/Block.h \
+  /usr/include/AvailabilityMacros.h /usr/include/MacTypes.h \
+  /usr/include/ConditionalMacros.h \
   /System/Library/Frameworks/CoreFoundation.framework/Headers/CFArray.h \
   /System/Library/Frameworks/CoreFoundation.framework/Headers/CFBag.h \
   /System/Library/Frameworks/CoreFoundation.framework/Headers/CFBinaryHeap.h \
@@ -90,7 +86,8 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
   /usr/include/dispatch/time.h /usr/include/mach/clock_types.h \
   /usr/include/mach/time_value.h /usr/include/dispatch/queue.h \
   /usr/include/dispatch/source.h /usr/include/mach/message.h \
-  /usr/include/mach/kern_return.h /usr/include/mach/machine/kern_return.h \
+  /usr/include/mach/kern_return.h \
+  /usr/include/mach/machine/kern_return.h \
   /usr/include/mach/i386/kern_return.h /usr/include/dispatch/group.h \
   /usr/include/dispatch/semaphore.h /usr/include/dispatch/once.h \
   /usr/include/dispatch/data.h /usr/include/dispatch/io.h \
@@ -118,7 +115,6 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/Endian.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/Gestalt.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/MacMemory.h \
-  /usr/include/strings.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/Math64.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/BackupCore.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/DiskSpaceRecovery.h \
@@ -169,18 +165,16 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/DriverSynchronization.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/DriverServices.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/MachineExceptions.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/xmmintrin.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/mmintrin.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/mm_malloc.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/emmintrin.h \
+  /usr/bin/../lib/clang/4.2/include/xmmintrin.h \
+  /usr/bin/../lib/clang/4.2/include/mmintrin.h \
+  /usr/bin/../lib/clang/4.2/include/mm_malloc.h \
+  /usr/bin/../lib/clang/4.2/include/emmintrin.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/NumberFormatting.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/StringCompare.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/TextUtils.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/ToolUtils.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/UnicodeUtilities.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/fp.h \
-  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/fenv.h \
-  /Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/fenv.h \
   /usr/include/fenv.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/TextEncodingConverter.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/UnicodeConverter.h \
@@ -270,9 +264,7 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
   /System/Library/Frameworks/Security.framework/Headers/SecCustomTransform.h \
   /System/Library/Frameworks/Security.framework/Headers/SecDecodeTransform.h \
   /System/Library/Frameworks/Security.framework/Headers/SecEncodeTransform.h \
-  /System/Library/Frameworks/Security.framework/Headers/SecTransform.h \
   /System/Library/Frameworks/Security.framework/Headers/SecDigestTransform.h \
-  /System/Library/Frameworks/Security.framework/Headers/SecEncodeTransform.h \
   /System/Library/Frameworks/Security.framework/Headers/SecEncryptTransform.h \
   /System/Library/Frameworks/Security.framework/Headers/SecSignVerifyTransform.h \
   /System/Library/Frameworks/Security.framework/Headers/SecReadTransform.h \
@@ -315,14 +307,9 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/Metadata.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDLabel.h \
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h \
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDQuery.h \
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDQuery.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDSchema.h \
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDImporter.h \
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h \
   /System/Library/Frameworks/CoreServices.framework/Frameworks/DictionaryServices.framework/Headers/DictionaryServices.h \
   /System/Library/Frameworks/AudioUnit.framework/Headers/AudioUnit.h \
   /System/Library/Frameworks/AudioUnit.framework/Headers/AudioComponent.h \
@@ -357,16 +344,13 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
   /System/Library/Frameworks/CoreMIDI.framework/Headers/MIDIThruConnection.h \
   /System/Library/Frameworks/CoreMIDI.framework/Headers/MIDIDriver.h \
   /System/Library/Frameworks/CoreFoundation.framework/Headers/CFPlugInCOM.h \
-  ../../src/sfifo.c ../../src/sfifo.h ../../src/libmpg123/debug.h \
-  ../../src/libmpg123/debug.h
+  ../../src/sfifo.c ../../src/sfifo.h ../../src/libmpg123/debug.h
 
 ../../src/mpg123app.h:
 
 ../../src/config.h:
 
 ../../src/libmpg123/compat.h:
-
-../../src/config.h:
 
 ../../src/libmpg123/intsym.h:
 
@@ -426,8 +410,6 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /usr/include/i386/types.h:
 
-/usr/include/i386/_types.h:
-
 /usr/include/stdio.h:
 
 /usr/include/secure/_stdio.h:
@@ -450,15 +432,11 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /usr/include/inttypes.h:
 
+/usr/bin/../lib/clang/4.2/include/stdint.h:
+
 /usr/include/stdint.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h:
-
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h:
-
-/Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/limits.h:
-
-/Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/syslimits.h:
+/usr/bin/../lib/clang/4.2/include/limits.h:
 
 /usr/include/limits.h:
 
@@ -502,7 +480,7 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stdarg.h:
+/usr/bin/../lib/clang/4.2/include/stdarg.h:
 
 /usr/include/assert.h:
 
@@ -514,7 +492,7 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /usr/include/sys/errno.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/float.h:
+/usr/bin/../lib/clang/4.2/include/float.h:
 
 /usr/include/locale.h:
 
@@ -522,13 +500,13 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /usr/include/setjmp.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stddef.h:
+/usr/bin/../lib/clang/4.2/include/stddef.h:
+
+/usr/bin/../lib/clang/4.2/include/stdbool.h:
 
 /System/Library/Frameworks/CoreFoundation.framework/Headers/CFBase.h:
 
 /usr/include/TargetConditionals.h:
-
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/stdbool.h:
 
 /usr/include/Block.h:
 
@@ -708,8 +686,6 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/MacMemory.h:
 
-/usr/include/strings.h:
-
 /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/Math64.h:
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/BackupCore.h:
@@ -844,13 +820,13 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/MachineExceptions.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/xmmintrin.h:
+/usr/bin/../lib/clang/4.2/include/xmmintrin.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/mmintrin.h:
+/usr/bin/../lib/clang/4.2/include/mmintrin.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/mm_malloc.h:
+/usr/bin/../lib/clang/4.2/include/mm_malloc.h:
 
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/emmintrin.h:
+/usr/bin/../lib/clang/4.2/include/emmintrin.h:
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/NumberFormatting.h:
 
@@ -863,10 +839,6 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/UnicodeUtilities.h:
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Headers/fp.h:
-
-/usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin11/4.2.1/include/fenv.h:
-
-/Applications/Xcode.app/Contents/Developer/usr/llvm-gcc-4.2/lib/gcc/i686-apple-darwin11/4.2.1/include/fenv.h:
 
 /usr/include/fenv.h:
 
@@ -1048,11 +1020,7 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /System/Library/Frameworks/Security.framework/Headers/SecEncodeTransform.h:
 
-/System/Library/Frameworks/Security.framework/Headers/SecTransform.h:
-
 /System/Library/Frameworks/Security.framework/Headers/SecDigestTransform.h:
-
-/System/Library/Frameworks/Security.framework/Headers/SecEncodeTransform.h:
 
 /System/Library/Frameworks/Security.framework/Headers/SecEncryptTransform.h:
 
@@ -1138,21 +1106,11 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDLabel.h:
 
-/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h:
-
-/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDQuery.h:
-
-/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h:
-
 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDQuery.h:
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDSchema.h:
 
-/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h:
-
 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDImporter.h:
-
-/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers/MDItem.h:
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/DictionaryServices.framework/Headers/DictionaryServices.h:
 
@@ -1225,7 +1183,5 @@ coreaudio.o coreaudio.o: coreaudio.c ../../src/mpg123app.h \
 ../../src/sfifo.c:
 
 ../../src/sfifo.h:
-
-../../src/libmpg123/debug.h:
 
 ../../src/libmpg123/debug.h:

@@ -368,8 +368,8 @@ CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = 
 CPPFLAGS = 
-CXX = g++
-CXXCPP = g++ -E
+CXX = clang++
+CXXCPP = clang++ -E
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -arch i386 -O2
 CYGPATH_W = echo
@@ -435,7 +435,7 @@ abs_top_builddir = /development/rec/externals/protobuf
 abs_top_srcdir = /development/rec/externals/protobuf
 ac_ct_AR = ar
 ac_ct_CC = gcc
-ac_ct_CXX = g++
+ac_ct_CXX = 
 ac_ct_DUMPBIN = 
 acx_pthread_config = 
 am__include = include
