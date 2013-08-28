@@ -24,7 +24,8 @@ struct BinaryOrFile {
   MemoryBlock memory_;
 };
 
-}  // namespace
+template <typename Type>
+Type* construct(const char* data, int length);
 
 template <>
 String* construct(const char* data, int length) {
@@ -40,6 +41,8 @@ template <>
 XmlElement* construct(const char* data, int length) {
   return XmlDocument::parse(*ptr<String>(construct<String>(data, length)));
 }
+
+}  // namespace
 
 template <>
 String* createBinary(const char* data, size_t len, const string& filename) {
@@ -57,6 +60,13 @@ template <>
 XmlElement* createBinary(const char* data, size_t len, const string& filename) {
   BinaryOrFile b(data, len, filename);
   return XmlDocument::parse(*ptr<String>(createBinary<String>(b.data_, b.length_)));
+}
+
+template <typename Type>
+Type* juceBinary(const char* resourceName) {
+  int size;
+  const char* resource = BinaryData::getNamedResource(resourceName, size);
+  return construct<Type>(resource, size);
 }
 
 }  // namespace util
