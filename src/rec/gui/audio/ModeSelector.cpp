@@ -2,15 +2,6 @@
 
 #include "rec/data/Value.h"
 #include "rec/gui/IconButton.h"
-#include "rec/gui/icon/AddLoopPointMode.svg.h"
-#include "rec/gui/icon/AddLoopPointModeDisabled.svg.h"
-#include "rec/gui/icon/DragMode.svg.h"
-#include "rec/gui/icon/DragModeDisabled.svg.h"
-#include "rec/gui/icon/SetTimeMode.svg.h"
-#include "rec/gui/icon/SetTimeModeDisabled.svg.h"
-#include "rec/gui/icon/ZoomMode.svg.h"
-#include "rec/gui/icon/ZoomModeDisabled.svg.h"
-#include "rec/util/thread/CallAsync.h"
 
 using namespace juce;
 
@@ -49,8 +40,6 @@ ModeSelector::ModeSelector()
               "that point."),
       addLoopPointClick_("CreateClick", "Add loop point mode: clicking on the "
                          "waveform creates a loop point.") {
-  using namespace rec::gui::icon;
-
   SET_BUTTON_IMAGES2(&drag_, DragMode);
   SET_BUTTON_IMAGES2(&setTime_, SetTimeMode);
   SET_BUTTON_IMAGES2(&zoomIn_, ZoomMode);

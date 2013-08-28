@@ -4,18 +4,6 @@
 #include "rec/command/ID.h"
 #include "rec/gui/IconButton.h"
 #include "rec/gui/audio/TimeController.h"
-#include "rec/gui/icon/JumpBackButton.svg.h"
-#include "rec/gui/icon/JumpBackButtonDisabled.svg.h"
-#include "rec/gui/icon/JumpBackButtonPressed.svg.h"
-#include "rec/gui/icon/JumpForwardButton.svg.h"
-#include "rec/gui/icon/JumpForwardButtonDisabled.svg.h"
-#include "rec/gui/icon/JumpForwardButtonPressed.svg.h"
-#include "rec/gui/icon/JumpToStartButton.svg.h"
-#include "rec/gui/icon/JumpToStartButtonDisabled.svg.h"
-#include "rec/gui/icon/JumpToStartButtonPressed.svg.h"
-#include "rec/gui/icon/PlayButton.svg.h"
-#include "rec/gui/icon/PlayButtonDisabled.svg.h"
-#include "rec/gui/icon/StopButton.svg.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -54,15 +42,10 @@ TransportController::TransportController(TimeController* timeController)
                   getTypeName<Gain>(), data::Address("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
-  using namespace rec::gui::icon;
   SET_BUTTON_IMAGES3(&jumpToStartButton_, JumpToStartButton);
   SET_BUTTON_IMAGES3(&jumpForwardButton_, JumpForwardButton);
   SET_BUTTON_IMAGES3(&jumpBackButton_, JumpBackButton);
-
-  startStopButton_.setImages(ptr<Drawable>(PlayButton::create()).get(),
-                             NULL, NULL,
-                             ptr<Drawable>(PlayButtonDisabled::create()).get(),
-                             ptr<Drawable>(StopButton::create()).get());
+  SET_BUTTON_IMAGES_ALTERNATE(&startStopButton_, PlayButton, StopButton);
 
   jumpForwardButton_.addListener(this);
   jumpBackButton_.addListener(this);

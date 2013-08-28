@@ -18,5 +18,14 @@ void setButtonImages(DrawableButton* b, const string& normal,
   b->setImages(n.get(), NULL, p.get(), d.get());
 }
 
+void setButtonImagesAlternate(DrawableButton* b, const string& normal,
+                              const string& disabled, const string& alternate) {
+  ptr<Drawable> n(construct<Drawable>(normal));
+  ptr<Drawable> d(construct<Drawable>(disabled));
+  ptr<Drawable> a(construct<Drawable>(alternate));
+  b->setImages(n.get(), NULL, NULL, d.get(), a.get());
+}
+
+
 }  // namespace gui
 }  // namespace rec

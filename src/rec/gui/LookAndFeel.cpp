@@ -1,14 +1,13 @@
 #include "rec/gui/LookAndFeel.h"
-#include "rec/gui/icon/MacFolderCloseButton.svg.h"
-#include "rec/gui/icon/MacFolderOpenButton.svg.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace gui {
 
 LookAndFeel::LookAndFeel()
 #if JUCE_MAC
-    : open_(icon::MacFolderOpenButton::create()),
-      close_(icon::MacFolderCloseButton::create())
+    : open_(BINARY_DATA(MacFolderOpenButton_svg, Drawable)),
+      close_(BINARY_DATA(MacFolderOpenButton_svg, Drawable))
 #endif
 {
 }

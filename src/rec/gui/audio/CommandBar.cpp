@@ -1,15 +1,6 @@
 #include "rec/gui/audio/CommandBar.h"
 
 #include "rec/gui/IconButton.h"
-#include "rec/gui/icon/AddLoopPointButton.svg.h"
-#include "rec/gui/icon/AddLoopPointButtonPressed.svg.h"
-#include "rec/gui/icon/AddLoopPointButtonDisabled.svg.h"
-#include "rec/gui/icon/ZoomOutButton.svg.h"
-#include "rec/gui/icon/ZoomOutButtonPressed.svg.h"
-#include "rec/gui/icon/ZoomOutButtonDisabled.svg.h"
-#include "rec/gui/icon/ZoomToSelectionButton.svg.h"
-#include "rec/gui/icon/ZoomToSelectionButtonPressed.svg.h"
-#include "rec/gui/icon/ZoomToSelectionButtonDisabled.svg.h"
 
 namespace rec {
 namespace gui {
@@ -32,8 +23,6 @@ CommandBar::CommandBar()
       zoomToSelection_("ZoomToSelection", "Zoom To Selection Button: "
                        "Zoom in or out so the whole selection "
                        "fits the waveform.") {
-  using namespace rec::gui::icon;
-
   addLoopPoint_.addListener(this);
   zoomOutFull_.addListener(this);
   zoomToSelection_.addListener(this);

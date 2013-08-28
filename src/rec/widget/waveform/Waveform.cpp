@@ -4,7 +4,6 @@
 #include "rec/gui/Geometry.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/ModeSelector.h"
-#include "rec/gui/icon/ZoomInCursor.svg.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/Instance.h"
 #include "rec/util/Math.h"
@@ -34,7 +33,7 @@ static juce::Image getZoomCursor() {
   juce::Image img(juce::Image::ARGB, ZOOM_CURSOR_WIDTH, ZOOM_CURSOR_HEIGHT,
                   false);
   Graphics g(img);
-  ptr<Drawable> drawable(gui::icon::ZoomInCursor::create());
+  ptr<Drawable> drawable(BINARY_DATA(ZoomInCursor_svg, Drawable));
   drawable->draw(g, 1.0f);
   return img;
 }
