@@ -277,7 +277,7 @@ Cursor* makeCursor(const CursorProto& cp, Waveform* w, int index,
   cursor->setTime(time);
   cursor->languageChanged();
 
-  return cursor.transfer();
+  return cursor.release();
 }
 
 Cursor* makeTimeCursor(const CursorProto& cp, Waveform* w) {

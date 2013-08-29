@@ -270,7 +270,7 @@ Viewport getViewport(Instance* instance, bool useSelection,
 void doSaveFile(Instance* instance, bool useSelection) {
   using namespace juce;
   ptr<audio::Source> s(instance->makeSource());
-  s.reset(instance->player_->makeSourceCopy(s.transfer(), useSelection));
+  s.reset(instance->player_->makeSourceCopy(s.release(), useSelection));
 
   SampleTime len = useSelection ?
     instance->player_->getSelectionLength() : SampleTime(s->getTotalLength());
@@ -291,7 +291,7 @@ void doSaveFile(Instance* instance, bool useSelection) {
   if (file != File::nonexistent) {
     String name = String::formatted(t_SAVING_FILE, c_str(file.getFileName()));
     Viewport viewport = getViewport(instance, useSelection, len);
-    SaveThread(name, instance, file, s.transfer(), viewport).runThread();
+    SaveThread(name, instance, file, s.release(), viewport).runThread();
   }
 }
 

@@ -67,7 +67,7 @@ AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata)
   if (metadata && reader)
     *metadata = music::getMetadata(reader->metadataValues);
 
-  return reader.transfer();
+  return reader.release();
 }
 
 }  // namespace

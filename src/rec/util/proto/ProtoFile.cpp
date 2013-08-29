@@ -21,7 +21,7 @@ Message* readProtoFile(const File& file, const MessageMaker& maker) {
     }
   }
 
-  return msg.transfer();
+  return msg.release();
 }
 
 void writeProtoFile(const Message& msg, const File& file) {

@@ -104,7 +104,7 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
     ptr<Entry> ue(new Entry(e, before, after));
     if (popRedos() || !stack_.size() ||
         !stack_.back()->mergeInto(ue.get(), group_)) {
-      stack_.push_back(ue.transfer());
+      stack_.push_back(ue.release());
     }
   }
   broadcast(None());

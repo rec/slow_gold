@@ -17,7 +17,7 @@ class MusicFileReader {
   AudioFormatReader* reader() { return reader_.get(); }
   const String& errorTitle() const { return errorTitle_; }
   const String& errorDetails() const { return errorDetails_; }
-  AudioFormatReader* transfer() { return reader_.transfer(); }
+  AudioFormatReader* release() { return reader_.release(); }
   bool empty() const { return !reader_; }
 
   void setError(const String& title, const String& details) {

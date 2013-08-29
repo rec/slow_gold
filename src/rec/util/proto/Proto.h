@@ -19,7 +19,7 @@ const string& getTypeName(const Message&);
 inline Message* clone(const Message& m) {
   ptr<Message> p(m.New());
   p->CopyFrom(m);
-  return p.transfer();
+  return p.release();
 }
 
 inline Message* clone(const Message* m) {

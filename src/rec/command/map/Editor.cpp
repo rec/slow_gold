@@ -120,7 +120,7 @@ juce::AlertWindow* Editor::newWindow() {
 
   window->setWantsKeyboardFocus(true);
   window->grabKeyboardFocus();
-  return window.transfer();
+  return window.release();
 }
 
 void Editor::parentHierarchyChanged() {

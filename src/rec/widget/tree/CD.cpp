@@ -50,7 +50,7 @@ void CD::computeChildren() {
     node->addListener(this);
 
     MessageManagerLock l;
-    addSubItem(node.transfer(), -1);
+    addSubItem(node.release(), -1);
   }
   setProcessing(false);
 

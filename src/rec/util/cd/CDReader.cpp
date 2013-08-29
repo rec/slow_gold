@@ -51,13 +51,13 @@ AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track) {
 
   int begin = r->getPositionOfTrackStart(trackIndex);
   int end = r->getPositionOfTrackStart(trackIndex + 1);
-  return new AudioSubsectionReader(r.transfer(), begin, end - begin, true);
+  return new AudioSubsectionReader(r.release(), begin, end - begin, true);
 }
 
 AudioFormatReader* createCDTrackReader(const String& cdKey, int track) {
   ptr<AudioCDReader> reader(getAudioCDReader(cdKey));
   if (reader)
-    return createCDTrackReader(reader.transfer(), track);
+    return createCDTrackReader(reader.release(), track);
 
   LOG(ERROR) << "Couldn't create reader for " << cdKey;
   return nullptr;

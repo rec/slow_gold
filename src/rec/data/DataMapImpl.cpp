@@ -45,7 +45,7 @@ Data* DataMapImpl::getData(const string& typeName, const VirtualFile& vf) {
 
   DCHECK_EQ(typeName, getTypeName(*msg));
   bool isEmpty = (vf.type() == VirtualFile::NONE);
-  Data* data = dataMaker_->makeData(msg.transfer(), file, isEmpty, key);
+  Data* data = dataMaker_->makeData(msg.release(), file, isEmpty, key);
   if (!data) {
     LOG(DFATAL) << "Unable to make data for " << typeName;
     return nullptr;

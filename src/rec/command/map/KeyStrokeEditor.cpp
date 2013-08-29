@@ -28,7 +28,7 @@ const String KeyStrokeEditor::getDescription(const string& key) const {
 juce::AlertWindow* KeyStrokeEditor::newWindow() {
   ptr<juce::AlertWindow> window(Editor::newWindow());
   window->addKeyListener(this);
-  return window.transfer();
+  return window.release();
 }
 
 bool KeyStrokeEditor::keyPressed(const KeyPress& kp, Component*) {

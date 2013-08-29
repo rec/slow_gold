@@ -13,7 +13,7 @@ class MessageRegistrarAndMaker::Entry {
   Entry(const Message& m, bool c) { initialize(m, c); }
   Entry(const Entry& e) { initialize(*e.message_, e.copyFrom_); }
 
-  Message* makeMessage() const { return Entry(*this).message_.transfer(); }
+  Message* makeMessage() const { return Entry(*this).message_.release(); }
 
  private:
   void initialize(const Message& m, bool c) {

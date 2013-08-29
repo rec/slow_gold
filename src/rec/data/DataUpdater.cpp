@@ -24,13 +24,13 @@ void DataUpdater::reportChange(Data* data) {
 }
 
 bool DataUpdater::update() {
-  ptr<DataSet::Set> updates(update_->transfer());
+  ptr<DataSet::Set> updates(update_->release());
   if (!updates)
     return false;
   for (DataSet::Set::iterator i = updates->begin(); i != updates->end(); ++i)
     (*i)->update();
 
-  write_->insert(updates.transfer());
+  write_->insert(updates.release());
   return true;
 }
 
@@ -39,7 +39,7 @@ bool DataUpdater::hasUpdates() const {
 }
 
 bool DataUpdater::write() {
-  ptr<DataSet::Set> toWrite(write_->transfer());
+  ptr<DataSet::Set> toWrite(write_->release());
   if (toWrite) {
     for (DataSet::Set::iterator i = toWrite->begin(); i != toWrite->end(); ++i)
       (*i)->writeToFile();

@@ -26,13 +26,11 @@ class ptr {
 
   Type* get() const { return p_; }
 
-  Type* transfer() {
+  Type* release() {
     Type* p = p_;
     p_ = nullptr;
     return p;
   }
-
-  Type* xfer() { return transfer(); }
 
   void swap(ptr& that) {
     Type* tmp = that.p_;

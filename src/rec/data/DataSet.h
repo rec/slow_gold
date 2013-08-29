@@ -14,7 +14,7 @@ class DataSet : public HasLock {
   DataSet() : thread_(nullptr) {}
 
   typedef std::set<Data*> Set;
-  Set* transfer();
+  Set* release();
   void insert(Data* data);
   int insert(Set* s);
   bool hasUpdates() const;

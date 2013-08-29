@@ -90,7 +90,7 @@ inline callback::Thread* runInNewThread(const String& n, int p, Callback* cb) {
   t->setPriority(p);
   t->startThread();
   trash::add(t.get());
-  return t.transfer();
+  return t.release();
 }
 
 template <typename Type>

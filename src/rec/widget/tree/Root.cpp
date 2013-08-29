@@ -162,7 +162,7 @@ void Root::addVolume(const VirtualFile& volume, int insertAt) {
 
   directory->addListener(this);
   root_.addSubItem(directory.get(), insertAt);
-  directory.transfer()->requestChildren();
+  directory.release()->requestChildren();
 }
 
 bool Root::run() {

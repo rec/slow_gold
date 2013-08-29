@@ -64,7 +64,7 @@ Command* indexCommand(const Command& cmd, int index) {
   }
 #endif
 
-  return command.transfer();
+  return command.release();
 }
 
 }  // namespace command

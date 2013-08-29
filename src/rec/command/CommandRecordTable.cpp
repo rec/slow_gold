@@ -25,7 +25,7 @@ CommandRecord* CommandRecordTable::locate(ID id, bool mustExist,
 
   ptr<CommandRecord> rec(new CommandRecord(id));
   table_.insert(i, std::make_pair(id, rec.get()));
-  return rec.transfer();
+  return rec.release();
 }
 
 const Commands CommandRecordTable::getCommands() const {

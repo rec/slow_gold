@@ -46,13 +46,13 @@ AudioFormatWriter* createWriter(const File& f) {
   int channels = 2;
   double sampleRate = static_cast<double>(getOutputSampleRate());
 
-  ptr<AudioFormatWriter> writer(fmt->createWriterFor(fos.transfer(), sampleRate,
+  ptr<AudioFormatWriter> writer(fmt->createWriterFor(fos.release(), sampleRate,
                                                      channels, 16,
                                                      StringPairArray(),
                                                      quality));
   if (!writer)
     LOG(ERROR) << "Couldn't create writer for " << str(f);
-  return writer.transfer();
+  return writer.release();
 }
 
 }  // namespace format

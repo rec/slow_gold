@@ -118,7 +118,7 @@ int64 CurrentFile::getFileLength(bool showError) {
 
   music::MusicFileReader reader(file_);
   if (!reader.empty()) {
-    if (int64 len = bufferFiller()->setReader(file_, reader.transfer()))
+    if (int64 len = bufferFiller()->setReader(file_, reader.release()))
       return len;
     reader.setError(t_RAN_OUT_OF_MEMORY, t_RAN_OUT_OF_MEMORY_FULL);
   }

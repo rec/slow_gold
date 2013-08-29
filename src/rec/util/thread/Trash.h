@@ -15,7 +15,7 @@ void discard(Thread* t);
 
 template <typename ThreadClass>
 void discard(ptr<ThreadClass>* t) {
-  discard(t->transfer());
+  discard(t->release());
 }
 
 Thread* add(Thread* t);
@@ -40,7 +40,7 @@ public:
 
   void reset(Type* p = nullptr) {
     if (p != this->get()) {
-      thread::trash::discard(this->transfer());
+      thread::trash::discard(this->release());
       ptr<Type>::reset(p);
     }
   }

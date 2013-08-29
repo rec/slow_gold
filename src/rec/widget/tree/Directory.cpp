@@ -72,7 +72,7 @@ void Directory::partition() {
       node->requestChildren();
 
     MessageManagerLock lock_;
-    addSubItem(node.transfer(), -1);
+    addSubItem(node.release(), -1);
   }
 }
 

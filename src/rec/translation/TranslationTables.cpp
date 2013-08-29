@@ -28,7 +28,7 @@ StringMap* makeStringMap(const TranslatedStrings& ts) {
     (*map)[makeHash(s)] = s.translation();
   }
 
-  return map.transfer();
+  return map.release();
 }
 
 struct Translations {

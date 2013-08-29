@@ -3,11 +3,11 @@
 namespace rec {
 namespace data {
 
-DataSet::Set* DataSet::transfer() {
+DataSet::Set* DataSet::release() {
   Lock l(lock_);
   if (!thread_)
     thread_ = Thread::getCurrentThread();
-  return data_.transfer();
+  return data_.release();
 }
 
 void DataSet::insert(Data* data) {

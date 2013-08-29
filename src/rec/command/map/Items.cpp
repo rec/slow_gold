@@ -39,7 +39,7 @@ MapItem::MapItem(Editor* editor, ID id, const String& name)
 
 Component* MapItem::createItemComponent() {
   ptr<Component> c(new MapItemComponent(editor_, id_, name_));
-  return c.transfer();
+  return c.release();
 }
 
 MapItemComponent::MapItemComponent(Editor* editor, ID commandID,

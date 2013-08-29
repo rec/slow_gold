@@ -126,14 +126,14 @@ Source* Player::makeSourceCopy(Source* s, bool useSelection) {
   Lock l(lock_);
   ptr<Source> source(s);
   if (useSelection) {
-    ptr<Selection> selection(new Selection(source.transfer()));
+    ptr<Selection> selection(new Selection(source.release()));
     selection->setSelection(selection_->selection());
-    source.reset(selection.transfer());
+    source.reset(selection.release());
   }
 
-  ptr<Stretchy> stretchy(new Stretchy(source.transfer(), *stretchy_));
-  source.reset(stretchy.transfer());
-  return source.transfer();
+  ptr<Stretchy> stretchy(new Stretchy(source.release(), *stretchy_));
+  source.reset(stretchy.release());
+  return source.release();
 }
 
 }  // namespace source
