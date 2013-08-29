@@ -1,7 +1,11 @@
 #ifndef __REC_UTIL_PTR
 #define __REC_UTIL_PTR
 
+#include <memory>
+
 #include "rec/base/disallow.h"
+
+using std::unique_ptr;
 
 // scoped_ptr mimics a built-in pointer except that it guarantees deletion
 // of the object pointed to, either on destruction of the scoped_ptr or via
