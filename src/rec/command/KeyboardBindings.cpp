@@ -30,8 +30,8 @@ CommandMapProto getKeyboardBindings() {
   if (d->fileReadSuccess())
     return getProto<KeyStrokeCommandMapProto>(d).map();
 
-  static KeyStrokeCommandMapProto mp = BINARY_PROTO(KeyStrokeMap_def,
-                                                    KeyStrokeCommandMapProto);
+  static const KeyStrokeCommandMapProto mp =
+    BINARY_PROTO(KeyStrokeMap_def, KeyStrokeCommandMapProto);
   return mp.map();
 }
 

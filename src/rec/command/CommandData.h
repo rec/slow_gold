@@ -7,7 +7,6 @@
 namespace rec {
 namespace command {
 
-class Access;
 class CallbackTable;
 
 class CommandData {

@@ -1,67 +1,98 @@
-ROOT := /development/rec
-BUILD_ROOT := $(ROOT)/projects/slow/Builds/MacOSX
+ROOT := /development
+BASE := src/rec
+PROTO_DIR := externals/mac/protobuf
+GENFILES := genfiles/proto
+BUILD_DIR := /development/rec/projects/slow/Builds/MacOSX
 
-new := $(ROOT)/scripts/new/new.py
+PROTOC := $(PROTO_DIR)/bin/protoc\
+ -I src\
+ -I $(PROTO_DIR)/include\
+ --python_out=$(GENFILES)\
+ --cpp_out=$(GENFILES)
 
-icons := $(wildcard art/icon/*.svg)
-binaries := $(wildcard src/rec/command/*.xml)
-commands := src/rec/slow/commands/AllCommands.def
-keystrokes := src/rec/slow/commands/KeyStrokeMap.def
-translations := $(wildcard text/??-TranslatedStrings.def)
+TOP := $(foreach dir, $(BASE), $(wildcard $(dir)/*))
+SECOND := $(foreach dir, $(TOP), $(wildcard $(dir)/*))
 
-icon_code := $(patsubst art/icon/%.svg, genfiles/icon/rec/gui/icon/%.svg.cpp, $(icons))
-binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
-command_code := $(patsubst %.def, %.def.cpp, $(commands))
-keystroke_code := $(patsubst %.def, %.def.cpp, $(keystrokes))
-translation_code := $(patsubst text/%-TranslatedStrings.def, genfiles/translations/rec/translation/%-TranslatedStrings.def.cpp, $(translations))
+TOP_PROTO := $(foreach dir, $(TOP), $(wildcard $(dir)/*.proto))
+SECOND_PROTO := $(foreach dir, $(SECOND), $(wildcard $(dir)/*.proto))
+ALL_PROTOS := $(TOP_PROTO) $(SECOND_PROTO)
 
-all: code builddebug
+TARGETS_H := $(patsubst src/%.proto, $(GENFILES)/%.pb.h, $(ALL_PROTOS))
+TARGETS_CC := $(patsubst src/%.proto, $(GENFILES)/%.pb.cc, $(ALL_PROTOS))
 
-release: code builddebug buildrelease compress
+TARGETS := $(TARGETS_H) $(TARGETS_CC)
 
-code: $(icon_code) $(binary_code) $(command_code) $(keystroke_code) $(translation_code)
+all: debug # release
+	echo "Make complete!"
 
-builddebug:
-	cd $(BUILD_ROOT) && xcodebuild -project "SlowGold.xcodeproj" -configuration Debug
+genfiles/proto/rec/app/%.pb.h: src/rec/app/%.proto
+	$(PROTOC) $<
 
-buildrelease:
-	cd $(BUILD_ROOT) && xcodebuild -project "SlowGold.xcodeproj" -configuration Release
+genfiles/proto/rec/audio/%.pb.h: src/rec/audio/%.proto
+	$(PROTOC) $<
 
-compress: compressrelease compressdebug
+genfiles/proto/rec/audio/source/%.pb.h: src/rec/audio/source/%.proto
+	$(PROTOC) $<
 
-compressdebug: builddebug
-	cd $(BUILD_ROOT)/build/Debug && zip -r $(BUILD_ROOT)/build/"SlowGold 8-debug.zip" "SlowGold 8-debug.app"
+genfiles/proto/rec/audio/stretch/%.pb.h: src/rec/audio/stretch/%.proto
+	$(PROTOC) $<
 
-compressrelease: buildrelease
-	cd $(BUILD_ROOT)/build/Release && zip -r $(BUILD_ROOT)/build/"SlowGold 8.zip" "SlowGold 8.app"
+genfiles/proto/rec/audio/util/%.pb.h: src/rec/audio/util/%.proto
+	$(PROTOC) $<
 
-.PHONY: build code all buildrelease builddebug compress
+genfiles/proto/rec/base/%.pb.h: src/rec/base/%.proto
+	$(PROTOC) $<
 
-clean:
-	rm $(icon_code) $(binary_code) $(command_code)
+genfiles/proto/rec/command/%.pb.h: src/rec/command/%.proto
+	$(PROTOC) $<
 
-genfiles/icon/rec/gui/icon/%.svg.cpp: art/icon/%.svg
-	$(new) --namespace=rec.gui.icon --output=genfiles/icon/rec/gui/icon $<
+genfiles/proto/rec/command/map/%.pb.h: src/rec/command/map/%.proto
+	$(PROTOC) $<
 
-genfiles/translations/rec/translation/%-TranslatedStrings.def.cpp: text/%-TranslatedStrings.def
-	$(new)\
-    --include=base/Trans.pb \
-    --proto=TranslatedStrings \
-    --namespace=rec.translation \
-    --output=genfiles/translation/rec/translation \
-    $<
+genfiles/proto/rec/data/%.pb.h: src/rec/data/%.proto
+	$(PROTOC) $<
 
-%.xml.cpp: %.xml
-	$(new) $<
+genfiles/proto/rec/data/proto/%.pb.h: src/rec/data/proto/%.proto
+	$(PROTOC) $<
 
-src/rec/slow/commands/AllCommands.def.cpp: src/rec/slow/commands/AllCommands.def
-	$(new)\
-    --include=command/Command.pb \
-    --proto=command::Commands \
-    $<
+genfiles/proto/rec/gui/%.pb.h: src/rec/gui/%.proto
+	$(PROTOC) $<
 
-src/rec/slow/commands/KeyStrokeMap.def.cpp: src/rec/slow/commands/KeyStrokeMap.def
-	$(new)\
-    --include=command/map/CommandMap.pb \
-    --proto=command::KeyStrokeCommandMapProto \
-    $<
+genfiles/proto/rec/music/%.pb.h: src/rec/music/%.proto
+	$(PROTOC) $<
+
+genfiles/proto/rec/slow/%.pb.h: src/rec/slow/%.proto
+	$(PROTOC) $<
+
+genfiles/proto/rec/util/%.pb.h: src/rec/util/%.proto
+	$(PROTOC) $<
+
+genfiles/proto/rec/util/file/%.pb.h: src/rec/util/file/%.proto
+	$(PROTOC) $<
+
+genfiles/proto/rec/util/thread/%.pb.h: src/rec/util/thread/%.proto
+	$(PROTOC) $<
+
+genfiles/proto/rec/widget/%.pb.h: src/rec/widget/%.proto
+	$(PROTOC) $<
+
+ genfiles/proto/rec/widget/status/%.pb.h: src/rec/widget/status/%.proto
+	$(PROTOC) $<
+
+genfiles/proto/rec/widget/tree/%.pb.h: src/rec/widget/tree/%.proto
+	$(PROTOC) $<
+
+genfiles/proto/rec/widget/waveform/%.pb.h: src/rec/widget/waveform/%.proto
+	$(PROTOC) $<
+
+proto: $(TARGETS_H)
+	echo "Make all protocol buffers"
+
+clean_proto:
+	rm $(TARGETS)
+
+release: proto
+	cd $(BUILD_DIR) && xcodebuild -project SlowGold.xcodeproj -configuration Release
+
+debug: proto
+	cd $(BUILD_DIR) && xcodebuild -project SlowGold.xcodeproj -configuration Debug

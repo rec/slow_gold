@@ -8,7 +8,6 @@
 namespace rec {
 namespace slow {
 
-using command::Access;
 using command::Commands;
 using command::CommandData;
 
@@ -29,7 +28,7 @@ class SlowCommandData : public CommandData {
 
  private:
  	Listener<None>* update_;
-  command::Commands allCommands_;
+  const command::Commands allCommands_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowCommandData);
 };

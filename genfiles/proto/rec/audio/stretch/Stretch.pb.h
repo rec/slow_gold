@@ -327,9 +327,9 @@ class Stretch : public ::google::protobuf::Message {
   double time_percent_;
   double sample_rate_;
   double pitch_scale_;
-  double semitone_shift_;
   ::google::protobuf::uint32 channels_;
   ::google::protobuf::uint32 bands_;
+  double semitone_shift_;
   double detune_cents_;
   ::google::protobuf::uint32 filter_overlap_;
   ::google::protobuf::uint32 chunk_size_;
