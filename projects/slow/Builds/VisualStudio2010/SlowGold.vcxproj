@@ -246,8 +246,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
@@ -1621,8 +1619,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\InstanceCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\RepeatedCallbacks.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>
@@ -1656,8 +1652,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Copy.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Deletable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\DeletableSet.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\util\destruct_ptr.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\DisplayFile.h"/>
@@ -2269,6 +2263,8 @@
     <None Include="..\..\text\es-TranslatedStrings.def"/>
     <None Include="..\..\text\fr-TranslatedStrings.def"/>
     <None Include="..\..\text\id-TranslatedStrings.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\AllCommands.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_formats\juce_module_info"/>

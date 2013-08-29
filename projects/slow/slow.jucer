@@ -750,14 +750,9 @@
                 name="SaveFile.h" resource="0"/>
         </GROUP>
         <GROUP id="c0CwfeW14" name="commands">
-          <FILE compile="1" file="../../src/rec/slow/commands/AllCommands.def.cpp"
-                id="GV4j0xRrO" name="AllCommands.def.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/commands/AllCommands.def.h"
-                id="fURoLGDgI" name="AllCommands.def.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/commands/KeyStrokeMap.def.cpp"
-                id="tXcWOiX6B" name="KeyStrokeMap.def.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/commands/KeyStrokeMap.def.h"
-                id="6dImyk1Jh" name="KeyStrokeMap.def.h" resource="0"/>
+          <FILE id="ILcoRf" name="AllCommands.def" compile="0" resource="1" file="../../src/rec/slow/commands/AllCommands.def"/>
+          <FILE id="Sqo4Sd" name="KeyStrokeMap.def" compile="0" resource="1"
+                file="../../src/rec/slow/commands/KeyStrokeMap.def"/>
           <FILE compile="1" file="../../src/rec/slow/commands/SlowCommandData.cpp"
                 id="3BxhM9H9Q" name="SlowCommandData.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/commands/SlowCommandData.h"
@@ -893,10 +888,6 @@
               name="Cuttable.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Deletable.h" id="rPtSTAJFS"
               name="Deletable.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/DeletableSet.h" id="nLdc43M5Q"
-              name="DeletableSet.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/destruct_ptr.h" id="ne5Z4G5TM"
-              name="destruct_ptr.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="VXL4hmtV2"
               name="Exception.h" resource="0"/>
         <GROUP id="1paKC3S3A" name="file">

@@ -126,6 +126,12 @@ namespace BinaryData
     extern const char*   idTranslatedStrings_def;
     const int            idTranslatedStrings_defSize = 59202;
 
+    extern const char*   AllCommands_def;
+    const int            AllCommands_defSize = 25206;
+
+    extern const char*   KeyStrokeMap_def;
+    const int            KeyStrokeMap_defSize = 5782;
+
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).
     const char* getNamedResource (const char* resourceNameUTF8, int& dataSizeInBytes) throw();

@@ -1,8 +1,9 @@
 #include "rec/slow/commands/SlowCommandData.h"
+
 #include "rec/command/CommandData.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/callbacks/Callbacks.h"
-#include "rec/slow/commands/AllCommands.def.h"
+#include "rec/util/Binary.h"
 
 namespace rec {
 namespace slow {
@@ -15,8 +16,10 @@ namespace {
 
 class SlowCommandData : public CommandData {
  public:
-  explicit SlowCommandData(Instance* i) : update_(i->menus_.get()) {}
-  const Commands& allCommands() const { return *commands::allCommands; }
+  explicit SlowCommandData(Instance* i)
+      : update_(i->menus_.get()),
+        allCommands_(BINARY_PROTO(AllCommands_def, command::Commands)) {}
+  const Commands& allCommands() const { return allCommands_; }
 
   virtual void addCallbacks(command::CallbackTable* table) const {
     addSlowCallbacks(table);
@@ -26,6 +29,7 @@ class SlowCommandData : public CommandData {
 
  private:
  	Listener<None>* update_;
+  command::Commands allCommands_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowCommandData);
 };

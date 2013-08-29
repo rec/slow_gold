@@ -23,10 +23,8 @@ StringMap* makeStringMap(const string& desc) {
   TranslatedStrings ts;
   copy::copy(desc, &ts);
   ptr<StringMap> map(new StringMap);
-  for (int i = 0; i < ts.str_size(); ++i) {
-    const TranslatedString& s = ts.str(i);
+  for (auto& s: ts.str())
     (*map)[makeHash(s)] = s.translation();
-  }
 
   return map.release();
 }

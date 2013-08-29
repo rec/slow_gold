@@ -826,12 +826,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.cpp">
       <Filter>SlowGold\rec\slow\callbacks</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.cpp">
-      <Filter>SlowGold\rec\slow\commands</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def.cpp">
-      <Filter>SlowGold\rec\slow\commands</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </ClCompile>
@@ -2886,12 +2880,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.h">
       <Filter>SlowGold\rec\slow\callbacks</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\commands\AllCommands.def.h">
-      <Filter>SlowGold\rec\slow\commands</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def.h">
-      <Filter>SlowGold\rec\slow\commands</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </ClInclude>
@@ -2989,12 +2977,6 @@
       <Filter>SlowGold\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Deletable.h">
-      <Filter>SlowGold\rec\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\DeletableSet.h">
-      <Filter>SlowGold\rec\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\destruct_ptr.h">
       <Filter>SlowGold\rec\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
@@ -4825,6 +4807,12 @@
     </None>
     <None Include="..\..\text\id-TranslatedStrings.def">
       <Filter>SlowGold\text</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\AllCommands.def">
+      <Filter>SlowGold\rec\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def">
+      <Filter>SlowGold\rec\slow\commands</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info">
       <Filter>Juce Modules\juce_audio_basics</Filter>
