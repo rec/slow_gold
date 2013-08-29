@@ -12,11 +12,11 @@ Type* createBinary(const char* data, size_t len, const string& filename = "");
 template <typename Type>
 Type* construct(const string&);
 
-#define BINARY_DATA_STRING(NAME) \
+#define BINARY_STRING(NAME) \
   string(BinaryData::NAME, BinaryData::NAME ## Size)
 
 #define BINARY_DATA(NAME, TYPE) \
-  construct<TYPE>(BINARY_DATA_STRING(NAME))
+  construct<TYPE>(BINARY_STRING(NAME))
 
 }  // namespace util
 }  // namespace rec

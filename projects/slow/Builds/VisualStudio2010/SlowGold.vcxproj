@@ -135,11 +135,6 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\de-TranslatedStrings.def.cpp"/>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\en-TranslatedStrings.def.cpp"/>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\es-TranslatedStrings.def.cpp"/>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\fr-TranslatedStrings.def.cpp"/>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\id-TranslatedStrings.def.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
@@ -1453,11 +1448,6 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_video\juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\de-TranslatedStrings.def.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\en-TranslatedStrings.def.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\es-TranslatedStrings.def.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\fr-TranslatedStrings.def.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\id-TranslatedStrings.def.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\Application.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\Files.h"/>

@@ -14,15 +14,6 @@
     <Filter Include="SlowGold\text">
       <UniqueIdentifier>{BF567733-6247-74DE-90B5-7C01284FD1C7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SlowGold\translation">
-      <UniqueIdentifier>{A74D3B73-0C95-0B61-65AA-8A0C6696CBB7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SlowGold\translation\rec">
-      <UniqueIdentifier>{21A1698A-1181-3948-2443-C14B1EDE807D}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SlowGold\translation\rec\translation">
-      <UniqueIdentifier>{6374FCE0-3C25-3163-C915-3E42C234AF11}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SlowGold\rec">
       <UniqueIdentifier>{EA5F75D3-C9A8-A1FC-8253-69A36205F73D}</UniqueIdentifier>
     </Filter>
@@ -502,21 +493,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\de-TranslatedStrings.def.cpp">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\en-TranslatedStrings.def.cpp">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\es-TranslatedStrings.def.cpp">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\fr-TranslatedStrings.def.cpp">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\translation\rec\translation\id-TranslatedStrings.def.cpp">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp">
       <Filter>SlowGold\rec\app</Filter>
     </ClCompile>
@@ -2391,21 +2367,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\de-TranslatedStrings.def.h">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\en-TranslatedStrings.def.h">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\es-TranslatedStrings.def.h">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\fr-TranslatedStrings.def.h">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\translation\rec\translation\id-TranslatedStrings.def.h">
-      <Filter>SlowGold\translation\rec\translation</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\Application.h">
       <Filter>SlowGold\rec\app</Filter>
     </ClInclude>

@@ -2,12 +2,10 @@
 
 #include "rec/translation/TranslationTables.h"
 
+#include "rec/base/Trans.pb.h"
 #include "rec/data/DataOps.h"
-#include "rec/translation/de-TranslatedStrings.def.h"
-#include "rec/translation/en-TranslatedStrings.def.h"
-#include "rec/translation/es-TranslatedStrings.def.h"
-#include "rec/translation/fr-TranslatedStrings.def.h"
-#include "rec/translation/id-TranslatedStrings.def.h"
+#include "rec/util/Binary.h"
+#include "rec/util/Copy.h"
 #include "rec/util/STL.h"
 
 namespace rec {
@@ -21,7 +19,9 @@ string makeHash(const TranslatedString& s) {
   return s.original() + "###" + s.hint();
 }
 
-StringMap* makeStringMap(const TranslatedStrings& ts) {
+StringMap* makeStringMap(const string& desc) {
+  TranslatedStrings ts;
+  copy::copy(desc, &ts);
   ptr<StringMap> map(new StringMap);
   for (int i = 0; i < ts.str_size(); ++i) {
     const TranslatedString& s = ts.str(i);
@@ -34,11 +34,16 @@ StringMap* makeStringMap(const TranslatedStrings& ts) {
 struct Translations {
   Translations() : maps_(app::AppSettings::LAST + 1) {
     maps_[app::AppSettings::NONE] = nullptr;
-    maps_[app::AppSettings::DE] = makeStringMap(*deTranslatedStrings);
-    maps_[app::AppSettings::EN] = makeStringMap(*enTranslatedStrings);
-    maps_[app::AppSettings::ES] = makeStringMap(*esTranslatedStrings);
-    maps_[app::AppSettings::FR] = makeStringMap(*frTranslatedStrings);
-    maps_[app::AppSettings::ID] = makeStringMap(*idTranslatedStrings);
+    maps_[app::AppSettings::DE] =
+      makeStringMap(BINARY_STRING(deTranslatedStrings_def));
+    maps_[app::AppSettings::EN] =
+      makeStringMap(BINARY_STRING(enTranslatedStrings_def));
+    maps_[app::AppSettings::ES] =
+      makeStringMap(BINARY_STRING(esTranslatedStrings_def));
+    maps_[app::AppSettings::FR] =
+      makeStringMap(BINARY_STRING(frTranslatedStrings_def));
+    maps_[app::AppSettings::ID] =
+      makeStringMap(BINARY_STRING(idTranslatedStrings_def));
   }
   ~Translations() { stl::deletePointers(&maps_); }
 

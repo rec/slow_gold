@@ -17,20 +17,20 @@ void setButtonImagesAlternate(DrawableButton* b, const string& normal,
 
 #define SET_BUTTON_IMAGES2(B, NORMAL) \
   setButtonImages(B,                                    \
-                  BINARY_DATA_STRING(NORMAL ## _svg),   \
-                  BINARY_DATA_STRING(NORMAL ## Disabled_svg))
+                  BINARY_STRING(NORMAL ## _svg),   \
+                  BINARY_STRING(NORMAL ## Disabled_svg))
 
 #define SET_BUTTON_IMAGES3(B, NORMAL) \
   setButtonImages(B,                                          \
-                  BINARY_DATA_STRING(NORMAL ## _svg),         \
-                  BINARY_DATA_STRING(NORMAL ## Disabled_svg), \
-                  BINARY_DATA_STRING(NORMAL ## Pressed_svg))
+                  BINARY_STRING(NORMAL ## _svg),         \
+                  BINARY_STRING(NORMAL ## Disabled_svg), \
+                  BINARY_STRING(NORMAL ## Pressed_svg))
 
 #define SET_BUTTON_IMAGES_ALTERNATE(B, NORMAL, ALTERNATE)     \
   setButtonImagesAlternate(B,                                          \
-                           BINARY_DATA_STRING(NORMAL ## _svg),         \
-                           BINARY_DATA_STRING(NORMAL ## Disabled_svg), \
-                           BINARY_DATA_STRING(ALTERNATE ## _svg))
+                           BINARY_STRING(NORMAL ## _svg),         \
+                           BINARY_STRING(NORMAL ## Disabled_svg), \
+                           BINARY_STRING(ALTERNATE ## _svg))
 
 }  // namespace gui
 }  // namespace rec
