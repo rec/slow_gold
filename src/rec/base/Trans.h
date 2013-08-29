@@ -1,8 +1,6 @@
 #ifndef __REC_BASE_TRANSLATEDSTRING__
 #define __REC_BASE_TRANSLATEDSTRING__
 
-#include <vector>
-
 #include "rec/base/base.h"
 #include "rec/app/AppSettings.pb.h"
 

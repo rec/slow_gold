@@ -54,8 +54,8 @@ void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
 
 static const int MAX_DEDUPE_COUNT = 2;
 
-std::vector<string> getRecentFileNames() {
-  typedef std::vector<string> StrList;
+vector<string> getRecentFileNames() {
+  typedef vector<string> StrList;
 
   RecentFiles rf = data::getProto<RecentFiles>();
   StrList results(rf.file_size());

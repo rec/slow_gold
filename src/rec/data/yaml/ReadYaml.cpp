@@ -1,6 +1,5 @@
 #include <iostream>
 #include <sstream>
-#include <vector>
 
 #include "rec/data/yaml/Internal.h"
 

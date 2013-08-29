@@ -2,7 +2,6 @@
 #define __REC_UTIL_STL__
 
 #include <set>
-#include <vector>
 
 #include "rec/base/base.h"
 

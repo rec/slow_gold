@@ -1,7 +1,6 @@
 #include "rec/util/partition/Convertors.h"
 
 using namespace juce;
-using std::vector;
 
 namespace rec {
 namespace util {

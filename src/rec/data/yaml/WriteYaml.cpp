@@ -1,5 +1,3 @@
-#include <vector>
-
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/message.h>
 
@@ -79,7 +77,7 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const MessageField& mf) {
   }
 }
 
-typedef std::vector<const FieldDescriptor*> FieldVector;
+typedef vector<const FieldDescriptor*> FieldVector;
 
 static const unsigned int MAX_FIELD_COUNT = 5;
 static const int MAX_ARRAY_COUNT = 8;

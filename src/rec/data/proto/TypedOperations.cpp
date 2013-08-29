@@ -1,5 +1,3 @@
-#include <vector>
-
 #include <google/protobuf/descriptor.h>
 
 #include "rec/base/arraysize.h"

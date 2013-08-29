@@ -76,7 +76,7 @@ int RubberBand::retrieve(int copied, const AudioSourceChannelInfo& info) {
   float** out = info.buffer->getArrayOfChannels();
   int startSample = info.startSample + copied;
 
-  std::vector<float*> output(2);
+  vector<float*> output(2);
   for (int c = 0; c < 2; ++c)
     output[c] = out[c] + startSample;
 

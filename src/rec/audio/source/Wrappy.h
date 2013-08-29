@@ -1,8 +1,6 @@
 #ifndef __REC_AUDIO_SOURCE_WRAPPY__
 #define __REC_AUDIO_SOURCE_WRAPPY__
 
-#include <vector>
-
 #include "rec/audio/Audio.h"
 
 namespace rec {

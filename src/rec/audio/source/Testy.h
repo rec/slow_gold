@@ -1,8 +1,6 @@
 #ifndef __REC_AUDIO_SOURCE_TESTY__
 #define __REC_AUDIO_SOURCE_TESTY__
 
-#include <vector>
-
 #include <gtest/gtest.h>
 
 #include "rec/base/base.h"

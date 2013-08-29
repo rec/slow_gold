@@ -3,8 +3,6 @@
 
 // Wrap an incoming AudioSource, and time-stretch it.
 
-#include <vector>
-
 #include "rec/audio/source/Wrappy.h"
 #include "rec/base/SampleRate.h"
 

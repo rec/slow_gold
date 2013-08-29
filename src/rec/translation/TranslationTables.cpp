@@ -42,7 +42,7 @@ struct Translations {
   }
   ~Translations() { stl::deletePointers(&maps_); }
 
-  typedef std::vector<StringMap*> Maps;
+  typedef vector<StringMap*> Maps;
   Maps maps_;
 };
 

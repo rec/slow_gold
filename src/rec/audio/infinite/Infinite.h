@@ -24,7 +24,7 @@ namespace infinite {
 
 template <typename Sample>
 struct SampleBlock {
-  std::vector<Sample*> samples_;  // Vector of sample pointers, one per channel.
+  vector<Sample*> samples_;  // Vector of sample pointers, one per channel.
   int length_;                    // Number of samples in this block.
   int skip_;                      // Number of samples to skip between frames.
 

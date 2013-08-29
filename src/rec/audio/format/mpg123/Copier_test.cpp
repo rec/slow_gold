@@ -1,4 +1,3 @@
-#include <vector>
 #include <gtest/gtest.h>
 #include "rec/audio/format/mpg123/Copier.h"
 #include "rec/audio/format/mpg123/Mpg123.h"

@@ -1,11 +1,8 @@
 #ifndef __REC_UTIL_POINTERLIST__
 #define __REC_UTIL_POINTERLIST__
 
-#include <vector>
-
 #include "rec/base/base.h"
 #include "rec/util/Method.h"
-
 
 namespace rec {
 namespace util {
@@ -16,7 +13,7 @@ class PointerList {
  public:
   PointerList() {}
 
-  typedef std::vector<Type*> List;
+  typedef vector<Type*> List;
   typedef util::Method<Type> Method;
 
   List* list() { return &list_; }

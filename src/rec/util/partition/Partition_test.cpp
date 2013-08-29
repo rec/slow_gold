@@ -3,8 +3,6 @@
 #include "rec/util/partition/Partition.h"
 #include "rec/base/ArraySize.h"
 
-using std::vector;
-
 namespace rec {
 namespace util {
 namespace partition {
@@ -52,7 +50,7 @@ TEST_F(PartitionChildrenTest, Level2) {
   test(5, 10, result, arraysize(result));
 }
 #endif
-  
+
 }  // namespace
 }  // namespace partition
 }  // namespace util

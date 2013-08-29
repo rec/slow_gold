@@ -48,7 +48,7 @@ const Trans& langName(int lang) {
 const int TICKED = ApplicationCommandInfo::isTicked;
 
 void addRecentFileSubmenu(MenuMaker* maker) {
-  std::vector<string> recent = rec::gui::getRecentFileNames();
+  vector<string> recent = rec::gui::getRecentFileNames();
 
   maker->addSeparator();
   maker->addEnabled(Command::OPEN_PREVIOUS_FILE, !recent.empty());

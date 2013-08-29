@@ -1,8 +1,6 @@
 #ifndef __REC_UTIL_FILE_GETVOLUMES__
 #define __REC_UTIL_FILE_GETVOLUMES__
 
-#include <vector>
-
 #include "rec/base/base.h"
 #include "rec/util/file/VirtualFile.pb.h"
 

@@ -2,7 +2,6 @@
 #define __REC_UTIL_RANGE__
 
 #include <set>
-#include <vector>
 
 #include "rec/util/STL.h"
 
@@ -18,7 +17,7 @@ struct Range {
   Range(Type b, Type e) : begin_(b), end_(e) { DCHECK_LE(b, e); }
 
   typedef std::set<Range> Set;
-  typedef std::vector<Range> Vector;
+  typedef vector<Range> Vector;
 
   void clear() { begin_ = end_ = Type(0); }
   Type size() const { return end_ - begin_; }

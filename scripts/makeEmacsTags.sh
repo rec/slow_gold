@@ -1,6 +1,6 @@
 
-cd "$ROOT/rec/src/rec"
-find . \( -name \*.h -or -name \*.cpp \) | xargs etags
+cd "$ROOT/rec/src"
+find rec \( -name \*.h -or -name \*.cpp \) | xargs etags
 echo "TAGS table written."
 exit -1
 

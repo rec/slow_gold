@@ -1,8 +1,6 @@
 #ifndef __REC_AUDIO_AUDIO__
 #define __REC_AUDIO_AUDIO__
 
-#include <vector>
-
 #include "rec/base/RealTime.h"
 #include "rec/base/SampleTime.h"
 #include "rec/base/SampleRate.h"

@@ -1,8 +1,6 @@
 #ifndef __REC_UTIL_PARTITION_CONVERTORS__
 #define __REC_UTIL_PARTITION_CONVERTORS__
 
-#include <vector>
-
 #include "rec/util/range/Range.h"
 
 namespace rec {

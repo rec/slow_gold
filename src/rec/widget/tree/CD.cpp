@@ -12,7 +12,7 @@ namespace tree {
 
 void CD::computeChildren() {
   name_ = t_UNKNOWN_CD;
-  std::vector<string> tracks;
+  vector<string> tracks;
 
   const string& cdKey = virtualFile_.volume_name();
   ptr<AudioCDReader> reader(cd::getAudioCDReader(str(cdKey)));

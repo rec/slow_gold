@@ -1,8 +1,6 @@
 #ifndef __REC_GUI_LAYOUT_LAYOUT__
 #define __REC_GUI_LAYOUT_LAYOUT__
 
-#include <vector>
-
 #include "rec/gui/Geometry.h"
 #include "rec/gui/SizeHintAccumulator.h"
 
@@ -37,7 +35,7 @@ class Layout : public Component,
 
  protected:
   StretchableLayoutManager layoutManager_;
-  std::vector<Component*> components_;
+  vector<Component*> components_;
   Orientation orientation_;
   const bool resizeOtherDimension_;
   SizeAccumulator sizeHints_[LAST];

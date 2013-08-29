@@ -1,8 +1,6 @@
 #ifndef __REC_PROTO_ZEROCOPY__
 #define __REC_PROTO_ZEROCOPY__
 
-#include <vector>
-
 #include "rec/base/base.h"
 #include "google/protobuf/io/coded_stream.h"
 #include "google/protobuf/io/zero_copy_stream.h"
@@ -35,7 +33,7 @@ class Base : public Stream {
   ptr<JuceStream> stream_;
 
  private:
-  std::vector<uint8> buffer_;
+  vector<uint8> buffer_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Base);
 };

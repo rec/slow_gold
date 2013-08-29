@@ -1,8 +1,6 @@
 #ifndef __REC_EVENT_EVENTSTACK__
 #define __REC_EVENT_EVENTSTACK__
 
-#include <vector>
-
 #include "rec/util/Listener.h"
 
 namespace rec {
@@ -33,7 +31,7 @@ class UndoStack : public Broadcaster<None> {
   int popRedos();
 
   class Entry;
-  typedef std::vector<Entry*> Stack;
+  typedef vector<Entry*> Stack;
 
   Stack stack_;
   juce::CriticalSection lock_;

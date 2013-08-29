@@ -2,7 +2,6 @@
 #define __REC_COMPONENT_MAIN_PAGE_J_H__
 
 #include <set>
-#include <vector>
 
 #include "rec/app/LanguageListener.h"
 #include "rec/gui/layout/Layout.h"

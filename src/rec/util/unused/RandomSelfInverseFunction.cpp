@@ -9,7 +9,7 @@ namespace util {
 
 static const int STATE_SIZE = 16;
 
-typedef std::vector<byte> ByteVector;
+typedef vector<byte> ByteVector;
 
 static int randomItemIndex(int size) {
   return static_cast<unsigned long>(rand()) % size;
