@@ -10,9 +10,9 @@
               pluginAUExportPrefix="SlowGoldAU" pluginAUViewClass="SlowGoldAU_V1"
               pluginRTASCategory="">
   <EXPORTFORMATS>
-    <XCODE_MAC bigIcon="wiIhPYIwK" documentExtensions=".aif,.aiff,.m4a,.mp3,.mp4,.wav,.wave,.slow"
+    <XCODE_MAC bigIcon="T3afol" documentExtensions=".aif,.aiff,.m4a,.mp3,.mp4,.wav,.wave,.slow"
                extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
-               juceFolder="../../../juce/modules" objCExtraSuffix="jeMWW9" smallIcon="k8EMdGWkD"
+               juceFolder="../../../juce/modules" objCExtraSuffix="jeMWW9" smallIcon="T3afol"
                targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                extraCompilerFlags="">
       <CONFIGURATIONS>
@@ -122,6 +122,10 @@
               resource="1" file="art/icon/ZoomToSelectionButtonDisabled.svg"/>
         <FILE id="pbGY9s" name="ZoomToSelectionButtonPressed.svg" compile="0"
               resource="1" file="art/icon/ZoomToSelectionButtonPressed.svg"/>
+      </GROUP>
+      <GROUP id="{126713FD-EBF0-CC3B-A23B-ADA6BBF38EBE}" name="program">
+        <FILE id="P8lxxB" name="big-icon.png" compile="0" resource="1" file="art/program/big-icon.png"/>
+        <FILE id="T3afol" name="icon.png" compile="0" resource="1" file="art/program/icon.png"/>
       </GROUP>
     </GROUP>
     <GROUP id="{AB8DE307-11A2-A9B0-B537-3648C7CD2E78}" name="text">
@@ -376,12 +380,6 @@
               name="Trans.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/types.h" id="cPVXuqA6Q"
               name="types.h" resource="0"/>
-      </GROUP>
-      <GROUP id="gCajhmpmH" name="binary">
-        <FILE compile="0" file="../../src/rec/binary/big-icon.png" id="wiIhPYIwK"
-              name="big-icon.png" resource="1"/>
-        <FILE compile="0" file="../../src/rec/binary/icon.png" id="k8EMdGWkD"
-              name="icon.png" resource="1"/>
       </GROUP>
       <GROUP id="fY5oQLUxc" name="command">
         <FILE compile="0" file="../../src/rec/command/CallbackTable.h" id="fLIF3J9EZ"

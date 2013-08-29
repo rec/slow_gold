@@ -105,6 +105,12 @@ namespace BinaryData
     extern const char*   ZoomToSelectionButtonPressed_svg;
     const int            ZoomToSelectionButtonPressed_svgSize = 22883;
 
+    extern const char*   bigicon_png;
+    const int            bigicon_pngSize = 67899;
+
+    extern const char*   icon_png;
+    const int            icon_pngSize = 2702;
+
     extern const char*   deTranslatedStrings_def;
     const int            deTranslatedStrings_defSize = 62004;
 
@@ -119,12 +125,6 @@ namespace BinaryData
 
     extern const char*   idTranslatedStrings_def;
     const int            idTranslatedStrings_defSize = 59202;
-
-    extern const char*   bigicon_png;
-    const int            bigicon_pngSize = 67899;
-
-    extern const char*   icon_png;
-    const int            icon_pngSize = 2702;
 
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).

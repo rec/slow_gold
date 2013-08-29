@@ -2268,13 +2268,13 @@
     <None Include="..\..\art\icon\ZoomToSelectionButton.svg"/>
     <None Include="..\..\art\icon\ZoomToSelectionButtonDisabled.svg"/>
     <None Include="..\..\art\icon\ZoomToSelectionButtonPressed.svg"/>
+    <None Include="..\..\art\program\big-icon.png"/>
+    <None Include="..\..\art\program\icon.png"/>
     <None Include="..\..\text\de-TranslatedStrings.def"/>
     <None Include="..\..\text\en-TranslatedStrings.def"/>
     <None Include="..\..\text\es-TranslatedStrings.def"/>
     <None Include="..\..\text\fr-TranslatedStrings.def"/>
     <None Include="..\..\text\id-TranslatedStrings.def"/>
-    <None Include="..\..\..\..\src\rec\binary\big-icon.png"/>
-    <None Include="..\..\..\..\src\rec\binary\icon.png"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_formats\juce_module_info"/>
@@ -2289,7 +2289,6 @@
     <None Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_opengl\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_video\juce_module_info"/>
-    <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc"/>

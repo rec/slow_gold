@@ -11,6 +11,9 @@
     <Filter Include="SlowGold\art\icon">
       <UniqueIdentifier>{A4542DDF-B13F-4FD7-C978-8A317A9AD1D3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\art\program">
+      <UniqueIdentifier>{F5722C5A-7E72-0099-FC09-E1A2B4E07AE4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\text">
       <UniqueIdentifier>{BF567733-6247-74DE-90B5-7C01284FD1C7}</UniqueIdentifier>
     </Filter>
@@ -46,9 +49,6 @@
     </Filter>
     <Filter Include="SlowGold\rec\base">
       <UniqueIdentifier>{4F89A481-DBB7-4B09-D5BC-B0E006AE15CC}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SlowGold\rec\binary">
-      <UniqueIdentifier>{05FA40EA-4CCE-B39B-CAA8-80D70D2C4B5E}</UniqueIdentifier>
     </Filter>
     <Filter Include="SlowGold\rec\command">
       <UniqueIdentifier>{281D576F-02AF-65F5-E9C4-D7901C65A9C4}</UniqueIdentifier>
@@ -4805,6 +4805,12 @@
     <None Include="..\..\art\icon\ZoomToSelectionButtonPressed.svg">
       <Filter>SlowGold\art\icon</Filter>
     </None>
+    <None Include="..\..\art\program\big-icon.png">
+      <Filter>SlowGold\art\program</Filter>
+    </None>
+    <None Include="..\..\art\program\icon.png">
+      <Filter>SlowGold\art\program</Filter>
+    </None>
     <None Include="..\..\text\de-TranslatedStrings.def">
       <Filter>SlowGold\text</Filter>
     </None>
@@ -4819,12 +4825,6 @@
     </None>
     <None Include="..\..\text\id-TranslatedStrings.def">
       <Filter>SlowGold\text</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\binary\big-icon.png">
-      <Filter>SlowGold\rec\binary</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\binary\icon.png">
-      <Filter>SlowGold\rec\binary</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info">
       <Filter>Juce Modules\juce_audio_basics</Filter>
@@ -4867,9 +4867,6 @@
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_video\juce_module_info">
       <Filter>Juce Modules\juce_video</Filter>
-    </None>
-    <None Include=".\icon.ico">
-      <Filter>Juce Library Code</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
