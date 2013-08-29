@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="yaml">
+      <UniqueIdentifier>{43DD0808-C5EF-FC75-5209-79A8864251B1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="yaml\src">
+      <UniqueIdentifier>{8EEDDF09-7EF6-3A40-6C5F-E6EA26B9F079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Library Code">
+      <UniqueIdentifier>{8B4D1BAA-6DB4-CAEC-A0FA-271F354D5C61}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\aliascontent.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\aliasmanager.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\content.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\conversion.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\directives.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\emitfromevents.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\emitter.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\emitterstate.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\emitterutils.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\exp.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\iterator.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\map.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\node.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\nodebuilder.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\null.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ostream.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parser.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parserstate.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\regex.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scalar.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scanner.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scanscalar.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scantag.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scantoken.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sequence.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\simplekey.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\singledocparser.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\stream.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tag.cpp">
+      <Filter>yaml\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\aliascontent.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\collectionstack.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\content.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\directives.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\emitterstate.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\emitterutils.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\exp.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\indentation.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\iterpriv.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ltnode.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\map.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\nodebuilder.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\parserstate.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ptr_stack.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\regex.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\regeximpl.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scalar.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scanner.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scanscalar.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scantag.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sequence.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\setting.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\singledocparser.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stream.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\streamcharsource.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\stringsource.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tag.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\token.h">
+      <Filter>yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

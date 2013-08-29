@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="ZCQE6D" name="yaml" projectType="library" version="1.0.0"
+              bundleIdentifier="com.slowgold" jucerVersion="3.1.0">
+  <MAINGROUP id="TDQ7gT" name="yaml">
+    <GROUP id="{3F871F64-2EC2-BF64-ED4A-F27509C09AB2}" name="src">
+      <FILE id="gDfJYv" name="aliascontent.cpp" compile="1" resource="0"
+            file="src/aliascontent.cpp"/>
+      <FILE id="Y3fpC2" name="aliascontent.h" compile="0" resource="0" file="src/aliascontent.h"/>
+      <FILE id="zpRvBU" name="aliasmanager.cpp" compile="1" resource="0"
+            file="src/aliasmanager.cpp"/>
+      <FILE id="ov2uh5" name="collectionstack.h" compile="0" resource="0"
+            file="src/collectionstack.h"/>
+      <FILE id="HiIqR7" name="content.cpp" compile="1" resource="0" file="src/content.cpp"/>
+      <FILE id="eNELwj" name="content.h" compile="0" resource="0" file="src/content.h"/>
+      <FILE id="oVkDfy" name="conversion.cpp" compile="1" resource="0" file="src/conversion.cpp"/>
+      <FILE id="H7aeTw" name="directives.cpp" compile="1" resource="0" file="src/directives.cpp"/>
+      <FILE id="GC1PHt" name="directives.h" compile="0" resource="0" file="src/directives.h"/>
+      <FILE id="S5WmEN" name="emitfromevents.cpp" compile="1" resource="0"
+            file="src/emitfromevents.cpp"/>
+      <FILE id="f773E7" name="emitter.cpp" compile="1" resource="0" file="src/emitter.cpp"/>
+      <FILE id="TALGBY" name="emitterstate.cpp" compile="1" resource="0"
+            file="src/emitterstate.cpp"/>
+      <FILE id="dfURnX" name="emitterstate.h" compile="0" resource="0" file="src/emitterstate.h"/>
+      <FILE id="GlaE3N" name="emitterutils.cpp" compile="1" resource="0"
+            file="src/emitterutils.cpp"/>
+      <FILE id="fjde44" name="emitterutils.h" compile="0" resource="0" file="src/emitterutils.h"/>
+      <FILE id="YxsQOX" name="exp.cpp" compile="1" resource="0" file="src/exp.cpp"/>
+      <FILE id="vV04ro" name="exp.h" compile="0" resource="0" file="src/exp.h"/>
+      <FILE id="WLrpLH" name="indentation.h" compile="0" resource="0" file="src/indentation.h"/>
+      <FILE id="LYyeXp" name="iterator.cpp" compile="1" resource="0" file="src/iterator.cpp"/>
+      <FILE id="UwGvyz" name="iterpriv.h" compile="0" resource="0" file="src/iterpriv.h"/>
+      <FILE id="GBMU1d" name="ltnode.h" compile="0" resource="0" file="src/ltnode.h"/>
+      <FILE id="EKmJVS" name="map.cpp" compile="1" resource="0" file="src/map.cpp"/>
+      <FILE id="EPp6Qg" name="map.h" compile="0" resource="0" file="src/map.h"/>
+      <FILE id="O4tqbT" name="node.cpp" compile="1" resource="0" file="src/node.cpp"/>
+      <FILE id="LqXsEl" name="nodebuilder.cpp" compile="1" resource="0" file="src/nodebuilder.cpp"/>
+      <FILE id="w1KfHn" name="nodebuilder.h" compile="0" resource="0" file="src/nodebuilder.h"/>
+      <FILE id="kGcNPZ" name="null.cpp" compile="1" resource="0" file="src/null.cpp"/>
+      <FILE id="omsaRs" name="ostream.cpp" compile="1" resource="0" file="src/ostream.cpp"/>
+      <FILE id="MJX569" name="parser.cpp" compile="1" resource="0" file="src/parser.cpp"/>
+      <FILE id="FpVXdy" name="parserstate.cpp" compile="1" resource="0" file="src/parserstate.cpp"/>
+      <FILE id="Twqm8D" name="parserstate.h" compile="0" resource="0" file="src/parserstate.h"/>
+      <FILE id="gTbLWO" name="ptr_stack.h" compile="0" resource="0" file="src/ptr_stack.h"/>
+      <FILE id="wqgLzG" name="regex.cpp" compile="1" resource="0" file="src/regex.cpp"/>
+      <FILE id="jAh8yi" name="regex.h" compile="0" resource="0" file="src/regex.h"/>
+      <FILE id="SIeRdX" name="regeximpl.h" compile="0" resource="0" file="src/regeximpl.h"/>
+      <FILE id="Kf420F" name="scalar.cpp" compile="1" resource="0" file="src/scalar.cpp"/>
+      <FILE id="CsFiFS" name="scalar.h" compile="0" resource="0" file="src/scalar.h"/>
+      <FILE id="N8NoCj" name="scanner.cpp" compile="1" resource="0" file="src/scanner.cpp"/>
+      <FILE id="u0H5xb" name="scanner.h" compile="0" resource="0" file="src/scanner.h"/>
+      <FILE id="NeaFc9" name="scanscalar.cpp" compile="1" resource="0" file="src/scanscalar.cpp"/>
+      <FILE id="m7sgup" name="scanscalar.h" compile="0" resource="0" file="src/scanscalar.h"/>
+      <FILE id="UGPJwS" name="scantag.cpp" compile="1" resource="0" file="src/scantag.cpp"/>
+      <FILE id="NkPi2f" name="scantag.h" compile="0" resource="0" file="src/scantag.h"/>
+      <FILE id="BttJzp" name="scantoken.cpp" compile="1" resource="0" file="src/scantoken.cpp"/>
+      <FILE id="wFp4qD" name="sequence.cpp" compile="1" resource="0" file="src/sequence.cpp"/>
+      <FILE id="HYyHfW" name="sequence.h" compile="0" resource="0" file="src/sequence.h"/>
+      <FILE id="qkMJSM" name="setting.h" compile="0" resource="0" file="src/setting.h"/>
+      <FILE id="OaM7vD" name="simplekey.cpp" compile="1" resource="0" file="src/simplekey.cpp"/>
+      <FILE id="RrI9Xc" name="singledocparser.cpp" compile="1" resource="0"
+            file="src/singledocparser.cpp"/>
+      <FILE id="rlqhvc" name="singledocparser.h" compile="0" resource="0"
+            file="src/singledocparser.h"/>
+      <FILE id="zb7XTP" name="stream.cpp" compile="1" resource="0" file="src/stream.cpp"/>
+      <FILE id="QbWnzH" name="stream.h" compile="0" resource="0" file="src/stream.h"/>
+      <FILE id="KZNwv8" name="streamcharsource.h" compile="0" resource="0"
+            file="src/streamcharsource.h"/>
+      <FILE id="ATWa36" name="stringsource.h" compile="0" resource="0" file="src/stringsource.h"/>
+      <FILE id="pr8ui6" name="tag.cpp" compile="1" resource="0" file="src/tag.cpp"/>
+      <FILE id="ghjxOd" name="tag.h" compile="0" resource="0" file="src/tag.h"/>
+      <FILE id="y0EOop" name="token.h" compile="0" resource="0" file="src/token.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_gui_audio" showAllCode="1" useLocalCopy="1"/>
+  </MODULES>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" juceFolder="../../../../juce/modules">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="yaml" cppLibType="libc++"
+                       headerPath="/development/rec/externals/yaml/include"/>
+        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="0" optimisation="2" targetName="yaml" cppLibType="libc++"
+                       headerPath="/development/rec/externals/yaml/include"/>
+      </CONFIGURATIONS>
+    </XCODE_MAC>
+    <VS2012 targetFolder="Builds/VisualStudio2012" juceFolder="../../../juce/modules">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="yaml"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="yaml"/>
+      </CONFIGURATIONS>
+    </VS2012>
+  </EXPORTFORMATS>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>

@@ -11,17 +11,17 @@
               pluginRTASCategory="">
   <EXPORTFORMATS>
     <XCODE_MAC bigIcon="wiIhPYIwK" documentExtensions=".aif,.aiff,.m4a,.mp3,.mp4,.wav,.wave,.slow"
-               extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
+               extraLinkerFlags="-lglog -liconv -lmpg123 -lprotobuf -lyaml -lrubberband  -lippacemerged -lippacmerged -lippcore -lippsemerged -lippsmerged  -lippsremerged -lippsrmerged"
                juceFolder="../../../juce/modules" objCExtraSuffix="jeMWW9" smallIcon="k8EMdGWkD"
                targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               extraCompilerFlags="-wfour-char-constants">
+               extraCompilerFlags="">
       <CONFIGURATIONS>
-        <CONFIGURATION customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../../build/Debug/gtest/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../.."
-                       isDebug="1" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/rubberband/osx/ipp/Debug/i386;../../../../externals/rubberband/osx/ipp/common"
+        <CONFIGURATION customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../../build/Debug/gtest/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../../../../externals/yaml/include;../.."
+                       isDebug="1" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/mac/yaml;../../../../externals/rubberband/osx/ipp/Debug/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Debug" optimisation="1" osxArchitecture="default" osxCompatibility="default"
                        osxSDK="default" targetName="SlowGold 8-debug" cppLibType="libc++"/>
-        <CONFIGURATION customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../.."
-                       isDebug="0" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/rubberband/osx/ipp/Release/i386;../../../../externals/rubberband/osx/ipp/common"
+        <CONFIGURATION customXcodeFlags="" headerPath="../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../externals/mac/glog/include;../../../../externals/mac/mpg123;../../../../externals/mac/protobuf/include;../../../../externals/yaml/include;../.."
+                       isDebug="0" libraryPath="../../../../externals/mac/glog/lib;../../../../externals/mac/mpg123/lib;../../../../externals/mac/protobuf/lib;../../../../externals/mac/rubberband;../../../../externals/mac/yaml;../../../../externals/rubberband/osx/ipp/Release/i386;../../../../externals/rubberband/osx/ipp/common"
                        name="Release" optimisation="2" osxArchitecture="default" osxCompatibility="default"
                        osxSDK="default" targetName="SlowGold 8" cppLibType="libc++"/>
       </CONFIGURATIONS>
@@ -583,176 +583,10 @@
         <FILE compile="0" file="../../src/rec/data/Value.h" id="ktGNiaX4I"
               name="Value.h" resource="0"/>
         <GROUP id="ZliqfWdhq" name="yaml">
-          <GROUP id="zAK7d9ZSR" name="include">
-            <GROUP id="BU7IOIxax" name="yaml-cpp">
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/aliasmanager.h"
-                    id="66VPiK64l" name="aliasmanager.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/anchor.h"
-                    id="gOG8o90nV" name="anchor.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/conversion.h"
-                    id="eejU5ZAaV" name="conversion.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/emitfromevents.h"
-                    id="dLwQwgfkY" name="emitfromevents.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/emitter.h"
-                    id="pPOlY1XE6" name="emitter.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/emittermanip.h"
-                    id="n2s0FrsNK" name="emittermanip.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/eventhandler.h"
-                    id="SSfL7UpZO" name="eventhandler.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/exceptions.h"
-                    id="qt1VYQA4f" name="exceptions.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/iterator.h"
-                    id="GSdo4Yfc7" name="iterator.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/mark.h"
-                    id="z1GED4WPq" name="mark.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/node.h"
-                    id="HV9ke6Axz" name="node.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/nodeimpl.h"
-                    id="NDaI0o2LW" name="nodeimpl.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/nodeproperties.h"
-                    id="qQHVFSVuR" name="nodeproperties.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/nodereadimpl.h"
-                    id="grXrpl9cT" name="nodereadimpl.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/nodeutil.h"
-                    id="3kaaBdsAH" name="nodeutil.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/noncopyable.h"
-                    id="O4yqfW4BJ" name="noncopyable.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/null.h"
-                    id="9kSgTnd16" name="null.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/ostream.h"
-                    id="9u3ZApk0K" name="ostream.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/parser.h"
-                    id="gCedv2wfU" name="parser.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/stlemitter.h"
-                    id="4jDiht3IO" name="stlemitter.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/stlnode.h"
-                    id="wTgw3l4cY" name="stlnode.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/traits.h"
-                    id="ACo31ucv3" name="traits.h" resource="0"/>
-              <FILE compile="0" file="../../src/rec/data/yaml/include/yaml-cpp/yaml.h"
-                    id="qbeS7ofqd" name="yaml.h" resource="0"/>
-            </GROUP>
-          </GROUP>
           <FILE compile="0" file="../../src/rec/data/yaml/Internal.h" id="mRXMsc6Kw"
                 name="Internal.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/yaml/ReadYaml.cpp" id="hNoAOmuHN"
                 name="ReadYaml.cpp" resource="0"/>
-          <GROUP id="dSks9HlPL" name="src">
-            <FILE compile="1" file="../../src/rec/data/yaml/src/aliascontent.cpp"
-                  id="kwrJC9tR7" name="aliascontent.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/aliascontent.h"
-                  id="47axHAMB5" name="aliascontent.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/aliasmanager.cpp"
-                  id="EKSH8ZXKD" name="aliasmanager.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/collectionstack.h"
-                  id="KQZqd95Yl" name="collectionstack.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/content.cpp" id="T7J8a4Zms"
-                  name="content.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/content.h" id="4tEqkllnh"
-                  name="content.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/conversion.cpp"
-                  id="AZcIYrfXV" name="conversion.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/directives.cpp"
-                  id="dsyooEUfU" name="directives.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/directives.h" id="n2SD7b7pc"
-                  name="directives.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/emitfromevents.cpp"
-                  id="r0UzlQWQp" name="emitfromevents.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/emitter.cpp" id="bebfwb94X"
-                  name="emitter.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/emitterstate.cpp"
-                  id="v36AYTUP7" name="emitterstate.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/emitterstate.h"
-                  id="9OP3Rc2fy" name="emitterstate.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/emitterutils.cpp"
-                  id="ayUhN9UdX" name="emitterutils.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/emitterutils.h"
-                  id="NoL7Irxt6" name="emitterutils.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/exp.cpp" id="lqxYLI06f"
-                  name="exp.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/exp.h" id="qN8QT3xOF"
-                  name="exp.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/indentation.h"
-                  id="6jhCdmpN3" name="indentation.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/iterator.cpp" id="lIi5NKDq0"
-                  name="iterator.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/iterpriv.h" id="CWJIVu64H"
-                  name="iterpriv.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/ltnode.h" id="8DXAvJebK"
-                  name="ltnode.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/map.cpp" id="tNatvouFw"
-                  name="map.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/map.h" id="aNmKCTn2x"
-                  name="map.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/node.cpp" id="2QzErR9cO"
-                  name="node.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/nodebuilder.cpp"
-                  id="LVMyQUhqL" name="nodebuilder.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/nodebuilder.h"
-                  id="k3IKAotYG" name="nodebuilder.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/null.cpp" id="taSaGW1GP"
-                  name="null.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/ostream.cpp" id="DS7joEoZP"
-                  name="ostream.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/parser.cpp" id="nBmMutX12"
-                  name="parser.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/parserstate.cpp"
-                  id="sqQdrIkAQ" name="parserstate.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/parserstate.h"
-                  id="rgL7Q80ND" name="parserstate.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/ptr_stack.h" id="FsfHFSsR9"
-                  name="ptr_stack.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/regex.cpp" id="n4sR2PlQV"
-                  name="regex.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/regex.h" id="TGEdPrnUB"
-                  name="regex.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/regeximpl.h" id="pObS7RUqf"
-                  name="regeximpl.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/scalar.cpp" id="WZbhn8KZx"
-                  name="scalar.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/scalar.h" id="PFNW9cfxH"
-                  name="scalar.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/scanner.cpp" id="15jteN3Qf"
-                  name="scanner.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/scanner.h" id="fDya5TFSs"
-                  name="scanner.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/scanscalar.cpp"
-                  id="7CArD72Db" name="scanscalar.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/scanscalar.h" id="CIN1AyPKJ"
-                  name="scanscalar.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/scantag.cpp" id="99k5VtHPt"
-                  name="scantag.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/scantag.h" id="qPYqmlMqv"
-                  name="scantag.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/scantoken.cpp"
-                  id="bYCzfHld5" name="scantoken.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/sequence.cpp" id="w0jEtpwUU"
-                  name="sequence.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/sequence.h" id="hwWXxvK78"
-                  name="sequence.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/setting.h" id="hjZvSKEaq"
-                  name="setting.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/simplekey.cpp"
-                  id="Mfq63Cdty" name="simplekey.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/singledocparser.cpp"
-                  id="G1bMdQ191" name="singledocparser.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/singledocparser.h"
-                  id="hjllhuQxL" name="singledocparser.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/stream.cpp" id="jXgF8hAE7"
-                  name="stream.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/stream.h" id="s0JJpJ0tC"
-                  name="stream.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/streamcharsource.h"
-                  id="ug7uvWhJH" name="streamcharsource.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/stringsource.h"
-                  id="x47NeW4mj" name="stringsource.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/tag.cpp" id="dKpJfP9tW"
-                  name="tag.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/tag.h" id="WUNfk0M3z"
-                  name="tag.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/token.h" id="tlijewTEv"
-                  name="token.h" resource="0"/>
-          </GROUP>
           <FILE compile="1" file="../../src/rec/data/yaml/WriteYaml.cpp" id="sw2rmI4wL"
                 name="WriteYaml.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/yaml/Yaml.h" id="gsjSwC9nc"
