@@ -1,12 +1,13 @@
 package rec.gui;
 
-import "rec/util/file/VirtualFile.proto";
 import "rec/music/Metadata.proto";
+import "rec/util/file/VirtualFile.proto";
 
 message RecentFile {
   optional int64 timestamp = 1;
   optional util.file.VirtualFile file = 2;
   optional music.Metadata metadata = 3;
+  optional string metadata_string = 4;
 };
 
 message RecentFiles {

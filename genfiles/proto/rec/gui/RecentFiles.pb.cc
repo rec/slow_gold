@@ -38,10 +38,11 @@ void protobuf_AssignDesc_rec_2fgui_2fRecentFiles_2eproto() {
       "rec/gui/RecentFiles.proto");
   GOOGLE_CHECK(file != NULL);
   RecentFile_descriptor_ = file->message_type(0);
-  static const int RecentFile_offsets_[3] = {
+  static const int RecentFile_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, timestamp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, file_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, metadata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, metadata_string_),
   };
   RecentFile_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -104,17 +105,18 @@ void protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::util::file::protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
   ::rec::music::protobuf_AddDesc_rec_2fmusic_2fMetadata_2eproto();
+  ::rec::util::file::protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\031rec/gui/RecentFiles.proto\022\007rec.gui\032\037re"
-    "c/util/file/VirtualFile.proto\032\030rec/music"
-    "/Metadata.proto\"p\n\nRecentFile\022\021\n\ttimesta"
-    "mp\030\001 \001(\003\022(\n\004file\030\002 \001(\0132\032.rec.util.file.V"
-    "irtualFile\022%\n\010metadata\030\003 \001(\0132\023.rec.music"
-    ".Metadata\"i\n\013RecentFiles\022!\n\004file\030\003 \003(\0132\023"
-    ".rec.gui.RecentFile\022\025\n\tmax_files\030\004 \001(\005:\002"
-    "16\022 \n\022reload_most_recent\030\005 \001(\010:\004true", 316);
+    "\n\031rec/gui/RecentFiles.proto\022\007rec.gui\032\030re"
+    "c/music/Metadata.proto\032\037rec/util/file/Vi"
+    "rtualFile.proto\"\211\001\n\nRecentFile\022\021\n\ttimest"
+    "amp\030\001 \001(\003\022(\n\004file\030\002 \001(\0132\032.rec.util.file."
+    "VirtualFile\022%\n\010metadata\030\003 \001(\0132\023.rec.musi"
+    "c.Metadata\022\027\n\017metadata_string\030\004 \001(\t\"i\n\013R"
+    "ecentFiles\022!\n\004file\030\003 \003(\0132\023.rec.gui.Recen"
+    "tFile\022\025\n\tmax_files\030\004 \001(\005:\00216\022 \n\022reload_m"
+    "ost_recent\030\005 \001(\010:\004true", 342);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/RecentFiles.proto", &protobuf_RegisterTypes);
   RecentFile::default_instance_ = new RecentFile();
@@ -137,6 +139,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fRecentFiles_2eproto {
 const int RecentFile::kTimestampFieldNumber;
 const int RecentFile::kFileFieldNumber;
 const int RecentFile::kMetadataFieldNumber;
+const int RecentFile::kMetadataStringFieldNumber;
 #endif  // !_MSC_VER
 
 RecentFile::RecentFile()
@@ -160,6 +163,7 @@ void RecentFile::SharedCtor() {
   timestamp_ = GOOGLE_LONGLONG(0);
   file_ = NULL;
   metadata_ = NULL;
+  metadata_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -168,6 +172,9 @@ RecentFile::~RecentFile() {
 }
 
 void RecentFile::SharedDtor() {
+  if (metadata_string_ != &::google::protobuf::internal::kEmptyString) {
+    delete metadata_string_;
+  }
   if (this != default_instance_) {
     delete file_;
     delete metadata_;
@@ -203,6 +210,11 @@ void RecentFile::Clear() {
     }
     if (has_metadata()) {
       if (metadata_ != NULL) metadata_->::rec::music::Metadata::Clear();
+    }
+    if (has_metadata_string()) {
+      if (metadata_string_ != &::google::protobuf::internal::kEmptyString) {
+        metadata_string_->clear();
+      }
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -254,6 +266,23 @@ bool RecentFile::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(34)) goto parse_metadata_string;
+        break;
+      }
+
+      // optional string metadata_string = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_metadata_string:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_metadata_string()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->metadata_string().data(), this->metadata_string().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -293,6 +322,15 @@ void RecentFile::SerializeWithCachedSizes(
       3, this->metadata(), output);
   }
 
+  // optional string metadata_string = 4;
+  if (has_metadata_string()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->metadata_string().data(), this->metadata_string().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->metadata_string(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -318,6 +356,16 @@ void RecentFile::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->metadata(), target);
+  }
+
+  // optional string metadata_string = 4;
+  if (has_metadata_string()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->metadata_string().data(), this->metadata_string().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->metadata_string(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -350,6 +398,13 @@ int RecentFile::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->metadata());
+    }
+
+    // optional string metadata_string = 4;
+    if (has_metadata_string()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->metadata_string());
     }
 
   }
@@ -388,6 +443,9 @@ void RecentFile::MergeFrom(const RecentFile& from) {
     if (from.has_metadata()) {
       mutable_metadata()->::rec::music::Metadata::MergeFrom(from.metadata());
     }
+    if (from.has_metadata_string()) {
+      set_metadata_string(from.metadata_string());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -414,6 +472,7 @@ void RecentFile::Swap(RecentFile* other) {
     std::swap(timestamp_, other->timestamp_);
     std::swap(file_, other->file_);
     std::swap(metadata_, other->metadata_);
+    std::swap(metadata_string_, other->metadata_string_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

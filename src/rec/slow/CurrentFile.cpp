@@ -45,8 +45,8 @@ void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
     setVirtualFile(files.file(0), true);
 }
 
-void CurrentFile::setFile(const File& f) {
-  setVirtualFile(file::toVirtualFile(f), true);
+void CurrentFile::setFile(const File& f, bool showError) {
+  setVirtualFile(file::toVirtualFile(f), showError);
 }
 
 void CurrentFile::operator()(const VirtualFile& vf) {

@@ -8,6 +8,7 @@
 #include "rec/data/proto/Equals.h"
 #include "rec/music/Metadata.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/Copy.h"
 
 using namespace google::protobuf;
 
@@ -24,7 +25,7 @@ struct CompareRecentFiles {
 
 }  // namespace
 
-void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
+void addRecentFile(const VirtualFile& f, const Message& message) {
   if (f.type() == VirtualFile::NONE || f.type() == VirtualFile::CD)
     return;
 
@@ -45,7 +46,10 @@ void addRecentFile(const VirtualFile& f, const music::Metadata& metadata) {
   }
   r->set_timestamp(timestamp);
   r->mutable_file()->CopyFrom(f);
-  r->mutable_metadata()->CopyFrom(metadata);
+  r->mutable_metadata()->CopyFrom(message);
+  string s;
+  copy::copy(message, &s);
+  r->set_metadata_string(s);
 
   std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
             CompareRecentFiles());

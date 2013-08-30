@@ -25,8 +25,9 @@ class CurrentFile : public HasInstance,
 
   const SampleTime length() const;
   bool empty() const { return !length(); }
+
   void setVirtualFile(const VirtualFile&, bool showError);
-  void setFile(const File&);
+  void setFile(const File&, bool showError = true);
   const VirtualFile file() const;
 
   const CriticalSection& lock() { return lock_; }

@@ -10,7 +10,7 @@ namespace music { class Metadata; }
 
 namespace gui {
 
-void addRecentFile(const VirtualFile&, const music::Metadata&);
+void addRecentFile(const VirtualFile&, const Message&);
 vector<string> getRecentFileNames();
 
 }  // namespace gui

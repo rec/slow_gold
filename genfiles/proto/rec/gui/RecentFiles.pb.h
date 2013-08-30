@@ -24,8 +24,8 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "rec/util/file/VirtualFile.pb.h"
 #include "rec/music/Metadata.pb.h"
+#include "rec/util/file/VirtualFile.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -120,6 +120,18 @@ class RecentFile : public ::google::protobuf::Message {
   inline ::rec::music::Metadata* release_metadata();
   inline void set_allocated_metadata(::rec::music::Metadata* metadata);
 
+  // optional string metadata_string = 4;
+  inline bool has_metadata_string() const;
+  inline void clear_metadata_string();
+  static const int kMetadataStringFieldNumber = 4;
+  inline const ::std::string& metadata_string() const;
+  inline void set_metadata_string(const ::std::string& value);
+  inline void set_metadata_string(const char* value);
+  inline void set_metadata_string(const char* value, size_t size);
+  inline ::std::string* mutable_metadata_string();
+  inline ::std::string* release_metadata_string();
+  inline void set_allocated_metadata_string(::std::string* metadata_string);
+
   // @@protoc_insertion_point(class_scope:rec.gui.RecentFile)
  private:
   inline void set_has_timestamp();
@@ -128,15 +140,18 @@ class RecentFile : public ::google::protobuf::Message {
   inline void clear_has_file();
   inline void set_has_metadata();
   inline void clear_has_metadata();
+  inline void set_has_metadata_string();
+  inline void clear_has_metadata_string();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int64 timestamp_;
   ::rec::util::file::VirtualFile* file_;
   ::rec::music::Metadata* metadata_;
+  ::std::string* metadata_string_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fRecentFiles_2eproto();
@@ -352,6 +367,76 @@ inline void RecentFile::set_allocated_metadata(::rec::music::Metadata* metadata)
     set_has_metadata();
   } else {
     clear_has_metadata();
+  }
+}
+
+// optional string metadata_string = 4;
+inline bool RecentFile::has_metadata_string() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RecentFile::set_has_metadata_string() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RecentFile::clear_has_metadata_string() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RecentFile::clear_metadata_string() {
+  if (metadata_string_ != &::google::protobuf::internal::kEmptyString) {
+    metadata_string_->clear();
+  }
+  clear_has_metadata_string();
+}
+inline const ::std::string& RecentFile::metadata_string() const {
+  return *metadata_string_;
+}
+inline void RecentFile::set_metadata_string(const ::std::string& value) {
+  set_has_metadata_string();
+  if (metadata_string_ == &::google::protobuf::internal::kEmptyString) {
+    metadata_string_ = new ::std::string;
+  }
+  metadata_string_->assign(value);
+}
+inline void RecentFile::set_metadata_string(const char* value) {
+  set_has_metadata_string();
+  if (metadata_string_ == &::google::protobuf::internal::kEmptyString) {
+    metadata_string_ = new ::std::string;
+  }
+  metadata_string_->assign(value);
+}
+inline void RecentFile::set_metadata_string(const char* value, size_t size) {
+  set_has_metadata_string();
+  if (metadata_string_ == &::google::protobuf::internal::kEmptyString) {
+    metadata_string_ = new ::std::string;
+  }
+  metadata_string_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* RecentFile::mutable_metadata_string() {
+  set_has_metadata_string();
+  if (metadata_string_ == &::google::protobuf::internal::kEmptyString) {
+    metadata_string_ = new ::std::string;
+  }
+  return metadata_string_;
+}
+inline ::std::string* RecentFile::release_metadata_string() {
+  clear_has_metadata_string();
+  if (metadata_string_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = metadata_string_;
+    metadata_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void RecentFile::set_allocated_metadata_string(::std::string* metadata_string) {
+  if (metadata_string_ != &::google::protobuf::internal::kEmptyString) {
+    delete metadata_string_;
+  }
+  if (metadata_string) {
+    set_has_metadata_string();
+    metadata_string_ = metadata_string;
+  } else {
+    clear_has_metadata_string();
+    metadata_string_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 
