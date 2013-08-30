@@ -87,22 +87,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   else
     file_ = data::noData();
 
-  {
-    MessageManagerLock l;
-
-    if (length_ != 0)
-      components()->directoryTree_->refreshNode(file_);
-
-    if (newFile.path_size())
-      components()->directoryTree_->refreshNode(newFile);
-
-    components()->waveform_->setLoading(true);
-    components()->waveform_->repaint();
-
-    components()->setEnabled(length_ != 0);
-  }
-
-  components()->waveform_->setLoading(false);
+  afterFileChange(newFile);
   data::setProto(file_, CANT_UNDO);
   data::UntypedDataListener::setGlobalDataFile(file_);
 
@@ -110,6 +95,23 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
     instance_->fillerThread_->startThread();
 
   menus()->menuItemsChanged();
+}
+
+
+void CurrentFile::afterFileChange(const VirtualFile& newFile) {
+  MessageManagerLock l;
+
+  if (length_ != 0)
+    components()->directoryTree_->refreshNode(file_);
+
+  if (newFile.path_size())
+    components()->directoryTree_->refreshNode(newFile);
+
+  components()->waveform_->setLoading(true);
+  components()->waveform_->repaint();
+
+  components()->setEnabled(length_ != 0);
+  components()->waveform_->setLoading(false);
 }
 
 int64 CurrentFile::getFileLength(bool showError) {

@@ -35,6 +35,7 @@ class CurrentFile : public HasInstance,
   int64 getFileLength(bool showError);
   void setViewport();
   void continueLoading(bool showError);
+  void afterFileChange(const VirtualFile& newFile);
 
   CriticalSection lock_;
   widget::waveform::Viewport viewport_;
