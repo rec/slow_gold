@@ -15,9 +15,9 @@ namespace {
 
 using namespace rec::command;
 
-CommandMapEntry* newEntry(Command::Type type, KeyStrokeCommandMapProto* map) {
+CommandMapEntry* newEntry(CommandID type, KeyStrokeCommandMapProto* map) {
   CommandMapEntry* entry = map->mutable_map()->add_entry();
-  entry->set_command(type);
+    entry->set_command(static_cast<Command::Type>(type));
   return entry;
 }
 
@@ -31,7 +31,7 @@ void portKeyboardFile() {
       KeyStrokeCommandMapProto keyMap;
       for (int i = 0; i < commands.command_size(); ++i) {
         const Command& command = commands.command(i);
-        Command::Type type = command.type();
+        CommandID type = command.type();
         if (command.has_start_index()) {
           int32 index = command.start_index();
           for (int j = 0; j < command.keypress_size(); ++j, ++index) {

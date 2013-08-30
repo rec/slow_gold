@@ -16,7 +16,7 @@ namespace {
 
 void fillSingleCommand(const CommandData& data, CommandRecordTable* table,
                        const Command& cmd) {
-  const Command::Type t = cmd.type();
+  const CommandID t = cmd.type();
   CommandRecord* cr = table->find(t);
   if (!cr) {
     DCHECK(cmd.has_setter()) << cmd.ShortDebugString();

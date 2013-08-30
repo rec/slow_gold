@@ -28,7 +28,7 @@ void CommandRecord::fillInfo() {
     // TODO: fix this - and why isn't needed for the language menu?
     String name = Trans(desc.menu(0));
     if (info_.shortName.length()) {
-      Command::Type t = static_cast<Command::Type>(id.get());
+      CommandID t = id.get();
       if (t == Command::TOGGLE_WHOLE_SONG_LOOP || t == Command::RECENT_FILES)
         name = info_.shortName;
     }

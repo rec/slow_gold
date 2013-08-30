@@ -57,7 +57,7 @@ void MenuMaker::addBasic(command::ID commandName) {
   addFull(commandName, String::empty, ENABLE, nullptr, -1);
 }
 
-void MenuMaker::addRepeat(Command::Type command,
+void MenuMaker::addRepeat(CommandID command,
                           int slot,
                           const String& name,
                           PopupMenu* m,
@@ -65,21 +65,21 @@ void MenuMaker::addRepeat(Command::Type command,
   addFull(command::ID(command, slot), name, ENABLE, m, flags);
 }
 
-void MenuMaker::addSimpleRepeat(Command::Type command, int slot, PopupMenu* m) {
+void MenuMaker::addSimpleRepeat(CommandID command, int slot, PopupMenu* m) {
   addFull(command::ID(command, slot), "",
           empty_ ? DISABLE : ENABLE, m, DEFAULT_FLAGS);  // Was 0!!
 }
 
-void MenuMaker::addEnabled(Command::Type command, Enable enable) {
+void MenuMaker::addEnabled(CommandID command, Enable enable) {
   addEnabledName(command, enable, String::empty);
 }
 
-void MenuMaker::addEnabledName(Command::Type cmd, Enable enable,
+void MenuMaker::addEnabledName(CommandID cmd, Enable enable,
                                const String& name) {
   addFull(cmd, name, enable, nullptr, DEFAULT_FLAGS);
 }
 
-void MenuMaker::addBank(Command::Type command, const String& name) {
+void MenuMaker::addBank(CommandID command, const String& name) {
   int lastSlot = SLOT_COUNT;
 
   if (!Instance::getInstance()->empty()) {

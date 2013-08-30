@@ -70,7 +70,7 @@ void addSaveMenuEntries(MenuMaker* maker) {
   int t = static_cast<int>(data::getProto<audio::AudioSettings>()
                            .file_type_for_save());
   static const char* NAMES[] = {"AIFF", "FLAC", "Ogg Vorbis", "WAV"};
-  static const Command::Type COMMAND = Command::SET_SAVE_FORMAT;
+  static const CommandID COMMAND = Command::SET_SAVE_FORMAT;
   for (int i = 0; i < audio::AudioSettings::COUNT; ++i)
     maker->addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
 

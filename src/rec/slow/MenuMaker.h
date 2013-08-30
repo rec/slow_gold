@@ -33,12 +33,12 @@ class MenuMaker : public HasInstance {
 
   void addSeparator() { menu_.addSeparator(); }
 
-  void addEnabled(command::Command::Type, Enable);
-  void addEnabled(command::Command::Type t, bool enable) {
+  void addEnabled(CommandID, Enable);
+  void addEnabled(CommandID t, bool enable) {
     addEnabled(t, enable ? ENABLE : DISABLE);
   }
 
-  void addRepeat(command::Command::Type,
+  void addRepeat(CommandID,
                  int slot,
                  const String& name = String::empty,
                  PopupMenu* m = nullptr,
@@ -49,15 +49,15 @@ class MenuMaker : public HasInstance {
 
   void addBasic(command::ID id);
 
-  void addSimpleRepeat(command::Command::Type, int slot, PopupMenu*);
+  void addSimpleRepeat(CommandID, int slot, PopupMenu*);
 
   virtual bool addMenu(const String& menuName) = 0;
 
-  void addEnabledName(command::Command::Type, Enable, const String& name);
-  void addEnabledName(command::Command::Type t, bool en, const String& name) {
+  void addEnabledName(CommandID, Enable, const String& name);
+  void addEnabledName(CommandID t, bool en, const String& name) {
     addEnabledName(t, en ? ENABLE : DISABLE, name);
   }
-  void addBank(command::Command::Type, const String& name);
+  void addBank(CommandID, const String& name);
 
   PopupMenu menu_;
   const IsWholeSong& isWholeSong_;
