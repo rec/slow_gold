@@ -126,8 +126,11 @@ namespace BinaryData
     extern const char*   idTranslatedStrings_def;
     const int            idTranslatedStrings_defSize = 59202;
 
-    extern const char*   AllCommands_def;
-    const int            AllCommands_defSize = 25206;
+    extern const char*   SlowCommands_def;
+    const int            SlowCommands_defSize = 28880;
+
+    extern const char*   SlowKeyStrokeMap_def;
+    const int            SlowKeyStrokeMap_defSize = 5782;
 
     extern const char*   KeyStrokeMap_def;
     const int            KeyStrokeMap_defSize = 5782;

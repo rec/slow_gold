@@ -173,6 +173,9 @@
     <Filter Include="SlowGold\proto\rec\slow">
       <UniqueIdentifier>{318A62B0-42FA-032B-9377-3FBB2017B3E5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\proto\rec\slow\commands">
+      <UniqueIdentifier>{7B1A5208-DD42-1632-936B-31A836015DA6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\proto\rec\util">
       <UniqueIdentifier>{02F1E177-1E03-D1F8-551D-337FCB8B7B14}</UniqueIdentifier>
     </Filter>
@@ -1113,6 +1116,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc">
       <Filter>SlowGold\proto\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc">
+      <Filter>SlowGold\proto\rec\slow\commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc">
       <Filter>SlowGold\proto\rec\slow</Filter>
@@ -3339,6 +3345,9 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h">
       <Filter>SlowGold\proto\rec\music</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h">
+      <Filter>SlowGold\proto\rec\slow\commands</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h">
       <Filter>SlowGold\proto\rec\slow</Filter>
     </ClInclude>
@@ -4808,7 +4817,10 @@
     <None Include="..\..\text\id-TranslatedStrings.def">
       <Filter>SlowGold\text</Filter>
     </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\AllCommands.def">
+    <None Include="..\..\..\..\src\rec\slow\commands\SlowCommands.def">
+      <Filter>SlowGold\rec\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def">

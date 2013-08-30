@@ -342,6 +342,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.cc"/>
@@ -1772,6 +1773,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.h"/>
@@ -2263,7 +2265,8 @@
     <None Include="..\..\text\es-TranslatedStrings.def"/>
     <None Include="..\..\text\fr-TranslatedStrings.def"/>
     <None Include="..\..\text\id-TranslatedStrings.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\AllCommands.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\SlowCommands.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\juce_module_info"/>

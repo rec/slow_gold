@@ -750,7 +750,10 @@
                 name="SaveFile.h" resource="0"/>
         </GROUP>
         <GROUP id="c0CwfeW14" name="commands">
-          <FILE id="ILcoRf" name="AllCommands.def" compile="0" resource="1" file="../../src/rec/slow/commands/AllCommands.def"/>
+          <FILE id="PNibJE" name="SlowCommands.def" compile="0" resource="1"
+                file="../../src/rec/slow/commands/SlowCommands.def"/>
+          <FILE id="L0BBXx" name="SlowKeyStrokeMap.def" compile="0" resource="1"
+                file="../../src/rec/slow/commands/SlowKeyStrokeMap.def"/>
           <FILE id="Sqo4Sd" name="KeyStrokeMap.def" compile="0" resource="1"
                 file="../../src/rec/slow/commands/KeyStrokeMap.def"/>
           <FILE compile="1" file="../../src/rec/slow/commands/SlowCommandData.cpp"
@@ -1309,6 +1312,12 @@
                 id="AS4QldxmP" name="Metadata.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="gGqiigKar" name="slow">
+          <GROUP id="{EF213D23-10FA-5D84-9F36-F1D3A2E99747}" name="commands">
+            <FILE id="rptJpL" name="SlowCommand.pb.cc" compile="1" resource="0"
+                  file="../../genfiles/proto/rec/slow/commands/SlowCommand.pb.cc"/>
+            <FILE id="y8FumL" name="SlowCommand.pb.h" compile="0" resource="0"
+                  file="../../genfiles/proto/rec/slow/commands/SlowCommand.pb.h"/>
+          </GROUP>
           <FILE compile="1" file="../../genfiles/proto/rec/slow/AppLayout.pb.cc"
                 id="obT67L0cl" name="AppLayout.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/slow/AppLayout.pb.h"
