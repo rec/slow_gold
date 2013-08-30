@@ -62,7 +62,16 @@ string getMusicTitle(const RecentFile& rf) {
   return music::getTitle(rf.metadata(), rf.file());
 }
 
-vector<string> getRecentFileNames(TitleGetter titleGetter) {
+string getMusicDupeSuffix(const RecentFile& rf, bool isFirst) {
+  const music::Metadata& md = rf.metadata();
+  string add = isFirst ? md.album_title() : md.artist();
+  if (add.size())
+    add += ("(" + add + ")");
+  return add;
+}
+
+vector<string> getRecentFileNames(TitleGetter titleGetter,
+                                  DupeSuffixGetter dupeSuffixGetter) {
   RecentFiles rf = data::getProto<RecentFiles>();
   vector<string> results(rf.file_size());
   for (int i = 0; i < rf.file_size(); ++i)
@@ -90,12 +99,8 @@ vector<string> getRecentFileNames(TitleGetter titleGetter) {
     if (dupes.empty())
       break;
 
-    for (IntSet::iterator j = dupes.begin(); j != dupes.end(); ++j) {
-      const music::Metadata& md = rf.file(*j).metadata();
-      string add = (i == 0) ? md.album_title() : md.artist();
-      if (add.size())
-        results[*j] += ("(" + add + ")");
-    }
+    for (IntSet::iterator j = dupes.begin(); j != dupes.end(); ++j)
+      results[*j] += dupeSuffixGetter(rf.file(*j), i == 0);
   }
 
   return results;

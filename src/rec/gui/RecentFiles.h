@@ -15,7 +15,12 @@ void addRecentFile(const VirtualFile&, const Message&);
 typedef string (*TitleGetter)(const RecentFile&);
 string getMusicTitle(const RecentFile&);
 
-vector<string> getRecentFileNames(TitleGetter titleGetter = getMusicTitle);
+typedef string (*DupeSuffixGetter)(const RecentFile&, bool isFirst);
+string getMusicDupeSuffix(const RecentFile&, bool isFirst);
+
+vector<string> getRecentFileNames(
+    TitleGetter titleGetter = getMusicTitle,
+    DupeSuffixGetter dupeSuffixGetter = getMusicDupeSuffix);
 
 }  // namespace gui
 }  // namespace rec
