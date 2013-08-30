@@ -4,6 +4,7 @@
 #include "rec/command/ID.h"
 #include "rec/gui/IconButton.h"
 #include "rec/gui/audio/TimeController.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -82,16 +83,16 @@ void TransportController::buttonClicked(juce::Button *button) {
   using namespace rec::command;
 
   if (button == &startStopButton_)
-    broadcast(Command::TOGGLE_START_STOP);
+    broadcast(slow::SlowCommand::TOGGLE_START_STOP);
 
   else if (button == &jumpToStartButton_)
-    broadcast(ID(Command::JUMP, ID::FIRST));
+    broadcast(ID(slow::SlowCommand::JUMP, ID::FIRST));
 
   else if (button == &jumpBackButton_)
-    broadcast(ID(Command::JUMP, ID::PREVIOUS));
+    broadcast(ID(slow::SlowCommand::JUMP, ID::PREVIOUS));
 
   else if (button == &jumpForwardButton_)
-    broadcast(ID(Command::JUMP, ID::NEXT));
+    broadcast(ID(slow::SlowCommand::JUMP, ID::NEXT));
 
   else
     LOG(DFATAL) << "Unknown button " << button;

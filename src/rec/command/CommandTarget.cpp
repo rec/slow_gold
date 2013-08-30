@@ -2,6 +2,7 @@
 
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -30,7 +31,7 @@ bool CommandTarget::perform(const InvocationInfo& invocation) {
     return true;
 
   ID id = invocation.commandID;
-	if (id != Command::ABOUT_THIS_PROGRAM && window())
+	if (id != slow::SlowCommand::ABOUT_THIS_PROGRAM && window())
     thread::callAsync(window(), &app::Window::stopAboutWindow);
 
   CommandRecord* cr = commandRecordTable()->find(id);

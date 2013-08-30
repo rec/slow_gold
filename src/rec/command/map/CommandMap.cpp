@@ -1,4 +1,5 @@
 #include "rec/command/map/CommandMap.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 
 namespace rec {
 namespace command {
@@ -6,7 +7,7 @@ namespace command {
 using namespace juce;
 
 bool CommandMap::addKey(const string& key, ID command) {
-  static const ID RECENT = Command::RECENT_FILES;
+  static const ID RECENT = slow::SlowCommand::RECENT_FILES;
   static const ID BEGIN(RECENT, 11);
   static const ID END(RECENT, 100);
 
@@ -81,12 +82,12 @@ const CommandMapProto CommandMap::getProto() const {
 bool CommandMap::invokeAsync(const string& key,
                              ApplicationCommandManager* acm) const {
   ID id = getCommand(key);
-  return (id != command::Command::NONE) && acm->invokeDirectly(id, true);
+  return (id != slow::SlowCommand::NONE) && acm->invokeDirectly(id, true);
 }
 
 ID CommandMap::getCommand(const string& key) const {
   KeyToCommand::const_iterator i = toCommand_.find(key);
-  return (i == toCommand_.end()) ? command::Command::NONE : i->second;
+  return (i == toCommand_.end()) ? slow::SlowCommand::NONE : i->second;
 }
 
 const CommandMap::KeyVector& CommandMap::getKeys(ID c) const {

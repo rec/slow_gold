@@ -9,6 +9,7 @@
 #include "rec/command/ID.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/file/VirtualFile.pb.h"
 #include "rec/widget/waveform/Viewport.h"
 #include "rec/widget/waveform/Zoom.h"
@@ -104,14 +105,14 @@ void nudgeSpeedUp(Stretch* s) { nudgeSpeed(s, true); }
 }
 
 void addApplyCallbacks(command::CallbackTable* c) {
-  addApplyCallback(c, Command::CLEAR_LOOPS, clearLoops);
-  addApplyCallback(c, Command::DIM_VOLUME_TOGGLE, dimVolumeToggle);
-  addApplyCallback(c, Command::MUTE_VOLUME_TOGGLE, muteVolumeToggle);
-  addApplyCallback(c, Command::NUDGE_VOLUME_DOWN, nudgeVolumeDown);
-  addApplyCallback(c, Command::NUDGE_VOLUME_UP, nudgeVolumeUp);
-  addApplyCallback(c, Command::NUDGE_SPEED_DOWN, nudgeSpeedDown);
-  addApplyCallback(c, Command::NUDGE_SPEED_UP, nudgeSpeedUp);
-  addApplyCallback(c, Command::RESET_GAIN_TO_UNITY, resetGainToUnity);
+  addApplyCallback(c, slow::SlowCommand::CLEAR_LOOPS, clearLoops);
+  addApplyCallback(c, slow::SlowCommand::DIM_VOLUME_TOGGLE, dimVolumeToggle);
+  addApplyCallback(c, slow::SlowCommand::MUTE_VOLUME_TOGGLE, muteVolumeToggle);
+  addApplyCallback(c, slow::SlowCommand::NUDGE_VOLUME_DOWN, nudgeVolumeDown);
+  addApplyCallback(c, slow::SlowCommand::NUDGE_VOLUME_UP, nudgeVolumeUp);
+  addApplyCallback(c, slow::SlowCommand::NUDGE_SPEED_DOWN, nudgeSpeedDown);
+  addApplyCallback(c, slow::SlowCommand::NUDGE_SPEED_UP, nudgeSpeedUp);
+  addApplyCallback(c, slow::SlowCommand::RESET_GAIN_TO_UNITY, resetGainToUnity);
 }
 
 }  // namespace slow

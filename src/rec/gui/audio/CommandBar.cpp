@@ -1,6 +1,7 @@
 #include "rec/gui/audio/CommandBar.h"
 
 #include "rec/gui/IconButton.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 
 namespace rec {
 namespace gui {
@@ -45,13 +46,13 @@ CommandBar::CommandBar()
 
 void CommandBar::buttonClicked(juce::Button *button) {
   if (button == &addLoopPoint_)
-    broadcast(command::Command::ADD_LOOP_POINT);
+    broadcast(slow::SlowCommand::ADD_LOOP_POINT);
 
   else if (button == &zoomOutFull_)
-    broadcast(command::Command::ZOOM_OUT_FULL);
+    broadcast(slow::SlowCommand::ZOOM_OUT_FULL);
 
   else if (button == &zoomToSelection_)
-    broadcast(command::Command::ZOOM_TO_SELECTION);
+    broadcast(slow::SlowCommand::ZOOM_TO_SELECTION);
 
   else
     LOG(DFATAL) << "Unknown button " << button;

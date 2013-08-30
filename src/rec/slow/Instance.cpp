@@ -41,6 +41,7 @@
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Threads.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/slow/commands/SlowCommandData.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
@@ -184,7 +185,7 @@ void Instance::init() {
       applicationCommandTarget_.get());
   command::loadKeyboardBindings(&applicationCommandManager_);
   window_->getAppleMenu()->addCommandItem(&applicationCommandManager_,
-                                          command::Command::ABOUT_THIS_PROGRAM);
+                                          slow::SlowCommand::ABOUT_THIS_PROGRAM);
 
   player_->addListener(components_->transportController_.get());
   player_->addListener(currentTime_.get());

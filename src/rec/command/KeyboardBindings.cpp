@@ -33,7 +33,7 @@ KeyStrokeCommandMapProto makeKeyBindings() {
   for (auto& slowEntry: slowMaps.slow_entry()) {
     auto entry = map->add_entry();
     *entry = slowEntry.entry();
-    entry->set_command(static_cast<Command::Type>(slowEntry.type()));
+    entry->set_command(slowEntry.type());
   }
   return bindings;
 }

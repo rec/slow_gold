@@ -4,6 +4,7 @@
 #include "rec/base/ArraySize.h"
 #include "rec/data/DataOps.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/translation/TranslationTables.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/STL.h"
@@ -51,11 +52,11 @@ void addRecentFileSubmenu(MenuMaker* maker) {
   vector<string> recent = rec::gui::getRecentFileNames();
 
   maker->addSeparator();
-  maker->addEnabled(Command::OPEN_PREVIOUS_FILE, !recent.empty());
+  maker->addEnabled(slow::SlowCommand::OPEN_PREVIOUS_FILE, !recent.empty());
 
   PopupMenu submenu;
   for (uint i = 0; i < recent.size(); ++i)
-    maker->addRepeat(Command::RECENT_FILES, i, str(recent[i]), &submenu);
+    maker->addRepeat(slow::SlowCommand::RECENT_FILES, i, str(recent[i]), &submenu);
 
   maker->menu()->addSubMenu(t_OPEN_RECENT, submenu, !recent.empty());
   maker->addSeparator();
@@ -63,14 +64,14 @@ void addRecentFileSubmenu(MenuMaker* maker) {
 
 void addSaveMenuEntries(MenuMaker* maker) {
 #ifndef SLOWGOLD_SAVE_DISABLED
-  maker->addEnabled(Command::SAVE_FILE, !maker->empty());
-  maker->addEnabled(Command::SAVE_FILE_SELECTION, !maker->empty());
+  maker->addEnabled(slow::SlowCommand::SAVE_FILE, !maker->empty());
+  maker->addEnabled(slow::SlowCommand::SAVE_FILE_SELECTION, !maker->empty());
 
   PopupMenu save;
   int t = static_cast<int>(data::getProto<audio::AudioSettings>()
                            .file_type_for_save());
   static const char* NAMES[] = {"AIFF", "FLAC", "Ogg Vorbis", "WAV"};
-  static const CommandID COMMAND = Command::SET_SAVE_FORMAT;
+  static const CommandID COMMAND = slow::SlowCommand::SET_SAVE_FORMAT;
   for (int i = 0; i < audio::AudioSettings::COUNT; ++i)
     maker->addRepeat(COMMAND, i, NAMES[i], &save, (i == t) ? TICKED : 0);
 
@@ -84,12 +85,12 @@ void addLanguageSubmenu(MenuMaker* maker) {
   Language lang = translation::getLanguage();
   PopupMenu menu;
 
-  maker->addRepeat(Command::SET_LANGUAGE, lang, String(langName(lang)),
+  maker->addRepeat(slow::SlowCommand::SET_LANGUAGE, lang, String(langName(lang)),
                    &menu, TICKED);
 
   for (int i = app::AppSettings::FIRST; i <= app::AppSettings::LAST; ++i) {
     if (i != lang)
-      maker->addRepeat(Command::SET_LANGUAGE, i, String(langName(i)), &menu, 0);
+      maker->addRepeat(slow::SlowCommand::SET_LANGUAGE, i, String(langName(i)), &menu, 0);
   }
   maker->menu()->addSubMenu(t_LANGUAGE, menu);
 #endif
@@ -98,14 +99,14 @@ void addLanguageSubmenu(MenuMaker* maker) {
 }  // namespace
 
 void BasicMenuMaker::addFileMenu() {
-  addBasic(Command::OPEN);
-  addEnabled(Command::CLOSE_FILE, !empty_);
-  addBasic(Command::EJECT_CDS);
+  addBasic(slow::SlowCommand::OPEN);
+  addEnabled(slow::SlowCommand::CLOSE_FILE, !empty_);
+  addBasic(slow::SlowCommand::EJECT_CDS);
 
   addSeparator();
 
-  // addBasic(Command::CLEAR_NAVIGATOR);
-  addBasic(Command::TOGGLE_ADVANCED_MENUS);
+  // addBasic(slow::SlowCommand::CLEAR_NAVIGATOR);
+  addBasic(slow::SlowCommand::TOGGLE_ADVANCED_MENUS);
 
   addRecentFileSubmenu(this);
   addSaveMenuEntries(this);
@@ -114,61 +115,61 @@ void BasicMenuMaker::addFileMenu() {
 #if !JUCE_MAC
   addSeparator();
 
-  addBasic(Command::ABOUT_THIS_PROGRAM);
-  addBasic(Command::QUIT);
+  addBasic(slow::SlowCommand::ABOUT_THIS_PROGRAM);
+  addBasic(slow::SlowCommand::QUIT);
 #endif
 }
 
 void BasicMenuMaker::addEditMenu() {
-  addEnabled(Command::UNDO, canUndo());
-  addEnabled(Command::REDO, canRedo());
+  addEnabled(slow::SlowCommand::UNDO, canUndo());
+  addEnabled(slow::SlowCommand::REDO, canRedo());
 
   addSeparator();
 
-  addEnabled(Command::CUT, canCut());
-  addEnabled(Command::COPY, canCopy());
-  addEnabled(Command::PASTE, canPaste());
+  addEnabled(slow::SlowCommand::CUT, canCut());
+  addEnabled(slow::SlowCommand::COPY, canCopy());
+  addEnabled(slow::SlowCommand::PASTE, canPaste());
 }
 
 void BasicMenuMaker::addAudioMenu() {
-  addEnabled(Command::MUTE_VOLUME_TOGGLE, !empty_);
-  addEnabled(Command::NUDGE_VOLUME_UP, !empty_);
-  addEnabled(Command::NUDGE_VOLUME_DOWN, !empty_);
+  addEnabled(slow::SlowCommand::MUTE_VOLUME_TOGGLE, !empty_);
+  addEnabled(slow::SlowCommand::NUDGE_VOLUME_UP, !empty_);
+  addEnabled(slow::SlowCommand::NUDGE_VOLUME_DOWN, !empty_);
 
   addSeparator();
 
-  addEnabled(Command::TOGGLE_STRETCH_ENABLE, !empty_);
-  addEnabled(Command::NUDGE_SPEED_UP, !empty_);
-  addEnabled(Command::NUDGE_SPEED_DOWN, !empty_);
+  addEnabled(slow::SlowCommand::TOGGLE_STRETCH_ENABLE, !empty_);
+  addEnabled(slow::SlowCommand::NUDGE_SPEED_UP, !empty_);
+  addEnabled(slow::SlowCommand::NUDGE_SPEED_DOWN, !empty_);
 
   addSeparator();
 
-  addBasic(Command::AUDIO_PREFERENCES);
+  addBasic(slow::SlowCommand::AUDIO_PREFERENCES);
 }
 
 void BasicMenuMaker::addSelectMenu() {
-  addEnabled(Command::SELECT_ALL, !empty_);
-  addEnabled(Command::DESELECT_ALL, !empty_);
-  addEnabled(Command::INVERT_LOOP_SELECTION, !empty_);
+  addEnabled(slow::SlowCommand::SELECT_ALL, !empty_);
+  addEnabled(slow::SlowCommand::DESELECT_ALL, !empty_);
+  addEnabled(slow::SlowCommand::INVERT_LOOP_SELECTION, !empty_);
 
 #ifdef NEW_FEATURES
   addSeparator();
-  addEnabled(Command::LOOP_NEXT_SEGMENT, !empty_);
+  addEnabled(slow::SlowCommand::LOOP_NEXT_SEGMENT, !empty_);
 #endif
 
   switch (isWholeSong_.isWholeSong()) {
    case IsWholeSong::ONE_SEGMENT:
-    addEnabledName(Command::TOGGLE_WHOLE_SONG_LOOP, !empty_,
+    addEnabledName(slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP, !empty_,
                    t_LOOP_ENTIRE_TRACK);
     break;
 
    case IsWholeSong::WHOLE_SONG:
-    addEnabledName(Command::TOGGLE_WHOLE_SONG_LOOP, !empty_,
+    addEnabledName(slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP, !empty_,
                    t_LOOP_THIS_SEGMENT);
     break;
 
    case IsWholeSong::SONG_IS_ONE_SEGMENT:
-    addEnabledName(Command::TOGGLE_WHOLE_SONG_LOOP, false,
+    addEnabledName(slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP, false,
                    t_LOOP_ENTIRE_TRACK);
     break;
   }
@@ -177,19 +178,19 @@ void BasicMenuMaker::addSelectMenu() {
   addSeparator();
 #endif
 
-  addEnabled(Command::ZOOM_TO_SELECTION, !empty_);
+  addEnabled(slow::SlowCommand::ZOOM_TO_SELECTION, !empty_);
 }
 
 void BasicMenuMaker::addTransportMenu() {
-  addEnabled(Command::TOGGLE_START_STOP, !empty_);
-  addEnabled(Command::ADD_LOOP_POINT, !empty_);
-  addEnabled(Command::CLEAR_LOOPS, !empty_);
+  addEnabled(slow::SlowCommand::TOGGLE_START_STOP, !empty_);
+  addEnabled(slow::SlowCommand::ADD_LOOP_POINT, !empty_);
+  addEnabled(slow::SlowCommand::CLEAR_LOOPS, !empty_);
 }
 
 void BasicMenuMaker::addHelpMenu() {
-  addBasic(Command::OPEN_MANUAL);
-  addBasic(Command::REQUEST_SUPPORT);
-  addBasic(Command::WHATS_NEW_PAGE);
+  addBasic(slow::SlowCommand::OPEN_MANUAL);
+  addBasic(slow::SlowCommand::REQUEST_SUPPORT);
+  addBasic(slow::SlowCommand::WHATS_NEW_PAGE);
 }
 
 const StringArray BasicMenuMaker::getMenuBarNames() const {

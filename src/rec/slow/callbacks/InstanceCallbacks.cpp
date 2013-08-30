@@ -22,6 +22,7 @@
 #include "rec/slow/callbacks/CommandEditors.h"
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/SaveFile.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/range/MakeRange.h"
@@ -209,36 +210,36 @@ void addInstanceCallbacks(CallbackTable* c) {
   using rec::gui::audio::SetupPage;
   using rec::audio::source::Player;
 
-  addCallback(c, Command::ABOUT_THIS_PROGRAM, aboutThisProgram);
-  addCallback(c, Command::ADD_LOOP_POINT, addLoopPoint);
-  addCallback(c, Command::AUDIO_PREFERENCES, audioPreferences);
+  addCallback(c, slow::SlowCommand::ABOUT_THIS_PROGRAM, aboutThisProgram);
+  addCallback(c, slow::SlowCommand::ADD_LOOP_POINT, addLoopPoint);
+  addCallback(c, slow::SlowCommand::AUDIO_PREFERENCES, audioPreferences);
 
-  addCallback(c, Command::CHECK_FOR_UPDATES, checkForUpdates);
-  addCallback(c, Command::CLEAR_ALL_SETTINGS, clearAllSettings);
-  addCallback(c, Command::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
-  addCallback(c, Command::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
+  addCallback(c, slow::SlowCommand::CHECK_FOR_UPDATES, checkForUpdates);
+  addCallback(c, slow::SlowCommand::CLEAR_ALL_SETTINGS, clearAllSettings);
+  addCallback(c, slow::SlowCommand::CLEAR_MIDI_MAPPINGS, clearMidiMappings);
+  addCallback(c, slow::SlowCommand::CLEAR_KEYBOARD_MAPPINGS, clearKeyboardMappings);
 
-  addCallback(c, Command::CLEAR_SETTINGS_FOR_THIS_TRACK,
+  addCallback(c, slow::SlowCommand::CLEAR_SETTINGS_FOR_THIS_TRACK,
               clearSettingsForThisTrack);
-  // addApplyCallback(c, Command::CLEAR_NAVIGATOR, clearNavigator);
-  addCallback(c, Command::CLOSE_FILE, closeFile);
-  addCallback(c, Command::COPY_ALL_LOOP_POINTS, copyAllLoopPoints);
+  // addApplyCallback(c, slow::SlowCommand::CLEAR_NAVIGATOR, clearNavigator);
+  addCallback(c, slow::SlowCommand::CLOSE_FILE, closeFile);
+  addCallback(c, slow::SlowCommand::COPY_ALL_LOOP_POINTS, copyAllLoopPoints);
 
-  addCallback(c, Command::KEYBOARD_MAPPINGS, keyboardMappings);
-  addCallback(c, Command::MIDI_MAPPINGS, midiMappings);
+  addCallback(c, slow::SlowCommand::KEYBOARD_MAPPINGS, keyboardMappings);
+  addCallback(c, slow::SlowCommand::MIDI_MAPPINGS, midiMappings);
 
-  addCallback(c, Command::OPEN, open);
+  addCallback(c, slow::SlowCommand::OPEN, open);
 
-  addCallback(c, Command::PASTE_OVER_LOOP_POINTS, pasteOverLoopPoints);
+  addCallback(c, slow::SlowCommand::PASTE_OVER_LOOP_POINTS, pasteOverLoopPoints);
 
-  addCallback(c, Command::QUIT, quit);
+  addCallback(c, slow::SlowCommand::QUIT, quit);
 
-  addCallback(c, Command::SAVE_FILE, saveFile);
-  addCallback(c, Command::SAVE_FILE_SELECTION, saveFileSelection);
-  addCallback(c, Command::TOGGLE_START_STOP, toggleStartStop);
-  addCallback(c, Command::ZOOM_OUT, zoomOut);
-  addCallback(c, Command::ZOOM_OUT_FULL, zoomOutFull);
-  addCallback(c, Command::ZOOM_TO_SELECTION, zoomToSelection);
+  addCallback(c, slow::SlowCommand::SAVE_FILE, saveFile);
+  addCallback(c, slow::SlowCommand::SAVE_FILE_SELECTION, saveFileSelection);
+  addCallback(c, slow::SlowCommand::TOGGLE_START_STOP, toggleStartStop);
+  addCallback(c, slow::SlowCommand::ZOOM_OUT, zoomOut);
+  addCallback(c, slow::SlowCommand::ZOOM_OUT_FULL, zoomOutFull);
+  addCallback(c, slow::SlowCommand::ZOOM_TO_SELECTION, zoomToSelection);
 }
 
 }  // namespace slow

@@ -11,6 +11,7 @@
 #include "rec/slow/LoopSnapshot.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
 #include "rec/util/thread/MakeThread.h"
@@ -83,11 +84,11 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 }  // namespace
 
 void addSelectionCallbacks(command::CallbackTable* t) {
-  addCallback(t, Command::DESELECT_ALL, select, deselectAll, ID::CURRENT);
-  addCallback(t, Command::SELECT_ALL, select, selectAll, ID::CURRENT);
-  addCallback(t, Command::INVERT_LOOP_SELECTION, select, invertLoopSelection,
+  addCallback(t, slow::SlowCommand::DESELECT_ALL, select, deselectAll, ID::CURRENT);
+  addCallback(t, slow::SlowCommand::SELECT_ALL, select, selectAll, ID::CURRENT);
+  addCallback(t, slow::SlowCommand::INVERT_LOOP_SELECTION, select, invertLoopSelection,
               ID::CURRENT);
-  addCallback(t, Command::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop,
+  addCallback(t, slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop,
               ID::CURRENT);
 }
 
@@ -280,29 +281,29 @@ void addCallback(CallbackTable* c, int32 type, int32 position,
 void addRepeatedCallbacks(CallbackTable* t, int repeat) {
   for (int j = ID::FIRST; j < repeat; ++j) {
   	int32 pos(j);
-    addCallback(t, Command::SELECT, pos, selectAdd);
-    addCallback(t, Command::SELECT_ONLY, pos, selectOnly);
-    addCallback(t, Command::TOGGLE_SELECTION, pos, toggle);
-    addCallback(t, Command::UNSELECT, pos, unselect);
+    addCallback(t, slow::SlowCommand::SELECT, pos, selectAdd);
+    addCallback(t, slow::SlowCommand::SELECT_ONLY, pos, selectOnly);
+    addCallback(t, slow::SlowCommand::TOGGLE_SELECTION, pos, toggle);
+    addCallback(t, slow::SlowCommand::UNSELECT, pos, unselect);
 
-    addCallback(t, Command::JUMP_SELECTED, pos, jumpSelected);
-    addCallback(t, Command::JUMP, pos, jump);
+    addCallback(t, slow::SlowCommand::JUMP_SELECTED, pos, jumpSelected);
+    addCallback(t, slow::SlowCommand::JUMP, pos, jump);
   }
 
-  addCallback(t, Command::LOOP_NEXT_SEGMENT, loopNextSegment);
+  addCallback(t, slow::SlowCommand::LOOP_NEXT_SEGMENT, loopNextSegment);
 
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j)
-    addCallback(t, ID(Command::RECENT_FILES, j), loadRecentFile, j);
+    addCallback(t, ID(slow::SlowCommand::RECENT_FILES, j), loadRecentFile, j);
 
   for (int j = 0; j < audio::AudioSettings::COUNT; ++j)
-    addCallback(t, ID(Command::SET_SAVE_FORMAT, j), setSaveFileType, j);
+    addCallback(t, ID(slow::SlowCommand::SET_SAVE_FORMAT, j), setSaveFileType, j);
 
   for (int j = 0; j <= app::AppSettings::LAST; ++j)
-    addCallback(t, ID(Command::SET_LANGUAGE, j), setLanguage, j);
+    addCallback(t, ID(slow::SlowCommand::SET_LANGUAGE, j), setLanguage, j);
 
-  addCallback(t, Command::OPEN_PREVIOUS_FILE, openPreviousFile);
-  addCallback(t, Command::NUDGE_BACKWARD, nudgeTime, false);
-  addCallback(t, Command::NUDGE_FORWARD, nudgeTime, true);
+  addCallback(t, slow::SlowCommand::OPEN_PREVIOUS_FILE, openPreviousFile);
+  addCallback(t, slow::SlowCommand::NUDGE_BACKWARD, nudgeTime, false);
+  addCallback(t, slow::SlowCommand::NUDGE_FORWARD, nudgeTime, true);
 }
 
 }  // namespace slow

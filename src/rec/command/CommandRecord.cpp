@@ -1,4 +1,5 @@
 #include "rec/command/CommandRecord.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 
 namespace rec {
 namespace command {
@@ -29,7 +30,7 @@ void CommandRecord::fillInfo() {
     String name = Trans(desc.menu(0));
     if (info_.shortName.length()) {
       CommandID t = id.get();
-      if (t == Command::TOGGLE_WHOLE_SONG_LOOP || t == Command::RECENT_FILES)
+      if (t == slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP || t == slow::SlowCommand::RECENT_FILES)
         name = info_.shortName;
     }
 
