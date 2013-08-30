@@ -23,7 +23,19 @@ TARGETS_CC := $(patsubst src/%.proto, $(GENFILES)/%.pb.cc, $(ALL_PROTOS))
 TARGETS := $(TARGETS_H) $(TARGETS_CC)
 
 all: debug # release
-	echo "Make complete!"
+	echo "*** Make complete. ***"
+
+proto: $(TARGETS_H)
+	echo "*** Protocol buffers made. ***"
+
+clean_proto:
+	rm $(TARGETS)
+
+release: proto
+	cd $(BUILD_DIR) && xcodebuild -project SlowGold.xcodeproj -configuration Release
+
+debug: proto
+	cd $(BUILD_DIR) && xcodebuild -project SlowGold.xcodeproj -configuration Debug
 
 genfiles/proto/rec/app/%.pb.h: src/rec/app/%.proto
 	$(PROTOC) $<
@@ -84,15 +96,3 @@ genfiles/proto/rec/widget/tree/%.pb.h: src/rec/widget/tree/%.proto
 
 genfiles/proto/rec/widget/waveform/%.pb.h: src/rec/widget/waveform/%.proto
 	$(PROTOC) $<
-
-proto: $(TARGETS_H)
-	echo "Make all protocol buffers"
-
-clean_proto:
-	rm $(TARGETS)
-
-release: proto
-	cd $(BUILD_DIR) && xcodebuild -project SlowGold.xcodeproj -configuration Release
-
-debug: proto
-	cd $(BUILD_DIR) && xcodebuild -project SlowGold.xcodeproj -configuration Debug

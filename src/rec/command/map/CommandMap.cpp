@@ -67,7 +67,7 @@ const CommandMapProto CommandMap::getProto() const {
   for (i = toKeys_.begin(); i != toKeys_.end(); ++i) {
     if (!i->second.empty()) {
       CommandMapEntry* entry = commands.add_entry();
-      entry->set_command(i->first.type());
+      entry->set_command(static_cast<Command::Type>(i->first.get()));
       entry->set_index(i->first.index());
       KeyVector::const_iterator j;
       for (j = i->second.begin(); j != i->second.end(); ++j)
