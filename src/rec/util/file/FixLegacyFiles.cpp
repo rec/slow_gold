@@ -17,7 +17,7 @@ using namespace rec::command;
 
 CommandMapEntry* newEntry(CommandID type, KeyStrokeCommandMapProto* map) {
   CommandMapEntry* entry = map->mutable_map()->add_entry();
-    entry->set_command(static_cast<Command::Type>(type));
+  entry->set_command(type);
   return entry;
 }
 
