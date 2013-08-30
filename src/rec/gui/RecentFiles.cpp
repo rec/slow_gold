@@ -58,13 +58,15 @@ void addRecentFile(const VirtualFile& f, const Message& message) {
 
 static const int MAX_DEDUPE_COUNT = 2;
 
-vector<string> getRecentFileNames() {
-  typedef vector<string> StrList;
+string getMusicTitle(const RecentFile& rf) {
+  return music::getTitle(rf.metadata(), rf.file());
+}
 
+vector<string> getRecentFileNames(TitleGetter titleGetter) {
   RecentFiles rf = data::getProto<RecentFiles>();
-  StrList results(rf.file_size());
+  vector<string> results(rf.file_size());
   for (int i = 0; i < rf.file_size(); ++i)
-    results[i] = music::getTitle(rf.file(i).metadata(), rf.file(i).file());
+    results[i] = (*titleGetter)(rf.file(i));
 
   typedef std::map<string, int> StrMap;
   typedef std::set<int> IntSet;

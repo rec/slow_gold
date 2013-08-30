@@ -11,7 +11,11 @@ namespace music { class Metadata; }
 namespace gui {
 
 void addRecentFile(const VirtualFile&, const Message&);
-vector<string> getRecentFileNames();
+
+typedef string (*TitleGetter)(const RecentFile&);
+string getMusicTitle(const RecentFile&);
+
+vector<string> getRecentFileNames(TitleGetter titleGetter = getMusicTitle);
 
 }  // namespace gui
 }  // namespace rec
