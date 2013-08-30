@@ -578,12 +578,12 @@ class Command : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.command.Command.Type type = 1;
+  // optional uint32 type = 1;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 1;
-  inline ::rec::command::Command_Type type() const;
-  inline void set_type(::rec::command::Command_Type value);
+  inline ::google::protobuf::uint32 type() const;
+  inline void set_type(::google::protobuf::uint32 value);
 
   // optional sint32 index = 2;
   inline bool has_index() const;
@@ -687,7 +687,7 @@ class Command : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  int type_;
+  ::google::protobuf::uint32 type_;
   ::google::protobuf::int32 index_;
   ::std::string* menu_;
   ::rec::command::Description* desc_;
@@ -1095,7 +1095,7 @@ inline void Setter::set_allocated_type_name(::std::string* type_name) {
 
 // Command
 
-// optional .rec.command.Command.Type type = 1;
+// optional uint32 type = 1;
 inline bool Command::has_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1106,14 +1106,13 @@ inline void Command::clear_has_type() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void Command::clear_type() {
-  type_ = 0;
+  type_ = 0u;
   clear_has_type();
 }
-inline ::rec::command::Command_Type Command::type() const {
-  return static_cast< ::rec::command::Command_Type >(type_);
+inline ::google::protobuf::uint32 Command::type() const {
+  return type_;
 }
-inline void Command::set_type(::rec::command::Command_Type value) {
-  assert(::rec::command::Command_Type_IsValid(value));
+inline void Command::set_type(::google::protobuf::uint32 value) {
   set_has_type();
   type_ = value;
 }

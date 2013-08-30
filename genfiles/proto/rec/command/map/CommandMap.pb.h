@@ -24,7 +24,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "rec/command/Command.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -96,12 +95,12 @@ class CommandMapEntry : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.command.Command.Type command = 1;
+  // optional uint32 command = 1;
   inline bool has_command() const;
   inline void clear_command();
   static const int kCommandFieldNumber = 1;
-  inline ::rec::command::Command_Type command() const;
-  inline void set_command(::rec::command::Command_Type value);
+  inline ::google::protobuf::uint32 command() const;
+  inline void set_command(::google::protobuf::uint32 value);
 
   // optional int32 index = 2;
   inline bool has_index() const;
@@ -135,7 +134,7 @@ class CommandMapEntry : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  int command_;
+  ::google::protobuf::uint32 command_;
   ::google::protobuf::int32 index_;
   ::google::protobuf::RepeatedPtrField< ::std::string> key_;
 
@@ -409,7 +408,7 @@ class MidiCommandMapProto : public ::google::protobuf::Message {
 
 // CommandMapEntry
 
-// optional .rec.command.Command.Type command = 1;
+// optional uint32 command = 1;
 inline bool CommandMapEntry::has_command() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -420,14 +419,13 @@ inline void CommandMapEntry::clear_has_command() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void CommandMapEntry::clear_command() {
-  command_ = 0;
+  command_ = 0u;
   clear_has_command();
 }
-inline ::rec::command::Command_Type CommandMapEntry::command() const {
-  return static_cast< ::rec::command::Command_Type >(command_);
+inline ::google::protobuf::uint32 CommandMapEntry::command() const {
+  return command_;
 }
-inline void CommandMapEntry::set_command(::rec::command::Command_Type value) {
-  assert(::rec::command::Command_Type_IsValid(value));
+inline void CommandMapEntry::set_command(::google::protobuf::uint32 value) {
   set_has_command();
   command_ = value;
 }

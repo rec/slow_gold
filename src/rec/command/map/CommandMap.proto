@@ -1,9 +1,7 @@
-import "rec/command/Command.proto";
-
 package rec.command;
 
 message CommandMapEntry {
-  optional Command.Type command = 1;
+  optional uint32 command = 1;
   optional int32 index = 2;
   repeated bytes key = 3;
 };
