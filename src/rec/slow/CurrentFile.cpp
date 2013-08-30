@@ -62,8 +62,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   data::getDataCenter().waitTillClear();
   data::getDataCenter().clearUndoes();
 
-  player()->reset();
-  instance_->reset();  // Stops the loading thread.
+  stopThreads();
   currentTime()->reset();
 
   if (file_.path_size())
@@ -71,57 +70,65 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
 
   VirtualFile newFile = f;
   {
-    Lock l(instance_->lock_);
+    Lock l(instance_->lock_);  // TODO: do we need this lock?
     file_.Swap(&newFile);
   }
 
-  {
-    MessageManagerLock l;
-    components()->waveform_->setLoading(true);
-    components()->waveform_->repaint();
-  }
+  beforeFileChange();
 
-  length_ = getFileLength(showError);
-  if (length_)
-    setViewport();
-  else
+  if (determineIfFileEmpty(showError))
     file_ = data::noData();
+  else
+    nonEmptyFileLoaded();
 
   afterFileChange(newFile);
   data::setProto(file_, CANT_UNDO);
   data::UntypedDataListener::setGlobalDataFile(file_);
 
-  if (file_.path_size())
-    instance_->fillerThread_->startThread();
-
+  startThreads();
   menus()->menuItemsChanged();
 }
 
+void CurrentFile::stopThreads() {
+  player()->reset();
+  instance_->reset();  // Stops the loading thread.
+}
+
+void CurrentFile::startThreads() {
+  if (file_.path_size())
+    instance_->fillerThread_->startThread();
+}
+
+void CurrentFile::beforeFileChange() {
+  MessageManagerLock l;
+  components()->waveform_->setLoading(true);
+  components()->waveform_->repaint();
+}
 
 void CurrentFile::afterFileChange(const VirtualFile& newFile) {
   MessageManagerLock l;
 
-  if (length_ != 0)
+  if (not empty())
     components()->directoryTree_->refreshNode(file_);
 
   if (newFile.path_size())
     components()->directoryTree_->refreshNode(newFile);
 
-  components()->waveform_->setLoading(true);
-  components()->waveform_->repaint();
-
   components()->setEnabled(length_ != 0);
   components()->waveform_->setLoading(false);
 }
 
-int64 CurrentFile::getFileLength(bool showError) {
-  if (!file_.path_size())
-    return 0;
+bool CurrentFile::determineIfFileEmpty(bool showError) {
+  if (!file_.path_size()) {
+    length_ = 0;
+    return true;
+  }
 
   music::MusicFileReader reader(file_);
   if (!reader.empty()) {
-    if (int64 len = bufferFiller()->setReader(file_, reader.release()))
-      return len;
+    length_ = bufferFiller()->setReader(file_, reader.release());
+    if (length_)
+      return false;
     reader.setError(t_RAN_OUT_OF_MEMORY, t_RAN_OUT_OF_MEMORY_FULL);
   }
 
@@ -134,10 +141,10 @@ int64 CurrentFile::getFileLength(bool showError) {
   }
 
   file_.Clear();
-  return 0;
+  return true;
 }
 
-void CurrentFile::setViewport() {
+void CurrentFile::nonEmptyFileLoaded() {
   Viewport viewport = data::getProto<Viewport>(file_);
 
   if (!viewport.has_zoom()) {

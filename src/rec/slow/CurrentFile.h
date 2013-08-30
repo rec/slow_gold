@@ -32,10 +32,13 @@ class CurrentFile : public HasInstance,
   const CriticalSection& lock() { return lock_; }
 
  private:
-  int64 getFileLength(bool showError);
-  void setViewport();
+  bool determineIfFileEmpty(bool showError);
+  void nonEmptyFileLoaded();
   void continueLoading(bool showError);
   void afterFileChange(const VirtualFile& newFile);
+  void beforeFileChange();
+  void stopThreads();
+  void startThreads();
 
   CriticalSection lock_;
   widget::waveform::Viewport viewport_;
