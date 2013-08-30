@@ -1,4 +1,7 @@
 import "rec/command/Command.proto";
+import "rec/command/map/CommandMap.proto";
+
+package rec.slow;
 
 message SlowCommand {
   enum Type {
@@ -142,4 +145,13 @@ message SlowCommand {
 
 message SlowCommands {
   repeated SlowCommand slow_command = 1;
+};
+
+message SlowCommandMapEntry {
+  optional SlowCommand.Type type = 1;
+  optional rec.command.CommandMapEntry entry = 2;
+};
+
+message SlowCommandMapProto {
+  repeated SlowCommandMapEntry slow_entry = 1;
 };

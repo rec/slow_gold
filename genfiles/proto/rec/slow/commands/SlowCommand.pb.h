@@ -26,7 +26,11 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "rec/command/Command.pb.h"
+#include "rec/command/map/CommandMap.pb.h"
 // @@protoc_insertion_point(includes)
+
+namespace rec {
+namespace slow {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
@@ -35,6 +39,8 @@ void protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
 
 class SlowCommand;
 class SlowCommands;
+class SlowCommandMapEntry;
+class SlowCommandMapProto;
 
 enum SlowCommand_Type {
   SlowCommand_Type_NONE = 0,
@@ -343,12 +349,12 @@ class SlowCommand : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .SlowCommand.Type type = 1;
+  // optional .rec.slow.SlowCommand.Type type = 1;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 1;
-  inline ::SlowCommand_Type type() const;
-  inline void set_type(::SlowCommand_Type value);
+  inline ::rec::slow::SlowCommand_Type type() const;
+  inline void set_type(::rec::slow::SlowCommand_Type value);
 
   // optional .rec.command.Command command = 2;
   inline bool has_command() const;
@@ -359,7 +365,7 @@ class SlowCommand : public ::google::protobuf::Message {
   inline ::rec::command::Command* release_command();
   inline void set_allocated_command(::rec::command::Command* command);
 
-  // @@protoc_insertion_point(class_scope:SlowCommand)
+  // @@protoc_insertion_point(class_scope:rec.slow.SlowCommand)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -437,24 +443,24 @@ class SlowCommands : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .SlowCommand slow_command = 1;
+  // repeated .rec.slow.SlowCommand slow_command = 1;
   inline int slow_command_size() const;
   inline void clear_slow_command();
   static const int kSlowCommandFieldNumber = 1;
-  inline const ::SlowCommand& slow_command(int index) const;
-  inline ::SlowCommand* mutable_slow_command(int index);
-  inline ::SlowCommand* add_slow_command();
-  inline const ::google::protobuf::RepeatedPtrField< ::SlowCommand >&
+  inline const ::rec::slow::SlowCommand& slow_command(int index) const;
+  inline ::rec::slow::SlowCommand* mutable_slow_command(int index);
+  inline ::rec::slow::SlowCommand* add_slow_command();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand >&
       slow_command() const;
-  inline ::google::protobuf::RepeatedPtrField< ::SlowCommand >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand >*
       mutable_slow_command();
 
-  // @@protoc_insertion_point(class_scope:SlowCommands)
+  // @@protoc_insertion_point(class_scope:rec.slow.SlowCommands)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::SlowCommand > slow_command_;
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand > slow_command_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -466,6 +472,185 @@ class SlowCommands : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static SlowCommands* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class SlowCommandMapEntry : public ::google::protobuf::Message {
+ public:
+  SlowCommandMapEntry();
+  virtual ~SlowCommandMapEntry();
+
+  SlowCommandMapEntry(const SlowCommandMapEntry& from);
+
+  inline SlowCommandMapEntry& operator=(const SlowCommandMapEntry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SlowCommandMapEntry& default_instance();
+
+  void Swap(SlowCommandMapEntry* other);
+
+  // implements Message ----------------------------------------------
+
+  SlowCommandMapEntry* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SlowCommandMapEntry& from);
+  void MergeFrom(const SlowCommandMapEntry& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .rec.slow.SlowCommand.Type type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::rec::slow::SlowCommand_Type type() const;
+  inline void set_type(::rec::slow::SlowCommand_Type value);
+
+  // optional .rec.command.CommandMapEntry entry = 2;
+  inline bool has_entry() const;
+  inline void clear_entry();
+  static const int kEntryFieldNumber = 2;
+  inline const ::rec::command::CommandMapEntry& entry() const;
+  inline ::rec::command::CommandMapEntry* mutable_entry();
+  inline ::rec::command::CommandMapEntry* release_entry();
+  inline void set_allocated_entry(::rec::command::CommandMapEntry* entry);
+
+  // @@protoc_insertion_point(class_scope:rec.slow.SlowCommandMapEntry)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_entry();
+  inline void clear_has_entry();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::rec::command::CommandMapEntry* entry_;
+  int type_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+
+  void InitAsDefaultInstance();
+  static SlowCommandMapEntry* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SlowCommandMapProto : public ::google::protobuf::Message {
+ public:
+  SlowCommandMapProto();
+  virtual ~SlowCommandMapProto();
+
+  SlowCommandMapProto(const SlowCommandMapProto& from);
+
+  inline SlowCommandMapProto& operator=(const SlowCommandMapProto& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SlowCommandMapProto& default_instance();
+
+  void Swap(SlowCommandMapProto* other);
+
+  // implements Message ----------------------------------------------
+
+  SlowCommandMapProto* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SlowCommandMapProto& from);
+  void MergeFrom(const SlowCommandMapProto& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
+  inline int slow_entry_size() const;
+  inline void clear_slow_entry();
+  static const int kSlowEntryFieldNumber = 1;
+  inline const ::rec::slow::SlowCommandMapEntry& slow_entry(int index) const;
+  inline ::rec::slow::SlowCommandMapEntry* mutable_slow_entry(int index);
+  inline ::rec::slow::SlowCommandMapEntry* add_slow_entry();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >&
+      slow_entry() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >*
+      mutable_slow_entry();
+
+  // @@protoc_insertion_point(class_scope:rec.slow.SlowCommandMapProto)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry > slow_entry_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+
+  void InitAsDefaultInstance();
+  static SlowCommandMapProto* default_instance_;
+};
 // ===================================================================
 
 
@@ -473,7 +658,7 @@ class SlowCommands : public ::google::protobuf::Message {
 
 // SlowCommand
 
-// optional .SlowCommand.Type type = 1;
+// optional .rec.slow.SlowCommand.Type type = 1;
 inline bool SlowCommand::has_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -487,11 +672,11 @@ inline void SlowCommand::clear_type() {
   type_ = 0;
   clear_has_type();
 }
-inline ::SlowCommand_Type SlowCommand::type() const {
-  return static_cast< ::SlowCommand_Type >(type_);
+inline ::rec::slow::SlowCommand_Type SlowCommand::type() const {
+  return static_cast< ::rec::slow::SlowCommand_Type >(type_);
 }
-inline void SlowCommand::set_type(::SlowCommand_Type value) {
-  assert(::SlowCommand_Type_IsValid(value));
+inline void SlowCommand::set_type(::rec::slow::SlowCommand_Type value) {
+  assert(::rec::slow::SlowCommand_Type_IsValid(value));
   set_has_type();
   type_ = value;
 }
@@ -538,41 +723,138 @@ inline void SlowCommand::set_allocated_command(::rec::command::Command* command)
 
 // SlowCommands
 
-// repeated .SlowCommand slow_command = 1;
+// repeated .rec.slow.SlowCommand slow_command = 1;
 inline int SlowCommands::slow_command_size() const {
   return slow_command_.size();
 }
 inline void SlowCommands::clear_slow_command() {
   slow_command_.Clear();
 }
-inline const ::SlowCommand& SlowCommands::slow_command(int index) const {
+inline const ::rec::slow::SlowCommand& SlowCommands::slow_command(int index) const {
   return slow_command_.Get(index);
 }
-inline ::SlowCommand* SlowCommands::mutable_slow_command(int index) {
+inline ::rec::slow::SlowCommand* SlowCommands::mutable_slow_command(int index) {
   return slow_command_.Mutable(index);
 }
-inline ::SlowCommand* SlowCommands::add_slow_command() {
+inline ::rec::slow::SlowCommand* SlowCommands::add_slow_command() {
   return slow_command_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::SlowCommand >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand >&
 SlowCommands::slow_command() const {
   return slow_command_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::SlowCommand >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand >*
 SlowCommands::mutable_slow_command() {
   return &slow_command_;
 }
 
+// -------------------------------------------------------------------
+
+// SlowCommandMapEntry
+
+// optional .rec.slow.SlowCommand.Type type = 1;
+inline bool SlowCommandMapEntry::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SlowCommandMapEntry::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SlowCommandMapEntry::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SlowCommandMapEntry::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::rec::slow::SlowCommand_Type SlowCommandMapEntry::type() const {
+  return static_cast< ::rec::slow::SlowCommand_Type >(type_);
+}
+inline void SlowCommandMapEntry::set_type(::rec::slow::SlowCommand_Type value) {
+  assert(::rec::slow::SlowCommand_Type_IsValid(value));
+  set_has_type();
+  type_ = value;
+}
+
+// optional .rec.command.CommandMapEntry entry = 2;
+inline bool SlowCommandMapEntry::has_entry() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SlowCommandMapEntry::set_has_entry() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SlowCommandMapEntry::clear_has_entry() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SlowCommandMapEntry::clear_entry() {
+  if (entry_ != NULL) entry_->::rec::command::CommandMapEntry::Clear();
+  clear_has_entry();
+}
+inline const ::rec::command::CommandMapEntry& SlowCommandMapEntry::entry() const {
+  return entry_ != NULL ? *entry_ : *default_instance_->entry_;
+}
+inline ::rec::command::CommandMapEntry* SlowCommandMapEntry::mutable_entry() {
+  set_has_entry();
+  if (entry_ == NULL) entry_ = new ::rec::command::CommandMapEntry;
+  return entry_;
+}
+inline ::rec::command::CommandMapEntry* SlowCommandMapEntry::release_entry() {
+  clear_has_entry();
+  ::rec::command::CommandMapEntry* temp = entry_;
+  entry_ = NULL;
+  return temp;
+}
+inline void SlowCommandMapEntry::set_allocated_entry(::rec::command::CommandMapEntry* entry) {
+  delete entry_;
+  entry_ = entry;
+  if (entry) {
+    set_has_entry();
+  } else {
+    clear_has_entry();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// SlowCommandMapProto
+
+// repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
+inline int SlowCommandMapProto::slow_entry_size() const {
+  return slow_entry_.size();
+}
+inline void SlowCommandMapProto::clear_slow_entry() {
+  slow_entry_.Clear();
+}
+inline const ::rec::slow::SlowCommandMapEntry& SlowCommandMapProto::slow_entry(int index) const {
+  return slow_entry_.Get(index);
+}
+inline ::rec::slow::SlowCommandMapEntry* SlowCommandMapProto::mutable_slow_entry(int index) {
+  return slow_entry_.Mutable(index);
+}
+inline ::rec::slow::SlowCommandMapEntry* SlowCommandMapProto::add_slow_entry() {
+  return slow_entry_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >&
+SlowCommandMapProto::slow_entry() const {
+  return slow_entry_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >*
+SlowCommandMapProto::mutable_slow_entry() {
+  return &slow_entry_;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace slow
+}  // namespace rec
 
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::SlowCommand_Type>() {
-  return ::SlowCommand_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::slow::SlowCommand_Type>() {
+  return ::rec::slow::SlowCommand_Type_descriptor();
 }
 
 }  // namespace google

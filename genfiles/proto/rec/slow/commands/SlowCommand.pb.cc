@@ -16,6 +16,9 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
+namespace rec {
+namespace slow {
+
 namespace {
 
 const ::google::protobuf::Descriptor* SlowCommand_descriptor_ = NULL;
@@ -25,6 +28,12 @@ const ::google::protobuf::EnumDescriptor* SlowCommand_Type_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* SlowCommands_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SlowCommands_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SlowCommandMapEntry_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SlowCommandMapEntry_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SlowCommandMapProto_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SlowCommandMapProto_reflection_ = NULL;
 
 }  // namespace
 
@@ -67,6 +76,37 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SlowCommands));
+  SlowCommandMapEntry_descriptor_ = file->message_type(2);
+  static const int SlowCommandMapEntry_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, entry_),
+  };
+  SlowCommandMapEntry_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SlowCommandMapEntry_descriptor_,
+      SlowCommandMapEntry::default_instance_,
+      SlowCommandMapEntry_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SlowCommandMapEntry));
+  SlowCommandMapProto_descriptor_ = file->message_type(3);
+  static const int SlowCommandMapProto_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapProto, slow_entry_),
+  };
+  SlowCommandMapProto_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SlowCommandMapProto_descriptor_,
+      SlowCommandMapProto::default_instance_,
+      SlowCommandMapProto_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapProto, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapProto, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SlowCommandMapProto));
 }
 
 namespace {
@@ -83,6 +123,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
     SlowCommand_descriptor_, &SlowCommand::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SlowCommands_descriptor_, &SlowCommands::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SlowCommandMapEntry_descriptor_, &SlowCommandMapEntry::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SlowCommandMapProto_descriptor_, &SlowCommandMapProto::default_instance());
 }
 
 }  // namespace
@@ -92,6 +136,10 @@ void protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   delete SlowCommand_reflection_;
   delete SlowCommands::default_instance_;
   delete SlowCommands_reflection_;
+  delete SlowCommandMapEntry::default_instance_;
+  delete SlowCommandMapEntry_reflection_;
+  delete SlowCommandMapProto::default_instance_;
+  delete SlowCommandMapProto_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
@@ -101,76 +149,87 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::command::protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
+  ::rec::command::protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n#rec/slow/commands/SlowCommand.proto\032\031r"
-    "ec/command/Command.proto\"\323\022\n\013SlowCommand"
-    "\022\037\n\004type\030\001 \001(\0162\021.SlowCommand.Type\022%\n\007com"
-    "mand\030\002 \001(\0132\024.rec.command.Command\"\373\021\n\004Typ"
-    "e\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_PROGRAM\020:\022\022\n\016A"
-    "DD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFERENCES\020\002\022\025"
-    "\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CLEAR_KEYBOARD_"
-    "MAPPINGS\020[\022\027\n\023CLEAR_MIDI_MAPPINGS\020\\\022\017\n\013C"
-    "LEAR_LOOPS\020\004\022\023\n\017CLEAR_NAVIGATOR\020\003\022\026\n\022CLE"
-    "AR_ALL_SETTINGS\020O\022!\n\035CLEAR_SETTINGS_FOR_"
-    "THIS_TRACK\020P\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022"
-    "\016\n\nCLOSE_FILE\020\006\022\030\n\024COPY_ALL_LOOP_POINTS\020"
-    "_\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022"
-    "\034\n\030EXPORT_KEYBOARD_MAPPINGS\020R\022\030\n\024EXPORT_"
-    "MIDI_MAPPINGS\020S\022\023\n\017EXPORT_SETTINGS\020K\022\034\n\030"
-    "IMPORT_KEYBOARD_MAPPINGS\020T\022\030\n\024IMPORT_MID"
-    "I_MAPPINGS\020U\022\023\n\017IMPORT_SETTINGS\020L\022\031\n\025INV"
-    "ERT_LOOP_SELECTION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJUMP_S"
-    "ELECTED\020\013\022\025\n\021KEYBOARD_MAPPINGS\020\014\022\025\n\021LOOP"
-    "_NEXT_SEGMENT\020^\022\021\n\rMIDI_MAPPINGS\020\r\022\027\n\023MO"
-    "DE_ADD_LOOP_POINT\020\?\022\r\n\tMODE_DRAG\020<\022\021\n\rMO"
-    "DE_SET_TIME\020=\022\020\n\014MODE_ZOOM_IN\020>\022\026\n\022MUTE_"
-    "VOLUME_TOGGLE\020\016\022\022\n\016NUDGE_BACKWARD\020Y\022\021\n\rN"
-    "UDGE_FORWARD\020Z\022\024\n\020NUDGE_BEGIN_LEFT\020\017\022\025\n\021"
-    "NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_END_LEFT\020\021\022"
-    "\023\n\017NUDGE_END_RIGHT\020\022\022\024\n\020NUDGE_SPEED_DOWN"
-    "\020V\022\022\n\016NUDGE_SPEED_UP\020W\022\025\n\021NUDGE_VOLUME_D"
-    "OWN\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025\022\017\n\013"
-    "OPEN_MANUAL\020A\022\026\n\022OPEN_PREVIOUS_FILE\020N\022\033\n"
-    "\027OPEN_SLOWGOLD_DIRECTORY\020J\022\032\n\026PASTE_OVER"
-    "_LOOP_POINTS\020`\022\020\n\014RECENT_FILES\020\026\022\010\n\004REDO"
-    "\020\027\022\023\n\017REQUEST_SUPPORT\020B\022\027\n\023RESET_GAIN_TO"
-    "_UNITY\020\030\022\r\n\tSAVE_FILE\020E\022\027\n\023SAVE_FILE_SEL"
-    "ECTION\020F\022\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020\032\022\020\n"
-    "\014SET_LANGUAGE\020]\022\023\n\017SET_SAVE_FORMAT\020G\022\031\n\025"
-    "TOGGLE_ADVANCED_MENUS\020;\022\034\n\030TOGGLE_AUTOMA"
-    "TIC_UPDATES\020C\022\030\n\024TOGGLE_FOLLOW_CURSOR\020+\022"
-    "\027\n\023TOGGLE_GRID_DISPLAY\020\033\022\036\n\032TOGGLE_COMMA"
-    "ND_BAR_AT_LEFT\0206\022\035\n\031TOGGLE_COMMAND_BAR_A"
-    "T_TOP\0207\022!\n\035TOGGLE_FILE_OPEN_TREE_DISPLAY"
-    "\020H\022\030\n\024TOGGLE_MODES_AT_LEFT\0208\022\027\n\023TOGGLE_M"
-    "ODES_AT_TOP\0209\022\035\n\031TOGGLE_PARALLEL_WAVEFOR"
-    "MS\020*\022\032\n\026TOGGLE_PREFADER_LEVELS\020.\022\024\n\020TOGG"
-    "LE_SELECTION\020)\022\'\n#TOGGLE_SHOW_ABOUT_WIND"
-    "OW_AT_STARTUP\020Q\022\035\n\031TOGGLE_SHOW_CURSOR_LA"
-    "BELS\0203\022\031\n\025TOGGLE_SHOW_HELP_PANE\0201\022\035\n\031TOG"
-    "GLE_SHOW_LABELS_AT_TOP\0204\022\033\n\027TOGGLE_SHOW_"
-    "MASTER_TUNE\020M\022!\n\035TOGGLE_SHOW_SELECTION_B"
-    "UTTONS\0202\022\034\n\030TOGGLE_SHOW_TIMES_AT_TOP\0205\022\030"
-    "\n\024TOGGLE_SHOW_TOOLTIPS\0200\022\025\n\021TOGGLE_START"
-    "_STOP\020\034\022\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\033\n\027TO"
-    "GGLE_TRANSFORM_ENABLE\020X\022\032\n\026TOGGLE_WHOLE_"
-    "SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN"
-    "\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE"
-    "_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010UNSEL"
-    "ECT\020&\022\022\n\016WHATS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014"
-    "\n\010ZOOM_OUT\020(\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_"
-    "TO_SELECTION\020-\022\023\n\017FIRST_FREE_TYPE\020a\022\t\n\004Q"
-    "UIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n"
-    "\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_A"
-    "LL\020\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010JUCE_END\020\210 \022\017\n"
-    "\tBANK_SIZE\020\240\215\006\"2\n\014SlowCommands\022\"\n\014slow_c"
-    "ommand\030\001 \003(\0132\014.SlowCommand", 2506);
+    "\n#rec/slow/commands/SlowCommand.proto\022\010r"
+    "ec.slow\032\031rec/command/Command.proto\032 rec/"
+    "command/map/CommandMap.proto\"\334\022\n\013SlowCom"
+    "mand\022(\n\004type\030\001 \001(\0162\032.rec.slow.SlowComman"
+    "d.Type\022%\n\007command\030\002 \001(\0132\024.rec.command.Co"
+    "mmand\"\373\021\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_P"
+    "ROGRAM\020:\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PR"
+    "EFERENCES\020\002\022\025\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CL"
+    "EAR_KEYBOARD_MAPPINGS\020[\022\027\n\023CLEAR_MIDI_MA"
+    "PPINGS\020\\\022\017\n\013CLEAR_LOOPS\020\004\022\023\n\017CLEAR_NAVIG"
+    "ATOR\020\003\022\026\n\022CLEAR_ALL_SETTINGS\020O\022!\n\035CLEAR_"
+    "SETTINGS_FOR_THIS_TRACK\020P\022\031\n\025CLEAR_SAVED"
+    "_FILE_DATA\020\005\022\016\n\nCLOSE_FILE\020\006\022\030\n\024COPY_ALL"
+    "_LOOP_POINTS\020_\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n"
+    "\tEJECT_CDS\020\010\022\034\n\030EXPORT_KEYBOARD_MAPPINGS"
+    "\020R\022\030\n\024EXPORT_MIDI_MAPPINGS\020S\022\023\n\017EXPORT_S"
+    "ETTINGS\020K\022\034\n\030IMPORT_KEYBOARD_MAPPINGS\020T\022"
+    "\030\n\024IMPORT_MIDI_MAPPINGS\020U\022\023\n\017IMPORT_SETT"
+    "INGS\020L\022\031\n\025INVERT_LOOP_SELECTION\020\t\022\010\n\004JUM"
+    "P\020\n\022\021\n\rJUMP_SELECTED\020\013\022\025\n\021KEYBOARD_MAPPI"
+    "NGS\020\014\022\025\n\021LOOP_NEXT_SEGMENT\020^\022\021\n\rMIDI_MAP"
+    "PINGS\020\r\022\027\n\023MODE_ADD_LOOP_POINT\020\?\022\r\n\tMODE"
+    "_DRAG\020<\022\021\n\rMODE_SET_TIME\020=\022\020\n\014MODE_ZOOM_"
+    "IN\020>\022\026\n\022MUTE_VOLUME_TOGGLE\020\016\022\022\n\016NUDGE_BA"
+    "CKWARD\020Y\022\021\n\rNUDGE_FORWARD\020Z\022\024\n\020NUDGE_BEG"
+    "IN_LEFT\020\017\022\025\n\021NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDG"
+    "E_END_LEFT\020\021\022\023\n\017NUDGE_END_RIGHT\020\022\022\024\n\020NUD"
+    "GE_SPEED_DOWN\020V\022\022\n\016NUDGE_SPEED_UP\020W\022\025\n\021N"
+    "UDGE_VOLUME_DOWN\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022"
+    "\010\n\004OPEN\020\025\022\017\n\013OPEN_MANUAL\020A\022\026\n\022OPEN_PREVI"
+    "OUS_FILE\020N\022\033\n\027OPEN_SLOWGOLD_DIRECTORY\020J\022"
+    "\032\n\026PASTE_OVER_LOOP_POINTS\020`\022\020\n\014RECENT_FI"
+    "LES\020\026\022\010\n\004REDO\020\027\022\023\n\017REQUEST_SUPPORT\020B\022\027\n\023"
+    "RESET_GAIN_TO_UNITY\020\030\022\r\n\tSAVE_FILE\020E\022\027\n\023"
+    "SAVE_FILE_SELECTION\020F\022\n\n\006SELECT\020\031\022\017\n\013SEL"
+    "ECT_ONLY\020\032\022\020\n\014SET_LANGUAGE\020]\022\023\n\017SET_SAVE"
+    "_FORMAT\020G\022\031\n\025TOGGLE_ADVANCED_MENUS\020;\022\034\n\030"
+    "TOGGLE_AUTOMATIC_UPDATES\020C\022\030\n\024TOGGLE_FOL"
+    "LOW_CURSOR\020+\022\027\n\023TOGGLE_GRID_DISPLAY\020\033\022\036\n"
+    "\032TOGGLE_COMMAND_BAR_AT_LEFT\0206\022\035\n\031TOGGLE_"
+    "COMMAND_BAR_AT_TOP\0207\022!\n\035TOGGLE_FILE_OPEN"
+    "_TREE_DISPLAY\020H\022\030\n\024TOGGLE_MODES_AT_LEFT\020"
+    "8\022\027\n\023TOGGLE_MODES_AT_TOP\0209\022\035\n\031TOGGLE_PAR"
+    "ALLEL_WAVEFORMS\020*\022\032\n\026TOGGLE_PREFADER_LEV"
+    "ELS\020.\022\024\n\020TOGGLE_SELECTION\020)\022\'\n#TOGGLE_SH"
+    "OW_ABOUT_WINDOW_AT_STARTUP\020Q\022\035\n\031TOGGLE_S"
+    "HOW_CURSOR_LABELS\0203\022\031\n\025TOGGLE_SHOW_HELP_"
+    "PANE\0201\022\035\n\031TOGGLE_SHOW_LABELS_AT_TOP\0204\022\033\n"
+    "\027TOGGLE_SHOW_MASTER_TUNE\020M\022!\n\035TOGGLE_SHO"
+    "W_SELECTION_BUTTONS\0202\022\034\n\030TOGGLE_SHOW_TIM"
+    "ES_AT_TOP\0205\022\030\n\024TOGGLE_SHOW_TOOLTIPS\0200\022\025\n"
+    "\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGLE_STRETCH_E"
+    "NABLE\020\035\022\033\n\027TOGGLE_TRANSFORM_ENABLE\020X\022\032\n\026"
+    "TOGGLE_WHOLE_SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037"
+    "\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_O"
+    "PEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UN"
+    "DO\020%\022\014\n\010UNSELECT\020&\022\022\n\016WHATS_NEW_PAGE\020I\022\013"
+    "\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\021\n\rZOOM_OUT_FU"
+    "LL\020@\022\025\n\021ZOOM_TO_SELECTION\020-\022\023\n\017FIRST_FRE"
+    "E_TYPE\020a\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022"
+    "\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022"
+    "\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010J"
+    "UCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\";\n\014SlowComma"
+    "nds\022+\n\014slow_command\030\001 \003(\0132\025.rec.slow.Slo"
+    "wCommand\"l\n\023SlowCommandMapEntry\022(\n\004type\030"
+    "\001 \001(\0162\032.rec.slow.SlowCommand.Type\022+\n\005ent"
+    "ry\030\002 \001(\0132\034.rec.command.CommandMapEntry\"H"
+    "\n\023SlowCommandMapProto\0221\n\nslow_entry\030\001 \003("
+    "\0132\035.rec.slow.SlowCommandMapEntry", 2752);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/commands/SlowCommand.proto", &protobuf_RegisterTypes);
   SlowCommand::default_instance_ = new SlowCommand();
   SlowCommands::default_instance_ = new SlowCommands();
+  SlowCommandMapEntry::default_instance_ = new SlowCommandMapEntry();
+  SlowCommandMapProto::default_instance_ = new SlowCommandMapProto();
   SlowCommand::default_instance_->InitAsDefaultInstance();
   SlowCommands::default_instance_->InitAsDefaultInstance();
+  SlowCommandMapEntry::default_instance_->InitAsDefaultInstance();
+  SlowCommandMapProto::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto);
 }
 
@@ -487,7 +546,7 @@ bool SlowCommand::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .SlowCommand.Type type = 1;
+      // optional .rec.slow.SlowCommand.Type type = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -495,8 +554,8 @@ bool SlowCommand::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::SlowCommand_Type_IsValid(value)) {
-            set_type(static_cast< ::SlowCommand_Type >(value));
+          if (::rec::slow::SlowCommand_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::slow::SlowCommand_Type >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -539,7 +598,7 @@ bool SlowCommand::MergePartialFromCodedStream(
 
 void SlowCommand::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .SlowCommand.Type type = 1;
+  // optional .rec.slow.SlowCommand.Type type = 1;
   if (has_type()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->type(), output);
@@ -559,7 +618,7 @@ void SlowCommand::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SlowCommand::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .SlowCommand.Type type = 1;
+  // optional .rec.slow.SlowCommand.Type type = 1;
   if (has_type()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
@@ -583,7 +642,7 @@ int SlowCommand::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .SlowCommand.Type type = 1;
+    // optional .rec.slow.SlowCommand.Type type = 1;
     if (has_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
@@ -736,7 +795,7 @@ bool SlowCommands::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .SlowCommand slow_command = 1;
+      // repeated .rec.slow.SlowCommand slow_command = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -769,7 +828,7 @@ bool SlowCommands::MergePartialFromCodedStream(
 
 void SlowCommands::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .SlowCommand slow_command = 1;
+  // repeated .rec.slow.SlowCommand slow_command = 1;
   for (int i = 0; i < this->slow_command_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->slow_command(i), output);
@@ -783,7 +842,7 @@ void SlowCommands::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SlowCommands::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .SlowCommand slow_command = 1;
+  // repeated .rec.slow.SlowCommand slow_command = 1;
   for (int i = 0; i < this->slow_command_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -800,7 +859,7 @@ void SlowCommands::SerializeWithCachedSizes(
 int SlowCommands::ByteSize() const {
   int total_size = 0;
 
-  // repeated .SlowCommand slow_command = 1;
+  // repeated .rec.slow.SlowCommand slow_command = 1;
   total_size += 1 * this->slow_command_size();
   for (int i = 0; i < this->slow_command_size(); i++) {
     total_size +=
@@ -872,6 +931,471 @@ void SlowCommands::Swap(SlowCommands* other) {
 }
 
 
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SlowCommandMapEntry::kTypeFieldNumber;
+const int SlowCommandMapEntry::kEntryFieldNumber;
+#endif  // !_MSC_VER
+
+SlowCommandMapEntry::SlowCommandMapEntry()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SlowCommandMapEntry::InitAsDefaultInstance() {
+  entry_ = const_cast< ::rec::command::CommandMapEntry*>(&::rec::command::CommandMapEntry::default_instance());
+}
+
+SlowCommandMapEntry::SlowCommandMapEntry(const SlowCommandMapEntry& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SlowCommandMapEntry::SharedCtor() {
+  _cached_size_ = 0;
+  type_ = 0;
+  entry_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SlowCommandMapEntry::~SlowCommandMapEntry() {
+  SharedDtor();
+}
+
+void SlowCommandMapEntry::SharedDtor() {
+  if (this != default_instance_) {
+    delete entry_;
+  }
+}
+
+void SlowCommandMapEntry::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SlowCommandMapEntry::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SlowCommandMapEntry_descriptor_;
+}
+
+const SlowCommandMapEntry& SlowCommandMapEntry::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  return *default_instance_;
+}
+
+SlowCommandMapEntry* SlowCommandMapEntry::default_instance_ = NULL;
+
+SlowCommandMapEntry* SlowCommandMapEntry::New() const {
+  return new SlowCommandMapEntry;
+}
+
+void SlowCommandMapEntry::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    type_ = 0;
+    if (has_entry()) {
+      if (entry_ != NULL) entry_->::rec::command::CommandMapEntry::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SlowCommandMapEntry::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .rec.slow.SlowCommand.Type type = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::slow::SlowCommand_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::slow::SlowCommand_Type >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_entry;
+        break;
+      }
+
+      // optional .rec.command.CommandMapEntry entry = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_entry:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_entry()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SlowCommandMapEntry::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .rec.slow.SlowCommand.Type type = 1;
+  if (has_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->type(), output);
+  }
+
+  // optional .rec.command.CommandMapEntry entry = 2;
+  if (has_entry()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->entry(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SlowCommandMapEntry::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .rec.slow.SlowCommand.Type type = 1;
+  if (has_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->type(), target);
+  }
+
+  // optional .rec.command.CommandMapEntry entry = 2;
+  if (has_entry()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->entry(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SlowCommandMapEntry::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.slow.SlowCommand.Type type = 1;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+    }
+
+    // optional .rec.command.CommandMapEntry entry = 2;
+    if (has_entry()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->entry());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SlowCommandMapEntry::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SlowCommandMapEntry* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SlowCommandMapEntry*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SlowCommandMapEntry::MergeFrom(const SlowCommandMapEntry& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_type()) {
+      set_type(from.type());
+    }
+    if (from.has_entry()) {
+      mutable_entry()->::rec::command::CommandMapEntry::MergeFrom(from.entry());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SlowCommandMapEntry::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SlowCommandMapEntry::CopyFrom(const SlowCommandMapEntry& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SlowCommandMapEntry::IsInitialized() const {
+
+  return true;
+}
+
+void SlowCommandMapEntry::Swap(SlowCommandMapEntry* other) {
+  if (other != this) {
+    std::swap(type_, other->type_);
+    std::swap(entry_, other->entry_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SlowCommandMapEntry::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SlowCommandMapEntry_descriptor_;
+  metadata.reflection = SlowCommandMapEntry_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SlowCommandMapProto::kSlowEntryFieldNumber;
+#endif  // !_MSC_VER
+
+SlowCommandMapProto::SlowCommandMapProto()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SlowCommandMapProto::InitAsDefaultInstance() {
+}
+
+SlowCommandMapProto::SlowCommandMapProto(const SlowCommandMapProto& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SlowCommandMapProto::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SlowCommandMapProto::~SlowCommandMapProto() {
+  SharedDtor();
+}
+
+void SlowCommandMapProto::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void SlowCommandMapProto::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SlowCommandMapProto::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SlowCommandMapProto_descriptor_;
+}
+
+const SlowCommandMapProto& SlowCommandMapProto::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  return *default_instance_;
+}
+
+SlowCommandMapProto* SlowCommandMapProto::default_instance_ = NULL;
+
+SlowCommandMapProto* SlowCommandMapProto::New() const {
+  return new SlowCommandMapProto;
+}
+
+void SlowCommandMapProto::Clear() {
+  slow_entry_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SlowCommandMapProto::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_slow_entry:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_slow_entry()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(10)) goto parse_slow_entry;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SlowCommandMapProto::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
+  for (int i = 0; i < this->slow_entry_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->slow_entry(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SlowCommandMapProto::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
+  for (int i = 0; i < this->slow_entry_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->slow_entry(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SlowCommandMapProto::ByteSize() const {
+  int total_size = 0;
+
+  // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
+  total_size += 1 * this->slow_entry_size();
+  for (int i = 0; i < this->slow_entry_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->slow_entry(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SlowCommandMapProto::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SlowCommandMapProto* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SlowCommandMapProto*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SlowCommandMapProto::MergeFrom(const SlowCommandMapProto& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  slow_entry_.MergeFrom(from.slow_entry_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SlowCommandMapProto::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SlowCommandMapProto::CopyFrom(const SlowCommandMapProto& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SlowCommandMapProto::IsInitialized() const {
+
+  return true;
+}
+
+void SlowCommandMapProto::Swap(SlowCommandMapProto* other) {
+  if (other != this) {
+    slow_entry_.Swap(&other->slow_entry_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SlowCommandMapProto::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SlowCommandMapProto_descriptor_;
+  metadata.reflection = SlowCommandMapProto_reflection_;
+  return metadata;
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace slow
+}  // namespace rec
 
 // @@protoc_insertion_point(global_scope)

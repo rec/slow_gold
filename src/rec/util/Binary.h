@@ -31,6 +31,9 @@ Proto binaryProto(const string& s) {
 #define BINARY_PROTO(NAME, PROTO) \
   binaryProto<PROTO>(BINARY_STRING(NAME))
 
+#define BINARY_FILL(NAME, PROTO) \
+  copy:copy(BINARY_STRING(NAME), PROTO)
+
 }  // namespace util
 }  // namespace rec
 
