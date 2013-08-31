@@ -1,510 +1,510 @@
 slow_entry {
+  command: ABOUT_THIS_PROGRAM
   entry {
-    command: ABOUT_THIS_PROGRAM
     key: "shift + ?"
   }
 }
 slow_entry {
+  command: ADD_LOOP_POINT
   entry {
-    command: ADD_LOOP_POINT
     key: "l"
     key: "command + l"
   }
 }
 slow_entry {
+  command: AUDIO_PREFERENCES
   entry {
-    command: AUDIO_PREFERENCES
     key: "command + ;"
   }
 }
 slow_entry {
+  command: CLEAR_LOOPS
   entry {
-    command: CLEAR_LOOPS
     key: "command + b"
   }
 }
 slow_entry {
+  command: CLOSE_FILE
   entry {
-    command: CLOSE_FILE
     key: "command + w"
   }
 }
 slow_entry {
+  command: COPY
   entry {
-    command: COPY
     key: "command + c"
   }
 }
 slow_entry {
+  command: COPY_ALL_LOOP_POINTS
   entry {
-    command: COPY_ALL_LOOP_POINTS
     key: "command + c"
   }
 }
 slow_entry {
+  command: CUT
   entry {
-    command: CUT
     key: "command + x"
   }
 }
 slow_entry {
+  command: DEL
   entry {
-    command: DEL
     key: "delete"
   }
 }
 slow_entry {
+  command: DESELECT_ALL
   entry {
-    command: DESELECT_ALL
     key: "command + d"
   }
 }
 slow_entry {
+  command: EJECT_CDS
   entry {
-    command: EJECT_CDS
     key: "command + e"
   }
 }
 slow_entry {
+  command: INVERT_LOOP_SELECTION
   entry {
-    command: INVERT_LOOP_SELECTION
     key: "command + i"
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "1"
     index: 0
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "2"
     index: 1
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "3"
     index: 2
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "4"
     index: 3
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "5"
     index: 4
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "6"
     index: 5
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "7"
     index: 6
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "8"
     index: 7
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "9"
     index: 8
   }
 }
 slow_entry {
+  command: JUMP
   entry {
-    command: JUMP
     key: "0"
     index: 9
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "command + cursor left"
     index: -5
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "command + cursor right"
     index: -1
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + !"
     index: 0
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + @"
     index: 1
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + #"
     index: 2
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + $"
     index: 3
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + %"
     index: 4
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + ^"
     index: 5
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + &"
     index: 6
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + *"
     index: 7
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + ("
     index: 8
   }
 }
 slow_entry {
+  command: JUMP_SELECTED
   entry {
-    command: JUMP_SELECTED
     key: "shift + )"
     index: 9
   }
 }
 slow_entry {
+  command: LOOP_NEXT_SEGMENT
   entry {
-    command: LOOP_NEXT_SEGMENT
     key: "n"
   }
 }
 slow_entry {
+  command: KEYBOARD_MAPPINGS
   entry {
-    command: KEYBOARD_MAPPINGS
     key: "command + k"
   }
 }
 slow_entry {
+  command: MIDI_MAPPINGS
   entry {
-    command: MIDI_MAPPINGS
     key: "command + m"
   }
 }
 slow_entry {
+  command: MODE_ADD_LOOP_POINT
   entry {
-    command: MODE_ADD_LOOP_POINT
     key: "option + a"
   }
 }
 slow_entry {
+  command: MODE_DRAG
   entry {
-    command: MODE_DRAG
     key: "option + d"
   }
 }
 slow_entry {
+  command: MODE_SET_TIME
   entry {
-    command: MODE_SET_TIME
     key: "option + t"
   }
 }
 slow_entry {
+  command: MODE_ZOOM_IN
   entry {
-    command: MODE_ZOOM_IN
     key: "option + z"
   }
 }
 slow_entry {
+  command: MUTE_VOLUME_TOGGLE
   entry {
-    command: MUTE_VOLUME_TOGGLE
     key: "."
   }
 }
 slow_entry {
+  command: NUDGE_BACKWARD
   entry {
-    command: NUDGE_BACKWARD
     key: "cursor left"
   }
 }
 slow_entry {
+  command: NUDGE_FORWARD
   entry {
-    command: NUDGE_FORWARD
     key: "cursor right"
   }
 }
 slow_entry {
+  command: NUDGE_VOLUME_DOWN
   entry {
-    command: NUDGE_VOLUME_DOWN
     key: "cursor down"
   }
 }
 slow_entry {
+  command: NUDGE_VOLUME_UP
   entry {
-    command: NUDGE_VOLUME_UP
     key: "cursor up"
   }
 }
 slow_entry {
+  command: NUDGE_SPEED_DOWN
   entry {
-    command: NUDGE_SPEED_DOWN
     key: "_"
     key: "shift + _"
     key: "-"
   }
 }
 slow_entry {
+  command: NUDGE_SPEED_UP
   entry {
-    command: NUDGE_SPEED_UP
     key: "+"
     key: "shift + +"
     key: "="
   }
 }
 slow_entry {
+  command: OPEN
   entry {
-    command: OPEN
     key: "command + o"
   }
 }
 slow_entry {
+  command: OPEN_PREVIOUS_FILE
   entry {
-    command: OPEN_PREVIOUS_FILE
     key: "command + r"
   }
 }
 slow_entry {
+  command: PASTE
   entry {
-    command: PASTE
     key: "command + v"
   }
 }
 slow_entry {
+  command: PASTE_OVER_LOOP_POINTS
   entry {
-    command: PASTE_OVER_LOOP_POINTS
     key: "command + v"
   }
 }
 slow_entry {
+  command: QUIT
   entry {
-    command: QUIT
     key: "command + q"
   }
 }
 slow_entry {
+  command: REDO
   entry {
-    command: REDO
     key: "shift + command + z"
   }
 }
 slow_entry {
+  command: SAVE_FILE
   entry {
-    command: SAVE_FILE
     key: "command + s"
   }
 }
 slow_entry {
+  command: SAVE_FILE_SELECTION
   entry {
-    command: SAVE_FILE_SELECTION
     key: "command + shift + s"
   }
 }
 slow_entry {
+  command: SELECT_ALL
   entry {
-    command: SELECT_ALL
     key: "command + a"
   }
 }
 slow_entry {
+  command: SELECT_ONLY
   entry {
-    command: SELECT_ONLY
     key: "ctrl + command + cursor left"
     index: -5
   }
 }
 slow_entry {
+  command: SELECT_ONLY
   entry {
-    command: SELECT_ONLY
     key: "ctrl + cursor left"
     index: -4
   }
 }
 slow_entry {
+  command: SELECT_ONLY
   entry {
-    command: SELECT_ONLY
     key: "ctrl + cursor right"
     index: -2
   }
 }
 slow_entry {
+  command: SELECT_ONLY
   entry {
-    command: SELECT_ONLY
     key: "ctrl + command + cursor right"
     index: -1
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 1"
     index: 0
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 2"
     index: 1
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 3"
     index: 2
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 4"
     index: 3
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 5"
     index: 4
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 6"
     index: 5
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 7"
     index: 6
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 8"
     index: 7
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 9"
     index: 8
   }
 }
 slow_entry {
+  command: TOGGLE_SELECTION
   entry {
-    command: TOGGLE_SELECTION
     key: "command + 0"
     index: 9
   }
 }
 slow_entry {
+  command: TOGGLE_START_STOP
   entry {
-    command: TOGGLE_START_STOP
     key: "spacebar"
     key: "return"
   }
 }
 slow_entry {
+  command: TOGGLE_STRETCH_ENABLE
   entry {
-    command: TOGGLE_STRETCH_ENABLE
     key: "s"
   }
 }
 slow_entry {
+  command: TOGGLE_WHOLE_SONG_LOOP
   entry {
-    command: TOGGLE_WHOLE_SONG_LOOP
     key: "w"
   }
 }
 slow_entry {
+  command: UNDO
   entry {
-    command: UNDO
     key: "command + z"
   }
 }
 slow_entry {
+  command: ZOOM_OUT
   entry {
-    command: ZOOM_OUT
     key: "command + -"
   }
 }
 slow_entry {
+  command: ZOOM_OUT_FULL
   entry {
-    command: ZOOM_OUT_FULL
     key: "command + shift + -"
   }
 }
 slow_entry {
+  command: ZOOM_TO_SELECTION
   entry {
-    command: ZOOM_TO_SELECTION
     key: "command  + \'"
     key: "numpad *"
   }

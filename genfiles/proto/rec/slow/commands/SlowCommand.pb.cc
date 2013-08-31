@@ -78,7 +78,7 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
       sizeof(SlowCommands));
   SlowCommandMapEntry_descriptor_ = file->message_type(2);
   static const int SlowCommandMapEntry_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, command_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, entry_),
   };
   SlowCommandMapEntry_reflection_ =
@@ -215,11 +215,11 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
     "\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010J"
     "UCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\";\n\014SlowComma"
     "nds\022+\n\014slow_command\030\001 \003(\0132\025.rec.slow.Slo"
-    "wCommand\"l\n\023SlowCommandMapEntry\022(\n\004type\030"
-    "\001 \001(\0162\032.rec.slow.SlowCommand.Type\022+\n\005ent"
-    "ry\030\002 \001(\0132\034.rec.command.CommandMapEntry\"H"
-    "\n\023SlowCommandMapProto\0221\n\nslow_entry\030\001 \003("
-    "\0132\035.rec.slow.SlowCommandMapEntry", 2752);
+    "wCommand\"o\n\023SlowCommandMapEntry\022+\n\007comma"
+    "nd\030\001 \001(\0162\032.rec.slow.SlowCommand.Type\022+\n\005"
+    "entry\030\002 \001(\0132\034.rec.command.CommandMapEntr"
+    "y\"H\n\023SlowCommandMapProto\0221\n\nslow_entry\030\001"
+    " \003(\0132\035.rec.slow.SlowCommandMapEntry", 2755);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/commands/SlowCommand.proto", &protobuf_RegisterTypes);
   SlowCommand::default_instance_ = new SlowCommand();
@@ -934,7 +934,7 @@ void SlowCommands::Swap(SlowCommands* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int SlowCommandMapEntry::kTypeFieldNumber;
+const int SlowCommandMapEntry::kCommandFieldNumber;
 const int SlowCommandMapEntry::kEntryFieldNumber;
 #endif  // !_MSC_VER
 
@@ -955,7 +955,7 @@ SlowCommandMapEntry::SlowCommandMapEntry(const SlowCommandMapEntry& from)
 
 void SlowCommandMapEntry::SharedCtor() {
   _cached_size_ = 0;
-  type_ = 0;
+  command_ = 0;
   entry_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -993,7 +993,7 @@ SlowCommandMapEntry* SlowCommandMapEntry::New() const {
 
 void SlowCommandMapEntry::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    type_ = 0;
+    command_ = 0;
     if (has_entry()) {
       if (entry_ != NULL) entry_->::rec::command::CommandMapEntry::Clear();
     }
@@ -1008,7 +1008,7 @@ bool SlowCommandMapEntry::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.slow.SlowCommand.Type type = 1;
+      // optional .rec.slow.SlowCommand.Type command = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -1017,7 +1017,7 @@ bool SlowCommandMapEntry::MergePartialFromCodedStream(
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
           if (::rec::slow::SlowCommand_Type_IsValid(value)) {
-            set_type(static_cast< ::rec::slow::SlowCommand_Type >(value));
+            set_command(static_cast< ::rec::slow::SlowCommand_Type >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -1060,10 +1060,10 @@ bool SlowCommandMapEntry::MergePartialFromCodedStream(
 
 void SlowCommandMapEntry::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.slow.SlowCommand.Type type = 1;
-  if (has_type()) {
+  // optional .rec.slow.SlowCommand.Type command = 1;
+  if (has_command()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->type(), output);
+      1, this->command(), output);
   }
 
   // optional .rec.command.CommandMapEntry entry = 2;
@@ -1080,10 +1080,10 @@ void SlowCommandMapEntry::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SlowCommandMapEntry::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.slow.SlowCommand.Type type = 1;
-  if (has_type()) {
+  // optional .rec.slow.SlowCommand.Type command = 1;
+  if (has_command()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->type(), target);
+      1, this->command(), target);
   }
 
   // optional .rec.command.CommandMapEntry entry = 2;
@@ -1104,10 +1104,10 @@ int SlowCommandMapEntry::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.slow.SlowCommand.Type type = 1;
-    if (has_type()) {
+    // optional .rec.slow.SlowCommand.Type command = 1;
+    if (has_command()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->command());
     }
 
     // optional .rec.command.CommandMapEntry entry = 2;
@@ -1144,8 +1144,8 @@ void SlowCommandMapEntry::MergeFrom(const ::google::protobuf::Message& from) {
 void SlowCommandMapEntry::MergeFrom(const SlowCommandMapEntry& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_type()) {
-      set_type(from.type());
+    if (from.has_command()) {
+      set_command(from.command());
     }
     if (from.has_entry()) {
       mutable_entry()->::rec::command::CommandMapEntry::MergeFrom(from.entry());
@@ -1173,7 +1173,7 @@ bool SlowCommandMapEntry::IsInitialized() const {
 
 void SlowCommandMapEntry::Swap(SlowCommandMapEntry* other) {
   if (other != this) {
-    std::swap(type_, other->type_);
+    std::swap(command_, other->command_);
     std::swap(entry_, other->entry_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

@@ -148,7 +148,7 @@ message SlowCommands {
 };
 
 message SlowCommandMapEntry {
-  optional SlowCommand.Type type = 1;
+  optional SlowCommand.Type command = 1;
   optional rec.command.CommandMapEntry entry = 2;
 };
 

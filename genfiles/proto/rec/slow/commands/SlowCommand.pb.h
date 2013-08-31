@@ -528,12 +528,12 @@ class SlowCommandMapEntry : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.slow.SlowCommand.Type type = 1;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::rec::slow::SlowCommand_Type type() const;
-  inline void set_type(::rec::slow::SlowCommand_Type value);
+  // optional .rec.slow.SlowCommand.Type command = 1;
+  inline bool has_command() const;
+  inline void clear_command();
+  static const int kCommandFieldNumber = 1;
+  inline ::rec::slow::SlowCommand_Type command() const;
+  inline void set_command(::rec::slow::SlowCommand_Type value);
 
   // optional .rec.command.CommandMapEntry entry = 2;
   inline bool has_entry() const;
@@ -546,15 +546,15 @@ class SlowCommandMapEntry : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.slow.SlowCommandMapEntry)
  private:
-  inline void set_has_type();
-  inline void clear_has_type();
+  inline void set_has_command();
+  inline void clear_has_command();
   inline void set_has_entry();
   inline void clear_has_entry();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::command::CommandMapEntry* entry_;
-  int type_;
+  int command_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -752,27 +752,27 @@ SlowCommands::mutable_slow_command() {
 
 // SlowCommandMapEntry
 
-// optional .rec.slow.SlowCommand.Type type = 1;
-inline bool SlowCommandMapEntry::has_type() const {
+// optional .rec.slow.SlowCommand.Type command = 1;
+inline bool SlowCommandMapEntry::has_command() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void SlowCommandMapEntry::set_has_type() {
+inline void SlowCommandMapEntry::set_has_command() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void SlowCommandMapEntry::clear_has_type() {
+inline void SlowCommandMapEntry::clear_has_command() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void SlowCommandMapEntry::clear_type() {
-  type_ = 0;
-  clear_has_type();
+inline void SlowCommandMapEntry::clear_command() {
+  command_ = 0;
+  clear_has_command();
 }
-inline ::rec::slow::SlowCommand_Type SlowCommandMapEntry::type() const {
-  return static_cast< ::rec::slow::SlowCommand_Type >(type_);
+inline ::rec::slow::SlowCommand_Type SlowCommandMapEntry::command() const {
+  return static_cast< ::rec::slow::SlowCommand_Type >(command_);
 }
-inline void SlowCommandMapEntry::set_type(::rec::slow::SlowCommand_Type value) {
+inline void SlowCommandMapEntry::set_command(::rec::slow::SlowCommand_Type value) {
   assert(::rec::slow::SlowCommand_Type_IsValid(value));
-  set_has_type();
-  type_ = value;
+  set_has_command();
+  command_ = value;
 }
 
 // optional .rec.command.CommandMapEntry entry = 2;

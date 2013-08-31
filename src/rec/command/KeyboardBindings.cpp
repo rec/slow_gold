@@ -33,12 +33,10 @@ KeyStrokeCommandMapProto makeKeyBindings() {
   for (auto& slowEntry: slowMaps.slow_entry()) {
     auto entry = map->add_entry();
     *entry = slowEntry.entry();
-    entry->set_command(slowEntry.type());
+    entry->set_command(slowEntry.command());
   }
   return bindings;
 }
-
-
 
 }  // namespace
 
@@ -48,7 +46,6 @@ CommandMapProto getKeyboardBindings() {
     return getProto<KeyStrokeCommandMapProto>(d).map();
 
   static const KeyStrokeCommandMapProto mp = makeKeyBindings();
-    //   BINARY_PROTO(KeyStrokeMap_def,  KeyStrokeCommandMapProto);
   return mp.map();
 }
 
