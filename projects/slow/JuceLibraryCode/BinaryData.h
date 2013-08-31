@@ -130,10 +130,7 @@ namespace BinaryData
     const int            SlowCommands_defSize = 28880;
 
     extern const char*   SlowKeyStrokeMap_def;
-    const int            SlowKeyStrokeMap_defSize = 5782;
-
-    extern const char*   KeyStrokeMap_def;
-    const int            KeyStrokeMap_defSize = 5782;
+    const int            SlowKeyStrokeMap_defSize = 7098;
 
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).

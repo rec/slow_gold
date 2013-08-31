@@ -84,7 +84,7 @@ void MenuMaker::addBank(CommandID command, const String& name) {
 
   if (!Instance::getInstance()->empty()) {
     lastSlot = std::min(data::getProto<Viewport>(Instance::getInstanceFile()).
-                   loop_points().loop_point_size(), lastSlot);
+                        loop_points().loop_point_size(), lastSlot);
   }
 
   PopupMenu sub;
