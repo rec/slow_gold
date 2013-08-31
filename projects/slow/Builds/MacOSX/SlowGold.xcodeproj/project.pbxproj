@@ -1306,7 +1306,6 @@
 		BCD746FBF50BC6D5B7B7622E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_FileLogger.cpp"; path = "../../JuceLibraryCode/modules/juce_core/logging/juce_FileLogger.cpp"; sourceTree = "SOURCE_ROOT"; };
 		BD05D37C0B3A22334D37C853 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ComponentBoundsConstrainer.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/layout/juce_ComponentBoundsConstrainer.cpp"; sourceTree = "SOURCE_ROOT"; };
 		BD14BDD3E2C6D561E72E81EE = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedTyper.h; path = ../../../../src/rec/data/proto/TypedTyper.h; sourceTree = "SOURCE_ROOT"; };
-		BD409CD70B88458AB78556CC = { isa = PBXFileReference; lastKnownFileType = file.def; name = KeyStrokeMap.def; path = ../../../../src/rec/slow/commands/KeyStrokeMap.def; sourceTree = "SOURCE_ROOT"; };
 		BDA83B75FF6DA5FED019BB2B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = STL.h; path = ../../../../src/rec/util/STL.h; sourceTree = "SOURCE_ROOT"; };
 		BDBA8098FF02993E49B4DA53 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HasInstance.h; path = ../../../../src/rec/slow/HasInstance.h; sourceTree = "SOURCE_ROOT"; };
 		BDBE21744D0C390FF8115369 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ButtonPropertyComponent.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/properties/juce_ButtonPropertyComponent.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -2092,7 +2091,6 @@
 		86A6EED5FE512A2055E44073 = { isa = PBXGroup; children = (
 				B06336C8776B76D832359336,
 				4AA10875A150CA24FA332C92,
-				BD409CD70B88458AB78556CC,
 				99EDB8A7C91C1F2CAD8A785F,
 				6DBC6E083C09FD801393C0D2 ); name = commands; sourceTree = "<group>"; };
 		85C38261903D7DE462378877 = { isa = PBXGroup; children = (

@@ -13326,7 +13326,6 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x971a03b7:  numBytes = 59202; return idTranslatedStrings_def;
         case 0x5863c28f:  numBytes = 28880; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 7098; return SlowKeyStrokeMap_def;
-        case 0xdf58e54b:  numBytes = 0; return KeyStrokeMap_def;
         default: break;
     }
 
