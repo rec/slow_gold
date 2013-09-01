@@ -345,6 +345,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\Menu.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc"/>
@@ -1775,6 +1776,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\Menu.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h"/>
@@ -2272,7 +2274,6 @@
     <None Include="..\..\..\..\src\rec\gui\menu\RecentFiles.proto"/>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowCommands.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def"/>
-    <None Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles_pb2.py"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_formats\juce_module_info"/>

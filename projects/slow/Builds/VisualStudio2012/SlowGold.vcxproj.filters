@@ -1114,6 +1114,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\Menu.pb.cc">
+      <Filter>SlowGold\proto\rec\menu</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc">
       <Filter>SlowGold\proto\rec\menu</Filter>
     </ClCompile>
@@ -3339,6 +3342,9 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\Menu.pb.h">
+      <Filter>SlowGold\proto\rec\menu</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h">
       <Filter>SlowGold\proto\rec\menu</Filter>
     </ClInclude>
@@ -4825,9 +4831,6 @@
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def">
       <Filter>SlowGold\rec\slow\commands</Filter>
-    </None>
-    <None Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles_pb2.py">
-      <Filter>SlowGold\proto\rec\menu</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info">
       <Filter>Juce Modules\juce_audio_basics</Filter>

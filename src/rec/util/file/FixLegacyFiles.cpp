@@ -14,6 +14,7 @@ namespace file {
 namespace {
 
 using namespace rec::command;
+using namespace rec::data;
 
 CommandMapEntry* newEntry(CommandID type, KeyStrokeCommandMapProto* map) {
   CommandMapEntry* entry = map->mutable_map()->add_entry();
@@ -61,6 +62,20 @@ void moveOldAbsoluteDirectoriesToTypeRelative() {
     moveTypeDirectory(i->first, i->second.first);
   moveGlobalFiles();
   moveKeyboardFile();
+}
+
+template <typename OLD, typename NEW, typename CONVERTER>
+void moveGlobalData(CONVERTER converter) {
+  Data* newData = data::getData<NEW>(data::global());
+  if (newData->fileReadSuccess())
+    return;
+
+  Data* oldData = data::getData<OLD>(data::global());
+  if (not oldData->fileReadSuccess())
+    return;
+
+  data::Opener<NEW> opener(newData, CANT_UNDO);
+  converter(data::getProto<OLD>(oldData), opener.get());
 }
 
 }  // namespace

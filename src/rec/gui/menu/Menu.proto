@@ -1,0 +1,51 @@
+package rec.gui.menu;
+
+message MenuName {
+  // The name of the menu item as it's displayed in the menu.
+  optional string display = 1;
+
+  // The full name as it's displayed in help messages.
+  optional string full = 2;
+
+  // Any associated help text.
+  optional string help = 3;
+};
+
+message MenuEntry {
+  // The Juce CommandID for the corresponding command.
+  // An empty command means a menu separator.
+  optional uint32 command = 1;
+
+  // The number of commands represented by this menu entry.
+  optional uint32 size = 2;
+
+  // Zero or more names for this command or commands.
+  // It's possible for a single menu item to have more than one name depending
+  // on its state.
+  repeated MenuName name = 3;
+
+  // The name of a function that actually makes the menu name given the Menu
+  // entry information.
+  optional string name_maker = 4;
+
+  // Each string in 'hidden' or 'checked' names a condition.  If any of these
+  // conditions is true, the menu item is hidden or checked.  The application
+  // itself defines what those conditions are.
+  repeated string hidden = 5;
+  repeated string checked = 6;
+};
+
+message Menu {
+  optional MenuName name = 1;
+  repeated MenuEntry entry = 2;
+};
+
+message MenuBar {
+  optional MenuName name = 1;
+  repeated Menu menu = 2;
+};
+
+message MenuCollection {
+  optional MenuName name = 1;
+  repeated MenuBar menu_bar = 2;
+};
