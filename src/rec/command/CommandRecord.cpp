@@ -45,7 +45,7 @@ void CommandRecord::fillInfo() {
 
 Command* indexCommand(const Command& cmd, int index) {
   ptr<Command> command(new Command);
-  command->set_type(cmd.type());
+  command->set_command(cmd.command());
   command->set_index(index + ID::FIRST);
   command->set_menu(cmd.menu());
   if (cmd.desc().menu_size() > index)

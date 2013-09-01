@@ -20,6 +20,8 @@ class Program {
   virtual bool hasProperty(const string& name) const = 0;
   virtual gui::menu::MenuName makeName(const gui::menu::MenuEntry&, CommandID)
     const = 0;
+
+  virtual ApplicationCommandTarget* applicationCommandTarget() const = 0;
 };
 
 }  // namespace app

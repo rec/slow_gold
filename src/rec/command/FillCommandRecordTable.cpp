@@ -16,7 +16,7 @@ namespace {
 
 void fillSingleCommand(const CommandData& data, CommandRecordTable* table,
                        const Command& cmd) {
-  const CommandID t = cmd.type();
+  const CommandID t = cmd.command();
   CommandRecord* cr = table->find(t);
   if (!cr) {
     DCHECK(cmd.has_setter()) << cmd.ShortDebugString();
@@ -35,7 +35,7 @@ void fillSingleCommand(const CommandData& data, CommandRecordTable* table,
 void fillRepeatingCommand(CommandRecordTable* table, const Command& cmd) {
   int len = cmd.desc().menu_size();
   DCHECK_EQ(len, cmd.desc().full_size()) << cmd.ShortDebugString();
-  ID begin = ID(cmd.type(), cmd.start_index());
+  ID begin = ID(cmd.command(), cmd.start_index());
   ID end = begin + len;
   for (ID i = begin; i != end; ++i) {
     if (CommandRecord* cr = table->find(i)) {

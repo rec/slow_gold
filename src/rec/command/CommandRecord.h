@@ -10,19 +10,20 @@
 namespace rec {
 namespace command {
 
-struct CommandRecord {
+class CommandRecord {
+ public:
   explicit CommandRecord(ID id) : info_(id) {}
-
-  ptr<Command> command_;
-  ptr<Callback> callback_;
-  ptr<CommandItemSetter> setter_;
 
   ApplicationCommandInfo* getInfo() { return &info_; }
   void fillInfo();
 
- private:
+  // private:
   ApplicationCommandInfo info_;
+  ptr<Command> command_;
+  ptr<Callback> callback_;
+  ptr<CommandItemSetter> setter_;
 
+ private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecord);
 };
 

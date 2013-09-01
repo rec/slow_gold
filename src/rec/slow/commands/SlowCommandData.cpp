@@ -20,7 +20,7 @@ Commands makeCommand() {
   for (auto& slowCommand: slowCommands.slow_command()) {
     Command* command = commands.add_command();
     *command = slowCommand.command();
-    command->set_type(static_cast<slow::SlowCommand::Type>(slowCommand.type()));
+    command->set_command(static_cast<slow::SlowCommand::Type>(slowCommand.type()));
   }
   return commands;
 }

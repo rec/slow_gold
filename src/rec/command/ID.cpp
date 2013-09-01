@@ -18,7 +18,7 @@ int32 toID(int32 position, int32 type) {
 
 ID::ID(int command, int index) : command_(toID(index, command)) {}
 
-ID::ID(const Command& command) : command_(command.type()) {
+ID::ID(const Command& command) : command_(command.command()) {
   if (command.has_start_index())
     command_ = toID(command.start_index(), command_);
 }

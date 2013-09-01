@@ -79,15 +79,14 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Setter));
   Command_descriptor_ = file->message_type(2);
-  static const int Command_offsets_[8] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, type_),
+  static const int Command_offsets_[7] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, command_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, start_index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, menu_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, desc_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, keypress_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, setter_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, flags_),
   };
   Command_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -164,17 +163,17 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \003(\t\022\014\n\004hel"
     "p\030\003 \001(\t\"]\n\006Setter\022\027\n\tis_global\030\001 \001(\010:\004tr"
     "ue\022\'\n\007address\030\002 \001(\0132\026.rec.data.AddressPr"
-    "oto\022\021\n\ttype_name\030\003 \001(\t\"\325\002\n\007Command\022\014\n\004ty"
-    "pe\030\001 \001(\r\022\r\n\005index\030\002 \001(\021\022\023\n\013start_index\030\003"
-    " \001(\021\022\014\n\004menu\030\004 \001(\t\022&\n\004desc\030\005 \001(\0132\030.rec.c"
-    "ommand.Description\022\020\n\010keypress\030\006 \003(\t\022#\n\006"
-    "setter\030\007 \001(\0132\023.rec.command.Setter\022\r\n\005fla"
-    "gs\030\010 \001(\r\"\233\001\n\004Type\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010"
-    "\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205"
-    " \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n"
-    "\nJUCE_START\020\200 \022\r\n\010JUCE_END\020\210 \022\017\n\tBANK_SI"
-    "ZE\020\240\215\006\"1\n\010Commands\022%\n\007command\030\001 \003(\0132\024.re"
-    "c.command.Command", 617);
+    "oto\022\021\n\ttype_name\030\003 \001(\t\"\311\002\n\007Command\022\017\n\007co"
+    "mmand\030\001 \001(\r\022\r\n\005index\030\002 \001(\021\022\023\n\013start_inde"
+    "x\030\003 \001(\021\022\014\n\004menu\030\004 \001(\t\022&\n\004desc\030\005 \001(\0132\030.re"
+    "c.command.Description\022\020\n\010keypress\030\006 \003(\t\022"
+    "#\n\006setter\030\007 \001(\0132\023.rec.command.Setter\"\233\001\n"
+    "\004Type\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003"
+    "CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_"
+    "ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020"
+    "\200 \022\r\n\010JUCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Co"
+    "mmands\022%\n\007command\030\001 \003(\0132\024.rec.command.Co"
+    "mmand", 605);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -867,14 +866,13 @@ const Command_Type Command::Type_MAX;
 const int Command::Type_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
-const int Command::kTypeFieldNumber;
+const int Command::kCommandFieldNumber;
 const int Command::kIndexFieldNumber;
 const int Command::kStartIndexFieldNumber;
 const int Command::kMenuFieldNumber;
 const int Command::kDescFieldNumber;
 const int Command::kKeypressFieldNumber;
 const int Command::kSetterFieldNumber;
-const int Command::kFlagsFieldNumber;
 #endif  // !_MSC_VER
 
 Command::Command()
@@ -895,13 +893,12 @@ Command::Command(const Command& from)
 
 void Command::SharedCtor() {
   _cached_size_ = 0;
-  type_ = 0u;
+  command_ = 0u;
   index_ = 0;
   start_index_ = 0;
   menu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   desc_ = NULL;
   setter_ = NULL;
-  flags_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -942,7 +939,7 @@ Command* Command::New() const {
 
 void Command::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    type_ = 0u;
+    command_ = 0u;
     index_ = 0;
     start_index_ = 0;
     if (has_menu()) {
@@ -956,7 +953,6 @@ void Command::Clear() {
     if (has_setter()) {
       if (setter_ != NULL) setter_->::rec::command::Setter::Clear();
     }
-    flags_ = 0u;
   }
   keypress_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -969,14 +965,14 @@ bool Command::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 type = 1;
+      // optional uint32 command = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &type_)));
-          set_has_type();
+                 input, &command_)));
+          set_has_command();
         } else {
           goto handle_uninterpreted;
         }
@@ -1076,22 +1072,6 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(64)) goto parse_flags;
-        break;
-      }
-
-      // optional uint32 flags = 8;
-      case 8: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_flags:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &flags_)));
-          set_has_flags();
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1114,9 +1094,9 @@ bool Command::MergePartialFromCodedStream(
 
 void Command::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 type = 1;
-  if (has_type()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->type(), output);
+  // optional uint32 command = 1;
+  if (has_command()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->command(), output);
   }
 
   // optional sint32 index = 2;
@@ -1159,11 +1139,6 @@ void Command::SerializeWithCachedSizes(
       7, this->setter(), output);
   }
 
-  // optional uint32 flags = 8;
-  if (has_flags()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->flags(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1172,9 +1147,9 @@ void Command::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Command::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint32 type = 1;
-  if (has_type()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->type(), target);
+  // optional uint32 command = 1;
+  if (has_command()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->command(), target);
   }
 
   // optional sint32 index = 2;
@@ -1220,11 +1195,6 @@ void Command::SerializeWithCachedSizes(
         7, this->setter(), target);
   }
 
-  // optional uint32 flags = 8;
-  if (has_flags()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->flags(), target);
-  }
-
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1236,11 +1206,11 @@ int Command::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint32 type = 1;
-    if (has_type()) {
+    // optional uint32 command = 1;
+    if (has_command()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->type());
+          this->command());
     }
 
     // optional sint32 index = 2;
@@ -1278,13 +1248,6 @@ int Command::ByteSize() const {
           this->setter());
     }
 
-    // optional uint32 flags = 8;
-    if (has_flags()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->flags());
-    }
-
   }
   // repeated string keypress = 6;
   total_size += 1 * this->keypress_size();
@@ -1320,8 +1283,8 @@ void Command::MergeFrom(const Command& from) {
   GOOGLE_CHECK_NE(&from, this);
   keypress_.MergeFrom(from.keypress_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_type()) {
-      set_type(from.type());
+    if (from.has_command()) {
+      set_command(from.command());
     }
     if (from.has_index()) {
       set_index(from.index());
@@ -1337,9 +1300,6 @@ void Command::MergeFrom(const Command& from) {
     }
     if (from.has_setter()) {
       mutable_setter()->::rec::command::Setter::MergeFrom(from.setter());
-    }
-    if (from.has_flags()) {
-      set_flags(from.flags());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1364,14 +1324,13 @@ bool Command::IsInitialized() const {
 
 void Command::Swap(Command* other) {
   if (other != this) {
-    std::swap(type_, other->type_);
+    std::swap(command_, other->command_);
     std::swap(index_, other->index_);
     std::swap(start_index_, other->start_index_);
     std::swap(menu_, other->menu_);
     std::swap(desc_, other->desc_);
     keypress_.Swap(&other->keypress_);
     std::swap(setter_, other->setter_);
-    std::swap(flags_, other->flags_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -34,7 +34,7 @@ message Command {
     BANK_SIZE = 100000;
   };
 
-  optional uint32 type = 1;
+  optional uint32 command = 1;
   optional sint32 index = 2;  // For repeating commands.
   optional sint32 start_index = 3;  // For repeating commands.
 
@@ -45,7 +45,6 @@ message Command {
   // If the purpose of this command is just to set a flag, this is the name
   // of that flag setting.
   optional Setter setter = 7;
-  optional uint32 flags = 8;
 };
 
 message Commands {

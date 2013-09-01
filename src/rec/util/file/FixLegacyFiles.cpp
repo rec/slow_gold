@@ -32,7 +32,7 @@ void portKeyboardFile() {
       KeyStrokeCommandMapProto keyMap;
       for (int i = 0; i < commands.command_size(); ++i) {
         const Command& command = commands.command(i);
-        CommandID type = command.type();
+        CommandID type = command.command();
         if (command.has_start_index()) {
           int32 index = command.start_index();
           for (int j = 0; j < command.keypress_size(); ++j, ++index) {

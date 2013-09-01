@@ -388,12 +388,12 @@ class Command : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 type = 1;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::google::protobuf::uint32 type() const;
-  inline void set_type(::google::protobuf::uint32 value);
+  // optional uint32 command = 1;
+  inline bool has_command() const;
+  inline void clear_command();
+  static const int kCommandFieldNumber = 1;
+  inline ::google::protobuf::uint32 command() const;
+  inline void set_command(::google::protobuf::uint32 value);
 
   // optional sint32 index = 2;
   inline bool has_index() const;
@@ -455,17 +455,10 @@ class Command : public ::google::protobuf::Message {
   inline ::rec::command::Setter* release_setter();
   inline void set_allocated_setter(::rec::command::Setter* setter);
 
-  // optional uint32 flags = 8;
-  inline bool has_flags() const;
-  inline void clear_flags();
-  static const int kFlagsFieldNumber = 8;
-  inline ::google::protobuf::uint32 flags() const;
-  inline void set_flags(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:rec.command.Command)
  private:
-  inline void set_has_type();
-  inline void clear_has_type();
+  inline void set_has_command();
+  inline void clear_has_command();
   inline void set_has_index();
   inline void clear_has_index();
   inline void set_has_start_index();
@@ -476,22 +469,19 @@ class Command : public ::google::protobuf::Message {
   inline void clear_has_desc();
   inline void set_has_setter();
   inline void clear_has_setter();
-  inline void set_has_flags();
-  inline void clear_has_flags();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::uint32 type_;
+  ::google::protobuf::uint32 command_;
   ::google::protobuf::int32 index_;
   ::std::string* menu_;
   ::rec::command::Description* desc_;
-  ::google::protobuf::int32 start_index_;
-  ::google::protobuf::uint32 flags_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
+  ::google::protobuf::int32 start_index_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -888,26 +878,26 @@ inline void Setter::set_allocated_type_name(::std::string* type_name) {
 
 // Command
 
-// optional uint32 type = 1;
-inline bool Command::has_type() const {
+// optional uint32 command = 1;
+inline bool Command::has_command() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Command::set_has_type() {
+inline void Command::set_has_command() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Command::clear_has_type() {
+inline void Command::clear_has_command() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Command::clear_type() {
-  type_ = 0u;
-  clear_has_type();
+inline void Command::clear_command() {
+  command_ = 0u;
+  clear_has_command();
 }
-inline ::google::protobuf::uint32 Command::type() const {
-  return type_;
+inline ::google::protobuf::uint32 Command::command() const {
+  return command_;
 }
-inline void Command::set_type(::google::protobuf::uint32 value) {
-  set_has_type();
-  type_ = value;
+inline void Command::set_command(::google::protobuf::uint32 value) {
+  set_has_command();
+  command_ = value;
 }
 
 // optional sint32 index = 2;
@@ -1142,28 +1132,6 @@ inline void Command::set_allocated_setter(::rec::command::Setter* setter) {
   } else {
     clear_has_setter();
   }
-}
-
-// optional uint32 flags = 8;
-inline bool Command::has_flags() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void Command::set_has_flags() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void Command::clear_has_flags() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void Command::clear_flags() {
-  flags_ = 0u;
-  clear_has_flags();
-}
-inline ::google::protobuf::uint32 Command::flags() const {
-  return flags_;
-}
-inline void Command::set_flags(::google::protobuf::uint32 value) {
-  set_has_flags();
-  flags_ = value;
 }
 
 // -------------------------------------------------------------------
