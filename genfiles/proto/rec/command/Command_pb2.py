@@ -14,7 +14,7 @@ import rec.data.proto.Address_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/command/Command.proto',
   package='rec.command',
-  serialized_pb='\n\x19rec/command/Command.proto\x12\x0brec.command\x1a\x1crec/data/proto/Address.proto\"7\n\x0b\x44\x65scription\x12\x0c\n\x04menu\x18\x01 \x03(\t\x12\x0c\n\x04\x66ull\x18\x02 \x03(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"]\n\x06Setter\x12\x17\n\tis_global\x18\x01 \x01(\x08:\x04true\x12\'\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x11\n\ttype_name\x18\x03 \x01(\t\"\xf1\x02\n\x07\x43ommand\x12\x0c\n\x04type\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\x11\x12\x13\n\x0bstart_index\x18\x03 \x01(\x11\x12\x0c\n\x04menu\x18\x04 \x01(\t\x12&\n\x04\x64\x65sc\x18\x05 \x01(\x0b\x32\x18.rec.command.Description\x12\x10\n\x08keypress\x18\x06 \x03(\t\x12#\n\x06setter\x18\x07 \x01(\x0b\x32\x13.rec.command.Setter\x12\r\n\x05\x66lags\x18\x08 \x01(\r\x12\x1a\n\x12\x64isable_on_feature\x18\t \x03(\t\"\x9b\x01\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \x12\x0f\n\nJUCE_START\x10\x80 \x12\r\n\x08JUCE_END\x10\x88 \x12\x0f\n\tBANK_SIZE\x10\xa0\x8d\x06\"1\n\x08\x43ommands\x12%\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x14.rec.command.Command')
+  serialized_pb='\n\x19rec/command/Command.proto\x12\x0brec.command\x1a\x1crec/data/proto/Address.proto\"7\n\x0b\x44\x65scription\x12\x0c\n\x04menu\x18\x01 \x03(\t\x12\x0c\n\x04\x66ull\x18\x02 \x03(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"]\n\x06Setter\x12\x17\n\tis_global\x18\x01 \x01(\x08:\x04true\x12\'\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x11\n\ttype_name\x18\x03 \x01(\t\"\xd5\x02\n\x07\x43ommand\x12\x0c\n\x04type\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\x11\x12\x13\n\x0bstart_index\x18\x03 \x01(\x11\x12\x0c\n\x04menu\x18\x04 \x01(\t\x12&\n\x04\x64\x65sc\x18\x05 \x01(\x0b\x32\x18.rec.command.Description\x12\x10\n\x08keypress\x18\x06 \x03(\t\x12#\n\x06setter\x18\x07 \x01(\x0b\x32\x13.rec.command.Setter\x12\r\n\x05\x66lags\x18\x08 \x01(\r\"\x9b\x01\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \x12\x0f\n\nJUCE_START\x10\x80 \x12\r\n\x08JUCE_END\x10\x88 \x12\x0f\n\tBANK_SIZE\x10\xa0\x8d\x06\"1\n\x08\x43ommands\x12%\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x14.rec.command.Command')
 
 
 
@@ -71,8 +71,8 @@ _COMMAND_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=439,
-  serialized_end=594,
+  serialized_start=411,
+  serialized_end=566,
 )
 
 
@@ -223,13 +223,6 @@ _COMMAND = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='disable_on_feature', full_name='rec.command.Command.disable_on_feature', index=8,
-      number=9, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -241,7 +234,7 @@ _COMMAND = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=225,
-  serialized_end=594,
+  serialized_end=566,
 )
 
 
@@ -268,8 +261,8 @@ _COMMANDS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=596,
-  serialized_end=645,
+  serialized_start=568,
+  serialized_end=617,
 )
 
 _SETTER.fields_by_name['address'].message_type = rec.data.proto.Address_pb2._ADDRESSPROTO

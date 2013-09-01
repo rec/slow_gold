@@ -42,9 +42,10 @@ message Command {
   optional Description desc = 5;  // Localized descriptions.
   repeated string keypress = 6;   // In Juce keyboard format.
 
+  // If the purpose of this command is just to set a flag, this is the name
+  // of that flag setting.
   optional Setter setter = 7;
   optional uint32 flags = 8;
-  repeated string disable_on_feature = 9;
 };
 
 message Commands {

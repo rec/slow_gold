@@ -37,15 +37,15 @@ message MenuEntry {
 
 message Menu {
   optional MenuName name = 1;
-  repeated MenuEntry entry = 2;
+  repeated uint32 entry = 2;
 };
 
 message MenuBar {
   optional MenuName name = 1;
-  repeated Menu menu = 2;
+  repeated MenuName menu = 2;
 };
 
 message MenuCollection {
   optional MenuName name = 1;
-  repeated MenuBar menu_bar = 2;
+  repeated MenuName menu_bar = 2;
 };

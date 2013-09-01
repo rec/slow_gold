@@ -183,14 +183,13 @@ void protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto() {
     "(\t\022\014\n\004help\030\003 \001(\t\"\205\001\n\tMenuEntry\022\017\n\007comman"
     "d\030\001 \001(\r\022\014\n\004size\030\002 \001(\r\022$\n\004name\030\003 \003(\0132\026.re"
     "c.gui.menu.MenuName\022\022\n\nname_maker\030\004 \001(\t\022"
-    "\016\n\006hidden\030\005 \003(\t\022\017\n\007checked\030\006 \003(\t\"T\n\004Menu"
-    "\022$\n\004name\030\001 \001(\0132\026.rec.gui.menu.MenuName\022&"
-    "\n\005entry\030\002 \003(\0132\027.rec.gui.menu.MenuEntry\"Q"
-    "\n\007MenuBar\022$\n\004name\030\001 \001(\0132\026.rec.gui.menu.M"
-    "enuName\022 \n\004menu\030\002 \003(\0132\022.rec.gui.menu.Men"
-    "u\"_\n\016MenuCollection\022$\n\004name\030\001 \001(\0132\026.rec."
-    "gui.menu.MenuName\022\'\n\010menu_bar\030\002 \003(\0132\025.re"
-    "c.gui.menu.MenuBar", 498);
+    "\016\n\006hidden\030\005 \003(\t\022\017\n\007checked\030\006 \003(\t\";\n\004Menu"
+    "\022$\n\004name\030\001 \001(\0132\026.rec.gui.menu.MenuName\022\r"
+    "\n\005entry\030\002 \003(\r\"U\n\007MenuBar\022$\n\004name\030\001 \001(\0132\026"
+    ".rec.gui.menu.MenuName\022$\n\004menu\030\002 \003(\0132\026.r"
+    "ec.gui.menu.MenuName\"`\n\016MenuCollection\022$"
+    "\n\004name\030\001 \001(\0132\026.rec.gui.menu.MenuName\022(\n\010"
+    "menu_bar\030\002 \003(\0132\026.rec.gui.menu.MenuName", 478);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/menu/Menu.proto", &protobuf_RegisterTypes);
   MenuName::default_instance_ = new MenuName();
@@ -1078,21 +1077,28 @@ bool Menu::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_entry;
+        if (input->ExpectTag(16)) goto parse_entry;
         break;
       }
 
-      // repeated .rec.gui.menu.MenuEntry entry = 2;
+      // repeated uint32 entry = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_entry:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_entry()));
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 1, 16, input, this->mutable_entry())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, this->mutable_entry())));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_entry;
+        if (input->ExpectTag(16)) goto parse_entry;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1121,9 +1127,9 @@ void Menu::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // repeated .rec.gui.menu.MenuEntry entry = 2;
+  // repeated uint32 entry = 2;
   for (int i = 0; i < this->entry_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
       2, this->entry(i), output);
   }
 
@@ -1142,11 +1148,10 @@ void Menu::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // repeated .rec.gui.menu.MenuEntry entry = 2;
+  // repeated uint32 entry = 2;
   for (int i = 0; i < this->entry_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->entry(i), target);
+      WriteUInt32ToArray(2, this->entry(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1168,12 +1173,14 @@ int Menu::ByteSize() const {
     }
 
   }
-  // repeated .rec.gui.menu.MenuEntry entry = 2;
-  total_size += 1 * this->entry_size();
-  for (int i = 0; i < this->entry_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->entry(i));
+  // repeated uint32 entry = 2;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->entry_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt32Size(this->entry(i));
+    }
+    total_size += 1 * this->entry_size() + data_size;
   }
 
   if (!unknown_fields().empty()) {
@@ -1335,7 +1342,7 @@ bool MenuBar::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .rec.gui.menu.Menu menu = 2;
+      // repeated .rec.gui.menu.MenuName menu = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1374,7 +1381,7 @@ void MenuBar::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // repeated .rec.gui.menu.Menu menu = 2;
+  // repeated .rec.gui.menu.MenuName menu = 2;
   for (int i = 0; i < this->menu_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->menu(i), output);
@@ -1395,7 +1402,7 @@ void MenuBar::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // repeated .rec.gui.menu.Menu menu = 2;
+  // repeated .rec.gui.menu.MenuName menu = 2;
   for (int i = 0; i < this->menu_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1421,7 +1428,7 @@ int MenuBar::ByteSize() const {
     }
 
   }
-  // repeated .rec.gui.menu.Menu menu = 2;
+  // repeated .rec.gui.menu.MenuName menu = 2;
   total_size += 1 * this->menu_size();
   for (int i = 0; i < this->menu_size(); i++) {
     total_size +=
@@ -1588,7 +1595,7 @@ bool MenuCollection::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .rec.gui.menu.MenuBar menu_bar = 2;
+      // repeated .rec.gui.menu.MenuName menu_bar = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1627,7 +1634,7 @@ void MenuCollection::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // repeated .rec.gui.menu.MenuBar menu_bar = 2;
+  // repeated .rec.gui.menu.MenuName menu_bar = 2;
   for (int i = 0; i < this->menu_bar_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->menu_bar(i), output);
@@ -1648,7 +1655,7 @@ void MenuCollection::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // repeated .rec.gui.menu.MenuBar menu_bar = 2;
+  // repeated .rec.gui.menu.MenuName menu_bar = 2;
   for (int i = 0; i < this->menu_bar_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1674,7 +1681,7 @@ int MenuCollection::ByteSize() const {
     }
 
   }
-  // repeated .rec.gui.menu.MenuBar menu_bar = 2;
+  // repeated .rec.gui.menu.MenuName menu_bar = 2;
   total_size += 1 * this->menu_bar_size();
   for (int i = 0; i < this->menu_bar_size(); i++) {
     total_size +=

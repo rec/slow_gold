@@ -16,12 +16,6 @@ class Application : public GenericApplication {
     FLAGS_logtostderr = true;
 #endif
     LOG(INFO) << "Logging initialized";
-#if 0
-    google::SetVLOGLevel("*", 2);
-    VLOG(1) << 1;
-    VLOG(2) << 2;
-    VLOG(3) << 3;
-#endif
   }
   virtual Window* createWindow() { return new WindowImpl(this); }
 

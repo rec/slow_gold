@@ -377,16 +377,16 @@ class Menu : public ::google::protobuf::Message {
   inline ::rec::gui::menu::MenuName* release_name();
   inline void set_allocated_name(::rec::gui::menu::MenuName* name);
 
-  // repeated .rec.gui.menu.MenuEntry entry = 2;
+  // repeated uint32 entry = 2;
   inline int entry_size() const;
   inline void clear_entry();
   static const int kEntryFieldNumber = 2;
-  inline const ::rec::gui::menu::MenuEntry& entry(int index) const;
-  inline ::rec::gui::menu::MenuEntry* mutable_entry(int index);
-  inline ::rec::gui::menu::MenuEntry* add_entry();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuEntry >&
+  inline ::google::protobuf::uint32 entry(int index) const;
+  inline void set_entry(int index, ::google::protobuf::uint32 value);
+  inline void add_entry(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
       entry() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuEntry >*
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_entry();
 
   // @@protoc_insertion_point(class_scope:rec.gui.menu.Menu)
@@ -397,7 +397,7 @@ class Menu : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::gui::menu::MenuName* name_;
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuEntry > entry_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > entry_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -474,16 +474,16 @@ class MenuBar : public ::google::protobuf::Message {
   inline ::rec::gui::menu::MenuName* release_name();
   inline void set_allocated_name(::rec::gui::menu::MenuName* name);
 
-  // repeated .rec.gui.menu.Menu menu = 2;
+  // repeated .rec.gui.menu.MenuName menu = 2;
   inline int menu_size() const;
   inline void clear_menu();
   static const int kMenuFieldNumber = 2;
-  inline const ::rec::gui::menu::Menu& menu(int index) const;
-  inline ::rec::gui::menu::Menu* mutable_menu(int index);
-  inline ::rec::gui::menu::Menu* add_menu();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu >&
+  inline const ::rec::gui::menu::MenuName& menu(int index) const;
+  inline ::rec::gui::menu::MenuName* mutable_menu(int index);
+  inline ::rec::gui::menu::MenuName* add_menu();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
       menu() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
       mutable_menu();
 
   // @@protoc_insertion_point(class_scope:rec.gui.menu.MenuBar)
@@ -494,7 +494,7 @@ class MenuBar : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::gui::menu::MenuName* name_;
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu > menu_;
+  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName > menu_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -571,16 +571,16 @@ class MenuCollection : public ::google::protobuf::Message {
   inline ::rec::gui::menu::MenuName* release_name();
   inline void set_allocated_name(::rec::gui::menu::MenuName* name);
 
-  // repeated .rec.gui.menu.MenuBar menu_bar = 2;
+  // repeated .rec.gui.menu.MenuName menu_bar = 2;
   inline int menu_bar_size() const;
   inline void clear_menu_bar();
   static const int kMenuBarFieldNumber = 2;
-  inline const ::rec::gui::menu::MenuBar& menu_bar(int index) const;
-  inline ::rec::gui::menu::MenuBar* mutable_menu_bar(int index);
-  inline ::rec::gui::menu::MenuBar* add_menu_bar();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar >&
+  inline const ::rec::gui::menu::MenuName& menu_bar(int index) const;
+  inline ::rec::gui::menu::MenuName* mutable_menu_bar(int index);
+  inline ::rec::gui::menu::MenuName* add_menu_bar();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
       menu_bar() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
       mutable_menu_bar();
 
   // @@protoc_insertion_point(class_scope:rec.gui.menu.MenuCollection)
@@ -591,7 +591,7 @@ class MenuCollection : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::gui::menu::MenuName* name_;
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar > menu_bar_;
+  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName > menu_bar_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -1093,27 +1093,27 @@ inline void Menu::set_allocated_name(::rec::gui::menu::MenuName* name) {
   }
 }
 
-// repeated .rec.gui.menu.MenuEntry entry = 2;
+// repeated uint32 entry = 2;
 inline int Menu::entry_size() const {
   return entry_.size();
 }
 inline void Menu::clear_entry() {
   entry_.Clear();
 }
-inline const ::rec::gui::menu::MenuEntry& Menu::entry(int index) const {
+inline ::google::protobuf::uint32 Menu::entry(int index) const {
   return entry_.Get(index);
 }
-inline ::rec::gui::menu::MenuEntry* Menu::mutable_entry(int index) {
-  return entry_.Mutable(index);
+inline void Menu::set_entry(int index, ::google::protobuf::uint32 value) {
+  entry_.Set(index, value);
 }
-inline ::rec::gui::menu::MenuEntry* Menu::add_entry() {
-  return entry_.Add();
+inline void Menu::add_entry(::google::protobuf::uint32 value) {
+  entry_.Add(value);
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuEntry >&
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
 Menu::entry() const {
   return entry_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuEntry >*
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
 Menu::mutable_entry() {
   return &entry_;
 }
@@ -1160,27 +1160,27 @@ inline void MenuBar::set_allocated_name(::rec::gui::menu::MenuName* name) {
   }
 }
 
-// repeated .rec.gui.menu.Menu menu = 2;
+// repeated .rec.gui.menu.MenuName menu = 2;
 inline int MenuBar::menu_size() const {
   return menu_.size();
 }
 inline void MenuBar::clear_menu() {
   menu_.Clear();
 }
-inline const ::rec::gui::menu::Menu& MenuBar::menu(int index) const {
+inline const ::rec::gui::menu::MenuName& MenuBar::menu(int index) const {
   return menu_.Get(index);
 }
-inline ::rec::gui::menu::Menu* MenuBar::mutable_menu(int index) {
+inline ::rec::gui::menu::MenuName* MenuBar::mutable_menu(int index) {
   return menu_.Mutable(index);
 }
-inline ::rec::gui::menu::Menu* MenuBar::add_menu() {
+inline ::rec::gui::menu::MenuName* MenuBar::add_menu() {
   return menu_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
 MenuBar::menu() const {
   return menu_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
 MenuBar::mutable_menu() {
   return &menu_;
 }
@@ -1227,27 +1227,27 @@ inline void MenuCollection::set_allocated_name(::rec::gui::menu::MenuName* name)
   }
 }
 
-// repeated .rec.gui.menu.MenuBar menu_bar = 2;
+// repeated .rec.gui.menu.MenuName menu_bar = 2;
 inline int MenuCollection::menu_bar_size() const {
   return menu_bar_.size();
 }
 inline void MenuCollection::clear_menu_bar() {
   menu_bar_.Clear();
 }
-inline const ::rec::gui::menu::MenuBar& MenuCollection::menu_bar(int index) const {
+inline const ::rec::gui::menu::MenuName& MenuCollection::menu_bar(int index) const {
   return menu_bar_.Get(index);
 }
-inline ::rec::gui::menu::MenuBar* MenuCollection::mutable_menu_bar(int index) {
+inline ::rec::gui::menu::MenuName* MenuCollection::mutable_menu_bar(int index) {
   return menu_bar_.Mutable(index);
 }
-inline ::rec::gui::menu::MenuBar* MenuCollection::add_menu_bar() {
+inline ::rec::gui::menu::MenuName* MenuCollection::add_menu_bar() {
   return menu_bar_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
 MenuCollection::menu_bar() const {
   return menu_bar_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
 MenuCollection::mutable_menu_bar() {
   return &menu_bar_;
 }

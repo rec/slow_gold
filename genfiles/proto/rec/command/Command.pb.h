@@ -462,22 +462,6 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 flags() const;
   inline void set_flags(::google::protobuf::uint32 value);
 
-  // repeated string disable_on_feature = 9;
-  inline int disable_on_feature_size() const;
-  inline void clear_disable_on_feature();
-  static const int kDisableOnFeatureFieldNumber = 9;
-  inline const ::std::string& disable_on_feature(int index) const;
-  inline ::std::string* mutable_disable_on_feature(int index);
-  inline void set_disable_on_feature(int index, const ::std::string& value);
-  inline void set_disable_on_feature(int index, const char* value);
-  inline void set_disable_on_feature(int index, const char* value, size_t size);
-  inline ::std::string* add_disable_on_feature();
-  inline void add_disable_on_feature(const ::std::string& value);
-  inline void add_disable_on_feature(const char* value);
-  inline void add_disable_on_feature(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& disable_on_feature() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_disable_on_feature();
-
   // @@protoc_insertion_point(class_scope:rec.command.Command)
  private:
   inline void set_has_type();
@@ -505,10 +489,9 @@ class Command : public ::google::protobuf::Message {
   ::google::protobuf::uint32 flags_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> disable_on_feature_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -1181,50 +1164,6 @@ inline ::google::protobuf::uint32 Command::flags() const {
 inline void Command::set_flags(::google::protobuf::uint32 value) {
   set_has_flags();
   flags_ = value;
-}
-
-// repeated string disable_on_feature = 9;
-inline int Command::disable_on_feature_size() const {
-  return disable_on_feature_.size();
-}
-inline void Command::clear_disable_on_feature() {
-  disable_on_feature_.Clear();
-}
-inline const ::std::string& Command::disable_on_feature(int index) const {
-  return disable_on_feature_.Get(index);
-}
-inline ::std::string* Command::mutable_disable_on_feature(int index) {
-  return disable_on_feature_.Mutable(index);
-}
-inline void Command::set_disable_on_feature(int index, const ::std::string& value) {
-  disable_on_feature_.Mutable(index)->assign(value);
-}
-inline void Command::set_disable_on_feature(int index, const char* value) {
-  disable_on_feature_.Mutable(index)->assign(value);
-}
-inline void Command::set_disable_on_feature(int index, const char* value, size_t size) {
-  disable_on_feature_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Command::add_disable_on_feature() {
-  return disable_on_feature_.Add();
-}
-inline void Command::add_disable_on_feature(const ::std::string& value) {
-  disable_on_feature_.Add()->assign(value);
-}
-inline void Command::add_disable_on_feature(const char* value) {
-  disable_on_feature_.Add()->assign(value);
-}
-inline void Command::add_disable_on_feature(const char* value, size_t size) {
-  disable_on_feature_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-Command::disable_on_feature() const {
-  return disable_on_feature_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-Command::mutable_disable_on_feature() {
-  return &disable_on_feature_;
 }
 
 // -------------------------------------------------------------------

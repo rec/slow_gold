@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/menu/Menu.proto',
   package='rec.gui.menu',
-  serialized_pb='\n\x17rec/gui/menu/Menu.proto\x12\x0crec.gui.menu\"7\n\x08MenuName\x12\x0f\n\x07\x64isplay\x18\x01 \x01(\t\x12\x0c\n\x04\x66ull\x18\x02 \x01(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"\x85\x01\n\tMenuEntry\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\x0c\n\x04size\x18\x02 \x01(\r\x12$\n\x04name\x18\x03 \x03(\x0b\x32\x16.rec.gui.menu.MenuName\x12\x12\n\nname_maker\x18\x04 \x01(\t\x12\x0e\n\x06hidden\x18\x05 \x03(\t\x12\x0f\n\x07\x63hecked\x18\x06 \x03(\t\"T\n\x04Menu\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12&\n\x05\x65ntry\x18\x02 \x03(\x0b\x32\x17.rec.gui.menu.MenuEntry\"Q\n\x07MenuBar\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12 \n\x04menu\x18\x02 \x03(\x0b\x32\x12.rec.gui.menu.Menu\"_\n\x0eMenuCollection\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12\'\n\x08menu_bar\x18\x02 \x03(\x0b\x32\x15.rec.gui.menu.MenuBar')
+  serialized_pb='\n\x17rec/gui/menu/Menu.proto\x12\x0crec.gui.menu\"7\n\x08MenuName\x12\x0f\n\x07\x64isplay\x18\x01 \x01(\t\x12\x0c\n\x04\x66ull\x18\x02 \x01(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"\x85\x01\n\tMenuEntry\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\x0c\n\x04size\x18\x02 \x01(\r\x12$\n\x04name\x18\x03 \x03(\x0b\x32\x16.rec.gui.menu.MenuName\x12\x12\n\nname_maker\x18\x04 \x01(\t\x12\x0e\n\x06hidden\x18\x05 \x03(\t\x12\x0f\n\x07\x63hecked\x18\x06 \x03(\t\";\n\x04Menu\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12\r\n\x05\x65ntry\x18\x02 \x03(\r\"U\n\x07MenuBar\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12$\n\x04menu\x18\x02 \x03(\x0b\x32\x16.rec.gui.menu.MenuName\"`\n\x0eMenuCollection\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12(\n\x08menu_bar\x18\x02 \x03(\x0b\x32\x16.rec.gui.menu.MenuName')
 
 
 
@@ -139,7 +139,7 @@ _MENU = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='entry', full_name='rec.gui.menu.Menu.entry', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      number=2, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -154,7 +154,7 @@ _MENU = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=234,
-  serialized_end=318,
+  serialized_end=293,
 )
 
 
@@ -188,8 +188,8 @@ _MENUBAR = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=320,
-  serialized_end=401,
+  serialized_start=295,
+  serialized_end=380,
 )
 
 
@@ -223,17 +223,16 @@ _MENUCOLLECTION = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=403,
-  serialized_end=498,
+  serialized_start=382,
+  serialized_end=478,
 )
 
 _MENUENTRY.fields_by_name['name'].message_type = _MENUNAME
 _MENU.fields_by_name['name'].message_type = _MENUNAME
-_MENU.fields_by_name['entry'].message_type = _MENUENTRY
 _MENUBAR.fields_by_name['name'].message_type = _MENUNAME
-_MENUBAR.fields_by_name['menu'].message_type = _MENU
+_MENUBAR.fields_by_name['menu'].message_type = _MENUNAME
 _MENUCOLLECTION.fields_by_name['name'].message_type = _MENUNAME
-_MENUCOLLECTION.fields_by_name['menu_bar'].message_type = _MENUBAR
+_MENUCOLLECTION.fields_by_name['menu_bar'].message_type = _MENUNAME
 DESCRIPTOR.message_types_by_name['MenuName'] = _MENUNAME
 DESCRIPTOR.message_types_by_name['MenuEntry'] = _MENUENTRY
 DESCRIPTOR.message_types_by_name['Menu'] = _MENU

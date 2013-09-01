@@ -1,6 +1,6 @@
 #include "rec/command/ID.h"
 
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/command/Command.pb.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -8,7 +8,7 @@ namespace command {
 
 namespace {
 
-const int SIZE = slow::SlowCommand::BANK_SIZE;
+const int SIZE = Command::BANK_SIZE;
 
 int32 toID(int32 position, int32 type) {
   return (type * SIZE) + (position - ID::FIRST);
