@@ -48,6 +48,17 @@ void GuiListener::operator()(TransportCommand command) {
     broadcast(ID(SlowCommand::JUMP, ID::NEXT));
 }
 
+void GuiListener::operator()(CommandBarCommand command) {
+  if (command == ADD_LOOP_POINT)
+    broadcast(SlowCommand::ADD_LOOP_POINT);
+
+  else if (command == ZOOM_OUT_FULL)
+    broadcast(SlowCommand::ZOOM_OUT_FULL);
+
+  else if (command == ZOOM_TO_SELECTION)
+    broadcast(SlowCommand::ZOOM_TO_SELECTION);
+}
+
 static String getTooltip(Component* c) {
   while (c) {
     if (TooltipClient* ttc = dynamic_cast<TooltipClient*>(c)) {

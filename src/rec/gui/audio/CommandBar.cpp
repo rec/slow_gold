@@ -46,13 +46,13 @@ CommandBar::CommandBar()
 
 void CommandBar::buttonClicked(juce::Button *button) {
   if (button == &addLoopPoint_)
-    broadcast(slow::SlowCommand::ADD_LOOP_POINT);
+    broadcast(ADD_LOOP_POINT);
 
   else if (button == &zoomOutFull_)
-    broadcast(slow::SlowCommand::ZOOM_OUT_FULL);
+    broadcast(ZOOM_OUT_FULL);
 
   else if (button == &zoomToSelection_)
-    broadcast(slow::SlowCommand::ZOOM_TO_SELECTION);
+    broadcast(ZOOM_TO_SELECTION);
 
   else
     LOG(DFATAL) << "Unknown button " << button;

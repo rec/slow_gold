@@ -3,6 +3,7 @@
 
 #include "rec/data/DataListener.h"
 #include "rec/command/ID.h"
+#include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/HasInstance.h"
 
@@ -12,6 +13,7 @@ namespace slow {
 class GuiSettings;
 
 class GuiListener : public GlobalDataListener<GuiSettings>,
+                    public Listener<gui::audio::CommandBarCommand>,
                     public Listener<gui::audio::TransportCommand>,
                     public Broadcaster<command::ID>,
                     public HasInstance {
@@ -20,6 +22,7 @@ class GuiListener : public GlobalDataListener<GuiSettings>,
 
   virtual void operator()(const GuiSettings&);
   virtual void operator()(gui::audio::TransportCommand);
+  virtual void operator()(gui::audio::CommandBarCommand);
   virtual void update();
 
  private:
