@@ -83,16 +83,16 @@ void TransportController::buttonClicked(juce::Button *button) {
   using namespace rec::command;
 
   if (button == &startStopButton_)
-    broadcast(slow::SlowCommand::TOGGLE_START_STOP);
+    broadcast(TOGGLE_START_STOP);
 
   else if (button == &jumpToStartButton_)
-    broadcast(ID(slow::SlowCommand::JUMP, ID::FIRST));
+    broadcast(JUMP_TO_FIRST);
 
   else if (button == &jumpBackButton_)
-    broadcast(ID(slow::SlowCommand::JUMP, ID::PREVIOUS));
+    broadcast(JUMP_TO_PREVIOUS);
 
   else if (button == &jumpForwardButton_)
-    broadcast(ID(slow::SlowCommand::JUMP, ID::NEXT));
+    broadcast(JUMP_TO_NEXT);
 
   else
     LOG(DFATAL) << "Unknown button " << button;

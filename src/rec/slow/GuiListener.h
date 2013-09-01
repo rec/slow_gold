@@ -1,19 +1,25 @@
 #ifndef __REC_SLOW_GUILISTENER__
 #define __REC_SLOW_GUILISTENER__
 
-#include "rec/slow/HasInstance.h"
 #include "rec/data/DataListener.h"
+#include "rec/command/ID.h"
+#include "rec/gui/audio/TransportController.h"
+#include "rec/slow/HasInstance.h"
 
 namespace rec {
 namespace slow {
 
 class GuiSettings;
 
-class GuiListener : public GlobalDataListener<GuiSettings>, public HasInstance {
+class GuiListener : public GlobalDataListener<GuiSettings>,
+                    public Listener<gui::audio::TransportCommand>,
+                    public Broadcaster<command::ID>,
+                    public HasInstance {
  public:
   explicit GuiListener(Instance* i);
 
   virtual void operator()(const GuiSettings&);
+  virtual void operator()(gui::audio::TransportCommand);
   virtual void update();
 
  private:

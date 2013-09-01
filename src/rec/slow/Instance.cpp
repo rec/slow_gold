@@ -200,7 +200,8 @@ void Instance::init() {
   root->addListener(currentFile_.get());
   // components_->mainPage_->dropBroadcaster()->addListener(currentFile_.get());
 
-  components_->transportController_->addListener(applicationCommandTarget_.get());
+  components_->transportController_->addListener(guiListener_.get());
+  guiListener_->addListener(applicationCommandTarget_.get());
   components_->commandBar_->addListener(applicationCommandTarget_.get());
 
   player_->timer()->addListener(components_->timeController_.get());
