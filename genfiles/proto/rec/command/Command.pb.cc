@@ -165,71 +165,18 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "ption\022\014\n\004menu\030\001 \003(\t\022\014\n\004full\030\002 \003(\t\022\014\n\004hel"
     "p\030\003 \001(\t\"]\n\006Setter\022\027\n\tis_global\030\001 \001(\010:\004tr"
     "ue\022\'\n\007address\030\002 \001(\0132\026.rec.data.AddressPr"
-    "oto\022\021\n\ttype_name\030\003 \001(\t\"\321\023\n\007Command\022\014\n\004ty"
+    "oto\022\021\n\ttype_name\030\003 \001(\t\"\361\002\n\007Command\022\014\n\004ty"
     "pe\030\001 \001(\r\022\r\n\005index\030\002 \001(\021\022\023\n\013start_index\030\003"
     " \001(\021\022\014\n\004menu\030\004 \001(\t\022&\n\004desc\030\005 \001(\0132\030.rec.c"
     "ommand.Description\022\020\n\010keypress\030\006 \003(\t\022#\n\006"
     "setter\030\007 \001(\0132\023.rec.command.Setter\022\r\n\005fla"
-    "gs\030\010 \001(\r\022\032\n\022disable_on_feature\030\t \003(\t\"\373\021\n"
-    "\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_PROGRAM\020:\022"
-    "\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFERENCES"
-    "\020\002\022\025\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CLEAR_KEYBO"
-    "ARD_MAPPINGS\020[\022\027\n\023CLEAR_MIDI_MAPPINGS\020\\\022"
-    "\017\n\013CLEAR_LOOPS\020\004\022\023\n\017CLEAR_NAVIGATOR\020\003\022\026\n"
-    "\022CLEAR_ALL_SETTINGS\020O\022!\n\035CLEAR_SETTINGS_"
-    "FOR_THIS_TRACK\020P\022\031\n\025CLEAR_SAVED_FILE_DAT"
-    "A\020\005\022\016\n\nCLOSE_FILE\020\006\022\030\n\024COPY_ALL_LOOP_POI"
-    "NTS\020_\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n\tEJECT_CD"
-    "S\020\010\022\034\n\030EXPORT_KEYBOARD_MAPPINGS\020R\022\030\n\024EXP"
-    "ORT_MIDI_MAPPINGS\020S\022\023\n\017EXPORT_SETTINGS\020K"
-    "\022\034\n\030IMPORT_KEYBOARD_MAPPINGS\020T\022\030\n\024IMPORT"
-    "_MIDI_MAPPINGS\020U\022\023\n\017IMPORT_SETTINGS\020L\022\031\n"
-    "\025INVERT_LOOP_SELECTION\020\t\022\010\n\004JUMP\020\n\022\021\n\rJU"
-    "MP_SELECTED\020\013\022\025\n\021KEYBOARD_MAPPINGS\020\014\022\025\n\021"
-    "LOOP_NEXT_SEGMENT\020^\022\021\n\rMIDI_MAPPINGS\020\r\022\027"
-    "\n\023MODE_ADD_LOOP_POINT\020\?\022\r\n\tMODE_DRAG\020<\022\021"
-    "\n\rMODE_SET_TIME\020=\022\020\n\014MODE_ZOOM_IN\020>\022\026\n\022M"
-    "UTE_VOLUME_TOGGLE\020\016\022\022\n\016NUDGE_BACKWARD\020Y\022"
-    "\021\n\rNUDGE_FORWARD\020Z\022\024\n\020NUDGE_BEGIN_LEFT\020\017"
-    "\022\025\n\021NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_END_LEF"
-    "T\020\021\022\023\n\017NUDGE_END_RIGHT\020\022\022\024\n\020NUDGE_SPEED_"
-    "DOWN\020V\022\022\n\016NUDGE_SPEED_UP\020W\022\025\n\021NUDGE_VOLU"
-    "ME_DOWN\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n\004OPEN\020\025"
-    "\022\017\n\013OPEN_MANUAL\020A\022\026\n\022OPEN_PREVIOUS_FILE\020"
-    "N\022\033\n\027OPEN_SLOWGOLD_DIRECTORY\020J\022\032\n\026PASTE_"
-    "OVER_LOOP_POINTS\020`\022\020\n\014RECENT_FILES\020\026\022\010\n\004"
-    "REDO\020\027\022\023\n\017REQUEST_SUPPORT\020B\022\027\n\023RESET_GAI"
-    "N_TO_UNITY\020\030\022\r\n\tSAVE_FILE\020E\022\027\n\023SAVE_FILE"
-    "_SELECTION\020F\022\n\n\006SELECT\020\031\022\017\n\013SELECT_ONLY\020"
-    "\032\022\020\n\014SET_LANGUAGE\020]\022\023\n\017SET_SAVE_FORMAT\020G"
-    "\022\031\n\025TOGGLE_ADVANCED_MENUS\020;\022\034\n\030TOGGLE_AU"
-    "TOMATIC_UPDATES\020C\022\030\n\024TOGGLE_FOLLOW_CURSO"
-    "R\020+\022\027\n\023TOGGLE_GRID_DISPLAY\020\033\022\036\n\032TOGGLE_C"
-    "OMMAND_BAR_AT_LEFT\0206\022\035\n\031TOGGLE_COMMAND_B"
-    "AR_AT_TOP\0207\022!\n\035TOGGLE_FILE_OPEN_TREE_DIS"
-    "PLAY\020H\022\030\n\024TOGGLE_MODES_AT_LEFT\0208\022\027\n\023TOGG"
-    "LE_MODES_AT_TOP\0209\022\035\n\031TOGGLE_PARALLEL_WAV"
-    "EFORMS\020*\022\032\n\026TOGGLE_PREFADER_LEVELS\020.\022\024\n\020"
-    "TOGGLE_SELECTION\020)\022\'\n#TOGGLE_SHOW_ABOUT_"
-    "WINDOW_AT_STARTUP\020Q\022\035\n\031TOGGLE_SHOW_CURSO"
-    "R_LABELS\0203\022\031\n\025TOGGLE_SHOW_HELP_PANE\0201\022\035\n"
-    "\031TOGGLE_SHOW_LABELS_AT_TOP\0204\022\033\n\027TOGGLE_S"
-    "HOW_MASTER_TUNE\020M\022!\n\035TOGGLE_SHOW_SELECTI"
-    "ON_BUTTONS\0202\022\034\n\030TOGGLE_SHOW_TIMES_AT_TOP"
-    "\0205\022\030\n\024TOGGLE_SHOW_TOOLTIPS\0200\022\025\n\021TOGGLE_S"
-    "TART_STOP\020\034\022\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\033"
-    "\n\027TOGGLE_TRANSFORM_ENABLE\020X\022\032\n\026TOGGLE_WH"
-    "OLE_SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_"
-    "DOWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\n"
-    "TREE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\014\n\010U"
-    "NSELECT\020&\022\022\n\016WHATS_NEW_PAGE\020I\022\013\n\007ZOOM_IN"
-    "\020\'\022\014\n\010ZOOM_OUT\020(\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021Z"
-    "OOM_TO_SELECTION\020-\022\023\n\017FIRST_FREE_TYPE\020a\022"
-    "\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204"
-    " \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELE"
-    "CT_ALL\020\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010JUCE_END\020\210"
-    " \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022%\n\007comman"
-    "d\030\001 \003(\0132\024.rec.command.Command", 2789);
+    "gs\030\010 \001(\r\022\032\n\022disable_on_feature\030\t \003(\t\"\233\001\n"
+    "\004Type\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003"
+    "CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_"
+    "ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020"
+    "\200 \022\r\n\010JUCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Co"
+    "mmands\022%\n\007command\030\001 \003(\0132\024.rec.command.Co"
+    "mmand", 645);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -889,101 +836,6 @@ const ::google::protobuf::EnumDescriptor* Command_Type_descriptor() {
 bool Command_Type_IsValid(int value) {
   switch(value) {
     case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-    case 11:
-    case 12:
-    case 13:
-    case 14:
-    case 15:
-    case 16:
-    case 17:
-    case 18:
-    case 19:
-    case 20:
-    case 21:
-    case 22:
-    case 23:
-    case 24:
-    case 25:
-    case 26:
-    case 27:
-    case 28:
-    case 29:
-    case 30:
-    case 31:
-    case 32:
-    case 33:
-    case 34:
-    case 35:
-    case 36:
-    case 37:
-    case 38:
-    case 39:
-    case 40:
-    case 41:
-    case 42:
-    case 43:
-    case 45:
-    case 46:
-    case 48:
-    case 49:
-    case 50:
-    case 51:
-    case 52:
-    case 53:
-    case 54:
-    case 55:
-    case 56:
-    case 57:
-    case 58:
-    case 59:
-    case 60:
-    case 61:
-    case 62:
-    case 63:
-    case 64:
-    case 65:
-    case 66:
-    case 67:
-    case 68:
-    case 69:
-    case 70:
-    case 71:
-    case 72:
-    case 73:
-    case 74:
-    case 75:
-    case 76:
-    case 77:
-    case 78:
-    case 79:
-    case 80:
-    case 81:
-    case 82:
-    case 83:
-    case 84:
-    case 85:
-    case 86:
-    case 87:
-    case 88:
-    case 89:
-    case 90:
-    case 91:
-    case 92:
-    case 93:
-    case 94:
-    case 95:
-    case 96:
-    case 97:
     case 4096:
     case 4097:
     case 4098:
@@ -1002,101 +854,6 @@ bool Command_Type_IsValid(int value) {
 
 #ifndef _MSC_VER
 const Command_Type Command::NONE;
-const Command_Type Command::ABOUT_THIS_PROGRAM;
-const Command_Type Command::ADD_LOOP_POINT;
-const Command_Type Command::AUDIO_PREFERENCES;
-const Command_Type Command::CHECK_FOR_UPDATES;
-const Command_Type Command::CLEAR_KEYBOARD_MAPPINGS;
-const Command_Type Command::CLEAR_MIDI_MAPPINGS;
-const Command_Type Command::CLEAR_LOOPS;
-const Command_Type Command::CLEAR_NAVIGATOR;
-const Command_Type Command::CLEAR_ALL_SETTINGS;
-const Command_Type Command::CLEAR_SETTINGS_FOR_THIS_TRACK;
-const Command_Type Command::CLEAR_SAVED_FILE_DATA;
-const Command_Type Command::CLOSE_FILE;
-const Command_Type Command::COPY_ALL_LOOP_POINTS;
-const Command_Type Command::DIM_VOLUME_TOGGLE;
-const Command_Type Command::EJECT_CDS;
-const Command_Type Command::EXPORT_KEYBOARD_MAPPINGS;
-const Command_Type Command::EXPORT_MIDI_MAPPINGS;
-const Command_Type Command::EXPORT_SETTINGS;
-const Command_Type Command::IMPORT_KEYBOARD_MAPPINGS;
-const Command_Type Command::IMPORT_MIDI_MAPPINGS;
-const Command_Type Command::IMPORT_SETTINGS;
-const Command_Type Command::INVERT_LOOP_SELECTION;
-const Command_Type Command::JUMP;
-const Command_Type Command::JUMP_SELECTED;
-const Command_Type Command::KEYBOARD_MAPPINGS;
-const Command_Type Command::LOOP_NEXT_SEGMENT;
-const Command_Type Command::MIDI_MAPPINGS;
-const Command_Type Command::MODE_ADD_LOOP_POINT;
-const Command_Type Command::MODE_DRAG;
-const Command_Type Command::MODE_SET_TIME;
-const Command_Type Command::MODE_ZOOM_IN;
-const Command_Type Command::MUTE_VOLUME_TOGGLE;
-const Command_Type Command::NUDGE_BACKWARD;
-const Command_Type Command::NUDGE_FORWARD;
-const Command_Type Command::NUDGE_BEGIN_LEFT;
-const Command_Type Command::NUDGE_BEGIN_RIGHT;
-const Command_Type Command::NUDGE_END_LEFT;
-const Command_Type Command::NUDGE_END_RIGHT;
-const Command_Type Command::NUDGE_SPEED_DOWN;
-const Command_Type Command::NUDGE_SPEED_UP;
-const Command_Type Command::NUDGE_VOLUME_DOWN;
-const Command_Type Command::NUDGE_VOLUME_UP;
-const Command_Type Command::OPEN;
-const Command_Type Command::OPEN_MANUAL;
-const Command_Type Command::OPEN_PREVIOUS_FILE;
-const Command_Type Command::OPEN_SLOWGOLD_DIRECTORY;
-const Command_Type Command::PASTE_OVER_LOOP_POINTS;
-const Command_Type Command::RECENT_FILES;
-const Command_Type Command::REDO;
-const Command_Type Command::REQUEST_SUPPORT;
-const Command_Type Command::RESET_GAIN_TO_UNITY;
-const Command_Type Command::SAVE_FILE;
-const Command_Type Command::SAVE_FILE_SELECTION;
-const Command_Type Command::SELECT;
-const Command_Type Command::SELECT_ONLY;
-const Command_Type Command::SET_LANGUAGE;
-const Command_Type Command::SET_SAVE_FORMAT;
-const Command_Type Command::TOGGLE_ADVANCED_MENUS;
-const Command_Type Command::TOGGLE_AUTOMATIC_UPDATES;
-const Command_Type Command::TOGGLE_FOLLOW_CURSOR;
-const Command_Type Command::TOGGLE_GRID_DISPLAY;
-const Command_Type Command::TOGGLE_COMMAND_BAR_AT_LEFT;
-const Command_Type Command::TOGGLE_COMMAND_BAR_AT_TOP;
-const Command_Type Command::TOGGLE_FILE_OPEN_TREE_DISPLAY;
-const Command_Type Command::TOGGLE_MODES_AT_LEFT;
-const Command_Type Command::TOGGLE_MODES_AT_TOP;
-const Command_Type Command::TOGGLE_PARALLEL_WAVEFORMS;
-const Command_Type Command::TOGGLE_PREFADER_LEVELS;
-const Command_Type Command::TOGGLE_SELECTION;
-const Command_Type Command::TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP;
-const Command_Type Command::TOGGLE_SHOW_CURSOR_LABELS;
-const Command_Type Command::TOGGLE_SHOW_HELP_PANE;
-const Command_Type Command::TOGGLE_SHOW_LABELS_AT_TOP;
-const Command_Type Command::TOGGLE_SHOW_MASTER_TUNE;
-const Command_Type Command::TOGGLE_SHOW_SELECTION_BUTTONS;
-const Command_Type Command::TOGGLE_SHOW_TIMES_AT_TOP;
-const Command_Type Command::TOGGLE_SHOW_TOOLTIPS;
-const Command_Type Command::TOGGLE_START_STOP;
-const Command_Type Command::TOGGLE_STRETCH_ENABLE;
-const Command_Type Command::TOGGLE_TRANSFORM_ENABLE;
-const Command_Type Command::TOGGLE_WHOLE_SONG_LOOP;
-const Command_Type Command::TREE_CLOSE;
-const Command_Type Command::TREE_DOWN;
-const Command_Type Command::TREE_LEFT;
-const Command_Type Command::TREE_OPEN;
-const Command_Type Command::TREE_RIGHT;
-const Command_Type Command::TREE_UP;
-const Command_Type Command::UNDO;
-const Command_Type Command::UNSELECT;
-const Command_Type Command::WHATS_NEW_PAGE;
-const Command_Type Command::ZOOM_IN;
-const Command_Type Command::ZOOM_OUT;
-const Command_Type Command::ZOOM_OUT_FULL;
-const Command_Type Command::ZOOM_TO_SELECTION;
-const Command_Type Command::FIRST_FREE_TYPE;
 const Command_Type Command::QUIT;
 const Command_Type Command::DEL;
 const Command_Type Command::CUT;
