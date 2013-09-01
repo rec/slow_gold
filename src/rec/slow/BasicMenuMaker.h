@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_BASICMENUMAKER__
 #define __REC_SLOW_BASICMENUMAKER__
 
-#include "rec/slow/MenuMaker.h"
+#include "rec/gui/Menu/MenuMaker.h"
 #include "rec/slow/IsWholeSong.h"
 
 namespace rec {

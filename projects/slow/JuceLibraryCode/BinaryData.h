@@ -126,11 +126,17 @@ namespace BinaryData
     extern const char*   idTranslatedStrings_def;
     const int            idTranslatedStrings_defSize = 59202;
 
+    extern const char*   RecentFiles_proto;
+    const int            RecentFiles_protoSize = 436;
+
     extern const char*   SlowCommands_def;
     const int            SlowCommands_defSize = 28880;
 
     extern const char*   SlowKeyStrokeMap_def;
     const int            SlowKeyStrokeMap_defSize = 6942;
+
+    extern const char*   RecentFiles_pb2_py;
+    const int            RecentFiles_pb2_pySize = 4930;
 
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).

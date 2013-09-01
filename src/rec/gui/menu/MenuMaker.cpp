@@ -1,9 +1,8 @@
-#include "rec/slow/MenuMaker.h"
+#include "rec/gui/Menu/MenuMaker.h"
 
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
-#include "rec/gui/RecentFiles.h"
 #include "rec/slow/AdvancedMenuMaker.h"
 #include "rec/slow/BasicMenuMaker.h"
 #include "rec/slow/Instance.h"

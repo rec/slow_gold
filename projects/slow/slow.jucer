@@ -655,14 +655,18 @@
               name="LookAndFeel.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/LookAndFeel.h" id="fYYEBa6mc"
               name="LookAndFeel.h" resource="0"/>
+        <GROUP id="{9843E708-1258-678F-B6D8-FDA922BA5927}" name="menu">
+          <FILE id="YlNLOE" name="MenuMaker.cpp" compile="1" resource="0" file="../../src/rec/gui/menu/MenuMaker.cpp"/>
+          <FILE id="vKQ6QR" name="MenuMaker.h" compile="0" resource="0" file="../../src/rec/gui/menu/MenuMaker.h"/>
+          <FILE id="pqTxhC" name="RecentFiles.cpp" compile="1" resource="0" file="../../src/rec/gui/menu/RecentFiles.cpp"/>
+          <FILE id="SM0HAO" name="RecentFiles.h" compile="0" resource="0" file="../../src/rec/gui/menu/RecentFiles.h"/>
+          <FILE id="GP5D1f" name="RecentFiles.proto" compile="0" resource="1"
+                file="../../src/rec/gui/menu/RecentFiles.proto"/>
+        </GROUP>
         <FILE compile="1" file="../../src/rec/gui/PersistentWindow.cpp" id="8kcyzjdn5"
               name="PersistentWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/PersistentWindow.h" id="UqipRfGYU"
               name="PersistentWindow.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/gui/RecentFiles.cpp" id="snqFG6uhM"
-              name="RecentFiles.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="ns3pgO5ig"
-              name="RecentFiles.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterLabel.h" id="CAYiubo3n"
               name="SetterLabel.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/SetterResizer.cpp" id="2VgV5abSA"
@@ -799,10 +803,6 @@
               name="MainPage.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MainPage.h" id="94KyXSsiV"
               name="MainPage.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/MenuMaker.cpp" id="tKBW7zrd2"
-              name="MenuMaker.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/MenuMaker.h" id="QBx3ZNhtk"
-              name="MenuMaker.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Menus.cpp" id="JraNxq1d3"
               name="Menus.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Menus.h" id="GBStDpk72"
@@ -1286,10 +1286,6 @@
                 id="7oDy6Z1t8" name="Geometry.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Geometry.pb.h"
                 id="IKFmGhOWJ" name="Geometry.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/gui/RecentFiles.pb.cc"
-                id="0WRY1hXTD" name="RecentFiles.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/gui/RecentFiles.pb.h"
-                id="aorkCLTQN" name="RecentFiles.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/TableColumn.pb.cc"
                 id="SRB0FMMpM" name="TableColumn.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/TableColumn.pb.h"
@@ -1298,6 +1294,14 @@
                 id="OplgDBeeO" name="WindowPosition.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/WindowPosition.pb.h"
                 id="grvuKMdbV" name="WindowPosition.pb.h" resource="0"/>
+        </GROUP>
+        <GROUP id="{437D1235-E220-C5F8-BF94-457454EA79F5}" name="menu">
+          <FILE id="nZlXRr" name="RecentFiles.pb.cc" compile="1" resource="0"
+                file="../../genfiles/proto/rec/gui/menu/RecentFiles.pb.cc"/>
+          <FILE id="WVMO0x" name="RecentFiles.pb.h" compile="0" resource="0"
+                file="../../genfiles/proto/rec/gui/menu/RecentFiles.pb.h"/>
+          <FILE id="fAQBzy" name="RecentFiles_pb2.py" compile="0" resource="1"
+                file="../../genfiles/proto/rec/gui/menu/RecentFiles_pb2.py"/>
         </GROUP>
         <GROUP id="1CmEknjGq" name="music">
           <FILE compile="1" file="../../genfiles/proto/rec/music/Metadata.pb.cc"

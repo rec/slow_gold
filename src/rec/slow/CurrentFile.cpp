@@ -10,7 +10,7 @@
 #include "rec/data/UntypedDataListener.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/DropFiles.h"
-#include "rec/gui/RecentFiles.h"
+#include "rec/gui/menu/RecentFiles.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/music/CreateMusicFileReader.h"
 #include "rec/slow/Components.h"

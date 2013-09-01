@@ -1,6 +1,6 @@
 #include <algorithm>
 
-#include "rec/gui/RecentFiles.h"
+#include "rec/gui/menu/RecentFiles.h"
 #include "rec/data/Address.h"
 #include "rec/data/Value.h"
 #include "rec/data/Data.h"

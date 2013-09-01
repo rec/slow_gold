@@ -2,7 +2,7 @@
 
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/IsWholeSong.h"
-#include "rec/slow/MenuMaker.h"
+#include "rec/gui/Menu/MenuMaker.h"
 
 using namespace rec::command;
 

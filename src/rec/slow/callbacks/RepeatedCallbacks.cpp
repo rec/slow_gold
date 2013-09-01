@@ -4,7 +4,7 @@
 #include "rec/command/CallbackTable.h"
 #include "rec/command/ID.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/gui/RecentFiles.pb.h"
+#include "rec/gui/menu/RecentFiles.pb.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiSettings.pb.h"

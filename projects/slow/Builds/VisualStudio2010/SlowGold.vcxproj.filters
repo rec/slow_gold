@@ -74,6 +74,9 @@
     <Filter Include="SlowGold\rec\gui\layout">
       <UniqueIdentifier>{C8E3CEB5-965F-CCBA-0A1D-083C6F3D0DBF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\rec\gui\menu">
+      <UniqueIdentifier>{FDB000B0-91C6-7D74-CEDC-5309ABB84DD2}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\rec\music">
       <UniqueIdentifier>{6EFF0F4F-5F41-8806-AB33-16C94B2B6A05}</UniqueIdentifier>
     </Filter>
@@ -166,6 +169,9 @@
     </Filter>
     <Filter Include="SlowGold\proto\rec\gui">
       <UniqueIdentifier>{B50BA77A-E175-9B07-AEC0-74F0D9D4A350}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\proto\rec\menu">
+      <UniqueIdentifier>{0769E412-5F16-E237-FCD4-F942D491C53A}</UniqueIdentifier>
     </Filter>
     <Filter Include="SlowGold\proto\rec\music">
       <UniqueIdentifier>{71044FE3-27E4-9D44-7123-E76661A6A51B}</UniqueIdentifier>
@@ -775,10 +781,13 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp">
       <Filter>SlowGold\rec\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp">
-      <Filter>SlowGold\rec\gui</Filter>
+    <ClCompile Include="..\..\..\..\src\rec\gui\menu\MenuMaker.cpp">
+      <Filter>SlowGold\rec\gui\menu</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\RecentFiles.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\gui\menu\RecentFiles.cpp">
+      <Filter>SlowGold\rec\gui\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp">
       <Filter>SlowGold\rec\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp">
@@ -857,9 +866,6 @@
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp">
-      <Filter>SlowGold\rec\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\MenuMaker.cpp">
       <Filter>SlowGold\rec\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp">
@@ -1102,14 +1108,14 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc">
-      <Filter>SlowGold\proto\rec\gui</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc">
+      <Filter>SlowGold\proto\rec\menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc">
       <Filter>SlowGold\proto\rec\music</Filter>
@@ -2805,10 +2811,13 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\LookAndFeel.h">
       <Filter>SlowGold\rec\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h">
-      <Filter>SlowGold\rec\gui</Filter>
+    <ClInclude Include="..\..\..\..\src\rec\gui\menu\MenuMaker.h">
+      <Filter>SlowGold\rec\gui\menu</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\RecentFiles.h">
+    <ClInclude Include="..\..\..\..\src\rec\gui\menu\RecentFiles.h">
+      <Filter>SlowGold\rec\gui\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h">
       <Filter>SlowGold\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterLabel.h">
@@ -2917,9 +2926,6 @@
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h">
-      <Filter>SlowGold\rec\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\MenuMaker.h">
       <Filter>SlowGold\rec\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h">
@@ -3327,14 +3333,14 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h">
-      <Filter>SlowGold\proto\rec\gui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h">
+      <Filter>SlowGold\proto\rec\menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h">
       <Filter>SlowGold\proto\rec\music</Filter>
@@ -4811,11 +4817,17 @@
     <None Include="..\..\text\id-TranslatedStrings.def">
       <Filter>SlowGold\text</Filter>
     </None>
+    <None Include="..\..\..\..\src\rec\gui\menu\RecentFiles.proto">
+      <Filter>SlowGold\rec\gui\menu</Filter>
+    </None>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowCommands.def">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def">
       <Filter>SlowGold\rec\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles_pb2.py">
+      <Filter>SlowGold\proto\rec\menu</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info">
       <Filter>Juce Modules\juce_audio_basics</Filter>

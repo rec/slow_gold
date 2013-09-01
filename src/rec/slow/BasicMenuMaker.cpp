@@ -3,7 +3,7 @@
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/base/ArraySize.h"
 #include "rec/data/DataOps.h"
-#include "rec/gui/RecentFiles.h"
+#include "rec/gui/menu/RecentFiles.h"
 #include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/translation/TranslationTables.h"
 #include "rec/util/Cuttable.h"

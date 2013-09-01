@@ -234,8 +234,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\LanguageButton.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\layout\Layout.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\menu\MenuMaker.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\menu\RecentFiles.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterText.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\TableController.cpp"/>
@@ -262,7 +263,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\MenuMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\RegisterProtos.cpp"/>
@@ -343,9 +343,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\DialogFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
@@ -1599,8 +1599,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\LanguageButton.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\LookAndFeel.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\menu\MenuMaker.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\menu\RecentFiles.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\RecentFiles.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterLabel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterResizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterText.h"/>
@@ -1637,7 +1638,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\IsWholeSong.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\MenuMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\RegisterProtos.h"/>
@@ -1773,9 +1773,9 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\DialogFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
@@ -2269,8 +2269,10 @@
     <None Include="..\..\text\es-TranslatedStrings.def"/>
     <None Include="..\..\text\fr-TranslatedStrings.def"/>
     <None Include="..\..\text\id-TranslatedStrings.def"/>
+    <None Include="..\..\..\..\src\rec\gui\menu\RecentFiles.proto"/>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowCommands.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def"/>
+    <None Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles_pb2.py"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_formats\juce_module_info"/>
