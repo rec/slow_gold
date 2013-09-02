@@ -130,7 +130,7 @@ namespace BinaryData
     const int            RecentFiles_protoSize = 436;
 
     extern const char*   SlowCommands_def;
-    const int            SlowCommands_defSize = 28880;
+    const int            SlowCommands_defSize = 29224;
 
     extern const char*   SlowKeyStrokeMap_def;
     const int            SlowKeyStrokeMap_defSize = 6942;

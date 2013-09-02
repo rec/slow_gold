@@ -1,7 +1,7 @@
 slow_command {
   type: ABOUT_THIS_PROGRAM
   command {
-    menu: "Help"
+    category: "Help"
     desc {
       menu: "About SlowGold 8"
       full: "Bring up a window describing SlowGold 8."
@@ -11,7 +11,7 @@ slow_command {
 slow_command {
   type: ADD_LOOP_POINT
   command {
-    menu: "Loops"
+    category: "Loops"
     desc {
       menu: "Add Loop Point At Current Time"
       full: "Add a loop point at the current time."
@@ -21,7 +21,7 @@ slow_command {
 slow_command {
   type: AUDIO_PREFERENCES
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Audio Preferences..."
       full: "Open the Audio Preferences pane."
@@ -31,7 +31,7 @@ slow_command {
 slow_command {
   type: CHECK_FOR_UPDATES
   command {
-    menu: "Help"
+    category: "Help"
     desc {
       menu: "Check For Updates"
       full: "Check the World Wide Woodshed website for upgrades to SlowGold 8."
@@ -41,7 +41,7 @@ slow_command {
 slow_command {
   type: CLEAR_ALL_SETTINGS
   command {
-    menu: "Loops"
+    category: "Loops"
     desc {
       menu: "Clear All Settings And Quit"
       full: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
@@ -51,7 +51,7 @@ slow_command {
 slow_command {
   type: CLEAR_LOOPS
   command {
-    menu: "Loops"
+    category: "Loops"
     desc {
       menu: "Clear Loops"
       full: "Delete all loop points"
@@ -61,7 +61,7 @@ slow_command {
 slow_command {
   type: CLEAR_KEYBOARD_MAPPINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Clear Keyboard Mappings"
       full: "Clear all keyboard command mappings to program default."
@@ -71,7 +71,7 @@ slow_command {
 slow_command {
   type: CLEAR_MIDI_MAPPINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Clear MIDI Mappings"
       full: "Clear all MIDI command mappings."
@@ -81,7 +81,7 @@ slow_command {
 slow_command {
   type: CLEAR_SETTINGS_FOR_THIS_TRACK
   command {
-    menu: "Loops"
+    category: "Loops"
     desc {
       menu: "Clear Settings For This Track And Quit"
       full: "Clear all SlowGold settings for this track only and quit the program."
@@ -91,7 +91,7 @@ slow_command {
 slow_command {
   type: CLOSE_FILE
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Close"
       full: "Close the current file"
@@ -101,7 +101,7 @@ slow_command {
 slow_command {
   type: COPY
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Copy"
       full: "Copy the current selection to the clipboard."
@@ -111,7 +111,7 @@ slow_command {
 slow_command {
   type: COPY_ALL_LOOP_POINTS
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Copy All Loop Points"
       full: "Copy both selected and unselected loop points to the clipboard."
@@ -121,7 +121,7 @@ slow_command {
 slow_command {
   type: CUT
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Cut"
       full: "Copy the current selection to the clipboard and clear the selection."
@@ -131,7 +131,7 @@ slow_command {
 slow_command {
   type: DEL
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Delete"
       full: "Delete the current selection without changing the clipboard."
@@ -141,7 +141,7 @@ slow_command {
 slow_command {
   type: DESELECT_ALL
   command {
-    menu: "Selection"
+    category: "Selection"
     desc {
       menu: "Select None"
       full: "Select none of the file"
@@ -151,7 +151,7 @@ slow_command {
 slow_command {
   type: DIM_VOLUME_TOGGLE
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Toggle audio dim"
       full: "Toggle audio dim on and off."
@@ -161,7 +161,7 @@ slow_command {
 slow_command {
   type: EJECT_CDS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Eject All"
       full: "Eject all CDs and DVDs"
@@ -171,7 +171,7 @@ slow_command {
 slow_command {
   type: EXPORT_KEYBOARD_MAPPINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Export Keyboard Command Mappings..."
       full: "Export keyboard command mappings."
@@ -181,7 +181,7 @@ slow_command {
 slow_command {
   type: EXPORT_MIDI_MAPPINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Export MIDI Command Mappings..."
       full: "Export MIDI command mappings."
@@ -191,7 +191,7 @@ slow_command {
 slow_command {
   type: EXPORT_SETTINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Export SlowGold Settings..."
       full: "Export all SlowGold Settings to a .zip file."
@@ -201,7 +201,7 @@ slow_command {
 slow_command {
   type: IMPORT_KEYBOARD_MAPPINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Import Keyboard Command Mappings..."
       full: "Import SlowGold keyboard command mappings."
@@ -211,7 +211,7 @@ slow_command {
 slow_command {
   type: IMPORT_MIDI_MAPPINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Import MIDI Command Mappings"
       full: "Import SlowGold MIDI command mappings."
@@ -221,7 +221,7 @@ slow_command {
 slow_command {
   type: IMPORT_SETTINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Import SlowGold Settings..."
       full: "Import SlowGold Settings from a .zip file and merge with current settings."
@@ -231,7 +231,7 @@ slow_command {
 slow_command {
   type: INVERT_LOOP_SELECTION
   command {
-    menu: "Selection"
+    category: "Selection"
     desc {
       menu: "Invert Selection"
       full: "Unselect everything selected and vice-versa."
@@ -242,7 +242,7 @@ slow_command {
   type: JUMP
   command {
     index: 9
-    menu: "Transport"
+    category: "Transport"
     desc {
       menu: "Jump To First Segment"
       menu: "Jump To Previous Segment"
@@ -282,7 +282,7 @@ slow_command {
   type: JUMP_SELECTED
   command {
     index: 9
-    menu: "Transport"
+    category: "Transport"
     desc {
       menu: "Jump To First Selected Segment"
       menu: "Jump To Previous Selected Segment"
@@ -321,7 +321,7 @@ slow_command {
 slow_command {
   type: LOOP_NEXT_SEGMENT
   command {
-    menu: "Loops"
+    category: "Loops"
     desc {
       menu: "Loop Next Segment"
       full: "Finish the current segment, then start looping the next segment."
@@ -331,7 +331,7 @@ slow_command {
 slow_command {
   type: KEYBOARD_MAPPINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Edit Keyboard Mappings..."
       full: "Edit keyboard mappings for commands."
@@ -341,7 +341,7 @@ slow_command {
 slow_command {
   type: MIDI_MAPPINGS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Edit Midi Mappings..."
       full: "Edit midi mappings for commands."
@@ -351,7 +351,7 @@ slow_command {
 slow_command {
   type: MODE_ADD_LOOP_POINT
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Add Loop Point Mode"
       full: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
@@ -361,7 +361,7 @@ slow_command {
 slow_command {
   type: MODE_DRAG
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Drag Mode"
       full: "Enter drag mode, where you can drag the waveform back and forth."
@@ -371,7 +371,7 @@ slow_command {
 slow_command {
   type: MODE_SET_TIME
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Set Time Mode"
       full: "Enter Set Time Mode, where clicking in the waveform sets the time."
@@ -381,7 +381,7 @@ slow_command {
 slow_command {
   type: MODE_ZOOM_IN
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Zoom In Mode"
       full: "Enter Zoom In Mode, where clicking on the waveform zooms in."
@@ -391,7 +391,7 @@ slow_command {
 slow_command {
   type: MUTE_VOLUME_TOGGLE
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Toggle audio mute"
       full: "Toggle audio mute on and off."
@@ -401,7 +401,7 @@ slow_command {
 slow_command {
   type: NUDGE_BACKWARD
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Nudge Backward"
       full: "Nudge Backward One Segment Or 10 Seconds"
@@ -411,7 +411,7 @@ slow_command {
 slow_command {
   type: NUDGE_FORWARD
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Nudge Forward"
       full: "Nudge Forward One Segment Or 10 Seconds"
@@ -421,7 +421,7 @@ slow_command {
 slow_command {
   type: NUDGE_VOLUME_DOWN
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Nudge volume down"
       full: "Nudge volume down by 2dB"
@@ -431,7 +431,7 @@ slow_command {
 slow_command {
   type: NUDGE_VOLUME_UP
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Nudge volume up"
       full: "Nudge volume up by 2dB"
@@ -441,7 +441,7 @@ slow_command {
 slow_command {
   type: NUDGE_SPEED_DOWN
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Nudge speed down"
       full: "Nudge speed down"
@@ -451,7 +451,7 @@ slow_command {
 slow_command {
   type: NUDGE_SPEED_UP
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Nudge speed up"
       full: "Nudge speed up"
@@ -461,7 +461,7 @@ slow_command {
 slow_command {
   type: OPEN
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Open..."
       full: "Open a dialog to select a new audio file for looping."
@@ -471,7 +471,7 @@ slow_command {
 slow_command {
   type: OPEN_MANUAL
   command {
-    menu: "Help"
+    category: "Help"
     desc {
       menu: "Download SlowGold 8 User Manual"
       full: "Download the SlowGold 8 user manual from the World Wide Woodshed website."
@@ -481,7 +481,7 @@ slow_command {
 slow_command {
   type: OPEN_PREVIOUS_FILE
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Re-Open Most Recent Closed File"
       full: "Re-open the file that was most recently closed."
@@ -491,7 +491,7 @@ slow_command {
 slow_command {
   type: OPEN_SLOWGOLD_DIRECTORY
   command {
-    menu: "Help"
+    category: "Help"
     desc {
       menu: "Open SlowGold Preferences Directory"
       full: "Open the directory where all the SlowGold Preferences Files are located."
@@ -501,7 +501,7 @@ slow_command {
 slow_command {
   type: PASTE
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Paste"
       full: "Replace the current selection with a copy of the clipboard."
@@ -511,7 +511,7 @@ slow_command {
 slow_command {
   type: PASTE_OVER_LOOP_POINTS
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Paste Over Loop Points"
       full: "Replace all loop points with the loop points on the clipboard."
@@ -521,7 +521,7 @@ slow_command {
 slow_command {
   type: QUIT
   command {
-    menu: "(None)"
+    category: "(None)"
     desc {
       menu: "Quit"
       full: "Quit SlowGold"
@@ -532,7 +532,7 @@ slow_command {
   type: RECENT_FILES
   command {
     index: 32
-    menu: "File"
+    category: "File"
     desc {
       menu: "Recent file 1"
       menu: "Recent file 2"
@@ -605,7 +605,7 @@ slow_command {
 slow_command {
   type: REDO
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Redo"
       full: "Redoes a previously undone command."
@@ -615,7 +615,7 @@ slow_command {
 slow_command {
   type: REQUEST_SUPPORT
   command {
-    menu: "Help"
+    category: "Help"
     desc {
       menu: "Request Technical Support"
       full: "Make a request for technical support to World Wide Woodshed."
@@ -625,7 +625,7 @@ slow_command {
 slow_command {
   type: RESET_GAIN_TO_UNITY
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Reset Volume"
       full: "Reset volume to 0 dB"
@@ -635,7 +635,7 @@ slow_command {
 slow_command {
   type: SAVE_FILE
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Save..."
       full: "Save the full transformed file in the default save format."
@@ -645,7 +645,7 @@ slow_command {
 slow_command {
   type: SAVE_FILE_SELECTION
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Save Selection..."
       full: "Save just the selected portion of the transformed file in the default save format."
@@ -656,7 +656,7 @@ slow_command {
   type: SELECT
   command {
     index: 10
-    menu: "Selection"
+    category: "Selection"
     desc {
       menu: "Select First Segment"
       menu: "Select Previous Segment"
@@ -695,7 +695,7 @@ slow_command {
 slow_command {
   type: SELECT_ALL
   command {
-    menu: "Transport"
+    category: "Transport"
     desc {
       menu: "Select All"
       full: "Select all of the file"
@@ -706,7 +706,7 @@ slow_command {
   type: SELECT_ONLY
   command {
     index: -1
-    menu: "Selection"
+    category: "Selection"
     desc {
       menu: "Select First Segment Only"
       menu: "Select Previous Segment Only"
@@ -746,7 +746,7 @@ slow_command {
   type: SET_SAVE_FORMAT
   command {
     index: 4
-    menu: "(None)"
+    category: "(None)"
     desc {
       menu: "AIFF"
       menu: "FLAC"
@@ -764,7 +764,7 @@ slow_command {
   type: SET_LANGUAGE
   command {
     index: 5
-    menu: "(None)"
+    category: "(None)"
     desc {
       menu: "(None)"
       menu: "German"
@@ -785,7 +785,7 @@ slow_command {
 slow_command {
   type: TOGGLE_ADVANCED_MENUS
   command {
-    menu: "File"
+    category: "File"
     desc {
       menu: "Show Advanced Menus"
       full: "Toggle show/hide of advanced menus."
@@ -803,7 +803,7 @@ slow_command {
 slow_command {
   type: TOGGLE_AUTOMATIC_UPDATES
   command {
-    menu: "Help"
+    category: "Help"
     desc {
       menu: "Enable Automatic Updates"
       full: "Enable or disable automatic updates of SlowGold 8."
@@ -821,7 +821,7 @@ slow_command {
 slow_command {
   type: TOGGLE_COMMAND_BAR_AT_LEFT
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Command Bar At Left Side"
       full: "Lay the Command Bar out on the left side of the Waveform Display."
@@ -839,7 +839,7 @@ slow_command {
 slow_command {
   type: TOGGLE_COMMAND_BAR_AT_TOP
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Command Bar At Top"
       full: "Lay the Command Bar out on the top of the Waveform Display."
@@ -857,7 +857,7 @@ slow_command {
 slow_command {
   type: TOGGLE_FILE_OPEN_TREE_DISPLAY
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Use Tree Display In File Save Dialog"
       full: "Use Tree Display In File Save Dialog"
@@ -875,7 +875,7 @@ slow_command {
 slow_command {
   type: TOGGLE_FOLLOW_CURSOR
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Follow Cursor"
       full: "Always keep the time cursor in the window."
@@ -893,7 +893,7 @@ slow_command {
 slow_command {
   type: TOGGLE_GRID_DISPLAY
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Show Time Gridlines"
       full: "Toggle display of the time grid."
@@ -911,7 +911,7 @@ slow_command {
 slow_command {
   type: TOGGLE_MODES_AT_LEFT
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Modes At Left Side"
       full: "Lay the Modes display out on the left side of the Waveform Display."
@@ -929,7 +929,7 @@ slow_command {
 slow_command {
   type: TOGGLE_MODES_AT_TOP
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Modes At Top"
       full: "Lay the Modes display out on the top of the Waveform Display."
@@ -947,7 +947,7 @@ slow_command {
 slow_command {
   type: TOGGLE_PARALLEL_WAVEFORMS
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Show Stacked Waveform"
       full: "Toggle parallel/stacked waveform display."
@@ -965,7 +965,7 @@ slow_command {
 slow_command {
   type: TOGGLE_PREFADER_LEVELS
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Show Pre-Fader Levels"
       full: "Toggle level display between pre- and post-fader."
@@ -985,7 +985,7 @@ slow_command {
   type: TOGGLE_SELECTION
   command {
     index: 9
-    menu: "Selection"
+    category: "Selection"
     desc {
       menu: "Toggle First Segment Selection"
       menu: "Toggle Previous Segment Selection"
@@ -1024,7 +1024,7 @@ slow_command {
 slow_command {
   type: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
   command {
-    menu: "Help"
+    category: "Help"
     desc {
       menu: "Show About Window At Startup"
       full: "Toggle whether we show the About Window every time we start up."
@@ -1042,7 +1042,7 @@ slow_command {
 slow_command {
   type: TOGGLE_SHOW_CURSOR_LABELS
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Show Loop Point Labels"
       full: "Show draggable labels for the loop points on the waveform display."
@@ -1060,7 +1060,7 @@ slow_command {
 slow_command {
   type: TOGGLE_SHOW_LABELS_AT_TOP
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Show Loop Point Labels At Top"
       full: "Show the loop point labels at the top of the waveform display."
@@ -1078,7 +1078,7 @@ slow_command {
 slow_command {
   type: TOGGLE_SHOW_MASTER_TUNE
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Show Master Tune Slider"
       full: "Show the Master Tune Slider in the Transform Panel."
@@ -1096,7 +1096,7 @@ slow_command {
 slow_command {
   type: TOGGLE_SHOW_SELECTION_BUTTONS
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Show Loop Point Selection Buttons"
       full: "Show help in help pane."
@@ -1114,7 +1114,7 @@ slow_command {
 slow_command {
   type: TOGGLE_SHOW_TIMES_AT_TOP
   command {
-    menu: "Display"
+    category: "Display"
     desc {
       menu: "Show Grid Times At Top"
       full: "Show the grid times for the grid at the top of the waveform display."
@@ -1132,7 +1132,7 @@ slow_command {
 slow_command {
   type: TOGGLE_START_STOP
   command {
-    menu: "Transport"
+    category: "Transport"
     desc {
       menu: "Toggle Start/Stop"
       full: "Start or pause"
@@ -1142,7 +1142,7 @@ slow_command {
 slow_command {
   type: TOGGLE_STRETCH_ENABLE
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Enable Stretch"
       full: "Toggle between stretched and real-time playback."
@@ -1161,7 +1161,7 @@ slow_command {
 slow_command {
   type: TOGGLE_TRANSFORM_ENABLE
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Enable Transforms"
       full: "Toggle pitch, time and stereo transforms of the sound."
@@ -1180,7 +1180,7 @@ slow_command {
 slow_command {
   type: TOGGLE_WHOLE_SONG_LOOP
   command {
-    menu: "Selection"
+    category: "Selection"
     desc {
       menu: "Loop This Segment"
       full: "Toggle selection between the current segment and the whole song."
@@ -1190,7 +1190,7 @@ slow_command {
 slow_command {
   type: UNDO
   command {
-    menu: "Edit"
+    category: "Edit"
     desc {
       menu: "Undo"
       full: "Undoes a previous command."
@@ -1201,7 +1201,7 @@ slow_command {
   type: UNSELECT
   command {
     index: 10
-    menu: "Selection"
+    category: "Selection"
     desc {
       menu: "Unselect First Segment"
       menu: "Unselect Previous Segment"
@@ -1240,7 +1240,7 @@ slow_command {
 slow_command {
   type: WHATS_NEW_PAGE
   command {
-    menu: "Help"
+    category: "Help"
     desc {
       menu: "What\'s New In This Release?"
       full: "Go to the webpage which tells you what new features and bug fixes are in the release you\'re running."
@@ -1250,7 +1250,7 @@ slow_command {
 slow_command {
   type: ZOOM_OUT
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Zoom Out"
       full: "Zoom out."
@@ -1260,7 +1260,7 @@ slow_command {
 slow_command {
   type: ZOOM_OUT_FULL
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Zoom Out Completely"
       full: "Zoom out as far as possible."
@@ -1270,7 +1270,7 @@ slow_command {
 slow_command {
   type: ZOOM_TO_SELECTION
   command {
-    menu: "Audio"
+    category: "Audio"
     desc {
       menu: "Zoom To Selection"
       full: "Zoom to selection."

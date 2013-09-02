@@ -409,17 +409,17 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 start_index() const;
   inline void set_start_index(::google::protobuf::int32 value);
 
-  // optional string menu = 4;
-  inline bool has_menu() const;
-  inline void clear_menu();
-  static const int kMenuFieldNumber = 4;
-  inline const ::std::string& menu() const;
-  inline void set_menu(const ::std::string& value);
-  inline void set_menu(const char* value);
-  inline void set_menu(const char* value, size_t size);
-  inline ::std::string* mutable_menu();
-  inline ::std::string* release_menu();
-  inline void set_allocated_menu(::std::string* menu);
+  // optional string category = 4;
+  inline bool has_category() const;
+  inline void clear_category();
+  static const int kCategoryFieldNumber = 4;
+  inline const ::std::string& category() const;
+  inline void set_category(const ::std::string& value);
+  inline void set_category(const char* value);
+  inline void set_category(const char* value, size_t size);
+  inline ::std::string* mutable_category();
+  inline ::std::string* release_category();
+  inline void set_allocated_category(::std::string* category);
 
   // optional .rec.command.Description desc = 5;
   inline bool has_desc() const;
@@ -463,8 +463,8 @@ class Command : public ::google::protobuf::Message {
   inline void clear_has_index();
   inline void set_has_start_index();
   inline void clear_has_start_index();
-  inline void set_has_menu();
-  inline void clear_has_menu();
+  inline void set_has_category();
+  inline void clear_has_category();
   inline void set_has_desc();
   inline void clear_has_desc();
   inline void set_has_setter();
@@ -474,7 +474,7 @@ class Command : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 command_;
   ::google::protobuf::int32 index_;
-  ::std::string* menu_;
+  ::std::string* category_;
   ::rec::command::Description* desc_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
@@ -944,73 +944,73 @@ inline void Command::set_start_index(::google::protobuf::int32 value) {
   start_index_ = value;
 }
 
-// optional string menu = 4;
-inline bool Command::has_menu() const {
+// optional string category = 4;
+inline bool Command::has_category() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void Command::set_has_menu() {
+inline void Command::set_has_category() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void Command::clear_has_menu() {
+inline void Command::clear_has_category() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void Command::clear_menu() {
-  if (menu_ != &::google::protobuf::internal::kEmptyString) {
-    menu_->clear();
+inline void Command::clear_category() {
+  if (category_ != &::google::protobuf::internal::kEmptyString) {
+    category_->clear();
   }
-  clear_has_menu();
+  clear_has_category();
 }
-inline const ::std::string& Command::menu() const {
-  return *menu_;
+inline const ::std::string& Command::category() const {
+  return *category_;
 }
-inline void Command::set_menu(const ::std::string& value) {
-  set_has_menu();
-  if (menu_ == &::google::protobuf::internal::kEmptyString) {
-    menu_ = new ::std::string;
+inline void Command::set_category(const ::std::string& value) {
+  set_has_category();
+  if (category_ == &::google::protobuf::internal::kEmptyString) {
+    category_ = new ::std::string;
   }
-  menu_->assign(value);
+  category_->assign(value);
 }
-inline void Command::set_menu(const char* value) {
-  set_has_menu();
-  if (menu_ == &::google::protobuf::internal::kEmptyString) {
-    menu_ = new ::std::string;
+inline void Command::set_category(const char* value) {
+  set_has_category();
+  if (category_ == &::google::protobuf::internal::kEmptyString) {
+    category_ = new ::std::string;
   }
-  menu_->assign(value);
+  category_->assign(value);
 }
-inline void Command::set_menu(const char* value, size_t size) {
-  set_has_menu();
-  if (menu_ == &::google::protobuf::internal::kEmptyString) {
-    menu_ = new ::std::string;
+inline void Command::set_category(const char* value, size_t size) {
+  set_has_category();
+  if (category_ == &::google::protobuf::internal::kEmptyString) {
+    category_ = new ::std::string;
   }
-  menu_->assign(reinterpret_cast<const char*>(value), size);
+  category_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Command::mutable_menu() {
-  set_has_menu();
-  if (menu_ == &::google::protobuf::internal::kEmptyString) {
-    menu_ = new ::std::string;
+inline ::std::string* Command::mutable_category() {
+  set_has_category();
+  if (category_ == &::google::protobuf::internal::kEmptyString) {
+    category_ = new ::std::string;
   }
-  return menu_;
+  return category_;
 }
-inline ::std::string* Command::release_menu() {
-  clear_has_menu();
-  if (menu_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* Command::release_category() {
+  clear_has_category();
+  if (category_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = menu_;
-    menu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = category_;
+    category_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
-inline void Command::set_allocated_menu(::std::string* menu) {
-  if (menu_ != &::google::protobuf::internal::kEmptyString) {
-    delete menu_;
+inline void Command::set_allocated_category(::std::string* category) {
+  if (category_ != &::google::protobuf::internal::kEmptyString) {
+    delete category_;
   }
-  if (menu) {
-    set_has_menu();
-    menu_ = menu;
+  if (category) {
+    set_has_category();
+    category_ = category;
   } else {
-    clear_has_menu();
-    menu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    clear_has_category();
+    category_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

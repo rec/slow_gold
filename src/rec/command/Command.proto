@@ -38,7 +38,7 @@ message Command {
   optional sint32 index = 2;  // For repeating commands.
   optional sint32 start_index = 3;  // For repeating commands.
 
-  optional string menu = 4;  // English language name of the menu it's in.
+  optional string category = 4;  // English language name of the JUCE category.
   optional Description desc = 5;  // Localized descriptions.
   repeated string keypress = 6;   // In Juce keyboard format.
 
