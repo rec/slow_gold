@@ -91,6 +91,8 @@ typedef juce::WildcardFileFilter WildcardFileFilter;
 
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 
+using juce::Array;
+
 inline string str(const String& s) {
   return s.toStdString();
 }

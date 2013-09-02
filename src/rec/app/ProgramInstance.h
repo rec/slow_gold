@@ -4,28 +4,30 @@
 #include <unordered_map>
 
 #include "rec/base/base.h"
-#include "rec/command/Command.pb.h"
 
 namespace rec {
 namespace app {
 
 class Program;
 
-class ProgramInstance : public juce::ApplicationCommandTarget {
+class ProgramInstance : public juce::ApplicationCommandTarget,
+                        public MenuBarModel {
  public:
   ProgramInstance(Program*);
-  ~ProgramInstance() {}
+  ~ProgramInstance();
 
   juce::ApplicationCommandTarget* getNextCommandTarget() override { return NULL; }
   void getAllCommands(juce::Array<CommandID>& commands) override;
   void getCommandInfo(CommandID, ApplicationCommandInfo&) override;
   bool perform(const InvocationInfo& info) override;
 
-  typedef std::unordered_map<CommandID, command::Command> ProgramMap;
+  StringArray getMenuBarNames() override;
+  PopupMenu getMenuForIndex(int menuIndex, const String& name) override;
+  void menuItemSelected(int, int) override {}
 
  private:
-  Program* program_;
-  ProgramMap programMap_;
+  struct Impl;
+  unique_ptr<Impl> impl_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(ProgramInstance);
 };

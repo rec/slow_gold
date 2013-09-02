@@ -328,6 +328,7 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\Menu.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
@@ -346,7 +347,6 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\Menu.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc"/>
@@ -1761,6 +1761,7 @@
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\Menu.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
@@ -1779,7 +1780,6 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\Menu.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h"/>

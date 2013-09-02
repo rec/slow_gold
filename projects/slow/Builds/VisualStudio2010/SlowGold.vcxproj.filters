@@ -1063,6 +1063,9 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.cc">
       <Filter>SlowGold\proto\rec\app</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\Menu.pb.cc">
+      <Filter>SlowGold\proto\rec\app</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc">
       <Filter>SlowGold\proto\rec\audio</Filter>
     </ClCompile>
@@ -1116,9 +1119,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\Menu.pb.cc">
-      <Filter>SlowGold\proto\rec\menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc">
       <Filter>SlowGold\proto\rec\menu</Filter>
@@ -3297,6 +3297,9 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.h">
       <Filter>SlowGold\proto\rec\app</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\Menu.pb.h">
+      <Filter>SlowGold\proto\rec\app</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h">
       <Filter>SlowGold\proto\rec\audio</Filter>
     </ClInclude>
@@ -3350,9 +3353,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\Menu.pb.h">
-      <Filter>SlowGold\proto\rec\menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h">
       <Filter>SlowGold\proto\rec\menu</Filter>

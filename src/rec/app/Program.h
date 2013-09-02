@@ -5,7 +5,7 @@
 
 #include "rec/base/base.h"
 #include "rec/command/Command.pb.h"
-#include "rec/gui/menu/Menu.pb.h"
+#include "rec/app/Menu.pb.h"
 
 namespace rec {
 namespace app {
@@ -17,8 +17,9 @@ class Program {
 
   virtual command::Commands commands() const = 0;
   virtual command::Commands keypresses() const = 0;
-  virtual gui::menu::Menus menus() const = 0;
-  virtual gui::menu::MenuCollection menuCollection() const = 0;
+  virtual Menus menus() const = 0;
+  virtual MenuCollection menuCollection() const = 0;
+  virtual string menuBarName() const = 0;
 
   virtual bool hasProperty(const string& name) const = 0;
   virtual string makeMenuName(const command::Command&, CommandID) const = 0;

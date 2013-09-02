@@ -1,10 +1,15 @@
-package rec.gui.menu;
+package rec.app;
 
 import "rec/command/Command.proto";
 
+message MenuEntry {
+  optional uint32 command = 1;
+  optional string submenu = 2;
+};
+
 message Menu {
   optional command.Description description = 1;
-  repeated uint32 entry = 2;
+  repeated MenuEntry entry = 2;
 };
 
 message Menus {
