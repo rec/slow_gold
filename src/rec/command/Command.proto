@@ -3,9 +3,10 @@ package rec.command;
 import "rec/data/proto/Address.proto";
 
 message Description {
-  repeated string menu = 1;  // Menu descriptions, which might cycle.
-  repeated string full = 2;  // Longer description, when editing.
-  optional string help = 3;  // Full help text for the command.
+  optional string name = 1;
+  repeated string menu = 2;  // Menu descriptions, which might cycle.
+  repeated string full = 3;  // Longer description, when editing.
+  optional string help = 4;  // Full help text for the command.
 };
 
 message Setter {
@@ -41,10 +42,25 @@ message Command {
   optional string category = 4;  // English language name of the JUCE category.
   optional Description desc = 5;  // Localized descriptions.
   repeated string keypress = 6;   // In Juce keyboard format.
+  optional  uint32 flags = 7;
 
   // If the purpose of this command is just to set a flag, this is the name
   // of that flag setting.
-  optional Setter setter = 7;
+  optional Setter setter = 8;
+
+  // Number of commands represented by this one command.
+  optional uint32 size = 9;
+
+  // The name of a function that actually makes the menu name given the Menu
+  // entry information.
+  optional string name_maker = 10;
+
+  // Each string in 'hidden', 'disabled' or 'checked' names a condition.  If any
+  // of these conditions is true, the menu item is hidden, checked or disabled.
+  // The application itself defines what those conditions are.
+  repeated string hidden = 11;
+  repeated string disabled = 12;
+  repeated string ticked = 13;
 };
 
 message Commands {

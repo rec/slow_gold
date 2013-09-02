@@ -14,7 +14,7 @@ import rec.data.proto.Address_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/command/Command.proto',
   package='rec.command',
-  serialized_pb='\n\x19rec/command/Command.proto\x12\x0brec.command\x1a\x1crec/data/proto/Address.proto\"7\n\x0b\x44\x65scription\x12\x0c\n\x04menu\x18\x01 \x03(\t\x12\x0c\n\x04\x66ull\x18\x02 \x03(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"]\n\x06Setter\x12\x17\n\tis_global\x18\x01 \x01(\x08:\x04true\x12\'\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x11\n\ttype_name\x18\x03 \x01(\t\"\xcd\x02\n\x07\x43ommand\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\x11\x12\x13\n\x0bstart_index\x18\x03 \x01(\x11\x12\x10\n\x08\x63\x61tegory\x18\x04 \x01(\t\x12&\n\x04\x64\x65sc\x18\x05 \x01(\x0b\x32\x18.rec.command.Description\x12\x10\n\x08keypress\x18\x06 \x03(\t\x12#\n\x06setter\x18\x07 \x01(\x0b\x32\x13.rec.command.Setter\"\x9b\x01\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \x12\x0f\n\nJUCE_START\x10\x80 \x12\r\n\x08JUCE_END\x10\x88 \x12\x0f\n\tBANK_SIZE\x10\xa0\x8d\x06\"1\n\x08\x43ommands\x12%\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x14.rec.command.Command')
+  serialized_pb='\n\x19rec/command/Command.proto\x12\x0brec.command\x1a\x1crec/data/proto/Address.proto\"E\n\x0b\x44\x65scription\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04menu\x18\x02 \x03(\t\x12\x0c\n\x04\x66ull\x18\x03 \x03(\t\x12\x0c\n\x04help\x18\x04 \x01(\t\"]\n\x06Setter\x12\x17\n\tis_global\x18\x01 \x01(\x08:\x04true\x12\'\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x16.rec.data.AddressProto\x12\x11\n\ttype_name\x18\x03 \x01(\t\"\xb0\x03\n\x07\x43ommand\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\x11\x12\x13\n\x0bstart_index\x18\x03 \x01(\x11\x12\x10\n\x08\x63\x61tegory\x18\x04 \x01(\t\x12&\n\x04\x64\x65sc\x18\x05 \x01(\x0b\x32\x18.rec.command.Description\x12\x10\n\x08keypress\x18\x06 \x03(\t\x12\r\n\x05\x66lags\x18\x07 \x01(\r\x12#\n\x06setter\x18\x08 \x01(\x0b\x32\x13.rec.command.Setter\x12\x0c\n\x04size\x18\t \x01(\r\x12\x12\n\nname_maker\x18\n \x01(\t\x12\x0e\n\x06hidden\x18\x0b \x03(\t\x12\x10\n\x08\x64isabled\x18\x0c \x03(\t\x12\x0e\n\x06ticked\x18\r \x03(\t\"\x9b\x01\n\x04Type\x12\x08\n\x04NONE\x10\x00\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \x12\x0f\n\nJUCE_START\x10\x80 \x12\r\n\x08JUCE_END\x10\x88 \x12\x0f\n\tBANK_SIZE\x10\xa0\x8d\x06\"1\n\x08\x43ommands\x12%\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x14.rec.command.Command')
 
 
 
@@ -71,8 +71,8 @@ _COMMAND_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=403,
-  serialized_end=558,
+  serialized_start=516,
+  serialized_end=671,
 )
 
 
@@ -84,22 +84,29 @@ _DESCRIPTION = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='menu', full_name='rec.command.Description.menu', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
+      name='name', full_name='rec.command.Description.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='full', full_name='rec.command.Description.full', index=1,
+      name='menu', full_name='rec.command.Description.menu', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='help', full_name='rec.command.Description.help', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      name='full', full_name='rec.command.Description.full', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='help', full_name='rec.command.Description.help', index=3,
+      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -114,7 +121,7 @@ _DESCRIPTION = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=72,
-  serialized_end=127,
+  serialized_end=141,
 )
 
 
@@ -155,8 +162,8 @@ _SETTER = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=129,
-  serialized_end=222,
+  serialized_start=143,
+  serialized_end=236,
 )
 
 
@@ -210,9 +217,51 @@ _COMMAND = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='setter', full_name='rec.command.Command.setter', index=6,
-      number=7, type=11, cpp_type=10, label=1,
+      name='flags', full_name='rec.command.Command.flags', index=6,
+      number=7, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='setter', full_name='rec.command.Command.setter', index=7,
+      number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='size', full_name='rec.command.Command.size', index=8,
+      number=9, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='name_maker', full_name='rec.command.Command.name_maker', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hidden', full_name='rec.command.Command.hidden', index=10,
+      number=11, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='disabled', full_name='rec.command.Command.disabled', index=11,
+      number=12, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ticked', full_name='rec.command.Command.ticked', index=12,
+      number=13, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -226,8 +275,8 @@ _COMMAND = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=225,
-  serialized_end=558,
+  serialized_start=239,
+  serialized_end=671,
 )
 
 
@@ -254,8 +303,8 @@ _COMMANDS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=560,
-  serialized_end=609,
+  serialized_start=673,
+  serialized_end=722,
 )
 
 _SETTER.fields_by_name['address'].message_type = rec.data.proto.Address_pb2._ADDRESSPROTO

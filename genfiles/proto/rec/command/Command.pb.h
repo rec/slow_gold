@@ -125,10 +125,22 @@ class Description : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated string menu = 1;
+  // optional string name = 1;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 1;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // repeated string menu = 2;
   inline int menu_size() const;
   inline void clear_menu();
-  static const int kMenuFieldNumber = 1;
+  static const int kMenuFieldNumber = 2;
   inline const ::std::string& menu(int index) const;
   inline ::std::string* mutable_menu(int index);
   inline void set_menu(int index, const ::std::string& value);
@@ -141,10 +153,10 @@ class Description : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& menu() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_menu();
 
-  // repeated string full = 2;
+  // repeated string full = 3;
   inline int full_size() const;
   inline void clear_full();
-  static const int kFullFieldNumber = 2;
+  static const int kFullFieldNumber = 3;
   inline const ::std::string& full(int index) const;
   inline ::std::string* mutable_full(int index);
   inline void set_full(int index, const ::std::string& value);
@@ -157,10 +169,10 @@ class Description : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& full() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_full();
 
-  // optional string help = 3;
+  // optional string help = 4;
   inline bool has_help() const;
   inline void clear_help();
-  static const int kHelpFieldNumber = 3;
+  static const int kHelpFieldNumber = 4;
   inline const ::std::string& help() const;
   inline void set_help(const ::std::string& value);
   inline void set_help(const char* value);
@@ -171,17 +183,20 @@ class Description : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.command.Description)
  private:
+  inline void set_has_name();
+  inline void clear_has_name();
   inline void set_has_help();
   inline void clear_has_help();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* name_;
   ::google::protobuf::RepeatedPtrField< ::std::string> menu_;
   ::google::protobuf::RepeatedPtrField< ::std::string> full_;
   ::std::string* help_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -446,14 +461,88 @@ class Command : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& keypress() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_keypress();
 
-  // optional .rec.command.Setter setter = 7;
+  // optional uint32 flags = 7;
+  inline bool has_flags() const;
+  inline void clear_flags();
+  static const int kFlagsFieldNumber = 7;
+  inline ::google::protobuf::uint32 flags() const;
+  inline void set_flags(::google::protobuf::uint32 value);
+
+  // optional .rec.command.Setter setter = 8;
   inline bool has_setter() const;
   inline void clear_setter();
-  static const int kSetterFieldNumber = 7;
+  static const int kSetterFieldNumber = 8;
   inline const ::rec::command::Setter& setter() const;
   inline ::rec::command::Setter* mutable_setter();
   inline ::rec::command::Setter* release_setter();
   inline void set_allocated_setter(::rec::command::Setter* setter);
+
+  // optional uint32 size = 9;
+  inline bool has_size() const;
+  inline void clear_size();
+  static const int kSizeFieldNumber = 9;
+  inline ::google::protobuf::uint32 size() const;
+  inline void set_size(::google::protobuf::uint32 value);
+
+  // optional string name_maker = 10;
+  inline bool has_name_maker() const;
+  inline void clear_name_maker();
+  static const int kNameMakerFieldNumber = 10;
+  inline const ::std::string& name_maker() const;
+  inline void set_name_maker(const ::std::string& value);
+  inline void set_name_maker(const char* value);
+  inline void set_name_maker(const char* value, size_t size);
+  inline ::std::string* mutable_name_maker();
+  inline ::std::string* release_name_maker();
+  inline void set_allocated_name_maker(::std::string* name_maker);
+
+  // repeated string hidden = 11;
+  inline int hidden_size() const;
+  inline void clear_hidden();
+  static const int kHiddenFieldNumber = 11;
+  inline const ::std::string& hidden(int index) const;
+  inline ::std::string* mutable_hidden(int index);
+  inline void set_hidden(int index, const ::std::string& value);
+  inline void set_hidden(int index, const char* value);
+  inline void set_hidden(int index, const char* value, size_t size);
+  inline ::std::string* add_hidden();
+  inline void add_hidden(const ::std::string& value);
+  inline void add_hidden(const char* value);
+  inline void add_hidden(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& hidden() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_hidden();
+
+  // repeated string disabled = 12;
+  inline int disabled_size() const;
+  inline void clear_disabled();
+  static const int kDisabledFieldNumber = 12;
+  inline const ::std::string& disabled(int index) const;
+  inline ::std::string* mutable_disabled(int index);
+  inline void set_disabled(int index, const ::std::string& value);
+  inline void set_disabled(int index, const char* value);
+  inline void set_disabled(int index, const char* value, size_t size);
+  inline ::std::string* add_disabled();
+  inline void add_disabled(const ::std::string& value);
+  inline void add_disabled(const char* value);
+  inline void add_disabled(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& disabled() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_disabled();
+
+  // repeated string ticked = 13;
+  inline int ticked_size() const;
+  inline void clear_ticked();
+  static const int kTickedFieldNumber = 13;
+  inline const ::std::string& ticked(int index) const;
+  inline ::std::string* mutable_ticked(int index);
+  inline void set_ticked(int index, const ::std::string& value);
+  inline void set_ticked(int index, const char* value);
+  inline void set_ticked(int index, const char* value, size_t size);
+  inline ::std::string* add_ticked();
+  inline void add_ticked(const ::std::string& value);
+  inline void add_ticked(const char* value);
+  inline void add_ticked(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& ticked() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_ticked();
 
   // @@protoc_insertion_point(class_scope:rec.command.Command)
  private:
@@ -467,8 +556,14 @@ class Command : public ::google::protobuf::Message {
   inline void clear_has_category();
   inline void set_has_desc();
   inline void clear_has_desc();
+  inline void set_has_flags();
+  inline void clear_has_flags();
   inline void set_has_setter();
   inline void clear_has_setter();
+  inline void set_has_size();
+  inline void clear_has_size();
+  inline void set_has_name_maker();
+  inline void clear_has_name_maker();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -476,12 +571,18 @@ class Command : public ::google::protobuf::Message {
   ::google::protobuf::int32 index_;
   ::std::string* category_;
   ::rec::command::Description* desc_;
+  ::google::protobuf::int32 start_index_;
+  ::google::protobuf::uint32 flags_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
-  ::google::protobuf::int32 start_index_;
+  ::std::string* name_maker_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> hidden_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> disabled_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> ticked_;
+  ::google::protobuf::uint32 size_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(13 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -582,7 +683,77 @@ class Commands : public ::google::protobuf::Message {
 
 // Description
 
-// repeated string menu = 1;
+// optional string name = 1;
+inline bool Description::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Description::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Description::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Description::clear_name() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& Description::name() const {
+  return *name_;
+}
+inline void Description::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Description::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Description::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Description::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+inline ::std::string* Description::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Description::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// repeated string menu = 2;
 inline int Description::menu_size() const {
   return menu_.size();
 }
@@ -626,7 +797,7 @@ Description::mutable_menu() {
   return &menu_;
 }
 
-// repeated string full = 2;
+// repeated string full = 3;
 inline int Description::full_size() const {
   return full_.size();
 }
@@ -670,15 +841,15 @@ Description::mutable_full() {
   return &full_;
 }
 
-// optional string help = 3;
+// optional string help = 4;
 inline bool Description::has_help() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void Description::set_has_help() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void Description::clear_has_help() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Description::clear_help() {
   if (help_ != &::google::protobuf::internal::kEmptyString) {
@@ -1096,15 +1267,37 @@ Command::mutable_keypress() {
   return &keypress_;
 }
 
-// optional .rec.command.Setter setter = 7;
-inline bool Command::has_setter() const {
+// optional uint32 flags = 7;
+inline bool Command::has_flags() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void Command::set_has_setter() {
+inline void Command::set_has_flags() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void Command::clear_has_setter() {
+inline void Command::clear_has_flags() {
   _has_bits_[0] &= ~0x00000040u;
+}
+inline void Command::clear_flags() {
+  flags_ = 0u;
+  clear_has_flags();
+}
+inline ::google::protobuf::uint32 Command::flags() const {
+  return flags_;
+}
+inline void Command::set_flags(::google::protobuf::uint32 value) {
+  set_has_flags();
+  flags_ = value;
+}
+
+// optional .rec.command.Setter setter = 8;
+inline bool Command::has_setter() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void Command::set_has_setter() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void Command::clear_has_setter() {
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void Command::clear_setter() {
   if (setter_ != NULL) setter_->::rec::command::Setter::Clear();
@@ -1132,6 +1325,230 @@ inline void Command::set_allocated_setter(::rec::command::Setter* setter) {
   } else {
     clear_has_setter();
   }
+}
+
+// optional uint32 size = 9;
+inline bool Command::has_size() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void Command::set_has_size() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void Command::clear_has_size() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void Command::clear_size() {
+  size_ = 0u;
+  clear_has_size();
+}
+inline ::google::protobuf::uint32 Command::size() const {
+  return size_;
+}
+inline void Command::set_size(::google::protobuf::uint32 value) {
+  set_has_size();
+  size_ = value;
+}
+
+// optional string name_maker = 10;
+inline bool Command::has_name_maker() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void Command::set_has_name_maker() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void Command::clear_has_name_maker() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void Command::clear_name_maker() {
+  if (name_maker_ != &::google::protobuf::internal::kEmptyString) {
+    name_maker_->clear();
+  }
+  clear_has_name_maker();
+}
+inline const ::std::string& Command::name_maker() const {
+  return *name_maker_;
+}
+inline void Command::set_name_maker(const ::std::string& value) {
+  set_has_name_maker();
+  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
+    name_maker_ = new ::std::string;
+  }
+  name_maker_->assign(value);
+}
+inline void Command::set_name_maker(const char* value) {
+  set_has_name_maker();
+  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
+    name_maker_ = new ::std::string;
+  }
+  name_maker_->assign(value);
+}
+inline void Command::set_name_maker(const char* value, size_t size) {
+  set_has_name_maker();
+  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
+    name_maker_ = new ::std::string;
+  }
+  name_maker_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::mutable_name_maker() {
+  set_has_name_maker();
+  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
+    name_maker_ = new ::std::string;
+  }
+  return name_maker_;
+}
+inline ::std::string* Command::release_name_maker() {
+  clear_has_name_maker();
+  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_maker_;
+    name_maker_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Command::set_allocated_name_maker(::std::string* name_maker) {
+  if (name_maker_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_maker_;
+  }
+  if (name_maker) {
+    set_has_name_maker();
+    name_maker_ = name_maker;
+  } else {
+    clear_has_name_maker();
+    name_maker_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// repeated string hidden = 11;
+inline int Command::hidden_size() const {
+  return hidden_.size();
+}
+inline void Command::clear_hidden() {
+  hidden_.Clear();
+}
+inline const ::std::string& Command::hidden(int index) const {
+  return hidden_.Get(index);
+}
+inline ::std::string* Command::mutable_hidden(int index) {
+  return hidden_.Mutable(index);
+}
+inline void Command::set_hidden(int index, const ::std::string& value) {
+  hidden_.Mutable(index)->assign(value);
+}
+inline void Command::set_hidden(int index, const char* value) {
+  hidden_.Mutable(index)->assign(value);
+}
+inline void Command::set_hidden(int index, const char* value, size_t size) {
+  hidden_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::add_hidden() {
+  return hidden_.Add();
+}
+inline void Command::add_hidden(const ::std::string& value) {
+  hidden_.Add()->assign(value);
+}
+inline void Command::add_hidden(const char* value) {
+  hidden_.Add()->assign(value);
+}
+inline void Command::add_hidden(const char* value, size_t size) {
+  hidden_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+Command::hidden() const {
+  return hidden_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+Command::mutable_hidden() {
+  return &hidden_;
+}
+
+// repeated string disabled = 12;
+inline int Command::disabled_size() const {
+  return disabled_.size();
+}
+inline void Command::clear_disabled() {
+  disabled_.Clear();
+}
+inline const ::std::string& Command::disabled(int index) const {
+  return disabled_.Get(index);
+}
+inline ::std::string* Command::mutable_disabled(int index) {
+  return disabled_.Mutable(index);
+}
+inline void Command::set_disabled(int index, const ::std::string& value) {
+  disabled_.Mutable(index)->assign(value);
+}
+inline void Command::set_disabled(int index, const char* value) {
+  disabled_.Mutable(index)->assign(value);
+}
+inline void Command::set_disabled(int index, const char* value, size_t size) {
+  disabled_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::add_disabled() {
+  return disabled_.Add();
+}
+inline void Command::add_disabled(const ::std::string& value) {
+  disabled_.Add()->assign(value);
+}
+inline void Command::add_disabled(const char* value) {
+  disabled_.Add()->assign(value);
+}
+inline void Command::add_disabled(const char* value, size_t size) {
+  disabled_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+Command::disabled() const {
+  return disabled_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+Command::mutable_disabled() {
+  return &disabled_;
+}
+
+// repeated string ticked = 13;
+inline int Command::ticked_size() const {
+  return ticked_.size();
+}
+inline void Command::clear_ticked() {
+  ticked_.Clear();
+}
+inline const ::std::string& Command::ticked(int index) const {
+  return ticked_.Get(index);
+}
+inline ::std::string* Command::mutable_ticked(int index) {
+  return ticked_.Mutable(index);
+}
+inline void Command::set_ticked(int index, const ::std::string& value) {
+  ticked_.Mutable(index)->assign(value);
+}
+inline void Command::set_ticked(int index, const char* value) {
+  ticked_.Mutable(index)->assign(value);
+}
+inline void Command::set_ticked(int index, const char* value, size_t size) {
+  ticked_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::add_ticked() {
+  return ticked_.Add();
+}
+inline void Command::add_ticked(const ::std::string& value) {
+  ticked_.Add()->assign(value);
+}
+inline void Command::add_ticked(const char* value) {
+  ticked_.Add()->assign(value);
+}
+inline void Command::add_ticked(const char* value, size_t size) {
+  ticked_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+Command::ticked() const {
+  return ticked_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+Command::mutable_ticked() {
+  return &ticked_;
 }
 
 // -------------------------------------------------------------------

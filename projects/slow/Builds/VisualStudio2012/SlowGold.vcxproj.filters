@@ -514,6 +514,9 @@
     <ClCompile Include="..\..\..\..\src\rec\app\LanguageListener.cpp">
       <Filter>SlowGold\rec\app</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\ProgramInstance.cpp">
+      <Filter>SlowGold\rec\app</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\app\RegisterInstance.cpp">
       <Filter>SlowGold\rec\app</Filter>
     </ClCompile>
@@ -2386,6 +2389,12 @@
       <Filter>SlowGold\rec\app</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\LanguageListener.h">
+      <Filter>SlowGold\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\Program.h">
+      <Filter>SlowGold\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\ProgramInstance.h">
       <Filter>SlowGold\rec\app</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterInstance.h">

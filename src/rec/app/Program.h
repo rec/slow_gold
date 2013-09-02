@@ -4,25 +4,35 @@
 // A class representing all the things a specific program needs to operate.
 
 #include "rec/base/base.h"
+#include "rec/command/Command.pb.h"
 #include "rec/gui/menu/Menu.pb.h"
 
 namespace rec {
-
 namespace app {
 
 class Program {
  public:
   Program() {}
-  virtual ~Program() = 0;
+  virtual ~Program() {}
 
-  virtual const gui::menu::MenuCollection& menus() const = 0;
-  virtual uint32 menuBar() const = 0;
+  virtual command::Commands commands() const = 0;
+  virtual command::Commands keypresses() const = 0;
+  virtual gui::menu::Menus menus() const = 0;
+  virtual gui::menu::MenuCollection menuCollection() const = 0;
+
   virtual bool hasProperty(const string& name) const = 0;
-  virtual gui::menu::MenuName makeName(const gui::menu::MenuEntry&, CommandID)
-    const = 0;
-
-  virtual ApplicationCommandTarget* applicationCommandTarget() const = 0;
+  virtual string makeMenuName(const command::Command&, CommandID) const = 0;
+  virtual bool perform(const InvocationInfo&, const command::Command&) = 0;
 };
+
+template <typename PARTS>
+bool hasProperty(const Program& program, const PARTS& parts) {
+  for (auto& part: parts) {
+    if (program.hasProperty(part))
+      return true;
+  }
+  return false;
+}
 
 }  // namespace app
 }  // namespace rec

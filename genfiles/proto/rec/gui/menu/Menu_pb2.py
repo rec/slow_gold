@@ -8,119 +8,15 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+import rec.command.Command_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/menu/Menu.proto',
   package='rec.gui.menu',
-  serialized_pb='\n\x17rec/gui/menu/Menu.proto\x12\x0crec.gui.menu\"7\n\x08MenuName\x12\x0f\n\x07\x64isplay\x18\x01 \x01(\t\x12\x0c\n\x04\x66ull\x18\x02 \x01(\t\x12\x0c\n\x04help\x18\x03 \x01(\t\"\x85\x01\n\tMenuEntry\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\x0c\n\x04size\x18\x02 \x01(\r\x12$\n\x04name\x18\x03 \x03(\x0b\x32\x16.rec.gui.menu.MenuName\x12\x12\n\nname_maker\x18\x04 \x01(\t\x12\x0e\n\x06hidden\x18\x05 \x03(\t\x12\x0f\n\x07\x63hecked\x18\x06 \x03(\t\";\n\x04Menu\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12\r\n\x05\x65ntry\x18\x02 \x03(\r\"U\n\x07MenuBar\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12$\n\x04menu\x18\x02 \x03(\x0b\x32\x16.rec.gui.menu.MenuName\"`\n\x0eMenuCollection\x12$\n\x04name\x18\x01 \x01(\x0b\x32\x16.rec.gui.menu.MenuName\x12(\n\x08menu_bar\x18\x02 \x03(\x0b\x32\x16.rec.gui.menu.MenuName')
+  serialized_pb='\n\x17rec/gui/menu/Menu.proto\x12\x0crec.gui.menu\x1a\x19rec/command/Command.proto\"D\n\x04Menu\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\r\n\x05\x65ntry\x18\x02 \x03(\r\")\n\x05Menus\x12 \n\x04menu\x18\x01 \x03(\x0b\x32\x12.rec.gui.menu.Menu\"F\n\x07MenuBar\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0c\n\x04menu\x18\x02 \x03(\t\"h\n\x0eMenuCollection\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\'\n\x08menu_bar\x18\x02 \x03(\x0b\x32\x15.rec.gui.menu.MenuBar')
 
 
-
-
-_MENUNAME = _descriptor.Descriptor(
-  name='MenuName',
-  full_name='rec.gui.menu.MenuName',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='display', full_name='rec.gui.menu.MenuName.display', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='full', full_name='rec.gui.menu.MenuName.full', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='help', full_name='rec.gui.menu.MenuName.help', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=41,
-  serialized_end=96,
-)
-
-
-_MENUENTRY = _descriptor.Descriptor(
-  name='MenuEntry',
-  full_name='rec.gui.menu.MenuEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='command', full_name='rec.gui.menu.MenuEntry.command', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='size', full_name='rec.gui.menu.MenuEntry.size', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='name', full_name='rec.gui.menu.MenuEntry.name', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='name_maker', full_name='rec.gui.menu.MenuEntry.name_maker', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='hidden', full_name='rec.gui.menu.MenuEntry.hidden', index=4,
-      number=5, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='checked', full_name='rec.gui.menu.MenuEntry.checked', index=5,
-      number=6, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=99,
-  serialized_end=232,
-)
 
 
 _MENU = _descriptor.Descriptor(
@@ -131,7 +27,7 @@ _MENU = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='rec.gui.menu.Menu.name', index=0,
+      name='description', full_name='rec.gui.menu.Menu.description', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -153,28 +49,21 @@ _MENU = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=234,
-  serialized_end=293,
+  serialized_start=68,
+  serialized_end=136,
 )
 
 
-_MENUBAR = _descriptor.Descriptor(
-  name='MenuBar',
-  full_name='rec.gui.menu.MenuBar',
+_MENUS = _descriptor.Descriptor(
+  name='Menus',
+  full_name='rec.gui.menu.Menus',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='rec.gui.menu.MenuBar.name', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='menu', full_name='rec.gui.menu.MenuBar.menu', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='menu', full_name='rec.gui.menu.Menus.menu', index=0,
+      number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -188,8 +77,43 @@ _MENUBAR = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=295,
-  serialized_end=380,
+  serialized_start=138,
+  serialized_end=179,
+)
+
+
+_MENUBAR = _descriptor.Descriptor(
+  name='MenuBar',
+  full_name='rec.gui.menu.MenuBar',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='description', full_name='rec.gui.menu.MenuBar.description', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='menu', full_name='rec.gui.menu.MenuBar.menu', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=181,
+  serialized_end=251,
 )
 
 
@@ -201,7 +125,7 @@ _MENUCOLLECTION = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='rec.gui.menu.MenuCollection.name', index=0,
+      name='description', full_name='rec.gui.menu.MenuCollection.description', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -223,39 +147,31 @@ _MENUCOLLECTION = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=382,
-  serialized_end=478,
+  serialized_start=253,
+  serialized_end=357,
 )
 
-_MENUENTRY.fields_by_name['name'].message_type = _MENUNAME
-_MENU.fields_by_name['name'].message_type = _MENUNAME
-_MENUBAR.fields_by_name['name'].message_type = _MENUNAME
-_MENUBAR.fields_by_name['menu'].message_type = _MENUNAME
-_MENUCOLLECTION.fields_by_name['name'].message_type = _MENUNAME
-_MENUCOLLECTION.fields_by_name['menu_bar'].message_type = _MENUNAME
-DESCRIPTOR.message_types_by_name['MenuName'] = _MENUNAME
-DESCRIPTOR.message_types_by_name['MenuEntry'] = _MENUENTRY
+_MENU.fields_by_name['description'].message_type = rec.command.Command_pb2._DESCRIPTION
+_MENUS.fields_by_name['menu'].message_type = _MENU
+_MENUBAR.fields_by_name['description'].message_type = rec.command.Command_pb2._DESCRIPTION
+_MENUCOLLECTION.fields_by_name['description'].message_type = rec.command.Command_pb2._DESCRIPTION
+_MENUCOLLECTION.fields_by_name['menu_bar'].message_type = _MENUBAR
 DESCRIPTOR.message_types_by_name['Menu'] = _MENU
+DESCRIPTOR.message_types_by_name['Menus'] = _MENUS
 DESCRIPTOR.message_types_by_name['MenuBar'] = _MENUBAR
 DESCRIPTOR.message_types_by_name['MenuCollection'] = _MENUCOLLECTION
-
-class MenuName(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _MENUNAME
-
-  # @@protoc_insertion_point(class_scope:rec.gui.menu.MenuName)
-
-class MenuEntry(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _MENUENTRY
-
-  # @@protoc_insertion_point(class_scope:rec.gui.menu.MenuEntry)
 
 class Menu(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _MENU
 
   # @@protoc_insertion_point(class_scope:rec.gui.menu.Menu)
+
+class Menus(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _MENUS
+
+  # @@protoc_insertion_point(class_scope:rec.gui.menu.Menus)
 
 class MenuBar(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

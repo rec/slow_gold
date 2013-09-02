@@ -24,6 +24,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "rec/command/Command.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -35,284 +36,12 @@ void  protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
 void protobuf_AssignDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
 void protobuf_ShutdownFile_rec_2fgui_2fmenu_2fMenu_2eproto();
 
-class MenuName;
-class MenuEntry;
 class Menu;
+class Menus;
 class MenuBar;
 class MenuCollection;
 
 // ===================================================================
-
-class MenuName : public ::google::protobuf::Message {
- public:
-  MenuName();
-  virtual ~MenuName();
-
-  MenuName(const MenuName& from);
-
-  inline MenuName& operator=(const MenuName& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const MenuName& default_instance();
-
-  void Swap(MenuName* other);
-
-  // implements Message ----------------------------------------------
-
-  MenuName* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const MenuName& from);
-  void MergeFrom(const MenuName& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional string display = 1;
-  inline bool has_display() const;
-  inline void clear_display();
-  static const int kDisplayFieldNumber = 1;
-  inline const ::std::string& display() const;
-  inline void set_display(const ::std::string& value);
-  inline void set_display(const char* value);
-  inline void set_display(const char* value, size_t size);
-  inline ::std::string* mutable_display();
-  inline ::std::string* release_display();
-  inline void set_allocated_display(::std::string* display);
-
-  // optional string full = 2;
-  inline bool has_full() const;
-  inline void clear_full();
-  static const int kFullFieldNumber = 2;
-  inline const ::std::string& full() const;
-  inline void set_full(const ::std::string& value);
-  inline void set_full(const char* value);
-  inline void set_full(const char* value, size_t size);
-  inline ::std::string* mutable_full();
-  inline ::std::string* release_full();
-  inline void set_allocated_full(::std::string* full);
-
-  // optional string help = 3;
-  inline bool has_help() const;
-  inline void clear_help();
-  static const int kHelpFieldNumber = 3;
-  inline const ::std::string& help() const;
-  inline void set_help(const ::std::string& value);
-  inline void set_help(const char* value);
-  inline void set_help(const char* value, size_t size);
-  inline ::std::string* mutable_help();
-  inline ::std::string* release_help();
-  inline void set_allocated_help(::std::string* help);
-
-  // @@protoc_insertion_point(class_scope:rec.gui.menu.MenuName)
- private:
-  inline void set_has_display();
-  inline void clear_has_display();
-  inline void set_has_full();
-  inline void clear_has_full();
-  inline void set_has_help();
-  inline void clear_has_help();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::std::string* display_;
-  ::std::string* full_;
-  ::std::string* help_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-
-  friend void  protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
-  friend void protobuf_AssignDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fgui_2fmenu_2fMenu_2eproto();
-
-  void InitAsDefaultInstance();
-  static MenuName* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class MenuEntry : public ::google::protobuf::Message {
- public:
-  MenuEntry();
-  virtual ~MenuEntry();
-
-  MenuEntry(const MenuEntry& from);
-
-  inline MenuEntry& operator=(const MenuEntry& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const MenuEntry& default_instance();
-
-  void Swap(MenuEntry* other);
-
-  // implements Message ----------------------------------------------
-
-  MenuEntry* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const MenuEntry& from);
-  void MergeFrom(const MenuEntry& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional uint32 command = 1;
-  inline bool has_command() const;
-  inline void clear_command();
-  static const int kCommandFieldNumber = 1;
-  inline ::google::protobuf::uint32 command() const;
-  inline void set_command(::google::protobuf::uint32 value);
-
-  // optional uint32 size = 2;
-  inline bool has_size() const;
-  inline void clear_size();
-  static const int kSizeFieldNumber = 2;
-  inline ::google::protobuf::uint32 size() const;
-  inline void set_size(::google::protobuf::uint32 value);
-
-  // repeated .rec.gui.menu.MenuName name = 3;
-  inline int name_size() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 3;
-  inline const ::rec::gui::menu::MenuName& name(int index) const;
-  inline ::rec::gui::menu::MenuName* mutable_name(int index);
-  inline ::rec::gui::menu::MenuName* add_name();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
-      name() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
-      mutable_name();
-
-  // optional string name_maker = 4;
-  inline bool has_name_maker() const;
-  inline void clear_name_maker();
-  static const int kNameMakerFieldNumber = 4;
-  inline const ::std::string& name_maker() const;
-  inline void set_name_maker(const ::std::string& value);
-  inline void set_name_maker(const char* value);
-  inline void set_name_maker(const char* value, size_t size);
-  inline ::std::string* mutable_name_maker();
-  inline ::std::string* release_name_maker();
-  inline void set_allocated_name_maker(::std::string* name_maker);
-
-  // repeated string hidden = 5;
-  inline int hidden_size() const;
-  inline void clear_hidden();
-  static const int kHiddenFieldNumber = 5;
-  inline const ::std::string& hidden(int index) const;
-  inline ::std::string* mutable_hidden(int index);
-  inline void set_hidden(int index, const ::std::string& value);
-  inline void set_hidden(int index, const char* value);
-  inline void set_hidden(int index, const char* value, size_t size);
-  inline ::std::string* add_hidden();
-  inline void add_hidden(const ::std::string& value);
-  inline void add_hidden(const char* value);
-  inline void add_hidden(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& hidden() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_hidden();
-
-  // repeated string checked = 6;
-  inline int checked_size() const;
-  inline void clear_checked();
-  static const int kCheckedFieldNumber = 6;
-  inline const ::std::string& checked(int index) const;
-  inline ::std::string* mutable_checked(int index);
-  inline void set_checked(int index, const ::std::string& value);
-  inline void set_checked(int index, const char* value);
-  inline void set_checked(int index, const char* value, size_t size);
-  inline ::std::string* add_checked();
-  inline void add_checked(const ::std::string& value);
-  inline void add_checked(const char* value);
-  inline void add_checked(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& checked() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_checked();
-
-  // @@protoc_insertion_point(class_scope:rec.gui.menu.MenuEntry)
- private:
-  inline void set_has_command();
-  inline void clear_has_command();
-  inline void set_has_size();
-  inline void clear_has_size();
-  inline void set_has_name_maker();
-  inline void clear_has_name_maker();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 command_;
-  ::google::protobuf::uint32 size_;
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName > name_;
-  ::std::string* name_maker_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> hidden_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> checked_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
-
-  friend void  protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
-  friend void protobuf_AssignDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fgui_2fmenu_2fMenu_2eproto();
-
-  void InitAsDefaultInstance();
-  static MenuEntry* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class Menu : public ::google::protobuf::Message {
  public:
@@ -368,14 +97,14 @@ class Menu : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.gui.menu.MenuName name = 1;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 1;
-  inline const ::rec::gui::menu::MenuName& name() const;
-  inline ::rec::gui::menu::MenuName* mutable_name();
-  inline ::rec::gui::menu::MenuName* release_name();
-  inline void set_allocated_name(::rec::gui::menu::MenuName* name);
+  // optional .rec.command.Description description = 1;
+  inline bool has_description() const;
+  inline void clear_description();
+  static const int kDescriptionFieldNumber = 1;
+  inline const ::rec::command::Description& description() const;
+  inline ::rec::command::Description* mutable_description();
+  inline ::rec::command::Description* release_description();
+  inline void set_allocated_description(::rec::command::Description* description);
 
   // repeated uint32 entry = 2;
   inline int entry_size() const;
@@ -391,12 +120,12 @@ class Menu : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.gui.menu.Menu)
  private:
-  inline void set_has_name();
-  inline void clear_has_name();
+  inline void set_has_description();
+  inline void clear_has_description();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::rec::gui::menu::MenuName* name_;
+  ::rec::command::Description* description_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > entry_;
 
   mutable int _cached_size_;
@@ -408,6 +137,91 @@ class Menu : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static Menu* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Menus : public ::google::protobuf::Message {
+ public:
+  Menus();
+  virtual ~Menus();
+
+  Menus(const Menus& from);
+
+  inline Menus& operator=(const Menus& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Menus& default_instance();
+
+  void Swap(Menus* other);
+
+  // implements Message ----------------------------------------------
+
+  Menus* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Menus& from);
+  void MergeFrom(const Menus& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .rec.gui.menu.Menu menu = 1;
+  inline int menu_size() const;
+  inline void clear_menu();
+  static const int kMenuFieldNumber = 1;
+  inline const ::rec::gui::menu::Menu& menu(int index) const;
+  inline ::rec::gui::menu::Menu* mutable_menu(int index);
+  inline ::rec::gui::menu::Menu* add_menu();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu >&
+      menu() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu >*
+      mutable_menu();
+
+  // @@protoc_insertion_point(class_scope:rec.gui.menu.Menus)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu > menu_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
+  friend void protobuf_AssignDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fgui_2fmenu_2fMenu_2eproto();
+
+  void InitAsDefaultInstance();
+  static Menus* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -465,36 +279,40 @@ class MenuBar : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.gui.menu.MenuName name = 1;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 1;
-  inline const ::rec::gui::menu::MenuName& name() const;
-  inline ::rec::gui::menu::MenuName* mutable_name();
-  inline ::rec::gui::menu::MenuName* release_name();
-  inline void set_allocated_name(::rec::gui::menu::MenuName* name);
+  // optional .rec.command.Description description = 1;
+  inline bool has_description() const;
+  inline void clear_description();
+  static const int kDescriptionFieldNumber = 1;
+  inline const ::rec::command::Description& description() const;
+  inline ::rec::command::Description* mutable_description();
+  inline ::rec::command::Description* release_description();
+  inline void set_allocated_description(::rec::command::Description* description);
 
-  // repeated .rec.gui.menu.MenuName menu = 2;
+  // repeated string menu = 2;
   inline int menu_size() const;
   inline void clear_menu();
   static const int kMenuFieldNumber = 2;
-  inline const ::rec::gui::menu::MenuName& menu(int index) const;
-  inline ::rec::gui::menu::MenuName* mutable_menu(int index);
-  inline ::rec::gui::menu::MenuName* add_menu();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
-      menu() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
-      mutable_menu();
+  inline const ::std::string& menu(int index) const;
+  inline ::std::string* mutable_menu(int index);
+  inline void set_menu(int index, const ::std::string& value);
+  inline void set_menu(int index, const char* value);
+  inline void set_menu(int index, const char* value, size_t size);
+  inline ::std::string* add_menu();
+  inline void add_menu(const ::std::string& value);
+  inline void add_menu(const char* value);
+  inline void add_menu(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& menu() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_menu();
 
   // @@protoc_insertion_point(class_scope:rec.gui.menu.MenuBar)
  private:
-  inline void set_has_name();
-  inline void clear_has_name();
+  inline void set_has_description();
+  inline void clear_has_description();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::rec::gui::menu::MenuName* name_;
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName > menu_;
+  ::rec::command::Description* description_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> menu_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -562,36 +380,36 @@ class MenuCollection : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.gui.menu.MenuName name = 1;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 1;
-  inline const ::rec::gui::menu::MenuName& name() const;
-  inline ::rec::gui::menu::MenuName* mutable_name();
-  inline ::rec::gui::menu::MenuName* release_name();
-  inline void set_allocated_name(::rec::gui::menu::MenuName* name);
+  // optional .rec.command.Description description = 1;
+  inline bool has_description() const;
+  inline void clear_description();
+  static const int kDescriptionFieldNumber = 1;
+  inline const ::rec::command::Description& description() const;
+  inline ::rec::command::Description* mutable_description();
+  inline ::rec::command::Description* release_description();
+  inline void set_allocated_description(::rec::command::Description* description);
 
-  // repeated .rec.gui.menu.MenuName menu_bar = 2;
+  // repeated .rec.gui.menu.MenuBar menu_bar = 2;
   inline int menu_bar_size() const;
   inline void clear_menu_bar();
   static const int kMenuBarFieldNumber = 2;
-  inline const ::rec::gui::menu::MenuName& menu_bar(int index) const;
-  inline ::rec::gui::menu::MenuName* mutable_menu_bar(int index);
-  inline ::rec::gui::menu::MenuName* add_menu_bar();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
+  inline const ::rec::gui::menu::MenuBar& menu_bar(int index) const;
+  inline ::rec::gui::menu::MenuBar* mutable_menu_bar(int index);
+  inline ::rec::gui::menu::MenuBar* add_menu_bar();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar >&
       menu_bar() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar >*
       mutable_menu_bar();
 
   // @@protoc_insertion_point(class_scope:rec.gui.menu.MenuCollection)
  private:
-  inline void set_has_name();
-  inline void clear_has_name();
+  inline void set_has_description();
+  inline void clear_has_description();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::rec::gui::menu::MenuName* name_;
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName > menu_bar_;
+  ::rec::command::Description* description_;
+  ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar > menu_bar_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -608,488 +426,43 @@ class MenuCollection : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// MenuName
-
-// optional string display = 1;
-inline bool MenuName::has_display() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void MenuName::set_has_display() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void MenuName::clear_has_display() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MenuName::clear_display() {
-  if (display_ != &::google::protobuf::internal::kEmptyString) {
-    display_->clear();
-  }
-  clear_has_display();
-}
-inline const ::std::string& MenuName::display() const {
-  return *display_;
-}
-inline void MenuName::set_display(const ::std::string& value) {
-  set_has_display();
-  if (display_ == &::google::protobuf::internal::kEmptyString) {
-    display_ = new ::std::string;
-  }
-  display_->assign(value);
-}
-inline void MenuName::set_display(const char* value) {
-  set_has_display();
-  if (display_ == &::google::protobuf::internal::kEmptyString) {
-    display_ = new ::std::string;
-  }
-  display_->assign(value);
-}
-inline void MenuName::set_display(const char* value, size_t size) {
-  set_has_display();
-  if (display_ == &::google::protobuf::internal::kEmptyString) {
-    display_ = new ::std::string;
-  }
-  display_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* MenuName::mutable_display() {
-  set_has_display();
-  if (display_ == &::google::protobuf::internal::kEmptyString) {
-    display_ = new ::std::string;
-  }
-  return display_;
-}
-inline ::std::string* MenuName::release_display() {
-  clear_has_display();
-  if (display_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = display_;
-    display_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void MenuName::set_allocated_display(::std::string* display) {
-  if (display_ != &::google::protobuf::internal::kEmptyString) {
-    delete display_;
-  }
-  if (display) {
-    set_has_display();
-    display_ = display;
-  } else {
-    clear_has_display();
-    display_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional string full = 2;
-inline bool MenuName::has_full() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MenuName::set_has_full() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void MenuName::clear_has_full() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void MenuName::clear_full() {
-  if (full_ != &::google::protobuf::internal::kEmptyString) {
-    full_->clear();
-  }
-  clear_has_full();
-}
-inline const ::std::string& MenuName::full() const {
-  return *full_;
-}
-inline void MenuName::set_full(const ::std::string& value) {
-  set_has_full();
-  if (full_ == &::google::protobuf::internal::kEmptyString) {
-    full_ = new ::std::string;
-  }
-  full_->assign(value);
-}
-inline void MenuName::set_full(const char* value) {
-  set_has_full();
-  if (full_ == &::google::protobuf::internal::kEmptyString) {
-    full_ = new ::std::string;
-  }
-  full_->assign(value);
-}
-inline void MenuName::set_full(const char* value, size_t size) {
-  set_has_full();
-  if (full_ == &::google::protobuf::internal::kEmptyString) {
-    full_ = new ::std::string;
-  }
-  full_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* MenuName::mutable_full() {
-  set_has_full();
-  if (full_ == &::google::protobuf::internal::kEmptyString) {
-    full_ = new ::std::string;
-  }
-  return full_;
-}
-inline ::std::string* MenuName::release_full() {
-  clear_has_full();
-  if (full_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = full_;
-    full_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void MenuName::set_allocated_full(::std::string* full) {
-  if (full_ != &::google::protobuf::internal::kEmptyString) {
-    delete full_;
-  }
-  if (full) {
-    set_has_full();
-    full_ = full;
-  } else {
-    clear_has_full();
-    full_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional string help = 3;
-inline bool MenuName::has_help() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void MenuName::set_has_help() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void MenuName::clear_has_help() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void MenuName::clear_help() {
-  if (help_ != &::google::protobuf::internal::kEmptyString) {
-    help_->clear();
-  }
-  clear_has_help();
-}
-inline const ::std::string& MenuName::help() const {
-  return *help_;
-}
-inline void MenuName::set_help(const ::std::string& value) {
-  set_has_help();
-  if (help_ == &::google::protobuf::internal::kEmptyString) {
-    help_ = new ::std::string;
-  }
-  help_->assign(value);
-}
-inline void MenuName::set_help(const char* value) {
-  set_has_help();
-  if (help_ == &::google::protobuf::internal::kEmptyString) {
-    help_ = new ::std::string;
-  }
-  help_->assign(value);
-}
-inline void MenuName::set_help(const char* value, size_t size) {
-  set_has_help();
-  if (help_ == &::google::protobuf::internal::kEmptyString) {
-    help_ = new ::std::string;
-  }
-  help_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* MenuName::mutable_help() {
-  set_has_help();
-  if (help_ == &::google::protobuf::internal::kEmptyString) {
-    help_ = new ::std::string;
-  }
-  return help_;
-}
-inline ::std::string* MenuName::release_help() {
-  clear_has_help();
-  if (help_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = help_;
-    help_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void MenuName::set_allocated_help(::std::string* help) {
-  if (help_ != &::google::protobuf::internal::kEmptyString) {
-    delete help_;
-  }
-  if (help) {
-    set_has_help();
-    help_ = help;
-  } else {
-    clear_has_help();
-    help_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// -------------------------------------------------------------------
-
-// MenuEntry
-
-// optional uint32 command = 1;
-inline bool MenuEntry::has_command() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void MenuEntry::set_has_command() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void MenuEntry::clear_has_command() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MenuEntry::clear_command() {
-  command_ = 0u;
-  clear_has_command();
-}
-inline ::google::protobuf::uint32 MenuEntry::command() const {
-  return command_;
-}
-inline void MenuEntry::set_command(::google::protobuf::uint32 value) {
-  set_has_command();
-  command_ = value;
-}
-
-// optional uint32 size = 2;
-inline bool MenuEntry::has_size() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MenuEntry::set_has_size() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void MenuEntry::clear_has_size() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void MenuEntry::clear_size() {
-  size_ = 0u;
-  clear_has_size();
-}
-inline ::google::protobuf::uint32 MenuEntry::size() const {
-  return size_;
-}
-inline void MenuEntry::set_size(::google::protobuf::uint32 value) {
-  set_has_size();
-  size_ = value;
-}
-
-// repeated .rec.gui.menu.MenuName name = 3;
-inline int MenuEntry::name_size() const {
-  return name_.size();
-}
-inline void MenuEntry::clear_name() {
-  name_.Clear();
-}
-inline const ::rec::gui::menu::MenuName& MenuEntry::name(int index) const {
-  return name_.Get(index);
-}
-inline ::rec::gui::menu::MenuName* MenuEntry::mutable_name(int index) {
-  return name_.Mutable(index);
-}
-inline ::rec::gui::menu::MenuName* MenuEntry::add_name() {
-  return name_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
-MenuEntry::name() const {
-  return name_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
-MenuEntry::mutable_name() {
-  return &name_;
-}
-
-// optional string name_maker = 4;
-inline bool MenuEntry::has_name_maker() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void MenuEntry::set_has_name_maker() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void MenuEntry::clear_has_name_maker() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void MenuEntry::clear_name_maker() {
-  if (name_maker_ != &::google::protobuf::internal::kEmptyString) {
-    name_maker_->clear();
-  }
-  clear_has_name_maker();
-}
-inline const ::std::string& MenuEntry::name_maker() const {
-  return *name_maker_;
-}
-inline void MenuEntry::set_name_maker(const ::std::string& value) {
-  set_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    name_maker_ = new ::std::string;
-  }
-  name_maker_->assign(value);
-}
-inline void MenuEntry::set_name_maker(const char* value) {
-  set_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    name_maker_ = new ::std::string;
-  }
-  name_maker_->assign(value);
-}
-inline void MenuEntry::set_name_maker(const char* value, size_t size) {
-  set_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    name_maker_ = new ::std::string;
-  }
-  name_maker_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* MenuEntry::mutable_name_maker() {
-  set_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    name_maker_ = new ::std::string;
-  }
-  return name_maker_;
-}
-inline ::std::string* MenuEntry::release_name_maker() {
-  clear_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = name_maker_;
-    name_maker_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void MenuEntry::set_allocated_name_maker(::std::string* name_maker) {
-  if (name_maker_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_maker_;
-  }
-  if (name_maker) {
-    set_has_name_maker();
-    name_maker_ = name_maker;
-  } else {
-    clear_has_name_maker();
-    name_maker_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// repeated string hidden = 5;
-inline int MenuEntry::hidden_size() const {
-  return hidden_.size();
-}
-inline void MenuEntry::clear_hidden() {
-  hidden_.Clear();
-}
-inline const ::std::string& MenuEntry::hidden(int index) const {
-  return hidden_.Get(index);
-}
-inline ::std::string* MenuEntry::mutable_hidden(int index) {
-  return hidden_.Mutable(index);
-}
-inline void MenuEntry::set_hidden(int index, const ::std::string& value) {
-  hidden_.Mutable(index)->assign(value);
-}
-inline void MenuEntry::set_hidden(int index, const char* value) {
-  hidden_.Mutable(index)->assign(value);
-}
-inline void MenuEntry::set_hidden(int index, const char* value, size_t size) {
-  hidden_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* MenuEntry::add_hidden() {
-  return hidden_.Add();
-}
-inline void MenuEntry::add_hidden(const ::std::string& value) {
-  hidden_.Add()->assign(value);
-}
-inline void MenuEntry::add_hidden(const char* value) {
-  hidden_.Add()->assign(value);
-}
-inline void MenuEntry::add_hidden(const char* value, size_t size) {
-  hidden_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-MenuEntry::hidden() const {
-  return hidden_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-MenuEntry::mutable_hidden() {
-  return &hidden_;
-}
-
-// repeated string checked = 6;
-inline int MenuEntry::checked_size() const {
-  return checked_.size();
-}
-inline void MenuEntry::clear_checked() {
-  checked_.Clear();
-}
-inline const ::std::string& MenuEntry::checked(int index) const {
-  return checked_.Get(index);
-}
-inline ::std::string* MenuEntry::mutable_checked(int index) {
-  return checked_.Mutable(index);
-}
-inline void MenuEntry::set_checked(int index, const ::std::string& value) {
-  checked_.Mutable(index)->assign(value);
-}
-inline void MenuEntry::set_checked(int index, const char* value) {
-  checked_.Mutable(index)->assign(value);
-}
-inline void MenuEntry::set_checked(int index, const char* value, size_t size) {
-  checked_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* MenuEntry::add_checked() {
-  return checked_.Add();
-}
-inline void MenuEntry::add_checked(const ::std::string& value) {
-  checked_.Add()->assign(value);
-}
-inline void MenuEntry::add_checked(const char* value) {
-  checked_.Add()->assign(value);
-}
-inline void MenuEntry::add_checked(const char* value, size_t size) {
-  checked_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-MenuEntry::checked() const {
-  return checked_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-MenuEntry::mutable_checked() {
-  return &checked_;
-}
-
-// -------------------------------------------------------------------
-
 // Menu
 
-// optional .rec.gui.menu.MenuName name = 1;
-inline bool Menu::has_name() const {
+// optional .rec.command.Description description = 1;
+inline bool Menu::has_description() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Menu::set_has_name() {
+inline void Menu::set_has_description() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Menu::clear_has_name() {
+inline void Menu::clear_has_description() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Menu::clear_name() {
-  if (name_ != NULL) name_->::rec::gui::menu::MenuName::Clear();
-  clear_has_name();
+inline void Menu::clear_description() {
+  if (description_ != NULL) description_->::rec::command::Description::Clear();
+  clear_has_description();
 }
-inline const ::rec::gui::menu::MenuName& Menu::name() const {
-  return name_ != NULL ? *name_ : *default_instance_->name_;
+inline const ::rec::command::Description& Menu::description() const {
+  return description_ != NULL ? *description_ : *default_instance_->description_;
 }
-inline ::rec::gui::menu::MenuName* Menu::mutable_name() {
-  set_has_name();
-  if (name_ == NULL) name_ = new ::rec::gui::menu::MenuName;
-  return name_;
+inline ::rec::command::Description* Menu::mutable_description() {
+  set_has_description();
+  if (description_ == NULL) description_ = new ::rec::command::Description;
+  return description_;
 }
-inline ::rec::gui::menu::MenuName* Menu::release_name() {
-  clear_has_name();
-  ::rec::gui::menu::MenuName* temp = name_;
-  name_ = NULL;
+inline ::rec::command::Description* Menu::release_description() {
+  clear_has_description();
+  ::rec::command::Description* temp = description_;
+  description_ = NULL;
   return temp;
 }
-inline void Menu::set_allocated_name(::rec::gui::menu::MenuName* name) {
-  delete name_;
-  name_ = name;
-  if (name) {
-    set_has_name();
+inline void Menu::set_allocated_description(::rec::command::Description* description) {
+  delete description_;
+  description_ = description;
+  if (description) {
+    set_has_description();
   } else {
-    clear_has_name();
+    clear_has_description();
   }
 }
 
@@ -1120,67 +493,115 @@ Menu::mutable_entry() {
 
 // -------------------------------------------------------------------
 
+// Menus
+
+// repeated .rec.gui.menu.Menu menu = 1;
+inline int Menus::menu_size() const {
+  return menu_.size();
+}
+inline void Menus::clear_menu() {
+  menu_.Clear();
+}
+inline const ::rec::gui::menu::Menu& Menus::menu(int index) const {
+  return menu_.Get(index);
+}
+inline ::rec::gui::menu::Menu* Menus::mutable_menu(int index) {
+  return menu_.Mutable(index);
+}
+inline ::rec::gui::menu::Menu* Menus::add_menu() {
+  return menu_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu >&
+Menus::menu() const {
+  return menu_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::Menu >*
+Menus::mutable_menu() {
+  return &menu_;
+}
+
+// -------------------------------------------------------------------
+
 // MenuBar
 
-// optional .rec.gui.menu.MenuName name = 1;
-inline bool MenuBar::has_name() const {
+// optional .rec.command.Description description = 1;
+inline bool MenuBar::has_description() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MenuBar::set_has_name() {
+inline void MenuBar::set_has_description() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MenuBar::clear_has_name() {
+inline void MenuBar::clear_has_description() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void MenuBar::clear_name() {
-  if (name_ != NULL) name_->::rec::gui::menu::MenuName::Clear();
-  clear_has_name();
+inline void MenuBar::clear_description() {
+  if (description_ != NULL) description_->::rec::command::Description::Clear();
+  clear_has_description();
 }
-inline const ::rec::gui::menu::MenuName& MenuBar::name() const {
-  return name_ != NULL ? *name_ : *default_instance_->name_;
+inline const ::rec::command::Description& MenuBar::description() const {
+  return description_ != NULL ? *description_ : *default_instance_->description_;
 }
-inline ::rec::gui::menu::MenuName* MenuBar::mutable_name() {
-  set_has_name();
-  if (name_ == NULL) name_ = new ::rec::gui::menu::MenuName;
-  return name_;
+inline ::rec::command::Description* MenuBar::mutable_description() {
+  set_has_description();
+  if (description_ == NULL) description_ = new ::rec::command::Description;
+  return description_;
 }
-inline ::rec::gui::menu::MenuName* MenuBar::release_name() {
-  clear_has_name();
-  ::rec::gui::menu::MenuName* temp = name_;
-  name_ = NULL;
+inline ::rec::command::Description* MenuBar::release_description() {
+  clear_has_description();
+  ::rec::command::Description* temp = description_;
+  description_ = NULL;
   return temp;
 }
-inline void MenuBar::set_allocated_name(::rec::gui::menu::MenuName* name) {
-  delete name_;
-  name_ = name;
-  if (name) {
-    set_has_name();
+inline void MenuBar::set_allocated_description(::rec::command::Description* description) {
+  delete description_;
+  description_ = description;
+  if (description) {
+    set_has_description();
   } else {
-    clear_has_name();
+    clear_has_description();
   }
 }
 
-// repeated .rec.gui.menu.MenuName menu = 2;
+// repeated string menu = 2;
 inline int MenuBar::menu_size() const {
   return menu_.size();
 }
 inline void MenuBar::clear_menu() {
   menu_.Clear();
 }
-inline const ::rec::gui::menu::MenuName& MenuBar::menu(int index) const {
+inline const ::std::string& MenuBar::menu(int index) const {
   return menu_.Get(index);
 }
-inline ::rec::gui::menu::MenuName* MenuBar::mutable_menu(int index) {
+inline ::std::string* MenuBar::mutable_menu(int index) {
   return menu_.Mutable(index);
 }
-inline ::rec::gui::menu::MenuName* MenuBar::add_menu() {
+inline void MenuBar::set_menu(int index, const ::std::string& value) {
+  menu_.Mutable(index)->assign(value);
+}
+inline void MenuBar::set_menu(int index, const char* value) {
+  menu_.Mutable(index)->assign(value);
+}
+inline void MenuBar::set_menu(int index, const char* value, size_t size) {
+  menu_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* MenuBar::add_menu() {
   return menu_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
+inline void MenuBar::add_menu(const ::std::string& value) {
+  menu_.Add()->assign(value);
+}
+inline void MenuBar::add_menu(const char* value) {
+  menu_.Add()->assign(value);
+}
+inline void MenuBar::add_menu(const char* value, size_t size) {
+  menu_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
 MenuBar::menu() const {
   return menu_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 MenuBar::mutable_menu() {
   return &menu_;
 }
@@ -1189,65 +610,65 @@ MenuBar::mutable_menu() {
 
 // MenuCollection
 
-// optional .rec.gui.menu.MenuName name = 1;
-inline bool MenuCollection::has_name() const {
+// optional .rec.command.Description description = 1;
+inline bool MenuCollection::has_description() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MenuCollection::set_has_name() {
+inline void MenuCollection::set_has_description() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MenuCollection::clear_has_name() {
+inline void MenuCollection::clear_has_description() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void MenuCollection::clear_name() {
-  if (name_ != NULL) name_->::rec::gui::menu::MenuName::Clear();
-  clear_has_name();
+inline void MenuCollection::clear_description() {
+  if (description_ != NULL) description_->::rec::command::Description::Clear();
+  clear_has_description();
 }
-inline const ::rec::gui::menu::MenuName& MenuCollection::name() const {
-  return name_ != NULL ? *name_ : *default_instance_->name_;
+inline const ::rec::command::Description& MenuCollection::description() const {
+  return description_ != NULL ? *description_ : *default_instance_->description_;
 }
-inline ::rec::gui::menu::MenuName* MenuCollection::mutable_name() {
-  set_has_name();
-  if (name_ == NULL) name_ = new ::rec::gui::menu::MenuName;
-  return name_;
+inline ::rec::command::Description* MenuCollection::mutable_description() {
+  set_has_description();
+  if (description_ == NULL) description_ = new ::rec::command::Description;
+  return description_;
 }
-inline ::rec::gui::menu::MenuName* MenuCollection::release_name() {
-  clear_has_name();
-  ::rec::gui::menu::MenuName* temp = name_;
-  name_ = NULL;
+inline ::rec::command::Description* MenuCollection::release_description() {
+  clear_has_description();
+  ::rec::command::Description* temp = description_;
+  description_ = NULL;
   return temp;
 }
-inline void MenuCollection::set_allocated_name(::rec::gui::menu::MenuName* name) {
-  delete name_;
-  name_ = name;
-  if (name) {
-    set_has_name();
+inline void MenuCollection::set_allocated_description(::rec::command::Description* description) {
+  delete description_;
+  description_ = description;
+  if (description) {
+    set_has_description();
   } else {
-    clear_has_name();
+    clear_has_description();
   }
 }
 
-// repeated .rec.gui.menu.MenuName menu_bar = 2;
+// repeated .rec.gui.menu.MenuBar menu_bar = 2;
 inline int MenuCollection::menu_bar_size() const {
   return menu_bar_.size();
 }
 inline void MenuCollection::clear_menu_bar() {
   menu_bar_.Clear();
 }
-inline const ::rec::gui::menu::MenuName& MenuCollection::menu_bar(int index) const {
+inline const ::rec::gui::menu::MenuBar& MenuCollection::menu_bar(int index) const {
   return menu_bar_.Get(index);
 }
-inline ::rec::gui::menu::MenuName* MenuCollection::mutable_menu_bar(int index) {
+inline ::rec::gui::menu::MenuBar* MenuCollection::mutable_menu_bar(int index) {
   return menu_bar_.Mutable(index);
 }
-inline ::rec::gui::menu::MenuName* MenuCollection::add_menu_bar() {
+inline ::rec::gui::menu::MenuBar* MenuCollection::add_menu_bar() {
   return menu_bar_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar >&
 MenuCollection::menu_bar() const {
   return menu_bar_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuName >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::gui::menu::MenuBar >*
 MenuCollection::mutable_menu_bar() {
   return &menu_bar_;
 }

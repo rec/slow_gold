@@ -22,15 +22,12 @@ namespace menu {
 
 namespace {
 
-const ::google::protobuf::Descriptor* MenuName_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  MenuName_reflection_ = NULL;
-const ::google::protobuf::Descriptor* MenuEntry_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  MenuEntry_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Menu_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Menu_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Menus_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Menus_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MenuBar_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MenuBar_reflection_ = NULL;
@@ -47,46 +44,9 @@ void protobuf_AssignDesc_rec_2fgui_2fmenu_2fMenu_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/gui/menu/Menu.proto");
   GOOGLE_CHECK(file != NULL);
-  MenuName_descriptor_ = file->message_type(0);
-  static const int MenuName_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuName, display_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuName, full_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuName, help_),
-  };
-  MenuName_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      MenuName_descriptor_,
-      MenuName::default_instance_,
-      MenuName_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuName, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuName, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(MenuName));
-  MenuEntry_descriptor_ = file->message_type(1);
-  static const int MenuEntry_offsets_[6] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, command_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, name_maker_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, hidden_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, checked_),
-  };
-  MenuEntry_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      MenuEntry_descriptor_,
-      MenuEntry::default_instance_,
-      MenuEntry_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(MenuEntry));
-  Menu_descriptor_ = file->message_type(2);
+  Menu_descriptor_ = file->message_type(0);
   static const int Menu_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Menu, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Menu, description_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Menu, entry_),
   };
   Menu_reflection_ =
@@ -100,9 +60,24 @@ void protobuf_AssignDesc_rec_2fgui_2fmenu_2fMenu_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Menu));
-  MenuBar_descriptor_ = file->message_type(3);
+  Menus_descriptor_ = file->message_type(1);
+  static const int Menus_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Menus, menu_),
+  };
+  Menus_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      Menus_descriptor_,
+      Menus::default_instance_,
+      Menus_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Menus, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Menus, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(Menus));
+  MenuBar_descriptor_ = file->message_type(2);
   static const int MenuBar_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuBar, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuBar, description_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuBar, menu_),
   };
   MenuBar_reflection_ =
@@ -116,9 +91,9 @@ void protobuf_AssignDesc_rec_2fgui_2fmenu_2fMenu_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MenuBar));
-  MenuCollection_descriptor_ = file->message_type(4);
+  MenuCollection_descriptor_ = file->message_type(3);
   static const int MenuCollection_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuCollection, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuCollection, description_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuCollection, menu_bar_),
   };
   MenuCollection_reflection_ =
@@ -145,11 +120,9 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    MenuName_descriptor_, &MenuName::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    MenuEntry_descriptor_, &MenuEntry::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Menu_descriptor_, &Menu::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    Menus_descriptor_, &Menus::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MenuBar_descriptor_, &MenuBar::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -159,12 +132,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fgui_2fmenu_2fMenu_2eproto() {
-  delete MenuName::default_instance_;
-  delete MenuName_reflection_;
-  delete MenuEntry::default_instance_;
-  delete MenuEntry_reflection_;
   delete Menu::default_instance_;
   delete Menu_reflection_;
+  delete Menus::default_instance_;
+  delete Menus_reflection_;
   delete MenuBar::default_instance_;
   delete MenuBar_reflection_;
   delete MenuCollection::default_instance_;
@@ -177,29 +148,25 @@ void protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::rec::command::protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\027rec/gui/menu/Menu.proto\022\014rec.gui.menu\""
-    "7\n\010MenuName\022\017\n\007display\030\001 \001(\t\022\014\n\004full\030\002 \001"
-    "(\t\022\014\n\004help\030\003 \001(\t\"\205\001\n\tMenuEntry\022\017\n\007comman"
-    "d\030\001 \001(\r\022\014\n\004size\030\002 \001(\r\022$\n\004name\030\003 \003(\0132\026.re"
-    "c.gui.menu.MenuName\022\022\n\nname_maker\030\004 \001(\t\022"
-    "\016\n\006hidden\030\005 \003(\t\022\017\n\007checked\030\006 \003(\t\";\n\004Menu"
-    "\022$\n\004name\030\001 \001(\0132\026.rec.gui.menu.MenuName\022\r"
-    "\n\005entry\030\002 \003(\r\"U\n\007MenuBar\022$\n\004name\030\001 \001(\0132\026"
-    ".rec.gui.menu.MenuName\022$\n\004menu\030\002 \003(\0132\026.r"
-    "ec.gui.menu.MenuName\"`\n\016MenuCollection\022$"
-    "\n\004name\030\001 \001(\0132\026.rec.gui.menu.MenuName\022(\n\010"
-    "menu_bar\030\002 \003(\0132\026.rec.gui.menu.MenuName", 478);
+    "\n\027rec/gui/menu/Menu.proto\022\014rec.gui.menu\032"
+    "\031rec/command/Command.proto\"D\n\004Menu\022-\n\013de"
+    "scription\030\001 \001(\0132\030.rec.command.Descriptio"
+    "n\022\r\n\005entry\030\002 \003(\r\")\n\005Menus\022 \n\004menu\030\001 \003(\0132"
+    "\022.rec.gui.menu.Menu\"F\n\007MenuBar\022-\n\013descri"
+    "ption\030\001 \001(\0132\030.rec.command.Description\022\014\n"
+    "\004menu\030\002 \003(\t\"h\n\016MenuCollection\022-\n\013descrip"
+    "tion\030\001 \001(\0132\030.rec.command.Description\022\'\n\010"
+    "menu_bar\030\002 \003(\0132\025.rec.gui.menu.MenuBar", 357);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/menu/Menu.proto", &protobuf_RegisterTypes);
-  MenuName::default_instance_ = new MenuName();
-  MenuEntry::default_instance_ = new MenuEntry();
   Menu::default_instance_ = new Menu();
+  Menus::default_instance_ = new Menus();
   MenuBar::default_instance_ = new MenuBar();
   MenuCollection::default_instance_ = new MenuCollection();
-  MenuName::default_instance_->InitAsDefaultInstance();
-  MenuEntry::default_instance_->InitAsDefaultInstance();
   Menu::default_instance_->InitAsDefaultInstance();
+  Menus::default_instance_->InitAsDefaultInstance();
   MenuBar::default_instance_->InitAsDefaultInstance();
   MenuCollection::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fmenu_2fMenu_2eproto);
@@ -215,787 +182,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fmenu_2fMenu_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MenuName::kDisplayFieldNumber;
-const int MenuName::kFullFieldNumber;
-const int MenuName::kHelpFieldNumber;
-#endif  // !_MSC_VER
-
-MenuName::MenuName()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void MenuName::InitAsDefaultInstance() {
-}
-
-MenuName::MenuName(const MenuName& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void MenuName::SharedCtor() {
-  _cached_size_ = 0;
-  display_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  full_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  help_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-MenuName::~MenuName() {
-  SharedDtor();
-}
-
-void MenuName::SharedDtor() {
-  if (display_ != &::google::protobuf::internal::kEmptyString) {
-    delete display_;
-  }
-  if (full_ != &::google::protobuf::internal::kEmptyString) {
-    delete full_;
-  }
-  if (help_ != &::google::protobuf::internal::kEmptyString) {
-    delete help_;
-  }
-  if (this != default_instance_) {
-  }
-}
-
-void MenuName::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* MenuName::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return MenuName_descriptor_;
-}
-
-const MenuName& MenuName::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
-  return *default_instance_;
-}
-
-MenuName* MenuName::default_instance_ = NULL;
-
-MenuName* MenuName::New() const {
-  return new MenuName;
-}
-
-void MenuName::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_display()) {
-      if (display_ != &::google::protobuf::internal::kEmptyString) {
-        display_->clear();
-      }
-    }
-    if (has_full()) {
-      if (full_ != &::google::protobuf::internal::kEmptyString) {
-        full_->clear();
-      }
-    }
-    if (has_help()) {
-      if (help_ != &::google::protobuf::internal::kEmptyString) {
-        help_->clear();
-      }
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool MenuName::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string display = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_display()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->display().data(), this->display().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_full;
-        break;
-      }
-
-      // optional string full = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_full:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_full()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->full().data(), this->full().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_help;
-        break;
-      }
-
-      // optional string help = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_help:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_help()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->help().data(), this->help().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void MenuName::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string display = 1;
-  if (has_display()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->display().data(), this->display().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->display(), output);
-  }
-
-  // optional string full = 2;
-  if (has_full()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->full().data(), this->full().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->full(), output);
-  }
-
-  // optional string help = 3;
-  if (has_help()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->help().data(), this->help().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->help(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* MenuName::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional string display = 1;
-  if (has_display()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->display().data(), this->display().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->display(), target);
-  }
-
-  // optional string full = 2;
-  if (has_full()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->full().data(), this->full().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->full(), target);
-  }
-
-  // optional string help = 3;
-  if (has_help()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->help().data(), this->help().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->help(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int MenuName::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string display = 1;
-    if (has_display()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->display());
-    }
-
-    // optional string full = 2;
-    if (has_full()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->full());
-    }
-
-    // optional string help = 3;
-    if (has_help()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->help());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void MenuName::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const MenuName* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const MenuName*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void MenuName::MergeFrom(const MenuName& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_display()) {
-      set_display(from.display());
-    }
-    if (from.has_full()) {
-      set_full(from.full());
-    }
-    if (from.has_help()) {
-      set_help(from.help());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void MenuName::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void MenuName::CopyFrom(const MenuName& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool MenuName::IsInitialized() const {
-
-  return true;
-}
-
-void MenuName::Swap(MenuName* other) {
-  if (other != this) {
-    std::swap(display_, other->display_);
-    std::swap(full_, other->full_);
-    std::swap(help_, other->help_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata MenuName::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = MenuName_descriptor_;
-  metadata.reflection = MenuName_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int MenuEntry::kCommandFieldNumber;
-const int MenuEntry::kSizeFieldNumber;
-const int MenuEntry::kNameFieldNumber;
-const int MenuEntry::kNameMakerFieldNumber;
-const int MenuEntry::kHiddenFieldNumber;
-const int MenuEntry::kCheckedFieldNumber;
-#endif  // !_MSC_VER
-
-MenuEntry::MenuEntry()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void MenuEntry::InitAsDefaultInstance() {
-}
-
-MenuEntry::MenuEntry(const MenuEntry& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void MenuEntry::SharedCtor() {
-  _cached_size_ = 0;
-  command_ = 0u;
-  size_ = 0u;
-  name_maker_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-MenuEntry::~MenuEntry() {
-  SharedDtor();
-}
-
-void MenuEntry::SharedDtor() {
-  if (name_maker_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_maker_;
-  }
-  if (this != default_instance_) {
-  }
-}
-
-void MenuEntry::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* MenuEntry::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return MenuEntry_descriptor_;
-}
-
-const MenuEntry& MenuEntry::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
-  return *default_instance_;
-}
-
-MenuEntry* MenuEntry::default_instance_ = NULL;
-
-MenuEntry* MenuEntry::New() const {
-  return new MenuEntry;
-}
-
-void MenuEntry::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    command_ = 0u;
-    size_ = 0u;
-    if (has_name_maker()) {
-      if (name_maker_ != &::google::protobuf::internal::kEmptyString) {
-        name_maker_->clear();
-      }
-    }
-  }
-  name_.Clear();
-  hidden_.Clear();
-  checked_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool MenuEntry::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 command = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &command_)));
-          set_has_command();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_size;
-        break;
-      }
-
-      // optional uint32 size = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_size:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &size_)));
-          set_has_size();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_name;
-        break;
-      }
-
-      // repeated .rec.gui.menu.MenuName name = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_name()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_name;
-        if (input->ExpectTag(34)) goto parse_name_maker;
-        break;
-      }
-
-      // optional string name_maker = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name_maker:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name_maker()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name_maker().data(), this->name_maker().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(42)) goto parse_hidden;
-        break;
-      }
-
-      // repeated string hidden = 5;
-      case 5: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_hidden:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_hidden()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->hidden(this->hidden_size() - 1).data(),
-            this->hidden(this->hidden_size() - 1).length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(42)) goto parse_hidden;
-        if (input->ExpectTag(50)) goto parse_checked;
-        break;
-      }
-
-      // repeated string checked = 6;
-      case 6: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_checked:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_checked()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->checked(this->checked_size() - 1).data(),
-            this->checked(this->checked_size() - 1).length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(50)) goto parse_checked;
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void MenuEntry::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 command = 1;
-  if (has_command()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->command(), output);
-  }
-
-  // optional uint32 size = 2;
-  if (has_size()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->size(), output);
-  }
-
-  // repeated .rec.gui.menu.MenuName name = 3;
-  for (int i = 0; i < this->name_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->name(i), output);
-  }
-
-  // optional string name_maker = 4;
-  if (has_name_maker()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name_maker().data(), this->name_maker().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      4, this->name_maker(), output);
-  }
-
-  // repeated string hidden = 5;
-  for (int i = 0; i < this->hidden_size(); i++) {
-  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-    this->hidden(i).data(), this->hidden(i).length(),
-    ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      5, this->hidden(i), output);
-  }
-
-  // repeated string checked = 6;
-  for (int i = 0; i < this->checked_size(); i++) {
-  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-    this->checked(i).data(), this->checked(i).length(),
-    ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      6, this->checked(i), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* MenuEntry::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional uint32 command = 1;
-  if (has_command()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->command(), target);
-  }
-
-  // optional uint32 size = 2;
-  if (has_size()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->size(), target);
-  }
-
-  // repeated .rec.gui.menu.MenuName name = 3;
-  for (int i = 0; i < this->name_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->name(i), target);
-  }
-
-  // optional string name_maker = 4;
-  if (has_name_maker()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name_maker().data(), this->name_maker().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->name_maker(), target);
-  }
-
-  // repeated string hidden = 5;
-  for (int i = 0; i < this->hidden_size(); i++) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->hidden(i).data(), this->hidden(i).length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(5, this->hidden(i), target);
-  }
-
-  // repeated string checked = 6;
-  for (int i = 0; i < this->checked_size(); i++) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->checked(i).data(), this->checked(i).length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(6, this->checked(i), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int MenuEntry::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint32 command = 1;
-    if (has_command()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->command());
-    }
-
-    // optional uint32 size = 2;
-    if (has_size()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->size());
-    }
-
-    // optional string name_maker = 4;
-    if (has_name_maker()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name_maker());
-    }
-
-  }
-  // repeated .rec.gui.menu.MenuName name = 3;
-  total_size += 1 * this->name_size();
-  for (int i = 0; i < this->name_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->name(i));
-  }
-
-  // repeated string hidden = 5;
-  total_size += 1 * this->hidden_size();
-  for (int i = 0; i < this->hidden_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->hidden(i));
-  }
-
-  // repeated string checked = 6;
-  total_size += 1 * this->checked_size();
-  for (int i = 0; i < this->checked_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->checked(i));
-  }
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void MenuEntry::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const MenuEntry* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const MenuEntry*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void MenuEntry::MergeFrom(const MenuEntry& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  name_.MergeFrom(from.name_);
-  hidden_.MergeFrom(from.hidden_);
-  checked_.MergeFrom(from.checked_);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_command()) {
-      set_command(from.command());
-    }
-    if (from.has_size()) {
-      set_size(from.size());
-    }
-    if (from.has_name_maker()) {
-      set_name_maker(from.name_maker());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void MenuEntry::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void MenuEntry::CopyFrom(const MenuEntry& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool MenuEntry::IsInitialized() const {
-
-  return true;
-}
-
-void MenuEntry::Swap(MenuEntry* other) {
-  if (other != this) {
-    std::swap(command_, other->command_);
-    std::swap(size_, other->size_);
-    name_.Swap(&other->name_);
-    std::swap(name_maker_, other->name_maker_);
-    hidden_.Swap(&other->hidden_);
-    checked_.Swap(&other->checked_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata MenuEntry::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = MenuEntry_descriptor_;
-  metadata.reflection = MenuEntry_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int Menu::kNameFieldNumber;
+const int Menu::kDescriptionFieldNumber;
 const int Menu::kEntryFieldNumber;
 #endif  // !_MSC_VER
 
@@ -1005,7 +192,7 @@ Menu::Menu()
 }
 
 void Menu::InitAsDefaultInstance() {
-  name_ = const_cast< ::rec::gui::menu::MenuName*>(&::rec::gui::menu::MenuName::default_instance());
+  description_ = const_cast< ::rec::command::Description*>(&::rec::command::Description::default_instance());
 }
 
 Menu::Menu(const Menu& from)
@@ -1016,7 +203,7 @@ Menu::Menu(const Menu& from)
 
 void Menu::SharedCtor() {
   _cached_size_ = 0;
-  name_ = NULL;
+  description_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1026,7 +213,7 @@ Menu::~Menu() {
 
 void Menu::SharedDtor() {
   if (this != default_instance_) {
-    delete name_;
+    delete description_;
   }
 }
 
@@ -1053,8 +240,8 @@ Menu* Menu::New() const {
 
 void Menu::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_name()) {
-      if (name_ != NULL) name_->::rec::gui::menu::MenuName::Clear();
+    if (has_description()) {
+      if (description_ != NULL) description_->::rec::command::Description::Clear();
     }
   }
   entry_.Clear();
@@ -1068,12 +255,12 @@ bool Menu::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.menu.MenuName name = 1;
+      // optional .rec.command.Description description = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_name()));
+               input, mutable_description()));
         } else {
           goto handle_uninterpreted;
         }
@@ -1121,10 +308,10 @@ bool Menu::MergePartialFromCodedStream(
 
 void Menu::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.menu.MenuName name = 1;
-  if (has_name()) {
+  // optional .rec.command.Description description = 1;
+  if (has_description()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->name(), output);
+      1, this->description(), output);
   }
 
   // repeated uint32 entry = 2;
@@ -1141,11 +328,11 @@ void Menu::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Menu::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.menu.MenuName name = 1;
-  if (has_name()) {
+  // optional .rec.command.Description description = 1;
+  if (has_description()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->name(), target);
+        1, this->description(), target);
   }
 
   // repeated uint32 entry = 2;
@@ -1165,11 +352,11 @@ int Menu::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.menu.MenuName name = 1;
-    if (has_name()) {
+    // optional .rec.command.Description description = 1;
+    if (has_description()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->name());
+          this->description());
     }
 
   }
@@ -1210,8 +397,8 @@ void Menu::MergeFrom(const Menu& from) {
   GOOGLE_CHECK_NE(&from, this);
   entry_.MergeFrom(from.entry_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_name()) {
-      mutable_name()->::rec::gui::menu::MenuName::MergeFrom(from.name());
+    if (from.has_description()) {
+      mutable_description()->::rec::command::Description::MergeFrom(from.description());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1236,7 +423,7 @@ bool Menu::IsInitialized() const {
 
 void Menu::Swap(Menu* other) {
   if (other != this) {
-    std::swap(name_, other->name_);
+    std::swap(description_, other->description_);
     entry_.Swap(&other->entry_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -1256,7 +443,210 @@ void Menu::Swap(Menu* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MenuBar::kNameFieldNumber;
+const int Menus::kMenuFieldNumber;
+#endif  // !_MSC_VER
+
+Menus::Menus()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void Menus::InitAsDefaultInstance() {
+}
+
+Menus::Menus(const Menus& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Menus::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Menus::~Menus() {
+  SharedDtor();
+}
+
+void Menus::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void Menus::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Menus::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Menus_descriptor_;
+}
+
+const Menus& Menus::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fmenu_2fMenu_2eproto();
+  return *default_instance_;
+}
+
+Menus* Menus::default_instance_ = NULL;
+
+Menus* Menus::New() const {
+  return new Menus;
+}
+
+void Menus::Clear() {
+  menu_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool Menus::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .rec.gui.menu.Menu menu = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_menu:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_menu()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(10)) goto parse_menu;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void Menus::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated .rec.gui.menu.Menu menu = 1;
+  for (int i = 0; i < this->menu_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->menu(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* Menus::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // repeated .rec.gui.menu.Menu menu = 1;
+  for (int i = 0; i < this->menu_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->menu(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int Menus::ByteSize() const {
+  int total_size = 0;
+
+  // repeated .rec.gui.menu.Menu menu = 1;
+  total_size += 1 * this->menu_size();
+  for (int i = 0; i < this->menu_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->menu(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Menus::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const Menus* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Menus*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Menus::MergeFrom(const Menus& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  menu_.MergeFrom(from.menu_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void Menus::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Menus::CopyFrom(const Menus& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Menus::IsInitialized() const {
+
+  return true;
+}
+
+void Menus::Swap(Menus* other) {
+  if (other != this) {
+    menu_.Swap(&other->menu_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata Menus::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Menus_descriptor_;
+  metadata.reflection = Menus_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MenuBar::kDescriptionFieldNumber;
 const int MenuBar::kMenuFieldNumber;
 #endif  // !_MSC_VER
 
@@ -1266,7 +656,7 @@ MenuBar::MenuBar()
 }
 
 void MenuBar::InitAsDefaultInstance() {
-  name_ = const_cast< ::rec::gui::menu::MenuName*>(&::rec::gui::menu::MenuName::default_instance());
+  description_ = const_cast< ::rec::command::Description*>(&::rec::command::Description::default_instance());
 }
 
 MenuBar::MenuBar(const MenuBar& from)
@@ -1277,7 +667,7 @@ MenuBar::MenuBar(const MenuBar& from)
 
 void MenuBar::SharedCtor() {
   _cached_size_ = 0;
-  name_ = NULL;
+  description_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1287,7 +677,7 @@ MenuBar::~MenuBar() {
 
 void MenuBar::SharedDtor() {
   if (this != default_instance_) {
-    delete name_;
+    delete description_;
   }
 }
 
@@ -1314,8 +704,8 @@ MenuBar* MenuBar::New() const {
 
 void MenuBar::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_name()) {
-      if (name_ != NULL) name_->::rec::gui::menu::MenuName::Clear();
+    if (has_description()) {
+      if (description_ != NULL) description_->::rec::command::Description::Clear();
     }
   }
   menu_.Clear();
@@ -1329,12 +719,12 @@ bool MenuBar::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.menu.MenuName name = 1;
+      // optional .rec.command.Description description = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_name()));
+               input, mutable_description()));
         } else {
           goto handle_uninterpreted;
         }
@@ -1342,13 +732,17 @@ bool MenuBar::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .rec.gui.menu.MenuName menu = 2;
+      // repeated string menu = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_menu:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_menu()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_menu()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->menu(this->menu_size() - 1).data(),
+            this->menu(this->menu_size() - 1).length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -1375,15 +769,18 @@ bool MenuBar::MergePartialFromCodedStream(
 
 void MenuBar::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.menu.MenuName name = 1;
-  if (has_name()) {
+  // optional .rec.command.Description description = 1;
+  if (has_description()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->name(), output);
+      1, this->description(), output);
   }
 
-  // repeated .rec.gui.menu.MenuName menu = 2;
+  // repeated string menu = 2;
   for (int i = 0; i < this->menu_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->menu(i).data(), this->menu(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
       2, this->menu(i), output);
   }
 
@@ -1395,18 +792,20 @@ void MenuBar::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* MenuBar::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.menu.MenuName name = 1;
-  if (has_name()) {
+  // optional .rec.command.Description description = 1;
+  if (has_description()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->name(), target);
+        1, this->description(), target);
   }
 
-  // repeated .rec.gui.menu.MenuName menu = 2;
+  // repeated string menu = 2;
   for (int i = 0; i < this->menu_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->menu(i).data(), this->menu(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->menu(i), target);
+      WriteStringToArray(2, this->menu(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1420,20 +819,19 @@ int MenuBar::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.menu.MenuName name = 1;
-    if (has_name()) {
+    // optional .rec.command.Description description = 1;
+    if (has_description()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->name());
+          this->description());
     }
 
   }
-  // repeated .rec.gui.menu.MenuName menu = 2;
+  // repeated string menu = 2;
   total_size += 1 * this->menu_size();
   for (int i = 0; i < this->menu_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->menu(i));
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->menu(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -1463,8 +861,8 @@ void MenuBar::MergeFrom(const MenuBar& from) {
   GOOGLE_CHECK_NE(&from, this);
   menu_.MergeFrom(from.menu_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_name()) {
-      mutable_name()->::rec::gui::menu::MenuName::MergeFrom(from.name());
+    if (from.has_description()) {
+      mutable_description()->::rec::command::Description::MergeFrom(from.description());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1489,7 +887,7 @@ bool MenuBar::IsInitialized() const {
 
 void MenuBar::Swap(MenuBar* other) {
   if (other != this) {
-    std::swap(name_, other->name_);
+    std::swap(description_, other->description_);
     menu_.Swap(&other->menu_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -1509,7 +907,7 @@ void MenuBar::Swap(MenuBar* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MenuCollection::kNameFieldNumber;
+const int MenuCollection::kDescriptionFieldNumber;
 const int MenuCollection::kMenuBarFieldNumber;
 #endif  // !_MSC_VER
 
@@ -1519,7 +917,7 @@ MenuCollection::MenuCollection()
 }
 
 void MenuCollection::InitAsDefaultInstance() {
-  name_ = const_cast< ::rec::gui::menu::MenuName*>(&::rec::gui::menu::MenuName::default_instance());
+  description_ = const_cast< ::rec::command::Description*>(&::rec::command::Description::default_instance());
 }
 
 MenuCollection::MenuCollection(const MenuCollection& from)
@@ -1530,7 +928,7 @@ MenuCollection::MenuCollection(const MenuCollection& from)
 
 void MenuCollection::SharedCtor() {
   _cached_size_ = 0;
-  name_ = NULL;
+  description_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1540,7 +938,7 @@ MenuCollection::~MenuCollection() {
 
 void MenuCollection::SharedDtor() {
   if (this != default_instance_) {
-    delete name_;
+    delete description_;
   }
 }
 
@@ -1567,8 +965,8 @@ MenuCollection* MenuCollection::New() const {
 
 void MenuCollection::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_name()) {
-      if (name_ != NULL) name_->::rec::gui::menu::MenuName::Clear();
+    if (has_description()) {
+      if (description_ != NULL) description_->::rec::command::Description::Clear();
     }
   }
   menu_bar_.Clear();
@@ -1582,12 +980,12 @@ bool MenuCollection::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.menu.MenuName name = 1;
+      // optional .rec.command.Description description = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_name()));
+               input, mutable_description()));
         } else {
           goto handle_uninterpreted;
         }
@@ -1595,7 +993,7 @@ bool MenuCollection::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .rec.gui.menu.MenuName menu_bar = 2;
+      // repeated .rec.gui.menu.MenuBar menu_bar = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1628,13 +1026,13 @@ bool MenuCollection::MergePartialFromCodedStream(
 
 void MenuCollection::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.menu.MenuName name = 1;
-  if (has_name()) {
+  // optional .rec.command.Description description = 1;
+  if (has_description()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->name(), output);
+      1, this->description(), output);
   }
 
-  // repeated .rec.gui.menu.MenuName menu_bar = 2;
+  // repeated .rec.gui.menu.MenuBar menu_bar = 2;
   for (int i = 0; i < this->menu_bar_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->menu_bar(i), output);
@@ -1648,14 +1046,14 @@ void MenuCollection::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* MenuCollection::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.menu.MenuName name = 1;
-  if (has_name()) {
+  // optional .rec.command.Description description = 1;
+  if (has_description()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->name(), target);
+        1, this->description(), target);
   }
 
-  // repeated .rec.gui.menu.MenuName menu_bar = 2;
+  // repeated .rec.gui.menu.MenuBar menu_bar = 2;
   for (int i = 0; i < this->menu_bar_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1673,15 +1071,15 @@ int MenuCollection::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.menu.MenuName name = 1;
-    if (has_name()) {
+    // optional .rec.command.Description description = 1;
+    if (has_description()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->name());
+          this->description());
     }
 
   }
-  // repeated .rec.gui.menu.MenuName menu_bar = 2;
+  // repeated .rec.gui.menu.MenuBar menu_bar = 2;
   total_size += 1 * this->menu_bar_size();
   for (int i = 0; i < this->menu_bar_size(); i++) {
     total_size +=
@@ -1716,8 +1114,8 @@ void MenuCollection::MergeFrom(const MenuCollection& from) {
   GOOGLE_CHECK_NE(&from, this);
   menu_bar_.MergeFrom(from.menu_bar_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_name()) {
-      mutable_name()->::rec::gui::menu::MenuName::MergeFrom(from.name());
+    if (from.has_description()) {
+      mutable_description()->::rec::command::Description::MergeFrom(from.description());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1742,7 +1140,7 @@ bool MenuCollection::IsInitialized() const {
 
 void MenuCollection::Swap(MenuCollection* other) {
   if (other != this) {
-    std::swap(name_, other->name_);
+    std::swap(description_, other->description_);
     menu_bar_.Swap(&other->menu_bar_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
