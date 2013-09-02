@@ -25,6 +25,8 @@ class ProgramInstance : public juce::ApplicationCommandTarget,
   PopupMenu getMenuForIndex(int menuIndex, const String& name) override;
   void menuItemSelected(int, int) override {}
 
+  ApplicationCommandManager* applicationCommandManager();
+
  private:
   struct Impl;
   unique_ptr<Impl> impl_;

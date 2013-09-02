@@ -1,0 +1,22 @@
+menu_bar {
+  description {
+    name: "basic"
+  }
+  menu: "file basic"
+  menu: "edit basic"
+  menu: "audio basic"
+  menu: "transport basic"
+  menu: "select basic"
+  menu: "help basic"
+}
+menu_bar {
+  description {
+    name: "advanced"
+  }
+  menu: "file advanced"
+  menu: "edit advanced"
+  menu: "audio advanced"
+  menu: "transport advanced"
+  menu: "select advanced"
+  menu: "help advanced"
+}

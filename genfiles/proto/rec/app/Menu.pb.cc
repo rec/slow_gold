@@ -47,9 +47,11 @@ void protobuf_AssignDesc_rec_2fapp_2fMenu_2eproto() {
       "rec/app/Menu.proto");
   GOOGLE_CHECK(file != NULL);
   MenuEntry_descriptor_ = file->message_type(0);
-  static const int MenuEntry_offsets_[2] = {
+  static const int MenuEntry_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, command_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, submenu_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, is_recent_files_menu_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, callout_function_),
   };
   MenuEntry_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -173,16 +175,17 @@ void protobuf_AddDesc_rec_2fapp_2fMenu_2eproto() {
   ::rec::command::protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\022rec/app/Menu.proto\022\007rec.app\032\031rec/comma"
-    "nd/Command.proto\"-\n\tMenuEntry\022\017\n\007command"
-    "\030\001 \001(\r\022\017\n\007submenu\030\002 \001(\t\"X\n\004Menu\022-\n\013descr"
-    "iption\030\001 \001(\0132\030.rec.command.Description\022!"
-    "\n\005entry\030\002 \003(\0132\022.rec.app.MenuEntry\"$\n\005Men"
-    "us\022\033\n\004menu\030\001 \003(\0132\r.rec.app.Menu\"F\n\007MenuB"
-    "ar\022-\n\013description\030\001 \001(\0132\030.rec.command.De"
-    "scription\022\014\n\004menu\030\002 \003(\t\"c\n\016MenuCollectio"
-    "n\022-\n\013description\030\001 \001(\0132\030.rec.command.Des"
-    "cription\022\"\n\010menu_bar\030\002 \003(\0132\020.rec.app.Men"
-    "uBar", 404);
+    "nd/Command.proto\"e\n\tMenuEntry\022\017\n\007command"
+    "\030\001 \001(\r\022\017\n\007submenu\030\002 \001(\t\022\034\n\024is_recent_fil"
+    "es_menu\030\003 \001(\010\022\030\n\020callout_function\030\004 \001(\t\""
+    "X\n\004Menu\022-\n\013description\030\001 \001(\0132\030.rec.comma"
+    "nd.Description\022!\n\005entry\030\002 \003(\0132\022.rec.app."
+    "MenuEntry\"$\n\005Menus\022\033\n\004menu\030\001 \003(\0132\r.rec.a"
+    "pp.Menu\"F\n\007MenuBar\022-\n\013description\030\001 \001(\0132"
+    "\030.rec.command.Description\022\014\n\004menu\030\002 \003(\t\""
+    "c\n\016MenuCollection\022-\n\013description\030\001 \001(\0132\030"
+    ".rec.command.Description\022\"\n\010menu_bar\030\002 \003"
+    "(\0132\020.rec.app.MenuBar", 460);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/app/Menu.proto", &protobuf_RegisterTypes);
   MenuEntry::default_instance_ = new MenuEntry();
@@ -210,6 +213,8 @@ struct StaticDescriptorInitializer_rec_2fapp_2fMenu_2eproto {
 #ifndef _MSC_VER
 const int MenuEntry::kCommandFieldNumber;
 const int MenuEntry::kSubmenuFieldNumber;
+const int MenuEntry::kIsRecentFilesMenuFieldNumber;
+const int MenuEntry::kCalloutFunctionFieldNumber;
 #endif  // !_MSC_VER
 
 MenuEntry::MenuEntry()
@@ -230,6 +235,8 @@ void MenuEntry::SharedCtor() {
   _cached_size_ = 0;
   command_ = 0u;
   submenu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  is_recent_files_menu_ = false;
+  callout_function_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -240,6 +247,9 @@ MenuEntry::~MenuEntry() {
 void MenuEntry::SharedDtor() {
   if (submenu_ != &::google::protobuf::internal::kEmptyString) {
     delete submenu_;
+  }
+  if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
+    delete callout_function_;
   }
   if (this != default_instance_) {
   }
@@ -272,6 +282,12 @@ void MenuEntry::Clear() {
     if (has_submenu()) {
       if (submenu_ != &::google::protobuf::internal::kEmptyString) {
         submenu_->clear();
+      }
+    }
+    is_recent_files_menu_ = false;
+    if (has_callout_function()) {
+      if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
+        callout_function_->clear();
       }
     }
   }
@@ -313,6 +329,39 @@ bool MenuEntry::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(24)) goto parse_is_recent_files_menu;
+        break;
+      }
+
+      // optional bool is_recent_files_menu = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_is_recent_files_menu:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_recent_files_menu_)));
+          set_has_is_recent_files_menu();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_callout_function;
+        break;
+      }
+
+      // optional string callout_function = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_callout_function:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_callout_function()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->callout_function().data(), this->callout_function().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -349,6 +398,20 @@ void MenuEntry::SerializeWithCachedSizes(
       2, this->submenu(), output);
   }
 
+  // optional bool is_recent_files_menu = 3;
+  if (has_is_recent_files_menu()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->is_recent_files_menu(), output);
+  }
+
+  // optional string callout_function = 4;
+  if (has_callout_function()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->callout_function().data(), this->callout_function().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->callout_function(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -370,6 +433,21 @@ void MenuEntry::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->submenu(), target);
+  }
+
+  // optional bool is_recent_files_menu = 3;
+  if (has_is_recent_files_menu()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->is_recent_files_menu(), target);
+  }
+
+  // optional string callout_function = 4;
+  if (has_callout_function()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->callout_function().data(), this->callout_function().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->callout_function(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -395,6 +473,18 @@ int MenuEntry::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->submenu());
+    }
+
+    // optional bool is_recent_files_menu = 3;
+    if (has_is_recent_files_menu()) {
+      total_size += 1 + 1;
+    }
+
+    // optional string callout_function = 4;
+    if (has_callout_function()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->callout_function());
     }
 
   }
@@ -430,6 +520,12 @@ void MenuEntry::MergeFrom(const MenuEntry& from) {
     if (from.has_submenu()) {
       set_submenu(from.submenu());
     }
+    if (from.has_is_recent_files_menu()) {
+      set_is_recent_files_menu(from.is_recent_files_menu());
+    }
+    if (from.has_callout_function()) {
+      set_callout_function(from.callout_function());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -455,6 +551,8 @@ void MenuEntry::Swap(MenuEntry* other) {
   if (other != this) {
     std::swap(command_, other->command_);
     std::swap(submenu_, other->submenu_);
+    std::swap(is_recent_files_menu_, other->is_recent_files_menu_);
+    std::swap(callout_function_, other->callout_function_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

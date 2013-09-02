@@ -5,6 +5,8 @@ import "rec/command/Command.proto";
 message MenuEntry {
   optional uint32 command = 1;
   optional string submenu = 2;
+  optional bool is_recent_files_menu = 3;
+  optional string callout_function = 4;
 };
 
 message Menu {

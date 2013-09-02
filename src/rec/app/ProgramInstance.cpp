@@ -45,37 +45,69 @@ MenuBarMap makeMenuBarMap(const Program& program) {
   return menuBarMap;
 }
 
+void checkMenuEntry(const MenuEntry& menuEntry) {
+  int cat = 0;
+  if (menuEntry.has_command())
+    ++cat;
+  if (menuEntry.has_submenu())
+    ++cat;
+  if (menuEntry.is_recent_files_menu())
+    ++cat;
+  if (menuEntry.has_callout_function())
+    ++cat;
+
+  LOG_IF(DFATAL, cat > 1) << "Ambiguous entry: " << menuEntry.DebugString();
+}
+
+void makeRecentFiles(PopupMenu* menu) {
+}
+
 }  // namespace
 
-struct ProgramInstance::Impl {
+class ProgramInstance::Impl {
+ public:
   Impl(Program* p)
-      : program(p),
-        programMap(makeProgramMap(*p)),
-        menuMap(makeMenuMap(*p)),
-        menuBarMap(makeMenuBarMap(*p)) {
+      : program_(p),
+        programMap_(makeProgramMap(*p)),
+        menuMap_(makeMenuMap(*p)),
+        menuBarMap_(makeMenuBarMap(*p)) {
   }
 
   const MenuBar& menuBar() const {
-    return menuBarMap.at(program->menuBarName());
+    return menuBarMap_.at(program_->menuBarName());
+  }
+
+  void addSubmenu(PopupMenu* popup, const MenuEntry& menuEntry) {
+    PopupMenu submenu;
+    string subname = addMenu(&submenu, menuEntry.submenu());
+    popup->addSubMenu(subname, submenu);
+  }
+
+  void addMenuEntry(PopupMenu* popup, const MenuEntry& menuEntry) {
+    checkMenuEntry(menuEntry);
+    if (menuEntry.has_command())
+      popup->addCommandItem(&applicationCommandManager, menuEntry.command());
+
+    else if (menuEntry.has_submenu())
+      addSubmenu(popup, menuEntry);
+
+    else if (menuEntry.is_recent_files_menu())
+      makeRecentFiles(popup);
+
+    else if (menuEntry.has_callout_function())
+      program_->addMenuEntry(popup, menuEntry);
+
+    else
+      popup->addSeparator();
   }
 
   string addMenu(PopupMenu* popup, const string& name) {
     string result;
     try {
-      const Menu& menu = menuMap.at(name);
-      for (auto& menuEntry: menu.entry()) {
-        if (menuEntry.has_command() and menuEntry.has_submenu())
-          LOG(DFATAL) << "Menu has command and submenu: " << menu.DebugString();
-        if (menuEntry.has_command()) {
-          popup->addCommandItem(&applicationCommandManager, menuEntry.command());
-        } else if (menuEntry.has_submenu()) {
-          PopupMenu submenu;
-          string subname = addMenu(&submenu, menuEntry.submenu());
-          popup->addSubMenu(subname, submenu);
-        } else {
-          popup->addSeparator();
-        }
-      }
+      const Menu& menu = menuMap_.at(name);
+      for (auto& menuEntry: menu.entry())
+        addMenuEntry(popup, menuEntry);
+
       return menu.description().menu(0);
     } catch (const std::out_of_range&) {
       LOG(DFATAL) << "Couldn't get menu " << name;
@@ -83,11 +115,11 @@ struct ProgramInstance::Impl {
     }
   }
 
-  Program* program;
-  ProgramMap programMap;
+  Program* program_;
+  ProgramMap programMap_;
   const MenuCollection menuCollection;
-  const MenuMap menuMap;
-  const MenuBarMap menuBarMap;
+  const MenuMap menuMap_;
+  const MenuBarMap menuBarMap_;
   ApplicationCommandManager applicationCommandManager;
 };
 
@@ -95,19 +127,19 @@ ProgramInstance::ProgramInstance(Program* p) : impl_(new Impl(p)) {}
 ProgramInstance::~ProgramInstance() {}
 
 void ProgramInstance::getAllCommands(juce::Array<CommandID>& commands) {
-  for (auto& mapEntry: impl_->programMap)
+  for (auto& mapEntry: impl_->programMap_)
     commands.add(mapEntry.first);
 }
 
 void ProgramInstance::getCommandInfo(CommandID command,
                                      ApplicationCommandInfo& info) {
   try {
-    const Command& command = impl_->programMap.at(info.commandID);
+    const Command& command = impl_->programMap_.at(info.commandID);
     const Description& desc = command.desc();
     int flags = command.flags();
-    if (hasProperty(*impl_->program, command.disabled()))
+    if (hasProperty(*impl_->program_, command.disabled()))
       flags |= ApplicationCommandInfo::isDisabled;
-    if (hasProperty(*impl_->program, command.ticked()))
+    if (hasProperty(*impl_->program_, command.ticked()))
       flags |= ApplicationCommandInfo::isTicked;
 
     info.setInfo(desc.name(), desc.full(0), command.category(), flags);
@@ -118,7 +150,8 @@ void ProgramInstance::getCommandInfo(CommandID command,
 
 bool ProgramInstance::perform(const InvocationInfo& info) {
   try {
-	  return impl_->program->perform(info, impl_->programMap.at(info.commandID));
+    const Command& command = impl_->programMap_.at(info.commandID);
+    return impl_->program_->perform(info, command);
   } catch (const std::out_of_range&) {
     LOG(DFATAL) << "Tried to invoke out of range command " << info.commandID;
     return false;
@@ -136,6 +169,9 @@ StringArray ProgramInstance::getMenuBarNames() {
   return names;
 }
 
+ApplicationCommandManager* ProgramInstance::applicationCommandManager() {
+  return &impl_->applicationCommandManager;
+}
 
 PopupMenu ProgramInstance::getMenuForIndex(int menuIndex,
                                            const String&) {

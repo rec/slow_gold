@@ -1,5 +1,5 @@
-ROOT := /development
-BASE := src/rec
+ROOT := /development/rec
+PROTO_SRC := src/rec
 PROTO_DIR := externals/mac/protobuf
 GENFILES := genfiles/proto
 BUILD_DIR := /development/rec/projects/slow/Builds/MacOSX
@@ -10,7 +10,7 @@ PROTOC := $(PROTO_DIR)/bin/protoc\
  --python_out=$(GENFILES)\
  --cpp_out=$(GENFILES)
 
-TOP := $(foreach dir, $(BASE), $(wildcard $(dir)/*))
+TOP := $(foreach dir, $(PROTO_SRC), $(wildcard $(dir)/*))
 SECOND := $(foreach dir, $(TOP), $(wildcard $(dir)/*))
 
 TOP_PROTO := $(foreach dir, $(TOP), $(wildcard $(dir)/*.proto))

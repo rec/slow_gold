@@ -24,6 +24,9 @@ class Program {
   virtual bool hasProperty(const string& name) const = 0;
   virtual string makeMenuName(const command::Command&, CommandID) const = 0;
   virtual bool perform(const InvocationInfo&, const command::Command&) = 0;
+
+  // Add an entry only for MenuEntries which have a callout_function.
+  virtual void addMenuEntry(PopupMenu*, const MenuEntry&) const = 0;
 };
 
 template <typename PARTS>

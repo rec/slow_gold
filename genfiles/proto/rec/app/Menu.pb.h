@@ -116,20 +116,45 @@ class MenuEntry : public ::google::protobuf::Message {
   inline ::std::string* release_submenu();
   inline void set_allocated_submenu(::std::string* submenu);
 
+  // optional bool is_recent_files_menu = 3;
+  inline bool has_is_recent_files_menu() const;
+  inline void clear_is_recent_files_menu();
+  static const int kIsRecentFilesMenuFieldNumber = 3;
+  inline bool is_recent_files_menu() const;
+  inline void set_is_recent_files_menu(bool value);
+
+  // optional string callout_function = 4;
+  inline bool has_callout_function() const;
+  inline void clear_callout_function();
+  static const int kCalloutFunctionFieldNumber = 4;
+  inline const ::std::string& callout_function() const;
+  inline void set_callout_function(const ::std::string& value);
+  inline void set_callout_function(const char* value);
+  inline void set_callout_function(const char* value, size_t size);
+  inline ::std::string* mutable_callout_function();
+  inline ::std::string* release_callout_function();
+  inline void set_allocated_callout_function(::std::string* callout_function);
+
   // @@protoc_insertion_point(class_scope:rec.app.MenuEntry)
  private:
   inline void set_has_command();
   inline void clear_has_command();
   inline void set_has_submenu();
   inline void clear_has_submenu();
+  inline void set_has_is_recent_files_menu();
+  inline void clear_has_is_recent_files_menu();
+  inline void set_has_callout_function();
+  inline void clear_has_callout_function();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* submenu_;
   ::google::protobuf::uint32 command_;
+  bool is_recent_files_menu_;
+  ::std::string* callout_function_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fapp_2fMenu_2eproto();
   friend void protobuf_AssignDesc_rec_2fapp_2fMenu_2eproto();
@@ -614,6 +639,98 @@ inline void MenuEntry::set_allocated_submenu(::std::string* submenu) {
   } else {
     clear_has_submenu();
     submenu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional bool is_recent_files_menu = 3;
+inline bool MenuEntry::has_is_recent_files_menu() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MenuEntry::set_has_is_recent_files_menu() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MenuEntry::clear_has_is_recent_files_menu() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MenuEntry::clear_is_recent_files_menu() {
+  is_recent_files_menu_ = false;
+  clear_has_is_recent_files_menu();
+}
+inline bool MenuEntry::is_recent_files_menu() const {
+  return is_recent_files_menu_;
+}
+inline void MenuEntry::set_is_recent_files_menu(bool value) {
+  set_has_is_recent_files_menu();
+  is_recent_files_menu_ = value;
+}
+
+// optional string callout_function = 4;
+inline bool MenuEntry::has_callout_function() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MenuEntry::set_has_callout_function() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MenuEntry::clear_has_callout_function() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void MenuEntry::clear_callout_function() {
+  if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
+    callout_function_->clear();
+  }
+  clear_has_callout_function();
+}
+inline const ::std::string& MenuEntry::callout_function() const {
+  return *callout_function_;
+}
+inline void MenuEntry::set_callout_function(const ::std::string& value) {
+  set_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    callout_function_ = new ::std::string;
+  }
+  callout_function_->assign(value);
+}
+inline void MenuEntry::set_callout_function(const char* value) {
+  set_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    callout_function_ = new ::std::string;
+  }
+  callout_function_->assign(value);
+}
+inline void MenuEntry::set_callout_function(const char* value, size_t size) {
+  set_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    callout_function_ = new ::std::string;
+  }
+  callout_function_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* MenuEntry::mutable_callout_function() {
+  set_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    callout_function_ = new ::std::string;
+  }
+  return callout_function_;
+}
+inline ::std::string* MenuEntry::release_callout_function() {
+  clear_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = callout_function_;
+    callout_function_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void MenuEntry::set_allocated_callout_function(::std::string* callout_function) {
+  if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
+    delete callout_function_;
+  }
+  if (callout_function) {
+    set_has_callout_function();
+    callout_function_ = callout_function;
+  } else {
+    clear_has_callout_function();
+    callout_function_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 
