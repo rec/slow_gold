@@ -11,8 +11,7 @@
 import os
 import stat
 
-import odict
-
+from collections import OrderedDict
 
 def filetree(file, accept=lambda x: True):
   """Returns a tree of all files beneath the given file.
@@ -35,7 +34,7 @@ def filetree(file, accept=lambda x: True):
     return
 
   if stat.S_ISDIR(st_mode):
-    values = odict.OrderedDict()
+    values = OrderedDict()
 
     for name in os.listdir(file):
       tree = filetree(os.path.join(file, name), accept)

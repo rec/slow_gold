@@ -13,20 +13,21 @@ import sys
 
 import jucer
 
-DEFAULT_PROJECTS = 'command', 'slow', 'tests', 'support'
+#DEFAULT_PROJECTS = 'command', 'slow', 'tests', 'support'
+DEFAULT_PROJECTS = 'slow',
 
 def buildOne(name):
-  root = os.getenv('ROOT')
   base = name.split('.')[0]
-  doc = '%s/rec/projects/%s/%s.jucer' % (root, base, name)
+  doc = '/development/rec/projects/%s/%s.jucer' % (base, name)
+  out_doc = '/development/rec/projects/%s/%s.out.jucer' % (base, name)
 
-  results = jucer.JucerDomFile(doc, 'test' in name, root).toxml()
-  f = open(doc, 'w')
+  results = jucer.JucerDomFile(doc, 'test' in name, '/development').toxml()
+  f = open(out_doc, 'w')
   for line in results.split('\n'):
     if line.strip():
       f.write(line)
       f.write('\n')
-  print 'Written', doc
+  print 'Written', out_doc
 
 def build(names):
   for name in (names or DEFAULT_PROJECTS):

@@ -14,7 +14,29 @@ import filetree
 
 RANDOMIZE_IDS = not True
 
-FILE_GROUPS = ('genfiles', 'translation'), ('src', 'rec'), ('genfiles', 'icon'), ('genfiles', 'proto')
+FILE_GROUPS = [
+  ('src', 'src/rec'),
+  ('genfiles', 'genfiles/proto'),
+  ('art', 'projects/slow/art'),
+  ('text', 'projects/slow/text'),
+]
+
+FILE_GROUPS = [
+  ('src', 'rec'),
+  ('genfiles', 'proto'),
+  ('art', 'projects/slow/art'),
+  ('text', 'projects/slow/text'),
+]
+
+SUFFIXES = set([
+  'c',
+  'cc',
+  'cpp',
+  'def',
+  'h',
+  'png',
+  'svg',
+  ])
 
 class JucerDomFile(dom_file.DomFile):
   def __init__(self, filename, is_test, root):
@@ -96,7 +118,7 @@ class JucerDomFile(dom_file.DomFile):
 
   def acceptCpp(self, s):
     r = (self.accept(s) and
-            ('.' + s).split('.')[-1] in ['h', 'cpp', 'cc', 'c', 'png'] and
+            ('.' + s).split('.')[-1] in SUFFIXES and
             not (self.is_test and 'Main.c' in s) and
             'mfMath.h' not in s)
     # print "acceptCpp", s, r
