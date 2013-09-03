@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 #!/usr/local/bin/python
 
 # Build a structure representing a .jucer file, and modify it.
@@ -64,29 +66,32 @@ class JucerDomFile(object):
         child = self.create_file_or_group(group, path, tree, maingroup_name)
         maingroup.appendChild(child)
       else:
-        print 'ERROR: no file for %s' % tree_name
+        print('ERROR: no file for %s' % tree_name)
 
     maingroup.appendChild(self.create_file('Main.cpp', 'Main.cpp',
                                            maingroup_name + '/Main.cpp'))
 
   def create_file_or_group(self, prefix, name, tree, path):
     if type(tree) is str:
+      print('create_file_or_group', prefix, name, tree, path)
       filename = '../../%s/%s' % (prefix, name)
       return self.create_file(name, filename, path)
-
-    group = self.create('GROUP', path, name=name)
-    if prefix:
-      prefix = '%s/%s' % (prefix, name)
     else:
-      prefix = name
+      print('create_file_or_group', prefix, name, '(tree)', path)
+      group = self.create('GROUP', path, name=name)
+      if prefix:
+        prefix = '%s/%s' % (prefix, name)
+      else:
+        prefix = name
 
-    new_path = path + '/' + name
-    for k, v in tree.iteritems():
-      group.appendChild(self.create_file_or_group(prefix, k, v, new_path))
+      new_path = os.path.join(path, name)
+      for k, v in tree.iteritems():
+        group.appendChild(self.create_file_or_group(prefix, k, v, new_path))
 
-    return group
+      return group
 
   def create_file(self, name, filename, path):
+    print('create_file', name, filename, path)
     compile = any(filename.endswith(s) for s in COMPILE_SUFFIXES)
     resource = not compile and (not filename.endswith('.h'))
     return self.create('FILE', path,
