@@ -40,25 +40,25 @@ SUFFIXES = set([
 
 COMPILE_SUFFIXES = set(['.c', '.cc', '.cpp'])
 
-class JucerDomFile(dom_file.DomFile):
+class JucerDomFile(object):
   def __init__(self, filename, is_test, root):
-    dom_file.DomFile.__init__(self, filename)
+    self.dom_file = dom_file.DomFile(filename)
     self.is_test = is_test
     self.root = root
     self.file_id_dict = {}
 
   def toxml(self):
     self.set_maingroup()
-    return self.dom.toprettyxml()
+    return self.dom_file.dom.toprettyxml()
 
   def set_maingroup(self):
-    old = self.element('MAINGROUP')
+    old = self.dom_file.element('MAINGROUP')
     maingroup_name = old.getAttribute('name')
     self.set_file_id_dict(old, '')
 
     maingroup = self.create_from_dict('MAINGROUP', maingroup_name,
                                       name=maingroup_name)
-    self.documentElement.replaceChild(maingroup, old)
+    self.dom_file.documentElement.replaceChild(maingroup, old)
 
     root = '%s/rec' % self.root
     for file_group, name in (FILE_GROUPS):
@@ -115,7 +115,7 @@ class JucerDomFile(dom_file.DomFile):
       id = self.file_id_dict.get(path + '/' + attributes['name'], None)
     if id:
       attributes.update(id=id)
-    return self.create(xml_name, **attributes)
+    return self.dom_file.create(xml_name, **attributes)
 
   def join(self, files, joiner=' '):
     return joiner.join(filter(self.accept, files))
