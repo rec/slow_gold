@@ -71,7 +71,8 @@ class JucerDomFile(object):
 
   def create_file_or_group(self, prefix, name, tree, path):
     if type(tree) is str:
-      return self.create_file(name, '../../%s/%s' % (prefix, name), path)
+      filename = '../../%s/%s' % (prefix, name)
+      return self.create_file(name, filename, path)
 
     group = self.create('GROUP', path, name=name)
     if prefix:
@@ -85,13 +86,14 @@ class JucerDomFile(object):
 
     return group
 
-  def create_file(self, name, file, path):
-    isPNG = file.endswith('.png')
-    compile = any(file.endswith(s) for s in COMPILE_SUFFIXES)
-    resource = not compile and (not file.endswith('.h'))
-    d = dict(name=name, resource=str(int(resource)), file=file,
-             compile=str(int(compile)))
-    return self.create('FILE', path, **d)
+  def create_file(self, name, filename, path):
+    compile = any(filename.endswith(s) for s in COMPILE_SUFFIXES)
+    resource = not compile and (not filename.endswith('.h'))
+    return self.create('FILE', path,
+                       name=name,
+                       file=filename,
+                       resource='01'[resource],
+                       compile='01'[compile])
 
   def accept(self, s):
     return (s and
