@@ -1,1 +1,0 @@
-CONFIG_PACKAGES="gtest mpg123"
