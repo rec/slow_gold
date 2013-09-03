@@ -12,8 +12,6 @@ import dom_file
 import filetree
 import os.path
 
-RANDOMIZE_IDS = not True
-
 FILE_GROUPS = [
   ('src', 'src/rec'),
   ('genfiles', 'genfiles/proto'),
@@ -40,22 +38,10 @@ SUFFIXES = set([
 
 COMPILE_SUFFIXES = set(['.c', '.cc', '.cpp'])
 
-def get_file_id_dict(node, path='', depth=0, result=None):
-  result = result or {}
-  if path:
-    path += '/'
-  path += node.getAttribute('name')
-
-  result[path] = node.getAttribute('id')
-  for c in node.childNodes:
-    if (hasattr(c, 'tagName') and c.tagName in ['GROUP', 'FILE']):
-      get_file_id_dict(c, path, depth + 1, result)
-  return result
-
-
 class JucerDomFile(object):
   def __init__(self, filename, is_test, root):
     self.dom_file = dom_file.DomFile(filename)
+    self.create = self.dom_file.create
     self.is_test = is_test
     self.root = root
 
@@ -66,10 +52,8 @@ class JucerDomFile(object):
   def set_maingroup(self):
     old = self.dom_file.element('MAINGROUP')
     maingroup_name = old.getAttribute('name')
-    self.file_id_dict = get_file_id_dict(old)
-
-    maingroup = self.create_from_dict('MAINGROUP', maingroup_name,
-                                      name=maingroup_name)
+    self.dom_file.compute_dict(old)
+    maingroup = self.create('MAINGROUP', maingroup_name, name=maingroup_name)
     self.dom_file.documentElement.replaceChild(maingroup, old)
 
     root = '%s/rec' % self.root
@@ -89,7 +73,7 @@ class JucerDomFile(object):
     if type(tree) is str:
       return self.create_file(name, '../../%s/%s' % (prefix, name), path)
     else:
-      group = self.create_from_dict('GROUP', path, name=name)
+      group = self.create('GROUP', path, name=name)
       if prefix:
         prefix = '%s/%s' % (prefix, name)
       else:
@@ -107,15 +91,7 @@ class JucerDomFile(object):
     resource = not compile and (not file.endswith('.h'))
     d = dict(name=name, resource=str(int(resource)), file=file,
              compile=str(int(compile)))
-    return self.create_from_dict('FILE', path, **d)
-
-  def create_from_dict(self, xml_name, path, **attributes):
-    if RANDOMIZE_IDS:
-      id = dom_file.randomId()
-    else:
-      id = self.file_id_dict.get(os.path.join(path, attributes['name']))
-      id = id or dom_file.randomId()
-    return self.dom_file.create(xml_name, id=id, **attributes)
+    return self.create('FILE', path, **d)
 
   def join(self, files, joiner=' '):
     return joiner.join(filter(self.accept, files))
