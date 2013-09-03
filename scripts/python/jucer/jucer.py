@@ -61,21 +61,41 @@ class JucerDomFile(dom_file.DomFile):
     self.documentElement.replaceChild(maingroup, old)
 
     root = '%s/rec' % self.root
-    for prefix, name in (FILE_GROUPS):
-      self.create_top_level_group(maingroup, prefix, name, root, maingroup_name)
+    for file_group, name in (FILE_GROUPS):
+      tree_name = '%s/%s/%s' % (root, file_group, name)
+      tree = filetree.filetree(tree_name, self.accept_cpp)
+      if tree:
+        maingroup.appendChild(self.create_file_or_group(file_group, name, tree,
+                                                        maingroup_name))
+      else:
+        print 'ERROR: no file for %s' % tree_name
 
     maingroup.appendChild(self.create_file('Main.cpp', 'Main.cpp',
                                            maingroup_name + '/Main.cpp'))
 
-  def create_top_level_group(self, maingroup, prefix, name, root,
-                             maingroup_name):
-    tree_name = '%s/%s/%s' % (root, prefix, name)
-    tree = filetree.filetree(tree_name, self.accept_cpp)
-    if tree:
-      maingroup.appendChild(self.create_file_or_group(prefix, name, tree,
-                                                      maingroup_name))
+  def create_file_or_group(self, prefix, name, tree, path):
+    if type(tree) is str:
+      return self.create_file(name, '../../%s/%s' % (prefix, name), path)
     else:
-      print 'ERROR: no file for %s' % tree_name
+      group = self.create_from_dict('GROUP', path, name=name)
+      if prefix:
+        prefix = '%s/%s' % (prefix, name)
+      else:
+        prefix = name
+
+      new_path = path + '/' + name
+      for k, v in tree.iteritems():
+        group.appendChild(self.create_file_or_group(prefix, k, v, new_path))
+
+      return group
+
+  def create_file(self, name, file, path):
+    isPNG = file.endswith('.png')
+    compile = any(file.endswith(s) for s in COMPILE_SUFFIXES)
+    resource = not compile and (not file.endswith('.h'))
+    d = dict(name=name, resource=str(int(resource)), file=file,
+             compile=str(int(compile)))
+    return self.create_from_dict('FILE', path, **d)
 
   def set_file_id_dict(self, node, path, depth=0):
     if path:
@@ -99,30 +119,6 @@ class JucerDomFile(dom_file.DomFile):
 
   def join(self, files, joiner=' '):
     return joiner.join(filter(self.accept, files))
-
-  def create_file(self, name, file, path):
-    isPNG = file.endswith('.png')
-    compile = any(file.endswith(s) for s in COMPILE_SUFFIXES)
-    resource = not compile and (not file.endswith('.h'))
-    d = dict(name=name, resource=str(int(resource)), file=file,
-             compile=str(int(compile)))
-    return self.create_from_dict('FILE', path, **d)
-
-  def create_file_or_group(self, prefix, name, tree, path):
-    if type(tree) is str:
-      return self.create_file(name, '../../%s/%s' % (prefix, name), path)
-    else:
-      group = self.create_from_dict('GROUP', path, name=name)
-      if prefix:
-        prefix = '%s/%s' % (prefix, name)
-      else:
-        prefix = name
-
-      new_path = path + '/' + name
-      for k, v in tree.iteritems():
-        group.appendChild(self.create_file_or_group(prefix, k, v, new_path))
-
-      return group
 
   def accept_cpp(self, s):
     r = (self.accept(s) and
