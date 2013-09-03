@@ -129,6 +129,9 @@ namespace BinaryData
     extern const char*   RecentFiles_proto;
     const int            RecentFiles_protoSize = 436;
 
+    extern const char*   SlowMenus_def;
+    const int            SlowMenus_defSize = 2874;
+
     extern const char*   SlowCommands_def;
     const int            SlowCommands_defSize = 29224;
 

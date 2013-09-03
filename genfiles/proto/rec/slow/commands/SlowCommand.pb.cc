@@ -34,6 +34,15 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* SlowCommandMapProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SlowCommandMapProto_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SlowMenuEntry_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SlowMenuEntry_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SlowMenu_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SlowMenu_reflection_ = NULL;
+const ::google::protobuf::Descriptor* SlowMenus_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SlowMenus_reflection_ = NULL;
 
 }  // namespace
 
@@ -107,6 +116,56 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SlowCommandMapProto));
+  SlowMenuEntry_descriptor_ = file->message_type(4);
+  static const int SlowMenuEntry_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, command_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, submenu_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, is_recent_files_menu_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, callout_function_),
+  };
+  SlowMenuEntry_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SlowMenuEntry_descriptor_,
+      SlowMenuEntry::default_instance_,
+      SlowMenuEntry_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SlowMenuEntry));
+  SlowMenu_descriptor_ = file->message_type(5);
+  static const int SlowMenu_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenu, description_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenu, extends_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenu, entry_),
+  };
+  SlowMenu_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SlowMenu_descriptor_,
+      SlowMenu::default_instance_,
+      SlowMenu_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenu, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenu, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SlowMenu));
+  SlowMenus_descriptor_ = file->message_type(6);
+  static const int SlowMenus_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenus, menu_),
+  };
+  SlowMenus_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SlowMenus_descriptor_,
+      SlowMenus::default_instance_,
+      SlowMenus_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenus, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenus, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SlowMenus));
 }
 
 namespace {
@@ -127,6 +186,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
     SlowCommandMapEntry_descriptor_, &SlowCommandMapEntry::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SlowCommandMapProto_descriptor_, &SlowCommandMapProto::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SlowMenuEntry_descriptor_, &SlowMenuEntry::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SlowMenu_descriptor_, &SlowMenu::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SlowMenus_descriptor_, &SlowMenus::default_instance());
 }
 
 }  // namespace
@@ -140,6 +205,12 @@ void protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   delete SlowCommandMapEntry_reflection_;
   delete SlowCommandMapProto::default_instance_;
   delete SlowCommandMapProto_reflection_;
+  delete SlowMenuEntry::default_instance_;
+  delete SlowMenuEntry_reflection_;
+  delete SlowMenu::default_instance_;
+  delete SlowMenu_reflection_;
+  delete SlowMenus::default_instance_;
+  delete SlowMenus_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
@@ -153,10 +224,10 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#rec/slow/commands/SlowCommand.proto\022\010r"
     "ec.slow\032\031rec/command/Command.proto\032 rec/"
-    "command/map/CommandMap.proto\"\334\022\n\013SlowCom"
+    "command/map/CommandMap.proto\"\262\023\n\013SlowCom"
     "mand\022(\n\004type\030\001 \001(\0162\032.rec.slow.SlowComman"
     "d.Type\022%\n\007command\030\002 \001(\0132\024.rec.command.Co"
-    "mmand\"\373\021\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_P"
+    "mmand\"\321\022\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_P"
     "ROGRAM\020:\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PR"
     "EFERENCES\020\002\022\025\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CL"
     "EAR_KEYBOARD_MAPPINGS\020[\022\027\n\023CLEAR_MIDI_MA"
@@ -187,49 +258,65 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
     "RESET_GAIN_TO_UNITY\020\030\022\r\n\tSAVE_FILE\020E\022\027\n\023"
     "SAVE_FILE_SELECTION\020F\022\n\n\006SELECT\020\031\022\017\n\013SEL"
     "ECT_ONLY\020\032\022\020\n\014SET_LANGUAGE\020]\022\023\n\017SET_SAVE"
-    "_FORMAT\020G\022\031\n\025TOGGLE_ADVANCED_MENUS\020;\022\034\n\030"
-    "TOGGLE_AUTOMATIC_UPDATES\020C\022\030\n\024TOGGLE_FOL"
-    "LOW_CURSOR\020+\022\027\n\023TOGGLE_GRID_DISPLAY\020\033\022\036\n"
-    "\032TOGGLE_COMMAND_BAR_AT_LEFT\0206\022\035\n\031TOGGLE_"
-    "COMMAND_BAR_AT_TOP\0207\022!\n\035TOGGLE_FILE_OPEN"
-    "_TREE_DISPLAY\020H\022\030\n\024TOGGLE_MODES_AT_LEFT\020"
-    "8\022\027\n\023TOGGLE_MODES_AT_TOP\0209\022\035\n\031TOGGLE_PAR"
-    "ALLEL_WAVEFORMS\020*\022\032\n\026TOGGLE_PREFADER_LEV"
-    "ELS\020.\022\024\n\020TOGGLE_SELECTION\020)\022\'\n#TOGGLE_SH"
-    "OW_ABOUT_WINDOW_AT_STARTUP\020Q\022\035\n\031TOGGLE_S"
-    "HOW_CURSOR_LABELS\0203\022\031\n\025TOGGLE_SHOW_HELP_"
-    "PANE\0201\022\035\n\031TOGGLE_SHOW_LABELS_AT_TOP\0204\022\033\n"
-    "\027TOGGLE_SHOW_MASTER_TUNE\020M\022!\n\035TOGGLE_SHO"
-    "W_SELECTION_BUTTONS\0202\022\034\n\030TOGGLE_SHOW_TIM"
-    "ES_AT_TOP\0205\022\030\n\024TOGGLE_SHOW_TOOLTIPS\0200\022\025\n"
-    "\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGLE_STRETCH_E"
-    "NABLE\020\035\022\033\n\027TOGGLE_TRANSFORM_ENABLE\020X\022\032\n\026"
-    "TOGGLE_WHOLE_SONG_LOOP\020\036\022\016\n\nTREE_CLOSE\020\037"
-    "\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTREE_O"
-    "PEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n\004UN"
-    "DO\020%\022\014\n\010UNSELECT\020&\022\022\n\016WHATS_NEW_PAGE\020I\022\013"
-    "\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\021\n\rZOOM_OUT_FU"
-    "LL\020@\022\025\n\021ZOOM_TO_SELECTION\020-\022\023\n\017FIRST_FRE"
-    "E_TYPE\020a\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022"
-    "\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022"
-    "\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010J"
-    "UCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\";\n\014SlowComma"
-    "nds\022+\n\014slow_command\030\001 \003(\0132\025.rec.slow.Slo"
-    "wCommand\"o\n\023SlowCommandMapEntry\022+\n\007comma"
-    "nd\030\001 \001(\0162\032.rec.slow.SlowCommand.Type\022+\n\005"
-    "entry\030\002 \001(\0132\034.rec.command.CommandMapEntr"
-    "y\"H\n\023SlowCommandMapProto\0221\n\nslow_entry\030\001"
-    " \003(\0132\035.rec.slow.SlowCommandMapEntry", 2755);
+    "_FORMAT\020G\022\024\n\020SET_SAVE_AS_AIFF\020a\022\024\n\020SET_S"
+    "AVE_AS_FLAC\020b\022\023\n\017SET_SAVE_AS_OGG\020c\022\023\n\017SE"
+    "T_SAVE_AS_WAV\020d\022\031\n\025TOGGLE_ADVANCED_MENUS"
+    "\020;\022\034\n\030TOGGLE_AUTOMATIC_UPDATES\020C\022\030\n\024TOGG"
+    "LE_FOLLOW_CURSOR\020+\022\027\n\023TOGGLE_GRID_DISPLA"
+    "Y\020\033\022\036\n\032TOGGLE_COMMAND_BAR_AT_LEFT\0206\022\035\n\031T"
+    "OGGLE_COMMAND_BAR_AT_TOP\0207\022!\n\035TOGGLE_FIL"
+    "E_OPEN_TREE_DISPLAY\020H\022\030\n\024TOGGLE_MODES_AT"
+    "_LEFT\0208\022\027\n\023TOGGLE_MODES_AT_TOP\0209\022\035\n\031TOGG"
+    "LE_PARALLEL_WAVEFORMS\020*\022\032\n\026TOGGLE_PREFAD"
+    "ER_LEVELS\020.\022\024\n\020TOGGLE_SELECTION\020)\022\'\n#TOG"
+    "GLE_SHOW_ABOUT_WINDOW_AT_STARTUP\020Q\022\035\n\031TO"
+    "GGLE_SHOW_CURSOR_LABELS\0203\022\031\n\025TOGGLE_SHOW"
+    "_HELP_PANE\0201\022\035\n\031TOGGLE_SHOW_LABELS_AT_TO"
+    "P\0204\022\033\n\027TOGGLE_SHOW_MASTER_TUNE\020M\022!\n\035TOGG"
+    "LE_SHOW_SELECTION_BUTTONS\0202\022\034\n\030TOGGLE_SH"
+    "OW_TIMES_AT_TOP\0205\022\030\n\024TOGGLE_SHOW_TOOLTIP"
+    "S\0200\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGLE_STR"
+    "ETCH_ENABLE\020\035\022\033\n\027TOGGLE_TRANSFORM_ENABLE"
+    "\020X\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\036\022\016\n\nTREE_C"
+    "LOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\t"
+    "TREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007TREE_UP\020$"
+    "\022\010\n\004UNDO\020%\022\014\n\010UNSELECT\020&\022\022\n\016WHATS_NEW_PA"
+    "GE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\021\n\rZOOM_"
+    "OUT_FULL\020@\022\025\n\021ZOOM_TO_SELECTION\020-\022\023\n\017FIR"
+    "ST_FREE_TYPE\020e\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003C"
+    "UT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_A"
+    "LL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200"
+    " \022\r\n\010JUCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\";\n\014Slo"
+    "wCommands\022+\n\014slow_command\030\001 \003(\0132\025.rec.sl"
+    "ow.SlowCommand\"o\n\023SlowCommandMapEntry\022+\n"
+    "\007command\030\001 \001(\0162\032.rec.slow.SlowCommand.Ty"
+    "pe\022+\n\005entry\030\002 \001(\0132\034.rec.command.CommandM"
+    "apEntry\"H\n\023SlowCommandMapProto\0221\n\nslow_e"
+    "ntry\030\001 \003(\0132\035.rec.slow.SlowCommandMapEntr"
+    "y\"\205\001\n\rSlowMenuEntry\022+\n\007command\030\001 \003(\0162\032.r"
+    "ec.slow.SlowCommand.Type\022\017\n\007submenu\030\002 \001("
+    "\t\022\034\n\024is_recent_files_menu\030\003 \001(\010\022\030\n\020callo"
+    "ut_function\030\004 \001(\t\"r\n\010SlowMenu\022-\n\013descrip"
+    "tion\030\001 \001(\0132\030.rec.command.Description\022\017\n\007"
+    "extends\030\002 \001(\t\022&\n\005entry\030\003 \003(\0132\027.rec.slow."
+    "SlowMenuEntry\"-\n\tSlowMenus\022 \n\004menu\030\001 \003(\013"
+    "2\022.rec.slow.SlowMenu", 3140);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/commands/SlowCommand.proto", &protobuf_RegisterTypes);
   SlowCommand::default_instance_ = new SlowCommand();
   SlowCommands::default_instance_ = new SlowCommands();
   SlowCommandMapEntry::default_instance_ = new SlowCommandMapEntry();
   SlowCommandMapProto::default_instance_ = new SlowCommandMapProto();
+  SlowMenuEntry::default_instance_ = new SlowMenuEntry();
+  SlowMenu::default_instance_ = new SlowMenu();
+  SlowMenus::default_instance_ = new SlowMenus();
   SlowCommand::default_instance_->InitAsDefaultInstance();
   SlowCommands::default_instance_->InitAsDefaultInstance();
   SlowCommandMapEntry::default_instance_->InitAsDefaultInstance();
   SlowCommandMapProto::default_instance_->InitAsDefaultInstance();
+  SlowMenuEntry::default_instance_->InitAsDefaultInstance();
+  SlowMenu::default_instance_->InitAsDefaultInstance();
+  SlowMenus::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto);
 }
 
@@ -344,6 +431,10 @@ bool SlowCommand_Type_IsValid(int value) {
     case 95:
     case 96:
     case 97:
+    case 98:
+    case 99:
+    case 100:
+    case 101:
     case 4096:
     case 4097:
     case 4098:
@@ -419,6 +510,10 @@ const SlowCommand_Type SlowCommand::SELECT;
 const SlowCommand_Type SlowCommand::SELECT_ONLY;
 const SlowCommand_Type SlowCommand::SET_LANGUAGE;
 const SlowCommand_Type SlowCommand::SET_SAVE_FORMAT;
+const SlowCommand_Type SlowCommand::SET_SAVE_AS_AIFF;
+const SlowCommand_Type SlowCommand::SET_SAVE_AS_FLAC;
+const SlowCommand_Type SlowCommand::SET_SAVE_AS_OGG;
+const SlowCommand_Type SlowCommand::SET_SAVE_AS_WAV;
 const SlowCommand_Type SlowCommand::TOGGLE_ADVANCED_MENUS;
 const SlowCommand_Type SlowCommand::TOGGLE_AUTOMATIC_UPDATES;
 const SlowCommand_Type SlowCommand::TOGGLE_FOLLOW_CURSOR;
@@ -1389,6 +1484,895 @@ void SlowCommandMapProto::Swap(SlowCommandMapProto* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = SlowCommandMapProto_descriptor_;
   metadata.reflection = SlowCommandMapProto_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SlowMenuEntry::kCommandFieldNumber;
+const int SlowMenuEntry::kSubmenuFieldNumber;
+const int SlowMenuEntry::kIsRecentFilesMenuFieldNumber;
+const int SlowMenuEntry::kCalloutFunctionFieldNumber;
+#endif  // !_MSC_VER
+
+SlowMenuEntry::SlowMenuEntry()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SlowMenuEntry::InitAsDefaultInstance() {
+}
+
+SlowMenuEntry::SlowMenuEntry(const SlowMenuEntry& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SlowMenuEntry::SharedCtor() {
+  _cached_size_ = 0;
+  submenu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  is_recent_files_menu_ = false;
+  callout_function_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SlowMenuEntry::~SlowMenuEntry() {
+  SharedDtor();
+}
+
+void SlowMenuEntry::SharedDtor() {
+  if (submenu_ != &::google::protobuf::internal::kEmptyString) {
+    delete submenu_;
+  }
+  if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
+    delete callout_function_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void SlowMenuEntry::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SlowMenuEntry::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SlowMenuEntry_descriptor_;
+}
+
+const SlowMenuEntry& SlowMenuEntry::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  return *default_instance_;
+}
+
+SlowMenuEntry* SlowMenuEntry::default_instance_ = NULL;
+
+SlowMenuEntry* SlowMenuEntry::New() const {
+  return new SlowMenuEntry;
+}
+
+void SlowMenuEntry::Clear() {
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (has_submenu()) {
+      if (submenu_ != &::google::protobuf::internal::kEmptyString) {
+        submenu_->clear();
+      }
+    }
+    is_recent_files_menu_ = false;
+    if (has_callout_function()) {
+      if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
+        callout_function_->clear();
+      }
+    }
+  }
+  command_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SlowMenuEntry::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .rec.slow.SlowCommand.Type command = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_command:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::slow::SlowCommand_Type_IsValid(value)) {
+            add_command(static_cast< ::rec::slow::SlowCommand_Type >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedEnumNoInline(
+                 input,
+                 &::rec::slow::SlowCommand_Type_IsValid,
+                 this->mutable_command())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(8)) goto parse_command;
+        if (input->ExpectTag(18)) goto parse_submenu;
+        break;
+      }
+
+      // optional string submenu = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_submenu:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_submenu()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->submenu().data(), this->submenu().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_is_recent_files_menu;
+        break;
+      }
+
+      // optional bool is_recent_files_menu = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_is_recent_files_menu:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_recent_files_menu_)));
+          set_has_is_recent_files_menu();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_callout_function;
+        break;
+      }
+
+      // optional string callout_function = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_callout_function:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_callout_function()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->callout_function().data(), this->callout_function().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SlowMenuEntry::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated .rec.slow.SlowCommand.Type command = 1;
+  for (int i = 0; i < this->command_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->command(i), output);
+  }
+
+  // optional string submenu = 2;
+  if (has_submenu()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->submenu().data(), this->submenu().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->submenu(), output);
+  }
+
+  // optional bool is_recent_files_menu = 3;
+  if (has_is_recent_files_menu()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->is_recent_files_menu(), output);
+  }
+
+  // optional string callout_function = 4;
+  if (has_callout_function()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->callout_function().data(), this->callout_function().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->callout_function(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SlowMenuEntry::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // repeated .rec.slow.SlowCommand.Type command = 1;
+  for (int i = 0; i < this->command_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->command(i), target);
+  }
+
+  // optional string submenu = 2;
+  if (has_submenu()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->submenu().data(), this->submenu().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->submenu(), target);
+  }
+
+  // optional bool is_recent_files_menu = 3;
+  if (has_is_recent_files_menu()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->is_recent_files_menu(), target);
+  }
+
+  // optional string callout_function = 4;
+  if (has_callout_function()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->callout_function().data(), this->callout_function().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->callout_function(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SlowMenuEntry::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    // optional string submenu = 2;
+    if (has_submenu()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->submenu());
+    }
+
+    // optional bool is_recent_files_menu = 3;
+    if (has_is_recent_files_menu()) {
+      total_size += 1 + 1;
+    }
+
+    // optional string callout_function = 4;
+    if (has_callout_function()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->callout_function());
+    }
+
+  }
+  // repeated .rec.slow.SlowCommand.Type command = 1;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->command_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::EnumSize(
+        this->command(i));
+    }
+    total_size += 1 * this->command_size() + data_size;
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SlowMenuEntry::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SlowMenuEntry* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SlowMenuEntry*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SlowMenuEntry::MergeFrom(const SlowMenuEntry& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  command_.MergeFrom(from.command_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from.has_submenu()) {
+      set_submenu(from.submenu());
+    }
+    if (from.has_is_recent_files_menu()) {
+      set_is_recent_files_menu(from.is_recent_files_menu());
+    }
+    if (from.has_callout_function()) {
+      set_callout_function(from.callout_function());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SlowMenuEntry::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SlowMenuEntry::CopyFrom(const SlowMenuEntry& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SlowMenuEntry::IsInitialized() const {
+
+  return true;
+}
+
+void SlowMenuEntry::Swap(SlowMenuEntry* other) {
+  if (other != this) {
+    command_.Swap(&other->command_);
+    std::swap(submenu_, other->submenu_);
+    std::swap(is_recent_files_menu_, other->is_recent_files_menu_);
+    std::swap(callout_function_, other->callout_function_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SlowMenuEntry::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SlowMenuEntry_descriptor_;
+  metadata.reflection = SlowMenuEntry_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SlowMenu::kDescriptionFieldNumber;
+const int SlowMenu::kExtendsFieldNumber;
+const int SlowMenu::kEntryFieldNumber;
+#endif  // !_MSC_VER
+
+SlowMenu::SlowMenu()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SlowMenu::InitAsDefaultInstance() {
+  description_ = const_cast< ::rec::command::Description*>(&::rec::command::Description::default_instance());
+}
+
+SlowMenu::SlowMenu(const SlowMenu& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SlowMenu::SharedCtor() {
+  _cached_size_ = 0;
+  description_ = NULL;
+  extends_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SlowMenu::~SlowMenu() {
+  SharedDtor();
+}
+
+void SlowMenu::SharedDtor() {
+  if (extends_ != &::google::protobuf::internal::kEmptyString) {
+    delete extends_;
+  }
+  if (this != default_instance_) {
+    delete description_;
+  }
+}
+
+void SlowMenu::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SlowMenu::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SlowMenu_descriptor_;
+}
+
+const SlowMenu& SlowMenu::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  return *default_instance_;
+}
+
+SlowMenu* SlowMenu::default_instance_ = NULL;
+
+SlowMenu* SlowMenu::New() const {
+  return new SlowMenu;
+}
+
+void SlowMenu::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_description()) {
+      if (description_ != NULL) description_->::rec::command::Description::Clear();
+    }
+    if (has_extends()) {
+      if (extends_ != &::google::protobuf::internal::kEmptyString) {
+        extends_->clear();
+      }
+    }
+  }
+  entry_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SlowMenu::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .rec.command.Description description = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_description()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_extends;
+        break;
+      }
+
+      // optional string extends = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_extends:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_extends()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->extends().data(), this->extends().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_entry;
+        break;
+      }
+
+      // repeated .rec.slow.SlowMenuEntry entry = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_entry:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_entry()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_entry;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SlowMenu::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .rec.command.Description description = 1;
+  if (has_description()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->description(), output);
+  }
+
+  // optional string extends = 2;
+  if (has_extends()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->extends().data(), this->extends().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->extends(), output);
+  }
+
+  // repeated .rec.slow.SlowMenuEntry entry = 3;
+  for (int i = 0; i < this->entry_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->entry(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SlowMenu::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .rec.command.Description description = 1;
+  if (has_description()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->description(), target);
+  }
+
+  // optional string extends = 2;
+  if (has_extends()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->extends().data(), this->extends().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->extends(), target);
+  }
+
+  // repeated .rec.slow.SlowMenuEntry entry = 3;
+  for (int i = 0; i < this->entry_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->entry(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SlowMenu::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.command.Description description = 1;
+    if (has_description()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->description());
+    }
+
+    // optional string extends = 2;
+    if (has_extends()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->extends());
+    }
+
+  }
+  // repeated .rec.slow.SlowMenuEntry entry = 3;
+  total_size += 1 * this->entry_size();
+  for (int i = 0; i < this->entry_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->entry(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SlowMenu::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SlowMenu* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SlowMenu*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SlowMenu::MergeFrom(const SlowMenu& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  entry_.MergeFrom(from.entry_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_description()) {
+      mutable_description()->::rec::command::Description::MergeFrom(from.description());
+    }
+    if (from.has_extends()) {
+      set_extends(from.extends());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SlowMenu::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SlowMenu::CopyFrom(const SlowMenu& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SlowMenu::IsInitialized() const {
+
+  return true;
+}
+
+void SlowMenu::Swap(SlowMenu* other) {
+  if (other != this) {
+    std::swap(description_, other->description_);
+    std::swap(extends_, other->extends_);
+    entry_.Swap(&other->entry_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SlowMenu::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SlowMenu_descriptor_;
+  metadata.reflection = SlowMenu_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SlowMenus::kMenuFieldNumber;
+#endif  // !_MSC_VER
+
+SlowMenus::SlowMenus()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SlowMenus::InitAsDefaultInstance() {
+}
+
+SlowMenus::SlowMenus(const SlowMenus& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SlowMenus::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SlowMenus::~SlowMenus() {
+  SharedDtor();
+}
+
+void SlowMenus::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void SlowMenus::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SlowMenus::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SlowMenus_descriptor_;
+}
+
+const SlowMenus& SlowMenus::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  return *default_instance_;
+}
+
+SlowMenus* SlowMenus::default_instance_ = NULL;
+
+SlowMenus* SlowMenus::New() const {
+  return new SlowMenus;
+}
+
+void SlowMenus::Clear() {
+  menu_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SlowMenus::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .rec.slow.SlowMenu menu = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_menu:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_menu()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(10)) goto parse_menu;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SlowMenus::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated .rec.slow.SlowMenu menu = 1;
+  for (int i = 0; i < this->menu_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->menu(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SlowMenus::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // repeated .rec.slow.SlowMenu menu = 1;
+  for (int i = 0; i < this->menu_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->menu(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SlowMenus::ByteSize() const {
+  int total_size = 0;
+
+  // repeated .rec.slow.SlowMenu menu = 1;
+  total_size += 1 * this->menu_size();
+  for (int i = 0; i < this->menu_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->menu(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SlowMenus::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SlowMenus* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SlowMenus*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SlowMenus::MergeFrom(const SlowMenus& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  menu_.MergeFrom(from.menu_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SlowMenus::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SlowMenus::CopyFrom(const SlowMenus& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SlowMenus::IsInitialized() const {
+
+  return true;
+}
+
+void SlowMenus::Swap(SlowMenus* other) {
+  if (other != this) {
+    menu_.Swap(&other->menu_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SlowMenus::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SlowMenus_descriptor_;
+  metadata.reflection = SlowMenus_reflection_;
   return metadata;
 }
 

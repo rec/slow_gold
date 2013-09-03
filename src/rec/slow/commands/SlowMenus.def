@@ -1,60 +1,174 @@
 menu {
   description {
-    name: "file basic"
+    name: "file"
+  }
+  entry {
+    command: OPEN
+    command: CLOSE_FILE
+    command: EJECT_CDS
+    command: NONE
+    command: TOGGLE_ADVANCED_MENUS
+    command: NONE
+    command: OPEN_PREVIOUS_FILE
+  }
+  entry {
+    is_recent_files_menu: true
+  }
+  entry {
+    command: NONE
+    command: SAVE_FILE
+    command: SAVE_FILE_SELECTION
+  }
+  entry {
+    submenu: "file type for save"
   }
 }
 menu {
   description {
-    name: "edit basic"
+    name: "edit"
+  }
+  entry {
+    command: UNDO
+    command: REDO
+    command: NONE
+    command: CUT
+    command: COPY
+    command: PASTE
   }
 }
 menu {
   description {
-    name: "audio basic"
+    name: "audio"
+  }
+  entry {
+    command: MUTE_VOLUME_TOGGLE
+    command: NUDGE_VOLUME_UP
+    command: NUDGE_VOLUME_DOWN
+    command: NONE
+    command: TOGGLE_STRETCH_ENABLE
+    command: NUDGE_SPEED_UP
+    command: NUDGE_SPEED_DOWN
+    command: NONE
+    command: AUDIO_PREFERENCES
   }
 }
 menu {
   description {
-    name: "transport basic"
+    name: "transport"
+  }
+  entry {
+    command: TOGGLE_START_STOP
+    command: ADD_LOOP_POINT
+    command: CLEAR_LOOPS
   }
 }
 menu {
   description {
-    name: "select basic"
+    name: "select"
+  }
+  entry {
+    command: SELECT_ALL
+    command: DESELECT_ALL
+    command: INVERT_LOOP_SELECTION
+    command: TOGGLE_WHOLE_SONG_LOOP
+    command: ZOOM_TO_SELECTION
   }
 }
 menu {
   description {
-    name: "help basic"
+    name: "help"
+  }
+  entry {
+    command: OPEN_MANUAL
+    command: REQUEST_SUPPORT
+    command: WHATS_NEW_PAGE
   }
 }
 menu {
   description {
     name: "file advanced"
   }
+  extends: "file"
+  entry {
+    command: NONE
+    command: KEYBOARD_MAPPINGS
+    command: MIDI_MAPPINGS
+    command: NONE
+    command: EXPORT_SETTINGS
+    command: IMPORT_SETTINGS
+  }
 }
 menu {
   description {
     name: "edit advanced"
+  }
+  extends {
+    name: "edit"
+  }
+  entry {
+    command: COPY_ALL_LOOP_POINTS
+    command: PASTE_OVER_LOOP_POINTS
+    command: NONE
+    command: MODE_SET_TIME
+    command: MODE_DRAG
+    command: MODE_ADD_LOOP_POINT
+    command: MODE_ZOOM_IN
   }
 }
 menu {
   description {
     name: "audio advanced"
   }
+  extends: "audio"
 }
 menu {
   description {
     name: "transport advanced"
+  }
+  extends: "transport"
+  entry {
+    command: TOGGLE_PREFADER_LEVELS
+  }
+  entry {
+    command: NONE
+    command: JUMP
+    command: JUMP_SELECTED
+    command: NONE
+    command: NUDGE_BACKWARD
+    command: NUDGE_FORWARD
   }
 }
 menu {
   description {
     name: "select advanced"
   }
+  entry {
+    command: NONE
+    command: SELECT
+    command: SELECT_ONLY
+    command: TOGGLE_SELECTION
+    command: UNSELECT
+  }
 }
 menu {
   description {
     name: "help advanced"
+  }
+  entry {
+    command: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
+    command: NONE
+    command: CHECK_FOR_UPDATES
+    command: TOGGLE_AUTOMATIC_UPDATES
+  }
+}
+menu {
+  description {
+    name: "file type for save"
+  }
+  entry {
+    command: SET_SAVE_AS_AIFF
+    command: SET_SAVE_AS_FLAC
+    command: SET_SAVE_AS_OGG
+    command: SET_SAVE_AS_WAV
   }
 }

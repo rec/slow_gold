@@ -47,7 +47,7 @@ MenuBarMap makeMenuBarMap(const Program& program) {
 
 void checkMenuEntry(const MenuEntry& menuEntry) {
   int cat = 0;
-  if (menuEntry.has_command())
+  if (menuEntry.command_size())
     ++cat;
   if (menuEntry.has_submenu())
     ++cat;
@@ -83,10 +83,19 @@ class ProgramInstance::Impl {
     popup->addSubMenu(subname, submenu);
   }
 
+  void addCommands(PopupMenu* popup, const MenuEntry& menuEntry) {
+    for (auto& command: menuEntry.command()) {
+      if (command)
+        popup->addCommandItem(&applicationCommandManager, command);
+      else
+        popup->addSeparator();
+    }
+  }
+
   void addMenuEntry(PopupMenu* popup, const MenuEntry& menuEntry) {
     checkMenuEntry(menuEntry);
-    if (menuEntry.has_command())
-      popup->addCommandItem(&applicationCommandManager, menuEntry.command());
+    if (menuEntry.command_size())
+      addCommands(popup, menuEntry);
 
     else if (menuEntry.has_submenu())
       addSubmenu(popup, menuEntry);

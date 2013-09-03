@@ -3,7 +3,7 @@ package rec.app;
 import "rec/command/Command.proto";
 
 message MenuEntry {
-  optional uint32 command = 1;
+  repeated uint32 command = 1;
   optional string submenu = 2;
   optional bool is_recent_files_menu = 3;
   optional string callout_function = 4;
@@ -11,7 +11,8 @@ message MenuEntry {
 
 message Menu {
   optional command.Description description = 1;
-  repeated MenuEntry entry = 2;
+  optional string extends = 2;
+  repeated MenuEntry entry = 3;
 };
 
 message Menus {

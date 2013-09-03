@@ -97,12 +97,17 @@ class MenuEntry : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 command = 1;
-  inline bool has_command() const;
+  // repeated uint32 command = 1;
+  inline int command_size() const;
   inline void clear_command();
   static const int kCommandFieldNumber = 1;
-  inline ::google::protobuf::uint32 command() const;
-  inline void set_command(::google::protobuf::uint32 value);
+  inline ::google::protobuf::uint32 command(int index) const;
+  inline void set_command(int index, ::google::protobuf::uint32 value);
+  inline void add_command(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      command() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_command();
 
   // optional string submenu = 2;
   inline bool has_submenu() const;
@@ -137,8 +142,6 @@ class MenuEntry : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.app.MenuEntry)
  private:
-  inline void set_has_command();
-  inline void clear_has_command();
   inline void set_has_submenu();
   inline void clear_has_submenu();
   inline void set_has_is_recent_files_menu();
@@ -148,10 +151,10 @@ class MenuEntry : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > command_;
   ::std::string* submenu_;
-  ::google::protobuf::uint32 command_;
-  bool is_recent_files_menu_;
   ::std::string* callout_function_;
+  bool is_recent_files_menu_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
@@ -228,10 +231,22 @@ class Menu : public ::google::protobuf::Message {
   inline ::rec::command::Description* release_description();
   inline void set_allocated_description(::rec::command::Description* description);
 
-  // repeated .rec.app.MenuEntry entry = 2;
+  // optional string extends = 2;
+  inline bool has_extends() const;
+  inline void clear_extends();
+  static const int kExtendsFieldNumber = 2;
+  inline const ::std::string& extends() const;
+  inline void set_extends(const ::std::string& value);
+  inline void set_extends(const char* value);
+  inline void set_extends(const char* value, size_t size);
+  inline ::std::string* mutable_extends();
+  inline ::std::string* release_extends();
+  inline void set_allocated_extends(::std::string* extends);
+
+  // repeated .rec.app.MenuEntry entry = 3;
   inline int entry_size() const;
   inline void clear_entry();
-  static const int kEntryFieldNumber = 2;
+  static const int kEntryFieldNumber = 3;
   inline const ::rec::app::MenuEntry& entry(int index) const;
   inline ::rec::app::MenuEntry* mutable_entry(int index);
   inline ::rec::app::MenuEntry* add_entry();
@@ -244,14 +259,17 @@ class Menu : public ::google::protobuf::Message {
  private:
   inline void set_has_description();
   inline void clear_has_description();
+  inline void set_has_extends();
+  inline void clear_has_extends();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::command::Description* description_;
+  ::std::string* extends_;
   ::google::protobuf::RepeatedPtrField< ::rec::app::MenuEntry > entry_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fapp_2fMenu_2eproto();
   friend void protobuf_AssignDesc_rec_2fapp_2fMenu_2eproto();
@@ -550,26 +568,29 @@ class MenuCollection : public ::google::protobuf::Message {
 
 // MenuEntry
 
-// optional uint32 command = 1;
-inline bool MenuEntry::has_command() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void MenuEntry::set_has_command() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void MenuEntry::clear_has_command() {
-  _has_bits_[0] &= ~0x00000001u;
+// repeated uint32 command = 1;
+inline int MenuEntry::command_size() const {
+  return command_.size();
 }
 inline void MenuEntry::clear_command() {
-  command_ = 0u;
-  clear_has_command();
+  command_.Clear();
 }
-inline ::google::protobuf::uint32 MenuEntry::command() const {
+inline ::google::protobuf::uint32 MenuEntry::command(int index) const {
+  return command_.Get(index);
+}
+inline void MenuEntry::set_command(int index, ::google::protobuf::uint32 value) {
+  command_.Set(index, value);
+}
+inline void MenuEntry::add_command(::google::protobuf::uint32 value) {
+  command_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+MenuEntry::command() const {
   return command_;
 }
-inline void MenuEntry::set_command(::google::protobuf::uint32 value) {
-  set_has_command();
-  command_ = value;
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+MenuEntry::mutable_command() {
+  return &command_;
 }
 
 // optional string submenu = 2;
@@ -776,7 +797,77 @@ inline void Menu::set_allocated_description(::rec::command::Description* descrip
   }
 }
 
-// repeated .rec.app.MenuEntry entry = 2;
+// optional string extends = 2;
+inline bool Menu::has_extends() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Menu::set_has_extends() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Menu::clear_has_extends() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Menu::clear_extends() {
+  if (extends_ != &::google::protobuf::internal::kEmptyString) {
+    extends_->clear();
+  }
+  clear_has_extends();
+}
+inline const ::std::string& Menu::extends() const {
+  return *extends_;
+}
+inline void Menu::set_extends(const ::std::string& value) {
+  set_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    extends_ = new ::std::string;
+  }
+  extends_->assign(value);
+}
+inline void Menu::set_extends(const char* value) {
+  set_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    extends_ = new ::std::string;
+  }
+  extends_->assign(value);
+}
+inline void Menu::set_extends(const char* value, size_t size) {
+  set_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    extends_ = new ::std::string;
+  }
+  extends_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Menu::mutable_extends() {
+  set_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    extends_ = new ::std::string;
+  }
+  return extends_;
+}
+inline ::std::string* Menu::release_extends() {
+  clear_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = extends_;
+    extends_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Menu::set_allocated_extends(::std::string* extends) {
+  if (extends_ != &::google::protobuf::internal::kEmptyString) {
+    delete extends_;
+  }
+  if (extends) {
+    set_has_extends();
+    extends_ = extends;
+  } else {
+    clear_has_extends();
+    extends_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// repeated .rec.app.MenuEntry entry = 3;
 inline int Menu::entry_size() const {
   return entry_.size();
 }

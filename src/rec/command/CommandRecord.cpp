@@ -30,8 +30,10 @@ void CommandRecord::fillInfo() {
     String name = Trans(desc.menu(0));
     if (info_.shortName.length()) {
       CommandID t = id.get();
-      if (t == slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP || t == slow::SlowCommand::RECENT_FILES)
+      if (t == slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP ||
+          t == slow::SlowCommand::RECENT_FILES) {
         name = info_.shortName;
+      }
     }
 
     info_.setInfo(name, fullName, category, flags);

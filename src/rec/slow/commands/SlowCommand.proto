@@ -80,6 +80,11 @@ message SlowCommand {
     SET_LANGUAGE = 93;
     SET_SAVE_FORMAT = 71;
 
+    SET_SAVE_AS_AIFF = 97;
+    SET_SAVE_AS_FLAC = 98;
+    SET_SAVE_AS_OGG = 99;
+    SET_SAVE_AS_WAV = 100;
+
     TOGGLE_ADVANCED_MENUS = 59;
     TOGGLE_AUTOMATIC_UPDATES = 67;
     TOGGLE_FOLLOW_CURSOR = 43;
@@ -122,7 +127,7 @@ message SlowCommand {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    FIRST_FREE_TYPE = 97;
+    FIRST_FREE_TYPE = 101;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;
@@ -154,4 +159,21 @@ message SlowCommandMapEntry {
 
 message SlowCommandMapProto {
   repeated SlowCommandMapEntry slow_entry = 1;
+};
+
+message SlowMenuEntry {
+  repeated SlowCommand.Type command = 1;
+  optional string submenu = 2;
+  optional bool is_recent_files_menu = 3;
+  optional string callout_function = 4;
+};
+
+message SlowMenu {
+  optional command.Description description = 1;
+  optional string extends = 2;
+  repeated SlowMenuEntry entry = 3;
+};
+
+message SlowMenus {
+  repeated SlowMenu menu = 1;
 };

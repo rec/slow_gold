@@ -41,6 +41,9 @@ class SlowCommand;
 class SlowCommands;
 class SlowCommandMapEntry;
 class SlowCommandMapProto;
+class SlowMenuEntry;
+class SlowMenu;
+class SlowMenus;
 
 enum SlowCommand_Type {
   SlowCommand_Type_NONE = 0,
@@ -101,6 +104,10 @@ enum SlowCommand_Type {
   SlowCommand_Type_SELECT_ONLY = 26,
   SlowCommand_Type_SET_LANGUAGE = 93,
   SlowCommand_Type_SET_SAVE_FORMAT = 71,
+  SlowCommand_Type_SET_SAVE_AS_AIFF = 97,
+  SlowCommand_Type_SET_SAVE_AS_FLAC = 98,
+  SlowCommand_Type_SET_SAVE_AS_OGG = 99,
+  SlowCommand_Type_SET_SAVE_AS_WAV = 100,
   SlowCommand_Type_TOGGLE_ADVANCED_MENUS = 59,
   SlowCommand_Type_TOGGLE_AUTOMATIC_UPDATES = 67,
   SlowCommand_Type_TOGGLE_FOLLOW_CURSOR = 43,
@@ -138,7 +145,7 @@ enum SlowCommand_Type {
   SlowCommand_Type_ZOOM_OUT = 40,
   SlowCommand_Type_ZOOM_OUT_FULL = 64,
   SlowCommand_Type_ZOOM_TO_SELECTION = 45,
-  SlowCommand_Type_FIRST_FREE_TYPE = 97,
+  SlowCommand_Type_FIRST_FREE_TYPE = 101,
   SlowCommand_Type_QUIT = 4097,
   SlowCommand_Type_DEL = 4098,
   SlowCommand_Type_CUT = 4099,
@@ -278,6 +285,10 @@ class SlowCommand : public ::google::protobuf::Message {
   static const Type SELECT_ONLY = SlowCommand_Type_SELECT_ONLY;
   static const Type SET_LANGUAGE = SlowCommand_Type_SET_LANGUAGE;
   static const Type SET_SAVE_FORMAT = SlowCommand_Type_SET_SAVE_FORMAT;
+  static const Type SET_SAVE_AS_AIFF = SlowCommand_Type_SET_SAVE_AS_AIFF;
+  static const Type SET_SAVE_AS_FLAC = SlowCommand_Type_SET_SAVE_AS_FLAC;
+  static const Type SET_SAVE_AS_OGG = SlowCommand_Type_SET_SAVE_AS_OGG;
+  static const Type SET_SAVE_AS_WAV = SlowCommand_Type_SET_SAVE_AS_WAV;
   static const Type TOGGLE_ADVANCED_MENUS = SlowCommand_Type_TOGGLE_ADVANCED_MENUS;
   static const Type TOGGLE_AUTOMATIC_UPDATES = SlowCommand_Type_TOGGLE_AUTOMATIC_UPDATES;
   static const Type TOGGLE_FOLLOW_CURSOR = SlowCommand_Type_TOGGLE_FOLLOW_CURSOR;
@@ -651,6 +662,326 @@ class SlowCommandMapProto : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static SlowCommandMapProto* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class SlowMenuEntry : public ::google::protobuf::Message {
+ public:
+  SlowMenuEntry();
+  virtual ~SlowMenuEntry();
+
+  SlowMenuEntry(const SlowMenuEntry& from);
+
+  inline SlowMenuEntry& operator=(const SlowMenuEntry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SlowMenuEntry& default_instance();
+
+  void Swap(SlowMenuEntry* other);
+
+  // implements Message ----------------------------------------------
+
+  SlowMenuEntry* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SlowMenuEntry& from);
+  void MergeFrom(const SlowMenuEntry& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .rec.slow.SlowCommand.Type command = 1;
+  inline int command_size() const;
+  inline void clear_command();
+  static const int kCommandFieldNumber = 1;
+  inline ::rec::slow::SlowCommand_Type command(int index) const;
+  inline void set_command(int index, ::rec::slow::SlowCommand_Type value);
+  inline void add_command(::rec::slow::SlowCommand_Type value);
+  inline const ::google::protobuf::RepeatedField<int>& command() const;
+  inline ::google::protobuf::RepeatedField<int>* mutable_command();
+
+  // optional string submenu = 2;
+  inline bool has_submenu() const;
+  inline void clear_submenu();
+  static const int kSubmenuFieldNumber = 2;
+  inline const ::std::string& submenu() const;
+  inline void set_submenu(const ::std::string& value);
+  inline void set_submenu(const char* value);
+  inline void set_submenu(const char* value, size_t size);
+  inline ::std::string* mutable_submenu();
+  inline ::std::string* release_submenu();
+  inline void set_allocated_submenu(::std::string* submenu);
+
+  // optional bool is_recent_files_menu = 3;
+  inline bool has_is_recent_files_menu() const;
+  inline void clear_is_recent_files_menu();
+  static const int kIsRecentFilesMenuFieldNumber = 3;
+  inline bool is_recent_files_menu() const;
+  inline void set_is_recent_files_menu(bool value);
+
+  // optional string callout_function = 4;
+  inline bool has_callout_function() const;
+  inline void clear_callout_function();
+  static const int kCalloutFunctionFieldNumber = 4;
+  inline const ::std::string& callout_function() const;
+  inline void set_callout_function(const ::std::string& value);
+  inline void set_callout_function(const char* value);
+  inline void set_callout_function(const char* value, size_t size);
+  inline ::std::string* mutable_callout_function();
+  inline ::std::string* release_callout_function();
+  inline void set_allocated_callout_function(::std::string* callout_function);
+
+  // @@protoc_insertion_point(class_scope:rec.slow.SlowMenuEntry)
+ private:
+  inline void set_has_submenu();
+  inline void clear_has_submenu();
+  inline void set_has_is_recent_files_menu();
+  inline void clear_has_is_recent_files_menu();
+  inline void set_has_callout_function();
+  inline void clear_has_callout_function();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedField<int> command_;
+  ::std::string* submenu_;
+  ::std::string* callout_function_;
+  bool is_recent_files_menu_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+
+  void InitAsDefaultInstance();
+  static SlowMenuEntry* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SlowMenu : public ::google::protobuf::Message {
+ public:
+  SlowMenu();
+  virtual ~SlowMenu();
+
+  SlowMenu(const SlowMenu& from);
+
+  inline SlowMenu& operator=(const SlowMenu& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SlowMenu& default_instance();
+
+  void Swap(SlowMenu* other);
+
+  // implements Message ----------------------------------------------
+
+  SlowMenu* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SlowMenu& from);
+  void MergeFrom(const SlowMenu& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .rec.command.Description description = 1;
+  inline bool has_description() const;
+  inline void clear_description();
+  static const int kDescriptionFieldNumber = 1;
+  inline const ::rec::command::Description& description() const;
+  inline ::rec::command::Description* mutable_description();
+  inline ::rec::command::Description* release_description();
+  inline void set_allocated_description(::rec::command::Description* description);
+
+  // optional string extends = 2;
+  inline bool has_extends() const;
+  inline void clear_extends();
+  static const int kExtendsFieldNumber = 2;
+  inline const ::std::string& extends() const;
+  inline void set_extends(const ::std::string& value);
+  inline void set_extends(const char* value);
+  inline void set_extends(const char* value, size_t size);
+  inline ::std::string* mutable_extends();
+  inline ::std::string* release_extends();
+  inline void set_allocated_extends(::std::string* extends);
+
+  // repeated .rec.slow.SlowMenuEntry entry = 3;
+  inline int entry_size() const;
+  inline void clear_entry();
+  static const int kEntryFieldNumber = 3;
+  inline const ::rec::slow::SlowMenuEntry& entry(int index) const;
+  inline ::rec::slow::SlowMenuEntry* mutable_entry(int index);
+  inline ::rec::slow::SlowMenuEntry* add_entry();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenuEntry >&
+      entry() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenuEntry >*
+      mutable_entry();
+
+  // @@protoc_insertion_point(class_scope:rec.slow.SlowMenu)
+ private:
+  inline void set_has_description();
+  inline void clear_has_description();
+  inline void set_has_extends();
+  inline void clear_has_extends();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::rec::command::Description* description_;
+  ::std::string* extends_;
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenuEntry > entry_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+
+  void InitAsDefaultInstance();
+  static SlowMenu* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SlowMenus : public ::google::protobuf::Message {
+ public:
+  SlowMenus();
+  virtual ~SlowMenus();
+
+  SlowMenus(const SlowMenus& from);
+
+  inline SlowMenus& operator=(const SlowMenus& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SlowMenus& default_instance();
+
+  void Swap(SlowMenus* other);
+
+  // implements Message ----------------------------------------------
+
+  SlowMenus* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SlowMenus& from);
+  void MergeFrom(const SlowMenus& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .rec.slow.SlowMenu menu = 1;
+  inline int menu_size() const;
+  inline void clear_menu();
+  static const int kMenuFieldNumber = 1;
+  inline const ::rec::slow::SlowMenu& menu(int index) const;
+  inline ::rec::slow::SlowMenu* mutable_menu(int index);
+  inline ::rec::slow::SlowMenu* add_menu();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenu >&
+      menu() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenu >*
+      mutable_menu();
+
+  // @@protoc_insertion_point(class_scope:rec.slow.SlowMenus)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenu > menu_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
+
+  void InitAsDefaultInstance();
+  static SlowMenus* default_instance_;
+};
 // ===================================================================
 
 
@@ -840,6 +1171,365 @@ SlowCommandMapProto::slow_entry() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >*
 SlowCommandMapProto::mutable_slow_entry() {
   return &slow_entry_;
+}
+
+// -------------------------------------------------------------------
+
+// SlowMenuEntry
+
+// repeated .rec.slow.SlowCommand.Type command = 1;
+inline int SlowMenuEntry::command_size() const {
+  return command_.size();
+}
+inline void SlowMenuEntry::clear_command() {
+  command_.Clear();
+}
+inline ::rec::slow::SlowCommand_Type SlowMenuEntry::command(int index) const {
+  return static_cast< ::rec::slow::SlowCommand_Type >(command_.Get(index));
+}
+inline void SlowMenuEntry::set_command(int index, ::rec::slow::SlowCommand_Type value) {
+  assert(::rec::slow::SlowCommand_Type_IsValid(value));
+  command_.Set(index, value);
+}
+inline void SlowMenuEntry::add_command(::rec::slow::SlowCommand_Type value) {
+  assert(::rec::slow::SlowCommand_Type_IsValid(value));
+  command_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField<int>&
+SlowMenuEntry::command() const {
+  return command_;
+}
+inline ::google::protobuf::RepeatedField<int>*
+SlowMenuEntry::mutable_command() {
+  return &command_;
+}
+
+// optional string submenu = 2;
+inline bool SlowMenuEntry::has_submenu() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SlowMenuEntry::set_has_submenu() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SlowMenuEntry::clear_has_submenu() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SlowMenuEntry::clear_submenu() {
+  if (submenu_ != &::google::protobuf::internal::kEmptyString) {
+    submenu_->clear();
+  }
+  clear_has_submenu();
+}
+inline const ::std::string& SlowMenuEntry::submenu() const {
+  return *submenu_;
+}
+inline void SlowMenuEntry::set_submenu(const ::std::string& value) {
+  set_has_submenu();
+  if (submenu_ == &::google::protobuf::internal::kEmptyString) {
+    submenu_ = new ::std::string;
+  }
+  submenu_->assign(value);
+}
+inline void SlowMenuEntry::set_submenu(const char* value) {
+  set_has_submenu();
+  if (submenu_ == &::google::protobuf::internal::kEmptyString) {
+    submenu_ = new ::std::string;
+  }
+  submenu_->assign(value);
+}
+inline void SlowMenuEntry::set_submenu(const char* value, size_t size) {
+  set_has_submenu();
+  if (submenu_ == &::google::protobuf::internal::kEmptyString) {
+    submenu_ = new ::std::string;
+  }
+  submenu_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SlowMenuEntry::mutable_submenu() {
+  set_has_submenu();
+  if (submenu_ == &::google::protobuf::internal::kEmptyString) {
+    submenu_ = new ::std::string;
+  }
+  return submenu_;
+}
+inline ::std::string* SlowMenuEntry::release_submenu() {
+  clear_has_submenu();
+  if (submenu_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = submenu_;
+    submenu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SlowMenuEntry::set_allocated_submenu(::std::string* submenu) {
+  if (submenu_ != &::google::protobuf::internal::kEmptyString) {
+    delete submenu_;
+  }
+  if (submenu) {
+    set_has_submenu();
+    submenu_ = submenu;
+  } else {
+    clear_has_submenu();
+    submenu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional bool is_recent_files_menu = 3;
+inline bool SlowMenuEntry::has_is_recent_files_menu() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SlowMenuEntry::set_has_is_recent_files_menu() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SlowMenuEntry::clear_has_is_recent_files_menu() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SlowMenuEntry::clear_is_recent_files_menu() {
+  is_recent_files_menu_ = false;
+  clear_has_is_recent_files_menu();
+}
+inline bool SlowMenuEntry::is_recent_files_menu() const {
+  return is_recent_files_menu_;
+}
+inline void SlowMenuEntry::set_is_recent_files_menu(bool value) {
+  set_has_is_recent_files_menu();
+  is_recent_files_menu_ = value;
+}
+
+// optional string callout_function = 4;
+inline bool SlowMenuEntry::has_callout_function() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void SlowMenuEntry::set_has_callout_function() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void SlowMenuEntry::clear_has_callout_function() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void SlowMenuEntry::clear_callout_function() {
+  if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
+    callout_function_->clear();
+  }
+  clear_has_callout_function();
+}
+inline const ::std::string& SlowMenuEntry::callout_function() const {
+  return *callout_function_;
+}
+inline void SlowMenuEntry::set_callout_function(const ::std::string& value) {
+  set_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    callout_function_ = new ::std::string;
+  }
+  callout_function_->assign(value);
+}
+inline void SlowMenuEntry::set_callout_function(const char* value) {
+  set_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    callout_function_ = new ::std::string;
+  }
+  callout_function_->assign(value);
+}
+inline void SlowMenuEntry::set_callout_function(const char* value, size_t size) {
+  set_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    callout_function_ = new ::std::string;
+  }
+  callout_function_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SlowMenuEntry::mutable_callout_function() {
+  set_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    callout_function_ = new ::std::string;
+  }
+  return callout_function_;
+}
+inline ::std::string* SlowMenuEntry::release_callout_function() {
+  clear_has_callout_function();
+  if (callout_function_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = callout_function_;
+    callout_function_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SlowMenuEntry::set_allocated_callout_function(::std::string* callout_function) {
+  if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
+    delete callout_function_;
+  }
+  if (callout_function) {
+    set_has_callout_function();
+    callout_function_ = callout_function;
+  } else {
+    clear_has_callout_function();
+    callout_function_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// SlowMenu
+
+// optional .rec.command.Description description = 1;
+inline bool SlowMenu::has_description() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SlowMenu::set_has_description() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SlowMenu::clear_has_description() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SlowMenu::clear_description() {
+  if (description_ != NULL) description_->::rec::command::Description::Clear();
+  clear_has_description();
+}
+inline const ::rec::command::Description& SlowMenu::description() const {
+  return description_ != NULL ? *description_ : *default_instance_->description_;
+}
+inline ::rec::command::Description* SlowMenu::mutable_description() {
+  set_has_description();
+  if (description_ == NULL) description_ = new ::rec::command::Description;
+  return description_;
+}
+inline ::rec::command::Description* SlowMenu::release_description() {
+  clear_has_description();
+  ::rec::command::Description* temp = description_;
+  description_ = NULL;
+  return temp;
+}
+inline void SlowMenu::set_allocated_description(::rec::command::Description* description) {
+  delete description_;
+  description_ = description;
+  if (description) {
+    set_has_description();
+  } else {
+    clear_has_description();
+  }
+}
+
+// optional string extends = 2;
+inline bool SlowMenu::has_extends() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SlowMenu::set_has_extends() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SlowMenu::clear_has_extends() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SlowMenu::clear_extends() {
+  if (extends_ != &::google::protobuf::internal::kEmptyString) {
+    extends_->clear();
+  }
+  clear_has_extends();
+}
+inline const ::std::string& SlowMenu::extends() const {
+  return *extends_;
+}
+inline void SlowMenu::set_extends(const ::std::string& value) {
+  set_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    extends_ = new ::std::string;
+  }
+  extends_->assign(value);
+}
+inline void SlowMenu::set_extends(const char* value) {
+  set_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    extends_ = new ::std::string;
+  }
+  extends_->assign(value);
+}
+inline void SlowMenu::set_extends(const char* value, size_t size) {
+  set_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    extends_ = new ::std::string;
+  }
+  extends_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SlowMenu::mutable_extends() {
+  set_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    extends_ = new ::std::string;
+  }
+  return extends_;
+}
+inline ::std::string* SlowMenu::release_extends() {
+  clear_has_extends();
+  if (extends_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = extends_;
+    extends_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SlowMenu::set_allocated_extends(::std::string* extends) {
+  if (extends_ != &::google::protobuf::internal::kEmptyString) {
+    delete extends_;
+  }
+  if (extends) {
+    set_has_extends();
+    extends_ = extends;
+  } else {
+    clear_has_extends();
+    extends_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// repeated .rec.slow.SlowMenuEntry entry = 3;
+inline int SlowMenu::entry_size() const {
+  return entry_.size();
+}
+inline void SlowMenu::clear_entry() {
+  entry_.Clear();
+}
+inline const ::rec::slow::SlowMenuEntry& SlowMenu::entry(int index) const {
+  return entry_.Get(index);
+}
+inline ::rec::slow::SlowMenuEntry* SlowMenu::mutable_entry(int index) {
+  return entry_.Mutable(index);
+}
+inline ::rec::slow::SlowMenuEntry* SlowMenu::add_entry() {
+  return entry_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenuEntry >&
+SlowMenu::entry() const {
+  return entry_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenuEntry >*
+SlowMenu::mutable_entry() {
+  return &entry_;
+}
+
+// -------------------------------------------------------------------
+
+// SlowMenus
+
+// repeated .rec.slow.SlowMenu menu = 1;
+inline int SlowMenus::menu_size() const {
+  return menu_.size();
+}
+inline void SlowMenus::clear_menu() {
+  menu_.Clear();
+}
+inline const ::rec::slow::SlowMenu& SlowMenus::menu(int index) const {
+  return menu_.Get(index);
+}
+inline ::rec::slow::SlowMenu* SlowMenus::mutable_menu(int index) {
+  return menu_.Mutable(index);
+}
+inline ::rec::slow::SlowMenu* SlowMenus::add_menu() {
+  return menu_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenu >&
+SlowMenus::menu() const {
+  return menu_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowMenu >*
+SlowMenus::mutable_menu() {
+  return &menu_;
 }
 
 
