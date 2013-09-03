@@ -46,10 +46,32 @@ class JucerDomFile(dom_file.DomFile):
     self.file_id_dict = {}
 
   def toxml(self):
-    self.setMaingroup()
+    self.set_maingroup()
     return self.dom.toprettyxml()
 
-  def setFileIdDict(self, n, path, depth=0):
+  def set_maingroup(self):
+    old = self.element('MAINGROUP')
+    name = old.getAttribute('name')
+    self.set_file_id_dict(old, '')
+
+    maingroup = self.create_from_dict('MAINGROUP', name, name=name)
+    self.documentElement.replaceChild(maingroup, old)
+
+    for prefix, n2 in (FILE_GROUPS):
+      self.create_top_level_group(maingroup, prefix, n2, '%s/rec' % self.root, name)
+
+    maingroup.appendChild(self.create_file('Main.cpp', 'Main.cpp',
+                                          name + '/Main.cpp'))
+
+  def create_top_level_group(self, parent, prefix, name, root, path):
+    tree_name = '%s/%s/%s' % (root, prefix, name)
+    tree = filetree.filetree(tree_name, self.accept_cpp)
+    if tree:
+      parent.appendChild(self.create_file_or_group(prefix, name, tree, path))
+    else:
+      print 'ERROR: no file for %s' % tree_name
+
+  def set_file_id_dict(self, n, path, depth=0):
     if path:
       path += '/'
     path += n.getAttribute('name')
@@ -57,9 +79,9 @@ class JucerDomFile(dom_file.DomFile):
     self.file_id_dict[path] = n.getAttribute('id')
     for g in n.childNodes:
       if hasattr(g, 'tagName') and g.tagName in ['GROUP', 'FILE']:
-        self.setFileIdDict(g, path, depth + 1)
+        self.set_file_id_dict(g, path, depth + 1)
 
-  def createFromDict(self, xmlName, path, **attributes):
+  def create_from_dict(self, xmlName, path, **attributes):
     if RANDOMIZE_IDS:
       id = dom_file.randomId()
     else:
@@ -68,43 +90,21 @@ class JucerDomFile(dom_file.DomFile):
       attributes.update(id=id)
     return self.create(xmlName, **attributes)
 
-  def setMaingroup(self):
-    old = self.element('MAINGROUP')
-    name = old.getAttribute('name')
-    self.setFileIdDict(old, '')
-
-    maingroup = self.createFromDict('MAINGROUP', name, name=name)
-    self.documentElement.replaceChild(maingroup, old)
-
-    for prefix, n2 in (FILE_GROUPS):
-      self.createCPPFileGroup(maingroup, prefix, n2, '%s/rec' % self.root, name)
-
-    maingroup.appendChild(self.createFile('Main.cpp', 'Main.cpp',
-                                          name + '/Main.cpp'))
-
   def join(self, files, joiner=' '):
     return joiner.join(filter(self.accept, files))
 
-  def createCPPFileGroup(self, parent, prefix, name, root, path):
-    treeName = '%s/%s/%s' % (root, prefix, name)
-    tree = filetree.filetree(treeName, self.acceptCpp)
-    if tree:
-      parent.appendChild(self.createFileOrGroup(prefix, name, tree, path))
-    else:
-      print 'ERROR: no file for %s' % treeName
-
-  def createFile(self, name, file, path):
+  def create_file(self, name, file, path):
     isPNG = file.endswith('.png')
     compile = str(int(not (file.endswith('.h') or isPNG)))
     resource = str(int(isPNG))
     d = dict(name=name, resource=resource, file=file, compile=compile)
-    return self.createFromDict('FILE', path, **d)
+    return self.create_from_dict('FILE', path, **d)
 
-  def createFileOrGroup(self, prefix, name, tree, path):
+  def create_file_or_group(self, prefix, name, tree, path):
     if type(tree) is str:
-      return self.createFile(name, '../../%s/%s' % (prefix, name), path)
+      return self.create_file(name, '../../%s/%s' % (prefix, name), path)
     else:
-      group = self.createFromDict('GROUP', path, name=name)
+      group = self.create_from_dict('GROUP', path, name=name)
       if prefix:
         prefix = '%s/%s' % (prefix, name)
       else:
@@ -112,16 +112,16 @@ class JucerDomFile(dom_file.DomFile):
 
       new_path = path + '/' + name
       for k, v in tree.iteritems():
-        group.appendChild(self.createFileOrGroup(prefix, k, v, new_path))
+        group.appendChild(self.create_file_or_group(prefix, k, v, new_path))
 
       return group
 
-  def acceptCpp(self, s):
+  def accept_cpp(self, s):
     r = (self.accept(s) and
             ('.' + s).split('.')[-1] in SUFFIXES and
             not (self.is_test and 'Main.c' in s) and
             'mfMath.h' not in s)
-    # print "acceptCpp", s, r
+    # print "accept_cpp", s, r
     return r
   # TODO: is that second-last condition now irrelevant?
 
