@@ -86,7 +86,7 @@ class ProgramInstance::Impl {
   void addCommands(PopupMenu* popup, const MenuEntry& menuEntry) {
     for (auto& command: menuEntry.command()) {
       if (command)
-        popup->addCommandItem(&applicationCommandManager, command);
+        popup->addCommandItem(&applicationCommandManager_, command);
       else
         popup->addSeparator();
     }
@@ -124,31 +124,38 @@ class ProgramInstance::Impl {
     }
   }
 
+  Program* program() { return program_; }
+  const ProgramMap& programMap() const { return programMap_; }
+  ApplicationCommandManager* applicationCommandManager() {
+    return &applicationCommandManager_;
+  }
+
+ private:
   Program* program_;
   ProgramMap programMap_;
   const MenuCollection menuCollection;
   const MenuMap menuMap_;
   const MenuBarMap menuBarMap_;
-  ApplicationCommandManager applicationCommandManager;
+  ApplicationCommandManager applicationCommandManager_;
 };
 
 ProgramInstance::ProgramInstance(Program* p) : impl_(new Impl(p)) {}
 ProgramInstance::~ProgramInstance() {}
 
 void ProgramInstance::getAllCommands(juce::Array<CommandID>& commands) {
-  for (auto& mapEntry: impl_->programMap_)
+  for (auto& mapEntry: impl_->programMap())
     commands.add(mapEntry.first);
 }
 
 void ProgramInstance::getCommandInfo(CommandID command,
                                      ApplicationCommandInfo& info) {
   try {
-    const Command& command = impl_->programMap_.at(info.commandID);
+    const Command& command = impl_->programMap().at(info.commandID);
     const Description& desc = command.desc();
     int flags = command.flags();
-    if (hasProperty(*impl_->program_, command.disabled()))
+    if (hasProperty(*impl_->program(), command.disabled()))
       flags |= ApplicationCommandInfo::isDisabled;
-    if (hasProperty(*impl_->program_, command.ticked()))
+    if (hasProperty(*impl_->program(), command.ticked()))
       flags |= ApplicationCommandInfo::isTicked;
 
     info.setInfo(desc.name(), desc.full(0), command.category(), flags);
@@ -159,8 +166,8 @@ void ProgramInstance::getCommandInfo(CommandID command,
 
 bool ProgramInstance::perform(const InvocationInfo& info) {
   try {
-    const Command& command = impl_->programMap_.at(info.commandID);
-    return impl_->program_->perform(info, command);
+    const Command& command = impl_->programMap().at(info.commandID);
+    return impl_->program()->perform(info, command);
   } catch (const std::out_of_range&) {
     LOG(DFATAL) << "Tried to invoke out of range command " << info.commandID;
     return false;
@@ -179,7 +186,7 @@ StringArray ProgramInstance::getMenuBarNames() {
 }
 
 ApplicationCommandManager* ProgramInstance::applicationCommandManager() {
-  return &impl_->applicationCommandManager;
+  return impl_->applicationCommandManager();
 }
 
 PopupMenu ProgramInstance::getMenuForIndex(int menuIndex,
