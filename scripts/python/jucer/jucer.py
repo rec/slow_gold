@@ -38,6 +38,8 @@ SUFFIXES = set([
   'svg',
   ])
 
+COMPILE_SUFFIXES = set(['.c', '.cc', '.cpp'])
+
 class JucerDomFile(dom_file.DomFile):
   def __init__(self, filename, is_test, root):
     dom_file.DomFile.__init__(self, filename)
@@ -51,17 +53,19 @@ class JucerDomFile(dom_file.DomFile):
 
   def set_maingroup(self):
     old = self.element('MAINGROUP')
-    name = old.getAttribute('name')
+    maingroup_name = old.getAttribute('name')
     self.set_file_id_dict(old, '')
 
-    maingroup = self.create_from_dict('MAINGROUP', name, name=name)
+    maingroup = self.create_from_dict('MAINGROUP', maingroup_name,
+                                      name=maingroup_name)
     self.documentElement.replaceChild(maingroup, old)
 
-    for prefix, n2 in (FILE_GROUPS):
-      self.create_top_level_group(maingroup, prefix, n2, '%s/rec' % self.root, name)
+    for prefix, name in (FILE_GROUPS):
+      self.create_top_level_group(maingroup, prefix, name,
+                                  '%s/rec' % self.root, maingroup_name)
 
     maingroup.appendChild(self.create_file('Main.cpp', 'Main.cpp',
-                                          name + '/Main.cpp'))
+                                           maingroup_name + '/Main.cpp'))
 
   def create_top_level_group(self, parent, prefix, name, root, path):
     tree_name = '%s/%s/%s' % (root, prefix, name)
@@ -71,33 +75,35 @@ class JucerDomFile(dom_file.DomFile):
     else:
       print 'ERROR: no file for %s' % tree_name
 
-  def set_file_id_dict(self, n, path, depth=0):
+  def set_file_id_dict(self, node, path, depth=0):
     if path:
       path += '/'
-    path += n.getAttribute('name')
+    path += node.getAttribute('name')
 
-    self.file_id_dict[path] = n.getAttribute('id')
-    for g in n.childNodes:
-      if hasattr(g, 'tagName') and g.tagName in ['GROUP', 'FILE']:
-        self.set_file_id_dict(g, path, depth + 1)
+    self.file_id_dict[path] = node.getAttribute('id')
+    for child in node.childNodes:
+      if (hasattr(child, 'tagName')
+          and child.tagName in ['GROUP', 'FILE']):
+        self.set_file_id_dict(child, path, depth + 1)
 
-  def create_from_dict(self, xmlName, path, **attributes):
+  def create_from_dict(self, xml_name, path, **attributes):
     if RANDOMIZE_IDS:
       id = dom_file.randomId()
     else:
       id = self.file_id_dict.get(path + '/' + attributes['name'], None)
     if id:
       attributes.update(id=id)
-    return self.create(xmlName, **attributes)
+    return self.create(xml_name, **attributes)
 
   def join(self, files, joiner=' '):
     return joiner.join(filter(self.accept, files))
 
   def create_file(self, name, file, path):
     isPNG = file.endswith('.png')
-    compile = str(int(not (file.endswith('.h') or isPNG)))
-    resource = str(int(isPNG))
-    d = dict(name=name, resource=resource, file=file, compile=compile)
+    compile = any(file.endswith(s) for s in COMPILE_SUFFIXES)
+    resource = not compile and (not file.endswith('.h'))
+    d = dict(name=name, resource=str(int(resource)), file=file,
+             compile=str(int(compile)))
     return self.create_from_dict('FILE', path, **d)
 
   def create_file_or_group(self, prefix, name, tree, path):
