@@ -59,7 +59,7 @@ class JucerDomFile(object):
     root = '%s/rec' % self.root
     for group, path in FILE_GROUPS:
       tree_name = '%s/%s/%s' % (root, group, path)
-      tree = filetree.filetree(tree_name, self.accept_cpp)
+      tree = filetree.filetree(tree_name, self.accept)
       if tree:
         child = self.create_file_or_group(group, path, tree, maingroup_name)
         maingroup.appendChild(child)
@@ -93,13 +93,8 @@ class JucerDomFile(object):
              compile=str(int(compile)))
     return self.create('FILE', path, **d)
 
-  def join(self, files, joiner=' '):
-    return joiner.join(filter(self.accept, files))
-
-  def accept_cpp(self, s):
-    return (self.accept(s) and
+  def accept(self, s):
+    return (s and
+            (self.is_test or not '_test.' in s) and
             ('.' + s).split('.')[-1] in SUFFIXES and
             not (self.is_test and 'Main.c' in s))
-
-  def accept(self, s):
-    return s and (self.is_test or not '_test.' in s)
