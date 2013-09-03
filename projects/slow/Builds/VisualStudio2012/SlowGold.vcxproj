@@ -62,7 +62,7 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2012_78A501F=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCE_USE_VDSP_FRAMEWORK=0;JUCER_VS2012_78A501F=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -106,7 +106,7 @@
     <ClCompile>
       <Optimization>MinSpace</Optimization>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;c:/Program Files/QuickTime SDK/CIncludes;../../../../../rec/externals/rubberband/src;../../../../../rec/src;../../../../../rec/genfiles/icon;../../../../../rec/genfiles/proto;../../../../../rec/genfiles/translation;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCER_VS2012_78A501F=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;JUCE_USE_VDSP_FRAMEWORK=0;JUCER_VS2012_78A501F=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -345,12 +345,12 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\DialogFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
@@ -1521,7 +1521,6 @@
     <ClInclude Include="..\..\..\..\src\rec\base\disallow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\DropDead.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\Juce.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\base\make_unique.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\port.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\ptr.h"/>
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h"/>
@@ -1564,6 +1563,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\DataOps.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataSet.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Destructable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Opener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h"/>
@@ -1781,12 +1781,12 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\DialogFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\LegacyDatabase.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
@@ -2241,10 +2241,50 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\art\icon\AddLoopPointButton.svg"/>
+    <None Include="..\..\art\icon\AddLoopPointButtonDisabled.svg"/>
+    <None Include="..\..\art\icon\AddLoopPointButtonPressed.svg"/>
+    <None Include="..\..\art\icon\AddLoopPointMode.svg"/>
+    <None Include="..\..\art\icon\AddLoopPointModeDisabled.svg"/>
+    <None Include="..\..\art\icon\DragMode.svg"/>
+    <None Include="..\..\art\icon\DragModeDisabled.svg"/>
+    <None Include="..\..\art\icon\JumpBackButton.svg"/>
+    <None Include="..\..\art\icon\JumpBackButtonDisabled.svg"/>
+    <None Include="..\..\art\icon\JumpBackButtonPressed.svg"/>
+    <None Include="..\..\art\icon\JumpForwardButton.svg"/>
+    <None Include="..\..\art\icon\JumpForwardButtonDisabled.svg"/>
+    <None Include="..\..\art\icon\JumpForwardButtonPressed.svg"/>
+    <None Include="..\..\art\icon\JumpToStartButton.svg"/>
+    <None Include="..\..\art\icon\JumpToStartButtonDisabled.svg"/>
+    <None Include="..\..\art\icon\JumpToStartButtonPressed.svg"/>
+    <None Include="..\..\art\icon\MacFolderCloseButton.svg"/>
+    <None Include="..\..\art\icon\MacFolderOpenButton.svg"/>
+    <None Include="..\..\art\icon\PlayButton.svg"/>
+    <None Include="..\..\art\icon\PlayButtonDisabled.svg"/>
+    <None Include="..\..\art\icon\SetTimeMode.svg"/>
+    <None Include="..\..\art\icon\SetTimeModeDisabled.svg"/>
+    <None Include="..\..\art\icon\StopButton.svg"/>
+    <None Include="..\..\art\icon\StopButtonDisabled.svg"/>
+    <None Include="..\..\art\icon\ZoomInCursor.svg"/>
+    <None Include="..\..\art\icon\ZoomMode.svg"/>
+    <None Include="..\..\art\icon\ZoomModeDisabled.svg"/>
+    <None Include="..\..\art\icon\ZoomOutButton.svg"/>
+    <None Include="..\..\art\icon\ZoomOutButtonDisabled.svg"/>
+    <None Include="..\..\art\icon\ZoomOutButtonPressed.svg"/>
+    <None Include="..\..\art\icon\ZoomToSelectionButton.svg"/>
+    <None Include="..\..\art\icon\ZoomToSelectionButtonDisabled.svg"/>
+    <None Include="..\..\art\icon\ZoomToSelectionButtonPressed.svg"/>
+    <None Include="..\..\art\program\big-icon.png"/>
+    <None Include="..\..\art\program\icon.png"/>
+    <None Include="..\..\text\de-TranslatedStrings.def"/>
+    <None Include="..\..\text\en-TranslatedStrings.def"/>
+    <None Include="..\..\text\es-TranslatedStrings.def"/>
+    <None Include="..\..\text\fr-TranslatedStrings.def"/>
+    <None Include="..\..\text\id-TranslatedStrings.def"/>
+    <None Include="..\..\..\..\src\rec\gui\menu\RecentFiles.proto"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\SlowMenus.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowCommands.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\SlowMenuCollection.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\SlowMenus.def"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_devices\juce_module_info"/>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_formats\juce_module_info"/>
