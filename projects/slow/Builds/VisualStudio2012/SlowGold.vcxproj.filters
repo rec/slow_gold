@@ -5,18 +5,6 @@
     <Filter Include="SlowGold">
       <UniqueIdentifier>{26E1E827-DE71-50E8-2653-89C23AFD4CD9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SlowGold\art">
-      <UniqueIdentifier>{53A38853-9E35-DE6E-300A-F86978E53447}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SlowGold\art\icon">
-      <UniqueIdentifier>{A4542DDF-B13F-4FD7-C978-8A317A9AD1D3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SlowGold\art\program">
-      <UniqueIdentifier>{F5722C5A-7E72-0099-FC09-E1A2B4E07AE4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SlowGold\text">
-      <UniqueIdentifier>{BF567733-6247-74DE-90B5-7C01284FD1C7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SlowGold\rec">
       <UniqueIdentifier>{EA5F75D3-C9A8-A1FC-8253-69A36205F73D}</UniqueIdentifier>
     </Filter>
@@ -170,8 +158,8 @@
     <Filter Include="SlowGold\proto\rec\gui">
       <UniqueIdentifier>{B50BA77A-E175-9B07-AEC0-74F0D9D4A350}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SlowGold\proto\rec\menu">
-      <UniqueIdentifier>{0769E412-5F16-E237-FCD4-F942D491C53A}</UniqueIdentifier>
+    <Filter Include="SlowGold\proto\rec\gui\menu">
+      <UniqueIdentifier>{04C1BC4C-7E54-BEA8-1632-7D396FB68B7D}</UniqueIdentifier>
     </Filter>
     <Filter Include="SlowGold\proto\rec\music">
       <UniqueIdentifier>{71044FE3-27E4-9D44-7123-E76661A6A51B}</UniqueIdentifier>
@@ -1114,23 +1102,23 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc">
+      <Filter>SlowGold\proto\rec\gui\menu</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc">
-      <Filter>SlowGold\proto\rec\menu</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc">
       <Filter>SlowGold\proto\rec\music</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc">
-      <Filter>SlowGold\proto\rec\slow\commands</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc">
       <Filter>SlowGold\proto\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc">
+      <Filter>SlowGold\proto\rec\slow\commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc">
       <Filter>SlowGold\proto\rec\slow</Filter>
@@ -2571,6 +2559,9 @@
     <ClInclude Include="..\..\..\..\src\rec\base\Juce.h">
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\make_unique.h">
+      <Filter>SlowGold\rec\base</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\port.h">
       <Filter>SlowGold\rec\base</Filter>
     </ClInclude>
@@ -2695,9 +2686,6 @@
       <Filter>SlowGold\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\DataUpdater.h">
-      <Filter>SlowGold\rec\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\Destructable.h">
       <Filter>SlowGold\rec\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\Opener.h">
@@ -3351,23 +3339,23 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h">
+      <Filter>SlowGold\proto\rec\gui\menu</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h">
       <Filter>SlowGold\proto\rec\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h">
-      <Filter>SlowGold\proto\rec\menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h">
       <Filter>SlowGold\proto\rec\music</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h">
-      <Filter>SlowGold\proto\rec\slow\commands</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h">
       <Filter>SlowGold\proto\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h">
+      <Filter>SlowGold\proto\rec\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h">
       <Filter>SlowGold\proto\rec\slow</Filter>
@@ -4727,136 +4715,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\art\icon\AddLoopPointButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\AddLoopPointButtonDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\AddLoopPointButtonPressed.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\AddLoopPointMode.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\AddLoopPointModeDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\DragMode.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\DragModeDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpBackButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpBackButtonDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpBackButtonPressed.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpForwardButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpForwardButtonDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpForwardButtonPressed.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpToStartButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpToStartButtonDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\JumpToStartButtonPressed.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\MacFolderCloseButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\MacFolderOpenButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\PlayButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\PlayButtonDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\SetTimeMode.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\SetTimeModeDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\StopButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\StopButtonDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomInCursor.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomMode.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomModeDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomOutButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomOutButtonDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomOutButtonPressed.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomToSelectionButton.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomToSelectionButtonDisabled.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\icon\ZoomToSelectionButtonPressed.svg">
-      <Filter>SlowGold\art\icon</Filter>
-    </None>
-    <None Include="..\..\art\program\big-icon.png">
-      <Filter>SlowGold\art\program</Filter>
-    </None>
-    <None Include="..\..\art\program\icon.png">
-      <Filter>SlowGold\art\program</Filter>
-    </None>
-    <None Include="..\..\text\de-TranslatedStrings.def">
-      <Filter>SlowGold\text</Filter>
-    </None>
-    <None Include="..\..\text\en-TranslatedStrings.def">
-      <Filter>SlowGold\text</Filter>
-    </None>
-    <None Include="..\..\text\es-TranslatedStrings.def">
-      <Filter>SlowGold\text</Filter>
-    </None>
-    <None Include="..\..\text\fr-TranslatedStrings.def">
-      <Filter>SlowGold\text</Filter>
-    </None>
-    <None Include="..\..\text\id-TranslatedStrings.def">
-      <Filter>SlowGold\text</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\gui\menu\RecentFiles.proto">
-      <Filter>SlowGold\rec\gui\menu</Filter>
-    </None>
-    <None Include="..\..\..\..\src\rec\slow\commands\SlowMenus.def">
-      <Filter>SlowGold\rec\slow\commands</Filter>
-    </None>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowCommands.def">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def">
+      <Filter>SlowGold\rec\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\SlowMenuCollection.def">
+      <Filter>SlowGold\rec\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\SlowMenus.def">
       <Filter>SlowGold\rec\slow\commands</Filter>
     </None>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info">

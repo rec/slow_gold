@@ -60,18 +60,20 @@ class JucerDomFile(dom_file.DomFile):
                                       name=maingroup_name)
     self.documentElement.replaceChild(maingroup, old)
 
+    root = '%s/rec' % self.root
     for prefix, name in (FILE_GROUPS):
-      self.create_top_level_group(maingroup, prefix, name,
-                                  '%s/rec' % self.root, maingroup_name)
+      self.create_top_level_group(maingroup, prefix, name, root, maingroup_name)
 
     maingroup.appendChild(self.create_file('Main.cpp', 'Main.cpp',
                                            maingroup_name + '/Main.cpp'))
 
-  def create_top_level_group(self, parent, prefix, name, root, path):
+  def create_top_level_group(self, maingroup, prefix, name, root,
+                             maingroup_name):
     tree_name = '%s/%s/%s' % (root, prefix, name)
     tree = filetree.filetree(tree_name, self.accept_cpp)
     if tree:
-      parent.appendChild(self.create_file_or_group(prefix, name, tree, path))
+      maingroup.appendChild(self.create_file_or_group(prefix, name, tree,
+                                                      maingroup_name))
     else:
       print 'ERROR: no file for %s' % tree_name
 
