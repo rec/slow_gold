@@ -8,9 +8,9 @@
 #
 # Essentially, you can do as you please with it.  Have fun!
 
-
 import dom_file
 import filetree
+import os.path
 
 RANDOMIZE_IDS = not True
 
@@ -40,12 +40,24 @@ SUFFIXES = set([
 
 COMPILE_SUFFIXES = set(['.c', '.cc', '.cpp'])
 
+def get_file_id_dict(node, path='', depth=0, result=None):
+  result = result or {}
+  if path:
+    path += '/'
+  path += node.getAttribute('name')
+
+  result[path] = node.getAttribute('id')
+  for c in node.childNodes:
+    if (hasattr(c, 'tagName') and c.tagName in ['GROUP', 'FILE']):
+      get_file_id_dict(c, path, depth + 1, result)
+  return result
+
+
 class JucerDomFile(object):
   def __init__(self, filename, is_test, root):
     self.dom_file = dom_file.DomFile(filename)
     self.is_test = is_test
     self.root = root
-    self.file_id_dict = {}
 
   def toxml(self):
     self.set_maingroup()
@@ -54,7 +66,7 @@ class JucerDomFile(object):
   def set_maingroup(self):
     old = self.dom_file.element('MAINGROUP')
     maingroup_name = old.getAttribute('name')
-    self.set_file_id_dict(old, '')
+    self.file_id_dict = get_file_id_dict(old)
 
     maingroup = self.create_from_dict('MAINGROUP', maingroup_name,
                                       name=maingroup_name)
@@ -97,25 +109,13 @@ class JucerDomFile(object):
              compile=str(int(compile)))
     return self.create_from_dict('FILE', path, **d)
 
-  def set_file_id_dict(self, node, path, depth=0):
-    if path:
-      path += '/'
-    path += node.getAttribute('name')
-
-    self.file_id_dict[path] = node.getAttribute('id')
-    for child in node.childNodes:
-      if (hasattr(child, 'tagName')
-          and child.tagName in ['GROUP', 'FILE']):
-        self.set_file_id_dict(child, path, depth + 1)
-
   def create_from_dict(self, xml_name, path, **attributes):
     if RANDOMIZE_IDS:
       id = dom_file.randomId()
     else:
-      id = self.file_id_dict.get(path + '/' + attributes['name'], None)
-    if id:
-      attributes.update(id=id)
-    return self.dom_file.create(xml_name, **attributes)
+      id = self.file_id_dict.get(os.path.join(path, attributes['name']))
+      id = id or dom_file.randomId()
+    return self.dom_file.create(xml_name, id=id, **attributes)
 
   def join(self, files, joiner=' '):
     return joiner.join(filter(self.accept, files))
