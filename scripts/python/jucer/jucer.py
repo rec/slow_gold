@@ -50,19 +50,19 @@ class JucerDomFile(object):
     return self.dom_file.dom.toprettyxml()
 
   def set_maingroup(self):
-    old = self.dom_file.element('MAINGROUP')
-    maingroup_name = old.getAttribute('name')
-    self.dom_file.compute_dict(old)
+    old_maingroup = self.dom_file.element('MAINGROUP')
+    maingroup_name = old_maingroup.getAttribute('name')
+    self.dom_file.compute_dict(old_maingroup)
     maingroup = self.create('MAINGROUP', maingroup_name, name=maingroup_name)
-    self.dom_file.documentElement.replaceChild(maingroup, old)
+    self.dom_file.documentElement.replaceChild(maingroup, old_maingroup)
 
     root = '%s/rec' % self.root
-    for file_group, name in (FILE_GROUPS):
-      tree_name = '%s/%s/%s' % (root, file_group, name)
+    for group, path in FILE_GROUPS:
+      tree_name = '%s/%s/%s' % (root, group, path)
       tree = filetree.filetree(tree_name, self.accept_cpp)
       if tree:
-        maingroup.appendChild(self.create_file_or_group(file_group, name, tree,
-                                                        maingroup_name))
+        child = self.create_file_or_group(group, path, tree, maingroup_name)
+        maingroup.appendChild(child)
       else:
         print 'ERROR: no file for %s' % tree_name
 
@@ -72,18 +72,18 @@ class JucerDomFile(object):
   def create_file_or_group(self, prefix, name, tree, path):
     if type(tree) is str:
       return self.create_file(name, '../../%s/%s' % (prefix, name), path)
+
+    group = self.create('GROUP', path, name=name)
+    if prefix:
+      prefix = '%s/%s' % (prefix, name)
     else:
-      group = self.create('GROUP', path, name=name)
-      if prefix:
-        prefix = '%s/%s' % (prefix, name)
-      else:
-        prefix = name
+      prefix = name
 
-      new_path = path + '/' + name
-      for k, v in tree.iteritems():
-        group.appendChild(self.create_file_or_group(prefix, k, v, new_path))
+    new_path = path + '/' + name
+    for k, v in tree.iteritems():
+      group.appendChild(self.create_file_or_group(prefix, k, v, new_path))
 
-      return group
+    return group
 
   def create_file(self, name, file, path):
     isPNG = file.endswith('.png')
@@ -97,13 +97,9 @@ class JucerDomFile(object):
     return joiner.join(filter(self.accept, files))
 
   def accept_cpp(self, s):
-    r = (self.accept(s) and
+    return (self.accept(s) and
             ('.' + s).split('.')[-1] in SUFFIXES and
-            not (self.is_test and 'Main.c' in s) and
-            'mfMath.h' not in s)
-    # print "accept_cpp", s, r
-    return r
-  # TODO: is that second-last condition now irrelevant?
+            not (self.is_test and 'Main.c' in s))
 
   def accept(self, s):
     return s and (self.is_test or not '_test.' in s)
