@@ -75,17 +75,18 @@ class SlowRecentFilesStrategy : public RecentFilesStrategy {
   CommandID getRecentFileCommand() const override { return 0; }
 };
 
+const RecentFilesStrategy& getMusicRecentFilesStrategy() {
+  static SlowRecentFilesStrategy strategy;
+  return strategy;
+}
+
 static const int MAX_DEDUPE_COUNT = 5;
 
-vector<string> getRecentFileNames(const RecentFilesStrategy* strategy) {
-  if (not strategy) {
-    static SlowRecentFilesStrategy strat;
-    strategy = &strat;
-  }
+vector<string> getRecentFileNames(const RecentFilesStrategy& strategy) {
   RecentFiles rf = data::getProto<RecentFiles>();
   vector<string> results(rf.file_size());
   for (int i = 0; i < results.size(); ++i)
-    results[i] = strategy->getTitle(rf.file(i));
+    results[i] = strategy.getTitle(rf.file(i));
 
   std::map<string, int> names;
   std::set<int> dupes;
@@ -108,7 +109,7 @@ vector<string> getRecentFileNames(const RecentFilesStrategy* strategy) {
 
     bool first = true;
     for (auto& dupe: dupes) {
-      results[dupe] += strategy->getDupeSuffix(rf.file(dupe), first);
+      results[dupe] += strategy.getDupeSuffix(rf.file(dupe), first);
       first = false;
     }
   }

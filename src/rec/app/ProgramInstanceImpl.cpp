@@ -64,6 +64,7 @@ ProgramInstance::Impl::Impl(Program* p)
       programMap_(makeProgramMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)) {
+  program_->registerAllCallbacks();
 }
 
 const MenuBar& ProgramInstance::Impl::menuBar() const {
@@ -123,7 +124,7 @@ string ProgramInstance::Impl::addMenu(PopupMenu* popup, const string& name) {
 
 void ProgramInstance::Impl::makeRecentFiles(PopupMenu* popup) {
   auto& strategy = program_->recentFilesStrategy();
-  vector<string> recentFiles = gui::getRecentFileNames(&strategy);
+  vector<string> recentFiles = gui::getRecentFileNames(strategy);
   CommandID command = strategy.getRecentFileCommand();
   for (int i = 0; i < recentFiles.size(); ++i)
     addCommand(popup, command + i);

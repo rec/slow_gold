@@ -21,7 +21,12 @@ class RecentFilesStrategy {
   virtual CommandID getRecentFileCommand() const = 0;
 };
 
-vector<string> getRecentFileNames(const RecentFilesStrategy* stategy = nullptr);
+const RecentFilesStrategy& getMusicRecentFilesStrategy();
+
+vector<string> getRecentFileNames(const RecentFilesStrategy& stategy);
+inline vector<string> getRecentFileNames() {
+  return getRecentFileNames(getMusicRecentFilesStrategy());
+}
 
 }  // namespace gui
 }  // namespace rec

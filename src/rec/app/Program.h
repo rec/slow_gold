@@ -24,12 +24,13 @@ class Program {
 
   virtual bool hasProperty(const string& name) const = 0;
   virtual string makeMenuName(const command::Command&, CommandID) const = 0;
-  virtual bool perform(const InvocationInfo&, const command::Command&) = 0;
 
   // Add an entry only for MenuEntries which have a callout_function.
   virtual void addMenuEntry(PopupMenu*, const MenuEntry&) const = 0;
 
   virtual const gui::RecentFilesStrategy& recentFilesStrategy() const = 0;
+
+  virtual void registerAllCallbacks() = 0;
   virtual void addCallback(CommandID, unique_ptr<Callback>) = 0;
   virtual Callback* getCallback(CommandID) const = 0;
 };
