@@ -2,6 +2,7 @@
 
 import getopt
 import os
+import os.path
 import sys
 import xml.dom.minidom
 
@@ -27,7 +28,7 @@ where
 
 """
 
-ROOT = '/development/rec/scripts/new/templates/'
+ROOT = os.path.join(os.path.dirname(__file__), 'templates')
 
 def cleanSvg(data):
   tagNames = set(['metadata', 'i:pgf'])
@@ -49,17 +50,7 @@ GROUPS = {
   'h': dict(files=['.h']),
   'class': dict(files=['.cpp', '.h']),
   'cpp': dict(files=['.cpp']),
-  'def': dict(files=['.def.h', '.def.cpp'],
-              filetype='def',
-              datatype='def'),
   'test': dict(files=['.cpp', '.h', '_test.cpp']),
-  'svg': dict(files=['.svg.h', '.svg.cpp'],
-              filetype='svg',
-              datatype='juce::Drawable',
-              process=cleanSvg),
-  'xml': dict(files=['.data.h', '.data.cpp'],
-              filetype='xml',
-              datatype='juce::XmlElement'),
 }
 
 USAGE = USAGE_MESSAGE % ', '.join(GROUPS)
@@ -195,9 +186,9 @@ def createCppFiles(file, groupname, protoname, namespace, includes, output):
     if output:
       outfile = output + '/' + outfile.split('/')[-1]
     with open(outfile, 'w') as out:
-      template = open(ROOT + suffix).read()
+      template = open(os.path.join(ROOT, suffix)).read()
       out.write(template.format(**context))
-    print 'Written', output
+    print 'Written', outfile
 
 def parseArgs(args):
   optlist, args = getopt.getopt(args, 'p:',

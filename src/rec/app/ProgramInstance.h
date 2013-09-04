@@ -26,9 +26,9 @@ class ProgramInstance : public juce::ApplicationCommandTarget,
   void menuItemSelected(int, int) override {}
 
   ApplicationCommandManager* applicationCommandManager();
+  struct Impl;
 
  private:
-  struct Impl;
   unique_ptr<Impl> impl_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(ProgramInstance);

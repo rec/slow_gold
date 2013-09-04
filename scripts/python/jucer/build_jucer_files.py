@@ -15,11 +15,16 @@ import jucer
 
 #DEFAULT_PROJECTS = 'command', 'slow', 'tests', 'support'
 DEFAULT_PROJECTS = 'slow',
+SEPARATE_OUT_FILE = False
 
 def buildOne(name):
   base = name.split('.')[0]
   doc = '/development/rec/projects/%s/%s.jucer' % (base, name)
-  out_doc = '/development/rec/projects/%s/%s.out.jucer' % (base, name)
+  if SEPARATE_OUT_FILE:
+    out_doc = '/development/rec/projects/%s/%s.out.jucer' % (base, name)
+  else:
+    out_doc = doc
+
 
   results = jucer.JucerDomFile(doc, 'test' in name, '/development').toxml()
   f = open(out_doc, 'w')
