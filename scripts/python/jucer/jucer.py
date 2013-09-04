@@ -63,7 +63,8 @@ class JucerDomFile(dom_file.DomFile):
       tree_name = '%s/%s' % (root, path)
       tree = filetree.filetree(tree_name, self.accept)
       if tree:
-        child = self.create_file_or_group(group, path, tree, maingroup_name)
+        child = self.create_file_or_group(
+          group, path, tree, maingroup_name, group)
         maingroup.appendChild(child)
       else:
         print('ERROR: no file for %s' % tree_name)
@@ -71,13 +72,11 @@ class JucerDomFile(dom_file.DomFile):
     maingroup.appendChild(self.create_file('Main.cpp', 'Main.cpp',
                                            maingroup_name + '/Main.cpp'))
 
-  def create_file_or_group(self, prefix, name, tree, path):
+  def create_file_or_group(self, prefix, name, tree, path, groupname=''):
     if type(tree) is str:
-      print('create_file_or_group', prefix, name, tree, path)
       return self.create_file(name, tree, path)
     else:
-      print('create_file_or_group', prefix, name, '(tree)', path)
-      group = self.create('GROUP', path, name=name)
+      group = self.create('GROUP', path, name=groupname or name)
       if prefix:
         prefix = '%s/%s' % (prefix, name)
       else:
@@ -90,7 +89,6 @@ class JucerDomFile(dom_file.DomFile):
       return group
 
   def create_file(self, name, filename, path):
-    print('create_file', name, filename, path)
     compile = any(filename.endswith(s) for s in COMPILE_SUFFIXES)
     resource = not compile and (not filename.endswith('.h'))
     return self.create('FILE', path,
