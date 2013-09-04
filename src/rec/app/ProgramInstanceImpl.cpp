@@ -129,6 +129,15 @@ void ProgramInstance::Impl::makeRecentFiles(PopupMenu* popup) {
     addCommand(popup, command + i);
 }
 
+bool ProgramInstance::Impl::perform(const InvocationInfo& info) {
+  if (Callback* callback = program_->getCallback(info.commandID)) {
+    (*callback)();
+    return true;
+  }
+  LOG(DFATAL) << "No command for " << info.commandID;
+  return false;
+}
+
 }  // namespace app
 }  // namespace rec
 

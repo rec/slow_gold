@@ -77,10 +77,6 @@ class SlowRecentFilesStrategy : public RecentFilesStrategy {
 
 static const int MAX_DEDUPE_COUNT = 5;
 
-static void dedupe(vector<string>* results,
-                   const RecentFilesStrategy* strategy) {
-}
-
 vector<string> getRecentFileNames(const RecentFilesStrategy* strategy) {
   if (not strategy) {
     static SlowRecentFilesStrategy strat;

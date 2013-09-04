@@ -15,6 +15,7 @@ class ProgramInstance::Impl {
   Impl(Program* p);
   const MenuBar& menuBar() const;
   string addMenu(PopupMenu* popup, const string& name);
+  bool perform(const InvocationInfo&);
 
   Program* program() { return program_; }
   ApplicationCommandManager* applicationCommandManager() {

@@ -38,13 +38,7 @@ void ProgramInstance::getCommandInfo(CommandID command,
 }
 
 bool ProgramInstance::perform(const InvocationInfo& info) {
-  try {
-    const Command& command = impl_->programMap().at(info.commandID);
-    return impl_->program()->perform(info, command);
-  } catch (const std::out_of_range&) {
-    LOG(DFATAL) << "Tried to invoke out of range command " << info.commandID;
-    return false;
-  }
+  return impl_->perform(info);
 }
 
 StringArray ProgramInstance::getMenuBarNames() {
