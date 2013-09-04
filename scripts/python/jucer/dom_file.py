@@ -16,7 +16,7 @@ RANDOMIZE_IDS = not True
 def randomId():
   return ''.join(random.choice(DomFile.CHARS) for i in xrange(DomFile.ID_SIZE))
 
-class DomFile:
+class DomFile(object):
   """Creates XML DOM elements that have Jucer-style 9-character random IDs."""
 
   CHARS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'

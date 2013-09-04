@@ -73,8 +73,7 @@ class JucerDomFile(dom_file.DomFile):
   def create_file_or_group(self, prefix, name, tree, path):
     if type(tree) is str:
       print('create_file_or_group', prefix, name, tree, path)
-      filename = '../../%s/%s' % (prefix, name)
-      return self.create_file(name, filename, path)
+      return self.create_file(name, tree, path)
     else:
       print('create_file_or_group', prefix, name, '(tree)', path)
       group = self.create('GROUP', path, name=name)
