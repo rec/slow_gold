@@ -15,18 +15,19 @@ import filetree
 import os.path
 
 FILE_GROUPS = [
+  ('src', 'rec'),
+  ('genfiles', 'proto'),
+  ('art', 'projects/slow/art'),
+  ('text', 'projects/slow/text'),
+]
+
+FILE_GROUPS = [
   ('src', 'src/rec'),
   ('genfiles', 'genfiles/proto'),
   ('art', 'projects/slow/art'),
   ('text', 'projects/slow/text'),
 ]
 
-FILE_GROUPS = [
-  ('src', 'rec'),
-  ('genfiles', 'proto'),
-  ('art', 'projects/slow/art'),
-  ('text', 'projects/slow/text'),
-]
 
 SUFFIXES = set([
   'c',
@@ -59,7 +60,7 @@ class JucerDomFile(dom_file.DomFile):
 
     root = '%s/rec' % self.root
     for group, path in FILE_GROUPS:
-      tree_name = '%s/%s/%s' % (root, group, path)
+      tree_name = '%s/%s' % (root, path)
       tree = filetree.filetree(tree_name, self.accept)
       if tree:
         child = self.create_file_or_group(group, path, tree, maingroup_name)
