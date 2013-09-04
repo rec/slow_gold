@@ -12,15 +12,16 @@ namespace gui {
 
 void addRecentFile(const VirtualFile&, const Message&);
 
-typedef string (*TitleGetter)(const RecentFile&);
-string getMusicTitle(const RecentFile&);
+class RecentFilesStrategy {
+ public:
+  RecentFilesStrategy() {}
+  virtual ~RecentFilesStrategy() {}
+  virtual string getTitle(const RecentFile&) const = 0;
+  virtual string getDupeSuffix(const RecentFile&, bool isFirst) const = 0;
+  virtual CommandID getRecentFileCommand() const = 0;
+};
 
-typedef string (*DupeSuffixGetter)(const RecentFile&, bool isFirst);
-string getMusicDupeSuffix(const RecentFile&, bool isFirst);
-
-vector<string> getRecentFileNames(
-    TitleGetter titleGetter = getMusicTitle,
-    DupeSuffixGetter dupeSuffixGetter = getMusicDupeSuffix);
+vector<string> getRecentFileNames(const RecentFilesStrategy* stategy = nullptr);
 
 }  // namespace gui
 }  // namespace rec

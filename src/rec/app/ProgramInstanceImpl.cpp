@@ -57,9 +57,6 @@ void checkMenuEntry(const MenuEntry& menuEntry) {
   LOG_IF(DFATAL, cat > 1) << "Ambiguous entry: " << menuEntry.DebugString();
 }
 
-void makeRecentFiles(PopupMenu* menu) {
-}
-
 }  // namespace
 
 ProgramInstance::Impl::Impl(Program* p)
@@ -79,10 +76,14 @@ void ProgramInstance::Impl::addSubmenu(PopupMenu* popup, const MenuEntry& menuEn
   popup->addSubMenu(subname, submenu);
 }
 
+void ProgramInstance::Impl::addCommand(PopupMenu* popup, CommandID command) {
+  popup->addCommandItem(&applicationCommandManager_, command);
+}
+
 void ProgramInstance::Impl::addCommands(PopupMenu* popup, const MenuEntry& menuEntry) {
   for (auto& command: menuEntry.command()) {
     if (command)
-      popup->addCommandItem(&applicationCommandManager_, command);
+      addCommand(popup, command);
     else
       popup->addSeparator();
   }
@@ -118,6 +119,14 @@ string ProgramInstance::Impl::addMenu(PopupMenu* popup, const string& name) {
     LOG(DFATAL) << "Couldn't get menu " << name;
     return "";
   }
+}
+
+void ProgramInstance::Impl::makeRecentFiles(PopupMenu* popup) {
+  auto& strategy = program_->recentFilesStrategy();
+  vector<string> recentFiles = gui::getRecentFileNames(&strategy);
+  CommandID command = strategy.getRecentFileCommand();
+  for (int i = 0; i < recentFiles.size(); ++i)
+    addCommand(popup, command + i);
 }
 
 }  // namespace app

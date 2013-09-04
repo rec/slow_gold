@@ -25,6 +25,7 @@ struct CompareRecentFiles {
 
 }  // namespace
 
+
 void addRecentFile(const VirtualFile& f, const Message& message) {
   if (f.type() == VirtualFile::NONE || f.type() == VirtualFile::CD)
     return;
@@ -56,38 +57,48 @@ void addRecentFile(const VirtualFile& f, const Message& message) {
   data::setProto(rf, CANT_UNDO);
 }
 
-static const int MAX_DEDUPE_COUNT = 2;
+class SlowRecentFilesStrategy : public RecentFilesStrategy {
+ public:
+  SlowRecentFilesStrategy() {}
 
-string getMusicTitle(const RecentFile& rf) {
-  return music::getTitle(rf.metadata(), rf.file());
+  string getTitle(const RecentFile& rf) const override {
+    return music::getTitle(rf.metadata(), rf.file());
+  }
+
+  string getDupeSuffix(const RecentFile& rf, bool isFirst) const override {
+    const music::Metadata& md = rf.metadata();
+    string add = isFirst ? md.album_title() : md.artist();
+    if (add.size())
+      add += ("(" + add + ")");
+    return add;
+  }
+  CommandID getRecentFileCommand() const override { return 0; }
+};
+
+static const int MAX_DEDUPE_COUNT = 5;
+
+static void dedupe(vector<string>* results,
+                   const RecentFilesStrategy* strategy) {
 }
 
-string getMusicDupeSuffix(const RecentFile& rf, bool isFirst) {
-  const music::Metadata& md = rf.metadata();
-  string add = isFirst ? md.album_title() : md.artist();
-  if (add.size())
-    add += ("(" + add + ")");
-  return add;
-}
-
-vector<string> getRecentFileNames(TitleGetter titleGetter,
-                                  DupeSuffixGetter dupeSuffixGetter) {
+vector<string> getRecentFileNames(const RecentFilesStrategy* strategy) {
+  if (not strategy) {
+    static SlowRecentFilesStrategy strat;
+    strategy = &strat;
+  }
   RecentFiles rf = data::getProto<RecentFiles>();
   vector<string> results(rf.file_size());
-  for (int i = 0; i < rf.file_size(); ++i)
-    results[i] = (*titleGetter)(rf.file(i));
+  for (int i = 0; i < results.size(); ++i)
+    results[i] = strategy->getTitle(rf.file(i));
 
-  typedef std::map<string, int> StrMap;
-  typedef std::set<int> IntSet;
+  std::map<string, int> names;
+  std::set<int> dupes;
 
-  StrMap names;
-  IntSet dupes;
   for (int i = 0; i < MAX_DEDUPE_COUNT; ++i) {
     names.clear();
     dupes.clear();
-
-    for (uint j = 0; j < results.size(); ++j) {
-      StrMap::iterator f = names.find(results[j]);
+    for (int j = 0; j < results.size(); ++j) {
+      auto f = names.find(results[j]);
       if (f == names.end()) {
         names.insert(f, std::make_pair(results[j], j));
       } else {
@@ -99,8 +110,11 @@ vector<string> getRecentFileNames(TitleGetter titleGetter,
     if (dupes.empty())
       break;
 
-    for (IntSet::iterator j = dupes.begin(); j != dupes.end(); ++j)
-      results[*j] += dupeSuffixGetter(rf.file(*j), i == 0);
+    bool first = true;
+    for (auto& dupe: dupes) {
+      results[dupe] += strategy->getDupeSuffix(rf.file(dupe), first);
+      first = false;
+    }
   }
 
   return results;

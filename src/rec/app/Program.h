@@ -3,9 +3,9 @@
 
 // A class representing all the things a specific program needs to operate.
 
-#include "rec/base/base.h"
-#include "rec/command/Command.pb.h"
 #include "rec/app/Menu.pb.h"
+#include "rec/command/Command.pb.h"
+#include "rec/gui/menu/RecentFiles.h"
 
 namespace rec {
 namespace app {
@@ -27,6 +27,8 @@ class Program {
 
   // Add an entry only for MenuEntries which have a callout_function.
   virtual void addMenuEntry(PopupMenu*, const MenuEntry&) const = 0;
+
+  virtual const gui::RecentFilesStrategy& recentFilesStrategy() const = 0;
 };
 
 template <typename PARTS>

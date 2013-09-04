@@ -14,9 +14,6 @@ class ProgramInstance::Impl {
  public:
   Impl(Program* p);
   const MenuBar& menuBar() const;
-  void addSubmenu(PopupMenu* popup, const MenuEntry& menuEntry);
-  void addCommands(PopupMenu* popup, const MenuEntry& menuEntry);
-  void addMenuEntry(PopupMenu* popup, const MenuEntry& menuEntry);
   string addMenu(PopupMenu* popup, const string& name);
 
   Program* program() { return program_; }
@@ -27,9 +24,16 @@ class ProgramInstance::Impl {
   typedef std::unordered_map<CommandID, command::Command> ProgramMap;
   typedef std::unordered_map<string, Menu> MenuMap;
   typedef std::unordered_map<string, MenuBar> MenuBarMap;
+
   const ProgramMap& programMap() const { return programMap_; }
 
  private:
+  void addSubmenu(PopupMenu* popup, const MenuEntry& menuEntry);
+  void addCommands(PopupMenu* popup, const MenuEntry& menuEntry);
+  void addCommand(PopupMenu* popup, CommandID);
+  void addMenuEntry(PopupMenu* popup, const MenuEntry& menuEntry);
+  void makeRecentFiles(PopupMenu* menu);
+
   Program* program_;
   ProgramMap programMap_;
   const MenuCollection menuCollection;
