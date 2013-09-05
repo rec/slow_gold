@@ -1,7 +1,8 @@
 #include "rec/app/ProgramInstanceImpl.h"
-#include "rec/app/Program.h"
-#include "rec/command/Command.pb.h"
 #include "rec/app/Menu.pb.h"
+#include "rec/app/Program.h"
+#include "rec/data/Data.h"
+#include "rec/command/Command.pb.h"
 
 using namespace rec::command;
 
@@ -57,6 +58,24 @@ void checkMenuEntry(const MenuEntry& menuEntry) {
   LOG_IF(DFATAL, cat > 1) << "Ambiguous entry: " << menuEntry.DebugString();
 }
 
+class SetterListener : public UntypedDataListener {
+ public:
+  SetterListener(const command::Setter& setter, ProgramInstance::Impl* impl)
+      : UntypedDataListener(setter.type_name(),
+                            setter.is_global() ? GLOBAL_SCOPE : FILE_SCOPE),
+        impl_(impl) {
+  }
+
+  void operator()(const Message&) override {
+    impl_->updateMenus();
+  }
+
+ private:
+  ProgramInstance::Impl* impl_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterListener);
+};
+
 }  // namespace
 
 ProgramInstance::Impl::Impl(Program* p)
@@ -64,14 +83,36 @@ ProgramInstance::Impl::Impl(Program* p)
       programMap_(makeProgramMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)) {
+  ProgramMap newPrograms;
+  for (auto& i: programMap_) {
+    const Command& command = i.second;
+    CommandID id = command.command();
+    for (int i = command.start_index(); i < command.index(); ++i)
+      newPrograms[id + i] = command;
+
+    if (command.has_setter()) {
+      unique_ptr<UntypedDataListener>
+        listener(new SetterListener(command.setter(), this));
+      dataListeners_.push_back(std::move(listener));
+    }
+  }
+
+  for (auto& i: newPrograms)
+    programMap_[i.first] = i.second;
   program_->registerAllCallbacks();
+
+  for (auto& i: programMap_) {
+    if (not program_->getCallback(i.first))
+      LOG(DFATAL) << "No callback added for " << i.first;
+  }
 }
 
 const MenuBar& ProgramInstance::Impl::menuBar() const {
   return menuBarMap_.at(program_->menuBarName());
 }
 
-void ProgramInstance::Impl::addSubmenu(PopupMenu* popup, const MenuEntry& menuEntry) {
+void ProgramInstance::Impl::addSubmenu(PopupMenu* popup,
+                                       const MenuEntry& menuEntry) {
   PopupMenu submenu;
   string subname = addMenu(&submenu, menuEntry.submenu());
   popup->addSubMenu(subname, submenu);
@@ -81,7 +122,8 @@ void ProgramInstance::Impl::addCommand(PopupMenu* popup, CommandID command) {
   popup->addCommandItem(&applicationCommandManager_, command);
 }
 
-void ProgramInstance::Impl::addCommands(PopupMenu* popup, const MenuEntry& menuEntry) {
+void ProgramInstance::Impl::addCommands(PopupMenu* popup,
+                                        const MenuEntry& menuEntry) {
   for (auto& command: menuEntry.command()) {
     if (command)
       addCommand(popup, command);
@@ -90,7 +132,8 @@ void ProgramInstance::Impl::addCommands(PopupMenu* popup, const MenuEntry& menuE
   }
 }
 
-void ProgramInstance::Impl::addMenuEntry(PopupMenu* popup, const MenuEntry& menuEntry) {
+void ProgramInstance::Impl::addMenuEntry(PopupMenu* popup,
+                                         const MenuEntry& menuEntry) {
   checkMenuEntry(menuEntry);
   if (menuEntry.command_size())
     addCommands(popup, menuEntry);
@@ -137,6 +180,10 @@ bool ProgramInstance::Impl::perform(const InvocationInfo& info) {
   }
   LOG(DFATAL) << "No command for " << info.commandID;
   return false;
+}
+
+void ProgramInstance::Impl::updateMenus() {
+  DLOG(INFO) << "Update menus here.";
 }
 
 }  // namespace app

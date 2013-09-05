@@ -4,6 +4,7 @@
 #include "rec/app/Menu.pb.h"
 #include "rec/app/ProgramInstance.h"
 #include "rec/command/Command.pb.h"
+#include "rec/data/UntypedDataListener.h"
 
 namespace rec {
 namespace app {
@@ -25,8 +26,11 @@ class ProgramInstance::Impl {
   typedef std::unordered_map<CommandID, command::Command> ProgramMap;
   typedef std::unordered_map<string, Menu> MenuMap;
   typedef std::unordered_map<string, MenuBar> MenuBarMap;
+  typedef vector<unique_ptr<UntypedDataListener>> DataListeners;
 
   const ProgramMap& programMap() const { return programMap_; }
+
+  void updateMenus();
 
  private:
   void addSubmenu(PopupMenu* popup, const MenuEntry& menuEntry);
@@ -40,6 +44,7 @@ class ProgramInstance::Impl {
   const MenuCollection menuCollection;
   const MenuMap menuMap_;
   const MenuBarMap menuBarMap_;
+  DataListeners dataListeners_;
   ApplicationCommandManager applicationCommandManager_;
 };
 

@@ -38,6 +38,7 @@ class Program {
 class ProgramBase : public Program {
  public:
   ProgramBase() {}
+
   void addCallback(CommandID command, unique_ptr<Callback> callback) override {
     auto loc = commandMap_.find(command);
     if (loc == commandMap_.end())
