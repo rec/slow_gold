@@ -1,3 +1,5 @@
+#include <unordered_set>
+
 #include "rec/program/MakeMaps.h"
 #include "rec/program/Program.h"
 
@@ -23,10 +25,45 @@ ProgramMap makeProgramMap(const Program& program) {
   return programMap;
 }
 
+typedef std::unordered_set<string> StringSet;
+
+static void fixExtends(Menu* menu, MenuMap* map, StringSet* seen = nullptr) {
+  if (menu->has_extends()) {
+    const string& extends = menu->extends();
+    if (seen and seen->count(extends)) {
+      LOG(DFATAL) << "Circular reference in menu " << extends;
+      return;
+    }
+    try {
+      Menu* extendedMenu = &map->at(extends);
+      unique_ptr<StringSet> seenDeleter;
+      if (not seen) {
+        seen = new StringSet;
+        seenDeleter.reset(seen);
+      }
+      seen->insert(extends);
+      fixExtends(extendedMenu, map, seen);
+
+      Menu mergedMenu;
+      auto mergedEntry = mergedMenu.mutable_entry();
+      auto menuEntry = menu->mutable_entry();
+      mergedEntry->CopyFrom(extendedMenu->entry());
+      mergedEntry->MergeFrom(*menuEntry);
+      mergedEntry->Swap(menuEntry);
+      menu->clear_extends();
+    } catch (const std::out_of_range&) {
+      LOG(DFATAL) << "Couldn't resolve extends: " << extends;
+    }
+  }
+}
+
 MenuMap makeMenuMap(const Program& program) {
   MenuMap menuMap;
   for (auto& menu: program.menus().menu())
     menuMap[menu.description().name()] = menu;
+
+  for (auto& i: menuMap)
+    fixExtends(&i.second, &menuMap);
   return menuMap;
 }
 
