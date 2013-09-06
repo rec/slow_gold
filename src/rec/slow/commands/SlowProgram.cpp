@@ -1,4 +1,7 @@
 #include "rec/slow/commands/SlowProgram.h"
+#include "rec/slow/Instance.h"
+#include "rec/util/Cuttable.h"
+#include "rec/util/Undo.h"
 
 namespace rec {
 namespace slow {
@@ -27,8 +30,25 @@ string SlowProgram::menuBarName() const {
   return "";
 }
 
-
 bool SlowProgram::hasProperty(const string& name) const {
+  if (name == "empty")
+    return instance_->empty();
+
+  if (name == "cant_copy")
+    return not canCopy();
+
+  if (name == "cant_cut")
+    return not canCut();
+
+  if (name == "cant_paste")
+    return not canPaste();
+
+  if (name == "cant_redo")
+    return not canUndo();
+
+  if (name == "cant_undo")
+    return not canRedo();
+
   return false;
 }
 

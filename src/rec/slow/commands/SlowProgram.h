@@ -7,9 +7,11 @@
 namespace rec {
 namespace slow {
 
+class Instance;
+
 class SlowProgram : public program::ProgramBase {
  public:
-  SlowProgram() {}
+  explicit SlowProgram(Instance* instance) : instance_(instance) {}
 
   command::Commands commands() const override;
   command::Commands keypresses() const override;
@@ -28,6 +30,8 @@ class SlowProgram : public program::ProgramBase {
   void registerAllCallbacks() override;
 
  private:
+  Instance* const instance_;
+
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowProgram);
 };
 
