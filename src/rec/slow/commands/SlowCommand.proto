@@ -84,6 +84,7 @@ message SlowCommand {
     SET_SAVE_AS_FLAC = 98;
     SET_SAVE_AS_OGG = 99;
     SET_SAVE_AS_WAV = 100;
+    SET_SAVE_TYPE = 1010000;
 
     TOGGLE_ADVANCED_MENUS = 59;
     TOGGLE_AUTOMATIC_UPDATES = 67;
@@ -127,7 +128,7 @@ message SlowCommand {
     ZOOM_OUT_FULL = 64;
     ZOOM_TO_SELECTION = 45;
 
-    FIRST_FREE_TYPE = 101;
+    FIRST_FREE_TYPE = 102;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;

@@ -7,7 +7,7 @@
 namespace BinaryData
 {
     extern const char*   SlowCommands_def;
-    const int            SlowCommands_defSize = 29224;
+    const int            SlowCommands_defSize = 29972;
 
     extern const char*   SlowKeyStrokeMap_def;
     const int            SlowKeyStrokeMap_defSize = 6942;

@@ -16,6 +16,7 @@ slow_command {
       menu: "Add Loop Point At Current Time"
       full: "Add a loop point at the current time."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -46,6 +47,7 @@ slow_command {
       menu: "Clear All Settings And Quit"
       full: "Clear all SlowGold settings for all tracks that have ever been visited and quit the program."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -56,6 +58,7 @@ slow_command {
       menu: "Clear Loops"
       full: "Delete all loop points"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -96,6 +99,7 @@ slow_command {
       menu: "Close"
       full: "Close the current file"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -106,6 +110,7 @@ slow_command {
       menu: "Copy"
       full: "Copy the current selection to the clipboard."
     }
+    disable: cant_copy
   }
 }
 slow_command {
@@ -116,6 +121,7 @@ slow_command {
       menu: "Copy All Loop Points"
       full: "Copy both selected and unselected loop points to the clipboard."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -126,6 +132,7 @@ slow_command {
       menu: "Cut"
       full: "Copy the current selection to the clipboard and clear the selection."
     }
+    disable: cant_cut
   }
 }
 slow_command {
@@ -146,6 +153,7 @@ slow_command {
       menu: "Select None"
       full: "Select none of the file"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -236,6 +244,7 @@ slow_command {
       menu: "Invert Selection"
       full: "Unselect everything selected and vice-versa."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -276,6 +285,7 @@ slow_command {
       full: "Jump to the start of segment 10."
     }
     start_index: -5
+    disable: empty
   }
 }
 slow_command {
@@ -316,6 +326,7 @@ slow_command {
       full: "Jump To Selected Segment 10"
     }
     start_index: -5
+    disable: empty
   }
 }
 slow_command {
@@ -326,6 +337,7 @@ slow_command {
       menu: "Loop Next Segment"
       full: "Finish the current segment, then start looping the next segment."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -356,6 +368,7 @@ slow_command {
       menu: "Add Loop Point Mode"
       full: "Enter Add Loop Point Mode, where clicking on the waveform adds a Loop Point at that location."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -366,6 +379,7 @@ slow_command {
       menu: "Drag Mode"
       full: "Enter drag mode, where you can drag the waveform back and forth."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -376,6 +390,7 @@ slow_command {
       menu: "Set Time Mode"
       full: "Enter Set Time Mode, where clicking in the waveform sets the time."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -386,6 +401,7 @@ slow_command {
       menu: "Zoom In Mode"
       full: "Enter Zoom In Mode, where clicking on the waveform zooms in."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -396,6 +412,7 @@ slow_command {
       menu: "Toggle audio mute"
       full: "Toggle audio mute on and off."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -406,6 +423,7 @@ slow_command {
       menu: "Nudge Backward"
       full: "Nudge Backward One Segment Or 10 Seconds"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -416,6 +434,7 @@ slow_command {
       menu: "Nudge Forward"
       full: "Nudge Forward One Segment Or 10 Seconds"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -426,6 +445,7 @@ slow_command {
       menu: "Nudge volume down"
       full: "Nudge volume down by 2dB"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -436,6 +456,7 @@ slow_command {
       menu: "Nudge volume up"
       full: "Nudge volume up by 2dB"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -486,6 +507,7 @@ slow_command {
       menu: "Re-Open Most Recent Closed File"
       full: "Re-open the file that was most recently closed."
     }
+    disabled: recent_empty
   }
 }
 slow_command {
@@ -506,6 +528,7 @@ slow_command {
       menu: "Paste"
       full: "Replace the current selection with a copy of the clipboard."
     }
+    disable: cant_paste
   }
 }
 slow_command {
@@ -516,6 +539,7 @@ slow_command {
       menu: "Paste Over Loop Points"
       full: "Replace all loop points with the loop points on the clipboard."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -610,6 +634,7 @@ slow_command {
       menu: "Redo"
       full: "Redoes a previously undone command."
     }
+    disable: cant_redo
   }
 }
 slow_command {
@@ -640,6 +665,7 @@ slow_command {
       menu: "Save..."
       full: "Save the full transformed file in the default save format."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -650,6 +676,7 @@ slow_command {
       menu: "Save Selection..."
       full: "Save just the selected portion of the transformed file in the default save format."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -690,6 +717,7 @@ slow_command {
       full: "Select Segment 10"
     }
     start_index: -5
+    disable: empty
   }
 }
 slow_command {
@@ -700,6 +728,7 @@ slow_command {
       menu: "Select All"
       full: "Select all of the file"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -740,6 +769,7 @@ slow_command {
       full: "Select Segment 10 Only"
     }
     start_index: -5
+    disable: empty
   }
 }
 slow_command {
@@ -979,6 +1009,7 @@ slow_command {
       }
       type_name: "rec.audio.Gain"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -1019,6 +1050,7 @@ slow_command {
       full: "Toggle Segment Selection 10"
     }
     start_index: -5
+    disable: empty
   }
 }
 slow_command {
@@ -1137,6 +1169,7 @@ slow_command {
       menu: "Toggle Start/Stop"
       full: "Start or pause"
     }
+    disable: empty
   }
 }
 slow_command {
@@ -1185,6 +1218,7 @@ slow_command {
       menu: "Loop This Segment"
       full: "Toggle selection between the current segment and the whole song."
     }
+    disable: empty
   }
 }
 slow_command {
@@ -1195,6 +1229,7 @@ slow_command {
       menu: "Undo"
       full: "Undoes a previous command."
     }
+    disable: cant_undo
   }
 }
 slow_command {
@@ -1235,6 +1270,7 @@ slow_command {
       full: "Unselect Segment 10"
     }
     start_index: -5
+    disable: empty
   }
 }
 slow_command {

@@ -108,6 +108,7 @@ enum SlowCommand_Type {
   SlowCommand_Type_SET_SAVE_AS_FLAC = 98,
   SlowCommand_Type_SET_SAVE_AS_OGG = 99,
   SlowCommand_Type_SET_SAVE_AS_WAV = 100,
+  SlowCommand_Type_SET_SAVE_TYPE = 1010000,
   SlowCommand_Type_TOGGLE_ADVANCED_MENUS = 59,
   SlowCommand_Type_TOGGLE_AUTOMATIC_UPDATES = 67,
   SlowCommand_Type_TOGGLE_FOLLOW_CURSOR = 43,
@@ -145,7 +146,7 @@ enum SlowCommand_Type {
   SlowCommand_Type_ZOOM_OUT = 40,
   SlowCommand_Type_ZOOM_OUT_FULL = 64,
   SlowCommand_Type_ZOOM_TO_SELECTION = 45,
-  SlowCommand_Type_FIRST_FREE_TYPE = 101,
+  SlowCommand_Type_FIRST_FREE_TYPE = 102,
   SlowCommand_Type_QUIT = 4097,
   SlowCommand_Type_DEL = 4098,
   SlowCommand_Type_CUT = 4099,
@@ -159,7 +160,7 @@ enum SlowCommand_Type {
 };
 bool SlowCommand_Type_IsValid(int value);
 const SlowCommand_Type SlowCommand_Type_Type_MIN = SlowCommand_Type_NONE;
-const SlowCommand_Type SlowCommand_Type_Type_MAX = SlowCommand_Type_SET_LANGUAGE;
+const SlowCommand_Type SlowCommand_Type_Type_MAX = SlowCommand_Type_SET_SAVE_TYPE;
 const int SlowCommand_Type_Type_ARRAYSIZE = SlowCommand_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* SlowCommand_Type_descriptor();
@@ -289,6 +290,7 @@ class SlowCommand : public ::google::protobuf::Message {
   static const Type SET_SAVE_AS_FLAC = SlowCommand_Type_SET_SAVE_AS_FLAC;
   static const Type SET_SAVE_AS_OGG = SlowCommand_Type_SET_SAVE_AS_OGG;
   static const Type SET_SAVE_AS_WAV = SlowCommand_Type_SET_SAVE_AS_WAV;
+  static const Type SET_SAVE_TYPE = SlowCommand_Type_SET_SAVE_TYPE;
   static const Type TOGGLE_ADVANCED_MENUS = SlowCommand_Type_TOGGLE_ADVANCED_MENUS;
   static const Type TOGGLE_AUTOMATIC_UPDATES = SlowCommand_Type_TOGGLE_AUTOMATIC_UPDATES;
   static const Type TOGGLE_FOLLOW_CURSOR = SlowCommand_Type_TOGGLE_FOLLOW_CURSOR;
