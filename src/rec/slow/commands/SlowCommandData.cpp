@@ -50,16 +50,16 @@ class SlowCommandData : public CommandData {
 
 CommandData* createSlowCommandData(Instance* i) { return new SlowCommandData(i); }
 
-app::Menus createMenus() {
-  app::Menus menus;
+program::Menus createMenus() {
+  program::Menus menus;
   SlowMenus slowMenus = BINARY_PROTO(SlowMenus_def, SlowMenus);
 
   for (auto& menu: slowMenus.menu()) {
-    app::Menu* appMenu = menus.add_menu();
+    program::Menu* appMenu = menus.add_menu();
     *appMenu->mutable_description() = menu.description();
     appMenu->set_extends(menu.extends());
     for (auto& menuEntry: menu.entry()) {
-      app::MenuEntry* appMenuEntry = appMenu->add_entry();
+      program::MenuEntry* appMenuEntry = appMenu->add_entry();
       for (auto& command: menuEntry.command())
         appMenuEntry->add_command(command);
       if (menuEntry.has_submenu())

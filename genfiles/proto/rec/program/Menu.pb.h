@@ -28,7 +28,7 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace app {
+namespace program {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fprogram_2fMenu_2eproto();
@@ -140,7 +140,7 @@ class MenuEntry : public ::google::protobuf::Message {
   inline ::std::string* release_callout_function();
   inline void set_allocated_callout_function(::std::string* callout_function);
 
-  // @@protoc_insertion_point(class_scope:rec.app.MenuEntry)
+  // @@protoc_insertion_point(class_scope:rec.program.MenuEntry)
  private:
   inline void set_has_submenu();
   inline void clear_has_submenu();
@@ -243,19 +243,19 @@ class Menu : public ::google::protobuf::Message {
   inline ::std::string* release_extends();
   inline void set_allocated_extends(::std::string* extends);
 
-  // repeated .rec.app.MenuEntry entry = 3;
+  // repeated .rec.program.MenuEntry entry = 3;
   inline int entry_size() const;
   inline void clear_entry();
   static const int kEntryFieldNumber = 3;
-  inline const ::rec::app::MenuEntry& entry(int index) const;
-  inline ::rec::app::MenuEntry* mutable_entry(int index);
-  inline ::rec::app::MenuEntry* add_entry();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::app::MenuEntry >&
+  inline const ::rec::program::MenuEntry& entry(int index) const;
+  inline ::rec::program::MenuEntry* mutable_entry(int index);
+  inline ::rec::program::MenuEntry* add_entry();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::program::MenuEntry >&
       entry() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::app::MenuEntry >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::program::MenuEntry >*
       mutable_entry();
 
-  // @@protoc_insertion_point(class_scope:rec.app.Menu)
+  // @@protoc_insertion_point(class_scope:rec.program.Menu)
  private:
   inline void set_has_description();
   inline void clear_has_description();
@@ -266,7 +266,7 @@ class Menu : public ::google::protobuf::Message {
 
   ::rec::command::Description* description_;
   ::std::string* extends_;
-  ::google::protobuf::RepeatedPtrField< ::rec::app::MenuEntry > entry_;
+  ::google::protobuf::RepeatedPtrField< ::rec::program::MenuEntry > entry_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
@@ -334,24 +334,24 @@ class Menus : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .rec.app.Menu menu = 1;
+  // repeated .rec.program.Menu menu = 1;
   inline int menu_size() const;
   inline void clear_menu();
   static const int kMenuFieldNumber = 1;
-  inline const ::rec::app::Menu& menu(int index) const;
-  inline ::rec::app::Menu* mutable_menu(int index);
-  inline ::rec::app::Menu* add_menu();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::app::Menu >&
+  inline const ::rec::program::Menu& menu(int index) const;
+  inline ::rec::program::Menu* mutable_menu(int index);
+  inline ::rec::program::Menu* add_menu();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::program::Menu >&
       menu() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::app::Menu >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::program::Menu >*
       mutable_menu();
 
-  // @@protoc_insertion_point(class_scope:rec.app.Menus)
+  // @@protoc_insertion_point(class_scope:rec.program.Menus)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::rec::app::Menu > menu_;
+  ::google::protobuf::RepeatedPtrField< ::rec::program::Menu > menu_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -444,7 +444,7 @@ class MenuBar : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& menu() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_menu();
 
-  // @@protoc_insertion_point(class_scope:rec.app.MenuBar)
+  // @@protoc_insertion_point(class_scope:rec.program.MenuBar)
  private:
   inline void set_has_description();
   inline void clear_has_description();
@@ -529,19 +529,19 @@ class MenuCollection : public ::google::protobuf::Message {
   inline ::rec::command::Description* release_description();
   inline void set_allocated_description(::rec::command::Description* description);
 
-  // repeated .rec.app.MenuBar menu_bar = 2;
+  // repeated .rec.program.MenuBar menu_bar = 2;
   inline int menu_bar_size() const;
   inline void clear_menu_bar();
   static const int kMenuBarFieldNumber = 2;
-  inline const ::rec::app::MenuBar& menu_bar(int index) const;
-  inline ::rec::app::MenuBar* mutable_menu_bar(int index);
-  inline ::rec::app::MenuBar* add_menu_bar();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::app::MenuBar >&
+  inline const ::rec::program::MenuBar& menu_bar(int index) const;
+  inline ::rec::program::MenuBar* mutable_menu_bar(int index);
+  inline ::rec::program::MenuBar* add_menu_bar();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::program::MenuBar >&
       menu_bar() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::app::MenuBar >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::program::MenuBar >*
       mutable_menu_bar();
 
-  // @@protoc_insertion_point(class_scope:rec.app.MenuCollection)
+  // @@protoc_insertion_point(class_scope:rec.program.MenuCollection)
  private:
   inline void set_has_description();
   inline void clear_has_description();
@@ -549,7 +549,7 @@ class MenuCollection : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::command::Description* description_;
-  ::google::protobuf::RepeatedPtrField< ::rec::app::MenuBar > menu_bar_;
+  ::google::protobuf::RepeatedPtrField< ::rec::program::MenuBar > menu_bar_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -867,27 +867,27 @@ inline void Menu::set_allocated_extends(::std::string* extends) {
   }
 }
 
-// repeated .rec.app.MenuEntry entry = 3;
+// repeated .rec.program.MenuEntry entry = 3;
 inline int Menu::entry_size() const {
   return entry_.size();
 }
 inline void Menu::clear_entry() {
   entry_.Clear();
 }
-inline const ::rec::app::MenuEntry& Menu::entry(int index) const {
+inline const ::rec::program::MenuEntry& Menu::entry(int index) const {
   return entry_.Get(index);
 }
-inline ::rec::app::MenuEntry* Menu::mutable_entry(int index) {
+inline ::rec::program::MenuEntry* Menu::mutable_entry(int index) {
   return entry_.Mutable(index);
 }
-inline ::rec::app::MenuEntry* Menu::add_entry() {
+inline ::rec::program::MenuEntry* Menu::add_entry() {
   return entry_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::app::MenuEntry >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::program::MenuEntry >&
 Menu::entry() const {
   return entry_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::app::MenuEntry >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::program::MenuEntry >*
 Menu::mutable_entry() {
   return &entry_;
 }
@@ -896,27 +896,27 @@ Menu::mutable_entry() {
 
 // Menus
 
-// repeated .rec.app.Menu menu = 1;
+// repeated .rec.program.Menu menu = 1;
 inline int Menus::menu_size() const {
   return menu_.size();
 }
 inline void Menus::clear_menu() {
   menu_.Clear();
 }
-inline const ::rec::app::Menu& Menus::menu(int index) const {
+inline const ::rec::program::Menu& Menus::menu(int index) const {
   return menu_.Get(index);
 }
-inline ::rec::app::Menu* Menus::mutable_menu(int index) {
+inline ::rec::program::Menu* Menus::mutable_menu(int index) {
   return menu_.Mutable(index);
 }
-inline ::rec::app::Menu* Menus::add_menu() {
+inline ::rec::program::Menu* Menus::add_menu() {
   return menu_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::app::Menu >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::program::Menu >&
 Menus::menu() const {
   return menu_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::app::Menu >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::program::Menu >*
 Menus::mutable_menu() {
   return &menu_;
 }
@@ -1049,27 +1049,27 @@ inline void MenuCollection::set_allocated_description(::rec::command::Descriptio
   }
 }
 
-// repeated .rec.app.MenuBar menu_bar = 2;
+// repeated .rec.program.MenuBar menu_bar = 2;
 inline int MenuCollection::menu_bar_size() const {
   return menu_bar_.size();
 }
 inline void MenuCollection::clear_menu_bar() {
   menu_bar_.Clear();
 }
-inline const ::rec::app::MenuBar& MenuCollection::menu_bar(int index) const {
+inline const ::rec::program::MenuBar& MenuCollection::menu_bar(int index) const {
   return menu_bar_.Get(index);
 }
-inline ::rec::app::MenuBar* MenuCollection::mutable_menu_bar(int index) {
+inline ::rec::program::MenuBar* MenuCollection::mutable_menu_bar(int index) {
   return menu_bar_.Mutable(index);
 }
-inline ::rec::app::MenuBar* MenuCollection::add_menu_bar() {
+inline ::rec::program::MenuBar* MenuCollection::add_menu_bar() {
   return menu_bar_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::app::MenuBar >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::program::MenuBar >&
 MenuCollection::menu_bar() const {
   return menu_bar_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::app::MenuBar >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::program::MenuBar >*
 MenuCollection::mutable_menu_bar() {
   return &menu_bar_;
 }
@@ -1077,7 +1077,7 @@ MenuCollection::mutable_menu_bar() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace app
+}  // namespace program
 }  // namespace rec
 
 #ifndef SWIG

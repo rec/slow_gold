@@ -13,7 +13,7 @@ namespace slow {
 class Instance;
 
 command::CommandData* createSlowCommandData(Instance*);
-app::Menus createMenus();
+program::Menus createMenus();
 
 }  // namespace slow
 }  // namespace rec

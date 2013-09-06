@@ -7,7 +7,7 @@
 using namespace rec::command;
 
 namespace rec {
-namespace app {
+namespace program {
 
 namespace {
 
@@ -184,6 +184,6 @@ void ProgramInstance::Impl::updateMenus() {
   DLOG(INFO) << "Update menus here.";
 }
 
-}  // namespace app
+}  // namespace program
 }  // namespace rec
 

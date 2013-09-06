@@ -6,7 +6,7 @@
 #include "rec/base/base.h"
 
 namespace rec {
-namespace app {
+namespace program {
 
 class Program;
 
@@ -34,7 +34,7 @@ class ProgramInstance : public juce::ApplicationCommandTarget,
   DISALLOW_COPY_ASSIGN_AND_LEAKS(ProgramInstance);
 };
 
-}  // namespace app
+}  // namespace program
 }  // namespace rec
 
 

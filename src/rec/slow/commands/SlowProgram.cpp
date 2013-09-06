@@ -13,13 +13,13 @@ command::Commands SlowProgram::keypresses() const {
   return keypresses;
 }
 
-app::Menus SlowProgram::menus() const {
-  app::Menus menus;
+program::Menus SlowProgram::menus() const {
+  program::Menus menus;
   return menus;
 }
 
-app::MenuCollection SlowProgram::menuCollection() const {
-  app::MenuCollection menuCollection;
+program::MenuCollection SlowProgram::menuCollection() const {
+  program::MenuCollection menuCollection;
   return menuCollection;
 }
 

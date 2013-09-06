@@ -10,7 +10,7 @@
 using namespace rec::command;
 
 namespace rec {
-namespace app {
+namespace program {
 
 ProgramInstance::ProgramInstance(Program* p) : impl_(new Impl(p)) {}
 ProgramInstance::~ProgramInstance() {}
@@ -72,5 +72,5 @@ PopupMenu ProgramInstance::getMenuForIndex(int menuIndex,
   return menu;
 }
 
-}  // namespace app
+}  // namespace program
 }  // namespace rec

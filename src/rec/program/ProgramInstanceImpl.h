@@ -7,7 +7,7 @@
 #include "rec/data/UntypedDataListener.h"
 
 namespace rec {
-namespace app {
+namespace program {
 
 class Program;
 
@@ -48,7 +48,7 @@ class ProgramInstance::Impl {
   ApplicationCommandManager applicationCommandManager_;
 };
 
-}  // namespace app
+}  // namespace program
 }  // namespace rec
 
 #endif  // __REC_APP_PROGRAMINSTANCEIMPL__

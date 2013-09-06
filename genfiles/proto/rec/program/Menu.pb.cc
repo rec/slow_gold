@@ -17,7 +17,7 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace app {
+namespace program {
 
 namespace {
 
@@ -175,19 +175,19 @@ void protobuf_AddDesc_rec_2fprogram_2fMenu_2eproto() {
 
   ::rec::command::protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\026rec/program/Menu.proto\022\007rec.app\032\031rec/c"
-    "ommand/Command.proto\"e\n\tMenuEntry\022\017\n\007com"
-    "mand\030\001 \003(\r\022\017\n\007submenu\030\002 \001(\t\022\034\n\024is_recent"
-    "_files_menu\030\003 \001(\010\022\030\n\020callout_function\030\004 "
-    "\001(\t\"i\n\004Menu\022-\n\013description\030\001 \001(\0132\030.rec.c"
-    "ommand.Description\022\017\n\007extends\030\002 \001(\t\022!\n\005e"
-    "ntry\030\003 \003(\0132\022.rec.app.MenuEntry\"$\n\005Menus\022"
-    "\033\n\004menu\030\001 \003(\0132\r.rec.app.Menu\"F\n\007MenuBar\022"
-    "-\n\013description\030\001 \001(\0132\030.rec.command.Descr"
-    "iption\022\014\n\004menu\030\002 \003(\t\"c\n\016MenuCollection\022-"
-    "\n\013description\030\001 \001(\0132\030.rec.command.Descri"
-    "ption\022\"\n\010menu_bar\030\002 \003(\0132\020.rec.app.MenuBa"
-    "r", 481);
+    "\n\026rec/program/Menu.proto\022\013rec.program\032\031r"
+    "ec/command/Command.proto\"e\n\tMenuEntry\022\017\n"
+    "\007command\030\001 \003(\r\022\017\n\007submenu\030\002 \001(\t\022\034\n\024is_re"
+    "cent_files_menu\030\003 \001(\010\022\030\n\020callout_functio"
+    "n\030\004 \001(\t\"m\n\004Menu\022-\n\013description\030\001 \001(\0132\030.r"
+    "ec.command.Description\022\017\n\007extends\030\002 \001(\t\022"
+    "%\n\005entry\030\003 \003(\0132\026.rec.program.MenuEntry\"("
+    "\n\005Menus\022\037\n\004menu\030\001 \003(\0132\021.rec.program.Menu"
+    "\"F\n\007MenuBar\022-\n\013description\030\001 \001(\0132\030.rec.c"
+    "ommand.Description\022\014\n\004menu\030\002 \003(\t\"g\n\016Menu"
+    "Collection\022-\n\013description\030\001 \001(\0132\030.rec.co"
+    "mmand.Description\022&\n\010menu_bar\030\002 \003(\0132\024.re"
+    "c.program.MenuBar", 497);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/program/Menu.proto", &protobuf_RegisterTypes);
   MenuEntry::default_instance_ = new MenuEntry();
@@ -695,7 +695,7 @@ bool Menu::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .rec.app.MenuEntry entry = 3;
+      // repeated .rec.program.MenuEntry entry = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -743,7 +743,7 @@ void Menu::SerializeWithCachedSizes(
       2, this->extends(), output);
   }
 
-  // repeated .rec.app.MenuEntry entry = 3;
+  // repeated .rec.program.MenuEntry entry = 3;
   for (int i = 0; i < this->entry_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->entry(i), output);
@@ -774,7 +774,7 @@ void Menu::SerializeWithCachedSizes(
         2, this->extends(), target);
   }
 
-  // repeated .rec.app.MenuEntry entry = 3;
+  // repeated .rec.program.MenuEntry entry = 3;
   for (int i = 0; i < this->entry_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -807,7 +807,7 @@ int Menu::ByteSize() const {
     }
 
   }
-  // repeated .rec.app.MenuEntry entry = 3;
+  // repeated .rec.program.MenuEntry entry = 3;
   total_size += 1 * this->entry_size();
   for (int i = 0; i < this->entry_size(); i++) {
     total_size +=
@@ -956,7 +956,7 @@ bool Menus::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.app.Menu menu = 1;
+      // repeated .rec.program.Menu menu = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -989,7 +989,7 @@ bool Menus::MergePartialFromCodedStream(
 
 void Menus::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.app.Menu menu = 1;
+  // repeated .rec.program.Menu menu = 1;
   for (int i = 0; i < this->menu_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->menu(i), output);
@@ -1003,7 +1003,7 @@ void Menus::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Menus::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.app.Menu menu = 1;
+  // repeated .rec.program.Menu menu = 1;
   for (int i = 0; i < this->menu_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1020,7 +1020,7 @@ void Menus::SerializeWithCachedSizes(
 int Menus::ByteSize() const {
   int total_size = 0;
 
-  // repeated .rec.app.Menu menu = 1;
+  // repeated .rec.program.Menu menu = 1;
   total_size += 1 * this->menu_size();
   for (int i = 0; i < this->menu_size(); i++) {
     total_size +=
@@ -1442,7 +1442,7 @@ bool MenuCollection::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .rec.app.MenuBar menu_bar = 2;
+      // repeated .rec.program.MenuBar menu_bar = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1481,7 +1481,7 @@ void MenuCollection::SerializeWithCachedSizes(
       1, this->description(), output);
   }
 
-  // repeated .rec.app.MenuBar menu_bar = 2;
+  // repeated .rec.program.MenuBar menu_bar = 2;
   for (int i = 0; i < this->menu_bar_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->menu_bar(i), output);
@@ -1502,7 +1502,7 @@ void MenuCollection::SerializeWithCachedSizes(
         1, this->description(), target);
   }
 
-  // repeated .rec.app.MenuBar menu_bar = 2;
+  // repeated .rec.program.MenuBar menu_bar = 2;
   for (int i = 0; i < this->menu_bar_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1528,7 +1528,7 @@ int MenuCollection::ByteSize() const {
     }
 
   }
-  // repeated .rec.app.MenuBar menu_bar = 2;
+  // repeated .rec.program.MenuBar menu_bar = 2;
   total_size += 1 * this->menu_bar_size();
   for (int i = 0; i < this->menu_bar_size(); i++) {
     total_size +=
@@ -1608,7 +1608,7 @@ void MenuCollection::Swap(MenuCollection* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace app
+}  // namespace program
 }  // namespace rec
 
 // @@protoc_insertion_point(global_scope)

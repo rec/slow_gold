@@ -7,21 +7,21 @@
 namespace rec {
 namespace slow {
 
-class SlowProgram : public app::ProgramBase {
+class SlowProgram : public program::ProgramBase {
  public:
   SlowProgram() {}
 
   command::Commands commands() const override;
   command::Commands keypresses() const override;
-  app::Menus menus() const override;
-  app::MenuCollection menuCollection() const override;
+  program::Menus menus() const override;
+  program::MenuCollection menuCollection() const override;
   string menuBarName() const override;
 
   bool hasProperty(const string& name) const override;
   string makeMenuName(const command::Command&, CommandID) const override;
 
   // Add an entry only for MenuEntries which have a callout_function.
-  void addMenuEntry(PopupMenu*, const app::MenuEntry&) const override {}
+  void addMenuEntry(PopupMenu*, const program::MenuEntry&) const override {}
 
   const gui::RecentFilesStrategy& recentFilesStrategy() const override;
 

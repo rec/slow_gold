@@ -13,42 +13,42 @@ import rec.command.Command_pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/program/Menu.proto',
-  package='rec.app',
-  serialized_pb='\n\x16rec/program/Menu.proto\x12\x07rec.app\x1a\x19rec/command/Command.proto\"e\n\tMenuEntry\x12\x0f\n\x07\x63ommand\x18\x01 \x03(\r\x12\x0f\n\x07submenu\x18\x02 \x01(\t\x12\x1c\n\x14is_recent_files_menu\x18\x03 \x01(\x08\x12\x18\n\x10\x63\x61llout_function\x18\x04 \x01(\t\"i\n\x04Menu\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0f\n\x07\x65xtends\x18\x02 \x01(\t\x12!\n\x05\x65ntry\x18\x03 \x03(\x0b\x32\x12.rec.app.MenuEntry\"$\n\x05Menus\x12\x1b\n\x04menu\x18\x01 \x03(\x0b\x32\r.rec.app.Menu\"F\n\x07MenuBar\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0c\n\x04menu\x18\x02 \x03(\t\"c\n\x0eMenuCollection\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\"\n\x08menu_bar\x18\x02 \x03(\x0b\x32\x10.rec.app.MenuBar')
+  package='rec.program',
+  serialized_pb='\n\x16rec/program/Menu.proto\x12\x0brec.program\x1a\x19rec/command/Command.proto\"e\n\tMenuEntry\x12\x0f\n\x07\x63ommand\x18\x01 \x03(\r\x12\x0f\n\x07submenu\x18\x02 \x01(\t\x12\x1c\n\x14is_recent_files_menu\x18\x03 \x01(\x08\x12\x18\n\x10\x63\x61llout_function\x18\x04 \x01(\t\"m\n\x04Menu\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0f\n\x07\x65xtends\x18\x02 \x01(\t\x12%\n\x05\x65ntry\x18\x03 \x03(\x0b\x32\x16.rec.program.MenuEntry\"(\n\x05Menus\x12\x1f\n\x04menu\x18\x01 \x03(\x0b\x32\x11.rec.program.Menu\"F\n\x07MenuBar\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0c\n\x04menu\x18\x02 \x03(\t\"g\n\x0eMenuCollection\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12&\n\x08menu_bar\x18\x02 \x03(\x0b\x32\x14.rec.program.MenuBar')
 
 
 
 
 _MENUENTRY = _descriptor.Descriptor(
   name='MenuEntry',
-  full_name='rec.app.MenuEntry',
+  full_name='rec.program.MenuEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='command', full_name='rec.app.MenuEntry.command', index=0,
+      name='command', full_name='rec.program.MenuEntry.command', index=0,
       number=1, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='submenu', full_name='rec.app.MenuEntry.submenu', index=1,
+      name='submenu', full_name='rec.program.MenuEntry.submenu', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='is_recent_files_menu', full_name='rec.app.MenuEntry.is_recent_files_menu', index=2,
+      name='is_recent_files_menu', full_name='rec.program.MenuEntry.is_recent_files_menu', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='callout_function', full_name='rec.app.MenuEntry.callout_function', index=3,
+      name='callout_function', full_name='rec.program.MenuEntry.callout_function', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -63,34 +63,34 @@ _MENUENTRY = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=62,
-  serialized_end=163,
+  serialized_start=66,
+  serialized_end=167,
 )
 
 
 _MENU = _descriptor.Descriptor(
   name='Menu',
-  full_name='rec.app.Menu',
+  full_name='rec.program.Menu',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='description', full_name='rec.app.Menu.description', index=0,
+      name='description', full_name='rec.program.Menu.description', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='extends', full_name='rec.app.Menu.extends', index=1,
+      name='extends', full_name='rec.program.Menu.extends', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='entry', full_name='rec.app.Menu.entry', index=2,
+      name='entry', full_name='rec.program.Menu.entry', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -105,20 +105,20 @@ _MENU = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=165,
-  serialized_end=270,
+  serialized_start=169,
+  serialized_end=278,
 )
 
 
 _MENUS = _descriptor.Descriptor(
   name='Menus',
-  full_name='rec.app.Menus',
+  full_name='rec.program.Menus',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='menu', full_name='rec.app.Menus.menu', index=0,
+      name='menu', full_name='rec.program.Menus.menu', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -133,27 +133,27 @@ _MENUS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=272,
-  serialized_end=308,
+  serialized_start=280,
+  serialized_end=320,
 )
 
 
 _MENUBAR = _descriptor.Descriptor(
   name='MenuBar',
-  full_name='rec.app.MenuBar',
+  full_name='rec.program.MenuBar',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='description', full_name='rec.app.MenuBar.description', index=0,
+      name='description', full_name='rec.program.MenuBar.description', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='menu', full_name='rec.app.MenuBar.menu', index=1,
+      name='menu', full_name='rec.program.MenuBar.menu', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -168,27 +168,27 @@ _MENUBAR = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=310,
-  serialized_end=380,
+  serialized_start=322,
+  serialized_end=392,
 )
 
 
 _MENUCOLLECTION = _descriptor.Descriptor(
   name='MenuCollection',
-  full_name='rec.app.MenuCollection',
+  full_name='rec.program.MenuCollection',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='description', full_name='rec.app.MenuCollection.description', index=0,
+      name='description', full_name='rec.program.MenuCollection.description', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='menu_bar', full_name='rec.app.MenuCollection.menu_bar', index=1,
+      name='menu_bar', full_name='rec.program.MenuCollection.menu_bar', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -203,8 +203,8 @@ _MENUCOLLECTION = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=382,
-  serialized_end=481,
+  serialized_start=394,
+  serialized_end=497,
 )
 
 _MENU.fields_by_name['description'].message_type = rec.command.Command_pb2._DESCRIPTION
@@ -223,31 +223,31 @@ class MenuEntry(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _MENUENTRY
 
-  # @@protoc_insertion_point(class_scope:rec.app.MenuEntry)
+  # @@protoc_insertion_point(class_scope:rec.program.MenuEntry)
 
 class Menu(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _MENU
 
-  # @@protoc_insertion_point(class_scope:rec.app.Menu)
+  # @@protoc_insertion_point(class_scope:rec.program.Menu)
 
 class Menus(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _MENUS
 
-  # @@protoc_insertion_point(class_scope:rec.app.Menus)
+  # @@protoc_insertion_point(class_scope:rec.program.Menus)
 
 class MenuBar(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _MENUBAR
 
-  # @@protoc_insertion_point(class_scope:rec.app.MenuBar)
+  # @@protoc_insertion_point(class_scope:rec.program.MenuBar)
 
 class MenuCollection(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _MENUCOLLECTION
 
-  # @@protoc_insertion_point(class_scope:rec.app.MenuCollection)
+  # @@protoc_insertion_point(class_scope:rec.program.MenuCollection)
 
 
 # @@protoc_insertion_point(module_scope)

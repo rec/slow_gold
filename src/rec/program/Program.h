@@ -9,7 +9,7 @@
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
-namespace app {
+namespace program {
 
 class Program {
  public:
@@ -70,8 +70,7 @@ bool hasProperty(const Program& program, const PARTS& parts) {
   return false;
 }
 
-}  // namespace app
+}  // namespace program
 }  // namespace rec
-
 
 #endif  // __REC_APP_PROGRAM__
