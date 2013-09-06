@@ -237,8 +237,8 @@
     <ClCompile Include="..\..\..\..\src\rec\music\CleanName.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\music\CreateMusicFileReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\program\ProgramInstance.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\program\ProgramInstanceImpl.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\program\JuceModel.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\program\JuceModelImpl.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\AboutWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\BasicMenuMaker.cpp"/>
@@ -1616,9 +1616,11 @@
     <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\program\JuceModel.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\program\JuceModelImpl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\program\Program.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\program\ProgramInstance.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\program\ProgramInstanceImpl.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\program\ProgramBase.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\program\Types.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\BasicMenuMaker.h"/>

@@ -1,8 +1,8 @@
 #include <stdexcept>
 
-#include "rec/program/ProgramInstance.h"
+#include "rec/program/JuceModel.h"
 
-#include "rec/program/ProgramInstanceImpl.h"
+#include "rec/program/JuceModelImpl.h"
 #include "rec/program/Program.h"
 #include "rec/command/Command.pb.h"
 #include "rec/program/Menu.pb.h"
@@ -12,15 +12,15 @@ using namespace rec::command;
 namespace rec {
 namespace program {
 
-ProgramInstance::ProgramInstance(Program* p) : impl_(new Impl(p)) {}
-ProgramInstance::~ProgramInstance() {}
+JuceModel::JuceModel(Program* p) : impl_(new Impl(p)) {}
+JuceModel::~JuceModel() {}
 
-void ProgramInstance::getAllCommands(juce::Array<CommandID>& commands) {
+void JuceModel::getAllCommands(juce::Array<CommandID>& commands) {
   for (auto& mapEntry: impl_->programMap())
     commands.add(mapEntry.first);
 }
 
-void ProgramInstance::getCommandInfo(CommandID command,
+void JuceModel::getCommandInfo(CommandID command,
                                      ApplicationCommandInfo& info) {
   try {
     const Command& command = impl_->programMap().at(info.commandID);
@@ -37,11 +37,11 @@ void ProgramInstance::getCommandInfo(CommandID command,
   }
 }
 
-bool ProgramInstance::perform(const InvocationInfo& info) {
+bool JuceModel::perform(const InvocationInfo& info) {
   return impl_->perform(info);
 }
 
-StringArray ProgramInstance::getMenuBarNames() {
+StringArray JuceModel::getMenuBarNames() {
   StringArray names;
   try {
     for (auto& menu: impl_->menuBar().menu())
@@ -52,11 +52,11 @@ StringArray ProgramInstance::getMenuBarNames() {
   return names;
 }
 
-ApplicationCommandManager* ProgramInstance::applicationCommandManager() {
+ApplicationCommandManager* JuceModel::applicationCommandManager() {
   return impl_->applicationCommandManager();
 }
 
-PopupMenu ProgramInstance::getMenuForIndex(int menuIndex,
+PopupMenu JuceModel::getMenuForIndex(int menuIndex,
                                            const String&) {
   PopupMenu menu;
   try {

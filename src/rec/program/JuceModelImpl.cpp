@@ -1,4 +1,4 @@
-#include "rec/program/ProgramInstanceImpl.h"
+#include "rec/program/JuceModelImpl.h"
 
 #include "rec/command/Command.pb.h"
 #include "rec/data/Data.h"
@@ -62,7 +62,7 @@ void checkMenuEntry(const MenuEntry& menuEntry) {
 
 class SetterListener : public UntypedDataListener {
  public:
-  SetterListener(const command::Setter& setter, ProgramInstance::Impl* impl)
+  SetterListener(const command::Setter& setter, JuceModel::Impl* impl)
       : UntypedDataListener(setter.type_name(),
                             setter.is_global() ? GLOBAL_SCOPE : FILE_SCOPE),
         impl_(impl) {
@@ -73,14 +73,14 @@ class SetterListener : public UntypedDataListener {
   }
 
  private:
-  ProgramInstance::Impl* impl_;
+  JuceModel::Impl* impl_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterListener);
 };
 
 }  // namespace
 
-ProgramInstance::Impl::Impl(Program* p)
+JuceModel::Impl::Impl(Program* p)
     : program_(p),
       programMap_(makeProgramMap(*p)),
       menuMap_(makeMenuMap(*p)),
@@ -103,22 +103,22 @@ ProgramInstance::Impl::Impl(Program* p)
   }
 }
 
-const MenuBar& ProgramInstance::Impl::menuBar() const {
+const MenuBar& JuceModel::Impl::menuBar() const {
   return menuBarMap_.at(program_->menuBarName());
 }
 
-void ProgramInstance::Impl::addSubmenu(PopupMenu* popup,
+void JuceModel::Impl::addSubmenu(PopupMenu* popup,
                                        const MenuEntry& menuEntry) {
   PopupMenu submenu;
   string subname = addMenu(&submenu, menuEntry.submenu());
   popup->addSubMenu(subname, submenu);
 }
 
-void ProgramInstance::Impl::addCommand(PopupMenu* popup, CommandID command) {
+void JuceModel::Impl::addCommand(PopupMenu* popup, CommandID command) {
   popup->addCommandItem(&applicationCommandManager_, command);
 }
 
-void ProgramInstance::Impl::addCommands(PopupMenu* popup,
+void JuceModel::Impl::addCommands(PopupMenu* popup,
                                         const MenuEntry& menuEntry) {
   for (auto& command: menuEntry.command()) {
     if (command)
@@ -128,7 +128,7 @@ void ProgramInstance::Impl::addCommands(PopupMenu* popup,
   }
 }
 
-void ProgramInstance::Impl::addMenuEntry(PopupMenu* popup,
+void JuceModel::Impl::addMenuEntry(PopupMenu* popup,
                                          const MenuEntry& menuEntry) {
   checkMenuEntry(menuEntry);
   if (menuEntry.command_size())
@@ -147,7 +147,7 @@ void ProgramInstance::Impl::addMenuEntry(PopupMenu* popup,
     popup->addSeparator();
 }
 
-string ProgramInstance::Impl::addMenu(PopupMenu* popup, const string& name) {
+string JuceModel::Impl::addMenu(PopupMenu* popup, const string& name) {
   string result;
   try {
     const Menu& menu = menuMap_.at(name);
@@ -161,7 +161,7 @@ string ProgramInstance::Impl::addMenu(PopupMenu* popup, const string& name) {
   }
 }
 
-void ProgramInstance::Impl::makeRecentFiles(PopupMenu* popup) {
+void JuceModel::Impl::makeRecentFiles(PopupMenu* popup) {
   auto& strategy = program_->recentFilesStrategy();
   vector<string> recentFiles = gui::getRecentFileNames(strategy);
   CommandID command = strategy.getRecentFileCommand();
@@ -169,7 +169,7 @@ void ProgramInstance::Impl::makeRecentFiles(PopupMenu* popup) {
     addCommand(popup, command + i);
 }
 
-bool ProgramInstance::Impl::perform(const InvocationInfo& info) {
+bool JuceModel::Impl::perform(const InvocationInfo& info) {
   if (Callback* callback = program_->getCallback(info.commandID)) {
     (*callback)();
     return true;
@@ -178,7 +178,7 @@ bool ProgramInstance::Impl::perform(const InvocationInfo& info) {
   return false;
 }
 
-void ProgramInstance::Impl::updateMenus() {
+void JuceModel::Impl::updateMenus() {
   DLOG(INFO) << "Update menus here.";
 }
 

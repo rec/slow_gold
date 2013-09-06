@@ -2,7 +2,7 @@
 #define __REC_APP_PROGRAMINSTANCEIMPL__
 
 #include "rec/program/Menu.pb.h"
-#include "rec/program/ProgramInstance.h"
+#include "rec/program/JuceModel.h"
 #include "rec/program/Types.h"
 #include "rec/command/Command.pb.h"
 
@@ -11,7 +11,7 @@ namespace program {
 
 class Program;
 
-class ProgramInstance::Impl {
+class JuceModel::Impl {
  public:
   Impl(Program* p);
   const MenuBar& menuBar() const;

@@ -814,10 +814,10 @@
     <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp">
       <Filter>SlowGold\src\music</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\program\ProgramInstance.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\program\JuceModel.cpp">
       <Filter>SlowGold\src\program</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\program\ProgramInstanceImpl.cpp">
+    <ClCompile Include="..\..\..\..\src\rec\program\JuceModelImpl.cpp">
       <Filter>SlowGold\src\program</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\AboutWindow.cpp">
@@ -2880,13 +2880,19 @@
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h">
       <Filter>SlowGold\src\music</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\program\JuceModel.h">
+      <Filter>SlowGold\src\program</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\program\JuceModelImpl.h">
+      <Filter>SlowGold\src\program</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\program\Program.h">
       <Filter>SlowGold\src\program</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\program\ProgramInstance.h">
+    <ClInclude Include="..\..\..\..\src\rec\program\ProgramBase.h">
       <Filter>SlowGold\src\program</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\program\ProgramInstanceImpl.h">
+    <ClInclude Include="..\..\..\..\src\rec\program\Types.h">
       <Filter>SlowGold\src\program</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h">

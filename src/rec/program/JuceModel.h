@@ -10,11 +10,11 @@ namespace program {
 
 class Program;
 
-class ProgramInstance : public juce::ApplicationCommandTarget,
+class JuceModel : public juce::ApplicationCommandTarget,
                         public MenuBarModel {
  public:
-  ProgramInstance(Program*);
-  ~ProgramInstance();
+  JuceModel(Program*);
+  ~JuceModel();
 
   juce::ApplicationCommandTarget* getNextCommandTarget() override { return NULL; }
   void getAllCommands(juce::Array<CommandID>& commands) override;
@@ -31,7 +31,7 @@ class ProgramInstance : public juce::ApplicationCommandTarget,
  private:
   unique_ptr<Impl> impl_;
 
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(ProgramInstance);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(JuceModel);
 };
 
 }  // namespace program
