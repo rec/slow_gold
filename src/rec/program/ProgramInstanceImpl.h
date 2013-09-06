@@ -3,8 +3,8 @@
 
 #include "rec/program/Menu.pb.h"
 #include "rec/program/ProgramInstance.h"
+#include "rec/program/Types.h"
 #include "rec/command/Command.pb.h"
-#include "rec/data/UntypedDataListener.h"
 
 namespace rec {
 namespace program {
@@ -22,11 +22,6 @@ class ProgramInstance::Impl {
   ApplicationCommandManager* applicationCommandManager() {
     return &applicationCommandManager_;
   }
-
-  typedef std::unordered_map<CommandID, command::Command> ProgramMap;
-  typedef std::unordered_map<string, Menu> MenuMap;
-  typedef std::unordered_map<string, MenuBar> MenuBarMap;
-  typedef vector<unique_ptr<UntypedDataListener>> DataListeners;
 
   const ProgramMap& programMap() const { return programMap_; }
 

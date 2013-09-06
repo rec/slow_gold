@@ -1,8 +1,6 @@
 #ifndef __REC_APP_PROGRAM__
 #define __REC_APP_PROGRAM__
 
-#include <unordered_map>
-
 #include "rec/program/Menu.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/gui/menu/RecentFiles.h"
@@ -33,32 +31,6 @@ class Program {
   virtual void registerAllCallbacks() = 0;
   virtual void addCallback(CommandID, unique_ptr<Callback>) = 0;
   virtual Callback* getCallback(CommandID) const = 0;
-};
-
-class ProgramBase : public Program {
- public:
-  ProgramBase() {}
-
-  void addCallback(CommandID command, unique_ptr<Callback> callback) override {
-    auto loc = commandMap_.find(command);
-    if (loc == commandMap_.end())
-      commandMap_.insert(loc, std::make_pair(command, std::move(callback)));
-    else
-      LOG(DFATAL) << "Duplicate command ID " << command;
-  }
-
-  Callback* getCallback(CommandID command) const override {
-    Callback* callback = nullptr;
-    auto loc = commandMap_.find(command);
-    if (loc != commandMap_.end())
-      callback = loc->second.get();
-    LOG_IF(DFATAL, not callback) << "No callback for " << command;
-    return callback;
-  }
-
- private:
-  typedef std::unordered_map<CommandID, unique_ptr<Callback>> CommandMap;
-  CommandMap commandMap_;
 };
 
 template <typename PARTS>

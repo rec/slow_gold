@@ -1,8 +1,10 @@
 #include "rec/program/ProgramInstanceImpl.h"
+
+#include "rec/command/Command.pb.h"
+#include "rec/data/Data.h"
+#include "rec/data/UntypedDataListener.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/Program.h"
-#include "rec/data/Data.h"
-#include "rec/command/Command.pb.h"
 
 using namespace rec::command;
 
@@ -10,10 +12,6 @@ namespace rec {
 namespace program {
 
 namespace {
-
-typedef ProgramInstance::Impl::ProgramMap ProgramMap;
-typedef ProgramInstance::Impl::MenuMap MenuMap;
-typedef ProgramInstance::Impl::MenuBarMap MenuBarMap;
 
 ProgramMap makeProgramMap(const Program& program) {
   ProgramMap programMap;
