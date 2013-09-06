@@ -17,8 +17,12 @@ typedef ProgramInstance::Impl::MenuBarMap MenuBarMap;
 
 ProgramMap makeProgramMap(const Program& program) {
   ProgramMap programMap;
-  for (auto& command: program.commands().command())
-    programMap[command.command()] = command;
+  for (auto& command: program.commands().command()) {
+    CommandID id = command.command();
+    programMap[id] = command;
+    for (int i = command.start_index(); i < command.index(); ++i)
+      programMap[id + i] = command;
+  }
 
   for (auto& command: program.keypresses().command()) {
     try {
@@ -86,10 +90,6 @@ ProgramInstance::Impl::Impl(Program* p)
   ProgramMap newPrograms;
   for (auto& i: programMap_) {
     const Command& command = i.second;
-    CommandID id = command.command();
-    for (int i = command.start_index(); i < command.index(); ++i)
-      newPrograms[id + i] = command;
-
     if (command.has_setter()) {
       unique_ptr<UntypedDataListener>
         listener(new SetterListener(command.setter(), this));
@@ -97,8 +97,6 @@ ProgramInstance::Impl::Impl(Program* p)
     }
   }
 
-  for (auto& i: newPrograms)
-    programMap_[i.first] = i.second;
   program_->registerAllCallbacks();
 
   for (auto& i: programMap_) {

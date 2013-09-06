@@ -31,7 +31,7 @@ void ProgramInstance::getCommandInfo(CommandID command,
     if (hasProperty(*impl_->program(), command.ticked()))
       flags |= ApplicationCommandInfo::isTicked;
 
-    info.setInfo(desc.name(), desc.full(0), command.category(), flags);
+    info.setInfo(desc.name(), desc.menu(0), command.category(), flags);
   } catch (const std::out_of_range&) {
     LOG(DFATAL) << "getCommandInfo out of range " << info.commandID;
   }

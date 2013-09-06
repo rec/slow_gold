@@ -41,6 +41,25 @@ class Setter;
 class Command;
 class Commands;
 
+enum Setter_Type {
+  Setter_Type_TOGGLE = 0,
+  Setter_Type_SELECTION = 1
+};
+bool Setter_Type_IsValid(int value);
+const Setter_Type Setter_Type_Type_MIN = Setter_Type_TOGGLE;
+const Setter_Type Setter_Type_Type_MAX = Setter_Type_SELECTION;
+const int Setter_Type_Type_ARRAYSIZE = Setter_Type_Type_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Setter_Type_descriptor();
+inline const ::std::string& Setter_Type_Name(Setter_Type value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Setter_Type_descriptor(), value);
+}
+inline bool Setter_Type_Parse(
+    const ::std::string& name, Setter_Type* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Setter_Type>(
+    Setter_Type_descriptor(), name, value);
+}
 enum Command_Type {
   Command_Type_NONE = 0,
   Command_Type_QUIT = 4097,
@@ -259,6 +278,30 @@ class Setter : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
+  typedef Setter_Type Type;
+  static const Type TOGGLE = Setter_Type_TOGGLE;
+  static const Type SELECTION = Setter_Type_SELECTION;
+  static inline bool Type_IsValid(int value) {
+    return Setter_Type_IsValid(value);
+  }
+  static const Type Type_MIN =
+    Setter_Type_Type_MIN;
+  static const Type Type_MAX =
+    Setter_Type_Type_MAX;
+  static const int Type_ARRAYSIZE =
+    Setter_Type_Type_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Type_descriptor() {
+    return Setter_Type_descriptor();
+  }
+  static inline const ::std::string& Type_Name(Type value) {
+    return Setter_Type_Name(value);
+  }
+  static inline bool Type_Parse(const ::std::string& name,
+      Type* value) {
+    return Setter_Type_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   // optional bool is_global = 1 [default = true];
@@ -289,6 +332,13 @@ class Setter : public ::google::protobuf::Message {
   inline ::std::string* release_type_name();
   inline void set_allocated_type_name(::std::string* type_name);
 
+  // optional .rec.command.Setter.Type type = 4;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 4;
+  inline ::rec::command::Setter_Type type() const;
+  inline void set_type(::rec::command::Setter_Type value);
+
   // @@protoc_insertion_point(class_scope:rec.command.Setter)
  private:
   inline void set_has_is_global();
@@ -297,15 +347,18 @@ class Setter : public ::google::protobuf::Message {
   inline void clear_has_address();
   inline void set_has_type_name();
   inline void clear_has_type_name();
+  inline void set_has_type();
+  inline void clear_has_type();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::data::AddressProto* address_;
-  ::std::string* type_name_;
   bool is_global_;
+  int type_;
+  ::std::string* type_name_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -1045,6 +1098,29 @@ inline void Setter::set_allocated_type_name(::std::string* type_name) {
   }
 }
 
+// optional .rec.command.Setter.Type type = 4;
+inline bool Setter::has_type() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Setter::set_has_type() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Setter::clear_has_type() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Setter::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::rec::command::Setter_Type Setter::type() const {
+  return static_cast< ::rec::command::Setter_Type >(type_);
+}
+inline void Setter::set_type(::rec::command::Setter_Type value) {
+  assert(::rec::command::Setter_Type_IsValid(value));
+  set_has_type();
+  type_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // Command
@@ -1590,6 +1666,10 @@ Commands::mutable_command() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Setter_Type>() {
+  return ::rec::command::Setter_Type_descriptor();
+}
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Command_Type>() {
   return ::rec::command::Command_Type_descriptor();

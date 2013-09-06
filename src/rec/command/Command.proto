@@ -10,9 +10,14 @@ message Description {
 };
 
 message Setter {
+  enum Type {
+    TOGGLE = 0;
+    SELECTION = 1;
+  };
   optional bool is_global = 1 [default = true];
   optional data.AddressProto address = 2;
   optional string type_name = 3;
+  optional Type type = 4;
 };
 
 // A list of commands that the user can issue.
@@ -58,7 +63,7 @@ message Command {
   // Each string in 'hidden', 'disabled' or 'checked' names a condition.  If any
   // of these conditions is true, the menu item is hidden, checked or disabled.
   // The application itself defines what those conditions are.
-  repeated string hidden = 11;
+  repeated string hidden = 11;  // TODO: implement!
   repeated string disabled = 12;
   repeated string ticked = 13;
 };
