@@ -69,7 +69,7 @@ class SetterListener : public UntypedDataListener {
   }
 
   void operator()(const Message&) override {
-    impl_->updateMenus();
+    impl_->menuItemsChanged();
   }
 
  private:
@@ -80,8 +80,9 @@ class SetterListener : public UntypedDataListener {
 
 }  // namespace
 
-JuceModel::Impl::Impl(Program* p)
+JuceModel::Impl::Impl(Program* p, JuceModel* juceModel)
     : program_(p),
+      juceModel_(juceModel),
       programMap_(makeProgramMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)) {
@@ -176,10 +177,6 @@ bool JuceModel::Impl::perform(const InvocationInfo& info) {
   }
   LOG(DFATAL) << "No command for " << info.commandID;
   return false;
-}
-
-void JuceModel::Impl::updateMenus() {
-  DLOG(INFO) << "Update menus here.";
 }
 
 }  // namespace program

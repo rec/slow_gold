@@ -13,7 +13,7 @@ class Program;
 
 class JuceModel::Impl {
  public:
-  Impl(Program* p);
+  Impl(Program* p, JuceModel*);
   const MenuBar& menuBar() const;
   string addMenu(PopupMenu* popup, const string& name);
   bool perform(const InvocationInfo&);
@@ -24,8 +24,9 @@ class JuceModel::Impl {
   }
 
   const ProgramMap& programMap() const { return programMap_; }
-
-  void updateMenus();
+  void menuItemsChanged() {
+    juceModel_->menuItemsChanged();
+  }
 
  private:
   void addSubmenu(PopupMenu* popup, const MenuEntry& menuEntry);
@@ -35,6 +36,7 @@ class JuceModel::Impl {
   void makeRecentFiles(PopupMenu* menu);
 
   Program* program_;
+  JuceModel* juceModel_;
   ProgramMap programMap_;
   const MenuCollection menuCollection;
   const MenuMap menuMap_;

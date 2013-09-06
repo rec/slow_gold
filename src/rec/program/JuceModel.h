@@ -10,13 +10,12 @@ namespace program {
 
 class Program;
 
-class JuceModel : public juce::ApplicationCommandTarget,
-                        public MenuBarModel {
+class JuceModel : public ApplicationCommandTarget, public MenuBarModel {
  public:
   JuceModel(Program*);
   ~JuceModel();
 
-  juce::ApplicationCommandTarget* getNextCommandTarget() override { return NULL; }
+  ApplicationCommandTarget* getNextCommandTarget() override { return NULL; }
   void getAllCommands(juce::Array<CommandID>& commands) override;
   void getCommandInfo(CommandID, ApplicationCommandInfo&) override;
   bool perform(const InvocationInfo& info) override;

@@ -12,7 +12,7 @@ using namespace rec::command;
 namespace rec {
 namespace program {
 
-JuceModel::JuceModel(Program* p) : impl_(new Impl(p)) {}
+JuceModel::JuceModel(Program* p) : impl_(new Impl(p, this)) {}
 JuceModel::~JuceModel() {}
 
 void JuceModel::getAllCommands(juce::Array<CommandID>& commands) {
