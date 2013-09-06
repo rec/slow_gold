@@ -69,8 +69,8 @@ enum SlowCommand_Type {
   SlowCommand_Type_IMPORT_MIDI_MAPPINGS = 85,
   SlowCommand_Type_IMPORT_SETTINGS = 76,
   SlowCommand_Type_INVERT_LOOP_SELECTION = 9,
-  SlowCommand_Type_JUMP = 10,
-  SlowCommand_Type_JUMP_SELECTED = 11,
+  SlowCommand_Type_JUMP = 100000,
+  SlowCommand_Type_JUMP_SELECTED = 110000,
   SlowCommand_Type_KEYBOARD_MAPPINGS = 12,
   SlowCommand_Type_LOOP_NEXT_SEGMENT = 94,
   SlowCommand_Type_MIDI_MAPPINGS = 13,
@@ -94,16 +94,16 @@ enum SlowCommand_Type {
   SlowCommand_Type_OPEN_PREVIOUS_FILE = 78,
   SlowCommand_Type_OPEN_SLOWGOLD_DIRECTORY = 74,
   SlowCommand_Type_PASTE_OVER_LOOP_POINTS = 96,
-  SlowCommand_Type_RECENT_FILES = 22,
+  SlowCommand_Type_RECENT_FILES = 220000,
   SlowCommand_Type_REDO = 23,
   SlowCommand_Type_REQUEST_SUPPORT = 66,
   SlowCommand_Type_RESET_GAIN_TO_UNITY = 24,
   SlowCommand_Type_SAVE_FILE = 69,
   SlowCommand_Type_SAVE_FILE_SELECTION = 70,
-  SlowCommand_Type_SELECT = 25,
-  SlowCommand_Type_SELECT_ONLY = 26,
-  SlowCommand_Type_SET_LANGUAGE = 93,
-  SlowCommand_Type_SET_SAVE_FORMAT = 71,
+  SlowCommand_Type_SELECT = 250000,
+  SlowCommand_Type_SELECT_ONLY = 260000,
+  SlowCommand_Type_SET_LANGUAGE = 930000,
+  SlowCommand_Type_SET_SAVE_FORMAT = 710000,
   SlowCommand_Type_SET_SAVE_AS_AIFF = 97,
   SlowCommand_Type_SET_SAVE_AS_FLAC = 98,
   SlowCommand_Type_SET_SAVE_AS_OGG = 99,
@@ -119,7 +119,7 @@ enum SlowCommand_Type {
   SlowCommand_Type_TOGGLE_MODES_AT_TOP = 57,
   SlowCommand_Type_TOGGLE_PARALLEL_WAVEFORMS = 42,
   SlowCommand_Type_TOGGLE_PREFADER_LEVELS = 46,
-  SlowCommand_Type_TOGGLE_SELECTION = 41,
+  SlowCommand_Type_TOGGLE_SELECTION = 410000,
   SlowCommand_Type_TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP = 81,
   SlowCommand_Type_TOGGLE_SHOW_CURSOR_LABELS = 51,
   SlowCommand_Type_TOGGLE_SHOW_HELP_PANE = 49,
@@ -139,7 +139,7 @@ enum SlowCommand_Type {
   SlowCommand_Type_TREE_RIGHT = 35,
   SlowCommand_Type_TREE_UP = 36,
   SlowCommand_Type_UNDO = 37,
-  SlowCommand_Type_UNSELECT = 38,
+  SlowCommand_Type_UNSELECT = 380000,
   SlowCommand_Type_WHATS_NEW_PAGE = 73,
   SlowCommand_Type_ZOOM_IN = 39,
   SlowCommand_Type_ZOOM_OUT = 40,
@@ -155,11 +155,11 @@ enum SlowCommand_Type {
   SlowCommand_Type_DESELECT_ALL = 4103,
   SlowCommand_Type_JUCE_START = 4096,
   SlowCommand_Type_JUCE_END = 4104,
-  SlowCommand_Type_BANK_SIZE = 100000
+  SlowCommand_Type_BANK_SIZE = 10000
 };
 bool SlowCommand_Type_IsValid(int value);
 const SlowCommand_Type SlowCommand_Type_Type_MIN = SlowCommand_Type_NONE;
-const SlowCommand_Type SlowCommand_Type_Type_MAX = SlowCommand_Type_BANK_SIZE;
+const SlowCommand_Type SlowCommand_Type_Type_MAX = SlowCommand_Type_SET_LANGUAGE;
 const int SlowCommand_Type_Type_ARRAYSIZE = SlowCommand_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* SlowCommand_Type_descriptor();

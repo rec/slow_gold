@@ -34,8 +34,8 @@ message SlowCommand {
     IMPORT_SETTINGS = 76;
     INVERT_LOOP_SELECTION = 9;
 
-    JUMP = 10;
-    JUMP_SELECTED  = 11;
+    JUMP = 100000;
+    JUMP_SELECTED  = 110000;
 
     KEYBOARD_MAPPINGS = 12;
 
@@ -66,7 +66,7 @@ message SlowCommand {
 
     PASTE_OVER_LOOP_POINTS = 96;
 
-    RECENT_FILES = 22;
+    RECENT_FILES = 220000;
     REDO = 23;
     REQUEST_SUPPORT = 66;
 
@@ -75,10 +75,10 @@ message SlowCommand {
     SAVE_FILE = 69;
     SAVE_FILE_SELECTION = 70;
 
-    SELECT = 25;
-    SELECT_ONLY = 26;
-    SET_LANGUAGE = 93;
-    SET_SAVE_FORMAT = 71;
+    SELECT = 250000;
+    SELECT_ONLY = 260000;
+    SET_LANGUAGE = 930000;
+    SET_SAVE_FORMAT = 710000;
 
     SET_SAVE_AS_AIFF = 97;
     SET_SAVE_AS_FLAC = 98;
@@ -96,7 +96,7 @@ message SlowCommand {
     TOGGLE_MODES_AT_TOP = 57;
     TOGGLE_PARALLEL_WAVEFORMS = 42;
     TOGGLE_PREFADER_LEVELS = 46;
-    TOGGLE_SELECTION = 41;
+    TOGGLE_SELECTION = 410000;
     TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP = 81;
     TOGGLE_SHOW_CURSOR_LABELS = 51;
     TOGGLE_SHOW_HELP_PANE = 49;
@@ -118,7 +118,7 @@ message SlowCommand {
     TREE_UP = 36;
 
     UNDO = 37;
-    UNSELECT = 38;
+    UNSELECT = 380000;
 
     WHATS_NEW_PAGE = 73;
 
@@ -141,7 +141,7 @@ message SlowCommand {
     JUCE_START = 0x1000;
     JUCE_END = 0x1008;
 
-    BANK_SIZE = 100000;
+    BANK_SIZE = 10000;
   };
 
   optional Type type = 1;

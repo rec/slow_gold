@@ -11,7 +11,7 @@ namespace {
 const int SIZE = Command::BANK_SIZE;
 
 int32 toID(int32 position, int32 type) {
-  return (type * SIZE) + (position - ID::FIRST);
+  return type + (position - ID::FIRST);
 }
 
 }  // namespace
