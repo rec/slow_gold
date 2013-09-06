@@ -1,6 +1,6 @@
-#include "rec/app/ProgramInstanceImpl.h"
-#include "rec/app/Menu.pb.h"
-#include "rec/app/Program.h"
+#include "rec/program/ProgramInstanceImpl.h"
+#include "rec/program/Menu.pb.h"
+#include "rec/program/Program.h"
 #include "rec/data/Data.h"
 #include "rec/command/Command.pb.h"
 

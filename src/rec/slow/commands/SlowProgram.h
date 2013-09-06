@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_COMMANDS_SLOWPROGRAM__
 #define __REC_SLOW_COMMANDS_SLOWPROGRAM__
 
-#include "rec/app/Program.h"
+#include "rec/program/Program.h"
 #include "rec/gui/menu/RecentFiles.h"
 
 namespace rec {

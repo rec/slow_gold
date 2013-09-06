@@ -139,8 +139,6 @@
     <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\LanguageListener.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\app\ProgramInstance.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\app\ProgramInstanceImpl.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\RegisterInstance.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\RegisterProgram.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp"/>
@@ -239,6 +237,8 @@
     <ClCompile Include="..\..\..\..\src\rec\music\CleanName.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\music\CreateMusicFileReader.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\program\ProgramInstance.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\program\ProgramInstanceImpl.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\AboutWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\BasicMenuMaker.cpp"/>
@@ -324,7 +324,6 @@
     <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\Menu.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
@@ -345,6 +344,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\program\Menu.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc"/>
@@ -1458,9 +1458,6 @@
     <ClInclude Include="..\..\..\..\src\rec\app\Files.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\LanguageListener.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\app\Program.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\app\ProgramInstance.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\app\ProgramInstanceImpl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterInstance.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterProgram.h"/>
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
@@ -1619,6 +1616,9 @@
     <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h"/>
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\program\Program.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\program\ProgramInstance.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\program\ProgramInstanceImpl.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\BasicMenuMaker.h"/>
@@ -1762,7 +1762,6 @@
     <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h"/>
     <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\Menu.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
@@ -1783,6 +1782,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\program\Menu.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h"/>

@@ -3,7 +3,7 @@
 
 #include <unordered_map>
 
-#include "rec/app/Menu.pb.h"
+#include "rec/program/Menu.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/gui/menu/RecentFiles.h"
 #include "rec/util/thread/Callback.h"

@@ -68,6 +68,9 @@
     <Filter Include="SlowGold\src\music">
       <UniqueIdentifier>{D9057714-0EFE-8563-2EA6-6B6C38B4150B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SlowGold\src\program">
+      <UniqueIdentifier>{E60A5DEE-3F53-F32A-6E44-8469FAC2F7A4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="SlowGold\src\slow">
       <UniqueIdentifier>{09C63157-9D82-09EE-EE4E-4CB1F75F3860}</UniqueIdentifier>
     </Filter>
@@ -163,6 +166,9 @@
     </Filter>
     <Filter Include="SlowGold\genfiles\rec\music">
       <UniqueIdentifier>{A0DE75DC-DAC0-1F64-4BAA-32220E7F0D01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlowGold\genfiles\rec\program">
+      <UniqueIdentifier>{EE5F1B61-14D0-71C8-71AD-8693281B0CC4}</UniqueIdentifier>
     </Filter>
     <Filter Include="SlowGold\genfiles\rec\slow">
       <UniqueIdentifier>{4AA580CC-D7C6-64A7-1B43-38104CBB9898}</UniqueIdentifier>
@@ -514,12 +520,6 @@
     <ClCompile Include="..\..\..\..\src\rec\app\LanguageListener.cpp">
       <Filter>SlowGold\src\app</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\app\ProgramInstance.cpp">
-      <Filter>SlowGold\src\app</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\app\ProgramInstanceImpl.cpp">
-      <Filter>SlowGold\src\app</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\app\RegisterInstance.cpp">
       <Filter>SlowGold\src\app</Filter>
     </ClCompile>
@@ -814,6 +814,12 @@
     <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp">
       <Filter>SlowGold\src\music</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\program\ProgramInstance.cpp">
+      <Filter>SlowGold\src\program</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\program\ProgramInstanceImpl.cpp">
+      <Filter>SlowGold\src\program</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\AboutWindow.cpp">
       <Filter>SlowGold\src\slow</Filter>
     </ClCompile>
@@ -1069,9 +1075,6 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.cc">
       <Filter>SlowGold\genfiles\rec\app</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\app\Menu.pb.cc">
-      <Filter>SlowGold\genfiles\rec\app</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.cc">
       <Filter>SlowGold\genfiles\rec\audio</Filter>
     </ClCompile>
@@ -1131,6 +1134,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc">
       <Filter>SlowGold\genfiles\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\program\Menu.pb.cc">
+      <Filter>SlowGold\genfiles\rec\program</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc">
       <Filter>SlowGold\genfiles\rec\slow</Filter>
@@ -2400,15 +2406,6 @@
     <ClInclude Include="..\..\..\..\src\rec\app\LanguageListener.h">
       <Filter>SlowGold\src\app</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\app\Program.h">
-      <Filter>SlowGold\src\app</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\app\ProgramInstance.h">
-      <Filter>SlowGold\src\app</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\app\ProgramInstanceImpl.h">
-      <Filter>SlowGold\src\app</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\RegisterInstance.h">
       <Filter>SlowGold\src\app</Filter>
     </ClInclude>
@@ -2883,6 +2880,15 @@
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h">
       <Filter>SlowGold\src\music</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\program\Program.h">
+      <Filter>SlowGold\src\program</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\program\ProgramInstance.h">
+      <Filter>SlowGold\src\program</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\program\ProgramInstanceImpl.h">
+      <Filter>SlowGold\src\program</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h">
       <Filter>SlowGold\src\slow</Filter>
     </ClInclude>
@@ -3312,9 +3318,6 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\AppSettings.pb.h">
       <Filter>SlowGold\genfiles\rec\app</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\app\Menu.pb.h">
-      <Filter>SlowGold\genfiles\rec\app</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\AudioSettings.pb.h">
       <Filter>SlowGold\genfiles\rec\audio</Filter>
     </ClInclude>
@@ -3374,6 +3377,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h">
       <Filter>SlowGold\genfiles\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\program\Menu.pb.h">
+      <Filter>SlowGold\genfiles\rec\program</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h">
       <Filter>SlowGold\genfiles\rec\slow</Filter>

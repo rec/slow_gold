@@ -29,7 +29,7 @@ proto: $(TARGETS_H)
 	echo "*** Protocol buffers made. ***"
 
 clean_proto:
-	rm $(TARGETS)
+	find $(GENFILES) \( -name \*.h -or -name \*.cc \)  | xargs rm -f
 
 release: proto
 	cd $(BUILD_DIR) && xcodebuild -project SlowGold.xcodeproj -configuration Release
@@ -71,6 +71,9 @@ genfiles/proto/rec/gui/%.pb.h: src/rec/gui/%.proto
 	$(PROTOC) $<
 
 genfiles/proto/rec/music/%.pb.h: src/rec/music/%.proto
+	$(PROTOC) $<
+
+genfiles/proto/rec/program/%.pb.h: src/rec/program/%.proto
 	$(PROTOC) $<
 
 genfiles/proto/rec/slow/%.pb.h: src/rec/slow/%.proto

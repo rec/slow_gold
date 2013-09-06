@@ -2,7 +2,7 @@
 #define __REC_COMMAND_DATA_SLOWCOMMANDDATA__
 
 #include "rec/base/base.h"
-#include "rec/app/Menu.pb.h"
+#include "rec/program/Menu.pb.h"
 
 namespace rec {
 

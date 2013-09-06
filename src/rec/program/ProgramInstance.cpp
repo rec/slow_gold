@@ -1,11 +1,11 @@
 #include <stdexcept>
 
-#include "rec/app/ProgramInstance.h"
+#include "rec/program/ProgramInstance.h"
 
-#include "rec/app/ProgramInstanceImpl.h"
-#include "rec/app/Program.h"
+#include "rec/program/ProgramInstanceImpl.h"
+#include "rec/program/Program.h"
 #include "rec/command/Command.pb.h"
-#include "rec/app/Menu.pb.h"
+#include "rec/program/Menu.pb.h"
 
 using namespace rec::command;
 

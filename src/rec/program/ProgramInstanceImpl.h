@@ -1,8 +1,8 @@
 #ifndef __REC_APP_PROGRAMINSTANCEIMPL__
 #define __REC_APP_PROGRAMINSTANCEIMPL__
 
-#include "rec/app/Menu.pb.h"
-#include "rec/app/ProgramInstance.h"
+#include "rec/program/Menu.pb.h"
+#include "rec/program/ProgramInstance.h"
 #include "rec/command/Command.pb.h"
 #include "rec/data/UntypedDataListener.h"
 
