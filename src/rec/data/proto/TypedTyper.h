@@ -10,7 +10,6 @@ namespace rec {
 namespace data {
 namespace typer {
 
-using data::Address;
 using data::Value;
 
 template <typename Type>

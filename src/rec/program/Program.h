@@ -31,16 +31,8 @@ class Program {
   virtual void registerAllCallbacks() = 0;
   virtual void addCallback(CommandID, unique_ptr<Callback>) = 0;
   virtual Callback* getCallback(CommandID) const = 0;
+  virtual VirtualFile getCurrentFile() const = 0;
 };
-
-template <typename PARTS>
-bool hasProperty(const Program& program, const PARTS& parts) {
-  for (auto& part: parts) {
-    if (program.hasProperty(part))
-      return true;
-  }
-  return false;
-}
 
 }  // namespace program
 }  // namespace rec

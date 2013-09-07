@@ -4,7 +4,6 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/base/DropDead.h"
-#include "rec/data/Address.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/Loops.h"
@@ -30,7 +29,6 @@ namespace rec {
 namespace slow {
 
 using namespace rec::widget::waveform;
-using data::Address;
 
 namespace {
 

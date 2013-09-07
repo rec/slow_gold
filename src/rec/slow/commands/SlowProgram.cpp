@@ -64,5 +64,10 @@ const gui::RecentFilesStrategy& SlowProgram::recentFilesStrategy() const {
 void SlowProgram::registerAllCallbacks() {
 }
 
+VirtualFile SlowProgram::getCurrentFile() const {
+  return instance_->file();
+}
+
+
 }  // namespace slow
 }  // namespace rec

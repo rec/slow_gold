@@ -8,7 +8,6 @@ namespace google { namespace protobuf {  class FieldDescriptor; }}
 
 namespace rec {
 
-namespace data { class Address; }
 namespace data { class Value; }
 
 namespace data {
