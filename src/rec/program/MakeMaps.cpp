@@ -8,20 +8,25 @@ namespace program {
 
 ProgramMap makeProgramMap(const Program& program) {
   ProgramMap programMap;
-  for (auto& command: program.commands().command()) {
+  auto commands = program.commands().command();
+
+  for (auto& command: commands) {
     CommandID id = command.command();
     programMap[id] = command;
     for (int i = command.start_index(); i < command.index(); ++i)
       programMap[id + i] = command;
   }
 
-  for (auto& command: program.keypresses().command()) {
+  auto map = program.keypresses().map();
+  for (auto& entry: map.entry()) {
+    CommandID id = entry.command() + entry.index();
     try {
-      *programMap.at(command.command()).mutable_keypress() = command.keypress();
+      *programMap.at(id).mutable_keypress() = entry.key();
     } catch (const std::out_of_range&) {
-      LOG(DFATAL) << "Out of range keypress command." << command.command();
+      LOG(DFATAL) << "Out of range keypress command." << id;
     }
   }
+
   return programMap;
 }
 
@@ -59,7 +64,8 @@ static void fixExtends(Menu* menu, MenuMap* map, StringSet* seen = nullptr) {
 
 MenuMap makeMenuMap(const Program& program) {
   MenuMap menuMap;
-  for (auto& menu: program.menus().menu())
+  auto menus = program.menus();
+  for (auto& menu: menus.menu())
     menuMap[menu.description().name()] = menu;
 
   for (auto& i: menuMap)
@@ -69,7 +75,8 @@ MenuMap makeMenuMap(const Program& program) {
 
 MenuBarMap makeMenuBarMap(const Program& program) {
   MenuBarMap menuBarMap;
-  for (auto& menuBar: program.menuCollection().menu_bar())
+  auto menuBars = program.menuCollection().menu_bar();
+  for (auto& menuBar: menuBars)
     menuBarMap[menuBar.description().name()] = menuBar;
   return menuBarMap;
 }

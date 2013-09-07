@@ -4,6 +4,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/UntypedDataListener.h"
 #include "rec/program/Menu.pb.h"
+#include "rec/program/MakeMaps.h"
 #include "rec/program/Program.h"
 
 using namespace rec::command;
@@ -12,39 +13,6 @@ namespace rec {
 namespace program {
 
 namespace {
-
-ProgramMap makeProgramMap(const Program& program) {
-  ProgramMap programMap;
-  for (auto& command: program.commands().command()) {
-    CommandID id = command.command();
-    programMap[id] = command;
-    for (int i = command.start_index(); i < command.index(); ++i)
-      programMap[id + i] = command;
-  }
-
-  for (auto& command: program.keypresses().command()) {
-    try {
-      *programMap.at(command.command()).mutable_keypress() = command.keypress();
-    } catch (const std::out_of_range&) {
-      LOG(DFATAL) << "Out of range keypress command." << command.command();
-    }
-  }
-  return programMap;
-}
-
-MenuMap makeMenuMap(const Program& program) {
-  MenuMap menuMap;
-  for (auto& menu: program.menus().menu())
-    menuMap[menu.description().name()] = menu;
-  return menuMap;
-}
-
-MenuBarMap makeMenuBarMap(const Program& program) {
-  MenuBarMap menuBarMap;
-  for (auto& menuBar: program.menuCollection().menu_bar())
-    menuBarMap[menuBar.description().name()] = menuBar;
-  return menuBarMap;
-}
 
 void checkMenuEntry(const MenuEntry& menuEntry) {
   int cat = 0;
@@ -86,7 +54,6 @@ JuceModel::Impl::Impl(Program* p, JuceModel* juceModel)
       programMap_(makeProgramMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)) {
-  ProgramMap newPrograms;
   for (auto& i: programMap_) {
     const Command& command = i.second;
     if (command.has_setter()) {
@@ -102,6 +69,7 @@ JuceModel::Impl::Impl(Program* p, JuceModel* juceModel)
     if (not program_->getCallback(i.first))
       LOG(DFATAL) << "No callback added for " << i.first;
   }
+  LOG(INFO) << "There are " << programMap_.size() << " callback entries!!!!";
 }
 
 const MenuBar& JuceModel::Impl::menuBar() const {
@@ -120,7 +88,7 @@ void JuceModel::Impl::addCommand(PopupMenu* popup, CommandID command) {
 }
 
 void JuceModel::Impl::addCommands(PopupMenu* popup,
-                                        const MenuEntry& menuEntry) {
+                                  const MenuEntry& menuEntry) {
   for (auto& command: menuEntry.command()) {
     if (command)
       addCommand(popup, command);
@@ -130,7 +98,7 @@ void JuceModel::Impl::addCommands(PopupMenu* popup,
 }
 
 void JuceModel::Impl::addMenuEntry(PopupMenu* popup,
-                                         const MenuEntry& menuEntry) {
+                                   const MenuEntry& menuEntry) {
   checkMenuEntry(menuEntry);
   if (menuEntry.command_size())
     addCommands(popup, menuEntry);

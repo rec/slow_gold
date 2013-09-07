@@ -3,7 +3,7 @@ package rec.command;
 message CommandMapEntry {
   optional uint32 command = 1;
   optional int32 index = 2;
-  repeated bytes key = 3;
+  repeated bytes key = 3;  // TODO: this needs to be the same as the field in Command.
 };
 
 message CommandMapProto {

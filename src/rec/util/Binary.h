@@ -29,7 +29,7 @@ Proto binaryProto(const string& s) {
   copy::copy(BINARY_STRING(NAME), PROTO)
 
 #define BINARY_PROTO(NAME, PROTO) \
-  binaryProto<PROTO>(BINARY_STRING(NAME))
+  binaryProto<PROTO>(BINARY_STRING(NAME ## _def))
 
 #define BINARY_FILL(NAME, PROTO) \
   copy:copy(BINARY_STRING(NAME), PROTO)

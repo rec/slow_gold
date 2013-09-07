@@ -1,6 +1,7 @@
 #ifndef __REC_SLOW_COMMANDS_SLOWPROGRAM__
 #define __REC_SLOW_COMMANDS_SLOWPROGRAM__
 
+#include "rec/command/map/CommandMap.pb.h"
 #include "rec/program/ProgramBase.h"
 #include "rec/gui/menu/RecentFiles.h"
 
@@ -14,7 +15,7 @@ class SlowProgram : public program::ProgramBase {
   explicit SlowProgram(Instance* instance) : instance_(instance) {}
 
   command::Commands commands() const override;
-  command::Commands keypresses() const override;
+  command::KeyStrokeCommandMapProto keypresses() const override;
   program::Menus menus() const override;
   program::MenuCollection menuCollection() const override;
   string menuBarName() const override;

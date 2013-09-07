@@ -539,7 +539,7 @@ static const unsigned char temp_e71d8a85[] =
 "      menu: \"Paste\"\r\n"
 "      full: \"Replace the current selection with a copy of the clipboard.\"\r\n"
 "    }\r\n"
-"    disabled: \"cant_paste'\r\n"
+"    disabled: \"cant_paste\"\r\n"
 "  }\r\n"
 "}\r\n"
 "slow_command {\r\n"

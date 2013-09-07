@@ -2,6 +2,7 @@
 #define __REC_APP_PROGRAM__
 
 #include "rec/command/Command.pb.h"
+#include "rec/command/map/CommandMap.pb.h"
 #include "rec/gui/menu/RecentFiles.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/Types.h"
@@ -16,7 +17,7 @@ class Program {
   virtual ~Program() {}
 
   virtual command::Commands commands() const = 0;
-  virtual command::Commands keypresses() const = 0;
+  virtual command::KeyStrokeCommandMapProto keypresses() const = 0;
   virtual Menus menus() const = 0;
   virtual MenuCollection menuCollection() const = 0;
   virtual string menuBarName() const = 0;

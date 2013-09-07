@@ -13,18 +13,6 @@ using namespace rec::command;
 
 namespace {
 
-Commands makeCommand() {
-  SlowCommands slowCommands = BINARY_PROTO(SlowCommands_def, SlowCommands);
-
-  Commands commands;
-  for (auto& slowCommand: slowCommands.slow_command()) {
-    Command* command = commands.add_command();
-    *command = slowCommand.command();
-    command->set_command(static_cast<slow::SlowCommand::Type>(slowCommand.type()));
-  }
-  return commands;
-}
-
 class SlowCommandData : public CommandData {
  public:
   explicit SlowCommandData(Instance* i)
@@ -48,11 +36,23 @@ class SlowCommandData : public CommandData {
 
 }  // namespace
 
+Commands makeCommand() {
+  SlowCommands slowCommands = BINARY_PROTO(SlowCommands, SlowCommands);
+
+  Commands commands;
+  for (auto& slowCommand: slowCommands.slow_command()) {
+    Command* command = commands.add_command();
+    *command = slowCommand.command();
+    command->set_command(static_cast<slow::SlowCommand::Type>(slowCommand.type()));
+  }
+  return commands;
+}
+
 CommandData* createSlowCommandData(Instance* i) { return new SlowCommandData(i); }
 
 program::Menus createMenus() {
   program::Menus menus;
-  SlowMenus slowMenus = BINARY_PROTO(SlowMenus_def, SlowMenus);
+  SlowMenus slowMenus = BINARY_PROTO(SlowMenus, SlowMenus);
 
   for (auto& menu: slowMenus.menu()) {
     program::Menu* appMenu = menus.add_menu();
@@ -71,6 +71,20 @@ program::Menus createMenus() {
   }
 
   return menus;
+}
+
+KeyStrokeCommandMapProto makeKeyBindings() {
+  slow::SlowCommandMapProto slowMaps =
+    BINARY_PROTO(SlowKeyStrokeMap, slow::SlowCommandMapProto);
+
+  KeyStrokeCommandMapProto bindings;
+  auto map = bindings.mutable_map();
+  for (auto& slowEntry: slowMaps.slow_entry()) {
+    auto entry = map->add_entry();
+    *entry = slowEntry.entry();
+    entry->set_command(slowEntry.command());
+  }
+  return bindings;
 }
 
 }  // namespace slow

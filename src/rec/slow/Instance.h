@@ -18,6 +18,9 @@ namespace audio { namespace source { class Player; }}
 namespace audio { namespace util { class BufferFiller; }}
 namespace gui { class LookAndFeel; }
 
+// Test stuff!
+namespace program { class JuceModel; }
+
 namespace slow {
 
 class Components;
@@ -29,6 +32,10 @@ class Menus;
 class MouseListener;
 class SlowWindow;
 class Threads;
+
+// Test stuff!
+class SlowProgram;
+
 
 // A single instance of the Slow program.  Right now there's only one per
 // application but in future there might be more than one.
@@ -77,6 +84,8 @@ class Instance {
   ptr<command::CommandTarget> applicationCommandTarget_;
   ApplicationCommandManager applicationCommandManager_;
   ptr<command::CommandData> commandData_;
+  unique_ptr<SlowProgram> slowProgram_;
+  unique_ptr<program::JuceModel> juceModel_;
 
   static Instance* getInstance();
   static const VirtualFile getInstanceFile();

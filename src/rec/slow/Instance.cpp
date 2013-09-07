@@ -53,8 +53,8 @@
 
 
 // for testing.
-//#include "rec/slow/commands/SlowProgram.h"
-//#include "rec/program/JuceModel.h"
+#include "rec/slow/commands/SlowProgram.h"
+#include "rec/program/JuceModel.h"
 
 
 namespace rec {
@@ -152,6 +152,9 @@ const VirtualFile Instance::getInstanceFile() {
 }
 
 void Instance::init() {
+  slowProgram_.reset(new SlowProgram(this));
+  juceModel_.reset(new program::JuceModel(slowProgram_.get()));
+
   window_->init();
   menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
   device_.reset(new audio::Device);
@@ -275,10 +278,6 @@ void Instance::postStartup() {
   data::getDataCenter().undoStack()->setEnabled();
   if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
-
-  // static SlowProgram SLOW_PROGRAM(this);
-  // static program::JuceModel JUCE_MODEL(&SLOW_PROGRAM);
-
 
   MessageManagerLock l;
   if (data::getProto<GuiSettings>().show_about_on_startup())
