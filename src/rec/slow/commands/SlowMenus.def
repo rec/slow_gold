@@ -102,9 +102,7 @@ menu {
   description {
     name: "edit advanced"
   }
-  extends {
-    name: "edit"
-  }
+  extends: "edit"
   entry {
     command: COPY_ALL_LOOP_POINTS
     command: PASTE_OVER_LOOP_POINTS
@@ -128,8 +126,6 @@ menu {
   extends: "transport"
   entry {
     command: TOGGLE_PREFADER_LEVELS
-  }
-  entry {
     command: NONE
     command: JUMP
     command: JUMP_SELECTED

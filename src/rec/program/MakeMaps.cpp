@@ -12,8 +12,7 @@ ProgramMap makeProgramMap(const Program& program) {
 
   for (auto& command: commands) {
     CommandID id = command.command();
-    programMap[id] = command;
-    for (int i = command.start_index(); i < command.index(); ++i)
+    for (int i = command.start_index(); i <= command.index(); ++i)
       programMap[id + i] = command;
   }
 

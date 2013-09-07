@@ -35,6 +35,7 @@ class Program {
   virtual Callback* getCallback(CommandID) const = 0;
   virtual VirtualFile getCurrentFile() const = 0;
   virtual CallbackMap* getCallbackMap() = 0;
+  virtual string commandName(CommandID) const = 0;
 };
 
 }  // namespace program

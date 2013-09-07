@@ -1,7 +1,6 @@
 #ifndef __REC_SLOW_COMMANDS_SLOWPROGRAM__
 #define __REC_SLOW_COMMANDS_SLOWPROGRAM__
 
-#include "rec/command/map/CommandMap.pb.h"
 #include "rec/program/ProgramBase.h"
 #include "rec/gui/menu/RecentFiles.h"
 
@@ -31,6 +30,7 @@ class SlowProgram : public program::ProgramBase {
   VirtualFile getCurrentFile() const override;
 
   void registerAllCallbacks() override;
+  string commandName(CommandID) const override;
 
  private:
   Instance* const instance_;

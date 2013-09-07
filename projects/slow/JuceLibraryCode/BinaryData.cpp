@@ -1976,9 +1976,7 @@ static const unsigned char temp_9493ace5[] =
 "  description {\n"
 "    name: \"edit advanced\"\n"
 "  }\n"
-"  extends {\n"
-"    name: \"edit\"\n"
-"  }\n"
+"  extends: \"edit\"\n"
 "  entry {\n"
 "    command: COPY_ALL_LOOP_POINTS\n"
 "    command: PASTE_OVER_LOOP_POINTS\n"
@@ -2002,8 +2000,6 @@ static const unsigned char temp_9493ace5[] =
 "  extends: \"transport\"\n"
 "  entry {\n"
 "    command: TOGGLE_PREFADER_LEVELS\n"
-"  }\n"
-"  entry {\n"
 "    command: NONE\n"
 "    command: JUMP\n"
 "    command: JUMP_SELECTED\n"
@@ -13529,7 +13525,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x5863c28f:  numBytes = 30080; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 6942; return SlowKeyStrokeMap_def;
         case 0xbef1a624:  numBytes = 355; return SlowMenuCollection_def;
-        case 0xce3bc719:  numBytes = 2874; return SlowMenus_def;
+        case 0xce3bc719:  numBytes = 2845; return SlowMenus_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;
         case 0xde160f9e:  numBytes = 16373; return AddLoopPointButtonDisabled_svg;
         case 0x188c0faa:  numBytes = 18313; return AddLoopPointButtonPressed_svg;

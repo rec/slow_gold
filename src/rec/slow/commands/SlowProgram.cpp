@@ -79,6 +79,9 @@ VirtualFile SlowProgram::getCurrentFile() const {
   return instance_->file();
 }
 
+string SlowProgram::commandName(CommandID id) const {
+  return SlowCommand_Type_Name(static_cast<SlowCommand::Type>(id));
+}
 
 }  // namespace slow
 }  // namespace rec
