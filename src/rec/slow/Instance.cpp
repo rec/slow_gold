@@ -51,6 +51,12 @@
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
 
+
+// for testing.
+//#include "rec/slow/commands/SlowProgram.h"
+//#include "rec/program/JuceModel.h"
+
+
 namespace rec {
 namespace slow {
 
@@ -269,6 +275,10 @@ void Instance::postStartup() {
   data::getDataCenter().undoStack()->setEnabled();
   if (!data::getProto<AppSettings>().registered())
     thread::trash::run<RegisterSlow>();
+
+  // static SlowProgram SLOW_PROGRAM(this);
+  // static program::JuceModel JUCE_MODEL(&SLOW_PROGRAM);
+
 
   MessageManagerLock l;
   if (data::getProto<GuiSettings>().show_about_on_startup())

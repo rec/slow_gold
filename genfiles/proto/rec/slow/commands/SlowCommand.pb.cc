@@ -224,10 +224,10 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#rec/slow/commands/SlowCommand.proto\022\010r"
     "ec.slow\032\031rec/command/Command.proto\032 rec/"
-    "command/map/CommandMap.proto\"\330\023\n\013SlowCom"
+    "command/map/CommandMap.proto\"\303\023\n\013SlowCom"
     "mand\022(\n\004type\030\001 \001(\0162\032.rec.slow.SlowComman"
     "d.Type\022%\n\007command\030\002 \001(\0132\024.rec.command.Co"
-    "mmand\"\367\022\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_P"
+    "mmand\"\342\022\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_P"
     "ROGRAM\020:\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PR"
     "EFERENCES\020\002\022\025\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CL"
     "EAR_KEYBOARD_MAPPINGS\020[\022\027\n\023CLEAR_MIDI_MA"
@@ -260,48 +260,47 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
     "\017\022\021\n\013SELECT_ONLY\020\240\357\017\022\022\n\014SET_LANGUAGE\020\320\3418"
     "\022\025\n\017SET_SAVE_FORMAT\020\360\252+\022\024\n\020SET_SAVE_AS_A"
     "IFF\020a\022\024\n\020SET_SAVE_AS_FLAC\020b\022\023\n\017SET_SAVE_"
-    "AS_OGG\020c\022\023\n\017SET_SAVE_AS_WAV\020d\022\023\n\rSET_SAV"
-    "E_TYPE\020\320\322=\022\031\n\025TOGGLE_ADVANCED_MENUS\020;\022\034\n"
-    "\030TOGGLE_AUTOMATIC_UPDATES\020C\022\030\n\024TOGGLE_FO"
-    "LLOW_CURSOR\020+\022\027\n\023TOGGLE_GRID_DISPLAY\020\033\022\036"
-    "\n\032TOGGLE_COMMAND_BAR_AT_LEFT\0206\022\035\n\031TOGGLE"
-    "_COMMAND_BAR_AT_TOP\0207\022!\n\035TOGGLE_FILE_OPE"
-    "N_TREE_DISPLAY\020H\022\030\n\024TOGGLE_MODES_AT_LEFT"
-    "\0208\022\027\n\023TOGGLE_MODES_AT_TOP\0209\022\035\n\031TOGGLE_PA"
-    "RALLEL_WAVEFORMS\020*\022\032\n\026TOGGLE_PREFADER_LE"
-    "VELS\020.\022\026\n\020TOGGLE_SELECTION\020\220\203\031\022\'\n#TOGGLE"
-    "_SHOW_ABOUT_WINDOW_AT_STARTUP\020Q\022\035\n\031TOGGL"
-    "E_SHOW_CURSOR_LABELS\0203\022\031\n\025TOGGLE_SHOW_HE"
-    "LP_PANE\0201\022\035\n\031TOGGLE_SHOW_LABELS_AT_TOP\0204"
-    "\022\033\n\027TOGGLE_SHOW_MASTER_TUNE\020M\022!\n\035TOGGLE_"
-    "SHOW_SELECTION_BUTTONS\0202\022\034\n\030TOGGLE_SHOW_"
-    "TIMES_AT_TOP\0205\022\030\n\024TOGGLE_SHOW_TOOLTIPS\0200"
-    "\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025TOGGLE_STRETC"
-    "H_ENABLE\020\035\022\033\n\027TOGGLE_TRANSFORM_ENABLE\020X\022"
-    "\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\036\022\016\n\nTREE_CLOS"
-    "E\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_LEFT\020!\022\r\n\tTRE"
-    "E_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n\007TREE_UP\020$\022\010\n"
-    "\004UNDO\020%\022\016\n\010UNSELECT\020\340\230\027\022\022\n\016WHATS_NEW_PAG"
-    "E\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OUT\020(\022\021\n\rZOOM_O"
-    "UT_FULL\020@\022\025\n\021ZOOM_TO_SELECTION\020-\022\023\n\017FIRS"
-    "T_FREE_TYPE\020f\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CU"
-    "T\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_AL"
-    "L\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200 "
-    "\022\r\n\010JUCE_END\020\210 \022\016\n\tBANK_SIZE\020\220N\";\n\014SlowC"
-    "ommands\022+\n\014slow_command\030\001 \003(\0132\025.rec.slow"
-    ".SlowCommand\"o\n\023SlowCommandMapEntry\022+\n\007c"
-    "ommand\030\001 \001(\0162\032.rec.slow.SlowCommand.Type"
-    "\022+\n\005entry\030\002 \001(\0132\034.rec.command.CommandMap"
-    "Entry\"H\n\023SlowCommandMapProto\0221\n\nslow_ent"
-    "ry\030\001 \003(\0132\035.rec.slow.SlowCommandMapEntry\""
-    "\205\001\n\rSlowMenuEntry\022+\n\007command\030\001 \003(\0162\032.rec"
-    ".slow.SlowCommand.Type\022\017\n\007submenu\030\002 \001(\t\022"
-    "\034\n\024is_recent_files_menu\030\003 \001(\010\022\030\n\020callout"
-    "_function\030\004 \001(\t\"r\n\010SlowMenu\022-\n\013descripti"
-    "on\030\001 \001(\0132\030.rec.command.Description\022\017\n\007ex"
-    "tends\030\002 \001(\t\022&\n\005entry\030\003 \003(\0132\027.rec.slow.Sl"
-    "owMenuEntry\"-\n\tSlowMenus\022 \n\004menu\030\001 \003(\0132\022"
-    ".rec.slow.SlowMenu", 3178);
+    "AS_OGG\020c\022\023\n\017SET_SAVE_AS_WAV\020d\022\031\n\025TOGGLE_"
+    "ADVANCED_MENUS\020;\022\034\n\030TOGGLE_AUTOMATIC_UPD"
+    "ATES\020C\022\030\n\024TOGGLE_FOLLOW_CURSOR\020+\022\027\n\023TOGG"
+    "LE_GRID_DISPLAY\020\033\022\036\n\032TOGGLE_COMMAND_BAR_"
+    "AT_LEFT\0206\022\035\n\031TOGGLE_COMMAND_BAR_AT_TOP\0207"
+    "\022!\n\035TOGGLE_FILE_OPEN_TREE_DISPLAY\020H\022\030\n\024T"
+    "OGGLE_MODES_AT_LEFT\0208\022\027\n\023TOGGLE_MODES_AT"
+    "_TOP\0209\022\035\n\031TOGGLE_PARALLEL_WAVEFORMS\020*\022\032\n"
+    "\026TOGGLE_PREFADER_LEVELS\020.\022\026\n\020TOGGLE_SELE"
+    "CTION\020\220\203\031\022\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT"
+    "_STARTUP\020Q\022\035\n\031TOGGLE_SHOW_CURSOR_LABELS\020"
+    "3\022\031\n\025TOGGLE_SHOW_HELP_PANE\0201\022\035\n\031TOGGLE_S"
+    "HOW_LABELS_AT_TOP\0204\022\033\n\027TOGGLE_SHOW_MASTE"
+    "R_TUNE\020M\022!\n\035TOGGLE_SHOW_SELECTION_BUTTON"
+    "S\0202\022\034\n\030TOGGLE_SHOW_TIMES_AT_TOP\0205\022\030\n\024TOG"
+    "GLE_SHOW_TOOLTIPS\0200\022\025\n\021TOGGLE_START_STOP"
+    "\020\034\022\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\033\n\027TOGGLE_"
+    "TRANSFORM_ENABLE\020X\022\032\n\026TOGGLE_WHOLE_SONG_"
+    "LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n"
+    "\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGH"
+    "T\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\016\n\010UNSELECT\020\340"
+    "\230\027\022\022\n\016WHATS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010Z"
+    "OOM_OUT\020(\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_"
+    "SELECTION\020-\022\023\n\017FIRST_FREE_TYPE\020e\022\t\n\004QUIT"
+    "\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PA"
+    "STE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020"
+    "\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010JUCE_END\020\210 \022\016\n\tBA"
+    "NK_SIZE\020\220N\";\n\014SlowCommands\022+\n\014slow_comma"
+    "nd\030\001 \003(\0132\025.rec.slow.SlowCommand\"o\n\023SlowC"
+    "ommandMapEntry\022+\n\007command\030\001 \001(\0162\032.rec.sl"
+    "ow.SlowCommand.Type\022+\n\005entry\030\002 \001(\0132\034.rec"
+    ".command.CommandMapEntry\"H\n\023SlowCommandM"
+    "apProto\0221\n\nslow_entry\030\001 \003(\0132\035.rec.slow.S"
+    "lowCommandMapEntry\"\205\001\n\rSlowMenuEntry\022+\n\007"
+    "command\030\001 \003(\0162\032.rec.slow.SlowCommand.Typ"
+    "e\022\017\n\007submenu\030\002 \001(\t\022\034\n\024is_recent_files_me"
+    "nu\030\003 \001(\010\022\030\n\020callout_function\030\004 \001(\t\"r\n\010Sl"
+    "owMenu\022-\n\013description\030\001 \001(\0132\030.rec.comman"
+    "d.Description\022\017\n\007extends\030\002 \001(\t\022&\n\005entry\030"
+    "\003 \003(\0132\027.rec.slow.SlowMenuEntry\"-\n\tSlowMe"
+    "nus\022 \n\004menu\030\001 \003(\0132\022.rec.slow.SlowMenu", 3157);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/commands/SlowCommand.proto", &protobuf_RegisterTypes);
   SlowCommand::default_instance_ = new SlowCommand();
@@ -426,7 +425,7 @@ bool SlowCommand_Type_IsValid(int value) {
     case 98:
     case 99:
     case 100:
-    case 102:
+    case 101:
     case 4096:
     case 4097:
     case 4098:
@@ -446,7 +445,6 @@ bool SlowCommand_Type_IsValid(int value) {
     case 410000:
     case 710000:
     case 930000:
-    case 1010000:
       return true;
     default:
       return false;
@@ -516,7 +514,6 @@ const SlowCommand_Type SlowCommand::SET_SAVE_AS_AIFF;
 const SlowCommand_Type SlowCommand::SET_SAVE_AS_FLAC;
 const SlowCommand_Type SlowCommand::SET_SAVE_AS_OGG;
 const SlowCommand_Type SlowCommand::SET_SAVE_AS_WAV;
-const SlowCommand_Type SlowCommand::SET_SAVE_TYPE;
 const SlowCommand_Type SlowCommand::TOGGLE_ADVANCED_MENUS;
 const SlowCommand_Type SlowCommand::TOGGLE_AUTOMATIC_UPDATES;
 const SlowCommand_Type SlowCommand::TOGGLE_FOLLOW_CURSOR;
