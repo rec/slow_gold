@@ -1,6 +1,8 @@
 #include <unordered_set>
 
 #include "rec/program/MakeMaps.h"
+
+#include "rec/command/ID.h"
 #include "rec/program/Program.h"
 
 namespace rec {
@@ -12,13 +14,18 @@ ProgramMap makeProgramMap(const Program& program) {
 
   for (auto& command: commands) {
     CommandID id = command.command();
-    for (int i = command.start_index(); i <= command.index(); ++i)
-      programMap[id + i] = command;
+    programMap[id] = command;
+    if (command.has_index()) {
+      for (int i = command.start_index(); i <= command.index(); ++i)
+        programMap[id + i - command::ID::FIRST] = command;
+    }
   }
 
   auto map = program.keypresses().map();
   for (auto& entry: map.entry()) {
-    CommandID id = entry.command() + entry.index();
+    CommandID id = entry.command();
+    if (entry.has_index())
+      id += entry.index() - command::ID::FIRST;
     try {
       *programMap.at(id).mutable_keypress() = entry.key();
     } catch (const std::out_of_range&) {

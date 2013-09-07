@@ -279,15 +279,14 @@ void addCallback(CallbackTable* c, int32 type, int32 position,
 }  // namespace
 
 void addRepeatedCallbacks(CallbackTable* t, int repeat) {
-  for (int j = ID::FIRST; j < repeat; ++j) {
-  	int32 pos(j);
-    addCallback(t, slow::SlowCommand::SELECT, pos, selectAdd);
-    addCallback(t, slow::SlowCommand::SELECT_ONLY, pos, selectOnly);
-    addCallback(t, slow::SlowCommand::TOGGLE_SELECTION, pos, toggle);
-    addCallback(t, slow::SlowCommand::UNSELECT, pos, unselect);
+  for (int32 j = ID::FIRST; j < repeat; ++j) {
+    addCallback(t, slow::SlowCommand::SELECT, j, selectAdd);
+    addCallback(t, slow::SlowCommand::SELECT_ONLY, j, selectOnly);
+    addCallback(t, slow::SlowCommand::TOGGLE_SELECTION, j, toggle);
+    addCallback(t, slow::SlowCommand::UNSELECT, j, unselect);
 
-    addCallback(t, slow::SlowCommand::JUMP_SELECTED, pos, jumpSelected);
-    addCallback(t, slow::SlowCommand::JUMP, pos, jump);
+    addCallback(t, slow::SlowCommand::JUMP_SELECTED, j, jumpSelected);
+    addCallback(t, slow::SlowCommand::JUMP, j, jump);
   }
 
   addCallback(t, slow::SlowCommand::LOOP_NEXT_SEGMENT, loopNextSegment);
