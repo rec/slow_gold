@@ -65,10 +65,9 @@ JuceModel::Impl::Impl(Program* p, JuceModel* juceModel)
 
   program_->registerAllCallbacks();
 
-  for (auto& i: programMap_) {
-    if (not program_->getCallback(i.first))
-      LOG(DFATAL) << "No callback added for " << i.first;
-  }
+  for (auto& i: programMap_)
+    program_->getCallback(i.first);
+
   LOG(INFO) << "There are " << programMap_.size() << " callback entries!!!!";
 }
 

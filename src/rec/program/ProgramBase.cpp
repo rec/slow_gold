@@ -19,7 +19,7 @@ Callback* ProgramBase::getCallback(CommandID command) const {
   auto loc = callbackMap_.find(command);
   if (loc != callbackMap_.end())
     callback = loc->second.get();
-  LOG_IF(DFATAL, not callback) << "No callback for " << commandName(command);
+  LOG_IF(ERROR, not callback) << "No callback for " << commandName(command);
   return callback;
 }
 

@@ -11,17 +11,14 @@ namespace rec {
 namespace slow {
 
 command::Commands SlowProgram::commands() const {
-  LOG(INFO) << "SlowProgram::commands()";
   return makeCommand();
 }
 
 command::KeyStrokeCommandMapProto SlowProgram::keypresses() const {
-  LOG(INFO) << "SlowProgram::keypresses()";
   return makeKeyBindings();
 }
 
 program::Menus SlowProgram::menus() const {
-  LOG(INFO) << "SlowProgram::menus()";
   SlowMenus slowMenus = BINARY_PROTO(SlowMenus, SlowMenus);
   program::Menus menus;
   for (auto& slowMenu: slowMenus.menu()) {
@@ -79,8 +76,19 @@ VirtualFile SlowProgram::getCurrentFile() const {
   return instance_->file();
 }
 
+const int MARGIN = 10;
+
 string SlowProgram::commandName(CommandID id) const {
-  return SlowCommand_Type_Name(static_cast<SlowCommand::Type>(id));
+  bool isCompound = id > SlowCommand::BANK_SIZE - MARGIN;
+  int mod;
+  if (isCompound) {
+    mod = (id + MARGIN) % SlowCommand::BANK_SIZE - MARGIN;
+    id -= mod;
+  }
+  string name = SlowCommand_Type_Name(static_cast<SlowCommand::Type>(id));
+  if (isCompound)
+    name += str(":" + String(mod));
+  return name;
 }
 
 }  // namespace slow
