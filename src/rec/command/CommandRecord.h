@@ -19,9 +19,9 @@ class CommandRecord {
 
   // private:
   ApplicationCommandInfo info_;
-  ptr<Command> command_;
-  ptr<Callback> callback_;
-  ptr<CommandItemSetter> setter_;
+  unique_ptr<Command> command_;
+  unique_ptr<Callback> callback_;
+  unique_ptr<CommandItemSetter> setter_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecord);

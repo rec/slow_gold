@@ -1,6 +1,8 @@
 #ifndef __REC_COMMAND_COMMANDRECORDTABLE__
 #define __REC_COMMAND_COMMANDRECORDTABLE__
 
+#include <map>
+
 #include "rec/command/Command.pb.h"
 #include "rec/command/CallbackTable.h"
 #include "rec/util/thread/Callback.h"
@@ -26,10 +28,12 @@ class CommandRecordTable : public CallbackTable {
   void fillAllCommands();
   void getAllCommands(juce::Array<CommandID>*) const;
 
+  // Used for new-style callbacks.
+  typedef std::map<ID, CommandRecord*> Table;
+  Table* table() { return &table_; }
+
  private:
   CommandRecord* locate(ID id, bool mustExist, bool mustCreate);
-
-  typedef std::map<ID, CommandRecord*> Table;
 
   CriticalSection lock_;
   Table table_;

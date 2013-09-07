@@ -4,6 +4,8 @@
 #include <unordered_map>
 
 #include "rec/Program/Program.h"
+#include "rec/util/Cuttable.h"
+#include "rec/util/Undo.h"
 
 namespace rec {
 namespace program {
@@ -27,6 +29,25 @@ class ProgramBase : public Program {
       callback = loc->second.get();
     LOG_IF(DFATAL, not callback) << "No callback for " << command;
     return callback;
+  }
+
+  bool hasProperty(const string& name) const {
+    if (name == "cant_copy")
+      return not canCopy();
+
+    if (name == "cant_cut")
+      return not canCut();
+
+    if (name == "cant_paste")
+      return not canPaste();
+
+    if (name == "cant_redo")
+      return not canUndo();
+
+    if (name == "cant_undo")
+      return not canRedo();
+
+    return false;
   }
 
  private:

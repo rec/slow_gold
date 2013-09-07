@@ -130,27 +130,27 @@ void whatsNewPage() {
 using command::Command;
 
 void addGlobalCallbacks(CallbackTable* t) {
-  addCallback(t, slow::SlowCommand::MODE_ADD_LOOP_POINT, modeAddLoopPoint);
-  addCallback(t, slow::SlowCommand::MODE_DRAG, modeDrag);
-  addCallback(t, slow::SlowCommand::MODE_SET_TIME, modeSetTime);
-  addCallback(t, slow::SlowCommand::MODE_ZOOM_IN, modeZoomIn);
-  addCallback(t, slow::SlowCommand::COPY, copyToClipboard);
-  addCallback(t, slow::SlowCommand::CUT, cutToClipboard);
-  addCallback(t, slow::SlowCommand::DEL, cutNoClipboard);
-  addCallback(t, slow::SlowCommand::EJECT_CDS, cd::ejectAll);
-  addCallback(t, slow::SlowCommand::EXPORT_KEYBOARD_MAPPINGS, exportKeyboardMappings);
-  addCallback(t, slow::SlowCommand::EXPORT_MIDI_MAPPINGS, exportMidiMappings);
-  addCallback(t, slow::SlowCommand::EXPORT_SETTINGS, exportSettings);
-  addCallback(t, slow::SlowCommand::IMPORT_KEYBOARD_MAPPINGS, importKeyboardMappings);
-  addCallback(t, slow::SlowCommand::IMPORT_MIDI_MAPPINGS, importMidiMappings);
-  addCallback(t, slow::SlowCommand::IMPORT_SETTINGS, importSettings);
-  addCallback(t, slow::SlowCommand::OPEN_MANUAL, openManual);
-  addCallback(t, slow::SlowCommand::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
-  addCallback(t, slow::SlowCommand::PASTE, pasteFromClipboard);
-  addCallback(t, slow::SlowCommand::REDO, redo);
-  addCallback(t, slow::SlowCommand::REQUEST_SUPPORT, support::requestSupport);
-  addCallback(t, slow::SlowCommand::UNDO, undo);
-  addCallback(t, slow::SlowCommand::WHATS_NEW_PAGE, whatsNewPage);
+  addCallback(t, SlowCommand::MODE_ADD_LOOP_POINT, modeAddLoopPoint);
+  addCallback(t, SlowCommand::MODE_DRAG, modeDrag);
+  addCallback(t, SlowCommand::MODE_SET_TIME, modeSetTime);
+  addCallback(t, SlowCommand::MODE_ZOOM_IN, modeZoomIn);
+  addCallback(t, SlowCommand::COPY, copyToClipboard);
+  addCallback(t, SlowCommand::CUT, cutToClipboard);
+  addCallback(t, SlowCommand::DEL, cutNoClipboard);
+  addCallback(t, SlowCommand::EJECT_CDS, cd::ejectAll);
+  addCallback(t, SlowCommand::EXPORT_KEYBOARD_MAPPINGS, exportKeyboardMappings);
+  addCallback(t, SlowCommand::EXPORT_MIDI_MAPPINGS, exportMidiMappings);
+  addCallback(t, SlowCommand::EXPORT_SETTINGS, exportSettings);
+  addCallback(t, SlowCommand::IMPORT_KEYBOARD_MAPPINGS, importKeyboardMappings);
+  addCallback(t, SlowCommand::IMPORT_MIDI_MAPPINGS, importMidiMappings);
+  addCallback(t, SlowCommand::IMPORT_SETTINGS, importSettings);
+  addCallback(t, SlowCommand::OPEN_MANUAL, openManual);
+  addCallback(t, SlowCommand::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
+  addCallback(t, SlowCommand::PASTE, pasteFromClipboard);
+  addCallback(t, SlowCommand::REDO, redo);
+  addCallback(t, SlowCommand::REQUEST_SUPPORT, support::requestSupport);
+  addCallback(t, SlowCommand::UNDO, undo);
+  addCallback(t, SlowCommand::WHATS_NEW_PAGE, whatsNewPage);
 }
 
 

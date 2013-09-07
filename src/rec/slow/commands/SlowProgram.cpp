@@ -1,7 +1,8 @@
 #include "rec/slow/commands/SlowProgram.h"
+#include "rec/command/CommandRecord.h"
+#include "rec/command/CommandRecordTable.h"
 #include "rec/slow/Instance.h"
-#include "rec/util/Cuttable.h"
-#include "rec/util/Undo.h"
+#include "rec/slow/callbacks/Callbacks.h"
 
 namespace rec {
 namespace slow {
@@ -33,23 +34,7 @@ string SlowProgram::menuBarName() const {
 bool SlowProgram::hasProperty(const string& name) const {
   if (name == "empty")
     return instance_->empty();
-
-  if (name == "cant_copy")
-    return not canCopy();
-
-  if (name == "cant_cut")
-    return not canCut();
-
-  if (name == "cant_paste")
-    return not canPaste();
-
-  if (name == "cant_redo")
-    return not canUndo();
-
-  if (name == "cant_undo")
-    return not canRedo();
-
-  return false;
+  return ProgramBase::hasProperty(name);
 }
 
 string SlowProgram::makeMenuName(const command::Command&, CommandID) const {
@@ -62,6 +47,10 @@ const gui::RecentFilesStrategy& SlowProgram::recentFilesStrategy() const {
 
 
 void SlowProgram::registerAllCallbacks() {
+  command::CommandRecordTable crt;
+  slow::addSlowCallbacks(&crt);
+  for (auto& i: *crt.table())
+    addCallback(i.first, std::move(i.second->callback_));
 }
 
 VirtualFile SlowProgram::getCurrentFile() const {
