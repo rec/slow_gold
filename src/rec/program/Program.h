@@ -1,9 +1,10 @@
 #ifndef __REC_APP_PROGRAM__
 #define __REC_APP_PROGRAM__
 
-#include "rec/program/Menu.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/gui/menu/RecentFiles.h"
+#include "rec/program/Menu.pb.h"
+#include "rec/program/Types.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
@@ -32,6 +33,7 @@ class Program {
   virtual void addCallback(CommandID, unique_ptr<Callback>) = 0;
   virtual Callback* getCallback(CommandID) const = 0;
   virtual VirtualFile getCurrentFile() const = 0;
+  virtual CallbackMap* getCallbackMap() = 0;
 };
 
 }  // namespace program
