@@ -1,13 +1,15 @@
 #include "rec/program/JuceModelImpl.h"
 
 #include "rec/command/Command.pb.h"
+#include "rec/data/Address.h"
 #include "rec/data/Data.h"
-#include "rec/data/UntypedDataListener.h"
-#include "rec/program/Menu.pb.h"
+#include "rec/data/proto/FieldOps.h"
 #include "rec/program/MakeMaps.h"
+#include "rec/program/Menu.pb.h"
 #include "rec/program/Program.h"
 
 using namespace rec::command;
+using namespace rec::data;
 
 namespace rec {
 namespace program {
@@ -28,23 +30,6 @@ void checkMenuEntry(const MenuEntry& menuEntry) {
   LOG_IF(DFATAL, cat > 1) << "Ambiguous entry: " << menuEntry.DebugString();
 }
 
-class SetterListener : public UntypedDataListener {
- public:
-  SetterListener(const command::Setter& setter, JuceModel::Impl* impl)
-      : UntypedDataListener(setter.type_name(),
-                            setter.is_global() ? GLOBAL_SCOPE : FILE_SCOPE),
-        impl_(impl) {
-  }
-
-  void operator()(const Message&) override {
-    impl_->menuItemsChanged();
-  }
-
- private:
-  JuceModel::Impl* impl_;
-
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SetterListener);
-};
 
 }  // namespace
 
@@ -55,12 +40,9 @@ JuceModel::Impl::Impl(Program* p, JuceModel* juceModel)
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)) {
   for (auto& i: programMap_) {
-    const Command& command = i.second;
-    if (command.has_setter()) {
-      unique_ptr<UntypedDataListener>
-        listener(new SetterListener(command.setter(), this));
-      dataListeners_.push_back(std::move(listener));
-    }
+    const command::Command& cmd = i.second;
+    if (cmd.has_setter())
+      dataListeners_.push_back(make_unique<SetterListener>(cmd, juceModel));
   }
 
   program_->registerAllCallbacks();

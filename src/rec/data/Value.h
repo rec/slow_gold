@@ -29,12 +29,18 @@ class Value : public ValueProto {
   Value(sint64 x) { set_sint64_f(x); }
   Value(pmessage x) { set_message_f(x); }
   Value(penum x) { set_enum_f(x); }
+
   Value(const Message& x) {
     string s;
     copy::copy(x, &s);
     set_message_f(s);
   }
   Value(const ValueProto& x) : ValueProto(x) {}
+
+  Value& operator=(const ValueProto& x) {
+    CopyFrom(x);
+    return *this;
+  }
 
   template <typename T> bool has() const;
   template <typename T> T get() const;

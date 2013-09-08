@@ -46,17 +46,17 @@ void JuceModel::getCommandInfo(CommandID id,
     const Description& desc = command.desc();
 
     int flags = command.flags();
-    if (hasProperty(*impl_->program(), command.disabled()))
+    if (hasProperty(*program_, command.disabled()))
       flags |= ApplicationCommandInfo::isDisabled;
-    if (hasProperty(*impl_->program(), command.ticked()))
+    if (hasProperty(*program_, command.ticked()))
       flags |= ApplicationCommandInfo::isTicked;
 
     const string* shortName = nullptr;
     if (command.has_setter()) {
       const Setter& setter = command.setter();
       if (setter.type() == Setter::TOGGLE) {
-        VirtualFile file = setter.is_global() ? data::global() :
-          impl_->program()->getCurrentFile();
+        VirtualFile file = setter.is_global() ? global() :
+          program_->getCurrentFile();
         Data* data = getData(setter.type_name(), file);
         unique_ptr<Message> msg(data->clone());
         Value value = data::getMessageFieldOrDie(setter.address(), *msg);

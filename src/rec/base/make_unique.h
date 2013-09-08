@@ -3,36 +3,41 @@
 
 #include "rec/base/base.h"
 
-// See http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3656.htm and
-// http://www.reddit.com/r/cpp_questions/comments/1l89ys/what_is_make_unique/
-
-template<class T> struct _Unique_if {
-  typedef unique_ptr<T> _Single_object;
-};
-
-template<class T> struct _Unique_if<T[]> {
-  typedef unique_ptr<T[]> _Unknown_bound;
-};
-
-template<class T, size_t N> struct _Unique_if<T[N]> {
-  typedef void _Known_bound;
-};
-
-template<class T, class... Args>
-typename _Unique_if<T>::_Single_object
-make_unique(Args&&... args) {
-  return unique_ptr<T>(new T(std::forward<Args>(args)...));
-}
-
+// emulate variadics for 5 args
 template<class T>
-typename _Unique_if<T>::_Unknown_bound
-make_unique(size_t n) {
-  typedef typename std::remove_extent<T>::type U;
-  return unique_ptr<T>(new U[n]());
+std::unique_ptr<T> make_unique(){
+  return std::unique_ptr<T>(new T());
 }
 
-template<class T, class... Args>
-typename _Unique_if<T>::_Known_bound
-make_unique(Args&&...) = delete;
+template<class T, class A0>
+std::unique_ptr<T> make_unique(A0&& a0){
+  return std::unique_ptr<T>(new T(std::forward<A0>(a0)));
+}
+
+template<class T, class A0, class A1>
+std::unique_ptr<T> make_unique(A0&& a0, A1&& a1){
+  return std::unique_ptr<T>(new T(std::forward<A0>(a0),
+      std::forward<A1>(a1)));
+}
+
+template<class T, class A0, class A1, class A2>
+std::unique_ptr<T> make_unique(A0&& a0, A1&& a1, A2&& a2){
+  return std::unique_ptr<T>(new T(std::forward<A0>(a0),
+      std::forward<A1>(a1), std::forward<A2>(a2)));
+}
+
+template<class T, class A0, class A1, class A2, class A3>
+std::unique_ptr<T> make_unique(A0&& a0, A1&& a1, A2&& a2, A3&& a3){
+  return std::unique_ptr<T>(new T(std::forward<A0>(a0),
+      std::forward<A1>(a1), std::forward<A2>(a2),
+      std::forward<A3>(a3)));
+}
+
+template<class T, class A0, class A1, class A2, class A3, class A4>
+std::unique_ptr<T> make_unique(A0&& a0, A1&& a1, A2&& a2, A3&& a3, A4&& a4){
+  return std::unique_ptr<T>(new T(std::forward<A0>(a0),
+      std::forward<A1>(a1), std::forward<A2>(a2),
+      std::forward<A3>(a3), std::forward<A4>(a4)));
+}
 
 #endif // __REC_UTIL_MAKE_UNIQUE

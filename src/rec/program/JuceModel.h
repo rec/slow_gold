@@ -24,11 +24,14 @@ class JuceModel : public ApplicationCommandTarget, public MenuBarModel {
   PopupMenu getMenuForIndex(int menuIndex, const String& name) override;
   void menuItemSelected(int, int) override {}
 
+  Program* program() { return program_; }
   ApplicationCommandManager* applicationCommandManager();
+
   struct Impl;
 
  private:
   unique_ptr<Impl> impl_;
+  Program* program_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(JuceModel);
 };

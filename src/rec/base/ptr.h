@@ -4,12 +4,15 @@
 #include <memory>
 
 #include "rec/base/disallow.h"
+#include "rec/base/make_unique.h" 
 
 using std::unique_ptr;
 
-// scoped_ptr mimics a built-in pointer except that it guarantees deletion
-// of the object pointed to, either on destruction of the scoped_ptr or via
-// an explicit reset().
+// ptr, a clone of scoped_ptr, mimics a built-in pointer except that it
+// guarantees deletion of the object pointed to, either on destruction of the
+// scoped_ptr or via an explicit reset().
+//
+// DEPRECATED: use unique_ptr for new code.
 
 template <typename Type>
 class ptr {
