@@ -8,6 +8,7 @@
 namespace rec {
 namespace program {
 
+class JuceModelImpl;
 class Program;
 
 class JuceModel : public ApplicationCommandTarget, public MenuBarModel {
@@ -27,10 +28,8 @@ class JuceModel : public ApplicationCommandTarget, public MenuBarModel {
   Program* program() { return program_; }
   ApplicationCommandManager* applicationCommandManager();
 
-  struct Impl;
-
  private:
-  unique_ptr<Impl> impl_;
+  unique_ptr<JuceModelImpl> impl_;
   Program* program_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(JuceModel);

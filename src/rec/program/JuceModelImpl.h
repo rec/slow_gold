@@ -1,7 +1,6 @@
 #ifndef __REC_APP_PROGRAMINSTANCEIMPL__
 #define __REC_APP_PROGRAMINSTANCEIMPL__
 
-#include "rec/program/JuceModel.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/SetterListener.h"
 #include "rec/program/Types.h"
@@ -12,9 +11,9 @@ namespace program {
 class JuceModel;
 class Program;
 
-class JuceModel::Impl {
+class JuceModelImpl {
  public:
-  Impl(Program* p, JuceModel*);
+  JuceModelImpl(Program* p, JuceModel*);
   const MenuBar& menuBar() const;
   string addMenu(PopupMenu* popup, const string& name);
   bool perform(const InvocationInfo&);
@@ -44,6 +43,8 @@ class JuceModel::Impl {
   const MenuBarMap menuBarMap_;
   DataListeners dataListeners_;
   ApplicationCommandManager applicationCommandManager_;
+
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(JuceModelImpl);
 };
 
 }  // namespace program

@@ -31,7 +31,7 @@ bool hasProperty(const Program& program, const PARTS& parts) {
 
 } // namespace
 
-JuceModel::JuceModel(Program* p) : impl_(new Impl(p, this)) {}
+JuceModel::JuceModel(Program* p) : impl_(new JuceModelImpl(p, this)) {}
 JuceModel::~JuceModel() {}
 
 void JuceModel::getAllCommands(juce::Array<CommandID>& commands) {
