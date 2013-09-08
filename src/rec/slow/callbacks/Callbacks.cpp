@@ -11,12 +11,12 @@ namespace slow {
 
 using command::CallbackTable;
 
-void addSlowCallbacks(CallbackTable* table, int repeat) {
+void addSlowCallbacks(CallbackTable* table, bool newStyle, int repeat) {
   addGlobalCallbacks(table);
   addInstanceCallbacks(table);
   addApplyCallbacks(table);
   addSelectionCallbacks(table);
-  addRepeatedCallbacks(table, repeat);
+  addRepeatedCallbacks(table, repeat, newStyle);
 }
 
 }  // namespace slow

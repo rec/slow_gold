@@ -777,6 +777,15 @@ slow_command {
   command {
     index: 4
     category: "(None)"
+    setter {
+      type: SELECTION
+      address {
+        part {
+          name: "file_type_for_save"
+        }
+      }
+      type_name: "rec.audio.AudioSettings"
+    }
     desc {
       menu: "AIFF"
       menu: "FLAC"
@@ -795,14 +804,21 @@ slow_command {
   command {
     index: 5
     category: "(None)"
+    setter {
+      type: SELECTION
+      address {
+        part {
+          name: "language"
+        }
+      }
+      type_name: "rec.app.AppSettings"
+    }
     desc {
-      menu: "(None)"
       menu: "German"
       menu: "English"
       menu: "Spanish"
       menu: "French"
       menu: "Indonesian"
-      full: "..."
       full: "..."
       full: "..."
       full: "..."

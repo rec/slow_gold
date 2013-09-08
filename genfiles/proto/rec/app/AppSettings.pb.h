@@ -38,14 +38,14 @@ void protobuf_ShutdownFile_rec_2fapp_2fAppSettings_2eproto();
 class AppSettings;
 
 enum AppSettings_Language {
-  AppSettings_Language_NONE = 0,
-  AppSettings_Language_DE = 1,
-  AppSettings_Language_EN = 2,
-  AppSettings_Language_ES = 3,
-  AppSettings_Language_FR = 4,
-  AppSettings_Language_ID = 5,
-  AppSettings_Language_FIRST = 1,
-  AppSettings_Language_LAST = 5
+  AppSettings_Language_DE = 0,
+  AppSettings_Language_EN = 1,
+  AppSettings_Language_ES = 2,
+  AppSettings_Language_FR = 3,
+  AppSettings_Language_ID = 4,
+  AppSettings_Language_FIRST = 0,
+  AppSettings_Language_LAST = 4,
+  AppSettings_Language_NONE = -1
 };
 bool AppSettings_Language_IsValid(int value);
 const AppSettings_Language AppSettings_Language_Language_MIN = AppSettings_Language_NONE;
@@ -117,7 +117,6 @@ class AppSettings : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
 
   typedef AppSettings_Language Language;
-  static const Language NONE = AppSettings_Language_NONE;
   static const Language DE = AppSettings_Language_DE;
   static const Language EN = AppSettings_Language_EN;
   static const Language ES = AppSettings_Language_ES;
@@ -125,6 +124,7 @@ class AppSettings : public ::google::protobuf::Message {
   static const Language ID = AppSettings_Language_ID;
   static const Language FIRST = AppSettings_Language_FIRST;
   static const Language LAST = AppSettings_Language_LAST;
+  static const Language NONE = AppSettings_Language_NONE;
   static inline bool Language_IsValid(int value) {
     return AppSettings_Language_IsValid(value);
   }
@@ -266,7 +266,7 @@ inline void AppSettings::clear_has_language() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void AppSettings::clear_language() {
-  language_ = 2;
+  language_ = 1;
   clear_has_language();
 }
 inline ::rec::app::AppSettings_Language AppSettings::language() const {

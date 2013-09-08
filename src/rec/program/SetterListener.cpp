@@ -14,32 +14,6 @@ using namespace rec::data;
 namespace rec {
 namespace program {
 
-namespace {
-
-class Selection : public Callback {
-  Selection(SetterListener* p, int index) : parent_(p), index_(index) {}
-  bool operator()() override {
-    parent_->select(index_);
-    return true;
-  }
-
-  SetterListener* const parent_;
-  int const index_;
-
-};
-
-class Toggle : public Callback {
-  Toggle(SetterListener* p) : parent_(p) {}
-  bool operator()() override {
-    parent_->toggle();
-    return true;
-  }
-
-  SetterListener* const parent_;
-};
-
-}  // namespace
-
 SetterListener::SetterListener(const command::Command& command,
                                JuceModel* model)
     : AddressListener(command.setter().address(),
@@ -54,7 +28,8 @@ SetterListener::SetterListener(const command::Command& command,
   } else {
     for (int i = 0; i < command.index(); ++i) {
       pgm->addCallback(id + i,
-                       thread::methodCallback(this, &SetterListener::select, i));
+                       thread::methodCallback(this,
+                                              &SetterListener::select, i));
     }
   }
 }

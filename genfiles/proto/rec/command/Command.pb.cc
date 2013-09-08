@@ -65,10 +65,10 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       sizeof(Description));
   Setter_descriptor_ = file->message_type(1);
   static const int Setter_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Setter, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Setter, is_global_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Setter, address_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Setter, type_name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Setter, type_),
   };
   Setter_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -171,23 +171,24 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"E\n\013Descri"
     "ption\022\014\n\004name\030\001 \001(\t\022\014\n\004menu\030\002 \003(\t\022\014\n\004ful"
-    "l\030\003 \003(\t\022\014\n\004help\030\004 \001(\t\"\250\001\n\006Setter\022\027\n\tis_g"
-    "lobal\030\001 \001(\010:\004true\022\'\n\007address\030\002 \001(\0132\026.rec"
-    ".data.AddressProto\022\021\n\ttype_name\030\003 \001(\t\022&\n"
-    "\004type\030\004 \001(\0162\030.rec.command.Setter.Type\"!\n"
-    "\004Type\022\n\n\006TOGGLE\020\000\022\r\n\tSELECTION\020\001\"\260\003\n\007Com"
-    "mand\022\017\n\007command\030\001 \001(\r\022\r\n\005index\030\002 \001(\021\022\023\n\013"
-    "start_index\030\003 \001(\021\022\020\n\010category\030\004 \001(\t\022&\n\004d"
-    "esc\030\005 \001(\0132\030.rec.command.Description\022\020\n\010k"
-    "eypress\030\006 \003(\t\022\r\n\005flags\030\007 \001(\r\022#\n\006setter\030\010"
-    " \001(\0132\023.rec.command.Setter\022\014\n\004size\030\t \001(\r\022"
-    "\022\n\nname_maker\030\n \001(\t\022\016\n\006hidden\030\013 \003(\t\022\020\n\010d"
-    "isabled\030\014 \003(\t\022\016\n\006ticked\030\r \003(\t\"\233\001\n\004Type\022\010"
-    "\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022"
-    "\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022"
-    "\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010J"
-    "UCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Commands\022"
-    "%\n\007command\030\001 \003(\0132\024.rec.command.Command", 798);
+    "l\030\003 \003(\t\022\014\n\004help\030\004 \001(\t\"\260\001\n\006Setter\022.\n\004type"
+    "\030\001 \001(\0162\030.rec.command.Setter.Type:\006TOGGLE"
+    "\022\027\n\tis_global\030\002 \001(\010:\004true\022\'\n\007address\030\003 \001"
+    "(\0132\026.rec.data.AddressProto\022\021\n\ttype_name\030"
+    "\004 \001(\t\"!\n\004Type\022\n\n\006TOGGLE\020\000\022\r\n\tSELECTION\020\001"
+    "\"\260\003\n\007Command\022\017\n\007command\030\001 \001(\r\022\r\n\005index\030\002"
+    " \001(\021\022\023\n\013start_index\030\003 \001(\021\022\020\n\010category\030\004 "
+    "\001(\t\022&\n\004desc\030\005 \001(\0132\030.rec.command.Descript"
+    "ion\022\020\n\010keypress\030\006 \003(\t\022\r\n\005flags\030\007 \001(\r\022#\n\006"
+    "setter\030\010 \001(\0132\023.rec.command.Setter\022\014\n\004siz"
+    "e\030\t \001(\r\022\022\n\nname_maker\030\n \001(\t\022\016\n\006hidden\030\013 "
+    "\003(\t\022\020\n\010disabled\030\014 \003(\t\022\016\n\006ticked\030\r \003(\t\"\233\001"
+    "\n\004Type\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n"
+    "\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT"
+    "_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START"
+    "\020\200 \022\r\n\010JUCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010C"
+    "ommands\022%\n\007command\030\001 \003(\0132\024.rec.command.C"
+    "ommand", 806);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -610,10 +611,10 @@ const Setter_Type Setter::Type_MAX;
 const int Setter::Type_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
+const int Setter::kTypeFieldNumber;
 const int Setter::kIsGlobalFieldNumber;
 const int Setter::kAddressFieldNumber;
 const int Setter::kTypeNameFieldNumber;
-const int Setter::kTypeFieldNumber;
 #endif  // !_MSC_VER
 
 Setter::Setter()
@@ -633,10 +634,10 @@ Setter::Setter(const Setter& from)
 
 void Setter::SharedCtor() {
   _cached_size_ = 0;
+  type_ = 0;
   is_global_ = true;
   address_ = NULL;
   type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  type_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -676,6 +677,7 @@ Setter* Setter::New() const {
 
 void Setter::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    type_ = 0;
     is_global_ = true;
     if (has_address()) {
       if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
@@ -685,7 +687,6 @@ void Setter::Clear() {
         type_name_->clear();
       }
     }
-    type_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -697,10 +698,31 @@ bool Setter::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bool is_global = 1 [default = true];
+      // optional .rec.command.Setter.Type type = 1 [default = TOGGLE];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::command::Setter_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::command::Setter_Type >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_is_global;
+        break;
+      }
+
+      // optional bool is_global = 2 [default = true];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_is_global:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &is_global_)));
@@ -708,12 +730,12 @@ bool Setter::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_address;
+        if (input->ExpectTag(26)) goto parse_address;
         break;
       }
 
-      // optional .rec.data.AddressProto address = 2;
-      case 2: {
+      // optional .rec.data.AddressProto address = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_address:
@@ -722,12 +744,12 @@ bool Setter::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_type_name;
+        if (input->ExpectTag(34)) goto parse_type_name;
         break;
       }
 
-      // optional string type_name = 3;
-      case 3: {
+      // optional string type_name = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_type_name:
@@ -736,27 +758,6 @@ bool Setter::MergePartialFromCodedStream(
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->type_name().data(), this->type_name().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(32)) goto parse_type;
-        break;
-      }
-
-      // optional .rec.command.Setter.Type type = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_type:
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::rec::command::Setter_Type_IsValid(value)) {
-            set_type(static_cast< ::rec::command::Setter_Type >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(4, value);
-          }
         } else {
           goto handle_uninterpreted;
         }
@@ -782,30 +783,30 @@ bool Setter::MergePartialFromCodedStream(
 
 void Setter::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional bool is_global = 1 [default = true];
-  if (has_is_global()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->is_global(), output);
+  // optional .rec.command.Setter.Type type = 1 [default = TOGGLE];
+  if (has_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->type(), output);
   }
 
-  // optional .rec.data.AddressProto address = 2;
+  // optional bool is_global = 2 [default = true];
+  if (has_is_global()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->is_global(), output);
+  }
+
+  // optional .rec.data.AddressProto address = 3;
   if (has_address()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->address(), output);
+      3, this->address(), output);
   }
 
-  // optional string type_name = 3;
+  // optional string type_name = 4;
   if (has_type_name()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->type_name().data(), this->type_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->type_name(), output);
-  }
-
-  // optional .rec.command.Setter.Type type = 4;
-  if (has_type()) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      4, this->type(), output);
+      4, this->type_name(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -816,32 +817,32 @@ void Setter::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Setter::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional bool is_global = 1 [default = true];
-  if (has_is_global()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->is_global(), target);
+  // optional .rec.command.Setter.Type type = 1 [default = TOGGLE];
+  if (has_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->type(), target);
   }
 
-  // optional .rec.data.AddressProto address = 2;
+  // optional bool is_global = 2 [default = true];
+  if (has_is_global()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->is_global(), target);
+  }
+
+  // optional .rec.data.AddressProto address = 3;
   if (has_address()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->address(), target);
+        3, this->address(), target);
   }
 
-  // optional string type_name = 3;
+  // optional string type_name = 4;
   if (has_type_name()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->type_name().data(), this->type_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->type_name(), target);
-  }
-
-  // optional .rec.command.Setter.Type type = 4;
-  if (has_type()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      4, this->type(), target);
+        4, this->type_name(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -855,29 +856,29 @@ int Setter::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional bool is_global = 1 [default = true];
+    // optional .rec.command.Setter.Type type = 1 [default = TOGGLE];
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+    }
+
+    // optional bool is_global = 2 [default = true];
     if (has_is_global()) {
       total_size += 1 + 1;
     }
 
-    // optional .rec.data.AddressProto address = 2;
+    // optional .rec.data.AddressProto address = 3;
     if (has_address()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->address());
     }
 
-    // optional string type_name = 3;
+    // optional string type_name = 4;
     if (has_type_name()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->type_name());
-    }
-
-    // optional .rec.command.Setter.Type type = 4;
-    if (has_type()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
 
   }
@@ -907,6 +908,9 @@ void Setter::MergeFrom(const ::google::protobuf::Message& from) {
 void Setter::MergeFrom(const Setter& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_type()) {
+      set_type(from.type());
+    }
     if (from.has_is_global()) {
       set_is_global(from.is_global());
     }
@@ -915,9 +919,6 @@ void Setter::MergeFrom(const Setter& from) {
     }
     if (from.has_type_name()) {
       set_type_name(from.type_name());
-    }
-    if (from.has_type()) {
-      set_type(from.type());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -942,10 +943,10 @@ bool Setter::IsInitialized() const {
 
 void Setter::Swap(Setter* other) {
   if (other != this) {
+    std::swap(type_, other->type_);
     std::swap(is_global_, other->is_global_);
     std::swap(address_, other->address_);
     std::swap(type_name_, other->type_name_);
-    std::swap(type_, other->type_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

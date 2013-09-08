@@ -39,7 +39,7 @@ using namespace rec::command;
 namespace {
 
 const Trans* LANG_NAMES[] = {
-  nullptr, &t_GERMAN, &t_ENGLISH, &t_SPANISH, &t_FRENCH, &t_INDONESIAN
+  &t_GERMAN, &t_ENGLISH, &t_SPANISH, &t_FRENCH, &t_INDONESIAN
 };
 
 const Trans& langName(int lang) {

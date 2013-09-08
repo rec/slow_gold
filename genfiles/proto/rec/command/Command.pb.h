@@ -304,26 +304,33 @@ class Setter : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional bool is_global = 1 [default = true];
+  // optional .rec.command.Setter.Type type = 1 [default = TOGGLE];
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::rec::command::Setter_Type type() const;
+  inline void set_type(::rec::command::Setter_Type value);
+
+  // optional bool is_global = 2 [default = true];
   inline bool has_is_global() const;
   inline void clear_is_global();
-  static const int kIsGlobalFieldNumber = 1;
+  static const int kIsGlobalFieldNumber = 2;
   inline bool is_global() const;
   inline void set_is_global(bool value);
 
-  // optional .rec.data.AddressProto address = 2;
+  // optional .rec.data.AddressProto address = 3;
   inline bool has_address() const;
   inline void clear_address();
-  static const int kAddressFieldNumber = 2;
+  static const int kAddressFieldNumber = 3;
   inline const ::rec::data::AddressProto& address() const;
   inline ::rec::data::AddressProto* mutable_address();
   inline ::rec::data::AddressProto* release_address();
   inline void set_allocated_address(::rec::data::AddressProto* address);
 
-  // optional string type_name = 3;
+  // optional string type_name = 4;
   inline bool has_type_name() const;
   inline void clear_type_name();
-  static const int kTypeNameFieldNumber = 3;
+  static const int kTypeNameFieldNumber = 4;
   inline const ::std::string& type_name() const;
   inline void set_type_name(const ::std::string& value);
   inline void set_type_name(const char* value);
@@ -332,29 +339,22 @@ class Setter : public ::google::protobuf::Message {
   inline ::std::string* release_type_name();
   inline void set_allocated_type_name(::std::string* type_name);
 
-  // optional .rec.command.Setter.Type type = 4;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 4;
-  inline ::rec::command::Setter_Type type() const;
-  inline void set_type(::rec::command::Setter_Type value);
-
   // @@protoc_insertion_point(class_scope:rec.command.Setter)
  private:
+  inline void set_has_type();
+  inline void clear_has_type();
   inline void set_has_is_global();
   inline void clear_has_is_global();
   inline void set_has_address();
   inline void clear_has_address();
   inline void set_has_type_name();
   inline void clear_has_type_name();
-  inline void set_has_type();
-  inline void clear_has_type();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::rec::data::AddressProto* address_;
-  bool is_global_;
   int type_;
+  bool is_global_;
+  ::rec::data::AddressProto* address_;
   ::std::string* type_name_;
 
   mutable int _cached_size_;
@@ -968,15 +968,38 @@ inline void Description::set_allocated_help(::std::string* help) {
 
 // Setter
 
-// optional bool is_global = 1 [default = true];
-inline bool Setter::has_is_global() const {
+// optional .rec.command.Setter.Type type = 1 [default = TOGGLE];
+inline bool Setter::has_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Setter::set_has_is_global() {
+inline void Setter::set_has_type() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Setter::clear_has_is_global() {
+inline void Setter::clear_has_type() {
   _has_bits_[0] &= ~0x00000001u;
+}
+inline void Setter::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::rec::command::Setter_Type Setter::type() const {
+  return static_cast< ::rec::command::Setter_Type >(type_);
+}
+inline void Setter::set_type(::rec::command::Setter_Type value) {
+  assert(::rec::command::Setter_Type_IsValid(value));
+  set_has_type();
+  type_ = value;
+}
+
+// optional bool is_global = 2 [default = true];
+inline bool Setter::has_is_global() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Setter::set_has_is_global() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Setter::clear_has_is_global() {
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void Setter::clear_is_global() {
   is_global_ = true;
@@ -990,15 +1013,15 @@ inline void Setter::set_is_global(bool value) {
   is_global_ = value;
 }
 
-// optional .rec.data.AddressProto address = 2;
+// optional .rec.data.AddressProto address = 3;
 inline bool Setter::has_address() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void Setter::set_has_address() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void Setter::clear_has_address() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Setter::clear_address() {
   if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
@@ -1028,15 +1051,15 @@ inline void Setter::set_allocated_address(::rec::data::AddressProto* address) {
   }
 }
 
-// optional string type_name = 3;
+// optional string type_name = 4;
 inline bool Setter::has_type_name() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void Setter::set_has_type_name() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void Setter::clear_has_type_name() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Setter::clear_type_name() {
   if (type_name_ != &::google::protobuf::internal::kEmptyString) {
@@ -1096,29 +1119,6 @@ inline void Setter::set_allocated_type_name(::std::string* type_name) {
     clear_has_type_name();
     type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
-}
-
-// optional .rec.command.Setter.Type type = 4;
-inline bool Setter::has_type() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void Setter::set_has_type() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void Setter::clear_has_type() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void Setter::clear_type() {
-  type_ = 0;
-  clear_has_type();
-}
-inline ::rec::command::Setter_Type Setter::type() const {
-  return static_cast< ::rec::command::Setter_Type >(type_);
-}
-inline void Setter::set_type(::rec::command::Setter_Type value) {
-  assert(::rec::command::Setter_Type_IsValid(value));
-  set_has_type();
-  type_ = value;
 }
 
 // -------------------------------------------------------------------

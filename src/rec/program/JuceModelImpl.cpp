@@ -39,8 +39,8 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
       programMap_(makeProgramMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)) {
-  for (auto& i: programMap_) {
-    const command::Command& cmd = i.second;
+  auto commands = program_->commands().command();
+  for (auto& cmd: commands) {
     if (cmd.has_setter())
       dataListeners_.push_back(make_unique<SetterListener>(cmd, juceModel));
   }
@@ -130,4 +130,3 @@ bool JuceModelImpl::perform(const InvocationInfo& info) {
 
 }  // namespace program
 }  // namespace rec
-

@@ -2,15 +2,15 @@ package rec.app;
 
 message AppSettings {
   enum Language {
-    NONE = 0;
-    DE = 1;
-    EN = 2;
-    ES = 3;
-    FR = 4;
-    ID = 5;
+    DE = 0;
+    EN = 1;
+    ES = 2;
+    FR = 3;
+    ID = 4;
 
-    FIRST = 1;
-    LAST = 5;
+    FIRST = 0;
+    LAST = 4;
+    NONE = -1;
     option allow_alias = true;
   };
 

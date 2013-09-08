@@ -84,14 +84,14 @@ void protobuf_AddDesc_rec_2fapp_2fAppSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\031rec/app/AppSettings.proto\022\007rec.app\"\365\001\n"
+    "\n\031rec/app/AppSettings.proto\022\007rec.app\"\376\001\n"
     "\013AppSettings\022\034\n\024last_update_finished\030\001 \001"
     "(\003\022\031\n\nregistered\030\002 \001(\010:\005false\0223\n\010languag"
     "e\030\003 \001(\0162\035.rec.app.AppSettings.Language:\002"
-    "EN\022!\n\022windows_registered\030\004 \001(\010:\005false\"U\n"
-    "\010Language\022\010\n\004NONE\020\000\022\006\n\002DE\020\001\022\006\n\002EN\020\002\022\006\n\002E"
-    "S\020\003\022\006\n\002FR\020\004\022\006\n\002ID\020\005\022\t\n\005FIRST\020\001\022\010\n\004LAST\020\005"
-    "\032\002\020\001", 284);
+    "EN\022!\n\022windows_registered\030\004 \001(\010:\005false\"^\n"
+    "\010Language\022\006\n\002DE\020\000\022\006\n\002EN\020\001\022\006\n\002ES\020\002\022\006\n\002FR\020"
+    "\003\022\006\n\002ID\020\004\022\t\n\005FIRST\020\000\022\010\n\004LAST\020\004\022\021\n\004NONE\020\377"
+    "\377\377\377\377\377\377\377\377\001\032\002\020\001", 293);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/app/AppSettings.proto", &protobuf_RegisterTypes);
   AppSettings::default_instance_ = new AppSettings();
@@ -114,12 +114,12 @@ const ::google::protobuf::EnumDescriptor* AppSettings_Language_descriptor() {
 }
 bool AppSettings_Language_IsValid(int value) {
   switch(value) {
+    case -1:
     case 0:
     case 1:
     case 2:
     case 3:
     case 4:
-    case 5:
       return true;
     default:
       return false;
@@ -127,7 +127,6 @@ bool AppSettings_Language_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const AppSettings_Language AppSettings::NONE;
 const AppSettings_Language AppSettings::DE;
 const AppSettings_Language AppSettings::EN;
 const AppSettings_Language AppSettings::ES;
@@ -135,6 +134,7 @@ const AppSettings_Language AppSettings::FR;
 const AppSettings_Language AppSettings::ID;
 const AppSettings_Language AppSettings::FIRST;
 const AppSettings_Language AppSettings::LAST;
+const AppSettings_Language AppSettings::NONE;
 const AppSettings_Language AppSettings::Language_MIN;
 const AppSettings_Language AppSettings::Language_MAX;
 const int AppSettings::Language_ARRAYSIZE;
@@ -164,7 +164,7 @@ void AppSettings::SharedCtor() {
   _cached_size_ = 0;
   last_update_finished_ = GOOGLE_LONGLONG(0);
   registered_ = false;
-  language_ = 2;
+  language_ = 1;
   windows_registered_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -203,7 +203,7 @@ void AppSettings::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     last_update_finished_ = GOOGLE_LONGLONG(0);
     registered_ = false;
-    language_ = 2;
+    language_ = 1;
     windows_registered_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));

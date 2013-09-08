@@ -9,7 +9,7 @@ namespace command { class CallbackTable; }
 
 namespace slow {
 
-void addRepeatedCallbacks(command::CallbackTable*, int repeat);
+void addRepeatedCallbacks(command::CallbackTable*, int repeat, bool newStyle);
 void addSelectionCallbacks(command::CallbackTable*);
 
 }  // namespace slow

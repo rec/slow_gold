@@ -788,6 +788,15 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 4\r\n"
 "    category: \"(None)\"\r\n"
+"    setter {\r\n"
+"      type: SELECTION\r\n"
+"      address {\r\n"
+"        part {\r\n"
+"          name: \"file_type_for_save\"\r\n"
+"        }\r\n"
+"      }\r\n"
+"      type_name: \"rec.audio.AudioSettings\"\r\n"
+"    }\r\n"
 "    desc {\r\n"
 "      menu: \"AIFF\"\r\n"
 "      menu: \"FLAC\"\r\n"
@@ -806,14 +815,21 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 5\r\n"
 "    category: \"(None)\"\r\n"
+"    setter {\r\n"
+"      type: SELECTION\r\n"
+"      address {\r\n"
+"        part {\r\n"
+"          name: \"language\"\r\n"
+"        }\r\n"
+"      }\r\n"
+"      type_name: \"rec.app.AppSettings\"\r\n"
+"    }\r\n"
 "    desc {\r\n"
-"      menu: \"(None)\"\r\n"
 "      menu: \"German\"\r\n"
 "      menu: \"English\"\r\n"
 "      menu: \"Spanish\"\r\n"
 "      menu: \"French\"\r\n"
 "      menu: \"Indonesian\"\r\n"
-"      full: \"...\"\r\n"
 "      full: \"...\"\r\n"
 "      full: \"...\"\r\n"
 "      full: \"...\"\r\n"
@@ -13522,7 +13538,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
 
     switch (hash)
     {
-        case 0x5863c28f:  numBytes = 30080; return SlowCommands_def;
+        case 0x5863c28f:  numBytes = 30383; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 6942; return SlowKeyStrokeMap_def;
         case 0xbef1a624:  numBytes = 355; return SlowMenuCollection_def;
         case 0xce3bc719:  numBytes = 2845; return SlowMenus_def;

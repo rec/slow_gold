@@ -278,7 +278,7 @@ void addCallback(CallbackTable* c, int32 type, int32 position,
 
 }  // namespace
 
-void addRepeatedCallbacks(CallbackTable* t, int repeat) {
+void addRepeatedCallbacks(CallbackTable* t, int repeat, bool newStyle) {
   for (int32 j = ID::FIRST; j < repeat; ++j) {
     addCallback(t, slow::SlowCommand::SELECT, j, selectAdd);
     addCallback(t, slow::SlowCommand::SELECT_ONLY, j, selectOnly);
@@ -294,11 +294,13 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat) {
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j)
     addCallback(t, ID(slow::SlowCommand::RECENT_FILES, j), loadRecentFile, j);
 
-  for (int j = 0; j < audio::AudioSettings::COUNT; ++j)
-    addCallback(t, ID(slow::SlowCommand::SET_SAVE_FORMAT, j), setSaveFileType, j);
+  if (not newStyle) {
+    for (int j = 0; j < audio::AudioSettings::COUNT; ++j)
+      addCallback(t, ID(slow::SlowCommand::SET_SAVE_FORMAT, j), setSaveFileType, j);
 
-  for (int j = 0; j <= app::AppSettings::LAST; ++j)
-    addCallback(t, ID(slow::SlowCommand::SET_LANGUAGE, j), setLanguage, j);
+    for (int j = app::AppSettings::FIRST; j <= app::AppSettings::LAST; ++j)
+      addCallback(t, ID(slow::SlowCommand::SET_LANGUAGE, j), setLanguage, j);
+  }
 
   addCallback(t, slow::SlowCommand::OPEN_PREVIOUS_FILE, openPreviousFile);
   addCallback(t, slow::SlowCommand::NUDGE_BACKWARD, nudgeTime, false);
