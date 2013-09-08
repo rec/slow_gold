@@ -3,6 +3,7 @@
 #include "rec/base/make_unique.h"
 #include "rec/command/Command.pb.h"
 #include "rec/program/JuceModel.h"
+#include "rec/program/JuceModelImpl.h"
 #include "rec/program/Program.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/MakeCallback.h"
@@ -49,11 +50,11 @@ SetterListener::SetterListener(const command::Command& command,
   CommandID id = command.command();
   if (command.setter().type() == Setter::TOGGLE) {
     pgm->addCallback(id,
-                     unique_ptr<Callback>(thread::methodCallback(this, &SetterListener::toggle)));
+                     thread::methodCallback(this, &SetterListener::toggle));
   } else {
     for (int i = 0; i < command.index(); ++i) {
       pgm->addCallback(id + i,
-                       unique_ptr<Callback>(thread::methodCallback(this, &SetterListener::select, i)));
+                       thread::methodCallback(this, &SetterListener::select, i));
     }
   }
 }

@@ -49,9 +49,9 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* cmds) const {
   }
 }
 
-void CommandRecordTable::addCallback(ID id, Callback* cb) {
+void CommandRecordTable::addCallback(ID id, unique_ptr<Callback> cb) {
   Lock l(lock_);
-  create(id)->callback_.reset(cb);
+  create(id)->callback_.reset(cb.release());
 }
 
 void CommandRecordTable::fillAllCommands() {

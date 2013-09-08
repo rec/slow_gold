@@ -12,7 +12,7 @@ class CallbackTable {
   CallbackTable() {}
   virtual ~CallbackTable() {}
 
-  virtual void addCallback(ID, Callback*) = 0;
+  virtual void addCallback(ID, unique_ptr<Callback>) = 0;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CallbackTable);

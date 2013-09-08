@@ -157,7 +157,7 @@ void Threads::removeCallbacksFor(void* owner) {
 
 template <typename Operator>
 Thread* Threads::start(Operator op, const String& name, int priority) {
-  Thread* thread = thread::makeLooper(name, op, instance_);
+  Thread* thread = thread::makeLooper(name, op, instance_).release();
   if (priority)
     thread->setPriority(priority);
   thread->startThread();

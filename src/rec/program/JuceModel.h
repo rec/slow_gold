@@ -13,7 +13,9 @@ class Program;
 
 class JuceModel : public ApplicationCommandTarget, public MenuBarModel {
  public:
-  JuceModel(Program*);
+  JuceModel(Program* p);
+  void init();
+
   ~JuceModel();
 
   ApplicationCommandTarget* getNextCommandTarget() override { return NULL; }

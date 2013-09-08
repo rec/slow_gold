@@ -97,28 +97,28 @@ class ModalPointer1 : public ModalCallback {
 };
 
 template <typename Type, typename Method>
-ModalCallback* modalCallback(Type* o, Method m) {
-  return new ModalCallback0<Type, Method>(o, m);
+unique_ptr<ModalCallback> modalCallback(Type* o, Method m) {
+  return make_unique<ModalCallback0<Type, Method>>(o, m);
 }
 
 template <typename Type, typename Method, typename Value>
-ModalCallback* modalCallback(Type* o, Method m, Value v) {
-  return new ModalCallback1<Type, Method, Value>(o, m, v);
+unique_ptr<ModalCallback> modalCallback(Type* o, Method m, Value v) {
+  return make_unique<ModalCallback1<Type, Method, Value>>(o, m, v);
 }
 
 template <typename Type, typename Method, typename Value1, typename Value2>
-ModalCallback* modalCallback(Type* o, Method m, Value1 v1, Value2 v2) {
-  return new ModalCallback2<Type, Method, Value1, Value2>(o, m, v1, v2);
+unique_ptr<ModalCallback> modalCallback(Type* o, Method m, Value1 v1, Value2 v2) {
+  return make_unique<ModalCallback2<Type, Method, Value1, Value2>>(o, m, v1, v2);
 }
 
 template <typename Operator>
-ModalCallback* modalFunctionCallback(Operator op) {
-  return new ModalPointer0<Operator>(op);
+unique_ptr<ModalCallback> modalFunctionCallback(Operator op) {
+  return make_unique<ModalPointer0<Operator>>(op);
 }
 
 template <typename Operator, typename Value>
-ModalCallback* modalFunctionCallback(Operator op, Value v) {
-  return new ModalPointer1<Operator, Value>(op, v);
+unique_ptr<ModalCallback> modalFunctionCallback(Operator op, Value v) {
+  return make_unique<ModalPointer1<Operator, Value>>(op, v);
 }
 
 }  // namespace thread

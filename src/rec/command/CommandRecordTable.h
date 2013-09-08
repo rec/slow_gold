@@ -17,7 +17,7 @@ class CommandRecordTable : public CallbackTable {
   CommandRecordTable() {}
   ~CommandRecordTable();
 
-  virtual void addCallback(ID, Callback*);
+  void addCallback(ID, unique_ptr<Callback>) override;
 
   CommandRecord* find(ID id) { return locate(id, true, false); }
   CommandRecord* create(ID id) { return locate(id, false, true); }

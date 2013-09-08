@@ -19,8 +19,8 @@ class CallbackMessage : public juce::CallbackMessage,
 
 }  // namespace callback
 
-inline void callAsync(Callback* cb) {
-  (new thread::callback::CallbackMessage(cb))->post();
+inline void callAsync(unique_ptr<Callback> cb) {
+  (new thread::callback::CallbackMessage(cb.release()))->post();
 }
 
 template <typename Type>

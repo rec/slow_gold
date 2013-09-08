@@ -40,7 +40,7 @@ void EditButton::clicked() {
 
     m.showMenuAsync(PopupMenu::Options(),
                     thread::modalCallback(editor_, &Editor::buttonMenuCallback,
-                                          this));
+                                          this).release());
 
   } else {
     // addCommand();  // + button pressed..  // TODO:

@@ -295,7 +295,7 @@ void Editor::resetButton() {
       t_RESET,
       t_CANCEL,
       this,
-      thread::modalCallback(this, &Editor::reset));
+      thread::modalCallback(this, &Editor::reset).release());
 }
 
 void Editor::clearButton() {
@@ -306,7 +306,7 @@ void Editor::clearButton() {
       t_CLEAR_EDITOR,
       t_CANCEL,
       this,
-      thread::modalCallback(this, &Editor::clear));
+      thread::modalCallback(this, &Editor::clear).release());
 }
 
 const String Editor::getKeyMessage(const string& key) {
@@ -349,7 +349,7 @@ void Editor::setNewKey(EditButton* button, const string& key) {
       showCommandMapBox(commandManager_->getNameOfCommand(previousCommand),
                         this,
                         thread::modalCallback(this, &Editor::assignNewKey,
-                                              button, key));
+                                              button, key).release());
     }
   }
 }
@@ -366,7 +366,7 @@ void Editor::buttonMenuCallback(EditButton* button, int result) {
   if (result == 1) {
     entryWindow_.reset(newWindow());
     entryWindow_->enterModalState(true, thread::modalCallback(
-        this, &Editor::keyChosen, button));
+        this, &Editor::keyChosen, button).release());
 
   } else if (result == 2) {
     removeKeyAtIndex(button->id_, button->keyNum_);

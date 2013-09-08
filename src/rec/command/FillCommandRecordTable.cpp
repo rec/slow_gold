@@ -24,8 +24,8 @@ void fillSingleCommand(const CommandData& data, CommandRecordTable* table,
     Listener<None>* ls = data.getMenuUpdateListener();
     Scope s = scope(cmd.setter().is_global());
     cr->setter_.reset(new TickedDataSetter(cr->getInfo(), ls, cmd, a, s));
-    cr->callback_.reset(thread::methodCallback(cr->setter_.get(),
-                                               &CommandItemSetter::execute));
+    cr->callback_ = thread::methodCallback(cr->setter_.get(),
+                                           &CommandItemSetter::execute);
   }
   DCHECK(!cr->command_) << cr->command_->ShortDebugString();
   cr->command_.reset(new Command(cmd));

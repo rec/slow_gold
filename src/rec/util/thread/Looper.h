@@ -36,8 +36,8 @@ class Looper : public Thread {
 };
 
 template <typename Operator, typename Instance>
-Thread* makeLooper(String name, Operator op, Instance i) {
-  return new Looper<Operator, Instance>(name, op, i);
+unique_ptr<Thread> makeLooper(String name, Operator op, Instance i) {
+  return make_unique<Looper<Operator, Instance>>(name, op, i);
 }
 
 }  // namespace thread

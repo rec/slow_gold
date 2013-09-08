@@ -154,6 +154,7 @@ const VirtualFile Instance::getInstanceFile() {
 void Instance::init() {
   slowProgram_.reset(new SlowProgram(this));
   juceModel_.reset(new program::JuceModel(slowProgram_.get()));
+  juceModel_->init();
 
   window_->init();
   menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
