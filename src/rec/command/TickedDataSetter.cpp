@@ -15,7 +15,8 @@ TickedDataSetter::TickedDataSetter(ApplicationCommandInfo* info,
 void TickedDataSetter::operator()(const data::Value& v) {
   info_->setTicked(v.get<bool>());
 
-  (*changeListener_)(None());
+  if (changeListener_)
+    (*changeListener_)(None());
 }
 
 void TickedDataSetter::execute() {

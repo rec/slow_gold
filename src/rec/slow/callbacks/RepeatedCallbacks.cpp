@@ -159,14 +159,14 @@ void setSaveFileType(int i) {
   AudioSettings settings = data::getProto<AudioSettings>();
   settings.set_file_type_for_save(static_cast<AudioSettings::FileType>(i));
   data::setProto(settings);
-  Instance::getInstance()->menus()->menuItemsChanged();
+  Instance::getInstance()->menuItemsChanged();
 }
 
 void setLanguage(int i) {
   app::AppSettings inter = data::getProto<app::AppSettings>();
   inter.set_language(static_cast<Language>(i));
   data::setProto(inter);
-  Instance::getInstance()->menus()->menuItemsChanged();
+  Instance::getInstance()->menuItemsChanged();
 }
 
 void openPreviousFile() {

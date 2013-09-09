@@ -323,7 +323,7 @@ SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
-static const bool USE_NEW_COMMANDS = false;
+const bool Instance::USE_NEW_COMMANDS = not true;
 
 ApplicationCommandTarget* Instance::applicationCommandTarget() {
   if (USE_NEW_COMMANDS)
@@ -344,6 +344,13 @@ Menus* Instance::menus() {
     return nullptr;
   else
     return menus_.get();
+}
+
+void Instance::menuItemsChanged() {
+  if (USE_NEW_COMMANDS)
+    juceModel_->menuItemsChanged();
+  else
+    return menus_->menuItemsChanged();
 }
 
 }  // namespace slow

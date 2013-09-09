@@ -86,7 +86,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   data::UntypedDataListener::setGlobalDataFile(file_);
 
   startThreads();
-  menus()->menuItemsChanged();
+  instance_->menuItemsChanged();
 }
 
 void CurrentFile::stopThreads() {

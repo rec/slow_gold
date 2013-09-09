@@ -145,8 +145,7 @@ MenuBarModel* SlowWindow::getMenuBarModel() {
 }
 
 void SlowWindow::activeWindowStatusChanged() {
-  if (menus())
-    menus()->menuItemsChanged();
+  instance_->menuItemsChanged();
 
   if (components())
     components()->waveform_->repaint();

@@ -33,9 +33,7 @@ class MouseListener;
 class SlowWindow;
 class Threads;
 
-// Test stuff!
 class SlowProgram;
-
 
 // A single instance of the Slow program.  Right now there's only one per
 // application but in future there might be more than one.
@@ -89,6 +87,9 @@ class Instance {
   ApplicationCommandManager* applicationCommandManager();
 
   Menus* menus();
+  void menuItemsChanged();
+
+  static const bool USE_NEW_COMMANDS;
 
  private:
   ptr<command::CommandTarget> applicationCommandTarget_;
