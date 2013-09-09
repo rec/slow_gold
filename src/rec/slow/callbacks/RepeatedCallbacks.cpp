@@ -54,11 +54,12 @@ void select(SelectorFunction selector, int32 pos) {
   LoopPointList* loops = snap.loops_;
   int segment = audio::getSegment(*loops, snap.instance_->time());
   int size = loops->loop_point_size();
-  if (pos >= size) {
+  int p = toIndex(pos, segment, size);
+  if (p >= size) {
+    LOG(ERROR) << "size too large " << p << " >= " << size;
     beep();
     return;
   }
-  int p = toIndex(pos, segment, size);
 
   bool multipleSelections = (audio::getSelectionCount(*snap.loops_) > 1);
 
@@ -110,12 +111,14 @@ void jump(LoopSnapshot* snap, int32 pos) {
   SampleTime time = snap->instance_->time();
 
   int size = snap->loops_->loop_point_size();
-  if (pos >= size) {
+  int segment = audio::getSegment(*snap->loops_, time);
+  int p = toIndex(pos, segment, size);
+  if (p >= size) {
+    LOG(ERROR) << "size too large " << p << " >= " << size;
     beep();
     return;
   }
-  int segment = audio::getSegment(*snap->loops_, time);
-  int p = toIndex(pos, segment, size);
+
 
   // Special case for "jump back";
   if (pos == ID::PREVIOUS &&

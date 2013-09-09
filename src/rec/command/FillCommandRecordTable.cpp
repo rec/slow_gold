@@ -56,7 +56,6 @@ void fillRepeatingCommand(CommandRecordTable* table, const Command& cmd) {
   ID end = begin + len;
   for (ID i = begin; i != end; ++i) {
     if (CommandRecord* cr = table->find(i)) {
-      DLOG(INFO) << "filling " << slow::commandName(i);
       DCHECK(!cr->command_) << cr->command_->ShortDebugString();
       cr->command_.reset(indexCommand(cmd, i - begin));
     } else {
