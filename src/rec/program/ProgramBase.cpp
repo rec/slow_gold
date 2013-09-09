@@ -42,6 +42,15 @@ bool ProgramBase::hasProperty(const string& name) const {
   return false;
 }
 
+ProgramBase::ProgramBase() {
+  registerProgram(this);
+}
+
+ProgramBase::~ProgramBase() {
+  registerProgram(nullptr);
+}
+
+
 }  // namespace program
 }  // namespace rec
 

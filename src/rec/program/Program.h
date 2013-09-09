@@ -38,6 +38,9 @@ class Program {
   virtual string commandName(CommandID) const = 0;
 };
 
+void registerProgram(Program*);
+Program* getProgram();
+
 }  // namespace program
 }  // namespace rec
 

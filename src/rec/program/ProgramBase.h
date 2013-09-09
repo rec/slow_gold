@@ -10,7 +10,8 @@ namespace program {
 
 class ProgramBase : public Program {
  public:
-  ProgramBase() {}
+  ProgramBase();
+  virtual ~ProgramBase();
 
   void addCallback(CommandID, unique_ptr<Callback>) override;
   Callback* getCallback(CommandID) const override;
