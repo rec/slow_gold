@@ -59,16 +59,24 @@ void JuceModel::getCommandInfo(CommandID id,
     const string* shortName = nullptr;
     if (command.has_setter()) {
       const Setter& setter = command.setter();
+      VirtualFile file = setter.is_global() ? global() :
+        program_->getCurrentFile();
+      Data* data = getData(setter.type_name(), file);
+      unique_ptr<Message> msg(data->clone());
+      Value value = data::getMessageFieldOrDie(setter.address(), *msg);
       if (setter.type() == Setter::TOGGLE) {
-        VirtualFile file = setter.is_global() ? global() :
-          program_->getCurrentFile();
-        Data* data = getData(setter.type_name(), file);
-        unique_ptr<Message> msg(data->clone());
-        Value value = data::getMessageFieldOrDie(setter.address(), *msg);
+        LOG_IF(DFATAL, not value.has_bool_f()) << "No boolean value.";
         if (value.bool_f())
           flags |= ApplicationCommandInfo::isTicked;
       } else {
-        // TODO.
+        LOG_IF(DFATAL, not value.has_int32_f()) << "No int32 value";
+        int32 index = value.int32_f();
+        uint32 size = desc.menu_size();
+        if (index >= size) {
+          LOG(DFATAL) << "Index too large: " << index << " >= " << size;
+          index = size - 1;
+        }
+        shortName = &desc.menu(index);
       }
     }
     if (not shortName)
