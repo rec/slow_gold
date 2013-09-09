@@ -81,14 +81,18 @@ void MenuMaker::addEnabledName(CommandID cmd, Enable enable,
 void MenuMaker::addBank(CommandID command, const String& name) {
   int lastSlot = SLOT_COUNT;
 
-  if (!Instance::getInstance()->empty()) {
+  if (Instance::getInstance()->empty()) {
+    lastSlot = SLOT_COUNT;
+  } else {
     lastSlot = std::min(data::getProto<Viewport>(Instance::getInstanceFile()).
                         loop_points().loop_point_size(), lastSlot);
   }
 
+  lastSlot += command::ID::LAST + 1;
+
   PopupMenu sub;
   for (int i = command::ID::FIRST; i < lastSlot; ++i) {
-    if (i == 0)
+    if (i == command::ID::LAST + 1)
       sub.addSeparator();
     addSimpleRepeat(command, i, &sub);
   }
