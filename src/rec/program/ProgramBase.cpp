@@ -1,5 +1,6 @@
 #include "rec/program/ProgramBase.h"
 
+#include "rec/gui/menu/RecentFiles.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 
@@ -39,6 +40,9 @@ bool ProgramBase::hasProperty(const string& name) const {
   if (name == "cant_undo")
     return not canRedo();
 
+  if (name == "recent_empty")
+    return gui::recentFilesEmpty();
+
   return false;
 }
 
@@ -49,7 +53,6 @@ ProgramBase::ProgramBase() {
 ProgramBase::~ProgramBase() {
   registerProgram(nullptr);
 }
-
 
 }  // namespace program
 }  // namespace rec

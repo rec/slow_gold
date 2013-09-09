@@ -24,9 +24,12 @@ class RecentFilesStrategy {
 const RecentFilesStrategy& getMusicRecentFilesStrategy();
 
 vector<string> getRecentFileNames(const RecentFilesStrategy& stategy);
+
 inline vector<string> getRecentFileNames() {
   return getRecentFileNames(getMusicRecentFilesStrategy());
 }
+
+bool recentFilesEmpty();
 
 }  // namespace gui
 }  // namespace rec

@@ -117,5 +117,9 @@ vector<string> getRecentFileNames(const RecentFilesStrategy& strategy) {
   return results;
 }
 
+bool recentFilesEmpty() {
+  return not data::getProto<RecentFiles>().file_size();
+}
+
 }  // namespace gui
 }  // namespace rec
