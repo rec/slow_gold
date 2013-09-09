@@ -64,7 +64,6 @@ class Instance {
   app::Window* window_;
   CriticalSection lock_;
 
-  ptr<Menus> menus_;
   ptr<audio::Device> device_;
   ptr<audio::util::BufferFiller> bufferFiller_;
   ptr<CurrentFile> currentFile_;
@@ -81,16 +80,23 @@ class Instance {
   ptr<command::MidiCommandMap> midiCommandMap_;
 
   ptr<command::CommandRecordTable> commandRecordTable_;
-  ptr<command::CommandTarget> applicationCommandTarget_;
-  ApplicationCommandManager applicationCommandManager_;
   ptr<command::CommandData> commandData_;
-  unique_ptr<SlowProgram> slowProgram_;
-  unique_ptr<program::JuceModel> juceModel_;
 
   static Instance* getInstance();
   static const VirtualFile getInstanceFile();
 
+  ApplicationCommandTarget* applicationCommandTarget();
+  ApplicationCommandManager* applicationCommandManager();
+
+  Menus* menus();
+
  private:
+  ptr<command::CommandTarget> applicationCommandTarget_;
+  ApplicationCommandManager applicationCommandManager_;
+  ptr<Menus> menus_;
+  unique_ptr<SlowProgram> slowProgram_;
+  unique_ptr<program::JuceModel> juceModel_;
+
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Instance);
 };
 

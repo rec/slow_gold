@@ -16,7 +16,7 @@ namespace {
 class SlowCommandData : public CommandData {
  public:
   explicit SlowCommandData(Instance* i)
-      : update_(i->menus_.get()),
+      : update_(i->menus()),
         allCommands_(makeCommand()) {
   }
   const Commands& allCommands() const { return allCommands_; }

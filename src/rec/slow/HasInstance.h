@@ -19,16 +19,16 @@ class HasInstance {
   audio::Device* device() { return instance_->device_.get(); }
   CurrentFile* currentFile() { return instance_->currentFile_.get(); }
   CurrentTime* currentTime() { return instance_->currentTime_.get(); }
-  Menus* menus() { return instance_->menus_.get(); }
+  Menus* menus() { return instance_->menus(); }
   app::Window* window() { return instance_->window_; }
   command::CommandRecordTable* commandRecordTable() {
     return instance_->commandRecordTable_.get();
   }
-  command::CommandTarget* applicationCommandTarget() {
-    return instance_->applicationCommandTarget_.get();
+  ApplicationCommandTarget* applicationCommandTarget() {
+    return instance_->applicationCommandTarget();
   }
   ApplicationCommandManager* applicationCommandManager() {
-    return &instance_->applicationCommandManager_;
+    return instance_->applicationCommandManager();
   }
   command::CommandData* commandData() {
     return instance_->commandData_.get();

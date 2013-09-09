@@ -323,5 +323,28 @@ SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
+static const bool USE_NEW_COMMANDS = false;
+
+ApplicationCommandTarget* Instance::applicationCommandTarget() {
+  if (USE_NEW_COMMANDS)
+    return juceModel_.get();
+  else
+    return applicationCommandTarget_.get();
+}
+
+ApplicationCommandManager* Instance::applicationCommandManager() {
+  if (USE_NEW_COMMANDS)
+    return juceModel_->applicationCommandManager();
+  else
+    return &applicationCommandManager_;
+}
+
+Menus* Instance::menus() {
+  if (USE_NEW_COMMANDS)
+    return nullptr;
+  else
+    return menus_.get();
+}
+
 }  // namespace slow
 }  // namespace rec

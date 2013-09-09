@@ -73,7 +73,7 @@ using namespace rec::command;
 
 void keyboardMappings() {
   Instance* i = Instance::getInstance();
-  ApplicationCommandManager* manager = &i->applicationCommandManager_;
+  ApplicationCommandManager* manager = i->applicationCommandManager();
   CommandMap commandMap;
   commandMap.addCommands(getKeyboardBindings());
 
@@ -88,7 +88,7 @@ void keyboardMappings() {
 
 void midiMappings() {
   Instance* i = Instance::getInstance();
-  ApplicationCommandManager* manager = &i->applicationCommandManager_;
+  ApplicationCommandManager* manager = i->applicationCommandManager();
   command::MidiEditor comp(manager, i->midiCommandMap_.get());
   if (displayEditorWindow(&comp, t_MIDI_EDITOR_TITLE))
     data::setProto(i->midiCommandMap_->getProto(), data::global());
