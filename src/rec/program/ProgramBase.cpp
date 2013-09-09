@@ -46,12 +46,22 @@ bool ProgramBase::hasProperty(const string& name) const {
   return false;
 }
 
-ProgramBase::ProgramBase() {
+ProgramBase::ProgramBase() : enabled_(true) {
   registerProgram(this);
 }
 
 ProgramBase::~ProgramBase() {
   registerProgram(nullptr);
+}
+
+bool ProgramBase::isEnabled() const {
+  Lock l(lock_);
+  return enabled_;
+}
+
+void ProgramBase::setEnabled(bool enabled) {
+  Lock l(lock_);
+  enabled_ = enabled;
 }
 
 }  // namespace program

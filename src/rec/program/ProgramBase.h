@@ -17,8 +17,14 @@ class ProgramBase : public Program {
   Callback* getCallback(CommandID) const override;
   bool hasProperty(const string& name) const override;
   CallbackMap* getCallbackMap() override { return &callbackMap_; }
+  bool isEnabled() const override;
+  void setEnabled(bool) override;
+
+ protected:
+  CriticalSection lock_;
 
  private:
+  bool enabled_;
   CallbackMap callbackMap_;
 };
 

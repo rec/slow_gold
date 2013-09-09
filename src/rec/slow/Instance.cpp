@@ -166,7 +166,7 @@ void Instance::init() {
   player_->init();
   components_.reset(new Components(this));
   commandRecordTable_.reset(new command::CommandRecordTable);
-  applicationCommandTarget_.reset(new command::CommandTarget(this));
+  commandTarget_.reset(new command::CommandTarget(this));
   commandData_.reset(slow::createSlowCommandData(this));
 
   currentTime_.reset(new CurrentTime(this));
@@ -183,7 +183,7 @@ void Instance::init() {
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
 
   applicationCommandManager_.setFirstCommandTarget(
-      applicationCommandTarget_.get());
+      applicationCommandTarget());
   window_->addKeyListener(applicationCommandManager_.getKeyMappings());
 
   components_->init();
@@ -192,7 +192,7 @@ void Instance::init() {
 
   command::fillCommandRecordTable(*commandData_, commandRecordTable_.get());
   applicationCommandManager_.registerAllCommandsForTarget(
-      applicationCommandTarget_.get());
+      applicationCommandTarget());
   command::loadKeyboardBindings(&applicationCommandManager_);
   window_->getAppleMenu()->addCommandItem(&applicationCommandManager_,
                                           slow::SlowCommand::ABOUT_THIS_PROGRAM);
@@ -212,7 +212,7 @@ void Instance::init() {
 
   components_->transportController_->addListener(guiListener_.get());
   components_->commandBar_->addListener(guiListener_.get());
-  guiListener_->addListener(applicationCommandTarget_.get());
+  guiListener_->addListener(idListener());
 
   player_->timer()->addListener(components_->timeController_.get());
   player_->timer()->addListener(waveform->timeCursor());
@@ -225,8 +225,7 @@ void Instance::init() {
 
   window_->addListener(menus_.get());
 
-  DialogLocker::getDisableBroadcaster()->addListener(
-    applicationCommandTarget_.get());
+  DialogLocker::getDisableBroadcaster()->addListener(enableListener());
   DialogLocker::getDisableBroadcaster()->addListener(window_->application());
 
 #ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK
@@ -329,7 +328,7 @@ ApplicationCommandTarget* Instance::applicationCommandTarget() {
   if (USE_NEW_COMMANDS)
     return juceModel_.get();
   else
-    return applicationCommandTarget_.get();
+    return commandTarget_.get();
 }
 
 ApplicationCommandManager* Instance::applicationCommandManager() {
@@ -351,6 +350,20 @@ void Instance::menuItemsChanged() {
     juceModel_->menuItemsChanged();
   else
     return menus_->menuItemsChanged();
+}
+
+Listener<Enable>* Instance::enableListener() {
+  if (USE_NEW_COMMANDS)
+    return juceModel_.get();
+  else
+    return commandTarget_.get();
+}
+
+Listener<command::ID>* Instance::idListener() {
+  if (USE_NEW_COMMANDS)
+    return juceModel_.get();
+  else
+    return commandTarget_.get();
 }
 
 }  // namespace slow

@@ -111,6 +111,7 @@ Broadcaster<Type>::~Broadcaster() {
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
+  DCHECK(listener);
   {
     Lock l(lock_);
     listeners_.insert(listener);

@@ -41,6 +41,8 @@ class Program {
   virtual VirtualFile getCurrentFile() const = 0;
   virtual CallbackMap* getCallbackMap() = 0;
   virtual string commandName(CommandID) const = 0;
+  virtual bool isEnabled() const = 0;
+  virtual void setEnabled(bool) = 0;
 };
 
 void registerProgram(Program*);

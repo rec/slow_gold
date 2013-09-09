@@ -5,6 +5,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/base/SampleRate.h"
 #include "rec/base/SampleTime.h"
+#include "rec/command/ID.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
@@ -85,6 +86,8 @@ class Instance {
 
   ApplicationCommandTarget* applicationCommandTarget();
   ApplicationCommandManager* applicationCommandManager();
+  Listener<Enable>* enableListener();
+  Listener<command::ID>* idListener();
 
   Menus* menus();
   void menuItemsChanged();
@@ -92,7 +95,7 @@ class Instance {
   static const bool USE_NEW_COMMANDS;
 
  private:
-  ptr<command::CommandTarget> applicationCommandTarget_;
+  ptr<command::CommandTarget> commandTarget_;
   ApplicationCommandManager applicationCommandManager_;
   ptr<Menus> menus_;
   unique_ptr<SlowProgram> slowProgram_;

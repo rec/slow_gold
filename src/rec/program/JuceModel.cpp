@@ -69,8 +69,8 @@ void JuceModel::getCommandInfo(CommandID id,
         if (value.bool_f())
           flags |= ApplicationCommandInfo::isTicked;
       } else {
-        LOG_IF(DFATAL, not value.has_int32_f()) << "No int32 value";
-        int32 index = value.int32_f();
+        LOG_IF(DFATAL, not value.has_enum_f()) << "No int32 value";
+        int32 index = value.enum_f();
         uint32 size = desc.menu_size();
         if (index >= size) {
           LOG(DFATAL) << "Index too large: " << index << " >= " << size;
@@ -122,6 +122,19 @@ PopupMenu JuceModel::getMenuForIndex(int menuIndex, const String&) {
   }
 
   return menu;
+}
+
+void JuceModel::operator()(command::ID id) {
+  (*this)(id.get());
+}
+
+void JuceModel::operator()(CommandID id) {
+  if (not applicationCommandManager()->invokeDirectly(id, false))
+    LOG(DFATAL) << "Failed to invoke " << program_->commandName(id);
+}
+
+void JuceModel::operator()(Enable enable) {
+  program_->setEnabled(enable);
 }
 
 }  // namespace program

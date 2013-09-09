@@ -7,6 +7,7 @@
 namespace rec {
 namespace command {
 
+// TODO: this is now obsolete.
 class ID {
  public:
   enum Index {
