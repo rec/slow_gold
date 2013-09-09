@@ -8,16 +8,16 @@
 namespace rec {
 namespace program {
 
-ProgramMap makeProgramMap(const Program& program) {
-  ProgramMap programMap;
+CommandMap makeCommandMap(const Program& program) {
+  CommandMap commandMap;
   auto commands = program.commands().command();
 
   for (auto& command: commands) {
     CommandID id = command.command();
-    programMap[id] = command;
+    commandMap[id] = command;
     if (command.has_index()) {
       for (int i = command.start_index(); i <= command.index(); ++i)
-        programMap[id + i - command::ID::FIRST] = command;
+        commandMap[id + i - command::ID::FIRST] = command;
     }
   }
 
@@ -27,13 +27,13 @@ ProgramMap makeProgramMap(const Program& program) {
     if (entry.has_index())
       id += entry.index() - command::ID::FIRST;
     try {
-      *programMap.at(id).mutable_keypress() = entry.key();
+      *commandMap.at(id).mutable_keypress() = entry.key();
     } catch (const std::out_of_range&) {
       LOG(DFATAL) << "Out of range keypress command." << id;
     }
   }
 
-  return programMap;
+  return commandMap;
 }
 
 typedef std::unordered_set<string> StringSet;

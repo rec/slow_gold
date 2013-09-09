@@ -36,7 +36,7 @@ void checkMenuEntry(const MenuEntry& menuEntry) {
 JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
     : program_(p),
       juceModel_(juceModel),
-      programMap_(makeProgramMap(*p)),
+      commandMap_(makeCommandMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)) {
   auto commands = program_->commands().command();
@@ -47,10 +47,10 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
 
   program_->registerAllCallbacks();
 
-  for (auto& i: programMap_)
+  for (auto& i: commandMap_)
     program_->getCallback(i.first);
 
-  LOG(INFO) << "There are " << programMap_.size() << " callback entries!!!!";
+  LOG(INFO) << "There are " << commandMap_.size() << " callback entries!!!!";
 }
 
 const MenuBar& JuceModelImpl::menuBar() const {

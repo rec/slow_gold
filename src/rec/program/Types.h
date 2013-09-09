@@ -9,7 +9,7 @@
 namespace rec {
 namespace program {
 
-typedef std::unordered_map<CommandID, command::Command> ProgramMap;
+typedef std::unordered_map<CommandID, command::Command> CommandMap;
 typedef std::unordered_map<string, Menu> MenuMap;
 typedef std::unordered_map<string, MenuBar> MenuBarMap;
 

@@ -24,7 +24,7 @@ class JuceModelImpl {
     return &applicationCommandManager_;
   }
 
-  const ProgramMap& programMap() const { return programMap_; }
+  const CommandMap& commandMap() const { return commandMap_; }
 
  private:
   typedef vector<unique_ptr<SetterListener>> DataListeners;
@@ -37,7 +37,7 @@ class JuceModelImpl {
 
   Program* const program_;
   JuceModel* const juceModel_;
-  ProgramMap programMap_;
+  CommandMap commandMap_;
   const MenuCollection menuCollection;
   const MenuMap menuMap_;
   const MenuBarMap menuBarMap_;

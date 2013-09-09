@@ -40,14 +40,14 @@ void JuceModel::init() {
 JuceModel::~JuceModel() {}
 
 void JuceModel::getAllCommands(juce::Array<CommandID>& commands) {
-  for (auto& mapEntry: impl_->programMap())
+  for (auto& mapEntry: impl_->commandMap())
     commands.add(mapEntry.first);
 }
 
 void JuceModel::getCommandInfo(CommandID id,
                                ApplicationCommandInfo& info) {
   try {
-    const command::Command& command = impl_->programMap().at(id);
+    const command::Command& command = impl_->commandMap().at(id);
     const Description& desc = command.desc();
 
     int flags = command.flags();

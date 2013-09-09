@@ -8,7 +8,7 @@ namespace program {
 
 class Program;
 
-ProgramMap makeProgramMap(const Program&);
+CommandMap makeCommandMap(const Program&);
 MenuMap makeMenuMap(const Program&);
 MenuBarMap makeMenuBarMap(const Program&);
 
