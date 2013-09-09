@@ -79,6 +79,10 @@ VirtualFile SlowProgram::getCurrentFile() const {
 const int MARGIN = 10;
 
 string SlowProgram::commandName(CommandID id) const {
+  return rec::slow::commandName(id);
+}
+
+string commandName(CommandID id) {
   bool isCompound = id > SlowCommand::BANK_SIZE - MARGIN;
   int mod;
   if (isCompound) {

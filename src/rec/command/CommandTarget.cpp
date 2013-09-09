@@ -2,6 +2,7 @@
 
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/slow/commands/SlowProgram.h"
 #include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -14,6 +15,7 @@ void CommandTarget::getAllCommands(juce::Array<CommandID>& commands) {
 
 void CommandTarget::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   Lock l(lock_);
+  // DLOG(INFO) << "getCommandInfo " << slow::commandName(id);
   CommandRecord* cr = commandRecordTable()->find(id);
   if (!cr) {
     LOG(DFATAL) << "Couldn't get command info for id " << ID(id);
@@ -21,8 +23,10 @@ void CommandTarget::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   }
   info = *(cr->getInfo());
 
-  if (!info.shortName.isNotEmpty())
-    LOG(ERROR) << "No name for " << ID(id);
+  if (!info.shortName.isNotEmpty()) {
+    LOG(ERROR) << "No name for " << slow::commandName(id);
+    info.shortName = "ERROR";
+  }
 }
 
 bool CommandTarget::perform(const InvocationInfo& invocation) {

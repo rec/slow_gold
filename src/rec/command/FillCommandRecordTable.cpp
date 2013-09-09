@@ -7,6 +7,7 @@
 #include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
 #include "rec/util/thread/MakeCallback.h"
+#include "rec/slow/commands/SlowProgram.h"
 
 namespace rec {
 namespace command {
@@ -31,13 +32,31 @@ void fillSingleCommand(const CommandData& data, CommandRecordTable* table,
   cr->command_.reset(new Command(cmd));
 }
 
+Command* indexCommand(const Command& cmd, int index) {
+  ptr<Command> command(new Command);
+  command->set_command(cmd.command());
+  command->set_index(index);
+  command->set_category(cmd.category());
+  if (cmd.desc().menu_size() > index)
+    command->mutable_desc()->add_menu(cmd.desc().menu(index));
+  else
+    DCHECK_GT(cmd.desc().menu_size(), index);
+  if (cmd.desc().full_size() > index)
+    command->mutable_desc()->add_full(cmd.desc().full(index));
+  else
+    DCHECK_GT(cmd.desc().full_size(), index);
+
+  return command.release();
+}
+
 void fillRepeatingCommand(CommandRecordTable* table, const Command& cmd) {
   int len = cmd.desc().menu_size();
   DCHECK_EQ(len, cmd.desc().full_size()) << cmd.ShortDebugString();
-  ID begin = ID(cmd.command(), cmd.start_index());
+  ID begin(cmd.command());
   ID end = begin + len;
   for (ID i = begin; i != end; ++i) {
     if (CommandRecord* cr = table->find(i)) {
+      DLOG(INFO) << "filling " << slow::commandName(i);
       DCHECK(!cr->command_) << cr->command_->ShortDebugString();
       cr->command_.reset(indexCommand(cmd, i - begin));
     } else {
@@ -50,11 +69,11 @@ void fillRepeatingCommand(CommandRecordTable* table, const Command& cmd) {
 
 void fillCommandRecordTable(const CommandData& data,
                             CommandRecordTable* table) {
-  data.addCallbacks(table);
+ data.addCallbacks(table);
   const Commands& commands = data.allCommands();
   for (int i = 0; i < commands.command_size(); ++i) {
     const Command& cmd = commands.command(i);
-    if (cmd.has_start_index())
+    if (cmd.has_index())
       fillRepeatingCommand(table, cmd);
     else
       fillSingleCommand(data, table, cmd);

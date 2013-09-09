@@ -4,6 +4,8 @@
 #include "rec/data/Data.h"
 #include "rec/util/STL.h"
 
+#include "rec/slow/commands/SlowProgram.h"
+
 namespace rec {
 namespace command {
 

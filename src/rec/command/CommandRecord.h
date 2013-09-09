@@ -17,8 +17,8 @@ class CommandRecord {
   ApplicationCommandInfo* getInfo() { return &info_; }
   void fillInfo();
 
-  // private:
   ApplicationCommandInfo info_;
+
   unique_ptr<Command> command_;
   unique_ptr<Callback> callback_;
   unique_ptr<CommandItemSetter> setter_;
@@ -26,8 +26,6 @@ class CommandRecord {
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandRecord);
 };
-
-Command* indexCommand(const Command& cmd, int index);
 
 }  // namespace command
 }  // namespace rec

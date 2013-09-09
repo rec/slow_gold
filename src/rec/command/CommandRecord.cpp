@@ -5,8 +5,10 @@ namespace rec {
 namespace command {
 
 void CommandRecord::fillInfo() {
-	if (!command_)
+	if (!command_) {
+    LOG(ERROR) << "No command for " << info_.commandID;
   	return;
+  }
 
   ID id = info_.commandID;
   if (!callback_)
@@ -43,23 +45,6 @@ void CommandRecord::fillInfo() {
                << ", " << fullName.length()
                << command_->ShortDebugString();
   }
-}
-
-Command* indexCommand(const Command& cmd, int index) {
-  ptr<Command> command(new Command);
-  command->set_command(cmd.command());
-  command->set_index(index + ID::FIRST);
-  command->set_category(cmd.category());
-  if (cmd.desc().menu_size() > index)
-    command->mutable_desc()->add_menu(cmd.desc().menu(index));
-  else
-    DCHECK_GT(cmd.desc().menu_size(), index);
-  if (cmd.desc().full_size() > index)
-    command->mutable_desc()->add_full(cmd.desc().full(index));
-  else
-    DCHECK_GT(cmd.desc().full_size(), index);
-
-  return command.release();
 }
 
 }  // namespace command

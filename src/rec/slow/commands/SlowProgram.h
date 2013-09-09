@@ -38,6 +38,8 @@ class SlowProgram : public program::ProgramBase {
   DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowProgram);
 };
 
+string commandName(CommandID);
+
 }  // namespace slow
 }  // namespace rec
 
