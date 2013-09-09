@@ -250,7 +250,7 @@ slow_command {
 slow_command {
   type: JUMP
   command {
-    index: 9
+    index: 15
     category: "Transport"
     desc {
       menu: "Jump To First Segment"
@@ -284,14 +284,13 @@ slow_command {
       full: "Jump to the start of segment 9."
       full: "Jump to the start of segment 10."
     }
-    start_index: -5
     disabled: "empty"
   }
 }
 slow_command {
   type: JUMP_SELECTED
   command {
-    index: 9
+    index: 15
     category: "Transport"
     desc {
       menu: "Jump To First Selected Segment"
@@ -325,7 +324,6 @@ slow_command {
       full: "Jump To Selected Segment 9"
       full: "Jump To Selected Segment 10"
     }
-    start_index: -5
     disabled: "empty"
   }
 }
@@ -623,7 +621,6 @@ slow_command {
       full: "Recent file"
       full: "Recent file"
     }
-    start_index: 0
   }
 }
 slow_command {
@@ -682,7 +679,7 @@ slow_command {
 slow_command {
   type: SELECT
   command {
-    index: 9
+    index: 15
     category: "Selection"
     desc {
       menu: "Select First Segment"
@@ -716,7 +713,6 @@ slow_command {
       full: "Select Segment 9"
       full: "Select Segment 10"
     }
-    start_index: -5
     disabled: "empty"
   }
 }
@@ -734,7 +730,7 @@ slow_command {
 slow_command {
   type: SELECT_ONLY
   command {
-    index: -1
+    index: 15
     category: "Selection"
     desc {
       menu: "Select First Segment Only"
@@ -768,7 +764,6 @@ slow_command {
       full: "Select Segment 9 Only"
       full: "Select Segment 10 Only"
     }
-    start_index: -5
     disabled: "empty"
   }
 }
@@ -1031,7 +1026,7 @@ slow_command {
 slow_command {
   type: TOGGLE_SELECTION
   command {
-    index: 9
+    index: 15
     category: "Selection"
     desc {
       menu: "Toggle First Segment Selection"
@@ -1065,7 +1060,6 @@ slow_command {
       full: "Toggle Segment Selection 9"
       full: "Toggle Segment Selection 10"
     }
-    start_index: -5
     disabled: "empty"
   }
 }
@@ -1251,7 +1245,7 @@ slow_command {
 slow_command {
   type: UNSELECT
   command {
-    index: 9
+    index: 15
     category: "Selection"
     desc {
       menu: "Unselect First Segment"
@@ -1285,7 +1279,6 @@ slow_command {
       full: "Unselect Segment 9"
       full: "Unselect Segment 10"
     }
-    start_index: -5
     disabled: "empty"
   }
 }

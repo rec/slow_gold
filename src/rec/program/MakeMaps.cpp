@@ -16,8 +16,8 @@ CommandMap makeCommandMap(const Program& program) {
     CommandID id = command.command();
     commandMap[id] = command;
     if (command.has_index()) {
-      for (int i = command.start_index(); i <= command.index(); ++i)
-        commandMap[id + i - command::ID::FIRST] = command;
+      for (int i = command.start_index(); i < command.index(); ++i)
+        commandMap[id + i] = command;
     }
   }
 
@@ -29,7 +29,7 @@ CommandMap makeCommandMap(const Program& program) {
     try {
       *commandMap.at(id).mutable_keypress() = entry.key();
     } catch (const std::out_of_range&) {
-      LOG(DFATAL) << "Out of range keypress command." << id;
+      LOG(ERROR) << "Out of range keypress command." << program.commandName(id);
     }
   }
 

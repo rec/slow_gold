@@ -75,154 +75,154 @@ slow_entry {
   command: JUMP
   entry {
     key: "1"
-    index: 0
+    index: 5
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "2"
-    index: 1
+    index: 6
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "3"
-    index: 2
+    index: 7
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "4"
-    index: 3
+    index: 8
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "5"
-    index: 4
+    index: 9
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "6"
-    index: 5
+    index: 10
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "7"
-    index: 6
+    index: 11
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "8"
-    index: 7
+    index: 12
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "9"
-    index: 8
+    index: 13
   }
 }
 slow_entry {
   command: JUMP
   entry {
     key: "0"
-    index: 9
+    index: 14
   }
 }
 slow_entry {
   command: JUMP_SELECTED
   entry {
     key: "command + cursor left"
-    index: -5
-  }
-}
-slow_entry {
-  command: JUMP_SELECTED
-  entry {
-    key: "command + cursor right"
-    index: -1
-  }
-}
-slow_entry {
-  command: JUMP_SELECTED
-  entry {
-    key: "shift + !"
     index: 0
   }
 }
 slow_entry {
   command: JUMP_SELECTED
   entry {
-    key: "shift + @"
-    index: 1
-  }
-}
-slow_entry {
-  command: JUMP_SELECTED
-  entry {
-    key: "shift + #"
-    index: 2
-  }
-}
-slow_entry {
-  command: JUMP_SELECTED
-  entry {
-    key: "shift + $"
-    index: 3
-  }
-}
-slow_entry {
-  command: JUMP_SELECTED
-  entry {
-    key: "shift + %"
+    key: "command + cursor right"
     index: 4
   }
 }
 slow_entry {
   command: JUMP_SELECTED
   entry {
-    key: "shift + ^"
+    key: "shift + !"
     index: 5
   }
 }
 slow_entry {
   command: JUMP_SELECTED
   entry {
-    key: "shift + &"
+    key: "shift + @"
     index: 6
   }
 }
 slow_entry {
   command: JUMP_SELECTED
   entry {
-    key: "shift + *"
+    key: "shift + #"
     index: 7
   }
 }
 slow_entry {
   command: JUMP_SELECTED
   entry {
-    key: "shift + ("
+    key: "shift + $"
     index: 8
   }
 }
 slow_entry {
   command: JUMP_SELECTED
   entry {
-    key: "shift + )"
+    key: "shift + %"
     index: 9
+  }
+}
+slow_entry {
+  command: JUMP_SELECTED
+  entry {
+    key: "shift + ^"
+    index: 10
+  }
+}
+slow_entry {
+  command: JUMP_SELECTED
+  entry {
+    key: "shift + &"
+    index: 11
+  }
+}
+slow_entry {
+  command: JUMP_SELECTED
+  entry {
+    key: "shift + *"
+    index: 12
+  }
+}
+slow_entry {
+  command: JUMP_SELECTED
+  entry {
+    key: "shift + ("
+    index: 13
+  }
+}
+slow_entry {
+  command: JUMP_SELECTED
+  entry {
+    key: "shift + )"
+    index: 14
   }
 }
 slow_entry {
@@ -371,98 +371,98 @@ slow_entry {
   command: SELECT_ONLY
   entry {
     key: "ctrl + command + cursor left"
-    index: -5
+    index: 0
   }
 }
 slow_entry {
   command: SELECT_ONLY
   entry {
     key: "ctrl + cursor left"
-    index: -4
+    index: 1
   }
 }
 slow_entry {
   command: SELECT_ONLY
   entry {
     key: "ctrl + cursor right"
-    index: -2
+    index: 3
   }
 }
 slow_entry {
   command: SELECT_ONLY
   entry {
     key: "ctrl + command + cursor right"
-    index: -1
-  }
-}
-slow_entry {
-  command: TOGGLE_SELECTION
-  entry {
-    key: "command + 1"
-    index: 0
-  }
-}
-slow_entry {
-  command: TOGGLE_SELECTION
-  entry {
-    key: "command + 2"
-    index: 1
-  }
-}
-slow_entry {
-  command: TOGGLE_SELECTION
-  entry {
-    key: "command + 3"
-    index: 2
-  }
-}
-slow_entry {
-  command: TOGGLE_SELECTION
-  entry {
-    key: "command + 4"
-    index: 3
-  }
-}
-slow_entry {
-  command: TOGGLE_SELECTION
-  entry {
-    key: "command + 5"
     index: 4
   }
 }
 slow_entry {
   command: TOGGLE_SELECTION
   entry {
-    key: "command + 6"
+    key: "command + 1"
     index: 5
   }
 }
 slow_entry {
   command: TOGGLE_SELECTION
   entry {
-    key: "command + 7"
+    key: "command + 2"
     index: 6
   }
 }
 slow_entry {
   command: TOGGLE_SELECTION
   entry {
-    key: "command + 8"
+    key: "command + 3"
     index: 7
   }
 }
 slow_entry {
   command: TOGGLE_SELECTION
   entry {
-    key: "command + 9"
+    key: "command + 4"
     index: 8
   }
 }
 slow_entry {
   command: TOGGLE_SELECTION
   entry {
-    key: "command + 0"
+    key: "command + 5"
     index: 9
+  }
+}
+slow_entry {
+  command: TOGGLE_SELECTION
+  entry {
+    key: "command + 6"
+    index: 10
+  }
+}
+slow_entry {
+  command: TOGGLE_SELECTION
+  entry {
+    key: "command + 7"
+    index: 11
+  }
+}
+slow_entry {
+  command: TOGGLE_SELECTION
+  entry {
+    key: "command + 8"
+    index: 12
+  }
+}
+slow_entry {
+  command: TOGGLE_SELECTION
+  entry {
+    key: "command + 9"
+    index: 13
+  }
+}
+slow_entry {
+  command: TOGGLE_SELECTION
+  entry {
+    key: "command + 0"
+    index: 14
   }
 }
 slow_entry {

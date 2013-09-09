@@ -31,7 +31,7 @@ int toIndex(int position, int32 segment, int32 size) {
     (position == ID::CURRENT) ? segment :
     (position == ID::NEXT) ? segment + 1 :
     (position == ID::LAST) ? size - 1 :
-    position;
+    (position - ID::LAST - 1);
   return mod(pos, size);
 }
 
@@ -276,10 +276,14 @@ void addCallback(CallbackTable* c, int32 type, int32 position,
   addCallback(c, ID(type, position), loop, f, position);
 }
 
+const int MENU_COMMAND_REPEATS = 15;
+
 }  // namespace
 
+
+
 void addRepeatedCallbacks(CallbackTable* t, int repeat, bool newStyle) {
-  for (int32 j = ID::FIRST; j < repeat; ++j) {
+  for (int32 j = 0; j < MENU_COMMAND_REPEATS; ++j) {
     addCallback(t, slow::SlowCommand::SELECT, j, selectAdd);
     addCallback(t, slow::SlowCommand::SELECT_ONLY, j, selectOnly);
     addCallback(t, slow::SlowCommand::TOGGLE_SELECTION, j, toggle);

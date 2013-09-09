@@ -10,7 +10,7 @@ namespace command {
 class ID {
  public:
   enum Index {
-    FIRST = -5, PREVIOUS = -4, CURRENT = -3, NEXT = -2, LAST = -1
+    FIRST = 0, PREVIOUS = 1, CURRENT = 2, NEXT = 3, LAST = 4
   };
 
   ID() {}
