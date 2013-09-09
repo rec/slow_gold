@@ -537,17 +537,12 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 size() const;
   inline void set_size(::google::protobuf::uint32 value);
 
-  // optional string name_maker = 10;
-  inline bool has_name_maker() const;
-  inline void clear_name_maker();
-  static const int kNameMakerFieldNumber = 10;
-  inline const ::std::string& name_maker() const;
-  inline void set_name_maker(const ::std::string& value);
-  inline void set_name_maker(const char* value);
-  inline void set_name_maker(const char* value, size_t size);
-  inline ::std::string* mutable_name_maker();
-  inline ::std::string* release_name_maker();
-  inline void set_allocated_name_maker(::std::string* name_maker);
+  // optional bool callout = 10;
+  inline bool has_callout() const;
+  inline void clear_callout();
+  static const int kCalloutFieldNumber = 10;
+  inline bool callout() const;
+  inline void set_callout(bool value);
 
   // repeated string hidden = 11;
   inline int hidden_size() const;
@@ -615,8 +610,8 @@ class Command : public ::google::protobuf::Message {
   inline void clear_has_setter();
   inline void set_has_size();
   inline void clear_has_size();
-  inline void set_has_name_maker();
-  inline void clear_has_name_maker();
+  inline void set_has_callout();
+  inline void clear_has_callout();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -628,11 +623,11 @@ class Command : public ::google::protobuf::Message {
   ::google::protobuf::uint32 flags_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
-  ::std::string* name_maker_;
+  ::google::protobuf::uint32 size_;
+  bool callout_;
   ::google::protobuf::RepeatedPtrField< ::std::string> hidden_;
   ::google::protobuf::RepeatedPtrField< ::std::string> disabled_;
   ::google::protobuf::RepeatedPtrField< ::std::string> ticked_;
-  ::google::protobuf::uint32 size_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(13 + 31) / 32];
@@ -1425,74 +1420,26 @@ inline void Command::set_size(::google::protobuf::uint32 value) {
   size_ = value;
 }
 
-// optional string name_maker = 10;
-inline bool Command::has_name_maker() const {
+// optional bool callout = 10;
+inline bool Command::has_callout() const {
   return (_has_bits_[0] & 0x00000200u) != 0;
 }
-inline void Command::set_has_name_maker() {
+inline void Command::set_has_callout() {
   _has_bits_[0] |= 0x00000200u;
 }
-inline void Command::clear_has_name_maker() {
+inline void Command::clear_has_callout() {
   _has_bits_[0] &= ~0x00000200u;
 }
-inline void Command::clear_name_maker() {
-  if (name_maker_ != &::google::protobuf::internal::kEmptyString) {
-    name_maker_->clear();
-  }
-  clear_has_name_maker();
+inline void Command::clear_callout() {
+  callout_ = false;
+  clear_has_callout();
 }
-inline const ::std::string& Command::name_maker() const {
-  return *name_maker_;
+inline bool Command::callout() const {
+  return callout_;
 }
-inline void Command::set_name_maker(const ::std::string& value) {
-  set_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    name_maker_ = new ::std::string;
-  }
-  name_maker_->assign(value);
-}
-inline void Command::set_name_maker(const char* value) {
-  set_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    name_maker_ = new ::std::string;
-  }
-  name_maker_->assign(value);
-}
-inline void Command::set_name_maker(const char* value, size_t size) {
-  set_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    name_maker_ = new ::std::string;
-  }
-  name_maker_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Command::mutable_name_maker() {
-  set_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    name_maker_ = new ::std::string;
-  }
-  return name_maker_;
-}
-inline ::std::string* Command::release_name_maker() {
-  clear_has_name_maker();
-  if (name_maker_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = name_maker_;
-    name_maker_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void Command::set_allocated_name_maker(::std::string* name_maker) {
-  if (name_maker_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_maker_;
-  }
-  if (name_maker) {
-    set_has_name_maker();
-    name_maker_ = name_maker;
-  } else {
-    clear_has_name_maker();
-    name_maker_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
+inline void Command::set_callout(bool value) {
+  set_has_callout();
+  callout_ = value;
 }
 
 // repeated string hidden = 11;

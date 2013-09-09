@@ -1237,7 +1237,8 @@ static const unsigned char temp_e71d8a85[] =
 "      menu: \"Loop This Segment\"\r\n"
 "      full: \"Toggle selection between the current segment and the whole song.\"\r\n"
 "    }\r\n"
-"    disabled: \"empty\"\r\n"
+"    disabled: \"one_or_fewer_segments\"\r\n"
+"    callout: true\r\n"
 "  }\r\n"
 "}\r\n"
 "slow_command {\r\n"
@@ -13529,7 +13530,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
 
     switch (hash)
     {
-        case 0x5863c28f:  numBytes = 30200; return SlowCommands_def;
+        case 0x5863c28f:  numBytes = 30235; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 6951; return SlowKeyStrokeMap_def;
         case 0xbef1a624:  numBytes = 355; return SlowMenuCollection_def;
         case 0xce3bc719:  numBytes = 2845; return SlowMenus_def;

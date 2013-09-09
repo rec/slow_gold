@@ -23,10 +23,11 @@ class Program {
   virtual string menuBarName() const = 0;
 
   virtual bool hasProperty(const string& name) const = 0;
-  virtual string makeMenuName(const command::Command&, CommandID) const = 0;
+  virtual void commandCallout(const command::Command&, ApplicationCommandInfo*)
+    const = 0;
 
   // Add an entry only for MenuEntries which have a callout_function.
-  virtual void addMenuEntry(PopupMenu*, const MenuEntry&) const = 0;
+  virtual void menuCallout(PopupMenu*, const MenuEntry&) const = 0;
 
   virtual const gui::RecentFilesStrategy& recentFilesStrategy() const = 0;
 

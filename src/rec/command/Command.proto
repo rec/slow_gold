@@ -59,7 +59,7 @@ message Command {
 
   // The name of a function that actually makes the menu name given the Menu
   // entry information.
-  optional string name_maker = 10;
+  optional bool callout = 10;
 
   // Each string in 'hidden', 'disabled' or 'checked' names a condition.  If any
   // of these conditions is true, the menu item is hidden, checked or disabled.

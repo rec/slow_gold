@@ -8,11 +8,17 @@
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/slow/commands/SlowCommandData.h"
+#include "rec/translation/TranslationTables.h"
 #include "rec/util/Binary.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 
 using namespace rec::widget::waveform;
+
+// TODO: duplicates strings in BasicMenuMaker.
+TRAN(LOOP_ENTIRE_TRACK2, "Loop Entire Track");
+TRAN(LOOP_THIS_SEGMENT2, "Loop This Segment");
 
 namespace rec {
 namespace slow {
@@ -70,8 +76,14 @@ bool SlowProgram::hasProperty(const string& name) const {
   return ProgramBase::hasProperty(name);
 }
 
-string SlowProgram::makeMenuName(const command::Command&, CommandID) const {
-  return "";
+void SlowProgram::commandCallout(const command::Command& command,
+                                 ApplicationCommandInfo* info) const {
+  DCHECK_EQ(command.command(), SlowCommand::TOGGLE_WHOLE_SONG_LOOP);
+  auto lpl = data::getProto<Viewport>(instance_->file()).loop_points();
+  if (lpl.loop_point_size() <= 1 or audio::getSelectionCount(lpl) == 1)
+    info->shortName = t_LOOP_ENTIRE_TRACK2;
+  else
+    info->shortName = t_LOOP_THIS_SEGMENT2;
 }
 
 const gui::RecentFilesStrategy& SlowProgram::recentFilesStrategy() const {

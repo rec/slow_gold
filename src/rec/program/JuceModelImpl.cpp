@@ -79,7 +79,7 @@ void JuceModelImpl::addCommands(PopupMenu* popup,
 }
 
 void JuceModelImpl::addMenuEntry(PopupMenu* popup,
-                                   const MenuEntry& menuEntry) {
+                                 const MenuEntry& menuEntry) {
   checkMenuEntry(menuEntry);
   if (menuEntry.command_size())
     addCommands(popup, menuEntry);
@@ -91,7 +91,7 @@ void JuceModelImpl::addMenuEntry(PopupMenu* popup,
     makeRecentFiles(popup);
 
   else if (menuEntry.has_callout_function())
-    program_->addMenuEntry(popup, menuEntry);
+    program_->menuCallout(popup, menuEntry);
 
   else
     popup->addSeparator();

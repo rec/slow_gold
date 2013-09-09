@@ -75,6 +75,8 @@ void JuceModel::getCommandInfo(CommandID id,
       shortName = &desc.menu(0);
 
     info.setInfo(*shortName, desc.full(0), command.category(), flags);
+    if (command.callout())
+      program_->commandCallout(command, &info);
   } catch (const std::out_of_range&) {
     LOG(DFATAL) << "getCommandInfo out of range " << info.commandID;
   }
