@@ -28,6 +28,7 @@ class SlowProgram : public program::ProgramBase {
   const gui::RecentFilesStrategy& recentFilesStrategy() const override;
 
   VirtualFile getCurrentFile() const override;
+  void beforeCommand(CommandID id) override;
 
   void registerAllCallbacks() override;
   string commandName(CommandID) const override;

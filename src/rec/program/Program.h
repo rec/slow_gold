@@ -30,6 +30,10 @@ class Program {
 
   virtual const gui::RecentFilesStrategy& recentFilesStrategy() const = 0;
 
+  // Called before a new command goes off (perhaps to get rid of the "About
+  // This Program" window).
+  virtual void beforeCommand(CommandID id) = 0;
+
   virtual void registerAllCallbacks() = 0;
   virtual void addCallback(CommandID, unique_ptr<Callback>) = 0;
   virtual Callback* getCallback(CommandID) const = 0;

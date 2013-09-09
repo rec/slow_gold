@@ -6,6 +6,8 @@
 #include "rec/slow/commands/SlowCommandData.h"
 #include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/Binary.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace slow {
@@ -64,7 +66,6 @@ const gui::RecentFilesStrategy& SlowProgram::recentFilesStrategy() const {
   return gui::getMusicRecentFilesStrategy();
 }
 
-
 void SlowProgram::registerAllCallbacks() {
   command::CommandRecordTable crt;
   slow::addSlowCallbacks(&crt, true);
@@ -74,6 +75,11 @@ void SlowProgram::registerAllCallbacks() {
 
 VirtualFile SlowProgram::getCurrentFile() const {
   return instance_->file();
+}
+
+void SlowProgram::beforeCommand(CommandID id) {
+	if (id != SlowCommand::ABOUT_THIS_PROGRAM && instance_->window_)
+    thread::callAsync(instance_->window_, &app::Window::stopAboutWindow);
 }
 
 const int MARGIN = 10;
