@@ -1,6 +1,9 @@
 #include "rec/slow/commands/SlowProgram.h"
+
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/data/Data.h"
+#include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/SlowCommandData.h"
@@ -49,7 +52,7 @@ program::MenuCollection SlowProgram::menuCollection() const {
 }
 
 string SlowProgram::menuBarName() const {
-  return "";
+  return data::getProto<GuiSettings>().advanced_menus() ? "advanced" : "basic";
 }
 
 bool SlowProgram::hasProperty(const string& name) const {
