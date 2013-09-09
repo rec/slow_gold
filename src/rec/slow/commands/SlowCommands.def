@@ -555,7 +555,7 @@ slow_command {
 slow_command {
   type: RECENT_FILES
   command {
-    index: 32
+    index: 31
     category: "File"
     desc {
       menu: "Recent file 1"
@@ -682,7 +682,7 @@ slow_command {
 slow_command {
   type: SELECT
   command {
-    index: 10
+    index: 9
     category: "Selection"
     desc {
       menu: "Select First Segment"
@@ -1251,7 +1251,7 @@ slow_command {
 slow_command {
   type: UNSELECT
   command {
-    index: 10
+    index: 9
     category: "Selection"
     desc {
       menu: "Unselect First Segment"

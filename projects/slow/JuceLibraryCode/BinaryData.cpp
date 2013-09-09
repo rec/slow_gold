@@ -566,7 +566,7 @@ static const unsigned char temp_e71d8a85[] =
 "slow_command {\r\n"
 "  type: RECENT_FILES\r\n"
 "  command {\r\n"
-"    index: 32\r\n"
+"    index: 31\r\n"
 "    category: \"File\"\r\n"
 "    desc {\r\n"
 "      menu: \"Recent file 1\"\r\n"
@@ -693,7 +693,7 @@ static const unsigned char temp_e71d8a85[] =
 "slow_command {\r\n"
 "  type: SELECT\r\n"
 "  command {\r\n"
-"    index: 10\r\n"
+"    index: 9\r\n"
 "    category: \"Selection\"\r\n"
 "    desc {\r\n"
 "      menu: \"Select First Segment\"\r\n"
@@ -1262,7 +1262,7 @@ static const unsigned char temp_e71d8a85[] =
 "slow_command {\r\n"
 "  type: UNSELECT\r\n"
 "  command {\r\n"
-"    index: 10\r\n"
+"    index: 9\r\n"
 "    category: \"Selection\"\r\n"
 "    desc {\r\n"
 "      menu: \"Unselect First Segment\"\r\n"
@@ -13538,7 +13538,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
 
     switch (hash)
     {
-        case 0x5863c28f:  numBytes = 30383; return SlowCommands_def;
+        case 0x5863c28f:  numBytes = 30381; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 6942; return SlowKeyStrokeMap_def;
         case 0xbef1a624:  numBytes = 355; return SlowMenuCollection_def;
         case 0xce3bc719:  numBytes = 2845; return SlowMenus_def;

@@ -10,6 +10,7 @@
 
 using namespace rec::command;
 using namespace rec::data;
+using namespace rec::util::thread;
 
 namespace rec {
 namespace program {
@@ -20,17 +21,13 @@ SetterListener::SetterListener(const command::Command& command,
                       command.setter().type_name(),
                       command.setter().is_global() ? GLOBAL_SCOPE : FILE_SCOPE),
       model_(model) {
-  Program* pgm = model->program();
+  Program* p = model->program();
   CommandID id = command.command();
   if (command.setter().type() == Setter::TOGGLE) {
-    pgm->addCallback(id,
-                     thread::methodCallback(this, &SetterListener::toggle));
+    p->addCallback(id, methodCallback(this, &SetterListener::toggle));
   } else {
-    for (int i = 0; i < command.index(); ++i) {
-      pgm->addCallback(id + i,
-                       thread::methodCallback(this,
-                                              &SetterListener::select, i));
-    }
+    for (int i = 0; i < command.index(); ++i)
+      p->addCallback(id + i, methodCallback(this, &SetterListener::select, i));
   }
 }
 
