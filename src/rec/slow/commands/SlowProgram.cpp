@@ -6,11 +6,13 @@
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/Callbacks.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/slow/commands/SlowCommandData.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/Binary.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/widget/waveform/Viewport.pb.h"
+
+using namespace rec::widget::waveform;
 
 namespace rec {
 namespace slow {
@@ -58,6 +60,13 @@ string SlowProgram::menuBarName() const {
 bool SlowProgram::hasProperty(const string& name) const {
   if (name == "empty")
     return instance_->empty();
+
+  if (name == "one_or_fewer_segments") {
+    return ProgramBase::hasProperty("empty") or
+      (data::getProto<Viewport>(instance_->file()).loop_points().
+       loop_point_size() <= 1);
+  }
+
   return ProgramBase::hasProperty(name);
 }
 
