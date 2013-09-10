@@ -26,6 +26,9 @@ class JuceModelImpl {
 
   StringArray getMenuBarNames();
   const CommandMap& commandMap() const { return commandMap_; }
+  void getCommandInfo(CommandID, ApplicationCommandInfo*);
+
+  PopupMenu getMenuForIndex(int menuIndex);
 
  private:
   typedef vector<unique_ptr<SetterListener>> DataListeners;

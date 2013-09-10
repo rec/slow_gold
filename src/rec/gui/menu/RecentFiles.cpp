@@ -6,8 +6,7 @@
 #include "rec/data/Data.h"
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/music/Metadata.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/program/Program.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/Copy.h"
 
@@ -57,32 +56,6 @@ void addRecentFile(const VirtualFile& f, const Message& message) {
   data::setProto(rf, CANT_UNDO);
 }
 
-class SlowRecentFilesStrategy : public RecentFilesStrategy {
- public:
-  SlowRecentFilesStrategy() {}
-
-  string getTitle(const RecentFile& rf) const override {
-    return music::getTitle(rf.metadata(), rf.file());
-  }
-
-  string getDupeSuffix(const RecentFile& rf, bool isFirst) const override {
-    const music::Metadata& md = rf.metadata();
-    string add = isFirst ? md.album_title() : md.artist();
-    if (add.size())
-      add += ("(" + add + ")");
-    return add;
-  }
-
-  CommandID getRecentFileCommand() const override {
-    return slow::SlowCommand::RECENT_FILES;
-  }
-};
-
-const RecentFilesStrategy& getMusicRecentFilesStrategy() {
-  static SlowRecentFilesStrategy strategy;
-  return strategy;
-}
-
 static const int MAX_DEDUPE_COUNT = 5;
 
 vector<string> getRecentFileNames(const RecentFilesStrategy& strategy) {
@@ -118,6 +91,10 @@ vector<string> getRecentFileNames(const RecentFilesStrategy& strategy) {
   }
 
   return results;
+}
+
+vector<string> getRecentFileNames() {
+  return getRecentFileNames(program::getProgram()->recentFilesStrategy());
 }
 
 bool recentFilesEmpty() {

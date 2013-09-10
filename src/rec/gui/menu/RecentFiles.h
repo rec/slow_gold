@@ -21,14 +21,9 @@ class RecentFilesStrategy {
   virtual CommandID getRecentFileCommand() const = 0;
 };
 
-const RecentFilesStrategy& getMusicRecentFilesStrategy();
-
+// TODO: delete this next one.
 vector<string> getRecentFileNames(const RecentFilesStrategy& stategy);
-
-inline vector<string> getRecentFileNames() {
-  return getRecentFileNames(getMusicRecentFilesStrategy());
-}
-
+vector<string> getRecentFileNames();
 bool recentFilesEmpty();
 
 }  // namespace gui

@@ -3,6 +3,7 @@
 #include "rec/command/Command.pb.h"
 #include "rec/data/Address.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataOps.h"
 #include "rec/data/proto/FieldOps.h"
 #include "rec/program/JuceModel.h"
 #include "rec/program/MakeMaps.h"
@@ -11,6 +12,8 @@
 
 using namespace rec::command;
 using namespace rec::data;
+
+TRAN(OPEN_RECENT2, "Open recent");
 
 namespace rec {
 namespace program {
@@ -38,6 +41,15 @@ string getMenuName(const Menu& menu) {
   string menuName = menu.description().name();
   menuName[0] = toupper(menuName[0]);
   return menuName;
+}
+
+template <typename PARTS>
+bool hasProperty(const Program& program, const PARTS& parts) {
+  for (auto& part: parts) {
+    if (program.hasProperty(part))
+      return true;
+  }
+  return false;
 }
 
 }  // namespace
@@ -121,12 +133,87 @@ string JuceModelImpl::addMenu(PopupMenu* popup, const string& name) {
   }
 }
 
+void JuceModelImpl::getCommandInfo(CommandID id,
+                                   ApplicationCommandInfo* info) {
+  try {
+    const command::Command& command = commandMap_.at(id);
+    const Description& desc = command.desc();
+
+    int flags = command.flags();
+    if (hasProperty(*program_, command.disabled()))
+      flags |= ApplicationCommandInfo::isDisabled;
+    if (hasProperty(*program_, command.ticked()))
+      flags |= ApplicationCommandInfo::isTicked;
+
+    static CommandID RECENT_FILES = program_->recentFilesStrategy().
+      getRecentFileCommand();
+    static CommandID RECENT_FILES_END = RECENT_FILES + command::Command::BANK_SIZE;
+
+    string shortName;
+    if (id >= RECENT_FILES && id < RECENT_FILES_END) {
+      vector<string> recentFiles = gui::getRecentFileNames();
+      int fileIndex = id - RECENT_FILES;
+      if (id >= recentFiles.size()) {
+        shortName = "(missing file)";
+      } else {
+        shortName = recentFiles[fileIndex];
+      }
+    } else if (command.has_setter()) {
+      const Setter& setter = command.setter();
+      VirtualFile file = setter.is_global() ? global() :
+        program_->getCurrentFile();
+      Data* data = getData(setter.type_name(), file);
+      unique_ptr<Message> msg(data->clone());
+      Value value = data::getMessageFieldOrDie(setter.address(), *msg);
+      if (setter.type() == Setter::TOGGLE) {
+        LOG_IF(DFATAL, not value.has_bool_f()) << "No boolean value.";
+        if (value.bool_f())
+          flags |= ApplicationCommandInfo::isTicked;
+      } else {
+        LOG_IF(DFATAL, not value.has_enum_f()) << "No int32 value";
+        int32 index = value.enum_f();
+        uint32 size = desc.menu_size();
+        if (index >= size) {
+          LOG(DFATAL) << "Index too large: " << index << " >= " << size;
+          index = size - 1;
+        }
+        shortName = desc.menu(index);
+      }
+    }
+    if (shortName.empty())
+      shortName = desc.menu(0);
+
+    info->setInfo(shortName, desc.full(0), command.category(), flags);
+    if (command.callout())
+      program_->commandCallout(command, info);
+  } catch (const std::out_of_range&) {
+    LOG(DFATAL) << "getCommandInfo out of range " << info->commandID;
+  }
+}
+
+PopupMenu JuceModelImpl::getMenuForIndex(int menuIndex) {
+  PopupMenu menu;
+  try {
+    const MenuBar& mb = menuBar();
+    if (menuIndex >= mb.menu_size())
+      LOG(DFATAL) << "out of range: " << menuIndex << " > " << mb.menu_size();
+    else
+      addMenu(&menu, mb.menu(menuIndex));
+  } catch (const std::out_of_range&) {
+    LOG(DFATAL) << "Couldn't get menubar " << menuIndex;
+  }
+
+  return menu;
+}
+
 void JuceModelImpl::makeRecentFiles(PopupMenu* popup) {
+  PopupMenu submenu;
   auto& strategy = program_->recentFilesStrategy();
   vector<string> recentFiles = gui::getRecentFileNames(strategy);
   CommandID command = strategy.getRecentFileCommand();
   for (int i = 0; i < recentFiles.size(); ++i)
-    addCommand(popup, command + i);
+    addCommand(&submenu, command + i);
+  popup->addSubMenu(t_OPEN_RECENT2, submenu);
 }
 
 bool JuceModelImpl::perform(const InvocationInfo& info) {

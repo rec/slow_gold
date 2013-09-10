@@ -3,6 +3,7 @@
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
 #include "rec/data/Data.h"
+#include "rec/music/Metadata.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/Callbacks.h"
@@ -22,6 +23,32 @@ TRAN(LOOP_THIS_SEGMENT2, "Loop This Segment");
 
 namespace rec {
 namespace slow {
+
+namespace {
+class SlowRecentFilesStrategy : public gui::RecentFilesStrategy {
+ public:
+  SlowRecentFilesStrategy() {}
+
+  string getTitle(const gui::RecentFile& rf) const override {
+    return music::getTitle(rf.metadata(), rf.file());
+  }
+
+  string getDupeSuffix(const gui::RecentFile& rf, bool isFirst) const override {
+    const music::Metadata& md = rf.metadata();
+    string add = isFirst ? md.album_title() : md.artist();
+    if (add.size())
+      add += ("(" + add + ")");
+    return add;
+  }
+
+  CommandID getRecentFileCommand() const override {
+    return slow::SlowCommand::RECENT_FILES;
+  }
+};
+
+static SlowRecentFilesStrategy RECENT_FILES_STRATEGY;
+
+}
 
 command::Commands SlowProgram::commands() const {
   return makeCommand();
@@ -87,7 +114,7 @@ void SlowProgram::commandCallout(const command::Command& command,
 }
 
 const gui::RecentFilesStrategy& SlowProgram::recentFilesStrategy() const {
-  return gui::getMusicRecentFilesStrategy();
+  return RECENT_FILES_STRATEGY;
 }
 
 void SlowProgram::registerAllCallbacks() {
