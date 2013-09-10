@@ -29,15 +29,24 @@ bool hasProperty(const Program& program, const PARTS& parts) {
   return false;
 }
 
+static JuceModel* MODEL = nullptr;
+
 } // namespace
+
+JuceModel* getJuceModel() { return MODEL; }
 
 JuceModel::JuceModel(Program* p) : program_(p) {}
 
 void JuceModel::init() {
   impl_.reset(new JuceModelImpl(program_, this));
+  CHECK(not MODEL);
+  MODEL = this;
 }
 
-JuceModel::~JuceModel() {}
+JuceModel::~JuceModel() {
+  CHECK(MODEL == this);
+  MODEL = nullptr;
+}
 
 void JuceModel::getAllCommands(juce::Array<CommandID>& commands) {
   for (auto& mapEntry: impl_->commandMap())

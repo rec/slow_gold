@@ -35,11 +35,11 @@ Components::Components(Instance* instance)
       manager_(applicationCommandManager()),
       timeController_(new gui::audio::TimeController),
       loops_(new gui::audio::Loops()),
-      songData_(new gui::SongData(menus())),
+      songData_(new gui::SongData(instance_->menuBarModel())),
       transformController_(new gui::audio::TransformController),
       transportController_(
           new gui::audio::TransportController(timeController_.get())),
-      directoryTree_(new widget::tree::Root(menus())),
+      directoryTree_(new widget::tree::Root(instance_->menuBarModel())),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
 	  commandBar_(new gui::audio::CommandBar) {

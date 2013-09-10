@@ -19,7 +19,6 @@ class HasInstance {
   audio::Device* device() { return instance_->device_.get(); }
   CurrentFile* currentFile() { return instance_->currentFile_.get(); }
   CurrentTime* currentTime() { return instance_->currentTime_.get(); }
-  Menus* menus() { return instance_->menus(); }
   app::Window* window() { return instance_->window_; }
   command::CommandRecordTable* commandRecordTable() {
     return instance_->commandRecordTable_.get();

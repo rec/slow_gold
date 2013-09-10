@@ -88,8 +88,9 @@ class Instance {
   ApplicationCommandManager* applicationCommandManager();
   Listener<Enable>* enableListener();
   Listener<command::ID>* idListener();
+  Listener<None>* menuUpdateListener();
+  MenuBarModel* menuBarModel();
 
-  Menus* menus();
   void menuItemsChanged();
 
   static const bool USE_NEW_COMMANDS;

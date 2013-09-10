@@ -26,6 +26,7 @@ class Menus : public MenuBarModel,
   virtual StringArray getMenuBarNames();
   virtual PopupMenu getMenuForIndex(int menuIndex, const String& name);
   virtual void menuItemSelected(int, int) {}
+
   virtual void operator()(None) {
     menuItemsChanged();
   }

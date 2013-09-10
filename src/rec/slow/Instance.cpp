@@ -223,7 +223,7 @@ void Instance::init() {
   player_->setSource(makeSource());
   components_->waveform_->setAudioThumbnail(bufferFiller_->thumbnail());
 
-  window_->addListener(menus_.get());
+  window_->addListener(menuUpdateListener());
 
   DialogLocker::getDisableBroadcaster()->addListener(enableListener());
   DialogLocker::getDisableBroadcaster()->addListener(window_->application());
@@ -249,8 +249,8 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  addUndoListener(menus_.get());
-  menus_->menuItemsChanged();
+  addUndoListener(menuUpdateListener());
+  menuBarModel()->menuItemsChanged();
 
   VirtualFile vf = data::getProto<VirtualFile>();
   if (vf.type() != VirtualFile::NONE) {
@@ -310,7 +310,7 @@ bool Instance::empty() const {
 
 void Instance::setProto(const Message& m, Undoable undoable) {
    data::setProto(m, file(), undoable);
-   menus_->menuItemsChanged();
+   menuBarModel()->menuItemsChanged();
 }
 
 void Instance::reset() {
@@ -338,18 +338,11 @@ ApplicationCommandManager* Instance::applicationCommandManager() {
     return &applicationCommandManager_;
 }
 
-Menus* Instance::menus() {
-  if (USE_NEW_COMMANDS)
-    return nullptr;
-  else
-    return menus_.get();
-}
-
 void Instance::menuItemsChanged() {
   if (USE_NEW_COMMANDS)
     juceModel_->menuItemsChanged();
   else
-    return menus_->menuItemsChanged();
+    menus_->menuItemsChanged();
 }
 
 Listener<Enable>* Instance::enableListener() {
@@ -364,6 +357,20 @@ Listener<command::ID>* Instance::idListener() {
     return juceModel_.get();
   else
     return commandTarget_.get();
+}
+
+Listener<None>* Instance::menuUpdateListener() {
+  if (USE_NEW_COMMANDS)
+    return juceModel_.get();
+  else
+    return menus_.get();
+}
+
+MenuBarModel* Instance::menuBarModel() {
+  if (USE_NEW_COMMANDS)
+    return juceModel_.get();
+  else
+    return menus_.get();
 }
 
 }  // namespace slow

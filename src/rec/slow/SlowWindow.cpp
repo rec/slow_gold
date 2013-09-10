@@ -141,7 +141,7 @@ Component* SlowWindow::getMainComponent() {
 }
 
 MenuBarModel* SlowWindow::getMenuBarModel() {
-  return menus();
+  return instance_->menuBarModel();
 }
 
 void SlowWindow::activeWindowStatusChanged() {

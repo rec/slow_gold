@@ -58,13 +58,14 @@ const MenuBar& JuceModelImpl::menuBar() const {
 }
 
 void JuceModelImpl::addSubmenu(PopupMenu* popup,
-                                       const MenuEntry& menuEntry) {
+                               const MenuEntry& menuEntry) {
   PopupMenu submenu;
   string subname = addMenu(&submenu, menuEntry.submenu());
   popup->addSubMenu(subname, submenu);
 }
 
 void JuceModelImpl::addCommand(PopupMenu* popup, CommandID command) {
+  CHECK(command);
   popup->addCommandItem(&applicationCommandManager_, command);
 }
 
@@ -104,7 +105,15 @@ string JuceModelImpl::addMenu(PopupMenu* popup, const string& name) {
     for (auto& menuEntry: menu.entry())
       addMenuEntry(popup, menuEntry);
 
-    return menu.description().menu(0);
+    string menuName;
+    if (menu.description().menu_size()) {
+      menuName = menu.description().menu(0);
+    } else {
+      menuName = name;
+      menuName[0] = toupper(menuName[0]);
+    }
+
+    return menuName;
   } catch (const std::out_of_range&) {
     LOG(DFATAL) << "Couldn't get menu " << name;
     return "";

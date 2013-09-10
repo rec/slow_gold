@@ -7,6 +7,7 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/music/Metadata.h"
+#include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/Copy.h"
 
@@ -24,7 +25,6 @@ struct CompareRecentFiles {
 };
 
 }  // namespace
-
 
 void addRecentFile(const VirtualFile& f, const Message& message) {
   if (f.type() == VirtualFile::NONE || f.type() == VirtualFile::CD)
@@ -72,7 +72,10 @@ class SlowRecentFilesStrategy : public RecentFilesStrategy {
       add += ("(" + add + ")");
     return add;
   }
-  CommandID getRecentFileCommand() const override { return 0; }
+
+  CommandID getRecentFileCommand() const override {
+    return slow::SlowCommand::RECENT_FILES;
+  }
 };
 
 const RecentFilesStrategy& getMusicRecentFilesStrategy() {
