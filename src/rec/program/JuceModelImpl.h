@@ -24,6 +24,7 @@ class JuceModelImpl {
     return &applicationCommandManager_;
   }
 
+  StringArray getMenuBarNames();
   const CommandMap& commandMap() const { return commandMap_; }
 
  private:

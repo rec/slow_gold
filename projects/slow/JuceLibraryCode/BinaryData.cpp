@@ -1969,6 +1969,7 @@ static const unsigned char temp_9493ace5[] =
 "menu {\n"
 "  description {\n"
 "    name: \"file advanced\"\n"
+"    menu: \"File\"\n"
 "  }\n"
 "  extends: \"file\"\n"
 "  entry {\n"
@@ -1983,6 +1984,7 @@ static const unsigned char temp_9493ace5[] =
 "menu {\n"
 "  description {\n"
 "    name: \"edit advanced\"\n"
+"    menu: \"Edit\"\n"
 "  }\n"
 "  extends: \"edit\"\n"
 "  entry {\n"
@@ -1998,12 +2000,14 @@ static const unsigned char temp_9493ace5[] =
 "menu {\n"
 "  description {\n"
 "    name: \"audio advanced\"\n"
+"    menu: \"Audio\"\n"
 "  }\n"
 "  extends: \"audio\"\n"
 "}\n"
 "menu {\n"
 "  description {\n"
 "    name: \"transport advanced\"\n"
+"    menu: \"Transport\"\n"
 "  }\n"
 "  extends: \"transport\"\n"
 "  entry {\n"
@@ -2019,6 +2023,7 @@ static const unsigned char temp_9493ace5[] =
 "menu {\n"
 "  description {\n"
 "    name: \"select advanced\"\n"
+"    menu: \"Select\"\n"
 "  }\n"
 "  entry {\n"
 "    command: NONE\n"
@@ -2031,6 +2036,7 @@ static const unsigned char temp_9493ace5[] =
 "menu {\n"
 "  description {\n"
 "    name: \"help advanced\"\n"
+"    menu: \"Help\"\n"
 "  }\n"
 "  entry {\n"
 "    command: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\n"
@@ -13533,7 +13539,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x5863c28f:  numBytes = 30235; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 6951; return SlowKeyStrokeMap_def;
         case 0xbef1a624:  numBytes = 355; return SlowMenuCollection_def;
-        case 0xce3bc719:  numBytes = 2845; return SlowMenus_def;
+        case 0xce3bc719:  numBytes = 2955; return SlowMenus_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;
         case 0xde160f9e:  numBytes = 16373; return AddLoopPointButtonDisabled_svg;
         case 0x188c0faa:  numBytes = 18313; return AddLoopPointButtonPressed_svg;

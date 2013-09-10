@@ -104,14 +104,7 @@ bool JuceModel::perform(const InvocationInfo& info) {
 }
 
 StringArray JuceModel::getMenuBarNames() {
-  StringArray names;
-  try {
-    for (auto& menu: impl_->menuBar().menu())
-      names.add(menu);
-  } catch (const std::out_of_range&) {
-    LOG(DFATAL) << "Couldn't get menu bar";
-  }
-  return names;
+  return impl_->getMenuBarNames();
 }
 
 ApplicationCommandManager* JuceModel::applicationCommandManager() {

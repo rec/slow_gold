@@ -16,7 +16,7 @@ namespace BinaryData
     const int            SlowMenuCollection_defSize = 355;
 
     extern const char*   SlowMenus_def;
-    const int            SlowMenus_defSize = 2845;
+    const int            SlowMenus_defSize = 2955;
 
     extern const char*   AddLoopPointButton_svg;
     const int            AddLoopPointButton_svgSize = 21887;

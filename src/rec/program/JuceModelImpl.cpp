@@ -31,6 +31,15 @@ void checkMenuEntry(const MenuEntry& menuEntry) {
   LOG_IF(DFATAL, cat > 1) << "Ambiguous entry: " << menuEntry.DebugString();
 }
 
+string getMenuName(const Menu& menu) {
+  if (menu.description().menu_size())
+    return menu.description().menu(0);
+
+  string menuName = menu.description().name();
+  menuName[0] = toupper(menuName[0]);
+  return menuName;
+}
+
 }  // namespace
 
 JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
@@ -105,15 +114,7 @@ string JuceModelImpl::addMenu(PopupMenu* popup, const string& name) {
     for (auto& menuEntry: menu.entry())
       addMenuEntry(popup, menuEntry);
 
-    string menuName;
-    if (menu.description().menu_size()) {
-      menuName = menu.description().menu(0);
-    } else {
-      menuName = name;
-      menuName[0] = toupper(menuName[0]);
-    }
-
-    return menuName;
+    return getMenuName(menu);
   } catch (const std::out_of_range&) {
     LOG(DFATAL) << "Couldn't get menu " << name;
     return "";
@@ -135,6 +136,18 @@ bool JuceModelImpl::perform(const InvocationInfo& info) {
   }
   LOG(DFATAL) << "No command for " << info.commandID;
   return false;
+}
+
+StringArray JuceModelImpl::getMenuBarNames() {
+  StringArray names;
+  try {
+    auto menus = menuBar().menu();
+    for (auto& name: menus)
+      names.add(getMenuName(menuMap_.at(name)));
+  } catch (const std::out_of_range&) {
+    LOG(DFATAL) << "Couldn't get menu bar";
+  }
+  return names;
 }
 
 }  // namespace program

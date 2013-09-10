@@ -87,6 +87,7 @@ menu {
 menu {
   description {
     name: "file advanced"
+    menu: "File"
   }
   extends: "file"
   entry {
@@ -101,6 +102,7 @@ menu {
 menu {
   description {
     name: "edit advanced"
+    menu: "Edit"
   }
   extends: "edit"
   entry {
@@ -116,12 +118,14 @@ menu {
 menu {
   description {
     name: "audio advanced"
+    menu: "Audio"
   }
   extends: "audio"
 }
 menu {
   description {
     name: "transport advanced"
+    menu: "Transport"
   }
   extends: "transport"
   entry {
@@ -137,6 +141,7 @@ menu {
 menu {
   description {
     name: "select advanced"
+    menu: "Select"
   }
   entry {
     command: NONE
@@ -149,6 +154,7 @@ menu {
 menu {
   description {
     name: "help advanced"
+    menu: "Help"
   }
   entry {
     command: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
