@@ -176,25 +176,25 @@ void Instance::init() {
   guiListener_.reset(new GuiListener(this));
   fillerThread_.reset(new FillerThread(this));
   midiCommandMap_.reset(new command::MidiCommandMap(
-      &applicationCommandManager_));
+      applicationCommandManager()));
   threads_.reset(new Threads(this));
 
   device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
 
-  applicationCommandManager_.setFirstCommandTarget(
+  applicationCommandManager()->setFirstCommandTarget(
       applicationCommandTarget());
-  window_->addKeyListener(applicationCommandManager_.getKeyMappings());
+  window_->addKeyListener(applicationCommandManager()->getKeyMappings());
 
   components_->init();
 
   fillerThread_->setPriority(FILLER_PRIORITY);
 
   command::fillCommandRecordTable(*commandData_, commandRecordTable_.get());
-  applicationCommandManager_.registerAllCommandsForTarget(
+  applicationCommandManager()->registerAllCommandsForTarget(
       applicationCommandTarget());
-  command::loadKeyboardBindings(&applicationCommandManager_);
-  window_->getAppleMenu()->addCommandItem(&applicationCommandManager_,
+  command::loadKeyboardBindings(applicationCommandManager());
+  window_->getAppleMenu()->addCommandItem(applicationCommandManager(),
                                           slow::SlowCommand::ABOUT_THIS_PROGRAM);
 
   player_->addListener(components_->transportController_.get());
@@ -322,7 +322,7 @@ SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
-const bool Instance::USE_NEW_COMMANDS = not true;
+const bool Instance::USE_NEW_COMMANDS = true;
 
 ApplicationCommandTarget* Instance::applicationCommandTarget() {
   if (USE_NEW_COMMANDS)
