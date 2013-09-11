@@ -153,11 +153,10 @@ void JuceModelImpl::getCommandInfo(CommandID id,
     if (id >= RECENT_FILES && id < RECENT_FILES_END) {
       vector<string> recentFiles = gui::getRecentFileNames();
       int fileIndex = id - RECENT_FILES;
-      if (id >= recentFiles.size()) {
+      if (fileIndex >= recentFiles.size())
         shortName = "(missing file)";
-      } else {
+      else
         shortName = recentFiles[fileIndex];
-      }
     } else if (command.has_setter()) {
       const Setter& setter = command.setter();
       VirtualFile file = setter.is_global() ? global() :
