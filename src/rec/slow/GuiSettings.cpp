@@ -41,7 +41,10 @@ File browseForFile(const String& msg, const File& startFile, SaveOrOpen save,
     browseForFileTreeView(msg, startFile, save, filter) :
     browseForFileNoTreeView(msg, startFile, save, filter);
 
-  return File(File::createLegalPathName(f.getFullPathName()));
+  String s = f.getFullPathName();
+  if (not s.isEmpty())
+    s = File::createLegalPathName(s);
+  return File(s);
 }
 
 }  // namespace slow

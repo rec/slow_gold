@@ -163,6 +163,7 @@ void JuceModelImpl::getCommandInfo(CommandID id,
     static CommandID RECENT_FILES_END = RECENT_FILES + command::Command::BANK_SIZE;
 
     string shortName;
+    int nameIndex = id - command.command();
     if (id >= RECENT_FILES && id < RECENT_FILES_END) {
       vector<string> recentFiles = gui::getRecentFileNames();
       int fileIndex = id - RECENT_FILES;
@@ -184,16 +185,12 @@ void JuceModelImpl::getCommandInfo(CommandID id,
       } else {
         LOG_IF(DFATAL, not value.has_enum_f()) << "No int32 value";
         int32 index = value.enum_f();
-        uint32 size = desc.menu_size();
-        if (index >= size) {
-          LOG(DFATAL) << "Index too large: " << index << " >= " << size;
-          index = size - 1;
-        }
-        shortName = desc.menu(index);
+        if (index == nameIndex)
+          flags |= ApplicationCommandInfo::isTicked;
       }
     }
     if (shortName.empty())
-      shortName = desc.menu(0);
+      shortName = desc.menu(nameIndex);
 
     info->setInfo(shortName, desc.full(0), command.category(), flags);
     if (command.callout())
