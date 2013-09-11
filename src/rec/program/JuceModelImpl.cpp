@@ -89,10 +89,17 @@ void JuceModelImpl::addCommand(PopupMenu* popup, CommandID id, bool hasIndex) {
   if (not hasIndex) {
     try {
       const command::Command& command = commandMap_.at(id);
+      auto& seps = command.submenu_separator();
+      int nextSep = 0;
       if (command.index()) {
         PopupMenu submenu;
-        for (int i = 0; i < command.index(); ++i)
+        for (int i = 0; i < command.index(); ++i) {
+          if (nextSep < seps.size() and i == seps.Get(nextSep)) {
+            submenu.addSeparator();
+            ++nextSep;
+          }
           addCommand(&submenu, command.command() + i, true);
+        }
         popup->addSubMenu(command.submenu_name(), submenu);
         return;
       }
@@ -167,10 +174,8 @@ void JuceModelImpl::getCommandInfo(CommandID id,
     if (id >= RECENT_FILES && id < RECENT_FILES_END) {
       vector<string> recentFiles = gui::getRecentFileNames();
       int fileIndex = id - RECENT_FILES;
-      if (fileIndex >= recentFiles.size()) {
+      if (fileIndex >= recentFiles.size())
         shortName = "(missing file)";
-        LOG(ERROR) << "!!! " << id << ": " << command.ShortDebugString();
-      }
       else
         shortName = recentFiles[fileIndex];
     } else if (command.has_setter()) {

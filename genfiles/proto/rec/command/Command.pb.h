@@ -494,6 +494,18 @@ class Command : public ::google::protobuf::Message {
   inline ::std::string* release_submenu_name();
   inline void set_allocated_submenu_name(::std::string* submenu_name);
 
+  // repeated uint32 submenu_separator = 14;
+  inline int submenu_separator_size() const;
+  inline void clear_submenu_separator();
+  static const int kSubmenuSeparatorFieldNumber = 14;
+  inline ::google::protobuf::uint32 submenu_separator(int index) const;
+  inline void set_submenu_separator(int index, ::google::protobuf::uint32 value);
+  inline void add_submenu_separator(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      submenu_separator() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_submenu_separator();
+
   // optional .rec.command.Description desc = 5;
   inline bool has_desc() const;
   inline void clear_desc();
@@ -624,6 +636,7 @@ class Command : public ::google::protobuf::Message {
   ::google::protobuf::int32 index_;
   ::std::string* category_;
   ::std::string* submenu_name_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > submenu_separator_;
   ::rec::command::Description* desc_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
@@ -635,7 +648,7 @@ class Command : public ::google::protobuf::Message {
   bool callout_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(13 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -1309,15 +1322,40 @@ inline void Command::set_allocated_submenu_name(::std::string* submenu_name) {
   }
 }
 
+// repeated uint32 submenu_separator = 14;
+inline int Command::submenu_separator_size() const {
+  return submenu_separator_.size();
+}
+inline void Command::clear_submenu_separator() {
+  submenu_separator_.Clear();
+}
+inline ::google::protobuf::uint32 Command::submenu_separator(int index) const {
+  return submenu_separator_.Get(index);
+}
+inline void Command::set_submenu_separator(int index, ::google::protobuf::uint32 value) {
+  submenu_separator_.Set(index, value);
+}
+inline void Command::add_submenu_separator(::google::protobuf::uint32 value) {
+  submenu_separator_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+Command::submenu_separator() const {
+  return submenu_separator_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+Command::mutable_submenu_separator() {
+  return &submenu_separator_;
+}
+
 // optional .rec.command.Description desc = 5;
 inline bool Command::has_desc() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void Command::set_has_desc() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void Command::clear_has_desc() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void Command::clear_desc() {
   if (desc_ != NULL) desc_->::rec::command::Description::Clear();
@@ -1393,13 +1431,13 @@ Command::mutable_keypress() {
 
 // optional uint32 flags = 7;
 inline bool Command::has_flags() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void Command::set_has_flags() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void Command::clear_has_flags() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void Command::clear_flags() {
   flags_ = 0u;
@@ -1415,13 +1453,13 @@ inline void Command::set_flags(::google::protobuf::uint32 value) {
 
 // optional .rec.command.Setter setter = 8;
 inline bool Command::has_setter() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void Command::set_has_setter() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void Command::clear_has_setter() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void Command::clear_setter() {
   if (setter_ != NULL) setter_->::rec::command::Setter::Clear();
@@ -1453,13 +1491,13 @@ inline void Command::set_allocated_setter(::rec::command::Setter* setter) {
 
 // optional uint32 size = 9;
 inline bool Command::has_size() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void Command::set_has_size() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void Command::clear_has_size() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void Command::clear_size() {
   size_ = 0u;
@@ -1475,13 +1513,13 @@ inline void Command::set_size(::google::protobuf::uint32 value) {
 
 // optional bool callout = 10;
 inline bool Command::has_callout() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void Command::set_has_callout() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void Command::clear_has_callout() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void Command::clear_callout() {
   callout_ = false;

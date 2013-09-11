@@ -263,6 +263,7 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 15\r\n"
 "    submenu_name: \"Jump To\"\r\n"
+"    submenu_separator: 5\r\n"
 "    category: \"Transport\"\r\n"
 "    desc {\r\n"
 "      menu: \"Jump To First Segment\"\r\n"
@@ -304,6 +305,7 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 15\r\n"
 "    submenu_name: \"Jump To Selected\"\r\n"
+"    submenu_separator: 5\r\n"
 "    category: \"Transport\"\r\n"
 "    desc {\r\n"
 "      menu: \"Jump To First Selected Segment\"\r\n"
@@ -568,6 +570,12 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    category: \"File\"\r\n"
 "    index: 31\r\n"
+"    submenu_separator: 5\r\n"
+"    submenu_separator: 10\r\n"
+"    submenu_separator: 15\r\n"
+"    submenu_separator: 20\r\n"
+"    submenu_separator: 25\r\n"
+"    submenu_separator: 30\r\n"
 "    submenu_name: \"Open Recent File\"\r\n"
 "    desc {\r\n"
 "      menu: \"Recent file 1\"\r\n"
@@ -695,6 +703,7 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 15\r\n"
 "    submenu_name: \"Select\"\r\n"
+"    submenu_separator: 5\r\n"
 "    category: \"Selection\"\r\n"
 "    desc {\r\n"
 "      menu: \"Select First Segment\"\r\n"
@@ -747,6 +756,7 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 15\r\n"
 "    submenu_name: \"Select Only\"\r\n"
+"    submenu_separator: 5\r\n"
 "    category: \"Selection\"\r\n"
 "    desc {\r\n"
 "      menu: \"Select First Segment Only\"\r\n"
@@ -1044,6 +1054,7 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 15\r\n"
 "    submenu_name: \"Toggle Selection\"\r\n"
+"    submenu_separator: 5\r\n"
 "    category: \"Selection\"\r\n"
 "    desc {\r\n"
 "      menu: \"Toggle First Segment Selection\"\r\n"
@@ -1265,6 +1276,7 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 15\r\n"
 "    category: \"Selection\"\r\n"
+"    submenu_separator: 5\r\n"
 "    submenu_name: \"Unselect\"\r\n"
 "    desc {\r\n"
 "      menu: \"Unselect First Segment\"\r\n"
@@ -13562,7 +13574,7 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
 
     switch (hash)
     {
-        case 0x5863c28f:  numBytes = 30556; return SlowCommands_def;
+        case 0x5863c28f:  numBytes = 30873; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 6951; return SlowKeyStrokeMap_def;
         case 0xbef1a624:  numBytes = 373; return SlowMenuCollection_def;
         case 0xce3bc719:  numBytes = 3475; return SlowMenus_def;

@@ -46,6 +46,8 @@ message Command {
 
   optional string category = 3;  // English language name of the JUCE category.
   optional string submenu_name = 4;  // Name of this item if it's a submenu.
+  repeated uint32 submenu_separator = 14;  // Index of separator locations.
+
   optional Description desc = 5;  // Localized descriptions.
   repeated string keypress = 6;   // In Juce keyboard format.
   optional uint32 flags = 7;
