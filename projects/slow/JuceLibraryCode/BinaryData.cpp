@@ -1882,6 +1882,7 @@ static const unsigned char temp_2e2f7e5a[] =
 "  menu: \"audio advanced\"\n"
 "  menu: \"transport advanced\"\n"
 "  menu: \"select advanced\"\n"
+"  menu: \"display\"\n"
 "  menu: \"help advanced\"\n"
 "}\n";
 
@@ -1959,7 +1960,10 @@ static const unsigned char temp_9493ace5[] =
 "    command: SELECT_ALL\n"
 "    command: DESELECT_ALL\n"
 "    command: INVERT_LOOP_SELECTION\n"
+"    command: NONE\n"
+"    command: LOOP_NEXT_SEGMENT\n"
 "    command: TOGGLE_WHOLE_SONG_LOOP\n"
+"    command: NONE\n"
 "    command: ZOOM_TO_SELECTION\n"
 "  }\n"
 "}\n"
@@ -1995,6 +1999,7 @@ static const unsigned char temp_9493ace5[] =
 "  }\n"
 "  extends: \"edit\"\n"
 "  entry {\n"
+"    command: NONE\n"
 "    command: COPY_ALL_LOOP_POINTS\n"
 "    command: PASTE_OVER_LOOP_POINTS\n"
 "    command: NONE\n"
@@ -2032,6 +2037,7 @@ static const unsigned char temp_9493ace5[] =
 "    name: \"select advanced\"\n"
 "    menu: \"Select\"\n"
 "  }\n"
+"  extends: \"select\"\n"
 "  entry {\n"
 "    command: NONE\n"
 "    command: SELECT\n"
@@ -2045,11 +2051,35 @@ static const unsigned char temp_9493ace5[] =
 "    name: \"help advanced\"\n"
 "    menu: \"Help\"\n"
 "  }\n"
+"  extends: \"help\"\n"
 "  entry {\n"
 "    command: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\n"
 "    command: NONE\n"
 "    command: CHECK_FOR_UPDATES\n"
 "    command: TOGGLE_AUTOMATIC_UPDATES\n"
+"  }\n"
+"}\n"
+"menu {\n"
+"  description {\n"
+"    name: \"display\"\n"
+"  }\n"
+"  entry {\n"
+"    command: TOGGLE_GRID_DISPLAY\n"
+"    command: TOGGLE_PARALLEL_WAVEFORMS\n"
+"    command: TOGGLE_FOLLOW_CURSOR\n"
+"    command: NONE\n"
+"    command: TOGGLE_SHOW_SELECTION_BUTTONS\n"
+"    command: TOGGLE_SHOW_CURSOR_LABELS\n"
+"    command: NONE\n"
+"    command: TOGGLE_SHOW_TIMES_AT_TOP\n"
+"    command: TOGGLE_SHOW_LABELS_AT_TOP\n"
+"    command: TOGGLE_COMMAND_BAR_AT_LEFT\n"
+"    command: TOGGLE_COMMAND_BAR_AT_TOP\n"
+"    command: TOGGLE_MODES_AT_LEFT\n"
+"    command: TOGGLE_MODES_AT_TOP\n"
+"    command: NONE\n"
+"    command: TOGGLE_FILE_OPEN_TREE_DISPLAY\n"
+"    command: TOGGLE_SHOW_MASTER_TUNE\n"
 "  }\n"
 "}\n";
 
@@ -13534,8 +13564,8 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
     {
         case 0x5863c28f:  numBytes = 30556; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 6951; return SlowKeyStrokeMap_def;
-        case 0xbef1a624:  numBytes = 355; return SlowMenuCollection_def;
-        case 0xce3bc719:  numBytes = 2744; return SlowMenus_def;
+        case 0xbef1a624:  numBytes = 373; return SlowMenuCollection_def;
+        case 0xce3bc719:  numBytes = 3475; return SlowMenus_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;
         case 0xde160f9e:  numBytes = 16373; return AddLoopPointButtonDisabled_svg;
         case 0x188c0faa:  numBytes = 18313; return AddLoopPointButtonPressed_svg;

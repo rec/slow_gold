@@ -13,10 +13,10 @@ namespace BinaryData
     const int            SlowKeyStrokeMap_defSize = 6951;
 
     extern const char*   SlowMenuCollection_def;
-    const int            SlowMenuCollection_defSize = 355;
+    const int            SlowMenuCollection_defSize = 373;
 
     extern const char*   SlowMenus_def;
-    const int            SlowMenus_defSize = 2744;
+    const int            SlowMenus_defSize = 3475;
 
     extern const char*   AddLoopPointButton_svg;
     const int            AddLoopPointButton_svgSize = 21887;

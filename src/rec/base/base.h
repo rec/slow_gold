@@ -19,7 +19,7 @@ namespace rec {
 
 inline void doLog(const String& s) {
 // For very hard to debug problems.
-#ifdef DEBUG
+#ifdef NEVER
   File f = File::getSpecialLocation(File::userDesktopDirectory).
     getChildFile("SlowGold.log");
   f.appendText(s);

@@ -68,7 +68,10 @@ menu {
     command: SELECT_ALL
     command: DESELECT_ALL
     command: INVERT_LOOP_SELECTION
+    command: NONE
+    command: LOOP_NEXT_SEGMENT
     command: TOGGLE_WHOLE_SONG_LOOP
+    command: NONE
     command: ZOOM_TO_SELECTION
   }
 }
@@ -104,6 +107,7 @@ menu {
   }
   extends: "edit"
   entry {
+    command: NONE
     command: COPY_ALL_LOOP_POINTS
     command: PASTE_OVER_LOOP_POINTS
     command: NONE
@@ -141,6 +145,7 @@ menu {
     name: "select advanced"
     menu: "Select"
   }
+  extends: "select"
   entry {
     command: NONE
     command: SELECT
@@ -154,10 +159,34 @@ menu {
     name: "help advanced"
     menu: "Help"
   }
+  extends: "help"
   entry {
     command: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
     command: NONE
     command: CHECK_FOR_UPDATES
     command: TOGGLE_AUTOMATIC_UPDATES
+  }
+}
+menu {
+  description {
+    name: "display"
+  }
+  entry {
+    command: TOGGLE_GRID_DISPLAY
+    command: TOGGLE_PARALLEL_WAVEFORMS
+    command: TOGGLE_FOLLOW_CURSOR
+    command: NONE
+    command: TOGGLE_SHOW_SELECTION_BUTTONS
+    command: TOGGLE_SHOW_CURSOR_LABELS
+    command: NONE
+    command: TOGGLE_SHOW_TIMES_AT_TOP
+    command: TOGGLE_SHOW_LABELS_AT_TOP
+    command: TOGGLE_COMMAND_BAR_AT_LEFT
+    command: TOGGLE_COMMAND_BAR_AT_TOP
+    command: TOGGLE_MODES_AT_LEFT
+    command: TOGGLE_MODES_AT_TOP
+    command: NONE
+    command: TOGGLE_FILE_OPEN_TREE_DISPLAY
+    command: TOGGLE_SHOW_MASTER_TUNE
   }
 }

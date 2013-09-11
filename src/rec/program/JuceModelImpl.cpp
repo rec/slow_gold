@@ -236,12 +236,14 @@ bool JuceModelImpl::perform(const InvocationInfo& info) {
 
 StringArray JuceModelImpl::getMenuBarNames() {
   StringArray names;
-  try {
-    auto menus = menuBar().menu();
-    for (auto& name: menus)
+  auto bar = menuBar();
+  for (auto& name: menuBar().menu()) {
+    try {
       names.add(getMenuName(menuMap_.at(name)));
-  } catch (const std::out_of_range&) {
-    LOG(DFATAL) << "Couldn't get menu bar";
+    } catch (const std::out_of_range&) {
+      LOG(DFATAL) << "Couldn't get menu " << name
+                  << " for menu bar " << bar.description().name();
+    }
   }
   return names;
 }
