@@ -71,7 +71,7 @@ enum Command_Type {
   Command_Type_DESELECT_ALL = 4103,
   Command_Type_JUCE_START = 4096,
   Command_Type_JUCE_END = 4104,
-  Command_Type_BANK_SIZE = 100000
+  Command_Type_BANK_SIZE = 10000
 };
 bool Command_Type_IsValid(int value);
 const Command_Type Command_Type_Type_MIN = Command_Type_NONE;

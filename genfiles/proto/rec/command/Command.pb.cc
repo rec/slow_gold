@@ -176,19 +176,19 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\022\027\n\tis_global\030\002 \001(\010:\004true\022\'\n\007address\030\003 \001"
     "(\0132\026.rec.data.AddressProto\022\021\n\ttype_name\030"
     "\004 \001(\t\"!\n\004Type\022\n\n\006TOGGLE\020\000\022\r\n\tSELECTION\020\001"
-    "\"\256\003\n\007Command\022\017\n\007command\030\001 \001(\r\022\r\n\005index\030\002"
+    "\"\255\003\n\007Command\022\017\n\007command\030\001 \001(\r\022\r\n\005index\030\002"
     " \001(\021\022\020\n\010category\030\003 \001(\t\022\024\n\014submenu_name\030\004"
     " \001(\t\022&\n\004desc\030\005 \001(\0132\030.rec.command.Descrip"
     "tion\022\020\n\010keypress\030\006 \003(\t\022\r\n\005flags\030\007 \001(\r\022#\n"
     "\006setter\030\010 \001(\0132\023.rec.command.Setter\022\014\n\004si"
     "ze\030\t \001(\r\022\017\n\007callout\030\n \001(\010\022\016\n\006hidden\030\013 \003("
-    "\t\022\020\n\010disabled\030\014 \003(\t\022\016\n\006ticked\030\r \003(\t\"\233\001\n\004"
+    "\t\022\020\n\010disabled\030\014 \003(\t\022\016\n\006ticked\030\r \003(\t\"\232\001\n\004"
     "Type\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003C"
     "UT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_A"
     "LL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200"
-    " \022\r\n\010JUCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Com"
-    "mands\022%\n\007command\030\001 \003(\0132\024.rec.command.Com"
-    "mand", 804);
+    " \022\r\n\010JUCE_END\020\210 \022\016\n\tBANK_SIZE\020\220N\"1\n\010Comm"
+    "ands\022%\n\007command\030\001 \003(\0132\024.rec.command.Comm"
+    "and", 803);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -980,7 +980,7 @@ bool Command_Type_IsValid(int value) {
     case 4102:
     case 4103:
     case 4104:
-    case 100000:
+    case 10000:
       return true;
     default:
       return false;

@@ -38,7 +38,7 @@ message Command {
     JUCE_START = 0x1000;
     JUCE_END = 0x1008;
 
-    BANK_SIZE = 100000;
+    BANK_SIZE = 10000;
   };
 
   optional uint32 command = 1;

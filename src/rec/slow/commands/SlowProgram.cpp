@@ -140,10 +140,10 @@ string SlowProgram::commandName(CommandID id) const {
 }
 
 string commandName(CommandID id) {
-  bool isCompound = id > SlowCommand::BANK_SIZE - MARGIN;
+  bool isCompound = id > command::Command::BANK_SIZE - MARGIN;
   int mod;
   if (isCompound) {
-    mod = (id + MARGIN) % SlowCommand::BANK_SIZE - MARGIN;
+    mod = (id + MARGIN) % command::Command::BANK_SIZE - MARGIN;
     id -= mod;
   }
   string name = SlowCommand_Type_Name(static_cast<SlowCommand::Type>(id));

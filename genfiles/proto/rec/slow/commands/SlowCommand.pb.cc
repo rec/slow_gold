@@ -224,10 +224,10 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#rec/slow/commands/SlowCommand.proto\022\010r"
     "ec.slow\032\031rec/command/Command.proto\032 rec/"
-    "command/map/CommandMap.proto\"\303\023\n\013SlowCom"
+    "command/map/CommandMap.proto\"\223\023\n\013SlowCom"
     "mand\022(\n\004type\030\001 \001(\0162\032.rec.slow.SlowComman"
     "d.Type\022%\n\007command\030\002 \001(\0132\024.rec.command.Co"
-    "mmand\"\342\022\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_P"
+    "mmand\"\262\022\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_P"
     "ROGRAM\020:\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PR"
     "EFERENCES\020\002\022\025\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CL"
     "EAR_KEYBOARD_MAPPINGS\020[\022\027\n\023CLEAR_MIDI_MA"
@@ -286,21 +286,20 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
     "SELECTION\020-\022\023\n\017FIRST_FREE_TYPE\020e\022\t\n\004QUIT"
     "\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PA"
     "STE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020"
-    "\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010JUCE_END\020\210 \022\016\n\tBA"
-    "NK_SIZE\020\220N\";\n\014SlowCommands\022+\n\014slow_comma"
-    "nd\030\001 \003(\0132\025.rec.slow.SlowCommand\"o\n\023SlowC"
-    "ommandMapEntry\022+\n\007command\030\001 \001(\0162\032.rec.sl"
-    "ow.SlowCommand.Type\022+\n\005entry\030\002 \001(\0132\034.rec"
-    ".command.CommandMapEntry\"H\n\023SlowCommandM"
-    "apProto\0221\n\nslow_entry\030\001 \003(\0132\035.rec.slow.S"
-    "lowCommandMapEntry\"\205\001\n\rSlowMenuEntry\022+\n\007"
-    "command\030\001 \003(\0162\032.rec.slow.SlowCommand.Typ"
-    "e\022\017\n\007submenu\030\002 \001(\t\022\034\n\024is_recent_files_me"
-    "nu\030\003 \001(\010\022\030\n\020callout_function\030\004 \001(\t\"r\n\010Sl"
-    "owMenu\022-\n\013description\030\001 \001(\0132\030.rec.comman"
-    "d.Description\022\017\n\007extends\030\002 \001(\t\022&\n\005entry\030"
-    "\003 \003(\0132\027.rec.slow.SlowMenuEntry\"-\n\tSlowMe"
-    "nus\022 \n\004menu\030\001 \003(\0132\022.rec.slow.SlowMenu", 3157);
+    "\207 \";\n\014SlowCommands\022+\n\014slow_command\030\001 \003(\013"
+    "2\025.rec.slow.SlowCommand\"o\n\023SlowCommandMa"
+    "pEntry\022+\n\007command\030\001 \001(\0162\032.rec.slow.SlowC"
+    "ommand.Type\022+\n\005entry\030\002 \001(\0132\034.rec.command"
+    ".CommandMapEntry\"H\n\023SlowCommandMapProto\022"
+    "1\n\nslow_entry\030\001 \003(\0132\035.rec.slow.SlowComma"
+    "ndMapEntry\"\205\001\n\rSlowMenuEntry\022+\n\007command\030"
+    "\001 \003(\0162\032.rec.slow.SlowCommand.Type\022\017\n\007sub"
+    "menu\030\002 \001(\t\022\034\n\024is_recent_files_menu\030\003 \001(\010"
+    "\022\030\n\020callout_function\030\004 \001(\t\"r\n\010SlowMenu\022-"
+    "\n\013description\030\001 \001(\0132\030.rec.command.Descri"
+    "ption\022\017\n\007extends\030\002 \001(\t\022&\n\005entry\030\003 \003(\0132\027."
+    "rec.slow.SlowMenuEntry\"-\n\tSlowMenus\022 \n\004m"
+    "enu\030\001 \003(\0132\022.rec.slow.SlowMenu", 3109);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/commands/SlowCommand.proto", &protobuf_RegisterTypes);
   SlowCommand::default_instance_ = new SlowCommand();
@@ -426,7 +425,6 @@ bool SlowCommand_Type_IsValid(int value) {
     case 99:
     case 100:
     case 101:
-    case 4096:
     case 4097:
     case 4098:
     case 4099:
@@ -434,8 +432,6 @@ bool SlowCommand_Type_IsValid(int value) {
     case 4101:
     case 4102:
     case 4103:
-    case 4104:
-    case 10000:
     case 100000:
     case 110000:
     case 220000:
@@ -559,9 +555,6 @@ const SlowCommand_Type SlowCommand::COPY;
 const SlowCommand_Type SlowCommand::PASTE;
 const SlowCommand_Type SlowCommand::SELECT_ALL;
 const SlowCommand_Type SlowCommand::DESELECT_ALL;
-const SlowCommand_Type SlowCommand::JUCE_START;
-const SlowCommand_Type SlowCommand::JUCE_END;
-const SlowCommand_Type SlowCommand::BANK_SIZE;
 const SlowCommand_Type SlowCommand::Type_MIN;
 const SlowCommand_Type SlowCommand::Type_MAX;
 const int SlowCommand::Type_ARRAYSIZE;

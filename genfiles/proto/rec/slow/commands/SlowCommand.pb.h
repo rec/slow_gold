@@ -152,10 +152,7 @@ enum SlowCommand_Type {
   SlowCommand_Type_COPY = 4100,
   SlowCommand_Type_PASTE = 4101,
   SlowCommand_Type_SELECT_ALL = 4102,
-  SlowCommand_Type_DESELECT_ALL = 4103,
-  SlowCommand_Type_JUCE_START = 4096,
-  SlowCommand_Type_JUCE_END = 4104,
-  SlowCommand_Type_BANK_SIZE = 10000
+  SlowCommand_Type_DESELECT_ALL = 4103
 };
 bool SlowCommand_Type_IsValid(int value);
 const SlowCommand_Type SlowCommand_Type_Type_MIN = SlowCommand_Type_NONE;
@@ -334,9 +331,6 @@ class SlowCommand : public ::google::protobuf::Message {
   static const Type PASTE = SlowCommand_Type_PASTE;
   static const Type SELECT_ALL = SlowCommand_Type_SELECT_ALL;
   static const Type DESELECT_ALL = SlowCommand_Type_DESELECT_ALL;
-  static const Type JUCE_START = SlowCommand_Type_JUCE_START;
-  static const Type JUCE_END = SlowCommand_Type_JUCE_END;
-  static const Type BANK_SIZE = SlowCommand_Type_BANK_SIZE;
   static inline bool Type_IsValid(int value) {
     return SlowCommand_Type_IsValid(value);
   }

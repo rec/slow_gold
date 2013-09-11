@@ -138,11 +138,6 @@ message SlowCommand {
     PASTE = 0x1005;
     SELECT_ALL = 0x1006;
     DESELECT_ALL = 0x1007;
-
-    JUCE_START = 0x1000;
-    JUCE_END = 0x1008;
-
-    BANK_SIZE = 10000;
   };
 
   optional Type type = 1;
