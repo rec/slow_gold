@@ -470,17 +470,10 @@ class Command : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 index() const;
   inline void set_index(::google::protobuf::int32 value);
 
-  // optional sint32 start_index = 3;
-  inline bool has_start_index() const;
-  inline void clear_start_index();
-  static const int kStartIndexFieldNumber = 3;
-  inline ::google::protobuf::int32 start_index() const;
-  inline void set_start_index(::google::protobuf::int32 value);
-
-  // optional string category = 4;
+  // optional string category = 3;
   inline bool has_category() const;
   inline void clear_category();
-  static const int kCategoryFieldNumber = 4;
+  static const int kCategoryFieldNumber = 3;
   inline const ::std::string& category() const;
   inline void set_category(const ::std::string& value);
   inline void set_category(const char* value);
@@ -488,6 +481,18 @@ class Command : public ::google::protobuf::Message {
   inline ::std::string* mutable_category();
   inline ::std::string* release_category();
   inline void set_allocated_category(::std::string* category);
+
+  // optional string submenu_name = 4;
+  inline bool has_submenu_name() const;
+  inline void clear_submenu_name();
+  static const int kSubmenuNameFieldNumber = 4;
+  inline const ::std::string& submenu_name() const;
+  inline void set_submenu_name(const ::std::string& value);
+  inline void set_submenu_name(const char* value);
+  inline void set_submenu_name(const char* value, size_t size);
+  inline ::std::string* mutable_submenu_name();
+  inline ::std::string* release_submenu_name();
+  inline void set_allocated_submenu_name(::std::string* submenu_name);
 
   // optional .rec.command.Description desc = 5;
   inline bool has_desc() const;
@@ -598,10 +603,10 @@ class Command : public ::google::protobuf::Message {
   inline void clear_has_command();
   inline void set_has_index();
   inline void clear_has_index();
-  inline void set_has_start_index();
-  inline void clear_has_start_index();
   inline void set_has_category();
   inline void clear_has_category();
+  inline void set_has_submenu_name();
+  inline void clear_has_submenu_name();
   inline void set_has_desc();
   inline void clear_has_desc();
   inline void set_has_flags();
@@ -618,16 +623,16 @@ class Command : public ::google::protobuf::Message {
   ::google::protobuf::uint32 command_;
   ::google::protobuf::int32 index_;
   ::std::string* category_;
+  ::std::string* submenu_name_;
   ::rec::command::Description* desc_;
-  ::google::protobuf::int32 start_index_;
-  ::google::protobuf::uint32 flags_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keypress_;
   ::rec::command::Setter* setter_;
+  ::google::protobuf::uint32 flags_;
   ::google::protobuf::uint32 size_;
-  bool callout_;
   ::google::protobuf::RepeatedPtrField< ::std::string> hidden_;
   ::google::protobuf::RepeatedPtrField< ::std::string> disabled_;
   ::google::protobuf::RepeatedPtrField< ::std::string> ticked_;
+  bool callout_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(13 + 31) / 32];
@@ -1164,37 +1169,15 @@ inline void Command::set_index(::google::protobuf::int32 value) {
   index_ = value;
 }
 
-// optional sint32 start_index = 3;
-inline bool Command::has_start_index() const {
+// optional string category = 3;
+inline bool Command::has_category() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Command::set_has_start_index() {
+inline void Command::set_has_category() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Command::clear_has_start_index() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void Command::clear_start_index() {
-  start_index_ = 0;
-  clear_has_start_index();
-}
-inline ::google::protobuf::int32 Command::start_index() const {
-  return start_index_;
-}
-inline void Command::set_start_index(::google::protobuf::int32 value) {
-  set_has_start_index();
-  start_index_ = value;
-}
-
-// optional string category = 4;
-inline bool Command::has_category() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void Command::set_has_category() {
-  _has_bits_[0] |= 0x00000008u;
-}
 inline void Command::clear_has_category() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Command::clear_category() {
   if (category_ != &::google::protobuf::internal::kEmptyString) {
@@ -1253,6 +1236,76 @@ inline void Command::set_allocated_category(::std::string* category) {
   } else {
     clear_has_category();
     category_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string submenu_name = 4;
+inline bool Command::has_submenu_name() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Command::set_has_submenu_name() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Command::clear_has_submenu_name() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Command::clear_submenu_name() {
+  if (submenu_name_ != &::google::protobuf::internal::kEmptyString) {
+    submenu_name_->clear();
+  }
+  clear_has_submenu_name();
+}
+inline const ::std::string& Command::submenu_name() const {
+  return *submenu_name_;
+}
+inline void Command::set_submenu_name(const ::std::string& value) {
+  set_has_submenu_name();
+  if (submenu_name_ == &::google::protobuf::internal::kEmptyString) {
+    submenu_name_ = new ::std::string;
+  }
+  submenu_name_->assign(value);
+}
+inline void Command::set_submenu_name(const char* value) {
+  set_has_submenu_name();
+  if (submenu_name_ == &::google::protobuf::internal::kEmptyString) {
+    submenu_name_ = new ::std::string;
+  }
+  submenu_name_->assign(value);
+}
+inline void Command::set_submenu_name(const char* value, size_t size) {
+  set_has_submenu_name();
+  if (submenu_name_ == &::google::protobuf::internal::kEmptyString) {
+    submenu_name_ = new ::std::string;
+  }
+  submenu_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Command::mutable_submenu_name() {
+  set_has_submenu_name();
+  if (submenu_name_ == &::google::protobuf::internal::kEmptyString) {
+    submenu_name_ = new ::std::string;
+  }
+  return submenu_name_;
+}
+inline ::std::string* Command::release_submenu_name() {
+  clear_has_submenu_name();
+  if (submenu_name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = submenu_name_;
+    submenu_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Command::set_allocated_submenu_name(::std::string* submenu_name) {
+  if (submenu_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete submenu_name_;
+  }
+  if (submenu_name) {
+    set_has_submenu_name();
+    submenu_name_ = submenu_name;
+  } else {
+    clear_has_submenu_name();
+    submenu_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

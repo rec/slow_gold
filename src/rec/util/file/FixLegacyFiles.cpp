@@ -33,8 +33,9 @@ void portKeyboardFile() {
       for (int i = 0; i < commands.command_size(); ++i) {
         const Command& command = commands.command(i);
         CommandID type = command.command();
-        if (command.has_start_index()) {
-          int32 index = command.start_index();
+        // TODO: https://github.com/rec/rec/issues/621
+        if (false) { // command.has_start_index()) {
+          int32 index = 0; // command.start_index();
           for (int j = 0; j < command.keypress_size(); ++j, ++index) {
             CommandMapEntry* entry = newEntry(type, &keyMap);
             entry->set_index(index);

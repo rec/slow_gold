@@ -78,16 +78,29 @@ const MenuBar& JuceModelImpl::menuBar() const {
   return menuBarMap_.at(program_->menuBarName());
 }
 
-void JuceModelImpl::addSubmenu(PopupMenu* popup,
+void JuceModelImpl::addSubMenu(PopupMenu* popup,
                                const MenuEntry& menuEntry) {
   PopupMenu submenu;
   string subname = addMenu(&submenu, menuEntry.submenu());
   popup->addSubMenu(subname, submenu);
 }
 
-void JuceModelImpl::addCommand(PopupMenu* popup, CommandID command) {
-  CHECK(command);
-  popup->addCommandItem(&applicationCommandManager_, command);
+void JuceModelImpl::addCommand(PopupMenu* popup, CommandID id, bool hasIndex) {
+  if (not hasIndex) {
+    try {
+      const command::Command& command = commandMap_.at(id);
+      if (command.index()) {
+        PopupMenu submenu;
+        for (int i = 0; i < command.index(); ++i)
+          addCommand(&submenu, command.command() + i, true);
+        popup->addSubMenu(command.submenu_name(), submenu);
+        return;
+      }
+    } catch (const std::out_of_range&) {
+      LOG(DFATAL) << "No command for id " << program_->commandName(id);
+    }
+  }
+  popup->addCommandItem(&applicationCommandManager_, id);
 }
 
 void JuceModelImpl::addCommands(PopupMenu* popup,
@@ -107,7 +120,7 @@ void JuceModelImpl::addMenuEntry(PopupMenu* popup,
     addCommands(popup, menuEntry);
 
   else if (menuEntry.has_submenu())
-    addSubmenu(popup, menuEntry);
+    addSubMenu(popup, menuEntry);
 
   else if (menuEntry.is_recent_files_menu())
     makeRecentFiles(popup);
@@ -211,7 +224,7 @@ void JuceModelImpl::makeRecentFiles(PopupMenu* popup) {
   vector<string> recentFiles = gui::getRecentFileNames(strategy);
   CommandID command = strategy.getRecentFileCommand();
   for (int i = 0; i < recentFiles.size(); ++i)
-    addCommand(&submenu, command + i);
+    addCommand(&submenu, command + i, true);
   popup->addSubMenu(t_OPEN_RECENT2, submenu);
 }
 

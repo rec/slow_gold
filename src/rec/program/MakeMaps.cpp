@@ -16,7 +16,7 @@ CommandMap makeCommandMap(const Program& program) {
     CommandID id = command.command();
     commandMap[id] = command;
     if (command.has_index()) {
-      for (int i = command.start_index(); i < command.index(); ++i)
+      for (int i = 0; i < command.index(); ++i)
         commandMap[id + i] = command;
     }
   }

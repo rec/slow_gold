@@ -262,6 +262,7 @@ static const unsigned char temp_e71d8a85[] =
 "  type: JUMP\r\n"
 "  command {\r\n"
 "    index: 15\r\n"
+"    submenu_name: \"Jump To\"\r\n"
 "    category: \"Transport\"\r\n"
 "    desc {\r\n"
 "      menu: \"Jump To First Segment\"\r\n"
@@ -302,6 +303,7 @@ static const unsigned char temp_e71d8a85[] =
 "  type: JUMP_SELECTED\r\n"
 "  command {\r\n"
 "    index: 15\r\n"
+"    submenu_name: \"Jump To Selected\"\r\n"
 "    category: \"Transport\"\r\n"
 "    desc {\r\n"
 "      menu: \"Jump To First Selected Segment\"\r\n"
@@ -564,8 +566,9 @@ static const unsigned char temp_e71d8a85[] =
 "slow_command {\r\n"
 "  type: RECENT_FILES\r\n"
 "  command {\r\n"
-"    index: 31\r\n"
 "    category: \"File\"\r\n"
+"    index: 31\r\n"
+"    submenu_name: \"Open Recent File\"\r\n"
 "    desc {\r\n"
 "      menu: \"Recent file 1\"\r\n"
 "      menu: \"Recent file 2\"\r\n"
@@ -691,6 +694,7 @@ static const unsigned char temp_e71d8a85[] =
 "  type: SELECT\r\n"
 "  command {\r\n"
 "    index: 15\r\n"
+"    submenu_name: \"Select\"\r\n"
 "    category: \"Selection\"\r\n"
 "    desc {\r\n"
 "      menu: \"Select First Segment\"\r\n"
@@ -742,6 +746,7 @@ static const unsigned char temp_e71d8a85[] =
 "  type: SELECT_ONLY\r\n"
 "  command {\r\n"
 "    index: 15\r\n"
+"    submenu_name: \"Select Only\"\r\n"
 "    category: \"Selection\"\r\n"
 "    desc {\r\n"
 "      menu: \"Select First Segment Only\"\r\n"
@@ -782,6 +787,7 @@ static const unsigned char temp_e71d8a85[] =
 "  type: SET_SAVE_FORMAT\r\n"
 "  command {\r\n"
 "    index: 4\r\n"
+"    submenu_name: \"Set File Format For Saved Audio\"\r\n"
 "    category: \"(None)\"\r\n"
 "    setter {\r\n"
 "      type: SELECTION\r\n"
@@ -808,6 +814,7 @@ static const unsigned char temp_e71d8a85[] =
 "  type: SET_LANGUAGE\r\n"
 "  command {\r\n"
 "    index: 5\r\n"
+"    submenu_name: \"Set Language\"\r\n"
 "    category: \"(None)\"\r\n"
 "    setter {\r\n"
 "      type: SELECTION\r\n"
@@ -1036,6 +1043,7 @@ static const unsigned char temp_e71d8a85[] =
 "  type: TOGGLE_SELECTION\r\n"
 "  command {\r\n"
 "    index: 15\r\n"
+"    submenu_name: \"Toggle Selection\"\r\n"
 "    category: \"Selection\"\r\n"
 "    desc {\r\n"
 "      menu: \"Toggle First Segment Selection\"\r\n"
@@ -1257,6 +1265,7 @@ static const unsigned char temp_e71d8a85[] =
 "  command {\r\n"
 "    index: 15\r\n"
 "    category: \"Selection\"\r\n"
+"    submenu_name: \"Unselect\"\r\n"
 "    desc {\r\n"
 "      menu: \"Unselect First Segment\"\r\n"
 "      menu: \"Unselect Previous Segment\"\r\n"
@@ -1900,9 +1909,7 @@ static const unsigned char temp_9493ace5[] =
 "    command: NONE\n"
 "    command: SAVE_FILE\n"
 "    command: SAVE_FILE_SELECTION\n"
-"  }\n"
-"  entry {\n"
-"    submenu: \"file type for save\"\n"
+"    command: SET_SAVE_FORMAT\n"
 "  }\n"
 "}\n"
 "menu {\n"
@@ -2043,17 +2050,6 @@ static const unsigned char temp_9493ace5[] =
 "    command: NONE\n"
 "    command: CHECK_FOR_UPDATES\n"
 "    command: TOGGLE_AUTOMATIC_UPDATES\n"
-"  }\n"
-"}\n"
-"menu {\n"
-"  description {\n"
-"    name: \"file type for save\"\n"
-"  }\n"
-"  entry {\n"
-"    command: SET_SAVE_AS_AIFF\n"
-"    command: SET_SAVE_AS_FLAC\n"
-"    command: SET_SAVE_AS_OGG\n"
-"    command: SET_SAVE_AS_WAV\n"
 "  }\n"
 "}\n";
 
@@ -13536,10 +13532,10 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
 
     switch (hash)
     {
-        case 0x5863c28f:  numBytes = 30235; return SlowCommands_def;
+        case 0x5863c28f:  numBytes = 30556; return SlowCommands_def;
         case 0x76e9e16c:  numBytes = 6951; return SlowKeyStrokeMap_def;
         case 0xbef1a624:  numBytes = 355; return SlowMenuCollection_def;
-        case 0xce3bc719:  numBytes = 2955; return SlowMenus_def;
+        case 0xce3bc719:  numBytes = 2744; return SlowMenus_def;
         case 0xabdfcc02:  numBytes = 21887; return AddLoopPointButton_svg;
         case 0xde160f9e:  numBytes = 16373; return AddLoopPointButtonDisabled_svg;
         case 0x188c0faa:  numBytes = 18313; return AddLoopPointButtonPressed_svg;

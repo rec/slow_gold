@@ -251,6 +251,7 @@ slow_command {
   type: JUMP
   command {
     index: 15
+    submenu_name: "Jump To"
     category: "Transport"
     desc {
       menu: "Jump To First Segment"
@@ -291,6 +292,7 @@ slow_command {
   type: JUMP_SELECTED
   command {
     index: 15
+    submenu_name: "Jump To Selected"
     category: "Transport"
     desc {
       menu: "Jump To First Selected Segment"
@@ -553,8 +555,9 @@ slow_command {
 slow_command {
   type: RECENT_FILES
   command {
-    index: 31
     category: "File"
+    index: 31
+    submenu_name: "Open Recent File"
     desc {
       menu: "Recent file 1"
       menu: "Recent file 2"
@@ -680,6 +683,7 @@ slow_command {
   type: SELECT
   command {
     index: 15
+    submenu_name: "Select"
     category: "Selection"
     desc {
       menu: "Select First Segment"
@@ -731,6 +735,7 @@ slow_command {
   type: SELECT_ONLY
   command {
     index: 15
+    submenu_name: "Select Only"
     category: "Selection"
     desc {
       menu: "Select First Segment Only"
@@ -771,6 +776,7 @@ slow_command {
   type: SET_SAVE_FORMAT
   command {
     index: 4
+    submenu_name: "Set File Format For Saved Audio"
     category: "(None)"
     setter {
       type: SELECTION
@@ -797,6 +803,7 @@ slow_command {
   type: SET_LANGUAGE
   command {
     index: 5
+    submenu_name: "Set Language"
     category: "(None)"
     setter {
       type: SELECTION
@@ -1025,6 +1032,7 @@ slow_command {
   type: TOGGLE_SELECTION
   command {
     index: 15
+    submenu_name: "Toggle Selection"
     category: "Selection"
     desc {
       menu: "Toggle First Segment Selection"
@@ -1246,6 +1254,7 @@ slow_command {
   command {
     index: 15
     category: "Selection"
+    submenu_name: "Unselect"
     desc {
       menu: "Unselect First Segment"
       menu: "Unselect Previous Segment"

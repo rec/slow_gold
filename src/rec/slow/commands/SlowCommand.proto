@@ -80,6 +80,7 @@ message SlowCommand {
     SET_LANGUAGE = 930000;
     SET_SAVE_FORMAT = 710000;
 
+    // TODO: delete this.
     SET_SAVE_AS_AIFF = 97;
     SET_SAVE_AS_FLAC = 98;
     SET_SAVE_AS_OGG = 99;

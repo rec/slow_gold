@@ -18,9 +18,7 @@ menu {
     command: NONE
     command: SAVE_FILE
     command: SAVE_FILE_SELECTION
-  }
-  entry {
-    submenu: "file type for save"
+    command: SET_SAVE_FORMAT
   }
 }
 menu {
@@ -161,16 +159,5 @@ menu {
     command: NONE
     command: CHECK_FOR_UPDATES
     command: TOGGLE_AUTOMATIC_UPDATES
-  }
-}
-menu {
-  description {
-    name: "file type for save"
-  }
-  entry {
-    command: SET_SAVE_AS_AIFF
-    command: SET_SAVE_AS_FLAC
-    command: SET_SAVE_AS_OGG
-    command: SET_SAVE_AS_WAV
   }
 }

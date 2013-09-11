@@ -33,9 +33,9 @@ class JuceModelImpl {
  private:
   typedef vector<unique_ptr<SetterListener>> DataListeners;
 
-  void addSubmenu(PopupMenu* popup, const MenuEntry& menuEntry);
+  void addSubMenu(PopupMenu* popup, const MenuEntry& menuEntry);
   void addCommands(PopupMenu* popup, const MenuEntry& menuEntry);
-  void addCommand(PopupMenu* popup, CommandID);
+  void addCommand(PopupMenu* popup, CommandID, bool hasIndex=false);
   void addMenuEntry(PopupMenu* popup, const MenuEntry& menuEntry);
   void makeRecentFiles(PopupMenu* menu);
 

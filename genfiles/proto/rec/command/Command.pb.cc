@@ -86,8 +86,8 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
   static const int Command_offsets_[13] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, command_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, index_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, start_index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, category_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, submenu_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, desc_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, keypress_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, flags_),
@@ -176,19 +176,19 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\022\027\n\tis_global\030\002 \001(\010:\004true\022\'\n\007address\030\003 \001"
     "(\0132\026.rec.data.AddressProto\022\021\n\ttype_name\030"
     "\004 \001(\t\"!\n\004Type\022\n\n\006TOGGLE\020\000\022\r\n\tSELECTION\020\001"
-    "\"\255\003\n\007Command\022\017\n\007command\030\001 \001(\r\022\r\n\005index\030\002"
-    " \001(\021\022\023\n\013start_index\030\003 \001(\021\022\020\n\010category\030\004 "
-    "\001(\t\022&\n\004desc\030\005 \001(\0132\030.rec.command.Descript"
-    "ion\022\020\n\010keypress\030\006 \003(\t\022\r\n\005flags\030\007 \001(\r\022#\n\006"
-    "setter\030\010 \001(\0132\023.rec.command.Setter\022\014\n\004siz"
-    "e\030\t \001(\r\022\017\n\007callout\030\n \001(\010\022\016\n\006hidden\030\013 \003(\t"
-    "\022\020\n\010disabled\030\014 \003(\t\022\016\n\006ticked\030\r \003(\t\"\233\001\n\004T"
-    "ype\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CU"
-    "T\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_AL"
-    "L\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200 "
-    "\022\r\n\010JUCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Comm"
-    "ands\022%\n\007command\030\001 \003(\0132\024.rec.command.Comm"
-    "and", 803);
+    "\"\256\003\n\007Command\022\017\n\007command\030\001 \001(\r\022\r\n\005index\030\002"
+    " \001(\021\022\020\n\010category\030\003 \001(\t\022\024\n\014submenu_name\030\004"
+    " \001(\t\022&\n\004desc\030\005 \001(\0132\030.rec.command.Descrip"
+    "tion\022\020\n\010keypress\030\006 \003(\t\022\r\n\005flags\030\007 \001(\r\022#\n"
+    "\006setter\030\010 \001(\0132\023.rec.command.Setter\022\014\n\004si"
+    "ze\030\t \001(\r\022\017\n\007callout\030\n \001(\010\022\016\n\006hidden\030\013 \003("
+    "\t\022\020\n\010disabled\030\014 \003(\t\022\016\n\006ticked\030\r \003(\t\"\233\001\n\004"
+    "Type\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003C"
+    "UT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_A"
+    "LL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200"
+    " \022\r\n\010JUCE_END\020\210 \022\017\n\tBANK_SIZE\020\240\215\006\"1\n\010Com"
+    "mands\022%\n\007command\030\001 \003(\0132\024.rec.command.Com"
+    "mand", 804);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -1006,8 +1006,8 @@ const int Command::Type_ARRAYSIZE;
 #ifndef _MSC_VER
 const int Command::kCommandFieldNumber;
 const int Command::kIndexFieldNumber;
-const int Command::kStartIndexFieldNumber;
 const int Command::kCategoryFieldNumber;
+const int Command::kSubmenuNameFieldNumber;
 const int Command::kDescFieldNumber;
 const int Command::kKeypressFieldNumber;
 const int Command::kFlagsFieldNumber;
@@ -1039,8 +1039,8 @@ void Command::SharedCtor() {
   _cached_size_ = 0;
   command_ = 0u;
   index_ = 0;
-  start_index_ = 0;
   category_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  submenu_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   desc_ = NULL;
   flags_ = 0u;
   setter_ = NULL;
@@ -1056,6 +1056,9 @@ Command::~Command() {
 void Command::SharedDtor() {
   if (category_ != &::google::protobuf::internal::kEmptyString) {
     delete category_;
+  }
+  if (submenu_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete submenu_name_;
   }
   if (this != default_instance_) {
     delete desc_;
@@ -1088,10 +1091,14 @@ void Command::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     command_ = 0u;
     index_ = 0;
-    start_index_ = 0;
     if (has_category()) {
       if (category_ != &::google::protobuf::internal::kEmptyString) {
         category_->clear();
+      }
+    }
+    if (has_submenu_name()) {
+      if (submenu_name_ != &::google::protobuf::internal::kEmptyString) {
+        submenu_name_->clear();
       }
     }
     if (has_desc()) {
@@ -1147,28 +1154,12 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_start_index;
+        if (input->ExpectTag(26)) goto parse_category;
         break;
       }
 
-      // optional sint32 start_index = 3;
+      // optional string category = 3;
       case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_start_index:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &start_index_)));
-          set_has_start_index();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_category;
-        break;
-      }
-
-      // optional string category = 4;
-      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_category:
@@ -1176,6 +1167,23 @@ bool Command::MergePartialFromCodedStream(
                 input, this->mutable_category()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->category().data(), this->category().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_submenu_name;
+        break;
+      }
+
+      // optional string submenu_name = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_submenu_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_submenu_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->submenu_name().data(), this->submenu_name().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -1364,18 +1372,22 @@ void Command::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->index(), output);
   }
 
-  // optional sint32 start_index = 3;
-  if (has_start_index()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->start_index(), output);
-  }
-
-  // optional string category = 4;
+  // optional string category = 3;
   if (has_category()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->category().data(), this->category().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      4, this->category(), output);
+      3, this->category(), output);
+  }
+
+  // optional string submenu_name = 4;
+  if (has_submenu_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->submenu_name().data(), this->submenu_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->submenu_name(), output);
   }
 
   // optional .rec.command.Description desc = 5;
@@ -1459,19 +1471,24 @@ void Command::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->index(), target);
   }
 
-  // optional sint32 start_index = 3;
-  if (has_start_index()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->start_index(), target);
-  }
-
-  // optional string category = 4;
+  // optional string category = 3;
   if (has_category()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->category().data(), this->category().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->category(), target);
+        3, this->category(), target);
+  }
+
+  // optional string submenu_name = 4;
+  if (has_submenu_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->submenu_name().data(), this->submenu_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->submenu_name(), target);
   }
 
   // optional .rec.command.Description desc = 5;
@@ -1564,18 +1581,18 @@ int Command::ByteSize() const {
           this->index());
     }
 
-    // optional sint32 start_index = 3;
-    if (has_start_index()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->start_index());
-    }
-
-    // optional string category = 4;
+    // optional string category = 3;
     if (has_category()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->category());
+    }
+
+    // optional string submenu_name = 4;
+    if (has_submenu_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->submenu_name());
     }
 
     // optional .rec.command.Description desc = 5;
@@ -1678,11 +1695,11 @@ void Command::MergeFrom(const Command& from) {
     if (from.has_index()) {
       set_index(from.index());
     }
-    if (from.has_start_index()) {
-      set_start_index(from.start_index());
-    }
     if (from.has_category()) {
       set_category(from.category());
+    }
+    if (from.has_submenu_name()) {
+      set_submenu_name(from.submenu_name());
     }
     if (from.has_desc()) {
       mutable_desc()->::rec::command::Description::MergeFrom(from.desc());
@@ -1726,8 +1743,8 @@ void Command::Swap(Command* other) {
   if (other != this) {
     std::swap(command_, other->command_);
     std::swap(index_, other->index_);
-    std::swap(start_index_, other->start_index_);
     std::swap(category_, other->category_);
+    std::swap(submenu_name_, other->submenu_name_);
     std::swap(desc_, other->desc_);
     keypress_.Swap(&other->keypress_);
     std::swap(flags_, other->flags_);
