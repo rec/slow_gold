@@ -42,7 +42,7 @@ void SetterListener::toggle() {
 void SetterListener::select(int index) {
   {
     Lock l(lock_);
-    value_.set_uint32_f(index);
+    value_.set_enum_f(index);
   }
   setValue();
 }
