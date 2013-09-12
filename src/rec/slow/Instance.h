@@ -88,7 +88,6 @@ class Instance {
   ApplicationCommandManager* applicationCommandManager();
   Listener<Enable>* enableListener();
   Listener<command::ID>* idListener();
-  MenuBarModel* menuBarModel();
 
   void menuItemsChanged();
 
@@ -97,7 +96,6 @@ class Instance {
  private:
   ptr<command::CommandTarget> commandTarget_;
   ApplicationCommandManager applicationCommandManager_;
-  ptr<Menus> menus_;
   unique_ptr<SlowProgram> slowProgram_;
   unique_ptr<program::JuceModel> juceModel_;
 

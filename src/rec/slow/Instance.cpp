@@ -37,7 +37,6 @@
 #include "rec/slow/GuiSettings.h"
 #include "rec/slow/IsWholeSong.h"
 #include "rec/slow/MainPage.h"
-#include "rec/slow/Menus.h"
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Threads.h"
@@ -157,7 +156,6 @@ void Instance::init() {
   juceModel_->init();
 
   window_->init();
-  menus_.reset(new Menus(this, new IsWholeSongInstance(this)));
   device_.reset(new audio::Device);
   currentFile_.reset(new CurrentFile(this));
 
@@ -247,7 +245,7 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  menuBarModel()->menuItemsChanged();
+  juceModel_->menuItemsChanged();
 
   VirtualFile vf = data::getProto<VirtualFile>();
   if (vf.type() != VirtualFile::NONE) {
@@ -307,7 +305,7 @@ bool Instance::empty() const {
 
 void Instance::setProto(const Message& m, Undoable undoable) {
    data::setProto(m, file(), undoable);
-   menuBarModel()->menuItemsChanged();
+   juceModel_->menuItemsChanged();
 }
 
 void Instance::reset() {
@@ -336,31 +334,15 @@ ApplicationCommandManager* Instance::applicationCommandManager() {
 }
 
 void Instance::menuItemsChanged() {
-  if (USE_NEW_COMMANDS)
-    juceModel_->menuItemsChanged();
-  else
-    menus_->menuItemsChanged();
+  juceModel_->menuItemsChanged();
 }
 
 Listener<Enable>* Instance::enableListener() {
-  if (USE_NEW_COMMANDS)
-    return juceModel_.get();
-  else
-    return commandTarget_.get();
+  return juceModel_.get();
 }
 
 Listener<command::ID>* Instance::idListener() {
-  if (USE_NEW_COMMANDS)
-    return juceModel_.get();
-  else
-    return commandTarget_.get();
-}
-
-MenuBarModel* Instance::menuBarModel() {
-  if (USE_NEW_COMMANDS)
-    return juceModel_.get();
-  else
-    return menus_.get();
+  return juceModel_.get();
 }
 
 }  // namespace slow

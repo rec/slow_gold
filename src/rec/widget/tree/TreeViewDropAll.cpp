@@ -14,7 +14,7 @@ namespace tree {
 namespace {
 }  // namespace
 
-TreeViewDropAll::TreeViewDropAll(MenuBarModel* m) {
+TreeViewDropAll::TreeViewDropAll() {
   setName("Tree");
 }
 

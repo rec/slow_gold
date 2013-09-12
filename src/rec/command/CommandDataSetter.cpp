@@ -1,15 +1,14 @@
 #include "rec/command/CommandDataSetter.h"
 #include "rec/base/Trans.h"
+#include "rec/program/JuceModel.h"
 
 namespace rec {
 namespace command {
 
-CommandDataSetter::CommandDataSetter(MenuBarModel* changeListener,
-                                     const Command& command,
+CommandDataSetter::CommandDataSetter(const Command& command,
                                      const data::Address& addr,
                                      Scope scope)
     : AddressListener(addr, command.setter().type_name(), scope),
-      changeListener_(changeListener),
       command_(command),
       menuName_("none") {
 }
@@ -21,7 +20,7 @@ void CommandDataSetter::operator()(const data::Value& value) {
   else
     LOG(DFATAL) << "No " << index << " in " << command_.ShortDebugString();
 
-  changeListener_->menuItemsChanged();
+  program::menuItemsChanged();
 }
 
 void CommandDataSetter::execute() {

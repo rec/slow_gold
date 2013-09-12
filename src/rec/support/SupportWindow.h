@@ -28,7 +28,6 @@ class SupportWindow : public app::Window, public HasInstance  {
 
   virtual void constructInstance() {}
   virtual Component* getMainComponent() { return nullptr; }
-  virtual MenuBarModel* getMenuBarModel() { return nullptr; }
 
  private:
   ptr<Instance> instanceDeleter_;

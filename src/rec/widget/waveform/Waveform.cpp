@@ -50,7 +50,7 @@ Def<CursorProto> defaultDesc(
 
 }  // namespace
 
-Waveform::Waveform(MenuBarModel* m)
+Waveform::Waveform()
     : Component("WaveformComponent"),
       model_(new WaveformModel),
       zoomCursor_(getZoomCursor(), ZOOM_CURSOR_X_HOTSPOT,

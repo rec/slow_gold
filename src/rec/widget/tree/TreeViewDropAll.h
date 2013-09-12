@@ -18,7 +18,7 @@ class TreeViewDropAll : public TreeViewDropTarget
 #endif
 {
  public:
-  explicit TreeViewDropAll(MenuBarModel*);
+  TreeViewDropAll();
   virtual void paint(Graphics& g);
 
   bool isInterestedInFileDrag(const StringArray& files);
@@ -37,7 +37,7 @@ class TreeViewDropAll : public TreeViewDropTarget
  private:
   ptr<Drawable> slowGoldIcon_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(TreeViewDropAll);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(TreeViewDropAll);
 };
 
 }  // namespace tree

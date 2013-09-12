@@ -69,7 +69,7 @@ UndoStack::~UndoStack() {
 
 void UndoStack::updateMenusAndUndo() {
   broadcast(None());
-  program::getJuceModel()->menuItemsChanged();
+  program::juceModel()->menuItemsChanged();
 }
 
 void UndoStack::clear() {

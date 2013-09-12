@@ -3,6 +3,7 @@
 #include "rec/app/Files.h"
 #include "rec/data/Data.h"
 #include "rec/gui/Color.h"
+#include "rec/program/JuceModel.h"
 #include "rec/util/file/CompareFile.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/file/VirtualFile.h"
@@ -36,9 +37,8 @@ const bool USE_OPENNESS_FILE = false;
 
 }  // namespace
 
-Root::Root(MenuBarModel* model, const NodeDesc& desc)
+Root::Root(const NodeDesc& desc)
   : desc_(desc),
-    tree_(model),
     addDialogOpen_(false),
     opennessRead_(false),
     opennessStarted_(false) {

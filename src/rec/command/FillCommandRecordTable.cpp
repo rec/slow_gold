@@ -23,9 +23,8 @@ void fillSingleCommand(const CommandData& data, CommandRecordTable* table,
     DCHECK(cmd.has_setter()) << cmd.ShortDebugString();
     cr = table->create(t);
     const data::Address& a = cmd.setter().address();
-    MenuBarModel* ls = program::getJuceModel();
     Scope s = scope(cmd.setter().is_global());
-    cr->setter_.reset(new TickedDataSetter(cr->getInfo(), ls, cmd, a, s));
+    cr->setter_.reset(new TickedDataSetter(cr->getInfo(), cmd, a, s));
     cr->callback_ = thread::methodCallback(cr->setter_.get(),
                                            &CommandItemSetter::execute);
   }

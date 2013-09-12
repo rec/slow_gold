@@ -11,7 +11,6 @@
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
-#include "rec/slow/Menus.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/util/Cuttable.h"
 #include "rec/widget/tree/Root.h"
@@ -35,11 +34,11 @@ Components::Components(Instance* instance)
       manager_(applicationCommandManager()),
       timeController_(new gui::audio::TimeController),
       loops_(new gui::audio::Loops()),
-      songData_(new gui::SongData(instance_->menuBarModel())),
+      songData_(new gui::SongData),
       transformController_(new gui::audio::TransformController),
       transportController_(
           new gui::audio::TransportController(timeController_.get())),
-      directoryTree_(new widget::tree::Root(instance_->menuBarModel())),
+      directoryTree_(new widget::tree::Root),
       waveform_(new gui::DropTarget<widget::waveform::Waveform>()),
       modeSelector_(new gui::audio::ModeSelector()),
 	  commandBar_(new gui::audio::CommandBar) {

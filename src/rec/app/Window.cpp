@@ -1,4 +1,5 @@
 #include "rec/app/Window.h"
+#include "rec/program/JuceModel.h"
 
 namespace rec {
 namespace app {
@@ -21,10 +22,10 @@ void Window::initialise() {
   constructInstance();
 
 #if JUCE_MAC
-  juce::MenuBarModel::setMacMainMenu(getMenuBarModel(), &menu_);
+  juce::MenuBarModel::setMacMainMenu(program::juceModel(), &menu_);
   setMenuBar(nullptr);
 #else
-  setMenuBar(getMenuBarModel());
+  setMenuBar(program::juceModel());
 #endif
 
   setUsingNativeTitleBar(true);

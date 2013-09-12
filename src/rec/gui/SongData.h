@@ -19,8 +19,7 @@ class SongData : public app::LanguageListener,
  public:
   typedef data::Address Address;
 
-  explicit SongData(MenuBarModel*)
-      : UntypedDataListener(getTypeName<music::Metadata>()) {
+  SongData() : UntypedDataListener(getTypeName<music::Metadata>()) {
     setName("SongData");
   }
 

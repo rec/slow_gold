@@ -6,6 +6,7 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/Geometry.h"
+#include "rec/program/JuceModel.h"
 #include "rec/slow/AboutWindow.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
@@ -13,7 +14,6 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/LegacyDatabase.pb.h"
 #include "rec/slow/MainPage.h"
-#include "rec/slow/Menus.h"
 #include "rec/slow/RegisterProtos.h"
 #include "rec/util/file/FixLegacyFiles.h"
 #include "rec/util/proto/Defaulter.h"
@@ -140,12 +140,8 @@ Component* SlowWindow::getMainComponent() {
   return components()->mainPage_->panel();
 }
 
-MenuBarModel* SlowWindow::getMenuBarModel() {
-  return instance_->menuBarModel();
-}
-
 void SlowWindow::activeWindowStatusChanged() {
-  instance_->menuItemsChanged();
+  program::menuItemsChanged();
 
   if (components())
     components()->waveform_->repaint();

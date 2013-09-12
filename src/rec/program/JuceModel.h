@@ -46,7 +46,11 @@ class JuceModel : public ApplicationCommandTarget,
   DISALLOW_COPY_ASSIGN_AND_LEAKS(JuceModel);
 };
 
-JuceModel* getJuceModel();
+JuceModel* juceModel();
+
+inline void menuItemsChanged() {
+  juceModel()->menuItemsChanged();
+}
 
 }  // namespace program
 }  // namespace rec

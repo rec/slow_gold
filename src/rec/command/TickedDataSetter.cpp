@@ -1,21 +1,21 @@
 #include "rec/command/TickedDataSetter.h"
+#include "rec/program/JuceModel.h"
 
 namespace rec {
 namespace command {
 
 TickedDataSetter::TickedDataSetter(ApplicationCommandInfo* info,
-                                   MenuBarModel* changeListener,
                                    const Command& command,
                                    const data::Address& addr,
                                    Scope scope)
-    : CommandDataSetter(changeListener, command, addr, scope),
+    : CommandDataSetter(command, addr, scope),
       info_(info) {
 }
 
 void TickedDataSetter::operator()(const data::Value& v) {
   info_->setTicked(v.get<bool>());
 
-  changeListener_->menuItemsChanged();
+  program::menuItemsChanged();
 }
 
 void TickedDataSetter::execute() {

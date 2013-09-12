@@ -10,7 +10,7 @@ namespace rec {
 namespace program {
 
 static JuceModel* MODEL = nullptr;
-JuceModel* getJuceModel() { return MODEL; }
+JuceModel* juceModel() { return MODEL; }
 JuceModel::JuceModel(Program* p) : program_(p) {}
 
 void JuceModel::init() {

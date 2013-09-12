@@ -33,7 +33,6 @@ class SlowWindow : public app::Window, public HasInstance  {
 
   virtual void constructInstance();
   virtual Component* getMainComponent();
-  virtual MenuBarModel* getMenuBarModel();
   virtual void activeWindowStatusChanged();
 
  private:
