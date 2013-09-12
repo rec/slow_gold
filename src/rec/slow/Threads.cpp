@@ -156,7 +156,7 @@ void Threads::removeCallbacksFor(void* owner) {
 
 template <typename Operator>
 Thread* Threads::start(Operator op, const String& name, int priority) {
-  Thread* thread = thread::makeLooper(name, op, instance_).release();
+  Thread* thread = thread::makeLooper(name, op, getInstance()).release();
   if (priority)
     thread->setPriority(priority);
   thread->startThread();
@@ -175,9 +175,10 @@ void Threads::clean() {
 }
 
 int Threads::runQueue() {
-  if (!empty())
+  bool empty = getInstance()->empty();
+  if (!empty)
     threads_->callbackQueue_.runOneCallback();
-  return empty() ? static_cast<int>(thread::YIELD) : Period::CALLBACK_QUEUE;
+  return empty ? static_cast<int>(thread::YIELD) : Period::CALLBACK_QUEUE;
 }
 
 typedef int (Threads::*ThreadsMethod)();

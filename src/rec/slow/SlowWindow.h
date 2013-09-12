@@ -10,7 +10,7 @@ namespace app { class GenericApplication; }
 
 namespace slow {
 
-class SlowWindow : public app::Window, public HasInstance  {
+class SlowWindow : public app::Window  {
  public:
   explicit SlowWindow(app::GenericApplication*);
   virtual ~SlowWindow();
@@ -38,7 +38,7 @@ class SlowWindow : public app::Window, public HasInstance  {
  private:
   void gotoNextFile();
 
-  ptr<Instance> instanceDeleter_;
+  unique_ptr<Instance> instance_;
   ptr<Component> aboutWindow_;
   bool startupFinished_;
   File nextFile_;

@@ -62,14 +62,14 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   data::getDataCenter().clearUndoes();
 
   stopThreads();
-  currentTime()->reset();
+  getInstance()->currentTime_->reset();
 
   if (file_.path_size())
     gui::addRecentFile(file_, data::getProto<music::Metadata>(file_));
 
   VirtualFile newFile = f;
   {
-    Lock l(instance_->lock_);  // TODO: do we need this lock?
+    Lock l(getInstance()->lock_);  // TODO: do we need this lock?
     file_.Swap(&newFile);
   }
 
@@ -89,32 +89,34 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
 }
 
 void CurrentFile::stopThreads() {
-  player()->reset();
-  instance_->reset();  // Stops the loading thread.
+  getInstance()->player_->reset();
+  getInstance()->reset();  // Stops the loading thread.
 }
 
 void CurrentFile::startThreads() {
   if (file_.path_size())
-    instance_->fillerThread_->startThread();
+    getInstance()->fillerThread_->startThread();
 }
 
 void CurrentFile::beforeFileChange() {
   MessageManagerLock l;
-  components()->waveform_->setLoading(true);
-  components()->waveform_->repaint();
+  auto& components = getInstance()->components_;
+  components->waveform_->setLoading(true);
+  components->waveform_->repaint();
 }
 
 void CurrentFile::afterFileChange(const VirtualFile& newFile) {
   MessageManagerLock l;
+  auto& components = getInstance()->components_;
 
   if (not empty())
-    components()->directoryTree_->refreshNode(file_);
+    components->directoryTree_->refreshNode(file_);
 
   if (newFile.path_size())
-    components()->directoryTree_->refreshNode(newFile);
+    components->directoryTree_->refreshNode(newFile);
 
-  components()->setEnabled(length_ != 0);
-  components()->waveform_->setLoading(false);
+  components->setEnabled(length_ != 0);
+  components->waveform_->setLoading(false);
 }
 
 bool CurrentFile::determineIfFileEmpty(bool showError) {
@@ -125,7 +127,7 @@ bool CurrentFile::determineIfFileEmpty(bool showError) {
 
   music::MusicFileReader reader(file_);
   if (!reader.empty()) {
-    length_ = bufferFiller()->setReader(file_, reader.release());
+    length_ = getInstance()->bufferFiller_->setReader(file_, reader.release());
     if (length_)
       return false;
     reader.setError(t_RAN_OUT_OF_MEMORY, t_RAN_OUT_OF_MEMORY_FULL);
@@ -163,7 +165,7 @@ void CurrentFile::nonEmptyFileLoaded() {
   }
 
   viewport.mutable_loop_points()->set_length(length_);
-  viewport.mutable_loop_points()->set_sample_rate(bufferFiller()->reader()->
+  viewport.mutable_loop_points()->set_sample_rate(getInstance()->bufferFiller_->reader()->
                                                   reader()->sampleRate);
   data::setProto(viewport, file_, CANT_UNDO);
 }

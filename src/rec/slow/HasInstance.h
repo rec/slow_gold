@@ -10,27 +10,9 @@ namespace slow {
 
 class HasInstance {
  public:
-  explicit HasInstance(Instance* i = nullptr) : instance_(i) {}
+  explicit HasInstance(Instance* i = nullptr) {}
 
-  audio::util::BufferFiller* bufferFiller() { return instance_->bufferFiller_.get(); }
-  Components* components() { return instance_->components_.get(); }
-  Threads* threads() { return instance_->threads_.get(); }
-  audio::source::Player* player() { return instance_->player_.get(); }
-  audio::Device* device() { return instance_->device_.get(); }
-  CurrentFile* currentFile() { return instance_->currentFile_.get(); }
-  CurrentTime* currentTime() { return instance_->currentTime_.get(); }
-  app::Window* window() { return instance_->window_; }
-
-  const VirtualFile file() const { return instance_->file(); }
-  SampleTime time() const { return instance_->time(); }
-  SampleTime length() const { return instance_->length(); }
-  bool isPlaying() const { return instance_->isPlaying(); }
-  bool empty() const { return instance_->empty(); }
-  const CriticalSection& lock() const { return instance_->lock_; }
-
- protected:
-  Instance* instance_;
-
+ private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(HasInstance);
 };
 

@@ -51,7 +51,7 @@ void CurrentTime::setTime(SampleTime t) {
       }
     }
 
-    if (!(followCursor_  && isPlaying()))
+    if (!(followCursor_  && getInstance()->isPlaying()))
       return;
   }
   zoomToTime(t);
@@ -130,7 +130,7 @@ void CurrentTime::operator()(const GuiSettings& settings) {
   }
 
   bool show = settings.show_master_tune();
-  components()->transformController_->showMasterTune(show);
+  getInstance()->components_->transformController_->showMasterTune(show);
 }
 
 void CurrentTime::setCursorTime(SampleTime t, int index, bool isTimeCursor) {
@@ -153,17 +153,18 @@ void CurrentTime::reset() {
 }
 
 void CurrentTime::jumpToTime(SampleTime time) {
+  auto& player = getInstance()->player_;
   {
     Lock l(lock());
-    if (empty() || !(timeSelection_.empty() || contains(timeSelection_, time)))
+    if (getInstance()->empty() || !(timeSelection_.empty() || contains(timeSelection_, time)))
       return;
 
-    BufferedReader* reader = bufferFiller()->reader();
+    BufferedReader* reader = getInstance()->bufferFiller_->reader();
     requestedTime_ = time;
     time_ = time;
     if (reader && !reader->coversTime(time)) {
       reader->setNextFillPosition(time);
-      if (player()->state()) {
+      if (player->state()) {
         zoomToTime(time);
         return;
       }
@@ -171,7 +172,7 @@ void CurrentTime::jumpToTime(SampleTime time) {
     requestedTime_ = -1;
   }
 
-	player()->setNextReadPosition(time);
+	player->setNextReadPosition(time);
   zoomToTime(time);
 }
 

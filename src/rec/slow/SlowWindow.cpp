@@ -66,7 +66,6 @@ void redirectLogs(const File& appDir) {
 SlowWindow::SlowWindow(app::GenericApplication* application)
     : app::Window(application, "SlowGold", Colours::azure,
                   DocumentWindow::allButtons, true),
-      HasInstance(nullptr),
       startupFinished_(false) {
   bool check = data::getProto<GuiSettings>().auto_check_for_updates();
   application->setAutoCheckForUpdates(check);
@@ -84,11 +83,7 @@ void SlowWindow::init() {
 }
 
 void SlowWindow::constructInstance() {
-  doLog("in constructInstance");
-  instanceDeleter_.reset(new slow::Instance(this));
-  doLog("instance constructed");
-  instance_ = instanceDeleter_.get();
-  doLog("initializing instance");
+  instance_.reset(new slow::Instance(this));
   instance_->init();
 }
 
@@ -108,7 +103,7 @@ void SlowWindow::gotoNextFile() {
       else
         LOG(DFATAL) << "Database type" << getTypeName(*msg);
     } else {
-      currentFile()->setFile(nextFile_);
+      getInstance()->currentFile_->setFile(nextFile_);
     }
   }
 }
@@ -123,8 +118,6 @@ void SlowWindow::doPostStartup() {
 
 void SlowWindow::doShutdown() {
   instance_->reset();
-  instance_ = nullptr;
-  instanceDeleter_.reset();
 }
 
 void SlowWindow::anotherInstanceStarted(const String& f) {
@@ -137,19 +130,20 @@ void SlowWindow::anotherInstanceStarted(const String& f) {
 }
 
 Component* SlowWindow::getMainComponent() {
-  return components()->mainPage_->panel();
+  return getInstance()->components_->mainPage_->panel();
 }
 
 void SlowWindow::activeWindowStatusChanged() {
   program::menuItemsChanged();
 
-  if (components())
-    components()->waveform_->repaint();
+  auto& components = getInstance()->components_;
+  if (components)
+    components->waveform_->repaint();
 }
 
 void SlowWindow::startAboutWindow() {
   if (!aboutWindow_) {
-    aboutWindow_.reset(new AboutWindow(getMainComponent(), instance_,
+    aboutWindow_.reset(new AboutWindow(getMainComponent(), getInstance(),
                                        application()->name(),
                                        application()->version()));
   }
@@ -165,7 +159,7 @@ void SlowWindow::stopAboutWindow() {
 
 void SlowWindow::minimisationStateChanged(bool isNowMinimised) {
   if (!isNowMinimised)
-    components()->waveform_->repaint();
+    getInstance()->components_->waveform_->repaint();
 }
 
 using namespace rec::data;

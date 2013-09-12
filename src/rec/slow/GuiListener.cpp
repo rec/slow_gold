@@ -84,7 +84,7 @@ void GuiListener::update() {
 
   if (comp != lastComponent_) {
     lastComponent_ = comp;
-    components()->mainPage_->setTooltip(getTooltip(comp));
+    getInstance()->components_->mainPage_->setTooltip(getTooltip(comp));
   }
 
 #if JUCE_DEBUG

@@ -11,17 +11,24 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Waveform.h"
 
-namespace rec {
-namespace slow {
-
 using namespace rec::audio::util;
 using namespace rec::widget::waveform;
 
-static const int FILLER_THREAD_WAIT = 5;
+namespace rec {
+namespace slow {
+
+namespace {
+const int FILLER_THREAD_WAIT = 5;
+
+inline CurrentTime* currentTime() {
+  return getInstance()->currentTime_.get();
+}
+
+}  // namespace
 
 void FillerThread::setFillPositionOrJump() {
   SampleTime jump = currentTime()->requestedTime();
-  BufferedReader* reader = bufferFiller()->reader();
+  BufferedReader* reader = getInstance()->bufferFiller_->reader();
   if (jump >= 0) {
     if (reader->coversTime(jump))
       currentTime()->jumpToTime(jump);
@@ -32,7 +39,7 @@ void FillerThread::setFillPositionOrJump() {
     SampleRangeVector fill = difference<SampleTime>(sel, readerFilled);
     if (!fill.empty()) {
       SampleTime time = currentTime()->time();
-      SampleRangeVector fillList = getUnfilledBlocks(fill, time, length(), STOP_AT_END);
+      SampleRangeVector fillList = getUnfilledBlocks(fill, time, getInstance()->length(), STOP_AT_END);
       if (!fillList.empty())
         reader->setNextFillPosition(fillList.begin()->begin_);
       else
@@ -44,14 +51,14 @@ void FillerThread::setFillPositionOrJump() {
 void FillerThread::run() {
   setFillPositionOrJump();
   while (true) {
-    SampleRange b = bufferFiller()->fillOnce();
+    SampleRange b = getInstance()->bufferFiller_->fillOnce();
     if (threadShouldExit() || b.empty())
       return;
     setFillPositionOrJump();
     {
       MessageManagerLock l(this);
       if (l.lockWasGained())
-        components()->waveform_->repaintRange(b);
+        getInstance()->components_->waveform_->repaintRange(b);
     }
     wait(FILLER_THREAD_WAIT);
   }

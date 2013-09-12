@@ -127,8 +127,8 @@ AboutWindow::AboutWindow(Component* parent,
 AboutWindow::~AboutWindow() {}
 
 void AboutWindow::mouseDown(const MouseEvent&) {
-  if (window())
-    window()->stopAboutWindow();
+  if (auto window = getInstance()->window_)
+    window->stopAboutWindow();
 }
 
 }  // namespace slow

@@ -49,7 +49,7 @@ class CurrentTime : public HasInstance,
 
   void reset();
 
-  const CriticalSection& lock() const { return instance_->lock_; }
+  const CriticalSection& lock() const { return getInstance()->lock_; }
   void zoomToCurrentTime() { zoomToTime(time()); }
   void zoomToTime(SampleTime);
 

@@ -22,28 +22,19 @@
 #include "rec/widget/waveform/Viewport.h"
 #include "rec/widget/waveform/Zoom.h"
 
-namespace rec {
-namespace slow {
-
-// Skin
-
-static const int DRAG_TWEAK = 5;
-static const double WHEEL_RATIO = 4.0;
-static const double SMALL_RATIO = 0.1;
-static const double BIG_RATIO = 2.0;
-
 using namespace rec::audio;
 using namespace rec::gui::audio;
 using namespace rec::widget::waveform;
 
-MouseListener::MouseListener(Instance* i)
-    : HasInstance(i), waveformDragStart_(0), groupingUndoEvents_(false) {
-  components()->waveform_->addMouseListener(this, true);
-  Broadcaster<const MouseWheelEvent&> *w = components()->waveform_.get();
-  w->addListener(this);
-}
+namespace rec {
+namespace slow {
 
 namespace {
+
+const int DRAG_TWEAK = 5;
+const double WHEEL_RATIO = 4.0;
+const double SMALL_RATIO = 0.1;
+const double BIG_RATIO = 2.0;
 
 typedef widget::waveform::OutlinedCursorLabel Label;
 
@@ -52,16 +43,36 @@ void toggleSelectionSegment(const VirtualFile& file, SampleTime t) {
   audio::toggleSelectionSegment(opener.mutable_get()->mutable_loop_points(), t);
 }
 
-void zoom(const Instance& instance, const MouseEvent& e,
-          SampleTime time, double increment) {
+void zoom(const MouseEvent& e, SampleTime time, double increment) {
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
-  widget::waveform::zoomScaleAt(instance.file(), instance.length(),
-                                instance.getSourceSampleRate(),
+  widget::waveform::zoomScaleAt(getInstance()->file(), getInstance()->length(),
+                                getInstance()->getSourceSampleRate(),
                                 s * increment, time);
 }
 
+inline Components* components() {
+  return getInstance()->components_.get();
+}
+
+inline CurrentFile* currentFile() {
+  return getInstance()->currentFile_.get();
+}
+
+inline const VirtualFile file() {
+  return getInstance()->file();
+}
+
 }  // namespace
+
+// Skin
+
+MouseListener::MouseListener(Instance* i)
+    : HasInstance(i), waveformDragStart_(0), groupingUndoEvents_(false) {
+  components()->waveform_->addMouseListener(this, true);
+  Broadcaster<const MouseWheelEvent&> *w = components()->waveform_.get();
+  w->addListener(this);
+}
 
 void MouseListener::mouseDown(const MouseEvent& e) {
   if (currentFile()->empty())
@@ -130,7 +141,7 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
   if (e.event_->eventComponent == &waveform) {
     SampleTime time = model.xToTime(e.event_->x);
     double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
-    zoom(*instance_, *e.event_, time, inc);
+    zoom(*e.event_, time, inc);
   }
 }
 
@@ -153,13 +164,13 @@ void MouseListener::clickWaveform(const MouseEvent& e, Waveform* waveform) {
     toggleSelectionSegment(file(), time);
 
   else if (action == Mode::SET_TIME)
-    currentTime()->jumpToTime(time);
+    getInstance()->currentTime_->jumpToTime(time);
 
   else if (action == Mode::ZOOM_IN)
-    zoom(*instance_, e, time, 1);
+    zoom(e, time, 1);
 
   else if (action == Mode::ZOOM_OUT)
-    zoom(*instance_, e, time, -1);
+    zoom(e, time, -1);
 
   else
     DCHECK(false);
@@ -172,7 +183,7 @@ void MouseListener::clickCursor(widget::waveform::Cursor* cursor) {
   cursorDragStart_ = cursor->getX();
   if (cursor->isTimeCursor()) {
     cursorRestrict_.begin_ = 0;
-    cursorRestrict_.end_ = length();
+    cursorRestrict_.end_ = getInstance()->length();
   } else {
     int i = cursor->index();
     Viewport vp = data::getProto<Viewport>(file());
@@ -195,7 +206,7 @@ void MouseListener::dragCursor(const MouseEvent& e,
     SampleTime t = restrict(cursorRestrict_, model.xToTime(cursorX));
     if (cursor->setDragTime(t)) {
       if (cursor->isTimeCursor()) {
-        currentTime()->jumpToTime(t);
+        getInstance()->currentTime_->jumpToTime(t);
       } else {
         Viewport viewport = data::getProto<Viewport>(file());
         int i = cursor->index();
@@ -213,7 +224,7 @@ void MouseListener::dragWaveform(const MouseEvent& e, Waveform* waveform) {
                                            waveform->model().pixelsPerSample());
     Viewport viewport(DataListener<Viewport>::getDataValue());
     Zoom* zoom = viewport.mutable_zoom();
-    SampleTime len = length();
+    SampleTime len = getInstance()->length();
     SampleTime end = zoom->has_end() ? SampleTime(zoom->end()) : len;
     SampleTime size = end - zoom->begin();
     SampleTime begin = std::max(waveformDragStart_ - dt, SampleTime(0));

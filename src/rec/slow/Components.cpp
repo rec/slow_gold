@@ -72,12 +72,13 @@ void Components::setEnabled(bool enabled) {
 
 void Components::operator()(const music::Metadata& md) {
   String name = Trans("(no file loaded)");
-  if (currentFile() && !currentFile()->empty()) {
+  auto currentFile = getInstance()->currentFile_.get();
+  if (currentFile && !currentFile->empty()) {
     File file = data::DataListener<music::Metadata>::getData()->getFile();
     name = str(music::getTitle(md, file.getParentDirectory()));
   }
 
-  thread::callAsync(window(), &SlowWindow::setName, name);
+  thread::callAsync(getInstance()->window_, &SlowWindow::setName, name);
 }
 
 
