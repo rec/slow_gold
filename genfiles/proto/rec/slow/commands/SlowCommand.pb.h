@@ -734,17 +734,10 @@ class SlowMenuEntry : public ::google::protobuf::Message {
   inline ::std::string* release_submenu();
   inline void set_allocated_submenu(::std::string* submenu);
 
-  // optional bool is_recent_files_menu = 3;
-  inline bool has_is_recent_files_menu() const;
-  inline void clear_is_recent_files_menu();
-  static const int kIsRecentFilesMenuFieldNumber = 3;
-  inline bool is_recent_files_menu() const;
-  inline void set_is_recent_files_menu(bool value);
-
-  // optional string callout_function = 4;
+  // optional string callout_function = 3;
   inline bool has_callout_function() const;
   inline void clear_callout_function();
-  static const int kCalloutFunctionFieldNumber = 4;
+  static const int kCalloutFunctionFieldNumber = 3;
   inline const ::std::string& callout_function() const;
   inline void set_callout_function(const ::std::string& value);
   inline void set_callout_function(const char* value);
@@ -757,8 +750,6 @@ class SlowMenuEntry : public ::google::protobuf::Message {
  private:
   inline void set_has_submenu();
   inline void clear_has_submenu();
-  inline void set_has_is_recent_files_menu();
-  inline void clear_has_is_recent_files_menu();
   inline void set_has_callout_function();
   inline void clear_has_callout_function();
 
@@ -767,10 +758,9 @@ class SlowMenuEntry : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedField<int> command_;
   ::std::string* submenu_;
   ::std::string* callout_function_;
-  bool is_recent_files_menu_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto();
@@ -1268,37 +1258,15 @@ inline void SlowMenuEntry::set_allocated_submenu(::std::string* submenu) {
   }
 }
 
-// optional bool is_recent_files_menu = 3;
-inline bool SlowMenuEntry::has_is_recent_files_menu() const {
+// optional string callout_function = 3;
+inline bool SlowMenuEntry::has_callout_function() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void SlowMenuEntry::set_has_is_recent_files_menu() {
+inline void SlowMenuEntry::set_has_callout_function() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void SlowMenuEntry::clear_has_is_recent_files_menu() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void SlowMenuEntry::clear_is_recent_files_menu() {
-  is_recent_files_menu_ = false;
-  clear_has_is_recent_files_menu();
-}
-inline bool SlowMenuEntry::is_recent_files_menu() const {
-  return is_recent_files_menu_;
-}
-inline void SlowMenuEntry::set_is_recent_files_menu(bool value) {
-  set_has_is_recent_files_menu();
-  is_recent_files_menu_ = value;
-}
-
-// optional string callout_function = 4;
-inline bool SlowMenuEntry::has_callout_function() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void SlowMenuEntry::set_has_callout_function() {
-  _has_bits_[0] |= 0x00000008u;
-}
 inline void SlowMenuEntry::clear_has_callout_function() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void SlowMenuEntry::clear_callout_function() {
   if (callout_function_ != &::google::protobuf::internal::kEmptyString) {

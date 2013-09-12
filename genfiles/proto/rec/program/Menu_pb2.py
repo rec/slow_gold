@@ -14,7 +14,7 @@ import rec.command.Command_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/program/Menu.proto',
   package='rec.program',
-  serialized_pb='\n\x16rec/program/Menu.proto\x12\x0brec.program\x1a\x19rec/command/Command.proto\"e\n\tMenuEntry\x12\x0f\n\x07\x63ommand\x18\x01 \x03(\r\x12\x0f\n\x07submenu\x18\x02 \x01(\t\x12\x1c\n\x14is_recent_files_menu\x18\x03 \x01(\x08\x12\x18\n\x10\x63\x61llout_function\x18\x04 \x01(\t\"m\n\x04Menu\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0f\n\x07\x65xtends\x18\x02 \x01(\t\x12%\n\x05\x65ntry\x18\x03 \x03(\x0b\x32\x16.rec.program.MenuEntry\"(\n\x05Menus\x12\x1f\n\x04menu\x18\x01 \x03(\x0b\x32\x11.rec.program.Menu\"F\n\x07MenuBar\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0c\n\x04menu\x18\x02 \x03(\t\"g\n\x0eMenuCollection\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12&\n\x08menu_bar\x18\x02 \x03(\x0b\x32\x14.rec.program.MenuBar')
+  serialized_pb='\n\x16rec/program/Menu.proto\x12\x0brec.program\x1a\x19rec/command/Command.proto\"G\n\tMenuEntry\x12\x0f\n\x07\x63ommand\x18\x01 \x03(\r\x12\x0f\n\x07submenu\x18\x02 \x01(\t\x12\x18\n\x10\x63\x61llout_function\x18\x03 \x01(\t\"m\n\x04Menu\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0f\n\x07\x65xtends\x18\x02 \x01(\t\x12%\n\x05\x65ntry\x18\x03 \x03(\x0b\x32\x16.rec.program.MenuEntry\"(\n\x05Menus\x12\x1f\n\x04menu\x18\x01 \x03(\x0b\x32\x11.rec.program.Menu\"F\n\x07MenuBar\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0c\n\x04menu\x18\x02 \x03(\t\"g\n\x0eMenuCollection\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12&\n\x08menu_bar\x18\x02 \x03(\x0b\x32\x14.rec.program.MenuBar')
 
 
 
@@ -41,15 +41,8 @@ _MENUENTRY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='is_recent_files_menu', full_name='rec.program.MenuEntry.is_recent_files_menu', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='callout_function', full_name='rec.program.MenuEntry.callout_function', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      name='callout_function', full_name='rec.program.MenuEntry.callout_function', index=2,
+      number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -64,7 +57,7 @@ _MENUENTRY = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=66,
-  serialized_end=167,
+  serialized_end=137,
 )
 
 
@@ -105,8 +98,8 @@ _MENU = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=169,
-  serialized_end=278,
+  serialized_start=139,
+  serialized_end=248,
 )
 
 
@@ -133,8 +126,8 @@ _MENUS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=280,
-  serialized_end=320,
+  serialized_start=250,
+  serialized_end=290,
 )
 
 
@@ -168,8 +161,8 @@ _MENUBAR = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=322,
-  serialized_end=392,
+  serialized_start=292,
+  serialized_end=362,
 )
 
 
@@ -203,8 +196,8 @@ _MENUCOLLECTION = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=394,
-  serialized_end=497,
+  serialized_start=364,
+  serialized_end=467,
 )
 
 _MENU.fields_by_name['description'].message_type = rec.command.Command_pb2._DESCRIPTION

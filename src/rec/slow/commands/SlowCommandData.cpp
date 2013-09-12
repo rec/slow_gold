@@ -64,7 +64,6 @@ program::Menus createMenus() {
         appMenuEntry->add_command(command);
       if (menuEntry.has_submenu())
         appMenuEntry->set_submenu(menuEntry.submenu());
-      appMenuEntry->set_is_recent_files_menu(menuEntry.is_recent_files_menu());
       if (menuEntry.has_callout_function())
         appMenuEntry->set_callout_function(menuEntry.callout_function());
     }

@@ -51,7 +51,6 @@ Command* indexCommand(const Command& cmd, int index) {
 
 void fillRepeatingCommand(CommandRecordTable* table, const Command& cmd) {
   int len = cmd.desc().menu_size();
-  DCHECK_EQ(len, cmd.desc().full_size()) << cmd.ShortDebugString();
   ID begin(cmd.command());
   ID end = begin + len;
   for (ID i = begin; i != end; ++i) {

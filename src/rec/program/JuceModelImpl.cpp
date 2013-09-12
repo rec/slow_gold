@@ -26,8 +26,6 @@ void checkMenuEntry(const MenuEntry& menuEntry) {
     ++cat;
   if (menuEntry.has_submenu())
     ++cat;
-  if (menuEntry.is_recent_files_menu())
-    ++cat;
   if (menuEntry.has_callout_function())
     ++cat;
 
@@ -59,13 +57,14 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
       juceModel_(juceModel),
       commandMap_(makeCommandMap(*p)),
       menuMap_(makeMenuMap(*p)),
-      menuBarMap_(makeMenuBarMap(*p)) {
+      menuBarMap_(makeMenuBarMap(*p)),
+      recentFiles_(program_->recentFilesStrategy().getRecentFileCommand()),
+      recentFilesEnd_(recentFiles_ + command::Command::BANK_SIZE) {
   auto commands = program_->commands().command();
   for (auto& cmd: commands) {
     if (cmd.has_setter())
       dataListeners_.push_back(make_unique<SetterListener>(cmd, juceModel));
   }
-
   program_->registerAllCallbacks();
 
   for (auto& i: commandMap_)
@@ -85,29 +84,38 @@ void JuceModelImpl::addSubMenu(PopupMenu* popup,
   popup->addSubMenu(subname, submenu);
 }
 
-void JuceModelImpl::addCommand(PopupMenu* popup, CommandID id, bool hasIndex) {
-  if (not hasIndex) {
-    try {
-      const command::Command& command = commandMap_.at(id);
-      auto& seps = command.submenu_separator();
-      int nextSep = 0;
-      if (command.index()) {
-        PopupMenu submenu;
-        for (int i = 0; i < command.index(); ++i) {
-          if (nextSep < seps.size() and i == seps.Get(nextSep)) {
-            submenu.addSeparator();
-            ++nextSep;
-          }
-          addCommand(&submenu, command.command() + i, true);
-        }
-        popup->addSubMenu(command.submenu_name(), submenu);
-        return;
-      }
-    } catch (const std::out_of_range&) {
-      LOG(DFATAL) << "No command for id " << program_->commandName(id);
-    }
-  }
+void JuceModelImpl::addSingleCommand(PopupMenu* popup, CommandID id) {
   popup->addCommandItem(&applicationCommandManager_, id);
+}
+
+void JuceModelImpl::addCommand(PopupMenu* popup, CommandID id, bool hasIndex) {
+  if (isRecentFiles(id)) {
+    makeRecentFiles(popup);
+    return;
+  }
+  const command::Command* command;
+  try {
+    command = &commandMap_.at(id);
+  } catch (const std::out_of_range&) {
+    LOG(DFATAL) << "No command for id " << program_->commandName(id);
+    return;
+  }
+  if (not command->index()) {
+    addSingleCommand(popup, id);
+    return;
+  }
+
+  auto& seps = command->submenu_separator();
+  int nextSep = 0;
+  PopupMenu submenu;
+  for (int i = 0; i < command->index(); ++i) {
+    if (nextSep < seps.size() and i == seps.Get(nextSep)) {
+      submenu.addSeparator();
+      ++nextSep;
+    }
+    addSingleCommand(&submenu, command->command() + i);
+  }
+  popup->addSubMenu(command->submenu_name(), submenu);
 }
 
 void JuceModelImpl::addCommands(PopupMenu* popup,
@@ -128,9 +136,6 @@ void JuceModelImpl::addMenuEntry(PopupMenu* popup,
 
   else if (menuEntry.has_submenu())
     addSubMenu(popup, menuEntry);
-
-  else if (menuEntry.is_recent_files_menu())
-    makeRecentFiles(popup);
 
   else if (menuEntry.has_callout_function())
     program_->menuCallout(popup, menuEntry);
@@ -165,15 +170,11 @@ void JuceModelImpl::getCommandInfo(CommandID id,
     if (hasProperty(*program_, command.ticked()))
       flags |= ApplicationCommandInfo::isTicked;
 
-    static CommandID RECENT_FILES = program_->recentFilesStrategy().
-      getRecentFileCommand();
-    static CommandID RECENT_FILES_END = RECENT_FILES + command::Command::BANK_SIZE;
-
     string shortName;
     int nameIndex = id - command.command();
-    if (id >= RECENT_FILES && id < RECENT_FILES_END) {
+    if (isRecentFiles(id)) {
       vector<string> recentFiles = gui::getRecentFileNames();
-      int fileIndex = id - RECENT_FILES;
+      int fileIndex = id - recentFiles_;
       if (fileIndex >= recentFiles.size())
         shortName = "(missing file)";
       else
@@ -226,10 +227,18 @@ void JuceModelImpl::makeRecentFiles(PopupMenu* popup) {
   PopupMenu submenu;
   auto& strategy = program_->recentFilesStrategy();
   vector<string> recentFiles = gui::getRecentFileNames(strategy);
-  CommandID command = strategy.getRecentFileCommand();
-  for (int i = 0; i < recentFiles.size(); ++i)
-    addCommand(&submenu, command + i, true);
-  popup->addSubMenu(t_OPEN_RECENT2, submenu);
+  const command::Command& command = commandMap_[recentFiles_];
+  auto& seps = command.submenu_separator();
+  int nextSep = 0;
+  for (int i = 0; i < recentFiles.size(); ++i) {
+    if (nextSep < seps.size() and i == seps.Get(nextSep)) {
+      submenu.addSeparator();
+      ++nextSep;
+    }
+    addSingleCommand(&submenu, recentFiles_ + i);
+  }
+
+  popup->addSubMenu(command.submenu_name(), submenu);
 }
 
 bool JuceModelImpl::perform(const InvocationInfo& info) {
@@ -253,6 +262,10 @@ StringArray JuceModelImpl::getMenuBarNames() {
     }
   }
   return names;
+}
+
+bool JuceModelImpl::isRecentFiles(CommandID id) const {
+  return id >= recentFiles_ && id < recentFilesEnd_;
 }
 
 }  // namespace program

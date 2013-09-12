@@ -47,10 +47,9 @@ void protobuf_AssignDesc_rec_2fprogram_2fMenu_2eproto() {
       "rec/program/Menu.proto");
   GOOGLE_CHECK(file != NULL);
   MenuEntry_descriptor_ = file->message_type(0);
-  static const int MenuEntry_offsets_[4] = {
+  static const int MenuEntry_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, command_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, submenu_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, is_recent_files_menu_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MenuEntry, callout_function_),
   };
   MenuEntry_reflection_ =
@@ -176,18 +175,17 @@ void protobuf_AddDesc_rec_2fprogram_2fMenu_2eproto() {
   ::rec::command::protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026rec/program/Menu.proto\022\013rec.program\032\031r"
-    "ec/command/Command.proto\"e\n\tMenuEntry\022\017\n"
-    "\007command\030\001 \003(\r\022\017\n\007submenu\030\002 \001(\t\022\034\n\024is_re"
-    "cent_files_menu\030\003 \001(\010\022\030\n\020callout_functio"
-    "n\030\004 \001(\t\"m\n\004Menu\022-\n\013description\030\001 \001(\0132\030.r"
-    "ec.command.Description\022\017\n\007extends\030\002 \001(\t\022"
-    "%\n\005entry\030\003 \003(\0132\026.rec.program.MenuEntry\"("
-    "\n\005Menus\022\037\n\004menu\030\001 \003(\0132\021.rec.program.Menu"
-    "\"F\n\007MenuBar\022-\n\013description\030\001 \001(\0132\030.rec.c"
-    "ommand.Description\022\014\n\004menu\030\002 \003(\t\"g\n\016Menu"
-    "Collection\022-\n\013description\030\001 \001(\0132\030.rec.co"
-    "mmand.Description\022&\n\010menu_bar\030\002 \003(\0132\024.re"
-    "c.program.MenuBar", 497);
+    "ec/command/Command.proto\"G\n\tMenuEntry\022\017\n"
+    "\007command\030\001 \003(\r\022\017\n\007submenu\030\002 \001(\t\022\030\n\020callo"
+    "ut_function\030\003 \001(\t\"m\n\004Menu\022-\n\013description"
+    "\030\001 \001(\0132\030.rec.command.Description\022\017\n\007exte"
+    "nds\030\002 \001(\t\022%\n\005entry\030\003 \003(\0132\026.rec.program.M"
+    "enuEntry\"(\n\005Menus\022\037\n\004menu\030\001 \003(\0132\021.rec.pr"
+    "ogram.Menu\"F\n\007MenuBar\022-\n\013description\030\001 \001"
+    "(\0132\030.rec.command.Description\022\014\n\004menu\030\002 \003"
+    "(\t\"g\n\016MenuCollection\022-\n\013description\030\001 \001("
+    "\0132\030.rec.command.Description\022&\n\010menu_bar\030"
+    "\002 \003(\0132\024.rec.program.MenuBar", 467);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/program/Menu.proto", &protobuf_RegisterTypes);
   MenuEntry::default_instance_ = new MenuEntry();
@@ -215,7 +213,6 @@ struct StaticDescriptorInitializer_rec_2fprogram_2fMenu_2eproto {
 #ifndef _MSC_VER
 const int MenuEntry::kCommandFieldNumber;
 const int MenuEntry::kSubmenuFieldNumber;
-const int MenuEntry::kIsRecentFilesMenuFieldNumber;
 const int MenuEntry::kCalloutFunctionFieldNumber;
 #endif  // !_MSC_VER
 
@@ -236,7 +233,6 @@ MenuEntry::MenuEntry(const MenuEntry& from)
 void MenuEntry::SharedCtor() {
   _cached_size_ = 0;
   submenu_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  is_recent_files_menu_ = false;
   callout_function_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -284,7 +280,6 @@ void MenuEntry::Clear() {
         submenu_->clear();
       }
     }
-    is_recent_files_menu_ = false;
     if (has_callout_function()) {
       if (callout_function_ != &::google::protobuf::internal::kEmptyString) {
         callout_function_->clear();
@@ -337,28 +332,12 @@ bool MenuEntry::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_is_recent_files_menu;
+        if (input->ExpectTag(26)) goto parse_callout_function;
         break;
       }
 
-      // optional bool is_recent_files_menu = 3;
+      // optional string callout_function = 3;
       case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_is_recent_files_menu:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &is_recent_files_menu_)));
-          set_has_is_recent_files_menu();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_callout_function;
-        break;
-      }
-
-      // optional string callout_function = 4;
-      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_callout_function:
@@ -407,18 +386,13 @@ void MenuEntry::SerializeWithCachedSizes(
       2, this->submenu(), output);
   }
 
-  // optional bool is_recent_files_menu = 3;
-  if (has_is_recent_files_menu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->is_recent_files_menu(), output);
-  }
-
-  // optional string callout_function = 4;
+  // optional string callout_function = 3;
   if (has_callout_function()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->callout_function().data(), this->callout_function().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      4, this->callout_function(), output);
+      3, this->callout_function(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -445,19 +419,14 @@ void MenuEntry::SerializeWithCachedSizes(
         2, this->submenu(), target);
   }
 
-  // optional bool is_recent_files_menu = 3;
-  if (has_is_recent_files_menu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->is_recent_files_menu(), target);
-  }
-
-  // optional string callout_function = 4;
+  // optional string callout_function = 3;
   if (has_callout_function()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->callout_function().data(), this->callout_function().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->callout_function(), target);
+        3, this->callout_function(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -478,12 +447,7 @@ int MenuEntry::ByteSize() const {
           this->submenu());
     }
 
-    // optional bool is_recent_files_menu = 3;
-    if (has_is_recent_files_menu()) {
-      total_size += 1 + 1;
-    }
-
-    // optional string callout_function = 4;
+    // optional string callout_function = 3;
     if (has_callout_function()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -531,9 +495,6 @@ void MenuEntry::MergeFrom(const MenuEntry& from) {
     if (from.has_submenu()) {
       set_submenu(from.submenu());
     }
-    if (from.has_is_recent_files_menu()) {
-      set_is_recent_files_menu(from.is_recent_files_menu());
-    }
     if (from.has_callout_function()) {
       set_callout_function(from.callout_function());
     }
@@ -562,7 +523,6 @@ void MenuEntry::Swap(MenuEntry* other) {
   if (other != this) {
     command_.Swap(&other->command_);
     std::swap(submenu_, other->submenu_);
-    std::swap(is_recent_files_menu_, other->is_recent_files_menu_);
     std::swap(callout_function_, other->callout_function_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

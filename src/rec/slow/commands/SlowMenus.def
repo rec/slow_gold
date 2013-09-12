@@ -10,11 +10,7 @@ menu {
     command: TOGGLE_ADVANCED_MENUS
     command: NONE
     command: OPEN_PREVIOUS_FILE
-  }
-  entry {
-    is_recent_files_menu: true
-  }
-  entry {
+    command: RECENT_FILES
     command: NONE
     command: SAVE_FILE
     command: SAVE_FILE_SELECTION

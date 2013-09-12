@@ -160,8 +160,7 @@ message SlowCommandMapProto {
 message SlowMenuEntry {
   repeated SlowCommand.Type command = 1;
   optional string submenu = 2;
-  optional bool is_recent_files_menu = 3;
-  optional string callout_function = 4;
+  optional string callout_function = 3;
 };
 
 message SlowMenu {

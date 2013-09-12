@@ -72,8 +72,6 @@ program::Menus SlowProgram::menus() const {
         menuEntry->add_command(command);
       if (slowEntry.has_submenu())
         menuEntry->set_submenu(slowEntry.submenu());
-      if (slowEntry.has_is_recent_files_menu())
-        menuEntry->set_is_recent_files_menu(slowEntry.is_recent_files_menu());
       if (slowEntry.has_callout_function())
         menuEntry->set_callout_function(slowEntry.callout_function());
     }

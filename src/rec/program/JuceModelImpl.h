@@ -38,15 +38,19 @@ class JuceModelImpl {
   void addCommand(PopupMenu* popup, CommandID, bool hasIndex=false);
   void addMenuEntry(PopupMenu* popup, const MenuEntry& menuEntry);
   void makeRecentFiles(PopupMenu* menu);
+  bool isRecentFiles(CommandID) const;
+
+  void addSingleCommand(PopupMenu* popup, CommandID id);
 
   Program* const program_;
   JuceModel* const juceModel_;
   CommandMap commandMap_;
-  const MenuCollection menuCollection;
   const MenuMap menuMap_;
   const MenuBarMap menuBarMap_;
   DataListeners dataListeners_;
   ApplicationCommandManager applicationCommandManager_;
+  CommandID recentFiles_;
+  CommandID recentFilesEnd_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(JuceModelImpl);
 };
