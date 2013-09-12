@@ -317,24 +317,12 @@ SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
 }
 
-const bool Instance::USE_NEW_COMMANDS = true;
-
 ApplicationCommandTarget* Instance::applicationCommandTarget() {
-  if (USE_NEW_COMMANDS)
-    return juceModel_.get();
-  else
-    return commandTarget_.get();
+  return juceModel_.get();
 }
 
 ApplicationCommandManager* Instance::applicationCommandManager() {
-  if (USE_NEW_COMMANDS)
-    return juceModel_->applicationCommandManager();
-  else
-    return &applicationCommandManager_;
-}
-
-void Instance::menuItemsChanged() {
-  juceModel_->menuItemsChanged();
+  return juceModel_->applicationCommandManager();
 }
 
 Listener<Enable>* Instance::enableListener() {

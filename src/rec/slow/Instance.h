@@ -89,10 +89,6 @@ class Instance {
   Listener<Enable>* enableListener();
   Listener<command::ID>* idListener();
 
-  void menuItemsChanged();
-
-  static const bool USE_NEW_COMMANDS;
-
  private:
   ptr<command::CommandTarget> commandTarget_;
   ApplicationCommandManager applicationCommandManager_;

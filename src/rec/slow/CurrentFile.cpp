@@ -13,6 +13,7 @@
 #include "rec/gui/menu/RecentFiles.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/music/CreateMusicFileReader.h"
+#include "rec/program/JuceModel.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/SlowWindow.h"
@@ -85,7 +86,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   data::UntypedDataListener::setGlobalDataFile(file_);
 
   startThreads();
-  instance_->menuItemsChanged();
+  program::menuItemsChanged();
 }
 
 void CurrentFile::stopThreads() {

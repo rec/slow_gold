@@ -5,6 +5,7 @@
 #include "rec/command/ID.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/menu/RecentFiles.pb.h"
+#include "rec/program/JuceModel.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -158,14 +159,14 @@ void setSaveFileType(int i) {
   AudioSettings settings = data::getProto<AudioSettings>();
   settings.set_file_type_for_save(static_cast<AudioSettings::FileType>(i));
   data::setProto(settings);
-  Instance::getInstance()->menuItemsChanged();
+  program::menuItemsChanged();
 }
 
 void setLanguage(int i) {
   app::AppSettings inter = data::getProto<app::AppSettings>();
   inter.set_language(static_cast<Language>(i));
   data::setProto(inter);
-  Instance::getInstance()->menuItemsChanged();
+  program::menuItemsChanged();
 }
 
 void openPreviousFile() {
