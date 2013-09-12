@@ -3,18 +3,18 @@ menu {
     name: "file"
   }
   entry {
-    command: OPEN
-    command: CLOSE_FILE
-    command: EJECT_CDS
-    command: NONE
-    command: TOGGLE_ADVANCED_MENUS
-    command: NONE
-    command: OPEN_PREVIOUS_FILE
-    command: RECENT_FILES
-    command: NONE
-    command: SAVE_FILE
-    command: SAVE_FILE_SELECTION
-    command: SET_SAVE_FORMAT
+    id: OPEN
+    id: CLOSE_FILE
+    id: EJECT_CDS
+    id: NONE
+    id: TOGGLE_ADVANCED_MENUS
+    id: NONE
+    id: OPEN_PREVIOUS_FILE
+    id: RECENT_FILES
+    id: NONE
+    id: SAVE_FILE
+    id: SAVE_FILE_SELECTION
+    id: SET_SAVE_FORMAT
   }
 }
 menu {
@@ -22,12 +22,12 @@ menu {
     name: "edit"
   }
   entry {
-    command: UNDO
-    command: REDO
-    command: NONE
-    command: CUT
-    command: COPY
-    command: PASTE
+    id: UNDO
+    id: REDO
+    id: NONE
+    id: CUT
+    id: COPY
+    id: PASTE
   }
 }
 menu {
@@ -35,15 +35,15 @@ menu {
     name: "audio"
   }
   entry {
-    command: MUTE_VOLUME_TOGGLE
-    command: NUDGE_VOLUME_UP
-    command: NUDGE_VOLUME_DOWN
-    command: NONE
-    command: TOGGLE_STRETCH_ENABLE
-    command: NUDGE_SPEED_UP
-    command: NUDGE_SPEED_DOWN
-    command: NONE
-    command: AUDIO_PREFERENCES
+    id: MUTE_VOLUME_TOGGLE
+    id: NUDGE_VOLUME_UP
+    id: NUDGE_VOLUME_DOWN
+    id: NONE
+    id: TOGGLE_STRETCH_ENABLE
+    id: NUDGE_SPEED_UP
+    id: NUDGE_SPEED_DOWN
+    id: NONE
+    id: AUDIO_PREFERENCES
   }
 }
 menu {
@@ -51,9 +51,9 @@ menu {
     name: "transport"
   }
   entry {
-    command: TOGGLE_START_STOP
-    command: ADD_LOOP_POINT
-    command: CLEAR_LOOPS
+    id: TOGGLE_START_STOP
+    id: ADD_LOOP_POINT
+    id: CLEAR_LOOPS
   }
 }
 menu {
@@ -61,14 +61,14 @@ menu {
     name: "select"
   }
   entry {
-    command: SELECT_ALL
-    command: DESELECT_ALL
-    command: INVERT_LOOP_SELECTION
-    command: NONE
-    command: LOOP_NEXT_SEGMENT
-    command: TOGGLE_WHOLE_SONG_LOOP
-    command: NONE
-    command: ZOOM_TO_SELECTION
+    id: SELECT_ALL
+    id: DESELECT_ALL
+    id: INVERT_LOOP_SELECTION
+    id: NONE
+    id: LOOP_NEXT_SEGMENT
+    id: TOGGLE_WHOLE_SONG_LOOP
+    id: NONE
+    id: ZOOM_TO_SELECTION
   }
 }
 menu {
@@ -76,9 +76,9 @@ menu {
     name: "help"
   }
   entry {
-    command: OPEN_MANUAL
-    command: REQUEST_SUPPORT
-    command: WHATS_NEW_PAGE
+    id: OPEN_MANUAL
+    id: REQUEST_SUPPORT
+    id: WHATS_NEW_PAGE
   }
 }
 menu {
@@ -88,12 +88,12 @@ menu {
   }
   extends: "file"
   entry {
-    command: NONE
-    command: KEYBOARD_MAPPINGS
-    command: MIDI_MAPPINGS
-    command: NONE
-    command: EXPORT_SETTINGS
-    command: IMPORT_SETTINGS
+    id: NONE
+    id: KEYBOARD_MAPPINGS
+    id: MIDI_MAPPINGS
+    id: NONE
+    id: EXPORT_SETTINGS
+    id: IMPORT_SETTINGS
   }
 }
 menu {
@@ -103,14 +103,14 @@ menu {
   }
   extends: "edit"
   entry {
-    command: NONE
-    command: COPY_ALL_LOOP_POINTS
-    command: PASTE_OVER_LOOP_POINTS
-    command: NONE
-    command: MODE_SET_TIME
-    command: MODE_DRAG
-    command: MODE_ADD_LOOP_POINT
-    command: MODE_ZOOM_IN
+    id: NONE
+    id: COPY_ALL_LOOP_POINTS
+    id: PASTE_OVER_LOOP_POINTS
+    id: NONE
+    id: MODE_SET_TIME
+    id: MODE_DRAG
+    id: MODE_ADD_LOOP_POINT
+    id: MODE_ZOOM_IN
   }
 }
 menu {
@@ -127,13 +127,13 @@ menu {
   }
   extends: "transport"
   entry {
-    command: TOGGLE_PREFADER_LEVELS
-    command: NONE
-    command: JUMP
-    command: JUMP_SELECTED
-    command: NONE
-    command: NUDGE_BACKWARD
-    command: NUDGE_FORWARD
+    id: TOGGLE_PREFADER_LEVELS
+    id: NONE
+    id: JUMP
+    id: JUMP_SELECTED
+    id: NONE
+    id: NUDGE_BACKWARD
+    id: NUDGE_FORWARD
   }
 }
 menu {
@@ -143,11 +143,11 @@ menu {
   }
   extends: "select"
   entry {
-    command: NONE
-    command: SELECT
-    command: SELECT_ONLY
-    command: TOGGLE_SELECTION
-    command: UNSELECT
+    id: NONE
+    id: SELECT
+    id: SELECT_ONLY
+    id: TOGGLE_SELECTION
+    id: UNSELECT
   }
 }
 menu {
@@ -157,10 +157,10 @@ menu {
   }
   extends: "help"
   entry {
-    command: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
-    command: NONE
-    command: CHECK_FOR_UPDATES
-    command: TOGGLE_AUTOMATIC_UPDATES
+    id: TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP
+    id: NONE
+    id: CHECK_FOR_UPDATES
+    id: TOGGLE_AUTOMATIC_UPDATES
   }
 }
 menu {
@@ -168,21 +168,21 @@ menu {
     name: "display"
   }
   entry {
-    command: TOGGLE_GRID_DISPLAY
-    command: TOGGLE_PARALLEL_WAVEFORMS
-    command: TOGGLE_FOLLOW_CURSOR
-    command: NONE
-    command: TOGGLE_SHOW_SELECTION_BUTTONS
-    command: TOGGLE_SHOW_CURSOR_LABELS
-    command: NONE
-    command: TOGGLE_SHOW_TIMES_AT_TOP
-    command: TOGGLE_SHOW_LABELS_AT_TOP
-    command: TOGGLE_COMMAND_BAR_AT_LEFT
-    command: TOGGLE_COMMAND_BAR_AT_TOP
-    command: TOGGLE_MODES_AT_LEFT
-    command: TOGGLE_MODES_AT_TOP
-    command: NONE
-    command: TOGGLE_FILE_OPEN_TREE_DISPLAY
-    command: TOGGLE_SHOW_MASTER_TUNE
+    id: TOGGLE_GRID_DISPLAY
+    id: TOGGLE_PARALLEL_WAVEFORMS
+    id: TOGGLE_FOLLOW_CURSOR
+    id: NONE
+    id: TOGGLE_SHOW_SELECTION_BUTTONS
+    id: TOGGLE_SHOW_CURSOR_LABELS
+    id: NONE
+    id: TOGGLE_SHOW_TIMES_AT_TOP
+    id: TOGGLE_SHOW_LABELS_AT_TOP
+    id: TOGGLE_COMMAND_BAR_AT_LEFT
+    id: TOGGLE_COMMAND_BAR_AT_TOP
+    id: TOGGLE_MODES_AT_LEFT
+    id: TOGGLE_MODES_AT_TOP
+    id: NONE
+    id: TOGGLE_FILE_OPEN_TREE_DISPLAY
+    id: TOGGLE_SHOW_MASTER_TUNE
   }
 }

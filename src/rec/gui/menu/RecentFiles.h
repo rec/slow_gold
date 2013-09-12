@@ -21,8 +21,6 @@ class RecentFilesStrategy {
   virtual CommandID getRecentFileCommand() const = 0;
 };
 
-// TODO: delete this next one.
-vector<string> getRecentFileNames(const RecentFilesStrategy& stategy);
 vector<string> getRecentFileNames();
 bool recentFilesEmpty();
 

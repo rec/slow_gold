@@ -24,7 +24,7 @@ namespace {
 const ::google::protobuf::Descriptor* SlowCommand_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SlowCommand_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* SlowCommand_Type_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* SlowCommand_Id_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* SlowCommands_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SlowCommands_reflection_ = NULL;
@@ -55,7 +55,7 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   GOOGLE_CHECK(file != NULL);
   SlowCommand_descriptor_ = file->message_type(0);
   static const int SlowCommand_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommand, type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommand, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommand, command_),
   };
   SlowCommand_reflection_ =
@@ -69,7 +69,7 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SlowCommand));
-  SlowCommand_Type_descriptor_ = SlowCommand_descriptor_->enum_type(0);
+  SlowCommand_Id_descriptor_ = SlowCommand_descriptor_->enum_type(0);
   SlowCommands_descriptor_ = file->message_type(1);
   static const int SlowCommands_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommands, command_),
@@ -87,7 +87,7 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
       sizeof(SlowCommands));
   SlowCommandMapEntry_descriptor_ = file->message_type(2);
   static const int SlowCommandMapEntry_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, command_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapEntry, entry_),
   };
   SlowCommandMapEntry_reflection_ =
@@ -118,7 +118,7 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
       sizeof(SlowCommandMapProto));
   SlowMenuEntry_descriptor_ = file->message_type(4);
   static const int SlowMenuEntry_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, command_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, submenu_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowMenuEntry, callout_function_),
   };
@@ -223,81 +223,81 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#rec/slow/commands/SlowCommand.proto\022\010r"
     "ec.slow\032\031rec/command/Command.proto\032 rec/"
-    "command/map/CommandMap.proto\"\223\023\n\013SlowCom"
-    "mand\022(\n\004type\030\001 \001(\0162\032.rec.slow.SlowComman"
-    "d.Type\022%\n\007command\030\002 \001(\0132\024.rec.command.Co"
-    "mmand\"\262\022\n\004Type\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_P"
-    "ROGRAM\020:\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PR"
-    "EFERENCES\020\002\022\025\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CL"
-    "EAR_KEYBOARD_MAPPINGS\020[\022\027\n\023CLEAR_MIDI_MA"
-    "PPINGS\020\\\022\017\n\013CLEAR_LOOPS\020\004\022\023\n\017CLEAR_NAVIG"
-    "ATOR\020\003\022\026\n\022CLEAR_ALL_SETTINGS\020O\022!\n\035CLEAR_"
-    "SETTINGS_FOR_THIS_TRACK\020P\022\031\n\025CLEAR_SAVED"
-    "_FILE_DATA\020\005\022\016\n\nCLOSE_FILE\020\006\022\030\n\024COPY_ALL"
-    "_LOOP_POINTS\020_\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n"
-    "\tEJECT_CDS\020\010\022\034\n\030EXPORT_KEYBOARD_MAPPINGS"
-    "\020R\022\030\n\024EXPORT_MIDI_MAPPINGS\020S\022\023\n\017EXPORT_S"
-    "ETTINGS\020K\022\034\n\030IMPORT_KEYBOARD_MAPPINGS\020T\022"
-    "\030\n\024IMPORT_MIDI_MAPPINGS\020U\022\023\n\017IMPORT_SETT"
-    "INGS\020L\022\031\n\025INVERT_LOOP_SELECTION\020\t\022\n\n\004JUM"
-    "P\020\240\215\006\022\023\n\rJUMP_SELECTED\020\260\333\006\022\025\n\021KEYBOARD_M"
-    "APPINGS\020\014\022\025\n\021LOOP_NEXT_SEGMENT\020^\022\021\n\rMIDI"
-    "_MAPPINGS\020\r\022\027\n\023MODE_ADD_LOOP_POINT\020\?\022\r\n\t"
-    "MODE_DRAG\020<\022\021\n\rMODE_SET_TIME\020=\022\020\n\014MODE_Z"
-    "OOM_IN\020>\022\026\n\022MUTE_VOLUME_TOGGLE\020\016\022\022\n\016NUDG"
-    "E_BACKWARD\020Y\022\021\n\rNUDGE_FORWARD\020Z\022\024\n\020NUDGE"
-    "_BEGIN_LEFT\020\017\022\025\n\021NUDGE_BEGIN_RIGHT\020\020\022\022\n\016"
-    "NUDGE_END_LEFT\020\021\022\023\n\017NUDGE_END_RIGHT\020\022\022\024\n"
-    "\020NUDGE_SPEED_DOWN\020V\022\022\n\016NUDGE_SPEED_UP\020W\022"
-    "\025\n\021NUDGE_VOLUME_DOWN\020\023\022\023\n\017NUDGE_VOLUME_U"
-    "P\020\024\022\010\n\004OPEN\020\025\022\017\n\013OPEN_MANUAL\020A\022\026\n\022OPEN_P"
-    "REVIOUS_FILE\020N\022\033\n\027OPEN_SLOWGOLD_DIRECTOR"
-    "Y\020J\022\032\n\026PASTE_OVER_LOOP_POINTS\020`\022\022\n\014RECEN"
-    "T_FILES\020\340\266\r\022\010\n\004REDO\020\027\022\023\n\017REQUEST_SUPPORT"
-    "\020B\022\027\n\023RESET_GAIN_TO_UNITY\020\030\022\r\n\tSAVE_FILE"
-    "\020E\022\027\n\023SAVE_FILE_SELECTION\020F\022\014\n\006SELECT\020\220\241"
-    "\017\022\021\n\013SELECT_ONLY\020\240\357\017\022\022\n\014SET_LANGUAGE\020\320\3418"
-    "\022\025\n\017SET_SAVE_FORMAT\020\360\252+\022\024\n\020SET_SAVE_AS_A"
-    "IFF\020a\022\024\n\020SET_SAVE_AS_FLAC\020b\022\023\n\017SET_SAVE_"
-    "AS_OGG\020c\022\023\n\017SET_SAVE_AS_WAV\020d\022\031\n\025TOGGLE_"
-    "ADVANCED_MENUS\020;\022\034\n\030TOGGLE_AUTOMATIC_UPD"
-    "ATES\020C\022\030\n\024TOGGLE_FOLLOW_CURSOR\020+\022\027\n\023TOGG"
-    "LE_GRID_DISPLAY\020\033\022\036\n\032TOGGLE_COMMAND_BAR_"
-    "AT_LEFT\0206\022\035\n\031TOGGLE_COMMAND_BAR_AT_TOP\0207"
-    "\022!\n\035TOGGLE_FILE_OPEN_TREE_DISPLAY\020H\022\030\n\024T"
-    "OGGLE_MODES_AT_LEFT\0208\022\027\n\023TOGGLE_MODES_AT"
-    "_TOP\0209\022\035\n\031TOGGLE_PARALLEL_WAVEFORMS\020*\022\032\n"
-    "\026TOGGLE_PREFADER_LEVELS\020.\022\026\n\020TOGGLE_SELE"
-    "CTION\020\220\203\031\022\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT"
-    "_STARTUP\020Q\022\035\n\031TOGGLE_SHOW_CURSOR_LABELS\020"
-    "3\022\031\n\025TOGGLE_SHOW_HELP_PANE\0201\022\035\n\031TOGGLE_S"
-    "HOW_LABELS_AT_TOP\0204\022\033\n\027TOGGLE_SHOW_MASTE"
-    "R_TUNE\020M\022!\n\035TOGGLE_SHOW_SELECTION_BUTTON"
-    "S\0202\022\034\n\030TOGGLE_SHOW_TIMES_AT_TOP\0205\022\030\n\024TOG"
-    "GLE_SHOW_TOOLTIPS\0200\022\025\n\021TOGGLE_START_STOP"
-    "\020\034\022\031\n\025TOGGLE_STRETCH_ENABLE\020\035\022\033\n\027TOGGLE_"
-    "TRANSFORM_ENABLE\020X\022\032\n\026TOGGLE_WHOLE_SONG_"
-    "LOOP\020\036\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n"
-    "\tTREE_LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGH"
-    "T\020#\022\013\n\007TREE_UP\020$\022\010\n\004UNDO\020%\022\016\n\010UNSELECT\020\340"
-    "\230\027\022\022\n\016WHATS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010Z"
-    "OOM_OUT\020(\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_"
-    "SELECTION\020-\022\023\n\017FIRST_FREE_TYPE\020e\022\t\n\004QUIT"
-    "\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PA"
-    "STE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020"
-    "\207 \"6\n\014SlowCommands\022&\n\007command\030\001 \003(\0132\025.re"
-    "c.slow.SlowCommand\"o\n\023SlowCommandMapEntr"
-    "y\022+\n\007command\030\001 \001(\0162\032.rec.slow.SlowComman"
-    "d.Type\022+\n\005entry\030\002 \001(\0132\034.rec.command.Comm"
-    "andMapEntry\"C\n\023SlowCommandMapProto\022,\n\005en"
-    "try\030\001 \003(\0132\035.rec.slow.SlowCommandMapEntry"
-    "\"g\n\rSlowMenuEntry\022+\n\007command\030\001 \003(\0162\032.rec"
-    ".slow.SlowCommand.Type\022\017\n\007submenu\030\002 \001(\t\022"
-    "\030\n\020callout_function\030\003 \001(\t\"r\n\010SlowMenu\022-\n"
-    "\013description\030\001 \001(\0132\030.rec.command.Descrip"
-    "tion\022\017\n\007extends\030\002 \001(\t\022&\n\005entry\030\003 \003(\0132\027.r"
-    "ec.slow.SlowMenuEntry\"-\n\tSlowMenus\022 \n\004me"
-    "nu\030\001 \003(\0132\022.rec.slow.SlowMenu", 3068);
+    "command/map/CommandMap.proto\"\215\023\n\013SlowCom"
+    "mand\022$\n\002id\030\001 \001(\0162\030.rec.slow.SlowCommand."
+    "Id\022%\n\007command\030\002 \001(\0132\024.rec.command.Comman"
+    "d\"\260\022\n\002Id\022\010\n\004NONE\020\000\022\026\n\022ABOUT_THIS_PROGRAM"
+    "\020:\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFEREN"
+    "CES\020\002\022\025\n\021CHECK_FOR_UPDATES\020D\022\033\n\027CLEAR_KE"
+    "YBOARD_MAPPINGS\020[\022\027\n\023CLEAR_MIDI_MAPPINGS"
+    "\020\\\022\017\n\013CLEAR_LOOPS\020\004\022\023\n\017CLEAR_NAVIGATOR\020\003"
+    "\022\026\n\022CLEAR_ALL_SETTINGS\020O\022!\n\035CLEAR_SETTIN"
+    "GS_FOR_THIS_TRACK\020P\022\031\n\025CLEAR_SAVED_FILE_"
+    "DATA\020\005\022\016\n\nCLOSE_FILE\020\006\022\030\n\024COPY_ALL_LOOP_"
+    "POINTS\020_\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n\tEJECT"
+    "_CDS\020\010\022\034\n\030EXPORT_KEYBOARD_MAPPINGS\020R\022\030\n\024"
+    "EXPORT_MIDI_MAPPINGS\020S\022\023\n\017EXPORT_SETTING"
+    "S\020K\022\034\n\030IMPORT_KEYBOARD_MAPPINGS\020T\022\030\n\024IMP"
+    "ORT_MIDI_MAPPINGS\020U\022\023\n\017IMPORT_SETTINGS\020L"
+    "\022\031\n\025INVERT_LOOP_SELECTION\020\t\022\n\n\004JUMP\020\240\215\006\022"
+    "\023\n\rJUMP_SELECTED\020\260\333\006\022\025\n\021KEYBOARD_MAPPING"
+    "S\020\014\022\025\n\021LOOP_NEXT_SEGMENT\020^\022\021\n\rMIDI_MAPPI"
+    "NGS\020\r\022\027\n\023MODE_ADD_LOOP_POINT\020\?\022\r\n\tMODE_D"
+    "RAG\020<\022\021\n\rMODE_SET_TIME\020=\022\020\n\014MODE_ZOOM_IN"
+    "\020>\022\026\n\022MUTE_VOLUME_TOGGLE\020\016\022\022\n\016NUDGE_BACK"
+    "WARD\020Y\022\021\n\rNUDGE_FORWARD\020Z\022\024\n\020NUDGE_BEGIN"
+    "_LEFT\020\017\022\025\n\021NUDGE_BEGIN_RIGHT\020\020\022\022\n\016NUDGE_"
+    "END_LEFT\020\021\022\023\n\017NUDGE_END_RIGHT\020\022\022\024\n\020NUDGE"
+    "_SPEED_DOWN\020V\022\022\n\016NUDGE_SPEED_UP\020W\022\025\n\021NUD"
+    "GE_VOLUME_DOWN\020\023\022\023\n\017NUDGE_VOLUME_UP\020\024\022\010\n"
+    "\004OPEN\020\025\022\017\n\013OPEN_MANUAL\020A\022\026\n\022OPEN_PREVIOU"
+    "S_FILE\020N\022\033\n\027OPEN_SLOWGOLD_DIRECTORY\020J\022\032\n"
+    "\026PASTE_OVER_LOOP_POINTS\020`\022\022\n\014RECENT_FILE"
+    "S\020\340\266\r\022\010\n\004REDO\020\027\022\023\n\017REQUEST_SUPPORT\020B\022\027\n\023"
+    "RESET_GAIN_TO_UNITY\020\030\022\r\n\tSAVE_FILE\020E\022\027\n\023"
+    "SAVE_FILE_SELECTION\020F\022\014\n\006SELECT\020\220\241\017\022\021\n\013S"
+    "ELECT_ONLY\020\240\357\017\022\022\n\014SET_LANGUAGE\020\320\3418\022\025\n\017SE"
+    "T_SAVE_FORMAT\020\360\252+\022\024\n\020SET_SAVE_AS_AIFF\020a\022"
+    "\024\n\020SET_SAVE_AS_FLAC\020b\022\023\n\017SET_SAVE_AS_OGG"
+    "\020c\022\023\n\017SET_SAVE_AS_WAV\020d\022\031\n\025TOGGLE_ADVANC"
+    "ED_MENUS\020;\022\034\n\030TOGGLE_AUTOMATIC_UPDATES\020C"
+    "\022\030\n\024TOGGLE_FOLLOW_CURSOR\020+\022\027\n\023TOGGLE_GRI"
+    "D_DISPLAY\020\033\022\036\n\032TOGGLE_COMMAND_BAR_AT_LEF"
+    "T\0206\022\035\n\031TOGGLE_COMMAND_BAR_AT_TOP\0207\022!\n\035TO"
+    "GGLE_FILE_OPEN_TREE_DISPLAY\020H\022\030\n\024TOGGLE_"
+    "MODES_AT_LEFT\0208\022\027\n\023TOGGLE_MODES_AT_TOP\0209"
+    "\022\035\n\031TOGGLE_PARALLEL_WAVEFORMS\020*\022\032\n\026TOGGL"
+    "E_PREFADER_LEVELS\020.\022\026\n\020TOGGLE_SELECTION\020"
+    "\220\203\031\022\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_START"
+    "UP\020Q\022\035\n\031TOGGLE_SHOW_CURSOR_LABELS\0203\022\031\n\025T"
+    "OGGLE_SHOW_HELP_PANE\0201\022\035\n\031TOGGLE_SHOW_LA"
+    "BELS_AT_TOP\0204\022\033\n\027TOGGLE_SHOW_MASTER_TUNE"
+    "\020M\022!\n\035TOGGLE_SHOW_SELECTION_BUTTONS\0202\022\034\n"
+    "\030TOGGLE_SHOW_TIMES_AT_TOP\0205\022\030\n\024TOGGLE_SH"
+    "OW_TOOLTIPS\0200\022\025\n\021TOGGLE_START_STOP\020\034\022\031\n\025"
+    "TOGGLE_STRETCH_ENABLE\020\035\022\033\n\027TOGGLE_TRANSF"
+    "ORM_ENABLE\020X\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\036"
+    "\022\016\n\nTREE_CLOSE\020\037\022\r\n\tTREE_DOWN\020 \022\r\n\tTREE_"
+    "LEFT\020!\022\r\n\tTREE_OPEN\020\"\022\016\n\nTREE_RIGHT\020#\022\013\n"
+    "\007TREE_UP\020$\022\010\n\004UNDO\020%\022\016\n\010UNSELECT\020\340\230\027\022\022\n\016"
+    "WHATS_NEW_PAGE\020I\022\013\n\007ZOOM_IN\020\'\022\014\n\010ZOOM_OU"
+    "T\020(\022\021\n\rZOOM_OUT_FULL\020@\022\025\n\021ZOOM_TO_SELECT"
+    "ION\020-\022\023\n\017FIRST_FREE_TYPE\020e\022\t\n\004QUIT\020\201 \022\010\n"
+    "\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 "
+    "\022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \"6\n\014"
+    "SlowCommands\022&\n\007command\030\001 \003(\0132\025.rec.slow"
+    ".SlowCommand\"h\n\023SlowCommandMapEntry\022$\n\002i"
+    "d\030\001 \001(\0162\030.rec.slow.SlowCommand.Id\022+\n\005ent"
+    "ry\030\002 \001(\0132\034.rec.command.CommandMapEntry\"C"
+    "\n\023SlowCommandMapProto\022,\n\005entry\030\001 \003(\0132\035.r"
+    "ec.slow.SlowCommandMapEntry\"`\n\rSlowMenuE"
+    "ntry\022$\n\002id\030\001 \003(\0162\030.rec.slow.SlowCommand."
+    "Id\022\017\n\007submenu\030\002 \001(\t\022\030\n\020callout_function\030"
+    "\003 \001(\t\"r\n\010SlowMenu\022-\n\013description\030\001 \001(\0132\030"
+    ".rec.command.Description\022\017\n\007extends\030\002 \001("
+    "\t\022&\n\005entry\030\003 \003(\0132\027.rec.slow.SlowMenuEntr"
+    "y\"-\n\tSlowMenus\022 \n\004menu\030\001 \003(\0132\022.rec.slow."
+    "SlowMenu", 3048);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/commands/SlowCommand.proto", &protobuf_RegisterTypes);
   SlowCommand::default_instance_ = new SlowCommand();
@@ -326,11 +326,11 @@ struct StaticDescriptorInitializer_rec_2fslow_2fcommands_2fSlowCommand_2eproto {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* SlowCommand_Type_descriptor() {
+const ::google::protobuf::EnumDescriptor* SlowCommand_Id_descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return SlowCommand_Type_descriptor_;
+  return SlowCommand_Id_descriptor_;
 }
-bool SlowCommand_Type_IsValid(int value) {
+bool SlowCommand_Id_IsValid(int value) {
   switch(value) {
     case 0:
     case 1:
@@ -446,119 +446,119 @@ bool SlowCommand_Type_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const SlowCommand_Type SlowCommand::NONE;
-const SlowCommand_Type SlowCommand::ABOUT_THIS_PROGRAM;
-const SlowCommand_Type SlowCommand::ADD_LOOP_POINT;
-const SlowCommand_Type SlowCommand::AUDIO_PREFERENCES;
-const SlowCommand_Type SlowCommand::CHECK_FOR_UPDATES;
-const SlowCommand_Type SlowCommand::CLEAR_KEYBOARD_MAPPINGS;
-const SlowCommand_Type SlowCommand::CLEAR_MIDI_MAPPINGS;
-const SlowCommand_Type SlowCommand::CLEAR_LOOPS;
-const SlowCommand_Type SlowCommand::CLEAR_NAVIGATOR;
-const SlowCommand_Type SlowCommand::CLEAR_ALL_SETTINGS;
-const SlowCommand_Type SlowCommand::CLEAR_SETTINGS_FOR_THIS_TRACK;
-const SlowCommand_Type SlowCommand::CLEAR_SAVED_FILE_DATA;
-const SlowCommand_Type SlowCommand::CLOSE_FILE;
-const SlowCommand_Type SlowCommand::COPY_ALL_LOOP_POINTS;
-const SlowCommand_Type SlowCommand::DIM_VOLUME_TOGGLE;
-const SlowCommand_Type SlowCommand::EJECT_CDS;
-const SlowCommand_Type SlowCommand::EXPORT_KEYBOARD_MAPPINGS;
-const SlowCommand_Type SlowCommand::EXPORT_MIDI_MAPPINGS;
-const SlowCommand_Type SlowCommand::EXPORT_SETTINGS;
-const SlowCommand_Type SlowCommand::IMPORT_KEYBOARD_MAPPINGS;
-const SlowCommand_Type SlowCommand::IMPORT_MIDI_MAPPINGS;
-const SlowCommand_Type SlowCommand::IMPORT_SETTINGS;
-const SlowCommand_Type SlowCommand::INVERT_LOOP_SELECTION;
-const SlowCommand_Type SlowCommand::JUMP;
-const SlowCommand_Type SlowCommand::JUMP_SELECTED;
-const SlowCommand_Type SlowCommand::KEYBOARD_MAPPINGS;
-const SlowCommand_Type SlowCommand::LOOP_NEXT_SEGMENT;
-const SlowCommand_Type SlowCommand::MIDI_MAPPINGS;
-const SlowCommand_Type SlowCommand::MODE_ADD_LOOP_POINT;
-const SlowCommand_Type SlowCommand::MODE_DRAG;
-const SlowCommand_Type SlowCommand::MODE_SET_TIME;
-const SlowCommand_Type SlowCommand::MODE_ZOOM_IN;
-const SlowCommand_Type SlowCommand::MUTE_VOLUME_TOGGLE;
-const SlowCommand_Type SlowCommand::NUDGE_BACKWARD;
-const SlowCommand_Type SlowCommand::NUDGE_FORWARD;
-const SlowCommand_Type SlowCommand::NUDGE_BEGIN_LEFT;
-const SlowCommand_Type SlowCommand::NUDGE_BEGIN_RIGHT;
-const SlowCommand_Type SlowCommand::NUDGE_END_LEFT;
-const SlowCommand_Type SlowCommand::NUDGE_END_RIGHT;
-const SlowCommand_Type SlowCommand::NUDGE_SPEED_DOWN;
-const SlowCommand_Type SlowCommand::NUDGE_SPEED_UP;
-const SlowCommand_Type SlowCommand::NUDGE_VOLUME_DOWN;
-const SlowCommand_Type SlowCommand::NUDGE_VOLUME_UP;
-const SlowCommand_Type SlowCommand::OPEN;
-const SlowCommand_Type SlowCommand::OPEN_MANUAL;
-const SlowCommand_Type SlowCommand::OPEN_PREVIOUS_FILE;
-const SlowCommand_Type SlowCommand::OPEN_SLOWGOLD_DIRECTORY;
-const SlowCommand_Type SlowCommand::PASTE_OVER_LOOP_POINTS;
-const SlowCommand_Type SlowCommand::RECENT_FILES;
-const SlowCommand_Type SlowCommand::REDO;
-const SlowCommand_Type SlowCommand::REQUEST_SUPPORT;
-const SlowCommand_Type SlowCommand::RESET_GAIN_TO_UNITY;
-const SlowCommand_Type SlowCommand::SAVE_FILE;
-const SlowCommand_Type SlowCommand::SAVE_FILE_SELECTION;
-const SlowCommand_Type SlowCommand::SELECT;
-const SlowCommand_Type SlowCommand::SELECT_ONLY;
-const SlowCommand_Type SlowCommand::SET_LANGUAGE;
-const SlowCommand_Type SlowCommand::SET_SAVE_FORMAT;
-const SlowCommand_Type SlowCommand::SET_SAVE_AS_AIFF;
-const SlowCommand_Type SlowCommand::SET_SAVE_AS_FLAC;
-const SlowCommand_Type SlowCommand::SET_SAVE_AS_OGG;
-const SlowCommand_Type SlowCommand::SET_SAVE_AS_WAV;
-const SlowCommand_Type SlowCommand::TOGGLE_ADVANCED_MENUS;
-const SlowCommand_Type SlowCommand::TOGGLE_AUTOMATIC_UPDATES;
-const SlowCommand_Type SlowCommand::TOGGLE_FOLLOW_CURSOR;
-const SlowCommand_Type SlowCommand::TOGGLE_GRID_DISPLAY;
-const SlowCommand_Type SlowCommand::TOGGLE_COMMAND_BAR_AT_LEFT;
-const SlowCommand_Type SlowCommand::TOGGLE_COMMAND_BAR_AT_TOP;
-const SlowCommand_Type SlowCommand::TOGGLE_FILE_OPEN_TREE_DISPLAY;
-const SlowCommand_Type SlowCommand::TOGGLE_MODES_AT_LEFT;
-const SlowCommand_Type SlowCommand::TOGGLE_MODES_AT_TOP;
-const SlowCommand_Type SlowCommand::TOGGLE_PARALLEL_WAVEFORMS;
-const SlowCommand_Type SlowCommand::TOGGLE_PREFADER_LEVELS;
-const SlowCommand_Type SlowCommand::TOGGLE_SELECTION;
-const SlowCommand_Type SlowCommand::TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP;
-const SlowCommand_Type SlowCommand::TOGGLE_SHOW_CURSOR_LABELS;
-const SlowCommand_Type SlowCommand::TOGGLE_SHOW_HELP_PANE;
-const SlowCommand_Type SlowCommand::TOGGLE_SHOW_LABELS_AT_TOP;
-const SlowCommand_Type SlowCommand::TOGGLE_SHOW_MASTER_TUNE;
-const SlowCommand_Type SlowCommand::TOGGLE_SHOW_SELECTION_BUTTONS;
-const SlowCommand_Type SlowCommand::TOGGLE_SHOW_TIMES_AT_TOP;
-const SlowCommand_Type SlowCommand::TOGGLE_SHOW_TOOLTIPS;
-const SlowCommand_Type SlowCommand::TOGGLE_START_STOP;
-const SlowCommand_Type SlowCommand::TOGGLE_STRETCH_ENABLE;
-const SlowCommand_Type SlowCommand::TOGGLE_TRANSFORM_ENABLE;
-const SlowCommand_Type SlowCommand::TOGGLE_WHOLE_SONG_LOOP;
-const SlowCommand_Type SlowCommand::TREE_CLOSE;
-const SlowCommand_Type SlowCommand::TREE_DOWN;
-const SlowCommand_Type SlowCommand::TREE_LEFT;
-const SlowCommand_Type SlowCommand::TREE_OPEN;
-const SlowCommand_Type SlowCommand::TREE_RIGHT;
-const SlowCommand_Type SlowCommand::TREE_UP;
-const SlowCommand_Type SlowCommand::UNDO;
-const SlowCommand_Type SlowCommand::UNSELECT;
-const SlowCommand_Type SlowCommand::WHATS_NEW_PAGE;
-const SlowCommand_Type SlowCommand::ZOOM_IN;
-const SlowCommand_Type SlowCommand::ZOOM_OUT;
-const SlowCommand_Type SlowCommand::ZOOM_OUT_FULL;
-const SlowCommand_Type SlowCommand::ZOOM_TO_SELECTION;
-const SlowCommand_Type SlowCommand::FIRST_FREE_TYPE;
-const SlowCommand_Type SlowCommand::QUIT;
-const SlowCommand_Type SlowCommand::DEL;
-const SlowCommand_Type SlowCommand::CUT;
-const SlowCommand_Type SlowCommand::COPY;
-const SlowCommand_Type SlowCommand::PASTE;
-const SlowCommand_Type SlowCommand::SELECT_ALL;
-const SlowCommand_Type SlowCommand::DESELECT_ALL;
-const SlowCommand_Type SlowCommand::Type_MIN;
-const SlowCommand_Type SlowCommand::Type_MAX;
-const int SlowCommand::Type_ARRAYSIZE;
+const SlowCommand_Id SlowCommand::NONE;
+const SlowCommand_Id SlowCommand::ABOUT_THIS_PROGRAM;
+const SlowCommand_Id SlowCommand::ADD_LOOP_POINT;
+const SlowCommand_Id SlowCommand::AUDIO_PREFERENCES;
+const SlowCommand_Id SlowCommand::CHECK_FOR_UPDATES;
+const SlowCommand_Id SlowCommand::CLEAR_KEYBOARD_MAPPINGS;
+const SlowCommand_Id SlowCommand::CLEAR_MIDI_MAPPINGS;
+const SlowCommand_Id SlowCommand::CLEAR_LOOPS;
+const SlowCommand_Id SlowCommand::CLEAR_NAVIGATOR;
+const SlowCommand_Id SlowCommand::CLEAR_ALL_SETTINGS;
+const SlowCommand_Id SlowCommand::CLEAR_SETTINGS_FOR_THIS_TRACK;
+const SlowCommand_Id SlowCommand::CLEAR_SAVED_FILE_DATA;
+const SlowCommand_Id SlowCommand::CLOSE_FILE;
+const SlowCommand_Id SlowCommand::COPY_ALL_LOOP_POINTS;
+const SlowCommand_Id SlowCommand::DIM_VOLUME_TOGGLE;
+const SlowCommand_Id SlowCommand::EJECT_CDS;
+const SlowCommand_Id SlowCommand::EXPORT_KEYBOARD_MAPPINGS;
+const SlowCommand_Id SlowCommand::EXPORT_MIDI_MAPPINGS;
+const SlowCommand_Id SlowCommand::EXPORT_SETTINGS;
+const SlowCommand_Id SlowCommand::IMPORT_KEYBOARD_MAPPINGS;
+const SlowCommand_Id SlowCommand::IMPORT_MIDI_MAPPINGS;
+const SlowCommand_Id SlowCommand::IMPORT_SETTINGS;
+const SlowCommand_Id SlowCommand::INVERT_LOOP_SELECTION;
+const SlowCommand_Id SlowCommand::JUMP;
+const SlowCommand_Id SlowCommand::JUMP_SELECTED;
+const SlowCommand_Id SlowCommand::KEYBOARD_MAPPINGS;
+const SlowCommand_Id SlowCommand::LOOP_NEXT_SEGMENT;
+const SlowCommand_Id SlowCommand::MIDI_MAPPINGS;
+const SlowCommand_Id SlowCommand::MODE_ADD_LOOP_POINT;
+const SlowCommand_Id SlowCommand::MODE_DRAG;
+const SlowCommand_Id SlowCommand::MODE_SET_TIME;
+const SlowCommand_Id SlowCommand::MODE_ZOOM_IN;
+const SlowCommand_Id SlowCommand::MUTE_VOLUME_TOGGLE;
+const SlowCommand_Id SlowCommand::NUDGE_BACKWARD;
+const SlowCommand_Id SlowCommand::NUDGE_FORWARD;
+const SlowCommand_Id SlowCommand::NUDGE_BEGIN_LEFT;
+const SlowCommand_Id SlowCommand::NUDGE_BEGIN_RIGHT;
+const SlowCommand_Id SlowCommand::NUDGE_END_LEFT;
+const SlowCommand_Id SlowCommand::NUDGE_END_RIGHT;
+const SlowCommand_Id SlowCommand::NUDGE_SPEED_DOWN;
+const SlowCommand_Id SlowCommand::NUDGE_SPEED_UP;
+const SlowCommand_Id SlowCommand::NUDGE_VOLUME_DOWN;
+const SlowCommand_Id SlowCommand::NUDGE_VOLUME_UP;
+const SlowCommand_Id SlowCommand::OPEN;
+const SlowCommand_Id SlowCommand::OPEN_MANUAL;
+const SlowCommand_Id SlowCommand::OPEN_PREVIOUS_FILE;
+const SlowCommand_Id SlowCommand::OPEN_SLOWGOLD_DIRECTORY;
+const SlowCommand_Id SlowCommand::PASTE_OVER_LOOP_POINTS;
+const SlowCommand_Id SlowCommand::RECENT_FILES;
+const SlowCommand_Id SlowCommand::REDO;
+const SlowCommand_Id SlowCommand::REQUEST_SUPPORT;
+const SlowCommand_Id SlowCommand::RESET_GAIN_TO_UNITY;
+const SlowCommand_Id SlowCommand::SAVE_FILE;
+const SlowCommand_Id SlowCommand::SAVE_FILE_SELECTION;
+const SlowCommand_Id SlowCommand::SELECT;
+const SlowCommand_Id SlowCommand::SELECT_ONLY;
+const SlowCommand_Id SlowCommand::SET_LANGUAGE;
+const SlowCommand_Id SlowCommand::SET_SAVE_FORMAT;
+const SlowCommand_Id SlowCommand::SET_SAVE_AS_AIFF;
+const SlowCommand_Id SlowCommand::SET_SAVE_AS_FLAC;
+const SlowCommand_Id SlowCommand::SET_SAVE_AS_OGG;
+const SlowCommand_Id SlowCommand::SET_SAVE_AS_WAV;
+const SlowCommand_Id SlowCommand::TOGGLE_ADVANCED_MENUS;
+const SlowCommand_Id SlowCommand::TOGGLE_AUTOMATIC_UPDATES;
+const SlowCommand_Id SlowCommand::TOGGLE_FOLLOW_CURSOR;
+const SlowCommand_Id SlowCommand::TOGGLE_GRID_DISPLAY;
+const SlowCommand_Id SlowCommand::TOGGLE_COMMAND_BAR_AT_LEFT;
+const SlowCommand_Id SlowCommand::TOGGLE_COMMAND_BAR_AT_TOP;
+const SlowCommand_Id SlowCommand::TOGGLE_FILE_OPEN_TREE_DISPLAY;
+const SlowCommand_Id SlowCommand::TOGGLE_MODES_AT_LEFT;
+const SlowCommand_Id SlowCommand::TOGGLE_MODES_AT_TOP;
+const SlowCommand_Id SlowCommand::TOGGLE_PARALLEL_WAVEFORMS;
+const SlowCommand_Id SlowCommand::TOGGLE_PREFADER_LEVELS;
+const SlowCommand_Id SlowCommand::TOGGLE_SELECTION;
+const SlowCommand_Id SlowCommand::TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP;
+const SlowCommand_Id SlowCommand::TOGGLE_SHOW_CURSOR_LABELS;
+const SlowCommand_Id SlowCommand::TOGGLE_SHOW_HELP_PANE;
+const SlowCommand_Id SlowCommand::TOGGLE_SHOW_LABELS_AT_TOP;
+const SlowCommand_Id SlowCommand::TOGGLE_SHOW_MASTER_TUNE;
+const SlowCommand_Id SlowCommand::TOGGLE_SHOW_SELECTION_BUTTONS;
+const SlowCommand_Id SlowCommand::TOGGLE_SHOW_TIMES_AT_TOP;
+const SlowCommand_Id SlowCommand::TOGGLE_SHOW_TOOLTIPS;
+const SlowCommand_Id SlowCommand::TOGGLE_START_STOP;
+const SlowCommand_Id SlowCommand::TOGGLE_STRETCH_ENABLE;
+const SlowCommand_Id SlowCommand::TOGGLE_TRANSFORM_ENABLE;
+const SlowCommand_Id SlowCommand::TOGGLE_WHOLE_SONG_LOOP;
+const SlowCommand_Id SlowCommand::TREE_CLOSE;
+const SlowCommand_Id SlowCommand::TREE_DOWN;
+const SlowCommand_Id SlowCommand::TREE_LEFT;
+const SlowCommand_Id SlowCommand::TREE_OPEN;
+const SlowCommand_Id SlowCommand::TREE_RIGHT;
+const SlowCommand_Id SlowCommand::TREE_UP;
+const SlowCommand_Id SlowCommand::UNDO;
+const SlowCommand_Id SlowCommand::UNSELECT;
+const SlowCommand_Id SlowCommand::WHATS_NEW_PAGE;
+const SlowCommand_Id SlowCommand::ZOOM_IN;
+const SlowCommand_Id SlowCommand::ZOOM_OUT;
+const SlowCommand_Id SlowCommand::ZOOM_OUT_FULL;
+const SlowCommand_Id SlowCommand::ZOOM_TO_SELECTION;
+const SlowCommand_Id SlowCommand::FIRST_FREE_TYPE;
+const SlowCommand_Id SlowCommand::QUIT;
+const SlowCommand_Id SlowCommand::DEL;
+const SlowCommand_Id SlowCommand::CUT;
+const SlowCommand_Id SlowCommand::COPY;
+const SlowCommand_Id SlowCommand::PASTE;
+const SlowCommand_Id SlowCommand::SELECT_ALL;
+const SlowCommand_Id SlowCommand::DESELECT_ALL;
+const SlowCommand_Id SlowCommand::Id_MIN;
+const SlowCommand_Id SlowCommand::Id_MAX;
+const int SlowCommand::Id_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
-const int SlowCommand::kTypeFieldNumber;
+const int SlowCommand::kIdFieldNumber;
 const int SlowCommand::kCommandFieldNumber;
 #endif  // !_MSC_VER
 
@@ -579,7 +579,7 @@ SlowCommand::SlowCommand(const SlowCommand& from)
 
 void SlowCommand::SharedCtor() {
   _cached_size_ = 0;
-  type_ = 0;
+  id_ = 0;
   command_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -617,7 +617,7 @@ SlowCommand* SlowCommand::New() const {
 
 void SlowCommand::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    type_ = 0;
+    id_ = 0;
     if (has_command()) {
       if (command_ != NULL) command_->::rec::command::Command::Clear();
     }
@@ -632,7 +632,7 @@ bool SlowCommand::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.slow.SlowCommand.Type type = 1;
+      // optional .rec.slow.SlowCommand.Id id = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -640,8 +640,8 @@ bool SlowCommand::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::slow::SlowCommand_Type_IsValid(value)) {
-            set_type(static_cast< ::rec::slow::SlowCommand_Type >(value));
+          if (::rec::slow::SlowCommand_Id_IsValid(value)) {
+            set_id(static_cast< ::rec::slow::SlowCommand_Id >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -684,10 +684,10 @@ bool SlowCommand::MergePartialFromCodedStream(
 
 void SlowCommand::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.slow.SlowCommand.Type type = 1;
-  if (has_type()) {
+  // optional .rec.slow.SlowCommand.Id id = 1;
+  if (has_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->type(), output);
+      1, this->id(), output);
   }
 
   // optional .rec.command.Command command = 2;
@@ -704,10 +704,10 @@ void SlowCommand::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SlowCommand::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.slow.SlowCommand.Type type = 1;
-  if (has_type()) {
+  // optional .rec.slow.SlowCommand.Id id = 1;
+  if (has_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->type(), target);
+      1, this->id(), target);
   }
 
   // optional .rec.command.Command command = 2;
@@ -728,10 +728,10 @@ int SlowCommand::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.slow.SlowCommand.Type type = 1;
-    if (has_type()) {
+    // optional .rec.slow.SlowCommand.Id id = 1;
+    if (has_id()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->id());
     }
 
     // optional .rec.command.Command command = 2;
@@ -768,8 +768,8 @@ void SlowCommand::MergeFrom(const ::google::protobuf::Message& from) {
 void SlowCommand::MergeFrom(const SlowCommand& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_type()) {
-      set_type(from.type());
+    if (from.has_id()) {
+      set_id(from.id());
     }
     if (from.has_command()) {
       mutable_command()->::rec::command::Command::MergeFrom(from.command());
@@ -797,7 +797,7 @@ bool SlowCommand::IsInitialized() const {
 
 void SlowCommand::Swap(SlowCommand* other) {
   if (other != this) {
-    std::swap(type_, other->type_);
+    std::swap(id_, other->id_);
     std::swap(command_, other->command_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -1020,7 +1020,7 @@ void SlowCommands::Swap(SlowCommands* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int SlowCommandMapEntry::kCommandFieldNumber;
+const int SlowCommandMapEntry::kIdFieldNumber;
 const int SlowCommandMapEntry::kEntryFieldNumber;
 #endif  // !_MSC_VER
 
@@ -1041,7 +1041,7 @@ SlowCommandMapEntry::SlowCommandMapEntry(const SlowCommandMapEntry& from)
 
 void SlowCommandMapEntry::SharedCtor() {
   _cached_size_ = 0;
-  command_ = 0;
+  id_ = 0;
   entry_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -1079,7 +1079,7 @@ SlowCommandMapEntry* SlowCommandMapEntry::New() const {
 
 void SlowCommandMapEntry::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    command_ = 0;
+    id_ = 0;
     if (has_entry()) {
       if (entry_ != NULL) entry_->::rec::command::CommandMapEntry::Clear();
     }
@@ -1094,7 +1094,7 @@ bool SlowCommandMapEntry::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.slow.SlowCommand.Type command = 1;
+      // optional .rec.slow.SlowCommand.Id id = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -1102,8 +1102,8 @@ bool SlowCommandMapEntry::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::slow::SlowCommand_Type_IsValid(value)) {
-            set_command(static_cast< ::rec::slow::SlowCommand_Type >(value));
+          if (::rec::slow::SlowCommand_Id_IsValid(value)) {
+            set_id(static_cast< ::rec::slow::SlowCommand_Id >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -1146,10 +1146,10 @@ bool SlowCommandMapEntry::MergePartialFromCodedStream(
 
 void SlowCommandMapEntry::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.slow.SlowCommand.Type command = 1;
-  if (has_command()) {
+  // optional .rec.slow.SlowCommand.Id id = 1;
+  if (has_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->command(), output);
+      1, this->id(), output);
   }
 
   // optional .rec.command.CommandMapEntry entry = 2;
@@ -1166,10 +1166,10 @@ void SlowCommandMapEntry::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SlowCommandMapEntry::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.slow.SlowCommand.Type command = 1;
-  if (has_command()) {
+  // optional .rec.slow.SlowCommand.Id id = 1;
+  if (has_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->command(), target);
+      1, this->id(), target);
   }
 
   // optional .rec.command.CommandMapEntry entry = 2;
@@ -1190,10 +1190,10 @@ int SlowCommandMapEntry::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.slow.SlowCommand.Type command = 1;
-    if (has_command()) {
+    // optional .rec.slow.SlowCommand.Id id = 1;
+    if (has_id()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->command());
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->id());
     }
 
     // optional .rec.command.CommandMapEntry entry = 2;
@@ -1230,8 +1230,8 @@ void SlowCommandMapEntry::MergeFrom(const ::google::protobuf::Message& from) {
 void SlowCommandMapEntry::MergeFrom(const SlowCommandMapEntry& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_command()) {
-      set_command(from.command());
+    if (from.has_id()) {
+      set_id(from.id());
     }
     if (from.has_entry()) {
       mutable_entry()->::rec::command::CommandMapEntry::MergeFrom(from.entry());
@@ -1259,7 +1259,7 @@ bool SlowCommandMapEntry::IsInitialized() const {
 
 void SlowCommandMapEntry::Swap(SlowCommandMapEntry* other) {
   if (other != this) {
-    std::swap(command_, other->command_);
+    std::swap(id_, other->id_);
     std::swap(entry_, other->entry_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -1482,7 +1482,7 @@ void SlowCommandMapProto::Swap(SlowCommandMapProto* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int SlowMenuEntry::kCommandFieldNumber;
+const int SlowMenuEntry::kIdFieldNumber;
 const int SlowMenuEntry::kSubmenuFieldNumber;
 const int SlowMenuEntry::kCalloutFunctionFieldNumber;
 #endif  // !_MSC_VER
@@ -1557,7 +1557,7 @@ void SlowMenuEntry::Clear() {
       }
     }
   }
-  command_.Clear();
+  id_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1568,17 +1568,17 @@ bool SlowMenuEntry::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.slow.SlowCommand.Type command = 1;
+      // repeated .rec.slow.SlowCommand.Id id = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_command:
+         parse_id:
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::slow::SlowCommand_Type_IsValid(value)) {
-            add_command(static_cast< ::rec::slow::SlowCommand_Type >(value));
+          if (::rec::slow::SlowCommand_Id_IsValid(value)) {
+            add_id(static_cast< ::rec::slow::SlowCommand_Id >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -1587,12 +1587,12 @@ bool SlowMenuEntry::MergePartialFromCodedStream(
                       WIRETYPE_LENGTH_DELIMITED) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPackedEnumNoInline(
                  input,
-                 &::rec::slow::SlowCommand_Type_IsValid,
-                 this->mutable_command())));
+                 &::rec::slow::SlowCommand_Id_IsValid,
+                 this->mutable_id())));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(8)) goto parse_command;
+        if (input->ExpectTag(8)) goto parse_id;
         if (input->ExpectTag(18)) goto parse_submenu;
         break;
       }
@@ -1649,10 +1649,10 @@ bool SlowMenuEntry::MergePartialFromCodedStream(
 
 void SlowMenuEntry::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.slow.SlowCommand.Type command = 1;
-  for (int i = 0; i < this->command_size(); i++) {
+  // repeated .rec.slow.SlowCommand.Id id = 1;
+  for (int i = 0; i < this->id_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->command(i), output);
+      1, this->id(i), output);
   }
 
   // optional string submenu = 2;
@@ -1681,10 +1681,10 @@ void SlowMenuEntry::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SlowMenuEntry::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.slow.SlowCommand.Type command = 1;
-  for (int i = 0; i < this->command_size(); i++) {
+  // repeated .rec.slow.SlowCommand.Id id = 1;
+  for (int i = 0; i < this->id_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->command(i), target);
+      1, this->id(i), target);
   }
 
   // optional string submenu = 2;
@@ -1733,14 +1733,14 @@ int SlowMenuEntry::ByteSize() const {
     }
 
   }
-  // repeated .rec.slow.SlowCommand.Type command = 1;
+  // repeated .rec.slow.SlowCommand.Id id = 1;
   {
     int data_size = 0;
-    for (int i = 0; i < this->command_size(); i++) {
+    for (int i = 0; i < this->id_size(); i++) {
       data_size += ::google::protobuf::internal::WireFormatLite::EnumSize(
-        this->command(i));
+        this->id(i));
     }
-    total_size += 1 * this->command_size() + data_size;
+    total_size += 1 * this->id_size() + data_size;
   }
 
   if (!unknown_fields().empty()) {
@@ -1768,7 +1768,7 @@ void SlowMenuEntry::MergeFrom(const ::google::protobuf::Message& from) {
 
 void SlowMenuEntry::MergeFrom(const SlowMenuEntry& from) {
   GOOGLE_CHECK_NE(&from, this);
-  command_.MergeFrom(from.command_);
+  id_.MergeFrom(from.id_);
   if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     if (from.has_submenu()) {
       set_submenu(from.submenu());
@@ -1799,7 +1799,7 @@ bool SlowMenuEntry::IsInitialized() const {
 
 void SlowMenuEntry::Swap(SlowMenuEntry* other) {
   if (other != this) {
-    command_.Swap(&other->command_);
+    id_.Swap(&other->id_);
     std::swap(submenu_, other->submenu_);
     std::swap(callout_function_, other->callout_function_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

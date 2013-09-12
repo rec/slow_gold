@@ -7,16 +7,16 @@
 namespace BinaryData
 {
     extern const char*   Commands_def;
-    const int            Commands_defSize = 28729;
+    const int            Commands_defSize = 28557;
 
     extern const char*   KeyStrokeMap_def;
-    const int            KeyStrokeMap_defSize = 6561;
+    const int            KeyStrokeMap_defSize = 6171;
 
     extern const char*   MenuCollection_def;
     const int            MenuCollection_defSize = 373;
 
     extern const char*   Menus_def;
-    const int            Menus_defSize = 3442;
+    const int            Menus_defSize = 3007;
 
     extern const char*   AddLoopPointButton_svg;
     const int            AddLoopPointButton_svgSize = 21887;

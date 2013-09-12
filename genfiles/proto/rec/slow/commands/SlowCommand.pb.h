@@ -45,129 +45,129 @@ class SlowMenuEntry;
 class SlowMenu;
 class SlowMenus;
 
-enum SlowCommand_Type {
-  SlowCommand_Type_NONE = 0,
-  SlowCommand_Type_ABOUT_THIS_PROGRAM = 58,
-  SlowCommand_Type_ADD_LOOP_POINT = 1,
-  SlowCommand_Type_AUDIO_PREFERENCES = 2,
-  SlowCommand_Type_CHECK_FOR_UPDATES = 68,
-  SlowCommand_Type_CLEAR_KEYBOARD_MAPPINGS = 91,
-  SlowCommand_Type_CLEAR_MIDI_MAPPINGS = 92,
-  SlowCommand_Type_CLEAR_LOOPS = 4,
-  SlowCommand_Type_CLEAR_NAVIGATOR = 3,
-  SlowCommand_Type_CLEAR_ALL_SETTINGS = 79,
-  SlowCommand_Type_CLEAR_SETTINGS_FOR_THIS_TRACK = 80,
-  SlowCommand_Type_CLEAR_SAVED_FILE_DATA = 5,
-  SlowCommand_Type_CLOSE_FILE = 6,
-  SlowCommand_Type_COPY_ALL_LOOP_POINTS = 95,
-  SlowCommand_Type_DIM_VOLUME_TOGGLE = 7,
-  SlowCommand_Type_EJECT_CDS = 8,
-  SlowCommand_Type_EXPORT_KEYBOARD_MAPPINGS = 82,
-  SlowCommand_Type_EXPORT_MIDI_MAPPINGS = 83,
-  SlowCommand_Type_EXPORT_SETTINGS = 75,
-  SlowCommand_Type_IMPORT_KEYBOARD_MAPPINGS = 84,
-  SlowCommand_Type_IMPORT_MIDI_MAPPINGS = 85,
-  SlowCommand_Type_IMPORT_SETTINGS = 76,
-  SlowCommand_Type_INVERT_LOOP_SELECTION = 9,
-  SlowCommand_Type_JUMP = 100000,
-  SlowCommand_Type_JUMP_SELECTED = 110000,
-  SlowCommand_Type_KEYBOARD_MAPPINGS = 12,
-  SlowCommand_Type_LOOP_NEXT_SEGMENT = 94,
-  SlowCommand_Type_MIDI_MAPPINGS = 13,
-  SlowCommand_Type_MODE_ADD_LOOP_POINT = 63,
-  SlowCommand_Type_MODE_DRAG = 60,
-  SlowCommand_Type_MODE_SET_TIME = 61,
-  SlowCommand_Type_MODE_ZOOM_IN = 62,
-  SlowCommand_Type_MUTE_VOLUME_TOGGLE = 14,
-  SlowCommand_Type_NUDGE_BACKWARD = 89,
-  SlowCommand_Type_NUDGE_FORWARD = 90,
-  SlowCommand_Type_NUDGE_BEGIN_LEFT = 15,
-  SlowCommand_Type_NUDGE_BEGIN_RIGHT = 16,
-  SlowCommand_Type_NUDGE_END_LEFT = 17,
-  SlowCommand_Type_NUDGE_END_RIGHT = 18,
-  SlowCommand_Type_NUDGE_SPEED_DOWN = 86,
-  SlowCommand_Type_NUDGE_SPEED_UP = 87,
-  SlowCommand_Type_NUDGE_VOLUME_DOWN = 19,
-  SlowCommand_Type_NUDGE_VOLUME_UP = 20,
-  SlowCommand_Type_OPEN = 21,
-  SlowCommand_Type_OPEN_MANUAL = 65,
-  SlowCommand_Type_OPEN_PREVIOUS_FILE = 78,
-  SlowCommand_Type_OPEN_SLOWGOLD_DIRECTORY = 74,
-  SlowCommand_Type_PASTE_OVER_LOOP_POINTS = 96,
-  SlowCommand_Type_RECENT_FILES = 220000,
-  SlowCommand_Type_REDO = 23,
-  SlowCommand_Type_REQUEST_SUPPORT = 66,
-  SlowCommand_Type_RESET_GAIN_TO_UNITY = 24,
-  SlowCommand_Type_SAVE_FILE = 69,
-  SlowCommand_Type_SAVE_FILE_SELECTION = 70,
-  SlowCommand_Type_SELECT = 250000,
-  SlowCommand_Type_SELECT_ONLY = 260000,
-  SlowCommand_Type_SET_LANGUAGE = 930000,
-  SlowCommand_Type_SET_SAVE_FORMAT = 710000,
-  SlowCommand_Type_SET_SAVE_AS_AIFF = 97,
-  SlowCommand_Type_SET_SAVE_AS_FLAC = 98,
-  SlowCommand_Type_SET_SAVE_AS_OGG = 99,
-  SlowCommand_Type_SET_SAVE_AS_WAV = 100,
-  SlowCommand_Type_TOGGLE_ADVANCED_MENUS = 59,
-  SlowCommand_Type_TOGGLE_AUTOMATIC_UPDATES = 67,
-  SlowCommand_Type_TOGGLE_FOLLOW_CURSOR = 43,
-  SlowCommand_Type_TOGGLE_GRID_DISPLAY = 27,
-  SlowCommand_Type_TOGGLE_COMMAND_BAR_AT_LEFT = 54,
-  SlowCommand_Type_TOGGLE_COMMAND_BAR_AT_TOP = 55,
-  SlowCommand_Type_TOGGLE_FILE_OPEN_TREE_DISPLAY = 72,
-  SlowCommand_Type_TOGGLE_MODES_AT_LEFT = 56,
-  SlowCommand_Type_TOGGLE_MODES_AT_TOP = 57,
-  SlowCommand_Type_TOGGLE_PARALLEL_WAVEFORMS = 42,
-  SlowCommand_Type_TOGGLE_PREFADER_LEVELS = 46,
-  SlowCommand_Type_TOGGLE_SELECTION = 410000,
-  SlowCommand_Type_TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP = 81,
-  SlowCommand_Type_TOGGLE_SHOW_CURSOR_LABELS = 51,
-  SlowCommand_Type_TOGGLE_SHOW_HELP_PANE = 49,
-  SlowCommand_Type_TOGGLE_SHOW_LABELS_AT_TOP = 52,
-  SlowCommand_Type_TOGGLE_SHOW_MASTER_TUNE = 77,
-  SlowCommand_Type_TOGGLE_SHOW_SELECTION_BUTTONS = 50,
-  SlowCommand_Type_TOGGLE_SHOW_TIMES_AT_TOP = 53,
-  SlowCommand_Type_TOGGLE_SHOW_TOOLTIPS = 48,
-  SlowCommand_Type_TOGGLE_START_STOP = 28,
-  SlowCommand_Type_TOGGLE_STRETCH_ENABLE = 29,
-  SlowCommand_Type_TOGGLE_TRANSFORM_ENABLE = 88,
-  SlowCommand_Type_TOGGLE_WHOLE_SONG_LOOP = 30,
-  SlowCommand_Type_TREE_CLOSE = 31,
-  SlowCommand_Type_TREE_DOWN = 32,
-  SlowCommand_Type_TREE_LEFT = 33,
-  SlowCommand_Type_TREE_OPEN = 34,
-  SlowCommand_Type_TREE_RIGHT = 35,
-  SlowCommand_Type_TREE_UP = 36,
-  SlowCommand_Type_UNDO = 37,
-  SlowCommand_Type_UNSELECT = 380000,
-  SlowCommand_Type_WHATS_NEW_PAGE = 73,
-  SlowCommand_Type_ZOOM_IN = 39,
-  SlowCommand_Type_ZOOM_OUT = 40,
-  SlowCommand_Type_ZOOM_OUT_FULL = 64,
-  SlowCommand_Type_ZOOM_TO_SELECTION = 45,
-  SlowCommand_Type_FIRST_FREE_TYPE = 101,
-  SlowCommand_Type_QUIT = 4097,
-  SlowCommand_Type_DEL = 4098,
-  SlowCommand_Type_CUT = 4099,
-  SlowCommand_Type_COPY = 4100,
-  SlowCommand_Type_PASTE = 4101,
-  SlowCommand_Type_SELECT_ALL = 4102,
-  SlowCommand_Type_DESELECT_ALL = 4103
+enum SlowCommand_Id {
+  SlowCommand_Id_NONE = 0,
+  SlowCommand_Id_ABOUT_THIS_PROGRAM = 58,
+  SlowCommand_Id_ADD_LOOP_POINT = 1,
+  SlowCommand_Id_AUDIO_PREFERENCES = 2,
+  SlowCommand_Id_CHECK_FOR_UPDATES = 68,
+  SlowCommand_Id_CLEAR_KEYBOARD_MAPPINGS = 91,
+  SlowCommand_Id_CLEAR_MIDI_MAPPINGS = 92,
+  SlowCommand_Id_CLEAR_LOOPS = 4,
+  SlowCommand_Id_CLEAR_NAVIGATOR = 3,
+  SlowCommand_Id_CLEAR_ALL_SETTINGS = 79,
+  SlowCommand_Id_CLEAR_SETTINGS_FOR_THIS_TRACK = 80,
+  SlowCommand_Id_CLEAR_SAVED_FILE_DATA = 5,
+  SlowCommand_Id_CLOSE_FILE = 6,
+  SlowCommand_Id_COPY_ALL_LOOP_POINTS = 95,
+  SlowCommand_Id_DIM_VOLUME_TOGGLE = 7,
+  SlowCommand_Id_EJECT_CDS = 8,
+  SlowCommand_Id_EXPORT_KEYBOARD_MAPPINGS = 82,
+  SlowCommand_Id_EXPORT_MIDI_MAPPINGS = 83,
+  SlowCommand_Id_EXPORT_SETTINGS = 75,
+  SlowCommand_Id_IMPORT_KEYBOARD_MAPPINGS = 84,
+  SlowCommand_Id_IMPORT_MIDI_MAPPINGS = 85,
+  SlowCommand_Id_IMPORT_SETTINGS = 76,
+  SlowCommand_Id_INVERT_LOOP_SELECTION = 9,
+  SlowCommand_Id_JUMP = 100000,
+  SlowCommand_Id_JUMP_SELECTED = 110000,
+  SlowCommand_Id_KEYBOARD_MAPPINGS = 12,
+  SlowCommand_Id_LOOP_NEXT_SEGMENT = 94,
+  SlowCommand_Id_MIDI_MAPPINGS = 13,
+  SlowCommand_Id_MODE_ADD_LOOP_POINT = 63,
+  SlowCommand_Id_MODE_DRAG = 60,
+  SlowCommand_Id_MODE_SET_TIME = 61,
+  SlowCommand_Id_MODE_ZOOM_IN = 62,
+  SlowCommand_Id_MUTE_VOLUME_TOGGLE = 14,
+  SlowCommand_Id_NUDGE_BACKWARD = 89,
+  SlowCommand_Id_NUDGE_FORWARD = 90,
+  SlowCommand_Id_NUDGE_BEGIN_LEFT = 15,
+  SlowCommand_Id_NUDGE_BEGIN_RIGHT = 16,
+  SlowCommand_Id_NUDGE_END_LEFT = 17,
+  SlowCommand_Id_NUDGE_END_RIGHT = 18,
+  SlowCommand_Id_NUDGE_SPEED_DOWN = 86,
+  SlowCommand_Id_NUDGE_SPEED_UP = 87,
+  SlowCommand_Id_NUDGE_VOLUME_DOWN = 19,
+  SlowCommand_Id_NUDGE_VOLUME_UP = 20,
+  SlowCommand_Id_OPEN = 21,
+  SlowCommand_Id_OPEN_MANUAL = 65,
+  SlowCommand_Id_OPEN_PREVIOUS_FILE = 78,
+  SlowCommand_Id_OPEN_SLOWGOLD_DIRECTORY = 74,
+  SlowCommand_Id_PASTE_OVER_LOOP_POINTS = 96,
+  SlowCommand_Id_RECENT_FILES = 220000,
+  SlowCommand_Id_REDO = 23,
+  SlowCommand_Id_REQUEST_SUPPORT = 66,
+  SlowCommand_Id_RESET_GAIN_TO_UNITY = 24,
+  SlowCommand_Id_SAVE_FILE = 69,
+  SlowCommand_Id_SAVE_FILE_SELECTION = 70,
+  SlowCommand_Id_SELECT = 250000,
+  SlowCommand_Id_SELECT_ONLY = 260000,
+  SlowCommand_Id_SET_LANGUAGE = 930000,
+  SlowCommand_Id_SET_SAVE_FORMAT = 710000,
+  SlowCommand_Id_SET_SAVE_AS_AIFF = 97,
+  SlowCommand_Id_SET_SAVE_AS_FLAC = 98,
+  SlowCommand_Id_SET_SAVE_AS_OGG = 99,
+  SlowCommand_Id_SET_SAVE_AS_WAV = 100,
+  SlowCommand_Id_TOGGLE_ADVANCED_MENUS = 59,
+  SlowCommand_Id_TOGGLE_AUTOMATIC_UPDATES = 67,
+  SlowCommand_Id_TOGGLE_FOLLOW_CURSOR = 43,
+  SlowCommand_Id_TOGGLE_GRID_DISPLAY = 27,
+  SlowCommand_Id_TOGGLE_COMMAND_BAR_AT_LEFT = 54,
+  SlowCommand_Id_TOGGLE_COMMAND_BAR_AT_TOP = 55,
+  SlowCommand_Id_TOGGLE_FILE_OPEN_TREE_DISPLAY = 72,
+  SlowCommand_Id_TOGGLE_MODES_AT_LEFT = 56,
+  SlowCommand_Id_TOGGLE_MODES_AT_TOP = 57,
+  SlowCommand_Id_TOGGLE_PARALLEL_WAVEFORMS = 42,
+  SlowCommand_Id_TOGGLE_PREFADER_LEVELS = 46,
+  SlowCommand_Id_TOGGLE_SELECTION = 410000,
+  SlowCommand_Id_TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP = 81,
+  SlowCommand_Id_TOGGLE_SHOW_CURSOR_LABELS = 51,
+  SlowCommand_Id_TOGGLE_SHOW_HELP_PANE = 49,
+  SlowCommand_Id_TOGGLE_SHOW_LABELS_AT_TOP = 52,
+  SlowCommand_Id_TOGGLE_SHOW_MASTER_TUNE = 77,
+  SlowCommand_Id_TOGGLE_SHOW_SELECTION_BUTTONS = 50,
+  SlowCommand_Id_TOGGLE_SHOW_TIMES_AT_TOP = 53,
+  SlowCommand_Id_TOGGLE_SHOW_TOOLTIPS = 48,
+  SlowCommand_Id_TOGGLE_START_STOP = 28,
+  SlowCommand_Id_TOGGLE_STRETCH_ENABLE = 29,
+  SlowCommand_Id_TOGGLE_TRANSFORM_ENABLE = 88,
+  SlowCommand_Id_TOGGLE_WHOLE_SONG_LOOP = 30,
+  SlowCommand_Id_TREE_CLOSE = 31,
+  SlowCommand_Id_TREE_DOWN = 32,
+  SlowCommand_Id_TREE_LEFT = 33,
+  SlowCommand_Id_TREE_OPEN = 34,
+  SlowCommand_Id_TREE_RIGHT = 35,
+  SlowCommand_Id_TREE_UP = 36,
+  SlowCommand_Id_UNDO = 37,
+  SlowCommand_Id_UNSELECT = 380000,
+  SlowCommand_Id_WHATS_NEW_PAGE = 73,
+  SlowCommand_Id_ZOOM_IN = 39,
+  SlowCommand_Id_ZOOM_OUT = 40,
+  SlowCommand_Id_ZOOM_OUT_FULL = 64,
+  SlowCommand_Id_ZOOM_TO_SELECTION = 45,
+  SlowCommand_Id_FIRST_FREE_TYPE = 101,
+  SlowCommand_Id_QUIT = 4097,
+  SlowCommand_Id_DEL = 4098,
+  SlowCommand_Id_CUT = 4099,
+  SlowCommand_Id_COPY = 4100,
+  SlowCommand_Id_PASTE = 4101,
+  SlowCommand_Id_SELECT_ALL = 4102,
+  SlowCommand_Id_DESELECT_ALL = 4103
 };
-bool SlowCommand_Type_IsValid(int value);
-const SlowCommand_Type SlowCommand_Type_Type_MIN = SlowCommand_Type_NONE;
-const SlowCommand_Type SlowCommand_Type_Type_MAX = SlowCommand_Type_SET_LANGUAGE;
-const int SlowCommand_Type_Type_ARRAYSIZE = SlowCommand_Type_Type_MAX + 1;
+bool SlowCommand_Id_IsValid(int value);
+const SlowCommand_Id SlowCommand_Id_Id_MIN = SlowCommand_Id_NONE;
+const SlowCommand_Id SlowCommand_Id_Id_MAX = SlowCommand_Id_SET_LANGUAGE;
+const int SlowCommand_Id_Id_ARRAYSIZE = SlowCommand_Id_Id_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* SlowCommand_Type_descriptor();
-inline const ::std::string& SlowCommand_Type_Name(SlowCommand_Type value) {
+const ::google::protobuf::EnumDescriptor* SlowCommand_Id_descriptor();
+inline const ::std::string& SlowCommand_Id_Name(SlowCommand_Id value) {
   return ::google::protobuf::internal::NameOfEnum(
-    SlowCommand_Type_descriptor(), value);
+    SlowCommand_Id_descriptor(), value);
 }
-inline bool SlowCommand_Type_Parse(
-    const ::std::string& name, SlowCommand_Type* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<SlowCommand_Type>(
-    SlowCommand_Type_descriptor(), name, value);
+inline bool SlowCommand_Id_Parse(
+    const ::std::string& name, SlowCommand_Id* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<SlowCommand_Id>(
+    SlowCommand_Id_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -223,143 +223,143 @@ class SlowCommand : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef SlowCommand_Type Type;
-  static const Type NONE = SlowCommand_Type_NONE;
-  static const Type ABOUT_THIS_PROGRAM = SlowCommand_Type_ABOUT_THIS_PROGRAM;
-  static const Type ADD_LOOP_POINT = SlowCommand_Type_ADD_LOOP_POINT;
-  static const Type AUDIO_PREFERENCES = SlowCommand_Type_AUDIO_PREFERENCES;
-  static const Type CHECK_FOR_UPDATES = SlowCommand_Type_CHECK_FOR_UPDATES;
-  static const Type CLEAR_KEYBOARD_MAPPINGS = SlowCommand_Type_CLEAR_KEYBOARD_MAPPINGS;
-  static const Type CLEAR_MIDI_MAPPINGS = SlowCommand_Type_CLEAR_MIDI_MAPPINGS;
-  static const Type CLEAR_LOOPS = SlowCommand_Type_CLEAR_LOOPS;
-  static const Type CLEAR_NAVIGATOR = SlowCommand_Type_CLEAR_NAVIGATOR;
-  static const Type CLEAR_ALL_SETTINGS = SlowCommand_Type_CLEAR_ALL_SETTINGS;
-  static const Type CLEAR_SETTINGS_FOR_THIS_TRACK = SlowCommand_Type_CLEAR_SETTINGS_FOR_THIS_TRACK;
-  static const Type CLEAR_SAVED_FILE_DATA = SlowCommand_Type_CLEAR_SAVED_FILE_DATA;
-  static const Type CLOSE_FILE = SlowCommand_Type_CLOSE_FILE;
-  static const Type COPY_ALL_LOOP_POINTS = SlowCommand_Type_COPY_ALL_LOOP_POINTS;
-  static const Type DIM_VOLUME_TOGGLE = SlowCommand_Type_DIM_VOLUME_TOGGLE;
-  static const Type EJECT_CDS = SlowCommand_Type_EJECT_CDS;
-  static const Type EXPORT_KEYBOARD_MAPPINGS = SlowCommand_Type_EXPORT_KEYBOARD_MAPPINGS;
-  static const Type EXPORT_MIDI_MAPPINGS = SlowCommand_Type_EXPORT_MIDI_MAPPINGS;
-  static const Type EXPORT_SETTINGS = SlowCommand_Type_EXPORT_SETTINGS;
-  static const Type IMPORT_KEYBOARD_MAPPINGS = SlowCommand_Type_IMPORT_KEYBOARD_MAPPINGS;
-  static const Type IMPORT_MIDI_MAPPINGS = SlowCommand_Type_IMPORT_MIDI_MAPPINGS;
-  static const Type IMPORT_SETTINGS = SlowCommand_Type_IMPORT_SETTINGS;
-  static const Type INVERT_LOOP_SELECTION = SlowCommand_Type_INVERT_LOOP_SELECTION;
-  static const Type JUMP = SlowCommand_Type_JUMP;
-  static const Type JUMP_SELECTED = SlowCommand_Type_JUMP_SELECTED;
-  static const Type KEYBOARD_MAPPINGS = SlowCommand_Type_KEYBOARD_MAPPINGS;
-  static const Type LOOP_NEXT_SEGMENT = SlowCommand_Type_LOOP_NEXT_SEGMENT;
-  static const Type MIDI_MAPPINGS = SlowCommand_Type_MIDI_MAPPINGS;
-  static const Type MODE_ADD_LOOP_POINT = SlowCommand_Type_MODE_ADD_LOOP_POINT;
-  static const Type MODE_DRAG = SlowCommand_Type_MODE_DRAG;
-  static const Type MODE_SET_TIME = SlowCommand_Type_MODE_SET_TIME;
-  static const Type MODE_ZOOM_IN = SlowCommand_Type_MODE_ZOOM_IN;
-  static const Type MUTE_VOLUME_TOGGLE = SlowCommand_Type_MUTE_VOLUME_TOGGLE;
-  static const Type NUDGE_BACKWARD = SlowCommand_Type_NUDGE_BACKWARD;
-  static const Type NUDGE_FORWARD = SlowCommand_Type_NUDGE_FORWARD;
-  static const Type NUDGE_BEGIN_LEFT = SlowCommand_Type_NUDGE_BEGIN_LEFT;
-  static const Type NUDGE_BEGIN_RIGHT = SlowCommand_Type_NUDGE_BEGIN_RIGHT;
-  static const Type NUDGE_END_LEFT = SlowCommand_Type_NUDGE_END_LEFT;
-  static const Type NUDGE_END_RIGHT = SlowCommand_Type_NUDGE_END_RIGHT;
-  static const Type NUDGE_SPEED_DOWN = SlowCommand_Type_NUDGE_SPEED_DOWN;
-  static const Type NUDGE_SPEED_UP = SlowCommand_Type_NUDGE_SPEED_UP;
-  static const Type NUDGE_VOLUME_DOWN = SlowCommand_Type_NUDGE_VOLUME_DOWN;
-  static const Type NUDGE_VOLUME_UP = SlowCommand_Type_NUDGE_VOLUME_UP;
-  static const Type OPEN = SlowCommand_Type_OPEN;
-  static const Type OPEN_MANUAL = SlowCommand_Type_OPEN_MANUAL;
-  static const Type OPEN_PREVIOUS_FILE = SlowCommand_Type_OPEN_PREVIOUS_FILE;
-  static const Type OPEN_SLOWGOLD_DIRECTORY = SlowCommand_Type_OPEN_SLOWGOLD_DIRECTORY;
-  static const Type PASTE_OVER_LOOP_POINTS = SlowCommand_Type_PASTE_OVER_LOOP_POINTS;
-  static const Type RECENT_FILES = SlowCommand_Type_RECENT_FILES;
-  static const Type REDO = SlowCommand_Type_REDO;
-  static const Type REQUEST_SUPPORT = SlowCommand_Type_REQUEST_SUPPORT;
-  static const Type RESET_GAIN_TO_UNITY = SlowCommand_Type_RESET_GAIN_TO_UNITY;
-  static const Type SAVE_FILE = SlowCommand_Type_SAVE_FILE;
-  static const Type SAVE_FILE_SELECTION = SlowCommand_Type_SAVE_FILE_SELECTION;
-  static const Type SELECT = SlowCommand_Type_SELECT;
-  static const Type SELECT_ONLY = SlowCommand_Type_SELECT_ONLY;
-  static const Type SET_LANGUAGE = SlowCommand_Type_SET_LANGUAGE;
-  static const Type SET_SAVE_FORMAT = SlowCommand_Type_SET_SAVE_FORMAT;
-  static const Type SET_SAVE_AS_AIFF = SlowCommand_Type_SET_SAVE_AS_AIFF;
-  static const Type SET_SAVE_AS_FLAC = SlowCommand_Type_SET_SAVE_AS_FLAC;
-  static const Type SET_SAVE_AS_OGG = SlowCommand_Type_SET_SAVE_AS_OGG;
-  static const Type SET_SAVE_AS_WAV = SlowCommand_Type_SET_SAVE_AS_WAV;
-  static const Type TOGGLE_ADVANCED_MENUS = SlowCommand_Type_TOGGLE_ADVANCED_MENUS;
-  static const Type TOGGLE_AUTOMATIC_UPDATES = SlowCommand_Type_TOGGLE_AUTOMATIC_UPDATES;
-  static const Type TOGGLE_FOLLOW_CURSOR = SlowCommand_Type_TOGGLE_FOLLOW_CURSOR;
-  static const Type TOGGLE_GRID_DISPLAY = SlowCommand_Type_TOGGLE_GRID_DISPLAY;
-  static const Type TOGGLE_COMMAND_BAR_AT_LEFT = SlowCommand_Type_TOGGLE_COMMAND_BAR_AT_LEFT;
-  static const Type TOGGLE_COMMAND_BAR_AT_TOP = SlowCommand_Type_TOGGLE_COMMAND_BAR_AT_TOP;
-  static const Type TOGGLE_FILE_OPEN_TREE_DISPLAY = SlowCommand_Type_TOGGLE_FILE_OPEN_TREE_DISPLAY;
-  static const Type TOGGLE_MODES_AT_LEFT = SlowCommand_Type_TOGGLE_MODES_AT_LEFT;
-  static const Type TOGGLE_MODES_AT_TOP = SlowCommand_Type_TOGGLE_MODES_AT_TOP;
-  static const Type TOGGLE_PARALLEL_WAVEFORMS = SlowCommand_Type_TOGGLE_PARALLEL_WAVEFORMS;
-  static const Type TOGGLE_PREFADER_LEVELS = SlowCommand_Type_TOGGLE_PREFADER_LEVELS;
-  static const Type TOGGLE_SELECTION = SlowCommand_Type_TOGGLE_SELECTION;
-  static const Type TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP = SlowCommand_Type_TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP;
-  static const Type TOGGLE_SHOW_CURSOR_LABELS = SlowCommand_Type_TOGGLE_SHOW_CURSOR_LABELS;
-  static const Type TOGGLE_SHOW_HELP_PANE = SlowCommand_Type_TOGGLE_SHOW_HELP_PANE;
-  static const Type TOGGLE_SHOW_LABELS_AT_TOP = SlowCommand_Type_TOGGLE_SHOW_LABELS_AT_TOP;
-  static const Type TOGGLE_SHOW_MASTER_TUNE = SlowCommand_Type_TOGGLE_SHOW_MASTER_TUNE;
-  static const Type TOGGLE_SHOW_SELECTION_BUTTONS = SlowCommand_Type_TOGGLE_SHOW_SELECTION_BUTTONS;
-  static const Type TOGGLE_SHOW_TIMES_AT_TOP = SlowCommand_Type_TOGGLE_SHOW_TIMES_AT_TOP;
-  static const Type TOGGLE_SHOW_TOOLTIPS = SlowCommand_Type_TOGGLE_SHOW_TOOLTIPS;
-  static const Type TOGGLE_START_STOP = SlowCommand_Type_TOGGLE_START_STOP;
-  static const Type TOGGLE_STRETCH_ENABLE = SlowCommand_Type_TOGGLE_STRETCH_ENABLE;
-  static const Type TOGGLE_TRANSFORM_ENABLE = SlowCommand_Type_TOGGLE_TRANSFORM_ENABLE;
-  static const Type TOGGLE_WHOLE_SONG_LOOP = SlowCommand_Type_TOGGLE_WHOLE_SONG_LOOP;
-  static const Type TREE_CLOSE = SlowCommand_Type_TREE_CLOSE;
-  static const Type TREE_DOWN = SlowCommand_Type_TREE_DOWN;
-  static const Type TREE_LEFT = SlowCommand_Type_TREE_LEFT;
-  static const Type TREE_OPEN = SlowCommand_Type_TREE_OPEN;
-  static const Type TREE_RIGHT = SlowCommand_Type_TREE_RIGHT;
-  static const Type TREE_UP = SlowCommand_Type_TREE_UP;
-  static const Type UNDO = SlowCommand_Type_UNDO;
-  static const Type UNSELECT = SlowCommand_Type_UNSELECT;
-  static const Type WHATS_NEW_PAGE = SlowCommand_Type_WHATS_NEW_PAGE;
-  static const Type ZOOM_IN = SlowCommand_Type_ZOOM_IN;
-  static const Type ZOOM_OUT = SlowCommand_Type_ZOOM_OUT;
-  static const Type ZOOM_OUT_FULL = SlowCommand_Type_ZOOM_OUT_FULL;
-  static const Type ZOOM_TO_SELECTION = SlowCommand_Type_ZOOM_TO_SELECTION;
-  static const Type FIRST_FREE_TYPE = SlowCommand_Type_FIRST_FREE_TYPE;
-  static const Type QUIT = SlowCommand_Type_QUIT;
-  static const Type DEL = SlowCommand_Type_DEL;
-  static const Type CUT = SlowCommand_Type_CUT;
-  static const Type COPY = SlowCommand_Type_COPY;
-  static const Type PASTE = SlowCommand_Type_PASTE;
-  static const Type SELECT_ALL = SlowCommand_Type_SELECT_ALL;
-  static const Type DESELECT_ALL = SlowCommand_Type_DESELECT_ALL;
-  static inline bool Type_IsValid(int value) {
-    return SlowCommand_Type_IsValid(value);
+  typedef SlowCommand_Id Id;
+  static const Id NONE = SlowCommand_Id_NONE;
+  static const Id ABOUT_THIS_PROGRAM = SlowCommand_Id_ABOUT_THIS_PROGRAM;
+  static const Id ADD_LOOP_POINT = SlowCommand_Id_ADD_LOOP_POINT;
+  static const Id AUDIO_PREFERENCES = SlowCommand_Id_AUDIO_PREFERENCES;
+  static const Id CHECK_FOR_UPDATES = SlowCommand_Id_CHECK_FOR_UPDATES;
+  static const Id CLEAR_KEYBOARD_MAPPINGS = SlowCommand_Id_CLEAR_KEYBOARD_MAPPINGS;
+  static const Id CLEAR_MIDI_MAPPINGS = SlowCommand_Id_CLEAR_MIDI_MAPPINGS;
+  static const Id CLEAR_LOOPS = SlowCommand_Id_CLEAR_LOOPS;
+  static const Id CLEAR_NAVIGATOR = SlowCommand_Id_CLEAR_NAVIGATOR;
+  static const Id CLEAR_ALL_SETTINGS = SlowCommand_Id_CLEAR_ALL_SETTINGS;
+  static const Id CLEAR_SETTINGS_FOR_THIS_TRACK = SlowCommand_Id_CLEAR_SETTINGS_FOR_THIS_TRACK;
+  static const Id CLEAR_SAVED_FILE_DATA = SlowCommand_Id_CLEAR_SAVED_FILE_DATA;
+  static const Id CLOSE_FILE = SlowCommand_Id_CLOSE_FILE;
+  static const Id COPY_ALL_LOOP_POINTS = SlowCommand_Id_COPY_ALL_LOOP_POINTS;
+  static const Id DIM_VOLUME_TOGGLE = SlowCommand_Id_DIM_VOLUME_TOGGLE;
+  static const Id EJECT_CDS = SlowCommand_Id_EJECT_CDS;
+  static const Id EXPORT_KEYBOARD_MAPPINGS = SlowCommand_Id_EXPORT_KEYBOARD_MAPPINGS;
+  static const Id EXPORT_MIDI_MAPPINGS = SlowCommand_Id_EXPORT_MIDI_MAPPINGS;
+  static const Id EXPORT_SETTINGS = SlowCommand_Id_EXPORT_SETTINGS;
+  static const Id IMPORT_KEYBOARD_MAPPINGS = SlowCommand_Id_IMPORT_KEYBOARD_MAPPINGS;
+  static const Id IMPORT_MIDI_MAPPINGS = SlowCommand_Id_IMPORT_MIDI_MAPPINGS;
+  static const Id IMPORT_SETTINGS = SlowCommand_Id_IMPORT_SETTINGS;
+  static const Id INVERT_LOOP_SELECTION = SlowCommand_Id_INVERT_LOOP_SELECTION;
+  static const Id JUMP = SlowCommand_Id_JUMP;
+  static const Id JUMP_SELECTED = SlowCommand_Id_JUMP_SELECTED;
+  static const Id KEYBOARD_MAPPINGS = SlowCommand_Id_KEYBOARD_MAPPINGS;
+  static const Id LOOP_NEXT_SEGMENT = SlowCommand_Id_LOOP_NEXT_SEGMENT;
+  static const Id MIDI_MAPPINGS = SlowCommand_Id_MIDI_MAPPINGS;
+  static const Id MODE_ADD_LOOP_POINT = SlowCommand_Id_MODE_ADD_LOOP_POINT;
+  static const Id MODE_DRAG = SlowCommand_Id_MODE_DRAG;
+  static const Id MODE_SET_TIME = SlowCommand_Id_MODE_SET_TIME;
+  static const Id MODE_ZOOM_IN = SlowCommand_Id_MODE_ZOOM_IN;
+  static const Id MUTE_VOLUME_TOGGLE = SlowCommand_Id_MUTE_VOLUME_TOGGLE;
+  static const Id NUDGE_BACKWARD = SlowCommand_Id_NUDGE_BACKWARD;
+  static const Id NUDGE_FORWARD = SlowCommand_Id_NUDGE_FORWARD;
+  static const Id NUDGE_BEGIN_LEFT = SlowCommand_Id_NUDGE_BEGIN_LEFT;
+  static const Id NUDGE_BEGIN_RIGHT = SlowCommand_Id_NUDGE_BEGIN_RIGHT;
+  static const Id NUDGE_END_LEFT = SlowCommand_Id_NUDGE_END_LEFT;
+  static const Id NUDGE_END_RIGHT = SlowCommand_Id_NUDGE_END_RIGHT;
+  static const Id NUDGE_SPEED_DOWN = SlowCommand_Id_NUDGE_SPEED_DOWN;
+  static const Id NUDGE_SPEED_UP = SlowCommand_Id_NUDGE_SPEED_UP;
+  static const Id NUDGE_VOLUME_DOWN = SlowCommand_Id_NUDGE_VOLUME_DOWN;
+  static const Id NUDGE_VOLUME_UP = SlowCommand_Id_NUDGE_VOLUME_UP;
+  static const Id OPEN = SlowCommand_Id_OPEN;
+  static const Id OPEN_MANUAL = SlowCommand_Id_OPEN_MANUAL;
+  static const Id OPEN_PREVIOUS_FILE = SlowCommand_Id_OPEN_PREVIOUS_FILE;
+  static const Id OPEN_SLOWGOLD_DIRECTORY = SlowCommand_Id_OPEN_SLOWGOLD_DIRECTORY;
+  static const Id PASTE_OVER_LOOP_POINTS = SlowCommand_Id_PASTE_OVER_LOOP_POINTS;
+  static const Id RECENT_FILES = SlowCommand_Id_RECENT_FILES;
+  static const Id REDO = SlowCommand_Id_REDO;
+  static const Id REQUEST_SUPPORT = SlowCommand_Id_REQUEST_SUPPORT;
+  static const Id RESET_GAIN_TO_UNITY = SlowCommand_Id_RESET_GAIN_TO_UNITY;
+  static const Id SAVE_FILE = SlowCommand_Id_SAVE_FILE;
+  static const Id SAVE_FILE_SELECTION = SlowCommand_Id_SAVE_FILE_SELECTION;
+  static const Id SELECT = SlowCommand_Id_SELECT;
+  static const Id SELECT_ONLY = SlowCommand_Id_SELECT_ONLY;
+  static const Id SET_LANGUAGE = SlowCommand_Id_SET_LANGUAGE;
+  static const Id SET_SAVE_FORMAT = SlowCommand_Id_SET_SAVE_FORMAT;
+  static const Id SET_SAVE_AS_AIFF = SlowCommand_Id_SET_SAVE_AS_AIFF;
+  static const Id SET_SAVE_AS_FLAC = SlowCommand_Id_SET_SAVE_AS_FLAC;
+  static const Id SET_SAVE_AS_OGG = SlowCommand_Id_SET_SAVE_AS_OGG;
+  static const Id SET_SAVE_AS_WAV = SlowCommand_Id_SET_SAVE_AS_WAV;
+  static const Id TOGGLE_ADVANCED_MENUS = SlowCommand_Id_TOGGLE_ADVANCED_MENUS;
+  static const Id TOGGLE_AUTOMATIC_UPDATES = SlowCommand_Id_TOGGLE_AUTOMATIC_UPDATES;
+  static const Id TOGGLE_FOLLOW_CURSOR = SlowCommand_Id_TOGGLE_FOLLOW_CURSOR;
+  static const Id TOGGLE_GRID_DISPLAY = SlowCommand_Id_TOGGLE_GRID_DISPLAY;
+  static const Id TOGGLE_COMMAND_BAR_AT_LEFT = SlowCommand_Id_TOGGLE_COMMAND_BAR_AT_LEFT;
+  static const Id TOGGLE_COMMAND_BAR_AT_TOP = SlowCommand_Id_TOGGLE_COMMAND_BAR_AT_TOP;
+  static const Id TOGGLE_FILE_OPEN_TREE_DISPLAY = SlowCommand_Id_TOGGLE_FILE_OPEN_TREE_DISPLAY;
+  static const Id TOGGLE_MODES_AT_LEFT = SlowCommand_Id_TOGGLE_MODES_AT_LEFT;
+  static const Id TOGGLE_MODES_AT_TOP = SlowCommand_Id_TOGGLE_MODES_AT_TOP;
+  static const Id TOGGLE_PARALLEL_WAVEFORMS = SlowCommand_Id_TOGGLE_PARALLEL_WAVEFORMS;
+  static const Id TOGGLE_PREFADER_LEVELS = SlowCommand_Id_TOGGLE_PREFADER_LEVELS;
+  static const Id TOGGLE_SELECTION = SlowCommand_Id_TOGGLE_SELECTION;
+  static const Id TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP = SlowCommand_Id_TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP;
+  static const Id TOGGLE_SHOW_CURSOR_LABELS = SlowCommand_Id_TOGGLE_SHOW_CURSOR_LABELS;
+  static const Id TOGGLE_SHOW_HELP_PANE = SlowCommand_Id_TOGGLE_SHOW_HELP_PANE;
+  static const Id TOGGLE_SHOW_LABELS_AT_TOP = SlowCommand_Id_TOGGLE_SHOW_LABELS_AT_TOP;
+  static const Id TOGGLE_SHOW_MASTER_TUNE = SlowCommand_Id_TOGGLE_SHOW_MASTER_TUNE;
+  static const Id TOGGLE_SHOW_SELECTION_BUTTONS = SlowCommand_Id_TOGGLE_SHOW_SELECTION_BUTTONS;
+  static const Id TOGGLE_SHOW_TIMES_AT_TOP = SlowCommand_Id_TOGGLE_SHOW_TIMES_AT_TOP;
+  static const Id TOGGLE_SHOW_TOOLTIPS = SlowCommand_Id_TOGGLE_SHOW_TOOLTIPS;
+  static const Id TOGGLE_START_STOP = SlowCommand_Id_TOGGLE_START_STOP;
+  static const Id TOGGLE_STRETCH_ENABLE = SlowCommand_Id_TOGGLE_STRETCH_ENABLE;
+  static const Id TOGGLE_TRANSFORM_ENABLE = SlowCommand_Id_TOGGLE_TRANSFORM_ENABLE;
+  static const Id TOGGLE_WHOLE_SONG_LOOP = SlowCommand_Id_TOGGLE_WHOLE_SONG_LOOP;
+  static const Id TREE_CLOSE = SlowCommand_Id_TREE_CLOSE;
+  static const Id TREE_DOWN = SlowCommand_Id_TREE_DOWN;
+  static const Id TREE_LEFT = SlowCommand_Id_TREE_LEFT;
+  static const Id TREE_OPEN = SlowCommand_Id_TREE_OPEN;
+  static const Id TREE_RIGHT = SlowCommand_Id_TREE_RIGHT;
+  static const Id TREE_UP = SlowCommand_Id_TREE_UP;
+  static const Id UNDO = SlowCommand_Id_UNDO;
+  static const Id UNSELECT = SlowCommand_Id_UNSELECT;
+  static const Id WHATS_NEW_PAGE = SlowCommand_Id_WHATS_NEW_PAGE;
+  static const Id ZOOM_IN = SlowCommand_Id_ZOOM_IN;
+  static const Id ZOOM_OUT = SlowCommand_Id_ZOOM_OUT;
+  static const Id ZOOM_OUT_FULL = SlowCommand_Id_ZOOM_OUT_FULL;
+  static const Id ZOOM_TO_SELECTION = SlowCommand_Id_ZOOM_TO_SELECTION;
+  static const Id FIRST_FREE_TYPE = SlowCommand_Id_FIRST_FREE_TYPE;
+  static const Id QUIT = SlowCommand_Id_QUIT;
+  static const Id DEL = SlowCommand_Id_DEL;
+  static const Id CUT = SlowCommand_Id_CUT;
+  static const Id COPY = SlowCommand_Id_COPY;
+  static const Id PASTE = SlowCommand_Id_PASTE;
+  static const Id SELECT_ALL = SlowCommand_Id_SELECT_ALL;
+  static const Id DESELECT_ALL = SlowCommand_Id_DESELECT_ALL;
+  static inline bool Id_IsValid(int value) {
+    return SlowCommand_Id_IsValid(value);
   }
-  static const Type Type_MIN =
-    SlowCommand_Type_Type_MIN;
-  static const Type Type_MAX =
-    SlowCommand_Type_Type_MAX;
-  static const int Type_ARRAYSIZE =
-    SlowCommand_Type_Type_ARRAYSIZE;
+  static const Id Id_MIN =
+    SlowCommand_Id_Id_MIN;
+  static const Id Id_MAX =
+    SlowCommand_Id_Id_MAX;
+  static const int Id_ARRAYSIZE =
+    SlowCommand_Id_Id_ARRAYSIZE;
   static inline const ::google::protobuf::EnumDescriptor*
-  Type_descriptor() {
-    return SlowCommand_Type_descriptor();
+  Id_descriptor() {
+    return SlowCommand_Id_descriptor();
   }
-  static inline const ::std::string& Type_Name(Type value) {
-    return SlowCommand_Type_Name(value);
+  static inline const ::std::string& Id_Name(Id value) {
+    return SlowCommand_Id_Name(value);
   }
-  static inline bool Type_Parse(const ::std::string& name,
-      Type* value) {
-    return SlowCommand_Type_Parse(name, value);
+  static inline bool Id_Parse(const ::std::string& name,
+      Id* value) {
+    return SlowCommand_Id_Parse(name, value);
   }
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.slow.SlowCommand.Type type = 1;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::rec::slow::SlowCommand_Type type() const;
-  inline void set_type(::rec::slow::SlowCommand_Type value);
+  // optional .rec.slow.SlowCommand.Id id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::rec::slow::SlowCommand_Id id() const;
+  inline void set_id(::rec::slow::SlowCommand_Id value);
 
   // optional .rec.command.Command command = 2;
   inline bool has_command() const;
@@ -372,15 +372,15 @@ class SlowCommand : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.slow.SlowCommand)
  private:
-  inline void set_has_type();
-  inline void clear_has_type();
+  inline void set_has_id();
+  inline void clear_has_id();
   inline void set_has_command();
   inline void clear_has_command();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::command::Command* command_;
-  int type_;
+  int id_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -533,12 +533,12 @@ class SlowCommandMapEntry : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .rec.slow.SlowCommand.Type command = 1;
-  inline bool has_command() const;
-  inline void clear_command();
-  static const int kCommandFieldNumber = 1;
-  inline ::rec::slow::SlowCommand_Type command() const;
-  inline void set_command(::rec::slow::SlowCommand_Type value);
+  // optional .rec.slow.SlowCommand.Id id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::rec::slow::SlowCommand_Id id() const;
+  inline void set_id(::rec::slow::SlowCommand_Id value);
 
   // optional .rec.command.CommandMapEntry entry = 2;
   inline bool has_entry() const;
@@ -551,15 +551,15 @@ class SlowCommandMapEntry : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.slow.SlowCommandMapEntry)
  private:
-  inline void set_has_command();
-  inline void clear_has_command();
+  inline void set_has_id();
+  inline void clear_has_id();
   inline void set_has_entry();
   inline void clear_has_entry();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::command::CommandMapEntry* entry_;
-  int command_;
+  int id_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -712,15 +712,15 @@ class SlowMenuEntry : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .rec.slow.SlowCommand.Type command = 1;
-  inline int command_size() const;
-  inline void clear_command();
-  static const int kCommandFieldNumber = 1;
-  inline ::rec::slow::SlowCommand_Type command(int index) const;
-  inline void set_command(int index, ::rec::slow::SlowCommand_Type value);
-  inline void add_command(::rec::slow::SlowCommand_Type value);
-  inline const ::google::protobuf::RepeatedField<int>& command() const;
-  inline ::google::protobuf::RepeatedField<int>* mutable_command();
+  // repeated .rec.slow.SlowCommand.Id id = 1;
+  inline int id_size() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::rec::slow::SlowCommand_Id id(int index) const;
+  inline void set_id(int index, ::rec::slow::SlowCommand_Id value);
+  inline void add_id(::rec::slow::SlowCommand_Id value);
+  inline const ::google::protobuf::RepeatedField<int>& id() const;
+  inline ::google::protobuf::RepeatedField<int>* mutable_id();
 
   // optional string submenu = 2;
   inline bool has_submenu() const;
@@ -755,7 +755,7 @@ class SlowMenuEntry : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedField<int> command_;
+  ::google::protobuf::RepeatedField<int> id_;
   ::std::string* submenu_;
   ::std::string* callout_function_;
 
@@ -973,27 +973,27 @@ class SlowMenus : public ::google::protobuf::Message {
 
 // SlowCommand
 
-// optional .rec.slow.SlowCommand.Type type = 1;
-inline bool SlowCommand::has_type() const {
+// optional .rec.slow.SlowCommand.Id id = 1;
+inline bool SlowCommand::has_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void SlowCommand::set_has_type() {
+inline void SlowCommand::set_has_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void SlowCommand::clear_has_type() {
+inline void SlowCommand::clear_has_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void SlowCommand::clear_type() {
-  type_ = 0;
-  clear_has_type();
+inline void SlowCommand::clear_id() {
+  id_ = 0;
+  clear_has_id();
 }
-inline ::rec::slow::SlowCommand_Type SlowCommand::type() const {
-  return static_cast< ::rec::slow::SlowCommand_Type >(type_);
+inline ::rec::slow::SlowCommand_Id SlowCommand::id() const {
+  return static_cast< ::rec::slow::SlowCommand_Id >(id_);
 }
-inline void SlowCommand::set_type(::rec::slow::SlowCommand_Type value) {
-  assert(::rec::slow::SlowCommand_Type_IsValid(value));
-  set_has_type();
-  type_ = value;
+inline void SlowCommand::set_id(::rec::slow::SlowCommand_Id value) {
+  assert(::rec::slow::SlowCommand_Id_IsValid(value));
+  set_has_id();
+  id_ = value;
 }
 
 // optional .rec.command.Command command = 2;
@@ -1067,27 +1067,27 @@ SlowCommands::mutable_command() {
 
 // SlowCommandMapEntry
 
-// optional .rec.slow.SlowCommand.Type command = 1;
-inline bool SlowCommandMapEntry::has_command() const {
+// optional .rec.slow.SlowCommand.Id id = 1;
+inline bool SlowCommandMapEntry::has_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void SlowCommandMapEntry::set_has_command() {
+inline void SlowCommandMapEntry::set_has_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void SlowCommandMapEntry::clear_has_command() {
+inline void SlowCommandMapEntry::clear_has_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void SlowCommandMapEntry::clear_command() {
-  command_ = 0;
-  clear_has_command();
+inline void SlowCommandMapEntry::clear_id() {
+  id_ = 0;
+  clear_has_id();
 }
-inline ::rec::slow::SlowCommand_Type SlowCommandMapEntry::command() const {
-  return static_cast< ::rec::slow::SlowCommand_Type >(command_);
+inline ::rec::slow::SlowCommand_Id SlowCommandMapEntry::id() const {
+  return static_cast< ::rec::slow::SlowCommand_Id >(id_);
 }
-inline void SlowCommandMapEntry::set_command(::rec::slow::SlowCommand_Type value) {
-  assert(::rec::slow::SlowCommand_Type_IsValid(value));
-  set_has_command();
-  command_ = value;
+inline void SlowCommandMapEntry::set_id(::rec::slow::SlowCommand_Id value) {
+  assert(::rec::slow::SlowCommand_Id_IsValid(value));
+  set_has_id();
+  id_ = value;
 }
 
 // optional .rec.command.CommandMapEntry entry = 2;
@@ -1161,31 +1161,31 @@ SlowCommandMapProto::mutable_entry() {
 
 // SlowMenuEntry
 
-// repeated .rec.slow.SlowCommand.Type command = 1;
-inline int SlowMenuEntry::command_size() const {
-  return command_.size();
+// repeated .rec.slow.SlowCommand.Id id = 1;
+inline int SlowMenuEntry::id_size() const {
+  return id_.size();
 }
-inline void SlowMenuEntry::clear_command() {
-  command_.Clear();
+inline void SlowMenuEntry::clear_id() {
+  id_.Clear();
 }
-inline ::rec::slow::SlowCommand_Type SlowMenuEntry::command(int index) const {
-  return static_cast< ::rec::slow::SlowCommand_Type >(command_.Get(index));
+inline ::rec::slow::SlowCommand_Id SlowMenuEntry::id(int index) const {
+  return static_cast< ::rec::slow::SlowCommand_Id >(id_.Get(index));
 }
-inline void SlowMenuEntry::set_command(int index, ::rec::slow::SlowCommand_Type value) {
-  assert(::rec::slow::SlowCommand_Type_IsValid(value));
-  command_.Set(index, value);
+inline void SlowMenuEntry::set_id(int index, ::rec::slow::SlowCommand_Id value) {
+  assert(::rec::slow::SlowCommand_Id_IsValid(value));
+  id_.Set(index, value);
 }
-inline void SlowMenuEntry::add_command(::rec::slow::SlowCommand_Type value) {
-  assert(::rec::slow::SlowCommand_Type_IsValid(value));
-  command_.Add(value);
+inline void SlowMenuEntry::add_id(::rec::slow::SlowCommand_Id value) {
+  assert(::rec::slow::SlowCommand_Id_IsValid(value));
+  id_.Add(value);
 }
 inline const ::google::protobuf::RepeatedField<int>&
-SlowMenuEntry::command() const {
-  return command_;
+SlowMenuEntry::id() const {
+  return id_;
 }
 inline ::google::protobuf::RepeatedField<int>*
-SlowMenuEntry::mutable_command() {
-  return &command_;
+SlowMenuEntry::mutable_id() {
+  return &id_;
 }
 
 // optional string submenu = 2;
@@ -1505,8 +1505,8 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::slow::SlowCommand_Type>() {
-  return ::rec::slow::SlowCommand_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::slow::SlowCommand_Id>() {
+  return ::rec::slow::SlowCommand_Id_descriptor();
 }
 
 }  // namespace google

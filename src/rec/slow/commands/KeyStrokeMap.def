@@ -1,304 +1,304 @@
 entry {
-  command: ABOUT_THIS_PROGRAM
+  id: ABOUT_THIS_PROGRAM
   entry {
     key: "shift + ?"
   }
 }
 entry {
-  command: ADD_LOOP_POINT
+  id: ADD_LOOP_POINT
   entry {
     key: "l"
     key: "command + l"
   }
 }
 entry {
-  command: AUDIO_PREFERENCES
+  id: AUDIO_PREFERENCES
   entry {
     key: "command + ;"
   }
 }
 entry {
-  command: CLEAR_LOOPS
+  id: CLEAR_LOOPS
   entry {
     key: "command + b"
   }
 }
 entry {
-  command: CLOSE_FILE
+  id: CLOSE_FILE
   entry {
     key: "command + w"
   }
 }
 entry {
-  command: COPY
+  id: COPY
   entry {
     key: "command + c"
   }
 }
 entry {
-  command: COPY_ALL_LOOP_POINTS
+  id: COPY_ALL_LOOP_POINTS
   entry {
     key: "command + c"
   }
 }
 entry {
-  command: CUT
+  id: CUT
   entry {
     key: "command + x"
   }
 }
 entry {
-  command: DEL
+  id: DEL
   entry {
     key: "delete"
   }
 }
 entry {
-  command: DESELECT_ALL
+  id: DESELECT_ALL
   entry {
     key: "command + d"
   }
 }
 entry {
-  command: EJECT_CDS
+  id: EJECT_CDS
   entry {
     key: "command + e"
   }
 }
 entry {
-  command: INVERT_LOOP_SELECTION
+  id: INVERT_LOOP_SELECTION
   entry {
     key: "command + i"
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "1"
     index: 5
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "2"
     index: 6
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "3"
     index: 7
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "4"
     index: 8
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "5"
     index: 9
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "6"
     index: 10
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "7"
     index: 11
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "8"
     index: 12
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "9"
     index: 13
   }
 }
 entry {
-  command: JUMP
+  id: JUMP
   entry {
     key: "0"
     index: 14
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "command + cursor left"
     index: 0
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "command + cursor right"
     index: 4
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + !"
     index: 5
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + @"
     index: 6
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + #"
     index: 7
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + $"
     index: 8
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + %"
     index: 9
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + ^"
     index: 10
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + &"
     index: 11
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + *"
     index: 12
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + ("
     index: 13
   }
 }
 entry {
-  command: JUMP_SELECTED
+  id: JUMP_SELECTED
   entry {
     key: "shift + )"
     index: 14
   }
 }
 entry {
-  command: LOOP_NEXT_SEGMENT
+  id: LOOP_NEXT_SEGMENT
   entry {
     key: "n"
   }
 }
 entry {
-  command: KEYBOARD_MAPPINGS
+  id: KEYBOARD_MAPPINGS
   entry {
     key: "command + k"
   }
 }
 entry {
-  command: MIDI_MAPPINGS
+  id: MIDI_MAPPINGS
   entry {
     key: "command + m"
   }
 }
 entry {
-  command: MODE_ADD_LOOP_POINT
+  id: MODE_ADD_LOOP_POINT
   entry {
     key: "option + a"
   }
 }
 entry {
-  command: MODE_DRAG
+  id: MODE_DRAG
   entry {
     key: "option + d"
   }
 }
 entry {
-  command: MODE_SET_TIME
+  id: MODE_SET_TIME
   entry {
     key: "option + t"
   }
 }
 entry {
-  command: MODE_ZOOM_IN
+  id: MODE_ZOOM_IN
   entry {
     key: "option + z"
   }
 }
 entry {
-  command: MUTE_VOLUME_TOGGLE
+  id: MUTE_VOLUME_TOGGLE
   entry {
     key: "."
   }
 }
 entry {
-  command: NUDGE_BACKWARD
+  id: NUDGE_BACKWARD
   entry {
     key: "cursor left"
   }
 }
 entry {
-  command: NUDGE_FORWARD
+  id: NUDGE_FORWARD
   entry {
     key: "cursor right"
   }
 }
 entry {
-  command: NUDGE_VOLUME_DOWN
+  id: NUDGE_VOLUME_DOWN
   entry {
     key: "cursor down"
   }
 }
 entry {
-  command: NUDGE_VOLUME_UP
+  id: NUDGE_VOLUME_UP
   entry {
     key: "cursor up"
   }
 }
 entry {
-  command: NUDGE_SPEED_DOWN
+  id: NUDGE_SPEED_DOWN
   entry {
     key: "_"
     key: "shift + _"
@@ -306,7 +306,7 @@ entry {
   }
 }
 entry {
-  command: NUDGE_SPEED_UP
+  id: NUDGE_SPEED_UP
   entry {
     key: "+"
     key: "shift + +"
@@ -314,196 +314,196 @@ entry {
   }
 }
 entry {
-  command: OPEN
+  id: OPEN
   entry {
     key: "command + o"
   }
 }
 entry {
-  command: OPEN_PREVIOUS_FILE
+  id: OPEN_PREVIOUS_FILE
   entry {
     key: "command + r"
   }
 }
 entry {
-  command: PASTE
+  id: PASTE
   entry {
     key: "command + v"
   }
 }
 entry {
-  command: PASTE_OVER_LOOP_POINTS
+  id: PASTE_OVER_LOOP_POINTS
   entry {
     key: "command + v"
   }
 }
 entry {
-  command: QUIT
+  id: QUIT
   entry {
     key: "command + q"
   }
 }
 entry {
-  command: REDO
+  id: REDO
   entry {
     key: "shift + command + z"
   }
 }
 entry {
-  command: SAVE_FILE
+  id: SAVE_FILE
   entry {
     key: "command + s"
   }
 }
 entry {
-  command: SAVE_FILE_SELECTION
+  id: SAVE_FILE_SELECTION
   entry {
     key: "command + shift + s"
   }
 }
 entry {
-  command: SELECT_ALL
+  id: SELECT_ALL
   entry {
     key: "command + a"
   }
 }
 entry {
-  command: SELECT_ONLY
+  id: SELECT_ONLY
   entry {
     key: "ctrl + command + cursor left"
     index: 0
   }
 }
 entry {
-  command: SELECT_ONLY
+  id: SELECT_ONLY
   entry {
     key: "ctrl + cursor left"
     index: 1
   }
 }
 entry {
-  command: SELECT_ONLY
+  id: SELECT_ONLY
   entry {
     key: "ctrl + cursor right"
     index: 3
   }
 }
 entry {
-  command: SELECT_ONLY
+  id: SELECT_ONLY
   entry {
     key: "ctrl + command + cursor right"
     index: 4
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 1"
     index: 5
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 2"
     index: 6
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 3"
     index: 7
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 4"
     index: 8
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 5"
     index: 9
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 6"
     index: 10
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 7"
     index: 11
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 8"
     index: 12
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 9"
     index: 13
   }
 }
 entry {
-  command: TOGGLE_SELECTION
+  id: TOGGLE_SELECTION
   entry {
     key: "command + 0"
     index: 14
   }
 }
 entry {
-  command: TOGGLE_START_STOP
+  id: TOGGLE_START_STOP
   entry {
     key: "spacebar"
     key: "return"
   }
 }
 entry {
-  command: TOGGLE_STRETCH_ENABLE
+  id: TOGGLE_STRETCH_ENABLE
   entry {
     key: "s"
   }
 }
 entry {
-  command: TOGGLE_WHOLE_SONG_LOOP
+  id: TOGGLE_WHOLE_SONG_LOOP
   entry {
     key: "w"
   }
 }
 entry {
-  command: UNDO
+  id: UNDO
   entry {
     key: "command + z"
   }
 }
 entry {
-  command: ZOOM_OUT
+  id: ZOOM_OUT
   entry {
     key: "command + -"
   }
 }
 entry {
-  command: ZOOM_OUT_FULL
+  id: ZOOM_OUT_FULL
   entry {
     key: "command + shift + -"
   }
 }
 entry {
-  command: ZOOM_TO_SELECTION
+  id: ZOOM_TO_SELECTION
   entry {
     key: "command  + \'"
     key: "numpad *"

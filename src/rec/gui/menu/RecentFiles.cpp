@@ -58,7 +58,8 @@ void addRecentFile(const VirtualFile& f, const Message& message) {
 
 static const int MAX_DEDUPE_COUNT = 5;
 
-vector<string> getRecentFileNames(const RecentFilesStrategy& strategy) {
+vector<string> getRecentFileNames() {
+  auto& strategy = program::getProgram()->recentFilesStrategy();
   RecentFiles rf = data::getProto<RecentFiles>();
   vector<string> results(rf.file_size());
   for (int i = 0; i < results.size(); ++i)
@@ -91,10 +92,6 @@ vector<string> getRecentFileNames(const RecentFilesStrategy& strategy) {
   }
 
   return results;
-}
-
-vector<string> getRecentFileNames() {
-  return getRecentFileNames(program::getProgram()->recentFilesStrategy());
 }
 
 bool recentFilesEmpty() {

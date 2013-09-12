@@ -4,7 +4,7 @@ import "rec/command/map/CommandMap.proto";
 package rec.slow;
 
 message SlowCommand {
-  enum Type {
+  enum Id {
     NONE = 0;
 
     ABOUT_THIS_PROGRAM = 58;
@@ -140,7 +140,7 @@ message SlowCommand {
     DESELECT_ALL = 0x1007;
   };
 
-  optional Type type = 1;
+  optional Id id = 1;
   optional rec.command.Command command = 2;
 };
 
@@ -149,7 +149,7 @@ message SlowCommands {
 };
 
 message SlowCommandMapEntry {
-  optional SlowCommand.Type command = 1;
+  optional SlowCommand.Id id = 1;
   optional rec.command.CommandMapEntry entry = 2;
 };
 
@@ -158,7 +158,7 @@ message SlowCommandMapProto {
 };
 
 message SlowMenuEntry {
-  repeated SlowCommand.Type command = 1;
+  repeated SlowCommand.Id id = 1;
   optional string submenu = 2;
   optional string callout_function = 3;
 };

@@ -225,8 +225,7 @@ PopupMenu JuceModelImpl::getMenuForIndex(int menuIndex) {
 
 void JuceModelImpl::makeRecentFiles(PopupMenu* popup) {
   PopupMenu submenu;
-  auto& strategy = program_->recentFilesStrategy();
-  vector<string> recentFiles = gui::getRecentFileNames(strategy);
+  vector<string> recentFiles = gui::getRecentFileNames();
   const command::Command& command = commandMap_[recentFiles_];
   auto& seps = command.submenu_separator();
   int nextSep = 0;

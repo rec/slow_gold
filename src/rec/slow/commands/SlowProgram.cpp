@@ -65,8 +65,8 @@ program::Menus SlowProgram::menus() const {
       menu->set_extends(slowMenu.extends());
     for (auto& slowEntry: slowMenu.entry()) {
       program::MenuEntry* menuEntry = menu->add_entry();
-      for (auto& command: slowEntry.command())
-        menuEntry->add_command(command);
+      for (auto& id: slowEntry.id())
+        menuEntry->add_command(id);
       if (slowEntry.has_submenu())
         menuEntry->set_submenu(slowEntry.submenu());
       if (slowEntry.has_callout_function())
@@ -138,7 +138,7 @@ string commandName(CommandID id) {
     mod = (id + MARGIN) % command::Command::BANK_SIZE - MARGIN;
     id -= mod;
   }
-  string name = SlowCommand_Type_Name(static_cast<SlowCommand::Type>(id));
+  string name = SlowCommand_Id_Name(static_cast<SlowCommand::Id>(id));
   if (isCompound)
     name += str(":" + String(mod));
   return name;
