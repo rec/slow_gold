@@ -37,7 +37,6 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Threads.h"
 #include "rec/slow/commands/SlowCommand.pb.h"
-#include "rec/slow/commands/SlowCommandData.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
 #include "rec/util/file/FileType.h"

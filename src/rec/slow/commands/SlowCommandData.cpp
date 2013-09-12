@@ -1,8 +1,4 @@
 #include "rec/slow/commands/SlowCommandData.h"
-
-#include "rec/command/CommandData.h"
-#include "rec/program/JuceModel.h"
-#include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/SlowCommand.pb.h"
 #include "rec/util/Binary.h"
 
@@ -10,26 +6,6 @@ namespace rec {
 namespace slow {
 
 using namespace rec::command;
-
-namespace {
-
-class SlowCommandData : public CommandData {
- public:
-  explicit SlowCommandData(Instance* i) : allCommands_(makeCommand()) {
-  }
-  const Commands& allCommands() const { return allCommands_; }
-
-  virtual void addCallbacks(command::CallbackTable* table) const {
-    addSlowCallbacks(table);
-  }
-
- private:
-  const command::Commands allCommands_;
-
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(SlowCommandData);
-};
-
-}  // namespace
 
 Commands makeCommand() {
   SlowCommands slowCommands = BINARY_PROTO(SlowCommands, SlowCommands);
@@ -41,30 +17,6 @@ Commands makeCommand() {
     command->set_command(static_cast<slow::SlowCommand::Type>(slowCommand.type()));
   }
   return commands;
-}
-
-CommandData* createSlowCommandData(Instance* i) { return new SlowCommandData(i); }
-
-program::Menus createMenus() {
-  program::Menus menus;
-  SlowMenus slowMenus = BINARY_PROTO(SlowMenus, SlowMenus);
-
-  for (auto& menu: slowMenus.menu()) {
-    program::Menu* appMenu = menus.add_menu();
-    *appMenu->mutable_description() = menu.description();
-    appMenu->set_extends(menu.extends());
-    for (auto& menuEntry: menu.entry()) {
-      program::MenuEntry* appMenuEntry = appMenu->add_entry();
-      for (auto& command: menuEntry.command())
-        appMenuEntry->add_command(command);
-      if (menuEntry.has_submenu())
-        appMenuEntry->set_submenu(menuEntry.submenu());
-      if (menuEntry.has_callout_function())
-        appMenuEntry->set_callout_function(menuEntry.callout_function());
-    }
-  }
-
-  return menus;
 }
 
 KeyStrokeCommandMapProto makeKeyBindings() {
