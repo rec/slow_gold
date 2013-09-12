@@ -79,9 +79,6 @@ class Instance {
   ptr<command::CommandRecordTable> commandRecordTable_;
   ptr<command::CommandData> commandData_;
 
-  static Instance* getInstance();
-  static const VirtualFile getInstanceFile();
-
   Listener<Enable>* enableListener();
   Listener<CommandID>* idListener();
 
@@ -91,6 +88,9 @@ class Instance {
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(Instance);
 };
+
+Instance* getInstance();
+const VirtualFile getInstanceFile();
 
 }  // namespace slow
 }  // namespace rec

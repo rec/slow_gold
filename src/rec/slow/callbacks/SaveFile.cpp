@@ -299,11 +299,11 @@ void doSaveFile(Instance* instance, bool useSelection) {
 
 
 void saveFile() {
-  doSaveFile(Instance::getInstance(), false);
+  doSaveFile(getInstance(), false);
 }
 
 void saveFileSelection() {
-  doSaveFile(Instance::getInstance(), true);
+  doSaveFile(getInstance(), true);
 }
 
 }  // namespace slow

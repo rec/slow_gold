@@ -53,7 +53,7 @@ void clearKeyboardMappings() {
                                    t_OK, t_CANCEL)) {
     // TODO
 #if 0
-    Instance* i = Instance::getInstance();
+    Instance* i = getInstance();
     command::clearKeyboardBindings(*i->commandRecordTable_,
                                    &i->applicationCommandManager_);
 #endif
@@ -87,7 +87,7 @@ void keyboardMappings() {
 }
 
 void midiMappings() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   ApplicationCommandManager* manager = program::applicationCommandManager();
   command::MidiEditor comp(manager, i->midiCommandMap_.get());
   if (displayEditorWindow(&comp, t_MIDI_EDITOR_TITLE))

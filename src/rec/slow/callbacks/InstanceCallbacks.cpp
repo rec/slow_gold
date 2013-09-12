@@ -62,11 +62,11 @@ const bool QUIT_EVEN_IF_CLEAR_FAILS = false;
 const int SELECTION_WIDTH_PORTION = 20;
 
 void aboutThisProgram() {
-  Instance::getInstance()->window_->startAboutWindow();
+  getInstance()->window_->startAboutWindow();
 }
 
 void addLoopPoint() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   widget::waveform::addLoopPointToViewport(i->file(),
                                            i->player_->getTime());
 }
@@ -78,18 +78,18 @@ void clearNavigator(VirtualFileList *vfl) {
 #endif
 
 void zoomOut() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   widget::waveform::zoomScale(i->file(), i->length(),
                               i->getSourceSampleRate(), -1.0);
 }
 
 void zoomOutFull() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   widget::waveform::zoomOutFull(i->file(), i->length());
 }
 
 void zoomToSelection() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   SampleRange range = rec::util::makeRange<SampleTime>(i->currentTime_->timeSelection());
   SampleTime pad(range.size() / SELECTION_WIDTH_PORTION);
   SampleTime len(i->length().get());
@@ -101,33 +101,33 @@ void zoomToSelection() {
 }
 
 void audioPreferences() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   i->device_->setupPage_->show(i->components_->mainPage_->panel());
 }
 
 void closeFile() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   i->currentFile_->setVirtualFile(data::noData(), false);
 }
 
 void open() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   gui::dialog::openOneAudioFile(i->currentFile_.get());
 }
 
 void quit() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   i->window_->application()->quit();
 }
 
 void toggleStartStop() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   if (!i->empty())
     i->player_->toggle();
 }
 
 void checkForUpdates() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
   DCHECK(LookAndFeel::getDefaultLookAndFeel().isUsingNativeAlertWindows());
 
@@ -159,21 +159,21 @@ void deleteRecursivelyAndQuit(const File& dir, Instance* i,
 }
 
 void clearAllSettings() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   deleteRecursivelyAndQuit(app::getAppDirectory(), i,
                            t_CONFIRM_CLEAR_ALL_SETTINGS,
                            t_CONFIRM_CLEAR_ALL_SETTINGS_FULL);
 }
 
 void clearSettingsForThisTrack() {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
   deleteRecursivelyAndQuit(file::getShadowDirectory(i->file()), i,
                            t_CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK,
                            t_CONFIRM_CLEAR_SETTINGS_FOR_THIS_TRACK_FULL);
 }
 
 void copyAllLoopPoints() {
-  Viewport vp = data::getProto<Viewport>(Instance::getInstanceFile());
+  Viewport vp = data::getProto<Viewport>(getInstanceFile());
   string clipboard = yaml::write(vp.loop_points());
   SystemClipboard::copyTextToClipboard(str(clipboard));
 }
@@ -185,7 +185,7 @@ void pasteOverLoopPoints() {
     beep();
     return;
   }
-  const VirtualFile& vf = Instance::getInstanceFile();
+  const VirtualFile& vf = getInstanceFile();
   Viewport vp = data::getProto<Viewport>(vf);
   int64 length = vp.loop_points().length();
   google::protobuf::RepeatedPtrField<LoopPoint>* lp = vp.mutable_loop_points()->

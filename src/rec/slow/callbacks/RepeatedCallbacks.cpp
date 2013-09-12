@@ -40,7 +40,7 @@ typedef void (*LoopSnapshotFunction)(LoopSnapshot*, int32);
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
 
 void loop(LoopSnapshotFunction lsf, int32 pos) {
-  Instance* instance = Instance::getInstance();
+  Instance* instance = getInstance();
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
   instance->setProto(snapshot.viewport_);
@@ -48,7 +48,7 @@ void loop(LoopSnapshotFunction lsf, int32 pos) {
 }
 
 void select(SelectorFunction selector, int32 pos) {
-  Instance* instance = Instance::getInstance();
+  Instance* instance = getInstance();
   LoopSnapshot snap(instance);
   LoopPointList* loops = snap.loops_;
   int segment = audio::getSegment(*loops, snap.instance_->time());
@@ -147,7 +147,7 @@ void loadRecentFile(int i) {
   }
 
   thread::runInNewThread("loadRecentFile", RECENT_FILE_THREAD_PRIORITY,
-                         Instance::getInstance()->currentFile_.get(),
+                         getInstance()->currentFile_.get(),
                          &CurrentFile::setVirtualFile,
                          rf.file(i).file(), true);
 }
@@ -172,7 +172,7 @@ void openPreviousFile() {
   gui::RecentFiles rf = data::getProto<gui::RecentFiles>();
   int size = rf.file_size();
   if (size) {
-    if (data::equals(rf.file(0).file(), Instance::getInstanceFile())) {
+    if (data::equals(rf.file(0).file(), getInstanceFile())) {
       if (size > 1)
         loadRecentFile(1);
     } else {
@@ -213,7 +213,7 @@ void jumpSelected(LoopSnapshot* snap, int32 pos) {
 }
 
 void nudgeWithinSegment(const LoopPointList& selection, bool inc) {
-  Instance* i = Instance::getInstance();
+  Instance* i = getInstance();
 
   SampleTime begin = selection.loop_point(0).time();
   SampleTime end = selection.length();
@@ -231,7 +231,7 @@ void nudgeWithinSegment(const LoopPointList& selection, bool inc) {
 }
 
 void nudgeTime(bool inc) {
-  LoopSnapshot s(Instance::getInstance());
+  LoopSnapshot s(getInstance());
   LoopPointList selection = audio::getSelected(*s.loops_, true);
   if (!selection.loop_point_size())
     selection = audio::getSelected(*s.loops_, false);
@@ -243,7 +243,7 @@ void nudgeTime(bool inc) {
 }
 
 void loopNextSegment() {
-  Instance* instance = Instance::getInstance();
+  Instance* instance = getInstance();
   VirtualFile vf = instance->file();
   Viewport vp(data::getProto<Viewport>(vf));
   LoopPointList* lpl = vp.mutable_loop_points();

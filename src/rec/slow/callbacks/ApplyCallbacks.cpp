@@ -26,7 +26,7 @@ using widget::waveform::Viewport;
 
 template <typename Proto>
 void executeCallback(void (*protoFunction)(Proto*)) {
-  const VirtualFile vf = Instance::getInstanceFile();
+  const VirtualFile vf = getInstanceFile();
   Proto proto(data::getProto<Proto>(vf));
   (*protoFunction)(&proto);
   data::setProto(proto, vf);
@@ -34,7 +34,7 @@ void executeCallback(void (*protoFunction)(Proto*)) {
 
 template <typename Proto>
 void executeCallbackIf(bool (*protoFunction)(Proto*)) {
-  const VirtualFile vf = Instance::getInstanceFile();
+  const VirtualFile vf = getInstanceFile();
   Proto proto(data::getProto<Proto>(vf));
   if ((*protoFunction)(&proto))
     data::setProto(proto, vf);

@@ -88,8 +88,6 @@ class IsWholeSongInstance : public IsWholeSong, public HasInstance {
   }
 };
 
-Instance* INSTANCE = nullptr;
-
 #if JUCE_WINDOWS
 
 struct FileAssociation {
@@ -130,23 +128,23 @@ class RegisterSlow : public app::RegisterInstance {
   }
 };
 
+Instance* INSTANCE = nullptr;
+
 }  // namespace
+
+Instance* getInstance() {
+  return INSTANCE;
+}
+
+const VirtualFile getInstanceFile() {
+  return INSTANCE->file();
+}
 
 Instance::Instance(app::Window* window) : window_(window) {
   CHECK_DDD(51, 2193, int64, int32);
   logDropDead();
   DCHECK(!INSTANCE);
   INSTANCE = this;
-}
-
-// static
-Instance* Instance::getInstance() {
-  return INSTANCE;
-}
-
-// static
-const VirtualFile Instance::getInstanceFile() {
-  return INSTANCE->file();
 }
 
 void Instance::init() {

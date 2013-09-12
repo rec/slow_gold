@@ -149,7 +149,7 @@ void Loops::cellDoubleClicked(int rowNumber, int, const MouseEvent&) {
   for (int i = 0; i < lpl->loop_point_size(); ++i)
     lpl->mutable_loop_point(i)->set_selected(i == rowNumber);
   setProto(viewport_);
-  slow::Instance::getInstance()->player_->start();
+  slow::getInstance()->player_->start();
 }
 
 bool Loops::selected(int r) const {
