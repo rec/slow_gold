@@ -784,9 +784,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp">
       <Filter>SlowGold\src\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\menu\MenuMaker.cpp">
-      <Filter>SlowGold\src\gui\menu</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\menu\RecentFiles.cpp">
       <Filter>SlowGold\src\gui\menu</Filter>
     </ClCompile>
@@ -830,12 +827,6 @@
       <Filter>SlowGold\src\program</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\AboutWindow.cpp">
-      <Filter>SlowGold\src\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.cpp">
-      <Filter>SlowGold\src\slow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\BasicMenuMaker.cpp">
       <Filter>SlowGold\src\slow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.cpp">
@@ -2835,9 +2826,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\LookAndFeel.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\menu\MenuMaker.h">
-      <Filter>SlowGold\src\gui\menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\menu\RecentFiles.h">
       <Filter>SlowGold\src\gui\menu</Filter>
     </ClInclude>
@@ -2905,12 +2893,6 @@
       <Filter>SlowGold\src\program</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\AboutWindow.h">
-      <Filter>SlowGold\src\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\AdvancedMenuMaker.h">
-      <Filter>SlowGold\src\slow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\BasicMenuMaker.h">
       <Filter>SlowGold\src\slow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\ApplyCallbacks.h">

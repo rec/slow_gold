@@ -17,9 +17,8 @@
 
 using namespace rec::widget::waveform;
 
-// TODO: duplicates strings in BasicMenuMaker.
-TRAN(LOOP_ENTIRE_TRACK2, "Loop Entire Track");
-TRAN(LOOP_THIS_SEGMENT2, "Loop This Segment");
+TRAN(LOOP_ENTIRE_TRACK, "Loop Entire Track");
+TRAN(LOOP_THIS_SEGMENT, "Loop This Segment");
 
 namespace rec {
 namespace slow {
@@ -106,9 +105,9 @@ void SlowProgram::commandCallout(const command::Command& command,
   DCHECK_EQ(command.command(), SlowCommand::TOGGLE_WHOLE_SONG_LOOP);
   auto lpl = data::getProto<Viewport>(instance_->file()).loop_points();
   if (lpl.loop_point_size() <= 1 or audio::getSelectionCount(lpl) == 1)
-    info->shortName = t_LOOP_ENTIRE_TRACK2;
+    info->shortName = t_LOOP_ENTIRE_TRACK;
   else
-    info->shortName = t_LOOP_THIS_SEGMENT2;
+    info->shortName = t_LOOP_THIS_SEGMENT;
 }
 
 const gui::RecentFilesStrategy& SlowProgram::recentFilesStrategy() const {
