@@ -31,7 +31,6 @@
 #include "rec/slow/FillerThread.h"
 #include "rec/slow/GuiListener.h"
 #include "rec/slow/GuiSettings.h"
-#include "rec/slow/IsWholeSong.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
@@ -68,21 +67,6 @@ static const int FILLER_PRIORITY = 4;
 using juce::TooltipWindow;
 
 namespace {
-
-class IsWholeSongInstance : public IsWholeSong, public HasInstance {
- public:
-  IsWholeSongInstance(Instance* i) : HasInstance(i) {}
-
-  virtual IsWholeSong::WholeSong isWholeSong() const {
-    if (empty())
-      return SONG_IS_ONE_SEGMENT;
-
-    LoopPointList lpl = data::getProto<Viewport>(file()).loop_points();
-    return (lpl.loop_point_size() <= 1) ? IsWholeSong::SONG_IS_ONE_SEGMENT :
-      (audio::getSelectionCount(lpl) == 1) ? IsWholeSong::ONE_SEGMENT :
-      IsWholeSong::WHOLE_SONG;
-  }
-};
 
 #if JUCE_WINDOWS
 
