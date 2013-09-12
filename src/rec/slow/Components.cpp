@@ -8,6 +8,7 @@
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/program/JuceModel.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
@@ -31,7 +32,7 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
 
 Components::Components(Instance* instance)
     : HasInstance(instance),
-      manager_(applicationCommandManager()),
+      manager_(program::applicationCommandManager()),
       timeController_(new gui::audio::TimeController),
       loops_(new gui::audio::Loops()),
       songData_(new gui::SongData),

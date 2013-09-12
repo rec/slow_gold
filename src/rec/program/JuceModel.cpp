@@ -42,10 +42,6 @@ StringArray JuceModel::getMenuBarNames() {
   return impl_->getMenuBarNames();
 }
 
-ApplicationCommandManager* JuceModel::applicationCommandManager() {
-  return impl_->applicationCommandManager();
-}
-
 PopupMenu JuceModel::getMenuForIndex(int menuIndex, const String&) {
   return impl_->getMenuForIndex(menuIndex);
 }
@@ -55,7 +51,7 @@ void JuceModel::operator()(command::ID id) {
 }
 
 void JuceModel::operator()(CommandID id) {
-  if (not applicationCommandManager()->invokeDirectly(id, false))
+  if (not invokeDirectly(id, false))
     LOG(DFATAL) << "Failed to invoke " << program_->commandName(id);
 }
 

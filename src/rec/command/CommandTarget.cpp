@@ -2,6 +2,7 @@
 
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/program/JuceModel.h"
 #include "rec/program/Program.h"
 
 namespace rec {
@@ -50,7 +51,7 @@ bool CommandTarget::perform(const InvocationInfo& invocation) {
 }
 
 void CommandTarget::operator()(ID id) {
-  if (!applicationCommandManager()->invokeDirectly(id, false))
+  if (!program::juceModel()->invokeDirectly(id, false))
     LOG(DFATAL) << "Failed to invoke " << id;
 }
 

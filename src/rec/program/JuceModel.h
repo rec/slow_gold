@@ -33,15 +33,18 @@ class JuceModel : public ApplicationCommandTarget,
   void menuItemSelected(int, int) override {}
 
   Program* program() { return program_; }
-  ApplicationCommandManager* applicationCommandManager();
 
   void operator()(command::ID) override;
   void operator()(CommandID) override;
   void operator()(Enable) override;
+  ApplicationCommandManager* applicationCommandManager() {
+    return &applicationCommandManager_;
+  }
 
  private:
   unique_ptr<JuceModelImpl> impl_;
   Program* program_;
+  ApplicationCommandManager applicationCommandManager_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(JuceModel);
 };
@@ -52,8 +55,11 @@ inline void menuItemsChanged() {
   juceModel()->menuItemsChanged();
 }
 
+inline ApplicationCommandManager* applicationCommandManager() {
+  return juceModel()->applicationCommandManager();
+}
+
 }  // namespace program
 }  // namespace rec
-
 
 #endif  // __REC_APP_PROGRAM_INSTANCE__

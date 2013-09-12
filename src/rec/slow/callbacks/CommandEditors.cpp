@@ -7,6 +7,7 @@
 #include "rec/command/map/KeyStrokeEditor.h"
 #include "rec/command/map/MidiEditor.h"
 #include "rec/gui/Dialog.h"
+#include "rec/program/JuceModel.h"
 #include "rec/slow/Instance.h"
 
 TRAN(CLEAR_KEYBOARD_MAPPINGS_TITLE, "Clear Keyboard Mappings.");
@@ -72,8 +73,7 @@ using namespace rec::data;
 using namespace rec::command;
 
 void keyboardMappings() {
-  Instance* i = Instance::getInstance();
-  ApplicationCommandManager* manager = i->applicationCommandManager();
+  ApplicationCommandManager* manager = program::applicationCommandManager();
   CommandMap commandMap;
   commandMap.addCommands(getKeyboardBindings());
 
@@ -88,7 +88,7 @@ void keyboardMappings() {
 
 void midiMappings() {
   Instance* i = Instance::getInstance();
-  ApplicationCommandManager* manager = i->applicationCommandManager();
+  ApplicationCommandManager* manager = program::applicationCommandManager();
   command::MidiEditor comp(manager, i->midiCommandMap_.get());
   if (displayEditorWindow(&comp, t_MIDI_EDITOR_TITLE))
     data::setProto(i->midiCommandMap_->getProto(), data::global());

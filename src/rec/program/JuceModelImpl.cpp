@@ -85,7 +85,7 @@ void JuceModelImpl::addSubMenu(PopupMenu* popup,
 }
 
 void JuceModelImpl::addSingleCommand(PopupMenu* popup, CommandID id) {
-  popup->addCommandItem(&applicationCommandManager_, id);
+  popup->addCommandItem(juceModel_->applicationCommandManager(), id);
 }
 
 void JuceModelImpl::addCommand(PopupMenu* popup, CommandID id, bool hasIndex) {

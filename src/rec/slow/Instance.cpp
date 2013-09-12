@@ -173,26 +173,23 @@ void Instance::init() {
   mouseListener_.reset(new MouseListener(this));
   guiListener_.reset(new GuiListener(this));
   fillerThread_.reset(new FillerThread(this));
-  midiCommandMap_.reset(new command::MidiCommandMap(
-      applicationCommandManager()));
+  midiCommandMap_.reset(new command::MidiCommandMap);
   threads_.reset(new Threads(this));
 
   device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
 
-  applicationCommandManager()->setFirstCommandTarget(
-      applicationCommandTarget());
-  window_->addKeyListener(applicationCommandManager()->getKeyMappings());
+  program::applicationCommandManager()->setFirstCommandTarget(
+      juceModel_.get());
+  window_->addKeyListener(program::applicationCommandManager()->getKeyMappings());
 
   components_->init();
 
   fillerThread_->setPriority(FILLER_PRIORITY);
 
-  command::fillCommandRecordTable(*commandData_, commandRecordTable_.get());
-  applicationCommandManager()->registerAllCommandsForTarget(
-      applicationCommandTarget());
-  command::loadKeyboardBindings(applicationCommandManager());
-  window_->getAppleMenu()->addCommandItem(applicationCommandManager(),
+  program::applicationCommandManager()->registerAllCommandsForTarget(juceModel_.get());
+  command::loadKeyboardBindings(program::applicationCommandManager());
+  window_->getAppleMenu()->addCommandItem(program::applicationCommandManager(),
                                           slow::SlowCommand::ABOUT_THIS_PROGRAM);
 
   player_->addListener(components_->transportController_.get());
@@ -315,14 +312,6 @@ void Instance::reset() {
 
 SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
-}
-
-ApplicationCommandTarget* Instance::applicationCommandTarget() {
-  return juceModel_.get();
-}
-
-ApplicationCommandManager* Instance::applicationCommandManager() {
-  return juceModel_->applicationCommandManager();
 }
 
 Listener<Enable>* Instance::enableListener() {

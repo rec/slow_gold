@@ -3,6 +3,7 @@
 #include "rec/base/ArraySize.h"
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
+#include "rec/program/JuceModel.h"
 #include "rec/slow/AdvancedMenuMaker.h"
 #include "rec/slow/BasicMenuMaker.h"
 #include "rec/slow/Instance.h"
@@ -49,7 +50,7 @@ void MenuMaker::addFull(command::ID id,
     info->flags = flags;
 
   info->setActive(enable == ENABLE);
-  (m ? m : &menu_)->addCommandItem(applicationCommandManager(), id);
+  (m ? m : &menu_)->addCommandItem(program::applicationCommandManager(), id);
 }
 
 void MenuMaker::addBasic(command::ID commandName) {

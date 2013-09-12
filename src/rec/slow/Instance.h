@@ -84,14 +84,11 @@ class Instance {
   static Instance* getInstance();
   static const VirtualFile getInstanceFile();
 
-  ApplicationCommandTarget* applicationCommandTarget();
-  ApplicationCommandManager* applicationCommandManager();
   Listener<Enable>* enableListener();
   Listener<command::ID>* idListener();
 
  private:
   ptr<command::CommandTarget> commandTarget_;
-  ApplicationCommandManager applicationCommandManager_;
   unique_ptr<SlowProgram> slowProgram_;
   unique_ptr<program::JuceModel> juceModel_;
 

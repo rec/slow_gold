@@ -23,12 +23,6 @@ class HasInstance {
   command::CommandRecordTable* commandRecordTable() {
     return instance_->commandRecordTable_.get();
   }
-  ApplicationCommandTarget* applicationCommandTarget() {
-    return instance_->applicationCommandTarget();
-  }
-  ApplicationCommandManager* applicationCommandManager() {
-    return instance_->applicationCommandManager();
-  }
   command::CommandData* commandData() {
     return instance_->commandData_.get();
   }

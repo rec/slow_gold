@@ -20,9 +20,6 @@ class JuceModelImpl {
 
   Program* program() { return program_; }
   JuceModel* model() { return juceModel_; }
-  ApplicationCommandManager* applicationCommandManager() {
-    return &applicationCommandManager_;
-  }
 
   StringArray getMenuBarNames();
   const CommandMap& commandMap() const { return commandMap_; }
@@ -48,7 +45,6 @@ class JuceModelImpl {
   const MenuMap menuMap_;
   const MenuBarMap menuBarMap_;
   DataListeners dataListeners_;
-  ApplicationCommandManager applicationCommandManager_;
   CommandID recentFiles_;
   CommandID recentFilesEnd_;
 
