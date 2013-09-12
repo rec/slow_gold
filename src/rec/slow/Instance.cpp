@@ -160,8 +160,6 @@ void Instance::init() {
 
   player_->init();
   components_.reset(new Components(this));
-  commandRecordTable_.reset(new command::CommandRecordTable);
-  commandData_.reset(slow::createSlowCommandData(this));
 
   currentTime_.reset(new CurrentTime(this));
   bufferFiller_.reset(new BufferFiller);

@@ -10,7 +10,6 @@
 namespace rec {
 
 namespace audio { class Device; }
-namespace command { class CommandData; }
 namespace command { class CommandRecordTable; }
 namespace command { class MidiCommandMap; }
 namespace audio { namespace source { class Player; }}
@@ -75,9 +74,6 @@ class Instance {
   thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
-
-  ptr<command::CommandRecordTable> commandRecordTable_;
-  ptr<command::CommandData> commandData_;
 
   Listener<Enable>* enableListener();
   Listener<CommandID>* idListener();
