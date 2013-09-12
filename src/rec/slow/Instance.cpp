@@ -279,6 +279,8 @@ void Instance::setProto(const Message& m, Undoable undoable) {
    juceModel_->menuItemsChanged();
 }
 
+static const int FILLER_THREAD_STOP_TIME = 60000;
+
 void Instance::reset() {
   fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
   bufferFiller_->reset();

@@ -25,7 +25,6 @@ class CurrentFile;
 class CurrentTime;
 class FillerThread;
 class GuiListener;
-class Menus;
 class MouseListener;
 class SlowWindow;
 class Threads;
@@ -53,8 +52,6 @@ class Instance {
   SampleRate getSourceSampleRate() const;
   void setProto(const Message&, Undoable undoable = CAN_UNDO);
   void reset();
-
-  static const int FILLER_THREAD_STOP_TIME = 60000;
 
   app::Window* window_;
   CriticalSection lock_;
