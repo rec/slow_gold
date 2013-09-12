@@ -12,8 +12,7 @@ class GuiSettings;
 
 class GuiListener : public GlobalDataListener<GuiSettings>,
                     public Listener<gui::audio::CommandBarCommand>,
-                    public Listener<gui::audio::TransportCommand>,
-                    public Broadcaster<CommandID> {
+                    public Listener<gui::audio::TransportCommand> {
  public:
   GuiListener();
   virtual ~GuiListener() {}

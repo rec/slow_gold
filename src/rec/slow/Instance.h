@@ -71,9 +71,6 @@ class Instance {
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;
 
-  Listener<Enable>* enableListener();
-  Listener<CommandID>* idListener();
-
  private:
   unique_ptr<SlowProgram> slowProgram_;
   unique_ptr<program::JuceModel> juceModel_;

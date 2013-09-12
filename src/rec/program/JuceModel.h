@@ -13,8 +13,7 @@ class Program;
 
 class JuceModel : public ApplicationCommandTarget,
                   public MenuBarModel,
-                  public Listener<Enable>,
-                  public Listener<CommandID> {
+                  public Listener<Enable> {
  public:
   JuceModel(Program* p);
   void init();
@@ -32,8 +31,9 @@ class JuceModel : public ApplicationCommandTarget,
 
   Program* program() { return program_; }
 
-  void operator()(CommandID) override;
+  void invokeAndCheck(CommandID);
   void operator()(Enable) override;
+
   ApplicationCommandManager* applicationCommandManager() {
     return &applicationCommandManager_;
   }

@@ -181,7 +181,6 @@ void Instance::init() {
 
   components_->transportController_->addListener(guiListener_.get());
   components_->commandBar_->addListener(guiListener_.get());
-  guiListener_->addListener(idListener());
 
   player_->timer()->addListener(components_->timeController_.get());
   player_->timer()->addListener(waveform->timeCursor());
@@ -192,7 +191,7 @@ void Instance::init() {
   player_->setSource(makeSource());
   components_->waveform_->setAudioThumbnail(bufferFiller_->thumbnail());
 
-  DialogLocker::getDisableBroadcaster()->addListener(enableListener());
+  DialogLocker::getDisableBroadcaster()->addListener(juceModel_.get());
   DialogLocker::getDisableBroadcaster()->addListener(window_->application());
 
 #ifdef DRAW_LOOP_POINTS_IS_ONE_CLICK
@@ -288,14 +287,6 @@ void Instance::reset() {
 
 SampleRate Instance::getSourceSampleRate() const {
   return data::getProto<Viewport>(file()).loop_points().sample_rate();
-}
-
-Listener<Enable>* Instance::enableListener() {
-  return juceModel_.get();
-}
-
-Listener<CommandID>* Instance::idListener() {
-  return juceModel_.get();
 }
 
 }  // namespace slow
