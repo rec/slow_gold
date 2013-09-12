@@ -6,10 +6,10 @@ namespace command {
 
 using namespace juce;
 
-bool CommandMap::addKey(const string& key, ID command) {
-  static const ID RECENT = slow::SlowCommand::RECENT_FILES;
-  static const ID BEGIN(RECENT, 11);
-  static const ID END(RECENT, 100);
+bool CommandMap::addKey(const string& key, CommandID command) {
+  static const CommandID RECENT = slow::SlowCommand::RECENT_FILES;
+  static const CommandID BEGIN = RECENT + 11;
+  static const CommandID END = RECENT + 100;
 
   if (command >= BEGIN && command < END) {
     DCHECK_EQ(command, 0);
@@ -29,7 +29,7 @@ void CommandMap::addCommands(const CommandMapProto& commands) {
   toCommand_.clear();
   toKeys_.clear();
   for (auto& entry: commands.entry()) {
-    ID command = entry.command();
+    CommandID command = entry.command();
     for (auto& key: entry.key())
       add(key, command);
   }
@@ -43,7 +43,7 @@ void CommandMap::dump() const {
   }
 }
 
-bool CommandMap::add(const string& key, ID command) {
+bool CommandMap::add(const string& key, CommandID command) {
   if (!addKey(key, command))
     return false;
 
@@ -51,7 +51,7 @@ bool CommandMap::add(const string& key, ID command) {
   return true;
 }
 
-bool CommandMap::addAtIndex(const string& key, ID command, int index) {
+bool CommandMap::addAtIndex(const string& key, CommandID command, int index) {
   if (index < 0)
     add(key, command);
 
@@ -68,8 +68,11 @@ const CommandMapProto CommandMap::getProto() const {
   for (i = toKeys_.begin(); i != toKeys_.end(); ++i) {
     if (!i->second.empty()) {
       CommandMapEntry* entry = commands.add_entry();
-      entry->set_command(i->first.get());
-      entry->set_index(i->first.index());
+      CommandID id = i->first;
+      CommandID index = id % Command::BANK_SIZE;
+      
+      entry->set_command(id - index);
+      entry->set_index(index);
       KeyVector::const_iterator j;
       for (j = i->second.begin(); j != i->second.end(); ++j)
         entry->add_key(*j);
@@ -81,22 +84,22 @@ const CommandMapProto CommandMap::getProto() const {
 
 bool CommandMap::invokeAsync(const string& key,
                              ApplicationCommandManager* acm) const {
-  ID id = getCommand(key);
+  CommandID id = getCommand(key);
   return (id != slow::SlowCommand::NONE) && acm->invokeDirectly(id, true);
 }
 
-ID CommandMap::getCommand(const string& key) const {
+CommandID CommandMap::getCommand(const string& key) const {
   KeyToCommand::const_iterator i = toCommand_.find(key);
   return (i == toCommand_.end()) ? slow::SlowCommand::NONE : i->second;
 }
 
-const CommandMap::KeyVector& CommandMap::getKeys(ID c) const {
+const CommandMap::KeyVector& CommandMap::getKeys(CommandID c) const {
   CommandToKeys::const_iterator i = toKeys_.find(c);
   static const KeyVector empty;
   return (i != toKeys_.end()) ? i->second : empty;
 }
 
-void CommandMap::removeCommand(ID c, uint keyIndex) {
+void CommandMap::removeCommand(CommandID c, uint keyIndex) {
   CommandToKeys::iterator i = toKeys_.find(c);
   if (i == toKeys_.end()) {
     LOG(DFATAL) << "Couldn't remove message";
@@ -109,7 +112,7 @@ void CommandMap::removeCommand(ID c, uint keyIndex) {
 }
 
 void CommandMap::removeKey(const string& key) {
-  if (ID c = getCommand(key)) {
+  if (CommandID c = getCommand(key)) {
     toCommand_.erase(key);
     CommandToKeys::iterator i = toKeys_.find(c);
     if (i == toKeys_.end()) {

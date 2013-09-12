@@ -39,13 +39,13 @@ void GuiListener::operator()(TransportCommand command) {
     broadcast(SlowCommand::TOGGLE_START_STOP);
 
   else if (command == JUMP_TO_FIRST)
-    broadcast(ID(SlowCommand::JUMP, ID::FIRST));
+    broadcast(SlowCommand::JUMP + CommandIDs::FIRST);
 
   else if (command == JUMP_TO_PREVIOUS)
-    broadcast(ID(SlowCommand::JUMP, ID::PREVIOUS));
+    broadcast(SlowCommand::JUMP + CommandIDs::PREVIOUS);
 
   else if (command == JUMP_TO_NEXT)
-    broadcast(ID(SlowCommand::JUMP, ID::NEXT));
+    broadcast(SlowCommand::JUMP + CommandIDs::NEXT);
 }
 
 void GuiListener::operator()(CommandBarCommand command) {

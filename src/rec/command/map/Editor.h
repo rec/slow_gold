@@ -30,16 +30,16 @@ class Editor : public Component,
   virtual const String name() const = 0;
   virtual bool isValid(const string&) const = 0;
   virtual const String getDescription(const string&) const = 0;
-  virtual void removeKeyAtIndex(ID, int keyNum);
+  virtual void removeKeyAtIndex(CommandID, int keyNum);
   virtual void removeKey(const string&);
-  virtual void addKey(ID, const string&, int keyIndex);
+  virtual void addKey(CommandID, const string&, int keyIndex);
 
   typedef juce::Array<string> KeyArray;
-  virtual KeyArray getKeys(ID);
+  virtual KeyArray getKeys(CommandID);
   virtual const String getWindowTitle() const = 0;
   virtual const String getKeyMessage(const string&);
 
-  virtual ID getCommand(const string&);
+  virtual CommandID getCommand(const string&);
   void addChildren(MapItemComponent*);
 
   void addButton(EditButton* b);
@@ -91,10 +91,10 @@ class Editor : public Component,
   ptr<juce::AlertWindow> entryWindow_;
 
  private:
-  typedef std::map<ID, MapItem*> MapItemMap;
+  typedef std::map<CommandID, MapItem*> MapItemMap;
 
   void fillTopLevelItem();
-  bool commandHasFlags(ID, int flags) const;
+  bool commandHasFlags(CommandID, int flags) const;
 
   ApplicationCommandManager* commandManager_;
   CommandMap* commandMap_;

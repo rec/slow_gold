@@ -6,7 +6,6 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/CallbackTable.h"
-#include "rec/command/ID.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/slow/commands/SlowCommand.pb.h"
@@ -42,7 +41,7 @@ void executeCallbackIf(bool (*protoFunction)(Proto*)) {
 }
 
 template <typename Proto>
-void addApplyCallback(CallbackTable* c, command::ID id,
+void addApplyCallback(CallbackTable* c, CommandID id,
                       void (*protoFunction)(Proto*)) {
   c->addCallback(id,
                  thread::functionCB(&executeCallback<Proto>,
@@ -50,7 +49,7 @@ void addApplyCallback(CallbackTable* c, command::ID id,
 }
 
 template <typename Proto>
-void addApplyCallback(CallbackTable* c, command::ID id,
+void addApplyCallback(CallbackTable* c, CommandID id,
                       bool (*protoFunction)(Proto*)) {
   c->addCallback(id,
                  thread::functionCB(&executeCallbackIf<Proto>,

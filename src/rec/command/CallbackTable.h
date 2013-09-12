@@ -1,7 +1,6 @@
 #ifndef __REC_COMMAND_CALLBACKTABLE__
 #define __REC_COMMAND_CALLBACKTABLE__
 
-#include "rec/command/ID.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
@@ -12,7 +11,7 @@ class CallbackTable {
   CallbackTable() {}
   virtual ~CallbackTable() {}
 
-  virtual void addCallback(ID, unique_ptr<Callback>) = 0;
+  virtual void addCallback(CommandID, unique_ptr<Callback>) = 0;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CallbackTable);

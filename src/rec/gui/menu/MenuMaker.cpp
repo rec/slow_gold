@@ -25,7 +25,7 @@ const PopupMenu MenuMaker::makeMenu(const String& name) {
   return menu_;
 }
 
-void MenuMaker::addFull(command::ID id,
+void MenuMaker::addFull(CommandID id,
                         const String& name,
                         Enable enable,
                         PopupMenu* m,
@@ -53,7 +53,7 @@ void MenuMaker::addFull(command::ID id,
   (m ? m : &menu_)->addCommandItem(program::applicationCommandManager(), id);
 }
 
-void MenuMaker::addBasic(command::ID commandName) {
+void MenuMaker::addBasic(CommandID commandName) {
   addFull(commandName, String::empty, ENABLE, nullptr, -1);
 }
 
@@ -62,11 +62,11 @@ void MenuMaker::addRepeat(CommandID command,
                           const String& name,
                           PopupMenu* m,
                           int flags) {
-  addFull(command::ID(command, slot), name, ENABLE, m, flags);
+  addFull(command + slot, name, ENABLE, m, flags);
 }
 
 void MenuMaker::addSimpleRepeat(CommandID command, int slot, PopupMenu* m) {
-  addFull(command::ID(command, slot), "",
+  addFull(command + slot, "",
           empty_ ? DISABLE : ENABLE, m, DEFAULT_FLAGS);  // Was 0!!
 }
 
@@ -89,11 +89,11 @@ void MenuMaker::addBank(CommandID command, const String& name) {
                         loop_points().loop_point_size(), lastSlot);
   }
 
-  lastSlot += command::ID::LAST + 1;
+  lastSlot += CommandIDs::LAST + 1;
 
   PopupMenu sub;
-  for (int i = command::ID::FIRST; i < lastSlot; ++i) {
-    if (i == command::ID::LAST + 1)
+  for (int i = CommandIDs::FIRST; i < lastSlot; ++i) {
+    if (i == CommandIDs::LAST + 1)
       sub.addSeparator();
     addSimpleRepeat(command, i, &sub);
   }

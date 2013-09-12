@@ -10,7 +10,7 @@ void CommandRecord::fillInfo() {
   	return;
   }
 
-  ID id = info_.commandID;
+  CommandID id = info_.commandID;
   if (!callback_)
     LOG(DFATAL) << "Empty callback " << id;
 
@@ -31,9 +31,8 @@ void CommandRecord::fillInfo() {
     // TODO: fix this - and why isn't needed for the language menu?
     String name = Trans(desc.menu(0));
     if (info_.shortName.length()) {
-      CommandID t = id.get();
-      if (t == slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP ||
-          t == slow::SlowCommand::RECENT_FILES) {
+      if (id == slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP ||
+          id == slow::SlowCommand::RECENT_FILES) {
         name = info_.shortName;
       }
     }

@@ -12,7 +12,7 @@ void ProgramBase::addCallback(CommandID command, unique_ptr<Callback> callback) 
   if (loc == callbackMap_.end())
     callbackMap_.insert(loc, std::make_pair(command, std::move(callback)));
   else
-    LOG(DFATAL) << "Duplicate command ID " << commandName(command);
+    LOG(DFATAL) << "Duplicate command CommandID " << commandName(command);
 }
 
 Callback* ProgramBase::getCallback(CommandID command) const {

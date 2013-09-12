@@ -17,11 +17,11 @@ class CommandRecordTable : public CallbackTable {
   CommandRecordTable() {}
   ~CommandRecordTable();
 
-  void addCallback(ID, unique_ptr<Callback>) override;
+  void addCallback(CommandID, unique_ptr<Callback>) override;
 
-  CommandRecord* find(ID id) { return locate(id, true, false); }
-  CommandRecord* create(ID id) { return locate(id, false, true); }
-  CommandRecord* findOrCreate(ID id) { return locate(id, false, false); }
+  CommandRecord* find(CommandID id) { return locate(id, true, false); }
+  CommandRecord* create(CommandID id) { return locate(id, false, true); }
+  CommandRecord* findOrCreate(CommandID id) { return locate(id, false, false); }
 
   const Commands getCommands() const;
 
@@ -29,11 +29,11 @@ class CommandRecordTable : public CallbackTable {
   void getAllCommands(juce::Array<CommandID>*) const;
 
   // Used for new-style callbacks.
-  typedef std::map<ID, CommandRecord*> Table;
+  typedef std::map<CommandID, CommandRecord*> Table;
   Table* table() { return &table_; }
 
  private:
-  CommandRecord* locate(ID id, bool mustExist, bool mustCreate);
+  CommandRecord* locate(CommandID id, bool mustExist, bool mustCreate);
 
   CriticalSection lock_;
   Table table_;

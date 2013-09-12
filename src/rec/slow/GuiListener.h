@@ -2,7 +2,6 @@
 #define __REC_SLOW_GUILISTENER__
 
 #include "rec/data/DataListener.h"
-#include "rec/command/ID.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/HasInstance.h"
@@ -15,7 +14,7 @@ class GuiSettings;
 class GuiListener : public GlobalDataListener<GuiSettings>,
                     public Listener<gui::audio::CommandBarCommand>,
                     public Listener<gui::audio::TransportCommand>,
-                    public Broadcaster<command::ID>,
+                    public Broadcaster<CommandID>,
                     public HasInstance {
  public:
   explicit GuiListener(Instance* i);

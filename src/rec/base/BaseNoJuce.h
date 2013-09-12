@@ -29,11 +29,15 @@ using util::file::VirtualFile;
 using util::file::VirtualFileList;
 
 enum Endianness { LITTLE_END, BIG_END };
-enum Orientation {HORIZONTAL, VERTICAL};
+enum Orientation { HORIZONTAL, VERTICAL};
 enum Undoable { CANT_UNDO, CAN_UNDO };
 enum Scope { FILE_SCOPE, GLOBAL_SCOPE };
 enum Enable { DISABLE, ENABLE };
 const int SOCKET_TIMEOUT_MS = 2000;
+
+enum CommandIDs {
+  FIRST, PREVIOUS, CURRENT, NEXT, LAST
+};
 
 inline Scope scope(bool global) { return global ? GLOBAL_SCOPE : FILE_SCOPE; }
 

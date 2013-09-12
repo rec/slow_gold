@@ -5,7 +5,6 @@
 #include "rec/audio/Audio.h"
 #include "rec/base/SampleRate.h"
 #include "rec/base/SampleTime.h"
-#include "rec/command/ID.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
@@ -85,7 +84,7 @@ class Instance {
   static const VirtualFile getInstanceFile();
 
   Listener<Enable>* enableListener();
-  Listener<command::ID>* idListener();
+  Listener<CommandID>* idListener();
 
  private:
   ptr<command::CommandTarget> commandTarget_;

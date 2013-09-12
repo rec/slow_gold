@@ -12,7 +12,7 @@ TRAN(REMOVE_COMMAND_MAPPING, "Remove this command mapping");
 namespace rec {
 namespace command {
 
-EditButton::EditButton(Editor* editor, ID id, const String& keyName, int keyNum)
+EditButton::EditButton(Editor* editor, CommandID id, const String& keyName, int keyNum)
     : juce::Button(keyName),
       id_(id),
       keyNum_(keyNum),

@@ -13,7 +13,7 @@ CommandRecordTable::~CommandRecordTable() {
   stl::deleteMapPointers(&table_);
 }
 
-CommandRecord* CommandRecordTable::locate(ID id, bool mustExist,
+CommandRecord* CommandRecordTable::locate(CommandID id, bool mustExist,
                                           bool mustCreate) {
   Lock l(lock_);
   Table::iterator i = table_.find(id);
@@ -51,7 +51,7 @@ void CommandRecordTable::getAllCommands(juce::Array<CommandID>* cmds) const {
   }
 }
 
-void CommandRecordTable::addCallback(ID id, unique_ptr<Callback> cb) {
+void CommandRecordTable::addCallback(CommandID id, unique_ptr<Callback> cb) {
   Lock l(lock_);
   create(id)->callback_.reset(cb.release());
 }

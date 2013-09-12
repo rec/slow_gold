@@ -3,7 +3,6 @@
 
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
-#include "rec/command/ID.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/LoopSnapshot.h"
 #include "rec/util/LoopPoint.h"
@@ -15,12 +14,12 @@ namespace slow {
 using command::CallbackTable;
 
 template <typename Function>
-void addCallback(CallbackTable* c, command::ID id, Function f) {
+void addCallback(CallbackTable* c, CommandID id, Function f) {
   c->addCallback(id, thread::functionCB(f));
 }
 
 template <typename Function, typename X>
-void addCallback(CallbackTable* c, command::ID id, Function f, X x) {
+void addCallback(CallbackTable* c, CommandID id, Function f, X x) {
   c->addCallback(id, thread::functionCB(f, x));
 }
 

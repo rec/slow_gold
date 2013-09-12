@@ -4,7 +4,6 @@
 // CommandTarget is the implementation of Juce's ApplicationCommandTarget for
 // this application.
 
-#include "rec/command/ID.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/Listener.h"
 
@@ -13,7 +12,7 @@ namespace command {
 
 class CommandTarget : public slow::HasInstance,
                       public ApplicationCommandTarget,
-                      public Listener<ID>,
+                      public Listener<CommandID>,
                       public Listener<Enable> {
  public:
   CommandTarget(slow::Instance* i) : slow::HasInstance(i), enable_(ENABLE) {}
@@ -23,7 +22,7 @@ class CommandTarget : public slow::HasInstance,
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
   virtual bool perform(const InvocationInfo&);
 
-  virtual void operator()(ID);
+  virtual void operator()(CommandID);
   virtual void operator()(Enable);
 
   CriticalSection lock_;

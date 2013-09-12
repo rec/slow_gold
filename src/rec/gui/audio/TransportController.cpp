@@ -1,7 +1,6 @@
 #include "rec/gui/audio/TransportController.h"
 
 #include "rec/command/CommandRecord.h"
-#include "rec/command/ID.h"
 #include "rec/gui/IconButton.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/slow/commands/SlowCommand.pb.h"

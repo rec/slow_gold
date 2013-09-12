@@ -4,7 +4,6 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/CommandItemSetter.h"
-#include "rec/command/ID.h"
 #include "rec/util/Listener.h"
 
 namespace rec {
@@ -12,7 +11,7 @@ namespace command {
 
 class CommandRecord {
  public:
-  explicit CommandRecord(ID id) : info_(id) {}
+  explicit CommandRecord(CommandID id) : info_(id) {}
 
   ApplicationCommandInfo* getInfo() { return &info_; }
   void fillInfo();

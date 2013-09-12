@@ -117,7 +117,7 @@ const gui::RecentFilesStrategy& SlowProgram::recentFilesStrategy() const {
 
 void SlowProgram::registerAllCallbacks() {
   command::CommandRecordTable crt;
-  slow::addSlowCallbacks(&crt, true);
+  slow::addSlowCallbacks(&crt);
   for (auto& i: *crt.table())
     addCallback(i.first, std::move(i.second->callback_));
 }

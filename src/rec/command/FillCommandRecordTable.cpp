@@ -3,7 +3,6 @@
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandRecord.h"
 #include "rec/command/CommandRecordTable.h"
-#include "rec/command/ID.h"
 #include "rec/command/TickedDataSetter.h"
 #include "rec/data/Data.h"
 #include "rec/program/JuceModel.h"
@@ -51,9 +50,9 @@ Command* indexCommand(const Command& cmd, int index) {
 
 void fillRepeatingCommand(CommandRecordTable* table, const Command& cmd) {
   int len = cmd.desc().menu_size();
-  ID begin(cmd.command());
-  ID end = begin + len;
-  for (ID i = begin; i != end; ++i) {
+  CommandID begin(cmd.command());
+  CommandID end = begin + len;
+  for (CommandID i = begin; i != end; ++i) {
     if (CommandRecord* cr = table->find(i)) {
       DCHECK(!cr->command_) << cr->command_->ShortDebugString();
       cr->command_.reset(indexCommand(cmd, i - begin));

@@ -2,7 +2,6 @@
 
 #include "rec/program/MakeMaps.h"
 
-#include "rec/command/ID.h"
 #include "rec/program/Program.h"
 
 namespace rec {
@@ -25,7 +24,7 @@ CommandMap makeCommandMap(const Program& program) {
   for (auto& entry: map.entry()) {
     CommandID id = entry.command();
     if (entry.has_index())
-      id += entry.index() - command::ID::FIRST;
+      id += entry.index() - CommandIDs::FIRST;
     try {
       *commandMap.at(id).mutable_keypress() = entry.key();
     } catch (const std::out_of_range&) {

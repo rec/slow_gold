@@ -5,7 +5,6 @@
 
 #include "rec/command/CommandRecord.h"
 #include "rec/command/map/CommandMap.pb.h"
-#include "rec/command/ID.h"
 #include "rec/util/Listener.h"
 
 namespace rec {
@@ -21,23 +20,23 @@ class CommandMap : public ChangeBroadcaster {
 
   const CommandMapProto getProto() const;
 
-  ID getCommand(const string&) const;
-  const KeyVector& getKeys(ID) const;
+  CommandID getCommand(const string&) const;
+  const KeyVector& getKeys(CommandID) const;
 
   bool invokeAsync(const string&, ApplicationCommandManager*) const;
 
-  void removeCommand(ID command, uint keyIndex);
+  void removeCommand(CommandID command, uint keyIndex);
   void removeKey(const string& key);
 
-  bool addAtIndex(const string& key, ID command, int index);
+  bool addAtIndex(const string& key, CommandID command, int index);
 
  private:
-  bool add(const string& key, ID command);
-  bool addKey(const string& key, ID command);
+  bool add(const string& key, CommandID command);
+  bool addKey(const string& key, CommandID command);
   void dump() const;
 
-  typedef std::map<string, ID> KeyToCommand;
-  typedef std::map<ID, KeyVector> CommandToKeys;
+  typedef std::map<string, CommandID> KeyToCommand;
+  typedef std::map<CommandID, KeyVector> CommandToKeys;
 
   KeyToCommand toCommand_;
   CommandToKeys toKeys_;

@@ -318,7 +318,7 @@ Listener<Enable>* Instance::enableListener() {
   return juceModel_.get();
 }
 
-Listener<command::ID>* Instance::idListener() {
+Listener<CommandID>* Instance::idListener() {
   return juceModel_.get();
 }
 

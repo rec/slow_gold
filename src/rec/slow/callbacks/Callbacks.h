@@ -12,7 +12,6 @@ namespace slow {
 static const int REPEATED_COUNT = 10;
 
 void addSlowCallbacks(command::CallbackTable*,
-                      bool newStyle = false,
                       int repeat = REPEATED_COUNT);
 
 }  // namespace slow

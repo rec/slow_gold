@@ -3,7 +3,6 @@
 
 #include <unordered_map>
 
-#include "rec/command/ID.h"
 #include "rec/util/Listener.h"
 
 namespace rec {
@@ -15,7 +14,6 @@ class Program;
 class JuceModel : public ApplicationCommandTarget,
                   public MenuBarModel,
                   public Listener<Enable>,
-                  public Listener<command::ID>,
                   public Listener<CommandID> {
  public:
   JuceModel(Program* p);
@@ -34,7 +32,6 @@ class JuceModel : public ApplicationCommandTarget,
 
   Program* program() { return program_; }
 
-  void operator()(command::ID) override;
   void operator()(CommandID) override;
   void operator()(Enable) override;
   ApplicationCommandManager* applicationCommandManager() {

@@ -16,7 +16,7 @@ void CommandTarget::getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
   Lock l(lock_);
   CommandRecord* cr = commandRecordTable()->find(id);
   if (!cr) {
-    LOG(DFATAL) << "Couldn't get command info for id " << ID(id);
+    LOG(DFATAL) << "Couldn't get command info for id " << id;
     return;
   }
   info = *(cr->getInfo());
@@ -32,7 +32,7 @@ bool CommandTarget::perform(const InvocationInfo& invocation) {
   if (enable_ == DISABLE)
     return true;
 
-  ID id = invocation.commandID;
+  CommandID id = invocation.commandID;
   program::getProgram()->beforeCommand(id);
 
   CommandRecord* cr = commandRecordTable()->find(id);
@@ -50,7 +50,7 @@ bool CommandTarget::perform(const InvocationInfo& invocation) {
   return success;
 }
 
-void CommandTarget::operator()(ID id) {
+void CommandTarget::operator()(CommandID id) {
   if (!program::juceModel()->invokeDirectly(id, false))
     LOG(DFATAL) << "Failed to invoke " << id;
 }

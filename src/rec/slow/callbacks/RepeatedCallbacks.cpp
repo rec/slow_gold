@@ -2,7 +2,6 @@
 
 #include "rec/audio/AudioSettings.pb.h"
 #include "rec/command/CallbackTable.h"
-#include "rec/command/ID.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/menu/RecentFiles.pb.h"
 #include "rec/program/JuceModel.h"
@@ -26,12 +25,12 @@ using namespace std;
 using namespace rec::command;
 
 int toIndex(int position, int32 segment, int32 size) {
-  int pos = (position == ID::FIRST) ? 0 :
-    (position == ID::PREVIOUS) ? segment - 1 :
-    (position == ID::CURRENT) ? segment :
-    (position == ID::NEXT) ? segment + 1 :
-    (position == ID::LAST) ? size - 1 :
-    (position - ID::LAST - 1);
+  int pos = (position == CommandIDs::FIRST) ? 0 :
+    (position == CommandIDs::PREVIOUS) ? segment - 1 :
+    (position == CommandIDs::CURRENT) ? segment :
+    (position == CommandIDs::NEXT) ? segment + 1 :
+    (position == CommandIDs::LAST) ? size - 1 :
+    (position - CommandIDs::LAST - 1);
   return mod(pos, size);
 }
 
@@ -71,7 +70,7 @@ void select(SelectorFunction selector, int32 pos) {
 }
 
 template <typename Function, typename X, typename Y>
-void addCallback(CallbackTable* c, command::ID id, Function f, X x, Y y) {
+void addCallback(CallbackTable* c, CommandID id, Function f, X x, Y y) {
   c->addCallback(id, thread::functionCB(f, x, y));
 }
 
@@ -85,12 +84,12 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 }  // namespace
 
 void addSelectionCallbacks(command::CallbackTable* t) {
-  addCallback(t, slow::SlowCommand::DESELECT_ALL, select, deselectAll, ID::CURRENT);
-  addCallback(t, slow::SlowCommand::SELECT_ALL, select, selectAll, ID::CURRENT);
+  addCallback(t, slow::SlowCommand::DESELECT_ALL, select, deselectAll, CommandIDs::CURRENT);
+  addCallback(t, slow::SlowCommand::SELECT_ALL, select, selectAll, CommandIDs::CURRENT);
   addCallback(t, slow::SlowCommand::INVERT_LOOP_SELECTION, select, invertLoopSelection,
-              ID::CURRENT);
+              CommandIDs::CURRENT);
   addCallback(t, slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop,
-              ID::CURRENT);
+              CommandIDs::CURRENT);
 }
 
 namespace {
@@ -121,7 +120,7 @@ void jump(LoopSnapshot* snap, int32 pos) {
 
 
   // Special case for "jump back";
-  if (pos == ID::PREVIOUS &&
+  if (pos == CommandIDs::PREVIOUS &&
       (time - snap->loops_->loop_point(segment).time()) >=
       SampleTime(MAX_JUMP_TIME, snap->loops_->sample_rate())) {
     p = segment;
@@ -240,7 +239,7 @@ void nudgeTime(bool inc) {
   if (selection.loop_point_size() == 1)
     nudgeWithinSegment(selection, inc);
   else
-    jumpSelected(&s, inc ? ID::NEXT : ID::PREVIOUS);
+    jumpSelected(&s, inc ? CommandIDs::NEXT : CommandIDs::PREVIOUS);
 }
 
 void loopNextSegment() {
@@ -271,12 +270,12 @@ void loopNextSegment() {
 
 void addCallback(CallbackTable* c, int32 type, int32 position,
                  SelectorFunction f) {
-  addCallback(c, ID(type, position), select, f, position);
+  addCallback(c, type + position, select, f, position);
 }
 
 void addCallback(CallbackTable* c, int32 type, int32 position,
                  LoopSnapshotFunction f) {
-  addCallback(c, ID(type, position), loop, f, position);
+  addCallback(c, type + position, loop, f, position);
 }
 
 const int MENU_COMMAND_REPEATS = 15;
@@ -285,7 +284,7 @@ const int MENU_COMMAND_REPEATS = 15;
 
 
 
-void addRepeatedCallbacks(CallbackTable* t, int repeat, bool newStyle) {
+void addRepeatedCallbacks(CallbackTable* t, int repeat) {
   for (int32 j = 0; j < MENU_COMMAND_REPEATS; ++j) {
     addCallback(t, slow::SlowCommand::SELECT, j, selectAdd);
     addCallback(t, slow::SlowCommand::SELECT_ONLY, j, selectOnly);
@@ -299,15 +298,7 @@ void addRepeatedCallbacks(CallbackTable* t, int repeat, bool newStyle) {
   addCallback(t, slow::SlowCommand::LOOP_NEXT_SEGMENT, loopNextSegment);
 
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j)
-    addCallback(t, ID(slow::SlowCommand::RECENT_FILES, j), loadRecentFile, j);
-
-  if (not newStyle) {
-    for (int j = 0; j < audio::AudioSettings::COUNT; ++j)
-      addCallback(t, ID(slow::SlowCommand::SET_SAVE_FORMAT, j), setSaveFileType, j);
-
-    for (int j = app::AppSettings::FIRST; j <= app::AppSettings::LAST; ++j)
-      addCallback(t, ID(slow::SlowCommand::SET_LANGUAGE, j), setLanguage, j);
-  }
+    addCallback(t, slow::SlowCommand::RECENT_FILES + j, loadRecentFile, j);
 
   addCallback(t, slow::SlowCommand::OPEN_PREVIOUS_FILE, openPreviousFile);
   addCallback(t, slow::SlowCommand::NUDGE_BACKWARD, nudgeTime, false);

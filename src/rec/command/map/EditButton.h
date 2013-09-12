@@ -1,7 +1,7 @@
 #ifndef __REC_COMMAND_COMMANDMAPEDITBUTTON__
 #define __REC_COMMAND_COMMANDMAPEDITBUTTON__
 
-#include "rec/command/ID.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace command {
@@ -13,14 +13,14 @@ typedef std::pair<int, EditButton*> MenuCallback;
 
 class EditButton : public juce::Button {
  public:
-  EditButton(Editor* editor, ID id, const String& keyName, int keyNum);
+  EditButton(Editor* editor, CommandID id, const String& keyName, int keyNum);
   void paintButton(Graphics& g, bool /*isOver*/, bool /*isDown*/);
   void clicked();
 
   void fitToContent (const int h) noexcept;
   Editor* getEditor() { return editor_; }
 
-  const ID id_;
+  const CommandID id_;
   const int keyNum_;
 
  private:
