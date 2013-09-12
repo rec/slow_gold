@@ -12,7 +12,6 @@ namespace rec {
 namespace audio { class Device; }
 namespace command { class CommandData; }
 namespace command { class CommandRecordTable; }
-namespace command { class CommandTarget; }
 namespace command { class MidiCommandMap; }
 namespace audio { namespace source { class Player; }}
 namespace audio { namespace util { class BufferFiller; }}
@@ -87,7 +86,6 @@ class Instance {
   Listener<CommandID>* idListener();
 
  private:
-  ptr<command::CommandTarget> commandTarget_;
   unique_ptr<SlowProgram> slowProgram_;
   unique_ptr<program::JuceModel> juceModel_;
 

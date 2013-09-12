@@ -15,7 +15,6 @@
 #include "rec/command/Command.pb.h"
 #include "rec/command/CommandData.h"
 #include "rec/command/CommandRecordTable.h"
-#include "rec/command/CommandTarget.h"
 #include "rec/command/FillCommandRecordTable.h"
 #include "rec/command/KeyboardBindings.h"
 #include "rec/command/map/MidiCommandMap.h"
@@ -164,7 +163,6 @@ void Instance::init() {
   player_->init();
   components_.reset(new Components(this));
   commandRecordTable_.reset(new command::CommandRecordTable);
-  commandTarget_.reset(new command::CommandTarget(this));
   commandData_.reset(slow::createSlowCommandData(this));
 
   currentTime_.reset(new CurrentTime(this));
