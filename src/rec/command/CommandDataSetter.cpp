@@ -4,7 +4,7 @@
 namespace rec {
 namespace command {
 
-CommandDataSetter::CommandDataSetter(Listener<None>* changeListener,
+CommandDataSetter::CommandDataSetter(MenuBarModel* changeListener,
                                      const Command& command,
                                      const data::Address& addr,
                                      Scope scope)
@@ -21,7 +21,7 @@ void CommandDataSetter::operator()(const data::Value& value) {
   else
     LOG(DFATAL) << "No " << index << " in " << command_.ShortDebugString();
 
-  (*changeListener_)(None());
+  changeListener_->menuItemsChanged();
 }
 
 void CommandDataSetter::execute() {

@@ -27,6 +27,7 @@ class UndoStack : public Broadcaster<None> {
   void stopGroup();
 
  private:
+  void updateMenusAndUndo();
   void undoOrRedo(bool isUndo);
   int popRedos();
 

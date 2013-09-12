@@ -15,9 +15,7 @@ class CommandData {
   virtual ~CommandData() {}
 
   virtual const Commands& allCommands() const = 0;
-
   virtual void addCallbacks(CallbackTable*) const = 0;
-  virtual Listener<None>* getMenuUpdateListener() const = 0;
 };
 }
   // namespace command

@@ -13,7 +13,7 @@ namespace command {
 class TickedDataSetter : public CommandDataSetter {
  public:
   TickedDataSetter(ApplicationCommandInfo* info,
-                   Listener<None>* changeListener,
+                   MenuBarModel* changeListener,
                    const Command& command,
                    const data::Address& a,
                    Scope scope);

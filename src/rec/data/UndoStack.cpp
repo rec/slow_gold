@@ -4,6 +4,7 @@
 #include "rec/data/Opener.h"
 #include "rec/data/Value.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/program/JuceModel.h"
 #include "rec/util/Math.h"
 #include "rec/util/proto/Proto.h"
 #include "rec/util/STL.h"
@@ -52,7 +53,6 @@ class UndoStack::Entry {
 
   void log() const {
     DLOG(INFO) << "Undo: " << getTypeName(*undo_);
-    // DLOG(INFO) << "Redo: " << getTypeName(*redo_);
   }
 
   Data* data_;
@@ -67,6 +67,11 @@ UndoStack::~UndoStack() {
   stl::deletePointers(&stack_);
 }
 
+void UndoStack::updateMenusAndUndo() {
+  broadcast(None());
+  program::getJuceModel()->menuItemsChanged();
+}
+
 void UndoStack::clear() {
   {
     Lock l(lock_);
@@ -76,7 +81,7 @@ void UndoStack::clear() {
     stl::deletePointers(&stack_);
     stack_.clear();
   }
-  broadcast(None());
+  updateMenusAndUndo();
 }
 
 int UndoStack::popRedos() {
@@ -107,7 +112,7 @@ void UndoStack::push(Data* e, const Message& before, const Message& after) {
       stack_.push_back(ue.release());
     }
   }
-  broadcast(None());
+  updateMenusAndUndo();
 }
 
 void UndoStack::undoOrRedo(bool isUndo) {
@@ -119,7 +124,7 @@ void UndoStack::undoOrRedo(bool isUndo) {
     stack_[pos]->undoOrRedo(isUndo);
   }
 
-  broadcast(None());
+  updateMenusAndUndo();
 }
 
 void UndoStack::undo() {

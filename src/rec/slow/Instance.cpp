@@ -223,8 +223,6 @@ void Instance::init() {
   player_->setSource(makeSource());
   components_->waveform_->setAudioThumbnail(bufferFiller_->thumbnail());
 
-  window_->addListener(menuUpdateListener());
-
   DialogLocker::getDisableBroadcaster()->addListener(enableListener());
   DialogLocker::getDisableBroadcaster()->addListener(window_->application());
 
@@ -249,7 +247,6 @@ Instance::~Instance() {
 }
 
 void Instance::startup() {
-  addUndoListener(menuUpdateListener());
   menuBarModel()->menuItemsChanged();
 
   VirtualFile vf = data::getProto<VirtualFile>();
@@ -357,13 +354,6 @@ Listener<command::ID>* Instance::idListener() {
     return juceModel_.get();
   else
     return commandTarget_.get();
-}
-
-Listener<None>* Instance::menuUpdateListener() {
-  if (USE_NEW_COMMANDS)
-    return juceModel_.get();
-  else
-    return menus_.get();
 }
 
 MenuBarModel* Instance::menuBarModel() {

@@ -15,7 +15,6 @@ class Program;
 class JuceModel : public ApplicationCommandTarget,
                   public MenuBarModel,
                   public Listener<Enable>,
-                  public Listener<None>,
                   public Listener<command::ID>,
                   public Listener<CommandID> {
  public:
@@ -39,7 +38,6 @@ class JuceModel : public ApplicationCommandTarget,
   void operator()(command::ID) override;
   void operator()(CommandID) override;
   void operator()(Enable) override;
-  void operator()(None) override { menuItemsChanged(); }
 
  private:
   unique_ptr<JuceModelImpl> impl_;

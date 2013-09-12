@@ -4,7 +4,7 @@ namespace rec {
 namespace command {
 
 TickedDataSetter::TickedDataSetter(ApplicationCommandInfo* info,
-                                   Listener<None>* changeListener,
+                                   MenuBarModel* changeListener,
                                    const Command& command,
                                    const data::Address& addr,
                                    Scope scope)
@@ -15,8 +15,7 @@ TickedDataSetter::TickedDataSetter(ApplicationCommandInfo* info,
 void TickedDataSetter::operator()(const data::Value& v) {
   info_->setTicked(v.get<bool>());
 
-  if (changeListener_)
-    (*changeListener_)(None());
+  changeListener_->menuItemsChanged();
 }
 
 void TickedDataSetter::execute() {

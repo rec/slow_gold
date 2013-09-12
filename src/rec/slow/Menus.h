@@ -17,7 +17,6 @@ class IsWholeSong;
 
 class Menus : public MenuBarModel,
               public HasInstance,
-              public Listener<None>,
               public GlobalDataListener<GuiSettings> {
  public:
   Menus(Instance*, IsWholeSong*);

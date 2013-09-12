@@ -88,7 +88,6 @@ class Instance {
   ApplicationCommandManager* applicationCommandManager();
   Listener<Enable>* enableListener();
   Listener<command::ID>* idListener();
-  Listener<None>* menuUpdateListener();
   MenuBarModel* menuBarModel();
 
   void menuItemsChanged();
