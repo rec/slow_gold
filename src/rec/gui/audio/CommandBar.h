@@ -1,7 +1,6 @@
 #ifndef __REC_GUI_AUDIO_COMMANDBAR__
 #define __REC_GUI_AUDIO_COMMANDBAR__
 
-#include "rec/command/CommandRecord.h"
 #include "rec/gui/LanguageButton.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/data/DataListener.h"

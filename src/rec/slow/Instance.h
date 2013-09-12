@@ -10,7 +10,6 @@
 namespace rec {
 
 namespace audio { class Device; }
-namespace command { class CommandRecordTable; }
 namespace command { class MidiCommandMap; }
 namespace audio { namespace source { class Player; }}
 namespace audio { namespace util { class BufferFiller; }}

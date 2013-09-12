@@ -1,7 +1,5 @@
 #include "rec/slow/commands/SlowProgram.h"
 
-#include "rec/command/CommandRecord.h"
-#include "rec/command/CommandRecordTable.h"
 #include "rec/data/Data.h"
 #include "rec/music/Metadata.h"
 #include "rec/slow/GuiSettings.pb.h"

@@ -180,10 +180,6 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\base\Trans.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandDataSetter.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandRecord.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandRecordTable.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\command\FillCommandRecordTable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\KeyboardBindings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\CommandMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\EditButton.cpp"/>
@@ -193,7 +189,6 @@
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiCommandMap.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiEditor.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\command\map\MidiName.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\command\TickedDataSetter.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\AddressListener.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\data\DataCenter.cpp"/>
@@ -1531,11 +1526,6 @@
     <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CallbackTable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandDataSetter.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandItemSetter.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandRecord.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandRecordTable.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\command\FillCommandRecordTable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\CommandMap.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\EditButton.h"/>
@@ -1545,7 +1535,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiCommandMap.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiEditor.h"/>
     <ClInclude Include="..\..\..\..\src\rec\command\map\MidiName.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\command\TickedDataSetter.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\AddressListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\data\Apply.h"/>
