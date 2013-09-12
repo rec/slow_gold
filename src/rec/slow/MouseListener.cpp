@@ -67,8 +67,8 @@ inline const VirtualFile file() {
 
 // Skin
 
-MouseListener::MouseListener(Instance* i)
-    : HasInstance(i), waveformDragStart_(0), groupingUndoEvents_(false) {
+MouseListener::MouseListener()
+    : waveformDragStart_(0), groupingUndoEvents_(false) {
   components()->waveform_->addMouseListener(this, true);
   Broadcaster<const MouseWheelEvent&> *w = components()->waveform_.get();
   w->addListener(this);

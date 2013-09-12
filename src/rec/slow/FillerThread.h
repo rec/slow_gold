@@ -1,14 +1,14 @@
 #ifndef __REC_SLOW_FILLERTHREAD__
 #define __REC_SLOW_FILLERTHREAD__
 
-#include "rec/slow/HasInstance.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace slow {
 
-class FillerThread : public HasInstance, public Thread {
+class FillerThread : public Thread {
  public:
-  FillerThread(Instance* i) : HasInstance(i), Thread("Filler") {}
+  FillerThread() : Thread("Filler") {}
   virtual void run();
 
  private:

@@ -4,7 +4,6 @@
 #include "rec/data/DataListener.h"
 #include "rec/gui/audio/CommandBar.h"
 #include "rec/gui/audio/TransportController.h"
-#include "rec/slow/HasInstance.h"
 
 namespace rec {
 namespace slow {
@@ -14,10 +13,10 @@ class GuiSettings;
 class GuiListener : public GlobalDataListener<GuiSettings>,
                     public Listener<gui::audio::CommandBarCommand>,
                     public Listener<gui::audio::TransportCommand>,
-                    public Broadcaster<CommandID>,
-                    public HasInstance {
+                    public Broadcaster<CommandID> {
  public:
-  explicit GuiListener(Instance* i);
+  GuiListener();
+  virtual ~GuiListener() {}
 
   virtual void operator()(const GuiSettings&);
   virtual void operator()(gui::audio::TransportCommand);
@@ -31,7 +30,7 @@ class GuiListener : public GlobalDataListener<GuiSettings>,
   Component* lastComponent_;
   Component* lastFocus_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GuiListener);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(GuiListener);
 };
 
 }  // namespace slow

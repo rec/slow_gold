@@ -1,23 +1,23 @@
 #ifndef __REC_SLOW_METHODS_FILEMETHODS__
 #define __REC_SLOW_METHODS_FILEMETHODS__
 
-#include "rec/slow/HasInstance.h"
+#include "rec/base/SampleTime.h"
 #include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.pb.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 
+namespace rec { namespace gui { class DropFiles; } }
+
 namespace rec {
-
-namespace gui { class DropFiles; }
-
 namespace slow {
 
-class CurrentFile : public HasInstance,
-                    public Listener<const VirtualFile&>,
+class Instance;
+
+class CurrentFile : public Listener<const VirtualFile&>,
                     public Listener<const gui::DropFiles&> {
  public:
-  explicit CurrentFile(Instance* i);
-  virtual ~CurrentFile();
+  CurrentFile() {}
+  virtual ~CurrentFile() {}
 
   // Set the file and change the persistent data.
   virtual void operator()(const gui::DropFiles&);

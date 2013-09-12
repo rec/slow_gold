@@ -143,7 +143,7 @@ void SlowWindow::activeWindowStatusChanged() {
 
 void SlowWindow::startAboutWindow() {
   if (!aboutWindow_) {
-    aboutWindow_.reset(new AboutWindow(getMainComponent(), getInstance(),
+    aboutWindow_.reset(new AboutWindow(getMainComponent(),
                                        application()->name(),
                                        application()->version()));
   }

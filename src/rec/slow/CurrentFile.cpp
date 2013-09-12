@@ -15,6 +15,7 @@
 #include "rec/program/JuceModel.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentTime.h"
+#include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/file/VirtualFile.h"
@@ -33,10 +34,6 @@ namespace slow {
 using namespace rec::data;
 using namespace rec::widget::waveform;
 using namespace juce;
-
-CurrentFile::CurrentFile(Instance* i) : HasInstance(i) {}
-
-CurrentFile::~CurrentFile() {}
 
 void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;

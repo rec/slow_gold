@@ -2,15 +2,14 @@
 #define __REC_SUPPORT_SUPPORTWINDOW__
 
 #include "rec/app/Window.h"
-#include "rec/slow/HasInstance.h"
 
 namespace rec {
 namespace slow {
 
-class SupportWindow : public app::Window, public HasInstance  {
+class SupportWindow : public app::Window  {
  public:
   explicit SupportWindow(app::GenericApplication*);
-  virtual ~SupportWindow();
+  virtual ~SupportWindow() {}
 
   virtual void init() {}
 
@@ -30,9 +29,7 @@ class SupportWindow : public app::Window, public HasInstance  {
   virtual Component* getMainComponent() { return nullptr; }
 
  private:
-  ptr<Instance> instanceDeleter_;
-
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(SupportWindow);
+  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(SupportWindow);
 };
 
 }  // namespace slow

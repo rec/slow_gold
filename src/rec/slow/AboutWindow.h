@@ -1,18 +1,17 @@
 #ifndef __REC_SLOW_ABOUTWINDOW__
 #define __REC_SLOW_ABOUTWINDOW__
 
-#include "rec/slow/HasInstance.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace slow {
 
 class AboutPane;
 
-class AboutWindow : public Component, public HasInstance {
+class AboutWindow : public Component {
  public:
   static const int FADE_OUT_TIME = 600;
-  explicit AboutWindow(Component* parent, Instance* instance,
-                       const String& name, const String& versionNumber);
+  explicit AboutWindow(Component* parent, const String& name, const String& versionNumber);
 
   virtual void paint(Graphics&) {}
 

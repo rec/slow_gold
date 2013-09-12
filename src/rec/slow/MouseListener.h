@@ -6,7 +6,6 @@
 #include "rec/util/range/Range.h"
 #include "rec/util/Listener.h"
 #include "rec/data/DataListener.h"
-#include "rec/slow/HasInstance.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec {
@@ -18,13 +17,12 @@ namespace widget { namespace waveform { class Waveform; } }
 
 namespace slow {
 
-class MouseListener : public HasInstance,
-                      public juce::MouseListener,
+class MouseListener : public juce::MouseListener,
                       public DataListener<widget::waveform::Viewport>,
                       public GlobalDataListener<Mode>,
                       public Listener<const widget::waveform::MouseWheelEvent&> {
  public:
-  MouseListener(Instance* i);
+  MouseListener();
   virtual ~MouseListener() {}
 
   virtual void mouseDown(const MouseEvent&);
@@ -53,7 +51,7 @@ class MouseListener : public HasInstance,
   Mode previousMode_;
   bool groupingUndoEvents_;
 
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(MouseListener);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(MouseListener);
 };
 
 }  // namespace slow

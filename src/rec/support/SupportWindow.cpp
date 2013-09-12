@@ -12,11 +12,8 @@ using namespace juce;
 
 SupportWindow::SupportWindow(app::GenericApplication* application)
     : app::Window(application, "SupportRequest", Colours::azure,
-                  DocumentWindow::allButtons, true),
-      HasInstance(nullptr) {
+                  DocumentWindow::allButtons, true) {
 }
-
-SupportWindow::~SupportWindow() {}
 
 }  // namespace slow
 

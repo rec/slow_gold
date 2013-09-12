@@ -6,7 +6,7 @@
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
 #include "rec/slow/GuiSettings.pb.h"
-#include "rec/slow/HasInstance.h"
+#include "rec/slow/Instance.h"
 #include "rec/util/Listener.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/range/Range.h"
@@ -15,13 +15,12 @@
 namespace rec {
 namespace slow {
 
-class CurrentTime : public HasInstance,
-                    public DataListener<widget::waveform::Viewport>,
+class CurrentTime : public DataListener<widget::waveform::Viewport>,
                     public GlobalDataListener<GuiSettings>,
                     public Listener<SampleTime>,
                     public Listener<audio::transport::State> {
  public:
-  explicit CurrentTime(Instance* i);
+  CurrentTime();
   virtual ~CurrentTime() {}
 
   void setTime(SampleTime);

@@ -4,6 +4,7 @@
 #include "rec/audio/util/BufferedReader.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentTime.h"
+#include "rec/slow/Instance.h"
 #include "rec/util/range/Difference.h"
 #include "rec/util/range/WrapSeries.h"
 #include "rec/util/range/Range.h"

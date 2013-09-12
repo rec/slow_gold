@@ -2,13 +2,13 @@
 #define __REC_SLOW_SLOWWINDOW__
 
 #include "rec/app/Window.h"
-#include "rec/slow/HasInstance.h"
+
+namespace rec { namespace app { class GenericApplication; }}
 
 namespace rec {
-
-namespace app { class GenericApplication; }
-
 namespace slow {
+  
+class Instance;
 
 class SlowWindow : public app::Window  {
  public:

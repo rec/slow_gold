@@ -127,10 +127,7 @@ struct Threads::ThreadList {
   Thread* updateThread_;
 };
 
-Threads::Threads(Instance* i)
-    : HasInstance(i), threads_(new ThreadList) {
-}
-
+Threads::Threads() : threads_(new ThreadList) {}
 Threads::~Threads() {}
 
 Thread* Threads::guiThread() {

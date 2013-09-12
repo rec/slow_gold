@@ -9,6 +9,7 @@
 #include "rec/gui/audio/TransformController.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/Instance.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/range/Contains.h"
 #include "rec/widget/waveform/Zoom.h"
@@ -25,9 +26,8 @@ static const double MIN_CURSOR_RATIO_CHANGE = 0.80;
 
 static const int NO_SEGMENT = -1;
 
-CurrentTime::CurrentTime(Instance* i)
-    : HasInstance(i),
-      time_(0),
+CurrentTime::CurrentTime()
+    : time_(0),
       requestedTime_(-1),
       length_(0),
       followCursor_(false),

@@ -3,7 +3,6 @@
 
 #include "rec/music/Metadata.h"
 #include "rec/data/DataListener.h"
-#include "rec/slow/HasInstance.h"
 
 namespace rec {
 
@@ -21,13 +20,11 @@ namespace widget { namespace waveform { class Waveform; } }
 
 namespace slow {
 
-class Instance;
 class MainPage;
 
-class Components : public HasInstance,
-                   public data::DataListener<music::Metadata> {
+class Components : public data::DataListener<music::Metadata> {
  public:
-  explicit Components(Instance*);
+  Components();
   ~Components();
 
   virtual void init();
@@ -48,6 +45,9 @@ class Components : public HasInstance,
   ptr<gui::audio::ModeSelector> modeSelector_;
   ptr<gui::audio::CommandBar> commandBar_;
   ptr<MainPage> mainPage_;
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Components);
 };
 
 }  // namespace slow

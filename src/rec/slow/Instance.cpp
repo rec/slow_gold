@@ -134,21 +134,21 @@ void Instance::init() {
 
   window_->init();
   device_.reset(new audio::Device);
-  currentFile_.reset(new CurrentFile(this));
+  currentFile_.reset(new CurrentFile);
 
   player_.reset(new audio::source::Player(device_.get()));
 
   player_->init();
-  components_.reset(new Components(this));
+  components_.reset(new Components);
 
-  currentTime_.reset(new CurrentTime(this));
+  currentTime_.reset(new CurrentTime);
   bufferFiller_.reset(new BufferFiller);
   lookAndFeel_.reset(new gui::LookAndFeel);
-  mouseListener_.reset(new MouseListener(this));
-  guiListener_.reset(new GuiListener(this));
-  fillerThread_.reset(new FillerThread(this));
+  mouseListener_.reset(new MouseListener);
+  guiListener_.reset(new GuiListener);
+  fillerThread_.reset(new FillerThread);
   midiCommandMap_.reset(new command::MidiCommandMap);
-  threads_.reset(new Threads(this));
+  threads_.reset(new Threads);
 
   device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());

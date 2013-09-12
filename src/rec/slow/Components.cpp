@@ -30,9 +30,8 @@ static void enableAllDrawableButtons(Component *c, bool enabled) {
   }
 }
 
-Components::Components(Instance* instance)
-    : HasInstance(instance),
-      manager_(program::applicationCommandManager()),
+Components::Components()
+    : manager_(program::applicationCommandManager()),
       timeController_(new gui::audio::TimeController),
       loops_(new gui::audio::Loops()),
       songData_(new gui::SongData),

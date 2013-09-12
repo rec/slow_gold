@@ -3,6 +3,7 @@
 #include "rec/gui/GuiWriteable.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/commands/SlowCommand.pb.h"
@@ -17,9 +18,8 @@ using namespace rec::gui::audio;
 
 static const int MS_TILL_TOOLTIP = 700;
 
-GuiListener::GuiListener(Instance* i)
-    : HasInstance(i), displayHelpPane_(false), lastComponent_(nullptr),
-      lastFocus_(nullptr) {
+GuiListener::GuiListener()
+    : displayHelpPane_(false), lastComponent_(nullptr), lastFocus_(nullptr) {
 }
 
 void GuiListener::operator()(const GuiSettings& settings) {

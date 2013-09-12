@@ -3,6 +3,7 @@
 #include "rec/base/Trans.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/slow/GuiSettings.pb.h"
+#include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/util/GetEnv.h"
 #include "rec/util/thread/CallAsync.h"
@@ -102,11 +103,9 @@ class AboutPane : public Component {
 };
 
 AboutWindow::AboutWindow(Component* parent,
-                         Instance* instance,
                          const String& name,
                          const String& versionNumber)
     : Component("AboutWindow"),
-      HasInstance(instance),
       parent_(parent),
       aboutPane_(new AboutPane(name, versionNumber)) {
   setOpaque(false);
