@@ -7,11 +7,12 @@
 #include "rec/program/Menu.pb.h"
 #include "rec/program/Types.h"
 #include "rec/util/thread/Callback.h"
+#include "rec/command/CallbackTable.h"
 
 namespace rec {
 namespace program {
 
-class Program {
+class Program : public command::CallbackTable{
  public:
   Program() {}
   virtual ~Program() {}
