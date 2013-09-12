@@ -16,9 +16,9 @@ namespace {
 using namespace rec::command;
 using namespace rec::data;
 
-CommandMapEntry* newEntry(CommandID type, KeyStrokeCommandMapProto* map) {
+CommandMapEntry* newEntry(CommandID id, KeyStrokeCommandMapProto* map) {
   CommandMapEntry* entry = map->mutable_map()->add_entry();
-  entry->set_command(type);
+  entry->set_id(id);
   return entry;
 }
 
@@ -32,7 +32,7 @@ void portKeyboardFile() {
       KeyStrokeCommandMapProto keyMap;
       for (int i = 0; i < commands.command_size(); ++i) {
         const Command& command = commands.command(i);
-        CommandID type = command.command();
+        CommandID type = command.id();
         // TODO: https://github.com/rec/rec/issues/621
         if (false) { // command.has_start_index()) {
           int32 index = 0; // command.start_index();

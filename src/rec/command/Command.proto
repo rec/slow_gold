@@ -23,7 +23,7 @@ message Setter {
 
 // A list of commands that the user can issue.
 message Command {
-  enum Type {
+  enum Id {
     NONE = 0;
 
     // Pre-defined by Juce.
@@ -41,7 +41,7 @@ message Command {
     BANK_SIZE = 10000;
   };
 
-  optional uint32 command = 1;
+  optional uint32 id = 1;
   optional sint32 index = 2;  // For repeating commands.
 
   optional string category = 3;  // English language name of the JUCE category.

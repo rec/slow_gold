@@ -29,9 +29,9 @@ void CommandMap::addCommands(const CommandMapProto& commands) {
   toCommand_.clear();
   toKeys_.clear();
   for (auto& entry: commands.entry()) {
-    CommandID command = entry.command();
+    CommandID id = entry.id();
     for (auto& key: entry.key())
-      add(key, command);
+      add(key, id);
   }
 }
 
@@ -43,22 +43,22 @@ void CommandMap::dump() const {
   }
 }
 
-bool CommandMap::add(const string& key, CommandID command) {
-  if (!addKey(key, command))
+bool CommandMap::add(const string& key, CommandID id) {
+  if (!addKey(key, id))
     return false;
 
-  toKeys_[command].push_back(key);
+  toKeys_[id].push_back(key);
   return true;
 }
 
-bool CommandMap::addAtIndex(const string& key, CommandID command, int index) {
+bool CommandMap::addAtIndex(const string& key, CommandID id, int index) {
   if (index < 0)
-    add(key, command);
+    add(key, id);
 
-  if (!addKey(key, command))
+  if (!addKey(key, id))
     return false;
 
-  toKeys_[command][index] = key;
+  toKeys_[id][index] = key;
   return true;
 }
 
@@ -70,8 +70,8 @@ const CommandMapProto CommandMap::getProto() const {
       CommandMapEntry* entry = commands.add_entry();
       CommandID id = i->first;
       CommandID index = id % Command::BANK_SIZE;
-      
-      entry->set_command(id - index);
+
+      entry->set_id(id - index);
       entry->set_index(index);
       KeyVector::const_iterator j;
       for (j = i->second.begin(); j != i->second.end(); ++j)

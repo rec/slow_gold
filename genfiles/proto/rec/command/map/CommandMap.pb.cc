@@ -45,7 +45,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
   GOOGLE_CHECK(file != NULL);
   CommandMapEntry_descriptor_ = file->message_type(0);
   static const int CommandMapEntry_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, command_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, key_),
   };
@@ -148,13 +148,13 @@ void protobuf_AddDesc_rec_2fcommand_2fmap_2fCommandMap_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/command/map/CommandMap.proto\022\013rec."
-    "command\">\n\017CommandMapEntry\022\017\n\007command\030\001 "
-    "\001(\r\022\r\n\005index\030\002 \001(\005\022\013\n\003key\030\003 \003(\014\">\n\017Comma"
-    "ndMapProto\022+\n\005entry\030\001 \003(\0132\034.rec.command."
-    "CommandMapEntry\"E\n\030KeyStrokeCommandMapPr"
-    "oto\022)\n\003map\030\001 \001(\0132\034.rec.command.CommandMa"
-    "pProto\"@\n\023MidiCommandMapProto\022)\n\003map\030\001 \001"
-    "(\0132\034.rec.command.CommandMapProto", 312);
+    "command\"9\n\017CommandMapEntry\022\n\n\002id\030\001 \001(\r\022\r"
+    "\n\005index\030\002 \001(\005\022\013\n\003key\030\003 \003(\014\">\n\017CommandMap"
+    "Proto\022+\n\005entry\030\001 \003(\0132\034.rec.command.Comma"
+    "ndMapEntry\"E\n\030KeyStrokeCommandMapProto\022)"
+    "\n\003map\030\001 \001(\0132\034.rec.command.CommandMapProt"
+    "o\"@\n\023MidiCommandMapProto\022)\n\003map\030\001 \001(\0132\034."
+    "rec.command.CommandMapProto", 307);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/map/CommandMap.proto", &protobuf_RegisterTypes);
   CommandMapEntry::default_instance_ = new CommandMapEntry();
@@ -178,7 +178,7 @@ struct StaticDescriptorInitializer_rec_2fcommand_2fmap_2fCommandMap_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int CommandMapEntry::kCommandFieldNumber;
+const int CommandMapEntry::kIdFieldNumber;
 const int CommandMapEntry::kIndexFieldNumber;
 const int CommandMapEntry::kKeyFieldNumber;
 #endif  // !_MSC_VER
@@ -199,7 +199,7 @@ CommandMapEntry::CommandMapEntry(const CommandMapEntry& from)
 
 void CommandMapEntry::SharedCtor() {
   _cached_size_ = 0;
-  command_ = 0u;
+  id_ = 0u;
   index_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -236,7 +236,7 @@ CommandMapEntry* CommandMapEntry::New() const {
 
 void CommandMapEntry::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    command_ = 0u;
+    id_ = 0u;
     index_ = 0;
   }
   key_.Clear();
@@ -250,14 +250,14 @@ bool CommandMapEntry::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 command = 1;
+      // optional uint32 id = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &command_)));
-          set_has_command();
+                 input, &id_)));
+          set_has_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -314,9 +314,9 @@ bool CommandMapEntry::MergePartialFromCodedStream(
 
 void CommandMapEntry::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 command = 1;
-  if (has_command()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->command(), output);
+  // optional uint32 id = 1;
+  if (has_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
   }
 
   // optional int32 index = 2;
@@ -338,9 +338,9 @@ void CommandMapEntry::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* CommandMapEntry::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint32 command = 1;
-  if (has_command()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->command(), target);
+  // optional uint32 id = 1;
+  if (has_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
   }
 
   // optional int32 index = 2;
@@ -365,11 +365,11 @@ int CommandMapEntry::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint32 command = 1;
-    if (has_command()) {
+    // optional uint32 id = 1;
+    if (has_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->command());
+          this->id());
     }
 
     // optional int32 index = 2;
@@ -414,8 +414,8 @@ void CommandMapEntry::MergeFrom(const CommandMapEntry& from) {
   GOOGLE_CHECK_NE(&from, this);
   key_.MergeFrom(from.key_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_command()) {
-      set_command(from.command());
+    if (from.has_id()) {
+      set_id(from.id());
     }
     if (from.has_index()) {
       set_index(from.index());
@@ -443,7 +443,7 @@ bool CommandMapEntry::IsInitialized() const {
 
 void CommandMapEntry::Swap(CommandMapEntry* other) {
   if (other != this) {
-    std::swap(command_, other->command_);
+    std::swap(id_, other->id_);
     std::swap(index_, other->index_);
     key_.Swap(&other->key_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

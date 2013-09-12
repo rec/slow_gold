@@ -12,7 +12,7 @@ CommandMap makeCommandMap(const Program& program) {
   auto commands = program.commands().command();
 
   for (auto& command: commands) {
-    CommandID id = command.command();
+    CommandID id = command.id();
     commandMap[id] = command;
     if (command.has_index()) {
       for (int i = 0; i < command.index(); ++i)
@@ -22,7 +22,7 @@ CommandMap makeCommandMap(const Program& program) {
 
   auto map = program.keypresses().map();
   for (auto& entry: map.entry()) {
-    CommandID id = entry.command();
+    CommandID id = entry.id();
     if (entry.has_index())
       id += entry.index() - CommandIDs::FIRST;
     try {

@@ -97,17 +97,17 @@ class MenuEntry : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated uint32 command = 1;
-  inline int command_size() const;
-  inline void clear_command();
-  static const int kCommandFieldNumber = 1;
-  inline ::google::protobuf::uint32 command(int index) const;
-  inline void set_command(int index, ::google::protobuf::uint32 value);
-  inline void add_command(::google::protobuf::uint32 value);
+  // repeated uint32 id = 1;
+  inline int id_size() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::uint32 id(int index) const;
+  inline void set_id(int index, ::google::protobuf::uint32 value);
+  inline void add_id(::google::protobuf::uint32 value);
   inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-      command() const;
+      id() const;
   inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-      mutable_command();
+      mutable_id();
 
   // optional string submenu = 2;
   inline bool has_submenu() const;
@@ -142,7 +142,7 @@ class MenuEntry : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > command_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > id_;
   ::std::string* submenu_;
   ::std::string* callout_function_;
 
@@ -558,29 +558,29 @@ class MenuCollection : public ::google::protobuf::Message {
 
 // MenuEntry
 
-// repeated uint32 command = 1;
-inline int MenuEntry::command_size() const {
-  return command_.size();
+// repeated uint32 id = 1;
+inline int MenuEntry::id_size() const {
+  return id_.size();
 }
-inline void MenuEntry::clear_command() {
-  command_.Clear();
+inline void MenuEntry::clear_id() {
+  id_.Clear();
 }
-inline ::google::protobuf::uint32 MenuEntry::command(int index) const {
-  return command_.Get(index);
+inline ::google::protobuf::uint32 MenuEntry::id(int index) const {
+  return id_.Get(index);
 }
-inline void MenuEntry::set_command(int index, ::google::protobuf::uint32 value) {
-  command_.Set(index, value);
+inline void MenuEntry::set_id(int index, ::google::protobuf::uint32 value) {
+  id_.Set(index, value);
 }
-inline void MenuEntry::add_command(::google::protobuf::uint32 value) {
-  command_.Add(value);
+inline void MenuEntry::add_id(::google::protobuf::uint32 value) {
+  id_.Add(value);
 }
 inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-MenuEntry::command() const {
-  return command_;
+MenuEntry::id() const {
+  return id_;
 }
 inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-MenuEntry::mutable_command() {
-  return &command_;
+MenuEntry::mutable_id() {
+  return &id_;
 }
 
 // optional string submenu = 2;

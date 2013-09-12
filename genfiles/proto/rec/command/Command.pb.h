@@ -60,33 +60,33 @@ inline bool Setter_Type_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<Setter_Type>(
     Setter_Type_descriptor(), name, value);
 }
-enum Command_Type {
-  Command_Type_NONE = 0,
-  Command_Type_QUIT = 4097,
-  Command_Type_DEL = 4098,
-  Command_Type_CUT = 4099,
-  Command_Type_COPY = 4100,
-  Command_Type_PASTE = 4101,
-  Command_Type_SELECT_ALL = 4102,
-  Command_Type_DESELECT_ALL = 4103,
-  Command_Type_JUCE_START = 4096,
-  Command_Type_JUCE_END = 4104,
-  Command_Type_BANK_SIZE = 10000
+enum Command_Id {
+  Command_Id_NONE = 0,
+  Command_Id_QUIT = 4097,
+  Command_Id_DEL = 4098,
+  Command_Id_CUT = 4099,
+  Command_Id_COPY = 4100,
+  Command_Id_PASTE = 4101,
+  Command_Id_SELECT_ALL = 4102,
+  Command_Id_DESELECT_ALL = 4103,
+  Command_Id_JUCE_START = 4096,
+  Command_Id_JUCE_END = 4104,
+  Command_Id_BANK_SIZE = 10000
 };
-bool Command_Type_IsValid(int value);
-const Command_Type Command_Type_Type_MIN = Command_Type_NONE;
-const Command_Type Command_Type_Type_MAX = Command_Type_BANK_SIZE;
-const int Command_Type_Type_ARRAYSIZE = Command_Type_Type_MAX + 1;
+bool Command_Id_IsValid(int value);
+const Command_Id Command_Id_Id_MIN = Command_Id_NONE;
+const Command_Id Command_Id_Id_MAX = Command_Id_BANK_SIZE;
+const int Command_Id_Id_ARRAYSIZE = Command_Id_Id_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* Command_Type_descriptor();
-inline const ::std::string& Command_Type_Name(Command_Type value) {
+const ::google::protobuf::EnumDescriptor* Command_Id_descriptor();
+inline const ::std::string& Command_Id_Name(Command_Id value) {
   return ::google::protobuf::internal::NameOfEnum(
-    Command_Type_descriptor(), value);
+    Command_Id_descriptor(), value);
 }
-inline bool Command_Type_Parse(
-    const ::std::string& name, Command_Type* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Command_Type>(
-    Command_Type_descriptor(), name, value);
+inline bool Command_Id_Parse(
+    const ::std::string& name, Command_Id* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Command_Id>(
+    Command_Id_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -421,47 +421,47 @@ class Command : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef Command_Type Type;
-  static const Type NONE = Command_Type_NONE;
-  static const Type QUIT = Command_Type_QUIT;
-  static const Type DEL = Command_Type_DEL;
-  static const Type CUT = Command_Type_CUT;
-  static const Type COPY = Command_Type_COPY;
-  static const Type PASTE = Command_Type_PASTE;
-  static const Type SELECT_ALL = Command_Type_SELECT_ALL;
-  static const Type DESELECT_ALL = Command_Type_DESELECT_ALL;
-  static const Type JUCE_START = Command_Type_JUCE_START;
-  static const Type JUCE_END = Command_Type_JUCE_END;
-  static const Type BANK_SIZE = Command_Type_BANK_SIZE;
-  static inline bool Type_IsValid(int value) {
-    return Command_Type_IsValid(value);
+  typedef Command_Id Id;
+  static const Id NONE = Command_Id_NONE;
+  static const Id QUIT = Command_Id_QUIT;
+  static const Id DEL = Command_Id_DEL;
+  static const Id CUT = Command_Id_CUT;
+  static const Id COPY = Command_Id_COPY;
+  static const Id PASTE = Command_Id_PASTE;
+  static const Id SELECT_ALL = Command_Id_SELECT_ALL;
+  static const Id DESELECT_ALL = Command_Id_DESELECT_ALL;
+  static const Id JUCE_START = Command_Id_JUCE_START;
+  static const Id JUCE_END = Command_Id_JUCE_END;
+  static const Id BANK_SIZE = Command_Id_BANK_SIZE;
+  static inline bool Id_IsValid(int value) {
+    return Command_Id_IsValid(value);
   }
-  static const Type Type_MIN =
-    Command_Type_Type_MIN;
-  static const Type Type_MAX =
-    Command_Type_Type_MAX;
-  static const int Type_ARRAYSIZE =
-    Command_Type_Type_ARRAYSIZE;
+  static const Id Id_MIN =
+    Command_Id_Id_MIN;
+  static const Id Id_MAX =
+    Command_Id_Id_MAX;
+  static const int Id_ARRAYSIZE =
+    Command_Id_Id_ARRAYSIZE;
   static inline const ::google::protobuf::EnumDescriptor*
-  Type_descriptor() {
-    return Command_Type_descriptor();
+  Id_descriptor() {
+    return Command_Id_descriptor();
   }
-  static inline const ::std::string& Type_Name(Type value) {
-    return Command_Type_Name(value);
+  static inline const ::std::string& Id_Name(Id value) {
+    return Command_Id_Name(value);
   }
-  static inline bool Type_Parse(const ::std::string& name,
-      Type* value) {
-    return Command_Type_Parse(name, value);
+  static inline bool Id_Parse(const ::std::string& name,
+      Id* value) {
+    return Command_Id_Parse(name, value);
   }
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 command = 1;
-  inline bool has_command() const;
-  inline void clear_command();
-  static const int kCommandFieldNumber = 1;
-  inline ::google::protobuf::uint32 command() const;
-  inline void set_command(::google::protobuf::uint32 value);
+  // optional uint32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::uint32 id() const;
+  inline void set_id(::google::protobuf::uint32 value);
 
   // optional sint32 index = 2;
   inline bool has_index() const;
@@ -611,8 +611,8 @@ class Command : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.command.Command)
  private:
-  inline void set_has_command();
-  inline void clear_has_command();
+  inline void set_has_id();
+  inline void clear_has_id();
   inline void set_has_index();
   inline void clear_has_index();
   inline void set_has_category();
@@ -632,7 +632,7 @@ class Command : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::uint32 command_;
+  ::google::protobuf::uint32 id_;
   ::google::protobuf::int32 index_;
   ::std::string* category_;
   ::std::string* submenu_name_;
@@ -1138,26 +1138,26 @@ inline void Setter::set_allocated_type_name(::std::string* type_name) {
 
 // Command
 
-// optional uint32 command = 1;
-inline bool Command::has_command() const {
+// optional uint32 id = 1;
+inline bool Command::has_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Command::set_has_command() {
+inline void Command::set_has_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Command::clear_has_command() {
+inline void Command::clear_has_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Command::clear_command() {
-  command_ = 0u;
-  clear_has_command();
+inline void Command::clear_id() {
+  id_ = 0u;
+  clear_has_id();
 }
-inline ::google::protobuf::uint32 Command::command() const {
-  return command_;
+inline ::google::protobuf::uint32 Command::id() const {
+  return id_;
 }
-inline void Command::set_command(::google::protobuf::uint32 value) {
-  set_has_command();
-  command_ = value;
+inline void Command::set_id(::google::protobuf::uint32 value) {
+  set_has_id();
+  id_ = value;
 }
 
 // optional sint32 index = 2;
@@ -1709,8 +1709,8 @@ inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Setter_Type>() {
   return ::rec::command::Setter_Type_descriptor();
 }
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Command_Type>() {
-  return ::rec::command::Command_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::command::Command_Id>() {
+  return ::rec::command::Command_Id_descriptor();
 }
 
 }  // namespace google

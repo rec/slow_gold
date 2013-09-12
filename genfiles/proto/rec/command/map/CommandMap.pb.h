@@ -95,12 +95,12 @@ class CommandMapEntry : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 command = 1;
-  inline bool has_command() const;
-  inline void clear_command();
-  static const int kCommandFieldNumber = 1;
-  inline ::google::protobuf::uint32 command() const;
-  inline void set_command(::google::protobuf::uint32 value);
+  // optional uint32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::uint32 id() const;
+  inline void set_id(::google::protobuf::uint32 value);
 
   // optional int32 index = 2;
   inline bool has_index() const;
@@ -127,14 +127,14 @@ class CommandMapEntry : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.command.CommandMapEntry)
  private:
-  inline void set_has_command();
-  inline void clear_has_command();
+  inline void set_has_id();
+  inline void clear_has_id();
   inline void set_has_index();
   inline void clear_has_index();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::uint32 command_;
+  ::google::protobuf::uint32 id_;
   ::google::protobuf::int32 index_;
   ::google::protobuf::RepeatedPtrField< ::std::string> key_;
 
@@ -408,26 +408,26 @@ class MidiCommandMapProto : public ::google::protobuf::Message {
 
 // CommandMapEntry
 
-// optional uint32 command = 1;
-inline bool CommandMapEntry::has_command() const {
+// optional uint32 id = 1;
+inline bool CommandMapEntry::has_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void CommandMapEntry::set_has_command() {
+inline void CommandMapEntry::set_has_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void CommandMapEntry::clear_has_command() {
+inline void CommandMapEntry::clear_has_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void CommandMapEntry::clear_command() {
-  command_ = 0u;
-  clear_has_command();
+inline void CommandMapEntry::clear_id() {
+  id_ = 0u;
+  clear_has_id();
 }
-inline ::google::protobuf::uint32 CommandMapEntry::command() const {
-  return command_;
+inline ::google::protobuf::uint32 CommandMapEntry::id() const {
+  return id_;
 }
-inline void CommandMapEntry::set_command(::google::protobuf::uint32 value) {
-  set_has_command();
-  command_ = value;
+inline void CommandMapEntry::set_id(::google::protobuf::uint32 value) {
+  set_has_id();
+  id_ = value;
 }
 
 // optional int32 index = 2;

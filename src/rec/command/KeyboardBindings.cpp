@@ -21,7 +21,7 @@ void fillKeyPressMappingSet(const CommandMapProto& commandMap,
   for (int i = 0; i < commandMap.entry_size(); ++i) {
     const CommandMapEntry& m = commandMap.entry(i);
     for (int j = 0; j < m.key_size(); ++j)
-      mappings->addKeyPress(m.command(), keyPressFromString(m.key(j)));
+      mappings->addKeyPress(m.id(), keyPressFromString(m.key(j)));
   }
 }
 

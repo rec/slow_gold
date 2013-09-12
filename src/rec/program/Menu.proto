@@ -3,7 +3,7 @@ package rec.program;
 import "rec/command/Command.proto";
 
 message MenuEntry {
-  repeated uint32 command = 1;
+  repeated uint32 id = 1;
   optional string submenu = 2;
   optional string callout_function = 3;
 };

@@ -14,7 +14,7 @@ Commands makeCommand() {
   for (auto& slowCommand: slowCommands.command()) {
     Command* command = commands.add_command();
     *command = slowCommand.command();
-    command->set_command(slowCommand.id());
+    command->set_id(slowCommand.id());
   }
   return commands;
 }
@@ -28,7 +28,7 @@ KeyStrokeCommandMapProto makeKeyBindings() {
   for (auto& slowEntry: slowMaps.entry()) {
     auto entry = map->add_entry();
     *entry = slowEntry.entry();
-    entry->set_command(slowEntry.id());
+    entry->set_id(slowEntry.id());
   }
   return bindings;
 }

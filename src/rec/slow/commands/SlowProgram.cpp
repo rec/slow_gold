@@ -66,7 +66,7 @@ program::Menus SlowProgram::menus() const {
     for (auto& slowEntry: slowMenu.entry()) {
       program::MenuEntry* menuEntry = menu->add_entry();
       for (auto& id: slowEntry.id())
-        menuEntry->add_command(id);
+        menuEntry->add_id(id);
       if (slowEntry.has_submenu())
         menuEntry->set_submenu(slowEntry.submenu());
       if (slowEntry.has_callout_function())
@@ -100,7 +100,7 @@ bool SlowProgram::hasProperty(const string& name) const {
 
 void SlowProgram::commandCallout(const command::Command& command,
                                  ApplicationCommandInfo* info) const {
-  DCHECK_EQ(command.command(), SlowCommand::TOGGLE_WHOLE_SONG_LOOP);
+  DCHECK_EQ(command.id(), SlowCommand::TOGGLE_WHOLE_SONG_LOOP);
   auto lpl = data::getProto<Viewport>(instance_->file()).loop_points();
   if (lpl.loop_point_size() <= 1 or audio::getSelectionCount(lpl) == 1)
     info->shortName = t_LOOP_ENTIRE_TRACK;

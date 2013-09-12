@@ -22,7 +22,7 @@ namespace {
 
 void checkMenuEntry(const MenuEntry& menuEntry) {
   int cat = 0;
-  if (menuEntry.command_size())
+  if (menuEntry.id_size())
     ++cat;
   if (menuEntry.has_submenu())
     ++cat;
@@ -113,16 +113,16 @@ void JuceModelImpl::addCommand(PopupMenu* popup, CommandID id, bool hasIndex) {
       submenu.addSeparator();
       ++nextSep;
     }
-    addSingleCommand(&submenu, command->command() + i);
+    addSingleCommand(&submenu, command->id() + i);
   }
   popup->addSubMenu(command->submenu_name(), submenu);
 }
 
 void JuceModelImpl::addCommands(PopupMenu* popup,
                                   const MenuEntry& menuEntry) {
-  for (auto& command: menuEntry.command()) {
-    if (command)
-      addCommand(popup, command);
+  for (auto& id: menuEntry.id()) {
+    if (id)
+      addCommand(popup, id);
     else
       popup->addSeparator();
   }
@@ -131,7 +131,7 @@ void JuceModelImpl::addCommands(PopupMenu* popup,
 void JuceModelImpl::addMenuEntry(PopupMenu* popup,
                                  const MenuEntry& menuEntry) {
   checkMenuEntry(menuEntry);
-  if (menuEntry.command_size())
+  if (menuEntry.id_size())
     addCommands(popup, menuEntry);
 
   else if (menuEntry.has_submenu())
@@ -171,7 +171,7 @@ void JuceModelImpl::getCommandInfo(CommandID id,
       flags |= ApplicationCommandInfo::isTicked;
 
     string shortName;
-    int nameIndex = id - command.command();
+    int nameIndex = id - command.id();
     if (isRecentFiles(id)) {
       vector<string> recentFiles = gui::getRecentFileNames();
       int fileIndex = id - recentFiles_;

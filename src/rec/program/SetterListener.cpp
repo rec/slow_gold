@@ -22,7 +22,7 @@ SetterListener::SetterListener(const command::Command& command,
                       command.setter().is_global() ? GLOBAL_SCOPE : FILE_SCOPE),
       model_(model) {
   Program* p = model->program();
-  CommandID id = command.command();
+  CommandID id = command.id();
   if (command.setter().type() == Setter::TOGGLE) {
     p->addCallback(id, methodCallback(this, &SetterListener::toggle));
   } else {

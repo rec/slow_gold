@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/command/map/CommandMap.proto',
   package='rec.command',
-  serialized_pb='\n rec/command/map/CommandMap.proto\x12\x0brec.command\">\n\x0f\x43ommandMapEntry\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\x05\x12\x0b\n\x03key\x18\x03 \x03(\x0c\">\n\x0f\x43ommandMapProto\x12+\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x1c.rec.command.CommandMapEntry\"E\n\x18KeyStrokeCommandMapProto\x12)\n\x03map\x18\x01 \x01(\x0b\x32\x1c.rec.command.CommandMapProto\"@\n\x13MidiCommandMapProto\x12)\n\x03map\x18\x01 \x01(\x0b\x32\x1c.rec.command.CommandMapProto')
+  serialized_pb='\n rec/command/map/CommandMap.proto\x12\x0brec.command\"9\n\x0f\x43ommandMapEntry\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\x05\x12\x0b\n\x03key\x18\x03 \x03(\x0c\">\n\x0f\x43ommandMapProto\x12+\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x1c.rec.command.CommandMapEntry\"E\n\x18KeyStrokeCommandMapProto\x12)\n\x03map\x18\x01 \x01(\x0b\x32\x1c.rec.command.CommandMapProto\"@\n\x13MidiCommandMapProto\x12)\n\x03map\x18\x01 \x01(\x0b\x32\x1c.rec.command.CommandMapProto')
 
 
 
@@ -26,7 +26,7 @@ _COMMANDMAPENTRY = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='command', full_name='rec.command.CommandMapEntry.command', index=0,
+      name='id', full_name='rec.command.CommandMapEntry.id', index=0,
       number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -56,7 +56,7 @@ _COMMANDMAPENTRY = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=49,
-  serialized_end=111,
+  serialized_end=106,
 )
 
 
@@ -83,8 +83,8 @@ _COMMANDMAPPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=113,
-  serialized_end=175,
+  serialized_start=108,
+  serialized_end=170,
 )
 
 
@@ -111,8 +111,8 @@ _KEYSTROKECOMMANDMAPPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=177,
-  serialized_end=246,
+  serialized_start=172,
+  serialized_end=241,
 )
 
 
@@ -139,8 +139,8 @@ _MIDICOMMANDMAPPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=248,
-  serialized_end=312,
+  serialized_start=243,
+  serialized_end=307,
 )
 
 _COMMANDMAPPROTO.fields_by_name['entry'].message_type = _COMMANDMAPENTRY
