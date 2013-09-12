@@ -56,7 +56,7 @@ command::KeyStrokeCommandMapProto SlowProgram::keypresses() const {
 }
 
 program::Menus SlowProgram::menus() const {
-  SlowMenus slowMenus = BINARY_PROTO(SlowMenus, SlowMenus);
+  SlowMenus slowMenus = BINARY_PROTO(Menus, SlowMenus);
   program::Menus menus;
   for (auto& slowMenu: slowMenus.menu()) {
     program::Menu* menu = menus.add_menu();
@@ -78,7 +78,7 @@ program::Menus SlowProgram::menus() const {
 }
 
 program::MenuCollection SlowProgram::menuCollection() const {
-  return BINARY_PROTO(SlowMenuCollection, program::MenuCollection);
+  return BINARY_PROTO(MenuCollection, program::MenuCollection);
 }
 
 string SlowProgram::menuBarName() const {

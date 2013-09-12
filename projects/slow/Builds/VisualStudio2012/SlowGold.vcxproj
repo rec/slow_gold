@@ -2227,10 +2227,10 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\src\rec\slow\commands\SlowCommands.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\SlowKeyStrokeMap.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\SlowMenuCollection.def"/>
-    <None Include="..\..\..\..\src\rec\slow\commands\SlowMenus.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\Commands.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\MenuCollection.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\Menus.def"/>
     <None Include="..\..\art\icon\AddLoopPointButton.svg"/>
     <None Include="..\..\art\icon\AddLoopPointButtonDisabled.svg"/>
     <None Include="..\..\art\icon\AddLoopPointButtonPressed.svg"/>

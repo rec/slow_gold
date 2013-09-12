@@ -72,7 +72,7 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
   SlowCommand_Type_descriptor_ = SlowCommand_descriptor_->enum_type(0);
   SlowCommands_descriptor_ = file->message_type(1);
   static const int SlowCommands_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommands, slow_command_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommands, command_),
   };
   SlowCommands_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -103,7 +103,7 @@ void protobuf_AssignDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
       sizeof(SlowCommandMapEntry));
   SlowCommandMapProto_descriptor_ = file->message_type(3);
   static const int SlowCommandMapProto_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapProto, slow_entry_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SlowCommandMapProto, entry_),
   };
   SlowCommandMapProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -285,19 +285,19 @@ void protobuf_AddDesc_rec_2fslow_2fcommands_2fSlowCommand_2eproto() {
     "SELECTION\020-\022\023\n\017FIRST_FREE_TYPE\020e\022\t\n\004QUIT"
     "\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PA"
     "STE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020"
-    "\207 \";\n\014SlowCommands\022+\n\014slow_command\030\001 \003(\013"
-    "2\025.rec.slow.SlowCommand\"o\n\023SlowCommandMa"
-    "pEntry\022+\n\007command\030\001 \001(\0162\032.rec.slow.SlowC"
-    "ommand.Type\022+\n\005entry\030\002 \001(\0132\034.rec.command"
-    ".CommandMapEntry\"H\n\023SlowCommandMapProto\022"
-    "1\n\nslow_entry\030\001 \003(\0132\035.rec.slow.SlowComma"
-    "ndMapEntry\"g\n\rSlowMenuEntry\022+\n\007command\030\001"
-    " \003(\0162\032.rec.slow.SlowCommand.Type\022\017\n\007subm"
-    "enu\030\002 \001(\t\022\030\n\020callout_function\030\003 \001(\t\"r\n\010S"
-    "lowMenu\022-\n\013description\030\001 \001(\0132\030.rec.comma"
-    "nd.Description\022\017\n\007extends\030\002 \001(\t\022&\n\005entry"
-    "\030\003 \003(\0132\027.rec.slow.SlowMenuEntry\"-\n\tSlowM"
-    "enus\022 \n\004menu\030\001 \003(\0132\022.rec.slow.SlowMenu", 3078);
+    "\207 \"6\n\014SlowCommands\022&\n\007command\030\001 \003(\0132\025.re"
+    "c.slow.SlowCommand\"o\n\023SlowCommandMapEntr"
+    "y\022+\n\007command\030\001 \001(\0162\032.rec.slow.SlowComman"
+    "d.Type\022+\n\005entry\030\002 \001(\0132\034.rec.command.Comm"
+    "andMapEntry\"C\n\023SlowCommandMapProto\022,\n\005en"
+    "try\030\001 \003(\0132\035.rec.slow.SlowCommandMapEntry"
+    "\"g\n\rSlowMenuEntry\022+\n\007command\030\001 \003(\0162\032.rec"
+    ".slow.SlowCommand.Type\022\017\n\007submenu\030\002 \001(\t\022"
+    "\030\n\020callout_function\030\003 \001(\t\"r\n\010SlowMenu\022-\n"
+    "\013description\030\001 \001(\0132\030.rec.command.Descrip"
+    "tion\022\017\n\007extends\030\002 \001(\t\022&\n\005entry\030\003 \003(\0132\027.r"
+    "ec.slow.SlowMenuEntry\"-\n\tSlowMenus\022 \n\004me"
+    "nu\030\001 \003(\0132\022.rec.slow.SlowMenu", 3068);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/commands/SlowCommand.proto", &protobuf_RegisterTypes);
   SlowCommand::default_instance_ = new SlowCommand();
@@ -817,7 +817,7 @@ void SlowCommand::Swap(SlowCommand* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int SlowCommands::kSlowCommandFieldNumber;
+const int SlowCommands::kCommandFieldNumber;
 #endif  // !_MSC_VER
 
 SlowCommands::SlowCommands()
@@ -870,7 +870,7 @@ SlowCommands* SlowCommands::New() const {
 }
 
 void SlowCommands::Clear() {
-  slow_command_.Clear();
+  command_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -881,17 +881,17 @@ bool SlowCommands::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.slow.SlowCommand slow_command = 1;
+      // repeated .rec.slow.SlowCommand command = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_slow_command:
+         parse_command:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_slow_command()));
+                input, add_command()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(10)) goto parse_slow_command;
+        if (input->ExpectTag(10)) goto parse_command;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -914,10 +914,10 @@ bool SlowCommands::MergePartialFromCodedStream(
 
 void SlowCommands::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.slow.SlowCommand slow_command = 1;
-  for (int i = 0; i < this->slow_command_size(); i++) {
+  // repeated .rec.slow.SlowCommand command = 1;
+  for (int i = 0; i < this->command_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->slow_command(i), output);
+      1, this->command(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -928,11 +928,11 @@ void SlowCommands::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SlowCommands::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.slow.SlowCommand slow_command = 1;
-  for (int i = 0; i < this->slow_command_size(); i++) {
+  // repeated .rec.slow.SlowCommand command = 1;
+  for (int i = 0; i < this->command_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->slow_command(i), target);
+        1, this->command(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -945,12 +945,12 @@ void SlowCommands::SerializeWithCachedSizes(
 int SlowCommands::ByteSize() const {
   int total_size = 0;
 
-  // repeated .rec.slow.SlowCommand slow_command = 1;
-  total_size += 1 * this->slow_command_size();
-  for (int i = 0; i < this->slow_command_size(); i++) {
+  // repeated .rec.slow.SlowCommand command = 1;
+  total_size += 1 * this->command_size();
+  for (int i = 0; i < this->command_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->slow_command(i));
+        this->command(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -978,7 +978,7 @@ void SlowCommands::MergeFrom(const ::google::protobuf::Message& from) {
 
 void SlowCommands::MergeFrom(const SlowCommands& from) {
   GOOGLE_CHECK_NE(&from, this);
-  slow_command_.MergeFrom(from.slow_command_);
+  command_.MergeFrom(from.command_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1001,7 +1001,7 @@ bool SlowCommands::IsInitialized() const {
 
 void SlowCommands::Swap(SlowCommands* other) {
   if (other != this) {
-    slow_command_.Swap(&other->slow_command_);
+    command_.Swap(&other->command_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1279,7 +1279,7 @@ void SlowCommandMapEntry::Swap(SlowCommandMapEntry* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int SlowCommandMapProto::kSlowEntryFieldNumber;
+const int SlowCommandMapProto::kEntryFieldNumber;
 #endif  // !_MSC_VER
 
 SlowCommandMapProto::SlowCommandMapProto()
@@ -1332,7 +1332,7 @@ SlowCommandMapProto* SlowCommandMapProto::New() const {
 }
 
 void SlowCommandMapProto::Clear() {
-  slow_entry_.Clear();
+  entry_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1343,17 +1343,17 @@ bool SlowCommandMapProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
+      // repeated .rec.slow.SlowCommandMapEntry entry = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_slow_entry:
+         parse_entry:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_slow_entry()));
+                input, add_entry()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(10)) goto parse_slow_entry;
+        if (input->ExpectTag(10)) goto parse_entry;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1376,10 +1376,10 @@ bool SlowCommandMapProto::MergePartialFromCodedStream(
 
 void SlowCommandMapProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
-  for (int i = 0; i < this->slow_entry_size(); i++) {
+  // repeated .rec.slow.SlowCommandMapEntry entry = 1;
+  for (int i = 0; i < this->entry_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->slow_entry(i), output);
+      1, this->entry(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1390,11 +1390,11 @@ void SlowCommandMapProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SlowCommandMapProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
-  for (int i = 0; i < this->slow_entry_size(); i++) {
+  // repeated .rec.slow.SlowCommandMapEntry entry = 1;
+  for (int i = 0; i < this->entry_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->slow_entry(i), target);
+        1, this->entry(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1407,12 +1407,12 @@ void SlowCommandMapProto::SerializeWithCachedSizes(
 int SlowCommandMapProto::ByteSize() const {
   int total_size = 0;
 
-  // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
-  total_size += 1 * this->slow_entry_size();
-  for (int i = 0; i < this->slow_entry_size(); i++) {
+  // repeated .rec.slow.SlowCommandMapEntry entry = 1;
+  total_size += 1 * this->entry_size();
+  for (int i = 0; i < this->entry_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->slow_entry(i));
+        this->entry(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -1440,7 +1440,7 @@ void SlowCommandMapProto::MergeFrom(const ::google::protobuf::Message& from) {
 
 void SlowCommandMapProto::MergeFrom(const SlowCommandMapProto& from) {
   GOOGLE_CHECK_NE(&from, this);
-  slow_entry_.MergeFrom(from.slow_entry_);
+  entry_.MergeFrom(from.entry_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1463,7 +1463,7 @@ bool SlowCommandMapProto::IsInitialized() const {
 
 void SlowCommandMapProto::Swap(SlowCommandMapProto* other) {
   if (other != this) {
-    slow_entry_.Swap(&other->slow_entry_);
+    entry_.Swap(&other->entry_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

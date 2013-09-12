@@ -145,7 +145,7 @@ message SlowCommand {
 };
 
 message SlowCommands {
-  repeated SlowCommand slow_command = 1;
+  repeated SlowCommand command = 1;
 };
 
 message SlowCommandMapEntry {
@@ -154,7 +154,7 @@ message SlowCommandMapEntry {
 };
 
 message SlowCommandMapProto {
-  repeated SlowCommandMapEntry slow_entry = 1;
+  repeated SlowCommandMapEntry entry = 1;
 };
 
 message SlowMenuEntry {

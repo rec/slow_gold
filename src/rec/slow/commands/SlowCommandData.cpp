@@ -8,10 +8,10 @@ namespace slow {
 using namespace rec::command;
 
 Commands makeCommand() {
-  SlowCommands slowCommands = BINARY_PROTO(SlowCommands, SlowCommands);
+  SlowCommands slowCommands = BINARY_PROTO(Commands, SlowCommands);
 
   Commands commands;
-  for (auto& slowCommand: slowCommands.slow_command()) {
+  for (auto& slowCommand: slowCommands.command()) {
     Command* command = commands.add_command();
     *command = slowCommand.command();
     command->set_command(static_cast<slow::SlowCommand::Type>(slowCommand.type()));
@@ -21,11 +21,11 @@ Commands makeCommand() {
 
 KeyStrokeCommandMapProto makeKeyBindings() {
   slow::SlowCommandMapProto slowMaps =
-    BINARY_PROTO(SlowKeyStrokeMap, slow::SlowCommandMapProto);
+    BINARY_PROTO(KeyStrokeMap, slow::SlowCommandMapProto);
 
   KeyStrokeCommandMapProto bindings;
   auto map = bindings.mutable_map();
-  for (auto& slowEntry: slowMaps.slow_entry()) {
+  for (auto& slowEntry: slowMaps.entry()) {
     auto entry = map->add_entry();
     *entry = slowEntry.entry();
     entry->set_command(slowEntry.command());

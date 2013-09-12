@@ -6,17 +6,17 @@
 
 namespace BinaryData
 {
-    extern const char*   SlowCommands_def;
-    const int            SlowCommands_defSize = 29159;
+    extern const char*   Commands_def;
+    const int            Commands_defSize = 28729;
 
-    extern const char*   SlowKeyStrokeMap_def;
-    const int            SlowKeyStrokeMap_defSize = 6951;
+    extern const char*   KeyStrokeMap_def;
+    const int            KeyStrokeMap_defSize = 6561;
 
-    extern const char*   SlowMenuCollection_def;
-    const int            SlowMenuCollection_defSize = 373;
+    extern const char*   MenuCollection_def;
+    const int            MenuCollection_defSize = 373;
 
-    extern const char*   SlowMenus_def;
-    const int            SlowMenus_defSize = 3442;
+    extern const char*   Menus_def;
+    const int            Menus_defSize = 3442;
 
     extern const char*   AddLoopPointButton_svg;
     const int            AddLoopPointButton_svgSize = 21887;

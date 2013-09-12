@@ -448,24 +448,24 @@ class SlowCommands : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .rec.slow.SlowCommand slow_command = 1;
-  inline int slow_command_size() const;
-  inline void clear_slow_command();
-  static const int kSlowCommandFieldNumber = 1;
-  inline const ::rec::slow::SlowCommand& slow_command(int index) const;
-  inline ::rec::slow::SlowCommand* mutable_slow_command(int index);
-  inline ::rec::slow::SlowCommand* add_slow_command();
+  // repeated .rec.slow.SlowCommand command = 1;
+  inline int command_size() const;
+  inline void clear_command();
+  static const int kCommandFieldNumber = 1;
+  inline const ::rec::slow::SlowCommand& command(int index) const;
+  inline ::rec::slow::SlowCommand* mutable_command(int index);
+  inline ::rec::slow::SlowCommand* add_command();
   inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand >&
-      slow_command() const;
+      command() const;
   inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand >*
-      mutable_slow_command();
+      mutable_command();
 
   // @@protoc_insertion_point(class_scope:rec.slow.SlowCommands)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand > slow_command_;
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand > command_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -627,24 +627,24 @@ class SlowCommandMapProto : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
-  inline int slow_entry_size() const;
-  inline void clear_slow_entry();
-  static const int kSlowEntryFieldNumber = 1;
-  inline const ::rec::slow::SlowCommandMapEntry& slow_entry(int index) const;
-  inline ::rec::slow::SlowCommandMapEntry* mutable_slow_entry(int index);
-  inline ::rec::slow::SlowCommandMapEntry* add_slow_entry();
+  // repeated .rec.slow.SlowCommandMapEntry entry = 1;
+  inline int entry_size() const;
+  inline void clear_entry();
+  static const int kEntryFieldNumber = 1;
+  inline const ::rec::slow::SlowCommandMapEntry& entry(int index) const;
+  inline ::rec::slow::SlowCommandMapEntry* mutable_entry(int index);
+  inline ::rec::slow::SlowCommandMapEntry* add_entry();
   inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >&
-      slow_entry() const;
+      entry() const;
   inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >*
-      mutable_slow_entry();
+      mutable_entry();
 
   // @@protoc_insertion_point(class_scope:rec.slow.SlowCommandMapProto)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry > slow_entry_;
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry > entry_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -1038,29 +1038,29 @@ inline void SlowCommand::set_allocated_command(::rec::command::Command* command)
 
 // SlowCommands
 
-// repeated .rec.slow.SlowCommand slow_command = 1;
-inline int SlowCommands::slow_command_size() const {
-  return slow_command_.size();
+// repeated .rec.slow.SlowCommand command = 1;
+inline int SlowCommands::command_size() const {
+  return command_.size();
 }
-inline void SlowCommands::clear_slow_command() {
-  slow_command_.Clear();
+inline void SlowCommands::clear_command() {
+  command_.Clear();
 }
-inline const ::rec::slow::SlowCommand& SlowCommands::slow_command(int index) const {
-  return slow_command_.Get(index);
+inline const ::rec::slow::SlowCommand& SlowCommands::command(int index) const {
+  return command_.Get(index);
 }
-inline ::rec::slow::SlowCommand* SlowCommands::mutable_slow_command(int index) {
-  return slow_command_.Mutable(index);
+inline ::rec::slow::SlowCommand* SlowCommands::mutable_command(int index) {
+  return command_.Mutable(index);
 }
-inline ::rec::slow::SlowCommand* SlowCommands::add_slow_command() {
-  return slow_command_.Add();
+inline ::rec::slow::SlowCommand* SlowCommands::add_command() {
+  return command_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand >&
-SlowCommands::slow_command() const {
-  return slow_command_;
+SlowCommands::command() const {
+  return command_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommand >*
-SlowCommands::mutable_slow_command() {
-  return &slow_command_;
+SlowCommands::mutable_command() {
+  return &command_;
 }
 
 // -------------------------------------------------------------------
@@ -1132,29 +1132,29 @@ inline void SlowCommandMapEntry::set_allocated_entry(::rec::command::CommandMapE
 
 // SlowCommandMapProto
 
-// repeated .rec.slow.SlowCommandMapEntry slow_entry = 1;
-inline int SlowCommandMapProto::slow_entry_size() const {
-  return slow_entry_.size();
+// repeated .rec.slow.SlowCommandMapEntry entry = 1;
+inline int SlowCommandMapProto::entry_size() const {
+  return entry_.size();
 }
-inline void SlowCommandMapProto::clear_slow_entry() {
-  slow_entry_.Clear();
+inline void SlowCommandMapProto::clear_entry() {
+  entry_.Clear();
 }
-inline const ::rec::slow::SlowCommandMapEntry& SlowCommandMapProto::slow_entry(int index) const {
-  return slow_entry_.Get(index);
+inline const ::rec::slow::SlowCommandMapEntry& SlowCommandMapProto::entry(int index) const {
+  return entry_.Get(index);
 }
-inline ::rec::slow::SlowCommandMapEntry* SlowCommandMapProto::mutable_slow_entry(int index) {
-  return slow_entry_.Mutable(index);
+inline ::rec::slow::SlowCommandMapEntry* SlowCommandMapProto::mutable_entry(int index) {
+  return entry_.Mutable(index);
 }
-inline ::rec::slow::SlowCommandMapEntry* SlowCommandMapProto::add_slow_entry() {
-  return slow_entry_.Add();
+inline ::rec::slow::SlowCommandMapEntry* SlowCommandMapProto::add_entry() {
+  return entry_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >&
-SlowCommandMapProto::slow_entry() const {
-  return slow_entry_;
+SlowCommandMapProto::entry() const {
+  return entry_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::rec::slow::SlowCommandMapEntry >*
-SlowCommandMapProto::mutable_slow_entry() {
-  return &slow_entry_;
+SlowCommandMapProto::mutable_entry() {
+  return &entry_;
 }
 
 // -------------------------------------------------------------------
