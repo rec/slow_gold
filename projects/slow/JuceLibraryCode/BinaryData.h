@@ -7,7 +7,7 @@
 namespace BinaryData
 {
     extern const char*   Commands_def;
-    const int            Commands_defSize = 28557;
+    const int            Commands_defSize = 29088;
 
     extern const char*   KeyStrokeMap_def;
     const int            KeyStrokeMap_defSize = 6171;

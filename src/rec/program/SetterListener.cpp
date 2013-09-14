@@ -18,8 +18,7 @@ namespace program {
 SetterListener::SetterListener(const command::Command& command,
                                JuceModel* model)
     : AddressListener(command.setter().address(),
-                      command.setter().type_name(),
-                      command.setter().is_global() ? data::AddressProto::GLOBAL_SCOPE : data::AddressProto::FILE_SCOPE),
+                      command.setter().type_name()),
       model_(model) {
   Program* p = model->program();
   CommandID id = command.id();

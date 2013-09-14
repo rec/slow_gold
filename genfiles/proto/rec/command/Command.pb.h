@@ -311,26 +311,19 @@ class Setter : public ::google::protobuf::Message {
   inline ::rec::command::Setter_Type type() const;
   inline void set_type(::rec::command::Setter_Type value);
 
-  // optional bool is_global = 2 [default = true];
-  inline bool has_is_global() const;
-  inline void clear_is_global();
-  static const int kIsGlobalFieldNumber = 2;
-  inline bool is_global() const;
-  inline void set_is_global(bool value);
-
-  // optional .rec.data.AddressProto address = 3;
+  // optional .rec.data.AddressProto address = 2;
   inline bool has_address() const;
   inline void clear_address();
-  static const int kAddressFieldNumber = 3;
+  static const int kAddressFieldNumber = 2;
   inline const ::rec::data::AddressProto& address() const;
   inline ::rec::data::AddressProto* mutable_address();
   inline ::rec::data::AddressProto* release_address();
   inline void set_allocated_address(::rec::data::AddressProto* address);
 
-  // optional string type_name = 4;
+  // optional string type_name = 3;
   inline bool has_type_name() const;
   inline void clear_type_name();
-  static const int kTypeNameFieldNumber = 4;
+  static const int kTypeNameFieldNumber = 3;
   inline const ::std::string& type_name() const;
   inline void set_type_name(const ::std::string& value);
   inline void set_type_name(const char* value);
@@ -343,8 +336,6 @@ class Setter : public ::google::protobuf::Message {
  private:
   inline void set_has_type();
   inline void clear_has_type();
-  inline void set_has_is_global();
-  inline void clear_has_is_global();
   inline void set_has_address();
   inline void clear_has_address();
   inline void set_has_type_name();
@@ -352,13 +343,12 @@ class Setter : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  int type_;
-  bool is_global_;
   ::rec::data::AddressProto* address_;
   ::std::string* type_name_;
+  int type_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -1004,37 +994,15 @@ inline void Setter::set_type(::rec::command::Setter_Type value) {
   type_ = value;
 }
 
-// optional bool is_global = 2 [default = true];
-inline bool Setter::has_is_global() const {
+// optional .rec.data.AddressProto address = 2;
+inline bool Setter::has_address() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Setter::set_has_is_global() {
+inline void Setter::set_has_address() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Setter::clear_has_is_global() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Setter::clear_is_global() {
-  is_global_ = true;
-  clear_has_is_global();
-}
-inline bool Setter::is_global() const {
-  return is_global_;
-}
-inline void Setter::set_is_global(bool value) {
-  set_has_is_global();
-  is_global_ = value;
-}
-
-// optional .rec.data.AddressProto address = 3;
-inline bool Setter::has_address() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void Setter::set_has_address() {
-  _has_bits_[0] |= 0x00000004u;
-}
 inline void Setter::clear_has_address() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void Setter::clear_address() {
   if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
@@ -1064,15 +1032,15 @@ inline void Setter::set_allocated_address(::rec::data::AddressProto* address) {
   }
 }
 
-// optional string type_name = 4;
+// optional string type_name = 3;
 inline bool Setter::has_type_name() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void Setter::set_has_type_name() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void Setter::clear_has_type_name() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Setter::clear_type_name() {
   if (type_name_ != &::google::protobuf::internal::kEmptyString) {

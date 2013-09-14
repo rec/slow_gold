@@ -731,6 +731,7 @@ command {
         part {
           name: "file_type_for_save"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.audio.AudioSettings"
     }
@@ -758,6 +759,7 @@ command {
         part {
           name: "language"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.app.AppSettings"
     }
@@ -788,6 +790,7 @@ command {
         part {
           name: "advanced_menus"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.slow.GuiSettings"
     }
@@ -806,6 +809,7 @@ command {
         part {
           name: "auto_check_for_updates"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.slow.GuiSettings"
     }
@@ -824,6 +828,7 @@ command {
         part {
           name: "command_bar_at_left"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -842,6 +847,7 @@ command {
         part {
           name: "command_bar_at_top"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -860,6 +866,7 @@ command {
         part {
           name: "use_tree_view_in_file_dialogs"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.slow.GuiSettings"
     }
@@ -878,6 +885,7 @@ command {
         part {
           name: "follow_cursor"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.slow.GuiSettings"
     }
@@ -896,6 +904,7 @@ command {
         part {
           name: "show_grid"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -914,6 +923,7 @@ command {
         part {
           name: "modes_at_left"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -932,6 +942,7 @@ command {
         part {
           name: "modes_at_top"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -950,6 +961,7 @@ command {
         part {
           name: "parallel_waveforms"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -964,11 +976,11 @@ command {
       full: "Toggle level display between pre- and post-fader."
     }
     setter {
-      is_global: false
       address {
         part {
           name: "prefader_levels"
         }
+        scope: FILE_SCOPE
       }
       type_name: "rec.audio.Gain"
     }
@@ -1030,6 +1042,7 @@ command {
         part {
           name: "show_about_on_startup"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.slow.GuiSettings"
     }
@@ -1048,6 +1061,7 @@ command {
         part {
           name: "show_cursor_labels"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -1066,6 +1080,7 @@ command {
         part {
           name: "show_labels_at_top"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -1084,6 +1099,7 @@ command {
         part {
           name: "show_master_tune"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.slow.GuiSettings"
     }
@@ -1102,6 +1118,7 @@ command {
         part {
           name: "show_selection_buttons"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -1120,6 +1137,7 @@ command {
         part {
           name: "show_times_at_top"
         }
+        scope: GLOBAL_SCOPE
       }
       type_name: "rec.widget.waveform.WaveformProto"
     }
@@ -1145,11 +1163,11 @@ command {
       full: "Toggle between stretched and real-time playback."
     }
     setter {
-      is_global: false
       address {
         part {
           name: "time_enabled"
         }
+        scope: FILE_SCOPE
       }
       type_name: "rec.audio.stretch.Stretch"
     }
@@ -1164,11 +1182,11 @@ command {
       full: "Toggle pitch, time and stereo transforms of the sound."
     }
     setter {
-      is_global: false
       address {
         part {
           name: "enabled"
         }
+        scope: FILE_SCOPE
       }
       type_name: "rec.audio.stretch.Stretch"
     }

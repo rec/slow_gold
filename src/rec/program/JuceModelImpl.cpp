@@ -181,8 +181,9 @@ void JuceModelImpl::getCommandInfo(CommandID id,
         shortName = recentFiles[fileIndex];
     } else if (command.has_setter()) {
       const Setter& setter = command.setter();
-      VirtualFile file = setter.is_global() ? global() :
-        program_->getCurrentFile();
+      bool isGlobal = (setter.address().scope() ==
+                       data::AddressProto::GLOBAL_SCOPE);
+      VirtualFile file = isGlobal ? global() : program_->getCurrentFile();
       Data* data = getData(setter.type_name(), file);
       unique_ptr<Message> msg(data->clone());
       Value value = data::getMessageFieldOrDie(setter.address(), *msg);
