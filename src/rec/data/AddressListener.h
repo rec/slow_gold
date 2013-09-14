@@ -10,11 +10,7 @@ namespace data {
 
 class AddressListener : public Listener<const Value&> {
  public:
-  AddressListener(const Address& a, const string& typeName,
-                  AddressProto::Scope scope = AddressProto::FILE_SCOPE);
-
- public:
-
+  AddressListener(const Address& a, const string& typeName);
   virtual ~AddressListener();
 
   virtual void operator()(const Value&) = 0;
