@@ -832,9 +832,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.cpp">
       <Filter>SlowGold\src\slow\callbacks</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.cpp">
-      <Filter>SlowGold\src\slow\commands</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\slow\commands\SlowProgram.cpp">
       <Filter>SlowGold\src\slow\commands</Filter>
     </ClCompile>
@@ -2589,6 +2586,9 @@
     <ClInclude Include="..\..\..\..\src\rec\command\CallbackTable.h">
       <Filter>SlowGold\src\command</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h">
+      <Filter>SlowGold\src\command</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\KeyboardBindings.h">
       <Filter>SlowGold\src\command</Filter>
     </ClInclude>
@@ -2876,9 +2876,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\callbacks\SaveFile.h">
       <Filter>SlowGold\src\slow\callbacks</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowCommandData.h">
-      <Filter>SlowGold\src\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\slow\commands\SlowProgram.h">
       <Filter>SlowGold\src\slow\commands</Filter>

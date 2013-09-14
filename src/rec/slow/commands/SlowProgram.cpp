@@ -6,7 +6,7 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/Command.pb.h"
-#include "rec/slow/commands/SlowCommandData.h"
+#include "rec/command/CommandData.h"
 #include "rec/translation/TranslationTables.h"
 #include "rec/util/Binary.h"
 #include "rec/util/LoopPoint.h"
@@ -49,11 +49,11 @@ static SlowRecentFilesStrategy RECENT_FILES_STRATEGY;
 }
 
 command::Commands SlowProgram::commands() const {
-  return convertCommands<slow::Commands>();
+  return command::convertCommands<slow::Commands>();
 }
 
 command::KeyStrokeCommandMapProto SlowProgram::keypresses() const {
-  return makeKeyBindings();
+  return command::convertKeyBindings<slow::CommandMapProto>();
 }
 
 program::Menus SlowProgram::menus() const {

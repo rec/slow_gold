@@ -1,31 +1,42 @@
 #ifndef __REC_COMMAND_DATA_SLOWCOMMANDDATA__
 #define __REC_COMMAND_DATA_SLOWCOMMANDDATA__
 
-#include "rec/base/base.h"
 #include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/util/Binary.h"
 
 namespace rec {
-namespace slow {
+namespace command {
 
 class Instance;
 
 template <typename ProgramCommands>
-command::Commands convertCommands() {
+Commands convertCommands() {
   ProgramCommands slowCommands = BINARY_PROTO(Commands, ProgramCommands);
-  command::Commands commands;
+  Commands commands;
   for (auto& slowCommand: slowCommands.command()) {
-    command::Command* command = commands.add_command();
+    Command* command = commands.add_command();
     *command = slowCommand.command();
     command->set_id(slowCommand.id());
   }
   return commands;
 }
 
-command::KeyStrokeCommandMapProto makeKeyBindings();
+template <typename CommandMapProto>
+KeyStrokeCommandMapProto convertKeyBindings() {
+  CommandMapProto slowMaps = BINARY_PROTO(KeyStrokeMap, CommandMapProto);
 
-}  // namespace slow
+  KeyStrokeCommandMapProto bindings;
+  auto map = bindings.mutable_map();
+  for (auto& slowEntry: slowMaps.entry()) {
+    auto entry = map->add_entry();
+    *entry = slowEntry.entry();
+    entry->set_id(slowEntry.id());
+  }
+  return bindings;
+}
+
+}  // namespace command
 }  // namespace rec
 
 #endif  // __REC_COMMAND_DATA_SLOWCOMMANDDATA__

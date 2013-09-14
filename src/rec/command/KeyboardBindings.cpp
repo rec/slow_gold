@@ -3,7 +3,7 @@
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/map/Editor.h"
 #include "rec/slow/commands/Command.pb.h"
-#include "rec/slow/commands/SlowCommandData.h"
+#include "rec/command/CommandData.h"
 #include "rec/data/DataOps.h"
 #include "rec/util/Binary.h"
 
@@ -32,7 +32,8 @@ CommandMapProto getKeyboardBindings() {
   if (d->fileReadSuccess())
     return getProto<KeyStrokeCommandMapProto>(d).map();
 
-  static const KeyStrokeCommandMapProto mp = slow::makeKeyBindings();
+  static const KeyStrokeCommandMapProto mp =
+    command::convertKeyBindings<slow::CommandMapProto>();
   return mp.map();
 }
 
