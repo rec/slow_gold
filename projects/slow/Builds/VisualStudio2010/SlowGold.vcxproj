@@ -169,6 +169,7 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillerThread.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ProcessAudioFile.cpp"/>
@@ -247,7 +248,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\Components.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\CurrentTime.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\slow\FillerThread.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\GuiListener.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\GuiSettings.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp"/>
@@ -1493,6 +1493,8 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\CurrentTimeBase.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillerThread.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\FrameArray.h"/>
     <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
@@ -1619,7 +1621,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\CurrentTime.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\slow\FillerThread.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\GuiListener.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\GuiSettings.h"/>
     <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h"/>

@@ -9,6 +9,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
+#include "rec/audio/util/FillerThread.h"
 #include "rec/base/Arraysize.h"
 #include "rec/base/DropDead.h"
 #include "rec/base/SampleRate.h"
@@ -25,10 +26,10 @@
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransformController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/program/JuceModel.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/CurrentTime.h"
-#include "rec/slow/FillerThread.h"
 #include "rec/slow/GuiListener.h"
 #include "rec/slow/GuiSettings.h"
 #include "rec/slow/MainPage.h"
@@ -36,6 +37,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Threads.h"
 #include "rec/slow/commands/Command.pb.h"
+#include "rec/slow/commands/SlowProgram.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
 #include "rec/util/file/FileType.h"
@@ -43,12 +45,6 @@
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
-
-
-// for testing.
-#include "rec/slow/commands/SlowProgram.h"
-#include "rec/program/JuceModel.h"
-
 
 namespace rec {
 namespace slow {

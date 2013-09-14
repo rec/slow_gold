@@ -1,21 +1,15 @@
-#include "rec/slow/FillerThread.h"
+#include "rec/audio/util/FillerThread.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
-#include "rec/slow/Components.h"
-#include "rec/slow/CurrentTime.h"
-#include "rec/slow/Instance.h"
+#include "rec/audio/util/CurrentTimeBase.h"
 #include "rec/util/range/Difference.h"
 #include "rec/util/range/WrapSeries.h"
 #include "rec/util/range/Range.h"
-#include "rec/util/thread/CallAsync.h"
-#include "rec/widget/waveform/Waveform.h"
-
-using namespace rec::audio::util;
-using namespace rec::widget::waveform;
 
 namespace rec {
-namespace slow {
+namespace audio {
+namespace util {
 
 namespace {
 
@@ -62,5 +56,6 @@ void FillerThread::run() {
   }
 }
 
-}  // namespace slow
+}  // namespace util
+}  // namespace audio
 }  // namespace rec

@@ -23,7 +23,6 @@ namespace slow {
 class Components;
 class CurrentFile;
 class CurrentTime;
-class FillerThread;
 class GuiListener;
 class MouseListener;
 class SlowWindow;
