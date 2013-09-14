@@ -278,6 +278,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Copy.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\CurrentFileBase.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\DisplayFile.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\FileType.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\util\file\FixLegacyFiles.cpp"/>
@@ -1653,6 +1654,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Deletable.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\CurrentFileBase.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\DisplayFile.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\FileType.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\file\FixLegacyFiles.h"/>

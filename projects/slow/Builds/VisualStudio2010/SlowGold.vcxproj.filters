@@ -919,6 +919,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\file\CompareFile.cpp">
       <Filter>SlowGold\src\util\file</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\CurrentFileBase.cpp">
+      <Filter>SlowGold\src\util\file</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\file\DisplayFile.cpp">
       <Filter>SlowGold\src\util\file</Filter>
     </ClCompile>
@@ -2971,6 +2974,9 @@
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\CompareFile.h">
+      <Filter>SlowGold\src\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\CurrentFileBase.h">
       <Filter>SlowGold\src\util\file</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\file\DisplayFile.h">

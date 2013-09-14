@@ -10,8 +10,6 @@ namespace rec { namespace gui { class DropFiles; } }
 namespace rec {
 namespace slow {
 
-class Instance;
-
 class CurrentFile : public Listener<const VirtualFile&>,
                     public Listener<const gui::DropFiles&> {
  public:
@@ -48,9 +46,6 @@ class CurrentFile : public Listener<const VirtualFile&>,
   SampleTime length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
-
-  // friend class Instance;
-  // friend class FileDataListener;
 };
 
 }  // namespace slow
