@@ -2,7 +2,7 @@
 
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/map/Editor.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 #include "rec/slow/commands/SlowCommandData.h"
 #include "rec/data/DataOps.h"
 #include "rec/util/Binary.h"

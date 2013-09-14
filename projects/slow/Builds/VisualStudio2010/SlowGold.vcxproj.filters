@@ -1120,7 +1120,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc">
       <Filter>SlowGold\genfiles\rec\slow</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.cc">
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\commands\Command.pb.cc">
       <Filter>SlowGold\genfiles\rec\slow\commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.cc">
@@ -3330,7 +3330,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h">
       <Filter>SlowGold\genfiles\rec\slow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\SlowCommand.pb.h">
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\commands\Command.pb.h">
       <Filter>SlowGold\genfiles\rec\slow\commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\GuiSettings.pb.h">

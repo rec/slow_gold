@@ -10,7 +10,7 @@
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/LoopSnapshot.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Math.h"
 #include "rec/util/thread/MakeThread.h"
@@ -84,11 +84,11 @@ bool toggleWholeSongLoop(int i, int p, bool, bool al) {
 }  // namespace
 
 void addSelectionCallbacks(command::CallbackTable* t) {
-  addCallback(t, slow::SlowCommand::DESELECT_ALL, select, deselectAll, CommandIDs::CURRENT);
-  addCallback(t, slow::SlowCommand::SELECT_ALL, select, selectAll, CommandIDs::CURRENT);
-  addCallback(t, slow::SlowCommand::INVERT_LOOP_SELECTION, select, invertLoopSelection,
+  addCallback(t, slow::Command::DESELECT_ALL, select, deselectAll, CommandIDs::CURRENT);
+  addCallback(t, slow::Command::SELECT_ALL, select, selectAll, CommandIDs::CURRENT);
+  addCallback(t, slow::Command::INVERT_LOOP_SELECTION, select, invertLoopSelection,
               CommandIDs::CURRENT);
-  addCallback(t, slow::SlowCommand::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop,
+  addCallback(t, slow::Command::TOGGLE_WHOLE_SONG_LOOP, select, toggleWholeSongLoop,
               CommandIDs::CURRENT);
 }
 
@@ -286,23 +286,23 @@ const int MENU_COMMAND_REPEATS = 15;
 
 void addRepeatedCallbacks(CallbackTable* t, int repeat) {
   for (int32 j = 0; j < MENU_COMMAND_REPEATS; ++j) {
-    addCallback(t, slow::SlowCommand::SELECT, j, selectAdd);
-    addCallback(t, slow::SlowCommand::SELECT_ONLY, j, selectOnly);
-    addCallback(t, slow::SlowCommand::TOGGLE_SELECTION, j, toggle);
-    addCallback(t, slow::SlowCommand::UNSELECT, j, unselect);
+    addCallback(t, slow::Command::SELECT, j, selectAdd);
+    addCallback(t, slow::Command::SELECT_ONLY, j, selectOnly);
+    addCallback(t, slow::Command::TOGGLE_SELECTION, j, toggle);
+    addCallback(t, slow::Command::UNSELECT, j, unselect);
 
-    addCallback(t, slow::SlowCommand::JUMP_SELECTED, j, jumpSelected);
-    addCallback(t, slow::SlowCommand::JUMP, j, jump);
+    addCallback(t, slow::Command::JUMP_SELECTED, j, jumpSelected);
+    addCallback(t, slow::Command::JUMP, j, jump);
   }
 
-  addCallback(t, slow::SlowCommand::LOOP_NEXT_SEGMENT, loopNextSegment);
+  addCallback(t, slow::Command::LOOP_NEXT_SEGMENT, loopNextSegment);
 
   for (int j = 0; j < RECENT_MENU_REPEATS; ++j)
-    addCallback(t, slow::SlowCommand::RECENT_FILES + j, loadRecentFile, j);
+    addCallback(t, slow::Command::RECENT_FILES + j, loadRecentFile, j);
 
-  addCallback(t, slow::SlowCommand::OPEN_PREVIOUS_FILE, openPreviousFile);
-  addCallback(t, slow::SlowCommand::NUDGE_BACKWARD, nudgeTime, false);
-  addCallback(t, slow::SlowCommand::NUDGE_FORWARD, nudgeTime, true);
+  addCallback(t, slow::Command::OPEN_PREVIOUS_FILE, openPreviousFile);
+  addCallback(t, slow::Command::NUDGE_BACKWARD, nudgeTime, false);
+  addCallback(t, slow::Command::NUDGE_FORWARD, nudgeTime, true);
 }
 
 }  // namespace slow

@@ -7,7 +7,7 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/SlowWindow.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 #include "rec/util/thread/CallAsync.h"
 
 using namespace juce;
@@ -45,27 +45,27 @@ void GuiListener::operator()(const GuiSettings& settings) {
 
 void GuiListener::operator()(TransportCommand command) {
   if (command == TOGGLE_START_STOP)
-    invokeAndCheck(SlowCommand::TOGGLE_START_STOP);
+    invokeAndCheck(Command::TOGGLE_START_STOP);
 
   else if (command == JUMP_TO_FIRST)
-    invokeAndCheck(SlowCommand::JUMP + CommandIDs::FIRST);
+    invokeAndCheck(Command::JUMP + CommandIDs::FIRST);
 
   else if (command == JUMP_TO_PREVIOUS)
-    invokeAndCheck(SlowCommand::JUMP + CommandIDs::PREVIOUS);
+    invokeAndCheck(Command::JUMP + CommandIDs::PREVIOUS);
 
   else if (command == JUMP_TO_NEXT)
-    invokeAndCheck(SlowCommand::JUMP + CommandIDs::NEXT);
+    invokeAndCheck(Command::JUMP + CommandIDs::NEXT);
 }
 
 void GuiListener::operator()(CommandBarCommand command) {
   if (command == ADD_LOOP_POINT)
-    invokeAndCheck(SlowCommand::ADD_LOOP_POINT);
+    invokeAndCheck(Command::ADD_LOOP_POINT);
 
   else if (command == ZOOM_OUT_FULL)
-    invokeAndCheck(SlowCommand::ZOOM_OUT_FULL);
+    invokeAndCheck(Command::ZOOM_OUT_FULL);
 
   else if (command == ZOOM_TO_SELECTION)
-    invokeAndCheck(SlowCommand::ZOOM_TO_SELECTION);
+    invokeAndCheck(Command::ZOOM_TO_SELECTION);
 }
 
 static String getTooltip(Component* c) {

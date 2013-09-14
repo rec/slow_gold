@@ -15,13 +15,13 @@ import rec.command.map.CommandMap_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/slow/commands/SlowCommand.proto',
   package='rec.slow',
-  serialized_pb='\n#rec/slow/commands/SlowCommand.proto\x12\x08rec.slow\x1a\x19rec/command/Command.proto\x1a rec/command/map/CommandMap.proto\"\x8d\x13\n\x0bSlowCommand\x12$\n\x02id\x18\x01 \x01(\x0e\x32\x18.rec.slow.SlowCommand.Id\x12%\n\x07\x63ommand\x18\x02 \x01(\x0b\x32\x14.rec.command.Command\"\xb0\x12\n\x02Id\x12\x08\n\x04NONE\x10\x00\x12\x16\n\x12\x41\x42OUT_THIS_PROGRAM\x10:\x12\x12\n\x0e\x41\x44\x44_LOOP_POINT\x10\x01\x12\x15\n\x11\x41UDIO_PREFERENCES\x10\x02\x12\x15\n\x11\x43HECK_FOR_UPDATES\x10\x44\x12\x1b\n\x17\x43LEAR_KEYBOARD_MAPPINGS\x10[\x12\x17\n\x13\x43LEAR_MIDI_MAPPINGS\x10\\\x12\x0f\n\x0b\x43LEAR_LOOPS\x10\x04\x12\x13\n\x0f\x43LEAR_NAVIGATOR\x10\x03\x12\x16\n\x12\x43LEAR_ALL_SETTINGS\x10O\x12!\n\x1d\x43LEAR_SETTINGS_FOR_THIS_TRACK\x10P\x12\x19\n\x15\x43LEAR_SAVED_FILE_DATA\x10\x05\x12\x0e\n\nCLOSE_FILE\x10\x06\x12\x18\n\x14\x43OPY_ALL_LOOP_POINTS\x10_\x12\x15\n\x11\x44IM_VOLUME_TOGGLE\x10\x07\x12\r\n\tEJECT_CDS\x10\x08\x12\x1c\n\x18\x45XPORT_KEYBOARD_MAPPINGS\x10R\x12\x18\n\x14\x45XPORT_MIDI_MAPPINGS\x10S\x12\x13\n\x0f\x45XPORT_SETTINGS\x10K\x12\x1c\n\x18IMPORT_KEYBOARD_MAPPINGS\x10T\x12\x18\n\x14IMPORT_MIDI_MAPPINGS\x10U\x12\x13\n\x0fIMPORT_SETTINGS\x10L\x12\x19\n\x15INVERT_LOOP_SELECTION\x10\t\x12\n\n\x04JUMP\x10\xa0\x8d\x06\x12\x13\n\rJUMP_SELECTED\x10\xb0\xdb\x06\x12\x15\n\x11KEYBOARD_MAPPINGS\x10\x0c\x12\x15\n\x11LOOP_NEXT_SEGMENT\x10^\x12\x11\n\rMIDI_MAPPINGS\x10\r\x12\x17\n\x13MODE_ADD_LOOP_POINT\x10?\x12\r\n\tMODE_DRAG\x10<\x12\x11\n\rMODE_SET_TIME\x10=\x12\x10\n\x0cMODE_ZOOM_IN\x10>\x12\x16\n\x12MUTE_VOLUME_TOGGLE\x10\x0e\x12\x12\n\x0eNUDGE_BACKWARD\x10Y\x12\x11\n\rNUDGE_FORWARD\x10Z\x12\x14\n\x10NUDGE_BEGIN_LEFT\x10\x0f\x12\x15\n\x11NUDGE_BEGIN_RIGHT\x10\x10\x12\x12\n\x0eNUDGE_END_LEFT\x10\x11\x12\x13\n\x0fNUDGE_END_RIGHT\x10\x12\x12\x14\n\x10NUDGE_SPEED_DOWN\x10V\x12\x12\n\x0eNUDGE_SPEED_UP\x10W\x12\x15\n\x11NUDGE_VOLUME_DOWN\x10\x13\x12\x13\n\x0fNUDGE_VOLUME_UP\x10\x14\x12\x08\n\x04OPEN\x10\x15\x12\x0f\n\x0bOPEN_MANUAL\x10\x41\x12\x16\n\x12OPEN_PREVIOUS_FILE\x10N\x12\x1b\n\x17OPEN_SLOWGOLD_DIRECTORY\x10J\x12\x1a\n\x16PASTE_OVER_LOOP_POINTS\x10`\x12\x12\n\x0cRECENT_FILES\x10\xe0\xb6\r\x12\x08\n\x04REDO\x10\x17\x12\x13\n\x0fREQUEST_SUPPORT\x10\x42\x12\x17\n\x13RESET_GAIN_TO_UNITY\x10\x18\x12\r\n\tSAVE_FILE\x10\x45\x12\x17\n\x13SAVE_FILE_SELECTION\x10\x46\x12\x0c\n\x06SELECT\x10\x90\xa1\x0f\x12\x11\n\x0bSELECT_ONLY\x10\xa0\xef\x0f\x12\x12\n\x0cSET_LANGUAGE\x10\xd0\xe1\x38\x12\x15\n\x0fSET_SAVE_FORMAT\x10\xf0\xaa+\x12\x14\n\x10SET_SAVE_AS_AIFF\x10\x61\x12\x14\n\x10SET_SAVE_AS_FLAC\x10\x62\x12\x13\n\x0fSET_SAVE_AS_OGG\x10\x63\x12\x13\n\x0fSET_SAVE_AS_WAV\x10\x64\x12\x19\n\x15TOGGLE_ADVANCED_MENUS\x10;\x12\x1c\n\x18TOGGLE_AUTOMATIC_UPDATES\x10\x43\x12\x18\n\x14TOGGLE_FOLLOW_CURSOR\x10+\x12\x17\n\x13TOGGLE_GRID_DISPLAY\x10\x1b\x12\x1e\n\x1aTOGGLE_COMMAND_BAR_AT_LEFT\x10\x36\x12\x1d\n\x19TOGGLE_COMMAND_BAR_AT_TOP\x10\x37\x12!\n\x1dTOGGLE_FILE_OPEN_TREE_DISPLAY\x10H\x12\x18\n\x14TOGGLE_MODES_AT_LEFT\x10\x38\x12\x17\n\x13TOGGLE_MODES_AT_TOP\x10\x39\x12\x1d\n\x19TOGGLE_PARALLEL_WAVEFORMS\x10*\x12\x1a\n\x16TOGGLE_PREFADER_LEVELS\x10.\x12\x16\n\x10TOGGLE_SELECTION\x10\x90\x83\x19\x12\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\x10Q\x12\x1d\n\x19TOGGLE_SHOW_CURSOR_LABELS\x10\x33\x12\x19\n\x15TOGGLE_SHOW_HELP_PANE\x10\x31\x12\x1d\n\x19TOGGLE_SHOW_LABELS_AT_TOP\x10\x34\x12\x1b\n\x17TOGGLE_SHOW_MASTER_TUNE\x10M\x12!\n\x1dTOGGLE_SHOW_SELECTION_BUTTONS\x10\x32\x12\x1c\n\x18TOGGLE_SHOW_TIMES_AT_TOP\x10\x35\x12\x18\n\x14TOGGLE_SHOW_TOOLTIPS\x10\x30\x12\x15\n\x11TOGGLE_START_STOP\x10\x1c\x12\x19\n\x15TOGGLE_STRETCH_ENABLE\x10\x1d\x12\x1b\n\x17TOGGLE_TRANSFORM_ENABLE\x10X\x12\x1a\n\x16TOGGLE_WHOLE_SONG_LOOP\x10\x1e\x12\x0e\n\nTREE_CLOSE\x10\x1f\x12\r\n\tTREE_DOWN\x10 \x12\r\n\tTREE_LEFT\x10!\x12\r\n\tTREE_OPEN\x10\"\x12\x0e\n\nTREE_RIGHT\x10#\x12\x0b\n\x07TREE_UP\x10$\x12\x08\n\x04UNDO\x10%\x12\x0e\n\x08UNSELECT\x10\xe0\x98\x17\x12\x12\n\x0eWHATS_NEW_PAGE\x10I\x12\x0b\n\x07ZOOM_IN\x10\'\x12\x0c\n\x08ZOOM_OUT\x10(\x12\x11\n\rZOOM_OUT_FULL\x10@\x12\x15\n\x11ZOOM_TO_SELECTION\x10-\x12\x13\n\x0f\x46IRST_FREE_TYPE\x10\x65\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \"6\n\x0cSlowCommands\x12&\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x15.rec.slow.SlowCommand\"h\n\x13SlowCommandMapEntry\x12$\n\x02id\x18\x01 \x01(\x0e\x32\x18.rec.slow.SlowCommand.Id\x12+\n\x05\x65ntry\x18\x02 \x01(\x0b\x32\x1c.rec.command.CommandMapEntry\"C\n\x13SlowCommandMapProto\x12,\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x1d.rec.slow.SlowCommandMapEntry\"`\n\rSlowMenuEntry\x12$\n\x02id\x18\x01 \x03(\x0e\x32\x18.rec.slow.SlowCommand.Id\x12\x0f\n\x07submenu\x18\x02 \x01(\t\x12\x18\n\x10\x63\x61llout_function\x18\x03 \x01(\t\"r\n\x08SlowMenu\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0f\n\x07\x65xtends\x18\x02 \x01(\t\x12&\n\x05\x65ntry\x18\x03 \x03(\x0b\x32\x17.rec.slow.SlowMenuEntry\"-\n\tSlowMenus\x12 \n\x04menu\x18\x01 \x03(\x0b\x32\x12.rec.slow.SlowMenu')
+  serialized_pb='\n#rec/slow/commands/SlowCommand.proto\x12\x08rec.slow\x1a\x19rec/command/Command.proto\x1a rec/command/map/CommandMap.proto\"\x85\x13\n\x07\x43ommand\x12 \n\x02id\x18\x01 \x01(\x0e\x32\x14.rec.slow.Command.Id\x12%\n\x07\x63ommand\x18\x02 \x01(\x0b\x32\x14.rec.command.Command\"\xb0\x12\n\x02Id\x12\x08\n\x04NONE\x10\x00\x12\x16\n\x12\x41\x42OUT_THIS_PROGRAM\x10:\x12\x12\n\x0e\x41\x44\x44_LOOP_POINT\x10\x01\x12\x15\n\x11\x41UDIO_PREFERENCES\x10\x02\x12\x15\n\x11\x43HECK_FOR_UPDATES\x10\x44\x12\x1b\n\x17\x43LEAR_KEYBOARD_MAPPINGS\x10[\x12\x17\n\x13\x43LEAR_MIDI_MAPPINGS\x10\\\x12\x0f\n\x0b\x43LEAR_LOOPS\x10\x04\x12\x13\n\x0f\x43LEAR_NAVIGATOR\x10\x03\x12\x16\n\x12\x43LEAR_ALL_SETTINGS\x10O\x12!\n\x1d\x43LEAR_SETTINGS_FOR_THIS_TRACK\x10P\x12\x19\n\x15\x43LEAR_SAVED_FILE_DATA\x10\x05\x12\x0e\n\nCLOSE_FILE\x10\x06\x12\x18\n\x14\x43OPY_ALL_LOOP_POINTS\x10_\x12\x15\n\x11\x44IM_VOLUME_TOGGLE\x10\x07\x12\r\n\tEJECT_CDS\x10\x08\x12\x1c\n\x18\x45XPORT_KEYBOARD_MAPPINGS\x10R\x12\x18\n\x14\x45XPORT_MIDI_MAPPINGS\x10S\x12\x13\n\x0f\x45XPORT_SETTINGS\x10K\x12\x1c\n\x18IMPORT_KEYBOARD_MAPPINGS\x10T\x12\x18\n\x14IMPORT_MIDI_MAPPINGS\x10U\x12\x13\n\x0fIMPORT_SETTINGS\x10L\x12\x19\n\x15INVERT_LOOP_SELECTION\x10\t\x12\n\n\x04JUMP\x10\xa0\x8d\x06\x12\x13\n\rJUMP_SELECTED\x10\xb0\xdb\x06\x12\x15\n\x11KEYBOARD_MAPPINGS\x10\x0c\x12\x15\n\x11LOOP_NEXT_SEGMENT\x10^\x12\x11\n\rMIDI_MAPPINGS\x10\r\x12\x17\n\x13MODE_ADD_LOOP_POINT\x10?\x12\r\n\tMODE_DRAG\x10<\x12\x11\n\rMODE_SET_TIME\x10=\x12\x10\n\x0cMODE_ZOOM_IN\x10>\x12\x16\n\x12MUTE_VOLUME_TOGGLE\x10\x0e\x12\x12\n\x0eNUDGE_BACKWARD\x10Y\x12\x11\n\rNUDGE_FORWARD\x10Z\x12\x14\n\x10NUDGE_BEGIN_LEFT\x10\x0f\x12\x15\n\x11NUDGE_BEGIN_RIGHT\x10\x10\x12\x12\n\x0eNUDGE_END_LEFT\x10\x11\x12\x13\n\x0fNUDGE_END_RIGHT\x10\x12\x12\x14\n\x10NUDGE_SPEED_DOWN\x10V\x12\x12\n\x0eNUDGE_SPEED_UP\x10W\x12\x15\n\x11NUDGE_VOLUME_DOWN\x10\x13\x12\x13\n\x0fNUDGE_VOLUME_UP\x10\x14\x12\x08\n\x04OPEN\x10\x15\x12\x0f\n\x0bOPEN_MANUAL\x10\x41\x12\x16\n\x12OPEN_PREVIOUS_FILE\x10N\x12\x1b\n\x17OPEN_SLOWGOLD_DIRECTORY\x10J\x12\x1a\n\x16PASTE_OVER_LOOP_POINTS\x10`\x12\x12\n\x0cRECENT_FILES\x10\xe0\xb6\r\x12\x08\n\x04REDO\x10\x17\x12\x13\n\x0fREQUEST_SUPPORT\x10\x42\x12\x17\n\x13RESET_GAIN_TO_UNITY\x10\x18\x12\r\n\tSAVE_FILE\x10\x45\x12\x17\n\x13SAVE_FILE_SELECTION\x10\x46\x12\x0c\n\x06SELECT\x10\x90\xa1\x0f\x12\x11\n\x0bSELECT_ONLY\x10\xa0\xef\x0f\x12\x12\n\x0cSET_LANGUAGE\x10\xd0\xe1\x38\x12\x15\n\x0fSET_SAVE_FORMAT\x10\xf0\xaa+\x12\x14\n\x10SET_SAVE_AS_AIFF\x10\x61\x12\x14\n\x10SET_SAVE_AS_FLAC\x10\x62\x12\x13\n\x0fSET_SAVE_AS_OGG\x10\x63\x12\x13\n\x0fSET_SAVE_AS_WAV\x10\x64\x12\x19\n\x15TOGGLE_ADVANCED_MENUS\x10;\x12\x1c\n\x18TOGGLE_AUTOMATIC_UPDATES\x10\x43\x12\x18\n\x14TOGGLE_FOLLOW_CURSOR\x10+\x12\x17\n\x13TOGGLE_GRID_DISPLAY\x10\x1b\x12\x1e\n\x1aTOGGLE_COMMAND_BAR_AT_LEFT\x10\x36\x12\x1d\n\x19TOGGLE_COMMAND_BAR_AT_TOP\x10\x37\x12!\n\x1dTOGGLE_FILE_OPEN_TREE_DISPLAY\x10H\x12\x18\n\x14TOGGLE_MODES_AT_LEFT\x10\x38\x12\x17\n\x13TOGGLE_MODES_AT_TOP\x10\x39\x12\x1d\n\x19TOGGLE_PARALLEL_WAVEFORMS\x10*\x12\x1a\n\x16TOGGLE_PREFADER_LEVELS\x10.\x12\x16\n\x10TOGGLE_SELECTION\x10\x90\x83\x19\x12\'\n#TOGGLE_SHOW_ABOUT_WINDOW_AT_STARTUP\x10Q\x12\x1d\n\x19TOGGLE_SHOW_CURSOR_LABELS\x10\x33\x12\x19\n\x15TOGGLE_SHOW_HELP_PANE\x10\x31\x12\x1d\n\x19TOGGLE_SHOW_LABELS_AT_TOP\x10\x34\x12\x1b\n\x17TOGGLE_SHOW_MASTER_TUNE\x10M\x12!\n\x1dTOGGLE_SHOW_SELECTION_BUTTONS\x10\x32\x12\x1c\n\x18TOGGLE_SHOW_TIMES_AT_TOP\x10\x35\x12\x18\n\x14TOGGLE_SHOW_TOOLTIPS\x10\x30\x12\x15\n\x11TOGGLE_START_STOP\x10\x1c\x12\x19\n\x15TOGGLE_STRETCH_ENABLE\x10\x1d\x12\x1b\n\x17TOGGLE_TRANSFORM_ENABLE\x10X\x12\x1a\n\x16TOGGLE_WHOLE_SONG_LOOP\x10\x1e\x12\x0e\n\nTREE_CLOSE\x10\x1f\x12\r\n\tTREE_DOWN\x10 \x12\r\n\tTREE_LEFT\x10!\x12\r\n\tTREE_OPEN\x10\"\x12\x0e\n\nTREE_RIGHT\x10#\x12\x0b\n\x07TREE_UP\x10$\x12\x08\n\x04UNDO\x10%\x12\x0e\n\x08UNSELECT\x10\xe0\x98\x17\x12\x12\n\x0eWHATS_NEW_PAGE\x10I\x12\x0b\n\x07ZOOM_IN\x10\'\x12\x0c\n\x08ZOOM_OUT\x10(\x12\x11\n\rZOOM_OUT_FULL\x10@\x12\x15\n\x11ZOOM_TO_SELECTION\x10-\x12\x13\n\x0f\x46IRST_FREE_TYPE\x10\x65\x12\t\n\x04QUIT\x10\x81 \x12\x08\n\x03\x44\x45L\x10\x82 \x12\x08\n\x03\x43UT\x10\x83 \x12\t\n\x04\x43OPY\x10\x84 \x12\n\n\x05PASTE\x10\x85 \x12\x0f\n\nSELECT_ALL\x10\x86 \x12\x11\n\x0c\x44\x45SELECT_ALL\x10\x87 \".\n\x08\x43ommands\x12\"\n\x07\x63ommand\x18\x01 \x03(\x0b\x32\x11.rec.slow.Command\"`\n\x0f\x43ommandMapEntry\x12 \n\x02id\x18\x01 \x01(\x0e\x32\x14.rec.slow.Command.Id\x12+\n\x05\x65ntry\x18\x02 \x01(\x0b\x32\x1c.rec.command.CommandMapEntry\";\n\x0f\x43ommandMapProto\x12(\n\x05\x65ntry\x18\x01 \x03(\x0b\x32\x19.rec.slow.CommandMapEntry\"X\n\tMenuEntry\x12 \n\x02id\x18\x01 \x03(\x0e\x32\x14.rec.slow.Command.Id\x12\x0f\n\x07submenu\x18\x02 \x01(\t\x12\x18\n\x10\x63\x61llout_function\x18\x03 \x01(\t\"j\n\x04Menu\x12-\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32\x18.rec.command.Description\x12\x0f\n\x07\x65xtends\x18\x02 \x01(\t\x12\"\n\x05\x65ntry\x18\x03 \x03(\x0b\x32\x13.rec.slow.MenuEntry\"%\n\x05Menus\x12\x1c\n\x04menu\x18\x01 \x03(\x0b\x32\x0e.rec.slow.Menu')
 
 
 
-_SLOWCOMMAND_ID = _descriptor.EnumDescriptor(
+_COMMAND_ID = _descriptor.EnumDescriptor(
   name='Id',
-  full_name='rec.slow.SlowCommand.Id',
+  full_name='rec.slow.Command.Id',
   filename=None,
   file=DESCRIPTOR,
   values=[
@@ -456,27 +456,27 @@ _SLOWCOMMAND_ID = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=204,
-  serialized_end=2556,
+  serialized_start=196,
+  serialized_end=2548,
 )
 
 
-_SLOWCOMMAND = _descriptor.Descriptor(
-  name='SlowCommand',
-  full_name='rec.slow.SlowCommand',
+_COMMAND = _descriptor.Descriptor(
+  name='Command',
+  full_name='rec.slow.Command',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='rec.slow.SlowCommand.id', index=0,
+      name='id', full_name='rec.slow.Command.id', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='command', full_name='rec.slow.SlowCommand.command', index=1,
+      name='command', full_name='rec.slow.Command.command', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -487,25 +487,25 @@ _SLOWCOMMAND = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _SLOWCOMMAND_ID,
+    _COMMAND_ID,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
   serialized_start=111,
-  serialized_end=2556,
+  serialized_end=2548,
 )
 
 
-_SLOWCOMMANDS = _descriptor.Descriptor(
-  name='SlowCommands',
-  full_name='rec.slow.SlowCommands',
+_COMMANDS = _descriptor.Descriptor(
+  name='Commands',
+  full_name='rec.slow.Commands',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='command', full_name='rec.slow.SlowCommands.command', index=0,
+      name='command', full_name='rec.slow.Commands.command', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -520,27 +520,27 @@ _SLOWCOMMANDS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2558,
-  serialized_end=2612,
+  serialized_start=2550,
+  serialized_end=2596,
 )
 
 
-_SLOWCOMMANDMAPENTRY = _descriptor.Descriptor(
-  name='SlowCommandMapEntry',
-  full_name='rec.slow.SlowCommandMapEntry',
+_COMMANDMAPENTRY = _descriptor.Descriptor(
+  name='CommandMapEntry',
+  full_name='rec.slow.CommandMapEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='rec.slow.SlowCommandMapEntry.id', index=0,
+      name='id', full_name='rec.slow.CommandMapEntry.id', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='entry', full_name='rec.slow.SlowCommandMapEntry.entry', index=1,
+      name='entry', full_name='rec.slow.CommandMapEntry.entry', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -555,20 +555,20 @@ _SLOWCOMMANDMAPENTRY = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2614,
-  serialized_end=2718,
+  serialized_start=2598,
+  serialized_end=2694,
 )
 
 
-_SLOWCOMMANDMAPPROTO = _descriptor.Descriptor(
-  name='SlowCommandMapProto',
-  full_name='rec.slow.SlowCommandMapProto',
+_COMMANDMAPPROTO = _descriptor.Descriptor(
+  name='CommandMapProto',
+  full_name='rec.slow.CommandMapProto',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='entry', full_name='rec.slow.SlowCommandMapProto.entry', index=0,
+      name='entry', full_name='rec.slow.CommandMapProto.entry', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -583,34 +583,34 @@ _SLOWCOMMANDMAPPROTO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2720,
-  serialized_end=2787,
+  serialized_start=2696,
+  serialized_end=2755,
 )
 
 
-_SLOWMENUENTRY = _descriptor.Descriptor(
-  name='SlowMenuEntry',
-  full_name='rec.slow.SlowMenuEntry',
+_MENUENTRY = _descriptor.Descriptor(
+  name='MenuEntry',
+  full_name='rec.slow.MenuEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='rec.slow.SlowMenuEntry.id', index=0,
+      name='id', full_name='rec.slow.MenuEntry.id', index=0,
       number=1, type=14, cpp_type=8, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='submenu', full_name='rec.slow.SlowMenuEntry.submenu', index=1,
+      name='submenu', full_name='rec.slow.MenuEntry.submenu', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='callout_function', full_name='rec.slow.SlowMenuEntry.callout_function', index=2,
+      name='callout_function', full_name='rec.slow.MenuEntry.callout_function', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -625,34 +625,34 @@ _SLOWMENUENTRY = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2789,
-  serialized_end=2885,
+  serialized_start=2757,
+  serialized_end=2845,
 )
 
 
-_SLOWMENU = _descriptor.Descriptor(
-  name='SlowMenu',
-  full_name='rec.slow.SlowMenu',
+_MENU = _descriptor.Descriptor(
+  name='Menu',
+  full_name='rec.slow.Menu',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='description', full_name='rec.slow.SlowMenu.description', index=0,
+      name='description', full_name='rec.slow.Menu.description', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='extends', full_name='rec.slow.SlowMenu.extends', index=1,
+      name='extends', full_name='rec.slow.Menu.extends', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='entry', full_name='rec.slow.SlowMenu.entry', index=2,
+      name='entry', full_name='rec.slow.Menu.entry', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -667,20 +667,20 @@ _SLOWMENU = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2887,
-  serialized_end=3001,
+  serialized_start=2847,
+  serialized_end=2953,
 )
 
 
-_SLOWMENUS = _descriptor.Descriptor(
-  name='SlowMenus',
-  full_name='rec.slow.SlowMenus',
+_MENUS = _descriptor.Descriptor(
+  name='Menus',
+  full_name='rec.slow.Menus',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='menu', full_name='rec.slow.SlowMenus.menu', index=0,
+      name='menu', full_name='rec.slow.Menus.menu', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -695,70 +695,70 @@ _SLOWMENUS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3003,
-  serialized_end=3048,
+  serialized_start=2955,
+  serialized_end=2992,
 )
 
-_SLOWCOMMAND.fields_by_name['id'].enum_type = _SLOWCOMMAND_ID
-_SLOWCOMMAND.fields_by_name['command'].message_type = rec.command.Command_pb2._COMMAND
-_SLOWCOMMAND_ID.containing_type = _SLOWCOMMAND;
-_SLOWCOMMANDS.fields_by_name['command'].message_type = _SLOWCOMMAND
-_SLOWCOMMANDMAPENTRY.fields_by_name['id'].enum_type = _SLOWCOMMAND_ID
-_SLOWCOMMANDMAPENTRY.fields_by_name['entry'].message_type = rec.command.map.CommandMap_pb2._COMMANDMAPENTRY
-_SLOWCOMMANDMAPPROTO.fields_by_name['entry'].message_type = _SLOWCOMMANDMAPENTRY
-_SLOWMENUENTRY.fields_by_name['id'].enum_type = _SLOWCOMMAND_ID
-_SLOWMENU.fields_by_name['description'].message_type = rec.command.Command_pb2._DESCRIPTION
-_SLOWMENU.fields_by_name['entry'].message_type = _SLOWMENUENTRY
-_SLOWMENUS.fields_by_name['menu'].message_type = _SLOWMENU
-DESCRIPTOR.message_types_by_name['SlowCommand'] = _SLOWCOMMAND
-DESCRIPTOR.message_types_by_name['SlowCommands'] = _SLOWCOMMANDS
-DESCRIPTOR.message_types_by_name['SlowCommandMapEntry'] = _SLOWCOMMANDMAPENTRY
-DESCRIPTOR.message_types_by_name['SlowCommandMapProto'] = _SLOWCOMMANDMAPPROTO
-DESCRIPTOR.message_types_by_name['SlowMenuEntry'] = _SLOWMENUENTRY
-DESCRIPTOR.message_types_by_name['SlowMenu'] = _SLOWMENU
-DESCRIPTOR.message_types_by_name['SlowMenus'] = _SLOWMENUS
+_COMMAND.fields_by_name['id'].enum_type = _COMMAND_ID
+_COMMAND.fields_by_name['command'].message_type = rec.command.Command_pb2._COMMAND
+_COMMAND_ID.containing_type = _COMMAND;
+_COMMANDS.fields_by_name['command'].message_type = _COMMAND
+_COMMANDMAPENTRY.fields_by_name['id'].enum_type = _COMMAND_ID
+_COMMANDMAPENTRY.fields_by_name['entry'].message_type = rec.command.map.CommandMap_pb2._COMMANDMAPENTRY
+_COMMANDMAPPROTO.fields_by_name['entry'].message_type = _COMMANDMAPENTRY
+_MENUENTRY.fields_by_name['id'].enum_type = _COMMAND_ID
+_MENU.fields_by_name['description'].message_type = rec.command.Command_pb2._DESCRIPTION
+_MENU.fields_by_name['entry'].message_type = _MENUENTRY
+_MENUS.fields_by_name['menu'].message_type = _MENU
+DESCRIPTOR.message_types_by_name['Command'] = _COMMAND
+DESCRIPTOR.message_types_by_name['Commands'] = _COMMANDS
+DESCRIPTOR.message_types_by_name['CommandMapEntry'] = _COMMANDMAPENTRY
+DESCRIPTOR.message_types_by_name['CommandMapProto'] = _COMMANDMAPPROTO
+DESCRIPTOR.message_types_by_name['MenuEntry'] = _MENUENTRY
+DESCRIPTOR.message_types_by_name['Menu'] = _MENU
+DESCRIPTOR.message_types_by_name['Menus'] = _MENUS
 
-class SlowCommand(_message.Message):
+class Command(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SLOWCOMMAND
+  DESCRIPTOR = _COMMAND
 
-  # @@protoc_insertion_point(class_scope:rec.slow.SlowCommand)
+  # @@protoc_insertion_point(class_scope:rec.slow.Command)
 
-class SlowCommands(_message.Message):
+class Commands(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SLOWCOMMANDS
+  DESCRIPTOR = _COMMANDS
 
-  # @@protoc_insertion_point(class_scope:rec.slow.SlowCommands)
+  # @@protoc_insertion_point(class_scope:rec.slow.Commands)
 
-class SlowCommandMapEntry(_message.Message):
+class CommandMapEntry(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SLOWCOMMANDMAPENTRY
+  DESCRIPTOR = _COMMANDMAPENTRY
 
-  # @@protoc_insertion_point(class_scope:rec.slow.SlowCommandMapEntry)
+  # @@protoc_insertion_point(class_scope:rec.slow.CommandMapEntry)
 
-class SlowCommandMapProto(_message.Message):
+class CommandMapProto(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SLOWCOMMANDMAPPROTO
+  DESCRIPTOR = _COMMANDMAPPROTO
 
-  # @@protoc_insertion_point(class_scope:rec.slow.SlowCommandMapProto)
+  # @@protoc_insertion_point(class_scope:rec.slow.CommandMapProto)
 
-class SlowMenuEntry(_message.Message):
+class MenuEntry(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SLOWMENUENTRY
+  DESCRIPTOR = _MENUENTRY
 
-  # @@protoc_insertion_point(class_scope:rec.slow.SlowMenuEntry)
+  # @@protoc_insertion_point(class_scope:rec.slow.MenuEntry)
 
-class SlowMenu(_message.Message):
+class Menu(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SLOWMENU
+  DESCRIPTOR = _MENU
 
-  # @@protoc_insertion_point(class_scope:rec.slow.SlowMenu)
+  # @@protoc_insertion_point(class_scope:rec.slow.Menu)
 
-class SlowMenus(_message.Message):
+class Menus(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SLOWMENUS
+  DESCRIPTOR = _MENUS
 
-  # @@protoc_insertion_point(class_scope:rec.slow.SlowMenus)
+  # @@protoc_insertion_point(class_scope:rec.slow.Menus)
 
 
 # @@protoc_insertion_point(module_scope)

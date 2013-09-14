@@ -7,7 +7,7 @@
 #include "rec/data/DataOps.h"
 #include "rec/data/ZipData.h"
 #include "rec/slow/callbacks/CallbackUtils.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 #include "rec/slow/GuiSettings.h"
 #include "rec/support/RequestSupport.h"
 #include "rec/util/Cuttable.h"
@@ -128,30 +128,28 @@ void whatsNewPage() {
 
 }  // namespace
 
-using command::Command;
-
 void addGlobalCallbacks(command::CallbackTable* t) {
-  addCallback(t, SlowCommand::MODE_ADD_LOOP_POINT, modeAddLoopPoint);
-  addCallback(t, SlowCommand::MODE_DRAG, modeDrag);
-  addCallback(t, SlowCommand::MODE_SET_TIME, modeSetTime);
-  addCallback(t, SlowCommand::MODE_ZOOM_IN, modeZoomIn);
-  addCallback(t, SlowCommand::COPY, copyToClipboard);
-  addCallback(t, SlowCommand::CUT, cutToClipboard);
-  addCallback(t, SlowCommand::DEL, cutNoClipboard);
-  addCallback(t, SlowCommand::EJECT_CDS, cd::ejectAll);
-  addCallback(t, SlowCommand::EXPORT_KEYBOARD_MAPPINGS, exportKeyboardMappings);
-  addCallback(t, SlowCommand::EXPORT_MIDI_MAPPINGS, exportMidiMappings);
-  addCallback(t, SlowCommand::EXPORT_SETTINGS, exportSettings);
-  addCallback(t, SlowCommand::IMPORT_KEYBOARD_MAPPINGS, importKeyboardMappings);
-  addCallback(t, SlowCommand::IMPORT_MIDI_MAPPINGS, importMidiMappings);
-  addCallback(t, SlowCommand::IMPORT_SETTINGS, importSettings);
-  addCallback(t, SlowCommand::OPEN_MANUAL, openManual);
-  addCallback(t, SlowCommand::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
-  addCallback(t, SlowCommand::PASTE, pasteFromClipboard);
-  addCallback(t, SlowCommand::REDO, redo);
-  addCallback(t, SlowCommand::REQUEST_SUPPORT, support::requestSupport);
-  addCallback(t, SlowCommand::UNDO, undo);
-  addCallback(t, SlowCommand::WHATS_NEW_PAGE, whatsNewPage);
+  addCallback(t, Command::MODE_ADD_LOOP_POINT, modeAddLoopPoint);
+  addCallback(t, Command::MODE_DRAG, modeDrag);
+  addCallback(t, Command::MODE_SET_TIME, modeSetTime);
+  addCallback(t, Command::MODE_ZOOM_IN, modeZoomIn);
+  addCallback(t, Command::COPY, copyToClipboard);
+  addCallback(t, Command::CUT, cutToClipboard);
+  addCallback(t, Command::DEL, cutNoClipboard);
+  addCallback(t, Command::EJECT_CDS, cd::ejectAll);
+  addCallback(t, Command::EXPORT_KEYBOARD_MAPPINGS, exportKeyboardMappings);
+  addCallback(t, Command::EXPORT_MIDI_MAPPINGS, exportMidiMappings);
+  addCallback(t, Command::EXPORT_SETTINGS, exportSettings);
+  addCallback(t, Command::IMPORT_KEYBOARD_MAPPINGS, importKeyboardMappings);
+  addCallback(t, Command::IMPORT_MIDI_MAPPINGS, importMidiMappings);
+  addCallback(t, Command::IMPORT_SETTINGS, importSettings);
+  addCallback(t, Command::OPEN_MANUAL, openManual);
+  addCallback(t, Command::OPEN_SLOWGOLD_DIRECTORY, openSlowGoldDirectory);
+  addCallback(t, Command::PASTE, pasteFromClipboard);
+  addCallback(t, Command::REDO, redo);
+  addCallback(t, Command::REQUEST_SUPPORT, support::requestSupport);
+  addCallback(t, Command::UNDO, undo);
+  addCallback(t, Command::WHATS_NEW_PAGE, whatsNewPage);
 }
 
 

@@ -5,7 +5,7 @@
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/Callbacks.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 #include "rec/slow/commands/SlowCommandData.h"
 #include "rec/translation/TranslationTables.h"
 #include "rec/util/Binary.h"
@@ -22,6 +22,7 @@ namespace rec {
 namespace slow {
 
 namespace {
+
 class SlowRecentFilesStrategy : public gui::RecentFilesStrategy {
  public:
   SlowRecentFilesStrategy() {}
@@ -39,7 +40,7 @@ class SlowRecentFilesStrategy : public gui::RecentFilesStrategy {
   }
 
   CommandID getRecentFileCommand() const override {
-    return slow::SlowCommand::RECENT_FILES;
+    return slow::Command::RECENT_FILES;
   }
 };
 
@@ -56,7 +57,7 @@ command::KeyStrokeCommandMapProto SlowProgram::keypresses() const {
 }
 
 program::Menus SlowProgram::menus() const {
-  SlowMenus slowMenus = BINARY_PROTO(Menus, SlowMenus);
+  Menus slowMenus = BINARY_PROTO(Menus, Menus);
   program::Menus menus;
   for (auto& slowMenu: slowMenus.menu()) {
     program::Menu* menu = menus.add_menu();
@@ -100,7 +101,7 @@ bool SlowProgram::hasProperty(const string& name) const {
 
 void SlowProgram::commandCallout(const command::Command& command,
                                  ApplicationCommandInfo* info) const {
-  DCHECK_EQ(command.id(), SlowCommand::TOGGLE_WHOLE_SONG_LOOP);
+  DCHECK_EQ(command.id(), Command::TOGGLE_WHOLE_SONG_LOOP);
   auto lpl = data::getProto<Viewport>(instance_->file()).loop_points();
   if (lpl.loop_point_size() <= 1 or audio::getSelectionCount(lpl) == 1)
     info->shortName = t_LOOP_ENTIRE_TRACK;
@@ -121,7 +122,7 @@ VirtualFile SlowProgram::getCurrentFile() const {
 }
 
 void SlowProgram::beforeCommand(CommandID id) {
-	if (id != SlowCommand::ABOUT_THIS_PROGRAM && instance_->window_)
+	if (id != Command::ABOUT_THIS_PROGRAM && instance_->window_)
     thread::callAsync(instance_->window_, &app::Window::stopAboutWindow);
 }
 
@@ -138,7 +139,7 @@ string commandName(CommandID id) {
     mod = (id + MARGIN) % command::Command::BANK_SIZE - MARGIN;
     id -= mod;
   }
-  string name = SlowCommand_Id_Name(static_cast<SlowCommand::Id>(id));
+  string name = Command_Id_Name(static_cast<Command::Id>(id));
   if (isCompound)
     name += str(":" + String(mod));
   return name;

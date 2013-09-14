@@ -3,7 +3,7 @@ import "rec/command/map/CommandMap.proto";
 
 package rec.slow;
 
-message SlowCommand {
+message Command {
   enum Id {
     NONE = 0;
 
@@ -144,31 +144,31 @@ message SlowCommand {
   optional rec.command.Command command = 2;
 };
 
-message SlowCommands {
-  repeated SlowCommand command = 1;
+message Commands {
+  repeated Command command = 1;
 };
 
-message SlowCommandMapEntry {
-  optional SlowCommand.Id id = 1;
+message CommandMapEntry {
+  optional Command.Id id = 1;
   optional rec.command.CommandMapEntry entry = 2;
 };
 
-message SlowCommandMapProto {
-  repeated SlowCommandMapEntry entry = 1;
+message CommandMapProto {
+  repeated CommandMapEntry entry = 1;
 };
 
-message SlowMenuEntry {
-  repeated SlowCommand.Id id = 1;
+message MenuEntry {
+  repeated Command.Id id = 1;
   optional string submenu = 2;
   optional string callout_function = 3;
 };
 
-message SlowMenu {
+message Menu {
   optional command.Description description = 1;
   optional string extends = 2;
-  repeated SlowMenuEntry entry = 3;
+  repeated MenuEntry entry = 3;
 };
 
-message SlowMenus {
-  repeated SlowMenu menu = 1;
+message Menus {
+  repeated Menu menu = 1;
 };

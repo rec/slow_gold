@@ -11,7 +11,7 @@
 #include "rec/command/map/CommandMap.h"
 #include "rec/command/map/Items.h"
 #include "rec/gui/Dialog.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/ModalCallback.h"
 
@@ -63,7 +63,7 @@ void addTextButton(Editor* editor, TextButton* button) {
   editor->addAndMakeVisible(button);
 }
 
-const CommandID RECENT = slow::SlowCommand::RECENT_FILES;
+const CommandID RECENT = slow::Command::RECENT_FILES;
 const CommandID BEGIN = RECENT + 10;
 const CommandID END = RECENT + 100;
 

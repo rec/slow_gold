@@ -35,7 +35,7 @@
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/Threads.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/Undo.h"
 #include "rec/util/file/FileType.h"
@@ -164,7 +164,7 @@ void Instance::init() {
   program::applicationCommandManager()->registerAllCommandsForTarget(juceModel_.get());
   command::loadKeyboardBindings(program::applicationCommandManager());
   window_->getAppleMenu()->addCommandItem(program::applicationCommandManager(),
-                                          slow::SlowCommand::ABOUT_THIS_PROGRAM);
+                                          slow::Command::ABOUT_THIS_PROGRAM);
 
   player_->addListener(components_->transportController_.get());
   player_->addListener(currentTime_.get());

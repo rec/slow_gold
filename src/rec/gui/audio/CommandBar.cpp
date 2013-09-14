@@ -1,7 +1,7 @@
 #include "rec/gui/audio/CommandBar.h"
 
 #include "rec/gui/IconButton.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 
 namespace rec {
 namespace gui {

@@ -2,7 +2,7 @@
 
 #include "rec/gui/IconButton.h"
 #include "rec/gui/audio/TimeController.h"
-#include "rec/slow/commands/SlowCommand.pb.h"
+#include "rec/slow/commands/Command.pb.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
