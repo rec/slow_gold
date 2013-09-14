@@ -1,29 +1,17 @@
 #include "rec/slow/CurrentFile.h"
 
-#include "rec/audio/source/Player.h"
 #include "rec/audio/util/BufferFiller.h"
 #include "rec/audio/util/BufferedReader.h"
-#include "rec/data/Data.h"
-#include "rec/data/DataCenter.h"
 #include "rec/data/DataOps.h"
-#include "rec/data/UntypedDataListener.h"
-#include "rec/data/proto/Equals.h"
-#include "rec/gui/DropFiles.h"
-#include "rec/gui/menu/RecentFiles.h"
-#include "rec/gui/audio/Loops.h"
 #include "rec/music/CreateMusicFileReader.h"
-#include "rec/program/JuceModel.h"
 #include "rec/slow/Components.h"
-#include "rec/slow/CurrentTime.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/SlowWindow.h"
-#include "rec/slow/Threads.h"
-#include "rec/util/file/VirtualFile.h"
-#include "rec/util/thread/MakeThread.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 #include "rec/widget/waveform/Waveform.h"
-#include "rec/widget/waveform/Zoom.h"
+
+using namespace rec::widget::waveform;
 
 TRAN(RAN_OUT_OF_MEMORY, "Ran Out Of Memory For Your File");
 TRAN(RAN_OUT_OF_MEMORY_FULL, "Sorry, there wasn't enough memory for the file.");
@@ -31,17 +19,12 @@ TRAN(RAN_OUT_OF_MEMORY_FULL, "Sorry, there wasn't enough memory for the file.");
 namespace rec {
 namespace slow {
 
-using namespace rec::widget::waveform;
-using namespace juce;
-
 unique_ptr<Message> CurrentFile::getFileDescription() {
   return unique_ptr<Message>(data::getData<music::Metadata>(file_)->clone());
 }
 
 void CurrentFile::suspend() {
-  getInstance()->player_->reset();
   getInstance()->reset();  // Stops the loading thread.
-  getInstance()->currentTime_->reset();
 }
 
 void CurrentFile::resume() {
@@ -85,7 +68,7 @@ bool CurrentFile::determineIfFileEmpty(bool showError) {
     reader.setError(t_RAN_OUT_OF_MEMORY, t_RAN_OUT_OF_MEMORY_FULL);
   }
 
-  LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
+  juce::LookAndFeel::getDefaultLookAndFeel().setUsingNativeAlertWindows(true);
 
   if (showError) {
     juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon,

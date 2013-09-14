@@ -281,8 +281,10 @@ void Instance::setProto(const Message& m, Undoable undoable) {
 static const int FILLER_THREAD_STOP_TIME = 60000;
 
 void Instance::reset() {
+  player_->reset();
   fillerThread_->stopThread(FILLER_THREAD_STOP_TIME);
   bufferFiller_->reset();
+  currentTime_->reset();
 }
 
 SampleRate Instance::getSourceSampleRate() const {
