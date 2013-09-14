@@ -13,9 +13,6 @@ class AddressListener : public Listener<const Value&> {
   AddressListener(const Address& a, const string& typeName,
                   AddressProto::Scope scope = AddressProto::FILE_SCOPE);
 
-  friend class FileAddressListener;
-  friend class GlobalAddressListener;
-
  public:
 
   virtual ~AddressListener();
@@ -40,16 +37,6 @@ class AddressListener : public Listener<const Value&> {
   bool failOnError_;
 
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(AddressListener);
-};
-
-class GlobalAddressListener : public AddressListener {
- public:
-  GlobalAddressListener(const Address& a, const string& typeName)
-      : AddressListener(a, typeName, AddressProto::GLOBAL_SCOPE) {
-  }
-
- private:
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(GlobalAddressListener);
 };
 
 }  // namespace data

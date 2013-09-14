@@ -14,10 +14,10 @@ namespace data { class Data; }
 
 namespace gui {
 
-class SetterResizer : public app::LanguageListener,
+class SetterResizer : public data::AddressListener,
+                      public app::LanguageListener,
                       public StretchableLayoutResizerBar,
                       public SettableTooltipClient,
-                      public data::GlobalAddressListener,
                       public GuiWriteable {
  public:
   SetterResizer(const string& typeName,
