@@ -9,6 +9,7 @@
 #include "rec/command/CommandData.h"
 #include "rec/translation/TranslationTables.h"
 #include "rec/util/Binary.h"
+#include "rec/util/Copy.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Viewport.pb.h"
@@ -28,11 +29,14 @@ class SlowRecentFilesStrategy : public gui::RecentFilesStrategy {
   SlowRecentFilesStrategy() {}
 
   string getTitle(const gui::RecentFile& rf) const override {
-    return music::getTitle(rf.metadata(), rf.file());
+    music::Metadata md;
+    copy::copy(rf.metadata_string(), &md);
+    return music::getTitle(md, rf.file());
   }
 
   string getDupeSuffix(const gui::RecentFile& rf, bool isFirst) const override {
-    const music::Metadata& md = rf.metadata();
+    music::Metadata md;
+    copy::copy(rf.metadata_string(), &md);
     string add = isFirst ? md.album_title() : md.artist();
     if (add.size())
       add += ("(" + add + ")");

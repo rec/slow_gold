@@ -13,6 +13,7 @@ namespace audio { class Device; }
 namespace command { class MidiCommandMap; }
 namespace audio { namespace source { class Player; }}
 namespace audio { namespace util { class BufferFiller; }}
+namespace audio { namespace util { class CurrentTimeBase; }}
 namespace gui { class LookAndFeel; }
 
 // Test stuff!

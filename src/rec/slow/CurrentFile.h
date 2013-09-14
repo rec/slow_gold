@@ -4,7 +4,6 @@
 #include "rec/base/SampleTime.h"
 #include "rec/util/Listener.h"
 #include "rec/util/file/VirtualFile.pb.h"
-#include "rec/widget/waveform/Viewport.pb.h"
 
 namespace rec { namespace gui { class DropFiles; } }
 
@@ -38,11 +37,10 @@ class CurrentFile : public Listener<const VirtualFile&>,
   void continueLoading(bool showError);
   void afterFileChange(const VirtualFile& newFile);
   void beforeFileChange();
-  void stopThreads();
-  void startThreads();
+  void suspend();
+  void resume();
 
   CriticalSection lock_;
-  widget::waveform::Viewport viewport_;
   VirtualFile file_;
   SampleTime length_;
 

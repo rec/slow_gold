@@ -49,17 +49,15 @@ void CurrentFile::operator()(const VirtualFile& vf) {
   setVirtualFile(vf, true);
 }
 
-const SampleTime CurrentFile::length() const {
-  Lock l(lock_);
-  return length_;
+const VirtualFile CurrentFile::file() const {
+  return file_;
 }
 
 void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   data::getDataCenter().waitTillClear();
   data::getDataCenter().clearUndoes();
 
-  stopThreads();
-  getInstance()->currentTime_->reset();
+  suspend();
 
   if (file_.path_size())
     gui::addRecentFile(file_, data::getProto<music::Metadata>(file_));
@@ -81,16 +79,22 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   data::setProto(file_, CANT_UNDO);
   data::UntypedDataListener::setGlobalDataFile(file_);
 
-  startThreads();
+  resume();
   program::menuItemsChanged();
 }
 
-void CurrentFile::stopThreads() {
-  getInstance()->player_->reset();
-  getInstance()->reset();  // Stops the loading thread.
+const SampleTime CurrentFile::length() const {
+  Lock l(lock_);
+  return length_;
 }
 
-void CurrentFile::startThreads() {
+void CurrentFile::suspend() {
+  getInstance()->player_->reset();
+  getInstance()->reset();  // Stops the loading thread.
+  getInstance()->currentTime_->reset();
+}
+
+void CurrentFile::resume() {
   if (file_.path_size())
     getInstance()->fillerThread_->startThread();
 }
@@ -166,10 +170,6 @@ void CurrentFile::nonEmptyFileLoaded() {
   viewport.mutable_loop_points()->set_sample_rate(getInstance()->bufferFiller_->reader()->
                                                   reader()->sampleRate);
   data::setProto(viewport, file_, CANT_UNDO);
-}
-
-const VirtualFile CurrentFile::file() const {
-  return file_;
 }
 
 }  // namespace slow

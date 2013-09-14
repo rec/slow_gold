@@ -23,6 +23,15 @@ struct CompareRecentFiles {
   }
 };
 
+void fixRecentFiles(RecentFiles* rf) {
+  for (auto& file: *rf->mutable_file()) {
+    if (file.has_metadata()) {
+      copy::copy(file.metadata(), file.mutable_metadata_string());
+      file.clear_metadata();
+    }
+  }
+}
+
 }  // namespace
 
 void addRecentFile(const VirtualFile& f, const Message& message) {
@@ -32,10 +41,9 @@ void addRecentFile(const VirtualFile& f, const Message& message) {
   int64 timestamp = juce::Time::currentTimeMillis();
   RecentFiles rf = data::getProto<RecentFiles>();
   RecentFile* r = nullptr;
-  for (int i = 0; i < rf.file_size(); ++i) {
-    const RecentFile& file = rf.file(i);
+  for (auto& file: *rf.mutable_file()) {
     if (file.file() == f) {
-      r = rf.mutable_file(i);
+      r = &file;
       break;
     }
   }
@@ -46,10 +54,7 @@ void addRecentFile(const VirtualFile& f, const Message& message) {
   }
   r->set_timestamp(timestamp);
   r->mutable_file()->CopyFrom(f);
-  r->mutable_metadata()->CopyFrom(message);
-  string s;
-  copy::copy(message, &s);
-  r->set_metadata_string(s);
+  copy::copy(message, r->mutable_metadata_string());
 
   std::sort(rf.mutable_file()->begin(), rf.mutable_file()->end(),
             CompareRecentFiles());
