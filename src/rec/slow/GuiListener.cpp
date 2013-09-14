@@ -8,6 +8,7 @@
 #include "rec/slow/MainPage.h"
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/commands/Command.pb.h"
+#include "rec/gui/GetTooltip.h"
 #include "rec/util/thread/CallAsync.h"
 
 using namespace juce;
@@ -68,18 +69,6 @@ void GuiListener::operator()(CommandBarCommand command) {
     invokeAndCheck(Command::ZOOM_TO_SELECTION);
 }
 
-static String getTooltip(Component* c) {
-  while (c) {
-    if (TooltipClient* ttc = dynamic_cast<TooltipClient*>(c)) {
-      const String& s = ttc->getTooltip();
-      if (s.length())
-       return s;
-    }
-    c = c->getParentComponent();
-  }
-  return "";
-}
-
 void GuiListener::update() {
   gui::GuiWriteable::writeAll();
   {
@@ -88,12 +77,11 @@ void GuiListener::update() {
       return;
   }
 
-  Component* comp = Desktop::getInstance().
-    getMainMouseSource().getComponentUnderMouse();
+  Component* comp = gui::getComponentUnderMouse();
 
   if (comp != lastComponent_) {
     lastComponent_ = comp;
-    getInstance()->components_->mainPage_->setTooltip(getTooltip(comp));
+    getInstance()->components_->mainPage_->setTooltip(gui::getTooltip(comp));
   }
 
 #if JUCE_DEBUG

@@ -36,6 +36,7 @@ typedef juce::Colour Colour;
 typedef juce::CommandID CommandID;
 typedef juce::Component Component;
 
+typedef juce::Desktop Desktop;
 typedef juce::DocumentWindow DocumentWindow;
 typedef juce::DirectoryIterator DirectoryIterator;
 typedef juce::Drawable Drawable;
