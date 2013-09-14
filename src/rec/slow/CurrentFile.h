@@ -22,7 +22,6 @@ class CurrentFile : public Listener<const VirtualFile&>,
   virtual void operator()(const gui::DropFiles&);
   virtual void operator()(const VirtualFile& vf);
 
-  const SampleTime length() const;
   bool empty() const { return !length(); }
 
   void setVirtualFile(const VirtualFile&, bool showError);
@@ -30,6 +29,9 @@ class CurrentFile : public Listener<const VirtualFile&>,
   const VirtualFile file() const;
 
   const CriticalSection& lock() { return lock_; }
+
+  // derived
+  const SampleTime length() const;
 
  protected:
   bool determineIfFileEmpty(bool showError);
@@ -47,8 +49,8 @@ class CurrentFile : public Listener<const VirtualFile&>,
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);
 
-  friend class Instance;
-  friend class FileDataListener;
+  // friend class Instance;
+  // friend class FileDataListener;
 };
 
 }  // namespace slow

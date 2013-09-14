@@ -63,10 +63,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
     gui::addRecentFile(file_, *getFileDescription());
 
   VirtualFile newFile = f;
-  {
-    Lock l(getInstance()->lock_);  // TODO: do we need this lock?
-    file_.Swap(&newFile);
-  }
+  file_.Swap(&newFile);
 
   beforeFileChange();
 
