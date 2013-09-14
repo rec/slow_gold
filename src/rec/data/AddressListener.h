@@ -13,6 +13,11 @@ class AddressListener : public Listener<const Value&> {
   AddressListener(const Address& a, const string& typeName,
                   AddressProto::Scope scope = AddressProto::FILE_SCOPE);
 
+  friend class FileAddressListener;
+  friend class GlobalAddressListener;
+
+ public:
+
   virtual ~AddressListener();
 
   virtual void operator()(const Value&) = 0;

@@ -6,10 +6,9 @@ namespace gui {
 DataSlider::DataSlider(const String& name,
                        const String& tooltip,
                        const string& typeName,
-                       const data::Address& address,
-                       Scope scope)
+                       const data::Address& address)
     : Layout(name, HORIZONTAL, true),
-      data::AddressListener(address, typeName, scope),
+      data::AddressListener(address, typeName),
       slider_(name),
       caption_(name),
       name_(name),

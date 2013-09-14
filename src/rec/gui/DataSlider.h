@@ -25,8 +25,7 @@ class DataSlider : public Layout,
   DataSlider(const String& name,
              const String& tooltip,
              const string& typeName,
-             const data::Address& address,
-             Scope scope = data::AddressProto::FILE_SCOPE);
+             const data::Address& address);
 
   virtual void sliderValueChanged(Slider*);
   virtual void operator()(const data::Value&);

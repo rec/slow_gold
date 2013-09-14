@@ -18,9 +18,8 @@ class SetterToggle : public app::LanguageListener,
   SetterToggle(const string& name,
                const string& tooltip,
                const string& typeName,
-               const data::Address& a,
-               Scope scope = data::AddressProto::FILE_SCOPE)
-      : AddressListener(a, typeName, scope),
+               const data::Address& a)
+      : AddressListener(a, typeName),
         juce::ToggleButton(str(name)),
         name_(name),
         tooltip_(tooltip) {
