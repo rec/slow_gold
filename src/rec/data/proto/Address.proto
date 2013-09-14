@@ -1,10 +1,16 @@
 package rec.data;
 
 message AddressProto {
+  enum Scope {
+    FILE_SCOPE = 0;
+    GLOBAL_SCOPE = 1;
+  };
+
   message Part {
     optional uint32 index = 1;
     optional string name = 2;
   };
 
   repeated Part part = 1;
+  optional Scope scope = 2;
 };

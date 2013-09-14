@@ -13,9 +13,30 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/data/proto/Address.proto',
   package='rec.data',
-  serialized_pb='\n\x1crec/data/proto/Address.proto\x12\x08rec.data\"^\n\x0c\x41\x64\x64ressProto\x12)\n\x04part\x18\x01 \x03(\x0b\x32\x1b.rec.data.AddressProto.Part\x1a#\n\x04Part\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t')
+  serialized_pb='\n\x1crec/data/proto/Address.proto\x12\x08rec.data\"\xb6\x01\n\x0c\x41\x64\x64ressProto\x12)\n\x04part\x18\x01 \x03(\x0b\x32\x1b.rec.data.AddressProto.Part\x12+\n\x05scope\x18\x02 \x01(\x0e\x32\x1c.rec.data.AddressProto.Scope\x1a#\n\x04Part\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\")\n\x05Scope\x12\x0e\n\nFILE_SCOPE\x10\x00\x12\x10\n\x0cGLOBAL_SCOPE\x10\x01')
 
 
+
+_ADDRESSPROTO_SCOPE = _descriptor.EnumDescriptor(
+  name='Scope',
+  full_name='rec.data.AddressProto.Scope',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='FILE_SCOPE', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GLOBAL_SCOPE', index=1, number=1,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=184,
+  serialized_end=225,
+)
 
 
 _ADDRESSPROTO_PART = _descriptor.Descriptor(
@@ -48,8 +69,8 @@ _ADDRESSPROTO_PART = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=101,
-  serialized_end=136,
+  serialized_start=147,
+  serialized_end=182,
 )
 
 _ADDRESSPROTO = _descriptor.Descriptor(
@@ -66,21 +87,31 @@ _ADDRESSPROTO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='scope', full_name='rec.data.AddressProto.scope', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
   nested_types=[_ADDRESSPROTO_PART, ],
   enum_types=[
+    _ADDRESSPROTO_SCOPE,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=42,
-  serialized_end=136,
+  serialized_start=43,
+  serialized_end=225,
 )
 
 _ADDRESSPROTO_PART.containing_type = _ADDRESSPROTO;
 _ADDRESSPROTO.fields_by_name['part'].message_type = _ADDRESSPROTO_PART
+_ADDRESSPROTO.fields_by_name['scope'].enum_type = _ADDRESSPROTO_SCOPE
+_ADDRESSPROTO_SCOPE.containing_type = _ADDRESSPROTO;
 DESCRIPTOR.message_types_by_name['AddressProto'] = _ADDRESSPROTO
 
 class AddressProto(_message.Message):

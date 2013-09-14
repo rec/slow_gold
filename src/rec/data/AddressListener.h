@@ -8,12 +8,11 @@
 namespace rec {
 namespace data {
 
-class Address;
-
 class AddressListener : public Listener<const Value&> {
  public:
   AddressListener(const Address& a, const string& typeName,
-                  Scope scope = FILE_SCOPE);
+                  AddressProto::Scope scope = AddressProto::FILE_SCOPE);
+
   virtual ~AddressListener();
 
   virtual void operator()(const Value&) = 0;
@@ -41,7 +40,7 @@ class AddressListener : public Listener<const Value&> {
 class GlobalAddressListener : public AddressListener {
  public:
   GlobalAddressListener(const Address& a, const string& typeName)
-      : AddressListener(a, typeName, GLOBAL_SCOPE) {
+      : AddressListener(a, typeName, AddressProto::GLOBAL_SCOPE) {
   }
 
  private:

@@ -23,6 +23,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -37,6 +38,25 @@ void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto();
 class AddressProto;
 class AddressProto_Part;
 
+enum AddressProto_Scope {
+  AddressProto_Scope_FILE_SCOPE = 0,
+  AddressProto_Scope_GLOBAL_SCOPE = 1
+};
+bool AddressProto_Scope_IsValid(int value);
+const AddressProto_Scope AddressProto_Scope_Scope_MIN = AddressProto_Scope_FILE_SCOPE;
+const AddressProto_Scope AddressProto_Scope_Scope_MAX = AddressProto_Scope_GLOBAL_SCOPE;
+const int AddressProto_Scope_Scope_ARRAYSIZE = AddressProto_Scope_Scope_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* AddressProto_Scope_descriptor();
+inline const ::std::string& AddressProto_Scope_Name(AddressProto_Scope value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    AddressProto_Scope_descriptor(), value);
+}
+inline bool AddressProto_Scope_Parse(
+    const ::std::string& name, AddressProto_Scope* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AddressProto_Scope>(
+    AddressProto_Scope_descriptor(), name, value);
+}
 // ===================================================================
 
 class AddressProto_Part : public ::google::protobuf::Message {
@@ -190,6 +210,30 @@ class AddressProto : public ::google::protobuf::Message {
 
   typedef AddressProto_Part Part;
 
+  typedef AddressProto_Scope Scope;
+  static const Scope FILE_SCOPE = AddressProto_Scope_FILE_SCOPE;
+  static const Scope GLOBAL_SCOPE = AddressProto_Scope_GLOBAL_SCOPE;
+  static inline bool Scope_IsValid(int value) {
+    return AddressProto_Scope_IsValid(value);
+  }
+  static const Scope Scope_MIN =
+    AddressProto_Scope_Scope_MIN;
+  static const Scope Scope_MAX =
+    AddressProto_Scope_Scope_MAX;
+  static const int Scope_ARRAYSIZE =
+    AddressProto_Scope_Scope_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Scope_descriptor() {
+    return AddressProto_Scope_descriptor();
+  }
+  static inline const ::std::string& Scope_Name(Scope value) {
+    return AddressProto_Scope_Name(value);
+  }
+  static inline bool Scope_Parse(const ::std::string& name,
+      Scope* value) {
+    return AddressProto_Scope_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   // repeated .rec.data.AddressProto.Part part = 1;
@@ -204,15 +248,25 @@ class AddressProto : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::data::AddressProto_Part >*
       mutable_part();
 
+  // optional .rec.data.AddressProto.Scope scope = 2;
+  inline bool has_scope() const;
+  inline void clear_scope();
+  static const int kScopeFieldNumber = 2;
+  inline ::rec::data::AddressProto_Scope scope() const;
+  inline void set_scope(::rec::data::AddressProto_Scope value);
+
   // @@protoc_insertion_point(class_scope:rec.data.AddressProto)
  private:
+  inline void set_has_scope();
+  inline void clear_has_scope();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedPtrField< ::rec::data::AddressProto_Part > part_;
+  int scope_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto();
@@ -349,6 +403,29 @@ AddressProto::mutable_part() {
   return &part_;
 }
 
+// optional .rec.data.AddressProto.Scope scope = 2;
+inline bool AddressProto::has_scope() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void AddressProto::set_has_scope() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void AddressProto::clear_has_scope() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void AddressProto::clear_scope() {
+  scope_ = 0;
+  clear_has_scope();
+}
+inline ::rec::data::AddressProto_Scope AddressProto::scope() const {
+  return static_cast< ::rec::data::AddressProto_Scope >(scope_);
+}
+inline void AddressProto::set_scope(::rec::data::AddressProto_Scope value) {
+  assert(::rec::data::AddressProto_Scope_IsValid(value));
+  set_has_scope();
+  scope_ = value;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -359,6 +436,10 @@ AddressProto::mutable_part() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::data::AddressProto_Scope>() {
+  return ::rec::data::AddressProto_Scope_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

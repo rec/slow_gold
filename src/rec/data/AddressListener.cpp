@@ -11,6 +11,16 @@
 namespace rec {
 namespace data {
 
+namespace {
+
+typedef AddressProto::Scope Scope;
+
+Scope getScope(const Address& a, Scope s) {
+  return a.has_scope() ? a.scope() : s;
+}
+
+}
+
 struct AddressListener::UntypedListener : public UntypedDataListener {
   UntypedListener(AddressListener* p, const string& typeName, Scope scope)
       : UntypedDataListener(typeName, scope), parent_(p) {
@@ -25,7 +35,7 @@ struct AddressListener::UntypedListener : public UntypedDataListener {
 
 AddressListener::AddressListener(const Address& a, const string& tn, Scope s)
     : address_(a), failOnError_(true) {
-  untypedListener_.reset(new UntypedListener(this, tn, s));
+  untypedListener_.reset(new UntypedListener(this, tn, getScope(a, s)));
 }
 
 AddressListener::~AddressListener() {}

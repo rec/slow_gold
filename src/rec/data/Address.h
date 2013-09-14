@@ -34,6 +34,8 @@ class Address : public AddressProto {
   Address(const string& s) { p(s); }
   Address(const char* s) { p(s); }
   Address(int i) { p(i); }
+
+  const string toString() const;
 };
 
 // Isn't perhaps only the first one necessary?
@@ -54,8 +56,6 @@ inline const Address operator+(const string& x, const Address& y) {
 inline const Address operator+(const char* x, const Address& y) {
   return Address(x) + y;
 }
-
-const string toString(const Address&);
 
 }  // namespace data
 }  // namespace rec

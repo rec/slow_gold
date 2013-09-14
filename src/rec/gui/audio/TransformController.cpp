@@ -48,7 +48,7 @@ TransformController::TransformController()
       masterTune_("Master", "Master Tune Slider: "
                   "Master tune is a global detune over all tracks.",
                   getTypeName<AudioSettings>(), "master_tune",
-                  GLOBAL_SCOPE),
+                  data::AddressProto::GLOBAL_SCOPE),
 
       enableButton_("Enable",       "Transform Enable Button: "
                     "Disable or enable all sound transformations: "

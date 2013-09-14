@@ -49,7 +49,7 @@ class AboutPane : public Component {
                           str(t_DISPLAY_ON_STARTUP_TOOLTIP),
                           getTypeName<GuiSettings>(),
                           data::Address("show_about_on_startup"),
-                          GLOBAL_SCOPE) {
+                          data::AddressProto::GLOBAL_SCOPE) {
 #if 0
     // FIX JUCE BUG!
     right_.setJustification(Justification::bottomRight);

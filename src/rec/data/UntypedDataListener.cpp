@@ -33,7 +33,7 @@ UntypedDataListener::~UntypedDataListener() {}
 
 void UntypedDataListener::operator()(const VirtualFile& df) {
   VirtualFile datafile = df;
-  if (scope_ == GLOBAL_SCOPE) {
+  if (scope_ == AddressProto::GLOBAL_SCOPE) {
     if (data_)
       return;
     datafile = data::global();

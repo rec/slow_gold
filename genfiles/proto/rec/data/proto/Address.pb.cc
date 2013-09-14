@@ -27,6 +27,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* AddressProto_Part_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   AddressProto_Part_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* AddressProto_Scope_descriptor_ = NULL;
 
 }  // namespace
 
@@ -38,8 +39,9 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
       "rec/data/proto/Address.proto");
   GOOGLE_CHECK(file != NULL);
   AddressProto_descriptor_ = file->message_type(0);
-  static const int AddressProto_offsets_[1] = {
+  static const int AddressProto_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AddressProto, part_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AddressProto, scope_),
   };
   AddressProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -68,6 +70,7 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AddressProto_Part));
+  AddressProto_Scope_descriptor_ = AddressProto_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -103,9 +106,11 @@ void protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/data/proto/Address.proto\022\010rec.data"
-    "\"^\n\014AddressProto\022)\n\004part\030\001 \003(\0132\033.rec.dat"
-    "a.AddressProto.Part\032#\n\004Part\022\r\n\005index\030\001 \001"
-    "(\r\022\014\n\004name\030\002 \001(\t", 136);
+    "\"\266\001\n\014AddressProto\022)\n\004part\030\001 \003(\0132\033.rec.da"
+    "ta.AddressProto.Part\022+\n\005scope\030\002 \001(\0162\034.re"
+    "c.data.AddressProto.Scope\032#\n\004Part\022\r\n\005ind"
+    "ex\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\")\n\005Scope\022\016\n\nFILE_"
+    "SCOPE\020\000\022\020\n\014GLOBAL_SCOPE\020\001", 225);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/proto/Address.proto", &protobuf_RegisterTypes);
   AddressProto::default_instance_ = new AddressProto();
@@ -124,6 +129,27 @@ struct StaticDescriptorInitializer_rec_2fdata_2fproto_2fAddress_2eproto {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* AddressProto_Scope_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return AddressProto_Scope_descriptor_;
+}
+bool AddressProto_Scope_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const AddressProto_Scope AddressProto::FILE_SCOPE;
+const AddressProto_Scope AddressProto::GLOBAL_SCOPE;
+const AddressProto_Scope AddressProto::Scope_MIN;
+const AddressProto_Scope AddressProto::Scope_MAX;
+const int AddressProto::Scope_ARRAYSIZE;
+#endif  // _MSC_VER
 #ifndef _MSC_VER
 const int AddressProto_Part::kIndexFieldNumber;
 const int AddressProto_Part::kNameFieldNumber;
@@ -391,6 +417,7 @@ void AddressProto_Part::Swap(AddressProto_Part* other) {
 
 #ifndef _MSC_VER
 const int AddressProto::kPartFieldNumber;
+const int AddressProto::kScopeFieldNumber;
 #endif  // !_MSC_VER
 
 AddressProto::AddressProto()
@@ -409,6 +436,7 @@ AddressProto::AddressProto(const AddressProto& from)
 
 void AddressProto::SharedCtor() {
   _cached_size_ = 0;
+  scope_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -443,6 +471,9 @@ AddressProto* AddressProto::New() const {
 }
 
 void AddressProto::Clear() {
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    scope_ = 0;
+  }
   part_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -465,6 +496,27 @@ bool AddressProto::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_part;
+        if (input->ExpectTag(16)) goto parse_scope;
+        break;
+      }
+
+      // optional .rec.data.AddressProto.Scope scope = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_scope:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::data::AddressProto_Scope_IsValid(value)) {
+            set_scope(static_cast< ::rec::data::AddressProto_Scope >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(2, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -493,6 +545,12 @@ void AddressProto::SerializeWithCachedSizes(
       1, this->part(i), output);
   }
 
+  // optional .rec.data.AddressProto.Scope scope = 2;
+  if (has_scope()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->scope(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -508,6 +566,12 @@ void AddressProto::SerializeWithCachedSizes(
         1, this->part(i), target);
   }
 
+  // optional .rec.data.AddressProto.Scope scope = 2;
+  if (has_scope()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->scope(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -518,6 +582,14 @@ void AddressProto::SerializeWithCachedSizes(
 int AddressProto::ByteSize() const {
   int total_size = 0;
 
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    // optional .rec.data.AddressProto.Scope scope = 2;
+    if (has_scope()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->scope());
+    }
+
+  }
   // repeated .rec.data.AddressProto.Part part = 1;
   total_size += 1 * this->part_size();
   for (int i = 0; i < this->part_size(); i++) {
@@ -552,6 +624,11 @@ void AddressProto::MergeFrom(const ::google::protobuf::Message& from) {
 void AddressProto::MergeFrom(const AddressProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   part_.MergeFrom(from.part_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from.has_scope()) {
+      set_scope(from.scope());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -575,6 +652,7 @@ bool AddressProto::IsInitialized() const {
 void AddressProto::Swap(AddressProto* other) {
   if (other != this) {
     part_.Swap(&other->part_);
+    std::swap(scope_, other->scope_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

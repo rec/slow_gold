@@ -16,5 +16,24 @@ const string toString(const Address& x) {
   return s;
 }
 
+const string Address::toString() const {
+  string s;
+  for (int i = 0; i < part_size(); ++i) {
+    if (i)
+      s += ".";
+    if (part(i).has_name())
+      s += part(i).name();
+    else
+      s += str(String(part(i).index()));
+  }
+
+  if (scope() == AddressProto::FILE_SCOPE)
+    s += "-file";
+  else
+    s += "-global";
+  return s;
+}
+
+
 }  // namespace data
 }  // namespace rec

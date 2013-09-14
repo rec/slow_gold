@@ -20,11 +20,13 @@ class DataSlider : public Layout,
                    public app::LanguageListener,
                    public juce::Slider::Listener {
  public:
+  typedef data::AddressProto::Scope Scope;
+
   DataSlider(const String& name,
              const String& tooltip,
              const string& typeName,
              const data::Address& address,
-             Scope scope = FILE_SCOPE);
+             Scope scope = data::AddressProto::FILE_SCOPE);
 
   virtual void sliderValueChanged(Slider*);
   virtual void operator()(const data::Value&);

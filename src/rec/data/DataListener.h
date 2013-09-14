@@ -2,6 +2,7 @@
 #define __REC_DATA_DATALISTENER__
 
 #include "rec/data/DataOps.h"
+#include "rec/data/proto/Address.pb.h"
 #include "rec/data/UntypedDataListener.h"
 #include "rec/util/proto/Proto.h"
 
@@ -13,7 +14,9 @@ class Data;
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
  public:
-  explicit DataListener(Scope scope = FILE_SCOPE) {
+  typedef AddressProto::Scope Scope;
+
+  explicit DataListener(AddressProto::Scope scope = AddressProto::FILE_SCOPE) {
     adaptor_.reset(new Adaptor(this, scope));
   }
   virtual ~DataListener() {}
@@ -68,7 +71,7 @@ class DataListener : public Listener<const Proto&> {
 template <typename Proto>
 class GlobalDataListener : public DataListener<Proto> {
  public:
-  GlobalDataListener() : DataListener<Proto>(GLOBAL_SCOPE) {}
+  GlobalDataListener() : DataListener<Proto>(AddressProto::GLOBAL_SCOPE) {}
   virtual ~GlobalDataListener() {}
 
  private:

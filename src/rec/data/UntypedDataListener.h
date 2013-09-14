@@ -1,6 +1,7 @@
 #ifndef __REC_UTIL_UNTYPEDDATALISTENER__
 #define __REC_UTIL_UNTYPEDDATALISTENER__
 
+#include "rec/data/proto/Address.pb.h"
 #include "rec/data/Data.h"
 #include "rec/data/Value.h"
 #include "rec/util/Listener.h"
@@ -11,8 +12,9 @@ namespace data {
 class UntypedDataListener : public Listener<const Message&>,
                             public Listener<const VirtualFile&> {
  public:
+  typedef AddressProto::Scope Scope;
   explicit UntypedDataListener(const string& typeName,
-                               Scope scope = FILE_SCOPE);
+                               Scope scope = AddressProto::FILE_SCOPE);
   virtual ~UntypedDataListener();
 
   virtual void operator()(const Message& m) = 0;
@@ -38,7 +40,7 @@ class UntypedDataListener : public Listener<const Message&>,
 class UntypedGlobalDataListener : public UntypedDataListener {
  public:
   explicit UntypedGlobalDataListener(const string& typeName)
-      : UntypedDataListener(typeName, GLOBAL_SCOPE) {
+      : UntypedDataListener(typeName, AddressProto::GLOBAL_SCOPE) {
   }
 
  private:
