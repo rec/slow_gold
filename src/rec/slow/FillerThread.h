@@ -1,7 +1,8 @@
 #ifndef __REC_SLOW_FILLERTHREAD__
 #define __REC_SLOW_FILLERTHREAD__
 
-#include "rec/base/base.h"
+#include "rec/util/Listener.h"
+#include "rec/util/range/SampleRange.h"
 
 namespace rec { namespace audio { namespace util { class BufferFiller; }}}
 
@@ -10,7 +11,7 @@ namespace slow {
 
 class CurrentTime;
 
-class FillerThread : public Thread {
+class FillerThread : public Thread, public Broadcaster<const SampleRange&> {
  public:
   FillerThread(CurrentTime* currentTime,
                audio::util::BufferFiller* bufferFiller)

@@ -8,7 +8,6 @@
 #include "rec/util/range/Difference.h"
 #include "rec/util/range/WrapSeries.h"
 #include "rec/util/range/Range.h"
-#include "rec/util/range/SampleRange.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Waveform.h"
 
@@ -56,7 +55,7 @@ void FillerThread::run() {
     {
       MessageManagerLock l(this);
       if (l.lockWasGained())
-        getInstance()->components_->waveform_->repaintRange(b);
+        broadcast(b);
     }
     wait(FILLER_THREAD_WAIT);
   }

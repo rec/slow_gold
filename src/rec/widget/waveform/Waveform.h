@@ -32,6 +32,7 @@ typedef vector<Cursor*> CursorList;
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
                  public SettableTooltipClient,
+                 public Listener<const SampleRange&>,
                  public DataListener<Viewport>,
                  public app::LanguageListener,
                  public GlobalDataListener<Mode>,
@@ -43,26 +44,29 @@ class Waveform : public Component,
   virtual ~Waveform();
   void init();
 
-  virtual void mouseDoubleClick(const MouseEvent&);
+  void mouseDoubleClick(const MouseEvent&) override;
 
   static const CursorProto& defaultTimeCursor();
 
   void setAudioThumbnail(juce::AudioThumbnail*);
-  virtual void resized();
+  void resized() override;
 
-  virtual void paint(Graphics&);
-  virtual void operator()(const Mode&);
-  virtual void operator()(const WaveformProto&);
-  virtual void operator()(const Viewport& vp);
+  void paint(Graphics&) override;
+  void operator()(const Mode&) override;
+  void operator()(const WaveformProto&) override;
+  void operator()(const Viewport& vp) override;
+  void operator()(const SampleRange& range) override {
+    repaintRange(range);
+  }
 
-  virtual void languageChanged();
+  void languageChanged() override;
 
   Cursor* timeCursor() { return timeCursor_.get(); }
 
   const CursorList& getCursors() const { return cursors_; }
   CursorList* getCursorsMutable() { return &cursors_; }
 
-  virtual void mouseWheelMove(const MouseEvent& e, const juce::MouseWheelDetails&);
+  void mouseWheelMove(const MouseEvent& e, const juce::MouseWheelDetails&) override;
   CriticalSection* lock() { return &lock_; }
   int getCursorX(uint index) const;
   void setCursorText(int index, const String& text);
