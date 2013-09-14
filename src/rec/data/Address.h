@@ -38,6 +38,12 @@ class Address : public AddressProto {
   const string toString() const;
 };
 
+inline const Address operator+(const Address& x, AddressProto::Scope scope) {
+  Address result = x;
+  result.set_scope(scope);
+  return result;
+}
+
 // Isn't perhaps only the first one necessary?
 inline const Address operator+(const Address& x, const Address& y) {
   Address result = x;
