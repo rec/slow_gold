@@ -13,8 +13,7 @@ class UntypedDataListener : public Listener<const Message&>,
                             public Listener<const VirtualFile&> {
  public:
   typedef AddressProto::Scope Scope;
-  explicit UntypedDataListener(const string& typeName,
-                               Scope scope = AddressProto::FILE_SCOPE);
+  explicit UntypedDataListener(const string& typeName, Scope scope);
   virtual ~UntypedDataListener();
 
   virtual void operator()(const Message& m) = 0;
@@ -37,21 +36,7 @@ class UntypedDataListener : public Listener<const Message&>,
   DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedDataListener);
 };
 
-class UntypedGlobalDataListener : public UntypedDataListener {
- public:
-  explicit UntypedGlobalDataListener(const string& typeName)
-      : UntypedDataListener(typeName, AddressProto::GLOBAL_SCOPE) {
-  }
-
- private:
-  DISALLOW_COPY_ASSIGN_EMPTY_AND_LEAKS(UntypedGlobalDataListener);
-};
-
 }  // namespace data
-
-using data::UntypedDataListener;
-using data::UntypedGlobalDataListener;
-
 }  // namespace rec
 
 #endif  // __REC_UTIL_UNTYPEDDATALISTENER__

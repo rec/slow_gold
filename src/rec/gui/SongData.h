@@ -15,11 +15,12 @@ namespace gui {
 class SongData : public app::LanguageListener,
                  public SetterTextArea,
                  public Cuttable,
-                 public UntypedDataListener {
+                 public data::UntypedDataListener {
  public:
   typedef data::Address Address;
 
-  SongData() : UntypedDataListener(getTypeName<music::Metadata>()) {
+  SongData() : data::UntypedDataListener(getTypeName<music::Metadata>(),
+                                         data::AddressProto::FILE_SCOPE) {
     setName("SongData");
   }
 
