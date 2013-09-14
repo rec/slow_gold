@@ -3,6 +3,7 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/AudioSettings.pb.h"
+#include "rec/audio/util/CurrentTimeBase.h"
 #include "rec/base/SampleTime.h"
 #include "rec/data/DataListener.h"
 #include "rec/slow/GuiSettings.pb.h"
@@ -15,7 +16,8 @@
 namespace rec {
 namespace slow {
 
-class CurrentTime : public DataListener<widget::waveform::Viewport>,
+class CurrentTime : public audio::util::CurrentTimeBase,
+                    public DataListener<widget::waveform::Viewport>,
                     public GlobalDataListener<GuiSettings>,
                     public Listener<SampleTime>,
                     public Listener<audio::transport::State> {
@@ -33,17 +35,19 @@ class CurrentTime : public DataListener<widget::waveform::Viewport>,
     setViewport(vp);
   }
 
-
-  void setCursorTime(SampleTime time, int index, bool isTimeCursor);
-  const SampleRangeVector timeSelection() const {
+  const SampleRangeVector timeSelection() const override {
     Lock l(lock());
     return timeSelection_;
   }
 
   SampleTime length() const { Lock l(lock()); return length_; }
-  SampleTime time() const { Lock l(lock()); return time_; }
-  SampleTime requestedTime() const { Lock l(lock()); return requestedTime_; }
-  void jumpToTime(SampleTime pos);
+  SampleTime time() const override { Lock l(lock()); return time_; }
+  SampleTime requestedTime() const override {
+    Lock l(lock());
+    return requestedTime_;
+  }
+
+  void jumpToTime(SampleTime) override;
   void setLoopingSegment(int);
 
   void reset();

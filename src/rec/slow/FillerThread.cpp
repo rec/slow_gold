@@ -18,6 +18,7 @@ namespace rec {
 namespace slow {
 
 namespace {
+
 const int FILLER_THREAD_WAIT = 5;
 
 }  // namespace

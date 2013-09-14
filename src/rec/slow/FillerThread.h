@@ -5,15 +5,14 @@
 #include "rec/util/range/SampleRange.h"
 
 namespace rec { namespace audio { namespace util { class BufferFiller; }}}
+namespace rec { namespace audio { namespace util { class CurrentTimeBase; }}}
 
 namespace rec {
 namespace slow {
 
-class CurrentTime;
-
 class FillerThread : public Thread, public Broadcaster<const SampleRange&> {
  public:
-  FillerThread(CurrentTime* currentTime,
+  FillerThread(audio::util::CurrentTimeBase* currentTime,
                audio::util::BufferFiller* bufferFiller)
       : Thread("Filler"),
         currentTime_(currentTime),
@@ -25,7 +24,7 @@ class FillerThread : public Thread, public Broadcaster<const SampleRange&> {
  private:
   void setFillPositionOrJump();
 
-  CurrentTime* currentTime_;
+  audio::util::CurrentTimeBase* currentTime_;
   audio::util::BufferFiller* bufferFiller_;
   DISALLOW_COPY_ASSIGN_AND_LEAKS(FillerThread);
 };
