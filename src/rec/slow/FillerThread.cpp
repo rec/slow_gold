@@ -21,26 +21,23 @@ namespace slow {
 namespace {
 const int FILLER_THREAD_WAIT = 5;
 
-inline CurrentTime* currentTime() {
-  return getInstance()->currentTime_.get();
-}
-
 }  // namespace
 
 void FillerThread::setFillPositionOrJump() {
-  SampleTime jump = currentTime()->requestedTime();
-  BufferedReader* reader = getInstance()->bufferFiller_->reader();
+  SampleTime jump = currentTime_->requestedTime();
+  BufferedReader* reader = bufferFiller_->reader();
   if (jump >= 0) {
     if (reader->coversTime(jump))
-      currentTime()->jumpToTime(jump);
+      currentTime_->jumpToTime(jump);
   } else {
     // Find the first moment in the selection after "time" that needs to be filled.
-    SampleRangeVector sel = currentTime()->timeSelection();
+    SampleRangeVector sel = currentTime_->timeSelection();
     SampleRangeVector readerFilled = reader->filled();
     SampleRangeVector fill = difference<SampleTime>(sel, readerFilled);
     if (!fill.empty()) {
-      SampleTime time = currentTime()->time();
-      SampleRangeVector fillList = getUnfilledBlocks(fill, time, getInstance()->length(), STOP_AT_END);
+      SampleTime time = currentTime_->time();
+      SampleRangeVector fillList = getUnfilledBlocks(fill, time, reader->length(),
+                                                     STOP_AT_END);
       if (!fillList.empty())
         reader->setNextFillPosition(fillList.begin()->begin_);
       else
@@ -52,7 +49,7 @@ void FillerThread::setFillPositionOrJump() {
 void FillerThread::run() {
   setFillPositionOrJump();
   while (true) {
-    SampleRange b = getInstance()->bufferFiller_->fillOnce();
+    SampleRange b = bufferFiller_->fillOnce();
     if (threadShouldExit() || b.empty())
       return;
     setFillPositionOrJump();

@@ -146,7 +146,8 @@ void Instance::init() {
   lookAndFeel_.reset(new gui::LookAndFeel);
   mouseListener_.reset(new MouseListener);
   guiListener_.reset(new GuiListener);
-  fillerThread_.reset(new FillerThread);
+  fillerThread_.reset(new FillerThread(currentTime_.get(),
+                                       bufferFiller_.get()));
   midiCommandMap_.reset(new command::MidiCommandMap);
   threads_.reset(new Threads);
 
