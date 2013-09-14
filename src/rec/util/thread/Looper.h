@@ -40,6 +40,23 @@ unique_ptr<Thread> makeLooper(String name, Operator op, Instance i) {
   return make_unique<Looper<Operator, Instance>>(name, op, i);
 }
 
+typedef int32 (*ThreadFunction)(Thread*);
+
+struct LooperDesc {
+  String name;
+  int priority;
+  ThreadFunction function;
+};
+
+class ThreadLooper : public Thread {
+ public:
+  explicit ThreadLooper(const LooperDesc&);
+  void run() override;
+
+ private:
+  ThreadFunction const function_;
+};
+
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
