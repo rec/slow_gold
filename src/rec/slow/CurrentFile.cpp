@@ -124,7 +124,8 @@ bool CurrentFile::determineIfFileEmpty(bool showError) {
 
   music::MusicFileReader reader(file_);
   if (!reader.empty()) {
-    length_ = getInstance()->bufferFiller_->setReader(file_, reader.release());
+    getInstance()->bufferFiller_->setReader(file_, reader.release());
+    length_ = getInstance()->bufferFiller_->length();
     if (length_)
       return false;
     reader.setError(t_RAN_OUT_OF_MEMORY, t_RAN_OUT_OF_MEMORY_FULL);

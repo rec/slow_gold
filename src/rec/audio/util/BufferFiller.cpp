@@ -34,14 +34,18 @@ AudioThumbnail* BufferFiller::thumbnail() {
   return thumbnail_->thumbnail();
 }
 
-SampleTime BufferFiller::setReader(const VirtualFile& f,
+SampleTime BufferFiller::length() const {
+  return reader_->length();
+}
+
+void BufferFiller::setReader(const VirtualFile& f,
                                    AudioFormatReader* reader) {
   Lock l(lock_);
   DCHECK(reader);
   DCHECK(reader->lengthInSamples);
   file_ = getShadowDirectory(f).getChildFile(FILENAME);
   thumbnail_->read(file_, reader->sampleRate, reader->lengthInSamples);
-  return reader_->setReader(reader);
+  reader_->setReader(reader);
 }
 
 SampleRange BufferFiller::fillOnce() {

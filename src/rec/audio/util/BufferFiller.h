@@ -18,8 +18,9 @@ class BufferFiller {
 
   SampleRange fillOnce();
   bool isFull() const;
-  SampleTime setReader(const VirtualFile& file, AudioFormatReader* r);
+  void setReader(const VirtualFile& file, AudioFormatReader* r);
   audio::util::BufferedReader* reader() { return reader_.get(); }
+  SampleTime length() const;
   AudioThumbnail* thumbnail();
   void reset();
 

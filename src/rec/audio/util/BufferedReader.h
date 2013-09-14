@@ -13,7 +13,7 @@ class BufferedReader : public Fillable {
   BufferedReader() {}
   virtual ~BufferedReader() {}
 
-  SampleTime setReader(AudioFormatReader* reader);
+  void setReader(AudioFormatReader* reader);
 
   virtual Source* makeSource() const = 0;
   virtual bool setLength(int64 length) = 0;

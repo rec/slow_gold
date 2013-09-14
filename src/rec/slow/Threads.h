@@ -15,16 +15,17 @@ class Threads : public HasLock {
   Threads();
   ~Threads();
 
-  void start();
-  void clean();
-  void queueCallback(void* owner, Callback* c);
-  void removeCallbacksFor(void* owner);
-  int runQueue();
   Thread* guiThread();
   Thread* timerThread();
   Thread* updateThread();
 
+  void start();
+  int runQueue();
+
  private:
+  void clean();
+  void queueCallback(void* owner, Callback* c);
+  void removeCallbacksFor(void* owner);
   void stop();
 
   template <typename Operator>

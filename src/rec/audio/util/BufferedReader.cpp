@@ -6,21 +6,20 @@ namespace util {
 
 static const int PRELOAD = 10000;
 
-SampleTime BufferedReader::setReader(AudioFormatReader* reader) {
+void BufferedReader::setReader(AudioFormatReader* reader) {
   DCHECK(reader);
   Lock l(lock_);
   reset();
   reader_.reset(reader);
 
-  if (!reader_)
-    return 0;
+  if (reader_) {
+    SampleTime size = reader->lengthInSamples;
+    if (not setLength(size))
+      reader_.reset();
+  }
 
-  SampleTime size = reader->lengthInSamples;
-  if (setLength(size))
-    return size;
-
-  reader_.reset();
-  return 0;
+  if (not reader_.get())
+    setLength(0);
 }
 
 bool BufferedReader::coversTime(SampleTime time) const {
