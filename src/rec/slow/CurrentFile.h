@@ -31,7 +31,7 @@ class CurrentFile : public Listener<const VirtualFile&>,
 
   const CriticalSection& lock() { return lock_; }
 
- private:
+ protected:
   bool determineIfFileEmpty(bool showError);
   void nonEmptyFileLoaded();
   void continueLoading(bool showError);
@@ -39,6 +39,7 @@ class CurrentFile : public Listener<const VirtualFile&>,
   void beforeFileChange();
   void suspend();
   void resume();
+  unique_ptr<Message> getFileDescription();
 
   CriticalSection lock_;
   VirtualFile file_;

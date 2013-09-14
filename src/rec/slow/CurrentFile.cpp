@@ -60,7 +60,7 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
   suspend();
 
   if (file_.path_size())
-    gui::addRecentFile(file_, data::getProto<music::Metadata>(file_));
+    gui::addRecentFile(file_, *getFileDescription());
 
   VirtualFile newFile = f;
   {
@@ -81,6 +81,10 @@ void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
 
   resume();
   program::menuItemsChanged();
+}
+
+unique_ptr<Message> CurrentFile::getFileDescription() {
+  return unique_ptr<Message>(data::getData<music::Metadata>(file_)->clone());
 }
 
 const SampleTime CurrentFile::length() const {
