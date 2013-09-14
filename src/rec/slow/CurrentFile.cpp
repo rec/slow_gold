@@ -31,62 +31,11 @@ TRAN(RAN_OUT_OF_MEMORY_FULL, "Sorry, there wasn't enough memory for the file.");
 namespace rec {
 namespace slow {
 
-using namespace rec::data;
 using namespace rec::widget::waveform;
 using namespace juce;
 
-void CurrentFile::operator()(const gui::DropFiles& dropFiles) {
-  const file::VirtualFileList& files = dropFiles.files_;
-  if (files.file_size() >= 1)
-    setVirtualFile(files.file(0), true);
-}
-
-void CurrentFile::setFile(const File& f, bool showError) {
-  setVirtualFile(file::toVirtualFile(f), showError);
-}
-
-void CurrentFile::operator()(const VirtualFile& vf) {
-  setVirtualFile(vf, true);
-}
-
-const VirtualFile CurrentFile::file() const {
-  return file_;
-}
-
-void CurrentFile::setVirtualFile(const VirtualFile& f, bool showError) {
-  data::getDataCenter().waitTillClear();
-  data::getDataCenter().clearUndoes();
-
-  suspend();
-
-  if (file_.path_size())
-    gui::addRecentFile(file_, *getFileDescription());
-
-  VirtualFile newFile = f;
-  file_.Swap(&newFile);
-
-  beforeFileChange();
-
-  if (determineIfFileEmpty(showError))
-    file_ = data::noData();
-  else
-    nonEmptyFileLoaded();
-
-  afterFileChange(newFile);
-  data::setProto(file_, CANT_UNDO);
-  data::UntypedDataListener::setGlobalDataFile(file_);
-
-  resume();
-  program::menuItemsChanged();
-}
-
 unique_ptr<Message> CurrentFile::getFileDescription() {
   return unique_ptr<Message>(data::getData<music::Metadata>(file_)->clone());
-}
-
-const SampleTime CurrentFile::length() const {
-  Lock l(lock_);
-  return length_;
 }
 
 void CurrentFile::suspend() {

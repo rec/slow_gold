@@ -2,47 +2,27 @@
 #define __REC_SLOW_METHODS_FILEMETHODS__
 
 #include "rec/base/SampleTime.h"
-#include "rec/util/Listener.h"
-#include "rec/util/file/VirtualFile.pb.h"
+#include "rec/util/file/CurrentFileBase.h"
 
 namespace rec { namespace gui { class DropFiles; } }
 
 namespace rec {
 namespace slow {
 
-class CurrentFile : public Listener<const VirtualFile&>,
-                    public Listener<const gui::DropFiles&> {
+class CurrentFile : public util::file::CurrentFileBase {
  public:
   CurrentFile() {}
-  virtual ~CurrentFile() {}
-
-  // Set the file and change the persistent data.
-  virtual void operator()(const gui::DropFiles&);
-  virtual void operator()(const VirtualFile& vf);
-
-  bool empty() const { return !length(); }
-
-  void setVirtualFile(const VirtualFile&, bool showError);
-  void setFile(const File&, bool showError = true);
-  const VirtualFile file() const;
-
-  const CriticalSection& lock() { return lock_; }
-
-  // derived
-  const SampleTime length() const;
+  const SampleTime length() const { return length_; }
 
  protected:
-  bool determineIfFileEmpty(bool showError);
-  void nonEmptyFileLoaded();
-  void continueLoading(bool showError);
-  void afterFileChange(const VirtualFile& newFile);
-  void beforeFileChange();
-  void suspend();
-  void resume();
-  unique_ptr<Message> getFileDescription();
+  bool determineIfFileEmpty(bool showError) override;
+  void nonEmptyFileLoaded() override;
+  void afterFileChange(const VirtualFile& newFile) override;
+  void beforeFileChange() override;
+  void suspend() override;
+  void resume() override;
+  unique_ptr<Message> getFileDescription() override;
 
-  CriticalSection lock_;
-  VirtualFile file_;
   SampleTime length_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CurrentFile);

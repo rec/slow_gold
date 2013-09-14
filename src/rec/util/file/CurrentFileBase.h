@@ -29,7 +29,6 @@ class CurrentFileBase : public Listener<const VirtualFile&>,
  protected:
   virtual bool determineIfFileEmpty(bool showError) = 0;
   virtual void nonEmptyFileLoaded() = 0;
-  virtual void continueLoading(bool showError) = 0;
   virtual void afterFileChange(const VirtualFile& newFile) = 0;
   virtual void beforeFileChange() = 0;
   virtual void suspend() = 0;
