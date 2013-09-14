@@ -4,17 +4,6 @@
 namespace rec {
 namespace slow {
 
-command::Commands makeCommand() {
-  slow::Commands slowCommands = BINARY_PROTO(Commands, slow::Commands);
-  command::Commands commands;
-  for (auto& slowCommand: slowCommands.command()) {
-    command::Command* command = commands.add_command();
-    *command = slowCommand.command();
-    command->set_id(slowCommand.id());
-  }
-  return commands;
-}
-
 command::KeyStrokeCommandMapProto makeKeyBindings() {
   slow::CommandMapProto slowMaps =
     BINARY_PROTO(KeyStrokeMap, slow::CommandMapProto);

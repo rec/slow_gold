@@ -49,7 +49,7 @@ static SlowRecentFilesStrategy RECENT_FILES_STRATEGY;
 }
 
 command::Commands SlowProgram::commands() const {
-  return makeCommand();
+  return convertCommands<slow::Commands>();
 }
 
 command::KeyStrokeCommandMapProto SlowProgram::keypresses() const {

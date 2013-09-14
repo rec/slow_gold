@@ -11,23 +11,17 @@ namespace slow {
 
 class Instance;
 
-command::Commands makeCommand();
-
-#if 0
 template <typename ProgramCommands>
-command::Commands makeCommand() {
-  ProgramCommands programCommands = BINARY_PROTO(Commands, ProgramCommands);
-
+command::Commands convertCommands() {
+  ProgramCommands slowCommands = BINARY_PROTO(Commands, ProgramCommands);
   command::Commands commands;
-  // typename
-  for (auto& programCommand: programCommands.command()) {
+  for (auto& slowCommand: slowCommands.command()) {
     command::Command* command = commands.add_command();
-    *command = programCommand.command();
-    command->set_id(programCommand.id());
+    *command = slowCommand.command();
+    command->set_id(slowCommand.id());
   }
   return commands;
 }
-#endif
 
 command::KeyStrokeCommandMapProto makeKeyBindings();
 
