@@ -790,6 +790,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\ToggleButton.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp">
       <Filter>SlowGold\src\gui</Filter>
     </ClCompile>
@@ -1127,6 +1130,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc">
@@ -2832,6 +2838,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\ToggleButton.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterLabel.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
@@ -3358,6 +3367,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h">

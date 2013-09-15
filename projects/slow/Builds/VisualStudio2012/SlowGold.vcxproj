@@ -233,6 +233,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Component.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\ToggleButton.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterText.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\TableController.cpp"/>
@@ -346,6 +347,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
@@ -1604,6 +1606,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Component.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\ToggleButton.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterLabel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterResizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterText.h"/>
@@ -1780,6 +1783,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\WindowPosition.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>

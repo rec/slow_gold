@@ -1,0 +1,9 @@
+package rec.gui;
+
+import "rec/data/proto/Address.proto";
+
+message ToggleButtonProto {
+  optional string name = 1;
+  optional string tooltip = 2;
+  optional rec.data.DataAddress data_address = 3;
+};
