@@ -121,9 +121,9 @@ void TransformController::operator()(const Stretch& s) {
 void TransformController::languageChanged() {
   stereoComboBox_.setTooltip(
       Trans("Stereo Processing Menu:  Choose between the "
-                  "original stereo, just the left channel, "
-                  "just the right channel, "
-                  "or a mono mix of both channels."));
+            "original stereo, just the left channel, "
+            "just the right channel, "
+            "or a mono mix of both channels."));
 
   pitchScale_.slider()->setTextValueSuffix(String(" ") + Trans("semitones"));
   fineScale_.slider()->setTextValueSuffix(String(" ") + Trans("cents"));

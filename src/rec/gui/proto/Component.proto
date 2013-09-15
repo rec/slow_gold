@@ -1,12 +1,14 @@
 package rec.gui;
 
+import "rec/gui/proto/ComboBox.proto";
 import "rec/gui/proto/Slider.proto";
 import "rec/gui/proto/ToggleButton.proto";
 
 message ComponentProto {
   optional string name = 1;
-  optional SliderProto slider = 2;
-  optional ToggleButtonProto toggle_button = 3;
+  optional ComboBoxProto combo_box = 2;
+  optional SliderProto slider = 3;
+  optional ToggleButtonProto toggle_button = 4;
 };
 
 message ComponentProtos {
