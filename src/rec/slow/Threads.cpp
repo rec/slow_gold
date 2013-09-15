@@ -13,6 +13,7 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/CallbackQueue.h"
 #include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/ThreadList.h"
 #include "rec/widget/tree/Directory.h"
 #include "rec/widget/tree/Root.h"
 
@@ -54,16 +55,16 @@ struct Priority {
   };
 };
 
-int navigator(Instance* i) {
-  i->components_->directoryTree_->checkVolumes();
+int navigator(Instance*) {
+  getInstance()->components_->directoryTree_->checkVolumes();
   return Period::NAVIGATOR;
 }
 
-int writeGui(Instance* i) {
-  MessageManagerLock l(i->threads_->guiThread());
+int writeGui(Instance*) {
+  MessageManagerLock l(getInstance()->threads_->guiThread());
   if (!l.lockWasGained())
     return DONE;
-  i->updateGui();
+  getInstance()->updateGui();
   return Period::WRITE_GUI;
 }
 
@@ -73,25 +74,25 @@ int writeData(Instance*) {
 }
 
 int updateData(Instance* i) {
-  MessageManagerLock l(i->threads_->updateThread());
+  MessageManagerLock l(getInstance()->threads_->updateThread());
   if (!l.lockWasGained())
     return DONE;
   data::getDataCenter().updater_->update();
   return Period::UPDATE_DATA;
 }
 
-thread::Result directory(Instance* i) {
-  return i->components_->directoryTree_->run() ?
+thread::Result directory(Instance*) {
+  return getInstance()->components_->directoryTree_->run() ?
     thread::YIELD : static_cast<thread::Result>(Period::DIRECTORY);
 }
 
-int timer(Instance* i) {
-  i->player_->timer()->broadcastTime();
+int timer(Instance*) {
+  getInstance()->player_->timer()->broadcastTime();
   return Period::TIMER;
 }
 
-int callbackThread(Instance* i) {
-  return i->threads_->runQueue();
+int callbackThread(Instance*) {
+  return getInstance()->threads_->runQueue();
 }
 
 
@@ -127,7 +128,11 @@ struct Threads::ThreadList {
   Thread* updateThread_;
 };
 
-Threads::Threads() : threads_(new ThreadList) {}
+Threads::Threads()
+  : threads_(new ThreadList),
+    threads2_(new util::thread::ThreadList) {
+}
+
 Threads::~Threads() {}
 
 Thread* Threads::guiThread() {
@@ -194,6 +199,61 @@ void Threads::start() {
   threads_->timerThread_ =
     start(&timer, "timer", Priority::TIMER);
 }
+
+namespace {
+
+int navigator2(Thread*) {
+  getInstance()->components_->directoryTree_->checkVolumes();
+  return Period::NAVIGATOR;
+}
+
+int writeGui2(Thread*) {
+  MessageManagerLock l(getInstance()->threads_->guiThread());
+  if (!l.lockWasGained())
+    return DONE;
+  getInstance()->updateGui();
+  return Period::WRITE_GUI;
+}
+
+int writeData2(Thread*) {
+  data::getDataCenter().updater_->write();
+  return Period::WRITE_DATA;
+}
+
+int updateData2(Thread* i) {
+  MessageManagerLock l(getInstance()->threads_->updateThread());
+  if (!l.lockWasGained())
+    return DONE;
+  data::getDataCenter().updater_->update();
+  return Period::UPDATE_DATA;
+}
+
+int directory2(Thread*) {
+  return getInstance()->components_->directoryTree_->run() ?
+    thread::YIELD : static_cast<thread::Result>(Period::DIRECTORY);
+}
+
+int timer2(Thread*) {
+  getInstance()->player_->timer()->broadcastTime();
+  return Period::TIMER;
+}
+
+int callback2(Thread*) {
+  return getInstance()->threads_->runQueue();
+}
+
+thread::LooperDesc LOOPERS[] = {
+  {"callback", 4, 49, callback2},
+  {"directory", 3, 1000, directory2},
+  {"navigator", 2, 1001, navigator2},
+  {"update data", 4, 51, updateData2},
+  {"write GUI", 4, 201, writeGui2},
+  {"write data", 4, 1003, writeData2},
+  {"timer", 4, 101, timer2},
+  {"callback", 4, 49, callback2},
+};
+
+}  // namespace
 
 }  // namespace slow
 }  // namespace rec

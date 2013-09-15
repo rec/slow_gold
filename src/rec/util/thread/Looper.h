@@ -44,7 +44,8 @@ typedef int32 (*ThreadFunction)(Thread*);
 
 struct LooperDesc {
   String name;
-  int priority;
+  int32 priority;
+  int32 period;
   ThreadFunction function;
 };
 
@@ -55,7 +56,12 @@ class ThreadLooper : public Thread {
 
  private:
   ThreadFunction const function_;
+  int32 const period_;
 };
+
+inline unique_ptr<Thread> newThread(const LooperDesc& ld) {
+  return unique_ptr<Thread>(new ThreadLooper(ld));
+}
 
 }  // namespace thread
 }  // namespace util

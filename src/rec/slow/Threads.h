@@ -7,6 +7,8 @@
 #include "rec/util/thread/CallbackQueue.h"
 #include "rec/util/HasLock.h"
 
+namespace rec { namespace util { namespace thread { class ThreadList; }}}
+
 namespace rec {
 namespace slow {
 
@@ -33,6 +35,7 @@ class Threads : public HasLock {
 
   struct ThreadList;
   ptr<ThreadList> threads_;
+  ptr<util::thread::ThreadList> threads2_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Threads);
 };

@@ -5,7 +5,7 @@ namespace util {
 namespace thread {
 
 ThreadLooper::ThreadLooper(const LooperDesc& desc)
-    : Thread(desc.name), function_(desc.function) {
+    : Thread(desc.name), function_(desc.function), period_(desc.period) {
   setPriority(desc.priority);
 }
 
@@ -22,6 +22,10 @@ void ThreadLooper::run() {
 
      case DONE:
       return;
+
+     case WAIT:
+       wait(period_);
+       break;
 
      default:
       wait(r);
