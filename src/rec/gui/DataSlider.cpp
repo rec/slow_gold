@@ -6,7 +6,10 @@ namespace gui {
 DataSlider::DataSlider(const String& name,
                        const String& tooltip,
                        const string& typeName,
-                       const data::Address& address)
+                       const data::Address& address,
+                       uint32 captionSize,
+                       uint32 textEntryBoxWidth,
+                       uint32 textEntryBoxHeight)
     : Layout(name, HORIZONTAL, true),
       data::AddressListener(address, typeName),
       slider_(name),
@@ -14,10 +17,11 @@ DataSlider::DataSlider(const String& name,
       name_(name),
       tooltip_(tooltip) {
   slider_.setSliderStyle(Slider::LinearHorizontal);
-  slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 16);
+  slider_.setTextBoxStyle(Slider::TextBoxLeft, false,
+                          textEntryBoxWidth, textEntryBoxHeight);
   slider_.addListener(this);
 
-  addToLayout(&caption_, 45);
+  addToLayout(&caption_, captionSize);
   addToLayout(&slider_, 0, -1.0, -1.0);
 }
 

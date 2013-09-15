@@ -20,18 +20,24 @@ class DataSlider : public Layout,
                    public app::LanguageListener,
                    public juce::Slider::Listener {
  public:
-  typedef data::AddressProto::Scope Scope;
-
   DataSlider(const String& name,
              const String& tooltip,
              const string& typeName,
-             const data::Address& address);
+             const data::Address& address,
+             uint32 captionSize = 45,
+             uint32 textEntryBoxWidth = 80,
+             uint32 textEntryBoxHeight = 1);
 
   virtual void sliderValueChanged(Slider*);
   virtual void operator()(const data::Value&);
   virtual void languageChanged();
 
   DetentSlider* slider() { return &slider_; }
+  void setDetent(double detent) { slider_.setDetent(detent); }
+  void setDetentRadius(double radius) { slider_.setDetentRadius(radius); }
+  void setRange(double min, double max, double interval) {
+    slider_.setRange(min, max, interval);
+  }
 
  protected:
   void setSliderValue(double value) {

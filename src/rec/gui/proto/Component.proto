@@ -1,0 +1,12 @@
+package rec.gui;
+
+import "rec/gui/proto/Slider.proto";
+
+message ComponentProto {
+  optional string name = 1;
+  optional SliderProto slider = 2;
+};
+
+message ComponentProtos {
+  repeated ComponentProto component = 1;
+};

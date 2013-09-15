@@ -1,0 +1,47 @@
+package rec.gui;
+
+import "rec/data/proto/Address.proto";
+
+message SliderProto {
+  optional string caption = 1;
+  optional uint32 caption_size = 2 [default = 45];
+  optional string tooltip = 3;
+  optional uint32 text_entry_box_width = 4 [default = 80];
+  optional uint32 text_entry_box_height = 5 [default = 16];
+
+  optional rec.data.DataAddress data_address = 12;
+  optional double detent = 6;
+  optional double detent_radius = 7;
+  optional string text_suffix = 8;
+  optional double minimum = 9;
+  optional double maximum = 10;
+  optional double interval = 11;
+
+  // Note yet used.
+  enum Style {
+    LinearHorizontal = 0;
+    LinearVertical = 1;
+    LinearBar = 2;
+    LinearBarVertical = 3;
+    Rotary = 4;
+    RotaryHorizontalDrag = 5;
+    RotaryVerticalDrag = 6;
+    RotaryHorizontalVerticalDrag = 7;
+    IncDecButtons = 8;
+    TwoValueHorizontal = 9;
+    TwoValueVertical = 10;
+    ThreeValueHorizontal = 11;
+    ThreeValueVertical = 12;
+  };
+
+  enum TextEntryBoxPosition {
+    NoTextBox = 0;
+    TextBoxLeft = 1;
+    TextBoxRight = 2;
+    TextBoxAbove = 3;
+    TextBoxBelow = 4;
+  };
+
+  optional Style style = 21;
+  optional TextEntryBoxPosition text_entry_box_position = 22;
+};

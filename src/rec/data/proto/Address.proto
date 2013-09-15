@@ -14,3 +14,8 @@ message AddressProto {
   repeated Part part = 1;
   optional Scope scope = 2;
 };
+
+message DataAddress {
+  optional string type_name = 1;
+  optional AddressProto address = 2;
+};

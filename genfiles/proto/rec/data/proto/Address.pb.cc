@@ -28,6 +28,9 @@ const ::google::protobuf::Descriptor* AddressProto_Part_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   AddressProto_Part_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* AddressProto_Scope_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* DataAddress_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DataAddress_reflection_ = NULL;
 
 }  // namespace
 
@@ -71,6 +74,22 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AddressProto_Part));
   AddressProto_Scope_descriptor_ = AddressProto_descriptor_->enum_type(0);
+  DataAddress_descriptor_ = file->message_type(1);
+  static const int DataAddress_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataAddress, type_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataAddress, address_),
+  };
+  DataAddress_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DataAddress_descriptor_,
+      DataAddress::default_instance_,
+      DataAddress_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataAddress, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataAddress, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DataAddress));
 }
 
 namespace {
@@ -87,6 +106,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     AddressProto_descriptor_, &AddressProto::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     AddressProto_Part_descriptor_, &AddressProto_Part::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DataAddress_descriptor_, &DataAddress::default_instance());
 }
 
 }  // namespace
@@ -96,6 +117,8 @@ void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto() {
   delete AddressProto_reflection_;
   delete AddressProto_Part::default_instance_;
   delete AddressProto_Part_reflection_;
+  delete DataAddress::default_instance_;
+  delete DataAddress_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
@@ -110,13 +133,17 @@ void protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
     "ta.AddressProto.Part\022+\n\005scope\030\002 \001(\0162\034.re"
     "c.data.AddressProto.Scope\032#\n\004Part\022\r\n\005ind"
     "ex\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\")\n\005Scope\022\016\n\nFILE_"
-    "SCOPE\020\000\022\020\n\014GLOBAL_SCOPE\020\001", 225);
+    "SCOPE\020\000\022\020\n\014GLOBAL_SCOPE\020\001\"I\n\013DataAddress"
+    "\022\021\n\ttype_name\030\001 \001(\t\022\'\n\007address\030\002 \001(\0132\026.r"
+    "ec.data.AddressProto", 300);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/proto/Address.proto", &protobuf_RegisterTypes);
   AddressProto::default_instance_ = new AddressProto();
   AddressProto_Part::default_instance_ = new AddressProto_Part();
+  DataAddress::default_instance_ = new DataAddress();
   AddressProto::default_instance_->InitAsDefaultInstance();
   AddressProto_Part::default_instance_->InitAsDefaultInstance();
+  DataAddress::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto);
 }
 
@@ -664,6 +691,276 @@ void AddressProto::Swap(AddressProto* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = AddressProto_descriptor_;
   metadata.reflection = AddressProto_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int DataAddress::kTypeNameFieldNumber;
+const int DataAddress::kAddressFieldNumber;
+#endif  // !_MSC_VER
+
+DataAddress::DataAddress()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DataAddress::InitAsDefaultInstance() {
+  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
+}
+
+DataAddress::DataAddress(const DataAddress& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DataAddress::SharedCtor() {
+  _cached_size_ = 0;
+  type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  address_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DataAddress::~DataAddress() {
+  SharedDtor();
+}
+
+void DataAddress::SharedDtor() {
+  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete type_name_;
+  }
+  if (this != default_instance_) {
+    delete address_;
+  }
+}
+
+void DataAddress::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DataAddress::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DataAddress_descriptor_;
+}
+
+const DataAddress& DataAddress::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
+  return *default_instance_;
+}
+
+DataAddress* DataAddress::default_instance_ = NULL;
+
+DataAddress* DataAddress::New() const {
+  return new DataAddress;
+}
+
+void DataAddress::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_type_name()) {
+      if (type_name_ != &::google::protobuf::internal::kEmptyString) {
+        type_name_->clear();
+      }
+    }
+    if (has_address()) {
+      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DataAddress::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string type_name = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_type_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->type_name().data(), this->type_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_address;
+        break;
+      }
+
+      // optional .rec.data.AddressProto address = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_address:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_address()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DataAddress::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional string type_name = 1;
+  if (has_type_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->type_name().data(), this->type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->type_name(), output);
+  }
+
+  // optional .rec.data.AddressProto address = 2;
+  if (has_address()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->address(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DataAddress::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional string type_name = 1;
+  if (has_type_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->type_name().data(), this->type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->type_name(), target);
+  }
+
+  // optional .rec.data.AddressProto address = 2;
+  if (has_address()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->address(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DataAddress::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string type_name = 1;
+    if (has_type_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->type_name());
+    }
+
+    // optional .rec.data.AddressProto address = 2;
+    if (has_address()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->address());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DataAddress::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DataAddress* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DataAddress*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DataAddress::MergeFrom(const DataAddress& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_type_name()) {
+      set_type_name(from.type_name());
+    }
+    if (from.has_address()) {
+      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DataAddress::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DataAddress::CopyFrom(const DataAddress& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DataAddress::IsInitialized() const {
+
+  return true;
+}
+
+void DataAddress::Swap(DataAddress* other) {
+  if (other != this) {
+    std::swap(type_name_, other->type_name_);
+    std::swap(address_, other->address_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DataAddress::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DataAddress_descriptor_;
+  metadata.reflection = DataAddress_reflection_;
   return metadata;
 }
 

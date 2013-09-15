@@ -37,6 +37,7 @@ void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto();
 
 class AddressProto;
 class AddressProto_Part;
+class DataAddress;
 
 enum AddressProto_Scope {
   AddressProto_Scope_FILE_SCOPE = 0,
@@ -275,6 +276,105 @@ class AddressProto : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static AddressProto* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class DataAddress : public ::google::protobuf::Message {
+ public:
+  DataAddress();
+  virtual ~DataAddress();
+
+  DataAddress(const DataAddress& from);
+
+  inline DataAddress& operator=(const DataAddress& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DataAddress& default_instance();
+
+  void Swap(DataAddress* other);
+
+  // implements Message ----------------------------------------------
+
+  DataAddress* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DataAddress& from);
+  void MergeFrom(const DataAddress& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string type_name = 1;
+  inline bool has_type_name() const;
+  inline void clear_type_name();
+  static const int kTypeNameFieldNumber = 1;
+  inline const ::std::string& type_name() const;
+  inline void set_type_name(const ::std::string& value);
+  inline void set_type_name(const char* value);
+  inline void set_type_name(const char* value, size_t size);
+  inline ::std::string* mutable_type_name();
+  inline ::std::string* release_type_name();
+  inline void set_allocated_type_name(::std::string* type_name);
+
+  // optional .rec.data.AddressProto address = 2;
+  inline bool has_address() const;
+  inline void clear_address();
+  static const int kAddressFieldNumber = 2;
+  inline const ::rec::data::AddressProto& address() const;
+  inline ::rec::data::AddressProto* mutable_address();
+  inline ::rec::data::AddressProto* release_address();
+  inline void set_allocated_address(::rec::data::AddressProto* address);
+
+  // @@protoc_insertion_point(class_scope:rec.data.DataAddress)
+ private:
+  inline void set_has_type_name();
+  inline void clear_has_type_name();
+  inline void set_has_address();
+  inline void clear_has_address();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* type_name_;
+  ::rec::data::AddressProto* address_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
+  friend void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto();
+
+  void InitAsDefaultInstance();
+  static DataAddress* default_instance_;
+};
 // ===================================================================
 
 
@@ -424,6 +524,118 @@ inline void AddressProto::set_scope(::rec::data::AddressProto_Scope value) {
   assert(::rec::data::AddressProto_Scope_IsValid(value));
   set_has_scope();
   scope_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// DataAddress
+
+// optional string type_name = 1;
+inline bool DataAddress::has_type_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DataAddress::set_has_type_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DataAddress::clear_has_type_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DataAddress::clear_type_name() {
+  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
+    type_name_->clear();
+  }
+  clear_has_type_name();
+}
+inline const ::std::string& DataAddress::type_name() const {
+  return *type_name_;
+}
+inline void DataAddress::set_type_name(const ::std::string& value) {
+  set_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void DataAddress::set_type_name(const char* value) {
+  set_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void DataAddress::set_type_name(const char* value, size_t size) {
+  set_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* DataAddress::mutable_type_name() {
+  set_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    type_name_ = new ::std::string;
+  }
+  return type_name_;
+}
+inline ::std::string* DataAddress::release_type_name() {
+  clear_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = type_name_;
+    type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void DataAddress::set_allocated_type_name(::std::string* type_name) {
+  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete type_name_;
+  }
+  if (type_name) {
+    set_has_type_name();
+    type_name_ = type_name;
+  } else {
+    clear_has_type_name();
+    type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional .rec.data.AddressProto address = 2;
+inline bool DataAddress::has_address() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DataAddress::set_has_address() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DataAddress::clear_has_address() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DataAddress::clear_address() {
+  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+  clear_has_address();
+}
+inline const ::rec::data::AddressProto& DataAddress::address() const {
+  return address_ != NULL ? *address_ : *default_instance_->address_;
+}
+inline ::rec::data::AddressProto* DataAddress::mutable_address() {
+  set_has_address();
+  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
+  return address_;
+}
+inline ::rec::data::AddressProto* DataAddress::release_address() {
+  clear_has_address();
+  ::rec::data::AddressProto* temp = address_;
+  address_ = NULL;
+  return temp;
+}
+inline void DataAddress::set_allocated_address(::rec::data::AddressProto* address) {
+  delete address_;
+  address_ = address;
+  if (address) {
+    set_has_address();
+  } else {
+    clear_has_address();
+  }
 }
 
 
