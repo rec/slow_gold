@@ -18,9 +18,17 @@ class ThreadList {
     threads_.push_back(std::move(thread));
   }
 
+  void start() {
+    for (auto& thread: threads_)
+      thread->startThread();
+  }
+
   void stop() {
-    for (uint i = 0; i < threads_.size(); ++i)
-      threads_[i]->stopThread(THREAD_STOP_PERIOD);
+    for (auto& thread: threads_)
+    {
+      DLOG(INFO) << str(thread->getThreadName());
+      thread->stopThread(THREAD_STOP_PERIOD);
+    }
   }
 
  private:

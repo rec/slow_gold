@@ -19,7 +19,7 @@
 namespace rec {
 namespace slow {
 
-static const bool USE_NEW_STYLE = false;
+static const bool USE_NEW_STYLE = not false;
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
@@ -135,6 +135,8 @@ Thread* Threads::updateThread() {
 }
 
 Thread* Threads::timerThread() {
+  if (USE_NEW_STYLE)
+    return threads2_->at("timer");
   return threads_->timerThread_;
 }
 
@@ -165,8 +167,8 @@ int navigator2(Thread*) {
   return Period::NAVIGATOR;
 }
 
-int writeGui2(Thread*) {
-  MessageManagerLock l(getInstance()->threads_->guiThread());
+int writeGui2(Thread* thread) {
+  MessageManagerLock l(thread);
   if (!l.lockWasGained())
     return DONE;
   getInstance()->updateGui();
@@ -178,8 +180,8 @@ int writeData2(Thread*) {
   return Period::WRITE_DATA;
 }
 
-int updateData2(Thread*) {
-  MessageManagerLock l(getInstance()->threads_->updateThread());
+int updateData2(Thread* thread) {
+  MessageManagerLock l(thread);
   if (!l.lockWasGained())
     return DONE;
   data::getDataCenter().updater_->update();
@@ -210,6 +212,7 @@ thread::LooperDesc LOOPERS[] = {
 void Threads::start() {
   if (USE_NEW_STYLE) {
     threads2_ = thread::newLooperList(std::begin(LOOPERS), std::end(LOOPERS));
+    threads2_->start();
   } else {
     start(&navigator, "Navigator", Priority::NAVIGATOR);
     start(&directory, "Directory", Priority::DIRECTORY);

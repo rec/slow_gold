@@ -6,7 +6,7 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/util/HasLock.h"
 
-namespace rec { namespace util { namespace thread { class ThreadList; }}}
+namespace rec { namespace util { namespace thread { class LooperThreadList; }}}
 namespace rec { namespace util { namespace thread { class CallbackQueue; }}}
 
 namespace rec {
@@ -17,13 +17,13 @@ class Threads : public HasLock {
   Threads();
   ~Threads();
 
+  void start();
+
+  // private:
   Thread* guiThread();
   Thread* timerThread();
   Thread* updateThread();
 
-  void start();
-
- private:
   void clean();
   void stop();
 
@@ -32,7 +32,7 @@ class Threads : public HasLock {
 
   struct ThreadList;
   ptr<ThreadList> threads_;
-  unique_ptr<util::thread::ThreadList> threads2_;
+  unique_ptr<util::thread::LooperThreadList> threads2_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Threads);
 };
