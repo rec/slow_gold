@@ -233,6 +233,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\ComboBox.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Component.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\ToggleButton.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
@@ -348,6 +351,10 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ComboBox.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
@@ -1608,6 +1615,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ComboBox.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Component.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ToggleButton.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\SetterLabel.h"/>
@@ -1786,6 +1796,10 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ComboBox.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>

@@ -1,0 +1,9 @@
+package rec.gui;
+
+import "rec/data/proto/Address.proto";
+
+message ResizerProto {
+  optional uint32 size = 1;
+  optional uint32 min_value = 2;
+  optional data.DataAddress data_address = 4;
+};

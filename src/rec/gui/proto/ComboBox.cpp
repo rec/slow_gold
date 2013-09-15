@@ -15,6 +15,9 @@ unique_ptr<ComboBox> makeComboBox(const ComboBoxProto& combo) {
   for (int i = 0; i < combo.item_size(); ++i)
     comboBox->addItem(combo.item(i), i);
 
+  comboBox->setTextWhenNothingSelected(combo.item(0));
+  comboBox->setTextWhenNoChoicesAvailable(combo.item(0));
+
   return std::move(comboBox);
 }
 

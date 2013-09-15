@@ -1,0 +1,12 @@
+package rec.gui;
+
+message FontProto {
+  optional float height = 1;
+  optional float height_delta = 2;
+  optional string typeface_name = 3;
+  optional string typeface_style = 4;
+
+  optional bool is_bold = 5;
+  optional bool is_italic = 6;
+  optional bool is_underlined = 7;
+};
