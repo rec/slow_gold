@@ -4,7 +4,6 @@
 #include <unordered_map>
 
 #include "rec/util/thread/Result.h"
-#include "rec/util/thread/ThreadList.h"
 
 namespace rec {
 namespace util {
