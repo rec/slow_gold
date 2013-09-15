@@ -2,6 +2,7 @@
 #define __REC_UTIL_THREAD_LOOPER__
 
 #include "rec/util/thread/Result.h"
+#include "rec/util/thread/ThreadList.h"
 
 namespace rec {
 namespace util {
@@ -59,9 +60,15 @@ class ThreadLooper : public Thread {
   int32 const period_;
 };
 
-inline unique_ptr<Thread> newThread(const LooperDesc& ld) {
+inline unique_ptr<Thread> newThreadLooper(const LooperDesc& ld) {
   return unique_ptr<Thread>(new ThreadLooper(ld));
 }
+
+template <typename Iterator>
+unique_ptr<ThreadList> newLooperList(Iterator begin, Iterator end) {
+  return newThreadList(newThreadLooper, begin, end);
+}
+
 
 }  // namespace thread
 }  // namespace util

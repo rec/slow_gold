@@ -4,10 +4,10 @@
 #include "rec/util/HasLock.h"
 #include "rec/util/thread/Looper.h"
 #include "rec/util/thread/Callback.h"
-#include "rec/util/thread/CallbackQueue.h"
 #include "rec/util/HasLock.h"
 
 namespace rec { namespace util { namespace thread { class ThreadList; }}}
+namespace rec { namespace util { namespace thread { class CallbackQueue; }}}
 
 namespace rec {
 namespace slow {
@@ -22,12 +22,9 @@ class Threads : public HasLock {
   Thread* updateThread();
 
   void start();
-  int runQueue();
 
  private:
   void clean();
-  void queueCallback(void* owner, Callback* c);
-  void removeCallbacksFor(void* owner);
   void stop();
 
   template <typename Operator>
@@ -35,7 +32,7 @@ class Threads : public HasLock {
 
   struct ThreadList;
   ptr<ThreadList> threads_;
-  ptr<util::thread::ThreadList> threads2_;
+  unique_ptr<util::thread::ThreadList> threads2_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Threads);
 };

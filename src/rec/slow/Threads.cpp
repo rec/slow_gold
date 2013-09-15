@@ -11,7 +11,6 @@
 #include "rec/slow/Threads.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
-#include "rec/util/thread/CallbackQueue.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/ThreadList.h"
 #include "rec/widget/tree/Directory.h"
@@ -20,7 +19,7 @@
 namespace rec {
 namespace slow {
 
-// Skin
+static const bool USE_NEW_STYLE = false;
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
@@ -91,15 +90,10 @@ int timer(Instance*) {
   return Period::TIMER;
 }
 
-int callbackThread(Instance*) {
-  return getInstance()->threads_->runQueue();
-}
-
-
 }  // namespace
 
 struct Threads::ThreadList {
-  ThreadList() : callbackThread_(nullptr), guiThread_(nullptr), updateThread_(nullptr) {}
+  ThreadList() : guiThread_(nullptr), updateThread_(nullptr) {}
   ~ThreadList() {
     stop();
     stl::deletePointers(&threads_);
@@ -121,16 +115,13 @@ struct Threads::ThreadList {
   }
 
   vector<Thread*> threads_;
-  thread::CallbackQueue callbackQueue_;
-  Thread* callbackThread_;
+
   Thread* guiThread_;
   Thread* timerThread_;
   Thread* updateThread_;
 };
 
-Threads::Threads()
-  : threads_(new ThreadList),
-    threads2_(new util::thread::ThreadList) {
+Threads::Threads() : threads_(new ThreadList) {
 }
 
 Threads::~Threads() {}
@@ -145,15 +136,6 @@ Thread* Threads::updateThread() {
 
 Thread* Threads::timerThread() {
   return threads_->timerThread_;
-}
-
-void Threads::queueCallback(void* owner, Callback* c) {
-  threads_->callbackQueue_.queueCallback(owner, c);
-  threads_->callbackThread_->notify();
-}
-
-void Threads::removeCallbacksFor(void* owner) {
-  threads_->callbackQueue_.removeCallbacksFor(owner);
 }
 
 template <typename Operator>
@@ -176,30 +158,6 @@ void Threads::clean() {
   threads_->clean();
 }
 
-int Threads::runQueue() {
-  bool empty = getInstance()->empty();
-  if (!empty)
-    threads_->callbackQueue_.runOneCallback();
-  return empty ? static_cast<int>(thread::YIELD) : Period::CALLBACK_QUEUE;
-}
-
-typedef int (Threads::*ThreadsMethod)();
-
-void Threads::start() {
-  start(&navigator, "Navigator", Priority::NAVIGATOR);
-  start(&directory, "Directory", Priority::DIRECTORY);
-  start(&writeData, "writeData", Priority::WRITE_DATA);
-
-  threads_->guiThread_ =
-    start(&writeGui, "writeGUI", Priority::WRITE_GUI);
-  threads_->updateThread_
-    = start(&updateData, "updateData", Priority::UPDATE_DATA);
-  threads_->callbackThread_ =
-    start(&callbackThread, "Callback", Priority::CALLBACK_QUEUE);
-  threads_->timerThread_ =
-    start(&timer, "timer", Priority::TIMER);
-}
-
 namespace {
 
 int navigator2(Thread*) {
@@ -220,7 +178,7 @@ int writeData2(Thread*) {
   return Period::WRITE_DATA;
 }
 
-int updateData2(Thread* i) {
+int updateData2(Thread*) {
   MessageManagerLock l(getInstance()->threads_->updateThread());
   if (!l.lockWasGained())
     return DONE;
@@ -238,22 +196,33 @@ int timer2(Thread*) {
   return Period::TIMER;
 }
 
-int callback2(Thread*) {
-  return getInstance()->threads_->runQueue();
-}
-
 thread::LooperDesc LOOPERS[] = {
-  {"callback", 4, 49, callback2},
   {"directory", 3, 1000, directory2},
   {"navigator", 2, 1001, navigator2},
   {"update data", 4, 51, updateData2},
   {"write GUI", 4, 201, writeGui2},
   {"write data", 4, 1003, writeData2},
   {"timer", 4, 101, timer2},
-  {"callback", 4, 49, callback2},
 };
 
 }  // namespace
+
+void Threads::start() {
+  if (USE_NEW_STYLE) {
+    threads2_ = thread::newLooperList(std::begin(LOOPERS), std::end(LOOPERS));
+  } else {
+    start(&navigator, "Navigator", Priority::NAVIGATOR);
+    start(&directory, "Directory", Priority::DIRECTORY);
+    start(&writeData, "writeData", Priority::WRITE_DATA);
+
+    threads_->guiThread_ =
+      start(&writeGui, "writeGUI", Priority::WRITE_GUI);
+    threads_->updateThread_
+      = start(&updateData, "updateData", Priority::UPDATE_DATA);
+    threads_->timerThread_ =
+      start(&timer, "timer", Priority::TIMER);
+  }
+}
 
 }  // namespace slow
 }  // namespace rec

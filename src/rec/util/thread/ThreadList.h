@@ -30,7 +30,7 @@ class ThreadList {
 };
 
 template <typename Maker, typename Iterator>
-unique_ptr<ThreadList> makeThreadList(Maker maker, Iterator begin, Iterator end) {
+unique_ptr<ThreadList> newThreadList(Maker maker, Iterator begin, Iterator end) {
   unique_ptr<ThreadList> threadList(new ThreadList);
   for (auto i = begin; i != end; ++i)
     threadList->add(maker(*i));
