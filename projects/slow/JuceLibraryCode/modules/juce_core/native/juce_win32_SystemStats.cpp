@@ -104,16 +104,13 @@ String SystemStats::getCpuVendor()
 
 
 //==============================================================================
-SystemStats::CPUFlags::CPUFlags()
+void CPUInformation::initialise() noexcept
 {
     hasMMX   = IsProcessorFeaturePresent (PF_MMX_INSTRUCTIONS_AVAILABLE) != 0;
     hasSSE   = IsProcessorFeaturePresent (PF_XMMI_INSTRUCTIONS_AVAILABLE) != 0;
     hasSSE2  = IsProcessorFeaturePresent (PF_XMMI64_INSTRUCTIONS_AVAILABLE) != 0;
-   #ifdef PF_AMD3D_INSTRUCTIONS_AVAILABLE
-    has3DNow = IsProcessorFeaturePresent (PF_AMD3D_INSTRUCTIONS_AVAILABLE) != 0;
-   #else
-    has3DNow = IsProcessorFeaturePresent (PF_3DNOW_INSTRUCTIONS_AVAILABLE) != 0;
-   #endif
+    hasSSE3  = IsProcessorFeaturePresent (13 /*PF_SSE3_INSTRUCTIONS_AVAILABLE*/) != 0;
+    has3DNow = IsProcessorFeaturePresent (7  /*PF_AMD3D_INSTRUCTIONS_AVAILABLE*/) != 0;
 
     SYSTEM_INFO systemInfo;
     GetNativeSystemInfo (&systemInfo);
@@ -133,31 +130,51 @@ static DebugFlagsInitialiser debugFlagsInitialiser;
 #endif
 
 //==============================================================================
-SystemStats::OperatingSystemType SystemStats::getOperatingSystemType()
+static bool isWindowsVersionOrLater (SystemStats::OperatingSystemType target)
 {
-    OSVERSIONINFO info;
-    info.dwOSVersionInfoSize = sizeof (info);
-    GetVersionEx (&info);
+    OSVERSIONINFOEX info;
+    zerostruct (info);
+    info.dwOSVersionInfoSize = sizeof (OSVERSIONINFOEX);
 
-    if (info.dwPlatformId == VER_PLATFORM_WIN32_NT)
+    if (target >= SystemStats::WinVista)
     {
-        if (info.dwMajorVersion == 5)
-            return (info.dwMinorVersion == 0) ? Win2000 : WinXP;
+        info.dwMajorVersion = 6;
 
-        if (info.dwMajorVersion == 6)
+        switch (target)
         {
-            switch (info.dwMinorVersion)
-            {
-                case 0:  return WinVista;
-                case 1:  return Windows7;
-                case 2:  return Windows8;
-
-                default:
-                    jassertfalse;  // new version needs to be added here!
-                    return Windows8;
-            }
+            case SystemStats::WinVista:  info.dwMinorVersion = 0; break;
+            case SystemStats::Windows7:  info.dwMinorVersion = 1; break;
+            case SystemStats::Windows8:  info.dwMinorVersion = 2; break;
+            default:                     jassertfalse; break;
         }
     }
+    else
+    {
+        info.dwMajorVersion = 5;
+        info.dwMinorVersion = target >= SystemStats::WinXP ? 1 : 0;
+    }
+
+    DWORDLONG mask = 0;
+
+    VER_SET_CONDITION (mask, VER_MAJORVERSION,     VER_GREATER_EQUAL);
+    VER_SET_CONDITION (mask, VER_MINORVERSION,     VER_GREATER_EQUAL);
+    VER_SET_CONDITION (mask, VER_SERVICEPACKMAJOR, VER_GREATER_EQUAL);
+    VER_SET_CONDITION (mask, VER_SERVICEPACKMINOR, VER_GREATER_EQUAL);
+
+    return VerifyVersionInfo (&info,
+                              VER_MAJORVERSION | VER_MINORVERSION
+                               | VER_SERVICEPACKMAJOR | VER_SERVICEPACKMINOR,
+                              mask) != FALSE;
+}
+
+SystemStats::OperatingSystemType SystemStats::getOperatingSystemType()
+{
+    const SystemStats::OperatingSystemType types[]
+            = { Windows8, Windows7, WinVista, WinXP, Win2000 };
+
+    for (int i = 0; i < numElementsInArray (types); ++i)
+        if (isWindowsVersionOrLater (types[i]))
+            return types[i];
 
     jassertfalse;  // need to support whatever new version is running!
     return UnknownOS;

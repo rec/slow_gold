@@ -59,7 +59,7 @@ void OutlinedCursorLabel::paint(Graphics& g) {
 }
 
 void OutlinedCursorLabel::setSelected(bool selected) {
-  selectButton_.setToggleState(selected, false);
+  selectButton_.setToggleState(selected, juce::dontSendNotification);
 }
 
 void OutlinedCursorLabel::buttonClicked(juce::Button* b) {

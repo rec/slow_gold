@@ -22,8 +22,9 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_DECIBELS_JUCEHEADER__
-#define __JUCE_DECIBELS_JUCEHEADER__
+#ifndef JUCE_DECIBELS_H_INCLUDED
+#define JUCE_DECIBELS_H_INCLUDED
+
 
 //==============================================================================
 /**
@@ -100,4 +101,4 @@ private:
 };
 
 
-#endif   // __JUCE_DECIBELS_JUCEHEADER__
+#endif   // JUCE_DECIBELS_H_INCLUDED

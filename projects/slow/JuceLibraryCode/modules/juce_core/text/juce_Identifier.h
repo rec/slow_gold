@@ -26,10 +26,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_IDENTIFIER_JUCEHEADER__
-#define __JUCE_IDENTIFIER_JUCEHEADER__
-
-class StringPool;
+#ifndef JUCE_IDENTIFIER_H_INCLUDED
+#define JUCE_IDENTIFIER_H_INCLUDED
 
 
 //==============================================================================
@@ -40,7 +38,7 @@ class StringPool;
     from a string, so it's much faster to keep a static identifier object to refer
     to frequently-used names, rather than constructing them each time you need it.
 
-    @see NamedPropertySet, ValueTree
+    @see NamedValueSet, ValueTree
 */
 class JUCE_API  Identifier
 {
@@ -84,6 +82,9 @@ public:
     /** Returns this identifier's raw string pointer. */
     const String::CharPointerType getCharPointer() const noexcept       { return name; }
 
+    /** Returns this identifier as a StringRef. */
+    operator StringRef() const noexcept                                 { return name; }
+
     /** Returns true if this Identifier is not null */
     bool isValid() const noexcept                                       { return name.getAddress() != nullptr; }
 
@@ -108,4 +109,4 @@ private:
 };
 
 
-#endif   // __JUCE_IDENTIFIER_JUCEHEADER__
+#endif   // JUCE_IDENTIFIER_H_INCLUDED

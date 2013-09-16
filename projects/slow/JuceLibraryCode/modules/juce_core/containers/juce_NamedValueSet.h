@@ -26,15 +26,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_NAMEDVALUESET_JUCEHEADER__
-#define __JUCE_NAMEDVALUESET_JUCEHEADER__
-
-#include "juce_Variant.h"
-#include "../containers/juce_LinkedListPointer.h"
-class XmlElement;
-#ifndef DOXYGEN
- class JSONFormatter;
-#endif
+#ifndef JUCE_NAMEDVALUESET_H_INCLUDED
+#define JUCE_NAMEDVALUESET_H_INCLUDED
 
 
 //==============================================================================
@@ -166,4 +159,4 @@ private:
 };
 
 
-#endif   // __JUCE_NAMEDVALUESET_JUCEHEADER__
+#endif   // JUCE_NAMEDVALUESET_H_INCLUDED

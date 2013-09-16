@@ -22,13 +22,9 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_PROPERTYCOMPONENT_JUCEHEADER__
-#define __JUCE_PROPERTYCOMPONENT_JUCEHEADER__
+#ifndef JUCE_PROPERTYCOMPONENT_H_INCLUDED
+#define JUCE_PROPERTYCOMPONENT_H_INCLUDED
 
-class EditableProperty;
-
-#include "../components/juce_Component.h"
-#include "../mouse/juce_TooltipClient.h"
 
 //==============================================================================
 /**
@@ -96,15 +92,15 @@ public:
 
         @see LookAndFeel::drawPropertyComponentBackground(), LookAndFeel::drawPropertyComponentLabel()
     */
-    void paint (Graphics& g);
+    void paint (Graphics&) override;
 
     /** The default resize method positions any child component to the right of this
         one, based on the look and feel's default label size.
     */
-    void resized();
+    void resized() override;
 
     /** By default, this just repaints the component. */
-    void enablementChanged();
+    void enablementChanged() override;
 
 protected:
     /** Used by the PropertyPanel to determine how high this component needs to be.
@@ -118,4 +114,4 @@ private:
 };
 
 
-#endif   // __JUCE_PROPERTYCOMPONENT_JUCEHEADER__
+#endif   // JUCE_PROPERTYCOMPONENT_H_INCLUDED

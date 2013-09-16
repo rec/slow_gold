@@ -26,8 +26,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_TARGETPLATFORM_JUCEHEADER__
-#define __JUCE_TARGETPLATFORM_JUCEHEADER__
+#ifndef JUCE_TARGETPLATFORM_H_INCLUDED
+#define JUCE_TARGETPLATFORM_H_INCLUDED
 
 //==============================================================================
 /*  This file figures out which platform is being built, and defines some macros
@@ -64,6 +64,8 @@
   #else
     #define     JUCE_MAC 1
   #endif
+#elif defined (__FreeBSD__)
+  #define       JUCE_BSD 1
 #else
   #error "Unknown platform!"
 #endif
@@ -119,6 +121,8 @@
 
   #if defined (__ppc__) || defined (__ppc64__)
     #define JUCE_PPC 1
+  #elif defined (__arm__)
+    #define JUCE_ARM 1
   #else
     #define JUCE_INTEL 1
   #endif
@@ -161,7 +165,9 @@
     #define JUCE_32BIT 1
   #endif
 
-  #if __MMX__ || __SSE__ || __amd64__
+  #ifdef __arm__
+    #define JUCE_ARM 1
+  #elif __MMX__ || __SSE__ || __amd64__
     #define JUCE_INTEL 1
   #endif
 #endif
@@ -196,4 +202,4 @@
   #error unknown compiler
 #endif
 
-#endif   // __JUCE_TARGETPLATFORM_JUCEHEADER__
+#endif   // JUCE_TARGETPLATFORM_H_INCLUDED

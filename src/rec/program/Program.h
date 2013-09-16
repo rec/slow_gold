@@ -5,12 +5,15 @@
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/gui/menu/RecentFiles.h"
 #include "rec/program/Menu.pb.h"
+#include "rec/program/Threads.pb.h"
 #include "rec/program/Types.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/command/CallbackTable.h"
 
 namespace rec {
 namespace program {
+
+typedef int32 (*ThreadFunction)(Thread*);
 
 class Program : public command::CallbackTable{
  public:
@@ -21,6 +24,7 @@ class Program : public command::CallbackTable{
   virtual command::KeyStrokeCommandMapProto keypresses() const = 0;
   virtual Menus menus() const = 0;
   virtual MenuCollection menuCollection() const = 0;
+  virtual ThreadProtos threads() const = 0;
   virtual string menuBarName() const = 0;
 
   virtual bool hasProperty(const string& name) const = 0;
@@ -44,6 +48,7 @@ class Program : public command::CallbackTable{
   virtual string commandName(CommandID) const = 0;
   virtual bool isEnabled() const = 0;
   virtual void setEnabled(bool) = 0;
+  virtual ThreadFunction threadFunction(const string&) const = 0;
 };
 
 void registerProgram(Program*);

@@ -22,10 +22,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_AUDIOFORMATWRITER_JUCEHEADER__
-#define __JUCE_AUDIOFORMATWRITER_JUCEHEADER__
-
-#include "juce_AudioFormatReader.h"
+#ifndef JUCE_AUDIOFORMATWRITER_H_INCLUDED
+#define JUCE_AUDIOFORMATWRITER_H_INCLUDED
 
 
 //==============================================================================
@@ -203,7 +201,7 @@ public:
 
     private:
         class Buffer;
-        friend class ScopedPointer<Buffer>;
+        friend struct ContainerDeletePolicy<Buffer>;
         ScopedPointer<Buffer> buffer;
     };
 
@@ -258,4 +256,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioFormatWriter)
 };
 
-#endif   // __JUCE_AUDIOFORMATWRITER_JUCEHEADER__
+#endif   // JUCE_AUDIOFORMATWRITER_H_INCLUDED

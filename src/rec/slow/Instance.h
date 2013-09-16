@@ -27,7 +27,6 @@ class CurrentTime;
 class GuiListener;
 class MouseListener;
 class SlowWindow;
-class Threads;
 
 class SlowProgram;
 
@@ -66,7 +65,6 @@ class Instance {
 
   ptr<MouseListener> mouseListener_;
   ptr<GuiListener> guiListener_;
-  ptr<Threads> threads_;
   thread_ptr<Thread> fillerThread_;
   ptr<gui::LookAndFeel> lookAndFeel_;
   ptr<command::MidiCommandMap> midiCommandMap_;

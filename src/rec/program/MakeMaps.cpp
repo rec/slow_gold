@@ -1,11 +1,38 @@
 #include <unordered_set>
 
 #include "rec/program/MakeMaps.h"
-
 #include "rec/program/Program.h"
+#include "rec/util/thread/Result.h"
 
 namespace rec {
 namespace program {
+
+namespace {
+
+class ThreadLooper : public Thread {
+ public:
+  explicit ThreadLooper(const string& name, ThreadFunction f, uint32 period)
+      : Thread(str(name)), function_(f), period_(period) {
+  }
+
+  void run() override {
+    while (!threadShouldExit()) {
+      int32 r = function_(this);
+      switch (r) {
+       case thread::CONTINUE:  break;
+       case thread::YIELD:     yield(); break;
+       case thread::DONE:      return;
+       default:                wait(static_cast<int>(r)); break;
+      }
+    }
+  }
+
+ private:
+  ThreadFunction const function_;
+  int32 const period_;
+};
+
+}
 
 CommandMap makeCommandMap(const Program& program) {
   CommandMap commandMap;
@@ -84,6 +111,18 @@ MenuBarMap makeMenuBarMap(const Program& program) {
   for (auto& menuBar: menuBars)
     menuBarMap[menuBar.description().name()] = menuBar;
   return menuBarMap;
+}
+
+ThreadMap makeThreadMap(const Program& program) {
+  ThreadMap threadMap;
+  auto threads = program.threads();
+  for (auto& thread: threads.thread()) {
+    ThreadFunction f = program.threadFunction(thread.name());
+    unique_ptr<Thread> t(new ThreadLooper(thread.name(), f, thread.period()));
+    t->setPriority(thread.priority());
+    threadMap[thread.name()] = std::move(t);
+  }
+  return threadMap;
 }
 
 }  // namespace program

@@ -38,6 +38,10 @@ class JuceModel : public ApplicationCommandTarget,
     return &applicationCommandManager_;
   }
 
+  void startThreads();
+  void stopThreads();
+  Thread* getThread(const string&);
+
  private:
   unique_ptr<JuceModelImpl> impl_;
   Program* program_;

@@ -14,6 +14,8 @@ class Program;
 class JuceModelImpl {
  public:
   JuceModelImpl(Program* p, JuceModel*);
+  ~JuceModelImpl() { stopThreads(); }
+
   const MenuBar& menuBar() const;
   string addMenu(PopupMenu* popup, const string& name);
   bool perform(const InvocationInfo&);
@@ -26,6 +28,10 @@ class JuceModelImpl {
   void getCommandInfo(CommandID, ApplicationCommandInfo*);
 
   PopupMenu getMenuForIndex(int menuIndex);
+
+  void startThreads();
+  void stopThreads();
+  Thread* getThread(const string&);
 
  private:
   typedef vector<unique_ptr<SetterListener>> DataListeners;
@@ -41,9 +47,12 @@ class JuceModelImpl {
 
   Program* const program_;
   JuceModel* const juceModel_;
+
   CommandMap commandMap_;
   const MenuMap menuMap_;
   const MenuBarMap menuBarMap_;
+  ThreadMap threadMap_;
+
   DataListeners dataListeners_;
   CommandID recentFiles_;
   CommandID recentFilesEnd_;

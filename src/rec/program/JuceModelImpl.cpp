@@ -58,6 +58,7 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
       commandMap_(makeCommandMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)),
+      threadMap_(makeThreadMap(*p)),
       recentFiles_(program_->recentFilesStrategy().getRecentFileCommand()),
       recentFilesEnd_(recentFiles_ + command::Command::BANK_SIZE) {
   auto commands = program_->commands().command();
@@ -266,6 +267,22 @@ StringArray JuceModelImpl::getMenuBarNames() {
 
 bool JuceModelImpl::isRecentFiles(CommandID id) const {
   return id >= recentFiles_ && id < recentFilesEnd_;
+}
+
+void JuceModelImpl::startThreads() {
+  for (auto& i: threadMap_)
+    i.second->startThread();
+}
+
+static const int THREAD_STOP_PERIOD = 2500;
+
+void JuceModelImpl::stopThreads() {
+  for (auto& i: threadMap_)
+    i.second->stopThread(THREAD_STOP_PERIOD);
+}
+
+Thread* JuceModelImpl::getThread(const string& name) {
+  return threadMap_.at(name).get();
 }
 
 }  // namespace program

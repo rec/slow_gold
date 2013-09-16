@@ -71,7 +71,7 @@ void ModeSelector::operator()(const Mode& mode) {
 
 void ModeSelector::setMode(Mode::Action action) {
   for (ButtonMap::iterator i = buttons_.begin(); i != buttons_.end(); ++i)
-    i->second->setToggleState(i->first == action, false);
+    i->second->setToggleState(i->first == action, juce::dontSendNotification);
 }
 
 void ModeSelector::buttonClicked(Button* button) {

@@ -25,7 +25,6 @@
 class FileChooserDialogBox::ContentComponent  : public Component
 {
 public:
-    //==============================================================================
     ContentComponent (const String& name, const String& desc, FileBrowserComponent& chooser)
         : Component (name),
           chooserComponent (chooser),
@@ -47,21 +46,22 @@ public:
         setInterceptsMouseClicks (false, true);
     }
 
-    void paint (Graphics& g)
+    void paint (Graphics& g) override
     {
-        g.setColour (getLookAndFeel().findColour (FileChooserDialogBox::titleTextColourId));
-        text.draw (g);
+        text.draw (g, getLocalBounds().reduced (6)
+                        .removeFromTop ((int) text.getHeight()).toFloat());
     }
 
-    void resized()
+    void resized() override
     {
         const int buttonHeight = 26;
 
         Rectangle<int> area (getLocalBounds());
 
-        getLookAndFeel().createFileChooserHeaderText (getName(), instructions, text, getWidth());
-        const Rectangle<float> bb (text.getBoundingBox (0, text.getNumGlyphs(), false));
-        area.removeFromTop (roundToInt (bb.getBottom()) + 10);
+        text.createLayout (getLookAndFeel().createFileChooserHeaderText (getName(), instructions),
+                           getWidth() - 12.0f);
+
+        area.removeFromTop (roundToInt (text.getHeight()) + 10);
 
         chooserComponent.setBounds (area.removeFromTop (area.getHeight() - buttonHeight - 20));
         Rectangle<int> buttonArea (area.reduced (16, 10));
@@ -83,7 +83,7 @@ public:
 
 private:
     String instructions;
-    GlyphArrangement text;
+    TextLayout text;
 };
 
 //==============================================================================
@@ -91,7 +91,7 @@ FileChooserDialogBox::FileChooserDialogBox (const String& name,
                                             const String& instructions,
                                             FileBrowserComponent& chooserComponent,
                                             const bool warnAboutOverwritingExistingFiles_,
-                                            const Colour& backgroundColour)
+                                            Colour backgroundColour)
     : ResizableWindow (name, backgroundColour, true),
       warnAboutOverwritingExistingFiles (warnAboutOverwritingExistingFiles_)
 {
@@ -123,18 +123,8 @@ bool FileChooserDialogBox::show (int w, int h)
 
 bool FileChooserDialogBox::showAt (int x, int y, int w, int h)
 {
-    if (w <= 0)
-    {
-        Component* const previewComp = content->chooserComponent.getPreviewComponent();
-
-        if (previewComp != nullptr)
-            w = 400 + previewComp->getWidth();
-        else
-            w = 600;
-    }
-
-    if (h <= 0)
-        h = 500;
+    if (w <= 0)  w = getDefaultWidth();
+    if (h <= 0)  h = 500;
 
     if (x < 0 || y < 0)
         centreWithSize (w, h);
@@ -149,11 +139,15 @@ bool FileChooserDialogBox::showAt (int x, int y, int w, int h)
 
 void FileChooserDialogBox::centreWithDefaultSize (Component* componentToCentreAround)
 {
-    Component* const previewComp = content->chooserComponent.getPreviewComponent();
+    centreAroundComponent (componentToCentreAround, getDefaultWidth(), 500);
+}
 
-    centreAroundComponent (componentToCentreAround,
-                           previewComp != nullptr ? 400 + previewComp->getWidth() : 600,
-                           500);
+int FileChooserDialogBox::getDefaultWidth() const
+{
+    if (Component* const previewComp = content->chooserComponent.getPreviewComponent())
+        return 400 + previewComp->getWidth();
+
+    return 600;
 }
 
 //==============================================================================

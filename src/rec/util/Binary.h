@@ -1,6 +1,8 @@
 #ifndef __REC_UTIL_BINARY__
 #define __REC_UTIL_BINARY__
 
+#include "BinaryData.h"
+
 #include "rec/util/Copy.h"
 
 namespace rec {

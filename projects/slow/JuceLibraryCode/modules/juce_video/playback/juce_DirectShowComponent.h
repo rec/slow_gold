@@ -22,8 +22,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_DIRECTSHOWCOMPONENT_JUCEHEADER__
-#define __JUCE_DIRECTSHOWCOMPONENT_JUCEHEADER__
+#ifndef JUCE_DIRECTSHOWCOMPONENT_H_INCLUDED
+#define JUCE_DIRECTSHOWCOMPONENT_H_INCLUDED
 
 #if JUCE_DIRECTSHOW || DOXYGEN
 
@@ -135,7 +135,7 @@ public:
         @note Not implemented
     */
     void setBoundsWithCorrectAspectRatio (const Rectangle<int>& spaceToFitWithin,
-                                          const RectanglePlacement& placement);
+                                          RectanglePlacement placement);
 
     /** Starts the video playing. */
     void play();
@@ -186,7 +186,7 @@ public:
 
     //==============================================================================
     /** @internal */
-    void paint (Graphics& g);
+    void paint (Graphics&) override;
 
 private:
     //==============================================================================
@@ -195,13 +195,13 @@ private:
 
     class DirectShowContext;
     friend class DirectShowContext;
-    friend class ScopedPointer <DirectShowContext>;
-    ScopedPointer <DirectShowContext> context;
+    friend struct ContainerDeletePolicy<DirectShowContext>;
+    ScopedPointer<DirectShowContext> context;
 
     class DirectShowComponentWatcher;
     friend class DirectShowComponentWatcher;
-    friend class ScopedPointer <DirectShowComponentWatcher>;
-    ScopedPointer <DirectShowComponentWatcher> componentWatcher;
+    friend struct ContainerDeletePolicy<DirectShowComponentWatcher>;
+    ScopedPointer<DirectShowComponentWatcher> componentWatcher;
 
     //==============================================================================
     void updateContextPosition();
@@ -213,4 +213,4 @@ private:
 };
 
 #endif
-#endif   // __JUCE_DIRECTSHOWCOMPONENT_JUCEHEADER__
+#endif   // JUCE_DIRECTSHOWCOMPONENT_H_INCLUDED

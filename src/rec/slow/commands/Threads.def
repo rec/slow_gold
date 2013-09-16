@@ -1,0 +1,30 @@
+thread {
+  name: "directory"
+  priority: 3
+  period: 1000
+}
+thread {
+  name: "navigator"
+  priority: 2
+  period: 1001
+}
+thread {
+  name: "updateData"
+  priority: 4
+  period: 51
+}
+thread {
+  name: "writeGui"
+  priority: 4
+  period: 201
+}
+thread {
+  name: "writeData"
+  priority: 4
+  period: 1003
+}
+thread {
+  name: "timer"
+  priority: 4
+  period: 101
+}

@@ -26,18 +26,15 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_SPARSESET_JUCEHEADER__
-#define __JUCE_SPARSESET_JUCEHEADER__
-
-#include "../maths/juce_Range.h"
-#include "../threads/juce_CriticalSection.h"
+#ifndef JUCE_SPARSESET_H_INCLUDED
+#define JUCE_SPARSESET_H_INCLUDED
 
 
 //==============================================================================
 /**
     Holds a set of primitive values, storing them as a set of ranges.
 
-    This container acts like an array, but can efficiently hold large continguous
+    This container acts like an array, but can efficiently hold large contiguous
     ranges of values. It's quite a specialised class, mostly useful for things
     like keeping the set of selected rows in a listbox.
 
@@ -298,4 +295,4 @@ private:
 
 
 
-#endif   // __JUCE_SPARSESET_JUCEHEADER__
+#endif   // JUCE_SPARSESET_H_INCLUDED

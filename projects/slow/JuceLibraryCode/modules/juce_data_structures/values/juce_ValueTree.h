@@ -22,11 +22,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_VALUETREE_JUCEHEADER__
-#define __JUCE_VALUETREE_JUCEHEADER__
-
-#include "juce_Value.h"
-#include "../undomanager/juce_UndoManager.h"
+#ifndef JUCE_VALUETREE_H_INCLUDED
+#define JUCE_VALUETREE_H_INCLUDED
 
 
 //==============================================================================
@@ -523,4 +520,4 @@ private:
 };
 
 
-#endif   // __JUCE_VALUETREE_JUCEHEADER__
+#endif   // JUCE_VALUETREE_H_INCLUDED

@@ -42,7 +42,7 @@ namespace WindowsFileHelpers
     {
         static_jassert (sizeof (ULARGE_INTEGER) == sizeof (FILETIME)); // tell me if this fails!
 
-        return (int64) ((reinterpret_cast<const ULARGE_INTEGER*> (ft)->QuadPart - literal64bit (116444736000000000)) / 10000);
+        return (int64) ((reinterpret_cast<const ULARGE_INTEGER*> (ft)->QuadPart - 116444736000000000LL) / 10000);
     }
 
     FILETIME* timeToFileTime (const int64 time, FILETIME* const ft) noexcept
@@ -50,7 +50,7 @@ namespace WindowsFileHelpers
         if (time <= 0)
             return nullptr;
 
-        reinterpret_cast<ULARGE_INTEGER*> (ft)->QuadPart = (ULONGLONG) (time * 10000 + literal64bit (116444736000000000));
+        reinterpret_cast<ULARGE_INTEGER*> (ft)->QuadPart = (ULONGLONG) (time * 10000 + 116444736000000000LL);
         return ft;
     }
 
@@ -518,6 +518,7 @@ File JUCE_CALLTYPE File::getSpecialLocation (const SpecialLocationType type)
         case userDesktopDirectory:              csidlType = CSIDL_DESKTOP; break;
         case userApplicationDataDirectory:      csidlType = CSIDL_APPDATA; break;
         case commonApplicationDataDirectory:    csidlType = CSIDL_COMMON_APPDATA; break;
+        case commonDocumentsDirectory:          csidlType = CSIDL_COMMON_DOCUMENTS; break;
         case globalApplicationsDirectory:       csidlType = CSIDL_PROGRAM_FILES; break;
         case userMusicDirectory:                csidlType = 0x0d; /*CSIDL_MYMUSIC*/ break;
         case userMoviesDirectory:               csidlType = 0x0e; /*CSIDL_MYVIDEO*/ break;
@@ -704,7 +705,7 @@ bool DirectoryIterator::NativeIterator::next (String& filenameFound,
 
 
 //==============================================================================
-bool Process::openDocument (const String& fileName, const String& parameters)
+bool JUCE_CALLTYPE Process::openDocument (const String& fileName, const String& parameters)
 {
     HINSTANCE hInstance = 0;
 

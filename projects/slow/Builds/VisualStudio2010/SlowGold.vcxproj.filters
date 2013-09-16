@@ -901,9 +901,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp">
       <Filter>SlowGold\src\slow</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
-      <Filter>SlowGold\src\slow</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\support\RequestSupport.cpp">
       <Filter>SlowGold\src\support</Filter>
     </ClCompile>
@@ -1022,9 +1019,6 @@
       <Filter>SlowGold\src\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\CallbackQueue.cpp">
-      <Filter>SlowGold\src\util\thread</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\thread\Looper.cpp">
       <Filter>SlowGold\src\util\thread</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
@@ -1172,6 +1166,9 @@
       <Filter>SlowGold\genfiles\rec\music</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\program\Menu.pb.cc">
+      <Filter>SlowGold\genfiles\rec\program</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\program\Threads.pb.cc">
       <Filter>SlowGold\genfiles\rec\program</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc">
@@ -3003,9 +3000,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h">
       <Filter>SlowGold\src\slow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
-      <Filter>SlowGold\src\slow</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\support\RequestSupport.h">
       <Filter>SlowGold\src\support</Filter>
     </ClInclude>
@@ -3249,9 +3243,6 @@
     <ClInclude Include="..\..\..\..\src\rec\util\thread\LockedFlag.h">
       <Filter>SlowGold\src\util\thread</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Looper.h">
-      <Filter>SlowGold\src\util\thread</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeCallback.h">
       <Filter>SlowGold\src\util\thread</Filter>
     </ClInclude>
@@ -3436,6 +3427,9 @@
       <Filter>SlowGold\genfiles\rec\music</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\program\Menu.pb.h">
+      <Filter>SlowGold\genfiles\rec\program</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\program\Threads.pb.h">
       <Filter>SlowGold\genfiles\rec\program</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h">
@@ -3771,6 +3765,9 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_StringPool.h">
       <Filter>Juce Modules\juce_core\text</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_StringRef.h">
+      <Filter>Juce Modules\juce_core\text</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_TextDiff.h">
       <Filter>Juce Modules\juce_core\text</Filter>
     </ClInclude>
@@ -4099,6 +4096,9 @@
       <Filter>Juce Modules\juce_events\messages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\messages\juce_DeletedAtShutdown.h">
+      <Filter>Juce Modules\juce_events\messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\messages\juce_Initialisation.h">
       <Filter>Juce Modules\juce_events\messages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_events\messages\juce_Message.h">
@@ -4644,9 +4644,6 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\application\juce_Application.h">
       <Filter>Juce Modules\juce_gui_basics\application</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\application\juce_Initialisation.h">
-      <Filter>Juce Modules\juce_gui_basics\application</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_basics\native\juce_MultiTouchMapper.h">
       <Filter>Juce Modules\juce_gui_basics\native</Filter>
     </ClInclude>
@@ -4812,6 +4809,9 @@
       <Filter>SlowGold\src\slow\commands</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\Menus.def">
+      <Filter>SlowGold\src\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\Threads.def">
       <Filter>SlowGold\src\slow\commands</Filter>
     </None>
     <None Include="..\..\art\icon\AddLoopPointButton.svg">

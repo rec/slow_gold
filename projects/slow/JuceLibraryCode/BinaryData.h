@@ -18,6 +18,9 @@ namespace BinaryData
     extern const char*   Menus_def;
     const int            Menus_defSize = 3007;
 
+    extern const char*   Threads_def;
+    const int            Threads_defSize = 351;
+
     extern const char*   AddLoopPointButton_svg;
     const int            AddLoopPointButton_svgSize = 21887;
 

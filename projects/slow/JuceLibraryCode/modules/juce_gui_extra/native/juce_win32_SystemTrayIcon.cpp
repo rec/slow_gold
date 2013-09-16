@@ -22,7 +22,6 @@
   ==============================================================================
 */
 
-// (these functions are from juce_win32_Windowing.cpp)
 extern void* getUser32Function (const char*);
 
 namespace IconConverters
@@ -125,7 +124,7 @@ public:
             {
                 owner.mouseUp (e);
             }
-            else if (lParam == WM_LBUTTONDBLCLK || lParam == WM_LBUTTONDBLCLK)
+            else if (lParam == WM_LBUTTONDBLCLK || lParam == WM_RBUTTONDBLCLK)
             {
                 owner.mouseDoubleClick (e);
             }

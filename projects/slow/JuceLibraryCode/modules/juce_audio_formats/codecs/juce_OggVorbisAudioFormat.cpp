@@ -142,7 +142,7 @@ public:
 
     //==============================================================================
     bool readSamples (int** destSamples, int numDestChannels, int startOffsetInDestBuffer,
-                      int64 startSampleInFile, int numSamples)
+                      int64 startSampleInFile, int numSamples) override
     {
         while (numSamples > 0)
         {
@@ -308,8 +308,8 @@ public:
                 if (ogg_stream_flush (&os, &og) == 0)
                     break;
 
-                output->write (og.header, og.header_len);
-                output->write (og.body, og.body_len);
+                output->write (og.header, (size_t) og.header_len);
+                output->write (og.body,   (size_t) og.body_len);
             }
 
             ok = true;
@@ -341,7 +341,7 @@ public:
     }
 
     //==============================================================================
-    bool write (const int** samplesToWrite, int numSamples)
+    bool write (const int** samplesToWrite, int numSamples) override
     {
         if (ok)
         {
@@ -391,8 +391,8 @@ public:
                     if (ogg_stream_pageout (&os, &og) == 0)
                         break;
 
-                    output->write (og.header, og.header_len);
-                    output->write (og.body, og.body_len);
+                    output->write (og.header, (size_t) og.header_len);
+                    output->write (og.body,   (size_t) og.body_len);
 
                     if (ogg_page_eos (&og))
                         break;
@@ -490,7 +490,7 @@ int OggVorbisAudioFormat::estimateOggFileQuality (const File& source)
 {
     if (FileInputStream* const in = source.createInputStream())
     {
-        ScopedPointer <AudioFormatReader> r (createReaderFor (in, true));
+        ScopedPointer<AudioFormatReader> r (createReaderFor (in, true));
 
         if (r != nullptr)
         {

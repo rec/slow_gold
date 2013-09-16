@@ -22,10 +22,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_THREADWITHPROGRESSWINDOW_JUCEHEADER__
-#define __JUCE_THREADWITHPROGRESSWINDOW_JUCEHEADER__
-
-#include "../windows/juce_AlertWindow.h"
+#ifndef JUCE_THREADWITHPROGRESSWINDOW_H_INCLUDED
+#define JUCE_THREADWITHPROGRESSWINDOW_H_INCLUDED
 
 
 //==============================================================================
@@ -133,17 +131,15 @@ public:
     */
     void setProgress (double newProgress);
 
-    /** The thread can call this to change the message that's displayed in the dialog box.
-    */
+    /** The thread can call this to change the message that's displayed in the dialog box. */
     void setStatusMessage (const String& newStatusMessage);
 
-    /** Returns the AlertWindow that is being used.
-    */
+    /** Returns the AlertWindow that is being used. */
     AlertWindow* getAlertWindow() const noexcept        { return alertWindow; }
 
 private:
     //==============================================================================
-    void timerCallback();
+    void timerCallback() override;
 
     double progress;
     ScopedPointer <AlertWindow> alertWindow;
@@ -154,4 +150,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ThreadWithProgressWindow)
 };
 
-#endif   // __JUCE_THREADWITHPROGRESSWINDOW_JUCEHEADER__
+#endif   // JUCE_THREADWITHPROGRESSWINDOW_H_INCLUDED

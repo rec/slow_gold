@@ -26,11 +26,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_DYNAMICOBJECT_JUCEHEADER__
-#define __JUCE_DYNAMICOBJECT_JUCEHEADER__
-
-#include "juce_NamedValueSet.h"
-#include "../memory/juce_ReferenceCountedObject.h"
+#ifndef JUCE_DYNAMICOBJECT_H_INCLUDED
+#define JUCE_DYNAMICOBJECT_H_INCLUDED
 
 
 //==============================================================================
@@ -123,4 +120,4 @@ private:
 
 
 
-#endif   // __JUCE_DYNAMICOBJECT_JUCEHEADER__
+#endif   // JUCE_DYNAMICOBJECT_H_INCLUDED

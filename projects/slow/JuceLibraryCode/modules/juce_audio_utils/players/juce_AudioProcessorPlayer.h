@@ -22,10 +22,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_AUDIOPROCESSORPLAYER_JUCEHEADER__
-#define __JUCE_AUDIOPROCESSORPLAYER_JUCEHEADER__
-
-#include "../../juce_audio_processors/processors/juce_AudioProcessor.h"
+#ifndef JUCE_AUDIOPROCESSORPLAYER_H_INCLUDED
+#define JUCE_AUDIOPROCESSORPLAYER_H_INCLUDED
 
 
 //==============================================================================
@@ -74,13 +72,13 @@ public:
                                 int totalNumInputChannels,
                                 float** outputChannelData,
                                 int totalNumOutputChannels,
-                                int numSamples);
+                                int numSamples) override;
     /** @internal */
-    void audioDeviceAboutToStart (AudioIODevice*);
+    void audioDeviceAboutToStart (AudioIODevice*) override;
     /** @internal */
-    void audioDeviceStopped();
+    void audioDeviceStopped() override;
     /** @internal */
-    void handleIncomingMidiMessage (MidiInput*, const MidiMessage&);
+    void handleIncomingMidiMessage (MidiInput*, const MidiMessage&) override;
 
 private:
     //==============================================================================
@@ -101,4 +99,4 @@ private:
 };
 
 
-#endif   // __JUCE_AUDIOPROCESSORPLAYER_JUCEHEADER__
+#endif   // JUCE_AUDIOPROCESSORPLAYER_H_INCLUDED

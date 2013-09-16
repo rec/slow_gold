@@ -11,7 +11,7 @@ class Instance;
 
 class SlowProgram : public program::ProgramBase {
  public:
-  explicit SlowProgram(Instance* instance) : instance_(instance) {}
+  explicit SlowProgram(Instance*);
 
   command::Commands commands() const override;
   command::KeyStrokeCommandMapProto keypresses() const override;

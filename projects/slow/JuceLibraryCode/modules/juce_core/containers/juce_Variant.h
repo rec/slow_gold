@@ -26,18 +26,9 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_VARIANT_JUCEHEADER__
-#define __JUCE_VARIANT_JUCEHEADER__
+#ifndef JUCE_VARIANT_H_INCLUDED
+#define JUCE_VARIANT_H_INCLUDED
 
-#include "../text/juce_Identifier.h"
-#include "../streams/juce_OutputStream.h"
-#include "../streams/juce_InputStream.h"
-#include "../containers/juce_Array.h"
-
-#ifndef DOXYGEN
- class ReferenceCountedObject;
- class DynamicObject;
-#endif
 
 //==============================================================================
 /**
@@ -304,4 +295,4 @@ bool operator== (const var& v1, const char* v2);
 bool operator!= (const var& v1, const char* v2);
 
 
-#endif   // __JUCE_VARIANT_JUCEHEADER__
+#endif   // JUCE_VARIANT_H_INCLUDED

@@ -22,11 +22,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_RECTANGLE_JUCEHEADER__
-#define __JUCE_RECTANGLE_JUCEHEADER__
-
-#include "juce_Point.h"
-class RectangleList;
+#ifndef JUCE_RECTANGLE_H_INCLUDED
+#define JUCE_RECTANGLE_H_INCLUDED
 
 
 //==============================================================================
@@ -41,7 +38,7 @@ class Rectangle
 public:
     //==============================================================================
     /** Creates a rectangle of zero size.
-        The default co-ordinates will be (0, 0, 0, 0).
+        The default coordinates will be (0, 0, 0, 0).
     */
     Rectangle() noexcept
       : w(), h()
@@ -100,13 +97,13 @@ public:
     ~Rectangle() noexcept {}
 
     //==============================================================================
-    /** Returns true if the rectangle's width and height are both zero or less */
+    /** Returns true if the rectangle's width or height are zero or less */
     bool isEmpty() const noexcept                                   { return w <= ValueType() || h <= ValueType(); }
 
-    /** Returns the x co-ordinate of the rectangle's left-hand-side. */
+    /** Returns the x coordinate of the rectangle's left-hand-side. */
     inline ValueType getX() const noexcept                          { return pos.x; }
 
-    /** Returns the y co-ordinate of the rectangle's top edge. */
+    /** Returns the y coordinate of the rectangle's top edge. */
     inline ValueType getY() const noexcept                          { return pos.y; }
 
     /** Returns the width of the rectangle. */
@@ -115,16 +112,16 @@ public:
     /** Returns the height of the rectangle. */
     inline ValueType getHeight() const noexcept                     { return h; }
 
-    /** Returns the x co-ordinate of the rectangle's right-hand-side. */
+    /** Returns the x coordinate of the rectangle's right-hand-side. */
     inline ValueType getRight() const noexcept                      { return pos.x + w; }
 
-    /** Returns the y co-ordinate of the rectangle's bottom edge. */
+    /** Returns the y coordinate of the rectangle's bottom edge. */
     inline ValueType getBottom() const noexcept                     { return pos.y + h; }
 
-    /** Returns the x co-ordinate of the rectangle's centre. */
+    /** Returns the x coordinate of the rectangle's centre. */
     ValueType getCentreX() const noexcept                           { return pos.x + w / (ValueType) 2; }
 
-    /** Returns the y co-ordinate of the rectangle's centre. */
+    /** Returns the y coordinate of the rectangle's centre. */
     ValueType getCentreY() const noexcept                           { return pos.y + h / (ValueType) 2; }
 
     /** Returns the centre point of the rectangle. */
@@ -161,7 +158,7 @@ public:
     /** Changes the rectangle's size, leaving the position of its top-left corner unchanged. */
     void setSize (const ValueType newWidth, const ValueType newHeight) noexcept                     { w = newWidth; h = newHeight; }
 
-    /** Changes all the rectangle's co-ordinates. */
+    /** Changes all the rectangle's coordinates. */
     void setBounds (const ValueType newX, const ValueType newY,
                     const ValueType newWidth, const ValueType newHeight) noexcept                   { pos.x = newX; pos.y = newY; w = newWidth; h = newHeight; }
 
@@ -250,7 +247,7 @@ public:
     Rectangle withBottom (const ValueType newBottom) const noexcept   { return Rectangle (pos.x, jmin (pos.y, newBottom), w, jmax (ValueType(), newBottom - pos.y)); }
 
     //==============================================================================
-    /** Moves the rectangle's position by adding amount to its x and y co-ordinates. */
+    /** Moves the rectangle's position by adding amount to its x and y coordinates. */
     void translate (const ValueType deltaX,
                     const ValueType deltaY) noexcept
     {
@@ -291,7 +288,11 @@ public:
         return *this;
     }
 
-    /** Scales this rectangle by the given amount, centred around the origin. */
+    /** Returns a rectangle that has been scaled by the given amount, centred around the origin.
+        Note that if the rectangle has int coordinates and it's scaled by a
+        floating-point amount, then the result will be converted back to integer
+        coordinates using getSmallestIntegerContainer().
+    */
     template <typename FloatType>
     Rectangle operator* (FloatType scaleFactor) const noexcept
     {
@@ -300,13 +301,38 @@ public:
         return r;
     }
 
-    /** Scales this rectangle by the given amount, centred around the origin. */
+    /** Scales this rectangle by the given amount, centred around the origin.
+        Note that if the rectangle has int coordinates and it's scaled by a
+        floating-point amount, then the result will be converted back to integer
+        coordinates using getSmallestIntegerContainer().
+    */
     template <typename FloatType>
     Rectangle operator*= (FloatType scaleFactor) noexcept
     {
-        pos *= scaleFactor;
-        w *= scaleFactor;
-        h *= scaleFactor;
+        Rectangle<FloatType> (pos.x * scaleFactor,
+                              pos.y * scaleFactor,
+                              w * scaleFactor,
+                              h * scaleFactor).copyWithRounding (*this);
+        return *this;
+    }
+
+    /** Scales this rectangle by the given amount, centred around the origin. */
+    template <typename FloatType>
+    Rectangle operator/ (FloatType scaleFactor) const noexcept
+    {
+        Rectangle r (*this);
+        r /= scaleFactor;
+        return r;
+    }
+
+    /** Scales this rectangle by the given amount, centred around the origin. */
+    template <typename FloatType>
+    Rectangle operator/= (FloatType scaleFactor) noexcept
+    {
+        Rectangle<FloatType> (pos.x / scaleFactor,
+                              pos.y / scaleFactor,
+                              w / scaleFactor,
+                              h / scaleFactor).copyWithRounding (*this);
         return *this;
     }
 
@@ -451,13 +477,13 @@ public:
     /** Returns true if the two rectangles are not identical. */
     bool operator!= (const Rectangle& other) const noexcept     { return pos != other.pos || w != other.w || h != other.h; }
 
-    /** Returns true if this co-ordinate is inside the rectangle. */
+    /** Returns true if this coordinate is inside the rectangle. */
     bool contains (const ValueType xCoord, const ValueType yCoord) const noexcept
     {
         return xCoord >= pos.x && yCoord >= pos.y && xCoord < pos.x + w && yCoord < pos.y + h;
     }
 
-    /** Returns true if this co-ordinate is inside the rectangle. */
+    /** Returns true if this coordinate is inside the rectangle. */
     bool contains (const Point<ValueType> point) const noexcept
     {
         return point.x >= pos.x && point.y >= pos.y && point.x < pos.x + w && point.y < pos.y + h;
@@ -515,9 +541,9 @@ public:
         return Rectangle();
     }
 
-    /** Clips a rectangle so that it lies only within this one.
+    /** Clips a set of rectangle coordinates so that they lie only within this one.
         This is a non-static version of intersectRectangles().
-        Returns false if the two regions didn't overlap.
+        Returns false if the two rectangles didn't overlap.
     */
     bool intersectRectangle (ValueType& otherX, ValueType& otherY, ValueType& otherW, ValueType& otherH) const noexcept
     {
@@ -537,6 +563,15 @@ public:
         }
 
         return false;
+    }
+
+    /** Clips a rectangle so that it lies only within this one.
+        Returns false if the two rectangles didn't overlap.
+    */
+    bool intersectRectangle (Rectangle<ValueType>& rectangleToClip) const noexcept
+    {
+        return intersectRectangle (rectangleToClip.pos.x, rectangleToClip.pos.y,
+                                   rectangleToClip.w, rectangleToClip.h);
     }
 
     /** Returns the smallest rectangle that contains both this one and the one passed-in.
@@ -573,8 +608,9 @@ public:
             pos.y = newY;
             return true;
         }
-        else if (pos.y == other.pos.y && getBottom() == other.getBottom()
-                  && (other.getRight() >= pos.x && other.pos.x <= getRight()))
+
+        if (pos.y == other.pos.y && getBottom() == other.getBottom()
+             && (other.getRight() >= pos.x && other.pos.x <= getRight()))
         {
             const ValueType newX = jmin (pos.x, other.pos.x);
             w = jmax (getRight(), other.getRight()) - newX;
@@ -636,22 +672,26 @@ public:
 
         This should only be used on floating point rectangles.
     */
-    Rectangle transformed (const AffineTransform& transform) const noexcept
+    Rectangle transformedBy (const AffineTransform& transform) const noexcept
     {
-        float x1 = pos.x,     y1 = pos.y;
-        float x2 = pos.x + w, y2 = pos.y;
-        float x3 = pos.x,     y3 = pos.y + h;
-        float x4 = x2,        y4 = y3;
+        typedef typename TypeHelpers::SmallestFloatType<ValueType>::type FloatType;
+
+        FloatType x1 = static_cast<FloatType> (pos.x),     y1 = static_cast<FloatType> (pos.y);
+        FloatType x2 = static_cast<FloatType> (pos.x + w), y2 = static_cast<FloatType> (pos.y);
+        FloatType x3 = static_cast<FloatType> (pos.x),     y3 = static_cast<FloatType> (pos.y + h);
+        FloatType x4 = static_cast<FloatType> (x2),        y4 = static_cast<FloatType> (y3);
 
         transform.transformPoints (x1, y1, x2, y2);
         transform.transformPoints (x3, y3, x4, y4);
 
-        const float rx = jmin (x1, x2, x3, x4);
-        const float ry = jmin (y1, y2, y3, y4);
+        const FloatType rx1 = jmin (x1, x2, x3, x4);
+        const FloatType rx2 = jmax (x1, x2, x3, x4);
+        const FloatType ry1 = jmin (y1, y2, y3, y4);
+        const FloatType ry2 = jmax (y1, y2, y3, y4);
 
-        return Rectangle (rx, ry,
-                          jmax (x1, x2, x3, x4) - rx,
-                          jmax (y1, y2, y3, y4) - ry);
+        Rectangle r;
+        Rectangle<FloatType> (rx1, ry1, rx2 - rx1, ry2 - ry1).copyWithRounding (r);
+        return r;
     }
 
     /** Returns the smallest integer-aligned rectangle that completely contains this one.
@@ -660,12 +700,42 @@ public:
     */
     Rectangle<int> getSmallestIntegerContainer() const noexcept
     {
-        const int x1 = static_cast <int> (std::floor (static_cast<float> (pos.x)));
-        const int y1 = static_cast <int> (std::floor (static_cast<float> (pos.y)));
-        const int x2 = static_cast <int> (std::ceil  (static_cast<float> (pos.x + w)));
-        const int y2 = static_cast <int> (std::ceil  (static_cast<float> (pos.y + h)));
+        const int x1 = floorAsInt (pos.x);
+        const int y1 = floorAsInt (pos.y);
+        const int x2 = ceilAsInt  (pos.x + w);
+        const int y2 = ceilAsInt  (pos.y + h);
 
         return Rectangle<int> (x1, y1, x2 - x1, y2 - y1);
+    }
+
+    /** Casts this rectangle to a Rectangle<float>.
+        @see getSmallestIntegerContainer
+    */
+    Rectangle<float> toFloat() const noexcept
+    {
+        return Rectangle<float> (static_cast<float> (pos.x), static_cast<float> (pos.y),
+                                 static_cast<float> (w),     static_cast<float> (h));
+    }
+
+    /** Casts this rectangle to a Rectangle<double>.
+        @see getSmallestIntegerContainer
+    */
+    Rectangle<double> toDouble() const noexcept
+    {
+        return Rectangle<double> (static_cast<double> (pos.x), static_cast<double> (pos.y),
+                                  static_cast<double> (w),     static_cast<double> (h));
+    }
+
+    /** Casts this rectangle to a Rectangle with the given type.
+        If the target type is a conversion from float to int, then the conversion
+        will be done using getSmallestIntegerContainer().
+    */
+    template <typename TargetType>
+    Rectangle<TargetType> toType() const noexcept
+    {
+        Rectangle<TargetType> r;
+        copyWithRounding (r);
+        return r;
     }
 
     /** Returns the smallest Rectangle that can contain a set of points. */
@@ -690,28 +760,8 @@ public:
         return Rectangle (minX, minY, maxX - minX, maxY - minY);
     }
 
-    /** Casts this rectangle to a Rectangle<float>.
-        Obviously this is mainly useful for rectangles that use integer types.
-        @see getSmallestIntegerContainer
-    */
-    Rectangle<float> toFloat() const noexcept
-    {
-        return Rectangle<float> (static_cast<float> (pos.x), static_cast<float> (pos.y),
-                                 static_cast<float> (w),     static_cast<float> (h));
-    }
-
-    /** Casts this rectangle to a Rectangle<double>.
-        Obviously this is mainly useful for rectangles that use integer types.
-        @see getSmallestIntegerContainer
-    */
-    Rectangle<double> toDouble() const noexcept
-    {
-        return Rectangle<double> (static_cast<double> (pos.x), static_cast<double> (pos.y),
-                                  static_cast<double> (w),     static_cast<double> (h));
-    }
-
     //==============================================================================
-    /** Static utility to intersect two sets of rectangular co-ordinates.
+    /** Static utility to intersect two sets of rectangular coordinates.
         Returns false if the two regions didn't overlap.
         @see intersectRectangle
     */
@@ -764,10 +814,10 @@ public:
 
         @see toString
     */
-    static Rectangle fromString (const String& stringVersion)
+    static Rectangle fromString (StringRef stringVersion)
     {
         StringArray toks;
-        toks.addTokens (stringVersion.trim(), ",; \t\r\n", String::empty);
+        toks.addTokens (stringVersion.text.findEndOfWhitespace(), ",; \t\r\n", String::empty);
 
         return Rectangle (parseIntAfterSpace (toks[0]),
                           parseIntAfterSpace (toks[1]),
@@ -775,14 +825,31 @@ public:
                           parseIntAfterSpace (toks[3]));
     }
 
+   #ifndef DOXYGEN
+    // This has been renamed by transformedBy, in order to match the method names used in the Point class.
+    JUCE_DEPRECATED_WITH_BODY (Rectangle transformed (const AffineTransform& t) const noexcept, { return transformedBy (t); })
+   #endif
+
 private:
-    friend class RectangleList;
+    template <typename OtherType> friend class Rectangle;
+
     Point<ValueType> pos;
     ValueType w, h;
 
-    static int parseIntAfterSpace (const String& s) noexcept
-        { return s.getCharPointer().findEndOfWhitespace().getIntValue32(); }
+    static int parseIntAfterSpace (StringRef s) noexcept
+        { return s.text.findEndOfWhitespace().getIntValue32(); }
+
+    void copyWithRounding (Rectangle<int>& result) const noexcept    { result = getSmallestIntegerContainer(); }
+    void copyWithRounding (Rectangle<float>& result) const noexcept  { result = toFloat(); }
+    void copyWithRounding (Rectangle<double>& result) const noexcept { result = toDouble(); }
+
+    static int floorAsInt (int n) noexcept     { return n; }
+    static int floorAsInt (float n) noexcept   { return (int) std::floor (n); }
+    static int floorAsInt (double n) noexcept  { return (int) std::floor (n); }
+    static int ceilAsInt (int n) noexcept      { return n; }
+    static int ceilAsInt (float n) noexcept    { return (int) std::ceil (n); }
+    static int ceilAsInt (double n) noexcept   { return (int) std::ceil (n); }
 };
 
 
-#endif   // __JUCE_RECTANGLE_JUCEHEADER__
+#endif   // JUCE_RECTANGLE_H_INCLUDED

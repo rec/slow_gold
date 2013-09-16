@@ -22,12 +22,9 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_TOOLBAR_JUCEHEADER__
-#define __JUCE_TOOLBAR_JUCEHEADER__
+#ifndef JUCE_TOOLBAR_H_INCLUDED
+#define JUCE_TOOLBAR_H_INCLUDED
 
-#include "../mouse/juce_DragAndDropContainer.h"
-#include "../layout/juce_ComponentAnimator.h"
-#include "../buttons/juce_Button.h"
 class ToolbarItemComponent;
 class ToolbarItemFactory;
 
@@ -124,9 +121,11 @@ public:
                   int itemId,
                   int insertIndex = -1);
 
-    /** Deletes one of the items from the bar.
-    */
+    /** Deletes one of the items from the bar. */
     void removeToolbarItem (int itemIndex);
+
+    /** Removes an item from the bar and returns it. */
+    ToolbarItemComponent* removeAndReturnItem (int itemIndex);
 
     /** Returns the number of items currently on the toolbar.
 
@@ -270,19 +269,19 @@ public:
 
     //==============================================================================
     /** @internal */
-    void paint (Graphics& g);
+    void paint (Graphics&) override;
     /** @internal */
-    void resized();
+    void resized() override;
     /** @internal */
-    void mouseDown (const MouseEvent&);
+    void mouseDown (const MouseEvent&) override;
     /** @internal */
-    bool isInterestedInDragSource (const SourceDetails&);
+    bool isInterestedInDragSource (const SourceDetails&) override;
     /** @internal */
-    void itemDragMove (const SourceDetails&);
+    void itemDragMove (const SourceDetails&) override;
     /** @internal */
-    void itemDragExit (const SourceDetails&);
+    void itemDragExit (const SourceDetails&) override;
     /** @internal */
-    void itemDropped (const SourceDetails&);
+    void itemDropped (const SourceDetails&) override;
     /** @internal */
     void updateAllItemPositions (bool animate);
     /** @internal */
@@ -301,7 +300,7 @@ private:
     class Spacer;
     class CustomisationDialog;
 
-    void buttonClicked (Button*);
+    void buttonClicked (Button*) override;
     void addItemInternal (ToolbarItemFactory& factory, int itemId, int insertIndex);
 
     ToolbarItemComponent* getNextActiveComponent (int index, int delta) const;
@@ -310,4 +309,4 @@ private:
 };
 
 
-#endif   // __JUCE_TOOLBAR_JUCEHEADER__
+#endif   // JUCE_TOOLBAR_H_INCLUDED

@@ -22,15 +22,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_ALERTWINDOW_JUCEHEADER__
-#define __JUCE_ALERTWINDOW_JUCEHEADER__
-
-#include "juce_TopLevelWindow.h"
-#include "../buttons/juce_TextButton.h"
-#include "../widgets/juce_ComboBox.h"
-#include "../widgets/juce_TextEditor.h"
-#include "../widgets/juce_ProgressBar.h"
-#include "../mouse/juce_ComponentDragger.h"
+#ifndef JUCE_ALERTWINDOW_H_INCLUDED
+#define JUCE_ALERTWINDOW_H_INCLUDED
 
 
 //==============================================================================
@@ -427,21 +420,21 @@ public:
 protected:
     //==============================================================================
     /** @internal */
-    void paint (Graphics& g);
+    void paint (Graphics&) override;
     /** @internal */
-    void mouseDown (const MouseEvent& e);
+    void mouseDown (const MouseEvent&) override;
     /** @internal */
-    void mouseDrag (const MouseEvent& e);
+    void mouseDrag (const MouseEvent&) override;
     /** @internal */
-    bool keyPressed (const KeyPress& key);
+    bool keyPressed (const KeyPress&) override;
     /** @internal */
-    void buttonClicked (Button* button);
+    void buttonClicked (Button*) override;
     /** @internal */
-    void lookAndFeelChanged();
+    void lookAndFeelChanged() override;
     /** @internal */
-    void userTriedToCloseWindow();
+    void userTriedToCloseWindow() override;
     /** @internal */
-    int getDesktopWindowStyleFlags() const;
+    int getDesktopWindowStyleFlags() const override;
 
 private:
     //==============================================================================
@@ -467,4 +460,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AlertWindow)
 };
 
-#endif   // __JUCE_ALERTWINDOW_JUCEHEADER__
+#endif   // JUCE_ALERTWINDOW_H_INCLUDED

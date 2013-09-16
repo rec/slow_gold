@@ -67,12 +67,12 @@ public:
 private:
     AlertWindow::AlertIconType iconType;
     String title, message;
-    ModalComponentManager::Callback* callback;
+    ScopedPointer<ModalComponentManager::Callback> callback;
     const char* button1;
     const char* button2;
     const char* button3;
 
-    void handleAsyncUpdate()
+    void handleAsyncUpdate() override
     {
         const int result = getResult();
 
@@ -104,13 +104,14 @@ private:
     }
 };
 
-
+#if JUCE_MODAL_LOOPS_PERMITTED
 void JUCE_CALLTYPE NativeMessageBox::showMessageBox (AlertWindow::AlertIconType iconType,
                                                      const String& title, const String& message,
                                                      Component* /*associatedComponent*/)
 {
     OSXMessageBox::show (iconType, title, message, nullptr, "OK", nullptr, nullptr, false);
 }
+#endif
 
 void JUCE_CALLTYPE NativeMessageBox::showMessageBoxAsync (AlertWindow::AlertIconType iconType,
                                                           const String& title, const String& message,
@@ -208,7 +209,7 @@ bool Desktop::canUseSemiTransparentWindows() noexcept
     return true;
 }
 
-Point<int> MouseInputSource::getCurrentMousePosition()
+Point<int> MouseInputSource::getCurrentRawMousePosition()
 {
     JUCE_AUTORELEASEPOOL
     {
@@ -217,13 +218,18 @@ Point<int> MouseInputSource::getCurrentMousePosition()
     }
 }
 
-void Desktop::setMousePosition (Point<int> newPosition)
+void MouseInputSource::setRawMousePosition (Point<int> newPosition)
 {
     // this rubbish needs to be done around the warp call, to avoid causing a
     // bizarre glitch..
     CGAssociateMouseAndMouseCursorPosition (false);
     CGWarpMouseCursorPosition (convertToCGPoint (newPosition));
     CGAssociateMouseAndMouseCursorPosition (true);
+}
+
+double Desktop::getDefaultMasterScale()
+{
+    return 1.0;
 }
 
 Desktop::DisplayOrientation Desktop::getCurrentOrientation() const
@@ -250,7 +256,7 @@ public:
         timerCallback();
     }
 
-    void timerCallback()
+    void timerCallback() override
     {
         if (Process::isForegroundProcess())
         {
@@ -291,7 +297,7 @@ public:
         timerCallback();
     }
 
-    void timerCallback()
+    void timerCallback() override
     {
         if (Process::isForegroundProcess())
             UpdateSystemActivity (1 /*UsrActivity*/);
@@ -348,7 +354,7 @@ static Rectangle<int> convertDisplayRect (NSRect r, CGFloat mainScreenBottom)
     return convertToRectInt (r);
 }
 
-void Desktop::Displays::findDisplays()
+void Desktop::Displays::findDisplays (const float masterScale)
 {
     JUCE_AUTORELEASEPOOL
     {
@@ -362,16 +368,18 @@ void Desktop::Displays::findDisplays()
             NSScreen* s = (NSScreen*) [screens objectAtIndex: i];
 
             Display d;
-            d.userArea  = convertDisplayRect ([s visibleFrame], mainScreenBottom);
-            d.totalArea = convertDisplayRect ([s frame], mainScreenBottom);
+            d.userArea  = convertDisplayRect ([s visibleFrame], mainScreenBottom) / masterScale;
+            d.totalArea = convertDisplayRect ([s frame], mainScreenBottom) / masterScale;
             d.isMain = (i == 0);
+            d.scale = masterScale;
 
            #if defined (MAC_OS_X_VERSION_10_7) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
             if ([s respondsToSelector: @selector (backingScaleFactor)])
-                d.scale = s.backingScaleFactor;
-            else
+                d.scale *= s.backingScaleFactor;
            #endif
-                d.scale = 1.0;
+
+            NSSize dpi = [[[s deviceDescription] objectForKey: NSDeviceResolution] sizeValue];
+            d.dpi = (dpi.width + dpi.height) / 2.0;
 
             displays.add (d);
         }

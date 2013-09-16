@@ -26,12 +26,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_OWNEDARRAY_JUCEHEADER__
-#define __JUCE_OWNEDARRAY_JUCEHEADER__
-
-#include "juce_ArrayAllocationBase.h"
-#include "juce_ElementComparator.h"
-#include "../threads/juce_CriticalSection.h"
+#ifndef JUCE_OWNEDARRAY_H_INCLUDED
+#define JUCE_OWNEDARRAY_H_INCLUDED
 
 
 //==============================================================================
@@ -98,7 +94,7 @@ public:
 
     //==============================================================================
     /** Clears the array, optionally deleting the objects inside it first. */
-    void clear (const bool deleteObjects = true)
+    void clear (bool deleteObjects = true)
     {
         const ScopedLockType lock (getLock());
 
@@ -106,6 +102,18 @@ public:
             deleteAllObjects();
 
         data.setAllocatedSize (0);
+        numUsed = 0;
+    }
+
+    //==============================================================================
+    /** Clears the array, optionally deleting the objects inside it first. */
+    void clearQuick (bool deleteObjects)
+    {
+        const ScopedLockType lock (getLock());
+
+        if (deleteObjects)
+            deleteAllObjects();
+
         numUsed = 0;
     }
 
@@ -129,8 +137,13 @@ public:
     inline ObjectClass* operator[] (const int index) const noexcept
     {
         const ScopedLockType lock (getLock());
-        return isPositiveAndBelow (index, numUsed) ? data.elements [index]
-                                                   : static_cast <ObjectClass*> (nullptr);
+        if (isPositiveAndBelow (index, numUsed))
+        {
+            jassert (data.elements != nullptr);
+            return data.elements [index];
+        }
+
+        return nullptr;
     }
 
     /** Returns a pointer to the object at this index in the array, without checking whether the index is in-range.
@@ -141,7 +154,7 @@ public:
     inline ObjectClass* getUnchecked (const int index) const noexcept
     {
         const ScopedLockType lock (getLock());
-        jassert (isPositiveAndBelow (index, numUsed));
+        jassert (isPositiveAndBelow (index, numUsed) && data.elements != nullptr);
         return data.elements [index];
     }
 
@@ -244,11 +257,13 @@ public:
         @param newObject       the new object to add to the array
         @see set, insert, addIfNotAlreadyThere, addSorted
     */
-    void add (const ObjectClass* const newObject) noexcept
+    ObjectClass* add (ObjectClass* const newObject) noexcept
     {
         const ScopedLockType lock (getLock());
         data.ensureAllocatedSize (numUsed + 1);
+        jassert (data.elements != nullptr);
         data.elements [numUsed++] = const_cast <ObjectClass*> (newObject);
+        return const_cast <ObjectClass*> (newObject);
     }
 
     /** Inserts a new object into the array at the given index.
@@ -269,7 +284,7 @@ public:
         @see add, addSorted, addIfNotAlreadyThere, set
     */
     void insert (int indexToInsertAt,
-                 const ObjectClass* const newObject) noexcept
+                 ObjectClass* const newObject) noexcept
     {
         if (indexToInsertAt >= 0)
         {
@@ -279,6 +294,7 @@ public:
                 indexToInsertAt = numUsed;
 
             data.ensureAllocatedSize (numUsed + 1);
+            jassert (data.elements != nullptr);
 
             ObjectClass** const e = data.elements + indexToInsertAt;
             const int numToMove = numUsed - indexToInsertAt;
@@ -342,7 +358,7 @@ public:
 
         @param newObject   the new object to add to the array
     */
-    void addIfNotAlreadyThere (const ObjectClass* const newObject) noexcept
+    void addIfNotAlreadyThere (ObjectClass* const newObject) noexcept
     {
         const ScopedLockType lock (getLock());
 
@@ -369,7 +385,7 @@ public:
     {
         if (indexToChange >= 0)
         {
-            ObjectClass* toDelete = nullptr;
+            ScopedPointer<ObjectClass> toDelete;
 
             {
                 const ScopedLockType lock (getLock());
@@ -381,7 +397,7 @@ public:
                         toDelete = data.elements [indexToChange];
 
                         if (toDelete == newObject)
-                            toDelete = nullptr;
+                            toDelete.release();
                     }
 
                     data.elements [indexToChange] = const_cast <ObjectClass*> (newObject);
@@ -392,10 +408,6 @@ public:
                     data.elements [numUsed++] = const_cast <ObjectClass*> (newObject);
                 }
             }
-
-            delete toDelete; // don't want to use a ScopedPointer here because if the
-                             // object has a private destructor, both OwnedArray and
-                             // ScopedPointer would need to be friend classes..
         }
         else
         {
@@ -431,6 +443,7 @@ public:
             numElementsToAdd = arrayToAddFrom.size() - startIndex;
 
         data.ensureAllocatedSize (numUsed + numElementsToAdd);
+        jassert (numElementsToAdd <= 0 || data.elements != nullptr);
 
         while (--numElementsToAdd >= 0)
         {
@@ -471,6 +484,7 @@ public:
             numElementsToAdd = arrayToAddFrom.size() - startIndex;
 
         data.ensureAllocatedSize (numUsed + numElementsToAdd);
+        jassert (numElementsToAdd <= 0 || data.elements != nullptr);
 
         while (--numElementsToAdd >= 0)
         {
@@ -553,7 +567,7 @@ public:
     void remove (const int indexToRemove,
                  const bool deleteObject = true)
     {
-        ObjectClass* toDelete = nullptr;
+        ScopedPointer<ObjectClass> toDelete;
 
         {
             const ScopedLockType lock (getLock());
@@ -572,10 +586,6 @@ public:
                     memmove (e, e + 1, sizeof (ObjectClass*) * (size_t) numToShift);
             }
         }
-
-        delete toDelete; // don't want to use a ScopedPointer here because if the
-                         // object has a private destructor, both OwnedArray and
-                         // ScopedPointer would need to be friend classes..
 
         if ((numUsed << 1) < data.numAllocated)
             minimiseStorageOverheads();
@@ -664,7 +674,7 @@ public:
             {
                 for (int i = startIndex; i < endIndex; ++i)
                 {
-                    delete data.elements [i];
+                    ContainerDeletePolicy<ObjectClass>::destroy (data.elements [i]);
                     data.elements [i] = nullptr; // (in case one of the destructors accesses this array and hits a dangling pointer)
                 }
             }
@@ -770,11 +780,11 @@ public:
         If you need to exchange two arrays, this is vastly quicker than using copy-by-value
         because it just swaps their internal pointers.
     */
-    void swapWithArray (OwnedArray& otherArray) noexcept
+    template <class OtherArrayType>
+    void swapWith (OtherArrayType& otherArray) noexcept
     {
         const ScopedLockType lock1 (getLock());
-        const ScopedLockType lock2 (otherArray.getLock());
-
+        const typename OtherArrayType::ScopedLockType lock2 (otherArray.getLock());
         data.swapWith (otherArray.data);
         std::swap (numUsed, otherArray.numUsed);
     }
@@ -852,6 +862,13 @@ public:
     typedef typename TypeOfCriticalSectionToUse::ScopedLockType ScopedLockType;
 
 
+    //==============================================================================
+   #ifndef DOXYGEN
+    // Note that the swapWithArray method has been replaced by a more flexible templated version,
+    // and renamed "swapWith" to be more consistent with the names used in other classes.
+    JUCE_DEPRECATED_WITH_BODY (void swapWithArray (OwnedArray& other) noexcept, { swapWith (other); })
+   #endif
+
 private:
     //==============================================================================
     ArrayAllocationBase <ObjectClass*, TypeOfCriticalSectionToUse> data;
@@ -860,11 +877,11 @@ private:
     void deleteAllObjects()
     {
         while (numUsed > 0)
-            delete data.elements [--numUsed];
+            ContainerDeletePolicy<ObjectClass>::destroy (data.elements [--numUsed]);
     }
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OwnedArray)
 };
 
 
-#endif   // __JUCE_OWNEDARRAY_JUCEHEADER__
+#endif   // JUCE_OWNEDARRAY_H_INCLUDED

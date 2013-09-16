@@ -55,5 +55,17 @@ void JuceModel::operator()(Enable enable) {
   program_->setEnabled(enable);
 }
 
+void JuceModel::startThreads() {
+  impl_->startThreads();
+}
+
+void JuceModel::stopThreads() {
+  impl_->stopThreads();
+}
+
+Thread* JuceModel::getThread(const string& name) {
+  return impl_->getThread(name);
+}
+
 }  // namespace program
 }  // namespace rec

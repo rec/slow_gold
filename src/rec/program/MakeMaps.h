@@ -11,6 +11,7 @@ class Program;
 CommandMap makeCommandMap(const Program&);
 MenuMap makeMenuMap(const Program&);
 MenuBarMap makeMenuBarMap(const Program&);
+ThreadMap makeThreadMap(const Program&);
 
 }  // namespace program
 }  // namespace rec

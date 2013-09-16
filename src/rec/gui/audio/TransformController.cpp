@@ -137,7 +137,7 @@ void TransformController::languageChanged() {
   stereoComboBox_.changeItemText(RIGHT, Trans("Right"));
   stereoComboBox_.changeItemText(LEFT_PLUS_RIGHT, Trans("L + R"));
 
-  stereoComboBox_.setSelectedId(sides_, true);
+  stereoComboBox_.setSelectedId(sides_, juce::dontSendNotification);
 }
 
 void TransformController::setStretch(const Stretch& s) {
@@ -157,7 +157,7 @@ void TransformController::operator()(const StereoProto& stereo) {
   if (stereo.type())
     sides_ = static_cast<Sides>(2 + stereo.side());
 
-  stereoComboBox_.setSelectedId(sides_, true);
+  stereoComboBox_.setSelectedId(sides_, juce::dontSendNotification);
 }
 
 void TransformController::comboBoxChanged(juce::ComboBox* box) {

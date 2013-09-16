@@ -1,6 +1,8 @@
 #include "rec/program/ProgramBase.h"
 
 #include "rec/gui/menu/RecentFiles.h"
+#include "rec/program/Threads.pb.h"
+#include "rec/util/Binary.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 
@@ -62,6 +64,10 @@ bool ProgramBase::isEnabled() const {
 void ProgramBase::setEnabled(bool enabled) {
   Lock l(lock_);
   enabled_ = enabled;
+}
+
+ThreadProtos ProgramBase::threads() const {
+  return BINARY_PROTO(Threads, ThreadProtos);
 }
 
 }  // namespace program

@@ -64,9 +64,9 @@ struct CoreAudioFormatMetatdata
     {
         FileHeader (InputStream& input)
         {
-            fileType    = input.readIntBigEndian();
-            fileVersion = input.readShortBigEndian();
-            fileFlags   = input.readShortBigEndian();
+            fileType    = (uint32) input.readIntBigEndian();
+            fileVersion = (uint16) input.readShortBigEndian();
+            fileFlags   = (uint16) input.readShortBigEndian();
         }
 
         uint32 fileType;
@@ -79,8 +79,8 @@ struct CoreAudioFormatMetatdata
     {
         ChunkHeader (InputStream& input)
         {
-            chunkType = input.readIntBigEndian();
-            chunkSize = input.readInt64BigEndian();
+            chunkType = (uint32) input.readIntBigEndian();
+            chunkSize = (int64)  input.readInt64BigEndian();
         }
 
         uint32 chunkType;
@@ -93,12 +93,12 @@ struct CoreAudioFormatMetatdata
         AudioDescriptionChunk (InputStream& input)
         {
             sampleRate          = input.readDoubleBigEndian();
-            formatID            = input.readIntBigEndian();
-            formatFlags         = input.readIntBigEndian();
-            bytesPerPacket      = input.readIntBigEndian();
-            framesPerPacket     = input.readIntBigEndian();
-            channelsPerFrame    = input.readIntBigEndian();
-            bitsPerChannel      = input.readIntBigEndian();
+            formatID            = (uint32) input.readIntBigEndian();
+            formatFlags         = (uint32) input.readIntBigEndian();
+            bytesPerPacket      = (uint32) input.readIntBigEndian();
+            framesPerPacket     = (uint32) input.readIntBigEndian();
+            channelsPerFrame    = (uint32) input.readIntBigEndian();
+            bitsPerChannel      = (uint32) input.readIntBigEndian();
         }
 
         double sampleRate;
@@ -172,7 +172,7 @@ struct CoreAudioFormatMetatdata
         }
 
         if (tempoSequence.getDataSize() > 0)
-            midiMetadata.set ("tempo sequence", tempoSequence.toString());
+            midiMetadata.set ("tempo sequence", tempoSequence.toUTF8());
     }
 
     static double getTempoFromTempoMetaEvent (MidiMessageSequence::MidiEventHolder* holder)
@@ -217,7 +217,7 @@ struct CoreAudioFormatMetatdata
         }
 
         if (timeSigSequence.getDataSize() > 0)
-            midiMetadata.set ("time signature sequence", timeSigSequence.toString());
+            midiMetadata.set ("time signature sequence", timeSigSequence.toUTF8());
     }
 
     //==============================================================================
@@ -360,7 +360,7 @@ public:
 
     //==============================================================================
     bool readSamples (int** destSamples, int numDestChannels, int startOffsetInDestBuffer,
-                      int64 startSampleInFile, int numSamples)
+                      int64 startSampleInFile, int numSamples) override
     {
         clearSamplesBeyondAvailableLength (destSamples, numDestChannels, startOffsetInDestBuffer,
                                            startSampleInFile, numSamples, lengthInSamples);
@@ -478,12 +478,12 @@ AudioFormatReader* CoreAudioFormat::createReaderFor (InputStream* sourceStream,
     return nullptr;
 }
 
-AudioFormatWriter* CoreAudioFormat::createWriterFor (OutputStream* streamToWriteTo,
-                                                     double sampleRateToUse,
-                                                     unsigned int numberOfChannels,
-                                                     int bitsPerSample,
-                                                     const StringPairArray& metadataValues,
-                                                     int qualityOptionIndex)
+AudioFormatWriter* CoreAudioFormat::createWriterFor (OutputStream*,
+                                                     double /*sampleRateToUse*/,
+                                                     unsigned int /*numberOfChannels*/,
+                                                     int /*bitsPerSample*/,
+                                                     const StringPairArray& /*metadataValues*/,
+                                                     int /*qualityOptionIndex*/)
 {
     jassertfalse; // not yet implemented!
     return nullptr;

@@ -36,7 +36,7 @@ class SetterToggle : public app::LanguageListener,
 
  protected:
   void setToggle(bool state) {
-    setToggleState(state, false);
+    setToggleState(state, juce::dontSendNotification);
   }
 
   virtual void operator()(const data::Value& v) {

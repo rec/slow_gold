@@ -35,7 +35,6 @@
 #include "rec/slow/MainPage.h"
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/SlowWindow.h"
-#include "rec/slow/Threads.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/slow/commands/SlowProgram.h"
 #include "rec/util/LoopPoint.h"
@@ -148,7 +147,6 @@ void Instance::init() {
   fillerThread_.reset(fillerThread.release());
 
   midiCommandMap_.reset(new command::MidiCommandMap);
-  threads_.reset(new Threads);
 
   device_->manager_.addMidiInputCallback("",  midiCommandMap_.get());
   midiCommandMap_->addCommands(data::getProto<command::CommandMapProto>());
@@ -211,7 +209,6 @@ Instance::~Instance() {
   device_->manager_.removeMidiInputCallback("", midiCommandMap_.get());
   player_->setState(audio::transport::STOPPED);
   device_->shutdown();
-  threads_.reset();
 }
 
 void Instance::startup() {
@@ -233,8 +230,9 @@ void Instance::startup() {
   }
 
   thread::callAsync(window_, &DocumentWindow::setVisible, true);
-  threads_->start();
-  Thread* timer = threads_->timerThread();
+  juceModel_->startThreads();
+  Thread* timer = juceModel_->getThread("timer");
+  DCHECK(timer);
   components_->transportController_->timeController()->setThread(timer);
   player_->timer()->setThread(timer);
 }

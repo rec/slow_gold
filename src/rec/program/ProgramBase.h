@@ -19,9 +19,15 @@ class ProgramBase : public Program {
   CallbackMap* getCallbackMap() override { return &callbackMap_; }
   bool isEnabled() const override;
   void setEnabled(bool) override;
+  ThreadProtos threads() const override;
+
+  ThreadFunction threadFunction(const string& name) const override {
+    return threadFunctions_.at(name);
+  }
 
  protected:
   CriticalSection lock_;
+  std::unordered_map<string, ThreadFunction> threadFunctions_;
 
  private:
   bool enabled_;

@@ -22,15 +22,15 @@
   ==============================================================================
 */
 
-SamplerSound::SamplerSound (const String& name_,
+SamplerSound::SamplerSound (const String& soundName,
                             AudioFormatReader& source,
-                            const BigInteger& midiNotes_,
+                            const BigInteger& notes,
                             const int midiNoteForNormalPitch,
                             const double attackTimeSecs,
                             const double releaseTimeSecs,
                             const double maxSampleLengthSeconds)
-    : name (name_),
-      midiNotes (midiNotes_),
+    : name (soundName),
+      midiNotes (notes),
       midiRootNote (midiNoteForNormalPitch)
 {
     sourceSampleRate = source.sampleRate;
@@ -73,10 +73,9 @@ bool SamplerSound::appliesToChannel (const int /*midiChannel*/)
 SamplerVoice::SamplerVoice()
     : pitchRatio (0.0),
       sourceSamplePosition (0.0),
-      lgain (0.0f),
-      rgain (0.0f),
-      isInAttack (false),
-      isInRelease (false)
+      lgain (0.0f), rgain (0.0f),
+      attackReleaseLevel (0), attackDelta (0), releaseDelta (0),
+      isInAttack (false), isInRelease (false)
 {
 }
 
@@ -86,7 +85,7 @@ SamplerVoice::~SamplerVoice()
 
 bool SamplerVoice::canPlaySound (SynthesiserSound* sound)
 {
-    return dynamic_cast <const SamplerSound*> (sound) != nullptr;
+    return dynamic_cast<const SamplerSound*> (sound) != nullptr;
 }
 
 void SamplerVoice::startNote (const int midiNoteNumber,

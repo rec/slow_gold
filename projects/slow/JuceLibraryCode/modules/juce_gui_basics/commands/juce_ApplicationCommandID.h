@@ -22,8 +22,8 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_APPLICATIONCOMMANDID_JUCEHEADER__
-#define __JUCE_APPLICATIONCOMMANDID_JUCEHEADER__
+#ifndef JUCE_APPLICATIONCOMMANDID_H_INCLUDED
+#define JUCE_APPLICATIONCOMMANDID_H_INCLUDED
 
 
 //==============================================================================
@@ -55,7 +55,7 @@ namespace StandardApplicationCommandIDs
 
         This command is recognised by the JUCEApplication class, so if it is invoked
         and no other ApplicationCommandTarget handles the event first, the JUCEApplication
-        object will catch it and call JUCEApplication::systemRequestedQuit().
+        object will catch it and call JUCEApplicationBase::systemRequestedQuit().
     */
     static const CommandID  quit           = 0x1001;
 
@@ -85,4 +85,4 @@ namespace StandardApplicationCommandIDs
 }
 
 
-#endif   // __JUCE_APPLICATIONCOMMANDID_JUCEHEADER__
+#endif   // JUCE_APPLICATIONCOMMANDID_H_INCLUDED

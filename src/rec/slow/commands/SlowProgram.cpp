@@ -1,20 +1,28 @@
 #include "rec/slow/commands/SlowProgram.h"
 
+#include "rec/audio/source/Player.h"
+#include "rec/command/CommandData.h"
 #include "rec/data/Data.h"
+#include "rec/data/DataCenter.h"
+#include "rec/data/DataUpdater.h"
 #include "rec/music/Metadata.h"
+#include "rec/slow/Components.h"
 #include "rec/slow/GuiSettings.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/Command.pb.h"
-#include "rec/command/CommandData.h"
 #include "rec/translation/TranslationTables.h"
 #include "rec/util/Binary.h"
 #include "rec/util/Copy.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/thread/Result.h"
+#include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Viewport.pb.h"
 
+using namespace rec::data;
 using namespace rec::widget::waveform;
+using namespace rec::widget::tree;
 
 TRAN(LOOP_ENTIRE_TRACK, "Loop Entire Track");
 TRAN(LOOP_THIS_SEGMENT, "Loop This Segment");
@@ -50,6 +58,51 @@ class SlowRecentFilesStrategy : public gui::RecentFilesStrategy {
 
 static SlowRecentFilesStrategy RECENT_FILES_STRATEGY;
 
+int navigator(Thread*) {
+  getInstance()->components_->directoryTree_->checkVolumes();
+  return thread::WAIT;
+}
+
+int writeGui(Thread* thread) {
+  MessageManagerLock l(thread);
+  if (!l.lockWasGained())
+    return thread::DONE;
+  getInstance()->updateGui();
+  return thread::WAIT;
+}
+
+int writeData(Thread*) {
+  data::getDataCenter().updater_->write();
+  return thread::WAIT;
+}
+
+int updateData(Thread* thread) {
+  MessageManagerLock l(thread);
+  if (!l.lockWasGained())
+    return thread::DONE;
+  data::getDataCenter().updater_->update();
+  return thread::WAIT;
+}
+
+int directory(Thread*) {
+  return getInstance()->components_->directoryTree_->run() ? thread::YIELD :
+    thread::WAIT;
+}
+
+int timer(Thread*) {
+  getInstance()->player_->timer()->broadcastTime();
+  return thread::WAIT;
+}
+
+}  // namespace
+
+SlowProgram::SlowProgram(Instance* instance) : instance_(instance) {
+  threadFunctions_["navigator"] = navigator;
+  threadFunctions_["writeGui"] = writeGui;
+  threadFunctions_["writeData"] = writeData;
+  threadFunctions_["updateData"] = updateData;
+  threadFunctions_["directory"] = directory;
+  threadFunctions_["timer"] = timer;
 }
 
 command::Commands SlowProgram::commands() const {
