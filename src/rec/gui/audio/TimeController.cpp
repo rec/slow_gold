@@ -34,13 +34,13 @@ Dial realTimeDial() {
 }  // namespace
 
 TimeController::TimeController()
-    : Layout("Time controls", HORIZONTAL),
+    : Panel("Time controls", HORIZONTAL),
       songDial_(realTimeDial()),
       songTime_(Text()),
       timeScale_(1.0) {
-  addToLayout(&songTime_, TEXT_WIDTH);
-  addToLayout(&songDial_, DIAL_WIDTH);
-  addToLayout(&filler_);
+  addToPanel(&songTime_, TEXT_WIDTH);
+  addToPanel(&songDial_, DIAL_WIDTH);
+  addToPanel(&filler_);
 }
 
 void TimeController::setTimeScale(double scale) {

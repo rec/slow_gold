@@ -13,7 +13,7 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class ModeSelector : public Layout,
+class ModeSelector : public Panel,
                      public GlobalDataListener<Mode>,
                      public juce::Button::Listener {
  public:

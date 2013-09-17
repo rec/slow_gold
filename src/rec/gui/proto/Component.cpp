@@ -24,7 +24,7 @@ Component* make(const ComponentProto& c) {
     return makeLabel(c.label()).release();
 
   if (c.has_layout())
-    return makeLayout(c.layout()).release();
+    return makePanel(c.layout()).release();
 
   if (c.has_resizer())
     return makeResizer(c.resizer()).release();

@@ -28,7 +28,7 @@ const int COMBO_BOX_HEIGHT = 30;
 using rec::audio::stretch::Stretch;
 
 TransformController::TransformController()
-    : Layout("TransformController", HORIZONTAL),
+    : Panel("TransformController", HORIZONTAL),
 
       playbackSpeed_("Stretch", "Playback Speed Slider: "
                      "Controls how fast the loop plays back: "
@@ -84,12 +84,12 @@ TransformController::TransformController()
   stereoComboBox_.addItem(Trans("Right"), RIGHT);
   stereoComboBox_.addItem(Trans("L + R"), LEFT_PLUS_RIGHT);
 
-  leftPanel_.addToLayout(&enableButton_, ENABLE_BUTTON_HEIGHT);
-  leftPanel_.addToLayout(&stereoComboBox_, COMBO_BOX_HEIGHT);
-  leftPanel_.addToLayout(&leftPadding_);
+  leftPanel_.addToPanel(&enableButton_, ENABLE_BUTTON_HEIGHT);
+  leftPanel_.addToPanel(&stereoComboBox_, COMBO_BOX_HEIGHT);
+  leftPanel_.addToPanel(&leftPadding_);
 
-  addToLayout(&leftPanel_, LEFT_PANEL_WIDTH);
-  addToLayout(&rightPanel_, 150, -1.0, 250);
+  addToPanel(&leftPanel_, LEFT_PANEL_WIDTH);
+  addToPanel(&rightPanel_, 150, -1.0, 250);
 }
 
 TransformController::~TransformController() {}
@@ -103,13 +103,13 @@ void TransformController::showMasterTune(bool show) {
       rightPanelCreated_ = true;
 
     int height = SLIDER_HEIGHT - (show ? FINE_OFFSET : 0);
-    rightPanel_.addToLayout(&playbackSpeed_, height);
-    rightPanel_.addToLayout(&pitchScale_, height);
-    rightPanel_.addToLayout(&fineScale_, height);
+    rightPanel_.addToPanel(&playbackSpeed_, height);
+    rightPanel_.addToPanel(&pitchScale_, height);
+    rightPanel_.addToPanel(&fineScale_, height);
 
     if (show)
-      rightPanel_.addToLayout(&masterTune_, height);
-    rightPanel_.addToLayout(&rightPadding_);
+      rightPanel_.addToPanel(&masterTune_, height);
+    rightPanel_.addToPanel(&rightPadding_);
     rightPanel_.layout();
   }
 }

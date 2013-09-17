@@ -7,7 +7,7 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<Layout> makeLayout(const LayoutProto&);
+unique_ptr<Panel> makePanel(const LayoutProto&);
 
 }  // namespace gui
 }  // namespace rec

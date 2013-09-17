@@ -16,7 +16,7 @@ const int COMMAND_BAR_PAD = -5;
 }  // namespace
 
 CommandBar::CommandBar()
-    : Layout("CommandBar", HORIZONTAL),
+    : Panel("CommandBar", HORIZONTAL),
       addLoopPoint_("CreateNow", "Add Loop Point Button: "
                     "Add a loop point at the current time."),
       zoomOutFull_("ZoomOutFull", "Zoom Out Full Button: "
@@ -32,10 +32,10 @@ CommandBar::CommandBar()
   SET_BUTTON_IMAGES3(&zoomOutFull_, ZoomOutButton);
   SET_BUTTON_IMAGES3(&zoomToSelection_, ZoomToSelectionButton);
 
-  addToLayout(&addLoopPoint_, BUTTON_SIZE);
-  addToLayout(&zoomOutFull_, BUTTON_SIZE);
-  addToLayout(&zoomToSelection_, BUTTON_SIZE);
-  addToLayout(&padding_);
+  addToPanel(&addLoopPoint_, BUTTON_SIZE);
+  addToPanel(&zoomOutFull_, BUTTON_SIZE);
+  addToPanel(&zoomToSelection_, BUTTON_SIZE);
+  addToPanel(&padding_);
 
   setBounds(0, BUTTON_SIZE + 4 * PADDING,
             3 * BUTTON_SIZE + 2 * PADDING + COMMAND_BAR_PAD,

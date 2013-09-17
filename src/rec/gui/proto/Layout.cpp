@@ -5,10 +5,10 @@ using namespace juce;
 namespace rec {
 namespace gui {
 
-unique_ptr<Layout> makeLayout(const LayoutProto& proto) {
+unique_ptr<Panel> makeLayout(const LayoutProto& proto) {
   Orientation o = (proto.orientation() == LayoutProto::HORIZONTAL) ?
     HORIZONTAL : VERTICAL;
-  return make_unique<Layout>(
+  return make_unique<Panel>(
       proto.name(), o, proto.resize_other_dimension(), proto.is_main());
 }
 

@@ -10,7 +10,7 @@ DataSlider::DataSlider(const String& name,
                        uint32 captionSize,
                        uint32 textEntryBoxWidth,
                        uint32 textEntryBoxHeight)
-    : Layout(name, HORIZONTAL, true),
+    : Panel(name, HORIZONTAL, true),
       data::AddressListener(address, typeName),
       slider_(name),
       caption_(name),
@@ -21,8 +21,8 @@ DataSlider::DataSlider(const String& name,
                           textEntryBoxWidth, textEntryBoxHeight);
   slider_.addListener(this);
 
-  addToLayout(&caption_, captionSize);
-  addToLayout(&slider_, 0, -1.0, -1.0);
+  addToPanel(&caption_, captionSize);
+  addToPanel(&slider_, 0, -1.0, -1.0);
 }
 
 void DataSlider::sliderValueChanged(Slider*) {

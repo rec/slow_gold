@@ -4,7 +4,7 @@
 namespace rec {
 namespace gui {
 
-Layout::Layout(const String& name,
+Panel::Panel(const String& name,
                Orientation o,
                bool resizeOther,
                bool isMain)
@@ -16,14 +16,14 @@ Layout::Layout(const String& name,
       isMain_(isMain) {
 }
 
-void Layout::addToLayout(Component* c) {
+void Panel::addToPanel(Component* c) {
   if (HasSizeHints* h = dynamic_cast<HasSizeHints*>(c))
-    addToLayout(c, h->size(MIN), h->size(MAX), h->size(PREF));
+    addToPanel(c, h->size(MIN), h->size(MAX), h->size(PREF));
   else
-    addToLayout(c, DEFAULT_MIN, DEFAULT_MAX, DEFAULT_PREF);
+    addToPanel(c, DEFAULT_MIN, DEFAULT_MAX, DEFAULT_PREF);
 }
 
-void Layout::addToLayout(Component* c, double min, double max, double pref) {
+void Panel::addToPanel(Component* c, double min, double max, double pref) {
   accumulate(min, max, pref);
   layoutManager_.setItemLayout(components_.size(), min, max, pref);
   components_.push_back(c);
@@ -31,12 +31,12 @@ void Layout::addToLayout(Component* c, double min, double max, double pref) {
   addAndMakeVisible(c);
 }
 
-void Layout::resized() {
+void Panel::resized() {
   Component::resized();
   layout();
 }
 
-void Layout::layout() {
+void Panel::layout() {
   int width = getWidth();
   int height = getHeight();
   if (components_.size() && width && height) {
@@ -49,7 +49,7 @@ void Layout::layout() {
   }
 }
 
-void Layout::clear(bool free) {
+void Panel::clear(bool free) {
   SizeHintAccumulator::clear();
   layoutManager_.clearAllItems();
   components_.clear();

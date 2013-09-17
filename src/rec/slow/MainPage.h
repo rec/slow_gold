@@ -22,7 +22,7 @@ class MainPage : public app::LanguageListener {
   MainPage(Components*);
   virtual ~MainPage();
 
-  gui::Layout* panel() { return mainPanel_.get(); }
+  gui::Panel* panel() { return mainPanel_.get(); }
   void setTooltip(const String&);
   void setEnabled(bool);
   virtual void languageChanged();
@@ -31,16 +31,16 @@ class MainPage : public app::LanguageListener {
   Components* components_;
 
   // mainPanel_ contains navigationPanel_, the waveform and playbackPanel_.
-  ptr<gui::Layout> mainPanel_;
+  ptr<gui::Panel> mainPanel_;
 
   // navigationPanel_ contains the navigator, song metadata and loops.
-  gui::Layout navigationPanel_;
+  gui::Panel navigationPanel_;
 
   // playbackPanel_ contains help, transform and the controls.
-  gui::Layout playbackPanel_;
-  gui::Layout helpPanel_;
-  gui::Layout transformPanel_;
-  gui::Layout controlPanel_;
+  gui::Panel playbackPanel_;
+  gui::Panel helpPanel_;
+  gui::Panel transformPanel_;
+  gui::Panel controlPanel_;
 
   // Resizers for mainPanel_;
   gui::SetterResizer navigationResizer_;

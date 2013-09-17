@@ -26,7 +26,7 @@ enum TransportCommand {
 
 // A GUI component with three drawable buttons that broadcasts commands from
 // those buttons.
-class TransportController : public Layout,
+class TransportController : public Panel,
                             public juce::ButtonListener,
                             public DataListener<rec::audio::Gain>,
                             public Listener<rec::audio::transport::State>,
@@ -51,8 +51,8 @@ class TransportController : public Layout,
 
   TimeController* timeController_;
 
-  Layout buttonsLayout_;
-  Layout gainLayout_;
+  Panel buttonsPanel_;
+  Panel gainPanel_;
 
   LanguageButton startStopButton_;
   LanguageButton jumpToStartButton_;

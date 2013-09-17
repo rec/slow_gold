@@ -11,7 +11,7 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class TimeController : public Layout,
+class TimeController : public Panel,
                        public Listener<SampleTime>,
                        public HasThread {
  public:
@@ -31,7 +31,7 @@ class TimeController : public Layout,
   static const bool DISPLAY_SCALED_TIME = false;
 
   double timeScale_;
-  gui::Layout filler_;
+  gui::Panel filler_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(TimeController);
 };

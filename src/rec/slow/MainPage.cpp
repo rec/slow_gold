@@ -45,17 +45,17 @@ const int MIN_DIRECTORY = 75;
 const int HELP_CAPTION_HEIGHT = 28;
 
 template <typename Type>
-void add(gui::Layout* layout, Type* t, double min, double max, double pref) {
-  layout->addToLayout(t, min, max, pref);
+void add(gui::Panel* layout, Type* t, double min, double max, double pref) {
+  layout->addToPanel(t, min, max, pref);
 }
 
 template <typename Type>
-void add(gui::Layout* layout, ptr<Type> &t, double min, double max, double p) {
-  layout->addToLayout(t.get(), min, max, p);
+void add(gui::Panel* layout, ptr<Type> &t, double min, double max, double p) {
+  layout->addToPanel(t.get(), min, max, p);
 }
 
 template <typename Type>
-void add(gui::Layout* layout, Type t, double size) {
+void add(gui::Panel* layout, Type t, double size) {
   add(layout, t, size, size, size);
 }
 
@@ -64,9 +64,9 @@ static const string& layoutTypeName() {
   return name;
 }
 
-class MainPanel : public gui::Layout {
+class MainPanel : public gui::Panel {
  public:
-  MainPanel() : gui::Layout("Main", VERTICAL) {}
+  MainPanel() : gui::Panel("Main", VERTICAL) {}
 
 #if JUCE_WINDOWS
   virtual void paintOverChildren(Graphics& g) {

@@ -16,7 +16,7 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class TransformController : public Layout,
+class TransformController : public Panel,
                             public data::DataListener<rec::audio::source::StereoProto>,
                             public data::DataListener<rec::audio::stretch::Stretch>,
                             public app::LanguageListener,
@@ -49,11 +49,11 @@ class TransformController : public Layout,
   gui::SetterToggle enableButton_;
 
   juce::ComboBox stereoComboBox_;
-  Layout leftPanel_;
-  Layout rightPanel_;
+  Panel leftPanel_;
+  Panel rightPanel_;
 
-  Layout leftPadding_;
-  Layout rightPadding_;
+  Panel leftPadding_;
+  Panel rightPadding_;
 
   bool showMasterTune_;
   bool rightPanelCreated_;

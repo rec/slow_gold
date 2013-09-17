@@ -15,7 +15,7 @@ enum CommandBarCommand {
   ZOOM_TO_SELECTION
 };
 
-class CommandBar : public Layout,
+class CommandBar : public Panel,
                    public Broadcaster<CommandBarCommand>,
                    public juce::Button::Listener {
  public:
@@ -28,7 +28,7 @@ class CommandBar : public Layout,
   LanguageButton addLoopPoint_;
   LanguageButton zoomOutFull_;
   LanguageButton zoomToSelection_;
-  Layout padding_;
+  Panel padding_;
 
   DISALLOW_COPY_ASSIGN_AND_LEAKS(CommandBar);
 };

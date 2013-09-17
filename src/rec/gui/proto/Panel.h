@@ -7,7 +7,7 @@
 namespace rec {
 namespace gui {
 
-class Layout : public Component,
+class Panel : public Component,
                public SizeHintAccumulator,
                public SettableTooltipClient {
  public:
@@ -15,7 +15,7 @@ class Layout : public Component,
   static const int DEFAULT_MAX = -1;
   static const int DEFAULT_PREF = -1;
 
-  Layout(const String& name = String::empty,
+  Panel(const String& name = String::empty,
          Orientation o = HORIZONTAL,
          bool resizeOther = true,
          bool isMain = false);
@@ -23,9 +23,9 @@ class Layout : public Component,
   void setOrientation(Orientation o) { orientation_ = o; }
   Orientation orientation() const { return orientation_; }
 
-  void addToLayout(Component* c);
-  void addToLayout(Component* c, double m) { addToLayout(c, m, m, m); }
-  void addToLayout(Component* c, double min, double max, double pref);
+  void addToPanel(Component* c);
+  void addToPanel(Component* c, double m) { addToPanel(c, m, m, m); }
+  void addToPanel(Component* c, double min, double max, double pref);
 
   int size() const { return components_.size(); }
 
@@ -53,7 +53,7 @@ class Layout : public Component,
   bool const isMain_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_LEAKS(Layout);
+  DISALLOW_COPY_ASSIGN_AND_LEAKS(Panel);
 };
 
 }  // namespace gui

@@ -20,7 +20,7 @@ namespace {
 
 void setImage(ModeSelector* selector, LanguageButton* b, Mode::Action action) {
   b->addListener(selector);
-  selector->addToLayout(b);
+  selector->addToPanel(b);
   (*selector->buttonMap())[action] = b;
 }
 
@@ -31,7 +31,7 @@ enum Sides {
 }  // namespace
 
 ModeSelector::ModeSelector()
-    : Layout("ModeSelector", HORIZONTAL),
+    : Panel("ModeSelector", HORIZONTAL),
       drag_("Drag", "Drag Mode: Use the mouse to drag the waveform back "
             "and forth"),
       setTime_("setTime", "Set Current Time Mode: Clicking in the waveform "

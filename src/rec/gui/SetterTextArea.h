@@ -9,9 +9,9 @@
 namespace rec {
 namespace gui {
 
-class SetterTextArea : public Layout {
+class SetterTextArea : public Panel {
  public:
-  SetterTextArea(const String& name = String::empty) : Layout(name, VERTICAL) {}
+  SetterTextArea(const String& name = String::empty) : Panel(name, VERTICAL) {}
   ~SetterTextArea() { stl::deletePointers(&components_); }
 
   SetterText* text(int i) {
@@ -24,7 +24,7 @@ class SetterTextArea : public Layout {
                   const String& tip = String::empty,
                   const String& caption = String::empty) {
     SetterText* text = new SetterText(name, typeName, addr, tip, caption);
-    addToLayout(text, 12, 20, 20);
+    addToPanel(text, 12, 20, 20);
     return text;
   }
 

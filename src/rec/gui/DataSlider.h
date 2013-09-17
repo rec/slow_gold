@@ -15,7 +15,7 @@
 namespace rec {
 namespace gui {
 
-class DataSlider : public Layout,
+class DataSlider : public Panel,
                    public data::AddressListener,
                    public app::LanguageListener,
                    public juce::Slider::Listener {

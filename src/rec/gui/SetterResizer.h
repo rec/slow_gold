@@ -22,8 +22,8 @@ class SetterResizer : public data::AddressListener,
  public:
   SetterResizer(const string& typeName,
                 const data::Address& address,
-                Layout* layout,
-                int itemIndexInLayout,
+                Panel* layout,
+                int itemIndexInPanel,
                 uint32 minValue = 20);
 
   virtual void operator()(const data::Value&);
@@ -36,7 +36,7 @@ class SetterResizer : public data::AddressListener,
   uint32 get() const;
 
  private:
-  Layout* const layout_;
+  Panel* const layout_;
   const int index_;
   const uint32 minValue_;
 

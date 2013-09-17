@@ -10,7 +10,7 @@
 namespace rec {
 namespace gui {
 
-class SetterText : public Layout,
+class SetterText : public Panel,
                    public data::AddressListener,
                    public TextEditor::Listener {
  public:

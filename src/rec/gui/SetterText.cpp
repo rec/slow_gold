@@ -11,7 +11,7 @@ SetterText::SetterText(const String& name,
                        const String& tip,
                        const String& caption,
                        bool useCaption)
-    : Layout(name, HORIZONTAL),
+    : Panel(name, HORIZONTAL),
       data::AddressListener(address, typeName) {
   DCHECK(name.length());
   const String& cap = caption.length() ? caption : name;
@@ -22,9 +22,9 @@ SetterText::SetterText(const String& name,
 
   if (useCaption) {
     caption_.setText(cap, juce::dontSendNotification);
-    addToLayout(&caption_, CAPTION_SIZE);
+    addToPanel(&caption_, CAPTION_SIZE);
   }
-  addToLayout(&editor_);
+  addToPanel(&editor_);
 
   editor_.addListener(this);
 }
@@ -35,7 +35,7 @@ void SetterText::operator()(const data::Value& v) {
 }
 
 void SetterText::setTooltip(const String& newTooltip) {
-  Layout::setTooltip(newTooltip);
+  Panel::setTooltip(newTooltip);
   editor_.setTooltip(newTooltip);
   caption_.setTooltip(newTooltip);
 }

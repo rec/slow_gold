@@ -21,10 +21,10 @@ const int MUTE_BUTTON_SIZE = 45;
 using rec::audio::Gain;
 
 TransportController::TransportController(TimeController* timeController)
-    : Layout("TransportController", VERTICAL),
+    : Panel("TransportController", VERTICAL),
       timeController_(timeController),
-      buttonsLayout_("Buttons", HORIZONTAL),
-      gainLayout_("Gain", HORIZONTAL),
+      buttonsPanel_("Buttons", HORIZONTAL),
+      gainPanel_("Gain", HORIZONTAL),
       startStopButton_("Start/stop", "Start/Stop Button: Toggle between pause"
                        " and play."),
       jumpToStartButton_("Jump to start", "Jump Forward Button: "
@@ -51,22 +51,22 @@ TransportController::TransportController(TimeController* timeController)
   jumpToStartButton_.addListener(this);
   startStopButton_.addListener(this);
 
-  buttonsLayout_.addToLayout(&startStopButton_, ICON_SIZE);
-  buttonsLayout_.addToLayout(&jumpToStartButton_, ICON_SIZE);
-  buttonsLayout_.addToLayout(&jumpBackButton_, ICON_SIZE);
-  buttonsLayout_.addToLayout(&jumpForwardButton_, ICON_SIZE);
-  buttonsLayout_.addToLayout(timeController_);
+  buttonsPanel_.addToPanel(&startStopButton_, ICON_SIZE);
+  buttonsPanel_.addToPanel(&jumpToStartButton_, ICON_SIZE);
+  buttonsPanel_.addToPanel(&jumpBackButton_, ICON_SIZE);
+  buttonsPanel_.addToPanel(&jumpForwardButton_, ICON_SIZE);
+  buttonsPanel_.addToPanel(timeController_);
 
   level_.slider()->setRange(-36.0, +12.0, 0.1);
   level_.slider()->setDetent(0.0f);
   level_.slider()->setTextValueSuffix(" dB");
 
-  gainLayout_.addToLayout(&muteButton_, MUTE_BUTTON_SIZE);
-  gainLayout_.addToLayout(&level_);
+  gainPanel_.addToPanel(&muteButton_, MUTE_BUTTON_SIZE);
+  gainPanel_.addToPanel(&level_);
 
-  addToLayout(&buttonsLayout_, ICON_SIZE);
-  addToLayout(&gainLayout_, ICON_SIZE);
-  addToLayout(&levelMeter_, 20);
+  addToPanel(&buttonsPanel_, ICON_SIZE);
+  addToPanel(&gainPanel_, ICON_SIZE);
+  addToPanel(&levelMeter_, 20);
 }
 
 TransportController::~TransportController() {}
