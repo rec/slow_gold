@@ -61,7 +61,7 @@ void Panel::clear(bool free) {
   }
 }
 
-unique_ptr<Panel> makeLayout(const PanelProto& proto) {
+unique_ptr<Panel> makePanel(const PanelProto& proto) {
   Orientation o = (proto.orientation() == PanelProto::HORIZONTAL) ?
     HORIZONTAL : VERTICAL;
   return make_unique<Panel>(

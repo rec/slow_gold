@@ -73,7 +73,23 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
   for (auto& i: commandMap_)
     program_->getCallback(i.first);
 
-  LOG(INFO) << "There are " << commandMap_.size() << " callback entries!!!!";
+  LOG(INFO) << "There are " << commandMap_.size() << " callbacks.";
+  LOG(INFO) << "There are " << layoutMap_.size() << " layouts.";
+  LOG(INFO) << "There are " << componentMap_.size() << " components.";
+
+  int undeclared = 0, total = 0;
+  for (auto& i: layoutMap_) {
+    for (auto& entry: i.second.entry()) {
+      auto& name = entry.name();
+      total += 1;
+      if (not (componentMap_.count(name) or layoutMap_.count(name))) {
+        DLOG(INFO) << "undeclared: " << name;
+        undeclared += 1;
+      }
+    }
+  }
+  LOG(INFO) << "There are " << undeclared << " missing components out of "
+            << total << ".";
 }
 
 const MenuBar& JuceModelImpl::menuBar() const {
