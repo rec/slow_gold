@@ -16,7 +16,7 @@ namespace BinaryData
     const int            KeyStrokeMap_defSize = 6171;
 
     extern const char*   Layout_def;
-    const int            Layout_defSize = 0;
+    const int            Layout_defSize = 3552;
 
     extern const char*   MenuCollection_def;
     const int            MenuCollection_defSize = 373;

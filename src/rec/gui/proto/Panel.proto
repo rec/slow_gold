@@ -1,12 +1,12 @@
 package rec.gui;
 
 message PanelProto {
-  enum Orientatation {
+  enum Orientation {
     HORIZONTAL = 0;
     VERTICAL = 1;
   };
 
-  optional Orientatation orientation = 1;
+  optional Orientation orientation = 1;
   optional string name = 2;
   optional bool resize_other_dimension = 3 [default = true];
   optional bool is_main = 4;

@@ -8,18 +8,19 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+import rec.gui.proto.Resizer_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Layout.proto',
   package='rec.gui',
-  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\"\xba\x01\n\x0bLayoutProto\x12\x37\n\x0borientation\x18\x01 \x01(\x0e\x32\".rec.gui.LayoutProto.Orientatation\x12\x0c\n\x04name\x18\x02 \x01(\t\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\"-\n\rOrientatation\x12\x0e\n\nHORIZONTAL\x10\x00\x12\x0c\n\x08VERTICAL\x10\x01')
+  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\x1a\x1brec/gui/proto/Resizer.proto\"p\n\x0bLayoutEntry\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpreferred\x18\x02 \x01(\x01\x12\x0b\n\x03min\x18\x03 \x01(\x01\x12\x0b\n\x03max\x18\x04 \x01(\x01\x12&\n\x07resizer\x18\x05 \x01(\x0b\x32\x15.rec.gui.ResizerProto\"\xe2\x01\n\x06Layout\x12\x0c\n\x04name\x18\x01 \x01(\t\x12#\n\x05\x65ntry\x18\x02 \x03(\x0b\x32\x14.rec.gui.LayoutEntry\x12\x30\n\x0borientation\x18\x03 \x01(\x0e\x32\x1b.rec.gui.Layout.Orientation\x12$\n\x16resize_other_dimension\x18\x04 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x05 \x01(\x08\x12\x0f\n\x07padding\x18\x06 \x01(\x08\"+\n\x0bOrientation\x12\x0e\n\nHORIZONTAL\x10\x00\x12\x0c\n\x08VERTICAL\x10\x01\"*\n\x07Layouts\x12\x1f\n\x06layout\x18\x01 \x03(\x0b\x32\x0f.rec.gui.Layout')
 
 
 
-_LAYOUTPROTO_ORIENTATATION = _descriptor.EnumDescriptor(
-  name='Orientatation',
-  full_name='rec.gui.LayoutProto.Orientatation',
+_LAYOUT_ORIENTATION = _descriptor.EnumDescriptor(
+  name='Orientation',
+  full_name='rec.gui.Layout.Orientation',
   filename=None,
   file=DESCRIPTOR,
   values=[
@@ -34,42 +35,112 @@ _LAYOUTPROTO_ORIENTATATION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=181,
-  serialized_end=226,
+  serialized_start=366,
+  serialized_end=409,
 )
 
 
-_LAYOUTPROTO = _descriptor.Descriptor(
-  name='LayoutProto',
-  full_name='rec.gui.LayoutProto',
+_LAYOUTENTRY = _descriptor.Descriptor(
+  name='LayoutEntry',
+  full_name='rec.gui.LayoutEntry',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='orientation', full_name='rec.gui.LayoutProto.orientation', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='name', full_name='rec.gui.LayoutProto.name', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='name', full_name='rec.gui.LayoutEntry.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='resize_other_dimension', full_name='rec.gui.LayoutProto.resize_other_dimension', index=2,
-      number=3, type=8, cpp_type=7, label=1,
+      name='preferred', full_name='rec.gui.LayoutEntry.preferred', index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='min', full_name='rec.gui.LayoutEntry.min', index=2,
+      number=3, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='max', full_name='rec.gui.LayoutEntry.max', index=3,
+      number=4, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resizer', full_name='rec.gui.LayoutEntry.resizer', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=68,
+  serialized_end=180,
+)
+
+
+_LAYOUT = _descriptor.Descriptor(
+  name='Layout',
+  full_name='rec.gui.Layout',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='rec.gui.Layout.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='entry', full_name='rec.gui.Layout.entry', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='orientation', full_name='rec.gui.Layout.orientation', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resize_other_dimension', full_name='rec.gui.Layout.resize_other_dimension', index=3,
+      number=4, type=8, cpp_type=7, label=1,
       has_default_value=True, default_value=True,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='is_main', full_name='rec.gui.LayoutProto.is_main', index=3,
-      number=4, type=8, cpp_type=7, label=1,
+      name='is_main', full_name='rec.gui.Layout.is_main', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='padding', full_name='rec.gui.Layout.padding', index=5,
+      number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -79,24 +150,69 @@ _LAYOUTPROTO = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _LAYOUTPROTO_ORIENTATATION,
+    _LAYOUT_ORIENTATION,
   ],
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=40,
-  serialized_end=226,
+  serialized_start=183,
+  serialized_end=409,
 )
 
-_LAYOUTPROTO.fields_by_name['orientation'].enum_type = _LAYOUTPROTO_ORIENTATATION
-_LAYOUTPROTO_ORIENTATATION.containing_type = _LAYOUTPROTO;
-DESCRIPTOR.message_types_by_name['LayoutProto'] = _LAYOUTPROTO
 
-class LayoutProto(_message.Message):
+_LAYOUTS = _descriptor.Descriptor(
+  name='Layouts',
+  full_name='rec.gui.Layouts',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='layout', full_name='rec.gui.Layouts.layout', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=411,
+  serialized_end=453,
+)
+
+_LAYOUTENTRY.fields_by_name['resizer'].message_type = rec.gui.proto.Resizer_pb2._RESIZERPROTO
+_LAYOUT.fields_by_name['entry'].message_type = _LAYOUTENTRY
+_LAYOUT.fields_by_name['orientation'].enum_type = _LAYOUT_ORIENTATION
+_LAYOUT_ORIENTATION.containing_type = _LAYOUT;
+_LAYOUTS.fields_by_name['layout'].message_type = _LAYOUT
+DESCRIPTOR.message_types_by_name['LayoutEntry'] = _LAYOUTENTRY
+DESCRIPTOR.message_types_by_name['Layout'] = _LAYOUT
+DESCRIPTOR.message_types_by_name['Layouts'] = _LAYOUTS
+
+class LayoutEntry(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _LAYOUTPROTO
+  DESCRIPTOR = _LAYOUTENTRY
 
-  # @@protoc_insertion_point(class_scope:rec.gui.LayoutProto)
+  # @@protoc_insertion_point(class_scope:rec.gui.LayoutEntry)
+
+class Layout(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _LAYOUT
+
+  # @@protoc_insertion_point(class_scope:rec.gui.Layout)
+
+class Layouts(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _LAYOUTS
+
+  # @@protoc_insertion_point(class_scope:rec.gui.Layouts)
 
 
 # @@protoc_insertion_point(module_scope)

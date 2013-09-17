@@ -70,6 +70,14 @@ ThreadProtos ProgramBase::threads() const {
   return BINARY_PROTO(Threads, ThreadProtos);
 }
 
+gui::Layouts ProgramBase::layouts() const {
+  return BINARY_PROTO(Layout, gui::Layouts);
+}
+
+gui::ComponentProtos ProgramBase::components() const {
+  return BINARY_PROTO(Components, gui::ComponentProtos);
+}
+
 }  // namespace program
 }  // namespace rec
 

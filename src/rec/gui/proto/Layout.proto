@@ -1,0 +1,38 @@
+package rec.gui;
+
+import "rec/gui/proto/Resizer.proto";
+
+message LayoutEntry {
+  optional string name = 1;
+
+  optional double preferred = 2;
+  optional double min = 3;
+  optional double max = 4;
+
+  optional ResizerProto resizer = 5;
+};
+
+message Layout {
+  optional string name = 1;
+  repeated LayoutEntry entry = 2;
+
+  enum Orientation {
+    HORIZONTAL = 0;
+    VERTICAL = 1;
+  };
+
+  optional Orientation orientation = 3;
+  optional bool resize_other_dimension = 4 [default = true];
+
+  // The "main" window has, on Windows only, a thin black line above all the
+  // content.
+  optional bool is_main = 5;
+
+  // If there is padding, the right-most component is NOT stretched to fit the
+  // full size of the layout.
+  optional bool padding = 6;
+};
+
+message Layouts {
+  repeated Layout layout = 1;
+};
