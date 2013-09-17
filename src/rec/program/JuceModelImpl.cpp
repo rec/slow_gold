@@ -58,6 +58,8 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
       commandMap_(makeCommandMap(*p)),
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)),
+      layoutMap_(makeLayoutMap(*p)),
+      componentMap_(makeComponentMap(*p)),
       threadMap_(makeThreadMap(*p)),
       recentFiles_(program_->recentFilesStrategy().getRecentFileCommand()),
       recentFilesEnd_(recentFiles_ + command::Command::BANK_SIZE) {

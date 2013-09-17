@@ -125,5 +125,21 @@ ThreadMap makeThreadMap(const Program& program) {
   return threadMap;
 }
 
+LayoutMap makeLayoutMap(const Program& program) {
+  LayoutMap layoutMap;
+  auto layouts = program.layouts();
+  for (auto& layout: layouts.layout())
+    layoutMap[layout.name()] = layout;
+  return layoutMap;
+}
+
+ComponentMap makeComponentMap(const Program& program) {
+  ComponentMap componentMap;
+  auto components = program.components();
+  for (auto& component: components.component())
+    componentMap[component.name()] = component;
+  return componentMap;
+}
+
 }  // namespace program
 }  // namespace rec
