@@ -9,8 +9,14 @@ namespace BinaryData
     extern const char*   Commands_def;
     const int            Commands_defSize = 29088;
 
+    extern const char*   Components_def;
+    const int            Components_defSize = 0;
+
     extern const char*   KeyStrokeMap_def;
     const int            KeyStrokeMap_defSize = 6171;
+
+    extern const char*   Layout_def;
+    const int            Layout_defSize = 0;
 
     extern const char*   MenuCollection_def;
     const int            MenuCollection_defSize = 373;

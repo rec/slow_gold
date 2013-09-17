@@ -17,7 +17,8 @@ class Layout : public Component,
 
   Layout(const String& name = String::empty,
          Orientation o = HORIZONTAL,
-         bool resizeOther = true);
+         bool resizeOther = true,
+         bool isMain = false);
 
   void setOrientation(Orientation o) { orientation_ = o; }
   Orientation orientation() const { return orientation_; }
@@ -33,13 +34,23 @@ class Layout : public Component,
   virtual void layout();
   void clear(bool free = false);
 
+  #if JUCE_WINDOWS
+  virtual void paintOverChildren(Graphics& g) {
+    if (isMain_) {
+      g.setColour(juce::Colours::black);
+      g.drawLine(0.0f, 0.0f, static_cast<float>(getWidth()), 0);
+    }
+  }
+#endif
+
  protected:
   StretchableLayoutManager layoutManager_;
-  vector<Component*> components_;
+  vector <Component*> components_;
   Orientation orientation_;
   const bool resizeOtherDimension_;
   SizeAccumulator sizeHints_[LAST];
   juce::CachedComponentImage *cache_;
+  bool const isMain_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Layout);

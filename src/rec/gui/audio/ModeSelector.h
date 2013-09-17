@@ -3,7 +3,7 @@
 
 #include <map>
 
-#include "rec/gui/layout/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/gui/HasSizeHints.h"
 #include "rec/gui/LanguageButton.h"
 #include "rec/data/DataListener.h"

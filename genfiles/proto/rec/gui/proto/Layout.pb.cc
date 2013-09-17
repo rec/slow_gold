@@ -36,10 +36,11 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
       "rec/gui/proto/Layout.proto");
   GOOGLE_CHECK(file != NULL);
   LayoutProto_descriptor_ = file->message_type(0);
-  static const int LayoutProto_offsets_[3] = {
+  static const int LayoutProto_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutProto, orientation_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutProto, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutProto, resize_other_dimension_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutProto, is_main_),
   };
   LayoutProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -83,12 +84,12 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\"\251\001"
+    "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\"\272\001"
     "\n\013LayoutProto\0227\n\013orientation\030\001 \001(\0162\".rec"
     ".gui.LayoutProto.Orientatation\022\014\n\004name\030\002"
     " \001(\t\022$\n\026resize_other_dimension\030\003 \001(\010:\004tr"
-    "ue\"-\n\rOrientatation\022\016\n\nHORIZONTAL\020\000\022\014\n\010V"
-    "ERTICAL\020\001", 209);
+    "ue\022\017\n\007is_main\030\004 \001(\010\"-\n\rOrientatation\022\016\n\n"
+    "HORIZONTAL\020\000\022\014\n\010VERTICAL\020\001", 226);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Layout.proto", &protobuf_RegisterTypes);
   LayoutProto::default_instance_ = new LayoutProto();
@@ -130,6 +131,7 @@ const int LayoutProto::Orientatation_ARRAYSIZE;
 const int LayoutProto::kOrientationFieldNumber;
 const int LayoutProto::kNameFieldNumber;
 const int LayoutProto::kResizeOtherDimensionFieldNumber;
+const int LayoutProto::kIsMainFieldNumber;
 #endif  // !_MSC_VER
 
 LayoutProto::LayoutProto()
@@ -151,6 +153,7 @@ void LayoutProto::SharedCtor() {
   orientation_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   resize_other_dimension_ = true;
+  is_main_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -196,6 +199,7 @@ void LayoutProto::Clear() {
       }
     }
     resize_other_dimension_ = true;
+    is_main_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -256,6 +260,22 @@ bool LayoutProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(32)) goto parse_is_main;
+        break;
+      }
+
+      // optional bool is_main = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_is_main:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_main_)));
+          set_has_is_main();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -298,6 +318,11 @@ void LayoutProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->resize_other_dimension(), output);
   }
 
+  // optional bool is_main = 4;
+  if (has_is_main()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->is_main(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -327,6 +352,11 @@ void LayoutProto::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->resize_other_dimension(), target);
   }
 
+  // optional bool is_main = 4;
+  if (has_is_main()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->is_main(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -353,6 +383,11 @@ int LayoutProto::ByteSize() const {
 
     // optional bool resize_other_dimension = 3 [default = true];
     if (has_resize_other_dimension()) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool is_main = 4;
+    if (has_is_main()) {
       total_size += 1 + 1;
     }
 
@@ -392,6 +427,9 @@ void LayoutProto::MergeFrom(const LayoutProto& from) {
     if (from.has_resize_other_dimension()) {
       set_resize_other_dimension(from.resize_other_dimension());
     }
+    if (from.has_is_main()) {
+      set_is_main(from.is_main());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -418,6 +456,7 @@ void LayoutProto::Swap(LayoutProto* other) {
     std::swap(orientation_, other->orientation_);
     std::swap(name_, other->name_);
     std::swap(resize_other_dimension_, other->resize_other_dimension_);
+    std::swap(is_main_, other->is_main_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

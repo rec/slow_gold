@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_SETTERTEXTAREA__
 #define __REC_GUI_SETTERTEXTAREA__
 
-#include "rec/gui/layout/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/gui/SetterText.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/STL.h"

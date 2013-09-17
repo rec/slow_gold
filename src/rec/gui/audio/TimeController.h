@@ -2,7 +2,7 @@
 #define __REC_GUI_APP_TIMECONTROLLER__
 
 #include "rec/base/SampleTime.h"
-#include "rec/gui/layout/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/util/HasThread.h"
 #include "rec/widget/status/DialComponent.h"
 #include "rec/widget/status/TextComponent.h"

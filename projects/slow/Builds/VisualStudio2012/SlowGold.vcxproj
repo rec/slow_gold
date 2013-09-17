@@ -227,7 +227,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\GuiWriteable.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\IconButton.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\LanguageButton.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\gui\layout\Layout.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\menu\RecentFiles.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
@@ -236,6 +235,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Component.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\ToggleButton.cpp"/>
@@ -1610,7 +1610,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\HasSizeHints.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\IconButton.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\LanguageButton.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\LookAndFeel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\menu\RecentFiles.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
@@ -1619,6 +1618,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Component.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ToggleButton.h"/>
@@ -2266,7 +2266,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\src\rec\slow\commands\Commands.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\Components.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def"/>
+    <None Include="..\..\..\..\src\rec\slow\commands\Layout.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\MenuCollection.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\Menus.def"/>
     <None Include="..\..\..\..\src\rec\slow\commands\Threads.def"/>

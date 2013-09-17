@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Layout.proto',
   package='rec.gui',
-  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\"\xa9\x01\n\x0bLayoutProto\x12\x37\n\x0borientation\x18\x01 \x01(\x0e\x32\".rec.gui.LayoutProto.Orientatation\x12\x0c\n\x04name\x18\x02 \x01(\t\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\"-\n\rOrientatation\x12\x0e\n\nHORIZONTAL\x10\x00\x12\x0c\n\x08VERTICAL\x10\x01')
+  serialized_pb='\n\x1arec/gui/proto/Layout.proto\x12\x07rec.gui\"\xba\x01\n\x0bLayoutProto\x12\x37\n\x0borientation\x18\x01 \x01(\x0e\x32\".rec.gui.LayoutProto.Orientatation\x12\x0c\n\x04name\x18\x02 \x01(\t\x12$\n\x16resize_other_dimension\x18\x03 \x01(\x08:\x04true\x12\x0f\n\x07is_main\x18\x04 \x01(\x08\"-\n\rOrientatation\x12\x0e\n\nHORIZONTAL\x10\x00\x12\x0c\n\x08VERTICAL\x10\x01')
 
 
 
@@ -34,8 +34,8 @@ _LAYOUTPROTO_ORIENTATATION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=164,
-  serialized_end=209,
+  serialized_start=181,
+  serialized_end=226,
 )
 
 
@@ -67,6 +67,13 @@ _LAYOUTPROTO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='is_main', full_name='rec.gui.LayoutProto.is_main', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -78,7 +85,7 @@ _LAYOUTPROTO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=40,
-  serialized_end=209,
+  serialized_end=226,
 )
 
 _LAYOUTPROTO.fields_by_name['orientation'].enum_type = _LAYOUTPROTO_ORIENTATATION

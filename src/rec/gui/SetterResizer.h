@@ -5,7 +5,7 @@
 #include "rec/data/Address.h"
 #include "rec/data/AddressListener.h"
 #include "rec/gui/GuiWriteable.h"
-#include "rec/gui/layout/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {

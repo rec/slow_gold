@@ -2,7 +2,7 @@
 #define __REC_GUI_AUDIO_COMMANDBAR__
 
 #include "rec/gui/LanguageButton.h"
-#include "rec/gui/layout/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/data/DataListener.h"
 
 namespace rec {

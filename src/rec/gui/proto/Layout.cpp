@@ -8,9 +8,8 @@ namespace gui {
 unique_ptr<Layout> makeLayout(const LayoutProto& proto) {
   Orientation o = (proto.orientation() == LayoutProto::HORIZONTAL) ?
     HORIZONTAL : VERTICAL;
-  unique_ptr<Layout> layout(new Layout(proto.name(), o,
-                                       proto.resize_other_dimension()));
-  return std::move(layout);
+  return make_unique<Layout>(
+      proto.name(), o, proto.resize_other_dimension(), proto.is_main());
 }
 
 }  // namespace gui

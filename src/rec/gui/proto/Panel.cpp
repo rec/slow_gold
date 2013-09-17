@@ -1,4 +1,4 @@
-#include "rec/gui/layout/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/util/STL.h"
 
 namespace rec {
@@ -6,12 +6,14 @@ namespace gui {
 
 Layout::Layout(const String& name,
                Orientation o,
-               bool resizeOther)
+               bool resizeOther,
+               bool isMain)
     : Component(name),
       SizeHintAccumulator(o),
       orientation_(o),
       resizeOtherDimension_(resizeOther),
-      cache_(nullptr) {
+      cache_(nullptr),
+      isMain_(isMain) {
 }
 
 void Layout::addToLayout(Component* c) {

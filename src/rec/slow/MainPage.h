@@ -4,7 +4,7 @@
 #include <set>
 
 #include "rec/app/LanguageListener.h"
-#include "rec/gui/layout/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/gui/SetterResizer.h"

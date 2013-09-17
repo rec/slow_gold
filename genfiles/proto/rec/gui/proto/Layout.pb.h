@@ -162,6 +162,13 @@ class LayoutProto : public ::google::protobuf::Message {
   inline bool resize_other_dimension() const;
   inline void set_resize_other_dimension(bool value);
 
+  // optional bool is_main = 4;
+  inline bool has_is_main() const;
+  inline void clear_is_main();
+  static const int kIsMainFieldNumber = 4;
+  inline bool is_main() const;
+  inline void set_is_main(bool value);
+
   // @@protoc_insertion_point(class_scope:rec.gui.LayoutProto)
  private:
   inline void set_has_orientation();
@@ -170,15 +177,18 @@ class LayoutProto : public ::google::protobuf::Message {
   inline void clear_has_name();
   inline void set_has_resize_other_dimension();
   inline void clear_has_resize_other_dimension();
+  inline void set_has_is_main();
+  inline void clear_has_is_main();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* name_;
   int orientation_;
   bool resize_other_dimension_;
+  bool is_main_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
@@ -307,6 +317,28 @@ inline bool LayoutProto::resize_other_dimension() const {
 inline void LayoutProto::set_resize_other_dimension(bool value) {
   set_has_resize_other_dimension();
   resize_other_dimension_ = value;
+}
+
+// optional bool is_main = 4;
+inline bool LayoutProto::has_is_main() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void LayoutProto::set_has_is_main() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void LayoutProto::clear_has_is_main() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void LayoutProto::clear_is_main() {
+  is_main_ = false;
+  clear_has_is_main();
+}
+inline bool LayoutProto::is_main() const {
+  return is_main_;
+}
+inline void LayoutProto::set_is_main(bool value) {
+  set_has_is_main();
+  is_main_ = value;
 }
 
 

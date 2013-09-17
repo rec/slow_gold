@@ -9,7 +9,7 @@
 #include "rec/gui/DataSlider.h"
 #include "rec/gui/DetentSlider.h"
 #include "rec/gui/SimpleLabel.h"
-#include "rec/gui/layout/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {

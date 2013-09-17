@@ -59,9 +59,6 @@
     <Filter Include="SlowGold\src\gui\audio">
       <UniqueIdentifier>{4DCE8608-4042-A436-1E90-40C3345283D9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SlowGold\src\gui\layout">
-      <UniqueIdentifier>{1A277787-3E92-EE94-1309-2C0928BBE302}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SlowGold\src\gui\menu">
       <UniqueIdentifier>{D8BAC248-3D41-6B8E-37AE-DE4913C48583}</UniqueIdentifier>
     </Filter>
@@ -772,9 +769,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\LanguageButton.cpp">
       <Filter>SlowGold\src\gui</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\layout\Layout.cpp">
-      <Filter>SlowGold\src\gui\layout</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\LookAndFeel.cpp">
       <Filter>SlowGold\src\gui</Filter>
     </ClCompile>
@@ -797,6 +791,9 @@
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp">
@@ -2850,9 +2847,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\LanguageButton.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h">
-      <Filter>SlowGold\src\gui\layout</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\LookAndFeel.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
@@ -2875,6 +2869,9 @@
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h">
@@ -4814,7 +4811,13 @@
     <None Include="..\..\..\..\src\rec\slow\commands\Commands.def">
       <Filter>SlowGold\src\slow\commands</Filter>
     </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\Components.def">
+      <Filter>SlowGold\src\slow\commands</Filter>
+    </None>
     <None Include="..\..\..\..\src\rec\slow\commands\KeyStrokeMap.def">
+      <Filter>SlowGold\src\slow\commands</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\slow\commands\Layout.def">
       <Filter>SlowGold\src\slow\commands</Filter>
     </None>
     <None Include="..\..\..\..\src\rec\slow\commands\MenuCollection.def">
