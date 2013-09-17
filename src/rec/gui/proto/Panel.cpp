@@ -61,5 +61,12 @@ void Panel::clear(bool free) {
   }
 }
 
+unique_ptr<Panel> makeLayout(const PanelProto& proto) {
+  Orientation o = (proto.orientation() == PanelProto::HORIZONTAL) ?
+    HORIZONTAL : VERTICAL;
+  return make_unique<Panel>(
+      proto.name(), o, proto.resize_other_dimension(), proto.is_main());
+}
+
 }  // namespace gui
 }  // namespace rec

@@ -234,7 +234,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\ComboBox.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Component.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp"/>
-    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Slider.cpp"/>
@@ -353,7 +352,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.cc"/>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.cc"/>
@@ -1617,7 +1616,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ComboBox.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Component.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h"/>
-    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Slider.h"/>
@@ -1799,7 +1797,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.h"/>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Slider.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ToggleButton.pb.h"/>

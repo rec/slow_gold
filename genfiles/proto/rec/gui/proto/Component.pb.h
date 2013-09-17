@@ -27,7 +27,7 @@
 #include "rec/gui/proto/Button.pb.h"
 #include "rec/gui/proto/ComboBox.pb.h"
 #include "rec/gui/proto/Label.pb.h"
-#include "rec/gui/proto/Layout.pb.h"
+#include "rec/gui/proto/Panel.pb.h"
 #include "rec/gui/proto/Resizer.pb.h"
 #include "rec/gui/proto/Slider.pb.h"
 #include "rec/gui/proto/ToggleButton.pb.h"
@@ -139,14 +139,14 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::rec::gui::LabelProto* release_label();
   inline void set_allocated_label(::rec::gui::LabelProto* label);
 
-  // optional .rec.gui.LayoutProto layout = 5;
-  inline bool has_layout() const;
-  inline void clear_layout();
-  static const int kLayoutFieldNumber = 5;
-  inline const ::rec::gui::LayoutProto& layout() const;
-  inline ::rec::gui::LayoutProto* mutable_layout();
-  inline ::rec::gui::LayoutProto* release_layout();
-  inline void set_allocated_layout(::rec::gui::LayoutProto* layout);
+  // optional .rec.gui.PanelProto panel = 5;
+  inline bool has_panel() const;
+  inline void clear_panel();
+  static const int kPanelFieldNumber = 5;
+  inline const ::rec::gui::PanelProto& panel() const;
+  inline ::rec::gui::PanelProto* mutable_panel();
+  inline ::rec::gui::PanelProto* release_panel();
+  inline void set_allocated_panel(::rec::gui::PanelProto* panel);
 
   // optional .rec.gui.ResizerProto resizer = 6;
   inline bool has_resizer() const;
@@ -185,8 +185,8 @@ class ComponentProto : public ::google::protobuf::Message {
   inline void clear_has_combo_box();
   inline void set_has_label();
   inline void clear_has_label();
-  inline void set_has_layout();
-  inline void clear_has_layout();
+  inline void set_has_panel();
+  inline void clear_has_panel();
   inline void set_has_resizer();
   inline void clear_has_resizer();
   inline void set_has_slider();
@@ -200,7 +200,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::ButtonProto* button_;
   ::rec::gui::ComboBoxProto* combo_box_;
   ::rec::gui::LabelProto* label_;
-  ::rec::gui::LayoutProto* layout_;
+  ::rec::gui::PanelProto* panel_;
   ::rec::gui::ResizerProto* resizer_;
   ::rec::gui::SliderProto* slider_;
   ::rec::gui::ToggleButtonProto* toggle_button_;
@@ -491,41 +491,41 @@ inline void ComponentProto::set_allocated_label(::rec::gui::LabelProto* label) {
   }
 }
 
-// optional .rec.gui.LayoutProto layout = 5;
-inline bool ComponentProto::has_layout() const {
+// optional .rec.gui.PanelProto panel = 5;
+inline bool ComponentProto::has_panel() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void ComponentProto::set_has_layout() {
+inline void ComponentProto::set_has_panel() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void ComponentProto::clear_has_layout() {
+inline void ComponentProto::clear_has_panel() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void ComponentProto::clear_layout() {
-  if (layout_ != NULL) layout_->::rec::gui::LayoutProto::Clear();
-  clear_has_layout();
+inline void ComponentProto::clear_panel() {
+  if (panel_ != NULL) panel_->::rec::gui::PanelProto::Clear();
+  clear_has_panel();
 }
-inline const ::rec::gui::LayoutProto& ComponentProto::layout() const {
-  return layout_ != NULL ? *layout_ : *default_instance_->layout_;
+inline const ::rec::gui::PanelProto& ComponentProto::panel() const {
+  return panel_ != NULL ? *panel_ : *default_instance_->panel_;
 }
-inline ::rec::gui::LayoutProto* ComponentProto::mutable_layout() {
-  set_has_layout();
-  if (layout_ == NULL) layout_ = new ::rec::gui::LayoutProto;
-  return layout_;
+inline ::rec::gui::PanelProto* ComponentProto::mutable_panel() {
+  set_has_panel();
+  if (panel_ == NULL) panel_ = new ::rec::gui::PanelProto;
+  return panel_;
 }
-inline ::rec::gui::LayoutProto* ComponentProto::release_layout() {
-  clear_has_layout();
-  ::rec::gui::LayoutProto* temp = layout_;
-  layout_ = NULL;
+inline ::rec::gui::PanelProto* ComponentProto::release_panel() {
+  clear_has_panel();
+  ::rec::gui::PanelProto* temp = panel_;
+  panel_ = NULL;
   return temp;
 }
-inline void ComponentProto::set_allocated_layout(::rec::gui::LayoutProto* layout) {
-  delete layout_;
-  layout_ = layout;
-  if (layout) {
-    set_has_layout();
+inline void ComponentProto::set_allocated_panel(::rec::gui::PanelProto* panel) {
+  delete panel_;
+  panel_ = panel;
+  if (panel) {
+    set_has_panel();
   } else {
-    clear_has_layout();
+    clear_has_panel();
   }
 }
 

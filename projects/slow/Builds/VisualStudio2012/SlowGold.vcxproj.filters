@@ -790,9 +790,6 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Layout.cpp">
-      <Filter>SlowGold\src\gui\proto</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
@@ -1147,7 +1144,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.cc">
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.cc">
@@ -2868,9 +2865,6 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Layout.h">
-      <Filter>SlowGold\src\gui\proto</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
@@ -3414,7 +3408,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.h">
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Panel.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Resizer.pb.h">

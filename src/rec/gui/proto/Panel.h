@@ -3,6 +3,7 @@
 
 #include "rec/gui/Geometry.h"
 #include "rec/gui/SizeHintAccumulator.h"
+#include "rec/gui/proto/Panel.pb.h"
 
 namespace rec {
 namespace gui {
@@ -55,6 +56,8 @@ class Panel : public Component,
  private:
   DISALLOW_COPY_ASSIGN_AND_LEAKS(Panel);
 };
+
+unique_ptr<Panel> makePanel(const PanelProto&);
 
 }  // namespace gui
 }  // namespace rec

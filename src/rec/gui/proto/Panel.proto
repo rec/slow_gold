@@ -1,6 +1,6 @@
 package rec.gui;
 
-message LayoutProto {
+message PanelProto {
   enum Orientatation {
     HORIZONTAL = 0;
     VERTICAL = 1;

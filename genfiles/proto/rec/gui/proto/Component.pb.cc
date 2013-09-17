@@ -43,7 +43,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, button_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, combo_box_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, label_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, layout_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, panel_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, resizer_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, slider_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, toggle_button_),
@@ -110,7 +110,7 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fButton_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fComboBox_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fLabel_2eproto();
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fPanel_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fResizer_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto();
@@ -118,19 +118,19 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
     "\n\035rec/gui/proto/Component.proto\022\007rec.gui"
     "\032\032rec/gui/proto/Button.proto\032\034rec/gui/pr"
     "oto/ComboBox.proto\032\031rec/gui/proto/Label."
-    "proto\032\032rec/gui/proto/Layout.proto\032\033rec/g"
-    "ui/proto/Resizer.proto\032\032rec/gui/proto/Sl"
-    "ider.proto\032 rec/gui/proto/ToggleButton.p"
-    "roto\"\272\002\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022$\n"
-    "\006button\030\002 \001(\0132\024.rec.gui.ButtonProto\022)\n\tc"
-    "ombo_box\030\003 \001(\0132\026.rec.gui.ComboBoxProto\022\""
-    "\n\005label\030\004 \001(\0132\023.rec.gui.LabelProto\022$\n\006la"
-    "yout\030\005 \001(\0132\024.rec.gui.LayoutProto\022&\n\007resi"
-    "zer\030\006 \001(\0132\025.rec.gui.ResizerProto\022$\n\006slid"
-    "er\030\007 \001(\0132\024.rec.gui.SliderProto\0221\n\rtoggle"
-    "_button\030\010 \001(\0132\032.rec.gui.ToggleButtonProt"
-    "o\"=\n\017ComponentProtos\022*\n\tcomponent\030\001 \003(\0132"
-    "\027.rec.gui.ComponentProto", 624);
+    "proto\032\031rec/gui/proto/Panel.proto\032\033rec/gu"
+    "i/proto/Resizer.proto\032\032rec/gui/proto/Sli"
+    "der.proto\032 rec/gui/proto/ToggleButton.pr"
+    "oto\"\270\002\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022$\n\006"
+    "button\030\002 \001(\0132\024.rec.gui.ButtonProto\022)\n\tco"
+    "mbo_box\030\003 \001(\0132\026.rec.gui.ComboBoxProto\022\"\n"
+    "\005label\030\004 \001(\0132\023.rec.gui.LabelProto\022\"\n\005pan"
+    "el\030\005 \001(\0132\023.rec.gui.PanelProto\022&\n\007resizer"
+    "\030\006 \001(\0132\025.rec.gui.ResizerProto\022$\n\006slider\030"
+    "\007 \001(\0132\024.rec.gui.SliderProto\0221\n\rtoggle_bu"
+    "tton\030\010 \001(\0132\032.rec.gui.ToggleButtonProto\"="
+    "\n\017ComponentProtos\022*\n\tcomponent\030\001 \003(\0132\027.r"
+    "ec.gui.ComponentProto", 621);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::default_instance_ = new ComponentProto();
@@ -154,7 +154,7 @@ const int ComponentProto::kNameFieldNumber;
 const int ComponentProto::kButtonFieldNumber;
 const int ComponentProto::kComboBoxFieldNumber;
 const int ComponentProto::kLabelFieldNumber;
-const int ComponentProto::kLayoutFieldNumber;
+const int ComponentProto::kPanelFieldNumber;
 const int ComponentProto::kResizerFieldNumber;
 const int ComponentProto::kSliderFieldNumber;
 const int ComponentProto::kToggleButtonFieldNumber;
@@ -169,7 +169,7 @@ void ComponentProto::InitAsDefaultInstance() {
   button_ = const_cast< ::rec::gui::ButtonProto*>(&::rec::gui::ButtonProto::default_instance());
   combo_box_ = const_cast< ::rec::gui::ComboBoxProto*>(&::rec::gui::ComboBoxProto::default_instance());
   label_ = const_cast< ::rec::gui::LabelProto*>(&::rec::gui::LabelProto::default_instance());
-  layout_ = const_cast< ::rec::gui::LayoutProto*>(&::rec::gui::LayoutProto::default_instance());
+  panel_ = const_cast< ::rec::gui::PanelProto*>(&::rec::gui::PanelProto::default_instance());
   resizer_ = const_cast< ::rec::gui::ResizerProto*>(&::rec::gui::ResizerProto::default_instance());
   slider_ = const_cast< ::rec::gui::SliderProto*>(&::rec::gui::SliderProto::default_instance());
   toggle_button_ = const_cast< ::rec::gui::ToggleButtonProto*>(&::rec::gui::ToggleButtonProto::default_instance());
@@ -187,7 +187,7 @@ void ComponentProto::SharedCtor() {
   button_ = NULL;
   combo_box_ = NULL;
   label_ = NULL;
-  layout_ = NULL;
+  panel_ = NULL;
   resizer_ = NULL;
   slider_ = NULL;
   toggle_button_ = NULL;
@@ -206,7 +206,7 @@ void ComponentProto::SharedDtor() {
     delete button_;
     delete combo_box_;
     delete label_;
-    delete layout_;
+    delete panel_;
     delete resizer_;
     delete slider_;
     delete toggle_button_;
@@ -250,8 +250,8 @@ void ComponentProto::Clear() {
     if (has_label()) {
       if (label_ != NULL) label_->::rec::gui::LabelProto::Clear();
     }
-    if (has_layout()) {
-      if (layout_ != NULL) layout_->::rec::gui::LayoutProto::Clear();
+    if (has_panel()) {
+      if (panel_ != NULL) panel_->::rec::gui::PanelProto::Clear();
     }
     if (has_resizer()) {
       if (resizer_ != NULL) resizer_->::rec::gui::ResizerProto::Clear();
@@ -327,17 +327,17 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_layout;
+        if (input->ExpectTag(42)) goto parse_panel;
         break;
       }
 
-      // optional .rec.gui.LayoutProto layout = 5;
+      // optional .rec.gui.PanelProto panel = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_layout:
+         parse_panel:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_layout()));
+               input, mutable_panel()));
         } else {
           goto handle_uninterpreted;
         }
@@ -432,10 +432,10 @@ void ComponentProto::SerializeWithCachedSizes(
       4, this->label(), output);
   }
 
-  // optional .rec.gui.LayoutProto layout = 5;
-  if (has_layout()) {
+  // optional .rec.gui.PanelProto panel = 5;
+  if (has_panel()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->layout(), output);
+      5, this->panel(), output);
   }
 
   // optional .rec.gui.ResizerProto resizer = 6;
@@ -495,11 +495,11 @@ void ComponentProto::SerializeWithCachedSizes(
         4, this->label(), target);
   }
 
-  // optional .rec.gui.LayoutProto layout = 5;
-  if (has_layout()) {
+  // optional .rec.gui.PanelProto panel = 5;
+  if (has_panel()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->layout(), target);
+        5, this->panel(), target);
   }
 
   // optional .rec.gui.ResizerProto resizer = 6;
@@ -562,11 +562,11 @@ int ComponentProto::ByteSize() const {
           this->label());
     }
 
-    // optional .rec.gui.LayoutProto layout = 5;
-    if (has_layout()) {
+    // optional .rec.gui.PanelProto panel = 5;
+    if (has_panel()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->layout());
+          this->panel());
     }
 
     // optional .rec.gui.ResizerProto resizer = 6;
@@ -629,8 +629,8 @@ void ComponentProto::MergeFrom(const ComponentProto& from) {
     if (from.has_label()) {
       mutable_label()->::rec::gui::LabelProto::MergeFrom(from.label());
     }
-    if (from.has_layout()) {
-      mutable_layout()->::rec::gui::LayoutProto::MergeFrom(from.layout());
+    if (from.has_panel()) {
+      mutable_panel()->::rec::gui::PanelProto::MergeFrom(from.panel());
     }
     if (from.has_resizer()) {
       mutable_resizer()->::rec::gui::ResizerProto::MergeFrom(from.resizer());
@@ -668,7 +668,7 @@ void ComponentProto::Swap(ComponentProto* other) {
     std::swap(button_, other->button_);
     std::swap(combo_box_, other->combo_box_);
     std::swap(label_, other->label_);
-    std::swap(layout_, other->layout_);
+    std::swap(panel_, other->panel_);
     std::swap(resizer_, other->resizer_);
     std::swap(slider_, other->slider_);
     std::swap(toggle_button_, other->toggle_button_);

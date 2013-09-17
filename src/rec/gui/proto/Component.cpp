@@ -3,7 +3,7 @@
 #include "rec/gui/proto/Button.h"
 #include "rec/gui/proto/ComboBox.h"
 #include "rec/gui/proto/Label.h"
-#include "rec/gui/proto/Layout.h"
+#include "rec/gui/proto/Panel.h"
 #include "rec/gui/proto/Resizer.h"
 #include "rec/gui/proto/Slider.h"
 #include "rec/gui/proto/ToggleButton.h"
@@ -23,8 +23,8 @@ Component* make(const ComponentProto& c) {
   if (c.has_label())
     return makeLabel(c.label()).release();
 
-  if (c.has_layout())
-    return makePanel(c.layout()).release();
+  if (c.has_panel())
+    return makePanel(c.panel()).release();
 
   if (c.has_resizer())
     return makeResizer(c.resizer()).release();
