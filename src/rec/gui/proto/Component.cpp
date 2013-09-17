@@ -1,5 +1,6 @@
 #include "rec/gui/proto/Component.h"
 
+#include "rec/gui/proto/Button.h"
 #include "rec/gui/proto/ComboBox.h"
 #include "rec/gui/proto/Label.h"
 #include "rec/gui/proto/Layout.h"
@@ -13,6 +14,9 @@ namespace gui {
 namespace {
 
 Component* make(const ComponentProto& c) {
+  if (c.has_button())
+    return makeButton(c.button()).release();
+
   if (c.has_combo_box())
     return makeComboBox(c.combo_box()).release();
 

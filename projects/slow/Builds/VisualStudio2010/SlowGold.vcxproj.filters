@@ -784,6 +784,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp">
       <Filter>SlowGold\src\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Button.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\ComboBox.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
@@ -1131,6 +1134,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Button.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ComboBox.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
@@ -2856,6 +2862,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h">
       <Filter>SlowGold\src\gui</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Button.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ComboBox.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
@@ -3392,6 +3401,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\menu\RecentFiles.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Button.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ComboBox.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>

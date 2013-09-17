@@ -21,6 +21,13 @@ Proto binaryProto(const string& s) {
   return p;
 }
 
+template <typename Type>
+Type* constructName(const string& name) {
+  int dataSizeInBytes;
+  const char* resource = BinaryData::getNamedResource(name.c_str(), dataSizeInBytes);
+  return construct<Type>(string(resource, dataSizeInBytes));
+}
+
 #define BINARY_STRING(NAME) \
   string(BinaryData::NAME, BinaryData::NAME ## Size)
 
