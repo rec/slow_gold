@@ -8,7 +8,7 @@
 namespace rec {
 namespace util {
 
-string getBinaryString(const string&);
+string getNamedResource(const string&);
 void binaryProtoMerged(const string&, Message*);
 
 template <typename Type>
@@ -33,7 +33,7 @@ Proto binaryProtoMerged(const string& s) {
 
 template <typename Type>
 Type* constructName(const string& name) {
-  return construct<Type>(getBinaryString(name));
+  return construct<Type>(getNamedResource(name));
 }
 
 #define BINARY_STRING(NAME) \
