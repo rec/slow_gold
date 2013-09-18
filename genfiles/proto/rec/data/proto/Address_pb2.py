@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/data/proto/Address.proto',
   package='rec.data',
-  serialized_pb='\n\x1crec/data/proto/Address.proto\x12\x08rec.data\"\xb6\x01\n\x0c\x41\x64\x64ressProto\x12)\n\x04part\x18\x01 \x03(\x0b\x32\x1b.rec.data.AddressProto.Part\x12+\n\x05scope\x18\x02 \x01(\x0e\x32\x1c.rec.data.AddressProto.Scope\x1a#\n\x04Part\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\")\n\x05Scope\x12\x0e\n\nFILE_SCOPE\x10\x00\x12\x10\n\x0cGLOBAL_SCOPE\x10\x01\"I\n\x0b\x44\x61taAddress\x12\x11\n\ttype_name\x18\x01 \x01(\t\x12\'\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x16.rec.data.AddressProto')
+  serialized_pb='\n\x1crec/data/proto/Address.proto\x12\x08rec.data\"\xc9\x01\n\x0c\x41\x64\x64ressProto\x12)\n\x04part\x18\x01 \x03(\x0b\x32\x1b.rec.data.AddressProto.Part\x12+\n\x05scope\x18\x02 \x01(\x0e\x32\x1c.rec.data.AddressProto.Scope\x12\x11\n\ttype_name\x18\x03 \x01(\t\x1a#\n\x04Part\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\")\n\x05Scope\x12\x0e\n\nFILE_SCOPE\x10\x00\x12\x10\n\x0cGLOBAL_SCOPE\x10\x01\"I\n\x0b\x44\x61taAddress\x12\x11\n\ttype_name\x18\x01 \x01(\t\x12\'\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x16.rec.data.AddressProto')
 
 
 
@@ -34,8 +34,8 @@ _ADDRESSPROTO_SCOPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=184,
-  serialized_end=225,
+  serialized_start=203,
+  serialized_end=244,
 )
 
 
@@ -69,8 +69,8 @@ _ADDRESSPROTO_PART = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=147,
-  serialized_end=182,
+  serialized_start=166,
+  serialized_end=201,
 )
 
 _ADDRESSPROTO = _descriptor.Descriptor(
@@ -94,6 +94,13 @@ _ADDRESSPROTO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='type_name', full_name='rec.data.AddressProto.type_name', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -105,7 +112,7 @@ _ADDRESSPROTO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=43,
-  serialized_end=225,
+  serialized_end=244,
 )
 
 
@@ -139,8 +146,8 @@ _DATAADDRESS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=227,
-  serialized_end=300,
+  serialized_start=246,
+  serialized_end=319,
 )
 
 _ADDRESSPROTO_PART.containing_type = _ADDRESSPROTO;

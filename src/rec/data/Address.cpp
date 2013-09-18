@@ -34,6 +34,11 @@ const string Address::toString() const {
   return s;
 }
 
+const Address Address::addTypeName(const string& name) const {
+  Address result = *this;
+  result.set_type_name(name);
+  return result;
+}
 
 }  // namespace data
 }  // namespace rec

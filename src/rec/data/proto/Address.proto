@@ -13,6 +13,7 @@ message AddressProto {
 
   repeated Part part = 1;
   optional Scope scope = 2;
+  optional string type_name = 3;
 };
 
 message DataAddress {

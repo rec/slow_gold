@@ -35,6 +35,7 @@ class Address : public AddressProto {
   Address(const char* s) { p(s); }
   Address(int i) { p(i); }
 
+  const Address addTypeName(const string&) const;
   const string toString() const;
 };
 

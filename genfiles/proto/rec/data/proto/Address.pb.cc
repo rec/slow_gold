@@ -42,9 +42,10 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
       "rec/data/proto/Address.proto");
   GOOGLE_CHECK(file != NULL);
   AddressProto_descriptor_ = file->message_type(0);
-  static const int AddressProto_offsets_[2] = {
+  static const int AddressProto_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AddressProto, part_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AddressProto, scope_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AddressProto, type_name_),
   };
   AddressProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -129,13 +130,13 @@ void protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/data/proto/Address.proto\022\010rec.data"
-    "\"\266\001\n\014AddressProto\022)\n\004part\030\001 \003(\0132\033.rec.da"
+    "\"\311\001\n\014AddressProto\022)\n\004part\030\001 \003(\0132\033.rec.da"
     "ta.AddressProto.Part\022+\n\005scope\030\002 \001(\0162\034.re"
-    "c.data.AddressProto.Scope\032#\n\004Part\022\r\n\005ind"
-    "ex\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\")\n\005Scope\022\016\n\nFILE_"
-    "SCOPE\020\000\022\020\n\014GLOBAL_SCOPE\020\001\"I\n\013DataAddress"
-    "\022\021\n\ttype_name\030\001 \001(\t\022\'\n\007address\030\002 \001(\0132\026.r"
-    "ec.data.AddressProto", 300);
+    "c.data.AddressProto.Scope\022\021\n\ttype_name\030\003"
+    " \001(\t\032#\n\004Part\022\r\n\005index\030\001 \001(\r\022\014\n\004name\030\002 \001("
+    "\t\")\n\005Scope\022\016\n\nFILE_SCOPE\020\000\022\020\n\014GLOBAL_SCO"
+    "PE\020\001\"I\n\013DataAddress\022\021\n\ttype_name\030\001 \001(\t\022\'"
+    "\n\007address\030\002 \001(\0132\026.rec.data.AddressProto", 319);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/proto/Address.proto", &protobuf_RegisterTypes);
   AddressProto::default_instance_ = new AddressProto();
@@ -445,6 +446,7 @@ void AddressProto_Part::Swap(AddressProto_Part* other) {
 #ifndef _MSC_VER
 const int AddressProto::kPartFieldNumber;
 const int AddressProto::kScopeFieldNumber;
+const int AddressProto::kTypeNameFieldNumber;
 #endif  // !_MSC_VER
 
 AddressProto::AddressProto()
@@ -464,6 +466,7 @@ AddressProto::AddressProto(const AddressProto& from)
 void AddressProto::SharedCtor() {
   _cached_size_ = 0;
   scope_ = 0;
+  type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -472,6 +475,9 @@ AddressProto::~AddressProto() {
 }
 
 void AddressProto::SharedDtor() {
+  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete type_name_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -500,6 +506,11 @@ AddressProto* AddressProto::New() const {
 void AddressProto::Clear() {
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     scope_ = 0;
+    if (has_type_name()) {
+      if (type_name_ != &::google::protobuf::internal::kEmptyString) {
+        type_name_->clear();
+      }
+    }
   }
   part_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -544,6 +555,23 @@ bool AddressProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(26)) goto parse_type_name;
+        break;
+      }
+
+      // optional string type_name = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_type_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_type_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->type_name().data(), this->type_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -578,6 +606,15 @@ void AddressProto::SerializeWithCachedSizes(
       2, this->scope(), output);
   }
 
+  // optional string type_name = 3;
+  if (has_type_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->type_name().data(), this->type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->type_name(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -599,6 +636,16 @@ void AddressProto::SerializeWithCachedSizes(
       2, this->scope(), target);
   }
 
+  // optional string type_name = 3;
+  if (has_type_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->type_name().data(), this->type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->type_name(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -614,6 +661,13 @@ int AddressProto::ByteSize() const {
     if (has_scope()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->scope());
+    }
+
+    // optional string type_name = 3;
+    if (has_type_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->type_name());
     }
 
   }
@@ -655,6 +709,9 @@ void AddressProto::MergeFrom(const AddressProto& from) {
     if (from.has_scope()) {
       set_scope(from.scope());
     }
+    if (from.has_type_name()) {
+      set_type_name(from.type_name());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -680,6 +737,7 @@ void AddressProto::Swap(AddressProto* other) {
   if (other != this) {
     part_.Swap(&other->part_);
     std::swap(scope_, other->scope_);
+    std::swap(type_name_, other->type_name_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

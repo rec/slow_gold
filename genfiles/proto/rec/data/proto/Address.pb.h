@@ -256,18 +256,33 @@ class AddressProto : public ::google::protobuf::Message {
   inline ::rec::data::AddressProto_Scope scope() const;
   inline void set_scope(::rec::data::AddressProto_Scope value);
 
+  // optional string type_name = 3;
+  inline bool has_type_name() const;
+  inline void clear_type_name();
+  static const int kTypeNameFieldNumber = 3;
+  inline const ::std::string& type_name() const;
+  inline void set_type_name(const ::std::string& value);
+  inline void set_type_name(const char* value);
+  inline void set_type_name(const char* value, size_t size);
+  inline ::std::string* mutable_type_name();
+  inline ::std::string* release_type_name();
+  inline void set_allocated_type_name(::std::string* type_name);
+
   // @@protoc_insertion_point(class_scope:rec.data.AddressProto)
  private:
   inline void set_has_scope();
   inline void clear_has_scope();
+  inline void set_has_type_name();
+  inline void clear_has_type_name();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedPtrField< ::rec::data::AddressProto_Part > part_;
+  ::std::string* type_name_;
   int scope_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto();
@@ -524,6 +539,76 @@ inline void AddressProto::set_scope(::rec::data::AddressProto_Scope value) {
   assert(::rec::data::AddressProto_Scope_IsValid(value));
   set_has_scope();
   scope_ = value;
+}
+
+// optional string type_name = 3;
+inline bool AddressProto::has_type_name() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void AddressProto::set_has_type_name() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void AddressProto::clear_has_type_name() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void AddressProto::clear_type_name() {
+  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
+    type_name_->clear();
+  }
+  clear_has_type_name();
+}
+inline const ::std::string& AddressProto::type_name() const {
+  return *type_name_;
+}
+inline void AddressProto::set_type_name(const ::std::string& value) {
+  set_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void AddressProto::set_type_name(const char* value) {
+  set_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void AddressProto::set_type_name(const char* value, size_t size) {
+  set_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* AddressProto::mutable_type_name() {
+  set_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    type_name_ = new ::std::string;
+  }
+  return type_name_;
+}
+inline ::std::string* AddressProto::release_type_name() {
+  clear_has_type_name();
+  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = type_name_;
+    type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void AddressProto::set_allocated_type_name(::std::string* type_name) {
+  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete type_name_;
+  }
+  if (type_name) {
+    set_has_type_name();
+    type_name_ = type_name;
+  } else {
+    clear_has_type_name();
+    type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // -------------------------------------------------------------------
