@@ -2,6 +2,7 @@
 #define __REC_GUI_PROTO_RESIZER__
 
 #include "rec/gui/SetterResizer.h"
+#include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Resizer.pb.h"
 
 namespace rec {

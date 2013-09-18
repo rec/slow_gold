@@ -1,11 +1,11 @@
 layout {
   name: "MainPanel"
   orientation: VERTICAL
+  min: "100.0"
+  max: "-1.0"
   component {
     name: "NavigationPanel"
-    min: 100.0
-    max: -1.0
-    preferred: -0.2
+    preferred: "-0.2"
   }
   component {
     resizer {
@@ -14,12 +14,10 @@ layout {
   }
   component {
     name: "Waveform"
-    min: 150.0
-    max: -1.0
-    preferred: -0.6
+    min: "150.0"
+    preferred: "-0.6"
   }
   component {
     name: "PlaybackPanel"
-    min: 100.0
   }
 }

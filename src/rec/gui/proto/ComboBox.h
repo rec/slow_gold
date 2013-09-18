@@ -3,6 +3,7 @@
 
 #include "rec/base/base.h"
 #include "rec/gui/proto/ComboBox.pb.h"
+#include "rec/gui/proto/Constants.h"
 
 namespace rec {
 namespace gui {

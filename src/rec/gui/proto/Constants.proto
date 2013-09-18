@@ -1,0 +1,10 @@
+package rec.gui;
+
+message Constant {
+  optional string name = 1;
+  optional double value = 2;
+};
+
+message Constants {
+  repeated Constant constant = 1;
+};

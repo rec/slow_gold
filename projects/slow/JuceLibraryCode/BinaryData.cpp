@@ -1862,12 +1862,18 @@ static const unsigned char temp_binary_data_4[] =
 "  component {\n"
 "    name: \"HelpCaption\"\n"
 "    min: 28.0\n"
+"    label {\n"
+"      tooltip: \"Help Panel: Shows help about whatever the mouse is over.\"\n"
+"    }\n"
 "  }\n"
 "  component {\n"
 "    name: \"HelpBody\"\n"
 "    min: -0.1\n"
 "    max: -1.0\n"
 "    preferred: -0.2\n"
+"    label {\n"
+"      tooltip: \"Help Panel: Shows help about whatever the mouse is over.\"\n"
+"    }\n"
 "  }\n"
 "}\n";
 
@@ -1891,11 +1897,11 @@ static const unsigned char temp_binary_data_6[] =
 "layout {\n"
 "  name: \"MainPanel\"\n"
 "  orientation: VERTICAL\n"
+"  min: \"100.0\"\n"
+"  max: \"-1.0\"\n"
 "  component {\n"
 "    name: \"NavigationPanel\"\n"
-"    min: 100.0\n"
-"    max: -1.0\n"
-"    preferred: -0.2\n"
+"    preferred: \"-0.2\"\n"
 "  }\n"
 "  component {\n"
 "    resizer {\n"
@@ -1904,13 +1910,11 @@ static const unsigned char temp_binary_data_6[] =
 "  }\n"
 "  component {\n"
 "    name: \"Waveform\"\n"
-"    min: 150.0\n"
-"    max: -1.0\n"
-"    preferred: -0.6\n"
+"    min: \"150.0\"\n"
+"    preferred: \"-0.6\"\n"
 "  }\n"
 "  component {\n"
 "    name: \"PlaybackPanel\"\n"
-"    min: 100.0\n"
 "  }\n"
 "}\n";
 
@@ -13887,9 +13891,9 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x1704877c:  numBytes = 0; return Components_def;
         case 0xdf58e54b:  numBytes = 6171; return KeyStrokeMap_def;
         case 0x5c64b82e:  numBytes = 456; return CommandBar_def;
-        case 0xeda734e9:  numBytes = 174; return HelpPanel_def;
+        case 0xeda734e9:  numBytes = 358; return HelpPanel_def;
         case 0x8b33e590:  numBytes = 170; return Layout_def;
-        case 0xd02ec571:  numBytes = 365; return MainPanel_def;
+        case 0xd02ec571:  numBytes = 342; return MainPanel_def;
         case 0xd66a1508:  numBytes = 273; return ModeSelector_def;
         case 0x75b00f76:  numBytes = 432; return NavigationPanel_def;
         case 0x334c534f:  numBytes = 447; return PlaybackPanel_def;

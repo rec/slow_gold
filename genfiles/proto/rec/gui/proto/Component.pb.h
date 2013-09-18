@@ -30,6 +30,7 @@
 #include "rec/gui/proto/Resizer.pb.h"
 #include "rec/gui/proto/Slider.pb.h"
 #include "rec/gui/proto/ToggleButton.pb.h"
+#include "rec/gui/Color.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -41,7 +42,6 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fComponent_2eproto();
 
 class ComponentProto;
-class ComponentProtos;
 
 // ===================================================================
 
@@ -147,28 +147,40 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::std::string* release_max();
   inline void set_allocated_max(::std::string* max);
 
-  // optional .rec.gui.ButtonProto button = 5;
+  // repeated .rec.gui.Color color = 5;
+  inline int color_size() const;
+  inline void clear_color();
+  static const int kColorFieldNumber = 5;
+  inline const ::rec::gui::Color& color(int index) const;
+  inline ::rec::gui::Color* mutable_color(int index);
+  inline ::rec::gui::Color* add_color();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::Color >&
+      color() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::Color >*
+      mutable_color();
+
+  // optional .rec.gui.ButtonProto button = 6;
   inline bool has_button() const;
   inline void clear_button();
-  static const int kButtonFieldNumber = 5;
+  static const int kButtonFieldNumber = 6;
   inline const ::rec::gui::ButtonProto& button() const;
   inline ::rec::gui::ButtonProto* mutable_button();
   inline ::rec::gui::ButtonProto* release_button();
   inline void set_allocated_button(::rec::gui::ButtonProto* button);
 
-  // optional .rec.gui.ComboBoxProto combo_box = 6;
+  // optional .rec.gui.ComboBoxProto combo_box = 7;
   inline bool has_combo_box() const;
   inline void clear_combo_box();
-  static const int kComboBoxFieldNumber = 6;
+  static const int kComboBoxFieldNumber = 7;
   inline const ::rec::gui::ComboBoxProto& combo_box() const;
   inline ::rec::gui::ComboBoxProto* mutable_combo_box();
   inline ::rec::gui::ComboBoxProto* release_combo_box();
   inline void set_allocated_combo_box(::rec::gui::ComboBoxProto* combo_box);
 
-  // optional .rec.gui.LabelProto label = 7;
+  // optional .rec.gui.LabelProto label = 8;
   inline bool has_label() const;
   inline void clear_label();
-  static const int kLabelFieldNumber = 7;
+  static const int kLabelFieldNumber = 8;
   inline const ::rec::gui::LabelProto& label() const;
   inline ::rec::gui::LabelProto* mutable_label();
   inline ::rec::gui::LabelProto* release_label();
@@ -230,6 +242,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::std::string* preferred_;
   ::std::string* min_;
   ::std::string* max_;
+  ::google::protobuf::RepeatedPtrField< ::rec::gui::Color > color_;
   ::rec::gui::ButtonProto* button_;
   ::rec::gui::ComboBoxProto* combo_box_;
   ::rec::gui::LabelProto* label_;
@@ -238,7 +251,7 @@ class ComponentProto : public ::google::protobuf::Message {
   ::rec::gui::ToggleButtonProto* toggle_button_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
@@ -246,91 +259,6 @@ class ComponentProto : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ComponentProto* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class ComponentProtos : public ::google::protobuf::Message {
- public:
-  ComponentProtos();
-  virtual ~ComponentProtos();
-
-  ComponentProtos(const ComponentProtos& from);
-
-  inline ComponentProtos& operator=(const ComponentProtos& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const ComponentProtos& default_instance();
-
-  void Swap(ComponentProtos* other);
-
-  // implements Message ----------------------------------------------
-
-  ComponentProtos* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ComponentProtos& from);
-  void MergeFrom(const ComponentProtos& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .rec.gui.ComponentProto component = 1;
-  inline int component_size() const;
-  inline void clear_component();
-  static const int kComponentFieldNumber = 1;
-  inline const ::rec::gui::ComponentProto& component(int index) const;
-  inline ::rec::gui::ComponentProto* mutable_component(int index);
-  inline ::rec::gui::ComponentProto* add_component();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto >&
-      component() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto >*
-      mutable_component();
-
-  // @@protoc_insertion_point(class_scope:rec.gui.ComponentProtos)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto > component_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-
-  friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
-  friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fgui_2fproto_2fComponent_2eproto();
-
-  void InitAsDefaultInstance();
-  static ComponentProtos* default_instance_;
 };
 // ===================================================================
 
@@ -619,15 +547,40 @@ inline void ComponentProto::set_allocated_max(::std::string* max) {
   }
 }
 
-// optional .rec.gui.ButtonProto button = 5;
+// repeated .rec.gui.Color color = 5;
+inline int ComponentProto::color_size() const {
+  return color_.size();
+}
+inline void ComponentProto::clear_color() {
+  color_.Clear();
+}
+inline const ::rec::gui::Color& ComponentProto::color(int index) const {
+  return color_.Get(index);
+}
+inline ::rec::gui::Color* ComponentProto::mutable_color(int index) {
+  return color_.Mutable(index);
+}
+inline ::rec::gui::Color* ComponentProto::add_color() {
+  return color_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::Color >&
+ComponentProto::color() const {
+  return color_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::gui::Color >*
+ComponentProto::mutable_color() {
+  return &color_;
+}
+
+// optional .rec.gui.ButtonProto button = 6;
 inline bool ComponentProto::has_button() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void ComponentProto::set_has_button() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void ComponentProto::clear_has_button() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void ComponentProto::clear_button() {
   if (button_ != NULL) button_->::rec::gui::ButtonProto::Clear();
@@ -657,15 +610,15 @@ inline void ComponentProto::set_allocated_button(::rec::gui::ButtonProto* button
   }
 }
 
-// optional .rec.gui.ComboBoxProto combo_box = 6;
+// optional .rec.gui.ComboBoxProto combo_box = 7;
 inline bool ComponentProto::has_combo_box() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void ComponentProto::set_has_combo_box() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void ComponentProto::clear_has_combo_box() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void ComponentProto::clear_combo_box() {
   if (combo_box_ != NULL) combo_box_->::rec::gui::ComboBoxProto::Clear();
@@ -695,15 +648,15 @@ inline void ComponentProto::set_allocated_combo_box(::rec::gui::ComboBoxProto* c
   }
 }
 
-// optional .rec.gui.LabelProto label = 7;
+// optional .rec.gui.LabelProto label = 8;
 inline bool ComponentProto::has_label() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void ComponentProto::set_has_label() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void ComponentProto::clear_has_label() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void ComponentProto::clear_label() {
   if (label_ != NULL) label_->::rec::gui::LabelProto::Clear();
@@ -735,13 +688,13 @@ inline void ComponentProto::set_allocated_label(::rec::gui::LabelProto* label) {
 
 // optional .rec.gui.ResizerProto resizer = 9;
 inline bool ComponentProto::has_resizer() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void ComponentProto::set_has_resizer() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void ComponentProto::clear_has_resizer() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void ComponentProto::clear_resizer() {
   if (resizer_ != NULL) resizer_->::rec::gui::ResizerProto::Clear();
@@ -773,13 +726,13 @@ inline void ComponentProto::set_allocated_resizer(::rec::gui::ResizerProto* resi
 
 // optional .rec.gui.SliderProto slider = 10;
 inline bool ComponentProto::has_slider() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void ComponentProto::set_has_slider() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void ComponentProto::clear_has_slider() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void ComponentProto::clear_slider() {
   if (slider_ != NULL) slider_->::rec::gui::SliderProto::Clear();
@@ -811,13 +764,13 @@ inline void ComponentProto::set_allocated_slider(::rec::gui::SliderProto* slider
 
 // optional .rec.gui.ToggleButtonProto toggle_button = 11;
 inline bool ComponentProto::has_toggle_button() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void ComponentProto::set_has_toggle_button() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void ComponentProto::clear_has_toggle_button() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void ComponentProto::clear_toggle_button() {
   if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();
@@ -845,35 +798,6 @@ inline void ComponentProto::set_allocated_toggle_button(::rec::gui::ToggleButton
   } else {
     clear_has_toggle_button();
   }
-}
-
-// -------------------------------------------------------------------
-
-// ComponentProtos
-
-// repeated .rec.gui.ComponentProto component = 1;
-inline int ComponentProtos::component_size() const {
-  return component_.size();
-}
-inline void ComponentProtos::clear_component() {
-  component_.Clear();
-}
-inline const ::rec::gui::ComponentProto& ComponentProtos::component(int index) const {
-  return component_.Get(index);
-}
-inline ::rec::gui::ComponentProto* ComponentProtos::mutable_component(int index) {
-  return component_.Mutable(index);
-}
-inline ::rec::gui::ComponentProto* ComponentProtos::add_component() {
-  return component_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto >&
-ComponentProtos::component() const {
-  return component_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto >*
-ComponentProtos::mutable_component() {
-  return &component_;
 }
 
 

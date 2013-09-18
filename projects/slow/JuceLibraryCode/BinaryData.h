@@ -19,13 +19,13 @@ namespace BinaryData
     const int            CommandBar_defSize = 456;
 
     extern const char*   HelpPanel_def;
-    const int            HelpPanel_defSize = 174;
+    const int            HelpPanel_defSize = 358;
 
     extern const char*   Layout_def;
     const int            Layout_defSize = 170;
 
     extern const char*   MainPanel_def;
-    const int            MainPanel_defSize = 365;
+    const int            MainPanel_defSize = 342;
 
     extern const char*   ModeSelector_def;
     const int            ModeSelector_defSize = 273;

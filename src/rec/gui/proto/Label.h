@@ -2,6 +2,7 @@
 #define __REC_GUI_PROTO_LABEL__
 
 #include "rec/base/base.h"
+#include "rec/gui/proto/Constants.h"
 #include "rec/gui/proto/Label.pb.h"
 #include "rec/gui/SimpleLabel.h"
 

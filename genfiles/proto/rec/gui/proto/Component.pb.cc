@@ -24,9 +24,6 @@ namespace {
 const ::google::protobuf::Descriptor* ComponentProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ComponentProto_reflection_ = NULL;
-const ::google::protobuf::Descriptor* ComponentProtos_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  ComponentProtos_reflection_ = NULL;
 
 }  // namespace
 
@@ -38,11 +35,12 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
       "rec/gui/proto/Component.proto");
   GOOGLE_CHECK(file != NULL);
   ComponentProto_descriptor_ = file->message_type(0);
-  static const int ComponentProto_offsets_[10] = {
+  static const int ComponentProto_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, preferred_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, min_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, max_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, color_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, button_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, combo_box_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProto, label_),
@@ -61,21 +59,6 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ComponentProto));
-  ComponentProtos_descriptor_ = file->message_type(1);
-  static const int ComponentProtos_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProtos, component_),
-  };
-  ComponentProtos_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      ComponentProtos_descriptor_,
-      ComponentProtos::default_instance_,
-      ComponentProtos_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProtos, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComponentProtos, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(ComponentProtos));
 }
 
 namespace {
@@ -90,8 +73,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ComponentProto_descriptor_, &ComponentProto::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    ComponentProtos_descriptor_, &ComponentProtos::default_instance());
 }
 
 }  // namespace
@@ -99,8 +80,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fComponent_2eproto() {
   delete ComponentProto::default_instance_;
   delete ComponentProto_reflection_;
-  delete ComponentProtos::default_instance_;
-  delete ComponentProtos_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
@@ -115,29 +94,27 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fResizer_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/gui/proto/Component.proto\022\007rec.gui"
     "\032\032rec/gui/proto/Button.proto\032\034rec/gui/pr"
     "oto/ComboBox.proto\032\031rec/gui/proto/Label."
     "proto\032\033rec/gui/proto/Resizer.proto\032\032rec/"
     "gui/proto/Slider.proto\032 rec/gui/proto/To"
-    "ggleButton.proto\"\301\002\n\016ComponentProto\022\014\n\004n"
-    "ame\030\001 \001(\t\022\021\n\tpreferred\030\002 \001(\t\022\013\n\003min\030\003 \001("
-    "\t\022\013\n\003max\030\004 \001(\t\022$\n\006button\030\005 \001(\0132\024.rec.gui"
-    ".ButtonProto\022)\n\tcombo_box\030\006 \001(\0132\026.rec.gu"
-    "i.ComboBoxProto\022\"\n\005label\030\007 \001(\0132\023.rec.gui"
-    ".LabelProto\022&\n\007resizer\030\t \001(\0132\025.rec.gui.R"
-    "esizerProto\022$\n\006slider\030\n \001(\0132\024.rec.gui.Sl"
-    "iderProto\0221\n\rtoggle_button\030\013 \001(\0132\032.rec.g"
-    "ui.ToggleButtonProto\"=\n\017ComponentProtos\022"
-    "*\n\tcomponent\030\001 \003(\0132\027.rec.gui.ComponentPr"
-    "oto", 603);
+    "ggleButton.proto\032\023rec/gui/Color.proto\"\340\002"
+    "\n\016ComponentProto\022\014\n\004name\030\001 \001(\t\022\021\n\tprefer"
+    "red\030\002 \001(\t\022\013\n\003min\030\003 \001(\t\022\013\n\003max\030\004 \001(\t\022\035\n\005c"
+    "olor\030\005 \003(\0132\016.rec.gui.Color\022$\n\006button\030\006 \001"
+    "(\0132\024.rec.gui.ButtonProto\022)\n\tcombo_box\030\007 "
+    "\001(\0132\026.rec.gui.ComboBoxProto\022\"\n\005label\030\010 \001"
+    "(\0132\023.rec.gui.LabelProto\022&\n\007resizer\030\t \001(\013"
+    "2\025.rec.gui.ResizerProto\022$\n\006slider\030\n \001(\0132"
+    "\024.rec.gui.SliderProto\0221\n\rtoggle_button\030\013"
+    " \001(\0132\032.rec.gui.ToggleButtonProto", 592);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Component.proto", &protobuf_RegisterTypes);
   ComponentProto::default_instance_ = new ComponentProto();
-  ComponentProtos::default_instance_ = new ComponentProtos();
   ComponentProto::default_instance_->InitAsDefaultInstance();
-  ComponentProtos::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fproto_2fComponent_2eproto);
 }
 
@@ -155,6 +132,7 @@ const int ComponentProto::kNameFieldNumber;
 const int ComponentProto::kPreferredFieldNumber;
 const int ComponentProto::kMinFieldNumber;
 const int ComponentProto::kMaxFieldNumber;
+const int ComponentProto::kColorFieldNumber;
 const int ComponentProto::kButtonFieldNumber;
 const int ComponentProto::kComboBoxFieldNumber;
 const int ComponentProto::kLabelFieldNumber;
@@ -277,11 +255,11 @@ void ComponentProto::Clear() {
     if (has_label()) {
       if (label_ != NULL) label_->::rec::gui::LabelProto::Clear();
     }
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_resizer()) {
       if (resizer_ != NULL) resizer_->::rec::gui::ResizerProto::Clear();
     }
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_slider()) {
       if (slider_ != NULL) slider_->::rec::gui::SliderProto::Clear();
     }
@@ -289,6 +267,7 @@ void ComponentProto::Clear() {
       if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();
     }
   }
+  color_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -362,12 +341,27 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_button;
+        if (input->ExpectTag(42)) goto parse_color;
         break;
       }
 
-      // optional .rec.gui.ButtonProto button = 5;
+      // repeated .rec.gui.Color color = 5;
       case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_color:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_color()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_color;
+        if (input->ExpectTag(50)) goto parse_button;
+        break;
+      }
+
+      // optional .rec.gui.ButtonProto button = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_button:
@@ -376,12 +370,12 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_combo_box;
+        if (input->ExpectTag(58)) goto parse_combo_box;
         break;
       }
 
-      // optional .rec.gui.ComboBoxProto combo_box = 6;
-      case 6: {
+      // optional .rec.gui.ComboBoxProto combo_box = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_combo_box:
@@ -390,12 +384,12 @@ bool ComponentProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(58)) goto parse_label;
+        if (input->ExpectTag(66)) goto parse_label;
         break;
       }
 
-      // optional .rec.gui.LabelProto label = 7;
-      case 7: {
+      // optional .rec.gui.LabelProto label = 8;
+      case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_label:
@@ -504,22 +498,28 @@ void ComponentProto::SerializeWithCachedSizes(
       4, this->max(), output);
   }
 
-  // optional .rec.gui.ButtonProto button = 5;
+  // repeated .rec.gui.Color color = 5;
+  for (int i = 0; i < this->color_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->color(i), output);
+  }
+
+  // optional .rec.gui.ButtonProto button = 6;
   if (has_button()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->button(), output);
+      6, this->button(), output);
   }
 
-  // optional .rec.gui.ComboBoxProto combo_box = 6;
+  // optional .rec.gui.ComboBoxProto combo_box = 7;
   if (has_combo_box()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->combo_box(), output);
+      7, this->combo_box(), output);
   }
 
-  // optional .rec.gui.LabelProto label = 7;
+  // optional .rec.gui.LabelProto label = 8;
   if (has_label()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->label(), output);
+      8, this->label(), output);
   }
 
   // optional .rec.gui.ResizerProto resizer = 9;
@@ -588,25 +588,32 @@ void ComponentProto::SerializeWithCachedSizes(
         4, this->max(), target);
   }
 
-  // optional .rec.gui.ButtonProto button = 5;
+  // repeated .rec.gui.Color color = 5;
+  for (int i = 0; i < this->color_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        5, this->color(i), target);
+  }
+
+  // optional .rec.gui.ButtonProto button = 6;
   if (has_button()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->button(), target);
+        6, this->button(), target);
   }
 
-  // optional .rec.gui.ComboBoxProto combo_box = 6;
+  // optional .rec.gui.ComboBoxProto combo_box = 7;
   if (has_combo_box()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->combo_box(), target);
+        7, this->combo_box(), target);
   }
 
-  // optional .rec.gui.LabelProto label = 7;
+  // optional .rec.gui.LabelProto label = 8;
   if (has_label()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        7, this->label(), target);
+        8, this->label(), target);
   }
 
   // optional .rec.gui.ResizerProto resizer = 9;
@@ -669,27 +676,29 @@ int ComponentProto::ByteSize() const {
           this->max());
     }
 
-    // optional .rec.gui.ButtonProto button = 5;
+    // optional .rec.gui.ButtonProto button = 6;
     if (has_button()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->button());
     }
 
-    // optional .rec.gui.ComboBoxProto combo_box = 6;
+    // optional .rec.gui.ComboBoxProto combo_box = 7;
     if (has_combo_box()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->combo_box());
     }
 
-    // optional .rec.gui.LabelProto label = 7;
+    // optional .rec.gui.LabelProto label = 8;
     if (has_label()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->label());
     }
 
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional .rec.gui.ResizerProto resizer = 9;
     if (has_resizer()) {
       total_size += 1 +
@@ -697,8 +706,6 @@ int ComponentProto::ByteSize() const {
           this->resizer());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional .rec.gui.SliderProto slider = 10;
     if (has_slider()) {
       total_size += 1 +
@@ -714,6 +721,14 @@ int ComponentProto::ByteSize() const {
     }
 
   }
+  // repeated .rec.gui.Color color = 5;
+  total_size += 1 * this->color_size();
+  for (int i = 0; i < this->color_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->color(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -739,6 +754,7 @@ void ComponentProto::MergeFrom(const ::google::protobuf::Message& from) {
 
 void ComponentProto::MergeFrom(const ComponentProto& from) {
   GOOGLE_CHECK_NE(&from, this);
+  color_.MergeFrom(from.color_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_name()) {
       set_name(from.name());
@@ -761,11 +777,11 @@ void ComponentProto::MergeFrom(const ComponentProto& from) {
     if (from.has_label()) {
       mutable_label()->::rec::gui::LabelProto::MergeFrom(from.label());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_resizer()) {
       mutable_resizer()->::rec::gui::ResizerProto::MergeFrom(from.resizer());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_slider()) {
       mutable_slider()->::rec::gui::SliderProto::MergeFrom(from.slider());
     }
@@ -799,6 +815,7 @@ void ComponentProto::Swap(ComponentProto* other) {
     std::swap(preferred_, other->preferred_);
     std::swap(min_, other->min_);
     std::swap(max_, other->max_);
+    color_.Swap(&other->color_);
     std::swap(button_, other->button_);
     std::swap(combo_box_, other->combo_box_);
     std::swap(label_, other->label_);
@@ -816,209 +833,6 @@ void ComponentProto::Swap(ComponentProto* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = ComponentProto_descriptor_;
   metadata.reflection = ComponentProto_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int ComponentProtos::kComponentFieldNumber;
-#endif  // !_MSC_VER
-
-ComponentProtos::ComponentProtos()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void ComponentProtos::InitAsDefaultInstance() {
-}
-
-ComponentProtos::ComponentProtos(const ComponentProtos& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void ComponentProtos::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-ComponentProtos::~ComponentProtos() {
-  SharedDtor();
-}
-
-void ComponentProtos::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void ComponentProtos::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* ComponentProtos::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return ComponentProtos_descriptor_;
-}
-
-const ComponentProtos& ComponentProtos::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
-  return *default_instance_;
-}
-
-ComponentProtos* ComponentProtos::default_instance_ = NULL;
-
-ComponentProtos* ComponentProtos::New() const {
-  return new ComponentProtos;
-}
-
-void ComponentProtos::Clear() {
-  component_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool ComponentProtos::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.gui.ComponentProto component = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_component:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_component()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(10)) goto parse_component;
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void ComponentProtos::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.gui.ComponentProto component = 1;
-  for (int i = 0; i < this->component_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->component(i), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* ComponentProtos::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // repeated .rec.gui.ComponentProto component = 1;
-  for (int i = 0; i < this->component_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->component(i), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int ComponentProtos::ByteSize() const {
-  int total_size = 0;
-
-  // repeated .rec.gui.ComponentProto component = 1;
-  total_size += 1 * this->component_size();
-  for (int i = 0; i < this->component_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->component(i));
-  }
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void ComponentProtos::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const ComponentProtos* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const ComponentProtos*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void ComponentProtos::MergeFrom(const ComponentProtos& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  component_.MergeFrom(from.component_);
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void ComponentProtos::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void ComponentProtos::CopyFrom(const ComponentProtos& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ComponentProtos::IsInitialized() const {
-
-  return true;
-}
-
-void ComponentProtos::Swap(ComponentProtos* other) {
-  if (other != this) {
-    component_.Swap(&other->component_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata ComponentProtos::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = ComponentProtos_descriptor_;
-  metadata.reflection = ComponentProtos_reflection_;
   return metadata;
 }
 
