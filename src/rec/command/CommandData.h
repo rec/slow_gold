@@ -3,7 +3,7 @@
 
 #include "rec/command/Command.pb.h"
 #include "rec/command/map/CommandMap.pb.h"
-#include "rec/util/Binary.h"
+#include "rec/util/BinaryMacros.h"
 
 namespace rec {
 namespace command {

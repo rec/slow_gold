@@ -6,6 +6,7 @@
 #include "rec/gui/audio/ModeSelector.h"
 #include "rec/slow/CurrentFile.h"
 #include "rec/slow/Instance.h"
+#include "rec/util/BinaryMacros.h"
 #include "rec/util/Math.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/VirtualFile.h"

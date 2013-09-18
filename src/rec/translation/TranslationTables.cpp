@@ -4,7 +4,7 @@
 
 #include "rec/base/Trans.pb.h"
 #include "rec/data/DataOps.h"
-#include "rec/util/Binary.h"
+#include "rec/util/BinaryMacros.h"
 #include "rec/util/Copy.h"
 #include "rec/util/STL.h"
 

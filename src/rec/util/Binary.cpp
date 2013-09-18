@@ -1,4 +1,5 @@
 #include "rec/util/Binary.h"
+#include "BinaryData.h"
 
 using namespace juce;
 

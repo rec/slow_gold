@@ -2,7 +2,7 @@
 
 #include "rec/gui/menu/RecentFiles.h"
 #include "rec/program/Threads.pb.h"
-#include "rec/util/Binary.h"
+#include "rec/util/BinaryMacros.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 

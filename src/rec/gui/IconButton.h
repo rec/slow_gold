@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_ICONBUTTON__
 #define __REC_GUI_ICONBUTTON__
 
-#include "rec/util/Binary.h"
+#include "rec/util/BinaryMacros.h"
 
 namespace rec {
 namespace gui {

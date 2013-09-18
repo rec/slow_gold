@@ -12,7 +12,7 @@
 #include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/commands/Command.pb.h"
 #include "rec/translation/TranslationTables.h"
-#include "rec/util/Binary.h"
+#include "rec/util/BinaryMacros.h"
 #include "rec/util/Copy.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/util/thread/CallAsync.h"

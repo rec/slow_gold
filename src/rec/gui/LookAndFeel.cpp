@@ -1,5 +1,5 @@
 #include "rec/gui/LookAndFeel.h"
-#include "rec/util/Binary.h"
+#include "rec/util/BinaryMacros.h"
 
 namespace rec {
 namespace gui {

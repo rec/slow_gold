@@ -1,7 +1,6 @@
 #ifndef __REC_UTIL_BINARY__
 #define __REC_UTIL_BINARY__
 
-#include "BinaryData.h"
 #include "rec/util/Binary.pb.h"
 #include "rec/util/Copy.h"
 
@@ -35,18 +34,6 @@ template <typename Type>
 Type* constructName(const string& name) {
   return construct<Type>(getNamedResource(name));
 }
-
-#define BINARY_STRING(NAME) \
-  string(BinaryData::NAME, BinaryData::NAME ## Size)
-
-#define BINARY_DATA(NAME, TYPE) \
-  construct<TYPE>(BINARY_STRING(NAME))
-
-#define BINARY_PROTO(NAME, PROTO) \
-  binaryProto<PROTO>(BINARY_STRING(NAME ## _def))
-
-#define BINARY_PROTO_MERGED(NAME, TYPE) \
-  binaryProtoMerged<TYPE>(BINARY_STRING(NAME ## _def))
 
 }  // namespace util
 }  // namespace rec
