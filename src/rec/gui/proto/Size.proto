@@ -1,0 +1,8 @@
+package rec.gui;
+
+message Size {
+  optional string preferred = 1;
+  optional string min = 2;
+  optional string max = 3;
+};
+
