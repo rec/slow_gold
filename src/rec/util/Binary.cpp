@@ -31,8 +31,10 @@ void binaryProtoMerged(const string& s, Message* message) {
   BinaryNames names;
   copy::copy(s, &names);
 
-  for (auto& name: names.name())
+  for (auto& name: names.name()) {
+    // DLOG(INFO) << "Merging " << name;
     copy::merge(getNamedResource(name + "_def"), message);
+  }
 }
 
 string getNamedResource(const string& name) {

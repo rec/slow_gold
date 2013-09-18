@@ -5,13 +5,12 @@ namespace gui {
 
 DataSlider::DataSlider(const String& name,
                        const String& tooltip,
-                       const string& typeName,
                        const data::Address& address,
                        uint32 captionSize,
                        uint32 textEntryBoxWidth,
                        uint32 textEntryBoxHeight)
     : Panel(name, HORIZONTAL, true),
-      data::AddressListener(address, typeName),
+      data::AddressListener(address),
       slider_(name),
       caption_(name),
       name_(name),

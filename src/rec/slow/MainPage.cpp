@@ -18,6 +18,9 @@
 #include "rec/widget/waveform/Zoom.h"
 
 using namespace juce;
+using namespace rec::data;
+using namespace rec::widget::waveform;
+
 
 TRAN(HELP_PANEL_HELP,
      "Help Panel: Shows help about whatever the mouse is over.");
@@ -27,8 +30,6 @@ TRAN(CD_WINDOW, "CD Window:  Any CDs that you have in "
 
 namespace rec {
 namespace slow {
-
-using namespace rec::widget::waveform;
 
 namespace {
 
@@ -59,11 +60,6 @@ void add(gui::Panel* layout, Type t, double size) {
   add(layout, t, size, size, size);
 }
 
-static const string& layoutTypeName() {
-  static string name = getTypeName<AppLayout>();
-  return name;
-}
-
 class MainPanel : public gui::Panel {
  public:
   MainPanel() : gui::Panel("Main", VERTICAL) {}
@@ -87,13 +83,18 @@ MainPage::MainPage(Components* components)
       transformPanel_("Transform"),
       controlPanel_("Control"),
 
-      navigationResizer_(layoutTypeName(), "navigation_y", mainPanel_.get(), 1),
+      navigationResizer_(makeAddress<AppLayout>("navigation_y"),
+                         mainPanel_.get(), 1),
 
-      directoryResizer_(layoutTypeName(), "directory_x", &navigationPanel_, 1),
-      metadataResizer_(layoutTypeName(), "metadata_x", &navigationPanel_, 3),
+      directoryResizer_(makeAddress<AppLayout>("directory_x"),
+                        &navigationPanel_, 1),
+      metadataResizer_(makeAddress<AppLayout>("metadata_x"),
+                       &navigationPanel_, 3),
 
-      helpResizer_(layoutTypeName(), "help_x", &playbackPanel_, 1),
-      transformResizer_(layoutTypeName(), "transform_x", &playbackPanel_, 3),
+      helpResizer_(makeAddress<AppLayout>("help_x"),
+                   &playbackPanel_, 1),
+      transformResizer_(makeAddress<AppLayout>("transform_x"),
+                        &playbackPanel_, 3),
       helpCaption_("", ""),
       helpBody_("", "") {
   CHECK_DDD(123, 51, int16, int32);

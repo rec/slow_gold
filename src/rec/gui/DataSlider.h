@@ -22,7 +22,6 @@ class DataSlider : public Panel,
  public:
   DataSlider(const String& name,
              const String& tooltip,
-             const string& typeName,
              const data::Address& address,
              uint32 captionSize = 45,
              uint32 textEntryBoxWidth = 80,

@@ -13,12 +13,11 @@ namespace gui {
 
 static uint32 NO_VALUE = static_cast<uint32>(-1);
 
-SetterResizer::SetterResizer(const string& typeName,
-                             const data::Address& address,
+SetterResizer::SetterResizer(const data::Address& address,
                              Panel* layout,
                              int itemIndexInPanel,
                              uint32 minValue)
-  : data::AddressListener(address, typeName),
+  : data::AddressListener(address),
     StretchableLayoutResizerBar(layout->layoutManager(),
                                 itemIndexInPanel,
                                 layout->orientation() == HORIZONTAL),

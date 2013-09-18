@@ -19,11 +19,10 @@ class SetterTextArea : public Panel {
   }
 
   SetterText* add(const String& name,
-                  const string& typeName,
                   const data::Address& addr,
                   const String& tip = String::empty,
                   const String& caption = String::empty) {
-    SetterText* text = new SetterText(name, typeName, addr, tip, caption);
+    SetterText* text = new SetterText(name, addr, tip, caption);
     addToPanel(text, 12, 20, 20);
     return text;
   }

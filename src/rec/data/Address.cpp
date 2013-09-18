@@ -34,11 +34,19 @@ const string Address::toString() const {
   return s;
 }
 
+#if 0
 const Address Address::addTypeName(const string& name) const {
   Address result = *this;
   result.set_type_name(name);
   return result;
 }
+
+const Address Address::addScope(AddressProto::Scope scope) const {
+  Address result = *this;
+  result.set_scope(scope);
+  return result;
+}
+#endif
 
 }  // namespace data
 }  // namespace rec

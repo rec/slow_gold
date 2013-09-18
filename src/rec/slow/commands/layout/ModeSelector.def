@@ -1,19 +1,16 @@
 layout {
   name: "ModeSelector"
+  min: "MODE_SELECTOR_HEIGHT"
   component {
     name: "DragModeButton"
-    min: 34
   }
   component {
     name: "SetTimeModeButton"
-    min: 34
   }
   component {
     name: "ZoomModeButton"
-    min: 34
   }
   component {
     name: "AddLoopPointModeButton"
-    min: 34
   }
 }

@@ -20,8 +20,7 @@ class SetterResizer : public data::AddressListener,
                       public SettableTooltipClient,
                       public GuiWriteable {
  public:
-  SetterResizer(const string& typeName,
-                const data::Address& address,
+  SetterResizer(const data::Address& address,
                 Panel* layout,
                 int itemIndexInPanel,
                 uint32 minValue = 20);

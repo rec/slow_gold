@@ -36,9 +36,9 @@ TransportController::TransportController(TimeController* timeController)
       levelMeter_("LevelMeter", "Level Meter: RMS intensity for left and "
                   "right tracks."),
       level_("Volume", "Volume Slider: Raise or lower the sound intensity, "
-             "in dB.", getTypeName<Gain>(), data::Address("gain")),
+             "in dB.", data::makeAddress<Gain>("gain")),
       muteButton_("Mute", "Mute Button: Mute or unmute the sound.",
-                  getTypeName<Gain>(), data::Address("mute")) {
+                  data::makeAddress<Gain>("mute")) {
   startStopButton_.setClickingTogglesState(true);
 
   SET_BUTTON_IMAGES3(&jumpToStartButton_, JumpToStartButton);

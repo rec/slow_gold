@@ -728,12 +728,12 @@ command {
     setter {
       type: SELECTION
       address {
+        type_name: "rec.audio.AudioSettings"
         part {
           name: "file_type_for_save"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.audio.AudioSettings"
     }
     desc {
       menu: "AIFF"
@@ -756,12 +756,12 @@ command {
     setter {
       type: SELECTION
       address {
+        type_name: "rec.app.AppSettings"
         part {
           name: "language"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.app.AppSettings"
     }
     desc {
       menu: "German"
@@ -787,12 +787,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.slow.GuiSettings"
         part {
           name: "advanced_menus"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.slow.GuiSettings"
     }
   }
 }
@@ -806,12 +806,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.slow.GuiSettings"
         part {
           name: "auto_check_for_updates"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.slow.GuiSettings"
     }
   }
 }
@@ -825,12 +825,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "command_bar_at_left"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -844,12 +844,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "command_bar_at_top"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -863,12 +863,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.slow.GuiSettings"
         part {
           name: "use_tree_view_in_file_dialogs"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.slow.GuiSettings"
     }
   }
 }
@@ -882,12 +882,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.slow.GuiSettings"
         part {
           name: "follow_cursor"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.slow.GuiSettings"
     }
   }
 }
@@ -901,12 +901,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "show_grid"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -920,12 +920,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "modes_at_left"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -939,12 +939,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "modes_at_top"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -958,12 +958,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "parallel_waveforms"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -977,12 +977,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.audio.Gain"
         part {
           name: "prefader_levels"
         }
         scope: FILE_SCOPE
       }
-      type_name: "rec.audio.Gain"
     }
     disabled: "empty"
   }
@@ -1039,12 +1039,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.slow.GuiSettings"
         part {
           name: "show_about_on_startup"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.slow.GuiSettings"
     }
   }
 }
@@ -1058,12 +1058,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "show_cursor_labels"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -1077,12 +1077,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "show_labels_at_top"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -1096,12 +1096,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.slow.GuiSettings"
         part {
           name: "show_master_tune"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.slow.GuiSettings"
     }
   }
 }
@@ -1115,12 +1115,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "show_selection_buttons"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -1134,12 +1134,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.widget.waveform.WaveformProto"
         part {
           name: "show_times_at_top"
         }
         scope: GLOBAL_SCOPE
       }
-      type_name: "rec.widget.waveform.WaveformProto"
     }
   }
 }
@@ -1164,12 +1164,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.audio.stretch.Stretch"
         part {
           name: "time_enabled"
         }
         scope: FILE_SCOPE
       }
-      type_name: "rec.audio.stretch.Stretch"
     }
   }
 }
@@ -1183,12 +1183,12 @@ command {
     }
     setter {
       address {
+        type_name: "rec.audio.stretch.Stretch"
         part {
           name: "enabled"
         }
         scope: FILE_SCOPE
       }
-      type_name: "rec.audio.stretch.Stretch"
     }
   }
 }

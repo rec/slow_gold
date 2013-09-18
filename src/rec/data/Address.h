@@ -1,8 +1,8 @@
 #ifndef __REC_PROTO_ADDRESS__
 #define __REC_PROTO_ADDRESS__
 
-#include "rec/base/base.h"
 #include "rec/data/proto/Address.pb.h"
+#include "rec/util/proto/Proto.h"
 
 namespace rec {
 namespace data {
@@ -35,14 +35,38 @@ class Address : public AddressProto {
   Address(const char* s) { p(s); }
   Address(int i) { p(i); }
 
-  const Address addTypeName(const string&) const;
   const string toString() const;
 };
 
-inline const Address operator+(const Address& x, AddressProto::Scope scope) {
-  Address result = x;
-  result.set_scope(scope);
-  return result;
+template <typename Type>
+const Address makeAddress(const Address::Part& x) {
+  Address a(x);
+  a.set_type_name(getTypeName<Type>());
+  return a;
+}
+
+template <typename Type>
+const Address makeAddress(const Address::Part& x, const Address::Part& y) {
+  Address a(x, y);
+  a.set_type_name(getTypeName<Type>());
+  return a;
+}
+
+template <typename Type>
+const Address makeGlobalAddress(const Address::Part& x) {
+  Address a(x);
+  a.set_type_name(getTypeName<Type>());
+  a.set_scope(AddressProto::GLOBAL_SCOPE);
+  return a;
+}
+
+template <typename Type>
+const Address makeGlobalAddress(const Address::Part& x,
+                                const Address::Part& y) {
+  Address a(x, y);
+  a.set_type_name(getTypeName<Type>());
+  a.set_scope(AddressProto::GLOBAL_SCOPE);
+  return a;
 }
 
 // Isn't perhaps only the first one necessary?

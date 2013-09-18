@@ -129,11 +129,7 @@ LayoutMap makeLayoutMap(const Program& program) {
   LayoutMap layoutMap;
   auto layouts = program.layouts();
   for (auto& layout: layouts.layout())
-  {
     layoutMap[layout.name()] = layout;
-    if (layout.name() == "MainPanel")
-      DLOG(INFO) << "!!! " << layout.ShortDebugString();
-  }
   return layoutMap;
 }
 

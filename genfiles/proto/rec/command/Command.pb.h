@@ -320,35 +320,20 @@ class Setter : public ::google::protobuf::Message {
   inline ::rec::data::AddressProto* release_address();
   inline void set_allocated_address(::rec::data::AddressProto* address);
 
-  // optional string type_name = 3;
-  inline bool has_type_name() const;
-  inline void clear_type_name();
-  static const int kTypeNameFieldNumber = 3;
-  inline const ::std::string& type_name() const;
-  inline void set_type_name(const ::std::string& value);
-  inline void set_type_name(const char* value);
-  inline void set_type_name(const char* value, size_t size);
-  inline ::std::string* mutable_type_name();
-  inline ::std::string* release_type_name();
-  inline void set_allocated_type_name(::std::string* type_name);
-
   // @@protoc_insertion_point(class_scope:rec.command.Setter)
  private:
   inline void set_has_type();
   inline void clear_has_type();
   inline void set_has_address();
   inline void clear_has_address();
-  inline void set_has_type_name();
-  inline void clear_has_type_name();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::rec::data::AddressProto* address_;
-  ::std::string* type_name_;
   int type_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
@@ -1029,76 +1014,6 @@ inline void Setter::set_allocated_address(::rec::data::AddressProto* address) {
     set_has_address();
   } else {
     clear_has_address();
-  }
-}
-
-// optional string type_name = 3;
-inline bool Setter::has_type_name() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void Setter::set_has_type_name() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void Setter::clear_has_type_name() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void Setter::clear_type_name() {
-  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
-    type_name_->clear();
-  }
-  clear_has_type_name();
-}
-inline const ::std::string& Setter::type_name() const {
-  return *type_name_;
-}
-inline void Setter::set_type_name(const ::std::string& value) {
-  set_has_type_name();
-  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
-    type_name_ = new ::std::string;
-  }
-  type_name_->assign(value);
-}
-inline void Setter::set_type_name(const char* value) {
-  set_has_type_name();
-  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
-    type_name_ = new ::std::string;
-  }
-  type_name_->assign(value);
-}
-inline void Setter::set_type_name(const char* value, size_t size) {
-  set_has_type_name();
-  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
-    type_name_ = new ::std::string;
-  }
-  type_name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Setter::mutable_type_name() {
-  set_has_type_name();
-  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
-    type_name_ = new ::std::string;
-  }
-  return type_name_;
-}
-inline ::std::string* Setter::release_type_name() {
-  clear_has_type_name();
-  if (type_name_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = type_name_;
-    type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void Setter::set_allocated_type_name(::std::string* type_name) {
-  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
-    delete type_name_;
-  }
-  if (type_name) {
-    set_has_type_name();
-    type_name_ = type_name;
-  } else {
-    clear_has_type_name();
-    type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

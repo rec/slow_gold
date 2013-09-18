@@ -6,13 +6,12 @@ namespace gui {
 static const int CAPTION_SIZE = 50;
 
 SetterText::SetterText(const String& name,
-                       const string& typeName,
                        const data::Address& address,
                        const String& tip,
                        const String& caption,
                        bool useCaption)
     : Panel(name, HORIZONTAL),
-      data::AddressListener(address, typeName) {
+      data::AddressListener(address) {
   DCHECK(name.length());
   const String& cap = caption.length() ? caption : name;
   caption_.setName(name + ".caption");

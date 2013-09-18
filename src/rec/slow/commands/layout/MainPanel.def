@@ -8,9 +8,7 @@ layout {
     preferred: "-0.2"
   }
   component {
-    resizer {
-      address: "navigation_y"
-    }
+    resizer: "navigation_y"
   }
   component {
     name: "Waveform"

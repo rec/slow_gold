@@ -7,9 +7,7 @@ layout {
     preferred: -0.2
   }
   component {
-    resizer {
-      address: "directory_x"
-    }
+    resizer: "directory_x"
   }
   component {
     name: "SongData"
@@ -18,9 +16,7 @@ layout {
     preferred: -0.30
   }
   component {
-    resizer {
-      address: "metadata_x"
-    }
+    resizer: "metadata_x"
   }
   component {
     name: "Loops"

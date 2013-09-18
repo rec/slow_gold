@@ -17,7 +17,6 @@ message Setter {
 
   optional Type type = 1 [default = TOGGLE];
   optional data.AddressProto address = 2;
-  optional string type_name = 3;
 };
 
 // A list of commands that the user can issue.

@@ -206,7 +206,7 @@ void JuceModelImpl::getCommandInfo(CommandID id,
       bool isGlobal = (setter.address().scope() ==
                        data::AddressProto::GLOBAL_SCOPE);
       VirtualFile file = isGlobal ? global() : program_->getCurrentFile();
-      Data* data = getData(setter.type_name(), file);
+      Data* data = getData(setter.address().type_name(), file);
       unique_ptr<Message> msg(data->clone());
       Value value = data::getMessageFieldOrDie(setter.address(), *msg);
       if (setter.type() == Setter::TOGGLE) {

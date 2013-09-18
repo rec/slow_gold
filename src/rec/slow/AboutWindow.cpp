@@ -45,11 +45,10 @@ const int BUTTON_WIDTH = 250;
 class AboutPane : public Component {
  public:
   AboutPane(const String& name, const String& versionNumber)
-      : displayOnStartup_(str(t_DISPLAY_ON_STARTUP),
-                          str(t_DISPLAY_ON_STARTUP_TOOLTIP),
-                          getTypeName<GuiSettings>(),
-                          data::Address("show_about_on_startup") +
-                          data::AddressProto::GLOBAL_SCOPE) {
+      : displayOnStartup_(
+            str(t_DISPLAY_ON_STARTUP),
+            str(t_DISPLAY_ON_STARTUP_TOOLTIP),
+            data::makeGlobalAddress<GuiSettings>("show_about_on_startup")) {
 #if 0
     // FIX JUCE BUG!
     right_.setJustification(Justification::bottomRight);

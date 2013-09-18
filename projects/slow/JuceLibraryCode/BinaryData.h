@@ -7,7 +7,7 @@
 namespace BinaryData
 {
     extern const char*   Commands_def;
-    const int            Commands_defSize = 29088;
+    const int            Commands_defSize = 29132;
 
     extern const char*   Components_def;
     const int            Components_defSize = 0;
@@ -16,34 +16,34 @@ namespace BinaryData
     const int            KeyStrokeMap_defSize = 6171;
 
     extern const char*   CommandBar_def;
-    const int            CommandBar_defSize = 456;
+    const int            CommandBar_defSize = 525;
 
     extern const char*   HelpPanel_def;
-    const int            HelpPanel_defSize = 358;
+    const int            HelpPanel_defSize = 366;
 
     extern const char*   Layout_def;
     const int            Layout_defSize = 170;
 
     extern const char*   MainPanel_def;
-    const int            MainPanel_defSize = 342;
+    const int            MainPanel_defSize = 320;
 
     extern const char*   ModeSelector_def;
-    const int            ModeSelector_defSize = 273;
+    const int            ModeSelector_defSize = 255;
 
     extern const char*   NavigationPanel_def;
-    const int            NavigationPanel_defSize = 432;
+    const int            NavigationPanel_defSize = 388;
 
     extern const char*   PlaybackPanel_def;
-    const int            PlaybackPanel_defSize = 447;
+    const int            PlaybackPanel_defSize = 421;
 
     extern const char*   SongData_def;
     const int            SongData_defSize = 30;
 
     extern const char*   TransformController_def;
-    const int            TransformController_defSize = 694;
+    const int            TransformController_defSize = 654;
 
     extern const char*   TransportController_def;
-    const int            TransportController_defSize = 820;
+    const int            TransportController_defSize = 790;
 
     extern const char*   Waveform_def;
     const int            Waveform_defSize = 114;

@@ -24,11 +24,10 @@ Component* make(const ComponentProto& c,
   if (c.has_label())
     return makeLabel(c.label(), constants).release();
 /*
-  if (c.has_panel())
-    return makePanel(c.panel(), constants).release();
+   TODO: resizers go here.
 */
-  if (c.has_resizer())
-    return makeResizer(c.resizer(), constants).release();
+  if (c.has_full_resizer())
+    return makeResizer(c.full_resizer(), constants).release();
 
   if (c.has_slider())
     return makeSlider(c.slider(), constants).release();

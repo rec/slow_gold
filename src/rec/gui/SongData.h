@@ -26,27 +26,28 @@ class SongData : public app::LanguageListener,
 
   virtual void languageChanged() {
     clear(true);
-    const string& typeName = getTypeName<music::Metadata>();
-    add(Trans("Track"), typeName,
-        Address("track_title"),
+    using data::makeAddress;
+    using music::Metadata;
+    add(Trans("Track"),
+        makeAddress<Metadata>("track_title"),
         Trans("Track Title: The name of this track."));
-    add(Trans("Album"), typeName,
-        Address("album_title"),
+    add(Trans("Album"),
+        makeAddress<Metadata>("album_title"),
         Trans("Album Name: The name of the album this track is from."));
-    add(Trans("Artist"), typeName,
-        Address("artist"),
+    add(Trans("Artist"),
+        makeAddress<Metadata>("artist"),
         Trans("Artist Name: The artist or musician who made this specific track."));
-    add(Trans("Number"), typeName,
-        Address("track_number"),
+    add(Trans("Number"),
+        makeAddress<Metadata>("track_number"),
         Trans("Track Number: The album track number for this track"));
-    add(Trans("Year"), typeName,
-        Address("year"),
+    add(Trans("Year"),
+        makeAddress<Metadata>("year"),
         Trans("Album Year: The year that that this track was recorded."));
-    add(Trans("Genre"), typeName,
-        Address("genre"),
+    add(Trans("Genre"),
+        makeAddress<Metadata>("genre"),
         Trans("Track tags: Tags that categorize this track."));
-    add(Trans("Notes"), typeName,
-        Address("notes"),
+    add(Trans("Notes"),
+        makeAddress<Metadata>("notes"),
         Trans("Track Notes: You can enter your notes here."))->
         editor()->setMultiLine(true, true);
     resized();

@@ -10,7 +10,7 @@ namespace data {
 
 class AddressListener : public Listener<const Value&> {
  public:
-  AddressListener(const Address& a, const string& typeName);
+  AddressListener(const Address& a);
   virtual ~AddressListener();
 
   virtual void operator()(const Value&) = 0;

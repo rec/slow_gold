@@ -4,6 +4,7 @@
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
+using namespace rec::data;
 
 namespace rec {
 namespace gui {
@@ -13,7 +14,6 @@ namespace audio {
 
 using rec::audio::Gain;
 using rec::audio::AudioSettings;
-using data::Address;
 
 namespace {
 
@@ -33,28 +33,26 @@ TransformController::TransformController()
       playbackSpeed_("Stretch", "Playback Speed Slider: "
                      "Controls how fast the loop plays back: "
                      "higher numbers mean the loop plays back faster.",
-                     getTypeName<Stretch>(), "time_percent"),
+                     makeAddress<Stretch>("time_percent")),
 
       pitchScale_("Pitch", "Playback Tuning Slider: "
                   "Coarse loop playback up and down in pitch, "
                   "measured in semitones.",
-                  getTypeName<Stretch>(), "semitone_shift"),
+                  makeAddress<Stretch>("semitone_shift")),
 
       fineScale_("Tune", "Playback Fine Tuning Slider: "
                  "Fine tune loop up or down in pitch, measured in "
                  "cents (1/100 of a semitone).",
-                 getTypeName<Stretch>(), "detune_cents"),
+                  makeAddress<Stretch>("detune_cents")),
 
       masterTune_("Master", "Master Tune Slider: "
                   "Master tune is a global detune over all tracks.",
-                  getTypeName<AudioSettings>(),
-                  data::Address("master_tune") +
-                  data::AddressProto::GLOBAL_SCOPE),
+                  makeGlobalAddress<AudioSettings>("master_tune")),
 
       enableButton_("Enable",       "Transform Enable Button: "
                     "Disable or enable all sound transformations: "
                     "pitch, time and stereo processing but not master tune.",
-                    getTypeName<Stretch>(), "time_enabled"),
+                    makeAddress<Stretch>("time_enabled")),
 
       leftPanel_("Left", VERTICAL),
       rightPanel_("Right", VERTICAL),

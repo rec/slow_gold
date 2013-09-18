@@ -17,8 +17,7 @@ namespace program {
 
 SetterListener::SetterListener(const command::Command& command,
                                JuceModel* model)
-    : AddressListener(command.setter().address(),
-                      command.setter().type_name()),
+    : AddressListener(command.setter().address()),
       model_(model) {
   Program* p = model->program();
   CommandID id = command.id();

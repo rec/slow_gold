@@ -64,10 +64,9 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Description));
   Setter_descriptor_ = file->message_type(1);
-  static const int Setter_offsets_[3] = {
+  static const int Setter_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Setter, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Setter, address_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Setter, type_name_),
   };
   Setter_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -171,23 +170,23 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\n\031rec/command/Command.proto\022\013rec.command"
     "\032\034rec/data/proto/Address.proto\"E\n\013Descri"
     "ption\022\014\n\004name\030\001 \001(\t\022\014\n\004menu\030\002 \003(\t\022\014\n\004ful"
-    "l\030\003 \003(\t\022\014\n\004help\030\004 \001(\t\"\227\001\n\006Setter\022.\n\004type"
+    "l\030\003 \003(\t\022\014\n\004help\030\004 \001(\t\"\204\001\n\006Setter\022.\n\004type"
     "\030\001 \001(\0162\030.rec.command.Setter.Type:\006TOGGLE"
     "\022\'\n\007address\030\002 \001(\0132\026.rec.data.AddressProt"
-    "o\022\021\n\ttype_name\030\003 \001(\t\"!\n\004Type\022\n\n\006TOGGLE\020\000"
-    "\022\r\n\tSELECTION\020\001\"\301\003\n\007Command\022\n\n\002id\030\001 \001(\r\022"
-    "\r\n\005index\030\002 \001(\021\022\020\n\010category\030\003 \001(\t\022\024\n\014subm"
-    "enu_name\030\004 \001(\t\022\031\n\021submenu_separator\030\016 \003("
-    "\r\022&\n\004desc\030\005 \001(\0132\030.rec.command.Descriptio"
-    "n\022\020\n\010keypress\030\006 \003(\t\022\r\n\005flags\030\007 \001(\r\022#\n\006se"
-    "tter\030\010 \001(\0132\023.rec.command.Setter\022\014\n\004size\030"
-    "\t \001(\r\022\017\n\007callout\030\n \001(\010\022\016\n\006hidden\030\013 \003(\t\022\020"
-    "\n\010disabled\030\014 \003(\t\022\016\n\006ticked\030\r \003(\t\"\230\001\n\002Id\022"
-    "\010\n\004NONE\020\000\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 "
-    "\022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 "
-    "\022\021\n\014DESELECT_ALL\020\207 \022\017\n\nJUCE_START\020\200 \022\r\n\010"
-    "JUCE_END\020\210 \022\016\n\tBANK_SIZE\020\220N\"1\n\010Commands\022"
-    "%\n\007command\030\001 \003(\0132\024.rec.command.Command", 798);
+    "o\"!\n\004Type\022\n\n\006TOGGLE\020\000\022\r\n\tSELECTION\020\001\"\301\003\n"
+    "\007Command\022\n\n\002id\030\001 \001(\r\022\r\n\005index\030\002 \001(\021\022\020\n\010c"
+    "ategory\030\003 \001(\t\022\024\n\014submenu_name\030\004 \001(\t\022\031\n\021s"
+    "ubmenu_separator\030\016 \003(\r\022&\n\004desc\030\005 \001(\0132\030.r"
+    "ec.command.Description\022\020\n\010keypress\030\006 \003(\t"
+    "\022\r\n\005flags\030\007 \001(\r\022#\n\006setter\030\010 \001(\0132\023.rec.co"
+    "mmand.Setter\022\014\n\004size\030\t \001(\r\022\017\n\007callout\030\n "
+    "\001(\010\022\016\n\006hidden\030\013 \003(\t\022\020\n\010disabled\030\014 \003(\t\022\016\n"
+    "\006ticked\030\r \003(\t\"\230\001\n\002Id\022\010\n\004NONE\020\000\022\t\n\004QUIT\020\201"
+    " \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PAST"
+    "E\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 "
+    "\022\017\n\nJUCE_START\020\200 \022\r\n\010JUCE_END\020\210 \022\016\n\tBANK"
+    "_SIZE\020\220N\"1\n\010Commands\022%\n\007command\030\001 \003(\0132\024."
+    "rec.command.Command", 779);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -612,7 +611,6 @@ const int Setter::Type_ARRAYSIZE;
 #ifndef _MSC_VER
 const int Setter::kTypeFieldNumber;
 const int Setter::kAddressFieldNumber;
-const int Setter::kTypeNameFieldNumber;
 #endif  // !_MSC_VER
 
 Setter::Setter()
@@ -634,7 +632,6 @@ void Setter::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
   address_ = NULL;
-  type_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -643,9 +640,6 @@ Setter::~Setter() {
 }
 
 void Setter::SharedDtor() {
-  if (type_name_ != &::google::protobuf::internal::kEmptyString) {
-    delete type_name_;
-  }
   if (this != default_instance_) {
     delete address_;
   }
@@ -677,11 +671,6 @@ void Setter::Clear() {
     type_ = 0;
     if (has_address()) {
       if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
-    }
-    if (has_type_name()) {
-      if (type_name_ != &::google::protobuf::internal::kEmptyString) {
-        type_name_->clear();
-      }
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -724,23 +713,6 @@ bool Setter::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_type_name;
-        break;
-      }
-
-      // optional string type_name = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_type_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_type_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->type_name().data(), this->type_name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -775,15 +747,6 @@ void Setter::SerializeWithCachedSizes(
       2, this->address(), output);
   }
 
-  // optional string type_name = 3;
-  if (has_type_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->type_name().data(), this->type_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->type_name(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -803,16 +766,6 @@ void Setter::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->address(), target);
-  }
-
-  // optional string type_name = 3;
-  if (has_type_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->type_name().data(), this->type_name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->type_name(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -837,13 +790,6 @@ int Setter::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->address());
-    }
-
-    // optional string type_name = 3;
-    if (has_type_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->type_name());
     }
 
   }
@@ -879,9 +825,6 @@ void Setter::MergeFrom(const Setter& from) {
     if (from.has_address()) {
       mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
     }
-    if (from.has_type_name()) {
-      set_type_name(from.type_name());
-    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -907,7 +850,6 @@ void Setter::Swap(Setter* other) {
   if (other != this) {
     std::swap(type_, other->type_);
     std::swap(address_, other->address_);
-    std::swap(type_name_, other->type_name_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

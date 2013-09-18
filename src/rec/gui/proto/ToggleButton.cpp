@@ -6,10 +6,8 @@ namespace gui {
 
 unique_ptr<SetterToggle> makeToggleButton(const ToggleButtonProto& proto,
                                           const Constants&) {
-  return make_unique<SetterToggle>(proto.name(), proto.tooltip(),
-                                   proto.address().type_name(),
-                                   proto.address());
-
+  return make_unique<SetterToggle>(
+      proto.name(), proto.tooltip(), proto.address());
 }
 
 

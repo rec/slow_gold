@@ -8,8 +8,7 @@ namespace gui {
 unique_ptr<SetterResizer> makeResizer(const ResizerProto& proto,
                                       const Constants& constants) {
   unique_ptr<SetterResizer> resizer(
-      new SetterResizer(proto.address().type_name(),
-                        proto.address(),
+      new SetterResizer(proto.address(),
                         nullptr, // TODO
                         -1, // TODO
                         constants(proto.min_value())));

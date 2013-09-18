@@ -15,7 +15,6 @@ class SetterText : public Panel,
                    public TextEditor::Listener {
  public:
   SetterText(const String& name,
-             const string& typeName,
              const data::Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty,
