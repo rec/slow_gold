@@ -13,27 +13,27 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Constants.proto',
   package='rec.gui',
-  serialized_pb='\n\x1drec/gui/proto/Constants.proto\x12\x07rec.gui\"\'\n\x08\x43onstant\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01\"0\n\tConstants\x12#\n\x08\x63onstant\x18\x01 \x03(\x0b\x32\x11.rec.gui.Constant')
+  serialized_pb='\n\x1drec/gui/proto/Constants.proto\x12\x07rec.gui\",\n\rConstantProto\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01\":\n\x0e\x43onstantProtos\x12(\n\x08\x63onstant\x18\x01 \x03(\x0b\x32\x16.rec.gui.ConstantProto')
 
 
 
 
-_CONSTANT = _descriptor.Descriptor(
-  name='Constant',
-  full_name='rec.gui.Constant',
+_CONSTANTPROTO = _descriptor.Descriptor(
+  name='ConstantProto',
+  full_name='rec.gui.ConstantProto',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='rec.gui.Constant.name', index=0,
+      name='name', full_name='rec.gui.ConstantProto.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='value', full_name='rec.gui.Constant.value', index=1,
+      name='value', full_name='rec.gui.ConstantProto.value', index=1,
       number=2, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -49,19 +49,19 @@ _CONSTANT = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=42,
-  serialized_end=81,
+  serialized_end=86,
 )
 
 
-_CONSTANTS = _descriptor.Descriptor(
-  name='Constants',
-  full_name='rec.gui.Constants',
+_CONSTANTPROTOS = _descriptor.Descriptor(
+  name='ConstantProtos',
+  full_name='rec.gui.ConstantProtos',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='constant', full_name='rec.gui.Constants.constant', index=0,
+      name='constant', full_name='rec.gui.ConstantProtos.constant', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -76,25 +76,25 @@ _CONSTANTS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=83,
-  serialized_end=131,
+  serialized_start=88,
+  serialized_end=146,
 )
 
-_CONSTANTS.fields_by_name['constant'].message_type = _CONSTANT
-DESCRIPTOR.message_types_by_name['Constant'] = _CONSTANT
-DESCRIPTOR.message_types_by_name['Constants'] = _CONSTANTS
+_CONSTANTPROTOS.fields_by_name['constant'].message_type = _CONSTANTPROTO
+DESCRIPTOR.message_types_by_name['ConstantProto'] = _CONSTANTPROTO
+DESCRIPTOR.message_types_by_name['ConstantProtos'] = _CONSTANTPROTOS
 
-class Constant(_message.Message):
+class ConstantProto(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CONSTANT
+  DESCRIPTOR = _CONSTANTPROTO
 
-  # @@protoc_insertion_point(class_scope:rec.gui.Constant)
+  # @@protoc_insertion_point(class_scope:rec.gui.ConstantProto)
 
-class Constants(_message.Message):
+class ConstantProtos(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CONSTANTS
+  DESCRIPTOR = _CONSTANTPROTOS
 
-  # @@protoc_insertion_point(class_scope:rec.gui.Constants)
+  # @@protoc_insertion_point(class_scope:rec.gui.ConstantProtos)
 
 
 # @@protoc_insertion_point(module_scope)

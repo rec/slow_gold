@@ -8,7 +8,8 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<SetterToggle> makeToggleButton(const ToggleButtonProto&);
+unique_ptr<SetterToggle> makeToggleButton(const ToggleButtonProto&,
+                                          const Constants&);
 
 }  // namespace gui
 }  // namespace rec

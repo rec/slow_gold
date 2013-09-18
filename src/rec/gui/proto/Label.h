@@ -9,7 +9,7 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<SimpleLabel> makeLabel(const LabelProto&);
+unique_ptr<SimpleLabel> makeLabel(const LabelProto&, const Constants&);
 
 }  // namespace gui
 }  // namespace rec

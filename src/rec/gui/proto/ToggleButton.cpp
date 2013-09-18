@@ -4,7 +4,8 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<SetterToggle> makeToggleButton(const ToggleButtonProto& proto) {
+unique_ptr<SetterToggle> makeToggleButton(const ToggleButtonProto& proto,
+                                          const Constants&) {
   return make_unique<SetterToggle>(proto.name(), proto.tooltip(),
                                    proto.data_address().type_name(),
                                    proto.data_address().address());

@@ -5,7 +5,8 @@ using namespace juce;
 namespace rec {
 namespace gui {
 
-unique_ptr<SetterResizer> makeResizer(const ResizerProto& proto) {
+unique_ptr<SetterResizer> makeResizer(const ResizerProto& proto,
+                                      const Constants&) {
   unique_ptr<SetterResizer> resizer(
       new SetterResizer(proto.data_address().type_name(),
                         proto.data_address().address(),

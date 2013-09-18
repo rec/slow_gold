@@ -8,7 +8,7 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<Component> makeComponent(const ComponentProto&);
+unique_ptr<Component> makeComponent(const ComponentProto&, const Constants&);
 
 }  // namespace gui
 }  // namespace rec

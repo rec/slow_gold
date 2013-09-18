@@ -5,7 +5,7 @@ using namespace juce;
 namespace rec {
 namespace gui {
 
-unique_ptr<ComboBox> makeComboBox(const ComboBoxProto& combo) {
+unique_ptr<ComboBox> makeComboBox(const ComboBoxProto& combo, const Constants&) {
   unique_ptr<ComboBox> comboBox(new ComboBox);
   comboBox->setEditableText(false);
   comboBox->setJustificationType(Justification::centredLeft);

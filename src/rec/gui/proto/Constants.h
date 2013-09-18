@@ -4,14 +4,21 @@
 #include <unordered_map>
 
 #include "rec/base/base.h"
-#include "rec/gui/proto/Constants.pb.h"
 
 namespace rec {
 namespace gui {
 
-typedef std::unordered_map<string, double> ConstantsMap;
+class ConstantProtos;
 
-ConstantsMap makeConstantsMap(const Constants&);
+class Constants {
+ public:
+  Constants() {}
+  Constants(const ConstantProtos&);
+  double operator()(const string&);
+
+ private:
+  std::unordered_map<string, double> map_;
+};
 
 }  // namespace gui
 }  // namespace rec

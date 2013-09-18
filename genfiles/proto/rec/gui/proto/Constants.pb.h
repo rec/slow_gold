@@ -34,19 +34,19 @@ void  protobuf_AddDesc_rec_2fgui_2fproto_2fConstants_2eproto();
 void protobuf_AssignDesc_rec_2fgui_2fproto_2fConstants_2eproto();
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fConstants_2eproto();
 
-class Constant;
-class Constants;
+class ConstantProto;
+class ConstantProtos;
 
 // ===================================================================
 
-class Constant : public ::google::protobuf::Message {
+class ConstantProto : public ::google::protobuf::Message {
  public:
-  Constant();
-  virtual ~Constant();
+  ConstantProto();
+  virtual ~ConstantProto();
 
-  Constant(const Constant& from);
+  ConstantProto(const ConstantProto& from);
 
-  inline Constant& operator=(const Constant& from) {
+  inline ConstantProto& operator=(const ConstantProto& from) {
     CopyFrom(from);
     return *this;
   }
@@ -60,17 +60,17 @@ class Constant : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Constant& default_instance();
+  static const ConstantProto& default_instance();
 
-  void Swap(Constant* other);
+  void Swap(ConstantProto* other);
 
   // implements Message ----------------------------------------------
 
-  Constant* New() const;
+  ConstantProto* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Constant& from);
-  void MergeFrom(const Constant& from);
+  void CopyFrom(const ConstantProto& from);
+  void MergeFrom(const ConstantProto& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -112,7 +112,7 @@ class Constant : public ::google::protobuf::Message {
   inline double value() const;
   inline void set_value(double value);
 
-  // @@protoc_insertion_point(class_scope:rec.gui.Constant)
+  // @@protoc_insertion_point(class_scope:rec.gui.ConstantProto)
  private:
   inline void set_has_name();
   inline void clear_has_name();
@@ -132,18 +132,18 @@ class Constant : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_rec_2fgui_2fproto_2fConstants_2eproto();
 
   void InitAsDefaultInstance();
-  static Constant* default_instance_;
+  static ConstantProto* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class Constants : public ::google::protobuf::Message {
+class ConstantProtos : public ::google::protobuf::Message {
  public:
-  Constants();
-  virtual ~Constants();
+  ConstantProtos();
+  virtual ~ConstantProtos();
 
-  Constants(const Constants& from);
+  ConstantProtos(const ConstantProtos& from);
 
-  inline Constants& operator=(const Constants& from) {
+  inline ConstantProtos& operator=(const ConstantProtos& from) {
     CopyFrom(from);
     return *this;
   }
@@ -157,17 +157,17 @@ class Constants : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Constants& default_instance();
+  static const ConstantProtos& default_instance();
 
-  void Swap(Constants* other);
+  void Swap(ConstantProtos* other);
 
   // implements Message ----------------------------------------------
 
-  Constants* New() const;
+  ConstantProtos* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Constants& from);
-  void MergeFrom(const Constants& from);
+  void CopyFrom(const ConstantProtos& from);
+  void MergeFrom(const ConstantProtos& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -190,24 +190,24 @@ class Constants : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .rec.gui.Constant constant = 1;
+  // repeated .rec.gui.ConstantProto constant = 1;
   inline int constant_size() const;
   inline void clear_constant();
   static const int kConstantFieldNumber = 1;
-  inline const ::rec::gui::Constant& constant(int index) const;
-  inline ::rec::gui::Constant* mutable_constant(int index);
-  inline ::rec::gui::Constant* add_constant();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::Constant >&
+  inline const ::rec::gui::ConstantProto& constant(int index) const;
+  inline ::rec::gui::ConstantProto* mutable_constant(int index);
+  inline ::rec::gui::ConstantProto* add_constant();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::ConstantProto >&
       constant() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::Constant >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::ConstantProto >*
       mutable_constant();
 
-  // @@protoc_insertion_point(class_scope:rec.gui.Constants)
+  // @@protoc_insertion_point(class_scope:rec.gui.ConstantProtos)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::Constant > constant_;
+  ::google::protobuf::RepeatedPtrField< ::rec::gui::ConstantProto > constant_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -217,63 +217,63 @@ class Constants : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_rec_2fgui_2fproto_2fConstants_2eproto();
 
   void InitAsDefaultInstance();
-  static Constants* default_instance_;
+  static ConstantProtos* default_instance_;
 };
 // ===================================================================
 
 
 // ===================================================================
 
-// Constant
+// ConstantProto
 
 // optional string name = 1;
-inline bool Constant::has_name() const {
+inline bool ConstantProto::has_name() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Constant::set_has_name() {
+inline void ConstantProto::set_has_name() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Constant::clear_has_name() {
+inline void ConstantProto::clear_has_name() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Constant::clear_name() {
+inline void ConstantProto::clear_name() {
   if (name_ != &::google::protobuf::internal::kEmptyString) {
     name_->clear();
   }
   clear_has_name();
 }
-inline const ::std::string& Constant::name() const {
+inline const ::std::string& ConstantProto::name() const {
   return *name_;
 }
-inline void Constant::set_name(const ::std::string& value) {
+inline void ConstantProto::set_name(const ::std::string& value) {
   set_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void Constant::set_name(const char* value) {
+inline void ConstantProto::set_name(const char* value) {
   set_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void Constant::set_name(const char* value, size_t size) {
+inline void ConstantProto::set_name(const char* value, size_t size) {
   set_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     name_ = new ::std::string;
   }
   name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Constant::mutable_name() {
+inline ::std::string* ConstantProto::mutable_name() {
   set_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     name_ = new ::std::string;
   }
   return name_;
 }
-inline ::std::string* Constant::release_name() {
+inline ::std::string* ConstantProto::release_name() {
   clear_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -283,7 +283,7 @@ inline ::std::string* Constant::release_name() {
     return temp;
   }
 }
-inline void Constant::set_allocated_name(::std::string* name) {
+inline void ConstantProto::set_allocated_name(::std::string* name) {
   if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
   }
@@ -297,53 +297,53 @@ inline void Constant::set_allocated_name(::std::string* name) {
 }
 
 // optional double value = 2;
-inline bool Constant::has_value() const {
+inline bool ConstantProto::has_value() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Constant::set_has_value() {
+inline void ConstantProto::set_has_value() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Constant::clear_has_value() {
+inline void ConstantProto::clear_has_value() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void Constant::clear_value() {
+inline void ConstantProto::clear_value() {
   value_ = 0;
   clear_has_value();
 }
-inline double Constant::value() const {
+inline double ConstantProto::value() const {
   return value_;
 }
-inline void Constant::set_value(double value) {
+inline void ConstantProto::set_value(double value) {
   set_has_value();
   value_ = value;
 }
 
 // -------------------------------------------------------------------
 
-// Constants
+// ConstantProtos
 
-// repeated .rec.gui.Constant constant = 1;
-inline int Constants::constant_size() const {
+// repeated .rec.gui.ConstantProto constant = 1;
+inline int ConstantProtos::constant_size() const {
   return constant_.size();
 }
-inline void Constants::clear_constant() {
+inline void ConstantProtos::clear_constant() {
   constant_.Clear();
 }
-inline const ::rec::gui::Constant& Constants::constant(int index) const {
+inline const ::rec::gui::ConstantProto& ConstantProtos::constant(int index) const {
   return constant_.Get(index);
 }
-inline ::rec::gui::Constant* Constants::mutable_constant(int index) {
+inline ::rec::gui::ConstantProto* ConstantProtos::mutable_constant(int index) {
   return constant_.Mutable(index);
 }
-inline ::rec::gui::Constant* Constants::add_constant() {
+inline ::rec::gui::ConstantProto* ConstantProtos::add_constant() {
   return constant_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::Constant >&
-Constants::constant() const {
+inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::ConstantProto >&
+ConstantProtos::constant() const {
   return constant_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::Constant >*
-Constants::mutable_constant() {
+inline ::google::protobuf::RepeatedPtrField< ::rec::gui::ConstantProto >*
+ConstantProtos::mutable_constant() {
   return &constant_;
 }
 

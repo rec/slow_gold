@@ -8,7 +8,7 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<SetterResizer> makeResizer(const ResizerProto&);
+unique_ptr<SetterResizer> makeResizer(const ResizerProto&, const Constants&);
 
 }  // namespace gui
 }  // namespace rec

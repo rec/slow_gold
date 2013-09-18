@@ -8,7 +8,7 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<LanguageButton> makeButton(const ButtonProto&);
+unique_ptr<LanguageButton> makeButton(const ButtonProto&, const Constants&);
 
 }  // namespace gui
 }  // namespace rec

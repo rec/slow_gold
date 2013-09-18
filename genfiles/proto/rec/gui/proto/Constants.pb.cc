@@ -21,12 +21,12 @@ namespace gui {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Constant_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* ConstantProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Constant_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Constants_descriptor_ = NULL;
+  ConstantProto_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ConstantProtos_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Constants_reflection_ = NULL;
+  ConstantProtos_reflection_ = NULL;
 
 }  // namespace
 
@@ -37,37 +37,37 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fConstants_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/gui/proto/Constants.proto");
   GOOGLE_CHECK(file != NULL);
-  Constant_descriptor_ = file->message_type(0);
-  static const int Constant_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Constant, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Constant, value_),
+  ConstantProto_descriptor_ = file->message_type(0);
+  static const int ConstantProto_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConstantProto, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConstantProto, value_),
   };
-  Constant_reflection_ =
+  ConstantProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Constant_descriptor_,
-      Constant::default_instance_,
-      Constant_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Constant, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Constant, _unknown_fields_),
+      ConstantProto_descriptor_,
+      ConstantProto::default_instance_,
+      ConstantProto_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConstantProto, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConstantProto, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Constant));
-  Constants_descriptor_ = file->message_type(1);
-  static const int Constants_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Constants, constant_),
+      sizeof(ConstantProto));
+  ConstantProtos_descriptor_ = file->message_type(1);
+  static const int ConstantProtos_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConstantProtos, constant_),
   };
-  Constants_reflection_ =
+  ConstantProtos_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Constants_descriptor_,
-      Constants::default_instance_,
-      Constants_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Constants, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Constants, _unknown_fields_),
+      ConstantProtos_descriptor_,
+      ConstantProtos::default_instance_,
+      ConstantProtos_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConstantProtos, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ConstantProtos, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Constants));
+      sizeof(ConstantProtos));
 }
 
 namespace {
@@ -81,18 +81,18 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Constant_descriptor_, &Constant::default_instance());
+    ConstantProto_descriptor_, &ConstantProto::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Constants_descriptor_, &Constants::default_instance());
+    ConstantProtos_descriptor_, &ConstantProtos::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fConstants_2eproto() {
-  delete Constant::default_instance_;
-  delete Constant_reflection_;
-  delete Constants::default_instance_;
-  delete Constants_reflection_;
+  delete ConstantProto::default_instance_;
+  delete ConstantProto_reflection_;
+  delete ConstantProtos::default_instance_;
+  delete ConstantProtos_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fgui_2fproto_2fConstants_2eproto() {
@@ -103,15 +103,15 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fConstants_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/gui/proto/Constants.proto\022\007rec.gui"
-    "\"\'\n\010Constant\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001("
-    "\001\"0\n\tConstants\022#\n\010constant\030\001 \003(\0132\021.rec.g"
-    "ui.Constant", 131);
+    "\",\n\rConstantProto\022\014\n\004name\030\001 \001(\t\022\r\n\005value"
+    "\030\002 \001(\001\":\n\016ConstantProtos\022(\n\010constant\030\001 \003"
+    "(\0132\026.rec.gui.ConstantProto", 146);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Constants.proto", &protobuf_RegisterTypes);
-  Constant::default_instance_ = new Constant();
-  Constants::default_instance_ = new Constants();
-  Constant::default_instance_->InitAsDefaultInstance();
-  Constants::default_instance_->InitAsDefaultInstance();
+  ConstantProto::default_instance_ = new ConstantProto();
+  ConstantProtos::default_instance_ = new ConstantProtos();
+  ConstantProto::default_instance_->InitAsDefaultInstance();
+  ConstantProtos::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fproto_2fConstants_2eproto);
 }
 
@@ -125,36 +125,36 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fConstants_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Constant::kNameFieldNumber;
-const int Constant::kValueFieldNumber;
+const int ConstantProto::kNameFieldNumber;
+const int ConstantProto::kValueFieldNumber;
 #endif  // !_MSC_VER
 
-Constant::Constant()
+ConstantProto::ConstantProto()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void Constant::InitAsDefaultInstance() {
+void ConstantProto::InitAsDefaultInstance() {
 }
 
-Constant::Constant(const Constant& from)
+ConstantProto::ConstantProto(const ConstantProto& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Constant::SharedCtor() {
+void ConstantProto::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   value_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Constant::~Constant() {
+ConstantProto::~ConstantProto() {
   SharedDtor();
 }
 
-void Constant::SharedDtor() {
+void ConstantProto::SharedDtor() {
   if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
   }
@@ -162,28 +162,28 @@ void Constant::SharedDtor() {
   }
 }
 
-void Constant::SetCachedSize(int size) const {
+void ConstantProto::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Constant::descriptor() {
+const ::google::protobuf::Descriptor* ConstantProto::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Constant_descriptor_;
+  return ConstantProto_descriptor_;
 }
 
-const Constant& Constant::default_instance() {
+const ConstantProto& ConstantProto::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fproto_2fConstants_2eproto();
   return *default_instance_;
 }
 
-Constant* Constant::default_instance_ = NULL;
+ConstantProto* ConstantProto::default_instance_ = NULL;
 
-Constant* Constant::New() const {
-  return new Constant;
+ConstantProto* ConstantProto::New() const {
+  return new ConstantProto;
 }
 
-void Constant::Clear() {
+void ConstantProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_name()) {
       if (name_ != &::google::protobuf::internal::kEmptyString) {
@@ -196,7 +196,7 @@ void Constant::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool Constant::MergePartialFromCodedStream(
+bool ConstantProto::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -250,7 +250,7 @@ bool Constant::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Constant::SerializeWithCachedSizes(
+void ConstantProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional string name = 1;
   if (has_name()) {
@@ -272,7 +272,7 @@ void Constant::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* Constant::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* ConstantProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional string name = 1;
   if (has_name()) {
@@ -296,7 +296,7 @@ void Constant::SerializeWithCachedSizes(
   return target;
 }
 
-int Constant::ByteSize() const {
+int ConstantProto::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -324,10 +324,10 @@ int Constant::ByteSize() const {
   return total_size;
 }
 
-void Constant::MergeFrom(const ::google::protobuf::Message& from) {
+void ConstantProto::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Constant* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Constant*>(
+  const ConstantProto* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ConstantProto*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -336,7 +336,7 @@ void Constant::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Constant::MergeFrom(const Constant& from) {
+void ConstantProto::MergeFrom(const ConstantProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_name()) {
@@ -349,24 +349,24 @@ void Constant::MergeFrom(const Constant& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Constant::CopyFrom(const ::google::protobuf::Message& from) {
+void ConstantProto::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Constant::CopyFrom(const Constant& from) {
+void ConstantProto::CopyFrom(const ConstantProto& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Constant::IsInitialized() const {
+bool ConstantProto::IsInitialized() const {
 
   return true;
 }
 
-void Constant::Swap(Constant* other) {
+void ConstantProto::Swap(ConstantProto* other) {
   if (other != this) {
     std::swap(name_, other->name_);
     std::swap(value_, other->value_);
@@ -376,11 +376,11 @@ void Constant::Swap(Constant* other) {
   }
 }
 
-::google::protobuf::Metadata Constant::GetMetadata() const {
+::google::protobuf::Metadata ConstantProto::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Constant_descriptor_;
-  metadata.reflection = Constant_reflection_;
+  metadata.descriptor = ConstantProto_descriptor_;
+  metadata.reflection = ConstantProto_reflection_;
   return metadata;
 }
 
@@ -388,71 +388,71 @@ void Constant::Swap(Constant* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Constants::kConstantFieldNumber;
+const int ConstantProtos::kConstantFieldNumber;
 #endif  // !_MSC_VER
 
-Constants::Constants()
+ConstantProtos::ConstantProtos()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void Constants::InitAsDefaultInstance() {
+void ConstantProtos::InitAsDefaultInstance() {
 }
 
-Constants::Constants(const Constants& from)
+ConstantProtos::ConstantProtos(const ConstantProtos& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Constants::SharedCtor() {
+void ConstantProtos::SharedCtor() {
   _cached_size_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Constants::~Constants() {
+ConstantProtos::~ConstantProtos() {
   SharedDtor();
 }
 
-void Constants::SharedDtor() {
+void ConstantProtos::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void Constants::SetCachedSize(int size) const {
+void ConstantProtos::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Constants::descriptor() {
+const ::google::protobuf::Descriptor* ConstantProtos::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Constants_descriptor_;
+  return ConstantProtos_descriptor_;
 }
 
-const Constants& Constants::default_instance() {
+const ConstantProtos& ConstantProtos::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fproto_2fConstants_2eproto();
   return *default_instance_;
 }
 
-Constants* Constants::default_instance_ = NULL;
+ConstantProtos* ConstantProtos::default_instance_ = NULL;
 
-Constants* Constants::New() const {
-  return new Constants;
+ConstantProtos* ConstantProtos::New() const {
+  return new ConstantProtos;
 }
 
-void Constants::Clear() {
+void ConstantProtos::Clear() {
   constant_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool Constants::MergePartialFromCodedStream(
+bool ConstantProtos::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.gui.Constant constant = 1;
+      // repeated .rec.gui.ConstantProto constant = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -483,9 +483,9 @@ bool Constants::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Constants::SerializeWithCachedSizes(
+void ConstantProtos::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.gui.Constant constant = 1;
+  // repeated .rec.gui.ConstantProto constant = 1;
   for (int i = 0; i < this->constant_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->constant(i), output);
@@ -497,9 +497,9 @@ void Constants::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* Constants::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* ConstantProtos::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.gui.Constant constant = 1;
+  // repeated .rec.gui.ConstantProto constant = 1;
   for (int i = 0; i < this->constant_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -513,10 +513,10 @@ void Constants::SerializeWithCachedSizes(
   return target;
 }
 
-int Constants::ByteSize() const {
+int ConstantProtos::ByteSize() const {
   int total_size = 0;
 
-  // repeated .rec.gui.Constant constant = 1;
+  // repeated .rec.gui.ConstantProto constant = 1;
   total_size += 1 * this->constant_size();
   for (int i = 0; i < this->constant_size(); i++) {
     total_size +=
@@ -535,10 +535,10 @@ int Constants::ByteSize() const {
   return total_size;
 }
 
-void Constants::MergeFrom(const ::google::protobuf::Message& from) {
+void ConstantProtos::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Constants* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Constants*>(
+  const ConstantProtos* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ConstantProtos*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -547,30 +547,30 @@ void Constants::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Constants::MergeFrom(const Constants& from) {
+void ConstantProtos::MergeFrom(const ConstantProtos& from) {
   GOOGLE_CHECK_NE(&from, this);
   constant_.MergeFrom(from.constant_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Constants::CopyFrom(const ::google::protobuf::Message& from) {
+void ConstantProtos::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Constants::CopyFrom(const Constants& from) {
+void ConstantProtos::CopyFrom(const ConstantProtos& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Constants::IsInitialized() const {
+bool ConstantProtos::IsInitialized() const {
 
   return true;
 }
 
-void Constants::Swap(Constants* other) {
+void ConstantProtos::Swap(ConstantProtos* other) {
   if (other != this) {
     constant_.Swap(&other->constant_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -579,11 +579,11 @@ void Constants::Swap(Constants* other) {
   }
 }
 
-::google::protobuf::Metadata Constants::GetMetadata() const {
+::google::protobuf::Metadata ConstantProtos::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Constants_descriptor_;
-  metadata.reflection = Constants_reflection_;
+  metadata.descriptor = ConstantProtos_descriptor_;
+  metadata.reflection = ConstantProtos_reflection_;
   return metadata;
 }
 

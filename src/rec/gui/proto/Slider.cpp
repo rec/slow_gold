@@ -3,7 +3,8 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<DataSlider> makeSlider(const SliderProto& slider) {
+unique_ptr<DataSlider> makeSlider(const SliderProto& slider,
+                                  const Constants& constants) {
   unique_ptr<DataSlider> dataSlider(
       new DataSlider(slider.caption(),
                      slider.tooltip(),

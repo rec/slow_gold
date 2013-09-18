@@ -8,7 +8,7 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<juce::ComboBox> makeComboBox(const ComboBoxProto&);
+unique_ptr<juce::ComboBox> makeComboBox(const ComboBoxProto&, const Constants&);
 
 }  // namespace gui
 }  // namespace rec

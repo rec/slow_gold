@@ -14,7 +14,8 @@ void construct(unique_ptr<Drawable>* drawable, const string& name) {
 
 }  // namespace
 
-unique_ptr<LanguageButton> makeButton(const ButtonProto& proto) {
+unique_ptr<LanguageButton> makeButton(const ButtonProto& proto,
+                                      const Constants&) {
   auto style = static_cast<DrawableButton::ButtonStyle>(proto.style());
   unique_ptr<LanguageButton> button(
       new LanguageButton(proto.name(), proto.tooltip(), style));

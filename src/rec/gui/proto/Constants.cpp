@@ -1,13 +1,37 @@
 #include "rec/gui/proto/Constants.h"
+#include "rec/gui/proto/Constants.pb.h"
 
 namespace rec {
 namespace gui {
 
-ConstantsMap makeConstantsMap(const Constants& constants) {
-  ConstantsMap map;
-  for (auto& constant: constants.constant())
-    map[constant.name()] = constant.value();
-  return map;
+namespace {
+
+bool isNumber(const string& s) {
+  const char* p = s.c_data();
+  for (; isdigit(*p); ++p);
+  if (*p and *p++ != '.')
+    return false;
+  for (; isdigit(*p); ++p);
+  return not *p;
+}
+
+}  // namespace
+
+Constants::Constants(const ConstantProtos& protos) {
+  for (auto& constant: protos.constant())
+    map_[constant.name()] = constant.value();
+}
+
+double Constants::operator()(const string& name) {
+  if (isNumber(name))
+    return str(name).getDoubleValue();
+
+  try {
+    return map_.at(name);
+  } catch (std::out_of_range&) {
+    LOG(ERROR) << "Don't understand constant " << name;
+    return 0.0;
+  }
 }
 
 }  // namespace gui

@@ -8,7 +8,7 @@
 namespace rec {
 namespace gui {
 
-unique_ptr<DataSlider> makeSlider(const SliderProto&);
+unique_ptr<DataSlider> makeSlider(const SliderProto&, const Constants&);
 
 }  // namespace gui
 }  // namespace rec
