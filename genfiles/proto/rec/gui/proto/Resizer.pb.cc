@@ -85,7 +85,7 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fResizer_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\033rec/gui/proto/Resizer.proto\022\007rec.gui\032\034"
     "rec/data/proto/Address.proto\"m\n\014ResizerP"
-    "roto\022\014\n\004size\030\001 \001(\r\022\021\n\tmin_value\030\002 \001(\r\022\017\n"
+    "roto\022\014\n\004size\030\001 \001(\t\022\021\n\tmin_value\030\002 \001(\t\022\017\n"
     "\007address\030\003 \001(\t\022+\n\014data_address\030\004 \001(\0132\025.r"
     "ec.data.DataAddress", 179);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -128,8 +128,8 @@ ResizerProto::ResizerProto(const ResizerProto& from)
 
 void ResizerProto::SharedCtor() {
   _cached_size_ = 0;
-  size_ = 0u;
-  min_value_ = 0u;
+  size_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  min_value_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   address_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   data_address_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -140,6 +140,12 @@ ResizerProto::~ResizerProto() {
 }
 
 void ResizerProto::SharedDtor() {
+  if (size_ != &::google::protobuf::internal::kEmptyString) {
+    delete size_;
+  }
+  if (min_value_ != &::google::protobuf::internal::kEmptyString) {
+    delete min_value_;
+  }
   if (address_ != &::google::protobuf::internal::kEmptyString) {
     delete address_;
   }
@@ -171,8 +177,16 @@ ResizerProto* ResizerProto::New() const {
 
 void ResizerProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    size_ = 0u;
-    min_value_ = 0u;
+    if (has_size()) {
+      if (size_ != &::google::protobuf::internal::kEmptyString) {
+        size_->clear();
+      }
+    }
+    if (has_min_value()) {
+      if (min_value_ != &::google::protobuf::internal::kEmptyString) {
+        min_value_->clear();
+      }
+    }
     if (has_address()) {
       if (address_ != &::google::protobuf::internal::kEmptyString) {
         address_->clear();
@@ -192,30 +206,32 @@ bool ResizerProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 size = 1;
+      // optional string size = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &size_)));
-          set_has_size();
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_size()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->size().data(), this->size().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_min_value;
+        if (input->ExpectTag(18)) goto parse_min_value;
         break;
       }
 
-      // optional uint32 min_value = 2;
+      // optional string min_value = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_min_value:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &min_value_)));
-          set_has_min_value();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_min_value()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->min_value().data(), this->min_value().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -272,14 +288,22 @@ bool ResizerProto::MergePartialFromCodedStream(
 
 void ResizerProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 size = 1;
+  // optional string size = 1;
   if (has_size()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->size(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->size().data(), this->size().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->size(), output);
   }
 
-  // optional uint32 min_value = 2;
+  // optional string min_value = 2;
   if (has_min_value()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->min_value(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->min_value().data(), this->min_value().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->min_value(), output);
   }
 
   // optional string address = 3;
@@ -305,14 +329,24 @@ void ResizerProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* ResizerProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint32 size = 1;
+  // optional string size = 1;
   if (has_size()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->size(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->size().data(), this->size().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->size(), target);
   }
 
-  // optional uint32 min_value = 2;
+  // optional string min_value = 2;
   if (has_min_value()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->min_value(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->min_value().data(), this->min_value().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->min_value(), target);
   }
 
   // optional string address = 3;
@@ -343,17 +377,17 @@ int ResizerProto::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint32 size = 1;
+    // optional string size = 1;
     if (has_size()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->size());
     }
 
-    // optional uint32 min_value = 2;
+    // optional string min_value = 2;
     if (has_min_value()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->min_value());
     }
 

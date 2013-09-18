@@ -109,17 +109,10 @@ class ComboBoxProto : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& item() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_item();
 
-  // optional uint32 height = 2;
-  inline bool has_height() const;
-  inline void clear_height();
-  static const int kHeightFieldNumber = 2;
-  inline ::google::protobuf::uint32 height() const;
-  inline void set_height(::google::protobuf::uint32 value);
-
-  // optional string tooltip = 3;
+  // optional string tooltip = 2;
   inline bool has_tooltip() const;
   inline void clear_tooltip();
-  static const int kTooltipFieldNumber = 3;
+  static const int kTooltipFieldNumber = 2;
   inline const ::std::string& tooltip() const;
   inline void set_tooltip(const ::std::string& value);
   inline void set_tooltip(const char* value);
@@ -128,10 +121,10 @@ class ComboBoxProto : public ::google::protobuf::Message {
   inline ::std::string* release_tooltip();
   inline void set_allocated_tooltip(::std::string* tooltip);
 
-  // optional .rec.data.DataAddress data_address = 4;
+  // optional .rec.data.DataAddress data_address = 3;
   inline bool has_data_address() const;
   inline void clear_data_address();
-  static const int kDataAddressFieldNumber = 4;
+  static const int kDataAddressFieldNumber = 3;
   inline const ::rec::data::DataAddress& data_address() const;
   inline ::rec::data::DataAddress* mutable_data_address();
   inline ::rec::data::DataAddress* release_data_address();
@@ -139,8 +132,6 @@ class ComboBoxProto : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:rec.gui.ComboBoxProto)
  private:
-  inline void set_has_height();
-  inline void clear_has_height();
   inline void set_has_tooltip();
   inline void clear_has_tooltip();
   inline void set_has_data_address();
@@ -151,10 +142,9 @@ class ComboBoxProto : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::std::string> item_;
   ::std::string* tooltip_;
   ::rec::data::DataAddress* data_address_;
-  ::google::protobuf::uint32 height_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComboBox_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComboBox_2eproto();
@@ -214,37 +204,15 @@ ComboBoxProto::mutable_item() {
   return &item_;
 }
 
-// optional uint32 height = 2;
-inline bool ComboBoxProto::has_height() const {
+// optional string tooltip = 2;
+inline bool ComboBoxProto::has_tooltip() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ComboBoxProto::set_has_height() {
+inline void ComboBoxProto::set_has_tooltip() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ComboBoxProto::clear_has_height() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void ComboBoxProto::clear_height() {
-  height_ = 0u;
-  clear_has_height();
-}
-inline ::google::protobuf::uint32 ComboBoxProto::height() const {
-  return height_;
-}
-inline void ComboBoxProto::set_height(::google::protobuf::uint32 value) {
-  set_has_height();
-  height_ = value;
-}
-
-// optional string tooltip = 3;
-inline bool ComboBoxProto::has_tooltip() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void ComboBoxProto::set_has_tooltip() {
-  _has_bits_[0] |= 0x00000004u;
-}
 inline void ComboBoxProto::clear_has_tooltip() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void ComboBoxProto::clear_tooltip() {
   if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
@@ -306,15 +274,15 @@ inline void ComboBoxProto::set_allocated_tooltip(::std::string* tooltip) {
   }
 }
 
-// optional .rec.data.DataAddress data_address = 4;
+// optional .rec.data.DataAddress data_address = 3;
 inline bool ComboBoxProto::has_data_address() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void ComboBoxProto::set_has_data_address() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void ComboBoxProto::clear_has_data_address() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void ComboBoxProto::clear_data_address() {
   if (data_address_ != NULL) data_address_->::rec::data::DataAddress::Clear();

@@ -35,12 +35,11 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLabel_2eproto() {
       "rec/gui/proto/Label.proto");
   GOOGLE_CHECK(file != NULL);
   LabelProto_descriptor_ = file->message_type(0);
-  static const int LabelProto_offsets_[5] = {
+  static const int LabelProto_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, font_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, text_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, tooltip_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LabelProto, height_),
   };
   LabelProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -87,10 +86,9 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLabel_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/gui/proto/Label.proto\022\007rec.gui\032\034re"
     "c/data/proto/Address.proto\032\030rec/gui/prot"
-    "o/Font.proto\"k\n\nLabelProto\022 \n\004font\030\001 \001(\013"
+    "o/Font.proto\"[\n\nLabelProto\022 \n\004font\030\001 \001(\013"
     "2\022.rec.gui.FontProto\022\014\n\004name\030\002 \001(\t\022\014\n\004te"
-    "xt\030\003 \001(\t\022\017\n\007tooltip\030\004 \001(\t\022\016\n\006height\030\005 \001("
-    "\r", 201);
+    "xt\030\003 \001(\t\022\017\n\007tooltip\030\004 \001(\t", 185);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Label.proto", &protobuf_RegisterTypes);
   LabelProto::default_instance_ = new LabelProto();
@@ -112,7 +110,6 @@ const int LabelProto::kFontFieldNumber;
 const int LabelProto::kNameFieldNumber;
 const int LabelProto::kTextFieldNumber;
 const int LabelProto::kTooltipFieldNumber;
-const int LabelProto::kHeightFieldNumber;
 #endif  // !_MSC_VER
 
 LabelProto::LabelProto()
@@ -136,7 +133,6 @@ void LabelProto::SharedCtor() {
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   text_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  height_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -200,7 +196,6 @@ void LabelProto::Clear() {
         tooltip_->clear();
       }
     }
-    height_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -272,22 +267,6 @@ bool LabelProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_height;
-        break;
-      }
-
-      // optional uint32 height = 5;
-      case 5: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_height:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &height_)));
-          set_has_height();
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -343,11 +322,6 @@ void LabelProto::SerializeWithCachedSizes(
       4, this->tooltip(), output);
   }
 
-  // optional uint32 height = 5;
-  if (has_height()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->height(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -393,11 +367,6 @@ void LabelProto::SerializeWithCachedSizes(
         4, this->tooltip(), target);
   }
 
-  // optional uint32 height = 5;
-  if (has_height()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->height(), target);
-  }
-
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -435,13 +404,6 @@ int LabelProto::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->tooltip());
-    }
-
-    // optional uint32 height = 5;
-    if (has_height()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->height());
     }
 
   }
@@ -483,9 +445,6 @@ void LabelProto::MergeFrom(const LabelProto& from) {
     if (from.has_tooltip()) {
       set_tooltip(from.tooltip());
     }
-    if (from.has_height()) {
-      set_height(from.height());
-    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -513,7 +472,6 @@ void LabelProto::Swap(LabelProto* other) {
     std::swap(name_, other->name_);
     std::swap(text_, other->text_);
     std::swap(tooltip_, other->tooltip_);
-    std::swap(height_, other->height_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

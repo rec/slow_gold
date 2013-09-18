@@ -793,6 +793,9 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Component.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Constants.cpp">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClCompile>
@@ -1142,6 +1145,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.cc">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Constants.pb.cc">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.cc">
@@ -2874,6 +2880,9 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Component.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Constants.h">
+      <Filter>SlowGold\src\gui\proto</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h">
       <Filter>SlowGold\src\gui\proto</Filter>
     </ClInclude>
@@ -3022,6 +3031,9 @@
       <Filter>SlowGold\src\translation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h">
+      <Filter>SlowGold\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\BinaryMacros.h">
       <Filter>SlowGold\src\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h">
@@ -3412,6 +3424,9 @@
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.h">
+      <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Constants.pb.h">
       <Filter>SlowGold\genfiles\rec\gui\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.h">

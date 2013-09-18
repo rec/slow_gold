@@ -35,9 +35,8 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fComboBox_2eproto() {
       "rec/gui/proto/ComboBox.proto");
   GOOGLE_CHECK(file != NULL);
   ComboBoxProto_descriptor_ = file->message_type(0);
-  static const int ComboBoxProto_offsets_[4] = {
+  static const int ComboBoxProto_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComboBoxProto, item_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComboBoxProto, height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComboBoxProto, tooltip_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ComboBoxProto, data_address_),
   };
@@ -84,10 +83,10 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fComboBox_2eproto() {
   ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/gui/proto/ComboBox.proto\022\007rec.gui\032"
-    "\034rec/data/proto/Address.proto\"k\n\rComboBo"
-    "xProto\022\014\n\004item\030\001 \003(\t\022\016\n\006height\030\002 \001(\r\022\017\n\007"
-    "tooltip\030\003 \001(\t\022+\n\014data_address\030\004 \001(\0132\025.re"
-    "c.data.DataAddress", 178);
+    "\034rec/data/proto/Address.proto\"[\n\rComboBo"
+    "xProto\022\014\n\004item\030\001 \003(\t\022\017\n\007tooltip\030\002 \001(\t\022+\n"
+    "\014data_address\030\003 \001(\0132\025.rec.data.DataAddre"
+    "ss", 162);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/ComboBox.proto", &protobuf_RegisterTypes);
   ComboBoxProto::default_instance_ = new ComboBoxProto();
@@ -106,7 +105,6 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fComboBox_2eproto {
 
 #ifndef _MSC_VER
 const int ComboBoxProto::kItemFieldNumber;
-const int ComboBoxProto::kHeightFieldNumber;
 const int ComboBoxProto::kTooltipFieldNumber;
 const int ComboBoxProto::kDataAddressFieldNumber;
 #endif  // !_MSC_VER
@@ -128,7 +126,6 @@ ComboBoxProto::ComboBoxProto(const ComboBoxProto& from)
 
 void ComboBoxProto::SharedCtor() {
   _cached_size_ = 0;
-  height_ = 0u;
   tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   data_address_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -170,7 +167,6 @@ ComboBoxProto* ComboBoxProto::New() const {
 
 void ComboBoxProto::Clear() {
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    height_ = 0u;
     if (has_tooltip()) {
       if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
         tooltip_->clear();
@@ -206,28 +202,12 @@ bool ComboBoxProto::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_item;
-        if (input->ExpectTag(16)) goto parse_height;
+        if (input->ExpectTag(18)) goto parse_tooltip;
         break;
       }
 
-      // optional uint32 height = 2;
+      // optional string tooltip = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_height:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &height_)));
-          set_has_height();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_tooltip;
-        break;
-      }
-
-      // optional string tooltip = 3;
-      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_tooltip:
@@ -239,12 +219,12 @@ bool ComboBoxProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_data_address;
+        if (input->ExpectTag(26)) goto parse_data_address;
         break;
       }
 
-      // optional .rec.data.DataAddress data_address = 4;
-      case 4: {
+      // optional .rec.data.DataAddress data_address = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_data_address:
@@ -284,24 +264,19 @@ void ComboBoxProto::SerializeWithCachedSizes(
       1, this->item(i), output);
   }
 
-  // optional uint32 height = 2;
-  if (has_height()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->height(), output);
-  }
-
-  // optional string tooltip = 3;
+  // optional string tooltip = 2;
   if (has_tooltip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->tooltip().data(), this->tooltip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->tooltip(), output);
+      2, this->tooltip(), output);
   }
 
-  // optional .rec.data.DataAddress data_address = 4;
+  // optional .rec.data.DataAddress data_address = 3;
   if (has_data_address()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->data_address(), output);
+      3, this->data_address(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -321,26 +296,21 @@ void ComboBoxProto::SerializeWithCachedSizes(
       WriteStringToArray(1, this->item(i), target);
   }
 
-  // optional uint32 height = 2;
-  if (has_height()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->height(), target);
-  }
-
-  // optional string tooltip = 3;
+  // optional string tooltip = 2;
   if (has_tooltip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->tooltip().data(), this->tooltip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->tooltip(), target);
+        2, this->tooltip(), target);
   }
 
-  // optional .rec.data.DataAddress data_address = 4;
+  // optional .rec.data.DataAddress data_address = 3;
   if (has_data_address()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->data_address(), target);
+        3, this->data_address(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -354,21 +324,14 @@ int ComboBoxProto::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // optional uint32 height = 2;
-    if (has_height()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->height());
-    }
-
-    // optional string tooltip = 3;
+    // optional string tooltip = 2;
     if (has_tooltip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->tooltip());
     }
 
-    // optional .rec.data.DataAddress data_address = 4;
+    // optional .rec.data.DataAddress data_address = 3;
     if (has_data_address()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -410,9 +373,6 @@ void ComboBoxProto::MergeFrom(const ComboBoxProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   item_.MergeFrom(from.item_);
   if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (from.has_height()) {
-      set_height(from.height());
-    }
     if (from.has_tooltip()) {
       set_tooltip(from.tooltip());
     }
@@ -443,7 +403,6 @@ bool ComboBoxProto::IsInitialized() const {
 void ComboBoxProto::Swap(ComboBoxProto* other) {
   if (other != this) {
     item_.Swap(&other->item_);
-    std::swap(height_, other->height_);
     std::swap(tooltip_, other->tooltip_);
     std::swap(data_address_, other->data_address_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

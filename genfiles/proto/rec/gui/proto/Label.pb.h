@@ -139,13 +139,6 @@ class LabelProto : public ::google::protobuf::Message {
   inline ::std::string* release_tooltip();
   inline void set_allocated_tooltip(::std::string* tooltip);
 
-  // optional uint32 height = 5;
-  inline bool has_height() const;
-  inline void clear_height();
-  static const int kHeightFieldNumber = 5;
-  inline ::google::protobuf::uint32 height() const;
-  inline void set_height(::google::protobuf::uint32 value);
-
   // @@protoc_insertion_point(class_scope:rec.gui.LabelProto)
  private:
   inline void set_has_font();
@@ -156,8 +149,6 @@ class LabelProto : public ::google::protobuf::Message {
   inline void clear_has_text();
   inline void set_has_tooltip();
   inline void clear_has_tooltip();
-  inline void set_has_height();
-  inline void clear_has_height();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -165,10 +156,9 @@ class LabelProto : public ::google::protobuf::Message {
   ::std::string* name_;
   ::std::string* text_;
   ::std::string* tooltip_;
-  ::google::protobuf::uint32 height_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLabel_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLabel_2eproto();
@@ -430,28 +420,6 @@ inline void LabelProto::set_allocated_tooltip(::std::string* tooltip) {
     clear_has_tooltip();
     tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
-}
-
-// optional uint32 height = 5;
-inline bool LabelProto::has_height() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void LabelProto::set_has_height() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void LabelProto::clear_has_height() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void LabelProto::clear_height() {
-  height_ = 0u;
-  clear_has_height();
-}
-inline ::google::protobuf::uint32 LabelProto::height() const {
-  return height_;
-}
-inline void LabelProto::set_height(::google::protobuf::uint32 value) {
-  set_has_height();
-  height_ = value;
 }
 
 

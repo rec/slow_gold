@@ -87,6 +87,9 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fSlider_2eproto() {
   delete SliderProto::default_instance_;
   delete SliderProto_reflection_;
+  delete SliderProto::_default_caption_size_;
+  delete SliderProto::_default_text_entry_box_width_;
+  delete SliderProto::_default_text_entry_box_height_;
 }
 
 void protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
@@ -100,13 +103,13 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
     "\n\032rec/gui/proto/Slider.proto\022\007rec.gui\032\034r"
     "ec/data/proto/Address.proto\"\275\006\n\013SliderPr"
     "oto\022\017\n\007caption\030\001 \001(\t\022\030\n\014caption_size\030\002 \001"
-    "(\r:\00245\022\017\n\007tooltip\030\003 \001(\t\022 \n\024text_entry_bo"
-    "x_width\030\004 \001(\r:\00280\022!\n\025text_entry_box_heig"
-    "ht\030\005 \001(\r:\00216\022+\n\014data_address\030\014 \001(\0132\025.rec"
-    ".data.DataAddress\022\016\n\006detent\030\006 \001(\001\022\025\n\rdet"
-    "ent_radius\030\007 \001(\001\022\023\n\013text_suffix\030\010 \001(\t\022\017\n"
-    "\007minimum\030\t \001(\001\022\017\n\007maximum\030\n \001(\001\022\020\n\010inter"
-    "val\030\013 \001(\001\022)\n\005style\030\025 \001(\0162\032.rec.gui.Slide"
+    "(\t:\00245\022\017\n\007tooltip\030\003 \001(\t\022 \n\024text_entry_bo"
+    "x_width\030\004 \001(\t:\00280\022!\n\025text_entry_box_heig"
+    "ht\030\005 \001(\t:\00216\022+\n\014data_address\030\014 \001(\0132\025.rec"
+    ".data.DataAddress\022\016\n\006detent\030\006 \001(\t\022\025\n\rdet"
+    "ent_radius\030\007 \001(\t\022\023\n\013text_suffix\030\010 \001(\t\022\017\n"
+    "\007minimum\030\t \001(\t\022\017\n\007maximum\030\n \001(\t\022\020\n\010inter"
+    "val\030\013 \001(\t\022)\n\005style\030\025 \001(\0162\032.rec.gui.Slide"
     "rProto.Style\022J\n\027text_entry_box_position\030"
     "\026 \001(\0162).rec.gui.SliderProto.TextEntryBox"
     "Position\"\252\002\n\005Style\022\024\n\020LinearHorizontal\020\000"
@@ -122,6 +125,12 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fSlider_2eproto() {
     "\003\022\020\n\014TextBoxBelow\020\004", 899);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Slider.proto", &protobuf_RegisterTypes);
+  SliderProto::_default_caption_size_ =
+      new ::std::string("45", 2);
+  SliderProto::_default_text_entry_box_width_ =
+      new ::std::string("80", 2);
+  SliderProto::_default_text_entry_box_height_ =
+      new ::std::string("16", 2);
   SliderProto::default_instance_ = new SliderProto();
   SliderProto::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fproto_2fSlider_2eproto);
@@ -206,6 +215,9 @@ const SliderProto_TextEntryBoxPosition SliderProto::TextEntryBoxPosition_MIN;
 const SliderProto_TextEntryBoxPosition SliderProto::TextEntryBoxPosition_MAX;
 const int SliderProto::TextEntryBoxPosition_ARRAYSIZE;
 #endif  // _MSC_VER
+::std::string* SliderProto::_default_caption_size_ = NULL;
+::std::string* SliderProto::_default_text_entry_box_width_ = NULL;
+::std::string* SliderProto::_default_text_entry_box_height_ = NULL;
 #ifndef _MSC_VER
 const int SliderProto::kCaptionFieldNumber;
 const int SliderProto::kCaptionSizeFieldNumber;
@@ -241,17 +253,17 @@ SliderProto::SliderProto(const SliderProto& from)
 void SliderProto::SharedCtor() {
   _cached_size_ = 0;
   caption_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  caption_size_ = 45u;
+  caption_size_ = const_cast< ::std::string*>(_default_caption_size_);
   tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  text_entry_box_width_ = 80u;
-  text_entry_box_height_ = 16u;
+  text_entry_box_width_ = const_cast< ::std::string*>(_default_text_entry_box_width_);
+  text_entry_box_height_ = const_cast< ::std::string*>(_default_text_entry_box_height_);
   data_address_ = NULL;
-  detent_ = 0;
-  detent_radius_ = 0;
+  detent_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  detent_radius_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   text_suffix_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  minimum_ = 0;
-  maximum_ = 0;
-  interval_ = 0;
+  minimum_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  maximum_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  interval_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   style_ = 0;
   text_entry_box_position_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -265,11 +277,35 @@ void SliderProto::SharedDtor() {
   if (caption_ != &::google::protobuf::internal::kEmptyString) {
     delete caption_;
   }
+  if (caption_size_ != _default_caption_size_) {
+    delete caption_size_;
+  }
   if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
     delete tooltip_;
   }
+  if (text_entry_box_width_ != _default_text_entry_box_width_) {
+    delete text_entry_box_width_;
+  }
+  if (text_entry_box_height_ != _default_text_entry_box_height_) {
+    delete text_entry_box_height_;
+  }
+  if (detent_ != &::google::protobuf::internal::kEmptyString) {
+    delete detent_;
+  }
+  if (detent_radius_ != &::google::protobuf::internal::kEmptyString) {
+    delete detent_radius_;
+  }
   if (text_suffix_ != &::google::protobuf::internal::kEmptyString) {
     delete text_suffix_;
+  }
+  if (minimum_ != &::google::protobuf::internal::kEmptyString) {
+    delete minimum_;
+  }
+  if (maximum_ != &::google::protobuf::internal::kEmptyString) {
+    delete maximum_;
+  }
+  if (interval_ != &::google::protobuf::internal::kEmptyString) {
+    delete interval_;
   }
   if (this != default_instance_) {
     delete data_address_;
@@ -304,19 +340,39 @@ void SliderProto::Clear() {
         caption_->clear();
       }
     }
-    caption_size_ = 45u;
+    if (has_caption_size()) {
+      if (caption_size_ != _default_caption_size_) {
+        caption_size_->assign(*_default_caption_size_);
+      }
+    }
     if (has_tooltip()) {
       if (tooltip_ != &::google::protobuf::internal::kEmptyString) {
         tooltip_->clear();
       }
     }
-    text_entry_box_width_ = 80u;
-    text_entry_box_height_ = 16u;
+    if (has_text_entry_box_width()) {
+      if (text_entry_box_width_ != _default_text_entry_box_width_) {
+        text_entry_box_width_->assign(*_default_text_entry_box_width_);
+      }
+    }
+    if (has_text_entry_box_height()) {
+      if (text_entry_box_height_ != _default_text_entry_box_height_) {
+        text_entry_box_height_->assign(*_default_text_entry_box_height_);
+      }
+    }
     if (has_data_address()) {
       if (data_address_ != NULL) data_address_->::rec::data::DataAddress::Clear();
     }
-    detent_ = 0;
-    detent_radius_ = 0;
+    if (has_detent()) {
+      if (detent_ != &::google::protobuf::internal::kEmptyString) {
+        detent_->clear();
+      }
+    }
+    if (has_detent_radius()) {
+      if (detent_radius_ != &::google::protobuf::internal::kEmptyString) {
+        detent_radius_->clear();
+      }
+    }
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_text_suffix()) {
@@ -324,9 +380,21 @@ void SliderProto::Clear() {
         text_suffix_->clear();
       }
     }
-    minimum_ = 0;
-    maximum_ = 0;
-    interval_ = 0;
+    if (has_minimum()) {
+      if (minimum_ != &::google::protobuf::internal::kEmptyString) {
+        minimum_->clear();
+      }
+    }
+    if (has_maximum()) {
+      if (maximum_ != &::google::protobuf::internal::kEmptyString) {
+        maximum_->clear();
+      }
+    }
+    if (has_interval()) {
+      if (interval_ != &::google::protobuf::internal::kEmptyString) {
+        interval_->clear();
+      }
+    }
     style_ = 0;
     text_entry_box_position_ = 0;
   }
@@ -352,19 +420,20 @@ bool SliderProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_caption_size;
+        if (input->ExpectTag(18)) goto parse_caption_size;
         break;
       }
 
-      // optional uint32 caption_size = 2 [default = 45];
+      // optional string caption_size = 2 [default = "45"];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_caption_size:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &caption_size_)));
-          set_has_caption_size();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_caption_size()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->caption_size().data(), this->caption_size().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -385,67 +454,71 @@ bool SliderProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_text_entry_box_width;
+        if (input->ExpectTag(34)) goto parse_text_entry_box_width;
         break;
       }
 
-      // optional uint32 text_entry_box_width = 4 [default = 80];
+      // optional string text_entry_box_width = 4 [default = "80"];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_text_entry_box_width:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &text_entry_box_width_)));
-          set_has_text_entry_box_width();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_text_entry_box_width()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->text_entry_box_width().data(), this->text_entry_box_width().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_text_entry_box_height;
+        if (input->ExpectTag(42)) goto parse_text_entry_box_height;
         break;
       }
 
-      // optional uint32 text_entry_box_height = 5 [default = 16];
+      // optional string text_entry_box_height = 5 [default = "16"];
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_text_entry_box_height:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &text_entry_box_height_)));
-          set_has_text_entry_box_height();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_text_entry_box_height()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->text_entry_box_height().data(), this->text_entry_box_height().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(49)) goto parse_detent;
+        if (input->ExpectTag(50)) goto parse_detent;
         break;
       }
 
-      // optional double detent = 6;
+      // optional string detent = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_detent:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &detent_)));
-          set_has_detent();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_detent()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->detent().data(), this->detent().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(57)) goto parse_detent_radius;
+        if (input->ExpectTag(58)) goto parse_detent_radius;
         break;
       }
 
-      // optional double detent_radius = 7;
+      // optional string detent_radius = 7;
       case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_detent_radius:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &detent_radius_)));
-          set_has_detent_radius();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_detent_radius()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->detent_radius().data(), this->detent_radius().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -466,51 +539,54 @@ bool SliderProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(73)) goto parse_minimum;
+        if (input->ExpectTag(74)) goto parse_minimum;
         break;
       }
 
-      // optional double minimum = 9;
+      // optional string minimum = 9;
       case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_minimum:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &minimum_)));
-          set_has_minimum();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_minimum()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->minimum().data(), this->minimum().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(81)) goto parse_maximum;
+        if (input->ExpectTag(82)) goto parse_maximum;
         break;
       }
 
-      // optional double maximum = 10;
+      // optional string maximum = 10;
       case 10: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_maximum:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &maximum_)));
-          set_has_maximum();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_maximum()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->maximum().data(), this->maximum().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(89)) goto parse_interval;
+        if (input->ExpectTag(90)) goto parse_interval;
         break;
       }
 
-      // optional double interval = 11;
+      // optional string interval = 11;
       case 11: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_interval:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &interval_)));
-          set_has_interval();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_interval()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->interval().data(), this->interval().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -601,9 +677,13 @@ void SliderProto::SerializeWithCachedSizes(
       1, this->caption(), output);
   }
 
-  // optional uint32 caption_size = 2 [default = 45];
+  // optional string caption_size = 2 [default = "45"];
   if (has_caption_size()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->caption_size(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->caption_size().data(), this->caption_size().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->caption_size(), output);
   }
 
   // optional string tooltip = 3;
@@ -615,24 +695,40 @@ void SliderProto::SerializeWithCachedSizes(
       3, this->tooltip(), output);
   }
 
-  // optional uint32 text_entry_box_width = 4 [default = 80];
+  // optional string text_entry_box_width = 4 [default = "80"];
   if (has_text_entry_box_width()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->text_entry_box_width(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->text_entry_box_width().data(), this->text_entry_box_width().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->text_entry_box_width(), output);
   }
 
-  // optional uint32 text_entry_box_height = 5 [default = 16];
+  // optional string text_entry_box_height = 5 [default = "16"];
   if (has_text_entry_box_height()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->text_entry_box_height(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->text_entry_box_height().data(), this->text_entry_box_height().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->text_entry_box_height(), output);
   }
 
-  // optional double detent = 6;
+  // optional string detent = 6;
   if (has_detent()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(6, this->detent(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->detent().data(), this->detent().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      6, this->detent(), output);
   }
 
-  // optional double detent_radius = 7;
+  // optional string detent_radius = 7;
   if (has_detent_radius()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(7, this->detent_radius(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->detent_radius().data(), this->detent_radius().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      7, this->detent_radius(), output);
   }
 
   // optional string text_suffix = 8;
@@ -644,19 +740,31 @@ void SliderProto::SerializeWithCachedSizes(
       8, this->text_suffix(), output);
   }
 
-  // optional double minimum = 9;
+  // optional string minimum = 9;
   if (has_minimum()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(9, this->minimum(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->minimum().data(), this->minimum().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      9, this->minimum(), output);
   }
 
-  // optional double maximum = 10;
+  // optional string maximum = 10;
   if (has_maximum()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(10, this->maximum(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->maximum().data(), this->maximum().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      10, this->maximum(), output);
   }
 
-  // optional double interval = 11;
+  // optional string interval = 11;
   if (has_interval()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(11, this->interval(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->interval().data(), this->interval().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      11, this->interval(), output);
   }
 
   // optional .rec.data.DataAddress data_address = 12;
@@ -695,9 +803,14 @@ void SliderProto::SerializeWithCachedSizes(
         1, this->caption(), target);
   }
 
-  // optional uint32 caption_size = 2 [default = 45];
+  // optional string caption_size = 2 [default = "45"];
   if (has_caption_size()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->caption_size(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->caption_size().data(), this->caption_size().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->caption_size(), target);
   }
 
   // optional string tooltip = 3;
@@ -710,24 +823,44 @@ void SliderProto::SerializeWithCachedSizes(
         3, this->tooltip(), target);
   }
 
-  // optional uint32 text_entry_box_width = 4 [default = 80];
+  // optional string text_entry_box_width = 4 [default = "80"];
   if (has_text_entry_box_width()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->text_entry_box_width(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->text_entry_box_width().data(), this->text_entry_box_width().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->text_entry_box_width(), target);
   }
 
-  // optional uint32 text_entry_box_height = 5 [default = 16];
+  // optional string text_entry_box_height = 5 [default = "16"];
   if (has_text_entry_box_height()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->text_entry_box_height(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->text_entry_box_height().data(), this->text_entry_box_height().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->text_entry_box_height(), target);
   }
 
-  // optional double detent = 6;
+  // optional string detent = 6;
   if (has_detent()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(6, this->detent(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->detent().data(), this->detent().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->detent(), target);
   }
 
-  // optional double detent_radius = 7;
+  // optional string detent_radius = 7;
   if (has_detent_radius()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(7, this->detent_radius(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->detent_radius().data(), this->detent_radius().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->detent_radius(), target);
   }
 
   // optional string text_suffix = 8;
@@ -740,19 +873,34 @@ void SliderProto::SerializeWithCachedSizes(
         8, this->text_suffix(), target);
   }
 
-  // optional double minimum = 9;
+  // optional string minimum = 9;
   if (has_minimum()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(9, this->minimum(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->minimum().data(), this->minimum().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        9, this->minimum(), target);
   }
 
-  // optional double maximum = 10;
+  // optional string maximum = 10;
   if (has_maximum()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(10, this->maximum(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->maximum().data(), this->maximum().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        10, this->maximum(), target);
   }
 
-  // optional double interval = 11;
+  // optional string interval = 11;
   if (has_interval()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(11, this->interval(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->interval().data(), this->interval().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        11, this->interval(), target);
   }
 
   // optional .rec.data.DataAddress data_address = 12;
@@ -792,10 +940,10 @@ int SliderProto::ByteSize() const {
           this->caption());
     }
 
-    // optional uint32 caption_size = 2 [default = 45];
+    // optional string caption_size = 2 [default = "45"];
     if (has_caption_size()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->caption_size());
     }
 
@@ -806,17 +954,17 @@ int SliderProto::ByteSize() const {
           this->tooltip());
     }
 
-    // optional uint32 text_entry_box_width = 4 [default = 80];
+    // optional string text_entry_box_width = 4 [default = "80"];
     if (has_text_entry_box_width()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->text_entry_box_width());
     }
 
-    // optional uint32 text_entry_box_height = 5 [default = 16];
+    // optional string text_entry_box_height = 5 [default = "16"];
     if (has_text_entry_box_height()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::StringSize(
           this->text_entry_box_height());
     }
 
@@ -827,14 +975,18 @@ int SliderProto::ByteSize() const {
           this->data_address());
     }
 
-    // optional double detent = 6;
+    // optional string detent = 6;
     if (has_detent()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->detent());
     }
 
-    // optional double detent_radius = 7;
+    // optional string detent_radius = 7;
     if (has_detent_radius()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->detent_radius());
     }
 
   }
@@ -846,19 +998,25 @@ int SliderProto::ByteSize() const {
           this->text_suffix());
     }
 
-    // optional double minimum = 9;
+    // optional string minimum = 9;
     if (has_minimum()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->minimum());
     }
 
-    // optional double maximum = 10;
+    // optional string maximum = 10;
     if (has_maximum()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->maximum());
     }
 
-    // optional double interval = 11;
+    // optional string interval = 11;
     if (has_interval()) {
-      total_size += 1 + 8;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->interval());
     }
 
     // optional .rec.gui.SliderProto.Style style = 21;

@@ -14,7 +14,7 @@ class Constants {
  public:
   Constants() {}
   Constants(const ConstantProtos&);
-  double operator()(const string&);
+  double operator()(const string&) const;
 
  private:
   std::unordered_map<string, double> map_;

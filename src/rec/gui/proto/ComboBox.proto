@@ -4,7 +4,6 @@ import "rec/data/proto/Address.proto";
 
 message ComboBoxProto {
   repeated string item = 1;
-  optional uint32 height = 2;
-  optional string tooltip = 3;
-  optional data.DataAddress data_address = 4;
+  optional string tooltip = 2;
+  optional data.DataAddress data_address = 3;
 };

@@ -7,7 +7,7 @@ namespace gui {
 namespace {
 
 bool isNumber(const string& s) {
-  const char* p = s.c_data();
+  const char* p = s.c_str();
   for (; isdigit(*p); ++p);
   if (*p and *p++ != '.')
     return false;
@@ -22,7 +22,7 @@ Constants::Constants(const ConstantProtos& protos) {
     map_[constant.name()] = constant.value();
 }
 
-double Constants::operator()(const string& name) {
+double Constants::operator()(const string& name) const {
   if (isNumber(name))
     return str(name).getDoubleValue();
 

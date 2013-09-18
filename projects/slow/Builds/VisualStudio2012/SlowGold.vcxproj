@@ -233,6 +233,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Button.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\ComboBox.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Component.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\proto\Constants.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Label.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Panel.cpp"/>
     <ClCompile Include="..\..\..\..\src\rec\gui\proto\Resizer.cpp"/>
@@ -350,6 +351,7 @@
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Button.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\ComboBox.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Constants.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.cc"/>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.cc"/>
@@ -1617,6 +1619,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Button.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\ComboBox.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Component.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\proto\Constants.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Label.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Panel.h"/>
     <ClInclude Include="..\..\..\..\src\rec\gui\proto\Resizer.h"/>
@@ -1667,6 +1670,7 @@
     <ClInclude Include="..\..\..\..\src\rec\support\SupportWindow.h"/>
     <ClInclude Include="..\..\..\..\src\rec\translation\TranslationTables.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\Binary.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\BinaryMacros.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
     <ClInclude Include="..\..\..\..\src\rec\util\cd\CDReader.h"/>
@@ -1797,6 +1801,7 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Button.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\ComboBox.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Component.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Constants.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Font.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Label.pb.h"/>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\proto\Layout.pb.h"/>

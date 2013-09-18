@@ -93,19 +93,29 @@ class ResizerProto : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 size = 1;
+  // optional string size = 1;
   inline bool has_size() const;
   inline void clear_size();
   static const int kSizeFieldNumber = 1;
-  inline ::google::protobuf::uint32 size() const;
-  inline void set_size(::google::protobuf::uint32 value);
+  inline const ::std::string& size() const;
+  inline void set_size(const ::std::string& value);
+  inline void set_size(const char* value);
+  inline void set_size(const char* value, size_t size);
+  inline ::std::string* mutable_size();
+  inline ::std::string* release_size();
+  inline void set_allocated_size(::std::string* size);
 
-  // optional uint32 min_value = 2;
+  // optional string min_value = 2;
   inline bool has_min_value() const;
   inline void clear_min_value();
   static const int kMinValueFieldNumber = 2;
-  inline ::google::protobuf::uint32 min_value() const;
-  inline void set_min_value(::google::protobuf::uint32 value);
+  inline const ::std::string& min_value() const;
+  inline void set_min_value(const ::std::string& value);
+  inline void set_min_value(const char* value);
+  inline void set_min_value(const char* value, size_t size);
+  inline ::std::string* mutable_min_value();
+  inline ::std::string* release_min_value();
+  inline void set_allocated_min_value(::std::string* min_value);
 
   // optional string address = 3;
   inline bool has_address() const;
@@ -141,8 +151,8 @@ class ResizerProto : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::uint32 size_;
-  ::google::protobuf::uint32 min_value_;
+  ::std::string* size_;
+  ::std::string* min_value_;
   ::std::string* address_;
   ::rec::data::DataAddress* data_address_;
 
@@ -163,7 +173,7 @@ class ResizerProto : public ::google::protobuf::Message {
 
 // ResizerProto
 
-// optional uint32 size = 1;
+// optional string size = 1;
 inline bool ResizerProto::has_size() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -174,18 +184,66 @@ inline void ResizerProto::clear_has_size() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void ResizerProto::clear_size() {
-  size_ = 0u;
+  if (size_ != &::google::protobuf::internal::kEmptyString) {
+    size_->clear();
+  }
   clear_has_size();
 }
-inline ::google::protobuf::uint32 ResizerProto::size() const {
+inline const ::std::string& ResizerProto::size() const {
+  return *size_;
+}
+inline void ResizerProto::set_size(const ::std::string& value) {
+  set_has_size();
+  if (size_ == &::google::protobuf::internal::kEmptyString) {
+    size_ = new ::std::string;
+  }
+  size_->assign(value);
+}
+inline void ResizerProto::set_size(const char* value) {
+  set_has_size();
+  if (size_ == &::google::protobuf::internal::kEmptyString) {
+    size_ = new ::std::string;
+  }
+  size_->assign(value);
+}
+inline void ResizerProto::set_size(const char* value, size_t size) {
+  set_has_size();
+  if (size_ == &::google::protobuf::internal::kEmptyString) {
+    size_ = new ::std::string;
+  }
+  size_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ResizerProto::mutable_size() {
+  set_has_size();
+  if (size_ == &::google::protobuf::internal::kEmptyString) {
+    size_ = new ::std::string;
+  }
   return size_;
 }
-inline void ResizerProto::set_size(::google::protobuf::uint32 value) {
-  set_has_size();
-  size_ = value;
+inline ::std::string* ResizerProto::release_size() {
+  clear_has_size();
+  if (size_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = size_;
+    size_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ResizerProto::set_allocated_size(::std::string* size) {
+  if (size_ != &::google::protobuf::internal::kEmptyString) {
+    delete size_;
+  }
+  if (size) {
+    set_has_size();
+    size_ = size;
+  } else {
+    clear_has_size();
+    size_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
-// optional uint32 min_value = 2;
+// optional string min_value = 2;
 inline bool ResizerProto::has_min_value() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -196,15 +254,63 @@ inline void ResizerProto::clear_has_min_value() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void ResizerProto::clear_min_value() {
-  min_value_ = 0u;
+  if (min_value_ != &::google::protobuf::internal::kEmptyString) {
+    min_value_->clear();
+  }
   clear_has_min_value();
 }
-inline ::google::protobuf::uint32 ResizerProto::min_value() const {
+inline const ::std::string& ResizerProto::min_value() const {
+  return *min_value_;
+}
+inline void ResizerProto::set_min_value(const ::std::string& value) {
+  set_has_min_value();
+  if (min_value_ == &::google::protobuf::internal::kEmptyString) {
+    min_value_ = new ::std::string;
+  }
+  min_value_->assign(value);
+}
+inline void ResizerProto::set_min_value(const char* value) {
+  set_has_min_value();
+  if (min_value_ == &::google::protobuf::internal::kEmptyString) {
+    min_value_ = new ::std::string;
+  }
+  min_value_->assign(value);
+}
+inline void ResizerProto::set_min_value(const char* value, size_t size) {
+  set_has_min_value();
+  if (min_value_ == &::google::protobuf::internal::kEmptyString) {
+    min_value_ = new ::std::string;
+  }
+  min_value_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ResizerProto::mutable_min_value() {
+  set_has_min_value();
+  if (min_value_ == &::google::protobuf::internal::kEmptyString) {
+    min_value_ = new ::std::string;
+  }
   return min_value_;
 }
-inline void ResizerProto::set_min_value(::google::protobuf::uint32 value) {
-  set_has_min_value();
-  min_value_ = value;
+inline ::std::string* ResizerProto::release_min_value() {
+  clear_has_min_value();
+  if (min_value_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = min_value_;
+    min_value_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ResizerProto::set_allocated_min_value(::std::string* min_value) {
+  if (min_value_ != &::google::protobuf::internal::kEmptyString) {
+    delete min_value_;
+  }
+  if (min_value) {
+    set_has_min_value();
+    min_value_ = min_value;
+  } else {
+    clear_has_min_value();
+    min_value_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // optional string address = 3;

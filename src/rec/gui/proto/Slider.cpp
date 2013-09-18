@@ -10,16 +10,18 @@ unique_ptr<DataSlider> makeSlider(const SliderProto& slider,
                      slider.tooltip(),
                      slider.data_address().type_name(),
                      slider.data_address().address(),
-                     slider.caption_size(),
-                     slider.text_entry_box_width(),
-                     slider.text_entry_box_height()));
+                     constants(slider.caption_size()),
+                     constants(slider.text_entry_box_width()),
+                     constants(slider.text_entry_box_height())));
   if (slider.has_detent())
-    dataSlider->setDetent(slider.detent());
+    dataSlider->setDetent(constants(slider.detent()));
 
   if (slider.has_detent_radius())
-    dataSlider->setDetentRadius(slider.detent_radius());
+    dataSlider->setDetentRadius(constants(slider.detent_radius()));
 
-  dataSlider->setRange(slider.minimum(), slider.maximum(), slider.interval());
+  dataSlider->setRange(constants(slider.minimum()),
+                       constants(slider.maximum()),
+                       constants(slider.interval()));
   return std::move(dataSlider);
 }
 
