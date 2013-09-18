@@ -71,11 +71,11 @@ ThreadProtos ProgramBase::threads() const {
 }
 
 gui::Layouts ProgramBase::layouts() const {
-  return BINARY_PROTO(Layout, gui::Layouts);
+  return BINARY_PROTO_MERGED(Layout, gui::Layouts);
 }
 
 gui::ComponentProtos ProgramBase::components() const {
-  return BINARY_PROTO(Components, gui::ComponentProtos);
+  return BINARY_PROTO_MERGED(Components, gui::ComponentProtos);
 }
 
 }  // namespace program

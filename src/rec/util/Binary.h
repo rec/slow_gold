@@ -45,8 +45,8 @@ Type* constructName(const string& name) {
 #define BINARY_PROTO(NAME, PROTO) \
   binaryProto<PROTO>(BINARY_STRING(NAME ## _def))
 
-#define BINARY_PROTO_NAMES(NAME, TYPE) \
-  binaryProtoNames<TYPE>(BINARY_STRING(NAME))
+#define BINARY_PROTO_MERGED(NAME, TYPE) \
+  binaryProtoMerged<TYPE>(BINARY_STRING(NAME ## _def))
 
 }  // namespace util
 }  // namespace rec

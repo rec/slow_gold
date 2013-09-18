@@ -1,0 +1,28 @@
+layout {
+  name: "main panel"
+  orientation: VERTICAL
+  entry {
+    name: "navigation panel"
+    min: 100.0
+    max: -1.0
+    preferred: -0.2
+  }
+  entry {
+    name: "navigation resizer"
+    min: 7.0
+    resizer {
+      data_address {
+      }
+    }
+  }
+  entry {
+    name: "waveform"
+    min: 150.0
+    max: -1.0
+    preferred: -0.6
+  }
+  entry {
+    name: "playback panel"
+    min: 100.0
+  }
+}

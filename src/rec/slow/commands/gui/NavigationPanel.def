@@ -1,0 +1,37 @@
+layout {
+  name: "navigation panel"
+  entry {
+    name: "tree view"
+    min: 75.0
+    max: -1.0
+    preferred: -0.2
+  }
+  entry {
+    name: "directory resizer"
+    min: 7.0
+    resizer {
+      data_address {
+      }
+    }
+  }
+  entry {
+    name: "song data"
+    min: 150.0
+    max: -1.0
+    preferred: -0.30
+  }
+  entry {
+    name: "metadata resizer"
+    min: 7.0
+    resizer {
+      data_address {
+      }
+    }
+  }
+  entry {
+    name: "loops"
+    min: 250.0
+    max: -1.0
+    preferred: -0.30
+  }
+}

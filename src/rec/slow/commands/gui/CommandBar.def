@@ -1,0 +1,16 @@
+layout {
+  name: "command bar"
+  padding: true
+  entry {
+    name: "add loop point button"
+    min: 39
+  }
+  entry {
+    name: "zoom out full button"
+    min: 39
+  }
+  entry {
+    name: "zoom to selection button"
+    min: 39
+  }
+}

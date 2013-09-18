@@ -1,0 +1,37 @@
+layout {
+  name: "playback panel"
+  entry {
+    name: "help panel"
+    min: 200
+    max: -1.0
+    preferred: -0.2
+  }
+  entry {
+    name: "help resizer"
+    min: 7.0
+    resizer {
+      data_address {
+      }
+    }
+  }
+  entry {
+    name: "transform controller"
+    min: 250
+    max: -1.0
+    preferred: -0.75
+  }
+  entry {
+    name: "transform resizer"
+    min: 7.0
+    resizer {
+      data_address {
+      }
+    }
+  }
+  entry {
+    name: "transport controller"
+    min: 300
+    max: -1.0
+    preferred: -0.20
+  }
+}
