@@ -21,9 +21,6 @@ namespace gui {
 
 namespace {
 
-const ::google::protobuf::Descriptor* LayoutEntry_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  LayoutEntry_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Layout_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Layout_reflection_ = NULL;
@@ -41,33 +38,17 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/gui/proto/Layout.proto");
   GOOGLE_CHECK(file != NULL);
-  LayoutEntry_descriptor_ = file->message_type(0);
-  static const int LayoutEntry_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutEntry, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutEntry, preferred_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutEntry, min_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutEntry, max_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutEntry, resizer_),
-  };
-  LayoutEntry_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      LayoutEntry_descriptor_,
-      LayoutEntry::default_instance_,
-      LayoutEntry_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutEntry, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LayoutEntry, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(LayoutEntry));
-  Layout_descriptor_ = file->message_type(1);
-  static const int Layout_offsets_[6] = {
+  Layout_descriptor_ = file->message_type(0);
+  static const int Layout_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, entry_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, orientation_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, resize_other_dimension_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, is_main_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, padding_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, preferred_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, min_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, max_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layout, component_),
   };
   Layout_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -81,7 +62,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Layout));
   Layout_Orientation_descriptor_ = Layout_descriptor_->enum_type(0);
-  Layouts_descriptor_ = file->message_type(2);
+  Layouts_descriptor_ = file->message_type(1);
   static const int Layouts_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layouts, layout_),
   };
@@ -109,8 +90,6 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    LayoutEntry_descriptor_, &LayoutEntry::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Layout_descriptor_, &Layout::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Layouts_descriptor_, &Layouts::default_instance());
@@ -119,8 +98,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto() {
-  delete LayoutEntry::default_instance_;
-  delete LayoutEntry_reflection_;
   delete Layout::default_instance_;
   delete Layout_reflection_;
   delete Layouts::default_instance_;
@@ -133,26 +110,22 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fResizer_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\032\033r"
-    "ec/gui/proto/Resizer.proto\"p\n\013LayoutEntr"
-    "y\022\014\n\004name\030\001 \001(\t\022\021\n\tpreferred\030\002 \001(\001\022\013\n\003mi"
-    "n\030\003 \001(\001\022\013\n\003max\030\004 \001(\001\022&\n\007resizer\030\005 \001(\0132\025."
-    "rec.gui.ResizerProto\"\342\001\n\006Layout\022\014\n\004name\030"
-    "\001 \001(\t\022#\n\005entry\030\002 \003(\0132\024.rec.gui.LayoutEnt"
-    "ry\0220\n\013orientation\030\003 \001(\0162\033.rec.gui.Layout"
-    ".Orientation\022$\n\026resize_other_dimension\030\004"
-    " \001(\010:\004true\022\017\n\007is_main\030\005 \001(\010\022\017\n\007padding\030\006"
-    " \001(\010\"+\n\013Orientation\022\016\n\nHORIZONTAL\020\000\022\014\n\010V"
-    "ERTICAL\020\001\"*\n\007Layouts\022\037\n\006layout\030\001 \003(\0132\017.r"
-    "ec.gui.Layout", 453);
+    "\n\032rec/gui/proto/Layout.proto\022\007rec.gui\032\035r"
+    "ec/gui/proto/Component.proto\"\226\002\n\006Layout\022"
+    "\014\n\004name\030\001 \001(\t\0220\n\013orientation\030\002 \001(\0162\033.rec"
+    ".gui.Layout.Orientation\022$\n\026resize_other_"
+    "dimension\030\003 \001(\010:\004true\022\017\n\007is_main\030\004 \001(\010\022\017"
+    "\n\007padding\030\005 \001(\010\022\021\n\tpreferred\030\006 \001(\t\022\013\n\003mi"
+    "n\030\007 \001(\t\022\013\n\003max\030\010 \001(\t\022*\n\tcomponent\030\t \003(\0132"
+    "\027.rec.gui.ComponentProto\"+\n\013Orientation\022"
+    "\016\n\nHORIZONTAL\020\000\022\014\n\010VERTICAL\020\001\"*\n\007Layouts"
+    "\022\037\n\006layout\030\001 \003(\0132\017.rec.gui.Layout", 393);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Layout.proto", &protobuf_RegisterTypes);
-  LayoutEntry::default_instance_ = new LayoutEntry();
   Layout::default_instance_ = new Layout();
   Layouts::default_instance_ = new Layouts();
-  LayoutEntry::default_instance_->InitAsDefaultInstance();
   Layout::default_instance_->InitAsDefaultInstance();
   Layouts::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto);
@@ -164,390 +137,6 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fLayout_2eproto {
     protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
   }
 } static_descriptor_initializer_rec_2fgui_2fproto_2fLayout_2eproto_;
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int LayoutEntry::kNameFieldNumber;
-const int LayoutEntry::kPreferredFieldNumber;
-const int LayoutEntry::kMinFieldNumber;
-const int LayoutEntry::kMaxFieldNumber;
-const int LayoutEntry::kResizerFieldNumber;
-#endif  // !_MSC_VER
-
-LayoutEntry::LayoutEntry()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void LayoutEntry::InitAsDefaultInstance() {
-  resizer_ = const_cast< ::rec::gui::ResizerProto*>(&::rec::gui::ResizerProto::default_instance());
-}
-
-LayoutEntry::LayoutEntry(const LayoutEntry& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void LayoutEntry::SharedCtor() {
-  _cached_size_ = 0;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  preferred_ = 0;
-  min_ = 0;
-  max_ = 0;
-  resizer_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-LayoutEntry::~LayoutEntry() {
-  SharedDtor();
-}
-
-void LayoutEntry::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (this != default_instance_) {
-    delete resizer_;
-  }
-}
-
-void LayoutEntry::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* LayoutEntry::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return LayoutEntry_descriptor_;
-}
-
-const LayoutEntry& LayoutEntry::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
-  return *default_instance_;
-}
-
-LayoutEntry* LayoutEntry::default_instance_ = NULL;
-
-LayoutEntry* LayoutEntry::New() const {
-  return new LayoutEntry;
-}
-
-void LayoutEntry::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_name()) {
-      if (name_ != &::google::protobuf::internal::kEmptyString) {
-        name_->clear();
-      }
-    }
-    preferred_ = 0;
-    min_ = 0;
-    max_ = 0;
-    if (has_resizer()) {
-      if (resizer_ != NULL) resizer_->::rec::gui::ResizerProto::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool LayoutEntry::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string name = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(17)) goto parse_preferred;
-        break;
-      }
-
-      // optional double preferred = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-         parse_preferred:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &preferred_)));
-          set_has_preferred();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(25)) goto parse_min;
-        break;
-      }
-
-      // optional double min = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-         parse_min:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &min_)));
-          set_has_min();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(33)) goto parse_max;
-        break;
-      }
-
-      // optional double max = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-         parse_max:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &max_)));
-          set_has_max();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(42)) goto parse_resizer;
-        break;
-      }
-
-      // optional .rec.gui.ResizerProto resizer = 5;
-      case 5: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_resizer:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_resizer()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void LayoutEntry::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string name = 1;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->name(), output);
-  }
-
-  // optional double preferred = 2;
-  if (has_preferred()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->preferred(), output);
-  }
-
-  // optional double min = 3;
-  if (has_min()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->min(), output);
-  }
-
-  // optional double max = 4;
-  if (has_max()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->max(), output);
-  }
-
-  // optional .rec.gui.ResizerProto resizer = 5;
-  if (has_resizer()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->resizer(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* LayoutEntry::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional string name = 1;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
-  }
-
-  // optional double preferred = 2;
-  if (has_preferred()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->preferred(), target);
-  }
-
-  // optional double min = 3;
-  if (has_min()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->min(), target);
-  }
-
-  // optional double max = 4;
-  if (has_max()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->max(), target);
-  }
-
-  // optional .rec.gui.ResizerProto resizer = 5;
-  if (has_resizer()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        5, this->resizer(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int LayoutEntry::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string name = 1;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
-    }
-
-    // optional double preferred = 2;
-    if (has_preferred()) {
-      total_size += 1 + 8;
-    }
-
-    // optional double min = 3;
-    if (has_min()) {
-      total_size += 1 + 8;
-    }
-
-    // optional double max = 4;
-    if (has_max()) {
-      total_size += 1 + 8;
-    }
-
-    // optional .rec.gui.ResizerProto resizer = 5;
-    if (has_resizer()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->resizer());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void LayoutEntry::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const LayoutEntry* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const LayoutEntry*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void LayoutEntry::MergeFrom(const LayoutEntry& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_name()) {
-      set_name(from.name());
-    }
-    if (from.has_preferred()) {
-      set_preferred(from.preferred());
-    }
-    if (from.has_min()) {
-      set_min(from.min());
-    }
-    if (from.has_max()) {
-      set_max(from.max());
-    }
-    if (from.has_resizer()) {
-      mutable_resizer()->::rec::gui::ResizerProto::MergeFrom(from.resizer());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void LayoutEntry::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LayoutEntry::CopyFrom(const LayoutEntry& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LayoutEntry::IsInitialized() const {
-
-  return true;
-}
-
-void LayoutEntry::Swap(LayoutEntry* other) {
-  if (other != this) {
-    std::swap(name_, other->name_);
-    std::swap(preferred_, other->preferred_);
-    std::swap(min_, other->min_);
-    std::swap(max_, other->max_);
-    std::swap(resizer_, other->resizer_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata LayoutEntry::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = LayoutEntry_descriptor_;
-  metadata.reflection = LayoutEntry_reflection_;
-  return metadata;
-}
-
 
 // ===================================================================
 
@@ -574,11 +163,14 @@ const int Layout::Orientation_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int Layout::kNameFieldNumber;
-const int Layout::kEntryFieldNumber;
 const int Layout::kOrientationFieldNumber;
 const int Layout::kResizeOtherDimensionFieldNumber;
 const int Layout::kIsMainFieldNumber;
 const int Layout::kPaddingFieldNumber;
+const int Layout::kPreferredFieldNumber;
+const int Layout::kMinFieldNumber;
+const int Layout::kMaxFieldNumber;
+const int Layout::kComponentFieldNumber;
 #endif  // !_MSC_VER
 
 Layout::Layout()
@@ -602,6 +194,9 @@ void Layout::SharedCtor() {
   resize_other_dimension_ = true;
   is_main_ = false;
   padding_ = false;
+  preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  min_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  max_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -612,6 +207,15 @@ Layout::~Layout() {
 void Layout::SharedDtor() {
   if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
+  }
+  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
+    delete preferred_;
+  }
+  if (min_ != &::google::protobuf::internal::kEmptyString) {
+    delete min_;
+  }
+  if (max_ != &::google::protobuf::internal::kEmptyString) {
+    delete max_;
   }
   if (this != default_instance_) {
   }
@@ -649,8 +253,23 @@ void Layout::Clear() {
     resize_other_dimension_ = true;
     is_main_ = false;
     padding_ = false;
+    if (has_preferred()) {
+      if (preferred_ != &::google::protobuf::internal::kEmptyString) {
+        preferred_->clear();
+      }
+    }
+    if (has_min()) {
+      if (min_ != &::google::protobuf::internal::kEmptyString) {
+        min_->clear();
+      }
+    }
+    if (has_max()) {
+      if (max_ != &::google::protobuf::internal::kEmptyString) {
+        max_->clear();
+      }
+    }
   }
-  entry_.Clear();
+  component_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -673,27 +292,12 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_entry;
+        if (input->ExpectTag(16)) goto parse_orientation;
         break;
       }
 
-      // repeated .rec.gui.LayoutEntry entry = 2;
+      // optional .rec.gui.Layout.Orientation orientation = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_entry:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_entry()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_entry;
-        if (input->ExpectTag(24)) goto parse_orientation;
-        break;
-      }
-
-      // optional .rec.gui.Layout.Orientation orientation = 3;
-      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_orientation:
@@ -704,17 +308,17 @@ bool Layout::MergePartialFromCodedStream(
           if (::rec::gui::Layout_Orientation_IsValid(value)) {
             set_orientation(static_cast< ::rec::gui::Layout_Orientation >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(3, value);
+            mutable_unknown_fields()->AddVarint(2, value);
           }
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_resize_other_dimension;
+        if (input->ExpectTag(24)) goto parse_resize_other_dimension;
         break;
       }
 
-      // optional bool resize_other_dimension = 4 [default = true];
-      case 4: {
+      // optional bool resize_other_dimension = 3 [default = true];
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_resize_other_dimension:
@@ -725,12 +329,12 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_is_main;
+        if (input->ExpectTag(32)) goto parse_is_main;
         break;
       }
 
-      // optional bool is_main = 5;
-      case 5: {
+      // optional bool is_main = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_is_main:
@@ -741,12 +345,12 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(48)) goto parse_padding;
+        if (input->ExpectTag(40)) goto parse_padding;
         break;
       }
 
-      // optional bool padding = 6;
-      case 6: {
+      // optional bool padding = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_padding:
@@ -757,6 +361,72 @@ bool Layout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(50)) goto parse_preferred;
+        break;
+      }
+
+      // optional string preferred = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_preferred:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_preferred()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->preferred().data(), this->preferred().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(58)) goto parse_min;
+        break;
+      }
+
+      // optional string min = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_min:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_min()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->min().data(), this->min().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(66)) goto parse_max;
+        break;
+      }
+
+      // optional string max = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_max:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_max()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->max().data(), this->max().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_component;
+        break;
+      }
+
+      // repeated .rec.gui.ComponentProto component = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_component:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_component()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_component;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -788,31 +458,58 @@ void Layout::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // repeated .rec.gui.LayoutEntry entry = 2;
-  for (int i = 0; i < this->entry_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->entry(i), output);
-  }
-
-  // optional .rec.gui.Layout.Orientation orientation = 3;
+  // optional .rec.gui.Layout.Orientation orientation = 2;
   if (has_orientation()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->orientation(), output);
+      2, this->orientation(), output);
   }
 
-  // optional bool resize_other_dimension = 4 [default = true];
+  // optional bool resize_other_dimension = 3 [default = true];
   if (has_resize_other_dimension()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->resize_other_dimension(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->resize_other_dimension(), output);
   }
 
-  // optional bool is_main = 5;
+  // optional bool is_main = 4;
   if (has_is_main()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->is_main(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->is_main(), output);
   }
 
-  // optional bool padding = 6;
+  // optional bool padding = 5;
   if (has_padding()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->padding(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->padding(), output);
+  }
+
+  // optional string preferred = 6;
+  if (has_preferred()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->preferred().data(), this->preferred().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      6, this->preferred(), output);
+  }
+
+  // optional string min = 7;
+  if (has_min()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->min().data(), this->min().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      7, this->min(), output);
+  }
+
+  // optional string max = 8;
+  if (has_max()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->max().data(), this->max().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      8, this->max(), output);
+  }
+
+  // repeated .rec.gui.ComponentProto component = 9;
+  for (int i = 0; i < this->component_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->component(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -833,32 +530,62 @@ void Layout::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // repeated .rec.gui.LayoutEntry entry = 2;
-  for (int i = 0; i < this->entry_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->entry(i), target);
-  }
-
-  // optional .rec.gui.Layout.Orientation orientation = 3;
+  // optional .rec.gui.Layout.Orientation orientation = 2;
   if (has_orientation()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->orientation(), target);
+      2, this->orientation(), target);
   }
 
-  // optional bool resize_other_dimension = 4 [default = true];
+  // optional bool resize_other_dimension = 3 [default = true];
   if (has_resize_other_dimension()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->resize_other_dimension(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->resize_other_dimension(), target);
   }
 
-  // optional bool is_main = 5;
+  // optional bool is_main = 4;
   if (has_is_main()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->is_main(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->is_main(), target);
   }
 
-  // optional bool padding = 6;
+  // optional bool padding = 5;
   if (has_padding()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->padding(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->padding(), target);
+  }
+
+  // optional string preferred = 6;
+  if (has_preferred()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->preferred().data(), this->preferred().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->preferred(), target);
+  }
+
+  // optional string min = 7;
+  if (has_min()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->min().data(), this->min().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->min(), target);
+  }
+
+  // optional string max = 8;
+  if (has_max()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->max().data(), this->max().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        8, this->max(), target);
+  }
+
+  // repeated .rec.gui.ComponentProto component = 9;
+  for (int i = 0; i < this->component_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->component(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -879,34 +606,55 @@ int Layout::ByteSize() const {
           this->name());
     }
 
-    // optional .rec.gui.Layout.Orientation orientation = 3;
+    // optional .rec.gui.Layout.Orientation orientation = 2;
     if (has_orientation()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->orientation());
     }
 
-    // optional bool resize_other_dimension = 4 [default = true];
+    // optional bool resize_other_dimension = 3 [default = true];
     if (has_resize_other_dimension()) {
       total_size += 1 + 1;
     }
 
-    // optional bool is_main = 5;
+    // optional bool is_main = 4;
     if (has_is_main()) {
       total_size += 1 + 1;
     }
 
-    // optional bool padding = 6;
+    // optional bool padding = 5;
     if (has_padding()) {
       total_size += 1 + 1;
     }
 
+    // optional string preferred = 6;
+    if (has_preferred()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->preferred());
+    }
+
+    // optional string min = 7;
+    if (has_min()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->min());
+    }
+
+    // optional string max = 8;
+    if (has_max()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->max());
+    }
+
   }
-  // repeated .rec.gui.LayoutEntry entry = 2;
-  total_size += 1 * this->entry_size();
-  for (int i = 0; i < this->entry_size(); i++) {
+  // repeated .rec.gui.ComponentProto component = 9;
+  total_size += 1 * this->component_size();
+  for (int i = 0; i < this->component_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->entry(i));
+        this->component(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -934,7 +682,7 @@ void Layout::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Layout::MergeFrom(const Layout& from) {
   GOOGLE_CHECK_NE(&from, this);
-  entry_.MergeFrom(from.entry_);
+  component_.MergeFrom(from.component_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_name()) {
       set_name(from.name());
@@ -950,6 +698,15 @@ void Layout::MergeFrom(const Layout& from) {
     }
     if (from.has_padding()) {
       set_padding(from.padding());
+    }
+    if (from.has_preferred()) {
+      set_preferred(from.preferred());
+    }
+    if (from.has_min()) {
+      set_min(from.min());
+    }
+    if (from.has_max()) {
+      set_max(from.max());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -975,11 +732,14 @@ bool Layout::IsInitialized() const {
 void Layout::Swap(Layout* other) {
   if (other != this) {
     std::swap(name_, other->name_);
-    entry_.Swap(&other->entry_);
     std::swap(orientation_, other->orientation_);
     std::swap(resize_other_dimension_, other->resize_other_dimension_);
     std::swap(is_main_, other->is_main_);
     std::swap(padding_, other->padding_);
+    std::swap(preferred_, other->preferred_);
+    std::swap(min_, other->min_);
+    std::swap(max_, other->max_);
+    component_.Swap(&other->component_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

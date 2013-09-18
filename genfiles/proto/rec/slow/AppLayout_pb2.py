@@ -8,13 +8,12 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
-import rec.gui.Geometry_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/slow/AppLayout.proto',
   package='rec.slow',
-  serialized_pb='\n\x18rec/slow/AppLayout.proto\x12\x08rec.slow\x1a\x16rec/gui/Geometry.proto\"\x96\x01\n\tAppLayout\x12\x14\n\x0cnavigation_y\x18\x01 \x01(\r\x12\x12\n\nwaveform_y\x18\x02 \x01(\r\x12\x13\n\x0b\x64irectory_x\x18\x03 \x01(\r\x12\x12\n\nmetadata_x\x18\x04 \x01(\r\x12\x0e\n\x06help_x\x18\x05 \x01(\r\x12\x13\n\x0btransform_x\x18\x06 \x01(\r\x12\x11\n\tcontrol_x\x18\x07 \x01(\r')
+  serialized_pb='\n\x18rec/slow/AppLayout.proto\x12\x08rec.slow\"\x96\x01\n\tAppLayout\x12\x14\n\x0cnavigation_y\x18\x01 \x01(\r\x12\x12\n\nwaveform_y\x18\x02 \x01(\r\x12\x13\n\x0b\x64irectory_x\x18\x03 \x01(\r\x12\x12\n\nmetadata_x\x18\x04 \x01(\r\x12\x0e\n\x06help_x\x18\x05 \x01(\r\x12\x13\n\x0btransform_x\x18\x06 \x01(\r\x12\x11\n\tcontrol_x\x18\x07 \x01(\r')
 
 
 
@@ -84,8 +83,8 @@ _APPLAYOUT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=63,
-  serialized_end=213,
+  serialized_start=39,
+  serialized_end=189,
 )
 
 DESCRIPTOR.message_types_by_name['AppLayout'] = _APPLAYOUT

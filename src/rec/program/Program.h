@@ -5,7 +5,6 @@
 #include "rec/command/map/CommandMap.pb.h"
 #include "rec/gui/menu/RecentFiles.h"
 #include "rec/gui/proto/Layout.pb.h"
-#include "rec/gui/proto/Component.pb.h"
 #include "rec/program/Menu.pb.h"
 #include "rec/program/Threads.pb.h"
 #include "rec/program/Types.h"
@@ -28,7 +27,6 @@ class Program : public command::CallbackTable{
   virtual MenuCollection menuCollection() const = 0;
   virtual ThreadProtos threads() const = 0;
   virtual gui::Layouts layouts() const = 0;
-  virtual gui::ComponentProtos components() const = 0;
 
   virtual string menuBarName() const = 0;
 

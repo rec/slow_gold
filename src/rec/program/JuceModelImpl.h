@@ -55,7 +55,6 @@ class JuceModelImpl {
   const MenuMap menuMap_;
   const MenuBarMap menuBarMap_;
   const LayoutMap layoutMap_;
-  const ComponentMap componentMap_;
   ThreadMap threadMap_;
 
   DataListeners dataListeners_;

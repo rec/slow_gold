@@ -107,6 +107,18 @@ class ResizerProto : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 min_value() const;
   inline void set_min_value(::google::protobuf::uint32 value);
 
+  // optional string address = 3;
+  inline bool has_address() const;
+  inline void clear_address();
+  static const int kAddressFieldNumber = 3;
+  inline const ::std::string& address() const;
+  inline void set_address(const ::std::string& value);
+  inline void set_address(const char* value);
+  inline void set_address(const char* value, size_t size);
+  inline ::std::string* mutable_address();
+  inline ::std::string* release_address();
+  inline void set_allocated_address(::std::string* address);
+
   // optional .rec.data.DataAddress data_address = 4;
   inline bool has_data_address() const;
   inline void clear_data_address();
@@ -122,6 +134,8 @@ class ResizerProto : public ::google::protobuf::Message {
   inline void clear_has_size();
   inline void set_has_min_value();
   inline void clear_has_min_value();
+  inline void set_has_address();
+  inline void clear_has_address();
   inline void set_has_data_address();
   inline void clear_has_data_address();
 
@@ -129,10 +143,11 @@ class ResizerProto : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 size_;
   ::google::protobuf::uint32 min_value_;
+  ::std::string* address_;
   ::rec::data::DataAddress* data_address_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fResizer_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fResizer_2eproto();
@@ -192,15 +207,85 @@ inline void ResizerProto::set_min_value(::google::protobuf::uint32 value) {
   min_value_ = value;
 }
 
-// optional .rec.data.DataAddress data_address = 4;
-inline bool ResizerProto::has_data_address() const {
+// optional string address = 3;
+inline bool ResizerProto::has_address() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ResizerProto::set_has_data_address() {
+inline void ResizerProto::set_has_address() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ResizerProto::clear_has_data_address() {
+inline void ResizerProto::clear_has_address() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void ResizerProto::clear_address() {
+  if (address_ != &::google::protobuf::internal::kEmptyString) {
+    address_->clear();
+  }
+  clear_has_address();
+}
+inline const ::std::string& ResizerProto::address() const {
+  return *address_;
+}
+inline void ResizerProto::set_address(const ::std::string& value) {
+  set_has_address();
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    address_ = new ::std::string;
+  }
+  address_->assign(value);
+}
+inline void ResizerProto::set_address(const char* value) {
+  set_has_address();
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    address_ = new ::std::string;
+  }
+  address_->assign(value);
+}
+inline void ResizerProto::set_address(const char* value, size_t size) {
+  set_has_address();
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    address_ = new ::std::string;
+  }
+  address_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ResizerProto::mutable_address() {
+  set_has_address();
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    address_ = new ::std::string;
+  }
+  return address_;
+}
+inline ::std::string* ResizerProto::release_address() {
+  clear_has_address();
+  if (address_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = address_;
+    address_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ResizerProto::set_allocated_address(::std::string* address) {
+  if (address_ != &::google::protobuf::internal::kEmptyString) {
+    delete address_;
+  }
+  if (address) {
+    set_has_address();
+    address_ = address;
+  } else {
+    clear_has_address();
+    address_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional .rec.data.DataAddress data_address = 4;
+inline bool ResizerProto::has_data_address() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ResizerProto::set_has_data_address() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ResizerProto::clear_has_data_address() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void ResizerProto::clear_data_address() {
   if (data_address_ != NULL) data_address_->::rec::data::DataAddress::Clear();

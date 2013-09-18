@@ -1,58 +1,58 @@
 layout {
   name: "TransportController"
   orientation: VERTICAL
-  entry {
+  component {
     name: "TransportButtonsPanel"
     min: 40
   }
-  entry {
+  component {
     name: "GainPanel"
     min: 40
   }
-  entry {
+  component {
     name: "LevelMeter"
     min: 20
   }
 }
 layout {
   name: "TransportButtonsPanel"
-  entry {
+  component {
     name: "StartStopButton"
     min: 40
   }
-  entry {
+  component {
     name: "JumpStartButton"
     min: 40
   }
-  entry {
+  component {
     name: "JumpBackButton"
     min: 40
   }
-  entry {
+  component {
     name: "JumpForwardButton"
     min: 40
   }
-  entry {
+  component {
     name: "TimeController"
   }
 }
 layout {
   name: "GainPanel"
-  entry {
+  component {
     name: "MuteButton"
     min: 45
   }
-  entry {
+  component {
     name: "LevelSlider"
   }
 }
 layout {
   name: "TimeController"
-  entry {
+  component {
     name: "SongTime"
     min: 100
   }
-  entry {
+  component {
     name: "SongDial"
     min: 45
   }

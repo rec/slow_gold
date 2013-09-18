@@ -133,13 +133,5 @@ LayoutMap makeLayoutMap(const Program& program) {
   return layoutMap;
 }
 
-ComponentMap makeComponentMap(const Program& program) {
-  ComponentMap componentMap;
-  auto components = program.components();
-  for (auto& component: components.component())
-    componentMap[component.name()] = component;
-  return componentMap;
-}
-
 }  // namespace program
 }  // namespace rec

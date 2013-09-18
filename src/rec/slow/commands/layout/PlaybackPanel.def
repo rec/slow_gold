@@ -1,34 +1,28 @@
 layout {
   name: "PlaybackPanel"
-  entry {
+  component {
     name: "HelpPanel"
     min: 200
     max: -1.0
     preferred: -0.2
   }
-  entry {
-    name: "HelpResizer"
-    min: 7.0
+  component {
     resizer {
-      data_address {
-      }
+      address: "help_x"
     }
   }
-  entry {
+  component {
     name: "TransformController"
     min: 250
     max: -1.0
     preferred: -0.75
   }
-  entry {
-    name: "TransformResizer"
-    min: 7.0
+  component {
     resizer {
-      data_address {
-      }
+      address: "transform_x"
     }
   }
-  entry {
+  component {
     name: "TransportController"
     min: 300
     max: -1.0

@@ -84,14 +84,12 @@ void protobuf_AddDesc_rec_2fslow_2fAppLayout_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\030rec/slow/AppLayout.proto\022\010rec.slow\032\026re"
-    "c/gui/Geometry.proto\"\226\001\n\tAppLayout\022\024\n\014na"
-    "vigation_y\030\001 \001(\r\022\022\n\nwaveform_y\030\002 \001(\r\022\023\n\013"
-    "directory_x\030\003 \001(\r\022\022\n\nmetadata_x\030\004 \001(\r\022\016\n"
-    "\006help_x\030\005 \001(\r\022\023\n\013transform_x\030\006 \001(\r\022\021\n\tco"
-    "ntrol_x\030\007 \001(\r", 213);
+    "\n\030rec/slow/AppLayout.proto\022\010rec.slow\"\226\001\n"
+    "\tAppLayout\022\024\n\014navigation_y\030\001 \001(\r\022\022\n\nwave"
+    "form_y\030\002 \001(\r\022\023\n\013directory_x\030\003 \001(\r\022\022\n\nmet"
+    "adata_x\030\004 \001(\r\022\016\n\006help_x\030\005 \001(\r\022\023\n\013transfo"
+    "rm_x\030\006 \001(\r\022\021\n\tcontrol_x\030\007 \001(\r", 189);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/AppLayout.proto", &protobuf_RegisterTypes);
   AppLayout::default_instance_ = new AppLayout();

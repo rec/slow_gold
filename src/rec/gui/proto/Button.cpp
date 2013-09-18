@@ -20,7 +20,7 @@ unique_ptr<LanguageButton> makeButton(const ButtonProto& proto) {
       new LanguageButton(proto.name(), proto.tooltip(), style));
   button->setTooltip(proto.tooltip());
 
-  const string& imageName = proto.image_name();
+  const string& imageName = proto.image();
   const ButtonProto::HasState& state = proto.state();
   unique_ptr<Drawable> normal, over, down, disabled;
   construct(&normal, imageName);

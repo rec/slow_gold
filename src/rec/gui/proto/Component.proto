@@ -3,21 +3,23 @@ package rec.gui;
 import "rec/gui/proto/Button.proto";
 import "rec/gui/proto/ComboBox.proto";
 import "rec/gui/proto/Label.proto";
-import "rec/gui/proto/Panel.proto";
 import "rec/gui/proto/Resizer.proto";
 import "rec/gui/proto/Slider.proto";
 import "rec/gui/proto/ToggleButton.proto";
 
 message ComponentProto {
   optional string name = 1;
+  optional string preferred = 2;
+  optional string min = 3;
+  optional string max = 4;
 
-  optional ButtonProto button = 2;
-  optional ComboBoxProto combo_box = 3;
-  optional LabelProto label = 4;
-  optional PanelProto panel = 5;
-  optional ResizerProto resizer = 6;
-  optional SliderProto slider = 7;
-  optional ToggleButtonProto toggle_button = 8;
+  optional ButtonProto button = 5;
+  optional ComboBoxProto combo_box = 6;
+  optional LabelProto label = 7;
+  // optional PanelProto panel = 8;
+  optional ResizerProto resizer = 9;
+  optional SliderProto slider = 10;
+  optional ToggleButtonProto toggle_button = 11;
 };
 
 message ComponentProtos {

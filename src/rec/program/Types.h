@@ -17,7 +17,6 @@ typedef std::unordered_map<string, MenuBar> MenuBarMap;
 typedef std::unordered_map<CommandID, unique_ptr<Callback>> CallbackMap;
 typedef std::unordered_map<string, unique_ptr<Thread>> ThreadMap;
 typedef std::unordered_map<string, gui::Layout> LayoutMap;
-typedef std::unordered_map<string, gui::ComponentProto> ComponentMap;
 
 }  // namespace program
 }  // namespace rec

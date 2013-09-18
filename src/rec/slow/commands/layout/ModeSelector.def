@@ -1,18 +1,18 @@
 layout {
   name: "ModeSelector"
-  entry {
+  component {
     name: "DragModeButton"
     min: 34
   }
-  entry {
+  component {
     name: "SetTimeModeButton"
     min: 34
   }
-  entry {
+  component {
     name: "ZoomModeButton"
     min: 34
   }
-  entry {
+  component {
     name: "AddLoopPointModeButton"
     min: 34
   }

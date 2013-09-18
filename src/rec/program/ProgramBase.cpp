@@ -74,10 +74,6 @@ gui::Layouts ProgramBase::layouts() const {
   return BINARY_PROTO_MERGED(Layout, gui::Layouts);
 }
 
-gui::ComponentProtos ProgramBase::components() const {
-  return BINARY_PROTO_MERGED(Components, gui::ComponentProtos);
-}
-
 }  // namespace program
 }  // namespace rec
 

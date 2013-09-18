@@ -22,10 +22,10 @@ Component* make(const ComponentProto& c) {
 
   if (c.has_label())
     return makeLabel(c.label()).release();
-
+/*
   if (c.has_panel())
     return makePanel(c.panel()).release();
-
+*/
   if (c.has_resizer())
     return makeResizer(c.resizer()).release();
 

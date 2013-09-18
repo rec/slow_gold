@@ -22,7 +22,6 @@ class ProgramBase : public Program {
 
   ThreadProtos threads() const override;
   gui::Layouts layouts() const override;
-  gui::ComponentProtos components() const override;
 
   ThreadFunction threadFunction(const string& name) const override {
     return threadFunctions_.at(name);

@@ -1,10 +1,10 @@
 layout {
   name: "TransformController"
-  entry {
+  component {
     name: "LeftTransformPanel"
     min: 67
   }
-  entry {
+  component {
     name: "RightTransformPanel"
     min: 150
     max: -1.0
@@ -15,11 +15,11 @@ layout {
   name: "LeftTransformPanel"
   orientation: VERTICAL
   padding: true
-  entry {
+  component {
     name: "EnableButton"
     min: 30
   }
-  entry {
+  component {
     name: "StereoCombo"
     min: 30
   }
@@ -28,19 +28,19 @@ layout {
   name: "RightTransformPanel"
   padding: true
   orientation: VERTICAL
-  entry {
+  component {
     name: "SpeedSlider"
     min: 30
   }
-  entry {
+  component {
     name: "PitchSlider"
     min: 30
   }
-  entry {
+  component {
     name: "FinePitchSlider"
     min: 30
   }
-  entry {
+  component {
     name: "MasterTuneSlider"
     min: 30
   }

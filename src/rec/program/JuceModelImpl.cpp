@@ -59,7 +59,6 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
       menuMap_(makeMenuMap(*p)),
       menuBarMap_(makeMenuBarMap(*p)),
       layoutMap_(makeLayoutMap(*p)),
-      componentMap_(makeComponentMap(*p)),
       threadMap_(makeThreadMap(*p)),
       recentFiles_(program_->recentFilesStrategy().getRecentFileCommand()),
       recentFilesEnd_(recentFiles_ + command::Command::BANK_SIZE) {
@@ -78,21 +77,17 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
 void JuceModelImpl::logMaps() {
   LOG(INFO) << "There are " << commandMap_.size() << " callbacks.";
   LOG(INFO) << "There are " << layoutMap_.size() << " layouts.";
-  LOG(INFO) << "There are " << componentMap_.size() << " components.";
 
   int undeclared = 0, total = 0, empty = 0;
   for (auto& i: layoutMap_) {
-    if (not i.second.entry().size()) {
+    if (not i.second.component().size()) {
       DLOG(INFO) << "empty: " << i.second.name();
       ++empty;
     }
-    for (auto& entry: i.second.entry()) {
-      auto& name = entry.name();
-      total += 1;
-      if (not (entry.has_resizer() or
-               componentMap_.count(name) or layoutMap_.count(name))) {
-        DLOG(INFO) << "undeclared: " << name;
-        undeclared += 1;
+    for (auto& component: i.second.component()) {
+      auto& name = component.name();
+      if (not name.empty()) {
+        total += 1;
       }
     }
   }

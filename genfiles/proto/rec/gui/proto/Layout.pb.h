@@ -25,7 +25,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "rec/gui/proto/Resizer.pb.h"
+#include "rec/gui/proto/Component.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -36,7 +36,6 @@ void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
 void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
 void protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto();
 
-class LayoutEntry;
 class Layout;
 class Layouts;
 
@@ -60,135 +59,6 @@ inline bool Layout_Orientation_Parse(
     Layout_Orientation_descriptor(), name, value);
 }
 // ===================================================================
-
-class LayoutEntry : public ::google::protobuf::Message {
- public:
-  LayoutEntry();
-  virtual ~LayoutEntry();
-
-  LayoutEntry(const LayoutEntry& from);
-
-  inline LayoutEntry& operator=(const LayoutEntry& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const LayoutEntry& default_instance();
-
-  void Swap(LayoutEntry* other);
-
-  // implements Message ----------------------------------------------
-
-  LayoutEntry* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const LayoutEntry& from);
-  void MergeFrom(const LayoutEntry& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional string name = 1;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 1;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  inline ::std::string* release_name();
-  inline void set_allocated_name(::std::string* name);
-
-  // optional double preferred = 2;
-  inline bool has_preferred() const;
-  inline void clear_preferred();
-  static const int kPreferredFieldNumber = 2;
-  inline double preferred() const;
-  inline void set_preferred(double value);
-
-  // optional double min = 3;
-  inline bool has_min() const;
-  inline void clear_min();
-  static const int kMinFieldNumber = 3;
-  inline double min() const;
-  inline void set_min(double value);
-
-  // optional double max = 4;
-  inline bool has_max() const;
-  inline void clear_max();
-  static const int kMaxFieldNumber = 4;
-  inline double max() const;
-  inline void set_max(double value);
-
-  // optional .rec.gui.ResizerProto resizer = 5;
-  inline bool has_resizer() const;
-  inline void clear_resizer();
-  static const int kResizerFieldNumber = 5;
-  inline const ::rec::gui::ResizerProto& resizer() const;
-  inline ::rec::gui::ResizerProto* mutable_resizer();
-  inline ::rec::gui::ResizerProto* release_resizer();
-  inline void set_allocated_resizer(::rec::gui::ResizerProto* resizer);
-
-  // @@protoc_insertion_point(class_scope:rec.gui.LayoutEntry)
- private:
-  inline void set_has_name();
-  inline void clear_has_name();
-  inline void set_has_preferred();
-  inline void clear_has_preferred();
-  inline void set_has_min();
-  inline void clear_has_min();
-  inline void set_has_max();
-  inline void clear_has_max();
-  inline void set_has_resizer();
-  inline void clear_has_resizer();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::std::string* name_;
-  double preferred_;
-  double min_;
-  double max_;
-  ::rec::gui::ResizerProto* resizer_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
-
-  friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
-  friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fgui_2fproto_2fLayout_2eproto();
-
-  void InitAsDefaultInstance();
-  static LayoutEntry* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class Layout : public ::google::protobuf::Message {
  public:
@@ -280,45 +150,81 @@ class Layout : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // repeated .rec.gui.LayoutEntry entry = 2;
-  inline int entry_size() const;
-  inline void clear_entry();
-  static const int kEntryFieldNumber = 2;
-  inline const ::rec::gui::LayoutEntry& entry(int index) const;
-  inline ::rec::gui::LayoutEntry* mutable_entry(int index);
-  inline ::rec::gui::LayoutEntry* add_entry();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::LayoutEntry >&
-      entry() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::LayoutEntry >*
-      mutable_entry();
-
-  // optional .rec.gui.Layout.Orientation orientation = 3;
+  // optional .rec.gui.Layout.Orientation orientation = 2;
   inline bool has_orientation() const;
   inline void clear_orientation();
-  static const int kOrientationFieldNumber = 3;
+  static const int kOrientationFieldNumber = 2;
   inline ::rec::gui::Layout_Orientation orientation() const;
   inline void set_orientation(::rec::gui::Layout_Orientation value);
 
-  // optional bool resize_other_dimension = 4 [default = true];
+  // optional bool resize_other_dimension = 3 [default = true];
   inline bool has_resize_other_dimension() const;
   inline void clear_resize_other_dimension();
-  static const int kResizeOtherDimensionFieldNumber = 4;
+  static const int kResizeOtherDimensionFieldNumber = 3;
   inline bool resize_other_dimension() const;
   inline void set_resize_other_dimension(bool value);
 
-  // optional bool is_main = 5;
+  // optional bool is_main = 4;
   inline bool has_is_main() const;
   inline void clear_is_main();
-  static const int kIsMainFieldNumber = 5;
+  static const int kIsMainFieldNumber = 4;
   inline bool is_main() const;
   inline void set_is_main(bool value);
 
-  // optional bool padding = 6;
+  // optional bool padding = 5;
   inline bool has_padding() const;
   inline void clear_padding();
-  static const int kPaddingFieldNumber = 6;
+  static const int kPaddingFieldNumber = 5;
   inline bool padding() const;
   inline void set_padding(bool value);
+
+  // optional string preferred = 6;
+  inline bool has_preferred() const;
+  inline void clear_preferred();
+  static const int kPreferredFieldNumber = 6;
+  inline const ::std::string& preferred() const;
+  inline void set_preferred(const ::std::string& value);
+  inline void set_preferred(const char* value);
+  inline void set_preferred(const char* value, size_t size);
+  inline ::std::string* mutable_preferred();
+  inline ::std::string* release_preferred();
+  inline void set_allocated_preferred(::std::string* preferred);
+
+  // optional string min = 7;
+  inline bool has_min() const;
+  inline void clear_min();
+  static const int kMinFieldNumber = 7;
+  inline const ::std::string& min() const;
+  inline void set_min(const ::std::string& value);
+  inline void set_min(const char* value);
+  inline void set_min(const char* value, size_t size);
+  inline ::std::string* mutable_min();
+  inline ::std::string* release_min();
+  inline void set_allocated_min(::std::string* min);
+
+  // optional string max = 8;
+  inline bool has_max() const;
+  inline void clear_max();
+  static const int kMaxFieldNumber = 8;
+  inline const ::std::string& max() const;
+  inline void set_max(const ::std::string& value);
+  inline void set_max(const char* value);
+  inline void set_max(const char* value, size_t size);
+  inline ::std::string* mutable_max();
+  inline ::std::string* release_max();
+  inline void set_allocated_max(::std::string* max);
+
+  // repeated .rec.gui.ComponentProto component = 9;
+  inline int component_size() const;
+  inline void clear_component();
+  static const int kComponentFieldNumber = 9;
+  inline const ::rec::gui::ComponentProto& component(int index) const;
+  inline ::rec::gui::ComponentProto* mutable_component(int index);
+  inline ::rec::gui::ComponentProto* add_component();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto >&
+      component() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto >*
+      mutable_component();
 
   // @@protoc_insertion_point(class_scope:rec.gui.Layout)
  private:
@@ -332,18 +238,27 @@ class Layout : public ::google::protobuf::Message {
   inline void clear_has_is_main();
   inline void set_has_padding();
   inline void clear_has_padding();
+  inline void set_has_preferred();
+  inline void clear_has_preferred();
+  inline void set_has_min();
+  inline void clear_has_min();
+  inline void set_has_max();
+  inline void clear_has_max();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* name_;
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::LayoutEntry > entry_;
   int orientation_;
   bool resize_other_dimension_;
   bool is_main_;
   bool padding_;
+  ::std::string* preferred_;
+  ::std::string* min_;
+  ::std::string* max_;
+  ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto > component_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fLayout_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fLayout_2eproto();
@@ -442,184 +357,6 @@ class Layouts : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// LayoutEntry
-
-// optional string name = 1;
-inline bool LayoutEntry::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void LayoutEntry::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void LayoutEntry::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void LayoutEntry::clear_name() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    name_->clear();
-  }
-  clear_has_name();
-}
-inline const ::std::string& LayoutEntry::name() const {
-  return *name_;
-}
-inline void LayoutEntry::set_name(const ::std::string& value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void LayoutEntry::set_name(const char* value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void LayoutEntry::set_name(const char* value, size_t size) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* LayoutEntry::mutable_name() {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  return name_;
-}
-inline ::std::string* LayoutEntry::release_name() {
-  clear_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = name_;
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void LayoutEntry::set_allocated_name(::std::string* name) {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (name) {
-    set_has_name();
-    name_ = name;
-  } else {
-    clear_has_name();
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional double preferred = 2;
-inline bool LayoutEntry::has_preferred() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void LayoutEntry::set_has_preferred() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void LayoutEntry::clear_has_preferred() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void LayoutEntry::clear_preferred() {
-  preferred_ = 0;
-  clear_has_preferred();
-}
-inline double LayoutEntry::preferred() const {
-  return preferred_;
-}
-inline void LayoutEntry::set_preferred(double value) {
-  set_has_preferred();
-  preferred_ = value;
-}
-
-// optional double min = 3;
-inline bool LayoutEntry::has_min() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void LayoutEntry::set_has_min() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void LayoutEntry::clear_has_min() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void LayoutEntry::clear_min() {
-  min_ = 0;
-  clear_has_min();
-}
-inline double LayoutEntry::min() const {
-  return min_;
-}
-inline void LayoutEntry::set_min(double value) {
-  set_has_min();
-  min_ = value;
-}
-
-// optional double max = 4;
-inline bool LayoutEntry::has_max() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void LayoutEntry::set_has_max() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void LayoutEntry::clear_has_max() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void LayoutEntry::clear_max() {
-  max_ = 0;
-  clear_has_max();
-}
-inline double LayoutEntry::max() const {
-  return max_;
-}
-inline void LayoutEntry::set_max(double value) {
-  set_has_max();
-  max_ = value;
-}
-
-// optional .rec.gui.ResizerProto resizer = 5;
-inline bool LayoutEntry::has_resizer() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void LayoutEntry::set_has_resizer() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void LayoutEntry::clear_has_resizer() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void LayoutEntry::clear_resizer() {
-  if (resizer_ != NULL) resizer_->::rec::gui::ResizerProto::Clear();
-  clear_has_resizer();
-}
-inline const ::rec::gui::ResizerProto& LayoutEntry::resizer() const {
-  return resizer_ != NULL ? *resizer_ : *default_instance_->resizer_;
-}
-inline ::rec::gui::ResizerProto* LayoutEntry::mutable_resizer() {
-  set_has_resizer();
-  if (resizer_ == NULL) resizer_ = new ::rec::gui::ResizerProto;
-  return resizer_;
-}
-inline ::rec::gui::ResizerProto* LayoutEntry::release_resizer() {
-  clear_has_resizer();
-  ::rec::gui::ResizerProto* temp = resizer_;
-  resizer_ = NULL;
-  return temp;
-}
-inline void LayoutEntry::set_allocated_resizer(::rec::gui::ResizerProto* resizer) {
-  delete resizer_;
-  resizer_ = resizer;
-  if (resizer) {
-    set_has_resizer();
-  } else {
-    clear_has_resizer();
-  }
-}
-
-// -------------------------------------------------------------------
-
 // Layout
 
 // optional string name = 1;
@@ -692,40 +429,15 @@ inline void Layout::set_allocated_name(::std::string* name) {
   }
 }
 
-// repeated .rec.gui.LayoutEntry entry = 2;
-inline int Layout::entry_size() const {
-  return entry_.size();
-}
-inline void Layout::clear_entry() {
-  entry_.Clear();
-}
-inline const ::rec::gui::LayoutEntry& Layout::entry(int index) const {
-  return entry_.Get(index);
-}
-inline ::rec::gui::LayoutEntry* Layout::mutable_entry(int index) {
-  return entry_.Mutable(index);
-}
-inline ::rec::gui::LayoutEntry* Layout::add_entry() {
-  return entry_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::LayoutEntry >&
-Layout::entry() const {
-  return entry_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::LayoutEntry >*
-Layout::mutable_entry() {
-  return &entry_;
-}
-
-// optional .rec.gui.Layout.Orientation orientation = 3;
+// optional .rec.gui.Layout.Orientation orientation = 2;
 inline bool Layout::has_orientation() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void Layout::set_has_orientation() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void Layout::clear_has_orientation() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void Layout::clear_orientation() {
   orientation_ = 0;
@@ -740,15 +452,15 @@ inline void Layout::set_orientation(::rec::gui::Layout_Orientation value) {
   orientation_ = value;
 }
 
-// optional bool resize_other_dimension = 4 [default = true];
+// optional bool resize_other_dimension = 3 [default = true];
 inline bool Layout::has_resize_other_dimension() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void Layout::set_has_resize_other_dimension() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void Layout::clear_has_resize_other_dimension() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Layout::clear_resize_other_dimension() {
   resize_other_dimension_ = true;
@@ -762,15 +474,15 @@ inline void Layout::set_resize_other_dimension(bool value) {
   resize_other_dimension_ = value;
 }
 
-// optional bool is_main = 5;
+// optional bool is_main = 4;
 inline bool Layout::has_is_main() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void Layout::set_has_is_main() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void Layout::clear_has_is_main() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Layout::clear_is_main() {
   is_main_ = false;
@@ -784,15 +496,15 @@ inline void Layout::set_is_main(bool value) {
   is_main_ = value;
 }
 
-// optional bool padding = 6;
+// optional bool padding = 5;
 inline bool Layout::has_padding() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void Layout::set_has_padding() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void Layout::clear_has_padding() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void Layout::clear_padding() {
   padding_ = false;
@@ -804,6 +516,241 @@ inline bool Layout::padding() const {
 inline void Layout::set_padding(bool value) {
   set_has_padding();
   padding_ = value;
+}
+
+// optional string preferred = 6;
+inline bool Layout::has_preferred() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void Layout::set_has_preferred() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void Layout::clear_has_preferred() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void Layout::clear_preferred() {
+  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
+    preferred_->clear();
+  }
+  clear_has_preferred();
+}
+inline const ::std::string& Layout::preferred() const {
+  return *preferred_;
+}
+inline void Layout::set_preferred(const ::std::string& value) {
+  set_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    preferred_ = new ::std::string;
+  }
+  preferred_->assign(value);
+}
+inline void Layout::set_preferred(const char* value) {
+  set_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    preferred_ = new ::std::string;
+  }
+  preferred_->assign(value);
+}
+inline void Layout::set_preferred(const char* value, size_t size) {
+  set_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    preferred_ = new ::std::string;
+  }
+  preferred_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Layout::mutable_preferred() {
+  set_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    preferred_ = new ::std::string;
+  }
+  return preferred_;
+}
+inline ::std::string* Layout::release_preferred() {
+  clear_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = preferred_;
+    preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Layout::set_allocated_preferred(::std::string* preferred) {
+  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
+    delete preferred_;
+  }
+  if (preferred) {
+    set_has_preferred();
+    preferred_ = preferred;
+  } else {
+    clear_has_preferred();
+    preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string min = 7;
+inline bool Layout::has_min() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void Layout::set_has_min() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void Layout::clear_has_min() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void Layout::clear_min() {
+  if (min_ != &::google::protobuf::internal::kEmptyString) {
+    min_->clear();
+  }
+  clear_has_min();
+}
+inline const ::std::string& Layout::min() const {
+  return *min_;
+}
+inline void Layout::set_min(const ::std::string& value) {
+  set_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    min_ = new ::std::string;
+  }
+  min_->assign(value);
+}
+inline void Layout::set_min(const char* value) {
+  set_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    min_ = new ::std::string;
+  }
+  min_->assign(value);
+}
+inline void Layout::set_min(const char* value, size_t size) {
+  set_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    min_ = new ::std::string;
+  }
+  min_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Layout::mutable_min() {
+  set_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    min_ = new ::std::string;
+  }
+  return min_;
+}
+inline ::std::string* Layout::release_min() {
+  clear_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = min_;
+    min_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Layout::set_allocated_min(::std::string* min) {
+  if (min_ != &::google::protobuf::internal::kEmptyString) {
+    delete min_;
+  }
+  if (min) {
+    set_has_min();
+    min_ = min;
+  } else {
+    clear_has_min();
+    min_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string max = 8;
+inline bool Layout::has_max() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void Layout::set_has_max() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void Layout::clear_has_max() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void Layout::clear_max() {
+  if (max_ != &::google::protobuf::internal::kEmptyString) {
+    max_->clear();
+  }
+  clear_has_max();
+}
+inline const ::std::string& Layout::max() const {
+  return *max_;
+}
+inline void Layout::set_max(const ::std::string& value) {
+  set_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    max_ = new ::std::string;
+  }
+  max_->assign(value);
+}
+inline void Layout::set_max(const char* value) {
+  set_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    max_ = new ::std::string;
+  }
+  max_->assign(value);
+}
+inline void Layout::set_max(const char* value, size_t size) {
+  set_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    max_ = new ::std::string;
+  }
+  max_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Layout::mutable_max() {
+  set_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    max_ = new ::std::string;
+  }
+  return max_;
+}
+inline ::std::string* Layout::release_max() {
+  clear_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = max_;
+    max_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void Layout::set_allocated_max(::std::string* max) {
+  if (max_ != &::google::protobuf::internal::kEmptyString) {
+    delete max_;
+  }
+  if (max) {
+    set_has_max();
+    max_ = max;
+  } else {
+    clear_has_max();
+    max_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// repeated .rec.gui.ComponentProto component = 9;
+inline int Layout::component_size() const {
+  return component_.size();
+}
+inline void Layout::clear_component() {
+  component_.Clear();
+}
+inline const ::rec::gui::ComponentProto& Layout::component(int index) const {
+  return component_.Get(index);
+}
+inline ::rec::gui::ComponentProto* Layout::mutable_component(int index) {
+  return component_.Mutable(index);
+}
+inline ::rec::gui::ComponentProto* Layout::add_component() {
+  return component_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto >&
+Layout::component() const {
+  return component_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::gui::ComponentProto >*
+Layout::mutable_component() {
+  return &component_;
 }
 
 // -------------------------------------------------------------------

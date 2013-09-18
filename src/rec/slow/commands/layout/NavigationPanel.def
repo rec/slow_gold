@@ -1,34 +1,28 @@
 layout {
   name: "NavigationPanel"
-  entry {
+  component {
     name: "TreeView"
     min: 75.0
     max: -1.0
     preferred: -0.2
   }
-  entry {
-    name: "DirectoryResizer"
-    min: 7.0
+  component {
     resizer {
-      data_address {
-      }
+      address: "directory_x"
     }
   }
-  entry {
+  component {
     name: "SongData"
     min: 150.0
     max: -1.0
     preferred: -0.30
   }
-  entry {
-    name: "MetadataResizer"
-    min: 7.0
+  component {
     resizer {
-      data_address {
-      }
+      address: "metadata_x"
     }
   }
-  entry {
+  component {
     name: "Loops"
     min: 250.0
     max: -1.0

@@ -13,16 +13,16 @@ message ButtonProto {
   };
 
   message HasState {
-    optional bool normal = 1;
-    optional bool over = 2;
-    optional bool down = 3;
-    optional bool disabled = 4;
+    optional bool normal = 1 [default = true];
+    optional bool over = 2 [default = false];
+    optional bool down = 3 [default = true];
+    optional bool disabled = 4 [default = true];
   };
 
   optional Style style = 1;
   optional string name = 2;
   optional string tooltip = 3;
-  optional string image_name = 4;
+  optional string image = 4;
 
   optional HasState state = 5;
   optional HasState state_on = 6;

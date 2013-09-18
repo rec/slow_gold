@@ -27,7 +27,6 @@
 #include "rec/gui/proto/Button.pb.h"
 #include "rec/gui/proto/ComboBox.pb.h"
 #include "rec/gui/proto/Label.pb.h"
-#include "rec/gui/proto/Panel.pb.h"
 #include "rec/gui/proto/Resizer.pb.h"
 #include "rec/gui/proto/Slider.pb.h"
 #include "rec/gui/proto/ToggleButton.pb.h"
@@ -112,64 +111,91 @@ class ComponentProto : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // optional .rec.gui.ButtonProto button = 2;
+  // optional string preferred = 2;
+  inline bool has_preferred() const;
+  inline void clear_preferred();
+  static const int kPreferredFieldNumber = 2;
+  inline const ::std::string& preferred() const;
+  inline void set_preferred(const ::std::string& value);
+  inline void set_preferred(const char* value);
+  inline void set_preferred(const char* value, size_t size);
+  inline ::std::string* mutable_preferred();
+  inline ::std::string* release_preferred();
+  inline void set_allocated_preferred(::std::string* preferred);
+
+  // optional string min = 3;
+  inline bool has_min() const;
+  inline void clear_min();
+  static const int kMinFieldNumber = 3;
+  inline const ::std::string& min() const;
+  inline void set_min(const ::std::string& value);
+  inline void set_min(const char* value);
+  inline void set_min(const char* value, size_t size);
+  inline ::std::string* mutable_min();
+  inline ::std::string* release_min();
+  inline void set_allocated_min(::std::string* min);
+
+  // optional string max = 4;
+  inline bool has_max() const;
+  inline void clear_max();
+  static const int kMaxFieldNumber = 4;
+  inline const ::std::string& max() const;
+  inline void set_max(const ::std::string& value);
+  inline void set_max(const char* value);
+  inline void set_max(const char* value, size_t size);
+  inline ::std::string* mutable_max();
+  inline ::std::string* release_max();
+  inline void set_allocated_max(::std::string* max);
+
+  // optional .rec.gui.ButtonProto button = 5;
   inline bool has_button() const;
   inline void clear_button();
-  static const int kButtonFieldNumber = 2;
+  static const int kButtonFieldNumber = 5;
   inline const ::rec::gui::ButtonProto& button() const;
   inline ::rec::gui::ButtonProto* mutable_button();
   inline ::rec::gui::ButtonProto* release_button();
   inline void set_allocated_button(::rec::gui::ButtonProto* button);
 
-  // optional .rec.gui.ComboBoxProto combo_box = 3;
+  // optional .rec.gui.ComboBoxProto combo_box = 6;
   inline bool has_combo_box() const;
   inline void clear_combo_box();
-  static const int kComboBoxFieldNumber = 3;
+  static const int kComboBoxFieldNumber = 6;
   inline const ::rec::gui::ComboBoxProto& combo_box() const;
   inline ::rec::gui::ComboBoxProto* mutable_combo_box();
   inline ::rec::gui::ComboBoxProto* release_combo_box();
   inline void set_allocated_combo_box(::rec::gui::ComboBoxProto* combo_box);
 
-  // optional .rec.gui.LabelProto label = 4;
+  // optional .rec.gui.LabelProto label = 7;
   inline bool has_label() const;
   inline void clear_label();
-  static const int kLabelFieldNumber = 4;
+  static const int kLabelFieldNumber = 7;
   inline const ::rec::gui::LabelProto& label() const;
   inline ::rec::gui::LabelProto* mutable_label();
   inline ::rec::gui::LabelProto* release_label();
   inline void set_allocated_label(::rec::gui::LabelProto* label);
 
-  // optional .rec.gui.PanelProto panel = 5;
-  inline bool has_panel() const;
-  inline void clear_panel();
-  static const int kPanelFieldNumber = 5;
-  inline const ::rec::gui::PanelProto& panel() const;
-  inline ::rec::gui::PanelProto* mutable_panel();
-  inline ::rec::gui::PanelProto* release_panel();
-  inline void set_allocated_panel(::rec::gui::PanelProto* panel);
-
-  // optional .rec.gui.ResizerProto resizer = 6;
+  // optional .rec.gui.ResizerProto resizer = 9;
   inline bool has_resizer() const;
   inline void clear_resizer();
-  static const int kResizerFieldNumber = 6;
+  static const int kResizerFieldNumber = 9;
   inline const ::rec::gui::ResizerProto& resizer() const;
   inline ::rec::gui::ResizerProto* mutable_resizer();
   inline ::rec::gui::ResizerProto* release_resizer();
   inline void set_allocated_resizer(::rec::gui::ResizerProto* resizer);
 
-  // optional .rec.gui.SliderProto slider = 7;
+  // optional .rec.gui.SliderProto slider = 10;
   inline bool has_slider() const;
   inline void clear_slider();
-  static const int kSliderFieldNumber = 7;
+  static const int kSliderFieldNumber = 10;
   inline const ::rec::gui::SliderProto& slider() const;
   inline ::rec::gui::SliderProto* mutable_slider();
   inline ::rec::gui::SliderProto* release_slider();
   inline void set_allocated_slider(::rec::gui::SliderProto* slider);
 
-  // optional .rec.gui.ToggleButtonProto toggle_button = 8;
+  // optional .rec.gui.ToggleButtonProto toggle_button = 11;
   inline bool has_toggle_button() const;
   inline void clear_toggle_button();
-  static const int kToggleButtonFieldNumber = 8;
+  static const int kToggleButtonFieldNumber = 11;
   inline const ::rec::gui::ToggleButtonProto& toggle_button() const;
   inline ::rec::gui::ToggleButtonProto* mutable_toggle_button();
   inline ::rec::gui::ToggleButtonProto* release_toggle_button();
@@ -179,14 +205,18 @@ class ComponentProto : public ::google::protobuf::Message {
  private:
   inline void set_has_name();
   inline void clear_has_name();
+  inline void set_has_preferred();
+  inline void clear_has_preferred();
+  inline void set_has_min();
+  inline void clear_has_min();
+  inline void set_has_max();
+  inline void clear_has_max();
   inline void set_has_button();
   inline void clear_has_button();
   inline void set_has_combo_box();
   inline void clear_has_combo_box();
   inline void set_has_label();
   inline void clear_has_label();
-  inline void set_has_panel();
-  inline void clear_has_panel();
   inline void set_has_resizer();
   inline void clear_has_resizer();
   inline void set_has_slider();
@@ -197,16 +227,18 @@ class ComponentProto : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* name_;
+  ::std::string* preferred_;
+  ::std::string* min_;
+  ::std::string* max_;
   ::rec::gui::ButtonProto* button_;
   ::rec::gui::ComboBoxProto* combo_box_;
   ::rec::gui::LabelProto* label_;
-  ::rec::gui::PanelProto* panel_;
   ::rec::gui::ResizerProto* resizer_;
   ::rec::gui::SliderProto* slider_;
   ::rec::gui::ToggleButtonProto* toggle_button_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
 
   friend void  protobuf_AddDesc_rec_2fgui_2fproto_2fComponent_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fproto_2fComponent_2eproto();
@@ -377,15 +409,225 @@ inline void ComponentProto::set_allocated_name(::std::string* name) {
   }
 }
 
-// optional .rec.gui.ButtonProto button = 2;
-inline bool ComponentProto::has_button() const {
+// optional string preferred = 2;
+inline bool ComponentProto::has_preferred() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ComponentProto::set_has_button() {
+inline void ComponentProto::set_has_preferred() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ComponentProto::clear_has_button() {
+inline void ComponentProto::clear_has_preferred() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void ComponentProto::clear_preferred() {
+  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
+    preferred_->clear();
+  }
+  clear_has_preferred();
+}
+inline const ::std::string& ComponentProto::preferred() const {
+  return *preferred_;
+}
+inline void ComponentProto::set_preferred(const ::std::string& value) {
+  set_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    preferred_ = new ::std::string;
+  }
+  preferred_->assign(value);
+}
+inline void ComponentProto::set_preferred(const char* value) {
+  set_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    preferred_ = new ::std::string;
+  }
+  preferred_->assign(value);
+}
+inline void ComponentProto::set_preferred(const char* value, size_t size) {
+  set_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    preferred_ = new ::std::string;
+  }
+  preferred_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ComponentProto::mutable_preferred() {
+  set_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    preferred_ = new ::std::string;
+  }
+  return preferred_;
+}
+inline ::std::string* ComponentProto::release_preferred() {
+  clear_has_preferred();
+  if (preferred_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = preferred_;
+    preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ComponentProto::set_allocated_preferred(::std::string* preferred) {
+  if (preferred_ != &::google::protobuf::internal::kEmptyString) {
+    delete preferred_;
+  }
+  if (preferred) {
+    set_has_preferred();
+    preferred_ = preferred;
+  } else {
+    clear_has_preferred();
+    preferred_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string min = 3;
+inline bool ComponentProto::has_min() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ComponentProto::set_has_min() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ComponentProto::clear_has_min() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ComponentProto::clear_min() {
+  if (min_ != &::google::protobuf::internal::kEmptyString) {
+    min_->clear();
+  }
+  clear_has_min();
+}
+inline const ::std::string& ComponentProto::min() const {
+  return *min_;
+}
+inline void ComponentProto::set_min(const ::std::string& value) {
+  set_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    min_ = new ::std::string;
+  }
+  min_->assign(value);
+}
+inline void ComponentProto::set_min(const char* value) {
+  set_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    min_ = new ::std::string;
+  }
+  min_->assign(value);
+}
+inline void ComponentProto::set_min(const char* value, size_t size) {
+  set_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    min_ = new ::std::string;
+  }
+  min_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ComponentProto::mutable_min() {
+  set_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    min_ = new ::std::string;
+  }
+  return min_;
+}
+inline ::std::string* ComponentProto::release_min() {
+  clear_has_min();
+  if (min_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = min_;
+    min_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ComponentProto::set_allocated_min(::std::string* min) {
+  if (min_ != &::google::protobuf::internal::kEmptyString) {
+    delete min_;
+  }
+  if (min) {
+    set_has_min();
+    min_ = min;
+  } else {
+    clear_has_min();
+    min_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string max = 4;
+inline bool ComponentProto::has_max() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ComponentProto::set_has_max() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ComponentProto::clear_has_max() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ComponentProto::clear_max() {
+  if (max_ != &::google::protobuf::internal::kEmptyString) {
+    max_->clear();
+  }
+  clear_has_max();
+}
+inline const ::std::string& ComponentProto::max() const {
+  return *max_;
+}
+inline void ComponentProto::set_max(const ::std::string& value) {
+  set_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    max_ = new ::std::string;
+  }
+  max_->assign(value);
+}
+inline void ComponentProto::set_max(const char* value) {
+  set_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    max_ = new ::std::string;
+  }
+  max_->assign(value);
+}
+inline void ComponentProto::set_max(const char* value, size_t size) {
+  set_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    max_ = new ::std::string;
+  }
+  max_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ComponentProto::mutable_max() {
+  set_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    max_ = new ::std::string;
+  }
+  return max_;
+}
+inline ::std::string* ComponentProto::release_max() {
+  clear_has_max();
+  if (max_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = max_;
+    max_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ComponentProto::set_allocated_max(::std::string* max) {
+  if (max_ != &::google::protobuf::internal::kEmptyString) {
+    delete max_;
+  }
+  if (max) {
+    set_has_max();
+    max_ = max;
+  } else {
+    clear_has_max();
+    max_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional .rec.gui.ButtonProto button = 5;
+inline bool ComponentProto::has_button() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ComponentProto::set_has_button() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ComponentProto::clear_has_button() {
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void ComponentProto::clear_button() {
   if (button_ != NULL) button_->::rec::gui::ButtonProto::Clear();
@@ -415,15 +657,15 @@ inline void ComponentProto::set_allocated_button(::rec::gui::ButtonProto* button
   }
 }
 
-// optional .rec.gui.ComboBoxProto combo_box = 3;
+// optional .rec.gui.ComboBoxProto combo_box = 6;
 inline bool ComponentProto::has_combo_box() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void ComponentProto::set_has_combo_box() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void ComponentProto::clear_has_combo_box() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void ComponentProto::clear_combo_box() {
   if (combo_box_ != NULL) combo_box_->::rec::gui::ComboBoxProto::Clear();
@@ -453,15 +695,15 @@ inline void ComponentProto::set_allocated_combo_box(::rec::gui::ComboBoxProto* c
   }
 }
 
-// optional .rec.gui.LabelProto label = 4;
+// optional .rec.gui.LabelProto label = 7;
 inline bool ComponentProto::has_label() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void ComponentProto::set_has_label() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void ComponentProto::clear_has_label() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void ComponentProto::clear_label() {
   if (label_ != NULL) label_->::rec::gui::LabelProto::Clear();
@@ -491,53 +733,15 @@ inline void ComponentProto::set_allocated_label(::rec::gui::LabelProto* label) {
   }
 }
 
-// optional .rec.gui.PanelProto panel = 5;
-inline bool ComponentProto::has_panel() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void ComponentProto::set_has_panel() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void ComponentProto::clear_has_panel() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void ComponentProto::clear_panel() {
-  if (panel_ != NULL) panel_->::rec::gui::PanelProto::Clear();
-  clear_has_panel();
-}
-inline const ::rec::gui::PanelProto& ComponentProto::panel() const {
-  return panel_ != NULL ? *panel_ : *default_instance_->panel_;
-}
-inline ::rec::gui::PanelProto* ComponentProto::mutable_panel() {
-  set_has_panel();
-  if (panel_ == NULL) panel_ = new ::rec::gui::PanelProto;
-  return panel_;
-}
-inline ::rec::gui::PanelProto* ComponentProto::release_panel() {
-  clear_has_panel();
-  ::rec::gui::PanelProto* temp = panel_;
-  panel_ = NULL;
-  return temp;
-}
-inline void ComponentProto::set_allocated_panel(::rec::gui::PanelProto* panel) {
-  delete panel_;
-  panel_ = panel;
-  if (panel) {
-    set_has_panel();
-  } else {
-    clear_has_panel();
-  }
-}
-
-// optional .rec.gui.ResizerProto resizer = 6;
+// optional .rec.gui.ResizerProto resizer = 9;
 inline bool ComponentProto::has_resizer() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void ComponentProto::set_has_resizer() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void ComponentProto::clear_has_resizer() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void ComponentProto::clear_resizer() {
   if (resizer_ != NULL) resizer_->::rec::gui::ResizerProto::Clear();
@@ -567,15 +771,15 @@ inline void ComponentProto::set_allocated_resizer(::rec::gui::ResizerProto* resi
   }
 }
 
-// optional .rec.gui.SliderProto slider = 7;
+// optional .rec.gui.SliderProto slider = 10;
 inline bool ComponentProto::has_slider() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void ComponentProto::set_has_slider() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void ComponentProto::clear_has_slider() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void ComponentProto::clear_slider() {
   if (slider_ != NULL) slider_->::rec::gui::SliderProto::Clear();
@@ -605,15 +809,15 @@ inline void ComponentProto::set_allocated_slider(::rec::gui::SliderProto* slider
   }
 }
 
-// optional .rec.gui.ToggleButtonProto toggle_button = 8;
+// optional .rec.gui.ToggleButtonProto toggle_button = 11;
 inline bool ComponentProto::has_toggle_button() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void ComponentProto::set_has_toggle_button() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void ComponentProto::clear_has_toggle_button() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void ComponentProto::clear_toggle_button() {
   if (toggle_button_ != NULL) toggle_button_->::rec::gui::ToggleButtonProto::Clear();

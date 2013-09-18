@@ -1,7 +1,5 @@
 package rec.slow;
 
-import "rec/gui/Geometry.proto";
-
 message AppLayout {
   optional uint32 navigation_y = 1;
   optional uint32 waveform_y = 2;
