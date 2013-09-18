@@ -5,6 +5,5 @@ import "rec/data/proto/Address.proto";
 message ResizerProto {
   optional string size = 1;
   optional string min_value = 2;
-  optional string address = 3;
-  optional data.DataAddress data_address = 4;
+  optional data.AddressProto address = 3;
 };

@@ -268,14 +268,14 @@ class SliderProto : public ::google::protobuf::Message {
   inline ::std::string* release_text_entry_box_height();
   inline void set_allocated_text_entry_box_height(::std::string* text_entry_box_height);
 
-  // optional .rec.data.DataAddress data_address = 12;
-  inline bool has_data_address() const;
-  inline void clear_data_address();
-  static const int kDataAddressFieldNumber = 12;
-  inline const ::rec::data::DataAddress& data_address() const;
-  inline ::rec::data::DataAddress* mutable_data_address();
-  inline ::rec::data::DataAddress* release_data_address();
-  inline void set_allocated_data_address(::rec::data::DataAddress* data_address);
+  // optional .rec.data.AddressProto address = 12;
+  inline bool has_address() const;
+  inline void clear_address();
+  static const int kAddressFieldNumber = 12;
+  inline const ::rec::data::AddressProto& address() const;
+  inline ::rec::data::AddressProto* mutable_address();
+  inline ::rec::data::AddressProto* release_address();
+  inline void set_allocated_address(::rec::data::AddressProto* address);
 
   // optional string detent = 6;
   inline bool has_detent() const;
@@ -375,8 +375,8 @@ class SliderProto : public ::google::protobuf::Message {
   inline void clear_has_text_entry_box_width();
   inline void set_has_text_entry_box_height();
   inline void clear_has_text_entry_box_height();
-  inline void set_has_data_address();
-  inline void clear_has_data_address();
+  inline void set_has_address();
+  inline void clear_has_address();
   inline void set_has_detent();
   inline void clear_has_detent();
   inline void set_has_detent_radius();
@@ -404,7 +404,7 @@ class SliderProto : public ::google::protobuf::Message {
   static ::std::string* _default_text_entry_box_width_;
   ::std::string* text_entry_box_height_;
   static ::std::string* _default_text_entry_box_height_;
-  ::rec::data::DataAddress* data_address_;
+  ::rec::data::AddressProto* address_;
   ::std::string* detent_;
   ::std::string* detent_radius_;
   ::std::string* text_suffix_;
@@ -781,41 +781,41 @@ inline void SliderProto::set_allocated_text_entry_box_height(::std::string* text
   }
 }
 
-// optional .rec.data.DataAddress data_address = 12;
-inline bool SliderProto::has_data_address() const {
+// optional .rec.data.AddressProto address = 12;
+inline bool SliderProto::has_address() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void SliderProto::set_has_data_address() {
+inline void SliderProto::set_has_address() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void SliderProto::clear_has_data_address() {
+inline void SliderProto::clear_has_address() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void SliderProto::clear_data_address() {
-  if (data_address_ != NULL) data_address_->::rec::data::DataAddress::Clear();
-  clear_has_data_address();
+inline void SliderProto::clear_address() {
+  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+  clear_has_address();
 }
-inline const ::rec::data::DataAddress& SliderProto::data_address() const {
-  return data_address_ != NULL ? *data_address_ : *default_instance_->data_address_;
+inline const ::rec::data::AddressProto& SliderProto::address() const {
+  return address_ != NULL ? *address_ : *default_instance_->address_;
 }
-inline ::rec::data::DataAddress* SliderProto::mutable_data_address() {
-  set_has_data_address();
-  if (data_address_ == NULL) data_address_ = new ::rec::data::DataAddress;
-  return data_address_;
+inline ::rec::data::AddressProto* SliderProto::mutable_address() {
+  set_has_address();
+  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
+  return address_;
 }
-inline ::rec::data::DataAddress* SliderProto::release_data_address() {
-  clear_has_data_address();
-  ::rec::data::DataAddress* temp = data_address_;
-  data_address_ = NULL;
+inline ::rec::data::AddressProto* SliderProto::release_address() {
+  clear_has_address();
+  ::rec::data::AddressProto* temp = address_;
+  address_ = NULL;
   return temp;
 }
-inline void SliderProto::set_allocated_data_address(::rec::data::DataAddress* data_address) {
-  delete data_address_;
-  data_address_ = data_address;
-  if (data_address) {
-    set_has_data_address();
+inline void SliderProto::set_allocated_address(::rec::data::AddressProto* address) {
+  delete address_;
+  address_ = address;
+  if (address) {
+    set_has_address();
   } else {
-    clear_has_data_address();
+    clear_has_address();
   }
 }
 

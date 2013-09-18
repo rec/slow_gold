@@ -9,7 +9,7 @@ message SliderProto {
   optional string text_entry_box_width = 4 [default = "80"];
   optional string text_entry_box_height = 5 [default = "16"];
 
-  optional rec.data.DataAddress data_address = 12;
+  optional rec.data.AddressProto address = 12;
   optional string detent = 6;
   optional string detent_radius = 7;
   optional string text_suffix = 8;

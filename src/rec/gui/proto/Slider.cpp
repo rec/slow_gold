@@ -8,8 +8,8 @@ unique_ptr<DataSlider> makeSlider(const SliderProto& slider,
   unique_ptr<DataSlider> dataSlider(
       new DataSlider(slider.caption(),
                      slider.tooltip(),
-                     slider.data_address().type_name(),
-                     slider.data_address().address(),
+                     slider.address().type_name(),
+                     slider.address(),
                      constants(slider.caption_size()),
                      constants(slider.text_entry_box_width()),
                      constants(slider.text_entry_box_height())));

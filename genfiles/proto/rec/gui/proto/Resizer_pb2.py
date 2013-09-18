@@ -14,7 +14,7 @@ import rec.data.proto.Address_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rec/gui/proto/Resizer.proto',
   package='rec.gui',
-  serialized_pb='\n\x1brec/gui/proto/Resizer.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\"m\n\x0cResizerProto\x12\x0c\n\x04size\x18\x01 \x01(\t\x12\x11\n\tmin_value\x18\x02 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x03 \x01(\t\x12+\n\x0c\x64\x61ta_address\x18\x04 \x01(\x0b\x32\x15.rec.data.DataAddress')
+  serialized_pb='\n\x1brec/gui/proto/Resizer.proto\x12\x07rec.gui\x1a\x1crec/data/proto/Address.proto\"X\n\x0cResizerProto\x12\x0c\n\x04size\x18\x01 \x01(\t\x12\x11\n\tmin_value\x18\x02 \x01(\t\x12\'\n\x07\x61\x64\x64ress\x18\x03 \x01(\x0b\x32\x16.rec.data.AddressProto')
 
 
 
@@ -42,14 +42,7 @@ _RESIZERPROTO = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='address', full_name='rec.gui.ResizerProto.address', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='data_address', full_name='rec.gui.ResizerProto.data_address', index=3,
-      number=4, type=11, cpp_type=10, label=1,
+      number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -64,10 +57,10 @@ _RESIZERPROTO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=70,
-  serialized_end=179,
+  serialized_end=158,
 )
 
-_RESIZERPROTO.fields_by_name['data_address'].message_type = rec.data.proto.Address_pb2._DATAADDRESS
+_RESIZERPROTO.fields_by_name['address'].message_type = rec.data.proto.Address_pb2._ADDRESSPROTO
 DESCRIPTOR.message_types_by_name['ResizerProto'] = _RESIZERPROTO
 
 class ResizerProto(_message.Message):

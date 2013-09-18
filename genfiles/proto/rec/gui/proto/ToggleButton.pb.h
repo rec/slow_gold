@@ -117,14 +117,14 @@ class ToggleButtonProto : public ::google::protobuf::Message {
   inline ::std::string* release_tooltip();
   inline void set_allocated_tooltip(::std::string* tooltip);
 
-  // optional .rec.data.DataAddress data_address = 3;
-  inline bool has_data_address() const;
-  inline void clear_data_address();
-  static const int kDataAddressFieldNumber = 3;
-  inline const ::rec::data::DataAddress& data_address() const;
-  inline ::rec::data::DataAddress* mutable_data_address();
-  inline ::rec::data::DataAddress* release_data_address();
-  inline void set_allocated_data_address(::rec::data::DataAddress* data_address);
+  // optional .rec.data.AddressProto address = 3;
+  inline bool has_address() const;
+  inline void clear_address();
+  static const int kAddressFieldNumber = 3;
+  inline const ::rec::data::AddressProto& address() const;
+  inline ::rec::data::AddressProto* mutable_address();
+  inline ::rec::data::AddressProto* release_address();
+  inline void set_allocated_address(::rec::data::AddressProto* address);
 
   // @@protoc_insertion_point(class_scope:rec.gui.ToggleButtonProto)
  private:
@@ -132,14 +132,14 @@ class ToggleButtonProto : public ::google::protobuf::Message {
   inline void clear_has_name();
   inline void set_has_tooltip();
   inline void clear_has_tooltip();
-  inline void set_has_data_address();
-  inline void clear_has_data_address();
+  inline void set_has_address();
+  inline void clear_has_address();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* name_;
   ::std::string* tooltip_;
-  ::rec::data::DataAddress* data_address_;
+  ::rec::data::AddressProto* address_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
@@ -298,41 +298,41 @@ inline void ToggleButtonProto::set_allocated_tooltip(::std::string* tooltip) {
   }
 }
 
-// optional .rec.data.DataAddress data_address = 3;
-inline bool ToggleButtonProto::has_data_address() const {
+// optional .rec.data.AddressProto address = 3;
+inline bool ToggleButtonProto::has_address() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ToggleButtonProto::set_has_data_address() {
+inline void ToggleButtonProto::set_has_address() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ToggleButtonProto::clear_has_data_address() {
+inline void ToggleButtonProto::clear_has_address() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ToggleButtonProto::clear_data_address() {
-  if (data_address_ != NULL) data_address_->::rec::data::DataAddress::Clear();
-  clear_has_data_address();
+inline void ToggleButtonProto::clear_address() {
+  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
+  clear_has_address();
 }
-inline const ::rec::data::DataAddress& ToggleButtonProto::data_address() const {
-  return data_address_ != NULL ? *data_address_ : *default_instance_->data_address_;
+inline const ::rec::data::AddressProto& ToggleButtonProto::address() const {
+  return address_ != NULL ? *address_ : *default_instance_->address_;
 }
-inline ::rec::data::DataAddress* ToggleButtonProto::mutable_data_address() {
-  set_has_data_address();
-  if (data_address_ == NULL) data_address_ = new ::rec::data::DataAddress;
-  return data_address_;
+inline ::rec::data::AddressProto* ToggleButtonProto::mutable_address() {
+  set_has_address();
+  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
+  return address_;
 }
-inline ::rec::data::DataAddress* ToggleButtonProto::release_data_address() {
-  clear_has_data_address();
-  ::rec::data::DataAddress* temp = data_address_;
-  data_address_ = NULL;
+inline ::rec::data::AddressProto* ToggleButtonProto::release_address() {
+  clear_has_address();
+  ::rec::data::AddressProto* temp = address_;
+  address_ = NULL;
   return temp;
 }
-inline void ToggleButtonProto::set_allocated_data_address(::rec::data::DataAddress* data_address) {
-  delete data_address_;
-  data_address_ = data_address;
-  if (data_address) {
-    set_has_data_address();
+inline void ToggleButtonProto::set_allocated_address(::rec::data::AddressProto* address) {
+  delete address_;
+  address_ = address;
+  if (address) {
+    set_has_address();
   } else {
-    clear_has_data_address();
+    clear_has_address();
   }
 }
 

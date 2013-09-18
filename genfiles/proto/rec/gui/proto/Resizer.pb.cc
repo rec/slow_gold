@@ -35,11 +35,10 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fResizer_2eproto() {
       "rec/gui/proto/Resizer.proto");
   GOOGLE_CHECK(file != NULL);
   ResizerProto_descriptor_ = file->message_type(0);
-  static const int ResizerProto_offsets_[4] = {
+  static const int ResizerProto_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResizerProto, size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResizerProto, min_value_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResizerProto, address_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResizerProto, data_address_),
   };
   ResizerProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -84,10 +83,9 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fResizer_2eproto() {
   ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\033rec/gui/proto/Resizer.proto\022\007rec.gui\032\034"
-    "rec/data/proto/Address.proto\"m\n\014ResizerP"
-    "roto\022\014\n\004size\030\001 \001(\t\022\021\n\tmin_value\030\002 \001(\t\022\017\n"
-    "\007address\030\003 \001(\t\022+\n\014data_address\030\004 \001(\0132\025.r"
-    "ec.data.DataAddress", 179);
+    "rec/data/proto/Address.proto\"X\n\014ResizerP"
+    "roto\022\014\n\004size\030\001 \001(\t\022\021\n\tmin_value\030\002 \001(\t\022\'\n"
+    "\007address\030\003 \001(\0132\026.rec.data.AddressProto", 158);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/Resizer.proto", &protobuf_RegisterTypes);
   ResizerProto::default_instance_ = new ResizerProto();
@@ -108,7 +106,6 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fResizer_2eproto {
 const int ResizerProto::kSizeFieldNumber;
 const int ResizerProto::kMinValueFieldNumber;
 const int ResizerProto::kAddressFieldNumber;
-const int ResizerProto::kDataAddressFieldNumber;
 #endif  // !_MSC_VER
 
 ResizerProto::ResizerProto()
@@ -117,7 +114,7 @@ ResizerProto::ResizerProto()
 }
 
 void ResizerProto::InitAsDefaultInstance() {
-  data_address_ = const_cast< ::rec::data::DataAddress*>(&::rec::data::DataAddress::default_instance());
+  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
 }
 
 ResizerProto::ResizerProto(const ResizerProto& from)
@@ -130,8 +127,7 @@ void ResizerProto::SharedCtor() {
   _cached_size_ = 0;
   size_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   min_value_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  address_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  data_address_ = NULL;
+  address_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -146,11 +142,8 @@ void ResizerProto::SharedDtor() {
   if (min_value_ != &::google::protobuf::internal::kEmptyString) {
     delete min_value_;
   }
-  if (address_ != &::google::protobuf::internal::kEmptyString) {
-    delete address_;
-  }
   if (this != default_instance_) {
-    delete data_address_;
+    delete address_;
   }
 }
 
@@ -188,12 +181,7 @@ void ResizerProto::Clear() {
       }
     }
     if (has_address()) {
-      if (address_ != &::google::protobuf::internal::kEmptyString) {
-        address_->clear();
-      }
-    }
-    if (has_data_address()) {
-      if (data_address_ != NULL) data_address_->::rec::data::DataAddress::Clear();
+      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -239,30 +227,13 @@ bool ResizerProto::MergePartialFromCodedStream(
         break;
       }
 
-      // optional string address = 3;
+      // optional .rec.data.AddressProto address = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_address:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_address()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->address().data(), this->address().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_data_address;
-        break;
-      }
-
-      // optional .rec.data.DataAddress data_address = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_data_address:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_data_address()));
+               input, mutable_address()));
         } else {
           goto handle_uninterpreted;
         }
@@ -306,19 +277,10 @@ void ResizerProto::SerializeWithCachedSizes(
       2, this->min_value(), output);
   }
 
-  // optional string address = 3;
+  // optional .rec.data.AddressProto address = 3;
   if (has_address()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->address().data(), this->address().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->address(), output);
-  }
-
-  // optional .rec.data.DataAddress data_address = 4;
-  if (has_data_address()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->data_address(), output);
+      3, this->address(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -349,21 +311,11 @@ void ResizerProto::SerializeWithCachedSizes(
         2, this->min_value(), target);
   }
 
-  // optional string address = 3;
+  // optional .rec.data.AddressProto address = 3;
   if (has_address()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->address().data(), this->address().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->address(), target);
-  }
-
-  // optional .rec.data.DataAddress data_address = 4;
-  if (has_data_address()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->data_address(), target);
+        3, this->address(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -391,18 +343,11 @@ int ResizerProto::ByteSize() const {
           this->min_value());
     }
 
-    // optional string address = 3;
+    // optional .rec.data.AddressProto address = 3;
     if (has_address()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->address());
-    }
-
-    // optional .rec.data.DataAddress data_address = 4;
-    if (has_data_address()) {
-      total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->data_address());
+          this->address());
     }
 
   }
@@ -439,10 +384,7 @@ void ResizerProto::MergeFrom(const ResizerProto& from) {
       set_min_value(from.min_value());
     }
     if (from.has_address()) {
-      set_address(from.address());
-    }
-    if (from.has_data_address()) {
-      mutable_data_address()->::rec::data::DataAddress::MergeFrom(from.data_address());
+      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -470,7 +412,6 @@ void ResizerProto::Swap(ResizerProto* other) {
     std::swap(size_, other->size_);
     std::swap(min_value_, other->min_value_);
     std::swap(address_, other->address_);
-    std::swap(data_address_, other->data_address_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

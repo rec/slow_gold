@@ -15,8 +15,3 @@ message AddressProto {
   optional Scope scope = 2;
   optional string type_name = 3;
 };
-
-message DataAddress {
-  optional string type_name = 1;
-  optional AddressProto address = 2;
-};

@@ -38,7 +38,7 @@ void protobuf_AssignDesc_rec_2fgui_2fproto_2fToggleButton_2eproto() {
   static const int ToggleButtonProto_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ToggleButtonProto, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ToggleButtonProto, tooltip_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ToggleButtonProto, data_address_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ToggleButtonProto, address_),
   };
   ToggleButtonProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -83,10 +83,10 @@ void protobuf_AddDesc_rec_2fgui_2fproto_2fToggleButton_2eproto() {
   ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/gui/proto/ToggleButton.proto\022\007rec."
-    "gui\032\034rec/data/proto/Address.proto\"_\n\021Tog"
+    "gui\032\034rec/data/proto/Address.proto\"[\n\021Tog"
     "gleButtonProto\022\014\n\004name\030\001 \001(\t\022\017\n\007tooltip\030"
-    "\002 \001(\t\022+\n\014data_address\030\003 \001(\0132\025.rec.data.D"
-    "ataAddress", 170);
+    "\002 \001(\t\022\'\n\007address\030\003 \001(\0132\026.rec.data.Addres"
+    "sProto", 166);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/proto/ToggleButton.proto", &protobuf_RegisterTypes);
   ToggleButtonProto::default_instance_ = new ToggleButtonProto();
@@ -106,7 +106,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fproto_2fToggleButton_2eproto {
 #ifndef _MSC_VER
 const int ToggleButtonProto::kNameFieldNumber;
 const int ToggleButtonProto::kTooltipFieldNumber;
-const int ToggleButtonProto::kDataAddressFieldNumber;
+const int ToggleButtonProto::kAddressFieldNumber;
 #endif  // !_MSC_VER
 
 ToggleButtonProto::ToggleButtonProto()
@@ -115,7 +115,7 @@ ToggleButtonProto::ToggleButtonProto()
 }
 
 void ToggleButtonProto::InitAsDefaultInstance() {
-  data_address_ = const_cast< ::rec::data::DataAddress*>(&::rec::data::DataAddress::default_instance());
+  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
 }
 
 ToggleButtonProto::ToggleButtonProto(const ToggleButtonProto& from)
@@ -128,7 +128,7 @@ void ToggleButtonProto::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   tooltip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  data_address_ = NULL;
+  address_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -144,7 +144,7 @@ void ToggleButtonProto::SharedDtor() {
     delete tooltip_;
   }
   if (this != default_instance_) {
-    delete data_address_;
+    delete address_;
   }
 }
 
@@ -181,8 +181,8 @@ void ToggleButtonProto::Clear() {
         tooltip_->clear();
       }
     }
-    if (has_data_address()) {
-      if (data_address_ != NULL) data_address_->::rec::data::DataAddress::Clear();
+    if (has_address()) {
+      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -224,17 +224,17 @@ bool ToggleButtonProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_data_address;
+        if (input->ExpectTag(26)) goto parse_address;
         break;
       }
 
-      // optional .rec.data.DataAddress data_address = 3;
+      // optional .rec.data.AddressProto address = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_data_address:
+         parse_address:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_data_address()));
+               input, mutable_address()));
         } else {
           goto handle_uninterpreted;
         }
@@ -278,10 +278,10 @@ void ToggleButtonProto::SerializeWithCachedSizes(
       2, this->tooltip(), output);
   }
 
-  // optional .rec.data.DataAddress data_address = 3;
-  if (has_data_address()) {
+  // optional .rec.data.AddressProto address = 3;
+  if (has_address()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->data_address(), output);
+      3, this->address(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -312,11 +312,11 @@ void ToggleButtonProto::SerializeWithCachedSizes(
         2, this->tooltip(), target);
   }
 
-  // optional .rec.data.DataAddress data_address = 3;
-  if (has_data_address()) {
+  // optional .rec.data.AddressProto address = 3;
+  if (has_address()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->data_address(), target);
+        3, this->address(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -344,11 +344,11 @@ int ToggleButtonProto::ByteSize() const {
           this->tooltip());
     }
 
-    // optional .rec.data.DataAddress data_address = 3;
-    if (has_data_address()) {
+    // optional .rec.data.AddressProto address = 3;
+    if (has_address()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->data_address());
+          this->address());
     }
 
   }
@@ -384,8 +384,8 @@ void ToggleButtonProto::MergeFrom(const ToggleButtonProto& from) {
     if (from.has_tooltip()) {
       set_tooltip(from.tooltip());
     }
-    if (from.has_data_address()) {
-      mutable_data_address()->::rec::data::DataAddress::MergeFrom(from.data_address());
+    if (from.has_address()) {
+      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -412,7 +412,7 @@ void ToggleButtonProto::Swap(ToggleButtonProto* other) {
   if (other != this) {
     std::swap(name_, other->name_);
     std::swap(tooltip_, other->tooltip_);
-    std::swap(data_address_, other->data_address_);
+    std::swap(address_, other->address_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
