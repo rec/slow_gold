@@ -77,8 +77,12 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
   LOG(INFO) << "There are " << layoutMap_.size() << " layouts.";
   LOG(INFO) << "There are " << componentMap_.size() << " components.";
 
-  int undeclared = 0, total = 0;
+  int undeclared = 0, total = 0, empty = 0;
   for (auto& i: layoutMap_) {
+    if (not i.second.entry().size()) {
+      DLOG(INFO) << "empty: " << i.second.name();
+      ++empty;
+    }
     for (auto& entry: i.second.entry()) {
       auto& name = entry.name();
       total += 1;
@@ -89,7 +93,7 @@ JuceModelImpl::JuceModelImpl(Program* p, JuceModel* juceModel)
     }
   }
   LOG(INFO) << "There are " << undeclared << " missing components out of "
-            << total << ".";
+            << total << " and " << empty << " empty layouts.";
 }
 
 const MenuBar& JuceModelImpl::menuBar() const {
